@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 49aa1226de53a1d8f13e0f4f1e79f37f6bfa21ee
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 53ef96b561ccaa1480125f2c509381e980084b7a
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300485"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636672"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Analýzu časových řad v Průzkumníku dat Azure
 
@@ -57,10 +57,10 @@ demo_make_series1
 | render timechart 
 ```
 
-- Použití [ `make-series` ](https://docs.microsoft.com/azure/kusto/query/make-seriesoperator) operátoru pro vytvoření sady tři časové řady, kde:
+- Použití [ `make-series` ](/azure/kusto/query/make-seriesoperator) operátoru pro vytvoření sady tři časové řady, kde:
     - `num=count()`: time series provozu
     - `range(min_t, max_t, 1h)`: časové řady proběhne do 1 hodiny přihrádek v časovém rozmezí (nejstarší a nejnovější časová razítka tabulky záznamů)
-    - `default=0`: Zadejte metody fill pro chybějící přihrádky vytvoření pravidelné časové řady. Můžete také použít [ `series_fill_const()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-constfunction), [ `series_fill_forward()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-forwardfunction), [ `series_fill_backward()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-backwardfunction) a [ `series_fill_linear()` ](https://docs.microsoft.com/azure/kusto/query/series-fill-linearfunction) pro změny
+    - `default=0`: Zadejte metody fill pro chybějící přihrádky vytvoření pravidelné časové řady. Můžete také použít [ `series_fill_const()` ](/azure/kusto/query/series-fill-constfunction), [ `series_fill_forward()` ](/azure/kusto/query/series-fill-forwardfunction), [ `series_fill_backward()` ](/azure/kusto/query/series-fill-backwardfunction) a [ `series_fill_linear()` ](/azure/kusto/query/series-fill-linearfunction) pro změny
     - `byOsVer`: oddíl podle operačního systému
 - Struktura dat řady skutečný čas je číselné pole agregované hodnoty za každý interval času. Používáme `render timechart` pro vizualizaci.
 
@@ -71,14 +71,14 @@ V tabulce výše máme tři oddíly. Můžeme vytvořit samostatné časové řa
 ## <a name="time-series-analysis-functions"></a>Časové řady analýza funkce
 
 V této části provádíme obvyklé řady funkce na zpracování.
-Po vytvoření sadu časové řady ADX podporuje poskytovaná rostoucím seznamem zpracovávat a analyzovat je funkce, které najdete v [čas dokumentace k úložišti řady](https://docs.microsoft.com/azure/kusto/query/machine-learning-and-tsa). Článků popíšeme několik reprezentativní funkce pro zpracování a analýzu časové řady.
+Po vytvoření sadu časové řady ADX podporuje poskytovaná rostoucím seznamem zpracovávat a analyzovat je funkce, které najdete v [čas dokumentace k úložišti řady](/azure/kusto/query/machine-learning-and-tsa). Článků popíšeme několik reprezentativní funkce pro zpracování a analýzu časové řady.
 
 ### <a name="filtering"></a>Filtrování
 
 Filtrování je běžnou praxí při signálu zpracování a užitečné pro časové řady úloh zpracování (například smooth hlučného signál, změnit zjišťování).
 - Existují dvě obecné funkce filtrování:
-    - [`series_fir()`](https://docs.microsoft.com/azure/kusto/query/series-firfunction): Používá se filtr do části. Používá pro jednoduchý výpočet klouzavý průměr a rozdílů mezi časové řady pro zjišťování změn.
-    - [`series_iir()`](https://docs.microsoft.com/azure/kusto/query/series-iirfunction): Používá se filtr IIR. Používá pro exponenciální vyhlazování a kumulativní součet.
+    - [`series_fir()`](/azure/kusto/query/series-firfunction): Používá se filtr do části. Používá pro jednoduchý výpočet klouzavý průměr a rozdílů mezi časové řady pro zjišťování změn.
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction): Používá se filtr IIR. Používá pro exponenciální vyhlazování a kumulativní součet.
 - `Extend` časové řady přidáním nové klouzavý průměr řady nastavit velikost přihrádky 5 (s názvem *ma_num*) k dotazu:
 
 ```kusto
@@ -95,8 +95,8 @@ demo_make_series1
 ### <a name="regression-analysis"></a>Regresní analýzy
 
 Podporuje ADX segmentované lineární regrese analýzy k odhadu trend časové řady.
-- Použití [series_fit_line()](https://docs.microsoft.com/azure/kusto/query/series-fit-linefunction) podle osvědčené čáry časové řady pro zjišťování obecnému trendu.
-- Použití [series_fit_2lines()](https://docs.microsoft.com/azure/kusto/query/series-fit-2linesfunction) ke zjišťování trend změn, vzhledem k standardních hodnot, které jsou užitečné pro scénáře monitorování.
+- Použití [series_fit_line()](/azure/kusto/query/series-fit-linefunction) podle osvědčené čáry časové řady pro zjišťování obecnému trendu.
+- Použití [series_fit_2lines()](/azure/kusto/query/series-fit-2linesfunction) ke zjišťování trend změn, vzhledem k standardních hodnot, které jsou užitečné pro scénáře monitorování.
 
 Příklad `series_fit_line()` a `series_fit_2lines()` funkce v dotazu řady čas:
 
@@ -128,8 +128,9 @@ demo_series3
 
 ![Sezónnost řady čas](media/time-series-analysis/time-series-seasonality.png)
 
-- Použití [series_periods_detect()](https://docs.microsoft.com/azure/kusto/query/series-periods-detectfunction) automaticky zjišťovat období v časové řadě. 
-- Použití [series_periods_validate()](https://docs.microsoft.com/azure/kusto/query/series-periods-validatefunction) Pokud víme, že metriku by měl mít odlišné konkrétní období a chceme ověřit, že existují.
+- Použití [series_periods_detect()](/azure/kusto/query/series-periods-detectfunction) automaticky zjišťovat období v časové řadě. 
+- Použití [series_periods_validate()](/azure/kusto/query/series-periods-validatefunction) Pokud víme, že metriku by měl mít odlišné konkrétní období a chceme ověřit, že existují.
+
 > [!NOTE]
 > Pokud neexistuje konkrétní různých období je anomálií
 
@@ -150,7 +151,7 @@ Funkce zjistí denní nebo týdenní sezónnosti. Denní stanoví skóre menší
 
 ### <a name="element-wise-functions"></a>Element-Wise funkce
 
-Aritmetické a logické operace lze provádět na časové řady. Pomocí [series_subtract()](https://docs.microsoft.com/azure/kusto/query/series-subtractfunction) můžeme vypočítat zbývající časové řady, který je, rozdíl mezi původní nezpracovaná metriky a vyhlazenými jeden a vyhledat anomálie v plyne ze zbytkových signál:
+Aritmetické a logické operace lze provádět na časové řady. Pomocí [series_subtract()](/azure/kusto/query/series-subtractfunction) můžeme vypočítat zbývající časové řady, který je, rozdíl mezi původní nezpracovaná metriky a vyhlazenými jeden a vyhledat anomálie v plyne ze zbytkových signál:
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -165,7 +166,9 @@ demo_make_series1
 
 ![Časové řady operace](media/time-series-analysis/time-series-operations.png)
 
-Modrá: původní časové řady Red: vyhlazené časové řady zelená: plyne ze zbytkových časové řady
+- Modrá: původní časové řady
+- Červená: vyhlazené časové řady
+- Zelená: plyne ze zbytkových časové řady
 
 ## <a name="time-series-workflow-at-scale"></a>Čas řady pracovní postup ve velkém měřítku
 
@@ -255,6 +258,6 @@ demo_many_series1
 |   | LOC 15 | -3207352159611332166 | 1151 | -102743.910227889 |
 |   | LOC 13 | -3207352159611332166 | 1249 | -86303.2334644601 |
 
-Za méně než dvě minuty zjištěn ADX dvě nadměrné časové řady (mimo 23115) ve kterém se počet čtení náhle vyřadit.
+Za méně než dvě minuty ADX analyzovat více než 20 000 časové řady a zjištěna dvě neobvyklé časové řady, ve kterých se čtení počtu náhle vyřadit.
 
 Tyto pokročilé funkce v kombinaci s rychlý výkon ADX zadat jedinečný a výkonné řešení pro analýzu časových řad.

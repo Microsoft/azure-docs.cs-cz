@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
-ms.openlocfilehash: 09d1649f0ca0cf4ca464d95b29461cad3fe51788
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: HT
+ms.openlocfilehash: 30d56acf6bd3a882622af41ca0f2095572f72f71
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
-ms.locfileid: "22710129"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615734"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute (Classic)
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "22710129"
 > 
 > 
 
-Možnost konfigurace VPN typu site-to-site a ExpressRoute má několik výhod. Můžete nakonfigurovat VPN typu site-to-site jako zabezpečenou cestu převzetí služeb při selhání pro ExressRoute, nebo použít VPN typu site-to-site pro připojení k webům, které nejsou připojené prostřednictvím ExpressRoute. V tomto článku vám nabídneme postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Classic. Tato konfigurace není k dispozici na portálu.
+Možnost konfigurace VPN typu site-to-site a ExpressRoute má několik výhod. Můžete nakonfigurovat VPN typu Site-to-Site jako cestu zabezpečené převzetí služeb při selhání pro ExpressRoute, nebo použít VPN typu Site-to-Site pro připojení k webům, které nejsou připojené prostřednictvím ExpressRoute. V tomto článku vám nabídneme postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Classic. Tato konfigurace není k dispozici na portálu.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -80,7 +80,7 @@ Existují dvě sady postupů, ze kterých si můžete vybrat, když konfigurujet
     Pokud ještě nemáte virtuální síť, tento postup vás provede procesem vytvoření nové virtuální sítě pomocí modelu nasazení Classic a vytvoření nových připojení ExpressRoute a VPN typu site-to-site. Konfiguraci provedete podle kroků v části [Vytvoření nové virtuální sítě a koexistujících připojení](#new).
 * Už mám virtuální síť modelu nasazení Classic.
   
-    Už můžete mít virtuální síť s existujícím připojením VPN typu site-to-site nebo připojením ExpressRoute. V části [Konfigurace koexistujících připojení pro už existující virtuální síť](#add) najdete postup odstranění brány a následného vytvoření nových připojení ExpressRoute a VPN typu site-to-site. Uvědomte si, že při vytváření nových připojení musí být kroky provedené ve velmi specifickém pořadí. Nepoužívejte pro vytvoření připojení a bran pokyny z jiných článků.
+    Už můžete mít virtuální síť s existujícím připojením VPN typu site-to-site nebo připojením ExpressRoute. V části článku [konfigurace současně existujících připojení pro už existující virtuální síť](#add) uvedené části najdete postup odstranění brány a následného vytvoření nových připojení ExpressRoute a VPN typu Site-to-Site. Uvědomte si, že při vytváření nových připojení musí být kroky provedené ve velmi specifickém pořadí. Nepoužívejte pro vytvoření připojení a bran pokyny z jiných článků.
   
     V tomto postupu bude vytvoření připojení, která mohou existovat společně, vyžadovat, abyste odstranili bránu a pak nakonfigurovali nové brány. To znamená, že budete mít během odstraňování a opětného vytváření brány a připojení výpadek připojení mezi místy, ale nebude nutné migrovat žádné virtuální počítače a služby do nové virtuální sítě. Virtuální počítače a služby budou během konfigurace brány stále schopné komunikovat prostřednictvím nástroje pro vyrovnávání zatížení, pokud jsou tak nakonfigurované.
 
@@ -228,6 +228,6 @@ Pokud podsíť brány je /27 nebo větší a virtuální síť je připojená p�
                 </Gateway>
 6. V tuto chvíli máte virtuální síť, která nemá žádné brány. Abyste vytvořili nové brány a dokončili připojení, můžete pokračovat [krokem 4 – Vytvoření brány ExpressRoute](#gw), který se nachází v předchozí sadě kroků.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).
 

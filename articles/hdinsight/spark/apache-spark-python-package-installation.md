@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: af25dcff2302827f2291d50972f09b8b5fda6cd3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 093a5eb7ee366abfdbc4c5dba68739544b438ff2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255434"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684524"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Použití akce skriptu k instalaci externích balíčků Python pro poznámkové bloky Jupyter v clusterech Apache Spark v HDInsight
 > [!div class="op_single_selector"]
@@ -51,7 +51,7 @@ Služba Microsoft Azure HDInsight využívá ekosystém open source technologií
 
 Existují dva druhy opensourcové komponenty, které jsou k dispozici ve službě HDInsight:
 
-* **Integrované komponenty** – tyto součásti jsou předem nainstalované na clusterech HDInsight a poskytuje základní funkce clusteru. Například správce prostředků YARN, Hive dotazovacího jazyka (HiveQL) a knihovny Mahout patří do této kategorie. Úplný seznam součástí clusteru je k dispozici v [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning).
+* **Integrované komponenty** – tyto součásti jsou předem nainstalované na clusterech HDInsight a poskytuje základní funkce clusteru. Například správce prostředků YARN, Hive dotazovacího jazyka (HiveQL) a knihovny Mahout patří do této kategorie. Úplný seznam součástí clusteru je k dispozici v [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 * **Vlastní komponenty** -, jako uživatel clusteru, můžete nainstalovat nebo použít ve vašich úloh žádné součásti k dispozici v komunitě nebo vytvořené vámi.
 
 > [!WARNING]

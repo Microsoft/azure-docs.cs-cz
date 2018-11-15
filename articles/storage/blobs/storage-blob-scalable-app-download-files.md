@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: d71d09dde45897ad171109f6e091ae29c7cb91c2
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: a36e8d1819037a36d4ebe0f1fda47d0b4be656c1
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397277"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565084"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Stahování velkých objemů náhodných dat z úložiště Azure
 
@@ -70,7 +70,7 @@ public static void Main(string[] args)
     }
     finally
     {
-        // The following function will delete the container and all files contained in them.  This is commented out initialy
+        // The following function will delete the container and all files contained in them.  This is commented out initially
         // As the tutorial at https://docs.microsoft.com/azure/storage/blobs/storage-blob-scaleable-app-download-files has you upload only for one tutorial and download for the other. 
         if (!exception)
         {
@@ -113,7 +113,7 @@ private static async Task DownloadFilesAsync()
 {
     CloudBlobClient blobClient = GetCloudBlobClient();
 
-    // Define the BlobRequestionOptions on the download, including disabling MD5 hash validation for this example, this improves the download speed.
+    // Define the BlobRequestOptions on the download, including disabling MD5 hash validation for this example, this improves the download speed.
     BlobRequestOptions options = new BlobRequestOptions
     {
         DisableContentMD5Validation = true,
@@ -201,7 +201,7 @@ C:\>netstat -a | find /c "blob:https"
 C:\>
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V třetí části série jste se seznámili se stahováním velkých objemů náhodných dat z účtu úložiště a naučili jste se například:
 

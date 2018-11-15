@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: 66e937e92528e2f0a1fca9d9aac78f7265eef4f7
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: f79455166ef0d1bec9a2fb1d6045005f844e55ac
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741228"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636743"
 ---
 # <a name="tutorial-build-a-java-app-with-async-java-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření aplikace v Javě s využitím sady Async Java SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB
 
@@ -116,7 +116,7 @@ client = new AsyncDocumentClient.Builder()
 
 ## <a id="CreateDatabase"></a>Krok 5: Vytvoření databáze
 
-[Databázi](sql-api-resources.md#databases) Azure Cosmos DB je možné vytvořit pomocí metody createDatabaseIfNotExists() třídy DocumentClient. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
+[Databázi](databases-containers-items.md#azure-cosmos-databases) Azure Cosmos DB je možné vytvořit pomocí metody createDatabaseIfNotExists() třídy DocumentClient. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
 
 ```java
 private void createDatabaseIfNotExists() throws Exception 
@@ -203,7 +203,7 @@ private void createDocumentCollectionIfNotExists() throws Exception
 
 ## <a id="CreateDoc"></a>Krok 7: Vytvoření dokumentů JSON
 
-[Dokument](sql-api-resources.md#documents) je možné vytvořit pomocí metody createDocument třídy DocumentClient. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Soubor „src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java“ definuje rodinu dokumentů JSON. 
+Dokument lze vytvořit pomocí metody createDocument třídy DocumentClient. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Soubor „src/main/java/com/microsoft/azure/cosmosdb/sample/Families.java“ definuje rodinu dokumentů JSON. 
 
 ```java
 public static Family getJohnsonFamilyDocument() {
@@ -271,7 +271,7 @@ mvn exec:java -DACCOUNT_HOST=<YOUR_COSMOS_DB_HOSTNAME> -DACCOUNT_KEY= <YOUR_COSM
 
 Blahopřejeme! Dokončili jste tento kurz NoSQL a máte funkční konzolovou aplikaci jazyka Java!
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak s využitím sady Async Java SDK vytvořit aplikaci v Javě pro správu dat rozhraní SQL API služby Azure Cosmos DB. Teď můžete přejít k dalšímu článku:
 

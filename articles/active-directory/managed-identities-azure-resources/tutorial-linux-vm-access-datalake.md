@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 2a3a46b5f2adf052f04530a8d587a577b14b709b
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.openlocfilehash: 212e0cf390f7a67325b111d4028e0908c772b081
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106116"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622716"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Kurz: Použití spravované identity přiřazené systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu
 
@@ -35,15 +35,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Přihlášení k webu Azure Portal](https://portal.azure.com)
-
-- [Vytvoření virtuálního počítače s Linuxem](/azure/virtual-machines/linux/quick-create-portal)
-
-- [Povolení identity přiřazené systémem pro váš virtuální počítač](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udělení přístupu virtuálnímu počítači k Azure Data Lake Store
 
@@ -157,7 +149,7 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
 
 Pomocí jiných rozhraní API systému souborů Data Lake Store můžete přidávat do souborů, stahovat soubory a provádět další akce.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli, jak použít spravovanou identitu přiřazenou systémem virtuálního počítače s Linuxem pro přístup k Azure Data Lake Storu. Další informace o službě Azure Data Lake Store:
 

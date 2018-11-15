@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 100ea0147bf56242ba15bee39e4bda1b65af27da
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 31f4c64296c180ac441f2fb691514a4b9fb35a57
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390087"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -130,7 +130,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 6. Na **místní SharePoint konfigurace** klikněte na tlačítko **konfigurovat službu SharePoint v místním** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** z **Stručná referenční příručka oddílu.** Pro **jednotné přihlašování – adresa URL služby**, použijte hodnotu následujícímu vzoru: `https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
     > [!Note]
-    > _my_directory_id_ je id tenanta Azure Ad předplatné.
+    > _my_directory_id_ je id tenanta předplatného služby Azure Ad.
 
     ![Konfigurace místní služby SharePoint](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 

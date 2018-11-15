@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: fae5771afea742b2746c32e1ed6ae88c511876e6
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: 961352dc99a164b8537fb588e038ad1b385941cc
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037945"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567447"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>Kurz: Objednání služby Azure Data Box Disk (Preview)
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 > [!IMPORTANT]
 > - Data Box Disk je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - Po dobu platnosti verze Preview je možné disky poslat zákazníkům služby Data Box Disk v USA, Západní Evropě, Severní Evropě, Kanadě a Austrálii. Další informace najdete v části [Regionální dostupnost](data-box-disk-overview.md#region-availability).
+> - Ve verzi preview můžete Data Box Disk odeslané zákazníky v USA, západní a Severní Evropa, Kanadě a Austrálii. Další informace najdete v části [Regionální dostupnost](data-box-disk-overview.md#region-availability).
 
 ## <a name="sign-up"></a>Registrace
 
@@ -77,7 +77,7 @@ Službu Data Box Disk si objednejte na portálu [Azure Portal](https://aka.ms/az
     |Cílová oblast Azure| K účtu úložiště přiřaďte oblast.<br> V současné době se podporují účty úložiště ve všech oblastech USA, Západní Evropě, Severní Evropě, Kanadě a Austrálii. |
     |Účty úložiště|Na základě zadané oblasti Azure vyberte účet z filtrovaného seznamu existujících účtů úložiště. <br>Můžete si také vytvořit nový účet pro obecné účely v1 nebo obecné účely v2. |
     |Odhadovaná velikost dat v TB| Zadejte odhad v TB. <br>Podle objemu dat vám Microsoft pošle odpovídající počet 8TB disků SSD (s využitelnou kapacitou 7 TB). <br>Maximální využitelná kapacita 5 disků je 35 TB. |
-    |Klíč pro disky| Pokud zaškrtnete možnost **Použít namísto klíče vygenerovaného službou Azure vlastní klíč**, zadejte klíč pro disky. <br> Zadejte alfanumerický klíč o délce 12 až 32 znaků, který obsahuje alespoň jeden číselný a jeden speciální znak. Povolené speciální znaky jsou `@?_+`. <br> Tuto možnost můžete volitelně přeskočit a k odemknutí disků použít klíč vygenerovaný službou Azure.|
+    |Klíč pro disky| Pokud zaškrtnete možnost **Použít namísto klíče vygenerovaného službou Azure vlastní klíč**, zadejte klíč pro disky. <br> Zadejte klíč alfanumerické 12 až 32 znaků, který má alespoň jedna číslice a jeden speciální znak. Povolené speciální znaky jsou `@?_+`. <br> Tuto možnost můžete volitelně přeskočit a k odemknutí disků použít klíč vygenerovaný službou Azure.|
 
 13. Klikněte na **Další**. 
 
@@ -124,7 +124,7 @@ Objednávku můžete zrušit pouze při objednávání disků a při zpracován�
 Pokud chcete odstranit zrušenou objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 

@@ -1,5 +1,5 @@
 ---
-title: Zachytávání událostí z prostoru Azure Digital Twins | Microsoft Docs
+title: Zachycení událostí z prostorem digitální dvojče Azure | Dokumentace Microsoftu
 description: Zjistěte, jak pomocí kroků v tomto kurzu dostávat oznámení z prostorů díky integraci služby Azure Digital Twins s Logic Apps.
 services: digital-twins
 author: dsk-2015
@@ -7,24 +7,26 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 91dd16938efbd1e24419352f66e3238646a77e8a
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 994c864f04980dc963f9e7c4eb99b33382ad17e4
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49323204"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614901"
 ---
-# <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-using-logic-apps"></a>Kurz: Příjem oznámení z prostorů Azure Digital Twins pomocí Logic Apps
+# <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Kurz: Dostávat oznámení od prostory vaší digitální dvojče Azure s využitím Logic Apps
 
-Po nasazení instance služby Azure Digital Twins, zřízení prostorů a implementaci vlastních funkcí pro monitorování určitých podmínek můžete e-mailem upozornit správce kanceláře v případě splnění monitorovaných podmínek. 
+Po zřízení prostory vaší nasazení vaší instance Azure digitální dvojče a implementujte vlastní funkce pro monitorování určitých podmínek, můžete upozornit správce office e-mailem při výskytu monitorovaných podmínky. 
 
-V [prvním kurzu](tutorial-facilities-setup.md) jste nakonfigurovali prostorový graf imaginární budovy s místností obsahující senzory pohybu, oxidu uhličitého a teploty. V [druhém kurzu](tutorial-facilities-udf.md) jste zřídili graf a vlastní funkci označovanou jako uživatelem definovaná funkce, která monitoruje hodnoty z těchto senzorů a aktivuje oznámení, když je místnost prázdná a teplota i úroveň oxidu uhličitého jsou v přípustném rozsahu. V tomto kurzu se dozvíte, jak tato oznámení integrovat s Azure Logic Apps a odesílat e-maily, když bude taková místnost dostupná. Správce kanceláře může s využitím těchto informací pomáhat zaměstnancům s rezervací zasedacích místností nejvíce podporujících produktivitu. 
+V [první kurz](tutorial-facilities-setup.md), jste nakonfigurovali prostorový graf imaginární sestavování. Pokoje v budově obsahuje pohybu, oxidu uhličitého a teploty senzorů. V [druhé části kurzu](tutorial-facilities-udf.md), jste zřídili grafu a uživatelem definované funkce k monitorování těchto hodnot snímačů, a aktivovat oznámení při prostor je prázdný a teploty a oxidu uhličitého jsou v komfortní rozsah. 
+
+V tomto kurzu se dozvíte, jak tato oznámení integrovat s Azure Logic Apps a odesílat e-maily, když bude taková místnost dostupná. Správce kanceláře může s využitím těchto informací pomáhat zaměstnancům s rezervací zasedacích místností nejvíce podporujících produktivitu. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Integrace událostí se službou Event Grid
-> * Oznamování událostí pomocí aplikace logiky
+> * Integrace událostí pomocí služby Azure Event Grid.
+> * Oznámení události s Logic Apps.
     
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,36 +34,36 @@ V tomto kurzu se předpokládá, že jste [nakonfigurovali](tutorial-facilities-
 - [Účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Spuštěná instance služby Digital Twins.
 - Pracovní počítač se staženými a extrahovanými [ukázkami služby Digital Twins v jazyce C#](https://github.com/Azure-Samples/digital-twins-samples-csharp).
-- Počítač pro vývoj se sadou [.NET Core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) pro spuštění ukázky. Spuštěním příkazu `dotnet --version` ověřte, že máte nainstalovanou správnou verzi. 
+- [Sada .NET core SDK verze 2.1.403 nebo novější](https://www.microsoft.com/net/download) na vývojovém počítači ke spuštění ukázky. Spustit `dotnet --version` ověření nainstalovanou správnou verzi. 
 - Účet Office 365 pro odesílání e-mailových oznámení.
 
 ## <a name="integrate-events-with-event-grid"></a>Integrace událostí se službou Event Grid 
-V této části nastavíte službu [Event Grid](../event-grid/overview.md) tak, aby shromažďovala události z vaší instance služby Digital Twins a přesměrovávala je do [obslužné rutiny události](../event-grid/event-handlers.md), jako je například Logic Apps.
+V této části nastavíte [služby Event Grid](../event-grid/overview.md) shromažďovat události z vaší instanci Azure digitální dvojče a přesměrovat je na [obslužná rutina události](../event-grid/event-handlers.md) například Logic Apps.
 
-### <a name="create-event-grid-topic"></a>Vytvoření tématu Event Gridu
-[Témata Event Gridu](../event-grid/concepts.md#topics) poskytují rozhraní pro směrování událostí generovaných uživatelem definovanou funkcí. 
+### <a name="create-an-event-grid-topic"></a>Vytvořit téma event gridu
+[Téma event gridu](../event-grid/concepts.md#topics) poskytuje rozhraní pro směrování události generované modulem uživatelem definované funkce. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. Na levém navigačním panelu klikněte na **Vytvořit prostředek**. 
+1. V levém podokně vyberte **vytvořit prostředek**. 
 
-1. Vyhledejte a vyberte **Téma Event Gridu**. Klikněte na možnost **Vytvořit**.
+1. Vyhledejte a vyberte **Téma Event Gridu**. Vyberte **Vytvořit**.
 
-1. Zadejte **Název** tématu Event Gridu a zvolte **Předplatné**. Vyberte **skupinu prostředků**, kterou jste použili nebo vytvořili po první instanci služby Digital Twins, a **Umístění**. Klikněte na možnost **Vytvořit**. 
+1. Zadejte **Název** tématu Event Gridu a zvolte **Předplatné**. Vyberte **skupiny prostředků** , který můžete použít nebo vytvořit digitální dvojče instance a **umístění**. Vyberte **Vytvořit**. 
 
-    ![Vytvoření tématu Event Gridu](./media/tutorial-facilities-events/create-event-grid-topic.png)
+    ![Vytvořit téma event gridu](./media/tutorial-facilities-events/create-event-grid-topic.png)
 
-1. Ze skupiny prostředků přejděte k tématu Event Gridu, klikněte na **Přehled** a zkopírujte hodnotu **Koncový bod tématu** do dočasného souboru. Tuto adresu URL budete potřebovat v následující části. 
+1. Přejděte na téma event gridu od vaší skupiny prostředků, vyberte **přehled**a zkopírujte hodnotu **koncový bod tématu** do dočasného souboru. Bude nutné tuto adresu URL v další části. 
 
-1. Klikněte na **Přístupové klíče** a zkopírujte hodnoty **Klíč 1** a **Klíč 2** do dočasného souboru. Tyto hodnoty budete potřebovat k vytvoření koncového bodu v následující části.
+1. Vyberte **přístupové klíče**a zkopírujte **klíč 1** a **klíče 2** do dočasného souboru. Bude nutné tyto hodnoty a vytvořte koncový bod v další části.
 
-    ![Klíče Event Gridu](./media/tutorial-facilities-events/event-grid-keys.png)
+    ![Event Grid klíče](./media/tutorial-facilities-events/event-grid-keys.png)
 
-### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Vytvoření koncového bodu pro témat Event Gridu
+### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Vytvoření koncového bodu pro téma event gridu
 
-1. V příkazovém okně se ujistěte, že se nacházíte ve složce **_occupancy-quickstart\src_** ukázky služby Digital Twins.
+1. V příkazovém okně, ujistěte se, že jste v **obsazení quickstart\src** složky digitální dvojče vzorku.
 
-1. V editoru Visual Studio Code otevřete soubor **_actions\createEndpoints.yaml_**. Ujistěte se, že má následující obsah:
+1. Otevřete soubor **actions\createEndpoints.yaml** v editoru Visual Studio Code. Ujistěte se, že má následující obsah:
 
     ```yaml
     - type: EventGrid
@@ -79,10 +81,10 @@ V této části nastavíte službu [Event Grid](../event-grid/overview.md) tak, 
 
 1. Zástupný text `Secondary_connection_string_for_your_Event_Grid` nahraďte hodnotu **Klíč 2**.
 
-1. Zástupný text `Event_Grid_Topic_Path` nahraďte cestou k tématu Event Gridu. Tuto cestu získáte odebráním *https://* a koncových cest k prostředkům z adresy URL **koncového bodu tématu**. Cesta by měla mít přibližně tento formát: **yourEventGridName.yourLocation.eventgrid.azure.net**. 
+1. Zástupný text `Event_Grid_Topic_Path` nahraďte cestou k tématu Event Gridu. Získat tuto cestu tak, že odeberete **https://** koncové cesty prostředku z a **koncový bod tématu** adresy URL. Cesta by měla mít přibližně tento formát: *yourEventGridName.yourLocation.eventgrid.azure.net*. 
 
     > [!IMPORTANT]
-    > Všechny hodnoty zadávejte bez uvozovek. Ujistěte se, že za dvojtečkami v souboru *YAML* vždy následuje alespoň jeden znak mezery. Obsah souboru *YAML* můžete zkontrolovat také pomocí nějakého online validátoru YAML, jako je například [tento nástroj](https://onlineyamltools.com/validate-yaml).
+    > Všechny hodnoty zadávejte bez uvozovek. Ujistěte se, že existuje alespoň jeden znak po dvojtečky v souboru YAML. Můžete také ověřit váš obsah souboru YAML pomocí jakékoli online validátoru YAML [tento nástroj](https://onlineyamltools.com/validate-yaml).
 
 1. Uložte soubor a zavřete ho. V příkazovém okně spusťte následující příkaz a po zobrazení výzvy se přihlaste. 
 
@@ -90,43 +92,45 @@ V této části nastavíte službu [Event Grid](../event-grid/overview.md) tak, 
     dotnet run CreateEndpoints
     ```
 
-   Tento příkaz vytvoří koncový bod pro službu Event Grid. 
+   Tento příkaz vytvoří koncový bod pro Event Grid. 
 
    ![Koncové body pro službu Event Grid](./media/tutorial-facilities-events/dotnet-create-endpoints.png)
 
 
-## <a name="notify-events-with-logic-app"></a>Oznamování událostí pomocí aplikace logiky
-Služba [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umožňuje vytvářet automatizované úlohy pro události přijaté z jiných služeb. V této části nastavíte službu Logic Apps tak, aby s využitím [tématu Event Gridu](../event-grid/overview.md) vytvářela e-mailová oznámení o událostech směrovaných z prostorových senzorů.
+## <a name="notify-events-with-logic-apps"></a>Oznámení události s Logic Apps
+Můžete použít [Azure Logic Apps](../logic-apps/logic-apps-overview.md) služby s cílem vytvořit automatizované úlohy pro událostí přijatých z jiné služby. V této části nastavíte Logic Apps vytvořit e-mailová oznámení pro události z prostorové senzorů, díky směrovat [téma event gridu](../event-grid/overview.md).
 
-1. V levém navigačním podokně webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek**.
+1. V levém podokně [webu Azure portal](https://portal.azure.com)vyberte **vytvořit prostředek**.
 
-1. Vyhledejte a vyberte nový prostředek **Aplikace logiky**. Klikněte na možnost **Vytvořit**.
+1. Vyhledejte a vyberte nový prostředek **Aplikace logiky**. Vyberte **Vytvořit**.
 
-1. Zadejte **Název** aplikace logiky a pak vyberte **Předplatné**, **Skupinu prostředků** a **Umístění**. Klikněte na možnost **Vytvořit**.
+1. Zadejte **název** pro prostředek aplikace logiky a pak vyberte vaši **předplatné**, **skupiny prostředků**, a **umístění**. Vyberte **Vytvořit**.
 
-    ![Vytvoření aplikace logiky](./media/tutorial-facilities-events/create-logic-app.png)
+    ![Vytvořte prostředek aplikace logiky](./media/tutorial-facilities-events/create-logic-app.png)
 
-1. Po nasazení otevřete aplikaci logiky a pak otevřete podokno **Návrhář aplikace logiky**. 
+1. Otevřete váš prostředek služby Logic Apps při nasazení a pak otevřete **návrhář aplikace logiky** podokně. 
 
-1. Vyberte trigger **Když dojde k události Event Gridu**. Po zobrazení výzvy se pomocí svého účtu Azure **přihlaste** k tenantu. Po zobrazení výzvy potvrďte **povolení přístupu** k vaší službě Event Grid. Klikněte na **Pokračovat**.
+1. Vyberte trigger **Když dojde k události Event Gridu**. Přihlaste se k vašemu tenantovi pomocí svého účtu Azure, po zobrazení výzvy. Vyberte **povolit přístup** pro prostředek služby Event Grid po zobrazení výzvy. Vyberte **Pokračovat**.
 
-1. V okně **Když dojde k události prostředku (Preview)**: 
-    1. Vyberte **Předplatné**, které jste předtím použili k vytvoření služby Event Grid.
+1. V **při výskytu události prostředku (Preview)** okno: 
+   
+   a. Vyberte **předplatné** , který jste použili k vytvoření tématu event gridu.
 
-    1. Jako **Typ prostředku** vyberte **Microsoft.EventGrid.Topics**.
+   b. Vyberte **Microsoft.EventGrid.Topics** pro **typ prostředku**.
 
-    1. Jako **Název prostředku** v rozevíracím seznamu vyberte název vašeho prostředku služby Event Grid.
+   c. Vyberte z rozevíracího seznamu pro prostředek služby Event Grid **název prostředku**.
 
-    ![Vytvoření aplikace logiky](./media/tutorial-facilities-events/logic-app-resource-event.png)
+   ![Podokno návrháře aplikace logiky](./media/tutorial-facilities-events/logic-app-resource-event.png)
 
-1. Klikněte na tlačítko **Nový krok**.
+1. Vyberte **nový krok** tlačítko.
 
-1. V okně **Vybrat akci**:
-    1. Vyhledejte frázi *parsovat JSON* a vyberte akci **Parsovat JSON**.
+1. V **zvolte akci** okno:
+    
+   a. Vyhledejte frázi **parsovat JSON** a vyberte akci **Parsovat JSON**.
 
-    1. Klikněte do pole **Obsah** a v seznamu **Dynamický obsah** vyberte **Text**.
+   b. V **obsah** pole, vyberte **tělo** z **dynamický obsah** seznamu.
 
-    1. Klikněte na **K vygenerování schématu použijte ukázkovou datovou část**. Vložte následující datovou část JSON a pak klikněte na **Hotovo**.
+   c. Vyberte **ukázkový používání datovou část k vygenerování schématu**. Vložte následující datovou část JSON a potom vyberte **provádí**.
 
         ```JSON
         {
@@ -146,57 +150,59 @@ Služba [Azure Logic Apps](../logic-apps/logic-apps-overview.md) umožňuje vytv
         }
         ```
     
-    Tato datová část obsahuje fiktivní hodnoty. Aplikace logiky použije tuto jednoduchou datovou část k vygenerování **schématu**.
+    Tato datová část obsahuje fiktivní hodnoty. Logic Apps používá tuto ukázkovou datovou část k vygenerování *schématu*.
     
-    ![Parsování JSON v aplikaci logiky pro Event Grid](./media/tutorial-facilities-events/logic-app-parse-json.png)
+    ![Okno Parsovat JSON aplikace logiky pro Event Grid](./media/tutorial-facilities-events/logic-app-parse-json.png)
 
-1. Klikněte na tlačítko **Nový krok**.
+1. Vyberte **nový krok** tlačítko.
 
-1. V okně **Vybrat akci**:
-    1. Vyhledejte akci **Ovládání podmínek** a vyberte ji v seznamu **Akce**. 
+1. V **zvolte akci** okno:
 
-    1. V okně **Parsovat JSON** klikněte do prvního textového pole **Zvolit hodnotu** a v seznamu **Dynamický obsah** vyberte **Typ události**.
+   a. Vyhledejte a vyberte **podmínky řízení** z **akce** seznamu. 
 
-    1. Klikněte do druhého textového pole **Zvolit hodnotu** a zadejte *UdfCustom*.
+   b. V prvním **zvolit hodnotu** textového pole, vyberte **eventType** z **dynamický obsah** seznamu pro **Parsovat JSON** okna.
 
-    ![Parsování JSON v aplikaci logiky pro Event Grid](./media/tutorial-facilities-events/logic-app-condition.png)
+   c. Ve druhém **zvolit hodnotu** textové pole, zadejte **UdfCustom**.
 
-1. V okně **Pokud je true**:
-    1. Klikněte na **Přidat akci** a vyberte *Office 365 Outlook*.
+   ![Vybrané podmínky](./media/tutorial-facilities-events/logic-app-condition.png)
 
-    1. V seznamu **Akce** vyberte **Odeslat e-mail**. Klikněte na **Přihlásit se** a použijte přihlašovací údaje ke svému e-mailovému účtu. Po zobrazení výzvy klikněte na **Povolit přístup**.
+1. V **při hodnotě true** okno:
+   
+   a. Vyberte **přidat akci**a vyberte **Office 365 Outlook**.
 
-    1. Do pole **Příjemce** zadejte ID svého e-mailu, abyste dostávali oznámení. V okně **Parsovat JSON** do pole **Předmět** zadejte text *Oznámení služby Digital Twins na špatnou kvalitu vzduchu v prostoru* a pak v seznamu **Dynamický obsah** vyberte **ID objektu topologie**.
+   b. Z **akce** seznamu vyberte **odeslat e-mailu**. Vyberte **přihlášení** a použijte svoje přihlašovací údaje účtu e-mailu. Vyberte **povolit přístup** po zobrazení výzvy.
 
-    1. Ve stejném okně do pole **Text** zadejte podobný text: *V místnosti se zjistila špatná kvalita vzduchu a je potřeba upravit teplotu*. Zprávu můžete rozvést použitím dalších elementů ze seznamu **Dynamický obsah**, jak je znázorněno níže.
+   c. Do pole **Příjemce** zadejte ID svého e-mailu, abyste dostávali oznámení. V **subjektu**, zadejte text **digitální dvojče oznámení nízký air kvality v prostoru**. Potom vyberte **TopologyObjectId** z **dynamický obsah** seznamu pro **Parsovat JSON**.
 
-    ![Odeslání e-mailu z aplikace logiky](./media/tutorial-facilities-events/logic-app-send-email.png)
+   d. V části **tělo** ve stejném okně zadejte text podobný tomuto: **air špatná kvalita zjistil v místnosti, a teploty se musí upravit**. Nebojte se pracovalo za použití prvků z **dynamický obsah** seznamu.
 
-1. Klikněte na tlačítko **Uložit** v horní části podokna **Návrhář aplikace logiky**.
+   ![Výběr "Odeslat e-mail" aplikace logiky](./media/tutorial-facilities-events/logic-app-send-email.png)
 
-1. Nezapomeňte simulovat data ze snímačů tím, že v příkazovém okně přejdete do složky **_device-connectivity_** ukázky služby Digital Twin a spustíte příkaz `dotnet run`.
+1. Vyberte **Uložit** tlačítko v horní části **návrhář aplikace logiky** podokně.
 
-Během několika minut byste měli začít dostávat e-mailová oznámení z této aplikace logiky. 
+1. Ujistěte se, že simulace tak, že přejdete na data ze senzorů **připojení zařízení** složky digitální dvojče ukázku v příkazové okno a spuštění `dotnet run`.
 
-   ![Odeslání e-mailu z aplikace logiky](./media/tutorial-facilities-events/logic-app-notification.png)
+Za pár minut měli byste začít získání e-mailová oznámení od tohoto prostředku aplikace logiky. 
 
-Pokud chcete zastavit příjem těchto e-mailů, přejděte ke své **aplikaci logiky** na portálu a vyberte podokno **Přehled**. Klikněte na **Zakázat**.
+   ![E-mailové oznámení](./media/tutorial-facilities-events/logic-app-notification.png)
+
+Pokud chcete zastavit příjem těchto e-mailů, přejděte na váš prostředek služby Logic Apps na portálu a vyberte **přehled** podokně. Vyberte **zakázat**.
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už službu Azure Digital Twins nechcete dál zkoumat, můžete prostředky vytvořené v rámci tohoto kurzu odstranit:
+Pokud chcete zastavit v tuto chvíli seznámení digitální dvojče Azure, bez obav odstraňte prostředky vytvořené v tomto kurzu:
 
-1. V levé nabídce na webu [Azure Portal](http://portal.azure.com) klikněte na **Všechny prostředky**, vyberte svou skupinu prostředků Digital Twins a **odstraňte** ji.
-2. V případě potřeby můžete pokračovat odstraněním ukázkových aplikací i na pracovním počítači. 
+1. V levé nabídce v [webu Azure portal](http://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků digitální dvojče a vyberte **odstranit**.
+2. V případě potřeby odstraňte ukázkové aplikace na svém počítači práce. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Můžete pokračovat k dalšímu kurzu, kde zjistíte, jak vizualizovat data ze snímačů, analyzovat trendy a detekovat anomálie. 
+Informace o vizualizaci dat snímačů, analýze trendů a detekovat anomálie, přejděte k dalšímu kurzu: 
 > [!div class="nextstepaction"]
 > [Kurz: Vizualizace a analýza událostí z prostorů Azure Digital Twins s využitím služby Time Series Insights](tutorial-facilities-analyze.md)
 
-Můžete si také přečíst další informace o grafech prostorové inteligence a objektových modelech ve službě Azure Digital Twins. 
+Můžete také další informace o Prostorové řady grafů a objektové modely v digitální dvojče Azure: 
 > [!div class="nextstepaction"]
 > [Vysvětlení grafu prostorové inteligence a objektových modelů služby Digital Twins](concepts-objectmodel-spatialgraph.md)

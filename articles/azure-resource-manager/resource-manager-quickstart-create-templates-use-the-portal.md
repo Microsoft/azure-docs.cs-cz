@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/17/2018
+ms.date: 11/13/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 62bc29495bab3446b6131223110c694e53412db9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 515ab6a4ee832c702cfe19f2aca9022f208b409d
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407635"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612784"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal
 
@@ -175,7 +175,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků byste měli vidět účet úložiště.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste naučili, jak vygenerovat šablonu na portálu Azure Portal a jak ji pomocí tohoto portálu nasadit. Šablona použitá v tomto rychlém startu představuje jednoduchou šablonu s jedním prostředkem Azure. Pokud je šablona složitá, je snazší šablonu vytvořit v nástroji Visual Studio Code nebo v sadě Visual Studio. V dalším rychlém startu se také dozvíte, jak nasazovat šablony pomocí Azure PowerShellu a rozhraní příkazového řádku Azure (Azure CLI).
 

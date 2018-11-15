@@ -15,24 +15,38 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406462"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633644"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu
 
 Tento článek popisuje, jak [služba Azure App Service v Linuxu](app-service-linux-intro.md) spouští aplikace Pythonu a jak můžete podle potřeby přizpůsobit chování služby App Service.
 
+## <a name="set-python-version"></a>Nastavení verze Pythonu
+
+Jsou k dispozici dva základní Image: Python 3.6 a Python 3.7. Vytvoření aplikace s požadovanou image na základě Python. Například pokud chcete vytvořit aplikaci pomocí Pythonu 3.7, spusťte následující příkaz ve službě Cloud Shell:
+
+```azurecli-interactive
+az webapp create --resource-group <group_name> --plan <plan_name> --name <app_name> --runtime "PYTHON|3.7"
+```
+
+Chcete-li změnit verzi Pythonu (na základě image) pro Python 3.6, například ve službě Cloud Shell spusťte následující příkaz:
+
+```azurecli-interactive
+az webapp config set --resource-group <group_name> --name <app_name> --linux-fx-version "PYTHON|3.6"
+```
+
+Pokud potřebujete jinou verzi Pythonu, musíte sestavit a nasadit svoji vlastní image kontejneru. Další informace najdete v [Použití vlastní image dockeru pro Web App for Containers](tutorial-custom-docker-image.md).
+
 ## <a name="container-characteristics"></a>Vlastnosti kontejneru
 
-Aplikace Pythonu nasazené na službu App Service v Linuxu se spouštějí v kontejneru dockeru, který je definovaný v úložišti GitHub jako [Azure-App-Service/python container](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
+Aplikace v Pythonu nasadily do App Service v Linuxu spusťte v kontejneru Dockeru, který je definován v úložišti GitHub [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) nebo [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
 
 Tento kontejner má následující vlastnosti:
-
-- Základní image kontejneru je `python-3.7.0-slim-stretch`. To znamená, že se aplikace spouštějí v Pythonu 3.7. Pokud potřebujete jinou verzi Pythonu, musíte sestavit a nasadit svoji vlastní image kontejneru. Další informace najdete v [Použití vlastní image dockeru pro Web App for Containers](tutorial-custom-docker-image.md).
 
 - Aplikace se spouštějí pomocí [Gunicorn WSGI HTTP Server](http://gunicorn.org/) za použití dalších argumentů `--bind=0.0.0.0 --timeout 600`.
 

@@ -1,47 +1,35 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Node.js'
+title: 'Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní Azure REST API a Node.js'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře s Node.js rozpoznávat tváře z obrázku ve službě Cognitive Services.
+description: V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání tváře Azure s využitím Node.js rozpoznávání tváří v obrázku.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 06/08/2018
+ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: b5258f1c465732df257a7db85e828effff200ee0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 76747f7e9f1a95ee14ee570dcc29b42f98c26838
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954090"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51577969"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-nodejs"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Node.js
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API pro rozpoznávání tváře a Node.js
 
-V tomto rychlém startu budete pomocí rozhraní API pro rozpoznávání tváře rozpoznávat lidské tváře na obrázku.
+V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání tváře Azure s využitím Node.js detekovat lidské tváře v obrázku.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění této ukázky budete potřebovat klíč předplatného. Klíče bezplatného zkušebního předplatného můžete získat v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
 
-## <a name="face---detect-request"></a>Žádost Face - Detect
+## <a name="create-the-nodejs-script"></a>Vytvoření skriptu Node.js
 
-Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozpoznejte tváře na obrázku a vraťte atributy tváře, včetně:
-
-* Face ID: jedinečná hodnota ID používaná v několika scénářích rozhraní API pro rozpoznávání tváře
-* Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje
-* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy součástí obličeje.
-* Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
-
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. Zkopírujte do editoru následující kód.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte hodnotu `uriBase` na umístění, kde jste klíče předplatného získali.
-1. Volitelně můžete `imageUri` nastavit na obrázek, který chcete analyzovat.
-1. Uložte soubor s příponou `.js`.
-1. Otevřete příkazový řádek Node.js a spusťte soubor, například: `node myfile.js`.
+Následující kód zavolá rozhraní API pro rozpoznávání tváře a získání dat pro rozpoznávání tváře atribut z bitové kopie. Nejprve zkopírujte kód do textového editoru&mdash;budete muset udělat nějaké změny, abyste mohli spustit.
 
 ```nodejs
 'use strict';
@@ -88,9 +76,29 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-## <a name="face---detect-response"></a>Odpověď Face - Detect
+### <a name="subscription-key"></a>Klíč předplatného
+Nahraďte `<Subscription Key>` platný klíč předplatného pro rozpoznávání tváře.
 
-Úspěšná odpověď se vrátí ve formátu JSON, například:
+### <a name="face-endpoint-url"></a>Adresa URL koncového bodu pro rozpoznávání tváře
+
+Adresa URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` Určuje koncový bod Azure pro rozpoznávání tváře do dotazu. Je potřeba změnit první část této adresy URL tak, aby odpovídaly oblasti, která odpovídá váš klíč předplatného (Pokud již není správná).
+
+### <a name="url-query-string"></a>Řetězec dotazu adresy URL
+
+`returnFaceAttributes` Pole určuje, které pro rozpoznávání tváře atributy pro načtení. Můžete chtít změnit tento řetězec v závislosti na zamýšlený účel použití.
+
+### <a name="image-source-url"></a>Zdrojová adresa URL obrázku
+`imageUrl` Pole označuje obrázek, který se použít jako vstup. Můžete změnit to tak, aby odkazoval na všechny image, kterou chcete analyzovat.
+
+## <a name="save-and-run-the-script"></a>Uložte a spusťte skript
+
+Po provedení změny, uložte soubor jako skript jazyka JavaScript (.js). Pak otevřete příkazový řádek a spusťte jej `node` příkazu.
+
+```
+node myfile.js
+```
+
+Rozpoznávání tváře informace zobrazené jako data JSON v okně konzoly byste měli vidět. Příklad:
 
 ```json
 [
@@ -271,9 +279,9 @@ request.post(options, (error, response, body) => {
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Prozkoumejte rozhraní API pro rozpoznávání lidských tváří na obrázku, ohraničte obličeje obdélníky a vraťte atributy, jako je věk a pohlaví.
+V tomto rychlém startu jste napsali příkaz cURL, který volá rozhraní API pro rozpoznávání tváře Azure rozpoznávání tváří v obrázku a vrátíte se jejich atributy. Dále prozkoumejte referenční dokumentaci rozhraní API pro rozpoznávání tváře na další informace.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

@@ -1,5 +1,5 @@
 ---
-title: Analýza videa pomocí služby Azure Media Services | Microsoft Docs
+title: Analýza videa pomocí služby Azure Media Services | Dokumentace Microsoftu
 description: Pokud chcete analyzovat video pomocí služby Azure Media Services, postupujte podle kroků v tomto kurzu.
 services: media-services
 documentationcenter: ''
@@ -10,18 +10,18 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/15/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: 5bb840be119f5eac380c44e2cf45b3f73a9d981e
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 3f0d6784f7b7c476313c5cc4190cacd99e4c3973
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985705"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612750"
 ---
-# <a name="tutorial-analyze-videos-with-azure-media-services"></a>Kurz: Analýza videa pomocí služby Azure Media Services 
+# <a name="tutorial-analyze-videos-with-media-services-v3-using-apis"></a>Kurz: Analýza videa pomocí Media Services v3 pomocí rozhraní API
 
-Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojenosti zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely. Nebo mohou získat přehledy o svých podnicích, jako je třeba seznam častých stížností, zdroje těchto stížností atd.
+Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojenosti zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely. Pak může získat přehled o jejich firmy, jako je například seznam častých stížností, zdrojům stížnosti a další užitečné informace.
 
 V tomto kurzu získáte informace o následujících postupech:    
 
@@ -38,7 +38,14 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+- Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+
+    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
+
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
+
+    Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -49,10 +56,6 @@ Do svého počítače naklonujte pomocí následujícího příkazu úložiště
  ```
 
 Tato ukázka se nachází ve složce [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -154,11 +157,11 @@ Výstupní soubor analyzování videa se nazývá insights.json. Tento soubor ob
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte. Můžete použít nástroj **CloudShell**.
+Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte. 
 
-V nástroji **CloudShell** spusťte následující příkaz:
+Spusťte následující příkaz rozhraní příkazového řádku:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 
@@ -166,7 +169,7 @@ az group delete --name amsResourceGroup
 
 Sady SDK služby Azure Media Services v3 nejsou bezpečné pro přístup z více vláken. Při práci s vícevláknovou aplikací byste měli pro každé vlákno vygenerovat nový objekt AzureMediaServicesClient.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Kurz: Nahrávání, kódování a streamování souborů](stream-files-tutorial-with-api.md)

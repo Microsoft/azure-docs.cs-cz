@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/19/2018
-ms.openlocfilehash: 6330e187ce0a46744bc27eee3ee74ed125d49446
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 8806d2b1848064c48615aed653c69c2df9b1949f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625976"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685459"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Aktivace Azure Disk Encryption pro virtuální počítače s Linuxem v režimu IaaS 
 
@@ -153,7 +153,7 @@ Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi 
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [az funkce Zobrazit](/cli/azure/feature#az_feature_show). Když `State` sestavy *registrované*, přeregistrovat *Mirosoft.Compute* zprostředkovatele s [az provider register](/cli/azure/provider#az_provider_register):
+Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [az funkce Zobrazit](/cli/azure/feature#az_feature_show). Když `State` sestavy *registrované*, přeregistrovat *Microsoft.Compute* zprostředkovatele s [az provider register](/cli/azure/provider#az_provider_register):
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
@@ -191,7 +191,7 @@ Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi 
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). Když `RegistrationState` sestavy *registrované*, přeregistrovat *Mirosoft.Compute* zprostředkovatele s [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider):
+Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature). Když `RegistrationState` sestavy *registrované*, přeregistrovat *Microsoft.Compute* zprostředkovatele s [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider):
 
 ```azurepowershell-interactive
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
@@ -244,7 +244,7 @@ Použití [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/azurerm.co
  Po spuštění tohoto příkazu, jednotky, na kterých byly připojené dříve naformátovaný. Pak vrstvě šifrování bude spuštěna na jednotce teď prázdný. Pokud je vybraná tato možnost, budou se šifrovat taky dočasných prostředků disku připojeného k virtuálnímu počítači. Pokud na dočasné jednotce se vynuluje, bude přeformátovali a znovu zašifrována pomocí řešení Azure Disk Encryption při nejbližší příležitosti pro virtuální počítač.
 
 >[!WARNING]
-> Encryptformatall šifrovaně se nemá používat, když je potřebná data na svazcích data Virtuálního počítače. Podle jejich odpojení může vyloučit disky z šifrování. By měly nejprve vyzkoušet encryptformatall šifrovaně nejprve na testovacím virtuálním počítači, parametr funkce a její nepřímo před pokusem o produkční virtuální počítač. Možnost encryptformatall šifrovaně formátuje datový disk a všechna data na ni se ztratí. Než budete pokračovat, ověřte, že disky, které chcete vyloučit správně unmouted. </br></br>
+> Encryptformatall šifrovaně se nemá používat, když je potřebná data na svazcích data Virtuálního počítače. Podle jejich odpojení může vyloučit disky z šifrování. By měly nejprve vyzkoušet encryptformatall šifrovaně nejprve na testovacím virtuálním počítači, parametr funkce a její nepřímo před pokusem o produkční virtuální počítač. Možnost encryptformatall šifrovaně formátuje datový disk a všechna data na ni se ztratí. Než budete pokračovat, ověřte, že jsou správně odpojené disky, které chcete vyloučit. </br></br>
  >Pokud nastavení tohoto parametru během aktualizace nastavení šifrování může vést k restartování před skutečné šifrování. V takovém případě také můžete k odebrání disku, které nechcete formátovaný ze souboru fstab. Podobně měli byste přidat oddíl, který chcete zašifrovat ve formátu souboru fstab před inicializací operace šifrování. 
 
 ### <a name="bkmk_EFACriteria"> </a> Kritéria encryptformatall šifrovaně

@@ -1,3 +1,16 @@
+---
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jingwang
+ms.openlocfilehash: 831a72fff0931d116a669060b160f51fde6e1d3e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571985"
+---
 ## <a name="verify-the-output"></a>Ověření výstupu
 Kanál v kontejneru objektů blob adftutorial automaticky vytvoří výstupní složku. Potom do výstupní složky zkopíruje soubor emp.txt ze vstupní složky. 
 

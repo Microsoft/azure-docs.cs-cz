@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/6/2018
+ms.date: 11/9/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4873da97b790df98b6d10ae8b7a57fc39b534755
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 02805f676a5ea9edbfa619c625bb11e94e16c12e
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278578"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299992"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -196,15 +196,16 @@ Toto pravidlo aplikace povoluje odchozí přístup k webu github.com.
 
 1. Otevřete skupinu prostředků **Test-FW-RG** a klikněte na bránu firewall **Test-FW01**.
 2. Na stránce **Test-FW01** v části **Nastavení** klikněte na **Pravidla**.
-3. Klikněte na **Přidat kolekci pravidel aplikace**.
-4. Jako **Název** zadejte **App-Coll01**.
-5. V části **Priorita** zadejte **200**.
-6. V části **Akce** vyberte **Povolit**.
-7. V části **Pravidla** jako **Název** zadejte **AllowGH**.
-8. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
-9. V části **Protokol:Port** zadejte **http, https**.
-10. V části **Cílové plně kvalifikované názvy domén** zadejte **github.com**.
-11. Klikněte na tlačítko **Add** (Přidat).
+3. Klikněte na tlačítko **kolekce pravidel aplikace** kartu.
+4. Klikněte na **Přidat kolekci pravidel aplikace**.
+5. Jako **Název** zadejte **App-Coll01**.
+6. V části **Priorita** zadejte **200**.
+7. V části **Akce** vyberte **Povolit**.
+8. V části **pravidla**, **Target plně kvalifikované názvy domény**, pro **název**, typ **AllowGH**.
+9. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
+10. V části **Protokol:Port** zadejte **http, https**.
+11. V části **Cílové plně kvalifikované názvy domén** zadejte **github.com**.
+12. Klikněte na tlačítko **Add** (Přidat).
 
 Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené. Tyto plně kvalifikované názvy domén jsou specifické pro tuto platformu a pro jiné účely je nelze použít. Další informace najdete v tématu [Plně kvalifikované názvy domén infrastruktury](infrastructure-fqdns.md).
 
@@ -212,6 +213,7 @@ Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukt
 
 Toto pravidlo sítě povoluje odchozí přístup ke dvěma IP adresám na portu 53 (DNS).
 
+1. Klikněte na tlačítko **sítě kolekce pravidel** kartu.
 1. Klikněte na **Přidat kolekci pravidel sítě**.
 2. Jako **název** zadejte **Net-Coll01**.
 3. V části **Priorita** zadejte **200**.
@@ -261,7 +263,7 @@ Nyní jste ověřili, že pravidla brány firewall fungují:
 
 Prostředky brány firewall si můžete ponechat pro další kurz, nebo můžete odstraněním skupiny prostředků **Test-FW-RG** odstranit všechny prostředky související z bránou firewall, pokud už je nepotřebujete.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Kurz: Monitorování protokolů brány Azure Firewall](./tutorial-diagnostics.md)

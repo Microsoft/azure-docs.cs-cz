@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0058ce8316fa8202cf53eaa1048a44b77efdecb5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 15064e90690064e67b296e7a46749f27773c0814
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012441"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636896"
 ---
 # <a name="token-session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Token, relace a konfigurace jednotného přihlašování v Azure Active Directory B2C
 
@@ -26,9 +26,9 @@ Tato funkce umožňuje přesné řízení, na [podle zásad základ](active-dire
 - Formáty důležité deklarací identity v tokenech zabezpečení, protože ho vygeneroval Azure AD B2C.
 - Chování jednotného přihlašování (SSO) napříč více aplikacemi a zásad ve vašem tenantovi Azure AD B2C
 
-Pro předdefinované zásady můžete tuto funkci ve vašem adresáři Azure AD B2C následujícím způsobem:
+Tuto funkci můžete použít na libovolný typ zásad, ale v tomto příkladu ukazují, jak používat funkci s zásady registrace nebo přihlášení. Pro předdefinované zásady můžete tuto funkci ve vašem adresáři Azure AD B2C následujícím způsobem:
 
-1. Klikněte na tlačítko **zásady registrace nebo přihlášení**. * Poznámka: Pomocí této funkce na libovolný typ zásad, nejen na ** registrace nebo přihlašování zásady ***.
+1. Klikněte na tlačítko **zásady registrace nebo přihlášení**.
 2. Otevřete zásadu kliknutím. Klikněte například na **B2C_1_SiUpIn**.
 3. Klikněte na tlačítko **upravit** v horní nabídce.
 4. Klikněte na tlačítko **Token, relace a konfigurace přihlašování**.

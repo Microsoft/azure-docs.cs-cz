@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 195686a924d784327c72bcd09a1a50a563e444de
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d834b7f43d961400e2d5080a46cf921d719f3393
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628933"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684847"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Práce s databází Azure Cosmos, kontejnery a položek
 
@@ -94,12 +94,10 @@ Kontejner služby Azure Cosmos podporuje následující operace pomocí kterého
 | **Operace** | **Azure CLI** | **ROZHRANÍ SQL API** | **Rozhraní Cassandra API** | **Rozhraní MongoDB API** | **Gremlin API** | **Rozhraní Table API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Zobrazení výčtu kontejnery v databázi | Ano* | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Přečtěte si kontejneru | Ano* | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Vytvořit nový kontejner | Ano* | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Aktualizovat kontejner | Ano* | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-| Odstranění kontejneru | Ano* | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
-
-\* Bude k dispozici v lednu 2019.
+| Přečtěte si kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
+| Vytvořit nový kontejner | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
+| Aktualizovat kontejner | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
+| Odstranění kontejneru | Ano | Ano | Ano | Ano | Není k dispozici | Není k dispozici |
 
 ## <a name="azure-cosmos-items"></a>Azure Cosmos položky
 

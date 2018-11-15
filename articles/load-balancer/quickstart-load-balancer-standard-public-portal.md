@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/21/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2197ab230341fb2945e7b1acd9a010ef3d3f8c22
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
-ms.translationtype: HT
+ms.openlocfilehash: df79581f4ad6af3dc420e7c7895acf46b5e3d997
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42702402"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615204"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý start: Vytvoření Load Balanceru úrovně Standard pro vyrovnávání zatížení virtuálních počítačů pomocí portálu Azure Portal
 
@@ -145,6 +145,7 @@ Pokud chcete nástroji pro vyrovnávání zatížení povolit monitorování sta
     - *myHealthProbe* – název sondy stavu.
     - **HTTP** – typ protokolu.
     - *80* – číslo portu.
+    - *Healthprobe.aspx* – cesta k identifikátoru URI. Můžete buď tuto hodnotu nahraďte jiný identifikátor URI nebo ponechte výchozí hodnotu cesta **"\\"** aby se získal výchozí identifikátor URI.
     - *15* – **Interval** mezi pokusy o testování v sekundách.
     - *2* – **Prahová hodnota špatného stavu** neboli počet po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.
 4. Klikněte na **OK**.
@@ -179,7 +180,7 @@ Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způso
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky. Provedete to výběrem skupiny prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a kliknutím na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V rámci tohoto rychlého startu jste vytvořili službu Load Balancer úrovně Standard, připojili jste k ní virtuální počítače, nakonfigurovali jste pravidlo provozu nástroje pro vyrovnávání zatížení a sondu stavu a pak jste nástroj pro vyrovnávání zatížení otestovali. Další informace o službě Azure Load Balancer najdete v kurzech týkajících se služby Azure Load Balancer.
 

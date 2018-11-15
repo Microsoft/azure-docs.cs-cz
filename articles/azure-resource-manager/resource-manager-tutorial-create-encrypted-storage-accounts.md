@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/30/2018
+ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 79572a364c2346ffd567cab7d3633ae398715210
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: 6c75c0ce7d12f65878ec8cde0f265022c7beeb29
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239946"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613507"
 ---
 # <a name="tutorial-deploy-an-encrypted-azure-storage-account-with-resource-manager-template"></a>Kurz: Nasazení šifrovaného účtu služby Azure Storage pomocí šablony Resource Manageru
 
@@ -149,7 +149,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli, jak přizpůsobit existující šablonu pomocí odkazu na šablonu. Naučte se, jak vytvořit několik instancí účtu úložiště, viz:
 

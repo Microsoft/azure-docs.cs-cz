@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 73b594aaabd814108dfce813b53a4ea865336e63
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: a9d3b92b9cb3334c8c52a9127a2fab92d187e3d9
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985059"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687431"
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics na hraničních zařízeních IoT (preview)
 
@@ -71,13 +71,17 @@ Kontejner úložiště je potřeba, abyste mohli exportovat dotaz Azure Stream A
 
 1. Z portálu Azure portal vytvořte novou "Stream Analytics úlohu". [Přímý odkaz na vytvoření zde nové úlohy Azure Stream Analytics](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
 
-2. V dialogovém okně Vytvořit zvolte **hrany** jako **hostitelské prostředí** (viz následující obrázek) ![vytvoření úlohy](media/stream-analytics-edge/ASAEdge_create.png)
+2. V dialogovém okně Vytvořit zvolte **hrany** jako **hostitelské prostředí** (viz následující obrázek)
+
+   ![Vytvoření úlohy](media/stream-analytics-edge/ASAEdge_create.png)
 3. Definice úlohy
     1. **Definování vstupním datovým proudům**. Definujte jeden nebo několik vstupních datových proudů pro vaši úlohu.
     2. Definujte referenčních dat (volitelné).
     3. **Definujte výstupní datovým proudům**. Definujte jeden nebo několik datových proudů výstupy pro vaši úlohu. 
     4. **Definování dotazu**. Definování dotazu Azure Stream Analytics v cloudu s využitím editoru vnořeném do stránky. Kompilátor automaticky ověří syntaxi povolena pro Azure Stream Analytics edge. Můžete také testovat dotaz tak, že nahrajete ukázková data. 
+
 4. Nastavení informací o kontejneru úložiště v **nastavení IoT Edge** nabídky.
+
 5. Volitelná nastavení
     1. **Řazení událostí**. Na portálu můžete nakonfigurovat zásady mimo pořadí. Dokumentace je k dispozici [tady](https://msdn.microsoft.com/library/azure/mt674682.aspx?f=255&MSPPError=-2147217396).
     2. **Národní prostředí**. Nastavte formát internalization.
@@ -181,20 +185,27 @@ V současnosti jediný podporovaný vstupní datový proud a Centrum Edge jsou t
 
 
 ##### <a name="reference-data"></a>Referenční data
-Referenčními daty (označované také jako vyhledávací tabulky) je konečná datová sada, která jsou statická nebo pomalu, změna ze své podstaty. Slouží k vyhledávání a korelaci s datovým proudem. Chcete-li pomocí referenčních dat v úloze Azure Stream Analytics, budete obvykle používat [referenční Data připojení](https://msdn.microsoft.com/library/azure/dn949258.aspx) v dotazu. Další informace najdete v tématu [dokumentace ke službě Azure Stream Analytics o referenčních dat](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data).
+Referenčními daty (označované také jako vyhledávací tabulky) je konečná datová sada, která jsou statická nebo pomalu, změna ze své podstaty. Slouží k vyhledávání a korelaci s datovým proudem. Chcete-li pomocí referenčních dat v úloze Azure Stream Analytics, budete obvykle používat [referenční Data připojení](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) v dotazu. Další informace najdete v tématu [pomocí referenčních dat pro vyhledávání ve službě Stream Analytics](stream-analytics-use-reference-data.md).
 
-Využití referenčních dat pro Azure Stream Analytics na hraničních zařízeních Iot, postupujte podle těchto kroků: 
-1. Vytvořit nový vstup pro úlohu
+Je podporována pouze místní referenční data. Pokud nějaká úloha nasazená na zařízení IoT Edge, načte referenčních dat z cesty souborů definované uživatelem.
+
+Chcete-li vytvořit úlohu s referenčními daty na hraničních zařízeních:
+
+1. Vytvořte nový vstup pro úlohu.
+
 2. Zvolte **odkazují na data** jako **typ zdroje**.
-3. Nastavte cestu k souboru. Cesta k souboru by měla být **absolutní** cesta k souboru na zařízení ![odkazují na data vytvoření](media/stream-analytics-edge/ReferenceData.png)
-4. Povolit **sdílené jednotky** v konfiguraci Dockeru a ujistěte se, že na jednotce zapnutý před spuštěním nasazení.
 
-Další informace najdete v tématu [dokumentace k Dockeru pro Windows zde](https://docs.docker.com/docker-for-windows/#shared-drives).
+3. Máte odkaz na soubor dat připravené na zařízení. Pro kontejner Windows k referenčnímu datovému souboru na místním disku vložit a sdílet s kontejnerem Dockeru místním disku. Pro kontejner Linuxu vytvořte svazek Dockeru a naplnění souboru data na svazek.
 
-> [!Note]
-> V tuto chvíli se podporuje jenom místní referenční data.
+4. Nastavte cestu k souboru. Pro zařízení se systémem windows použijte absolutní cestu. Pro Linux zařízení použijte cestu ve svazku.
 
+![Nové referenčního datového vstupu pro úlohy Azure Stream Analytics na hraničních zařízeních IoT](./media/stream-analytics-edge/ReferenceDataNewInput.png)
 
+Referenční data ve službě IoT Edge update se aktivuje nasazení. Po aktivaci, modulu Azure Stream Analytics vybere aktualizovaná data bez zastavení spuštěných úloh.
+
+Existují dva způsoby, jak aktualizovat referenční data:
+* Aktualizujte odkaz na cestu k datům v úloze Azure Stream Analytics z portálu Azure portal.
+* Aktualizace nasazení IoT Edge.
 
 
 ## <a name="license-and-third-party-notices"></a>Licence a oznámení třetích stran

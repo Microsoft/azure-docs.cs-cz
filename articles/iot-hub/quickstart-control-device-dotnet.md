@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: 475fda79d3f5d844b494f1b0ae5eab8eba5ed8bc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: c8ef958b2f39a9271b9fa344f61329d48eccdee4
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363559"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514731"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (.NET)
 
@@ -26,6 +26,7 @@ IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrick
 Rychlý start používá dvě předem vytvořené aplikace .NET:
 
 * Aplikaci simulovaného zařízení, která odpovídá na přímé metody volané z back-endové aplikace. Aby bylo možné přijímat volání přímé metody, připojí se tato aplikace ke koncovému bodu centra IoT pro konkrétní zařízení.
+
 * Back-endovou aplikaci, která na simulovaném zařízení volá přímé metody. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu vašeho centra IoT na straně služby.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -50,7 +51,7 @@ Pokud jste to ještě neudělali, stáhněte si ukázkový projekt C# z webu htt
 
 Pokud jste dokončili předchozí [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-dotnet.md), můžete tento krok přeskočit.
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
@@ -60,21 +61,25 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
 1. Ve službě Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření rozhraní příkazového řádku IoT Hub a vytvoření identity zařízení. 
 
-   **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
+   **YourIoTHubName** : Nahraďte tento zástupný text pod názvem jste zvolili pro službu IoT hub.
 
    **MyDotnetDevice:** Toto je název přidělený zaregistrovanému zařízení. Použijte uvedený název MyDotnetDevice. Pokud si zvolíte jiný název zařízení, budete ho muset používat v průběhu celého článku a aktualizovat název zařízení v ukázkových aplikacích, než je spustíte.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDotnetDevice
+    az iot hub device-identity create \
+      --hub-name YourIoTHubName --device-id MyDotnetDevice
     ```
 
 2. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
-   **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
+   **YourIoTHubName** : Nahraďte tento zástupný text pod názvem coose pro službu IoT hub.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDotnetDevice --output table
+    az iot hub device-identity show-connection-string \
+      --hub-name YourIoTHubName \
+      --device-id MyDotnetDevice 
+      --output table
     ```
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto:
@@ -121,7 +126,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
     Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
 
-    ![Spuštění simulovaného zařízení](media/quickstart-control-device-dotnet/SimulatedDevice-1.png)
+    ![Spuštění simulovaného zařízení](./media/quickstart-control-device-dotnet/SimulatedDevice-1.png)
 
 ## <a name="call-the-direct-method"></a>Volání přímé metody
 
@@ -147,19 +152,19 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
     Následující snímek obrazovky ukazuje výstup, zatímco aplikace provádí volání přímé metody na zařízení a obdrží potvrzení:
 
-    ![Spuštění back-endové aplikace](media/quickstart-control-device-dotnet/BackEndApplication.png)
+    ![Spuštění back-endové aplikace](./media/quickstart-control-device-dotnet/BackEndApplication.png)
 
     Po spuštění back-endové aplikace se v okně konzoly se simulovaným zařízením zobrazí zpráva a rychlost odesílání zpráv se změní:
 
-    ![Změna simulovaného klienta](media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
+    ![Změna simulovaného klienta](./media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste volali přímou metodu na zařízení z back-endové aplikace a odpovídali na volání přímé metody v aplikaci simulovaného zařízení.
+V tomto rychlém startu volat přímé metody v zařízení z aplikace back-end a přidal odpověď na volání přímé metody v aplikaci simulovaného zařízení.
 
 Informace o tom, jak směrovat zprávy typu zařízení-cloud do různých cílů v cloudu, najdete v dalším kurzu.
 

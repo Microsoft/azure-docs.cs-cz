@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: 44bf04d3840009b9408ccfc51fdcefa7c7e116cb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: c08a76711a74f5b0fd119e579c6db54fc13ecfbb
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278935"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685816"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží se synchronizací dat SQL
 
@@ -239,13 +239,18 @@ Pokud obnovujete ztracené nebo poškozené databáze ze zálohy, může být ko
 ## <a name="next-steps"></a>Další postup
 Další informace o synchronizaci dat SQL najdete v tématu:
 
--   [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md)  
--   [Nastavení Synchronizace dat SQL Azure](sql-database-get-started-sql-data-sync.md)  
--   [Osvědčené postupy pro Synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)  
--   [Monitorování Synchronizace dat SQL Azure s využitím Log Analytics](sql-database-sync-monitor-oms.md)  
--   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:  
-    -   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)  
-    -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)  
+-   Přehled – [synchronizaci dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL Azure](sql-database-sync-data.md)
+-   Nastavení synchronizace dat
+    - Na portálu – [kurz: nastavení synchronizace dat SQL, synchronizaci dat mezi Azure SQL Database a SQL Server v místním](sql-database-get-started-sql-data-sync.md)
+    - S využitím PowerShellu
+        -  [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)
+-   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
+-   Osvědčené postupy – [osvědčené postupy pro synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)
+-   Monitorování – [monitorování synchronizace dat SQL s využitím Log Analytics](sql-database-sync-monitor-oms.md)
+-   Aktualizovat schéma synchronizace
+    -   Pomocí příkazů jazyka Transact-SQL - [automatizace replikace změn schématu synchronizace dat SQL Azure](sql-database-update-sync-schema.md)
+    -   Pomocí Powershellu – [aktualizovat schéma synchronizace ve stávající skupině synchronizace pomocí Powershellu](scripts/sql-database-sync-update-schema.md)
 
 Další informace o službě SQL Database najdete v tématu:
 

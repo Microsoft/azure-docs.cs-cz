@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
-ms.openlocfilehash: 59a35cd7ca3af446853d518fc7e7d48d2321ff10
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 099b59cde4ee438f16b9d7e77bd81c004006cb71
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278969"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684854"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Kanály a Azure Machine Learning
 
@@ -44,7 +44,7 @@ Jakmile kanálu je určen, je často Další doladění kolem smyčky školení 
 
 Azure Machine Learning můžete použít různé sady nástrojů a architektur, jako je Microsoft Cognitive Toolkit nebo TensorFlow u každého kroku ve vašem kanálu. Souřadnice Azure mezi různými [cílových výpočetních prostředí](concept-azure-machine-learning-architecture.md) použijete tak, aby dočasných dat je s cíli podřízené výpočetní snadno sdílet. 
 
-Je možné [sledujte metriky pro vaše experimenty kanálu](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-track-experiments) přímo na webu Azure portal. 
+Je možné [sledujte metriky pro vaše experimenty kanálu](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) přímo na webu Azure portal. 
 
 ## <a name="key-advantages"></a>Klíčové výhody
 

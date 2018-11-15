@@ -1,5 +1,5 @@
 ---
-title: Kurz – Vytváření virtuálních počítačů se stackem SQL&#47;IIS&#47;.NET v Azure| Microsoft Docs
+title: Kurz – vytvoření virtuální počítače s SQL, služby IIS a .NET zásobníku v Azure | Dokumentace Microsoftu
 description: V tomto kurzu zjistíte, jak na virtuální počítač s Windows v Azure nainstalovat stack SQL Azure, služby IIS a .NET.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 357a81ef3ab23a1e06b88f083c2fcdc35b27853d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 4909edf6e434e626e89409f01ae0f5fbca5bf442
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464906"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515484"
 ---
-# <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>Kurz: Instalace stacku SQL&#47;IIS&#47;.NET na virtuální počítač s Windows pomocí Azure PowerShellu
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Kurz: Instalace SQL, IIS, .NET zásobníku ve virtuálním počítači Windows pomocí Azure Powershellu
 
-V tomto kurzu nainstalujeme stack SQL&#47;IIS&#47;.NET pomocí Azure PowerShellu. Tento stack se skládá ze dvou virtuálních počítačů s Windows Serverem 2016. Na jednom je služba IIS a .NET a na druhém SQL Server.
+V tomto kurzu nainstalujeme SQL, IIS, .NET zásobníku pomocí Azure Powershellu. Tento stack se skládá ze dvou virtuálních počítačů s Windows Serverem 2016. Na jednom je služba IIS a .NET a na druhém SQL Server.
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače 
@@ -57,7 +57,7 @@ New-AzureRmVm `
     -OpenPorts 80,3389 
 ```
 
-Nainstalujte službu IIS a rozhraní .NET Framework pomocí rozšíření vlastních skriptů.
+Instalace IIS a rozhraní .NET framework pomocí rozšíření vlastních skriptů [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny.
 
 ```azurepowershell-interactive
 Set-AzureRmVMExtension `
@@ -126,7 +126,7 @@ Set-AzureRmVMSqlServerExtension `
    -Location "EastUS"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nainstalovali stack SQL&#92;IIS&#92;.NET pomocí Azure PowerShellu. Naučili jste se tyto postupy:
 

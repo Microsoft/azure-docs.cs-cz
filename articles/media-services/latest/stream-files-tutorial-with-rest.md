@@ -1,5 +1,5 @@
 ---
-title: Nahrávání, kódování a streamování pomocí služby Azure Media Services | Microsoft Docs
+title: Nahrávání, kódování a streamování využívajícího službu Azure Media Services - REST | Dokumentace Microsoftu
 description: Tento kurz popisuje, jak nahrát soubor, zakódovat video a streamovat obsah v Azure Media Services pomocí rozhraní REST.
 services: media-services
 documentationcenter: ''
@@ -10,20 +10,20 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: e49b450ef2c731e9ddbafa0c8366d9eae29dc5ef
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: 67a0b6ced771519bd97934f8914ba420ee3119ce
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377423"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615768"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>Kurz: Nahrávání, kódování a streamování videí pomocí rozhraní REST
 
-V tomto kurzu se dozvíte, jak nahrávat, kódovat a streamovat videosoubory pomocí služby Azure Media Services.
+Azure Media Services umožňuje kódování souborů médií do formátů, které můžete přehrát na širokou škálu prohlížečů a zařízení. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md).
 
-Služba Media Services umožňuje kódování souborů médií do formátů, které se dají přehrávat v nejrůznějších prohlížečích a zařízeních. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md).
+V tomto kurzu se dozvíte postupy nahrávání, kódování a streamování videosouborů pomocí Azure Media Services pomocí rozhraní REST. 
 
 ![Přehrávání videa](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -42,6 +42,14 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="prerequisites"></a>Požadavky
 
+- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+
+    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
+
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
+
+    Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti
+
 - Nainstalujte klienta [Postman](https://www.getpostman.com/) rozhraní REST, ve kterém můžete spouštět rozhraní REST API používaná v některých kurzech ke službě AMS REST. 
 
     V příkladech používáme **Postman**, můžete ale zvolit jakýkoli nástroj REST. Další možnosti jsou: **Visual Studio Code** s pluginem REST nebo **Telerik Fiddler**. 
@@ -53,10 +61,6 @@ Naklonujte úložiště GitHub, který obsahuje soubory kolekce a prostředí n�
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -316,7 +320,7 @@ V této části vytvoříme adresu URL pro streamování HLS. Adresy URL se skl�
 
 2. Název hostitele koncového bodu streamování. V tomto případě je to „amsaccount-usw22.streaming.media.azure.net“.
 
-    K získání názvu hostitele můžete použít následující operaci GET:
+    Pokud chcete získat název hostitele, můžete provádět následující operace GET:
     
     ```
     https://management.azure.com/subscriptions/00000000-0000-0000-0000-0000000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount/streamingEndpoints/default?api-version={{api-version}}
@@ -352,15 +356,15 @@ Provedete to tak, že u prostředku, který chcete odstranit, vyberete operaci �
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte. Můžete použít nástroj **CloudShell**.
+Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte.  
 
-V nástroji **CloudShell** spusťte následující příkaz:
+Spusťte následující příkaz rozhraní příkazového řádku:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když už víte, jak nahrávat, kódovat a streamovat videa, podívejte se na následující článek: 
 

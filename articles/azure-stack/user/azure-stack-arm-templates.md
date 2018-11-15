@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 11/14/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: d520a33fd6729f4a9d4778cfdb8d3380c9ac09b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 38e85ede1e984aa3d26fe509d68b4582d11b6c26
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237838"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636216"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Použití šablon Azure Resource Manageru ve službě Azure Stack
 
@@ -34,7 +34,7 @@ Jsou k dispozici v následujících šablon rychlý Start [Githubu](https://aka.
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>Nasazení serveru SharePoint (nasazení vysoké dostupnosti)
 
-Pomocí rozšíření PowerShell DSC pro [Vytvoření farmy serverů SharePoint Server 2013](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sharepoint-2013-non-ha) , který obsahuje následující zdroje:
+Pomocí rozšíření PowerShell DSC pro [Vytvoření farmy serverů SharePoint Server 2013](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) , který obsahuje následující zdroje:
 
 * Virtuální síť
 * 3 účty úložiště
@@ -45,7 +45,7 @@ Pomocí rozšíření PowerShell DSC pro [Vytvoření farmy serverů SharePoint 
 
 ## <a name="deploy-ad-non-high-availability-deployment"></a>Nasazení AD (bez vysoce – dostupnost – nasazení)
 
-Pomocí rozšíření PowerShell DSC pro [vytvoření serveru řadiče domény AD](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/ad-non-ha) , který obsahuje následující zdroje:
+Pomocí rozšíření PowerShell DSC pro [vytvoření serveru řadiče domény AD](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/ad-non-ha) , který obsahuje následující zdroje:
 
 * Virtuální síť
 * Jeden účet úložiště
@@ -54,7 +54,7 @@ Pomocí rozšíření PowerShell DSC pro [vytvoření serveru řadiče domény A
 
 ## <a name="deploy-adsql-non-high-availability-deployment"></a>Nasazení AD/SQL (bez vysoce – dostupnost – nasazení)
 
-Pomocí rozšíření PowerShell DSC pro [vytvořit samostatný server SQL Server 2014](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sql-2014-non-ha) , který obsahuje následující zdroje:
+Pomocí rozšíření PowerShell DSC pro [vytvořit samostatný server SQL Server 2014](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2014-non-ha) , který obsahuje následující zdroje:
 
 * Virtuální síť
 * Dva účty úložiště
@@ -68,11 +68,11 @@ Pomocí rozšíření PowerShell DSC ke konfiguraci existujícího virtuálního
 
 ## <a name="create-a-virtual-machine-from-a-user-image"></a>Vytvoření virtuálního počítače z uživatelské image
 
-[Vytvoření virtuálního počítače z vlastní uživatelská image](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-vm-from-user-image). Tato šablona také nasadí virtuální sítě (pomocí DNS), veřejné IP adresy a síťové rozhraní.
+[Vytvoření virtuálního počítače z vlastní uživatelská image](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-from-user-image). Tato šablona také nasadí virtuální sítě (pomocí DNS), veřejné IP adresy a síťové rozhraní.
 
 ## <a name="basic-virtual-machine"></a>Základní virtuální počítač
 
-[Nasazení virtuálního počítače s Windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-simple-windows-vm) , který zahrnuje virtuální síť (pomocí DNS), veřejné IP adresy a síťové rozhraní.
+[Nasazení virtuálního počítače s Windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm) , který zahrnuje virtuální síť (pomocí DNS), veřejné IP adresy a síťové rozhraní.
 
 ## <a name="cancel-a-running-template-deployment"></a>Zrušit běžící šablona nasazení
 

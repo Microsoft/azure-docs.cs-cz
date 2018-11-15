@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 2ec758d9457b75cd7e5f6f29757d3201f3a6d62e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0dc33c669a73dd92926eef6a9c4a476160ce60a4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283474"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686360"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Příručka k vytvoření image virtuálního počítače pro Azure Marketplace
 Tento článek **kroku 2**, vás provede přípravou virtuálních pevných disků (VHD), které nasadíte do Azure Marketplace. Virtuální pevné disky jsou základem pro vaši skladovou jednotku. Proces se liší v závislosti na tom, jestli poskytujete skladovou jednotku založených na Linuxu nebo Windows. Tento článek popisuje oba scénáře. Tento proces se dá provádět zároveň s [vytváření účtů a registraci][link-acct-creation].
@@ -191,7 +191,7 @@ Další informace o imagích virtuálních počítačů, najdete v těchto blogo
 
 ### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>Nastavit potřebné nástroje, Powershellu a příkazového řádku Azure classic
 * [Jak nastavit prostředí PowerShell](/powershell/azure/overview)
-* [Postup instalace Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Postup instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 Vytvoření uživatelské image virtuálního počítače
 #### <a name="capture-vm"></a>Zachycení virtuálního počítače

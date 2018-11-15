@@ -5,15 +5,15 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 04/13/2018
+ms.date: 11/11/2018
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 9ecb07a2cb278f6cde4ffdc3b252cb9e816d08da
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 513d9a3a044daacd84b810e4795522c2bd6763f8
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38733292"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616567"
 ---
 ## <a name="create-a-media-services-account"></a>Vytvoření účtu Media Services
 
@@ -23,7 +23,7 @@ Nejprve je nutné vytvořit účet Media Services. Tato část uvádí, co potř
 
 Vytvořte skupinu prostředků pomocí následujícího příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky, jako například účty Azure Media Services a přidružené účty Storage.
 
-```azurecli-interactive
+```azurecli
 az group create --name amsResourceGroup --location westus2
 ```
 
@@ -37,7 +37,7 @@ Další informace o tom, jak se ve službě Media Services používají účty �
 
 Následující příkaz vytvoří účet Storage, který se přidruží k účtu Media Services. V níže uvedeném skriptu můžete nahradit `storageaccountforams` vaší hodnotou. Název účtu musí mít méně než 24 znaků.
 
-```azurecli-interactive
+```azurecli
 az storage account create --name storageaccountforams \  
 --kind StorageV2 \
 --sku Standard_RAGRS \
@@ -48,6 +48,6 @@ az storage account create --name storageaccountforams \
 
 Následující příkaz Azure CLI vytvoří nový účet Media Services. Můžete nahradit následující hodnoty: `amsaccount` `storageaccountforams` (musí odpovídat hodnotě, kterou jste zadali pro účet úložiště) a `amsResourceGroup` (musí odpovídat hodnotě, kterou jste zadali pro skupinu prostředků).
 
-```azurecli-interactive
+```azurecli
 az ams account create --name amsaccount --resource-group amsResourceGroup --storage-account storageaccountforams
 ```

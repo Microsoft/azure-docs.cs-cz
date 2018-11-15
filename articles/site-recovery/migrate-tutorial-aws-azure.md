@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: cd33b7cb45bb165a120a7efe20eba962ec75e273
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9d10464dac8d9e47d80f11b8bfaf70740e3ad250
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252135"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567090"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -241,7 +241,10 @@ Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveď
 1. V části **Chráněné položky** > **Replikované položky** vyberte instance AWS a potom zvolte **Převzetí služeb při selhání**.
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Vyberte nejnovější bod obnovení a spusťte převzetí služeb při selhání. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 1. Ujistěte se, že se virtuální počítač zobrazuje na stránce **Replikované položky**.
-2. Klikněte pravým tlačítkem na každý virtuální počítač a vyberte **Dokončit migraci**. Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
+2. Klikněte pravým tlačítkem na každý virtuální počítač a vyberte **Dokončit migraci**. To provede následující akce:
+
+    - Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
+    - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů. 
 
     ![Dokončení migrace](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
@@ -249,7 +252,7 @@ Spusťte skutečné převzetí služeb při selhání pro instance EC2 a proveď
 > *Nepřerušujte probíhající převzetí služeb při selhání*. Před zahájením převzetí služeb při selhání se zastaví replikace virtuálního počítače. Pokud probíhající proces převzetí služeb při selhání přerušíte, tak se sice zastaví, ale virtuální počítač se znovu nereplikuje.  
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste se naučili, jak migrovat instance ES2 AWS do virtuálních počítačů Azure. Další informace o virtuálních počítačích Azure najdete v kurzech pro virtuální počítače s Windows.
 

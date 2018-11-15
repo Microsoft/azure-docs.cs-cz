@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.date: 09/22/2018
 ms.author: bsiva
 ms.custom: MVC
-ms.openlocfilehash: 68a1367eec5392036797612e631a438b076b2cfc
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 1f537a381bbd595e519aaeb4cadb5b9be4657b6b
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210461"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566563"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrace serverů s Windows Serverem 2008 do Azure
 
@@ -71,7 +71,7 @@ Ve zbývající části tohoto kurzu se dozvíte, jak migrovat místní virtuál
 
 - K serverům s 32bitovým operačním systémem Windows Server 2008 R2 se možná nebudete moct připojit pomocí protokolu RDP ihned poté, co u nich dojde k převzetí služeb při selhání nebo testovacímu převzetí služeb při selhání do Azure. Na webu Azure Portal restartujte virtuální počítač, u kterého došlo k převzetí služeb při selhání, a zkuste se připojit znovu. Pokud se pořád nemůžete připojit, zkontrolujte, jestli je server nakonfigurovaný tak, aby povoloval připojení ke vzdálené ploše, a ujistěte se, že připojení neblokují žádná pravidla brány firewall ani skupiny zabezpečení sítě. 
   > [!TIP]
-  > Před migrací serverů se důrazně doporučuje provést testovací převzetí služeb při selhání. Ujistěte se, že jste na každém migrovaném serveru provedli alespoň jedno úspěšné testovací převzetí služeb při selhání. V rámci testovacího převzetí služeb při selhání se připojte k počítači, u kterého došlo k testovacímu převzetí služeb při selhání, a zkontrolujte, že vše funguje podle očekávání.
+  > Před migrací serverů se důrazně doporučuje provést testovací převzetí služeb při selhání. Ujistěte se, že jste provedli aspoň jeden úspěšné testovací převzetí služeb při selhání na každém serveru, kterou migrujete. V rámci testovacího převzetí služeb při selhání se připojte k počítači, u kterého došlo k testovacímu převzetí služeb při selhání, a zkontrolujte, že vše funguje podle očekávání.
   >
   >Operace testovacího převzetí služeb při selhání je nenarušující a pomáhá testovat migrace tím, že vytváří virtuální počítače v izolované síti podle vašeho výběru. Na rozdíl od operace převzetí služeb při selhání během operace testovacího převzetí služeb při selhání dál pokračuje replikace dat. Než budete připraveni na migraci, můžete provést tolik testovacích převzetí služeb při selhání, kolik budete chtít. 
   >
@@ -154,7 +154,10 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Vyberte nejnovější bod obnovení.
 3. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Služba Site Recovery se před aktivací převzetí služeb při selhání pokusí server vypnout. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 4. Zkontrolujte, že se virtuální počítač Azure zobrazuje v Azure podle očekávání.
-5. V části **Replikované položky** klikněte pravým tlačítkem na virtuální počítač a klikněte na **Dokončit migraci**. Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
+5. V části **Replikované položky** klikněte pravým tlačítkem na virtuální počítač a klikněte na **Dokončit migraci**. To provede následující akce:
+
+    - Proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro virtuální počítač.
+    - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů.
 
    ![Dokončení migrace](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 

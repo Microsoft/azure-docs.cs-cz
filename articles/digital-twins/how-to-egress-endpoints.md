@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: alinast
-ms.openlocfilehash: e140ca46a18fcab2194adb213d723ab67d40b0a8
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: c94d29f16c011a9ff9951d064d7496d3a87f70ef
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615156"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636301"
 ---
 # <a name="egress-and-endpoints"></a>Koncové body a výchozí přenos dat
 
@@ -76,13 +76,13 @@ Formát událostí pro všechny typy událostí jsou popsány v následujících
   "eventTime": "2018-04-17T17:41:54.9400177Z",
   "dataVersion": "1",
   "metadataVersion": "1",
-  "topic": "/subscriptions/yourTopicName"
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
 }
 ```
 
-| Název vlastního atributu | Nahradit hodnotou |
+| Hodnota | Nahradit hodnotou |
 | --- | --- |
-| yourTopicName | Název vlastní téma |
+| YOUR_TOPIC_NAME | Název vlastní téma |
 
 ### <a name="udfcustom"></a>UdfCustom
 
@@ -107,13 +107,13 @@ Formát událostí pro všechny typy událostí jsou popsány v následujících
   "eventTime": "2018-10-02T06:50:15.198Z",
   "dataVersion": "1.0",
   "metadataVersion": "1",
-  "topic": "/subscriptions/yourTopicName"
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
 }
 ```
 
-| Název vlastního atributu | Nahradit hodnotou |
+| Hodnota | Nahradit hodnotou |
 | --- | --- |
-| yourTopicName | Název vlastní téma |
+| YOUR_TOPIC_NAME | Název vlastní téma |
 
 ### <a name="sensorchange"></a>SensorChange
 
@@ -142,13 +142,13 @@ Formát událostí pro všechny typy událostí jsou popsány v následujících
   "eventTime": "2018-04-17T17:46:18.5452993Z",
   "dataVersion": "1",
   "metadataVersion": "1",
-  "topic": "/subscriptions/yourTopicName"
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
 }
 ```
 
-| Název vlastního atributu | Nahradit hodnotou |
+| Hodnota | Nahradit hodnotou |
 | --- | --- |
-| yourTopicName | Název vlastní téma |
+| YOUR_TOPIC_NAME | Název vlastní téma |
 
 ### <a name="spacechange"></a>SpaceChange
 
@@ -177,13 +177,13 @@ Formát událostí pro všechny typy událostí jsou popsány v následujících
   "eventTime": "2018-10-02T06:50:20.128Z",
   "dataVersion": "1.0",
   "metadataVersion": "1",
-  "topic": "/subscriptions/yourTopicName"
+  "topic": "/subscriptions/YOUR_TOPIC_NAME"
 }
 ```
 
-| Název vlastního atributu | Nahradit hodnotou |
+| Hodnota | Nahradit hodnotou |
 | --- | --- |
-| yourTopicName | Název vlastní téma |
+| YOUR_TOPIC_NAME | Název vlastní téma |
 
 ### <a name="devicemessage"></a>DeviceMessage
 
@@ -211,18 +211,18 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
       "SpaceChange",
       "TopologyOperation"
     ],
-    "connectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourPrimaryKey",
-    "secondaryConnectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourSecondaryKey",
-    "path": "yourTopicName"
+    "connectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_PRIMARY_KEY",
+    "secondaryConnectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SECONDARY_KEY",
+    "path": "YOUR_TOPIC_NAME"
   }
   ```
 
-    | Název vlastního atributu | Nahradit hodnotou |
+    | Hodnota | Nahradit hodnotou |
     | --- | --- |
-    | yourNamespace | Obor názvů vašeho koncového bodu |
-    | yourPrimaryKey | Primární připojovací řetězec použitý k ověření |
-    | yourSecondaryKey | Sekundární připojovací řetězec použitý k ověření |
-    | yourTopicName | Název vlastní téma |
+    | YOUR_NAMESPACE | Obor názvů vašeho koncového bodu |
+    | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření |
+    | YOUR_SECONDARY_KEY | Sekundární připojovací řetězec použitý k ověření |
+    | YOUR_TOPIC_NAME | Název vlastní téma |
 
 - Trasy, která má typy událostí služby Event Grid **SensorChange**, **SpaceChange**, a **TopologyOperation**:
 
@@ -234,17 +234,17 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
       "SpaceChange",
       "TopologyOperation"
     ],
-    "connectionString": "yourPrimaryKey",
-    "secondaryConnectionString": "yourSecondaryKey",
-    "path": "yourTopicName.westus-1.eventgrid.azure.net"
+    "connectionString": "YOUR_PRIMARY_KEY",
+    "secondaryConnectionString": "YOUR_SECONDARY_KEY",
+    "path": "YOUR_TOPIC_NAME.westus-1.eventgrid.azure.net"
   }
   ```
 
-    | Název vlastního atributu | Nahradit hodnotou |
+    | Hodnota | Nahradit hodnotou |
     | --- | --- |
-    | yourPrimaryKey | Primární připojovací řetězec použitý k ověření|
-    | yourSecondaryKey | Sekundární připojovací řetězec použitý k ověření |
-    | yourTopicName | Název vlastní téma |
+    | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření|
+    | YOUR_SECONDARY_KEY | Sekundární připojovací řetězec použitý k ověření |
+    | YOUR_TOPIC_NAME | Název vlastní téma |
 
 - Trasy, která má typy událostí služby Event Hubs **SensorChange**, **SpaceChange**, a **TopologyOperation**:
 
@@ -256,18 +256,18 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
       "SpaceChange",
       "TopologyOperation"
     ],
-    "connectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourPrimaryKey",
-    "secondaryConnectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourSecondaryKey",
-    "path": "yourEventHubName"
+    "connectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_PRIMARY_KEY",
+    "secondaryConnectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SECONDARY_KEY",
+    "path": "YOUR_EVENT_HUB_NAME"
   }
   ```
 
-    | Název vlastního atributu | Nahradit hodnotou |
+    | Hodnota | Nahradit hodnotou |
     | --- | --- |
-    | yourNamespace | Obor názvů vašeho koncového bodu |
-    | yourPrimaryKey | Primární připojovací řetězec použitý k ověření |
-    | yourSecondaryKey | Sekundární připojovací řetězec použitý k ověření |
-    | yourEventHubName | Název vašeho centra událostí |
+    | YOUR_NAMESPACE | Obor názvů vašeho koncového bodu |
+    | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření |
+    | YOUR_SECONDARY_KEY | Sekundární připojovací řetězec použitý k ověření |
+    | YOUR_EVENT_HUB_NAME | Název vašeho centra událostí |
 
 - Trasy, která má typ událostí služby Event Hubs **DeviceMessage**. Zahrnutí `EntityPath` v **connectionString** je povinné:
 
@@ -277,18 +277,18 @@ POST https://endpoints-demo.azuresmartspaces.net/management/api/v1.0/endpoints
     "eventTypes": [
       "DeviceMessage"
     ],
-    "connectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourPrimaryKey;EntityPath=yourEventHubName",
-    "secondaryConnectionString": "Endpoint=sb://yourNamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=yourSecondaryKey;EntityPath=yourEventHubName",
-    "path": "yourEventHubName"
+    "connectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_PRIMARY_KEY;EntityPath=YOUR_EVENT_HUB_NAME",
+    "secondaryConnectionString": "Endpoint=sb://YOUR_NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=YOUR_SECONDARY_KEY;EntityPath=YOUR_EVENT_HUB_NAME",
+    "path": "YOUR_EVENT_HUB_NAME"
   }
   ```
 
-    | Název vlastního atributu | Nahradit hodnotou |
+    | Hodnota | Nahradit hodnotou |
     | --- | --- |
-    | yourNamespace | Obor názvů vašeho koncového bodu |
-    | yourPrimaryKey | Primární připojovací řetězec použitý k ověření |
-    | yourSecondaryKey | Sekundární připojovací řetězec použitý k ověření |
-    | yourEventHubName | Název vašeho centra událostí |
+    | YOUR_NAMESPACE | Obor názvů vašeho koncového bodu |
+    | YOUR_PRIMARY_KEY | Primární připojovací řetězec použitý k ověření |
+    | YOUR_SECONDARY_KEY | Sekundární připojovací řetězec použitý k ověření |
+    | YOUR_EVENT_HUB_NAME | Název vašeho centra událostí |
 
 > [!NOTE]  
 > Při vytvoření nového koncového bodu může trvat 5 až 10 minut, než se začít přijímat události v koncovém bodě.

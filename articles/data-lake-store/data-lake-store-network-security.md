@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: b206b49914a448aa3fc9da63f72cca91f9f9ade1
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 703a865eca90deabcb6bbc64a75fc2bad52b43b7
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218963"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287995"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1---preview"></a>Integrace virtuální sítě pro Azure Data Lake Storage Gen1 – Preview
 
@@ -29,8 +29,6 @@ Tato funkce vám pomůže zabezpečit účet Data Lake Storage před externími 
 Integrace virtuální sítě pro Data Lake Storage Gen1 využívá zabezpečení koncového bodu služby virtuální sítě mezi vaší virtuální sítí a službou Azure Active Directory (Azure AD) ke generování dalších deklarací identity zabezpečení v přístupovém tokenu. Tyto deklarace identity pak slouží k ověření vaší virtuální sítě v účtu Data Lake Storage Gen1 a povolení přístupu.
 
 > [!NOTE]
-> Tato technologie je ve verzi Preview. Nedoporučujeme ji používat v produkčních prostředích.
->
 > Na používání těchto funkcí se nevztahují žádné další poplatky. Váš účet se účtuje standardní sazbou za Data Lake Storage Gen1. Další informace najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/data-lake-store/?cdn=disable). Ceny všech ostatních služeb Azure, které používáte, najdete na stránce s [cenami](https://azure.microsoft.com/pricing/#product-picker).
 
 ## <a name="scenarios-for-virtual-network-integration-for-data-lake-storage-gen1"></a>Scénáře pro integraci virtuální sítě pro Data Lake Storage Gen1

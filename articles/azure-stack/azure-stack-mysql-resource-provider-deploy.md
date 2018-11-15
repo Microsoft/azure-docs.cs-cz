@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: dce9d4d5d1f2e3e50cabb86ee0d8d14b2fce2923
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f0c627c1b0ab5f551ed71c3c30eb1dccc6c930a3
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230025"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686343"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků MySQL ve službě Azure Stack
 
@@ -45,7 +45,7 @@ Existuje několik předpokladů, které musí být splněné před nasazením po
 
     | Minimální verze služby Azure Stack | Verze poskytovatele prostředků MySQL|
     | --- | --- |
-    | Verzi 1804 (1.0.180513.1)|[Poskytovatele prostředků MySQL verze 1.1.24.0](https://aka.ms/azurestackmysqlrp1804) |
+    | Verze. 1808 (1.1808.0.97)|[Poskytovatele prostředků MySQL verze 1.1.30.0](https://aka.ms/azurestackmysqlrp11300) |
     |     |     |
 
 * Ujistěte se, že jsou splněné požadavky na integraci datacenter:
@@ -90,7 +90,7 @@ Můžete zadat tyto parametry z příkazového řádku. Pokud ne, nebo pokud lib
 | **VMLocalCredential** | Přihlašovací údaje pro účet místního správce poskytovatele prostředků MySQL virtuálního počítače. | _Vyžaduje_ |
 | **PrivilegedEndpoint** | IP adresa nebo název DNS privileged koncového bodu. |  _Vyžaduje_ |
 | **AzureEnvironment** | Prostředí Azure účet správce služby, které jste použili k nasazení Azure Stack. Vyžaduje se jenom pro nasazení služby Azure AD. Názvy prostředí podporované jsou **AzureCloud**, **AzureUSGovernment**, nebo pokud používáte Čína Azure AD, **AzureChinaCloud**. | AzureCloud |
-| **DependencyFilesLocalPath** | Pro integrované systémy pouze váš soubor PFX certifikátu musí být umístěna v tomto adresáři. Pro odpojené prostředí Stáhnout [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) do tohoto adresáře. Volitelně můžete zkopírovat jeden balíček Windows Update MSU tady. | _Volitelné_ (_povinné_ pro integrované systémy nebo odpojených prostředích) |
+| **DependencyFilesLocalPath** | Pro integrované systémy pouze váš soubor PFX certifikátu musí být umístěna v tomto adresáři. Odpojené enviroments, stáhněte si [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) do tohoto adresáře. Volitelně můžete zkopírovat jeden balíček Windows Update MSU tady. | _Volitelné_ (_povinné_ pro integrované systémy nebo odpojených prostředích) |
 | **DefaultSSLCertificatePassword** | Heslo pro certifikát PFX. | _Vyžaduje_ |
 | **MaxRetryCount** | Počet pokusů, které chcete opakovat každé operace, pokud dojde k selhání.| 2 |
 | **RetryDuration** | Časový interval mezi opakovanými pokusy, během několika sekund. | 120 |
@@ -105,8 +105,8 @@ Chcete-li odstranit všechny ruční konfigurace při nasazení poskytovatele pr
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
 Install-Module -Name AzureRm.BootStrapper -Force
-Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.4.0
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+Install-Module -Name AzureStack -RequiredVersion 1.5.0
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"  

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6729a0e3ccbb96dc178925bbab4cfbf8189c4a14
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: ebbb12a6454a093ad0ac3b3cc30eb489eeef21ec
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278255"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687210"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Hive v Azure HDInsight
 
@@ -72,7 +72,7 @@ Dělení zvážit:
 
 * **Proveďte není v rámci oddílu** -dělení na sloupcích s pouze několik hodnot může způsobit, že několik oddílů. Například dělení na pohlaví vytvoří pouze dva oddíly, které chcete vytvořit (mužského a Ženský), tedy pouze snižuje latenci maximální výše polovinu.
 * **Proveďte nikoli prostřednictvím oddílu** – na jiné extreme, vytváření oddílů u sloupce s jedinečnou hodnotu (například ID uživatele) způsobí, že několik oddílů. V oddílu způsobí mnoho zátěže namenode clusteru je na něm ke zpracování velkého počtu adresářů.
-* **Vyhněte se Nerovnoměrná distribuce dat** – zvolte klíč dělení dobře tak, že všechny oddíly jsou i velikost. Například dělení na *stavu* sloupce mohou zkosení distribuci dat. Protože stát Kalifornia má populace téměř 30 x, že z Vermont, potenciálně je zešikmená velikost vytvoření oddílu a výkonu může výrazně lišit.
+* **Vyhněte se Nerovnoměrná distribuce dat** – zvolte klíč dělení dobře tak, že všechny oddíly jsou i velikost. Například dělení na *stavu* sloupce mohou zkosení distribuci dat. Protože stát Kalifornia má populace téměř 30 x, že z Vermont, potenciálně je zešikmená velikost oddílu a výkonu mohou výrazně lišit.
 
 Chcete-li vytvořit tabulku oddílů, použijte *dělené podle* klauzule:
 

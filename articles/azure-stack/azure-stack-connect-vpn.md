@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: scottnap
-ms.openlocfilehash: bcdd5b6d28a6c08b7b36e170fcb7d184fcf65eb0
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: d215af253471258e487dadcfae0cfd7edafd1c26
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024456"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634647"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Připojení k Azure pomocí VPN Azure Stack
 
@@ -62,7 +62,7 @@ Nejprve vytvořte síťovým prostředkům pro Azure. Následující pokyny ukaz
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí svého účtu Azure.
 2. Na portálu user portal, vyberte **+ vytvořit prostředek**.
 3. Přejděte na **Marketplace**a pak vyberte **sítě**.
-4. Vyberte **virtuální síť**.
+4. Vyberte **Virtuální síť**.
 5. Pomocí informací z tabulky konfigurace sítě a určete hodnoty pro Azure **název**, **adresní prostor**, **název podsítě**, a **adresa podsítě rozsah**.
 6. Pro **skupiny prostředků**, vytvořte novou skupinu prostředků, nebo pokud ještě nemáte, vyberte **použít existující**.
 7. Vyberte **umístění** vaší virtuální sítě.  Pokud používáte ukázkových hodnot, vyberte **USA – východ** nebo použít jiné umístění.
@@ -89,7 +89,7 @@ Nejprve vytvořte síťovým prostředkům pro Azure. Následující pokyny ukaz
 3. V seznamu síťových prostředků, vyberte **Brána virtuální sítě**.
 4. V **název**, typ **Azure-GW**.
 5. Chcete-li zvolit virtuální síť, vyberte **virtuální síť**. Potom vyberte **AzureVnet** ze seznamu.
-6. Vyberte **veřejnou IP adresu**. Když **zvolte veřejnou IP adresu** části otevře, vyberte **vytvořit nový**.
+6. Vyberte **Veřejná IP adresa**. Když **zvolte veřejnou IP adresu** části otevře, vyberte **vytvořit nový**.
 7. V **název**, typ **Azure-GW-PiP**a pak vyberte **OK**.
 8. Ve výchozím nastavení pro **typ sítě VPN**, **založené na trasách** zaškrtnuto. Zachovat **založené na trasách** typ sítě VPN.
 9. Ověřte, že nastavení **Předplatné** a **Umístění** jsou správná. Prostředek na řídicí panel můžete připnout. Vyberte **Vytvořit**.
@@ -127,7 +127,7 @@ Teď vytvořte virtuální počítač v Azure a umístění podsítě virtuáln�
 
 1. Na webu Azure Portal, vyberte **+ vytvořit prostředek**.
 2. Přejděte na **Marketplace**a pak vyberte **Compute**.
-3. Vyberte v seznamu imagí virtuálních počítačů **systému Windows Server 2016 Datacenter Oval** bitové kopie.
+3. Vyberte v seznamu imagí virtuálních počítačů **systému Windows Server 2016 Datacenter Eval** bitové kopie.
 4. Na **Základy** části pro **název**, typ **AzureVM**.
 5. Zadejte platné uživatelské jméno a heslo. Tento účet použijete pro přihlášení k virtuálnímu počítači po jeho vytvoření.
 6. Zadejte **předplatné**, **skupiny prostředků**, a **umístění**a pak vyberte **OK**.
@@ -157,7 +157,7 @@ Správce služeb můžete přihlásit jako uživatel k testovací plány, nabíd
     ![Vytvořit novou virtuální síť](media/azure-stack-connect-vpn/image3.png)
 
 3. Přejděte na **Marketplace**a pak vyberte **sítě**.
-4. Vyberte **virtuální síť**.
+4. Vyberte **Virtuální síť**.
 5. Pro **název**, **adresní prostor**, **název podsítě**, a **rozsah adres podsítě**, použijte hodnoty z tabulky konfigurace sítě.
 6. V **předplatné**, zobrazí se předplatné, které jste vytvořili dříve.
 7. Pro **skupiny prostředků**, můžete vytvořit skupinu prostředků nebo pokud ještě nemáte, vyberte **použít existující**.
@@ -227,7 +227,7 @@ Pokud chcete zkontrolovat připojení k síti VPN, vytvořte dva virtuální po�
 
 1. Na webu Azure Portal, vyberte **+ vytvořit prostředek**.
 2. Přejděte na **Marketplace**a pak vyberte **Compute**.
-3. Vyberte v seznamu imagí virtuálních počítačů **systému Windows Server 2016 Datacenter Oval** bitové kopie.
+3. Vyberte v seznamu imagí virtuálních počítačů **systému Windows Server 2016 Datacenter Eval** bitové kopie.
 4. Na **Základy** sekci **název**, typ **Azs-VM**.
 5. Zadejte platné uživatelské jméno a heslo. Tento účet použijete pro přihlášení k virtuálnímu počítači po jeho vytvoření.
 6. Zadejte **předplatné**, **skupiny prostředků**, a **umístění**a pak vyberte **OK**.

@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d99f077449529fb4a4a7f124fe1c0263d4113dee
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 49d0840ff7a41ed48151b65e1351628d32d46d24
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363441"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623241"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Rychlý start: Konfigurace pojmenovaných umístění ve službě Azure Active Directory
 
@@ -58,12 +58,10 @@ K dokončení tohoto rychlého startu je potřeba:
     
     ![Nové okno](./media/quickstart-configure-named-locations/61.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace naleznete v tématu:
 
-- [Podmíněný přístup ve službě Azure Active Directory](../active-directory-conditional-access-azure-portal.md)
-
+- [Přístup ke službě Azure AD podmíněné](../active-directory-conditional-access-azure-portal.md).
 - [Podmínky umístění v podmíněném přístupu Azure AD](../conditional-access/location-condition.md)
-
-- [Sestavy rizikových přihlášení na portálu Azure AD](concept-risky-sign-ins.md)  
+- [Sestavy rizikových přihlášení](concept-risky-sign-ins.md).  

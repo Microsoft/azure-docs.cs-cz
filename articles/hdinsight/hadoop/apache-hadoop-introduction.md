@@ -1,6 +1,6 @@
 ---
-title: Co jsou HDInsight a technologie Hadoop a Spark? – Azure
-description: Úvod do služby HDInsight a technologií Hadoop a Spark a jejich komponent, včetně systémů Kafka, Hive, Storm a HBase pro analýzy velkých objemů dat.
+title: Co jsou HDInsight a Apache Hadoop a Apache Sparku technologie? – Azure
+description: Úvod do HDInsight a Apache Hadoop a Apache Sparku a technologiích a komponent, včetně Kafka, Hive, Storm a HBase pro analýzy velkých objemů dat.
 keywords: azure hadoop, hadoop azure, hadoop úvod, úvod hadoop, technologie hadoop, úvod do technologie hadoop, úvod k technologii hadoop, co je cluster hadoop, co je hadoop cluster, k čemu slouží hadoop
 services: hdinsight
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.openlocfilehash: 0c617f09c846811f876206e6045b640e63ad90b1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 190d6203c4a00ed3f448bdbb7366db5bc22c45f8
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007041"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634511"
 ---
-# <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Co je Azure HDInsight a technologie Hadoop
+# <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Co je Azure HDInsight a technologie Apache hadoop
 
 Tento článek obsahuje úvod k Apache Hadoop ve službě Azure HDInsight. Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. Můžete používat open source architektury, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm, R a další. 
 
@@ -143,7 +143,7 @@ Známé nástroje business intelligence (BI) načítají, analyzují a vykazují
 * [Použití služby SQL Server Reporting Services se službou HDInsight](https://msdn.microsoft.com/library/dn749856.aspx)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste zjistili, co je Azure HDInisght a jakým způsobem poskytuje Hadoop a další typy clusteru v Azure. V dalším článku se dozvíte, jak ve službě HDInsight vytvořit cluster Apache Hadoop.
 

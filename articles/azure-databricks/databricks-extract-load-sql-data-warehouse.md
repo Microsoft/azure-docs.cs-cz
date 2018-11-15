@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/26/2018
-ms.openlocfilehash: c67a223a95e73161b58f8cd4f2aeba2614a9ee76
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: bf7351f5d62958b77473440d618d31cda2c983ea
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419075"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615513"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Kurz: Extrakce, transformace a načtení dat pomocí Azure Databricks
 
-V tomto kurzu budete provádět operace ETL (extrahování, transformace a načítání dat) pomocí Azure Databricks. Budete extrahovat data z Azure Data Lake Store do Azure Databricks, spouštět transformace dat v Azure Databricks a načítat transformovaná data do služby Azure SQL Data Warehouse. 
+V tomto kurzu budete provádět operace ETL (extrahování, transformace a načítání dat) pomocí Azure Databricks. Budete extrahovat data z Azure Data Lake Store do Azure Databricks, spouštět transformace dat v Azure Databricks a načítat transformovaná data do služby Azure SQL Data Warehouse.
 
 Postup, který je popsaný v tomto kurzu, používá k přenosu dat do Azure Databricks konektor SQL Data Warehouse pro Azure Databricks. Tento konektor zase používá Azure Blob Storage jako dočasné úložiště dat přenášených mezi clusterem Azure Databricks a službou Azure SQL Data Warehouse.
 
@@ -27,7 +27,7 @@ Následující obrázek ukazuje běh aplikace:
 
 ![Azure Databricks se službami Data Lake Store a SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Azure Databricks se službami Data Lake Store a SQL Data Warehouse")
 
-Tento kurz se zabývá následujícími úkony: 
+Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Vytvoření pracovního prostoru Azure Databricks
@@ -64,7 +64,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
     ![Vytvoření pracovního prostoru služby Azure Databricks](./media/databricks-extract-load-sql-data-warehouse/create-databricks-workspace.png "Vytvoření pracovního prostoru služby Azure Databricks")
 
-    Zadejte následující hodnoty: 
+    Zadejte následující hodnoty:
      
     |Vlastnost  |Popis  |
     |---------|---------|
@@ -95,14 +95,14 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     Přijměte všechny výchozí hodnoty kromě těchto:
 
     * Zadejte název clusteru.
-    * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0**. 
+    * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0**.
     * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po __ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
     
     Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
 ## <a name="create-an-azure-data-lake-store-account"></a>Vytvoření účtu Azure Data Lake Store
 
-V této části vytvoříte účet Azure Data Lake Store a přidružíte k němu objekt služby Azure Active Directory. V další části tohoto kurzu tento objekt použijete v Azure Databricks pro přístup ke službě Azure Data Lake Store. 
+V této části vytvoříte účet Azure Data Lake Store a přidružíte k němu objekt služby Azure Active Directory. V další části tohoto kurzu tento objekt použijete v Azure Databricks pro přístup ke službě Azure Data Lake Store.
 
 1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Úložiště** > **Data Lake Store**.
 3. V okně **Nová služba Data Lake Store** zadejte hodnoty tak, jak ukazuje následující snímek obrazovky:
@@ -189,7 +189,7 @@ Při programovém přihlášení potřebujete kromě žádosti o ověření pře
 
 1. Zkopírujte **ID adresáře**. Tato hodnota představuje ID tenanta.
 
-   ![ID tenanta](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png) 
+   ![ID tenanta](./media/databricks-extract-load-sql-data-warehouse/copy-directory-id.png)
 
 ## <a name="upload-data-to-data-lake-store"></a>Nahrání dat do Data Lake Store
 
@@ -306,7 +306,7 @@ Tím jste extrahovali data z Azure Data Lake Store do Azure Databricks.
 
 ## <a name="transform-data-in-azure-databricks"></a>Transformace dat v Azure Databricks
 
-Nezpracovaná ukázková data **small_radio_json.json** obsahují data o posluchačích rozhlasové stanice uspořádaná do různých sloupců. V této části transformujete data tak, aby se z datové sady načetly jenom určité sloupce. 
+Nezpracovaná ukázková data **small_radio_json.json** obsahují data o posluchačích rozhlasové stanice uspořádaná do různých sloupců. V této části transformujete data tak, aby se z datové sady načetly jenom určité sloupce.
 
 1. Z vytvořeného datového rámce napřed načtěte jenom sloupce *firstName*, *lastName*, *gender*, *location* a *level*.
 
@@ -340,7 +340,7 @@ Nezpracovaná ukázková data **small_radio_json.json** obsahují data o posluch
         |  Margaux|     Smith|     F|Atlanta-Sandy Spr...| free|
         +---------+----------+------+--------------------+-----+
 
-2.  Teď můžete v datech sloupec **level** přejmenovat na **subscription_type**.
+2. Teď můžete v datech sloupec **level** přejmenovat na **subscription_type**.
 
         val renamedColumnsDf = specificColumnsDf.withColumnRenamed("level", "subscription_type")
         renamedColumnsDf.show()
@@ -382,7 +382,7 @@ Už jsme si řekli, že konektor Azure SQL Data Warehouse používá k nahrává
 
         val blobStorage = "<STORAGE ACCOUNT NAME>.blob.core.windows.net"
         val blobContainer = "<CONTAINER NAME>"
-        val blobAccessKey =  "<ACCESS KEY>"
+        val blobAccessKey = "<ACCESS KEY>"
 
 2. Zadejte dočasnou složku, která se použije k přesunu dat mezi službami Azure Databricks a Azure SQL Data Warehouse.
 
@@ -397,15 +397,15 @@ Už jsme si řekli, že konektor Azure SQL Data Warehouse používá k nahrává
 
         //SQL Data Warehouse related settings
         val dwDatabase = "<DATABASE NAME>"
-        val dwServer = "<DATABASE SERVER NAME>" 
+        val dwServer = "<DATABASE SERVER NAME>"
         val dwUser = "<USER NAME>"
         val dwPass = "<PASSWORD>"
-        val dwJdbcPort =  "1433"
+        val dwJdbcPort = "1433"
         val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
         val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
         val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
 
-5. Spusťte následující fragment kódu, který načte transformovaný datový rámec **renamedColumnsDf** jako tabulku do služby SQL Data Warehouse. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**. Upozorňujeme, že Azure SQL DW vyžaduje hlavní klíč.  Hlavní klíč můžete vytvořit spuštěním příkazu „CREATE MASTER KEY;“ v sadě SQL Server Management Studio.
+5. Spusťte následující fragment kódu, který načte transformovaný datový rámec **renamedColumnsDf** jako tabulku do služby SQL Data Warehouse. Tento fragment kódu vytvoří v SQL databázi tabulku s názvem **SampleTable**. Upozorňujeme, že Azure SQL DW vyžaduje hlavní klíč. Hlavní klíč můžete vytvořit spuštěním příkazu „CREATE MASTER KEY;“ v sadě SQL Server Management Studio.
 
         spark.conf.set(
           "spark.sql.parquet.writeLegacyFormat",
@@ -413,7 +413,7 @@ Už jsme si řekli, že konektor Azure SQL Data Warehouse používá k nahrává
         
         renamedColumnsDf.write
             .format("com.databricks.spark.sqldw")
-            .option("url", sqlDwUrlSmall) 
+            .option("url", sqlDwUrlSmall)
             .option("dbtable", "SampleTable")
             .option( "forward_spark_azure_storage_credentials","True")
             .option("tempdir", tempDir)
@@ -434,9 +434,9 @@ Po dokončení tohoto kurzu můžete cluster ukončit. Pokud to chcete udělat, 
 
 ![Zastavení clusteru Databricks](./media/databricks-extract-load-sql-data-warehouse/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 
-Pokud cluster neukončíte ručně, zastaví se automaticky za předpokladu, že jste při vytváření clusteru zaškrtli políčko **Ukončit po __ minutách nečinnosti**. V takovém případě se cluster automaticky zastaví, pokud byl po stanovenou dobu neaktivní.
+Pokud se cluster automaticky zastaví neukončíte ručně, k dispozici, jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. V takovém případě se cluster automaticky zastaví, pokud byl po stanovenou dobu neaktivní.
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]

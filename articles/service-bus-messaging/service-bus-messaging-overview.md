@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 7b4045737ea2be466a436e6abb0de6a1a61e6a5b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49342203"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636583"
 ---
 # <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 
-Microsoft Azure Service Bus je plně spravovaný zprostředkovatel zpráv podnikové integrace. Service Bus se nejčastěji používá k vzájemnému oddělení aplikací a služeb a je spolehlivou a bezpečnou platformou pro přenos asynchronních dat a stavu. Data se mezi různými aplikacemi a službami přenáší pomocí *zpráv*. Zpráva je v binárním formátu, který může zahrnovat JSON, XML nebo jen text. 
+Microsoft Azure Service Bus je plně spravovaný zprostředkovatel zpráv podnikové integrace. Service Bus se nejčastěji používá k vzájemnému oddělení aplikací a služeb a je spolehlivou a bezpečnou platformou pro přenos asynchronních dat a stavu. Data se mezi různými aplikacemi a službami přenáší pomocí *zpráv*. Zpráva se v binárním formátu, který může obsahovat pouze text, JSON nebo XML. 
 
 Mezi běžné scénáře zasílání zpráv patří:
 
@@ -39,7 +39,7 @@ Zprávy se odesílají do *front* a přijímají se z nich. Fronty umožňují u
 
 ![Fronta](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Zprávy se ve frontách řadí a označují časovým razítkem při doručení. Jakmile je zpráva přijata, uchovává se bezpečně v redundantním úložišti. Zprávy se doručují v režimu *nabízení*, který doručuje zprávy na vyžádání.
+Zprávy se ve frontách řadí a označují časovým razítkem při doručení. Až ji přijme, zprávu je bezpečné uchovávat v datovém redundantní úložiště. Zprávy se doručí do *o přijetí změn* režimu, který doručuje zprávy na vyžádání.
 
 ## <a name="topics"></a>Témata
 
@@ -93,7 +93,7 @@ Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto
 
 ### <a name="duplicate-detection"></a>Vyhledávání duplicit
 
-Pokud dojde k chybě, která způsobí, že klient pochybuje o výsledku operace odeslání, [vyhledávání duplicit](duplicate-detection.md) odstraní nejistotu v těchto situacích tak, že odesílateli umožní odeslat stejnou zprávu a frontě nebo tématu umožní zahodit jakékoli duplicitní kopie.
+Pokud dojde k chybě, která způsobí, že klient má pochybností o výsledku operace odeslání [vyhledávání duplicit](duplicate-detection.md) trvá nejisté z těchto situací tím, že odesílatel znovu odeslat stejné zprávy a fronty nebo tématu zahodí všechny duplicitní kopie.
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS, RBAC a spravované identity pro prostředky Azure
 
@@ -115,13 +115,13 @@ Service Bus podporuje klientské knihovny pro [.NET](https://github.com/Azure/az
 
 Service Bus umožňuje úplnou integraci s následujícími službami Azure:
 
-- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
-- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
-- [Functions](https://azure.microsoft.com/services/functions/) 
+- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
+- [Functions](https://azure.microsoft.com/services/functions/) 
 - [Dynamics 365](https://dynamics.microsoft.com)
 - [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
  
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete začít používat zasílání zpráv služby Service Bus, podívejte se na následující články:
 

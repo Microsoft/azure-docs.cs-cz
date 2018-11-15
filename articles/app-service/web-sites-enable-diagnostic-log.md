@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 31ce23bf6249ef21a2c9fe515b78cdd6ebea9b9c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8a58f8722b41944a7be02254e0f00682575c1bbb
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614375"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636954"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Povolení protokolování diagnostiky pro webové aplikace ve službě Azure App Service
 ## <a name="overview"></a>Přehled
@@ -159,7 +159,9 @@ Chcete-li filtrovat konkrétní typy, jako je například HTTP, použijte **– 
 
 ## <a name="understandlogs"></a> Postupy: pochopení diagnostické protokoly
 ### <a name="application-diagnostics-logs"></a>Protokoly diagnostiky aplikací
-Konzole Application diagnostics ukládá informace v určitém formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů do služby file storage systému nebo objekt blob. Základní sadu uložených dat je stejná napříč všemi třemi typy úložiště – datum a čas, ke které došlo k události, ID procesu, který vytvořil události, typu události (informace, upozornění a chyby) a zpráva o události.
+Konzole Application diagnostics ukládá informace v určitém formátu pro aplikace .NET, v závislosti na tom, jestli ukládání protokolů do služby file storage systému nebo objekt blob. 
+
+Základní sadu – uložená data jsou stejné oba typy úložiště – datum a čas, ke které došlo k události, ID procesu, který vytvořil události, typu události (informace, upozornění a chyby) a zpráva o události. Pomocí systému souborů pro ukládání protokolů je užitečné, když potřebujete okamžitý přístup k řešení problémů, protože soubory protokolu jsou aktualizovány téměř okamžitě. Úložiště objektů blob je použít pro archivační účely, protože soubory ukládají do mezipaměti a pak se vyprázdní na kontejner úložiště podle plánu.
 
 **Systém souborů**
 
@@ -195,7 +197,7 @@ Data uložená v objektu blob, by vypadalo podobně jako v následujícím pří
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> První řádek v protokolu obsahuje záhlaví sloupců, jak je v tomto příkladu.
+> Pro ASP.NET Core, protokolování se provádí pomocí [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) poskytovatele tohoto zprostředkovatele protokolu další vkladů soubory do kontejneru objektů blob. Další informace najdete v tématu [ASP.NET Core protokolování v Azure](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#logging-in-azure).
 >
 >
 

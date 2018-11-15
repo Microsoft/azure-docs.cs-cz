@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 025202d25d3057f3db7d015faba349a1fe642d4c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 400f266b1f63de675b9cefae289878dbef0a278c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637861"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685646"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
 
@@ -79,6 +79,23 @@ Pokud jste nenakonfigurovali zpětný zápis hesla pro konkrétního uživatele,
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Komunikovat přes odchozí webového proxy serveru se službou agentů předávací ověřování?
 
 Ano. Pokud Proxy Auto-Discovery WPAD (Web) je povoleno v místním prostředí, agentů ověřování automaticky pokusí vyhledat a použít webový proxy server v síti.
+
+Pokud nemáte WPAD ve vašem prostředí, můžete přidat informace o proxy serveru (jak je vidět níže) Chcete-li povolit agenta předávací ověřování ke komunikaci s Azure AD:
+- Nakonfigurujte informace o proxy serveru v aplikaci Internet Explorer před instalací agenta předávací ověřování na serveru. To vám umožní k dokončení instalace ověřovacího agenta služby, ale stále se zobrazí jako **neaktivní** na portálu pro správu.
+- Na serveru přejděte na "C:\Program Files\Microsoft Azure AD Connect ověřovacího agenta".
+- Upravte konfigurační soubor "AzureADConnectAuthenticationAgentService" a přidejte následující řádky (nahradit "http://contosoproxy.com:8080" adresou skutečného proxy serveru):
+
+```
+   <system.net>
+      <defaultProxy enabled="true" useDefaultCredentials="true">
+         <proxy
+            usesystemdefault="true"
+            proxyaddress="http://contosoproxy.com:8080"
+            bypassonlocal="true"
+         />
+     </defaultProxy>
+   </system.net>
+```
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Můžete nainstalovat dvě nebo více agentů předávací ověřování na stejný server?
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zásad Kafka ve službě HDInsight s balíčkem zabezpečení podniku - Azure
+title: Nakonfigurovat zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package - Azure
 description: Zjistěte, jak nakonfigurovat zásady Apache Ranger pro systém Kafka v Azure HDInsight s balíčkem zabezpečení podniku.
 services: hdinsight
 ms.service: hdinsight
@@ -8,16 +8,16 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 48cfba6f62d75470efd27e3a4cdcb995e716798b
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: aa6702ccf00faa3d63d5458cfbd77ac15fbfbeaa
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037137"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633033"
 ---
-# <a name="tutorial-configure-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Konfigurace zásad Kafka ve službě HDInsight s balíčkem zabezpečení podniku (Preview)
+# <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Kurz: Nakonfigurujte zásady Apache Kafka v HDInsight s balíčkem Enterprise Security Package (Preview)
 
-Zjistěte, jak nakonfigurovat zásady Apache Ranger pro clustery Kafka ESP (balíček zabezpečení podniku). ESP clustery jsou připojené k doméně, což uživatelům umožňuje ověření pomocí přihlašovacích údajů do domény. V tomto kurzu vytvoříte dvě zásady Ranger pro omezení přístupu k tématům `sales*` a `marketingspend`.
+Zjistěte, jak nakonfigurovat zásady Apache Rangeru pro clustery Apache Kafka Enterprise Security Package (ESP). ESP clustery jsou připojené k doméně, což uživatelům umožňuje ověření pomocí přihlašovacích údajů do domény. V tomto kurzu vytvoříte dvě zásady Ranger pro omezení přístupu k tématům `sales*` a `marketingspend`.
 
 V tomto kurzu se naučíte:
 
@@ -208,7 +208,7 @@ Na základě nakonfigurovaných zásad Ranger, mohou uživatelé **sales_user** 
 
    ![Audit zásad uživatelského rozhraní Ranger](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Používání vlastního klíče v systému Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok)
 * [Úvod do zabezpečení Hadoop s balíčkem zabezpečení podniku](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-introduction)

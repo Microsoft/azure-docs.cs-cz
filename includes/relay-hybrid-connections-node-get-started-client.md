@@ -1,3 +1,16 @@
+---
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: clemensv
+ms.openlocfilehash: 9d4f7faa18ee7fae158afb42b8c42287e61dd103
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571931"
+---
 ### <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
 
 Vytvořte nový soubor JavaScript s názvem `sender.js`.

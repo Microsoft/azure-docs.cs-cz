@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 338035014cb8e34caa7aea688028a96d039b028c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 49341b320df98bb08ee4f5c4ee061a51bec29ff2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977664"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686156"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 
-Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnost v organizaci. Pomocí rozpočtů můžete zodpovídat za služby Azure, které využíváte nebo k jejichž odběru jste po určitou dobu přihlášení. Pomáhají informovat ostatní o jejich útraty aktivně spravovat náklady a sledovat, jak útraty postupuje v čase. Uvidíte jak útraty průběh v čase. Při překročení prahových hodnot rozpočtu, který jste vytvořili, se aktivují jenom oznámení. Žádná z vašich prostředků neovlivní a spotřebu není zastavená. Rozpočty můžete porovnat a sledovat výdaje podle analýzu nákladů.
+Rozpočty ve službě Cost Management pomáhají plánovat a řídit odpovědnost v organizaci. Pomocí rozpočtů můžete zodpovídat za služby Azure, které využíváte nebo k jejichž odběru jste po určitou dobu přihlášení. Pomáhají informovat ostatní o jejich útraty aktivně spravovat náklady a sledovat, jak útraty postupuje v čase. Při překročení prahových hodnot rozpočtu, který jste vytvořili, se aktivují jenom oznámení. Žádná z vašich prostředků neovlivní a spotřebu není zastavená. Rozpočty můžete porovnat a sledovat výdaje podle analýzu nákladů.
 
-Rozpočty automaticky resetovat na konci období (měsíčně, čtvrtletně nebo ročně) pro velkou rozpočtu vyberete datum vypršení platnosti v budoucnosti. Protože resetují se stejnou velikostí rozpočtu, budete muset vytvořit samostatné rozpočty při rozpočtu peněžních hodnot se liší v budoucích obdobích.
+Rozpočty automaticky resetovat na konci období (měsíčně, čtvrtletně nebo ročně) pro velkou rozpočtu vyberete datum vypršení platnosti v budoucnu. Protože resetují se stejnou velikostí rozpočtu, budete muset vytvořit samostatné rozpočty při rozpočtu peněžních hodnot se liší v budoucích obdobích.
 
-Příklady v tomto kurzu vás provedou vytvořením a úpravy rozpočet pro předplatné Azure Enterprise Agreement (EA).
+Příklady v tomto kurzu vás provede procesem vytvoření a úprava rozpočet pro předplatné Azure Enterprise Agreement (EA).
 
 V tomto kurzu se naučíte:
 
@@ -77,7 +77,7 @@ V předchozím příkladu jste vytvořili rozpočet pro předplatné. Můžete v
 
 ## <a name="edit-a-budget"></a>Upravit rozpočtu
 
-V závislosti na úrovni přístupu, kterou máte můžete upravit rozpočtu, chcete-li změnit jeho vlastnosti. V tomto příkladu postupujte podle některé vlastnosti jsou jen pro čtení vzhledem k tomu, že má uživatel jenom oprávnění přispěvatele k předplatnému. V současné době **datum vypršení platnosti** zakázána a nemůže modifikovat po nastavení.
+V závislosti na úrovni přístupu, kterou máte můžete upravit rozpočtu, chcete-li změnit jeho vlastnosti. V následujícím příkladu některé vlastnosti jsou jen pro čtení vzhledem k tomu, že má uživatel jenom oprávnění přispěvatele k předplatnému. V současné době **datum vypršení platnosti** zakázána a nemůže modifikovat po nastavení.
 
 ![Upravit rozpočtu – oprávnění Přispěvatel](./media/tutorial-acm-create-budgets/edit-budget.png)
 

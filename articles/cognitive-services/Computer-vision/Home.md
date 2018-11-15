@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
-ms.openlocfilehash: 39b3f51693229e75f58c4244089f21c7d3f8677d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: 8f18b01409680c07b942087b75b1618c75973391
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250610"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634324"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -54,6 +54,10 @@ Na obrázku můžete také [rozpoznávat tištěný a rukou psaný text](concept
 
 Pomocí Počítačového zpracování obrazu můžete na obrázku [detekovat nevhodný obsah a obsah pro dospělé](concept-detecting-adult-content.md) díky tomu, že hodnotí, s jakou pravděpodobností daný obrázek obsahuje nevhodný obsah nebo obsah pro dospělé a pro obojí generuje skóre spolehlivosti. Filtr detekce nevhodného obsahu a obsahu pro dospělé je možné podle potřeby nastavit na posuvné stupnici.
 
+## <a name="using-containers"></a>Pomocí kontejnerů
+
+[Kontejnery pro počítačové zpracování obrazu](computer-vision-how-to-install-containers.md) rozpoznat místně, tisk a rukou psaný text nainstalováním standardizované kontejner Dockeru blíž ke svým datům.
+
 ## <a name="image-requirements"></a>Požadavky image
 
 Počítačové zpracování obrazu dokáže analyzovat obrázky, které splňují následující požadavky:
@@ -63,7 +67,7 @@ Počítačové zpracování obrazu dokáže analyzovat obrázky, které splňuj�
 - Rozměry obrázku musí být větší než 50 × 50 pixelů.  
   Pro účely OCR musí mít vstupní obrázek rozměry 50 × 50 až 4200 × 4200 pixelů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začněte s Počítačovým zpracováním obrazu s využitím některého z našich rychlých startů:
 

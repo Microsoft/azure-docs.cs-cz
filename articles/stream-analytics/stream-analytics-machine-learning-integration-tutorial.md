@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/16/2018
-ms.openlocfilehash: 5468117fe117623b2e03fdf8ec451a9a0151e3dd
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 2169c3a41991b0b49a4324c16ea079f5943fad0b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979161"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685748"
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Provedení analýzy subjektivního hodnocení s využitím Azure Stream Analytics a Azure Machine Learning
 Tento článek popisuje, jak rychle vytvořit jednoduchou úlohu Azure Stream Analytics, která se integruje s Azure Machine Learning. Použijete modelem Machine Learning pro analýzu mínění v galerii Cortana Intelligence pro analýzu streamování textová data a určit skóre mínění v reálném čase. Pomocí Cortana Intelligence Suite vám umožňuje provést bez starostí o složitými rozhraními vytváření modelu analýzy mínění.
@@ -199,9 +199,9 @@ Stream Analytics využívá deklarativní, na základě SQL dotaz zkontrolujte v
 
 3. Zadejte následující příkaz:
 
-    ```
+    ```SQL
     WITH sentiment AS (  
-    SELECT text, sentiment(text) as result 
+    SELECT text, sentiment1(text) as result 
     FROM datainput  
     )  
 

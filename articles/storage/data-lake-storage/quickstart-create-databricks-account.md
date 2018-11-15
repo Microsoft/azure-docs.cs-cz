@@ -8,12 +8,12 @@ ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
-ms.openlocfilehash: 338acd3e26f9b36e5f9afaf90f95f61e7623cebc
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 8c53e86ff18aa0f010bf4bb57b2ac4ccde3f430c
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281723"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51565798"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure
 
@@ -103,10 +103,10 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 4. V následujícím kódu nahraďte text **ACCOUNT_NAME** a **ACCOUNT_KEY** hodnotami názvu účtu a klíče účtu, které jste si uložili na začátku tohoto rychlého startu. Nahraďte také text **FILE_SYSTEM_NAME** názvem, který chcete použít pro systém souborů. Pak kód zadejte do první buňky.
 
     ```scala
-    spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>") 
+    spark.conf.set("fs.azure.account.key.<ACCOUNT_NAME>.dfs.core.windows.net", "<ACCOUNT_KEY>")
     spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
     dbutils.fs.ls("abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false") 
+    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
     ```
 
     Stiskněte **SHIFT+ENTER** a spusťte kód v buňce.
@@ -152,7 +152,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 2. Podívejme se na snímek ukázkových dat JSON, abyste lépe pochopili dotaz, který spouštíte. Vložte do buňky kódu následující fragment kódu a stiskněte klávesy **SHIFT + ENTER**.
 
     ```sql
-    %sql 
+    %sql
     SELECT * from radio_sample_data
     ```
 
@@ -160,7 +160,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
 
     ![Ukázková data JSON](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "Ukázková data JSON")
 
-    Vedle dalších podrobných informací ukázková data zachycují pohlaví posluchačů určité rozhlasové stanice (název sloupce **gender**) a to, zda mají bezplatné, nebo placené předplatné (název sloupce **level**).
+    Vedle dalších podrobných informací ukázková data zachycují pohlaví posluchačů určité rozhlasové (název sloupce **pohlaví**) a zda je jejich předplatného bezplatné i placené (název sloupce **úroveň**).
 
 4. Teď vytvoříte vizuální reprezentaci těchto dat, která bude znázorňovat, kolik uživatelů obou pohlaví má bezplatné účty a kolik je platících předplatitelů. Ve spodní části tabulkového výstupu klikněte na ikonu **Bar chart** (Pruhový graf) ikonu a potom na **Plot Options** (Možnosti grafu).
 
@@ -187,9 +187,9 @@ Po dokončení článku můžete cluster ukončit. V pracovním prostoru Azure D
 
 ![Zastavení clusteru Databricks](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
 
-Pokud cluster neukončíte ručně, zastaví se automaticky, jestliže jste při jeho vytvoření zaškrtli políčko **Terminate after __ minutes of inactivity** (Ukončit po __ minutách nečinnosti). Pokud jste tuto možnost nastavili, cluster se po stanovené době nečinnosti zastaví.
+Pokud neukončíte ručně cluster automaticky zastaví, pokud jste vybrali **po provedení \_ \_ počet minut nečinnosti** zaškrtávací políčko při vytváření clusteru. Pokud jste tuto možnost nastavili, cluster se po stanovené době nečinnosti zastaví.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste v Azure Databricks vytvořili cluster Spark a pak jste ke spuštění úlohy Spark použili data v účtu úložiště s povolenou službou Data Lake Storage Gen2. Můžete si také projít článek [Zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) a zjistit, jak do Azure Databricks importovat data z jiných zdrojů dat. V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
 

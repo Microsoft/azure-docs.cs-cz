@@ -1,5 +1,5 @@
 ---
-title: Spouštět úlohy Apache Sqoop s Azure HDInsight (Hadoop)
+title: Spouštět úlohy Apache Sqoop s Azure HDInsight (Apache Hadoop)
 description: Zjistěte, jak pomocí Azure Powershellu z pracovní stanice Sqoop import a export mezi clusterem Hadoop a službě Azure SQL database.
 ms.reviewer: jasonh
 services: hdinsight
@@ -9,21 +9,21 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: c02fca7ba1ee5b7a93e54b4898290f0b84d88304
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 1571480540baedd5910c4153caf23e0687d48922
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622444"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684973"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Použití nástroje Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Zjistěte, jak použít Sqoop k importu a exportu mezi clusteru HDInsight a Azure SQL database nebo databáze systému SQL Server v HDInsight.
+Další informace o použití Apache Sqoop v HDInsight pro import a export mezi clusteru HDInsight a Azure SQL database nebo databáze systému SQL Server.
 
-Přestože Hadoop je přirozenou volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory, může to mít také potřeba ke zpracování strukturovaných dat, která je uložená v relačních databázích.
+I když Apache Hadoop je přirozenou volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory, může to mít také potřeba ke zpracování strukturovaných dat, která je uložená v relačních databázích.
 
-[Sqoop] [ sqoop-user-guide-1.4.4] je nástroj určený pro přenos dat mezi clustery Hadoop a relačními databázemi. Můžete ho použít pro import dat ze systému správy relačních databází (RDBMS), jako jsou SQL Server, MySQL nebo Oracle do distribuovaného systému souborů Hadoop (HDFS), transformujte data v Hadoop MapReduce nebo Hive a pak exportovat data zpět do relační databázový systém. V tomto kurzu použijete databázi serveru SQL Server pro relační databáze.
+[Apache Sqoop] [ sqoop-user-guide-1.4.4] je nástroj určený pro přenos dat mezi clustery Hadoop a relačními databázemi. Můžete ho použít pro import dat ze systému správy relačních databází (RDBMS), jako jsou SQL Server, MySQL nebo Oracle do distribuovaného systému souborů Hadoop (HDFS), transformujte data v Hadoop MapReduce nebo Hive a pak exportovat data zpět do relační databázový systém. V tomto kurzu použijete databázi serveru SQL Server pro relační databáze.
 
 Sqoop verze, které jsou podporovány v clusterech HDInsight najdete v tématu [co je nového ve verzích clusterů poskytovaných službou HDInsight?][hdinsight-versions]
 
@@ -90,7 +90,7 @@ Pokud byste radši chtěli použít Azure PowerShell k vytvoření clusteru a sl
         
         |Název|Hodnota|
         |----|-----|
-        | Název výchozího účtu úložiště | &lt;CluterName > ukládat |
+        | Název výchozího účtu úložiště | &lt;Název clusteru > ukládat |
         | Název serveru Azure SQL database | &lt;ClusterName>dbserver |
         | Název databáze SQL Azure | &lt;ClusterName>db |
      
@@ -102,7 +102,7 @@ Pokud se rozhodnete použít existující databázi Azure SQL nebo Microsoft SQL
 * **Azure SQL database**: je nutné nakonfigurovat pravidlo brány firewall pro server databáze Azure SQL umožňující přístup z pracovní stanice. Pokyny týkající se vytváření databáze Azure SQL a konfiguraci brány firewall najdete v tématu [začít používat Azure SQL database][sqldatabase-get-started]. 
   
   > [!NOTE]
-  > Ve výchozím nastavení umožňuje službě Azure SQL database připojení ze služeb Azure, jako je například Azure HDInsight. Pokud toto nastavení brány firewall je zakázaná, musíte ji povolit z portálu Azure portal. Pokyny týkající se vytváření databáze Azure SQL a konfigurace pravidla brány firewall naleznete v tématu [vytvoření a konfigurace služby SQL Database][sqldatabase-create-configue].
+  > Ve výchozím nastavení umožňuje službě Azure SQL database připojení ze služeb Azure, jako je například Azure HDInsight. Pokud toto nastavení brány firewall je zakázaná, musíte ji povolit z portálu Azure portal. Pokyny týkající se vytváření databáze Azure SQL a konfigurace pravidla brány firewall naleznete v tématu [vytvoření a konfigurace služby SQL Database][sqldatabase-create-configure].
   > 
   > 
 * **SQL Server**: Pokud váš cluster HDInsight je ve stejné virtuální síti v Azure jako SQL Server, můžete použít kroky v tomto článku pro import a export dat do databáze SQL serveru.
@@ -636,7 +636,7 @@ Get-AzureRmHDInsightJobOutput `
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 
 [sqldatabase-get-started]: ../../sql-database/sql-database-get-started.md
-[sqldatabase-create-configue]: ../../sql-database/sql-database-get-started.md
+[sqldatabase-create-configure]: ../../sql-database/sql-database-get-started.md
 
 [powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs

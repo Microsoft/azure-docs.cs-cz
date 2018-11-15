@@ -1,60 +1,65 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a cURL'
+title: 'Rychlý start: Rozpoznávání tváří v obrázku se cURL a rozhraní Azure REST API'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu budete rozpoznávat tváře z obrázku pomocí rozhraní API pro rozpoznávání tváře a jazyka cURL.
+description: V tomto rychlém startu použijete rozhraní Azure REST API pro rozpoznávání tváře pomocí cURL rozpoznávání tváří v obrázku.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 05/10/2018
+ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: ab403ec6a9db4d1a0dc03074044eeb424e4ba875
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: a9e3b4713e11b5f01ea8343471aa33a327210338
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49953344"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578024"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-curl"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a cURL
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API pro rozpoznávání tváře a cURL
 
-V tomto rychlém startu budete rozpoznávat tváře na obrázku pomocí rozhraní API pro rozpoznávání tváře.
+V tomto rychlém startu použijete rozhraní Azure REST API pro rozpoznávání tváře pomocí cURL detekovat lidské tváře v obrázku.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění této ukázky budete potřebovat klíč předplatného. Klíče bezplatného zkušebního předplatného můžete získat v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
+- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
 
-## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří na obrázku
-
-Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozpoznejte tváře na obrázku a vraťte atributy tváře, včetně:
-
-* Face ID: jedinečná hodnota ID používaná v několika scénářích rozhraní API pro rozpoznávání tváře
-* Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje
-* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy součástí obličeje.
-* Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
-
-Pokud chcete spustit ukázku, postupujte takto:
-
-1. Otevřete příkazový řádek.
-2. Místo `<Subscription Key>` použijte platný klíč předplatného.
-3. V případě potřeby změňte adresu URL (`https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect`), aby se použilo umístění, ze kterého jste získali klíče předplatného.
-4. Volitelně můžete změnit obrázek (`"{\"url\":...`) pro analýzu.
-5. Kód vložte do okna příkazového řádku.
-6. Příkaz spusťte.
-
-### <a name="face---detect-request"></a>Žádost Face - Detect
-
-> [!NOTE]
-> Ve volání REST musíte použít stejné umístění, které jste použili k získání klíčů předplatného. Pokud jste například získali klíče předplatného z „westus“, nahraďte westcentralus v následující adrese URL umístěním westus.
+## <a name="write-the-command"></a>Zápis příkazu
+ 
+Použijete příkaz podobný tomuto volání rozhraní API pro rozpoznávání tváře a získání dat pro rozpoznávání tváře atribut z image. Nejprve zkopírujte kód do textového editoru&mdash;budete muset změnit některé části příkazu, než budete moct spustit.
 
 ```shell
 curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise" -H "Content-Type: application/json" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg\"}"
 ```
 
-### <a name="face---detect-response"></a>Odpověď metody Face - Detect
+### <a name="subscription-key"></a>Klíč předplatného
+Nahraďte `<Subscription Key>` platný klíč předplatného pro rozpoznávání tváře.
 
-Úspěšná odpověď se vrátí ve formátu JSON.
+### <a name="face-endpoint-url"></a>Adresa URL koncového bodu pro rozpoznávání tváře
+
+Adresa URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` Určuje koncový bod Azure pro rozpoznávání tváře do dotazu. Je potřeba změnit první část této adresy URL tak, aby odpovídaly oblasti, která odpovídá váš klíč předplatného (Pokud již není správná).
+
+### <a name="url-query-string"></a>Řetězec dotazu adresy URL
+
+Řetězec dotazu adresy URL koncového bodu pro rozpoznávání tváře Určuje, které pro rozpoznávání tváře atributy pro načtení. Můžete chtít změnit tento řetězec v závislosti na zamýšlený účel použití.
+
+```
+?returnFaceId=true&returnFaceLandmarks=false&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise
+```
+
+### <a name="image-source-url"></a>Zdrojová adresa URL obrázku
+Zdrojová adresa URL určuje image chcete použít jako vstup. Můžete změnit to tak, aby odkazoval na všechny image, kterou chcete analyzovat.
+
+```
+https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
+``` 
+
+## <a name="run-the-command"></a>Spusťte příkaz
+
+Po provedení změny, otevřete příkazový řádek a zadejte nový příkaz. Rozpoznávání tváře informace zobrazené jako data JSON v okně konzoly byste měli vidět. Příklad:
 
 ```json
 [
@@ -148,9 +153,9 @@ curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" "https://westcentralus.a
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Prozkoumejte rozhraní API pro rozpoznávání lidských tváří na obrázku, ohraničte obličeje obdélníky a vraťte atributy, jako je věk a pohlaví.
+V tomto rychlém startu jste napsali příkaz cURL, který volá rozhraní API pro rozpoznávání tváře Azure rozpoznávání tváří v obrázku a vrátíte se jejich atributy. Dále prozkoumejte referenční dokumentaci rozhraní API pro rozpoznávání tváře na další informace.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

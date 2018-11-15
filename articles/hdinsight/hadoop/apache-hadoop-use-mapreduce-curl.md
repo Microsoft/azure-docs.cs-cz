@@ -1,6 +1,6 @@
 ---
-title: Použití MapReduce a Curl s Hadoop v HDInsight – Azure
-description: Zjistěte, jak pro vzdáleně spouštět úlohy MapReduce s Hadoop v HDInsight pomocí příkazu Curl.
+title: Použití MapReduce a Curl s Apache Hadoop v HDInsight – Azure
+description: Zjistěte, jak pro vzdáleně spouštět úlohy MapReduce s Apache Hadoop v HDInsight pomocí příkazu Curl.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 496b7dacdb30507fe5eb2d4d7c5602003a944269
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: afa9b57d9c0e2acf81b5307273ac038e92073655
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010894"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632290"
 ---
-# <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>Spuštění úloh MapReduce s Hadoop v HDInsight pomocí rozhraní REST
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spuštění úlohy mapreduce je možné s Apache Hadoop v HDInsight pomocí rozhraní REST
 
-Zjistěte, jak spouštět úlohy mapreduce je možné v systému Hadoop v clusteru HDInsight pomocí rozhraní REST API WebHCat. Curl slouží k předvedení toho, jak můžete pracovat s HDInsight pomocí nezpracované požadavků HTTP pro spouštění úloh MapReduce.
+Zjistěte, jak spouštět úlohy MapReduce systému Apache Hadoop v clusteru HDInsight pomocí rozhraní REST API WebHCat. Curl slouží k předvedení toho, jak můžete pracovat s HDInsight pomocí nezpracované požadavků HTTP pro spouštění úloh MapReduce.
 
 > [!NOTE]
 > Pokud jste už obeznámení s pomocí serverů se systémem Linux Hadoop, ale teprve začínáte HDInsight, najdete v článku [co potřebujete vědět o systémem Linux Hadoop v HDInsight](../hdinsight-hadoop-linux-information.md) dokumentu.

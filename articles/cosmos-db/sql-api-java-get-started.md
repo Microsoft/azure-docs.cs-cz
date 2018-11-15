@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 0cf42245981afb44415b9709be9d45c44255f295
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 158bfedc8c0eb7d49c72d40cda08588d7377d17d
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417510"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636845"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Kurz k NoSQL: Vytvoření aplikace konzoly Java rozhraní SQL API
 
@@ -91,7 +91,7 @@ Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na
 ![Snímek obrazovky webu Azure Portal, který se v kurzu NoSQL používá k vytvoření konzolové aplikace v jazyce Java. Ukazuje účet služby Azure Cosmos DB se zvýrazněným aktivním centrem, zvýrazněným tlačítkem KLÍČE v okně účtu služby Azure Cosmos DB a zvýrazněnými hodnotami URI, PRIMÁRNÍ KLÍČ a SEKUNDÁRNÍ KLÍČ v okně Klíče.][keys]
 
 ## <a name="step-4-create-a-database"></a>Krok 4: Vytvoření databáze
-[Databázi](sql-api-resources.md#databases) Azure Cosmos DB je možné vytvořit pomocí metody [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) třídy **DocumentClient**. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
+[Databázi](databases-containers-items.md#azure-cosmos-databases) Azure Cosmos DB je možné vytvořit pomocí metody [createDatabase](/java/api/com.microsoft.azure.documentdb._document_client.createdatabase) třídy **DocumentClient**. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
 
     Database database = new Database();
     database.setId("familydb");
@@ -103,7 +103,7 @@ Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na
 > 
 > 
 
-[Kolekci](sql-api-resources.md#collections) je možné vytvořit pomocí metody [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) třídy **DocumentClient**. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
+Kolekce lze vytvořit pomocí [createCollection](/java/api/com.microsoft.azure.documentdb._document_client.createcollection) metodu **DocumentClient** třídy. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
 
 
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -117,7 +117,7 @@ Na webu Azure Portal přejděte do účtu služby Azure Cosmos DB a klikněte na
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>Krok 6: Vytvoření dokumentů JSON
-[Dokument](sql-api-resources.md#documents) je možné vytvořit pomocí metody [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) třídy **DocumentClient**. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Pokud již máte data, která chcete uložit do databáze, můžete použít [nástroj pro migraci dat](import-data.md) služby Azure Cosmos DB a importovat tato data do databáze.
+Dokument lze vytvořit pomocí [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) metodu **DocumentClient** třídy. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Pokud již máte data, která chcete uložit do databáze, můžete použít [nástroj pro migraci dat](import-data.md) služby Azure Cosmos DB a importovat tato data do databáze.
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();
@@ -184,7 +184,7 @@ Spuštěním příkazu `mvn package` se z nástroje Maven stáhne nejnovější 
 
 Blahopřejeme! Dokončili jste tento kurz NoSQL a máte funkční konzolovou aplikaci jazyka Java!
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Chcete kurz vývoje webové aplikace v jazyce Java? Viz [Vytvoření webové aplikace pomocí Javy a služby Azure Cosmos DB](sql-api-java-application.md).
 * Zjistěte, jak [monitorovat účet služby Azure Cosmos DB](monitor-accounts.md).
 * Spouštějte dotazy proti ukázkovým datovým sadám v [Query Playground](https://www.documentdb.com/sql/demo).

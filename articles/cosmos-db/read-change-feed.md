@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: 596bb31ea2734b389ac8b2d6741907da04730648
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3168593e30a7f5acf49960c8479da75529860a65
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629037"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684541"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Kanál změn čtení Azure Cosmos DB
 
@@ -27,7 +27,7 @@ Azure Functions je nejjednodušší a doporučená možnost. Když vytvoříte a
 
 ## <a name="using-the-change-feed-processor-library"></a>Změny pomocí kanálu knihovny procesoru
 
-Změna kanálu knihovny procesoru skrývá složitosti a pořád vám nabízí naprostou kontrolu nad kanálu změn. Knihovny následuje vzor pozorovatele, ve kterém je volána funkce zpracování knihovny. Pokud máte kanálu změn vysokou propustnost, můžete vytvořit instanci více klientů ke čtení kanálu změn. Vzhledem k tomu, že při použití knihovny procesoru kanálu změn, ji budou automaticky rozdělit zatížení mezi různé klienty aniž by bylo nutné implementovat tuto logiku. Všem složitosti zařizuje služba knihovny. Pokud chcete mít vlastní nástroje pro vyrovnávání zatížení, pak budete moct implementovat `IParitionLoadBalancingStrategy` pro oddíl vlastní informační kanál strategie pro zpracování změn. Další informace najdete v tématu [změn pomocí kanálu knihovny procesoru](change-feed-processor.md).
+Změna kanálu knihovny procesoru skrývá složitosti a pořád vám nabízí naprostou kontrolu nad kanálu změn. Knihovny následuje vzor pozorovatele, ve kterém je volána funkce zpracování knihovny. Pokud máte kanálu změn vysokou propustnost, můžete vytvořit instanci více klientů ke čtení kanálu změn. Vzhledem k tomu, že při použití knihovny procesoru kanálu změn, ji budou automaticky rozdělit zatížení mezi různé klienty aniž by bylo nutné implementovat tuto logiku. Všem složitosti zařizuje služba knihovny. Pokud chcete mít vlastní nástroje pro vyrovnávání zatížení, pak budete moct implementovat `IPartitionLoadBalancingStrategy` pro oddíl vlastní informační kanál strategie pro zpracování změn. Další informace najdete v tématu [změn pomocí kanálu knihovny procesoru](change-feed-processor.md).
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Pomocí sady SDK služby Azure Cosmos DB SQL API
 

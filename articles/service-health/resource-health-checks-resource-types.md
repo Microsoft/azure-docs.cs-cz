@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 633501b03a362fbd07e14e308e18488f03af5af5
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 6f02e20efbcb34d1f70f9f10acbe5bb3800cb4d2
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069196"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683941"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu ve službě Azure resource health
 Níže je úplný seznam všech kontrol provést prostřednictvím služby resource health podle typu prostředku.
@@ -101,6 +101,11 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 |---|
 |<ul><li> Operace modulu runtime, jako je registrace, instalace a odeslat provést na obor názvů?</li></ul>|
 
+## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
+|Provedený kontroly|
+|---|
+|<ul><li>Kapacita prostředků je zprovozněný?</li><li>Jsou všechny úlohy spuštěné?</li></ul>|
+
 ## <a name="microsoftpowerbiworkspacecollections"></a>Microsoft.PowerBI/workspaceCollections
 |Provedený kontroly|
 |---|
@@ -116,7 +121,7 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 |---|
 |<ul><li> Zde se přihlášení k databázi?</li></ul>|
 
-## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts.
 |Provedený kontroly|
 |---|
 |<ul><li>Se žádostí o čtení dat z účtu úložiště nedaří zálohovat z důvodu problémů platformy Azure Storage?</li><li>Se žádostí o zápis dat do účtu úložiště nedaří zálohovat z důvodu problémů platformy Azure Storage?</li><li>Úložiště clusteru, ve které se nachází účet úložiště není k dispozici?</li></ul>|

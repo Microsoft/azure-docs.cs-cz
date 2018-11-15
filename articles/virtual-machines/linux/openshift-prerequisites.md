@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: fd20fe880ae77992e5eadb5f2b581d3f5b53f86e
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: bbc9ad4f15bdffa2c0f9b6f4b56f8b1701c83c47
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085852"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636607"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Běžné požadavky pro nasazení OpenShift v Azure
 
@@ -99,12 +99,11 @@ az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/open
 ```
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu 
-OpenShift komunikuje s Azure pomocí uživatelského jména a hesla nebo instanční objekt služby. Instanční objekt Azure je identita zabezpečení, který vám pomůže s aplikací, služeb a nástrojů automatizace, jako je OpenShift. Kontrolou a můžete definovat oprávnění, operace, které můžete provádět instanční objekt služby v Azure. Pokud chcete zlepšit zabezpečení nad rámec právě a uživatelského jména a hesla, tento příklad vytvoří základní služby instančního objektu.
+OpenShift komunikuje s Azure pomocí uživatelského jména a hesla nebo instanční objekt služby. Instanční objekt Azure je identita zabezpečení, který vám pomůže s aplikací, služeb a nástrojů automatizace, jako je OpenShift. Kontrolou a můžete definovat oprávnění, operace, které můžete provádět instanční objekt služby v Azure. Doporučujeme rozsah oprávnění pro instanční objekt na určitých skupinách prostředků a místo celé předplatné.
 
 Vytvořit instanční objekt s [az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) tak za výstupní přihlašovací údaje, které potřebuje OpenShift.
 
 Následující příklad vytvoří službu objektu zabezpečení a přiřadí ji do skupiny prostředků s názvem openshiftrg oprávnění přispěvatele.
-samostatně a kanálu pomocí výstupu možnost--obory.
 
 Nejprve vytvořte skupinu prostředků s názvem openshiftrg:
 

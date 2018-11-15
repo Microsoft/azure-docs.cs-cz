@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 423661b8a459abf0b3028da92d6fd3ec885bb2c9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 5f74ee390ac327a9e697d3dc67da4ea604b64d69
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025018"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686888"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 
@@ -24,11 +24,13 @@ ms.locfileid: "50025018"
 
 ## <a name="programming-model"></a>Programovací model 
 
-Funkce Azure by měl být metoda bezstavové třídy, která zpracovává vstup a výstup. I když můžete napsat metody instance, nesmí funkce závisí na všechna pole instancí třídy. Všechny funkce metody musí mít `public` modifikátor přístupu.
+Koncepty [aktivačními událostmi a vazbami](functions-triggers-bindings.md) jsou základem pro Azure Functions. Triggery spuštění provádění kódu. Vazby poskytují způsob, jak předávat data a vrátit data z funkce, aniž byste museli psát kód pro přístup k vlastní data.
+
+Funkce by měly být bezstavové metodu ke zpracování vstupu a výstup. Funkce by neměl záviset na všechna pole instancí třídy. Všechny funkce metody by měly být `public` a metody s poznámkou @FunctionName musí být jedinečný, jako je zadání funkce definuje název metody.
 
 ## <a name="folder-structure"></a>struktura složek
 
-Struktura složek projektu jazyka Java vypadá takto:
+Tady je struktura složek projektu Java funkce Azure:
 
 ```
 FunctionsProject
@@ -60,14 +62,12 @@ Můžete vložit více než jedna funkce v projektu. Vyhněte se vložení vaši
 
  Služba Azure functions se vyvolá triggerem, například požadavek HTTP, časovač nebo aktualizaci dat. Funkce je potřeba zpracovat tuto aktivační událost a všechny ostatní vstupy pro vytvoření jednoho nebo více výstupů.
 
-Použití anotací Java součástí [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) balíček, který chcete svázat vaše metody vstup a výstup. Ukázkový kód pomocí poznámky je k dispozici v [referenční dokumentace jazyka Java](/java/api/com.microsoft.azure.functions.annotation) pro jednotlivé poznámky a ve službě Azure Functions vazby referenční dokumentaci, jako je třeba pro [triggerů HTTP](/azure/azure-functions/functions-bindings-http-webhook).
-
-Aktivační událost vstupy a výstupy můžete také definovat v [function.json](/azure/azure-functions/functions-reference#function-code) funkce namísto prostřednictvím anotací. Pomocí `function.json` místo poznámky tímto způsobem se nedoporučuje.
+Použití anotací Java součástí [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) balíček, který chcete svázat vaše metody vstup a výstup. Další informace najdete v části [referenční dokumentace jazyka Java](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
 > Musíte nakonfigurovat účet služby Azure Storage ve vašich [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) pro místní spuštění aktivační události Azure Storage Blob, fronty nebo tabulky.
 
-Příklad použití poznámek:
+Příklad:
 
 ```java
 public class Function {
@@ -79,24 +79,12 @@ public class Function {
 }
 ```
 
-Stejnou funkci zapsat bez poznámek:
-
-```java
-package com.example;
-
-public class MyClass {
-    public static String echo(String in) {
-        return in;
-    }
-}
-```
-
-s odpovídajícím `function.json`:
+Tady je vygenerovaný odpovídající `function.json` podle [azure-functions-maven-modul plug-in](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
 
 ```json
 {
   "scriptFile": "azure-functions-example.jar",
-  "entryPoint": "com.example.MyClass.echo",
+  "entryPoint": "com.example.Function.echo",
   "bindings": [
     {
       "type": "httpTrigger",
@@ -117,113 +105,113 @@ s odpovídajícím `function.json`:
 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK běhovou dostupnost a podpora 
 
-Stáhnout a použít [Azul Zulu pro Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK od [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) pro místní vývoj aplikací v Javě funkce. JDK jsou k dispozici pro Windows, Linux a macOS a [podpory Azure](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) je k dispozici pro problémů při vývoji se [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
+Stáhnout a použít [Azul Zulu pro Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK od [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) pro místní vývoj aplikací v Javě funkce. JDK jsou k dispozici pro Windows, Linux a macOS. [Podpora Azure](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) je k dispozici [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
 
 ## <a name="third-party-libraries"></a>Knihovny třetích stran 
 
-Služba Azure Functions podporuje použití knihovny třetích stran. Ve výchozím nastavení, zadané všechny závislosti ve vašem projektu `pom.xml` souboru budou automaticky seskupeny během `mvn package` cíle. Pro knihovny není stanoveno, v závislosti `pom.xml` souboru, umístit je do `lib` adresáře v kořenovém adresáři funkce. Závislosti umístěné v `lib` adresáře se přidají do třídy zavaděč systému v době běhu.
+Služba Azure Functions podporuje použití knihovny třetích stran. Ve výchozím nastavení, zadané všechny závislosti ve vašem projektu `pom.xml` souboru budou automaticky seskupeny během [ `mvn package` ](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) cíle. Pro knihovny není stanoveno, v závislosti `pom.xml` souboru, umístit je do `lib` adresáře v kořenovém adresáři funkce. Závislosti umístěné v `lib` adresáře se přidají do třídy zavaděč systému v době běhu.
 
-`com.microsoft.azure.functions:azure-functions-java-library` Závislostí je k dispozici na cestě ve výchozím nastavení a nemusí být součástí `lib` adresáře.
+`com.microsoft.azure.functions:azure-functions-java-library` Závislostí je k dispozici na cestě ve výchozím nastavení a nemusí být součástí `lib` adresáře. Navíc uvedené závislosti [tady](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) jsou přidány do cesty pro třídy podle [azure-functions-java-pracovní proces](https://github.com/Azure/azure-functions-java-worker).
 
 ## <a name="data-type-support"></a>Podpora typ dat
 
-Můžete použít všechny datové typy v jazyce Java pro vstupní a výstupní data, včetně nativních typů; Přizpůsobit typy jazyka Java a specializované Azure typy definované v `azure-functions-java-library` balíčku. Azure Functions, které modul runtime pokusí převést vstupní přijatých do typ požadovaný ve vašem kódu.
-
-### <a name="strings"></a>Řetězce
-
-Hodnoty předané do metod funkce bude na řetězce převedeny, pokud je odpovídající typ vstupního parametru funkce typu `String`. 
+Můžete použít prostý původní objekty Java (Object Pojo), typy definované v `azure-functions-java-library` nebo primitivní datové typy, jako je například řetězec, celé číslo pro vytvoření vazby k vstupních a výstupních vazeb.
 
 ### <a name="plain-old-java-objects-pojos"></a>Prostý původní objekty Java (Object Pojo)
 
-Řetězce ve formátu s JSON bude přetypovat na typy jazyka Java, pokud podpis zadání funkce očekává, že tento typ Java. Tento převod umožňuje předat ve formátu JSON a práci s typy jazyka Java.
-
-Použít jako vstupy do funkce musíte stejné typy POJO `public` modifikátor přístupu jako funkce metody se používají v. Není nutné deklarovat pole třídy POJO `public`. Například řetězec formátu JSON `{ "x": 3 }` může být převeden na typ následující POJO:
-
-```Java
-public class MyData {
-    private int x;
-}
-```
+Pro převod vstupní data na POJO, [azure-functions-java-pracovní proces](https://github.com/Azure/azure-functions-java-worker) používá [gson](https://github.com/google/gson) knihovny. Použít jako vstupy do funkce by měla být typy POJO `public`.
 
 ### <a name="binary-data"></a>Binární data
 
-Binární data je vyjádřena jako `byte[]` ve vašem kódu Azure functions. Vytvořit vazbu binárních vstupů nebo výstupů na vaší funkce tak, že nastavíte `dataType` pole ve vašich function.json k `binary`:
-
-```json
- {
-  "scriptFile": "azure-functions-example.jar",
-  "entryPoint": "com.example.MyClass.echo",
-  "bindings": [
-    {
-      "type": "blob",
-      "name": "content",
-      "direction": "in",
-      "dataType": "binary",
-      "path": "container/myfile.bin",
-      "connection": "ExampleStorageAccount"
-    },
-  ]
-}
-```
-
-Potom ji použijte v kódu funkce:
+Vytvořit vazbu binárních vstupů nebo výstupů na `byte[]` nastavením `dataType` pole ve vašich function.json k `binary`:
 
 ```java
-// Class definition and imports are omitted here
-public static String echoLength(byte[] content) {
-}
+   @FunctionName("BlobTrigger")
+    @StorageAccount("AzureWebJobsStorage")
+     public void blobTrigger(
+        @BlobTrigger(name = "content", path = "myblob/{fileName}", dataType = "binary") byte[] content,
+        @BindingName("fileName") String fileName,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Java Blob trigger function processed a blob.\n Name: " + fileName + "\n Size: " + content.length + " Bytes");
+    }
 ```
 
-Může být prázdný vstupní hodnoty `null` jako argument funkce, ale doporučený způsob, jak řešit potenciální prázdné hodnoty, je použít `Optional<T>`.
+Použití `Optional<T>` Pokud jsou očekávané hodnoty null
 
+## <a name="bindings"></a>Vazby
 
-## <a name="function-method-overloading"></a>Metoda přetížení funkce
+Vstupní a výstupní vazby poskytují deklarativní způsob připojení k datům z vašeho kódu. Funkce můžete mít více vstupní a výstupní vazbu.
 
-Jste oprávněni přetížení funkce metod se stejným názvem, ale s různými typy. Například můžete mít obojí `String echo(String s)` a `String echo(MyType s)` ve třídě. Služba Azure Functions rozhodne, která metoda se má vyvolat na základě vstupního typu (pro HTTP vstupní, typ MIME `text/plain` vede k `String` při `application/json` představuje `MyType`).
-
-## <a name="inputs"></a>Vstupy
-
-Vstup dělí do dvou kategorií ve službě Azure Functions: jeden je vstup triggeru a druhý je další vstupy. I když jsou v různých `function.json`, využití je stejný jako v kódu v Javě. Pojďme se například následující fragment kódu:
+### <a name="example-input-binding"></a>Příklad vstupní vazby
 
 ```java
 package com.example;
 
 import com.microsoft.azure.functions.annotation.*;
 
-public class MyClass {
+public class Function {
     @FunctionName("echo")
     public static String echo(
-        @HttpTrigger(name = "req", methods = { "put" }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String in,
-        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") MyObject obj
+        @HttpTrigger(name = "req", methods = { "put" }, authLevel = AuthorizationLevel.ANONYMOUS, route = "items/{id}") String inputReq,
+        @TableInput(name = "item", tableName = "items", partitionKey = "Example", rowKey = "{id}", connection = "AzureWebJobsStorage") TestInputData inputData
+        @TableOutput(name = "myOutputTable", tableName = "Person", connection = "AzureWebJobsStorage") OutputBinding<Person> testOutputData,
     ) {
-        return "Hello, " + in + " and " + obj.getKey() + ".";
+        testOutputData.setValue(new Person(httpbody + "Partition", httpbody + "Row", httpbody + "Name"));
+        return "Hello, " + inputReq + " and " + inputData.getKey() + ".";
     }
 
-    public static class MyObject {
+    public static class TestInputData {
         public String getKey() { return this.RowKey; }
         private String RowKey;
     }
+    public static class Person {
+        public String PartitionKey;
+        public String RowKey;
+        public String Name;
+
+        public Person(String p, String r, String n) {
+            this.PartitionKey = p;
+            this.RowKey = r;
+            this.Name = n;
+        }
+    }
 }
 ```
 
-Když se aktivuje tuto funkci, požadavek HTTP je předán funkci podle `String in`. Načte položku z Azure Table Storage na základě ID v adrese URL trasy a k dispozici jako `obj` v těle funkce.
+Tato funkce se vyvolala s požadavek HTTP. 
+- Datová část požadavku HTTP je předán jako `String` argumentu `inputReq`
+- Jedna položka je načten z Azure Table Storage a je předán jako `TestInputData` na argument `inputData`.
 
-## <a name="outputs"></a>Výstupy
+Pro příjem batch vstupů, lze svázat `String[]`, `POJO[]`, `List<String>` nebo `List<POJO>`.
 
-Výstupy může být vyjádřena v návratovou hodnotu nebo výstupní parametry. Pokud existuje jenom jeden výstup, doporučuje se používat návratovou hodnotu. Pro několik výstupů budete muset použít výstupní parametry.
+```java
+@FunctionName("ProcessIotMessages")
+    public void processIotMessages(
+        @EventHubTrigger(name = "message", eventHubName = "%AzureWebJobsEventHubPath%", connection = "AzureWebJobsEventHubSender", cardinality = Cardinality.MANY) List<TestEventData> messages,
+        final ExecutionContext context)
+    {
+        context.getLogger().info("Java Event Hub trigger received messages. Batch size: " + messages.size());
+    }
+    
+    public class TestEventData {
+    public String id;
+}
 
-Vrácená hodnota je nejjednodušší formu výstupu, právě vrátit hodnotu libovolného typu a modul runtime služby Azure Functions se pokusí zařazování zpět do aplikace skutečný typ (například odpověď HTTP).  Můžete použít výstup poznámek k metodě – funkce (název vlastnosti anotace musí být $return) k definování výstupní návratovou hodnotu.
+```
 
-Chcete-li vytvořit více výstupní hodnoty, použijte `OutputBinding<T>` typ definovaný v `azure-functions-java-library` balíčku. Pokud je potřeba vytvořit odpověď HTTP a vložit zprávu do fronty i, můžete napsat vypadat:
+Tato funkce se spustí vždycky, když je nakonfigurovaná eventhub nová data. Jako `cardinality` je nastavena na `MANY`, funkce přijímá dávky zprávy z centra událostí. Získá EventData z centra událostí převést na `TestEventData` pro spuštění funkce.
 
-Obsah objektu blob kopírování funkce například může být definován jako následující kód. `@StorageAccount` Poznámka se tady používá při prevenci duplikování vlastnosti připojení pro obě `@BlobTrigger` a `@BlobOutput`.
+### <a name="example-output-binding"></a>Příklad výstupní vazby
+
+Výstupní vazby můžete vázat na návratovou hodnotu pomocí `$return` 
 
 ```java
 package com.example;
 
 import com.microsoft.azure.functions.annotation.*;
 
-public class MyClass {
+public class Function {
     @FunctionName("copy")
     @StorageAccount("AzureWebJobsStorage")
     @BlobOutput(name = "$return", path = "samples-output-java/{name}")
@@ -233,25 +221,57 @@ public class MyClass {
 }
 ```
 
-Použít `OutputBinding<byte[]`> aby binární výstup hodnotu (pro parametry); návratové hodnoty, použijte `byte[]`.
+Pokud existuje více výstupní vazby, použijte vrácenou hodnotu pouze pro jeden z nich.
 
-## <a name="specialized-types"></a>Speciální typy
+Chcete-li odeslat více výstupní hodnoty, použijte `OutputBinding<T>` definované v `azure-functions-java-library` balíčku. 
 
-Někdy funkce musí mít podrobnou kontrolu nad vstupy a výstupy. Speciální typy v `azure-functions-java-core` balíček jsou k dispozici pro manipulaci s informace o požadavku a přizpůsobit návratový stav triggeru HTTP:
+```java
+@FunctionName("QueueOutputPOJOList")
+    public HttpResponseMessage QueueOutputPOJOList(@HttpTrigger(name = "req", methods = { HttpMethod.GET,
+            HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "itemsOut", queueName = "test-output-java-pojo", connection = "AzureWebJobsStorage") OutputBinding<List<TestData>> itemsOut, 
+            final ExecutionContext context) {
+        context.getLogger().info("Java HTTP trigger processed a request.");
+       
+        String query = request.getQueryParameters().get("queueMessageId");
+        String queueMessageId = request.getBody().orElse(query);
+        itemsOut.setValue(new ArrayList<TestData>());
+        if (queueMessageId != null) {
+            TestData testData1 = new TestData();
+            testData1.id = "msg1"+queueMessageId;
+            TestData testData2 = new TestData();
+            testData2.id = "msg2"+queueMessageId;
+
+            itemsOut.getValue().add(testData1);
+            itemsOut.getValue().add(testData2);
+
+            return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + queueMessageId).build();
+        } else {
+            return request.createResponseBuilder(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Did not find expected items in CosmosDB input list").build();
+        }
+    }
+
+     public static class TestData {
+        public String id;
+    }
+```
+
+Výše uvedené funkce, které se vyvolá u HttpRequest a zapíše více hodnot do fronty Azure
+
+## <a name="httprequestmessage-and-httpresponsemessage"></a>Hodnota HttpRequestMessage a používá HttpResponseMessage
+
+ Hodnota HttpRequestMessage a používá HttpResponseMessage typy jsou definovány v `azure-functions-java-library` jsou pomocné rutiny typy pro práci s funkcí HttpTrigger
 
 | Speciálním typem      |       Cíl        | Typické použití                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    Trigger HTTP     | Metoda, záhlaví a dotazy |
-| `HttpResponseMessage<T>` | Vazby výstupu protokolu HTTP | Než 200 návratový stav   |
+| `HttpResponseMessage` | Vazby výstupu protokolu HTTP | Než 200 návratový stav   |
 
-> [!NOTE] 
-> Můžete také použít `@BindingName` poznámky k získání hlavičky protokolu HTTP a dotazy. Například `@BindingName("name") String query` iteruje hlavičky požadavků HTTP a dotazy a předat metodě tuto hodnotu. Například `query` bude `"test"` Pokud je adresa URL požadavku `http://example.org/api/echo?name=test`.
+## <a name="metadata"></a>Metadata
 
-### <a name="metadata"></a>Metadata
+Několik triggerů odeslat [aktivovat metadat](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties) spolu se vstupní data. Můžete použít poznámku `@BindingName` vytvořit vazbu k aktivaci metadat
 
-Metadata pocházejí z různých zdrojů, jako jsou hlavičky protokolu HTTP, HTTP dotazy a [aktivovat metadat](/azure/azure-functions/functions-triggers-bindings#trigger-metadata-properties). Použití `@BindingName` poznámky a metadata název má být získána hodnota.
-
-Například `queryValue` v následujícím kódu je fragment kódu bude `"test"` Pokud je požadoaná adresa URL `http://{example.host}/api/metadata?name=test`.
 
 ```Java
 package com.example;
@@ -260,7 +280,7 @@ import java.util.Optional;
 import com.microsoft.azure.functions.annotation.*;
 
 
-public class MyClass {
+public class Function {
     @FunctionName("metadata")
     public static String metadata(
         @HttpTrigger(name = "req", methods = { "get", "post" }, authLevel = AuthorizationLevel.ANONYMOUS) Optional<String> body,
@@ -270,16 +290,34 @@ public class MyClass {
     }
 }
 ```
+V příkladu výše `queryValue` je vázán na parametru řetězce dotazu `name` adresa URL požadavku HTTP `http://{example.host}/api/metadata?name=test`. Tady je další příklad k vytvoření vazby na `Id` z metadat aktivační událost fronty
+
+```java
+ @FunctionName("QueueTriggerMetadata")
+    public void QueueTriggerMetadata(
+        @QueueTrigger(name = "message", queueName = "test-input-java-metadata", connection = "AzureWebJobsStorage") String message,@BindingName("Id") String metadataId,
+        @QueueOutput(name = "output", queueName = "test-output-java-metadata", connection = "AzureWebJobsStorage") OutputBinding<TestData> output,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Java Queue trigger function processed a message: " + message + " whith metadaId:" + metadataId );
+        TestData testData = new TestData();
+        testData.id = metadataId;
+        output.setValue(testData);
+    }
+```
+
+> [!NOTE]
+> Název zadaný v poznámce musí odpovídat vlastnosti metadat
 
 ## <a name="execution-context"></a>Kontext spuštění
 
-Pracovat prostřednictvím prostředí pro spouštění Azure Functions `ExecutionContext` definované v objektu `azure-functions-java-library` balíčku. Použít `ExecutionContext` objektu, který chcete použít volání informace a informace o modulu runtime functions ve vašem kódu.
+`ExecutionContext` podle `azure-functions-java-library` obsahuje pomocné metody pro komunikaci s modul runtime služby functions.
 
-### <a name="custom-logging"></a>Vlastní protokolování
+### <a name="logger"></a>Protokolovací nástroj
 
-Přístup k protokolovači modul runtime Functions je k dispozici prostřednictvím `ExecutionContext` objektu. Tento protokolovač se váže na Azure monitor a umožňuje příznak upozornění a chyb zjištěných při provádění funkce.
+Použití `getLogger` definované v `ExecutionContext` zápis protokolů z kódu funkce.
 
-Následující příklad kódu, zaprotokoluje upozornění při přijetí textu požadavku je prázdný.
+Příklad:
 
 ```java
 
@@ -298,7 +336,9 @@ public class Function {
 
 ## <a name="view-logs-and-trace"></a>Zobrazit protokoly a trasování
 
-Můžete použít rozhraní příkazového řádku Azure pro datový proud Java standardní navýšení kapacity a protokolování chyb, jakož i další protokolování aplikací. Nejprve nakonfigurujte aplikaci funkce pro zápis protokolování aplikací pomocí Azure CLI:
+Můžete použít rozhraní příkazového řádku Azure pro datový proud Java stdout a stderr protokolování, jakož i další protokolování aplikací. 
+
+Konfigurace funkce aplikace pro zápis protokolování aplikací pomocí Azure CLI:
 
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
@@ -321,26 +361,22 @@ Musí mít povolené systému souborů přihlášení na webu Azure Portal nebo 
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-Zachovejte tajné informace, jako je například klíčů nebo tokenů mimo váš zdrojový kód z bezpečnostních důvodů. Pomocí klávesy a tokeny v kódu funkce čtení z proměnných prostředí.
+Ve službě Functions [nastavení aplikace](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings), jako je například připojení služby jsou řetězce, zveřejní jako proměnné prostředí během provádění. Tato nastavení použijete, můžete přístup `System.getenv("AzureWebJobsStorage")`
 
-Chcete-li nastavit proměnné prostředí při spuštění Azure Functions místně, můžete přidat do souboru local.settings.json tyto proměnné. Pokud není k dispozici v kořenovém adresáři vašeho projektu funkce, můžete jeden vytvořit. Tady je soubor by měl vypadat:
+Příklad:
 
-```xml
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "",
-    "AzureWebJobsDashboard": ""
-  }
+Přidat [AppSetting](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings) s testAppSettingValue testAppSetting a hodnota názvu
+
+```java
+
+public class Function {
+    public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
+        context.getLogger().info("testAppSetting "+ System.getenv("testAppSettingValue"));
+        return String.format(req);
+    }
 }
+
 ```
-
-Každý klíč / hodnota v mapování `values` mapa bude k dispozici za běhu jako proměnné prostředí, přístupné pomocí volání `System.getenv("<keyname>")`, například `System.getenv("AzureWebJobsStorage")`. Přidání další klíč / hodnota dvojice je přijato a doporučené postupy.
-
-> [!NOTE]
-> Pokud tento přístup se používá, se opravdu local.settings.json přidáte soubor do úložiště ignorovat soubor, tak, že není potvrzená.
-
-S vaším kódem teď v závislosti na tyto proměnné prostředí se můžete přihlásit na webu Azure portal nastavit stejný klíč / hodnota dvojice v vaše nastavení aplikace function app, tak, aby váš kód funguje ekvivalentně při testování místně a při nasazení do Azure.
 
 ## <a name="next-steps"></a>Další postup
 

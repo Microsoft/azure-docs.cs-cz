@@ -1,6 +1,6 @@
 ---
-title: 'Nakonfigurovat protokol BGP na branách Azure VPN: Správce prostředků: prostředí PowerShell | Microsoft Docs'
-description: Tento článek vás provede procesem konfigurace protokolu BGP s Azure VPN Gateway pomocí Azure Resource Manageru a prostředí PowerShell.
+title: 'Konfigurace protokolu BGP na branách Azure VPN Gateway: Resource Manager: PowerShell | Dokumentace Microsoftu'
+description: Tento článek vás provede konfigurací protokolu BGP s bránami Azure VPN Gateway pomocí Azure Resource Manageru a Powershellu.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: fc9337188fd439082c4aa34f0cbebe3eb2da5d99
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4eb62786522dd1ad7cbf1d5668a4c4493028733c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603213"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684330"
 ---
-# <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Postup konfigurace protokolu BGP na Azure VPN Gateway pomocí prostředí PowerShell
-Tento článek vás provede kroky k povolení protokolu BGP na připojení Site-to-Site (S2S) VPN mezi různými místy a připojení VNet-to-VNet pomocí modelu nasazení Resource Manager a prostředí PowerShell.
+# <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Postup konfigurace protokolu BGP na Azure VPN Gateway pomocí Powershellu
+Tento článek vás provede kroky k povolení protokolu BGP pro připojení VPN typu Site-to-Site (S2S) mezi místními a připojení typu VNet-to-VNet pomocí modelu nasazení Resource Manageru a Powershellu.
 
 ## <a name="about-bgp"></a>Informace o protokolu BGP
-BGP je standardní směrovací protokol, na internetu běžně používaný k výměně informací o směrování a dostupnosti mezi dvěma nebo více sítěmi. Protokol BGP umožňuje Azure VPN Gateway a vaše místní zařízení VPN, nazývají partnerské uzly protokolu BGP nebo Sousedé BGP, výměnu "tras" informujících obě brány o dostupnosti a dosažitelnosti předpon, které procházejí těmito bránami nebo trasami související se situací. Protokol BGP také umožňuje směrování přenosu mezi více sítěmi pomocí šíření tras, které brána s protokolem BGP zjistí od jednoho partnerského uzlu protokolu BGP, do všech dalších partnerských uzlů protokolu BGP.
+BGP je standardní směrovací protokol, na internetu běžně používaný k výměně informací o směrování a dostupnosti mezi dvěma nebo více sítěmi. Protokol BGP umožňuje Azure VPN Gateway a vaše místní zařízení VPN, nazývají partnerské uzly protokolu BGP nebo okolí, výměnu "tras" informujících obě brány o dostupnosti a dosažitelnosti předpon, které procházejí těmito bránami nebo trasami, které jsou zahrnuté. Protokol BGP také umožňuje směrování přenosu mezi více sítěmi pomocí šíření tras, které brána s protokolem BGP zjistí od jednoho partnerského uzlu protokolu BGP, do všech dalších partnerských uzlů protokolu BGP.
 
-V tématu [přehled protokolu BGP službou Azure VPN Gateways](vpn-gateway-bgp-overview.md) pro další zabývat výhody protokolu BGP a pochopit technickými požadavky a důležité informace o použití protokolu BGP.
+Zobrazit [přehled protokolu BGP s bránami Azure VPN Gateway](vpn-gateway-bgp-overview.md) Další informace o výhodách protokolu BGP a pochopit technickými požadavky a důležité informace o použití protokolu BGP.
 
-## <a name="getting-started-with-bgp-on-azure-vpn-gateways"></a>Začínáme s protokolem BGP na branách Azure VPN
+## <a name="getting-started-with-bgp-on-azure-vpn-gateways"></a>Začínáme s protokolem BGP na branách Azure VPN Gateway
 
-Tento článek vás provede kroky, jak provést následující úlohy:
+Tento článek vás provede kroky a proveďte následující úlohy:
 
-* [Část 1 - povolit protokol BGP na bráně Azure VPN](#enablebgp)
-* [Část 2 – navázání připojení mezi různými místy pomocí protokolu BGP](#crossprembgp)
-* [Část 3 – připojení VNet-to-VNet s protokolem BGP](#v2vbgp)
+* [Část 1 – povolit protokol BGP na bráně Azure VPN](#enablebgp)
+* [Část 2 – Vytvoření připojení mezi různými místy pomocí protokolu BGP](#crossprembgp)
+* [Část 3 – vytvoření připojení VNet-to-VNet s protokolem BGP](#v2vbgp)
 
-Jednotlivých součástí pokynů tvoří základní stavební blok pro povolení protokolu BGP v připojení k síti. Pokud dokončíte všechny tři části, jak je znázorněno v následujícím diagramu sestavení topologie:
+Každá část pokynů tvoří základní stavební blok pro povolení protokolu BGP v připojení k síti. Jestliže dokončíte všechny tři části, jak je znázorněno v následujícím diagramu vytvářet topologie:
 
 ![Topologii BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
-Můžete kombinovat částí společně k vytvoření složitějších, vícenásobného předávání přenosu síti, která vyhovuje vašim potřebám.
+Můžete kombinovat částí dohromady a vytvořit mnohem složitější, vícenásobné předávání přenosu síť, která bude vyhovovat vašim potřebám.
 
-## <a name ="enablebgp"></a>Část 1: Konfigurace protokolu BGP na bráně Azure VPN
-Postup konfigurace nastavení parametrů protokolu BGP brány Azure VPN, jak je znázorněno v následujícím diagramu:
+## <a name ="enablebgp"></a>Část 1: Konfigurace protokolu BGP ve službě Azure VPN Gateway
+Postup konfigurace nastavení parametrů BGP brány Azure VPN, jak je znázorněno v následujícím diagramu:
 
-![Protokol BGP brány](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
+![Brána protokolu BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
 ### <a name="before-you-begin"></a>Než začnete
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
-* Nainstalujte rutiny Powershellu pro Azure Resource Manager. Další informace o instalaci rutin PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). 
+* Nainstalujte nejnovější verzi rutin Powershellu pro Azure Resource Manager. Další informace o instalaci rutin PowerShellu najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). 
 
-### <a name="step-1---create-and-configure-vnet1"></a>Krok 1 – Vytvoření a konfigurace VNet1
+### <a name="step-1---create-and-configure-vnet1"></a>Krok 1 – Vytvoření a konfigurace sítě VNet1
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
-Pro toto cvičení začneme deklarací proměnných. V následujícím příkladu jsou proměnné deklarovány s použitím hodnot pro toto cvičení. Při konfiguraci pro ostrý provoz nezapomeňte nahradit hodnoty vlastními. Tyto proměnné můžete použít, pokud procházíte kroky, abyste se seznámili s tímto typem konfigurace. Upravte proměnné a pak je zkopírujte a vložte do konzoly prostředí PowerShell.
+Pro toto cvičení začneme zahájíme deklarací proměnných. Následující příklad deklaruje proměnné pomocí hodnot pro účely tohoto cvičení. Při konfiguraci pro ostrý provoz nezapomeňte nahradit hodnoty vlastními. Tyto proměnné můžete použít, pokud procházíte kroky, abyste se seznámili s tímto typem konfigurace. Upravte proměnné a pak je zkopírujte a vložte do konzoly prostředí PowerShell.
 
 ```powershell
-$Sub1 = "Replace_With_Your_Subcription_Name"
+$Sub1 = "Replace_With_Your_Subscription_Name"
 $RG1 = "TestBGPRG1"
 $Location1 = "East US"
 $VNetName1 = "TestVNet1"
@@ -80,7 +80,7 @@ $Connection15 = "VNet1toSite5"
 ```
 
 #### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Připojení k vašemu předplatnému a vytvořte novou skupinu prostředků
-Pokud chcete používat rutiny Resource Manageru, ujistěte se, že jste přešli do režimu prostředí PowerShell. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
+Používat rutiny Resource Manageru, ujistěte se, že přejdete do režimu Powershellu. Další informace najdete v tématu [Použití prostředí Windows PowerShell s Resource Managerem](../powershell-azure-resource-manager.md).
 
 Otevřete konzolu prostředí PowerShell a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
@@ -91,7 +91,7 @@ New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
 #### <a name="3-create-testvnet1"></a>3. Vytvoření virtuální sítě TestVNet1
-Následující ukázka vytvoří virtuální síť s názvem TestVNet1 a tři podsítě, jednu s názvem GatewaySubnet, jednu s názvem FrontEnd a jednu s názvem Backend. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří.
+Následující příklad vytvoří virtuální síť s názvem TestVNet1 a tři podsítě, jednu s názvem GatewaySubnet, jednu s názvem FrontEnd a jednu s názvem Backend. Při nahrazování hodnot je důležité vždy přiřadit podsíti brány konkrétní název GatewaySubnet. Pokud použijete jiný název, vytvoření brány se nezdaří.
 
 ```powershell
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1 $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
@@ -100,9 +100,9 @@ $gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix
 New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Krok 2 – Vytvoření brány VPN pro virtuální síť TestVNet1 s parametry protokolu BGP
-#### <a name="1-create-the-ip-and-subnet-configurations"></a>1. Vytvoření konfigurací IP adresy a podsítě
-Vyžádejte si veřejnou IP adresu, která bude přidělena bráně, kterou vytvoříte pro příslušnou virtuální síť. Budete také definovat vyžaduje podsíť a konfigurace protokolu IP.
+### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Krok 2 – Vytvoření brány sítě VPN pro virtuální síť TestVNet1 s parametry protokolu BGP
+#### <a name="1-create-the-ip-and-subnet-configurations"></a>1. Vytvořte konfigurace IP adresy a podsítě
+Vyžádejte si veřejnou IP adresu, která bude přidělena bráně, kterou vytvoříte pro příslušnou virtuální síť. Budete také definovat požadované podsítě a konfigurace protokolu IP.
 
 ```powershell
 $gwpip1 = New-AzureRmPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
@@ -112,22 +112,22 @@ $subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualN
 $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 -Subnet $subnet1 -PublicIpAddress $gwpip1
 ```
 
-#### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Vytvoření brány VPN s číslo AS
-Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Protokol BGP vyžaduje brány VPN založené na směrování a také parametr přidání - Asn, chcete-li nastavit ASN (čísla AS) pro virtuální síť TestVNet1. Pokud parametr číslo ASN nenastavíte, bude přiřazeno číslo ASN 65515. Vytvoření brány může nějakou dobu trvat (30 minut nebo déle).
+#### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Vytvoření brány VPN s použitím čísla AS
+Vytvořte bránu virtuální sítě pro virtuální síť TestVNet1. Protokol BGP vyžaduje bránu sítě VPN založené na směrování a přidání parametru - Asn, chcete-li nastavit ASN (číslo AS) pro virtuální síť TestVNet1. Pokud není nastavený parametr číslo ASN, se přiřadí číslo ASN 65515. Vytvoření brány může nějakou dobu trvat (30 minut nebo déle).
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN
 ```
 
-#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. Získat adresu IP adresa partnera BGP Azure
-Po vytvoření brány, budete muset získat adresu IP adresa partnera BGP na bráně Azure VPN. Tato adresa je potřeba ke konfiguraci Azure VPN Gateway jako partnerské zařízení protokolu BGP pro vaše místní zařízení VPN.
+#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. Získat adresu místní adresu partnera BGP Azure
+Po vytvoření brány, budete muset získat IP adresa partnera BGP ve službě Azure VPN Gateway. Tato adresa je potřeba nakonfigurovat jako partnerský uzel protokolu BGP pro vaše místní zařízení VPN Azure VPN Gateway.
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet1gw.BgpSettingsText
 ```
 
-Poslední příkaz zobrazí odpovídající konfigurace protokolu BGP na bráně VPN Azure; například:
+Poslední příkaz zobrazí odpovídající konfigurace protokolu BGP ve službě Azure VPN Gateway; Příklad:
 
 ```powershell
 $vnet1gw.BgpSettingsText
@@ -138,21 +138,21 @@ $vnet1gw.BgpSettingsText
 }
 ```
 
-Po vytvoření brány, můžete tuto bránu k navázání připojení mezi různými místy nebo připojení VNet-to-VNet s protokolem BGP. V následujících částech provede kroky k dokončení výkonu.
+Po vytvoření brány můžete tuto bránu můžete použít k navázání připojení mezi různými místy nebo připojení VNet-to-VNet pomocí protokolu BGP. V dalších částech provede kroky k dokončení cvičení.
 
-## <a name ="crossprembbgp"></a>Část 2 – navázání připojení mezi různými místy pomocí protokolu BGP
+## <a name ="crossprembbgp"></a>Část 2 – Vytvoření připojení mezi různými místy pomocí protokolu BGP
 
-Navázat připojení mezi různými místy, musíte vytvořit bránu místní sítě představují vaše místní zařízení VPN a připojení pro připojení brány sítě VPN s bránu místní sítě. Když jsou články, které vás provedou postupem, tento článek obsahuje další vlastnosti, které jsou zapotřebí zadat parametry konfigurace protokolu BGP.
+K navázání připojení mezi různými místy, budete muset vytvořit bránu místní sítě k reprezentaci vaše místní zařízení VPN a připojení pro připojení brány VPN pomocí brány místní sítě. I když existují články, které vás provedou postupem, tento článek obsahuje další vlastnosti nutné zadat parametry konfigurace protokolu BGP.
 
 ![Protokol BGP pro více míst](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crossprem.png)
 
-Než budete pokračovat, ujistěte se, když jste dokončili [část 1](#enablebgp) tohoto cvičení.
+Než budete pokračovat, ujistěte se, že jste dokončili [část 1](#enablebgp) tohoto cvičení.
 
 ### <a name="step-1---create-and-configure-the-local-network-gateway"></a>Krok 1 – Vytvoření a konfigurace brány místní sítě
 
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
 
-Toto cvičení i nadále sestavení konfigurace znázorněné na obrázku. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
+V tomto cvičení se nadále sestavení konfigurace znázorněné v diagramu. Nezapomeňte nahradit hodnoty těmi, které chcete použít pro svou konfiguraci.
 
 ```powershell
 $RG5 = "TestBGPRG5"
@@ -164,17 +164,17 @@ $LNGASN5 = 65050
 $BGPPeerIP5 = "10.52.255.254"
 ```
 
-Několik věcí, které si uvědomit o parametrech brány místní sítě:
+Pár věcí, které poznámka týkající se parametry brány místní sítě:
 
-* Brána místní sítě může být ve stejné nebo jiné umístění a skupině prostředků jako brána sítě VPN. Tento příklad ukazuje je v různých skupinách prostředků v různých umístěních.
-* Minimální předponu, které je třeba deklarovat pro bránu místní sítě je adresa hostitele vaší IP adresy partnera BGP v zařízení VPN. V takovém případě je /32 předponu "10.52.255.254/32".
-* Připomínáme je nutné použít různá čísla ASN protokolu BGP mezi vaší místní sítí a virtuální sítí VNet Azure. Pokud se shodují, budete muset změnit číslo ASN vaší virtuální sítě, pokud vaše místní zařízení VPN už používá číslo Autonomního rovnocenných počítačů sousední ostatní směrovače BGP.
+* Brána místní sítě může být ve stejném nebo jiném umístění a skupině prostředků jako brány sítě VPN. Tento příklad ukazuje, je v různých skupinách prostředků v různých umístěních.
+* Minimální předponou, které je potřeba deklarovat pro bránu místní sítě je adresa hostitele vaše IP adresa partnera BGP ve vašem zařízení VPN. V tomto případě jde /32 předponu "10.52.255.254/32".
+* Připomínáme je nutné použít různá čísla ASN protokolu BGP mezi vaší místní sítí a virtuální sítě Azure. Pokud se shodují, musíte změnit ASN virtuální sítě, pokud vaše místní zařízení VPN již používá číslo ASN pro vytvoření partnerského vztahu s dalším sousedům protokolu BGP.
 
 Než budete pokračovat, zkontrolujte, že jste stále připojeni k předplatnému 1.
 
-#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Vytvoření brány místní sítě pro Site5
+#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Vytvořte bránu místní sítě pro Site5
 
-Je nutné vytvořit skupinu prostředků, pokud není vytvořená, před vytvořením brány místní sítě. Všimněte si dva další parametry pro bránu místní sítě: číslo Asn a BgpPeerAddress.
+Je potřeba vytvořit skupinu prostředků, pokud není vytvořené před vytvoření brány místní sítě. Všimněte si, že dva další parametry pro bránu místní sítě: číslo Asn a BgpPeerAddress.
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG5 -Location $Location5
@@ -182,7 +182,7 @@ New-AzureRmResourceGroup -Name $RG5 -Location $Location5
 New-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
 ```
 
-### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Krok 2 – připojení brány virtuální sítě a brány místní sítě
+### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Krok 2: připojení brány virtuální sítě a bránu místní sítě
 
 #### <a name="1-get-the-two-gateways"></a>1. Získat dvě brány
 
@@ -191,15 +191,15 @@ $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $
 $lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. Vytvoření virtuální sítě TestVNet1 Site5 připojení
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. Vytvoření virtuální sítě TestVNet1 k Site5 připojení
 
-V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k Site5. Je nutné zadat "-EnableBGP $True" Povolit protokol BGP pro toto připojení. Jak už jsme probírali výše, je možné, že připojení protokolu BGP i bez protokolu BGP pro stejné Azure VPN Gateway. Pokud je protokol BGP povolený ve vlastnosti připojení, neumožní Azure pro toto připojení protokolu BGP, i když BGP parametry jsou již nakonfigurované na obě brány.
+V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 do Site5. Je nutné zadat "-EnableBGP $True" se povolit protokol BGP pro toto připojení. Jak je uvedeno výše, je možné mít připojení protokolu BGP i bez protokolu BGP pro stejné Azure VPN Gateway. Pokud je protokol BGP povolen ve vlastnosti připojení, Azure nebude povolit protokol BGP pro toto připojení, i když BGP parametry jsou už nakonfigurovaná na obě brány.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-Následující příklad obsahuje parametry, které zadáte do protokolu BGP konfigurační oddíl na vaše místní zařízení VPN pro tento postup:
+Následující příklad zobrazí seznam parametrů, které jste zadali do oddílu konfigurace protokolu BGP na vaše místní zařízení VPN pro toto cvičení:
 
 ```
 
@@ -212,21 +212,21 @@ Následující příklad obsahuje parametry, které zadáte do protokolu BGP kon
 - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
 ```
 
-Připojení po několika minutách a relaci partnerského vztahu protokolu BGP spustí jednou IPsec připojení.
+Připojení se naváže za pár minut a relaci partnerského vztahu protokolu BGP spustí po vytvoření připojení IPsec.
 
-## <a name ="v2vbgp"></a>Část 3 – připojení VNet-to-VNet s protokolem BGP
+## <a name ="v2vbgp"></a>Část 3 – vytvoření připojení VNet-to-VNet s protokolem BGP
 
-Tato část přidá připojení VNet-to-VNet s protokolem BGP, jak je znázorněno v následujícím diagramu:
+V této části přidá připojení VNet-to-VNet pomocí protokolu BGP, jak je znázorněno v následujícím diagramu:
 
-![Protokol BGP pro síť VNet-to-VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
+![Protokol BGP pro připojení typu VNet-to-VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
 
-Podle následujících pokynů pokračovat z předchozích kroků. Je třeba provést [části I](#enablebgp) vytvořit a nakonfigurovat virtuální síť TestVNet1 a bránu VPN s protokolem BGP. 
+Následující pokyny jsou pokračováním z předchozího postupu. Je třeba provést [části I](#enablebgp) vytvoření a konfigurace virtuální sítě TestVNet1 a bránu VPN s protokolem BGP. 
 
-### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>Krok 1 – Vytvoření TestVNet2 a brány VPN
+### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>Krok 1: vytvoření TestVNet2 a brány VPN
 
-Je důležité se ujistit, že adresní prostor IP adres nové virtuální sítě, TestVNet2, nepřekrývá s žádným z rozsahů vaší virtuální sítě.
+Je důležité, abyste měli jistotu, že se adresní prostor IP adres nové virtuální sítě, TestVNet2, nepřekrývá s žádným z rozsahů virtuálních sítí.
 
-V tomto příkladu patří virtuální sítě ve stejném předplatném. Můžete nastavit připojení VNet-to-VNet mezi různých předplatných. Další informace najdete v tématu [konfigurace připojení typu VNet-to-VNet](vpn-gateway-vnet-vnet-rm-ps.md). Zajistěte, aby přidáte "-EnableBgp $True" při vytváření připojení k povolení protokolu BGP.
+V tomto příkladu patří virtuální sítě do stejného předplatného. Můžete nastavit připojení VNet-to-VNet mezi různých předplatných. Další informace najdete v tématu [konfigurace připojení typu VNet-to-VNet](vpn-gateway-vnet-vnet-rm-ps.md). Ujistěte se, že přidáte "-EnableBgp $True" při vytváření připojení se povolit protokol BGP.
 
 #### <a name="1-declare-your-variables"></a>1. Deklarace proměnných
 
@@ -253,7 +253,7 @@ $Connection21 = "VNet2toVNet1"
 $Connection12 = "VNet1toVNet2"
 ```
 
-#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. Vytvoření TestVNet2 do nové skupiny prostředků
+#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. Vytvoření TestVNet2 v nové skupině prostředků
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG2 -Location $Location2
@@ -265,9 +265,9 @@ $gwsub2 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName2 -AddressPrefix
 New-AzureRmVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 ```
 
-#### <a name="3-create-the-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>3. Vytvořit bránu sítě VPN pro TestVNet2 s parametry protokolu BGP
+#### <a name="3-create-the-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>3. Vytvoření brány sítě VPN pro TestVNet2 s parametry protokolu BGP
 
-Požádat o veřejnou IP adresu, která bude přidělena pro bránu vytvoříte pro virtuální sítě a definujte vyžaduje podsíť a konfigurace protokolu IP.
+Požádat o veřejnou IP adresu, která bude přidělena pro bránu vytvoříte pro příslušnou virtuální síť a definovat požadované podsítě a konfigurace protokolu IP.
 
 ```powershell
 $gwpip2    = New-AzureRmPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
@@ -277,17 +277,17 @@ $subnet2   = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -Virtua
 $gwipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName2 -Subnet $subnet2 -PublicIpAddress $gwpip2
 ```
 
-Vytvoření brány VPN s číslo AS. Na Azure VPN Gateway je nutné přepsat výchozí číslo ASN. Čísla ASN pro připojené virtuální sítě se musí lišit povolit protokol BGP a směrování přenosu.
+Vytvoření brány VPN s použitím čísla AS. Je nutné přepsat výchozí číslo ASN pro Azure VPN Gateway. Čísla ASN pro připojené virtuální sítě musí být odlišný povolit protokol BGP a směrování provozu.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gwipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn $VNet2ASN
 ```
 
-### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Krok 2 – připojení brány virtuální sítě TestVNet1 a TestVNet2
+### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Krok 2: připojení brány virtuální sítě TestVNet1 a TestVNet2
 
-V tomto příkladu jsou obě brány ve stejném předplatném. Tento krok můžete provést ve stejné relaci prostředí PowerShell.
+V tomto příkladu jsou obě brány ve stejném předplatném. Můžete tento krok dokončit ve stejné relaci prostředí PowerShell.
 
-#### <a name="1-get-both-gateways"></a>1. Získat obě brány
+#### <a name="1-get-both-gateways"></a>1. Získejte obě brány
 
 Ujistěte se, že jste přihlášeni a připojeni k předplatnému 1.
 
@@ -298,7 +298,7 @@ $vnet2gw = Get-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $R
 
 #### <a name="2-create-both-connections"></a>2. Vytvoření obě připojení
 
-V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k TestVNet2 a připojení z TestVNet2 do virtuální sítě TestVNet1.
+V tomto kroku vytvoříte připojení z virtuální sítě TestVNet1 k TestVNet2 a připojení z TestVNet2 k virtuální síti TestVNet1.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection12 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet2gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3' -EnableBgp $True
@@ -311,11 +311,11 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 > 
 > 
 
-Po dokončení těchto kroků, připojení po několika minutách. Relaci partnerského vztahu protokolu BGP je až po dokončení připojení VNet-to-VNet.
+Po dokončení těchto kroků, připojení se naváže za pár minut. Relaci partnerského vztahu protokolu BGP je po dokončení připojení VNet-to-VNet.
 
-Pokud jste dokončili všechny tři části tohoto cvičení, jste vytvořili následující topologie sítě:
+Pokud jste dokončili všechny tři části v tomto cvičení, které jste stanovili následující topologie sítě:
 
-![Protokol BGP pro síť VNet-to-VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
+![Protokol BGP pro připojení typu VNet-to-VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
 ## <a name="next-steps"></a>Další postup
 

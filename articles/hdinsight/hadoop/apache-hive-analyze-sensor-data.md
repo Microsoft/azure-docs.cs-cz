@@ -1,6 +1,6 @@
 ---
-title: Analýza dat ze senzorů pomocí Hivu a Hadoop – Azure HDInsight
-description: Zjistěte, jak analyzovat data ze senzorů pomocí konzoly pro dotazy Hive s HDInsight (Hadoop) a pak data vizualizovat v Microsoft Excel pomocí PowerView.
+title: Analýza dat senzoru pomocí Apache Hivu a Apache Hadoop – Azure HDInsight
+description: Zjistěte, jak analyzovat data ze senzorů pomocí dotazu konzoly Apache Hive s HDInsight (Hadoop) a pak data vizualizovat v Microsoft Excel pomocí PowerView.
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/14/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: dfc4d930f185c36c3ba0c869494ba0e7dee64cac
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c3e4ab9dc03afe1c4a19e738804e6400b0830291
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249400"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634409"
 ---
-# <a name="analyze-sensor-data-using-the-hive-query-console-on-hadoop-in-hdinsight"></a>Analýza dat senzoru pomocí konzoly pro dotazy Hive platformy hadoop v HDInsight
+# <a name="analyze-sensor-data-using-the-apache-hive-query-console-on-apache-hadoop-in-hdinsight"></a>Analýza dat senzoru pomocí Apache Hive konzoly pro dotazy na Apache Hadoop v HDInsight
 
-Zjistěte, jak analyzovat data ze senzorů pomocí konzoly pro dotazy Hive s HDInsight (Hadoop) a pak data vizualizovat v Microsoft Excelu pomocí Power View.
+Zjistěte, jak analyzovat data ze senzorů pomocí konzoly pro dotazy Hive s HDInsight (Apache Hadoop) a pak data vizualizovat v Microsoft Excelu pomocí Power View.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu fungovat jenom s clustery HDInsight se systémem Windows. HDInsight je dostupná jenom ve Windows pro verze nižší než HDInsight 3.4. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

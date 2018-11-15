@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729988"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288029"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního hledání pomocí dovedností a ukázkových dat
 
@@ -26,10 +26,16 @@ V tomto rychlém startu si můžete vyzkoušet kanál pro rozšiřování na por
 * Spustíte průvodce (dovednost entity zjistí lidi, lokality a organizace).
 * Pomocí [Průzkumníka služby Hledání](search-explorer.md) se dotážete na rozšířená data.
 
+## <a name="supported-regions"></a> Podporované oblasti
+
 Kognitivní hledání si můžete vyzkoušet ve službě Azure Search vytvořené v následujících oblastech:
 
+* Západní střed USA
 * Střed USA – jih
+* USA – východ
 * Západní Evropa
+* Severní Evropa
+* Jihovýchodní Asie
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -57,7 +63,7 @@ Nejdříve se do služby Azure Search přihlaste.
 
 1. V části Skupina prostředků vytvořte skupinu prostředků, která bude obsahovat všechny prostředky vytvořené během tohoto rychlého startu. To usnadní čištění prostředků, až rychlý start dokončíte.
 
-1. V části Lokalita zvolte buď **USA (střed) – jih**, nebo **Západní Evropa**. V tuto chvíli je verze Preview k dispozici jen v těchto oblastech.
+1. Pro umístění, zvolte jednu z [podporované oblasti](#supported-regions) pro Kognitivního vyhledávání.
 
 1. V části Cenová úroveň můžete pro účely kurzů a rychlých startů vytvořit bezplatnou (**Free**) službu. Pokud chcete důkladněji zkoumat svá vlastní data, vytvořte si [placenou službu](https://azure.microsoft.com/pricing/details/search/), např. **Basic** nebo **Standard**. 
 
@@ -186,7 +192,7 @@ Pokud už jste všechno dostatečně prozkoumali, nejrychlejší způsob, jak v�
 
 Za předpokladu, že jste vložili obě služby do stejné skupiny, odstraňte skupinu prostředků. Tím se trvale odstraní všechno, co v ní je, včetně služeb a veškerého uloženého obsahu, který jste pro toto cvičení vytvořili. Na portálu najdete název skupiny prostředků na stránce Přehled jednotlivých služeb.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete experimentovat s indexováním a rozšiřováním, můžete znovu spustit průvodce a použít jiné dovednosti a pole zdrojových dat. Pokud chcete postup opakovat, odstraňte index a indexer a pak znovu indexer vytvořte s tím, že vyberete novou kombinaci možností.
 

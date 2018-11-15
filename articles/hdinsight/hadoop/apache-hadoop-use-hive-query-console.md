@@ -1,6 +1,6 @@
 ---
-title: Použití Hadoop Hive v konzole pro dotazy v HDInsight – Azure
-description: Informace o používání webové konzoly pro dotazy ke spouštění dotazů Hive v clusteru HDInsight Hadoop z prohlížeče.
+title: Použití Apache Hivu v konzole pro dotazy v HDInsight – Azure
+description: Zjistěte, jak spouštět dotazy Apache Hive v clusteru HDInsight Hadoop z prohlížeče pomocí webové konzoly pro dotazy.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4083ceca8c9181c8acb1a90e782cb5bca981e684
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: da270792c8987ff43c422c5b03eb8b789b8bda5e
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013960"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634582"
 ---
-# <a name="run-hive-queries-using-the-query-console"></a>Spouštění dotazů Hive pomocí konzoly pro dotazy
+# <a name="run-apache-hive-queries-using-the-query-console"></a>Spouštění dotazů Apache Hive pomocí konzoly pro dotazy
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-V tomto článku se dozvíte, jak pomocí konzoly pro dotazy HDInsight ke spouštění dotazů Hive v clusteru HDInsight Hadoop z prohlížeče.
+V tomto článku se dozvíte, jak spouštět dotazy Apache Hive v clusteru HDInsight Hadoop z prohlížeče pomocí konzoly pro dotazy HDInsight.
 
 > [!IMPORTANT]
 > Konzole pro dotazy HDInsight je dostupná pouze na clusterech HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

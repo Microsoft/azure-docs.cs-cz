@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 31ae13fb84453a7014b66499c983e1f52554775e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279122"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685765"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V tomto článku se dozvíte, jak povolit přihlášení pro uživatelský účet služby AD FS pomocí [vlastní zásady](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C.
+V tomto článku se dozvíte, jak povolit přihlášení pro uživatelský účet služby AD FS pomocí [vlastní zásady](active-directory-b2c-overview-custom.md) v Azure Active Directory (Azure AD) B2C. Povolit přihlašování tak, že přidáte [technický profil SAML](saml-technical-profile.md) do vlastní zásady.
 
 ## <a name="prerequisites"></a>Požadavky
 

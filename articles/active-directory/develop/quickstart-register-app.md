@@ -16,18 +16,18 @@ ms.date: 11/02/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: f0220c244bd5ed48393e2f81b7dd8a62fd0423be
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: 1809e7f72afd99de38387317daf2ecb92dbe3cf0
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912982"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51298717"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform-preview"></a>Rychlý start: Registrace aplikace na platformě Microsoft Identity Platform (Preview)
 
 Podnikoví vývojáři a poskytovatelé softwaru jako služby (SaaS) můžou vyvíjet komerční cloudové služby nebo obchodní aplikace s možností integrace s platformou Microsoft Identity Platform za účelem zajištění zabezpečeného přihlašování a autorizace pro služby.
 
-V tomto rychlém startu se dozvíte, jak pomocí prostředí **Registrace aplikací (Preview)** na webu Azure Portal přidat a zaregistrovat aplikaci, aby ji bylo možné integrovat s platformou Microsoft Identity Platform.
+V tomto rychlém startu se dozvíte, jak pomocí prostředí **Registrace aplikací (Preview)** na webu Azure Portal přidat a zaregistrovat aplikaci, aby ji bylo možné integrovat s platformou Microsoft Identity Platform. Další informace o nové funkce a vylepšení v novém prostředí registrace aplikací, najdete v článku [tento příspěvek na blogu](https://developer.microsoft.com/graph/blogs/new-app-registration/). 
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -63,7 +63,7 @@ Azure AD vaší aplikaci přiřadí jedinečné ID aplikace (klienta) a přesmě
 
 [![Stránka Přehled nově zaregistrované aplikace](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png)](./media/quickstart-add-azure-ad-app-preview/new-app-overview-page-expanded.png#lightbox)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si o [oprávněních a souhlasu](v2-permissions-and-consent.md).
 - Pokud chcete povolit další funkce konfigurace v registraci aplikace, jako jsou přihlašovací údaje a oprávnění, a povolit přihlašování uživatelů z jiných tenantů, projděte si rychlé starty:

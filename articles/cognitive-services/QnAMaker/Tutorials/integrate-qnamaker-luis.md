@@ -10,19 +10,19 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: diberry
-ms.openlocfilehash: be9d68db3a2de6327d94a73af58b669583db3f00
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 27f60f9624af2819663990aeba99b4044045540b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287026"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687363"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integrace nástroje QnA Maker a LUIS distribuovat znalostní báze
 Jak QnA Maker znalostní báze případu dostatečného růstu, bude obtížné spravovat jako jeden monolitické nastavit a je potřeba rozdělit do menších logické bloků ve znalostní bázi.
 
 I když je jednoduché vytvářet více znalostních bází v nástroje QnA Maker, budete potřebovat nějaké logiky směrovat příchozí dotaz do odpovídající znalostní báze. Můžete to provést s využitím služby LUIS.
 
-Tento článek používá sadu SDK v3 Bot Framework. Přečtěte si tento [Bot Framework článku](https://docs.microsoft.com/en-us/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp), pokud vás zajímá verze sady SDK rozhraní Bot Framework v4 těchto informací.
+Tento článek používá sadu SDK v3 Bot Framework. Přečtěte si tento [Bot Framework článku](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=csharp), pokud vás zajímá verze sady SDK rozhraní Bot Framework v4 těchto informací.
 
 ## <a name="architecture"></a>Architektura
 

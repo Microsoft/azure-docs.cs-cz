@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b7aaf57def84feec95cc6a157ac6dd33a17b2fc0
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: c384807a55f04419bb26e0ab5f295b8c9685acf8
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645851"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614714"
 ---
 # <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Aktualizace znalostní báze ve službě QnA Maker pomocí Javy
 
@@ -276,7 +276,7 @@ public class UpdateKB {
      * Sends the request to update the knowledge base.
      * @param kb The ID for the existing knowledge base
      * @param req The data source for the updated knowledge base
-     * @return Reponse Returns the response from a PATCH request
+     * @return Response Returns the response from a PATCH request
      */
     public static Response UpdateKB (String kb, Request req) throws Exception {
         URL url = new URL(host + service + method + kb);
@@ -387,7 +387,7 @@ Jakmile se znalostní báze aktualizuje, můžete se na ni podívat na portálu 
 
 Pokud chcete upravit další prvky vaší znalostní báze, podívejte se na [schéma JSON](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) služby QnA Maker a upravte objekt `req` v metodě `getRequest()`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

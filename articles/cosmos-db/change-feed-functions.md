@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rimman
-ms.openlocfilehash: ece1c123cad8403358dcc3b3626bf4b2cd756e25
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 943cd79237290cd91d56cc1c51f5d773cdb16634
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628944"
+ms.locfileid: "51636386"
 ---
 # <a name="how-to-use-azure-cosmos-db-change-feed-with-azure-functions"></a>Použití změn databáze Azure Cosmos DB kanálu s využitím Azure Functions
 
@@ -41,7 +41,7 @@ Služba Azure Functions se dotazuje kanálu změn nepřetržitě, s výchozí ma
 
 Pokud váš dokument přijímá více změn ve stejném intervalu, který přijal aktivační událost pro dotazování na nových změn, může se zobrazit nejnovější verzi dokumentu a není zprostředkující ten.
 
-Pokud chcete k dotazování kanálu po dobu kratší než 5 sekund změn, například pro každou sekundu, můžete nakonfigurovat čas dotazování "feedPollDelay", naleznete v tématu [kompletní konfigurace](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_Documents_Client_ConnectionPolicy_PreferredLocations). Je definován v milisekundách, s výchozí 5000. Dotazování pro menší než 1 sekundu je možné, ale to se nedoporučuje, protože se spustí pomocí více procesorů paměti.
+Pokud chcete dotazování kanálu po dobu kratší než 5 sekund změn, například pro každou sekundu, můžete nakonfigurovat čas dotazování "feedPollDelay", naleznete v tématu [kompletní konfigurace](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet#Microsoft_Azure_Documents_Client_ConnectionPolicy_PreferredLocations). Je definován v milisekundách, s výchozí 5000. Dotazování pro menší než 1 sekundu je možné, ale to se nedoporučuje, protože se spustí pomocí více procesorů paměti.
 
 ### <a name="can-multiple-azure-functions-read-one-containers-change-feed"></a>Může číst několik Azure Functions kanálu změn jednoho kontejneru?
 

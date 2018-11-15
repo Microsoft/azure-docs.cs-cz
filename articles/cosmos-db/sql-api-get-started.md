@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 40a80a049e6eb94390bab0b47e1f5ed49b4606b9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: c4f86b9fa949c854b557812a41aa9d86a11ecc94
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991194"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636981"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Úvodní kurz k rozhraní SQL API
 
@@ -168,7 +168,7 @@ Zkopírujte a vložte metodu **WriteToConsoleAndPromptToContinue** za metodu **G
             Console.ReadKey();
     }
 
-[Databázi](sql-api-resources.md#databases) Azure Cosmos DB je možné vytvořit pomocí metody [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) třídy **DocumentClient**. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
+[Databázi](databases-containers-items.md#azure-cosmos-databases) Azure Cosmos DB je možné vytvořit pomocí metody [CreateDatabaseIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseifnotexistsasync.aspx) třídy **DocumentClient**. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
 
 Zkopírujte a vložte následující kód do metody **GetStartedDemo** za vytvoření klienta. Tím se vytvoří databáze s názvem *FamilyDB*.
 
@@ -189,7 +189,7 @@ Blahopřejeme! Úspěšně jste vytvořili databázi Azure Cosmos DB.
 > 
 > 
 
-[Kolekci](sql-api-resources.md#collections) je možné vytvořit pomocí metody [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) třídy **DocumentClient**. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
+Kolekce lze vytvořit pomocí [CreateDocumentCollectionIfNotExistsAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionifnotexistsasync.aspx) metodu **DocumentClient** třídy. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
 
 Zkopírujte a vložte následující kód do metody **GetStartedDemo** za vytvoření databáze. Tím se vytvoří kolekce dokumentů s názvem *FamilyCollection*.
 
@@ -205,7 +205,7 @@ Stisknutím klávesy **F5** spusťte aplikaci.
 Blahopřejeme! Úspěšně jste vytvořili kolekci dokumentů Azure Cosmos DB.  
 
 ## <a id="CreateDoc"></a>Krok 6: Vytvoření dokumentů JSON
-[Dokument](sql-api-resources.md#documents) je možné vytvořit pomocí metody [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) třídy **DocumentClient**. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Pokud již máte data, která chcete uložit do databáze, můžete použít [nástroj pro migraci dat](import-data.md) služby Azure Cosmos DB a importovat tato data do databáze.
+Dokument lze vytvořit pomocí [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) metodu **DocumentClient** třídy. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Pokud již máte data, která chcete uložit do databáze, můžete použít [nástroj pro migraci dat](import-data.md) služby Azure Cosmos DB a importovat tato data do databáze.
 
 Nejprve musíme vytvořit třídu **Family**, která bude v této ukázce představovat objekty uložené ve službě Azure Cosmos DB. Kromě toho vytvoříme i podtřídy **Parent**, **Child**, **Pet** a **Address**, které se použijí v rámci **Family**. Povšimněte si, že dokumenty musí mít vlastnost **Id** serializovanou jako **id** ve formátu JSON. Vytvořte tyto třídy tak, že za metodu **GetStartedDemo** přidáte následující vnitřní podtřídy.
 
@@ -536,7 +536,7 @@ Pokud chcete obnovit reference na sadu Azure Cosmos DB .NET SDK v nástroji Visu
 A to je vše, stačí sestavit a máte hotovo.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Chcete komplexnější kurz pro ASP.NET MVC? Viz [Kurz k ASP.NET MVC: Vývoj webové aplikace s použitím služby Azure Cosmos DB](sql-api-dotnet-application.md).
 * Chcete testovat škálování a výkon pomocí služby Azure Cosmos DB? Viz [Testování výkonu a škálování pomocí služby Azure Cosmos DB](performance-testing.md).
 * Přečtěte si, jak [sledovat požadavky, využití a úložiště Azure Cosmos DB](monitor-accounts.md).
