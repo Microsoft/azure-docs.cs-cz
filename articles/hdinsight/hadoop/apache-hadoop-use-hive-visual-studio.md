@@ -1,5 +1,5 @@
 ---
-title: Hivu se službou Data Lake (Hadoop) tools pro Visual Studio – Azure HDInsight
+title: Apache Hive pomocí nástrojů Data Lake (Apache Hadoopu) pro Visual Studio – Azure HDInsight
 description: Naučte se používat nástroje Data Lake pro Visual Studio ke spouštění dotazů Apache Hive s Apache Hadoop v Azure HDInsight.
 services: hdinsight
 author: hrasheed-msft
@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4cc2012e40fad9e1343804149cdffaa3a1ab9db4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bfb53ddf666426253cce08e6f09a5297f5d2f4d3
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011081"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634103"
 ---
-# <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštění dotazů Hive pomocí nástrojů Data Lake pro Visual Studio
+# <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštějte dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio
 
-Naučte se používat nástroje Data Lake pro Visual Studio k dotazu Apache Hive. Data Lake tools umožňují snadno vytvářet, odeslání a monitorování dotazů Hive ke clusteru Hadoop v Azure HDInsight.
+Naučte se používat nástroje Data Lake pro Visual Studio k dotazu Apache Hive. Data Lake tools umožňují snadno vytvářet, odesílání a monitorování dotazů Hive pro Apache Hadoop v Azure HDInsight.
 
 ## <a id="prereq"></a>Požadavky
 
-* Cluster Azure HDInsight (Hadoop v HDInsight)
+* Cluster Azure HDInsight (Apache Hadoop v HDInsight)
 
   > [!IMPORTANT]
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

@@ -1,7 +1,6 @@
 ---
-title: 'Příklad: Analýza mínění pomocí rozhraní REST API pro analýzu textu'
-titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak zjistit mínění pomocí rozhraní REST API pro analýzu textu.
+title: Analýza subjektivního hodnocení s postupy v REST API pro analýzu textu (Microsoft Cognitive Services v Azure) | Dokumentace Microsoftu
+description: Jak rozpoznávání mínění pomocí REST API pro analýzu textu ve službě Microsoft Cognitive Services v Azure v tomto kurzu návodu.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: bbe9ffd0709157b5f0389ccc68a285b9c3829db9
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605891"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632862"
 ---
 # <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Příklad: Jak zjistit mínění pomocí analýzy textu
 
@@ -24,6 +23,9 @@ ms.locfileid: "45605891"
 Tato možnost je užitečná pro rozpoznání pozitivního a negativního mínění v sociálních médiích, zákaznických recenzích a diskuzních fórech. Obsah pochází od vás, modely a trénovací data poskytuje služba.
 
 Pro analýzu mínění se momentálně podporuje angličtina, němčina, španělština a francouzština. Další jazyky jsou ve verzi Preview. Další informace najdete v tématu [Podporované jazyky](../text-analytics-supported-languages.md).
+
+> [!TIP]
+> Rozhraní text Analytics také poskytuje Dockeru založených na Linuxu image kontejneru pro analýzu mínění, což vám umožní [nainstalovat a spustit kontejner pro analýzu textu](text-analytics-how-to-install-containers.md) blízko datům.
 
 ## <a name="concepts"></a>Koncepty
 
@@ -77,7 +79,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 + Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API týkající se této žádosti: [Rozhraní API pro analýzu mínění](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9).
 
-+ Nastavte koncový bod HTTP pro extrakci klíčových frází. Musí obsahovat prostředek `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ Nastavení koncového bodu HTTP pro analýzu mínění, pomocí prostředek pro analýzu textu v Azure nebo instance [kontejneru pro analýzu textu](text-analytics-how-to-install-containers.md). Musí obsahovat prostředek `/sentiment`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`.
 
 + Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v článku, který se věnuje [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
 
@@ -138,13 +140,13 @@ V tomto článku jste se seznámili s koncepty a pracovním postupem analýzy m�
 + Žádost POST je určená pro koncový bod `/sentiment` a používá individuální [přístupový klíč a koncový bod](text-analytics-how-to-access-key.md), který je platný pro dané předplatné.
 + Výstup odpovědi, který tvoří skóre mínění pro jednotlivá ID dokumentu, lze streamovat do libovolné aplikace, která přijímá JSON, včetně například Excelu a Power BI.
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
  [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Extrakce klíčových frází](text-analytics-how-to-keyword-extraction.md)

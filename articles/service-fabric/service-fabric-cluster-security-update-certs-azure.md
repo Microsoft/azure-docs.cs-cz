@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: cca48e78278cf234d6f6062eadac4f85ecbcb79b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: aa5096b84f9bfe97784d6f80e4c203a1d8384404
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625925"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687414"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Přidat nebo odebrat certifikáty pro cluster Service Fabric v Azure
 Doporučujeme seznámit se s jak Service Fabric používá certifikáty X.509 a znáte [scénáře zabezpečení clusteru](service-fabric-cluster-security.md). Musíte porozumět tomu, jaký certifikát clusteru je a k čemu slouží, než budete pokračovat dál.
@@ -196,7 +196,7 @@ Upravit parametr šablony Resource Manageru souboru, přidejte dva nové paramet
 
 ```powershell
 Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionId <Subcription ID> 
+Select-AzureRmSubscription -SubscriptionId <Subscription ID> 
 
 ```
 

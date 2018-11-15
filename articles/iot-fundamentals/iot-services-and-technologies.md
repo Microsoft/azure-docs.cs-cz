@@ -7,14 +7,14 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: 6834ad6c6915ceb3306284ea738d76027e2c9479
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: ba4f5fcb08d671937c677d8a14c27aaec16bcb1b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365352"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288709"
 ---
-# <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Technologie a řešení Azure IoT: PaaS a SaaS
+# <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>Technologie Internetu věcí (IoT) a řešení: PaaS a SaaS
 
 Microsoft sestavil portfolio, které vyhovuje potřebám všech zákazníků a umožňuje jim přístup k výhodám digitální transformace. Produktové portfolio Azure IoT je přehledem dostupných technologií a řešení PaaS či SaaS. Představuje dvě cesty, kterými se můžete při sestavování vlastního řešení vydat:
 
@@ -24,7 +24,7 @@ Microsoft sestavil portfolio, které vyhovuje potřebám všech zákazníků a u
 
 - Software jako služba (SaaS): začněte rychleji díky [Azure IoT Central](https://azure.microsoft.com/services/iot-central/), což je nové řešení SaaS pro vývoj aplikací IoT, aniž byste se museli vystavit složitosti řešení IoT. Pokud vaše organizace nemá dostatek prostředků na vytvoření vlastního řešení IoT, využijte Azure IoT Central, což je řešení IoT bez kódu, které dokáže vytvořit modely zařízení, řídicí panely a pravidla v řádech minut.
 
-![Technologie a řešení Azure IoT](./media/iot-comparison/paas-saas-technologies-solutions.png)
+![Technologie a řešení Azure IoT](./media/iot-services-and-technologies/paas-saas-technologies-solutions.png)
 
 ## <a name="solutions"></a>Řešení
 
@@ -108,6 +108,6 @@ Využijte ve svém řešení IoT řady nabídek PaaS pro produkty Azure pro data
 ### <a name="visualization-and-integration"></a>Vizualizace a integrace
 Microsoft Azure nabízí úplné cloudové řešení, které kombinuje neustále rostoucí kolekci integrovaných cloudových služeb se závazkem ohledně špičkové ochrany a soukromí vašich dat. Další informace o [Microsoft Azure](https://azure.microsoft.com/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete rychle a snadno prozkoumat funkce IoT, podívejte se do [části Začínáme v dokumentaci služby IoT Hub](/azure/iot-hub/iot-hub-get-started). Pokud stojíte o podrobnější praktické zkušenosti, vyzkoušejte jeden z [kurzů o službě IoT Edge](/azure/iot-edge/tutorial-simulate-device-windows).

@@ -8,16 +8,16 @@ ms.date: 11/12/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a110c0a938e56c8ac276e0efed22ea3af23f111a
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 06dec64a55aaece4cd67ebf0485e34aa206a8936
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578531"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633729"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
 
-Tento článek popisuje, jak můžete použít tak průběžnou integraci a průběžné nasazování funkce služeb Azure DevOps a Microsoft Team Foundation Server (TFS) pro vytváření, testování a rychle a efektivně nasadit aplikace pro vaše Azure IoT Edge. 
+Můžete snadno přijmout DevOps s vašimi aplikacemi Azure IoT Edge s [Azure IoT Edge pro Azure kanály](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) nebo [modul plug-in Azure IoT Edge pro Jenkinse](https://plugins.jenkins.io/azure-iot-edge). Tento článek ukazuje, jak můžete pomocí průběžné integrace a průběžného nasazování funkce kanály Azure a Microsoft Team Foundation Server (TFS) k vytváření, testování a rychle a efektivně nasadit aplikace pro vaše Azure IoT Edge. 
 
 V tomto článku se dozvíte, jak:
 * Vytvoření a vrátit se změnami ukázkové řešení IoT Edge.
@@ -42,28 +42,28 @@ V této části vytvoříte ukázkové hraničních zařízeních IoT řešení 
 
 3. Ukázku řešení IoT Edge je teď připravený. Výchozí C# modul funguje jako zprávy modulu kanálu. V `deployment.template.json`, uvidíte toto řešení obsahuje dva moduly. Zpráva se budou generovat z `tempSensor` modulu a budou směrované přímo prostřednictvím `FilterModule`, pak odešlou do služby IoT hub.
 
-4. Uložte tyto projekty a potom vrátit se změnami do úložiště Azure DevOps nebo TFS.
+4. Uložte tyto projekty a potom vrátit se změnami do úložiště Azure nebo v sadě TFS úložiště.
     
 > [!NOTE]
 > Další informace o použití úložiště Azure najdete v tématu [sdílení kódu pomocí sady Visual Studio a úložiště Azure](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
 
 
-## <a name="configure-azure-pipeline-for-continuous-integration"></a>Nakonfigurujte Azure kanál pro průběžnou integraci
-V této části vytvoříte kanál sestavení, která je nakonfigurována na automatické spuštění při vrácení se změnami změny ukázkové řešení IoT Edge a zobrazí sestavení zaznamená v kanálu Azure.
+## <a name="configure-azure-pipelines-for-continuous-integration"></a>Konfigurovat kanály Azure pro průběžnou integraci
+V této části vytvoříte kanál sestavení, která je nakonfigurována na automatické spuštění při vrácení se změnami změny ukázkové řešení IoT Edge a zobrazí sestavení zaznamená v kanálech Azure.
 
-1. Přihlaste se k vaší organizaci Azure DevOps (**https://**_svůj účet_**. visualstudio.com**) a otevřete projekt, ve kterém můžete zkontrolovat v ukázkové aplikaci.
+1. Přihlaste se k vaší organizaci Azure DevOps ( **https://dev.azure.com/{your organizace} /**) a otevřete projekt, ve kterém můžete zkontrolovat v ukázkové aplikaci.
 
     ![Vrácení se změnami kódu](./media/how-to-ci-cd/init-project.png)
 
-1. Navštivte [Azure IoT Edge pro Azure kanál](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) na Azure DevOps Marketplace. Klikněte na tlačítko **získání bezplatného** a postupujte podle pokynů průvodce a nainstalujte toto rozšíření pro vaši organizaci Azure DevOps nebo ke stažení pro TFS.
+1. Navštivte [Azure IoT Edge pro Azure kanály](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) na Azure DevOps Marketplace. Klikněte na tlačítko **získání bezplatného** a postupujte podle pokynů průvodce a nainstalujte toto rozšíření pro vaši organizaci Azure DevOps nebo ke stažení pro TFS.
 
     ![Instalace rozšíření](./media/how-to-ci-cd/install-extension.png)
 
-1. V Azure DevOps, otevřete **sestavení a vydání** hub a v **sestavení** kartě **+ nový kanál**. Nebo, pokud již máte kanály pro sestavování, vyberte **+ nová** tlačítko.
+1. V Azure kanálů, otevřete **sestavení a vydání** hub a v **sestavení** kartě **+ nový kanál**. Nebo, pokud již máte kanály pro sestavování, vyberte **+ nová** tlačítko.
 
     ![Nový kanál](./media/how-to-ci-cd/add-new-build.png)
 
-1. Pokud se zobrazí výzva, vyberte **Azure DevOps Git** typ zdroje. Vyberte projekt, úložiště a větev, ve kterém se nachází váš kód. Zvolte **pokračovat**.
+1. Pokud se zobrazí výzva, vyberte **Git** typ zdroje. Vyberte projekt, úložiště a větev, ve kterém se nachází váš kód. Zvolte **pokračovat**.
 
     ![Vyberte git](./media/how-to-ci-cd/select-vsts-git.png)
 
@@ -98,8 +98,8 @@ V této části vytvoříte kanál sestavení, která je nakonfigurována na aut
     Uložte nový kanál sestavení. Klikněte na tlačítko **Uložit**.
 
 
-## <a name="configure-azure-pipeline-for-continuous-deployment"></a>Nakonfigurujte Azure kanál pro průběžné nasazování
-V této části vytvoříte kanál pro vydávání verzí, která je nakonfigurována na automatické spuštění při vašeho kanálu sestavení zahodí artefakty a zobrazí protokolech nasazení v kanálu Azure.
+## <a name="configure-azure-pipelines-for-continuous-deployment"></a>Konfigurovat kanály Azure pro průběžné nasazování
+V této části vytvoříte kanál pro vydávání verzí, která je nakonfigurována na automatické spuštění při vašeho kanálu sestavení zahodí artefakty a zobrazí protokolech nasazení v kanálech Azure.
 
 1. V **verze** kartě **+ nový kanál**. Nebo, pokud již máte kanály pro vydávání, vyberte **+ nová** tlačítko.  
 
@@ -165,7 +165,7 @@ V této části vytvoříte kanál pro vydávání verzí, která je nakonfiguro
     
 ## <a name="verify-iot-edge-cicd-with-the-build-and-release-pipelines"></a>Ověřte IoT Edge CI/CD s sestavení a vydávání kanálů
 
-V této části se aktivují sestavení, aby kanál CI/CD fungovat. Ověřte výsledek pomocí portálu Azure DevOps. 
+V této části se aktivují sestavení, aby kanál CI/CD fungovat. Ověřte, že bude nasazení úspěšné.
 
 1. K aktivaci úlohy sestavení, můžete potvrdíte a vložíte změny do úložiště zdrojového kódu nebo ruční spuštění. Úlohu sestavení a ve vašem kanálu sestavení můžete aktivovat kliknutím **fronty** tlačítko stejně jako v následujícím snímku obrazovky.
 

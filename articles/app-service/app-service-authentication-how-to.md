@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení ověřování a autorizace ve službě Azure App Service | Dokumentace Microsoftu
+title: Rozšířené využití ověřování a autorizace ve službě Azure App Service | Dokumentace Microsoftu
 description: Ukazuje, jak přizpůsobit ověřování a autorizace ve službě App Service a získat deklarace identity uživatelů a různé tokeny.
 services: app-service
 documentationcenter: ''
@@ -11,18 +11,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 11/08/2018
 ms.author: cephalin
-ms.openlocfilehash: 629a76ab5610625e14780d7b5c57d3979c2224c9
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e1109ec8cc98c7e5fc72d7f56ade19968b0056cc
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344166"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685323"
 ---
-# <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Přizpůsobení ověřování a autorizace ve službě Azure App Service
+# <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Rozšířené využití ověřování a autorizace ve službě Azure App Service
 
-V tomto článku se dozvíte, jak přizpůsobit [ověřování a autorizace ve službě App Service](app-service-authentication-overview.md)a jak spravovat identitu z vaší aplikace. 
+V tomto článku se dozvíte, jak přizpůsobit předdefinované [ověřování a autorizace ve službě App Service](app-service-authentication-overview.md)a jak spravovat identitu z vaší aplikace. 
 
 Abyste mohli rychle začít, najdete v jednom z následujících kurzů:
 
@@ -58,6 +58,48 @@ Chcete-li přesměrovat uživatele po-přihlášení se změnami na vlastní adr
 
 ```HTML
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
+
+## <a name="validate-tokens-from-providers"></a>Ověřovat tokeny od poskytovatelů
+
+V u klienta přesměruje přihlášení, aplikace přihlásí uživatele ke zprostředkovateli ručně a poté ho předá ověřovací token do služby App Service pro ověřování (viz [tok ověřování](app-service-authentication-overview.md#authentication-flow)). Toto ověření samotný není ve skutečnosti udělit přístup k prostředkům požadovanou aplikaci, ale úspěšné ověření získáte token relace, který můžete použít pro přístup k prostředkům aplikace. 
+
+Ověřit token poskytovatele, aplikaci služby App Service musíte nejdřív nakonfigurovat požadovaného poskytovatele. Za běhu a po získání ověřovacího tokenu od poskytovatele odeslat token, který má `/.auth/login/<provider>` pro ověření. Příklad: 
+
+```
+POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
+Content-Type: application/json
+
+{"id_token":"<token>","access_token":"<token>"}
+```
+
+Formát tokenu se může mírně lišit podle poskytovatele. Podrobnosti najdete v následující tabulce:
+
+| Hodnota zprostředkovatele | Vyžaduje v textu požadavku | Komentáře |
+|-|-|-|
+| `aad` | `{"access_token":"<access_token>"}` | |
+| `microsoftaccount` | `{"access_token":"<token>"}` | `expires_in` Vlastnost je volitelná. <br/>Při požadování tokenu z Live services, vždy požadavku `wl.basic` oboru. |
+| `google` | `{"id_token":"<id_token>"}` | `authorization_code` Vlastnost je volitelná. -Li zadána, ji můžou také v případě potřeby doprovázet `redirect_uri` vlastnost. |
+| `facebook`| `{"access_token":"<user_access_token>"}` | Použijte platný [přístupový token uživatele](https://developers.facebook.com/docs/facebook-login/access-tokens) ze sítě Facebook. |
+| `twitter` | `{"access_token":"<access_token>", "access_token_secret":"<acces_token_secret>"}` | |
+| | | |
+
+V případě poskytovatele tokenu ověření úspěšně, rozhraní API vrátí `authenticationToken` v těle odpovědi, což je tokenu relace. 
+
+```json
+{
+    "authenticationToken": "...",
+    "user": {
+        "userId": "sid:..."
+    }
+}
+```
+
+Jakmile budete mít tento token relace, můžete přístup k prostředkům chráněné aplikace, tak, že přidáte `X-ZUMO-AUTH` záhlaví na požadavky HTTP. Příklad: 
+
+```
+GET https://<appname>.azurewebsites.net/api/products/1
+X-ZUMO-AUTH: <authenticationToken_value>
 ```
 
 ## <a name="sign-out-of-a-session"></a>Odhlaste se z relace
@@ -119,7 +161,7 @@ Aplikace můžete také získat další informace o ověřeném uživateli volá
 
 Z kódu serveru jsou specifické pro zprostředkovatele tokenů vloženy do hlavičky požadavku tak budete mít snadný přístup. Následující tabulka uvádí možné tokenu hlavičky názvy:
 
-| | |
+| Poskytovatel | Názvy záhlaví |
 |-|-|
 | Azure Active Directory | `X-MS-TOKEN-AAD-ID-TOKEN` <br/> `X-MS-TOKEN-AAD-ACCESS-TOKEN` <br/> `X-MS-TOKEN-AAD-EXPIRES-ON`  <br/> `X-MS-TOKEN-AAD-REFRESH-TOKEN` |
 | Token služby Facebook | `X-MS-TOKEN-FACEBOOK-ACCESS-TOKEN` <br/> `X-MS-TOKEN-FACEBOOK-EXPIRES-ON` |

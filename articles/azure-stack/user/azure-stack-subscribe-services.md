@@ -13,21 +13,22 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/05/2018
+ms.date: 11/13/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: aff20cba3bc07924f669420a8c367613b41111a1
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 35b3e6d59cdb1edc59aa211954b8a69a3ce51bc5
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49076096"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632201"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Kurz: vytvoření a otestování předplatné
-V tomto kurzu se dozvíte, jak vytvořit předplatné obsahující nabídky a pak ho otestujte. Pro testování se přihlaste k portálu user portal Azure Stack jako správce cloudu, předplacení nabídky a pak vytvořte virtuální počítač.
+
+V tomto kurzu se dozvíte, jak vytvořit předplatné obsahující nabídky a pak ho otestujte. Pro testování Přihlaste se k portálu user portal Azure Stack jako správce cloudu předplacení nabídky a pak vytvořte virtuální počítač.
 
 > [!TIP]
-> Pro více pokročilejších vyhodnocení výkon můžete [vytvořte odběr pro určitého uživatele](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm#create-a-subscription-as-a-cloud-operator) a potom se přihlaste jako tohoto uživatele na portál user portal. 
+> Pro více pokročilejších vyhodnocení výkon můžete [vytvořte odběr pro určitého uživatele](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) a pak se přihlaste jako tohoto uživatele na portál user portal. 
 
 Tento kurz ukazuje vytvoření odběru na nabídku Azure Stack.
 
@@ -38,48 +39,49 @@ Co se naučíte:
 > * Test nabídky
 
 ## <a name="subscribe-to-an-offer"></a>Přihlášení k odběru nabídky
-K odběru nabídky jako uživatel, budete muset přihlásit k portálu user portal Azure Stack ke zjišťování služby, které byly zveřejněny operátorem služby Azure Stack.
 
-1. Přihlaste se k portálu user portal a klikněte na tlačítko **pořiďte si předplatné**.
+K odběru nabídky jako uživatel, přihlášení k portálu user portal pro Azure Stack ke zjišťování služby, které byly zveřejněny operátorem služby Azure Stack.
+
+1. Přihlaste se k portálu a vyberte uživatele **pořiďte si předplatné**.
 
    ![Získat předplatné](media/azure-stack-subscribe-services/get-subscription.png)
 
-2. Do pole **Zobrazovaný název** zadejte název předplatného. Potom klikněte na **nabízejí** vyberte jednu z dostupných nabídek v **zvolit nabídku** části a pak klikněte na tlačítko **vytvořit**.
+2. Do pole **Zobrazovaný název** zadejte název předplatného. Potom vyberte **nabízejí** zvolit jednu z dostupných nabídek v **zvolit nabídku** oddílu. Potom vyberte **Vytvořit**.
 
    ![Vytvoření nabídky](media/azure-stack-subscribe-services/create-subscription.png)
 
    > [!TIP]
    > Nyní je nutné aktualizovat portál user portal, začněte využívat vaše předplatné.
 
-3. Chcete-li zobrazit předplatné, které jste vytvořili, klikněte na tlačítko **všechny služby**.  Potom v části **Obecné** vyberte kategorii **předplatná**a pak vyberte své nové předplatné. Až se přihlásíte k odběru nabídky, aktualizujte stránku portálu, abyste zjistili, pokud nové služby byly součástí nového předplatného. V tomto příkladu **virtuálních počítačů** byla přidána.
+3. Chcete-li zobrazit předplatné, které jste vytvořili, vyberte **všechny služby**. Potom v části **Obecné** vyberte kategorii **předplatná**a pak vyberte své nové předplatné. Až se přihlásíte k odběru nabídky, aktualizujte stránku portálu, abyste zjistili, pokud nové služby byly součástí nového předplatného. V tomto příkladu **virtuálních počítačů** byla přidána.
 
    ![Zobrazení odběru](media/azure-stack-subscribe-services/view-subscription.png)
 
-
 ## <a name="test-the-offer"></a>Test nabídky
-Když jste přihlášení k portálu user portal, můžete otestovat nabídky zřízení virtuálního počítače s využitím nových možností předplatného. 
+
+Při přihlášení k portálu user portal, můžete otestovat nabídky zřízení virtuálního počítače s využitím nových možností předplatného. 
 
 > [!NOTE]
 > Tento test vyžaduje, aby virtuální počítač s Windows serverem 2016 Datacenter nejprve byl přidán do Tržiště Azure Stack. 
 
 1. Přihlaste se k portálu user portal.
 
-2. Na portálu user portal, klikněte na tlačítko **virtuálních počítačů** > **přidat** > **systému Windows Server 2016 Datacenter**a potom klikněte na tlačítko **vytvořit** .
+2. Na portálu user portal, vyberte **virtuálních počítačů**, pak **přidat**, pak **systému Windows Server 2016 Datacenter**a potom klikněte na tlačítko **vytvořit**.
 
-3. V **Základy** části, zadejte **název**, **uživatelské jméno**, a **heslo**, zvolte **předplatné**, vytvoření **skupiny prostředků** (nebo vyberte existující skupinu) a potom klikněte na tlačítko **OK**.
+3. V **Základy** části, zadejte **název**, **uživatelské jméno**, a **heslo**, zvolte **předplatné**, vytvoření **skupiny prostředků** (nebo vyberte existující skupinu) a pak vyberte **OK**.
 
-4. V **zvolte velikost** klikněte na tlačítko **A1 Standard**a potom klikněte na tlačítko **vyberte**.  
+4. V **zvolte velikost** vyberte **A1 Standard**a potom klikněte na tlačítko **vyberte**.  
 
-5. V okně Nastavení přijměte výchozí hodnoty a klikněte na tlačítko **OK**.
+5. V **nastavení** okno, přijměte výchozí hodnoty a vyberte **OK**.
 
 6. V **Souhrn** klikněte na tlačítko **OK** k vytvoření virtuálního počítače.  
 
-7. Nový virtuální počítač, klikněte na **virtuálních počítačů**, vyhledejte nový virtuální počítač a klikněte na jeho název.
+7. Pokud chcete zobrazit nový virtuální počítač, vyberte **virtuálních počítačů**, vyhledejte nový virtuální počítač a klikněte na jeho název.
 
     ![Všechny zdroje](media/azure-stack-subscribe-services/view-vm.png)
 
 > [!NOTE]
-> Nasazení virtuálních počítačů bude trvat několik minut.
+> Nasazení virtuálního počítače trvá několik minut.
 
 
 ## <a name="next-steps"></a>Další postup

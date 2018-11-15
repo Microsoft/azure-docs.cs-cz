@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 7cccb47bd7489e88649ee82c4d52c72af0d91e8e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
-ms.translationtype: HT
+ms.openlocfilehash: 983b966ad304afb467df26193dd609f6f21a1b32
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390941"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614273"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 
@@ -99,6 +99,9 @@ Další informace o protokolech toku NSG získáte tak, že si projdete kurz tý
 
 Pro síťové prostředky Azure, jako jsou skupiny zabezpečení sítě, veřejné IP adresy, nástroje pro vyrovnávání zatížení, brány virtuálních sítí a aplikační brány, můžete povolit protokolování diagnostiky. Funkce *diagnostických protokolů* poskytuje jednotné rozhraní umožňující povolení a zakázání diagnostických protokolů všech síťových prostředků, které generují diagnostické protokoly. Diagnostické protokoly můžete zobrazit pomocí nástrojů, jako jsou Microsoft Power BI a Azure Log Analytics. Další informace o analýze síťových diagnostických protokolů Azure najdete v tématu popisujícím [síťová řešení Azure v Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="network-watcher-automatic-enablement"></a>Povolení automatického sledovací proces sítě
+Při vytváření nebo aktualizaci virtuální sítě ve vašem předplatném, Network Watcher se automaticky povolí v oblasti virtuální sítě. Na vaše prostředky to nemá žádný dopad a za automatické povolení služby Network Watcher se neúčtuje žádný poplatek. Další informace najdete v tématu [vytvořit Network Watcher](network-watcher-create.md).
+
+## <a name="next-steps"></a>Další postup
 
 Teď máte přehled o službě Azure Network Watcher. Pokud chcete začít používat Network Watcher, proveďte diagnostiku běžného problému s komunikací do a z virtuálního počítače pomocí ověření toku protokolu IP. Pokyny najdete v rychlém startu [Diagnostika problému s filtrováním síťového provozu virtuálního počítače](diagnose-vm-network-traffic-filtering-problem.md).

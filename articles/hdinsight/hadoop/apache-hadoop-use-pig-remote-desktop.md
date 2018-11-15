@@ -1,6 +1,6 @@
 ---
-title: Použití Pigu Hadoop se službou Vzdálená plocha v HDInsight – Azure
-description: Další informace o použití příkazu Pig spouští příkazy Pig Latin z připojení ke vzdálené ploše do clusteru v HDInsight Hadoop využívající systém Windows.
+title: Použití Apache Pig s HDInsight – Azure přes vzdálenou plochu
+description: Další informace o použití příkazu Pig spouští příkazy Apache Pig Latin z připojení ke vzdálené ploše do clusteru Windows založené na Apache Hadoop v HDInsight.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3a7dff2c44b7cc8ccd921d2371666cb19acffbb8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9ab3c5399263e301760b7822488fe00145149d2a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007225"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633338"
 ---
-# <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Spuštění úlohy Pig z připojení ke vzdálené ploše
+# <a name="run-apache-pig-jobs-from-a-remote-desktop-connection"></a>Spouštět úlohy Apache Pig z připojení ke vzdálené ploše
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Tento dokument poskytuje návod pro použití příkazu Pig spouští příkazy Pig Latin z připojení ke vzdálené ploše na cluster HDInsight se systémem Windows. Pig Latin můžete vytvářet aplikace MapReduce zadáním popisu vašeho nového transformace dat, spíše než mapovací a redukční funkce.
+Tento dokument poskytuje návod pro použití příkazu Apache Pig spouští příkazy Pig Latin z připojení ke vzdálené ploše na cluster HDInsight se systémem Windows. Pig Latin můžete vytvářet aplikace MapReduce zadáním popisu vašeho nového transformace dat, spíše než mapovací a redukční funkce.
 
 > [!IMPORTANT]
 > Vzdálená plocha je dostupná pouze na clustery HDInsight, používající jako operační systém Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

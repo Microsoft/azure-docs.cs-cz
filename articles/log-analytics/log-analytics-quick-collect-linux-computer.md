@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/02/2018
+ms.date: 11/13/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: c6e090fe7e79de7b08e77fe7bb08d5f2bf53c9d5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: dc7fbce18bc6593c561b2b3ed2563573879f89d2
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282760"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625738"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Konfigurace agenta Log Analytics pro počítače s Linuxem v hybridním prostředí
 [Azure Log Analytics](log-analytics-agent-windows.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Linuxem ve vašem datacentru nebo jiném cloudovém prostředí do jednoho úložiště pro účely podrobných analýz a korelací.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Linuxem a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Linuxem najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md).  
 
-Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Linux](log-analytics-concept-hybrid.md#supported-linux-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-concept-hybrid.md#network-firewall-requirements).
+Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Linux](log-analytics-agent-overview.md#supported-linux-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-agent-overview.md#network-firewall-requirements).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -125,7 +125,7 @@ Pokud chcete agenta odebrat, spusťte v počítači s Linuxem následující př
 
 Pokud chcete odstranit pracovní prostor, vyberte pracovní prostor Log Analytics, který jste vytvořili dříve, a na stránce prostředku klikněte na **Odstranit**.<br><br> ![Odstranění prostředku Log Analytics](media/log-analytics-quick-collect-linux-computer/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když shromažďujete data o provozu a výkonu z místního počítače s Linuxem, můžete jednoduše a *zdarma* začít zkoumat a analyzovat shromážděná data a provádět na jejich základě akce.  
 
 Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.   

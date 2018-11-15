@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 99d835d1d0e18bf62d6e64b7e5af45b6c53d809e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4fd9f76223adba20028288b46037586f8f54fd1a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239504"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686377"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Vytvoření virtuálních počítačů pomocí šablony Azure Resource Manageru 
 
@@ -42,7 +42,7 @@ Existují dva způsoby, jak vytvořit virtuální počítače ve službě DevTes
 
    Virtuální počítače ve stejném prostředí můžete spravovat společně a sdílet stejný životní cyklus. Uživatelé, kteří jsou přiřazeni k roli uživatele DevTest Labs můžete vytvořit prostředí pomocí těchto šablon, tak dlouho, dokud správce nakonfiguroval testovacího prostředí tímto způsobem.
 
-Zbývající část tohoto článku popisuje šablon Resource Manageru, které používají Mirosoft.DevTestLab/labs/virtualmachines. Správce testovacího prostředí tyto jsou používány k automatizaci vytvoření testovacího prostředí virtuálního počítače (například nárokovatelných virtuálních počítačů) nebo generování zlaté image (například obrázek objekt pro vytváření).
+Zbývající část tohoto článku popisuje šablon Resource Manageru, které používají Microsoft.DevTestLab/labs/virtualmachines. Správce testovacího prostředí tyto jsou používány k automatizaci vytvoření testovacího prostředí virtuálního počítače (například nárokovatelných virtuálních počítačů) nebo generování zlaté image (například obrázek objekt pro vytváření).
 
 [Osvědčené postupy pro vytváření šablon Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) nabízí mnoho pokyny a návrhy k vytváření šablon Azure Resource Manageru, které je spolehlivé a snadné použití.
 

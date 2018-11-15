@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/19/2018
+ms.date: 11/09/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6b935322c9d892793f3695e0922d15f5886c7e25
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471284"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515722"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -32,27 +32,14 @@ V tomto rychlém startu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Analýza nákladů je dostupná pro všechny zákazníky se [smlouvou Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Abyste mohli zobrazit data nákladů, musíte mít alespoň přístup pro čtení k nejméně jednomu z následujících oborů.
+Analýza nákladů je dostupná pro všechny zákazníky se [smlouvou Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Abyste mohli zobrazit data nákladů, musíte mít alespoň přístup pro čtení k nejméně jednomu z následujících oborů. Další informace o přiřazování přístupu k datům služby Cost Management najdete v tématu [přiřazení přístupu k datům](assign-access-acm-data.md).
 
-
-|**Rozsah**|**Definovaný na**|**Požadovaný přístup pro analýzu nákladů na obor**|**Požadované nastavení EA**|**Konsoliduje fakturační data pro**|
-|---                |---                  |---                   |---            |---           |
-|Fakturační účet<sup>1</sup>|[https://ea.azure.com ](https://ea.azure.com )|Podnikový správce|Žádný|Všechna předplatná ze smlouvy Enterprise|
-|Oddělení|[https://ea.azure.com ](https://ea.azure.com )|Správce oddělení|Povolené nastavení DA view charges (Správce oddělení může zobrazit náklady)|Všechna předplatná patřící do registračního účtu propojeného s oddělením|
-|Registrační účet<sup>2</sup2>|[https://ea.azure.com ](https://ea.azure.com )|Vlastník účtu|Povolené nastavení AO view charges (Vlastník účtu může zobrazit náklady)|Všechna předplatná z registračního účtu|
-|Skupina pro správu|[https://portal.azure.com ](https://portal.azure.com )|Čtenář Cost Management (nebo Čtenář)|Povolené nastavení AO view charges (Vlastník účtu může zobrazit náklady)|Všechna předplatná spadající do skupiny pro správu|
-|Předplatné|[https://portal.azure.com ](https://portal.azure.com )|Čtenář Cost Management (nebo Čtenář)|Povolené nastavení AO view charges (Vlastník účtu může zobrazit náklady)|Všechny prostředky nebo skupiny prostředků v předplatném|
-|Skupina prostředků|[https://portal.azure.com ](https://portal.azure.com )|Čtenář Cost Management (nebo Čtenář)|Povolené nastavení AO view charges (Vlastník účtu může zobrazit náklady)|Všechny prostředky ve skupině prostředků|
-
-<sup>1</sup>Fakturační účet se často označuje jako smlouva Enterprise nebo registrace.
-
-<sup>2</sup>Registrační účet s se často označuje jako vlastník účtu.
-
-Další informace o konfiguraci nastavení **DA view charges** a **AO view charges** najdete v článku [Povolení přístupu k nákladům](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs).
-
-
-
-
+- Fakturační účet
+- Oddělení
+- Registrační účet
+- Skupina pro správu
+- Předplatné
+- Skupina prostředků
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -116,7 +103,7 @@ Prostředky virtuálních počítačů, sítě a úložiště *Classic* (Azure S
 
 Informace z analýzy dat si můžete **stáhnout** a vygenerovat tak soubor CSV pro veškerá data aktuálně zobrazená na webu Azure Portal. Všechny použité filtry a seskupení jsou v souboru zahrnuty. Do souboru CSV se zahrnou i podkladová data pro horní celkový graf, která nejsou aktivně zobrazena.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokračujte prvním kurzem, ve kterém se dozvíte, jak vytvořit a spravovat rozpočty.
 

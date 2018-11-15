@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: eb50673b4f618caadfa1abfb654d7e3f15e51713
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: a57e7ccedd0c3b776a39c6750a3d5b4b5cc41d88
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740956"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685442"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Stáhněte si informačního kanálu procesor změnu .NET SDK: A poznámky k verzi
 > [!div class="op_single_selector"]
@@ -93,7 +93,7 @@ ms.locfileid: "50740956"
   * IChangeFeedObserver.ProcessChangesAsync nyní přijímá CancellationToken.
   * IRemainingWorkEstimator - odhad zbývající práce, je možné samostatně z procesoru.
   * Nové rozšíření body:
-    * IParitionLoadBalancingStrategy - pro vlastní Vyrovnávání zatížení oddílů mezi instancemi procesoru.
+    * IPartitionLoadBalancingStrategy - pro vlastní Vyrovnávání zatížení oddílů mezi instancemi procesoru.
     * ILease, ILeaseManager – pro správu vlastní zapůjčení.
     * IPartitionProcessor - pro vlastní zpracování změn na oddíl.
 * Protokolování - využívá [LibLog](https://github.com/damianh/LibLog) knihovny.

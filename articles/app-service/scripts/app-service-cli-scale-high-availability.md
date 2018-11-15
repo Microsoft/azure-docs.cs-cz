@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností | Microsoft Docs
-description: Ukázkový skript Azure CLI – Škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností
+title: Ukázkový skript Azure CLI – škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností s | Dokumentace Microsoftu
+description: Ukázkový skript Azure CLI – škálování webové aplikace po celém světě s využitím architektury vysokou dostupnost
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ae2aaaa35d119b6e4691257333547cb1a3a21e86
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 4403e0081df3120c889b93d642670895252ac47e
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968473"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567963"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Škálování webové aplikace po celém světě s využitím architektury s vysokou dostupností
 
@@ -51,7 +51,7 @@ Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služ
 | [`az network traffic-manager profile create`](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) | Vytvoří profil služby Azure Traffic Manager. |
 | [`az network traffic-manager endpoint create`](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) | Přidá do profilu služby Azure Traffic Manager koncový bod. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

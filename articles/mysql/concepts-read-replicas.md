@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/30/2018
-ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 11/13/2018
+ms.openlocfilehash: 82f80fc1342f0c76cb880b020dcd835a23635b0a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412444"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632556"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -60,12 +60,15 @@ Servery repliky jsou vytvořené pomocí stejné konfigurace serveru na hlavní 
 - Období uchování zálohy
 - Možnosti redundance zálohy
 - Verze stroje MySQL
+- Pravidla brány firewall
 
 Po vytvoření repliky, můžete změnit cenovou úroveň (s výjimkou do a z Basic), výpočetní generaci, virtuální jádra, úložiště a uchovávání záloh odděleně od hlavního serveru.
 
 ### <a name="master-server-configuration"></a>Konfigurace hlavního serveru
 
-Pokud hlavní konfigurační server (např.) virtuálních jader a úložiště) je aktualizovaná, konfigurace repliky také je potřeba aktualizovat na stejné nebo vyšší hodnoty. Server repliky bez toho nemusí být schopné udržovat tempo se změnami provedenými na hlavní server a může dojít k chybě v důsledku. 
+Pokud hlavní konfigurační server (např.) virtuálních jader a úložiště) je aktualizovaná, konfigurace repliky také je potřeba aktualizovat na stejné nebo vyšší hodnoty. Server repliky bez toho nemusí být schopné udržovat tempo se změnami provedenými na hlavní server a může dojít k chybě v důsledku.
+
+Nová pravidla brány firewall přidat do hlavního serveru po vytvoření serveru repliky se nereplikují do repliky. Toto nové pravidlo brány firewall a je třeba aktualizovat repliku.
 
 ### <a name="deleting-the-master-server"></a>Odstraňuje se hlavní server
 
@@ -87,7 +90,4 @@ Uživatelé na hlavním serveru se replikují do repliky pro čtení. Můžete p
 ## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak [vytvářet a spravovat další repliky pomocí webu Azure portal](howto-read-replicas-portal.md)
-
-<!--
-- Learn how to [create and manage read replicas using the Azure CLI](howto-read-replicas-using-cli.md)
--->
+- Zjistěte, jak [vytvářet a spravovat další repliky pomocí Azure CLI](howto-read-replicas-cli.md)

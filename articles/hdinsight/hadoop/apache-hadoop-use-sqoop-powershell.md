@@ -1,6 +1,6 @@
 ---
-title: Spouštění úloh Sqoop pomocí Powershellu a Azure HDInsight
-description: Zjistěte, jak pomocí Azure Powershellu z pracovní stanice Sqoop import a export mezi clusterem Hadoop a službě Azure SQL database.
+title: Spouštět úlohy Apache Sqoop pomocí Powershellu a Azure HDInsight
+description: Zjistěte, jak pomocí Azure Powershellu z pracovní stanice Apache Sqoop import a export mezi clusterem Apache Hadoop a službě Azure SQL database.
 ms.reviewer: jasonh
 services: hdinsight
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 34c857ceef385e2089937b64d4f88dd434a347dd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 23dae8a6f0651ee6b753c4b29112eb733103b9e1
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010656"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631440"
 ---
-# <a name="run-sqoop-jobs-by-using-azure-powershell-for-hadoop-in-hdinsight"></a>Spouštění úloh Sqoop pomocí Azure Powershellu pro Hadoop v HDInsight
+# <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>Spouštět úlohy Apache Sqoop pomocí Azure Powershellu pro Apache Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Zjistěte, jak pomocí Azure Powershellu můžete spouštět úlohy Sqoop v Azure HDInsight pro import a export mezi clusterem HDInsight a Azure SQL database nebo databáze systému SQL Server.
+Zjistěte, jak pomocí Azure Powershellu můžete spouštět úlohy Apache Sqoop v Azure HDInsight pro import a export mezi clusterem HDInsight a Azure SQL database nebo databáze systému SQL Server.
 
 > [!NOTE]
 > I když používáte postupy v tomto článku se buď cluster HDInsight založených na Windows nebo Linux, fungují pouze z klienta Windows. Zvolit jiné metody, použijte volič karty v horní části tohoto článku. 

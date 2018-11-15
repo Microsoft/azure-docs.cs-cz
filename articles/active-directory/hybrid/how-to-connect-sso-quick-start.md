@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c16da55540faaf165faa592c3565b317a8eab922
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 6d6b8d2bddcd3ac622a2a5f51ebe78cbecc29c29
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914086"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687329"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -91,7 +91,7 @@ Postupujte podle těchto pokynů a ověřte, že jste povolili bezproblémového
 ![Azure portal: podokně služby Azure AD Connect](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Bezproblémové jednotné přihlašování vytvoří účet počítače `AZUREADSSOACC` (která představuje Azure AD) ve vaší místní služby Active Directory (AD) v každé doménové struktuře AD. Tento účet počítače je potřeba pro funkci pracovat. Přesunout `AZUREADSSOACC` počítačový účet k organizaci jednotky (OU) ukládat další účty počítačů zajistit, že je spravovat stejným způsobem a se neodstraní.
+> Bezproblémové jednotné přihlašování vytvoří účet počítače `AZUREADSSOACC` (která představuje Azure AD) ve vaší místní služby Active Directory (AD) v každé doménové struktuře AD. Tento účet počítače je potřeba pro funkci pracovat. Pokud používáte architekturu Pass-the-Hash a krádeže přihlašovacích údajů omezení rizik ve vašem místním prostředí, ujistěte se, že `AZUREADSSOACC` účet počítače nemá ukládaly do karantény kontejneru. Abyste provedli odpovídající změny k vytvoření účtu počítače v kontejneru počítače. Poté, co bezproblémového jednotného přihlašování se úspěšně zapnulo Průvodce Azure AD Connect, přesunout `AZUREADSSOACC` počítačový účet k organizační jednotce (OU) ve které jsou jiné účty počítačů spravovaná zajistit, že se omylem neodstraní.
 
 ## <a name="step-3-roll-out-the-feature"></a>Krok 3: Zavedení funkce
 

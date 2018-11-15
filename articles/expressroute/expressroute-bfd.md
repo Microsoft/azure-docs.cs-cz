@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 8/17/2018
 ms.author: rambala
-ms.openlocfilehash: 97ac49ff5cc50621fd902f77c2543a428c7e8bae
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6d941bf810a45e8808f83c4df701a856f664c7ef
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384748"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631655"
 ---
 # <a name="configure-bfd-over-expressroute"></a>Konfigurace BFD přes ExpressRoute
 
@@ -67,7 +67,7 @@ Příklad konfigurace PE (pomocí Cisco IOS XE) je uveden níže.
 
 ## <a name="bfd-timer-negotiation"></a>Vyjednávání BFD časovače
 
-Mezi rovnocennými počítači BFD určit pomalejší dvě spolupracovníků přenosovou rychlost. Msee BFD přijímání přenosu intervalech jsou nastaveny na 300 milisekund. Nakonfigurováním vyšší hodnoty můžete vynutit tyto intervaly delší; ale ne kratší.
+Mezi rovnocennými počítači BFD určit pomalejší dvě spolupracovníků přenosovou rychlost. Msee BFD přijímání přenosu intervalech jsou nastaveny na 300 milisekund. V některých scénářích interval může být nastaven na hodnotu vyšší 750 milisekund. Nakonfigurováním vyšší hodnoty můžete vynutit tyto intervaly delší; ale ne kratší.
 
 >[!NOTE]
 >Pokud jste nakonfigurovali soukromého partnerského vztahu okruhy geograficky redundantní ExpressRoute, nebo použijte protokol IPSec Site-to-Site VPN připojení jako zálohu pro soukromý partnerský vztah ExpressRoute; povolení BFD přes privátní partnerský vztah by pomohl převzetí služeb při selhání rychlejší následující chybu připojení ExpressRoute. 

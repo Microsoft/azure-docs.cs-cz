@@ -7,12 +7,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: b788490d588c217d97786f9306baad3083a9c03f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a7c2d1e41fa4ac26854e2e6ab57184cd6ed0bd0c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51629039"
+ms.locfileid: "51633678"
 ---
 # <a name="how-to-access-azure-cosmos-db-resources-from-virtual-networks"></a>Jak získat přístup k prostředkům služby Azure Cosmos DB z virtuální sítě
 
@@ -31,7 +31,7 @@ Následující části popisují, jak nakonfigurovat koncový bod služby virtu�
 
 ### <a name="configure-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Nakonfigurujte koncový bod služby pro existující virtuální sítě Azure a podsíť
 
-1. Z **všechny prostředky** okně Najít virtuální sítě, kterou chcete zabezpečit.
+1. Z **všechny prostředky** okně hledání účtu Azure Cosmos, který jste chcete zabezpečit.
 
 1. Vyberte **virtuální sítí a bran firewall** z nabídky nastavení a zvolte možnost povolit přístup z **vybrané sítě**.
 
@@ -42,7 +42,7 @@ Následující části popisují, jak nakonfigurovat koncový bod služby virtu�
    ![Vyberte virtuální síť a podsíť](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
 
-1. Po povolení účtu Azure Cosmos se povoluje pouze provoz z to vybrali podsíť. Virtuální síť a podsíť, ve které jste přidali by měl vypadat, jak je znázorněno na následujícím snímku obrazovky:
+1. Po povolení účtu Azure Cosmos pro přístup k virtuální síti se povoluje pouze provoz z to vybrali podsíť. Virtuální síť a podsíť, ve které jste přidali by měl vypadat, jak je znázorněno na následujícím snímku obrazovky:
 
    ![virtuální síť a podsíť se úspěšně nakonfiguroval](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
@@ -183,6 +183,10 @@ Následujícím postupem nakonfigurujte koncový bod služby na účet služby A
 1. Aktualizovat stávající účet služby Azure Cosmos s podsítí seznamy ACL
 
    ```azurecli-interactive
+
+   name="<Azure Cosmos account name>"
+   resourceGroupName="<Resource group name>"
+
    az cosmosdb update \
       --name $name \
     --resource-group $resourceGroupName \

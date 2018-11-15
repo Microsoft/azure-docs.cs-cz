@@ -1,5 +1,5 @@
 ---
-title: Použití zobrazení Ambari k práci s Hive v HDInsight (Hadoop) – Azure
+title: Použití zobrazení Ambari Apache pro práci s Hive v HDInsight (Apache Hadoop) – Azure
 description: Další informace o použití zobrazení Hivu z webového prohlížeče k odesílání dotazů Hive. Zobrazení Hive je součástí webového rozhraní Ambari, opatřeného vašeho clusteru HDInsight se systémem Linux.
 services: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: c481889eda53ff46a8899676da2529fe4165dfd5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1328119917276b8135c4a6d4188b67bcff2fc069
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233147"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632743"
 ---
-# <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive se systémem Hadoop v HDInsight
+# <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive Apache s Apache Hadoop v HDInsight
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Zjistěte, jak spouštět dotazy Hive pomocí zobrazení Ambari Hive. Zobrazení Hive umožňuje vytvářet, optimalizovat a spouštět dotazy Hive ze ve webovém prohlížeči.
+Zjistěte, jak spouštět dotazy Hive pomocí zobrazení Hive Apache Ambari. Zobrazení Hive umožňuje vytvářet, optimalizovat a spouštět dotazy Hive ze ve webovém prohlížeči.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Hadoop založených na Linuxu v clusteru HDInsight verze 3.4 nebo vyšší.
+* Apache Hadoop s linuxem v clusteru HDInsight verze 3.4 nebo vyšší.
 
   > [!IMPORTANT]
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

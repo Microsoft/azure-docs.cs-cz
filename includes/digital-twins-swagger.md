@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/13/2018
 ms.author: adgera
 ms.custom: include file
-ms.openlocfilehash: beae54dc36225dd26b4eb1d1a8f89d1005a33e93
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fa99fa3b6ae9e809718121787cc986d02bcf824b
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626333"
+ms.locfileid: "51678174"
 ---
 > [!TIP]
 > Neoficiální Swagger ve verzi preview neposkytujeme k předvedení funkcí rozhraní API nastavit.
@@ -22,10 +22,10 @@ ms.locfileid: "51626333"
 Je možné otevřít vlastní vygenerovaná dokumentace Swagger rozhraní API Management na:
 
 ```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
+https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Vlastní název | Nahradit hodnotou |
+| Název | Nahradit hodnotou |
 | --- | --- |
-| Název_vaší_instance | Název instance digitální dvojče Azure |
-| yourLocation | Jaké oblasti serveru vaší instance je hostován aplikací |
+| YOUR_INSTANCE_NAME | Název instance digitální dvojče Azure |
+| YOUR_LOCATION | Jaké oblasti serveru vaší instance je hostován aplikací |

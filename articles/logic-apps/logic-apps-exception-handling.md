@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7ce5c7007414bfe8e17727c25de9712e7993dc1e
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263748"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686258"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Zpracování chyb a výjimek v Azure Logic Apps
 
@@ -73,7 +73,7 @@ Nebo můžete ručně zadat zásady opakovaných pokusů v `inputs` část pro a
 
 | Hodnota | Typ | Popis |
 |-------|------|-------------|
-| <*Typ zásad opakování*> | Řetězec | Typ zásad opakování, který chcete použít: "Výchozí", "none", "Pevná" nebo "exponenciální" | 
+| <*Typ zásad opakování*> | Řetězec | Typ zásad opakování, který chcete použít: `default`, `none`, `fixed`, nebo `exponential` | 
 | <*interval opakování*> | Řetězec | Interval opakování, ve kterém musí používat hodnotu [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Výchozí minimální interval `PT5S` a maximální interval je `PT1D`. Při použití zásady s exponenciálním intervalem můžete určit různé minimální a maximální hodnoty. | 
 | <*opakované pokusy*> | Integer | Počet opakovaných pokusů, které musí být mezi 1 a 90 | 
 ||||
@@ -221,9 +221,9 @@ Omezení u oborů najdete v tématu [omezení a konfigurace](../logic-apps/logic
 
 ### <a name="get-context-and-results-for-failures"></a>Získání kontextu a výsledky pro selhání
 
-I když zachytávání chyb z oboru je užitečné, můžete také kontext vám pomohou pochopit, přesně plus všechny chyby nebo stavové kódy, které byly vráceny akce, které se nezdařilo. "@result()" Výraz poskytuje kontext, o výsledku všechny akce v oboru.
+I když zachytávání chyb z oboru je užitečné, můžete také kontext vám pomohou pochopit, přesně plus všechny chyby nebo stavové kódy, které byly vráceny akce, které se nezdařilo. `@result()` Výraz poskytuje kontext, o výsledku všechny akce v oboru.
 
-"@result()" Výraz přijímá jeden parametr (název oboru) a vrátí pole všechny akce výsledky z v rámci tohoto oboru. Mezi tyto akce objekty patří stejné atributy, jako  **@actions()** objektu, například čas zahájení, čas ukončení, stav, vstupů, ID korelace a výstupy akce. Kontext pro všechny akce, které se nepodařilo odeslat v rámci oboru, je jasné,  **@result()** pracovat **runAfter** vlastnost.
+`@result()` Výraz přijímá jeden parametr (název oboru) a vrátí pole všechny akce výsledky z v rámci tohoto oboru. Mezi tyto akce objekty patří stejné atributy, jako  **@actions()** objektu, například čas zahájení, čas ukončení, stav, vstupů, ID korelace a výstupy akce. Kontext pro všechny akce, které se nepodařilo odeslat v rámci oboru, je jasné,  **@result()** pracovat **runAfter** vlastnost.
 
 Spustit akci pro každou akci v oboru, který má **neúspěšné** výsledek, a pro filtrování pole výsledky dolů nezdařené akce, spárujte  **@result()** s **[Filtrování pole](../connectors/connectors-native-query.md)** akce a [ **pro každou** ](../logic-apps/logic-apps-control-flow-loops.md) smyčky. Můžete využít pole filtrovaných výsledků a provést akci pro každý selhání pomocí **pro každou** smyčky. 
 
@@ -270,22 +270,22 @@ Tady je příklad, za nímž následuje podrobné vysvětlení, který pošle po
 
 Tady je podrobný návod, který popisuje, co se stane v tomto příkladu:
 
-1. Chcete-li získat výsledek ze všech akcí uvnitř "My_Scope" **filtrování pole** akce používá tento výraz filtru: "@result(My_Scope)"
+1. Chcete-li získat výsledek ze všech akcí uvnitř "My_Scope" **filtrování pole** akce používá tento výraz filtru: `@result('My_Scope')`
 
-2. Podmínka pro **filtrování pole** libovolnou "@result()" položku, která je ve stavu, který je roven **neúspěšné**. Tato podmínka filtrování pole, které obsahuje všechny akce výsledky z "My_Scope" na pole s pouze výsledky neúspěšných akcí.
+2. Podmínka pro **filtrování pole** libovolnou `@result()` položku, která je ve stavu, který je roven **neúspěšné**. Tato podmínka filtrování pole, které obsahuje všechny akce výsledky z "My_Scope" na pole s pouze výsledky neúspěšných akcí.
 
 3. Provést **pro každou** opakovat na akce *filtrovaného pole* výstupy. Tento krok provádí akci pro každý neúspěšná akce výsledek, který byl dříve filtrovat.
 
    Pokud se nezdařilo jednu akci v oboru, akce v **pro každou** smyčky spustit jenom jednou. 
    Několik neúspěšných akce způsobí, že jednu akci za chyby.
 
-4. Odeslání požadavku HTTP POST **pro každou** položky text odpovědi, která je "@item() ["výstupy"] ["body"]" výrazu. 
+4. Odeslání požadavku HTTP POST **pro každou** položky text odpovědi, která je `@item()['outputs']['body']` výrazu. 
 
-   "@result()" Položky obrazec je stejné jako "@actions()" obrazce a může být analyzován stejným způsobem.
+   `@result()` Obrazec položky, je stejné jako `@actions()` obrazce a může být analyzován stejným způsobem.
 
-5. Zahrnout dvě vlastní záhlaví s názvem neúspěšná akce ("@item() [název]") a se spusťte klienta, ID sledování ("@item() [clientTrackingId]").
+5. Zahrnout dvě vlastní záhlaví s názvem neúspěšná akce (`@item()['name']`) a se spusťte klienta, ID sledování (`@item()['clientTrackingId']`).
 
-Pro referenci tady je příklad jednoho "@result()" položky, zobrazuje **název**, **tělo**, a **clientTrackingId** vlastnosti, které jsou analyzovány v předchozí Příklad. Mimo **pro každou** akce "@result()" vrací pole z těchto objektů.
+Pro referenci tady je příklad jednoho `@result()` položky, zobrazuje **název**, **tělo**, a **clientTrackingId** vlastnosti, které jsou analyzovány v předchozí Příklad. Mimo **pro každou** akce, `@result()` vrátí pole z těchto objektů.
 
 ```json
 {

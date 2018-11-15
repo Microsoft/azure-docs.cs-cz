@@ -9,15 +9,15 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 563a4c14d78b7edd228c998817f44c6b3f14efe7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 298277b720045c06d78f1c4964de2246dac22f08
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947484"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633661"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Spustit Apache Oozie v HDInsight Hadoop clusterů s balíčkem Enterprise Security Package
-Oozie je pracovní postup a koordinaci systém, který spravuje úlohy platformy Hadoop. Oozie integrován do zásobníku Hadoop a podporuje následující úlohy:
+Apache Oozie je systém koordinace a pracovního postupu, který spravuje úlohy Apache Hadoop. Oozie integrován do zásobníku Hadoop a podporuje následující úlohy:
 - Apache MapReduce
 - Apache Pig
 - Apache Hive

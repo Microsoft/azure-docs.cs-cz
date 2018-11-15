@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 160cc4fb3ccdabfd76e228c447ad179b3616d195
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231096"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633950"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Instalace a konfigurace SAP HANA (velké instance) v Azure
 
@@ -170,7 +170,7 @@ HANA/log/zálohování svazku by neměl být svazkem pro zálohování databáze
 
 Kromě úložiště, která je k dispozici můžete zakoupit kapacitu další úložiště v přírůstcích po 1 TB. Toto dodatečné úložiště lze přidat jako nové svazky na velká Instance HANA.
 
-Během připojování se SAP HANA v Azure service management zákazníkovi Určuje ID uživatele (UID) a skupina ID (ID skupiny) pro skupiny uživatelů a sapsys sidadm (například: 1000,500) během instalace systému SAP HANA, musíte použít tyto stejné hodnoty. Vzhledem k tomu, že budete chtít nasadit víc instancí HANA na jednotce, získáte víc kopií svazků (jedna sada u každé instance). V důsledku toho v době nasazení je potřeba definovat následující:
+Během připojování se SAP HANA v Azure service management zákazníkovi Určuje ID uživatele (UID) a skupina ID (ID skupiny) pro skupiny uživatelů a sapsys sidadm (například: 1000,500). Během instalace systému SAP HANA musíte použít tyto stejné hodnoty. Vzhledem k tomu, že budete chtít nasadit víc instancí HANA na jednotce, získáte víc kopií svazků (jedna sada u každé instance). V důsledku toho v době nasazení je potřeba definovat následující:
 
 - Identifikátor SID různé instance HANA (sidadm je odvozen z něj).
 - Velikostí paměti různých instancích HANA. Velikost paměti na instanci definuje velikost svazků v každé sadě jednotlivých svazků.

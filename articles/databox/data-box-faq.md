@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 1d38b563e2a272acdbaa4ea0c2a169a04e798d12
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: e03d913e1887bceb9267207e3a9abea93ab6d000
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49649393"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568026"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: nejčastější dotazy
 
@@ -113,7 +113,7 @@ A.-->
 A. Pokud svítí dioda, která signalizuje chybu systému, znamená to, že systém není v pořádku. O dalším postupu se [poraďte s podporou Microsoftu](data-box-disk-contact-microsoft-support.md).
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>Otázka: Nemám přístup k heslu pro odemčení Data Boxu na webu Azure Portal. Čím to může být?
-A. Pokud nemůžete získat přístup k heslu pro odemčení, které je na webu Azure Portal, zkontrolujte oprávnění v předplatném a v účtu úložiště. Ověřte, že na úrovni skupiny prostředků máte oprávnění přispěvatele nebo vlastníka. K zobrazení přihlašovacích údajů musíte mít aspoň oprávnění platné pro roli obsluhy Data Boxu.
+A. Pokud nemůžete získat přístup k heslu pro odemčení, které je na webu Azure Portal, zkontrolujte oprávnění v předplatném a v účtu úložiště. Ověřte, že na úrovni skupiny prostředků máte oprávnění přispěvatele nebo vlastníka. Pokud ne, musíte mít minimálně oprávnění role operátor pole Data chcete zobrazit přihlašovací údaje pro přístup.
 
 ## <a name="track-status"></a>Sledování stavu
 
@@ -236,7 +236,7 @@ A.  Protokoly dopravců o sledování zásilky jsou zaznamenané v historii obje
 A.  Ne. Datacentrum Azure v současnosti nepřijímá od zákazníků zařízení Data Box doručená jinými dopravci než UPS/DHL.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si [systémové požadavky služby Data Box](data-box-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box](data-box-limits.md).

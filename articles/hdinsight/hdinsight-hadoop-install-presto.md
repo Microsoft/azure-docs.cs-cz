@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea806a1004cf268fb7da75fa45013bdbaf882d86
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ce1e82971f10541bf3a67d46b48c5fc93b5432b4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227497"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687074"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Nainstalovat a používat Presto na clusterech HDInsight Hadoop
 
 V tomto dokumentu se dozvíte, jak nainstalovat Presto na clusterech HDInsight Hadoop pomocí skriptových akcí. Také se dozvíte, jak nainstalovat Airpal do existujícího clusteru HDInsight Presto.
 
-HDInsight také nabízí aplikace hvězdice Presto pro clustery systému Apache Hadoop. Další informace najdete v tématu [instalace aplikací jiných výrobců v Azure HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apps-install-applications)
+HDInsight také nabízí aplikace hvězdice Presto pro clustery systému Apache Hadoop. Další informace najdete v tématu [instalace aplikací jiných výrobců v Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-install-applications)
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují **cluster HDInsight 3.5 Hadoop** , který využívá systém Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [HDInsight verze](hdinsight-component-versioning.md).

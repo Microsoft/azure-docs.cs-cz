@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d341f7328eb4a977d266c25f6746d4173393b54e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ef0becd55df43d7ae648a4cbaa5e1a2358fc1910
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887208"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636930"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro více tenantů Azure Active Directory pomocí vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V tomto článku se dozvíte, jak povolit přihlášení pro uživatele, kteří používají více tenantů koncový bod pro službu Azure Active Directory (Azure AD) pomocí [vlastní zásady](active-directory-b2c-overview-custom.md) v Azure AD B2c. To umožňuje uživatelům z více tenantů Azure AD pro přihlášení do Azure AD B2C bez konfigurace technické zprostředkovatele pro jednotlivé tenanty. Ale hosta členy v některém z těchto klientů **nebudou** moct přihlásit. K tomu je potřeba [konfigurovat jednotlivě každý tenant](active-directory-b2c-setup-aad-custom.md).
+V tomto článku se dozvíte, jak povolit přihlášení pro uživatele, kteří používají více tenantů koncový bod pro službu Azure Active Directory (Azure AD) pomocí [vlastní zásady](active-directory-b2c-overview-custom.md) v Azure AD B2C. To umožňuje uživatelům z více tenantů Azure AD pro přihlášení do Azure AD B2C bez konfigurace technické zprostředkovatele pro jednotlivé tenanty. Ale hosta členy v některém z těchto klientů **nebudou** moct přihlásit. K tomu je potřeba [konfigurovat jednotlivě každý tenant](active-directory-b2c-setup-aad-custom.md).
 
 >[!NOTE]
 >`Contoso.com` slouží k organizační tenanta Azure AD a `fabrikamb2c.onmicrosoft.com` slouží jako tenant Azure AD B2C v následujících pokynech.
@@ -185,7 +185,7 @@ Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Ak
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Probíhá komunikace s Azure AD B2c prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
+Probíhá komunikace s Azure AD B2C prostřednictvím aplikace, kterou vytvoříte ve vašem tenantovi. Tato část obsahuje seznam volitelné kroky, které můžete použít k vytvoření aplikace testů, pokud jste tak již neučinili.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.

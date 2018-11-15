@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d4f44deac1e8833af064e0abea4e65c5ca2b2f93
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6172195a9914d841e480cd7ebbf9566616911378
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314248"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686190"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s Azure Active Directory předávací ověřování
 
@@ -125,7 +125,7 @@ Pro chyby související s instalací, zkontrolujte protokoly služby Azure AD Co
 
 Chyby související s ověřovacího agenta, otevřete Prohlížeč událostí aplikace na serveru a zkontrolujte v části **aplikace a služby Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
-Pro podrobné analýzy povolte protokol "Relace". Při spuštění ověřovacího agenta pomocí tohoto protokolu povolit při běžném provozu; Používejte jenom pro řešení potíží. Obsah protokolu jsou viditelné pouze po zakázání protokolu je znovu.
+Pro podrobné analýzy povolte protokol "Relace" (klikněte pravým tlačítkem uvnitř prohlížeče událostí aplikace mohly najít tuto možnost). Při spuštění ověřovacího agenta pomocí tohoto protokolu povolit při běžném provozu; Používejte jenom pro řešení potíží. Obsah protokolu jsou viditelné pouze po zakázání protokolu je znovu.
 
 ### <a name="detailed-trace-logs"></a>Podrobné trasování protokolů
 

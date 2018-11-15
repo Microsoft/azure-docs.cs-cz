@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/30/2018
+ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 325071be56935ca02adccf69f99fa1718e3f7b91
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: 64891991a96395b712cb99850874d974f8451ce6
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239419"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612827"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Kurz: Používání podmínek v šablonách Azure Resource Manageru
 
@@ -166,7 +166,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 3. Vyberte název skupiny prostředků.  Ve skupině prostředků uvidíte celkem šest prostředků.
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili šablonu, která uživatelům umožňuje vybrat si mezi vytvořením nového účtu úložiště a použitím existujícího účtu úložiště. Informace o načítání tajných klíčů ze služby Azure Key Vault a jejich použití jako hesel v nasazení šablony najdete tady:
 

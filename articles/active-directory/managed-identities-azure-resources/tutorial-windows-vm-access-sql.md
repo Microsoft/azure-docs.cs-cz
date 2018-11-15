@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/07/2018
 ms.author: daveba
-ms.openlocfilehash: 61b176f4f1fccbb975ee53de497d5afcc8ede060
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5d67d25912df5040665b3a04858be0f3807e8112
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238110"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623821"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure SQL
 
@@ -35,15 +35,7 @@ V tomto kurzu se dozvíte, jak pomocí identity přiřazené systémem pro virtu
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Přihlášení k webu Azure Portal](https://portal.azure.com)
-
-- [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
-
-- [Povolení spravované identity přiřazené systémem na vašem virtuálním počítači](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Udělení přístupu virtuálnímu počítači k databázi na serveru SQL Azure
 
@@ -198,7 +190,7 @@ Dalším způsobem, jak rychle otestovat kompletní nastavení bez nutnosti psá
 
 Výsledky dotazu zobrazíte prozkoumáním hodnoty `$DataSet.Tables[0]`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak využít spravovanou identitu přiřazenou systémem pro přístup k serveru Azure SQL.  Další informace o Azure SQL Serveru najdete tady:
 

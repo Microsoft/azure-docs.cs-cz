@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 10/29/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 2436a4e75045200a8d2f48586e31ebfa0c03705a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c261dd083fed8b9c4a0f3846157c666cbb52083c
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566257"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636811"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -135,10 +135,10 @@ Při nejbližším virtuálnímu počítači Azure s konfiguračního serveru po
 Doporučujeme pravidelných naplánovaných záloh konfiguračního serveru. Úspěšné navrácení služeb po obnovení se při navrácení služeb obnoví virtuální počítač musí existovat v databázi konfigurací serveru a konfiguračního serveru musí být spuštěn a v připojeném stavu. Další informace o běžných úloh správy serveru konfigurace [tady](vmware-azure-manage-configuration-server.md).
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Když mám jsem nastavíte konfigurační server, můžete I stáhnout a nainstalovat MySQL ručně?
-Ano. Stáhnout MySQL a jeho umístění **C:\Temp\ASRSetup** složky. Nainstalujte je ručně. Při nastavení konfigurace serveru virtuálního počítače a přijmout podmínky, MySQL bude uvedená jako **už nainstalovaná** v **stáhnout a nainstalovat**.
+Ano. Stáhnout MySQL a jeho umístění **C:\Temp\ASRSetup** složky. Nainstalujte je ručně. Když nastavíte konfigurační server virtuálního počítače a přijměte podmínky, MySQL bude uvedeno **už nainstalovaná** v **stáhnout a nainstalovat**.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Můžete vyhnout stahování MySQL ale nechat nainstalovat Site Recovery?
-Ano. Stáhněte instalační program MySQL a umístěte ho **C:\Temp\ASRSetup** složky.  Když nastavíte konfigurační server VM, přijměte podmínky a klikněte na kartu **stáhnout a nainstalovat**, portál použije instalační program přidá k instalaci MySQL.
+Ano. Stáhněte instalační program MySQL a umístěte ho **C:\Temp\ASRSetup** složky.  Když nastavíte konfigurační server VM, přijměte podmínky a klikněte na **stáhnout a nainstalovat**, portál použije instalační program přidá k instalaci MySQL.
  
 ### <a name="canl-i-use-the-configuration-server-vm-for-anything-else"></a>CanL používám konfiguračního serveru virtuálního počítače na něco jiného?
 Ne, byste měli používat jenom virtuální počítač pro konfigurační server. 

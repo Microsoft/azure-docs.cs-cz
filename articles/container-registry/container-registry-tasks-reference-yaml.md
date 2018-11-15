@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: a26b766c18ea2b14796af796abe7f36aa4fc1c66
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: de543798702137905ee5243c6ca8e502152f9c44
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854945"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634375"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenční dokumentace úlohy ACR: YAML
 
@@ -112,7 +112,7 @@ steps:
       [property]: [value]
 ```
 
-`build` Typ kroku podporuje následující parametry:
+`build` Typ kroku podporuje parametry v následující tabulce. `build` Typ kroku také podporuje všechny možnosti sestavení [sestavení dockeru](https://docs.docker.com/engine/reference/commandline/build/) příkazu, jako například `--build-arg` k nastavení proměnných čas sestavení.
 
 | Parametr | Popis | Nepovinné |
 | --------- | ----------- | :-------: |
@@ -122,7 +122,7 @@ steps:
 
 ### <a name="properties-build"></a>Vlastnosti: sestavení
 
-`build` Typ kroku podporuje tyto vlastnosti můžete najít podrobnosti o těchto vlastností [vlastnosti krok úlohy](#task-step-properties) části tohoto článku.
+`build` Typ kroku podporuje následující vlastnosti. Podrobnosti těchto vlastností můžete najít [vlastnosti krok úlohy](#task-step-properties) části tohoto článku.
 
 | | | |
 | -------- | ---- | -------- |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 92553fc8867a482c0af99c4ba3937dcc0d2f09e6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
-ms.translationtype: HT
+ms.openlocfilehash: eeb615a89469ef8c165ed7ad76acaa01493f78ec
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158098"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625534"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Storage prostřednictvím přístupového klíče
 
@@ -35,15 +35,7 @@ V tomto kurzu se dozvíte, jak pomocí spravované identity přiřazené systém
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Přihlášení k webu Azure Portal](https://portal.azure.com)
-
-- [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
-
-- [Povolení spravované identity přiřazené systémem na vašem virtuálním počítači](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 
@@ -83,7 +75,7 @@ Azure Storage nativně nepodporuje ověřování Azure AD.  Spravovanou identitu
 
     ![Text k alternativnímu obrázku](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí spravované identity přiřazené systémem virtuálního počítače k volání Azure Resource Manageru 
+## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-to-call-azure-resource-manager"></a>Získání přístupového tokenu pomocí spravované identity přiřazené systémem virtuálního počítače k volání Azure Resource Manageru 
 
 Ve zbývající části kurzu použijeme k práci dříve vytvořený virtuální počítač. 
 
@@ -174,7 +166,7 @@ Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli, jak vytvořit spravovanou identitu přiřazenou systémem pro přístup k Azure Storage pomocí přístupového klíče.  Další informace o přístupových klíčích Azure Storage:
 

@@ -9,12 +9,12 @@ ms.component: face-api
 ms.topic: overview
 ms.date: 10/29/2018
 ms.author: sbowles
-ms.openlocfilehash: 3fe9dd713bef509b1972b51cb07d4f942c544544
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a15b6678b15bf5d1a3078494e12da3a08c57bed3
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914188"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633457"
 ---
 # <a name="what-is-the-azure-face-api"></a>Co je rozhraní API Azure pro rozpoznávání tváře?
 
@@ -64,6 +64,10 @@ Po vytvoření a natrénování databáze můžete proti této skupině provést
 
 Další informace o identifikaci osob najdete v tématu věnovaném [rozhraní API pro identifikaci](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
 
+## <a name="use-containers"></a>Pomocí kontejnerů
+
+[Použití kontejneru pro rozpoznávání tváře](face-how-to-install-containers.md) zjistit, rozpoznat a identifikujte tváře, nainstalováním standardizované kontejner Dockeru blíž ke svým datům.
+
 ## <a name="sample-apps"></a>Ukázkové aplikace
 
 Následující ukázkové aplikace ukazují několik způsobů použití rozhraní API pro rozpoznávání tváře.
@@ -71,7 +75,7 @@ Následující ukázkové aplikace ukazují několik způsobů použití rozhran
 - [Rozhraní API Microsoftu pro rozpoznávání tváře: Klientská knihovna Windows a ukázka](https://github.com/Microsoft/Cognitive-Face-Windows) – aplikace WPF, která ukazuje několik scénářů detekce, analýzy a identifikace obličeje.
 - [Aplikace pro UWP FamilyNotes](https://github.com/Microsoft/Windows-appsample-familynotes) – aplikace pro Univerzální platformu Windows (UPW), která využívá identifikaci tváří společně s řečí, Cortanou, rukopisem a fotoaparátem ve scénáři sdílení rodinných poznámek.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Postupujte podle rychlého startu k implementaci jednoduchého scénáře detekce obličeje v kódu.
 - [Rychlý start: Rozpoznávání tváří na obrázcích pomocí sady .NET SDK a jazyka C#](quickstarts/csharp.md) (k dispozici jsou i další jazyky)

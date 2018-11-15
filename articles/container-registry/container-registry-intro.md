@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: 5d60144c6b3aada74e4b89c905085835dd5b32d2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 3cc44b58d3e715a1e3c264be03b887f27c0c753c
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031321"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633491"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
@@ -30,7 +30,7 @@ Stažení imagí z registru kontejnerů Azure na různé cíle nasazení:
 * **Škálovatelné systémy orchestrace**, které spravují kontejnerizované aplikace napříč clustery hostitelů, včetně [Kubernetes](http://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) a [Dockeru Swarm](https://docs.docker.com/swarm/).
 * **Služby Azure**, které podporují vytváření a spouštění škálovaných aplikací, včetně [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) a dalších.
 
-Vývojáři mohou nahrávat do registru kontejnerů také jako součást pracovního postupu vývoje kontejneru. Mohou například určit registr kontejnerů jako cíl v nástroji pro nasazení a nástroji průběžné integrace, jako je například [Azure DevOps Services](https://www.visualstudio.com/docs/overview) nebo [Jenkins](https://jenkins.io/).
+Vývojáři mohou nahrávat do registru kontejnerů také jako součást pracovního postupu vývoje kontejneru. Mohou například určit registr kontejnerů jako cíl v nástroji pro nasazení a nástroji průběžné integrace, jako je například [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) nebo [Jenkins](https://jenkins.io/).
 
 Nakonfigurujte [úlohy ACR](#azure-container-registry-build) tak, aby se image aplikací po aktualizaci jejich základních imagí automaticky znovu sestavily. Použijte úlohy ACR k automatizaci sestavení imagí po potvrzení kódu vaším týmem v úložišti Git.
 
@@ -40,13 +40,13 @@ Nakonfigurujte [úlohy ACR](#azure-container-registry-build) tak, aby se image a
 
   [Přístup k registru kontejnerů řídíte](container-registry-authentication.md) pomocí [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md) zajištěného službou Azure Active Directory nebo poskytnutého účtu správce. Spusťte standardní příkaz `docker login` k ověření pomocí registru.
 
-* **Úložiště** – Registr obsahuje jedno nebo několik úložišť, což jsou skupiny imagí kontejnerů. Azure Container Registry podporuje víceúrovňové obory názvů úložiště. S víceúrovňovými obory názvů můžete seskupovat kolekce imagí souvisejících s konkrétní aplikací nebo kolekcí aplikací pro konkrétní vývojové nebo provozní týmy. Příklad:
+* **Úložiště** – registr obsahuje jedno nebo více úložišť, které ukládají skupiny imagí kontejnerů. Azure Container Registry podporuje víceúrovňové obory názvů úložiště. S víceúrovňovými obory názvů můžete seskupovat kolekce imagí souvisejících s konkrétní aplikací nebo kolekcí aplikací pro konkrétní vývojové nebo provozní týmy. Příklad:
 
   * `myregistry.azurecr.io/aspnetcore:1.0.1` představuje image pro celý podnik.
   * `myregistry.azurecr.io/warrantydept/dotnet-build` představuje image sloužící k vytváření aplikací .NET, která je sdílená v rámci záručního oddělení.
   * `myregistry.azurecr.io/warrantydept/customersubmissions/web` představuje webovou image seskupenou v zákaznické aplikaci pro odesílání a vlastněnou záručním oddělením.
 
-* **Image** – Každá image uložená v úložišti je snímkem kontejneru Dockeru jen pro čtení. Registry kontejnerů Azure mohou zahrnovat image systémů Windows i Linux. Názvy imagí pro všechna nasazení kontejnerů určujete vy. Pomocí standardních [příkazů Dockeru](https://docs.docker.com/engine/reference/commandline/) můžete nahrávat image do úložiště nebo si z úložiště image stáhnout.
+* **Obrázek** -uložen v úložišti, každé image je jen pro čtení snímek kontejneru kompatibilní s Dockerem. Registry kontejnerů Azure mohou zahrnovat image systémů Windows i Linux. Názvy imagí pro všechna nasazení kontejnerů určujete vy. Pomocí standardních [příkazů Dockeru](https://docs.docker.com/engine/reference/commandline/) můžete nahrávat image do úložiště nebo si z úložiště image stáhnout. Kromě imagí kontejnerů Azure Container Registry ukládá [týkající se obsahu formáty](container-registry-image-formats.md) například [grafy Helm](container-registry-helm-repos.md), která slouží k nasazení aplikací do Kubernetes.
 
 * **Kontejner** – Kontejner definuje softwarovou aplikaci a její závislosti zabalené do kompletního systému souborů, včetně kódu, modulu runtime, systémových nástrojů a knihoven. Spouštějte kontejnery Dockeru na základě imagí systémů Windows nebo Linux, které si stáhnete z registru kontejnerů. Kontejnery běžící na jednom počítači sdílí jádro operačního systému. Kontejnery Dockeru jsou plně přenositelné na všechny hlavní distribuce Linuxu, macOS i Windows.
 
@@ -56,7 +56,7 @@ Nakonfigurujte [úlohy ACR](#azure-container-registry-build) tak, aby se image a
 
 [U vícekrokových úloh](container-registry-tasks-overview.md#multi-step-tasks-preview) funkce Preview úloh ACR poskytuje definice úloh na základě kroků a spuštění pro sestavování, testování a opravy chyb imagí kontejnerů v cloudu. Kroky úlohy definují jednotlivá sestavení image kontejneru a operací nabízených oznámení. Mohou také definovat spuštění jednoho nebo více kontejnerů, u každého kroku pomocí kontejneru jako prostředí pro spuštění.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Vytvoření registru kontejnerů pomocí webu Azure Portal](container-registry-get-started-portal.md)
 * [Vytvoření registru kontejnerů pomocí Azure CLI](container-registry-get-started-azure-cli.md)

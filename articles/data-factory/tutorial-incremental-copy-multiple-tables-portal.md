@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: ea1e3ca76f779f442c9d22478ea93de3d5ab83f2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 95f2947a30499ce563d5943dfa423ee89a172f47
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43088102"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614511"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
 V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načítá rozdílová data z několika tabulek v místním SQL Serveru do databáze Azure SQL.    
@@ -279,7 +279,7 @@ Vzhledem k tomu, že přesouváte data z úložiště dat v privátní síti (v 
    ![Název místního prostředí IR](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
 1. Klikněte na text **Kliknutím sem spustíte expresní instalaci pro tento počítač** v části **Možnost 1: Expresní instalace**. 
 
-   ![Kliknutí na odkaz na expresní instalaci](./media/tutorial-incremental-copy-multiple-tables-portal/click-exress-setup.png)
+   ![Kliknutí na odkaz na expresní instalaci](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
 1. V okně **Expresní instalace Integration Runtime (v místním prostředí)** klikněte na **Zavřít**. 
 
    ![Instalace prostředí Integration Runtime – úspěch](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png)

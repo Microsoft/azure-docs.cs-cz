@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: aa3c72c7ff2aa5e25fbff9fc38c33fd2dda34ecd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: de15d1f8c268e80ac1659c53a141ec39cc6d3cb8
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985076"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51564805"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview)
 
@@ -241,13 +241,20 @@ az functionapp config appsettings set --name <function_app> \
 AzureWebJobsStorage=$storageConnectionString
 ```
 
+> [!NOTE]
+> Pokud je váš kontejner privátní, je třeba nastavit také následující nastavení aplikace  
+> - DOCKER_REGISTRY_SERVER_USERNAME  
+> - DOCKER_REGISTRY_SERVER_PASSWORD  
+>
+> Budete muset zastavit a pak spusťte aplikaci function app pro tyto hodnoty, aby ji mohla
+
 Teď můžete svoje funkce běžící na Linuxu v Azure otestovat.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

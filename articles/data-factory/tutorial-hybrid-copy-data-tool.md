@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/04/2018
 ms.author: jingwang
-ms.openlocfilehash: a6c17fc897dae765f9789840262cb001d598b731
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 91c6939e42f0a8a5126883e5258017b2c38e6f2a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297736"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613966"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -27,6 +27,7 @@ V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Pak pomoc�
 
 > [!NOTE]
 > - Pokud se službou Azure Data Factory teprve začínáte, přečtěte si téma [Seznámení se službou Data Factory](introduction.md).
+
 V tomto kurzu budete provádět následující kroky:
 
 > [!div class="checklist"]
@@ -107,7 +108,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. V seznamu kontejnerů vyberte **adftutorial**.
 
-    ![Výběr kontejneru](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![Výběr kontejneru](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. Okno **Kontejner** pro **adftutorial** nechte otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
 
@@ -273,7 +274,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
      ![Karta Upravit](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Kanál v této ukázce kopíruje data z místní databáze SQL Serveru do úložiště objektů blob. Naučili jste se tyto postupy: 
 
 > [!div class="checklist"]

@@ -1,6 +1,6 @@
 ---
 title: Vytvořit sdílené místní prostředí integration runtime ve službě Azure Data Factory pomocí Powershellu | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit sdílené místní prostředí integration runtime v Azure Data Factory, která umožňuje více datových továren prostředí integration runtime.
+description: Zjistěte, jak vytvořit sdílené místní prostředí integration runtime ve službě Azure Data Factory, aby více datových továren můžete přístup k modulu integration runtime.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: d7f3fbcb3235c8c620876e68a62f3e491770779d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: b32ea4293daa9206c6b0da4bdee777677c5d340d
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50252135"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685510"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory-with-powershell"></a>Vytvořit sdílené místní prostředí integration runtime ve službě Azure Data Factory pomocí Powershellu
 
-Tento podrobný návod ukazuje, jak vytvořit sdílené místní prostředí integration runtime (IR) ve službě Azure Data Factory pomocí Azure Powershellu. Pak můžete použít sdílené místní prostředí integration runtime v jiné služby data factory. V tomto kurzu provedete následující kroky: 
+Tento podrobný návod ukazuje, jak vytvořit sdílené místní prostředí integration runtime ve službě Azure Data Factory pomocí Azure Powershellu. Pak můžete použít sdílené místní prostředí integration runtime v jiné služby data factory. V tomto kurzu provedete následující kroky: 
 
 1. Vytvoření datové továrny 
 1. Vytvořte místní prostředí Integration Runtime.
@@ -33,18 +33,16 @@ Tento podrobný návod ukazuje, jak vytvořit sdílené místní prostředí int
 
 - **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
 
-- **Azure PowerShell**. Postupujte podle pokynů v [nainstalujte prostředí Azure PowerShell na Windows](/powershell/azure/install-azurerm-ps). Pomocí Powershellu spusťte skript pro vytvoření místního prostředí integration runtime, který je možné sdílet s další datové továrny. 
+- **Azure PowerShell**. Postupujte podle pokynů v [nainstalujte prostředí Azure PowerShell ve Windows pomocí Správce balíčků PowerShellGet](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.11.0). Pomocí Powershellu spusťte skript pro vytvoření místního prostředí integration runtime, který je možné sdílet s další datové továrny. 
 
-> [!NOTE]
-> Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na následující stránce: [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
+> [!NOTE]  
+> Seznam oblastí Azure, ve kterých je momentálně dostupná Data Factory, vyberte oblasti, které vás zajímají na [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. Spusťte Windows PowerShell ISE.
+1. Spusťte integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell.
 
-1. Vytvořte proměnné.
-
-    Zkopírujte a vložte následující skript a nahradit skutečnými hodnotami proměnných (SubscriptionName, název skupiny prostředků atd.). 
+1. Vytvořte proměnné. Zkopírujte a vložte následující skript. Nahraďte proměnné, jako například **SubscriptionName** a **ResourceGroupName**, skutečnými hodnotami: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -65,20 +63,19 @@ Tento podrobný návod ukazuje, jak vytvořit sdílené místní prostředí int
     $LinkedIntegrationRuntimeDescription = "[Description for Linked Integration Runtime]"
     ```
 
-1. Přihlaste se a vyberte předplatné.
-
-    Přidejte následující kód do skriptu pro přihlášení a výběr vašeho předplatného Azure:
+1. Přihlaste se a vyberte předplatné. Přidejte následující kód do skriptu pro přihlášení a výběr vašeho předplatného Azure:
 
     ```powershell
     Connect-AzureRmAccount
     Select-AzureRmSubscription -SubscriptionName $SubscriptionName
     ```
 
-1. Vytvořte skupinu prostředků a Data Factory.
+1. Vytvořte skupinu prostředků a data factory.
 
-    *(Tento krok je volitelný. Pokud už máte datovou továrnu, tento krok přeskočte.)* 
+    > [!NOTE]  
+    > Tento krok je volitelný. Pokud už máte datovou továrnu, tento krok přeskočte. 
 
-    Vytvořte [skupinu prostředků Azure](../azure-resource-manager/resource-group-overview.md) pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` WestEurope umístění. 
+    Vytvoření [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) pomocí [New-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.11.0) příkazu. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` WestEurope umístění: 
 
     ```powershell
     New-AzureRmResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -94,7 +91,8 @@ Tento podrobný návod ukazuje, jak vytvořit sdílené místní prostředí int
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Vytvoření místního prostředí Integration Runtime
 
-*(Tento krok je volitelný. Pokud již máte místní prostředí integration runtime, který chcete sdílet s další datové továrny, tento krok přeskočte.)*
+> [!NOTE]  
+> Tento krok je volitelný. Pokud již máte místní prostředí integration runtime, který chcete sdílet s další datové továrny, tento krok přeskočte.
 
 Spusťte následující příkaz k vytvoření místního prostředí integration runtime:
 
@@ -132,7 +130,8 @@ Odpověď obsahuje ověřovací klíč pro tento modul runtime integrace v míst
 
 ### <a name="create-another-data-factory"></a>Vytvoření další datové továrny
 
-*(Tento krok je volitelný. Pokud už máte datové továrny, který chcete sdílet, tento krok přeskočte.)*
+> [!NOTE]  
+> Tento krok je volitelný. Pokud už máte služby data factory, který chcete sdílet, tento krok přeskočte.
 
 ```powershell
 $factory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
@@ -141,9 +140,9 @@ $factory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResourceGroupName `
 ```
 ### <a name="grant-permission"></a>Udělit oprávnění
 
-Udělení oprávnění pro služby Data Factory, který potřebuje přístup k místní prostředí integration runtime vytvořen a zaregistrován.
+Udělení oprávnění k datové továrně, který potřebuje přístup k místní prostředí integration runtime vytvořen a zaregistrován.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Tento krok není přeskočit!
 
 ```powershell
@@ -167,11 +166,11 @@ Set-AzureRmDataFactoryV2IntegrationRuntime `
     -Description $LinkedIntegrationRuntimeDescription
 ```
 
-Tento modul runtime integrace propojené teď můžete všechny propojené služby. Propojené prostředí IR je pomocí modulu runtime integrace sdílené ke spuštění aktivity.
+Tento modul runtime integrace propojené teď můžete všechny propojené služby. Propojené prostředí IR použije sdílené prostředí IR pro spuštění aktivity.
 
 ## <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Odvolat prostředí integration runtime sdílení ze služby data factory
 
-K odvolání přístupu k objektu pro vytváření dat přístup k modulu runtime integrace sdílené, spuštěním následujícího příkazu:
+K odvolání přístupu k objektu pro vytváření dat ze sdílené integration runtime, spusťte následující příkaz:
 
 ```powershell
 Remove-AzureRMRoleAssignment `
@@ -180,7 +179,7 @@ Remove-AzureRMRoleAssignment `
     -Scope $SharedIR.Id
 ```
 
-Pokud chcete odebrat existující propojená prostředí IR, můžete můžete sdílené integration runtime spusťte následující příkaz:
+Pokud chcete odebrat existující propojená prostředí IR, spusťte následující příkaz sdílené integration runtime:
 
 ```powershell
 Remove-AzureRmDataFactoryV2IntegrationRuntime `
@@ -193,6 +192,6 @@ Remove-AzureRmDataFactoryV2IntegrationRuntime `
 
 ## <a name="next-steps"></a>Další postup
 
-- Seznamte se s koncepty modulu runtime integrace v [Integration runtime ve službě Azure Data Factory](concepts-integration-runtime.md).
+- Kontrola [koncepty runtime integrace v Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/concepts-integration-runtime).
 
-- Zjistěte, jak vytvořit místní prostředí integration runtime na webu Azure Portal v [vytvořit a nakonfigurovat místní prostředí integration runtime](create-self-hosted-integration-runtime.md).
+- Zjistěte, jak [vytvořit místní prostředí integration runtime na webu Azure Portal](https://docs.microsoft.com/en-us/azure/data-factory/create-self-hosted-integration-runtime).

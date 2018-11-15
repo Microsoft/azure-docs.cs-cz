@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f9b60b9365f8856db8ffd8e14d95d46af3808ffb
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: f2890fa4d8260485fa76478571aa66abe1efd35e
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116483"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51515399"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Seznámení s Azure Functions  
 Azure Functions je řešení umožňující snadno spouštět malé kódy (tzv. „funkce“) v cloudu. Můžete napsat přesně takový kód, jaký potřebujete pro aktuální problém, a nestarat se o infrastrukturu k jeho spuštění nebo aplikaci jako celek. Služba Functions může ještě zvýšit produktivitu vývoje, a navíc k vývoji můžete použít jazyk podle vlastní volby, například C#, F#, Node.js, Javu nebo PHP. Plaťte pouze za čas, kdy kód běží, a potřebné škálování svěřte Azure. Služba Azure Functions umožňuje v Microsoft Azure vytvářet aplikace [bez serveru](https://azure.microsoft.com/solutions/serverless/).
@@ -47,7 +47,7 @@ Functions poskytuje šablony, které vám pomůžou začít s klíčovými scén
 * **BlobTrigger** – Zpracování objektů blob Azure Storage po jejich přidání do kontejnerů. Tuto funkci můžete použít k změně velikosti imagí. Další informace najdete v tématu [Vazby služby Blob Storage](functions-bindings-storage-blob.md).
 * **QueueTrigger** – Reakce na zprávy přicházející do fronty Azure Storage. Další informace najdete v tématu věnovaném [vazbám úložiště fronty Azure](functions-bindings-storage-queue.md).
 * **EventGridTrigger** – Reakce na události doručené do předplatného ve službě Azure Event Grid. Podporuje model založený na předplatném pro příjem událostí, který zahrnuje filtrování. Dobré řešení pro vytváření architektury založené na událostech. Například viz [automatizace změny velikosti nahraných obrázků s využitím služby Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
-* **EventHubTrigger** – Reakce na události doručené do centra událostí Azure. Toto je obzvlášť užitečné pro scénáře instrumentace aplikací, zpracování činnosti nebo pracovního postupu uživatele a internetu věcí (IoT). Další informace najdete v tématu [Vazby služby Event Hubs](functions-bindings-event-hubs.md).
+* **EventHubTrigger** – Reakce na události doručené do centra událostí Azure. Užitečné instrumentace aplikací, zpracování činnosti nebo pracovního postupu uživatele a scénáře internet of things (IoT). Další informace najdete v tématu [Vazby služby Event Hubs](functions-bindings-event-hubs.md).
 * **ServiceBusQueueTrigger** – Připojení kódu k jiným službám Azure nebo místním službám prostřednictvím naslouchání frontě zpráv. Další informace najdete v tématu [Vazby služby Service Bus](functions-bindings-service-bus.md).
 * **ServiceBusTopicTrigger** – Připojení kódu k jiným službám Azure nebo místním službám prostřednictvím registrace k odběru témat. Další informace najdete v tématu [Vazby služby Service Bus](functions-bindings-service-bus.md).
 

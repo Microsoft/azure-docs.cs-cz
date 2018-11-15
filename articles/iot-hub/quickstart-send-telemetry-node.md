@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: 4ce693aa30159234ab0dbde29d5aa15e6da058fe
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: 379d6cf589012e7b7e4d0f1ec2dc3ba40cec075f
+ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361819"
+ms.lasthandoff: 11/10/2018
+ms.locfileid: "51514923"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-nodejs"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT a čtení telemetrických dat z centra pomocí back-endové aplikace (Node.js)
 
@@ -45,13 +45,14 @@ Stáhněte si ukázkový projekt Node.js z https://github.com/Azure-Samples/azur
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
+[!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
+
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
-Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí prostředí Azure Cloud Shell.
+Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připojit. V tomto rychlém startu zaregistrujete simulované zařízení pomocí služby Azure Cloud Shell.
 
-1. V prostředí Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření IoT Hub CLI a vytvoření identity zařízení. 
+1. Ve službě Azure Cloud Shell spusťte následující příkazy pro přidání rozšíření rozhraní příkazového řádku IoT Hub a vytvoření identity zařízení. 
 
    **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
 
@@ -62,7 +63,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
     ```
 
-1. Spuštěním následujícího příkazu v Azure Cloud Shellu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+1. Spuštěním následujícího příkazu ve službě Azure Cloud Shell získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
    **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
 
@@ -76,7 +77,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Tuto hodnotu použijete později v tomto rychlém startu.
 
-1. Potřebujete taky _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT, aby mohla načítat zprávy. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
+1. Potřebujete také _připojovací řetězec služby_, který back-endové aplikaci umožní připojení k vašemu centru IoT, aby mohla načítat zprávy. Následující příkaz načte připojovací řetězec služby pro vaše centrum IoT:
    
    **YourIoTHubName:** Tento zástupný text nahraďte názvem, který si zvolíte pro své centrum IoT.
 
@@ -122,7 +123,7 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
     Hodnotu proměnné `connectionString` nahraďte připojovacím řetězcem služby, který jste si předtím poznamenali. Změny potom uložte do souboru **ReadDeviceToCloudMessages.js**.
 
-1. V okně místního terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a spuštění back-endové aplikace:
+1. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte back-endovou aplikaci:
 
     ```cmd/sh
     npm install
@@ -137,7 +138,7 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nastavili centrum IoT, zaregistrovali zařízení, odeslali simulovaná telemetrická data do centra pomocí aplikace Node.js a přečetli telemetrická data z centra pomocí jednoduché back-endové aplikace.
 

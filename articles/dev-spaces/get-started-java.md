@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: mmontwil
-ms.openlocfilehash: f07c5a3e28abc3600b13da2320e55860ede2f7c5
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: 6bee2d4e41c383edac81a6b511cf5cfc5d68da9f
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978276"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636614"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Začínáme s Javou v Azure Dev Spaces
 
@@ -71,7 +71,7 @@ az group create --name MyResourceGroup --location <region>
 Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing
+az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
 ```
 
 Vytvoření clusteru bude trvat několik minut.
@@ -83,6 +83,9 @@ Zadejte následující příkaz Azure CLI se skupinou prostředků, která obsah
    ```cmd
    az aks use-dev-spaces -g MyResourceGroup -n MyAKS
    ```
+
+> [!IMPORTANT]
+> Proces konfigurace Azure Dev mezery se odeberou `azds` oboru názvů v clusteru, pokud existuje.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>Získání ladění Kubernetes pro VS Code
 Výkonné funkce, jako je ladění Kubernetes, jsou prostřednictvím editoru VS Code k dispozici vývojářům .NET Core a Node.js.
@@ -220,7 +223,7 @@ Aktualizujte webovou aplikaci v prohlížeči. V uživatelském rozhraní by se 
 
 **Teď máte metodu, jak rychle provádět iteraci kódu a jeho ladění v Kubernetes.** Příště si ukážeme, jak vytvořit a volat druhý kontejner.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Informace o týmovém vývoji](team-development-java.md)

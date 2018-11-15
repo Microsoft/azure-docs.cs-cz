@@ -9,19 +9,19 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 02a77ef9589a42a6f33087ba7e22efc3144a8f2c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a995f99f7baa8d6f9476f852aa47ce239c921a50
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973554"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634460"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Správa clusterů HDInsight s balíčkem Enterprise Security Package
 Další uživatelé a role v HDInsight Enterprise Security Package (ESP) a jak spravovat clustery ESP.
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Propojení s clusterem připojeným k doméně pomocí VSCode
 
-Můžete propojit normální cluster pomocí Ambari, spravovat uživatelské jméno, také propojit zabezpečení clusteru hadoop s použitím doména uživatelské jméno (například: user1@contoso.com).
+Můžete propojit normální cluster s použitím Apache Ambari, spravovat uživatelské jméno, také propojit cluster Apache Hadoop zabezpečení s využitím doména uživatelské jméno (například: user1@contoso.com).
 1. Výběrem otevřete paletu příkazů **CTRL + SHIFT + P**a pak zadejte **HDInsight: propojení clusteru**.
 
    ![příkaz Link clusteru](./media/apache-domain-joined-manage/link-cluster-command.png)

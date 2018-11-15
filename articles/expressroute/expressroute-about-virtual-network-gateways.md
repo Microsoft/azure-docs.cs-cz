@@ -6,25 +6,24 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: cherylmc
-ms.openlocfilehash: 8776a07f4fb1ffcc573bfedace38280576fa3184
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: mialdrid
+ms.openlocfilehash: df0d9c91d1d4f120f934c7375d0c517e3869834e
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622957"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684762"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>O branách virtuálních sítí pro ExpressRoute
-Bránu virtuální sítě slouží k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Můžete použít virtuální síťová brána lze použít pro provoz ExpressRoute nebo VPN provoz. Tento článek se týká bran virtuální sítě ExpressRoute.
+Bránu virtuální sítě slouží k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Bránu virtuální sítě můžete použít pro provoz ExpressRoute nebo VPN provoz. Tento článek se týká bran virtuální sítě ExpressRoute.
 
 ## <a name="gateway-types"></a>Typy bran
 
-Při vytváření brány virtuální sítě je třeba zadat několik nastavení. Jeden z požadovaných nastavení "-GatewayType", určuje, jestli je brána používat pro ExpressRoute, nebo přenosy VPN. Dvě brány typy jsou: 
+Při vytváření brány virtuální sítě, budete muset zadat několik nastavení. Jeden z požadovaných nastavení "-GatewayType", určuje, jestli je brána používat pro ExpressRoute, nebo přenosy VPN. Dvě brány typy jsou:
 
 * **VPN** – Pokud chcete posílat šifrovaný provoz přes veřejný Internet, použijte typ brány "Vpn". To se také označuje jako bránu sítě VPN. Připojení typu Site-to-Site, Point-to-Site a VNet-to-VNet používají bránu VPN.
 
-* **ExpressRoute** – Pokud chcete posílat síťový provoz na privátní připojení, použijte typ brány "ExpressRoute". Tím se také označuje jako bránu ExpressRoute a je typ brány, který použijete při konfiguraci ExpressRoute.
-
+* **ExpressRoute** – Pokud chcete posílat síťový provoz na privátní připojení, použijte typ brány "ExpressRoute". Tím se také označuje jako bránu ExpressRoute a je typ brány, kterou používá při konfiguraci ExpressRoute.
 
 Každá virtuální síť může mít pouze jednu bránu virtuální sítě pro každý typ brány. Například můžete mít jednu bránu virtuální sítě, která má typ -GatewayType Vpn a jednu, který má typ -GatewayType ExpressRoute.
 
@@ -39,8 +38,8 @@ Následující tabulka ukazuje typy brány a odhadovanou funkční. Tato tabulka
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Výkon aplikace závisí na několika faktorech, například na celkovou latenci a počet přenosové toky, které aplikace se otevře. Čísla v tabulce představují horní mez, které může aplikace dosáhnout teoreticky v prostředí ideální. 
-> 
+> Výkon aplikace závisí na několika faktorech, například na celkovou latenci a počet přenosové toky, které aplikace se otevře. Čísla v tabulce představují horní mez, které může aplikace dosáhnout teoreticky v prostředí ideální.
+>
 >
 
 ### <a name="zrgw"></a>Zónově redundantní SKU brány
@@ -55,7 +54,7 @@ Zónově redundantní brány používají konkrétní nové SKU brány pro brán
 * ErGw2AZ
 * ErGw3AZ
 
-Nové SKU brány podporovat i jiné možnosti nasazení, aby co nejlépe odpovídaly vašim potřebám. Při vytváření brány virtuální sítě pomocí nové SKU brány, máte také možnost k nasazení brány v konkrétní zóně. To se označuje jako brána oblastmi. Při nasazení oblastmi brány všechny instance brány jsou nasazené ve stejné zóně dostupnosti. 
+Nové SKU brány podporovat i jiné možnosti nasazení, aby co nejlépe odpovídaly vašim potřebám. Při vytváření brány virtuální sítě pomocí nové SKU brány, máte také možnost k nasazení brány v konkrétní zóně. To se označuje jako brána oblastmi. Při nasazení oblastmi brány všechny instance brány jsou nasazené ve stejné zóně dostupnosti.
 
 ## <a name="resources"></a>Rutiny Powershellu a rozhraní REST API
 Pro další zdroje technických informací a požadavky na konkrétní syntaxe při použití rozhraní REST API a rutin prostředí PowerShell pro konfiguraci brány virtuální sítě naleznete na následujících stránkách:

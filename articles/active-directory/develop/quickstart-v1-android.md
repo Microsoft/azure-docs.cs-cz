@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: c3ab241e42c431ae4e95e8154343a949bb9e596e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 2d8741f6c65002d7f3701784e5fffe67b0e9bf50
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970163"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51287230"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a zavolání rozhraní API pro Microsoft Graph z aplikace pro Android
 
@@ -30,7 +30,7 @@ ms.locfileid: "46970163"
 
 Pokud vyvíjíte aplikaci pro Android, Microsoft vám usnadní práci s přihlášením uživatelů do Azure Active Directory (Azure AD). Azure AD umožňuje vaší aplikaci získat přístup k datům uživatelů prostřednictvím Microsoft Graphu nebo vlastního chráněného webového rozhraní API.
 
-Knihovna Azure Active Directory Authentication Library (ADAL) pro Android umožňuje vaší aplikaci začít používat [cloud Microsoft Azure](https://cloud.microsoft.com) a [rozhraní API pro Microsoft Graph](https://graph.microsoft.io), protože používá standardní oborové protokoly OAuth 2.0 a OpenID Connect a podporuje [účty Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
+Knihovna Azure Active Directory Authentication Library (ADAL) pro Android umožňuje vaší aplikaci začít používat [cloud Microsoft Azure](https://cloud.microsoft.com) a [rozhraní API pro Microsoft Graph](https://developer.microsoft.com/graph), protože používá standardní oborové protokoly OAuth 2.0 a OpenID Connect a podporuje [účty Microsoft Azure Active Directory](https://azure.microsoft.com/services/active-directory/).
 
 V tomto rychlém startu se naučíte:
 
@@ -123,7 +123,7 @@ Veškerou konfiguraci tohoto ukázkového kódu najdete v souboru ***src/main/ja
 2. Vyberte **Run > Run app** (Spustit > Spustit aplikaci).
 3. Aplikace by se měla sestavit a zobrazit základní uživatelské prostředí. Když kliknete na tlačítko `Call Graph API`, zobrazí se výzva k přihlášení a potom se pomocí nového tokenu tiše zavolá rozhraní API pro Microsoft Graph.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 1. Pokud chcete získat další informace o mechanismech knihovny a způsobu konfigurace nových scénářů a funkcí, projděte si [stránku Wiki knihovny ADAL pro Android](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki).
 2. V nativních scénářích bude aplikace používat vložené webové zobrazení Webview a neopustí aplikaci. Identifikátor URI pro přesměrování může být libovolný.

@@ -10,12 +10,12 @@ ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 10/29/2018
 ms.author: diberry
-ms.openlocfilehash: b44d91b8026a64dd54727345c688dfb9332d49ae
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 013b74165afe6eafee337bd00ca88b1034ad5662
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221561"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51299555"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Kurz: Vytvoření znalostní báze a následné zodpovězení otázky pomocí jazyka C#
 
@@ -75,7 +75,7 @@ Za konstanty přidejte následující definici modelu znalostní báze:
 ## <a name="add-supporting-functions-and-structures"></a>Přidání podpůrných funkcí a struktur
 Přidejte následující blok kódu do třídy Program:
 
-[!code-csharp[Add supporting functions and structures](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=99-123 "Add supporting functions and structures")]
+[!code-csharp[Add supporting functions and structures](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=87-123 "Add supporting functions and structures")]
 
 ## <a name="add-a-post-request-to-create-kb"></a>Přidání požadavku POST na vytvoření znalostní báze
 
@@ -244,7 +244,7 @@ Sestavte program a spusťte ho.
 
 Jakmile se znalostní báze vytvoří, můžete se na ni podívat na portálu služby QnA Maker na stránce [vašich znalostních bází](https://www.qnamaker.ai/Home/MyServices). Když víte, jak používat rozhraní API pro generování odpovědí, můžete toto rozhraní API používat s jakýmkoli jazykem nebo rozhraním pro požadavky HTTP. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Reference k rozhraní REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)

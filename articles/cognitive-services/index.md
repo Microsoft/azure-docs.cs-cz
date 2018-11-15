@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 10/23/2018
 ms.topic: hub-page
-ms.openlocfilehash: 10f0062f27c03d8776415272766a1ec0729e1f80
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: 5f5e4ae85f18870ab6ed22ca010977efc28be058
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747282"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633882"
 ---
 <h1>Dokumentace ke službě Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Naučte se, jak do vašich aplikací, webů a robotů integrovat inteligentní algoritmy, které umožní vidět a slyšet vaše zákazníky, mluvit s nimi a porozumět jejich požadavkům prostřednictvím přirozených způsobů komunikace. Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.</p>
@@ -71,6 +71,25 @@ ms.locfileid: "50747282"
                             <div class="cardText">
                                 <h3>Podpora jazyků ve službách Cognitive Services</h3>
                                 <p>Přečtěte si informace o lidských jazycích podporovaných v rozhraních API služeb Cognitive Services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure/cognitive-services/cognitive-services-container-support/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/i_guidelines.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Použití služeb Cognitive Services v kontejnerech</h3>
+                                <p>Přečtěte si, jak využít služby Azure Cognitive Services v kontejnerech.</p>
                             </div>
                         </div>
                     </div>

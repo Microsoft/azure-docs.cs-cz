@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: daa1bba0aacdceb7d6655c5f491be587d388176a
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.openlocfilehash: ecb95f0440751a6cdbf81dbf02c62bed6b5e780b
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087368"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51286686"
 ---
 # <a name="about-v20"></a>Informace o v2.0
 
@@ -32,7 +32,7 @@ Koncový bod a platforma v2.0 je k dispozici ve verzi Preview a průběžně se 
 
 Prostředí webu Azure Portal pro vývojáře se výrazně aktualizovalo, aby zahrnovalo veškeré vaše aplikace vytvořené prostřednictvím knihoven ADAL nebo MSAL a aby nabízelo možnosti pro širší použitelnost.
 
-Vývojáři aplikací, kteří chtěli v minulosti ze služby Azure Active Directory (Azure AD) podporovat osobní i pracovní účty Microsoft, museli integrovat řešení v rámci dvou samostatných systémů. Koncový bod a platforma v2.0 přináší verzi rozhraní API pro ověřování, která tento proces zjednodušuje. Umožňuje přihlášení přes oba typy účtů, přičemž se integruje v rámci jediného systému. Aplikace s podporou koncového bodu v2.0 zároveň můžou využívat rozhraní REST API přes rozhraní [Microsoft Graph API](https://graph.microsoft.io) prostřednictvím obou typů účtu.
+Vývojáři aplikací, kteří chtěli v minulosti ze služby Azure Active Directory (Azure AD) podporovat osobní i pracovní účty Microsoft, museli integrovat řešení v rámci dvou samostatných systémů. Koncový bod a platforma v2.0 přináší verzi rozhraní API pro ověřování, která tento proces zjednodušuje. Umožňuje přihlášení přes oba typy účtů, přičemž se integruje v rámci jediného systému. Aplikace s podporou koncového bodu v2.0 zároveň můžou využívat rozhraní REST API přes rozhraní [Microsoft Graph API](https://developer.microsoft.com/graph) prostřednictvím obou typů účtu.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -50,7 +50,7 @@ Zjistěte, jaké možnosti nabízí koncový bod služby Azure AD v2.0:
 
 >[!VIDEO https://channel9.msdn.com/Events/Build/2017/P4031/player]
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 
 Prostudujte si podrobné informace týkající se v2.0:
 
@@ -59,7 +59,7 @@ Prostudujte si podrobné informace týkající se v2.0:
 * [informace o tokenech ID](id-tokens.md)
 * [informace o knihovnách ověřování v2.0](reference-v2-libraries.md)
 * [Oprávnění a souhlas ve v2.0](v2-permissions-and-consent.md)
-* [Microsoft Graph API](https://graph.microsoft.io)
+* [Microsoft Graph API](https://developer.microsoft.com/graph)
 
 > [!NOTE]
 > Pokud potřebujete řešit přihlášení jen pracovními a školními účty v rámci Azure Active Directory, začněte [průvodcem Azure AD pro vývojáře](v1-overview.md). Koncový bod v2.0 je určen pro vývojáře, kteří explicitně potřebují řešit přihlášení osobními účty Microsoft.

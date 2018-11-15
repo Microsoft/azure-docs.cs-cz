@@ -9,12 +9,12 @@ ms.date: 10/28/2018
 ms.author: moderakh
 ms.devlang: java
 ms.component: cosmosdb-sql
-ms.openlocfilehash: 74813634aad95f163b06717521bb2c746ac3df6b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ee92a5dd474cdf4f32ed2c7327d732a2cfbbbf79
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238825"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632930"
 ---
 # <a name="troubleshooting-issues-when-using-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>Řešení potíží při použití sady Java SDK pro asynchronní s účty SQL API služby Azure Cosmos DB
 Tento článek popisuje běžné problémy, řešení, kroky pro diagnostiku a nástroje, při použití [ADK Async Javu](sql-api-sdk-async-java.md) s účty SQL API služby Azure Cosmos DB.
@@ -148,7 +148,7 @@ Certifikát HTTPS emulátor služby cosmos DB je podepsaný svým držitelem. Pr
 
 ## <a name="enable-client-sice-logging"></a>Povolení protokolování sady SDK klienta
 
-Sada Java SDK používá asynchronní SLF4j jako adaptační vrstva protokolování, která podporuje protokolování do oblíbených protokolovacích rozhraní, jako je log4j a logback.
+Použití sady Java SDK pro asynchronní SLF4j jako adaptační vrstva protokolování, která podporuje protokolování do oblíbených protokolovacích rozhraní, jako je log4j a logback.
 
 Například pokud chcete použít log4j jako protokolovacího rozhraní, přidejte vaše cesta třídy Java následující knihovny:
 

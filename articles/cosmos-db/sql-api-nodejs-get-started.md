@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 7eeb4fdba8272d9bc2b67d8a33dd7b1d210f5e47
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 61d9d33ae7e8e2104e61bbd24862a709dd6d78ec
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278595"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636472"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření konzolové aplikace Node.js s využitím sady JavaScript SDK pro správu dat rozhraní SQL API služby Azure Cosmos DB
 
@@ -218,7 +218,7 @@ Teď, když máte kód pro inicializaci klienta Azure Cosmos DB, se budeme věno
    const containerId = config.container.id;
    ```
 
-   [Databázi](sql-api-resources.md#databases) je možné vytvořit pomocí funkce [createIfNotExists](/javascript/api/%40azure/cosmos/databases) nebo [create](/javascript/api/%40azure/cosmos/databases) z třídy **Databases**. Databáze je logický kontejner položek rozdělených napříč kontejnery. 
+   Databázi lze vytvořit buď pomocí [createIfNotExists](/javascript/api/%40azure/cosmos/databases) nebo [vytvořit](/javascript/api/%40azure/cosmos/databases) funkce **databází** třídy. Databáze je logický kontejner položek rozdělených napříč kontejnery. 
 
 2. Zkopírujte metody **createDatabase** a **readDatabase** a vložte je do souboru app.js pod definici ```databaseId``` a ```containerId```. Funkce **createDatabase** vytvoří novou databázi s ID ```FamilyDatabase``` definovaným v objektu ```config```, pokud ještě neexistuje. Funkce **readDatabase** přečte definici databáze a ověří, jestli databáze existuje.
 
@@ -900,7 +900,7 @@ node app.js
 
 A to je vše, máte hotovo. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Hledáte složitější ukázku Node.js? Viz [Sestavení webové aplikace Node.js využívající službu Azure Cosmos DB](sql-api-nodejs-application.md).
 * Zjistěte, jak [monitorovat účet služby Azure Cosmos DB](monitor-accounts.md).

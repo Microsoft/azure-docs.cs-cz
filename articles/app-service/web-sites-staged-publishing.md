@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ea9167404034911a0e917374fbdb9962da1578d5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b5a06cff653007568b4ab2b44624b6314413f8a6
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257829"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636063"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
 
-Když nasadíte webovou aplikaci, webové aplikace v Linuxu, mobilních back-endu a aplikace API k [služby App Service](https://go.microsoft.com/fwlink/?LinkId=529714), můžete nasadit do samostatného nasazení slotu místo produkčního slotu výchozí při spuštění v **standardní** nebo **Premium** úroveň plánu služby App Service. Sloty nasazení jsou ve skutečnosti živé aplikace s vlastními názvy hostitele. Elementy obsahu a konfigurace aplikace je možné Prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. Nasazení aplikace do slotu nasazení má následující výhody:
+Když nasadíte webovou aplikaci, webové aplikace v Linuxu, mobilních back-endu a aplikace API k [služby App Service](https://go.microsoft.com/fwlink/?LinkId=529714), můžete nasadit do samostatného nasazení slotu místo produkčního slotu výchozí při spuštění v **standardní**, **Premium**, nebo **izolované** úroveň plánu služby App Service. Sloty nasazení jsou ve skutečnosti živé aplikace s vlastními názvy hostitele. Elementy obsahu a konfigurace aplikace je možné Prohodit mezi dvěma sloty nasazení, včetně produkčního slotu. Nasazení aplikace do slotu nasazení má následující výhody:
 
 * Před přepnutím pomocí produkčního slotu můžete ověřit změny aplikace do přípravného slotu nasazení.
 * Nasazení aplikace do slotu nejprve a přepnutím do produkčního prostředí mít jistotu, že všechny instance slotu zahřejí před přepnutím do produkčního prostředí. Tím se eliminuje prostoje při nasazení vaší aplikace. Přesměrování provozu je bezproblémové a jako výsledek operace prohození se zahodí žádné žádosti. Tento celý pracovní postup je možné automatizovat pomocí konfigurace [automatického prohození](#Auto-Swap) když není potřeba prohození předběžné ověření.
@@ -36,7 +36,7 @@ Každá úroveň plánu služby App Service podporuje jiný počet nasazovacích
 <a name="Add"></a>
 
 ## <a name="add-a-deployment-slot"></a>Přidávání slotu nasazení
-Aplikace musí být spuštěn v **standardní** nebo **Premium** úrovně měli povolit několik nasazovacích slotů.
+Aplikace musí být spuštěn v **standardní**, **Premium**, nebo **izolované* úrovně měli povolit několik nasazovacích slotů.
 
 1. V [webu Azure Portal](https://portal.azure.com/), otevřete v této aplikaci [okno prostředku](../azure-resource-manager/resource-group-portal.md#manage-resources).
 2. Zvolte **sloty nasazení** možnost a potom klikněte na **přidat Slot**.
@@ -44,7 +44,7 @@ Aplikace musí být spuštěn v **standardní** nebo **Premium** úrovně měli 
     ![Přidat nový slot nasazení][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > Pokud aplikace ještě není v **standardní** nebo **Premium** vrstvy, obdržíte zprávu s oznámením podporované úrovně pro povolení fázované publikování. V tomto okamžiku máte možnost vybrat si **upgradovat** a přejděte do **škálování** kartu vaší aplikace, než budete pokračovat.
+   > Pokud aplikace ještě není v **standardní**, **Premium**, nebo **izolované* vrstvy, obdržíte zprávu s oznámením podporované úrovně pro povolení fázované publikování. V tomto okamžiku máte možnost vybrat si **upgradovat** a přejděte do **škálování** kartu vaší aplikace, než budete pokračovat.
    > 
    > 
 3. V **přidat slot** okně zadejte název slotu a vyberte, jestli se má klonovat konfigurace aplikace z jiného existujícího slotu nasazení. Klikněte na zaškrtávací políčko, abyste mohli pokračovat.

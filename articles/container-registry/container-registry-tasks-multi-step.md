@@ -1,25 +1,25 @@
 ---
 title: Automatizace sestavování image, testování a opravy s využitím Azure Container Registry vícekrokových úkolů
-description: Úvod vícekrokových úkolů, funkce ACR úloh ve službě Azure Container Registry poskytující založené na úlohách pracovní postupy pro sestavování, testování a používání dílčích oprav imagí kontejnerů v cloudu.
+description: Úvod do vícekrokových úkolů funkce ACR úloh ve službě Azure Container Registry poskytující založené na úlohách pracovní postupy pro sestavování, testování a opravy chyb imagí kontejnerů v cloudu.
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 10/29/2018
 ms.author: danlep
-ms.openlocfilehash: cdabafc4f70b08076820e7e0d39300b3eb0bc1e7
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 4492e05339c72c371eb2c935d0397b469440c4f6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856713"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632688"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Spuštění několika kroky sestavení, testování a opravu úkoly v úlohách služby ACR
 
 Vícekrokové úlohy rozšířit možnosti sestavení a nabízená jedné image ACR úkolů s více kroky, založené na více container pracovních postupů. Pomocí vícekrokových úkolů sestavíte a odešlete několik imagí v řadě nebo paralelně a spuštění příkazů v rámci jednoho úkolu spuštění těchto imagí. Každý krok definuje image kontejneru sestavení nebo vynucená operace a můžete také definujte spuštění kontejneru. Každý krok v rámci vícekrokové úlohy používá jako své prostředí pro spouštění kontejneru.
 
 > [!IMPORTANT]
-> Pokud jste dříve vytvořili úlohy ve verzi preview se `az acr build-task` příkazu, tyto úlohy se muset znovu vytvořit pomocí [az acr úloh] [ az-acr-task] příkazu.
+> Pokud jste už dříve vytvořili úlohy ve verzi Preview pomocí příkazu `az acr build-task`, tyto úlohy bude potřeba vytvořit znovu pomocí příkazu [az acr task][az-acr-task].
 
 Můžete například spustit úlohu s kroky, které automatizují následující:
 
@@ -53,7 +53,7 @@ Vícekrokové úlohy v úlohách služby ACR je definován jako série kroků v 
 * [`push`](container-registry-tasks-reference-yaml.md#push): Nabízených oznámení vytvořená Image do registru kontejneru. Podporují se privátních registrů, jako je Azure Container Registry, jako je veřejného Docker Hubu.
 * [`cmd`](container-registry-tasks-reference-yaml.md#cmd): Spuštění kontejneru, tak, že bude správně fungovat jako funkce v rámci kontextu spuštěná úloha. Můžete předat parametry do tohoto kontejneru `[ENTRYPOINT]`a zadejte vlastnosti, jako je env, odpojení a další známé `docker run` parametry. `cmd` Typ kroku umožňuje jednotek a funkční testování s spuštění souběžných kontejneru.
 
-Vícekrokové úlohy může být stejně jednoduché jako vytváření a odesílání jedné image:
+Následující fragmenty kódu ukazují, jak kombinací těchto typů úkolů krok. Vícekrokové úlohy může být stejně jednoduché jako vytváření jedné image ze souboru Dockerfile a nahráním do vašeho registru, pomocí souboru YAML podobně jako:
 
 ```yaml
 version: 1.0-preview-1
@@ -62,7 +62,7 @@ steps:
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
 ```
 
-Nebo složitější, jako je například tento úkol, který obsahuje postup pro sestavení, testování, balíček helm a helm nasazení:
+Nebo složitější, jako je například tuto fiktivní vícekrokového definice, která zahrnuje kroky pro sestavení, testování, balíček helm a helm nasazení (registr kontejnerů a Helm konfigurace úložiště není vidět):
 
 ```yaml
 version: 1.0-preview-1
@@ -84,6 +84,8 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
+
+Zobrazit [úkolů příklady] [ task-examples] pro dokončení vícekrokových úkolů YAML soubory a soubory Dockerfile pro několik scénářů.
 
 ## <a name="run-a-sample-task"></a>Spuštění ukázkové úlohy
 
@@ -163,6 +165,7 @@ Referenční dokumentace úlohy několika kroky a příklady v tomto článku na
 
 * [Úloha odkazu](container-registry-tasks-reference-yaml.md) -úloh typy krok, jejich vlastnosti a využití.
 * [Příklady úloh] [ task-examples] – příklad `task.yaml` soubory pro několik scénářů, jednoduché i složité.
+* [Úložiště cmd](https://github.com/AzureCR/cmd) – kolekce kontejnerů jako příkazy pro úlohy služby ACR.
 
 <!-- IMAGES -->
 

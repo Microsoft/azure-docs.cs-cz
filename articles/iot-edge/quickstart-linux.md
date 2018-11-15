@@ -2,19 +2,19 @@
 title: Rychlý start pro Azure IoT Edge + Linux | Microsoft Docs
 description: V tomto rychlém startu se naučíte na zařízení IoT Edge vzdáleně nasadit předem připravený kód.
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 08/14/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a774873872d4b41c4ef5c005946db6b2a1b4e39e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: a392c4c20e54081ae5e4876b7c718759b8200ce5
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955257"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51566427"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge na zařízení Linux x64
 
@@ -289,7 +289,7 @@ Odeberte kontejnerový modul runtime.
    sudo apt-get remove --purge moby-engine
    ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento rychlý start je předpokladem všech dalších kurzů o IoT Edge. Pokračujte některým z dalších kurzů, ve kterých poznáte další způsoby, jak vám může Azure IoT Edge pomoci přeměnit data na obchodní informace o hraničním zařízení.
 

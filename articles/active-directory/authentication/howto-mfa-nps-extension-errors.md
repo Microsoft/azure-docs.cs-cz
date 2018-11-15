@@ -5,21 +5,21 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 58bb3ae39ecd5631508ca1d09bf1d9d8f4d75063
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036661"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634222"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
 
-Pokud narazíte na chyby pomocí rozšíření NPS pro Azure Multi-Factor Authentication, použijte tento článek k dosažení řešení rychleji. 
+Pokud narazíte na chyby pomocí rozšíření NPS pro Azure Multi-Factor Authentication, použijte tento článek k dosažení řešení rychleji. Protokoly rozšíření NPS se nacházejí v prohlížeči událostí pod **vlastní zobrazení** > **role serveru** > **síťové zásady a přístup ke službám** na instalaci rozšíření NPS server.
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>Řešení potíží pro běžné chyby
 
@@ -36,9 +36,6 @@ Pokud narazíte na chyby pomocí rozšíření NPS pro Azure Multi-Factor Authen
 | **REQUEST_MISSING_CODE** | Ujistěte se, že protokol šifrování hesla mezi servery NPS a server NAS podporuje sekundární ověřování, který používáte. **PAP** podporuje všechny metody ověřování Azure mfa v cloudu: telefonní hovor, jednosměrná textová zpráva, oznámení mobilní aplikace a ověřovací kód z mobilní aplikace. **CHAPV2** a **EAP** podporují telefonních hovorů a oznámení mobilní aplikace. |
 | **USERNAME_CANONICALIZATION_ERROR** | Ověřte, že uživatel je k dispozici v místní instanci Active Directory a že službu NPS má oprávnění pro přístup k adresáři. Pokud používáte vztah důvěryhodnosti mezi doménovými strukturami, [obraťte se na podporu](#contact-microsoft-support) o další pomoc. |
 
-
-   
-
 ### <a name="alternate-login-id-errors"></a>Alternativní přihlašovací ID chyby
 
 | Kód chyby | Chybová zpráva | Postup při řešení potíží |
@@ -46,7 +43,6 @@ Pokud narazíte na chyby pomocí rozšíření NPS pro Azure Multi-Factor Authen
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: userObjectSid vyhledávání se nezdařilo | Ověřte, zda uživatel existuje v instanci aplikace místní služby Active Directory. Pokud používáte vztah důvěryhodnosti mezi doménovými strukturami, [obraťte se na podporu](#contact-microsoft-support) o další pomoc. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: Alternativní LoginId vyhledávání se nezdařilo | Ověřte, zda LDAP_ALTERNATE_LOGINID_ATTRIBUTE nastaveno [platné služby active directory atribut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx). <br><br> Pokud LDAP_FORCE_GLOBAL_CATALOG nastavena na hodnotu True nebo LDAP_LOOKUP_FORESTS je nakonfigurována s neprázdnou hodnotu, ověřte, že jste nakonfigurovali globálního katalogu a že je do ní přidat atribut AlternateLoginId. <br><br> Pokud je nakonfigurované LDAP_LOOKUP_FORESTS neprázdná hodnota, ověřte správnost hodnotu. Pokud existuje více než jeden název doménové struktury, musí být názvy oddělené středníkem, nikoli mezery. <br><br> Pokud tyto kroky není problém vyřešit, [obraťte se na podporu](#contact-microsoft-support) o další pomoc. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Chyba: Hodnota alternativní LoginId je prázdná | Ověřte, že atribut AlternateLoginId je nakonfigurovaný pro uživatele. |
-
 
 ## <a name="errors-your-users-may-encounter"></a>Chyby uživatele mohou nastat.
 
@@ -97,7 +93,7 @@ Pokud dojde k některé z těchto chyb, doporučujeme vám [obraťte se na podpo
 
 ### <a name="troubleshoot-user-accounts"></a>Řešení potíží s uživatelské účty
 
-Pokud jsou vaši uživatelé [potíže s dvoustupňovým ověřováním](../user-help/multi-factor-authentication-end-user-troubleshoot.md), pomoci jim svým diagnostikovat problémy. 
+Pokud jsou vaši uživatelé [potíže s dvoustupňovým ověřováním](../user-help/multi-factor-authentication-end-user-troubleshoot.md), pomoci jim svým diagnostikovat problémy.
 
 ### <a name="contact-microsoft-support"></a>Kontaktovat podporu Microsoftu
 
@@ -131,5 +127,3 @@ Shromažďování protokolů ladění pro podporu diagnostiky, použijte násled
 
 5. Otevřete Editor registru a přejděte do sady HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa **VERBOSE_LOG** k **FALSE**
 6. Obsah složky C:\NPS zkomprimovat a připojte soubor ZIP do případu podpory.
-
-

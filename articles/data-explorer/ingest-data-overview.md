@@ -8,18 +8,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f1df22c505bffdfaf60bf9c6eec3ad4e698fff02
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 6c7d4d8d4a16e0679722f9de007870a7ec7554b0
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139522"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51635995"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Příjem dat Azure Průzkumník dat
 
-Příjem dat je proces používaný k načtení záznamů dat z jednoho nebo více zdrojů k vytvoření nebo aktualizaci tabulky v Průzkumníku dat Azure. Jakmile ingestuje, budou data k dispozici pro dotaz. Následující diagram znázorňuje tok začátku do konce pro práci v Průzkumníku dat Azure, včetně ingestování **(2)**.
+Příjem dat je proces používaný k načtení záznamů dat z jednoho nebo více zdrojů k vytvoření nebo aktualizaci tabulky v Průzkumníku dat Azure. Jakmile ingestuje, budou data k dispozici pro dotaz. Následující diagram znázorňuje tok začátku do konce pro práci v Průzkumníku dat Azure, včetně ingestování.
 
-![Celkové datový tok](media/ingest-data-overview/overall-data-flow.png)
+![Tok dat](media/ingest-data-overview/data-flow.png)
 
 Průzkumník dat Azure služba správy dat, která zodpovídá za příjem dat, poskytuje následující funkce:
 
@@ -35,16 +35,16 @@ Průzkumník dat Azure služba správy dat, která zodpovídá za příjem dat, 
 
 1. **Potvrzení ingestovat data**: zpřístupní data pro dotaz.
 
-> [!NOTE]
-> Zásady uchovávání informací efektivní přijatých dat je odvozen z zásady uchovávání informací databáze. Zobrazit [zásady uchovávání informací](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy) podrobnosti. Příjem dat vyžaduje **tabulky přijímač** nebo **databáze přijímač** oprávnění.
-
 ## <a name="ingestion-methods"></a>Ingestování metody
 
-Průzkumník služby Azure Data podporuje několik metod pro ingestování, každý s vlastní cílové scénáře, výhody a nevýhody. Průzkumník dat Azure nabízí konektorů k běžným službám, programové ingestování pomocí sady SDK a přímý přístup k modulu pro účely zkoumání.
+Průzkumník služby Azure Data podporuje několik metod pro ingestování, každý s vlastní cílové scénáře, výhody a nevýhody. Průzkumník dat Azure nabízí kanály a konektorů k běžným službám, programové ingestování pomocí sady SDK a přímý přístup k modulu pro účely zkoumání.
 
-### <a name="ingestion-using-connectors"></a>Ingestování pomocí konektorů
+### <a name="ingestion-using-pipelines"></a>Ingestování pomocí kanálů
 
-Průzkumník dat Azure aktuálně podporuje konektoru centra událostí, které je možné spravovat pomocí Průvodce správou na webu Azure Portal. Další informace najdete v tématu [rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md).
+Průzkumník dat Azure aktuálně podporuje kanálu centra událostí, které je možné spravovat pomocí Průvodce správou na webu Azure Portal. Další informace najdete v tématu [rychlý start: Ingestovat data z centra událostí do Průzkumníku dat Azure](ingest-data-event-hub.md).
+
+### <a name="ingestion-using-connectors-and-plugins"></a>Ingestování pomocí konektorů a moduly plug-in
+Průzkumník dat Azure aktuálně podporuje modul plug-in. Další informace najdete v tématu [modul plug-in pro Logstash výstup pro Průzkumníka služby Azure Data](https://github.com/Azure/logstash-output-kusto/blob/master/README.md).
 
 ### <a name="programmatic-ingestion"></a>Ingestování prostřednictvím kódu programu
 
@@ -54,21 +54,21 @@ Průzkumník služby Azure Data poskytuje sady SDK, které lze použít pro př�
 
 Kusto nabízí klientské sady SDK, který slouží k ingestování a dotazování dat pomocí služby:
 
-* [Python SDK](https://docs.microsoft.com/azure/kusto/api/python/kusto-python-client-library)
+* [Python SDK](/azure/kusto/api/python/kusto-python-client-library)
 
-* [.NET SDK](https://docs.microsoft.com/azure/kusto/api/netfx/about-the-sdk)
+* [.NET SDK](/azure/kusto/api/netfx/about-the-sdk)
 
-* [Java SDK](https://docs.microsoft.com/azure/kusto/api/java/kusto-java-client-library)
+* [Java SDK](/azure/kusto/api/java/kusto-java-client-library)
 
-* [Node SDK]
+* [Node SDK](/azure/kusto/api/node/kusto-node-client-library)
 
-* [REST API](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-client-rest)
+* [REST API](/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **Programové ingestování techniky**:
 
-* Příjem dat prostřednictvím služby správy dat Průzkumník dat Azure (vysokou propustnost a spolehlivé ingestování)
+* Příjem dat prostřednictvím služby správy dat Průzkumník dat Azure (vysokou propustnost a spolehlivé ingestování):
 
-  * [**Batch ingestování** ](https://docs.microsoft.com/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (k dispozici prostřednictvím sady SDK): klient odešle data do úložiště objektů Blob v Azure (určené služba pro správu dat Průzkumník dat Azure) a odešle oznámení do fronty služby Azure. Toto je doporučený postup pro vysoké objemy, spolehlivé a levné ingestování.
+  * [**Batch ingestování** ](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (k dispozici prostřednictvím sady SDK): klient odešle data do úložiště objektů Blob v Azure (určené služba pro správu dat Průzkumník dat Azure) a odešle oznámení do fronty služby Azure. Toto je doporučený postup pro vysoké objemy, spolehlivé a levné ingestování.
 
 * Příjem dat přímo do modulu Průzkumník dat Azure (nejvhodnější pro zkoumání a vytváření prototypů):
 
@@ -118,16 +118,22 @@ Pro všechny ingestování příjímat metody jiné než z dotazu musí být naf
 > [!NOTE]
 > Když se data ingestují, datové typy jsou odvozeny podle sloupce cílové tabulky. Pokud záznam je neúplný nebo pole nelze analyzovat jako povinný datový typ, naplní se odpovídající sloupce tabulky s hodnotou null.
 
-## <a name="schema-mapping"></a>Mapování schématu
+## <a name="ingestion-recommendations-and-limitations"></a>Příjem doporučení a omezení
+* Zásady uchovávání informací efektivní přijatých dat je odvozen z zásady uchovávání informací databáze. Zobrazit [zásady uchovávání informací](/azure/kusto/concepts/retentionpolicy) podrobnosti. Příjem dat vyžaduje **tabulky přijímač** nebo **databáze přijímač** oprávnění.
+* Ingestování podporuje maximální velikostí 5 GB. Doporučuje se ingestování souborů 100MB až 1GB.
+
+## <a name="schema-mapping"></a>mapování schématu
 
 Mapování schématu pomáhá nedeterministicky vytvořit vazbu pole zdroje dat na sloupce cílové tabulky.
 
-* [Mapování sdíleného svazku clusteru](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master#csv-mapping) (volitelné) funguje u všech pořadí formáty a mohou být předány jako parametr příkazu ingestování nebo [předem vytvořit v tabulce](https://docs.microsoft.com/azure/kusto/management/tables?branch=master#create-ingestion-mapping) a odkazované z parametru příkazu ingestování.
-* [Mapování JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master#json-mapping) (povinné) a [Avro mapování](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master#avro-mapping) (povinné) lze předat jako parametr příkazu ingestování nebo [předem vytvořit v tabulce](https://docs.microsoft.com/azure/kusto/management/tables#create-ingestion-mapping) a odkazované z parametru příkazu ingestování.
+* [Mapování sdíleného svazku clusteru](/azure/kusto/management/mappings?branch=master#csv-mapping) (volitelné) funguje u všech pořadí formáty a mohou být předány jako parametr příkazu ingestování nebo [předem vytvořit v tabulce](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) a odkazované z parametru příkazu ingestování.
+* [Mapování JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (povinné) a [Avro mapování](/azure/kusto/management/mappings?branch=master#avro-mapping) (povinné) lze předat jako parametr příkazu ingestování nebo [předem vytvořit v tabulce](/azure/kusto/management/tables#create-ingestion-mapping) a odkazované z parametru příkazu ingestování.
 
 ## <a name="next-steps"></a>Další postup
 
 [Rychlý start: Ingestování dat z centra událostí do Azure Data Exploreru](ingest-data-event-hub.md)
 
 [Rychlý start: Ingestování dat pomocí knihovny Python Azure Data Exploreru](python-ingest-data.md)
+
+[Rychlý start: Ingestování dat pomocí knihovny Azure uzlu Průzkumníka dat](node-ingest-data.md)
 

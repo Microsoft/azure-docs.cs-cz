@@ -1,6 +1,6 @@
 ---
-title: Spouštění úloh Sqoop pomocí .NET a HDInsight – Azure
-description: Zjistěte, jak pomocí sady HDInsight .NET SDK spustit Sqoop import a export mezi clusterem Hadoop a službě Azure SQL database.
+title: Spouštět úlohy Apache Sqoop pomocí .NET a HDInsight – Azure
+description: Zjistěte, jak pomocí sady HDInsight .NET SDK spustit Apache Sqoop import a export mezi clusterem Apache Hadoop a službě Azure SQL database.
 keywords: sqoop úlohy
 ms.reviewer: jasonh
 services: hdinsight
@@ -10,17 +10,17 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 423934dee0b490bb12522cec6d37393a1ec5e2f4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0b8d408482f1f6e2bcd25182208a46d28f7b4f7a
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014869"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633029"
 ---
-# <a name="run-sqoop-jobs-by-using-net-sdk-for-hadoop-in-hdinsight"></a>Spouštění úloh Sqoop pomocí sady .NET SDK pro Hadoop v HDInsight
+# <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>Spouštět úlohy Apache Sqoop pomocí sady .NET SDK pro Apache Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Zjistěte, jak pomocí .NET SDK služby Azure HDInsight můžete spouštět úlohy Sqoop v HDInsight pro import a export mezi clusterem HDInsight a Azure SQL database nebo databáze systému SQL Server.
+Zjistěte, jak pomocí .NET SDK služby Azure HDInsight můžete spouštět úlohy Apache Sqoop v HDInsight pro import a export mezi clusterem HDInsight a Azure SQL database nebo databáze systému SQL Server.
 
 > [!NOTE]
 > I když používáte postupy v tomto článku se buď cluster HDInsight založených na Windows nebo Linux, fungují pouze z klienta Windows. Zvolit jiné metody, použijte volič karty v horní části tohoto článku.

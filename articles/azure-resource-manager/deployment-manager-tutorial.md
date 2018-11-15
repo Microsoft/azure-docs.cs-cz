@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/04/2018
+ms.date: 11/08/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5d18a1f86e1d870db64199c575450dd475590b55
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 70a7829c14997287ed130b0b4300c7f5aa0f3a30
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394450"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345568"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Private Preview)
 
@@ -52,7 +52,7 @@ K dokončení tohoto článku potřebujete:
 * Azure PowerShell Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete nové okno PowerShellu a použijte následující příkaz:
 
-    ```
+    ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
 * [Průzkumníka služby Microsoft Azure Storage](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409). Průzkumník služby Azure Storage se nevyžaduje, ale usnadní vám práci.
@@ -287,7 +287,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
 1. Spuštěním tohoto skriptu nasaďte topologii služby.
 
-    ```powershell
+    ```azurepowershell-interactive
     $deploymentName = "<Enter a Deployment Name>"
     $resourceGroupName = "<Enter a Resource Group Name>"
     $location = "Central US"  
@@ -312,7 +312,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
 3. Nasaďte šablonu uvedení:
 
-    ```powershell
+    ```azurepowershell-interactive
     # Create the rollout
     New-AzureRmResourceGroupDeployment `
         -Name $deploymentName `
@@ -323,7 +323,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
 4. Pomocí následujícího skriptu PowerShellu zkontrolujte průběh uvedení:
 
-    ```powershell
+    ```azurepowershell-interactive
     # Get the rollout status
     $rolloutname = "<Enter the Rollout Name>"
     Get-AzureRmDeploymentManagerRollout `
@@ -383,6 +383,6 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 4. V nabídce nahoře vyberte **Odstranit skupinu prostředků**.
 5. Zopakujte poslední dva kroky a odstraňte ostatní skupiny prostředků vytvořené v rámci tohoto kurzu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili používat Azure Deployment Manager. Další informace najdete v [dokumentaci k Azure Resource Manageru](/azure/azure-resource-manager/).

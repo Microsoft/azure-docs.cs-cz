@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
-ms.openlocfilehash: cd62083bc7bd0254084f0fc209540de929c25d06
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c26b4700f32ce4e0bd8327e862d31df8fea2439d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042249"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632539"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Použití Apache Hivu jako nástroj extrakce, transformace a načítání (ETL)
 
-Je obvykle potřeba čištění a transformace příchozích dat před jejich načtením do cíle vhodný pro účely analýzy. Operace extrakce, transformace a načítání (ETL) slouží k přípravě dat a jejich načtení do cíl dat.  Hive v HDInsight můžete přečíst nestrukturovaných dat, zpracování dat podle potřeby a pak načíst data do relačního datového skladu pro podporu systémů rozhodnutí. V takovém případě jsou data extrahovaná ze zdroje a uložená v škálovatelné úložiště, jako jsou objekty BLOB služby Azure Storage nebo Azure Data Lake Store. Data se potom transformuje použití posloupnosti dotazů Hive a nakonec zpracováním v rámci Hive v rámci přípravy pro hromadné načítání do cílového úložiště dat.
+Je obvykle potřeba čištění a transformace příchozích dat před jejich načtením do cíle vhodný pro účely analýzy. Operace extrakce, transformace a načítání (ETL) slouží k přípravě dat a jejich načtení do cíl dat.  Apache Hive s HDInsight může číst v nestrukturovaných dat, zpracování dat podle potřeby a pak načíst data do relačního datového skladu pro podporu systémů rozhodnutí. V takovém případě jsou data extrahovaná ze zdroje a uložená v škálovatelné úložiště, jako jsou objekty BLOB služby Azure Storage nebo Azure Data Lake Store. Data se potom transformuje použití posloupnosti dotazů Hive a nakonec zpracováním v rámci Hive v rámci přípravy pro hromadné načítání do cílového úložiště dat.
 
 ## <a name="use-case-and-model-overview"></a>Přehled případu a modelů
 

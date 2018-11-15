@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: abd751cf867fea2e634161c4cf0b1e84acbe18c6
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
-ms.translationtype: HT
+ms.openlocfilehash: a543561658d593398ca74f8ae68dd6d0d27bcdaa
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354100"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636439"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Kurz: Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps
 
@@ -260,11 +260,13 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Veřejné certifikáty (volitelné)
-[Veřejné certifikáty](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) můžete nahrát do vaší webové aplikace, takže aplikace bude mít přístup k externí službě, která vyžaduje ověření certifikátu.  Další informace o načtení a použití veřejného certifikátu v aplikaci najdete v tématu věnovaném [použití certifikátu SSL v kódu aplikace ve službě Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load).  Veřejné certifikáty můžete použít také pro aplikace v plánech App Service Environment. Pokud potřebujete certifikát uložit do úložiště certifikátů na místním počítači, musíte použít webovou aplikaci ve službě App Service Environment. Další informace najdete v tématu [Konfigurace veřejných certifikátů pro webovou aplikaci](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+Pokud vaše aplikace potřebuje pro přístup ke vzdáleným prostředkům jako klienta a vzdáleného prostředku vyžaduje ověřování pomocí certifikátu, můžete nahrát [veřejné certifikáty](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) do vaší webové aplikace. Veřejné certifikáty nejsou požadována pro vazby SSL vaší aplikace.
+
+Další informace o načtení a použití veřejného certifikátu v aplikaci najdete v tématu věnovaném [použití certifikátu SSL v kódu aplikace ve službě Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load). Veřejné certifikáty můžete použít příliš s aplikacemi ve službě App Service Environment. Pokud potřebujete certifikát uložit do úložiště certifikátů na místním počítači, musíte použít webovou aplikaci ve službě App Service Environment. Další informace najdete v tématu [Konfigurace veřejných certifikátů pro webovou aplikaci](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
 ![Nahrání veřejného certifikátu](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

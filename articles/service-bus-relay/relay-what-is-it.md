@@ -1,5 +1,5 @@
 ---
-title: Co je Azure Relay? | Microsoft Docs
+title: Co je Azure Relay? | Dokumenty Microsoft
 description: Tento článek obsahuje přehled služby Azure Relay, která umožňuje vyvíjet cloudové aplikace využívající místní služby spuštěné v podnikové síti, a to bez nutnosti otevírat připojení brány firewall nebo provádět výraznější změny síťové infrastruktury.
 services: service-bus-relay
 author: spelluru
@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 10/08/2018
+ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 132fca9c8904c4f64fffe167e3a3f2c6bb0d2cfe
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319332"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621017"
 ---
 # <a name="what-is-azure-relay"></a>Co je Azure Relay?
-Služba Azure Relay umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud. Můžete to provést bez nutnosti otevírat připojení brány firewall nebo provádět výraznější změny infrastruktury podnikové sítě. 
+Služba Azure Relay umožňuje bezpečně zpřístupnit služby spuštěné v podnikové síti pro veřejný cloud. Jde to provést bez otevření portu v bráně firewall nebo nežádoucí změny infrastruktury podnikové sítě. 
 
 Služba Relay podporuje následující scénáře mezi místními službami a aplikacemi spuštěnými v cloudu nebo v jiném místním prostředí. 
 
@@ -56,7 +56,7 @@ Podrobnosti o protokolu pro hybridní připojení najdete v [příručce k proto
 > Funkce Hybrid Connections služby Azure Relay nahrazuje starší funkci hybridních připojení služby BizTalk Services. Funkce Hybrid Connections ve službě BizTalk Services využívala službu Azure Service Bus WCF Relay. Schopnost Hybrid Connections ve službě Azure Relay doplňuje již dříve existující funkci WCF Relay. Tyto dvě schopnosti služeb (WCF Relay a Hybrid Connections) existují ve službě Azure Relay vedle sebe. Sdílejí sice společnou bránu, jinak se ale jedná o rozdílné implementace.
 
 ## <a name="wcf-relay"></a>WCF Relay
-WCF Relay funguje v celém rozhraní .NET Framework a funguje i s technologií WCF. Propojení místní služby se službou Relay vytvoříte pomocí skupiny „předávacích“ vazeb WCF. Na pozadí se děje to, že předávací vazby mapují do nových elementů přenosové vazby určené k vytvoření komponentů kanálu WCF, které se integrují se službou Service Bus v cloudu. Další informace najdete v článku [Začínáme s přenosy WCF](relay-wcf-dotnet-get-started.md).
+WCF Relay funguje v celém rozhraní .NET Framework a funguje i s technologií WCF. Propojení místní služby se službou Relay vytvoříte pomocí skupiny „předávacích“ vazeb WCF. Předávací vazby mapují do nových elementů přenosové vazby určené k vytvoření komponentů kanálu WCF, které se integrují se službou Service Bus v cloudu. Další informace najdete v článku [Začínáme s přenosy WCF](relay-wcf-dotnet-get-started.md).
 
 ## <a name="hybrid-connections-vs-wcf-relay"></a>Hybrid Connections vs. WCF Relay
 Hybrid Connections i WCF Relay umožňují zabezpečené připojení k prostředkům existujícím v rámci podnikové sítě. Použití jedné nebo druhé funkce závisí na konkrétních požadavcích, jak je popsáno v následující tabulce:
@@ -68,7 +68,7 @@ Hybrid Connections i WCF Relay umožňují zabezpečené připojení k prostřed
 | **.NET Framework** |x |x |
 | **JavaScript/Node.js** | |x |
 | **Otevřený protokol založený na standardech** | |x |
-| **Několik programovacích modelů protokolu RPC** | |x |
+| **Programovacích modelů protokolu RPC** | |x |
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektura: Zpracování příchozích požadavků na předání
 Následující diagram ukazuje, jak služba Azure Relay zpracovává příchozí požadavky na předání:
@@ -85,10 +85,10 @@ Následující diagram ukazuje, jak služba Azure Relay zpracovává příchozí
 8. Brána přesměruje všechny zprávy z čekajícího klienta do odesílajícího klienta. 
 9. Brána přesměruje všechny zprávy z odesílajícího klienta do čekajícího klienta.  
 
-## <a name="next-steps"></a>Další kroky
-* [Začínáme s WebSockety v .NET](relay-hybrid-connections-dotnet-get-started.md)
+## <a name="next-steps"></a>Další postup
+* [Začínáme s .NET WebSockets](relay-hybrid-connections-dotnet-get-started.md)
 * [Začínáme s požadavky HTTP v .NET](relay-hybrid-connections-http-requests-dotnet-get-started.md)
-* [Začínáme s WebSockety v Node](relay-hybrid-connections-node-get-started.md)
+* [Začínáme s objekty Websocket uzlu](relay-hybrid-connections-node-get-started.md)
 * [Začínáme s požadavky HTTP v Node](relay-hybrid-connections-http-requests-node-get-started.md)
 * [Přenos – nejčastější dotazy](relay-faq.md)
 

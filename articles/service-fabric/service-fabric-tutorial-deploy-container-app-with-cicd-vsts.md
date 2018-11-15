@@ -3,7 +3,7 @@ title: Nasazení aplikace typu kontejner s CI/CD do clusteru Azure Service Fabri
 description: V tomto kurzu se dozvíte, jak nastavit kontinuální integraci a nasazování pro aplikaci Azure Service Fabric typu kontejner pomocí Visual Studio Team Services (VSTS).
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: TylerMSFT
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: ryanwi,v-steg
+ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: db0abf2c70ac79356496c78275dc658d1ee29a23
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: a7cb139da2cdbfb187a62eeadc707f7206de8a34
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035902"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300181"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
 
@@ -183,7 +183,7 @@ Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplika
 
 ![Service Fabric Explorer][sfx3]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

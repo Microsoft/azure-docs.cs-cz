@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 2164dedc27d81aa488c3e054b4c6df067e96e612
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 815e3c711850eab11aef63e04a1c512c4510a910
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418190"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684274"
 ---
 #  <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Konfigurace zóny zpětného vyhledávání pro kontrolu bannerů protokolu SMTP
 
@@ -43,7 +43,7 @@ Při konfiguraci záznamů PTR, ujistěte se, že IP adresa a zpětný plně kva
     Set-AzureRmPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership: 
                         
     1) ReverseFqdn odpovídá plně kvalifikovaný název domény libovolný prostředek veřejné IP adresy v rámci předplatného; 
-    2) ReverseFqdn překládá plně kvalifikovaný název domény (přes řetěz záznamů CName) libovolný prostředek veřejné IP adresy v rámci předplatné; 
+    2) ReverseFqdn překládá plně kvalifikovaný název domény (přes řetěz záznamů CName) libovolný prostředek veřejné IP adresy v rámci předplatného; 
     3) Se překládá na ip adresu (přes řetěz záznamů CName a A) prostředku statickou veřejnou IP adresu v rámci předplatného. 
 
 Pokud je ručně změnit váš bannerů protokolu SMTP tak, aby odpovídaly naší výchozí reverzní plně kvalifikovaný název domény, vzdálené poštovní server stále selhat, protože ho může předpokládat, že hostitel SMTP banner tak, aby odpovídaly záznam MX pro doménu.

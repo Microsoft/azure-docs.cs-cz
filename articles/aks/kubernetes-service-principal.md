@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: get-started-article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: ef3139c4b3f06644b219e177fad0c094ed600fb6
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
-ms.translationtype: HT
+ms.openlocfilehash: 4af4cae07f4e02bc8306c0b317da3a58e4586494
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394586"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578345"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Tento článek ukazuje, jak vytvořit a používat instanční objekt pro vaše 
 
 Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud nemáte potřebná oprávnění, možná budete muset požádat správce služby Azure AD nebo předplatného o jejich přiřazení nebo vytvořit instanční objekt pro použití se službou AKS předem.
 
-Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Automatické vytvoření a použití instančního objektu
 
@@ -75,6 +75,45 @@ Pokud nasadíte cluster AKS pomocí portálu Microsoft Azure, na stránce *ově�
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
+## <a name="delegate-access-to-other-azure-resources"></a>Delegování přístupu k jiným prostředkům Azure
+
+Instanční objekt pro AKS cluster je možné pro přístup k dalším prostředkům. Například pokud chcete použít rozšířeného sítě pro připojení k existující virtuální sítě nebo připojení k Azure Container Registry (ACR), musíte delegovat přístup k objektu služby.
+
+Delegovat oprávnění, můžete vytvořit přiřazení role pomocí [vytvořit přiřazení role az] [ az-role-assignment-create] příkazu. Můžete přiřadit `appId` na konkrétní rozsah, jako jsou skupiny prostředků nebo prostředek virtuální sítě. Role potom definuje, jaká oprávnění instančního objektu má na prostředek, jak je znázorněno v následujícím příkladu:
+
+```azurecli
+az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
+```
+
+`--scope` Pro prostředek musí být úplné ID prostředku, jako například */subscriptions/\<guid\>/resourceGroups/myResourceGroup* nebo */subscriptions/\<guid \>/resourceGroups/myResourceGroupVnet/providers/Microsoft.Network/virtualNetworks/myVnet*
+
+Následující části popisují běžné delegování, které musíte provést.
+
+### <a name="azure-container-registry"></a>Azure Container Registry
+
+Pokud používáte jako vaše úložiště imagí kontejnerů Azure Container Registry (ACR), budete muset udělit oprávnění pro váš cluster AKS ke čtení a stažení imagí. Instanční objekt clusteru AKS je potřeba delegovat *čtečky* role v registru. Podrobné pokyny najdete v článku [AKS udělit přístup do služby ACR][aks-to-acr].
+
+### <a name="networking"></a>Sítě
+
+Můžete použít rozšířeného sítě kde virtuální sítě a podsítě nebo veřejné IP adresy jsou v jiné skupině prostředků. Přiřadíte jednu z následující sadu oprávnění role:
+
+- Vytvoření [vlastní roli] [ rbac-custom-role] a definovat následující oprávnění role:
+  - *Microsoft.Network/virtualNetworks/subnets/join/action*
+  - *Microsoft.Network/virtualNetworks/subnets/read*
+  - *Microsoft.Network/publicIPAddresses/read*
+  - *Microsoft.Network/publicIPAddresses/write*
+  - *Microsoft.Network/publicIPAddresses/join/action*
+- Nebo přiřadit [Přispěvatel sítě] [ rbac-network-contributor] předdefinovaná role v podsíti ve virtuální síti
+
+### <a name="storage"></a>Úložiště
+
+Potřebujete přístup k existující prostředky disku v jiné skupině prostředků. Přiřadíte jednu z následující sadu oprávnění role:
+
+- Vytvoření [vlastní roli] [ rbac-custom-role] a definovat následující oprávnění role:
+  - *Microsoft.Compute/disks/read*
+  - *Microsoft.Compute/disks/write*
+- Nebo přiřadit [Přispěvatel účtů úložiště] [ rbac-storage-contributor] předdefinovanou roli ve skupině prostředků.
+
 ## <a name="additional-considerations"></a>Další aspekty
 
 Při použití instančních objektů služeb Azure AD a AKS mějte na paměti následující informace.
@@ -92,7 +131,7 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
         az ad app delete --id <appId>
         ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o instančních objektech služby Azure Active Directory najdete v nabídce [Aplikace a instanční objekty služby][service-principal].
 
@@ -107,3 +146,8 @@ Další informace o instančních objektech služby Azure Active Directory najde
 [az-ad-app-list]: /cli/azure/ad/app#az-ad-app-list
 [az-ad-app-delete]: /cli/azure/ad/app#az-ad-app-delete
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[rbac-network-contributor]: ../role-based-access-control/built-in-roles.md#network-contributor
+[rbac-custom-role]: ../role-based-access-control/custom-roles.md
+[rbac-storage-contributor]: ../role-based-access-control/built-in-roles.md#storage-account-contributor
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[aks-to-acr]: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json#grant-aks-access-to-acr

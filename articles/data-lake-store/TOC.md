@@ -95,12 +95,11 @@
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # Zdroje a prostředky
-## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
+## [Plány Azure do budoucna](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Blog služby Data Lake Store](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Váš názor na UserVoice](https://feedback.azure.com/forums/327234-data-lake)
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [Ceny](https://azure.microsoft.com/pricing/details/data-lake-store/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
-## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=data-lake-store)
 ## [Fórum Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store)

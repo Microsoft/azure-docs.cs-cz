@@ -1,6 +1,6 @@
 ---
-title: MapReduce se systémem Hadoop v HDInsight
-description: Zjistěte, jak spouštět úlohy mapreduce je možné na systému Hadoop v prostředí clusterů HDInsight.
+title: MapReduce se službou Apache Hadoop v HDInsight
+description: Zjistěte, jak spouštět úlohy MapReduce systému Apache Hadoop v clusterech HDInsight.
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: f9dea4c965f64576f839a39b813e4361b166ffe6
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c9a4a0944c51cb8c6f6d91cd153580a17a9b7898
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015158"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632646"
 ---
-# <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>Použití MapReduce se v clusteru Hadoop v HDInsight
+# <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>Použití MapReduce se v Apache Hadoop v HDInsight
 
 Zjistěte, jak spouštět úlohy MapReduce na clusterech HDInsight. Následující tabulku použijte k prozkoumejte různé způsoby, jak je možné MapReduce s HDInsight:
 
@@ -32,7 +32,7 @@ Zjistěte, jak spouštět úlohy MapReduce na clusterech HDInsight. Následujíc
 
 ## <a id="whatis"></a>Co je MapReduce
 
-Hadoop MapReduce je software platformě pro psaní úlohy, které zpracovávají velké objemy dat. Vstupní data je rozdělený do bloků nezávislé. Každý blok se zpracovávají paralelně napříč uzly v clusteru. Úlohu MapReduce se skládá ze dvou funkcí:
+Apache Hadoop MapReduce je software platformě pro psaní úlohy, které zpracovávají velké objemy dat. Vstupní data je rozdělený do bloků nezávislé. Každý blok se zpracovávají paralelně napříč uzly v clusteru. Úlohu MapReduce se skládá ze dvou funkcí:
 
 * **Mapovač**: zpracovává vstupní data, analyzuje je (obvykle pomocí filtrování a řazení) a generuje řazených kolekcí členů (páry klíč hodnota)
 

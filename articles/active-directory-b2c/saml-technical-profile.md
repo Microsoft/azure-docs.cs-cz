@@ -10,22 +10,22 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c99099c9b0fdf485bcf1db1d00b23e1e119ec557
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 347a437a9f45f29348e97c616c985764135e5427
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614153"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687465"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil SAML definování ve vlastních zásadách pro Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C poskytuje podporu pro zprostředkovatele identity SAML 2.0. Tento článek popisuje, jaké jsou specifikace technický profil pro interakci s zprostředkovatele deklarací identity, která podporuje tento protokol standardizované. S technický profil SAML, který může provést federaci pomocí zprostředkovatele identity na základě SAML, jako je služba AD FS nebo Salesforce, umožňuje uživatelům přihlásit se pomocí svých podnikových identit nebo existující sociální sítě.
+Azure Active Directory (Azure AD) B2C poskytuje podporu pro zprostředkovatele identity SAML 2.0. Tento článek popisuje, jaké jsou specifikace technický profil pro interakci s zprostředkovatele deklarací identity, která podporuje tento protokol standardizované. Pomocí SAML technický profil může provést federaci s SAML na základě zprostředkovatele identity, jako například [služby AD FS](active-directory-b2c-custom-setup-adfs2016-idp.md) a [Salesforce](active-directory-b2c-setup-sf-app-custom.md), umožňuje uživatelům přihlásit se pomocí svých podnikových identit nebo existující sociální sítě.
 
 ## <a name="metadata-exchange"></a>Metadata exchange
 
-Metadata jsou informace, které používají protokol SAML k vystavení konfiguraci strany SAML, jako je například služba zprostředkovatele nebo zprostředkovatele identity. Metadata definuje umístění služeb, jako metodu přihlašování, přihlašování a odhlašování, certifikáty a další. Zprostředkovatel identity používá metadata k určení, jak ke komunikaci s Azure AD B2C. Metadata je nakonfigurována ve formátu XML a může být podepsané digitálním podpisem tak, aby druhou stranu může ověřit integritu metadat. Azure AD B2C federuje s zprostředkovatele identity SAML, funguje jako poskytovatel služeb zahajování požadavek SAML a čekání na odpověď SAML. A v některých případech, s výjimkou nevyžádané ověřování SAML, která je také označována jako zprostředkovatele identity iniciované. 
+Metadata jsou informace, které používají protokol SAML k vystavení konfiguraci strany SAML, jako je například služba zprostředkovatele nebo zprostředkovatele identity. Metadata definuje umístění služeb, jako metodu přihlašování, přihlašování a odhlašování, certifikáty a další. Zprostředkovatel identity používá metadata k určení, jak ke komunikaci s Azure AD B2C. Metadata je nakonfigurována ve formátu XML a může být podepsané digitálním podpisem tak, aby druhou stranu může ověřit integritu metadat. Azure AD B2C federuje s zprostředkovatele identity SAML, funguje jako poskytovatel služeb zahajování požadavek SAML a čekání na odpověď SAML. A v některých případech přijímá nevyžádané ověřování SAML, která je také označována jako zprostředkovatele identity iniciované. 
 
 Metadata se dá nakonfigurovat v obou stran jako "Statické Metadata" nebo "Dynamická Metadata". V režimu statické zkopírujte celý metadat z jedné strany a nastavte ji v druhé strany. V dynamickém režimu nastavit adresu URL metadat během druhé strany načte konfiguraci dynamicky. Zásady jsou stejné, nastavte metadata technický profil Azure AD B2C ve zprostředkovateli identity a nastavte metadat zprostředkovatele identity v Azure AD B2C.
 
@@ -34,14 +34,14 @@ Každý poskytovatel identity SAML má jiný postup k vystavení a nastavte posk
 Následující příklad ukazuje adresu URL metadat SAML technického profilu Azure AD B2C:
 
 ```
-https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 Nahraďte následující hodnoty:
 
-- **váš tenant** názvem vašeho tenanta, jako je například vaše tenant.onmicrosoft.com
+- **váš název tenanta** názvem vašeho tenanta, jako je například fabrikam.b2clogin.com.
 - **vaše zásady** názvem zásady. Pomocí zásad, které nakonfigurujete technický profil SAML zprostředkovatele nebo zásad, která dědí z této zásadě.
-- **váš technický profil** s názvem technického profilu poskytovatele identity SAML
+- **váš technický profil** s názvem technického profilu poskytovatele identity SAML.
 
 ## <a name="digital-signing-certificates-exchange"></a>Digitální podepisování certifikátů exchange
 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 07/26/2018
+ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 7c6445624b2c03497c881b0c34bac8256fa28a98
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: aa1d98f5ea2db0cc549b60e33769c8628181721b
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302039"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686598"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
@@ -35,7 +35,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 |:--- |:--- |:--- |
 | Databáze |Maximální velikost | Gen1: 240 TB na disk komprimován. Toto místo je nezávislý na místa protokolu nebo databáze tempdb, a proto je tento prostor vyhrazený pro trvalé tabulky.  Komprese columnstore clusteru se odhadují 5 X.  Tato komprese umožňuje databáze, kterou chcete dosáhnout přibližně 1 PB všech tabulek po Clusterované columnstore (výchozí typ tabulky). <br/><br/> Gen2: 240TB rowstore a neomezené úložiště tabulek columnstore |
 | Table |Maximální velikost |60 TB komprimované na disku |
-| Table |Tabulky na databázi |10 000 |
+| Table |Tabulky na databázi | 100 000 |
 | Table |Sloupce na tabulku |1024 sloupců |
 | Table |Bajtů na sloupec |Závislé na sloupci [datový typ](sql-data-warehouse-tables-data-types.md). Limit je 8000 pro datové typy char, 4000 pro nvarchar, nebo 2 GB pro maximální počet datových typů. |
 | Table |Řádek, definovaná velikost v bajtech |8 060 bajtů<br/><br/>Počet bajtů na každém řádku se počítá stejným způsobem, jako je komprese stránky pro SQL Server. Jako je SQL Server, SQL Data Warehouse podporuje úložiště řádek přetečení, což umožňuje **sloupců s proměnnou délkou** doručí mimo řádek. Když řádky s proměnnou délkou jsou vložena mimo řádek, uloží se pouze 24 bajtů kořenové hlavního záznamu. Další informace najdete v tématu [přetečení řádek dat překročení velikosti 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
@@ -69,7 +69,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | SELECT |Sloupce na spojení |1024 sloupců<br/><br/>Nikdy nemůžete mít více než 1024 sloupců ve spojení. Neexistuje žádná záruka, že budete mít vždy 1024. Pokud plán spojení vyžaduje dočasnou tabulku s více sloupců než výsledek spojení, platí limit 1 024 do dočasné tabulky. |
 | SELECT |Počet bajtů za Seskupit podle sloupce. |8060<br/><br/>Sloupce v klauzuli GROUP BY může mít maximálně 8 060 bajtů. |
 | SELECT |Bajtů na pořadí podle sloupce |8 060 bajtů<br/><br/>Sloupce v klauzuli ORDER by může mít maximálně 8 060 bajtů |
-| Identifikátory na – příkaz |Počet identifikátorů odkazované |65,535<br/><br/>SQL Data Warehouse omezuje počet identifikátorů, které mohou být obsaženy v jednom výrazu dotazu. Vyšší než tento počet výsledků v chybě systému SQL Server 8632. Další informace najdete v tématu [vnitřní chyba: bylo dosaženo limitu služby výrazu] [vnitřní chyba: bylo dosaženo limitu služby výrazu]. |
+| Identifikátory na – příkaz |Počet identifikátorů odkazované |65,535<br/><br/>SQL Data Warehouse omezuje počet identifikátorů, které mohou být obsaženy v jednom výrazu dotazu. Vyšší než tento počet výsledků v chybě systému SQL Server 8632. Další informace najdete v tématu [vnitřní chyba: bylo dosaženo limitu služby výrazu](https://support.microsoft.com/en-us/help/913050/error-message-when-you-run-a-query-in-sql-server-2005-internal-error-a). |
 | Řetězcové literály | Počet řetězcových literálů v příkazu | 20,000 <br/><br/>SQL Data Warehouse omezuje počet řetězcové konstanty v jednom výrazu dotazu. Vyšší než tento počet výsledků v chybě systému SQL Server 8632.|
 
 ## <a name="metadata"></a>Metadata

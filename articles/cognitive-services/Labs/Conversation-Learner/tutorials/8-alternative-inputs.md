@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 3b38cc265b4adfb301dc1165e02b17a8aa7c9589
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f344424c372f65cd8bfe5779cc65f0e866e58a11
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252543"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633967"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Jak používat alternativní vstupy
 
@@ -137,9 +137,11 @@ Přidejme alternativní vstupy do prvního dialogového okna:
     3. Klikněte na tlačítko Odeslat změny.
 4. Klikněte v levém podokně vyberte "denver":
     1. Ve vstupu alternativní přidat zadejte "denver".
-    2. Zadejte "předpovídáním austin".
-        - Úplné frázi je zvýrazněn. Klikněte na frázi a červený symbol x. Potom vyberte austin a klikněte na město.
-        - Klikněte na tlačítko Odeslat změny
+    1. Zadejte "předpovídáním austin".
+        - Zobrazí se chybová zpráva: "Variace Text musí obsahovat stejné zjištěné entity jako původní vstupního textu."
+        - Klikněte na slovo "austin".
+        - Se zobrazí automaticky otevírané okno, které vám umožní vybrat entitu pro "austin". Klikněte na tlačítko **Město**.
+        - Klikněte na tlačítko Odeslat změny.
     1. Klikněte na Hotovo, což způsobí, že model, který má programovém přeučení.
 
 ![](../media/tutorial8_altcities.png)

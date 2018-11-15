@@ -3,29 +3,31 @@ title: Kurz k Azure IoT Edge C# | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak vytvořit modul IoT Edge s kódem v jazyce C# a jak ho nasadit na hraniční zařízení.
 services: iot-edge
 author: kgremban
-manager: timlt
+manager: philmea
 ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ec8cd52d8a91c76033d52f9b49ee84dde98eada2
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 4c20ab78ba4da44d4746ef6f68674fe494392347
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156761"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633984"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Kurz: Vývoj modulu IoT Edge v jazyce C# a jeho nasazení na simulované zařízení
 
 Moduly Azure IoT Edge můžete použít k nasazení kódu, který implementuje obchodní logiku přímo do zařízení IoT Edge. Tento kurz vás povede při vytvoření a nasazení modulu IoT Edge, který filtruje data ze senzoru. Budete používat simulované zařízení IoT Edge, které jste vytvořili v rychlých startech o nasazení Azure IoT Edge na simulované zařízení ve [Windows](quickstart.md) nebo [Linuxu](quickstart-linux.md). V tomto kurzu se naučíte:    
 
 > [!div class="checklist"]
-> * Používat Visual Studio Code k vytvoření modulu IoT Edge, který je založený na sadě .NET Core 2.0 SDK.
+> * Použití Visual Studio Code k vytvoření modulu IoT Edge, která je založena na sadě SDK .NET Core 2.1.
 > * Používat Visual Studio Code a Docker k vytvoření image Dockeru a jejímu publikování v registru.
 > * Nasadit modul do zařízení IoT Edge.
 > * Zobrazit vygenerovaná data.
 
+>[!NOTE]
+>Můžete také použít [Visual Studio 2017 vyvíjet, ladit a nasadit moduly IoT Edge](how-to-visual-studio-develop-csharp-module.md).
 
 Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje generované zařízením. Zprávy posílá dále, jen když teplota překročí zadanou prahovou hodnotu. Tento typ analýzy v zařízení Edge je užitečný kvůli zmenšení objemu dat přenášených a ukládaných do cloudu. 
 
@@ -330,7 +332,7 @@ Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto čl�
 [!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili modul IoT Edge s kódem pro filtrování nezpracovaných dat generovaných zařízením IoT Edge. Až budete chtít vytvářet vlastní moduly, získáte další informace na stránce o [vývoji modulu jazyka C# pomocí Azure IoT Edge pro Visual Studio Code](how-to-develop-csharp-module.md). Pokračujte dalšími kurzy, ve kterých se naučíte další způsoby, jak vám může Azure IoT Edge pomoct přeměnit data na obchodní informace o hraničním zařízení.
 

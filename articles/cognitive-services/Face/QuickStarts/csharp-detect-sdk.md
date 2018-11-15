@@ -1,201 +1,100 @@
 ---
-title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí sady .NET SDK a jazyka C#'
+title: 'Rychlý start: Rozpoznávání tváří v obrázku pomocí .NET SDK služby Azure pro rozpoznávání tváře'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu budete pomocí klientské knihovny služby Rozpoznávání tváře systému Windows s C# rozpoznávat tváře z obrázku ve službě Cognitive Services.
+description: V tomto rychlém startu použijete Azure SDK pro rozpoznávání tváře s C# k rozpoznávání tváří v obrázku.
 services: cognitive-services
 author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
-ms.date: 09/14/2018
+ms.date: 11/07/2018
 ms.author: pafarley
-ms.openlocfilehash: a4b0b8b277ed6bc6e2bc3c7549d1e67d5f18c615
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 4fbbde167a8c895a71ab3614e8c3ecbce26604a9
+ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954959"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51578146"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-net-sdk-with-c"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí sady .NET SDK a jazyka C#
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí sady .NET SDK pro rozpoznávání tváře
 
-V tomto rychlém startu budete pomocí klientské knihovny služby Rozpoznávání tváře systému Windows rozpoznávat lidské tváře na obrázku.
+V tomto rychlém startu použijete typ písma služby SDK s C# k detekci lidských tváří v obrázku. Funkční příklad kódu v rámci tohoto rychlého startu, najdete v článku do projektu pro rozpoznávání tváře [Cognitive Services pro zpracování obrazu csharp šablon rychlý Start](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) úložišti na Githubu.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ke spuštění této ukázky budete potřebovat klíč předplatného. Klíče bezplatného zkušebního předplatného můžete získat v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
-* Libovolná edice sady [Visual Studio 2017](https://www.visualstudio.com/downloads/).
-* Balíček NuGet klientské knihovny [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview). Stažení tohoto balíčku není nutné. Pokyny k instalaci jsou uvedené dál.
+- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
+- Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 
-## <a name="detectwithurlasync-method"></a>Metoda DetectWithUrlAsync
+## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-> [!TIP]
-> Získejte z [GitHubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) nejnovější verzi kódu jako řešení sady Visual Studio.
+1. V sadě Visual Studio vytvořte nový **Konzolová aplikace (.NET Framework)** projektu a pojmenujte ho **FaceDetection**. 
+1. Pokud vaše řešení obsahuje i jiné projekty, vyberte tento projekt jako jediný spouštěný projekt.
+1. Získejte požadované balíčky NuGet. Klikněte pravým tlačítkem na projekt v Průzkumníku řešení a vyberte **spravovat balíčky NuGet**. Klikněte na tlačítko **Procházet** kartě a vyberte **zahrnout předběžné verze**; najít a nainstalovat balíček následující:
+    - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
 
-Metody `DetectWithUrlAsync` a `DetectWithStreamAsync` využívají [Face - Detect API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) pro vzdálené a místní obrázky (v uvedeném pořadí). Pomocí těchto metod rozpoznejte tváře na obrázku a vraťte atributy tváře, včetně:
+## <a name="add-face-detection-code"></a>Přidejte kód pro rozpoznávání tváře detekce
 
-* Face ID: jedinečná hodnota ID používaná v několika scénářích rozhraní API pro rozpoznávání tváře
-* Obdélník tváře: umístění tváře na obrázku vlevo a nahoře a šířka a výška obličeje
-* Rysy: soustava 27 bodů obličejových rysů odkazující na důležité polohy součástí obličeje.
-* Atributy obličeje včetně věku, pohlaví, intenzity úsměvu, pozice hlavy a vousů.
+Otevřete nový projekt *Program.cs* souboru. Zde přidejte kód potřebný k načtení bitové kopie a rozpoznávání tváří.
 
-Pokud chcete spustit ukázku, postupujte takto:
+### <a name="include-namespaces"></a>Zahrnutí oborů názvů
 
-1. V sadě Visual Studio vytvořte novou konzolovou aplikaci Visual C#.
-1. Nainstalujte balíček NuGet klientské knihovny služby Rozpoznávání tváře.
-    1. V horní nabídce klikněte na **Nástroje** vyberte **Správce balíčků NuGet** a potom **Spravovat balíčky NuGet pro řešení**.
-    1. Klikněte na kartu **Procházet** a potom vyberte **Zahrnout předběžnou verzi**.
-    1. V poli **Vyhledat** zadejte Microsoft.Azure.CognitiveServices.Vision.Face.
-    1. Vyberte **Microsoft.Azure.CognitiveServices.Vision.Face** (jakmile se zobrazí), potom klikněte na zaškrtávací políčko vedle názvu vašeho projektu a klikněte na **Nainstalovat**.
-1. Soubor *Program.cs* nahraďte následujícím kódem.
-1. Místo `<Subscription Key>` použijte platný klíč předplatného.
-1. V případě potřeby změňte `faceEndpoint` na oblast Azure spojenou s klíči vašeho předplatného.
-1. Volitelně můžete nahradit <`LocalImage>` cestou a názvem souboru místního obrázku (pokud není nastaveno, bude se ignorovat).
-1. Volitelně můžete `remoteImageUrl` nastavit na jiný obrázek.
-1. Spusťte program.
+Na začátek souboru *Program.cs* přidejte následující příkazy `using`.
 
-```csharp
-using Microsoft.Azure.CognitiveServices.Vision.Face;
-using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=1-7)]
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
+### <a name="add-essential-fields"></a>Přidat nezbytné pole
 
-namespace DetectFace
-{
-    class Program
-    {
-        // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
-        private const string subscriptionKey = "<SubscriptionKey>";
+Do třídy **Program** přidejte následující pole. Tato data Určuje, jak se připojit ke službě pro rozpoznávání tváře a kde se stáhnout vstupní data. Budete muset aktualizovat `subscriptionKey` pole s hodnotou váš klíč předplatného a může být nutné změnit `faceEndpoint` řetězec tak, aby obsahoval identifikátor správné oblasti. Také budete muset nastavit `localImagePath` a/nebo `remoteImageUrl` hodnoty cest, které odkazují na skutečné soubory obrázků.
 
-        // You must use the same region as you used to get your subscription
-        // keys. For example, if you got your subscription keys from westus,
-        // replace "westcentralus" with "westus".
-        //
-        // Free trial subscription keys are generated in the westcentralus
-        // region. If you use a free trial subscription key, you shouldn't
-        // need to change the region.
-        // Specify the Azure region
-        private const string faceEndpoint =
-            "https://westcentralus.api.cognitive.microsoft.com";
+`faceAttributes` Pole je jednoduše pole určitých typů atributů. Určí které informace se mají načíst informace o zjištěných tváří.
 
-        // localImagePath = @"C:\Documents\LocalImage.jpg"
-        private const string localImagePath = @"<LocalImage>";
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=13-34)]
 
-        private const string remoteImageUrl =
-            "https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg";
+### <a name="create-and-use-the-face-client"></a>Vytváření a používání klienta pro rozpoznávání tváře
 
-        private static readonly FaceAttributeType[] faceAttributes =
-            { FaceAttributeType.Age, FaceAttributeType.Gender };
+Dále přidejte následující kód, který **hlavní** metodu **Program** třídy. Tím se nastaví klientských rozhraní API pro rozpoznávání tváře.
 
-        static void Main(string[] args)
-        {
-            FaceClient faceClient = new FaceClient(
-                new ApiKeyServiceClientCredentials(subscriptionKey),
-                new System.Net.Http.DelegatingHandler[] { });
-            faceClient.Endpoint = faceEndpoint;
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=38-41)]
 
-            Console.WriteLine("Faces being detected ...");
-            var t1 = DetectRemoteAsync(faceClient, remoteImageUrl);
-            var t2 = DetectLocalAsync(faceClient, localImagePath);
+Také v **hlavní** metodu, přidejte následující kód pro rozpoznávání tváře klienta nově vytvořené služby používat k rozpoznávání tváří v obrázku vzdálené a místní. Metody zjišťování bude dále definici. 
 
-            Task.WhenAll(t1, t2).Wait(5000);
-            Console.WriteLine("Press any key to exit");
-            Console.ReadLine();
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-49)]
 
-        // Detect faces in a remote image
-        private static async Task DetectRemoteAsync(
-            FaceClient faceClient, string imageUrl)
-        {
-            if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
-            {
-                Console.WriteLine("\nInvalid remoteImageUrl:\n{0} \n", imageUrl);
-                return;
-            }
+### <a name="detect-faces"></a>Rozpoznávání tváří
 
-            try
-            {
-                IList<DetectedFace> faceList =
-                    await faceClient.Face.DetectWithUrlAsync(
-                        imageUrl, true, false, faceAttributes);
+Do třídy **Program** přidejte následující metodu. Klient služby pro rozpoznávání tváře využívá k rozpoznávání tváří na vzdálené kopie, odkazovaná adresou URL. Všimněte si, že se používá `faceAttributes` pole&mdash; **DetectedFace** objekty přidané do `faceList` bude mít zadané atributy (v tomto případě stáří a pohlaví).
 
-                DisplayAttributes(GetFaceAttributes(faceList, imageUrl), imageUrl);
-            }
-            catch (APIErrorException e)
-            {
-                Console.WriteLine(imageUrl + ": " + e.Message);
-            }
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=52-74)]
 
-        // Detect faces in a local image
-        private static async Task DetectLocalAsync(FaceClient faceClient, string imagePath)
-        {
-            if (!File.Exists(imagePath))
-            {
-                Console.WriteLine(
-                    "\nUnable to open or read localImagePath:\n{0} \n", imagePath);
-                return;
-            }
+Podobně, přidejte **DetectLocalAsync** metody. Rozpoznávání tváří na místní image, odkazuje cestu k souboru pomocí klienta služby pro rozpoznávání tváře.
 
-            try
-            {
-                using (Stream imageStream = File.OpenRead(imagePath))
-                {
-                    IList<DetectedFace> faceList =
-                            await faceClient.Face.DetectWithStreamAsync(
-                                imageStream, true, false, faceAttributes);
-                    DisplayAttributes(
-                        GetFaceAttributes(faceList, imagePath), imagePath);
-                }
-            }
-            catch (APIErrorException e)
-            {
-                Console.WriteLine(imagePath + ": " + e.Message);
-            }
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=76-101)]
 
-        private static string GetFaceAttributes(
-            IList<DetectedFace> faceList, string imagePath)
-        {
-            string attributes = string.Empty;
+### <a name="retrieve-and-display-face-attributes"></a>Načíst a zobrazit obličejových atributů
 
-            foreach (DetectedFace face in faceList)
-            {
-                double? age = face.FaceAttributes.Age;
-                string gender = face.FaceAttributes.Gender.ToString();
-                attributes += gender + " " + age + "   ";
-            }
+Dále definujte **GetFaceAttributes** metody. Vrátí řetězec s informacemi o příslušné atribut.
 
-            return attributes;
-        }
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=103-116)]
 
-        // Display the face attributes
-        private static void DisplayAttributes(string attributes, string imageUri)
-        {
-            Console.WriteLine(imageUri);
-            Console.WriteLine(attributes + "\n");
-        }
-    }
-}
-```
+Nakonec definujte **DisplayAttributes** metody zapsat data. atribut pro rozpoznávání tváře do výstupu konzoly.
 
-### <a name="detectwithurlasync-response"></a>Odpověď DetectWithUrlAsync
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-123)]
 
-Úspěšná odpověď zobrazí pohlaví a věk pro každou tvář na obrázku.
+## <a name="run-the-app"></a>Spuštění aplikace
 
-Příklad nezpracovaného výstupu JSON najdete v [rychlých startech pro rozhraní API a rozpoznávání tváří na obrázku pomocí C#](CSharp.md).
+Úspěšná odpověď zobrazí pohlaví a stáří pro každou tvář na obrázku. Příklad:
 
 ```
 https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg
 Male 37   Female 56
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Naučte se vytvářet aplikace WPF pro Windows, která využívá službu pro rozpoznávání tváře k rozpoznání tváří na obrázku. Tato aplikace nakreslí rámeček kolem jednotlivých tváří a zobrazí popis tváře na stavovém řádku.
+V tomto rychlém startu jste vytvořili jednoduchou konzolovou aplikaci .NET, můžete použít službu rozhraní API pro rozpoznávání tváře k rozpoznávání tváří na obrázcích místních i vzdálených. V dalším kroku kurzu podrobnější naleznete v tématu jak prezentovat informace pro rozpoznávání tváře uživateli v intuitivní.
 
 > [!div class="nextstepaction"]
-> [Kurz: Vytvoření aplikace WPF k detekci a orámování tváří na obrázku](../Tutorials/FaceAPIinCSharpTutorial.md)
+> [Kurz: Vytvoření aplikace WPF ke zjišťování a analyzujte tváře v obrázku](../Tutorials/FaceAPIinCSharpTutorial.md)

@@ -1,6 +1,6 @@
 ---
-title: Použití Hadoop Hive pomocí prostředí PowerShell ve službě HDInsight – Azure
-description: Spouštění dotazů Hive v systému Hadoop v HDInsight pomocí Powershellu.
+title: Použití Apache Hivu pomocí prostředí PowerShell ve službě HDInsight – Azure
+description: Spouštění dotazů Hive v Apache Hadoop v HDInsight pomocí Powershellu.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,24 +9,24 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: e02f6b17dff93ce2df1f06ad9681e3086c35300c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d29199c5e1534e3f98fbdbb73799840cf9c9e75f
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257863"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633107"
 ---
-# <a name="run-hive-queries-using-powershell"></a>Spouštění dotazů Hive pomocí Powershellu
+# <a name="run-apache-hive-queries-using-powershell"></a>Spouštějte dotazy Apache Hive pomocí Powershellu
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Tento dokument obsahuje příklad použití Azure Powershellu v režimu skupiny prostředků Azure ke spouštění dotazů Hive v clusteru HDInsight v Hadoop.
+Tento dokument obsahuje příklad použití Azure Powershellu v režimu skupiny prostředků Azure ke spouštění dotazů Hive v clusteru HDInsight v Apache Hadoop.
 
 > [!NOTE]
 > Tento dokument neobsahuje podrobný popis co dělat, které se používají v příkladech příkazy HiveQL. Informace o HiveQL, který se používá v tomto příkladu najdete v tématu [použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Hadoop založených na Linuxu v clusteru HDInsight verze 3.4 nebo vyšší.
+* Apache Hadoop s linuxem v clusteru HDInsight verze 3.4 nebo vyšší.
 
   > [!IMPORTANT]
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

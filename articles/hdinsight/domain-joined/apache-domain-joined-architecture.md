@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8d344adc367eb9b93e52d9423a2ab4dda657b298
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 35768aed3509d6ec5b73c64c7a8a6b132957ace1
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115535"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632726"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Použít balíček zabezpečení podniku v HDInsight
 
@@ -24,11 +24,11 @@ Standardní cluster Azure HDInsight je Jednouživatelský cluster. Je vhodný pr
 
 HDInsight spoléhá na zprostředkovatele oblíbených identity – Active Directory – spravované způsobem. Díky integraci služby HDInsight s [Azure Active Directory Domain Services (Azure AD DS)](../../active-directory-domain-services/active-directory-ds-overview.md), dostanete clustery pomocí vašich přihlašovacích údajů domény. 
 
-Virtuální počítače (VM) v HDInsight jsou domény připojené k zadané doméně. Proto všechny služby spuštěné v HDInsight (Ambari, Hive, Ranger, server Spark thrift server a další) pro ověřeného uživatele bezproblémově fungují. Správci pak mohou vytvářet zásady silné ověřování s použitím Apache Ranger k poskytování řízení přístupu na základě rolí pro prostředky v clusteru.
+Virtuální počítače (VM) v HDInsight jsou domény připojené k zadané doméně. Ano všechny služby spuštěné v HDInsight (Apache Ambari, server Apache Hive, Apache Ranger, server Apache Spark thrift a další) fungují pro ověřeného uživatele. Správci pak mohou vytvářet zásady silné ověřování s použitím Apache Ranger k poskytování řízení přístupu na základě rolí pro prostředky v clusteru.
 
 ## <a name="integrate-hdinsight-with-active-directory"></a>Integrace služby HDInsight s Active Directory
 
-Open source Hadoop závisí na protokolu Kerberos pro ověřování a zabezpečení. Proto jsou uzly clusteru HDInsight s Enterprise Security Package (ESP) připojený k doméně, který je spravovaný službou Azure AD DS. Zabezpečení protokolu Kerberos je nakonfigurován pro součásti platformy Hadoop v clusteru. 
+Open source Apache Hadoop, závisí na protokolu Kerberos pro ověřování a zabezpečení. Proto jsou uzly clusteru HDInsight s Enterprise Security Package (ESP) připojený k doméně, který je spravovaný službou Azure AD DS. Zabezpečení protokolu Kerberos je nakonfigurován pro součásti platformy Hadoop v clusteru. 
 
 Automaticky vytvoří následující věci:
 - objekt služby pro jednotlivé komponenty systému Hadoop 

@@ -6,14 +6,14 @@ manager: deshner
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: 852b2d35ae605f5529d162d52655fd258ca07c5a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946092"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636267"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Jak ladit problémy s uživatelsky definovaných funkcí v Azure digitální dvojče
 
@@ -42,12 +42,12 @@ Po odeslání telemetrie, otevřete Azure Log Analytics k dotazování pomocí s
 
 ```Kusto
 AzureDiagnostics
-| where CorrelationId = 'yourCorrelationIdentifier'
+| where CorrelationId = 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Název vlastního atributu | Nahraďte |
+| Hodnota dotazu | Nahradit hodnotou |
 | --- | --- |
-| *yourCorrelationIdentifier* | ID korelace, který byl zadán na data události |
+| YOUR_CORRELATION_IDENTIFIER | ID korelace, který byl zadán na data události |
 
 Při protokolování uživatelem definované funkce, tyto protokoly se zobrazí ve vaší instanci Azure Log Analytics s kategorií `UserDefinedFunction`. Pokud chcete je načíst, zadejte následující podmínka dotazu ve službě Azure Log Analytics:
 
@@ -62,6 +62,8 @@ Další informace o operacích výkonný dotazovací najdete v tématu [Začín�
 
 Jak Diagnostika a identifikace běžných problémů jsou důležité při řešení potíží s vašeho řešení. Několik běžných problémů při vývoji uživatelsky definovaných funkcí jsou shrnuté níž.
 
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
 ### <a name="ensure-a-role-assignment-was-created"></a>Ujistěte se, že byl vytvořen přiřazení role
 
 Bez přiřazení role vytvořené v rámci rozhraní API pro správu uživatelem definované funkce nebudou mít přístup k provádět všechny akce, jako je odeslání oznámení, načítání metadat, a nastavení vypočítané hodnoty v rámci topologie.
@@ -69,13 +71,12 @@ Bez přiřazení role vytvořené v rámci rozhraní API pro správu uživatelem
 Zkontrolujte, jestli přiřazení role existuje uživatelem definované funkce prostřednictvím rozhraní API pro správu:
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/roleassignments?path=/&traverse=Down&objectId=yourUserDefinedFunctionId
+GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Název vlastního atributu | Nahraďte |
+| Parametr | Nahradit hodnotou |
 | --- | --- |
-| *yourManagementApiUrl* | Úplná cesta adresy URL pro vaše rozhraní API pro správu  |
-| *yourUserDefinedFunctionId* | ID uživatelem definované funkce, který se má načíst přiřazení role|
+| *YOUR_USER_DEFINED_FUNCTION_ID* | ID uživatelem definované funkce, který se má načíst přiřazení role|
 
 Pokud se žádná přiřazení role se načítají, postupujte podle tohoto článku na [vytvoření přiřazení role uživatelem definované funkce](./how-to-user-defined-functions.md).
 
@@ -84,14 +85,13 @@ Pokud se žádná přiřazení role se načítají, postupujte podle tohoto čl�
 Následující volání rozhraní API správy služby vaše instance Azure digitální dvojče bude moci určit, zda daný předávaný platí pro daný senzoru.
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/matchers/yourMatcherIdentifier/evaluate/yourSensorIdentifier?enableLogging=true
+GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| Název vlastního atributu | Nahraďte |
+| Parametr | Nahradit hodnotou |
 | --- | --- |
-| *yourManagementApiUrl* | Úplná cesta adresy URL pro vaše rozhraní API pro správu  |
-| *yourMatcherIdentifier* | ID předávaný, kterou chcete vyhodnotit |
-| *yourSensorIdentifier* | ID senzor, kterou chcete vyhodnotit |
+| *YOUR_MATCHER_IDENTIFIER* | ID předávaný, kterou chcete vyhodnotit |
+| *YOUR_SENSOR_IDENTIFIER* | ID senzor, kterou chcete vyhodnotit |
 
 Odpověď:
 
@@ -109,13 +109,12 @@ Odpověď:
 Následující volání rozhraní API správy služby vaše instance Azure digitální dvojče budou moct určit identifikátory uživatelem definované funkce, které budou aktivovány dané senzor příchozích telemetrických dat:
 
 ```plaintext
-GET https://yourManagementApiUrl/api/v1.0/sensors/yourSensorIdentifier/matchers?includes=UserDefinedFunctions
+GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| Název vlastního atributu | Nahraďte |
+| Parametr | Nahradit hodnotou |
 | --- | --- |
-| *yourManagementApiUrl* | Úplná cesta adresy URL pro vaše rozhraní API pro správu  |
-| *yourSensorIdentifier* | ID senzor, který bude odesílat telemetrii |
+| *YOUR_SENSOR_IDENTIFIER* | ID senzor, který bude odesílat telemetrii |
 
 Odpověď:
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/14/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: f58ba1af301379810d5072f55c7b9365f205911f
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 46671a559f4db9aaa798e2c0d8cc668794687a58
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364689"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686326"
 ---
 # <a name="update-the-mysql-resource-provider"></a>Aktualizace poskytovatele prostředků MySQL 
 
@@ -41,9 +41,6 @@ Aktualizovat poskytovatele prostředků, použijete **UpdateMySQLProvider.ps1** 
 >[!NOTE]
 >Doporučujeme stáhnout nejnovější jádru Windows serveru 2016 image z Marketplace správu. Pokud je potřeba nainstalovat aktualizace, můžete umístit **jeden** MSU balíček v cestě místní závislosti. Skript selže, pokud existuje více než jeden soubor MSU v tomto umístění.
 
->[!NOTE]  
-> 
-
 Tento skript vyžaduje použití stejné argumenty, které jsou popsány DeployMySqlProvider.ps1 skriptu. Zadejte certifikát zde také.  
 
 Tady je příklad *UpdateMySQLProvider.ps1* skript, který můžete spustit z příkazového řádku Powershellu. Nezapomeňte změnit informace o účtu a hesla podle potřeby:  
@@ -52,9 +49,10 @@ Tady je příklad *UpdateMySQLProvider.ps1* skript, který můžete spustit z p�
 > Proces aktualizace platí pouze pro integrované systémy. 
 
 ```powershell 
-# Install the AzureRM.Bootstrapper module and set the profile. 
-Install-Module -Name AzureRm.BootStrapper -Force 
-Use-AzureRmProfile -Profile 2017-03-09-profile 
+# Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
+Install-Module -Name AzureRm.BootStrapper -Force
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+Install-Module -Name AzureStack -RequiredVersion 1.5.0
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time. 
 $domain = "AzureStack" 

@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: ea69befb1084b08352eb3cf38db0364c5c82c45b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b134bc2529bf11557ddb1778b87f127db8da650c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237056"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684627"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledky Azure Search pomocí identity služby Active Directory
 
@@ -98,7 +98,7 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Do mezipaměti identifikátorů skupiny
-Volitelně Pokud chcete snížit latenci sítě, můžete ukládat do mezipaměti přidružení skupiny uživatelů tak, aby při vydání požadavku hledání skupin se vrátí z mezipaměti, ukládání umožňujícím zpětnou transformaci na AAD. Můžete použít (rozhraní API služby Batch v AAD) [https://developer.microsoft.com/graph/docs/concepts/json_batching] pro odesílání jednoho požadavku Http s více uživateli a sestavení mezipaměti.
+Volitelně Pokud chcete snížit latenci sítě, můžete ukládat do mezipaměti přidružení skupiny uživatelů tak, aby při vydání požadavku hledání skupin se vrátí z mezipaměti, ukládání umožňujícím zpětnou transformaci na AAD. Můžete použít [rozhraní API služby Batch AAD](https://developer.microsoft.com/graph/docs/concepts/json_batching) posílat jednoho požadavku Http s více uživateli a sestavení mezipaměti.
 
 Microsoft Graph je určený pro zpracování k velkému počtu požadavků. Pokud dojde k příliš velkého počtu požadavků, Microsoft Graphu selže požadavek se stavovým kódem HTTP 429. Další informace najdete v tématu [Microsoft Graphu omezování](https://developer.microsoft.com/graph/docs/concepts/throttling).
 

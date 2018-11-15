@@ -1,6 +1,6 @@
 ---
-title: Odesílání úloh Hadoopu do HDInsight
-description: Zjistěte, jak k odesílání úloh Hadoop v Azure HDInsight.
+title: Odeslání úloh systému Apache Hadoop v HDInsight
+description: Zjistěte, jak odesílat úlohy Apache Hadoop v Azure HDInsight.
 ms.reviewer: jasonh
 services: hdinsight
 ms.author: hrasheed
@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 9a764814028c1858139e2439c674c176d4e754ba
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 633a5c26711b7ef9f891455c6712b77238fd3a62
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009136"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631962"
 ---
 # <a name="submit-hadoop-jobs-in-hdinsight"></a>Odesílání úloh Hadoopu do HDInsight
 
-Odesílání úloh Hadoop do Azure HDInsight pomocí rozhraní Microsoft .NET SDK pro HDInsight, curl nebo Azure Powershellu.
+Můžete odeslat úlohy Apache Hadoop v Azure HDInsight pomocí rozhraní Microsoft .NET SDK pro HDInsight, curl nebo Azure Powershellu.
 
 ## <a name="resources"></a>Zdroje a prostředky
 

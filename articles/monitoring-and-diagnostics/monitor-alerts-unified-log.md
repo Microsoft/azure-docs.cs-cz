@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 51bdc228e27d643cfda75d1e21bc8ea45fe09e3c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 4dae003b011e8e33f0ae935d6dd8399a5687dff6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613286"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633763"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
 Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](monitoring-overview-alerts.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
@@ -106,7 +106,7 @@ Nyní předpokládejme máme pravidel upozornění protokolů volá *Contoso upo
 - Výsledek hledání v protokolu v 1:15 PM provedení Contoso upozornění protokolu pomocí výstrah služby Azure, poskytuje 2 záznamů. překračující prahovou hodnotu a aktivaci výstrahy, krátce po aktivací [skupiny akcí](monitoring-action-groups.md) spojené.
 - Nyní na další iteraci: 20: 00 provedení upozornění protokolu Contoso upozorněním na Azure, poskytuje výsledek hledání v protokolu znovu 0 záznamů. pod prahovou hodnotu a proto se nespustí, výstrahu.
 
-Ale v případě výše uvedené v 1:15 PM - upozornění Azure nemůže určit, že základní problémy zaznamenáno v 1:10 přetrvávají a pokud je net nové neúspěšné; uživatelem zadaný dotaz může být zohlední starší záznamy - nemůže být že upozornění v Azure. Chcete-li pečlivého upozornění, proto Contoso upozornění protokolu se aktivuje znovu v 13:15 prostřednictvím nakonfigurované [skupiny akcí](monitoring-action-groups.md). Nyní: 20: 00 Když jsou vidět žádné záznamy – upozornění Azure nemůže být jisti, že příčinou záznamy vyřešen; proto bude Contoso upozornění protokolu nebyl změněn na vyřešený v řídicím panelu Azure výstrahy a/nebo oznámení odeslaných s informacemi o tom vyřešení upozornění.
+Ale v případě výše uvedené v 1:15 PM - upozornění Azure nemůže určit, že základní problémy zaznamenáno v 1:10 přetrvávají a pokud je net nové neúspěšné; uživatelem zadaný dotaz může být zohlední starší záznamy - jistotu upozornění v Azure. Proto k chyba na straně upozornění, když Contoso upozornění protokolu spuštění 1:15 PM, nakonfigurované [skupiny akcí](monitoring-action-groups.md) se znovu aktivuje. Nyní: 20: 00 Když jsou vidět žádné záznamy – upozornění Azure nemůže být jisti, že příčinou záznamy vyřešen; proto bude Contoso upozornění protokolu nebyl změněn na vyřešený v řídicím panelu Azure výstrahy a/nebo oznámení odeslaných s informacemi o tom vyřešení upozornění.
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Ceny a fakturace protokol výstrah

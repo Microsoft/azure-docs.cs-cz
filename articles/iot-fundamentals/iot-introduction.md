@@ -1,139 +1,130 @@
 ---
-title: Úvod do Azure a internetu věcí (IoT)
-description: Přehled Azure IoT a obsažených služeb
+title: Úvod do Azure Internet of Things (IoT)
+description: Seznámení se základy Azure IoT a služby IoT, včetně příkladů, které pomáhají s vysvětlením ilustrují použití IoT.
 author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: d7e5949be9ea09f94ff6ee86c9f996f2e203eac7
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
-ms.translationtype: HT
+ms.openlocfilehash: 2f690e6c930a1a119c9b7bf4b83ec04a564e47c9
+ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069433"
+ms.lasthandoff: 11/08/2018
+ms.locfileid: "51288743"
 ---
-# <a name="introduction-to-azure-and-the-internet-of-things"></a>Úvod do Azure a Internetu věcí
+# <a name="what-is-azure-internet-of-things-iot"></a>Co je Azure Internet of Things (IoT)?
 
-Azure IoT se skládá ze tří oblastí technologií a řešení – řešení, služeb platforem a hraničních zařízení. Vše je navrženo tak, aby usnadnilo kompletní vývoj vašich aplikací IoT. Tento článek začíná popisem běžných vlastností řešení IoT v cloudu, pokračuje přehledem toho, jak Azure IoT řeší výzvy v projektech IoT a proč byste měli přijetí Azure IoT zvážit.
+Azure Internet of Things (IoT) je kolekce řízených cloudových služeb, které připojení, sledování a řízení miliard prostředků IoT. Jednodušší řečeno řešení IoT se skládá z jednoho nebo více zařízení IoT a jeden nebo více back endové služby spuštěné v cloudu, které komunikují. 
 
-## <a name="iot-solution-architecture"></a>Architektura řešení IoT
+Tento článek popisuje základní informace o IoT, mluví o případy použití a stručnosti vysvětluje účel k dispozici osm samostatných služeb. Když porozumíte tomu, co je k dispozici, můžete zjistit, co chcete podívat na další úzce a pomáhá s návrhem vaší situaci.
 
-Řešení IoT vyžadují bezpečnou obousměrnou komunikaci mezi zařízeními, jejichž počet se může vyšplhat k milionům, a back-end řešení. Řešení například může pomocí automatizované prediktivní analýzy odhalit další poznatky z datového proudu událostí ze zařízení do cloudu. 
+## <a name="introduction"></a>Úvod
 
-Následující diagram ukazuje klíčové prvky typické architektury řešení IoT. V tomto diagramu se nerozlišují podrobnosti konkrétní implementace, například použité služby Azure a operační systémy zařízení. V této architektuře zařízení IoT shromažďují data, která odesílají do cloudové brány. Cloudová brána zpřístupňuje data pro zpracování dalšími back-endovými službami. Tyto back-endové služby umožňují doručovat data pro:
+Hlavní části řešení IoT, jsou následující: zařízení, back endové služby a komunikace mezi nimi. 
 
-* Další podnikové aplikace
-* Lidskou obsluhu prostřednictvím řídicího panelu nebo jiného prezentačního zařízení
+### <a name="iot-devices"></a>Zařízení IoT
 
-![Architektura řešení IoT](./media/iot-introduction/iot-reference-architecture.png)
+Zařízení se obvykle skládá z panelu okruhu s censors připojen, připojte se k Internetu. Mnoho zařízení komunikovat přes Wi-Fi čipu. Tady je několik příkladů zařízení IoT:
 
-> [!NOTE]
-> Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](https://aka.ms/iotrefarchitecture).
+* přetížení senzorů čerpadla Vzdálená olej
+* senzorů teploty a vlhkosti v jednotce nosníky
+* akcelerometrů využívaných v hodnocení
+* přítomnost senzory v místnosti
 
-### <a name="device-connectivity"></a>Připojení zařízení
+Jsou dvě zařízení, které jsou často používána pro vytváření prototypů základní MX čip TPM. IoT Devkit z Microsoftu a Raspberry PI zařízení. Devkit MX čip TPM mají snímače, které jsou součástí pro teploty, přetížení, vlhkosti, stejně jako volný setrvačník a akcelerometr, magnetometer a k Wi-Fi čipu TPM. Raspberry PI je IoT zařízení, ke kterému může připojit různé druhy senzory, takže můžete vybrat, co přesně potřebujete pro váš scénář. 
 
-V architektuře řešení IoT zařízení obvykle odesílají telemetrii do cloudu pro uložení a zpracování. Ve scénáři prediktivní údržby může back-end řešení například použít datový proud s daty ze snímačů k určení, kdy konkrétní čerpadlo vyžaduje údržbu. Zařízení může také přijímat a reagovat na zprávy typu cloud-zařízení tak, že si přečte zprávy z koncového bodu cloudu. Ve stejném příkladu může back-end řešení odesílat zprávy jiným čerpadlům čerpací stanice, aby těsně před plánovaným začátkem údržby přesměrovala toky. Tento postup umožní pracovníkovi údržby začít s prací hned, jak dorazí na místo.
+[Sad SDK zařízení IoT](../iot-hub/iot-hub-devguide-sdks.md) můžete sestavovat aplikace, které běží na vašich zařízeních, abyste mohli provádět úlohy, je nutné. Spolu se sadami SDK můžete odesílání telemetrických dat do služby IoT hub, přijímat zprávy a aktualizace ze služby IoT Hub a tak dále.
 
-Největším problémem řešení IoT často je bezpečné a spolehlivé připojení zařízení. Důvodem je to, že zařízení IoT mají se srovnání s různými klienty, například s prohlížeči a mobilními aplikacemi, jiné vlastnosti. Konkrétně zařízení IoT:
+### <a name="communication"></a>Komunikace
+
+Vaše zařízení může komunikovat s back endovým službám v obou směrech. Tady jsou některé příklady způsobů, jak zařízení může komunikovat s back-end řešení.
+
+#### <a name="examples"></a>Příklady 
+
+* Vaše zařízení může odesílat teploty z mobilní chladicí truck každých 5 minut do služby IoT Hub. 
+
+* Back-end služby můžete požádat o zařízení k odesílání telemetrie častěji k diagnostice problému. 
+
+* Vaše zařízení může odesílat výstrahy na základě hodnot číst z jeho senzory. Například pokud monitorování reaktor batch v chemických zařízení, můžete odeslat výstrahu, pokud teplota překročí určitou hodnotu.
+
+* Vaše zařízení odeslat informace, na řídicí panel pro zobrazení lidská obsluha. Řídicí místnosti v výroby může například zobrazit teploty a tlaku každý kanál, jakož i přes tento kanál, operátorů a sledujte událost svazku. 
+
+Tyto úkoly a další, je možné implementovat pomocí [sad SDK zařízení IoT](../iot-hub/iot-hub-devguide-sdks.md).
+
+#### <a name="connection-considerations"></a>Důležité informace o připojení
+
+Největším problémem řešení IoT často je bezpečné a spolehlivé připojení zařízení. Je to proto, že zařízení IoT mají ve srovnání s klienty, například s prohlížeči a mobilními aplikacemi, jiné vlastnosti. Konkrétně zařízení IoT:
 
 * Jsou často integrované systémy bez lidské obsluhy (na rozdíl od telefonu).
+
 * Mohou být nasazená ve vzdálených umístěních, kam je fyzický přístup nákladný.
+
 * Můžou být dostupná jenom prostřednictvím back-endu řešení. Neexistuje jiný způsob práce se zařízením.
+
 * Můžou mít omezené prostředky pro napájení a zpracování.
+
 * Můžou mít přerušované, pomalé nebo nákladné síťové připojení.
+
 * Můžou potřebovat chráněné, vlastní nebo průmyslové protokoly aplikací.
-* Můžou být vytvořená pomocí rozsáhlé sady oblíbených hardwarových a softwarových platforem.
 
-Kromě předchozích omezení musí libovolné řešení IoT také být škálovatelné, zabezpečené a spolehlivé.
+### <a name="back-end-services"></a>Back endovým službám 
 
-V závislosti na komunikačním protokolu a síťové dostupnosti může zařízení komunikovat s cloudem buď přímo, nebo prostřednictvím zprostředkující brány. Architektury IoT často využívají kombinaci těchto dvou komunikačních schémat.
+Tady jsou některé z funkcí, které nabízí služba back-end.
 
-### <a name="data-processing-and-analytics"></a>Zpracování a analýza dat
+* Příjem škálované telemetrie ze zařízení a určení, jak zpracovávat a ukládat data.
 
-V moderních řešeních IoT může ke zpracování dat docházet v cloudu nebo na straně zařízení. Zpracování na straně zařízení se označuje jako *edge computing*. Volba umístění pro zpracování dat závisí na faktorech, jako jsou:
+* Analýza telemetrie s cílem poskytnout přehled v reálném čase nebo po jejich výskytu.
 
-* Omezení sítě. Pokud šířka pásma mezi zařízeními a cloudem je omezená, je vhodné soustředit se víc na zpracování hraničních zařízení.
-* Doba odezvy. Pokud se požadují akce v zařízení téměř v reálném čase, může být vhodnější zpracovat odpověď přímo v příslušném zařízení. Příkladem může být rameno robota, které je v nouzovém stavu nutné zastavit.
-* Právní prostředí. Některá data nelze odeslat do cloudu.
+* Odesílání příkazů z cloudu do určitého zařízení. 
 
-Obecně platí, že zpracování dat v hraničních zařízeních i v cloudu představuje kombinaci následující možnosti:
+* Zřizování zařízení a řídit, které zařízení se můžou připojit k vaší infrastruktuře.
 
-* Příjem škálované telemetrie ze všech zařízení a určení, jak tato data zpracovávat a ukládat
-* Analýza telemetrie s cílem poskytnout přehled, ať už v reálném čase, nebo dodatečně
-* Odesílání příkazů z cloudu nebo zařízení brány do konkrétního zařízení
+* Řízení stavu svých zařízení a sledovat jejich aktivity.
 
-Kromě toho by měl back-end cloudu IoT poskytovat:
+Například ve scénáři prediktivní údržby, back-end cloudu ukládá historická telemetrická. Toto řešení používá tato data k identifikaci potenciálně neobvyklého chování konkrétních čerpadel dřív, než způsobí skutečný problém. Pomocí analýzy dat může zjistit, že vhodnou prevencí je odeslat příkaz zpět do zařízení a provést nápravnou akci. Tento proces generuje automatizovanou smyčku zpětné vazby mezi zařízením a cloudem, která výrazně zvyšuje efektivitu řešení.
 
-* Možnosti registrace zařízení, které vám umožní:
-    * Zřizování zařízení
-    * Kontroly, která zařízení mají oprávnění připojit se k vaší infrastruktuře
-* Správu zařízení umožňující kontrolovat stav zařízení a sledovat jejich aktivity.
+## <a name="an-iot-example"></a>Příklad IoT
 
-Například ve scénáři prediktivní údržby back-end cloudu ukládá historická telemetrická data. Toto řešení používá tato data k identifikaci potenciálně neobvyklého chování konkrétních čerpadel dřív, než způsobí skutečný problém. Pomocí analýzy dat může zjistit, že vhodnou prevencí je odeslat příkaz zpět do zařízení a provést nápravnou akci. Tento proces generuje automatizovanou smyčku zpětné vazby mezi zařízením a cloudem, která výrazně zvyšuje efektivitu řešení.
+Tady je příklad jednoho společnosti umožňuje ušetřit miliony dolarů IoT. 
 
-### <a name="presentation-and-business-connectivity"></a>Prezentační a obchodní připojení
+Existuje obrovské zvířat ranch se stovkami tisíc krav. Je to důležitá záležitost udržovat přehled o daný počet krav a vědět, jak budete dělat a vyžaduje spoustu řízení kolem. Senzorů jsou připojené k každý jednoho krávy informace, jako jsou souřadnice GPS a teploty odesílá do back-end služby k zápisu do databáze.
 
-Vrstva prezentačního a obchodního připojení umožňuje koncovým uživatelům pracovat s řešením IoT a se zařízeními. Umožňuje uživatelům zobrazit a analyzovat data shromážděná z jejich zařízení. Tato zobrazení můžou mít podobu řídicích panelů nebo sestav BI, které můžou zobrazit historická data i data téměř v reálném čase. Obsluha může například zkontrolovat stav konkrétní čerpací stanice a zobrazit všechny výstrahy vyvolané systémem. Tato vrstva také umožňuje integraci back-endu řešení IoT se stávajícími obchodními aplikacemi a jejich zapojení do podnikových obchodních procesů nebo pracovních postupů. Řešení prediktivní údržby se může integrovat například s plánovacím systémem, který zarezervuje návštěvu technika na čerpací stanici v případě, kdy se zjistí, že některé čerpadlo potřebuje údržbu.
+Pak mají analytické služby, která vyhledá příchozích dat a analyzuje data pro každé krávy ke kontrole následující otázky:
 
-## <a name="why-azure-iot"></a>Proč Azure IoT?
+* Běží krávy teplotu? Jak dlouho krávy běžel teplotu? Když po delší dobu než den, získat souřadnice GPS a najít krávy a v případě potřeby zacházet s antibiotik. 
 
-Azure IoT zjednodušuje složité projekty IoT a řeší takové výzvy, jako je zabezpečení, nekompatibilita infrastruktury a škálování řešení IoT. A jak to dělá:
+* Je krávy na stejném místě pro více než jeden den? Pokud ano, získat souřadnice GPS a najít krávy přejít. Kleslo krávy mimo cliff? Střelba krávy Potřebuje krávy nápovědu? 
 
-### <a name="agile"></a>Agilita
+Implementace tohoto řešení IoT přinesla pro společnost zkontrolujte a zpracovávat krávy rychle a omezit množství času se musel věnovat řízení kolem kontrolu jejich zvířata, ukládá je spoustu peněz. Další příklady reálných zkušeností jak společnosti využívají IoT, naleznete v tématu [Microsoft technické případové studie pro IoT](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured). 
 
-Urychlete svoji cestu k IoT.
+## <a name="iot-services"></a>Služby IoT
 
-* Škálování: Začněte v malém, můžete se rozrůst na jakoukoli velikost, kdekoli a kdykoli – milióny zařízení, terabajty dat, ve většině regionů po celém světě.
+Existuje několik služeb souvisejících s IoT v Azure a může být matoucí zjistit, které z nich chcete použít. Některé nástroje, například IoT Central a akcelerátory řešení IoT, poskytují šablony, které vám pomůžou vytvářet vlastní řešení a rychlé zahájení práce. Můžete také plně vyvíjet vlastní řešení s použitím jiných služeb, které jsou k dispozici – to všechno závisí na tom, kolik Nápověda chcete a jak velkou kontrolu. Tady je seznam služeb k dispozici, a také jak je můžete používat pro.
 
-* Otevřenost: Používejte to, co máte, nebo se modernizujte. Připojte se k libovolnému zařízení, softwaru nebo službě.
+1. [**IoT Central**](../iot-central/overview-iot-central.md): to je řešení SaaS, která umožňuje připojení, monitorování a správa zařízení ioT. Pokud chcete začít, vyberte šablonu pro váš typ zařízení a vytvoříte a otestujete základní aplikace IoT Central, který bude používat operátory zařízení. Aplikace IoT Central vám také umožní sledovat zařízení a zřizovat nová zařízení. Tato služba je jednoduché řešení, která nevyžadují rozsáhlá přizpůsobení služeb. 
 
-* Hybridnost: Provádějte sestavení podle vašich potřeb, nasazujte řešení IoT na hraniční zařízení, v cloudu nebo kdekoli mezi.
+2. [**Akcelerátory řešení IoT**](/azure/iot-suite): jde o kolekci řešení PaaS můžete použít k urychlení vývoje řešení IoT. Začněte s zadané řešení IoT a plně přizpůsobit řešení vašim požadavkům. Potřebujete znalosti Javy nebo .NET k přizpůsobení back endu a znalosti JavaScriptu k přizpůsobení vizualizace. 
 
-* Rychlost: Rychlejší nasazení, rychlé uvedení na trh a předběhnutí konkurence se špičkou v oblasti akcelerátorů řešení a rychlosti inovací v IoT.
+3. [**IoT Hub**](/azure/iot-hub/): Tato služba umožňuje připojení ze zařízení do služby IoT hub a sledování a řízení miliard zařízení IoT. To je obzvláště užitečné, pokud potřebujete obousměrnou komunikaci mezi zařízeními IoT a back-endu. Toto je základní služby pro IoT Central a akcelerátory řešení IoT. 
 
-### <a name="comprehensive"></a>Komplexnost
+4. [**IoT Hub Device Provisioning Service**](/azure/iot-dps/): Toto je pomocná služba pro IoT Hub, která vám umožní bezpečně zřizovat zařízení do služby IoT hub. Pomocí této služby se kterou jednoduše zprovozníte miliony zařízení rychle, místo zřizování je jeden po druhém. 
 
-Zajistěte vliv na vaši firmu.
+5. [**IoT Edge**](/azure/iot-edge/): Tato služba postavená na službě IoT Hub. Slouží k analýze dat na zařízeních IoT, nikoli v cloudu. Díky přesunu částí úlohy do hraničních zařízení, třeba méně zpráv k odeslání do cloudu. 
 
-* Úplnost: Microsoft je jediným poskytovatelem řešení IoT se škálováním v oblasti zařízení na cloud, velkých objemů dat, pokročilé analýzy a spravovaných služeb pro všechny platformy.
+6. [**Azure digitální dvojče**](/azure/azure-digital-twins/): Tato služba umožňuje vytvářet komplexní modely fyzických prostředí. Lze modelovat vztahy a interakce mezi lidmi, mezery a zařízení. Například můžete předpovídat údržby musí objekt pro vytváření, analýza v reálném čase energie požadavky k elektrické mřížky nebo optimalizovat využití volného místa pro office.
 
-* Partner, který vám zajistí úspěch: Využijte sílu největšího partnerského ekosystému na světě a oživte podnikání i technologii napříč odvětvím i po celém světě.
+7. [**Time Series Insights**](/azure/time-series-insights): Tato služba umožňuje ukládat, vizualizaci a dotazování velkých objemů dat časových řad generované zařízeními IoT. Pomocí služby IoT Hub můžete použít tuto službu. 
 
-* Řízení daty: IoT je o datech a ta nejlepší řešení IoT spojují dohromady všechny nástroje, které potřebujete k ukládání, interpretaci, transformaci, analýze a prezentaci dat těm správným uživatelům, na správném místě, ve správný čas.
+8. [**Azure Maps**](/azure/azure-maps): Tato služba poskytuje zeměpisné údaje pro webové a mobilní aplikace. Zde je kompletní sadu rozhraní REST API, jakož i doprovázenou webovým ovládáním jazyka JavaScript, který slouží k vytváření flexibilních aplikací, které pracují na desktopové nebo mobilní aplikace pro zařízení Apple i Windows.
 
-* Zaměření na zařízení: IoT od Microsoftu vám umožňuje připojit cokoli, od staršího zařízení po široký ekosystém certifikovaného hardwaru, a dává vám možnost sestavit svá vlastní zařízení napříč hraničními, mobilními a vloženými systémy.
+## <a name="next-steps"></a>Další postup
 
-### <a name="secure"></a>Zabezpečení
+Některé samotných obchodních případů a architektury používané najdete v tématu [Microsoft Azure IoT technické případové studie](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured).
 
-Vyřešte tu nejsložitější část IoT – zabezpečení.
+Některé ukázkové projekty, které si můžete vyzkoušet s IoT DevKit, najdete v článku [IoT DevKit projektu katalogu](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/). 
 
-* Posílení: S IoT od Microsoftu můžete spojit svou vizi s technologií, osvědčenými postupy a možnostmi, které vám umožní vyřešit tu nejobtížnější část IoT – zabezpečení.
+Komplexnější vysvětlení různých služeb a jak se používají, najdete v článku [technologie a služby Azure IoT](iot-services-and-technologies.md).
 
-* Akce: Zabezpečte svá data IoT a spravujte rizika pomocí správy identit a přístupu, ochranou před ohrožením a ochranou informací a správou zabezpečení.
-
-* Jistota: Zabezpečte citlivé informace napříč zařízeními, softwarem, aplikacemi, cloudovými službami a také v místních prostředích.
-
-* Dodržování předpisů: Microsoft je přední společností v oblasti vytváření požadavků na zabezpečení, které odpovídají široké škále mezinárodních standardů a standardů specifických pro odvětví ohledně zařízení, dat a služeb IoT.
-
-## <a name="next-steps"></a>Další kroky
-
-Prozkoumejte následující oblasti technologií a řešení.
-
-**Řešení**
-
-* [Akcelerátory řešení IoT](/azure/iot-suite)
-* [IoT Central](/azure/iot-central)
-
-**Služby platformy**
-
-* [IoT Hub](/azure/iot-hub)
-* [Služba IoT Hub Device Provisioning](/azure/iot-dps)
-* [Azure Maps](/azure/azure-maps/)
-* [Time Series Insights](/azure/time-series-insights)
-
-**Edge**
-
-* [Přehled IoT Edge](/azure/iot-edge)
-* [Co je IoT Edge?](/azure/how-iot-edge-works)
+Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](https://aka.ms/iotrefarchitecture).

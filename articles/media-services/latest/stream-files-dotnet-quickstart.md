@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: 92321b5e919f6703cb481d88f312a20fc7c62826
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: fc8fc1af51332df032e864c84791791a38bc8601
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49375458"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51612216"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Rychlý start: Streamování videosouborů – .NET
 
@@ -33,7 +33,12 @@ Na konci rychlého startu budete schopni streamovat video.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+- Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+
+    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
+
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -56,14 +61,6 @@ Tato ukázka provede následující akce:
 7. Vytvoří adresy URL pro streamování.
 
 Popisy týkající jednotlivých funkcí v ukázce najdete v kódu. Můžete se také podívat na komentáře v [tomto zdrojovém souboru](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs).
-
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
-
-Přihlaste se k webu [Azure Portal](http://portal.azure.com).
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -93,11 +90,11 @@ Azure Media Player můžete použít pro účely testování, nesmí se ale pou�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtů úložiště, které jste vytvořili v rámci tohoto rychlého startu, odstraňte tuto skupinu prostředků. Můžete použít nástroj **CloudShell**.
+Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtů úložiště, které jste vytvořili v rámci tohoto rychlého startu, odstraňte tuto skupinu prostředků.
 
-V nástroji **CloudShell** spusťte následující příkaz:
+Spusťte následující příkaz rozhraní příkazového řádku:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 
@@ -111,7 +108,7 @@ Kurz [nahrávání, kódování a streamování souborů](stream-files-tutorial-
 
 Sady SDK služby Azure Media Services v3 nejsou bezpečné pro přístup z více vláken. Při práci s vícevláknovou aplikací byste měli pro každé vlákno vygenerovat nový objekt AzureMediaServicesClient.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Kurz: Nahrávání, kódování a streamování souborů](stream-files-tutorial-with-api.md)

@@ -42,6 +42,8 @@ items:
       href: tutorial-nodejs-mongodb-app.md
     - name: Python s Postgresem
       href: tutorial-python-postgresql-app.md
+    - name: Java Enterprise s Postgresem
+      href: tutorial-java-enterprise-postgresql-app.md
   - name: Vícekontejnerová aplikace
     href: tutorial-multi-container-app.md
   - name: Vlastní image Dockeru
@@ -242,9 +244,9 @@ items:
         href: ../app-service-web-open-source-technologies-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Nejčastější dotazy ke konfiguraci a správě
         href: ../app-service-web-configuration-and-management-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: 7597b4ca76c16510458dee8e43072001f1d8b928
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 51c8e5aca31c17b0d2f3160557be494e69ee79e9
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621799"
+ms.locfileid: "51632879"

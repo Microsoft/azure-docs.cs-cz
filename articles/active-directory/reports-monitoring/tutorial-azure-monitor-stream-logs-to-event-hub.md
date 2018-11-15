@@ -13,19 +13,19 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 07/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c8157820f7137eb06a0fe10c42645ec91f33edbc
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 7582c578e91fb3e36d7a0ecc1da7ede0cefc0f4c
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364048"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51623757"
 ---
-# <a name="tutorial-stream-azure-ad-logs-to-an-azure-event-hub-preview"></a>Kurz: Streamování protokolů Azure AD do centra událostí Azure (Preview)
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Kurz: Streamování protokolů Azure Active Directory do centra událostí Azure (Preview)
 
-V tomto kurzu se dozvíte, jak nastavit diagnostiku ve službě Azure Monitor na streamování protokolů Azure Active Directory (Azure AD) do centra událostí Azure. Tento mechanismus můžete použít k integraci svých protokolů s nástroji pro správu akcí a informací o zabezpečení (SIEM) třetích stran, jako je Splunk nebo QRadar.
+V tomto kurzu se dozvíte, jak nastavit nastavení diagnostiky Azure Monitor k Azure Active Directory (Azure AD) streamování protokolů do služby Azure event hub. Tento mechanismus můžete použít k integraci svých protokolů s nástroji pro správu akcí a informací o zabezpečení (SIEM) třetích stran, jako je Splunk nebo QRadar.
 
 ## <a name="prerequisites"></a>Požadavky 
 
@@ -36,7 +36,7 @@ Pokud chcete používat tuto funkci, potřebujete tyto položky:
 * Uživatele, který je *globálním správcem* nebo *správcem zabezpečení* pro tohoto tenanta Azure AD.
 * Obor názvů služby Event Hubs a centrum událostí ve vašem předplatném Azure. Informace o tom, jak [vytvořit centrum událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-## <a name="archive-logs-to-an-event-hub"></a>Archivace protokolů do centra událostí
+## <a name="stream-logs-to-an-event-hub"></a>Stream protokolů do centra událostí
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
@@ -84,7 +84,7 @@ Jakmile se data zobrazí v centru událostí, můžete k nim přistupovat a čí
 * **Nastavení vlastních nástrojů**. Pokud diagnostika služby Azure Monitor ještě nepodporuje váš stávající nástroj SIEM, můžete pomocí rozhraní API služby Event Hubs nastavit vlastní nástroje. Další informace najdete v tématu [Začínáme s přijímáním zpráv z centra událostí](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph).
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Integrace protokolů Azure AD s nástrojem Splunk pomocí služby Azure Monitor](tutorial-integrate-activity-logs-with-splunk.md)
 * [Integrace protokolů Azure AD s nástrojem SumoLogic pomocí služby Azure Monitor](howto-integrate-activity-logs-with-sumologic.md)

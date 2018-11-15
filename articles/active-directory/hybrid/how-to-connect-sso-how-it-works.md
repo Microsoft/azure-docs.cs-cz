@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 83a36c81ad88ccb37fe4a258f895b1e1cbe9299f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311014"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687397"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: podrobné technické informace
 
@@ -79,8 +79,8 @@ Tok přihlášení na nativního klienta vypadá takto:
 
 1. Uživatel se pokusí o přístup k nativní aplikaci (například klient Outlooku) z firemních zařízení uvnitř firemní sítě připojené k doméně.
 2. Pokud již není přihlášený uživatel, nativní aplikace načítá uživatelské jméno uživatele, z relace zařízení Windows.
-3. Aplikace odešle do služby Azure AD uživatelského jména a načte koncového bodu WS-Trust MEX vašeho tenanta.
-4. Následně se dotazuje aplikace koncového bodu MEX WS-Trust a zjistěte, jestli integrovaný koncový bod ověřování je k dispozici.
+3. Aplikace odešle do služby Azure AD uživatelského jména a načte koncového bodu WS-Trust MEX vašeho tenanta. Tento koncový bod WS-Trust používá výhradně funkci bezproblémového jednotného přihlašování a není obecnou implementaci protokolu WS-Trust v Azure AD.
+4. Následně se dotazuje aplikace koncového bodu MEX WS-Trust a zjistěte, jestli integrovaný koncový bod ověřování je k dispozici. Koncový bod integrovaného ověřování se používá výhradně funkcí bezproblémového jednotného přihlašování.
 5. Krok 4 úspěšné, objeví se výzva protokolu Kerberos.
 6. Pokud je aplikace se nepovedlo načíst lístek protokolu Kerberos, se předává až do koncového bodu integrované ověřování Azure AD.
 7. Azure AD dešifruje lístek protokolu Kerberos a ověří jeho platnost.

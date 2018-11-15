@@ -10,25 +10,24 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: 404a40f8949add77153d3fbf53b5c68dfb866128
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: d2d648dd02426596e1c070ffd494458c68060085
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377876"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613439"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Kurz: Nahrávání, kódování a streamování videí pomocí rozhraní API
 
-Služba Media Services umožňuje kódování souborů médií do formátů, které se dají přehrávat v nejrůznějších prohlížečích a zařízeních. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md). V tomto kurzu se nahraje místní soubor videa a nahraný soubor se zakóduje. Můžete také zakódovat obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Další informace najdete v článku o [vytvoření vstupu úlohy z adresy URL protokolu HTTP(S)](job-input-from-http-how-to.md).
+Azure Media Services umožňuje kódování souborů médií do formátů, které můžete přehrát na širokou škálu prohlížečů a zařízení. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md). V tomto kurzu se nahraje místní soubor videa a nahraný soubor se zakóduje. Můžete také zakódovat obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Další informace najdete v článku o [vytvoření vstupu úlohy z adresy URL protokolu HTTP(S)](job-input-from-http-how-to.md).
 
 ![Přehrávání videa](./media/stream-files-tutorial-with-api/final-video.png)
 
 V tomto kurzu získáte informace o následujících postupech:    
 
 > [!div class="checklist"]
-> * Vytvoření účtu Media Services
 > * Přístup k rozhraní API služby Media Services
 > * Konfigurace ukázkové aplikace
 > * Kontrola kódu, který provádí nahrávání, kódování a streamování
@@ -40,7 +39,14 @@ V tomto kurzu získáte informace o následujících postupech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+- Pokud nemáte nainstalovanou sadu Visual Studio, můžete získat sadu [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+
+    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
+
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
+
+    Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -51,10 +57,6 @@ Pomocí následujícího příkazu naklonujte do svého počítače úložiště
  ```
 
 Ukázka se nachází ve složce [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles).
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -185,11 +187,11 @@ Azure Media Player můžete použít pro účely testování, nesmí se ale pou�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte. Můžete použít nástroj **CloudShell**.
+Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte.
 
-V nástroji **CloudShell** spusťte následující příkaz:
+Spusťte následující příkaz rozhraní příkazového řádku:
 
-```azurecli-interactive
+```azurecli
 az group delete --name amsResourceGroup
 ```
 
@@ -197,7 +199,7 @@ az group delete --name amsResourceGroup
 
 Sady SDK služby Azure Media Services v3 nejsou bezpečné pro přístup z více vláken. Při vývoji vícevláknové aplikace byste měli pro každé vlákno vygenerovat a používat samostatný objekt AzureMediaServicesClient.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když už víte, jak nahrávat, kódovat a streamovat videa, podívejte se na následující článek: 
 
