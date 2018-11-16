@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 04fad24b17d7f74211deae53c0d044f2049660f2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 69ffd2dd4df8ca0a64036f7a96c88d5c83353211
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978314"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685363"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Kurz – Správa disků v Azure pomocí Azure CLI
 
@@ -36,9 +36,6 @@ Virtuální počítače Azure využívají disky k ukládání svých operační
 > * Změna velikosti disků
 > * Snímky disků
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte pro tento kurz mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="default-azure-disks"></a>Výchozí disky v Azure
 
@@ -48,35 +45,15 @@ Při vytvoření virtuálního počítače Azure se k němu automaticky připoj�
 
 **Dočasný disk:** Dočasné disky používají jednotku SSD, která je umístěná na stejném hostiteli Azure jako virtuální počítač. Dočasné disky mají vysoký výkon a můžou se používat pro operace, jako je zpracování dočasných dat. V případě přesunutí virtuálního počítače na nového hostitele se ale všechna data uložená na dočasném disku odeberou. Velikost dočasného disku se určuje podle velikosti virtuálního počítače. Dočasné disky mají popisek */dev/sdb* a mají přípojný bod */mnt*.
 
-### <a name="temporary-disk-sizes"></a>Velikosti dočasného disku
-
-| Typ | Běžné velikosti | Maximální velikost dočasného disku (GiB) |
-|----|----|----|
-| [Obecné účely](sizes-general.md) | Řady A, B a D | 1600 |
-| [Optimalizované z hlediska výpočetních služeb](sizes-compute.md) | Řada F | 576 |
-| [Optimalizované z hlediska paměti](sizes-memory.md) | Řady D, E, G a M | 6144 |
-| [Optimalizované z hlediska úložiště](sizes-storage.md) | Řada L | 5630 |
-| [GPU](sizes-gpu.md) | Řada N | 1440 |
-| [Vysoký výkon](sizes-hpc.md) | Řady A a H | 2000 |
 
 ## <a name="azure-data-disks"></a>Datové disky Azure
 
-Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 TB. Velikost virtuálního počítače určuje, kolik datových disků se k němu může připojit. Na každý virtuální procesor virtuálního počítače je možné připojit dva datové disky.
+Pokud potřebujete instalovat aplikace a ukládat data, můžete přidat další datové disky. Datové disky by se měly používat v každé situaci, kdy se vyžaduje odolné a responzivní úložiště dat. Každý datový disk má maximální kapacitu 4 TB. Velikost virtuálního počítače určuje, kolik datových disků se k němu může připojit. Na každý virtuální procesor virtuálního počítače je možné připojit čtyři datové disky.
 
-### <a name="max-data-disks-per-vm"></a>Maximum datových disků na virtuální počítač
-
-| Typ | Velikost virtuálního počítače | Maximum datových disků na virtuální počítač |
-|----|----|----|
-| [Obecné účely](sizes-general.md) | Řady A, B a D | 64 |
-| [Optimalizované z hlediska výpočetních služeb](sizes-compute.md) | Řada F | 64 |
-| [Optimalizované z hlediska paměti](../virtual-machines-windows-sizes-memory.md) | Řady D, E a G | 64 |
-| [Optimalizované z hlediska úložiště](../virtual-machines-windows-sizes-storage.md) | Řada L | 64 |
-| [GPU](sizes-gpu.md) | Řada N | 64 |
-| [Vysoký výkon](sizes-hpc.md) | Řady A a H | 64 |
 
 ## <a name="vm-disk-types"></a>Typy disků virtuálního počítače
 
-Azure poskytuje dva typy disků.
+Azure nabízí dva typy disků úrovně standard a Premium.
 
 ### <a name="standard-disk"></a>Disk Standard
 
@@ -88,13 +65,20 @@ Disky Premium jsou založené na vysoce výkonných discích SSD s nízkou laten
 
 ### <a name="premium-disk-performance"></a>Výkon disků Premium
 
-|Typ disku pro Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Velikost disku (zaokrouhluje se nahoru) | 32 GB | 64 GB | 128 GB | 512 GB | 1 024 GB (1 TB) | 2 048 GB (2 TB) | 4 095 GB (4 TB) |
-| Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 120 | 240 | 500 | 2 300 | 5 000 | 7 500 | 7 500 |
-Propustnost / disk | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
+|Typ disku pro Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 | P60 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Velikost disku (zaokrouhluje se nahoru) | 32 GiB | 64 GiB | 128 GiB | 512 GiB | 1 024 GiB (1 TiB) | 2 048 GiB (2 TiB) | 4 095 GiB (4 TiB) | 8 192 GiB (8 TiB)
+| Maximum vstupně-výstupních operací za sekundu (IOPS) na disk | 120 | 240 | 500 | 2 300 | 5 000 | 7 500 | 7 500 | 12 500 |
+Propustnost / disk | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s | 480 MB/s |
 
 V tabulce výše se sice uvádí maximum vstupně-výstupních operací za sekundu (IOPS), ale prokládáním více datových disků je možné dosáhnout i vyšší úrovně výkonu. Virtuální počítač Standard_GS5 může například dosáhnout maximálně 80 000 IOPS. Podrobné informace o maximálních hodnotách IOPS u virtuálních počítačů najdete v článku o [velikostech virtuálních počítačů s Linuxem](sizes.md).
+
+
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
+
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
+
+Pokud chcete otevřít Cloud Shell, vyberte **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese [https://shell.azure.com/powershell](https://shell.azure.com/bash). Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
 ## <a name="create-and-attach-disks"></a>Vytvoření a připojení disků
 
@@ -116,7 +100,6 @@ az vm create \
   --name myVM \
   --image UbuntuLTS \
   --size Standard_DS2_v2 \
-  --admin-username azureuser \
   --generate-ssh-keys \
   --data-disk-sizes-gb 128 128
 ```
@@ -139,7 +122,6 @@ az vm disk attach \
 
 Po připojení disku k virtuálnímu počítači je třeba nakonfigurovat operační systém tak, aby mohl disk používat. Následující příklad ukazuje postup při ruční konfiguraci disku. Tento proces je také možné automatizovat pomocí sady nástrojů cloud-init, které se věnujeme v [tomto kurzu](./tutorial-automate-vm-deployment.md).
 
-### <a name="manual-configuration"></a>Ruční konfigurace
 
 Vytvořte připojení SSH k virtuálnímu počítači. Ukázkovou IP adresu nahraďte veřejnou IP adresou virtuálního počítače.
 
@@ -204,42 +186,10 @@ Po dokončení konfigurace disku zavřete relaci SSH.
 exit
 ```
 
-## <a name="resize-vm-disk"></a>Změna velikosti disku virtuálního počítače
 
-Po nasazení virtuálního počítače je možné zvýšit velikost disku s operačním systémem nebo jakýchkoliv připojených datových disků. Zvětšení disku je vhodné v případě, že potřebujete další úložný prostor nebo vyšší úroveň výkonu (například P10, P20 nebo P30). Velikost disků není možné snížit.
+## <a name="snapshot-a-disk"></a>Pořízení snímku disku
 
-Před zvětšením disku budete potřebovat ID nebo název disku. Seznam všech disků ve skupině prostředků můžete získat pomocí příkazu [az disk list](/cli/azure/disk#az-disk-list). Poznamenejte si název disku, jehož velikost chcete změnit.
-
-```azurecli-interactive
-az disk list \
-    --resource-group myResourceGroupDisk \
-    --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' \
-    --output table
-```
-
-Přidělení virtuálního počítače je nutné zrušit. K zastavení a zrušení přidělení virtuálního počítače použijte příkaz [az vm deallocate](/cli/azure/vm#az-vm-deallocate).
-
-```azurecli-interactive
-az vm deallocate --resource-group myResourceGroupDisk --name myVM
-```
-
-Velikost disku změňte pomocí příkazu [az disk update](/cli/azure/vm/disk#az-vm-disk-update). V tomto příkladu se změní velikost disku s názvem *myDataDisk* na 1 terabajt.
-
-```azurecli-interactive
-az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023
-```
-
-Po dokončení operace změny velikosti spusťte virtuální počítač.
-
-```azurecli-interactive
-az vm start --resource-group myResourceGroupDisk --name myVM
-```
-
-Pokud jste změnili velikost disku s operačním systémem, oddíl se automaticky rozšíří. Když změníte velikost datového disku, je potřeba aktuální oddíly rozšířit v operačním systému virtuálního počítače.
-
-## <a name="snapshot-azure-disks"></a>Vytváření snímků disků v Azure
-
-Když pořídíte snímek disku, Azure vytvoří kopii disku k danému okamžiku určenou jen pro čtení. Snímky virtuálních počítačů Azure jsou užitečné k rychlému uložení stavu virtuálního počítače před změnou konfigurace. Pokud se změny konfigurace ukáží jako nevhodné, je možné obnovit stav virtuálního počítače pomocí snímku. Pokud má virtuální počítač více než jeden disk, pořizuje se snímek každého disku nezávisle na ostatních. V zájmu vytváření konzistentních záloh (vzhledem k aplikacím) zvažte možnost virtuální počítač před pořizováním snímků zastavit. Můžete také použít [službu Azure Backup](/azure/backup/), která umožňuje provádět automatizované zálohování spuštěného virtuálního počítače.
+Když pořídíte snímek disku, Azure vytvoří kopii disku k danému okamžiku určenou jen pro čtení. Snímky virtuálních počítačů Azure jsou užitečné k rychlému uložení stavu virtuálního počítače před změnou konfigurace. V případě problému nebo chyby je možné obnovit virtuální počítač pomocí snímku. Pokud má virtuální počítač více než jeden disk, pořizuje se snímek každého disku nezávisle na ostatních. V zájmu vytváření konzistentních záloh (vzhledem k aplikacím) zvažte možnost virtuální počítač před pořizováním snímků zastavit. Můžete také použít [službu Azure Backup](/azure/backup/), která umožňuje provádět automatizované zálohování spuštěného virtuálního počítače.
 
 ### <a name="create-snapshot"></a>Vytvoření snímku
 
@@ -300,7 +250,7 @@ Disk můžete připojit pomocí příkazu [az vm disk attach](/cli/azure/vm/disk
 az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených s disky virtuálních počítačů, jako jsou:
 

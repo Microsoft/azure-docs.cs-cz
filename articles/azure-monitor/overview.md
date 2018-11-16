@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 0f17cf7f2ef655f482b08b5c7163c0d85be77ce5
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 3de1939ec4004c2709fb0e366fb492462cf2d216
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068690"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710752"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -67,7 +67,7 @@ Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST po
 
 
 ## <a name="insights"></a>Insights
-Sledování dat je pouze užitečné, pokud zvýšíte svůj vhled do provozu vaše výpočetní prostředí. Azure Monitor obsahuje několik funkcí a nástrojů, které poskytují cenné přehledy o vašich aplikací a další prostředky, které jsou závislé. [Řešení monitorování](../monitoring/monitoring-solutions.md) a funkce, jako [Application Insights](../application-insights/app-insights-overview.md) a přehledy o kontejnerech poskytnout podrobný přehled o různých aspektech vaší aplikace a konkrétních služeb Azure. 
+Sledování dat je pouze užitečné, pokud zvýšíte svůj vhled do provozu vaše výpočetní prostředí. Azure Monitor obsahuje několik funkcí a nástrojů, které poskytují cenné přehledy o vašich aplikací a další prostředky, které jsou závislé. [Řešení monitorování](../azure-monitor/insights/solutions.md) a funkce, jako [Application Insights](../application-insights/app-insights-overview.md) a přehledy o kontejnerech poskytnout podrobný přehled o různých aspektech vaší aplikace a konkrétních služeb Azure. 
 
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](../application-insights/app-insights-overview.md) Monitoruje dostupnost, výkon a využití webových aplikací, ať už jsou hostované v cloudu nebo místně. Využívá výkonnou datovou platformu pro analýzy ve službě Log Analytics můžete poskytnout podrobné informace o operacích vaší aplikace a diagnostikovat chyby bez čekání na jejich nahlášení uživatelem. Application Insights obsahuje spojovací body s celou řadu nástrojů pro vývoj a integruje se sadou Visual Studio pro podporu vašich procesů DevOps.
@@ -86,9 +86,9 @@ Azure insights monitorování virtuálního počítače monitoruje virtuální p
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Řešení monitorování
-[Řešení monitorování](../monitoring/monitoring-solutions.md) ve službě Azure Monitor jsou zabalené sady logik, které poskytují přehledy pro konkrétní aplikaci nebo službě. Shromažďování dat do Log Analytics spolu s dalšími daty monitorování pomocí [dotazy](../log-analytics/log-analytics-queries.md) pro analýzu a [zobrazení](../log-analytics/log-analytics-view-designer.md) pro vizualizaci. Řešení pro monitorování [od Microsoftu k dispozici](../monitoring/monitoring-solutions-inventory.md) a partnery nabízí monitorování pro různé služby Azure a další aplikace.
+[Řešení monitorování](../azure-monitor/insights/solutions.md) ve službě Azure Monitor jsou zabalené sady logik, které poskytují přehledy pro konkrétní aplikaci nebo službě. Shromažďování dat do Log Analytics spolu s dalšími daty monitorování pomocí [dotazy](../log-analytics/log-analytics-queries.md) pro analýzu a [zobrazení](../log-analytics/log-analytics-view-designer.md) pro vizualizaci. Řešení pro monitorování [od Microsoftu k dispozici](../azure-monitor/insights/solutions-inventory.md) a partnery nabízí monitorování pro různé služby Azure a další aplikace.
 
-![Řešení monitorování](../monitoring/media/monitoring-solutions/overview.png)
+![Řešení monitorování](media/overview/solutions-overview.png)
 
 ## <a name="responding-to-critical-situations"></a>Reakce na kritická situacích
 Mimo možnosti k interaktivní analýze dat monitorování, musí být schopné proaktivně reagovat na kritické ujednání identifikovat data, která shromažďuje efektivní řešení monitorování. To může odesílat textové nebo e-mailu do správce zodpovědným za vyšetřování problém. Nebo může spustit automatizovaný proces, který se pokusí opravit chybovou podmínku.

@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: a2f37cffb37ce7008c3e372763784240e0d4250b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: a298a49c5bdf28b30da05c1b6296fc211ec14c1d
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945548"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713142"
 ---
 # <a name="vs-code-tools-for-ai-get-started-with-azure-machine-learning-from-visual-studio-code"></a>Nástroje VS Code pro AI: Začínáme s Azure Machine Learning z Visual Studio Code
 
@@ -28,7 +28,7 @@ Tools for AI rozšíření Visual Studio Code pomocí služby Azure Machine Lear
 
 + [Nainstalujte Python 3.5 nebo vyšší](https://www.anaconda.com/download/).
 
-+ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
++ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
 ## <a name="install-vs-code-tools-for-ai-extension"></a>Instalace nástroje VS Code pro AI rozšíření
 
@@ -40,7 +40,7 @@ Pro práci s Azure Machine Learning, musíme proměnit Python IDE VS Code. Prác
 
 1. Spusťte VS Code.
 
-1. V prohlížeči, navštivte: http://aka.ms/vscodetoolsforai. 
+1. V prohlížeči, navštivte: https://aka.ms/vscodetoolsforai. 
 
 1. V této webové stránce klikněte na tlačítko **nainstalovat**. 
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c17c14b015531bf3f978ac30b013c80ad5be779e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 210e8a80d19f84058a059a3cfe34a14e037507db
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006511"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712360"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizujete si prostředí díky řešení System Center Operations Manager kontroly stavu (Preview)
 
@@ -212,7 +212,7 @@ Každé doporučení obsahuje pokyny o tom, proč je důležité. Tyto pokyny sl
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Kontroly stavu použijte doporučení oblasti zaměření
 
-Než ve službě Log Analytics můžete použít řešení kontroly stavu, musíte mít nainstalované řešení. Další informace o instalaci řešení, najdete v článku [nainstalovat řešení pro správu](../monitoring/monitoring-solutions.md). Po jeho instalaci, můžete zobrazit souhrn doporučení s využitím kontroly systému System Center Operations Manager Health dlaždici na **přehled** stránku vašeho pracovního prostoru na webu Azure Portal.
+Než ve službě Log Analytics můžete použít řešení kontroly stavu, musíte mít nainstalované řešení. Další informace o instalaci řešení, najdete v článku [nainstalovat řešení pro správu](../azure-monitor/insights/solutions.md). Po jeho instalaci, můžete zobrazit souhrn doporučení s využitím kontroly systému System Center Operations Manager Health dlaždici na **přehled** stránku vašeho pracovního prostoru na webu Azure Portal.
 
 Zobrazení posouzení souhrnné dodržování předpisů pro infrastrukturu a pak přejít k podrobnostem doporučení.
 

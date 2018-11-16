@@ -10,35 +10,35 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: ''
-ms.openlocfilehash: 7931cd8a6f8b3de826e8dd563a837f80fc15d88a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 86561cd835a36282ca1b38638ab4372c6b360617
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315116"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705647"
 ---
 # <a name="azure-active-directory-premium-p2-licensing-feature-checklist"></a>Azure Active Directory Premium P2 licencování funkce kontrolní seznam
 
-To se může zdát složitý k nasazení služby Azure Active Directory (Azure AD) pro vaši organizaci a zajistili jeho zabezpečení. Tento článek identifikuje některé běžné úlohy, že zákazníci považovat za užitečné pro dokončení v průběhu 30 dnů, 90 dnů, nebo dalších fázích můžete využít ke zvýšení jejich stavu zabezpečení. Dokonce i organizace, kteří už mají nasazenou Azure AD můžete použít tento kontrolní seznam k zajištění, že se, jak maximálně využít svou investici získají.
+Může to působit příliš složitě k nasazení služby Azure Active Directory (Azure AD) pro vaši organizaci a zajistili jeho zabezpečení. Tento článek identifikuje některé běžné úlohy, které zákazníkům užitečné. Zákazníci obvykle dokončení těchto úloh v průběhu 30 dnů, 90 dnů, maximálně zvýšit jejich stavu zabezpečení. Dokonce i organizace, kteří už mají nasazenou Azure AD můžete použít tento kontrolní seznam, abyste měli jistotu, že výhodný využívat své investice na maximum.
 
 Infrastruktura promyšlených a jsou prováděny identit usnadní cestu pro lepší zabezpečení přístupu k data pouze pomocí ověřených uživatelů a zařízení a produktivity úloh.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento průvodce to předpokládá, že máte licence Azure AD Premium P2, Enterprise Mobility + Security E5, Microsoft 365 E5 nebo li sadu ekvivalentních licence.
+Tento průvodce to předpokládá, že máte licence Azure AD Premium P2, Enterprise Mobility + Security E5, Microsoft 365 E5 nebo podobné sadě licence.
 
 [Licencování Azure AD](https://azure.microsoft.com/pricing/details/active-directory/)
 
-[Microsoft 365 Enterprise](https://www.microsoft.com/licensing/product-licensing/microsoft-365-enterprise.aspx)
+[Microsoft 365 Enterprise](https://www.microsoft.com/en-us/licensing/product-licensing/microsoft-365-enterprise)
 
-[Enterprise Mobility + Security](https://www.microsoft.com/licensing/product-licensing/enterprise-mobility-security.aspx)
+[Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 
 ## <a name="plan-and-deploy-day-1-30"></a>Plánování a nasazení: den 1-30
 
 - Určení více než jednoho globálního správce (konec pohotovostní účet)
    - [Spravovat účty pro správu nouzovou přístup ve službě Azure AD](../users-groups-roles/directory-emergency-access.md)
 - Zapnout Azure AD Privileged Identity Management (PIM) Chcete-li zobrazit sestavy
-   - [Začněte používat PIM](../privileged-identity-management/pim-getting-started.md)
+   - [Zahájení práce s PIM](../privileged-identity-management/pim-getting-started.md)
 - Kde je to možné, použijte platformou pro správu rolí.
    - [Přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)
 - Authentication

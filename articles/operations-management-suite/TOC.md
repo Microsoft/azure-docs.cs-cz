@@ -28,8 +28,8 @@
 ### [Webové vyhodnocení směrného plánu](../security-center/security-center-customize-os-security-config.md)
 
 ## Použití řešení
-### [Řešení pro správu](../monitoring/monitoring-solutions.md)
-### [Cílová řešení](../monitoring/monitoring-solution-targeting.md)
+### [Řešení pro správu](../azure-monitor/insights/solutions.md)
+### [Cílová řešení](../azure-monitor/insights/solution-targeting.md)
 ### Přehledy a analýza
 #### [Posouzení AD](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Stav replikace AD](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -57,12 +57,12 @@
 #### [Posouzení antimalwaru](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Vytváření řešení
-### [Návrh a sestavení](../monitoring/monitoring-solutions-creating.md)
-### [Soubor řešení](../monitoring/monitoring-solutions-solution-file.md)
-### [Prostředky služby Automation](../monitoring/monitoring-solutions-resources-automation.md)
-### [Prohledávání protokolu a upozornění](../monitoring/monitoring-solutions-resources-searches-alerts.md)
-### [Zobrazení](../monitoring/monitoring-solutions-resources-views.md)
-### [Osvědčené postupy](../monitoring/monitoring-solutions-best-practices.md)
+### [Návrh a sestavení](../azure-monitor/insights/solutions-creating.md)
+### [Soubor řešení](../azure-monitor/insights/solutions-solution-file.md)
+### [Prostředky služby Automation](../azure-monitor/insights/solutions-resources-automation.md)
+### [Prohledávání protokolu a upozornění](../azure-monitor/insights/solutions-resources-searches-alerts.md)
+### [Zobrazení](../azure-monitor/insights/solutions-resources-views.md)
+### [Osvědčené postupy](../azure-monitor/insights/solutions-best-practices.md)
 
 ## Scénáře správy
 ### [Shromažďování analytických dat z runbooků](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)

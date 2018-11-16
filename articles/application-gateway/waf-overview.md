@@ -4,26 +4,30 @@ description: Tento článek obsahuje přehled firewallu webových aplikací (WAF
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: da2603efd6b55ed3b3371156a98568226b18a65a
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219524"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706887"
 ---
 # <a name="web-application-firewall-waf"></a>Firewall webových aplikací (WAF)
 
-Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. 
+Firewall webových aplikací (WAF) je funkce služby Application Gateway poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení.
 
-Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Mezi tyto běžné typy zneužití patří mimo jiné například útoky prostřednictvím injektáže SQL nebo skriptování mezi weby. Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování několika vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení Firewall webových aplikací (WAF) může také rychleji reagovat na ohrožení zabezpečení, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
+Webové aplikace se čím dál častěji stávají cílem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Společné tyto zneužití jsou útoky prostřednictvím injektáže SQL a skriptování mezi weby útoky pár. 
+
+Předcházet takovým útokům v kódu aplikace může být náročné a může vyžadovat pečlivou údržbu, opravy a monitorování několika vrstev topologie aplikace. Centralizovaný firewall webových aplikací značně zjednodušuje správu zabezpečení a nabízí správcům lepší ochranu aplikací před hrozbami neoprávněného vniknutí. Řešení WAF může také reagovat na ohrožení zabezpečení, který je rychlejší, protože opravuje známé chyby zabezpečení v centrálním umístění, namísto zabezpečování jednotlivých webových aplikací. Stávající aplikační brány je možné jednoduše převést na aplikační brány doplněné webovým aplikačním firewallem.
 
 WAF je na základě pravidel ze [základní sady pravidel OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 nebo 2.2.9. Automaticky aktualizuje zahrnout ochranu proti nová ohrožení zabezpečení, nepotřebují žádnou další konfiguraci.
 
 ![imageURLroute](./media/waf-overview/WAF1.png)
 
-Application Gateway funguje jako kontroler doručování aplikací (ADC) a nabízí ukončení protokolu SSL, spřažení relace na základě souborů cookie, distribuci zatížení pomocí kruhového dotazování, směrování na základě obsahu, schopnost hostovat více webů a vylepšení zabezpečení. Vylepšení zabezpečení nabízená službou Application Gateway zahrnují správu zásad protokolu SSL a podporu koncového šifrování protokolu SSL. Zabezpečení aplikací je nyní posíleno integrací firewallu webových aplikací (WAF) přímo do nabídky ADC. Získáte tak snadno konfigurovatelné centrální umístění pro správu a ochranu svých webových aplikací před běžnými webovými chybami zabezpečení.
+Application Gateway funguje jako kontroler doručování aplikací (ADC) a nabízí ukončení protokolu SSL, spřažení relace na základě souborů cookie, distribuci zatížení pomocí kruhového dotazování, směrování na základě obsahu, schopnost hostovat více webů a vylepšení zabezpečení.
+
+Vylepšení zabezpečení nabízená službou Application Gateway zahrnují správu zásad protokolu SSL a podporu kompletního protokolu SSL. Zabezpečení aplikací je nyní posíleno integrací firewallu webových aplikací (WAF) přímo do nabídky ADC. Získáte tak snadno konfigurovatelné centrální umístění pro správu a ochranu svých webových aplikací před běžnými webovými chybami zabezpečení.
 
 ## <a name="benefits"></a>Výhody
 
@@ -53,11 +57,11 @@ Tady jsou základní výhody, které poskytují Application Gateway s firewallem
 - Ochrana před narušením protokolu HTTP
 - Ochrana proti anomálie protokolu HTTP například chybějící user-agent hostitele nebo hlavičky accept.
 - Ochrana před roboty, prohledávacími moduly a skenery.
-- Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.)
+- Detekce běžných chyb v konfiguraci aplikací (například Apache, IIS atd.)
 
 ### <a name="public-preview-features"></a>Funkce ve verzi Public preview
 
-Aktuální WAF veřejná verze preview SKU incudes následující funkce:
+Aktuální public preview WAF SKU zahrnuje následující funkce:
 
 - **Požádat o omezení velikosti** – Firewall webových aplikací umožňuje uživatelům konfigurovat omezení velikosti požadavku v rámci dolní a horní hranice.
 - **Seznamy vyloučení** – seznamy vyloučení WAF povolit uživatelům vynechání určité atributy žádosti ze zkušební verze WAF. Běžným příkladem je že vložen tokeny, které se používají pro ověřování nebo pole s heslem služby Active Directory.
@@ -80,9 +84,9 @@ Firewall webových aplikací se poskytuje s předem nakonfigurovanou sadou pravi
 - Ochrana před narušením protokolu HTTP
 - Ochrana proti anomálie protokolu HTTP například chybějící user-agent hostitele nebo hlavičky accept.
 - Ochrana před roboty, prohledávacími moduly a skenery.
-- Detekce běžných chyb v konfiguraci aplikací (tj. Apache, IIS atd.)
+- Detekce běžných chyb v konfiguraci aplikací (např. Apache, IIS atd.)
 
-Podrobnější seznam pravidel a jejich ochrany najdete v části [základních sad pravidel](#core-rule-sets).
+Podrobnější seznam pravidel a jejich ochrany najdete v tématu [základních sad pravidel](#core-rule-sets).
 
 
 #### <a name="owasp30"></a>OWASP_3.0
@@ -91,7 +95,7 @@ Základní sada pravidel 3.0 má 13 skupin pravidel, shrnutých v následující
 
 |RuleGroup|Popis|
 |---|---|
-|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Obsahuje pravidla pro uzamčení metod (PUT, PATCH< ..)|
+|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|Obsahuje pravidla pro uzamčení metod (PUT, PATCH)|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| Obsahuje pravidla pro ochranu před skenery portů a prostředí.|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|Obsahuje pravidla pro ochranu před problémy s protokoly a kódováním.|
 |**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|Obsahuje pravidla s cílem zajistit ochranu proti vkládání záhlaví, podvržení požadavku a rozdělení odpovědi.|
@@ -124,18 +128,18 @@ Základní sada pravidel 2.2.9 má 10 skupin pravidel, shrnutých v následujíc
 
 Firewall webových aplikací (WAF) služby Application Gateway lze nakonfigurovat ke spuštění v těchto dvou režimech:
 
-* **Režim detekce** – když nakonfigurované na spouštění v režimu detekce, waf služby Application Gateway monitoruje a protokoluje do všech upozornění na hrozby do souboru protokolu. Diagnostika protokolování pro službu Application Gateway by měla být v části **Diagnostika** zapnutá. Bude také třeba zajistit, aby byl vybrán a zapnut protokol WAF. když je firewall webových aplikací spuštěný v režimu detekce, neblokuje příchozí požadavky.
+* **Režim detekce** – když je nakonfigurován ke spuštění v režimu detekce, waf služby Application Gateway monitoruje a protokoluje všechny výstrahy na hrozby do souboru protokolu. Diagnostika protokolování pro službu Application Gateway by měla být v části **Diagnostika** zapnutá. Bude také třeba zajistit, aby byl vybrán a zapnut protokol WAF. když je firewall webových aplikací spuštěný v režimu detekce, neblokuje příchozí požadavky.
 * **Režim prevence** – Když je nakonfigurován ke spuštění v režimu prevence, služba Application Gateway aktivně blokuje vniknutí a útoky detekované pomocí svých pravidel. Útočník obdrží výjimku 403 – Neoprávněný přístup a připojení se ukončí. Režim prevence takové útoky nadále protokoluje do protokolů WAF.
 
 ### <a name="application-gateway-waf-reports"></a>Monitorování WAF
 
-Monitorování stavu službu Application Gateway je velmi důležité. Monitorování stavu vašeho firewallu webových aplikací a aplikací, které chrání, je zajišťována protokolováním a integrací se službami Azure Monitor, Azure Security Center (už brzy) a Log Analytics.
+Monitorování stavu službu Application Gateway je velmi důležité. Monitorování stavu vašeho firewallu webových aplikací a aplikací, které chrání, je zajišťována protokolováním a integrací se službami Azure Monitor, Azure Security Center a Log Analytics.
 
 ![Diagnostika](./media/waf-overview/diagnostics.png)
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-Každý protokol aplikační brány je integrovaný do služby [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).  To umožňuje sledovat diagnostické informace, včetně výstrah a protokolů WAF.  Tato možnost je poskytována v rámci prostředku Application Gateway na portálu na kartě **Diagnostika** nebo přímo prostřednictvím služby Azure Monitor. Další informace o povolení diagnostických protokolů pro službu application gateway najdete v článku [diagnostice služby Application Gateway](application-gateway-diagnostics.md)
+Každý protokol aplikační brány je integrovaný do služby [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).  To umožňuje sledovat diagnostické informace, včetně výstrah a protokolů WAF.  Tato možnost je poskytována v rámci prostředku Application Gateway na portálu na kartě **Diagnostika** nebo přímo prostřednictvím služby Azure Monitor. Další informace o povolení diagnostických protokolů pro službu application gateway najdete v tématu [diagnostice služby Application Gateway](application-gateway-diagnostics.md)
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
@@ -179,7 +183,9 @@ Firewall webových aplikací (WAF) služby Application Gateway poskytuje podrobn
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Ceny SKU WAF služby Application Gateway
 
-Firewall webových aplikací je k dispozici jako nová položka WAF SKU. Tato položka SKU je k dispozici pouze v modelu zřizování Azure Resource Manager, nikoli v rámci klasického modelu nasazení. WAF SKU je navíc dostupný jen pro střední a velké instance aplikační brány. Všechna omezení pro aplikační brány platí také pro WAF SKU. Ceny jsou založeny na hodinové sazbě za instanci brány a na poplatcích za zpracování dat. Hodinová sazba za bránu se pro položku WAF SKU liší od sazby pro standardní položky SKU. Sazby jsou uvedeny v článku [Podrobnosti o cenách Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/). Poplatky za zpracování dat zůstávají stejné. Neexistují žádné poplatky za pravidla nebo skupiny pravidel. Jedna aplikační brána může chránit několik webových aplikací a další aplikace nejsou zpoplatněny. 
+Firewall webových aplikací je k dispozici jako nová položka WAF SKU. Tato položka SKU je k dispozici pouze v modelu zřizování Azure Resource Manager, nikoli v rámci klasického modelu nasazení. Kromě toho WAF SKU dostupný jen pro aplikace střední a velké velikosti instancí brány. Všechna omezení pro aplikační brány platí také pro WAF SKU.
+
+Ceny jsou založeny na hodinové sazbě za instanci brány a na poplatcích za zpracování dat. Hodinová sazba za bránu se pro položku WAF SKU liší od sazby pro standardní položky SKU. Sazby jsou uvedeny v článku [Podrobnosti o cenách Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/). Poplatky za zpracování dat zůstávají stejné. Neexistuje žádné za pravidla nebo pravidla skupiny poplatky. Může chránit několik webových aplikací za stejnou bránou firewall webových aplikací a se vám neúčtují poplatky za podporu více aplikací.
 
 ## <a name="next-steps"></a>Další postup
 

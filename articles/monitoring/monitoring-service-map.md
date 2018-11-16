@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 0f3bc7302bc28a9bef288e5e5e0b9b891a08b8dd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ea804899b04dad88ceeac14793d226cca47fc5c1
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252917"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713244"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Pomocí mapy služeb, můžete zobrazit vaše servery tak, aby přirozeným způsobem: jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy, příchozí a odchozí připojení čekací doba a požadované porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta.
@@ -27,7 +27,7 @@ Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Lin
 Tento článek popisuje podrobnosti o zařazení do systému a použitím řešení Service Map. Informace o konfiguraci řešení Service Map a připojováním agentů najdete v tématu [řešení Service Map konfigurace v Azure]( monitoring-service-map-configure.md).
 
 >[!NOTE]
->Pokud jste už nasadili řešení Service Map, můžete také prohlédnout vaše mapy ve službě Azure Monitor pro virtuální počítače, který obsahuje další funkce, které chcete sledovat výkon a stav virtuálního počítače. Další informace najdete v tématu [monitorování Azure pro virtuální počítače](monitoring-vminsights-overview.md).
+>Pokud jste už nasadili řešení Service Map, můžete také prohlédnout vaše mapy ve službě Azure Monitor pro virtuální počítače, který obsahuje další funkce, které chcete sledovat výkon a stav virtuálního počítače. Další informace najdete v tématu [monitorování Azure pro virtuální počítače](../azure-monitor/insights/vminsights-overview.md).
 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure

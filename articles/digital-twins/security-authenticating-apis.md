@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 11/13/2018
 ms.author: lyrana
-ms.openlocfilehash: f85ab05e785ea559962490b43e75b196d1602159
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4ea4479d77e06940bed50859341952ffbcbbda46
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016212"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711051"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>Připojit a provést ověření rozhraní API
 
@@ -35,39 +35,18 @@ Knihovna ověřování Windows Azure nabízí mnoho způsobů, jak získat token
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Volání digitální dvojče z webového rozhraní API střední vrstvy
 
-Když vývojáři navrhovat řešení digitální dvojče, obvykle vytvoří aplikace střední vrstvy nebo rozhraní API. Aplikace nebo API potom směru server-klient volá rozhraní API pro digitální dvojče. Nejdřív ověřit uživatele pro aplikace střední vrstvy, a potom on-behalf-of token tok, který slouží k volání podřízené. Pokyny ohledně toho, jak orchestrovat tok on-behalf-of, naleznete v tématu [na této stránce](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Můžete také zobrazit ukázky kódu na [na této stránce](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
+Když vývojáři navrhovat řešení digitální dvojče, obvykle vytvoří aplikace střední vrstvy nebo rozhraní API. Aplikace nebo API potom směru server-klient volá rozhraní API pro digitální dvojče. Pro podporu této architektury řešení standardních webových, ujistěte se, že uživatelé první:
 
+1. Ověřování pomocí aplikace střední vrstvy
 
-## <a name="test-with-the-postman-client"></a>Testování s klientem nástroje Postman
+1. Token OAuth 2.0 On-Behalf-Of je požadován při ověřování
 
-Chcete-li začít pracovat s rozhraními API sady digitální dvojče, můžete použít klienta, jako je Postman jako prostředí rozhraní API. Postman umožňuje rychle vytvářet složité požadavky HTTP. Následující kroky ukazují, jak získat token Azure AD, který je nezbytný pro volání digitální dvojče v rámci uživatelského rozhraní nástroje Postman.
+1. Získané token se pak použije k ověření pomocí nebo volání rozhraní API, která dále směru server-klient používá tok On-Behalf-Of
 
-
-1. Přejděte na https://www.getpostman.com/ stažení aplikace.
-1. Postupujte podle kroků v [v tomto rychlém startu](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) k vytvoření aplikace Azure AD. Nebo můžete znovu použít existující registrací. 
-1. V části **požadovaná oprávnění**, zadejte "Digitální dvojče Azure" a vyberte **delegovaná oprávnění**. Potom vyberte **udělit oprávnění**.
-1. Otevřete manifest aplikace a nastavte **oauth2AllowImplicitFlow** na hodnotu true.
-1. Postup konfigurace adresy URL odpovědi na [ https://www.getpostman.com/oauth2/callback ](https://www.getpostman.com/oauth2/callback).
-1. Vyberte **autorizace** kartu, vyberte možnost **OAuth 2.0**a pak vyberte **získat nový přístupový Token**.
-
-    |**Pole**  |**Hodnota** |
-    |---------|---------|
-    | Typ udělení | Implicitní |
-    | Adresa URL pro zpětné volání | [https://www.getpostman.com/oauth2/callback](https://www.getpostman.com/oauth2/callback) |
-    | Ověřovací adresa URL | https://login.microsoftonline.com/<Your Azure AD Tenant e.g. Contoso>.onmicrosoft.com/oauth2/authorize?Resource=0b07f429-9F4B-4714-9392-cc5e8e80c8b0 |
-    | ID klienta | Pomocí ID aplikace pro aplikace Azure AD, který byl vytvořen nebo k jinému účelu z kroku 2. |
-    | Rozsah | Ponechte prázdné. |
-    | Stav | Ponechte prázdné. |
-    | Ověření klienta | Odešlete jako hlavičku základního ověřování. |
-
-1. Vyberte **požádat o Token**.
-
-    >[!NOTE]
-    >Pokud se zobrazí chybová zpráva "Nebylo možné dokončit OAuth 2", zkuste následující:
-    > * Nástroj Postman, zavřete a znovu ho otevřete a akci opakujte.
-   
-1. Přejděte dolů a vyberte možnost **použijte Token**.
+Pokyny ohledně toho, jak orchestrovat tok on-behalf-of, naleznete v tématu [tok OAuth 2.0 On-Behalf-Of](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Také můžete zobrazit ukázky kódu v [volat podřízené webové rozhraní API](https://azure.microsoft.com/resources/samples/active-directory-dotnet-webapi-onbehalfof/).
 
 ## <a name="next-steps"></a>Další postup
+
+Nakonfigurovat a otestovat Azure digitální dvojče pomocí tok implicitní grant OAuth 2.0, přečtěte si [nakonfigurovat Postman](./how-to-configure-postman.md).
 
 Další informace o zabezpečení Azure digitální dvojče [vytvořit a spravovat přiřazení rolí](./security-create-manage-role-assignments.md).

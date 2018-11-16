@@ -3,21 +3,17 @@ title: Rychlý start – Směrování webového provozu pomocí služby Azure Ap
 description: Přečtěte si o tom, jak pomocí portálu Azure Portal vytvořit službu Azure Application Gateway, která bude směrovat webový provoz na virtuální počítače v back-endovém fondu.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: quickstart
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: effda81d8755486a65472eb546c6b8688aea0a3b
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: HT
+ms.openlocfilehash: 6ad839b9cf1179e282b9163df5a38e13417408e2
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205971"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706224"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure Portal
 
@@ -27,75 +23,83 @@ V tomto rychlém startu se dozvíte, jak pomocí portálu Azure Portal rychle vy
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com)
+Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
 
-## <a name="create-an-application-gateway"></a>Vytvoření aplikační brány
+## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Aby mohla aplikační brána komunikovat s jinými prostředky, musíte vytvořit virtuální síť. Virtuální síť můžete vytvořit současně s aplikační bránou. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro virtuální počítače. 
+Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvoříte. V tomto příkladu jsou vytvořeny dvě podsítě: jedna pro aplikační bránu a druhá pro back-endové servery. Virtuální síť můžete vytvořit současně s aplikační bránou.
 
 1. Klikněte na **Vytvořit prostředek** v levém horním rohu portálu Azure Portal.
-2. Vyberte **Sítě** a potom v seznamu Doporučené vyberte **Application Gateway**.
-3. Pro aplikační bránu zadejte tyto hodnoty:
+2. Klikněte na tlačítko **sítě** a potom klikněte na tlačítko **Application Gateway** v seznamu vybrané.
+
+### <a name="basics"></a>Základy
+
+1. Pro aplikační bránu zadejte tyto hodnoty:
 
     - *myAppGateway* – tuto hodnotu zadejte jako název aplikační brány.
     - *myResourceGroupAG* – tuto hodnotu zadejte jako skupinu prostředků.
 
-    ![Vytvoření nové aplikační brány](./media/quick-create-portal/application-gateway-create.png)
+    ![Vytvoření nové aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-create.png)
 
-4. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-5. Klikněte na **Zvolit virtuální síť** > **Vytvořit novou** a potom zadejte tyto hodnoty virtuální sítě:
+2. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
+
+### <a name="settings"></a>Nastavení
+
+1. Klikněte na tlačítko **zvolit virtuální síť**, klikněte na tlačítko **vytvořit nový**a potom zadejte tyto hodnoty pro virtuální síť:
 
     - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
     - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
     - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
-    - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
+    - *10.0.0.0/24* – rozsah adres podsítě.
 
-    ![Vytvoření virtuální sítě](./media/quick-create-portal/application-gateway-vnet.png)
+    ![Vytvoření virtuální sítě](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
 
-6. Kliknutím na **OK** vytvořte virtuální síť a podsíť.
-6. Klikněte na **Vybrat veřejnou IP adresu** > **Vytvořit novou** a potom zadejte název veřejné IP adresy. V tomto příkladu se veřejná IP adresa nazývá *myAGPublicIPAddress*. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
-8. Ponechte výchozí hodnoty konfigurace naslouchacího procesu beze změny, Firewall webových aplikací nechte zakázaný a potom klikněte na **OK**.
-9. Projděte si nastavení na stránce souhrnu a potom kliknutím na **OK** vytvořte virtuální síť, veřejnou IP adresu a aplikační bránu. Může trvat až 30 minut, než se aplikační brána vytvoří. Na další oddíl přejděte, až se nasazení úspěšně dokončí.
+6. Klikněte na tlačítko **OK** přejděte zpět na stránku nastavení.
+7. V části **konfigurace protokolu IP front-endu** zajistit **IP adres jako typu** je nastavena na **veřejné**a v části **veřejnou IP adresu**, zkontrolujte **Vytvořit nový** zaškrtnuto. Typ *myAGPublicIPAddress* pro název veřejné IP adresy. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
 
-### <a name="add-a-subnet"></a>Přidání podsítě
+### <a name="summary"></a>Souhrn
+
+Projděte si nastavení na stránce souhrnu a potom kliknutím na **OK** vytvořte virtuální síť, veřejnou IP adresu a aplikační bránu. Vytvoření aplikační brány může trvat několik minut. Počkejte na úspěšné dokončení nasazení přejde k další části.
+
+## <a name="add-a-subnet"></a>Přidání podsítě
 
 1. V nabídce nalevo klikněte na **Všechny prostředky** a potom v seznamu prostředků klikněte na **myVNet**.
-2. Klikněte na **Podsítě** > **Podsíť**.
+2. Klikněte na tlačítko **podsítě**a potom klikněte na tlačítko **+ podsíť**.
 
-    ![Vytvoření podsítě](./media/quick-create-portal/application-gateway-subnet.png)
+    ![Vytvoření podsítě](./media/application-gateway-create-gateway-portal/application-gateway-subnet.png)
 
 3. Jako název podsítě zadejte *myBackendSubnet* a potom klikněte na **OK**.
 
 ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
-V tomto příkladu vytvoříte dva virtuální počítače, které se použijí jako servery back-end pro aplikační bránu. 
+V tomto příkladu vytvoříte dva virtuální počítače, které se používají jako servery back-end pro službu application gateway. Na virtuální počítače také nainstalujete službu IIS, abyste ověřili, že se aplikační brána úspěšně vytvořila.
 
 ### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. Klikněte na možnost **Nové**.
-2. Vyberte **Výpočty** a potom v seznamu Doporučené vyberte **Windows Server 2016 Datacenter**.
+1. Na webu Azure Portal klikněte na **Vytvořit prostředek**.
+2. Klikněte na tlačítko **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v seznamu vybrané.
 3. Zadejte pro virtuální počítač tyto hodnoty:
 
+    - *myResourceGroupAG* pro skupinu prostředků.
     - *myVM1* – název virtuálního počítače.
     - *azureuser* – uživatelské jméno správce.
-    - *Azure123456!* – heslo.
-    - Vyberte **Použít existující** a pak vyberte *myResourceGroupAG*.
+    - *Azure123456!* – jako heslo.
 
-4. Klikněte na **OK**.
-5. Jako velikost virtuálního počítače vyberte **DS1_V2** a klikněte na **Vybrat**.
-6. Zkontrolujte, že u virtuální sítě je vybrána možnost **myVNet** a u podsítě **myBackendSubnet**. 
-7. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
-8. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
+   Přijměte ostatní výchozí hodnoty a klikněte na tlačítko **Další: disky**.
+4. Přijměte výchozí nastavení disku a klikněte na tlačítko **Další: sítě**.
+5. Zkontrolujte, že u virtuální sítě je vybrána možnost **myVNet** a u podsítě **myBackendSubnet**.
+6. Přijměte ostatní výchozí hodnoty a klikněte na tlačítko **Další: Správa**.
+7. Klikněte na tlačítko **vypnout** zakažte diagnostiku spouštění. Přijměte ostatní výchozí hodnoty a klikněte na tlačítko **revize + vytvořit**.
+8. Zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **vytvořit**.
+9. Počkejte na dokončení před pokračováním vytváření virtuálního počítače.
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
-Na virtuální počítače nainstalujete službu IIS, abyste ověřili, že se aplikační brána úspěšně vytvořila.
+1. Otevřete prostředí pro interaktivní a ujistěte se, že je nastavena na **Powershellu**.
 
-1. Otevřete interaktivní prostředí a zkontrolujte, že je nastaveno na **PowerShell**.
-
-    ![Instalace vlastního rozšíření](./media/quick-create-portal/application-gateway-extension.png)
+    ![Instalace vlastního rozšíření](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
 2. Spuštěním následujícího příkazu nainstalujte službu IIS na virtuální počítač: 
 
@@ -115,35 +119,30 @@ Na virtuální počítače nainstalujete službu IIS, abyste ověřili, že se a
 
 ### <a name="add-backend-servers"></a>Přidání back-endových serverů
 
-Vytvořené virtuální počítače musíte přidat do back-endového fondu v aplikační bráně.
+1. Klikněte na tlačítko **všechny prostředky**a potom klikněte na tlačítko **myAppGateway**.
+4. Klikněte na **Back-endové fondy**. V aplikační bráně je automaticky vytvořen výchozí fond. Klikněte na **appGatewayBackendPool**.
+5. V části **cíle**, klikněte na tlačítko **IP adresu nebo plně kvalifikovaný název domény** vyberte **virtuálního počítače**.
+6. V části **virtuální počítač**, přidejte myVM a myVM2 virtuálních počítačů a jejich přidružené síťové rozhraní.
 
-1. Klikněte na **Všechny prostředky** > **myAppGateway**.
-2. Klikněte na **Back-endové fondy**. V aplikační bráně je automaticky vytvořen výchozí fond. Klikněte na **appGatewayBackendPool**.
-3. Klikněte na **Přidat cíl** > **Virtuální počítač** a potom vyberte *myVM*. Vyberte **Přidat cíl** > **Virtuální počítač** a potom vyberte *myVM2*.
+    ![Přidání back-endových serverů](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-    ![Přidání back-endových serverů](./media/quick-create-portal/application-gateway-backend.png)
-
-4. Klikněte na **Uložit**.
+6. Klikněte na **Uložit**.
 
 ## <a name="test-the-application-gateway"></a>Otestování aplikační brány
 
-Instalace služby IIS není pro vytvoření aplikační brány nutná, v tomto rychlém startu jste ji ale provedli, abyste mohli ověřit, jestli se aplikační brána úspěšně vytvořila.
+1. Na obrazovce Přehled vyhledejte veřejnou IP adresu aplikační brány. Klikněte na tlačítko **všechny prostředky** a potom klikněte na tlačítko **myAGPublicIPAddress**.
 
-1. Na obrazovce Přehled vyhledejte veřejnou IP adresu aplikační brány. Klikněte na **Všechny prostředky** > **myAGPublicIPAddress**.
-
-    ![Záznam veřejné IP adresy aplikační brány](./media/quick-create-portal/application-gateway-record-ag-address.png)
+    ![Záznam veřejné IP adresy aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)
 
 2. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče.
 
-    ![Otestování aplikační brány](./media/quick-create-portal/application-gateway-iistest.png)
-
-Po aktualizaci prohlížeče by se měl zobrazit název druhého virtuálního počítače.
+    ![Otestování aplikační brány](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejprve prozkoumejte prostředky vytvořené pomocí aplikační brány, a až je už nebudete potřebovat, můžete odstranit skupinu prostředků, aplikační bránu a všechny související prostředky. Provedete to výběrem skupiny prostředků, která obsahuje aplikační bránu, a kliknutím na **Odstranit**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, služba application gateway a všechny související prostředky. Provedete to výběrem skupiny prostředků, která obsahuje aplikační bránu, a kliknutím na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Správa webového provozu pomocí aplikační brány a Azure CLI](./tutorial-manage-web-traffic-cli.md)

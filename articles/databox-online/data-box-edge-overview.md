@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 11/13/2018
 ms.author: alkohli
-ms.openlocfilehash: e99a3a7db7a934a8a72695c38ab952786579a640
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 60186ee6aa614c83691c9ce4ab9d8124fd5925fd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232202"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685952"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>Co je Azure Data Box Edge (Preview)? 
 
@@ -84,7 +84,7 @@ Fyzické zařízení Data Box Edge má následující funkce:
 | Memory (Paměť)| 64 GB RAM|
 | Disky| 8 disků SSD NVMe, každý o kapacitě 1,6 TB <br> Pokud selže jeden z disků SSD NVMe, selže celý systém. |
 | Kapacita místního úložiště| Celková kapacita 12,8 TB|
-| Síťová rozhraní| 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Druhé datové rozhraní je konfigurovatelné a standardně je DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.|
+| Síťová rozhraní| 2× rozhraní 1 GbE, z nichž jedno slouží pro správu, uživatelé ho nemohou konfigurovat a používá se pro počáteční instalaci. Další rozhraní je konfigurovatelná uživatelem, lze použít pro přenos dat a ve výchozím nastavení je DHCP. <br>2× rozhraní 25 GbE – mohou fungovat také jako rozhraní 10 GbE. Tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická. <br> 2× rozhraní 25 GbE – tato datová rozhraní mohou uživatelé konfigurovat jako DHCP (výchozí) nebo statická.|
 
 ## <a name="components"></a>Komponenty
 
@@ -135,7 +135,7 @@ Služba Data Box Edge je ve verzi Preview a musíte se k ní zaregistrovat. Data
 
 4. Po registraci a povolení verze Preview si můžete objednat službu Data Box Edge.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si [systémové požadavky služby Data Box Edge](https://aka.ms/dbe-docs).
 - Seznamte se s [omezeními služby Data Box Edge](https://aka.ms/dbe-docs).

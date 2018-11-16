@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 5a09211dc134cdb372a9712c1f45d7c44660a759
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 05f6b32fad4f0a449f0d801c1c7cc6a28be6f940
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966856"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685343"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
 
@@ -77,7 +77,7 @@ Pokud chcete simulovat, že zařízení **MyTestDevice** odesílá telemetrii do
 
 V okně terminálu na počítači pro vývoj přejděte do kořenové složky ukázkového projektu Node.js, který máte stažený. Pak přejděte do složky **iot-hub\Tutorials\ConnectivityTests\simulated-device**.
 
-V okně terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení. Použijte připojovací řetězec zařízení, který jste si poznamenali při přidávání zařízení na portál.
+V okně terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení. Použijte připojovací řetězec zařízení jste si poznamenali při přidání zařízení na portálu.
 
 ```cmd/sh
 npm install
@@ -261,7 +261,7 @@ Vedle průběžného přijímání změn v požadovaných vlastnostech je simulo
 
 Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků **tutorials-iot-hub-rg**, která obsahuje vaše centrum IoT, a kliknutím na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli, jak zkontrolovat klíče zařízení, připojení zařízení ke cloudu a cloudu k zařízení a synchronizaci dvojčat zařízení. Další informace o tom, jak sledovat centrum IoT, najdete v článku s postupy monitorování služby IoT Hub.
 

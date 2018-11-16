@@ -6,14 +6,14 @@ author: roygara
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: ea94a4e537a46ac8287e4454a2cfd10c59db590b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 43db4ca12fbdf8ee637ca86e1a90cc3baf4ec572
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416864"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713278"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí sady Java Storage SDK V10
 
@@ -21,14 +21,12 @@ V tomto rychlém startu zjistíte, jak pomocí nové sady Java Storage SDK nahr�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Nainstalujte a nakonfigurujte tyto aplikace:
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-* [Maven](http://maven.apache.org/download.cgi) pro práci z příkazového řádku nebo jakékoli integrované vývojové prostředí Java, kterému dáváte přednost
+Ujistěte se, že máte nainstalované následující další požadavky:
+
+* [Maven](http://maven.apache.org/download.cgi) pro práci z příkazového řádku nebo libovolné integrované vývojové prostředí Java, které dáváte přednost.
 * [JDK](https://aka.ms/azure-jdks)
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
@@ -284,7 +282,7 @@ Pokud už nepotřebujete objekty blob nahrané v rámci tohoto rychlého startu,
 containerURL.delete(null).blockingGet();
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a službou Azure Blob Storage pomocí Javy. 
 

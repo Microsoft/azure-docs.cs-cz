@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: e6e49a03ee76c50cb2fff492bfd50b2820abafe4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
-ms.translationtype: HT
+ms.openlocfilehash: 1887004b2a83ca5778ccb29cf996bcf2720ce3b8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343754"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711408"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz 1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
@@ -33,7 +33,7 @@ Naučte se:
 
 Postup pro výběr modelu a jeho nasazení se dozvíte v [druhé části tohoto kurzu](tutorial-deploy-models-with-aml.md) později. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
@@ -455,7 +455,7 @@ Můžete také odstranit pouze cluster spravovaného výpočetního prostředí 
 compute_target.delete()
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu ke službě Azure Machine Learning jste pomocí Pythonu provedli následující úlohy:
 

@@ -11,22 +11,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 0dc7e8836f1e6a11c44f5e0f337015cac53a92d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e729d163428723d099157ad62d1c89a7ed917900
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252798"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711425"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
-Výběrem publikovat a spravovat vaše rozhraní API pomocí Azure API Management se využívat mnoho funkcí infrastruktury s odolností, které by jinak bylo návrhu, implementaci a správě a odolnost proti chybám. Platforma Azure omezuje velká část potenciálních selhání za zlomek nákladů.
+Díky publikování a správě vašich rozhraní API pomocí Azure API Management, že využití výhod odolnosti proti chybám a funkcí infrastruktury s odolností, které jste měli jinak návrhu, implementaci a správě ručně. Platforma Azure omezuje velká část potenciálních selhání za zlomek nákladů.
 
-Pokud chcete obnovit z problémů s dostupností by to ovlivnilo oblasti, kde se hostuje vaše služba API Management, by měl být připraven k rekonstrukci služby v jiné oblasti kdykoli. V závislosti na dostupnosti cíle a plánovaná doba obnovení můžete chtít rezervovat zálohování služby v jedné nebo několika oblastech a pokuste se udržovat synchronizované se službou active jejich konfigurace a obsahu. Funkce služby "zálohování a obnovení" poskytuje nezbytné stavební blok pro implementaci strategie zotavení po havárii.
+Pokud chcete obnovit z problémů s dostupností, které mají vliv oblasti, který je hostitelem služby API Management, být připravena ke znovuvytvoření služby v jiné oblasti kdykoli. V závislosti na dostupnosti a dob obnovení můžete chtít rezervovat zálohování služby v jedné nebo několika oblastech. Taky může snažit udržovat synchronizované se službou active jejich konfigurace a obsahu. Funkce služby "zálohování a obnovení" poskytuje nezbytné stavební blok pro implementaci strategie zotavení po havárii.
 
-Tato příručka ukazuje, jak k ověřování požadavků Azure Resource Manageru a jak zálohovat a obnovovat vaše instance služby API Management.
+Tato příručka ukazuje, jak ověřování požadavků Azure Resource Manageru. Také ukazuje, jak zálohovat a obnovovat vaše instance služby API Management.
 
 > [!NOTE]
 > Proces zálohování a obnovení instance služby API Management pro zotavení po havárii lze použít také pro replikaci instance služby API Management pro scénáře, jako je pracovní.
@@ -48,7 +48,7 @@ Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource 
 
 ### <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Pomocí předplatné obsahující instance služby API Management, přejděte do **registrace aplikací** kartu **Azure Active Directory** (Azure Active Directory > Registrace spravovat/aplikací).
 
     > [!NOTE]
@@ -68,7 +68,7 @@ Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource 
 3. Klikněte na tlačítko **+ přidat**.
 4. Stisknutím klávesy **vyberte rozhraní API**.
 5. Zvolte **Windows** **Azure Service Management API**.
-6. Stisknutím klávesy **vyberte**. 
+6. Stisknutím klávesy **vyberte**.
 
     ![Přidání oprávnění](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
 
@@ -78,7 +78,7 @@ Všechny úlohy, které můžete provést na prostředky pomocí Azure Resource 
 
 ### <a name="configuring-your-app"></a>Konfigurace aplikace
 
-Před volání rozhraní API, která generovat zálohování a obnovení, je potřeba získat token. V následujícím příkladu [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) balíčku NuGet se načíst token.
+Před voláním rozhraní API, která generovat zálohování a obnovení, budete muset získat token. V následujícím příkladu [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) balíčku NuGet se načíst token.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -105,9 +105,9 @@ namespace GetTokenResourceManagerRequests
 }
 ```
 
-Nahraďte `{tentand id}`, `{application id}`, a `{redirect uri}` pomocí následujících pokynů:
+Nahraďte `{tenant id}`, `{application id}`, a `{redirect uri}` pomocí následujících pokynů:
 
-1. Nahraďte `{tenant id}` s id tenanta Azure Active Directory aplikaci, kterou jste vytvořili. Id se zpřístupní po kliknutí **registrace aplikací** -> **koncové body**.
+1. Nahraďte `{tenant id}` s ID tenanta Azure Active Directory aplikaci, kterou jste vytvořili. ID se zpřístupní po kliknutí **registrace aplikací** -> **koncové body**.
 
     ![Koncové body][api-management-endpoint]
 2. Nahraďte `{application id}` s hodnotou, získáte přechodem na **nastavení** stránky.
@@ -122,7 +122,7 @@ Nahraďte `{tentand id}`, `{application id}`, a `{redirect uri}` pomocí násled
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Volání operace zálohování a obnovení
 
-Rozhraní REST API jsou [služby Api Management – zálohování](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_backup) a [služby Api Management – obnovení](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/apimanagementservice_restore).
+Rozhraní REST API jsou [služby Api Management – zálohování](/rest/api/apimanagement/apimanagementservice/backup) a [služby Api Management – obnovení](/rest/api/apimanagement/apimanagementservice/restore).
 
 Před voláním operace "zálohování a obnovení", které jsou popsané v následujících částech nastavte autorizační hlavičky žádosti pro volání REST.
 
@@ -131,21 +131,21 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
 ### <a name="step1"> </a>Zálohování služby API Management
+
 Pro zálohování problém se službou API Management následující požadavek protokolu HTTP:
 
-```
+```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
 kde:
 
-* `subscriptionId` – id předplatného, které obsahuje službu API Management, kterou se pokoušíte zálohování
+* `subscriptionId` – ID předplatného, který obsahuje službu API Management, kterou se snažíte zálohování
 * `resourceGroupName` – Název skupiny prostředků služby Azure API Management
-* `serviceName` – název služby API Management vytvoříte zálohu určit v okamžiku svého vytvoření
+* `serviceName` – název služby API Management děláte zálohu určit v okamžiku svého vytvoření
 * `api-version` -nahradit `2018-06-01-preview`
 
 V textu požadavku zadejte název cílového účtu úložiště Azure, přístupový klíč, název kontejneru objektů blob a název zálohy:
-
 
 ```json
 {
@@ -158,32 +158,33 @@ V textu požadavku zadejte název cílového účtu úložiště Azure, přístu
 
 Nastavte hodnotu `Content-Type` hlavičku požadavku na `application/json`.
 
-Zálohování je dlouho běžící operace, která může trvat několik minut.  Pokud byl zahájen proces zálohování požadavek byl úspěšný, zobrazí se `202 Accepted` stavový kód odpovědi s `Location` záhlaví.  Ujistěte se, získejte požadavků na adresu URL v `Location` záhlaví pro zjištění stavu operace. Zatímco probíhá zálohování, můžete nadále přijímat '202 přijato' stavový kód. Kód odpovědi `200 OK` označuje úspěšné dokončení operace zálohování.
+Zálohování je dlouho běžící operace, která může trvat déle než minutu.  Pokud požadavek byl úspěšný začal proces zálohování, zobrazí se `202 Accepted` stavový kód odpovědi s `Location` záhlaví.  Ujistěte se, získejte požadavků na adresu URL v `Location` záhlaví pro zjištění stavu operace. Zatímco probíhá zálohování, můžete nadále přijímat '202 přijato' stavový kód. Kód odpovědi `200 OK` označuje úspěšné dokončení operace zálohování.
 
-Při zálohování požadavku, mějte na paměti následující omezení.
+Při zálohování požadavku, mějte na paměti následující omezení:
 
 * **Kontejner** zadaná v textu požadavku **musí existovat**.
-* Probíhá zálohování můžete **by se neměly pokoušet žádné operace správy služby** například upgrade skladové položky nebo přechod na starší verzi, změnu názvu domény, atd.
+* Probíhá zálohování, **zabránit změnám ve službě service management** například upgrade skladové položky nebo přechod na starší verzi, změňte název domény a dalších.
 * Obnovení **zálohování je zaručeno, že pouze po dobu 30 dnů** od okamžiku svého vytvoření.
-* **Data o využití** použitý k vytvoření sestavy analýzy **nezahrnuje** v záloze. Použití [REST API služby Azure API Management] [ Azure API Management REST API] pravidelně načíst analytických sestav z bezpečnostních důvodů udržován.
-* Frekvence, se kterým můžete provést zálohování služby vliv na vaše cíle bodu obnovení. Chcete-li minimalizovat, doporučení je provádění pravidelného zálohování i zálohování na vyžádání po důležitých změnách služby API Management.
-* **Změny** provedené v konfiguraci služby (například rozhraní API, zásady, vzhledu portálu pro vývojáře) během zálohování probíhá operace **nemusí být zahrnuté do zálohování a proto budou ztraceny**.
+* **Data o využití** použitý k vytvoření sestavy analýzy **není zahrnut** v záloze. Použití [REST API služby Azure API Management] [ Azure API Management REST API] pravidelně načíst analytických sestav z bezpečnostních důvodů udržován.
+* Frekvence, se kterým můžete provést zálohování služby vliv na vaše cíle bodu obnovení. Chcete-li minimalizovat, doporučujeme provádění pravidelného zálohování a zálohování na vyžádání po provedení změn na vaši službu API Management.
+* **Změny** provedené v konfiguraci služby, (například rozhraní API, zásady a vzhled portálu pro vývojáře) během zálohování probíhá operace **může vyloučit ze zálohy a dojde ke ztrátě**.
 
 ### <a name="step2"> </a>Obnovení služby API Management
-Chcete-li obnovit API Management service z dříve vytvořeného odesílat následující požadavky HTTP:
 
-```
+Obnovit z dříve vytvořeného služby API Management, proveďte následující požadavek protokolu HTTP:
+
+```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
 kde:
 
-* `subscriptionId` – id předplatného, které obsahuje obnovujete zálohu do služby API Management
-* `resourceGroupName` – Název skupiny prostředků obsahující obnovujete zálohu do služby Azure API Management
-* `serviceName` – název služby API Management service, který se má obnovit do zadané v okamžiku svého vytvoření
+* `subscriptionId` – ID předplatného, který obsahuje službu API Management, kterou obnovujete zálohu do
+* `resourceGroupName` – Název skupiny prostředků, který obsahuje obnovujete zálohu do služby Azure API Management
+* `serviceName` – název služby API Management service, který se má obnovit do zadané v jeho čas vytvoření
 * `api-version` -nahradit `2018-06-01-preview`
 
-V textu požadavku zadejte umístění záložního souboru, který je, název účtu služby Azure storage, přístupový klíč, název kontejneru objektů blob a název zálohy:
+V textu požadavku zadejte umístění záložního souboru. To znamená přidejte název účtu služby Azure storage, přístupový klíč, název kontejneru objektů blob a název zálohy:
 
 ```json
 {
@@ -196,12 +197,14 @@ V textu požadavku zadejte umístění záložního souboru, který je, název �
 
 Nastavte hodnotu `Content-Type` hlavičku požadavku na `application/json`.
 
-Obnovení je dlouho běžící operace, která může trvat až 30 nebo více minut na dokončení. Pokud byl zahájen proces obnovení požadavek byl úspěšný, zobrazí se `202 Accepted` stavový kód odpovědi s `Location` záhlaví. Ujistěte se, získejte požadavků na adresu URL v `Location` záhlaví pro zjištění stavu operace. Když obnovení probíhá, nadále zobrazí '202 přijato' stavový kód. Kód odpovědi `200 OK` označuje úspěšné dokončení operace obnovení.
+Obnovení je dlouho běžící operace, která může trvat až 30 nebo více minut na dokončení. Pokud zahájíte proces obnovení požadavek byl úspěšný, zobrazí se `202 Accepted` stavový kód odpovědi s `Location` záhlaví. Ujistěte se, získejte požadavků na adresu URL v `Location` záhlaví pro zjištění stavu operace. Když obnovení probíhá, nadále zobrazí '202 přijato' stavový kód. Kód odpovědi `200 OK` označuje úspěšné dokončení operace obnovení.
 
 > [!IMPORTANT]
 > **SKU** služby, který se má obnovit do **musí odpovídat** skladovou Položku zálohovanou služba obnovena.
 >
 > **Změny** provedené v konfiguraci služby (například rozhraní API, zásady, vzhledu portálu pro vývojáře) při obnovení se probíhající operace **může dojít k přepsání**.
+
+<!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
 > Operace zálohování a obnovení lze provést také pomocí Powershellu *Backup-AzureRmApiManagement* a *Restore-AzureRmApiManagement* příkazy v uvedeném pořadí.

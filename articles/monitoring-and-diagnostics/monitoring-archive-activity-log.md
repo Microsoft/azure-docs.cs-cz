@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: ea29d9052c2389b0c7d145223d3660364cbf2c74
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 33681c7c9e1a625757e3f9403820ed3f469bec64
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016314"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705782"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivace protokolu aktivit Azure
 V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin Powershellu nebo CLI pro různé platformy pro archivaci vaše [ **protokolu aktivit Azure** ](monitoring-overview-activity-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat váš protokol aktivit déle než 90 dnů (s úplnou kontrolou nad zásady uchovávání informací) pro audit, statické analýzy nebo pro zálohování. Pokud potřebujete události uchovávat po 90 dní nebo méně nepotřebujete nastavit archivaci do účtu úložiště, protože události protokolu aktivit se zachovají na platformě Azure po dobu 90 dnů bez povolení archivace.
@@ -27,7 +27,7 @@ V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin Powershell
 Než začnete, budete muset [vytvořit účet úložiště](../storage/common/storage-quickstart-create-account.md) ke kterému je možné protokol aktivit můžete archivovat. Důrazně doporučujeme, že nepoužíváte existující účet úložiště, který obsahuje jiné, než monitorování data uložená v něm může lépe řídit přístup k datům monitorování. Ale pokud jsou také archivace diagnostických protokolů a metrik na účet úložiště, může mít smysl použít tento účet úložiště pro váš protokol aktivit také zajistit všechna data monitorování v centrálním umístění. Účet úložiště nemusí být ve stejném předplatném jako předplatné, které vysílá protokoly za předpokladu, že uživatel, který konfiguruje nastavení má odpovídající přístup RBAC k oběma předplatným.
 
 > [!NOTE]
->  Momentálně nelze archivovat data do úložiště účtu, který za zabezpečené virtuální síti.
+>  Nelze aktuálně archivace dat do účtu služby storage vytvořené za zabezpečené virtuální síti.
 
 ## <a name="log-profile"></a>Profilu protokolu
 Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte **profilu protokolu** pro odběr. Profil protokolu definuje typ události, které jsou uložená nebo prostřednictvím datového proudu a výstupy – úložiště účtu a/nebo event hub. Definuje také zásady uchovávání informací (počet dní uchování) pro události, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události jsou uloženy po neomezenou dobu. V opačném případě to lze nastavit na libovolnou hodnotu mezi 1 a 2147483647. Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. [Další informace o protokolu profily zde](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). 

@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 97350c90ab4ce9c3623a293c3a6637edc65ced08
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 2e5c0e479d5564a48048b9fa9c67ad8870122601
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345466"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706054"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: vytvoření a nasazení interoperabilní modely AI
 
-[Otevřete Neural Network Exchange](http://onnx.ai) formátu (ONNX) je otevřený standard představující modelů strojového učení. Je podporován ONNX [komunitě partnerů](http://onnx.ai/supported-tools), včetně společnosti Microsoft, který vytvořit kompatibilní architekturami a nástroji. Společnosti Microsoft záleží na otevřené a interoperabilní AI, takže odborníci přes data a vývojáři můžou:
+[Otevřete Neural Network Exchange](https://onnx.ai) formátu (ONNX) je otevřený standard představující modelů strojového učení. Je podporován ONNX [komunitě partnerů](https://onnx.ai/supported-tools), včetně společnosti Microsoft, který vytvořit kompatibilní architekturami a nástroji. Společnosti Microsoft záleží na otevřené a interoperabilní AI, takže odborníci přes data a vývojáři můžou:
 
 + Použití rozhraní framework podle vlastní volby k vytvoření a trénování modelů
 + Nasazení modelů napříč platformami s minimálními integrační práci
@@ -207,6 +207,6 @@ Získejte tyto poznámkové bloky:
 ## <a name="more-info"></a>Další informace
 
 Další informace o ONNX nebo přispět k projektu:
-+ [ONNX projekt webu](http://onnx.ai)
++ [ONNX projekt webu](https://onnx.ai)
 
 + [ONNX kódu na Githubu](https://github.com/onnx/onnx)

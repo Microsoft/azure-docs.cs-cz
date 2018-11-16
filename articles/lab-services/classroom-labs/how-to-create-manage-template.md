@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 11/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 3ecbef3b3063ceb413b852f8000b44a85d28d08e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8bd64aaa51faf968c0c7ae374daad3de4ca3a343
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142357"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706853"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Vytvářet a spravovat šablony classroom ve službě Azure Lab Services
 Šablona v testovacím prostředí je základní image virtuálního počítače, ze které se vytváří všechny virtuální počítače uživatelů. Nastavte virtuální počítač šablony tak, aby byl nakonfigurovaný přesně podle toho, co chcete uživatelům testovacího prostředí poskytnout. Můžete zadat název a popis šablony, které uvidí uživatelé testovacího prostředí. Potom můžete publikovat šablony, která má instance šablony virtuálního počítače zpřístupnit uživatelům testovacího prostředí. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona.
@@ -88,16 +88,14 @@ Nejprve můžete nastavit a publikovat šablony při vytváření testovacího p
 ## <a name="set-up-a-template-after-creating-a-lab"></a>Nastavit šablonu po vytvoření testovacího prostředí 
 Šablony můžete také nastavit po vytvoření testovacího prostředí.   
 
-### <a name="set-template-title-and-description"></a>Sada šablony nadpis a popis
-1. V části **Template** (Šablona) vyberte **Edit** (Upravit) (ikona tužky) u šablony. 
-2. V okně **User view** (Zobrazení uživatele) zadejte **název** šablony.
-3. Zadejte **popis** šablony.
-4. Vyberte **Save** (Uložit).
+## <a name="set-or-update-template-title-and-description"></a>Nastavení nebo aktualizovat název šablony a popis
+Pomocí následujícího postupu k nastavení názvu a popisu poprvé a později aktualizovat. 
 
-    ![Popis testovacího prostředí v učebně](../media/how-to-manage-classroom-labs/lab-description.png)
+1. V **šablony** části, najeďte myší **název** šablony nebo **popis** šablony a vyberte ji. 
+2. Zadejte **nový název** nebo **nový popis** šablony a stiskněte klávesu **ENTER**.
 
-### <a name="set-up-the-template-vm"></a>Nastavení šablony virtuálního počítače
- Než šablonu virtuálního počítače zpřístupníte studentům, připojíte se k ní a nainstalujete na ní požadovaný software. 
+## <a name="set-up-or-update-a-template-vm"></a>Nastavení nebo aktualizaci šablony virtuálního počítače
+ Než šablonu virtuálního počítače zpřístupníte studentům, připojíte se k ní a nainstalujete na ní požadovaný software. Následujícím postupem nastavit šablonu virtuálního počítače poprvé nebo aktualizovat virtuální počítač. 
 
 1. Počkejte, až bude šablona virtuálního počítače připravená. Jakmile bude připravená, mělo by se aktivovat tlačítko **Start** (Spustit). Pokud chcete virtuální počítač spustit, vyberte **Start** (Spustit).
 
@@ -112,7 +110,7 @@ Nejprve můžete nastavit a publikovat šablony při vytváření testovacího p
     ![Zastavení šablony virtuálního počítače](../media/tutorial-setup-classroom-lab/stop-template-vm.png)
 
 
-## <a name="publish-the-template"></a>Publikování šablony 
+## <a name="publish-the-template-vm"></a>Publikování šablony virtuálního počítače
 Pokud při vytváření testovacího prostředí není publikovat šablony, můžete ho publikovat později. Před publikováním, můžete se připojte k šabloně virtuálního počítače a aktualizujte s jakýmkoli softwarem. Jakmile publikujete šablonu, vytvoří služba Azure Lab Services pomocí této šablony virtuální počítače v testovacím prostředí. Počet virtuálních počítačů, které se v tomto procesu vytvoří, se rovná maximálnímu počtu uživatelů, kteří mohou k testovacímu prostředí přistupovat. Tento počet můžete nastavit v zásadách používání testovacího prostředí. Všechny virtuální počítače mají stejnou konfiguraci jako šablona. 
 
 1. V části **Template** (Šablona) vyberte **Publish** (Publikovat). 
@@ -125,7 +123,7 @@ Pokud při vytváření testovacího prostředí není publikovat šablony, mů�
 4. Přepněte na stránku **Virtual machines** (Virtuální počítače) a zkontrolujte, že se zobrazí virtuální počítače ve stavu **Unassigned** (Nepřiřazeno). Tyto virtuální počítače ještě nejsou přiřazené ke studentům. 
 
     ![Virtuální počítače](../media/tutorial-setup-classroom-lab/virtual-machines.png)
-5. Počkejte na vytvoření virtuálních počítačů. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
+5. Počkejte na vytvoření virtuálních počítačů. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Můžete je spustit na této stránce nebo nechat své studenty spustit virtuální počítače. 
 
     ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
@@ -147,7 +145,9 @@ Po publikování šablony pořád připojit k šabloně virtuálního počítač
     ![Znovu úspěšné](../media/how-to-create-manage-template/republish-success.png)
 
 ## <a name="next-steps"></a>Další postup
-Začínáme s nastavením testovacího prostředí pomocí Azure Lab Services:
+Viz následující články:
 
-- [Nastavení testovacího prostředí v učebně](how-to-manage-classroom-labs.md)
-- [Nastavení testovacího prostředí](../tutorial-create-custom-lab.md)
+- [Jako správce vytvářet a spravovat účty pro testovací prostředí](how-to-manage-lab-accounts.md)
+- [Jako vlastník testovacího prostředí vytvoření a správa testovacích prostředí](how-to-manage-classroom-labs.md)
+- [Jako vlastník testovacího prostředí konfigurovat a spravovat využití testovacího prostředí](how-to-configure-student-usage.md)
+- [Jako uživatel, který testovací prostředí přístup k testovacím prostředím v učebnách](how-to-use-classroom-lab.md)

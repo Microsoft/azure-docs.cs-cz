@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 442371ffc63e32906d9faafc3b803bb5e6386905
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 9aa90c5a99da70aa0803aad4894e928a422b8fcf
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283440"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712241"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -82,7 +82,7 @@ Spravovat většinu nastavení připojené zdroje v **upřesňující nastavení
 | Servery s Linuxem   | **Upřesňující nastavení** nabídce pracovního prostoru. |
 | Azure Storage     | **Upřesňující nastavení** nabídce pracovního prostoru. |
 | System Center     | **Upřesňující nastavení** nabídce pracovního prostoru. |
-| Office 365        | Zobrazit [dokumentaci k řešení pro správu Office 365](../monitoring/monitoring-solution-office-365.md) podrobnosti o konfiguraci. |
+| Office 365        | Zobrazit [dokumentaci k řešení pro správu Office 365](../azure-monitor/insights/solution-office-365.md) podrobnosti o konfiguraci. |
 | Telemetrie Windows | Nabídka nastavení řešení. Zobrazit [Windows Analytics na portálu Azure portal](/windows/deployment/update/windows-analytics-azure-portal) podrobnosti o konfiguraci. |
 | Konektor ITSM    | Zobrazit [připojení ITSM produktů a služeb. s IT Service Management Connector](../log-analytics/log-analytics-itsmc-connections.md) pokyny týkající se připojení ITSM služby s využitím Log Analytics. |
 
@@ -107,7 +107,7 @@ Spravovat většinu dat nastavení v **upřesňující nastavení** nabídce pra
 Spravovat řešení v **řešení** nabídce pracovního prostoru. 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>Jak nainstalovat a odebrání řešení pro správu?
-Na portálu OMS z Galerie řešení nainstalovat řešení pro správu a odebrána z **nastavení**. Na webu Azure Portal [nainstalovat řešení pro správu](../monitoring/monitoring-solutions.md#install-a-management-solution) z Azure Marketplace. [Odebrat řešení](../monitoring/monitoring-solutions.md#remove-a-management-solution) ze seznamu nainstalovaná řešení.
+Na portálu OMS z Galerie řešení nainstalovat řešení pro správu a odebrána z **nastavení**. Na webu Azure Portal [nainstalovat řešení pro správu](../azure-monitor/insights/solutions.md#install-a-management-solution) z Azure Marketplace. [Odebrat řešení](../azure-monitor/insights/solutions.md#remove-a-management-solution) ze seznamu nainstalovaná řešení.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Jak vytvořit a spravovat upozornění?
 Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sjednocené prostředí pro upozorňování](../monitoring-and-diagnostics/alert-metric.md). Zobrazit [jak rozšíření upozornění z Log Analytics do upozornění Azure](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) podrobné informace o konfiguraci a použití upozornění na webu Azure Portal.
@@ -126,5 +126,5 @@ Po omezenou dobu, budete k němu přístup portálu přes tuto adresu URL s vlas
 
 ## <a name="next-steps"></a>Další postup
 
-- [Najít a nainstalovat řešení pro správu](../monitoring/monitoring-solutions.md) pomocí webu Azure portal.
+- [Najít a nainstalovat řešení pro správu](../azure-monitor/insights/solutions.md) pomocí webu Azure portal.
 - Další informace o [prohledávání protokolů na webu Azure Portal](log-analytics-log-search-portals.md).

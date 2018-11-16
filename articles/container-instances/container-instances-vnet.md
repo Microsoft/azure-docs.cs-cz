@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/05/2018
 ms.author: danlep
-ms.openlocfilehash: e2f0d90a0a4384560c0a4126c028761765cb9e45
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: e060d8cf1ec16ac3c900180c01eb3384a56d5e13
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288862"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713023"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejneru do služby Azure virtual network
 
@@ -44,13 +44,14 @@ Tato funkce je ve verzi preview, platí následující omezení při nasazován�
 
 **Podporované** oblastech:
 
+* Severní Evropa (northeurope)
 * Západní Evropa (westeurope)
 * USA – západ (westus)
 
 **Nepodporovaná** síťové prostředky:
 
 * Skupina zabezpečení sítě
-* Azure Load Balancer
+* Nástroj pro vyrovnávání zatížení Azure
 
 **Odstranění prostředku sítě** vyžaduje [další kroky](#delete-network-resources) po nasazení skupiny kontejnerů na virtuální síť.
 

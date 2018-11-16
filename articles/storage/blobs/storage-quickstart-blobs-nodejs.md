@@ -1,31 +1,33 @@
 ---
-title: 'Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Node.js – Azure Storage'
-description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Pak použijete klientskou knihovnu pro úložiště pro Node.js k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
+title: Vytvoření objektu blob v Azure Storage pomocí sady Node.js SDK v2
+description: V tomto rychlém startu vytvoříte v úložišti objektů (blob) účet úložiště a kontejner. Potom použijte klientskou knihovnu pro úložiště Azure pro Node.js v2 k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů BLOB v kontejneru.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
-ms.topic: quickstart
-ms.date: 09/20/2018
+ms.topic: conceptual
+ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 267218b4b958251e6748fbae17ca1ac267cf3287
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: d47878502816a0a61829859cc166c125448a2850
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140583"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710881"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Node.js
+# <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Postup nahrání, stažení a výpis objektů BLOB pomocí sady Node.js SDK v2
 
-V tomto rychlém startu zjistíte, jak pomocí Node.js nahrávat, stahovat a vypisovat objekty blob a spravovat kontejnery v úložišti objektů blob Azure.
+V této příručce s postupy se dozvíte, jak pro nahrávání, stahování a výpis objektů BLOB pomocí Node.js a správu kontejnerů s úložištěm objektů Blob v Azure.
 
-K dokončení tohoto rychlého startu potřebujete [předplatné Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+Vytvořit účet úložiště Azure [webu Azure portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Nápovědu k vytvoření účtu najdete v tématu [Vytvoření účtu úložiště](../common/storage-quickstart-create-account.md).
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
-[Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) v tomto rychlém startu je jednoduchá konzolová aplikace Node.js. Začněte tak, že do svého počítače naklonujete úložiště pomocí následujícího příkazu:
+[Ukázkovou aplikaci](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) je jednoduchou konzolovou aplikaci Node.js. Začněte tak, že do svého počítače naklonujete úložiště pomocí následujícího příkazu:
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-node-quickstart.git
@@ -72,7 +74,7 @@ Container "demo" is deleted
 Done
 ```
 
-Všimněte si, že pokud pro tento rychlý start použijete nový účet úložiště, nemusí se názvy kontejnerů v části *Kontejnery* zobrazit.
+Pokud používáte nový účet úložiště pro účely tohoto příkladu a pak nezobrazí žádné názvy kontejnerů, které jsou uvedené pod popiskem "*kontejnery*".
 
 ## <a name="understanding-the-code"></a>Vysvětlení kódu
 První výraz slouží načtení hodnot do proměnných prostředí.
@@ -351,9 +353,9 @@ Prohlédněte si tyto další zdroje informací o vývoji v Node.js s využitím
 - Další informace o klientské knihovně pro Node.js najdete v [referenčních informacích k rozhraní Node.js API](https://docs.microsoft.com/javascript/api/overview/azure/storage).
 - Prozkoumejte [ukázky pro úložiště objektů blob](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob) napsané s využitím klientské knihovny pro Node.js.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Tyto rychlé starty ukazují, jak odeslat soubor mezi místním diskem a úložištěm objektů blob v Azure pomocí Node.js. Další informace o práci s úložištěm objektů blob najdete v tématu věnovanému úložišti GitHub.
+Tento článek ukazuje, jak odeslat soubor mezi místním diskem a úložištěm objektů Blob v Azure pomocí Node.js. Další informace o práci s úložištěm objektů blob najdete v tématu věnovanému úložišti GitHub.
 
 > [!div class="nextstepaction"]
 > [Sada Azure Storage SDK pro úložiště JavaScript](https://github.com/Azure/azure-storage-node)

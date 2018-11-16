@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/05/2018
 ms.author: pafarley
-ms.openlocfilehash: a5763d3e250ec7641dafff89b2eadeec2a7d7b02
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
+ms.openlocfilehash: 5319584d892c261dcc6290703e9ca6518640cc94
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616295"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685476"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Kurz: Vytvoření aplikace WPF pro zobrazení dat pro rozpoznávání tváře v obrázku
 
@@ -123,7 +123,7 @@ Spusťte aplikaci a vyhledejte obrázek, který obsahuje nějakou tvář. Počke
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu se naučili základní proces pomocí sady .NET SDK služby pro rozpoznávání tváře a vytvořili aplikaci ke zjišťování a snímků tváří v obrázku. V dalším kroku naleznete v tématu Jak detekovat čelí získat další informace o podrobnosti o rozpoznávání tváří na obrázku.
+V tomto kurzu se naučili základní proces pomocí sady .NET SDK služby pro rozpoznávání tváře a vytvořili aplikaci ke zjišťování a snímků tváří v obrázku. Další informace o podrobnosti o rozpoznávání tváří v dalším kroku.
 
 > [!div class="nextstepaction"]
 > [Postup při rozpoznávání tváří v obrázku](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

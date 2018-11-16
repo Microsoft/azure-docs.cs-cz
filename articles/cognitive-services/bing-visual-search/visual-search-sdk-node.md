@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 0956e88bd293b62935f5c8e2b9ef2d30466af8e4
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
+ms.openlocfilehash: 77b8f956ca2a6985121cb5dbfebc2755fa73a35c
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456605"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685969"
 ---
 # <a name="quickstart-bing-visual-search-sdk-node"></a>Rychlý start: Sada SDK pro Vizuální vyhledávání Bingu v Nodu 
 
@@ -32,7 +32,9 @@ Scénáře kódu jsou popsané pod těmito nadpisy:
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
 
-* Spusťte `npm install Microsoft.Azure.CognitiveServices.Search.VisualSearch`.
+Vytvoření konzolové aplikace pomocí sady SDK vizuální vyhledávání Bingu:
+* Spusťte `npm install ms-rest-azure`.
+* Spusťte `npm install azure-cognitiveservices-search-visualSearch`.
 
 <a name="client"></a>
 ## <a name="visual-search-client"></a>Klient Vizuálního vyhledávání
@@ -326,6 +328,6 @@ function sample() {
 exports.sample = sample;
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Ukázky Cognitive Services sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

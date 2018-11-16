@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/19/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1a9c4dc5a4d21f8837bde171283cd8a070297674
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1de7221f100077e07a2211bdb94e0198b35cb77c
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47043852"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51716153"
 ---
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 
@@ -21,11 +21,11 @@ ms.locfileid: "47043852"
 
 * Virtuální počítače řady N-series je možné nasadit jenom v modelu nasazení Resource Manager.
 
-* Virtuální počítače řady N-series se liší v typu Azure Storage podporují pro jejich disků. NC a NV virtuální počítače podporují jenom disky virtuálních počítačů, které využívají pomocí standardní úložiště disku (HDD). NCv2, NCv3, ND a NVv2 virtuální počítače podporují jenom disky virtuálních počítačů, které se zálohují na podle Disk Storage úrovně Premium (SSD).
+* Virtuální počítače řady N-series se liší v typu Azure Storage podporují pro jejich disků. NC a NV virtuální počítače podporují jenom disky virtuálních počítačů, které využívají pomocí standardní úložiště disku (HDD). NCv2, NCv3, ND, NDv2 a NVv2 virtuální počítače podporují jenom disky virtuálních počítačů, které se zálohují na podle Disk Storage úrovně Premium (SSD).
 
 * Pokud chcete nasadit více než několik virtuálních počítačů řady N-series, zvažte předplatné s průběžnými platbami nebo jiné možnosti nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
 
-* Může být potřeba zvýšit kvótu pro jádra (podle oblasti) ve vašem předplatném Azure a zvýšit samostatné kvóty pro jádra NC, NCv2, NCv3, ND, NV nebo NVv2. Požádat o zvýšení kvóty, [otevřete žádost o online zákaznickou podporu](../articles/azure-supportability/how-to-create-azure-support-request.md) bez poplatků. Výchozí omezení může lišit v závislosti na vaše předplatné kategorie.
+* Může být potřeba zvýšit kvótu pro jádra (podle oblasti) ve vašem předplatném Azure a zvýšit samostatné kvóty pro jádra NC, NCv2, NCv3, ND, NDv2, NV nebo NVv2. Požádat o zvýšení kvóty, [otevřete žádost o online zákaznickou podporu](../articles/azure-supportability/how-to-create-azure-support-request.md) bez poplatků. Výchozí omezení může lišit v závislosti na vaše předplatné kategorie.
 
 
 

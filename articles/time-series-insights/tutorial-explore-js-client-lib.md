@@ -8,12 +8,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 85d6ac0084343dc821a4eaf91c8053c9885ccfeb
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 5f31dce98cd873a0bf4b750934384e1bf6d2564a
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366042"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706989"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Kurz: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
 
@@ -36,7 +36,7 @@ V tomto kurzu získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu se používá funkce Vývojářské nástroje (označovaná také jako DevTools nebo F12), kterou obsahuje většina moderních webových prohlížečů, jako jsou [Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/) a další. Pokud tuto funkci ještě neznáte, bylo by vhodné, abyste ji prozkoumali ve svém prohlížeči, než budete pokračovat.
+Tento kurz používá funkce "Nástroje pro vývojáře" (také označované jako DevTools nebo F12), která se nachází ve většině moderních webových prohlížečů, včetně [Microsoft Edge](/microsoft-edge/devtools-guide), [Chrome](https://developers.google.com/web/tools/chrome-devtools/), [FireFox](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools), [Safari](https://developer.apple.com/safari/tools/)a další. Pokud tuto funkci ještě neznáte, bylo by vhodné, abyste ji prozkoumali ve svém prohlížeči, než budete pokračovat.
 
 ## <a name="time-series-insights-sample-application"></a>Ukázková aplikace Time Series Insights
 
@@ -137,7 +137,7 @@ Naplňování a vykreslování ovládacích prvků grafů se řídí obecným vz
 
    **Parametry aggregateExpression**
 
-   | Parametr | Popis | Příklad |
+   | Parametr | Popis | Příklad: |
    | --------- | ----------- | ------- |
    | `predicateObject` | Výraz pro filtrování dat. |`{predicateString: "Factory = 'Factory3'"}` |
    | `measureObject`   | Název vlastnosti použité míry | `{property: 'Temperature', type: "Double"}` |
@@ -156,7 +156,7 @@ Naplňování a vykreslování ovládacích prvků grafů se řídí obecným vz
 
    **Parametry getAggregates**
 
-   | Parametr | Popis | Příklad |
+   | Parametr | Popis | Příklad: |
    | --------- | ----------- | ------- |
    | `token`     | Přístupový token pro rozhraní API služby TSI |  `authContext.getTsiToken()` Další informace najdete v oddílu [Ověřování](#authentication). |
    | `envFQDN`   | Plně kvalifikovaný název domény pro prostředí TSI | Z webu Azure Portal, například: `10000000-0000-0000-0000-100000000108.env.timeseries.azure.com` |
@@ -273,7 +273,7 @@ Kód sloužící k ilustraci štětců je zobrazený také v předchozím přík
 
 ![Spojnicový graf s místní nabídkou pro vytvoření výsečového nebo pruhového grafu a se štětci](media/tutorial-explore-js-client-lib/tcs-line-chart-with-context-menu-to-create-pie-bar-chart-brushes.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

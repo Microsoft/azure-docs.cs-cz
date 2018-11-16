@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ad3deaad8c069cfb11bb0eb997d886807ecdb0f8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a881ea18558e49656dc165d1545250bffeac4303
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006494"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713074"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 
@@ -163,19 +163,19 @@ Pomocí následujících kroků snižte objem shromažďovaných protokolů:
 | Protokoly událostí                 | Změňte [konfiguraci protokolů událostí](log-analytics-data-sources-windows-events.md) tak, aby se: <br> – Snížil počet shromažďovaných protokolů událostí <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace*. |
 | Syslog                     | Změňte [konfiguraci syslogu](log-analytics-data-sources-syslog.md) tak, aby se: <br> – Snížil počet zařízení, ze kterých se shromažďují data <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace* a *Ladění*. |
 | AzureDiagnostics           | Změňte shromažďování protokolů prostředků tak, aby se: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
-| Data řešení z počítačů, které řešení nepotřebují | Použijte [cílení na řešení](../monitoring/monitoring-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů. |
+| Data řešení z počítačů, které řešení nepotřebují | Použijte [cílení na řešení](../azure-monitor/insights/solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů. |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>Kontrola, jestli existuje více uzlů, než se čekalo
 Pokud používáte *za uzel (Log Analytics)* cenové úrovně, pak se bude účtovat podle počtu uzlů a řešení. V části *nabídek* řídicího panelu využití můžete zobrazit, kolik uzlů každé nabídky se používá.<br><br> ![řídicí panel využití](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 Kliknutím na **Zobrazit všechno...** zobrazte úplný seznam počítačů odesílajících data do vybrané nabídky.
 
-Použijte [cílení na řešení](../monitoring/monitoring-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
+Použijte [cílení na řešení](../azure-monitor/insights/solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 
 ## <a name="next-steps"></a>Další postup
 * V tématu [Prohledávání protokolů v Log Analytics](log-analytics-queries.md) zjistíte, jak používat jazyk vyhledávání. Pomocí vyhledávacích dotazů můžete na datech o využití provádět další analýzy.
 * Pokud chcete být upozorňováni při splnění kritérií vyhledávání, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../monitoring-and-diagnostics/alert-metric.md).
-* Použijte [cílení na řešení](../monitoring/monitoring-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
+* Použijte [cílení na řešení](../azure-monitor/insights/solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 * Pokud chcete nakonfigurovat efektivní zásadu shromažďování událostí zabezpečení, přečtěte si téma popisující [zásady filtrování v Azure Security Center](../security-center/security-center-enable-data-collection.md).
 * Změňte [konfiguraci čítačů výkonu](log-analytics-data-sources-performance-counters.md).
 * Pokud chcete upravit nastavení shromažďování událostí, přečtěte si téma popisující [konfiguraci protokolu událostí](log-analytics-data-sources-windows-events.md).

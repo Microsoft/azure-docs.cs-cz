@@ -12,20 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/10/2018
+ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 9ecdc0b7d2d21962dbfc7c14e9fff3fd969dd018
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5feedcd750841be159a7cf4a31f408aec2fffd38
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721088"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712972"
 ---
 # <a name="azure-security-white-papers"></a>Azure Security dokumenty white paper
 | | |
 |-|-|
 |[Úvod&nbsp;k&nbsp;Azure&nbsp;zabezpečení](azure-security.md)|Popisuje kolekci ovládacích prvků zabezpečení implementované v Azure z perspektivy odběratele a Microsoft operations. Poskytuje podrobný přehled o prvky zabezpečení určených pro zákazníky k dispozici v Azure.|
 |[Osvědčené postupy zabezpečení pro řešení Azure](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)|Kolekce doporučené postupy zabezpečení pro použití při při navrhování, nasazování a správa cloudových řešení pomocí služby Azure.|
+|[Vývoj zabezpečených aplikací v Azure](abstract-develop-secure-apps.md)|Obecné informace k ovládacím prvkům, které byste měli zvážit v jednotlivých fázích životního cyklu vývoje softwaru při vývoji aplikací pro cloud a bezpečnostní otázky.|
 |[Pokročilá detekce hrozeb](azure-threat-detection.md)|Vodítka, které vás provedou Azure blíží k posouzení ohrožení zabezpečení před internetovými útoky, diagnostiku a analýzy. Vysvětluje, jak Microsoft využívá detekci pokročilých hrozeb k zabezpečení platformy. Také vysvětluje, jak Microsoft zahrnuje tyto mechanismy ve veřejné různé funkce a služby.|
 |[Azure data šifrování neaktivních](azure-security-encryption-atrest.md)|Zaměřuje se na způsob ochrany dat v klidovém stavu i různých komponent zahrnutých v implementaci ochrany dat Azure. Obsahuje přehled výhody a nevýhody ochrany přístupy různých správu klíčů.|
 |[Protokolování a auditování Azure](azure-log-audit.md)|Poskytuje úvod pro generování, shromažďování a analýze protokolů zabezpečení ze služeb hostovaných v Azure. Tyto protokoly můžete získat informace o zabezpečení vašeho nasazení Azure. |

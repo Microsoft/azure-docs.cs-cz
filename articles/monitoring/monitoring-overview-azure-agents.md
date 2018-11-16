@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: d07a89163d10026851dc26812ac248d92d6d5e8a
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: eb8356b659647ec73be121f8a05ab5e1e8d5837f
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684167"
+ms.locfileid: "51710137"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:
@@ -60,7 +60,7 @@ U rozšířené monitorování, které je potřeba shromažďovat více než met
 Agenta Log Analytics byste měli použít, když chcete:
 
 * Shromažďovat data z nejrůznějších zdrojů, jak v rámci Azure, dalších poskytovatelů cloudových a místních prostředků. 
-* Pomocí jednoho z Azure monitoru, například monitorování řešení [monitorování Azure pro virtuální počítače](../monitoring/monitoring-vminsights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json), [monitorování Azure pro kontejnery](../monitoring/monitoring-container-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json)atd.  
+* Pomocí jednoho z Azure monitoru, například monitorování řešení [monitorování Azure pro virtuální počítače](../monitoring/../azure-monitor/insights/vminsights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json), [monitorování Azure pro kontejnery](../monitoring/../azure-monitor/insights/container-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json)atd.  
 * Použijte jednu z jiných služeb Azure pro správu, jako [Azure Security Center](../security-center/security-center-intro.md), [Azure Automation](../automation/automation-intro.md)atd.
 
 Dříve byly spojeny několik služeb Azure jako *Operations Management Suite*, a v důsledku agenta Log Analytics je sdílen mezi službami, včetně Azure Security Center a Azure Automation.  To zahrnuje úplnou sadu funkcí, které nabízejí, poskytování komplexní správu virtuálních počítačů Azure prostřednictvím jejich životního cyklu.  Některé příklady jsou:
@@ -71,7 +71,7 @@ Dříve byly spojeny několik služeb Azure jako *Operations Management Suite*, 
 * Služby Azure, jako [Application Insights](https://docs.microsoft.com/azure/application-insights/) a [Azure Security Center](https://docs.microsoft.com/azure/security-center/), která nativně ukládají data přímo do Log Analytics.  
 
 ## <a name="dependency-agent"></a>Agent závislostí
-Agent závislostí vyvinula jako součást řešení Service Map, který byl původně vytvořen externě od Microsoftu. [Řešení Service Map](../monitoring/monitoring-service-map.md) a [monitorování Azure pro virtuální počítače](monitoring-vminsights-overview.md) vyžaduje, aby Agent závislostí ve Windows a Linuxu virtuálních počítačů a integruje do agenta Log Analytics shromažďuje zjištění dat o procesech spuštěných na virtuální počítače a procesu externí závislosti. Ukládá tato data do Log Analytics a vizualizuje zjištěných vzájemně propojených součástí.
+Agent závislostí vyvinula jako součást řešení Service Map, který byl původně vytvořen externě od Microsoftu. [Řešení Service Map](../monitoring/monitoring-service-map.md) a [monitorování Azure pro virtuální počítače](../azure-monitor/insights/vminsights-overview.md) vyžaduje, aby Agent závislostí ve Windows a Linuxu virtuálních počítačů a integruje do agenta Log Analytics shromažďuje zjištění dat o procesech spuštěných na virtuální počítače a procesu externí závislosti. Ukládá tato data do Log Analytics a vizualizuje zjištěných vzájemně propojených součástí.
 
 Možná bude nutné určitou kombinaci těchto agentů monitorování virtuálního počítače. Agenty je možné nainstalovat vedle sebe jako rozšíření Azure, ale v Linuxu, agenta Log Analytics *musí* nainstalovat první, jinak se instalace nezdaří. 
 

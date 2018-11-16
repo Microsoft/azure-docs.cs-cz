@@ -1,41 +1,43 @@
 ---
-title: 'Kurz: Detekce a orámování tváří na obrázku – rozhraní API pro rozpoznávání tváře, Python'
+title: 'Rychlý start: Zjišťování a rámečku tváří v obrázku pomocí sady Python SDK'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak pomocí rozhraní API pro rozpoznávání tváře v sadě Python SDK rozpoznat na obrázku lidské tváře.
+description: V tomto rychlém startu vytvoříte jednoduchý skript Pythonu, který se používá ke zjišťování a snímků tváří v bitové kopii vzdálené rozhraní API pro rozpoznávání tváře.
 services: cognitive-services
 author: SteveMSFT
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: tutorial
-ms.date: 03/01/2018
+ms.topic: quickstart
+ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: 6cc3ac25d2196c0275b445503b79b9ac06a791d3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: e8b16f7ebe918e5b8d59c6b57794c4f35a89b5f3
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127733"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683997"
 ---
-# <a name="tutorial-detect-and-frame-faces-with-the-face-api-and-python"></a>Kurz: Detekce a orámování tváří pomocí rozhraní API pro rozpoznávání tváře a Pythonu 
+# <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Rychlý start: Vytvoření skriptu Pythonu, který zjišťuje a rámce čelí v obrázku
 
-V tomto kurzu se naučíte vyvolat rozhraní API pro rozpoznávání tváře přes sadu Python SDK a detekovat tak v obrázku lidské tváře.
+V tomto rychlém startu vytvoříte jednoduchý skript Pythonu, který používá rozhraní API pro rozpoznávání tváře Azure pomocí sady Python SDK k detekci lidských tváří na vzdálené bitové kopie. Aplikace zobrazí vybrané bitové kopie a nakreslí rámeček kolek každou zjištěnou plochu.
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-K použití tohoto kurzu budete potřebovat:
+- Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
+- [Python 2.7+ nebo 3.5+](https://www.python.org/downloads/)
+- Nástroj [pip](https://pip.pypa.io/en/stable/installing/)
+- Python API pro rozpoznávání tváře SDK. Nainstalujte ho spuštěním následujícího příkazu:
+    ```bash
+    pip install cognitive_face
+    ```
 
-- Nainstalovat Python 2.7+ nebo Python 3.5+.
-- Nainstalovat pip.
-- Sadu Python SDK pro rozhraní API pro rozpoznávání tváře nainstalujete takto:
+## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří v obrázku
 
-```bash
-pip install cognitive_face
-```
+Vytvořit nový skript Pythonu _FaceQuickstart.py_. Přidejte následující kód. Toto je základní funkce rozpoznávání tváře. Budete muset nahradit `<Subscription Key>` s hodnotou klíče. Také může být nutné změnit hodnotu `BASE_URL` použít identifikátor oblasti správná pro váš klíč. Bezplatné předplatné zkušební verze klíče jsou generovány v **westus** oblasti. Volitelně můžete nastavit `img_url` na adresu URL žádné image chcete použít.
 
-- Získejte [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/) služeb Microsoft Cognitive Services. V tomto kurzu můžete použít buď svůj primární, nebo sekundární klíč. (Abyste mohli použít jakékoli rozhraní API pro rozpoznávání tváře, musíte mít platný klíč předplatného.)
-
-## <a name="detect-a-face-in-an-image"></a>Detekce tváře na obrázku
+Skript se rozpoznávání tváří voláním **cognitive_face.face.detect** metoda, která zabalí [rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozhraní REST API a vrátí seznam tváří.
 
 ```python
 import cognitive_face as CF
@@ -52,15 +54,22 @@ faces = CF.face.detect(img_url)
 print(faces)
 ```
 
-Níže najdete příklad výsledku. Jde o `list` detekovaných tváří. Každá položka v tomto seznamu je instance `dict`, kde `faceId` je jedinečné ID detekované tváře a `faceRectangle` popisuje pozici detekované tváře. Platnost ID tváře vyprší za 24 hodin.
+### <a name="try-the-app"></a>Zkuste aplikaci
 
-```python
-[{u'faceId': u'68a0f8cf-9dba-4a25-afb3-f9cdf57cca51', u'faceRectangle': {u'width': 89, u'top': 66, u'height': 89, u'left': 446}}]
+Spusťte aplikaci příkazem `python FaceQuickstart.py`. Text odpovědi by měla získat v okně konzoly podobný tomuto:
+
+```shell
+[{'faceId': '26d8face-9714-4f3e-bfa1-f19a7a7aa240', 'faceRectangle': {'top': 124, 'left': 459, 'width': 227, 'height': 227}}]
 ```
 
-## <a name="draw-rectangles-around-the-faces"></a>Nakreslení obdélníků kolem tváří
+Toto je seznam zjištěných tváří. Každá položka v seznamu je **dict** instance where `faceId` je jedinečné ID pro zjištěné rozpoznávání tváře a `faceRectangle` popisuje pozice zjištěné rozpoznávání tváře. 
 
-Pomocí souřadnic JSON, které jste získali z předchozího příkazu, můžete nakreslením obdélníků do obrázku vizuálně znázornit jednotlivé tváře. Budete potřebovat příkaz `pip install Pillow`, abyste mohli použít modul zpracování obrazu `PIL`.  Na začátek souboru přidejte následující kód:
+> [!NOTE]
+> Face ID platnost vyprší po uplynutí 24 hodin je potřeba explicitně ukládání dat pro rozpoznávání tváře, pokud chcete zachovat dlouhodobé.
+
+## <a name="draw-face-rectangles"></a>Kreslení obdélníků pro rozpoznávání tváře
+
+Pomocí souřadnic, které jste získali z předchozího příkazu, lze nakreslit obdélníky na vizuálně znázornit každou tvář na obrázku. Budete muset nainstalovat Poduškový (`pip install pillow`) chcete použít modul Poduškový bitové kopie. V horní části *FaceQuickstart.py*, přidejte následující kód:
 
 ```python
 import requests
@@ -68,7 +77,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 ```
 
-Za příkaz `print(faces)` pak do skriptu přidejte následující kód:
+V dolní části skriptu přidejte následující kód. Vytvoří jednoduchou funkci k analýze souřadnic obdélník a používá Poduškový kreslení obdélníků v původní bitové kopie. Potom zobrazí obrázek ve výchozí prohlížeč obrázků.
 
 ```python
 #Convert width height to a point in a rectangle
@@ -93,21 +102,15 @@ for face in faces:
 img.show()
 ```
 
-## <a name="further-exploration"></a>Další zkoumání
+## <a name="run-the-app"></a>Spuštění aplikace
 
-Abyste mohli rozhraní API pro rozpoznávání tváře dále prozkoumat, obsahuje tento kurz ukázkové grafické uživatelské rozhraní. Před jeho spuštěním napřed nainstalujte [wxPython](https://wxpython.org/pages/downloads/) a pak spusťte následující příkazy.
+Můžete být vyzváni k nejdřív vyberte výchozí prohlížeč obrázků. Potom byste měli vidět image takto. Také byste měli vidět data obdélník vytištěn v okně konzoly.
 
-```bash
-git clone https://github.com/Microsoft/Cognitive-Face-Python.git
-cd Cognitive-Face-Python
-python sample
-```
+![Mladé ženu s červeným rámečkem vykreslen kolem typ písma](../images/face-rectangle-result.png)
 
-## <a name="summary"></a>Souhrn
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste se naučili základní postup používání rozhraní API pro rozpoznávání tváře vyvoláním přes sadu Python SDK. Další podrobnosti o rozhraní API najdete v návodech a [referenčních informacích k rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+V tomto rychlém startu se naučili základní postup pro používání Python SDK pro rozhraní API pro rozpoznávání tváře a vytvořil skript k detekci a snímků tváří v obrázku. Pomocí sady Python SDK v složitější příklad dále prozkoumejte. Přejděte k ukázce Cognitive Python pro rozpoznávání tváře na Githubu, naklonovat ho do složky vašeho projektu a postupujte podle pokynů _README.md_ souboru.
 
-## <a name="related-topics"></a>Související témata
-
-- [Začínáme s rozhraním API pro rozpoznávání tváře v jazyce CSharp](FaceAPIinCSharpTutorial.md)
-- [Začínáme s rozhraním API pro rozpoznávání tváře v Javě pro Android](FaceAPIinJavaForAndroidTutorial.md)
+> [!div class="nextstepaction"]
+> [Ukázka cognitive Pythonu pro rozpoznávání tváře](https://github.com/Microsoft/Cognitive-Face-Python)

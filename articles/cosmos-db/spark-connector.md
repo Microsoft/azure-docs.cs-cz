@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 62395ff5370a057ca1888dd135b83be9d6f34f8d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269407"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707176"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýzy velkých objemů dat pomocí Apache Sparku do konektoru služby Azure Cosmos DB
  
-Apache Spark pro konektor služby Azure Cosmos DB umožňuje službě Azure Cosmos DB být vstup nebo výstup úlohy Apache Spark. Připojení [Spark](http://spark.apache.org/) k [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) se řešení rychlé tempo data science problémů. Služby Azure Cosmos DB můžete použít k rychlému zachovat a dotazování na data. Tento konektor efektivně využívá nativní indexy spravované služby Azure Cosmos DB. Indexy, které povolí aktualizovatelné sloupce při provádění důkladné predikátu filtrování rychle se měnících globálně distribuovaných dat a analýzy. Tento typ dat musí být v rozsahu Internet of Things (IoT) pro datové vědy a analýzy scénáře.
+Konektor Apache Spark pro Azure Cosmos DB umožňuje službě Azure Cosmos DB být vstupem nebo výstupem pro úlohy Apache Spark. Připojení [Spark](http://spark.apache.org/) k [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) se řešení rychlé tempo data science problémů. Služby Azure Cosmos DB můžete použít k rychlému zachovat a dotazování na data. Tento konektor efektivně využívá nativní spravované indexy služby Azure Cosmos DB. Tyto indexy umožňují využít aktualizovatelné sloupce při provádění analýz a důkladné prediktivní filtrování rychle se měnících globálně distribuovaných dat. Tento typ dat musí být v rozsahu Internet of Things (IoT) pro datové vědy a analýzy scénáře.
 
 ## <a name="connector-components"></a>Součásti konektoru
 
@@ -83,7 +83,7 @@ Provedením následujících kroků pro připojení Spark ke službě Azure Cosm
 
 6. V **vytvořit poznámkový blok** dialogové okno, zadejte popisný název a zvolte **Python** jako jazyk. Z rozevíracího seznamu vyberte cluster, který jste vytvořili dříve a vyberte **vytvořit**.  
 
-7. Spustit pár dotazů Spark pomocí letů ukázkových dat hostované v účtu Azure Cosmos DB "doctorwho". (Tento účet je veřejně dostupná.) [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) úložiště GitHub hostuje HTML verzi poznámkového bloku. Stažení souborů úložiště a přejděte na `\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html`. Můžete importovat Poznámkový blok ke svému účtu Azure Databricks a spustíme ji. Následující oddíl popisuje funkce bloků kódu podrobně.
+7. Spustit pár dotazů Spark pomocí letů ukázkových dat hostované v účtu Azure Cosmos DB "doctorwho". Tento účet je veřejně dostupná. [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) hostitelů úložiště GitHub [Read_Batch_PyDocumentDB](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_PyDocumentDB.ipynb) poznámkového bloku. Můžete importovat Poznámkový blok ke svému účtu Azure Databricks a spustíme ji. Následující oddíl popisuje funkce bloků kódu podrobně.
 
 Následující fragment kódu ukazuje, jak importovat pyDocumentDB sady SDK a spuštění dotazu v kontextu Spark. Jak je uvedeno ve fragmentu kódu, pyDocumentDB SDK obsahuje parametry připojení potřebné pro připojení k účtu Azure Cosmos DB. Importuje požadované knihovny a nakonfiguruje hlavního klíče a hostitele, jak vytvořit klienta služby Azure Cosmos DB (pydocumentdb.document_client).
 
@@ -209,7 +209,7 @@ Tento článek ukazuje použití konektoru Spark sady Java SDK v následujícíc
 
 ### <a name="read-twitter-data-from-azure-cosmos-db"></a>Twitter pro čtení dat ze služby Azure Cosmos DB
  
-V této části můžete spouštět Spark dotazy ke čtení dávky Twitteru dat ze služby Azure Cosmos DB. [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) úložiště GitHub hostuje HTML verzi poznámkového bloku. Stažení souborů úložiště a přejděte na `\samples\Documentation_Samples\Read_Batch_Twitter_Data.html`. Můžete importovat do účtu Azure Databricks Poznámkový blok a aktualizovat účet identifikátor URI, hlavního klíče, databáze a názvy kolekcí. Můžete spustit Poznámkový blok nebo vytvořte ho následujícím způsobem:
+V této části můžete spouštět Spark dotazy ke čtení dávky Twitteru dat ze služby Azure Cosmos DB. [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) hostitelů úložiště GitHub [Read_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Batch_Twitter_Data.ipynb) poznámkového bloku. Můžete importovat do účtu Azure Databricks Poznámkový blok a aktualizovat účet identifikátor URI, hlavního klíče, databáze a názvy kolekcí. Můžete spustit Poznámkový blok nebo vytvořte ho následujícím způsobem:
 
 1. Přejděte ke svému účtu Azure Databricks a vyberte **pracovní prostor** > **vytvořit** > **Poznámkový blok**. 
 
@@ -268,7 +268,7 @@ V závislosti na scénáři měli byste použít hodnoty jinou konfiguraci pro o
 
 ### <a name="read-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Čtení Twitteru data, která je streamování do služby Azure Cosmos DB
 
-V této části můžete spouštět Spark dotazy ke čtení kanálu změn streamovaných dat Twitteru. Při spuštění dotazů v této části, ujistěte se, že je spuštěná a dat do služby Azure Cosmos DB – čerpání kanálu aplikaci na Twitteru. [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) úložiště GitHub hostuje HTML verzi poznámkového bloku. Stažení souborů úložiště a přejděte na `\samples\Documentation_Samples\Read_Stream_Twitter_Data.html`. Můžete importovat do účtu Azure Databricks Poznámkový blok a aktualizovat účet identifikátor URI, hlavního klíče, databáze a názvy kolekcí. Můžete spustit Poznámkový blok nebo vytvořte ho následujícím způsobem:
+V této části můžete spouštět Spark dotazy ke čtení kanálu změn streamovaných dat Twitteru. Při spuštění dotazů v této části, ujistěte se, že je spuštěná a dat do služby Azure Cosmos DB – čerpání kanálu aplikaci na Twitteru. [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) hostitelů úložiště GitHub [Read_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Read_Stream_Twitter_Data.scala) poznámkového bloku. Můžete importovat do účtu Azure Databricks Poznámkový blok a aktualizovat účet identifikátor URI, hlavního klíče, databáze a názvy kolekcí. Můžete spustit Poznámkový blok nebo vytvořte ho následujícím způsobem:
 
 1. Přejděte ke svému účtu Azure Databricks a vyberte **pracovní prostor** > **vytvořit** > **Poznámkový blok**.  
 
@@ -335,7 +335,7 @@ Sada Java SDK podporuje následující nastavení připojení:
 
 ### <a name="write-twitter-data-to-azure-cosmos-db"></a>Zápis dat Twitteru do služby Azure Cosmos DB 
 
-V této části můžete spouštět Spark dotazy pro zápis dávky dat Twitteru do nové kolekce ve stejné databázi. [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) úložiště GitHub hostuje HTML verzi poznámkového bloku. Stažení souborů úložiště a přejděte na `\samples\Documentation_Samples\Write_Batch_Twitter_Data.html`. Můžete importovat do účtu Azure Databricks Poznámkový blok a aktualizovat účet identifikátor URI, hlavního klíče, databáze a názvy kolekcí. Můžete spustit Poznámkový blok nebo vytvořte ho následujícím způsobem:
+V této části můžete spouštět Spark dotazy pro zápis dávky dat Twitteru do nové kolekce ve stejné databázi. [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) hostitelů úložiště GitHub [Write_Batch_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Batch_Twitter_Data.ipynb) poznámkového bloku. Můžete importovat do účtu Azure Databricks Poznámkový blok a aktualizovat účet identifikátor URI, hlavního klíče, databáze a názvy kolekcí. Můžete spustit Poznámkový blok nebo vytvořte ho následujícím způsobem:
 
 1. Přejděte ke svému účtu Azure Databricks a vyberte **pracovní prostor** > **vytvořit** > **Poznámkový blok**.  
 
@@ -428,7 +428,7 @@ Sada Java SDK podporuje následující hodnoty pro konfiguraci mapování:
 
 ### <a name="write-twitter-data-that-is-streaming-to-azure-cosmos-db"></a>Zápis dat Twitteru, který je streamování do služby Azure Cosmos DB 
 
-V této části můžete spouštět Spark dotazy pro zápis informačního kanálu změn streamovaných dat Twitteru do nové kolekce ve stejné databázi. [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) úložiště GitHub hostuje HTML verzi poznámkového bloku. Stažení souborů úložiště a přejděte na `\samples\Documentation_Samples\Write_Stream_Twitter_Data.html`. Můžete importovat do účtu Azure Databricks Poznámkový blok a aktualizovat účet identifikátor URI, hlavního klíče, databáze a názvy kolekcí. Můžete spustit Poznámkový blok nebo vytvořte ho následujícím způsobem:
+V této části můžete spouštět Spark dotazy pro zápis informačního kanálu změn streamovaných dat Twitteru do nové kolekce ve stejné databázi. [Azure-cosmos DB – spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) hostitelů úložiště GitHub [Write_Stream_Twitter_Data](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/Documentation_Samples/Write_Stream_Data.scala) poznámkového bloku. Můžete importovat do účtu Azure Databricks Poznámkový blok a aktualizovat účet identifikátor URI, hlavního klíče, databáze a názvy kolekcí. Můžete spustit Poznámkový blok nebo vytvořte ho následujícím způsobem:
 
 1. Přejděte ke svému účtu Azure Databricks a vyberte **pracovní prostor** > **vytvořit** > **Poznámkový blok**.  
 

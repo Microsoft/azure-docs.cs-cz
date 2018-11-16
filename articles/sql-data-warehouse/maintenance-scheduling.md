@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 09/20/2018
+ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: c2ed79673af3563ae62f516057a174770cda99e9
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 9d26c1d923294a149a57ef28ca03e77dfc2e1c87
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427858"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711901"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Umožňuje spravovat aktualizace služby a údržbu a plány údržby
 
@@ -27,7 +27,7 @@ Všechny nově vytvořené Azure SQL Data Warehouse instance bude mít plán úd
 
 Každé časové období údržby, může být tři až osm hodin. Údržba může probíhat kdykoli v rámci okna. Jak služba nasadí nový kód do datového skladu, měli byste očekávat (BRIEF) ke ztrátě připojení. 
 
-Ve verzi preview funkce identifikujete primární a sekundární windows v rámci samostatné rozsahů. Všechny operace údržby by měla dokončit během plánované údržby systému windows. Žádná údržba bude probíhat mimo zadanou údržbu bez předchozího upozornění. Pokud je váš datový sklad pozastavený během plánované údržby, bude aktualizována při operaci obnovit.  
+Pokud chcete používat tuto funkci je potřeba určit primární a sekundární okna nejvyšší úrovně v samostatném rozsahů. Všechny operace údržby by měla dokončit během plánované údržby systému windows. Žádná údržba bude probíhat mimo zadanou údržbu bez předchozího upozornění. Pokud je váš datový sklad pozastavený během plánované údržby, bude aktualizována při operaci obnovit.  
 
 
 ## <a name="alerts-and-monitoring"></a>Monitorování a výstrahy

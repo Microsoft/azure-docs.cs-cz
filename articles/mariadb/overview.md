@@ -7,18 +7,18 @@ editor: jasonwhowell
 services: mariadb
 ms.service: mariadb
 ms.topic: overview
-ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 696ba68894b4ac5f73c234ea49883fd0aa3db4d5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.date: 11/14/2018
+ms.openlocfilehash: ed4c05afdc5b061c7779a0b1ca34975f8b06ad7d
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320913"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686016"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Co je Azure Database for MariaDB?
 
-Azure Database for MariaDB je služba relačních databází v cloudu Microsoftu. Služba Azure Database for MariaDB je založená na databázovém stroji [MariaDB Community Edition](https://mariadb.org/download/). Tato služba je ve verzi Public Preview. 
+Azure Database for MariaDB je služba relačních databází v cloudu Microsoftu. Azure Database pro MariaDB vychází [edice community MariaDB](https://mariadb.org/download/) databázový stroj, verze 10.2. Tato služba je ve verzi Public Preview. 
 
 Azure Database for MariaDB nabízí:
 
@@ -43,7 +43,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Úprava výkonu a škálování během několika sekund
 
-Ve verzi Preview je služba Azure Database for MariaDB k dispozici v několika úrovních: Basic, Obecné účely a Optimalizovaný pro paměť. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Podrobnosti najdete v tématu [Cenové úrovně](concepts-pricing-tiers.md).
+Ve verzi Preview je služba Azure Database for MariaDB k dispozici v několika úrovních: Basic, Obecné účely a Optimalizovaný pro paměť. Každá úroveň nabízí různý výkon a možnosti pro podporu databázových úloh od zcela nenáročných až po velmi náročné. Svou první aplikaci můžete postavit na malé databázi za pár dolarů na měsíc a pak upravit škálování tak, aby vyhovovalo potřebám vašeho řešení. Dynamická škálovatelnost pomáhá databázím transparentně reagovat na rychle se měnící požadavky na prostředky. Platíte jenom za prostředky, které potřebujete, a jen tehdy, když je potřebujete. Zobrazit [cenové úrovně](concepts-pricing-tiers.md) podrobnosti.
 
 ## <a name="monitoring-and-alerting"></a>Monitorování a upozorňování
 
@@ -70,7 +70,7 @@ Můžete použít také následující kontaktní bod:
 - Pokud řešíte problém s účtem, vytvořte [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) na webu Azure Portal.
 - Pokud nám chcete sdělit svůj názor nebo požádat o nové funkce, využijte [fóra Azure pro názory](https://feedback.azure.com/forums/915439-azure-database-for-mariadb).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečetli jste si úvod ke službě Azure Database for MariaDB a teď můžete pokračovat následovně:
 - Na stránce s [cenami](https://azure.microsoft.com/pricing/details/mariadb/) najdete porovnání nákladů a kalkulačky. 

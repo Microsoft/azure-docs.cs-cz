@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/15/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4c5f99ed9d20076e3e25ebca261253e576572786
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6d4a6b7aa2ad236fba6a8ea0b01578b4843d11f3
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354253"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712921"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API protokolu HTTP v Durable Functions (Azure Functions)
 
@@ -95,6 +95,7 @@ Všechna rozhraní API HTTP implementováno rozšíření zkuste následující 
 | createdTimeFrom  | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtruje seznam vrácená instance, které byly vytvořeny na nebo za dané časové razítko ISO8601.|
 | createdTimeTo    | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtruje seznam vrácená instance, které byly vytvořeny pozici nebo před daným časovým razítkem ISO8601.|
 | runtimeStatus    | Řetězec dotazu    | Volitelný parametr. -Li zadána, filtry seznamu vrácených instancí na základě jejich stav modulu runtime. Pokud chcete zobrazit seznam hodnot stavu modulu runtime je to možné, naleznete v tématu [dotazování instance](durable-functions-instance-management.md) tématu. |
+| nahoru    | Řetězec dotazu    | Volitelný parametr. -Li zadána, rozdělení výsledky dotazu na stránky a omezit maximální počet výsledků na stránku. |
 
 `systemKey` automaticky generované tímto hostitelem Azure Functions je autorizačního klíče. Konkrétně uděluje přístup k rozšíření trvalý úlohy rozhraní API a je možné spravovat stejným způsobem jako [jiných autorizace klíčů](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API). Nejjednodušší způsob, jak zjistit `systemKey` hodnotu s použitím `CreateCheckStatusResponse` API již bylo zmíněno dříve.
 
@@ -291,6 +292,26 @@ Tady je příklad z datové části odpovědi včetně stavové Orchestrace (ve 
 > [!NOTE]
 > Tato operace může být velmi náročné z hlediska vstupně-výstupních operací Azure Storage, pokud obsahuje mnoho řádků v tabulce instancí. Další podrobnosti o instanci tabulky najdete v [výkon a škálování v Durable Functions (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table) dokumentaci.
 > 
+
+#### <a name="request-with-paging"></a>Žádost s stránkování
+
+Můžete nastavit `top` parametr pro rozdělení výsledky dotazu do stránky.
+
+Pro funkce 1.0 formát požadavku je následující:
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+```
+
+Formát Functions 2.0 má stejné parametry, ale mírně odlišné předpony adresy URL: 
+
+```http
+GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&top={top}
+```
+
+Pokud existuje na další stránku, vrátí se token pro pokračování v hlavičce odpovědi.  Název hlavičky je `x-ms-continuation-token`.
+
+Pokud nastavíte hodnotu token pokračování v dalším záhlaví požadavku, můžete získat další stránku.  Tento klíč v záhlaví požadavku se `x-ms-continuation-token`.
 
 
 ### <a name="raise-event"></a>Vyvolání události

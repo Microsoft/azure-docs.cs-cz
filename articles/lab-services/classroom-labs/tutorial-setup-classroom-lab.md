@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/05/2018
+ms.date: 11/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 6696d6e7e53e98dfab2a65c7c66825936020f33c
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.openlocfilehash: babff55d6684feb1f0414970616260be96b994f4
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856629"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706003"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -81,7 +81,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
         > [!WARNING]
         > Publikování nejde vrátit zpět. 
-    2. Pokud chcete publikování provést později, vyberte **Save for later** (Uložit na později). Virtuální počítač šablony můžete publikovat i po dokončení průvodce. Podrobnosti o postupu konfigurace a publikování po dokončení průvodce najdete v části [Publikování šablony](how-to-manage-classroom-labs.md#publish-the-template) v článku [Správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md).
+    2. Pokud chcete publikování provést později, vyberte **Save for later** (Uložit na později). Virtuální počítač šablony můžete publikovat i po dokončení průvodce. Podrobnosti o postupu konfigurace a publikování po dokončení průvodce najdete v části [Publikování šablony](how-to-create-manage-template.md#publish-the-template-vm) v článku [Správa testovacích prostředí v učebnách](how-to-manage-classroom-labs.md).
 
         ![Publikování šablony](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. Zobrazí se **průběh publikování** šablony. Tento proces může trvat až hodinu. 
@@ -97,20 +97,36 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
     ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
 
+## <a name="add-users-to-the-lab"></a>Přidání uživatelů do testovacího prostředí
+
+1. Vyberte **uživatelé** v nabídce vlevo. Ve výchozím nastavení **omezit přístup** je povolená možnost. Pokud toto nastavení je zapnuto, uživatel nemůže zaregistrovat s testovacím prostředí i v případě, že uživatel má odkaz na registraci, pokud je uživatel v seznamu uživatelů. Jenom uživatelé v seznamu lze zaregistrovat pomocí odkazu registrace, které odesíláte testovacího prostředí. V tomto postupu přidáte uživatele do seznamu. Alternativně můžete vypnout **omezit přístup**, které uživatelům umožňuje se zaregistrovat testovacího prostředí, tak dlouho, dokud mají odkaz na registraci. 
+2. Vyberte **přidat uživatele** na panelu nástrojů. 
+3. Na **přidat uživatele** stránky, zadejte e-mailové adresy uživatele na samostatných řádcích nebo na jednom řádku, oddělené středníky. 
+
+    ![Přidat e-mailové adresy uživatele](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. Vyberte **Uložit**. Zobrazí se e-mailové adresy uživatelů a jejich stavy (zaregistrované, nebo ne) v seznamu. 
+
+    ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
+
+
 ## <a name="send-registration-link-to-students"></a>Odeslání odkazu pro registraci studentům
 
-1. Přepněte do zobrazení **Dashboard** (Řídicí panel) tím, že v nabídce vlevo vyberete **Dashboard** (Řídicí panel). 
-2. Vyberte dlaždici **User registration** (Registrace uživatelů).
+1. Přepněte **uživatelé** zobrazit v případě, že již není na stránce. 
+2. Vyberte **odkazu registrace** dlaždici.
 
     ![Odkaz pro registraci studenta](../media/tutorial-setup-classroom-lab/dashboard-user-registration-link.png)
-1. V dialogovém okně **User registration** (Registrace uživatelů) vyberte tlačítko **Copy** (Kopírovat). Odkaz se zkopíruje do schránky. Vložte ho do editoru e-mailů a e-mail odešlete studentovi. 
+1. V dialogovém okně **User registration** (Registrace uživatelů) vyberte tlačítko **Copy** (Kopírovat). Odkaz se zkopíruje do schránky. 
 
     ![Odkaz pro registraci studenta](../media/tutorial-setup-classroom-lab/registration-link.png)
 2. V dialogovém okně **User registration** (Registrace uživatelů) vyberte **Close** (Zavřít). 
-3. Sdílejte odkaz pro registraci se studentem, aby se mohl zaregistrovat do třídy. 
+4. Sdílejte odkaz pro registraci se studentem, aby se mohl zaregistrovat do třídy. Pokud máte **omezit možnost** povoleno nastavení a v seznamu k dispozici seznam uživatelů, proveďte následující akce:
+    1. Vyberte **e-mailová adresa** uživatele v seznamu. 
+    2. Zobrazit okno ve svém programu výchozí e-mailu s **na** adresu vyplněna. 
+    3. Vložit **adresa URL pro registraci** jste si zkopírovali dříve. 
+    4. Odeslat **e-mailu**.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili testovací prostředí v učebně a nakonfigurovali ho. Pokud chcete získat informace o tom, jak může student přistupovat k virtuálnímu počítači v testovacím prostředí pomocí odkazu pro registraci, přejděte na další kurz:
 
 > [!div class="nextstepaction"]

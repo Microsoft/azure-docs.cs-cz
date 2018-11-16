@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Analýza dat Apache Sparku pomocí Power BI v Azure HDInsight '
-description: Použití Microsoft Power BI k vizualizaci dat Sparku uložených v clusterech HDInsight
+description: Pomocí Microsoft Power BI k vizualizaci dat Apache Spark uložené clustery HDInsight
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 341346b290fc3dab94773f75f2269cc147e71b82
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: dcd28d8e33045f4c0324f964a854e98dfe004321
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252458"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712411"
 ---
-# <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>Kurz: Analýza dat Sparku pomocí Power BI ve službě HDInsight 
+# <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: Analýza dat Apache Spark v HDInsight pomocí Power BI 
 
 Zjistěte, jak pomocí Microsoft Power BI vizualizovat data v clusteru Apache Spark ve službě Azure HDInsight.
 
@@ -78,7 +78,7 @@ Prvními kroky při práci se Sparkem je připojení ke clusteru v Power BI Desk
     ![Načtení dat do Power BI Desktopu z Apache Sparku ve službě HDInsight](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Načtení dat do Power BI z Apache Spark BI")
 
 
-2. Do vyhledávacího pole zadejte `Spark`, vyberte **Azure HDInsight Spark (beta verze)** a pak klikněte na **Připojit**.
+2. Zadejte `Spark` do vyhledávacího pole, vyberte **Azure HDInsight Spark**a potom klikněte na tlačítko **připojit**.
 
     ![Načtení dat do Power BI z Apache Spark BI](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Načtení dat do Power BI z Apache Spark BI")
 
@@ -210,7 +210,7 @@ Váš vizuál je připnutý na řídicím panelu. Do sestavy můžete přidat da
 9. Click **Save** to save the worksheet. You can create dashboards and add one or more sheets to it.
 -->
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

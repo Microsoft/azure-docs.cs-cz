@@ -10,18 +10,18 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: 6e6f5b61f3e5e99d08e377bd5a78398a05fb4321
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
-ms.translationtype: HT
+ms.openlocfilehash: d2a98226895bbe5996785ca4726f20df9b98ffdd
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51577886"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51683606"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rychlý start: Rozpoznávání tváří v obrázku pomocí rozhraní REST API pro rozpoznávání tváře a Python
 
 V tomto rychlém startu použijete rozhraní REST API pro rozpoznávání tváře Azure s využitím Pythonu detekovat lidské tváře v obrázku. Skript nakreslení snímků kolem tváří a také ověření kódování umístěním pohlaví nebo věku informace o obrázku.
 
-![Muže a ženy, každý s obdélník vykreslen kolem jejich tváří a stáří a pohlaví zobrazené na obrázku](../media/labelled-faces-python.png)
+![Muže a ženy, každý s obdélník vykreslen kolem jejich tváří a stáří a pohlaví zobrazené na obrázku](../images/labelled-faces-python.png)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 

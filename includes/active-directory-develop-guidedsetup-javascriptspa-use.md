@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: e42c678f3c6d030be13e40197a06e73b62581902
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 496a24f79cee1323077c357789628123d082ceac
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988395"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51716154"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Přihlásit uživatele pomocí knihovny Microsoft Authentication Library (MSAL)
 
@@ -90,7 +90,7 @@ function acquireTokenRedirectCallBack(errorDesc, token, error, tokenType)
 {
  if(tokenType === "access_token")
  {
-     callMSGraph(applicationConfig.graphEndpoint, accessToken, graphAPICallback);
+     callMSGraph(applicationConfig.graphEndpoint, token, graphAPICallback);
  } else {
      console.log("token type is:"+tokenType);
  }

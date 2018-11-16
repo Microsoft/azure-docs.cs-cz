@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: bba008bc6d1214aa4b2ca7cc609586a3d18159fd
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 534c47e1c3189258617505808f7a8c7b2e3a3c6e
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613609"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711034"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení alert managementu ve službě Azure Log Analytics
 
@@ -36,7 +36,7 @@ Toto řešení funguje se všechny záznamy v úložišti Log Analytics s typem 
 - Pro System Center Operations Manageru výstrahy [připojení skupiny pro správu nástroje Operations Manager do vašeho pracovního prostoru Log Analytics](log-analytics-om-agents.md).  Všechny výstrahy vytvořené v nástroji System Center Operations Manager jsou importovány do Log Analytics.  
 
 ## <a name="configuration"></a>Konfigurace
-Přidejte řešení pro správu výstrah do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení](../monitoring/monitoring-solutions.md). Není nutná žádná další konfigurace.
+Přidejte řešení pro správu výstrah do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení](../azure-monitor/insights/solutions.md). Není nutná žádná další konfigurace.
 
 ## <a name="management-packs"></a>Sady Management Pack
 Pokud vaší skupině pro správu System Center Operations Manageru je připojený k pracovnímu prostoru Log Analytics, jsou při přidání tohoto řešení následující sady management Pack nainstalované v nástroji System Center Operations Manager.  Neexistuje žádná konfigurace ani Údržba požadované sady management Pack.

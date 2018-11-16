@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: 6372aada8c3d380f8d3cefb0479e45bbd7c63898
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 38a7a4e80542551057b230e9d0217d1cecbc5c42
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945242"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710303"
 ---
 # <a name="vs-code-tools-for-ai-train-and-deploy-ml-models-from-vs-code"></a>Nástroje VS Code pro AI: trénování a nasazovat modely ML z VS Code
 V tomto článku se dozvíte, jak používat **nástroje VS Code pro AI** rozšíření trénovat a nasazovat strojového učení a hloubkového učení modely se službou Azure Machine Learning v nástroji VS Code.
@@ -29,7 +29,7 @@ A můžete je nasadit tyto modely pro vaše potřeby testovacím nebo produkčn�
 
 + Máte [Azure Machine Learning SDK pro Python nainstalován](how-to-vscode-tools.md) s VS Code.
 
-+ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
++ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
 ## <a name="create-and-manage-compute-targets"></a>Vytvoření a Správa cílových výpočetních prostředí
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: 7d93b8e37c2025ebe47f9351da26f0913107585d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5c58f4f825effbd62d141b417f78c420ba08d921
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009364"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711204"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Sítě Azure monitoring řešení v Log Analytics
 
@@ -86,7 +86,7 @@ Pro brány Application Gateway se podporují následující metriky: znovu
 ### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 Pomocí následujících pokynů k instalaci a konfiguraci řešení analýzy Azure Application Gateway:
 
-1. Povolení řešení analýzy Azure Application Gateway z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).
+1. Povolení řešení analýzy Azure Application Gateway z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../azure-monitor/insights/solutions.md).
 2. Povolení protokolování diagnostiky [brány Application Gateway](../application-gateway/application-gateway-diagnostics.md) chcete monitorovat.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Povolení diagnostiky Azure Application Gateway na portálu
@@ -157,7 +157,7 @@ Tyto protokoly jsou podporovány pro skupiny zabezpečení sítě:
 ### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 Pomocí následujících pokynů k instalaci a konfiguraci řešení Azure Networking Analytics:
 
-1. Povolit skupiny zabezpečení sítě Azure analytického řešení z [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).
+1. Povolit skupiny zabezpečení sítě Azure analytického řešení z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../azure-monitor/insights/solutions.md).
 2. Povolení protokolování diagnostiky [skupinu zabezpečení sítě](../virtual-network/virtual-network-nsg-manage-log.md) prostředků, kterou chcete monitorovat.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Povolení diagnostiky skupiny zabezpečení sítě Azure na portálu
@@ -215,7 +215,7 @@ Používat aktualizované řešení:
 
 1. [Konfigurovat diagnostiku, která se pošle přímo ke službě Log Analytics z Azure Application Gateway](#enable-azure-application-gateway-diagnostics-in-the-portal)
 2. [Konfigurovat diagnostiku, která se pošle přímo ke službě Log Analytics ze skupin zabezpečení sítě Azure](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. Povolit *Azure Application Gateway Analytics* a *analýzy skupin zabezpečení sítě Azure* řešení pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md)
+2. Povolit *Azure Application Gateway Analytics* a *analýzy skupin zabezpečení sítě Azure* řešení pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../azure-monitor/insights/solutions.md)
 3. Aktualizovat všechny uložené dotazy, řídicí panely nebo výstrahy k použití nového datového typu
   + Typ je AzureDiagnostics. Elementu ResourceType můžete použít k filtrování síťových protokolů Azure.
 

@@ -1,6 +1,6 @@
 ---
 title: 'Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node | Microsoft Docs'
-description: 'Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node'
+description: 'Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET'
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: a53130dcc489764ce9284f15b8de0de37e0827e5
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230927"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686666"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET
 
@@ -173,9 +173,8 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 Když teď spustíte aplikaci, měla by se zobrazit načtená hodnota vašeho taného klíče. Ve výše uvedeném příkazu udělujete identitě spravované služby App Service oprávnění k operacím **get** a **list** ve službě Key Vault.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Domovská stránka služby Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
-* [Dokumentace ke službě Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)
+* [Další informace o službě Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
 * [Sada Azure SDK pro .NET](https://github.com/Azure/azure-sdk-for-net)
 * [Referenční informace k rozhraní Azure REST API](https://docs.microsoft.com/rest/api/keyvault/)

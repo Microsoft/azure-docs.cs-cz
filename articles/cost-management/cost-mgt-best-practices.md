@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 43a682568708ab0286328cf3e483ddc3d5cf9dd8
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 8958d2cde9f40aa1a7370894614a54bbd604bce7
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515348"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706326"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat vaše cloudové investice ve službě Azure Cost Management
 
@@ -26,12 +26,12 @@ Azure Cost Management poskytuje nástroje pro plánování, analyzovat a omezit 
 Služba Cost management je organizační problému a musí být probíhající praxe, která začíná před cloudové prostředky můžete utratit peníze. K úspěšné implementaci správy nákladů a optimalizovat náklady, musí vaše organizace:
 
 - Provést přípravu pomocí správných nástrojů k dosažení úspěchu
-- Zodpovídají za náklady
+- Za náklady
 - Přijmout vhodná opatření k optimalizaci výdajů
 
 Tři klíčové skupiny uvedené dále, musí být zarovnány ve vaší organizaci, abyste měli jistotu, že jste úspěšně Správa nákladů.
 
-- **Finance** -zodpovědný za schvalování budge požadavky napříč organizací založené na cloudu útraty prognózy. Jejich platit odpovídající faktury a náklady na přiřadit různé týmy tak podpořit přebírání odpovědnosti.
+- **Finance** -zodpovědný za schvalování požadavků rozpočtu celé organizace založené na cloudu útraty prognózy. Jejich platit odpovídající faktury a náklady na přiřadit různé týmy tak podpořit přebírání odpovědnosti.
 - **Správci** – obchodní uživatelé s rozhodovací pravomocí v organizaci, potřebujete pochopit cloudových výdajů za účelem vyhledání nejlepší útraty výsledky.
 - **Aplikační týmy** – technici Správa cloudových prostředků na základě každodenní vývoj služeb podle potřeb organizace. Tyto týmy potřebují flexibilně dodávat v jejich definované rozpočet na maximum.
 
@@ -46,7 +46,7 @@ Komplexní, počáteční plánování umožňuje přizpůsobit využití cloudu
 - Jaký problém obchodní jsem řešení?
 - Jaké vzorce používání očekávat od Moje prostředky?
 
-Vaše odpovědi vám pomůže vybrat nabídku služby, který je pro vás nejvhodnější. Určují infrastrukturu k použití a jak se používá pro maximalizaci efektivity Azure.
+Vaše odpovědi vám pomůže vybrat nabídek, které jsou pro vás nejvhodnější. Určují infrastrukturu k použití a jak se používá pro maximalizaci efektivity Azure.
 
 #### <a name="visibility"></a>Viditelnost
 
@@ -62,7 +62,7 @@ Slouží ke snížení vaší útraty. Využijte naplno na poznatky získané po
 
 #### <a name="iteration"></a>Iterace
 
-Všichni uživatelé v organizaci musíte zapojit do životního cyklu správy nákladů. Potřebují k zajištění účastnící se průběžně provádět pro zajištění optimalizace nákladů. Být přísné o tento iterativní proces a nastavte ji klíče tenanta zásad správného řízení zodpovědná cloudu ve vaší organizaci.
+Všichni uživatelé v organizaci musíte zapojit do životního cyklu správy nákladů. Potřebují k zajištění zahrnutých průběžně provádět pro zajištění optimalizace nákladů. Být přísné o tento iterativní proces a nastavte ji klíčovým principem zásad správného řízení zodpovědná cloudu ve vaší organizaci.
 
 ![Klíč zásad](./media/cost-mgt-best-practices/principles.png)
 
@@ -125,7 +125,7 @@ Udržujte si přehled o jak v čase vyvíjí vaše organizace náklady. Pomocí 
 
 ### <a name="organize-and-tag-your-resources"></a>Uspořádání a označení prostředků
 
-Uspořádání prostředků s náklady na paměti. Při vytváření skupiny prostředků a předplatná, představte si týmy, které jsou zodpovědné za související náklady. Ujistěte se, že sestav udržuje vaše organizace v úvahu. Skupiny prostředků a předplatná poskytují dobrou intervalů k uspořádání a atribut útraty napříč vaší organizací. Značky poskytují dobrý způsob, jak atribut náklady. Značky můžete použít jako filtr. A můžete je seskupit podle při analýze dat a prozkoumat náklady. Zákazníci se smlouvou Enterprise také můžete vytvořit oddělení a umístěte předplatná pod nimi. Náklady na základě organizace v Azure pomáhá zachovat relevantní osoby ve vaší organizaci accountable pro snížení jejich tým útraty.
+Uspořádání prostředků s náklady na paměti. Při vytváření skupiny prostředků a předplatná, představte si týmy, které jsou zodpovědné za související náklady. Ujistěte se, že sestav udržuje vaše organizace v úvahu. Skupiny prostředků a předplatná poskytují dobrou intervalů k uspořádání a atribut útraty napříč vaší organizací. Značky poskytují dobrý způsob, jak atribut náklady. Značky můžete použít jako filtr. A můžete je seskupit podle při analýze dat a prozkoumat náklady. Zákazníci se smlouvou Enterprise můžete také vytvořit oddělení a umístit předplatná pod nimi. Náklady na základě organizace v Azure pomáhá zachovat relevantní osoby ve vaší organizaci accountable pro snížení jejich tým útraty.
 
 ### <a name="use-cost-analysis"></a>Použití analýzy nákladů
 
@@ -157,7 +157,7 @@ Použijte tyto způsoby optimalizovat výdaje.
 
 ### <a name="cut-out-waste"></a>Vystřihněte plýtvání
 
-Po nasazení infrastruktury v Azure, je důležité zajistit, aby že se používá. Nejjednodušší způsob, jak začít, ukládají se okamžitě je ke kontrole vašich prostředků a odeberte všechny, které nejsou používány. Tady byste měli určit, že se že vaše prostředky se používají jako efektivně.
+Po nasazení infrastruktury v Azure, je důležité zajistit, aby že se používá. Nejjednodušší způsob, jak začít, ukládají se okamžitě je ke kontrole vašich prostředků a odeberte všechny, které nejsou používány. Tady byste měli určit, pokud vaše prostředky se používají jako efektivně.
 
 #### <a name="azure-advisor"></a>Azure Advisor
 
@@ -177,7 +177,7 @@ Azure nabízí mnoho slevy, které vaše organizace by měly využít výhod je�
 
 #### <a name="azure-reservations"></a>Azure rezervace
 
-Azure rezervace umožňují, abyste si Předplatíte jeden rok nebo tři roky virtuální počítač nebo databázi SQL výpočetní kapacitu. Platíte předem vám umožní získat slevu na prostředky, které používáte. Azure rezervace může výrazně snížit náklady na výpočetní výkon databáze SQL vaší virtuálního počítače – až 72 procent u průběžných plateb – s jeden rok nebo tři roky předem k ničemu zavázat. rezervace poskytovat fakturační slevy a neovlivní jejich běhový stav virtuálního počítače nebo databáze SQL.
+Azure rezervace umožňují Předplatíte jeden rok nebo tři roky virtuální počítač nebo databázi SQL výpočetní kapacitu. Platíte předem vám umožní získat slevu na prostředky, které používáte. Azure rezervace může výrazně snížit náklady na výpočetní výkon databáze SQL vaší virtuálního počítače – až 72 procent u průběžných plateb s jeden rok nebo tři roky předem k ničemu zavázat. rezervace poskytovat fakturační slevy a neovlivní jejich běhový stav virtuálního počítače nebo databáze SQL.
 
 Další informace najdete v tématu [co jsou Azure rezervace?](../billing/billing-save-compute-costs-reservations.md).
 

@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: b004abb3959bbfe36fc200bf762114f88f3d2ead
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 3c07f39a6c6c4ce244ba49a26617b3e645c57acb
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345031"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51710369"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Nasazení webové služby Azure Container Instances 
 
@@ -28,7 +28,7 @@ Tento článek ukazuje tři různé způsoby nasazení modelu ve službě ACI. S
 * Nasazení pomocí registrovaného modelu `Webservice.deploy_from_model()`
 * Nasazení registrovanému modelu pomocí bitové kopie `Webservice.deploy_from_image()`
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
 
 ## <a name="prerequisites"></a>Požadavky

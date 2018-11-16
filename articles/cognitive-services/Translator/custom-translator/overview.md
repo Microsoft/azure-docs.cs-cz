@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: c8b5cda2376d76f9a22e72aeff9377e1c3c8cf99
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
-ms.translationtype: HT
+ms.openlocfilehash: b7cba2959bead5eeed72a87219c70f896b5a48b8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626543"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51682958"
 ---
 # <a name="what-is-custom-translator-preview"></a>Co je Custom Translator (Preview)?
 
@@ -22,7 +22,7 @@ ms.locfileid: "51626543"
 
 Sestavován systémů překladu [vlastní Translator](https://portal.customtranslator.azure.ai) jsou k dispozici prostřednictvím stejné založené na cloudu [zabezpečené](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), vysoký výkon, vysoce škálovatelné Microsoft Translatoru [Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl), která využívá miliardy překlady každý den. 
 
-Vlastní Translator podporuje více než tři deseti jazycích a mapuje přímo na jazyky dostupné pro NMT. Úplný seznam najdete v tématu [jazyky Microsoft Translatoru]( https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
+Vlastní Translator podporuje více než tři deseti jazycích a mapuje přímo na jazyky dostupné pro NMT. Úplný seznam najdete v tématu [jazyky Microsoft Translatoru]( https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ## <a name="features"></a>Funkce
 

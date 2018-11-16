@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: f84eda2269df0bbe7186a2f1a9abb9c594b75455
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: fbe286313bce9b735665b134a5ea18ba4995548b
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245065"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712258"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Rychlé zprovoznění: Nasazení Azure Data Box Disku pomocí webu Azure Portal (Preview)
 
@@ -67,7 +67,7 @@ Tento krok trvá přibližně 5 minut.
 
     1. Na webu Azure Portal přejděte na **Obecné > Detaily zařízení** a získejte přístupový klíč.
     2. Na počítači sloužícím ke kopírování dat na disky stáhněte a rozbalte odemykací nástroj Data Box Disku specifický pro operační systém. 
-    3. Spusťte odemykací nástroj Data Box Disku a zadejte klíč. Při vložení dalšího disku vždy znovu spusťte odemykací nástroj a zadejte klíč. **K odemknutí disku nepoužívejte dialogové okno nástroje BitLocker ani klíč nástroje BitLocker.** Další informace o odemykání disků najdete v článku o [odemknutí disků v klientovi pro Windows]() nebo [odemknutí disků v klientovi pro Linux]().
+    3. Spusťte odemykací nástroj Data Box Disku a zadejte klíč. Při vložení dalšího disku vždy znovu spusťte odemykací nástroj a zadejte klíč. **K odemknutí disku nepoužívejte dialogové okno nástroje BitLocker ani klíč nástroje BitLocker.** Další informace o tom, jak disky odemknout, přejděte na [odemknout disky na klientovi Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) nebo [odemknout disků v klientovi Linux](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
     4. Nástroj zobrazí písmeno jednotky přiřazené k danému disku. Poznamenejte si písmeno diskové jednotky. Budete ho potřebovat v dalších krocích.
 
 ## <a name="copy-data-and-validate"></a>Kopírování dat a ověření
@@ -85,7 +85,6 @@ Doba trvání této operace závisí na množství dat.
 2. (Volitelné) Po dokončení kopírování doporučujeme vygenerovat kontrolní součty pro ověření spuštěním souboru `DataBoxDiskValidation.cmd`, který se nachází ve složce *DataBoxDiskImport*. V závislosti na velikosti dat může tento krok nějakou dobu trvat. 
 3. Odpojte jednotku. 
 
-
 ## <a name="ship-to-azure"></a>Odeslání do Azure
 
 Tento krok trvá 5 až 7 minut.
@@ -94,7 +93,6 @@ Tento krok trvá 5 až 7 minut.
 2. Zavezte zapečetěný balíček na pobočku dopravce.  
 
 Služba Data Box Disk odešle e-mailové oznámení a aktualizuje stav objednávky na webu Azure Portal.
-
 
 ## <a name="verify-your-data"></a>Ověření dat
 
@@ -120,11 +118,9 @@ Na závěr můžete objednávku Data Boxu zrušit a potom odstranit.
 
     Pokud chcete odstranit objednávku, přejděte do části **Přehled** a na panelu příkazů klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém zprovoznění jste nasadili Azure Data Box Disk, který umožňuje importovat data do Azure. Další informace o správě Azure Data Box Disku získáte v následujícímu kurzu: 
 
 > [!div class="nextstepaction"]
 > [Použití webu Azure Portal ke správě Data Box Disku](data-box-portal-ui-admin.md)
-
-

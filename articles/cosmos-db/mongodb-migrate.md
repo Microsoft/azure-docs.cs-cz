@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: d3a7ddcd4a95660264bdf9609f54af39a05c97b3
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: 13422434e6392ec7681ec4478533c45a84f40c9a
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741023"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706972"
 ---
 # <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Kurz: Migrace dat do účtu rozhraní MongoDB API služby Azure Cosmos DB
 
@@ -36,13 +36,13 @@ Před migrací dat do účtu rozhraní MongoDB API se ujistěte, že máte něja
 
 1. Předem vytvořte a škálujte kolekce:
         
-    * Ve výchozím nastavení Azure Cosmos DB zřídí novou kolekci MongoDB s 1 000 jednotek žádostí za sekundu (RU/s). Před zahájením migrace pomocí nástroje mongoimport nebo mongorestore předem vytvořte všechny kolekce pomocí webu [Azure Portal](https://portal.azure.com) nebo ovladačů a nástrojů MongoDB. Pokud je velikost dat větší než 10 GB, nezapomeňte vytvořit [dělenou kolekci](partition-data.md) s odpovídajícím klíčem horizontálního dělení.
+   * Ve výchozím nastavení Azure Cosmos DB zřídí novou kolekci MongoDB s 1 000 jednotek žádostí za sekundu (RU/s). Před zahájením migrace pomocí nástroje mongoimport nebo mongorestore předem vytvořte všechny kolekce pomocí webu [Azure Portal](https://portal.azure.com) nebo ovladačů a nástrojů MongoDB. Pokud je velikost dat větší než 10 GB, nezapomeňte vytvořit [dělenou kolekci](partition-data.md) s odpovídajícím klíčem horizontálního dělení. MongoDB se doporučuje pro ukládání dat entity v kolekcích. Mějte entit srovnatelné velikosti a zřizování propustnosti na úrovni databáze Azure Cosmos.
 
-    * Jen pro účely migrace na webu [Azure Portal](https://portal.azure.com) zvyšte propustnost vašich kolekcí z 1 000 RU/s pro kolekce s jedním oddílem a 2 500 RU/s pro horizontálně dělené kolekce. Vyšší propustnost vám umožní zabránit omezování rychlosti a zkrátit dobu migrace. Okamžitě po migraci můžete propustnost snížit, abyste dosáhli nižších nákladů.
+   * Z [webu Azure portal](https://portal.azure.com), zvýšit propustnost kolekce z 1000 ru/s pro kolekce jednoho oddílu a 2 500 ru/s pro horizontálně dělenou kolekci jenom po dobu trvání migrace. Vyšší propustnost vám umožní zabránit omezování rychlosti a zkrátit dobu migrace. Okamžitě po migraci můžete propustnost snížit, abyste dosáhli nižších nákladů.
 
-    * Kromě zřízení RU/s na úrovni kolekce můžete zřídit také RU/s pro sadu kolekcí na úrovni nadřazené databáze. Vyžaduje to vytvoření databáze a kolekcí předem a definování klíče horizontálního dělení pro každou kolekci.
+   * Kromě zřízení RU/s na úrovni kolekce můžete zřídit také RU/s pro sadu kolekcí na úrovni nadřazené databáze. Vyžaduje to vytvoření databáze a kolekcí předem a definování klíče horizontálního dělení pro každou kolekci.
 
-    * Horizontálně dělené kolekce můžete vytvářet prostřednictvím svého oblíbeného nástroje, ovladače nebo sady SDK. V tomto příkladu k vytvoření horizontálně dělené kolekce používáme MongoDB Shell:
+   * Horizontálně dělené kolekce můžete vytvářet prostřednictvím svého oblíbeného nástroje, ovladače nebo sady SDK. V tomto příkladu k vytvoření horizontálně dělené kolekce používáme MongoDB Shell:
 
         ```bash
         db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
@@ -176,7 +176,7 @@ Příklad:
 mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Můžete pokračovat k dalšímu kurzu, kde zjistíte, jak dotazovat data MongoDB pomocí služby Azure Cosmos DB. 
 

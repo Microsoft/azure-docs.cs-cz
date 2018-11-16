@@ -16,8 +16,6 @@ items:
     href: active-directory-groups-view-azure-portal.md
 - name: Koncepty
   items:
-  - name: Správa identit Azure
-    href: identity-fundamentals.md
   - name: Identity Secure Score
     href: identity-secure-score.md
   - name: Správa přístupu a skupin
@@ -85,13 +83,11 @@ items:
     href: active-directory-faq.md
   - name: Plány nasazení Azure Active Directory
     href: active-directory-deployment-plans.md
-  - name: Správa Azure AD Directory
-    href: active-directory-administer.md
-  - name: Řešení identit Azure
-    href: understand-azure-identity-solutions.md
-ms.openlocfilehash: 04bd34de85980d6044a3fa1d4e02be2fb1be6b29
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+  - name: Archiv novinek v Azure AD
+    href: whats-new-archive.md
+ms.openlocfilehash: ac750e329a530978979d3ca580ae1f1407d2fa78
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902548"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51704405"

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: bd72b93d31a25a6aa848fc08a7db4d9d0fcece9f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ed91c60393badcde1d3f31c86b1e4381788db17b
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010741"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712088"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -58,7 +58,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 Ke konfigurování řešení, použijte následující informace:
 
 - Musíte mít [Windows](log-analytics-agent-windows.md) nebo [nástroje Operations Manager](log-analytics-om-agents.md) agent na každém serveru DNS, který chcete monitorovat.
-- Řešení DNS Analytics můžete přidat do pracovního prostoru Log Analytics z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Můžete také použít proces popsaný v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).
+- Řešení DNS Analytics můžete přidat do pracovního prostoru Log Analytics z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Můžete také použít proces popsaný v [přidání řešení Log Analytics z Galerie řešení](../azure-monitor/insights/solutions.md).
 
 Shromažďování dat bez nutnosti další konfigurace spuštění řešení. Přizpůsobení shromažďování dat lze však použijte následující konfiguraci.
 

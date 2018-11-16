@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9234a57bdec3dfd7a1ccdba00b90a5c853dc1c5a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: f51673e628798f2c92e4ef7cf9327f4d5c6e5370
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960955"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51704678"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>Vyberte úroveň konzistence správné pro vaši aplikaci
 
@@ -52,7 +52,7 @@ V praxi se může zobrazit silnější záruky konzistence. Záruky konzistence 
 
 * Pro zbývající tři konzistence úrovně okno neaktuálnost je do značné míry závisí na velikosti pracovní zátěže. Například, pokud neexistují žádné operace zápisu na databázi, operace čtení se **konečné**, **relace**, nebo **konzistentní předpona** úrovně konzistence je pravděpodobně poskytne stejné výsledky jako operace čtení se úroveň silná konzistence.
 
-Pokud váš účet služby Cosmos DB má nakonfigurovanou úrovně konzistence, než je silná konzistence, můžete najít na více systémů pravděpodobnost, že vaši klienti mohou získat silné a konzistentních čtení pro vaše úlohy pohledem na pravděpodobnostní omezená Neaktuálnost (PBS) Metrika. Tato metrika je zveřejněný na webu Azure Portal najdete další informace najdete v tématu [použití metrika PBS](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric) článku.
+Pokud váš účet služby Cosmos DB má nakonfigurovanou úrovně konzistence, než je silná konzistence, můžete najít na více systémů pravděpodobnost, že vaši klienti mohou získat silné a konzistentních čtení pro vaše úlohy pohledem na pravděpodobnostní omezená Neaktuálnost (PBS) Metrika. Tato metrika je zveřejněný na webu Azure Portal najdete další informace najdete v tématu [monitorovat metriky probabilistically omezená neaktuálnost](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
 
 Pravděpodobnostní omezená neaktuálnost ukáže, jak konečné konzistenci typu případné. Tato metrika poskytuje přehled o tom, jak často, získáte silnější konzistence než úroveň konzistence, kterou jste právě nakonfigurovali na účtu služby Cosmos DB. Jinými slovy můžete vidět pravděpodobnost (měřeno v milisekundách) získávání silně konzistentních čtení pro kombinaci zápisu a oblasti čtení.
 
@@ -63,4 +63,4 @@ Další informace o úrovních konzistence v následujících článcích:
 * [Mapování úrovní konzistence napříč API služby Cosmos DB](consistency-levels-across-apis.md)
 * [Dostupnost a výkon kompromisy pro různé úrovně konzistence](consistency-levels-tradeoffs.md)
 * [Jak spravovat tokenu relace pro aplikaci](how-to-manage-consistency.md#utilize-session-tokens)
-* [Jak monitorovat metriky Probabilistically omezená Neaktuálnost (PBS)](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)
+* [Sledovat metriku probabilistically omezená neaktuálnost](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric)

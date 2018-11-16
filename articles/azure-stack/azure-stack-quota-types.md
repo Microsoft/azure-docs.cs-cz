@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ec84c87e047d6426d24ef339d1247c6cb53954dd
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 17326fa60160e084d4c30347b1a765d1f80d01f5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299415"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711527"
 ---
 # <a name="quota-types-in-azure-stack"></a>Typy kvót ve službě Azure Stack
 
@@ -35,6 +35,8 @@ ms.locfileid: "51299415"
 | Maximální počet jader virtuálního počítače | 100 | Maximální počet jader, které předplatné můžete vytvořit v tomto umístění (třeba virtuální počítač A3 má čtyři jádra). |
 | Maximální počet skupin dostupnosti | 10 | Maximální počet skupin dostupnosti, které lze vytvořit v tomto umístění. |
 | Maximální počet virtuálních počítačů škálovacích sad | 100 | Maximální počet škálovacích sad virtuálních počítačů, které lze vytvořit v tomto umístění. |
+| Maximální kapacita (v GB) spravovaných disků úrovně standard | 2 048 | Maximální kapacita spravované disky úrovně standard, vytvořené v tomto umístění. |
+| Maximální kapacita spravovaný disk úrovně premium (v GB) | 2 048 | Maximální kapacita premium spravované disky, které lze vytvořit v tomto umístění. |
 
 ## <a name="storage-quota-types"></a>Typy kvót úložiště 
 | **Položka** | **Výchozí hodnota** | **Popis** |
@@ -49,13 +51,13 @@ ms.locfileid: "51299415"
 ## <a name="network-quota-types"></a>Typy kvót sítě
 | **Položka** | **Výchozí hodnota** | **Popis** |
 | --- | --- | --- |
-| Maximální počet veřejných IP adres |50 |Maximální počet veřejných IP adres, které předplatné může vytvořit v tomto umístění. |
-| Maximální počet virtuálních sítí |50 |Maximální počet virtuálních sítí, které předplatné můžete vytvořit v tomto umístění. |
-| Maximální počet brány virtuální sítě |1 |Maximální počet brány virtuální sítě (VPN Gateway), které předplatného můžete vytvořit v tomto umístění. |
-| Maximální počet síťových připojení |2 |Maximální počet síťových připojení (point-to-point nebo site-to-site), které předplatné můžete vytvořit přes všechny brány virtuální sítě v tomto umístění. |
-| Maximální počet nástrojů pro vyrovnávání zatížení |50 |Maximální počet nástrojů pro vyrovnávání zatížení, které předplatné můžete vytvořit v tomto umístění. |
-| Maximální počet síťových karet |100 |Maximální počet síťových rozhraní, které předplatné můžete vytvořit v tomto umístění. |
-| Maximální počet skupin zabezpečení sítě |50 |Maximální počet skupin zabezpečení sítě, které předplatné můžete vytvořit v tomto umístění. |
+| Maximální veřejné IP adresy |50 |Maximální počet veřejných IP adres, které předplatné může vytvořit v tomto umístění. |
+| Maximální virtuální sítě |50 |Maximální počet virtuálních sítí, které předplatné můžete vytvořit v tomto umístění. |
+| Maximální virtuální síťové brány |1 |Maximální počet brány virtuální sítě (VPN Gateway), které předplatného můžete vytvořit v tomto umístění. |
+| Maximální síťová připojení |2 |Maximální počet síťových připojení (point-to-point nebo site-to-site), které předplatné můžete vytvořit přes všechny brány virtuální sítě v tomto umístění. |
+| Nástroje pro vyrovnávání zatížení maximální |50 |Maximální počet nástrojů pro vyrovnávání zatížení, které předplatné můžete vytvořit v tomto umístění. |
+| Maximální síťových adaptérů |100 |Maximální počet síťových rozhraní, které předplatné můžete vytvořit v tomto umístění. |
+| Skupiny zabezpečení sítě maximální |50 |Maximální počet skupin zabezpečení sítě, které předplatné můžete vytvořit v tomto umístění. |
 
 ## <a name="view-an-existing-quota"></a>Zobrazit existující kvótu
 1. Na výchozí řídicí panel portálu pro správu, vyhledejte **poskytovatelů prostředků** dlaždici.

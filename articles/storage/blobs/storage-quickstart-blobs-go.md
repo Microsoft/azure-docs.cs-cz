@@ -6,14 +6,14 @@ author: seguler
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/23/2018
+ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: d3f6f2c9a1ca5016eb9a6597ba32dc1471f77cb4
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: 2939bd5c7b32cc9fe05326ee72dbb7367a72ef7f
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038320"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711153"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
 
@@ -21,17 +21,20 @@ V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahráv
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu Rychlý start je potřeba: 
-* Nainstalovat jazyk [Go verze 1.8 nebo vyšší](https://golang.org/dl/).
-* Stáhnout a nainstalovat [sadu Azure Storage Blob SDK pro jazyk Go](https://github.com/azure/azure-storage-blob-go/) pomocí příkazu `go get -u github.com/Azure/azure-storage-blob-go/azblob`. 
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-> [!NOTE]
-> Nezapomeňte pro Azure v adrese URL použít velká písmena. Pokud to neuděláte, při práci s touto sadou SDK mohou nastat problémy při importu, které souvisejí s použitím velkých a malých písmen. Velká písmena musíte použít také pro Azure v příkazech pro import.
+Ujistěte se, že máte nainstalované následující další požadavky:
+ 
+* [Go verze 1.8 nebo vyšší](https://golang.org/dl/)
+* [Azure Storage Blob SDK for Go](https://github.com/azure/azure-storage-blob-go/), pomocí následujícího příkazu:
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+    ```
+    go get -u github.com/Azure/azure-storage-blob-go/azblob
+    ``` 
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
-
+    > [!NOTE]
+    > Ujistěte se, že můžete využít `Azure` v adrese URL, aby nedocházelo k problémům souvisejícím s případ import při práci se sadou SDK. Také využijte `Azure` v příkazech pro import.
+    
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) použitá v tomto rychlém startu je základní aplikace v jazyce Go.  
 
@@ -242,6 +245,6 @@ Prohlédněte si tyto další zdroje informací o vývoji v jazyce Go s využit�
 - Prohlédněte si a nainstalujte [zdrojový kód klientské knihovny pro jazyk Go](https://github.com/Azure/azure-storage-blob-go) pro službu Azure Storage na GitHubu.
 - Prozkoumejte [ukázky pro úložiště objektů blob](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#pkg-examples) napsané s využitím klientské knihovny pro jazyk Go.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
  
 V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí jazyka Go. Další informace o sadě Azure Storage Blob SDK najdete ve [zdrojovém kódu](https://github.com/Azure/azure-storage-blob-go/) a [referenčních materiálech k rozhraní API](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob).

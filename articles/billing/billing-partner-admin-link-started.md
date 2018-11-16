@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 57ffb30296e5dbede11e23c40041c42e00444c4c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 13748bf23ee70bfa77e15e7112b450637a231742
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686990"
+ms.locfileid: "51710711"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Propojení ID partnera k účtům Azure
 
@@ -124,7 +124,7 @@ Připojte se k diskusi v [komunitě partnerů Microsoft](https://aka.ms/PALdiscu
 
 **Kdo může propojit ID partnera?**
 
-Každý uživatel od partnerské organizace, který spravuje zákazníka prostředků můžete propojit ID partnera účtu.
+Každý uživatel od partnerské organizace, který spravuje prostředky Azure zákazníka můžete propojit ID partnera účtu.
 
 **Jakmile je propojený ID partnera. můžete ho změnit?**
 

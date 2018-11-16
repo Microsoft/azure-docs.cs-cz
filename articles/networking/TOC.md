@@ -35,7 +35,7 @@
 # Postup
 ## Připojení k internetu
 ### [Veřejné servery vyrovnávání zatížení sítě](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Veřejné servery vyrovnávání zatížení aplikace](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Veřejné servery vyrovnávání zatížení aplikace](../application-gateway/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Ochrana webových aplikací](../application-gateway/application-gateway-web-application-firewall-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Distribuce přenosu mezi umístění](../traffic-manager/traffic-manager-configure-geographic-routing-method.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## Interní připojení

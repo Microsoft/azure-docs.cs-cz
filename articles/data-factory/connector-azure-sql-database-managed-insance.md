@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 11/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 87ca7c10095f12c82137b6287fbb895c97676062
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 561e672436c38cd0b3e637b794662483fc630676
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49459026"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706717"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database Managed Instance pomocí služby Azure Data Factory
 
@@ -115,7 +115,7 @@ Pro kopírování dat z/do Azure SQL Database Managed Instance, nastavte vlastno
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ datové sady, musí být nastavena na: **SqlServerTable** | Ano |
-| tableName |Název tabulky nebo zobrazení v instanci databáze na propojenou službu. | Ano |
+| tableName |Název tabulky nebo zobrazení v instanci databáze na propojenou službu. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad**
 
@@ -155,7 +155,6 @@ Ke zkopírování dat z Azure SQL Database Managed Instance, nastavte typ zdroje
 
 - Pokud **sqlReaderQuery** je určená pro SqlSource, spustí aktivita kopírování tohoto dotazu na zdroji Managed Instance se mají získat data. Alternativně můžete zadat uložené procedury tak, že zadáte **sqlReaderStoredProcedureName** a **storedProcedureParameters** (Pokud uložená procedura parametry).
 - Pokud nezadáte vlastnost "sqlReaderQuery" nebo "sqlReaderStoredProcedureName", sloupce definované v oddílu "struktura" datové sady JSON se používají k vytvoření dotazu (`select column1, column2 from mytable`) ke spuštění Managed Instance. Pokud není definice datové sady "struktura", jsou vybrány všechny sloupce z tabulky.
-- Při použití **sqlReaderStoredProcedureName**, stále je třeba zadat fiktivní **tableName** vlastnost v datové sadě JSON.
 
 **Příklad: Použití jazyka SQL**
 
@@ -491,7 +490,7 @@ Při kopírování dat z/do Azure SQL Database Managed Instance, se používají
 | DateTimeOffset |DateTimeOffset |
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte] |
-| plovoucí desetinnou čárkou |Double |
+| Float |Double |
 | image |Byte] |
 | int |Datový typ Int32 |
 | peníze |Decimal |

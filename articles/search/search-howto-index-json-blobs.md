@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.openlocfilehash: a4689093508c3287e60da9d4668393e71211fbdd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 0dbf8a44007fbba39f6ac4c20e375a6d13ac9021
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405698"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711068"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexování objektů BLOB JSON pomocí indexeru Azure Search blob
 V tomto článku se dozvíte, jak nakonfigurovat indexer Azure Search blob k extrakci Strukturovaný obsah z objektů BLOB JSON ve službě Azure Blob storage.
@@ -24,11 +24,8 @@ Objekty BLOB JSON ve službě Azure Blob storage jsou obvykle jednotlivý dokume
 | Dokument JSON | parsingMode | Popis | Dostupnost |
 |--------------|-------------|--------------|--------------|
 | Jeden objekt blob | `json` | Analyzuje objektů BLOB JSON jako jediný neodkazovaný blok textu. Každý objekt blob JSON se změní na jeden dokument Azure Search. | Obecně dostupná v obou [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) a [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) rozhraní API. |
-| Více na jeden objekt blob | `jsonArray` | Analyzuje pole JSON v objektu blob, kde každý prvek pole se změní na samostatné dokument Azure Search.  | Ve verzi preview v [REST api-version =`2017-11-11-Preview` ](search-api-2017-11-11-preview.md) a [.NET SDK ve verzi Preview](https://aka.ms/search-sdk-preview). |
+| Více na jeden objekt blob | `jsonArray` | Analyzuje pole JSON v objektu blob, kde každý prvek pole se změní na samostatné dokument Azure Search.  | Obecně dostupná v obou [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) a [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) rozhraní API. |
 
-> [!Note]
-> Rozhraní API ve verzi Preview jsou určené pro testování a hodnocení a neměli byste používat v produkčním prostředí.
->
 
 ## <a name="setting-up-json-indexing"></a>Nastavení JSON indexování
 Indexování objektů BLOB JSON je podobný extrakce běžný dokument v pracovním postupu třemi částmi společné pro všechny indexery ve službě Azure Search.
@@ -103,9 +100,9 @@ Plně zadaný požadavek může vypadat takto:
 
 Jak je uvedeno, nejsou nutné mapování polí. Zadaný index s "text", "datePublished a"značek"polí, objekt blob indexer lze odvodit správné mapování bez pole mapování v požadavku.
 
-## <a name="how-to-parse-json-arrays-preview"></a>Jak parsovat JSON pole (preview)
+## <a name="how-to-parse-json-arrays"></a>Jak analyzovat pole JSON
 
-Alternativně se můžete rozhodnout pro funkce ve verzi preview pole JSON. Tato možnost je užitečná, pokud objekty BLOB obsahují *pole objektů JSON*, a chcete, aby každý prvek stane samostatnou dokumentů Azure Search. Například s ohledem následujících objektů blob JSON, která můžete naplnit index Azure Search pomocí tří samostatných dokumentů, každý s pole "id" a "text".  
+Alternativně se můžete rozhodnout pro funkci pole JSON. Tato možnost je užitečná, pokud objekty BLOB obsahují *pole objektů JSON*, a chcete, aby každý prvek stane samostatnou dokumentů Azure Search. Například s ohledem následujících objektů blob JSON, která můžete naplnit index Azure Search pomocí tří samostatných dokumentů, každý s pole "id" a "text".  
 
     [
         { "id" : "1", "text" : "example 1" },
@@ -115,9 +112,9 @@ Alternativně se můžete rozhodnout pro funkce ve verzi preview pole JSON. Tato
 
 ### <a name="indexer-definition-for-a-json-array"></a>Definice indexeru pro pole JSON
 
-Pro pole JSON, indexer požadavek používá rozhraní API ve verzi preview a `jsonArray` analyzátor. Jedná se pouze dva požadavky pole specifické pro indexování objektů BLOB JSON.
+Pro pole JSON, indexer požadavek používá `jsonArray` analyzátor. Jedná se pouze dva požadavky pole specifické pro indexování objektů BLOB JSON.
 
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: de464cfeca01e492139e8bf9679d8f9876eedda6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 14a33a6480cdb2dbc19b912d51eebda386c55d75
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625619"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713159"
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 
@@ -241,5 +241,5 @@ Váš nový datový tarif se zobrazí pásu karet portálu OMS v horní části 
 ## <a name="next-steps"></a>Další postup
 * Zobrazit [přehled agenta Log Analytics](log-analytics-agent-overview.md) ke shromažďování dat z počítačů ve vašem datovém centru nebo jiných cloudovém prostředí.
 * V článku [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md) najdete informace o konfiguraci shromažďování dat z virtuálních počítačů Azure.  
-* Článek [Přidání řešení Log Analytics z galerie řešení](../monitoring/monitoring-solutions.md) popisuje přidání funkcí a shromažďování dat.
+* Článek [Přidání řešení Log Analytics z galerie řešení](../azure-monitor/insights/solutions.md) popisuje přidání funkcí a shromažďování dat.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: fbbdc4a67cd6f2e7d74031f7acc584bf0004bea4
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.openlocfilehash: 43cf9f5ec0f9c265efa0e59eadbf6c9bbe4f7c3f
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085372"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51682875"
 ---
 # <a name="advanced-resource-graph-queries"></a>Pokročilé dotazy na Resource Graph
 
@@ -72,7 +72,7 @@ Search-AzureRmGraph -Query "project tags | summarize buildschema(tags)"
 ## <a name="vm-regex"></a>Virtuální počítače odpovídající regulárnímu výrazu
 
 Tento dotaz vyhledá virtuální počítače, které odpovídají [regulárnímu výrazu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (označovanému jako _regulární výraz_).
-Odpovídající **regulární výraz @** nám umožňuje definovat regulární výraz tak, aby odpovídal, což je **^Contoso(.*)[0-9]+$**. Tato definice regulárního výrazu je vysvětlena jako:
+**Odpovídá regulárnímu @** umožňuje definovat regulární výraz tak, aby odpovídaly, což je `^Contoso(.*)[0-9]+$`. Tato definice regulárního výrazu je vysvětlena jako:
 
 - `^` – Porovnání musí začít na začátku řetězce.
 - `Contoso` – Řetězec s rozlišováním velkých a malých písmen.
@@ -99,7 +99,7 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 Search-AzureRmGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Zobrazit ukázky [Starter dotazy](starter.md)
 - Další informace o [dotazovacím jazyku](../concepts/query-language.md)

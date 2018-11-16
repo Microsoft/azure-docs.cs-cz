@@ -12,6 +12,8 @@
 | Architektura aplikace |32 bitů |32 bitů |32-bit/64-bit |32-bit/64-bit |32-bit/64-bit |32-bit/64-bit |
 | Webové sokety každou instanci<sup>7</sup> |5 |35 |350 |Unlimited |Unlimited |Unlimited |
 | Souběžné [připojení ladicího programu](../articles/app-service/web-sites-dotnet-troubleshoot-visual-studio.md) na aplikaci. |1 |1 |1 |5 |5 |5 |
+| Certifikáty App Service na jedno předplatné<sup>10</sup>| Nepodporuje se | Nepodporuje se |10 |10 |10 |10 |
+| Vlastní domény na aplikaci</a> |0 (pouze subdoména azurewebsites.net)|500 |500 |500 |500 |500 |
 | Vlastní domény [podpora protokolu SSL](../articles/app-service/app-service-web-tutorial-custom-ssl.md) |Nepodporuje se. Pro certifikát se zástupným znakem *. azurewebsites.net ve výchozím nastavení dostupné.|Nepodporuje se. Pro certifikát se zástupným znakem *. azurewebsites.net ve výchozím nastavení dostupné.|Neomezené možnosti připojení SNI SSL |Neomezený počet SNI SSL a 1 IP SSL. připojení zahrnuté |Neomezený počet SNI SSL a 1 IP SSL. připojení zahrnuté | Neomezený počet SNI SSL a 1 IP SSL. připojení zahrnuté|
 | Integrovaný nástroj Load Balancer | |X |X |X |X |X<sup>9</sup> |
 | [Always On](../articles/app-service/web-sites-configure.md) | | |X |X |X |X |
@@ -21,15 +23,15 @@
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) podpory | |X |X |X |X |X |
 | [Monitorování koncových bodů](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [Pracovní sloty](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |20 |
-| Vlastní domény na aplikaci</a> |0 (pouze subdoména azurewebsites.net)|500 |500 |500 |500 |500 |
-| SLA | |  |99,9 % |99,95 %|99,95 %|99,95 %|
+| SLA | |  |99,9 % |99,95 %|99,95 %|99,95 %|  
 
-<sup>1</sup>aplikací a kvót úložiště jsou za plán služby App Service, pokud není uvedeno jinak.  
-<sup>2</sup>skutečný počet aplikací, které můžete hostovat na těchto počítačích závisí na aktivity aplikací, velikosti instance počítačů a odpovídajících využití prostředků.  
-<sup>3</sup>vyhrazené instance může být různě velká. Zobrazit [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/) další podrobnosti.  
-<sup>4</sup>další se povolují na žádost.
-<sup>5</sup>limitu úložiště je celková velikost obsahu mezi všemi aplikacemi v rámci stejného plánu služby App Service. Více možností úložiště jsou k dispozici v [služby App Service Environment](../articles/app-service/environment/app-service-web-configure-an-app-service-environment.md#storage)  
-<sup>6</sup>tyto prostředky jsou omezeny fyzické prostředky na vyhrazených instancích (velikost instance a počtu instancí).  
-<sup>7</sup>škálovat aplikace na úrovni Basic na dvě instance, kdy máte 350 souběžných připojení pro každou z obou instancí.  
-<sup>8</sup>spouštět vlastní spustitelné soubory nebo skripty na požádání, podle plánu nebo nepřetržitě jako úlohu na pozadí v rámci vaší služby App Service instance. U nepřetržitého provádění úloh WebJobs se vyžaduje stálé připojení. Pro plánované úlohy WebJobs se vyžaduje Azure Scheduler na úrovni Free nebo Standard. Neexistuje žádné předdefinované omezení počtu webových úloh, které můžete spustit v instanci služby App Service, ale existují praktickým limitům, které jsou závislé na co se kód aplikace snaží udělat.   
-<sup>9</sup>SKU izolované aplikace služby se budou moct být interní Vyrovnávání zatížení (ILB) pomocí Azure Load Balancer, to znamená bez veřejného připojení z Internetu. Následkem toho se některé služby ILB App Service v izolovaném prostředí musí používat v počítačích, které mají přímé připojení ke koncovému bodu sítě ILB.
+<sup>1</sup> aplikací a kvót úložiště jsou za plán služby App Service, pokud není uvedeno jinak.  
+<sup>2</sup> skutečný počet aplikací, které můžete hostovat na těchto počítačích závisí na aktivity aplikací, velikosti instance počítačů a odpovídajících využití prostředků.  
+<sup>3</sup> vyhrazené instance může být různě velká. Zobrazit [App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/) další podrobnosti.  
+<sup>4</sup> další se povolují na žádost.  
+<sup>5</sup> limitu úložiště je celková velikost obsahu mezi všemi aplikacemi v rámci stejného plánu služby App Service.  
+<sup>6</sup> tyto prostředky jsou omezeny fyzické prostředky na vyhrazených instancích (velikost instance a počtu instancí).  
+<sup>7</sup> škálovat aplikace na úrovni Basic na dvě instance, kdy máte 350 souběžných připojení pro každou z obou instancí.  
+<sup>8</sup> spouštět vlastní spustitelné soubory nebo skripty na požádání, podle plánu nebo nepřetržitě jako úlohu na pozadí v rámci vaší služby App Service instance. U nepřetržitého provádění úloh WebJobs se vyžaduje stálé připojení. Pro plánované úlohy WebJobs se vyžaduje Azure Scheduler na úrovni Free nebo Standard. Neexistuje žádné předdefinované omezení počtu webových úloh, které můžete spustit v instanci služby App Service, ale existují praktickým limitům, které jsou závislé na co se kód aplikace snaží udělat.  
+<sup>9</sup> SKU izolované aplikace služby se budou moct být interní Vyrovnávání zatížení (ILB) pomocí Azure Load Balancer, to znamená bez veřejného připojení z Internetu. Následkem toho se některé služby ILB App Service v izolovaném prostředí musí používat v počítačích, které mají přímé připojení ke koncovému bodu sítě ILB.  
+<sup>10</sup> prostřednictvím žádosti o podporu do maximálního počtu 200 je možné zvýšit kvótu App Service Certificate na jedno předplatné.  

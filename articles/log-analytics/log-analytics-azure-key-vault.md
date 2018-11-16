@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: d8f2fd40712017cb7f44156b8735ee93e123fcd2
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9645833d939ffedf70185eb33c3d84ca181b9d6a
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016144"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711969"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Řešení Azure Key Vault Analytics ve službě Log Analytics
 
@@ -38,7 +38,7 @@ Pokud chcete používat řešení, budete muset povolit protokolování diagnost
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 Pomocí následujících pokynů k instalaci a konfiguraci řešení Azure Key Vault:
 
-1. Povolení řešení Azure Key Vault z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).
+1. Povolení řešení Azure Key Vault z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../azure-monitor/insights/solutions.md).
 2. Povolení diagnostického protokolování pro Key Vault prostředky pro monitorování, buď pomocí [portál](#enable-key-vault-diagnostics-in-the-portal) nebo [prostředí PowerShell](#enable-key-vault-diagnostics-using-powershell)
 
 ### <a name="enable-key-vault-diagnostics-in-the-portal"></a>Povolení diagnostiky na portálu služby Key Vault
@@ -136,7 +136,7 @@ V lednu 2017 změnit podporovaným způsobem odesílání protokolů ze služby 
 Použití aktualizované řešení:
 
 1. [Konfigurovat diagnostiku, která se pošle přímo ke službě Log Analytics ze služby Key Vault](#enable-key-vault-diagnostics-in-the-portal)  
-2. Povolení řešení Azure Key Vault pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md)
+2. Povolení řešení Azure Key Vault pomocí procesu popsaného v [přidání řešení Log Analytics z Galerie řešení](../azure-monitor/insights/solutions.md)
 3. Aktualizovat všechny uložené dotazy, řídicí panely nebo výstrahy k použití nového datového typu
   + Typ se liší od: KeyVaults k AzureDiagnostics. Elementu ResourceType můžete použít k filtrování pro protokoly Key Vault.
   - Místo: `KeyVaults`, použijte `AzureDiagnostics | where ResourceType'=="VAULTS"`

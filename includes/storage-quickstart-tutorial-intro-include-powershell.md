@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 027b370d2497822dcbd6f3958556357957f9e8f5
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964658"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51817875"
 ---
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

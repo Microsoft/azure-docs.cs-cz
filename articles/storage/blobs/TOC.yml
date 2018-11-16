@@ -11,34 +11,34 @@ items:
   items:
   - name: vytvořit účet úložiště
     href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-  - name: Práce s objekty blob – - Azure Portal
-    href: storage-quickstart-blobs-portal.md
-  - name: Práce s objekty blob – Průzkumník služby Storage
-    href: storage-quickstart-blobs-storage-explorer.md
-  - name: Práce s objekty blob – PowerShell
-    href: storage-quickstart-blobs-powershell.md
-  - name: Práce s objekty blob – rozhraní příkazového řádku
-    href: storage-quickstart-blobs-cli.md
-  - name: Práce s objekty blob – .NET
-    href: storage-quickstart-blobs-dotnet.md
-  - name: Práce s objekty blob – Java (Storage SDK V10)
-    href: storage-quickstart-blobs-java-v10.md
-  - name: Práce s objekty blob – Java (Storage SDK V7)
-    href: storage-quickstart-blobs-java.md
-  - name: Práce s objekty blob – Python
-    href: storage-quickstart-blobs-python.md
-  - name: Práce s objekty blob – Go
-    href: storage-quickstart-blobs-go.md
-  - name: Práce s objekty blob – Ruby
-    href: storage-quickstart-blobs-ruby.md
-  - name: Práce s objekty blob – Node.js (Storage SDK v10)
-    href: storage-quickstart-blobs-nodejs-v10.md
-  - name: Práce s objekty blob – Node.js (Storage SDK v2)
-    href: storage-quickstart-blobs-nodejs.md
-  - name: Práce s objekty blob – JS/HTML
-    href: storage-quickstart-blobs-javascript-client-libraries.md
-  - name: Práce s objekty blob – PHP
-    href: storage-quickstart-blobs-php.md
+  - name: Správa objektů blob bez kódu
+    items:
+    - name: portál Azure
+      href: storage-quickstart-blobs-portal.md
+    - name: Storage Explorer
+      href: storage-quickstart-blobs-storage-explorer.md
+    - name: PowerShell
+      href: storage-quickstart-blobs-powershell.md
+    - name: Rozhraní příkazového řádku
+      href: storage-quickstart-blobs-cli.md
+  - name: Vývoj s využitím objektů blob
+    items:
+    - name: .NET
+      href: storage-quickstart-blobs-dotnet.md
+    - name: Java (Storage SDK V10)
+      href: storage-quickstart-blobs-java-v10.md
+    - name: Python
+      href: storage-quickstart-blobs-python.md
+    - name: Přejít
+      href: storage-quickstart-blobs-go.md
+    - name: Ruby
+      href: storage-quickstart-blobs-ruby.md
+    - name: Node.js (Storage SDK v10)
+      href: storage-quickstart-blobs-nodejs-v10.md
+    - name: JS/HTML
+      href: storage-quickstart-blobs-javascript-client-libraries.md
+    - name: PHP
+      href: storage-quickstart-blobs-php.md
 - name: Kurzy
   items:
   - name: Nahrání a zpracování obrázku
@@ -295,7 +295,7 @@ items:
         href: ../common/storage-import-export-file-format-log.md
 - name: Postup
   items:
-  - name: Vývoj
+  - name: Vývoj s využitím objektů blob
     items:
     - name: REST
       href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -305,6 +305,12 @@ items:
       href: storage-ios-how-to-use-blob-storage.md
     - name: Xamarin
       href: storage-xamarin-blob-storage.md
+    - name: Starší verze sad SDK
+      items:
+      - name: Java (Storage SDK V7)
+        href: storage-quickstart-blobs-java.md
+      - name: Node.js (Storage SDK v2)
+        href: storage-quickstart-blobs-nodejs.md
   - name: Spravovat
     items:
     - name: PowerShell pro Azure Storage
@@ -461,9 +467,9 @@ items:
       href: https://github.com/Azure/azure-storage-ruby
     - name: iOS
       href: https://github.com/Azure/azure-storage-ios
-ms.openlocfilehash: b4dbce75cab97213cdee9f248c245e4dd9fcf74f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d0273edd4660fb0b646844022205243a0af3b6b9
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634035"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712071"

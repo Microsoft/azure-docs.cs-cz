@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: a38532d7a411080feb637549288bdad036a11153
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 78d081fe3ba2bfa4b598dfb0cc62c03d66d3d356
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011047"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712309"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -103,7 +103,7 @@ Network Performance Monitor používá k monitorování výkonu sítě mezi zdro
 
 ### <a name="configure-the-solution"></a>Konfigurovat řešení 
 
-1. Přidat do pracovního prostoru z řešení Network Performance Monitor [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Také můžete použít postup v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md). 
+1. Přidat do pracovního prostoru z řešení Network Performance Monitor [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Také můžete použít postup v [přidání řešení Log Analytics z Galerie řešení](../azure-monitor/insights/solutions.md). 
 2. Otevřete váš pracovní prostor Log Analytics a vyberte **přehled** dlaždici. 
 3. Vyberte **Network Performance Monitor** dlaždici s touto zprávou *řešení vyžaduje další konfiguraci*.
 

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 65f740e23b68727bdffa4a966518b1581fb5b0a6
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: a3c5c26f43fddf5d23df3bee0b0511e865b7e71b
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604361"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705918"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Rychlý start: Blokování přístupu, když se zjistí ohrožení relace s podmíněným přístupem Azure Active Directory  
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky 
 
-K dokončení scénáře, který v tomto kurzu, budete potřebovat:
+K dokončení scénáře v tomto kurzu budete potřebovat:
 
 - **Přístup k Azure AD Premium P2 edice** – podmíněný přístup je schopnost Azure AD Premium P1, P2 edition musíte protože scénář v tomto kurzu rychlý start vyžaduje Identity Protection. 
 
@@ -81,7 +81,7 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 
 **Ke konfiguraci zásady podmíněného přístupu:**
 
-1. Přihlaste se k vaší [webu Azure portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
 
 2. Na webu Azure Portal, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory**. 
 
@@ -168,7 +168,7 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje. 
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnocení Simulovaná přihlášení
 
-Teď, když jste nakonfigurovali zásady podmíněného přístupu, budete pravděpodobně chtít vědět, jestli funguje podle očekávání. Jako první krok, použijte podmíněný přístup **co když nástroj zásad** simulace u přihlášení z testovacího uživatele. Simulace odhad dopadu tomto přihlášení na zásady a generuje sestavy simulace.  
+Teď, když jste nakonfigurovali zásady podmíněného přístupu, pravděpodobně chcete zjistit, jestli fungují podle očekávání. Jako první krok, použijte podmíněný přístup **co když nástroj zásad** simulace u přihlášení z testovacího uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace.  
 
 Při spuštění **co když nástroj zásad** pro tento scénář **blokovat přístup k úrovni střední riziko** by měl být uvedený **zásady, které budou platit**. 
 
@@ -193,7 +193,7 @@ Při spuštění **co když nástroj zásad** pro tento scénář **blokovat př
 3. Klikněte na tlačítko **co když**.
 
 
-## <a name="test-your-conditional-access-policy"></a>Otestovat své zásady podmíněného přístupu
+## <a name="test-your-conditional-access-policy"></a>Otestování zásady podmíněného přístupu
 
 V předchozí části jste zjistili, jak vyhodnotit simulované přihlášení. Kromě simulaci byste měli také otestovat své zásady podmíněného přístupu, abyste měli jistotu, že funguje podle očekávání. 
 
@@ -212,7 +212,7 @@ Pokud už je nepotřebujete, odstraňte testovacího uživatele, prohlížeč To
 
     ![Ověřování pomocí služby Multi-Factor Authentication](./media/app-sign-in-risk/33.png)
 
-- Pokyny k odebrání Tor prohlížeči najdete v tématu [odinstalace](https://tb-manual.torproject.org/en-US/uninstalling.html).
+- Pokyny k odebrání Tor prohlížeči najdete v tématu [odinstalace](https://tb-manual.torproject.org/uninstalling/).
 
 ## <a name="next-steps"></a>Další postup
 
