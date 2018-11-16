@@ -6,22 +6,22 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 09/19/2018
+ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 4aa78fe91d5813e9b1fa8abd30c8b8720ea510e4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 68d03a5e37559c6db2955cc966d4f074c9adbe64
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278393"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711238"
 ---
 # <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript-preview"></a>Rychlý start: Nahrání, stažení, vypsání a odstranění objektů blob pomocí sady Azure Storage v10 SDK pro JavaScript (verze Preview)
 
 V tomto rychlém startu se dozvíte, jak sadu [Azure Storage v10 SDK pro JavaScript](https://github.com/Azure/azure-storage-js) v Node.js použít k nahrání, stažení, vypsání a odstranění objektů blob a správě kontejnerů.
 
-K dokončení tohoto rychlého startu potřebujete [předplatné Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 
@@ -343,10 +343,10 @@ console.log(`Container "${containerName}" is deleted`);
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Veškerá data zapsaná do účtu úložiště se automaticky odstraní na konci této ukázky kódu. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento rychlý start ukazuje, jak spravovat objekty blob a kontejnery v úložišti objektů blob v Azure pomocí Node.js. Další informace o práci s touto sadou SDK najdete v úložišti GitHubu.
 
 > [!div class="nextstepaction"]
 > [Úložiště sady Azure Storage v10 SDK pro JavaScript](https://github.com/Azure/azure-storage-js)
-> [Referenční informace k rozhraní JavaScript API](https://docs.microsoft.com/en-us/javascript/api/overview/azure/storage/client?view=azure-node-preview)
+> [Referenční informace k rozhraní JavaScript API](https://docs.microsoft.com/javascript/api/overview/azure/storage/client?view=azure-node-preview)

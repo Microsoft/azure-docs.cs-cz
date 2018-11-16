@@ -10,6 +10,7 @@ items:
     displayName: architecture
     href: concept-azure-machine-learning-architecture.md
   - name: Co se děje s Workbenchem?
+    displayName: desktop
     href: overview-what-happened-to-workbench.md
   expanded: true
 - name: Šablony Rychlý start
@@ -32,7 +33,7 @@ items:
   items:
   - name: Poznámkové bloky Jupyter (GitHub)
     displayName: example, examples
-    href: http://aka.ms/aml-notebooks
+    href: https://aka.ms/aml-notebooks
 - name: Koncepty
   items:
   - name: Správa modelů
@@ -49,7 +50,7 @@ items:
   - name: Nastavení vývojového prostředí 
     items:
     - name: Konfigurace prostředí
-      displayName: local, remote
+      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm
       href: how-to-configure-environment.md
     - name: Nástroje VS Code pro AI
       displayName: Visual Studio Code, vscode
@@ -71,7 +72,7 @@ items:
   - name: Trénování modelů
     items:
     - name: Nastavení prostředí trénování
-      displayName: compute target, train
+      displayName: compute target, dsvm, Data Science Virtual Machine, batchai, batch ai, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: Přístup k datům při trénování
       href: how-to-access-data.md
@@ -83,11 +84,12 @@ items:
       - name: TensorFlow
         href: how-to-train-tensorflow.md
     - name: Ladění hyperparametrů
+      displayName: parameter
       href: how-to-tune-hyperparameters.md
     - name: Sledování experimentů a metrik
       href: how-to-track-experiments.md
   - name: Automatizace strojového učení
-    displayName: automl
+    displayName: automl, auto ml
     href: how-to-automated-ml.md
     items:
     - name: Konfigurace automatizovaného trénování
@@ -101,6 +103,7 @@ items:
   - name: Modely nasazení
     items:
     - name: Kam se mají modely nasadit
+      displayName: publish
       href: how-to-deploy-and-where.md
     - name: Nasazení do ACI
       displayName: Azure Container Instances
@@ -126,17 +129,21 @@ items:
     - name: Monitorování pomocí Application Insights
       href: how-to-enable-app-insights.md
   - name: Správa kvót prostředků
+    displayName: limits
     href: how-to-manage-quotas.md
   - name: Použití CLI služby Machine Learning
-    displayName: cli, command line, command-line
+    displayName: cli, command line, command-line, az,
     href: reference-azure-machine-learning-cli.md
 - name: Referenční informace
   items:
   - name: Sada Machine Learning SDK
-    href: http://aka.ms/aml-sdk
+    displayName: api, core, package
+    href: https://aka.ms/aml-sdk
   - name: Sada SDK pro přípravu dat
-    href: http://aka.ms/data-prep-sdk
+    displayName: api, preparation, package
+    href: https://aka.ms/data-prep-sdk
   - name: Sada SDK pro monitorování
+    displayName: api, package
     href: https://aka.ms/aml-monitoring-sdk
 - name: Zdroje a prostředky
   items:
@@ -147,12 +154,14 @@ items:
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
   - name: Poznámky k verzi
+    displayName: what's new
     href: azure-machine-learning-release-notes.md
   - name: Známé problémy
     href: resource-known-issues.md
   - name: Získat podporu
     href: support-for-aml-services.md
   - name: Export a odstranění dat
+    displayName: gdpr
     href: how-to-export-delete-data.md
   - name: Zastaralé dokumenty
     items:
@@ -161,7 +170,7 @@ items:
       href: how-to-migrate.md
     - name: Export nebo odstranění dat účtu (zastaralé)
       href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
-    - name: Rychlý start pro aplikaci Workbench
+    - name: Rychlý start pro aplikaci Workbench (zastaralé)
       href: ../desktop-workbench/quickstart-installation.md
     - name: 'Kurz 1: Příprava dat'
       href: ../desktop-workbench/tutorial-classifying-iris-part-1.md
@@ -357,9 +366,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Starší problémy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 87379b773b353f4f384252a9840f1e75d595e37b
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 62bc2016ec9294c00f20587cb6f6f7af7bafa599
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613626"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706649"

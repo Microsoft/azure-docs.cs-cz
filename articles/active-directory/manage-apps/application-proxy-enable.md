@@ -8,34 +8,51 @@ manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 11/14/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 59ca9ca7711904fe7882aac4878bd62c597645d8
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9a869055613da6465a9beda9b8edc1bf812b6dfe
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034962"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712105"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Začínáme s Proxy aplikace a nainstalujte konektor
-Tento článek vás provede postupem, který umožňuje povolit proxy aplikace u cloudového adresáře služby Microsoft Azure AD.
+Tento článek vás provede kroky k povolení Proxy aplikace ve službě Azure Active Directory (Azure AD).
 
 Pokud si nejste vědomi výhody zabezpečení a produktivitu Proxy aplikací přináší pro vaši organizaci, přečtěte si více o [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](application-proxy.md).
 
-## <a name="application-proxy-prerequisites"></a>Požadavky na proxy aplikace
-Předtím, než budete moct povolit a používat služby proxy aplikace, musíte mít:
+## <a name="prerequisites"></a>Požadavky
+Pokud chcete povolit Proxy aplikací, budete potřebovat:
 
-* [Základní nebo prémiové předplatné služby Microsoft Azure AD](../fundamentals/active-directory-whatis.md) a adresář služby Azure AD, u kterého jste globální správce.
-* Serveru se systémem Windows Server 2012 R2 nebo 2016, na který nainstalujete konektor Proxy aplikace. Server musí být schopný se připojit k Proxy aplikace služby v cloudu a místních aplikací, které publikujete.
-  * Pro jednotné přihlašování pro aplikace publikované pomocí omezeného delegování protokolu Kerberos tento počítač by měl být připojených k doméně ve stejné doméně AD jako aplikace, které publikujete. Informace najdete v tématu [KCD pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
-* Protokol TLS 1.2 používá podkladový operační systém. Chcete-li změnit na TLS 1.2, postupujte podle kroků v [povolení protokolu TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect). Když je obsah pro Azure AD Connect, tento postup je stejný pro všechny klienty .NET.
+* A [základní nebo prémiové předplatné služby Microsoft Azure AD](https://azure.microsoft.com/pricing/details/active-directory). 
+* Účet správce aplikace.
 
-Pokud vaše organizace používá proxy servery pro připojení k Internetu, přečtěte si [práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md) podrobnosti o tom, jak je nakonfigurovat před zahájením práce s Proxy aplikací.
+### <a name="windows-server"></a>Windows server
+Potřebujete server s Windows serverem 2012 R2 nebo novější na kterých je nainstalován konektor Proxy aplikací. Server potřebuje pro připojení k Proxy aplikace služby v Azure a místních aplikací, které publikujete.
+
+Windows server musí mít TLS 1.2 zapnutý předtím, než nainstalujete konektor Proxy aplikací. Existující konektory se starším než 1.5.612.0 budou nadále fungovat na dřívější verze TLS až do odvolání. Povolení protokolu TLS 1.2:
+
+1. Nastavte následující klíče registru:
+    
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
+    ```
+
+2. Restartujte server
+
+Pro jednotné přihlašování k aplikacím, které používají delegování Contrained protokolu Kerberos (KCD) Windows server a aplikace, kterou publikujete musí být ve stejné doméně služby Active Directory. Další informace najdete v tématu [KCD pro jednotné přihlašování s Proxy aplikací](application-proxy-configure-single-sign-on-with-kcd.md).
+  
+### <a name="proxy-servers"></a>Proxy servery
+
+Pokud vaše organizace používá proxy servery pro připojení k Internetu, musíte je nakonfigurovat pro Proxy aplikací.  Další informace najdete v tématu [práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md). 
+
+
 
 ## <a name="open-your-ports"></a>Otevřete váš porty
 

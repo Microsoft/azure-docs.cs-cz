@@ -6,14 +6,14 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/1/2018
+ms.date: 11/14/2018
 ms.author: trinadhk
-ms.openlocfilehash: cf06fc9c12493e208832596a27b479dc9dfea942
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: de7c00717349a1c814c5a13508adb11879aa10a5
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011319"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51704643"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Použití řízení přístupu na základě rolí ke správě body obnovení Azure Backup
 Řízení přístupu na základě role v Azure umožňuje přesnou správu přístupu. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
@@ -41,7 +41,7 @@ Následující tabulka udává akce správy zálohování a odpovídající mini
 | | Přispěvatel virtuálních počítačů | Prostředek virtuálního počítače |
 | Zálohování virtuálního počítače na vyžádání | Operátor zálohování | Prostředek trezoru pro obnovení |
 | Obnovení virtuálního počítače | Operátor zálohování | Trezor služby Recovery Services |
-| | Přispěvatel virtuálních počítačů | Skupina prostředků, ve kterém bude nasazen virtuální počítač |
+| | Přispěvatel | Skupina prostředků, ve kterém bude nasazen virtuální počítač |
 | | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač zálohoval |
 | Obnovit zálohování nespravovaných disků virtuálních počítačů | Operátor zálohování | Prostředek trezoru pro obnovení |
 | | Přispěvatel virtuálních počítačů | Zdrojový virtuální počítač zálohoval |

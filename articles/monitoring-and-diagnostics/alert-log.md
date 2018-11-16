@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f7122c6147af2ed1af1f3b5e08458fd73f9aef6d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 74b9673d7ef9dedbcc34682d4707103e696bece3
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279092"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711697"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -132,7 +132,7 @@ Níže uvedené části proto najdete podrobnosti o použití šablony Resource 
 ### <a name="azure-resource-template-for-log-analytics"></a>Šablony Azure Resource ke službě Log Analytics
 Upozornění protokolů pro Log Analytics jsou vytvořené pravidly upozornění, na kterých běží uložené výsledky hledání v pravidelných intervalech. Pokud výsledky dotazu porovnávání zadaným kritériím, vytvoří záznam o upozornění a spuštění jednu nebo více akcí. 
 
-Prostředek šablony pro uložené výsledky hledání a využitím upozornění Log analytics Log analytics jsou k dispozici v části dokumentace ke službě Log Analytics. Další informace najdete v tématu, [přidání Log Analytics uložené hledání a výstrahy](../monitoring/monitoring-solutions-resources-searches-alerts.md), který obsahuje ilustrativní ukázky, jakož i informace o schématu.
+Prostředek šablony pro uložené výsledky hledání a využitím upozornění Log analytics Log analytics jsou k dispozici v části dokumentace ke službě Log Analytics. Další informace najdete v tématu, [přidání Log Analytics uložené hledání a výstrahy](../azure-monitor/insights/solutions-resources-searches-alerts.md), který obsahuje ilustrativní ukázky, jakož i informace o schématu.
 
 ### <a name="azure-resource-template-for-application-insights"></a>Šablony Azure Resource na Application Insights
 Upozornění protokolu pro prostředky Application Insights má typ `Microsoft.Insights/scheduledQueryRules/`. Další informace v tomto typu prostředku, naleznete v tématu [Azure Monitor – reference k rozhraní API naplánované pravidla dotazu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).

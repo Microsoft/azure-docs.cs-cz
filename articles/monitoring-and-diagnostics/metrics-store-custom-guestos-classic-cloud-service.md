@@ -8,14 +8,15 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 30b08062aa360c4a43dc1bfe9f574447b58521f5
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 7f10495e22cf6750fdc5891d760885a238175da8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095207"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711770"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Odeslání metrik hostovaného operačního systému do Azure monitoru metriky uložit klasické cloudové služby 
+
 Díky nástroji Azure Monitor [diagnostické rozšíření](azure-diagnostics.md), můžete shromažďovat metriky a protokoly z hostovaný operační systém (Guest OS) spuštěná jako virtuální počítač, cloudovou službu nebo clusteru Service Fabric. Rozšíření mohla odesílat telemetrii na [různými umístěními.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
 Tento článek popisuje postup pro odesílání metriky výkonu hostovaného operačního systému pro Azure classic cloudové služby k úložišti metrik Azure monitoru. Spouští se s diagnostikou verze 1.11, můžete napsat metriky přímo do Azure monitoru ukládat metriky, kde již shromažďuje metriky na standard platformy. 
@@ -23,16 +24,14 @@ Tento článek popisuje postup pro odesílání metriky výkonu hostovaného ope
 Ukládání v tomto umístění umožňuje přístup k stejné akce, které můžou pro metriky platformy. Akce zahrnují téměř v reálném čase výstrahy, grafů, směrování, přístup z rozhraní REST API a další.  Diagnostické rozšíření v minulosti zapsala do služby Azure Storage, ale ne k úložišti dat monitorování Azure.  
 
 Proces, který je popsaný v tomto článku platí jenom pro čítače výkonu v cloudových službách Azure. Nebude fungovat pro další vlastní metriky. 
-   
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musí být [Správce služeb nebo spolupracující správce](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) v rámci předplatného Azure. 
+- Musí být [Správce služeb nebo spolupracující správce](~/articles/billing/billing-add-change-azure-subscription-administrator.md) v rámci předplatného Azure. 
 
 - Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal). 
 
 - Musíte mít buď [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) nebo [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) nainstalované.
-
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Zřizování cloudové služby a úložiště účtu 
 
@@ -42,15 +41,13 @@ Proces, který je popsaný v tomto článku platí jenom pro čítače výkonu v
 
    ![Klíče účtu úložiště](./media/metrics-store-custom-guestos-classic-cloud-service/storage-keys.png)
 
-
-
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu 
 
 Vytvořit instanční objekt ve vašem tenantovi Azure Active Directory pomocí pokynů na adrese [použití portálu k vytvoření aplikace Azure Active Directory a instančního objektu, který má přístup k prostředkům](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Když budete na tomto procesu, mějte na paměti následující: 
 
-  - Můžete vložit libovolnou adresu URL pro adresu URL přihlášení.  
-  - Vytvořte nový tajný kód klienta pro tuto aplikaci.  
-  - Uložte klíč a ID klienta pro použití v dalších krocích.  
+- Můžete vložit libovolnou adresu URL pro adresu URL přihlášení.  
+- Vytvořte nový tajný kód klienta pro tuto aplikaci.  
+- Uložte klíč a ID klienta pro použití v dalších krocích.  
 
 Dejte aplikaci vytvořenou v předchozím kroku *monitorování metrik vydavatele* oprávnění ke generování metrik pro požadovaný prostředek. Pokud máte v plánu používat aplikace a vygenerovat vlastní metriky s mnoha prostředky, můžete udělit tato oprávnění na úrovni skupiny nebo předplatného resource.  
 
@@ -136,7 +133,7 @@ Nakonec v privátní konfigurace, přidejte *účet služby Azure Monitor* oddí
     </AzureMonitorAccount> 
 </PrivateConfig> 
 ```
- 
+
 Uložte tento soubor diagnostiky místně.  
 
 ## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Nasazení rozšíření diagnostiky ke cloudové službě 
@@ -153,19 +150,19 @@ Pomocí následujících příkazů ukládat podrobnosti o účtu úložiště, 
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
- 
+
 Podobně nastavte diagnostiky cestu k souboru na proměnnou pomocí následujícího příkazu:
 
 ```PowerShell
 $diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
- 
+
 Nasazení rozšíření diagnostiky do cloudové služby pomocí diagnostiky souboru s jímka Azure monitoru, který je nakonfigurovaný pomocí následujícího příkazu:  
 
 ```PowerShell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
- 
+
 > [!NOTE] 
 > Je stále povinné a použijte účet úložiště jako součást instalace diagnostického rozšíření. Všechny protokoly nebo čítače výkonu, které jsou uvedeny v souboru konfigurace diagnostiky se zapisují do zadaný účet úložiště.  
 
@@ -190,7 +187,5 @@ Pomocí dimenzí, filtrování a rozdělování možnosti zobrazíte celkové pa
  ![Metriky Azure portal](./media/metrics-store-custom-guestos-classic-cloud-service/metrics-graph.png)
 
 ## <a name="next-steps"></a>Další postup
+
 - Další informace o [vlastní metriky](metrics-custom-overview.md).
-
-
-

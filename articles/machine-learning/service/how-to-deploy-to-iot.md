@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 7d706cf71761496fd740c729224ee4331eeb2911
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: dc6119bdca850a71064795a80f3087c15189a2e5
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091619"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51709997"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Příprava na nasazení modelů v prostředí IoT Edge
 
@@ -27,7 +27,7 @@ Před nasazením modelu do hraničního zařízení, postupujte podle kroků v t
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://aka.ms/AMLfree).
 
 * Pracovní prostor služby Azure Machine Learning. Pokud chcete jeden vytvořit, postupujte podle kroků v [Začínáme se službou Azure Machine Learning](quickstart-get-started.md) dokumentu.
 

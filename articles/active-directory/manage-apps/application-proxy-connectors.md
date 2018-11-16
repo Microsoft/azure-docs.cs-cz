@@ -2,25 +2,21 @@
 title: Principy konektorů Proxy aplikací Azure AD | Dokumentace Microsoftu
 description: Popisuje základní informace o konektory Proxy aplikací Azure AD.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.custom: it-pro
-ms.openlocfilehash: 62738cda8ce37ec7ca50e1e3f285dc71a37113f7
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 66fb98c166c8a0f4cec9f3b7e7be73fce6466b50
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036033"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713108"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -32,7 +28,23 @@ Konektory jsou zjednodušené agentů nacházejí v místním usnadnění odchoz
 
 ## <a name="requirements-and-deployment"></a>Požadavky a nasazení
 
-Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat alespoň jeden konektor, ale doporučujeme dva nebo více pro větší odolnost proti chybám. Konektor nainstalujte na Windows Server 2012 R2 nebo 2016 počítače. Konektor musí být schopni komunikovat se službou Proxy aplikací, jakož i u místních aplikací, které publikujete. Proxy aplikací také vyžaduje protokol TLS 1.2 používá podkladový operační systém. Chcete-li změnit na TLS 1.2, postupujte podle kroků v [povolení protokolu TLS 1.2](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#enable-tls-12-for-azure-ad-connect). Když je obsah pro Azure AD Connect, tento postup je stejný pro všechny klienty .NET.
+Pokud chcete úspěšně nasadit Proxy aplikace, budete potřebovat alespoň jeden konektor, ale doporučujeme dva nebo více pro větší odolnost proti chybám. Konektor nainstalujte na Windows Server 2012 R2 nebo 2016 počítače. Konektor musí být schopni komunikovat se službou Proxy aplikací, jakož i u místních aplikací, které publikujete. 
+
+### <a name="windows-server"></a>Windows server
+Potřebujete server s Windows serverem 2012 R2 nebo novější na kterých je nainstalován konektor Proxy aplikací. Server potřebuje pro připojení k Proxy aplikace služby v Azure a místních aplikací, které publikujete.
+
+Windows server musí mít TLS 1.2 zapnutý předtím, než nainstalujete konektor Proxy aplikací. Existující konektory se starším než 1.5.612.0 budou nadále fungovat na dřívější verze TLS až do odvolání. Povolení protokolu TLS 1.2:
+
+1. Nastavte následující klíče registru:
+    
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319] "SchUseStrongCrypto"=dword:00000001
+    ```
+
+2. Restartujte server
+
 
 Další informace o požadavcích na síť pro konektor serveru najdete v tématu [začít pracovat s Proxy aplikací a nainstalovat konektor](application-proxy-enable.md).
 

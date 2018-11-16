@@ -2,8 +2,7 @@
 title: Azure instalace ovladačů v instancích N-series GPU pro Windows | Dokumentace Microsoftu
 description: Jak nastavit ovladače NVIDIA GPU pro virtuální počítače řady N-series běží Windows Server nebo Windows v Azure
 services: virtual-machines-windows
-documentationcenter: ''
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4d259c7f9a139b3c31d96e75d588c7be162189c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 551d9da51abaeddfd22c72748a552ba0ae155de6
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033242"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51707006"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalace ovladačů NVIDIA GPU na virtuální počítače řady N-series s Windows 
 
@@ -51,13 +50,13 @@ Chcete-li zjistit stav zařízení GPU, spusťte [nvidia smi](https://developer.
 
 1. Otevřete příkazový řádek a přejděte **C:\Program Files\NVIDIA Corporation\NVSMI** adresáře.
 
-2. Spusťte `nvidia-smi`. Pokud je nainstalován ovladač se zobrazí výstup podobný následujícímu. Všimněte si, že **využití GPU** ukazuje **0 %** Pokud aktuálně používáte úlohu GPU na virtuálním počítači. Podrobnosti o GPU a verze ovladače se může lišit od těch, které jsou zobrazeny.
+2. Spusťte `nvidia-smi`. Pokud je nainstalovaný ovladač, zobrazí se výstup podobný následujícímu. **Využití GPU** ukazuje **0 %** Pokud aktuálně používáte úlohu GPU na virtuálním počítači. Podrobnosti o GPU a verze ovladače se může lišit od těch, které jsou zobrazeny.
 
 ![Stav zařízení NVIDIA](./media/n-series-driver-setup/smi.png)  
 
 ## <a name="rdma-network-connectivity"></a>Připojení k síti přístup RDMA
 
-Připojení k síti přístup RDMA dá nastavit pro virtuální počítače řady N-series s podporou RDMA, jako je NC24r nasazené ve stejné skupině dostupnosti nebo v jediné skupiny umístění ve škálovací sadě virtuálních počítačů. Rozšíření HpcVmDrivers musí přidat k instalaci ovladačů zařízení sítě Windows, které umožňují připojení RDMA. Chcete-li přidat rozšíření virtuálního počítače do virtuálních počítačů řady N-series podporou RDMA, použijte [prostředí Azure PowerShell](/powershell/azure/overview) rutiny pro Azure Resource Manageru.
+Připojení k síti přístup RDMA dá nastavit pro RDMA podporovat virtuální počítače řady N-series například NC24r nasazené ve stejné skupině dostupnosti nebo v jediné skupiny umístění ve škálovací sadě virtuálních počítačů. Rozšíření HpcVmDrivers musí přidat k instalaci ovladačů zařízení sítě Windows, které umožňují připojení RDMA. Chcete-li přidat rozšíření virtuálního počítače do virtuálních počítačů řady N-series podporou RDMA, použijte [prostředí Azure PowerShell](/powershell/azure/overview) rutiny pro Azure Resource Manageru.
 
 Chcete-li nainstalovat nejnovější verzi 1.1 HpcVMDrivers rozšíření na existující virtuální počítač s podporou RDMA s názvem můjvp přesměrovat v oblasti USA – západ:
   ```PowerShell

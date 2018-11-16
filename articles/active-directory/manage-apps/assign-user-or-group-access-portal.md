@@ -2,25 +2,21 @@
 title: Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory | Dokumentace Microsoftu
 description: Jak vybrat podnikové aplikace přiřadit uživatele nebo skupiny k němu ve službě Azure Active Directory
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/05/2018
+ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: luleon
-ms.openlocfilehash: ee0b14123e193f219e403d2608368c27f953013d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b6b7408b4efe4c3271ea2ddeb63a499bee670976
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037970"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711306"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory
 Přiřadit uživatele nebo skupinu pro podnikové aplikace, musí mít příslušná oprávnění ke správě podnikové aplikace a musíte být globální správce adresáře.
@@ -32,7 +28,7 @@ Přiřadit uživatele nebo skupinu pro podnikové aplikace, musí mít příslu�
 > For Applications Microsoftu (jako jsou například aplikace Office 365) přiřazení uživatelů k podnikové aplikace pomocí Powershellu.
 
 
-## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Jak přiřadit přístup uživatelů k podnikové aplikace na webu Azure Portal?
+## <a name="assign-a-user-to-an-app---portal"></a>Přiřazení uživatele k aplikaci – portál
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
 2. Vyberte **všechny služby**, v textovém poli zadejte Azure Active Directory a pak vyberte **Enter**.
 3. Vyberte **podnikové aplikace**.
@@ -51,7 +47,25 @@ Přiřadit uživatele nebo skupinu pro podnikové aplikace, musí mít příslu�
 10. Na **přidat přiřazení** okně vyberte **Role**. Potom na **vybrat roli** okno, vyberte roli použít na vybrané uživatele nebo skupiny, a potom vyberte **OK** tlačítko v dolní části okna.
 11. Na **přidat přiřazení** okno, vyberte **přiřadit** tlačítko v dolní části okna. Přiřazení uživatelé nebo skupiny mají oprávnění určené vybranou roli pro tuto aplikaci enterprise.
 
-## <a name="how-do-i-assign-a-user-to-an-enterprise-app-using-powershell"></a>Jak přiřadit uživatele k podnikové aplikace pomocí Powershellu?
+## <a name="allow-all-users-to-access-an-app---portal"></a>Povolit všem uživatelům přístup k aplikaci – portál
+Chcete-li povolit všem uživatelům přístup k aplikaci:
+
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce.
+2. Vyberte **všechny služby**, v textovém poli zadejte Azure Active Directory a pak vyberte **Enter**.
+3. Vyberte **podnikové aplikace**.
+4. Na **podnikové aplikace** okně vyberte **všechny aplikace**. Tady se uvádí aplikace, které můžete spravovat.
+5. Na **podnikové aplikace – všechny aplikace** okno, vyberte aplikaci.
+6. Na ***appname*** okně vyberte **vlastnosti**.
+7. Na  ***appname* – vlastnosti** okno, nastavte **přiřazení uživatelů povinné?** nastavení **ne**. 
+
+**Přiřazení uživatelů povinné?** možnost:
+
+- Nemá vliv, zda se zobrazí aplikace na přístupovém panelu aplikací nebo ne. Zobrazit aplikace na přístupovém panelu, musíte přiřadit odpovídajícího uživatele nebo skupiny k aplikaci.
+- Funkce pouze s cloudovými aplikacemi, které jsou nakonfigurované pro jednotné přihlašování SAML a místní aplikace, konfigurované pomocí Proxy aplikace. Zobrazit [jednotného přihlašování pro aplikace](what-is-single-sign-on.md).
+- Vyžaduje, aby uživatelé udělit souhlas k aplikaci. Správce může udělit souhlas pro všechny uživatele.  Zobrazit [konfigurovat koncovým uživatelům způsob, jak vyjádřit souhlas aplikace](configure-user-consent.md).
+
+
+## <a name="assign-a-user-to-an-app---powershell"></a>Přiřazení uživatele k aplikaci – PowerShell
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními prostředí Windows PowerShell.
 

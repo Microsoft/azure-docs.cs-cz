@@ -7,22 +7,22 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
-ms.date: 10/07/2018
+ms.date: 10/15018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 75384aed8c354cf2d549d92cdb75f87038f33ab8
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425951"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713261"
 ---
 # <a name="change-a-maintenance-schedule"></a>Změnit plán údržby 
 
 ## <a name="portal"></a>Portál
 Plán údržby můžete aktualizovat nebo kdykoli změnit. Pokud je vybraná instance prostřednictvím active údržby cyklu, nastavení se uloží. Po budete své aktivaci během dalšího období údržby identifikovaní. [Další informace](https://docs.microsoft.com/azure/service-health/resource-health-overview) o monitorování služby data warehouse během události údržby aktivní. 
 
-Plány údržby Azure jsou ve verzi preview, vyberte dva časová období údržby v období 7 dnů. Každé časové období údržby, může být tři až osm hodin. Údržba může probíhat kdykoli během časového období údržby, ale nedojde mimo časová okna bez předchozího upozornění. Budete také zaznamenáte stručný ke ztrátě připojení jako službu na váš datový sklad nasadí nový kód. 
+Použití plány údržby, musíte vybrat dvě okna údržby v období 7 dnů. Každé časové období údržby, může být tři až osm hodin. Údržba může probíhat kdykoli během časového období údržby, ale nedojde mimo časová okna bez předchozího upozornění. Budete také zaznamenáte stručný ke ztrátě připojení jako službu na váš datový sklad nasadí nový kód. 
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>Určení primárního a sekundárního systému windows
 

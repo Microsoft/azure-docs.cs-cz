@@ -9,12 +9,12 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 29d673f48671ec917e45b7ff76feeebf0b868c4b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 0b61b107e495bb42c6c4cadda35fe9099c612948
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426885"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711731"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>Kurz: Trénování klasifikačního modelu pomocí automatizovaného strojového učení ve službě Azure Machine Learning
 
@@ -34,7 +34,7 @@ Dozvíte se, jak provést tyto akce:
 > * Revize výsledků trénování
 > * Registrace nejlepšího modelu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
@@ -531,7 +531,7 @@ plt.show()
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu ke službě Azure Machine Learning jste pomocí Pythonu provedli následující úlohy:
 

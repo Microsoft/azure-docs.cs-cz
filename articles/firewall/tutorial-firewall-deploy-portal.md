@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/9/2018
+ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 02805f676a5ea9edbfa619c625bb11e94e16c12e
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: HT
+ms.openlocfilehash: 1d7c880a56c79d516c3904c3f532eb7006f0b68c
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299992"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705833"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -97,46 +97,36 @@ Vytvořte další podsíť s názvem **Jump-SN** a rozsahem adres **10.0.3.0/24*
 
 Teď vytvoříte virtuální počítače pro jump server a server úloh a umístíte je do příslušných podsítí.
 
-1. Na domovské stránce webu Azure Portal klikněte na **Všechny služby**.
-2. V části **Compute** klikněte na **Virtuální počítače**.
-3. Klikněte na **Přidat** > **Windows Server** > **Windows Server 2016 Datacenter** > **Vytvořit**.
+1. Na webu Azure Portal klikněte na **Vytvořit prostředek**.
+2. Klikněte na tlačítko **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v seznamu vybrané.
+3. Zadejte pro virtuální počítač tyto hodnoty:
 
-**Základy**
+    - *Test-FW-RG* pro skupinu prostředků.
+    - *SRV Jump* – název virtuálního počítače.
+    - *azureuser* – uživatelské jméno správce.
+    - *Azure123456!* – jako heslo.
 
-1. Jako **Název** zadejte **Srv-Jump**.
-5. Zadejte uživatelské jméno a heslo.
-6. V části **Předplatné** vyberte své předplatné.
-7. V části **Skupina prostředků** klikněte na **Použít existující** > **Test-FW-RG**.
-8. V části **Umístění** vyberte dříve použité umístění.
-9. Klikněte na **OK**.
+4. V části **příchozí pravidla portů**, pro **veřejné příchozí porty**, klikněte na tlačítko **povolit vybrané porty**.
+5. Pro **vyberte příchozí porty**vyberte **protokolu RDP (3389)**.
 
-**Velikost**
-
-1. Zvolte vhodnou velikost pro testovací virtuální počítač s Windows Serverem. Například **B2ms** (8 GB paměti RAM, 16 GB úložiště).
-2. Klikněte na **Vybrat**.
-
-**Nastavení**
-
-1. V části **Sítě** jako **Virtuální síť** vyberte **Test-FW-VN**.
-2. V části **Podsíť** vyberte **Jump-SN**.
-3. V části **Vyberte veřejné příchozí porty** vyberte **RDP (3389)**. 
-
-    Přístup k vaší veřejné IP adrese budete chtít omezit, ale potřebujete otevřít port 3389, abyste se mohli k jump serveru připojit pomocí vzdálené plochy. 
-2. Ostatní výchozí nastavení ponechte a klikněte na **OK**.
-
-**Souhrn**
-
-Zkontrolujte souhrn a potom klikněte na **Vytvořit**. Dokončení tohoto procesu může několik minut trvat.
+6. Přijměte ostatní výchozí hodnoty a klikněte na tlačítko **Další: disky**.
+7. Přijměte výchozí nastavení disku a klikněte na tlačítko **Další: sítě**.
+8. Ujistěte se, že **Test-FW VN** vybraná virtuální síť a podsíť je **Jump-SN**.
+9. Pro **veřejnou IP adresu**, klikněte na tlačítko **vytvořit nový**.
+10. Typ **Srv. Jump PIP** veřejnou IP adresu, název a klikněte na **OK**.
+11. Přijměte ostatní výchozí hodnoty a klikněte na tlačítko **Další: Správa**.
+12. Klikněte na tlačítko **vypnout** zakažte diagnostiku spouštění. Přijměte ostatní výchozí hodnoty a klikněte na tlačítko **revize + vytvořit**.
+13. Zkontrolujte nastavení na stránce Souhrn a pak klikněte na tlačítko **vytvořit**.
 
 Celý postup zopakujte a vytvořte další virtuální počítač s názvem **Srv-Work**.
 
-Informace z následující tabulky použijte ke konfiguraci **Nastavení** virtuálního počítače Srv-Work. Zbývající část konfigurace je stejná jako u virtuálního počítače Srv-Jump.
+Pomocí informací v následující tabulce se nakonfigurovat virtuální počítač Srv práce. Zbývající část konfigurace je stejná jako u virtuálního počítače Srv-Jump.
 
 |Nastavení  |Hodnota  |
 |---------|---------|
 |Podsíť|Workload-SN|
 |Veřejná IP adresa|Žádný|
-|Vyberte veřejné příchozí porty|Žádné veřejné příchozí porty|
+|Veřejné příchozí porty|Žádný|
 
 ## <a name="deploy-the-firewall"></a>Nasazení brány firewall
 

@@ -38,7 +38,7 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Časové razítko</th>
+<th>Timestamp</th>
 <th></th>
 </tr>
 <tr>
@@ -122,7 +122,7 @@ Následující příklad ukazuje, jednoduché tabulky návrhu k uložení entity
 </table>
 
 
-Zatím Tenhle návrh bude vypadat nějak tabulky v relační databázi s hlavní rozdíly jsou povinné sloupce a umožnit ukládání více typů entit ve stejné tabulce. Kromě toho, uživatelem definované vlastnosti, jako **FirstName** nebo **stáří** má datový typ, jako je například integer či string, stejně jako sloupec v relační databázi. I když na rozdíl od v relační databázi, bez schématu povaha služby Table service znamená, že vlastnost nemusí mít stejný datový typ. u každé entity. Pokud chcete uložit komplexních datových typů v jedné vlastnosti, musíte použít serializovaný formát jako je JSON nebo XML. Další informace o tabulce služby, například podporované datové typy, podporovaných rozsahů, pravidla pojmenování a omezením způsobeným velikostí najdete v tématu [Principy datového modelu služby Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Tato struktura se až dosud podobá tabulce v relační databázi, přičemž hlavní rozdíly jsou povinné sloupce a možnost ukládat více typů entit ve stejné tabulce. Navíc má každá uživatelem definovaná vlastnost (například **Jméno** nebo **Věk**) svůj datový typ (například integer nebo string), což odpovídá sloupcům v relační databázi. I když na rozdíl od v relační databázi, bez schématu povaha služby Table service znamená, že vlastnost nemusí mít stejný datový typ. u každé entity. Pokud chcete uložit komplexních datových typů v jedné vlastnosti, musíte použít serializovaný formát jako je JSON nebo XML. Další informace o tabulce služby, například podporované datové typy, podporovaných rozsahů, pravidla pojmenování a omezením způsobeným velikostí najdete v tématu [Principy datového modelu služby Table Service](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
 Jak se zobrazí, podle vašeho výběru **PartitionKey** a **RowKey** je zásadní pro návrh dobrý tabulky. Každá entita uložena v tabulce musí mít jedinečnou kombinaci **PartitionKey** a **RowKey**. Stejně jako u klíče v tabulce relační databáze, **PartitionKey** a **RowKey** hodnoty jsou indexovány pro vytvoření clusterovaného indexu umožňující rychlé look-ups; však služby Table service nevytvoří žádné sekundární indexy, jedná se pouze dvě indexované vlastnosti (některé vzory popsané dále zobrazit jak obejít tato omezení zřejmý).  
 

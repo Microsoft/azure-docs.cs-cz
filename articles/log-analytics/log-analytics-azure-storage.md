@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f9cc3033c476afe389cb52d3468facb9168fb920
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d7359c4c151d93dcd40bd475e865c76399ff5355
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006528"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711767"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -158,5 +158,5 @@ Galerie Azure šablony má [příklady použití Azure Automation](https://azure
 ## <a name="next-steps"></a>Další postup
 
 * [Použití úložiště objektů blob pro službu IIS a table storage pro události](log-analytics-azure-storage-iis-table.md) číst protokoly pro diagnostiku tohoto zápisu do table storage nebo protokoly IIS zapsána do úložiště objektů blob služby Azure.
-* [Povolení řešení](../monitoring/monitoring-solutions.md) k poskytování přehledů o data.
+* [Povolení řešení](../azure-monitor/insights/solutions.md) k poskytování přehledů o data.
 * [Pomocí vyhledávacích dotazů](log-analytics-queries.md) chcete analyzovat data.

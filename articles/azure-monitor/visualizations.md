@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 7a3545e3fdf37f33db4c3b77be6cf6d5db0f6aef
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e44d267fcc9986c5e215fc4844f49b28918a3111
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973571"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711918"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat ze služby Azure Monitor
 Tento článek obsahuje přehled dostupných metod k vizualizaci dat uložených ve službě Azure Monitor. Jedná se o [metriky v úložišti Azure metriky](../monitoring/monitoring-data-collection.md#metrics) a [dat protokolů v Log Analytics](../monitoring/monitoring-data-collection.md#logs). 
@@ -50,7 +50,7 @@ Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monito
 - Omezené kontextové procházení.
 
 ## <a name="azure-monitor-views"></a>Azure Monitor zobrazení
-[Zobrazení ve službě Azure Monitor](../log-analytics/log-analytics-view-designer.md) vám umožňují vytvářet vlastní vizualizace s objemu dat uložených ve službě Log Analytics. Jsou používány [řešení monitorování](../monitoring/monitoring-solutions.md) data můžete prezentovat tak jejich shromažďování.
+[Zobrazení ve službě Azure Monitor](../log-analytics/log-analytics-view-designer.md) vám umožňují vytvářet vlastní vizualizace s objemu dat uložených ve službě Log Analytics. Jsou používány [řešení monitorování](../azure-monitor/insights/solutions.md) data můžete prezentovat tak jejich shromažďování.
 
 ![Zobrazení](media/visualizations/view.png)
 

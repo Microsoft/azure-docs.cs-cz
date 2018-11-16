@@ -9,12 +9,12 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 10/24/2018
-ms.openlocfilehash: 95f74b23b9d0c89966347f066041b23f64f3b82c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210682"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51706802"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: architektura a koncepty
 
@@ -156,9 +156,9 @@ Experiment je seskupení mnoho spuštění z daného skriptu. Vždy patří do p
 
 Příklad použití experiment, najdete v článku [rychlý start: Začínáme se službou Azure Machine Learning](quickstart-get-started.md) dokumentu.
 
-## <a name="pipelines"></a>Kanály
+## <a name="pipeline"></a>Kanál
 
-Kanály se používají k vytváření a správě pracovních postupů, které spojit dohromady služby machine learning fází. Kanál může obsahovat například přípravy dat, trénování modelu, model nasazení a odvozování fází. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí.
+Strojového učení kanály se používají k vytváření a správě pracovních postupů, které spojit dohromady služby machine learning fází. Kanál může obsahovat například přípravy dat, trénování modelu, model nasazení a odvozování fází. Jednotlivé fáze může zahrnovat několik kroků, z nichž každý lze spustit bezobslužně v různých cílových výpočetních prostředí.
 
 Další informace o machine learning kanály pomocí této služby najdete v článku [kanály a Azure Machine Learning](concept-ml-pipelines.md).
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 08d17566faa61c5dcac01a49f99f0f39eb280946
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3092e8edf16e271826aef95575d92749b29f8b56
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009738"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711510"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitorování stavu replikace služby Active Directory pomocí služby Log Analytics
 
@@ -34,7 +34,7 @@ Balíček stavem replikace AD řešení pravidelně monitoruje prostředí služ
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
 * Musíte nainstalovat agenty na řadiče domény, které jsou členy domény, který se má vyhodnotit. Nebo, musíte nainstalovat agenty na členských serverech a konfigurace agentů k odesílání dat replikace AD do služby Log Analytics. Chcete-li pochopit, jak připojit počítače s Windows ke službě Log Analytics, přečtěte si téma [počítače Windows se připojit ke službě Log Analytics](log-analytics-windows-agent.md). Pokud řadiče domény už je součástí existujícího prostředí System Center Operations Manager, který chcete připojit ke službě Log Analytics, najdete v článku [připojení Operations Manageru k Log Analytics](log-analytics-om-agents.md).
-* Přidejte řešení pro stav replikace služby Active Directory do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidání řešení Log Analytics z Galerie řešení](../monitoring/monitoring-solutions.md).  Není nutná žádná další konfigurace.
+* Přidejte řešení pro stav replikace služby Active Directory do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidání řešení Log Analytics z Galerie řešení](../azure-monitor/insights/solutions.md).  Není nutná žádná další konfigurace.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Podrobnosti kolekce dat stavu replikace AD
 V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak data se shromažďují pro stav replikace AD.

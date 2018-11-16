@@ -7,17 +7,17 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 11/11/2018
+ms.date: 11/14/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 82f55c87c54fa5197a2bd5c24ea3863da1700c7b
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 1edac9f7eac1f47974f4c94f3cae5bb3451f92fd
+ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51579698"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51705374"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? . Října 2018
+# <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Říjen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v října 2018.
 
 ## <a name="devops-for-data-warehousing"></a>DevOps pro datové sklady
@@ -32,7 +32,7 @@ Pokročilé ladění pro Azure SQL Data Warehouse (SQL data Warehouse), stačí 
 2.  Distribuce tabulky – určuje, kdy se k replikaci tabulek pro omezení přesunu dat a zvýšení výkonu úloh. 
 3.  Databáze tempdb – Principy při škálování a nakonfigurovat prostředek třídy za účelem omezení kolizí databázi tempdb.
 
-Je hlubší integraci metriky datového skladu s [Azure Monitor](https://azure.microsoft.com/blog/enhanced-capabilities-to-monitor-manage-and-integrate-sql-data-warehouse-in-the-azure-portal/) včetně rozšířené přizpůsobitelný graf sledování pro téměř v reálném čase metrik v okně Přehled. Už, ponechte okno přehledu datového skladu přístup k metrikám monitorování Azure při monitorování využití, nebo Probíhá ověřování a uplatňovat doporučení datového skladu. Navíc k dispozici nové metriky, jako jsou databáze tempdb a adaptivní mezipaměti využití doplnit vaše doporučení k výkonu.
+Je hlubší integraci metriky datového skladu s [Azure Monitor](https://azure.microsoft.com/blog/enhanced-capabilities-to-monitor-manage-and-integrate-sql-data-warehouse-in-the-azure-portal/) včetně rozšířené přizpůsobitelný graf sledování pro téměř v reálném čase metrik v okně Přehled. Když monitorujete využití nebo ověřujete a využíváte doporučení pro datový sklad, pro přístup k metrikám Azure Monitoru už nemusíte opouštět okno s přehledem datového skladu. Navíc k dispozici nové metriky, jako jsou databáze tempdb a adaptivní mezipaměti využití doplnit vaše doporučení k výkonu.
 
 ## <a name="advanced-tuning-with-integrated-advisors"></a>Pokročilé ladění s integrované poradci
 Pokročilé ladění pro Azure SQL Data Warehouse (SQL data Warehouse), stačí je teď jednodušší s další data warehouse doporučení a metriky a verzí portálu přehled okna, která poskytuje integrované prostředí pomocí Azure Advisoru a Azure Monitor.
@@ -41,7 +41,7 @@ Pokročilé ladění pro Azure SQL Data Warehouse (SQL data Warehouse), stačí 
 Azure SQL Data Warehouse Accelerated databáze obnovení (ADR) je teď ve verzi Public Preview. Pravidla automatického nasazení je nový modul serveru SQL, která výrazně zlepšuje dostupnost databáze, zejména v přítomnost dlouhotrvající transakce, tak zcela realizace aktuální proces obnovení zdola nahoru. Hlavní výhody pravidla automatického nasazení se obnovení databáze rychlé a konzistentní vzhledem k aplikacím a odvolání okamžité transakce.
 
 ## <a name="azure-monitor-diagnostics-logs"></a>Protokoly diagnostiky Azure Monitor
-SQL Data Warehouse (SQL data Warehouse) teď umožňuje lepší přehled o analytické úlohy díky integraci přímo s diagnostické protokoly Azure monitoru. Tato nová funkce vývojářům umožňuje analyzovat chování úloh s za delší časové období a provádět informovaná rozhodnutí týkající se správy optimalizace nebo kapacity dotazu. Zavedli jsme teď na externí protokolování procesu prostřednictvím [diagnostické protokoly Azure monitoru](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) , poskytování dalších přehledů o vašich úloh datového skladu. Jediným kliknutím na tlačítko, je nyní možné konfigurace diagnostických protokolů pro řešení potíží s použitím možnosti výkonu dotazů na historii [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Diagnostické protokoly Azure monitoru podporu přizpůsobitelné období uložením protokoly do účtu úložiště pro účely auditování možnost streamování protokolů do služby event hubs téměř přehledy v reálném čase telemetrii a možnost Analýza protokolů pomocí služby Log Analytics s [protokolu dotazy](). Diagnostické protokoly se skládají z zobrazení telemetrie ekvivalentní nejčastěji používané výkonu pro SQL Data Warehouse odstraňování potíží v zobrazení dynamické správy datového skladu. Pro tato počáteční verze jsme povolili zobrazení pro následující systémová zobrazení dynamické správy:
+SQL Data Warehouse (SQL data Warehouse) teď umožňuje lepší přehled o analytické úlohy díky integraci přímo s diagnostické protokoly Azure monitoru. Tato nová funkce vývojářům umožňuje analyzovat chování úloh s za delší časové období a provádět informovaná rozhodnutí týkající se správy optimalizace nebo kapacity dotazu. Zavedli jsme teď na externí protokolování procesu prostřednictvím [diagnostické protokoly Azure monitoru](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json#logs) , poskytování dalších přehledů o vašich úloh datového skladu. Jediným kliknutím na tlačítko, je nyní možné konfigurace diagnostických protokolů pro řešení potíží s použitím možnosti výkonu dotazů na historii [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-queries). Diagnostické protokoly Azure monitoru podporu přizpůsobitelné období uložením protokoly do účtu úložiště pro účely auditování možnost streamování protokolů do služby event hubs téměř přehledy v reálném čase telemetrii a možnost Analýza protokolů pomocí služby Log Analytics s [protokolu dotazy](). Diagnostické protokoly se skládají z telemetrických zobrazení vašeho datového skladu, která jsou ekvivalentní nejčastěji využívaným zobrazením dynamické správy pro řešení potíží s výkonem pro SQL Data Warehouse. Pro tato počáteční verze jsme povolili zobrazení pro následující systémová zobrazení dynamické správy:
 
 - [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)
 - [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)
@@ -49,11 +49,8 @@ SQL Data Warehouse (SQL data Warehouse) teď umožňuje lepší přehled o analy
 - [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 - [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql)
 
-## <a name="instant-data-movement"></a>Přesun dat rychlé 
-Kromě Shuffle rychlé přesun dat teď rozšiřuje na vysílání a rozdělit na oddíly přesunout.
-
-## <a name="scale-up-column-store-columnstore-metadata-memory-management-sql-server"></a>Vertikálního navýšení Store sloupce: Správa paměti metadat Columnstore (SQL Server)
-Správa paměti optimalizované pro metadata úložiště sloupce 
+## <a name="columnstore-memory-management"></a>Správa paměti Columnstore
+Jak se zvyšuje počet skupin řádků komprimované sloupec úložiště, paměť požadovanou ke správě metadat segmentu interní sloupec pro tyto rowgroups zvyšuje.  V důsledku toho může snížit výkon dotazů a dotazy pro některé Columnstore dynamických zobrazení správy (DMV).  Vylepšení provedli v této verzi k optimalizaci velikosti interní metadata pro tyto případy, což vede k lepší prostředí a výkon těchto dotazů. 
 
 ## <a name="azure-data-lake-storage-gen2-integration-ga"></a>Integrace se službou Azure Data Lake Storage Gen2 (GA)
 Azure SQL Data Warehouse (SQL data Warehouse) teď má nativní integraci s Azure Data Lake Storage Gen2. Zákazníci mohou nyní načíst data pomocí externích tabulek z ABFS do SQL data Warehouse. Tato funkce umožňuje zákazníkům integrovat svoje datová jezera v Data Lake Storage Gen2. 

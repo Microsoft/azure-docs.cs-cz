@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 16b7de909ce57a7f8d3cea54a59996dc6f0a6ba0
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469909"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712003"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Použití "Převod textu na řeč" v Speech Service
 
@@ -92,7 +92,7 @@ Pokud dojde k chybě, se používají stavové kódy níže. Text odpovědi chyb
 429|Příliš mnoho žádostí|Překročili jste kvótu nebo počet požadavků pro vaše předplatné povolená.
 |502|Chybná brána    | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví.
 
-Další informace o textu k rozhraní REST API pro rozpoznávání řeči, naleznete v tématu [rozhraní REST API](rest-apis.md#text-to-speech).
+Další informace o textu k rozhraní REST API pro rozpoznávání řeči, naleznete v tématu [rozhraní REST API](rest-apis.md#text-to-speech-api).
 
 ## <a name="next-steps"></a>Další postup
 

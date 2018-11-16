@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 7ef7f6548cd3dd838889fd51ff0521428bbbc2aa
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f9acdacfad25a2154a23055dce136984177242e0
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282675"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51713006"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
 Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../log-analytics/log-analytics-data-sources.md) na agentech a také [shromažďovat data z Azure](../log-analytics/log-analytics-azure-storage.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
@@ -213,7 +213,7 @@ Při každém spuštění sady runbook [se vytvoří úloha](../automation/autom
 
 ## <a name="next-steps"></a>Další postup
 - Použití [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md) vytvořit zobrazení, zobrazení dat shromážděných v úložišti Log Analytics.
-- Vaše sada runbook v balíčku [řešení pro správu](monitoring-solutions-creating.md) distribuovat zákazníkům.
+- Vaše sada runbook v balíčku [řešení pro správu](../azure-monitor/insights/solutions-creating.md) distribuovat zákazníkům.
 - Další informace o [Log Analytics](https://docs.microsoft.com/azure/log-analytics/).
 - Další informace o [Azure Automation](https://docs.microsoft.com/azure/automation/).
 - Další informace o [rozhraní API kolekce dat HTTP](../log-analytics/log-analytics-data-collector-api.md).

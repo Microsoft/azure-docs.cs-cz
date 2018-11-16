@@ -10,37 +10,31 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: 088e581da7511797a0f39959d867c6298262462a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 8d36036332e939075ffac8763bec9c23d8e4a3f7
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242326"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51712887"
 ---
-# <a name="regions-of-the-speech-service"></a>Oblasti Speech Service
+# <a name="speech-service-supported-regions"></a>Speech Service podporované oblasti
 
-Speech Service je k dispozici v různých oblastech.
-Když vytvoříte odběr, můžete vybrat dostupnou oblast na základě vašich potřeb.
+Služba Speech umožňuje vaší aplikaci převod zvuku na text, překlad řeči a převod textu na řeč. Služba je k dispozici v několika oblastech pomocí jedinečných koncových bodů pro rozhraní API REST a sadou SDK pro řeč.
 
-Při použití předplatného máte účet pro oblast, kterou jste vybrali.
-
-## <a name="rest-api"></a>REST API
-
-Použití rozhraní REST API k výběru správné koncové body oblast.
-Zobrazit [rozhraní REST API](rest-apis.md) podrobnosti.
+Ujistěte se, že používáte koncového bodu, který se shoduje s oblastí pro vaše předplatné.
 
 ## <a name="speech-sdk"></a>Speech SDK
 
 V [sadou SDK pro řeč služby](speech-sdk.md), oblastí jsou určené jako řetězec (například jako parametr `SpeechConfig.FromSubscription` v sadou SDK pro řeč pro jazyk C#).
 
-### <a name="regions-for-speech-recognition-and-translation"></a>Oblasti pro rozpoznávání řeči a překladu
+### <a name="speech-recognition-and-translation"></a>Rozpoznávání řeči a překladu
 
-V následující tabulce jsou uvedeny dostupné oblasti pro **rozpoznávání řeči** a **překlad**.
+Sadou SDK pro řeč je k dispozici v těchto oblastech pro **rozpoznávání řeči** a **překlad**:
 
   Oblast | Parametr SDK řeči | Přizpůsobení portálu řeči
  ------|-------|--------
  USA – západ | `westus` | https://westus.cris.ai
- Západní USA 2 | `westus2` | https://westus2.cris.ai 
+ Západní USA 2 | `westus2` | https://westus2.cris.ai
  USA – východ | `eastus` | https://eastus.cris.ai
  USA – východ 2 | `eastus2` | https://eastus2.cris.ai
  Východní Asie | `eastasia` | https://eastasia.cris.ai
@@ -49,8 +43,26 @@ V následující tabulce jsou uvedeny dostupné oblasti pro **rozpoznávání ř
  Západní Evropa | `westeurope` | https://westeurope.cris.ai
 
 
-### <a name="regions-for-intent-recognition"></a>Oblasti pro rozpoznání záměru
+### <a name="intent-recognition"></a>Rozpoznání záměru
+
+**Rozpoznání záměru** složek sadou SDK pro řeč oblasti podporují služba luis. Úplný seznam dostupných oblastí najdete v tématu [publikování oblasti a koncové body – LUIS](https://docs.microsoft.comazure/cognitive-services/luis/luis-reference-regions)
 
 Dostupné oblasti pro **rozpoznání záměru** prostřednictvím sadou SDK pro řeč jsou uvedeny na [stránku oblasti služby Language Understanding](/azure/cognitive-services/luis/luis-reference-regions).
-Pro každou oblast publikování uvedené příslušného parametru oblasti sadou SDK pro řeč určena jako první část názvu domény koncového bodu.
-Například použít `westus` určit publikování oblast západní USA.
+
+Pro každou oblast publikování uvedené, pomocí zadaných **název oblasti rozhraní API**. Například použít `westus` pro oblast západní USA.
+
+## <a name="rest-apis"></a>Rozhraní REST API
+
+Speech service také poskytuje koncové body REST pro požadavky na převod řeči na text a převod textu na řeč.
+
+### <a name="speech-to-text"></a>Převod řeči na text
+
+Převod řeči na text referenční dokumentaci, naleznete v tématu [rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+
+### <a name="text-to-speech"></a>Převod textu na řeč
+
+Převod textu na řeč referenční dokumentaci najdete v tématu [rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#speech-to-text).
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

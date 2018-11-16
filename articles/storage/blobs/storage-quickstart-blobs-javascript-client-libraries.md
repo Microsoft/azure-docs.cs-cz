@@ -7,22 +7,25 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.author: tamram
-ms.date: 10/18/2018
+ms.date: 11/14/2018
 ms.topic: quickstart
 ms.component: blobs
-ms.openlocfilehash: 3b4bf95b0f5d275f6c8b4325e88a7ac326efa16b
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: c72cd83af2b06b19b285d3c939c0d45b995464d9
+ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139454"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51711478"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
 # <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Rychlý start: Nahrávání, vypisování a odstraňování objektů blob pomocí JavaScriptu a HTML v prohlížeči
+
 Tento rychlý start předvádí správu objektů blob z kódu spuštěného zcela v prohlížeči. Níže použitý přístup ukazuje, jak používat požadovaná bezpečnostní opatření pro zajištění chráněného přístupu k účtu úložiště objektů blob. K dokončení tohoto rychlého startu potřebujete [předplatné Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
+## <a name="prerequisites"></a>Požadavky
+
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Nastavení pravidel CORS pro účet úložiště 
 Než vaše webová aplikace získá přístup k úložišti objektů blob z klienta, musí se účet nakonfigurovat tak, aby umožňoval [sdílení prostředků různého původu](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) neboli CORS. 
@@ -250,7 +253,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud chcete vyčistit prostředky vytvořené v průběhu tohoto rychlého startu, vraťte se na [Azure Portal](https://portal.azure.com) a vyberte svůj účet úložiště. Jakmile bude vybraný, můžete účet úložiště odstranit tak, že přejdete do části **Přehled > Odstranit účet úložiště**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Prozkoumejte ukázky, ve kterých se dozvíte, jak stahovat objekty blob a hlásit stav během nahrávání souborů.
 
 > [!div class="nextstepaction"]
