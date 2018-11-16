@@ -1,6 +1,6 @@
 ---
 title: Vývoj streamovacích úloh MapReduce s HDInsight – Azure v Pythonu
-description: Zjistěte, jak pomocí Pythonu v streamovacích úloh MapReduce. Hadoop pro MapReduce poskytuje rozhraní API pro streamování, pro zápis v jiných jazycích než Java.
+description: Zjistěte, jak pomocí Pythonu v streamovacích úloh MapReduce. Apache Hadoop pro MapReduce poskytuje rozhraní API pro streamování, pro zápis v jiných jazycích než Java.
 services: hdinsight
 keyword: mapreduce python,python map reduce,python mapreduce
 author: hrasheed-msft
@@ -10,20 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5ed61eb05d0aa4360e042097d6b8c632c17ea59c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d6a9de293d62ec6f25bd3a665d5ced5a1ac671ae
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008721"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634018"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>Vývoj programů MapReduce se streamováním pro HDInsight v Pythonu
 
-Naučte se používat Python v MapReduce operací datového proudu. Hadoop poskytuje rozhraní API pro streamování pro MapReduce, která umožňuje zápis mapy a omezit funkce v jiných jazycích než Java. Kroky v tomto dokumentu implementujte mapy a snížit komponent v Pythonu.
+Naučte se používat Python v MapReduce operací datového proudu. Apache Hadoop poskytuje rozhraní API pro streamování pro MapReduce, která umožňuje zápis mapy a omezit funkce v jiných jazycích než Java. Kroky v tomto dokumentu implementujte mapy a snížit komponent v Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* V clusteru HDInsight Hadoop založených na Linuxu
+* Apache Hadoop založené na Linuxu v clusteru HDInsight
 
   > [!IMPORTANT]
   > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

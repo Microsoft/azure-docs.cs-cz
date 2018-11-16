@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: e208c8b52c14b99129bf3fce9ae54ba11f1c0a28
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
-ms.translationtype: HT
+ms.openlocfilehash: 18141e0f58a0b5227c3f5f5c36210017da101780
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584298"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625330"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k rozhraní Azure AD Graph API
 
@@ -35,15 +35,7 @@ V tomto kurzu se dozvíte, jak použít spravovanou identitu přiřazenou systé
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
-
-- [Přihlášení k webu Azure Portal](https://portal.azure.com)
-
-- [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
-
-- [Povolení spravované identity přiřazené systémem na vašem virtuálním počítači](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 - Abyste identitě virtuálního počítače mohli udělit přístup k Azure AD Graphu, musí být ve službě Azure AD váš účet přiřazený k roli **globálního správce**.
 
@@ -175,7 +167,7 @@ Pokud chcete k ověření vůči Azure AD Graphu použít spravovanou identitu v
    Content : {"odata.metadata":"https://graph.windows.net/<Tenant ID>/$metadata#Collection(Edm.String)","value":["<ObjectID of VM's group membership>"]}
    ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak využít spravovanou identitu přiřazenou systémem na virtuálním počítači s Windows pro přístup k Azure AD Graphu.  Další informace o Azure AD Graphu najdete zde:
 

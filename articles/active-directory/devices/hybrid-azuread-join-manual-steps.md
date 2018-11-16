@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: a3c35057af883eb790c44b3547072031eaf4ad2f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: c85d3ce6ab3e84d454ddbc2550f430b87705c192
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962006"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622172"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory 
 
@@ -520,7 +520,7 @@ Následující zásada musí být nastavená na hodnotu **Všichni**: **Uživate
 
 ### <a name="configure-on-premises-federation-service"></a>Konfigurace místní federační služby 
 
-Vaše místní federační služba musí podporovat vystavování deklarací identity **authenticationmethod** a **wiaormultiauthn**, když přijímající strana Azure AD přijme žádost o ověření, která obsahuje parametr resouce_params se zašifrovanou hodnotou, jak je znázorněno níže:
+Místní služby FS, musí podporovat vydání **authenticationmethod** a **wiaormultiauthn** deklarací identity, když přijme požadavek ověření do přijímající strany Azure AD obsahující resource_params parametr s hodnotou kódovaného jak je znázorněno níže:
 
     eyJQcm9wZXJ0aWVzIjpbeyJLZXkiOiJhY3IiLCJWYWx1ZSI6IndpYW9ybXVsdGlhdXRobiJ9XX0
 
@@ -577,7 +577,7 @@ Pokud máte problémy s dokončením hybridního připojení k Azure AD pro zař
 - [Řešení potíží s hybridním připojením aktuálních zařízení s Windows k Azure AD](troubleshoot-hybrid-join-windows-current.md)
 - [Řešení potíží s hybridním připojením zařízení s Windows nižší úrovně k Azure AD](troubleshoot-hybrid-join-windows-legacy.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Úvod do správy zařízení v Azure Active Directory](overview.md)
 

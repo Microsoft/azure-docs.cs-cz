@@ -1,6 +1,6 @@
 ---
-title: Použití Pigu Hadoop s využitím REST v HDInsight – Azure
-description: Zjistěte, jak spouštět úlohy Pig Latin na cluster Hadoop v Azure HDInsight pomocí REST.
+title: Použití Pigu Apache Hadoop s využitím REST v HDInsight – Azure
+description: Zjistěte, jak spouštět úlohy Pig Latin na cluster Apache Hadoop v Azure HDInsight pomocí REST.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: bd729d0d2cd095339a82b8a7f38a17a20b709c15
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: cb96933569c18b8c70d8991c9ba19f9f3e1243e6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013084"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633695"
 ---
-# <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>Spuštění úlohy Pig se systémem Hadoop v HDInsight pomocí REST
+# <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Spuštění úlohy Pig s Apache Hadoop v HDInsight pomocí REST
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Zjistěte, jak spouštět úlohy Pig Latin tím, že požadavky REST do clusteru Azure HDInsight. Curl slouží k předvedení jak mohou komunikovat s HDInsight pomocí rozhraní REST API WebHCat.
+Zjistěte, jak spouštět úlohy Apache Pig Latin tím, že požadavky REST do clusteru Azure HDInsight. Curl slouží k předvedení jak mohou komunikovat s HDInsight pomocí rozhraní REST API WebHCat.
 
 > [!NOTE]
-> Pokud jste obeznámeni s pomocí serverů se systémem Linux Hadoop, ale teprve začínáte HDInsight, naleznete v tématu [tipy k Linuxovým systémem HDInsight](../hdinsight-hadoop-linux-information.md).
+> Pokud jste obeznámeni s pomocí serverů se systémem Linux Apache Hadoop, ale teprve začínáte HDInsight, naleznete v tématu [tipy k Linuxovým systémem HDInsight](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Požadavky
 

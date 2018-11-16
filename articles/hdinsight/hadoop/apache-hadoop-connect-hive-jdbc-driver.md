@@ -1,6 +1,6 @@
 ---
-title: Dotaz Hive pomocí ovladače JDBC – Azure HDInsight
-description: Odesílání dotazů Hive ke clusteru Hadoop v HDInsight pomocí ovladače JDBC z aplikace v Javě. Připojení prostřednictvím kódu programu a klienta SQuirrel SQL.
+title: Dotazy Apache Hive pomocí ovladače JDBC – Azure HDInsight
+description: Pomocí ovladač JDBC z aplikace Java můžete odesílat dotazy Apache Hive ke clusteru Hadoop v HDInsight. Připojení prostřednictvím kódu programu a klienta SQuirrel SQL.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: d47d6abe3adaf76b67b88cffd53b0b46258931c8
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 577f36f53bfad79af968a4c34f4b6ab0b49527c7
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014410"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633440"
 ---
-# <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotaz Hive pomocí ovladače JDBC v HDInsight
+# <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Dotazy Apache Hive pomocí ovladače JDBC v HDInsight
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Zjistěte, jak použít ovladač JDBC z aplikace Java k odesílání dotazů Hive k systému Hadoop v Azure HDInsight. Informace v tomto dokumentu ukazuje, jak se připojit prostřednictvím kódu programu a klienta SQuirrel SQL.
+Zjistěte, jak použít ovladač JDBC z aplikace Java k zadávání dotazů na Apache Hadoop v Azure HDInsight s Apache Hive. Informace v tomto dokumentu ukazuje, jak se připojit prostřednictvím kódu programu a klienta SQuirrel SQL.
 
 Další informace o rozhraní Hive JDBC, naleznete v tématu [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
@@ -111,7 +111,7 @@ SQuirreL SQL je klient JDBC, který slouží ke vzdálené spouštění dotazů 
 
         Nahraďte **CLUSTERNAME** názvem clusteru HDInsight.
 
-    * **Uživatelské jméno**: název účtu přihlášení clusteru pro HDInsight cluster. Výchozí hodnota je `admin`.
+    * **Uživatelské jméno**: název účtu přihlášení clusteru pro HDInsight cluster. Výchozí formát je `admin`.
 
     * **Heslo**: heslo pro účet přihlášení clusteru.
 

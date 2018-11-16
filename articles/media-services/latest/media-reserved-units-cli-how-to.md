@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2018
 ms.author: juliako
-ms.openlocfilehash: 7c99cdbda2eeb2fc7f8aa615bbdb8b77f84e57be
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: MT
+ms.openlocfilehash: db1915f23c33b5cc0d504f8fcc21b9533228247f
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617864"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634392"
 ---
 # <a name="scaling-media-processing"></a>Škálování zpracování médií
 
@@ -42,7 +42,7 @@ Azure Media Services umožňuje škálování zpracování médií ve svém úč
 Následující [az ams account naposledy použité položky](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) sets rezervované jednotky médií na "amsaccount" účtu pomocí příkazu **počet** a **typ** parametry.
 
 ```azurecli
-az account set mru -n amsaccount -g amsResourceGroup --count 10 type S3
+az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
 ```
 
 ## <a name="considerations"></a>Požadavky

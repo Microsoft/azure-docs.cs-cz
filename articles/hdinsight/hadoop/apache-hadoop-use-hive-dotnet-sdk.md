@@ -1,6 +1,6 @@
 ---
-title: Spouštění dotazů Hive pomocí sady HDInsight .NET SDK – Azure
-description: Zjistěte, jak k odesílání úloh Hadoop do Azure HDInsight Hadoop pomocí sady HDInsight .NET SDK.
+title: Spouštějte dotazy Apache Hive pomocí sady HDInsight .NET SDK – Azure
+description: Zjistěte, jak odesílat úlohy Apache Hadoop do Azure HDInsight Apache Hadoop pomocí sady HDInsight .NET SDK.
 ms.reviewer: jasonh
 services: hdinsight
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5cababaa7c808969e6e24a70581f54639f269621
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 790cc11e3d4cf1d0260b1099efd82bdddec85785
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016008"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634562"
 ---
-# <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Hive pomocí sady HDInsight .NET SDK
+# <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>Spouštějte dotazy Apache Hive pomocí sady HDInsight .NET SDK
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Zjistěte, jak k odesílání dotazů Hive pomocí sady HDInsight .NET SDK. Napište program C# se odeslat dotaz Hive pro zobrazení seznamu tabulek Hive a zobrazení výsledků.
+Zjistěte, jak odesílat dotazy Apache Hive pomocí sady HDInsight .NET SDK. Napište program C# se odeslat dotaz Hive pro zobrazení seznamu tabulek Hive a zobrazení výsledků.
 
 > [!NOTE]
 > Kroky v tomto článku je potřeba provést z klienta Windows. Informace o použití systému Linux, OS X nebo Unix klienta pro práci s Hive použijte volič karty zobrazí v horní části článku.
@@ -27,7 +27,7 @@ Zjistěte, jak k odesílání dotazů Hive pomocí sady HDInsight .NET SDK. Napi
 ## <a name="prerequisites"></a>Požadavky
 Před zahájením tohoto článku, musíte mít následující položky:
 
-* **Cluster Hadoop v HDInsight**. Zobrazit [Začínáme používat Hadoop využívající systém Linux v HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* **Cluster Apache Hadoop v HDInsight**. Zobrazit [Začínáme používat Hadoop využívající systém Linux v HDInsight](apache-hadoop-linux-tutorial-get-started.md).
 
     > [!WARNING]
     > Od 15. září 2017 sady HDInsight .NET SDK podporuje pouze vrácení výsledků dotazu Hive z účtů služby Azure Storage. Pokud používáte v tomto příkladu se cluster HDInsight, používající Azure Data Lake Store jako primární úložiště, nelze načíst výsledky hledání pomocí sady .NET SDK.

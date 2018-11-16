@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
-ms.translationtype: HT
+ms.openlocfilehash: 523f5eba632b15eaaf45f24be820f7b255aae7c0
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378427"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616023"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření veřejného Load Balanceru úrovně Basic pomocí webu Azure Portal
 
@@ -159,6 +159,7 @@ Pokud chcete Load Balanceru úrovně Basic povolit monitorování stavu vaší a
    - **myHealthProbe** jako název sondy stavu
    - **HTTP** jako typ protokolu
    - **80** jako číslo portu
+   - **Healthprobe.aspx** pro cestu k identifikátoru URI. Můžete buď tuto hodnotu nahraďte jiný identifikátor URI nebo ponechte výchozí hodnotu cesta **"\\"** aby se získal výchozí identifikátor URI.
    - **15** jako **Interval** mezi pokusy o testování (v sekundách)
    - **2** jako **Prahová hodnota špatného stavu**, tedy počet po sobě jdoucích selhání sondy, ke kterým musí dojít, aby se virtuální počítač považoval za poškozený.
 
@@ -193,7 +194,7 @@ Vytvořte pravidlo nástroje pro vyrovnávání zatížení s názvem **myLoadBa
 
 Pokud už je nepotřebujete, můžete skupinu prostředků, nástroj pro vyrovnávání zatížení a všechny související prostředky odstranit. Vyberte skupinu prostředků, která obsahuje nástroj pro vyrovnávání zatížení, a potom vyberte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili skupinu prostředků, síťové prostředky a back-end servery. Pomocí těchto prostředků jste pak vytvořili službu Load Balancer úrovně Basic. Chcete-li zjistit další informace o službě Azure Load Balancer, přejděte ke kurzům pro Azure Load Balancer.
 

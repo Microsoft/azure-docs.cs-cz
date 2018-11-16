@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: b094df367d4396533d368b9fdbcb4b78ec1673de
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e6711a5595c6b7c6caaff97f4c1996817be1abce
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008891"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634545"
 ---
-# <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Hive pomocí Microsoft Power BI v Azure HDInsight pomocí ovladače ODBC
+# <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Vizualizace dat Apache Hive pomocí Microsoft Power BI v Azure HDInsight pomocí ovladače ODBC
 
-Zjistěte, jak se připojit k Azure HDInsight pomocí ovladače ODBC Microsoft Power BI a vizualizace dat Hive. 
+Zjistěte, jak se připojit k Azure HDInsight pomocí ovladače ODBC Microsoft Power BI a vizualizace dat Apache Hive. 
 
 >[!IMPORTANT]
 > Můžete využít ovladače Hive ODBC pro import prostřednictvím konektoru obecná rozhraní ODBC v Power BI Desktopu. Však není doporučeno pro BI úlohy uvedené jako neinteraktivní povaze modul dotazu Hive. [Konektor HDInsight Interactive Query](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) a [konektor HDInsight Spark](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) jsou lepší možnosti pro jejich výkon.
@@ -40,7 +40,7 @@ Před provedením tohoto článku, musíte mít následující položky:
 
 ## <a name="create-hive-odbc-data-source"></a>Vytvoření zdroje dat Hive ODBC
 
-Zobrazit [zdroje dat vytvořit Hive ODBC](apache-hadoop-connect-excel-hive-odbc-driver.md#create-hive-odbc-data-source).
+Zobrazit [zdroje dat vytvořit Hive ODBC](apache-hadoop-connect-excel-hive-odbc-driver.md#create-apache-hive-odbc-data-source).
 
 ## <a name="load-data-from-hdinsight"></a>Načtení dat z HDInsight
 

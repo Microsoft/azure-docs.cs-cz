@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: iainfou
-ms.openlocfilehash: c3256b2b1e8be0e883d0f7b47e66ab1fee95b042
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5f151db9cb2cf7a5ef242f777cd2ad1820c856a8
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138156"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636666"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
 
@@ -42,7 +42,7 @@ Následující příklad ukazuje snímek obrazovky portálu *nastavení diagnost
 ![Povolit pracovní prostor Log Analytics pro cluster Log Analytics AKS](media/view-master-logs/enable-oms-log-analytics.png)
 
 >[!NOTE]
->Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
+>Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Plánování testů pod v clusteru AKS
 
@@ -116,7 +116,7 @@ A pomáhá tak analyzovat data protokolu, následující tabulka obsahuje podrob
 | *ID prostředku*             | Prostředek Azure, který vytváří protokolu |
 | *čas*                   | Pokud byl nahrán do protokolu časové razítko |
 | *Kategorie*               | Název kontejneru nebo komponenty generování protokolu |
-| *OperationName*          | Vždy *Microsoft.ContainerService/managedClusters/diagnositicLogs/Read* |
+| *OperationName*          | Vždy *Microsoft.ContainerService/managedClusters/diagnosticLogs/Read* |
 | *Properties.log*         | Úplný text protokolu z komponenty |
 | *Properties.Stream*      | *STDERR* nebo *stdout* |
 | *Properties.pod*         | Pod názvem, která v protokolu pochází z |

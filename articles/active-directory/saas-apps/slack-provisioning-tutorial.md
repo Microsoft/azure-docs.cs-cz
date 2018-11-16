@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 7d6056987ee05f68eecf026e954327a2f62cf886
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 83155e448f350618446fb22bf52e831b1cc8d499
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348901"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636539"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace Slack pro automatické zřizování uživatelů
 
@@ -57,7 +57,7 @@ Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jak
 
 Tato část vás provede připojením služby Azure AD na Slack pro uživatelský účet rozhraní API zřizování a konfigurace služby zřizování vytvářet, aktualizovat a vypnout přiřadit uživatelské účty v Slack na základě uživatele a přiřazení skupiny ve službě Azure AD.
 
-**Tip:** můžete také povolit založené na SAML jednotného přihlašování pro Slack, postupujte podle pokynů v (portál Azure portal) [https://portal.azure.com]. Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
+**Tip:** můžete také povolit založené na SAML jednotného přihlašování pro Slack, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>Postup konfigurace automatického zřizování uživatelských účtů na Slack ve službě Azure AD:

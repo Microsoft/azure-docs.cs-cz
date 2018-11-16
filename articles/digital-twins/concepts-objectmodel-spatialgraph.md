@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: de1ead165e1db3f78591f093edcc33781b9f4c78
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 95f01c9338afbf2ab5381001e4ab480185cedaeb
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624168"
+ms.locfileid: "51636879"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Principy digitální dvojče objektové modely a Prostorové řady grafu
 
@@ -79,13 +79,13 @@ Pokud nasadíte službu, digitální dvojče ve vašem předplatném, stanete gl
 Poté, co nasadíte digitální dvojče z [webu Azure portal](https://portal.azure.com), [Swagger](https://swagger.io/tools/swagger-ui/) adresu URL rozhraní API pro správu není automaticky vygenerován. Zobrazí se na webu Azure Portal v **přehled** části v následujícím formátu.
 
 ```plaintext
-https://yourInstanceName.yourLocation.azuresmartspaces.net/management/swagger
+https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Název vlastního atributu | Nahradit hodnotou |
+| Název | Nahradit hodnotou |
 | --- | --- |
-| **Název_vaší_instance** | Název instance digitální dvojče |
-| **yourLocation** | Jaké oblasti serveru vaší instance je hostován aplikací |
+| YOUR_INSTANCE_NAME | Název instance digitální dvojče |
+| YOUR_LOCATION | Jaké oblasti serveru vaší instance je hostován aplikací |
 
  Úplný formát adresy URL se zobrazí na tomto obrázku.
 

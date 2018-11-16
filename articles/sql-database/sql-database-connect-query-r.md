@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
 ms.date: 11/07/2018
-ms.openlocfilehash: 75ec6a3fbfdd45575c46b763f1f5d0b69376e7a7
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 382ac23ea4c8e0ec54314bb754c00a8e6e43e9f6
+ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285267"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51300961"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rychlý start: Použití služby Machine Learning Services (s jazykem R) ve službě Azure SQL Database (Preview)
 
@@ -29,7 +29,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-up-for-the-preview"></a>Registrace verze Preview
 
-Služba Machine Learning Services (s jazykem R) verze Public Preview ve službě SQL Database není ve výchozím nastavení povolená. Pokud si chcete zaregistrovat verzi Public Preview, odešlete do Microsoftu e-mail na adresu [sqldbml@microsoft.com](mailto:sqldbml@microsoft.com).
+Služba Machine Learning Services (s jazykem R) verze Public Preview ve službě SQL Database není ve výchozím nastavení povolená. Odeslání e-mailu společnosti Microsoft na [ sqldbml@microsoft.com ](mailto:sqldbml@microsoft.com) zaregistrovat verzi public preview.
 
 Po registraci do programu vás Microsoft připojí k verzi Public Preview a buď do služby s podporou R migruje vaši stávající databázi, nebo v ní vytvoří novou databázi.
 
@@ -519,7 +519,7 @@ Pokud potřebujete použít balíček, který ještě ve vaší databázi SQL ne
 > [!NOTE]
 > Dalším způsobem, jak do databáze SQL nainstalovat balíčky R, je nahrát balíček R z datového proudu bajtů pomocí příkazu [CREATE EXTERNAL LIBRARY](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o službě Machine Learning Services najdete v následujících článcích o službě SQL Server Machine Learning Services. Přestože jsou tyto články určené pro SQL Server, většina uvedených informací platí také pro službu Machine Learning Services (s jazykem R) ve službě Azure SQL Database.
 

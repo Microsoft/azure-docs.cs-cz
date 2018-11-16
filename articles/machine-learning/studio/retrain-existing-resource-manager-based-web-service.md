@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: b06e3d742a0bed778dc7671128980708ba379e39
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 1a30f9166c81c4757267c95b13b08f3202748467
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714889"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684633"
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Přeučování existující prediktivní webové služby
 Tento dokument popisuje retraining proces pro následující scénáře:
@@ -46,7 +46,7 @@ Počínaje existující webovou službu a experimenty, musíte postupovat podle 
    6. Aktualizujte webovou službu pomocí nové definice webové služby.
 
 ## <a name="deploy-the-training-experiment"></a>Nasazení výukového experimentu
-K nasazení výukového experimentu jako retraining webovou službu, musíte přidat webovou službu vstupy a výstupy do modelu. Propojením *webové služby výstup* modulů na experiment * [Train Model] [ train-model] * modulu, povolte výukového experimentu do Vytvoření nového trénovaného modelu, který vám pomůže v prediktivní experiment. Pokud máte *Evaluate Model* modul, můžete také připojit výstup webové služby k získání požadovaných výsledků vyhodnocení jako výstup.
+K nasazení výukového experimentu jako retraining webovou službu, musíte přidat webovou službu vstupy a výstupy do modelu. Propojením *webové služby výstup* modulů na experiment *[Train Model] [ train-model]* modulu, povolte výukového experimentu do Vytvoření nového trénovaného modelu, který vám pomůže v prediktivní experiment. Pokud máte *Evaluate Model* modul, můžete také připojit výstup webové služby k získání požadovaných výsledků vyhodnocení jako výstup.
 
 Aktualizace vašeho výukového experimentu:
 
@@ -109,7 +109,7 @@ Vyhledejte *StorageAccountName*, *StorageAccountKey*, a *StorageContainerName* d
 Také musíte zajistit, že vstupní soubor je k dispozici na umístění, které zadáte v kódu.
 
 ### <a name="specify-the-output-location"></a>Určení umístění výstupu
-Pokud zadáte umístění výstupu v datové žádost o rozšíření souboru, který je zadán v *RelativeLocation* musí být zadán jako `ilearner`. Podívejte se na následující příklad:
+Pokud zadáte umístění výstupu v datové žádost o rozšíření souboru, který je zadán v *RelativeLocation* musí být zadán jako `ilearner`. Prohlédněte si následující příklad:
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {
@@ -156,7 +156,7 @@ K určení názvu skupiny prostředků existující webové služby, spusťte ru
 
 Můžete také určit název skupiny prostředků existující webové služby, přihlaste se k portálu Azure Machine Learning Web Services. Vyberte webovou službu. Název skupiny prostředků je pátého prvku pole Adresa URL webové služby, bezprostředně po *resourceGroups* elementu. V následujícím příkladu je název skupiny prostředků výchozí. MachineLearning SouthCentralUS.
 
-    https://services.azureml.net/subscriptions/<subcription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+    https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
 
 ## <a name="export-the-web-service-definition-object-as-json"></a>Export objektu definice webové služby jako JSON.

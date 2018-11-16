@@ -1,5 +1,5 @@
 ---
-title: Streamujte živě s Azure Media Services v3 s použitím .NET Core | Microsoft Docs
+title: Stream za provozu pomocí Azure Media Services v3 | Dokumentace Microsoftu
 description: Tento kurz vás provede postupem živého streamování s Media Services v3 s použitím .NET Core.
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/16/2018
+ms.date: 11/08/2018
 ms.author: juliako
-ms.openlocfilehash: bd149177a91bc0d5897723df2fad50fef11a37ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 7863f007093b5a86fb5095ee8bf1e14fc01d0348
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392331"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51613388"
 ---
-# <a name="stream-live-with-azure-media-services-v3-using-net-core"></a>Streamujte živě s Azure Media Services v3 s použitím .NET Core
+# <a name="tutorial-stream-live-with-media-services-v3-using-apis"></a>Kurz: Live Stream pomocí Media Services v3 pomocí rozhraní API
 
-Ve službě Media Services zodpovídají za zpracování obsahu živého streamování události [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents). LiveEvent poskytuje vstupní koncový bod (ingestovanou adresu URL), kterou pak poskytnete do kodéru pro kódování v reálném čase. LiveEvent přijímá vstupní datové proudy v reálném čase z kodéru pro kódování v reálném čase a zpřístupňuje je ke streamování prostřednictvím jednoho nebo více koncových bodů streamování [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints). Události LiveEvent poskytují také koncový bod náhledu (adresu URL náhledu), který se používá k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením. Tento kurz ukazuje, jak použít .NET Core k vytvoření **průchozího** typu události v reálném čase. 
+Ve službě Azure Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za zpracování obsahu živého streamování. LiveEvent poskytuje vstupní koncový bod (ingestovanou adresu URL), kterou pak poskytnete do kodéru pro kódování v reálném čase. LiveEvent přijímá vstupní datové proudy v reálném čase z kodéru pro kódování v reálném čase a zpřístupňuje je ke streamování prostřednictvím jednoho nebo více koncových bodů streamování [StreamingEndpoints](https://docs.microsoft.com/rest/api/media/streamingendpoints). Události LiveEvent poskytují také koncový bod náhledu (adresu URL náhledu), který se používá k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením. Tento kurz ukazuje, jak použít .NET Core k vytvoření **průchozího** typu události v reálném čase. 
 
 > [!NOTE]
 > Než budete pokračovat, přečtěte si téma [Živé streamování s Media Services v3](live-streaming-overview.md). 
@@ -31,7 +31,6 @@ Ve službě Media Services zodpovídají za zpracování obsahu živého streamo
 V tomto kurzu získáte informace o následujících postupech:    
 
 > [!div class="checklist"]
-> * Vytvoření účtu Media Services
 > * Přístup k rozhraní API služby Media Services
 > * Konfigurace ukázkové aplikace
 > * Kontrola kódu, který provádí živé streamování
@@ -44,9 +43,17 @@ V tomto kurzu získáte informace o následujících postupech:
 
 K dokončení kurzu potřebujete následující:
 
-* Nainstalovat Visual Studio Code nebo Visual Studio
-* Fotoaparát nebo zařízení (jako je přenosný počítač), které se používá k vysílání události
-* Místní kodér pro kódování v reálném čase, který převádí signály z kamery na datové proudy, které se odesílají do služby živého streamování Media Services. Datový proud musí být ve formátu **RTMP** nebo **Smooth Streaming**.
+- Instalace sady Visual Studio Code nebo Visual Studio.
+- Nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
+
+    V současné době všechny [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) příkazy fungují ve službě Azure Cloud Shell. Doporučujeme používat rozhraní příkazového řádku místně.
+
+- [Vytvoření účtu Media Services](create-account-cli-how-to.md).
+
+    Ujistěte se, že hodnoty, které jste použili pro název skupiny prostředků a název účtu Media Services mějte na paměti
+
+- Fotoaparát nebo zařízení (jako je přenosný počítač), které se používá k vysílání události
+- Místní kodér pro kódování v reálném čase, který převádí signály z kamery na datové proudy, které se odesílají do služby živého streamování Media Services. Datový proud musí být ve formátu **RTMP** nebo **Smooth Streaming**.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -61,10 +68,6 @@ Ukázku živého streamování najdete ve složce [Live](https://github.com/Azur
 > [!IMPORTANT]
 > Tato ukázka používá pro každý zdroj jedinečnou příponu. Pokud zrušíte ladění nebo ukončíte aplikaci, aniž by proběhla, budete mít v účtu několik událostí LiveEvent. <br/>
 > Spuštěné události LiveEvent je potřeba zastavit. V opačném případě se vám za ně budou **účtovat poplatky**.
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
@@ -176,9 +179,9 @@ Při zastavení se živá událost automaticky převede na obsah na vyžádání
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte. Můžete použít nástroj **CloudShell**.
+Pokud ze skupiny prostředků už žádné prostředky nepotřebujete, včetně účtu služby Media Services a účtu úložiště, které jste vytvořili v tomto kurzu, pak tuto dříve vytvořenou skupinu prostředků odstraňte.
 
-V nástroji **CloudShell** spusťte následující příkaz:
+Spusťte následující příkaz rozhraní příkazového řádku:
 
 ```azurecli-interactive
 az group delete --name amsResourceGroup
@@ -187,7 +190,7 @@ az group delete --name amsResourceGroup
 > [!IMPORTANT]
 > Když necháte událost LiveEvent spuštěnou, budou se účtovat poplatky. Nezapomeňte, že pokud z nějakého důvodu dojde u projektu nebo programu k chybě nebo se ukončí, může zůstat událost LiveEvent spuštěná a budou se účtovat poplatky.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Streamování souborů](stream-files-tutorial-with-api.md)
 

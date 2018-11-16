@@ -1,6 +1,6 @@
 ---
 title: Extrakce, transformace a načítání (ETL) ve velkém měřítku – Azure HDInsight
-description: Zjistěte, jak se používá ETL v HDInsight se systémem Hadoop.
+description: Zjistěte, jak se používá ETL v HDInsight se Apache Hadoop.
 services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 6af55bf8311efc14687ee16c3226988fd730081d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 17aeb847a2c701abf03b46d47e34d13b6fb27316
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048998"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633321"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
-Extrakce, transformace a načítání (ETL) je proces, podle kterého data je získaných z různých zdrojů, shromažďují ve standardním umístění, čištění a zpracovat a nakonec načten do úložiště, ze kterého může být dotazována. Starší verze procesy ETL umožňuje importovat data, vyčistit na místě a pak jej uložit modul s relačními daty. V HDInsight podporují celou řadu součástí ekosystému Hadoop provádění ETL ve velkém měřítku. 
+Extrakce, transformace a načítání (ETL) je proces, podle kterého data je získaných z různých zdrojů, shromažďují ve standardním umístění, čištění a zpracovat a nakonec načten do úložiště, ze kterého může být dotazována. Starší verze procesy ETL umožňuje importovat data, vyčistit na místě a pak jej uložit modul s relačními daty. S HDInsight podporují celou řadu součástí ekosystému Apache Hadoop, provádění ETL ve velkém měřítku. 
 
 Pomocí HDInsight v procesu ETL může automaticky shrnutý podle tímto kanálem:
 

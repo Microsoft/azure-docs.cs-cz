@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5239788f06ed3e738d1f0b62ddcde77c2a13b5f2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: afc24d75b128c192efe14af061ac1df7521c7ef2
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241731"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621255"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Vytvoření federace několika instancí Azure AD s jednou instancí AD FS
 
@@ -47,7 +47,7 @@ Aby služba AD FS v doméně contoso.com mohla ověřovat uživatele v doméně 
  
 Výchozí vystavitel nastavený pro jednu doménu federovanou se službou AD FS je http://ADFSServiceFQDN/adfs/services/trust, například http://fs.contoso.com/adfs/services/trust. Azure Active Directory vyžaduje jedinečného vystavitele pro každou federovanou doménu. Vzhledem k tomu, že stejná služba AD FS bude federovat dvě domény, hodnota vystavitele musí být upravena, aby byla jedinečná pro každou doménu, kterou služba AD FS federuje s Azure Active Directory. 
  
-Na serveru AD FS otevřete prostředí Azure AD PowerShell a proveďte následující kroky:
+Na serveru služby AD FS otevřete prostředí PowerShell Azure AD (ujistěte se, že je nainstalovaný modul MSOnline) a proveďte následující kroky:
  
 Připojte se ke službě Azure Active Directory obsahující doménu contoso.com: Connect-MsolService Aktualizujte nastavení federace pro doménu contoso.com: Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain
  
@@ -64,5 +64,5 @@ Převeďte spravovanou doménu fabrikam.com na federovanou:
  
 Uvedená operace vytvoří federaci domény fabrikam.com se stejnou službou AD FS. Nastavení domény můžete ověřit pomocí příkazu Get-MsolDomainFederationSettings pro obě domény.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Připojení Active Directory s Azure Active Directory](whatis-hybrid-identity.md)

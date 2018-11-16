@@ -1,6 +1,6 @@
 ---
 title: Odeslání úlohy mapreduce je možné pomocí sady HDInsight .NET SDK – Azure
-description: Zjistěte, jak odesílat úlohy MapReduce na Azure HDInsight Hadoop pomocí sady HDInsight .NET SDK.
+description: Zjistěte, jak odesílat úlohy MapReduce na Azure HDInsight Apache Hadoop pomocí sady HDInsight .NET SDK.
 ms.reviewer: jasonh
 services: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: a978ce7fdfdf7d4c42ab5f512590da96b0c7fcae
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a93d504af925c0082c1141c8f291c4325620428f
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009316"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632896"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>Spuštění úlohy mapreduce je možné pomocí sady HDInsight .NET SDK
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]

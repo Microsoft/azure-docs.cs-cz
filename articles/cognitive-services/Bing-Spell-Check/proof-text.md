@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 48d9dee014d0759bd339c79811bb7b2fddecfe0b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 3a277b10561b2756fab0af6455d17557a8d93a53
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214932"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345704"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Co je rozhraní API Bingu pro kontrolu pravopisu?
 
@@ -42,9 +42,12 @@ Výchozí režim je `Proof`. Režim kontroly pravopisu `Proof` poskytuje během 
 <br /><br/>**Poznámka:** Pokud délka textu dotazu přesáhne 4096 znaků, bude před zpracováním zkrácena na 4096 znaků. 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell –  pro scénář webových hledání a dotazů
 Režim `Spell` je agresivnější a vrací lepší výsledky hledání. Režim `Spell` najde nejvíc pravopisných chyb, ale nedokáže najít některé gramatické chyby, které režim `Proof` zachytí, například použití malých a velkých písmen nebo opakovaná slova.
-<br /></br>**Poznámka:** Maximální podporovaná délka dotazu je následující. Pokud dotaz překročí maximální délku, dotaz ani jeho výsledky se nezmění.
-<ul><li>130 znaků pro kód jazyka en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, it, zh, ko </li>
-<li>65 znaků pro ostatní</li></ul>
+
+> [!NOTE]
+> * Dotaz maximální podporovaná délka je menší než. Pokud dotaz překračuje maximální délku, dotaz a jeho výsledky se nezmění.
+>    * 130 znaků pro následující kódy jazyků: en, de, es, fr, pl, pt, sv, ru, nl, nb, tr-tr, ho, zh, ko. 
+>    * 65 znaků pro všechny ostatní.
+> * Režim pravopisu nepodporuje hranaté závorky (`[` a `]`) v dotazech a může způsobit nekonzistentní výsledky. Doporučujeme, abyste je odeberete z vašich dotazů při použití režimu pravopisu.
 
 ## <a name="market-setting"></a>Nastavení trhu
 V parametru dotazu v adrese URL požadavku je nutné zadat trh, jinak kontrola pravopisu použije výchozí trh na základě IP adresy.
@@ -123,7 +126,7 @@ Pokud pole `type` má hodnotu RepeatedToken, měli byste stále nahradit token o
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete rychle začít s vaším prvním požadavkem, projděte si popis [vytvoření prvního požadavku](quickstarts/csharp.md).
 

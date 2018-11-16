@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 1/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: 12f03352373bebecb74b9dd8d31470ac337f5e71
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: d156c481e3c16105ad85cbc793d93306a310d5ef
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227567"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51567107"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Kurz: Moderování videí a přepisů
 
@@ -35,7 +35,7 @@ Pro účely tohoto kurzu si stáhněte [konzolovou aplikaci C#](https://github.c
 
 ## <a name="sample-program-outputs"></a>Ukázky výstupů programů
 
-Než budeme pokračovat, podívejme se na následující ukázky výstupů z programu:
+Než budete pokračovat, Podívejme se na následující ukázka výstupy z programu:
 
 - [Výstup konzoly](#program-output)
 - [Kontrola videa](#video-review-default-view)
@@ -629,7 +629,7 @@ Dále analyzujte přepis ve formátu WebVTT, jestli obsahuje titulky a časová 
 Dále zkontrolujeme analyzované textové titulky pomocí rozhraní API pro text v Content Moderatoru.
 
 > [!NOTE]
-> Klíč služby Content Moderator má omezenou rychlost v jednotkách RPS (žádosti za sekundu). Při překročení tohoto limitu vydá sada SDK výjimku s kódem chyby 429. 
+> Klíč služby Content Moderator má omezenou rychlost v jednotkách RPS (žádosti za sekundu). Když tento limit překročíte, sada SDK vyvolá výjimku s kódem chyby 429. 
 >
 > Klíč úrovně Free má limit nastavený na 1 RPS za sekundu.
 
@@ -767,6 +767,6 @@ V následujícím výstupu příkazového řádku z programu vidíte různé úl
     Total Elapsed Time: 00:05:56.8420355
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Stáhněte si řešení sady Visual Studio](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp) a ukázkové soubory a požadované knihovny k tomuto kurzu a zahajte integraci.

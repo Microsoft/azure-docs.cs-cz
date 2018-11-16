@@ -1,6 +1,6 @@
 ---
-title: Použití jazyka C# s Hivem a Pig platformy hadoop v HDInsight – Azure
-description: Další informace o použití jazyka C# uživatelem definované funkce (UDF) s Hivem a Pig, streamování v Azure HDInsight.
+title: Použití C# s Apache Hivu a Apache Pig systému Apache Hadoop v HDInsight – Azure
+description: Další informace o použití C# uživatelem definované funkce (UDF) s Apache Hivu a Apache Pig, streamování v Azure HDInsight.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8011a9b8009abd2688d76dc3f1cda84ca453fde1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2ef88fff1313a0e7b1aa0abb502629512daaf636
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014682"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633831"
 ---
-# <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>Použití uživatelem definovaných funkcí jazyka C# s Hivem a Pig streamování platformy hadoop v HDInsight
+# <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# uživatelsky definovaných funkcí s Apache Hivu a Apache Pig datových proudů na Apache Hadoop v HDInsight
 
-Další informace o použití jazyka C# uživatelem definované funkce (UDF) s Apache Hive a Pig v HDInsight.
+Další informace o použití C# uživatelem definované funkce (UDF) s Apache Hivu a Apache Pig v HDInsight.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu fungují s clustery HDInsight založené na Linuxu i založené na Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](../hdinsight-component-versioning.md).

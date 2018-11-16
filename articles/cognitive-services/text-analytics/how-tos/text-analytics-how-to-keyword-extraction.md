@@ -1,7 +1,6 @@
 ---
-title: 'Příklad: Extrakce klíčových frází v Analýze textu'
-titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak můžete extrahovat klíčové fráze v rozhraní REST API pro analýzu textu.
+title: Extrakce klíčových frází postupy v REST API pro analýzu textu (Microsoft Cognitive Services v Azure) | Dokumentace Microsoftu
+description: Postup extrakce klíčových frází pomocí REST API pro analýzu textu ve službě Microsoft Cognitive Services v Azure v tomto kurzu návodu.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,12 +9,12 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: d38886d40a92d5e75f5d0b6b189dbf7c067e1635
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605483"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632386"
 ---
 # <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Příklad: Extrakce klíčových frází v Analýze textu
 
@@ -24,6 +23,9 @@ ms.locfileid: "45605483"
 Tato funkce je užitečná v případě, kdy potřebujete rychle identifikovat hlavní body v kolekci dokumentů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný), vrátí služba hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).
 
 V současné době se extrakce klíčových frází podporuje v angličtině, němčině, španělštině a japonštině. Další jazyky jsou ve verzi Preview. Další informace najdete v tématu [Podporované jazyky](../text-analytics-supported-languages.md).
+
+> [!TIP]
+> Rozhraní text Analytics také poskytuje Dockeru založených na Linuxu image kontejneru pro extrakci klíčových frází, tak, aby se [nainstalovat a spustit kontejner pro analýzu textu](text-analytics-how-to-install-containers.md) blízko datům.
 
 ## <a name="preparation"></a>Příprava
 
@@ -71,11 +73,11 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 + Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API týkající se této žádosti: [Rozhraní API pro extrakci klíčových frází](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6).
 
-+ Nastavte koncový bod HTTP pro extrakci klíčových frází. Musí obsahovat prostředek `/keyphrases`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
++ Nastavení koncového bodu HTTP pro extrakci klíčových frází pomocí prostředek pro analýzu textu v Azure nebo instance [kontejneru pro analýzu textu](text-analytics-how-to-install-containers.md). Musí obsahovat prostředek `/keyPhrases`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`.
 
 + Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v článku, který se věnuje [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
 
-+ V textu požadavku zadejte kolekci dokumentů JSON, kterou jste si připravili pro tuto analýzu.
++ V textu žádosti zadejte kolekci dokumentů JSON, kterou jste si připravili pro tuto analýzu.
 
 > [!Tip]
 > Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
@@ -150,13 +152,13 @@ V tomto článku jste se seznámili s koncepty a pracovním postupem extrakce kl
 + Žádost POST je určená pro koncový bod `/keyphrases` a používá individuální [přístupový klíč a koncový bod](text-analytics-how-to-access-key.md), který je platný pro dané předplatné.
 + Výstup odpovědi, který je tvořen klíčovými slovy a frázemi pro jednotlivá ID dokumentů, lze streamovat do libovolné aplikace, která podporuje JSON, včetně například Excelu a Power BI.
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
  [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro analýzu textu](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)

@@ -1,6 +1,6 @@
 ---
-title: Připojení MapReduce a SSH s Hadoop v HDInsight – Azure
-description: Zjistěte, jak spouštět úlohy mapreduce je možné používat Hadoop v HDInsight pomocí SSH.
+title: MapReduce a SSH připojení s Apache Hadoop v HDInsight – Azure
+description: Zjistěte, jak spouštět úlohy mapreduce je možné pomocí Apache Hadoop v HDInsight pomocí SSH.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,21 +9,21 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8c3fb1a5474d0546dc06dfea681e6229b563ccc0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: df6a96d8bbf1c77d279806e69e7aa7f65387dd4b
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014342"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632522"
 ---
-# <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>Použití MapReduce se systémem Hadoop v HDInsight pomocí SSH
+# <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>Použití MapReduce se službou Apache Hadoop v HDInsight pomocí SSH
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
 Zjistěte, jak odesílat úlohy MapReduce z připojení Secure Shell (SSH) k HDInsight.
 
 > [!NOTE]
-> Pokud jste už obeznámení s pomocí serverů se systémem Linux Hadoop, ale HDInsight začínáte, přečtěte si téma [tipy k Linuxovým systémem HDInsight](../hdinsight-hadoop-linux-information.md).
+> Pokud jste už obeznámení s pomocí serverů se systémem Linux Apache Hadoop, ale HDInsight začínáte, přečtěte si téma [tipy k Linuxovým systémem HDInsight](../hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Požadavky
 

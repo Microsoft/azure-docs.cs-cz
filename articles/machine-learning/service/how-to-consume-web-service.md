@@ -9,18 +9,18 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 10/30/2018
-ms.openlocfilehash: 0ad39048a6b175a30ac7c5cdc346d0858c3719ef
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 75faf344c64dc330a98b836a8852b42531645c49
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621866"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685170"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
 Rozhraní REST API Azure Machine Learning modelu jako webové služby vytvoří. Můžete odesílat data do tohoto rozhraní API a přijímat předpovědi vrácený modelu. V tomto dokumentu, zjistěte, jak vytvořit klientů pro webovou službu pomocí C#, Go, Java nebo Python.
 
-Webová služba se vytvoří při nasazení image do Azure Container Instance, Azure Kubernetes Service nebo Project Brainwave (pole programmable gate Array). Vytváření imagí z registrované modely a soubory vyhodnocení. Identifikátor URI použitý pro přístup k webové službě se dá načíst pomocí [SDK služby Azure Machine Learning](https://docs.microsoft.com/en-us/python/api/overview/azure/ml/intro?view=azure-ml-py). Pokud je povolené ověřování, můžete také použít sady SDK získat ověřovací klíče.
+Webová služba se vytvoří při nasazení image do Azure Container Instance, Azure Kubernetes Service nebo Project Brainwave (pole programmable gate Array). Vytváření imagí z registrované modely a soubory vyhodnocení. Identifikátor URI použitý pro přístup k webové službě se dá načíst pomocí [SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Pokud je povolené ověřování, můžete také použít sady SDK získat ověřovací klíče.
 
 Obecný pracovní postup při vytváření klienta, který používá webové služby ML je:
 
@@ -33,7 +33,7 @@ Obecný pracovní postup při vytváření klienta, který používá webové sl
 > [!NOTE]
 > Sada SDK Azure Machine Learning slouží k získání informací o webové služby. Toto je Python SDK. Když se používá k načtení informací o webových službách, můžou používat jakýkoli jazyk se vytvořit klienta pro službu.
 
-Informace o připojení webové služby můžete načíst pomocí sady SDK služby Azure Machine Learning. [Azureml.core.Webservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) třída poskytuje informace potřebné k vytvoření klienta. Následující `Webservice` vlastnosti, které jsou užitečné při vytváření klientské aplikace:
+Informace o připojení webové služby můžete načíst pomocí sady SDK služby Azure Machine Learning. [Azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) třída poskytuje informace potřebné k vytvoření klienta. Následující `Webservice` vlastnosti, které jsou užitečné při vytváření klientské aplikace:
 
 * `auth_enabled` – Pokud je povoleno ověřování, `True`; v opačném případě `False`.
 * `scoring_uri` Adresa – rozhraní REST API.
@@ -51,7 +51,7 @@ Existují tři způsoby pro načtení těchto informací pro nasazené webové s
     print(service.scoring_uri)
     ```
 
-* Můžete použít `Webservice.list` k načtení seznamu nasazené webové služby pro modely v pracovním prostoru. Můžete přidat filtry k zúžení seznamu vrácených informací. Další informace o tom, dají se filtrovat v, najdete v článku [Webservice.list](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) referenční dokumentaci.
+* Můžete použít `Webservice.list` k načtení seznamu nasazené webové služby pro modely v pracovním prostoru. Můžete přidat filtry k zúžení seznamu vrácených informací. Další informace o tom, dají se filtrovat v, najdete v článku [Webservice.list](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#list) referenční dokumentaci.
 
     ```python
     services = Webservice.list(ws)
@@ -82,7 +82,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Pokud je potřeba znovu vygenerovat klíč, použijte [ `service.regen_key` ](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#regen-key).
+> Pokud je potřeba znovu vygenerovat klíč, použijte [ `service.regen_key` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#regen-key).
 
 ## <a name="request-data"></a>Data žádosti
 

@@ -18,16 +18,18 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 7b7f2133634a91b828d7e978c9041b12873fa3a1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b8dba999ac6523aad29aae40b528fd010fec0550
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997212"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687346"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Postupy: použití Azure AD Graph API
 
 Rozhraní Graph API služby Azure Active Directory (Azure AD) poskytuje programový přístup ke službě Azure AD prostřednictvím koncových bodů rozhraní REST API pro OData. Aplikace můžete použít Azure AD Graph API k provedení vytvoření, čtení, aktualizace a odstranění (CRUD) operací objekty a daty adresáře. Například můžete použít Azure AD Graph API k vytvoření nového uživatele, zobrazit nebo aktualizovat vlastnosti uživatele, změňte heslo uživatele, zkontrolovat členství ve skupinách pro přístup na základě rolí, zakázat nebo odstranit uživatele. Další informace o funkcích Azure AD Graph API a scénáře aplikací najdete v tématu [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) a [požadavky na Azure AD Graph API](https://msdn.microsoft.com/library/hh974476.aspx).
+
+Tento článek se týká k Azure AD Graph API. Podobně jako informace související s Microsoft Graph API najdete v tématu [používání rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/use_the_api).
 
 > [!IMPORTANT]
 > Důrazně doporučujeme pro přístup k prostředkům Azure Active Directory použít [Microsoft Graph](https://developer.microsoft.com/graph) místo Azure AD Graph API. Náš vývojový program se nyní soustředí na Microsoft Graph a pro Azure AD Graph API nejsou plánovaná žádná další vylepšení. Existuje velmi omezený počet scénářů, pro které může být Azure AD Graph API stále vhodné. Další informace najdete v příspěvku [Microsoft Graph nebo Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogu na webu Office Dev Center.

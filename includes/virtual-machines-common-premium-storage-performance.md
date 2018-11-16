@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4960ee485ac8c6b233eacc569cdac6748481887d
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 50e252b7dbd20d5330f8117eaa45ccf52303f277
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50746239"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51678172"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: Návrh pro vysoký výkon
 
@@ -32,8 +32,8 @@ V tomto článku se vám pomohou zodpovědět následující běžné otázky t�
 Nabízíme tyto pokyny konkrétně pro Premium Storage, protože úlohy běžící ve službě Storage úrovně Premium jsou vysoce citlivé na výkon. Uvádíme příklady, kde je to vhodné. Můžete také použít některé z těchto pokynů pro aplikace běžící na virtuálních počítačích IaaS s disky Storage úrovně Standard.
 
 > [!NOTE]
-> V některých případech zdánlivě problému s výkonem se ve skutečnosti sítě kritickým bodem. V takových situacích doporučujeme optimalizovat vaše [výkon sítě](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
-> Také se ujistěte, že váš virtuální počítač podporuje akcelerované síťové služby. Pokud ano, můžete ho povolit po nasazení u obou [windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) a [linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) virtuálních počítačů.
+> V některých případech možný problém výkonu disků je ve skutečnosti sítě kritickým bodem. V takových situacích doporučujeme optimalizovat vaše [výkon sítě](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
+> Pokud váš virtuální počítač podporuje akcelerované síťové služby, by měl se ujistěte, zda že je povoleno. Pokud není povolená, můžete ji povolit na již nasazených virtuálních počítačů na obou [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) a [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
 Než začnete, pokud jste ještě na Premium Storage, nejdřív přečíst [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md) a [Azure Storage škálovatelnost a cíle výkonnosti](../articles/storage/common/storage-scalability-targets.md)článků.
 
@@ -227,8 +227,8 @@ Azure Premium Storage nabízí osm GA velikosti disků a třech velikostech disk
 
 | Typ disky Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Velikost disku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1 024 giB (1 TB)    | 2 048 giB (2 TB)    | 4095 giB (4 TB)    | 8192 giB (8 TB)    | 16384 giB (16 TB)    | 32 767 giB (32 GB)    |
-| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
+| Velikost disku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1 024 GiB (1 TiB)    | 2 048 GiB (2 TiB)    | 4 095 GiB (4 TiB)    | 8 192 GiB (8 TiB)    | 16384 giB (16 TB)    | 32 767 giB (32 GB)    |
+| Vstupně-výstupní operace za sekundu / disk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
 | Propustnost / disk | 25 MiB za sekundu  | 50 MiB za sekundu  | 100 MiB za sekundu |125 MiB za sekundu | 150 MiB za sekundu | 200 MiB za sekundu | 250 MiB za sekundu | 250 MiB za sekundu | 480 MiB za sekundu | 750 MiB za sekundu | 750 MiB za sekundu |
 
 Kolik disků, které zvolíte, závisí na disku velikost zvolená. Můžete použít jeden disk P50 nebo více disků P10 pro splnění požadavků vašich aplikací. Zohlednit při rozhodování níže uvedené důležité informace o účtu.

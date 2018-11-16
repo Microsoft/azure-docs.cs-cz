@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 5d3ba4ac4a86b6051ea5dafbff8c038c9198108c
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 7f4af06222141eb0e143e67ba4bfcdcb2f5f92fa
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279547"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51614000"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Protokolování instancí kontejnerů s využitím Azure Log Analytics
 
@@ -128,14 +128,15 @@ ContainerInstanceLog_CL
 | where (TimeGenerated > ago(1h))
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 ### <a name="log-analytics"></a>Log Analytics
 
 Další informace o dotazování protokolů a konfiguraci upozornění ve službě Azure Log Analytics najdete v těchto tématech:
 
-* [Principy hledání v protokolu ve službě Log Analytics](../log-analytics/log-analytics-queries.md)
-* [Sjednocená upozornění ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md)
+* [Principy hledání v protokolu ve službě Log Analytics](../log-analytics/log-analytics-log-search.md)
+* [Sjednocená upozornění ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+
 
 ### <a name="monitor-container-cpu-and-memory"></a>Monitorování procesoru a paměti kontejneru
 

@@ -1,6 +1,6 @@
 ---
 title: Připojení ke službě Azure HDInsight pomocí nástrojů Data Lake pro Visual Studio
-description: Naučte se instalovat a používat nástroje Data Lake pro Visual Studio pro připojení ke clusterům Hadoop ve službě Azure HDInsight a následné spouštění dotazů Hive.
+description: Zjistěte, jak nainstalovat a používat nástroje Data Lake pro Visual Studio pro připojení ke clusterům Apache Hadoop v Azure HDInsight a následné spouštění dotazů Hive.
 keywords: hadoop tools, hive query, visual studio, visual studio hadoop
 services: hdinsight
 author: hrasheed-msft
@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 281c3744dc311fdced20f810e0a9f2b233076472
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 670de3f61047bcc8b168863f5981e41084225ec4
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247139"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634664"
 ---
-# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Použití nástrojů Data Lake pro Visual Studio pro připojení ke službě Azure HDInsight a spouštění dotazů Hive
+# <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Pomocí nástrojů Data Lake pro Visual Studio pro připojení k Azure HDInsight a spouštět dotazy Apache Hive
 
-Naučte se používat nástroje Data Lake pro Visual Studio (označují se také jako nástroje Azure Data Lake nebo Stream Analytics pro Visual Studio) pro připojení ke clusterům Hadoop ve službě [Azure HDInsight](../hdinsight-hadoop-introduction.md) a odesílání dotazů Hive. 
+Zjistěte, jak pomocí nástrojů Data Lake pro Visual Studio (také nazývané Azure Data Lake a Stream Analytics Tools for Visual Studio) pro připojení k Apache Hadoop clusterů v [Azure HDInsight](../hdinsight-hadoop-introduction.md) a odesílání dotazů Hive. 
 
 Další informace o používání služby HDInsight najdete v tématech [Úvod do služby HDInsight](../hdinsight-hadoop-introduction.md) a [Začínáme se službou HDInsight](apache-hadoop-linux-tutorial-get-started.md). 
 

@@ -1,7 +1,6 @@
 ---
-title: 'Příklad: Rozpoznávání jazyka pomocí rozhraní REST API pro analýzu textu'
-titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak rozpoznat jazyk pomocí rozhraní REST API pro analýzu textu.
+title: 'Postupy: jazyk detekce v REST API pro analýzu textu (Microsoft Cognitive Services v Azure) | Dokumentace Microsoftu'
+description: Jak zjistit jazyk s využitím REST API pro analýzu textu ve službě Microsoft Cognitive Services v Azure v tomto kurzu návodu.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
@@ -10,18 +9,21 @@ ms.component: text-analytics
 ms.topic: sample
 ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: 460dfb168894d28d5fbc5e5585a6054917127931
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604548"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633560"
 ---
 # <a name="example-how-to-detect-language-in-text-analytics"></a>Příklad: Jak rozpoznat jazyk pomocí funkce Analýza textu
 
 [Rozhraní API pro rozpoznávání jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) vyhodnotí textový vstup a pro každý dokument vrátí identifikátory jazyka se skóre, které označuje sílu analýzy. Analýza textu rozpozná až 120 jazyků.
 
 Tato schopnost je užitečná pro úložiště obsahu, která shromažďují libovolné texty, u nichž není jazyk znám. Výsledky této analýzy můžete parsovat a určit, v kterém jazyce je vstupní dokument napsaný. Spolu s odpovědí se vrátí také skóre, které odráží spolehlivost modelu (jedná se o hodnotu 0 až 1).
+
+> [!TIP]
+> Rozhraní text Analytics také poskytuje Dockeru založených na Linuxu image kontejneru pro rozpoznávání jazyka, tak, aby se [nainstalovat a spustit kontejner pro analýzu textu](text-analytics-how-to-install-containers.md) blízko datům.
 
 ## <a name="preparation"></a>Příprava
 
@@ -62,7 +64,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 + Vytvořte žádost **POST**. Projděte si dokumentaci k rozhraní API týkající se této žádosti: [Rozhraní API pro rozpoznávání jazyka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-+ Nastavte koncový bod HTTP pro rozpoznávání jazyka. Musí obsahovat prostředek `/languages`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`.
++ Nastavení koncového bodu HTTP pro rozpoznávání jazyka pomocí prostředek pro analýzu textu v Azure nebo vytvořenou instanci [kontejneru pro analýzu textu](text-analytics-how-to-install-containers.md). Musí obsahovat prostředek `/languages`: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`.
 
 + Nastavte hlavičku žádosti tak, aby obsahovala přístupový klíč pro operace analýzy textu. Další informace najdete v článku, který se věnuje [vyhledání koncových bodů a přístupových klíčů](text-analytics-how-to-access-key.md).
 
@@ -73,7 +75,7 @@ Podrobnosti o definici žádosti najdete v článku o [volání rozhraní API pr
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
 
-Analýza se provede po přijetí žádosti. Služba přijme maximálně 100 žádostí za minutu. Každý žádost může mít maximální velikost 1 MB.
+Analýza se provede po přijetí žádosti. Služba přijme maximálně 100 žádostí za minutu. Každá žádost může mít maximální velikost 1 MB.
 
 Nezapomeňte, že služba je bezstavová. Ve vašem účtu se neukládají žádná data. Výsledky se vrátí okamžitě v odpovědi.
 
@@ -209,13 +211,13 @@ V tomto článku jste se seznámili s koncepty a pracovním postupem rozpoznáv�
 + Žádost POST je určená pro koncový bod `/languages` a používá individuální [přístupový klíč a koncový bod](text-analytics-how-to-access-key.md), které jsou platné pro dané předplatné.
 + Výstup odpovědi, který je tvořen identifikátory jazyka pro jednotlivá ID dokumentu, lze streamovat do libovolné aplikace, která podporuje JSON, včetně například Excelu a Power BI.
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
  [Produktová stránka pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759712) 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Analýza mínění](text-analytics-how-to-sentiment-analysis.md)

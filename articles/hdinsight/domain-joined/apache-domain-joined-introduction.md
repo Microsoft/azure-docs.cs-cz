@@ -1,5 +1,5 @@
 ---
-title: Úvod do zabezpečení Hadoop s balíčkem Enterprise Security Package
+title: Úvod do Apache Hadoop zabezpečení s balíčkem Enterprise Security Package
 description: Zjistěte, jak Enterprise Security Package podporuje čtyři pilíře podnikového zabezpečení.
 services: hdinsight
 ms.service: hdinsight
@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a1b4565d4875b60ce36d74f8c99e4c7d79999c36
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 270227204af9cf50f0244b8aa11ebf9aa8cdc3ce
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578259"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51631995"
 ---
-# <a name="an-introduction-to-hadoop-security-with-enterprise-security-package"></a>Úvod do zabezpečení Hadoop s balíčkem Enterprise Security Package
+# <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Úvod do Apache Hadoop zabezpečení s balíčkem Enterprise Security Package
 
-V minulosti, Azure HDInsight podporován pouze u jednoho uživatele: místní správce. To dobře fungovalo pro menší aplikace, týmy nebo oddělení. Jak se úlohy založené na Hadoopu oblíbenějšími v odvětví enterprise, potřeba pro podporu funkce na podnikové úrovni, jako je ověřování na základě služby Active Directory, více uživatelů a řízení přístupu na základě rolí stal nabývá na důležitosti. 
+V minulosti, Azure HDInsight podporován pouze u jednoho uživatele: místní správce. To dobře fungovalo pro menší aplikace, týmy nebo oddělení. Jak se úlohy založené na Apache Hadoopu oblíbenějšími v odvětví enterprise, potřeba pro podporu funkce na podnikové úrovni, jako je ověřování na základě služby Active Directory, více uživatelů a řízení přístupu na základě rolí stal nabývá na důležitosti. 
 
 Můžete vytvořit cluster služby HDInsight s Enterprise Security Package (ESP), který je připojený k doméně služby Active Directory. Potom můžete nakonfigurovat seznam zaměstnanců podniku, kteří mohou ověřovat prostřednictvím služby Azure Active Directory pro přihlášení ke clusteru HDInsight. Nikdo z mimo organizaci můžete přihlásit nebo přístup ke clusteru HDInsight. 
 
-Podnikový správce můžete konfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Hivu pomocí [Apache Ranger](http://hortonworks.com/apache/ranger/). Konfigurace RBAC omezí přístup k datům jenom to, co je potřeba. Nakonec správce můžete auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu. Správce pak může dosáhnout vysokého stupně dohledu nad firemními prostředky.
+Podnikový správce můžete konfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Apache Hive pomocí [Apache Ranger](http://hortonworks.com/apache/ranger/). Konfigurace RBAC omezí přístup k datům jenom to, co je potřeba. Nakonec správce můžete auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu. Správce pak může dosáhnout vysokého stupně dohledu nad firemními prostředky.
 
 > [!NOTE]
 > Oozie je nyní zapnuta ESP clustery. Pro přístup k webovým Uživatelským rozhraním Oozie, musí uživatelé povolit [tunelování](../hdinsight-linux-ambari-ssh-tunnel.md).

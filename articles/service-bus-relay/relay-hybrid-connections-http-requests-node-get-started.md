@@ -12,62 +12,51 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 11/01/2018
 ms.author: clemensv
-ms.openlocfilehash: 2bc923650425c76562161dd6f44f3a5722b5cefe
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: a25ca0c10b66f6881f2423306564d7d37124c33a
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630441"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51616176"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-node"></a>Začínáme s požadavky HTTP Relay Hybrid Connections v Node
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Tento kurz představuje úvod do požadavků HTTP služby [Azure Relay Hybrid Connections](relay-what-is-it.md#hybrid-connections) a ukazuje, jak pomocí Node.js vytvořit klientskou aplikaci, která odesílá zprávy do příslušné aplikace naslouchacího procesu.
+V tomto rychlém startu vytváříte aplikace odesílatele a příjemce Node.js, které odesílání a příjem zpráv pomocí protokolu HTTP. Aplikace používají funkce hybridní připojení Azure Relay. Obecné informace o Azure Relay, najdete v článku [Azure Relay](relay-what-is-it.md). 
 
-## <a name="what-will-be-accomplished"></a>Co všechno zvládneme
+V tomto rychlém startu proveďte následující kroky:
 
-Protože služba Hybrid Connections vyžaduje komponentu klienta i serveru, vytvoříme v tomto kurzu dvě konzolové aplikace. Postup je následující:
-
-1. Pomocí webu Azure Portal vytvoříme obor názvů přenosu.
-2. Pomocí webu Azure Portal vytvoříme hybridní připojení.
-3. Napíšeme serverovou aplikaci pro příjem zpráv.
-4. Napíšeme aplikaci klientské konzoly pro příjem zpráv.
+1. Pomocí webu Azure Portal vytvoříte obor názvů služby Relay.
+2. Pomocí webu Azure Portal vytvoříte v tomto oboru názvů hybridní připojení.
+3. Napíšeme konzolovou aplikaci serveru (naslouchacího procesu) pro příjem zpráv.
+4. Napíšeme konzolovou aplikaci klienta (odesílatele) pro odesílání zpráv.
+5. Spouštění aplikací.
 
 ## <a name="prerequisites"></a>Požadavky
+- [Node.js](https://nodejs.org/en/).
+- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-1. [Node.js](https://nodejs.org/en/).
-2. Předplatné Azure.
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
-
-Pokud už máte vytvořený obor názvů služby Relay, přejděte do části [Vytvoření hybridního připojení pomocí webu Azure Portal](#2-create-a-hybrid-connection-using-the-azure-portal).
-
+## <a name="create-a-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>2. Vytvoření hybridního připojení pomocí webu Azure Portal
-
-Pokud už máte vytvořené hybridní připojení, přejděte do části [Vytvoření serverové aplikace](#3-create-a-server-application-listener).
-
+## <a name="create-a-hybrid-connection-using-the-azure-portal"></a>Vytvoření hybridního připojení pomocí webu Azure Portal
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
-## <a name="3-create-a-server-application-listener"></a>3. Vytvoření serverové aplikace (naslouchací proces)
-
+## <a name="create-a-server-application-listener"></a>Vytvoření serverové aplikace (naslouchací proces)
 Aby bylo možné naslouchat zprávám ze služby Relay a přijímat je, napíšeme konzolovou aplikaci Node.js.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-server](../../includes/relay-hybrid-connections-http-requests-node-get-started-server.md)]
 
-## <a name="4-create-a-client-application-sender"></a>4. Vytvoření klientské aplikace (odesílatel)
+## <a name="create-a-client-application-sender"></a>Vytvoření klientské aplikace (odesílatel)
 
 Aby bylo možné odesílat zprávy do služby Relay, můžete použít libovolného klienta HTTP nebo napsat konzolovou aplikaci Node.js.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-client](../../includes/relay-hybrid-connections-http-requests-node-get-started-client.md)]
 
-## <a name="5-run-the-applications"></a>5. Spuštění aplikací
+## <a name="run-the-applications"></a>Spuštění aplikací
 
 1. Spuštění serverové aplikace: v příkazovém řádku Node.js zadejte `node listener.js`.
 2. Spuštění klientské aplikace: v příkazovém řádku Node.js zadejte `node sender.js` a nějaký text.
@@ -75,10 +64,7 @@ Aby bylo možné odesílat zprávy do služby Relay, můžete použít libovoln�
 
 Blahopřejeme, vytvořili jste kompletní aplikaci Hybrid Connections pomocí Node.js!
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
+V tomto rychlém startu jste vytvořili Node.js klientské a serverové aplikace, které umožňuje odesílat a přijímat zprávy HTTP. Funkce hybridní připojení Azure Relay podporuje také používá objekty Websocket pro odesílání a příjem zpráv. Zjistěte, jak používat objekty Websocket s hybridními připojeními Azure Relay, najdete v článku [objekty Websocket quickstart](relay-hybrid-connections-node-get-started.md).
 
-* [Přenos – nejčastější dotazy](relay-faq.md)
-* [Vytvoření oboru názvů](relay-create-namespace-portal.md)
-* [Začínáme s .NET](relay-hybrid-connections-dotnet-get-started.md)
-* [Začínáme s aplikací Node](relay-hybrid-connections-node-get-started.md)
-
+V tomto rychlém startu jste použili Node.js k vytvoření klientských a serverových aplikací. Další informace o zápisu klientské a serverové aplikace pomocí rozhraní .NET Framework, najdete v článku [.NET WebSockets rychlý Start](relay-hybrid-connections-dotnet-get-started.md) nebo [.NET HTTP rychlý Start](relay-hybrid-connections-http-requests-dotnet-get-started.md).

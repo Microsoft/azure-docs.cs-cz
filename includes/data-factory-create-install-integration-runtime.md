@@ -1,3 +1,16 @@
+---
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jingwang
+ms.openlocfilehash: 4189d3a09625f211c6f9eddc7c1c5fe43ad31732
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51571965"
+---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Vytvoření místního prostředí Integration Runtime
 
 V této části vytvoříte místní prostředí Integration Runtime a přidružíte ho k místnímu počítači s databází SQL Serveru. Místní prostředí Integration Runtime je komponenta, která zkopíruje data z SQL Serveru na vašem počítači do úložiště objektů blob v Azure. 
@@ -13,7 +26,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
    Set-AzureRmDataFactoryV2IntegrationRuntime -Name $integrationRuntimeName -Type SelfHosted -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName
    ```
 
-   Zde je ukázkový výstup:
+   Tady je ukázkový výstup:
 
    ```json
     Id                : /subscriptions/<subscription ID>/resourceGroups/ADFTutorialResourceGroup/providers/Microsoft.DataFactory/factories/onpremdf0914/integrationruntimes/myonpremirsp0914
@@ -30,7 +43,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
    Get-AzureRmDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
    ```
 
-   Zde je ukázkový výstup:
+   Tady je ukázkový výstup:
 
    ```json
    Nodes                     : {}
@@ -55,7 +68,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
    ```
 
-   Zde je ukázkový výstup:
+   Tady je ukázkový výstup:
 
    ```json
    {

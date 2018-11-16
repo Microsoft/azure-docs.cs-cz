@@ -13,15 +13,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 06/21/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 334649dbe315cb54ba95a29f4c69441fcd2c3417
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 0e6e72424530d18b55f68077ba7c3328d9a2e549
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46362965"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621424"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>Rychlý start: Stažení sestavy přihlašování na webu Azure Portal
 
@@ -32,7 +32,7 @@ V tomto rychlém startu se dozvíte, jak stáhnout data přihlašování pro va�
 Budete potřebovat:
 
 * Tenanta Azure Active Directory s licencí Premium k zobrazení sestavy aktivit přihlašování. 
-* Uživatele, který je v roli Správce zabezpečení, Čtenář zabezpečení, Čtenář sestav nebo Globální správce pro tohoto tenanta. Každý uživatel v tenantovi může navíc přistupovat k vlastním přihlášením.
+* Uživatel, který je v **správce zabezpečení**, **Čtenář zabezpečení**, **čtenáře sestav** nebo **globálního správce** role pro příslušného tenanta. Každý uživatel v tenantovi může navíc přistupovat k vlastním přihlášením.
 
 ## <a name="quickstart-download-a-sign-in-report"></a>Rychlý start: Stažení sestavy přihlašování
 
@@ -44,7 +44,7 @@ Budete potřebovat:
 
 ![Vytváření sestav](./media/quickstart-download-sign-in-report/download-sign-ins.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Sestavy aktivit přihlašování na portálu Azure Active Directory](concept-sign-ins.md)
 * [Uchování sestav v Azure Active Directory](reference-reports-data-retention.md)

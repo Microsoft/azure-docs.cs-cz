@@ -12,15 +12,15 @@ ms.component: report-monitor
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ba2784663a585aebb82ee149be3b54e73920f6dd
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: cd5da2a3c5fa3d9cd67715493eb649926badb694
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816646"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51622530"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>Rychlý start: Instalace balíčku obsahu Azure Active Directory Power BI
 
@@ -29,7 +29,7 @@ ms.locfileid: "48816646"
 |V současné době balíček obsahu Azure AD Power BI používá rozhraní Azure AD Graph API k načtení dat z vašeho tenanta Azure AD. V důsledku toho můžete zaznamenat určitý nesoulad mezi daty, která jsou k dispozici v balíčku obsahu, a daty načtenými pomocí [rozhraní Microsoft Graph API pro generování sestav](concept-reporting-api.md). |
 |  |
 
-Balíček obsahu Power BI pro Azure Active Directory vám umožňuje získat podrobný přehled o tom, co se děje v rámci vašeho adresáře Active Directory. Můžete stáhnout předem sestavený balíček obsahu a použít ho k vykazování všech aktivit v rámci vašeho adresáře s použitím bohatého prostředí vizualizací, které nabízí služba Power BI. Můžete si vytvořit vlastní řídicí panel a snadno ho sdílet s kýmkoli ve vaší organizaci. 
+Balíček obsahu Power BI pro Azure Active Directory (Azure AD) poskytuje možnost vizualizovat data sestav z vašeho prostředí. Můžete stáhnout předem sestavený balíček obsahu a použít ho k vykazování všech aktivit v rámci vašeho adresáře s použitím bohatého prostředí vizualizací, které nabízí služba Power BI. Můžete si vytvořit vlastní řídicí panel a snadno ho sdílet s kýmkoli ve vaší organizaci. 
 
 V tomto rychlém startu se dozvíte, jak tento balíček obsahu nainstalovat.
 
@@ -57,7 +57,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
    ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/quickstart-install-power-bi-content-pack/dashboard.png) 
     
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Použití balíčků obsahu Power BI](howto-power-bi-content-pack.md).
 * [Řešení potíží s chybami balíčku obsahu](troubleshoot-content-pack.md).

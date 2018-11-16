@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 820fd904ac4ab983f4bd9858f3cf1ecff147876e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2a4519484c3319ca73bef2862db4d279ba117c4f
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386616"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636726"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavit přihlašování pomocí účtu služby Azure Active Directory pomocí vlastních zásad v Azure Active Directory B2C 
 
@@ -31,20 +31,19 @@ Proveďte kroky v [začít pracovat s vlastními zásadami v Azure Active Direct
 
 Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD, budete muset zaregistrovat aplikaci v rámci organizační tenanta Azure AD.
 
->[!NOTE]
->`Contoso.com` slouží k organizační tenanta Azure AD a `fabrikamb2c.onmicrosoft.com` slouží jako tenant Azure AD B2C v následujících pokynech.
-
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresáře, který obsahuje organizace Azure AD tenant (contoso.com) kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 3. Zvolte **všechny služby** v horním levém horním rohu webu Azure portal a poté vyhledejte a vyberte **registrace aplikací**.
 4. Vyberte **Registrace nové aplikace**.
 5. Zadejte název své aplikace. Například, `Azure AD B2C App`.
 6. Pro **typ aplikace**vyberte `Web app / API`.
-7. Pro **přihlašovací adresa URL**, zadejte následující adresu URL malými písmeny, kde `your-tenant` se nahradí názvem vašeho tenanta Azure AD B2C (fabrikamb2c.onmicrosoft.com):
+7. Pro **přihlašovací adresa URL**, zadejte následující adresu URL malými písmeny, kde `your-B2C-tenant-name` se nahradí názvem vašeho tenanta Azure AD B2C:
 
     ```
-    https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
+    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
+
+    Například, `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 
 8. Klikněte na možnost **Vytvořit**. Kopírovat **ID aplikace** pro pozdější použití.
 9. Vyberte aplikaci a pak vyberte **nastavení**.
@@ -85,7 +84,7 @@ Azure AD jako poskytovatele deklarací identity můžete definovat tak, že při
           <Protocol Name="OpenIdConnect"/>
           <OutputTokenFormat>JWT</OutputTokenFormat>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/your-tenant/.well-known/openid-configuration</Item>
+            <Item Key="METADATA">https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration</Item>
             <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="IdTokenAudience">00000000-0000-0000-0000-000000000000</Item>
@@ -119,7 +118,7 @@ Azure AD jako poskytovatele deklarací identity můžete definovat tak, že při
     </ClaimsProvider>
     ```
 
-4. V části **ClaimsProvider** elementu, aktualizujte hodnotu **domény** na jedinečnou hodnotu, která je možné, aby se odlišil od jiných zprostředkovatelů identity.
+4. V části **ClaimsProvider** elementu, aktualizujte hodnotu **domény** na jedinečnou hodnotu, která je možné, aby se odlišil od jiných zprostředkovatelů identity. Například `Contoso`. Není vložíte `.com` na konci tohoto nastavení domény.
 5. V části **ClaimsProvider** elementu, aktualizujte hodnotu **DisplayName** na popisný název pro zprostředkovatele deklarací identity. Tato hodnota není aktuálně používán.
 
 ### <a name="update-the-technical-profile"></a>Aktualizace technický profil
@@ -130,7 +129,7 @@ Chcete-li získat token z koncového bodu Azure AD, musíte definovat protokoly,
 2. Aktualizujte hodnotu **DisplayName**. Tato hodnota se zobrazí na tlačítko přihlásit na obrazovce přihlášení.
 3. Aktualizujte hodnotu **popis**.
 4. Azure AD používá protokol OpenID Connect, tak zkontrolujte, zda hodnota **protokol** je `OpenIdConnect`.
-5. Nastavte hodnotu **METADAT** k `https://login.windows.net/your-tenant/.well-known/openid-configuration`, kde `your-tenant` je název tenanta Azure AD (contoso.com).
+5. Nastavte hodnotu **METADAT** k `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration`, kde `your-AD-tenant-name` je název tenanta Azure AD. Například `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`.
 6. Otevřete prohlížeč a přejděte na **METADAT** adresu URL, kterou jste právě aktualizovali, hledejte pro **vystavitele** objektu, zkopírujte a vložte tuto hodnotu na hodnotu pro **ProviderName** v souboru XML.
 8. Nastavte **client_id** a **IdTokenAudience** do ID aplikace z registrace aplikace.
 9. V části **CryptograhicKeys**, aktualizujte hodnotu **StorageReferenceId** do klíče zásad, který jste definovali. Například, `ContosoAppSecret`.
@@ -158,7 +157,7 @@ V tomto okamžiku je nastavený zprostředkovatele identity, ale není k dispozi
 **ClaimsProviderSelection** element je obdobou k tlačítku na obrazovce přihlášení-registrace/přihlášení zprostředkovatele identity. Pokud chcete přidat **ClaimsProviderSelection** – element pro Azure AD, nové tlačítko se zobrazí při uživatel umístil na stránce.
 
 1. Najít **OrchestrationStep** element, který zahrnuje `Order="1"` v cestě uživatele, který jste vytvořili.
-2. V části **ClaimsProviderSelects**, přidejte následující prvek. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `ContosoExchange`:
+2. V části **ClaimsProviderSelections**, přidejte následující prvek. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `ContosoExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />

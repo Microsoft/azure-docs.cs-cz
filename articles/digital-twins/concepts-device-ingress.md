@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: c15ce88bbd55becaf30098f2e3302d2e65bc11d2
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 9ce2f65af89e186a3cd32bd2900b5444fb556b08
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625721"
+ms.locfileid: "51636709"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Možnosti připojení zařízení a příchozí přenos telemetrických dat
 
@@ -37,21 +37,25 @@ V následujících částech se dozvíte, jak získat připojovací řetězec sl
 
 ## <a name="get-the-iot-hub-device-connection-string-from-the-management-api"></a>Získat připojovací řetězec služby IoT Hub zařízení z rozhraní API pro správu
 
+[!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
+
 Provést volání GET na rozhraní API zařízení pomocí `includes=ConnectionString` parametr získat připojovací řetězec zařízení služby IoT Hub. Identifikátor GUID nebo ID hardwaru k vyhledání dané zařízení můžete filtrovat podle zařízení.
 
 ```plaintext
-https://yourManagementApiUrl/api/v1.0/devices/yourDeviceGuid?includes=ConnectionString
+YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_GUID?includes=ConnectionString
 ```
+
+| Parametr | Nahradit hodnotou |
+| --- | --- |
+| *YOUR_DEVICE_GUID* | ID zařízení |
 
 ```plaintext
-https://yourManagementApiUrl/api/v1.0/devices?hardwareIds=yourDeviceHardwareId&includes=ConnectionString
+YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=ConnectionString
 ```
 
-| Název vlastního atributu | Nahradit hodnotou |
+| Hodnota parametru | Nahradit hodnotou |
 | --- | --- |
-| **yourManagementApiUrl** | Úplná cesta adresy URL pro vaše rozhraní API pro správu |
-| **yourDeviceGuid** | ID zařízení |
-| **yourDeviceHardwareId** | ID hardwaru zařízení |
+| *YOUR_DEVICE_HARDWARE_ID* | ID hardwaru zařízení |
 
 V datové části odpovědi zkopírujte zařízení **connectionString** vlastnost. Můžete ji použít při volání sady SDK k odesílání dat do digitální dvojče zařízení Azure IoT.
 

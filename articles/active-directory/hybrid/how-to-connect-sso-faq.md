@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d445a4673245b4c6d1986d099113beba79d136bb
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e3f08b80b891ad277794ae5a07c3662dab2f2c16
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315242"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687448"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -46,7 +46,7 @@ Tady je – úplný seznam aplikací, které tyto parametry můžete odeslat do 
 | -- | -- |
 | Přístupový panel | https://myapps.microsoft.com/contoso.com |
 | Aplikace Outlook na webu | https://outlook.office365.com/contoso.com |
-| Portál Office 365 | https://portal.office.com?domain_hint=contoso.com |
+| Portály Office 365 | https://portal.office.com?domain_hint=contoso.com, https://www.office.com?domain_hint=contoso.com |
 
 Kromě toho, uživatelé získají bezobslužné možnosti přihlašování, když aplikace pošle žádostí o přihlášení k Azure AD bezproblémovým koncové body – to znamená https://login.microsoftonline.com/contoso.com/<..> nebo https://login.microsoftonline.com/<tenant_ID>/<..> – místo pro běžné koncového bodu Azure AD – to znamená, https://login.microsoftonline.com/common/<...>. Tady je – úplný seznam aplikací, které tyto druhy žádostí o přihlášení.
 

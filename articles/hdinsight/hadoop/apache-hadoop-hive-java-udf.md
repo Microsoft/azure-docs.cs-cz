@@ -1,6 +1,6 @@
 ---
-title: Java uživatelem definované funkce (UDF) pomocí Hivu ve službě HDInsight – Azure
-description: Zjistěte, jak vytvořit založené na jazyce Java uživatelem definované funkce (UDF), která funguje pomocí Hive. Tento příklad převede UDF tabulku textové řetězce na malá písmena.
+title: Java uživatelem definované funkce (UDF) s Apache Hive v HDInsight – Azure
+description: Zjistěte, jak vytvořit založené na jazyce Java uživatelem definované funkce (UDF), která funguje s Apache Hive. Tento příklad převede UDF tabulku textové řetězce na malá písmena.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3d8f1d75b8e61bd611f58ed953a8357fb4a47c78
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006239"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51634069"
 ---
-# <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Použijte Java UDF pomocí Hivu ve službě HDInsight
+# <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Použijte Java UDF Apache Hive v HDInsight
 
-Zjistěte, jak vytvořit založené na jazyce Java uživatelem definované funkce (UDF), která funguje pomocí Hive. Java UDF v tomto příkladu převede tabulku textovými řetězci na všechna malá znaků.
+Zjistěte, jak vytvořit založené na jazyce Java uživatelem definované funkce (UDF), která funguje s Apache Hive. Java UDF v tomto příkladu převede tabulku textovými řetězci na všechna malá znaků.
 
 ## <a name="requirements"></a>Požadavky
 

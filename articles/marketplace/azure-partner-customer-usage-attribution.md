@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 49d68a28180c384a181f29e41c12a5e32bd76aee
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625211"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685697"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
@@ -59,12 +59,13 @@ Chcete-li přidat globálně jedinečný identifikátor (GUID), provedete jeden 
 1. [Ověření úspěšné identifikátor GUID v nasazení šablony](#verify-the-guid-deployment).
 
 ### <a name="sample-resource-manager-template-code"></a>Kód šablony Resource Manageru ukázkový
-Zkontrolujte, zda chcete-li změnit následující vzorový kód s vlastním vstupů při přidání do souboru hlavní šablony.
+
+Pokud chcete povolit sledování prostředků pro vaši šablonu, budete muset přidat následující dalších prostředků v části prostředky. Zkontrolujte, zda chcete-li změnit následující vzorový kód s vlastním vstupů při přidání do souboru hlavní šablony.
 Prostředek musí být přidán do **mainTemplate.json** nebo **azuredeploy.json** soubor pouze a ne v žádné vnořené nebo propojené šablony.
 ```
 // Make sure to modify this sample code with your own inputs where applicable
 
-{ // add this resource to the mainTemplate.json (do not add the entire file)
+{ // add this resource to the resources section in the mainTemplate.json (do not add the entire file)
     "apiVersion": "2018-02-01",
     "name": "pid-XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX", // use your generated GUID here
     "type": "Microsoft.Resources/deployments",

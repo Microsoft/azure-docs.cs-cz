@@ -1,6 +1,6 @@
 ---
 title: V tomto kurzu vytvoříte pomocí šablony virtuálního počítače Azure Stack | Dokumentace Microsoftu
-description: Popisuje způsob použití ASDK vytvoření virtuálního počítače pomocí šablony predfined vlastní šablony a Githubu.
+description: Popisuje způsob použití ASDK vytvoření virtuálního počítače pomocí šablony předdefinované a vlastní šablony na Githubu.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,46 +13,46 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 09/12/2018
+ms.date: 11/13/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0b3ba5c3a091cf673d8b3dbc413d36cb5fb75de5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7780cfde52cb429503e57216e2543807d3fb1d1d
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713404"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632454"
 ---
 # <a name="tutorial-create-a-vm-using-a-community-template"></a>Kurz: vytvoření virtuálního počítače s využitím komunitní šablony
+
 Jako operátory Azure stacku nebo uživatele, můžete vytvořit virtuální počítač pomocí [vlastních šablon pro rychlý start Githubu](https://github.com/Azure/AzureStack-QuickStart-Templates) namísto nasazení ručně z marketplace služby Azure Stack.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Další informace o službě Azure Stack, šablony rychlý start 
+> * Použití šablon rychlý start Azure Stack 
 > * Vytvoření virtuálního počítače pomocí vlastní šablony Githubu
 > * Spusťte minikube a instalace aplikace
 
-## <a name="learn-about-azure-stack-quickstart-templates"></a>Další informace o službě Azure Stack, šablony rychlý start
-Šablony rychlý start Azure Stack se ukládají v [veřejném úložišti šablon pro rychlý start AzureStack](https://github.com/Azure/AzureStack-QuickStart-Templates) na Githubu. Toto úložiště obsahuje šablony nasazení Azure Resource Manageru, které byly testovány s Microsoft Azure Stack Development Kit (ASDK). Můžete využít k usnadňují vyhodnocení Azure Stack a používejte prostředí ASDK. 
+## <a name="azure-stack-quickstart-templates"></a>Šablony rychlý start Azure Stack
 
-V čase mnoho uživatelů Githubu přispět k úložišti, výsledkem je velkou kolekci více než 400 šablony nasazení. Toto úložiště je skvělý výchozí bod pro lepší pochopení, jak můžete nasadit různé druhy prostředí do služby Azure Stack. 
+Šablony rychlý start Azure Stack se ukládají v [veřejném úložišti šablon QuickStart pro Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates) na Githubu. Toto úložiště obsahuje šablony nasazení Azure Resource Manageru, které byly testovány s Microsoft Azure Stack Development Kit (ASDK). Můžete využít k usnadňují vyhodnocení Azure Stack a používejte prostředí ASDK. 
+
+V čase mnoho uživatelů Githubu přispět k úložišti, výsledkem je kolekce více než 400 šablony nasazení. Toto úložiště je skvělý výchozí bod pro lepší pochopení, jak můžete nasadit různé druhy prostředí do služby Azure Stack. 
 
 >[!IMPORTANT]
-> Některé z těchto šablon jsou vytvářeny členy komunity a ne Microsoft. Každá šablona je licenci licenční smlouvy uděluje její vlastník, ne Microsoft. Společnost Microsoft není zodpovědná za tyto šablony a nekontroluje jejich zabezpečení, kompatibilitu nebo výkon. Komunitní šablony nejsou podporované v rámci jakékoli služby nebo programu podpory Microsoftu a jsou k dispozici "Tak, jak jsou" bez záruky jakéhokoli druhu.
+> Některé z těchto šablon jsou vytvářeny členy komunity a ne Microsoft. Každá šablona je licenci licenční smlouvy uděluje její vlastník, ne Microsoft. Společnost Microsoft není zodpovědná za tyto šablony a nekontroluje jejich zabezpečení, kompatibilitu nebo výkon. Komunitní šablony nejsou podporované v rámci jakékoli služby nebo programu podpory Microsoftu a jsou k dispozici "Tak, jak jsou," bez záruky jakéhokoli druhu.
 
-Pokud chcete přispívat šablony Azure Resource Manageru na Githubu, je třeba váš příspěvek do [úložišti šablon azure quickstart](https://github.com/Azure/AzureStack-QuickStart-Templates).
-
-Další informace o úložišti GitHub a jak přispívat na to, najdete v článku [souboru readme](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md). 
-
+Pokud chcete přispívat šablony Azure Resource Manageru na GitHub, ujistěte se, váš příspěvek do [AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates) úložiště. Další informace o tomto úložišti a jak přispívat na to, najdete v článku [souboru readme](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md). 
 
 ## <a name="create-a-vm-using-a-custom-github-template"></a>Vytvoření virtuálního počítače pomocí vlastní šablony Githubu
+
 V tomto kurzu příklad [101-vm-linux-minikube](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-linux-minikube) šablonu pro rychlý start Azure Stack se používá k nasazení virtuálního počítače s Ubuntu 16.04 ve službě Azure Stack s Minikube ke správě clusteru Kubernetes.
 
 Minikube je nástroj, který umožňuje snadno spouštět místně Kubernetes. Minikube běží clusteru Kubernetes s jedním uzlem uvnitř virtuálního počítače, umožňuje vyzkoušet Kubernetes nebo vyvíjet s ním každodenní. Podporuje jednoduchý, jedním uzlem clusterů Kubernetes spuštěných na virtuálním počítači s Linuxem. Minikube je nejrychlejší a nejjednodušší způsob, jak získat plně funkční clusterů Kubernetes spuštěných. Umožňuje vývojářům vyvíjet a testovat své aplikace pro systém Kubernetes nasazení na svých místních počítačích. Architektonicky, bude Minikube virtuální počítač spuštěný hlavního uzlu i komponenty agenta místně:
 
 - Hlavní uzel komponent, jako jsou rozhraní API serveru, Plánovač, a [etcd Server](https://coreos.com/etcd/) jsou spuštěny v jediném procesu Linux volá LocalKube.
-- Komponenty agenta uzlu běží v kontejnerech dockeru přesně tak, jak by spustit na normální agenta uzlu. Z pohledu nasazení aplikace není žádný rozdíl když je aplikace nasazená na Minikube nebo pravidelné clusteru Kubernetes.
+- Komponenty agenta uzlu běží v kontejnerech dockeru přesně tak, jak by spustit na normální agenta uzlu. Z pohledu nasazení aplikace není žádný rozdíl mezi když je aplikace nasazená Minikube, nebo v pravidelných clusteru Kubernetes.
 
 Tato šablona nainstaluje následující součásti:
 
@@ -64,17 +64,17 @@ Tato šablona nainstaluje následující součásti:
 - xRDP
 
 > [!IMPORTANT]
-> Image virtuálního počítače s Ubuntu (Ubuntu Server 16.04 LTS v tomto příkladu) musí již být přidán do Tržiště Azure Stack před zahájením těchto kroků.
+> Image virtuálního počítače s Ubuntu (Ubuntu Server 16.04 LTS v tomto příkladu) musí již být přidán do Tržiště Azure Stack před provedením tohoto postupu.
 
-1.  Klikněte na tlačítko **+ vytvořit prostředek** > **vlastní** > **nasazení šablony**.
+1.  Vyberte **+ vytvořit prostředek**, pak **vlastní**, pak **nasazení šablony**.
 
     ![](media/azure-stack-create-vm-template/1.PNG) 
 
-2. Klikněte na tlačítko **úpravy šablony**.
+2. Vyberte **úpravy šablony**.
 
     ![](media/azure-stack-create-vm-template/2.PNG) 
 
-3.  Klikněte na tlačítko **šablonu pro rychlý Start**.
+3.  Vyberte **šablonu pro rychlý Start**.
 
     ![](media/azure-stack-create-vm-template/3.PNG)
 
@@ -82,15 +82,15 @@ Tato šablona nainstaluje následující součásti:
 
     ![](media/azure-stack-create-vm-template/4.PNG)
 
-5. Pokud chcete provádět změny šablony JSON, můžete to provést, pokud není nebo jakmile budete hotovi, klikněte na tlačítko **Uložit** zavřete dialogové okno Upravit šablonu.
+5. Pokud chcete provést změny v šabloně JSON můžete to udělat. Pokud ne, nebo po dokončení vyberte **Uložit** zavřete **úpravy šablony** dialogového okna.
 
     ![](media/azure-stack-create-vm-template/5.PNG) 
 
-6.  Klikněte na **parametry**, vyplňte nebo upravte dostupných polí podle potřeby a pak klikněte na **OK**. Zvolte předplatné, které chcete používat, vytvořte nebo vyberte existující název skupiny prostředků a potom klikněte na tlačítko **vytvořit** k inicializaci nasazení šablony.
+6.  Vyberte **parametry**, vyplňte nebo upravte dostupných polí podle potřeby a pak klikněte na **OK**. Zvolte předplatné, které chcete používat, vytvořte nebo vyberte existující název skupiny prostředků a potom vyberte **vytvořit** k inicializaci nasazení šablony.
 
     ![](media/azure-stack-create-vm-template/6.PNG)
 
-7. Zvolte předplatné, které chcete používat, vytvořte nebo vyberte existující název skupiny prostředků a potom klikněte na tlačítko **vytvořit** k inicializaci nasazení šablony.
+7. Zvolte předplatné, které chcete používat, vytvořte nebo vyberte existující název skupiny prostředků a potom vyberte **vytvořit** k inicializaci nasazení šablony.
 
     ![](media/azure-stack-create-vm-template/7.PNG)
 
@@ -101,18 +101,19 @@ Tato šablona nainstaluje následující součásti:
     >[!NOTE]
     > Po dokončení nasazení, bude virtuální počítač spuštěný. 
 
-## <a name="start-minikube-and-install-an-application"></a>Spusťte minikube a instalace aplikace
-Teď, když úspěšném vytvoření virtuálního počítače s Linuxem můžete přihlásit ke spuštění minikube a instalovat aplikace. 
+## <a name="start-minikube-and-install-an-application"></a>Spusťte Minikube a instalace aplikace
 
-1. Jakmile se nasazení dokončí, klikněte na tlačítko **připojit** zobrazíte veřejnou IP adresu, která se použije k připojení virtuálního počítače s Linuxem. 
+Teď, když úspěšném vytvoření virtuálního počítače s Linuxem můžete přihlásit ke spuštění Minikube a instalovat aplikace. 
+
+1. Po dokončení nasazení vyberte **připojit** zobrazíte veřejnou IP adresu, která se použije k připojení virtuálního počítače s Linuxem. 
 
     ![](media/azure-stack-create-vm-template/9.PNG)
 
-2. Z příkazového řádku se zvýšenými oprávněními spusťte **mstsc.exe** otevřete připojení ke vzdálené ploše a připojit se k virtuálnímu počítači Linux veřejnou IP adresu zjištěných v předchozím kroku. Po zobrazení výzvy k přihlášení k xRDP, použijte přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+2. Z příkazového řádku se zvýšenými oprávněními spusťte **mstsc.exe** otevřete připojení ke vzdálené ploše a připojit se k virtuálnímu počítači s Linuxem veřejnou IP adresu v předchozím kroku. Po zobrazení výzvy k přihlášení k xRDP, použijte přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
     ![](media/azure-stack-create-vm-template/10.PNG)
 
-3. Otevřete terminál emulátor a zadejte následující příkazy ke spuštění minikube:
+3. Otevřete terminál emulátor a zadejte následující příkazy ke spuštění Minikube:
 
     ```shell
     sudo minikube start --vm-driver=none
@@ -122,11 +123,11 @@ Teď, když úspěšném vytvoření virtuálního počítače s Linuxem můžet
 
     ![](media/azure-stack-create-vm-template/11.PNG)
 
-4. Otevřete webový prohlížeč a přejděte na adresu řídicí panel Kubernetes. Ještě jednou vám Gratulujeme, teď máte plně funkční instalace Kubernetes pomocí minikube!
+4. Otevřete webový prohlížeč a přejděte na adresu řídicí panel Kubernetes. Ještě jednou vám Gratulujeme, teď máte plně funkční instalace Kubernetes pomocí Minikube!
 
     ![](media/azure-stack-create-vm-template/12.PNG)
 
-5. Pokud chcete nasadit ukázkovou aplikaci, najdete na stránce oficiální dokumentace systému kubernetes, přeskočte část "Vytvořit Cluster Minikube", jako jste si už nějakou vytvořili výše. Jednoduše přejděte do části "Vytvoření aplikace Node.js" na https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/.
+5. Pokud chcete nasadit ukázkovou aplikaci, najdete na stránce oficiální dokumentace systému Kubernetes a přeskočit v části "Vytvoření clusteru Minikube", protože jste si už nějakou vytvořili výše. Přejděte do části "Vytvoření aplikace Node.js" na https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/.
 
 ## <a name="next-steps"></a>Další postup
 

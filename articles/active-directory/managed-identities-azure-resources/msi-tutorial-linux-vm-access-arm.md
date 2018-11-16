@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4abde91e04048d64a17f861825d1fb7779873155
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.openlocfilehash: 638946f0ffa8b6540f55fb7a22ac17bd262269bf
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106097"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51621679"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použití spravované identity přiřazené uživatelem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru
 
@@ -40,13 +40,11 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- [Přihlášení k webu Azure Portal](https://portal.azure.com)
 
-[Přihlášení k webu Azure Portal](https://portal.azure.com)
+- [Vytvoření virtuálního počítače s Linuxem](/azure/virtual-machines/linux/quick-create-portal)
 
-[Vytvoření virtuálního počítače s Linuxem](/azure/virtual-machines/linux/quick-create-portal)
-
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
+- Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Vytvoření spravované identity přiřazené uživatelem
 
@@ -128,20 +126,20 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Linuxem a v části **Přehled** klikněte na **Připojit**. Zkopírujte řetězec pro připojení k vašemu virtuálnímu počítači.
 3. Připojte se vybraným klientem SSH k virtuálnímu počítači. Pokud používáte Windows, můžete použít klienta SSH v [subsystému Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about). Pokud potřebujete pomoc při konfiguraci klíčů klienta SSH, přečtěte si, [jak na počítači s Windows v Azure používat klíče SSH](~/articles/virtual-machines/linux/ssh-from-windows.md) nebo [jak na linuxových virtuálních počítačích v Azure vytvářet a používat pár veřejného a privátního klíče SSH](~/articles/virtual-machines/linux/mac-create-ssh-keys.md).
-4. V okně terminálu pomocí nástroje CURL odešlete do koncového bodu identity služby Azure Instance Metadata Service (IMDS) žádost o přístupový token Azure Resource Manageru.  
+4. V okně terminálu pomocí nástroje CURL odešlete do koncového bodu identity služby Azure Instance Metadata Service (IMDS) žádost o přístupový token Azure Resource Manageru.  
 
-   Požadavek CURL pro získání přístupového tokenu je znázorněný v následujícím příkladu. Nezapomeňte nahradit `<CLIENT ID>` vlastností `clientId` vrácenou příkazem `az identity create` v části [Vytvoření spravované identity přiřazené uživatelem](#create-a-user-assigned-managed-identity): 
+   Požadavek CURL pro získání přístupového tokenu je znázorněný v následujícím příkladu. Nezapomeňte nahradit `<CLIENT ID>` vlastností `clientId` vrácenou příkazem `az identity create` v části [Vytvoření spravované identity přiřazené uživatelem](#create-a-user-assigned-managed-identity): 
     
    ```bash
-   curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<UAMI CLIENT ID>"   
+   curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<UAMI CLIENT ID>"   
    ```
     
     > [!NOTE]
-    > Hodnota parametru `resource` musí přesně odpovídat hodnotě, kterou očekává Azure AD. Pokud použijete ID prostředku Resource Manageru, musíte v identifikátoru URI zahrnout koncové lomítko. 
+    > Hodnota parametru `resource` musí přesně odpovídat hodnotě, kterou očekává Azure AD. Pokud použijete ID prostředku Resource Manageru, musíte v identifikátoru URI zahrnout koncové lomítko. 
     
-    V odpovědi je přístupový token, který potřebujete pro přístup k Azure Resource Manageru. 
+    V odpovědi je přístupový token, který potřebujete pro přístup k Azure Resource Manageru. 
     
-    Příklad odpovědi:  
+    Příklad odpovědi:  
 
     ```bash
     {
@@ -152,19 +150,19 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
     "not_before":"1504126627",
     "resource":"https://management.azure.com",
     "token_type":"Bearer"
-    } 
+    } 
     ```
 
 5. Použijte přístupový token k přístupu k Azure Resource Manageru a čtení vlastností skupiny prostředků, ke které jste spravované identitě přiřazené uživatelem předtím udělili přístup. Nezapomeňte nahradit `<SUBSCRIPTION ID>` a `<RESOURCE GROUP>` hodnotami, které jste zadali dříve, a `<ACCESS TOKEN>` tokenem vráceným v předchozím kroku.
 
     > [!NOTE]
-    > V adrese URL se rozlišují velká a malá písmena. Proto zkontrolujte, jestli používáte přesně stejná velká a malá písmena, jaká jste použili při pojmenování skupiny prostředků, a zkontrolujte také velké G ve výrazu `resourceGroups`.  
+    > V adrese URL se rozlišují velká a malá písmena. Proto zkontrolujte, jestli používáte přesně stejná velká a malá písmena, jaká jste použili při pojmenování skupiny prostředků, a zkontrolujte také velké G ve výrazu `resourceGroups`.  
 
     ```bash 
-    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-09-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
 
-    Odpověď bude obsahovat informace o konkrétní skupině prostředků podobně jako v následujícím příkladu: 
+    Odpověď bude obsahovat informace o konkrétní skupině prostředků podobně jako v následujícím příkladu: 
 
     ```bash
     {
@@ -172,10 +170,10 @@ K dokončení tohoto postupu potřebujete klienta SSH. Pokud používáte Window
     "name":"DevTest",
     "location":"westus",
     "properties":{"provisioningState":"Succeeded"}
-    } 
+    } 
     ```
-    
-## <a name="next-steps"></a>Další kroky
+    
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste zjistili, jak vytvořit spravovanou identitu přiřazenou uživatelem a připojit ji k virtuálnímu počítači s Linuxem kvůli přístupu k rozhraní API Azure Resource Manageru.  Další informace o Azure Resource Manageru:
 

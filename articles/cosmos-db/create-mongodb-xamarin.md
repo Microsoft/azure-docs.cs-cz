@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: e002f99cc16721b78d85284105ce22ee7d1eb9a3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.openlocfilehash: 45d299e2d5e1f9c9c454e6b2f77df7cdf8295e5f
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574823"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568705"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Rychlý start: Sestavení aplikace Xamarin.Forms s rozhraním API MongoDB v prostředí .NET a na webu Azure Portal
 
@@ -79,7 +79,7 @@ Pokud nechcete použít git, můžete [projekt stáhnout také jako soubor ZIP](
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string).
 
-Následující fragmenty kódu pocházejí z třídy `MongoService`, kterou najdete v následující cestě: src/TaskList.Core/Services/MongoService.cs.
+Následující fragmenty kódu pocházejí ze `MongoService` třídy v následujícím umístění: src/TaskList.Core/Services/MongoService.cs.
 
 * Inicializuje se klient Mongo.
     ```cs
@@ -190,7 +190,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB a spuštění aplikace Xamarin.Forms pomocí rozhraní API pro MongoDB. Teď můžete do účtu Cosmos DB importovat další data.
 

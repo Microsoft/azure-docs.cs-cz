@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 6c9172140691f7107d3907ab86938d879989a6c0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: d1127834732a6fc82e0331370a6c4173e9f61dcf
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748234"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685408"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# (.csx) pro vývojáře odkaz na skript
 
@@ -376,34 +376,27 @@ Informace o tom, jak nahrávat soubory do složky funkce, najdete v části na [
 Adresář obsahující soubor skriptu funkce je automaticky sledované změny sestavení. Chcete-li sledovat změny sestavení v dalších adresářích, přidejte je do `watchDirectories` seznamu v [host.json](functions-host-json.md).
 
 ## <a name="using-nuget-packages"></a>Pomocí balíčků NuGet
+Použití balíčků NuGet v C# funkci, nahrajte *extensions.csproj* soubor do složky funkce v systému souborů aplikace function app. Tady je příklad *extensions.csproj* soubor, který přidá odkaz na *Microsoft.ProjectOxford.Face* verze *1.1.0*:
 
-Chcete-li používat balíčky NuGet ve funkci v jazyce C#, nahrát *project.json* soubor do složky funkce v systému souborů aplikace function app. Tady je příklad *project.json* soubor, který přidá odkaz na Microsoft.ProjectOxford.Face verze 1.1.0:
-
-```json
-{
-  "frameworks": {
-    "net46":{
-      "dependencies": {
-        "Microsoft.ProjectOxford.Face": "1.1.0"
-      }
-    }
-   }
-}
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net46</TargetFramework>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.ProjectOxford.Face" Version="1.1.0" />
+    </ItemGroup>
+</Project>
 ```
-
-V Azure funguje 1.x, se podporuje pouze rozhraní .NET Framework 4.6, tak zajistěte, aby vaše *project.json* soubor Určuje `net46` jak je znázorněno zde.
-
-Po odeslání *project.json* souboru, modul runtime získá balíčky a automaticky přidá odkazy na sestavení balíčku. Není nutné přidat `#r "AssemblyName"` direktivy. Chcete-li používat typy definované v balíčcích NuGet; Stačí přidat požadované `using` příkazy pro vaše *run.csx* souboru. 
-
-V modulu runtime Functions, obnovení NuGet funguje tak, že porovnání `project.json` a `project.lock.json`. Pokud data a časových razítek souborů **nejsou** shodu, běží obnovení NuGet a aktualizovat balíčky NuGet soubory ke stažení. Nicméně pokud razítka data a času souborů **proveďte** shodu, NuGet neprovádí obnovení. Proto `project.lock.json` by se neměly nasazovat, protože to způsobí, že chcete přeskočit obnovení balíčků NuGet. Abyste se vyhnuli nasazování souboru zámku, přidejte `project.lock.json` k `.gitignore` souboru.
 
 Pokud chcete použít vlastní NuGet informačního kanálu, určit informačního kanálu ve *Nuget.Config* souboru v kořenovém adresáři aplikace Function App. Další informace najdete v tématu [konfigurace NuGet chování](/nuget/consume-packages/configuring-nuget-behavior).
 
-### <a name="using-a-projectjson-file"></a>Použití souboru project.json
+### <a name="using-a-extensionscsproj-file"></a>Použití souboru extensions.csproj
 
 1. Funkce otevřete na webu Azure Portal. Na kartě protokoly se zobrazí výstup instalace balíčku.
-2. Pokud chcete nahrát soubor project.json, použijte jednu z metod popsaných v [aktualizace souborů aplikace funkce](functions-reference.md#fileupdate) v referenčním tématu pro vývojáře Azure Functions.
-3. Po *project.json* nahraje soubor, zobrazí se výstup jako v následujícím příkladu ve své funkci je streamování protokolů:
+2. K nahrání *extensions.csproj* souboru, použijte jednu z metod popsaných v [aktualizace souborů aplikace funkce](functions-reference.md#fileupdate) v referenčním tématu pro vývojáře Azure Functions.
+3. Po *extensions.csproj* nahraje soubor, zobrazí se výstup jako v následujícím příkladu ve své funkci je streamování protokolů:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -413,7 +406,7 @@ Pokud chcete použít vlastní NuGet informačního kanálu, určit informační
 2016-04-04T19:02:50.261 C:\DWASFiles\Sites\facavalfunctest\LocalAppData\NuGet\Cache
 2016-04-04T19:02:50.261 https://api.nuget.org/v3/index.json
 2016-04-04T19:02:50.261
-2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\Project.json...
+2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\extensions.csproj...
 2016-04-04T19:02:52.800 Installing Newtonsoft.Json 6.0.8.
 2016-04-04T19:02:52.800 Installing Microsoft.ProjectOxford.Face 1.1.0.
 2016-04-04T19:02:57.095 All packages are compatible with .NETFramework,Version=v4.6.

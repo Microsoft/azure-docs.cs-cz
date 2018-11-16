@@ -8,21 +8,22 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: sample
-ms.date: 09/15/2018
+ms.date: 11/12/2018
 ms.author: juliako
-ms.openlocfilehash: 53dc65c3d2c56308dd298f33bb78047904810ae5
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+ms.openlocfilehash: 513c64ba7c9dad29fbef4a4010f5320dadda3c82
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377826"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51625178"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
 Tento článek ukazuje, jak nahrát video na server pomocí Azure Video Indexeru. Rozhraní API Video Indexeru umožňuje dva způsoby nahrání na server: 
 
 * Nahrání videa na server z adresy URL (upřednostňovaná možnost)
-* Odeslání souboru videa jako pole bajtů v těle požadavku
+* Odešlete soubor videa jako bajtové pole v textu požadavku
+* Použijte existující prostředek služby Azure Media Services tím, že poskytuje [id assetu](https://docs.microsoft.com/azure/media-services/latest/assets-concept) (podporováno pouze placené účty).
 
 Tento článek ukazuje, jak používat API [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) (Nahrát video) k nahrání videí na server a jejich indexování na základě adresy URL. Vzorový kód v článku obsahuje okomentovaný kód, který ukazuje, jak nahrát pole bajtů.  
 
@@ -50,6 +51,35 @@ Tato část popisuje některé volitelné parametry a kdy je vhodné je nastavit
 
 Tento parametr umožňuje určit ID, které bude s videem spojené. ID můžete použít na integraci externího systému pro správu video obsahu. Videa, které se nacházejí na portálu Video Indexer, je možné pomocí zadaného externího ID vyhledávat.
 
+### <a name="callbackurl"></a>callbackUrl
+
+Adresa URL, která se používá k upozornění zákazníků (pomocí požadavku POST) o následujících událostech:
+
+- Indexování změnu stavu: 
+    - Vlastnosti:    
+    
+        |Název|Popis|
+        |---|---|
+        |id|ID videa|
+        |state|Stav videa|  
+    - Příklad: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
+- Osobu identifikovanou ve videu:
+    - Vlastnosti
+    
+        |Název|Popis|
+        |---|---|
+        |id| ID videa|
+        |funkci faceId|Face ID, které se zobrazí v rejstřík videí|
+        |knownPersonId|ID osoby, které jsou jedinečné v rámci modelu pro rozpoznávání tváře|
+        |PersonName|Jméno osoby|
+        
+     - Příklad: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+
+#### <a name="notes"></a>Poznámky
+
+- Video Indexer vrátí všechny existující parametry zadané v původní adresu URL.
+- Zadaná adresa URL musí kódováním.
+
 ### <a name="indexingpreset"></a>indexingPreset
 
 Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují šum na pozadí. Tento parametr se používá ke konfiguraci indexovacího procesu. Můžete určit tyto hodnoty:
@@ -60,11 +90,11 @@ Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují �
 
 Cena závisí na vybrané možnosti indexování.  
 
-### <a name="callbackurl"></a>callbackUrl
+### <a name="priority"></a>priorita
 
-Adresa POST URL k upozornění , že se indexování dokončilo. Video Indexer k ní přidá dva parametry řetězce dotazu: id a stav. Pokud je například adresa URL zpětného volání https://test.com/notifyme?projectName=MyProject, zašle se oznámení s dalšími parametry na https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed.
+Videa se indexují modulem Video Indexer podle jejich priority. Použití **priority** parametr k určení priority indexu. Platné jsou následující hodnoty: **nízká**, **normální** (výchozí), a **vysoké**.
 
-Do adresy URL můžete před přidáním volání do Video Indexeru přidat také další parametry, které se zahrnou do zpětného volání. Později můžete v kódu analyzovat řetězec dotazu a získat zpět všechny zadané parametry v řetězci dotazu (data, která jste původně připojili k adrese URL a informace dodané Video Indexerem). Adresa URL musí být zakódovaná.
+**Priorita** parametr je podporován pouze pro placené účty.
 
 ### <a name="streamingpreset"></a>streamingPreset
 
@@ -257,6 +287,6 @@ Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 |400|VIDEO_ALREADY_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Prozkoumejte výstup Azure Video Indexeru vytvořený pomocí rozhraní API v2](video-indexer-output-json-v2.md)

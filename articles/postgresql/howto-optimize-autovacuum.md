@@ -7,12 +7,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 91f24bf90f3e1a8a0c383a5820c6816748090807
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3f35779337082b7280398bd13ef870c74f3ec082
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628946"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685986"
 ---
 # <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Optimalizace autovacuum v databázi Azure PostgreSQL server 
 Tento článek popisuje, jak efektivně optimalizovat autovacuum na – Azure Database for PostgreSQL.
@@ -50,7 +50,7 @@ autovacuum_vacuum_cost_limit|Určuje mezní hodnoty nákladů, který se použij
 autovacuum_vacuum_cost_delay|Určuje hodnotu náklady na zpoždění, který se použije při automatických operacích a takový. Pokud není zadána hodnota -1, pravidelně vacuum_cost_delay hodnota se použije. Výchozí hodnota je 20 MS. Tento parametr lze nastavit pouze v souboru postgresql.conf nebo na příkazovém řádku serveru. Toto nastavení lze přepsat pro jednotlivé tabulky tak, že změníte parametry tabulky úložiště.|20 ms
 autovacuum_nap_time|Určuje že minimální zpoždění mezi autovacuum běží na libovolné dané databázi. V každé funkce round proces démon zkontroluje databáze a problémy s příkazy a takový a analyzovat podle potřeby pro tabulky v této databázi. Zpoždění se měří v sekundách a výchozí hodnota je jedna minuta (1 min.). Tento parametr lze nastavit pouze v souboru postgresql.conf nebo na příkazovém řádku serveru.|15 s
 autovacuum_max_workers|Určuje maximální počet procesů autovacuum (jiné než Spouštěč autovacuum), které mohou běžet v daný okamžik. Výchozí hodnota je 3. Tento parametr lze nastavit pouze při spuštění serveru.|3
-Výše uvedené konfigurace můžete aktualizovat pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
+Výše uvedené nastavení lze přepsat pro jednotlivé tabulky tak, že změníte parametry tabulky úložiště.  
 
 ## <a name="autovacuum-cost"></a>Autovacuum náklady
 Níže jsou náklady "na" spuštění vakuová operace:

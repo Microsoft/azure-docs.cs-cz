@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c2e50362de48991c818017b59632be3b0e74cb0b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: adb53bb5722bff2374097626e8a3f1679ca00788
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282063"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633525"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -352,7 +352,7 @@ Můžete použít následující atributy zařízení.
  deviceCategory | Název kategorie platné zařízení | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | Libovolnou hodnotou řetězce | (device.deviceManufacturer - eq "Samsung")
  deviceModel | Libovolnou hodnotou řetězce | (device.deviceModel - eq "iPad Air")
- deviceOwnership | Osobní, společnosti, neznámé | (device.deviceOwnership - eq "Company")
+ deviceOwnership | Osobní, podnikové, neznámé | (device.deviceOwnership - eq "Podniková")
  domainName | Libovolnou hodnotou řetězce | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Název profilu profil registrace zařízení Apple nebo Windows Autopilot | (device.enrollmentProfileName - eq "DEP Iphony")
  isRooted | Hodnota TRUE, false | (device.isRooted - eq true)

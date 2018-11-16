@@ -3,24 +3,24 @@ title: Seznámení s akcelerátory řešení Azure IoT | Microsoft Docs
 description: Seznamte se s akcelerátory řešení Azure IoT. Akcelerátory řešení IoT jsou kompletní a ucelená řešení IoT připravená k nasazení.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/24/2018
+ms.date: 11/09/2018
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 7020d8a1756702d8c2b1998eef5a3fc64809ca5e
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
-ms.translationtype: HT
+ms.openlocfilehash: aac079feefde53ff30cbeab942ee0443c113cdc8
+ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308108"
+ms.lasthandoff: 11/09/2018
+ms.locfileid: "51345109"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co jsou akcelerátory řešení Azure IoT?
 
-Cloudová řešení IoT obvykle ke správě připojení zařízení, zpracování a analýze dat a jejich prezentaci využívají vlastní kód a několik cloudových služeb.
+Cloudové řešení IoT obvykle používá vlastní kód a cloudové služby ke správě zařízení připojení, zpracování dat a analýzy a prezentace.
 
-Akcelerátory řešení IoT jsou kolekce kompletních a ucelených řešení IoT připravených k nasazení, která implementují běžné scénáře IoT, jako je vzdálené monitorování, propojená továrna, prediktivní údržba a simulace zařízení. Když nasadíte akcelerátor řešení, součástí nasazení jsou všechny požadované cloudové služby i veškerý požadovaný kód aplikace.
+Akcelerátory řešení IoT je dokončena, připraveno k nasazení řešení IoT, které implementují běžné scénáře IoT. Scénáře patří vzdálené monitorování, propojené továrny, prediktivní údržby a simulaci zařízení. Když nasadíte akcelerátor řešení, součástí nasazení jsou všechny požadované cloudové služby i veškerý požadovaný kód aplikace.
 
 Akcelerátory řešení představují výchozí body pro vaše vlastní řešení IoT. Zdrojový kód všech akcelerátorů řešení je open source a dostupný na GitHubu. Akcelerátory řešení si můžete stáhnout a přizpůsobit podle svých potřeb.
 
@@ -34,7 +34,7 @@ V současné době jsou k dispozici čtyři akcelerátory řešení, které mů�
 
 ### <a name="remote-monitoring"></a>Vzdálené monitorování
 
-Tento akcelerátor řešení můžete použít ke shromažďování telemetrie z několika vzdálených zařízení a k jejich ovládání. Mezi příklady zařízení patří chladící systémy nainstalované u vašich zákazníků nebo ventily nainstalované na vzdálených čerpacích stanicích.
+Pomocí tohoto akcelerátoru řešení a shromažďovat telemetrii ze vzdáleného zařízení a jejich řízení. Mezi příklady zařízení patří chladící systémy nainstalované u vašich zákazníků nebo ventily nainstalované na vzdálených čerpacích stanicích.
 
 Pomocí řídicího panelu vzdáleného monitorování můžete zobrazit telemetrii z připojených zařízení, zřizovat nová zařízení nebo upgradovat firmware na připojených zařízeních:
 
@@ -58,7 +58,7 @@ Pomocí řídicího panelu prediktivní údržby můžete zobrazit analýzu pred
 
 ### <a name="device-simulation"></a>Simulace zařízení
 
-Tento akcelerátor řešení můžete použít ke spuštění několika simulovaných zařízení, která generují realistickou telemetrii. Pomocí tohoto akcelerátoru řešení můžete testovat chování ostatních akcelerátorů řešení nebo testovat vlastní řešení IoT.
+Pomocí tohoto akcelerátoru řešení spustit Simulovaná zařízení, které generují realistickou telemetrií. Pomocí tohoto akcelerátoru řešení můžete testovat chování ostatních akcelerátorů řešení nebo testovat vlastní řešení IoT.
 
 Pomocí webové aplikace simulace zařízení můžete konfigurovat a spouštět simulace:
 
@@ -99,7 +99,7 @@ Akcelerátor řešení vzdáleného monitorování můžete nasadit v následuj�
 
 Náklady na provoz akcelerátoru řešení představují celkovou hodnotu všech [nákladů na podpůrné služby Azure](https://azure.microsoft.com/pricing). Podrobnosti o použitých službách Azure se zobrazí po výběru možností nasazení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud si chcete vyzkoušet některý z akcelerátorů řešení IoT, projděte si následující rychlé starty:
 

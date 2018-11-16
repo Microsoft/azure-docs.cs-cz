@@ -13,15 +13,15 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
-ms.date: 09/13/2018
+ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d6ecf62b46c25ec7cf4ab80219d1bc220e4eb4cc
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 3f4090f1724850b0263905a0593fc77cc6dbfd16
+ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367402"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51620730"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rychlý start: Stažení sestavy auditování pomocí portálu Azure Portal
 
@@ -31,8 +31,8 @@ V tomto rychlém startu se dozvíte, jak stáhnout protokoly auditu pro vašeho 
 
 Budete potřebovat:
 
-* Tenanta Azure Active Directory 
-* Uživatele, který je v roli správce zabezpečení, čtenáře zabezpečení nebo globálního správce pro tenanta. Každý uživatel v tenantovi může navíc použít vlastní protokoly auditu.
+* Tenanta Azure Active Directory. 
+* Uživatel, který je v **správce zabezpečení**, **Čtenář zabezpečení**, nebo **globálního správce** role pro příslušného tenanta. Každý uživatel v tenantovi může navíc použít vlastní protokoly auditu.
 
 ## <a name="quickstart-download-an-audit-report"></a>Rychlý start: Stažení sestavy auditování
 
@@ -44,7 +44,7 @@ Budete potřebovat:
 
 ![Vytváření sestav](./media/quickstart-download-audit-report/download-audit-logs.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Sestavy aktivit přihlašování na portálu Azure Active Directory](concept-sign-ins.md)
 * [Uchování sestav v Azure Active Directory](reference-reports-data-retention.md)

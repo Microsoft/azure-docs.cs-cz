@@ -1,6 +1,6 @@
 ---
-title: Použití Pigu Hadoop pomocí protokolu SSH v clusteru HDInsight – Azure
-description: Zjistěte, jak se připojit ke clusteru Hadoop na Linuxu pomocí SSH a pak použijte Pig příkaz ke spuštění příkazů Pig Latin interaktivně nebo jako úlohu služby batch.
+title: Použití Apache Pig s SSH v clusteru HDInsight – Azure
+description: Zjistěte, jak se připojit ke clusteru Apache Hadoop založené na Linuxu pomocí SSH a pak použijte Pig příkaz ke spuštění příkazů Pig Latin interaktivně nebo jako úlohu služby batch.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1deb44fecad6c120dd1e8f82cec36bff6353fc0b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6bcd2d299d3816c17265eef658ff1f01409828a1
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51003876"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632218"
 ---
-# <a name="run-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Spuštění úlohy Pig na clusteru založených na Linuxu pomocí příkazu Pig (SSH)
+# <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>Spouštět úlohy Apache Pig na cluster založených na Linuxu pomocí příkazu Pig (SSH)
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-Zjistěte, jak interaktivně spusťte úlohy Pig z připojení SSH ke clusteru HDInsight. Programovacím jazyce Pig Latin můžete popsat transformace, které se použijí pro vstupní data pro vytvoření požadovaného výstupu.
+Zjistěte, jak interaktivně spouštět úlohy Apache Pig z připojení SSH ke clusteru HDInsight. Programovacím jazyce Pig Latin můžete popsat transformace, které se použijí pro vstupní data pro vytvoření požadovaného výstupu.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).

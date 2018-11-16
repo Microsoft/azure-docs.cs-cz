@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: dfa5929daffb27617d3d1047f044a5af037e42ff
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 78984cf9f73fd0cdd6e28e20e1d54d5b1198b7be
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362233"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687482"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -82,6 +82,7 @@ Synchronizace dat není preferovaným řešením v následujících scénáříc
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Nastavení synchronizace dat na webu Azure Portal
 
 -   [Nastavení Synchronizace dat SQL Azure](sql-database-get-started-sql-data-sync.md)
+-   Agent – synchronizace dat [Data synchronizovat Agent pro synchronizaci dat Azure SQL](sql-database-data-sync-agent.md)
 
 ### <a name="set-up-data-sync-with-powershell"></a>Nastavení synchronizace dat s využitím Powershellu
 

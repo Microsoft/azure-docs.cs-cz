@@ -1,6 +1,6 @@
 ---
 title: Použití jazyka C# s MapReduce pro Hadoop v HDInsight – Azure
-description: Další informace o použití jazyka C# k vytvoření řešení MapReduce s Hadoop v Azure HDInsight.
+description: Další informace o použití C# k vytváření řešení MapReduce v Apache Hadoop v Azure HDInsight.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,21 +9,21 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4cf68ba16cf19a20686f323832ccd7e7d1b543bb
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a5f6f09ee6c8504b64cad7ef5313501a65907a90
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010945"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51632582"
 ---
-# <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>Použití jazyka C# s MapReduce, streaming na platformě Hadoop v HDInsight
+# <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# s MapReduce datových proudů na Apache Hadoop v HDInsight
 
 Další informace o použití jazyka C# k vytvoření řešení MapReduce v HDInsight.
 
 > [!IMPORTANT]
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](../hdinsight-component-versioning.md).
 
-Streamování Hadoop je nástroj, který umožňuje spouštět úlohy mapreduce je možné pomocí skriptu nebo spustitelného souboru. V tomto příkladu se používá .NET k implementaci mapovací a redukční funkci řešení aplikace word count.
+Streamování Apache Hadoop je nástroj, který umožňuje spouštět úlohy mapreduce je možné pomocí skriptu nebo spustitelného souboru. V tomto příkladu se používá .NET k implementaci mapovací a redukční funkci řešení aplikace word count.
 
 ## <a name="net-on-hdinsight"></a>.NET pro HDInsight
 

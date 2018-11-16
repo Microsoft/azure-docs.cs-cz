@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: 1e101e308ec350e9900c1347da730ca02b16c7bb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 55f32c403da179a0b7babc2172a80c2168cfab17
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377460"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636913"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -46,6 +46,8 @@ Ano, Azure automaticky aplikuje opravy zabezpečení na uzly v clusteru na nočn
 - Ručně pomocí webu Azure portal nebo rozhraní příkazového řádku Azure.
 - Díky upgradu clusteru AKS. Inovace clusteru automaticky [kordon a výpusť uzly][cordon-drain], následně vyvolejte místní každý uzel zpátky pomocí nejnovější image Ubuntu a nové verze opravy nebo dílčí verze Kubernetes. Další informace najdete v tématu [Upgrade clusteru AKS][aks-upgrade].
 - Pomocí [Kured](https://github.com/weaveworks/kured), open source restartování démona pro Kubernetes. Kured pracuje jako [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) a sleduje každý uzel pro přítomnost souboru, která udává, že je vyžadován restart. Restartování operačního systému se spravují v clusteru pomocí stejných [kordon a výpusť procesu] [ cordon-drain] jako upgradu clusteru.
+
+Další informace o používání kured najdete v tématu [použití aktualizací zabezpečení a jádra pro uzly ve službě AKS][node-updates-kured].
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené službou AKS?
 
@@ -97,6 +99,7 @@ Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit zákazníko
 [virtual-kubelet]: virtual-kubelet.md
 [aks-advanced-networking]: ./configure-advanced-networking.md
 [aks-rbac-aad]: ./aad-integration.md
+[node-updates-kured]: node-updates-kured.md
 
 <!-- LINKS - external -->
 
@@ -105,3 +108,4 @@ Smlouvy o úrovni služeb (SLA) zprostředkovatele souhlasí uhradit zákazníko
 [hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
 [keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
+

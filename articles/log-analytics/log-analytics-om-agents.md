@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 11/14/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6ed1d9fc810bfa14beed83609d13c1010d479ed9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
-ms.translationtype: MT
+ms.openlocfilehash: c8bba283a0c3fde75966ae123023e50d497abd5a
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622241"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687550"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
 Chcete-li zachovat stávající investice do [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) a použití rozšířené možnosti službou Log Analytics, můžete integrovat nástroje Operations Manager se službou pracovního prostoru Log Analytics. Díky tomu budete moct využívat to, co nabízí Log Analytics, a současně nadále používat nástroj Operations Manager pro tyto činnosti:
@@ -44,7 +44,7 @@ Než začnete, zkontrolujte následující požadavky.
 
 * Log Analytics podporuje pouze System Center Operations Manager 1807, Operations Manager 1801, Operations Manager 2016, Operations Manager 2012 SP1 UR6 nebo vyšší a Operations Manager 2012 R2 UR2 nebo novější. V nástrojích Operations Manager 2012 SP1 UR7 a Operations Manager 2012 R2 UR3 je přidaná podpora proxy serverů.
 * Všichni agenti nástroje Operations Manager musí splňovat minimální požadavky na podporu. Ujistěte se, že jsou agenti na minimální aktualizace, jinak komunikaci agenta Windows může selhat a způsobit chyby v protokolu událostí nástroje Operations Manager.
-* Pracovní prostor Log Analytics. Další informace najdete v tématu [přehled pracovního prostoru Log Analytics](log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) ).
+* Pracovní prostor Log Analytics. Další informace najdete v tématu [přehled pracovního prostoru Log Analytics](log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json).
 * Ověření pro Azure pomocí účtu, který je členem skupiny [role Přispěvatel Log Analytics](log-analytics-manage-access.md#manage-accounts-and-users).  
 
 >[!NOTE]
@@ -52,7 +52,7 @@ Než začnete, zkontrolujte následující požadavky.
 >Pro každou verzi nástroje Operations Manager byla vydala novou sadu management pack:  
 >* Pro System Center Operations Manageru 1801 stažení management packu z [zde](https://www.microsoft.com/download/details.aspx?id=57173)  
 >* System Center 2016 – Operations Manager, stáhněte si sadu management pack z [zde](https://www.microsoft.com/download/details.aspx?id=57172)  
->* System Center Operations Manager 2012 R2, stáhněte si sadu management pack z [zde](https://www.microsoft.com/en-us/download/details.aspx?id=57171)  
+>* System Center Operations Manager 2012 R2, stáhněte si sadu management pack z [zde](https://www.microsoft.com/download/details.aspx?id=57171)  
 
 ### <a name="network"></a>Síť
 V následujícím seznamu najdete konfiguraci pro proxy a firewall nutnou pro komunikaci agenta Operations Manager, serverů pro správu a konzoly Operations Console s Log Analytics. Přenosy z jednotlivých součástí odchází z vaší sítě do služby Log Analytics.   
@@ -101,7 +101,7 @@ Po dokončení následujících kroků k integraci s Log Analytics, můžete ode
 1. V konzole nástroje Operations Manager vyberte pracovní prostor **Správa**.
 1. Rozbalte uzel Operations Management Suite a klikněte na **Připojení**.
 1. Přejděte na odkaz **Zaregistrovat ve službě Operations Management Suite**.
-1. Na **Průvodce registrací v Operations Magement Suite: ověření** stránky, zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, který je spojen s vaším předplatným OMS a klikněte na tlačítko  **Přihlaste se**.
+1. Na stránce **Průvodce registrací ve službě Operations Management Suite** zadejte e-mailovou adresu nebo telefonní číslo a heslo účtu správce, který je přidružený k vašemu předplatnému OMS, a klikněte na **Přihlásit se**.
 
    >[!NOTE]
    >OMS se teď označuje jako Log Analytics.

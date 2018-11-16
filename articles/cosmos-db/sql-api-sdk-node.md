@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0dc7daebe91199cc6c54ac5e3a2d8f43e1592a73
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b5ba00376e40b92a217bddd5b27c53dbe30c3cf3
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282420"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51687499"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ms.locfileid: "51282420"
 * Různé opravy překlep
 
 ### <a name="2.0.4"/>2.0.4</a>
-* Zadejte opravy problému defenition zavedený 2.0.3
+* Zadejte definici problém zavedený 2.0.3 opravy
 
 ### <a name="2.0.3"/>2.0.3</a>
 * Odebrat `big-integer` závislostí
@@ -153,7 +153,7 @@ ms.locfileid: "51282420"
 * Oprava chyby RangePartitionResolver.resolveForRead, kde ji se vrací odkazy z důvodu chybné concat výsledků.
 
 ### <a name="1.5.5"/>1.5.5</a>
-* Oprava hashParitionResolver resolveForRead(): není zadaný klíč oddílu byl při vyvolání výjimky, místo vrácení seznamu všechny registrované odkazů.
+* Oprava hashPartitionResolver resolveForRead(): není zadaný klíč oddílu byl při vyvolání výjimky, místo vrácení seznamu všechny registrované odkazů.
 
 ### <a name="1.5.4"/>1.5.4</a>
 * Oprava potíží [#100](https://github.com/Azure/azure-documentdb-node/issues/100) – vyhrazený Agent HTTPS: neměli upravovat globální agenta pro účely služby Azure Cosmos DB. Použijte vyhrazený agent pro všechny požadavky na nástroj lib.

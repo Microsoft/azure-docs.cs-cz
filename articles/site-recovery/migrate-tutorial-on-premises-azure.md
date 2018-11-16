@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0134f6c83548ae5ffb4924ecf7d652ce89910340
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 176f8bb6fbb7a1a6bb81525cd3833d57bf9a5086
+ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210614"
+ms.lasthandoff: 11/12/2018
+ms.locfileid: "51568797"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrace místních počítačů do Azure
 
@@ -110,7 +110,10 @@ Spusťte převzetí služeb při selhání pro počítače, které chcete migrov
 3. Nastavení šifrovacího klíče není pro tento scénář podstatné.
 4. Vyberte **Před spuštěním převzetí služeb při selhání vypnout počítač**. Site Recovery se před aktivací převzetí služeb při selhání pokusí vypnout virtuální počítače. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 5. Zkontrolujte, že se virtuální počítač Azure zobrazuje v Azure podle očekávání.
-6. V části **Replikované položky** klikněte pravým tlačítkem na virtuální počítač a klikněte na **Dokončit migraci**. Tím se dokončí proce migrace, zastaví se replikace virtuálního počítače a zastaví se fakturace služby Site Recovery pro daný virtuální počítač.
+6. V části **Replikované položky** klikněte pravým tlačítkem na virtuální počítač a klikněte na **Dokončit migraci**. To provede následující akce:
+
+    - Proce migrace, zastaví se replikace virtuálního počítače AWS a zastaví se fakturace služby Site Recovery pro virtuální počítač.
+    - Tento krok vyčištění dat replikace. Nedojde k odstranění migrovaných virtuálních počítačů.
 
     ![Dokončení migrace](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
@@ -155,7 +158,7 @@ Některé kroky se dají automatizovat jako součást migračního procesu pomoc
 - Aktualizujte veškerou interní dokumentaci tak, aby obsahovala nová umístění a IP adresy virtuálních počítačů Azure.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste migrovali místní virtuální počítače na virtuální počítače Azure. Nyní můžete pro virtuální počítače Azure [nastavit zotavení po havárii](azure-to-azure-replicate-after-migration.md) do sekundární oblasti Azure.
 

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: alinast
-ms.openlocfilehash: 33190472215e7a02b94951a73054ebe3e1994e54
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6a757dca48dc3ff41adfe6f8802fad40e7a4ca81
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623906"
+ms.locfileid: "51636828"
 ---
 # <a name="how-to-use-user-defined-functions-in-azure-digital-twins"></a>Použití uživatelem definovaných funkcí v Azure digitální dvojče
 
@@ -44,7 +44,7 @@ Procesy pro hledání shody jsou objektů grafu, které určují, uživatelem de
 Následující příklad předávaný vyhodnotí jako true na libovolnou událost telemetrická data ze senzorů s `"Temperature"` jako hodnotu datového typu. Můžete vytvořit více procesy pro hledání shody v uživatelsky definované funkce:
 
 ```plaintext
-POST yourManagementApiUrl/matchers
+POST YOUR_MANAGEMENT_API_URL/matchers
 {
   "Name": "Temperature Matcher",
   "Conditions": [
@@ -72,20 +72,20 @@ Po vytvoření procesy pro hledání shody nahrát fragment funkce s následují
 > - Text je vícedílné zprávy standardu:
 >   - První část je o metadata potřebná pro UDF.
 >   - Druhá část je výpočetní logiky JavaScript.
-> - V **userDefinedBoundary** části, nahraďte **SpaceId** a **Machers** hodnoty.
+> - V **USER_DEFINED_BOUNDARY** části, nahraďte **SpaceId** a **Machers** hodnoty.
 
 ```plaintext
-POST yourManagementApiUrl/userdefinedfunctions with Content-Type: multipart/form-data; boundary="userDefinedBoundary"
+POST YOUR_MANAGEMENT_API_URL/userdefinedfunctions with Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"
 ```
 
 | Hodnota parametru | Nahradit hodnotou |
 | --- | --- |
-| *userDefinedBoundary* | Název vícedílný obsah hranice |
+| *USER_DEFINED_BOUNDARY* | Název obsahu hranic s více částmi. |
 
 ### <a name="body"></a>Tělo
 
 ```plaintext
---userDefinedBoundary
+--USER_DEFINED_BOUNDARY
 Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="metadata"
 
@@ -95,7 +95,7 @@ Content-Disposition: form-data; name="metadata"
   "Description": "The contents of this udf will be executed when matched against incoming telemetry.",
   "Matchers": ["YOUR_MATCHER_IDENTIFIER"]
 }
---userDefinedBoundary
+--USER_DEFINED_BOUNDARY
 Content-Disposition: form-data; name="contents"; filename="userDefinedFunction.js"
 Content-Type: text/javascript
 
@@ -103,7 +103,7 @@ function process(telemetry, executionContext) {
   // Code goes here.
 }
 
---userDefinedBoundary--
+--USER_DEFINED_BOUNDARY--
 ```
 
 | Hodnota | Nahradit hodnotou |
@@ -189,7 +189,7 @@ Potřebujeme vytvořit přiřazení role pro uživatelem definované funkce ke s
 1. Dotazování pro role a získat ID role, kterou chcete přiřadit k UDF. Předejte ji do **RoleId**:
 
     ```plaintext
-    GET yourManagementApiUrl/system/roles
+    GET YOUR_MANAGEMENT_API_URL/system/roles
     ```
 
 1. **ID objektu** bude UDF ID, které jste vytvořili dříve.
@@ -197,17 +197,17 @@ Potřebujeme vytvořit přiřazení role pro uživatelem definované funkce ke s
 1. Zkopírujte vráceného `spacePaths` hodnotu. Který použijete v následujícím kódu:
 
     ```plaintext
-    GET yourManagementApiUrl/spaces?name=yourSpaceName&includes=fullpath
+    GET YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
     | Hodnota parametru | Nahradit hodnotou |
     | --- | --- |
-    | *yourSpaceName* | Název pole, které chcete použít |
+    | *YOUR_SPACE_NAME* | Název pole, které chcete použít |
 
 1. Vložte vrácený `spacePaths` hodnoty do **cesta** k vytvoření přiřazení role UDF:
 
     ```plaintext
-    POST yourManagementApiUrl/roleassignments
+    POST YOUR_MANAGEMENT_API_URL/roleassignments
     {
       "RoleId": "YOUR_DESIRED_ROLE_IDENTIFIER",
       "ObjectId": "YOUR_USER_DEFINED_FUNCTION_ID",

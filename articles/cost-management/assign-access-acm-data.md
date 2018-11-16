@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: a62ecd0201d6b29686abc186ee69f3d26dc5ca4e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e32e281509da32d4816c9e137a462553891c82f1
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516147"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51686139"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 
-Kombinace oprávnění udělená na webu Azure portal a na portálu Enterprise (EA) pro většinu uživatelů, definovat uživatele úroveň přístupu k datům Azure Cost Management. Tento článek vás provede, když se přiřazuje se přístup k datům služby Cost Management. Po přiřazení kombinace oprávnění na základě zobrazení dat uživatele ve službě Cost Management oboru, aby měli přístup k a v oboru, vyberte na portálu Azure portal.
+Kombinace oprávnění udělená na webu Azure portal a na portálu Enterprise (EA) pro většinu uživatelů, definovat uživatele úroveň přístupu k datům Azure Cost Management. Tento článek vás provede přiřazuje se přístup k datům služby Cost Management. Po přiřazení kombinace oprávnění na základě zobrazení dat uživatele ve službě Cost Management oboru, aby měli přístup k a v oboru, vyberte na portálu Azure portal.
 
 Obor, který uživatel vybere se používá v celém Cost Management k poskytování konsolidace dat a k řízení přístupu na informace o nákladech. Při použití rozsahů, uživatelé není vícenásobný výběr je. Místo toho vyberte větší rozsah, který až vrátit podřízených oborech a pak se filtr seznamu na to, co chtějí zobrazit. Konsolidace dat je důležité pochopit, protože někteří uživatelé neměli mít přístup, který podřízené obory vrátit až nadřazený obor.
 

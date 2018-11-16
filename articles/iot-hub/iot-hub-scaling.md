@@ -1,19 +1,19 @@
 ---
 title: Škálování služby Azure IoT Hub | Dokumentace Microsoftu
 description: Jak škálovat službu IoT hub pro podporu propustnost očekávané zpráv a požadované funkce. Obsahuje souhrn podporovaných propustnosti pro každou vrstvu a možnosti pro horizontální dělení.
-author: kgremban
+author: wesmc7777
 manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: kgremban
-ms.openlocfilehash: d98a890cfb6bd388477ff3f14b81c8df02ece879
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.author: wesmc
+ms.openlocfilehash: c37492a42322ffc386751c4c63b981c9d93a72f6
+ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287961"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51633372"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Zvolte správné úrovně služby IoT Hub pro vaše řešení
 
@@ -31,7 +31,7 @@ Každé úrovně služby IoT Hub je k dispozici ve třech velikostech, na zákla
 
 Povolí všechny funkce na úrovni standard služby IoT Hub a je vyžadováno pro jakékoli řešení IoT, které mají být využívají možnosti obousměrnou komunikaci. Úroveň basic umožňuje podmnožinu funkcí a je určena pro řešení IoT, které potřebují pouze jednosměrnou komunikaci ze zařízení do cloudu. Obě úrovně nabízejí stejné funkce zabezpečení a ověřování.
 
-Po vytvoření služby IoT hub, můžete upgradovat z úrovně basic na úroveň standard bez přerušení existující operace. Další informace najdete v tématu [pokyny k upgradu služby IoT hub](iot-hub-upgrade.md). Oddíl maximální limit pro úroveň basic služby IoT Hub je 8 a pro úroveň standard je 32. Většina centra IoT hub stačí jenom 4 oddíly. Omezení počtu oddílů je vybrán při vytvoření služby IoT Hub a souvisí s počtem souběžných čtenářů tyto zprávy zprávy typu zařízení cloud. Tato hodnota zůstane beze změny, když migrujete z úrovně basic na úroveň standard. Všimněte si také, že pouze jeden typ [edition](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci úrovně je možné zvolit jednotlivé služby IoT Hub. Můžete například vytvořit IoT Hub s více jednotek úrovně S1, ale ne s kombinaci jednotek z různých edicích, jako je například S1 a K3 nebo S1 a S2.
+Pouze jeden typ [edition](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci úrovně je možné zvolit jednotlivé služby IoT Hub. Můžete například vytvořit IoT Hub s více jednotek úrovně S1, ale ne s kombinaci jednotek z různých edicích, jako je například S1 a K3 nebo S1 a S2.
 
 | Schopnost | Úroveň Basic | Úroveň Standard |
 | ---------- | ---------- | ------------- |
@@ -47,11 +47,26 @@ Po vytvoření služby IoT hub, můžete upgradovat z úrovně basic na úroveň
 
 IoT Hub také nabízí úrovně free, která je určená pro testování a vyhodnocení. Obsahuje všechny funkce úrovně standard, ale omezené limity zasílání zpráv. Nelze upgradovat z úrovně free na basic nebo standard. 
 
-### <a name="iot-hub-rest-apis"></a>Rozhraní REST API Centra IoT
+
+## <a name="partitions"></a>Oddíly
+
+Azure IoT hub obsahovat mnoho základních součástí [Azure Event Hubs](../event-hubs/event-hubs-features.md), včetně [oddíly](../event-hubs/event-hubs-features.md#partitions). Streamování událostí služby IoT hubs jsou obvykle vyplní příchozí telemetrická data, která je ohlášena různých zařízení IoT. Dělení datového proudu událostí se používá k omezení sporů, ke kterým dochází při souběžné čtení a zápis do datových proudů událostí. 
+
+Omezení počtu oddílů se volí při vytvoření služby IoT Hub a nedá se změnit. Oddíl maximální limit pro IoT hub úrovně basic je 8 a pro úroveň standard maximum je 32. Většina centra IoT hub stačí jenom 4 oddíly. Další informace o určení oddíly, naleznete v tématu Nejčastější dotazy týkající se Event Hubs [počtu oddílů potřeba?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+
+
+## <a name="tier-upgrade"></a>Upgrade úrovně
+
+Po vytvoření služby IoT hub, můžete upgradovat z úrovně basic na úroveň standard bez přerušení existující operace. Další informace najdete v tématu [pokyny k upgradu služby IoT hub](iot-hub-upgrade.md).
+
+Oddíl konfigurace zůstane beze změny, když migrujete z úrovně basic na úroveň standard.
+
+
+## <a name="iot-hub-rest-apis"></a>Rozhraní REST API Centra IoT
 
 Rozdíl v podporované možnosti mezi úrovněmi basic a standard služby IoT Hub znamená, že některá volání rozhraní API, nebudou fungovat s hubs úrovně basic. V následující tabulce jsou uvedeny API, které jsou k dispozici: 
 
-| API | Úroveň Basic | Úroveň Standard |
+| Rozhraní API | Úroveň Basic | Úroveň Standard |
 | --- | ---------- | ------------- |
 | [Odstranění zařízení](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Ano | Ano |
 | [Zařízení](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Ano | Ano |

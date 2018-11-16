@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: ea5e393ebe204041d96d18481a5c64d2877755f2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: d2d4957e7fa3114c1d5e8fa7696366fcb7c77002
+ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304607"
+ms.lasthandoff: 11/13/2018
+ms.locfileid: "51615700"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kurz: Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat. 
@@ -104,7 +104,7 @@ V této části vytvoříte ve svém úložišti objektů blob v Azure kontejner
 
 1. V seznamu kontejnerů vyberte **adftutorial**.  
 
-    ![Výběr kontejneru](media/tutorial-hybrid-copy-powershell/seelct-adftutorial-container.png)
+    ![Výběr kontejneru](media/tutorial-hybrid-copy-powershell/select-adftutorial-container.png)
 
 1. Okno **Kontejner** pro **adftutorial** nechte otevřené. Použijete ji k ověření výstupu na konci tohoto kurzu. Data Factory v tomto kontejneru vytvoří výstupní složku automaticky, takže ji nemusíte vytvářet.
 

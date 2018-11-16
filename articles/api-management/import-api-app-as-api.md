@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 717ce40caccd1114f8bae762fe38ce986421a4c9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 120fe358e5c8afe63e98038ad353d5ebc45a1937
+ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306680"
+ms.lasthandoff: 11/14/2018
+ms.locfileid: "51636444"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Import aplikace API jako rozhraní API
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 + Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
-+ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace najdete v [dokumentaci ke službě App Service][https://docs.microsoft.com/azure/app-service/]
++ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace najdete v tématu [dokumentace ke službě App Service](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -43,7 +43,7 @@ V tomto článku získáte informace o těchto tématech:
 1. V části **API MANAGEMENT** vyberte **rozhraní API**.
 2. Ze seznamu **Přidat nové rozhraní API** vyberte **Aplikace API**.
 
-    !(Aplikace API)[./media/import-api-app-as-api/api-app.png]
+    ![Aplikace API](./media/import-api-app-as-api/api-app.png)
 3. Stisknutím **Procházet** zobrazte seznam aplikací API ve vašem předplatném.
 4. Vyberte aplikaci. APIM vyhledá swagger přidružený k vybrané aplikaci, načte ho a naimportuje. 
 
@@ -91,7 +91,7 @@ Pokud chcete otestovat rozhraní API, můžete operace volat také z **Portálu 
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Transformace a ochrana publikovaného rozhraní API](transform-api.md)

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5611830d4d9950a7781062997b13555d95d8e703
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: affef85c917804f0b99200dcfa8e53f6d08fcbe4
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625959"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51684218"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Použití Oozie s Hadoopem k definování a spuštění workflowu v HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -63,7 +63,7 @@ Než začnete tento kurz, musíte mít následující položky:
 
 ## <a name="define-oozie-workflow-and-the-related-hiveql-script"></a>Definice pracovního postupu Oozie a související skript HiveQL
 Definice pracovních postupů Oozie jsou napsané v hPDL (jazyk definice procesu XML). Výchozí název souboru pracovního postupu je *workflow.xml*. Níže je soubor pracovního postupu, který používáte v tomto kurzu.
-
+```xml
     <workflow-app name="useooziewf" xmlns="uri:oozie:workflow:0.2">
         <start to = "RunHiveScript"/>
 
@@ -118,7 +118,7 @@ Definice pracovních postupů Oozie jsou napsané v hPDL (jazyk definice procesu
 
         <end name="end"/>
     </workflow-app>
-
+```
 Existují dvě akce, které jsou definovány v pracovním postupu. Je tato akce start *RunHiveScript*. Pokud tato akce proběhne úspěšně, je další akci *RunSqoopExport*.
 
 RunHiveScript má několik proměnných. Můžete předat hodnoty, když odešlete úlohu Oozie z pracovní stanice pomocí Azure Powershellu.
@@ -191,7 +191,7 @@ Skript Powershellu v této části provede následující kroky:
     Prozkoumat výsledky úlohy OOzie, použijte Visual Studio nebo jiné nástroje pro připojení ke službě Azure SQL Database.
 
 Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete nakonfigurovat prvních 7 proměnné.
-
+```powershell
     #region - provide the following values
 
     $subscriptionID = "<Enter your Azure subscription ID>"
@@ -200,7 +200,7 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
     $sqlDatabaseLogin = "<Enter SQL Database Login Name>"
     $sqlDatabasePassword = "<Enter SQL Database Login Password>"
 
-    # HDInsight cluster HTTP user credential used for creating and connectin
+    # HDInsight cluster HTTP user credential used for creating and connecting
     $httpUserName = "admin"  # The default name is "admin"
     $httpPassword = "<Enter HDInsight Cluster HTTP User Password>"
 
@@ -529,8 +529,8 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
     $response = Invoke-RestMethod -Method Get -Uri $clusterUriStatus -Credential $httpCredential -OutVariable $OozieServerStatus
 
     $jsonResponse = ConvertFrom-Json (ConvertTo-Json -InputObject $response)
-    $oozieServerSatus = $jsonResponse[0].("systemMode")
-    Write-Host "Oozie server status is $oozieServerSatus."
+    $oozieServerStatus = $jsonResponse[0].("systemMode")
+    Write-Host "Oozie server status is $oozieServerStatus."
 
     # create Oozie job
     Write-Host "Sending the following Payload to the cluster:" -ForegroundColor Green
@@ -570,7 +570,7 @@ Tady je skript.  Skript můžete spustit z Windows PowerShell ISE. Potřebujete 
     Write-Host "$(Get-Date -format 'G'): $oozieJobId is in $JobStatus state!" -ForegroundColor Green
 
     #endregion
-
+```
 
 **Znovu spustit kurz**
 
@@ -580,7 +580,7 @@ Chcete-li znovu spustit pracovní postup, musíte odstranit následující polo�
 * Data v tabulce log4jLogsCount
 
 Tady je ukázkový skript Powershellu, které můžete použít:
-
+```powershell
     $resourceGroupName = "<AzureResourceGroupName>"
 
     $defaultStorageAccountName = "<AzureStorageAccountName>"
@@ -610,6 +610,7 @@ Tady je ukázkový skript Powershellu, které můžete použít:
     $cmd.executenonquery()
 
     $conn.close()
+```
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a jak se spouští úloha Oozie s použitím prostředí PowerShell. Další informace naleznete v následujících článcích:
@@ -647,7 +648,6 @@ V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a jak se spou�
 
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
-[sqldatabase-create-configue]: ../sql-database-create-configure.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
 [azure-management-portal]: https://portal.azure.com/

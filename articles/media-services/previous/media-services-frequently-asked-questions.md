@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: d4b7d8ec5cb162e5fc844f107fbd5eb08fb00639
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bf5bc66ce55b0b9d6095cd395a11f68b40af1639
+ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353525"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51685714"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -28,7 +28,7 @@ Tento článek se zabývá nejčastější dotazy vyvolané službou Azure Media
 
 Otázka: jak budete Streamovat do zařízení s Iosem Apple
 
-Následující položky: přidejte "(format = m3u8-aapl)" cesta k "/ Manifest" část adresy URL streamování zdrojového serveru k vrácení zpět HLS obsah pro používání v Apple iOS nativní zařízení (podrobnosti viz (doručování obsahu)[media-services-deliver-content-overview.md]),
+Odpověď: přidejte "(format = m3u8-aapl)" cesty "/ Manifest" část adresy URL říct streamování zdrojový server vrátit zpět obsahu HLS za spotřebu na Apple iOS nativní zařízení (podrobnosti najdete v tématu [doručování obsahu](media-services-deliver-content-overview.md)),
 
 Otázka: jak můžete škálovat, indexování?
 
