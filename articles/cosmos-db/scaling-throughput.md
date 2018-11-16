@@ -10,7 +10,7 @@ ms.author: dharmas
 ms.reviewer: sngun
 ms.openlocfilehash: 597d94ce7be077dda6571048b560c9414ceb35ff
 ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/15/2018
 ms.locfileid: "51705238"
