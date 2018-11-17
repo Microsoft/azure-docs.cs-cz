@@ -3,17 +3,17 @@ title: Použití Jenkinse k nasazení webových aplikací do Azure
 description: Nastavte pro své webové aplikace v Javě průběžnou integraci z GitHubu do služby Azure App Service s využitím Jenkinse a Dockeru.
 ms.service: jenkins
 keywords: jenkins, azure, devops, app service, continuous integration, ci, continuous deployment, cd
-author: tomarcher
+author: ecfan
 manager: jeconnoc
-ms.author: tarcher
+ms.author: estfan
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 81959159d4860512c184ada25930da814b5ae044
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: de1d89da041ede13741a804b3e77018fb48b4aa3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946574"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822054"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Nastavení průběžné integrace a nasazování do služby Azure App Service s využitím Jenkinse
 
@@ -182,7 +182,7 @@ Nastavte Jenkinse tak, aby při vložení nových potvrzení do úložiště ve 
 
 Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Použití virtuálních počítačů Azure jako agentů sestavení](/azure/jenkins/jenkins-azure-vm-agents)

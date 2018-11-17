@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 237599a5dbd39147b02e9a85cbe34502d0d91923
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: c58bb19a18e6f0f78e07e403df5489f2f7342203
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227040"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853094"
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Odeslání dat obrázků do cloudu v Azure Storage
 
@@ -103,7 +103,7 @@ Pomocí příkazu [az appservice plan create](/cli/azure/appservice/plan#az_apps
 Následující příklad vytvoří plán služby App Service s názvem `myAppServicePlan` v cenové úrovni **Free**:
 
 ```azurecli-interactive
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
@@ -290,7 +290,7 @@ V kontejneru **thumbnails** na webu Azure Portal vyberte obrázek, který jste n
 
 Síť CDN se dá nastavit tak, aby ukládala obsah vašeho účtu služby Azure Storage do mezipaměti. Tento kurz se tím nezabývá, ale pokud se chcete dozvědět, jak ve svém účtu služby Azure Storage povolit síť CDN, navštivte stránku [Integrace účtu služby Azure Storage se sítí Azure CDN](../../cdn/cdn-create-a-storage-account-with-cdn.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V první části kurzu jste se dozvěděli o konfiguraci webové aplikace pro interakci s úložištěm, třeba o těchto krocích:
 

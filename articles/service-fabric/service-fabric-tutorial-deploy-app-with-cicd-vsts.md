@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/13/2017
+ms.date: 11/15/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7f14151224a9e2baa74183696c92bca06695bf4f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
-ms.translationtype: HT
+ms.openlocfilehash: 5d53250ebdc14b7b6631e2f419b5b24ac98f3038
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380144"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853724"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric
 
@@ -94,23 +94,23 @@ Kanál verze Azure DevOps popisuje pracovní postup, který nasadí balíček ap
 
 Otevřete webový prohlížeč a přejděte do nového projektu na adrese: [https://&lt;váš_účet&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Vyberte kartu **Sestavení a vydání**, pak **Sestavení** a pak klikněte na **Nový kanál**.
+Vyberte **kanály** kartě pak **sestavení**, pak klikněte na tlačítko **nový kanál**.
 
 ![Nový kanál][new-pipeline]
 
-Vyberte zdroj **Azure DevOps Git**, projekt **Voting**, úložiště **Voting** a výchozí větev **master** nebo ruční a plánované buildy.  Pak klikněte na **Pokračovat**.
+Vyberte **úložiště Git v Azure** jako zdroj, **Voting** týmový projekt, **Voting** úložiště, a **hlavní** výchozí větev pro ruční a Plánovaná sestavení.  Pak klikněte na **Pokračovat**.
+
+![Vyberte úložiště][select-repo]
 
 V části **Vybrat šablonu** vyberte šablonu **Aplikace Azure Service Fabric** a klikněte na **Použít**.
 
 ![Výběr šablony sestavení][select-build-template]
 
-V části **Úlohy** zadejte do pole **Fronta agenta** Hosted VS2017.
+V **úlohy**, zadejte "Hostované VS2017" jako **fondu Agentských**.
 
 ![Výběr úloh][save-and-queue]
 
-V části **Triggery** povolte průběžnou integraci zaškrtnutím políčka **Povolit průběžnou integraci**. V části **Filtry větví** klikněte na **+ Přidat** a do pole **Specifikace větve** se vyplní výchozí hodnota **master**. Pokud chcete ručně spustit sestavení, vyberte **Uložit a zařadit do fronty**.
-
-V **dialogovém okně Uložit kanál sestavení a zařadit ho do fronty** klikněte na **Uložit a zařadit do fronty**.
+V části **Triggery** povolte průběžnou integraci zaškrtnutím políčka **Povolit průběžnou integraci**. V rámci **filtry větví**, **větev specifikace** výchozí hodnota je **hlavní**. Pokud chcete ručně spustit sestavení, vyberte **Uložit a zařadit do fronty**.
 
 ![Výběr triggerů][save-and-queue2]
 
@@ -118,7 +118,7 @@ Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. 
 
 ### <a name="create-a-release-pipeline"></a>Vytvoření kanálu verze
 
-Vyberte kartu **Sestavení a vydání**, pak **Vydání** a nakonec **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
+Vyberte **kanály** kartě pak **verze**, pak **+ nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
 
 ![Výběr šablony vydání][select-release-template]
 
@@ -180,7 +180,7 @@ Upgrade aplikace může trvat několik minut. Po dokončení upgradu bude aplika
 
 ![Service Fabric Explorer][sfx3]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
@@ -198,6 +198,7 @@ Přejděte k dalšímu kurzu:
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
 [new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
+[select-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectRepo.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png

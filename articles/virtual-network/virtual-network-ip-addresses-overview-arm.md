@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial
-ms.openlocfilehash: 65dc420b6832b7b0a4cf14d63203d4c66e2a4254
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 6b8bf4a0bc6b5e5e9b9ad7f91ba409aaf922e8e9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993591"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822225"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy IP adres a metody přidělování v Azure
 
@@ -75,7 +75,7 @@ Veřejné IP adresy standardních SKU jsou:
 
 - Přiřazované pouze pomocí metody statického přidělení.
 - Standardně zabezpečené a uzavřené vůči příchozímu provozu. Příchozí provoz je nutné explicitně povolit pomocí [skupiny zabezpečení sítě](security-overview.md#network-security-groups).
-- Přiřazované k síťovým rozhraním nebo veřejným nástrojům pro vyrovnávání zatížení úrovně Standard. Další informace o nástrojích pro vyrovnávání zatížení Azure úrovně Standard najdete v článku o [nástroji pro vyrovnávání zatížení Azure úrovně Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Přiřazená síťová rozhraní, nástrojů pro vyrovnávání zatížení veřejnou standardní, brány Application Gateway nebo bran VPN Gateway. Další informace o nástrojích pro vyrovnávání zatížení Azure úrovně Standard najdete v článku o [nástroji pro vyrovnávání zatížení Azure úrovně Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Ve výchozím nastavení zónově redundantní. Je možné je vytvořit zónově a zaručit jejich dostupnost v konkrétní zóně dostupnosti. Další informace o zónách dostupnosti najdete v článku s [přehledem zón dostupnosti](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a v článku o [nástroji pro vyrovnávání zatížení úrovně Standard a zónách dostupnosti](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
@@ -132,8 +132,8 @@ Následující tabulka ukazuje konkrétní vlastnost, jejímž prostřednictvím
 | --- | --- | --- | --- |
 | Virtuální počítač |Síťové rozhraní |Ano |Ano |
 | Internetový nástroj pro vyrovnávání zatížení |Konfigurace front-endu |Ano |Ano |
-| VPN Gateway |Konfigurace protokolu IP brány |Ano |Ne |
-| Application Gateway |Konfigurace front-endu |Ano |Ne |
+| VPN Gateway |Konfigurace protokolu IP brány |Ano |Ano |
+| Application Gateway |Konfigurace front-endu |Ano |Ano |
 
 ## <a name="private-ip-addresses"></a>Privátní IP adresy
 Privátní IP adresy umožňují prostředkům Azure komunikovat s ostatními prostředky ve [virtuální](virtual-networks-overview.md) nebo místní síti prostřednictvím brány sítě VPN nebo okruhu ExpressRoute, a to bez použití IP adresy dostupné na internetu.
@@ -188,6 +188,6 @@ Omezení IP adresování jsou uvedená v kompletní sadě [omezení sítě](../a
 ## <a name="pricing"></a>Ceny
 Za veřejné IP adresy se může účtovat nominální poplatek. Další informace o cenách IP adres v Azure najdete na stránce [Ceny IP adres](https://azure.microsoft.com/pricing/details/ip-addresses).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Nasazení virtuálního počítače se statickou veřejnou IP adresou pomocí webu Azure Portal](virtual-network-deploy-static-pip-arm-portal.md)
 * [Nasazení virtuálního počítače se statickou privátní IP adresou pomocí webu Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)

@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
 ms.author: pafarley
-ms.openlocfilehash: 355d3258392fa722fbdc3762a9125a22e8a69b67
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 0d0ff627ad2549ff9b6f09b6c934c5a17a102962
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954286"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852363"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a JavaScriptu
 
@@ -37,10 +37,10 @@ Pomocí metody [Face - Detect](https://westcentralus.dev.cognitive.microsoft.com
 Pokud chcete spustit ukázku, postupujte takto:
 
 1. Zkopírujte následující kód a uložte ho do souboru, jako je třeba `detectFaces.html`.
-2. Místo `<Subscription Key>` použijte platný klíč předplatného.
-3. V případě potřeby změňte hodnotu `uriBase` na umístění, kde jste získali klíče předplatného.
-4. Soubor přetáhněte do prohlížeče.
-5. Klikněte na tlačítko `Analyze faces`.
+1. Místo `<Subscription Key>` použijte platný klíč předplatného.
+1. V případě potřeby změnit `uriBase` hodnotu a použít tak umístění, kde jste získali klíče předplatného (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti).
+1. Soubor přetáhněte do prohlížeče.
+1. Klikněte na tlačítko `Analyze faces`.
 
 ### <a name="face---detect-request"></a>Žádost Face - Detect
 
@@ -63,7 +63,7 @@ Pokud chcete spustit ukázku, postupujte takto:
         // subscription keys from westus, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the "westus" region.
         // If you use a free trial subscription key, you shouldn't need to change 
         // this region.
         var uriBase =
@@ -242,7 +242,7 @@ Příklad úspěšné odpovědi vypadá takto:
 ]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte rozhraní API pro rozpoznávání lidských tváří na obrázku, ohraničte obličeje obdélníky a vraťte atributy, jako je věk a pohlaví.
 

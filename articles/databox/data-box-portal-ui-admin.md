@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: b98653ea0896e617a666147d243f24cb55483a28
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: f0849bf82acfd6bc72cd35fb1fc18bdb8aac2282
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091676"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819183"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>Správa Data Box Disku (Preview) pomocí webu Azure Portal
 
@@ -129,7 +129,7 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 |Zpracováno     | Proběhlo zpracování objednávky. <br> Během zpracování objednávky dochází k těmto akcím:<li>Disky se zašifrují pomocí šifrování AES-128 nástrojem BitLocker. </li> <li>Data Box Disk se uzamkne, aby se zabránilo neoprávněnému přístupu.</li><li>Během tohoto procesu se vygeneruje klíč k odemknutí disků.</li>        |
 |Odesláno     | Došlo k odeslání objednávky. Objednávka by k vám měla dorazit během 1–2 dnů.        |
 |Doručeno     | Proběhlo doručení objednávky na uvedenou adresu.        |
-|Vyzvednuto     |Došlo k vyzvednutí zpáteční zásilky. <br> Po přijetí zásilky v datovém centru Azure se data automaticky nahrají do Azure.         |
+|Vyzvednuto     |Došlo k vyzvednutí zpáteční zásilky. <br> Po přijetí dodávky v datovém centru Azure data se automaticky nahraje do Azure.         |
 |Přijato     | Vaše disky dorazily do datového centra Azure. Brzy začne kopírování dat.        |
 |Data se zkopírovala     |Probíhá kopírování dat.<br> Počkejte, dokud se kopírování dat nedokončí.         |
 |Dokončeno       |Objednávka se úspěšně dokončila.<br> Než odstraníte data z místních serverů, zkontrolujte, jestli se data objevila v Azure.         |
@@ -138,6 +138,6 @@ Pokud chcete upravit podrobnosti o oznámení, proveďte následující kroky.
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Zjistěte, jak [řešit problémy s Data Box Diskem](data-box-disk-troubleshoot.md).

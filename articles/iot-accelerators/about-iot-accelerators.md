@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: aac079feefde53ff30cbeab942ee0443c113cdc8
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 6fed0c5e3f24fbcefec427cf56a625d1d8d7aba2
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345109"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824536"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Co jsou akcelerátory řešení Azure IoT?
 
@@ -50,7 +50,7 @@ Pomocí řídicího panelu propojené továrny můžete monitorovat a spravovat 
 
 ### <a name="predictive-maintenance"></a>Prediktivní údržba
 
-Tento akcelerátor řešení můžete použít k předpovědi očekávaného selhání vzdáleného zařízení, abyste mohli provést údržbu před tím, než k předpokládanému selhání dojde. Tento akcelerátor řešení k předvídání selhání na základě telemetrie zařízení využívá algoritmy strojového učení. Příklady zařízení můžou být letadlové motory nebo výtahy.
+Tento akcelerátor řešení používají k vytváření prognóz očekávaného selhat, takže je možné souběžně provádět údržbu předtím, než selhání zařízení vzdálené zařízení. Tento akcelerátor řešení k předvídání selhání na základě telemetrie zařízení využívá algoritmy strojového učení. Příklady zařízení můžou být letadlové motory nebo výtahy.
 
 Pomocí řídicího panelu prediktivní údržby můžete zobrazit analýzu prediktivní údržby:
 
@@ -97,7 +97,7 @@ Akcelerátor řešení vzdáleného monitorování můžete nasadit v následuj�
 * **Basic:** Verze s nižšími náklady pro ukázku nebo otestování nasazení. Všechny mikroslužby se nasazují do jednoho virtuálního počítače Azure.
 * **Místní:** Nasazení do místního počítače pro účely vývoje a testování. S tímto přístupem se mikroslužby nasazují do místního kontejneru Dockeru a připojují se ke službám IoT Hub, Azure Cosmos DB a Azure Storage v cloudu.
 
-Náklady na provoz akcelerátoru řešení představují celkovou hodnotu všech [nákladů na podpůrné služby Azure](https://azure.microsoft.com/pricing). Podrobnosti o použitých službách Azure se zobrazí po výběru možností nasazení.
+Náklady na provozování akcelerátoru řešení je kombinovaná [náklady na provozování podpůrné služby Azure](https://azure.microsoft.com/pricing). Podrobnosti o použitých službách Azure se zobrazí po výběru možností nasazení.
 
 ## <a name="next-steps"></a>Další postup
 

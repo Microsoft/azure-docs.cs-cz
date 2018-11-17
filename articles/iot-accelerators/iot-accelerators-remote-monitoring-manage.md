@@ -6,15 +6,15 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 07/19/2018
+ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 6e92ef276d270fcc4c351fb89c699c8addd74632
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222145"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821043"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Kurz: Konfigurace a správa zařízení připojených k řešení monitorování
 
@@ -63,7 +63,7 @@ Pokud chcete zobrazit podrobnou diagnostiku posuňte se na panelu **Podrobnosti 
 
 ## <a name="act-on-a-device"></a>Práce na zařízení
 
-Pokud chcete otestovat, že simulované zařízení motoru správně reaguje na akce inicializované z řídicího panelu, spusťte metodu **FirmwareUpdate**. Pokud chcete pracovat na zařízení spuštěním metody, vyberte zařízení v seznamu zařízení a pak klikněte na **Úlohy**. Pokud chcete pracovat na více zařízeních, můžete vybrat více než jedno zařízení. Na panelu **Úlohy** vyberte **Spustit metodu**. Model zařízení **Engine** (Motor) určuje tři metody: **FirmwareUpdate**, **FillTank** a **EmptyTank**:
+Pokud chcete otestovat, že simulované zařízení motoru správně reaguje na akce inicializované z řídicího panelu, spusťte metodu **FirmwareUpdate**. Pokud chcete pracovat na zařízení spuštěním metody, vyberte zařízení v seznamu zařízení a pak klikněte na **Úlohy**. Pokud chcete pracovat na více zařízeních, můžete vybrat více než jedno zařízení. V **úlohy** panelu, vyberte **metody**. Model zařízení **Engine** (Motor) určuje tři metody: **FirmwareUpdate**, **FillTank** a **EmptyTank**:
 
 [![Metody motoru](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
 
@@ -81,7 +81,7 @@ Pokud na stránce **Zařízení** vyberete několik zařízení různých typů,
 
 ## <a name="reconfigure-a-device"></a>Změna konfigurace zařízení
 
-Pokud chcete otestovat možnost aktualizace vlastností konfigurace zařízení, vyberte zařízení v seznamu zařízení na stránce **Zařízení**. Pak klikněte na **Úlohy** a zvolte **Změnit konfiguraci**. Na panelu úloh se zobrazí hodnoty vlastností pro vybrané zařízení, které můžete aktualizovat:
+Pokud chcete otestovat možnost aktualizace vlastností konfigurace zařízení, vyberte zařízení v seznamu zařízení na stránce **Zařízení**. Pak klikněte na tlačítko **úlohy**a klikněte na tlačítko **vlastnosti**. Na panelu úloh se zobrazí hodnoty vlastností pro vybrané zařízení, které můžete aktualizovat:
 
 [![Změna konfigurace zařízení](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -142,7 +142,7 @@ Operátor společnosti Contoso teď může zadávat dotazy na zařízení na zá
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli, jak konfigurovat a spravovat zařízení připojená k akcelerátoru řešení vzdáleného monitorování. Pokud se chcete naučit, jak používat akcelerátor řešení k provádění analýz původních příčin neočekávaného upozornění, pokračujte k dalšímu kurzu.
 

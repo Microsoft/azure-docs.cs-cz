@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 1887004b2a83ca5778ccb29cf996bcf2720ce3b8
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 11/16/2018
+ms.openlocfilehash: 221bca6cb11d488e38417280e16b5caa9133bd46
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711408"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853485"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz 1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
@@ -42,7 +42,7 @@ V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupy
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 >[!NOTE]
-> Tento kurz byl testován se sadou SDK služby Azure Machine Learning verze 0.168. 
+> V tomto kurzu byl testován s využitím Azure Machine Learning SDK verze 0.1.74 
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
@@ -93,41 +93,44 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-remote-compute-target"></a>Vytvoření cílového výpočetního prostředí
 
-Azure Batch AI je spravovaná služba, která umožňuje odborníkům na zpracování dat trénovat modely strojového učení na clusterech virtuálních počítačů Azure, včetně virtuálních počítačů s podporou GPU.  V tomto kurzu vytvoříte cluster služby Azure Batch AI jako prostředí pro trénování. Tento kód pro vás vytvoří cluster, pokud ještě ve vašem pracovním prostoru neexistuje. 
+Azure ML spravované výpočtů Azure je spravovaná služba, která umožňuje datovým vědcům k trénování modelů strojového učení na clusterech virtuálních počítačů Azure, včetně virtuálních počítačů s podporou GPU.  V tomto kurzu vytvoříte clusteru služby spravované Azure Compute jako prostředí pro školení. Tento kód pro vás vytvoří cluster, pokud ještě ve vašem pracovním prostoru neexistuje. 
 
  **Vytvoření clusteru trvá přibližně 5 minut.** Pokud cluster v pracovním prostoru již existuje, tento kód ho použije a přeskočí proces vytváření.
 
 
 ```python
-from azureml.core.compute import ComputeTarget, BatchAiCompute
-from azureml.core.compute_target import ComputeTargetException
+from azureml.core.compute import BatchAiCompute
+from azureml.core.compute import ComputeTarget
+import os
 
 # choose a name for your cluster
-batchai_cluster_name = "traincluster"
+batchai_cluster_name = os.environ.get("BATCHAI_CLUSTER_NAME", ws.name + "gpu")
+cluster_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 1)
+cluster_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 3)
+vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_NC6")
+autoscale_enabled = os.environ.get("BATCHAI_CLUSTER_AUTOSCALE_ENABLED", True)
 
-try:
-    # look for the existing cluster by name
-    compute_target = ComputeTarget(workspace=ws, name=batchai_cluster_name)
-    if type(compute_target) is BatchAiCompute:
-        print('found compute target {}, just use it.'.format(batchai_cluster_name))
-    else:
-        print('{} exists but it is not a Batch AI cluster. Please choose a different name.'.format(batchai_cluster_name))
-except ComputeTargetException:
+
+if batchai_cluster_name in ws.compute_targets:
+    compute_target = ws.compute_targets[batchai_cluster_name]
+    if compute_target and type(compute_target) is BatchAiCompute:
+        print('found compute target. just use it. ' + batchai_cluster_name)
+else:
     print('creating a new compute target...')
-    compute_config = BatchAiCompute.provisioning_configuration(vm_size="STANDARD_D2_V2", # small CPU-based VM
-                                                                #vm_priority='lowpriority', # optional
-                                                                autoscale_enabled=True,
-                                                                cluster_min_nodes=0, 
-                                                                cluster_max_nodes=4)
+    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
+                                                                vm_priority = 'lowpriority', # optional
+                                                                autoscale_enabled = autoscale_enabled,
+                                                                cluster_min_nodes = cluster_min_nodes, 
+                                                                cluster_max_nodes = cluster_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws, batchai_cluster_name, compute_config)
+    compute_target = ComputeTarget.create(ws, batchai_cluster_name, provisioning_config)
     
     # can poll for a minimum number of nodes and for a specific timeout. 
-    # if no min node count is provided it uses the scale settings for the cluster
+    # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-    # Use the 'status' property to get a detailed status for the current cluster. 
+     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -143,7 +146,7 @@ Před zahájením trénování modelu musíte rozumět datům, která použijete
 
 ### <a name="download-the-mnist-dataset"></a>Stáhnutí datové sady MNIST
 
-Stáhněte datovou sadu MNIST a uložte soubory do místního adresáře `data`.  Stáhnou se obrázky a popisky pro trénování i testování.  
+Stáhněte datovou sadu MNIST a uložte soubory do místního adresáře `data`.  Stáhnou se obrázky a popisky pro trénování i testování.
 
 
 ```python
@@ -160,7 +163,7 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 
 ### <a name="display-some-sample-images"></a>Zobrazení některých ukázkových obrázků
 
-Načtěte komprimované soubory do pole `numpy`. Pak pomocí `matplotlib` vykreslete 30 náhodných obrázků z datové sady s jejich popisky nad nimi. Poznámka: Tento krok vyžaduje funkci `load_data`, která je součástí souboru `util.py`. Tento soubor je umístěný ve složce s ukázkou. Ujistěte se prosím, že je umístěný ve stejné složce jako tento poznámkový blok. Funkce `load_data` parsuje komprimované soubory do polí numpy.
+Načtěte komprimované soubory do pole `numpy`. Pak pomocí `matplotlib` vykreslete 30 náhodných obrázků z datové sady s jejich popisky nad nimi. Poznámka: Tento krok vyžaduje `load_data` funkce, která je součástí `util.py` souboru. Tento soubor je umístěný ve složce s ukázkou. Ujistěte se prosím, že je umístěný ve stejné složce jako tento poznámkový blok. `load_data` Funkce jednoduše analyzuje komprimované soubory do numpy pole.
 
 
 
@@ -209,9 +212,9 @@ ds.upload(src_dir='./data', target_path='mnist', overwrite=True, show_progress=T
 ```
 Teď máte všechno, co potřebujete k zahájení trénování modelu. 
 
-## <a name="train-a-model-locally"></a>Místní trénování modelu
+## <a name="train-a-local-model"></a>Trénování modelu místní
 
-Trénujte místně jednoduchý model logistické regrese pomocí knihovny scikit-learn.
+Natrénujeme jednoduchý Logistický regresní model pomocí scikit-informace místně.
 
 **Místní trénování může trvat minutu nebo dvě** v závislosti na konfiguraci počítače.
 
@@ -243,7 +246,7 @@ Teď můžete tento jednoduchý model rozšířit vytvořením modelu s jinou m�
 Odešlete úlohu do clusteru pro vzdálené trénování, který jste nastavili dříve.  K odeslání úlohy je potřeba provést:
 * Vytvoření adresáře
 * Vytvoření trénovacího skriptu
-* Vytvoření estimátoru
+* Vytvoření objektu odhad
 * Odeslání úlohy 
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
@@ -314,11 +317,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 Všimněte si, jak skript získává data a ukládá modely:
 
-+ Trénovací skript načte argument pro nalezení adresáře, který obsahuje data.  Když později odešlete úlohu, bude odkázána na úložiště dat pro tento argument: `parser.add_argument('--data-folder', type = str, dest = 'data_folder', help = 'data directory mounting point')`
-
++ Trénovací skript načte argument pro nalezení adresáře, který obsahuje data.  Když později odešlete úlohu, bude odkázána na úložiště dat pro tento argument: `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
     
 + Trénovací skript uloží model do adresáře s názvem outputs. <br/>
-`joblib.dump(value = clf, filename = 'outputs/sklearn_mnist_model.pkl')`<br/>
+`joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 Vše, co je v tomto adresáři zapsáno, se automaticky nahraje do vašeho pracovního prostoru. Později v tomto kurzu budete z tohoto adresáře přistupovat k vašemu modelu.
 
 Soubor `utils.py` je odkazován z trénovacího skriptu pro správné načtení datové sady.  Zkopírujte tento skript do složky skriptu, aby byl přístupný spolu s trénovacím skriptem na vzdáleném prostředku.
@@ -341,7 +343,7 @@ Objekt estimátoru se používá k odeslání spuštění.  Vytvořte objekt est
 * Parametry požadované z trénovacího skriptu. 
 * Balíčky Pythonu potřebné pro trénování.
 
-V tomto kurzu je cíl cluster služby Batch AI. Všechny soubory v tomto adresáři projektu se nahrají do uzlů clusteru ke spuštění. Parametr data_folder je nastavený pro použití úložiště dat (`ds.as_mount()`).
+V tomto kurzu je cíl cluster služby Batch AI. Všechny soubory ve složce script nahrají do uzlů clusteru pro spuštění. Parametr data_folder je nastavený pro použití úložiště dat (`ds.as_mount()`).
 
 ```python
 from azureml.train.estimator import Estimator
@@ -423,7 +425,7 @@ Výstup ukazuje, že vzdálený model má přesnost mírně vyšší než místn
 
 `{'regularization rate': 0.8, 'accuracy': 0.9204}`
 
-V kurzu nasazení tento model podrobněji prozkoumáte.
+V dalším kurzu se tento model podrobněji zkoumat.
 
 ## <a name="register-model"></a>Registrace modelu
 

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: c54f5c5fba31933a6dd9f98d1ecfb6d03a3ad9be
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003743"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852193"
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Výběr mezi službami Azure, které doručují zprávy
 
@@ -55,6 +55,8 @@ Event Grid je propojovací rovina událostí, která umožňuje reaktivní progr
 
 Služba Event Grid je úzce propojená se službami Azure a umožňuje taky integraci se službami třetích stran. To zjednodušuje příjem událostí a snižuje náklady, protože není potřeba neustále provádět dotazování. Event Grid efektivně a spolehlivě směruje události z prostředků Azure i mimo Azure. Distribuuje události do registrovaných koncových bodů odběratelů. Zpráva události obsahuje informace, které potřebujete, abyste mohli reagovat na změny ve službách a aplikacích. Event Grid není datový kanál a nedoručuje samotný objekt, u kterého došlo k aktualizaci.
 
+Podporuje Služba Event Grid dead-lettering pro události, které nejsou doručeny do koncového bodu.
+
 Má následující vlastnosti:
 
 * Možnost dynamického škálování
@@ -93,7 +95,7 @@ V jiných případech služby vzájemně propojíte do kanálu událostí a dat.
 
 ![Přehled streamování dat](./media/compare-messaging-services/overview.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Další informace o službách zasílání zpráv v Azure najdete v příspěvku na blogu [Události, datové body a zprávy – výběr správné služby zasílání zpráv Azure pro vaše data](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).
 * Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).

@@ -9,18 +9,18 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.component: alerts
-ms.openlocfilehash: 965a35eb4cf33abe78ca802e8d59f13a649dec0a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: e0d25fc2ac84e9c9d71a9fd5971d4e57134e43a7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279224"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819368"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Přijímání oznámení, když hodnota metriky splní určitou podmínku
 
 Azure Monitor zpřístupňuje metriky pro řadu prostředků Azure. Tyto metriky vyjadřují výkon a stav těchto prostředků. Hodnoty metrik můžou v řadě případů ukazovat na nějaký problém s daným prostředkem. Můžete vytvářet upozornění metrik, která budou monitorovat neobvyklé chování a v případě, že k němu dojde, vás na to upozorní. Tento rychlý start prochází jednotlivé kroky k vytvoření aplikace logiky, vytvoření úlohy a vizualizaci metrik pro aplikaci logiky. Dále prochází kroky k vytvoření upozornění a přijetí oznámení na metriku pro prostředek aplikace logiky.
 
-Další informace o metrikách a upozorněních metrik najdete v tématech [Přehled metrik služby Azure Monitor](../monitoring/monitoring-data-collection.md) a [Přehled upozornění služby Azure Monitor](./monitoring-overview-alerts.md). 
+Další informace o metrikách a upozorněních metrik najdete v tématech [Přehled metrik služby Azure Monitor](../azure-monitor/platform/data-collection.md) a [Přehled upozornění služby Azure Monitor](./monitoring-overview-alerts.md). 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -110,7 +110,7 @@ Další rychlé starty v této kolekci vycházejí z tohoto rychlého startu. Po
 
 5. Na panelu klikněte v textovém poli na aplikaci logiky, kterou jste vytvořili v rámci tohoto rychlého startu, a pak klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste zjistili, jak vytvořit upozornění metriky pro vaše prostředky. Další informace o upozorněních metrik najdete po proklikání k našemu přehledu upozornění.
 

@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 11/08/2018
 ms.author: dobett
-ms.openlocfilehash: 365c6e41db865edf8384ca1f82210d9471808f94
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 4071770a74d205570cee082d9af0c0fb7c77e203
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140853"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824774"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Rychlý start: Vyzkoušení cloudového řešení vzdáleného monitorování
 
@@ -32,7 +32,7 @@ Při nasazování akcelerátoru řešení do předplatného Azure je potřeba na
 
 Přihlaste se k webu [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) pomocí přihlašovacích údajů svého účtu Azure.
 
-Klikněte na **Vyzkoušejte** na dlaždici **Vzdálené monitorování**.
+Klikněte na tlačítko **vzdálené monitorování** dlaždici. Na **vzdálené monitorování** klikněte na **vyzkoušet**:
 
 ![Výběr vzdáleného monitorování](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
@@ -40,9 +40,10 @@ Na stránce **Vytvořit řešení vzdáleného monitorování** vyberte **Zákla
 
 Jako jazyk zvolte **.NET**. Implementace Java a .NET obsahují stejné funkce.
 
-Zadejte jedinečný **Název řešení** pro váš akcelerátor řešení vzdáleného monitorování. V tomto rychlém startu používáme název **contoso-rm2**.
+Zadejte jedinečný **Název řešení** pro váš akcelerátor řešení vzdáleného monitorování. Pro účely tohoto rychlého startu voláme náš **contoso-rm**.
 
-Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém startu používáme možnosti **Visual Studio Enterprise** a **Západní Evropa**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
+Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. Pro účely tohoto rychlého startu používáme **USA – východ**.
+Můžete zvolit **Visual Studio Enterprise**, ale musí být [globální správci nebo uživateli](iot-accelerators-permissions.md) Uděláte to tak.
 
 Nasazování zahájíte kliknutím na **Vytvořit řešení**. Dokončení tohoto procesu trvá minimálně pět minut:
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
-ms.translationtype: HT
+ms.openlocfilehash: 2ec2ac6508dfbf0c1a42f72dc393fa8b841ab877
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918623"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822462"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Kurz: Protokolování síťového provozu do a z virtuálního počítače pomocí portálu Azure Portal
 
@@ -36,6 +36,9 @@ Skupina zabezpečení sítě (NSG) umožňuje filtrovat příchozí provoz do a 
 > * Zobrazit data protokolu
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+> [!NOTE] 
+> Verze protokoly toku 2 jsou k dispozici pouze v centrální oblasti USA – západ. Konfigurace je k dispozici prostřednictvím webu Azure portal a rozhraní REST API. Povolení verze 2 protokoly v nepodporované oblasti způsobí verze 1 protokoly do účtu úložiště.
 
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
@@ -100,8 +103,9 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 
 6. V seznamu NSG vyberte NSG s názvem **myVm-nsg**.
 7. V **Nastavení protokolů toku** vyberte **Zapnuto**.
-8. Vyberte účet úložiště, který jste vytvořili v kroku 3.
-9. Nastavte **Doba uchování (dny)** na 5 a pak vyberte **Uložit**.
+8. Vyberte verzi protokolování toku. Verze 2 obsahuje Statistika tok relace (bajtů a paketů). ![Vyberte verzi protokolů toku](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+9. Vyberte účet úložiště, který jste vytvořili v kroku 3.
+10. Nastavte **Doba uchování (dny)** na 5 a pak vyberte **Uložit**.
 
 ## <a name="download-flow-log"></a>Stažení toku protokolu
 
@@ -126,6 +130,7 @@ Protokolování toku NSG vyžaduje poskytovatele **Microsoft.Insights**. Poskyto
 
 Následující kód json je příkladem toho, co se zobrazí v souboru PT1H.json pro každý tok, pro který se protokolují data:
 
+### <a name="version-1-flow-log-event"></a>Verze 1 tok protokolu událostí
 ```json
 {
     "time": "2018-05-01T15:00:02.1713710Z",
@@ -135,30 +140,84 @@ Následující kód json je příkladem toho, co se zobrazí v souboru PT1H.json
     "operationName": "NetworkSecurityGroupFlowEvents",
     "properties": {
         "Version": 1,
-        "flows": [{
-            "rule": "UserRule_default-allow-rdp",
-            "flows": [{
-                "mac": "000D3A170C69",
-                "flowTuples": ["1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"]
-            }]
-        }]
+        "flows": [
+            {
+                "rule": "UserRule_default-allow-rdp",
+                "flows": [
+                    {
+                        "mac": "000D3A170C69",
+                        "flowTuples": [
+                            "1525186745,192.168.1.4,10.0.0.4,55960,3389,T,I,A"
+                        ]
+                    }
+                ]
+            }
+        ]
     }
 }
 ```
+### <a name="version-2-flow-log-event"></a>Verze 2 tok protokolu událostí
+```json
+{
+    "time": "2018-11-13T12:00:35.3899262Z",
+    "systemId": "a0fca5ce-022c-47b1-9735-89943b42f2fa",
+    "category": "NetworkSecurityGroupFlowEvent",
+    "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+    "operationName": "NetworkSecurityGroupFlowEvents",
+    "properties": {
+        "Version": 2,
+        "flows": [
+            {
+                "rule": "DefaultRule_DenyAllInBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110402,94.102.49.190,10.5.16.4,28746,443,U,I,D,B,,,,",
+                            "1542110424,176.119.4.10,10.5.16.4,56509,59336,T,I,D,B,,,,",
+                            "1542110432,167.99.86.8,10.5.16.4,48495,8088,T,I,D,B,,,,"
+                        ]
+                    }
+                ]
+            },
+            {
+                "rule": "DefaultRule_AllowInternetOutBound",
+                "flows": [
+                    {
+                        "mac": "000D3AF87856",
+                        "flowTuples": [
+                            "1542110377,10.5.16.4,13.67.143.118,59831,443,T,O,A,B,,,,",
+                            "1542110379,10.5.16.4,13.67.143.117,59932,443,T,O,A,E,1,66,1,66",
+                            "1542110379,10.5.16.4,13.67.143.115,44931,443,T,O,A,C,30,16978,24,14008",
+                            "1542110406,10.5.16.4,40.71.12.225,59929,443,T,O,A,E,15,8489,12,7054"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+```
+
 
 Hodnota **mac** v předchozím výstupu je adresa MAC síťového rozhraní, které se vytvořilo při vytvoření virtuálního počítače. Informace oddělené čárkou pro **flowTuples** vypadají takto:
 
 | Příklad dat | Co data představují   | Vysvětlení                                                                              |
 | ---          | ---                    | ---                                                                                      |
-| 1525186745   | Časové razítko             | Časové razítko, kdy tok proběhl, ve formátu UNIX EPOCH. V předchozím příkladu se data interpretují jako 1. května 2018 ve 14:59:05 GMT.                                                                                    |
-| 192.168.1.4  | Zdrojová IP adresa      | Zdrojová IP adresa, ze které tok pocházel.
-| 10.0.0.4     | Cílová IP adresa | Cílová IP adresa, kam tok mířil. 10.0.0.4 je privátní IP adresa virtuálního počítače, který jste vytvořili ve [Vytvoření virtuálního počítače](#create-a-vm).                                                                                 |
-| 55960        | Zdrojový port            | Zdrojový port, ze které tok pocházel.                                           |
-| 3389         | Cílový port       | Cílový port, do kterého tok mířil. Vzhledem k tomu, že tok mířil do portu 3389, pravidlo s názvem **UserRule_default-allow-rdp** v souboru protokolu tok zpracovalo.                                                |
+| 1542110377   | Časové razítko             | Časové razítko, kdy tok proběhl, ve formátu UNIX EPOCH. V předchozím příkladu se data interpretují jako 1. května 2018 ve 14:59:05 GMT.                                                                                    |
+| 10.0.0.4  | Zdrojová IP adresa      | Zdrojová IP adresa, ze které tok pocházel. 10.0.0.4 je privátní IP adresa virtuálního počítače, který jste vytvořili ve [Vytvoření virtuálního počítače](#create-a-vm).
+| 13.67.143.118     | Cílová IP adresa | Cílová IP adresa, kam tok mířil.                                                                                  |
+| 44931        | Zdrojový port            | Zdrojový port, ze které tok pocházel.                                           |
+| 443         | Cílový port       | Cílový port, do kterého tok mířil. Protože se provoz směřující na port 443, pravidlo s názvem **UserRule_default-allow-rdp**, v protokolu souborů zpracování toku.                                                |
 | T            | Protocol (Protokol)               | Jestli byl protokol toku TCP (T) nebo UDP (U).                                  |
-| I            | Směr              | Jestli byl provoz příchozí (I) nebo odchozí (O).                                     |
-| A            | Akce                 | Jestli byl provoz povolený (A) nebo odmítnutý (D).                                           |
+| O            | Směr              | Jestli byl provoz příchozí (I) nebo odchozí (O).                                     |
+| A            | Akce                 | Jestli byl provoz povolený (A) nebo odmítnutý (D).  
+| C            | Stav toku **pouze verze 2** | Zaznamenat stav toku. Možné stavy **B**: Begin, když se vytvoří tok. Nejsou zadány Statistika. **C**: pokračování pro probíhající toku. Statistiky jsou k dispozici v intervalech 5 minut. **Elektronické**: ukončení, když tok je ukončen. Statistiky jsou k dispozici. |
+| 30 | Pakety odeslané - zdrojového do cílového umístění **pouze verze 2** | Celkový počet TCP nebo UDP odeslaných paketů za sekundu ze zdroje do cíle od poslední aktualizace. |
+| 16978 | Počet odeslaných bajtů - zdrojového do cílového umístění **pouze verze 2** | Celkový počet TCP nebo UDP paketů bajtů odeslaných ze zdroje do cíle od poslední aktualizace. Bajtů na paket zahrnout hlavičky paketů a datové části. | 
+| 24 | Pakety odeslané – cílový zdroj **pouze verze 2** | Celkový počet TCP nebo UDP pakety odeslané z cílového zdroje od poslední aktualizace. |
+| 14008| Počet odeslaných bajtů – cílový zdroj **pouze verze 2** | Celkový počet TCP a UDP paketů bajtů odeslaných z cílového zdroje od poslední aktualizace. Bajtů na paket zahrnout hlavičky paketů a datové části.| |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili, jak povolit protokolování toku pro NSG pro NSG. Dál jste zjistili, jak stáhnout a zobrazit data zaprotokolovaná v souboru. Nezpracovaná data v souboru json může být obtížné interpretovat. K vizualizaci dat můžete použít [analýzu provozu](traffic-analytics.md) Network Watcher, Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md) a další nástroje.

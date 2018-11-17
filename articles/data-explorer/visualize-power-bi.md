@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: c04c9d9618cfc507ebdba170e0697aeaeecb1e99
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393708"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854097"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Kurz: Vizualizace dat z Průzkumníku dat Azure v Power BI
 
@@ -34,11 +34,11 @@ V tomto kurzu se naučíte:
 
 Kromě předplatných Azure a Power BI budete k dokončení tohoto kurzu potřebovat následující:
 
-* [Testovací cluster a databáze](create-cluster-database-portal.md)
+* [Testovací cluster a databázi](create-cluster-database-portal.md)
 
-* [Ukázková data StormEvents](ingest-sample-data.md)
+* [Ukázková data StormEvents](ingest-sample-data.md). [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (klikněte na **STÁHNOUT ZDARMA**)
+* [Power BI Desktop](https://powerbi.microsoft.com/get-started/) (vyberte **DOWNLOAD FREE**)
 
 ## <a name="render-visuals-in-azure-data-explorer"></a>Vykreslování vizuálů v Průzkumníku dat Azure
 
@@ -82,17 +82,17 @@ Teď je čas podívat se na Power BI, ale s vizuály v Průzkumníku dat Azure t
 
 Teď se připojíte k Průzkumníku dat Azure v Power BI Desktopu.
 
-1. V Power BI Desktopu vyberte **Získat data** a pak **Další**.
+1. V Power BI Desktopu na **Domů** kartu, vyberte možnost **získat Data** pak **Další**.
 
     ![Získání dat](media/visualize-power-bi/get-data-more.png)
 
-1. Vyhledejte *Kusto*, vyberte **Azure Kusto (beta verze)** a pak **Připojit**.
+1. Vyhledejte *Průzkumník dat Azure*vyberte **Průzkumník dat Azure (beta verze)**, pak **připojit**.
 
     ![Vyhledání a získání dat](media/visualize-power-bi/search-get-data.png)
 
 1. Na obrazovce **Předběžná verze konektoru** vyberte **Pokračovat**.
 
-1. Na obrazovce **Kusto** zadejte název testovacího clusteru a databáze. Cluster by měl mít formát `https://<ClusterName>.<Region>.kusto.windows.net`. Jako název tabulky zadejte *StormEvents*. U všech ostatních možností ponechte výchozí hodnoty a vyberte **OK**.
+1. Na další obrazovce zadejte název testovacího clusteru a databáze. Cluster by měl mít formát `https://<ClusterName>.<Region>.kusto.windows.net`. Jako název tabulky zadejte *StormEvents*. U všech ostatních možností ponechte výchozí hodnoty a vyberte **OK**.
 
     ![Možnosti clusteru, databáze a tabulky](media/visualize-power-bi/cluster-database-table.png)
 
@@ -226,7 +226,7 @@ Pokud si vytvořenou sestavu nechcete ponechat, stačí odstranit soubor *storm-
 
 1. Potvrďte odebrání.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Zápis dotazů](write-queries.md)

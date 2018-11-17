@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: tutorial
 ms.date: 11/12/2018
 ms.author: pafarley
-ms.openlocfilehash: 4378d04d8909ecb0cd77c3196b74ecd51eb19638
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 92344943d2ec19f6730387221974a001e6a2045a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686224"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852890"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Kurz: Vytvoření aplikace pro Android k rozpoznání a orámování tváří na obrázku
 
@@ -92,11 +92,7 @@ Vložte následující kód **MainActivity** třídy výše **onCreate** metody:
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=17-27)]
 
-Budete muset nahradit `<Subscription Key>` s klíči předplatného. Také nahraďte `<API endpoint>` se váš koncový bod rozhraní API pro rozpoznávání tváře, pomocí identifikátoru příslušnou oblast pro váš klíč. Bezplatné předplatné zkušební verze klíče jsou generovány v **westus** oblasti. Příkladem hodnoty koncového bodu rozhraní API může být:
-
-```java
-apiEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0";
-```
+Budete muset nahradit `<Subscription Key>` s klíči předplatného. Také nahraďte `<API endpoint>` s váš koncový bod rozhraní API pro rozpoznávání tváře pomocí identifikátoru příslušnou oblast pro váš klíč (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti). Bezplatné předplatné zkušební verze klíče jsou generovány v **westus** oblasti.
 
 V podokně **Project** rozbalte **app** a potom **manifests** a otevřete *AndroidManifest.xml*. Vložte následující element jako přímý podřízený elementu `manifest`:
 
