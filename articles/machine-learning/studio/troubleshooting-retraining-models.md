@@ -1,10 +1,11 @@
 ---
-title: Řešení potíží s retraining webové služby Azure Machine Learning Classic | Microsoft Docs
-description: Identifikujte a opravte narazil běžné problémy, když jsou retraining modelu pro webové služby Azure Machine Learning.
+title: Řešení potíží s přetrénování webové služby Azure Machine Learning Classic | Dokumentace Microsoftu
+description: Identifikujte a opravte transakčnímu programu běžné problémy, když jsou přetrénování modelu pro webové služby Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
@@ -15,92 +16,92 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 989bf010320501050a37fbf2f0799f50a5a3e2ba
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2afbeef4a9c79a5d5c57718ff0bfbebc9b063f7a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835769"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820473"
 ---
-# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Řešení potíží s retraining webové služby Azure Machine Learning Classic
-## <a name="retraining-overview"></a>Retraining – přehled
-Když nasadíte prediktivní experiment jako vyhodnocování webové služby je statický model. Jakmile nová data k dispozici nebo pokud příjemce rozhraní API má svá vlastní data, musí být retrained modelu. 
+# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Řešení potíží s přeučováním webové služby Azure Machine Learning Classic
+## <a name="retraining-overview"></a>Přeškolení – přehled
+Při nasazování prediktivní experiment jako hodnoticí webové služby je statický model. K dispozici nová data nebo když příjemce rozhraní API má svá vlastní data, musí být retrained modelu. 
 
-Kompletní a podrobný postup retraining procesu Classic webové služby, najdete v části [Přeučování Machine Learning modely prostřednictvím kódu programu](retrain-models-programmatically.md).
+Kompletní návod retraining procesu webové služby Classic najdete v tématu [Přeučování Machine Learning modelů prostřednictvím kódu programu](retrain-models-programmatically.md).
 
-## <a name="retraining-process"></a>Retraining procesu
-Když potřebujete přeučování webovou službu, musíte přidat další některé jeho součásti:
+## <a name="retraining-process"></a>Přeškolení procesu
+Když budete potřebovat přeučování webové služby, je nutné přidat některé další části:
 
-* Webovou službu nasazenou z výukový Experiment. Musí mít experiment **výstup webové služby** modulu připojené k výstupu **Train Model** modulu.  
+* Webovou službu nasazenou z experimentu školení. Musí mít experimentu **výstup webové služby** modulu přiřazená výstup **Train Model** modulu.  
   
-    ![Připojte k train model výstup webové služby.][image1]
-* Nový koncový bod přidán do vyhodnocování webovou službu.  Můžete přidat koncový bod programově pomocí ukázkový kód, kterou se odkazuje v Machine Learning Přeučování modelů prostřednictvím kódu programu tématu nebo prostřednictvím portálu webové služby Azure Machine Learning.
+    ![Připojte výstupní webové služby k trénování modelu.][image1]
+* Nový koncový bod přidán bodovací webové služby.  Můžete přidat koncový bod prostřednictvím kódu programu pomocí ukázkového kódu, který je odkazováno v Machine Learning Přeučování modelů prostřednictvím kódu programu tématu nebo prostřednictvím portálu Azure Machine Learning Web Services.
 
-Ukázka kódu C# ze stránky nápovědy školení webové rozhraní API pak můžete přeučování modelu. Po vyhodnocení výsledky a spokojeni s nimi, je třeba aktualizovat pro cvičný model vyhodnocování webové službě pomocí nového koncového bodu, který jste přidali.
+Pak můžete použít vzorek C# kód ze stránky nápovědy rozhraní API webové služby školení k programovém přeučení modelů. Po vyhodnocení výsledky a spokojeni, aktualizujete trénovaný model bodování webové služby s použitím nového koncového bodu, který jste přidali.
 
-Hlavní kroky, které je nutné provést při programovém modelu s všechny části na místě, jsou následující:
+Dali všechno na místě jsou hlavní kroky, které je třeba provést při programovém přeučení modelu:
 
-1. Volání webové služby školení: volání je do dávky spuštění služby (BES), není žádosti o odpověď služby (záznamy RR). Ukázkový kód jazyka C# můžete na stránce nápovědy rozhraní API pro volání. 
-2. Najít hodnoty *BaseLocation*, *RelativeLocation*, a *SasBlobToken*: tyto hodnoty jsou vráceny ve výstupu z volání k webové službě školení. 
-   ![zobrazuje výstup retraining ukázka a BaseLocation, RelativeLocation a SasBlobToken hodnoty.][image6]
-3. Aktualizace přidané koncového bodu z vyhodnocování webové služby s novou trénovaného modelu: pomocí ukázkový kód, který je součástí Machine Learning Přeučování modelů prostřednictvím kódu programu, aktualizaci nový koncový bod, které jste přidali do vyhodnocování model s nově trénovaného modelu z Školení webové služby.
+1. Volání webové služby školení: volání je k Batch Execution Service (BES), ne Request Response Service (RRS). Použitím této ukázky C# kód na stránce rozhraní API nápovědy k uskutečnění volání. 
+2. Najít hodnoty *BaseLocation*, *RelativeLocation*, a *SasBlobToken*: tyto hodnoty jsou vráceny ve výstupu z volání webové služby školení. 
+   ![zobrazuje výstup retraining ukázky a BaseLocation RelativeLocation a SasBlobToken hodnoty.][image6]
+3. Aktualizovat přidání koncového bodu z hodnoticí webové služby s novou trénovaného modelu: nový koncový bod přidán bodovací modelu s nově trénovaného modelu z pomocí ukázkového kódu, který je k dispozici v Machine Learning Přeučování modelů prostřednictvím kódu programu, aktualizujte Školení webové služby.
 
-## <a name="common-obstacles"></a>Běžné překážek
+## <a name="common-obstacles"></a>Běžné překážky
 ### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Zkontrolujte, jestli máte správnou adresu URL oprava
-Adresa URL opravy, kterou používáte musí být přidružený nový vyhodnocovací koncový bod, které jste přidali k webové službě vyhodnocování. Existuje několik způsobů, jak získat adresu URL opravy:
+Oprava adresa URL, které používáte musí být přidružený k nový bodovací koncový bod, který jste přidali do hodnoticí webové služby. Existuje mnoho způsobů, jak získat adresu URL opravy:
 
 **Možnost 1: programově**
 
-Pokud chcete získat správnou adresu URL opravy:
+Chcete-li získat správnou adresu URL opravy:
 
 1. Spustit [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) ukázkový kód.
-2. Z výstupu AddEndpoint, Najít *HelpLocation* hodnotu a zkopírujte adresu URL.
+2. Z výstupu AddEndpoint najít *HelpLocation* hodnotu a zkopírujte adresu URL.
    
-   ![HelpLocation ve výstupu addEndpoint vzorku.][image2]
-3. Vložte adresu URL do prohlížeče, přejděte na stránku, která poskytuje odkazy na nápovědu pro webovou službu.
-4. Klikněte **aktualizace prostředků** odkazu k otevření stránky nápovědy opravy.
+   ![HelpLocation ve výstupu příkazu addEndpoint vzorku.][image2]
+3. Vložte adresu URL do prohlížeče přejděte na stránku, která obsahuje odkazy na nápovědu pro webovou službu.
+4. Klikněte na tlačítko **aktualizace prostředku** odkaz k otevření stránky s nápovědou opravy.
 
-**Možnost 2: Použití portálu Azure Machine Learning webové služby**
+**Možnost 2: Použití portálu Azure Machine Learning Web Services**
 
-1. Přihlaste se k [webové služby Azure Machine Learning](https://services.azureml.net/) portálu.
-2. Klikněte na tlačítko **webové služby** nebo **Classic webové služby** v horní části.
-4. Klikněte na práci s vyhodnocování webové služby (pokud nebyl upravit výchozí název webové služby, je vyprší za "[hodnocení Exp.]").
-5. Klikněte na tlačítko **+ nový**.
+1. Přihlaste se k [Azure Machine Learning Web Services](https://services.azureml.net/) portálu.
+2. Klikněte na tlačítko **webových služeb** nebo **klasické webové služby** v horní části.
+4. Klikněte na tlačítko pracujete s hodnoticí webové služby (pokud nebyl změnit výchozí název webové služby, skončí v "[bodování Exp.]").
+5. Klikněte na tlačítko **+ nová**.
 6. Po přidání koncového bodu, klikněte na název koncového bodu.
-7. V části **oprava** adresu URL, klikněte na tlačítko **rozhraní API nápovědy** chcete otevřít stránku nápovědy oprav.
+7. V části **opravy** adresu URL, klikněte na tlačítko **API nápovědy** otevřete oprav stránky s nápovědou.
 
 > [!NOTE]
-> Pokud jste přidali koncový bod k webové službě školení místo prediktivní webové služby, zobrazí se chybová zpráva po kliknutí na tlačítko **aktualizace prostředků** odkaz: "líto, ale tato funkce není podporována nebo k dispozici v Tento kontext. Tato webová služba nemá žádné aktualizovat prostředky. Omlouváme se za nepříjemnosti a práce na zlepšení tento pracovní postup."
+> Pokud jste přidali na koncový bod webové služby školení místo prediktivní webové služby, zobrazí se následující chyba po kliknutí **aktualizace prostředku** odkaz: "Omlouváme se, ale tato funkce není podporována nebo k dispozici v Tento kontext. Tato webová služba nemá žádné prostředky aktualizovat. Omlouváme se za nepříjemnosti a pracujeme na vylepšení tohoto pracovního postupu."
 > 
 > 
 
-Na stránce nápovědy oprava obsahuje adresu URL opravy, je nutné použít a poskytuje ukázkový kód, které můžete použít k volání.
+Stránky s nápovědou PATCH obsahuje adresu URL OPRAVIT, je nutné použít a poskytuje ukázkový kód, který slouží k jeho volání.
 
-![Adresa URL opravy.][image5]
+![Adresa URL Patch.][image5]
 
-### <a name="check-to-see-that-you-are-updating-the-correct-scoring-endpoint"></a>Zkontrolujte aktualizaci správný vyhodnocování koncový bod
-* Není oprava webovou službu školení: operace opravy se musí provést na vyhodnocování webové službě.
-* Výchozí koncový bod webové služby není oprava: operace opravy se musí provést na nové vyhodnocování webové služby koncového bodu, který jste přidali.
+### <a name="check-to-see-that-you-are-updating-the-correct-scoring-endpoint"></a>Zkontrolujte, že aktualizujete správný bodovací koncový bod
+* Oprava není webová služba školení: operace opravy se musí provést na hodnoticí webové služby.
+* Oprava není výchozí koncový bod webové služby: operace opravy se musí provést na nové bodovací koncový bod webové služby, který jste přidali.
 
-Můžete ověřit, které webové služby, koncový bod je na portálu pro webové služby. 
+Můžete ověřit, které webové služby, koncový bod je na portálu webových služeb. 
 
 > [!NOTE]
-> Ujistěte se, že přidáváte koncový bod do prediktivní webové služby není školení webovou službu. Pokud jste nasadili správně školení a prediktivní webové služby, měli byste vidět dvě samostatné webové služby, které jsou uvedené. Prediktivní webové služby musí končit "[prediktivní exp.]".
+> Ujistěte se, že chcete přidat koncový bod prediktivní webové služby, ne webová služba školení. Pokud jste nasadili správně Trénovací a prediktivní webové služby, měli byste vidět uvedené dvě samostatné webové služby. Prediktivní webová služba by měla končit "[prediktivní exp.]".
 > 
 > 
 
-1. Přihlaste se k [webové služby Azure Machine Learning](https://services.azureml.net/) portálu.
-2. Klikněte na tlačítko **webové služby** nebo **Classic webové služby**.
+1. Přihlaste se k [Azure Machine Learning Web Services](https://services.azureml.net/) portálu.
+2. Klikněte na tlačítko **webové služby** nebo **klasické webové služby**.
 3. Vyberte prediktivní webové služby.
-4. Ověřte, že váš nový koncový bod byl přidán k webové službě.
+4. Ověřte, že byl přidán nový koncový bod webové služby.
 
-### <a name="check-that-your-workspace-is-in-the-same-region-as-the-web-service"></a>Zkontrolujte, zda je pracovní prostor ve stejné oblasti jako webovou službu
-1. Přihlaste se k [strojového učení Studio](https://studio.azureml.net/).
-2. V horní části klikněte na rozevírací seznam vašich pracovních prostorů.
+### <a name="check-that-your-workspace-is-in-the-same-region-as-the-web-service"></a>Zkontrolujte, jestli je váš pracovní prostor ve stejné oblasti jako webovou službu
+1. Přihlaste se k [ve službě Machine Learning Studio](https://studio.azureml.net/).
+2. V horní části stránky klikněte na rozevírací seznam vašich pracovních prostorů.
 
-   ![Machine learning oblast uživatelského rozhraní.][image4]
+   ![Machine learning oblasti uživatelského rozhraní.][image4]
 
-3. Zkontrolujte oblast, kterou je pracovní prostor v.
+3. Zkontrolujte oblast pracovního prostoru v.
 
 <!-- Image Links -->
 

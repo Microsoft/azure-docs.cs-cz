@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 11/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2f9868abd0eb8bf96928aeba6f96c10bcb91c4e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3bb7e9837f74fd04d38cc77a9504cc26c6dcf803
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958545"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854182"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>Zápis pokročilé dotazy v Log Analytics
 
@@ -76,28 +76,6 @@ Event
 | extend USTimeGenerated = utc_to_us_date_format(TimeGenerated)
 | project TimeGenerated, USTimeGenerated, Source, Computer, EventLevel, EventData 
 ```
-
-## <a name="functions"></a>Functions
-Můžete uložit dotaz s alias funkce, takže jej lze odkazovat pomocí jiných dotazů. Například následující standardní dotaz vrátí všechny chybějící aktualizace zabezpečení v poslední den:
-
-```Kusto
-Update
-| where TimeGenerated > ago(1d) 
-| where Classification == "Security Updates" 
-| where UpdateState == "Needed"
-```
-
-Můžete uložit tento dotaz jako funkce a pojmenujte ji jako alias _security_updates_last_day_. Pak vám pomůže ho v jiném dotazu vyhledat související SQL požadovaných aktualizací zabezpečení:
-
-```Kusto
-security_updates_last_day | where Title contains "SQL"
-```
-
-Uložit dotaz jako funkce, vyberte **Uložit** tlačítko v portálu a změnit **uložit jako** k _funkce_. Alias funkce může obsahovat písmena, číslice nebo podtržítka, ale musí začínat písmenem nebo podtržítkem.
-
-> [!NOTE]
-> Ukládají se funkce je možné v dotazy Log Analytics, ale aktuálně není pro dotazy Application Insights.
-
 
 ## <a name="print"></a>Vytisknout
 `print` Vrátí tabulku s jedním sloupcem a jeden řádek, zobrazuje výsledek výpočtu. To se často používá v případech, kdy potřebujete jednoduché calcuation. Chcete-li například najít aktuální čas v PST a přidat sloupec s ESTU:

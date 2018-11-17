@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: bcd67d2e879d199296289dbaef2141ba659b2412
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1f8807094c6e93cf55467e76e0fa2b617ec3d5fb
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032674"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822870"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Skupina zabezpečení sítě visualizing protokolů toku s využitím Power BI
 
 Protokoly toku skupin zabezpečení sítě umožňují zobrazit informace o příchozí a odchozí přenosy na skupiny zabezpečení sítě. Tok tyto protokoly zobrazení odchozí a příchozí toků na základě pravidel za NIC toku se vztahuje na, 5 řazené kolekce členů informace o toku (zdrojová a cílová IP, zdrojový/cílový Port, protokol), a pokud provoz byl povolen nebo odepřen.
 
 Může být obtížné získat přehled o datech protokolování tok tak, že ručně soubor protokolu. V tomto článku zajišťuje řešení k vizualizaci protokolů toku s vaší aktuální a další informace o provozu v síti.
+
+> [!Warning]  
+> Následující postup fungovat s verzí protokolů toku 1. Podrobnosti najdete v tématu [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Postupujte podle následujících pokynů nebude fungovat s verzí 2 soubory protokolů, bez jakýchkoli úprav.
 
 ## <a name="scenario"></a>Scénář
 

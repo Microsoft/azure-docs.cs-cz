@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: rithorn
-ms.openlocfilehash: a3de0df8fde3b271b7ba9bb9aab01dbcd5c3bf08
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 627ef0123f05e768dd8a83c197b25da7f161a37c
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991209"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852992"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
@@ -207,7 +207,7 @@ A zjistit, jaká oprávnění máte, vyberte skupinu pro správu a pak vyberte *
 
 ### <a name="move-subscriptions-in-powershell"></a>Přesunout předplatná v prostředí PowerShell
 
-Pokud chcete přesunout předplatné v prostředí PowerShell, použijte příkaz Přidat AzureRmManagementGroupSubscription.  
+Pokud chcete přesunout předplatné v prostředí PowerShell, použijte příkaz New-AzureRmManagementGroupSubscription.  
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
@@ -277,7 +277,7 @@ az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 Další informace o skupinách správy, naleznete v tématu:
 
 - [Uspořádání prostředků se skupinami pro správu Azure](overview.md)
-- [Vytvoření skupin pro správu k uspořádání prostředků Azure](create.md)
+- [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
 - [Instalace modulu Azure Powershell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Projděte si specifikace rozhraní API REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
+- [Specifikace rozhraní REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
 - [Nainstalujte rozšíření Azure CLI](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)

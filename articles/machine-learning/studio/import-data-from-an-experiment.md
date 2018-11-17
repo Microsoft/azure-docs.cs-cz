@@ -5,7 +5,8 @@ keywords: Importujte dat, data, zdroje dat, trénovacích dat
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-ms.author: deguhath
+ms.custom: (previous ms.author deguhath)
+ms.author: amlstudiodocs
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 7da9dcec-5693-4bb6-8166-15904e7f75c3
@@ -16,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 922619f09ffc72a79c5ff6dac1bbc6807c38467c
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: c5e36f449521c341ef08ec30dd2a4cce18323805
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344514"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822615"
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>Import dat do nástroje Azure Machine Learning Studio z jiného experimentu
 

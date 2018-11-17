@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 10/29/2018
-ms.openlocfilehash: 2051f37656b6717c879a24f6e06c31a0ade0b950
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a9738f95ce8a0de750ffa348e167bce3b0e659f6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012322"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821391"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
@@ -21,6 +21,7 @@ Instalace služby Mobility je klíče krokem při povolení replikace. Úspěch 
 * Přihlašovací údaje nebo oprávnění chyby
 * Chyby připojení
 * Nepodporovaný operační systémy
+* Chyby při instalaci stínové kopie svazku
 
 Při povolení replikace Azure Site Recovery se pokusí vložit instalace agenta služby mobility na virtuálním počítači. Jako součást tohoto konfiguračního serveru pokusí připojit k virtuálnímu počítači a zkopírujte agenta. Pokud chcete povolit úspěšnou instalaci, postupujte podrobné pokyny k odstraňování uvedena níže.
 
@@ -40,13 +41,10 @@ Pokud chcete upravit přihlašovací údaje účtu pro vybrané uživatele, post
 ## <a name="connectivity-check-errorid-95117--97118"></a>**Kontrola připojení (ID chyby: 95117 & 97118)**
 
 * Ujistěte se, že můžete provádět na příkaz ping zdrojový počítač z konfiguračního serveru. Pokud jste vybrali horizontální navýšení kapacity procesového serveru při povolení replikace, ujistěte se, že můžete provádět na příkaz ping zdrojový počítač z procesového serveru.
-  * Ze zdrojového serveru počítače příkazového řádku pomocí Telnetu odešlete zprávu ping konfigurační server / horizontální navýšení kapacity procesový server s port https (standardně 9443), jak vidíte níže, jestli jsou všechny problémy se síťovým připojením nebo brány firewall portu blokující problémy.
+  * Ze zdrojového serveru počítače příkazového řádku pomocí Telnetu odešlete zprávu ping konfigurační server / horizontální navýšení kapacity procesového serveru s portem https (135), jak vidíte níže, jestli jsou všechny problémy se síťovým připojením nebo brány firewall portu blokující problémy.
 
-     `telnet <CS/ scale-out PS IP address> <port>`
-
-  * Pokud se nemůžete připojit, povolte příchozí port 9443 na konfiguračním serveru / horizontální navýšení kapacity procesového serveru.
+     `telnet <CS/ scale-out PS IP address> <135>`
   * Zkontrolujte, že stav služby **InMage Scout VX Agent – Sentinel/Outpost**. Spusťte službu, pokud není spuštěná.
-
 * Kromě toho **virtuálního počítače s Linuxem**,
   * Zkontrolujte, jestli jsou nainstalovaná nejnovější balíčky openssh, openssh-server a openssl.
   * Zkontrolujte a ujistěte se, že Secure Shell (SSH) zapnutá a běží na portu 22.
@@ -95,6 +93,43 @@ Další články pro řešení problémů WMI nelze nalézt v následujících �
 Další nejčastější příčinou selhání může být způsobeno nepodporovaný operační systém. Ujistěte se, že používáte podporovanou verzi operačního systému nebo jádra pro úspěšnou instalaci služby Mobility.
 
 Další informace o operačních systémech, které jsou podporovány službou Azure Site Recovery, najdete v našich [dokument matice podpory](vmware-physical-azure-support-matrix.md#replicated-machines).
+
+## <a name="vss-installation-failures"></a>Selhání instalace služby VSS
+
+Instalace služby VSS je součástí instalace agenta Mobility. Tato služba se používá při generování body obnovení konzistentní vzhledem k aplikaci. K selhání během instalace služby VSS může dojít z několika důvodů. Chcete-li zjistit přesný chyby, přečtěte si **c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log**. V následující části jsou zvýrazněny několik běžných chyb a kroků pro řešení.
+
+### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>Došlo k chybě VSS-2147023170 [0x800706BE] - ukončovací kód 511
+
+Tento problém většinou dochází, když antivirový software blokuje provoz služby Azure Site Recovery. Chcete-li vyřešit,
+
+1. Vyloučit všechny složky, které jsou uvedené [tady](vmware-azure-set-up-source.md#exclude-antivirus-on-the-configuration-server).
+2. Postupujte podle pokynů publikovaných poskytovatelem antivirový program odblokujete registrace knihovny DLL ve Windows.
+
+### <a name="vss-error-7-0x7---exit-code-511"></a>Došlo k chybě VSS 7 [0x7] - ukončovací kód 511
+
+Toto je chyba za běhu a příčinou je nedostatek paměti k instalaci aplikace VSS. Nezapomeňte zvětšete místo na disku pro úspěšné dokončení této operace.
+
+### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>Došlo k chybě VSS-2147023824 [0x80070430] - ukončovací kód. 517
+
+Tato chyba nastane, pokud je služba Azure Site Recovery VSS Provider [označená k odstranění](https://msdn.microsoft.com/en-us/library/ms838153.aspx). Pokus nainstalovat VSS na zdrojovém počítači ručně spuštěním následující příkazový řádek
+
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>Došlo k chybě VSS-2147023841 [0x8007041F] - ukončovací kód 512
+
+Tato chyba nastane, pokud je databáze služby Azure Site Recovery VSS Provider [uzamčen](https://msdn.microsoft.com/en-us/library/ms833798.aspx). Pokus nainstalovat VSS na zdrojovém počítači ručně spuštěním následující příkazový řádek
+
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+### <a name="vss-exit-code-806"></a>VSS ukončovací kód 806
+
+Tato chyba nastane, pokud uživatelský účet použitý k instalaci nemá oprávnění k provedení příkazu CSScript. Zadejte potřebná oprávnění pro uživatelský účet pro spuštění skriptu a operaci opakujte.
+
+### <a name="other-vss-errors"></a>Další chyby VSS.
+
+Pokus nainstalovat poskytovatele služby VSS na zdrojovém počítači ručně spuštěním následující příkazový řádek
+
+`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ## <a name="next-steps"></a>Další postup
 

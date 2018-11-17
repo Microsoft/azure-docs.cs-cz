@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: d794648d3af086263ccffc782f3f3fdf6456eacc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 8d5403ab91323cea44e31c4ef99c33b387229ef0
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013373"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820422"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>referenční materiály k Host.JSON pro Azure Functions 2.x  
 
@@ -69,7 +69,7 @@ Následující ukázka *host.json* soubory mají všechny zadané možnosti.
           "default": "None"
         },
         "applicationInsights": {
-            "sampling": {
+            "samplingSettings": {
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 5
             }
@@ -114,7 +114,7 @@ Konfigurace nastavení se dají najít v [centra Event aktivačními událostmi 
 
 Vlastnosti, která vrací objekt, který obsahuje všechna nastavení specifické pro vazbu, například [http](#http) a [eventHub](#eventhub).
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>funkce
 
 Seznam funkcí, které spustí úlohu hostitele. Prázdné pole znamená, že spuštění všech funkcí. Určený k použití pouze tehdy, když [spuštěná místně](functions-run-local.md). V aplikace function App v Azure, by měl místo toho podle kroků v [zakázání funkcí ve službě Azure Functions](disable-function.md) zakázat konkrétní funkce místo použití tohoto nastavení.
 
@@ -150,7 +150,7 @@ Nastavení konfigurace pro [monitorování stavu hostitelů](https://github.com/
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí hodnota | Popis |
 |---------|---------|---------| 
 |povoleno|true (pravda)|Určuje, zda je povolena funkce. | 
 |healthCheckInterval|10 sekund|Časový interval mezi stavu na pozadí pravidelně kontroluje. | 
@@ -181,11 +181,11 @@ Konfigurace nastavení se dají najít v [http triggerů a vazeb](functions-bind
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí hodnota | Popis |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jaké úroveň protokolování do souboru je povolená.  Možnosti jsou `never`, `always`, `debugOnly`. |
-|LogLevel|neuvedeno|Objekt, který definuje kategorie protokolu filtrování pro funkce v aplikaci. Verze 2.x následuje rozložení ASP.NET Core pro filtrování kategorie protokolu. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolu](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|applicationInsights|neuvedeno| [ApplicationInsights](#applicationinsights) nastavení. |
+|LogLevel|Nedefinováno|Objekt, který definuje kategorie protokolu filtrování pro funkce v aplikaci. Verze 2.x následuje rozložení ASP.NET Core pro filtrování kategorie protokolu. To vám umožní filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolu](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|applicationInsights|Nedefinováno| [ApplicationInsights](#applicationinsights) nastavení. |
 
 ## <a name="queues"></a>fronty
 
@@ -215,15 +215,15 @@ Nastavení konfigurace pro chování zámku typu Singleton. Další informace na
 }
 ```
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí hodnota | Popis |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Dobu, po kterou úroveň zámků funkce pořízeny pro. Zámky automatického obnovení.| 
 |listenerLockPeriod|00:01:00|Období, ve kterém zamkne naslouchací proces pořízeny pro.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Časový interval použít pro obnovení zámku naslouchací proces, pokud při spuštění nebylo možné získat zámek naslouchací proces.| 
 |lockAcquisitionTimeout|00:01:00|Maximální množství času se modul runtime pokusí se získat zámek.| 
-|lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
+|lockAcquisitionPollingInterval|Nedefinováno|Interval mezi pokusy o získání zámku.| 
 
-## <a name="version"></a>version
+## <a name="version"></a>verze
 
 Řetězec verze `"version": "2.0"` je vyžadován pro aplikaci function app, zaměřuje na modul runtime verze 2.
 

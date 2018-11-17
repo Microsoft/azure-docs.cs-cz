@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 97d988332a2c5234cb260cef29f195f0fecfee45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73f95280cc02b6f891c4ef67cd11084768d7d282
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994934"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853009"
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>Sestavování a nasazování modelů klasifikace textu pomocí služby Azure Machine Learning
 
@@ -436,7 +436,7 @@ Předtím, než právě modelu se obvykle, nastavte parametry.
 
 Následující ukázky kódu ukazují, jak pro trénování modelu s použitím výchozí parametry kanálu a modelu. 
 
-Chcete-li zjistit, jaké parametry jsou součástí "text_word_ngrams", použijte [get_step_param_names_by_name](https://docs.microsoft.com/python/api/tatk.core.base_text_model.basetextmodel). Tato funkce vrací parametry, jako je například malými písmeny input_col output_col a tak dále. 
+Chcete-li zjistit, jaké parametry jsou součástí "text_word_ngrams", použijte [get_step_param_names_by_name](/python/api/msft-tatk/tatk.core.base_text_model.basetextmodel#get-step-param-names-by-name). Tato funkce vrací parametry, jako je například malými písmeny input_col output_col a tak dále. 
 
 ```python
 text_classifier.get_step_param_names_by_name("text_word_ngrams")
@@ -625,7 +625,7 @@ Použijte klasifikátor trénovaného text na základě testovací datové ke ge
 </div>
 
 ## <a name="evaluate-model-performance"></a>Vyhodnocení výkonu modelu
-[Vyhodnocení modulu](https://docs.microsoft.com/python/api/tatk.evaluation) vyhodnotí přesnost třídění trénovaného text na základě testovací datové. Vyhodnocení funkce generuje chybovou matici a nabízí F1 – makro skóre.
+[Vyhodnocení modulu](/python/api/msft-tatk/tatk.evaluation) vyhodnotí přesnost třídění trénovaného text na základě testovací datové. Vyhodnocení funkce generuje chybovou matici a nabízí F1 – makro skóre.
 
 ```python
  text_classifier.evaluate(df_test)          

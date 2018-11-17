@@ -4,7 +4,8 @@ description: Zjistěte, jak programově přeučit modelu a aktualizovat webovou 
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: e36e1961-9e8b-4801-80ef-46d80b140452
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 3de17375670d7697a298023dc79ffc2418cb7e42
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: be4f1e4705d1f8357198f01e2fa6d5aae83159c7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963752"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820082"
 ---
 # <a name="retrain-a-classic-web-service"></a>Přeučování webové služby Classic
 Prediktivní webové služby, kterou jste nasadili je výchozí bodovací koncový bod. Výchozí koncové body se udržovat synchronizované s původní trénování a vyhodnocování experimenty, a proto nejde nahradit trénovaný model pro výchozí koncový bod. Chcete-li přeučování webové služby, je nutné přidat nový koncový bod webové služby. 
@@ -130,7 +131,7 @@ Pokud váš token SAS vyprší před dokončením aktualizuje se koncový bod, j
 
 Při úspěšném spuštění kódu by nový koncový bod začít používat retrained modelu během přibližně 30 sekund.
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 Pomocí rozhraní Retraining API, můžete aktualizovat trénovaného modelu umožňuje scénáře, jako prediktivní webové služby:
 
 * Pravidelné model přetrénování s novými daty.

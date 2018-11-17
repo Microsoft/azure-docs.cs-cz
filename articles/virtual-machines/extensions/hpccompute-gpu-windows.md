@@ -12,24 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: f7c7877768e2dc06e73f8c91016edd521151a11c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 85ac478bf753d5bb0aed96eca538e48525354eff
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055662"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823788"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Grafický procesor NVIDIA ovladač rozšíření pro Windows
 
 ## <a name="overview"></a>Přehled
 
-Toto rozšíření nainstaluje ovladačů NVIDIA GPU na virtuálních počítačích řady N-series s Windows. V závislosti na řadu virtuálních počítačů nainstaluje rozšíření ovladače CUDA nebo MŘÍŽKA. Při instalaci NVIDIA ovladače, které používají toto rozšíření přijetí a vyjádření souhlasu s těmito podmínkami licenční smlouvy s koncovým uživatelem NVIDIA. Váš virtuální počítač může během procesu instalace restartovat k dokončení instalace ovladačů.
+Toto rozšíření nainstaluje ovladačů NVIDIA GPU na virtuálních počítačích řady N-series s Windows. V závislosti na řadu virtuálních počítačů nainstaluje rozšíření ovladače CUDA nebo MŘÍŽKA. Při instalaci NVIDIA ovladače, které používají toto rozšíření přijímáte a vyjádření souhlasu s těmito podmínkami [licenční smlouva s koncovým uživatelem NVIDIA](https://go.microsoft.com/fwlink/?linkid=874330). Virtuální počítač může během procesu instalace restartovat k dokončení instalace ovladačů.
 
 Rozšíření je také dostupná k instalaci ovladačů NVIDIA GPU na [virtuální počítače s Linuxem řady N-series](hpccompute-gpu-linux.md).
-
-Podmínky licenční smlouvy s koncovým uživatelem NVIDIA jsou umístěny zde- https://go.microsoft.com/fwlink/?linkid=874330
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -71,15 +69,23 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 }
 ```
 
-### <a name="property-values"></a>Hodnoty vlastností
+### <a name="properties"></a>Vlastnosti
 
 | Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | vydavatele | Microsoft.HpcCompute | řetězec |
 | type | NvidiaGpuDriverWindows | řetězec |
 | typeHandlerVersion | 1.2 | int |
 
+### <a name="settings"></a>Nastavení
+
+Všechna nastavení jsou volitelná. Výchozí chování je nainstalovat nejnovější podporované ovladače podle potřeby.
+
+| Název | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
+| ---- | ---- | ---- | ---- | ---- |
+| driverVersion | NV: Verze ovladače mřížky<br> NC/ND: CUDA verze ovladače | nejnovější | GRID: "391.81", "391.58", "391.03"<br> CUDA: "398.75", "397.44", "390.85" | řetězec |
+| installGridND | Nainstalujte ovladač mřížky na virtuálních počítačů řady ND. | false (nepravda) | Hodnota TRUE, false | Boolean |
 
 ## <a name="deployment"></a>Nasazení
 
@@ -129,6 +135,8 @@ Set-AzureRmVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
+Následující příklad zrcadlí výše uvedeném příkladu ARM a prostředí PowerShell a také přidá vlastní nastavení jako příklad instalace jiné než výchozí ovladače. Konkrétně nainstaluje specifický ovladač mřížky, i v případě, že řada ND series virtuálního počítače se zřizuje.
+
 ```azurecli
 az vm extension set `
   --resource-group myResourceGroup `
@@ -137,6 +145,8 @@ az vm extension set `
   --publisher Microsoft.HpcCompute `
   --version 1.2 `
   --settings '{ `
+    "driverVersion": "391.03",
+    "installGridND": true
   }'
 ```
 

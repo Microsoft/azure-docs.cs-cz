@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: 80799eb716e77a4dec02a2daf028c35589c75da0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b14a98ce22979182ec27ba5dc849f9535fa2b387
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235271"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824298"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Poradce při potížích aktivace virtuálního počítače Windows Azure
 
@@ -29,7 +29,7 @@ Pokud máte potíže při aktivaci Windows Azure virtuální počítač (VM), kt
 Azure používá různé koncové body pro aktivaci prostřednictvím služby správy KLÍČŮ v závislosti na oblasti cloudu, ve které se nachází virtuální počítač. Při použití tohoto průvodce odstraňováním potíží, použijte vhodný koncový bod služby správy KLÍČŮ, které platí pro vaši oblast.
 
 * Veřejných cloudových oblastech Azure: kms.core.windows.net:1688
-* Oblasti národních cloudů Azure Čína: kms.core.chinacloudapi.cn:1688
+* Oblasti národních cloudů Azure China 21Vianet: kms.core.chinacloudapi.cn:1688
 * Oblasti národních cloudů Azure Germany: kms.core.cloudapi.de:1688
 * Azure národních cloudů oblastech US Gov: kms.core.usgovcloudapi.net:1688
 
@@ -84,8 +84,7 @@ Tento krok se nevztahují na Windows 2012 nebo Windows 2008 R2. Používá funkc
 3. Ujistěte se, že virtuální počítač je nakonfigurován na použití správný server služby správy KLÍČŮ Azure. Chcete-li to provést, spusťte následující příkaz:
   
     ```
-    iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
-    kms.core.windows.net:1688
+    iex "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms kms.core.windows.net:1688"
     ```
     Příkaz by měl vrátit: název počítače služby správy klíčů nastavený na kms.core.windows.net:1688 úspěšně.
 

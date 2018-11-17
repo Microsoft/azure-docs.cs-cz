@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: e55d161b7c95118736f4443c3fed0312418feee7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 898d7cf6cdded08cd09c4b1f1f845473af1650a3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441931"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-leapsome"></a>Kurz: Integrace Azure Active Directory se službou Leapsome
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Leapsome, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Leapsome jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Leapsome do služby Azure AD, budete muset přidat Leapsom
 
 **Chcete-li přidat Leapsome z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -134,7 +134,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | Obrázek | Adresa URL obrázku zaměstnance. | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
     > [!Note]
-    > Hodnota atributu obrázek není skutečný. Aktualizujte tuto hodnotu s adresou URL aktuální obrázek. Chcete-li získat tento kontakt hodnotu [tým podpory Leapsome klienta](mailto:support@leapsome.com).
+    > Hodnota atributu obrázek není skutečný. Aktualizujte tuto hodnotu s adresou URL aktuální obrázek. Chcete-li získat tento kontakt hodnotu [tým podpory Leapsome klienta](mailto:support@leapsome.com).
     
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
@@ -176,7 +176,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. Kopírovat **adresu URL pro přihlášení (přejděte sem uživatelé start přihlášení)** hodnotu a vložte ho do **přihlašovací adresa URL** textového pole v **Leapsome domény a adresy URL** části na webu Azure portal.
 
-    c. Kopírovat **adresy URL odpovědi (recieves odpověď od vašeho zprostředkovatele identity)** hodnotu a vložte ho do **adresy URL odpovědi** textového pole v **Leapsome domény a adresy URL** části na webu Azure portal.
+    c. Kopírovat **adresy URL odpovědi (obdrží odpověď od vašeho zprostředkovatele identity)** hodnotu a vložte ho do **adresy URL odpovědi** textového pole v **Leapsome domény a adresy URL** části na webu Azure portal.
 
     d. V **adresu URL pro přihlášení SSO (získaný od zprostředkovatele identity)** textového pole vložte hodnotu **SAML jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
 
@@ -218,7 +218,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-leapsome-test-user"></a>Vytvoření zkušebního uživatele Leapsome
 
-V této části vytvoříte uživatele v Leapsome jako Britta Simon. Práce s [tým podpory Leapsome klienta](mailto:support@leapsome.com) k přidání uživatele nebo domény, který je třeba přidat na seznam povolených Leapsome platformě. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Leapsome platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte uživatele v Leapsome jako Britta Simon. Práce s [tým podpory Leapsome klienta](mailto:support@leapsome.com) přidat uživatele nebo domény, který je třeba přidat na seznam povolených Leapsome platformě. Pokud je doména přidána týmem, se získat uživatele automaticky přiřazeni k Leapsome platformy. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -250,7 +250,7 @@ V této části je povolit Britta Simon k udělení přístupu k Leapsome použi
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

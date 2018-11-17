@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: a86a7188c488a634de7b0ac71657bea0105381c7
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1fcbbce87c822c49882f8e42a1eaccfd389ee310
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961887"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852924"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Vytvoření upozornění protokolu aktivit pro oznámení služby
 ## <a name="overview"></a>Přehled
@@ -70,7 +70,7 @@ Informace o tom, jak nakonfigurovat službu stavu oznámení výstrah pomocí š
 
 1. Definujte seznam příjemců pro příjemce:
 
-    a. **Název**: Zadejte jméno příjemce s, alias nebo identifikátor.
+    a. **Název**: Zadejte název, alias nebo identifikátor příjemce.
 
     b. **Typ akce**: Vyberte SMS, e-mailu, webhooku, aplikace Azure a další.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8b12e3cdc53b926f660e12b7cf4b79a8cb6f40c2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 25e70b3a685f3b777a74c4cc6bf0e56dd37741a7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960153"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821510"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Řešení potíží s RDP obecné chybě ve virtuálním počítači Azure
 
@@ -65,7 +65,7 @@ Chcete-li vyřešit tento problém [zálohování disku s operačním systémem]
 
 ### <a name="serial-console"></a>Konzola sériového portu
 
-#### <a name="step-1-turn-on-remote-desktop"></a>Krok 1: Zapněte vzdálenou plochu
+#### <a name="step-1-open-cmd-instance-in-serial-console"></a>Krok 1: Otevřete CMD instance v konzole sériového portu
 
 1. Přístup [konzoly sériového portu](serial-console-windows.md) tak, že vyberete **podpora a řešení potíží** > **sériová konzola (Preview)**. Pokud je povolená funkce, na virtuálním počítači, může úspěšně připojit virtuální počítač.
 
@@ -242,6 +242,6 @@ Další informace najdete v tématu [služby Vzdálená plocha nespouští na Vi
 
 Další informace najdete v tématu [vzdálené plochy odpojí často ve virtuálním počítači Azure](troubleshoot-rdp-intermittent-connectivity.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktovat podporu
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

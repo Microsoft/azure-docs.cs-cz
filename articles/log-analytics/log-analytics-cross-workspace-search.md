@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 11/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e06b9ff2134c0bd1fb1ee8515827e9e8c06a3108
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9c7a1ec33f82239a5b95e9bf116fe35694d9df36
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008466"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852856"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Provedení prohledávání protokolů napříč prostředky ve službě Log Analytics  
 
@@ -101,6 +101,36 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 | where UpdateState == "Needed"
 | summarize dcount(Computer) by Classification
 ```
+
+## <a name="using-cross-resource-query-for-multiple-resources"></a>Pomocí dotazu napříč prostředky u několika prostředků
+Při použití dotazy napříč prostředky pro korelaci dat z více Log Analytics a prostředky Application Insights, dotaz může být složité a obtížné na správu. By je měli využít [funkcí ve službě Log Analytics](query-language/functions.md) oddělení logiku dotazu od nepříznivě prostředky dotazu, což zjednodušuje struktura dotazu. Následující příklad ukazuje, jak můžete monitorovat různé prostředky Application Insights a vizualizovat počet neúspěšných žádostí podle názvu aplikace. 
+
+Vytvořte dotaz následujícím postupem, který odkazuje na obor prostředky Application Insights. `withsource= SourceApp` Příkaz přidá sloupec, který určuje název aplikace, které odeslání protokolu. [Uložit dotaz jako funkce](query-language/functions.md#create-a-function) s aliasem _applicationsScoping_.
+
+```Kusto
+// crossResource function that scopes my Application Insights resources
+union withsource= SourceApp
+app('Contoso-app1').requests, 
+app('Contoso-app2').requests,
+app('Contoso-app3').requests,
+app('Contoso-app4').requests,
+app('Contoso-app5').requests
+```
+
+
+
+Teď můžete [tuto funkci použít](query-language/functions.md#use-a-function) v dotazu napříč prostředky následujícím postupem. Alias funkce _applicationsScoping_ Vrátí sjednocení z tabulky requests ze všech definovaných aplikací. Dotazu a filtry pro chybné žádosti a vizualizuje vývoje aplikací. _Analyzovat_ operátor je volitelné v tomto příkladu. Extrahuje název aplikace z _SourceApp_ vlastnost.
+
+```Kusto
+applicationsScoping 
+| where timestamp > ago(12h)
+| where success == 'False'
+| parse SourceApp with * '(' applicationName ')' * 
+| summarize count() by applicationName, bin(timestamp, 1h) 
+| sort by count_ desc 
+| render timechart
+```
+![Časový graf](media/log-analytics-cross-workspace-search/chart.png)
 
 ## <a name="next-steps"></a>Další postup
 

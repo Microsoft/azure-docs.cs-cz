@@ -4,7 +4,8 @@ description: Objevte poznámkové bloky Jupyter v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 556e0671-1b50-4bcb-92eb-889962310633
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 81a2f444012085782c377de050e7cb5445f8ebb3
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 090e67ed2a5448b2db1fd8556056b7bcd1947df6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344650"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823346"
 ---
 # <a name="discover-jupyter-notebooks-in-the-azure-ai-gallery"></a>Zjistit poznámkové bloky Jupyter v galerii Azure AI
 

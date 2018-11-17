@@ -1,10 +1,11 @@
 ---
-title: Interpretovat výsledky modelu v Machine Learning | Microsoft Docs
-description: Jak vybrat optimální parametr nastavit pro algoritmus pomocí a vizualizace score model výstupy.
+title: Interpretace výsledků modelu ve službě Machine Learning | Dokumentace Microsoftu
+description: Jak vybrat optimální parametr nastavit pro objekt pomocí algoritmu a vypíše vizualizovat určení skóre modelu.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6230e5ab-a5c0-4c21-a061-47675ba3342c
@@ -15,292 +16,292 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: e62f4716a95a6c1840afde27361eeb756abff335
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b50d85de744426435fb06767e6a459e4c8bf46d3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837000"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824213"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning"></a>Interpretovat výsledky modelu v Azure Machine Learning
-Toto téma vysvětluje, jak interpretovat výsledky předpovědi v Azure Machine Learning Studio a vizualizaci. Po Trénink modelu a provádí předpovědi nad jeho ("vypočítat skóre modelu"), musíte pochopit a interpretovat výsledek předpovědi.
+# <a name="interpret-model-results-in-azure-machine-learning"></a>Interpretace výsledků modelu ve službě Azure Machine Learning
+Toto téma vysvětluje, jak vizualizovat a interpretace výsledků predikce v Azure Machine Learning Studio. Po Trénink modelu a provádí predictions nad rámec jeho ("skóre modelu"), musíte pochopit a interpretace výsledků předpovědí.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-Existují čtyři hlavní druhy strojového učení modely v Azure Machine Learning:
+Existují čtyři hlavní typy modelů v Azure Machine Learning strojového učení:
 
 * Klasifikace
 * Clustering
 * Regrese
 * Doporučené systémy
 
-Moduly používané pro předpověď nad tyto modely jsou:
+Moduly používané k předpovědi na základě těchto modelů a mají:
 
-* [Určení skóre modelu] [ score-model] modulu pro klasifikaci a regrese
-* [Přiřadit clustery] [ assign-to-clusters] modulu pro clustering
-* [Stanovení skóre doporučené Matchbox] [ score-matchbox-recommender] systémů doporučení
+* [Určení skóre modelu] [ score-model] modul pro klasifikačních a regresních
+* [Přiřadit ke clusterům] [ assign-to-clusters] modul pro vytváření clusterů
+* [Skóre Matchbox doporučené] [ score-matchbox-recommender] systémů doporučení
 
-Tento dokument vysvětluje, jak interpretovat výsledky předpovědi pro každý z těchto modulů. Přehled těchto modulů najdete v tématu [jak zvolit parametry, které Optimalizujte algoritmy v Azure Machine Learning](algorithm-parameters-optimize.md).
+Tento dokument popisuje, jak interpretovat výsledky předpovědí pro každý z těchto modulů. Přehled těchto modulů najdete v tématu [jak vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning](algorithm-parameters-optimize.md).
 
-Toto téma nabízí interpretace předpovědi, ale ne zkušební modelu. Další informace o tom, jak vyhodnotit modelu najdete v tématu [postup vyhodnocení modelu výkon v Azure Machine Learning](evaluate-model-performance.md).
+Toto téma řeší interpretace predikcí, ale ne zkušební modelu. Další informace o tom, jak vyhodnotit váš model, najdete v části [jak vyhodnotit výkon modelu ve službě Azure Machine Learning](evaluate-model-performance.md).
 
-Pokud jsou nové pro Azure Machine Learning a potřebujete další pomoc vytvoření jednoduchého experimentu začít, najdete v článku [vytvoření jednoduchého experimentu v nástroji Azure Machine Learning Studio](create-experiment.md) v Azure Machine Learning Studio.
+Pokud teprve začínáte Azure Machine Learning a potřebujete pomoc při vytvoření jednoduchého experimentu Začínáme, přečtěte si téma [vytvoření jednoduchého experimentu v nástroji Azure Machine Learning Studio](create-experiment.md) v Azure Machine Learning Studio.
 
 ## <a name="classification"></a>Klasifikace
-Existují dvě podkategorie klasifikaci problémy:
+Existují dva podkategorie klasifikace problémy:
 
-* Problémy s pouze dvěma třídami (dvě třídy nebo binární klasifikace)
-* Problémy s více než dvě třídy (třídy více klasifikace)
+* Problémy s pouze dvěma třídami (dvěma třídami nebo binární klasifikace)
+* Problémy s více než dvě třídy (roc klasifikace)
 
-Azure Machine Learning obsahuje různé moduly pro každý z těchto typů klasifikace řešení, ale jsou podobné metody pro interpretace jejich výsledky předpovědi.
+Azure Machine Learning má různé moduly pro každý z těchto typů klasifikace řešení, ale jsou podobné metody pro interpretaci jejich výsledky předpovědí.
 
-### <a name="two-class-classification"></a>Klasifikace dva – třída
+### <a name="two-class-classification"></a>Klasifikace dvěma třídami
 **Příklad experimentu**
 
-Příklad two-class klasifikace problému je klasifikace iris květy. Tato úloha je klasifikovat iris květy podle jejich funkce. Sada dat Iris uvedené v Azure Machine Learning je podmnožinou oblíbených [Iris datové sady](http://en.wikipedia.org/wiki/Iris_flower_data_set) obsahující instance jen dvě květinové druhů (třídy 0 a 1). Existují čtyři funkce pro každý květina (sepal délka, šířka sepal, Okvětní lístek délku a šířku Okvětní lístek).
+Příklad dvěma třídami klasifikace problému je klasifikace iris květin. Úloha je klasifikace iris květin na základě jejich funkcí. Datové sady Iris k dispozici ve službě Azure Machine Learning je podmnožinou Oblíbené [datovou sadu Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) obsahující instance jen dva květinové druhů (třídy 0 a 1). Existují čtyři funkce pro každou datovou (sepal length, sepal width, petal length a petal width).
 
 ![Snímek obrazovky iris experimentu](./media/interpret-model-results/1.png)
 
-Obrázek 1. Iris two-class klasifikace problému experimentu
+Obrázek 1. Experiment problém dvěma třídami klasifikace Iris
 
-Experiment nebylo provedeno k vyřešení tohoto problému, jak je znázorněno na obrázku 1. Two-class boosted decision stromu modelu byla vycvičena a vypočítat skóre. Teď můžete vizualizovat předpovědi výsledků [Score Model] [ score-model] modulu kliknutím na výstupní port modulu [Score Model] [ score-model] modul a potom kliknutím na **vizualizovat**.
+Experiment byla provedena pro vyřešení tohoto problému, jak je znázorněno na obrázku 1. Model dvěma třídami Posílený rozhodovací strom byly školení a skóre. Teď můžete vizualizovat výsledky předpovědí z [Score Model] [ score-model] kliknutím na výstupní port modulu [Score Model] [ score-model] modul a pak levým na **vizualizovat**.
 
 ![Modul určení skóre modelu](./media/interpret-model-results/1_1.png)
 
-Po výběru této možnosti vyhodnocování výsledky jak je znázorněno na obrázku 2.
+Tím se zobrazí výsledky vyhodnocení jak je znázorněno na obrázku 2.
 
-![Výsledky iris two-class klasifikace experimentu](./media/interpret-model-results/2.png)
+![Výsledky testu dvěma třídami klasifikace iris](./media/interpret-model-results/2.png)
 
-Obrázek 2. Vizualizace výsledků skóre v klasifikaci two-class
+Obrázek 2. Vizualizace výsledků určení skóre modelu v klasifikaci dvěma třídami
 
-**Výsledek vyhodnocení**
+**Interpretace výsledků**
 
-Existují šesti sloupce v tabulce výsledků. Levé čtyři sloupce jsou čtyři funkce. Právo dva sloupce, popisky vyhodnocení a skóre pro Magnitudu Pravděpodobnostech jsou výsledky předpovědi. Skóre pro Magnitudu Pravděpodobnostech sloupci se zobrazuje pravděpodobnost náležející květiny kladné třídy (třídy 1). První číslo v existuje sloupec (0.028571) znamená je například 0.028571 pravděpodobnost, že první květina patří do třídy 1. Popisky vyhodnocení sloupci se zobrazuje předpokládaných třídu pro každý květina. To je založené na sloupci Pravděpodobnostech vypočítat skóre. Pokud je větší než 0,5 scored pravděpodobnost květiny, je předpovědět jako třída 1. Jinak je předpovědět jako třída 0.
+Existuje šest sloupců v tabulce výsledků. Levé čtyři sloupce obsahují čtyři funkce. Vpravo dva sloupce, popisky vyhodnocení a skóre pravděpodobnosti, jsou výsledky předpovědí. Skóre pravděpodobnosti sloupci se zobrazuje pravděpodobnosti, který patří květinu pozitivní třídy (třídy 1). První číslo v sloupec (0.028571) znamená, že je například 0.028571 pravděpodobnost, že první květinu patří do třídy 1. Popisky vyhodnocení sloupci se zobrazuje pro každou datovou předpokládaná třída. To je založen na sloupci skóre pravděpodobnosti. Pokud je větší než 0,5 skóre pravděpodobnosti květinu, očekává se jako třídy 1. V opačném případě shromážděno jako třída 0.
 
 **Publikování webové služby**
 
-Po předpovědi výsledky byly porozuměl jsem jim a zvukových, která, experimentu lze publikovat jako webovou službu, aby mohli nasadit v různých aplikacích a pojmenujte ji k získání třídy předpovědi na všechny nové květina iris. Zjistěte, jak změnit výukový experiment do vyhodnocování experiment a publikujete ji jako webové služby, najdete v tématu [publikovat webovou službu Azure Machine Learning](walkthrough-5-publish-web-service.md). Tento postup obsahuje vyhodnocování experiment, jak je vidět na obrázku 3.
+Poté, co byly porozuměl jsem jim a neobsahuje zvukový výsledků předpovědí, experiment můžete publikovat jako webovou službu tak, že můžete nasadit v různých aplikacích a volat ho k získání třídy předpovědí na všechny nové květinu iris. Zjistěte, jak změnit výukového experimentu na hodnocení experiment a publikovat jako webovou službu, najdete v článku [publikovat webové služby Azure Machine Learning](walkthrough-5-publish-web-service.md). Tento postup poskytuje bodování experiment, jak je znázorněno na obrázku 3.
 
 ![Snímek obrazovky vyhodnocování experimentu](./media/interpret-model-results/3.png)
 
-Obrázek 3. Vyhodnocování experimentu iris two-class klasifikace problému
+Obrázek 3. Vyhodnocování experiment problém dvěma třídami klasifikace iris
 
-Teď je potřeba nastavit vstupní a výstupní pro webovou službu. Vstup je pravý vstupní port z [Score Model][score-model], což je květina Iris funkce vstup. Volba výstup závisí na tom, jestli máte zájem předpokládaných – třída (scored popisek), scored pravděpodobnost nebo obojí. V tomto příkladu se předpokládá, že máte zájem obě. Pokud chcete vybrat požadovaný výstupní sloupce, použijte [výběr sloupců v datové sadě] [ select-columns] modulu. Klikněte na tlačítko [výběr sloupců v datové sadě][select-columns], klikněte na tlačítko **spustit selektor sloupců**a vyberte **popisky vyhodnocení** a **Scored Pravděpodobnostech**. Po nastavení výstupní port modulu [výběr sloupců v datové sadě] [ select-columns] a znovu spustit, byste měli být připravena k publikování vyhodnocování experimentu jako webovou službu kliknutím **publikování webové služby** . Konečný experiment vypadá jako na obrázku 4.
+Teď je potřeba nastavit vstupů a výstupů pro webovou službu. Vstup je pravý vstupní port z [Score Model][score-model], což je květinu Iris funkce vstup. Volba výstupu závisí na tom, jestli vás zajímá předpokládaná třída (skóre popisek), skóre pravděpodobnosti nebo obojí. V tomto příkladu se předpokládá, že máte zájem o obojí. Chcete-li vybrat požadovaný výstupní sloupce, použijte [výběr sloupců v datové sadě] [ select-columns] modulu. Klikněte na tlačítko [výběr sloupců v datové sadě][select-columns], klikněte na tlačítko **spustit selektor sloupců**a vyberte **popisky vyhodnocení** a **Scored Pravděpodobnost**. Po nastavení na výstupní port modulu [výběr sloupců v datové sadě] [ select-columns] a znovu spustit, byste měli být připraveni publikovat bodovací experiment jako webové služby kliknutím **publikovat webové služby** . Konečný experiment vypadá jako obrázek 4.
 
-![Experiment iris klasifikace dva – třída](./media/interpret-model-results/4.png)
+![Experiment dvěma třídami klasifikace iris](./media/interpret-model-results/4.png)
 
-Obrázek 4. Konečný experiment vyhodnocování iris two-class klasifikace problému
+Obrázek 4. Konečný experiment bodovací problematiky dvěma třídami klasifikace iris
 
-Po spuštění webové služby a zadejte hodnoty některé funkce testovací instance, vrátí výsledek dvou čísel. První číslo je scored popisek a druhý je scored pravděpodobnosti. Tato květina je předpovědět jako třída 1 s 0.9655 pravděpodobnosti.
+Po spuštění webové služby a zadejte hodnoty některé funkce instance test vrátí výsledek dvou čísel. První číslo bude Vyhodnocená popisek a druhá skóre pravděpodobnosti. Tuto datovou očekává se, že jako třídy 1 s 0.9655 pravděpodobnosti.
 
-![Interpretace score model testů](./media/interpret-model-results/4_1.png)
+![Test interpretace určení skóre modelu](./media/interpret-model-results/4_1.png)
 
-![Vyhodnocování výsledků testu](./media/interpret-model-results/5.png)
+![Vyhodnocení výsledků testů](./media/interpret-model-results/5.png)
 
-Obrázek 5. Webové služby výsledek iris two-class klasifikace
+Obrázek 5. Webové služby výsledek klasifikace iris dvěma třídami
 
-### <a name="multi-class-classification"></a>Klasifikace více – třída
+### <a name="multi-class-classification"></a>Klasifikace víc tříd
 **Příklad experimentu**
 
-V této experimentu můžete provést úlohu písmeno rozpoznávání jako příklad více třídami klasifikace. Třídění pokusí odhadnout určité písmenem (třída) na základě některé ručně psané atribut hodnot z bitové kopie ručně psané extrahovat.
+V tento experiment můžete provést úlohu rozpoznávání písmeno s ukázkovým klasifikace víc tříd. Třídění se pokouší předvídat určitým písmenem (třídy) založené na některé hodnoty atributu ručně psanou extrahovat z obrázků ručně psanou.
 
 ![Příklad rozpoznávání písmeno](./media/interpret-model-results/5_1.png)
 
-V Cvičná data jsou 16 funkce, které se extrahují z bitové kopie ručně psané písmeno. 26 písmena formuláři naše 26 třídy. Obrázek 6 ukazuje experimentu, který bude trénování modelu více třídami klasifikace pro rozpoznávání písmeno a předvídání na stejné funkce nastavit na testovací datové sady.
+V trénovací data je 16 funkce extrahovat z obrázků, ručně psanou písmeno. 26 písmena tvoří naše 26 třídy. Obrázek 6 ukazuje experiment, který bude trénování modelů klasifikace víc tříd pro písmeno rozpoznávání a předvídání na stejnou sadu na testovací datové sadě funkcí.
 
-![Písmeno rozpoznávání více třídami klasifikace experimentu](./media/interpret-model-results/6.png)
+![Písmeno rozpoznávání klasifikace víc tříd experimentu](./media/interpret-model-results/6.png)
 
-Obrázek 6. Písmeno rozpoznávání více třídami klasifikace problému experimentu
+Obrázek 6. Experiment problém klasifikace víc tříd rozpoznávání písmeno
 
-Vizualizace výsledků [Score Model] [ score-model] modulu kliknutím na výstupní port modulu [Score Model] [ score-model] modul a potom kliknete na **Vizualizovat**, obsah byste měli vidět, jak je znázorněno na obrázku 7.
+Vizualizace výsledků [určení skóre modelu] [ score-model] kliknutím na výstupní port modulu [určení skóre modelu] [ score-model] modulu a pak kliknete na **Vizualizovat**, obsah byste měli vidět, jak je znázorněno na obrázku 7.
 
-![Určení skóre modelu výsledky](./media/interpret-model-results/7.png)
+![Model výsledků skóre](./media/interpret-model-results/7.png)
 
-Na obrázku 7. Vizualizace výsledků skóre modelu v klasifikaci s více – třída
+Obrázek 7. Vizualizace výsledků skóre model klasifikace víc tříd
 
-**Výsledek vyhodnocení**
+**Interpretace výsledků**
 
-Levé 16 sloupce představují funkce hodnoty testovací sada. Sloupce s názvy jako skóre pro Magnitudu Pravděpodobnostech pro třídu "XX" jsou stejně jako sloupec skóre pro Magnitudu Pravděpodobnostech v případě, že dvě třídy. Ukazují pravděpodobnost která odpovídající položku spadá do určité třídy. Například pro první položku není 0.003571 pravděpodobnost, že se jedná "A", 0.000451 pravděpodobnost, že je "B" a tak dále. Poslední sloupec (popisky vyhodnocení) je stejný jako popisky vyhodnocení v případě, že dvě třídy. Vybere třídu s největší pravděpodobností scored jako předpokládaných třída odpovídající položky. Například pro první položku scored popisek je "F" vzhledem k tomu, že má největší pravděpodobnost jako "F" (0.916995).
+Levé 16 sloupce, které představují hodnoty funkcí sady testů. Sloupce s názvy jako skóre pravděpodobnosti pro třídu "XX" jsou stejně, jako jsou sloupce skóre pravděpodobnosti v případě dvěma třídami. Zobrazí se pravděpodobnost odpovídající položky spadající do určité třídy. Například pro první položku, je 0.003571 pravděpodobnost, že se jedná "A" 0.000451 pravděpodobnost, že se jedná "B" a tak dále. Poslední sloupec (popisky vyhodnocení) je stejný jako popisky vyhodnocení v případě dvěma třídami. Vybere třídu s největší pravděpodobností Vyhodnocená jako předpokládaná třída odpovídající položky. Pro první položku Vyhodnocená popisek je například "F" protože má největší pravděpodobnost jako "F" (0.916995).
 
 **Publikování webové služby**
 
-Můžete také získat scored popisek pro každou položku a pravděpodobnost vzniku scored popisku. Základní logika se má najít největší pravděpodobnost mezi scored pravděpodobnostech. K tomuto účelu, budete muset použít [spustit skript jazyka R] [ execute-r-script] modulu. Kód R je vidět na obrázku 8 a výsledek experimentu je vidět na obrázku 9.
+Můžete také získat skóre popisek pro každý záznam a pravděpodobnost vzniku Vyhodnocená popisek. Základní logiku se má najít největší pravděpodobnost mezi skóre pravděpodobnosti. K tomuto účelu, budete muset použít [spustit skript jazyka R] [ execute-r-script] modulu. Kód jazyka R je uveden na obrázku 8, a výsledek testu je uveden na obrázku 9.
 
-![Ukázkový kód R](./media/interpret-model-results/8.png)
+![Příklad kódu R](./media/interpret-model-results/8.png)
 
-Obrázek 8. Kód R pro extrahování popisky vyhodnocení a spojena pravděpodobnost popisků
+Obrázek 8. Kód R pro extrahování popisky vyhodnocení a přidružené pravděpodobností popisků
 
-![Výsledek experimentu](./media/interpret-model-results/9.png)
+![Výsledek testu](./media/interpret-model-results/9.png)
 
-Obrázek 9. Konečný experiment vyhodnocování písmeno rozpoznávání více třídami klasifikace problému
+Obrázek 9. Konečný experiment bodování problém klasifikace víc tříd písmeno rozpoznávání
 
-Po publikování a spuštění webové služby a zadejte některé funkce vstupní hodnoty vrácených výsledků vypadá jako obrázek 10. Toto ručně psané písmeno s jeho extrahované 16 funkce, je jako "T", s 0.9715 pravděpodobnosti předpovědět.
+Po publikování a spuštění webové služby a zadejte hodnoty vstupu funkce, vrácený výsledek vypadá jako obrázek 10. Tento ručně psanou písmeno s jeho extrahované 16 funkcí, očekává se, že bude "T", s 0.9715 pravděpodobnosti.
 
-![Interpretace modul skóre test](./media/interpret-model-results/9_1.png)
+![Interpretace skóre modulu testování](./media/interpret-model-results/9_1.png)
 
 ![Výsledek testu](./media/interpret-model-results/10.png)
 
-Obrázek 10. Webové služby výsledek více třídami klasifikace
+Obrázek 10. Webové služby výsledek klasifikace víc tříd
 
 ## <a name="regression"></a>Regrese
-Regrese problémy se liší od klasifikaci problémy. Problém klasifikace které se snažíte předpovědi diskrétních třídy, jako je například, které patří třída iris květina k. Ale jak můžete vidět v následujícím příkladu regrese problému, které se snažíte k předpovědi souvislých proměnná, jako například ceny automobilu.
+Regrese problémy se liší od klasifikace problémy. V klasifikace problému který zkoušíte předpovědět samostatné třídy, jako je například které třídu iris květinu patří do. Ale jak můžete vidět v následujícím příkladu regresní problém, který zkoušíte předpovědět spojitou proměnnou, jako je například ceny automobilu.
 
 **Příklad experimentu**
 
-Použijte předpověď cen automobilů jako příkladu pro regresní. Pokoušíte se předpovídat cenu automobilu podle jeho funkce, včetně Ujistěte se, typ paliva, typ těla zprávy a kolečka jednotky. Obrázek 11 ukazuje experimentu.
+Použijte předpovědi cen automobilů jako příkladu regrese. Pokoušíte se předpovídat cenu automobilu na základě jeho funkcí, včetně Ujistěte se, posílit typu, typ těla zprávy a kolečka jednotky. Experimentu se zobrazí v obrázek 11.
 
 ![Experiment regrese automobilů cena](./media/interpret-model-results/11.png)
 
-Obrázek 11. Experiment problém regrese automobilů cena
+Obrázek 11. Cena automobilů regresní problém experimentu
 
-Vizualizace [Score Model] [ score-model] modul, výsledkem vypadá jako obrázek 12.
+Vizualizace [Score Model] [ score-model] modul, výsledek bude vypadat jako obrázek 12.
 
-![Vyhodnocování výsledky pro problém předpověď cen automobilů](./media/interpret-model-results/12.png)
+![Výsledky vyhodnocení pro problém předpovědi cen automobilů](./media/interpret-model-results/12.png)
 
-Obrázek 12. Vyhodnocování výsledek problém předpověď cen automobilů
+Obrázek 12. Výsledek vyhodnocení pro problém předpovědi cen automobilů
 
-**Výsledek vyhodnocení**
+**Interpretace výsledků**
 
-Scored popisky je sloupec výsledků v této vyhodnocování výsledek. Čísla, která jsou předpokládaných ceny pro každý Auto.
+Scored popisků je sloupec výsledků v této hodnoticí výsledek. Čísla jsou předpokládané cena pro každé auto.
 
 **Publikování webové služby**
 
-Můžete publikovat experimentu regrese do webové služby a volání pro předpověď cen automobilů stejným způsobem jako v případě použití two-class klasifikace.
+Můžete publikovat regrese experimentu do webové služby a volání pro předpověď cen automobilů stejným způsobem jako v případě použití klasifikace dvěma třídami.
 
-![Vyhodnocování experimentu pro problém regrese automobilů cena](./media/interpret-model-results/13.png)
+![Vyhodnocování experimentu pro regresní problém automobilů cena](./media/interpret-model-results/13.png)
 
-Obrázek 13. Vyhodnocování experimentu problémem regrese automobilů cena
+Obrázek 13. Vyhodnocování experiment kvůli problému regrese automobilů cena
 
-Spuštění webové služby, bude jako výsledek vypadá jako obrázek 14. Předpokládaných ceny pro tento car je $15,085.52.
+Spuštění webové služby, vrácený výsledek vypadá jako obrázek 14. Předpokládané cena za tento automobilu je 15,085.52 $.
 
-![Interpretace vyhodnocování modulu testování](./media/interpret-model-results/13_1.png)
+![Testovací modul pro stanovení skóre interpretace](./media/interpret-model-results/13_1.png)
 
-![Vyhodnocování výsledky modulu](./media/interpret-model-results/14.png)
+![Výsledky vyhodnocení modulu](./media/interpret-model-results/14.png)
 
-Obrázek 14. Webové služby výsledek problémem regrese automobilů cena
+Obrázek 14. Webové služby výsledek kvůli problému regrese automobilů cena
 
 ## <a name="clustering"></a>Clustering
 **Příklad experimentu**
 
-K vytvoření clustering experiment znovu použijeme Iris datové sady. Zde můžete filtrovat se popisky třídy v sadě dat tak, aby pouze funkce a lze použít pro clustering. V této iris případ použití, zadejte počet clusterů, které mají být dva během procesu školení, což znamená, že by clusteru květy do dvou tříd. Experiment vidíte na obrázku 15.
+K vytvoření clusterů experiment znovu použijeme datové sady Iris. Tady můžete filtrovat si popisky třídy v sadě dat tak, aby pouze funkce a je možné pro clustering. V tomto iris případ použití, zadejte počet clusterů, které mají být dvě během procesu trénování, což znamená, že by cluster květin na dvě třídy. Experimentu se zobrazí v obrázek 15.
 
-![Experiment Iris clustering problém](./media/interpret-model-results/15.png)
+![Experimentujte clusteringu problém Iris](./media/interpret-model-results/15.png)
 
-Obrázek 15. Experiment Iris clustering problém
+Obrázek 15. Experimentujte clusteringu problém Iris
 
-Clustering se liší od klasifikace, v tom, že v datové sadě školení nemá základů pravdivosti popisky samostatně. Clustering skupiny instancí školení datové sady do různých clusterů. Během procesu školení modelu popisků položky podle učení rozdíly mezi jejich funkce. Potom pro cvičný model slouží k další klasifikaci budoucí položky. Existují dvě části výsledků, které jsme zajímají v rámci clustering problém. První část je označování trénovací datové sady a druhý je klasifikace novou sadu dat pro cvičný model.
+Clustering se liší od klasifikace, v tom, že trénovací datové sady nemá popisky základu pravdy samostatně. Clustering skupiny instancí trénovací datové sady do různých clusterů. Během procesu trénování modelu popisků položky podle studijního rozdíly mezi jejich funkce. Poté je možné dále klasifikovat budoucí položky trénovaného modelu. Existují dvě části, které nás zajímají v rámci clusteru problém výsledku. První část je označování trénovací datové sady a druhý je klasifikace nové datové sady s trénovaného modelu.
 
-Kliknutím na levý výstupní port modulu můžete vizualizovat první část výsledku [Train Model clusteringu] [ train-clustering-model] a pak levým na **vizualizovat**. Tato vizualizace se zobrazí v obrázku 16.
+První část výsledku lze vizualizovat kliknutím na levý výstupní port modulu [Train Model clusteringu] [ train-clustering-model] a pak levým na **vizualizovat**. Vizualizace se zobrazí v obrázek 16.
 
 ![Clustering výsledek](./media/interpret-model-results/16.png)
 
-Obrázek 16. Vizualizace clustering výsledek trénovací datové sady
+Obrázek 16. Vizualizujte clustering výsledek pro trénovací datové sady
 
-Výsledek druhou část clustering nové položky s modelem vyškolení clustering vidíte na obrázku 17.
+Výsledek druhé části clustering nové položky s trénovaný model clusteringu, se zobrazí v obrázek 17.
 
-![Vizualizace výsledků clustering](./media/interpret-model-results/17.png)
+![Vizualizujte clustering výsledek](./media/interpret-model-results/17.png)
 
-Obrázek 17. Vizualizace clustering výsledek pro nové sady dat
+Obrázek 17. Vizualizujte clustering výsledek pro nové datové sady
 
-**Výsledek vyhodnocení**
+**Interpretace výsledků**
 
-I když výsledky ze dvou částí kmen z různých experimentu fázích, vypadají stejně a vyhodnocovány stejným způsobem. První čtyři sloupce jsou funkce. Poslední sloupec přiřazení, je výsledkem předpovědi. Položky přiřazené stejné číslo jsou předpovědět být ve stejném clusteru, který je že sdílejí podobnosti nějakým způsobem (Tento experiment používá výchozí Euclidean vzdálenost metriku). Protože jste určili počet clusterů, které mají být 2, položky v přiřazení jsou označeny 0 nebo 1.
+I když výsledky ze dvou částí vyplývají z experimentu různých fází, vypadají stejně a se stejným způsobem interpretují. První čtyři sloupce jsou funkce. Poslední sloupec, přiřazení, je výsledkem předpovědi. Očekává se, že položky přiřazené stejné číslo být ve stejném clusteru, tedy že sdílejí podobnosti nějakým způsobem (Tento experiment používá výchozí Euclidean vzdálenost metriku). Protože jste zadali počet clusterů, které mají být 2, položky v přiřazeních jsou označeny jako 0 nebo 1.
 
 **Publikování webové služby**
 
-Můžete publikovat clustering experimentu do webové služby a volání pro clustering předpovědi stejným způsobem jako klasifikace two-class případy použití.
+Můžete publikovat clusteringu experimentu do webové služby a volání pro clustering předpovědí na stejném principu klasifikace dvěma třídami případu použití.
 
-![Vyhodnocování experimentu pro clustering problém iris](./media/interpret-model-results/18.png)
+![Vyhodnocování experiment clusteringu problému iris](./media/interpret-model-results/18.png)
 
-Obrázek 18. Vyhodnocování experimentu problémem iris clustering
+Obrázek 18. Vyhodnocování experiment kvůli problému clusteringu iris
 
-Po spuštění webové služby na vrácený výsledek vypadá jako obrázek 19. Tato květina je předpovědět v clusteru 0.
+Po spuštění webové služby vrácený výsledek vypadá jako obrázek 19. Tuto datovou očekává se, že v clusteru 0.
 
-![Test interpretovat vyhodnocování modulu](./media/interpret-model-results/18_1.png)
+![Interpretace testovací modul pro stanovení skóre](./media/interpret-model-results/18_1.png)
 
-![Vyhodnocování výsledek modulu](./media/interpret-model-results/19.png)
+![Výsledek vyhodnocení modulu](./media/interpret-model-results/19.png)
 
-Obrázek 19. Webové služby výsledek iris two-class klasifikace
+Obrázek 19. Webové služby výsledek klasifikace iris dvěma třídami
 
-## <a name="recommender-system"></a>Doporučené systému
+## <a name="recommender-system"></a>Doporučení system
 **Příklad experimentu**
 
-Pro systémy doporučené, můžete problém doporučení restaurace jako příklad: Doporučujete restaurace pro zákazníky na základě jejich historie hodnocení. Vstupní data se skládá ze tří částí:
+Pro systémy doporučení, můžete problém restaurace doporučení slouží jako příklad: Doporučujete restaurace pro zákazníky na základě jejich historie hodnocení. Vstupní data se skládá ze tří částí:
 
 * Restaurace hodnocení zákazníků
-* Data funkce zákazníka
+* Zákaznická data funkce
 * Data funkce restaurace
 
-Existuje několik věcí, můžeme dělat s [Train Matchbox doporučené] [ train-matchbox-recommender] modulu v Azure Machine Learning:
+Můžeme se několika způsoby [trénování Matchbox doporučené] [ train-matchbox-recommender] modulu ve službě Azure Machine Learning:
 
-* Předpověď hodnocení pro daného uživatele a položek
-* Doporučeným položky pro daného uživatele
-* Vyhledá uživatele týkající se daného uživatele
-* Hledání položek související s danou položku
+* Předpověď hodnocení pro daného uživatele a položky
+* Doporučte daného uživatele
+* Najít uživatele týkající se daného uživatele
+* Najít položky související s danou položku
 
-Můžete zvolit, co chcete udělat tak, že výběr ze čtyř možností v **doporučené předpovědi druh** nabídky. Zde si můžete projít všechny čtyři scénáře.
+Můžete také, co chcete udělat tak, že výběr ze čtyř možností v **doporučené predikcí druh** nabídky. Tady si můžete projít všechny čtyři scénáře.
 
-![Doporučené matchbox](./media/interpret-model-results/19_1.png)
+![Matchbox doporučení](./media/interpret-model-results/19_1.png)
 
-Typické experimentu Azure Machine Learning pro systém doporučené vypadá jako obrázek 20. Informace o tom, jak používat tyto doporučené moduly systému najdete v tématu [Train matchbox doporučené] [ train-matchbox-recommender] a [skóre matchbox doporučené] [ score-matchbox-recommender].
+Typické experiment Azure Machine Learning pro systém doporučení vypadá jako obrázek 20. Informace o tom, jak používat tyto doporučené moduly systému najdete v tématu [trénování matchbox doporučené] [ train-matchbox-recommender] a [skóre matchbox doporučené] [ score-matchbox-recommender].
 
-![Doporučené systému experimentu](./media/interpret-model-results/20.png)
+![Doporučení system experimentu](./media/interpret-model-results/20.png)
 
-Obrázek 20. Doporučené systému experimentu
+Obrázek 20. Doporučení system experimentu
 
-**Výsledek vyhodnocení**
+**Interpretace výsledků**
 
-**Předpověď hodnocení pro daného uživatele a položek**
+**Předpověď hodnocení pro daného uživatele a položky**
 
-Výběrem **hodnocení předpovědi** pod **doporučené předpovědi druh**, žádáme doporučené systému k předvídání hodnocení pro daného uživatele a položku. Vizualizace z [skóre Matchbox doporučené] [ score-matchbox-recommender] výstup vypadá jako obrázek 21.
+Tak, že vyberete **hodnocení předpovědi** pod **doporučení předpovědi druh**, vás žádáme, doporučení systému aby předpovídal hodnocení pro daného uživatele a položky. Vizualizaci [skóre Matchbox doporučené] [ score-matchbox-recommender] výstup by měl vypadat podobně jako obrázek 21.
 
-![Stanovení skóre výsledek doporučené systému – hodnocení předpovědi](./media/interpret-model-results/21.png)
+![Hodnotit výsledek doporučení systému – hodnocení predikcí](./media/interpret-model-results/21.png)
 
-Obrázek 21. Vizualizace výsledků skóre doporučené systému – hodnocení předpovědi
+Obrázek 21. Vizualizace výsledků skóre doporučení systému – hodnocení predikcí
 
-První dva sloupce jsou páry položka uživatele poskytované vstupní data. Třetí sloupec je předpokládaných hodnocení uživatele určité položky. Například v prvním řádku, zákazník U1048 je předpovědět na rychlost restaurace 135026 jako 2.
+První dva sloupce jsou páry položka uživatele poskytované vstupní data. Třetí sloupec je predikované hodnocení uživatele k určité položce. Například v prvním řádku zákazníka U1048 očekává se míra restaurace 135026 jako 2.
 
-**Doporučeným položky pro daného uživatele**
+**Doporučte daného uživatele**
 
-Výběrem **položky doporučení** pod **doporučené předpovědi druh**, nemůže ověřit systému doporučené doporučeným položky pro daného uživatele. Poslední parametr vybrat v tomto scénáři je *doporučená výběr položek*. Možnost **z hodnocení položky (pro vyhodnocení modelu)** je určen pro vyhodnocení modelu během procesu školení. Pro tuto fázi předpovědi vybereme možnost **z všechny položky**. Vizualizace z [skóre Matchbox doporučené] [ score-matchbox-recommender] výstup vypadá jako obrázek 22.
+Výběrem **doporučení položky** pod **předpovědi druh doporučení**, vyžadujete systému doporučení k doporučení položek pro daného uživatele. Poslední parametr v tomto scénáři zvolit *doporučuje výběr položek*. Možnost **z hodnocení položky (pro vyhodnocení modelu)** je primárně určen pro vyhodnocení modelu během procesu trénování. Pro tuto fázi předpovědi zvolíme **ze všech položek**. Vizualizaci [skóre Matchbox doporučené] [ score-matchbox-recommender] výstup by měl vypadat podobně jako obrázek 22.
 
-![Výsledek skóre doporučené systému – položka doporučení](./media/interpret-model-results/22.png)
+![Výsledek skóre doporučení systému – položka doporučení](./media/interpret-model-results/22.png)
 
-Obrázek 22. Vizualizace výsledků skóre doporučené systému – položka doporučení
+Obrázek 22. Vizualizace výsledků skóre doporučení systému – položka doporučení
 
-První šesti sloupců představuje daného uživatele ID doporučit položky, jako poskytované vstupní data. Pět sloupce představují doporučené uživateli v sestupném pořadí podle relevance položky. Například v prvním řádku, je většina doporučené restaurace pro zákazníka U1048 134986, za nímž následuje 135018, 134975, 135021 a 132862.
+Prvních šest sloupců představuje daného uživatele ID k doporučení položek, jak je uvedeno ve vstupní data. Pět sloupce, které představují položky doporučuje uživatelům v sestupném pořadí podle relevance. Například v prvním řádku, je doporučené restaurace zákazníka U1048 134986, za nímž následuje 135018, 134975, 135021 a 132862.
 
-**Vyhledá uživatele týkající se daného uživatele**
+**Najít uživatele týkající se daného uživatele**
 
-Výběrem **související uživatelé** pod **doporučené předpovědi druh**, nemůže ověřit systému doporučené najít související uživatelům daného uživatele. Související uživatelé jsou uživatelé, kteří mají podobné předvolby. Poslední parametr vybrat v tomto scénáři je *související výběr uživatele*. Možnost **z uživatelů, hodnocení položky (pro vyhodnocení modelu)** je určen pro vyhodnocení modelu během procesu školení. Zvolte **ze všech uživatelů** pro tuto fázi předpovědi. Vizualizace z [skóre Matchbox doporučené] [ score-matchbox-recommender] výstup vypadá jako obrázek 23.
+Výběrem **související uživatelé** pod **druh předpovědi doporučení**, vyžadujete doporučení systému a vyhledejte související uživatele pro daného uživatele. Související se zobrazí uživatelů, kteří mají podobné předvolby. Poslední parametr v tomto scénáři zvolit *související výběru uživatelem*. Možnost **od uživatele, že hodnocení položky (pro vyhodnocení modelu)** je primárně určen pro vyhodnocení modelu během procesu trénování. Zvolte **ze všech uživatelů** pro tuto fázi předpovědi. Vizualizaci [skóre Matchbox doporučené] [ score-matchbox-recommender] výstup by měl vypadat podobně jako obrázek 23.
 
-![Výsledek skóre doporučené systému – související uživatelé](./media/interpret-model-results/23.png)
+![Výsledek skóre doporučení systému – související uživatelé](./media/interpret-model-results/23.png)
 
-Obrázek 23. Vizualizace výsledků skóre doporučené systému – související uživatelé
+Obrázek 23. Vizualizace výsledků skóre doporučení systému – související uživatelé
 
-První šesti sloupců zobrazuje že ID potřeby najít související uživatele, protože poskytované vstupních dat daného uživatele. Pět sloupců ukládat předpokládaných související uživatelé uživatele v sestupném pořadí podle závažnosti. Například v prvním řádku, je nejdůležitější zákazník pro zákazníka U1048 nástroje U1051, za nímž následuje U1066, U1044, U1017 a U1072.
+Prvních šest sloupců zobrazuje že ID potřebné k vyhledání souvisejících uživatelů podle vstupních dat daného uživatele. Pět sloupců ukládání předpokládané související uživatelé uživatele v sestupném pořadí podle relevance. Nejdůležitější zákazníka pro zákazníka U1048 je na prvním řádku nástroje U1051, za nímž následuje U1066, U1044, U1017 a U1072.
 
-**Hledání položek související s danou položku**
+**Najít položky související s danou položku**
 
-Výběrem **související položky** pod **doporučené předpovědi druh**, žádáme doporučené systém k nalezení souvisejících položek pro danou položku. Související položky se nejpravděpodobněji být líbilo stejným uživatelem položky. Poslední parametr vybrat v tomto scénáři je *související výběr položek*. Možnost **z hodnocení položky (pro vyhodnocení modelu)** je určen pro vyhodnocení modelu během procesu školení. Vybereme možnost **z všechny položky** pro tuto fázi předpovědi. Vizualizace z [skóre Matchbox doporučené] [ score-matchbox-recommender] výstup vypadá jako obrázek 24.
+Výběrem **související položky** pod **druh predikcí doporučené**, vás žádáme, doporučení systému najít související položky na danou položku. Související položky se nejpravděpodobněji líbilo stejným uživatelem položky. Poslední parametr v tomto scénáři zvolit *související výběr položek*. Možnost **z hodnocení položky (pro vyhodnocení modelu)** je primárně určen pro vyhodnocení modelu během procesu trénování. Zvolili jsme **ze všech položek** pro tuto fázi předpovědi. Vizualizaci [skóre Matchbox doporučené] [ score-matchbox-recommender] výstup by měl vypadat podobně jako obrázek 24.
 
-![Výsledek skóre doporučené systému – související položky](./media/interpret-model-results/24.png)
+![Výsledek skóre doporučení systému – související položky](./media/interpret-model-results/24.png)
 
-Obrázek 24. Vizualizace výsledků skóre doporučené systému – související položky
+Obrázek 24. Vizualizace výsledků skóre doporučení systému, související položky
 
-První šesti sloupců představuje daná položka ID, které jsou potřeba k vyhledání související položky, protože poskytuje vstupní data. Pět sloupců ukládat předpokládaných související položky položky v sestupném pořadí z hlediska relevance. Například v prvním řádku, je nejdůležitější položku pro položku 135026 135074, za nímž následuje 135035, 132875, 135055 a 134992.
+Prvních šest sloupců představuje daná položka ID, které jsou potřebné k vyhledání souvisejících položek podle vstupní data. Pět sloupců ukládání předpokládané související položky položky v sestupném pořadí z hlediska relevance. Například v prvním řádku, je relevantní položky pro položky 135026 135074, za nímž následuje 135035, 132875, 135055 a 134992.
 
 **Publikování webové služby**
 
-Proces publikování těchto experimenty jako webové služby, chcete-li získat předpovědi je podobné pro každý ze čtyř scénářů. Zde jsme trvat druhý scénář (doporučujeme položky pro daného uživatele) jako příklad. Můžete provést stejný postup s další tři.
+Proces publikování těchto pokusů jako webové služby, chcete-li získat predikcí se podobá pro všechny čtyři scénáře. Tady jsme trvat druhý scénář (doporučujeme položky pro daného uživatele) jako příklad. Můžete postupujte stejným způsobem s další tři.
 
-Ukládání vyškolení doporučené systému jako modulu trained model a filtrování vstupní data pro sloupec ID jednoho uživatele, jak si vyžádal, můžete spojit experimentu jako obrázek 25 a publikujete ji jako webovou službu.
+Uložení natrénovaného doporučení systému jako trénovaného modelu a filtrování vstupních dat na sloupec ID jednoho uživatele, jak si vyžádal, můžete připojení experimentu jako obrázek 25 a publikovat jako webovou službu.
 
-![Vyhodnocování experimentu restaurace doporučení problému](./media/interpret-model-results/25.png)
+![Vyhodnocování experiment problému restaurace doporučení](./media/interpret-model-results/25.png)
 
-Obrázek 25. Vyhodnocování experimentu restaurace doporučení problému
+Obrázek 25. Vyhodnocování experiment problému restaurace doporučení
 
-Spuštění webové služby, 26 obrázek vypadá na vrácený výsledek. Pět doporučené restaurace pro uživatele U1048 jsou 134986, 135018, 134975, 135021 a 132862.
+Spuštění webové služby, vrácený výsledek vypadá jako obrázek 26. Pět doporučené restaurace pro uživatele U1048 jsou 134986, 135018, 134975, 135021 a 132862.
 
 ![Ukázka doporučené systémové služby](./media/interpret-model-results/25_1.png)
 

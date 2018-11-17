@@ -5,23 +5,23 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 11/15/2018
 ms.author: danlep
-ms.openlocfilehash: 4492e05339c72c371eb2c935d0397b469440c4f6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: b2b6da1739aa97f69f5744905564f638309a587f
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632688"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854318"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Spuštění několika kroky sestavení, testování a opravu úkoly v úlohách služby ACR
 
-Vícekrokové úlohy rozšířit možnosti sestavení a nabízená jedné image ACR úkolů s více kroky, založené na více container pracovních postupů. Pomocí vícekrokových úkolů sestavíte a odešlete několik imagí v řadě nebo paralelně a spuštění příkazů v rámci jednoho úkolu spuštění těchto imagí. Každý krok definuje image kontejneru sestavení nebo vynucená operace a můžete také definujte spuštění kontejneru. Každý krok v rámci vícekrokové úlohy používá jako své prostředí pro spouštění kontejneru.
+Vícekrokové úlohy rozšířit možnosti sestavení a nabízená jedné image ACR úkolů s více kroky, založené na více container pracovních postupů. Pomocí vícekrokových úkolů sestavíte a odešlete několik imagí v řadě nebo paralelně. Pak spusťte tyto Image jako příkazy v rámci jednoho úkolu spuštění. Každý krok definuje image kontejneru sestavení nebo vynucená operace a můžete také definujte spuštění kontejneru. Každý krok v rámci vícekrokové úlohy používá jako své prostředí pro spouštění kontejneru.
 
 > [!IMPORTANT]
 > Pokud jste už dříve vytvořili úlohy ve verzi Preview pomocí příkazu `az acr build-task`, tyto úlohy bude potřeba vytvořit znovu pomocí příkazu [az acr task][az-acr-task].
 
-Můžete například spustit úlohu s kroky, které automatizují následující:
+Můžete například spustit úlohu s kroky, které automatizují podle následujícího postupu:
 
 1. Sestavíte image webové aplikace
 1. Spuštění kontejneru webové aplikace
@@ -41,7 +41,7 @@ Vícekrokové úlohy umožňují scénáře, jako jsou následující:
 
 * Příznak, sestavení a vložit jednu nebo víc imagí kontejnerů v řadě nebo paralelně.
 * Spuštění a zaznamenejte výsledky pokrytí testu a kódu jednotek.
-* Spuštění a zaznamenejte funkčních testů. Úlohy služby ACR podporuje spuštění více kontejnerů, provádění se série požadavků mezi nimi.
+* Spuštění a zaznamenejte funkčních testů. Úlohy služby ACR podporuje spuštění více než jednoho kontejneru, provádění se série požadavků mezi nimi.
 * Proveďte spuštění založené na úlohách, včetně předzálohovacího nebo pozálohovacího kroků sestavení image kontejneru.
 * Nasadíte jeden nebo více kontejnerů s modulem vaše oblíbené nasazení na cílovém prostředí.
 
@@ -176,5 +176,5 @@ Referenční dokumentace úlohy několika kroky a příklady v tomto článku na
 
 <!-- LINKS - Internal -->
 [az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-run]: /cli/azure/acr/run#az-acr-run
-[az-acr-task]: /cli/azure/acr#az-acr-task
+[az-acr-run]: /cli/azure/acr#az-acr-run
+[az-acr-task]: /cli/azure/acr/task

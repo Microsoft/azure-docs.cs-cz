@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 07/27/201
 ms.author: v-jamebr
-ms.openlocfilehash: c590c9d1ccbbb84a76ba09021a97464ec85c5784
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 2f84550c83c646b44f4a59c3ae506df7c18d1555
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506266"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852975"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Nastavení a konfigurace reverzního proxy serveru v Azure Service Fabric
 Reverzní proxy server je volitelnou službu Azure Service Fabric, která pomáhá mikroslužeb spouštěných v clusteru Service Fabric, zjistit a komunikovat s ostatními službami, které mají koncových bodů http. Další informace najdete v tématu [reverzní proxy server v Azure Service Fabric](service-fabric-reverseproxy.md). Tento článek ukazuje, jak nastavit a konfigurace reverzního proxy serveru v clusteru. 
@@ -231,7 +231,7 @@ Následující kroky ukazují, nastavení používat k povolení reverzního pro
 
    Další informace o konfiguraci a správě certifikátů pro samostatný cluster, stejně jako podrobnější informace o konfiguraci certifikátů používaných pro zabezpečenou reverzního proxy serveru najdete v tématu [X509 zabezpečení na základě certifikátů](./service-fabric-windows-cluster-x509-security.md).
 
-Poté, co jste upravili soubor ClusterConfig.json povolit reverzní proxy server, postupujte podle pokynů v [upgradovat konfiguraci clusteru](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration) nasdílejte změny do vašeho clusteru.
+Poté, co jste upravili soubor ClusterConfig.json povolit reverzní proxy server, postupujte podle pokynů v [upgradovat konfiguraci clusteru](service-fabric-cluster-config-upgrade-windows-server.md) nasdílejte změny do vašeho clusteru.
 
 
 ## <a name="expose-reverse-proxy-on-a-public-port-through-azure-load-balancer"></a>Vystavit na veřejném portu prostřednictvím Azure Load Balancer reverzního proxy serveru
@@ -332,7 +332,7 @@ Například můžete nastavit hodnotu **DefaultHttpRequestTimeout** nastavit ča
    }
    ``` 
 
-Další informace o aktualizaci nastavení prostředků infrastruktury pro clustery Azure najdete v tématu [přizpůsobit nastavení clusteru pomocí šablon Resource Manageru](./service-fabric-cluster-fabric-settings.md#customize-cluster-settings-using-resource-manager-templates). Samostatné clustery, naleznete v tématu [přizpůsobit nastavení clusteru pro samostatné clustery](./service-fabric-cluster-fabric-settings.md#customize-cluster-settings-for-standalone-clusters). 
+Další informace o aktualizaci nastavení prostředků infrastruktury pro clustery Azure najdete v tématu [přizpůsobit nastavení clusteru pomocí šablon Resource Manageru](service-fabric-cluster-config-upgrade-azure.md). Samostatné clustery, naleznete v tématu [přizpůsobit nastavení clusteru pro samostatné clustery](service-fabric-cluster-config-upgrade-windows-server.md). 
 
 Několik nastavení prostředků infrastruktury slouží k navázání zabezpečené komunikace mezi reverzního proxy serveru a služby. Podrobné informace o těchto nastavení najdete v tématu [připojení k službě zabezpečené pomocí reverzního proxy serveru](service-fabric-reverseproxy-configure-secure-communication.md).
 

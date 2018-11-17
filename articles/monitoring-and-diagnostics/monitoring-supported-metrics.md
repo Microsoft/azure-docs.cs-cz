@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 5f6140b582b2412a164593bd2aa99bfbde5fb688
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 0bb79c9d85e56308d9872baeb10868be8eaf7a5a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50964182"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824910"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Podporované metriky ve službě Azure Monitor
 Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, včetně grafů na portálu, přístup přes rozhraní REST API nebo dotazování je pomocí Powershellu nebo rozhraní příkazového řádku. Níže je úplný seznam všech metrik aktuálně k dispozici pro monitorování Azure metriky kanálu. Jiné metriky, může být k dispozici na portálu nebo pomocí starší verze rozhraní API. Tento seznam níže obsahuje pouze metriky, které jsou k dispozici prostřednictvím konsolidované kanálu metrik Azure monitoru. K vyhledání a přístup k těmto metrikám prosím použijte [2018-01-01 verze api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -819,7 +819,7 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |IsEngineAnsweringQuery|Zachování|Počet|Průměr|Kontrola správnosti označuje respondes clusteru do dotazů|Žádné dimenze|
 |IngestCommandOriginalSizeInMb|Ingestování svazek (v MB)|Počet|Celkem|Celkový objem přijatých dat do clusteru (v MB)|Žádné dimenze|
 |EventAgeSeconds|Latence příjmu dat (v sekundách)|Sekundy|Průměr|Ingestování čas ze zdroje (například je zpráva EventHub) do clusteru během několika sekund|Žádné dimenze|
-|EventRecievedFromEventHub|Události byly zpracovány (pro službu Event Hubs)|Počet|Celkem|Počet události byly zpracovány v clusteru při ingestování z centra událostí|Žádné dimenze|
+|EventReceivedFromEventHub|Události byly zpracovány (pro službu Event Hubs)|Počet|Celkem|Počet události byly zpracovány v clusteru při ingestování z centra událostí|Žádné dimenze|
 |IngestionResult|Příjem výsledků|Počet|Počet|Počet operací příjmu|IngestionResultDetails|
 |EngineCPU|Procesor|Procento|Průměr|Úroveň využití procesoru|Žádné dimenze|
 
@@ -1570,6 +1570,6 @@ Platforma Azure Monitor poskytuje několik způsobů, jak pracovat s metriky, v�
 |MemoryPercentage|Procento paměti|Procento|Průměr|Procento paměti|Instance|
 
 ## <a name="next-steps"></a>Další postup
-* [Přečtěte si informace o metriky ve službě Azure Monitor](../monitoring/monitoring-data-collection.md)
+* [Přečtěte si informace o metriky ve službě Azure Monitor](../azure-monitor/platform/data-collection.md)
 * [Vytváření upozornění na metriky](monitoring-overview-alerts.md)
 * [Export metrik úložiště, Centrum událostí a Log Analytics](monitoring-overview-of-diagnostic-logs.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: ff9f3186602b9047e53fb78edbf52c2c0d9ee574
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 796ed1cb0fde6b29a931099336fd91e2e931fc29
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423585"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820490"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Kurz: Integrace Azure Active Directory se službou Sedgwick CMS
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Sedgwick CMS, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Sedgwick CMS jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Pokud chcete nakonfigurovat integraci Sedgwick CMS do služby Azure AD, budete m
 
 **Chcete-li přidat Sedgwick CMS z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -134,7 +134,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/sedgwickcms-tutorial/tutorial_general_400.png)
 
-1. Ke konfiguraci jednotného přihlašování na **Sedgwick CMS** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Sedgwick CMS](https://www.sedgwick.com/contact/Pages/contactform.aspx). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **Sedgwick CMS** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Sedgwick CMS](https://www.sedgwick.com/help). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -173,7 +173,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
   
 ### <a name="create-a-sedgwick-cms-test-user"></a>Vytvoření zkušebního uživatele Sedgwick CMS
 
-V této části vytvořte uživatele Britta Simon v Sedgwick CMS. Práce s [tým podpory Sedgwick CMS](https://www.sedgwick.com/contact/Pages/contactform.aspx) přidat uživatele na platformě Sedgwick CMS. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.  
+V této části vytvořte uživatele Britta Simon v Sedgwick CMS. Práce s [tým podpory Sedgwick CMS](https://www.sedgwick.com/help) přidat uživatele na platformě Sedgwick CMS. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -212,7 +212,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 Po kliknutí na dlaždici Sedgwick CMS na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci Sedgwick CMS.
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

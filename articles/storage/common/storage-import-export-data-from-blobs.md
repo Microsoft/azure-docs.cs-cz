@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 60a92e35f1408d944e8091be4945c53abe3791d1
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: faf8852df8b50c43affe32ede0f1e96d0bb80d3d
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50754048"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821238"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých objemů dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export. Služba vyžaduje, abyste zasílejte prázdné disky do datacentra Azure. Službu exportuje data z vašeho účtu úložiště do jednotky a potom odešle zpět jednotky.
@@ -55,7 +55,7 @@ Proveďte následující kroky k vytvoření úlohy exportu na webu Azure Portal
     - Vyberte předplatné.
     - Zadejte nebo vyberte skupinu prostředků.
 
-        ![Základy](./media/storage-import-export-data-from-blobs/export-from-blob3.png) 
+        ![Základní informace](./media/storage-import-export-data-from-blobs/export-from-blob3.png) 
     
 3. V **podrobnosti úlohy**:
 
@@ -142,11 +142,11 @@ To *volitelné* krok pomůže Určuje požadovaný počet jednotek nezbytný k d
     |Parametr příkazového řádku|Popis|  
     |--------------------------|-----------------|  
     |**/logdir:**|Volitelné. Adresář protokolu. Souborů podrobného protokolování se zapisují do tohoto adresáře. Pokud není zadán, aktuální adresář se používá jako adresář protokolu.|  
-    |**/sn:**|Povinná hodnota. Název účtu úložiště pro úlohu exportu.|  
+    |**/sn:**|Povinné Název účtu úložiště pro úlohu exportu.|  
     |**/Sk:**|Požadováno, pouze pokud není zadán sdíleného přístupového podpisu kontejneru. Klíč účtu pro účet úložiště pro úlohu exportu.|  
     |**/csas:**|Požadováno, pouze pokud není zadaný klíč účtu úložiště. Sdíleného přístupového podpisu kontejneru pro výpis objektů BLOB nelze exportovat do úlohy exportu.|  
-    |**/ ExportBlobListFile:**|Povinná hodnota. Cesta k souboru XML soubor obsahující seznam cesty k objektům blob nebo objekt blob předpony cesty pro objekty BLOB nelze exportovat. Formát souboru používaný v `BlobListBlobPath` prvek [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace rozhraní REST API služby Import/Export.|  
-    |**/ DriveSize:**|Povinná hodnota. Velikost disků pro úlohu exportu *třeba*, 500 GB, 1,5 TB.|  
+    |**/ ExportBlobListFile:**|Povinné Cesta k souboru XML soubor obsahující seznam cesty k objektům blob nebo objekt blob předpony cesty pro objekty BLOB nelze exportovat. Formát souboru používaný v `BlobListBlobPath` prvek [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace rozhraní REST API služby Import/Export.|  
+    |**/ DriveSize:**|Povinné Velikost disků pro úlohu exportu *třeba*, 500 GB, 1,5 TB.|  
 
     Najdete v článku [příklad příkazu PreviewExport](#example-of-previewexport-command).
  

@@ -4,7 +4,8 @@ description: Nové funkce, které jsou k dispozici v nástroji Azure Machine Lea
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: ddc716ed-2615-4806-bf27-6c9a5662a7f2
@@ -15,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2018
-ms.openlocfilehash: 2f990ce30b66392e8a649e4e88b21457d9fe223b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 894aa55f2101c728fb39bbe6d84875dec9843ab9
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212654"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823057"
 ---
 # <a name="whats-new-in-azure-machine-learning-studio"></a>Co je nového v nástroji Azure Machine Learning Studio
 
-## <a name="october-2018"></a>. Října 2018
+## <a name="october-2018"></a>Říjen 2018
 
 Modul jazyka R v [spustit skript jazyka R](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script) modul přidal nové verze R modulu runtime--Microsoft R Open (MRO) 3.4.4. MRO 3.4.4 je založená na open-source systému R CRAN 3.4.4 a proto je kompatibilní s balíčky, které funguje s touto verzí jazyka R.  Další informace o podporované balíčky R v článku "[balíčky R podporované službou Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning#bkmk_List)".
 

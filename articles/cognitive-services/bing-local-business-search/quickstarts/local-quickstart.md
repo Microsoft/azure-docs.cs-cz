@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: f2545c7093d6ed9b4183cfd27bdfddcc1f79a75d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 99a9ab2ae1ed102459d2e13f060eebd08bb0ec75
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959184"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853570"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Rychlý start: Odeslání dotazu do API Bingu pro místní obchodní vyhledávání vC#
 
@@ -38,7 +38,7 @@ Následující kód vytvoří `WebRequest`, nastaví hlavičku klíčů přístu
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
-    const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search";   
+    const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/search";   
 
     const string searchTerm = "restaurant in Bellevue";
     // Construct the URI of the search request
@@ -78,7 +78,7 @@ namespace localSearch
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "enter key here";
 
-        const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search";   
+        const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/search";   
 
         const string searchTerm = "restaurant in Bellevue";
 
@@ -114,7 +114,7 @@ namespace localSearch
         {
             // Construct the URI of the search request
             var uriQuery = uriBase + "?q=" + Uri.EscapeDataString(searchQuery) + 
-                                "&appid=" + accessKey + "&traffictype=Internal_monitor&market=en-us";
+                                "&appid=" + accessKey + "&market=en-us";
 
             // Perform the Web request and get the response
             WebRequest request = HttpWebRequest.Create(uriQuery);

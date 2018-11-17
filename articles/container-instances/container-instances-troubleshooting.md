@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41e3f38817abbdd0cab9ab2c72d39cb6f3f69531
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 062308622e3170a4eb8f75a96300f04f683a90e7
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978174"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820354"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Řešení běžných potíží ve službě Azure Container Instances
 
@@ -24,13 +24,13 @@ Tento článek ukazuje, jak řešení běžných potíží pro řízení a nasaz
 
 Při definování vašeho kontejneru specifikace, vyžadují některé parametry dodržování omezení pojmenování. Níže je tabulka s konkrétní požadavky pro kontejner vlastnosti skupiny. Další informace o vytváření názvů Azure najdete v tématu [zásady vytváření názvů] [ azure-name-restrictions] v Azure Architecture Center.
 
-| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný model | Příklad: |
+| Rozsah | Délka | Velikost písmen | Platné znaky | Navrhovaný model | Příklad |
 | --- | --- | --- | --- | --- | --- | --- |
 | Název skupiny kontejnerů | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Název kontejneru | 1-64 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Porty kontejneru | Mezi 1 a 65535. |Integer |Celé číslo mezi 1 a 65535. |`<port-number>` |`443` |
+| Porty kontejneru | Mezi 1 a 65535. |Celočíselná hodnota |Celé číslo mezi 1 a 65535. |`<port-number>` |`443` |
 | Popisek názvu DNS | 5 63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a spojovníky kdekoli s výjimkou první ani poslední znak |`<name>` |`frontend-site1` |
-| Proměnná prostředí | 1–63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a kdekoli s výjimkou první ani poslední znak podtržítka (_) |`<name>` |`MY_VARIABLE` |
+| Proměnná prostředí | 1-63 |Malá a velká písmena se nerozlišují. |Alfanumerické znaky a kdekoli s výjimkou první ani poslední znak podtržítka (_) |`<name>` |`MY_VARIABLE` |
 | Název svazku | 5 63 |Malá a velká písmena se nerozlišují. |Malá písmena a číslice a spojovníky kdekoli s výjimkou první ani poslední znak. Nesmí obsahovat dvě po sobě jdoucí pomlčky. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>Verze operačního systému z bitové kopie není podporována
@@ -205,6 +205,9 @@ Tato chyba označuje, že z důvodu zátěží v oblasti, ve které se pokouší
 ## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>Nelze se připojit k základního rozhraní API Dockeru nebo spouštění privilegovaných kontejnerů
 
 Služba Azure Container Instances nevystavuje přímý přístup k základní infrastruktury, který je hostitelem skupiny kontejnerů. To zahrnuje přístup k rozhraní API Dockeru, běží na hostiteli kontejneru a spouštění privilegovaných kontejnerů. Pokud budete potřebovat interakce Dockeru, zkontrolujte [referenční dokumentace k REST](https://aka.ms/aci/rest) co podporuje rozhraní API konektoru ACI. Pokud existuje něco chybí, odešlete žádost na [ACI zpětnou vazbu fóra](https://aka.ms/aci/feedback).
+
+## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>IP adresy možná nejsou dostupná z důvodu neodpovídající porty
+Služba Azure Container Instances nepodporuje aktuálně port mapování jako s konfigurací regulární dockeru, ale tato oprava se na roadmapě. Pokud zjistíte IP adres nejsou dostupné, když budete přesvědčeni, že by měl být, ujistěte se, nakonfigurovali jste image kontejneru tak, aby naslouchala na stejné porty zveřejnit ve vaší skupině kontejnerů s `ports` vlastnost.
 
 ## <a name="next-steps"></a>Další postup
 Zjistěte, jak [načíst události a protokoly kontejneru](container-instances-get-logs.md) pro ladění vaše kontejnery.

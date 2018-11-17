@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 56fbb5d45e55e63ae887d915367cfc649e531095
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364291"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820218"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování
 
@@ -23,29 +23,33 @@ Tento článek obsahuje informace o tom, jak nakonfigurovat řízení přístupu
 
 Při prvním nasazení řešení vzdáleného monitorování, existují dvě role: **správce** a **jen pro čtení**.
 
-Žádný uživatel ve **správce** role má úplný přístup k řešení. Uživatel v **jen pro čtení** role nemůže provádět žádnou z následujících úloh:
+Žádný uživatel ve **správce** role má úplný přístup k řešení, včetně následujících oprávnění níže. Uživatel v **jen pro čtení** role budou mít přístup jenom k zobrazení řešení.
 
-- Aktualizovat upozornění
-- Odstranit upozornění
-- Vytvoření zařízení
-- Aktualizace zařízení
-- Odstranění zařízení
-- Vytvoření skupin zařízení
-- Aktualizace skupiny zařízení
-- Odstranění skupiny zařízení
-- Vytvoření pravidel
-- Aktualizace pravidla
-- Odstranit pravidla
-- Vytváření úloh
-- Správa aktualizací SIM
+| Oprávnění            | Správa | Jen pro čtení |
+|----------------       |-------|-----------|
+| Zobrazení řešení         | Ano   | Ano       |
+| Aktualizovat upozornění         | Ano   | Ne        |
+| Odstranit upozornění         | Ano   | Ne        |
+| Vytvoření zařízení        | Ano   | Ne        |
+| Aktualizace zařízení        | Ano   | Ne        |
+| Odstranění zařízení        | Ano   | Ne        |
+| Vytvoření skupin zařízení  | Ano   | Ne        |
+| Aktualizace skupiny zařízení  | Ano   | Ne        |
+| Odstranění skupiny zařízení  | Ano   | Ne        |
+| Vytvoření pravidel          | Ano   | Ne        |
+| Aktualizace pravidla          | Ano   | Ne        |
+| Odstranit pravidla          | Ano   | Ne        |
+| Vytváření úloh           | Ano   | Ne        |
+| Správa aktualizací SIM | Ano   | Ne        |
 
-Osoba, která nasazuje řešení vzdáleného monitorování se automaticky přiřadí **správce** role a je vlastníka aplikace Azure Active Directory. Jako vlastníka aplikace můžete přiřadit role jiným uživatelům na portálu Azure portal.
+Ve výchozím nastavení, se automaticky přiřadí uživatele, který nasadit řešení **správce** role a je vlastníka aplikace Azure Active Directory. Jako vlastníka aplikace můžete přiřadit role jiným uživatelům prostřednictvím portálu Azure portal. Pokud chcete přiřadit role v řešení jiného uživatele, musí se také nastavit jako vlastníka aplikace na webu Azure Portal.
 
-Pokud chcete přiřadit role v řešení jiného uživatele, musí se také nastavit jako vlastníka aplikace na webu Azure Portal.
+> [!NOTE]
+> Uživatel, který nasadit řešení **pouze osoba** ji zobrazit ihned po jeho byl vytvořen. Udělit přístup ostatním uživatelům zobrazíte aplikaci jako jen pro čtení, správce nebo vlastní roli, viz následující pokyny níže na Přidat nebo odebrat uživatele.
 
 ## <a name="add-or-remove-users"></a>Přidání nebo odebrání uživatelů
 
-Pomocí webu Azure portal přidat nebo odebrat uživatele z řešení vzdáleného monitorování. Následující kroky použijte [podniková aplikace Azure Active Directory](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) , který se pro vás vytvořil při nasazení řešení vzdáleného monitorování.
+Jako vlastníka aplikace Azure Active Directory můžete na webu Azure portal přidat nebo odebrat uživatele k roli z řešení vzdáleného monitorování. Následující kroky použijte [podniková aplikace Azure Active Directory](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) , který byl vygenerován při nasazení řešení vzdáleného monitorování.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -73,7 +77,7 @@ Pomocí webu Azure portal přidat nebo odebrat uživatele z řešení vzdálené
 
 1. Můžete odstranit uživatele z aplikace na **uživatelů a skupin** stránky na portálu.
 
-## <a name="create-a-custom-role"></a>Vytvoření vlastní role
+## <a name="create-a-custom-role"></a>Vytvořit vlastní roli
 
 Řešení vzdáleného monitorování obsahuje **správce** a **jen pro čtení** role při prvním nasazení. Můžete přidat vlastní role s jinou sadu oprávnění. Pokud chcete definovat vlastní roli, budete muset:
 

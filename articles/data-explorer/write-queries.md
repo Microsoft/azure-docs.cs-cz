@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 952d8801c189322161bbf8b795676af48b92c29f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 71e39c6430231ae8d175f9c09a9059c3da4c9a1e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394325"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854250"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Psát dotazy pro Průzkumník dat Azure
 
@@ -28,7 +28,7 @@ Dotazy můžete spustit v tomto článku v jednom ze dvou způsobů:
 
 - Na vlastní cluster, který obsahuje ukázková data StormEvents. Další informace najdete v tématu [rychlý start: vytvoření clusteru Průzkumník dat Azure a databáze](create-cluster-database-portal.md) a [Ingestování ukázková data do Průzkumníku dat Azure](ingest-sample-data.md).
 
-Obsahuje data týkající se počasí s z StormEvents ukázkovou datovou sadu [National Center pro informace o okolnostech](https://www.ncdc.noaa.gov/stormevents/).
+[!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
 ## <a name="overview-of-the-query-language"></a>Přehled dotazovacího jazyka
 
@@ -97,7 +97,7 @@ StormEvents | take 5
 > [!TIP]
 > Neexistuje žádná záruka záznamy, které jsou vráceny, pokud je řazen zdrojová data.
 
-### <a name="project"></a>projekt
+### <a name="project"></a>Projekt
 
 [**projekt**](https://docs.microsoft.com/azure/kusto/query/projectoperator): vybere podmnožinu sloupců.
 
@@ -147,7 +147,7 @@ StormEvents
 
 ### <a name="top"></a>nahoru
 
-[**horní**](https://docs.microsoft.com/azure/kusto/query/topoperator): vrátí první *N* záznamy seřazené podle zadaných sloupců.
+[**horní**](https://docs.microsoft.com/azure/kusto/query/topoperator): vrátí první *N* záznamy seřazené podle zadaných sloupců.
 
 Následující dotaz vrátí stejné výsledky jako výše jeden menší operátorem.
 
@@ -473,7 +473,7 @@ MyTrace
 | project resourceName ,totalSlices , sliceNumber , lockTime , releaseTime , previousLockTime
 ```
 
-## <a name="time-series-analysis"></a>Analýzu časových řad
+## <a name="time-series-analysis"></a>Analýza časových řad
 
 ### <a name="make-series"></a>Zkontrolujte series
 
@@ -570,7 +570,7 @@ StormEvents
 
 ### <a name="dcounthll"></a>dcount_hll()
 
-[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): počítá **dcount** ve výsledcích HyperLogLog (generovaných [ **hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction) nebo [ **hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
+[**dcount_hll()**](https://docs.microsoft.com/azure/kusto/query/dcount-hllfunction): počítá **dcount** ve výsledcích HyperLogLog (generovaných [**hll** ](https://docs.microsoft.com/azure/kusto/query/hll-aggfunction)   nebo [**hll_merge**](https://docs.microsoft.com/azure/kusto/query/hll-merge-aggfunction).
 
 Následující dotaz používá algoritmus HLL ke generování počet.
 
@@ -632,7 +632,7 @@ FloodDataSet
 
 ### <a name="percentiles"></a>percentiles()
 
-[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): vrací odhadovaný pro zadaný rozbočovač [ **nejbližší pořadí percentilu** ](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) plnění definované výrazem. Přesnost závisí na hustota na percentilu počtu obyvatel v oblasti. Lze použít pouze v kontextu agregace uvnitř [ **shrnout**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
+[**percentiles()**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction): vrací odhadovaný pro zadaný rozbočovač [**nejbližší pořadí percentilu**](https://docs.microsoft.com/azure/kusto/query/percentiles-aggfunction) plnění definované výrazem. Přesnost závisí na hustota na percentilu počtu obyvatel v oblasti. Lze použít pouze v kontextu agregace uvnitř [**shrnout**](https://docs.microsoft.com/azure/kusto/query/summarizeoperator).
 
 Následující dotaz vypočítá percentily doby trvání storm.
 
@@ -685,7 +685,7 @@ LightningStorms
 
 ### <a name="join"></a>join
 
-[**připojení k**](https://docs.microsoft.com/azure/kusto/query/joinoperator): sloučí řádky dvou tabulek a vytvoří novou tabulku porovnáním hodnoty zadané sloupce z každé tabulky. Kusto podporuje celou řadu typů spojení: **fullouter**, **vnitřní**, **innerunique**, **leftanti**, **leftantisemi** , **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter** , **rightsemi**.
+[**připojení k**](https://docs.microsoft.com/azure/kusto/query/joinoperator): sloučí řádky dvou tabulek a vytvoří novou tabulku porovnáním hodnoty zadané sloupce z každé tabulky. Kusto podporuje celou řadu typů spojení: **fullouter**, **vnitřní**, **innerunique**, **leftanti**, **leftantisemi **, **leftouter**, **leftsemi**, **rightanti**, **rightantisemi**, **rightouter **, **rightsemi**.
 
 Následující příklad připojí pomocí vnitřního spojení dvou tabulek.
 
@@ -842,7 +842,7 @@ range _day from _start to _end step 1d
 
 ### <a name="newactivitymetrics-plugin"></a>modul plug-in new_activity_metrics
 
-[**modul plug-in new_activity_metrics**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): vypočítá metriky užitečné aktivity (počet jedinečných hodnot, jednoznačného počtu nových hodnot, míra uchování a četnost změn dat) pro kohorta noví uživatelé. Je podobný koncept tento modul plug-in [ **modulu plug-in activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), ale se zaměřuje na nové uživatele.
+[**modul plug-in new_activity_metrics**](https://docs.microsoft.com/azure/kusto/query/new-activity-metrics-plugin): vypočítá metriky užitečné aktivity (počet jedinečných hodnot, jednoznačného počtu nových hodnot, míra uchování a četnost změn dat) pro kohorta noví uživatelé. Je podobný koncept tento modul plug-in [**modulu plug-in activity_metrics**](https://docs.microsoft.com/azure/kusto/query/activity-metrics-plugin), ale se zaměřuje na nové uživatele.
 
 Následující dotaz vypočítá mírou uchování a četnost změn s oknem týden over týden pro nové kohorta uživatelů (uživatelů, které byly přijaty na první týden).
 
@@ -902,7 +902,7 @@ StormEvents
 
 [**modul plug-in funnel_sequence_completion**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin): vypočítá Trychtýř dokončené pořadí kroků v rámci různých časových období.
 
-Následující dotaz kontroluje dokončení trychtýřového grafu pořadí: `Hail -> Tornado -> Thunderstorm -> Wind` v "celkové" doby jednu hodinu, čtyři hodiny a jeden den (`[1h, 4h, 1d]`).
+Následující dotaz kontroluje dokončení trychtýřového grafu pořadí: `Hail -> Tornado -> Thunderstorm -> Wind` v "celkové" doby jednu hodinu, čtyři hodiny a jeden den (`[1h, 4h, 1d]`).
 
 **\[**[**Klikněte na tlačítko Spustit dotaz**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA)**\]**
 
@@ -918,7 +918,7 @@ StormEvents
 
 ## <a name="functions"></a>Functions
 
-Tato část se věnuje [ **funkce**](https://docs.microsoft.com/azure/kusto/query/functions): opakovaně použitelné dotazy, které jsou uloženy na serveru. Funkce mohou být vyvolány v dotazech a dalších funkcí (rekurzivní funkce nejsou podporovány).
+Tato část se věnuje [ **funkce**](https://docs.microsoft.com/azure/kusto/query/functions): opakovaně použitelné dotazy, které jsou uloženy na serveru. Funkce mohou být vyvolány v dotazech a dalších funkcí (rekurzivní funkce nejsou podporovány).
 
 > [!NOTE]
 > Funkce nelze vytvořit v clusteru help, která je jen pro čtení. Použijte vlastní cluster testu pro tuto část.

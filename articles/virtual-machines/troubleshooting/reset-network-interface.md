@@ -10,14 +10,14 @@ tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: 23cf02e8cc33b3a66a04ae0472b1e5a6baa59cc2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 61001d4926dcce68872a368afb5b28f2d3a8e2c0
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418989"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51818996"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Resetování síťové rozhraní pro virtuální počítač Windows Azure 
 
@@ -32,6 +32,8 @@ Poté, co jste zakázali výchozí síťové rozhraní (NIC) nebo ručně nastav
 
 Resetování síťové rozhraní, postupujte podle těchto kroků:
 
+#### <a name="use-azure-portal"></a>Použití webu Azure Portal
+
 1.  Přejděte na [Azure Portal]( https://ms.portal.azure.com).
 2.  Vyberte **virtuální počítače (Classic)**.
 3.  Vyberte ovlivněné virtuální počítač.
@@ -41,6 +43,31 @@ Resetování síťové rozhraní, postupujte podle těchto kroků:
 7.  Vyberte Uložit.
 8.  Virtuální počítač se restartuje za účelem inicializace nového síťového rozhraní v systému.
 9.  Zkuste RDP k vašemu počítači. V případě úspěchu, můžete změnit privátní IP adresu zpět na původní Pokud byste o ni. V opačném případě ho nechat. 
+
+#### <a name="use-azure-powershell"></a>Použití Azure Powershell
+
+1. Ujistěte se, že máte [nejnovější Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nainstalované.
+2. Spusťte relaci Azure Powershellu se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy:
+
+    ```powershell
+    #Set the variables 
+    $SubscriptionID = "<Suscription ID>"
+    $VM = "<VM Name>"
+    $CloudService = "<Cloud Service>"
+    $VNET = "<Virtual Network>"
+    $IP = "NEWIP"
+
+    #Log in to the subscription 
+    Add-AzureAccount
+    Select-AzureSubscription -SubscriptionId $SubscriptionId 
+
+    #Check whether the new IP address is available in the virtual network.
+    Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
+    
+    #Add/Change static IP. This process will not change MAC address
+    Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
+    ```
+3. Zkuste RDP k vašemu počítači. V případě úspěchu, můžete změnit privátní IP adresu zpět na původní Pokud byste o ni. V opačném případě ho nechat. 
 
 ### <a name="for-vms-deployed-in-resource-group-model"></a>Pro virtuální počítače nasazené v modelu skupiny prostředků
 
@@ -54,6 +81,31 @@ Resetování síťové rozhraní, postupujte podle těchto kroků:
 8.  Změnit **IP adresu** na jinou IP adresu, která je dostupná v podsíti.
 9. Virtuální počítač se restartuje za účelem inicializace nového síťového rozhraní v systému.
 10. Zkuste RDP k vašemu počítači. V případě úspěchu, můžete změnit privátní IP adresu zpět na původní Pokud byste o ni. V opačném případě ho nechat. 
+
+#### <a name="use-azure-powershell"></a>Použití Azure Powershell
+
+1. Ujistěte se, že máte [nejnovější Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) nainstalovaná
+2. Spusťte relaci Azure Powershellu se zvýšenými oprávněními (Spustit jako správce). Spusťte následující příkazy:
+
+    ```powershell
+    #Set the variables 
+    $SubscriptionID = "<Suscription ID>"
+    $VM = "<VM Name>"
+    $ResourceGroup = "<Resource Group>"
+    $VNET = "<Virtual Network>"
+    $IP = "NEWIP"
+
+    #Log in to the subscription 
+    Add-AzureRMAccount
+    Select-AzureRMSubscription -SubscriptionId $SubscriptionId 
+    
+    #Check whether the new IP address is available in the virtual network.
+    Test-AzureStaticVNetIP –VNetName $VNET –IPAddress  $IP
+
+    #Add/Change static IP. This process will not change MAC address
+    Get-AzureRMVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzureRMVM
+    ```
+3. Zkuste RDP k vašemu počítači.  V případě úspěchu, můžete změnit privátní IP adresu zpět na původní Pokud byste o ni. V opačném případě ho nechat. 
 
 ## <a name="delete-the-unavailable-nics"></a>Odstranění není k dispozici síťové karty
 Poté, co je to možné k počítači pomocí vzdálené plochy, je potřeba odstranit staré síťové karty, aby se zabránilo případným problémům:

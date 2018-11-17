@@ -4,7 +4,8 @@ description: Zjišťování a sdílení experimenty v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: f4248922-c961-4d3a-9e1b-aec743210166
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: 22432a98a7ac5ecba46201d0166940e069f6031b
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 4f1a06d8daa2a811871c8469dddb75ce36ceb04e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346435"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821324"
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>Zjistit experimenty v galerii Azure AI
 
@@ -31,7 +32,7 @@ ms.locfileid: "51346435"
 >
 >
 
-## <a name="discover"></a>Informace
+## <a name="discover"></a>Vyhledat
 Procházet experimenty [ve galerii](http://gallery.cortanaintelligence.com), v horní části stránky domovskou stránku galerie, vyberte **experimenty**.
 
 **[Experimenty](https://gallery.cortanaintelligence.com/experiments)** stránce se zobrazí seznam nedávno přidaných a Oblíbené experimentů. Zobrazí se všechny experimenty, vyberte **zobrazit všechny** tlačítko. Chcete-li vyhledat konkrétní experiment, vyberte **zobrazit všechny**a potom vyberte kritéria. Také můžete zadat hledaný text v **hledání** pole v horní části na stránku galerie.
@@ -42,7 +43,7 @@ Můžete získat další informace o experimentu na stránce s podrobnostmi o ex
 
 ![Přidat vlastní komentáře](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="download"></a>Ke stažení
+## <a name="download"></a>Stahování
 Do pracovního prostoru Machine Learning Studio můžete stáhnout kopii všech experiment v galerii. Potom můžete upravit kopii vytvářet vlastní řešení.
 
 Galerie Azure AI nabízí dva způsoby, jak importovat kopii experimentu:
@@ -135,7 +136,7 @@ Pro experiment přímo v galerii, můžete změnit některý z následujících 
 * Název experimentu
 * Souhrn nebo popisu
 * Značky
-* Image
+* Obrázek
 * Nastavení viditelnosti (**veřejné** nebo **Unlisted**)
 
 Můžete také odstranit experiment z galerie.

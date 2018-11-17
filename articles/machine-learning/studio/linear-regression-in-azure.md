@@ -1,11 +1,12 @@
 ---
-title: Pomocí lineární regrese v Machine Learning | Microsoft Docs
-description: Porovnání modelů lineární regrese v aplikaci Excel a v nástroji Azure Machine Learning Studio
+title: Použití lineární regrese ve službě Machine Learning | Dokumentace Microsoftu
+description: Porovnání modelů lineární regrese v aplikaci Excel a nástroji Azure Machine Learning Studio
 metakeywords: ''
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 417ae6ab-de4f-4bdd-957a-d96133234656
@@ -16,15 +17,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 162fc96c44db3c92103e12922de14b543daec9bf
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0e7004cca1d64270a2b48ea1e41c74b3e7555317
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836221"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823771"
 ---
 # <a name="using-linear-regression-in-azure-machine-learning"></a>Používání lineární regrese ve službě Azure Machine Learning
-> *Kate Baroni* a *Ben Boatman* jsou podnikové řešení architekty ve společnosti Microsoft Data Statistika špičkové Center. V tomto článku popisují jejich prostředí migrace sady analysis existující regrese na cloudové řešení pomocí Azure Machine Learning. 
+> *Kate Baroni* a *Robert Boatman* jsou podnikové architekty řešení ve společnosti Microsoft Data Insights bez System Center. V tomto článku popisují práci migrace sady existující regresní analýzy na cloudové řešení, které využívá Azure Machine Learning. 
 > 
 > 
 
@@ -33,118 +34,118 @@ ms.locfileid: "34836221"
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="goal"></a>Cíl
-Naše projektu začít s dva cíle v paměti: 
+Náš projekt spustit s dva cíle v úvahu: 
 
-1. Použijte k zajištění přesnosti naší organizace měsíční výnosy projekce prediktivní analýzy 
-2. Pomocí Azure Machine Learning k potvrzení, optimalizace, zvýšení rychlosti a škálování naše výsledků. 
+1. Využití prediktivních analýz, aby se zlepšila přesnost naší organizace měsíční výnosy projekce 
+2. Pomocí služby Azure Machine Learning k potvrzení, optimalizovat, zvýšení rychlosti a škálování naší výsledků. 
 
-Například mnoho firem naší organizace projde měsíční výnosy prognózy procesu. Úkolem naší malý tým obchodní analytici bylo pomocí Azure Machine Learning podporují procesu a zvyšte tak přesnost předpovědi. Tým stráví několik měsíců, shromažďování dat z více zdrojů a spouštění atributy datového prostřednictvím statistické analýzy, identifikace klíčových atributů, které jsou relevantní pro prognózy prodeje služby. Dalším krokem se zahájíte vytváření prototypů statistické regrese modely na data v aplikaci Excel. Během pár týdnů jsme měli regresní model aplikace Excel, který byl outperforming aktuální pole a finanční prognózy procesy. To se stala výsledek předpovědi směrného plánu. 
+Stejně jako řada podniků naši organizaci prochází měsíční výnosy proces Prognózování. Úkolem naší malý tým specialisty na obchodní analýzu bylo proces a zvyšte přesnost předpovědi pomocí Azure Machine Learning. Tým strávil několik měsíců, shromažďování dat z více zdrojů a s atributy dat prostřednictvím statistická analýza identifikace klíčových atributů, které jsou relevantní pro prognózy prodeje služeb. Dalším krokem bylo začít vytváření prototypů statistické regresní modely na datech v aplikaci Excel. Během pár týdnů měli jsme regresní model aplikace Excel, který byl překonají aktuálního pole a finanční Prognózování procesy. To se výsledek předpovědi směrného plánu. 
 
-Potom vzali jsme dalším krokem při přechodu naše prediktivní analýzy na Azure Machine Learning a zjistěte, jak může vylepšit Machine Learning na prediktivní výkon.
+Jsme pak trvalo dál přesunem naše prediktivní analýzy Azure Machine Learning a zjistěte, jak může zlepšit Machine Learning na prediktivní výkon.
 
-## <a name="achieving-predictive-performance-parity"></a>Dosažení paritní prediktivní výkonu
-Naše nejvyšší prioritu bylo dosáhnout rozdíly mezi regrese modely Machine Learning a Excel. Zadána stejná data a stejné rozdělení pro trénování a testování dat, jsme chtěli dosáhnout prediktivní výkonu rozdíly mezi aplikace Excel a Machine Learning. Původně se nepovedlo. Model aplikace Excel outperformed model Machine Learning. K selhání došlo z důvodu chybějících Principy nastavení základní nástroj v Machine Learning. Po synchronizaci s produktový tým Machine Learning jsme získávají lépe porozumět základní nastavení požadovaná pro naše sady dat a dosáhnout rozdíly mezi dva modely. 
+## <a name="achieving-predictive-performance-parity"></a>Dosažení parity prediktivní výkonu
+Naší hlavní prioritou došlo k dosažení parity mezi regresních modelů strojového učení a Excel. Pro trénování a testování dat zadané na stejná data a stejné rozdělení, chtěli bychom dosažení parity prediktivní výkon mezi Excelem a Machine Learning. Zpočátku se nám nepovedlo. Modelu Excelu překonal mohl model Machine Learning. K selhání došlo kvůli nedostatku porozumění nastavení základní nástroje ve službě Machine Learning. Po synchronizaci s produktovým týmem Machine Learning jsme získali lépe pochopit základní nastavení požadovaná pro naše datové sady a dosáhnout rozdíly mezi těmito dvěma modely. 
 
 ### <a name="create-regression-model-in-excel"></a>Vytvořit regresní model v aplikaci Excel
-Naše aplikace Excel Regrese používá model standardní lineární regrese v aplikaci Excel analytické nalezen. 
+Naše aplikace Excel Regrese používá trénování modelu lineární regrese standardní součástí analytické aplikace Excel. 
 
-Jsme vypočítat *% střední absolutní chyba* a použít jako měření výkonu pro model. Trvalo 3 měsíce přijaty ve model pracovní pomocí aplikace Excel. Můžeme uvést do režimu většinu learning do experimentu Machine Learning Studio, která byla nakonec výhodné v Principy požadavků.
+Můžeme vypočítat *% střední absolutní chyba* a použít ho jako míra výkonu pro model. Jakou trvalo tři měsíce můžete přejít na pracovní model pomocí aplikace Excel. Můžeme převést do režimu velkou část učení do experimentu Machine Learning Studio, který nakonec bylo výhodné v Principy požadavků.
 
-### <a name="create-comparable-experiment-in-azure-machine-learning"></a>Vytvoření porovnatelný z hlediska experimentu v nástroji Azure Machine Learning
-Jsme postupovali podle těchto kroků můžete vytvořit naše experimentu v nástroji Machine Learning Studio: 
+### <a name="create-comparable-experiment-in-azure-machine-learning"></a>Vytvoření srovnatelné experimentu v nástroji Azure Machine Learning
+Jsme postupovali podle těchto kroků a vytvořte naše experiment v Machine Learning Studio: 
 
-1. Odesílané datovou sadu jako soubor csv do nástroje Machine Learning Studio (velmi malý soubor)
-2. Vytvoří nový experiment a použít [výběr sloupců v datové sadě] [ select-columns] modulu vyberte stejné funkce dat použít v aplikaci Excel 
-3. Použít [rozdělení dat] [ split] modulu (s *relativní výraz* režim) k rozdělení dat do stejné datové sady školení, jak bylo v aplikaci Excel 
-4. Experimented s [lineární regrese] [ linear-regression] modulu (výchozí možnosti pouze), zdokumentované a porovnání výsledky do našich regresní model aplikace Excel
+1. Nahrání datové sady do souboru csv do nástroje Machine Learning Studio (velmi malý soubor)
+2. Vytvoří nový experiment a použít [výběr sloupců v datové sadě] [ select-columns] modul se vybere stejné funkce data použít v aplikaci Excel 
+3. Použít [rozdělení dat] [ split] modulu (s *relativní výraz* režimu) rozdělení dat do stejné cvičných datových sad, jako kdyby byla provedena v aplikaci Excel 
+4. Experimentovali s [lineární regrese] [ linear-regression] modulu (výchozí možnosti pouze), zdokumentované a porovnat výsledky pro náš regresní model aplikace Excel
 
-### <a name="review-initial-results"></a>Zkontrolujte počáteční výsledky
-Na první pohled model aplikace Excel jasně outperformed model Machine Learning Studio: 
+### <a name="review-initial-results"></a>Počáteční výsledků kontroly
+Zpočátku modelu Excelu jasně překonal model Machine Learning Studio: 
 
 |  | Excel | Studio |
 | --- |:---:|:---:|
 | Výkon | | |
-| <ul style="list-style-type: none;"><li>Upraví hranaté R</li></ul> |0.96 |neuvedeno |
-| <ul style="list-style-type: none;"><li>Koeficient <br />Rozhodnutí</li></ul> |neuvedeno |0.78<br />(nízkou přesnost) |
-| Střední absolutní chyba |$9. 5M |$ 19.4 M |
+| <ul style="list-style-type: none;"><li>Upravit čtverec R</li></ul> |0.96 |neuvedeno |
+| <ul style="list-style-type: none;"><li>Koeficient <br />Stanovení</li></ul> |neuvedeno |0.78<br />(nízké přesnost) |
+| Střední absolutní chyba |$9.5 MIN |$ 19.4 M |
 | Střední absolutní chyba (%) |6.03% |12.2% |
 
-Když jsme narazili naše proces a výsledky datových vědců a vývojářů na tým Machine Learning, poskytnou rychle některé užitečné tipy. 
+Když jsme spustili náš proces a výsledky používají vývojáři a odborníci přes data v týmu Machine Learning, poskytnou rychle několik užitečných tipů. 
 
 * Při použití [lineární regrese] [ linear-regression] modulu v nástroji Machine Learning Studio, jsou k dispozici dvě metody:
-  * Online klesání přechodu: Může být vhodnější pro problémy s větším měřítku
-  * Obyčejnou nejmenší čtverce: Toto je metoda, kterou většina lidí zamyslet nad při zazní lineární regrese. Pro malé datové sady může být obyčejnou čtverce nejmenší více optimální volbou.
-* Zvažte, postupně je upravujte parametr L2 regulaci váhy ke zlepšení výkonu. Je ve výchozím nastavení má 0,001, ale pro naše malé datové sady jsme ji nastavit na 0,005 ke zlepšení výkonu. 
+  * Online klesání gradientu: Může být vhodnější pro problémy pracovat ve větším měřítku
+  * Běžné čtverců: Toto je metoda, kterou většina lidí si můžete představit při jejich slyšet lineární regrese. Pro malé datové sady může být běžný čtverců více optimální volbou.
+* Vezměte v úvahu úprava parametr L2 Regularizace váha ke zlepšení výkonu. Je ve výchozím nastavení má 0,001, ale pro naše malá datová sada jsme ho nastavte na 0,005 ke zlepšení výkonu. 
 
-### <a name="mystery-solved"></a>Mystery vyřeší!
-Když jsme použili doporučení, jsme dosáhli stejné základní úroveň výkonu v nástroji Machine Learning Studio jako v aplikaci Excel: 
+### <a name="mystery-solved"></a>Co je vyřešen!
+Když jsme použili doporučení, jsme dosáhli stejné základní úroveň výkonu v nástroji Machine Learning Studio jako v Excelu: 
 
-|  | Excel | Studio (výchozí) | Studio s nejmenší čtverce |
+|  | Excel | Studio (výchozí) | Studio plánovaným bodem obnovení kratším čtverců |
 | --- |:---:|:---:|:---:|
-| Hodnota s popiskem |Skutečné hodnoty (číslice) |stejné |stejné |
-| Student |Excel -> datové analýzy -> regrese |Lineární regrese. |Lineární regrese |
-| Možnosti student |neuvedeno |Výchozí nastavení |obyčejnou nejmenší čtverce<br />L2 = 0,005 |
-| Datové sady |26 řádky, funkce 3, 1 popisek. Všechny číselný. |stejné |stejné |
-| Rozdělení: Train |Excel trénink na první 18 řádky, otestovali na poslední 8 řádky. |stejné |stejné |
-| Rozdělení: Test |Vzorec regrese použitý pro poslední 8 řádky v aplikaci Excel |stejné |stejné |
+| Hodnota s popiskem |Skutečné hodnoty (číselné) |Stejné |Stejné |
+| Student |Excel -> Data analýzy -> regrese |Lineární regrese. |Lineární regrese |
+| Možnosti learner |neuvedeno |Výchozí nastavení |běžné čtverců<br />L2 = 0,005 |
+| Datové sady |26 řádků, funkce 3, 1 popisek. Všechny číselné. |Stejné |Stejné |
+| Rozdělení: trénování |Excel trénuje nejprve 18 řádky, testovat na posledních 8 řádků. |Stejné |Stejné |
+| Rozdělení: Test |Excelovému vzorci regrese použitý pro řádky posledních 8 |Stejné |Stejné |
 | **Výkon** | | | |
-| Upraví hranaté R |0.96 |neuvedeno | |
+| Upravit čtverec R |0.96 |neuvedeno | |
 | Koeficient spolehlivosti |neuvedeno |0.78 |0.952049 |
-| Střední absolutní chyba |$9. 5M |$ 19.4 M |$9. 5M |
+| Střední absolutní chyba |$9.5 MIN |$ 19.4 M |$9.5 MIN |
 | Střední absolutní chyba (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
 
-Kromě toho koeficienty aplikace Excel porovnání dobře s váhou funkce v Azure trénovaného modelu:
+Kromě toho koeficienty Excel porovnání dobře s váhy funkce v Azure trénovaného modelu:
 
-|  | Koeficienty aplikace Excel | Váhu funkcí služby Azure |
+|  | Koeficienty aplikace Excel | Váhy funkce Azure |
 | --- |:---:|:---:|
-| Krádež nebo odchylka |19470209.88 |19328500 |
+| Zachycení/posun |19470209.88 |19328500 |
 | Funkce A |0.832653063 |0.834156 |
 | Součást B |11071967.08 |11007300 |
-| Funkce C |25383318.09 |25140800 |
+| Funkce jazyka C |25383318.09 |25140800 |
 
 ## <a name="next-steps"></a>Další kroky
-Jsme chtěli využívat webové službě Machine Learning v aplikaci Excel. Naše obchodní analytici závisí na aplikaci Excel a potřebujeme způsob, jak volání webové služby Machine Learning s řádek dat v aplikaci Excel a mějte ho vrátit předpovězené hodnoty do aplikace Excel. 
+Chtěli jsme se používání této webové služby Machine Learning v aplikaci Excel. Naši obchodní analytici využívají aplikace Excel a potřebujeme způsob, jak volat webovou službu Machine Learning s řádkem Excelových dat a jeho vrátit předpovězené hodnoty aplikace Excel. 
 
-Také chtěli jsme optimalizovat našeho modelu pomocí možnosti a algoritmy, které jsou k dispozici v nástroji Machine Learning Studio.
+Také chceme optimalizaci náš model pomocí možnosti a algoritmy, které jsou k dispozici v nástroji Machine Learning Studio.
 
-### <a name="integration-with-excel"></a>Integrace s aplikace Excel
-Naše řešení bylo zprovoznit naše regresní model Machine Learning vytvořením webové služby ze naučeného modelu. Během několika minut webové služby byl vytvořen a jsme může volat přímo z aplikace Excel k vrácení hodnoty předpovězené výnosy. 
+### <a name="integration-with-excel"></a>Integrace s Excelem
+Naším řešením bylo zprovoznění náš model strojového učení regrese vytvořením webové služby z trénovaného modelu. Během několika minut webová služba vytvořila a jsme lze volat přímo z aplikace Excel k vrácení hodnoty předpovězené výnosy. 
 
-*Řídicího panelu webové služby* část obsahuje ke stažení sešitu aplikace Excel. Sešit obsahuje předem formátovaný webové rozhraní API a schémat informace o služby vložených. Když kliknete na tlačítko *stáhnout sešitu aplikace Excel*, otevře se sešit a můžete ho uložit do místního počítače. 
+*Řídicího panelu webové služby* část obsahuje ke stažení Excelový sešit. Sešit obsahuje předem formátovaný webové rozhraní API a schémat informace o služby vložené. Po kliknutí na *stáhněte si Excelový sešit*, sešit se otevře, a můžete ji uložit do místního počítače. 
 
 ![][1]
 
-S sešit otevřít zkopírujte předdefinované parametry do části blue parametr, jak je uvedeno níže. Po zadání parametrů Excel volá k webové službě Machine Learning a předpokládaných scored popisky se zobrazí v části zelená předpovězené hodnoty. Sešit nadále vytvořit předpovědi parametrů na základě modelu vyškolení pro všechny položky řádku zadaný v poli parametrů. Další informace o tom, jak tuto funkci použít, najdete v části [využívají webové služby Azure Machine Learning z Excelu](consuming-from-excel.md). 
+S otevřete sešit zkopírujte předdefinované parametry do modré části, jak je znázorněno níže. Po zadání parametrů, Excel, volá do webové služby Machine Learning a predikované skóre popisků se zobrazí v části zelené Předpovězeným hodnotám. Sešit nadále vytvářet předpovědi pro parametry podle trénovaný model pro všechny položky řádku zadaný v poli parametrů. Další informace o tom, jak tuto funkci používat, naleznete v tématu [využívání webové služby Azure Machine Learning z Excelu](consuming-from-excel.md). 
 
 ![][2]
 
-### <a name="optimization-and-further-experiments"></a>Optimalizace a další pokusy.
-Teď, když jsme měli směrný plán s modelem naše aplikace Excel, můžeme přesunout článek k optimalizaci naše Model strojového učení lineární regrese. Použili jsme modul [na základě filtru výběr funkce] [ filter-based-feature-selection] ke zlepšení našeho výběru počáteční data elementy a pomohl nám dosáhnout zlepšení výkonu % 4.6 znamenat absolutní chyba. Pro budoucí projekty budeme používat tuto funkci, která může uložit nám týdny iterace v rámci atributy datového najít správnou sadu funkce, které chcete použít pro modelování. 
+### <a name="optimization-and-further-experiments"></a>Optimalizace a další pokusy
+Teď, když jsme měli směrný plán s náš model aplikace Excel, jsme přesunuli dopředu optimalizovat náš Model strojového učení lineární regrese. Jsme použili modulu [výběr součástí na základě filtru] [ filter-based-feature-selection] ke zlepšení našich výběru počáteční data prvky a to nám povedlo dosáhnout zlepšení výkonu 4.6 % znamená absolutní chyba. Pro všechny budoucí projekty budeme používat tuto funkci, která se dá ušetřit nám týdny v iterace v rámci datové atributy k nalezení správné sady funkcí pro modelování. 
 
-Dalším plánujeme zahrnout další algoritmy jako [Bayesova] [ bayesian-linear-regression] nebo [Boosted Decision Trees] [ boosted-decision-tree-regression] v našem experimentu k porovnání výkonu. 
+Dále jsme chcete zahrnout další algoritmy, jako je [Bayesova] [ bayesian-linear-regression] nebo [vylepšené rozhodovací stromy] [ boosted-decision-tree-regression] v našich experimentu k porovnání výkon. 
 
-Pokud chcete experimentovat s regrese, je dobré datové sady a zkuste to ukázkovou datovou sadu energie efektivitu regrese, který má spoustu číselné atributy. Datová sada je dodáván jako součást ukázkových datových sad v nástroji Machine Learning Studio. Celou řadu učení moduly můžete použít k předpovědi vytápění zatížení nebo chlazení zatížení. Následující graf je že výkon porovnání různých regrese zjišťuje pro predikci energetické úspornosti datovou sadu pro Cílová proměnná chlazení zatížení: 
+Pokud chcete experimentovat s regrese, je dobré datovou sadu, která akci ukázkovou datovou sadou energetickou efektivitu regrese, který má spoustu číselné atributy. Datová sada je dodáván jako součást ukázkových datových sad v nástroji Machine Learning Studio. Škály výukových moduly můžete použít k predikci vytápění zatížení nebo chlazení zatížení. Následující graf je že porovnání výkonu různých regrese učí proti předpověď energetickou účinnost datovou sadu pro Cílová proměnná chlazení zatížení: 
 
-| Model | Střední absolutní chyba | Střední kořenové spolehlivosti chyby | Relativní absolutní chyba | Relativní spolehlivosti chyby | Koeficient spolehlivosti |
+| Model | Střední absolutní chyba | Střední kořenové spolehlivosti chyba | Relativní absolutní chyba | Relativní spolehlivosti chyba | Koeficient spolehlivosti |
 | --- | --- | --- | --- | --- | --- |
-| Vylepšené rozhodovací strom |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
-| Lineární regrese (přechodu klesání) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
+| Posílený rozhodovací strom |0.930113 |1.4239 |0.106647 |0.021662 |0.978338 |
+| Lineární regrese (sestupu) |2.035693 |2.98006 |0.233414 |0.094881 |0.905119 |
 | Regrese neuronové sítě |1.548195 |2.114617 |0.177517 |0.047774 |0.952226 |
-| Lineární regrese (obyčejnou nejmenší čtverce) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
+| Lineární regrese (běžný čtverců) |1.428273 |1.984461 |0.163767 |0.042074 |0.957926 |
 
-## <a name="key-takeaways"></a>Klíče Takeaways
-Jsme se naučili mnoho z regrese spuštěné aplikace Excel a experimenty Azure Machine Learning paralelně. Vytvoření standardních hodnot modelu v aplikaci Excel a porovná je s modely pomocí Machine Learning [lineární regrese] [ linear-regression] pomohl nám další Azure Machine Learning a jsme zjištěné příležitosti pro zlepšení výkonu dat výběr a modelu. 
+## <a name="key-takeaways"></a>Stěžejní zjištění
+Jsme získali mnohem podle z běžící aplikace Excel regrese a paralelně experimenty Azure Machine Learning. Vytvoření základního modelu v Excelu a srovnáním s modely s využitím strojového učení [lineární regrese] [ linear-regression] pomohl nám další Azure Machine Learning a zjistili jsme příležitosti k vylepšení dat Výběr modelu a výkonu. 
 
-Můžeme také zjistil, že je vhodné používat [na základě filtru výběr funkce] [ filter-based-feature-selection] k urychlení projekty budoucí předpovědi. Použitím výběr funkce pro vaše data, můžete vytvořit model vylepšené v Machine Learning s lepší celkový výkon. 
+Zjistili jsme také, že je vhodné použít [výběr součástí na základě filtru] [ filter-based-feature-selection] ke zrychlení předpovědi budoucí projekty. S použitím výběr funkcí k vašim datům, můžete vytvořit vylepšené modelu ve službě Machine Learning s lepší výkon. 
 
-Umožňuje přenos, prediktivní analýzy prognózy ze strojového učení do aplikace Excel systemically umožňuje významné zvýšení v úspěšně poskytovat výsledky pro cílovou skupinu široký obchodní uživatele. 
+Možnost přenášet prediktivních analytických odhady ze strojového učení do Excelu systemically umožňuje významné zvýšení schopnost úspěšně poskytovat výsledky pro cílovou skupinu široké obchodní uživatele. 
 
 ## <a name="resources"></a>Zdroje a prostředky
-Zde jsou některé prostředky pro umožňují pracovat s regrese: 
+Tady jsou některé prostředky pro dokážete pracovat regrese: 
 
-* Regrese v aplikaci Excel. Pokud jste se nikdy zkusili Regrese v aplikaci Excel, v tomto kurzu lze snadno: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
-* Regrese vs prognózy. Tyler Chessman napsali článek blogu, která vysvětluje, jak časové řady prognózy v aplikaci Excel, který obsahuje popis dobrý začátečníka lineární regrese. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* Obyčejnou čtverce nejmenší lineární regrese: Nedostatky, problémy a nástrahy. Úvod a diskuzi o regrese: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
+* Regrese v aplikaci Excel. Pokud jste se pokusili nikdy Regrese v Excelu, v tomto kurzu umožňuje snadno: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* Prognózování regrese vs. Tyler Chessman napsal blogový článek s vysvětlením, jak časové řady Prognózování v aplikaci Excel, která obsahuje popis pro začátečníky dobré lineární regrese. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
+* Lineární regrese běžné čtverců: Chyby, problémy a nástrahy. Úvod a diskuzi o regrese: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png

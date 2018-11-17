@@ -14,12 +14,12 @@ ms.date: 10/26/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 8c5da669d490bf295c4066854ac1173bcc79ad5e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 0c8fe0759e115288e9f8cc2ea313f6dc3dc89b6b
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686122"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853995"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -179,11 +179,6 @@ Následující tabulky popisují konkrétní oprávnění v Azure Active Directo
 ### <a name="application-administrator"></a>Správce aplikace
 Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací.
 
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | Microsoft.aad.Directory/Applications/audience/Update | Umožňuje aktualizovat vlastnost applications.audience v Azure Active Directory. |
@@ -223,11 +218,6 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 ### <a name="application-developer"></a>Vývojář aplikace
 Může vytvářet registrace aplikací nezávisle "uživatelé můžou registrovat aplikace' nastavení.
 
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | Umožňuje vytvářet applications v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
@@ -237,11 +227,6 @@ Může vytvářet registrace aplikací nezávisle "uživatelé můžou registrov
 
 ### <a name="billing-administrator"></a>Správce fakturace
 Může provádět běžné úkoly související s fakturací, třeba aktualizovat platební údaje.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -263,11 +248,6 @@ Může provádět běžné úkoly související s fakturací, třeba aktualizova
 Můžete získat přístup a správa desktopovým nástrojům pro správu a službám, včetně Intune.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -283,11 +263,6 @@ Můžete získat přístup a správa desktopovým nástrojům pro správu a slu�
 
 ### <a name="cloud-application-administrator"></a>Správce cloudové aplikace
 Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací, kromě Proxy aplikací.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -327,11 +302,6 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 ### <a name="cloud-device-administrator"></a>Správce cloudových zařízení
 Úplný přístup ke správě zařízení v Azure AD
 
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | Microsoft.aad.Directory/Devices/DELETE | Umožňuje odstraňovat devices v Azure Active Directory. |
@@ -344,11 +314,6 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 
 ### <a name="company-administrator"></a>Správce společnosti
 Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používají identity Azure AD.
-
-  > [!NOTE]
-  > Tato role dědí další oprávnění z role.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -411,11 +376,6 @@ Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používa
 Může číst a spravovat konfiguraci dodržování předpisů a sestav v Azure AD a Office 365.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -435,11 +395,6 @@ Může číst a spravovat konfiguraci dodržování předpisů a sestav v Azure 
 ### <a name="conditional-access-administrator"></a>Správce podmíněného přístupu
 Může spravovat funkce podmíněného přístupu.
 
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/policies/conditionalAccess/basic/read | Umožňuje číst vlastnost policies.conditionalAccess v Azure Active Directory. |
@@ -452,11 +407,6 @@ Může spravovat funkce podmíněného přístupu.
 
 ### <a name="crm-service-administrator"></a>Správce služby CRM
 Může spravovat všechny aspekty produktu Dynamics 365.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -476,11 +426,6 @@ Může spravovat všechny aspekty produktu Dynamics 365.
 Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace zákazníka.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -493,11 +438,6 @@ Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace z
 ### <a name="device-administrators"></a>Správci zařízení
 Členové této role se přidají do skupiny místních správců na Azure zařízení připojených k doméně AD.
 
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/groupSettings/basic/read | Umožňuje číst základní vlastnosti groupSettings v Azure Active Directory. |
@@ -505,11 +445,6 @@ Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace z
 
 ### <a name="directory-readers"></a>Uživatelé s oprávněním ke čtení adresářů
 Může číst informace o základní adresář. Pro udělení přístupu k aplikacím, není určený pro uživatele.
-
-  > [!NOTE]
-  > Tato role dědí další oprávnění z role.
-  >
-  >
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -570,11 +505,6 @@ Může číst informace o základní adresář. Pro udělení přístupu k aplik
 ### <a name="directory-synchronization-accounts"></a>Účty pro synchronizaci adresáře
 Pouze používá služba Azure AD Connect.
 
-  > [!NOTE]
-  > Tato role dědí další oprávnění z role.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/organization/dirSync/update | Umožňuje aktualizovat vlastnost organization.dirSync v Azure Active Directory. |
@@ -604,11 +534,6 @@ Pouze používá služba Azure AD Connect.
 ### <a name="directory-writers"></a>Uživatelé s oprávněním k zápisu do adresářů
 Může číst a zapisovat informace základní adresář. Pro udělení přístupu k aplikacím, není určený pro uživatele.
 
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | Microsoft.aad.Directory/groups/Create | Umožňuje vytvářet groups v Azure Active Directory. |
@@ -630,11 +555,6 @@ Může číst a zapisovat informace základní adresář. Pro udělení přístu
 
 ### <a name="exchange-service-administrator"></a>Správce služby Exchange
 Může spravovat všechny aspekty produktu Exchange.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -659,11 +579,6 @@ Může spravovat všechny aspekty produktu Exchange.
 ### <a name="guest-inviter"></a>Odesílatel pozvánky hostů
 Může zvát uživatele typu host bez ohledu na nastavení, jestli členové můžou zvát hosty.
 
-  > [!NOTE]
-  > Tato role dědí další oprávnění z role.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | Umožňuje číst vlastnost users.appRoleAssignments v Azure Active Directory. |
@@ -682,11 +597,6 @@ Může zvát uživatele typu host bez ohledu na nastavení, jestli členové mů
 ### <a name="helpdesk-administrator"></a>Správce technické podpory
 Může resetovat hesla uživatelů, kteří nejsou správci, a správců technické podpory.
 
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Umožňuje zneplatnit všechny obnovovací tokeny uživatele v Azure Active Directory. |
@@ -699,11 +609,6 @@ Může resetovat hesla uživatelů, kteří nejsou správci, a správců technic
 
 ### <a name="information-protection-administrator"></a>Správce Information Protection
 Může spravovat všechny aspekty produktu Azure Information Protection.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -720,11 +625,6 @@ Může spravovat všechny aspekty produktu Azure Information Protection.
 
 ### <a name="intune-service-administrator"></a>Správce služby Intune
 Může spravovat všechny aspekty produktu Intune.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -761,11 +661,6 @@ Může spravovat všechny aspekty produktu Intune.
 ### <a name="license-administrator"></a>Správce licencí
 Můžete spravovat licence na produkty na uživatele a skupiny.
 
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/users/assignLicense | Umožňuje spravovat licence uživatelů v Azure Active Directory. |
@@ -776,11 +671,6 @@ Můžete spravovat licence na produkty na uživatele a skupiny.
 
 ### <a name="lync-service-administrator"></a>Správce služeb Lyncu
 Může spravovat všechny aspekty produktu Skype pro firmy.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -800,11 +690,6 @@ Může spravovat všechny aspekty produktu Skype pro firmy.
 Může číst zprávy a aktualizace pro svou organizaci jen v Centru zpráv Office 365. 
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -816,11 +701,6 @@ Může číst zprávy a aktualizace pro svou organizaci jen v Centru zpráv Offi
 
 ### <a name="partner-tier1-support"></a>Podpora partnerů úrovně 1
 Nepoužívejte – nejsou určené pro obecné použití.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -853,11 +733,6 @@ Nepoužívejte – nejsou určené pro obecné použití.
 
 ### <a name="partner-tier2-support"></a>Podpora partnerů úrovně 2
 Nepoužívejte – nejsou určené pro obecné použití.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -895,11 +770,6 @@ Nepoužívejte – nejsou určené pro obecné použití.
 Může spravovat všechny aspekty produktu Power BI.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -917,11 +787,6 @@ Může spravovat všechny aspekty produktu Power BI.
 Můžou Spravovat přiřazení rolí ve službě Azure AD a všechny aspekty služby Privileged Identity Management.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -933,11 +798,6 @@ Můžou Spravovat přiřazení rolí ve službě Azure AD a všechny aspekty slu
 
 ### <a name="reports-reader"></a>Čtenář sestav
 Může číst sestavy o přihlašování a auditech.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -954,11 +814,6 @@ Může číst sestavy o přihlašování a auditech.
 
 ### <a name="security-administrator"></a>Správce zabezpečení
 Může číst informace o zabezpečení a sestavy a spravovat konfigurace ve službě Azure AD a Office 365.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -988,11 +843,6 @@ Může číst informace o zabezpečení a sestavy a spravovat konfigurace ve slu
 Může číst bezpečnostní údaje a sestavy v Azure AD a Office 365.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -1012,11 +862,6 @@ Může číst bezpečnostní údaje a sestavy v Azure AD a Office 365.
 Může číst informace o stavu služby a spravovat lístky podpory.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -1031,11 +876,6 @@ Může číst informace o stavu služby a spravovat lístky podpory.
 
 ### <a name="sharepoint-service-administrator"></a>Správce služby SharePoint
 Může spravovat všechny aspekty služby SharePoint.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -1061,11 +901,6 @@ Může spravovat všechny aspekty služby SharePoint.
 Může spravovat funkce volání a schůzek ve službě Microsoft Teams.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -1084,11 +919,6 @@ Může spravovat funkce volání a schůzek ve službě Microsoft Teams.
 Může řešit potíže s komunikací ve službě Teams pomocí rozšířených nástrojů.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -1104,11 +934,6 @@ Může řešit potíže s komunikací ve službě Teams pomocí rozšířených 
 Může řešit potíže s komunikací ve službě Teams pomocí základních nástrojů.
 
   > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
-
-  > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
   >
   >
@@ -1122,11 +947,6 @@ Může řešit potíže s komunikací ve službě Teams pomocí základních ná
 
 ### <a name="teams-service-administrator"></a>Správce služby Teams
 Může spravovat službu Microsoft Teams.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
   > [!NOTE]
   > Tato role má oprávnění další mimo službu Azure Active Directory. Další informace najdete v tématu role popisu výše.
@@ -1152,11 +972,6 @@ Může spravovat službu Microsoft Teams.
 
 ### <a name="user-account-administrator"></a>Správce uživatelských účtů
 Může spravovat všechny aspekty uživatelů a skupin, včetně resetování hesel omezených správců.
-
-  > [!NOTE]
-  > Tato role dědí z role ke čtení adresáře další oprávnění.
-  >
-  >
 
 | **Akce** | **Popis** |
 | --- | --- |

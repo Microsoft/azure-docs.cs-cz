@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6debfaed28be2b5dee5e24a443b791f75f7bea8f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 10f76ea58b859611483c99c2f4accec607bc2939
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634188"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822904"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Vizualizace protokolů toku NSG sledovací proces sítě Azure s využitím opensourcových nástrojů
 
 Protokoly toku skupin zabezpečení sítě poskytují informace, které je možné pochopit příchozí a odchozí přenosy na skupiny zabezpečení sítě. Tyto protokoly toku zobrazení odchozí a příchozí toků na základě na pravidlo, tok se vztahuje na síťové KARTĚ, 5 řazené kolekce členů informace o toku (zdrojová a cílová IP, zdrojový/cílový Port, protokol), a pokud provoz byl povolen nebo odepřen.
 
 Tyto protokoly toku může být obtížné ruční analyzovat a zkoumat velké. Existuje však několik opensourcových nástrojů, které pomáhají vizualizovat tato data. Tento článek poskytuje protokolů řešení k vizualizaci těchto protokolů pomocí řešení Elastic Stack, který vám umožní rychle indexovat a Vizualizujte váš tok na řídicí panel Kibana.
+
+> [!Warning]  
+> Následující postup fungovat s verzí protokolů toku 1. Podrobnosti najdete v tématu [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Postupujte podle následujících pokynů nebude fungovat s verzí 2 soubory protokolů, bez jakýchkoli úprav.
 
 ## <a name="scenario"></a>Scénář
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d7c1eaa26edef830ca156eef943fcb256d737d77
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 3ab0edf4483763c1048b7026175ddce821624ac0
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989873"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821102"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Zajištění geokódování Azure Maps
 
@@ -45,8 +45,8 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Dominika                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Dominicana                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Ekvádor                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Salvador                                         |                 |                |       ✓      |      ✓     |          ✓         |
-| Falklandské ostrovy                                    |                 |                |              |      ✓     |          ✓         |
+| El Salvador                                         |                 |                |       ✓      |      ✓     |          ✓         |
+| Falklandy                                    |                 |                |              |      ✓     |          ✓         |
 | Francouzská Guyana                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Grenada                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Guadeloupe|                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -68,12 +68,12 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Svatá Lucie                                         |                 |                |              |      ✓     |          ✓         |
 | Svatý Martin (Francie)                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Svatý Pierre a Miquelon|                 |                |       ✓      |      ✓     |          ✓         |
-| Svatý Vincenc a Grenadiny                    |                 |                |              |      ✓     |          ✓         |
+| Svatý Vincent a Grenadiny                    |                 |                |              |      ✓     |          ✓         |
 | Svatý Martin (Nizozemsko)                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Jižní Georgie a Jižní Sandwichovy ostrovy        |                 |                |              |      ✓     |          ✓         |
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad a Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
-| Menší odlehlé ostrovy Spojených států amerických                |                 |                |              |      ✓     |          ✓         |
+| Americké menší zámořské ostrovy                |                 |                |              |      ✓     |          ✓         |
 | Spojené státy americké                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
@@ -104,7 +104,7 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Japonsko                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
 | Laos                                                |                 |                |              |      ✓     |          ✓         |
-| Macao                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Macao – zvláštní administrativní oblast                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malajsie                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Mikronésie |                 |                |              |      ✓     |          ✓         |
 | Mongolsko                                            |                 |                |              |      ✓     |          ✓         |
@@ -134,7 +134,7 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Thajsko                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Tokelau                                             |                 |                |              |      ✓     |          ✓         |
 | Tonga                                               |                 |                |              |      ✓     |          ✓         |
-| Turks a Caicos                            |                 |                |              |      ✓     |          ✓         |
+| Ostrovy Turks a Caicos                            |                 |                |              |      ✓     |          ✓         |
 | Tuvalu                                              |                 |                |              |      ✓     |          ✓         |
 | Vanuatu                                             |                 |                |              |      ✓     |          ✓         |
 | Vietnam                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -152,7 +152,7 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Belgie                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Bosna a Hercegovina                              |                 |                |       ✓      |      ✓     |          ✓         |
 | Bulharsko                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Belerus|                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Bělorusko|                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Chorvatsko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kypr                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Česká republika                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -161,7 +161,7 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Faerské ostrovy                                       |                 |                |              |      ✓     |          ✓         |
 | Finsko                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Francie                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Gruzie                                             |                 |                |              |      ✓     |          ✓         |
+| Georgie                                             |                 |                |              |      ✓     |          ✓         |
 | Německo                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Gibralter                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Řecko                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -181,7 +181,7 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Lichtenštejnsko                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Litva                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Lucembursko                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Makedonie – bývalá rep. Jugoslávie                                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Makedonie                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Malta                                               |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Moldavsko                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Monako                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -216,7 +216,7 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Afghánistán                                         |                 |                |              |      ✓     |          ✓         |
 | Alžírsko                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Angola                                              |                 |                |       ✓      |      ✓     |          ✓         |
-| Bahrajn                                             |                 |                |       ✓      |      ✓     |          ✓         |
+| Bahrain                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Benin                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Botswana                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Bouvet                                       |                 |                |              |      ✓     |          ✓         |
@@ -227,8 +227,8 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Středoafrická republika                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Čad                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Kongo                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Pobřeží slonoviny                                       |                 |                |       ✓      |      ✓     |          ✓         |
-| Demokratická republika Kongo                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Côte d'Ivoire (Pobřeží slonoviny)                                       |                 |                |       ✓      |      ✓     |          ✓         |
+| Konžská demokratická republika                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Džibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egypt                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Rovníková Guinea, republika                      |                 |                |       ✓      |      ✓     |          ✓         |
@@ -274,7 +274,7 @@ Při hledání umístění s Azure Maps, vyhledávací služba přebírá hledan
 | Seychely                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Somálsko                                             |                 |                |              |      ✓     |          ✓         |
-| Jihoafrická republika                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Jižní Afrika                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Jižní Súdán                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Súdán                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Svazijsko                                           |                 |                |       ✓      |      ✓     |          ✓         |

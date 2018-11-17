@@ -4,7 +4,8 @@ description: 'Syntaxe Net # neuronové sítě specifikačnímu jazyku, spolu s p
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 8a96cfdedcde9b4037627f3e61af862c0600ca20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dcc6d8c1ab5a5988a9d2cb33e038f364438724fa
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258473"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822972"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning
 

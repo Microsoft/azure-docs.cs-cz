@@ -1,10 +1,11 @@
 ---
-title: Programově přeučit modely Machine Learning | Microsoft Docs
-description: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu v Azure Machine Learning.
+title: Programová obnova modelů Machine Learning | Dokumentace Microsoftu
+description: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 7ae4f977-e6bf-4d04-9dde-28a66ce7b664
@@ -15,39 +16,39 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: b2090b39991363ee2a5b2e12945d97dc0fa9f2b2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e6be52dbfbe6f5d51589f3a3738013dedeee6bdd
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835500"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824757"
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>Programové přeučení modelů Azure Machine Learning
-V tomto návodu se dozvíte, jak programově přeučit Azure Machine Learning webové služby pomocí jazyka C# a Služba Machine Learning Batch Execution.
+V tomto návodu se dozvíte, jak programově přeučit Azure Machine Learning webové služby pomocí C# a provedení dávky služby Machine Learning service.
 
-Jakmile mají retrained modelu, následující postupy ukazují, jak aktualizovat model prediktivní webové služby:
+Jakmile máte retrained modelu, následující postupy ukazují, jak aktualizace modelu v prediktivní webové služby:
 
-* Pokud jste nasadili Classic webovou službu na portálu webové služby Machine Learning, přečtěte si téma [Přeučování webové služby Classic](retrain-a-classic-web-service.md). 
-* Pokud jste nasadili novou webovou službu, najdete v části [Přeučování novou webovou službu pomocí rutin Machine Learning Management](retrain-new-web-service-using-powershell.md).
+* Pokud jste nasadili webové služby Classic na portálu webových služeb Machine Learning, přečtěte si téma [Přeučování webové služby Classic](retrain-a-classic-web-service.md). 
+* Pokud jste nasadili novou webovou službu, přečtěte si téma [Přeučování nové webové služby pomocí rutin pro správu ve službě Machine Learning](retrain-new-web-service-using-powershell.md).
 
-Přehled procesu retraining najdete v tématu [Přeučování Model strojového učení](retrain-machine-learning-model.md).
+Přehled procesu retraining, naleznete v tématu [Přeučování Model strojového učení](retrain-machine-learning-model.md).
 
-Pokud chcete spustit s existující webovou službu na základě nové Azure Resource Manager, přečtěte si téma [Přeučování existující prediktivní webovou službu](retrain-existing-resource-manager-based-web-service.md).
+Pokud chcete začít s vaší stávající webové služby založené na nový Azure Resource Manageru, přečtěte si téma [Přeučování existující prediktivní webové služby](retrain-existing-resource-manager-based-web-service.md).
 
-## <a name="create-a-training-experiment"></a>Vytvoření experimentu školení
-V tomto příkladu budete používat "vzorku 5: Train, testovací, Evaluate pro binární klasifikaci: pro dospělé datovou sadu" z ukázky Microsoft Azure Machine Learning. 
+## <a name="create-a-training-experiment"></a>Vytvořit výukový experiment
+V tomto příkladu budete používat "vzorku 5: trénování, testování, vyhodnotit pro binární klasifikaci: pro dospělé datovou sadu" z ukázky Microsoft Azure Machine Learning. 
 
-Vytvoření experimentu:
+Vytvoření testu:
 
-1. Přihlaste se k platformě Microsoft Azure strojového učení Studio. 
-2. V pravém horním rohu obrazovky řídicí panel, klikněte na tlačítko **nový**.
+1. Přihlaste se k Microsoft Azure Machine Learning Studio. 
+2. V pravém dolním rohu řídicího panelu, klikněte na **nový**.
 3. Microsoft Samples vyberte ukázkový 5.
-4. Přejmenování experimentu v horní části plátna experimentu, vyberte název experimentu "vzorku 5: Train, testovací, Evaluate pro binární klasifikaci: pro dospělé datovou sadu".
-5. Typ modelu úplné zjišťování.
-6. V dolní části plátna experimentu, klikněte na tlačítko **spustit**.
-7. Klikněte na tlačítko **nastavit webové služby** a vyberte **Retraining webové služby**. 
+4. Přejmenování experimentu v horní části plátna experimentu, vyberte název experimentu "vzorku 5: trénování, testování, vyhodnotit pro binární klasifikaci: pro dospělé Dataset".
+5. Typ modelu sčítání.
+6. V dolní části na plátno experimentu klikněte na tlačítko **spustit**.
+7. Klikněte na tlačítko **Set Up webová služba** a vyberte **Přetrénování webová služba**. 
 
-Následující obrázek znázorňuje počáteční experimentu.
+Následující uvádí počáteční experimentu.
    
    ![Počáteční experimentu.][2]
 
@@ -55,91 +56,91 @@ Následující obrázek znázorňuje počáteční experimentu.
 ## <a name="create-a-predictive-experiment-and-publish-as-a-web-service"></a>Vytvořit prediktivní experiment a publikovat jako webovou službu
 Dále vytvoříte Predicative experimentu.
 
-1. V dolní části plátna experimentu, klikněte na tlačítko **nastavit webové služby** a vyberte **webové služby prediktivní**. To uloží model jako modulu Trained Model a přidá modulů vstup a výstup webové služby. 
+1. V dolní části na plátno experimentu klikněte na tlačítko **nastavení webové služby** a vyberte **prediktivní webová služba**. Toto uloží modelu jako Trénovaného modelu a přidá webovou službu vstupní a výstupní moduly. 
 2. Klikněte na **Run** (Spustit). 
-3. Po dokončení běhu experimentu klikněte na tlačítko **nasazení webové služby [Classic]** nebo **nasazení [nové] webové služby**.
+3. Po dokončení spuštění experimentu klikněte na tlačítko **nasazení webové služby [Classic]** nebo **nasazení [nové] webová služba**.
 
 > [!NOTE] 
-> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, do které, můžete nasazení webové služby. Další informace najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](manage-new-webservice.md). 
+> K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, ke kterému, můžete nasazení webové služby. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md). 
 
-## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>Výukový experiment nasadit jako webovou službu školení
-Chcete-li přeučování trénovaného modelu, musíte je nasadit výukový experiment, kterou jste vytvořili jako webovou službu Retraining. Potřebuje této webové služby *výstup webové služby* připojené k modulu *[Train Model] [ train-model]* modul, abyste mohli vytvořit nový trénované modely.
+## <a name="deploy-the-training-experiment-as-a-training-web-service"></a>Školení experiment nasadit jako webovou službu školení
+Chcete-li přeučování trénovaného modelu, musíte je nasadit výukového experimentu, který jste vytvořili jako webovou službu Retraining. Potřebuje tuto webovou službu *výstup webové služby* připojeným modulům *[Train Model] [ train-model]* modulu, abyste mohli vytvářet nové školení modely.
 
-1. Pokud chcete vrátit do výukový experiment, klikněte na ikonu experimenty v levém podokně a potom klikněte na tlačítko s názvem úplné zjišťování modelu experimentu.  
-2. Do vyhledávacího pole položek experimentu hledání zadejte webovou službu. 
-3. Přetáhněte *vstup webové služby* plátno modul do experimentu a propojte svůj výstup do *vyčištění chybějících dat* modulu.  Tím se zajistí, že retraining dat je zpracován stejným způsobem jako původní data školení.
-4. Přetáhněte dva *webovou službu výstup* modulů na plátno experimentu. Připojit výstup *Train Model* modulu k jednomu a výstup *Evaluate Model* modulu na druhý. Výstup webové služby pro **Train Model** nám poskytuje nové naučeného modelu. Výstup připojené k **Evaluate Model** vrátí výstupu Tenhle modul, který je výsledky výkonu.
+1. Vraťte se do výukového experimentu, klikněte na ikonu experimenty v levém podokně a pak klikněte na experiment s názvem modelu sčítání.  
+2. Do vyhledávacího pole Hledat položky Experiment zadejte webovou službu. 
+3. Přetáhněte *vstup webové služby* do experimentu plátno a propojte svůj výstup do *vyčištění chybějících dat* modulu.  Tím se zajistí, že retraining data budou zpracovány stejně jako váš původním trénovací data.
+4. Přetáhněte dva *webovou službu výstup* modulů na plátno experimentu. Propojte výstup modulu *trénování modelu* modulu jeden a výstup *Evaluate Model* modulu do jiné. Výstup webové služby pro **Train Model** získáváme nové trénovaného modelu. Výstup připojené k **Evaluate Model** vrátí výstupní tímto modulem, který je výsledky výkonu.
 5. Klikněte na **Run** (Spustit). 
 
-Dále je nutné nasadit výukový experiment jako webová služba, která vytváří modulu trained model a výsledky vyhodnocení modelu. K tomu, jsou závislé na tom, jestli pracujete s webovou službu Classic nebo novou webovou službu vaší další sadu akcí.  
+Dále je nutné nasadit výukového experimentu jako webovou službu, která vytváří trénovaného modelu a výsledky vyhodnocení modelu. K tomu jsou vaše další sadu akcí závisí na tom, jestli pracujete s webové služby Classic nebo novou webovou službu.  
 
-**Classic webové služby**
+**Klasické webové služby**
 
-V dolní části plátna experimentu, klikněte na tlačítko **nastavit webové služby** a vyberte **nasazení webové služby [Classic]**. Webová služba **řídicí panel** se zobrazí s klíč rozhraní API a na stránce nápovědy rozhraní API pro dávkové zpracování. Pouze metodu Batch Execution můžete použít pro vytvoření Trénované modely.
+V dolní části na plátno experimentu klikněte na tlačítko **nastavení webové služby** a vyberte **nasazení webové služby [Classic]**. Webová služba **řídicí panel** se zobrazí s klíčem rozhraní API a na stránce nápovědy rozhraní API pro spuštění dávky. Pouze metody provedení dávky služby lze použít pro vytvoření Trénované modely.
 
-**Novou webovou službu**
+**Nové webové služby**
 
-V dolní části plátna experimentu, klikněte na tlačítko **nastavit webové služby** a vyberte **nasazení [nové] webové služby**. Otevře se na stránku webové služby nasadit portálu webové služby Azure Machine Learning webové služby. Zadejte název pro webovou službu a zvolte plán platby a potom klikněte na **nasadit**. Pouze Batch Execution metodu lze použít pro vytvoření Trénované modely
+V dolní části na plátno experimentu klikněte na tlačítko **nastavení webové služby** a vyberte **nasazení [nové] webová služba**. Webové služby Azure Machine Learning Web Services portálu se otevře na stránku nasazení webové služby. Zadejte název pro webovou službu a zvolte plán plateb a potom klikněte na tlačítko **nasadit**. Pouze metodu provedení dávky služby lze použít pro vytvoření Trénované modely
 
-V obou případech po dokončení spuštění experimentu výsledné pracovního postupu by měl vypadat takto:
+V obou případech po experimentu dokončí, výsledné pracovní postup by měl vypadat takto:
 
-![Po spuštění výsledného workflow.][4]
+![Výsledný postupu po spuštění.][4]
 
 
 
-## <a name="retrain-the-model-with-new-data-using-bes"></a>Přeučování modelu s použitím BES nová data
-V tomto příkladu použijete C# k vytvoření retraining aplikace. Ukázkový kód Python nebo R můžete použít také k provedení této úlohy.
+## <a name="retrain-the-model-with-new-data-using-bes"></a>Přeučování s novými daty pomocí BES modelu
+V tomto příkladu použijete C# k vytvoření aplikace přeučení. Můžete také použít ukázkový kód Pythonu nebo r. k provedení této úlohy.
 
-K volání rozhraní Retraining API:
+Chcete-li volat rozhraní Retraining API:
 
-1. Vytvořte konzolovou aplikaci C# v sadě Visual Studio: **nový** > **projektu** > **Visual C#** > **Windows Classic Desktop** > **konzolovou aplikaci (rozhraní .NET Framework)**.
-2. Přihlaste se k portálu webová služba Machine Learning.
-3. Pokud pracujete s webovou službou Classic, klikněte na tlačítko **Classic webové služby**.
-   1. Klikněte na tlačítko webové služby, kterou pracujete.
+1. Vytvořte konzolovou aplikaci C# v sadě Visual Studio: **nový** > **projektu** > **Visual C#** > **Windows Klasický desktopový** > **aplikace konzoly (.NET Framework)**.
+2. Přihlaste se k portálu webové služby Machine Learning.
+3. Pokud pracujete s webovou službou Classic, klikněte na tlačítko **klasické webové služby**.
+   1. Klikněte na webovou službu, kterou pracujete.
    2. Klikněte na výchozí koncový bod.
    3. Klikněte na tlačítko **využívat**.
-   4. V dolní části **spotřebě** stránky v **ukázkový kód** klikněte na tlačítko **Batch**.
+   4. V dolní části **využívání** stránku, **ukázkový kód** klikněte na tlačítko **Batch**.
    5. Přejděte ke kroku 5 tohoto postupu.
-4. Pokud pracujete s novou webovou službu, klikněte na tlačítko **webové služby**.
-   1. Klikněte na tlačítko webové služby, kterou pracujete.
+4. Pokud pracujete s novou webovou službu, klikněte na tlačítko **webových služeb**.
+   1. Klikněte na webovou službu, kterou pracujete.
    2. Klikněte na tlačítko **využívat**.
-   3. Na konci spotřebovat, v stránky **ukázkový kód** klikněte na tlačítko **Batch**.
-5. Ukázka kódu C# pro spuštění dávky zkopírujte a vložte jej do souboru Program.cs, ujistěte se, že obor názvů zůstává beze změn.
+   3. V dolní části spotřebě stránku, **ukázkový kód** klikněte na tlačítko **Batch**.
+5. Zkopírujte ukázkový C# kód pro spuštění dávky a vložte ho do souboru Program.cs a ujistěte se, obor názvů zůstane beze změny.
 
-Přidejte balíček Nuget Microsoft.AspNet.WebApi.Client jako zadaný v komentářích. Pokud chcete přidat odkaz na Microsoft.WindowsAzure.Storage.dll, je nejdřív potřeba nainstalovat klientské knihovny pro úložiště služby Microsoft Azure. Další informace najdete v tématu [služby úložiště systému Windows](https://www.nuget.org/packages/WindowsAzure.Storage).
+Přidejte balíček Nuget Microsoft.AspNet.WebApi.Client uvedená v komentářích. Přidat odkaz na Microsoft.WindowsAzure.Storage.dll, nejprve potřebujete nainstalovat klientské knihovny pro úložiště služby Microsoft Azure. Další informace najdete v tématu [služby úložiště systému Windows](https://www.nuget.org/packages/WindowsAzure.Storage).
 
-### <a name="update-the-apikey-declaration"></a>Aktualizace apikey deklarace
+### <a name="update-the-apikey-declaration"></a>Aktualizovat deklarace apikey
 Vyhledejte **apikey** deklarace.
 
     const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-V **informace o základní spotřeby** části **spotřebě** stránky, vyhledejte primární klíč a zkopírujte ho do **apikey** deklarace.
+V **informace o základní spotřeby** část **využívání** stránky, vyhledejte primární klíč a zkopírujte ho do **apikey** deklarace.
 
 ### <a name="update-the-azure-storage-information"></a>Aktualizovat informace o Azure Storage
-Ukázkový kód BES se uloží soubor z místního disku (například "C:\temp\CensusIpnput.csv") do služby Azure Storage, procesy a zapíše výsledky zpět do služby Azure Storage.  
+Ukázkový kód BES nahraje soubor z místního disku (například "C:\temp\CensusIpnput.csv") do služby Azure Storage, procesy a zapisuje výsledky zpět do služby Azure Storage.  
 
-K provedení této úlohy, musí získat informace název, klíč a kontejneru účtu úložiště pro váš účet úložiště z portálu Azure classic a aktualizace odpovídající hodnoty v kódu. 
+Tento úkol provést, musíte načíst informace název, klíč a kontejner účtu úložiště pro váš účet úložiště z portálu Azure classic a odpovídající hodnoty aktualizace v kódu. 
 
 1. Přihlaste se k portálu Azure classic.
-2. Ve sloupci levém navigačním panelu klikněte na tlačítko **úložiště**.
-3. Ze seznamu účtů úložiště vyberte jeden pro uložení retrained modelu.
+2. V levém navigačním sloupci klikněte na tlačítko **úložiště**.
+3. V seznamu účtů úložiště vyberte jeden pro uložení retrained modelu.
 4. V dolní části stránky klikněte na tlačítko **spravovat přístupové klíče**.
-5. Zkopírujte a uložte **primární přístupový klíč** a zavřete tento dialog. 
+5. Zkopírujte a uložte **primární přístupový klíč** a zavřete dialogové okno. 
 6. V horní části stránky klikněte na tlačítko **kontejnery**.
-7. Vyberte existující kontejner nebo vytvořte novou a uložit název.
+7. Vybrat existující kontejner nebo vytvořte novou a uložit název.
 
-Vyhledejte *StorageAccountName*, *StorageAccountKey*, a *StorageContainerName* deklarace a aktualizujte hodnoty jste uložili z portálu Azure.
+Vyhledejte *StorageAccountName*, *StorageAccountKey*, a *StorageContainerName* deklarace a aktualizujte hodnoty jste si uložili z webu Azure portal.
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure Storage Account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage Key
     const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage Container name
 
-Můžete také zajistit, aby byl vstupní soubor k dispozici v umístění, které zadáte v kódu. 
+Také musíte zajistit, že se že vstupní soubor je k dispozici v umístění, které zadáte v kódu. 
 
-### <a name="specify-the-output-location"></a>Zadejte umístění výstupu
-Pokud zadáte umístění výstupu v datové části žádosti, příponu souboru zadaná v *RelativeLocation* musí být zadány jako ilearner. 
+### <a name="specify-the-output-location"></a>Určení umístění výstupu
+Při zadávání umístění výstupu do datové části požadavku, přípona souboru zadaný v *RelativeLocation* musí být zadán jako ilearner. 
 
-Podívejte se na následující příklad:
+Prohlédněte si následující příklad:
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {
@@ -152,27 +153,27 @@ Podívejte se na následující příklad:
         },
 
 > [!NOTE]
-> Názvy výstupních umístění se může lišit od těch v tomto návodu v pořadí, ve které jste přidali modulů výstup webové služby. Vzhledem k tomu, že jste nastavili tento výukový experiment s dvěma výstupy, výsledky budou zahrnovat informace o umístění úložiště pro oba dva.  
+> Názvy umístění výstupu se může lišit od těch v tomto názorném postupu podle pořadí, ve které jste přidali modulů výstup webové služby. Protože nastavení tohoto výukového experimentu s dva výstupy výsledky zahrnují informace o umístění úložiště pro oba z nich.  
 > 
 > 
 
-![Retraining výstup][6]
+![Přeškolení výstupu][6]
 
-Obrázek 4: Retraining výstup.
+Obrázek 4: Přetrénování výstup.
 
 ## <a name="evaluate-the-retraining-results"></a>Vyhodnoťte Retraining výsledky
 Při spuštění aplikace výstup obsahuje adresu URL a SAS token potřebné pro přístup k výsledky hodnocení.
 
-Zobrazí výsledky retrained modelu tím, že zkombinujete *BaseLocation*, *RelativeLocation*, a *SasBlobToken* z výsledků výstup pro *output2* (jak je znázorněno na předchozím obrázku výstup retraining) a vkládání úplnou adresu URL v adresním řádku prohlížeče.  
+Zobrazí se výsledky výkonu retrained modelu tím, že zkombinujete *BaseLocation*, *RelativeLocation*, a *SasBlobToken* z výsledků výstupu pro *output2* (jak je znázorněno na předchozím obrázku retraining výstupní) a vložením úplnou adresu URL do adresního řádku prohlížeče.  
 
-Podívejte se na výsledky, abyste zjistili, jestli pro nově cvičný model provádí dostatečně dobře nahradit stávající.
+Zkontrolujte výsledky a určit, zda se nově trénovaného modelu dostatečně dobře funguje nahradit stávající.
 
-Kopírování *BaseLocation*, *RelativeLocation*, a *SasBlobToken* z výstup výsledků, použijeme je během procesu retraining.
+Kopírovat *BaseLocation*, *RelativeLocation*, a *SasBlobToken* z výstupní výsledky, použijeme je během procesu přeučení.
 
 ## <a name="next-steps"></a>Další postup
-Pokud jste nasadili prediktivní webovou službu kliknutím **nasazení webové služby [Classic]**, najdete v části [Přeučování webové služby Classic](retrain-a-classic-web-service.md).
+Pokud jste nasadili službu prediktivními webovými kliknutím **nasazení webové služby [Classic]**, naleznete v tématu [Přeučování webové služby Classic](retrain-a-classic-web-service.md).
 
-Pokud jste nasadili prediktivní webovou službu kliknutím **nasazení [nové] webové služby**, najdete v části [Přeučování novou webovou službu pomocí rutin Machine Learning Management](retrain-new-web-service-using-powershell.md).
+Pokud jste nasadili službu prediktivními webovými kliknutím **nasazení [nové] webová služba**, naleznete v tématu [Přeučování nové webové služby pomocí rutin pro správu ve službě Machine Learning](retrain-new-web-service-using-powershell.md).
 
 <!-- Retrain a New web service using the Machine Learning Management REST API -->
 

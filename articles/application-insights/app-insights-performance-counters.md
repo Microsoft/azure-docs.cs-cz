@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: e5915f18799386ae92019073fb50dac96da107ea
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 92cbd3570d48bf12d603f68593465aafed62985c
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960102"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852312"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Čítače výkonu systému ve službě Application Insights
 Windows poskytuje širokou škálu [čítače výkonu](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) například vytížení procesoru, paměti, disku a využití sítě. Můžete také definovat své vlastní. [Application Insights](app-insights-overview.md) můžete zobrazit tyto čítače výkonu, pokud je aplikace spuštěna v rámci služby IIS na místního hostitele nebo virtuální počítač, ke kterému máte přístup pro správu. Grafy označují prostředky dostupné pro vaše živé aplikace a může pomoct identifikovat nevyváženého zatížení mezi instancemi serveru.
@@ -96,7 +96,7 @@ Nebo můžete provést totéž s vlastní metriky, které jste vytvořili:
 ## <a name="performance-counters-in-analytics"></a>Čítače výkonu v Analytics
 Můžete vyhledat a zobrazit sestavy čítačů výkonu v [Analytics](app-insights-analytics.md).
 
-**Čítače výkonu** zpřístupňuje schématu `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu.  V telemetrii pro každou aplikaci můžete zobrazí pouze čítače pro tuto aplikaci. Například pokud chcete zobrazit jsou k dispozici co čítače: 
+**Čítače výkonu** zpřístupňuje schématu `category`, `counter` název, a `instance` název jednotlivých čítačů výkonu.  V telemetrii pro každou aplikaci zobrazí se vám jenom čítače pro tuto aplikaci. Například pokud chcete zobrazit jsou k dispozici co čítače: 
 
 ![Čítače výkonu ve službě Application Insights analytics](./media/app-insights-performance-counters/analytics-performance-counters.png)
 

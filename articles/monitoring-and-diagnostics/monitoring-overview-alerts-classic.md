@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: e7622ffcfbaca4f83f0b5233159fc94720148365
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 2caf3d6373e764f5d5538a14a1750f1bfee2871d
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614136"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822275"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou upozornění v Microsoft Azure classic?
 
@@ -89,7 +89,7 @@ Webhooky umožňuje automatizaci a nápravu, například pomocí:
 ## <a name="next-steps"></a>Další postup
 Získání informací o pravidla upozornění a nakonfigurovaly pomocí:
 
-* Další informace o [metriky](../monitoring/monitoring-data-collection.md)
+* Další informace o [metriky](../azure-monitor/platform/data-collection.md)
 * Konfigurace [klasických upozornění na metriku pomocí webu Azure portal](alert-metric-classic.md)
 * Konfigurace [classic PowerShell upozornění metriky](alert-metric-classic.md)
 * Konfigurace [klasické rozhraní příkazového řádku upozornění metriky (CLI)](alert-metric-classic.md)

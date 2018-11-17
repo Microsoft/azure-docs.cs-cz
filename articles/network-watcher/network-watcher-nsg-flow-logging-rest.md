@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 003335aad0452e7a2dbfff49ed29a6b99b5d54d2
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 30f20e2671b4428f08c38eeb93ec90f0b745eea6
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089625"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819113"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurace skupiny zabezpečení sítě protokolů toku s využitím rozhraní REST API
 
@@ -30,6 +30,9 @@ ms.locfileid: "39089625"
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 Protokoly toku skupin zabezpečení sítě jsou funkce služby Network Watcher, který vám umožní zobrazit informace o příchozí a odchozí provoz IP přes skupinu zabezpečení sítě. Tyto protokoly toku jsou napsané ve formátu json a zobrazení odchozí a příchozí toků na základě pravidel za NIC toku se vztahuje na 5 řazené kolekce členů informace o toku (zdrojová a cílová IP, zdrojový/cílový Port, protokol), a jestli byl povolený nebo zakázaný provoz.
+
+> [!NOTE] 
+> Verze protokoly toku 2 jsou k dispozici pouze v centrální oblasti USA – západ. Konfigurace je k dispozici prostřednictvím webu Azure Portal a rozhraní REST API. Povolení verze 2 protokoly v nepodporované oblasti výsledkem bude výstupem do vašeho účtu úložiště protokolů verze 1.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -46,7 +49,7 @@ Scénáře popsané v tomto článku se dozvíte, jak povolit, zakázat a dotazo
 
 V tomto scénáři provedete následující:
 
-* Povolení protokolů toku
+* Povolení protokolů toku (verze 2)
 * Zakázat protokolů toku
 * Stav protokoly toku dotazu
 
@@ -69,7 +72,7 @@ armclient post "https://management.azure.com//subscriptions/${subscriptionId}/pr
 
 ## <a name="enable-network-security-group-flow-logs"></a>Povolit skupiny zabezpečení sítě protokolů toku
 
-Příkaz povolení protokolů toku můžete vidět v následujícím příkladu:
+Příkaz, který umožní tok protokoly verze 2 je znázorněno v následujícím příkladu. Pro verzi 1 nahraďte pole 'version' '1':
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -86,7 +89,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -105,6 +112,10 @@ Odpověď vrácená z předchozího příkladu vypadá takto:
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -129,7 +140,11 @@ $requestBody = @"
     'retentionPolicy' : {
             days: 5,
             enabled: true
-        }
+        },
+    'format': {
+        'type': 'JSON',
+        'version': 2
+    }
     }
 }
 "@
@@ -148,6 +163,10 @@ Odpověď vrácená z předchozího příkladu vypadá takto:
     "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }
@@ -182,6 +201,10 @@ Následuje příklad odpovědi vrácené:
    "retentionPolicy": {
       "days": 5,
       "enabled": true
+    },
+    "format": {
+    "type": "JSON",
+    "version": 2
     }
   }
 }

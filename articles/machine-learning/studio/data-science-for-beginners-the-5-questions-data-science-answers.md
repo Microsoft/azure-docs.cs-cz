@@ -1,11 +1,12 @@
 ---
-title: Vědecké zpracování 5 dat otázky - datové vědy pro začátečníky - Azure Machine Learning | Microsoft Docs
-description: Vědecké zpracování dat pro začátečníky je se dozvíte, jaké základní koncepce při 5 krátké videa, počínaje The 5 otázky datové vědy odpovědi. Z Azure Machine Learning.
-keywords: provádění vědecké zpracování dat, data vědecké účely začátečníka, vědecké zpracování dat pro začátečníka, datové vědy základy, otázky ohledně dat vědecké účely, datové vědy video, datové vědy Úvod
+title: 5 datových vědách souvisejících s dotazy – datová věda pro začátečníky – Azure Machine Learning | Dokumentace Microsoftu
+description: Vědecké zpracování dat pro začátečníky je vás naučí základní koncepce při 5 krátkých videí, počínaje The 5 odpovídá vědecké zkoumání dat pro dotazy. Ze služby Azure Machine Learning.
+keywords: provádění datových věd, začátečníky datové vědy, datové vědy pro začátečníky, základní informace o datové vědy, data science dotazy, data science video, datové vědy Úvod
 services: machine-learning
 documentationcenter: na
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
@@ -16,130 +17,130 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 1d004eb16fcac13d6ba7592cbe432cbeac0401e8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 10f0c8256f991a0d873b38a3606c1218b9edf56d
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834147"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819014"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Vědecké zkoumání dat pro začátečníky – Video 1: 5 otázek, na které odpovídá vědecké zkoumání dat
-Rychlý úvod k vědecké zpracování dat z *vědecké zpracování dat pro začátečníky* v pěti krátké videa z vědecký pracovník hlavní data. Tyto videa jsou základní ale užitečná, ať už vás zajímá provádění vědecké zpracování dat nebo práci s datových vědců.
+Rychlý úvod do datových věd z *datová věda pro začátečníky* v pěti krátkých videích z hlavní vědec. Tato videa jsou užitečné, ale základní, ať už vás zajímá datových věd nebo pracujete s odborníky přes data.
 
-O typech otázky, které může odpovědět vědecké zpracování dat je toto první video. Získejte maximum z řady, můžete sledujte všechny. [Přejděte do seznamu videí](#other-videos-in-this-series)
+Je toto první video o druzích otázek, které dokáže odpovědět pro datové vědy. Využijte naplno řady, můžete sledujte všechny. [Přejít na seznam videí](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/8/player]
 >
 >
 
-## <a name="other-videos-in-this-series"></a>Další videa z této série
-*Vědecké zpracování dat pro začátečníky* je rychlý úvod do dat vědecké účely trvá asi 25 minut celkový. Podívejte se na všechny pět videa:
+## <a name="other-videos-in-this-series"></a>Další videa v této sérii
+*Datová věda pro začátečníky* článek obsahuje rychlý úvod do data science trvá přibližně 25 minut celkový počet. Prostudujte si všechna videa pět:
 
-* Video 1: 5 otázky, odpovědi data vědecké účely
-* Video 2: [vašich dat je připravený pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 56 sekundu min.)*
-* Video 3: [zeptejte se vám pomůže odpovědět s daty](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 17 sekundu min.)*
-* Video 4: [předpovědi odpověď s jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 42 sekundu min.)*
-* Video 5: [zkopírujte jiní lidé práce uděláte vědecké zpracování dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 18 sekundu min.)*
+* Video 1: 5 otázky, které odpovídá vědecké zkoumání dat
+* Video 2: [jsou vaše data připravená pro vědecké zpracování dat?](data-science-for-beginners-is-your-data-ready-for-data-science.md) *(4 min 56 sek)*
+* Video 3: [položit dotaz lze odpovědět pomocí dat](data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
+* Video 4: [předpověď odpovědi pomocí jednoduchého modelu](data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min 42 sek)*
+* Video 5: [kopírování práce jiných lidí pro vědecké zkoumání dat](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
 
-## <a name="transcript-the-5-questions-data-science-answers"></a>Přepis: 5 otázky, odpovědi data vědecké účely
-Ahoj! Vítá vás série videí *vědecké zpracování dat pro začátečníky*.
+## <a name="transcript-the-5-questions-data-science-answers"></a>Přepis: 5 otázky, které odpovídá vědecké zkoumání dat
+Ahoj! Vítá vás série videí *datová věda pro začátečníky*.
 
-Vědecké zpracování dat může být první pohled poněkud složité, tak I budete zavádět základy zde bez jakýchkoli vzorce nebo programování žargonu počítače.
+Vědecké zpracování dat může být vám nemusí nahánět strach, tak I budete zavádět základy zde bez jakýchkoli rovnice nebo počítač programování žargonu.
 
-V tomto videu první budeme mluvit o "5 otázky, odpovědi vědecké účely data."
+V tomto videu první budeme mluvit o "5 otázky, které odpovídá vědecké zkoumání dat."
 
-Vědecké zpracování dat používá názvy (také označované jako kategorie nebo popisky) a čísla k předvídání odpovědi na otázky.
+Vědecké zpracování dat používá pro předpověď odpovědi na otázky názvy (označované také jako kategorií nebo popisky) a čísla.
 
-Ho může ať vás, překvapí ale *existují pouze pět otázky této datové vědy odpovědi*:
+To může překvapí vás, ale *nějaké otázky, zobrazuje se jenom pět této odpovídá vědecké zkoumání dat*:
 
-* Je toto A nebo B?
+* Je tento A nebo B?
 * Je to divné?
 * Kolik – nebo – kolik?
 * Toto uspořádání?
-* Co dalšího mám udělat?
+* Co mám dělat další?
 
-Každé z nich tyto dotazy odpovídá zapínání samostatnou rodinu machine learning metod, názvem algoritmy.
+Jedna z těchto otázek je zodpoví samostatné řady metod machine learning, neboli algoritmy.
 
-Je vhodné zamyslet o algoritmu jako recept a data podle složek. Algoritmus informuje, jak kombinovat a kombinovat data, aby bylo možné získat odpověď. Počítače jsou stejné jako mixéru. Udělají většinu práce pevný algoritmus pro vás a jejich do poměrně krátkou dobu.
+Je vhodné uvažovat o algoritmu jako recept a vaše data způsobem složek. Algoritmus, který určuje, jak zkombinovat a kombinovat data, aby bylo možné získat odpověď. Počítače jsou podobné blender. Většina těžkou práci algoritmu dělají za vás a dělají to hodně rychlé.
 
-## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>Otázka č. 1: Je tento A nebo B? používá klasifikaci algoritmy
-Začneme Otázka: je tento A nebo B?
+## <a name="question-1-is-this-a-or-b-uses-classification-algorithms"></a>Otázka 1: Je tento A nebo B? používá klasifikaci algoritmy
+Začněme Otázka: je tento A nebo B?
 
 ![Algoritmy klasifikace: je tento A nebo B?](./media/data-science-for-beginners-the-5-questions-data-science-answers/classification-algorithms.png)
 
-Tuto řadu algoritmů nazývá two-class klasifikace.
+Tato řada algoritmy se nazývá dvěma třídami klasifikace.
 
-Je vhodné pro všechny otázky, který má jenom dvě možné odpovědi.
+To je užitečné pro libovolný dotaz, který má jenom dvě možné odpovědi.
 
 Příklad:
 
-* V další 1000 miles selže tento můžete zadat: Ano nebo ne?
-* Která přináší u více zákazníků: $5 kupóny nebo 25 % sleva?
+* V dalším 1 000 mil selže tato můžete zadat: Ano nebo ne?
+* Což přináší větší počet zákazníků: 5 USD kupónu nebo 25 % slevu?
 
-Tento dotaz může být také rephrased zahrnout více než dvě možnosti: je tento A nebo B nebo C nebo D, atd.?  To se označuje jako více třídami klasifikaci a jeho užitečné, pokud máte několik – nebo několika tisíc – možné odpovědi. Více třídami klasifikace zvolí nejpravděpodobnější jeden.
+Tento dotaz může být také rephrased zahrnout více než dvě možnosti: je tento A nebo B nebo C nebo D, atd.?  Tento postup se nazývá klasifikace víc tříd a je užitečné, pokud máte několik, nebo několik tisíc – je to možné odpovědi. Klasifikace víc tříd vybere ten největší pravděpodobností.
 
-## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>Otázka č. 2: Je to divné? používá algoritmy detekce anomálií
-Další otázka dokáže odpovědět vědecké zpracování dat se: je tento divné? Tento dotaz zodpovězen řady algoritmů názvem detekce anomálií.
+## <a name="question-2-is-this-weird-uses-anomaly-detection-algorithms"></a>Otázka 2: Je to divné? používá algoritmy detekce anomálií
+Další otázky pro datové vědy můžete odpovědět: je tento divně? Tento dotaz zodpovězen podle řady algoritmů volá detekce anomálií.
 
-![Algoritmy detekce anomálií: je tento divné?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
+![Algoritmy detekce anomálií: je tento divně?](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
-Pokud máte platební karty, jste využívali již detekce anomálií. Společnost platební karty analyzuje vašim vzorům nákupu tak, aby se vás upozorní na možný podvod. Poplatky, které jsou "divné" může být nákup na úložiště, kde není nakupovat normálně nebo kdybyste kupovali neobvykle nákladných položku.
+Pokud máte platební kartu, jste využívali již detekce anomálií. Vaše společnost platební karty analyzuje vaše postupy nákupní tak, aby se vám upozornění na možný podvod. Náklady, které jsou "divné" může být nákup v úložišti, kde není nakupování obvykle nebo nákupu neobvykle nákladných položky.
 
-Tento dotaz může být užitečné v mnoha různými způsoby. Například:
+Tento dotaz může být užitečné v mnoha způsoby. Příklad:
 
-* Pokud máte automobilu s přetížení měřidla, můžete chtít znát: je tohoto měřidla přetížení čtení normální?
-* Pokud jste monitorování Internetu, chcete vědět: Tato zpráva z Internetu je typické?
+* Pokud máte automobilu s měřidla přetížení, můžete chtít vědět: je tohoto měřidla tlak čtení normální?
+* Pokud monitorujete Internetu, byste měli vědět: je typické, tato zpráva od Internetu?
 
-Detekce anomálií příznaky neočekávané nebo neobvyklé události nebo chování. Kde hledat problémy nabízí různá vodítka.
+Detekce anomálií příznaky neočekávaná nebo neobvyklá událostí nebo chování. Poskytuje příčiny, kde hledat problémů.
 
-## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>Otázka č. 3: Kolik? jak mnoho? používá regresní algoritmy
-Machine learning můžete také předpovědi odpověď jak mnohem? jak mnoho? Rodina algoritmus, který odpoví na tuto otázku se nazývá regrese.
+## <a name="question-3-how-much-or-how-many-uses-regression-algorithms"></a>3 Otázka: Kolik? nebo jak mnoho? používá algoritmy regrese
+Machine learning můžete také předpověď odpovědi jak mnohem? nebo jak mnoho? Algoritmus skupina, která odpovídá na tuto otázku se nazývá regrese.
 
-![Regrese algoritmy: kolik? jak mnoho?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
+![Regrese, algoritmy: kolik? nebo jak mnoho?](./media/data-science-for-beginners-the-5-questions-data-science-answers/regression-algorithms.png)
 
-Regrese algoritmy provádět číselné předpovědi, jako například:
+Regrese, algoritmy predikci číselné, jako například:
 
-* Co teplota bude další úterý?  
-* Co bude Moje čtvrté čtvrtletí prodej?
+* Jaké teplota budou další úterý?  
+* Co bude svoje prodeje na čtvrté čtvrtletí
 
-Pomáhají odpověď na všechny otázku, která požaduje zadání číslo.
+Pomáhají odpovědět na každou otázku, která vyzve k zadání čísla.
 
-## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>Otázka č. 4: Toto uspořádání? používá clustering algoritmy
-Na posledních dvou otázky, které jsou nyní chvilku pokročilejší.
+## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>Otázka 4: Toto uspořádání? použití clusteringu s algoritmy
+Poslední dva dotazy jsou nyní bit rozšířené.
 
-Někdy chcete pochopit strukturu datové sady – to uspořádání? Pro tuto otázku nemáte příklady, které již znáte výsledky.
+Někdy chcete podrobněji seznámit se strukturou datové sady – toto uspořádání? Pro tento dotaz nemáte příklady, které už znáte výsledky.
 
-Existuje mnoho způsobů, jak tease si strukturu dat. Jeden ze způsobů je clusteringu. Ji odděluje data do přirozené "seskupí," pro snazší interpretaci. Clustering, už není žádná jeden pravé odpovědi.
+Existuje mnoho způsobů, jak tease struktury data. Jedním z přístupů je clustering. Rozděluje data do fyzické "seskupí," pro snazší výkladu. S clusteringem, neexistuje žádná správná odpověď jeden.
 
 ![Clustering algoritmy: Toto uspořádání?](./media/data-science-for-beginners-the-5-questions-data-science-answers/clustering-algorithms.png)
 
-Běžné clustering otázek příkladů:
+Mezi běžné příklady clusteringu dotazy jsou:
 
-* Které prohlížeče jako stejné typy filmy?
-* Které modely tiskáren selhání stejným způsobem jako?
+* Které prohlížeče, jako jsou stejné typy filmy?
+* Které modely tiskáren selhání stejným způsobem?
 
-Porozuměním uspořádání dat, můžete lépe pochopit - a předpovědi - chování a události.  
+Když porozumíte tomu, jakým způsobem je organizována data, můžete lépe pochopit – a předpovídat - chování a události.  
 
-## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>Otázka č. 5: Co mám dělat nyní? používá posílení učení algoritmy
-Otázka – poslední, co mám dělat? – používá řadu algoritmy názvem posílení učení.
+## <a name="question-5-what-should-i-do-now-uses-reinforcement-learning-algorithms"></a>5 Otázka: Co mám teď? používá učení se supervizí zpětnovazebnému
+Otázka – poslední, co mám dělat, nyní? – používá řadu algoritmy volá zpětnovazebnému učení.
 
-Posílení learning byl INSPIROVANÉ jak mozky potkanů a člověka reakce na trestání a výnosu. Tyto algoritmy dozvědět se od výsledky a rozhodnout, na další akce.
+Zpětnovazebnému učení se inspirovat jak mozky potkanů a lidé reagují na smrti a odměny. Tyto algoritmy Učte se od výsledky a rozhodnout o další akci.
 
-Posílení learning obvykle je vhodné pro automatizované systémy, které mají být velké množství malých rozhodnutí bez lidského pokyny.
+Zpětnovazebnému učení je obvykle vhodné pro automatizované systémy, které se musí provést velké množství malých rozhodnutí bez lidské pokyny.
 
-![Posílení učení algoritmy: Co dalšího mám udělat?](./media/data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
+![Učení se supervizí zpětnovazebnému: Co mám dělat pak?](./media/data-science-for-beginners-the-5-questions-data-science-answers/reinforcement-learning-algorithms.png)
 
-Otázky, které odpovídá jsou vždy o jakou akci by měla být provedena – obvykle na počítači nebo robot. Mezi příklady patří:
+Otázky, které odpovídá jsou vždy o jaká akce se má vzít – obvykle na počítači nebo robot. Můžete například:
 
-* Pokud jsem systému řízení teploty domu: Upravit teplota nebo nechat tam, kde je?  
-* Vám Samoobslužná řízení car: žlutý indikátor brzdových nebo urychlit?  
-* Pro vakuu robot: zachovat vacuuming, nebo přejděte zpět na plnících stanice?
+* Pokud jsem systému řízení teploty domu: teplotu, nebo nechat tam, kde je?  
+* Pokud jsem samořídicí automobilu: žlutý indikátor brzdových nebo zrychlení?  
+* Pro takový robot: zachovat vacuuming nebo přejděte zpět na nabíjení stanice?
 
-Algoritmy učení posílení shromažďování dat jako přejít, učení ze zkušební verze a chyby.
+Algoritmy zpětnovazební učení shromažďování dat, jako jsou go, učit se z omyl a.
 
-Tak, aby se jeho - vědecké zpracování dat pro dotazy 5 může odpovědět.
+Tak je to – 5 otázek datové vědy můžete odpovědět.
 
 ## <a name="next-steps"></a>Další postup
-* [Zkuste prvního experimentu vědecké účely data nástroje Machine Learning Studio](create-experiment.md)
-* [Získejte Úvod do Machine Learning v Microsoft Azure](what-is-machine-learning.md)
+* [Zkuste prvního experimentu vědy data s Machine Learning Studio](create-experiment.md)
+* [Úvod do strojového učení v Microsoft Azure](what-is-machine-learning.md)

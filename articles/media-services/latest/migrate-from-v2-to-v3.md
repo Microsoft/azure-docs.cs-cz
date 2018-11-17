@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/07/2018
+ms.date: 11/15/2018
 ms.author: juliako
-ms.openlocfilehash: 8c3ff4af3b556614d0b2179dceed6cabd9cbabff
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 41ad4b26247fa8037de01ff956921146a2238abc
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616006"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823365"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
@@ -65,9 +65,7 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 * Následující entity byly přejmenovány.
     * JobOutput nahradí úkolů a je teď součástí projektu.
     * StreamingLocator nahradí Lokátor.
-    * Livestream nahradí kanálu.
-        
-        LiveEvents fakturace vychází měřiče živý kanál. Další informace najdete v tématu [živého streamování přehled](live-streaming-overview.md#billing) a [ceny](https://azure.microsoft.com/pricing/details/media-services/).
+    * Livestream nahradí kanálu.<br/>LiveEvents fakturace vychází měřiče živý kanál. Další informace najdete v tématu [živého streamování přehled](live-streaming-overview.md#billing) a [ceny](https://azure.microsoft.com/pricing/details/media-services/).
     * LiveOutput nahradí programu.
 * LiveOutputs není nutné explicitně spustit, spusťte na vytváření a zastavit při odstranění. Programy pracoval odlišně v rozhraních API v2, měly spustit po jeho vytvoření.
 
@@ -75,10 +73,7 @@ Pokud máte službu poskytování videí dnes vyvinuté v horní části [starš
 
 Rozhraní API v3 má následující funkce mezer s ohledem na rozhraní API v2. Zavření mezer je ve vývoji.
 
-* [Kodér úrovně Premium](../previous/media-services-premium-workflow-encoder-formats.md) a starší [media analytics procesorů](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 ve verzi Preview, Face Redactoru atd.) nejsou přístupné prostřednictvím v3.
-
-    Zákazníci, kteří chtějí migrovat z Media Indexer 1 nebo 2 preview můžete okamžitě použít AudioAnalyzer přednastavení v rozhraní API v3.  Toto nové přednastavení obsahuje víc funkcí než starší Media Indexer 1 nebo 2. 
-
+* [Kodér úrovně Premium](../previous/media-services-premium-workflow-encoder-formats.md) a starší [media analytics procesorů](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 ve verzi Preview, Face Redactoru atd.) nejsou přístupné prostřednictvím v3.<br/>Zákazníci, kteří chtějí migrovat z Media Indexer 1 nebo 2 preview můžete okamžitě použít AudioAnalyzer přednastavení v rozhraní API v3.  Toto nové přednastavení obsahuje víc funkcí než starší Media Indexer 1 nebo 2. 
 * Mnohé z pokročilých funkcích sady Media Encoder Standard v rozhraních API v2 aktuálně nejsou k dispozici ve verzi 3, jako například:
     * Omezení (pro scénáře na vyžádání a živé)
     * Spojování prostředků
@@ -103,13 +98,12 @@ V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné
 ## <a name="known-issues"></a>Známé problémy
 
 * V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-sdk), rozhraní příkazového řádku, nebo jeden z podporovaných sad SDK.
-* V současné době rezervovaných jednotek médií je pouze možné spravovat pomocí rozhraní API služby Media Services v2. Další informace najdete v tématu [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md).
+* Potřebujete zřizovat rezervované jednotky médií (použité položky) ve svém účtu k řízení souběžnosti a výkonu vašich úloh, zejména těch, které jsou zahrnující Video nebo zvuk analýzy. Další informace najdete v článku o [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md). Můžete spravovat pomocí často používané cesty [CLI 2.0 pro Media Services v3](media-reserved-units-cli-how-to.md), použije [webu Azure portal](../previous/media-services-portal-scale-media-processing.md), nebo pomocí[ rozhraní API v2](../previous/media-services-dotnet-encoding-units.md). Potřebujete zřizovat použité položky, ať už jsou pomocí Media Services v2 nebo v3 rozhraní API.
 * Služba Media Services entity vytvořené pomocí v3, které rozhraní API nejde spravovat pomocí rozhraní API v2.  
 * Není doporučeno spravovat entity, které byly vytvořeny s rozhraními API v2 přes rozhraní API v3. Následuje několik příkladů, které usnadňují entity, které ve dvou verzích nekompatibilní rozdíly:   
     * Úlohy a úkoly vytvořené ve verzi v2 není uveden ve verzi 3 nejsou spojeny s transformace. Doporučuje se přepnout na v3 transformace a úlohy. Bude existovat poměrně krátké časové období museli monitorování v2 probíhající úlohy při přepnutí.
-    * Kanály a programy vytvořené pomocí v2 (které jsou mapovány na LiveEvents a LiveOutputs ve verzi 3) nemůže pokračovat, spravován pomocí v3. Doporučuje se přepnout na v3 LiveEvents a LiveOutputs na vhodné zastavit kanál.
-    
-        V současné době nemůžete migrovat průběžně běžícím kanálům se půjde.  
+    * Kanály a programy vytvořené pomocí v2 (které jsou mapovány na LiveEvents a LiveOutputs ve verzi 3) nemůže pokračovat, spravován pomocí v3. Doporučuje se přepnout na v3 LiveEvents a LiveOutputs na vhodné zastavit kanál.<br/>V současné době nemůžete migrovat průběžně běžícím kanálům se půjde.  
+
 > [!NOTE]
 > Tento článek (záložky) a zachovat, vyhledávají se aktualizace.
 

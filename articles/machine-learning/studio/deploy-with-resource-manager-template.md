@@ -4,7 +4,8 @@ description: Postup nasazení pracovního prostoru pro Azure Machine Learning po
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 4955ac4d-ff99-4908-aa27-69b6bfcc8e85
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: fc19c77e90ffd2d300497fc496da02b2d2234d3a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e17eb0b1a62a8441478773ff0d485291b41a363f
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244385"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819317"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Nasazení pracovního prostoru Machine Learning pomocí Azure Resource Manageru
 ## <a name="introduction"></a>Úvod
@@ -106,7 +107,7 @@ Tento krok je potřeba opakovat pro každou relaci. Po ověření, má být zobr
 
 Když teď máme přístup k Azure, můžeme vytvořit skupinu prostředků.
 
-* Vytvoření skupiny prostředků
+* Vytvořit skupinu prostředků
 
 ```
 $rg = New-AzureRmResourceGroup -Name "uniquenamerequired523" -Location "South Central US"

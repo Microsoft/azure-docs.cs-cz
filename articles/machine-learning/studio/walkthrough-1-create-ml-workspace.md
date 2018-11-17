@@ -1,10 +1,11 @@
 ---
-title: 'Krok 1: Vytvoření pracovního prostoru Machine Learning | Microsoft Docs'
-description: 'Krok 1 vývoj prediktivního řešení návod: Zjistěte, jak nastavit nový pracovní prostor Azure Machine Learning Studio.'
+title: 'Krok 1: Vytvoření pracovního prostoru Machine Learning | Dokumentace Microsoftu'
+description: 'Vývoj prediktivního řešení návod krok 1: Zjistěte, jak vytvořit nový pracovní prostor Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: b3c97e3d-16ba-4e42-9657-2562854a1e04
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: f6f6ed67a1ddde3d8f3102a8f7032dc03b0e91b9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7b4fa13551b08e157e835cbdd21cedbf4d989305
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835810"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822955"
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>Krok 1 průvodce: Vytvoření pracovního prostoru Machine Learning
 Toto je první krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md).
@@ -35,18 +36,18 @@ Toto je první krok tohoto průvodce, [vývoj řešení prediktivní analýzy v 
 - - -
 <!-- This needs to be updated to refer to the new way of creating workspaces in the Ibiza portal -->
 
-Pokud chcete používat Machine Learning Studio, potřebujete pracovní prostor Microsoft Azure Machine Learning. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.  
+Pokud chcete používat Machine Learning Studio, musíte mít pracovní prostor Microsoft Azure Machine Learning. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.  
 
-Správce pro vaše předplatné Azure je potřeba vytvořit pracovní prostor a pak je přidejte jako roli vlastníka nebo přispěvatele. Podrobnosti najdete v tématu [vytvoření a sdílení pracovní prostor služby Azure Machine Learning](create-workspace.md).
+Správce pro vaše předplatné Azure je potřeba vytvořit pracovní prostor a pak vás přidal jako vlastníka nebo přispěvatele. Podrobnosti najdete v tématu [vytváření a sdílení pracovního prostoru služby Azure Machine Learning](create-workspace.md).
 
-Po vytvoření pracovního prostoru Machine Learning Studio otevřete ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Pokud máte více než jednoho pracovního prostoru, můžete vybrat pracovním prostoru na panelu nástrojů v pravém horním rohu okna.
+Po vytvoření pracovního prostoru, otevřete Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Pokud máte více než jeden pracovní prostor, můžete vybrat pracovní prostor v panelu nástrojů v pravém horním rohu okna.
 
-![Vyberte pracovní prostor v Studio][2]
+![Vyberte pracovní prostor v sadě Studio][2]
 
 > [!TIP]
-> Pokud byly provedeny vlastníka pracovního prostoru, můžete sdílet experimenty, kterou právě pracujete na podle vyzvání jiných uživatelů do pracovního prostoru. To provedete v nástroji Machine Learning Studio na **nastavení** stránky. Stačí účtu Microsoft nebo účtu organizace pro každého uživatele.
+> Pokud byly provedeny vlastníka pracovního prostoru, můžete sdílet experimenty, kterou právě pracujete ostatní pozváním do pracovního prostoru. Můžete to provést v nástroji Machine Learning Studio na **nastavení** stránky. Stačí účet Microsoft nebo účtu organizace pro každého uživatele.
 > 
-> Na **nastavení** klikněte na tlačítko **uživatelé**, pak klikněte na tlačítko **POZVAT uživatele více** v dolní části okna.
+> Na **nastavení** klikněte na **uživatelé**, pak klikněte na tlačítko **POZVAT další uživatele** v dolní části okna.
 > 
 > 
 

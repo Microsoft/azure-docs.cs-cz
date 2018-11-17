@@ -4,7 +4,8 @@ description: Zjišťování a sdílení kolekce v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: b586639cc6c9d4e25d65fa9f3a510e22789acfb2
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 95df09bce1ac437d621bb925b7683143cee16c82
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346031"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822700"
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Sdílet kolekce v galerii Azure AI
 

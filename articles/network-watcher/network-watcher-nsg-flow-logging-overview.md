@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: ae4edb82fa5e192a30d297dae82199bb7efca0c2
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: addd901e1b3a9bb537278082763081a7e39b21da
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054669"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824281"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod k protokolování toků pro skupiny zabezpečení sítě
 
-Protokoly toku skupinu zabezpečení sítě jsou funkce služby Network Watcher, který vám umožní zobrazit informace o příchozí a odchozí provoz IP přes skupinu zabezpečení sítě. Protokolů toku jsou napsané ve formátu json a zobrazit toky odchozí a příchozí pravidlo na základě, tok se vztahuje na síťové rozhraní (NIC), 5 řazené kolekce členů informace o toku (zdrojová a cílová IP, zdrojový/cílový port a protokol), a pokud byl provoz Povolí nebo zakáže.
+Protokoly toku skupinu zabezpečení sítě jsou funkce služby Network Watcher, který vám umožní zobrazit informace o příchozí a odchozí provoz IP přes skupinu zabezpečení sítě. Protokoly toku jsou napsané ve formátu JSON a zobrazení odchozí a příchozí toků na základě pravidel na síťové rozhraní (NIC) tok se vztahuje na 5 řazené kolekce členů informace o toku (zdrojová a cílová IP, zdrojový/cílový port a protokol), pokud byl provoz povolený nebo odepřený a ve verzi 2, informace o propustnosti (bajtů a paketů).
+
 
 ![Přehled protokolů toku](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
@@ -32,8 +33,11 @@ Protokoly toku Nsg cíl, ale není zobrazí stejné jako další protokoly. Prot
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
-
+ 
 Platí stejné zásady uchovávání informací, které jsou viditelné pro ostatní protokoly pro protokoly toků. Zásady uchovávání informací protokolu můžete nastavit od 1 den do 2147483647 dnů. Pokud zásady uchovávání nejsou nastavené, protokoly se ukládají navždy.
+
+Můžete také analyzovat protokolů toku s využitím [traffic analytics](traffic-analytics.md).
+
 
 ## <a name="log-file"></a>Soubor protokolu
 
@@ -58,15 +62,116 @@ Protokoly toku obsahují následující vlastnosti:
                     * **Cílový Port** – cílový Port
                     * **Protokol** -protokolu toku. Platné hodnoty jsou **T** pro protokol TCP a **U** pro UDP
                     * **Přenosy dat** -směr toku provozu. Platné hodnoty jsou **můžu** pro příchozí a **O** pro odchozí.
-                    * **Provoz** – ať povolené nebo zakázané přenosy. Platné hodnoty jsou **A** povolena a **D** pro odepřen.
+                    * **Provoz rozhodnutí** – ať povolené nebo zakázané přenosy. Platné hodnoty jsou **A** povolena a **D** pro odepřen.
+                    * **Stav toku – verze 2 pouze** -zachycuje stav toku. Možné stavy **B**: Begin, když se vytvoří tok. Nejsou zadány Statistika. **C**: pokračování pro probíhající toku. Statistiky jsou k dispozici v intervalech 5 minut. **Elektronické**: ukončení, když tok je ukončen. Statistiky jsou k dispozici.
+                    * **Pakety - zdroje do cíle – verze 2 pouze** celkový počet TCP nebo UDP pakety odeslané ze zdroje do cíle od poslední aktualizace.
+                    * **Počet odeslaných bajtů - zdroje do cíle – verze 2 pouze** celkový počet TCP nebo UDP paketů bajtů odeslaných ze zdroje do cíle od poslední aktualizace. Bajtů na paket zahrnout hlavičky paketů a datové části.
+                    * **Pakety – cíl a zdroj - verze 2 pouze** celkový počet TCP nebo UDP pakety odeslané z cílového zdroje od poslední aktualizace.
+                    * **Počet odeslaných bajtů – cíl a zdroj - verze 2 pouze** celkový počet TCP a UDP paketů bajtů odeslaných z cílového zdroje od poslední aktualizace. Bajtů na paket zahrnout hlavičky paketů a datové části.
+
+## <a name="nsg-flow-logs-version-2"></a>Verze 2 protokolů toku NSG
+> [!NOTE] 
+> Verze protokoly toku 2 jsou k dispozici pouze v centrální oblasti USA – západ. Konfigurace je k dispozici prostřednictvím webu Azure Portal a rozhraní REST API. Povolení verze 2 protokoly v nepodporované oblasti výsledkem bude výstupem do vašeho účtu úložiště protokolů verze 1.
+
+Verze 2 v protokolech představuje stav toku. Můžete nakonfigurovat, kterou verzi protokolů toku se zobrazí. Informace o povolení protokolů toku, najdete v článku [protokolování toků NSG povolení](network-watcher-nsg-flow-logging-portal.md).
+
+Tok stavu *B* zaznamenán, kdy se má aktivovat tok. Tok stavu *C* a stav toku *E* jsou stavy, které označíte pokračování toku a ukončení toku, v uvedeném pořadí. Obě *C* a *E* stavy obsahují informace o přenosech šířky pásma.
+
+Pro pokračování *C* a end *E* stavy toku, počet bajtů a paketu jsou agregace počtů z času předchozí záznam tok řazené kolekce členů. Odkazování na předchozí příklad konverzace, celkový počet paketů přenosu je 1021 + 52 + 8005 + 47 = 9125. Celkový počet bajtů přenesených je 588096 + 29952 + 4610880 + 27072 = 5256000.
+
+**Příklad**: tok řazenými kolekcemi členů z TCP konverzaci mezi 185.170.185.105:35370 a 10.2.0.4:23:
+
+"1493763938,185.170.185.105,10.2.0.4,35370,23,T,I,A,B,," "1493695838,185.170.185.105,10.2.0.4,35370,23,T,I,A,C,1021,588096,8005,4610880" "1493696138,185.170.185.105,10.2.0.4,35370,23,T,I,A,E,52,29952,47,27072"
+
+Pro pokračování *C* a end *E* stavy toku, počet bajtů a paketu jsou agregace počtů z času předchozí záznam tok řazené kolekce členů. Odkazování na předchozí příklad konverzace, celkový počet paketů přenosu je 1021 + 52 + 8005 + 47 = 9125. Celkový počet bajtů přenesených je 588096 + 29952 + 4610880 + 27072 = 5256000.
 
 Text, který následuje je příkladem protokolu toku. Jak je vidět, existují více záznamů, které následují v seznamu vlastností je popsáno v předchozí části.
+
+## <a name="sample-log-records"></a>Záznamy protokolu vzorku
+
+Text, který následuje je příkladem protokolu toku. Jak je vidět, existují více záznamů, které následují v seznamu vlastností je popsáno v předchozí části.
+
 
 > [!NOTE]
 > Hodnoty v **flowTuples* vlastnosti jsou seznam oddělený čárkami.
  
+### <a name="version-1-nsg-flow-log-format-sample"></a>Ukázka formátu protokolů toku NSG verze 1
 ```json
 {
+    "records": [
+        {
+            "time": "2017-02-16T22:00:32.8950000Z",
+            "systemId": "2c002c16-72f3-4dc5-b391-3444c3527434",
+            "category": "NetworkSecurityGroupFlowEvent",
+            "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+            "operationName": "NetworkSecurityGroupFlowEvents",
+            "properties": {
+                "Version": 1,
+                "flows": [
+                    {
+                        "rule": "DefaultRule_DenyAllInBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF8801A",
+                                "flowTuples": [
+                                    "1487282421,42.119.146.95,10.1.0.4,51529,5358,T,I,D"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "rule": "UserRule_default-allow-rdp",
+                        "flows": [
+                            {
+                                "mac": "000D3AF8801A",
+                                "flowTuples": [
+                                    "1487282370,163.28.66.17,10.1.0.4,61771,3389,T,I,A",
+                                    "1487282393,5.39.218.34,10.1.0.4,58596,3389,T,I,A",
+                                    "1487282393,91.224.160.154,10.1.0.4,61540,3389,T,I,A",
+                                    "1487282423,13.76.89.229,10.1.0.4,53163,3389,T,I,A"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "time": "2017-02-16T22:01:32.8960000Z",
+            "systemId": "2c002c16-72f3-4dc5-b391-3444c3527434",
+            "category": "NetworkSecurityGroupFlowEvent",
+            "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+            "operationName": "NetworkSecurityGroupFlowEvents",
+            "properties": {
+                "Version": 1,
+                "flows": [
+                    {
+                        "rule": "DefaultRule_DenyAllInBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF8801A",
+                                "flowTuples": [
+                                    "1487282481,195.78.210.194,10.1.0.4,53,1732,U,I,D"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "rule": "UserRule_default-allow-rdp",
+                        "flows": [
+                            {
+                                "mac": "000D3AF8801A",
+                                "flowTuples": [
+                                    "1487282435,61.129.251.68,10.1.0.4,57776,3389,T,I,A",
+                                    "1487282454,84.25.174.170,10.1.0.4,59085,3389,T,I,A",
+                                    "1487282477,77.68.9.50,10.1.0.4,65078,3389,T,I,A"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
     "records":
     [
         
@@ -97,6 +202,77 @@ Text, který následuje je příkladem protokolu toku. Jak je vidět, existují 
              "properties": {"Version":1,"flows":[{"rule":"DefaultRule_DenyAllInBound","flows":[{"mac":"000D3AF8801A","flowTuples":["1487282492,175.182.69.29,10.1.0.4,28918,5358,T,I,D","1487282505,71.6.216.55,10.1.0.4,8080,8080,T,I,D"]}]},{"rule":"UserRule_default-allow-rdp","flows":[{"mac":"000D3AF8801A","flowTuples":["1487282512,91.224.160.154,10.1.0.4,59046,3389,T,I,A"]}]}]}
         }
         ,
+        ...
+```
+### <a name="version-2-nsg-flow-log-format-sample"></a>Ukázka formátu protokolů toku NSG verze 2
+```json
+ {
+    "records": [
+        {
+            "time": "2018-11-13T12:00:35.3899262Z",
+            "systemId": "a0fca5ce-022c-47b1-9735-89943b42f2fa",
+            "category": "NetworkSecurityGroupFlowEvent",
+            "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+            "operationName": "NetworkSecurityGroupFlowEvents",
+            "properties": {
+                "Version": 2,
+                "flows": [
+                    {
+                        "rule": "DefaultRule_DenyAllInBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF87856",
+                                "flowTuples": [
+                                    "1542110402,94.102.49.190,10.5.16.4,28746,443,U,I,D,B,,,,",
+                                    "1542110424,176.119.4.10,10.5.16.4,56509,59336,T,I,D,B,,,,",
+                                    "1542110432,167.99.86.8,10.5.16.4,48495,8088,T,I,D,B,,,,"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "rule": "DefaultRule_AllowInternetOutBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF87856",
+                                "flowTuples": [
+                                    "1542110377,10.5.16.4,13.67.143.118,59831,443,T,O,A,B,,,,",
+                                    "1542110379,10.5.16.4,13.67.143.117,59932,443,T,O,A,E,1,66,1,66",
+                                    "1542110379,10.5.16.4,13.67.143.115,44931,443,T,O,A,C,30,16978,24,14008",
+                                    "1542110406,10.5.16.4,40.71.12.225,59929,443,T,O,A,E,15,8489,12,7054"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "time": "2018-11-13T12:01:35.3918317Z",
+            "systemId": "a0fca5ce-022c-47b1-9735-89943b42f2fa",
+            "category": "NetworkSecurityGroupFlowEvent",
+            "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/FABRIKAMRG/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/FABRIAKMVM1-NSG",
+            "operationName": "NetworkSecurityGroupFlowEvents",
+            "properties": {
+                "Version": 2,
+                "flows": [
+                    {
+                        "rule": "DefaultRule_DenyAllInBound",
+                        "flows": [
+                            {
+                                "mac": "000D3AF87856",
+                                "flowTuples": [
+                                    "1542110437,125.64.94.197,10.5.16.4,59752,18264,T,I,D,B,,,,",
+                                    "1542110475,80.211.72.221,10.5.16.4,37433,8088,T,I,D,B,,,,",
+                                    "1542110487,46.101.199.124,10.5.16.4,60577,8088,T,I,D,B,,,,",
+                                    "1542110490,176.119.4.30,10.5.16.4,57067,52801,T,I,D,B,,,,"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
         ...
 ```
 

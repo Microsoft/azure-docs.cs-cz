@@ -10,16 +10,16 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6c5fed78c67f974a2af11efd133e9a79ec52124b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 044aa9a127aa8130340719147314961ddb38167a
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219647"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852703"
 ---
 # <a name="image-moderation"></a>Moderování obrázků
 
-Použít moderování obrázků s podporou počítače Content Moderator a [nástroj pro recenze prováděné lidmi](Review-Tool-User-Guide/human-in-the-loop.md) pro moderování obrázků pro dospělé nebo pikantního obsahu. Kontroly imagí pro textový obsah a extrahovat text a rozpoznávání tváří. Můžete odpovídat bitové kopie na základě vlastních seznamů a provádět další akci.
+Použít moderování obrázků s podporou počítače Content Moderator a [nástroj pro recenze lidských v the smyčky](Review-Tool-User-Guide/human-in-the-loop.md) pro moderování obrázků pro dospělé nebo pikantního obsahu. Kontroly imagí pro textový obsah a extrahovat text a rozpoznávání tváří. Můžete odpovídat bitové kopie na základě vlastních seznamů a provádět další akci.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>Vyhodnocení pro obsahu pro dospělé nebo pikantního obsahu
 
@@ -36,8 +36,8 @@ Použít moderování obrázků s podporou počítače Content Moderator a [nás
 
 > [!NOTE]
 
-> - `isImageAdultClassified` představuje potenciální přítomnost bitové kopie, které lze považovat za sexuálně explicitní nebo pro dospělé v určitých situacích.
-> - `isImageRacyClassified` představuje potenciální přítomnost bitové kopie, které lze považovat za sexuálně sugestivní nebo až po zralé v určitých situacích.
+> - `isImageAdultClassified` představuje potenciální přítomnost obrázků, které lze v určitých situacích považovat za sexuálně explicitní nebo pouze pro dospělé.
+> - `isImageRacyClassified` představuje potenciální přítomnost obrázků, které lze v určitých situacích považovat za sexuálně sugestivní nebo pouze pro dospělé.
 > - Skóre jsou v rozmezí od 0 do 1. Čím více bodů vyšší model je predikce kategorii lze použít. V této verzi preview spoléhá na statistických modelů a nikoli ručně kódovaný výsledků. Doporučujeme ve Visual Basicu s vlastní obsah k určení, jak každou kategorii odpovídá vašim požadavkům.
 > - Logické hodnoty jsou true nebo false, v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, zda chcete použít tuto hodnotu nebo při rozhodování o vlastní prahové hodnoty na základě jejich obsahu zásad.
 >
@@ -107,7 +107,7 @@ V mnoha online komunit po uživatelé odesílat obrázky nebo jiný typ obsahu, 
 Místo moderování více než jednou stejnou bitovou kopii, přidat urážlivé bitové kopie na vlastní seznam blokovaných obsah. Tímto způsobem, moderování obsahu systému porovná příchozí bitové kopie na základě vlastních seznamů a zastaví další zpracování.
 
 > [!NOTE]
-> Je maximální limit **seznamy obrázků 5** s každou seznamu **není delší než 10 000 obrázků**.
+> Limit je maximálně **5 seznamů obrázků** a v každém seznamu může být **maximálně 10 000 obrázků**.
 >
 
 Content Moderator poskytuje kompletní [rozhraní API pro správu seznamu obrázků](try-image-list-api.md) s operacemi správy seznam vlastních imagí. Začněte [Image obsahuje rozhraní API konzoly](try-image-list-api.md) a používat rozhraní REST API ukázky kódu. Podívejte se také [rychlý úvod k .NET seznam obrázků](image-lists-quickstart-dotnet.md) Pokud jste se seznámili s Visual Studio a C#.
@@ -140,11 +140,11 @@ Příklad výpisu:
     ....
     }
 
-## <a name="human-review-tool"></a>Nástroj pro recenze prováděné lidmi
+## <a name="human-review-tool"></a>Nástroj pro kontrolu prováděnou lidmi
 
 Další odlišování případů použití Content Moderator [nástroji pro kontrolu](Review-Tool-User-Guide/human-in-the-loop.md) a jeho rozhraní API k poskytování výsledky při moderování a obsah revize pro lidské moderátory. Zkontrolovat počítač přiřazený značky a potvrdit jejich konečné rozhodnutí.
 
-![Obrázek kontroly pro lidských moderátorů](images/moderation-reviews-quickstart-dotnet.PNG)
+![Kontrola obrázku lidskými moderátory](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 243ee16f8de8add8283581c8c03a37594797864b
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6f679536d69f700fd6678eb3bbbb869e42439cde
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430026"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853349"
 ---
 # <a name="translator-text-api-v30"></a>Verze Translator Text API 3.0
 
@@ -135,6 +135,7 @@ Kód chyby je, chybu zařadit 6místným číselným číslo kombinování stavo
 | 403000| Operace není povolena.|
 | 403001| Operace není povolena, protože předplatné překročila její kvótu.|
 | 405000| Metoda žádosti se nepodporuje pro požadovaný prostředek.|
+| 408001| Vlastní překladový systém požadovaný ještě není k dispozici. Zkuste to prosím znovu za pár minut.|
 | 415000| Hlavička Content-Type je chybějící nebo neplatný.|
 | 429000, 429001, 429002| Server odmítl požadavek, protože klient zasílá příliš mnoho požadavků. Snižte frekvenci požadavků vyhnout omezení šířky pásma.|
 | 500000| Došlo k neočekávané chybě. Pokud chyba přetrvává, nahlaste to datum/čas chyby, požádejte o identifikátor odpovědi hlavičku X-RequestId a identifikátor klienta z hlavičky X-ClientTraceId.|

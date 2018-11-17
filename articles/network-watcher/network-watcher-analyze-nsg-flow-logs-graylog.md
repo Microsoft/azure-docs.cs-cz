@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 08d3d59d20ea80065e8f0238f90579bb268c3723
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414773"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823040"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Správa a analyzovat protokoly toků skupin zabezpečení sítě v Azure s využitím Network Watcheru a Graylogu
 
 [Protokoly toků skupin zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md) poskytují informace, které vám pomůže pochopit, příchozí a odchozí provoz IP pro síťových rozhraních Azure. Protokoly toku zobrazení odchozí a příchozí toků na základě sítě zabezpečení skupiny pravidel, síťové rozhraní tok platí pro informace 5 řazené kolekce členů (zdrojová a cílová IP, zdrojový/cílový Port, protokol) o toku, a jestli byl povolený nebo zakázaný provoz .
 
 Může mít víc skupin zabezpečení sítě v síti s povoleno protokolování toků. Několik skupin zabezpečení sítě s povoleno protokolování toku může být náročná analyzovat a zkoumat velké vaše protokoly. Tento článek poskytuje řešení pro tyto síťové protokoly toků skupin zabezpečení použití Graylogu, Správa protokolů opensourcový a nástroj pro analýzu a Logstash, kanál zpracování dat na straně serveru opensourcových centrálně spravovat.
+
+> [!Warning]
+> Následující postup fungovat s verzí protokolů toku 1. Podrobnosti najdete v tématu [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Postupujte podle následujících pokynů nebude fungovat s verzí 2 soubory protokolů, bez jakýchkoli úprav.
 
 ## <a name="scenario"></a>Scénář
 

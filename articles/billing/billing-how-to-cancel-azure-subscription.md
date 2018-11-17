@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: cwatson
-ms.openlocfilehash: c39dcdc0c4a89aa01c31dde1c5354ef1d4afe91d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7418bc8095ffa640d70dff562d7683f0748ce38e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395562"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821408"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Zrušení předplatného pro Azure
 
@@ -44,7 +44,7 @@ Pokud zrušíte placený plán podpory Azure, se stále účtují pro zbývajíc
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Co se stane po můžu zrušit svoje předplatné?
 
-Jakmile zrušíte, účtování se okamžitě ukončí. Však může trvat až 10 minut, než pro zrušení zobrazit na portálu.
+Jakmile zrušíte, účtování se okamžitě ukončí. Však může trvat až 10 minut, než zrušení zobrazit na portálu.
 
 Potom deaktivaci vašich služeb. To znamená, že virtuální počítače jsou zrušení přidělení dočasné IP adresy jsou uvolněny a úložiště je jen pro čtení.
 
@@ -58,6 +58,6 @@ Pokud zrušíte předplatné s průběžnými platbami omylem, můžete si [akti
 
 Pokud vaše předplatné s průběžnými platbami, obraťte se na podporu do 90 dnů od zrušení a znovu aktivujte vaše předplatné.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 
 Pokud jste ještě další dotazy, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

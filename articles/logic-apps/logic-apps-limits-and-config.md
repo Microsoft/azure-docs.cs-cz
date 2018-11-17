@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 10/11/2018
-ms.openlocfilehash: f4d8030918804dc30437aae34de87615ce7e82b5
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.date: 11/16/2018
+ms.openlocfilehash: 62235c0c06621169997cc4ad16816c0a4d638e78
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346691"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853825"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a konfigurační informace pro Azure Logic Apps
 
@@ -323,9 +323,10 @@ Všechny aplikace logiky v oblasti používat stejné rozsahy IP adres. Pro podp
 
 ### <a name="managed-connectors"></a>Spravované konektory
 
-Pro podporu volání, která [konektorů spravovaných microsoftem](../connectors/apis-list.md) zkontrolujte nastavení konfigurace brány firewall, zahrnují tyto odchozí IP adresy, podle oblasti, kde existují logic apps.
+Pro podporu volání, která [konektorů spravovaných microsoftem](../connectors/apis-list.md) zkontrolujte nastavení konfigurace brány firewall, zahrnují všechny odchozí IP adresy určené pro oblasti, kde existují logic apps. Pro [Azure Government](/azure-government/documentation-government-welcome) a [Azure China 21Vianet](/azure/china/china-welcome), rezervované IP adresy pro konektory nejsou nyní k dispozici.
 
 > [!IMPORTANT]
+> 
 > Pokud máte existující konfigurace, aktualizujte je **co nejdříve před 1. září 2018** tak zahrnout a shodují s IP adresou v tomto seznamu pro oblasti, kde existují logic apps. 
 > 
 > Logic Apps nepodporuje přímého připojení k účtům úložiště Azure přes brány firewall. Pro přístup k tyto účty úložiště, použijte jednu z možností tady: 

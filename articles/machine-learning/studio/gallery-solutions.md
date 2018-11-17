@@ -4,7 +4,8 @@ description: Vyhledání řešení v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
@@ -15,19 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: cb02ed61ea050c17bc7e6dc0ebc724f29f885dd7
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 8c67263feff4ac89b786f6d71d78d0a5fbe17b5b
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344331"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820456"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Vyhledání řešení v galerii Azure AI
 
 A **[řešení](https://gallery.cortanaintelligence.com/solutions)** v [galerii Azure AI](http://gallery.cortanaintelligence.com) poskytuje úvodního kurzu JumpStart týkajícího rychle vytvářet řešení Cortana Intelligence z předkonfigurovaných řešení, referenční architektury, a Vzory návrhu.
 Aby byly vaše vlastní prostřednictvím zahrnutých pokynů nebo doporučeného partnera.  
 
-## <a name="discover"></a>Informace
+## <a name="discover"></a>Vyhledat
   Chcete-li vyhledat řešení v galerii, otevřete [Galerie](http://gallery.cortanaintelligence.com) a klikněte na tlačítko **řešení** v horní části domovskou stránku galerie.
 
  **[Řešení](https://gallery.cortanaintelligence.com/solutions)** stránka zobrazuje seznam nedávno přidaných řešení.
@@ -40,7 +41,7 @@ Na této stránce můžete procházet všechna řešení v galerii. Také může
 
 ![Přidat vlastní komentáře](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="deploy"></a>Nasazení
+## <a name="deploy"></a>Nasadit
 Pokud chcete používat řešení, klikněte na tlačítko **nasadit**. Postupujte takto můžete nakonfigurovat a nasadit řešení ve vašem pracovním prostoru.
 
 ![Nasazení řešení Galerie](./media/gallery-solutions/deploy-solution.png)

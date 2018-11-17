@@ -1,10 +1,11 @@
 ---
-title: Vytvoření textu analýzy v nástroji Azure Machine Learning Studio | Microsoft Docs
-description: Postup vytvoření textu analýzy v Azure Machine Learning Studio pomocí moduly pro předzpracování text, N-gram nebo hashování
+title: Vytvoření modelů analýzy textu v nástroji Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Postup vytvoření modelů analýzy textu v Azure Machine Learning Studio pomocí moduly pro předzpracování textu, N-gramy nebo hashování
 services: machine-learning
 documentationcenter: ''
 author: rastala
-ms.author: roastala
+ms.custom: (previous ms.author roastala)
+ms.author: amlstudiodocs
 manager: cgronlun
 editor: ''
 ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
@@ -15,81 +16,81 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: a9d4ee9015b5781301dcc9c0fe4f8944dbf244e8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7b455025faffe5a1a84bbc57ea2d65ec6c24cc2d
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835878"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823159"
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Vytvoření modelů analýzy textu v nástroji Azure Machine Learning Studio
-Azure Machine Learning můžete vytvářet a zprovoznit modely analytics text. Tyto modely vám může pomoct vyřešit, například problémy analýzy dokumentu klasifikace nebo postojích.
+Azure Machine Learning můžete sestavovat a zprovozňovat modely analýzy textu. Tyto modely vám může pomoct vyřešit, například problémy analýzy dokumentu klasifikace nebo mínění.
 
-V analýzy text experimentu byste obvykle:
+V experimentu analýzy textu které by obvykle:
 
-1. Vyčistěte a předběžně zpracovat datovou sadu textu
-2. Extrahování vektory číselné funkce z předem zpracovaných textu
-3. Train klasifikační nebo regresní model
+1. Čištění a předběžné zpracování textu datové sady
+2. Extrahovat vektory číselné funkce z předběžného zpracování textu
+3. Klasifikační nebo regresní model trénovat na základě modelu
 4. Stanovení skóre a ověření modelu
-5. Model nasadit do produkčního prostředí
+5. Nasazení modelu do produkčního prostředí
 
-V tomto kurzu zjistíte podle jsme provede model analysis postojích pomocí Amazon kniha recenze datovou sadu, tyto kroky (najdete v tomto dokumentu research "biografie, Bollywood, výložníku polí a Blenders: přizpůsobení a domény pro klasifikaci postojích" Jan Blitzer, označit Dredze a Fernando Pereira; Přidružení výpočetní Linguistics (ACL), 2007.) Tato datová sada se skládá z Zkontrolujte skóre (1 – 2 nebo 4 až 5) a vlastní text. Cílem je k předvídání Zkontrolujte skóre: nízkou (1 - 2) nebo vysokou (4 až 5).
+V tomto kurzu se dozvíte tyto kroky jako vás provedeme procesem model analýzy subjektivního hodnocení s použitím datovou sadu Amazon recenzí (najdete v tomto dokumentu výzkumu "biografie, Bollywood, Bum polí a Blenders: přizpůsobení domény pro klasifikaci subjektivního hodnocení" podle Blitzer Jan Označit Dredze a ostrov Fernando Pereira; Přidružení výpočetní lingvistiky (ACL), 2007.) Tato datová sada se skládá z revize skóre (1 – 2 nebo 4. – 5) a textu volného tvaru. Cílem je možnost předvídat skóre revizi: Nízká (1 - 2) nebo Vysoká (4 až 5).
 
-Můžete najít experimenty, které jsou popsané v tomto kurzu v Azure AI Gallery:
+Můžete najít experimenty v galerii Azure AI popsané v tomto kurzu:
 
-[Předpověď recenze adresáře](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
+[Předpověď recenzí](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
 
-[Předpověď kniha recenze - prediktivní Experiment](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+[Předpověď recenzí – prediktivní Experiment](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
-## <a name="step-1-clean-and-preprocess-text-dataset"></a>Krok 1: Vyčištění a předběžně zpracovat datovou sadu textu
-Začneme experimentu vydělením skóre zkontrolujte do kategorií nízkou a vysokou kbelíků formulace problému jako dvě třídy klasifikace. Používáme [upravit Metadata](https://msdn.microsoft.com/library/azure/dn905986.aspx) a [skupiny kategorií hodnoty](https://msdn.microsoft.com/library/azure/dn906014.aspx) moduly.
+## <a name="step-1-clean-and-preprocess-text-dataset"></a>Krok 1: Čištění a předběžné zpracování textu datové sady
+Začneme experiment vydělením skóre revize do kategorií nízký klíč a vysoký kbelíků formulovat problému jako dvěma třídami klasifikace. Používáme [upravit Metadata](https://msdn.microsoft.com/library/azure/dn905986.aspx) a [Kategorických hodnot skupiny](https://msdn.microsoft.com/library/azure/dn906014.aspx) moduly.
 
 ![Vytvoření popisku](./media/text-analytics-module-tutorial/create-label.png)
 
-Potom jsme vyčistit text pomocí [předběžně zpracovat Text](https://msdn.microsoft.com/library/azure/mt762915.aspx) modulu. Čištění snižuje šumu v datové sadě, pomáhají najít nejdůležitějších funkcích a zvyšte tak přesnost konečné modelu. Jsme odebrat stopslova - běžná slova, jako je například "na" nebo "a" - a čísla, speciální znaky, znaky duplicitní, e-mailové adresy a adresy URL. Jsme také převést text na malá písmena, lemmatize slova a zjišťovat hranice věty, které jsou pak indikován "|||" symbol v předem zpracovaných text.
+Potom jsme vyčistit text pomocí [předběžně zpracovat Text](https://msdn.microsoft.com/library/azure/mt762915.aspx) modulu. Čištění snižuje šumu v datové sadě, pomáhají nacházet nejdůležitější funkce a zvýšit přesnost finálního modelu. Odebereme stopword - běžná slova, jako je například "the" nebo "a" - a čísla, speciální znaky, duplicitní znaků, e-mailové adresy a adresy URL. Jsme také převést text na malá písmena, lemmatize slova a zjišťovat hranice věty, které pak jsou označeny "|||" symbol předběžného zpracování textu.
 
 ![Předběžné zpracování textu](./media/text-analytics-module-tutorial/preprocess-text.png)
 
-Co dělat, pokud chcete použít vlastní seznam stopslova? Můžete ho v předat jako volitelné vstup. Můžete také použít vlastní C# syntaxe regulární výraz k nahrazení dílčích řetězců a odeberte slova slovní: podstatná jména, operace nebo přídavných jmen.
+Co když chcete použít vlastní seznam stopword? Můžete ho předat jako volitelný vstup. Můžete použít také vlastní C# syntaxi regulárního výrazu nahrazení podřetězců a odebrat slova slovní: podstatná jména, operace nebo přídavných jmen.
 
-Po dokončení předběžném zpracování jsme rozdělení dat do vlaku a testování sad.
+Po dokončení předzpracování jsme rozdělit data do trénování a testování sad.
 
-## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Krok 2: Extrahování vektory číselné funkce z předem zpracovaných textu
-Pokud chcete vytvořit model pro textová data, máte obvykle převést textové vektory číselné funkce. V tomto příkladu používáme [funkce N-Gram extrahovat z textu](https://msdn.microsoft.com/library/azure/mt762916.aspx) modulu pro transformaci dat text na takový formát. Tento modul trvá sloupec oddělené prázdný znak slova a vypočítá slovník výrazů nebo N-gram slov, které se zobrazují v datovou sadu. Potom udává, kolik časy každé aplikace word nebo N-gram, se zobrazí všechny záznamy a vytvoří funkci vektory od těch, počty. V tomto kurzu jsme nastavené velikost N-gram na 2, takže naše vektory funkce zahrnují jednoho slova a kombinací dvou dalších slov.
+## <a name="step-2-extract-numeric-feature-vectors-from-pre-processed-text"></a>Krok 2: Extrahování vektory číselné funkce z předběžného zpracování textu
+Vytvoříte model pro textová data, budete muset obvykle převést číselné funkce vektory textu volného tvaru. V tomto příkladu používáme [extrahovat N-gramy funkce z textu](https://msdn.microsoft.com/library/azure/mt762916.aspx) modulu pro transformaci textových dat do těchto formátu. Tento modul přebírá sloupce prázdné znaky oddělený slov a vypočítá slovník slov nebo N-gramy slov, které se zobrazí ve vaší datové sadě. Pak určí, kolik času každé slovo nebo N-gramy, zobrazí se všechny záznamy a vytvoří funkci vektory od těch, které se počítá. V tomto kurzu nastavíme N-gramy velikost na 2, proto naši funkci vektory zahrnout jednotlivá slova a kombinací dvou nebo více následujících slov.
 
-![Extrahování N-gram](./media/text-analytics-module-tutorial/extract-ngrams.png)
+![Extrahovat N-gramy](./media/text-analytics-module-tutorial/extract-ngrams.png)
 
-Použijeme TF * počty IDF (termín frekvence inverzní dokumentu frekvenci) vážení do N-gram. Tento postup přidá váhu slova, která zobrazí často v jeden záznam, ale vyskytují jen vzácně napříč celou datovou sadu. Další možnosti zahrnují binární TF a graf vážení.
+Můžeme použít TF * počítá vážení N-gramy IDF (termín frekvence inverzní dokumentu frekvence). Tento přístup přidá váhu slova, která se zobrazí v jednom záznamu často ale se vyskytují jen vzácně napříč celou datovou sadu. Další možnosti patří binary, TF a grafy na miskách vah:.
 
-Funkce text mají často vysokou dimenzionalitu. Například pokud vaše svátek má 100 000 jedinečných slov, váš prostor funkce by mít dimenze 100 000 nebo více pokud používají N-gram. Modul extrahovat funkce N-Gram poskytuje sadu možností ke snížení dimenzionalitě. Můžete vyloučit slova, která krátký nebo dlouhý, nebo příliš neobvyklé nebo příliš časté významné prediktivní hodnotou. V tomto kurzu jsme vyloučit N-gram, které se zobrazují v méně než 5 záznamy nebo ve víc než 80 % záznamy.
+Funkce text mají často vysokou dimenzionalitu. Například pokud vaše souhrnu má 100 000 jedinečných slov, prostor vaší funkce má 100 000 dimenze nebo více pokud N-gramy používají. Modul extrahovat funkce N-gramy poskytuje sadu možností ke snížení dimenzionalitě. Můžete vyloučit slova, která jsou kratší nebo long, nebo příliš neobvyklé nebo moc často má významné novinky prediktivní. V tomto kurzu vylučujeme N-gramy, které se zobrazují v méně než 5 záznamů nebo ve víc než 80 % záznamů.
 
-Navíc můžete výběr funkce Vybrat jenom ty funkce, které jsou nejvíce korelační s cílem vaší předpovědi. Výběr chí-kvadrát funkce používáme k výběru funkcí 1000. Slovník vybrané slova nebo N-gram můžete zobrazit kliknutím pravého výstup modulu extrakce N-gram.
+Navíc můžete použít výběr součástí vybrat pouze ty funkce, které jsou nejvíce korelované s vaší cílovou předpovědi. Výběr funkce rozdělení chí-používáme vyberte 1000 funkce. Slovník vybraný text nebo N-gramy zobrazíte kliknutím pravého výstup modulu extrakce N-gramy.
 
-Jako alternativní způsob používání funkcí N-Gram extrahovat můžete použít modul funkce algoritmu hash. Všimněte si ale, že [Hashování](https://msdn.microsoft.com/library/azure/dn906018.aspx) nemá sestavení ve funkci Výběr možnosti nebo TF * IDF vážení.
+Jako alternativní způsob použití funkcí extrahovat N-gramy můžete použít funkce algoritmu hash modulu. Pamatujte ale, že [Hashování](https://msdn.microsoft.com/library/azure/dn906018.aspx) nemá žádné možnosti výběru sestavení v funkce nebo TF * na miskách vah: IDF.
 
-## <a name="step-3-train-classification-or-regression-model"></a>Krok 3: Train klasifikační nebo regresní model
-Text má nyní převedeny na funkce číselné sloupce. Datovou sadu stále obsahuje řetězec sloupců z předchozí fázích, proto používáme výběr sloupců v datové sadě je z nich vyloučit.
+## <a name="step-3-train-classification-or-regression-model"></a>Krok 3: Trénovat klasifikační nebo regresní model
+Nyní text transformaci na číselné sloupce. Datovou sadu stále obsahuje řetězec sloupce z předchozích fází, takže použijeme výběr sloupců v datové sadě je z nich vyloučit.
 
-Potom pomocí [Logistic Regression Two-Class](https://msdn.microsoft.com/library/azure/dn905994.aspx) k předvídání naše cíl: vysoká nebo Nízká Zkontrolujte skóre. V tomto okamžiku problém analytics text transformaci do regulární klasifikace problému. Můžete nástrojů dostupných v Azure Machine Learning se model vylepšit. Například můžete experimentovat s jinou třídění a zjistěte, jak přesné výsledky uvedou nebo použít hyperparameter ladění k zajištění přesnosti.
+Potom použijeme [Two-Class logistické regrese](https://msdn.microsoft.com/library/azure/dn905994.aspx) předpovědět Naším cílem: vysoká nebo Nízká revize skóre. V tuto chvíli problém text analytics transformaci do regulární klasifikace problému. Můžete použít nástroje, které jsou k dispozici ve službě Azure Machine Learning se model vylepšit. Například můžete experimentovat s jinou třídění a zjistěte, jak přesné výsledky poskytují, nebo použít hyperparameter ladění, aby se zlepšila přesnost.
 
-![Train a skóre](./media/text-analytics-module-tutorial/scoring-text.png)
+![Trénování a skóre](./media/text-analytics-module-tutorial/scoring-text.png)
 
 ## <a name="step-4-score-and-validate-the-model"></a>Krok 4: Stanovení skóre a ověření modelu
-Jak by ověření pro cvičný model? Jsme skóre podle datové sady testů a vyhodnotit jeho přesnost. Model ale zjistili termínů N-gram a jejich váhu z trénovací datové sady. Proto jsme měli používat tuto termínů a tyto váhu při extrahování funkce z testovací data a vytváření slovníku znovu. Proto jsme přidat modul extrahovat N-Gram funkce pro výpočet skóre větev experiment, připojit termínů výstup z větve školení a nastavit režim slovník jen pro čtení. Můžeme také zakázat filtrování N-gram frekvenci nastavením minimální na 1 instance a maximální na 100 % a vypnout nastavení výběr funkce.
+Jak byste měli ověřit trénovaného modelu? Jsme skóre datové sadě testů a vyhodnotit jeho přesnost. Ale model zjistili slovník N-gramy a jejich váhy z trénovací datové sady. Proto jsme měli používat tohoto slovníku a tyto váhy při extrahování funkce z testovací data, na rozdíl od vytvoření slovníku poruše. Proto jsme přidat modul extrahovat N-gramy funkce bodování větve experiment, připojit slovník výstup z větve školení a nastavte režim slovník jen pro čtení. Můžeme také zakázat filtrování N-gramy frekvencí nastavením minimální 1 instance a maximálně 100 % a vypnout nastavení výběr funkce.
 
-Po transformaci textového sloupce v testovací data na číselné funkce sloupce, jsme z předchozích fází jako v školení větvi vyloučit řetězcové sloupce. Potom používáme modulu Evaluate Model vyhodnotit jeho přesnost a modul určení skóre modelu provádět předpovědi.
+Po transformaci textového sloupce v testovacích dat na číselné funkce sloupce, vylučujeme řetězcové sloupce z předchozích fází, jako jsou ve větvi školení. Potom použijeme modulu Evaluate Model vyhodnotit jeho přesnost a modul určení skóre modelu k následné predikci.
 
-## <a name="step-5-deploy-the-model-to-production"></a>Krok 5: Model nasadit do produkčního prostředí
-Model je téměř připravená k nasazení do produkčního prostředí. Při nasazení jako webové služby, přebírá textové řetězce jako vstup a vrátí předpovědi "vysoká" nebo "nízká". Zjištěné termínů N-gram používá k transformaci text, který má funkce a vyškolení logistic regresní model k předpovědím na tyto funkce. 
+## <a name="step-5-deploy-the-model-to-production"></a>Krok 5: Nasazení modelu do produkčního prostředí
+Model je téměř připraveni k nasazení do produkčního prostředí. Po nasazení jako webové služby, přebírá řetězec textu volného tvaru jako vstup a vrátí predikcí "vysoká" nebo "nízká". Používá zjištěná N-gramy slovník pro transformaci textu k funkcím a logistické natrénovaný model k předpovědím na základě těchto funkcí. 
 
-Pokud chcete nastavit prediktivní experiment, nejprve uložíme termínů N-gram jako datové sady a vyškolení logistic regresní model z větve školení experimentu. Potom jsme uložit experimentu pomocí "Uložit jako" k vytvoření grafu experiment prediktivní experimentu. Jsme odebrat modul rozdělení dat a školení větev z experimentu. Jsme se potom připojují dříve uloženou N-gram termínů a modelu k funkcím N-Gram extrahovat a Score Model modulů, v uvedeném pořadí. Můžeme také odebrat modulu Evaluate Model.
+Pokud chcete nastavit prediktivní experiment, nejprve uložíme slovník N-gramy jako datovou sadu a logistické natrénovaný model z větve školení experimentu. Uložte jsme experiment použití "Uložit jako" pro vytvoření s grafem experimentu pro prediktivní experiment. Odebereme modulu rozdělení dat a školení větev z experimentu. Pak připojíme dříve uložený slovník N-gramy a modelu k extrakci funkce N-gramy a určení skóre modelu modulů, v uvedeném pořadí. Můžeme také odebrat modulu Evaluate Model.
 
-Nemůžeme vložit výběr sloupců v datové sadě modulu před modulu předběžně zpracovat Text odebrat popisek sloupce a zrušte výběr možnost "Sloupec skóre připojení k datové sadě" v modulu skóre. Tímto způsobem, webovou službu neuvede v požadavku popiskem, který se pokouší předvídat a nemá není echo vstup funkce v odpovědi.
+Jsme vložit výběr sloupců v datové sadě modulu před modul předzpracování textu odebrat popisek sloupce a zrušte zaškrtnutí možnosti "Skóre sloupec připojit k datové sadě" v modulu skóre. Tímto způsobem webová služba neuvede v požadavku popisku, který se pokouší předvídat a fakturuje se u není echo vstupu funkce v odpovědi.
 
 ![Prediktivní Experiment](./media/text-analytics-module-tutorial/predictive-text.png)
 
-Máme teď experimentu, který umožňuje publikovat jako webovou službu a volat pomocí požadavků a odpovědí nebo dávkového spuštění rozhraní API.
+Teď máme experiment, který můžete publikovat jako webovou službu a volat pomocí typu žádost odpověď nebo dávkové zpracování rozhraní API.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o modulech analytics text z [dokumentace MSDN](https://msdn.microsoft.com/library/azure/dn905886.aspx).
+Další informace o moduly analýzy textu z [dokumentaci MSDN](https://msdn.microsoft.com/library/azure/dn905886.aspx).
 

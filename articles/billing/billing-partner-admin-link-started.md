@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 13748bf23ee70bfa77e15e7112b450637a231742
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 342e182466d2fe704c5ee188e35dece0abaeea02
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710711"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823091"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Propojení ID partnera k účtům Azure
 
@@ -43,7 +43,7 @@ Až budete mít přístup k prostředkům zákazníka, pomocí webu Azure portal
 
 2. Přihlaste se k portálu Azure.
 
-3. Zadejte ID partnera Microsoftu. ID partnera [Network(MPN) partnera Microsoft](https://partner.microsoft.com/) ID vaší organizace.
+3. Zadejte ID partnera Microsoftu. ID partnera [Microsoft Partner Network (MPN)](https://partner.microsoft.com/) ID vaší organizace.
 
   ![Snímek obrazovky zobrazující propojení ID partnera](./media/billing-link-partner-id/link-partner-ID.PNG)
 

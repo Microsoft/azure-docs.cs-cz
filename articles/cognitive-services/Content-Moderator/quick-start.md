@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 259919f3b7cb0b614450c94f876cff933a5e01e8
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260002"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852686"
 ---
 # <a name="quickstart-get-familiar-with-content-moderator"></a>Rychlý start: Seznamte se s Content Moderatorem
 
@@ -58,7 +58,7 @@ V tomto okamžiku jste použili nástroj pro recenze Content Moderator příklad
 
 ## <a name="learn-more-about-the-review-tool"></a>Další informace o nástroje pro recenze
 
-Další informace o použití nástroje zkontrolujte Content Moderator, podívejte se na [lidských v the smyčky](Review-Tool-User-Guide/human-in-the-loop.md) průvodce a zobrazit rozhraní API nástroj zkontrolujte informace o vyladění zkušeností lidskou kontrolu:
+Další informace o tom, jak používat nástroj zkontrolujte Content Moderator, podívejte se na [nástroj pro recenze](Review-Tool-User-Guide/human-in-the-loop.md) průvodce a nástroj pro recenze rozhraní API pro informace o optimalizaci prostředí pro recenze prováděné lidmi naleznete v tématu:
 - [Úlohy API](try-review-api-job.md) kontroluje váš obsah s použitím rozhraní API pro moderování a generuje revize v nástroj pro recenze. 
 - [Revizi rozhraní API](try-review-api-review.md) přímo vytvoří image, text nebo video revize pro lidské moderátory bez první kontrolu obsahu. 
 - [Pracovního postupu API](try-review-api-workflow.md) vytvoří, aktualizuje a načte podrobnosti o vlastních pracovních postupů, které váš tým vytvoří.

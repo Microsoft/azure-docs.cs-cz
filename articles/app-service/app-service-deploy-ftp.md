@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: f68bf05ef9749794c78898e4464489e7cfb358ff
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 32dbef04febb1f3a0cdd8654fc5ec1c5c367439e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231376"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819997"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
@@ -66,7 +66,7 @@ Pro zvýšení zabezpečení byste měli povolit FTP přes protokol SSL jen. Pok
 
 Na stránce prostředků vaší aplikace v [webu Azure portal](https://portal.azure.com)vyberte **nastavení aplikace** v levém navigačním panelu.
 
-Chcete-li zakázat nešifrované FTP, vyberte **FTPS pouze**. Chcete-li zcela zakázat FTP a FTPS, vyberte **zakázat**. Jakmile budete hotoví, klikněte na **Uložit**. Pokud používáte **FTPS pouze** musí vynucení protokolu TLS 1.1 nebo vyšší tak, že přejdete na **nastavení SSL** okno vaší webové aplikace. Protokol TLS 1.0 nepodporuje **FTPS pouze**.
+Chcete-li zakázat nešifrované FTP, vyberte **FTPS pouze**. Chcete-li zcela zakázat FTP a FTPS, vyberte **zakázat**. Jakmile budete hotoví, klikněte na **Uložit**. Pokud používáte **FTPS pouze** musí vynucení protokolu TLS 1.2 nebo vyšší tak, že přejdete na **nastavení SSL** okno vaší webové aplikace. Protokol TLS 1.0 a 1.1 se nepodporují **FTPS pouze**.
 
 ![Zakázat FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 

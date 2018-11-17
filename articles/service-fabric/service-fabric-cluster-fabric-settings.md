@@ -12,77 +12,23 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/08/2018
+ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 7a80693090b92db55ad2feed52fdbb2a455e3c39
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3186d580918d7451317ae58cac270556509c6e3e
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884489"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854335"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
-Tento článek popisuje, jak přizpůsobit různá nastavení prostředků infrastruktury pro cluster Service Fabric. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Pro samostatné clustery upravit nastavení aktualizací ClusterConfig.json souborů a provádění upgradu na konfiguraci v clusteru. 
+Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
 
-> [!NOTE]
-> Ne všechna nastavení jsou k dispozici na portálu. V případě nastavení tady není k dispozici prostřednictvím portálu pro přizpůsobení pomocí šablony Azure Resource Manageru.
-> 
-
-## <a name="description-of-the-different-upgrade-policies"></a>Popis různých zásad upgradu
+Existují tři různé zásady upgradu:
 
 - **Dynamické** – změny v dynamickou konfiguraci nezpůsobí žádné restartování procesu Service Fabric procesů nebo procesy hostitele vaší služby. 
 - **Statické** – změny v konfiguraci statického způsobí, že uzel Service Fabric restartovat, aby bylo možné změny využívat. Služby na uzlech se restartuje.
 - **Hodnotu NotAllowed** – tato nastavení nelze změnit. Změna těchto nastavení vyžaduje zničení clusteru a vytvoření nového clusteru. 
-
-## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Nastavení clusteru pomocí šablon Resource Manageru
-Následující kroky ukazují, jak přidat nové nastavení *MaxDiskQuotaInMB* k *diagnostiky* části pomocí Průzkumníka prostředků Azure.
-
-1. Přejděte na https://resources.azure.com.
-2. Přejděte ke svému předplatnému tak, že rozbalíte **předplatná** -> **\<vašeho předplatného >** -> **resourceGroups**  ->   **\<Vaše skupina prostředků >** -> **poskytovatelé** -> **Microsoft.ServiceFabric**  ->  **clustery** -> **\<si název clusteru >**
-3. V pravém horním rohu, vyberte **čtení a zápisu.**
-4. Vyberte **upravit** a aktualizovat `fabricSettings` elementu JSON a přidejte nový prvek:
-
-```json
-      {
-        "name": "Diagnostics",
-        "parameters": [
-          {
-            "name": "MaxDiskQuotaInMB",
-            "value": "65536"
-          }
-        ]
-      }
-```
-
-V jednom z následujících způsobů pomocí Azure Resource Manageru můžete také upravit nastavení clusteru:
-
-- Použití [webu Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) k exportu a aktualizace šablony správce prostředků.
-- Použití [Powershellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) k exportu a aktualizovat šablonu Resource Manageru.
-- Použití [rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) k exportu a aktualizovat šablonu Resource Manageru.
-- Použití Azure RM Powershellu [Set-AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Set-AzureRmServiceFabricSetting) a [odebrat AzureRmServiceFabricSetting](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/Remove-AzureRmServiceFabricSetting) příkazů ke změně nastavení přímo.
-- Pomocí Azure CLI [az sf cluster nastavení](https://docs.microsoft.com/cli/azure/sf/cluster/setting) příkazů ke změně nastavení přímo.
-
-## <a name="customize-cluster-settings-for-standalone-clusters"></a>Nastavení clusteru pro samostatné clustery
-Samostatné clustery jsou nakonfigurovány pomocí souboru ClusterConfig.json. Další informace najdete v tématu [nastavení konfigurace pro samostatný cluster Windows](./service-fabric-cluster-manifest.md).
-
-Přidání, aktualizace nebo odebrání nastavení v `fabricSettings` části [vlastnosti clusteru](./service-fabric-cluster-manifest.md#cluster-properties) v ClusterConfig.json části. 
-
-Například následující kód JSON přidá nové nastavení *MaxDiskQuotaInMB* k *diagnostiky* části `fabricSettings`:
-
-```json
-      {
-        "name": "Diagnostics",
-        "parameters": [
-          {
-            "name": "MaxDiskQuotaInMB",
-            "value": "65536"
-          }
-        ]
-      }
-```
-
-Po nastavení jste upravili v souboru ClusterConfig.json, postupujte podle pokynů v [upgradovat konfiguraci clusteru](./service-fabric-cluster-upgrade-windows-server.md#upgrade-the-cluster-configuration) používat nastavení pro váš cluster. 
-
 
 Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůsobit, uspořádané podle části.
 
@@ -867,7 +813,4 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |X509StoreName | řetězec, výchozí hodnota je "My"|Dynamická|X509StoreName pro UpgradeService. |
 
 ## <a name="next-steps"></a>Další postup
-Přečtěte si tyto články pro další informace o správě clusteru:
-
-[Přidat, Nespotřebujete, odeberte certifikáty z clusteru Azure ](service-fabric-cluster-security-update-certs-azure.md) 
-
+Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md) a [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).

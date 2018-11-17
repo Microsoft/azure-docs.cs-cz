@@ -14,12 +14,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 41b5383dd319f2cb6fad4316e963f86dd7a4bc61
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 128eff5f628a0a4bf9f67e988ab7d3e2f22ed767
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036604"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823737"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Postup použití Twilia pro hlasové hovory a SMS v Ruby
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh pomocí služby Twilio API v Azure. Pokryté scénáře zahrnují vytváření telefonních hovorů a posílání zpráv služby krátké zprávy (SMS). Další informace o Twilio a používání hlasové hovory a SMS ve svých aplikacích najdete v tématu [další kroky](#NextSteps) oddílu.
@@ -146,7 +146,7 @@ Pokud otevřete nahoru `http://yourdomain.cloudapp.net/make_call` v prohlížeč
 
 Třetí parametr (`url`) je adresa URL, která se zobrazí pokyny o tom, jak udělat po připojení volání vyžaduje Twilio. V tomto případě můžeme nastavit adresu URL (`http://yourdomain.cloudapp.net`), který vrací jednoduchý TwiML dokumentu a používá `<Say>` příkaz některé převod textu na řeč a říct "Dobrý den opic" příjemce volání.
 
-## <a id="howto_recieve_sms"></a>Postupy: přijmout zprávu SMS
+## <a id="howto_receive_sms"></a>Postupy: Zobrazí se zpráva SMS
 V předchozím příkladu jsme spustili **odchozí** telefonního hovoru. Tento čas, použijeme zadané telefonní číslo Twilio nemusíme během procesu registrace **příchozí** SMS zprávy.
 
 První, přihlaste se k vaší [řídicí panel Twilio][twilio_account]. Klikněte na "Čísla" v horním navigačním podokně a potom klikněte na číslo Twilio, které bylo zadáno. Uvidíte dvě adresy URL, které můžete nakonfigurovat. Adresa URL požadavku na adrese URL žádosti hlasu a zprávu SMS. Toto jsou adresy URL, které Twilio volá vždy, když proběhne telefonický hovor nebo zprávu SMS je odeslána na vaše číslo. Adresy URL jsou také označovány jako "web hooks".

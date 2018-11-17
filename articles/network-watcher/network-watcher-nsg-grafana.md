@@ -15,16 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: mareat
-ms.openlocfilehash: e375476536e7fe150e3aabcae7cee942deac02d5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9e408b45f47cb86191628916124611735f374d9e
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057523"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819030"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Správa a analýza protokolů toku skupin zabezpečení sítě s využitím Network Watcheru a Grafany
 
 [Síťové protokoly toků skupin zabezpečení (NSG)](network-watcher-nsg-flow-logging-overview.md) poskytují informace, které lze použít k pochopení příchozí a odchozí přenosy na síťových rozhraních. Tyto protokoly toku zobrazení odchozí a příchozí toků na jednotlivé pravidlo skupiny zabezpečení sítě síťového rozhraní tok vztahuje na 5 řazené kolekce členů informace o toku (zdrojová a cílová IP, zdrojový/cílový Port, protokol), a jestli byl povolený nebo zakázaný provoz.
+
+> [!Warning]  
+> Následující postup fungovat s verzí protokolů toku 1. Podrobnosti najdete v tématu [Úvod k protokolování toků pro skupiny zabezpečení sítě](network-watcher-nsg-flow-logging-overview.md). Postupujte podle následujících pokynů nebude fungovat s verzí 2 soubory protokolů, bez jakýchkoli úprav.
 
 Může mít mnoho skupin zabezpečení sítě v síti s povoleno protokolování toků. Díky takové množství dat protokolování náročná analyzovat a zkoumat velké vaše protokoly. Tento článek obsahuje některé řešení a centrálně spravovat tyto protokoly toků NSG pomocí služby Grafana, open source grafické zobrazení nástroje, ElasticSearch, distribuované vyhledávání a analytickém modulu a Logstash, což je kanál opensourcových zpracování dat na straně serveru.  
 
@@ -185,7 +188,7 @@ Další informace o instalaci, naleznete v tématu [instalace v Debianu / Ubuntu
 
 Dále je třeba přidat index funkce ElasticSearch jako zdroj dat obsahující protokolů toku. Zdroj dat můžete přidat tak, že vyberete **přidat zdroj dat** a vyplnění formuláře příslušné informace. Ukázku této konfigurace najdete na následujícím snímku obrazovky:
 
-![Přidání zdroje dat](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
+![Přidat zdroj dat](./media/network-watcher-nsg-grafana/network-watcher-nsg-grafana-fig2.png)
 
 #### <a name="create-a-dashboard"></a>Vytvoření řídicího panelu
 

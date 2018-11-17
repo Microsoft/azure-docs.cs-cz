@@ -1,46 +1,51 @@
 ---
-title: Průběžné nasazování Jenkins s Azure Kubernetes Service (AKS)
-description: Zjistěte, jak automatizovat proces průběžného nasazování pomocí Jenkinse k nasazení a upgrade kontejnerizované aplikace ve službě Azure Kubernetes Service (AKS)
+title: Kurz – nasazení z Githubu do Azure Kubernetes Service (AKS) pomocí Jenkinse
+description: Nastavení Jenkinse pro průběžnou integraci (CI) z webu GitHub a průběžného nasazování (CD) do Azure Kubernetes Service (AKS)
 services: container-service
-author: iainfoulds
 ms.service: container-service
+author: iainfoulds
+ms.author: iainfou
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: iainfou
-ms.openlocfilehash: 5417e59f15ffcf48cc2af27044355d2bb5c9edaf
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: d252e275280ed2a5c2129f6b228e9989a33b37fd
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087691"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853611"
 ---
-# <a name="create-a-continuous-deployment-pipeline-with-jenkins-and-azure-kubernetes-service-aks"></a>Vytvoření kanálu průběžného nasazování pomocí Jenkinse a Azure Kubernetes Service (AKS)
+# <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Kurz: Nasazení z Githubu do Azure Kubernetes Service (AKS) pomocí Jenkinse průběžnou integraci a nasazování
 
-Jak rychle nasadit aktualizace do aplikací ve službě Azure Kubernetes Service (AKS), často používají průběžné integrace a průběžné doručování (CI/CD) platformu. Na platformě CI/CD potvrzení kódu můžete aktivovat nové sestavení kontejneru, který potom slouží k nasazení instance aktualizovanou aplikaci. V tomto článku použijete Jenkins jako platformu pro CI/CD pro vytváření a nahrávání imagí kontejneru do služby Azure Container Registry (ACR) a potom tyto aplikace spouštět ve službě AKS. Získáte informace o těchto tématech:
+V tomto kurzu nasadí ukázkovou aplikaci z Githubu na [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes) clusteru nastavením průběžné integrace (CI) a průběžného nasazování (CD) Jenkinse. Když aktualizujete aplikaci formou potvrzení Githubu, Jenkins automaticky spustí nové sestavení do kontejneru, nabízených oznámení imagí kontejneru do služby Azure Container Registry (ACR) a pak spustí vaši aplikaci ve službě AKS. 
+
+V tomto kurzu dokončíte tyto úlohy:
 
 > [!div class="checklist"]
-> * Nasaďte ukázkovou aplikaci Azure vote clusteru AKS
-> * Vytvoření základní instance Jenkinse
-> * Nakonfigurujte přihlašovací údaje pro Jenkinse k interakci s ACR
-> * Vytvoření webhooku Githubu pro automatizované buildy a úloha sestavení Jenkinse
-> * Test kanálu CI/CD pro aktualizaci aplikace ve službě AKS na základě potvrzení Githubu kódu
+> * Nasaďte ukázkovou aplikaci Azure vote do clusteru AKS.
+> * Vytvoření základního projektu Jenkins.
+> * Nastavení přihlašovacích údajů pro Jenkinse k interakci s ACR.
+> * Vytvoření webhooku Githubu pro automatizované buildy a úloha sestavení Jenkinse.
+> * Otestujte kanál CI/CD pro aktualizaci aplikace ve službě AKS na základě potvrzení Githubu kódu.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli dokončit kroky v tomto článku budete potřebovat následující položky.
+K dokončení tohoto kurzu, budete potřebovat tyto položky:
 
 - Základní znalosti o Kubernetes, Git, CI/CD a kontejneru obrázků
 
-- [Clusteru AKS] [ aks-quickstart] a `kubectl` nakonfigurovanou [přihlašovacích údajů clusteru AKS][aks-credentials].
-- [Registr Azure Container Registry (ACR)][acr-quickstart], název přihlašovacího serveru ACR a cluster AKS, který je nakonfigurovaný tak, aby [ověření pomocí registru ACR] [ acr-authentication].
+- [Clusteru AKS] [ aks-quickstart] a `kubectl` nakonfigurovanou [přihlašovacích údajů clusteru AKS][aks-credentials]
+
+- [Registr Azure Container Registry (ACR)][acr-quickstart], název přihlašovacího serveru ACR a cluster AKS, který je nakonfigurovaný tak, aby [ověření pomocí registru služby ACR][acr-authentication]
 
 - Použití Azure CLI verze 2.0.46 nebo novější nainstalován a nakonfigurován. Spustit `az --version` k vyhledání verze. Pokud potřebujete instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI][install-azure-cli].
-- [Nainstalovaný docker] [ docker-install] ve vývojovém systému.
-- Účet GitHub [osobní přístupový token Githubu][git-access-token]a klient Git ve vývojovém systému nainstalovaná.
+
+- [Nainstalovaný docker] [ docker-install] ve vývojovém systému
+
+- Účet GitHub [osobní přístupový token Githubu][git-access-token]a klient Git ve vývojovém systému nainstalovaná
 
 - Pokud zadáte vlastní Jenkins instanci spíše než toto ukázkové skripty způsob, jak nasadit Jenkinse, váš Jenkins instance potřebám [Docker nainstalovaný a nakonfigurovaný] [ docker-install] a [kubectl][kubectl-install].
 
-## <a name="prepare-the-application"></a>Příprava aplikace
+## <a name="prepare-your-app"></a>Příprava aplikace
 
 V tomto článku použijete ukázkovou aplikaci Azure vote obsahuje webové rozhraní hostovaným v jeden nebo více podů a druhý pod hostování pro ukládání dočasných dat Redis. Před integrace Jenkinse a AKS pro automatizovaná nasazení, nejprve ručně připravit a nasadit aplikaci Azure vote ke svému clusteru AKS. Toto ruční nasazení je verze, jeden z aplikace a vám umožňují vidět aplikaci v akci.
 

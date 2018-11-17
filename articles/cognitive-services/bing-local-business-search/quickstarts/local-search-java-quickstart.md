@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: e55c06c7e8a2d0952cac809b622fa9a63ccee399
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 5c31bcfaecb956bf0168a1485f3ee0fa985b9ceb
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959796"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51852516"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Rychlý start: Odešle dotaz do API Bingu pro místní obchodní vyhledávání pomocí Javy
 
@@ -37,7 +37,7 @@ Následující kód vytvoří `WebRequest`, nastaví hlavičku klíčů přístu
 
 ````
     // construct URL of search request (endpoint + query string)
-     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + "appid=AEA845921DC03F506DC317A90EDDBF33074523F7&traffictype=Internal_monitor&market=en-us");
+     URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + "appid=AEA845921DC03F506DC317A90EDDBF33074523F7&market=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
     //connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 
@@ -94,14 +94,14 @@ public class LocalSearchCls {
         static String subscriptionKey = "YOUR-ACCESS-KEY";
 
         static String host = "https://api.cognitive.microsoft.com/bing";
-        static String path = "/v7.0/localbusinesses/search";
+        static String path = "/v7.0/search";
 
         static String searchTerm = "Hotel in Bellevue";
 
         public static SearchResults SearchLocal (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
             URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + 
-                         "&appid=" + subscriptionKey + "&traffictype=Internal_monitor&market=en-us");
+                         "&appid=" + subscriptionKey + "&market=en-us");
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
             //connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
 

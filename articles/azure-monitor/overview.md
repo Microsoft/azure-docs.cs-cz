@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 3de1939ec4004c2709fb0e366fb492462cf2d216
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 6a3e33fe74199f0b9c02c6924d5e5e41b37f385c
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710752"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820966"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -27,24 +27,24 @@ Azure Monitor maximalizuje dostupnost a výkon vašich aplikací, zajišťuje ko
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
 ## <a name="overview"></a>Přehled
-Následující obrázek poskytuje souhrnný přehled monitorování Azure. V centru diagramu se úložiště dat pro metriky a protokoly, které jsou dva základní druhy dat používá Azure Monitor. Na levé straně jsou [zdrojů, která shromažďují telemetrická data z různých monitorovat prostředky](../monitoring/monitoring-data-sources.md) a naplňte jimi [úložišť dat](../monitoring/monitoring-data-collection.md). Na pravé straně jsou různé funkce, které Azure Monitor provádí s Tato shromážděná data, jako je například analýza, upozorňování a streamování do externích systémů.
+Následující obrázek poskytuje souhrnný přehled monitorování Azure. V centru diagramu se úložiště dat pro metriky a protokoly, které jsou dva základní druhy dat používá Azure Monitor. Na levé straně jsou [zdrojů, která shromažďují telemetrická data z různých monitorovat prostředky](../azure-monitor/platform/data-sources.md) a naplňte jimi [úložišť dat](../azure-monitor/platform/data-collection.md). Na pravé straně jsou různé funkce, které Azure Monitor provádí s Tato shromážděná data, jako je například analýza, upozorňování a streamování do externích systémů.
 
 
 ![Přehled služby Azure Monitor](media/overview/overview.png)
 
 
 ## <a name="monitoring-data-platform"></a>Monitorování datové platformy
-Všechna data shromážděná službou Azure Monitor zapadá do jednoho ze dvou základních typů, [metriky a protokoly](../monitoring/monitoring-data-collection.md). [Metriky](../monitoring/monitoring-data-collection.md#metrics) jsou číselné hodnoty, které popisují některé aspekty systému v určitém místě v čase. Jsou jednoduché a schopný zajistit podporu téměř v reálném čase scénáře. [Protokoly](../monitoring/monitoring-data-collection.md#logs) obsahovat různé druhy dat uspořádaných do s různými sadami vlastností pro jednotlivé typy záznamů. Telemetrická data, jako je například událostmi a sledováním jsou uloženy jako protokoly kromě na data výkonu tak, aby se všechny zkombinovat pro analýzu.
+Všechna data shromážděná službou Azure Monitor zapadá do jednoho ze dvou základních typů, [metriky a protokoly](../azure-monitor/platform/data-collection.md). [Metriky](../azure-monitor/platform/data-collection.md#metrics) jsou číselné hodnoty, které popisují některé aspekty systému v určitém místě v čase. Jsou jednoduché a schopný zajistit podporu téměř v reálném čase scénáře. [Protokoly](../azure-monitor/platform/data-collection.md#logs) obsahovat různé druhy dat uspořádaných do s různými sadami vlastností pro jednotlivé typy záznamů. Telemetrická data, jako je například událostmi a sledováním jsou uloženy jako protokoly kromě na data výkonu tak, aby se všechny zkombinovat pro analýzu.
 
 Pro řadu prostředků Azure uvidíte data shromážděná službou Azure Monitor přímo v jejich stránce Přehled na webu Azure Portal. Podíváme se na jakýkoli virtuální počítač například a zobrazí se vám několik grafů zobrazení metrik výkonu. Klikněte na libovolné grafy k otevírání těchto dat v [Průzkumník metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md) na webu Azure Portal, která umožňuje graf hodnoty několika metrik v čase.  Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace.
 
-![Metriky](media/overview/metrics.png)
+![metriky](media/overview/metrics.png)
 
 Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která zahrnuje [Bohatý dotazovací jazyk](../log-analytics/log-analytics-queries.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [stránce Log Analytics](../log-analytics/log-analytics-log-search-portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [ pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
 
 Dotazovací jazyk Log Analytics je vhodný pro jednoduchá protokolu dotazy, ale zahrnuje také pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Můžete rychle naučit jazyk dotazu pomocí [více lekce](../log-analytics/query-language/get-started-queries.md) , které jsou k dispozici.  Pro uživatele, kteří již znají [SQL](../log-analytics/query-language/sql-cheatsheet.md) a [Splunk](../log-analytics/query-language/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
 
-![Logs](media/overview/logs.png)
+![Protokoly](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Jaká data shromažďuje nástroj Azure Monitor?
 Azure Monitor může shromažďovat data z různých zdrojů. Můžete si představit sledování dat pro vaše aplikace na úrovních, od aplikace, libovolný operační a služeb, které spoléhá na, na platformě, jako takové. Azure Monitor provádí sběr dat ze všech následujících úrovních:
@@ -66,7 +66,7 @@ Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST po
 
 
 
-## <a name="insights"></a>Insights
+## <a name="insights"></a>Přehledy
 Sledování dat je pouze užitečné, pokud zvýšíte svůj vhled do provozu vaše výpočetní prostředí. Azure Monitor obsahuje několik funkcí a nástrojů, které poskytují cenné přehledy o vašich aplikací a další prostředky, které jsou závislé. [Řešení monitorování](../azure-monitor/insights/solutions.md) a funkce, jako [Application Insights](../application-insights/app-insights-overview.md) a přehledy o kontejnerech poskytnout podrobný přehled o různých aspektech vaší aplikace a konkrétních služeb Azure. 
 
 ### <a name="application-insights"></a>Application Insights
@@ -94,12 +94,12 @@ Azure insights monitorování virtuálního počítače monitoruje virtuální p
 Mimo možnosti k interaktivní analýze dat monitorování, musí být schopné proaktivně reagovat na kritické ujednání identifikovat data, která shromažďuje efektivní řešení monitorování. To může odesílat textové nebo e-mailu do správce zodpovědným za vyšetřování problém. Nebo může spustit automatizovaný proces, který se pokusí opravit chybovou podmínku.
 
 
-### <a name="alerts"></a>Výstrahy
+### <a name="alerts"></a>Upozornění
 [Výstrahy ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) zajistit aktivní upozorňování kritického stavu a potenciálně se pokusí provést opravné akce. Pravidla upozornění na základě metrik poskytuje téměř reálném čase výstrahy podle číselných hodnot, zatímco pravidla založená na protokolech umožňují komplexní logiku napříč daty z více zdrojů.
 
 Pravidla, která používá Azure Monitor výstrah [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md), které obsahují jedinečné sady příjemců a akce, které mohou být sdíleny napříč více pravidel. V závislosti na vašich požadavcích, skupiny akcí lze provádět činnosti, jako mají výstrahy spustit externí akce nebo integrují s vašimi nástroji ITSM pomocí webhooků.
 
-![Výstrahy](media/overview/alerts.png)
+![Upozornění](media/overview/alerts.png)
 
 ### <a name="autoscale"></a>Automatické škálování
 Automatické škálování umožňuje mít správného množství prostředků systémem pro zpracování zátěže ve své aplikaci. Umožňuje vytvořit pravidla, která pomocí metrik shromážděných službou Azure Monitor k určení, kdy se mají automaticky přidávat prostředky zpracovat nárůst zatížení a také prostředky, které jsou sedí ušetříte peníze nečinnosti. Můžete zadat minimální a maximální počet instancí a logiku, kdy chcete zvýšit nebo snížit prostředky.
@@ -145,6 +145,6 @@ Několik rozhraní API jsou dostupná pro čtení a zápis metriky a protokoly z
 ## <a name="next-steps"></a>Další postup
 Další informace:
 
-* [Metriky a protokoly](../monitoring/monitoring-data-collection.md) pro data shromážděná službou Azure Monitor.
-* [Zdroje dat](../monitoring/monitoring-data-sources.md) pro jak různých komponent vaší aplikace odesílat telemetrická data.
+* [Metriky a protokoly](../azure-monitor/platform/data-collection.md) pro data shromážděná službou Azure Monitor.
+* [Zdroje dat](../azure-monitor/platform/data-sources.md) pro jak různých komponent vaší aplikace odesílat telemetrická data.
 * [Log Analytics](../log-analytics/log-analytics-queries.md) analyzovat shromážděná data.

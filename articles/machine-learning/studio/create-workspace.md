@@ -3,7 +3,8 @@ title: Vytvoření služby Machine Learning Studio prostoru | Dokumentace Micros
 description: Vytvoření pracovního prostoru pro Azure Machine Learning Studio
 services: machine-learning
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
@@ -12,12 +13,12 @@ ms.component: studio
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 19cbb27221bfb95a0900eb7a604e540cb066037e
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 606ee124d8e7a59fc653f11f2ad7542fc84af4e4
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345551"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823431"
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Vytvoření a sdílení pracovního prostoru Azure Machine Learning
 

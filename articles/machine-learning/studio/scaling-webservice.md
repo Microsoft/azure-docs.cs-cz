@@ -1,13 +1,14 @@
 ---
-title: Jak zvýšit souběžnost webové služby Azure Machine Learning | Microsoft Docs
-description: Zjistěte, jak zvýšit souběžnost webové služby Azure Machine Learning přidáním další koncové body.
+title: Postup pro zlepšení souběžnosti webové služby Azure Machine Learning | Dokumentace Microsoftu
+description: Zjistěte, jak zvýšit souběžnost webové služby Azure Machine Learning tak, že přidáte další koncové body.
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
-keywords: Azure machine learningu, webové služby, operationalization, škálování, koncový bod, souběžnosti
+keywords: Azure, webové služby machine learning, operacionalizace, škálování, koncový bod, souběžnosti
 ms.assetid: c2c51d7f-fd2d-4f03-bc51-bf47e6969296
 ms.service: machine-learning
 ms.component: studio
@@ -16,30 +17,30 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.openlocfilehash: 2f950d93c0d923e20451eb1622dd4b1393f343a7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f0b639d27dd5114c47bd5a1cfa0f6a72a6d78d83
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835895"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824179"
 ---
-# <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Škálování webové služby Azure Machine Learning přidáním další koncové body
+# <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>Škálování webové služby Azure Machine Learning tak, že přidáte další koncové body
 > [!NOTE]
-> Toto téma popisuje techniky pro **Classic** Machine Learning webové služby. 
+> Toto téma popisuje postupy aplikovatelné **Classic** Machine Learning webové služby. 
 > 
 > 
 
-Ve výchozím nastavení každý publikované webové služby je nakonfigurován pro podporu 20 souběžnými požadavky a může být až 200 souběžných požadavků. Azure Machine Learning automaticky optimalizuje nastavení pro poskytovat nejlepší výkon pro webové služby a portálu hodnota je ignorována. 
+Ve výchozím nastavení každou publikovanou webovou službu je nakonfigurována pro podporu 20 souběžných požadavků a může být až 200 souběžných požadavků. Azure Machine Learning se automaticky optimalizuje nastavení můžete poskytovat nejlepší výkon pro webové služby a portálu hodnota je ignorována. 
 
-Pokud bude podporovat plán pro volání rozhraní API se zatížením vyšší než maximální počet souběžných volání hodnota 200, měli byste vytvořit několik koncových bodů na stejné webové službě. Potom můžete náhodně distribuovat zatížení napříč všemi z nich.
+Pokud bude podporovat plán pro volání rozhraní API se zatížením vyšší než hodnota maximálního počtu současných volání 200, měli byste vytvořit několik koncových bodů na stejné webové služby. Potom můžete náhodně distribuovat zatížení napříč jimi.
 
-Škálování webové služby je běžné úlohy. Některé z důvodů škálování jsou pro podporu více než 200 souběžných požadavků, zvýšit dostupnost prostřednictvím několik koncových bodů nebo poskytovat samostatný koncové body pro webovou službu. Měřítko můžete zvýšit tak, že přidáte další koncové body pro stejné webové služby pomocí [webovou službu Azure Machine Learning](https://services.azureml.net/) portálu.
+Škálování webové služby je běžný úkol. Jsou některé důvody pro škálování podporovat více než 200 souběžných požadavků, zvyšují dostupnost prostřednictvím více koncových bodů nebo poskytovat samostatný koncových bodů webové služby. Škálování můžete zvýšit tak, že přidáte další koncové body pro službu Web prostřednictvím [webové služby Azure Machine Learning](https://services.azureml.net/) portálu.
 
-Další informace o přidání nové koncové body, najdete v části [vytváření koncových bodů](create-endpoint.md).
+Další informace o přidání nové koncové body, naleznete v tématu [vytváření koncových bodů](create-endpoint.md).
 
-Mějte na paměti, který používá souběžnosti vysoký počet může být škodlivé, pokud nejsou volání rozhraní API s odpovídajícím způsobem vysokou míru. Můžete se setkat ojediněle vypršení časových limitů nebo špičky v latenci, když vložíte relativně nízký zatížení na rozhraní API nakonfigurovaný pro vysokého zatížení.
+Nezapomínejte, že pomocí souběžnosti vysoký počet může být škodlivé, pokud nejsou volání rozhraní API s odpovídajícím způsobem vysoký. Sporadické vypršení časových limitů a/nebo provozní špičky může zobrazit v latenci, když vložíte relativně nízký zatížení na rozhraní API nakonfigurovaný pro vysokého zatížení.
 
-V situacích, kde je žádoucí s nízkou latencí jsou obvykle používány synchronní rozhraní API. Latence zde znamená doba potřebná pro rozhraní API pro jeden požadavek na dokončení a nemá účet pro všechny zpoždění sítě. Řekněme, že máte rozhraní API s latencí 50 ms. Chcete-li plně využívat s omezení úrovní vysoce dostupné kapacity a maximální počet souběžných volání = 20, je třeba volat toto rozhraní API 20 * 1000 / 50 = 400 times za sekundu. Tato další rozšíření, maximální počet souběžných volání 200 vám umožní volat rozhraní API 4000 časy za sekundu, za předpokladu, že latence 50-ms.
+Synchronní rozhraní API se obvykle používá v situacích, kdy je žádoucí s nízkou latencí. Tady latence znamená doba potřebná pro rozhraní API pro jeden požadavek na dokončení a nebude účet pro žádné zpoždění v síti. Řekněme, že máte rozhraní API s latencí 50 ms. Chcete-li plnohodnotně pracovat s úroveň omezování prostředků vysoce dostupnou kapacitu a maximálního počtu současných volání = 20, potřebné k volání tohoto rozhraní API 20 * 1 000 / 50 = 400 vyprší za sekundu. Tato další rozšíření, maximálního počtu současných volání 200 umožňuje volat časy 4000 rozhraní API za sekundu, za předpokladu, že latence 50 ms.
 
 <!--Image references-->
 [1]: ./media/scaling-webservice/machlearn-1.png

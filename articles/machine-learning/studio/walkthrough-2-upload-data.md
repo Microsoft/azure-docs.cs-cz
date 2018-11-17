@@ -1,10 +1,11 @@
 ---
-title: 'Krok 2: Nahrání dat do experimentu Machine Learning | Microsoft Docs'
-description: 'Vývoj prediktivního řešení návod krok 2: nahrání veřejná data uložena do Azure Machine Learning Studio.'
+title: 'Krok 2: Nahrání dat do experimentu Machine Learning | Dokumentace Microsoftu'
+description: 'Vývoj prediktivního řešení návod krok 2: nahrání uloženou veřejná data do Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 9f4bc52e-9919-4dea-90ea-5cf7cc506d85
@@ -15,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: dfa6ae8011da0299c270035b8b781d70a8e80119
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b320f7cfcad9a61d67c5785596744f5851313a1a
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835786"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824655"
 ---
 # <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>Krok 2 průvodce: Nahrání stávajících dat do experimentu služby Azure Machine Learning
-Toto je druhý krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+Toto je druhém kroku tohoto návodu, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Vytvoření pracovního prostoru Machine Learning](walkthrough-1-create-ml-workspace.md)
 2. **Nahrání existujících dat**
@@ -33,72 +34,72 @@ Toto je druhý krok tohoto průvodce, [vývoj řešení prediktivní analýzy v 
 6. [Přístup k webové službě](walkthrough-6-access-web-service.md)
 
 - - -
-K vývoji prediktivního modelu pro úvěrové riziko, potřebujeme data, která jsme můžete použít k trénování a pak model otestujeme. V tomto návodu použijeme "UCI Statlog (němčině platební Data) Data Set" z úložiště UC Irvine Machine Learning. Najdete ho tady:  
+K vývoji prediktivního modelu pro úvěrové riziko, potřebujeme data, která můžeme použít k trénování a pak model otestujeme. V tomto návodu používáme "UCI Statlog (německé daty o úvěrovém) Data Set" v úložišti UC Irvine Machine Learning. Najdete ho tady:  
 <a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
-Použijeme soubor s názvem **german.data**. Stáhněte si tento soubor na místní pevný disk.  
+Soubor s názvem použijeme **german.data**. Stáhněte si tento soubor na místní pevný disk.  
 
-**German.data** datová sada obsahuje řádky 20 proměnných pro 1000 posledních žadatel o platební. Tyto proměnné 20 představují datová sada je sada funkcí ( *funkce vector*), který nabízí charakteristiky identifikace každý platební žadatel. Sloupec v jednotlivých řádcích představuje žadatele počítané úvěrové riziko, s 700 uchazeči označený jako nízkou úvěrové riziko a 300 vysokým rizikem.
+**German.data** datová sada obsahuje řádky 20 proměnných pro 1000 posledních žadatel o kredit. Tyto proměnné 20 představují sadu funkcí datové sady ( *funkce vector*), poskytující charakteristiky identifikace pro každý kredit žadatel. Další sloupce v jednotlivých řádcích představuje žadatele počítané úvěrové riziko s vysokým rizikem označeno jako nízké úvěrové riziko a 300 700 uchazeči.
 
-Web UCI obsahuje popis atributů vektoru funkce pro tato data. To zahrnuje finanční informace, platební historii, stav zaměstnání a osobní údaje. Pro každý žadatel binární hodnocení byl daný, která určuje, jestli jsou na nízkou nebo vysokou úvěrového rizika. 
+Web UCI poskytuje popis atributů vektoru funkce pro tato data. Jedná se o finanční informace, historie kreditu, stav pracovní a osobní údaje. Pro každý žadatel binární hodnocení byl daný označující, zda jsou nízké nebo vysoké úvěrové riziko. 
 
-Tato data použijeme pro trénování modelu prediktivní analýzy. Když jsme hotovi, našeho modelu byste měli mít přijmout funkce vector pro nové jednotlivé a předvídání, zda je nízkou nebo vysokou úvěrové riziko.  
+Tato data použijeme pro trénování modelu prediktivní analýzy. Když máme Hotovo, měl náš model přijmout vektor funkce pro nové uživatele a předpovědět, jestli uživatel je nízké nebo vysoké úvěrové riziko.  
 
-Zde je zajímavé Točitost. Popis sady dat na webu UCI uvádí, co ji stojí Pokud jsme misclassify osoby úvěrové riziko.
-Pokud model předpovídá vysoké úvěrové riziko pro uživatele, který je ve skutečnosti nízkou úvěrové riziko, model chybnou udělal.
-Ale zpětné chybnou klasifikaci je pětkrát nákladnější finanční instituce: Pokud model předpovídá nízkou úvěrové riziko pro uživatele, který je ve skutečnosti vysoké úvěrové riziko.
+Tady je zajímavé prvkem. Popis datové sady na webu UCI uvádí, co to stojí, pokud jsme misclassify osoby úvěrové riziko.
+Pokud tento model předpovídá vysoké úvěrové riziko u někoho, kdo je ve skutečnosti nízké úvěrové riziko, model chybnou provedl.
+Reverzní chybnou je pětkrát dražší do finanční instituce, ale: Pokud tento model předpovídá nízké úvěrové riziko u někoho, kdo je ve skutečnosti vysoké úvěrové riziko.
 
-Ano chceme cvičení našeho modelu tak, aby náklady na tento druhý typ chybnou pětkrát vyšší než misclassifying jiným způsobem.
-Jeden způsob, jak to provést při tréninku modelu v našem experimentu je duplikování (pětkrát) ty položky, které představují někdo s vysokou úvěrové riziko. Poté Pokud model misclassifies někdo jako nízkou úvěrové riziko, pokud jsou ve skutečnosti vysoce rizikové, model nemá tento stejný chybnou pětkrát, jednou pro každou duplicitní. Tím se zvýší náklady na této chyby ve výsledcích školení.
+Ano chceme náš model trénování, tak, aby náklady na tento druhý typ. chybnou pětkrát větší než misclassifying jiným způsobem.
+Jeden jednoduchý způsob, jak to udělat při cvičení modelu v našich experimentu je tak, že duplikujete (pětkrát) ty položky, které představují někdo s vysoké úvěrové riziko. Potom Pokud model misclassifies někdo jako nízké úvěrové riziko, když jsou ve skutečnosti vysoce rizikové, model nemá tento stejný chybnou pětkrát, jednou pro každý duplicitní. Tím se zvýší náklady na této chyby ve výsledcích školení.
 
 
 ## <a name="convert-the-dataset-format"></a>Převést formát datové sady
-Původní datové sady používá formát oddělené prázdné. Machine Learning Studio funguje lépe se soubor s oddělovači (CSV), proto jsme budete převést datovou sadu nahrazením mezer čárkami.  
+Původní datové sady používá formát oddělených prázdné. Machine Learning Studio lépe funguje pomocí souboru hodnot oddělených čárkami (CSV), proto jsme budete nahrazením mezer čárkami převést datové sady.  
 
-Existuje mnoho způsobů, jak převést tato data. Jedním ze způsobů je pomocí následujícího příkazu prostředí Windows PowerShell:   
+Existuje mnoho způsobů, jak převést tato data. Jedním ze způsobů je pomocí následujícího příkazu Windows Powershellu:   
 
     cat german.data | %{$_ -replace " ",","} | sc german.csv  
 
-Dalším způsobem je pomocí příkazu menšit Unix:  
+Dalším způsobem je použití příkazu sed systému Unix:  
 
     sed 's/ /,/g' german.data > german.csv  
 
-V obou případech jsme vytvořili textový soubor s oddělovači verzi dat do souboru s názvem **german.csv** , jsme můžete použít v našem experimentu.
+V obou případech jsme vytvořili oddělených čárkou verzi dat do souboru s názvem **german.csv** , který používáme v našich experimentu.
 
-## <a name="upload-the-dataset-to-machine-learning-studio"></a>Nahrání datové sady do nástroje Machine Learning Studio
-Jakmile data byl převeden do formátu CSV, musíme nahrajte ho do nástroje Machine Learning Studio. 
+## <a name="upload-the-dataset-to-machine-learning-studio"></a>Nahrajte datovou sadu do nástroje Machine Learning Studio
+Po převedení dat do formátu CSV, musíme ho nahrát do nástroje Machine Learning Studio. 
 
 1. Otevřete domovskou stránku Machine Learning Studio ([https://studio.azureml.net](https://studio.azureml.net)). 
 
-2. Klikněte na nabídku ![nabídky][1] v levém horním rohu okna, klikněte na **Azure Machine Learning**, vyberte **Studio**a přihlaste se.
+2. Klikněte na nabídku ![nabídky][1] v levém horním rohu okna, klikněte na tlačítko **Azure Machine Learning**vyberte **Studio**a přihlaste se.
 
-3. Klikněte na tlačítko **+ nový** v dolní části okna.
+3. Klikněte na tlačítko **+ nová** v dolní části okna.
 
 4. Vyberte **datovou sadu**.
 
 5. Vyberte **z místního souboru**.
 
-    ![Přidejte datovou sadu, z místního souboru][2]
+    ![Přidat datovou sadu z místního souboru][2]
 
-6. V **nahrát nová datová sada** dialogové okno, klikněte na tlačítko **Procházet** a najděte **german.csv** souborů, které jste vytvořili.
+6. V **nahrát novou datovou sadu** dialogového okna, klikněte na tlačítko **Procházet** a najít **german.csv** souborů, které jste vytvořili.
 
-7. Zadejte název pro datovou sadu. V tomto návodu volání ji "UCI němčina platební karty Data".
+7. Zadejte název pro tuto datovou sadu. V tomto návodu říkat "Údajů o kreditních kartách UCI němčina".
 
-8. Datový typ, vyberte **obecné soubor CSV neobsahuje záhlaví (. nh.csv)**.
+8. Datový typ, vyberte **obecný soubor CSV neobsahuje záhlaví (. nh.csv)**.
 
 9. Pokud chcete přidáte popis.
 
-10. Klikněte **OK** zaškrtnutí.  
+10. Klikněte na tlačítko **OK** zaškrtávací políčko.  
 
-    ![Nahrání datové sady][3]
+    ![Nahrajte datovou sadu][3]
 
-To nahrává data do datové sady modul, který používáme v experimentu.
+To nahrává data do datové sady modul, který používáme v jednom experimentu.
 
-Můžete spravovat datové sady, které jste odeslali do nástroje Studio kliknutím **datové sady** karty na levé straně okna Studio.
+Můžete spravovat datové sady, které jste odeslali do Studio kliknutím **datových sad** karty na levé straně okna nástroje Studio.
 
-![Spravovat datové sady][4]
+![Správa datových sad][4]
 
-Další informace o importu dalších typů dat do experimentu najdete v tématu [importu trénovacích dat do Azure Machine Learning Studio](import-data.md).
+Další informace o importu dalších typů dat do experimentu najdete v tématu [Import cvičných dat do Azure Machine Learning Studio](import-data.md).
 
 **Další krok: [vytvoření nového experimentu](walkthrough-3-create-new-experiment.md)**
 

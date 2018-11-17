@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: f42e7c2e564f660df1e88c63c00a9f04db7c8116
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d62559561bf7e8e2dc2a882543d7fa7fc45a7499
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240099"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821055"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
@@ -82,9 +82,9 @@ Fáze 1 plánu se zaměřuje na důležité úkoly, které jsou rychlé a snadno
 
 #### <a name="turn-on-azure-ad-privileged-identity-management"></a>Zapnout Azure AD Privileged Identity Management
 
-Pokud jste již v Azure AD Privileged Identity Management (PIM), to je v vašeho produkčního tenanta. Po zapnutí Privileged Identity Management, obdržíte oznámení e-mailové zprávy pro privilegovaný přístup změny role. Tato oznámení poskytovat včasné upozornění při přidání dalších uživatelů pro vysoce privilegované role ve vašem adresáři.
+Pokud jste již v Azure AD Privileged Identity Management (PIM), to je v vašeho produkčního tenanta. Po zapnutí Privileged Identity Management, obdržíte oznámení e-mailové zprávy pro privilegovaný přístup změny role. Tato oznámení poskytovat včasné upozornění při přidání dalších uživatelů vysoce privilegované role ve vašem adresáři.
 
-Azure AD Privileged Identity Management je součástí Azure AD Premium P2 nebo EMS E5. Tato řešení vám umožní chránit přístup k aplikacím a prostředkům napříč místním prostředím a do cloudu. Pokud dosud nemáte Azure AD Premium P2 nebo EMS E5 a chcete vyhodnotit, více možností odkazovat v rámci tohoto plánu, zaregistrovat [Enterprise Mobility + Security bezplatná 90denní zkušební verze](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Použijte tyto zkušební licence Azure AD Privileged Identity Management a Azure AD Identity Protection monitorování pomocí služby Azure AD pokročilé vytváření sestav zabezpečení, auditování a výstrahy.
+Azure AD Privileged Identity Management je součástí Azure AD Premium P2 nebo EMS E5. Tato řešení vám umožní chránit přístup k aplikacím a prostředkům napříč místním prostředím a do cloudu. Pokud nechcete už máte Azure AD Premium P2 nebo EMS E5 a chcete vyhodnotit více funkcí odkazovat v rámci tohoto plánu, zaregistrovat [Enterprise Mobility + Security bezplatná 90denní zkušební verze](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial). Použijte tyto zkušební licence Azure AD Privileged Identity Management a Azure AD Identity Protection monitorování pomocí služby Azure AD pokročilé vytváření sestav zabezpečení, auditování a výstrahy.
 
 Poté co jste zapnuli Azure AD Privileged Identity Management:
 
@@ -102,7 +102,7 @@ První, kdo k použití ve vašem tenantovi Azure AD Privileged Identity Managem
 
 Po zapnutí Azure AD Privileged Identity Management, můžete zobrazte uživatele, kteří jsou v adresáři role Globální správce, správce privilegovaných rolí, správce Exchange Online a správce Sharepointu Online. Pokud nemáte Azure AD PIM ve vašem tenantovi, můžete použít [rozhraní API prostředí PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0). Spustit s rolí globálního správce, protože tato role je obecný: uživatel, který je přiřazena tato role správce má stejná oprávnění ve všech cloudových službách, pro které má vaše organizace předplacené, bez ohledu na to, zda se přiřadil tuto roli na portálu Office 365 , Azure portal, nebo pomocí modulu Azure AD pro Microsoft PowerShell. 
 
-Odeberte všechny účty, které už nejsou potřeba v těchto rolích a kategorizaci zbývajících účtů, která jsou přiřazená rolím správce:
+Odeberte všechny účty, které už nejsou potřeba v těchto rolích. Potom kategorizace zbývajících účtů, která jsou přiřazená rolím správce:
 
 * Přiřazeny správcům a lze také použít pro účely bez oprávnění správce (například osobní e-mailu)
 * Jednotlivě přiřazené správcům a určené pouze pro účely správy
@@ -113,7 +113,7 @@ Odeberte všechny účty, které už nejsou potřeba v těchto rolích a kategor
 
 #### <a name="define-at-least-two-emergency-access-accounts"></a>Definovat aspoň dva účty pro nouzový přístup 
 
-Ujistěte se, že není dostat do situace, kdy se může být neúmyslně zablokována správu vašeho tenanta Azure AD z důvodu nemožnost přihlášení nebo aktivace účtu existující konkrétního uživatele jako správce. Například pokud organizace je Federovaná ke zprostředkovateli identity v místním, tohoto zprostředkovatele identity možná není k dispozici, uživatelům se přihlásit s místními. Zmírnit dopad náhodného chybějící přístup pro správu uložením dva nebo více účtů pro nouzový přístup ve vašem tenantovi.
+Ujistěte se, že vám do situace, kdy se může být neúmyslně zablokována správu vašeho tenanta Azure AD z důvodu nemožnost přihlášení nebo aktivace účtu existující konkrétního uživatele jako správce. Například pokud organizace je Federovaná ke zprostředkovateli identity v místním, tohoto zprostředkovatele identity možná není k dispozici, uživatelům se přihlásit s místními. Zmírnit dopad náhodného chybějící přístup pro správu uložením dva nebo více účtů pro nouzový přístup ve vašem tenantovi.
 
 Účty pro nouzový přístup pomáhají organizacím omezit privilegovaný přístup v rámci stávajícího prostředí Azure Active Directory. Tyto účty jsou vysoce privilegovaní a nejsou přiřazeny jednotlivým uživatelům. Účty pro nouzový přístup jsou omezené na nouzové "pohotovostní" scénářích, kdy nejde použít normální účty pro správu. Organizace musí zajistit za účelem řízení a snížení využití nouzový účtu jenom tento čas, pro které je nezbytné. 
 
@@ -127,11 +127,11 @@ Azure Multi-Factor Authentication (MFA) vyžadují při přihlášení pro všec
 
 ![Fáze 2](./media/directory-admin-roles-secure/stage-two.png)
 
-Fáze 2 plánu je zaměřené na minimalizaci nejpravděpodobnějších u nejčastěji používaných technik útoků krádeže přihlašovacích údajů a zneužití a má implementovat přibližně během 2 – 4 týdnů. Tato fáze se plánuje zabezpečené privilegovaného přístupu zahrnuje následující akce.
+Fáze 2 plánu se zaměřuje na snížení rizik souvisejících s nejvíce často používají technik útoku krádeží přihlašovacích údajů a zneužití a je možné implementovat přibližně během 2 – 4 týdnů. Tato fáze se plánuje zabezpečené privilegovaného přístupu zahrnuje následující akce.
 
 ### <a name="general-preparation"></a>Obecné přípravy
 
-#### <a name="conduct-a-inventory-of-services-owners-and-admins"></a>Chování inventáře služeb, vlastníci a správci
+#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Proveďte soupis služeb, vlastníci a správci
 
 S nárůstem přenést your-own-device (BYOD) a práci z domovské zásady a růstu bezdrátové připojení ve firmách je velmi důležité, je sledovat, na který se připojuje k vaší síti. Efektivní zabezpečení auditu často zjistí zařízení, aplikace a programy spuštěné ve vaší síti, která nepodporuje IT a proto potenciálně není zabezpečená. Další informace najdete v tématu [Přehled monitorování a správa Azure zabezpečení](../../security/security-management-and-monitoring-overview.md). Ujistěte se, že složku zahrnujete všechny z následujících úloh v procesu inventáře. 
 
@@ -337,7 +337,7 @@ Kromě správy vašich účtů privilegovaný přístup, doporučujeme, abyste �
 * Pouze udělit oprávnění k přístupu, pokud je nepotřebujete a odebere ji později (just-in-time).
 * Zachovat a kontrolní aktivita auditu vztahující se k privilegovaným účtům.
 
-Další informace o vytvoření úplného plánu zabezpečení najdete v tématu [IT zdroje informací o architektuře cloudu Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Další informace o zapojení služeb společnosti Microsoft pro účely pomoci s kterýmkoli z těchto témat vám poskytne zástupce Microsoftu nebo naleznete v tématu [sestavení kritické kybernetických ochrany k ochraně vaší organizace](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Další informace o vytvoření úplného plánu zabezpečení najdete v tématu [IT zdroje informací o architektuře cloudu Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Další informace o zapojení služeb společnosti Microsoft pro účely pomoci s kterýmkoli z těchto témat vám poskytne zástupce Microsoftu nebo naleznete v tématu [sestavení kritické kybernetických ochrany k ochraně vaší organizace](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Tento poslední probíhající fáze plánu zabezpečené privilegovaného přístupu zahrnuje následující součásti.
 

@@ -4,7 +4,8 @@ description: Zjistěte, jak model přetrénujete a aktualizovat webovou službu,
 services: machine-learning
 documentationcenter: ''
 author: YasinMSFT
-ms.author: yahajiza
+ms.custom: (previous ms.author yahajiza)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: cc4c26a2-5672-4255-a767-cfd971e46775
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 1a30f9166c81c4757267c95b13b08f3202748467
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 2a259f1f8a82c3bd54fd7ba821eb096a85659e3f
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684633"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51821042"
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Přeučování existující prediktivní webové služby
 Tento dokument popisuje retraining proces pro následující scénáře:

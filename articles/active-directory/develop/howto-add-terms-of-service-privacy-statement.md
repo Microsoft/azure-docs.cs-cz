@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b1276ab227f4bf65483fb2cdec57c759573bc7c5
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242683"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853587"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Podmínky služby a o ochraně osobních údajů pro registrované aplikace Azure Active Directory
 
@@ -64,10 +64,10 @@ Jakmile jsou připravené podmínkami služby a o ochraně osobních údajů, m�
 
 Pokud jste vaši aplikaci zaregistrovali na webu Azure portal, postupujte podle těchto kroků.
 
-1. Přihlaste se na  [Azure Portal](https://portal.azure.com/).
-2. Přejděte **registrace aplikací** části a vyberte svou aplikaci.
-3. Otevřít **vlastnosti** části aplikace.
-4. Vyplňte **URL podmínek služby** a **adresa URL prohlášení o ochraně osobních údajů** pole.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Přejděte **registrace aplikací** části a vyberte svou aplikaci.
+3. Otevřít **vlastnosti** části aplikace.
+4. Vyplňte **URL podmínek služby** a **adresa URL prohlášení o ochraně osobních údajů** pole.
 5. Uložte provedené změny.
 
     ![Oddíl properties aplikace s podmínkami adresy URL služby a o ochraně osobních údajů – příkaz](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
@@ -76,9 +76,9 @@ Pokud jste vaši aplikaci zaregistrovali na webu Azure portal, postupujte podle 
 
 Pokud jste zaregistrovali aplikaci v portálu pro registraci aplikací nebo Centrum pro vývojáře, postupujte podle těchto kroků.
 
-1. Přihlaste se k [portál pro registraci aplikací](https://apps.dev.microsoft.com/).
-2. Vyberte vaši aplikaci a přejděte **profilu** oddílu.
-3. Vyplňte **URL podmínek služby** a **adresa URL prohlášení o ochraně osobních údajů** pole.
+1. Přihlaste se k [portál pro registraci aplikací](https://apps.dev.microsoft.com/).
+2. Vyberte vaši aplikaci a přejděte **profilu** oddílu.
+3. Vyplňte **URL podmínek služby** a **adresa URL prohlášení o ochraně osobních údajů** pole.
 4. Uložte provedené změny.
 
     ![Části profilu aplikace s podmínkami adresy URL služby a o ochraně osobních údajů – příkaz](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: e44d267fcc9986c5e215fc4844f49b28918a3111
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.openlocfilehash: 2fff332665652516e4ac25c4eb1a4612c15e2412
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711918"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824672"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat ze služby Azure Monitor
-Tento článek obsahuje přehled dostupných metod k vizualizaci dat uložených ve službě Azure Monitor. Jedná se o [metriky v úložišti Azure metriky](../monitoring/monitoring-data-collection.md#metrics) a [dat protokolů v Log Analytics](../monitoring/monitoring-data-collection.md#logs). 
+Tento článek obsahuje přehled dostupných metod k vizualizaci dat uložených ve službě Azure Monitor. Jedná se o [metriky v úložišti Azure metriky](../azure-monitor/platform/data-collection.md#metrics) a [dat protokolů v Log Analytics](../azure-monitor/platform/data-collection.md#logs). 
 
 Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monitorování k procházení podrobností podle problémů a identifikaci vzorů. V závislosti na nástroj, který používáte může mít také možnost sdílení vizualizací s ostatními uživateli uvnitř i mimo vaši organizaci.
 
@@ -138,7 +138,7 @@ Prostřednictvím svých rozhraní API z libovolného klienta REST, které vám 
 
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [data shromážděná službou Azure Monitor](../monitoring/monitoring-data-collection.md).
+- Další informace o [data shromážděná službou Azure Monitor](../azure-monitor/platform/data-collection.md).
 - Další informace o [řídicích panelů Azure](../azure-portal/azure-portal-dashboards.md).
 - Další informace o [zobrazení ve službě Azure Monitor](../log-analytics/log-analytics-view-designer.md).
 - Další informace o [sešity ve službě Application Insights](../application-insights/app-insights-usage-workbooks.md).

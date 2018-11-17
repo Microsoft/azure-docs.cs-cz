@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 68f987daff5bc0ef81c248f6f5e75aaf1318b025
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 6a302c611b7c71dd8bc8c472330b79ea21504770
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395487"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824621"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Přidání, aktualizace nebo odebrání kreditní nebo debetní kartou pro Azure
 
@@ -40,7 +40,7 @@ V centru účtů můžete přidat novou platební kartu, aktualizovat stávajíc
 1. Vyberte "+" a přidejte kartu.
 
     ![Snímek obrazovky zobrazující možnost Upravit vedle způsob platby.](./media/billing-how-to-change-credit-card/editcard_new.png)
-1. Zadejte kreditní nebo debetní karty podrobnosti.
+1. Zadejte podrobnosti o kreditní nebo debetní kartě.
 1. Vyberte **Uložit**. 
 
 Pokud dojde k chybě po přidat platební kartu, najdete v článku [odmítl platební karty v Azure, zaregistrujte](billing-credit-card-fails-during-azure-sign-up.md).
@@ -82,7 +82,7 @@ Pokud je potřeba odebrat kreditní nebo debetní karta předtím, než skončí
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>Proč zobrazuje "vypršela platnost vaší relace přihlášení. Klikněte prosím sem a znovu přihlásit,"?
 
-Pokud se bude dále zobrazovat tato chybová zpráva, i v případě, že už jste se odhlásili a zase v, zkuste to znovu s Chcete relaci privátního procházení.
+Pokud i v případě, že jste už přihlášení bude dále zobrazovat tato chybová zpráva a zpět v, zkuste to znovu s Chcete relaci privátního procházení.
 
 ### <a name="how-do-i-use-a-different-card-for-each-subscription-i-have"></a>Jak použít jinou kartu pro každé předplatné, které budu mít?
 

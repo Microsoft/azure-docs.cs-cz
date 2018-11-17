@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ae033b944e93fe90392af9b17de883d791d3e4dc
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 521bf044f280b91f668d42d760ba2a726b555f12
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958587"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822666"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
@@ -82,7 +82,7 @@ Hlavní kategorie dat jsou:
 ## <a name="case-study-real-madrid-fc"></a>Případová studie: Real Madrid F.C.
 Webové služby, kterou [Real Madrid Football Club](http://www.realmadrid.com/) slouží asi 450 milionům fanoušků z celého světa. K němu přes webových prohlížečů a mobilních aplikací Club fanoušky přístup. Fanoušky lze pouze rezervuje lístky, ale také přístup k klipy informace a video na výsledky, hráče a nadcházející hry. Vyhledávání můžete s filtry, jako je počet cílů skóre. Existují také odkazy na sociálních sítích. Činnost koncového uživatele je vysoce přizpůsobené a je navržena jako obousměrná komunikace provozovat fanoušků.
 
-Řešení [je systém služeb a aplikací v Microsoft Azure](https://www.microsoft.com/en-us/enterprise/microsoftcloud/realmadrid.aspx). Škálovatelnost je klíčovým požadavkem: provoz je proměnná a mohou dosáhnout velmi velké objemy během a po shody.
+Řešení [je systém služeb a aplikací v Microsoft Azure](https://www.microsoft.com/inculture/sports/real-madrid/). Škálovatelnost je klíčovým požadavkem: provoz je proměnná a mohou dosáhnout velmi velké objemy během a po shody.
 
 Pro Real Madrid, je důležité monitorovat výkon systému. Azure Application Insights nabízí komplexní pohled na systém, zajištění spolehlivého a vysokou úroveň služeb. 
 

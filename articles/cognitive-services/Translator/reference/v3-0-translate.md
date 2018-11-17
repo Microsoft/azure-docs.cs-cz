@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: bebe9b6565d618cb773de0379122a17bf7f70403
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: a096bd2f23910eb2eb3bc4aa36e34400ccfbb701
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914290"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853400"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: překlad
 
@@ -84,6 +84,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>toScript</td>
     <td>*Volitelný parametr*.<br/>Určuje skript přeloženého textu.</td>
   </tr>
+  <tr>
+    <td>AllowFallback</td>
+    <td>*Volitelný parametr*.<br/>Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje. Možné hodnoty jsou: `true` (výchozí) nebo `false`.<br/><br/>`AllowFallback=false` Určuje, zda překlad by měl používat pouze systémy trénovaných ke zpracování `category` určeném požadavkem. Pokud překlad pro jazyk X jazyk Y vyžaduje řetězení prostřednictvím jazyka pivot E, pak všechny systémy v řetězci (X -> E a E -> Y) bude nutné mít vlastní a mají stejné kategorie. Pokud je nalezen žádný systém s konkrétní kategorií, požadavek vrátí stavový kód 400. `AllowFallback=true` Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje.
+</td>
+  </tr>
 </table> 
 
 Hlavičky žádosti patří:
@@ -106,6 +111,11 @@ Hlavičky žádosti patří:
   <tr>
     <td>X-ClientTraceId</td>
     <td>*Volitelné*.<br/>Klientem generovaná identifikátor GUID k jednoznačné identifikaci požadavku. Tato hlavička můžete vynechat, pokud zahrnete ID trasování v řetězci dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
+  </tr>
+  <tr>
+    <td>Systém X MT</td>
+    <td>*Volitelné*.<br/>Určuje typ systému, který se použil pro překlad pro každý "k" Jazyk požadovaný pro překlad. Hodnota je čárkou oddělený seznam řetězců. Každý řetězec označuje typ:<br/><ul><li>Vlastní - žádost obsahuje vlastní systém a aspoň jeden vlastní systém se použil při překladu.</li><li>Tým – všechny ostatní žádosti</li></ul>
+</td>
   </tr>
 </table> 
 
@@ -186,6 +196,10 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   <tr>
     <td>403</td>
     <td>Požadavek není autorizovaný. Najdete podrobnosti o chybové zprávě. To často určuje, že se využilo všechny bezplatné překlady zkušebního předplatného k dispozici.</td>
+  </tr>
+  <tr>
+    <td>408</td>
+    <td>Požadavek nelze splnit, protože chybí prostředek. Najdete podrobnosti o chybové zprávě. Při použití vlastního `category`, to často určuje, že vlastní překladový systém ještě není k dispozici pro požadavků. Po určité době čekání (např. 10 minut) neúspěšného požadavku.</td>
   </tr>
   <tr>
     <td>429</td>

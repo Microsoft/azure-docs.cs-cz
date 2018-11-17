@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: d99b5d1fdca39466d5e09ca077329b7ffa8622bc
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ac317eaa4c7e69e4a01fe932569b999e502bc3cf
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568848"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822428"
 ---
 # <a name="manage-process-servers"></a>Správa procesních serverů
 
@@ -31,7 +31,41 @@ Upgradujte procesový server spuštěn v místním prostředí nebo v Azure (pro
 > [!NOTE]
   Obvykle když použijete k vytvoření procesového serveru v Azure pro účely navrácení služeb po obnovení Image z Galerie Azure, běží nejnovější dostupnou verzi. Týmy, které Site Recovery vydání opravy a vylepšení v pravidelných intervalech, a doporučujeme, abyste že informujte procesových serverů.
 
+## <a name="balance-the-load-on-process-server"></a>Vyrovnávání zatížení na procesovém serveru
 
+K vyrovnávání zatížení mezi dvěma servery procesu
+
+1. Přejděte do **trezor služby Recovery Services** > **spravovat** > **infrastruktura Site Recovery** > **pro VMware a fyzických počítačů** > **konfigurační servery**.
+2. Klikněte na konfiguračním serveru, do kterého jsou registrované procesových serverů.
+3. Seznam procesů serverů zaregistrovaných do konfigurační servery jsou k dispozici na stránce.
+4. Klikněte na procesovém serveru, na který chcete upravit zatížení.
+
+    ![Nástroje DSM](media/vmware-azure-manage-process-server/LoadBalance.png)
+
+5. Můžete buď používat **nástroj pro vyrovnávání zatížení** nebo **přepínač** možnosti, jak je popsáno níže, podle požadavku.
+
+### <a name="load-balance"></a>Nástroj pro vyrovnávání zatížení
+
+Díky této možnosti můžete vybrat jeden nebo více virtuálních počítačů a můžete přenést na jiný procesový server.
+
+1. Klikněte na **Vyrovnávání zatížení**, vyberte cílový procesový server z rozevíracího seznamu. Klikněte na tlačítko **OK**.
+
+    ![LoadPS](media/vmware-azure-manage-process-server/LoadPS.PNG)
+
+2. Klikněte na **vyberte počítače, které**, vyberte virtuální počítače, které chcete přesunout z aktuálního procesu serveru na cílový procesový server. Pro každý virtuální počítač se zobrazí podrobnosti průměr dat změny.
+3. Klikněte na **OK**. Sledovat průběh úlohy v části **trezor služby Recovery Services** > **monitorování** > **úlohy Site Recovery**.
+4. Bude trvat 15 minut, než se změny tak, aby odrážely po úspěšném dokončení této operace nebo [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) pro přímý vliv.
+
+### <a name="switch"></a>Přepínač
+
+Pomocí této možnosti se celé zatížení chráněný v rámci procesu serveru přesune na jiný procesový server.
+
+1. Klikněte na **přepínač**, vyberte cílový procesový server, klikněte na tlačítko **OK**.
+
+    ![Přepínač](media/vmware-azure-manage-process-server/Switch.PNG)
+
+2. Sledovat průběh úlohy v části **trezor služby Recovery Services** > **monitorování** > **úlohy Site Recovery**.
+3. Bude trvat 15 minut, než se změny tak, aby odrážely po úspěšném dokončení této operace nebo [aktualizovat konfigurační server](vmware-azure-manage-configuration-server.md#refresh-configuration-server) pro přímý vliv.
 
 ## <a name="reregister-a-process-server"></a>Opětovná registrace procesového serveru
 

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 6879822e8451e6170bf17fff4ab66b672f711a93
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 09528aab5f694aa017f9f16e2675d3c36c1bead3
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632383"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51822122"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Rychlý start: Blokování přístupu, když se zjistí ohrožení relace s Azure Active Directory Identity Protection  
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky 
 
-K dokončení scénáře, který v tomto kurzu, budete potřebovat:
+K dokončení scénáře v tomto kurzu budete potřebovat:
 
 - **Přístup k Azure AD Premium P2 edice** – Azure AD Identity Protection je funkce služby Azure AD Premium P2. 
 
@@ -109,7 +109,7 @@ Tato část ukazuje, jak vytvořit zásady podmíněného přístupu vyžaduje r
 14. Klikněte na stránce zásad **Uložit**.  
 
 
-## <a name="test-your-conditional-access-policy"></a>Otestovat své zásady podmíněného přístupu
+## <a name="test-your-conditional-access-policy"></a>Otestování zásady podmíněného přístupu
 
 K otestování vašich zásad, zkuste pro přihlášení k vaší [webu Azure portal](https://portal.azure.com) jako **Alan Charon** pomocí prohlížeče sítě Tor. Váš pokus o přihlášení by měl být blokovány své zásady podmíněného přístupu.
 
@@ -122,6 +122,6 @@ Pokud už nepotřebujete, odstraňte testovacího uživatele Tor prohlížeče a
 
 - Pokud si nejste jisti, jak odstranit uživatele služby Azure AD, přečtěte si téma [postup přidání nebo odstranění uživatelů](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
-- Pokyny k odebrání Tor prohlížeči najdete v tématu [odinstalace](https://tb-manual.torproject.org/en-US/uninstalling.html).
+- Pokyny k odebrání Tor prohlížeči najdete v tématu [odinstalace](https://tb-manual.torproject.org/uninstalling/).
 
 
