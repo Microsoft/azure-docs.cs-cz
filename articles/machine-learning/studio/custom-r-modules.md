@@ -4,7 +4,8 @@ description: Rychlý start pro vytváření vlastních modulů R ve službě Azu
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
-ms.author: hshapiro
+ms.custom: (previous ms.author hshapiro)
+ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
@@ -15,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: 1a578e8cc05b42d05a8dfb31c0baeefb4822e3e5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b920f0ae3acd253c0f1f698ae4415e5b759ef762
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261105"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51819334"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Vytváření vlastních modulů R ve službě Azure Machine Learning
 Toto téma popisuje, jak vytvořit a nasadit vlastní modul R ve službě Azure Machine Learning. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování. Ukazuje, jak vytvořit soubory, které definují modulu a zaregistrovat modul pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy použité v definici vlastního modulu jsou pak popsány podrobněji. Použití pomocné funkce a soubory a několik výstupů se probírá také. 
@@ -132,7 +133,7 @@ Může být deterministické výsledky modulu nebo nondeterministic.* * ve vých
 Jsou funkce, které jsou nedeterministické, jako je například RAND nebo funkci, která vrátí aktuální datum nebo čas. Pokud modul používá nedeterministická funkci, můžete určit, že modul je Nedeterministický nastavením nepovinný **isDeterministic** atribut **FALSE**. To zajistí, že modul se znovu spustí při každém spuštění experimentu, i v případě, že nedošlo ke změně modulu vstup a parametry. 
 
 ### <a name="language-definition"></a>Definice jazyka
-**Jazyk** element v souboru definice XML je možné určit jazyk vlastního modulu. R je aktuálně jediný podporovaný jazyk. Hodnota **zdrojový soubor** atribut musí být název souboru R, který obsahuje funkce, která má být volána při spuštění modulu. Tento soubor musí být součástí balíček zip. Hodnota **entryPoint** atribut je název volané funkce a musí odpovídat platné funkce definované s ve zdrojovém souboru.
+**Jazyk** element v souboru definice XML je možné určit jazyk vlastního modulu. V současné době je R jediným podporovaným jazykem. Hodnota **zdrojový soubor** atribut musí být název souboru R, který obsahuje funkce, která má být volána při spuštění modulu. Tento soubor musí být součástí balíček zip. Hodnota **entryPoint** atribut je název volané funkce a musí odpovídat platné funkce definované s ve zdrojovém souboru.
 
     <Language name="R" sourceFile="CustomAddRows.R" entryPoint="CustomAddRows" />
 
@@ -291,13 +292,13 @@ Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** �
     * Logická hodnota
     * Kategorické
     * Řetězec
-    * Štítek
+    * Popisek
     * Funkce
     * Skóre
-    * Vše
+    * Všechny
   * **výchozí** -platný výchozí výběry pro výběr sloupce zahrnují: 
     
-    * Žádný
+    * Žádná
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -317,7 +318,7 @@ Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** �
     * AllLabel
     * AllFeature
     * AllScore
-    * Vše
+    * Všechny
 
 **Rozevírací seznam**: uživatelem zadaný výčet (rozevírací seznam). Položky rozevíracího seznamu jsou uvedeny v rámci **vlastnosti** prvku pomocí **položky** elementu. **Id** pro každou **položky** musí být jedinečný a platná proměnná R. Hodnota **název** ze **položky** slouží jako text, který se zobrazí a hodnotu, která je předána funkci R.
 

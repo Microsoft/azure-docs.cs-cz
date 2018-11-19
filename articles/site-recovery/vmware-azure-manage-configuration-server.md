@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/11/2018
 ms.author: raynew
-ms.openlocfilehash: e8f41ef44adbd72e8ab16329d5fec94c08df2fe7
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 8096f1b5b29c0445d8bae85fb56e2735469184d4
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568450"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51823941"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware
 
@@ -222,9 +222,16 @@ Pro nasazení serveru konfigurace před. května 2016 vypršení platnosti certi
 2. Datum vypršení platnosti se zobrazí v části **stav konfigurace serveru**.
 3. Vyberte **prodloužit platnost certifikátů**.
 
-## <a name="update-windows-licence"></a>Update Windows licence
+## <a name="refresh-configuration-server"></a>Aktualizovat konfigurační server
 
-Licence pomocí šablony OVF k dispozici je zkušební licenci, která je platná po dobu 180 dnů. Pro použití bez přerušení je nutné aktivovat Windows s licencí opatřené.
+1. Na webu Azure Portal, přejděte na **trezor služby Recovery Services** > **spravovat** > **infrastruktura Site Recovery**  >   **Pro VMware a fyzické počítače** > **konfigurační servery**
+2. Klikněte na konfiguračním serveru, který chcete aktualizovat.
+3. V okně s podrobnostmi o zvolené konfigurace serveru, klikněte na **Další** > **aktualizovat Server**.
+4. Sledovat průběh úlohy v části **trezor služby Recovery Services** > **monitorování** > **úlohy Site Recovery**.
+
+## <a name="update-windows-license"></a>Aktualizujte licenci Windows
+
+Licence, které jsou součástí šablony OVF je zkušební licence, který je platný po dobu 180 dnů. Pro použití bez přerušení je nutné aktivovat Windows s licencí opatřené.
 
 ## <a name="failback-requirements"></a>Požadavky na navrácení služeb po obnovení
 

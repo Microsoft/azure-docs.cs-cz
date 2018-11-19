@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: c3627cdbabb38c2236a8a433e9d82d78fe502e4c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f58fd08e8cffed6d2920f318aa74bcf9682c29dc
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "49311081"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51820514"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Jak používat službu e-mailu Sendgridu z PHP
 
@@ -116,7 +116,7 @@ Chcete-li odeslat e-mailu pomocí rozhraní API SendGrid SMTP, použijte *Swift 
  }
 ```
 
-### <a name="web-api"></a>Web API
+### <a name="web-api"></a>Webové rozhraní API
 Použití PHP na [curl funkce] [ curl function] k odesílání e-mailu pomocí webového rozhraní API SendGrid.
 
 ```php
@@ -174,7 +174,7 @@ Odeslání přílohy pomocí rozhraní SMTP API zahrnuje jeden další řádek k
   * Create the body of the message (a plain-text and an HTML version).
   * $text is your plain-text email
   * $html is your html version of the email
-  * If the reciever is able to view html emails then only the html
+  * If the receiver is able to view html emails then only the html
   * email will be displayed
   */
  $text = "Hi!\nHow are you?\n";
@@ -240,7 +240,7 @@ Další řádek kódu vypadá takto:
 
 Tento řádek kódu volá metodu připojení na `Swift\_Message` objektu a používá statickou metodu `fromPath` na `Swift\_Attachment` třídy k získání a připojit soubor na zprávu.
 
-### <a name="web-api"></a>Web API
+### <a name="web-api"></a>Webové rozhraní API
 
 Odeslání přílohy pomocí rozhraní Web API je velmi podobný jako poslání e-mailu pomocí rozhraní Web API. Mějte však na paměti, že v následujícím příkladu pole parametrů musí obsahovat tento element:
 
@@ -248,7 +248,7 @@ Odeslání přílohy pomocí rozhraní Web API je velmi podobný jako poslání 
     'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
 ```
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 ```php
 <?php
@@ -308,7 +308,7 @@ Použití [Composer] k instalaci knihovny:
 php composer.phar require sendgrid/sendgrid 2.1.1
 ```
 
-### <a name="example"></a>Příklad:  
+### <a name="example"></a>Příklad  
 
 ```php
 <?php

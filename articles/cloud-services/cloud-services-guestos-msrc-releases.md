@@ -11,17 +11,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/12/2018
+ms.date: 11/15/2018
 ms.author: raiye
-ms.openlocfilehash: 19f9584c86993942e949716e14d2190fc5b31ce0
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: c2ff5d79c59a08c6ed808312027dc69aee910224
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578769"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51854267"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
+
+## <a name="november-2018-guest-os"></a>Hostovaný operační systém. listopadu 2018
+
+>[!NOTE]
+>Hostovaný operační systém. listopadu je aktuálně nasazuje pro služby virtuálního počítače v cloudu, které jsou nakonfigurované pro automatické aktualizace. Po dokončení tohoto uvedení se tato verze bude k dispozici ruční aktualizace přes Azure portal a konfigurační soubory. Následující opravy jsou součástí hostovaného operačního systému. listopadu. Tento seznam se může změnit.
+
+| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| --- | --- | --- | --- | --- |
+| Rel 18-11 | [4466536] | Internet Explorer | 2,80, 3.67, 4.60 | 13. listopadu 2018 |
+| Rel 18-11 | [4467694] | Animace Flash | 3.67, 4.60, 5,25 | 13. listopadu 2018 |
+| Rel 18-11 | [4467106] | Zabezpečení Windows | 2,80 | 13. listopadu 2018 |
+| Rel 18-11 | [4467678] | Zabezpečení Windows | 3.67 | 13. listopadu 2018 |
+| Rel 18-11 | [4467703] | Zabezpečení Windows | 4.60 | 13. listopadu 2018 |
+| Rel 18-11 | [4467691] | Zabezpečení systému Windows 10 | 5.25 | 13. listopadu 2018 |
+| neuvedeno | [3173426] | Servisní aktualizace zásobníku | 3.67 | 12. července 2016 |
+| neuvedeno | [4465659] | Servisní aktualizace zásobníku | 5.25 | 13. listopadu 2018 |
+| neuvedeno | [4462923] | Souhrn října Non-zabezpečení | 2,80 | 9. října 2018 |
+| neuvedeno | [4462929] | Souhrn října Non-zabezpečení | 3.67 | 9. října 2018 |
+| neuvedeno | [4462926] | Souhrn října Non-zabezpečení | 4.60 | 9. října 2018 |
+| neuvedeno | [3109976] | Překrytí kompatibility aplikace | 4.60 | 12. dubna 2016 |
+| neuvedeno | [4457037] | Překrytí kompatibility aplikace | 4.60| 12. června 2018 |
+
+[4466536]: http://support.microsoft.com/kb/4466536
+[4467694]: http://support.microsoft.com/kb/4467694
+[4467106]: http://support.microsoft.com/kb/4467106
+[4467678]: http://support.microsoft.com/kb/4467678
+[4467703]: http://support.microsoft.com/kb/4467703
+[4467691]: http://support.microsoft.com/kb/4467691
+[3173426]: http://support.microsoft.com/kb/3173426
+[4465659]: http://support.microsoft.com/kb/4465659
+[4462923]: http://support.microsoft.com/kb/4462923
+[4462929]: http://support.microsoft.com/kb/4462929
+[4462926]: http://support.microsoft.com/kb/4462926
+[3109976]: http://support.microsoft.com/kb/3109976
+[4457037]: http://support.microsoft.com/kb/4457037
 
 ## <a name="october-2018-guest-os"></a>Hostovaný operační systém. října 2018
 
