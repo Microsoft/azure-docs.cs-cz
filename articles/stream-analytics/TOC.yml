@@ -165,12 +165,236 @@ items:
       href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
   - name: Ladění s využitím diagramu úloh
     href: stream-analytics-job-diagram-with-metrics.md
+- name: Dotazovací jazyk Stream Analytics
+  href: /stream-analytics-query/stream-analytics-query-language-reference
+  items:
+  - name: Předdefinované funkce
+    items:
+    - name: Přehled předdefinovaných funkcí
+      href: /stream-analytics-query/built-in-functions-azure-stream-analytics
+    - name: Agregační funkce
+      items:
+      - name: Přehled agregačních funkcí
+        href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
+      - name: PRŮMĚR
+        href: /stream-analytics-query/avg-azure-stream-analytics
+      - name: POČET
+        href: /stream-analytics-query/count-azure-stream-analytics
+      - name: Shromáždění
+        href: /stream-analytics-query/collect-azure-stream-analytics
+      - name: CollectTOP
+        href: /stream-analytics-query/collecttop-azure-stream-analytics
+      - name: MAX
+        href: /stream-analytics-query/max-azure-stream-analytics
+      - name: MIN
+        href: /stream-analytics-query/min-azure-stream-analytics
+      - name: Percentile_Cont
+        href: /stream-analytics-query/percentile-cont-azure-stream-analytics
+      - name: Percentile_Disc
+        href: /stream-analytics-query/percentile-disc-azure-stream-analytics
+      - name: STDEV
+        href: /stream-analytics-query/stdev-azure-stream-analytics
+      - name: STDEVP
+        href: /stream-analytics-query/stdevp-azure-stream-analytics
+      - name: SUM
+        href: /stream-analytics-query/sum-azure-stream-analytics
+      - name: TopOne
+        href: /stream-analytics-query/topone-azure-stream-analytics
+      - name: VAR
+        href: /stream-analytics-query/var-azure-stream-analytics
+      - name: VARP
+        href: /stream-analytics-query/varp-azure-stream-analytics
+    - name: Analytické funkce
+      items:
+      - name: Přehled analytických funkcí
+        href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+      - name: ISFIRST
+        href: /stream-analytics-query/isfirst-azure-stream-analytics
+      - name: LAG
+        href: /stream-analytics-query/lag-azure-stream-analytics
+      - name: LAST
+        href: /stream-analytics-query/last-azure-stream-analytics
+      - name: AnomalyDetection
+        href: /stream-analytics-query/anomaly-detection-azure-stream-analytics
+    - name: Funkce pro práci s poli
+      items:
+      - name: Přehled funkcí pro práci s poli
+        href: /stream-analytics-query/array-functions-stream-analytics
+      - name: GetArrayLength
+        href: /stream-analytics-query/getarraylength-azure-stream-analytics
+      - name: GetArrayElement
+        href: /stream-analytics-query/getarrayelement-azure-stream-analytics
+      - name: GetArrayElements
+        href: /stream-analytics-query/getarrayelements-azure-stream-analytics
+    - name: Převodní funkce
+      items:
+      - name: Přehled převodních funkcí
+        href: /stream-analytics-query/conversion-functions-azure-stream-analytics
+      - name: CAST
+        href: /stream-analytics-query/cast-azure-stream-analytics
+      - name: GetType
+        href: /stream-analytics-query/gettype-azure-stream-analytics
+      - name: TRY_CAST
+        href: /stream-analytics-query/try-cast-azure-stream-analytics
+    - name: Funkce data a času
+      items:
+      - name: Přehled funkcí data a času
+        href: /stream-analytics-query/date-and-time-functions-azure-stream-analytics
+      - name: DATEADD
+        href: /stream-analytics-query/dateadd-azure-stream-analytics
+      - name: DATEDIFF
+        href: /stream-analytics-query/datediff-azure-stream-analytics
+      - name: DATENAME
+        href: /stream-analytics-query/datename-azure-stream-analytics
+      - name: DATEPART
+        href: /stream-analytics-query/datepart-azure-stream-analytics
+      - name: DATETIMEFROMPARTS
+        href: /stream-analytics-query/datetimefromparts-azure-stream-analytics
+      - name: DAY
+        href: /stream-analytics-query/day-azure-stream-analytics
+      - name: MONTH
+        href: /stream-analytics-query/month-azure-stream-analytics
+      - name: YEAR
+        href: /stream-analytics-query/year-azure-stream-analytics
+    - name: Geoprostorové funkce
+      items:
+      - name: Přehled geoprostorových funkcí
+        href: /stream-analytics-query/geospatial-functions
+      - name: CreateLineString
+        href: /stream-analytics-query/createlinestring
+      - name: CreatePoint
+        href: /stream-analytics-query/createpoint
+      - name: CreatePolygon
+        href: /stream-analytics-query/createpolygon
+      - name: ST_DISTANCE
+        href: /stream-analytics-query/st-distance
+      - name: ST_OVERLAPS
+        href: /stream-analytics-query/st-overlaps
+      - name: ST_INTERSECTS
+        href: /stream-analytics-query/st-intersects
+      - name: ST_WITHIN
+        href: /stream-analytics-query/st-within
+    - name: Funkce pro práci se vstupními metadaty
+      items:
+      - name: Přehled funkcí pro práci se vstupními metadaty
+        href: /stream-analytics-query/input-metadata-functions
+      - name: GetMetadataPropertyValue
+        href: /stream-analytics-query/getmetadatapropertyvalue
+    - name: Matematické funkce
+      items:
+      - name: Přehled matematických funkcí
+        href: /stream-analytics-query/mathematical-functions-azure-stream-analytics
+      - name: ABS
+        href: /stream-analytics-query/abs-azure-stream-analytics
+      - name: CEILING
+        href: /stream-analytics-query/ceiling-azure-stream-analytics
+      - name: EXP
+        href: /stream-analytics-query/exp-azure-stream-analytics
+      - name: FLOOR
+        href: /stream-analytics-query/floor-azure-stream-analytics
+      - name: POWER
+        href: /stream-analytics-query/power-azure-stream-analytics
+      - name: SIGN
+        href: /stream-analytics-query/sign-azure-stream-analytics
+      - name: SQUARE
+        href: /stream-analytics-query/square-azure-stream-analytics
+      - name: SQRT
+        href: /stream-analytics-query/sqrt-azure-stream-analytics
+    - name: Funkce pro práci se záznamy
+      items:
+      - name: Přehled funkcí pro práci se záznamy
+        href: /stream-analytics-query/record-functions-azure-stream-analytics
+      - name: GetRecordProperties
+        href: /stream-analytics-query/getrecordproperties-azure-stream-analytics
+      - name: GetRecordPropertyValue
+        href: /stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics
+    - name: Funkce pro práci s řetězci
+      items:
+      - name: Přehled funkcí pro práci s řetězci
+        href: /stream-analytics-query/string-functions-azure-stream-analytics
+      - name: CHARINDEX
+        href: /stream-analytics-query/charindex-azure-stream-analytics
+      - name: CONCAT
+        href: /stream-analytics-query/concat-azure-stream-analytics
+      - name: LEN
+        href: /stream-analytics-query/len-azure-stream-analytics
+      - name: LOWER
+        href: /stream-analytics-query/lower-azure-stream-analytics
+      - name: PATINDEX
+        href: /stream-analytics-query/patindex-azure-stream-analytics
+      - name: REGEXMATCH
+        href: /stream-analytics-query/regexmatch-azure-stream-analytics
+      - name: SUBSTRING
+        href: /stream-analytics-query/substring-azure-stream-analytics
+      - name: UPPER
+        href: /stream-analytics-query/upper-azure-stream-analytics
+    - name: Funkce pro práci s okny
+      items:
+      - name: Přehled funkcí pro práci s okny
+        href: /stream-analytics-query/windowing-azure-stream-analytics
+      - name: Skákající okno
+        href: /stream-analytics-query/hopping-window-azure-stream-analytics
+      - name: Okno relace
+        href: /stream-analytics-query/session-window-azure-stream-analytics
+      - name: Posuvné okno
+        href: /stream-analytics-query/sliding-window-azure-stream-analytics
+      - name: Přeskakující okno
+        href: /stream-analytics-query/tumbling-window-azure-stream-analytics
+  - name: Typy dat
+    items:
+    - name: Přehled typů dat
+      href: /stream-analytics-query/data-types-azure-stream-analytics
+    - name: Parsování dat JSON a AVRO
+      href: stream-analytics-parsing-json.md
+      maintainContext: true
+  - name: Elementy dotazovacího jazyka
+    items:
+    - name: Přehled elementů dotazovacího jazyka
+      href: /stream-analytics-query/query-language-elements-azure-stream-analytics
+    - name: APPLY
+      href: /stream-analytics-query/apply-azure-stream-analytics
+    - name: CASE
+      href: /stream-analytics-query/case-azure-stream-analytics
+    - name: CREATE TABLE
+      href: /stream-analytics-query/create-table-stream-analytics
+    - name: FROM
+      href: /stream-analytics-query/from-azure-stream-analytics
+    - name: GROUP BY
+      href: /stream-analytics-query/group-by-azure-stream-analytics
+    - name: HAVING
+      href: /stream-analytics-query/having-azure-stream-analytics
+    - name: INTO
+      href: /stream-analytics-query/into-azure-stream-analytics
+    - name: JOIN
+      href: /stream-analytics-query/join-azure-stream-analytics
+    - name: JOIN pro referenční data
+      href: /stream-analytics-query/reference-data-join-azure-stream-analytics
+    - name: SELECT
+      href: /stream-analytics-query/select-azure-stream-analytics
+    - name: UNION
+      href: /stream-analytics-query/union-azure-stream-analytics
+    - name: WHERE
+      href: /stream-analytics-query/where-azure-stream-analytics
+    - name: WITH
+      href: /stream-analytics-query/with-azure-stream-analytics
+    expanded: true
+  - name: Časová správa
+    items:
+    - name: Přehled časové správy
+      href: /stream-analytics-query/time-management-azure-stream-analytics
+    - name: System.Timestamp
+      href: /stream-analytics-query/system-timestamp-stream-analytics
+    - name: TIMESTAMP BY
+      href: /stream-analytics-query/timestamp-by-azure-stream-analytics
+    - name: Zásady nerovnoměrného rozdělení času
+      href: /stream-analytics-query/time-skew-policies-azure-stream-analytics
+  - name: Záruky doručení událostí
+    href: /stream-analytics-query/event-delivery-guarantees-azure-stream-analytics
+  maintainContext: true
 - name: Referenční informace
   items:
   - name: Azure PowerShell
     href: /powershell/module/azurerm.streamanalytics
-  - name: Dotazovací jazyk
-    href: https://msdn.microsoft.com/library/azure/dn834998
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.streamanalytics
   - name: REST
@@ -201,9 +425,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Dokument white paper – Zpracování událostí v reálném čase
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: e2d29ddfaf035eb937270364bb4f95f866f01807
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bfd489ba8002d8bdfd69b9890b96f41bd4f68b1c
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49983903"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976219"

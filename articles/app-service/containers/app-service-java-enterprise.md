@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 6613def8891109e3a0ddf818111898a893a8035d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a6d50e6f405294bf8e91018dd4d7b6008cd49ada
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628962"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161869"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java podniková Příručka pro službu App Service v Linuxu
 
@@ -27,17 +27,18 @@ Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře Java Ente
 
 ## <a name="scale-with-app-service"></a>Škálování pomocí služby App Service 
 
-WildFly aplikačního serveru ve službě App Service v Linuxu spuštěnou běží v samostatném režimu, není v konfiguraci domény. 
+WildFly aplikačního serveru ve službě App Service v Linuxu spuštěnou běží v samostatném režimu, není v konfiguraci domény. Při horizontálním navýšením kapacity plánu služby App Service, každá instance WildFly je nakonfigurovaná jako samostatný server.
 
- Vertikálně nebo horizontálně škálovat aplikaci s [škálování pravidla](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json) a [zvýšit počet vašich instancí](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
+ Vertikálně nebo horizontálně škálovat aplikaci s [škálování pravidla](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-autoscale-get-started?toc=%2Fazure%2Fapp-service%2Fcontainers%2Ftoc.json) a [zvýšit počet vašich instancí](https://docs.microsoft.com/azure/app-service/web-sites-scale?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). 
 
 ## <a name="customize-application-server-configuration"></a>Vlastní nastavení konfigurace aplikačního serveru
 
-Vývojářům psát po spuštění skriptu Bash provést další konfiguraci potřebné pro svou aplikaci, jako například:
+Instance webové aplikace jsou bezstavové, takže každá nová instance spustit musí být nakonfigurovaná na spuštění Wildfly konfigurace vyžadované aplikací.
+Můžete napsat po spuštění skriptu Bash pro volání rozhraní příkazového řádku WildFly pro:
 
 - Nastavení zdroje dat
 - Konfigurace zprostředkovatelů zasílání zpráv
-- Přidání jiných modulů a dependnecies ke konfiguraci serveru Wildfly.
+- Přidejte do konfigurace serveru Wildfly jiných modulů a závislosti.
 
  Skript se spustí při Wildfly je vytvořená a spuštěná, ale před spuštěním aplikace. Skript by měl používat [JBOSS CLI](https://docs.jboss.org/author/display/WFLY/Command+Line+Interface) volat z `/opt/jboss/wildfly/bin/jboss-cli.sh` se konfigurace nebo po spuštění serveru potřebné změny konfigurace aplikačního serveru. 
 
@@ -51,7 +52,7 @@ Po spuštění skriptu nahrajte `/home/site/deployments/tools` ve vaší instanc
 
 Nastavte **spouštěcí skript** pole na webu Azure Portal do umístění při spuštění skriptu prostředí, například `/home/site/deployments/tools/your-startup-script.sh`.
 
-Použít [nastavení aplikace](/azure/app-service/web-sites-configure#application-settings) k nastavení proměnných prostředí pro použití ve skriptu. Tato nastavení jsou k dispozici po spuštění skriptu prostředí a zachovat připojovacích řetězců a dalších tajných kódů ze správy verzí.
+Zadat [nastavení aplikace](/azure/app-service/web-sites-configure#application-settings) v konfiguraci aplikace a zajistěte tak předání proměnných prostředí pro použití skriptu. Nastavení aplikace udržovat připojovací řetězce a další tajné klíče potřebné ke konfiguraci vaší aplikace ze správy verzí.
 
 ## <a name="modules-and-dependencies"></a>Moduly a závislosti
 

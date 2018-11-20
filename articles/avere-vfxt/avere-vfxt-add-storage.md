@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: aba023667094fb00647861fb2dd300eda64e4897
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633849"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163167"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
@@ -48,15 +48,20 @@ Takto přidejte filtr core NAS:
 
 1. V Ovládacích panelech Avere, klikněte **nastavení** kartě v horní části.
 
-2. Klikněte na tlačítko **Core Filer** > **spravovat křížového Core** na levé straně.
+1. Klikněte na tlačítko **Core Filer** > **spravovat křížového Core** na levé straně.
 
-3. Klikněte na možnost **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
-   ![Snímek obrazovky, přidat nové základní filtr stránky s názvem filer core a jeho plně kvalifikovaný název domény](media/avere-vfxt-add-core-filer.png)
+   ![Přidat novou základní vyfiltrovat stránku se ukazatel myši na tlačítko vytvořit snímek](media/avere-vfxt-add-core-filer-start.png)
+
+1. Vyplňte požadované informace v průvodci: 
 
    * Zadejte název vaší základní filtr.
    * Pokud je k dispozici, zadejte plně kvalifikovaný název domény (FQDN). V opačném případě zadejte IP adresu nebo název hostitele, který se přeloží na vaší základní filtr.
    * Zvolte třídu filer ze seznamu. Pokud nejste jisti, zvolte **jiných**.
+
+     ![Snímek obrazovky, přidat nové základní filtr stránky s názvem filer core a jeho plně kvalifikovaný název domény](media/avere-vfxt-add-core-filer.png)
+  
    * Klikněte na tlačítko **Další** a vyberte zásady mezipaměti. 
    * Klikněte na tlačítko **přidat filtr**.
    * Podrobnější informace o [přidání nového serveru NAS základní filer](http://library.averesystems.com/ops_guide/4_7/new_core_filer_nas.html) v Avere clusteru nastavení průvodce.
@@ -110,7 +115,7 @@ Chcete-li přidat úložiště objektů Blob po vytvoření clusteru, postupujte
 
 1. Otevřete ovládací Panel Avere pro váš cluster. Klikněte na tlačítko **nastavení**a potom otevřete **clusteru** > **přihlašovací údaje ke cloudu** na levém navigačním podokně. Na stránce přihlašovací údaje do cloudu, klikněte na tlačítko **přidat přihlašovací údaje**.
 
-   ![Kliknutím na tlačítko Přidat přihlašovací údaje na stránce konfigurace přihlašovací údaje do cloudu](media/avere-vfxt-new-credential-button.png)
+   ![Klikněte na tlačítko Přidat přihlašovací údaje na stránce konfigurace přihlašovací údaje do cloudu](media/avere-vfxt-new-credential-button.png)
 
 1. Zadejte následující informace o vytvoření přihlašovacích údajů pro základní filer cloudu: 
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
-ms.openlocfilehash: 5f5a98f0f28eba499b7ea3fa76944c21cf8bf8db
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
-ms.translationtype: HT
+ms.openlocfilehash: a56147432d4ef1cc9ac2568259cc2bbf2c7da7ab
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958864"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162664"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -65,7 +65,7 @@ Dotazy SQL v tomto článku využívají následující ukázkový dokument.
 Dotazy můžete spouštět pomocí Průzkumníka dat na webu Azure Portal, prostřednictvím [rozhraní REST API a sad SDK](sql-api-sdk-dotnet.md) a dokonce i pomocí [Query Playground](https://www.documentdb.com/sql/demo), kde se spouští dotazy na existující sadu ukázkových dat.
 
 Další informace o dotazech SQL najdete tady:
-* [Dotazy a syntaxe SQL](sql-api-sql-query.md)
+* [Dotazy a syntaxe SQL](how-to-sql-query.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -128,7 +128,7 @@ Další dotaz vrátí křestní jména všech dětí v rodině, jejíž ID odpov
 [ { "givenName": "Jesse" }, { "givenName": "Lisa" } ]
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste provedli následující:
 
