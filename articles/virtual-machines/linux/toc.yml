@@ -103,7 +103,7 @@ items:
     items:
     - name: Managed Disks
       href: managed-disks-overview.md
-    - name: Disky SSD úrovně Premium
+    - name: Premium Storage
       href: premium-storage.md
     - name: Disky SSD na úrovni Standard
       href: disks-standard-ssd.md
@@ -125,8 +125,6 @@ items:
     href: infrastructure-automation.md
   - name: Zabezpečení a zásady
     href: security-policy.md
-  - name: Stavy a životní cyklus
-    href: states-lifecycle.md
   - name: Monitorování
     href: monitor.md
   - name: Backup a obnovení
@@ -206,7 +204,6 @@ items:
     - name: Použití Vzdálené plochy
       href: use-remote-desktop.md
     - name: Připojení virtuálního počítače k Azure Active Directory
-      displayName: AAD
       items:
       - name: Red Hat Enterprise Linux
         href: ../../active-directory-domain-services/active-directory-ds-join-rhel-linux-vm.md
@@ -248,14 +245,6 @@ items:
       href: reserved-vm-instance-size-flexibility.md
   - name: Použití imagí
     items:
-    - name: Galerie sdílených imagí (Preview)
-      items:
-      - name: Přehled
-        href: shared-image-galleries.md
-      - name: Vytváření sdílených imagí s využitím CLI
-        href: shared-images.md
-      - name: Řešení potíží se sdílenými imagemi
-        href: troubleshooting-shared-images.md
     - name: Vyhledání a použití imagí
       href: cli-ps-findimage.md
     - name: Vytvoření vlastní image
@@ -359,12 +348,10 @@ items:
         href: openshift-get-started.md
       - name: Požadavky OpenShiftu
         href: openshift-prerequisites.md
+      - name: OpenShift Origin
+        href: openshift-origin.md
       - name: OpenShift Container Platform
         href: openshift-container-platform.md
-      - name: OKD
-        href: openshift-okd.md
-      - name: Azure Stack
-        href: openshift-azure-stack.md
       - name: Úlohy OpenShiftu po nasazení
         href: openshift-post-deployment.md
       - name: Řešení potíží s nasazeními
@@ -396,12 +383,6 @@ items:
         href: classic/hpcpack-cluster-namd.md
       - name: Instalace ovladačů NVIDIA GPU
         href: n-series-driver-setup.md
-    - name: IBM Db2 pureScale
-      items:
-      - name: Architektura
-        href: ibm-db2-purescale-azure.md
-      - name: Nasazení
-        href: deploy-ibm-db2-purescale-azure.md
   - name: Správa úložiště
     items:
     - name: Nejčastější dotazy k diskům
@@ -509,7 +490,55 @@ items:
       - name: Nejčastější dotazy
         href: migration-classic-resource-manager-faq.md
   - name: Řešení potíží
-    href: ../troubleshooting/index.md
+    items:
+    - name: Připojení SSH
+      href: troubleshoot-ssh-connection.md
+      items:
+      - name: Podrobný poradce při potížích
+        href: detailed-troubleshoot-ssh-connection.md
+    - name: Resetování hesla virtuálního počítače s Linuxem
+      href: reset-password.md
+    - name: Vysvětlení restartování systému
+      href: understand-vm-reboot.md
+    - name: Diagnostika spouštění
+      href: boot-diagnostics.md
+    - name: Konzola sériového portu
+      href: serial-console.md
+      items:
+      - name: Sériová konzola – GRUB / režim jednoho uživatele
+        href: serial-console-grub-single-user-mode.md
+      - name: Sériová konzola – NMI/SysRq
+        href: serial-console-nmi-sysrq.md
+    - name: Přístup k aplikacím
+      href: troubleshoot-app-connection.md
+    - name: Selhání přidělení
+      href: allocation-failure.md
+    - name: Selhání přidělení – klasický virtuální počítač
+      href: allocation-failure-classic.md
+    - name: Problémy při nasazení
+      href: troubleshoot-deploy-vm.md
+    - name: Vytvoření virtuálního počítače
+      href: troubleshoot-deployment-new-vm.md
+    - name: Změna názvů zařízení
+      href: troubleshoot-device-names-problems.md
+    - name: Opětovné nasazení virtuálního počítače do nového uzlu Azure
+      href: redeploy-to-new-node.md
+    - name: Běžné chybové zprávy
+      href: error-messages.md
+    - name: Přístup k obnovení virtuálního počítače
+      items:
+      - name: Azure CLI
+        href: troubleshoot-recovery-disks.md
+      - name: portál Azure
+        href: troubleshoot-recovery-disks-portal.md
+    - name: Připojené virtuální pevné disky
+      items:
+      - name: Chyby odstraňování prostředků úložiště
+        href: storage-resource-deletion-errors.md
+      - name: Neočekávaná restartování virtuálních počítačů s připojenými virtuálními pevnými disky
+        href: unexpected-reboots-attached-vhds.md
+    - name: Chyby způsobené omezením provozu
+      href: troubleshooting-throttling-errors.md
 - name: Referenční informace
   items:
   - name: Azure CLI
@@ -546,9 +575,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: 1645cbc3d9098464a6f2491b5cc9b4929ce4c2c5
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 4eba76cd7645675b4d350b85d21f7453bc3b21a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976991"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971412"

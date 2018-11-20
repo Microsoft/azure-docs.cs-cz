@@ -41,19 +41,43 @@ items:
     - name: Implementace vygenerovaného podnikového uživatelského prostředí v Azure
       href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
   expanded: true
+- name: Odkazy
+  items:
+  - name: Podrobné plány
+    items:
+    - name: REST API
+      href: /rest/api
+    - name: Azure CLI
+      href: /cli/azure
+  - name: Zásada
+    items:
+    - name: REST API
+      href: /rest/api
+    - name: Azure CLI
+      href: /cli/azure
+    - name: Azure PowerShell
+      href: /powershell/azure
+  - name: Graf prostředků
+    items:
+    - name: Azure CLI
+      href: /cli/azure
+    - name: Azure PowerShell
+      href: /powershell/azure
 - name: Zdroje a prostředky
   items:
+  - name: Odkaz na video
+    href: /
+  - name: GitHubu
+    href: /
   - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/
+    href: /
   - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: User Voice
-    href: https://feedback.azure.com/forums/915958-azure-governance
-  - name: Video k zásadám správného řízení
-    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
-ms.openlocfilehash: dcf421089adeb43cb11760a248f212fdafd5eeca
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+    href: /
+  - name: Článek na blogu
+    href: /
+ms.openlocfilehash: 4006c484adcdb0cf46646ebace847ba4d45efe26
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031705"
+ms.locfileid: "46982238"
