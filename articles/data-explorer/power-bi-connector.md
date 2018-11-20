@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 7948d1d765f597bd25d94447ce704b44f3c97a98
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 3cb8f52677991997a0176a9f8d408e2fd6d2d8d9
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854806"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974267"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Rychlý start: Vizualizujte data pomocí Průzkumníku dat Azure konektoru pro Power BI
 
@@ -55,12 +55,12 @@ Nejprve připojte ke clusteru help Průzkumník dat Azure a pak přenést v podm
     | Databáze | Ponechte prázdné | Databáze, která je hostovaná v clusteru, ke kterému se připojujete. Vybereme to v pozdějším kroku. |
     | Název tabulky | Ponechte prázdné | Jednu z tabulek v databázi nebo dotaz, jako jsou "StormEvents | Využijte 1000'. Vybereme to v pozdějším kroku. |
     | Upřesnit možnosti | Ponechte prázdné | Nastavit možnosti pro vaše dotazy, jako je například výsledek velikost. |
-    | Režim připojení dat | *DirectQuery* | Určuje, jestli Power BI dokončí import dat nebo připojuje přímo ke zdroji dat. |
+    | Režim připojení dat | *DirectQuery* | Určuje, jestli Power BI dokončí import dat nebo připojuje přímo ke zdroji dat. Pomocí tohoto konektoru můžete použít jednu z možností. |
     | | | |
 
 1. Pokud ještě nemáte připojení ke clusteru pomoc, přihlaste se. Přihlaste se pomocí účtu organizace a pak vyberte **připojit**.
 
-    ![Přihlášení](media/power-bi-connector/sign-in.png)
+    ![Přihlásit se](media/power-bi-connector/sign-in.png)
 
 1. Na **Navigátor** obrazovky, rozbalte **ukázky** databáze, vyberte **StormEvents** pak **upravit**.
 

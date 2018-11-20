@@ -2,20 +2,20 @@
 title: Rychlý start Azure – spuštění úlohy služby Batch – .NET
 description: Úlohu a úkoly služby Batch lze rychle spustit pomocí klientské knihovny Batch .NET.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 09/06/2018
-ms.author: danlep
+ms.date: 11/16/2018
+ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: d22e5111a0413c1774d4d41290741414c82039f7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: d6d1fb9631af06f6bfbb2c360661779281a08905
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814827"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975105"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rychlý start: Spuštění první úlohy služby Azure Batch pomocí rozhraní API .NET
 
@@ -31,7 +31,7 @@ V rámci tohoto rychlého startu spustíte úlohu služby Azure Batch z aplikace
 
 * Účet Batch a propojený účet Azure Storage. Informace o vytvoření těchto účtů prostřednictvím [webu Azure Portal](quick-create-portal.md) nebo [rozhraní Azure CLI](quick-create-cli.md) najdete v rychlém startu služby Batch. 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
@@ -73,7 +73,7 @@ Pokud chcete vidět pracovní postup služby Batch v praxi, sestavte a spusťte 
 Potom aplikaci spusťte. Po spuštění ukázkové aplikace vypadá výstup konzoly zhruba následovně. Během provádění dojde k pozastavení na řádku `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` a mezitím se spustí výpočetní uzly fondu. Jakmile se spustí první výpočetní uzel, úkoly se zařadí do fronty ke spuštění. Fond, výpočetní uzly, úlohy a úkoly můžete sledovat ve svém účtu služby Batch na [webu Azure Portal](https://portal.azure.com).
 
 ```
-Sample start: 12/4/2017 4:02:54 PM
+Sample start: 11/16/2018 4:02:54 PM
 
 Container [input] created.
 Uploading file taskdata0.txt to container [input]...
@@ -150,7 +150,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
 
 K vytvoření fondu služby Batch aplikace používá metodu [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Tady objekt [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) určuje odkaz [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) na image Windows Serveru publikovanou v Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 
-Počet uzlů (`PoolNodeCount`) a velikost virtuálního počítače (`PoolVMSize`) jsou definované konstanty. Ukázka ve výchozím nastavení vytvoří fond se 2 uzly velikosti *Standard_A1_v2*. Navržená velikost nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady. 
+Počet uzlů (`PoolNodeCount`) a velikost virtuálního počítače (`PoolVMSize`) jsou definované konstanty. Ukázka ve výchozím nastavení vytvoří fond se 2 uzly velikosti *Standard_A1_v2*. Navržená velikost nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
 
 Metoda [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) odešle fond do služby Batch.
 
@@ -158,7 +158,7 @@ Metoda [Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) odešle fond
 ImageReference imageReference = new ImageReference(
     publisher: "MicrosoftWindowsServer",
     offer: "WindowsServer",
-    sku: "2012-R2-Datacenter-smalldisk",
+    sku: "2016-Datacenter-smalldisk",
     version: "latest");
 
 VirtualMachineConfiguration virtualMachineConfiguration =
@@ -238,7 +238,7 @@ Aplikace automaticky odstraní kontejner úložiště, který vytvoří, a dá v
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a účet úložiště. Na webu Azure Portal to provedete tak, že vyberete skupinu prostředků účtu Batch a kliknete na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste spustili malou aplikaci sestavenou pomocí rozhraní API .NET služby Batch a ta vytvořila fond a úlohu služby Batch. Úloha spustila ukázkové úkoly a stáhla výstup vytvořený v uzlech. Teď chápete klíčové koncepty služby Batch a můžete službu Batch vyzkoušet ve větším měřítku s úlohami, které víc odpovídají realitě. Další informace o službě Azure Batch a vysvětlení paralelních úloh v reálné aplikaci najdete v kurzu o rozhraní .NET služby Batch.
 

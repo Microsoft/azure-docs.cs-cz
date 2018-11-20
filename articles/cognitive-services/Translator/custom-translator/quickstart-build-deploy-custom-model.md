@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: quickstart
-ms.openlocfilehash: 949fb2487c3ca519c1d7022c1434d0a029ed20bb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: cb713ac53b399d8ba79d003ee6d948bb5af5220b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626531"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975768"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Rychlý start: Vytvořit, nasadit a používat vlastní model pro překlad
 
@@ -26,9 +26,9 @@ Tento článek obsahuje podrobné pokyny k sestavení překladový systém s vla
 
 2. Předplatné Translator Text API prostřednictvím webu Azure portal. Budete potřebovat klíč předplatné Translator Text API pro přidružení k pracovního prostoru v Translatoru Custom. Zobrazit [registrace pro rozhraní Translator Text API](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
-3. Až budete mít obě z výše uvedeného, přihlaste se k [vlastní Translator](https://portal.customtranslator.azure.ai) portálu. Jednou na portálu pro vlastní Translator, přejděte na stránku nastavení, kde můžete přidružit váš klíč předplatného Microsoft Translator Text API pracovního prostoru. 
+3. Až budete mít obě z výše uvedeného, přihlaste se k [vlastní Translator](https://portal.customtranslator.azure.ai) portálu. Jednou na portálu pro vlastní Translator, přejděte na stránku nastavení, kde můžete přidružit váš klíč předplatného Microsoft Translator Text API pracovního prostoru.
 
-## <a name="create-a-project"></a>Vytvoření projektu
+## <a name="create-a-project"></a>Vytvořit projekt
 
 Na portálu cílové stránce vlastní Translator klikněte na nový projekt. V dialogovém okně můžete zadat název požadovaného projektu, dvojici jazyků a kategorie, jakož i další příslušná pole. Uložte projekt. Další podrobnosti najdete na webu [vytvořit projekt](how-to-create-project.md).
 
@@ -53,7 +53,7 @@ Vyberte projekt, který jste vytvořili. Zobrazí všechny dokumenty, které jst
 
 ![Vytvoření modelu](media/quickstart/ct-how-to-train.png)
 
-Po dokončení výběru požadované dokumentů, klikněte na tlačítko Vytvořit Model pro vytvoření modelu a spuštění školení. Zobrazí se stav školení a podrobnosti pro všechny modely, které mají školení, v kartě modely.
+Jakmile budete hotovi, vyberte požadovanou dokumentů, klepněte na tlačítko Vytvořit Model pro vytvoření modelu a spuštění školení. Zobrazí se stav školení a podrobnosti pro všechny modely, které jsme natrénovali, na kartě modely.
 
 Další podrobnosti najdete na webu [vytvořit Model](how-to-train-model.md).
 

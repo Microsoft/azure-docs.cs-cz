@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 0fca20f4f714e586281a32e57fe6129b262f5fa5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: 9778911d56f55ea83b542d6fbe5c31b646d85d2d
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248485"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976464"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí Pythonu
 
@@ -32,7 +32,7 @@ Tato ukázka předvádí použití [sady Table SDK služby Azure Cosmos DB pro P
 * Vkládání a dotazování entit
 * Úpravy entit
 
-Při procházení scénářů v této ukázce můžete využít [referenční informace k sadě SDK služby Azure Cosmos DB pro rozhraní Python API](https://azure.github.io/azure-cosmosdb-python/).
+Při procházení scénářů v této ukázce můžete využít [referenční informace k sadě SDK služby Azure Cosmos DB pro rozhraní Python API](https://docs.microsoft.com/en-us/python/api/overview/azure/cosmosdb?view=azure-python).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -211,7 +211,7 @@ Entitu odstraníte tak, že předáte její **PartitionKey** a **RowKey** do met
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 ```
 
-## <a name="delete-a-table"></a>Odstranění tabulky
+## <a name="delete-a-table"></a>Odstraní tabulku
 
 Pokud už tabulku nebo jakékoli entity v ní nepotřebujete, zavoláním metody [delete_table][py_delete_table] trvale odstraňte tabulku ze služby Azure Storage.
 
@@ -219,10 +219,10 @@ Pokud už tabulku nebo jakékoli entity v ní nepotřebujete, zavoláním metody
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Nejčastější dotazy – Vývoj pomocí rozhraní Table API](https://docs.microsoft.com/azure/cosmos-db/faq#develop-with-the-table-api)
-* [Referenční informace k sadě SDK služby Azure Cosmos DB pro rozhraní Python API](https://azure.github.io/azure-cosmosdb-python/)
+* [Referenční informace k sadě SDK služby Azure Cosmos DB pro rozhraní Python API](https://docs.microsoft.com/en-us/python/api/overview/azure/cosmosdb?view=azure-python)
 * [Středisko pro vývojáře programující v Pythonu](https://azure.microsoft.com/develop/python/)
 * [Průzkumník služby Microsoft Azure Storage:](../vs-azure-tools-storage-manage-with-storage-explorer.md) Bezplatná aplikace pro různé platformy umožňující vizuálně pracovat s daty ve službě Azure Storage v systému Windows, macOS a Linux.
 * [Práce s Pythonem v sadě Visual Studio (Windows)](https://docs.microsoft.com/visualstudio/python/overview-of-python-tools-for-visual-studio)

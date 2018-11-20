@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: e9a4aa1606e99057565891dc10d17ba9abf15d9c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 6501444aacd36c794c8a169a8d1b16898efad018
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50159073"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977246"
 ---
 # <a name="security-groups"></a>Skupiny zabezpečení
 <a name="network-security-groups"></a>
@@ -34,7 +34,7 @@ Skupina zabezpečení sítě nemusí obsahovat žádná pravidla nebo může pod
 |Název|Jedinečný název v rámci skupiny zabezpečení sítě.|
 |Priorita | Číslo v rozsahu od 100 do 4096. Pravidla se zpracovávají v pořadí podle priority, přičemž nižší čísla, která mají vyšší prioritu, se zpracovávají před vyššími čísly. Jakmile provoz odpovídá pravidlu, zpracování se zastaví. V důsledku toho se nezpracují žádná existující pravidla s nižší prioritou (vyšší čísla), která mají stejné atributy jako pravidla s vyšší prioritou.|
 |Zdroj nebo cíl| Všechny nebo určitá IP adresa, blok CIDR (například 10.0.0.0/24), [značka služby](#service-tags) nebo [skupina zabezpečení aplikace](#application-security-groups). Pokud zadáváte adresu prostředku Azure, zadejte privátní IP adresu přiřazenou k tomuto prostředku. Skupiny zabezpečení sítě se zpracovávají poté, co Azure přeloží veřejnou IP adresu na privátní IP adresu pro příchozí provoz, a před tím, než Azure přeloží privátní IP adresu na veřejnou IP adresu pro odchozí provoz. Další informace o [IP adresách](virtual-network-ip-addresses-overview-arm.md) Azure. Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení. Možnost zadat v pravidlu několik jednotlivých IP adres a rozsahů (není možné zadat více značek služeb ani skupin aplikací) se označuje jako [rozšířená pravidla zabezpečení](#augmented-security-rules). Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat více IP adres ani rozsahů IP adres. Další informace o [modelech nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
-|Protocol (Protokol)     | TCP, UDP nebo Všechny, což zahrnuje protokoly TCP, UDP a ICMP. Samotný protokol ICMP nejde zadat, takže pokud potřebujete protokol ICMP, použijte možnost Všechny. |
+|Protokol     | TCP, UDP nebo Všechny, což zahrnuje protokoly TCP, UDP a ICMP. Samotný protokol ICMP nejde zadat, takže pokud potřebujete protokol ICMP, použijte možnost Všechny. |
 |Směr| Určuje, jestli se pravidlo vztahuje na příchozí nebo odchozí provoz.|
 |Rozsah portů     |Můžete zadat určitý port nebo rozsah portů. Můžete zadat například 80 nebo 10000-10005. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení. Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat několik portů ani rozsahů portů ve stejném pravidlu zabezpečení.   |
 |Akce     | Povolení nebo odepření.        |
@@ -91,51 +91,51 @@ Azure v každé skupině zabezpečení sítě, kterou vytvoříte, vytvoří ná
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol (Protokol)|Access|
+|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protokol|Přístup|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Vše|Povolit|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol (Protokol)|Access|
+|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protokol|Přístup|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Vše|Povolit|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protocol (Protokol)|Access|
+|Priorita|Zdroj|Zdrojové porty|Cíl|Cílové porty|Protokol|Přístup|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Vše|Odepřít|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Vše|Zamítnout|
 
 ### <a name="outbound"></a>Odchozí
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protokol | Přístup |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Vše | Povolit |
 
 #### <a name="allowinternetoutbound"></a>AllowVnetOutBound
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protokol | Přístup |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Vše | Povolit |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protokol | Přístup |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Vše | Odepřít |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Vše | Zamítnout |
 
 Ve sloupcích **Zdroj** a **Cíl** jsou hodnoty *VirtualNetwork*, *AzureLoadBalancer* a *Internet* [značky služeb](#service-tags), a nikoli IP adresy. Hodnota **Všechny** ve sloupci Protokol zahrnuje protokoly TCP, UDP a ICMP. Při vytváření pravidla můžete zadat protokol TCP, UDP nebo Všechny, ale nemůžete zadat samotný protokol ICMP. Proto pokud vaše pravidlo vyžaduje protokol ICMP, vyberte jako protokol hodnotu *Všechny*. Hodnota *0.0.0.0/0* ve sloupcích **Zdroj** a **Cíl** představuje všechny adresy.
  
 Výchozí pravidla nemůžete odebrat, ale můžete je přepsat vytvořením pravidel s vyšší prioritou.
 
-## <a name="application-security-groups"></a>Skupiny zabezpečení aplikací
+## <a name="application-security-groups"></a>Skupiny zabezpečení aplikace
 
 Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě jako přirozené rozšíření struktury aplikace. Můžete seskupovat virtuální počítače a na základě těchto skupin definovat zásady zabezpečení sítě. Zásady zabezpečení můžete opakovaně používat ve velkém měřítku bez potřeby ruční údržby explicitních IP adres. O složitost explicitních IP adres a několika skupin pravidel se stará platforma a vy se tak můžete zaměřit na obchodní logiku. Pro lepší pochopení skupin zabezpečení aplikací si představte následující příklad:
 
-![Skupiny zabezpečení aplikací](./media/security-groups/application-security-groups.png)
+![Skupiny zabezpečení aplikace](./media/security-groups/application-security-groups.png)
 
 Na předchozím obrázku jsou *NIC1* a *NIC2* členy skupiny zabezpečení aplikace *AsgWeb*. *NIC3* je členem skupiny zabezpečení aplikace *AsgLogic*. *NIC4* je členem skupiny zabezpečení aplikace *AsgDb*. Přestože jsou všechna síťová rozhraní v tomto příkladu členy pouze jedné skupiny zabezpečení aplikace, síťové rozhraní může být členem více skupin zabezpečení aplikací, a to až do limitu daného [omezeními Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Žádné ze síťových rozhraní nemá přidruženou skupinu zabezpečení sítě. Skupina *NSG1* je přidružená k oběma podsítím a obsahuje následující pravidla:
 
@@ -143,7 +143,7 @@ Na předchozím obrázku jsou *NIC1* a *NIC2* členy skupiny zabezpečení aplik
 
 Toto pravidlo je potřeba k povolení provozu směřujícího z internetu na webové servery. Vzhledem k tomu, že výchozí pravidlo zabezpečení [DenyAllInbound](#denyallinbound) odepírá příchozí provoz z internetu, není pro skupiny zabezpečení aplikací *AsgLogic* a *AsgDb* potřeba žádné další pravidlo.
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protokol | Přístup |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Povolit |
 
@@ -151,15 +151,15 @@ Toto pravidlo je potřeba k povolení provozu směřujícího z internetu na web
 
 Vzhledem k tomu, že výchozí pravidlo zabezpečení [AllowVNetInBound](#allowvnetinbound) povoluje veškerou komunikaci mezi prostředky ve stejné virtuální síti, je toto pravidlo potřeba k odepření provozu ze všech prostředků.
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protokol | Přístup |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Vše | Odepřít |
+| 120 | * | * | AsgDb | 1433 | Vše | Zamítnout |
 
 ### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 
 Toto pravidlo povoluje provoz ze skupiny zabezpečení aplikace *AsgLogic* do skupiny zabezpečení aplikace *AsgDb*. Priorita tohoto pravidla je vyšší než priorita pravidla *Deny-Database-All*. Díky tomu se toto pravidlo zpracuje před pravidlem *Deny-Database-All*, takže se povolí provoz ze skupiny zabezpečení aplikace *AsgLogic*, zatímco veškerý ostatní provoz se zablokuje.
 
-|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protocol (Protokol) | Access |
+|Priorita|Zdroj|Zdrojové porty| Cíl | Cílové porty | Protokol | Přístup |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Povolit |
 
@@ -206,7 +206,7 @@ V případě odchozího provozu zpracuje Azure nejprve pravidla ve skupině zabe
 Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v [platných pravidlech zabezpečení](virtual-network-network-interface.md#view-effective-security-rules) pro síťové rozhraní. Pomocí funkce [Ověření toku protokolu IP](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) v nástroji Azure Network Watcher můžete také určit, jestli je povolená komunikace směřující do síťového rozhraní nebo z něj. Ověření toku protokolu IP vám řekne, jestli je povolená nebo zakázaná komunikace, a které pravidlo zabezpečení sítě povoluje nebo odepírá provoz.
 
 > [!NOTE]
-> Skupiny zabezpečení sítě se nepřidružují k síťovým rozhraním v modelu nasazení Resource Manager, ale k podsítím nebo virtuálním počítačům a cloudovým službám nasazeným pomocí modelu nasazení Classic. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+> Skupiny zabezpečení sítě jsou přidružené k podsítím nebo virtuálním počítačům a cloudovým službám nasazeným v modelu nasazení classic, nikoli k síťovým rozhraním v modelu nasazení Resource Manager. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 > [!TIP]
 > Pokud k tomu nemáte konkrétní důvod, doporučujeme přidružit skupinu zabezpečení sítě k podsíti nebo k síťovému rozhraní, ale ne k oběma. Vzhledem k tomu, že může docházet ke konfliktům mezi pravidly ve skupině zabezpečení sítě přidružené k podsíti a pravidly ve skupině zabezpečení sítě přidružené k síťovému rozhraní, můžou nastat neočekávané problémy s komunikací vyžadující řešení.
@@ -228,6 +228,6 @@ Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v
 
   Pokud vám Azure povolí odesílat e-maily přes port 25, Microsoft nemůže zaručit přijetí příchozích e-mailů z vašeho virtuálního počítače poskytovateli e-mailu. Pokud konkrétní poskytovatel odmítá e-maily z vašeho virtuálního počítače, spolupracujte přímo s daným poskytovatelem a vyřešte případné problémy s doručováním zpráv nebo filtrováním nevyžádané pošty, nebo použijte službu pro přenos přes ověřený protokol SMTP.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Zjistěte, jak [vytvořit skupinu zabezpečení sítě](tutorial-filter-network-traffic.md).

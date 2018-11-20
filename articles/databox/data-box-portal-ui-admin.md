@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: f0849bf82acfd6bc72cd35fb1fc18bdb8aac2282
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f4ea5e282e9b915cffeac7daff07f5934be1a424
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819183"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974985"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>Správa Data Box Disku (Preview) pomocí webu Azure Portal
 
@@ -80,7 +80,7 @@ Odstranit se dají jenom dokončené nebo zrušené objednávky. Pokud chcete od
      ![Odstranění objednávky Data Box Disku 2](media/data-box-portal-ui-admin/delete-order2.png)
 
 
-## <a name="download-shipping-label"></a>Stažení expedičního štítku
+## <a name="download-shipping-label"></a>Stáhnout expediční štítek
 
 Pokud se zpětný expediční štítek zaslaný s vašimi disky někam zatoulá nebo ztratí, můžete si expediční štítek stáhnout. 
 
@@ -107,7 +107,7 @@ Pokud chcete upravit objednávku, proveďte následující kroky.
 
     ![Úprava dodací adresy 2](media/data-box-portal-ui-admin/edit-shipping-address2.png)
 
-## <a name="edit-notification-details"></a>Úprava podrobností o oznámení
+## <a name="edit-notification-details"></a>Upravit podrobnosti o oznámení
 
 Může být potřeba změnit uživatele, kteří mají dostávat e-maily se stavem objednávky. Některý uživatel například může potřebovat informaci o doručení nebo vyzvednutí disku. Jiný uživatel zase může potřebovat oznámení o dokončení kopírování dat, aby mohl zkontrolovat, jestli se data nacházejí na účtu služby Azure Storage, a potom je odstranit ze zdroje. V takových případech můžete upravit podrobnosti o oznámení.
 

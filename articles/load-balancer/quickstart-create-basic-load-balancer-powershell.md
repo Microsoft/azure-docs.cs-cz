@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: c675b6d50cf6bf5c4e7ea064f3741cae7a091946
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: c21d5618b3e3223297ddd97dc5c98e5eb8c18c0b
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578307"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51974814"
 ---
 # <a name="get-started"></a>Rychlý start: Vytvoření veřejného nástroje pro vyrovnávání zatížení pomocí Azure PowerShellu
 Tento rychlý start vám ukáže, jak vytvořit Load Balancer úrovně Basic pomocí Azure PowerShellu. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače s Windows Serverem, které mezi sebou budou vyrovnávat zatížení webové aplikace.
@@ -28,7 +28,7 @@ Tento rychlý start vám ukáže, jak vytvořit Load Balancer úrovně Basic pom
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure. 
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Než vytvoříte nástroj pro vyrovnávání zatížení, musíte vytvořit skupinu prostředků pomocí rutiny [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků *myResourceGroupLB* v umístění *EastUS*:
 
@@ -44,7 +44,7 @@ Pokud chcete mít k aplikaci přístup přes internet, potřebujete pro nástroj
 $publicIP = New-AzureRmPublicIpAddress `
   -ResourceGroupName "myResourceGroupLB" `
   -Location "EastUS" `
-  -AllocationMethod "Dynamic" `
+  -AllocationMethod "Static" `
   -Name "myPublicIP"
 ```
 ## <a name="create-basic-load-balancer"></a>Vytvoření Load Balanceru úrovně Basic
@@ -251,7 +251,7 @@ Pomocí rutiny [Get-Credential](https://msdn.microsoft.com/powershell/reference/
 $cred = Get-Credential
 ```
 
-Nyní můžete vytvořit virtuální počítače pomocí rutiny [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří dva virtuální počítače a požadované komponenty virtuální sítě (pokud ještě neexistují):
+Nyní můžete vytvořit virtuální počítače pomocí rutiny [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Následující příklad vytvoří dva virtuální počítače a požadované komponenty virtuální sítě, pokud ještě neexistují. Při vytváření virtuálního počítače následujícím příkladu, dříve vytvořené síťové adaptéry představují přidružené virtuální počítače, protože jsou přiřazeny stejné virtuální síti (*myVnet*) a podsíti (*mySubnet*):
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)

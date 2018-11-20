@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 11/16/2018
-ms.openlocfilehash: 221bca6cb11d488e38417280e16b5caa9133bd46
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 6b3cc7d90557525666ffe3b5024dc617e12f6ce6
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853485"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977263"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz 1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
@@ -93,7 +93,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-remote-compute-target"></a>Vytvoření cílového výpočetního prostředí
 
-Azure ML spravované výpočtů Azure je spravovaná služba, která umožňuje datovým vědcům k trénování modelů strojového učení na clusterech virtuálních počítačů Azure, včetně virtuálních počítačů s podporou GPU.  V tomto kurzu vytvoříte clusteru služby spravované Azure Compute jako prostředí pro školení. Tento kód pro vás vytvoří cluster, pokud ještě ve vašem pracovním prostoru neexistuje. 
+Azure ML spravované Compute je spravovaná služba, která umožňuje datovým vědcům k trénování modelů strojového učení na clusterech virtuálních počítačů Azure, včetně virtuálních počítačů s podporou GPU.  V tomto kurzu vytvoříte clusteru služby spravované Azure Compute jako prostředí pro školení. Tento kód pro vás vytvoří cluster, pokud ještě ve vašem pracovním prostoru neexistuje. 
 
  **Vytvoření clusteru trvá přibližně 5 minut.** Pokud cluster v pracovním prostoru již existuje, tento kód ho použije a přeskočí proces vytváření.
 
