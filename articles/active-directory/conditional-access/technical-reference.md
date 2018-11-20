@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 2f9075cef671128cacc37f16e8bf29bf0f60401d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 6401fbdef07102c6ddba98fe5246ceadfaaca758
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706275"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976315"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -175,12 +175,12 @@ Ve své zásady podmíněného přístupu můžete vybrat **mobilní aplikace a 
 Toto nastavení nemá vliv na pokusy o přístup z následující mobilní aplikace a desktopoví klienti: 
 
 
-|Klientské aplikace|Cílová služba|Platforma|
+|Klientské aplikace.|Cílová služba|Platforma|
 |---|---|---|
 |Vzdálené aplikace Azure|Služba vzdálené aplikace Azure|Windows 10, Windows 8.1, Windows 7, iOS, Android a Mac OS X|
 |Aplikace Dynamics CRM|Dynamics CRM|Windows 10, Windows 8.1, iOS a Android|
 |E-mailu nebo kalendáře/lidí aplikace Outlook 2016, Outlook 2013 (s moderním ověřováním)|Office 365 Exchange Online|Windows 10|
-|Zásady MFA a polohy pro aplikace. Zařízení na základě zásad nejsou podporovány. |Všechny služby app service pro Moje aplikace|Android a iOS|
+|Zásady MFA a polohy pro aplikace. Zařízení na základě zásad nejsou podporovány. |Všechny služby app service pro Moje aplikace|Zařízení s androidem a iOS|
 |Microsoft Teams služby – tato volba určuje všechny služby, které podporují Microsoft Teams a všechny jeho klientské aplikace – Windows Desktop, iOS, Android, webové části a webový klient|Microsoft Teams|Windows 10, Windows 8.1, Windows 7, iOS, Android a macOS |
 |Synchronizovat klientských aplikací Office 2016, Office 2013 (s moderním ověřováním), OneDrive (viz [poznámky](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Office 365 SharePoint Online|Windows 8.1, Windows 7|
 |Aplikace pro Office 2016, Office univerzální aplikace, Office 2013 (s moderním ověřováním), synchronizačního klienta Onedrivu (naleznete v tématu [poznámky](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), do budoucna plánujeme přidat podpora skupin Office, do budoucna plánujeme přidat podpora aplikací služby SharePoint|Office 365 SharePoint Online|Windows 10|
@@ -226,6 +226,7 @@ Toto nastavení platí pro následující klientské aplikace:
 - Microsoft To-Do
 - Microsoft Stream
 - Microsoft Edge
+- Microsoft Delve
 
 
 

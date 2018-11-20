@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 8d13d6df1b168183e3794bf357ad86bfcfd77057
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: cc6af421551ba8ca973c15455daebf58c317d6f5
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567906"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976481"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -84,7 +84,11 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 
 ### <a name="changes"></a>Změny
 
-Žádné.
+<!-- 2635202 - IS, ASDK -->
+- Služba backup infrastruktury přesune z [síťové infrastruktury veřejných](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) k [síť veřejných virtuálních IP adres](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network). Zákazníci se musí zajistit služby má přístup k umístění úložiště zálohy z veřejné sítě VIP.  
+
+> [!IMPORTANT]  
+> Pokud máte bránu firewall, která neumožňuje připojení z veřejné sítě VIP k souborovému serveru, tato změna způsobí, že infrastruktura zálohování se nezdaří s "Chyba 53 cesta sítě nebyla nalezena." Toto je zásadní změnu, která nemá žádné rozumné řešení. Microsoft se na základě názorů zákazníků, vrátí tuto změnu v opravu hotfix. Podívejte se prosím [publikovat aktualizace krokům](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1809#post-update-steps) pro další informace o dostupných oprav hotfix pro 1809. Jakmile je k dispozici oprava hotfix, nezapomeňte použít po aktualizaci na 1809 pouze v případě, že vaše zásady sítě neumožňují veřejnou síť virtuálních IP adres pro přístup k prostředků infrastruktury. v 1811 tato změna uplatní na všech systémech. Pokud jste použili v 1809 opravy hotfix, není vyžadována žádná další akce.  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures
 

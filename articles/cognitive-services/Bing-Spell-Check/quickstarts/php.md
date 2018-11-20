@@ -3,23 +3,23 @@ title: 'Rychlý start: Rozhraní API pro kontrolu pravopisu Bingu, PHP'
 titlesuffix: Azure Cognitive Services
 description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API pro kontrolu pravopisu Bingu.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: b35545cbf8e814cd1a175b722fd46367ca7558e4
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: cb72cfa75acd543086dc4743dc1f99a618e60aaa
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801116"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161612"
 ---
 # <a name="quickstart-for-bing-spell-check-api-with-php"></a>Rychlý start pro rozhraní API pro kontrolu pravopisu Bingu s využitím PHP 
 
-V tomto článku se dozvíte, jak používat [rozhraní API pro kontrolu pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) společně s PHP. Rozhraní API pro kontrolu pravopisu vrací seznam slov, která nerozpozná, a jejich navrhované náhrady. Většinou odešlete do tohoto rozhraní API text a potom buď provedete v textu navrhovaná nahrazení, nebo návrhy ukážete uživateli vaší aplikace, aby se mohl rozhodnout, zda chcete nahrazení provést. V tomto článku se dozvíte, jak odeslat požadavek obsahující text „Hollo, wrld!“. Navrhované náhrady jsou „Hello“ a „world“.
+V tomto článku se dozvíte, jak používat [API kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) s PHP. Rozhraní API pro kontrolu pravopisu vrací seznam slov, která nerozpozná, a jejich navrhované náhrady. Většinou odešlete do tohoto rozhraní API text a potom buď provedete v textu navrhovaná nahrazení, nebo návrhy ukážete uživateli vaší aplikace, aby se mohl rozhodnout, zda chce nahrazení provést. V tomto článku se dozvíte, jak odeslat požadavek obsahující text „Hollo, wrld!“. Navrhované náhrady jsou „Hello“ a „world“.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -131,12 +131,12 @@ echo $json;
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz o kontrole pravopisu Bingu](../tutorials/spellcheck.md)
+> [Kurz rozhraní API pro kontrolu pravopisu Bingu](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Přehled kontroly pravopisu Bingu](../proof-text.md)
+- [Přehled rozhraní API pro kontrolu pravopisu Bingu](../proof-text.md)
 - [Referenční informace k rozhraní API pro kontrolu pravopisu Bingu v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3e2fa822698f3888e1168ab7773d87e41db9eb5c
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567946"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165641"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Zabezpečení vaší infrastruktury identit v pěti krocích
 
@@ -77,6 +77,9 @@ Pokud vaše organizace používá řešení s hybridní identitou předávací o
 * V případě výpadku na místě (například v útok ransomwarem) budete moct přepnout na používání [cloudové ověřování pomocí synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/security/azure-ad-choose-authn). Tato metoda záložní ověřování vám umožní pokračovat v přístupu k aplikacím, které jsou nakonfigurovány pro ověřování pomocí Azure Active Directory, včetně Office 365. Pracovníci IT v tomto případě nebudete muset uchýlíte k osobní e-mailové účty sdílet data, dokud se nevyřeší místní výpadek.
 
 Další informace o tom [synchronizace hodnot hash hesel](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) funguje.
+
+> [!NOTE]
+> Pokud povolení synchronizace hodnot hash hesel a používají Azure AD Domain services, hodnoty hash protokolu Kerberos (AES 256) a volitelně hodnoty hash NTLM (RC4, žádná hodnota salt) bude také být zašifrovaný a synchronizovány se službou Azure AD. 
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>Implementace inteligentní uzamčení extranetu služby AD FS
 

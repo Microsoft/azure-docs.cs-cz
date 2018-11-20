@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 11/16/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: db52d145c3bfbd9415072be13ccb502969f07374
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.reviewer: ''
+ms.openlocfilehash: 3154c3a5a677f208973d442ff3875bb5ee8df6a1
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077643"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160626"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Přidat Linuxové Image do služby Azure Stack
 
@@ -29,25 +29,23 @@ Přidáním bitové kopie založené na Linuxu v Tržišti Azure Stack můžete 
 
 ## <a name="marketplace-management"></a>Správa webu Marketplace
 
-Stažení imagí Linuxu na Azure Marketplace, pomocí postupů v následujícím článku. Vyberte Image Linuxu, které mají uživatelé ve vaší službě Azure Stack. 
-
-[Stažení položek z marketplace z Azure do služby Azure Stack](azure-stack-download-azure-marketplace-item.md).
+Stažení imagí Linuxu na Azure Marketplace, pomocí postupů na portále [stažení položek z marketplace z Azure do služby Azure Stack](azure-stack-download-azure-marketplace-item.md) článku. Vyberte Image Linuxu, které mají uživatelé ve vaší službě Azure Stack. 
 
 Všimněte si, že jsou časté aktualizace do těchto bitových kopií, tak správu Marketplace často se má aktualizovat.
 
 ## <a name="prepare-your-own-image"></a>Příprava svoji vlastní image
 
- Kdykoli je to možné, stáhněte si Image, která je dostupná prostřednictvím webu Marketplace správu, který byl předem připraven a testovat pro službu Azure Stack. 
+Kdykoli je to možné, stáhněte si Image, která je dostupná prostřednictvím webu Marketplace správu, který byl předem připraven a testovat pro službu Azure Stack. 
  
- Azure Linux Agent (obvykle nazývá `WALinuxAgent` nebo `walinuxagent`) je nutné použít, a ne všechny verze agenta bude fungovat ve službě Azure Stack. Používejte verze 2.2.18 nebo novější, pokud vytvoříte vlastní image. Všimněte si, že [cloud-init](https://cloud-init.io/) není v tuto chvíli nepodporuje v Azure stacku.
+Azure Linux Agent (obvykle nazývá `WALinuxAgent` nebo `walinuxagent`) je nutné použít, a ne všechny verze agenta bude fungovat ve službě Azure Stack. Používejte verze 2.2.18 nebo novější, pokud vytvoříte vlastní image. Všimněte si, že [cloud-init](https://cloud-init.io/) není v tuto chvíli nepodporuje v Azure stacku.
 
- Můžete připravit své vlastní image s Linuxem podle následujících pokynů:
+Můžete připravit své vlastní image s Linuxem podle následujících pokynů:
 
-   * [Distribuce založené na centOS](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   * [Debian Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   * [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
-   * [SLES & openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   * [Ubuntu Server](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Distribuce založené na centOS](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Debian Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
+* [SLES & openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Ubuntu Server](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
     
 ## <a name="add-your-image-to-the-marketplace"></a>Přidání bitové kopie na webu Marketplace
@@ -55,3 +53,10 @@ Všimněte si, že jsou časté aktualizace do těchto bitových kopií, tak spr
 Postupujte podle [Přidání bitové kopie na webu Marketplace](azure-stack-add-vm-image.md). Ujistěte se, že `OSType` parametr je nastaven na `Linux`.
 
 Po přidání obrázku na webu Marketplace, je vytvořena položka Marketplace a uživatelé můžou nasazovat virtuální počítače s Linuxem.
+
+## <a name="next-steps"></a>Další postup
+
+Zobrazit další informace v následujících článcích:
+
+- [Stažení položek z marketplace z Azure do služby Azure Stack](azure-stack-download-azure-marketplace-item.md)
+- [Přehled služby Azure Stack Marketplace](azure-stack-marketplace.md)

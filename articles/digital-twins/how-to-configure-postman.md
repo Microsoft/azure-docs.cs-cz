@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adgera
-ms.openlocfilehash: 5c06e38bf5a51744a4878a7acb6c365d7e812a61
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: b22bf34a06966f917cdcdd07c28ead2d042061c1
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711136"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163992"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postup konfigurace nástroje Postman pro digitální dvojče Azure
 
@@ -53,20 +53,19 @@ V dalším kroku nastavení a konfigurace nástroje Postman pro získání token
 1. Ujistěte se, že vaše **autorizace URL** je správná. Mělo by to trvat formátu:
 
     ```plaintext
-    https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=YOUR_RESOURCE_ID
+    https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
     | Název  | Nahradit hodnotou | Příklad: |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | Název tenanta vaší organizace | `microsoft` |
-    | YOUR_RESOURCE_ID | ID prostředku | `10b07f429-9f4b-4714-9392-cc5e8e80c8b0` |
 
 1. Vyberte **autorizace** kartu, vyberte možnost **OAuth 2.0**a pak vyberte **získat nový přístupový Token**.
 
     | Pole  | Hodnota |
     |---------|---------|
     | Typ udělení | `Implicit` |
-    | Adresa URL pro zpětné volání | [`https://www.getpostman.com/oauth2/callback`](https://www.getpostman.com/oauth2/callback) |
+    | Adresa URL zpětného volání | [`https://www.getpostman.com/oauth2/callback`](https://www.getpostman.com/oauth2/callback) |
     | Ověřovací adresa URL | Použití **autorizace URL** z kroku 2 |
     | ID klienta | Použití **ID aplikace** pro aplikace Azure AD, který byl vytvořen nebo k jinému účelu z předchozí části |
     | Rozsah | Ponechte prázdné |

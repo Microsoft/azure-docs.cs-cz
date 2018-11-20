@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b8a9973738ac28a686488a816da0f7da5fe2ac3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0865c8b88788387eff173443d190658cc6488946
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238518"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976855"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Zpracování rozsáhlých datových sad pomocí Data Factory a Batch
 > [!NOTE]
@@ -41,7 +41,7 @@ Pomocí služby Batch definujete výpočetní prostředky, které vaše aplikace
 * [Základy služby Batch](../../batch/batch-technical-overview.md)
 * [Přehled funkcí Batch](../../batch/batch-api-basics.md)
 
-Volitelně můžete další informace o službě Batch najdete v tématu [postup výuky pro Batch](https://azure.microsoft.com/documentation/learning-paths/batch/).
+Volitelně můžete další informace o službě Batch najdete v tématu [Batch documentatnion](https://docs.microsoft.com/en-us/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Proč Azure Data Factory?
 Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat. Vytvoření spravované datové kanály, které přesun dat z místních i cloudových úložišť dat do centralizovaného úložiště dat můžete použít Data Factory. Příkladem je úložiště objektů Blob v Azure. Data Factory můžete zpracovat a transformovat data pomocí služeb, jako je Azure HDInsight a Azure Machine Learning. Můžete také naplánovat datové kanály ke spuštění naplánované způsobem (například každou hodinu, každý den a jednou týdně). Můžete monitorovat a spravovat kanály, abyste mohli rozpoznat potíže a provést akci zasáhnout.
@@ -51,7 +51,7 @@ Data Factory je cloudová služba pro integraci dat, která orchestruje a automa
 * [Úvod do služby Data Factory](data-factory-introduction.md)
 * [Vytvoření prvního kanálu dat](data-factory-build-your-first-pipeline.md)   
 
-Volitelně můžete další informace o službě Data Factory najdete v tématu [postup výuky pro službu Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/).
+Volitelně můžete další informace o službě Data Factory najdete v tématu [dokumentace ke službě Data Factory](https://docs.microsoft.com/en-us/rest/api/datafactory/v1/data-factory-data-factory).
 
 ## <a name="data-factory-and-batch-together"></a>Data Factory a Batch najednou
 Data Factory obsahuje zabudované aktivity. Například aktivita kopírování umožňuje kopírování a přesouvání dat ze zdrojového úložiště dat do cílového úložiště dat. Aktivita Hive se používá ke zpracování dat s využitím clusterů Hadoop (HDInsight) v Azure. Seznam aktivit transformace podporované, najdete v části [aktivity transformace dat](data-factory-data-transformation-activities.md).

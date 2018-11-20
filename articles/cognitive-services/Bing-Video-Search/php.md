@@ -3,19 +3,19 @@ title: 'Rychlý start: Vyhledávání videí Bingu, PHP'
 titlesuffix: Azure Cognitive Services
 description: Zde najdete informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 4e64771802564da1e1cb9efccef1ef63b38c2b80
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: e345c9c2e265478b438af6952f7721d3ecc6103b
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224711"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165253"
 ---
 # <a name="quickstart-bing-video-search-api-with-php"></a>Rychlý start: Rozhraní API pro vyhledávání videí Bingu s PHP
 
@@ -23,11 +23,11 @@ Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledáván
 
 Ukázka kódu byla napsaná tak, aby fungovala v PHP 5.6.
 
-V [referenci k API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) najdete technické podrobnosti o rozhraních API.
+Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
 ## <a name="bing-video-search"></a>Vyhledávání videí Bingu
 
@@ -209,12 +209,12 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Videa o stránkování](paging-videos.md)
+> [Stránkování videí](paging-videos.md)
 > [Změna velikosti a oříznutí obrázků miniatur](resize-and-crop-thumbnails.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
- [Vyhledávání videí na webu](search-the-web.md) [Vyzkoušejte si to](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [Hledání videí na webu](search-the-web.md) [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

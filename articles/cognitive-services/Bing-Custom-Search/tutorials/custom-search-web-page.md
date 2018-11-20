@@ -3,19 +3,19 @@ title: 'Kurz: Vytvoření webové stránky pro vlastní vyhledávání – Vlast
 titlesuffix: Azure Cognitive Services
 description: Tento kurz popisuje postup konfigurace instance vlastního vyhledávání a její integrace do webové stránky.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: tutorial
 ms.date: 10/16/2017
-ms.author: v-brapel
-ms.openlocfilehash: 6d08a36d7a464ccc1904839d6631be0553aacb17
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: ebc4779876a52113c20e2ace50b3333e254a744e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279207"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161782"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Kurz: Vytvoření webové stránky pro vlastní vyhledávání
 
@@ -209,7 +209,7 @@ Při vyhledávání se následujícím způsobem budou vykreslovat výsledky:
 
 ![Snímek obrazovky s výsledky vlastního vyhledávání](./media/custom-search-webapp-results.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Volání koncového bodu vlastního vyhledávání Bingu (C#)](../call-endpoint-csharp.md)

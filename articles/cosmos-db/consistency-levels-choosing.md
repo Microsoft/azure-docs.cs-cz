@@ -7,14 +7,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2fc21ffde5f3f4b84b2ed025cba5d228e592343f
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 42128a05ad9f82ff6b202eb6566c1fea60caa760
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823414"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162415"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>Vyberte úroveň konzistence správné pro vaši aplikaci
 

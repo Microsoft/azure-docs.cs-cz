@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 8452f84c1358c410cd0431416a5b65a88a8b903e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: dd1fff79d6f611ae29307d666860d3740f4372f1
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817094"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162122"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programování na straně serveru služby Azure Cosmos DB: uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi
 
@@ -733,7 +733,7 @@ Document createdItem = await client.CreateDocumentAsync(UriFactory.CreateDocumen
     });
 ```
 
-A následující příklad ukazuje, jak vytvořit uživatelem definované funkce (UDF) a použít jej v [dotaz SQL](sql-api-sql-query.md).
+A následující příklad ukazuje, jak vytvořit uživatelem definované funkce (UDF) a použít jej v [dotaz SQL](how-to-sql-query.md).
 
 ```javascript
 UserDefinedFunction function = new UserDefinedFunction()

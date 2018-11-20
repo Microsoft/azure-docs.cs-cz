@@ -5,14 +5,14 @@ author: kgremban
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 11/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 3cb0f91f3143e6a4828548f3a15678b3814cba17
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 236adb45ec6663ad361df1afbf6389a449f2a529
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154857"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52159895"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrace služby IoT Hub z operací do nastavení diagnostiky
 
@@ -49,6 +49,10 @@ Navíc diagnostické nastavení nabízí sledování pět nových kategorií. Po
 * Přímé metody
 
 Struktury konkrétní schématu naleznete v tématu [pochopit, že schéma pro nastavení diagnostiky](iot-hub-monitor-resource-health.md#understand-the-logs).
+
+## <a name="monitoring-device-connect-and-disconnect-events-with-low-latency"></a>Monitorování zařízení připojit a odpojit události s nízkou latencí
+
+K monitorování zařízení připojit a odpojit události, doporučujeme, aby se přihlásíte k odběru [ **odpojení zařízení** události](iot-hub-event-grid.md#event-types) na služby Event Grid výstrahy a monitorování stavu připojení zařízení. Použijte tento [kurzu](iot-hub-how-to-order-connection-state-events.md) se naučíte integrovat zařízení připojené a odpojené zařízení události ze služby IoT Hub v řešení IoT.
 
 ## <a name="next-steps"></a>Další postup
 

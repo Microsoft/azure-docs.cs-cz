@@ -3,19 +3,19 @@ title: 'Rychlý start: Vyhledávání videí Bingu, Ruby'
 titlesuffix: Azure Cognitive Services
 description: Zde najdete informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: dfabfe24a653f84e5e242f32167b57b6a28b0075
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: b92fbbfdeb38c0fadca038007918c882c16e97cd
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223564"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165709"
 ---
 # <a name="quickstart-bing-video-search-api-with-ruby"></a>Rychlý start: Rozhraní API Bingu pro vyhledávání videí s Ruby
 
@@ -23,15 +23,15 @@ Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledáván
 
 Ukázka kódu byla napsaná tak, aby běžela pod Ruby 2.4.
 
-V [referenčních informacích k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) najdete technické podrobnosti o rozhraních API.
+Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. [Bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) pro účely tohoto rychlého startu stačí. Pro aktivaci vaší bezplatné zkušební verze budete potřebovat přístupový klíč, nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
 
 ## <a name="bing-video-search"></a>Vyhledávání videí Bingu
 
-[Rozhraní API Bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
+[Rozhraní API pro vyhledávání videí Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) vrátí výsledky videí z vyhledávacího webu Bing.
 
 1. V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Ruby.
 2. Přidejte níže uvedený kód.
@@ -194,12 +194,12 @@ puts JSON::pretty_generate(JSON(response.body))
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Stránkování videí](paging-videos.md)
 > [Změna velikosti a oříznutí obrázků miniatur](resize-and-crop-thumbnails.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
- [Vyhledávání videí na webu](search-the-web.md) [Vyzkoušejte si to](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [Hledání videí na webu](search-the-web.md) [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

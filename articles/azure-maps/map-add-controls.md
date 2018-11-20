@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 29737bbe244f9a6fb6799c4ce770a3d2615342aa
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 2eefa639ca5f13d23c3b2048436d739a01bd0dfa
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820609"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975614"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Přidání ovládacích prvků mapa ke službě Azure Maps
 
@@ -26,7 +26,7 @@ Tento článek ukazuje, jak přidat ovládací prvky Mapa k mapě. Se také dozv
 
 První blok kódu nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
 
-Ovládací prvek lupy přidává možnost zvětšení do a z mapy. Druhý blok kódu vytvoří objekt Lupa pomocí atlas [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Ovládací prvek lupy je v rámci mapy **naslouchací proces událostí** zajistit načte po plně načte mapy.
+Ovládací prvek lupy přidává možnost zvětšení do a z mapy. Druhý blok kódu vytvoří objekt Lupa pomocí atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Ovládací prvek lupy je v rámci mapy **naslouchací proces událostí** zajistit načte po plně načte mapy.
 
 ## <a name="add-pitch-control"></a>Přidat výšku ovládacího prvku
 
@@ -35,7 +35,7 @@ Ovládací prvek lupy přidává možnost zvětšení do a z mapy. Druhý blok k
 
 První blok kódu nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
 
-Výška ovládacího prvku přidává možnost změnit výšku na mapě. Druhý bloku kódu vytvoří objekt výšku ovládacího prvku pomocí atlas [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Výška ovládacího prvku se v mapě **naslouchací proces událostí** zajistit načte po plně načte mapy.
+Výška ovládacího prvku přidává možnost změnit výšku na mapě. Druhý bloku kódu vytvoří objekt výšku ovládacího prvku pomocí atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Výška ovládacího prvku se v mapě **naslouchací proces událostí** zajistit načte po plně načte mapy.
 
 ## <a name="add-compass-control"></a>Přidání kompasu ovládacího prvku
 
@@ -44,7 +44,7 @@ Výška ovládacího prvku přidává možnost změnit výšku na mapě. Druhý 
 
 První blok kódu nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
 
-Druhý bloku kódu vytvoří objekt ovládacího prvku Compass pomocí atlas [ovládací prvek Compass](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol). Také přidá kompasu ovládací prvek do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Ovládací prvek Compass je v rámci mapy **naslouchací proces událostí** zajistit načte po mapy načte plně.
+Druhý bloku kódu vytvoří objekt ovládacího prvku Compass pomocí atlas [ovládací prvek Compass](/javascript/api/azure-maps-control/atlas.controls.compasscontrol). Také přidá kompasu ovládací prvek do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Ovládací prvek Compass je v rámci mapy **naslouchací proces událostí** zajistit načte po mapy načte plně.
 
 ## <a name="a-map-with-all-controls"></a>Mapa u všech ovládacích prvků
 
@@ -53,13 +53,13 @@ Druhý bloku kódu vytvoří objekt ovládacího prvku Compass pomocí atlas [ov
 
 První blok kódu nastaví klíč předplatného a vytvoří objekt Map bez předem nastavení stylu. Zobrazit [Vytvořte mapu](./map-create.md) pokyny o tom, jak vytvořit mapu.
 
-Druhý blok kódu vytvoří objekt ovládacího prvku Compass pomocí atlas [CompassControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
+Druhý blok kódu vytvoří objekt ovládacího prvku Compass pomocí atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
-Třetí bloku kódu vytvoří objekt Lupa pomocí atlas [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
+Třetí bloku kódu vytvoří objekt Lupa pomocí atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
-Čtvrtý blok kódu vytvoří objekt výšku ovládacího prvku pomocí atlas [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
+Čtvrtý blok kódu vytvoří objekt výšku ovládacího prvku pomocí atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
-Poslední blok kódu vytvoří objekt pro výběr stylu s použitím atlas [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Všechny objekty ovládacího prvku se přidají do mapy **naslouchací proces událostí** zajistit, že se po načtení plně načte mapy.
+Poslední blok kódu vytvoří objekt pro výběr stylu s použitím atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) a přidá je do mapy pomocí mapy [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody. Všechny objekty ovládacího prvku se přidají do mapy **naslouchací proces událostí** zajistit, že se po načtení plně načte mapy.
 
 Pořadí ovládacího prvku objektů ve skriptu určuje pořadí, ve kterém jsou zobrazeny na mapě. Chcete-li změnit pořadí ovládacích prvků na mapě, můžete změnit jejich pořadí, ve skriptu.
 

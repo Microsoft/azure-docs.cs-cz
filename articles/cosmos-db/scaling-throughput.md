@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 4da893f71f3bb91ba021dcf259d20ddd72bfbf90
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7e3f6d053e9466f07e15b0c2c1092fece76c98a4
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821986"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160660"
 ---
 # <a name="scaling-throughput-in-azure-cosmos-db"></a>Škálování propustnosti ve službě Azure Cosmos DB
 

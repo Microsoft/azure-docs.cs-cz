@@ -12,7 +12,6 @@ Virtuální počítače Azure podporují připojení řady datových disků. Ten
 > | Premium Managed Disks | 10 000 | 50,000 |
 > | Standard_LRS snímky | 10 000 | 50,000 |
 > | Standard_ZRS snímky | 10 000 | 50,000 |
-> | Snímky Premium_LRS | 10 000 | 50,000 |
 > | Spravované Image | 10 000 | 50,000 |
 
 * **Pro účty úložiště úrovně Standard:** Účet úložiště úrovně Standard má maximální celkovou frekvenci požadavků 20 000 IOPS. Celkový počet IOPS na všech discích virtuálních počítačů v účtu úložiště úrovně Standard by neměl překročit toto omezení.

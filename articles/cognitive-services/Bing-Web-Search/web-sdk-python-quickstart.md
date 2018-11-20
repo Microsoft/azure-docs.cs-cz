@@ -3,19 +3,19 @@ title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro P
 titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v Pythonu. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
-ms.author: erhopf
-ms.openlocfilehash: c83848bc3c8f14aa49c1f87f1cd44224bb3e8081
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 68d086a3ed4ea89632ce2e7625597985f0caba0e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127631"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165369"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Python
 
@@ -299,11 +299,11 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
 
 Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatného a deaktivovat virtuální prostředí.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Python SDK](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Referenční informace k sadě Azure Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)

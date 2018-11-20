@@ -3,19 +3,19 @@ title: Co je Vyhledávání na webu Bingu?
 titleSuffix: Azure Cognitive Services
 description: Rozhraní API Bingu pro vyhledávání na webu je služba RESTful, která poskytuje okamžité odpovědi na dotazy uživatelů. Výsledky hledání je možné snadno nakonfigurovat tak, aby zahrnovaly webové stránky, obrázky, videa, zprávy, překlady a další. Výsledky jsou ve formátu JSON a vycházejí z relevance hledání a vašich předplatných rozhraní API Bingu pro vyhledávání na webu.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
-ms.author: erhopf
-ms.openlocfilehash: 8482afae2889ccf2153e1864e4a65b635b6ab4c7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 738941afadbad318d383a119967e3f98c098a9c1
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125234"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160711"
 ---
 # <a name="what-is-bing-web-search"></a>Co je Vyhledávání na webu Bingu?
 
@@ -45,7 +45,7 @@ Rozhraní API Bingu pro vyhledávání na webu se snadno volá z jakéhokoli pro
 2. Odešlete [požadavek na rozhraní API Bingu pro vyhledávání na webu](quickstarts/python.md).
 3. Parsujte odpověď JSON.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Podle našich [rychlých startů pro Python](quickstarts/python.md) poprvé zavolejte rozhraní API Bingu pro vyhledávání na webu.  
 * [Vytvořte jednostránkovou webovou aplikaci](tutorial-bing-web-search-single-page-app.md).

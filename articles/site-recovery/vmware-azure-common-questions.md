@@ -4,15 +4,15 @@ description: Tento článek shrnuje běžné otázky při nastavování zotaven�
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/29/2018
+ms.date: 11/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c261dd083fed8b9c4a0f3846157c666cbb52083c
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 248b2a748088330f91b3cc76564d5d8743f04411
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636811"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162479"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -47,14 +47,20 @@ Pokud si nejste správce předplatného, máte oprávnění replikace, které po
 ## <a name="on-premises"></a>Lokálně
 
 ### <a name="what-do-i-need-on-premises"></a>K čemu potřebuji místní?
-Na místním potřebujete součásti Site Recovery nainstalovaná na jeden virtuální počítač VMware. Budete potřebovat infrastrukturu VMware s minimálně jednoho hostitele ESXi, a doporučujeme použít vCenter server. Kromě toho budete potřebovat jeden nebo více virtuálních počítačů VMware pro replikaci. [Další informace](vmware-azure-architecture.md) o replikaci z VMware do Azure architektury.
 
-Místní konfigurační server je možné nasadit v jednom z následujících způsobů
+Na místním budete potřebovat:
+- Site Recovery součásti nainstalovat na jeden virtuální počítač VMware.
+- Infrastrukturu VMware, u alespoň jednoho hostitele ESXi a My doporučujeme vCenter server.
+- Jeden nebo více virtuálních počítačů VMware pro replikaci.
 
-1. Nasazení pomocí šablony virtuálního počítače, který má předinstalované konfigurační server. [Tady najdete další](vmware-azure-tutorial.md#download-the-vm-template).
-2. Nasaďte ji pomocí instalace na počítač s Windows serverem 2016 podle vašeho výběru. [Tady najdete další](physical-azure-disaster-recovery.md#set-up-the-source-environment).
+[Další informace](vmware-azure-architecture.md) o replikaci z VMware do Azure architektury.
 
-Chcete-li zjistit Začínáme kroky nasazení konfiguračního serveru na vlastním počítači s Windows serverem v cíle ochrany povolit ochranu, zvolte **do Azure > nevirtualizované/jiné**.
+Místní konfigurační server můžete nasadit takto:
+
+- Doporučujeme, abyste že nasazení konfiguračního serveru jako virtuálního počítače VMware s konfiguračním serverem předinstalován pomocí šablony OVA.
+- Pokud z nějakého důvodu nemůžete použít šablonu, můžete nastavit konfigurační server ručně. [Další informace](physical-azure-disaster-recovery.md#set-up-the-source-environment).
+
+
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Kde replikace místních virtuálních počítačů do?
 Data se replikují do úložiště Azure. Při spuštění převzetí služeb při selhání Site Recovery automaticky vytvoří virtuální počítače Azure z účtu úložiště.

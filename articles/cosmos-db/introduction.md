@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: 717a0234f0155229597c6fc4fe70a7868a536975
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242286"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52160729"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -50,7 +50,7 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba s více 
 
 * **Vytváření aplikací s rychlou odezvou a vysokou důležitostí pro chod firmy**
     * Azure Cosmos DB zaručuje svým zákazníkům koncovou nízkou latentnost na 99. percentilu. 
-    * Pro typickou 1kB položku zaručuje služba Cosmos DB koncovou latenci čtení pod 10 ms a indexovaných zápisů pod 15 ms na 99. percentilu v rámci stejné oblasti Azure. Střední latence jsou výrazně nižší (pod 5 ms).
+    * Cosmos DB pro typickou 1 KB položku zaručuje začátku do konce latenci čtení pod 10 ms a indexovaných zápisů pod 10 ms na 99. percentilu v rámci stejné oblasti Azure. Střední latence jsou výrazně nižší (pod 5 ms).
 
 * **Zajištění neustálé dostupnosti**
     * Smlouva SLA o 99,99% dostupnosti pro všechny účty databáze v jedné oblasti a 99,999% dostupnosti čtení pro všechny účty databáze ve více oblastech.
@@ -79,16 +79,16 @@ Azure Cosmos DB nabízí ty nejlepší možnosti tradičních relačních a nere
 | --- | --- | --- | --- |
 | Globální distribuce | Ne | Ne | Ano, distribuce na klíč ve více než 30 oblastech s rozhraními API pro vícenásobné navádění|
 | Horizontální škálování | Ne | Ano | Ano, můžete nezávisle škálovat úložiště a propustnost | 
-| Záruky latence | Ne | Ano | Ano, 99 % čtení do 10 ms a zápisů do 15 ms | 
+| Záruky latence | Ne | Ano | Ano, 99 % čtení do < 10 ms a zápisů v < 10 ms | 
 | Vysoká dostupnost | Ne | Ano | Ano, služba Azure Cosmos DB je vždycky aktivní, má dobře definované kompromisy PACELC a poskytuje možnosti automatického a ručního převzetí služeb při selhání.|
-| Datový model + API | Relační + SQL | Více modelů + OSS API | Více modelů + SQL + OSS API (další už brzy) |
+| Datový model + API | Relační + SQL | Více modelů + OSS API | Více modelů + SQL + OSS API |
 | Smlouvy SLA | Ano | Ne | Ano, komplexní smlouvy SLA pro latenci, propustnost, konzistenci a dostupnost |
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Řešení, kterým služba Azure Cosmos DB přináší výhody
 
 [Garantovaná](https://azure.microsoft.com/support/legal/sla/cosmos-db/) vysoká dostupnost, vysoká propustnost, nízká latence a přizpůsobitelná konzistence ve službě Azure Cosmos DB bude výhodná pro všechny [webové, mobilní a herní aplikace a aplikace IoT](use-cases.md), které potřebují zpracovávat obrovské množství dat, čtení a zápisů v [globálním](distribute-data-globally.md) měřítku s dobou odezvy téměř v reálném čase. Další informace o možnostech použití služby Azure Cosmos DB pro [IoT a telematiku](use-cases.md#iot-and-telematics), [maloobchod a marketing](use-cases.md#retail-and-marketing), [hry](use-cases.md#gaming) a [webové a mobilní aplikace](use-cases.md#web-and-mobile-applications)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Začínáme se službou Azure Cosmos DB s využitím jedné ze čtyř šablon Rychlý start:
 
 * [Začínáme s rozhraním SQL API služby Azure Cosmos DB](create-sql-api-dotnet.md)

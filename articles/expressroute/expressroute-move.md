@@ -1,25 +1,18 @@
 ---
 title: Přesun okruhů ExpressRoute z modelu nasazení Classic do Resource Manager | Dokumentace Microsoftu
 description: Tato stránka obsahuje přehled toho, co potřebujete vědět o přemostění modelů nasazení Classic a Resource Manager.
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: carmonm
-editor: ''
-ms.assetid: bdf01217-1a98-4ec0-a08e-d84fd37f78af
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: ganesr
-ms.openlocfilehash: 7f8386b518ada850fc03e23c5cae3b159b3b213e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 6b9ac7408f83677ed9898dc37fc234b9b9a6386f
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22710061"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977025"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Přesun okruhů ExpressRoute z modelu nasazení Classic do Resource Manager
 Tento článek obsahuje přehled toho, co znamená přesun okruhu Azure ExpressRoute z modelu nasazení Classic do Azure Resource Manager.
@@ -64,7 +57,7 @@ Podporovány jsou následující klasické operace pro okruh ExpressRoute, pokud
 * Vytvoření, aktualizace, získání nebo odstranění propojení virtuální sítě ke klasickým virtuálním sítím
 * Vytvoření, aktualizace, získání nebo odstranění autorizací propojení virtuální sítě pro připojení mezi předplatnými
 
-Nejde provádět následující klasické operace při nastavení parametru **allowClassicOperations** na hodnotu TRUE:
+Ale když **allowClassicOperations** je nastavena na hodnotu TRUE, nelze provádět následující klasické operace:
 
 * Vytvoření, aktualizace, získání nebo odstranění partnerských vztahů protokolu BGP pro soukromé partnerské vztahy Azure, veřejné partnerské vztahy Azure a partnerské vztahy Microsoftu
 * Odstranění okruhů ExpressRoute
@@ -97,7 +90,7 @@ Tato část popisuje, co není podporováno pro okruhy ExpressRoute:
 ## <a name="configuration"></a>Konfigurace
 Postupujte podle pokynů uvedených v tématu [Přesun okruhu ExpressRoute z modelu nasazení Classic do Resource Manager](expressroute-howto-move-arm.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Migrace virtuálních sítí propojených s okruhem ExpressRoute z modelu Classic na model Azure Resource Manager](expressroute-migration-classic-resource-manager.md)
 * Informace o pracovním postupu najdete v tématu [Pracovní postupy zřizování okruhů ExpressRoute a stavy okruhu](expressroute-workflows.md).
 * Konfigurace připojení ExpressRoute:

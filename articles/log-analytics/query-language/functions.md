@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 23079c265cc0c7bd8aa11270ecd38003d87eb30f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 1f6d3594b54e036b5ac82181d21e80c979247d9a
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855158"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977127"
 ---
 # <a name="using-functions-in-azure-monitor-log-analytics"></a>Pomocí funkcí ve službě Azure Monitor Log Analytics
 
@@ -64,7 +64,7 @@ Update
 | where UpdateState == "Needed"
 ```
 
-Vytvořte další vyhledat aktualizace SQL týkající se potřebné zabezpečení.
+Vytvoření jiného dotazu a odkaz _security_updates_last_day_ funkce k vyhledání souvisejících s SQL požadovaných aktualizací zabezpečení.
 
 ```Kusto
 security_updates_last_day | where Title contains "SQL"

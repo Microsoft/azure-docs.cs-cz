@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: sngun
-ms.openlocfilehash: 4dfe6bb2c648b0983482633500790db6d510d2eb
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 50d606486a6d80f00424685494eae28a95fe361a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853978"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164706"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 
@@ -180,7 +180,7 @@ Dotazovací jazyk SQL podporuje účty rozhraní API SQL je vylepšená podmnož
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Podporuje rozhraní SQL API agregační funkce SQL?
 
-Rozhraní SQL API podporuje agregaci s nízkou latencí v libovolném měřítku pomocí agregační funkce `COUNT`, `MIN`, `MAX`, `AVG`, a `SUM` prostřednictvím gramatika SQL. Další informace najdete v tématu [agregační funkce](sql-api-sql-query.md#Aggregates).
+Rozhraní SQL API podporuje agregaci s nízkou latencí v libovolném měřítku pomocí agregační funkce `COUNT`, `MIN`, `MAX`, `AVG`, a `SUM` prostřednictvím gramatika SQL. Další informace najdete v tématu [agregační funkce](how-to-sql-query.md#Aggregates).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Jak rozhraní SQL API zajišťuje souběžnost?
 
@@ -466,7 +466,7 @@ Ze sady .NET SDK můžete odeslat v souboru app.config:
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>Azure Cosmos DB jako platformu zdá se, že máte spoustu možností, jako je například řazení, agregace, hierarchie a další funkce. Můžete přidávat tyto funkce do rozhraní Table API?
 
-Rozhraní Table API poskytuje stejné funkce dotazů jako Azure Table storage. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Poskytneme vám další funkce do rozhraní Table API v budoucí aktualizaci služby. Další informace najdete v tématu [dotazy SQL](sql-api-sql-query.md).
+Rozhraní Table API poskytuje stejné funkce dotazů jako Azure Table storage. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Další informace najdete v tématu [dotazy SQL](how-to-sql-query.md).
 
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Při změně TableThroughput rozhraní Table API?
 

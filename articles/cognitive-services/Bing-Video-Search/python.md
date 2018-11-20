@@ -3,19 +3,19 @@ title: 'Rychlý start: Vyhledávání videí Bingu, Python'
 titlesuffix: Azure Cognitive Services
 description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání videí.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 797eb476aa3386949b08efb957edf48a97e40d6b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: ccc27481289ffc686e3e480685ba421c762e3718
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220006"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161071"
 ---
 # <a name="quickstart-bing-video-search-api-with-python"></a>Rychlý start: Vyhledávání videí Bingu s Pythonem
 
@@ -74,12 +74,12 @@ from IPython.display import HTML
 HTML(search_results["value"][0]["embedHtml"].replace("autoplay=1","autoplay=0"))
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Stránkování videí](paging-videos.md)
 > [Změna velikosti a oříznutí obrázků miniatur](resize-and-crop-thumbnails.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Hledání videí na webu](search-the-web.md) [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

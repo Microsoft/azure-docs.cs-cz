@@ -3,19 +3,19 @@ title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, Ruby'
 titlesuffix: Azure Cognitive Services
 description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: c6c004469b86e443dc1fcc04106d0c7b8b749334
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: d4852c78b7f85c568bb34aaf86ada09fdc2c3ff0
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803813"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161477"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-ruby"></a>Rychlý start pro rozhraní API Bingu pro vyhledávání zpráv s využitím Ruby
 
@@ -179,7 +179,7 @@ puts JSON::pretty_generate(JSON(response.body))
 ```
 
  
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Stránkování zpráv](paging-news.md)

@@ -1,6 +1,6 @@
 ---
-title: Vytváření oddílů a škálování v Azure Cosmos DB | Microsoft Docs
-description: Další informace o tom, jak rozdělení funguje v Azure Cosmos DB, jak nakonfigurovat, vytváření oddílů a oddílu klíče a jak vybrat klíč správné oddílu pro vaši aplikaci.
+title: Dělení a škálování ve službě Azure Cosmos DB | Dokumentace Microsoftu
+description: Další informace o tom, jak dělení funguje v Azure Cosmos DB, jak nakonfigurovat, vytváření oddílů a klíče oddílu a jak vybrat správný oddíl klíč pro vaši aplikaci.
 services: cosmos-db
 author: rafats
 manager: kfile
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e3c15ce201cee88d400b9d5fb9272b584293a2f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 7d44d3933a132158a6dfca8201919eb72541f276
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797427"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163241"
 ---
-# <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Vytváření oddílů v Azure DB Cosmos pomocí rozhraní SQL API
+# <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Dělení ve službě Azure Cosmos DB pomocí rozhraní SQL API
 
-[Microsoft Azure Cosmos DB](../cosmos-db/introduction.md) je globální databáze distribuované, více modelu služba navržená tak, aby vám pomohou dosáhnout rychlé, předvídatelný výkon a škálování bezproblémově společně s vaší aplikací je s růstem. 
+[Microsoft Azure Cosmos DB](../cosmos-db/introduction.md) je globální distribuovaná a vícemodelová databázová služba navržená tak, aby vám pomohou dosáhnout rychlého, předvídatelného výkonu a škálování – bez problémů vaší aplikace, jak rostou. 
 
-Tento článek obsahuje přehled o tom, jak pracovat s oddíly Cosmos DB kontejnery s rozhraním API SQL. V tématu [vytváření oddílů a horizontální škálování](../cosmos-db/partition-data.md) přehled o konceptech a osvědčené postupy pro vytváření oddílů s jakéhokoli rozhraní API Azure Cosmos DB. 
+Tento článek poskytuje přehled o tom, jak pracovat s dělením kontejnerů služby Cosmos DB pomocí rozhraní SQL API. Zobrazit [vytváření oddílů a horizontální škálování](../cosmos-db/partition-data.md) Přehled konceptů a osvědčené postupy pro dělení s jakékoli rozhraní API služby Azure Cosmos DB. 
 
-Pokud chcete začít s kódem, stáhněte si projekt z [Githubu](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark). 
+Abyste mohli začít s kódem, stáhněte si projekt z [Githubu](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark). 
 
-Po přečtení tohoto článku, budete moct odpovězte si na následující otázky:   
+Po přečtení tohoto článku, budou moci odpovědět na následující otázky:   
 
-* Jak funguje vytváření oddílů v Azure Cosmos DB?
-* Jak nakonfigurovat, vytváření oddílů v Azure Cosmos DB
-* Jaké jsou klíče oddílů a jak vyberte klíč oddílu správné své aplikaci?
+* Jak funguje dělení ve službě Azure Cosmos DB?
+* Jak nakonfigurovat dělení ve službě Azure Cosmos DB
+* Co jsou klíče oddílu a jak vyberte klíč oddílu správné pro mé aplikace?
 
-Pokud chcete začít s kódem, stáhněte si projekt z [Azure Cosmos DB výkonu testování ovladačů Sample](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark). 
+Abyste mohli začít s kódem, stáhněte si projekt z [Azure Cosmos DB výkonu testování ovladače Sample](https://github.com/Azure/azure-documentdb-dotnet/tree/a2d61ddb53f8ab2a23d3ce323c77afcf5a608f52/samples/documentdb-benchmark). 
 
 <!-- placeholder until we have a permanent solution-->
 <a name="partition-keys"></a>
@@ -41,7 +41,7 @@ Pokud chcete začít s kódem, stáhněte si projekt z [Azure Cosmos DB výkonu 
 
 ## <a name="partition-keys"></a>Klíče oddílů
 
-V rozhraní API SQL zadejte definici klíče oddílu ve formě cesta JSON. V následující tabulce jsou uvedeny příklady oddílu klíčové definice a hodnoty odpovídající každé. Klíč oddílu je zadán jako cesta, například `/department` představuje vlastnost oddělení. 
+V rozhraní SQL API zadat definici klíče oddílu v podobě cestu JSON. V následující tabulce jsou uvedeny příklady definice klíče oddílu a hodnoty odpovídající každé. Klíč oddílu je zadat jako cestu, například `/department` představuje vlastnost oddělení. 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -51,37 +51,37 @@ V rozhraní API SQL zadejte definici klíče oddílu ve formě cesta JSON. V ná
         </tr>
         <tr>
             <td valign="top"><p>/Department</p></td>
-            <td valign="top"><p>Odpovídá hodnotě doc.department, kde je dokumentace položky.</p></td>
+            <td valign="top"><p>Odpovídá hodnotě doc.department, kde je položka dokumentu.</p></td>
         </tr>
         <tr>
-            <td valign="top"><p>/ vlastnosti/název</p></td>
+            <td valign="top"><p>/ vlastnosti/názvu</p></td>
             <td valign="top"><p>Odpovídá hodnotě doc.properties.name, kde je dokumentace položky (vnořené vlastnosti).</p></td>
         </tr>
         <tr>
             <td valign="top"><p>/ID</p></td>
-            <td valign="top"><p>Odpovídá hodnotě doc.id (id a oddílu klíče jsou stejnou vlastnost).</p></td>
+            <td valign="top"><p>Odpovídá hodnotě doc.id (klíč id a oddílu se stejnou vlastnost).</p></td>
         </tr>
         <tr>
-            <td valign="top"><p>/ ""oddělení název</p></td>
-            <td valign="top"><p>Odpovídá hodnotě doc ["název oddělení"], kde je dokumentace položky.</p></td>
+            <td valign="top"><p>/ "název oddělení"</p></td>
+            <td valign="top"><p>Odpovídá hodnotě doc ["jméno oddělení"], kde je položka dokumentu.</p></td>
         </tr>
     </tbody>
 </table>
 
 > [!NOTE]
-> Syntaxe pro klíč oddílu je podobná specifikace cesty pro indexování zásad cesty s klíčovým rozdílem cestu odpovídající vlastnost namísto hodnoty, tj. žádné zástupný znak není na konci. Například zadali byste/oddělení /? Chcete-li index hodnoty v rámci oddělení, ale zadejte /department jako definice klíče oddílu. Klíč oddílu je implicitně indexovaný a nelze vyloučit z indexování pomocí přepsání indexování zásad.
+> Syntaxe pro klíč oddílu je podobný specifikaci cesty pro indexování zásad cesty klíčovým rozdílem cestu odpovídající vlastnost místo hodnoty, to znamená bez zástupný znak není na konci. Například zadáte/oddělení /? pro indexování hodnot v rámci oddělení, ale zadejte /department jako definice klíče oddílu. Klíč oddílu je implicitně indexují a nejde vyloučit z indexování s využitím indexování přepsání zásady.
 > 
 > 
 
-Podíváme, jak volba klíč oddílu má dopad na výkon vaší aplikace.
+Podívejme se na tom, jak volba klíče oddílu má vliv na výkon vaší aplikace.
 
-## <a name="working-with-the-azure-cosmos-db-sdks"></a>Práce s Azure Cosmos DB sady SDK
-Azure Cosmos DB přidala se podpora pro automatické vytváření oddílů s [REST API verze 2015-12-16](/rest/api/cosmos-db/). Chcete-li vytvořit oddílů kontejnery, je nutné stáhnout verze sady SDK 1.6.0 nebo novějším v jednom z podporovaných platforem SDK (.NET, Node.js, Java, Python, MongoDB). 
+## <a name="working-with-the-azure-cosmos-db-sdks"></a>Práce se sadami SDK služby Azure Cosmos DB
+Azure Cosmos DB přidali jsme podporu pro automatické dělení s [rozhraní REST API verze 2015-12 – 16](/rest/api/cosmos-db/). Chcete-li vytvořit dělené kontejnerů, je nutné stáhnout sadu SDK verze 1.6.0 nebo novější v jednom z podporovaných sadu SDK platformy (.NET, Node.js, Java, Python, MongoDB). 
 
 ### <a name="creating-containers"></a>Vytvoření kontejnerů
-Následující příklad ukazuje fragment .NET vytvořit kontejner pro uložení zařízení telemetrická data z 20 000 jednotek žádosti za sekundu, propustnosti. Sada SDK nastaví hodnotu OfferThroughput (který naopak nastaví `x-ms-offer-throughput` hlavička požadavku v rozhraní REST API). Zde můžete nastavit `/deviceId` jako klíč oddílu. Volba klíč oddílu se uloží spolu s ostatními metadata kontejneru jako název a zásady indexování.
+Následující příklad ukazuje fragment .NET vytvořit kontejner pro uložení zařízení telemetrická data z 20 000 jednotek žádostí za sekundu propustnosti. Sada SDK nastaví hodnotu OfferThroughput (což zase nastaví `x-ms-offer-throughput` hlavičku požadavku v rozhraní REST API). Zde můžete nastavit `/deviceId` jako klíč oddílu. Volba klíče oddílu se uloží spolu se zbývajícími metadata kontejneru, jako jsou název a zásady indexování.
 
-Tato ukázka zachyceny `deviceId` vzhledem k tomu, že víte, že (a) nejsou velký počet zařízení, zapíše mohou být distribuovány na oddíly rovnoměrně a umožní vám se škálovat databázi k ingestování ohromné objemy dat a (b) mnoho požadavků jako načítání nejnovější čtení pro zařízení jsou omezená na jednom ID zařízení a mohou být načteny z jednoho oddílu.
+V tomto příkladu jste vybrali `deviceId` protože víte, že (a) existuje velký počet zařízení, zápisy je možné rovnoměrně distribuovat napříč oddíly a díky tomu umožňuje škálovat databázi pro příjem velkých objemů dat a (b) mnoho požadavků, třeba načítání nejnovější materiály pro zařízení jsou omezená na jednu ID zařízení a mohou být načteny z jednoho oddílu.
 
 ```csharp
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
@@ -100,10 +100,10 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
-Tato metoda umožňuje volání do databáze Cosmos rozhraní REST API a zřizovat počet oddílů podle propustnosti, požadované služby. Výkon vašich potřeb momentální můžete změnit propustnost kontejner nebo sadu kontejnery. 
+Tato metoda provádí volání do služby Cosmos DB rozhraní REST API a služba zřídí několik oddílů na základě požadované propustnosti. Propustnost kontejneru nebo sadu kontejnerů můžete změnit podle měnících se potřeb výkonu. 
 
 ### <a name="reading-and-writing-items"></a>Čtení a zápis položky
-Nyní Pojďme vkládat data do databáze Cosmos. Zde je ukázka třída obsahující zařízení, čtení a volání CreateDocumentAsync vložit nového zařízení čtení do kontejneru. Toto je blok kódu příklad, který využívá rozhraní SQL API:
+Teď přidáme data do služby Cosmos DB. Tady je ukázková třída obsahuje čtení zařízení a volání createdocumentasync vložit nové čtení do kontejneru zařízení. Blok kódu příklad, který využívá rozhraní SQL API je následující:
 
 ```csharp
 public class DeviceReading
@@ -142,7 +142,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Umožňuje přečíst položku svým id a klíč oddílu, aktualizovat a jako poslední krok, odstraňte ji. klíč oddílu a id. Čtení obsahují hodnotu PartitionKey (odpovídající `x-ms-documentdb-partitionkey` hlavička požadavku v rozhraní REST API).
+Pojďme čtení položky podle jeho klíče oddílu a, aktualizujte ji a v posledním kroku, odstraňte ho podle klíče oddílu a id. Čtení zahrnují hodnotu PartitionKey (odpovídající `x-ms-documentdb-partitionkey` hlavičku požadavku v rozhraní REST API).
 
 ```csharp
 // Read document. Needs the partition key and the ID to be specified
@@ -166,8 +166,8 @@ await client.DeleteDocumentAsync(
   new RequestOptions { PartitionKey = new PartitionKey("XMS-0001") });
 ```
 
-### <a name="querying-partitioned-containers"></a>Dotazování oddílů kontejnery
-Pro dotazování dat v kontejnerech oddílů, Cosmos DB automaticky směruje dotaz na oddíly odpovídající hodnoty klíče oddílu zadaných ve filtru (pokud existují). Například tento dotaz se směruje jenom do oddílu, který obsahuje klíč oddílu XMS-0001.
+### <a name="querying-partitioned-containers"></a>Dotazování dělených kontejnery
+Při dotazování dat v dělených kontejnery, Cosmos DB automaticky směruje dotaz do oddílů, které odpovídají hodnoty klíčů oddílů zadaných ve filtru (Pokud tam nějaké jsou). Například tento dotaz se směruje jenom do oddílu, který obsahuje klíč oddílu XMS-0001.
 
 ```csharp
 // Query using partition key
@@ -176,7 +176,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
     
-Následující dotaz neobsahuje filtr klíče oddílu (DeviceId) a distribuuje se do všech oddílů, ve kterých se provede na index oddílu. Je třeba zadat EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` v rozhraní REST API) tak, aby měl sady SDK při spuštění dotazu napříč oddíly.
+Následující dotaz neobsahuje filtr klíče oddílu (DeviceId) a distribuuje se do všech oddílů, ve kterých se provede na index oddílu. Je nutné zadat EnableCrossPartitionQuery (`x-ms-documentdb-query-enablecrosspartition` v rozhraní REST API) aby sada SDK provedla dotaz napříč oddíly.
 
 ```csharp
 // Query across partition keys
@@ -186,10 +186,10 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-Podporuje cosmos DB [agregační funkce](sql-api-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX`,, a `AVG` přes oddíly kontejnery pomocí SQL spouštění pomocí sady SDK 1.12.0 a vyšší. Dotazy musí obsahovat jeden agregační operátor a musí obsahovat jednu hodnotu v projekci.
+Cosmos DB podporuje [agregační funkce](how-to-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX`,, a `AVG` přes rozdělit na oddíly kontejnery pomocí SQL spuštění pomocí sady SDK 1.12.0 a vyšší. Dotazy musí obsahovat jeden agregační operátor a musí obsahovat jednu hodnotu v projekci.
 
 ### <a name="parallel-query-execution"></a>Paralelní provádění dotazů
-Sady SDK DB Cosmos 1.9.0 a vyšší možnosti provádění paralelního dotazu podpory, které umožňují provádět dotazy s nízkou latencí pro dělené kolekce, i v případě, že potřebují k touch velký počet oddílů. Například následující dotaz je nakonfigurovaný tak, aby se spustil paralelně napříč oddíly.
+Cosmos DB SDK 1.9.0 a novější podpora možnosti paralelního provádění dotazů, které můžete provádět dotazy s nízkou latencí na dělené kolekce i v případě, že budou muset touch velký počet oddílů. Například následující dotaz je nakonfigurovaný tak, aby se spustil paralelně napříč oddíly.
 
 ```csharp
 // Cross-partition Order By Queries
@@ -202,13 +202,13 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     
 Paralelní provádění dotazů můžete spravovat laděním následujících parametrů:
 
-* Nastavením `MaxDegreeOfParallelism`, můžete řídit stupně paralelního zpracování tedy maximální počet souběžných síťová připojení k oddílům kontejneru. Pokud tuto vlastnost nastavíte na hodnotu -1, stupně paralelního zpracování spravuje sady SDK. Pokud `MaxDegreeOfParallelism` není zadaný, nebo je nastavený na 0, což je výchozí hodnota, bude jedno síťové připojení k oddílům kontejneru.
-* Nastavením `MaxBufferedItemCount` můžete zvolit kompromis mezi latencí dotazů a využitím paměti na straně klienta. Pokud tento parametr vynecháte nebo tuto vlastnost nastavit na hodnotu -1, počet položek do vyrovnávací paměti při provádění paralelního dotazu, které spravuje sady SDK.
+* Nastavením `MaxDegreeOfParallelism`, můžete řídit stupeň paralelismu to znamená, že maximální počet souběžných síťových připojení k oddílům kontejneru. Pokud tuto vlastnost nastavíte na hodnotu -1, stupeň paralelismu bude spravovat sada SDK. Pokud `MaxDegreeOfParallelism` není zadaná nebo je nastavená na 0, což je výchozí hodnota, bude existovat jediné síťové připojení k oddílům kontejneru.
+* Nastavením `MaxBufferedItemCount` můžete zvolit kompromis mezi latencí dotazů a využitím paměti na straně klienta. Pokud tento parametr vynecháte nebo tuto vlastnost nastavte na hodnotu -1, počet položek, které jsou ukládány do vyrovnávací paměti během paralelního provádění dotazů, které spravuje sady SDK.
 
-Za předpokladu stejného stavu kolekce vrátí paralelní dotaz výsledky ve stejném pořadí jako při sériovém provedení. Při provádění dotazu mezi oddílu, který zahrnuje řazení (ORDER BY a/nebo horní), sadu SDK Azure Cosmos DB vydá dotaz paralelně napříč oddíly a sloučí částečně seřazená výsledky na straně klienta k vytvoření globální seřazené výsledky.
+Za předpokladu stejného stavu kolekce vrátí paralelní dotaz výsledky ve stejném pořadí jako při sériovém provedení. Při provádění dotazu napříč oddíly, který zahrnuje řazení (ORDER BY nebo TOP), Azure Cosmos DB SDK vydá dotaz paralelně napříč oddíly a sloučením částečně seřazených výsledků na straně klienta vytvoří globálně seřazené výsledky.
 
-### <a name="executing-stored-procedures"></a>Provádění uložené procedury
-Můžete také spustit jednotlivé transakce na dokumenty se stejným ID zařízení, například pokud jste zachování agregace nebo nejnovější stav zařízení v jedné položce. 
+### <a name="executing-stored-procedures"></a>Spouštění uložených procedur
+Atomické transakce s dokumenty se stejným ID zařízení, můžete také spustit příklad, pokud uchováváte agregace nebo poslední stav zařízení v jedné položky. 
 
 ```csharp
 await client.ExecuteStoredProcedureAsync<DeviceReading>(
@@ -217,12 +217,12 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
     "XMS-001-FE24C");
 ```
    
-V další části vám tak informace o tom, jak můžete přesunout do oddílů kontejnerů z kontejnerů jedním oddílem.
+V další části se podíváte na tom, jak můžete přesunout do dělené kontejnerů z kontejnerů jedním oddílem.
 
 ## <a name="next-steps"></a>Další postup
-Tento článek poskytuje přehled o tom, jak pracovat s oddíly kontejnery Azure Cosmos DB s rozhraním API SQL. Viz také [vytváření oddílů a horizontální škálování](../cosmos-db/partition-data.md) přehled o konceptech a osvědčené postupy pro vytváření oddílů s jakéhokoli rozhraní API Azure Cosmos DB. 
+Tento článek poskytuje přehled o tom, jak pracovat s dělením kontejnerů Azure Cosmos DB pomocí rozhraní SQL API. Viz také [vytváření oddílů a horizontální škálování](../cosmos-db/partition-data.md) Přehled konceptů a osvědčené postupy pro dělení s jakékoli rozhraní API služby Azure Cosmos DB. 
 
-* Proveďte škálování a výkon testování pomocí Azure Cosmos DB. V tématu [testování výkonu a škálování s Azure Cosmos DB](performance-testing.md) pro ukázku.
-* Začínáme s kódování [sady SDK](sql-api-sdk-dotnet.md) nebo [REST API](/rest/api/cosmos-db/)
-* Další informace o [zřízené propustnosti v Azure Cosmos DB](request-units.md)
+* Testovat škálování a výkon pomocí služby Azure Cosmos DB. Zobrazit [testování výkonu a škálování pomocí služby Azure Cosmos DB](performance-testing.md) ukázku.
+* Začínáme s kódováním [sady SDK](sql-api-sdk-dotnet.md) nebo [rozhraní REST API](/rest/api/cosmos-db/)
+* Další informace o [zřízenou propustnost v databázi Azure Cosmos DB](request-units.md)
 

@@ -2,18 +2,18 @@
 title: Nastavit procesový server v Azure pro virtuální počítač VMware a fyzických serverů navrácení služeb po obnovení pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek popisuje, jak nastavit procesový server v Azure a navrátit služby po obnovení virtuálních počítačů Azure do VMware.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
-ms.author: raynew
-ms.openlocfilehash: a54fe3099854e6e5200a50ec6ef5db1401a223bf
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.date: 11/19/2018
+ms.author: ramamill
+ms.openlocfilehash: 6bdbb60da2a135b5f53f6119377c703d88df6ed9
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077608"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975341"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Nastavit procesový server v Azure pro navrácení služeb po obnovení
 
@@ -24,6 +24,7 @@ Po převzetí služeb při selhání virtuálních počítačů VMware nebo fyzi
 Další informace o [opětovného nastavování ochrany](vmware-azure-reprotect.md) a [navrácení služeb po obnovení](vmware-azure-failback.md) procesu.
 
 [!INCLUDE [site-recovery-vmware-process-server-prerequ](../../includes/site-recovery-vmware-azure-process-server-prereq.md)]
+
 
 ## <a name="deploy-a-process-server-in-azure"></a>Nasazení procesového serveru v Azure
 

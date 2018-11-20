@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: ddc85cb7c9bd4488295b22e687d199a73d23922c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 36b4fbac13e012de2fbef137c6637fd7e2daea8f
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955622"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161289"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hostování statického webu ve službě Azure Storage
 Účty úložiště GPv2 Azure umožňují poskytovat statický obsah (HTML, CSS, JavaScript a soubory obrázků) přímo z kontejneru úložiště s názvem *$web*. Využití výhod hostování ve službě Azure Storage umožňuje používat architektur bez serveru, včetně [Azure Functions](/azure/azure-functions/functions-overview) a další služby PaaS.
@@ -109,7 +109,7 @@ Metody dostupné pro nasazení obsahu do kontejneru úložiště zahrnují násl
 
 - [AzCopy](../common/storage-use-azcopy.md)
 - [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/)
-- [Visual Studio Team System](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
+- [Kanály Azure](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
 - [Rozšíření sady Visual Studio Code](https://code.visualstudio.com/tutorials/static-website/getting-started)
 
 Ve všech případech, ujistěte se, že kopírování souborů do *$web* kontejneru.
@@ -158,7 +158,7 @@ Ano, nový webový koncový bod dodržuje pravidla virtuální sítě a brány f
 Ano, je velká a malá písmena stejně jako koncový bod služby blob webový koncový bod. 
 
 ## <a name="next-steps"></a>Další postup
-* [Přístup k objektům BLOB s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN](storage-https-custom-domain-cdn.md)
+* [Přístup k objektům blob s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN](storage-https-custom-domain-cdn.md)
 * [Konfigurace vlastního názvu domény pro koncový bod služby blob nebo web](storage-custom-domain-name.md)
 * [Azure Functions](/azure/azure-functions/functions-overview)
 * [Azure Web Apps](/azure/app-service/app-service-web-overview)

@@ -10,21 +10,21 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4492324b174c97325f40110b7500d5b0e99a926b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dbd3d4e34df3bf918c831a3d9c74de8a9015b50e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623940"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163601"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Reference k syntaxi služby Azure Cosmos DB SQL
 
-Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Tento článek poskytuje dokumentaci pro syntaxi jazyka dotazů SQL, který je kompatibilní s účty SQL API. Postup ukázky dotazů SQL, najdete v části [dotazy SQL ve službě Cosmos DB](sql-api-sql-query.md).  
+Azure Cosmos DB podporuje dotazování dokumentů pomocí známých SQL (Structured Query Language), jako je gramatika přes hierarchické dokumenty JSON bez nutnosti explicitního schématu nebo vytváření sekundárních indexů. Tento článek poskytuje dokumentaci pro syntaxi jazyka dotazů SQL, který je kompatibilní s účty SQL API. Postup ukázky dotazů SQL, najdete v části [dotazy SQL ve službě Cosmos DB](how-to-sql-query.md).  
   
 Přejděte [Query Playground](http://www.documentdb.com/sql/demo) kde zkuste Cosmos DB a spouštět dotazy SQL proti naší datové sadě.  
   
 ## <a name="select-query"></a>Zpracování dotazu SELECT  
-Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je vypočten zdroji v klauzuli FROM. Filtr v klauzuli WHERE je pak použije ve zdroji se načíst podmnožinu dokumentů JSON. Nakonec se používá klauzuli SELECT do projektu požadované hodnoty JSON v seznamu select. Konvence pro příkazy SELECT popisující jsou uvedených v části konvence syntaxe. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](sql-api-sql-query.md#SelectClause)
+Každý dotaz se skládá z klauzule SELECT a volitelné a klauzulí WHERE za standardy ANSI SQL. Pro každý dotaz, obvykle je vypočten zdroji v klauzuli FROM. Filtr v klauzuli WHERE je pak použije ve zdroji se načíst podmnožinu dokumentů JSON. Nakonec se používá klauzuli SELECT do projektu požadované hodnoty JSON v seznamu select. Konvence pro příkazy SELECT popisující jsou uvedených v části konvence syntaxe. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](how-to-sql-query.md#SelectClause)
   
 **Syntaxe**  
   
@@ -69,7 +69,7 @@ Dotazovací jazyk podporuje komentáře stylu jazyka T-SQL jako
 Zatímco prázdné znaky a komentáře nemají žádné význam v gramatice, musíte použít k oddělení tokeny. Například: `-1e5` je jednotné číslo token, nějakou`: – 1 e5` minus token následuje číslo 1 a identifikátor e5.  
 
 ##  <a name="bk_select_query"></a> Klauzule SELECT  
-Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](sql-api-sql-query.md#SelectClause).
+Klauzule v příkazu SELECT musejí být seřazeny, jak je znázorněno výše. Některý volitelný klauzule lze vynechat. Ale v případě volitelná klauzule používají, musí být ve správném pořadí. Příklady najdete v tématu [Příklady zpracování dotazu SELECT](how-to-sql-query.md#SelectClause).
 
 **Syntaxe**  
 
@@ -132,7 +132,7 @@ Obě `SELECT <select_list>` a `SELECT *` jsou "syntaktické sugar" a může být
 [Klauzule SELECT](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM – klauzule  
-Určuje zdroj nebo zdroje připojené k doméně. V klauzuli FROM je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Účelem tuto klauzuli je určení zdroje dat, na kterém musí pracovat dotazu. Běžně celého kontejneru se zdroji, ale jeden místo toho zadejte podmnožinu kontejneru. Pokud tato klauzule není zadán, bude spuštěn další klauzule stále jakoby z klauzule zadaný jednotlivý dokument. Příklady najdete v tématu [z příkladů – klauzule](sql-api-sql-query.md#FromClause)
+Určuje zdroj nebo zdroje připojené k doméně. V klauzuli FROM je nepovinný, pokud je zdroj filtrovaná nebo předpokládané později v dotazu. Účelem tuto klauzuli je určení zdroje dat, na kterém musí pracovat dotazu. Běžně celého kontejneru se zdroji, ale jeden místo toho zadejte podmnožinu kontejneru. Pokud tato klauzule není zadán, bude spuštěn další klauzule stále jakoby z klauzule zadaný jednotlivý dokument. Příklady najdete v tématu [z příkladů – klauzule](how-to-sql-query.md#FromClause)
   
 **Syntaxe**  
   
@@ -216,7 +216,7 @@ Kontejner výrazu může být kontejner rozsahem nebo rozsahem dokumentu:
   
 V aktuální verzi Cosmos DB podporuje vnitřní spojení. Zobrazování poruch se připojení k další možnosti. 
 
-Vnitřní spojení za následek úplnou smíšený produkt sad účastní spojení. Výsledek spojení N-způsob, jak je sada N prvek řazené kolekce členů, kde každá hodnota řazené kolekce členů je přidružen alias nastavit účast ve spojení a je přístupný pomocí odkazu na tento alias v jiných klauzule. Příklady najdete v tématu [příklady – klíčové slovo JOIN](sql-api-sql-query.md#Joins)
+Vnitřní spojení za následek úplnou smíšený produkt sad účastní spojení. Výsledek spojení N-způsob, jak je sada N prvek řazené kolekce členů, kde každá hodnota řazené kolekce členů je přidružen alias nastavit účast ve spojení a je přístupný pomocí odkazu na tento alias v jiných klauzule. Příklady najdete v tématu [příklady – klíčové slovo JOIN](how-to-sql-query.md#Joins)
   
 Vyhodnocení spojení závisí na kontext rozsah zúčastněných sad:  
   
@@ -311,7 +311,7 @@ Podívejme se na následující klauzule FROM: `<from_source1> JOIN <from_source
  [Klauzule SELECT](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> Klauzule WHERE  
- Určuje podmínku vyhledávání pro dokumenty vrácené dotazem. Příklady najdete v tématu [ukázky použití klauzule WHERE](sql-api-sql-query.md#WhereClause)
+ Určuje podmínku vyhledávání pro dokumenty vrácené dotazem. Příklady najdete v tématu [ukázky použití klauzule WHERE](how-to-sql-query.md#WhereClause)
   
  **Syntaxe**  
   
@@ -336,7 +336,7 @@ WHERE <filter_condition>
  Aby dokumentu, který má být vrácen výraz zadaný jako filtr musí podmínka vyhodnocena na hodnotu true. Pouze pro logickou hodnotu true budou splňují zadanou podmínku, jakákoli jiná hodnota: undefined, null, hodnotu false, číslo, pole nebo objekt nebude splňují zadanou podmínku.  
   
 ##  <a name="bk_orderby_clause"></a> ORDER BY – klauzule  
- Určuje pořadí řazení pro výsledky vrácené dotazem. Příklady najdete v tématu [příklady klauzule ORDER BY](sql-api-sql-query.md#OrderByClause)
+ Určuje pořadí řazení pro výsledky vrácené dotazem. Příklady najdete v tématu [příklady klauzule ORDER BY](how-to-sql-query.md#OrderByClause)
   
  **Syntaxe**  
   
@@ -374,7 +374,7 @@ ORDER BY <sort_specification>
  I když gramatiky dotazů podporuje více pořadí podle vlastností, modul runtime dotazu Cosmos DB podporuje řazení pouze proti jedné vlastnosti a pouze názvy vlastností (ne před vypočítané vlastnosti). Řazení také vyžaduje, zásady indexování obsahuje index rozsahu pro vlastnost a zadaného typu s nejvyšší přesností. Odkazovat na indexování dokumentace k zásadám pro další podrobnosti.  
   
 ##  <a name="bk_scalar_expressions"></a> Skalární výrazy  
- Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Jednoduché výrazy mohou být konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkce. Jednoduché výrazy je možné kombinovat do složité výrazy pomocí operátorů. Příklady najdete v tématu [příklady skalární výrazy](sql-api-sql-query.md#scalar-expressions)
+ Skalární výraz, který je kombinací symbolů a operátorů, které lze vyhodnotit na získání jedné hodnoty. Jednoduché výrazy mohou být konstanty, odkazy na vlastnosti, odkazy na prvky pole, odkazy na alias nebo volání funkce. Jednoduché výrazy je možné kombinovat do složité výrazy pomocí operátorů. Příklady najdete v tématu [příklady skalární výrazy](how-to-sql-query.md#scalar-expressions)
   
  Podrobnosti na hodnoty, které mohou mít skalární výraz, který najdete v tématu [konstanty](#bk_constants) oddílu.  
   
@@ -2905,6 +2905,6 @@ SELECT ST_ISVALIDDETAILED({
   
 ## <a name="next-steps"></a>Další postup  
 
-- [Syntaxe SQL a dotaz SQL pro službu Cosmos DB](sql-api-sql-query.md)
+- [Syntaxe SQL a dotaz SQL pro službu Cosmos DB](how-to-sql-query.md)
 
 - [Dokumentace ke službě cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  

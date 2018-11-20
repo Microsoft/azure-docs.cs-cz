@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 496afab869d8cf1b7b00791913c3082e31b45327
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: d8b78551a762b4388344aaf3b44e7472127737ae
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633916"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977110"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží se selháním Azure Backup: problémy s agentů nebo rozšíření
 
@@ -77,9 +77,9 @@ Po registraci a naplánovat virtuálního počítače pro služby Azure Backup z
 **2. příčina: [rozšíření zálohování se nezdaří pro aktualizaci nebo načtení](#the-backup-extension-fails-to-update-or-load)**  
 **3. příčina: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**
 
-## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailed - operace rozšíření VMSnapshot selhala
+## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - operace rozšíření VMSnapshot selhala
 
-**Kód chyby:**: ExtentionOperationFailed <br>
+**Kód chyby:**: ExtentionOperationFailedForManagedDisks <br>
 **Chybová zpráva**: operace rozšíření VMSnapshot selhala<br>
 
 Po registraci a naplánovat virtuálního počítače pro služby Azure Backup zahájí zálohování úlohy tím, že komunikuje s virtuálního počítače rozšíření zálohování k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud se snímek se aktivuje, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:  
@@ -205,7 +205,7 @@ Následující podmínky mohou způsobit selhání úlohy snímku:
 | Příčina | Řešení |
 | --- | --- |
 | Stav virtuálního počítače je uvedena nesprávně, protože virtuální počítač je vypnutý v protokolu RDP (Remote Desktop). | Pokud vypnete virtuální počítač v protokolu RDP, podívejte se na portál k určení, zda je stav virtuálního počítače správný. Pokud není správný, vypněte virtuální počítač na portálu pomocí **vypnutí** možnost na řídicím panelu virtuálních počítačů. |
-| Virtuální počítač nelze získat adresu hostitele nebo prostředků infrastruktury ze serveru DHCP. | DHCP musí být povolené uvnitř hosta pro zálohování virtuálních počítačů IaaS pro práci. Pokud virtuální počítač nemůže získat adresu hostitele nebo prostředků infrastruktury z odpovědi DHCP 245, se nedá stáhnout nebo ji spustit žádná rozšíření. Pokud potřebujete statickou privátní IP adresu, můžete ji nakonfigurujte prostřednictvím platformy. Možnosti DHCP ve virtuálním počítači musí být povolené vlevo. Další informace najdete v tématu [nastavit statickou privátní IP interní](../virtual-network/virtual-networks-reserved-private-ip.md). |
+| Virtuální počítač nelze získat adresu hostitele nebo prostředků infrastruktury ze serveru DHCP. | DHCP musí být povolené uvnitř hosta pro zálohování virtuálních počítačů IaaS pro práci. Pokud virtuální počítač nemůže získat adresu hostitele nebo prostředků infrastruktury z odpovědi DHCP 245, se nedá stáhnout nebo ji spustit žádná rozšíření. Pokud potřebujete statickou privátní IP adresu, měli byste nakonfigurovat prostřednictvím **webu Azure Portal** nebo **Powershellu** a ujistěte se, že je povolená možnost DHCP ve virtuálním počítači. Další informace o tom, jak nastavit statickou IP adresu prostřednictvím prostředí PowerShell, najdete v tématu [klasický virtuální počítač](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm) a [virtuální počítač Resource Manageru](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface).
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Rozšíření zálohování se nezdaří pro aktualizaci nebo načtení
 Pokud rozšíření nelze načíst, zálohování se nezdaří, protože nelze pořídí snímek.

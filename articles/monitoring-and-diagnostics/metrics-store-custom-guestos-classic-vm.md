@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: 9569a9da81848c279db6d6d45b7621f84060387b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: db0de3ec354fd599d2c10b26eea2991469410c12
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958623"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163363"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Odeslání metrik hostovaného operačního systému k úložišti dat monitorování Azure pro Windows virtuální počítač (klasický)
 
@@ -36,7 +36,7 @@ Proces, který je popsaný v tomto článku funguje pouze v klasických virtuál
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Vytvoření klasického virtuálního počítače a účtu úložiště
 
 1. Vytvoření klasického virtuálního počítače pomocí webu Azure portal.
-   ![Vytvoření virtuálního počítače s nesprávně](./media/metrics-store-custom-guestos-classic-vm/create-classic-vm.png)
+   ![Vytvoření klasického virtuálního počítače](./media/metrics-store-custom-guestos-classic-vm/create-classic-vm.png)
 
 1. Při vytváření tohoto virtuálního počítače, zvolte možnost pro vytvoření nového účtu klasického úložiště. V dalších krocích používáme tento účet úložiště.
 

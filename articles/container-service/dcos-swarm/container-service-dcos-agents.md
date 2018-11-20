@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 17029f51be9fed8fc36c5f919ece84acbf0461d9
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 9c614d18b96c182fa166a4bc43fb1bb2f8d5d6f5
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42057165"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976723"
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Fondy agentů DC/OS pro službu Azure Container Service
 Clustery DC/OS v Azure Container Service obsahovat agentské uzly v dva fondy, fondu veřejného a privátního fondu. Aplikace je možné nasadit buď fondu by to ovlivnilo usnadnění mezi počítači služby container Service. Počítače můžete přístupný z Internetu (veřejných) nebo udržovat interní (privátní). Tento článek poskytuje stručný přehled důvod, proč k fondům veřejné a soukromé.
@@ -37,7 +37,7 @@ Fondy agentů DC/OS v Azure Container Service vytvoří následujícím způsobe
 Fond privátních a veřejných fondu jsou škálovací sady virtuálních počítačů Azure. Po nasazení můžete změnit velikost těchto fondů.
 
 ## <a name="use-agent-pools"></a>Používat fondy agentů
-Ve výchozím nastavení **Marathon** nasadí jakékoli nové aplikace *privátní* agentské uzly. Je nutné explicitně nasazení aplikace *veřejné* uzlů během vytváření aplikace. Vyberte **volitelné** kartě a zadejte **ACCEPTED** pro **role prostředků** hodnotu. Tento proces je zdokumentován [tady](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) a [DC/OS](https://dcos.io/docs/1.7/administration/installing/custom/create-public-agent/) dokumentaci.
+Ve výchozím nastavení **Marathon** nasadí jakékoli nové aplikace *privátní* agentské uzly. Je nutné explicitně nasazení aplikace *veřejné* uzlů během vytváření aplikace. Vyberte **volitelné** kartě a zadejte **ACCEPTED** pro **role prostředků** hodnotu. Tento proces je zdokumentován [tady](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) a [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) dokumentaci.
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [Správa kontejnerů systému DC/OS](container-service-mesos-marathon-ui.md).

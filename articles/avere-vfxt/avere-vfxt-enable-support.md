@@ -6,14 +6,14 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: bc21e06b704bfe3d25132092efbbf23f342acb14
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0f5eee20b0487fb5fce82047f40d137effb87ead
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633782"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164418"
 ---
-# <a name="enable-support-uploads"></a>Povolení podpory nahrávání
+# <a name="enable-support-uploads"></a>Povolení nahrávání podpory
 
 Data podpory o clusteru můžete nahrát automaticky vFXT Avere pro Azure. Tyto nahrávání nechat pracovníci podpory poskytují nejlepší možné péče.
 
@@ -24,18 +24,21 @@ Následujícím postupem z ovládacího panelu Avere k aktivaci podpory. (Čten�
 1. Přejděte **nastavení** kartě v horní části.
 1. Klikněte na tlačítko **podporu** odkaz na levé straně a přijměte zásady ochrany osobních údajů.
 
-   ![Snímek obrazovky k potvrzení přijetí zásady ochrany osobních údajů](media/avere-vfxt-privacy-policy.png)
+   ![Snímek obrazovky zobrazující Avere ovládací panely a automaticky otevírané okno s tlačítkem pro potvrzení přijímat zásady ochrany osobních údajů](media/avere-vfxt-privacy-policy.png)
+
 1. Klikněte na trojúhelník nalevo od **informace o zákaznících** rozbalte v části.
+1. Klikněte na tlačítko **Revalidate odesílat informace** tlačítko.
 1. Nastavení podpory názvu clusteru v **jedinečný název clusteru** – Ujistěte se, že ho jednoznačně identifikuje clusteru pracovníci podpory.
 1. Zaškrtněte políčka pro **statistiky monitorování**, **obecné informace o nahrání**, a **havárií nahrát informace**.
-1. Klikněte na tlačítko **ověřit informace o odeslání** tlačítko.
 1. Klikněte na tlačítko **odeslat**.
+
+   ![Snímek obrazovky, který obsahuje oddíl informací o dokončené Zákaznická podpora nastavení stránky](media/avere-vfxt-support-info.png)
+
 1. Klikněte na trojúhelník nalevo od **zabezpečení proaktivní podpory (SPS)** rozbalte v části.
 1. Zaškrtněte políčko u **odkaz povolit aktualizace Service PACKU**.
 1. Klikněte na tlačítko **odeslat**.
 
-   ![Snímek obrazovky, který obsahuje všechny kroky pro povolení podpory](media/avere-vfxt-support-info-steps.png)
-
+   ![Snímek obrazovky obsahující dokončené zabezpečení proaktivní podporují oddíl na stránce nastavení podpory](media/avere-vfxt-support-sps.png)
 
 ## <a name="next-steps"></a>Další postup
 

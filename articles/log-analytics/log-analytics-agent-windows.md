@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 11/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4e99656319f543fb40d8509cb4ae9e1c25cfc75b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ef95351c961b4fe2937e59179780326dea2309b1
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622478"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51975699"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Připojení počítačů s Windows ke službě Log Analytics v Azure
 
@@ -46,8 +46,27 @@ Před instalací agenta Microsoft Monitoring Agent pro Windows potřebujete ID a
 4. Vyberte **Připojené zdroje** a pak **Servery Windows**.   
 5. Zkopírujte a vložte do oblíbeného editoru, **ID pracovního prostoru** a **primární klíč**.    
    
+## <a name="configure-agent-to-use-tls-12"></a>Konfigurace agenta pro použití protokolu TLS 1.2
+Konfigurace používání [TLS 1.2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) protokol pro komunikaci mezi agentem Windows a službě Log Analytics, můžete postupovat podle postupem uvedeným níže povolte předtím, než je agent nainstalovaný na virtuálním počítači nebo později.   
+
+1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
+2. Vytvořit podklíč pod **protokoly** pro TLS 1.2 **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2**
+3. Vytvoření **klienta** podklíče pod podklíčem verze protokolu TLS 1.2 jste vytvořili dříve. Například **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**.
+4. Vytvořte následující hodnoty DWORD pod **HKLM\System\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client**:
+
+    * **Povolené** [hodnota = 1]
+    * **DisabledByDefault** [hodnota = 0]  
+
+Konfigurace rozhraní .NET Framework 4.6 nebo novější k podpoře zabezpečené šifrování, protože ve výchozím nastavení je zakázána. [Silného šifrování](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) používá bezpečnější síťové protokoly, jako je protokol TLS 1.2 a blokuje protokoly, které nejsou zabezpečeny. 
+
+1. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft.NETFramework\v4.0.30319**.  
+2. Vytvořte hodnotu DWORD **SchUseStrongCrypto** v tomto podklíči s hodnotou **1**.  
+3. Vyhledejte následující podklíč registru: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft.NETFramework\v4.0.30319**.  
+4. Vytvořte hodnotu DWORD **SchUseStrongCrypto** v tomto podklíči s hodnotou **1**. 
+5. Restartujte systém pro nastavení projevilo. 
+
 ## <a name="install-the-agent-using-setup-wizard"></a>Instalace agenta pomocí Průvodce instalací
-Následující kroky instalace a konfigurace agenta pro Log Analytics v Azure a cloudu Azure Government s použitím Průvodce instalací pro agenta Microsoft Monitoring Agent v počítači.  
+Následující kroky instalace a konfigurace agenta pro Log Analytics v Azure a cloudu Azure Government s použitím Průvodce instalací pro agenta Microsoft Monitoring Agent v počítači. Pokud chcete další informace o konfiguraci agenta tak, aby také sestavy ke skupině pro správu System Center Operations Manager najdete v tématu [nasazení agenta nástroje Operations Manager pomocí Průvodce instalací agenta](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard).
 
 1. V pracovním prostoru Log Analytics z **servery Windows** přejde dříve, vyberte příslušné stránky **stáhnout agenta Windows** verze ke stažení v závislosti na architektuře procesoru operační systém Windows.   
 2. Spusťte instalační program a nainstalujte agenta na svém počítači.
@@ -76,7 +95,7 @@ Následující tabulka obsahuje konkrétní parametry Log Analytics podporuje in
 |---------------------------------------|--------------|
 | NASTAVENÍ NOAPM = 1                               | Volitelný parametr. Nainstaluje agenta bez .NET Application Performance Monitoring pro aplikace.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = konfigurace agenta na generování sestav s pracovním prostorem                |
-|OPINSIGHTS_WORKSPACE_ID                | Id pracovního prostoru (guid) pro pracovní prostor pro přidání                    |
+|OPINSIGHTS_WORKSPACE_ID                | ID pracovního prostoru (guid) pro pracovní prostor pro přidání                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Klíč pracovního prostoru pro počáteční ověření s pracovním prostorem |
 |OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE  | Zadejte cloudovém prostředí, kde se nachází pracovní prostor <br> 0 = komerčním cloudu azure (výchozí) <br> 1 = azure Government |
 |OPINSIGHTS_PROXY_URL               | Identifikátor URI pro použití proxy serveru |
@@ -87,13 +106,13 @@ Následující tabulka obsahuje konkrétní parametry Log Analytics podporuje in
 2. Bezobslužná instalace agenta a nakonfigurovat, aby hlásit do pracovního prostoru v komerčním cloudu Azure, ze složky extrahovány instalační soubory, zadejte: 
    
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
    nebo pokud chcete konfigurovat agenta na generování sestav do cloudu Azure pro státní správu USA, zadejte: 
 
      ```dos
-    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace ID> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Instalace agenta pomocí ve službě Azure Automation DSC

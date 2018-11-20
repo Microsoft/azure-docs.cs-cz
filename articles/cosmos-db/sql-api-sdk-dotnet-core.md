@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8243d1e297fa778d4fa27f8365d9bb0a935d21e5
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d5216a4a21fbbded4a10429c658f4842db225657
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387989"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52161714"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -189,12 +189,12 @@ Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SD
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 
-* Přidání podpory pro dotazy agregace (počet, MIN, MAX, součet a průměr). Zobrazit [podporu agregace](sql-api-sql-query.md#Aggregates).
+* Přidání podpory pro dotazy agregace (počet, MIN, MAX, součet a průměr). Zobrazit [podporu agregace](how-to-sql-query.md#Aggregates).
 * Snížili minimální propustnost na dělené kolekce z 10,100 RU/s na 2 500 RU/s.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 
-Azure Cosmos DB .NET Core SDK umožňuje vytváření rychlých a multiplatformní [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) aplikace pro Windows, Mac a Linux. Nejnovější verzi sady Azure Cosmos DB .NET Core SDK je plně [Xamarin](https://www.xamarin.com) kompatibilní a použít pro vytváření aplikací určených pro iOS, Android a Mono (Linux).  
+Azure Cosmos DB .NET Core SDK umožňuje vytváření rychlých a multiplatformní [ASP.NET Core](https://www.asp.net/core) a [.NET Core](https://www.microsoft.com/net/core#windows) aplikace pro Windows, Mac a Linux. Nejnovější verzi sady Azure Cosmos DB .NET Core SDK je plně [Xamarin](https://www.xamarin.com) kompatibilní a použít pro vytváření aplikací určených pro iOS, Android a Mono (Linux).  
 
 ### <a name="a-name010-preview010-preview"></a><a name="0.1.0-preview"/>0.1.0-Preview
 

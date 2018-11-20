@@ -1,6 +1,6 @@
 ---
-title: Azure ukázkovou aplikaci pro použití s zóny DMZ | Microsoft Docs
-description: Nasazení této jednoduché webové aplikace po vytvoření DMZ k otestování scénářů tok provozu
+title: Azure ukázkovou aplikaci pro použití s zóny DMZ | Dokumentace Microsoftu
+description: Nasazení této jednoduché webové aplikace po vytvoření DMZ do testování scénářů, tok provozu
 services: virtual-network
 documentationcenter: na
 author: tracsman
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 8506238e41c5d9dac8d76d729d4919b30a0528b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a0f1313f8b22aba0a153563bd804435c3ef53f2
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23883793"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52159861"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>Ukázková aplikace pro použití s zóny DMZ
-[Návrat na stránku osvědčené postupy zabezpečení hranic][HOME]
+[Vraťte se na stránku osvědčené postupy zabezpečení hranic][HOME]
 
-Tyto skripty prostředí PowerShell můžete spustit místně na serveru IIS01 a AppVM01 nainstalovat a nastavit jednoduché webové aplikace, který zobrazí stránku html z front-endu IIS01 server s obsahem ze serveru back-end AppVM01.
+Tyto skripty prostředí PowerShell můžete spustit místně na serverech IIS01 a AppVM01 instalace a nastavení, která se zobrazí stránka html z front-endový server IIS01 s obsahem z back endového serveru AppVM01 jednoduchou webovou aplikaci.
 
-Tuto aplikaci poskytuje jednoduché testovacím prostředí pro mnoho příkladů DMZ a jak změny na koncové body, skupiny Nsg, UDR a brány Firewall pravidla může ovlivnit tok provozu.
+Tato aplikace poskytuje jednoduché testovacím prostředí pro řadu příkladů DMZ a jak změny na koncové body, skupiny zabezpečení sítě, směrování definovaného uživatelem a brány Firewall pravidla mohou ovlivnit přenosové toky.
 
-## <a name="firewall-rule-to-allow-icmp"></a>Pravidlo brány firewall, které povolí protokol ICMP
-Tento jednoduchý příkaz prostředí PowerShell můžete spustit na jakékoli virtuální počítač s Windows povolit provoz protokolu ICMP (Ping). Tato aktualizace brány firewall umožňuje snazší testování a řešení potíží s tím, že protokol ping přes bránu firewall systému windows (pro většinu distribucích systému Linux, ve které ICMP ve výchozím nastavení).
+## <a name="firewall-rule-to-allow-icmp"></a>Pravidlo brány firewall umožňující ICMP
+Tento jednoduchý příkaz prostředí PowerShell můžete spustit na virtuálních počítačích Windows povolit provoz protokolu ICMP (Ping). Tato aktualizace brány firewall umožňuje pro snazší testování a řešení potíží s tím, že protokol ping přes bránu firewall systému windows (na většině distribucí Linuxu, které ICMP je ve výchozím).
 
 ```PowerShell
 # Turn On ICMPv4
@@ -37,18 +37,18 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 ```
 
-Pokud chcete použít následující skripty, přidání pravidla brány firewall je první příkaz.
+Pokud používáte tyto skripty, je toto přidání pravidla brány firewall na první příkaz.
 
-## <a name="iis01---web-application-installation-script"></a>IIS01 - skript instalace webové aplikace
-Bude se tento skript:
+## <a name="iis01---web-application-installation-script"></a>IIS01 - instalační skript pro webové aplikace
+Tento skript se:
 
 1. Otevřete IMCPv4 (Ping) na místním serveru brány windows firewall pro snazší testování
-2. Instalace IIS a .net Framework v4.5
+2. Instalace IIS a rozhraní .net Framework v4.5
 3. Vytvořit webovou stránku ASP.NET a v souboru Web.config
-4. Změna fondu aplikací výchozí usnadnění přístupu k souborům
-5. Nastavit pomocí účtu anonymního uživatele na váš účet správce a heslo
+4. Změnit výchozí fond aplikací pro usnadnění přístupu k souborům
+5. Nastavit pro anonymní uživatele pro účet správce a heslo
 
-Tento skript prostředí PowerShell by měl být spuštěn místně při RDP měl do IIS01.
+Tento skript Powershellu by měl spustit místně, zatímco RDP měl do IIS01.
 
 ```PowerShell
 # IIS Server Post Build Config Script
@@ -132,8 +132,8 @@ Tento skript prostředí PowerShell by měl být spuštěn místně při RDP mě
     $MainPage | Out-File -FilePath "C:\inetpub\wwwroot\Home.aspx" -Encoding ascii
     $WebConfig | Out-File -FilePath "C:\inetpub\wwwroot\Web.config" -Encoding ascii
 
-# Set App Pool to Clasic Pipeline to remote file access will work easier
-    Write-Host "Updaing IIS Settings" -ForegroundColor Cyan
+# Set App Pool to Classic Pipeline to remote file access will work easier
+    Write-Host "Updating IIS Settings" -ForegroundColor Cyan
     c:\windows\system32\inetsrv\appcmd.exe set app "Default Web Site/" /applicationPool:".NET v4.5 Classic"
     c:\windows\system32\inetsrv\appcmd.exe set config "Default Web Site/" /section:system.webServer/security/authentication/anonymousAuthentication /userName:$theAdmin /password:$thePassword /commit:apphost
 
@@ -147,20 +147,20 @@ Tento skript prostředí PowerShell by měl být spuštěn místně při RDP mě
 ```
 
 ## <a name="appvm01---file-server-installation-script"></a>AppVM01 - soubor skriptu instalace serveru
-Tento skript nastaví back-end pro tuto aplikaci jednoduché. Bude se tento skript:
+Tento skript vytvoří back endu pro tuto jednoduchou aplikaci. Tento skript se:
 
 1. Otevřete IMCPv4 (Ping) v bráně firewall pro snazší testování
-2. Vytvořte adresář pro web
-3. Vytvořte textový soubor být vzdáleně přístup webové stránky
+2. Vytvořte adresář pro webové stránky
+3. Vytvořte textový soubor, který se vzdáleně přístupný web webové stránky
 4. Nastavení oprávnění pro adresáře a souboru pro anonymní přístup
-5. Vypněte rozšířené zabezpečení Internet Exploreru umožňuje snazší procházení z tohoto serveru 
+5. Vypněte rozšířené zabezpečení Internet Exploreru umožňuje snadnější prohlížení z tohoto serveru 
 
 > [!IMPORTANT]
-> **Nejvhodnější**: nikdy vypněte rozšířené zabezpečení Internet Exploreru na provozním serveru a obecně je vhodné procházení webu, z provozním serveru. Otevírání do sdílené složky pro anonymní přístup je také vhodné, ale done sem pro jednoduchost.
+> **Osvědčený postup**: nikdy vypněte rozšířené zabezpečení Internet Exploreru na produkčním serveru a navíc je obecně vhodné k procházení webu v provozním serveru. Navíc se vám otevírají sdílené složky pro anonymní přístup není dobrý nápad, ale Hotovo zde pro zjednodušení.
 > 
 > 
 
-Tento skript prostředí PowerShell by měl být spuštěn místně při RDP měl do AppVM01. PowerShell je nutné spustit jako správce k zajištění úspěšné provedení.
+Tento skript Powershellu by měl spustit místně, zatímco RDP měl do AppVM01. PowerShell je potřeba spustit jako správce k zajištění úspěšného provedení.
 
 ```PowerShell
 # AppVM01 Server Post Build Config Script
@@ -193,13 +193,13 @@ Tento skript prostředí PowerShell by měl být spuštěn místně při RDP mě
     Write-Host
 ```
 
-## <a name="dns01---dns-server-installation-script"></a>DNS01 - skript instalace serveru DNS
-Neexistuje žádný skript zahrnuté v této ukázkové aplikaci nastavení serveru DNS. Pokud testování pravidel brány firewall, NSG nebo UDR musí obsahovat přenosy DNS, DNS01 server musí ručně nastavit. Soubor xml konfigurace sítě a šablonou Resource Manageru pro oba příklady zahrnuje DNS01 jako primární server DNS a veřejný server DNS hostitelem úroveň 3 jako záložní server DNS. Server DNS 3 úrovně bude server DNS použitý pro jiné než místní provoz a DNS01 není nastavit, v místní síti, který by tomu bylo DNS.
+## <a name="dns01---dns-server-installation-script"></a>DNS01 - skriptu pro instalaci serveru DNS
+Neexistuje žádný skript zahrnuté v této ukázkové aplikaci k nastavení serveru DNS. Pokud testování pravidel brány firewall, skupiny zabezpečení sítě nebo UDR musí obsahovat provoz DNS, DNS01 server musí být nastaveny ručně. Soubor xml konfigurace sítě a šablony Resource Manageru pro oba příklady zahrnuje DNS01 jako primární server DNS a veřejný server DNS hostitelem Level 3 jako záložní server DNS. Server DNS úroveň 3 by být skutečný server DNS použít pro jiné než místní provoz a s DNS01 není nastaven, v místní síti, který by tomu bylo DNS.
 
-## <a name="next-steps"></a>Další kroky
-* Spuštění skriptu IIS01 na server služby IIS
+## <a name="next-steps"></a>Další postup
+* Spusťte skript IIS01 na serveru služby IIS
 * Spusťte skript souborového serveru na AppVM01
-* Přejděte do veřejné IP adresy na IIS01 k ověření vaší sestavení
+* Přejděte na veřejnou IP adresu na IIS01 ověření sestavení
 
 <!--Link References-->
 [HOME]: ../best-practices-network-security.md

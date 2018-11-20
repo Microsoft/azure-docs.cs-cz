@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa43a6f1f7c757366e321e7da0fb1e47d4928cee
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: b68f7004366dcb502ffc8332cf8266a434c7ecfb
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639621"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51977144"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta Tržiště virtuálních počítačů
 
@@ -40,7 +40,8 @@ Následující tabulka popisuje účel a obsah těchto polí.
 | **Popis**           | Popis řešení.  3000 znaků podporuje jednoduchý formátování HTML. |
 | **Identifikátor marketing**  | Jedinečnou adresu URL pro přidružení k této nabídce obvykle zahrnuje vaší organizace a název řešení, maximální délka 50 znaků.  Příklad: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **ID předplatných ve verzi Preview** | Přidejte jeden až 100 identifikátorů předplatného náhledy. Tato předplatná uvedená prázdné budou mít přístup do nabídky publikovaný produkt, než přejde za provozu. |
-| **Užitečné odkazy**          | Vícenásobného výběru obchodní a technické kategorií, které nabízejí lze nejlépe přidružit.  Maximální povolené pět.  |
+| **Užitečné odkazy**          | Přidejte adresy URL do dokumentace, poznámky k verzi, nejčastější dotazy a tak dále. |
+| **Navrhované kategorie (max. 5)** | Vícenásobného výběru obchodní a technické kategorií, které nabízejí lze nejlépe přidružit.  Maximální povolené pět.  |
 |  |  |
 
 

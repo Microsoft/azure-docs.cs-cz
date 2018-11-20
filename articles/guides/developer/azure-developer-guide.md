@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 55d4f53a23c92bb96934e84c0400bc182bc3d87e
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956429"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976804"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -92,7 +92,7 @@ Spíše než z byste se museli starat o vytváření a správě celou aplikaci n
 
 Azure Service Fabric je platforma distribuovaných systémů, který usnadňuje vytváření, balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb. Poskytuje také komplexní možnosti správy aplikací pro zřizování, nasazování, sledování, upgradu nebo opravy chyb a odstraňování nasazených aplikací. Aplikace spouštěné ve sdíleném fondu počítačů můžou začínat v malém a škálování na stovky nebo tisíce počítačů podle potřeby.
 
-Service Fabric podporuje webová rozhraní API s Open Web Interface pro .NET (OWIN) a ASP.NET Core. Poskytuje sady SDK pro vytváření služeb v Linuxu v .NET Core a Javy. Další informace o Service Fabric najdete v tématu [postup výuky pro Service Fabric](https://azure.microsoft.com/documentation/learning-paths/service-fabric/).
+Service Fabric podporuje webová rozhraní API s Open Web Interface pro .NET (OWIN) a ASP.NET Core. Poskytuje sady SDK pro vytváření služeb v Linuxu v .NET Core a Javy. Další informace o Service Fabric najdete v tématu [dokumentace ke službě Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/).
 
 >**Kdy použít:** Service Fabric je dobrou volbou, pokud už vytváříte aplikace nebo přepsání existující aplikace, chcete-li využívají architekturu mikroslužeb. Pomocí Service Fabric, když budete potřebovat další kontrolu nad nebo přímý přístup k základní infrastruktury.
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: c8bad3642f1e98cac3857d536f539554235e1a51
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: d7c207f89b9cb50f940f071fbbf6ee81b4d44976
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578633"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52164316"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -182,7 +182,7 @@ Informace potřebné pro připojení ke kontroleru:
 Informace potřebné pro cluster: 
 
 * Název skupiny prostředků
-* Lokalita Azure 
+* Umístění Azure 
 * Název virtuální sítě
 * Název podsítě
 * Název role uzlu clusteru – tento název je nastavena, když vytvoříte roli, je popsáno [níže](#create-the-cluster-node-access-role)
@@ -281,12 +281,12 @@ RESOURCE_GROUP=
 #STORAGE_RESOURCE_GROUP=
 ```
 
-* Název místa
+* Název umístění
 * Název virtuální sítě
 * Název podsítě
 * Azure AD název modulu runtime role – Pokud jste postupovali podle příkladu v [vytvořit role clusteru uzel přístupu](#create-the-cluster-node-access-role), použijte ``avere-cluster``. 
 * Název účtu úložiště (Pokud vytváříte nový kontejner objektů Blob)
-* Název clusteru - nemůže mít dva clustery vFXT se stejným názvem ve stejné skupině prostředků. 
+* Název clusteru - nemůže mít dva clustery vFXT se stejným názvem ve stejné skupině prostředků. Zadejte jedinečný název pro osvědčený postup na každý cluster.
 * Heslo správce – zvolte zabezpečené heslo pro monitorování a správu clusteru. Toto heslo je přiřazena uživateli ``admin``. 
 * Typ instance uzlu - naleznete v tématu [velikosti uzlů vFXT](avere-vfxt-deploy-plan.md#vfxt-node-sizes) informace
 * Velikost mezipaměti uzlu – viz [velikosti uzlů vFXT](avere-vfxt-deploy-plan.md#vfxt-node-sizes) informace

@@ -3,19 +3,19 @@ title: 'Rychlý start: Volání koncového bodu pomocí Pythonu – Vlastní vyh
 titlesuffix: Azure Cognitive Services
 description: Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání za použití Pythonu k volání koncového bodu vlastního vyhledávání Bingu.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.author: v-brapel
-ms.openlocfilehash: d16b7354b0ef727ba3c670b97105e1bd6f99034e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: e3e4256d3654f532f16d33c77f4c7e8cb7e93dd4
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815456"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162632"
 ---
 # <a name="quickstart-call-bing-custom-search-endpoint-python"></a>Rychlý start: Volání koncového bodu vlastního vyhledávání Bingu (Python)
 
@@ -66,7 +66,7 @@ Pokud chcete tuto ukázku spustit, postupujte takto:
     python BingCustomSearch.py
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
 - [Zvýraznění textu pomocí dekoračních značek](./hit-highlighting.md)
 - [Stránkování webových stránek](./page-webpages.md)

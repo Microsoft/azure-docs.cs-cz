@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 1fcb72d75dca99b6670ca3ff536403a6268554a2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4dde10c5cb4a764a268b8b9d3ebfaebc008e13ed
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238144"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52162505"
 ---
 # <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Pokud chcete upravit výstup, spusťte druhý kontejner s `--environment-variables` argument přidat, zadáte hodnoty pro *NumWords* a *MinLength* proměnné:
+Pokud chcete upravit výstup, spusťte druhý kontejner s `--environment-variables` argument přidat, zadáte hodnoty pro *NumWords* a *MinLength* proměnné. (Tento příklad předpokládá, že používáte rozhraní příkazového řádku v prostředí Bash nebo Azure Cloud Shell. Pokud používáte příkazového řádku Windows, určete proměnné pomocí dvojité uvozovky, například `--environment-variables "NumWords"="5" "MinLength"="8"`.)
 
 ```azurecli-interactive
 az container create \

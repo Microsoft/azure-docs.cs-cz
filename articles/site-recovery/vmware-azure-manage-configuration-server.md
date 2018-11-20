@@ -1,18 +1,18 @@
 ---
 title: Správa konfiguračního serveru pro VMware a fyzických serverů zotavení po havárii pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek popisuje, jak spravovat existující konfigurační server pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/11/2018
-ms.author: raynew
-ms.openlocfilehash: 8096f1b5b29c0445d8bae85fb56e2735469184d4
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.author: ramamill
+ms.openlocfilehash: a58de808816bf80cf950d7b032ca042c7913a2e5
+ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823941"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "51976379"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii virtuálního počítače VMware
 
