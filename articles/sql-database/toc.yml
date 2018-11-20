@@ -143,7 +143,7 @@ items:
     items:
     - name: Spravované instance
       href: sql-database-managed-instance-index.yml
-    - name: Co je spravovaná instance
+    - name: Přehled
       href: sql-database-managed-instance.md
     - name: Omezení prostředků
       href: sql-database-managed-instance-resource-limits.md
@@ -163,15 +163,15 @@ items:
       href: sql-database-managed-instance-transact-sql-information.md
     - name: Transakční replikace
       href: replication-with-sql-database-managed-instance.md
-  - name: Kontinuita podnikových procesů
+  - name: Platforma jako služba
     items:
+    - name: Platforma jako služba
+      href: sql-database-paas.yml
     - name: Kontinuita podnikových procesů
       href: sql-database-business-continuity.md
     - name: Vysoká dostupnost
       href: sql-database-high-availability.md
-    - name: Zrychlené obnovení databáze
-      href: sql-database-accelerated-database-recovery.md
-    - name: Zálohování databáze
+    - name: Automatizované zálohy
       href: sql-database-automated-backups.md
     - name: Dlouhodobé uchovávání záloh
       items:
@@ -193,6 +193,8 @@ items:
       items:
       - name: Obnovení pomocí záloh
         href: sql-database-recovery-using-backups.md
+      - name: Zrychlené obnovení databáze
+        href: sql-database-accelerated-database-recovery.md
       - name: Pokyny k zotavení po výpadku
         href: sql-database-disaster-recovery.md
       - name: Postupy zotavení
@@ -208,6 +210,8 @@ items:
   - name: Zabezpečení
     items:
     - name: Zabezpečení
+      href: sql-database-security-index.yml
+    - name: Přehled
       href: sql-database-security-overview.md
     - name: Rozšířená ochrana před internetovými útoky
       items:
@@ -648,9 +652,9 @@ items:
     href: /azure/architecture/
   - name: Příběhy zákazníků
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 90ce805e96458e83315cd5f7c9e60b3585f7313d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 12add5f8ee32ce3c5207a604ef7cad821d5e5a4e
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854284"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52165256"

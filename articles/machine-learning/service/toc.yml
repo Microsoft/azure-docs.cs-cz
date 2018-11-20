@@ -119,12 +119,14 @@ items:
       href: how-to-troubleshoot-deployment.md
     - name: Zabezpečení pomocí protokolu SSL
       href: how-to-secure-web-service.md
-    - name: Využití nasazeného modelu
+  - name: Využívání webových služeb
+    items:
+    - name: Využívání v reálném čase
       displayName: create client, client, consume
       href: how-to-consume-web-service.md
-  - name: Monitorování modelů
+  - name: Monitorování webových služeb
     items:
-    - name: Shromažďování dat v produkčním prostředí
+    - name: Shromažďování a vyhodnocování dat
       href: how-to-enable-data-collection.md
     - name: Monitorování pomocí Application Insights
       href: how-to-enable-app-insights.md
@@ -366,9 +368,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Starší problémy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 62bc2016ec9294c00f20587cb6f6f7af7bafa599
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 71dc3f256a2d145dbb645feb7f309f5c760bf20a
+ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706649"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52163975"
