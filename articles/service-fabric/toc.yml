@@ -239,12 +239,16 @@ items:
       items:
       - name: Typy uzlů a VM Scale Sets
         href: service-fabric-cluster-nodetypes.md
+      - name: Upgrade clusterů v Azure
+        href: service-fabric-cluster-upgrade.md
       - name: Škálování
         href: service-fabric-cluster-scaling.md
       - name: Vzory zapojení clusteru do sítě
         href: service-fabric-patterns-networking.md
     - name: Samostatné clustery
       items:
+      - name: Upgrade samostatných clusterů
+        href: service-fabric-cluster-upgrade-standalone.md
       - name: Škálování
         href: service-fabric-cluster-scaling-standalone.md
     - name: Cluster Resource Manager
@@ -585,19 +589,27 @@ items:
         - name: Horizontální navýšení kapacity typu uzlu škálovací sady virtuálních počítačů
           href: virtual-machine-scale-set-scale-node-type-scale-out.md
       - name: Upgrade
-        href: service-fabric-cluster-upgrade.md
-      - name: Nastavení řízení přístupu
-        href: service-fabric-cluster-security-roles.md
-      - name: Otevření portu v nástroji pro vyrovnávání zatížení
-        href: create-load-balancer-rule.md
-      - name: Změna certifikátu clusteru na běžný název
-        href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
-      - name: Ruční přesměrování certifikátů clusteru
-        href: service-fabric-cluster-rollover-cert-cn.md
-      - name: Správa certifikátů clusteru
-        href: service-fabric-cluster-security-update-certs-azure.md
-      - name: Vzdálené připojení k virtuálnímu počítači uzlu clusteru
-        href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+        items:
+        - name: Upgrade verze Service Fabric
+          href: service-fabric-cluster-upgrade-version-azure.md
+        - name: Upgrade konfigurace clusteru
+          href: service-fabric-cluster-config-upgrade-azure.md
+        - name: Oprava uzlů clusteru (Windows)
+          href: service-fabric-patch-orchestration-application.md
+        - name: Oprava uzlů clusteru (Linux)
+          href: service-fabric-patch-orchestration-application-linux.md
+        - name: Nastavení řízení přístupu
+          href: service-fabric-cluster-security-roles.md
+        - name: Otevření portu v nástroji pro vyrovnávání zatížení
+          href: create-load-balancer-rule.md
+        - name: Změna certifikátu clusteru na běžný název
+          href: service-fabric-cluster-change-cert-thumbprint-to-cn.md
+        - name: Ruční přesměrování certifikátů clusteru
+          href: service-fabric-cluster-rollover-cert-cn.md
+        - name: Správa certifikátů clusteru
+          href: service-fabric-cluster-security-update-certs-azure.md
+        - name: Vzdálené připojení k virtuálnímu počítači uzlu clusteru
+          href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
     - name: Samostatné clustery
       items:
       - name: Vytvořit
@@ -612,20 +624,22 @@ items:
           href: service-fabric-cluster-standalone-package-contents.md
       - name: Měřítko
         href: service-fabric-cluster-windows-server-add-remove-nodes.md
-      - name: Nastavení řízení přístupu
-        href: service-fabric-cluster-security-roles.md
-      - name: Konfigurace
-        href: service-fabric-cluster-manifest.md
       - name: Upgrade
-        href: service-fabric-cluster-upgrade-windows-server.md
+        items:
+        - name: Upgrade verze Service Fabric
+          href: service-fabric-cluster-upgrade-windows-server.md
+        - name: Upgrade konfigurace clusteru
+          href: service-fabric-cluster-config-upgrade-windows-server.md
+        - name: Nastavení konfigurace
+          href: service-fabric-cluster-manifest.md
+        - name: Nastavení řízení přístupu
+          href: service-fabric-cluster-security-roles.md
+        - name: Oprava uzlů clusteru (Windows)
+          href: service-fabric-patch-orchestration-application.md
     - name: Vizualizace clusteru
       href: service-fabric-visualizing-your-cluster.md
     - name: Připojení k zabezpečenému clusteru
       href: service-fabric-connect-to-secure-cluster.md
-    - name: Oprava uzlů clusteru (Windows)
-      href: service-fabric-patch-orchestration-application.md
-    - name: Oprava uzlů clusteru (Linux)
-      href: service-fabric-patch-orchestration-application-linux.md
   - name: Monitorování a diagnóza
     items:
     - name: Monitorování aplikací
@@ -767,9 +781,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 810c04b2d6b2b5e7a8db64e21c10225ccddcb117
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 98ca5a1cbf5298931c14d6c696119d0c98893072
+ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634273"
+ms.lasthandoff: 11/17/2018
+ms.locfileid: "51853627"

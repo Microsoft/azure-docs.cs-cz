@@ -31,6 +31,8 @@ items:
       href: iot-accelerators-remote-monitoring-root-cause-analysis.md
     - name: Použití upozornění a oprava potíží se zařízeními
       href: iot-accelerators-remote-monitoring-maintain.md
+    - name: Detekce anomálií na hraničních zařízeních
+      href: iot-accelerators-remote-monitoring-edge.md
   - name: Simulace zařízení
     items:
     - name: Vytvoření a spuštění simulace
@@ -75,6 +77,10 @@ items:
         href: iot-accelerators-connecting-pi-node.md
       - name: Sada MXChip IoT DevKit
         href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
+    - name: Přidání zařízení IoT Edge
+      href: iot-accelerators-remote-monitoring-add-edge-device.md
+    - name: Import balíčku IoT Edge
+      href: iot-accelerators-remote-monitoring-import-edge-package.md
     - name: Integrace dat SIM
       href: iot-accelerators-remote-monitoring-telefonica-sim.md
     - name: Vytvoření simulovaného zařízení
@@ -99,11 +105,14 @@ items:
     - name: Nasazení pomocí rozhraní příkazového řádku
       href: iot-accelerators-remote-monitoring-deploy-cli.md
     - name: Místní nasazení
+      href: iot-accelerators-remote-monitoring-deploy-local.md
       items:
       - name: Visual Studio
         href: iot-accelerators-remote-monitoring-deploy-local.md
       - name: Docker
         href: iot-accelerators-remote-monitoring-deploy-local-docker.md
+    - name: E-mailové akce
+      href: iot-accelerators-remote-monitoring-email-actions.md
     - name: Vizualizace telemetrických dat s využitím PowerBI
       href: iot-accelerators-integrate-data-powerbi.md
     - name: Integrace služby Azure Time Series Insights se vzdáleným monitorováním
@@ -216,9 +225,9 @@ items:
     href: iot-accelerators-faq-cf.md
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
-ms.openlocfilehash: 1819c70b5834d8086a57928d39f2e5b547bfb901
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: bdd52d0023fbf43343cc5108216c6f11e35b89aa
+ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615105"
+ms.lasthandoff: 11/16/2018
+ms.locfileid: "51824842"
