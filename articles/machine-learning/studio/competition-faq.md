@@ -3,8 +3,8 @@ title: Nejčastější dotazy k Soutěžím služby Cortana Intelligence | Dokum
 description: Nejčastější dotazy ohledně Microsoft Cortana Intelligence soutěže.
 services: machine-learning
 documentationcenter: ''
-author: hning86
-ms.custom: (previous ms.author haining)
+author: ericlicoding
+ms.custom: (previous ms.author=haining, author=hning86)
 ms.author: amlstudiodocs
 manager: mwinkle
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: ae0817865fc531f6b7ecaeeb3bade27846663201
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 8782af26056f8341ee68ed87f003bc585e0c4e69
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820405"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265099"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Nejčastější dotazy k soutěžím Microsoft Cortana Intelligence Competitions
 **Co je Cortana Intelligence soutěže?**

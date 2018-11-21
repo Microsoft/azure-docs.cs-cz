@@ -5,37 +5,58 @@ items:
   items:
   - name: Co jsou zásady správného řízení identit?
     href: identity-governance-overview.md
-  expanded: true
+  - name: Co jsou kontroly přístupu?
+    href: access-reviews-overview.md
+  expanded: false
+- name: Koncepty
+  items:
+  - name: Správa přístupu hostů pomocí kontrol
+    href: manage-guest-access-with-access-reviews.md
+  - name: Správa přístupu uživatelů s využitím kontrol
+    href: manage-user-access-with-access-reviews.md
+  - name: Správa programů a jejich řízení
+    href: manage-programs-controls.md
+  - name: Správa uživatelů vyloučených z podmíněného přístupu
+    href: conditional-access-exclusion.md
+  expanded: false
 - name: Návody
   items:
   - name: Kontroly přístupu
     items:
-    - name: Co je kontrola přístupu?
-      href: access-reviews-overview.md
-    - name: Vytvoření kontroly přístupu
-      href: create-access-review.md
-    - name: Dokončení kontroly přístupu
-      href: complete-access-review.md
-    - name: Provádění kontroly přístupu
-      href: perform-access-review.md
-    - name: Kontrola vašeho přístupu
-      href: review-your-access.md
-    - name: Přístup hosta s využitím kontrol přístupu
-      href: manage-guest-access-with-access-reviews.md
-    - name: Správa přístupu uživatelů s využitím kontrol
-      href: manage-user-access-with-access-reviews.md
-    - name: Správa programů a jejich řízení
-      href: manage-programs-controls.md
-    - name: Načtení výsledků kontroly přístupu
-      href: retrieve-access-review.md
-    - name: Správa vyloučených uživatelů
-      href: conditional-access-exclusion.md
+    - name: Skupiny a aplikace
+      items:
+      - name: Vytvoření kontroly přístupu
+        href: create-access-review.md
+      - name: Zahájení kontroly přístupu
+        href: perform-access-review.md
+      - name: Kontrola vašeho vlastního přístupu
+        href: review-your-access.md
+      - name: Dokončení kontroly přístupu
+        href: complete-access-review.md
+      - name: Načtení výsledků kontroly přístupu
+        href: retrieve-access-review.md
+    - name: Role adresáře
+      items:
+      - name: Kontrola mých rolí adresáře
+        href: ../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Zahájení kontroly přístupu
+        href: ../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Dokončení kontroly přístupu
+        href: ../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+    - name: Role prostředků
+      items:
+      - name: Kontrola mých rolí prostředku
+        href: ../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Zahájení kontroly přístupu
+        href: ../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
+      - name: Dokončení kontroly přístupu
+        href: ../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json
   - name: Podmínky použití
     href: active-directory-tou.md
   expanded: true
-ms.openlocfilehash: b6280e42839344169ab651cd5d882bb6abfbf388
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b1c70e219aab05e8f8bd905cdc341ccd0d7b563a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163133"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261142"

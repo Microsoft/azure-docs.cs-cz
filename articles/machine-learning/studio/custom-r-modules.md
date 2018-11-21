@@ -3,8 +3,8 @@ title: Vytváření modulů vlastní R ve službě Azure Machine Learning | Doku
 description: Rychlý start pro vytváření vlastních modulů R ve službě Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.openlocfilehash: b920f0ae3acd253c0f1f698ae4415e5b759ef762
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 812914b3b7746f75aa88cbefda3f7d4b1a591125
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819334"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263260"
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Vytváření vlastních modulů R ve službě Azure Machine Learning
 Toto téma popisuje, jak vytvořit a nasadit vlastní modul R ve službě Azure Machine Learning. Vysvětluje, co jsou vlastních modulů R a jaké soubory se používají k jejich definování. Ukazuje, jak vytvořit soubory, které definují modulu a zaregistrovat modul pro nasazení v pracovním prostoru Machine Learning. Elementy a atributy použité v definici vlastního modulu jsou pak popsány podrobněji. Použití pomocné funkce a soubory a několik výstupů se probírá také. 
@@ -292,13 +292,13 @@ Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** �
     * Logická hodnota
     * Kategorické
     * Řetězec
-    * Popisek
+    * Štítek
     * Funkce
     * Skóre
-    * Všechny
+    * Vše
   * **výchozí** -platný výchozí výběry pro výběr sloupce zahrnují: 
     
-    * Žádná
+    * Žádný
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -318,7 +318,7 @@ Parametr modulu je definován pomocí **Arg** podřízený prvek **argumenty** �
     * AllLabel
     * AllFeature
     * AllScore
-    * Všechny
+    * Vše
 
 **Rozevírací seznam**: uživatelem zadaný výčet (rozevírací seznam). Položky rozevíracího seznamu jsou uvedeny v rámci **vlastnosti** prvku pomocí **položky** elementu. **Id** pro každou **položky** musí být jedinečný a platná proměnná R. Hodnota **název** ze **položky** slouží jako text, který se zobrazí a hodnotu, která je předána funkci R.
 

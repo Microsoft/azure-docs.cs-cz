@@ -5,7 +5,6 @@
 ### [Jak se stát vydavatelem v Marketplace](./become-publisher.md)  
 #### [Vytvoření účtu Microsoft](./guidelines.md)
 #### [Registrace na webu Dev Center](./register-dev-center.md) 
-#### [Možnosti fakturace pro Azure Marketplace](./billing-options-azure-marketplace.md)  
 #### [Přisuzování využití ze strany zákazníků partnerům Azure](./azure-partner-customer-usage-attribution.md)
 #### [Správa potenciálních zákazníků pro cloudový marketplace](./lead-management-for-cloud-marketplace.md)
 
@@ -13,7 +12,7 @@
 
 ### [Určení možnosti publikování pro vaše řešení](./determine-your-listing-type.md)  
 
-### Průvodce publikováním podle typu nabídky 
+### [Průvodce publikováním podle typu nabídky](./publisher-guide-by-offer-type.md)
 #### [Virtual Machines](./marketplace-virtual-machines.md)
 #### [Aplikace Azure: šablony řešení](./marketplace-solution-templates.md)
 #### [Aplikace Azure: spravované aplikace](./marketplace-managed-apps.md)
@@ -27,6 +26,8 @@
 ### [Rozvoj vašeho podnikání prostřednictvím marketplace](./grow-your-business-with-azure-marketplace.md)  
 #### [Upřednostňovaná řešení](./preferred-solutions.md) 
 #### [Ověření obsahu na Marketplace](./marketplace-criteria-content-validation.md)
+#### [Soukromé nabídky](./private-offers.md)
+#### [Aspekty a možnosti komerčních transakcí na Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 
 ### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)  
 
@@ -34,6 +35,16 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [Portál Cloud Partner](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
+
+## [Prohlídka portálu](./cloud-partner-portal/portal-tour/cpp-portal-tour.md)
+### [Navigace na portálu](./cloud-partner-portal/portal-tour/cpp-portal-navigation.md)
+### [Nabídka Nová nabídka](./cloud-partner-portal/portal-tour/cpp-new-offer-menu.md)
+### [Stránka Všechny nabídky](./cloud-partner-portal/portal-tour/cpp-all-offers-page.md)
+### [Stránka Schvalování](./cloud-partner-portal/portal-tour/cpp-approvals-page.md)
+### [Stránka Všichni vydavatelé](./cloud-partner-portal/portal-tour/cpp-all-publishers-page.md)
+### [Stránka Uživatelé](./cloud-partner-portal/portal-tour/cpp-users-page.md)
+### [Stránka Historie auditu](./cloud-partner-portal/portal-tour/cpp-history-page.md)
+### [Stránka Přehledy](./cloud-partner-portal/portal-tour/cpp-insights-page.md)
 
 ## Správa portálu
 ### [Registrace účtu centra pro vývojáře](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)

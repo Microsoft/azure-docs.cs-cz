@@ -100,12 +100,10 @@ items:
       href: ecommerce-retail-catalog-moderation.md
     - name: Moderování přepisu a videa
       href: video-transcript-moderation-review-tutorial-dotnet.md
-- name: Ukázky
-  items:
-  - name: Ukázky .NET SDK
-    href: samples-dotnet.md
-  - name: Ukázky REST API v C#
-    href: samples-rest.md
+  - name: Export nebo odstranění dat účtu
+    href: ./export-delete-data.md
+  - name: Seriál webinářů k Azure
+    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
 - name: Referenční informace
   items:
   - name: Rozhraní API Content Moderatoru
@@ -122,29 +120,33 @@ items:
       href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator
 - name: Zdroje a prostředky
   items:
+  - name: Ukázky
+    items:
+    - name: Ukázky .NET SDK
+      href: samples-dotnet.md
+    - name: Ukázky REST API v C#
+      href: samples-rest.md
+    - name: Další ukázky Azure
+      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator
   - name: Nejčastější dotazy
     href: FAQs.md
-  - name: Podpora jazyků a oblastí
-    href: language-support.md
-  - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Ceny a omezení
     href: https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator
-  - name: Export nebo odstranění dat účtu
-    href: ./export-delete-data.md
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/559960-content-moderator
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Znalostní báze
     href: https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator
+  - name: Podpora jazyků
+    href: language-support.md
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
-  - name: Webinář na vyžádání
-    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: 69f3e50614340b610438cdae1cac20e263d0f618
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
+ms.openlocfilehash: f7072fef1d0dea42d20f5cdd5a98dd5c7c20713f
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852210"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276410"
