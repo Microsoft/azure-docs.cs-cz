@@ -1,49 +1,61 @@
-
+---
+author: MightyPen
+ms.service: sql-database
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: genemi
+ms.openlocfilehash: c4329b9efef3cdb2911466e64ac6c9f07a1e9b31
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52269651"
+---
 <a name="cs_0_csharpprogramexample_h2"/>
 
-## <a name="c-program-example"></a>Příklad programu C#
+## <a name="c-program-example"></a>C#Příklad programu
 
-K dispozici v dalších částech tohoto článku programu C#, který používá technologii ADO.NET odeslat příkazy jazyka Transact-SQL k databázi SQL. Programu C# provede následující akce:
+Další části tohoto článku, který je k dispozici C# program, který se používá k odesílání příkazů jazyka Transact-SQL do služby SQL database ADO.NET. C# Program provede následující akce:
 
-1. [Připojí k naší SQL database pomocí ADO.NET](#cs_1_connect).
+1. [Se připojí k databázi SQL pomocí ADO.NET](#cs_1_connect).
 2. [Vytvoří tabulky](#cs_2_createtables).
-3. [Naplní tabulky s daty, vydáním příkazů T-SQL vložit](#cs_3_insert).
-4. [Aktualizace dat pomocí spojení](#cs_4_updatejoin).
+3. [Naplní tabulky s daty, pomocí příkazů T-SQL vložit](#cs_3_insert).
+4. [Aktualizuje data pomocí spojení](#cs_4_updatejoin).
 5. [Odstraní data pomocí spojení](#cs_5_deletejoin).
 6. [Vybere řádky dat pomocí spojení](#cs_6_selectrows).
-7. Zavře připojení (který zahodí všechny dočasné tabulky z databáze tempdb).
+7. Ukončí připojení (který zahodí všechny dočasné tabulky z databáze tempdb).
 
-Obsahuje programu C#:
+C# Program obsahuje:
 
-- Kód jazyka C# pro připojení k databázi.
+- C#kód k připojení k databázi.
 - Metody, které vracejí zdrojový kód T-SQL.
-- Dvě metody, které odesílají T-SQL do databáze.
+- Dvě metody, které odesílají T-SQL pro databázi.
 
-#### <a name="to-compile-and-run"></a>Pro zkompilování a spuštění
+#### <a name="to-compile-and-run"></a>Kompilace a spuštění
 
-Tento program C# je logicky jeden soubor cs. Ale tady je program fyzicky rozdělené do několika bloky kódu, aby každý blok čtení a pochopení. Pro zkompilování a spuštění tohoto programu, postupujte takto:
+To C# programu je logicky .cs souborů. Ale tady je program fyzicky rozdělen na několik bloků kódu, abyste mohli snadněji vidět a pochopit každého bloku. Kompilace a spuštění tohoto programu, postupujte takto:
 
-1. Vytvoření projektu C# v sadě Visual Studio.
-    - Typ projektu by měla být *konzoly* aplikace z něco podobného jako u následující hierarchie: **šablony** > **Visual C#** >  **Klasický desktopový Windows** > **konzoly aplikace (rozhraní .NET Framework)**.
-3. V souboru **Program.cs**, vymazat malé starter řádků kódu.
-3. Do souboru Program.cs zkopírujte a vložte každý z následujících bloků ve stejném pořadí, které jsou zde uvedeny.
-4. V souboru Program.cs upravit následující hodnoty v **hlavní** metoda:
+1. Vytvoření C# projektu v sadě Visual Studio.
+    - Typ projektu by měl být *konzoly* aplikace z něco jako u následující hierarchie: **šablony** > **Visual C#**  > **Klasická plocha Windows** > **aplikace konzoly (.NET Framework)**.
+3. V souboru **Program.cs**, vymazat malé starter řádky kódu.
+3. Do souboru Program.cs zkopírujte a vložte každé z následujících bloků ve stejném pořadí, které jsou uvedeny zde.
+4. V souboru Program.cs, upravte následující hodnoty **hlavní** metody:
 
    - **označení CB. Zdroj dat**
    - **CD. ID uživatele**
    - **označení CB. Heslo**
-   - **Vlastnost InitialCatalog**
+   - **Počáteční katalog**
 
-5. Ověřte, zda je sestavení **System.Data.dll** odkazuje. Chcete-li ověřit, rozbalte **odkazy** uzel v **Průzkumníku řešení** podokně.
-6. Chcete-li vytvořit program v sadě Visual Studio, klikněte na tlačítko **sestavení** nabídky.
-7. Ke spuštění programu ze sady Visual Studio, klikněte **spustit** tlačítko. Výstup sestavy se zobrazí v okně cmd.exe.
+5. Ověřte, že sestavení **System.Data.dll** odkazuje. Chcete-li ověřit, rozbalte **odkazy** uzlu v **Průzkumníka řešení** podokně.
+6. K vytvoření programu v sadě Visual Studio, klikněte na tlačítko **sestavení** nabídky.
+7. Chcete-li spustit program z aplikace Visual Studio, klikněte na tlačítko **Start** tlačítko. Výstup sestavy se zobrazí v okně cmd.exe.
 
 > [!NOTE]
-> Máte možnost úprav T-SQL přidat jako úvodní  **#**  názvy tabulek, které vytvoří je jako dočasné tabulky v **databáze tempdb**. To může být užitečné pro demonstrační účely, pokud je k dispozici žádná testovací databáze. Dočasné tabulky se automaticky odstraní po ukončení připojení. Pro dočasné tabulky nejsou vynucená všechny odkazy pro cizí klíče.
+> Máte možnost úprav jazyka T-SQL pro přidání úvodní **#** názvy tabulek, která je vytvořila jako dočasné tabulky v **tempdb**. To může být užitečné pro demonstrační účely, pokud je k dispozici žádné testovací databáze. Dočasné tabulky se automaticky odstraní po ukončení připojení. Pro dočasné tabulky nevynucují žádné odkazy na cizí klíče.
 >
 
 <a name="cs_1_connect"/>
-### <a name="c-block-1-connect-by-using-adonet"></a>C# block 1: připojení pomocí technologie ADO.NET
+### <a name="c-block-1-connect-by-using-adonet"></a>C#blok 1: připojení pomocí technologie ADO.NET
 
 - [Další](#cs_2_createtables)
 
@@ -99,7 +111,7 @@ namespace csharp_db_test
 
 
 <a name="cs_2_createtables"/>
-### <a name="c-block-2-t-sql-to-create-tables"></a>C# block 2: T-SQL pro vytvoření tabulky
+### <a name="c-block-2-t-sql-to-create-tables"></a>C#blokovat 2: T-SQL k vytvoření tabulky
 
 - [Předchozí](#cs_1_connect) &nbsp;  /  &nbsp; [další](#cs_3_insert)
 
@@ -131,9 +143,9 @@ CREATE TABLE tabEmployee
       }
 ```
 
-#### <a name="entity-relationship-diagram-erd"></a>Diagram vztah entity (opravné)
+#### <a name="entity-relationship-diagram-erd"></a>Diagram vztahů entit (opravné)
 
-Předchozí příkazy CREATE TABLE zahrnují **odkazy** – klíčové slovo k vytvoření *cizí klíč* (Cizíklíč) relaci mezi dvěma tabulkami.  Pokud používáte databázi tempdb, komentář `--REFERENCES` – klíčové slovo pomocí pár úvodní pomlčky.
+Předchozí příkazy CREATE TABLE zahrnují **odkazy** – klíčové slovo k vytvoření *cizí klíč* (Cizíklíč) vztah mezi dvěma tabulkami.  Pokud používáte databázi tempdb, okomentujte `--REFERENCES` – klíčové slovo pomocí dvojice přední pomlčky.
 
 Dále je opravné, zobrazující vztah mezi dvěma tabulkami. Hodnoty #tabEmployee.DepartmentCode *podřízené* sloupce jsou omezeny na hodnoty, které jsou součástí #tabDepartment.Department *nadřazené* sloupce.
 
@@ -141,7 +153,7 @@ Dále je opravné, zobrazující vztah mezi dvěma tabulkami. Hodnoty #tabEmploy
 
 
 <a name="cs_3_insert"/>
-### <a name="c-block-3-t-sql-to-insert-data"></a>C# block 3: T-SQL k vkládání dat
+### <a name="c-block-3-t-sql-to-insert-data"></a>C#blokovat 3: T-SQL k vložení dat
 
 - [Předchozí](#cs_2_createtables) &nbsp;  /  &nbsp; [další](#cs_4_updatejoin)
 
@@ -173,7 +185,7 @@ INSERT INTO tabEmployee
 
 
 <a name="cs_4_updatejoin"/>
-### <a name="c-block-4-t-sql-to-update-join"></a>C# block 4: T-SQL aktualizace spojení
+### <a name="c-block-4-t-sql-to-update-join"></a>C#blokovat 4: T-SQL pro aktualizace připojení
 
 - [Předchozí](#cs_3_insert) &nbsp;  /  &nbsp; [další](#cs_5_deletejoin)
 
@@ -201,7 +213,7 @@ UPDATE empl
 
 
 <a name="cs_5_deletejoin"/>
-### <a name="c-block-5-t-sql-to-delete-join"></a>C# block 5: T-SQL pro připojení k odstranění
+### <a name="c-block-5-t-sql-to-delete-join"></a>C#blokovat 5: T-SQL pro připojení k odstranění
 
 - [Předchozí](#cs_4_updatejoin) &nbsp;  /  &nbsp; [další](#cs_6_selectrows)
 
@@ -233,7 +245,7 @@ DELETE tabDepartment
 
 
 <a name="cs_6_selectrows"/>
-### <a name="c-block-6-t-sql-to-select-rows"></a>C# block 6: T-SQL pro výběr řádků
+### <a name="c-block-6-t-sql-to-select-rows"></a>C#blokovat 6: T-SQL pro výběr řádků
 
 - [Předchozí](#cs_5_deletejoin) &nbsp;  /  &nbsp; [další](#cs_6b_datareader)
 
@@ -261,11 +273,11 @@ SELECT
 
 
 <a name="cs_6b_datareader"/>
-### <a name="c-block-6b-executereader"></a>C# block 6b: ExecuteReader
+### <a name="c-block-6b-executereader"></a>C#blokovat 6b: ExecuteReader
 
 - [Předchozí](#cs_6_selectrows) &nbsp;  /  &nbsp; [další](#cs_7_executenonquery)
 
-Tato metoda je určená ke spuštění příkazu SELECT T-SQL, který je sestavena **Build_6_Tsql_SelectEmployees** metoda.
+Tato metoda je určena pro spuštění příkazu T-SQL SELECT, který je sestavený **Build_6_Tsql_SelectEmployees** metody.
 
 
 ```csharp
@@ -297,11 +309,11 @@ Tato metoda je určená ke spuštění příkazu SELECT T-SQL, který je sestave
 
 
 <a name="cs_7_executenonquery"/>
-### <a name="c-block-7-executenonquery"></a>C# block 7: ExecuteNonQuery
+### <a name="c-block-7-executenonquery"></a>C#blokovat 7: metodu ExecuteNonQuery
 
 - [Předchozí](#cs_6b_datareader) &nbsp;  /  &nbsp; [další](#cs_8_output)
 
-Tato metoda je volána pro operace, které upravují data obsah tabulky bez vrátí všechny řádky data.
+Tato metoda je volána pro operace, které upravují data obsahu tabulek bez vrácení všech řádků data.
 
 
 ```csharp
@@ -335,11 +347,11 @@ Tato metoda je volána pro operace, které upravují data obsah tabulky bez vrá
 
 
 <a name="cs_8_output"/>
-### <a name="c-block-8-actual-test-output-to-the-console"></a>C# bloku 8: skutečný testovací výstup do konzoly
+### <a name="c-block-8-actual-test-output-to-the-console"></a>C#blokovat 8: skutečný test výstup do konzoly
 
 - [Předchozí](#cs_7_executenonquery)
 
-Tato část zaznamená výstup, který program odeslán do konzoly. Pouze hodnoty guid liší mezi test spustí.
+Tato část jsou zaznamenané výstup, který program odeslán do konzoly. Mezi testovacími běhy se liší pouze hodnot guid.
 
 
 ```text

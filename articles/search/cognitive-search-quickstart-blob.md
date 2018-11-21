@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 23a62197d20901347be247d331e21d076bcf9e83
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: bc88ca63f14c5480210455abcf403771b6a4c232
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288029"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264120"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního hledání pomocí dovedností a ukázkových dat
 
@@ -30,12 +30,19 @@ V tomto rychlém startu si můžete vyzkoušet kanál pro rozšiřování na por
 
 Kognitivní hledání si můžete vyzkoušet ve službě Azure Search vytvořené v následujících oblastech:
 
-* Západní střed USA
-* Střed USA – jih
+* Západní USA – střed
+* USA (střed) – jih
 * USA – východ
+* USA – východ 2
+* Západní USA 2
+* Střední Kanada
 * Západní Evropa
+* Spojené království – jih
 * Severní Evropa
+* Brazílie – jih
 * Jihovýchodní Asie
+* Indie – střed
+* Austrálie – východ
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

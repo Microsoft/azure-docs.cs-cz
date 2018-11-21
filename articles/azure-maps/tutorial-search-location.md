@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e879e096fb990e4567b43b1938909449820edd42
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: c6513c3a92fdf509d9e81d76d1b3547048b2fd8d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412716"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262053"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Hledání okolních bodů zájmu s využitím Azure Maps
 
@@ -28,7 +28,7 @@ V tomto kurzu se dozvíte, jak nastavit účet s Azure Maps a pak pomocí rozhra
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -178,7 +178,7 @@ Tato část ukazuje, jak pomocí rozhraní API vyhledávací služby Maps vyhled
      client = new atlas.service.Client(atlas.getSubscriptionKey());
     ```
 
-2. Dále přidejte následující blok skriptu pro sestavení vyhledávacího dotazu. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, jako jsou adresy, místa a body zájmu. Tento kód vyhledá nejbližší čerpací stanice v zadaném okruhu. Odpověď se pak parsuje do formátu GeoJSON a přidá se ke zdroji dat, což má automaticky za následek vykreslení dat na mapě ve vrstvě symbolů. Poslední část skriptu pomocí vlastnosti mapy [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) nastaví zobrazení kamery mapy s použitím ohraničujícího rámečku výsledků. Protože se ohraničující rámeček počítá na základě souřadnic, přidá se odsazení, které kompenzuje rozměry ikon symbolů v pixelech. 
+2. Dále přidejte následující blok skriptu pro sestavení vyhledávacího dotazu. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, jako jsou adresy, místa a body zájmu. Tento kód vyhledá nejbližší čerpací stanice v zadaném okruhu. Odpověď se pak parsuje do formátu GeoJSON a přidá se ke zdroji dat, což má automaticky za následek vykreslení dat na mapě ve vrstvě symbolů. Poslední část skriptu pomocí vlastnosti mapy [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) nastaví zobrazení kamery mapy s použitím ohraničujícího rámečku výsledků. Protože se ohraničující rámeček počítá na základě souřadnic, přidá se odsazení, které kompenzuje rozměry ikon symbolů v pixelech. 
  
    ```JavaScript
    //Execute a POI search query then add the results to the map.
@@ -258,7 +258,7 @@ Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze dat
 
     ![Ovládací prvek Mapa a Search Service v Azure](./media/tutorial-search-location/popup-map.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

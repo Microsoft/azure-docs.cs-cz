@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 1b1faa8b90476350975b80c4701618ccf4cde680
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 24a957260e3e3f161ce9e2e61b746f9b052e784d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165352"
+ms.locfileid: "52264365"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Vytvoření kanálu CI/CD pro jazyk PHP s projekty Azure DevOps
 
@@ -30,13 +30,13 @@ Projekty Azure DevOps představuje zjednodušené prostředí, která vytváří
 
 Pokud nemáte předplatné Azure, můžete jej získat zdarma prostřednictvím [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
-## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal
 
  Projekty DevOps vytvoří kanál CI/CD v kanálech Azure. Můžete vytvořit bezplatné novou organizaci Azure DevOps nebo použít existující organizace. Prostředky Azure DevOps Projects také vytvoří v rámci předplatného Azure podle vašeho výběru.
 
 1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
 
-1. V levém podokně, vyberte **vytvořit prostředek** ikony a pak vyhledejte **DevOps Projects**.  
+1. V levém podokně, vyberte **vytvořit prostředek** ikonu a pak vyhledejte **DevOps Projects**.  
 
 3. Vyberte **Vytvořit**.
 

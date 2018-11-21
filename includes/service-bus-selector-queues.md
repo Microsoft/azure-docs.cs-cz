@@ -1,3 +1,16 @@
+---
+author: spelluru
+ms.service: service-bus
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: spelluru
+ms.openlocfilehash: 6d1f3d6badde82a78fb143452a45ece4ff1ebb11
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52269654"
+---
 > [!div class="op_single_selector"]
 > * [NET](../articles/service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
 > * [Java](../articles/service-bus-messaging/service-bus-java-how-to-use-queues.md)

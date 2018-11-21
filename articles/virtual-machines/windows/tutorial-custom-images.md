@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4d8e8dabf9d6977393158ad716c8e8f3dc8d1512
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 415652739c4987deafe820c31499132ec3829c8b
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710486"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263311"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure PowerShellu
 
@@ -101,7 +101,7 @@ New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceG
  
 ## <a name="create-vms-from-the-image"></a>Vytvoření virtuálních počítačů z image
 
-Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Vytvoření virtuálního počítače z vlastní image je podobné vytvoření virtuálního počítače pomocí image pořízené na Marketplace. Při použití image pořízené na Marketplace je nutné zadat informace o image, poskytovateli image, nabídce, SKU a verzi. Při použití zjednodušené sady parametrů pro rutinu [New-AzureRMVM]() vám stačí zadat název vlastní image, dokud je ve stejné skupině prostředků. 
+Když teď máte image, můžete z ní vytvořit jeden nebo více nových virtuálních počítačů. Vytvoření virtuálního počítače z vlastní image je podobné vytvoření virtuálního počítače pomocí image pořízené na Marketplace. Při použití image pořízené na Marketplace je nutné zadat informace o image, poskytovateli image, nabídce, SKU a verzi. Při použití zjednodušené sady parametrů pro rutinu [New-AzureRMVM](/powershell/module/azurerm.compute/new-azurermvm) vám stačí zadat název vlastní image, dokud je ve stejné skupině prostředků. 
 
 Tento příklad vytvoří virtuální počítač s názvem *myVMfromImage* z image *myImage* ve skupině prostředků *myResourceGroup*.
 

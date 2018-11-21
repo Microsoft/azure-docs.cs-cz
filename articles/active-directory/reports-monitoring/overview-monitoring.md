@@ -16,14 +16,14 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0afa4f85f443789d1ce7e79d0708967e308a4683
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 92e200f358098d5516246d057d1cef406750e326
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623192"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264678"
 ---
-# <a name="what-is-azure-active-directory-monitoring-preview"></a>Co je monitorování Azure Active Directory? (Preview)
+# <a name="what-is-azure-active-directory-monitoring-preview"></a>Co je monitorování Azure Active Directory? (preview)
 
 S využitím monitorování Azure Active Directory (Azure AD) teď můžete směrovat protokoly aktivit služby Azure AD do různých koncových bodů. Následně je můžete ukládat pro účely dlouhodobého používání nebo integrovat s nástroji pro správu akcí a informací o zabezpečení (SIEM) třetích stran a získat tak přehled o vašem prostředí.
 
@@ -32,6 +32,8 @@ V současné době můžete směrovat protokoly do následujících umístění:
 - Účet úložiště Azure.
 - Centrum událostí Azure, takže můžete provést integraci s instancemi Splunk a SumoLogic.
 - Pracovní prostor Azure Log Analytics, kde můžete analyzovat data a vytvářet řídicí panely a upozornění na určité události.
+
+> [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="diagnostic-settings-configuration"></a>Konfigurace nastavení diagnostiky
 
@@ -43,7 +45,7 @@ Pokud chcete spravovat nastavení monitorování pro protokoly aktivit služby A
     
 * Vyberte **Protokoly auditu** nebo **Protokoly přihlášení** a pak vyberte **Exportovat nastavení**. 
 
-    ![Export nastavení](./media/overview-monitoring/export-settings.png)
+    ![Exportovat nastavení](./media/overview-monitoring/export-settings.png)
 
 
 ## <a name="route-logs-to-storage-account"></a>Směrování protokolů do účtu úložiště

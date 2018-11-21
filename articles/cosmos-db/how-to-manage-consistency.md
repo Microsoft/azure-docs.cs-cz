@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: be2c68922221af848c9e484d03527d02808c071a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 68c8c3767ff3a3d2873c1ff50928ab8d2cada4b1
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283803"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263740"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Správa úrovní konzistence ve službě Azure Cosmos DB
 
@@ -22,7 +22,7 @@ Tento článek vysvětluje různé způsoby, jak nastavit výchozí konzistenci,
 
 Výchozí úroveň konzistence je úroveň konzistence, kterou budou klienti používat ve výchozím nastavení. Klienti ji můžou přepsat.
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 
 ```bash
 # create with a default consistency
@@ -32,9 +32,9 @@ az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource
 az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level BoundedStaleness
 ```
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell"></a>Prostředí Power Shell
 
-Následující příklad vytvoří nový účet služby Cosmos DB s povolenou architekturou multi-master v oblastech USA – východ a USA – západ a nastavenou výchozí zásadou konzistence Omezená neaktuálnost s maximálním intervalem neaktuálnosti 10 sekund a maximálním počtem 200 tolerovaných zastaralých požadavků.
+Tento příklad vytvoří nový účet služby Cosmos DB s několika hlavními uzly povolena v oblastech USA – východ a USA – západ nastavení výchozí zásady konzistence relace.
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -42,9 +42,7 @@ $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
 
 $iprangefilter = ""
 
-$consistencyPolicy = @{"defaultConsistencyLevel"="BoundedStaleness";
-                       "maxIntervalInSeconds"= "10";
-                       "maxStalenessPrefix"="200"}
+$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
 
 $CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
                         "locations"=$locations;
@@ -216,7 +214,7 @@ Pokud chcete zobrazit metriku PBS, na webu Azure Portal přejděte ke svému ú�
 
 Pokud chcete tuto metriku zobrazit, použijte nabídku metrik služby Cosmos DB. V prostředí metrik monitorování Azure se nezobrazí.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prostřednictvím následujících dokumentů se můžete dozvědět víc o správě konfliktů dat nebo se přesunout k dalšímu klíčovému konceptu ve službě Cosmos DB:
 
