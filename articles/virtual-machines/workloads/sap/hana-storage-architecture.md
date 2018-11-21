@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 614d6aef4a2b7be551574fd3c8e25e2a3e3c1c07
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: e692cc1fd8670cc14b42e4714d84356d4d4c53a2
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028042"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275985"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura úložiště SAP HANA (velké instance)
 
-Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurována ve SAP HANA v modelu nasazení classic prostřednictvím SAP Doporučené pokyny. Pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper.
+Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurována ve SAP HANA na model nasazení classic na SAP Doporučené pokyny. Pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper.
 
 Velká Instance HANA typu můžu třídy součástí čtyřikrát paměti svazek jako svazek úložiště. Pro třídu typu II velká Instance HANA jednotek není čtyřnásobnou úložiště. Jednotky se dodávají s svazku, který je určený pro ukládání záloh protokolů transakcí HANA. Další informace najdete v tématu [nainstalujte a nakonfigurujte SAP HANA (velké instance) v Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -33,6 +33,7 @@ V následující tabulce, jde o přidělení úložiště. Tabulka uvádí přib
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
+| S96 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S192 | 4 608 GB | 1 024 GB | 1 536 GB | 1 024 GB |
 | S192m | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S192xm |  11,520 GB |  1 536 GB |  1,792 GB |  1 536 GB |
@@ -72,18 +73,18 @@ Přečtěte si [HLI Podporované scénáře](hana-supported-scenario.md) podrobn
 
 Je možné k hostování více než jeden aktivní instanci SAP HANA na jednotkách velká Instance HANA. Poskytují možnosti snímků úložiště a zotavení po havárii, taková konfigurace vyžaduje svazku nastavit na jednu instanci. V současné době velká Instance HANA jednotky lze dále rozdělit následujícím způsobem:
 
-- **S72 S72m, S144, S192**: Dokupuje se násobek 256 GB, 256 GB od nejmenších po počáteční jednotky. Různé přírůstky například 256 GB až 512 GB, mohou být kombinovány pro maximální paměť jednotku.
+- **S72 S72m, S96, S144, S192**: Dokupuje se násobek 256 GB, 256 GB od nejmenších po počáteční jednotky. Různé přírůstky například 256 GB až 512 GB, mohou být kombinovány pro maximální paměť jednotku.
 - **S144m a S192m**: Dokupuje se násobek 256 GB, 512 GB nejmenší jednotka. Různé přírůstky například 512 GB a o velikosti 768 GB mohou být kombinovány pro maximální paměť jednotku.
 - **Zadejte třídu II**: V přírůstcích po 512 GB, od nejmenších po počáteční jednotku 2 TB. Různé přírůstky například 512 GB, 1 TB a 1,5 TB mohou být kombinovány pro maximální paměť jednotku.
 
-Některé příklady spouštění více instancí SAP HANA může vypadat nějak takto.
+Několik příkladů spouštění více instancí SAP HANA může vypadat nějak takto.
 
 | Skladová jednotka (SKU) | Velikost paměti | Velikost úložiště | Velikosti více databází |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1 x 768 GB instance HANA<br /> nebo instance 1 x 512 GB + 1 x 256 GB instance<br /> nebo 3 x 256 GB instance | 
 | S72m | 1,5 TB | 6 TB | instance HANA 3x512GB<br />nebo instance 1 x 512 GB + 1 x 1 TB instance<br />nebo instance 6 x 256 GB<br />nebo instance 1x1.5 TB | 
 | S192m | 4 TB | 16 TB | instance 8 x 512 GB<br />nebo instancích o velikosti 4 x 1 TB<br />nebo instance 4 x 512 GB + instancích o velikosti 2 x 1 TB<br />nebo instance 4 x 768 GB + 2 x 512 GB instance<br />nebo instance 1 × 4 TB |
-| S384xm | 8 TB | 22 TB | instancích o velikosti 4 x 2 TB<br />nebo instancích o velikosti 2 x 4 TB<br />nebo instancích o velikosti 2 x 3 TB + instancích o velikosti 1 × 2 TB<br />nebo 2x2.5 TB instancích a instancích o velikosti 1 × 3 TB<br />nebo instance 1 × 8 TB |
+| S384xm | 8 TB | 22 TB | instancích o velikosti 4 x 2 TB<br />nebo instancích o velikosti 2 x 4 TB<br />nebo instancích o velikosti 2 x 3 TB + 1 × 2 TB instancí<br />nebo instance 2x2.5 TB + 1 × 3 TB instancí<br />nebo instance 1 × 8 TB |
 
 
 Existují i další varianty konfigurací. 
@@ -91,7 +92,7 @@ Existují i další varianty konfigurací.
 ## <a name="encryption-of-data-at-rest"></a>Šifrování neaktivních uložených dat
 Úložiště pro velké Instance HANA umožňuje transparentní šifrování dat se ukládají na discích. Při nasazení jednotka velká Instance HANA, můžete povolit tento typ šifrování. Také můžete změnit na šifrovaných svazcích po nasazení se provádí. Přechod z nešifrované na šifrovaných svazcích je transparentní a nevyžaduje výpadek. 
 
-S typem můžu třídy SKU, se šifrují spouštěcí logická jednotka je uložený na svazku. Pro třídu typu II skladové položky z velké instance HANA je potřeba šifrovat spouštěcí logické jednotky s operačním systémem metody. Další informace obraťte se na tým Microsoft Service Management.
+S typem můžu třídy skladových jednotek, svazků spouštěcí logická jednotka je uložen na, je zašifrovaný. Pro třídu typu II skladové položky z velké instance HANA je potřeba šifrovat spouštěcí logické jednotky s operačním systémem metody. Další informace obraťte se na tým Microsoft Service Management.
 
 **Další kroky**
 - Přečtěte si [Podporované scénáře pro velké instance HANA](hana-supported-scenario.md)

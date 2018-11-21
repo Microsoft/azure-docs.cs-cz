@@ -5,7 +5,7 @@ keywords: fakturu, stažení faktury, azure faktury, využití azure
 services: billing
 documentationcenter: ''
 author: genlin
-manager: tonguyen
+manager: adpick
 editor: ''
 tags: billing
 ms.service: billing
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: f0cdfef50c07674a08766933f2f7edfc946462a4
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9067162c6f1bd95b0a1c25bef17836b19ecf6946
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395011"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276105"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Stažení nebo zobrazení Azure fakturační faktury a dat o denním využití
 Můžete si stáhnout fakturu z [webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nebo odeslat e-mailu. Chcete-li stáhnout denního využití, přejděte na [centra účtů Azure](https://account.azure.com/Subscriptions). Pouze určité role mají oprávnění k získání fakturu a informace o využití, jako je správce účtu. Další informace o získání přístupu k fakturačním údajům najdete v článku o [správě přístupu k fakturaci Azure pomocí rolí](billing-manage-access.md).
@@ -100,15 +100,15 @@ Další informace o denním využití najdete v tématu [Vysvětlení informací
 
 ## <a name="noinvoice"></a> Proč nevidím faktury pro poslední fakturačního období?
 
-Možná existuje několik důvodů, proč nevidíte faktury:
+Faktura se nemusí zobrazovat z několika důvodů:
 
-- Máte předplatné, které byste neměli překročit měsíční částku kreditu nebo máte bezplatnou zkušební verzi. Faktury se vygeneruje pouze tehdy, když dlužíte peníze.
+- U svého předplatného máte měsíční kredit, jehož výši jste nepřekročili, nebo máte bezplatnou zkušební verzi. Faktura se generuje pouze v případě, že dlužíte peníze.
 
-- Je menší než 30 dnů ode dne, k jehož odběru přihlášeni do Azure.
+- Od vytvoření vašeho předplatného Azure uplynulo méně než 30 dnů.
 
-- Zatím není vygenerovaný faktury. Počkejte, až do konce fakturačního období.
+- Faktur se zatím nevygenerovala. Počkejte na konec fakturačního období.
 
-- Pokud si nejste správce účtu, nemusí být k dispozici, starší faktury.
+- Pokud nejste správce účtu, možná nemáte přístup ke starším fakturám.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

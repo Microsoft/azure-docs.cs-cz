@@ -10,16 +10,16 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 06e7d227511a9b651a905df3172f59a191acce01
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 76b417d1592671006d3d5cfa2363e306e4db48fd
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945667"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263029"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
-[Sady SDK služby Azure Machine Learning Data Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) nabízí různé transformace metody můžete vyčistit svá data. Tyto metody usnadňují přidání sloupce, odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty.
+[Sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk) nabízí různé transformace metody můžete vyčistit svá data. Tyto metody usnadňují přidání sloupce, odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty.
 
 Aktuálně jsou dostupné metody pro následující úlohy:
 - [Přidání sloupce pomocí výrazu](#column)
@@ -41,7 +41,7 @@ dataflow = dprep.read_csv(path=r'data\crime0-10.csv')
 dataflow.head(3)
 ```
 
-||ID|Číslo případu|Datum|Blokovat|IUCR|Primární typ|Popis|Popis umístění|Zadržení|Domácí|...|Dál|Oblast komunity|Úřadu FBI kódu|Souřadnici x|Souřadnice Y|Rok|Aktualizace|Zeměpisná šířka|Zeměpisná délka|Umístění|
+||ID|Číslo případu|Datum|Zablokovat|IUCR|Primární typ|Popis|Popis umístění|Zadržení|Domácí|...|Dál|Oblast komunity|Úřadu FBI kódu|Souřadnici x|Souřadnice Y|Rok|Aktualizace|Zeměpisná šířka|Zeměpisná délka|Umístění|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 |0|10140490|HY329907|07/05/2015 23:50:00: 00|ULOŽIT NEWLAND 050XX N|0820|KRÁDEŽ|500 USD A V ČÁSTI|ULICE|false (nepravda)|false (nepravda)|...|41|10|06|1129230|1933315|2015|07/12/2015 |12:42:46 PM|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
 |1|10139776|HY329265|07/05/2015 11:30:00 PM|ULOŽIT MORSE 011XX W|0460|BATERIE|JEDNODUCHÉ|ULICE|false (nepravda)|true (pravda)|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017,-87.65955018)|
@@ -59,7 +59,7 @@ case_category = dataflow.add_column(new_column_name='Case Category',
 case_category.head(3)
 ```
 
-||ID|Číslo případu|Kategorie případu|Datum|Blokovat|IUCR|Primární typ|Popis|Popis umístění|Zadržení|...|Dál|Oblast komunity|Úřadu FBI kódu|Souřadnici x|Souřadnice Y|Rok|Aktualizace|Zeměpisná šířka|Zeměpisná délka|Umístění|
+||ID|Číslo případu|Kategorie případu|Datum|Zablokovat|IUCR|Primární typ|Popis|Popis umístění|Zadržení|...|Dál|Oblast komunity|Úřadu FBI kódu|Souřadnici x|Souřadnice Y|Rok|Aktualizace|Zeměpisná šířka|Zeměpisná délka|Umístění|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
 |0|10140490|HY329907|HY|07/05/2015 23:50:00: 00|ULOŽIT NEWLAND 050XX N|0820|KRÁDEŽ|500 USD A V ČÁSTI|ULICE|false (nepravda)|false (nepravda)|...|41|10|06|1129230|1933315|2015|07/12/2015 |12:42:46 PM|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
 |1|10139776|HY329265|HY|07/05/2015 11:30:00 PM|ULOŽIT MORSE 011XX W|0460|BATERIE|JEDNODUCHÉ|ULICE|false (nepravda)|true (pravda)|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017,-87.65955018)|
@@ -77,7 +77,7 @@ case_id = case_id.to_number('Case Id')
 case_id.head(3)
 ```
 
-||ID|Číslo případu|Id případu|Datum|Blokovat|IUCR|Primární typ|Popis|Popis umístění|Zadržení|...|Dál|Oblast komunity|Úřadu FBI kódu|Souřadnici x|Souřadnice Y|Rok|Aktualizace|Zeměpisná šířka|Zeměpisná délka|Umístění|
+||ID|Číslo případu|Id případu|Datum|Zablokovat|IUCR|Primární typ|Popis|Popis umístění|Zadržení|...|Dál|Oblast komunity|Úřadu FBI kódu|Souřadnici x|Souřadnice Y|Rok|Aktualizace|Zeměpisná šířka|Zeměpisná délka|Umístění|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
 |0|10140490|HY329907|329907.0|07/05/2015 23:50:00: 00|ULOŽIT NEWLAND 050XX N|0820|KRÁDEŽ|500 USD A V ČÁSTI|ULICE|false (nepravda)|false (nepravda)|...|41|10|06|1129230|1933315|2015|07/12/2015 |12:42:46 PM|41.973309466|-87.800174996|(41.973309466,-87.800174996)|
 |1|10139776|HY329265|329265.0|07/05/2015 11:30:00 PM|ULOŽIT MORSE 011XX W|0460|BATERIE|JEDNODUCHÉ|ULICE|false (nepravda)|true (pravda)|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017,-87.65955018)|

@@ -1,6 +1,6 @@
 ---
-title: Povolení Application Insights pro službu Azure Machine Learning v produkčním prostředí
-description: Informace o nastavení Application Insights pro službu Azure Machine Learning pro nasazení do služby Azure Kubernetes
+title: Povolení Application Insights pro službu Azure Machine Learning
+description: Informace o nastavení Application Insights pro služby nasazené prostřednictvím služby Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +9,14 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 71dc7c0dbb2400802235da4f1bb952c7863a1862
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 9e0f07e744aaf5f1c35666b40285937dce6dd4de
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713210"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275050"
 ---
-# <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning v produkčním prostředí pomocí nástroje Application Insights
+# <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning s využitím Application Insights
 
 V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši službu Azure Machine Learning. Application Insights nabízí možnost monitorovat:
 * Požádat o sazby, doby odezvy a míra selhání.
@@ -32,14 +32,53 @@ V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://aka.ms/AMLfree).
 * Pracovnímu prostoru Azure Machine Learning, místní adresář, který obsahuje skripty a sady SDK Azure Machine Learning pro Python nainstalován. Další informace o získání těchto nezbytných podmínkách, najdete v článku [jak nakonfigurovat prostředí pro vývoj](how-to-configure-environment.md).
-* Model trénovaného strojového učení nasadit do Azure Kubernetes Service (AKS). Pokud ho nemáte, přečtěte si článek [Train model klasifikace obrázků](tutorial-train-models-with-aml.md) kurzu.
-* [Clusteru AKS](how-to-deploy-to-aks.md).
+* Model trénovaného strojového učení nasadit do Azure Kubernetes Service (AKS) nebo Azure Container Instance (ACI). Pokud ho nemáte, přečtěte si článek [Train model klasifikace obrázků](tutorial-train-models-with-aml.md) kurzu.
 
+
+## <a name="enable-and-disable-from-the-sdk"></a>Povolení a zákaz ze sady SDK
+
+### <a name="update-a-deployed-service"></a>Aktualizace nasazené službě
+1. Identifikaci služby ve vašem pracovním prostoru. Hodnota pro `ws` je název vašeho pracovního prostoru.
+
+    ```python
+    from azureml.core.webservice import Webservice
+    aks_service= Webservice(ws, "my-service-name")
+    ```
+2. Aktualizovat službu a povolte Application Insights. 
+
+    ```python
+    aks_service.update(enable_app_insights=True)
+    ```
+
+### <a name="log-custom-traces-in-your-service"></a>Vlastní trasování protokolu ve službě
+Pokud chcete vlastní trasování protokolů, postupujte podle procesu standardní nasazení pro [AKS](how-to-deploy-to-aks.md) nebo [ACI](how-to-deploy-to-aci.md) . Potom:
+
+1. Aktualizujte soubor vyhodnocení přidáním tisku příkazy.
+    
+    ```python
+    print ("model initialized" + time.strftime("%H:%M:%S"))
+    ```
+
+2. Aktualizujte konfiguraci služby.
+    
+    ```python
+    config = Webservice.deploy_configuration(enable_app_insights=True)
+    ```
+
+3. Sestavte image a nasadit virtuální počítač na [AKS](how-to-deploy-to-aks.md) nebo [ACI](how-to-deploy-to-aci.md).  
+
+### <a name="disable-tracking-in-python"></a>Zakázání sledování v Pythonu
+
+Pokud chcete zakázat Application Insights, použijte následující kód:
+
+```python 
+## replace <service_name> with the name of the web service
+<service_name>.update(enable_app_insights=False)
+```
+    
 ## <a name="enable-and-disable-in-the-portal"></a>Povolit nebo zakázat na portálu
 
 Můžete povolit nebo zakázat Application Insights na webu Azure Portal.
-
-### <a name="enable"></a>Povolení
 
 1. V [webu Azure portal](https://portal.azure.com), otevřete pracovní prostor.
 
@@ -68,47 +107,7 @@ Můžete povolit nebo zakázat Application Insights na webu Azure Portal.
    [![Nezaškrtnuté zaškrtávací políčko pro povolení diagnostiky](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Vyberte **aktualizace** v dolní části obrazovky, aby se změny projevily. 
-
-## <a name="enable-and-disable-from-the-sdk"></a>Povolení a zákaz ze sady SDK
-
-### <a name="update-a-deployed-service"></a>Aktualizace nasazené službě
-1. Identifikaci služby ve vašem pracovním prostoru. Hodnota pro `ws` je název vašeho pracovního prostoru.
-
-    ```python
-    aks_service= Webservice(ws, "my-service-name")
-    ```
-2. Aktualizovat službu a povolte Application Insights. 
-
-    ```python
-    aks_service.update(enable_app_insights=True)
-    ```
-
-### <a name="log-custom-traces-in-your-service"></a>Vlastní trasování protokolu ve službě
-Pokud chcete vlastní trasování protokolů, postupujte [procesu standardní nasazení pro AKS](how-to-deploy-to-aks.md). Potom:
-
-1. Aktualizujte soubor vyhodnocení přidáním tisku příkazy.
-    
-    ```python
-    print ("model initialized" + time.strftime("%H:%M:%S"))
-    ```
-
-2. Aktualizujte konfiguraci AKS.
-    
-    ```python
-    aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
-    ```
-
-3. [Sestavení image a nasaďte ji](how-to-deploy-to-aks.md).  
-
-### <a name="disable-tracking-in-python"></a>Zakázání sledování v Pythonu
-
-Pokud chcete zakázat Application Insights, použijte následující kód:
-
-```python 
-## replace <service_name> with the name of the web service
-<service_name>.update(enable_app_insights=False)
-```
-    
+ 
 
 ## <a name="evaluate-data"></a>Vyhodnocení dat
 Vaše služba data se ukládají v účtu služby Application Insights ve stejné skupině prostředků jako službu Azure Machine Learning.

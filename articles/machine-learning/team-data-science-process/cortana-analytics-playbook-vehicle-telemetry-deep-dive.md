@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: 8c4946ebef8d17d2016d482010768207d5e859ff
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 4b4b479a962fc8fc4626773544e8ed8d48042b8e
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300944"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265164"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Řešení analýzy Telemetrie vozidla: Podívejte se na řešení
 
@@ -60,7 +60,7 @@ Tato datová sada ve formátu JSON obsahuje následující schéma.
 | Ignition_status |Určuje, zda je spuštěná nebo zastavená vozidla |True nebo False |
 | Windshield_wiper_status |Určuje, zda stírání čelního skla je zapnutá nebo vypnutá |True nebo False |
 | ABS |Určuje, zda je nebo není zapojení ABS |True nebo False |
-| Časové razítko |Časové razítko, když se vytvoří datový bod |Datum |
+| Timestamp |Časové razítko, když se vytvoří datový bod |Datum |
 | Město |Umístění vozidla |Čtyři měst v tomto řešení: Bellevue, Redmond, Sammamish, Seattle |
 
 Model vozidel referenční sady dat mapuje VINs modely. 
@@ -670,7 +670,7 @@ Tento dokument obsahuje podrobné procházení podrobností řešení analýzy T
 ### <a name="references"></a>Odkazy
 
 * [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
-* [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
+* [Azure Data Factory](https://docs.microsoft.com/rest/api/datafactory/)
 * [Azure Event Hubs SDK účelem ingestování datových proudů](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 * [Možnosti přesunu dat služby Azure Data Factory](../../data-factory/copy-activity-overview.md)
 * [Aktivita služby Azure Data Factory .NET](../../data-factory/transform-data-using-dotnet-custom-activity.md)

@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 09/27/2018
 ms.author: diberry
 ms.openlocfilehash: 523ce8a709c0ea4be361b92c65a61ed017f0ccc7
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
-ms.translationtype: HT
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019086"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52266742"
 ---
 Do horní části třídy Program přidejte následující konstanty, které umožní přístup ke službě QnA Maker:
 

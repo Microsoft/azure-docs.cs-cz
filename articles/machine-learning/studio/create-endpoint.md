@@ -3,8 +3,8 @@ title: Vytváření koncových bodů webové služby v Machine Learning | Dokume
 description: Vytváření koncových bodů webové služby ve službě Azure Machine Learning
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: 45115f0a987093d7e3816891fa5f4c242b449fb7
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f046db11bf3c04c9ea15e759b4e0080cab4f71d5
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819232"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265062"
 ---
 # <a name="creating-endpoints"></a>Vytváření koncových bodů
 > [!NOTE]

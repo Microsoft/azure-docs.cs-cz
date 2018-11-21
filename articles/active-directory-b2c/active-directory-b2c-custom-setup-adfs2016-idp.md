@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d94542e0c6c19fd3a79f465b69fadb6f3f28330e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7f74da682c72f9effb4dbac49b316ff17f03b534
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685765"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275883"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -175,7 +175,7 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
     | E-mailovou adresu | e-mail |
     | Zobrazovaný název | jméno |
     
-12.  Podle typu certifikátu, budete muset nastavit HASHOVACÍHO algoritmu. Předávající strany vztahu důvěryhodnosti (ukázka B2C) okna vlastnosti, vyberte **Upřesnit** kartu a změnit **Secure hash algorithm** k `SHA-1` nebo `SHA-256`a klikněte na tlačítko **Ok**.  
+12.  Podle typu certifikátu, budete muset nastavit HASHOVACÍHO algoritmu. Předávající strany vztahu důvěryhodnosti (ukázka B2C) okna vlastnosti, vyberte **Upřesnit** kartu a změnit **Secure hash algorithm** k `SHA-256`a klikněte na tlačítko **Ok**.  
 13. Ve Správci serveru vyberte **nástroje**a pak vyberte **správu služby AD FS**.
 14. Vyberte vztah důvěryhodnosti předávající strany jste vytvořili, vyberte **aktualizace z federačních metadat**a potom klikněte na tlačítko **aktualizace**. 
 

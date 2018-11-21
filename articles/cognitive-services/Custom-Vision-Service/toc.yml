@@ -42,6 +42,8 @@ items:
     href: export-model-python.md
   - name: Sestavení modelu s využitím REST API
     href: rest-api-tutorial.md
+  - name: Export nebo odstranění dat účtu
+    href: ./export-delete-data.md
 - name: Referenční informace
   items:
   - name: Rozhraní API Custom Vision pro trénování
@@ -60,25 +62,23 @@ items:
       href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices
 - name: Zdroje a prostředky
   items:
-  - name: Poznámky k verzi
-    href: release-notes.md
   - name: Ukázky
     href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
   - name: Ceny a omezení
     href: limits-and-quotas.md
-  - name: Export nebo odstranění dat účtu
-    href: ./export-delete-data.md
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/598141-custom-vision-service
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+    href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/
-ms.openlocfilehash: 1394f71bceef7a0646411a155b63825771e839d3
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
+  - name: Poznámky k verzi
+    href: release-notes.md
+ms.openlocfilehash: 9a084dbfbbc6d90a56e5986d967375da8a8fbb03
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281028"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276070"

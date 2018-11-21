@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 888b9a256a68b77b91145bb3ccfeea820c97ccfa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f610a221dca296561fefab65a6c40b52a5dd292a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515365"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275832"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -83,7 +83,7 @@ Vytvoření a nasazení služby functions, budete také muset:
 * **Local.Settings.JSON**: udržuje nastavení používaná při místním spuštění funkce. Tato nastavení nejsou používány nástrojem Azure, jsou používány [nástrojů Azure Functions Core](functions-run-local.md). Tento soubor můžete použijte k určení nastavení aplikace pro proměnné, které vyžadují vaše funkce. Přidat novou položku do **hodnoty** pole pro každé připojení vyžaduje vazby funkce ve vašem projektu. Další informace najdete v tématu [souboru místní nastavení](functions-run-local.md#local-settings-file) v článku o Azure Functions Core Tools.
 
     >[!IMPORTANT]
-    >Protože souboru local.settings.json může obsahovat tajné kódy, musíte ho vyloučit ze správy zdrojových kódů pro váš projekt. **Kopírovat do výstupní složky** nastavení pro tento soubor by měl vždy být **kopírovat, pokud je novější**. 
+    >Protože souboru local.settings.json může obsahovat tajné kódy, musíte ho vyloučit ze správy zdrojových kódů pro váš projekt. **Kopírovat do výstupního adresáře** nastavení pro tento soubor by měl vždy být **kopírovat, pokud je novější**. 
 
 Další informace najdete v tématu [projekt knihovny tříd funkce](functions-dotnet-class-library.md#functions-class-library-project).
 

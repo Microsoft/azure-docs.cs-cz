@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: 7cc3b6fd5865689df57258dcb2088bbef47b9a90
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e1582da9a8fea4137d40b3a3855ead467dbbb548
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637949"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264382"
 ---
 # <a name="prediction-score"></a>Skóre předpovědi
 Predikce skóre označuje do jaké míry jistoty, LUIS má pro výsledky předpovědí. 
@@ -62,7 +62,7 @@ Při tréninku stejného modelu v jiné aplikaci a skóre se tomto neshodují, j
 Pokud váš robot vyžaduje konkrétní skóre LUIS k označení důvěru v záměru, je vhodné použít skóre rozdíl mezi horní dva záměry. Získáte tak flexibilitu pro různé variace školení. 
 
 ## <a name="punctuation"></a>Interpunkce
-Rozdělení je samostatný token v LUIS. Utterance, který obsahuje tečku na konci oproti utterance, který nemá jsou dvě samostatné projevy a může se zobrazit dvě různé předpovědi. Ujistěte se, že model buď zpracovává interpunkce v [příklad projevy](luis-concept-utterance.md) (mají a nemají interpunkční znaménka) nebo [patterns}(luis-concept-patterns.md), kde se snadněji ignorovat interpunkční znaménka zvláštní syntaxí: `I am applying for the {Job} position[.]`
+Rozdělení je samostatný token v LUIS. Utterance, který obsahuje tečku na konci oproti utterance, který nemá jsou dvě samostatné projevy a může se zobrazit dvě různé předpovědi. Ujistěte se, že model buď zpracovává interpunkce v [příklad projevy](luis-concept-utterance.md) (mají a nemají interpunkční znaménka) nebo [vzory](luis-concept-patterns.md) kde se snadněji ignorovat interpunkční znaménka zvláštní syntaxí: `I am applying for the {Job} position[.]`
 
 ## <a name="next-steps"></a>Další postup
 

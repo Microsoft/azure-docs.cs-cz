@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7520b79baa43a60373ca60e15abf76b351f57d02
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: d9afc62b4ab5d5d83394dcaaacf85a7642a2ba22
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975648"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260592"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Používání značek k uspořádání prostředků Azure
 
@@ -272,8 +272,6 @@ Operace rozhraní REST API najdete v části [Azure Billing Reference k REST API
 
 ## <a name="next-steps"></a>Další postup
 
+* Ne všechny typy prostředků podporují značky. Pokud chcete zjistit, pokud použijete značku u typu prostředku, naleznete v tématu [podporu pro prostředky Azure se značkami](tag-support.md).
 * Pomocí vlastních zásad, můžete použít omezení a pravidla týkající se vašeho předplatného. Zásady, které definujete může být nutné, aby všechny prostředky hodnotu pro konkrétní značku. Další informace najdete v tématu [co je Azure Policy?](../azure-policy/azure-policy-introduction.md)
-* Úvod do při nasazování prostředků pomocí Azure Powershellu najdete v tématu [pomocí Azure Powershellu s Azure Resource Managerem](powershell-azure-resource-manager.md).
-* Úvod do při nasazování prostředků pomocí Azure CLI najdete v tématu [pomocí Azure CLI pro Mac, Linux a Windows pomocí Azure Resource Manageru](xplat-cli-azure-resource-manager.md).
 * Úvodní informace o použití portálu najdete v tématu [pomocí webu Azure portal ke správě vašich prostředků Azure](resource-group-portal.md).  
-* Pokyny k tomu, jak můžou podniky používat Resource Manager k efektivní správě předplatných, najdete v části [Základní kostra Azure Enterprise – zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance).

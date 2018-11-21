@@ -1,6 +1,6 @@
 ---
-title: Publikování šablony řešení | Dokumentace Microsoftu
-description: Publikování šablony řešení na Azure Marketplace.
+title: Publikování šablony řešení Azure | Dokumentace Microsoftu
+description: Na webu Azure Marketplace publikujte šablony řešení.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: dan-wesley
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7c7912860568aea497e327f29a1b7b71b8f5e87
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 333eebfa1bae919c43164572c63f2de4f7251fe0
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345585"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261613"
 ---
 # <a name="publish-a-solution-template-to-azure-marketplace"></a>Publikování šablony řešení na Azure Marketplace
 
@@ -31,31 +31,22 @@ Následující technická a Netechnická požadavky platí pro výpis šablonu �
 
 ### <a name="technical"></a>Technická
 
-- [Pochopení šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)
-
+- [Pochopení šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).
 - Šablony rychlý start Azure:
-
     - [Dokumentaci k šabloně Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/)
-
     - [Dokumentace ke službě Azure quickstart na Githubu](https://github.com/azure/azure-quickstart-templates)
-
  - [Vytvořit soubor rozhraní uživatele Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
+ - Povolit [zákazníka využití attribution](./../azure-partner-customer-usage-attribution.md) ke sledování využití Azure pro zákaznická nasazení softwaru na Azure.
 
 ### <a name="non-technical-business-requirements"></a>Netechnická (požadavky)
 
--   Vaše společnost (nebo její pobočka) se musí nacházet v prodeji ze země podporovanými webem Azure Marketplace.
-
--   Váš produkt musí mít licenci způsobem, který je kompatibilní s modely fakturace podporovanými webem Azure Marketplace.
-
--   Zodpovídáte zpřístupnění pro technickou podporu pro zákazníky přiměřené způsobem, zda zdarma, placená nebo komunitní podpory.
-
--   Zodpovídáte za licencování váš software a všechny závislosti softwaru třetích stran.
-
--   Zadejte obsah, který splňuje kritéria pro vaší nabídky na webu Azure Marketplace a portálu pro správu Azure.
-
--   Souhlas s podmínkami zásady účasti na Azure Marketplace a smlouvě s vydavatelem.
-
--   Vyjádřete souhlas s dodržováním Podmínek použití, Prohlášení o zásadách ochrany osobních údajů a Smlouvy k programu Microsoft Azure Certified.
+- Vaše společnost (nebo její pobočka) se musí nacházet v prodeji ze země podporovanými webem Azure Marketplace.
+- Váš produkt musí mít licenci způsobem, který je kompatibilní s modely fakturace podporovanými webem Azure Marketplace.
+- Zodpovídáte zpřístupnění pro technickou podporu pro zákazníky přiměřené způsobem, zda zdarma, placená nebo komunitní podpory.
+- Zodpovídáte za licencování váš software a všechny závislosti softwaru třetích stran.
+- Zadejte obsah, který splňuje kritéria pro vaší nabídky na webu Azure Marketplace a na webu Azure Portal.
+- Souhlas s podmínkami zásady účasti na Azure Marketplace a smlouvě s vydavatelem.
+- Vyjádřete souhlas s dodržováním Podmínek použití, Prohlášení o zásadách ochrany osobních údajů a Smlouvy k programu Microsoft Azure Certified.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -101,7 +92,7 @@ Každé zobrazení obsahuje sadu polí umožňující vyplnit. Povinné pole jso
 
     **ID nabídky**
 
-     Jedinečný identifikátor nabídky v rámci profilu vydavatele. Toto ID je viditelný v adresách URL produktu, šablony ARM, a oznámí fakturace. Můžete použít pouze malé alfanumerické znaky nebo spojovníky (-). ID nesmí končit spojovníkem a nesmí být delší než 50 znaků. 
+     Jedinečný identifikátor nabídky v rámci profilu vydavatele. Toto ID je viditelný v adresách URL produktu, šablon Azure Resource Manageru, a oznámí fakturace. Můžete použít pouze malé alfanumerické znaky nebo spojovníky (-). ID nesmí končit spojovníkem a nesmí být delší než 50 znaků. 
     >[!Note]
     >Toto pole je uzamčen, když dostane za provozu v rámci nabídky.
 
@@ -113,7 +104,7 @@ Každé zobrazení obsahuje sadu polí umožňující vyplnit. Povinné pole jso
 
     **Název**
 
-    Zobrazovaný název nabídky. Tento název se zobrazí na webu Azure Marketplace a na webu Azure Portal. Může mít maximálně 50 znaků. Použijte následující pokyny pro název nabídky:
+    Zobrazovaný název nabídky. Tento název se zobrazí na webu Azure Marketplace a na webu Azure portal. Může mít maximálně 50 znaků. Použijte následující pokyny pro název nabídky:
     -  Do názvu zahrňte rozpoznatelný název značky pro váš produkt. 
     - Nezahrnujte název společnosti, pokud je jak nabídku na trh.
     - Pokud v rámci této nabídky máte marketing na svůj vlastní web, ujistěte se, že název shodný s názvem na vašem webu.
@@ -128,7 +119,7 @@ pro vaši nabídku.
 
     ![Nové SKU](./media/cloud-partner-portal-publish-managed-app/newOffer_skus.png)
 
-    SKU ID je jedinečný identifikátor pro danou skladovou jednotku v rámci nabídky. Toto ID je viditelný v adresách URL produktu, šablony ARM, a oznámí fakturace. SKU ID:
+    SKU ID je jedinečný identifikátor pro danou skladovou jednotku v rámci nabídky. Tento identifikátor se zobrazuje na adresách URL produktu, v šablonách Resource Manageru a ve fakturačních sestavách. SKU ID:
     - Pouze nesmí být delší než 50 znaků.
     - Můžete pouze obsahovat malé alfanumerické znaky nebo spojovníky (-).
     - Nemůže končit pomlčkou.
@@ -146,14 +137,10 @@ pro vaši nabídku.
 Zadejte následující nastavení SKU.
 
 - **Název** – název pro danou skladovou jednotku. Tento název se zobrazí v galerii pro tuto položku.
-
 - **Souhrn** – krátký souhrnný popis skladové Položce. (Maximální délka je 100 znaků.)
-
 - **Popis** – podrobný popis SKU.
-
 - **Typ SKU** – rozevírací seznam s těmito hodnotami: "Spravované aplikace (Preview)" a "Šablona řešení". V tomto scénáři vyberte **šablonu řešení**.
-
-- **Dostupnost cloudu** – umístění SKU. Výchozí hodnota je veřejný Azure.
+- **Dostupnost cloudu** – umístění SKU. Výchozí hodnota je **veřejný Azure**.
 
 ### <a name="package-details"></a>Podrobnosti o balíčku
 
@@ -162,19 +149,16 @@ Po dokončení nastavení SKU, zadejte následující podrobnosti balíčku.
 ![Podrobnosti o balíčku](./media/cloud-partner-portal-publish-managed-app/newOffer_newsku_ST_package.png)
 
 - **Aktuální verze** – verze balíčku, který bude nahrávat. Verze značky musí být ve tvaru X.Y.Z, kde X, Y a jsou celá čísla.
-
 - **Soubor balíčku** -tento balíček obsahuje následující soubory, které jsou uloženy do souboru .zip.
-
     -   MainTemplate.json – soubor šablony nasazení, který se používá k nasazení řešení/aplikace a vytvořte prostředky, které jsou definovány pro řešení. Další informace najdete v tématu [jak si můžete vytvořit soubory šablony nasazení](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)
-
-    -   createUIDefinition.json – tento soubor používá ke generování uživatelského rozhraní pro zřizování řešení/aplikaci na webu Azure Portal. Další informace najdete v tématu [vytvořit Azure portal uživatelského rozhraní pro spravované aplikace](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
+    -   createUIDefinition.json – tento soubor používá ke generování uživatelského rozhraní pro zřizování řešení/aplikaci na webu Azure portal. Další informace najdete v tématu [vytvořit Azure portal uživatelského rozhraní pro spravované aplikace](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)
 
     >[!IMPORTANT]
     >Tento balíček měl obsahovat všechny vnořené šablony nebo skripty, které jsou nutné ke zřízení této aplikace. MainTemplate.json a createUIDefinition.json musí být v kořenové složce.
 
 ## <a name="to-configure-the-marketplace"></a>Konfigurace na webu Marketplace
 
-Použít ke konfiguraci pole, která se zobrazují pro nabídky na Marketplace zobrazení [Azure Marketplace](https://azuremarketplace.microsoft.com) a na [webu Azure Portal](https://portal.azure.com/).
+Použít ke konfiguraci pole, která se zobrazují pro nabídky na Marketplace zobrazení [Azure Marketplace](https://azuremarketplace.microsoft.com) a na [webu Azure portal](https://portal.azure.com/).
 
 ### <a name="preview-subscription-ids"></a>ID předplatných ve verzi Preview
 
@@ -182,9 +166,9 @@ Seznam ID předplatných Azure, který chcete mít přístup do nabídky při pu
 
 ### <a name="suggested-categories"></a>Navrhované kategorií
 
-Vyberte kategorie až 5 ze zadaného seznamu, který vaše nabídka může být nejlepší přidružený. Vybrané kategorie se použije k mapování vaší nabídky na o produktových kategoriích, které jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [webu Azure Portal](https://portal.azure.com/).
+Vyberte až o pěti kategorií ze zadaného seznamu, který vaše nabídka může být nejlepší přidružený. Vybrané kategorie se použije k mapování vaší nabídky na o produktových kategoriích, které jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [webu Azure Portal](https://portal.azure.com/).
 
-Následující příklady ukazují informace z marketplace na webu Azure Marketplace a na webu Azure Portal.
+Následující příklady ukazují informace z marketplace na webu Azure Marketplace a na webu Azure portal.
 
 **Azure Marketplace**
 
@@ -215,11 +199,11 @@ Postupujte podle následujících pokynů loga nahráli na portál partnerů clo
 -   Jsou bílé barvy motivu na webu Azure portal a černé. Nepoužívejte tyto barvy jako barva pozadí vašeho loga. Použijte barvu, která by provedla vašeho loga viditelného na webu Azure Portal. Doporučujeme použít jednoduché primární barvy.
 
     >[!Note] 
-    >Pokud pracujete s průhledným pozadím, ujistěte se, že nejsou bílé, loga nebo text černou nebo modrou.
+    >Pokud pracujete s průhledným pozadím, ujistěte se, že nejsou loga/text bílé, černá a modrá.
 
 -   Nepoužívejte v logu pozadí s barevným přechodem.
 
--   Předejde text loga. To zahrnuje vaše společnost nebo název značky. Vzhled a chování vašeho loga musí být *plochý* a přechody se měli vyhnout.
+-   Předejde text loga. Toto pravidlo obsahuje vaše společnost nebo název značky. Vzhled a chování vašeho loga musí být *plochý* a přechody se měli vyhnout.
 
 -   Logo by neměl být roztažená.
 
@@ -229,7 +213,7 @@ Hero logo je volitelné. Vydavatele můžete nahrávat Hero logo. Ale po nahrán
 
 #### <a name="guidelines-for-the-hero-logo-icon"></a>Pokyny pro ikona loga Hero
 
--   Zobrazovaný název vydavatele, název plánu a nabídky, dlouhé shrnutí jsou zobrazeny pomocí bílé barevné písma. Vyhněte se použití jakékoli světlé barevné na pozadí. Černá, bílý a průhledné pozadí nejsou povoleny pro Hero ikony.
+-   Zobrazovaný název vydavatele, název plánu a nabídky, dlouhé shrnutí jsou zobrazeny pomocí bílé barvy písma. Vyhněte se použití jakékoli světlé barevné na pozadí. Černou, bílou a průhledné pozadí nejsou povoleny pro Hero ikony.
 
 -   Vydavatel zobrazovaný název, plán, title, nabídky, dlouhé shrnutí a tlačítka pro vytvoření jsou vložené prostřednictvím kódu programu uvnitř Hero logo při jejím uvedené. Při navrhování Hero logo, nezadávejte žádný text. Ponechte prázdné místo na pravé straně loga. Tento prostor by měl být 415 × 100 pixelů a je posunut 370 pixelů od levého okraje.
 

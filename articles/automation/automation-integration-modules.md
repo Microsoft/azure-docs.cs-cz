@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 93c61f0b9b923f84b2c84d2db4456442e2f9fb27
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e4bd6a3e39fbb5d1eea4d7770d8940f801aecd43
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444500"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276479"
 ---
 # <a name="azure-automation-integration-modules"></a>Moduly integrace pro Azure Automation
 PowerShell je základní technologií, která stojí za službou Azure Automation. Vzhledem k tomu, že Azure Automation je postavená na PowerShellu, jsou moduly PowerShellu klíčem k rozšiřitelnosti služby Azure Automation. V tomto článku vás provedeme specifiky používání služby Azure Automation modulů Powershellu, jsou označovány jako "Moduly integrace" a osvědčené postupy pro vytváření vlastních modulů Powershellu, abyste měli jistotu, že fungují jako moduly integrace v rámci Azure Automatizace. 
@@ -34,7 +34,7 @@ Formát, ve kterém budete importovat balíček modulu integrace, je komprimovan
 
 Pokud má modul obsahovat typ připojení Azure Automation, musí obsahovat také soubor s názvem `<ModuleName>-Automation.json`, který určuje vlastnosti typu připojení. Toto je soubor json, který je umístěný ve složce modulu vašeho komprimovaného souboru .zip, a obsahuje všechna pole „připojení“, které je povinné pro připojení k systému nebo službě, které modul představuje. Ukončí se do vytvoření typu připojení ve službě Azure Automation. Pomocí tohoto souboru můžete pro typ připojení modulu nastavit názvy polí, typy polí a možnosti, jestli mají být pole šifrovaná nebo volitelná. Níže uvádíme šablonu ve formátu json:
 
-```
+```json
 { 
    "ConnectionFields": [
    {
@@ -67,7 +67,7 @@ Ačkoli jsou moduly integrace v zásadě moduly PowerShellu, stále existuje řa
 
 1. Ke každé rutině v modulu přidejte i stručný obsah, popis a pomocný identifikátor URI. V PowerShellu můžete definovat určité informace nápovědy k rutinám, abyste uživatelům umožnili zobrazit nápovědu k jejich používání pomocí rutiny **Get-Help**. Dáme vám příklad, jak můžete definovat stručný obsah a pomocný identifikátor URI pro modul PowerShellu, který je zapsaný v souboru .psm1.<br>  
    
-    ```
+    ```powershell
     <#
         .SYNOPSIS
          Gets all outgoing phone numbers for this Twilio account 
@@ -109,7 +109,7 @@ Ačkoli jsou moduly integrace v zásadě moduly PowerShellu, stále existuje řa
 
     Používání rutin v modulu v Azure Automation bude snazší, když povolíte předávání objektů s poli typu připojení jako parametru pro rutinu. Tímto způsobem uživatelé nemusejí mapovat parametry prostředku připojení na odpovídající parametry rutiny při každém volání rutiny. Výše uvedený příklad runbooku používá asset připojení Twilio, který se nazývá CorpTwilio, pro přístup k assetu Twilio a k vrácení všech telefonních čísel na účtu.  Všimli jste si, jak mapuje pole připojení na parametry rutiny?<br>
    
-    ```
+    ```powershell
     workflow Get-CorpTwilioPhones
     {
       $CorpTwilio = Get-AutomationConnection -Name 'CorpTwilio'
@@ -122,7 +122,7 @@ Ačkoli jsou moduly integrace v zásadě moduly PowerShellu, stále existuje řa
   
     Jednodušším a lepším způsobem je předat objekt připojení přímo do rutiny –
    
-    ```
+    ```powershell
     workflow Get-CorpTwilioPhones
     {
       $CorpTwilio = Get-AutomationConnection -Name 'CorpTwilio'
@@ -133,7 +133,7 @@ Ačkoli jsou moduly integrace v zásadě moduly PowerShellu, stále existuje řa
    
     Takové chování můžete svým rutinám povolit tak, že jim dovolíte přijímat objekt připojení přímo jako parametr místo určování parametrů prostým přijímáním polí připojení. Obvykle byste měli u každé sady parametrů tak, aby uživatel bez použití služby Azure Automation mohl vaše rutiny volat bez vytváření zatřiďovací tabulku tak, aby fungoval jako objekt připojení. Níže uvedená sada parametrů **SpecifyConnectionFields** slouží k postupnému předávání vlastností polí připojení. **UseConnectionObject** vám umožní předat připojení přímo. Jak můžete vidět, rutina Send-TwilioSMS v [modulu PowerShellu Twilio](https://gallery.technet.microsoft.com/scriptcenter/Twilio-PowerShell-Module-8a8bfef8) umožňuje předání oběma způsoby: 
    
-    ```
+    ```powershell
     function Send-TwilioSMS {
       [CmdletBinding(DefaultParameterSetName='SpecifyConnectionFields', `
       HelpUri='http://www.twilio.com/docs/api/rest/sending-sms')]
@@ -160,7 +160,7 @@ Ačkoli jsou moduly integrace v zásadě moduly PowerShellu, stále existuje řa
 1. Definujte výstupní typ pro všechny rutiny v modulu. Definování typu výstupu rutiny umožňuje technologii IntelliSense, aby vám v době návrhu pomohla zjistit výstupní vlastnosti rutiny, které použijete při vytváření obsahu. To se hodí zejména při vytváření grafického obsahu runbooku Automation, kde je znalost doby návrhu klíčová pro snadnou práci s modulem.<br><br> ![Typ výstupu grafického runbooku](media/automation-integration-modules/runbook-graphical-module-output-type.png)<br> Podobá se funkci „našeptávání“ výstupu rutiny v integrovaném skriptovacím prostředí PowerShellu bez nutnosti jeho spuštění.<br><br> ![POSH IntelliSense](media/automation-integration-modules/automation-posh-ise-intellisense.png)<br>
 1. Rutiny v modulu nesmí přijímat komplexní typy objektů jako parametry. Pracovní postup PowerShellu se liší od PowerShellu tím, že komplexní typy ukládá v deserializované podobě. Primitivní typy zůstanou jako primitiva, ale komplexní typy budou převedené na jejich deserializované verze, které jsou v podstatě kontejnery vlastností. Pokud jste například použili rutinu **Get-Process** v runbooku (nebo v pracovním postupu PowerShellu), měla by vrátit objekt typu [Deserialized.System.Diagnostic.Process] a ne očekávaný typ [System.Diagnostic.Process]. Tento typ má stejné vlastnosti jako nedeserializovaný typ, ale nemá žádné metody. A pokud se pokusíte předat tuto hodnotu jako parametr rutiny, kde rutina očekává hodnotu [System.Diagnostic.Process] pro tento parametr, se zobrazí následující chyba: *nemůže zpracovat transformaci argumentu na parametru 'proces'. Chyba: „Hodnotu „System.Diagnostics.Process (CcmExec)“ typu „Deserialized.System.Diagnostics.Process“ není možné převést na typ „System.Diagnostics.Process“.*   Je to proto, že došlo k neshodě typů mezi očekávaným typem [System.Diagnostic.Process] a daným typem [Deserialized.System.Diagnostic.Process]. Způsobem řešení tohoto problému je zajistit, aby rutiny modulu nepřebíraly komplexní typy jako parametry. Následuje ukázka nesprávného způsobu řešení.
    
-    ```
+    ```powershell
     function Get-ProcessDescription {
       param (
             [System.Diagnostic.Process] $process
@@ -171,7 +171,7 @@ Ačkoli jsou moduly integrace v zásadě moduly PowerShellu, stále existuje řa
     <br>
     A tady je správný způsob, který přijímá primitivum, které může rutina interně použít k převzetí a používání komplexního objektu. Vzhledem k tomu, že rutiny se spouštějí v kontextu PowerShellu a ne v kontextu pracovního postupu PowerShellu, $process se uvnitř rutiny stane správným typem [System.Diagnostic.Process].  
    
-    ```
+    ```powershell
     function Get-ProcessDescription {
       param (
             [String] $processName
@@ -185,7 +185,7 @@ Ačkoli jsou moduly integrace v zásadě moduly PowerShellu, stále existuje řa
    Assety připojení v runboocích představují zatřiďovací tabulky, které jsou komplexním typem, a přesto tyto zatřiďovací tabulky můžou být bezchybně předávané do rutin díky svému parametru -Connection, bez výjimky pro přetypování. Technicky jsou některé typy PowerShellu schopné provést přetypování správně ze serializované podoby do deserializované a proto mohou být předány do rutin jako parametry, které přijímají nedeserializovaný typ. Zatřiďovací tabulka je jedním z nich. Autorem definované typy modulů můžete implementovat způsobem, kterým se také můžou správně deserializovat, ale bude to za cenu určitých kompromisů. Tento typ musí mít výchozí konstruktor, musí mít všechny svoje veřejné vlastnosti a musí mít PSTypeConverter. V případě už definovaných typů, které autor modulu nevlastní, neexistuje žádný způsob, jak je „opravit“, proto doporučujeme, abyste se vyhnuli používání komplexních typů jako parametrů. Tip pro vytváření runbooků: Pokud z nějakého důvodu vaše rutiny potřebují přijmout parametr komplexního typu nebo pokud používáte cizí modul, který vyžaduje parametr komplexního typu, řešením pro runbooky pracovního postupu PowerShellu a pracovní postupy PowerShellu v místním PowerShellu je zabalit rutinu, která generuje komplexní typ, a rutinu, která využívá komplexní typ, do stejné aktivity InlineScript. Vzhledem k tomu, že InlineScript svůj obsah spouští jako PowerShell spíš než jako pracovní postup PowerShellu, rutina generující komplexní typ vytvoří tento správný typ a ne deserializovaný komplexní typ.
 1. Nastavte všechny rutiny v modulu jako bezstavové. Pracovní postup PowerShellu spouští každou rutinu volanou v pracovním postupu v jiné relaci. To znamená, že rutiny, které závisí na stavu relace, která je vytvořená nebo upravená jinými rutinami ve stejném modulu, nebudou v runboocích pracovního postupu PowerShellu fungovat.  Následuje příklad špatného postupu.
    
-    ```
+    ```powershell
     $globalNum = 0
     function Set-GlobalNum {
        param(

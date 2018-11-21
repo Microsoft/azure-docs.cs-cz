@@ -3,8 +3,8 @@ title: 'Krok 5: Nasazení webové služby Machine Learning | Dokumentace Microso
 description: 'Krok 5 vývoj prediktivního řešení návod: nasazení prediktivní experiment v Machine Learning studiu jako webovou službu.'
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 81375dd1a6321482b8d80ad248643fe9a98f8483
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 2de409d0f12d4ef393901eab78918edd33bc53f9
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822411"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263821"
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Krok 5 průvodce: Nasazení webové služby Azure Machine Learning
 Toto je pátý krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)

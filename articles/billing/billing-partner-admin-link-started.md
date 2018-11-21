@@ -3,6 +3,7 @@ title: Propojení účtu Azure k ID partnera | Dokumentace Microsoftu
 description: Sledovat spolupráce se zákazníky Azure díky propojení ID partnera s uživatelským účtem, který používáte ke správě prostředků zákazníka.
 services: billing
 author: dhirajgandhi
+manager: dhgandhi
 ms.author: cwatson
 ms.date: 03/12/2018
 ms.service: billing
@@ -10,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 342e182466d2fe704c5ee188e35dece0abaeea02
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 1e2492d978073f63c1c9494d652ec35a7d6565b7
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823091"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274175"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Propojení ID partnera k účtům Azure
 

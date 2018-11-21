@@ -11,12 +11,12 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1865fcf47510bbaae82f98ccad85993a85ffc1ab
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 92e3935167f5665ee8cda164a8fe9b1cfcc39f73
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959133"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275594"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
@@ -72,7 +72,7 @@ Pokud chcete v protokolech hledat spouštěním dotazů, v horní části okna *
 Data řešení Change Tracking se ukládají jako typ **ConfigurationChange** (Změna konfigurace).
 Následující ukázka dotazu Log Analytics vrátí všechny zastavené služby systému Windows.
 
-```
+```loganalytics
 ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
@@ -214,7 +214,7 @@ Následující obrázek ukazuje příklad e-mailu přijatého po zastavení slu�
 
 ![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

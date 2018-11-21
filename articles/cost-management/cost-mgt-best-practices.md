@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 01/09/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 8958d2cde9f40aa1a7370894614a54bbd604bce7
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 0adc821f7a3d5b059d549509b7ed18cda95b86bc
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706326"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52273795"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat vaše cloudové investice ve službě Azure Cost Management
 
@@ -107,7 +107,7 @@ Další informace o různých možnostech najdete v tématu [jak koupit Azure](h
 
 Před nasazením jakékoli infrastruktury posuďte, kolik vaše řešení bude nákladů. Posouzení vám pomůžou vytvořit rozpočtu vaší organizace pro pracovní vytížení, počáteční. Pak můžete použít rozpočtu v čase do testu výkonnosti platnosti počáteční odhad. A porovnejte ji s skutečné náklady na nasazené řešení.
 
-### <a name="azure-pricing-calculator"></a>Cenovou kalkulačku Azure
+### <a name="azure-pricing-calculator"></a>Cenová kalkulačka Azure
 
 Cenovou kalkulačku Azure umožňuje kombinovat a párovat různé kombinace služeb Azure, pokud chcete zobrazit odhad nákladů. Můžete implementovat řešení pomocí různých způsobů, jak v Azure – každý by mohly ovlivnit vaše celkové výdaje. Přemýšlení o všech požadavků na infrastrukturu na vaším cloudovým nasazením již v rané fázi vám pomůže používat nástroj nejefektivněji. Pomůže vám zjistit solid odhad vaší odhad útraty v Azure.
 

@@ -10,16 +10,16 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 91db32b7056a0cf211e6293a891d58e0239ca499
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: f8092c7a05935dcb2ca176bee2c5820b50f3c814
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237581"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263549"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Načtení a čtení dat pomocí Azure Machine Learning
 
-Použití [sady SDK služby Azure Machine Learning Data Prep](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) načíst různé druhy vstupní data. 
+Použití [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk) načíst různé druhy vstupní data. 
 
 Pokud chcete načíst data, zadejte datový typ souboru a jeho parametry
 
@@ -149,11 +149,11 @@ dataflow.head(5)
 Ukázkový výstup:
 ||Sloupec1|Column2|Sloupec3|Column4|Column5|Column6|Column7|Column8|
 |------|------|------|-----|------|-----|-------|----|-----|
-|0|Hoba|Železa IV b|60000000.0|Nalezeno|1920.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-19.58333|17.91667|
-|1|Cabo York|Železa IIIAB|58200000.0|Nalezeno|1818.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |76.13333|-64.93333|
-|2|Campo del Cielo|Železa, IAB MG|50000000.0|Nalezeno|1576.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-27.46667|-60.58333|
-|3|Diablo údolí|Železa, IAB MG|30000000.0|Nalezeno|1891.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |35.05000|-111.03333|
-|4|Armanty|Železa IIIE|28000000.0|Nalezeno|1898.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |47.00000|88.00000|
+|0|Hoba|Železa IV b|60000000.0|Najít|1920.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-19.58333|17.91667|
+|1|Cabo York|Železa IIIAB|58200000.0|Najít|1818.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |76.13333|-64.93333|
+|2|Campo del Cielo|Železa, IAB MG|50000000.0|Najít|1576.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |-27.46667|-60.58333|
+|3|Diablo údolí|Železa, IAB MG|30000000.0|Najít|1891.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |35.05000|-111.03333|
+|4|Armanty|Železa IIIE|28000000.0|Najít|1898.0|http://www.lpi.usra.edu/meteor/metbull.php?cod... |47.00000|88.00000|
 
 Načetli jste první tabulky Excelového souboru. Stejného výsledku dosáhnout explicitním zadáním názvu na listu, které chcete načíst. Pokud chcete místo toho zatížení druhý list, můžete zadat jeho název jako argument. Příklad:
 ```python
@@ -167,7 +167,7 @@ Ukázkový výstup:
 |0|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|
 |1|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|
 |2|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|
-|3|pořadí|Titul|Studio|Po celém světě|Domácí / %|Sloupec1|Zámořské / %|Column2|Rok ^|
+|3|pořadí|Titul|Studio|Celosvětově|Domácí / %|Sloupec1|Zámořské / %|Column2|Rok ^|
 |4|1|Miniatury|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|5|
 
 Jak je vidět, došlo v tabulce v druhé tabulce záhlaví a tři prázdné řádky. Budete muset upravit argumenty funkce odpovídajícím způsobem. Příklad:
@@ -178,7 +178,7 @@ df
 ```
 
 Ukázkový výstup:
-||pořadí|Titul|Studio|Po celém světě|Domácí / %|Sloupec1|Zámořské / %|Column2|Rok ^|
+||pořadí|Titul|Studio|Celosvětově|Domácí / %|Sloupec1|Zámořské / %|Column2|Rok ^|
 |------|------|------|-----|------|-----|-------|----|-----|-----|
 |0|1|Miniatury|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|
 |1|2|Titanic|Pamětích.|2186.8|658.7|0.301|1528.1|0.699|1997 ^|
@@ -194,13 +194,13 @@ dataflow.head(5)
 ```
 
 Ukázkový výstup:
-||010000|99999|NEPLATNÉ NORSKO|NE|NO_1|ENRS|Column7|Column8|Column9|
+||010000|99999|NEPLATNÉ NORSKO|NO|NO_1|ENRS|Column7|Column8|Column9|
 |------|------|------|-----|------|-----|-------|----|-----|----|
-|0|010003|99999|NEPLATNÉ NORSKO|NE|NE|ENSO||||
-|1|010010|99999|JAN MAYEN|NE|JN|ENJA|+70933|-008667|+00090|
-|2|010013|99999|ROST|NE|NE|||||
-|3|010014|99999|SOERSTOKKEN|NE|NE|ENSO|+59783|+005350|+00500|
-|4|010015|99999|BRINGELAND|NE|NE|ENBL|+61383|+005867|+03270|
+|0|010003|99999|NEPLATNÉ NORSKO|NO|NO|ENSO||||
+|1|010010|99999|JAN MAYEN|NO|JN|ENJA|+70933|-008667|+00090|
+|2|010013|99999|ROST|NO|NO|||||
+|3|010014|99999|SOERSTOKKEN|NO|NO|ENSO|+59783|+005350|+00500|
+|4|010015|99999|BRINGELAND|NO|NO|ENBL|+61383|+005867|+03270|
 
 
 Pokud neexistují žádné hlavičky v souborech, je vhodné na první řádek považovat za data. Předáním `PromoteHeadersMode.NONE` argument – klíčové slovo záhlaví, můžete vyhnout detekci záhlaví a získat správná data. Příklad:
@@ -217,12 +217,12 @@ Ukázkový výstup:
 
 ||Sloupec1|Column2|Sloupec3|Column4|Column5|Column6|Column7|Column8|Column9|
 |------|------|------|-----|------|-----|-------|----|-----|----|
-|0|010000|99999|NEPLATNÉ NORSKO|NE|NO_1|ENRS|Column7|Column8|Column9|
-|1|010003|99999|NEPLATNÉ NORSKO|NE|NE|ENSO||||
-|2|010010|99999|JAN MAYEN|NE|JN|ENJA|+70933|-008667|+00090|
-|3|010013|99999|ROST|NE|NE|||||
-|4|010014|99999|SOERSTOKKEN|NE|NE|ENSO|+59783|+005350|+00500|
-|5|010015|99999|BRINGELAND|NE|NE|ENBL|+61383|+005867|+03270|
+|0|010000|99999|NEPLATNÉ NORSKO|NO|NO_1|ENRS|Column7|Column8|Column9|
+|1|010003|99999|NEPLATNÉ NORSKO|NO|NO|ENSO||||
+|2|010010|99999|JAN MAYEN|NO|JN|ENJA|+70933|-008667|+00090|
+|3|010013|99999|ROST|NO|NO|||||
+|4|010014|99999|SOERSTOKKEN|NO|NO|ENSO|+59783|+005350|+00500|
+|5|010015|99999|BRINGELAND|NO|NO|ENBL|+61383|+005867|+03270|
 
 ## <a name="use-sql-data"></a>Použití dat SQL
 Sady SDK pro Azure Machine Learning Data Prep můžete také načíst data ze serverů SQL. V současné době se podporuje jenom Microsoft SQL Server.
@@ -248,11 +248,11 @@ dataflow.head(5)
 Ukázkový výstup:
 ||ProductID|Název|ProductNumber|Barva|StandardCost|ListPrice|Velikost|Hmotnost|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|Thumbnailphoto nastavuje|ThumbnailPhotoFileName|ROWGUID|ModifiedDate|
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-|0|680|HL Road Frame – Black, 58|FR-R92B 58|Černá|1059.3100|1431.50|58|1016.04|18|6|2002-06-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000 + 00:00|
+|0|680|HL Road Frame – Black, 58|FR-R92B 58|Black|1059.3100|1431.50|58|1016.04|18|6|2002-06-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000 + 00:00|
 |1|706|HL Road Frame – Red, 58|FR-R92R 58|Červená|1059.3100|1431.50|58|1016.04|18|6|2002-06-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000 + 00:00|
 |2|707|Sport – 100 Helmet, Red|HL-U509-R|Červená|13.0863|34.99|Žádný|Žádný|35|33|2005-07-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|2e1ef41a-c08a-4ff6-8ada-bde58b64a712|2008-03-11 |10:01:36.827000 + 00:00|
-|3|708|Sport – 100 Helmet, Black|HL U509|Černá|13.0863|34.99|Žádný|Žádný|35|33|2005-07-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|a25a44fb-c2de-4268-958f-110b8d7621e2|2008-03-11 |10:01:36.827000 + 00:00|
-|4|709|Socks kolo Horská oblast, M|TAK B909-M|Bílá|3.3963|9.50|M|Žádný|27|18|2005-07-01: 00:00:00 + 00:00|2006-06-30 00:00:00 + 00:00|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|18f95f47-1540-4e02-8f1f-cc1bcb6828d0|2008-03-11 |10:01:36.827000 + 00:00|
+|3|708|Sport – 100 Helmet, Black|HL U509|Black|13.0863|34.99|Žádný|Žádný|35|33|2005-07-01: 00:00:00 + 00:00|Žádný|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|a25a44fb-c2de-4268-958f-110b8d7621e2|2008-03-11 |10:01:36.827000 + 00:00|
+|4|709|Socks kolo Horská oblast, M|TAK B909-M|White|3.3963|9.50|M|Žádný|27|18|2005-07-01: 00:00:00 + 00:00|2006-06-30 00:00:00 + 00:00|Žádný|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.GIF|18f95f47-1540-4e02-8f1f-cc1bcb6828d0|2008-03-11 |10:01:36.827000 + 00:00|
 
 ```python
 df = dataflow.to_pandas_dataframe()
@@ -343,7 +343,7 @@ dataflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.a
 dataflow.to_pandas_dataframe().head()
 ```
 
-||FMID|MarketName|Web|Ulice|city|Kraj|
+||FMID|MarketName|Web|Ulice|city|Oblast|
 |----|------|-----|----|----|----|----|
 |0|1012063|Přidružení - Danville Kaledonie Farmářům uvedení na trh|https://sites.google.com/site/caledoniafarmers... ||Danville|Kaledonie|
 |1|1011871|Věci odvál čas Stearns Farmářům ' trhu|http://Stearnshomestead.com |Silniční ridge 6975|Parma|Cuyahoga|

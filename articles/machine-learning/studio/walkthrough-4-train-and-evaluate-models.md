@@ -3,8 +3,8 @@ title: 'Krok 4: Natrénování a vyhodnocení modelů prediktivní analýzy | Do
 description: 'Vývoj prediktivního řešení návod krok 4: trénování, stanovení skóre a vyhodnotit několik modelů v Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 069e2f4d2cb6ae1e9890610bbace5298c62eee75
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: d0277db665259d485c5a5a06f0013f3c0d6a177c
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821017"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261781"
 ---
 # <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>Krok 4 průvodce: Natrénování a vyhodnocení modelů prediktivní analýzy
 Toto téma obsahuje návod, čtvrtý krok [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)

@@ -4,7 +4,7 @@ description: ''
 services: ''
 documentationcenter: ''
 author: vikramdesai01
-manager: vikdesai
+manager: amberb
 editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: cwatson
-ms.openlocfilehash: 38cfd354f11ef3d888ad70e71549868d398495f5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0a8b5532f00d5feb964109710132816a191298e7
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429639"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274768"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Správa přístupu k fakturačních údajů pro Azure pomocí řízení přístupu na základě rolí
 
-Můžete udělit přístup pro Azure fakturační údaje členům vašeho týmu tak, že jeden z následujících rolí uživatele přiřadíte ke svému předplatnému: účet správce, Správce služeb, spolusprávce, vlastník, Přispěvatel, Čtenář a čtenář fakturace. By mají přístup k fakturační údaje v [webu Azure portal](https://portal.azure.com/), a můžete použít [rozhraní API pro fakturaci](billing-usage-rate-card-overview.md) prostřednictvím kódu programu získat faktury (jednou přihlásí) a podrobnosti o použití. Další informace o, kdo může udělit rolí a rolí můžete udělat, najdete v článku [role v Azure RBAC](../role-based-access-control/built-in-roles.md).
+Přístup k fakturačním údajům Azure můžete členům vašeho týmu poskytnout přiřazením jedné z následujících uživatelských rolí k vašemu předplatnému: Správce účtu, Správce služeb, Spolusprávce, Vlastník, Přispěvatel, Čtenář a Čtenář fakturace. By mají přístup k fakturační údaje v [webu Azure portal](https://portal.azure.com/), a můžete použít [rozhraní API pro fakturaci](billing-usage-rate-card-overview.md) prostřednictvím kódu programu získat faktury (jednou přihlásí) a podrobnosti o použití. Další informace o, kdo může udělit rolí a rolí můžete udělat, najdete v článku [role v Azure RBAC](../role-based-access-control/built-in-roles.md).
 
 ## <a name="opt-in"></a> Povolíte dalším uživatelům pro přístup k faktury
 
@@ -42,13 +42,13 @@ Správce účtu musí přihlásit pomocí [webu Azure portal](https://portal.azu
 
 Vyjádření výslovného souhlasu umožňuje Správce služeb, spolusprávce, vlastník, Přispěvatel, Čtenář a čtenář fakturace na předplatné, které chcete stahovat PDF faktury na webu Azure Portal. Starší než prosince 2016 faktury jsou však k dispozici pouze pro účet správce teď.
 
-Správce účtu můžete nakonfigurovat také mít faktury posílat e-mailem. Další informace najdete v tématu [získat faktury e-mailem](billing-download-azure-invoice-daily-usage-date.md).
+Správce účtu může také nakonfigurovat odesílání faktur e-mailem. Další informace najdete v tématu věnovaném [dostávání faktur e-mailem](billing-download-azure-invoice-daily-usage-date.md).
 
 ## <a name="adding-users-to-the-billing-reader-role"></a>Přidání uživatele k roli Čtenář fakturace
 
 Role Čtenář fakturace má přístup jen pro čtení na fakturační informace o předplatném na webu Azure portal a žádné přístup ke službám, jako jsou virtuální počítače a účty úložiště. Přiřazení role Čtenář fakturace jinému uživateli, který potřebuje přístup k fakturační informace o předplatném, ale není možnost správy služeb Azure. Tato role je vhodný pro uživatele v organizaci, kteří pouze provádět správu finanční a poplatků za odběr služeb Azure.
 
-1. Vyberte své předplatné z [okně předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure portal.
+1. Vyberte požadované předplatné v [okně Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure Portal.
 
 1. Vyberte **řízení přístupu (IAM)** a potom klikněte na tlačítko **přidat**.
 
@@ -58,11 +58,11 @@ Role Čtenář fakturace má přístup jen pro čtení na fakturační informace
 
     ![Snímek obrazovky ukazuje Čtenář fakturace v zobrazení místní nabídky](./media/billing-manage-access/select-roles.PNG)
 
-1. Zadejte e-mailu pro daného uživatele chcete pozvat a potom klikněte na **OK** k odesílání e-mailové pozvánce.
+1. Zadejte e-mail uživatele, kterého chcete pozvat, a potom kliknutím na **OK** odešlete pozvánku.
 
     ![Snímek obrazovky zobrazující k zadání e-mailu na pozvání uživatele](./media/billing-manage-access/add-user.PNG)
 
-1. Postupujte podle pokynů v e-mailovou pozvánku a přihlaste se jako čtenář fakturace.
+1. Postupujte podle pokynů v e-mailové pozvánce a přihlaste se jako čtenář fakturace.
 
     ![Snímek obrazovky, který ukazuje, co všechno uvidí Čtenář fakturace na webu Azure portal](./media/billing-manage-access/billing-reader-view.png)
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 941a7242e1f6fddd1ff91721141be4e1f9816b31
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 650effed388dde4419e2ff6aede2f0468551a959
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344859"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276682"
 ---
 # <a name="runbook-input-parameters"></a>Vstupní parametry runbooku
 
@@ -230,9 +230,8 @@ Popisek pod do vstupního pole zobrazí se atributy, které jsou nastavené pro 
   ```
 
 #### <a name="start-a-runbook-by-using-the-rest-api-and-assign-parameters"></a>Spuštění runbooku pomocí rozhraní REST API a přiřadit parametry
-Úlohy runbooku se dají vytvářet a spuštěn pomocí REST API služby Azure Automation s použitím **UMÍSTIT** metodu s následující identifikátor URI požadavku:
+Úlohy runbooku se dají vytvářet a spuštěn pomocí REST API služby Azure Automation s použitím **UMÍSTIT** metodu s následující identifikátor URI požadavku: https://management.core.windows.net/<subscription-id>/cloudServices/<cloud-service-name>/resources/automation/~/automationAccounts/<automation-account-name>/jobs/<job-id>?api-version=2014-12-08`
 
-    https://management.core.windows.net/<subscription-id>/cloudServices/<cloud-service-name>/resources/automation/~/automationAccounts/<automation-account-name>/jobs/<job-id>?api-version=2014-12-08`
 
 V identifikátoru URI požadavku nahraďte následující parametry:
 

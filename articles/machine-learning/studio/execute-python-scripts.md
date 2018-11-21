@@ -4,8 +4,8 @@ description: Jsou podrobněji popsány dále návrh zásadami pro podporu pro sk
 keywords: Python strojového učení, balíčky pandas, pandas v pythonu, skriptů pythonu, spouštění skriptů pythonu
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 1d79eaacf61a51a9c74a6db8a508050cde20ab46
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 8378ccaf64dae9c3116bb175e6cb44ba75a2e367
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821191"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261526"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
 

@@ -8,13 +8,13 @@ ms.author: banders
 ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
-ms.openlocfilehash: fb20661ddf8a92ac0f5ba4141c28111b117c85a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: benshy
+ms.openlocfilehash: fab9d8639a81a4d5e7fbcddb36b975109ba636a7
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972211"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276631"
 ---
 # <a name="cloudyn-training-videos"></a>Cloudyn Školicí videa
 

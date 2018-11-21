@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9489d6e8780a30c5c54ee307d6c45c4bc2eb0e5d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fa72765e02592b72efb09320958a0aa244ae8b08
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419278"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265283"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – zabezpečení a osvědčené postupy DevOps
 
@@ -24,7 +24,7 @@ Tento článek obsahuje doporučení pro zabezpečení a DevOps v Azure HDInsigh
 
 Balíček zabezpečení podniku (ESP) podporuje ověřování na základě služby Active Directory, podpora více uživatelů a řízení přístupu na základě rolí. S parametrem ESP zvolili je HDInsight cluster připojený k doméně služby Active Directory a správce rozlehlé sítě můžete nakonfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Hivu pomocí Apache Ranger. Správce může také auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu.
 
-ESP funkce jsou aktuálně ve verzi preview a jsou dostupné pouze pro následující typy clusteru: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka a Apache Interactive Query.
+ESP je k dispozici pro následující typy clusteru: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka a interaktivní dotazy (Hive LLAP). 
 
 Použijte následující postup k nasazení clusteru HDInsight připojené k doméně:
 

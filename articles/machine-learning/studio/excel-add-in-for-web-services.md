@@ -3,8 +3,8 @@ title: Aplikace Excel add-in pro Machine Learning Web services | Dokumentace Mic
 description: Jak používat Azure Machine Learning Web services přímo v aplikaci Excel bez psaní kódu.
 services: machine-learning
 documentationcenter: ''
-author: marthalc
-ms.custom: (previous ms.author marthalc)
+author: ericlicoding
+ms.custom: (previous ms.author=marthalc, author=marthalc)
 ms.author: amlstudiodocs
 ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 08f5d1f6e3f787d7835fcdd9dd7a963b657e7930
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: debe3165a60cd0da866842a425c1ca8c52eab644
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821192"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262019"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio
 Excel usnadňuje volání webové služby přímo, bez nutnosti psát jakýkoli kód.

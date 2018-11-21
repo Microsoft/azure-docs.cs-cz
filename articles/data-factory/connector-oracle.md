@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 11/21/2018
 ms.author: jingwang
-ms.openlocfilehash: ec0fc11ac2caf421f331a8fe72f1dacdf6b8a702
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 1e561a59ebe503e0088362087dbda4d7d89fee4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42312082"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275682"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do databáze Oracle pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,11 +65,46 @@ Následující vlastnosti jsou podporovány pro Oracle propojenou službu.
 >[!TIP]
 >Pokud dosáhnete o tom, že chyba "ORA-01025: UPI parametr je mimo rozsah" a systém Oracle je verze 8i, přidejte `WireProtocolMode=1` připojovací řetězec a zkuste to znovu.
 
-Pokud chcete povolit šifrování na připojení Oracle, máte dvě možnosti:
+**Chcete povolit šifrování na připojení Oracle**, máte dvě možnosti:
 
-1.  Na straně serveru Oracle, přejděte k Oracle rozšířené zabezpečení (OAS) a nakonfigurujte nastavení šifrování, která podporuje Triple-DES šifrování (3DES) a Advanced Encryption (Standard AES), najdete v podrobnostech [tady](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Konektor ADF Oracle automatické způsob šifrování použít ten, který konfigurujete v OAS při navazování připojení k systému Oracle.
+1.  Chcete-li použít **Triple-DES šifrování (3DES) a Advanced Encryption (Standard AES)**, na straně serveru Oracle, přejděte k Oracle rozšířené zabezpečení (OAS) a konfigurovat nastavení šifrování, přečtěte si podrobnosti o [tady](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Konektor ADF Oracle automatické způsob šifrování použít ten, který konfigurujete v OAS při navazování připojení k systému Oracle.
 
-2.  Na straně klienta, můžete přidat `EncryptionMethod=1` v připojovacím řetězci. Tímto dojde k použití protokolu SSL/TLS jako metodu šifrování. K tomu je nutné zakázat jiného typu než SSL nastavení šifrování v OAS na straně serveru Oracle aby nedošlo ke konfliktu šifrování.
+2.  Chcete-li použít **SSL**, postupujte podle následujících kroků:
+
+    1.  Získejte informace o certifikátu SSL. Získejte informace o kódování DER certifikátu z vašeho certifikátu protokolu SSL a uložte výstup (---začít certifikát... Ukončit certifikát---) jako textový soubor.
+
+        ```
+        openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text
+        ```
+
+        **Příklad:** extrahovat informace certifikátu z DERcert.cer; uložte výstup cert.txt
+
+        ```
+        openssl x509 -inform DER -in DERcert.cer -text
+        Output:
+        -----BEGIN CERTIFICATE-----
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        XXXXXXXXX
+        -----END CERTIFICATE-----
+        ```
+    
+    2.  Vytvářejte úložiště klíčů nebo truststore. Následující příkaz vytvoří soubor truststore s nebo bez hesla ve formátu PKCS č. 12.
+
+        ```
+        openssl pkcs12 -in [Path to the file created in the previous step] -out [Path and name of TrustStore] -passout pass:[Keystore PWD] -nokeys -export
+        ```
+
+        **Příklad:** vytvoří PKCS12 trustsotre soubor s názvem MyTrustStoreFile s heslem
+
+        ```
+        openssl pkcs12 -in cert.txt -out MyTrustStoreFile -passout pass:ThePWD -nokeys -export  
+        ```
+
+    3.  Umístěte soubor truststore na počítači místní prostředí IR, např. na C:\MyTrustStoreFile.
+    4.  Ve službě ADF, nakonfigurujte připojovacím řetězci Oracle s `EncryptionMethod=1` a odpovídající `TrustStore` / `TrustStorePassword`hodnoty, třeba `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;EncryptionMethod=1;TrustStore=C:\\MyTrustStoreFile;TrustStorePassword=<trust_store_password>`.
 
 **Příklad:**
 

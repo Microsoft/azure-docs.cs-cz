@@ -12,26 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 3a1c5341e391c8be1af42eea940fbf147b88e7c8
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1ae10fb749e671f7a8b5ca48e652711d7dcf98c8
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685697"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262597"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Attribution využití zákazníka partnerů Azure
 
-Jako partner softwaru pro Azure vaše řešení nevyžaduje komponenty Azure nebo, je nutné nasadit přímo na infrastruktuře Azure. Zákazníci, kteří nasazení partnerského řešení a vytvořit svoje vlastní prostředky Azure můžete těžké získat přehled o stavu nasazení a získat optická dopad na Azure růst. Když přidáte vyšší úroveň viditelnosti, bylo v souladu s prodejním týmům Microsoftu a získáte kredit ve výši programy partnera společnosti Microsoft.   
+Jako partner softwaru pro Azure vaše řešení nevyžaduje komponenty Azure nebo, je nutné nasadit přímo na infrastruktuře Azure. Zákazníci, kteří nasazení partnerského řešení a vytvořit svoje vlastní prostředky Azure můžete těžké získat přehled o stavu nasazení a získat optická dopad na Azure růst. Když přidáte vyšší úroveň viditelnosti, bylo v souladu s prodejním týmům Microsoftu a získáte kredit ve výši programy partnera společnosti Microsoft. 
 
 Microsoft teď nabízí způsob, jak partnerů lépe sledovat využití Azure pro zákaznická nasazení softwaru na Azure. Nová metoda používá Azure Resource Manageru můžete orchestrovat nasazení služby Azure.
 
 Jako partner Microsoftu můžete přidružit využití Azure s jakýmikoli prostředky Azure, které zřizujete jménem zákazníka. Můžete formulář přidružení prostřednictvím Azure Marketplace, rychlý start úložiště, privátní úložiště GitHub a zapojení zákazníků od vyhrazeného pracovníka. Pokud chcete povolit sledování, jsou k dispozici dva přístupy:
 
 - Šablony Azure Resource Manageru: šablony Resource Manageru nebo šablony řešení k nasazení služeb Azure ke spuštění softwaru partnera. Partneři můžete vytvořit šablonu Resource Manageru pro definování infrastrukturu a konfiguraci jejich řešení Azure. Šablony Resource Manageru umožňuje vám a vašim zákazníkům k nasazení svého řešení v průběhu životního cyklu. Máte jistotu, že se prostředky nasadí konzistentně. 
-
 - Rozhraní API Azure Resource Manageru: Partneři mohou volat rozhraní API Resource Manageru přímo k nasazení šablony Resource Manageru nebo ke generování volání rozhraní API přímo zřídit služby Azure. 
+
+Využití attribution zákazníka se vyžaduje u všech [šablony řešení](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md) publikovaných na webu Azure Marketplace. 
 
 ## <a name="use-resource-manager-templates"></a>Použití šablon Resource Manageru
 

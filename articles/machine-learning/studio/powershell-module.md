@@ -4,8 +4,8 @@ description: Modul PowerShell pro Azure Machine Learning je dostupný v režimu 
 keywords: experiment,lineární regrese,algoritmy Machine Learningu,kurz Machine Learningu,techniky prediktivního modelování,experiment z oblasti datové vědy
 services: machine-learning
 documentationcenter: ''
-author: hning86
-ms.custom: (previous ms.author haining)
+author: ericlicoding
+ms.custom: (previous ms.author=haining, author=hning86)
 ms.author: amlstudiodocs
 manager: mwinkle
 editor: cgronlun
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.openlocfilehash: c46b99de8a93c54246d52a3cb369fd926e7c60cd
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 795ce4e86c5fd8dac34f18cbbe80dd1395d94c5c
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822037"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263124"
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>Modul PowerShell pro Microsoft Azure Machine Learning
 Modul PowerShell pro Azure Machine Learning je výkonný nástroj, který umožňuje použití Windows Powershellu ke správě pracovní prostory, experimenty, datové sady, klasické webové služby a další.

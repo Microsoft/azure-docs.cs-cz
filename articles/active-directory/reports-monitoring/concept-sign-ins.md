@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ae962cba5e3d08661eb1c93edfc2feb221a9367e
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: d3705267520087e098e3e2bcc55e677935dc6097
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623761"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275329"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -57,6 +57,9 @@ Sestava přihlášení uživatele poskytuje odpovědi na následující otázky:
 Sestavy přihlášení můžete přistupovat výběrem **přihlášení** v **aktivity** část **Azure Active Directory** okna portálu [webuAzureportal](https://portal.azure.com).
 
 ![Aktivita přihlašování](./media/concept-sign-ins/61.png "Aktivita přihlašování")
+
+> [!IMPORTANT]
+> Sestavy přihlášení zobrazí pouze **interaktivní** přihlášení, které je, přihlášení, kde uživatel ručně přihlásí pomocí svého uživatelského jména a hesla. Neinteraktivní přihlášení, jako je například ověřování služba služba, se nezobrazují v sestavě přihlášení. 
 
 Protokol přihlášení má výchozí zobrazení seznamu, které obsahuje následující položky:
 

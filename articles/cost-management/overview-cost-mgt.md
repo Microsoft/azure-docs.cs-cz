@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 09/21/2018
 ms.topic: overview
 ms.service: cost-management
-manager: dougeby
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 470802c1119c1c367dcd72f782dfc1036f75f6db
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 16e2da864d51cbc44457715813e851fd873c8746
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035942"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276665"
 ---
 # <a name="what-is-azure-cost-management"></a>Co je Azure Cost Management?
 
@@ -53,7 +53,7 @@ Azure má další nástroje, které nejsou součástí sady funkcí Azure Cost M
 - [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) – umožňuje využít aktuální místní licence k Windows Serveru nebo SQL Serveru pro virtuální počítače v Azure a ušetřit tak peníze.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Nyní už víte, co služba Cost Management umí, a můžete ji začít využívat.
 

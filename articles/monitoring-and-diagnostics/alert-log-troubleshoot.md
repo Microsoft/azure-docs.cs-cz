@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 68488788f73c9662b5d1eaa3b670f2120941defc
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: e2326f56ad367f744bc7895bc8c4bfd6f32d0310
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616482"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264875"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
 ## <a name="overview"></a>Přehled
@@ -61,7 +61,7 @@ Vzhledem k tomu, že příkaz zahrnuje *... vytvořit souhrn podle* a k dispozic
 
 ![Metriky měření provádění dotazu s více hodnotami](./media/monitor-alerts-unified/LogMMQuery.png)
 
-"Agregační po" je $table – data je seřazená podle sloupce $table (stejně jako v RED); Potom jsme skupině a hledat typy pole "Agregační po" (to znamená) $table – například: hodnoty pro availabilityResults bude považovat za jeden vykreslení na entitu (jako ve zvýrazněných oranžovou). V tuto zobrazovanou hodnotu/entitu – služba upozornění kontroluje tří po sobě jdoucí porušení, ke kterým dochází (jako je uvedené v zelené) pro výstrahy, které se aktivují pro tabulkovou hodnotu "availabilityResults". Podobně pokud pro jakoukoli jinou hodnotu $table Pokud jsou tři po sobě jdoucí porušení – další oznámení se budou aktivovat pro stejné. pomocí výstrah služby automaticky řazení hodnot v jedné vykreslení na entitu (jako oranžová) podle času.
+"Agregační po" je $table – data je seřazená podle sloupce $table (stejně jako v RED); Potom jsme skupině a hledat typy pole "Agregační po" (to znamená) $table – například: hodnoty pro availabilityResults bude považovat za jeden vykreslení na entitu (jako ve zvýrazněných oranžovou). V tuto zobrazovanou hodnotu/entitu – služba upozornění kontroluje tří po sobě jdoucí porušení, ke kterým dochází (jako je uvedené v zelené) pro výstrahy, které se aktivují pro tabulkovou hodnotu "availabilityResults". Podobně pokud se pro jakoukoli jinou hodnotu $table Pokud jsou tři po sobě jdoucí porušení - další oznámení se budou aktivovat pro stejnou věc; pomocí výstrah služby automaticky řazení hodnot v jedné vykreslení na entitu (jako oranžová) podle času.
 
 Nyní předpokládejme, že metriky měření úpravy pravidel upozornění protokolů a byl dotaz `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` se zbytkem config zbývající stejná jako před zahrnutím logika upozornění pro tři po sobě jdoucí porušení. Možnost "Agregace při" v tomto případě bude ve výchozím nastavení: časové razítko. Protože zadat pouze jednu hodnotu v dotazu pro souhrn... (to znamená) časové razítko; podobný předchozímu příkladu na konci provádění výstup by měl jak je znázorněno níže. 
 

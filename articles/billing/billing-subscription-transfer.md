@@ -5,7 +5,7 @@ keywords: Převod předplatného přenos předplatného azure, azure, přesunout
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: adpick
 editor: ''
 tags: billing,top-support-issue
 ms.assetid: c8ecdc1e-c9c5-468c-a024-94ae41e64702
@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e9b5d1a84417cf6e6264211ea6e542ab712f9fe
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 66ad7c4eb07946daa278589e4a1a819f12315270
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422593"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276359"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Přenos vlastnictví předplatného Azure na jiný účet
 
@@ -110,9 +110,9 @@ Převod předplatného samoobslužné je k dispozici pro nabídky nebo typy pře
 
 ### <a name="whoisaa"></a> Kdo je správcem účtu předplatného?
 
-Správce účtu je osoba, která registrovanou službu nebo zakoupili předplatné Azure. Mají autorizaci pro přístup [centra pro účty](https://account.azure.com/Subscriptions) a provádět různé úlohy správy, jako je vytvářet předplatná, zrušit předplatná, fakturaci a předplatné změnit nebo změnit správce služeb. Pokud si nejste jisti, kdo je správcem účtu pro předplatné, postupujte následovně Pokud chcete zjistit.
+Správce účtu je osoba, která registrovanou službu nebo zakoupili předplatné Azure. Mají autorizaci pro přístup [centra pro účty](https://account.azure.com/Subscriptions) a provádět různé úlohy správy, jako je vytvářet předplatná, zrušit předplatná, fakturaci a předplatné změnit nebo změnit správce služeb. Pokud si nejste jisti, kdo je správcem účtu předplatného, zjistíte to následujícím postupem.
 
-1. Přejděte [stránce předplatná na webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Přejděte na [stránku Předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Vyberte předplatné, které chcete zkontrolovat a pak hledejte v části **nastavení**.
 1. Vyberte **vlastnosti**. Správce účtu předplatného se zobrazí v **správce účtu** pole.
 

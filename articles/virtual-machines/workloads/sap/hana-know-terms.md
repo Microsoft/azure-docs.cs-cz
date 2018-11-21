@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/04/2018
+ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d8197e3695da8869806e44775f601d95b17fcb2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 902c4c94cc7366af342816e9b4776af603711c8b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028049"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275432"
 ---
 # <a name="know-the-terms"></a>Vědět podmínky
 
@@ -39,7 +39,7 @@ Několik běžných definice se běžně používají v architektury a technick�
    Domény uživatele z místní domény můžete přístup k serverům a spustit služby na těchto virtuálních počítačů (například systému DBMS služby). Místně nasadili komunikace a název řešení mezi virtuálními počítači a virtuálních počítačů nasazených Azure je možné. Tento scénář je typický pro způsob, ve které jsou nasazené prostředky většina SAP. Další informace najdete v tématu [plánování a návrh pro Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuální sítě s připojením site-to-site pomocí webu Azure portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Tenant**: zákazník nasazené v razítku velká Instance HANA načte samostatný do *tenanta.* Tenant je izolovaný v oblasti sítí, úložiště a výpočetní vrstvy od ostatních tenantů. Úložiště a výpočetní jednotky přiřazená různých tenantech nelze zobrazit mezi sebou ani vzájemně komunikovat na úrovni razítko velká Instance HANA. Zákazník se může rozhodnout pro nasazení do různých tenantech. Dokonce i pak neexistuje žádná komunikace mezi klienty na úrovni razítko velká Instance HANA.
 - **Kategorie SKU**: pro velké Instance HANA, jsou k dispozici tyto dvě kategorie skladové položky:
-    - **Typ třídy I**: S72 S72m, S144, S144m, S192, S192m a S192xm
+    - **Typ třídy I**: S72 S72m, S96, S144, S144m, S192, S192m a S192xm
     - **Zadejte třídu II**: S384 S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm a S960m
 
 

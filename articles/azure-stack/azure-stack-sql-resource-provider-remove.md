@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: e84d2a446de537924f55f1b784731e54c94c768d
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: b79d64cc063105cb8ecce537a09a7f39a78eef4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51851566"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275023"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Odebrat poskytovatele prostředků SQL
 
@@ -28,20 +28,16 @@ Před odebráním poskytovatele prostředků SQL, musíte odebrat všechny závi
 > [!NOTE]
 > Můžete najít odkazy ke stažení pro prostředek zprostředkovatele instalační programy v [nasazení požadavky na poskytovatele prostředků](.\azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
+Odebrání poskytovatele prostředků SQL nedojde k odstranění databáze tenantů z hostitelské servery.
+
 ## <a name="dependency-cleanup"></a>Vyčištění závislostí
 
 Následuje několik úloh vyčištění před spuštěním skriptu DeploySqlProvider.ps1 odebrat poskytovatele prostředků.
 
-Azure Stack tenanta uživatelé nesou zodpovědnost za tyto úlohy čištění:
-
-* Odstraňte všechny své databáze od zprostředkovatele prostředků. (Při odstranění databáze tenantů neodstraní data.)
-* Zrušit registraci obor názvů poskytovatele.
-
 Operátor Azure stacku zodpovídá za tyto úlohy čištění:
 
-* Odstraní hostitelské servery z adaptéru MySQL.
-* Odstraní všechny plány, které odkazují na adaptér MySQL.
-* Odstraní všechny kvóty, které jsou spojené s adaptérem MySQL.
+* Odstraňte všechny plány, které odkazují na adaptéru pro SQL.
+* Odstraňte všechny kvóty, které jsou spojené s adaptérem SQL.
 
 ## <a name="to-remove-the-sql-resource-provider"></a>Chcete-li odebrat poskytovatele prostředků SQL
 
@@ -50,9 +46,9 @@ Operátor Azure stacku zodpovídá za tyto úlohy čištění:
    > [!NOTE]
    > Odinstalace poskytovatele prostředků SQL bude pokračovat i v případě poskytovatele prostředků aktuálně používají závislé prostředky.
   
-2. Získat binární kopii tohoto poskytovatele prostředků SQL a pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře.
+2. Získat kopii balíčku instalace poskytovatele prostředků SQL a pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře.
 
-3. Otevřete okno konzole Powershellu s nová se zvýšenými oprávněními a přejděte do adresáře, které jste extrahovali binární soubory poskytovatele prostředků SQL.
+3. Otevřete okno konzole Powershellu s nová se zvýšenými oprávněními a přejděte do adresáře, které jste extrahovali soubory instalace poskytovatele prostředků SQL.
 
 4. Spusťte skript DeploySqlProvider.ps1 s následujícími parametry:
 

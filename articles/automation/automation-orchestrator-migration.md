@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83fff9fa322431983c1d385705ae235a8e818570
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 80b0523f8442e30e6af329263be454fa545933d6
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237260"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275273"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Migrace z nástroje Orchestrator do služby Azure Automation (beta verze)
 Sady Runbook v [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) jsou založeny na aktivit z integračních balíčků, které jsou napsané konkrétně pro Orchestrátor, zatímco runbooky ve službě Azure Automation jsou založené na prostředí Windows PowerShell.  [Grafické runbooky](automation-runbook-types.md#graphical-runbooks) ve službě Azure Automation mají podobné vzhled, aby runbooky nástroje Orchestrator pomocí jejich aktivity představující rutiny prostředí PowerShell, podřízené runbooky a prostředky.
@@ -79,7 +79,9 @@ Toto je základní proces převést sady runbook Orchestrator a jeho import do A
 ### <a name="using-runbook-converter"></a>Použití převaděče sady Runbook
 Syntaxe pro **ConvertFrom-SCORunbook** vypadá takto:
 
-    ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```powershell
+ConvertFrom-SCORunbook -RunbookPath <string> -Module <string[]> -OutputFolder <string>
+```
 
 * RunbookPath - cestu k souboru exportu, který obsahuje sady runbook pro převod.
 * Modul – čárkami oddělený seznam integrační moduly obsahující aktivity v sadách runbook.
@@ -87,8 +89,9 @@ Syntaxe pro **ConvertFrom-SCORunbook** vypadá takto:
 
 V tomto ukázkovém příkazu převede sady runbook do souboru exportu, názvem **MyRunbooks.ois_export**.  Tyto sady runbook pomocí integračních balíčků služby Active Directory a aplikace Data Protection Manager.
 
-    ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
-
+```powershell
+ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module c:\ip\SystemCenter_IntegrationModule_ActiveDirectory.zip,c:\ip\SystemCenter_IntegrationModule_DPM.zip -OutputFolder "c:\runbooks"
+```
 
 ### <a name="log-files"></a>Soubory protokolu
 Převaděč sady Runbook se vytvoří následující soubory protokolu ve stejném umístění jako převedené sady runbook.  Pokud soubory již existují, budou přepsány s informacemi z poslední převodu.

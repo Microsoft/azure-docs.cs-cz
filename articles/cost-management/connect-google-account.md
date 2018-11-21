@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 48f1afcbef873e1af4346199c00ee2fadb1ad858
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1877acbd39f4e312e3a567e092bb0bcf7531b96b
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830238"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276325"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Připojení účtu Google Cloud Platform
 

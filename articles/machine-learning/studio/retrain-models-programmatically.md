@@ -3,8 +3,8 @@ title: Programová obnova modelů Machine Learning | Dokumentace Microsoftu
 description: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: e6be52dbfbe6f5d51589f3a3738013dedeee6bdd
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 2dd72446bd1238b7c70535bf848d52909f82d990
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824757"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262223"
 ---
 # <a name="retrain-machine-learning-models-programmatically"></a>Programové přeučení modelů Azure Machine Learning
 V tomto návodu se dozvíte, jak programově přeučit Azure Machine Learning webové služby pomocí C# a provedení dávky služby Machine Learning service.

@@ -3,8 +3,8 @@ title: Použití Azure Machine Learning parametrů webové služby | Dokumentace
 description: Jak používat parametry webové služby Azure Machine Learning k úpravě chování modelu při přístupu k webové službě.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: db46dfd98b402668f5d716902b96fed469648460
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 34ae252ff2c37a6e4e9f90155c4fda79b81e29a2
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819063"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52264331"
 ---
 # <a name="use-azure-machine-learning-web-service-parameters"></a>Použití parametrů webové služby Azure Machine Learning
 Webové služby Azure Machine Learning je vytvořen a publikujte experiment, který obsahuje moduly s konfigurovatelné parametry. V některých případech můžete změnit chování modulu, zatímco je webová služba spuštěna. *Webová služba parametry* umožňují provést tuto úlohu. 
@@ -46,7 +46,7 @@ Dokumentaci k rozhraní API pro webové služby obsahuje informace pro uživatel
 > 
 > 
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 Jako příklad předpokládejme, že máme experimentu s [exportovat Data] [ writer] modul, který odesílá informace do služby Azure blob storage. Budeme definovat parametr webové služby s názvem "Blob cesty", který umožňuje uživateli webové služby změnit cestu k úložišti objektů blob při přístupu k službě.
 
 1. V nástroji Machine Learning Studio, klikněte na tlačítko [exportovat Data] [ writer] modul se vybere. Její vlastnosti jsou uvedeny v podokně vlastností napravo od plátna experimentu.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: ada5f55cf356ca79efb7cb45c76a4812804400c5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 13edef4c02aff167316ccae2755a6ec1b58e2e89
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222059"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262614"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -268,8 +268,8 @@ Při konfiguraci nastavenou na hodnotu true, toto nastavení kodér služby live
 Volitelné. Určuje Id prostředku služby Asset média, který obsahuje obrázek slatu. Výchozí hodnota je null. 
 
 
->[!NOTE] 
->Před vytvořením kanálu, obrázek slatu s následujícími omezeními musí být nahrán jako vyhrazený prostředek (žádné další soubory by měly být v tomto prostředku). Tato image se používá pouze v případě, kodér služby live Encoding je vložení břidlicová z důvodu přerušení ad nebo byla explicitně signalizována k vložení břidlicová. Live encoder můžete také přejít do režimu slatu během určité chybové stavy – například pokud dojde ke ztrátě vstupního signálu. Není aktuálně neumožňuje použití vlastní image, když kodér služby live Encoding přejde do takové stavu ke ztrátě vstupního signálu. Můžete hlasovat pro tuto funkci [tady](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel).
+> [!NOTE] 
+> Před vytvořením kanálu, obrázek slatu s následujícími omezeními musí být nahrán jako vyhrazený prostředek (žádné další soubory by měly být v tomto prostředku). Tato image se používá pouze v případě, kodér služby live Encoding je vložení břidlicová z důvodu přerušení ad nebo byla explicitně signalizována k vložení břidlicová. Není aktuálně neumožňuje použití vlastní image, když kodér služby live Encoding přejde do takové stavu ke ztrátě vstupního signálu. Můžete hlasovat pro tuto funkci [tady](https://feedback.azure.com/forums/169396-azure-media-services/suggestions/10190457-define-custom-slate-image-on-a-live-encoder-channel).
 
 
 * Maximálně 1920 × 1080 v řešení.

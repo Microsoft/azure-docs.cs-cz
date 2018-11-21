@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 6de0d29895a6d12d3a5aa761c0c4c5148f62dd81
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 086399f669b704a0ae2c9f719906e7efa672b5b1
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256268"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262498"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Příprava na zálohování virtuálních počítačů Azure
 
@@ -34,7 +34,7 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
 
 ## <a name="supported-operating-systems-for-backup"></a>Podporované operační systémy pro zálohování
 
- * **Linux**: Azure Backup podporuje [seznam distribucí, které Azure schvaluje](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), s výjimkou CoreOS Linux. Seznam operačních systémů Linux, které podporují obnovování souborů najdete v tématu [obnovení souborů ze záloh virtuálních počítačů](backup-azure-restore-files-from-vm.md#for-linux-os).
+ * **Linux**: Azure Backup podporuje [seznam distribucí, které Azure schvaluje](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), s výjimkou CoreOS Linux a 32bitový operační systém. Seznam operačních systémů Linux, které podporují obnovování souborů najdete v tématu [obnovení souborů ze záloh virtuálních počítačů](backup-azure-restore-files-from-vm.md#for-linux-os).
 
     > [!NOTE]
     > Další používání your vlastní distribuce Linuxu mohou práce, za předpokladu, že agent virtuálního počítače je k dispozici na virtuálním počítači a podporovaný Python. Tyto distribuce ale podporované nejsou.

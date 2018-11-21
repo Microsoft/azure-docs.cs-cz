@@ -1,6 +1,6 @@
 ---
-title: Kontrola přístupu Azure AD pomocí kontrol přístupu | Dokumentace Microsoftu
-description: Zjistěte, jak kontrolovat přístup pomocí kontrol přístupu Azure Active Directory.
+title: Zahájení kontroly přístupu pomocí kontrol přístupu Azure AD | Dokumentace Microsoftu
+description: Zjistěte, jak spustit revizi přístupu pomocí Azure Active Directory kontroly přístupu.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -14,14 +14,14 @@ ms.component: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 09247a430d2ece44c307297838b7f4dc2819d56d
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 455a4922dfd0832c49729bed007dd696562be07a
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607868"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263414"
 ---
-# <a name="review-access-with-azure-ad-access-reviews"></a>Zkontrolovat přístup s Azure AD kontroly přístupu
+# <a name="start-an-access-review-with-azure-ad-access-reviews"></a>Zahájení kontroly přístupu pomocí kontrol přístupu Azure AD
 
 Azure Active Directory (Azure AD) zjednodušuje podnikům správu přístupu k aplikacím a členy skupin ve službě Azure AD a dalších Microsoft Online Services s funkci s názvem přístup kontroly. Možná jste dostali e-mailu od Microsoftu, která vás vyzve k kontrola přístupu pro členy skupiny nebo uživatelé s přístupem k aplikaci. 
 

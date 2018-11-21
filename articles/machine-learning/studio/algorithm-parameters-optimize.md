@@ -3,8 +3,8 @@ title: Optimalizace algoritmů ve službě Azure Machine Learning | Dokumentace 
 description: Vysvětluje, jak vybrat optimální parametrem nastaveným pro algoritmus ve službě Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 0be0aec3f14dfc4d32327c64a54faaa4e039a93c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: c5445833d9f0e003304af3a1f60fb82a372898bf
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822445"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261815"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>Vybrat parametry pro optimalizaci algoritmů ve službě Azure Machine Learning
 Toto téma popisuje, jak zvolit správný hyperparameter nastavení pro algoritmus ve službě Azure Machine Learning. Většina algoritmů strojového učení mít parametry se mají nastavit. Při tréninku modelu, budete muset zadat hodnoty pro tyto parametry. Efektivnost trénovaného modelu, závisí na parametry modelu, které zvolíte. Proces hledání optimální sadu parametrů se označuje jako *modelu výběru*.

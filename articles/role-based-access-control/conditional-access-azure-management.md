@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2017
+ms.date: 11/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: 083cb4eb84746f4a61b51f3573a0bf66110fe1ee
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 4cfd3c38631778373e99872fd305d8316cdadb75
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435044"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274734"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Správa přístupu ke správě Azure s podmíněným přístupem
 
@@ -32,7 +32,7 @@ Vytvoření zásad pro správu Azure, vyberte **Microsoft Azure Management** pod
 
 ![Podmíněný přístup pro správu Azure](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-Zásady, kterou vytvoříte platí pro všechny koncové body správy Azure, včetně portálu Azure classic, webu Azure portal, Azure Resource Manageru poskytovatele, classic služby API Management a Azure Powershellu.
+Zásady, kterou vytvoříte platí pro všechny koncové body správy Azure, včetně portálu Azure classic, webu Azure portal, Azure Resource Manageru poskytovatele, classic služby API Management a Azure Powershellu. Všimněte si, že se zásady vztahují k Azure Powershellu, která volá rozhraní API Azure Resource Manageru. Nevztahuje se na [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2), která volá Microsoft Graphu.
 
 > [!CAUTION]
 > Ujistěte se, že chápete, jak podmíněný přístup funguje před nastavením zásad pro správu přístupu pro správu Azure. Ujistěte se, že nevytvoříte podmínky, které by mohly blokovat vlastní přístup k portálu.

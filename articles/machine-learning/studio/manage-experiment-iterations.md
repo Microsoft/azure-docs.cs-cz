@@ -3,8 +3,8 @@ title: Správa iterací experimentů v nástroji Machine Learning Studio | Dokum
 description: Správa iterací experimentů v nástroji Azure Machine Learning Studio
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 3fd9a87ace7b78b394dc0c44a030efc5b4dffb09
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 31fab58a82487d0a5a3d39fd0ac1e907bc5565eb
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820065"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262461"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Správa iterací experimentů v nástroji Azure Machine Learning Studio
 Vývojem modelu prediktivní analýzy je iterativní proces - úpravou různých funkcí a parametrů experimentu sloučit výsledky až se ujistíte, že máte natrénován efektivní model. Klíč k tomuto procesu se ke sledování různých iterací experimentu parametry a konfigurací.
@@ -50,7 +50,7 @@ Předpokládejme například, vytvoření experimentu s [lineární regrese] [ l
 | 0.1 |9/11/2014 16:18:58: 00 |
 | 0.2 |9/11/2014 16:24:33: 00 |
 | 0.4 |9/11/2014 16:28:36: 00 |
-| 0.5 |9/11/2014 16:33:31: 00 |
+| 0,5 |9/11/2014 16:33:31: 00 |
 
 Vyberete-li **zobrazit HISTORII spuštění**, zobrazí se seznam všech těchto spuštění:
 

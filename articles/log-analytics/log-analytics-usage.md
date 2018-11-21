@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a881ea18558e49656dc165d1545250bffeac4303
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 01603655be9b6051be9b894da4e55338ff4df810
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713074"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262121"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 
@@ -29,37 +29,127 @@ ms.locfileid: "51713074"
 > - [Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](log-analytics-manage-cost-storage.md) popisuje, jak řídit své náklady tak, že změníte vaše data uchovávají.
 > - [Monitorování využití a odhadované náklady](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcí pro různé cenové modely pro monitorování Azure. Také popisuje, jak změnit cenový model.
 
-Log Analytics obsahuje informace o objemu shromážděných dat, zdrojích odesílajících data a různých typech odesílaných dat.  Využití dat můžete zkontrolovat a analyzovat pomocí řídicího panelu **Využití Log Analytics**. Řídicí panel ukazuje, kolik dat shromažďují jednotlivá řešení a kolik dat odesílají vaše počítače.
+## <a name="understand-usage"></a>Vysvětlení využití
 
-## <a name="understand-the-usage-dashboard"></a>Vysvětlení řídicího panelu Využití
-Řídicí panel **Využití Log Analytics** obsahuje tyto informace:
+Použití **využití Log Analytics a odhadované náklady** můžete zkontrolovat a analyzovat data využití. Ukazuje, kolik dat shromažďují jednotlivá řešení, kolik dat je uchovávané a odhad nákladů na základě objemu dat přijatých a jakékoli další uchování nad rámec objemu zahrnutého v ceně.
 
-- Objem dat
-    - Objem dat v průběhu času (v závislosti na vašem aktuálním časovém rozsahu)
-    - Objem dat podle řešení
-    - Data, která nejsou spojena s počítačem
-- Počítače
-    - Počítače odesílající data
-    - Počítače, které během posledních 24 hodin neodeslaly žádná data
-- Nabídky
-    - Uzly Insight and Analytics
-    - Uzly Automation and Control
-    - Uzly zabezpečení  
-- Výkon
-    - Čas potřebný k shromáždění a indexaci dat  
-- Seznam dotazů
+![Využití a odhadované náklady](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
 
-![Řídicí panel Využití a náklady](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
+Prozkoumat data podrobněji, klikněte na ikonu v horní části napravo od buď z grafů v **využití a odhadované náklady** stránky. Teď můžete pracovat s Tento dotaz a prozkoumejte podrobnosti o využití.  
+
+![Zobrazení protokolů](media/log-analytics-usage/logs.png)<br>
+
+## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Řešení potíží způsobujících větší využití, než se čekalo
+Větší využití je způsobeno jedním nebo obojím z těchto aspektů:
+- Do Log Analytics se odesílá více dat, než se čekalo.
+- Do Log Analytics odesílá data více uzlů, než se čekalo.
+
+### <a name="data-volume"></a>Objem dat 
+Na **využití a odhadované náklady** stránky, *příjem dat podle řešení* graf ukazuje celkový objem dat odesílaných a kolik je odesíláno každé řešení. Díky tomu můžete určit trendy, jako je například, jestli se rozrůstá celkové využití dat (nebo využití podle konkrétního řešení), zbývající konstantní nebo se snižuje. Query sloužící ke generování to je
+
+`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+Všimněte si, že v klauzuli "kde IsBillable = true" filtruje z určité řešení, pro které neplatí žádné poplatky ingestování datových typů. 
+
+Můžete přejít na trendy v datech najdete konkrétní datové typy, například pokud chcete zkoumat data z důvodu protokoly služby IIS:
+
+`Usage| where TimeGenerated > startofday(ago(31d))| where IsBillable == true
+| where DataType == "W3CIISLog"
+| summarize TotalVolumeGB = sum(Quantity) / 1024 by bin(TimeGenerated, 1d), Solution| render barchart`
+
+### <a name="nodes-sending-data"></a>Uzlů odesílajících data
+
+Chcete-li undersand počet uzlů vykazujících data za poslední měsíc, použijte
+
+`Heartbeat | where TimeGenerated > startofday(ago(31d))
+| summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
+| render timechart`
+
+Pokud chcete zobrazit počet událostí může ingestovat počítače, použijte
+
+`union withsource = tt *
+| summarize count() by Computer |sort by count_ nulls last`
+
+Pomocí tohoto dotazu opatrně, jako je nákladné ke spuštění. Pokud chcete zobrazit typy dat, které jsou sendng dat k určitému počítači, použijte:
+
+`union withsource = tt *
+| where Computer == "*computer name*"
+| summarize count() by tt |sort by count_ nulls last `
+
+> [!NOTE]
+> Některá pole datového typu využití, zatímco stále ve schématu, jsou zastaralé a bude, že jejich hodnoty jsou již nejsou naplněny. Jedná se o **počítače** a také související s příjmem pole (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** a **AverageProcessingTimeMs**.
+
+Pokud chcete dostat hlouběji do zdroje dat pro konkrétní datový typ, tady jsou některé užitečné příklady dotazů:
+
++ Řešení **zabezpečení**
+  - `SecurityEvent | summarize AggregatedValue = count() by EventID`
++ Řešení **pro správu protokolů**
+  - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
++ Datový typ **Perf**
+  - `Perf | summarize AggregatedValue = count() by CounterPath`
+  - `Perf | summarize AggregatedValue = count() by CounterName`
++ Datový typ **Event**
+  - `Event | summarize AggregatedValue = count() by EventID`
+  - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
++ Datový typ **Syslog**
+  - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
+  - `Syslog | summarize AggregatedValue = count() by ProcessName`
++ Datový typ **AzureDiagnostics**
+  - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
+
+### <a name="tips-for-reducing-data-volume"></a>Tipy pro snížení objemu dat
+
+Některé návrhy pro snížení objemu shromažďovaných protokolů zahrnují:
+
+| Zdroj velkého objemu dat | Postup snížení objemu dat |
+| -------------------------- | ------------------------- |
+| Události zabezpečení            | Vyberte [běžné nebo minimální události zabezpečení](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/). <br> Změňte zásady auditu zabezpečení tak, aby se shromažďovaly jenom potřebné události. Zaměřte se hlavně na potřebu shromažďovat události pro <br> - [audit platformy Filtering Platform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [audit registru](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [audit systému souborů](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [audit objektu jádra](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [audit manipulace s popisovačem](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> -audit vyměnitelného úložiště |
+| Čítače výkonu       | Změňte [konfiguraci čítačů výkonu](log-analytics-data-sources-performance-counters.md) tak, aby se: <br> – Snížila četnost shromažďování dat <br> – Snížil počet čítačů výkonu |
+| Protokoly událostí                 | Změňte [konfiguraci protokolů událostí](log-analytics-data-sources-windows-events.md) tak, aby se: <br> – Snížil počet shromažďovaných protokolů událostí <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace*. |
+| Syslog                     | Změňte [konfiguraci syslogu](log-analytics-data-sources-syslog.md) tak, aby se: <br> – Snížil počet zařízení, ze kterých se shromažďují data <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace* a *Ladění*. |
+| AzureDiagnostics           | Změňte shromažďování protokolů prostředků tak, aby se: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
+| Data řešení z počítačů, které řešení nepotřebují | Použijte [cílení na řešení](../azure-monitor/insights/solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů. |
+
+### <a name="getting-node-counts"></a>Získávání počty uzlu 
+
+Pokud jste na "Za uzel (OMS)," cenové úrovně, pak se účtují na základě počtu uzlů a řešení používáte, počtu přehledy a analýzy uzly, u kterých se vám účtují se nezobrazí v tabulce na **využití a odhadované náklady**stránky.  
+
+Pokud chcete zobrazit počet různých uzlů, které zabezpečení, můžete dotaz:
+
+`union
+(
+    Heartbeat
+    | where (Solutions has 'security' or Solutions has 'antimalware' or Solutions has 'securitycenter')
+    | project Computer
+),
+(
+    ProtectionStatus
+    | where Computer !in~
+    (
+        (
+            Heartbeat
+            | project Computer
+        )
+    )
+    | project Computer
 )
+| distinct Computer
+| project lowComputer = tolower(Computer)
+| distinct lowComputer
+| count`
 
-### <a name="to-work-with-usage-data"></a>Práce s daty o využití
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-usage/azure-portal-01.png)<br><br>  
-3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor.
-4. V seznamu v levém podokně vyberte **Využití a odhad nákladů**.
-5. Na řídicím panelu **Využití a odhad nákladů** můžete upravit časový rozsah výběrem možnosti **Čas: Posledních 24 hodin** a změnou časového intervalu.<br><br> ![časový interval](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>
-6. Zobrazte okna kategorií využití s oblastmi, které vás zajímají. Vyberte okno a pak v něm klikněte na některou položku, abyste zobrazili další podrobnosti v [Prohledávání protokolů](log-analytics-queries.md).<br><br> ![příklad klíčového indikátoru výkonnosti využití dat](media/log-analytics-usage/data-volume-kpi-01.png)<br><br>
-7. Na řídicím panelu Prohledávání protokolů zkontrolujte vrácené výsledky hledání.<br><br> ![příklad prohledávání protokolů využití](./media/log-analytics-usage/usage-log-search-01.png)
+Pokud chcete zobrazit počet různých uzlů, které služby Automation, použijte dotaz:
+
+` ConfigurationData 
+ | where (ConfigDataType == "WindowsServices" or ConfigDataType == "Software" or ConfigDataType =="Daemons") 
+ | extend lowComputer = tolower(Computer) | summarize by lowComputer 
+ | join (
+     Heartbeat 
+       | where SCAgentChannel == "Direct"
+       | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
+ ) on lowComputer
+ | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Vytvoření upozornění při větším než očekávaném shromažďování dat
 Tato část popisuje postup vytvoření upozornění v těchto případech:
@@ -109,68 +199,6 @@ Při vytváření upozornění pro druhý dotaz (předpověď, že během 24 hod
 Zadejte existující nebo vytvořte novou [Skupinu akcí](../monitoring-and-diagnostics/monitoring-action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
 
 Pokud obdržíte upozornění, pomocí kroků v následující části můžete řešit potíže způsobující větší využití, než se čekalo.
-
-## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Řešení potíží způsobujících větší využití, než se čekalo
-Řídicí panel Využití vám pomůže určit, proč je využití (a tedy i náklady) větší, než očekáváte.
-
-Větší využití je způsobeno jedním nebo obojím z těchto aspektů:
-- Do Log Analytics se odesílá více dat, než se čekalo.
-- Do Log Analytics odesílá data více uzlů, než se čekalo.
-
-### <a name="check-if-there-is-more-data-than-expected"></a>Kontrola, jestli se shromažďuje více dat, než se čekalo 
-Na stránce Využití jsou dvě klíčové části, které pomáhají určit, co způsobuje shromažďování většího objemu dat.
-
-Graf *Objem dat v průběhu času* ukazuje celkový objem odeslaných dat a počítače odesílající nejvíce dat. V grafu v horní části můžete vidět, jestli vaše celkové využití dat roste, je konstantní nebo se snižuje. Seznam počítačů ukazuje prvních 10 počítačů odesílajících nejvíce dat.
-
-Graf *Objem dat podle řešení* ukazuje objem dat, který odesílají jednotlivá řešení, a řešení odesílající nejvíce dat. Graf v horní části ukazuje celkový objem dat odesílaných jednotlivými řešeními v průběhu času. Pomocí těchto informací můžete určit, jestli řešení v průběhu času odesílá více dat, zhruba stejné množství dat nebo méně dat. Seznam řešení ukazuje prvních 10 řešení odesílajících nejvíce dat. 
-
-Tyto dva grafy zobrazují veškerá data. Některá data jsou fakturovatelná, ostatní jsou zdarma. Pokud se chcete zaměřit pouze na data, která jsou fakturovatelná, změňte dotaz na vyhledávací stránce tak, aby zahrnoval `IsBillable=true`.  
-
-![Grafy objemu dat](./media/log-analytics-usage/log-analytics-usage-data-volume.png)
-
-Podívejte se na graf *Objem dat v průběhu času*. Pokud chcete zobrazit datové typy a řešení odesílající nejvíce dat z konkrétního počítače, klikněte na název počítače. Klikněte na název prvního počítače v seznamu.
-
-Na následujícím snímku obrazovky odesílá z počítače nejvíce dat datový typ *Správa protokolů / Výkon*.<br><br> ![objem dat pro počítač](./media/log-analytics-usage/log-analytics-usage-data-volume-computer.png)<br><br>
-
-Potom se vraťte na řídicí panel *Využití* a podívejte se na graf *Objem dat podle řešení*. Pokud chcete zobrazit počítače odesílající nejvíce dat pro řešení, klikněte na název řešení v seznamu. Klikněte na název prvního řešení v seznamu. 
-
-Na následujícím snímku obrazovky je potvrzení, že počítač *mycon* odesílá nejvíce dat pro řešení Správa protokolů.<br><br> ![objem dat pro řešení](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
-
-V případě potřeby proveďte další analýzy k identifikaci velkých objemů v rámci řešení nebo datového typu. Ukázky dotazů:
-
-+ Řešení **zabezpečení**
-  - `SecurityEvent | summarize AggregatedValue = count() by EventID`
-+ Řešení **pro správu protokolů**
-  - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
-+ Datový typ **Perf**
-  - `Perf | summarize AggregatedValue = count() by CounterPath`
-  - `Perf | summarize AggregatedValue = count() by CounterName`
-+ Datový typ **Event**
-  - `Event | summarize AggregatedValue = count() by EventID`
-  - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
-+ Datový typ **Syslog**
-  - `Syslog | summarize AggregatedValue = count() by Facility, SeverityLevel`
-  - `Syslog | summarize AggregatedValue = count() by ProcessName`
-+ Datový typ **AzureDiagnostics**
-  - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
-
-Pomocí následujících kroků snižte objem shromažďovaných protokolů:
-
-| Zdroj velkého objemu dat | Postup snížení objemu dat |
-| -------------------------- | ------------------------- |
-| Události zabezpečení            | Vyberte [běžné nebo minimální události zabezpečení](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/). <br> Změňte zásady auditu zabezpečení tak, aby se shromažďovaly jenom potřebné události. Zaměřte se hlavně na potřebu shromažďovat události pro <br> - [audit platformy Filtering Platform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [audit registru](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [audit systému souborů](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [audit objektu jádra](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [audit manipulace s popisovačem](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> -audit vyměnitelného úložiště |
-| Čítače výkonu       | Změňte [konfiguraci čítačů výkonu](log-analytics-data-sources-performance-counters.md) tak, aby se: <br> – Snížila četnost shromažďování dat <br> – Snížil počet čítačů výkonu |
-| Protokoly událostí                 | Změňte [konfiguraci protokolů událostí](log-analytics-data-sources-windows-events.md) tak, aby se: <br> – Snížil počet shromažďovaných protokolů událostí <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace*. |
-| Syslog                     | Změňte [konfiguraci syslogu](log-analytics-data-sources-syslog.md) tak, aby se: <br> – Snížil počet zařízení, ze kterých se shromažďují data <br> – Shromažďovaly pouze požadované úrovně událostí Například zrušte shromažďování událostí úrovně *Informace* a *Ladění*. |
-| AzureDiagnostics           | Změňte shromažďování protokolů prostředků tak, aby se: <br> – Snížil počet prostředků, které odesílají protokoly do Log Analytics <br> – Shromažďovaly pouze požadované protokoly |
-| Data řešení z počítačů, které řešení nepotřebují | Použijte [cílení na řešení](../azure-monitor/insights/solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů. |
-
-### <a name="check-if-there-are-more-nodes-than-expected"></a>Kontrola, jestli existuje více uzlů, než se čekalo
-Pokud používáte *za uzel (Log Analytics)* cenové úrovně, pak se bude účtovat podle počtu uzlů a řešení. V části *nabídek* řídicího panelu využití můžete zobrazit, kolik uzlů každé nabídky se používá.<br><br> ![řídicí panel využití](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
-
-Kliknutím na **Zobrazit všechno...** zobrazte úplný seznam počítačů odesílajících data do vybrané nabídky.
-
-Použijte [cílení na řešení](../azure-monitor/insights/solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 
 ## <a name="next-steps"></a>Další postup
 * V tématu [Prohledávání protokolů v Log Analytics](log-analytics-queries.md) zjistíte, jak používat jazyk vyhledávání. Pomocí vyhledávacích dotazů můžete na datech o využití provádět další analýzy.

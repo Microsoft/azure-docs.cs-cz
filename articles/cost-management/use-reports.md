@@ -8,20 +8,20 @@ ms.author: banders
 ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 8267401a0dade0ca7cfb1dbf69d2fdfd6786f1df
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: efb199a9e97a6e80cc24dfe32f6477b4c7abf89a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976780"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276019"
 ---
 # <a name="use-cloudyn-reports"></a>Použití sestav Cloudyn
 
 Tento článek popisuje účel sestavách Cloudyn, které jsou součástí portálu Cloudyn. Také popisuje, jak lze efektivně používat sestavy. Většina sestav jsou výsledkem je intuitivní a mít jednotný vzhled a chování. Většinu akcí, které vám pomůžou v jedné sestavě, můžete provést také v jiných sestavách. Přehled o tom, jak používat sestavách Cloudyn, včetně postupu při přizpůsobení a uložit nebo k naplánování sestavy, naleznete v tématu [vysvětlení sestav nákladů](understanding-cost-reports.md).
 
-Azure Cost Management nabízí podobné funkce do Cloudyn. Azure Cost Management je řešení správy nákladů na nativní Azure. Pomůže vám analýzu nákladů, vytvořit a spravovat rozpočty, exportovat data a zkontrolujte a reagovat na doporučení pro optimalizaci ještě ušetříte peníze. Další informace najdete v tématu [Azure Cost Management](overview-cost-mgt.md).
+Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. Další informace najdete v tématu [Azure Cost Management](overview-cost-mgt.md).
 
 ## <a name="report-types"></a>Typy sestav
 

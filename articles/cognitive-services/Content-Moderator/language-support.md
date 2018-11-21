@@ -10,14 +10,14 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: sajagtap
-ms.openlocfilehash: 3b0cd73be1857d0849c4cb53dcc52c5c27206e80
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 5c170fd2871d0e487f705e1e7274fdfdda4049e6
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230909"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276369"
 ---
-# <a name="language-and-region-support-for-content-moderator-api"></a>Podpora jazyka a oblasti pro Content Moderator API
+# <a name="language-support-for-content-moderator-api"></a>Podpora jazyků pro Content Moderator API
 
 > [!NOTE]
 > Pro **jazyk** parametr, přiřaďte `eng` nebo toto podokno nechat prázdné najdete v článku s počítače **klasifikace** odpovědí (funkce preview). **Tato funkce podporuje pouze angličtinu**.

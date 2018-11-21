@@ -184,17 +184,17 @@ items:
     href: https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/430309-computer-vision-api
+  - name: Taxonomie kategorií
+    href: Category-Taxonomy.md
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
   - name: Plány Azure do budoucna
-    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+    href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: Regionální dostupnost
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Taxonomie kategorií
-    href: Category-Taxonomy.md
-ms.openlocfilehash: decb06feda53ea2b43eb9954aa5976a86239d7de
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
+ms.openlocfilehash: 1dfca8cfb4a43f65c9999a02afdf670cb99032ad
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632369"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276087"

@@ -1,5 +1,5 @@
 ---
-title: NÁZEV | Dokumentace Microsoftu
+title: Vaše aplikace Azure live nabídky na webu Azure Marketplace | Dokumentace Microsoftu
 description: .
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 643b7d674de3d51f98b69d6f0659478c9893e3b1
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 18a8e6ae8ab3bd4299c6a014f938e73a2a021492
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809312"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263584"
 ---
 <a name="make-your-azure-application-offer-live-on-azure-marketplace"></a>Vaše aplikace Azure live nabídky na webu Azure Marketplace 
 ===========================================================
@@ -33,19 +33,22 @@ Umožní\'s projít tento proces podrobněji, abyste lépe pochopili, co se děj
 <a name="publishing-process"></a>Proces publikování 
 ------------------
 
-Kdy kliknete \"publikovat\" na kartě Editor zahájíte proces publikování.
+Kdy kliknete \"publikovat\" pod **Editor** kartu a zahájit proces publikování.
 
 ![Nabízí Go živé pořadí 1 – publikování](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_publish.png)
 
-Na kartě Stav se zobrazí postup publikování a ve kterém kroku nabídky je na.
+V části **stav** kartu, zobrazí se postup publikování a ve kterém kroku nabídky je na.
 
 ![Nabízí Go živé pořadí 2 – pracovní postup](./media/cloud-partner-portal-publish-managed-app/newOffer_managedApp_workflow.png)
 
-Kdykoli během procesu publikování můžete přihlásit a klikněte na kartu všechny nabízí zobrazíte nejnovější stav pro všechny svoje nabídky. Můžete kliknout přímo na stav vaší nabídky a podrobnosti o tom, kde se nachází vaši nabídku v procesu publikování.
+Kdykoli během procesu publikování můžete přihlásit a klikněte na tlačítko **všechny nabízí** kartu zobrazíte nejnovější stav pro všechny vaše nabídky. Můžete kliknout přímo na stav vaší nabídky a podrobnosti o tom, kde se nachází vaši nabídku v procesu publikování.
 
-Umožní\'s názorný postup vás provede všechny publikování kroky popisují, co se stane v každém kroku a jak dlouho by měl odhadnou každý krok bude trvat.
+> [!WARNING]
+> Pokud není povolené využití attribution zákazníka, během procesu publikování se zobrazí následující chybová zpráva: "partnerů Azure zákazníka využití attribution chybí v jedné nebo více šablon Azure Resource Manageru. Lze vyřešit přidáním sledování identifikátor GUID šablony Azure Resource Manageru v balíčcích mainTemplate.json pro následujícího plánu: servicenow. Další podrobnosti najdete v tématu http://aka.ms/customerusageattribution. " 
 
-### <a name="validate-pre-requisites-1-day"></a>Požadavky na ověření (\<1 den) 
+Pojďme projděte všechny kroky pro publikování a o tom, co se stane v každém kroku a jak dlouho by měl odhadnou budou trvat jednotlivé kroky.
+
+### <a name="validate-prerequisites-1-day"></a>Ověření předpokladů (\<1 den) 
 
 Po kliknutí na \"publikovat\", automatickou kontrolu proběhne k zajištění\'ve vyplní všechna povinná pole na vaši nabídku. Pokud nejsou všechna pole vyplněné, upozornění se zobrazí vedle pole a budete muset naplnit přesně a potom klikněte na \'publikovat\' znovu.
 
@@ -59,11 +62,11 @@ Tento krok je, kde můžeme spustit několik testů, které Ujistěte se, že va
 
 Od tohoto kroku může trvat několik dní, odhlaste se na portál partnerů cloudu. Pošleme vám oznámení e-mailem Pokud nejsou žádné chyby. Pokud vše projde úspěšně, proces se automaticky přesunou krok zřizování.
 
-### <a name="packaging-and-lead-generation-registration-1-hour"></a>Balení a vést registrace generace (\<1 hodina) 
+### <a name="packaging-and-lead-generation-registration-1-hour"></a>Balení a vést generování registrace (\<1 hodina) 
 
 Během této fáze jsme se sloučením technickou a marketingovou obsah do co se bude na stránce produktu na webu.
 
-### <a name="offer-available-in-preview"></a>Nabídka je k dispozici ve verzi Preview 
+### <a name="offer-available-in-preview"></a>Nabídka je k dispozici ve verzi preview 
 
 Zobrazí se oznamovací e-mail, že vaše nabídka byla úspěšně dokončena kroky potřebné pro přístup k nabídce ve verzi preview. V tomto kroku by měl zobrazit náhled vaší nabídky a ujistěte se, že všechno, co vypadá jako by měl být. Zaškrtněte, pokud chcete zobrazit, pokud je váš virtuální počítač se nasadí správně v přípravném prostředí.
 

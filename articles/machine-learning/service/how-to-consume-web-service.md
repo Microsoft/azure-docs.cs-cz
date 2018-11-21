@@ -9,18 +9,18 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 10/30/2018
-ms.openlocfilehash: 75faf344c64dc330a98b836a8852b42531645c49
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685170"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262895"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
 Rozhraní REST API Azure Machine Learning modelu jako webové služby vytvoří. Můžete odesílat data do tohoto rozhraní API a přijímat předpovědi vrácený modelu. V tomto dokumentu, zjistěte, jak vytvořit klientů pro webovou službu pomocí C#, Go, Java nebo Python.
 
-Webová služba se vytvoří při nasazení image do Azure Container Instance, Azure Kubernetes Service nebo Project Brainwave (pole programmable gate Array). Vytváření imagí z registrované modely a soubory vyhodnocení. Identifikátor URI použitý pro přístup k webové službě se dá načíst pomocí [SDK služby Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Pokud je povolené ověřování, můžete také použít sady SDK získat ověřovací klíče.
+Webová služba se vytvoří při nasazení image do Azure Container Instance, Azure Kubernetes Service nebo Project Brainwave (pole programmable gate Array). Vytváření imagí z registrované modely a soubory vyhodnocení. Identifikátor URI použitý pro přístup k webové službě se dá načíst pomocí [SDK služby Azure Machine Learning](https://aka.ms/aml-sdk). Pokud je povolené ověřování, můžete také použít sady SDK získat ověřovací klíče.
 
 Obecný pracovní postup při vytváření klienta, který používá webové služby ML je:
 

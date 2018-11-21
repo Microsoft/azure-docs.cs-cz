@@ -3,8 +3,8 @@ title: Přeučování Model strojového učení | Dokumentace Microsoftu
 description: Zjistěte, jak model přetrénujete a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: f94e55a654736229e38fe88214b6715509c52757
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: eea04b93349311cca6f88c10ddaf9c1b47828558
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821474"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262801"
 ---
 # <a name="retrain-a-machine-learning-model"></a>Přeučování Model strojového učení
 Jako součást procesu operacionalizace modelů strojového učení v Azure Machine Learning je váš model školení a uložen. Pak použijete ho k vytvoření prediktivní webové služby. Webová služba může být potom používán webové stránky, řídicí panely a mobilních aplikací. 

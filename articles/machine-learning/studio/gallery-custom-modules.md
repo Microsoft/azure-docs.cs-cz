@@ -3,8 +3,8 @@ title: Vlastní moduly Azure AI Galerie | Dokumentace Microsoftu
 description: Zjištění modulů služby vlastní machine learning v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: 6f92f3d81889bf79db21b5f24cb98963e4eafdb4
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 9ca07adecaa8d6e8b51d20014c95d4147a4a5eb8
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821170"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263499"
 ---
 # <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Zjištění modulů služby vlastní machine learning v galerii Azure AI
 
@@ -30,7 +30,7 @@ ms.locfileid: "51821170"
 V současné době nabízí v galerii modulů na *časové řady analytics*, *asociačních pravidel*, *clustering algoritmy* (nad rámec k-means), a  *vizualizace*a ostatní moduly nástroj centrem.
 
 
-## <a name="discover"></a>Vyhledat
+## <a name="discover"></a>Informace
 Chcete-li procházet vlastní moduly [ve galerii](http://gallery.cortanaintelligence.com)v části **Další**vyberte **vlastních modulů**.
 
 ![Vyberte vlastní moduly na domovskou stránku Galerie](./media/gallery-custom-modules/select-custom-modules-in-gallery.png)
@@ -79,7 +79,7 @@ Kromě ukázkový experiment vlastního modulu zkopírován do pracovního prost
 
 Vlastní modul je zkopírován do pracovního prostoru a umístěn v paletě modulů s integrovanou nebo vlastní modulů Machine Learning Studio. Nyní ji můžete použít ve své vlastní experimenty, stejně jako ostatní moduly ve vašem pracovním prostoru.
 
-## <a name="use"></a>Využití
+## <a name="use"></a>Použití
 
 Bez ohledu na to, kterou metodu zvolit import vlastního modulu, při importování modulu, modul je umístěn v paletě modulů v Machine Learning Studio. Z palety modul můžete použít vlastní modul v jakékoli experimentu ve vašem pracovním prostoru, stejně jako ostatní moduly.
 

@@ -3,8 +3,8 @@ title: Kurzy Azure AI Galerie | Dokumentace Microsoftu
 description: Vyhledat a sdílet kurzy v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 3153c05d5f199673a94f999e52a025ea9a34ce3e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 289590ddda878a9a14a72d4366f92a6444699a64
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823448"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52265045"
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Zjišťování a sdílení kurzy v galerii Azure AI
 

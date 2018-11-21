@@ -5,7 +5,7 @@ keywords: upgrade průběžné platby
 services: ''
 documentationcenter: ''
 author: jlian
-manager: jlian
+manager: alherz
 editor: ''
 tags: billing
 ms.assetid: 0b4ac8f3-3df0-478a-8a07-b18b40f0cf5f
@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7cb9d8e0f03dc5cb81d68d51be018e79074a32c2
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c9e5c877b2989f827eb5b157757708e09f1bbc3f
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391295"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274700"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Upgradujte svoje předplatné bezplatné zkušební verze nebo Microsoft Imagine Azure na průběžné platby
 

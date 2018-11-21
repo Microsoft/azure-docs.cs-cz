@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0ca8e1081b514d5569c84a6364d55e8f49bee533
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0d31fc0ecb06727aa44d31d832b0bfd5145b7c7d
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238994"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262088"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Rozpoznávání biomedicínských entit rozpoznávání pomocí šablony vědecké zpracování týmových dat (TDSP)
 
@@ -174,7 +174,7 @@ Word2Vec je slovo vkládání bez dohledu učení algoritmu, který trénovat mo
 
 ![Přeskočit Gram modelu](./media/scenario-tdsp-biomedical-recognition/skip-gram.png)
 
-Model využívá hierarchické Softmax a záporná vzorkování pro optimalizaci výkonu. Hierarchické SoftMax (H-SoftMax) je INSPIROVANÉ binárním stromům přibližný. H-SoftMax v podstatě nahradí bez stromové struktury vrstvy SoftMax hierarchické vrstvu, která obsahuje slova jako opustí. To umožňuje rozložit výpočet pravděpodobnosti výskytu slov na sekvenci výpočty pravděpodobnosti, které nám ušetří s vypočítá nákladné normalizace všechna slova. Protože vyvážené binárního stromu je hloubka log2 (| V |) (V je slovník), musíme vyhodnotit maximálně log2 (| V |) uzly získat poslední pravděpodobnost slova. Pravděpodobnost slovo w uveden jeho kontextu c je pak jednoduše produktu pravděpodobností pořízení vpravo a vlevo se změní v uvedeném pořadí, které vedou k jeho listový uzel. Integrujeme Huffmanova stromu na základě četnosti slova v datové sadě k zajištění, že častější slova získání reprezentace kratší. Další informace najdete v tématu [tento odkaz](http://sebastianruder.com/word-embeddings-softmax/).
+Model využívá hierarchické Softmax a záporná vzorkování pro optimalizaci výkonu. Hierarchické SoftMax (H-SoftMax) je INSPIROVANÉ binárním stromům přibližný. H-SoftMax v podstatě nahradí bez stromové struktury vrstvy SoftMax hierarchické vrstvu, která obsahuje slova jako opustí. To umožňuje rozložit výpočet pravděpodobnosti výskytu slov na sekvenci výpočty pravděpodobnosti, které nám ušetří s vypočítá nákladné normalizace všechna slova. Protože vyvážené binárního stromu je hloubka log2 (| V |) (V je slovník), musíme vyhodnotit maximálně log2 (| V |) uzly získat poslední pravděpodobnost slova. Pravděpodobnost slovo w uveden jeho kontextu c je pak jednoduše produktu pravděpodobností pořízení vpravo a vlevo se změní v uvedeném pořadí, které vedou k jeho listový uzel. Integrujeme Huffmanova stromu na základě četnosti slova v datové sadě k zajištění, že častější slova získání reprezentace kratší. Další informace najdete v tématu [tento odkaz](http://ruder.io/word-embeddings-softmax/).
 Image z [tady](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/).
 
 ##### <a name="visualization"></a>Vizualizace

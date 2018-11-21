@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 020923a76c94b10165e95bb4c5950419595dff0b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2aea370d7de063805eb584cd7d90395ca725b4c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252339"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275483"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Spuštění runbooku ve službě Azure Automation
 Následující tabulka vám pomůže určit metodu pro spuštění sady runbook ve službě Azure Automation, která je nejvhodnější pro váš konkrétní scénář. Tento článek obsahuje podrobnosti o spuštění sady runbook pomocí webu Azure portal a pomocí Windows Powershellu. Podrobnosti o dalších metodách jsou uvedeny v jiné dokumentaci, která se dá dostat z níže uvedených odkazů.
@@ -43,13 +43,13 @@ Následující obrázek ukazuje podrobný postup krok za krokem v životním cyk
 ## <a name="starting-a-runbook-with-windows-powershell"></a>Spuštění runbooku pomocí prostředí Windows PowerShell
 Můžete použít [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) spuštění runbooku pomocí prostředí Windows PowerShell. Následující vzorový kód spustí runbook s názvem Test-Runbook.
 
-```
+```azurepowershell-interactive
 Start-AzureRmAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
 Start-AzureRmAutomationRunbook vrátí objekt úlohy, který můžete použít ke sledování jeho stavu po spuštění runbooku. Pak můžete použít tento objekt úlohy v rutině [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) k určení stavu úlohy a [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput) k získání jejího výstupu. Následující vzorový kód spustí runbook s názvem Test-Runbook, počká na dokončení a potom zobrazí jeho výstup.
 
-```
+```azurepowershell-interactive
 $runbookName = "Test-Runbook"
 $ResourceGroup = "ResourceGroup01"
 $AutomationAcct = "MyAutomationAccount"
@@ -68,7 +68,7 @@ Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job
 
 Pokud runbook vyžaduje parametry, pak je potřeba je zadat jako [zatřiďovací tabulky](https://technet.microsoft.com/library/hh847780.aspx) kde klíč zatřiďovací tabulky odpovídá názvu parametru a hodnota je hodnota tohoto parametru. Následující příklad ukazuje spuštění runbooku se dvěma řetězcovými parametry s názvy FirstName a LastName, celočíselným parametrem s názvem RepeatCount a logickým parametrem s názvem Show. Další informace o parametrech najdete v tématu [parametry Runbooku](#Runbook-parameters) níže.
 
-```
+```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
 Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -ResourceGroupName "ResourceGroup01" –Parameters $params
 ```
@@ -83,7 +83,7 @@ Pokud je parametr datového typu [object], pak můžete pomocí následujícího
 
 Vezměte v úvahu následující testovací runbook, který přijme parametr s názvem uživatele.
 
-```
+```powershell
 Workflow Test-Parameters
 {
    param (
@@ -101,13 +101,13 @@ Workflow Test-Parameters
 
 Následující text by bylo použít pro tento parametr.
 
-```
+```json
 {FirstName:'Joe',LastName:'Smith',RepeatCount:'2',Show:'True'}
 ```
 
 Výsledkem je následující výstup:
 
-```
+```output
 Joe
 Smith
 Joe
@@ -119,7 +119,7 @@ Pokud je parametr pole, jako třeba [array] nebo [string []], můžete do něj p
 
 Zkuste použít následující testovací runbook, který přijme parametr s názvem *uživatele*.
 
-```
+```powershell
 Workflow Test-Parameters
 {
    param (
@@ -136,13 +136,13 @@ Workflow Test-Parameters
 
 Následující text by bylo použít pro tento parametr.
 
-```
+```input
 ["Joe","Smith",2,true]
 ```
 
 Výsledkem je následující výstup:
 
-```
+```output
 Joe
 Smith
 Joe
@@ -154,7 +154,7 @@ Pokud je parametr datového typu **PSCredential**, pak můžete zadat název slu
 
 Vezměte v úvahu následující testovací runbook, který přijme parametr s názvem přihlašovacích údajů.
 
-```
+```powershell
 Workflow Test-Parameters
 {
    param (
@@ -166,13 +166,13 @@ Workflow Test-Parameters
 
 Následující text by mohly být použity parametr user za předpokladu, že by existovat Asset přihlašovacích údajů volá *Moje přihlašovací údaje*.
 
-```
+```input
 My Credential
 ```
 
 Uživatelské jméno v přihlašovacích údajích bylo *jsmith*, výsledkem je následující výstup:
 
-```
+```output
 jsmith
 ```
 

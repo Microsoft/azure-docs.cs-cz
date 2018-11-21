@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 3883fc71c099718face38c16897040788fe0c6ab
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ca3a0e9a8c63ddc9a5c2ca34faffc683d0324321
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054465"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262549"
 ---
 # <a name="provision-a-linux-centos-data-science-virtual-machine-on-azure"></a>Zřízení CentOS Data Science virtuálního počítače s Linuxem v Azure
 
@@ -77,7 +77,7 @@ Tady jsou kroky pro vytvoření instance z Linuxu virtuální počítač pro dat
    * **Název**: název serveru datové vědy vytváříte.
    * **Uživatelské jméno**: první účet přihlásit ID.
    * **Heslo**: první heslo účtu (veřejný klíč SSH můžete použít namísto hesla).
-   * **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač. Musíte mít oprávnění vytváření prostředků pro toto předplatné.
+   * **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač. Toto předplatné musí mít oprávnění vytvářet prostředky.
    * **Skupina prostředků**: vytvořit nové nebo použijte existující skupinu.
    * **Umístění**: Vyberte datové centrum, které je nejvhodnější. Obvykle je většina vašich dat, nebo je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti datového centra.
    
@@ -97,12 +97,12 @@ Tady jsou kroky pro vytvoření instance z Linuxu virtuální počítač pro dat
    
    e. **Koupit**:
    
-   * Zřizování spusťte kliknutím na **koupit**. Pomocí odkazu uvedeného na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku.
+   * Zřizování spusťte kliknutím na **koupit**. Zobrazí se odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku.
 
 Zřizování by měla trvat asi 10-20 minut. Stav zřizování se zobrazí na portálu Azure portal.
 
 ## <a name="how-to-access-the-linux-data-science-virtual-machine"></a>Jak získat přístup k virtuální počítač Linux datové vědy
-Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Na Windows, si můžete stáhnout nástroj klienta SSH jako [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go.
+Po vytvoření virtuálního počítače se můžete přihlásit se pomocí protokolu SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Ve Windows můžete stáhnout klientský nástroj SSH, jako je [Putty](http://www.putty.org). Pokud dáváte přednost grafické desktop (X systému Windows), můžete použít X11 předávání v Putty nebo nainstalovat klienta X2Go.
 
 > [!NOTE]
 > Klient X2Go proveden výrazně lepší než X11 předávání v testování. Doporučujeme používat X2Go klienta klasické pracovní plochy grafické rozhraní.
@@ -160,7 +160,7 @@ Pokud chcete nainstalovat další knihovny jazyka Python, budete muset spustit `
     sudo /anaconda/bin/conda install -n py35 <package> #conda for Python 3.5
 
 
-### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
+### <a name="jupyter-notebook"></a>Jupyter Notebook
 Distribuce Anacondy také součástí poznámkového bloku Jupyter, prostředí pro sdílení kódu a analýzy. Poznámkový blok Jupyter je přístupný prostřednictvím JupyterHub. Přihlášení pomocí místního systému Linux uživatelské jméno a heslo.
 
 Server poznámkového bloku Jupyter předem nakonfigurovaný s Python 2, Python 3 a R jádra. Existuje ikona na ploše s názvem "Poznámkový blok Jupyter" spustit prohlížeč pro přístup k serveru poznámkového bloku. Pokud jste na virtuálním počítači přes SSH nebo X2Go klienta, můžete také navštívit [ https://localhost:8000/ ](https://localhost:8000/) pro přístup k serveru Poznámkový blok Jupyter.
@@ -374,6 +374,6 @@ Zde je, jak můžete pokračovat v učení a zkoumání:
 
 * [Vědecké zpracování dat v systému Linux virtuální počítač pro datové vědy](linux-dsvm-walkthrough.md) návodu se dozvíte, jak provést několik běžných úloh datové vědy Data Science virtuálního počítače s Linuxem zřízené tady. 
 * Prozkoumejte různé nástrojů pro datové vědy pro datovou vědu virtuální počítač a vyzkoušejte si nástroje popsané v tomto článku. Můžete také spustit *dsvm. více informací* na prostředí v rámci virtuálního počítače pro základní informace a odkazy na další informace o těchto nástrojích, nainstalovaný na virtuálním počítači.  
-* Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+* Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 * Přejděte [galerii Cortana Analytics](http://gallery.cortanaanalytics.com) pro machine learning a datové analýzy ukázky, které používají Cortana Analytics Suite.
 

@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: cost-management
-manager: dougeby
+manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 92236547e2100ab57f4ec6b4953f6c61ec87892d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963424"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275500"
 ---
 # <a name="manage-budgets"></a>Správa rozpočtů
 
@@ -27,7 +27,7 @@ Založené na přiřazené rozpočty, můžete nastavit prahové hodnoty výstra
 
 Rozpočet sestavy zobrazit přiřazené rozpočtu. Uživatelé můžou zobrazit po jejich útraty přes, v části nebo nominální s jejich využití v čase. Když vyberete **zobrazit/skrýt pole** v horní části stránky sestavy rozpočtu, můžete zobrazit náklady, rozpočet, celkové náklady nebo celkový rozpočet.
 
-Azure Cost Management nabízí podobné funkce do Cloudyn. Azure Cost Management je řešení správy nákladů na nativní Azure. Pomůže vám analýzu nákladů, vytvořit a spravovat rozpočty, exportovat data a zkontrolujte a reagovat na doporučení pro optimalizaci ještě ušetříte peníze. Další informace o rozpočtech ve službě Cost Management najdete v tématu [vytvořit a spravovat rozpočty](tutorial-acm-create-budgets.md).
+Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. Další informace o rozpočtech ve službě Cost Management najdete v tématu [vytvořit a spravovat rozpočty](tutorial-acm-create-budgets.md).
 
 ## <a name="create-budgets"></a>Vytvoření rozpočtů
 

@@ -9,13 +9,13 @@ ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
-manager: dougeby
-ms.openlocfilehash: b3dcfc1756932d75f9885490baa8d09af54d111c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+manager: benshy
+ms.openlocfilehash: 19cb1e414ba4a486139a502034e958907d027470
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957462"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275262"
 ---
 # <a name="tutorial-assign-access-to-cloudyn-data"></a>Kurz: Přiřazení přístupu k datům Cloudyn
 
@@ -118,7 +118,7 @@ Pokud chcete zhlédnout výukové video o vytváření hierarchie entit náklad�
 
 Pokud jste uživatel se smlouvou Azure Enterprise, podívejte se na výukové video o přiřazování účtů a předplatných k entitám [Connecting to Azure Resource Manager with Cloudyn](https://youtu.be/oCIwvfBB6kk) (Připojení k Azure Resource Manageru v Cloudyn).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

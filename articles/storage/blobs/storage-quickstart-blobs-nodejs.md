@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: d47878502816a0a61829859cc166c125448a2850
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 31804932cd4176cd55af752a7c1d05ae0a5f0cdf
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710881"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52260763"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Postup nahrání, stažení a výpis objektů BLOB pomocí sady Node.js SDK v2
 
@@ -124,7 +124,7 @@ const listContainers = async () => {
 };
 ```
 
-Velikost skupin je možné konfigurovat prostřednictvím možnosti [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest). Zavoláním funkce *listContainersSegmented* se vrátí metadata objektů blob jako pole instancí [ContainerResult](/nodejs/api/azure-storage/blobresult). Výsledky se vrací v dávkách (segmentech) v přírůstcích po 5 000. Pokud je v kontejneru více než 5 000 objektů blob, budou výsledky obsahovat hodnotu *continuationToken* (token pro pokračování). Pokud chcete vypsat další segmenty z kontejneru objektů blob, můžete token pro pokračování předat zpět do metody *listContainersSegment* jako druhý argument.
+Velikost skupin je možné konfigurovat prostřednictvím možnosti [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest). Zavoláním funkce *listContainersSegmented* se vrátí metadata objektů blob jako pole instancí [ContainerResult](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.containerresult?view=azure-node-latest). Výsledky se vrací v dávkách (segmentech) v přírůstcích po 5 000. Pokud je v kontejneru více než 5 000 objektů blob, budou výsledky obsahovat hodnotu *continuationToken* (token pro pokračování). Pokud chcete vypsat další segmenty z kontejneru objektů blob, můžete token pro pokračování předat zpět do metody *listContainersSegment* jako druhý argument.
 
 ### <a name="create-a-container"></a>Vytvoření kontejneru
 
@@ -167,7 +167,7 @@ const uploadString = async (containerName, blobName, text) => {
 ```
 ### <a name="upload-a-local-file"></a>Nahrání místního souboru
 
-Funkce *uploadLocalFile* používá metodu [createBlockBlobFromLocalFile](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromLocalFile) k nahrání a zapsání nebo přepsání souboru ze systému souborů do úložiště objektů blob. 
+Funkce *uploadLocalFile* používá metodu [createBlockBlobFromLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile-string--string--string--errororresult-blobresult--) k nahrání a zapsání nebo přepsání souboru ze systému souborů do úložiště objektů blob. 
 
 ```javascript
 const uploadLocalFile = async (containerName, filePath) => {
@@ -184,11 +184,11 @@ const uploadLocalFile = async (containerName, filePath) => {
     });
 };
 ```
-Mezi další dostupné přístupy k nahrávání obsahu do objektů blob patří práce s [textem](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText) a [datovými proudy](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromStream). Pokud chcete ověřit nahrání souboru do úložiště objektů blob, můžete pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) zobrazit data ve vašem účtu.
+Mezi další dostupné přístupy k nahrávání obsahu do objektů blob patří práce s [textem](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext-string--string--string---buffer--errororresult-blobresult--) a [datovými proudy](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Pokud chcete ověřit nahrání souboru do úložiště objektů blob, můžete pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) zobrazit data ve vašem účtu.
 
 ### <a name="list-the-blobs"></a>Výpis objektů blob
 
-Funkce *listBlobs* zavolá metodu [listBlobsSegmented](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_createBlockBlobFromText), která vrátí seznam metadat objektů blob v kontejneru. 
+Funkce *listBlobs* zavolá metodu [listBlobsSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listblobssegmented-string--continuationtoken--errororresult-listblobsresult--), která vrátí seznam metadat objektů blob v kontejneru. 
 
 ```javascript
 const listBlobs = async (containerName) => {
@@ -228,7 +228,7 @@ Implementace znázorněná v tomto příkladu změní zdroj a vrátí obsah obje
 
 ### <a name="delete-a-blob"></a>Odstranění objektu blob
 
-Funkce *deleteBlob* zavolá funkci [deleteBlobIfExists](/nodejs/api/azure-storage/blobservice#azure_storage_BlobService_deleteBlobIfExists). Jak již název napovídá, tato funkce nevrací chybu, pokud je objekt blob již odstraněný.
+Funkce *deleteBlob* zavolá funkci [deleteBlobIfExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists-string--string--errororresult-boolean--). Jak již název napovídá, tato funkce nevrací chybu, pokud je objekt blob již odstraněný.
 
 ```javascript
 const deleteBlob = async (containerName, blobName) => {

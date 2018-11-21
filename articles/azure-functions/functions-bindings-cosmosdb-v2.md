@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 4a1f9552b9a578cd34f3482e793947e06bb24407
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 24bc0b19d03148e98083fe6d21dd3980fcdf3714
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249775"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276601"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 2.x
 
@@ -187,7 +187,7 @@ Tady je kód Java:
             databaseName = "ToDoList",
             collectionName = "Items",
             leaseCollectionName = "leases",
-            reateLeaseCollectionIfNotExists = true,
+            createLeaseCollectionIfNotExists = true,
             connectionStringSetting = "AzureCosmosDBConnection") String[] items,
             final ExecutionContext context ) {
                 context.getLogger().info(items.length + "item(s) is/are changed.");
@@ -236,7 +236,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**leasesCollectionThroughput**| **leasesCollectionThroughput**| (Volitelné) Definuje počet jednotek požadavků přiřazení, když se vytvoří kolekci zapůjčení. Toto nastavení je pouze použité při `createLeaseCollectionIfNotExists` je nastavena na `true`. Tento parametr je automaticky nastaven při vytvoření vazby na portálu.
 |**leaseCollectionPrefix**| **leaseCollectionPrefix**| (Volitelné) Pokud nastavíte, přidá předponu zapůjčení vytvořené v kolekci zapůjčení pro tuto funkci umožňuje efektivně dvě samostatné funkce Azure s použitím různých předpony sdílet stejnou kolekci zapůjčení.
 |**feedPollDelay**| **feedPollDelay**| (Volitelné) Pokud sada, definuje, v milisekundách, zpoždění mezi dotazování oddílu pro nové změny na informační kanál, jsou Vyprázdněné všechny aktuální změny. Výchozí je 5 000 milisekund (5 sekund).
-|**leaseAcquireInterval**| **LeaseAcquireInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval aktivovala úloha Vypočítat, pokud oddíly jsou rovnoměrně mezi známými hostiteli instance. Výchozí hodnota je 13000 (13 sekund).
+|**leaseAcquireInterval**| **leaseAcquireInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval aktivovala úloha Vypočítat, pokud oddíly jsou rovnoměrně mezi známými hostiteli instance. Výchozí hodnota je 13000 (13 sekund).
 |**leaseExpirationInterval**| **leaseExpirationInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval, pro kterou je zapůjčení pořízené zapůjčení představující oddílu. Pokud v rámci tohoto intervalu nedojde k jeho prodloužení zapůjčení, způsobí vypršení platnosti a vlastnictví oddílu se přesune do jiné instance. Výchozí hodnota je 60000 (60 sekund).
 |**leaseRenewInterval**| **leaseRenewInterval**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval obnovení pro všechny zapůjčení pro oddíly právě načtený v instanci. Výchozí hodnota je 17000 (17 sekund).
 |**checkpointFrequency**| **checkpointFrequency**| (Volitelné) Pokud nastavíte, definuje, v milisekundách, interval mezi zapůjčení kontrolní body. Výchozí hodnota je vždy po úspěšném volání funkce.
@@ -1157,9 +1157,9 @@ Tady je kód jazyka JavaScript:
 
 <a name="infsharp"></a>
 
-### <a name="input---f-examples"></a>(Vstup) – příklady F #
+### <a name="input---f-examples"></a>Vstup - F# příklady
 
-Následující příklad ukazuje vstupní vazby Cosmos DB v *function.json* souboru a [funkce jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce přečte jednotlivý dokument a aktualizuje hodnotu textového dokumentu.
+Následující příklad ukazuje vstupní vazby Cosmos DB v *function.json* souboru a [ F# funkce](functions-reference-fsharp.md) , který používá vazba. Funkce přečte jednotlivý dokument a aktualizuje hodnotu textového dokumentu.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -1177,7 +1177,7 @@ Zde je vazba dat v *function.json* souboru:
 
 [Konfigurace](#input---configuration) bodu vysvětluje tyto vlastnosti.
 
-Tady je kód F #:
+Tady je F# kódu:
 
 ```fsharp
     (* Change input document contents using Azure Cosmos DB input binding *)
@@ -1201,7 +1201,7 @@ Tento příklad vyžaduje `project.json` soubor, který určuje, `FSharp.Interop
 }
 ```
 
-Chcete-li přidat `project.json` souborů naleznete v tématu [správy balíčků F #](functions-reference-fsharp.md#package).
+Chcete-li přidat `project.json` souborů naleznete v tématu [ F# Správa balíčků](functions-reference-fsharp.md#package).
 
 ### <a name="input---java-examples"></a>Vstup - příkladů v jazyce Java
 
@@ -1255,7 +1255,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="input---usage"></a>(Vstup) – využití
 
-V jazyce C# a F # funkce když funkce skončí úspěšně, všechny změny provedené vstupní dokument přes pojmenované vstupní parametry jsou automaticky trvalé. 
+V C# a F# funkce, když funkce skončí úspěšně, všechny změny provedené vstupní dokument přes pojmenované vstupní parametry jsou automaticky trvalé. 
 
 Do funkce jazyka JavaScript nejsou automaticky provedeny aktualizace při ukončení funkce. Místo toho použijte `context.bindings.<documentName>In` a `context.bindings.<documentName>Out` ke zpřístupnění aktualizací. Zobrazit [příklad v jazyce JavaScript](#input---javascript-example).
 
@@ -1277,7 +1277,7 @@ Viz také [vstupní příklad](#input---c-examples) , která používá `Documen
 
 [Přeskočit výstup příklady](#output---attributes)
 
-### <a name="ouput---c-examples"></a>Výstup – příklady jazyka C#
+### <a name="output---c-examples"></a>Výstup – C# příklady
 
 Tato část obsahuje následující příklady:
 
@@ -1562,9 +1562,9 @@ Tady je kód jazyka JavaScript:
 
 [Přeskočit výstup příklady](#output---attributes)
 
-### <a name="output---f-examples"></a>Výstup – příklady F #
+### <a name="output---f-examples"></a>Výstup – F# příklady
 
-Následující příklad ukazuje vazby ve službě Azure Cosmos DB výstup *function.json* souboru a [funkce jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce používá fronty vstupní vazby pro fronty, která přijímá JSON v následujícím formátu:
+Následující příklad ukazuje vazby ve službě Azure Cosmos DB výstup *function.json* souboru a [ F# funkce](functions-reference-fsharp.md) , který používá vazba. Funkce používá fronty vstupní vazby pro fronty, která přijímá JSON v následujícím formátu:
 
 ```json
 {
@@ -1600,7 +1600,7 @@ Zde je vazba dat v *function.json* souboru:
 ```
 [Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
 
-Tady je kód F #:
+Tady je F# kódu:
 
 ```fsharp
     open FSharp.Interop.Dynamic
@@ -1639,7 +1639,7 @@ Tento příklad vyžaduje `project.json` soubor, který určuje, `FSharp.Interop
 }
 ```
 
-Chcete-li přidat `project.json` souborů naleznete v tématu [správy balíčků F #](functions-reference-fsharp.md#package).
+Chcete-li přidat `project.json` souborů naleznete v tématu [ F# Správa balíčků](functions-reference-fsharp.md#package).
 
 ## <a name="output---java-examples"></a>Výstup – příkladů v jazyce Java
 

@@ -4,7 +4,7 @@ description: Zjistěte, jak číst a využití a vyúčtování předplatného A
 services: ''
 documentationcenter: ''
 author: tonguyen10
-manager: tonguyen
+manager: alherz
 editor: ''
 tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: cwatson
-ms.openlocfilehash: be2e774bc4220d5d93f555263fa9f342f449f8b2
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 21a573bd0276cc1afafab950e123ac13ee95f59d
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423438"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52274717"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Vysvětlení vašeho vyúčtování služeb Microsoft Azure
 Chcete-li vysvětlení vašeho vyúčtování služeb Azure, porovnejte faktuře se podrobný soubor denní využití a sestav služby cost management na webu Azure Portal.
@@ -122,7 +122,7 @@ Například jeden virtuální počítač vytvořený v Azure může mít násled
 
 - Výpočetní čas
 - Hodiny IP adresy
-- Příchozí přenos dat
+- Přenos příchozích dat
 - Odchozí přenosy dat
 - Spravovaných disků úrovně Standard
 - Operace spravovaných disků úrovně Standard

@@ -3,8 +3,8 @@ title: Přeučování webové služby nové Azure Machine Learning pomocí Power
 description: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning pomocí rutin prostředí PowerShell pro Machine Learning Management.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: f83b8b41e66e60373d2f3f5aa510e44cec2ec5a4
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 77ae0c9f8af82e238b58945d1427afd6a01173e3
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823108"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263025"
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Přeučování webové služby založené na nové Resource Manageru pomocí rutin prostředí PowerShell pro Machine Learning Management
 Když jste přeučování nové webové služby, aktualizujte definice prediktivní webové služby tak, aby odkazovaly na nový trénovaný model.

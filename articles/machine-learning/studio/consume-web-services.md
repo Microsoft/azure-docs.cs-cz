@@ -3,8 +3,8 @@ title: Jak využívat Azure Machine Learning webové služby | Dokumentace Micro
 description: Po nasazení služby machine learning službu RESTFul webová služba, která je k dispozici mohou být spotřebovány buď jako službu v reálném čase žádost odpověď, nebo jako služba batch execution.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.custom: (previous ms.author yahajiza)
+author: ericlicoding
+ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: cb17a145d4657150a70af149d68355c79747c8aa
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 0f95ea1de572beb02cd1680864d3fee781e9abc1
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823686"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262818"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Jak využívat Azure Machine Learning webové služby
 

@@ -9,13 +9,13 @@ ms.date: 08/07/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
-manager: dougeby
-ms.openlocfilehash: e49be3d61cfbbf71a0e9cbeef4c171f3af222544
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+manager: benshy
+ms.openlocfilehash: 4b0c0a6fdf8d84b6519d1228f148342b8486c282
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979552"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276393"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Registrace samostatného předplatného Azure a zobrazení informací o nákladech
 
@@ -45,7 +45,7 @@ Pokud chcete zhlédnout videokurz k registraci předplatného Azure, podívejte 
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste použili informace o svém předplatném Azure k registraci u Cloudyn. Také jste se přihlásili k portálu Cloudyn a začali jste zobrazovat informace o nákladech. Další informace o Cloudyn najdete v kurzu pro Cloudyn.
 

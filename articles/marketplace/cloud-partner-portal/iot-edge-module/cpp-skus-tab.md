@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 205fd258ed397f5a9588773549368fc3c4aec058
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 370d8160661c1f73124151a3a49d0bb3170dfb77
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684813"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52276036"
 ---
 # <a name="iot-edge-module-skus-tab"></a>Kartu SKU modul IoT Edge
 
@@ -125,7 +125,7 @@ Následující tabulka popisuje účel, obsah a formátování polí pro **trasy
 
 |  **Pole**       |     **Popis**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Výchozí trasy**        | Každý název výchozí trasy a hodnota musí být kratší než 512 znaků. Můžete definovat až 5 výchozí trasy. Ujistěte se, že používáte správné [trasy syntaxe](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) vaše hodnoty trasy. Odkazovat na modul, použijte výchozí název modulu, který bude vaše **název SKU** bez mezery a speciální znaky. K odkazování na ostatní moduly ještě není znám, použijte `<FROM_MODULE_NAME>` zásad tak, aby vaši zákazníci věděli, které potřebují k aktualizaci těchto informací. Další informace o [trasy IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes). <br/> Například pokud modul `ContosoModule` naslouchá vstupů `ContosoInput` a výstupní data v `ContosoOutput`, je vhodné definovat následující 2 výchozí trasy:<br/>-Název #1: `ToContosoModule`<br/>– Hodnota #1:`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>-Název #2: `FromContosoModuleToCloud`<br/>– Hodnota #2: `FROM /messages/modules/ContonsoModule/outputs/ContosoOuput INTO $upstream`<br/>  |
+| **Výchozí trasy**        | Každý název výchozí trasy a hodnota musí být kratší než 512 znaků. Můžete definovat až 5 výchozí trasy. Ujistěte se, že používáte správné [trasy syntaxe](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) vaše hodnoty trasy. Odkazovat na modul, použijte výchozí název modulu, který bude vaše **název SKU** bez mezery a speciální znaky. K odkazování na ostatní moduly ještě není znám, použijte `<FROM_MODULE_NAME>` zásad tak, aby vaši zákazníci věděli, které potřebují k aktualizaci těchto informací. Další informace o [trasy IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes). <br/> Například pokud modul `ContosoModule` naslouchá vstupů `ContosoInput` a výstupní data v `ContosoOutput`, je vhodné definovat následující 2 výchozí trasy:<br/>-Název #1: `ToContosoModule`<br/>– Hodnota #1:`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>-Název #2: `FromContosoModuleToCloud`<br/>– Hodnota #2: `FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream`<br/>  |
 | **Výchozí požadované vlastnosti dvojčete**      | Každý název požadované vlastnosti dvojčete výchozí a hodnota musí být kratší než 512 znaků. Můžete definovat až 5 názvu a hodnoty požadované vlastnosti dvojčete. Hodnoty požadované vlastnosti dvojčete musí být platný kód JSON, bez-uvozeny řídicími znaky, bez použití pole a maximální vnořené hierarchie 4. Další informace o [požadované vlastnosti dvojčete](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties). <br/> Například pokud modul podporuje dynamicky konfigurovat obnovovací frekvence prostřednictvím požadované vlastnosti dvojčete, je vhodné definovat následující výchozí vlastností dvojčat požadovaného:<br/> -Název #1: `RefreshRate`<br/>– Hodnota #1: `60`|
 | **Výchozí proměnné prostředí**  | Každý název proměnné prostředí výchozí a hodnota musí být kratší než 512 znaků. Můžete definovat až 5 název/hodnota proměnné prostředí. <br/>Pokud modul vyžaduje přijměte podmínky použití, než se spouští, můžete definovat následující proměnné prostředí:<br/> -Název #1: `ACCEPT_EULA`<br/>– Hodnota #1: `Y`|
 | **Výchozí CreateOptions field**  | CreateOptions field musí být kratší než 512 znaků. Musí být platný kód JSON, není uvozen řídicími znaky. Další informace o [CreateOptions field](https://docs.microsoft.com/azure/iot-edge/module-composition#configure-modules). <br/> Například, pokud modul vyžaduje vytvoření vazby portu, můžete definovat následující CreateOptions field:<br/>  `"HostConfig":{"PortBindings":{"5012/tcp":[{"HostPort":"5012"}]}`|

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aff3ce4bc290f6e4ad2fb11a586372862d0c1462
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 751c2df42ee8e4ace22fe94e1fef8d734ab81c3c
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240728"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275662"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Sada Runbook výstup a zprávy ve službě Azure Automation
 Většina runbooků služeb automatizace Azure mají určitou formu výstupu, jako je chybová zpráva pro uživatele nebo složitý objekt určené ke spotřebě v jiném pracovním postupu. Prostředí Windows PowerShell poskytuje [různých datových proudů](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) odesílat výstup ze skriptu nebo pracovního postupu. Azure Automation funguje s každou z těchto datových proudů jinak a postupujte podle osvědčené postupy pro jejich používání při vytváření sady runbook.
@@ -64,13 +64,17 @@ Workflow Test-Runbook
 
 Výstupní datový proud pro runbook by byl:
 
-    Output inside of function
-    Output outside of function
+```output
+Output inside of function
+Output outside of function
+```
 
 Podrobný datový proud pro runbook by byl:
 
-    Verbose outside of function
-    Verbose inside of function
+```output
+Verbose outside of function
+Verbose inside of function
+```
 
 Po publikování runbooku a než ho začnete, musíte také zapnout podrobné protokolování v nastavení sady runbook, aby se výstup podrobný datový proud.
 

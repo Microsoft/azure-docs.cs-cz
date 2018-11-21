@@ -3,8 +3,8 @@ title: Řešení galerii Azure AI | Dokumentace Microsoftu
 description: Vyhledání řešení v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,19 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 8c67263feff4ac89b786f6d71d78d0a5fbe17b5b
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ebdecfa1ae936b9cc12a27a99b3b92c84869d1e3
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820456"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261305"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Vyhledání řešení v galerii Azure AI
 
 A **[řešení](https://gallery.cortanaintelligence.com/solutions)** v [galerii Azure AI](http://gallery.cortanaintelligence.com) poskytuje úvodního kurzu JumpStart týkajícího rychle vytvářet řešení Cortana Intelligence z předkonfigurovaných řešení, referenční architektury, a Vzory návrhu.
 Aby byly vaše vlastní prostřednictvím zahrnutých pokynů nebo doporučeného partnera.  
 
-## <a name="discover"></a>Vyhledat
+## <a name="discover"></a>Informace
   Chcete-li vyhledat řešení v galerii, otevřete [Galerie](http://gallery.cortanaintelligence.com) a klikněte na tlačítko **řešení** v horní části domovskou stránku galerie.
 
  **[Řešení](https://gallery.cortanaintelligence.com/solutions)** stránka zobrazuje seznam nedávno přidaných řešení.
@@ -41,7 +41,7 @@ Na této stránce můžete procházet všechna řešení v galerii. Také může
 
 ![Přidat vlastní komentáře](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="deploy"></a>Nasadit
+## <a name="deploy"></a>Nasazení
 Pokud chcete používat řešení, klikněte na tlačítko **nasadit**. Postupujte takto můžete nakonfigurovat a nasadit řešení ve vašem pracovním prostoru.
 
 ![Nasazení řešení Galerie](./media/gallery-solutions/deploy-solution.png)

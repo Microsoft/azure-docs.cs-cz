@@ -1,6 +1,19 @@
-## <a name="webapi-project"></a>WebAPI projektu
-1. V sadě Visual Studio, otevřete **AppBackend** projekt, který jste vytvořili v **upozornění uživatelů** kurzu.
-2. V Notifications.cs, nahraďte celek **oznámení** třídy následujícím kódem. Ujistěte se, že nahraďte zástupné symboly připojovací řetězec (s úplným přístupem) pro vaše Centrum oznámení a název rozbočovače. Můžete získat z těchto hodnot [portál Azure](http://portal.azure.com). Tento modul představuje teď jiné zabezpečené oznámení, které se budou odesílat. Do dokončení implementace se uloží oznámení v databázi. pro jednoduchost v takovém případě jsme je uložit v paměti.
+---
+author: spelluru
+ms.service: service-bus
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: spelluru
+ms.openlocfilehash: b8cf4217ca6c80be998b92e71c3ba29c4f68bce2
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52269655"
+---
+## <a name="webapi-project"></a>Projektem WebAPI
+1. V sadě Visual Studio, otevřete **AppBackend** projekt, který jste vytvořili v **oznamování uživatelům pomocí** kurzu.
+2. Notifications.cs nahradit celý **oznámení** třídy následujícím kódem. Nezapomeňte nahradit zástupné symboly vaším připojovacím řetězcem (s úplným přístupem) pro vaše Centrum oznámení a název centra. Tyto hodnoty z můžete získat [webu Azure portal](http://portal.azure.com). Tento modul teď představuje různé zabezpečených oznámení se odešlou. Ve zcela implementován oznámení uloží v databázi. pro jednoduchost v tomto případě jsme uložit je do paměti.
    
         public class Notification
         {
@@ -40,7 +53,7 @@
             }
         }
 
-1. V NotificationsController.cs, nahraďte kód uvnitř **NotificationsController** třídy definice následujícím kódem. Tato součást implementuje způsob, jak zařízení bezpečně načíst oznámení a také poskytuje způsob (pro účely tohoto kurzu) k aktivaci zabezpečené oznámení do zařízení. Všimněte si, že při odesílání oznámení do centra oznámení, jenom odešleme nezpracovaná oznámení s ID oznámení (a žádná skutečná zpráva):
+1. V souboru NotificationsController.cs nahraďte kód uvnitř **NotificationsController** třídy definice s následujícím kódem. Tato komponenta implementuje způsob, aby zařízení načetlo oznámení bezpečně a také nabízí možnost (pro účely tohoto kurzu) Chcete-li aktivovat zabezpečené nabízení do zařízení. Všimněte si, že při odesílání oznámení do centra oznámení, pouze pošleme nezpracovaná oznámení s ID oznámení (a žádný skutečný zprávy):
    
        public NotificationsController()
        {
@@ -75,8 +88,8 @@
         }
 
 
-Všimněte si, že `Post` metoda teď neodešle oznámení s informační zprávou. Odešle nezpracovaná oznámení, že obsahuje pouze ID oznámení a ne všechny citlivého obsahu. Zkontrolujte taky, okomentujte operaci odeslání pro platformy, pro které nemáte přihlašovací údaje, které jsou nakonfigurované v centru oznámení, jak bude vést k chybám.
+Všimněte si, `Post` metoda nyní neodešle oznámení s informační zprávou. Odešle nezpracovaná oznámení, která obsahuje pouze ID oznámení a nikoliv citlivého obsahu. Také ujistěte se, že chcete přidat komentář operace odeslání pro platformy, pro které nemáte přihlašovací údaje nakonfigurované v centru oznámení, jako jsou způsobí chyby.
 
-1. Nyní jsme bude znovu nasaďte tuto aplikaci na web Azure aby přístupná ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
-2. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí účtu Azure a vyberte stávajícího nebo nového webu a poznamenejte si **cílová adresa URL** vlastnost **připojení** kartě. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na **Publikovat**.
+1. Nyní jsme se znovu nasadit tuto aplikaci na web Azure aby byla přístupná ze všech zařízení. Klikněte pravým tlačítkem na projekt **AppBackend** a vyberte **Publikovat**.
+2. Vyberte web Azure jako váš cíl publikování. Přihlaste se pomocí svého účtu Azure a vyberte stávající nebo novou webovou stránku a poznamenejte si **cílovou adresu URL** vlastnost **připojení** kartu. Na tuto adresu URL budeme odkazovat jako na *koncový bod back-endu* později v tomto kurzu. Klikněte na **Publikovat**.
 

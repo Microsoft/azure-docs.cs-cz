@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/06/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7d77c0a2ce334c9909a621c55866a67e036f9cb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 0493783cb1253aab78ff39aa42eeabbec8ddb726
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282777"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52263593"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -56,7 +56,7 @@ Pokud jste nevytvořili účet Batch s režimem přidělování fondu nastavit n
 | Vyhrazené uzly | 2000 |
 | Uzly s nízkou prioritou | 1000 |
 
-<sup>1</sup> pro fondy, které je Poznámka: komunikace mezi uzly povolena.
+<sup>1</sup> pro fondy, které nejsou povolená komunikace v rámci uzlu.
 
 ## <a name="other-limits"></a>Další omezení
 

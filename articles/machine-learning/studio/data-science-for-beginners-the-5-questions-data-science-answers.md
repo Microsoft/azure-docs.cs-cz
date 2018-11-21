@@ -4,8 +4,8 @@ description: Vědecké zpracování dat pro začátečníky je vás naučí zák
 keywords: provádění datových věd, začátečníky datové vědy, datové vědy pro začátečníky, základní informace o datové vědy, data science dotazy, data science video, datové vědy Úvod
 services: machine-learning
 documentationcenter: na
-author: heatherbshapiro
-ms.custom: (previous ms.author hshapiro)
+author: ericlicoding
+ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
@@ -17,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 10f0c8256f991a0d873b38a3606c1218b9edf56d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 2e3d8805bfbe5b55aed111090cf1f7c02acb6a76
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819014"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52262036"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Vědecké zkoumání dat pro začátečníky – Video 1: 5 otázek, na které odpovídá vědecké zkoumání dat
 Rychlý úvod do datových věd z *datová věda pro začátečníky* v pěti krátkých videích z hlavní vědec. Tato videa jsou užitečné, ale základní, ať už vás zajímá datových věd nebo pracujete s odborníky přes data.
