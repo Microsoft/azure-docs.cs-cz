@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/19/2018
+ms.date: 11/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: bcfc4cb65c94e34e9f6056ada53726f88489fefb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 8268a6b04d7ddbb35821999142d3a33bdd2bedcc
+ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646647"
+ms.lasthandoff: 11/20/2018
+ms.locfileid: "52261798"
 ---
 # <a name="validate-oem-packages"></a>Ověření balíčky výrobce OEM
 
@@ -58,22 +58,17 @@ Při vytváření **ověřování balíčku** pracovního postupu portálu VaaS,
 
 #### <a name="option-1-generating-an-account-sas-url"></a>Možnost 1: Generování SAS URL účtu
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+1. V [webu Azure portal](https://portal.azure.com/), přejdete do účtu úložiště a pak na ZIP, který obsahuje váš balíček
 
-1. Vyberte **Blob** z **možnosti povolené služby**. Zrušit všechny zbývající možnosti.
+2. Vyberte **generovat SAS** v místní nabídce
 
-1. Vyberte **kontejneru** a **objekt** z **povolené typy prostředků**. Zrušit všechny zbývající možnosti.
+3. Vyberte **čtení** z **oprávnění**
 
-1. Vyberte **čtení** a **seznamu** z **povolené oprávnění**. Zrušit všechny zbývající možnosti.
+4. Nastavte **počáteční čas** na aktuální čas a **čas ukončení** aspoň 48 hodin od **počáteční čas**. Pokud budete používat jiné testy pomocí stejného balíčku, zvažte zvýšení **čas ukončení** délky testování. Všechny testy naplánovat prostřednictvím VaaS po **čas ukončení** nové přidružení zabezpečení a navrácení služeb po bude muset vygenerovat.
 
-1. Nastavte **počáteční čas** na aktuální čas a **čas ukončení** na 1 hodinu od aktuálního času.
+5. Vyberte **vygenerujte token SAS objektů blob a adresy URL**
 
-1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
-    Zde je, jak by se měla zobrazit ve formátu: `https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-1. Upravte vygenerovaný adres URL SAS kontejneru balíčku zahrnout `{containername}`a název objektu blob služby balíček `{mypackage.zip}`, následujícím způsobem:  `https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
-
-    Použijte tuto hodnotu při spuštění nového **ověřování balíčku** pracovního postupu portálu VaaS.
+Použití **SAS URL objektu Blob** při spouštění nového **ověřování balíčku** pracovního postupu portálu VaaS.
 
 #### <a name="option-2-using-public-read-container"></a>Možnost 2: Použití veřejného kontejneru pro čtení
 

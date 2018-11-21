@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fe2b509b62884c1cea554bc8dc5df25489205264
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb9d35b132a0aa3f0702604444f8a760bf66cf9a
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966947"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52275577"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Vyvolání balíčků SSIS pomocí aktivity uložených procedur ve službě Azure Data Factory
 Tento článek popisuje, jak vyvolat z kanálu služby Azure Data Factory balíčku SSIS pomocí aktivity uložených procedur. 
@@ -115,7 +115,7 @@ Tento výstupní datová sada je fiktivní datovou sadu, která řídí plán ka
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Vytvoření kanálu s aktivitou uložené procedury 
 V tomto kroku vytvoříte kanál s aktivitou uložené procedury. Aktivita vyvolá sp_executesql uložené procedury pro spuštění vašeho balíčku služby SSIS. 
 
-1. V levém podokně klikněte na tlačítko **... Další** a poté na **Nový kanál**.
+1. V levém podokně klikněte na tlačítko **... Další** a poté na **Nový kanál.
 2. Do editoru JSON, zkopírujte následující fragment kódu JSON: 
 
     > [!IMPORTANT]
@@ -236,7 +236,7 @@ Vytvořte propojenou službu, která propojí vaši databázi Azure SQL, který 
 ### <a name="create-an-output-dataset"></a>Vytvoření výstupní datové sady
 Tento výstupní datová sada je fiktivní datovou sadu, která řídí plán kanálu. Všimněte si, že frekvence je nastavená na Hour a interval je nastavená na 1. Proto kanál spouští jednou za hodinu v rámci kanálu počáteční a koncové časy. 
 
-1. Vytvořte soubor OuputDataset.json s následujícím obsahem: 
+1. Vytvořte soubor OutputDataset.json s následujícím obsahem: 
     
     ```json
     {
