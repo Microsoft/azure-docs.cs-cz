@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: cae81bd2b856ae0fb4a648c03cbec1f87f222902
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 0f48d65d1b3e6d1f608d85cff3a24ef379caa9cf
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038464"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284825"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -198,7 +198,9 @@ Pro zavedení dvanácti minutu a ukázku této funkce z následujícího videa:
 
 * Verze prostředí Azure PowerShell, který podporuje tuto funkci je 6.6.0 nebo novější (AzureRM.DataFactoryV2 0.5.7 nebo novější).
 
-* Udělení oprávnění, uživatel musí roli vlastníka nebo děděných rolí vlastník ve službě data factory, kde existuje sdílený reakcí na Incidenty. 
+* Udělení oprávnění, uživatel musí roli vlastníka nebo děděných rolí vlastník ve službě data factory, kde existuje sdílený reakcí na Incidenty.
+
+* Sdílení funkce funguje pouze pro datové továrny ve stejném tenantovi Azure Active Directory.
 
 * Pro Active Directory [uživatele typu Host](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews), funkce vyhledávání (výpisu všech datových továren s použitím hledaná klíčová slova) v uživatelském rozhraní [nefunguje](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits). Ale za předpokladu, uživatel typu Host je vlastníkem služby data factory, IR bez vyhledávacích funkcí, můžou sdílet přímo zadáním MSI služby data factory, pomocí kterého potřeba sdílet v prostředí IR **přiřadit oprávnění** textového pole a Výběr **přidat** v Uživatelském rozhraní Azure Data Factory. 
 
