@@ -7,12 +7,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 37c2d12a5385b4f3dd2cf6d7df644d9a41d2d59b
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 16cd959a83850a3bc940803cd23e7542e34825c8
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976635"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283208"
 ---
 # <a name="how-to-access-azure-cosmos-db-resources-from-virtual-networks"></a>Jak získat přístup k prostředkům služby Azure Cosmos DB z virtuální sítě
 
@@ -79,7 +79,10 @@ Aby bylo zajištěno, budete mít přístup k Azure Cosmos DB metriky z portálu
 
 4.  Klikněte na tlačítko **Uložit** změny.
 
-## <a id="configure-using-powershell"></a>Konfigurace koncového bodu služby pomocí Azure Powershellu 
+## <a id="configure-using-powershell"></a>Konfigurace koncového bodu služby pomocí Azure Powershellu
+
+> [!NOTE]
+> Při použití prostředí PowerShell nebo rozhraní příkazového řádku, je potřeba zadat úplný seznam filtrů IP adres a virtuální sítě ACL v parametrech, nejen ty, které je potřeba přidat.
 
 Použijte následující postup ke konfiguraci koncového bodu služby k účtu Azure Cosmos pomocí Azure Powershellu:  
 
@@ -122,34 +125,37 @@ Použijte následující postup ke konfiguraci koncového bodu služby k účtu 
      -Name $acctName
    ```
 
-1. Inicializace proměnné pro pozdější použití. Nastavte všechny proměnné z existující definice účtu. V tomto kroku můžete také nakonfigurovat koncový bod služby virtuální sítě tak, že nastavíte proměnné "accountVNETFilterEnabled" na "True". Tato hodnota je později přiřazené k parametru "isVirtualNetworkFilterEnabled".
+1. Inicializace proměnné pro pozdější použití. Nastavte všechny proměnné z existující definice účtu.
 
    ```powershell
    $locations = @()
 
    foreach ($readLocation in $cosmosDBConfiguration.Properties.readLocations) {
       $locations += , @{
-         locationName = $readLocation.locationName;
+         locationName     = $readLocation.locationName;
          failoverPriority = $readLocation.failoverPriority;
       }
    }
 
-   $consistencyPolicy = $cosmosDBConfiguration.Properties.consistencyPolicy
-   $accountVNETFilterEnabled = $True
-   $subnetID = $vnProp.Id+"/subnets/" + $sname  
-   $virtualNetworkRules = @(@{"id"=$subnetID})
-   $databaseAccountOfferType = $cosmosDBConfiguration.Properties.databaseAccountOfferType
+   $virtualNetworkRules = @(@{
+      id = "$($vnProp.Id)/subnets/$sname";
+   })
+
+   if ($cosmosDBConfiguration.Properties.isVirtualNetworkFilterEnabled) {
+      $virtualNetworkRules = $cosmosDBConfiguration.Properties.virtualNetworkRules + $virtualNetworkRules
+   }
    ```
 
 1. Aktualizujte vlastnosti účtu Azure Cosmos s novou konfigurací spuštěním následující rutiny: 
 
    ```powershell
    $cosmosDBProperties = @{
-      databaseAccountOfferType = $databaseAccountOfferType;
-      locations = $locations;
-      consistencyPolicy = $consistencyPolicy;
-      virtualNetworkRules = $virtualNetworkRules;
-      isVirtualNetworkFilterEnabled = $accountVNETFilterEnabled;
+      databaseAccountOfferType      = $cosmosDBConfiguration.Properties.databaseAccountOfferType;
+      consistencyPolicy             = $cosmosDBConfiguration.Properties.consistencyPolicy;
+      ipRangeFilter                 = $cosmosDBConfiguration.Properties.ipRangeFilter;
+      locations                     = $locations;
+      virtualNetworkRules           = $virtualNetworkRules;
+      isVirtualNetworkFilterEnabled = $True;
    }
 
    Set-AzureRmResource `
@@ -222,43 +228,48 @@ Jakmile se koncový bod služby pro účet služby Azure Cosmos je zapnuté pro 
      -Name $acctName
    ```
 
-1. Inicializace proměnné pro pozdější použití. Nastavte všechny proměnné z existující definice účtu. Přidejte seznam ACL virtuální sítě do všechny služby Azure Cosmos účtům současný přístup z podsítě s `ignoreMissingVNetServiceEndpoint` příznak. V tomto kroku můžete také nakonfigurovat koncový bod služby virtuální sítě tak, že nastavíte proměnné "accountVNETFilterEnabled" na "True". Tato hodnota je později přiřazené k parametru "isVirtualNetworkFilterEnabled".
+1. Inicializace proměnné pro pozdější použití. Nastavte všechny proměnné z existující definice účtu. Přidejte seznam ACL virtuální sítě do všechny služby Azure Cosmos účtům současný přístup z podsítě s `ignoreMissingVNetServiceEndpoint` příznak.
 
    ```powershell
    $locations = @()
 
    foreach ($readLocation in $cosmosDBConfiguration.Properties.readLocations) {
       $locations += , @{
-         locationName = $readLocation.locationName;
+         locationName     = $readLocation.locationName;
          failoverPriority = $readLocation.failoverPriority;
       }
    }
 
-   $consistencyPolicy = $cosmosDBConfiguration.Properties.consistencyPolicy
-   $accountVNETFilterEnabled = $True
    $subnetID = "Subnet ARM URL" e.g "/subscriptions/f7ddba26-ab7b-4a36-a2fa-7d01778da30b/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/subnet1"
 
-   $virtualNetworkRules = @(@{"id"=$subnetID, "ignoreMissingVNetServiceEndpoint"="True"})
-   $databaseAccountOfferType = $cosmosDBConfiguration.Properties.databaseAccountOfferType
+   $virtualNetworkRules = @(@{
+      id = $subnetID;
+      ignoreMissingVNetServiceEndpoint = "True";
+   })
+
+   if ($cosmosDBConfiguration.Properties.isVirtualNetworkFilterEnabled) {
+      $virtualNetworkRules = $cosmosDBConfiguration.Properties.virtualNetworkRules + $virtualNetworkRules
+   }
    ```
 
 1. Aktualizujte vlastnosti účtu Azure Cosmos s novou konfigurací spuštěním následující rutiny:
 
    ```powershell
    $cosmosDBProperties = @{
-      databaseAccountOfferType = $databaseAccountOfferType;
-      locations = $locations;
-      consistencyPolicy = $consistencyPolicy;
-      virtualNetworkRules = $virtualNetworkRules;
-      isVirtualNetworkFilterEnabled = $accountVNETFilterEnabled;
+      databaseAccountOfferType      = $cosmosDBConfiguration.Properties.databaseAccountOfferType;
+      consistencyPolicy             = $cosmosDBConfiguration.Properties.consistencyPolicy;
+      ipRangeFilter                 = $cosmosDBConfiguration.Properties.ipRangeFilter;
+      locations                     = $locations;
+      virtualNetworkRules           = $virtualNetworkRules;
+      isVirtualNetworkFilterEnabled = $True;
    }
 
    Set-AzureRmResource `
-    -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-    -ApiVersion $apiVersion `
-    -ResourceGroupName $rgName `
-    -Name $acctName `
-    -Properties $CosmosDBProperties
+      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
+      -ApiVersion $apiVersion `
+      -ResourceGroupName $rgName `
+      -Name $acctName `
+      -Properties $CosmosDBProperties
    ```
 
 1. Opakujte kroky 1-3 pro všechny účty služby Azure Cosmos, ke kterým přistupujete z podsítě.
@@ -274,11 +285,11 @@ Jakmile se koncový bod služby pro účet služby Azure Cosmos je zapnuté pro 
    $subnetPrefix = "<Subnet address range>"
 
    Get-AzureRmVirtualNetwork `
-    -ResourceGroupName $rgname `
-    -Name $vnName | Set-AzureRmVirtualNetworkSubnetConfig `
-    -Name $sname `
-    -AddressPrefix $subnetPrefix `
-    -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzureRmVirtualNetwork
+      -ResourceGroupName $rgname `
+      -Name $vnName | Set-AzureRmVirtualNetworkSubnetConfig `
+      -Name $sname `
+      -AddressPrefix $subnetPrefix `
+      -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzureRmVirtualNetwork
    ```
 
 1. Odeberte pravidlo brány firewall protokolu IP pro podsíť.
@@ -286,4 +297,3 @@ Jakmile se koncový bod služby pro účet služby Azure Cosmos je zapnuté pro 
 ## <a name="next-steps"></a>Další postup
 
 * Konfigurace brány firewall pro službu Azure Cosmos DB, najdete v článku [podpora brány firewall](firewall-support.md) článku.
-

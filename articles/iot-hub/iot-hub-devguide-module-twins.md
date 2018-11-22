@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 1b76bfded6562f61a0a9f4a870a18a1fff71bc6a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 9c82ad04b22a29f4a548b79b9b46a08d46de24ca
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309729"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284301"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Principy a použití dvojčat modulů ve službě IoT Hub
 
@@ -327,7 +327,7 @@ Tyto informace se ukládají na všech úrovních (ne jenom listy strukturu JSON
 ## <a name="optimistic-concurrency"></a>Optimistická souběžnost
 
 Značky, požadovaného a ohlášené vlastnosti všech podpora optimistické souběžnosti.
-Značky mají značku ETag, jak je uvedeno [RFC7232]()https://tools.ietf.org/html/rfc7232, představující reprezentaci JSON na značku. Značek etag v operacích podmíněné aktualizace z back-end řešení můžete použít k zajištění konzistence.
+Značky mají značku ETag, jak je uvedeno [RFC7232](https://tools.ietf.org/html/rfc7232), představující reprezentaci JSON na značku. Značek etag v operacích podmíněné aktualizace z back-end řešení můžete použít k zajištění konzistence.
 
 Dvojče zařízení požadovaného a ohlášené vlastnosti nemají značek etag, ale jste `$version` hodnotu, která je zaručeně přírůstkové. Podobně jako na značku ETag na verzi umožňuje aktualizace stranou vynutit konzistenci aktualizací. Například modul aplikace s ohlášených vlastností nebo back-end řešení pro požadovanou vlastnost.
 

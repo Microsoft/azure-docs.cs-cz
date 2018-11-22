@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: eb44d6b0a4ea69d92f91af7ce1d6b19deff4e753
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3ab775d57ba188930cc66b0fa1655307e9a78179
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567022"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284638"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Seznamte se s rozšířenou offline funkcí pro zařízení IoT Edge, moduly a podřízená zařízení (preview)
 
@@ -48,7 +48,7 @@ Následující příklad ukazuje, jak funguje scénáři IoT Edge v režimu offl
 
 Rozšířené možnosti offline popsaných v tomto článku jsou dostupné v [IoT Edge verze 1.0.4 nebo vyšší](https://github.com/Azure/azure-iotedge/releases). Starší verze mají podmnožinu offline funkcí. Existující hraničních zařízeních IoT zařízení, která nemají rozšířené možnosti offline nelze upgradovat tak, že změníte verzi modulu runtime, ale je potřeba překonfigurovat tak s novou identitu zařízení IoT Edge k získání těchto funkcí. 
 
-Prodloužená odborná pomoc offline je k dispozici ve všech oblastech, kde je k dispozici, s výjimkou východní USA a západní Evropa služby IoT Hub. 
+Prodloužená odborná pomoc offline je k dispozici ve všech oblastech, kde je k dispozici, IoT Hub **s výjimkou** USA – východ.
 
 Pouze zařízení Edge IoT se dá přidat jako podřízenou zařízení. 
 
@@ -65,6 +65,19 @@ Podřízená zařízení může být jakékoli zařízení bez okrajů zaregistr
    ![Správa podřízených zařízení ze stránky detaily zařízení IoT Edge](./media/offline-capabilities/manage-child-devices.png)
 
 Nadřazené zařízení může mít více podřízených zařízení, ale podřízené zařízení může mít pouze jeden nadřazený prvek.
+
+### <a name="specifying-dns-servers"></a>Určení serverů DNS 
+
+Pokud chcete zlepšit odolnost, se doporučuje zadejte adresy serverů DNS ve svém prostředí. Například v Linuxu, aktualizovat **/etc/docker/daemon.json** (můžete potřebovat pro vytvoření souboru) zahrnout:
+
+```
+{
+    "dns": [“1.1.1.1”]
+}
+```
+
+Pokud používáte místní server DNS, nahraďte 1.1.1.1 IP adresu místního serveru DNS. Restartujte službu docker pro změny projevily.
+
 
 ## <a name="optional-offline-settings"></a>Volitelná nastavení
 

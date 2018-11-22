@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: b5574b529dc3d4646375638d6759d85a41c66946
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: dcc1de5fa0ac1f394d0fe12fd24a1d6e745df83e
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155594"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284601"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zásady uzamčení hesla a účtu na spravované domény
 Tento článek vysvětluje výchozí zásady hesel ve spravované doméně. Věnuje se také, jak můžete nakonfigurovat tyto zásady.
@@ -118,5 +118,5 @@ Pokud chcete vytvořit vlastní podrobných zásad pro HESLA ve vaší spravovan
 >
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o zásadách jemné jemněji hesla služby Active Directory](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394)
+* [Další informace o zásadách jemné jemněji hesla služby Active Directory](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
 * [Konfigurace zásad podrobné hesla pomocí centra pro správu AD](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)

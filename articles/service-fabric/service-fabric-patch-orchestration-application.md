@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: a8b2070b6f5b10cb60c6658aefc8cc90331ecfd9
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 3416d257a23e94460199a1ddfe63302ff55ad5a5
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409352"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285046"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Windows ve vašem clusteru Service Fabric
 
@@ -167,7 +167,7 @@ Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých pot�
 
 1. Dokončete požadované kroky pro přípravu clusteru.
 2. Nasazení aplikace orchestraci oprav stejně jako jakoukoli jinou aplikaci Service Fabric. Aplikaci můžete nasadit pomocí prostředí PowerShell. Postupujte podle kroků v [nasazení a odeberte aplikací pomocí prostředí PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications).
-3. Konfigurace aplikace v době nasazování, předejte `ApplicationParamater` k `New-ServiceFabricApplication` rutiny. Pro usnadnění nabízíme skriptu Deploy.ps1 spolu s aplikace. Použití skriptu:
+3. Konfigurace aplikace v době nasazování, předejte `ApplicationParameter` k `New-ServiceFabricApplication` rutiny. Pro usnadnění nabízíme skriptu Deploy.ps1 spolu s aplikace. Použití skriptu:
 
     - Připojení ke clusteru Service Fabric pomocí `Connect-ServiceFabricCluster`.
     - Spusťte skript prostředí PowerShell Deploy.ps1 příslušnou `ApplicationParameter` hodnotu.

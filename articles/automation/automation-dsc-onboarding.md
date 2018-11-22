@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 50f8fea04da3b1e414917a6404cb3f6e838bf716
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244521"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284808"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Připojování počítačů pro správu podle konfigurace stavu služby Azure Automation
 
@@ -42,7 +42,7 @@ S Azure Automation stav konfigurace můžete snadno připojit virtuální počí
 
 ### <a name="azure-portal"></a>portál Azure
 
-V [webu Azure portal](http://portal.azure.com/), klikněte na tlačítko **Procházet** -> **virtuální počítače (classic)**. Vyberte virtuální počítač Windows, který chcete připojit. V okně řídicím panelu virtuálního počítače, klikněte na **všechna nastavení** -> **rozšíření** -> **přidat** -> **Azure Automatizace DSC** -> **vytvořit**.
+V [webu Azure portal](https://portal.azure.com/), klikněte na tlačítko **Procházet** -> **virtuální počítače (classic)**. Vyberte virtuální počítač Windows, který chcete připojit. V okně řídicím panelu virtuálního počítače, klikněte na **všechna nastavení** -> **rozšíření** -> **přidat** -> **Azure Automatizace DSC** -> **vytvořit**.
 Zadejte [hodnoty prostředí PowerShell DSC Local Configuration Manageru](/powershell/dsc/metaconfig4) potřebné pro váš případ použití, registrační klíč vašeho účtu Automation a adresa URL pro registraci a volitelně konfigurace uzlu k přiřazení k virtuálnímu počítači.
 
 ![Rozšíření virtuálního počítače Azure pro DSC](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
@@ -132,7 +132,7 @@ Pokud počítač nemá žádné PowerShell desired nainstalované rozšíření 
 
 V části **registrace**, zadejte [hodnoty prostředí PowerShell DSC Local Configuration Manageru](/powershell/dsc/metaconfig4) vyžadované pro vašemu případu použití a volitelně konfigurace uzlu přiřazení k virtuálnímu počítači.
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+![Registrace](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 

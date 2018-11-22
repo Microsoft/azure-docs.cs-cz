@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5133a3d724a362a3d022e0dfd29f798a509c4743
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 804ac964949c947baf5285b3ec591b3d28263f4d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275465"
+ms.locfileid: "52282733"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scénář Azure Automation – zřízení virtuálního počítače s AWS
 V tomto článku se dozvíte, jak se dají využít Azure Automation ke zřízení virtuálního počítače ve vašem předplatném služby AWS (Amazon Web) a poskytnout tohoto virtuálního počítače konkrétním názvem – AWS označuje jako "označení" virtuální počítač.
@@ -25,7 +25,7 @@ Pro účely tohoto článku musíte mít účet Azure Automation a předplatné 
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Nasazení modulu prostředí PowerShell služby Amazon Web
 Váš virtuální počítač zřizování runbook využívá modul Powershellu AWS ke své práci. Proveďte následující kroky, chcete-li přidat modul do vašeho účtu Automation, který je nakonfigurovaný pomocí svých přihlašovacích údajů AWS předplatného.  
 
-1. Otevřete webový prohlížeč a přejděte [Galerie prostředí PowerShell](http://www.powershellgallery.com/packages/AWSPowerShell/) a klikněte na **nasadit do Azure Automation tlačítko**.<br><br> ![Import modulu PS AWS](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
+1. Otevřete webový prohlížeč a přejděte [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AWSPowerShell/) a klikněte na **nasadit do Azure Automation tlačítko**.<br><br> ![Import modulu PS AWS](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
 2. Budete přesměrováni na stránku pro přihlášení k Azure a po ověření, budete směrovat na webu Azure portal a zobrazí se následující stránka:<br><br> ![Stránka pro import modulu](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
 3. Vyberte účet Automation a klikněte na tlačítko **OK** ke spuštění nasazení.
 
@@ -60,7 +60,7 @@ Po nasazení modulu PowerShell AWS, nyní můžete vytvořit runbook můžete au
     > 
     > * Sada runbook obsahuje řadu výchozí hodnoty parametrů. Vyhodnotit všechny výchozí hodnoty a aktualizovat v případě potřeby.
     > * Pokud jste uložili přihlašovací údaje AWS jako asset přihlašovacích údajů pojmenované jinak než **AWScred**, je potřeba aktualizovat skript na řádku 57 tak, aby odpovídaly odpovídajícím způsobem.  
-    > * Při práci s příkazy rozhraní příkazového řádku AWS v prostředí PowerShell, zejména s Tento ukázkový runbook, je nutné zadat oblast AWS. V opačném případě rutiny nezdaří. Zobrazení tématu AWS [určete oblasti AWS](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) v AWS nástroje pro dokument prostředí PowerShell pro další podrobnosti.  
+    > * Při práci s příkazy rozhraní příkazového řádku AWS v prostředí PowerShell, zejména s Tento ukázkový runbook, je nutné zadat oblast AWS. V opačném případě rutiny nezdaří. Zobrazení tématu AWS [určete oblasti AWS](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-installing-specifying-region.html) v AWS nástroje pro dokument prostředí PowerShell pro další podrobnosti.  
     >
 
 7. Pokud chcete načíst seznam názvů imagí z předplatného AWS, spusťte prostředí PowerShell ISE a naimportujte modul Powershellu AWS. Ověřování na základě AWS nahrazením **Get-AutomationPSCredential** v prostředí ISE na základě s **AWScred = Get-Credential**. To vás vyzve k zadání přihlašovacích údajů a může poskytnout vaše **Access Key ID** pro uživatelské jméno a **tajný přístupový klíč** zadání hesla. Viz následující příklad:  

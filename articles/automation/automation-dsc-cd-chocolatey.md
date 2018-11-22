@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4172afc3adf23a05384fec0413465cf491af3a79
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d3957038410e7a7d80e1ac710f0c227047b636a7
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275295"
+ms.locfileid: "52284791"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Příklad použití: Průběžné nasazování pomocí Chocolatey a automatizace stavu konfigurace virtuálních počítačů
 
@@ -34,14 +34,14 @@ Jakmile jsou obě tyto klíčové procesy na místě, je krátký krok k automat
 ## <a name="component-overview"></a>Přehled komponenty
 
 Správci balíčků, jako [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) jsou poměrně dobře známé ve světě Linux, ale ne ve světě Windows.
-[Chocolatey](https://chocolatey.org/) je taková věc a Scott Hanselman [blogu](http://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) k danému tématu je vynikající úvod. Řečeno v kostce Chocolatey můžete instalovat balíčky z centrálního úložiště balíčků do systému Windows z příkazového řádku. Můžete vytvářet a spravovat své vlastní úložiště, a Chocolatey balíčky můžete nainstalovat z různých úložišť, které určíte.
+[Chocolatey](https://chocolatey.org/) je taková věc a Scott Hanselman [blogu](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx) k danému tématu je vynikající úvod. Řečeno v kostce Chocolatey můžete instalovat balíčky z centrálního úložiště balíčků do systému Windows z příkazového řádku. Můžete vytvářet a spravovat své vlastní úložiště, a Chocolatey balíčky můžete nainstalovat z různých úložišť, které určíte.
 
 Desired State Configuration (DSC) ([přehled](/powershell/dsc/overview)) je nástroj PowerShell, který umožňuje deklarovat konfiguraci, kterou chcete použít pro počítače s. Například můžete napsat, "Chci Chocolatey nainstalovaný, má nainstalovanou službu IIS, chci otevřený port 80, chci, aby verze 1.0.0 svého webu." Správce služby DSC místní konfigurace (LCM) implementuje tuto konfiguraci. DSC serveru vyžádaných replikací s obsahuje úložiště konfigurací vašich počítačů. LCM na každý počítač se zkontroluje pravidelně pokud jeho konfigurace odpovídá uloženou konfiguraci. Můžete buď informuje o stavu nebo pokus o vrácení počítač do zarovnání k uložené konfiguraci. Můžete upravit uloženou konfiguraci na serveru vyžádané replikace způsobit počítače nebo sadu počítačů pro zarovnání se změny konfigurace.
 
 Azure Automation je služba spravovaná v Microsoft Azure, který umožňuje automatizaci různých úloh pomocí runbooků, uzly, přihlašovací údaje, prostředky a prostředky, jako jsou plány a globální proměnné.
 Konfigurace stavu automatizace Azure rozšiřuje tyto schopnosti nástroje prostředí PowerShell DSC služby automation. Tady je skvělý [přehled](automation-dsc-overview.md).
 
-Prostředek DSC se modul kódu, který obsahuje specifické možnosti, jako je například Správa sítě služby Active Directory nebo serveru SQL Server. Chocolatey prostředků DSC ví, jak přistupovat k NuGet Server (mimo jiné), stáhněte si balíčky, instalaci balíčků a tak dále. Existuje mnoho dalších prostředků DSC ve [Galerie prostředí PowerShell](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).
+Prostředek DSC se modul kódu, který obsahuje specifické možnosti, jako je například Správa sítě služby Active Directory nebo serveru SQL Server. Chocolatey prostředků DSC ví, jak přistupovat k NuGet Server (mimo jiné), stáhněte si balíčky, instalaci balíčků a tak dále. Existuje mnoho dalších prostředků DSC ve [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).
 Tyto moduly nainstalují do Azure Automation stavu konfigurace o přijetí změn serveru (vámi), se dají ve vaší konfigurace.
 
 Šablony Resource Manageru poskytují deklarativní způsob generování infrastruktury – například sítě, podsítě, zabezpečení sítě a směrování, načítání nástroje pro vyrovnávání, síťové adaptéry, virtuální počítače a tak dále. Tady je [článku](../azure-resource-manager/resource-manager-deployment-model.md) , který porovnává modelu nasazení Resource Manager (deklarativní) pomocí modelu nasazení Azure Service Management (ASM nebo classic) (závazné) a popisuje hlavní poskytovatelé prostředků, výpočetní výkon, úložiště a síť.
@@ -179,7 +179,7 @@ Tyto kroky výsledkem novou konfiguraci uzel s názvem "ISVBoxConfig.isvbox" um�
 ## <a name="step-5-creating-and-maintaining-package-metadata"></a>Krok 5: Vytvoření a údržbu metadata balíčků
 
 Pro každý balíček, který vložíte do úložiště balíčků budete potřebovat soubor nuspec, které aplikaci popisuje.
-Tento soubor nuspec musí být zkompilovány a uloženy na serveru služby NuGet. Tento proces je popsán [tady](http://docs.nuget.org/create/creating-and-publishing-a-package). Webu MyGet.org slouží jako NuGet server. Prodávejte této služby, ale mají starter skladovou Položku, která je zdarma. Na NuGet.org, najdete pokyny k instalaci vlastní server NuGet pro své privátní balíčky.
+Tento soubor nuspec musí být zkompilovány a uloženy na serveru služby NuGet. Tento proces je popsán [tady](https://docs.nuget.org/create/creating-and-publishing-a-package). Webu MyGet.org slouží jako NuGet server. Prodávejte této služby, ale mají starter skladovou Položku, která je zdarma. Na NuGet.org, najdete pokyny k instalaci vlastní server NuGet pro své privátní balíčky.
 
 ## <a name="step-6-tying-it-all-together"></a>Krok 6: Propojí to všechno dohromady
 

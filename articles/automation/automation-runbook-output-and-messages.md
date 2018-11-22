@@ -9,15 +9,15 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 751c2df42ee8e4ace22fe94e1fef8d734ab81c3c
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9602b8ff4d0df15b030626d5e2cfeca9bcc2bd5d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275662"
+ms.locfileid: "52284110"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Sada Runbook výstup a zprávy ve službě Azure Automation
-Většina runbooků služeb automatizace Azure mají určitou formu výstupu, jako je chybová zpráva pro uživatele nebo složitý objekt určené ke spotřebě v jiném pracovním postupu. Prostředí Windows PowerShell poskytuje [různých datových proudů](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) odesílat výstup ze skriptu nebo pracovního postupu. Azure Automation funguje s každou z těchto datových proudů jinak a postupujte podle osvědčené postupy pro jejich používání při vytváření sady runbook.
+Většina runbooků služeb automatizace Azure mají určitou formu výstupu, jako je chybová zpráva pro uživatele nebo složitý objekt určené ke spotřebě v jiném pracovním postupu. Prostředí Windows PowerShell poskytuje [různých datových proudů](https://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) odesílat výstup ze skriptu nebo pracovního postupu. Azure Automation funguje s každou z těchto datových proudů jinak a postupujte podle osvědčené postupy pro jejich používání při vytváření sady runbook.
 
 Následující tabulka obsahuje stručný popis jednotlivých datových proudů a jejich chování na webu Azure Portal, při spuštění publikovaného runbooku a při [testování runbooku](automation-testing-runbook.md). Další podrobnosti o jednotlivých datových proudech jsou k dispozici v dalších částech.
 
@@ -135,7 +135,7 @@ Write-Error –Message "This is an error message that will stop the runbook beca
 ```
 
 ### <a name="verbose-stream"></a>Podrobný datový proud
-Obecné informace o činnosti runbooku je datový proud podrobnou zprávu. Vzhledem k tomu, [Stream ladění](#Debug) není k dispozici v sadě runbook, podrobné zprávy se použije pro ladicí informace. Ve výchozím nastavení podrobné zprávy z publikovaných runbooků se neukládá do historie úlohy. Pokud chcete tyto zprávy uložit, nakonfigurujte publikované runbooky na protokolovat podrobné záznamy na kartě Konfigurace sady runbook na portálu Azure portal. Ve většině případů byste měli zachovat výchozí nastavení neprotokolování podrobných záznamů pro runbook z důvodů výkonu. Zapněte tuto možnost jenom pro řešení problémů nebo ladění runbooku.
+Obecné informace o činnosti runbooku je datový proud podrobnou zprávu. Vzhledem k tomu, [Stream ladění](#debug-stream) není k dispozici v sadě runbook, podrobné zprávy se použije pro ladicí informace. Ve výchozím nastavení podrobné zprávy z publikovaných runbooků se neukládá do historie úlohy. Pokud chcete tyto zprávy uložit, nakonfigurujte publikované runbooky na protokolovat podrobné záznamy na kartě Konfigurace sady runbook na portálu Azure portal. Ve většině případů byste měli zachovat výchozí nastavení neprotokolování podrobných záznamů pro runbook z důvodů výkonu. Zapněte tuto možnost jenom pro řešení problémů nebo ladění runbooku.
 
 Když [testování runbooku](automation-testing-runbook.md), podrobné zprávy nezobrazují, i když je runbook nakonfigurovaný na protokolování podrobných záznamů. Chcete-li zobrazit podrobné zprávy při [testování runbooku](automation-testing-runbook.md), je nutné nastavit proměnnou $VerbosePreference na pokračovat. Pomocí této proměnné sady podrobné zprávy se zobrazují v podokně výstup testu na portálu Azure Portal.
 

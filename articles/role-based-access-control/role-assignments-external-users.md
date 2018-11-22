@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: bd75ecde75d0f22dc66f047cd063dd85807f6f33
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: aec12e6dc7d331b2610546d0b0c92fa6ce0789ee
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304437"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284519"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>Správa přístupu pro externí uživatele pomocí RBAC
 
@@ -45,7 +45,7 @@ Na webu Azure Portal vyberte po přihlášení jako správce "Předplatné" a vy
 ![okno předplatné na webu Azure portal](./media/role-assignments-external-users/0.png) ve výchozím nastavení, pokud uživatel s rolí správce koupil předplatné Azure, uživateli se zobrazí jako **správce účtu**, to se role předplatného. Další informace o rolích předplatné Azure, najdete v části [přidat nebo změnit správce předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md).
 
 V tomto příkladu, uživateli "alflanigan@outlook.com" je **vlastníka** "Bezplatné zkušební verze" tenant "Výchozí tenanta Azure" předplatného v AAD. Jelikož tento uživatel je Tvůrce předplatné Azure s počáteční Account Microsoft "Aplikace Outlook" (Account Microsoft = Outlook, Live atd.) budou mít výchozí název domény pro všechny uživatele v tomto tenantovi přidán **"\@ alflaniganuoutlook.onmicrosoft.com"**. Standardně je vytvořen syntaxe nové domény sestavení název uživatelské jméno a doménu uživatele, který vytvořil tenanta a přidáním rozšíření **". onmicrosoft.com"**.
-Navíc uživatelé můžou přihlásit se pomocí vlastního názvu domény v tenantovi po přidání a ověření pro nového klienta. Další informace o tom, jak ověřit vlastní název domény v tenantovi Azure Active Directory najdete v tématu [přidání vlastního názvu domény do adresáře služby](/active-directory/active-directory-add-domain).
+Navíc uživatelé můžou přihlásit se pomocí vlastního názvu domény v tenantovi po přidání a ověření pro nového klienta. Další informace o tom, jak ověřit vlastní název domény v tenantovi Azure Active Directory najdete v tématu [přidání vlastního názvu domény do adresáře služby](../active-directory/fundamentals/add-custom-domain.md).
 
 V tomto příkladu adresáři "Výchozímu tenantu Azure" obsahuje pouze uživatele s názvem domény "\@alflanigan.onmicrosoft.com".
 
@@ -85,7 +85,7 @@ Při zachování Host v adresáři, externí uživatel může spravovat všechny
 
 ![omezit přístup pouze k azure active directory a Azure portal](./media/role-assignments-external-users/9.png)
 
-Azure Active Directory a předplatným Azure nemají vztah podřízený nadřazený stejně jako ostatní prostředky Azure (Příklad: virtuální počítače, virtuální sítě, webových aplikací, úložiště atd.) mít s předplatným Azure. Všechny tyto je vytvořen, spravované a účtují v rámci předplatného Azure předplatné Azure se používá ke správě přístupu k adresáři služby Azure. Další informace najdete v tématu [předplatné jak Azure má vztah k Azure AD](/active-directory/active-directory-how-subscriptions-associated-directory).
+Azure Active Directory a předplatným Azure nemají vztah podřízený nadřazený stejně jako ostatní prostředky Azure (Příklad: virtuální počítače, virtuální sítě, webových aplikací, úložiště atd.) mít s předplatným Azure. Všechny tyto je vytvořen, spravované a účtují v rámci předplatného Azure předplatné Azure se používá ke správě přístupu k adresáři služby Azure. Další informace najdete v tématu [předplatné jak Azure má vztah k Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 Ze všech předdefinované role RBAC **vlastníka** a **Přispěvatel** nabízejí úplné správy přístup ke všem prostředkům v prostředí, rozdíl, že se přispěvatelem nelze vytvářet a odstraňovat nové role RBAC . Předdefinované role, jako jsou **Přispěvatel virtuálních počítačů** nabízejí úplné řízení přístup jenom k prostředkům označen názvem, bez ohledu na to **skupiny prostředků** jsou vytvářeny do.
 

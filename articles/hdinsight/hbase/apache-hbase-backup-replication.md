@@ -1,5 +1,5 @@
 ---
-title: Nastavení zálohování HBase a Phoenix a replikace – Azure HDInsight
+title: Nastavení zálohování Apache HBase a vrstvou Apache Phoenix a replikace – Azure HDInsight
 description: Nastavení zálohování a replikace pro HBase a Phoenix.
 services: hdinsight
 author: ashishthaps
@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 0dfb1cf5ce16e9aa30bb7f9fcc43bd24ccb90d76
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 00402b7ba6004d382693d5f6f82c1108a254fba8
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042215"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283566"
 ---
-# <a name="set-up-backup-and-replication-for-hbase-and-phoenix-on-hdinsight"></a>Nastavení zálohování a replikace pro HBase a Phoenix v HDInsight
+# <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Nastavení zálohování a replikaci pro Apache HBase a vrstvou Apache Phoenix v HDInsight
 
-HBase podporuje několik přístupů pro zabezpečení proti ztrátě dat:
+Apache HBase podporuje několik přístupů pro zabezpečení proti ztrátě dat:
 
 * Kopírovat `hbase` složky
 * Export pak Import
@@ -101,7 +101,7 @@ Cílová adresa se skládá z následujících tří částí:
 
     <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
 
-* `<ZooKeeperQuorum>` je čárkou oddělený seznam uzly ZooKeeper, například:
+* `<ZooKeeperQuorum>` je čárkou oddělený seznam uzlů Apache ZooKeeper, například:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
@@ -109,7 +109,7 @@ Cílová adresa se skládá z následujících tří částí:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
-Zobrazit [ruční shromažďování seznamu kvorum ZooKeeper](#manually-collect-the-zookeeper-quorum-list) v tomto článku najdete podrobnosti o tom, jak načíst tyto hodnoty pro váš cluster HDInsight.
+Zobrazit [ruční shromažďování seznamu Apache ZooKeeper kvora](#manually-collect-the-apache-zookeeper-quorum-list) v tomto článku najdete podrobnosti o tom, jak načíst tyto hodnoty pro váš cluster HDInsight.
 
 Nástroj CopyTable také podporuje parametry se mají zadat časový rozsah řádků kopírovat a zadejte do něj podmnožinu rodin sloupců v tabulce ke kopírování. Pokud chcete zobrazit úplný seznam podporovaných CopyTable parametry, spusťte CopyTable bez parametrů:
 
@@ -120,7 +120,7 @@ CopyTable prohledává celý zdrojový obsah tabulky, která se překopírovaly 
 > [!NOTE]
 > K automatizaci kopírování dat mezi tabulkami, najdete v článku `hdi_copy_table.sh` skript v [Azure HBase Utils](https://github.com/Azure/hbase-utils/tree/master/replication) úložišti na Githubu.
 
-### <a name="manually-collect-the-zookeeper-quorum-list"></a>Ručně shromáždit kvorum ZooKeeper seznamu
+### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Ručně shromáždit kvora Apache ZooKeeper seznamu
 
 Když oba clustery HDInsight jsou ve stejné virtuální síti, jak je popsáno výše, je automatický interní překlad názvů. Pro účely CopyTable clusterů HDInsight v dvě samostatné virtuální sítě připojený prostřednictvím brány sítě VPN, musíte poskytnout hostitele IP adresy uzly Zookeeper v kvora.
 
@@ -201,8 +201,8 @@ Obecné kroky pro nastavení replikace jsou:
 5. Kopírovat existující data ze zdrojových tabulek do cílových tabulek.
 6. Replikace automaticky zkopíruje nové změny dat do zdrojových tabulek do cílových tabulek.
 
-Pokud chcete povolit replikaci na HDInsight, použijte akci skriptu ke clusteru HDInsight spuštěný zdroje. Postup povolení replikace ve vašem clusteru, nebo můžete experimentovat s replikací v clusterech ukázka vytvoří v virtuálních sítí pomocí šablon Azure Resource Manageru, najdete v části [replikace nakonfigurovat HBase](apache-hbase-replication.md). Tento článek také obsahuje pokyny pro povolení replikace Phoenix metadat.
+Pokud chcete povolit replikaci na HDInsight, použijte akci skriptu ke clusteru HDInsight spuštěný zdroje. Postup povolení replikace ve vašem clusteru, nebo můžete experimentovat s replikací v clusterech ukázka vytvoří v virtuálních sítí pomocí šablon Azure Resource Manageru, najdete v části [replikace nakonfigurovat Apache HBase](apache-hbase-replication.md). Tento článek také obsahuje pokyny pro povolení replikace Phoenix metadat.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Konfigurace replikace HBase](apache-hbase-replication.md)
+* [Konfigurace replikace Apache HBase](apache-hbase-replication.md)

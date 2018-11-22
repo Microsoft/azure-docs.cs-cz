@@ -10,12 +10,12 @@ ms.author: mattcon
 author: matthewconners
 ms.date: 07/13/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 06613ed1eac43ebe865666f85235de74903b1d5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3fac7c6d0a2274813c6ba6d96d8014d6452d28f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953584"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284893"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů prognóz službou Azure Machine Learning
 
@@ -109,7 +109,7 @@ print('imports done')
 
 ## <a name="load-data-and-explore"></a>Načtení dat a prozkoumejte
 
-Tento fragment kódu ukazuje typické proces od nezpracovaných datové sady, v tomto případě [data z vaší Dominick jemnější Foods](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  Můžete použít také funkce usnadnění [load_dominicks_oj_data](https://docs.microsoft.com/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
+Tento fragment kódu ukazuje typické proces od nezpracovaných datové sady, v tomto případě [data z vaší Dominick jemnější Foods](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  Můžete použít také funkce usnadnění [load_dominicks_oj_data](/python/api/azuremlftk/ftk.data.dominicks_oj.load_dominicks_oj_data).
 
 
 ```python
@@ -340,7 +340,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 Data obsahují přibližně 250 různých kombinací úložiště a značky v datovém rámci. Každá kombinace definuje vlastní časové řady prodeje. 
 
-Můžete použít [TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) třídy pohodlně více řad pomocí struktura single – datový model _intervalem_. Je určená interval `store` a `brand` sloupce.
+Můžete použít [TimeSeriesDataFrame](/python/api/azuremlftk/ftk.time_series_data_frame.timeseriesdataframe) třídy pohodlně více řad pomocí struktura single – datový model _intervalem_. Je určená interval `store` a `brand` sloupce.
 
 Rozdíl mezi _intervalem_ a _skupiny_ je skutečnost, že interval vždy fyzicky smysl v praxi, zatímco skupina nemusí být. Interní balíček funkcí pomocí skupiny můžete sestavit jeden model z několika časovými řadami, když uživatel domnívá, že toto seskupení pomáhá zlepšit výkon modelů. Ve výchozím nastavení skupina nastavena rovná intervalem a jednoho modelu je sestaven pro každý úsek. 
 
@@ -500,10 +500,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
   </tbody>
 </table>
 
-
-
-[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) funkce generuje komplexní sestavu časový interval, data řady. Zpráva obsahuje popis obecných dat i statistiky, které jsou specifické pro data časových řad. 
-
+[TimeSeriesDataFrame.ts_report](/python/api/azuremlftk/ftk.time_series_data_frame.timeseriesdataframe#ts-report) funkce generuje komplexní sestavu časový interval, data řady. Zpráva obsahuje popis obecných dat i statistiky, které jsou specifické pro data časových řad. 
 
 ```python
 whole_tsdf.ts_report()
@@ -889,14 +886,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Předzpracování dat a dává chybějící hodnoty
 
-Začněte tím, že rozdělení dat do sady pro trénování a testování sadu s [last_n_periods_split](https://docs.microsoft.com/python/api/ftk.ts_utils?view=azure-ml-py-latest) pomocnou funkci. Výsledná sada testování obsahuje poslední 40 pozorování každá Časová řada. 
+Začněte tím, že rozdělení dat do sady pro trénování a testování sadu s [last_n_periods_split](/python/api/azuremlftk/ftk.ts_utils#last-n-periods-split) pomocnou funkci. Výsledná sada testování obsahuje poslední 40 pozorování každá Časová řada. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Základní čas řady modely vyžadují souvislých časových řad. Zkontrolujte, jestli jsou pravidelné, což znamená, že mají čas index odebírána data v pravidelných intervalech pomocí řady [check_regularity_by_grain](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) funkce.
+Základní čas řady modely vyžadují souvislých časových řad. Zkontrolujte, jestli jsou pravidelné, což znamená, že mají čas index odebírána data v pravidelných intervalech pomocí řady [check_regularity_by_grain](/python/api/azuremlftk/ftk.time_series_data_frame.timeseriesdataframe#check-regularity-by-grain) funkce.
 
 
 ```python
@@ -971,7 +968,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Uvidíte, že většina řady (213 z 249) je nestandardní. [Imputace transformace](https://docs.microsoft.com/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest) je potřeba vyplnit chybějící hodnoty prodeje množství. Přestože existuje mnoho možností imputace, následující vzorový kód používá lineární interpolace.
+Uvidíte, že většina řady (213 z 249) je nestandardní. [Imputace transformace](/python/api/azuremlftk/ftk.transforms.time_series_imputer.timeseriesimputer) je potřeba vyplnit chybějící hodnoty prodeje množství. Přestože existuje mnoho možností imputace, následující vzorový kód používá lineární interpolace.
 
 
 ```python
@@ -1037,8 +1034,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Kombinovat více modelů
 
-[ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) estimator umožňuje kombinovat více odhady a přizpůsobit/předpověď na nich pomocí jeden řádek kódu.
-
+[ForecasterUnion](/python/api/azuremlftk/ftk.models.forecaster_union.forecasterunion) estimator umožňuje kombinovat více odhady a přizpůsobit/předpověď na nich pomocí jeden řádek kódu.
 
 ```python
 forecaster_union = ForecasterUnion(
@@ -1251,7 +1247,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-[RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) funkce zabalí skriptu sklearn regrese odhady tak, aby může být trénovaných na TimeSeriesDataFrame. Zabalená uživatel taky umisťuje každou skupinu v tomto případě úložišti do stejného modelu. Uživatel další jeden model pro skupinu série, která se považují za podobný a můžete ve fondu společně. Jeden model pro skupinu řad často používá data z řady delší ke zlepšení předpovědi pro krátké řady. Můžete nahradit tyto modely pro všechny ostatní modely v knihovně, které podporují regrese. 
+[RegressionForecaster](/python/api/azuremlftk/ftk.models.regression_forecaster.regressionforecaster) funkce zabalí skriptu sklearn regrese odhady tak, aby může být trénovaných na TimeSeriesDataFrame. Zabalená uživatel taky umisťuje každou skupinu v tomto případě úložišti do stejného modelu. Uživatel další jeden model pro skupinu série, která se považují za podobný a můžete ve fondu společně. Jeden model pro skupinu řad často používá data z řady delší ke zlepšení předpovědi pro krátké řady. Můžete nahradit tyto modely pro všechny ostatní modely v knihovně, které podporují regrese. 
 
 
 ```python
@@ -1369,13 +1365,13 @@ Některé modely strojového učení se dokáže využívat funkce přidané a p
 
 ### <a name="cross-validation-parameter-and-model-sweeping"></a>Křížového ověření parametru a Sweeping modelu    
 
-Balíčku přizpůsobuje některé tradiční strojového učení funkce předpovědi aplikace.  [RollingOriginValidator](https://docs.microsoft.com/python/api/ftk.model_selection.cross_validation.rollingoriginvalidator?view=azure-ml-py-latest) nemá křížového ověření časově, ale současně zachovává co by a nebude známo v rámci prognóz. 
+Balíčku přizpůsobuje některé tradiční strojového učení funkce předpovědi aplikace.  [RollingOriginValidator](/python/api/azuremlftk/ftk.model_selection.cross_validation.rollingoriginvalidator) nemá křížového ověření časově, ale současně zachovává co by a nebude známo v rámci prognóz. 
 
 Na následujícím obrázku představuje každý čtvereček data z jednoho bodu v čase. Modré čtverec představují školení a oranžová čtverce představují testování v každé fáze. Testování dat musí pocházet ze body v čase po největší časový bod školení. V opačném případě je úniku dat do trénovací data, způsobující vyhodnocení modelu stanou neplatnými. 
 ![PNG](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
 
 **Parametr Sweeping**  
-[TSGridSearchCV](https://docs.microsoft.com/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) třídy vyčerpávajícím způsobem vyhledá prostřednictvím hodnoty zadaný parametr a použije `RollingOriginValidator` k vyhodnocení parametru výkon při hledání nejlepších parametrů.
+[TSGridSearchCV](/python/api/azuremlftk/ftk.model_selection.search.tsgridsearchcv) třídy vyčerpávajícím způsobem vyhledá prostřednictvím hodnoty zadaný parametr a použije `RollingOriginValidator` k vyhodnocení parametru výkon při hledání nejlepších parametrů.
 
 
 ```python
@@ -1647,7 +1643,7 @@ aml_deployment.deploy()
 
 ### <a name="score-the-web-service"></a>Skóre webové služby
 
-Ke stanovení skóre pro malé datové sady, použijte [skóre](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) volání metody k odeslání mezi webovými službami pro všechna data.
+Ke stanovení skóre pro malé datové sady, použijte [skóre](/python/api/azuremlftk/ftk.operationalization.forecast_web_service.forecastwebservice#score) volání metody k odeslání mezi webovými službami pro všechna data.
 
 
 ```python
@@ -1668,8 +1664,7 @@ aml_web_service = aml_deployment.get_deployment()
 results = aml_web_service.score(score_context=score_context)
 ```
 
-Ke stanovení skóre pro velkou datovou sadu, použijte [paralelní vyhodnocování](https://docs.microsoft.com/python/api/ftk.operationalization.deployment.amlwebservice) volá režimu odeslat více webovou službu, jeden pro každou skupinu data.
-
+Ke stanovení skóre pro velkou datovou sadu, použijte [paralelní vyhodnocování](/python/api/azuremlftk/ftk.operationalization.forecast_web_service.forecastwebservice#score-parallel) volá režimu odeslat více webovou službu, jeden pro každou skupinu data.
 
 ```python
 results = aml_web_service.score(score_context=score_context, method='parallel')

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca19ce2cca314950adc40bbf065dec80e7fa3e1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a518d00a50c0fc6ec83626852f30f739d64b18ea
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227922"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283282"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie modulů a Runbooků Azure Automation
 Místo vytváření vlastních modulů a runbooků ve službě Azure Automation, můžete přistupovat širokou škálu scénářů, které již byly vytvořeny od Microsoftu a komunity.  Můžete použít tyto scénáře bez jakýchkoli úprav nebo můžete použít jako výchozí bod a upravit je pro vaše konkrétní požadavky.
@@ -68,7 +68,7 @@ Microsoft doporučuje, abyste k přidání runbooků do Galerie Runbooků, kter�
 * Automatizace aktualizuje v galerii, neuvidíte své příspěvky ihned jednou za hodinu.
 
 ## <a name="modules-in-powershell-gallery"></a>Moduly Galerie prostředí PowerShell
-Moduly prostředí PowerShell obsahují rutiny, které můžete použít v runboocích a jsou k dispozici v existující moduly, které můžete nainstalovat ve službě Azure Automation [Galerie prostředí PowerShell](http://www.powershellgallery.com).  Můžete spustit tuto galerii na portálu Azure portal a nainstalovat přímo do Azure Automation, nebo můžete si je stáhnout a nainstalovat je ručně.  
+Moduly prostředí PowerShell obsahují rutiny, které můžete použít v runboocích a jsou k dispozici v existující moduly, které můžete nainstalovat ve službě Azure Automation [Galerie prostředí PowerShell](https://www.powershellgallery.com).  Můžete spustit tuto galerii na portálu Azure portal a nainstalovat přímo do Azure Automation, nebo můžete si je stáhnout a nainstalovat je ručně.  
 
 ### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>Postup importování modulu z Galerie modul Automation pomocí webu Azure portal
 1. Na webu Azure Portal otevřete účet Automation.

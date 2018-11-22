@@ -1,3 +1,16 @@
+---
+author: roygara
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: rogarana
+ms.openlocfilehash: 5ac7982d306125804fc5b7873e537f9381f717cb
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279543"
+---
 **Nespravované disky virtuálních počítačů typu Premium: omezení na jeden účet**
 
 | Prostředek | Výchozí omezení |

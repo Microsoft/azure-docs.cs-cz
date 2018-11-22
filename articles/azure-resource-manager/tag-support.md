@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 99bac69d096095f660e2624194b72e1390c6fc22
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a4bb423dc5eddde0fd2d2b9b4f263ab39dbd801f
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275560"
+ms.locfileid: "52284978"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [označování](resource-group-using-tags.md).
@@ -193,7 +193,6 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
 | DataBoxEdgeDevices | Ano | 
-| DataBoxEdgeDevices/checkNameAvailability | Ne | 
 
 ## <a name="data-catalog"></a>Data Catalog
 | Typ prostředku | Podporuje značky |
@@ -451,8 +450,8 @@ Tento článek popisuje, zda typ prostředku podporuje [označování](resource-
 ## <a name="resources"></a>Zdroje a prostředky
 | Typ prostředku | Podporuje značky |
 | ------------- | ----------- |
-| resourceGroups | Ne | 
-| předplatná nebo skupiny prostředků | Ne | 
+| resourceGroups | Ano | 
+| předplatná nebo skupiny prostředků | Ano | 
 
 ## <a name="scheduler"></a>Scheduler
 | Typ prostředku | Podporuje značky |

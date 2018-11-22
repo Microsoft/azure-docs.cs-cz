@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746713"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285148"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Opravy operačního systému Linux ve vašem clusteru Service Fabric
 
@@ -147,7 +147,7 @@ Chování aplikace orchestraci oprav je možné nakonfigurovat podle svých pot�
 
 1. Připravte clusteru tak, že dokončíte všechny požadované kroky.
 2. Nasazení aplikace orchestraci oprav stejně jako jakoukoli jinou aplikaci Service Fabric. Aplikaci můžete nasadit pomocí Powershellu nebo Azure Service Fabric CLI. Postupujte podle kroků v [nasazení a odeberte aplikací pomocí prostředí PowerShell](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-remove-applications) nebo [nasazení aplikace pomocí Azure Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/scripts/cli-deploy-application)
-3. Konfigurace aplikace v době nasazování, předejte `ApplicationParamater` k `New-ServiceFabricApplication` rutiny nebo skripty k dispozici. Pro usnadnění práce prostředí powershell (Deploy.ps1) a skripty bash (Deploy.sh) jsou poskytovány spolu s aplikace. Použití skriptu:
+3. Konfigurace aplikace v době nasazování, předejte `ApplicationParameter` k `New-ServiceFabricApplication` rutiny nebo skripty k dispozici. Pro usnadnění práce prostředí powershell (Deploy.ps1) a skripty bash (Deploy.sh) jsou poskytovány spolu s aplikace. Použití skriptu:
 
     - Připojení ke clusteru Service Fabric.
     - Spusťte skript nasazení. Volitelně můžete předejte parametr aplikace skriptu. Příklad:.\Deploy.ps1 - ApplicationParameter @{UpdateFrequency = "Denně, 11:00:00"} nebo./Deploy.sh "{\"UpdateFrequency\":\"každý den, 11:00:00\"}" 

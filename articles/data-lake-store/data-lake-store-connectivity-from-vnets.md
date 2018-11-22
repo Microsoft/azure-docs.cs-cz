@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 130d0154fc0558ae7284e8407ba88fda3a2a53d5
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: a2367eff3095df82662f7b56571ecdbd966609fd
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391296"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284008"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Přístup k Azure Data Lake Storage Gen1 z virtuálních počítačů v rámci virtuální síť Azure
 Azure Data Lake Storage Gen1 je služba PaaS, která běží na veřejné internetové IP adresy. Libovolný server, který se může připojit k veřejnému Internetu obvykle může připojit k Azure Data Lake Storage Gen1 a koncových bodů. Ve výchozím nastavení všechny virtuální počítače, které jsou ve virtuálních sítích Azure přístup k Internetu a proto přístup k Azure Data Lake Storage Gen1. Nicméně je možné nakonfigurovat virtuální počítače ve virtuální síti nemáte přístup k Internetu. Pro tyto virtuální počítače přístup k Azure Data Lake Storage Gen1 omezen také. Blokování veřejný přístup k Internetu pro virtuální počítače ve virtuálních sítích Azure lze provést pomocí kteréhokoli z následujících postupů:
@@ -29,7 +29,7 @@ Azure Data Lake Storage Gen1 je služba PaaS, která běží na veřejné intern
 V tomto článku se dozvíte, jak povolit přístup k Azure Data Lake Storage Gen1 z virtuálních počítačů Azure, která byla omezena na přístup k prostředkům pomocí jedné ze tří metod uvedených výše.
 
 ## <a name="enabling-connectivity-to-azure-data-lake-storage-gen1-from-vms-with-restricted-connectivity"></a>Povolení připojení k Azure Data Lake Storage Gen1 z virtuálních počítačů s připojením s omezeným přístupem
-Pro přístup k Azure Data Lake Storage Gen1 z takových virtuálních počítačů, je nutné nakonfigurovat je pro přístup k adresu IP, které je k dispozici účet Azure Data Lake Storage Gen1. IP adresy pro vaše účty Data Lake Storage Gen1 můžete identifikovat pomocí překladu názvů DNS z vašich účtů (`<account>.azuredatalakestore.net`). K překladu názvů DNS z vašich účtů, můžete použít nástroje, jako **nslookup**. Otevřete příkazový řádek ve vašem počítači a spusťte následující příkaz:
+Pro přístup k Azure Data Lake Storage Gen1 z takových virtuálních počítačů, je nutné nakonfigurovat je pro přístup k IP adresu pro oblast, kde je k dispozici účet Azure Data Lake Storage Gen1. IP adresy vaší oblasti účtu Data Lake Storage Gen1 můžete identifikovat pomocí překladu názvů DNS z vašich účtů (`<account>.azuredatalakestore.net`). K překladu názvů DNS z vašich účtů, můžete použít nástroje, jako **nslookup**. Otevřete příkazový řádek ve vašem počítači a spusťte následující příkaz:
 
     nslookup mydatastore.azuredatalakestore.net
 

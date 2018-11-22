@@ -1,4 +1,17 @@
-## <a name="automatic-device-management"></a>Správa automatického zařízení
+---
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: dobett
+ms.openlocfilehash: c95bca125ea70cf32acad0d5ea67c3ad195ed704
+ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52279540"
+---
+## <a name="automatic-device-management"></a>Automatická správa zařízení
 Automatická správa zařízení ve službě Azure IoT Hub umožňuje automatizovat mnoho opakovaných a složité úlohy správy flotily nebo velké zařízení přes celého jejich životního cyklu. Automatická správa zařízení můžete cílit na sadu zařízení na základě jejich vlastností, definují požadovanou konfiguraci a nechat pokaždé, když se do rozsahu sem přišli aktualizaci zařízení služby IoT Hub.  Se skládá z [automatické konfigurace](../articles/iot-hub/iot-hub-auto-device-config.md) a [automatické nasazení IoT Edge](../articles/iot-edge/how-to-deploy-monitor.md).
 
 ## <a name="iot-edge"></a>IoT Edge
@@ -25,7 +38,7 @@ Součást zodpovědná za modulu do modulu komunikace, (směrem k službě IoT H
 ## <a name="iot-edge-leaf-device"></a>Zařízení IoT Edge typu list
 Zařízení IoT Edge se žádné podřízené zařízení. 
 
-## <a name="iot-edge-module"></a>Modul IoT Edge
+## <a name="iot-edge-module"></a>Modul pro IoT Edge
 Modul IoT Edge je kontejner Dockeru, který nasadíte do zařízení IoT Edge. Provede určitou úlohu, jako je příjem zpráv ze zařízení, transformují zprávy nebo odeslání zprávy do služby IoT hub. Komunikuje s ostatními moduly a odesílá data do modulu runtime IoT Edge. [Pochopení požadavků a nástroje pro vývoj modulů IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-development).
 
 ## <a name="iot-edge-module-identity"></a>Identita modul IoT Edge

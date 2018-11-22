@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: erhopf
-ms.openlocfilehash: c1eeee35869f29170a7f15b1d9e2c1ee69a6314d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: fa4563b84eb0882832a89ccc98396ff487f51b48
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622512"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284757"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Podpora jazyka a oblasti pro rozhraní API pro rozpoznávání řeči služeb
 
@@ -70,7 +70,6 @@ ar-SA | Arabština (Saúdská Arábie) | Muž | "Microsoft serveru řeči Text n
 bg-BG | Bulharština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (bg – BG, Ivan)"
 ES certifikační autority | katalánština (Španělsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ca-ES, HerenaRUS)"
 cs-CZ | Čeština | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Jakub)"
-cs-CZ | Čeština | Muž | "Microsoft Server řeči Text na řeč hlas (cs-CZ, Vit)"
 da-DK | dánština | Žena | "Microsoft serveru řeči Text na řeč hlas (da-DK HelleRUS)"
 de-AT | němčina (Rakousko) | Muž | "Microsoft Server řeči Text na řeč hlas (de-AT, musí Michael)"
 de-CH | němčina (Švýcarsko) | Muž | "Microsoft serveru řeči Text na řeč hlas (de-CH, Karsten)"
@@ -86,7 +85,6 @@ en-GB | English (UK) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, HazelRUS)"
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (en-GB, George, Apollo)"
 cs IE | angličtina (Irsko) |Muž | "Microsoft serveru řeči Text na řeč hlas (en-IE, Sean)"
-cs IE | angličtina (Irsko) |Muž | "Microsoft serveru řeči Text na řeč hlas (en-IE, Shaun)"
 en-IN | English (India) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, Heera, Apollo)"
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, PriyaRUS)"
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (en-IN, Ravi, Apollo)"
@@ -153,10 +151,10 @@ zh-TW | Čínština (Tchaj-wan)|Žena | "Microsoft serveru řeči Text na řeč 
 
 ### <a name="customization"></a>Přizpůsobení
 
-Přizpůsobení hlasu je k dispozici pro Americkou angličtinu (en US), Španělsko čínština (zh-CN) a italština (it-IT).
+Přizpůsobení hlasu je k dispozici pro nás Angličtina (en US), Španělsko čínština (zh-CN), francouzština (fr-FR), němčina (de-DE) a italština (it-IT).
 
 > [!NOTE]
-> Školení italsky začíná u datové sady z 2 000 + projevy. Dvojjazyčné modely čínština – angličtina jsou také podporovány s počáteční sadu 2 000 + projevy data.
+> Francouzština, němčina a italština školení způsobu vyjadřování začíná u datové sady 2 000 + projevy. Dvojjazyčné modely čínština – angličtina jsou také podporovány s počáteční sadu 2 000 + projevy data.
 
 ## <a name="speech-translation"></a>Překlad řeči
 

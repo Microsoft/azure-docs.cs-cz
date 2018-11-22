@@ -2,7 +2,7 @@
 title: Co je co-li nástroj podmíněného přístupu Azure Active Directory?
 description: Zjistěte, jak můžete porozumět dopadu zásad podmíněného přístupu ve vašem prostředí.
 services: active-directory
-keywords: podmíněný přístup pro aplikace, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 11/20/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d9bdc35e732a84920800424a260610fd6f068c94
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3bc7dd8103bed9a5a04566d08a1daec0708a59c4
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626086"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285029"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co je co-li nástroj podmíněného přístupu Azure Active Directory?
 
@@ -32,7 +32,7 @@ Tento článek vysvětluje, jak můžete tento nástroj pro testování zásad p
 
 ## <a name="what-it-is"></a>Co to je
 
-**Podmíněný přístup citlivostní nástroj zásad** umožňuje na vědomí následky zásad podmíněného přístupu ve vašem prostředí. Místo test řízení zásad ručně provedením více přihlášení tento nástroj umožňuje vyhodnotit Simulovaná přihlášení uživatele. Simulace odhad dopadu tomto přihlášení na zásady a generuje sestavy simulace. Sestava neobsahuje pouze seznam použitých zásad správy zásad přístupu ale také [klasické zásady](policy-migration.md#classic-policies) Pokud existují.    
+**Podmíněný přístup citlivostní nástroj zásad** umožňuje na vědomí následky zásad podmíněného přístupu ve vašem prostředí. Místo test řízení zásad ručně provedením více přihlášení tento nástroj umožňuje vyhodnotit Simulovaná přihlášení uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace. Sestava neobsahuje pouze seznam použitých zásad správy zásad přístupu ale také [klasické zásady](policy-migration.md#classic-policies) Pokud existují.    
 
 Co Pokud nástroje také poskytuje způsob, jak rychle určit zásady, které platí pro konkrétní uživatele. Informace, můžete použít například, pokud je potřeba vyřešit nějaký problém.  
 
@@ -51,9 +51,6 @@ V dalším kroku můžete zahájit spuštění simulace, které vyhodnotí nasta
 
 Po dokončení hodnocení, nástroj vygeneruje sestavu ovlivněné zásady.
 
-
-> [!NOTE]
-> V současné době co Pokud nástroj nepodporuje vnořené skupiny. Pokud je uživatel ve skupině a v této skupině je členem jiné skupiny, který se používá v zásadách podmíněného přístupu, pak bude postupovat v případě nástroj nezobrazuje správně vliv těchto zásad pro uživatele. 
 
 
 ## <a name="running-the-tool"></a>Spuštění nástroje
@@ -127,6 +124,6 @@ V seznamu zásad, které se nevztahují na vaše uživatele můžete a také zji
 
 - Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
 
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md). 
+- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 
 
 - Pokud chcete migrovat klasické zásady, najdete v článku [migrace klasických zásad na webu Azure Portal](policy-migration.md)  

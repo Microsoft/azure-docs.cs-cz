@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f6d17ec05895cfd6c3e14d5d6241e1f69874f7cc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 103c3a61c9899c79a2e4bdbf71fe45a13d8b31a8
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010265"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284927"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta Log Analytics pro Windows a Linux
 
@@ -52,7 +52,7 @@ $mma.ReloadConfiguration()
 
 ```PowerShell
 $workspaceId = "<Your workspace Id>"
-$workspaceKey = "<Your workspace Key>”
+$workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
 $mma.AddCloudWorkspace($workspaceId, $workspaceKey)
 $mma.ReloadConfiguration()
@@ -62,7 +62,7 @@ $mma.ReloadConfiguration()
 
 ```PowerShell
 $workspaceId = "<Your workspace Id>"
-$workspaceKey = "<Your workspace Key>”
+$workspaceKey = "<Your workspace Key>"
 $mma = New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg'
 $mma.AddCloudWorkspace($workspaceId, $workspaceKey, 1)
 $mma.ReloadConfiguration()

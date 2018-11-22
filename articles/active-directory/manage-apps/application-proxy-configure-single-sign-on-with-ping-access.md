@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 53d613052713e5144cb9d96aeeb937392fd4736a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 200c87bdf2f0d686cd2e768d3b6b9a7fe3a5691b
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902922"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282511"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Ověřování založené na hlavičkách pro jednotné přihlašování s Proxy aplikací a Pingaccessem
 
@@ -151,7 +151,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
   "acceptMappedClaims":true
 }
 ```
-V tomto příkladu [webu Azure portal](https://portal.azure.com) k zjistit *acceptedMappedClaims* pole:
+V tomto příkladu [webu Azure portal](https://portal.azure.com) aktualizovat *acceptedMappedClaims* pole:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
 2. Vyberte **Azure Active Directory** > **registrace aplikací**.
 3. Vyberte svou aplikaci > **Manifest**.

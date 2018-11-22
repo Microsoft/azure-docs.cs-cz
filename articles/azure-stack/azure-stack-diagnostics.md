@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: f9a7ae76f2d52b3439bfb33f306e164bb81549eb
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ef8a01228ff31afa78f469b2ad80b864fc9d3497
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623974"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283448"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack diagnostické nástroje
 
@@ -70,13 +70,14 @@ if($s)
     Remove-PSSession $s
 }
 ```
-- Parametry **OutputSharePath** a **OutputShareCredential** se používají k ukládání protokolů v uživatele zadaného umístění.
-- **Datum FromDate** a **ToDate** parametry můžete použít ke shromažďování protokolů pro určité časové období. Pokud tyto parametry nejsou zadané, se shromáždí protokoly pro poslední 4 hodiny ve výchozím nastavení.
+
 
 
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Spuštění Get-AzureStackLog v systému Azure Stack Development Kit (ASDK)
-1. Přihlaste se jako **AzureStack\CloudAdmin** na hostiteli.
-2. Otevřete okno Powershellu jako správce.
+Pomocí těchto kroků můžete spustit na hostitelském počítači ASDK Get AzureStackLog.
+
+1. Přihlaste se jako **AzureStack\CloudAdmin** na hostitelském počítači ASDK.
+2. Otevřete nové okno Powershellu jako správce.
 3. Spustit **Get-AzureStackLog** rutiny Powershellu.
 
 **Příklady:**
@@ -107,7 +108,10 @@ if($s)
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Důležité informace o parametru pro ASDK a integrované systémy
 
-- Pokud **datum FromDate** a **ToDate** nejsou zadány parametry, se shromáždí protokoly pro poslední 4 hodiny ve výchozím nastavení.
+- Parametry **OutputSharePath** a **OutputShareCredential** se používají k ukládání protokolů v uživatele zadaného umístění.
+
+- **Datum FromDate** a **ToDate** parametry můžete použít ke shromažďování protokolů pro určité časové období. Pokud tyto parametry nejsou zadané, se shromáždí protokoly pro poslední 4 hodiny ve výchozím nastavení.
+
 - Použití **FilterByNode** parametr pro filtrování protokolů podle názvu počítače. Příklad:
 
     ```powershell

@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/22/2018
-ms.openlocfilehash: e30ffe2dd79d55e856ef297608745b60578cf7e7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b83c889e72acb320c308c3ad5ee6243e715fd523
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131298"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282872"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Známé problémy a migrace omezení online migrace do Azure DB for PostgreSQL
 
 Známé problémy a omezení související s online migraci z PostgreSQL do služby Azure Database for PostgreSQL jsou popsány v následujících částech. 
 
 ## <a name="online-migration-configuration"></a>Online migrace konfigurace
-- Zdrojový PostgreSQL Server musí běžet verze 9.5.11, 9.6.7 nebo 10.3 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](1.2.%09https:/docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+- Zdrojový PostgreSQL Server musí běžet verze 9.5.11, 9.6.7 nebo 10.3 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](../postgresql/concepts-supported-versions.md).
 - Jsou podporovány pouze stejné verze migrace. Například migrace PostgreSQL 9.5.11 ke službě Azure Database for PostgreSQL 9.6.7 nepodporuje.
 - Povolení logické replikace v **source PostgreSQL postgresql.conf** souborů, nastavit následující parametry:
     - **wal_level** = logické
@@ -66,7 +66,7 @@ Známé problémy a omezení související s online migraci z PostgreSQL do slu�
     
     ```
 
-    Ve výsledku dotazu. Spusťte rozevírací cizí klíč (což je druhý sloupec).
+    Spusťte skript pro odstranění cizího klíče (druhý sloupec) ve výsledku dotazu odstraňte cizí klíč.
 
 - Schéma v cílovou službu Azure Database for PostgreSQL nesmí obsahovat žádné aktivační události. Pomocí následujícího postupu zakázat aktivační události v cílové databázi:
 

@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da681500ccff24e6e9bfa6b7bb9e5a14a725f158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8e00674f331a56be9abe6f2356aa88d7dcf1d0b0
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279626"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282380"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového v ověřování? 
 
@@ -42,7 +42,7 @@ Ověřování systému mění a přidává funkce pro zlepšení zabezpečení a
 
 Nenaplánováno v tuto chvíli. 
 
-## <a name="october-2018"></a>. Října 2018
+## <a name="october-2018"></a>Říjen 2018
 
 ### <a name="authorization-codes-can-no-longer-be-reused"></a>Už nebude možné znovu použít autorizační kódy
 
@@ -56,7 +56,7 @@ Od 15. listopadu 2018, Azure AD, přestane přijímat předchozích ověřovací
 
 Pokud vaše aplikace opakovaně používá autorizační kódy k získání tokenů pro několik prostředků, doporučujeme použít kód pro získání tokenu obnovení a pak pomocí tohoto tokenu obnovení získat další tokeny pro jiné prostředky. Autorizační kódy lze použít pouze jednou, ale obnovovací tokeny lze použít více než jednou v několika prostředcích. Všechny nové aplikace, která se pokusí znovu použít ověřovacího kódu během toku OAuth kódu se zobrazí chyba invalid_grant.
 
-Další informace o tokeny obnovení najdete v tématu [aktualizaci přístupových tokenů](v1-protocols-oauth-code.md#refreshing-the-access-tokens).
+Další informace o tokeny obnovení najdete v tématu [aktualizaci přístupových tokenů](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  Pokud používáte knihovnu ADAL nebo MSAL, to se udělá za vás knihovnou – nahraďte druhou instanci 'AcquireTokenByAuthorizationCodeAsync"s"AcquireTokenSilentAsync". 
 
 ## <a name="may-2018"></a>Květen 2018
 

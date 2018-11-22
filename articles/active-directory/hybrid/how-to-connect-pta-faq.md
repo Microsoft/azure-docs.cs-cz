@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 11/20/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 400f266b1f63de675b9cefae289878dbef0a278c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 220fc7b2b0ce3a4c5fd943c35952a345379a1b91
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685646"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284212"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
 
@@ -132,7 +132,7 @@ Pokud chcete odhadnout síťový provoz, použijte následující pokyny velikos
 Pro většinu zákazníků dvě nebo tři agenti ověřování celkem jsou dostačující pro vysokou dostupnost a kapacitu. Měli byste nainstalovat agentů ověřování blízko řadičů domén tak zlepšit latenci přihlášení.
 
 >[!NOTE]
->Platí omezení systému 12 agentů ověřování každého tenanta.
+>Platí omezení systému 40 agentů ověřování každého tenanta.
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Můžete nainstalovat první předávací ověřování agenta na jiném serveru než ten, který spouští služby Azure AD Connect?
 

@@ -9,16 +9,50 @@ author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 10/24/2018
-ms.openlocfilehash: 5ceb47f437f736829d0be10a856fe787fab944b0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 52c8eed7f8b5a65ef13215e677d52f44cb95fd64
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261566"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284995"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning. 
+
+## <a name="2018-11-20"></a>2018-11-20
+
+### <a name="azure-machine-learning-sdk-for-python-v0180"></a>Azure Machine Learning sady SDK pro Python v0.1.80
+
++ **Rozbíjející změny v** 
+  * *azureml.Train.Widget* obor názvů se přesunula do *azureml.train*.
+  * *azureml.core.compute.AmlCompute* zastarání *azureml.core.compute.BatchAICompute*. Tato třída se odebere v dalších verzích.
+### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Sada SDK v0.5.1 pro přípravu dat Azure Machine Learning 
+Další informace o sadě SDK pro Data Prep načtením [referenční dokumentace](https://aka.ms/data-prep-sdk).
++ **Nové funkce**
+   * Vytvoření nového příkazového řádku přípravy a spouštění balíčků přípravy a zobrazení data profilu pro datovou sadu nebo toku dat
+   * Přepracované rozhraní API SetColumnType použitelnosti
+   * Přejmenované smart_read_file k auto_read_file
+   * Nyní zahrnuje Nerovnoměrná distribuce a míra fluktuace v profil dat
+   * Vzorkovat s povoleným vzorkováním vrstveného
+   * Může číst ze souborů zip, které obsahují soubory CSV
+   * Můžete rozdělit datovým sadám row-wise pomocí náhodného dělení (například do sady testů regrese)
+   * Můžete získat všechny sloupce datové typy toku dat nebo profil dat voláním .dtypes
+   * Můžete získat počet řádků od toku dat nebo profil dat voláním .row_count
+
++ **Opravy chyb**
+   * Pevně long double převodu 
+   * Oprava vyhodnocení po přidání sloupce 
+   * Opravili jsme problém s FuzzyGrouping, kde ji nebude skupiny v některých případech rozpoznat
+   * Opravené seřadit funkce dodržovat pořadí řazení více sloupců
+   * Oprava a/nebo výrazy, které se podobá způsob, jakým je zpracovává Pandas
+   * Oprava čtení z dbfs cesty
+   * Provedené pomohou lépe porozumět chybové zprávy 
+   * Teď už selže při čtení na cílové vzdálené výpočetní prostředí pomocí tokenu AML
+   * Teď už na Linuxu DSVM selže
+   * Teď už dojde k chybě hodnoty jiné než řetězec jsou v predikátech řetězec
+   * Nyní zpracovává kontrolního výrazu chyby při by měl správně selhání toku dat
+   * Teď podporuje umístění dbutils připojené úložiště v Azure Databricks
 
 ## <a name="2018-11-05"></a>2018-11-05
 

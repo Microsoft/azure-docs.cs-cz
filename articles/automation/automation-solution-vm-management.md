@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 642fc66bff763105e9d5463886474703a9a50781
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: fa1fa65315f38d0ce2900b738b70ca3718b0c00e
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376699"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52285097"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -78,7 +78,7 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
    Sem budete vyzváni k:
    - Zadejte **cílové názvy ResourceGroup**. Tyto hodnoty jsou názvy skupin prostředků obsahujících virtuální počítače, které být spravovány tímto řešením. Můžete zadat více než jeden název a jednotlivé oddělte čárkou (hodnoty nejsou malá a velká písmena). Je podporováno použití zástupného znaku, pokud jsou cílem virtuální počítače ve všech skupinách prostředků v rámci předplatného. Tato hodnota bude uložena v **External_Start_ResourceGroupNames** a **External_Stop_ResourceGroupNames** proměnné.
    - Zadejte **seznamu vyloučení virtuálních počítačů (řetězec)**. Tato hodnota je název jednoho nebo více virtuálních počítačů z cílová skupina prostředků. Můžete zadat více než jeden název a jednotlivé oddělte čárkou (hodnoty nejsou malá a velká písmena). Je podporováno použití zástupného znaku. Tato hodnota bude uložena v **External_ExcludeVMNames** proměnné.
-   - Vyberte **plán**. Tato hodnota je o opakované datum a čas spouštění a zastavování virtuálních počítačů v cílové skupiny prostředků. Ve výchozím nastavení je nakonfigurovaný plán po dobu 30 minut od této chvíle. Vybrat jinou oblast, není k dispozici. Konfigurace plánu na konkrétní časové pásmo po dokončení konfigurace řešení, najdete v článku [Úprava plánů spouštění a vypínání](#modify-the-startup-and-shutdown-schedule).
+   - Vyberte **plán**. Tato hodnota je o opakované datum a čas spouštění a zastavování virtuálních počítačů v cílové skupiny prostředků. Ve výchozím nastavení je nakonfigurovaný plán po dobu 30 minut od této chvíle. Vybrat jinou oblast, není k dispozici. Konfigurace plánu na konkrétní časové pásmo po dokončení konfigurace řešení, najdete v článku [Úprava plánů spouštění a vypínání](#modify-the-startup-and-shutdown-schedules).
    - Pro příjem **e-mailová oznámení** ze skupiny akcí, přijměte výchozí hodnotu **Ano** a zadejte platnou e-mailovou adresu. Pokud vyberete **ne** , ale později rozhodnete, že chcete dostávat e-mailová oznámení, můžete aktualizovat [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md) , který je vytvořen s platnou e-mailové adresy oddělené čárkou. Je také potřeba povolit následující pravidla upozornění:
 
      - AutoStop_VM_Child
@@ -217,16 +217,16 @@ Ve všech scénářích **External_Start_ResourceGroupNames**, **External_Stop_R
 
 ### <a name="schedules"></a>Plány
 
-Následující tabulka obsahuje seznam všech výchozích plánů vytvořené v účtu Automation. Můžete je upravit nebo vytvořit vlastní schémata. Ve výchozím nastavení, všechny plány jsou zakázané s výjimkou **Scheduled_StartVM** a **Scheduled_StopVM**.
+Následující tabulka obsahuje seznam všech výchozích plánů vytvořené v účtu Automation. Můžete je upravit nebo vytvořit vlastní schémata. Ve výchozím nastavení, všechny plány jsou zakázané s výjimkou **Scheduled_StartVM** a **Scheduled_StopVM**.
 
 Všechny plány, neměli byste povolit, protože by to mohlo způsobit překrývající se plán akcí. Je vhodné určit optimalizace, které chcete provést a změňte je odpovídajícím způsobem. Zobrazit ukázkové scénáře v oddílu přehled další vysvětlení.
 
 |Název plánu | Frekvence | Popis|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Ke spuštění sady runbook AutoStop_CreateAlert_Parent každých 8 hodin, což zase zastaví hodnoty založená na virtuálních počítačích v External_Start_ResourceGroupNames External_Stop_ResourceGroupNames a External_ExcludeVMNames ve službě Azure Automation proměnné. Alternativně můžete zadat čárkou oddělený seznam virtuálních počítačů s použitím seznamů VMList parametru.|
-|Scheduled_StopVM | Uživatelem definované, každý den | Ke spuštění sady runbook Scheduled_Parent s parametrem _Zastavit_ každý den v určený čas. Automaticky zastaví všechny virtuální počítače, které splňují pravidel definovaných funkcemi asset proměnné. Povolit související plán **plánovaný-StartVM**.|
-|Scheduled_StartVM | Uživatelem definované, každý den | Ke spuštění sady runbook Scheduled_Parent s parametrem _Start_ každý den v určený čas. Všechny virtuální počítače, které splňují pravidel definovaných funkcemi příslušných proměnných se automaticky spustí. Povolit související plán **naplánované StopVM**.|
-|Sekvencování StopVM | 1:00 AM (UTC), každý pátek | Ke spuštění sady runbook Sequenced_Parent s parametrem _Zastavit_ každý pátek v zadanou dobu. Postupně (vzestupně) se zastaví všechny virtuální počítače se značkou **SequenceStop** určené příslušných proměnných. Další informace o hodnoty značek a asset proměnné naleznete v části sady Runbook. Povolit související plán **Sequenced StartVM**.|
+|Scheduled_StopVM | Uživatelem definované, každý den | Ke spuštění sady runbook Scheduled_Parent s parametrem _Zastavit_ každý den v určený čas. Automaticky zastaví všechny virtuální počítače, které splňují pravidel definovaných funkcemi asset proměnné. Povolit související plán **plánovaný-StartVM**.|
+|Scheduled_StartVM | Uživatelem definované, každý den | Ke spuštění sady runbook Scheduled_Parent s parametrem _Start_ každý den v určený čas. Všechny virtuální počítače, které splňují pravidel definovaných funkcemi příslušných proměnných se automaticky spustí. Povolit související plán **naplánované StopVM**.|
+|Sekvencování StopVM | 1:00 AM (UTC), každý pátek | Ke spuštění sady runbook Sequenced_Parent s parametrem _Zastavit_ každý pátek v zadanou dobu. Postupně (vzestupně) se zastaví všechny virtuální počítače se značkou **SequenceStop** určené příslušných proměnných. Další informace o hodnoty značek a asset proměnné naleznete v části sady Runbook. Povolit související plán **Sequenced StartVM**.|
 |Sekvencování StartVM | 1:00 hodin (UTC), každé pondělí | Ke spuštění sady runbook Sequenced_Parent s parametrem _Start_ každé pondělí v zadanou dobu. Postupně (sestupně) začíná značku ze všech virtuálních počítačů **SequenceStart** určené příslušných proměnných. Další informace o hodnoty značek a asset proměnné naleznete v části sady Runbook. Povolit související plán **Sequenced StopVM**.|
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics

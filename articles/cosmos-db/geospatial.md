@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 6ad59f14a0ade305bc9b1f9f125c21e9bdc39c0d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 1de97ef34ab2db79ef7eaeca66cb8d0598ae9262
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961904"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284485"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Použití geoprostorových a GeoJSON umístění dat pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -151,7 +151,7 @@ Pokud není k dispozici informace o zeměpisné šířce a délce, ale název um
 Teď, když jsme měli podívat, jak vložit Geoprostorová data, Pojďme se podívat, jak zadávat dotazy na tato data pomocí služby Azure Cosmos DB pomocí jazyka SQL a LINQ.
 
 ### <a name="spatial-sql-built-in-functions"></a>Prostorové integrované funkce SQL
-Azure Cosmos DB podporuje následující předdefinované funkce Otevřít geoprostorové W3c (OGC) pro geoprostorové dotazování. Další informace o kompletní sadu integrovaných funkcí v jazyce SQL najdete v tématu [dotazů Azure Cosmos DB](sql-api-sql-query.md).
+Azure Cosmos DB podporuje následující předdefinované funkce Otevřít geoprostorové W3c (OGC) pro geoprostorové dotazování. Další informace o kompletní sadu integrovaných funkcí v jazyce SQL najdete v tématu [dotazů Azure Cosmos DB](how-to-sql-query.md).
 
 <table>
 <tr>
@@ -392,6 +392,6 @@ Teď, když jste se naučili, jak začít pracovat s podporuje geoprostorové fu
 
 * Pusťte se do programování se [geoprostorové .NET ukázky kódu na Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
 * Vyzkoušejte v praxi s geoprostorové dotazování na [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
-* Další informace o [dotazu služby Azure Cosmos DB](sql-api-sql-query.md)
-* Další informace o [zásady indexování Azure Cosmos DB](indexing-policies.md)
+* Další informace o [dotazu služby Azure Cosmos DB](how-to-sql-query.md)
+* Další informace o [zásady indexování Azure Cosmos DB](index-policy.md)
 

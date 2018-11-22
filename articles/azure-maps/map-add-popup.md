@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0be10c155398133887fadb1fe9954068f3afb9d9
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f56e15e12bc176e6b6837e144494599ea4fb5403
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568110"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52282528"
 ---
 # <a name="add-a-popup-to-the-map"></a>Přidání vyskakovacího okna mapy
 
@@ -33,7 +33,7 @@ Druhý bloku kódu vytvoří objekt zdroje dat pomocí [DataSource](https://docs
 
 A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Symbol vrstvy se vytvoří ve třetí bloku kódu. Zdroj dat je přidaný do vrstvy symbol, který se pak přidá do mapy.
 
-Čtvrtý bloku kódu vytvoří [místní nabídky objektu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) prostřednictvím `new atlas.Popup()`. Automaticky otevírané okno Vlastnosti, například pozici a pixelOffset jsou součástí [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.popupoptions?view=azure-iot-typescript-latest). PopupOptions lze definovat v konstruktoru automaticky otevírané okno, nebo prostřednictvím [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) funkce třídy automaticky otevíraného okna. A `mouseover` se pak vytvoří naslouchací proces událostí pro vrstvu symbol.
+Čtvrtý bloku kódu vytvoří [místní nabídky objektu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) prostřednictvím `new atlas.Popup()`. Automaticky otevírané okno Vlastnosti, například pozici a pixelOffset jsou součástí [PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions). PopupOptions lze definovat v konstruktoru automaticky otevírané okno, nebo prostřednictvím [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) funkce třídy automaticky otevíraného okna. A `mouseover` se pak vytvoří naslouchací proces událostí pro vrstvu symbol.
 
 Poslední blok kódu vytvoří funkci, která se aktivuje `mouseover` naslouchací proces událostí. Nastaví obsah a vlastnosti automaticky otevíraného okna a přidá objekt automaticky otevírané okno do mapy.
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1e9ca18d2075d40f6f55bc84723f79ae7e10850b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2a28c8056e6dc25148299415a63a32993e874e01
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261209"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284536"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
@@ -102,11 +102,11 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $
 
 Přidáte **Get-AutomationConnection** aktivitu grafický runbook tak, že kliknete pravým tlačítkem na připojení v podokně knihovna grafický editor a vyberete **přidat na plátno**.
 
-![](media/automation-connections/connection-add-canvas.png)
+![Přidat na plátno](media/automation-connections/connection-add-canvas.png)
 
 Následující obrázek ukazuje příklad použití připojení v grafický runbook.  Toto je stejný příklad výše uvedené pro ověřování pomocí účtu spustit jako s textovou sady runbook.  V tomto příkladu **konstantní hodnota** datovou sadu pro **získat připojení spustit jako** aktivitou, která používá objekt připojení pro ověřování.  A [propojení kanálu](automation-graphical-authoring-intro.md#links-and-workflow) je zde použita, protože sada parametrů ServicePrincipalCertificate je očekáván jeden objekt.
 
-![](media/automation-connections/automation-get-connection-object.png)
+![získat připojení](media/automation-connections/automation-get-connection-object.png)
 
 ### <a name="python2-runbook-sample"></a>Ukázkový runbook Python2
 Následující příklad ukazuje, jak ověřovat pomocí připojení spustit jako v sadě runbook Python2.

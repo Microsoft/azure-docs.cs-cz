@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 47cf32a57fc4a2d0e20a9f2c242db1f3dec96fe5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8bc4c0617ebf9b400260a217462abbcc439ae440
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228534"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284672"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -175,8 +175,14 @@ Pokud vaše aplikace odešle velké množství dat a používáte Application In
 
 Lze je vypnout, ale to se nedoporučuje. Vzorkování je navržený tak, aby souvisejícími telemetrickými daty správně přenosu, k diagnostickým účelům. 
 
-## <a name="client-ip-address-is-0000"></a>IP adresa klienta je 0.0.0.0 
-V únoru 2018 jsme [oznámili](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/02/01/all-octets-of-ip-address-will-be-set-to-zero/) , že jsme odebrali protokolování IP adresu klienta. Geografické umístění to neovlivní.
+## <a name="client-ip-address-is-0000"></a>IP adresa klienta je 0.0.0.0
+
+5. února 2018 jsme oznámili, že jsme odebrali protokolování IP adresu klienta. Geografické umístění to neovlivní.
+
+> [!NOTE]
+> Pokud je nutné nejprve 3 oktety IP adresu, můžete použít [inicializátor telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer) přidat vlastní atribut.
+> Toto nemá vliv na data shromážděná před 5. únorem 2018.
+
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Chybná zeměpisná data v telemetrii uživatele
 Město, oblast a země dimenze jsou odvozeny z IP adresy a nejsou vždy přesné. Tyto IP adresy nejdřív zpracování pro umístění a potom změnit na hodnotu 0.0.0.0 mají být uloženy.
