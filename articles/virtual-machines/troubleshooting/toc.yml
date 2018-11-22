@@ -39,8 +39,10 @@ items:
     href: troubleshoot-rdp-static-ip.md
   - name: Řešení chyby protokolu RDP na virtuálním počítači kvůli zablokování síťové karty
     href: troubleshoot-rdp-nic-disabled.md
-  - name: Řešení chyb protokolu RDP kvůli bezpečnému režimu
+  - name: Řešení chyby protokolu RDP způsobené bezpečným režimem
     href: troubleshoot-rdp-safe-mode.md
+  - name: Řešení chyby protokolu RDP způsobené netvsc.sys
+    href: troubleshoot-rdp-driver-netvsc.md
 - name: SSH
   items:
   - name: Řešení potíží s protokolem SSH
@@ -151,9 +153,9 @@ items:
   href: understand-vm-reboot.md
 - name: Nástroje pro řešení potíží
   href: remote-tools-troubleshoot-azure-vm-issues.md
-ms.openlocfilehash: fbbc44073d4cb27222800943826ab7a177709833
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5b5da17002955e7a5c24e1b528ebf3076f2de24a
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260625"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283808"
