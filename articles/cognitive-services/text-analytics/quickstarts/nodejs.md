@@ -10,23 +10,23 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 911e825abb1290b534b0076bbcabcafd36b19854
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: HT
+ms.openlocfilehash: 1bc7bc80eaf530f80732f3f73d9027e1933b645e
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248164"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284062"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Volání rozhraní API pro analýzu textu ve službách Cognitive Services pomocí Node.js  
 <a name="HOLTop"></a>
 
-Tento článek vás seznámí s tím, jak [rozpoznat jazyk](#Detect), [analyzovat mínění](#SentimentAnalysis), [extrahovat klíčové fráze](#KeyPhraseExtraction) a [identifikovat propojené entity](#Entities) pomocí [rozhraní API pro analýzu textu](//go.microsoft.com/fwlink/?LinkID=759711) s využitím Node.js.
+Tento článek vám ukáže, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), [extrakce klíčových frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities) pomocí  [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) s využitím Node.JS.
 
 Technickou dokumentaci pro tato rozhraní API najdete v [definicích rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraním API analýzu textu**. Pro provedení tohoto rychlého startu můžete použít **bezplatnou úroveň 5 000 transakcí za měsíc**.
+[!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
 Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) vygenerovaný během registrace. 
 
@@ -36,7 +36,7 @@ Kromě toho potřebujete [koncový bod a přístupový klíč](../How-tos/text-a
 
 Rozhraní API pro rozpoznávání jazyka rozpozná jazyk textového dokumentu pomocí [metody Detect Language](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Node.js.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Node.JS.
 2. Přidejte níže uvedený kód.
 3. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Nahraďte umístění v `uri` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
@@ -156,9 +156,9 @@ get_language (documents);
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-Rozhraní API pro analýzu mínění rozpozná mínění v sadě textových záznamů pomocí [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Následující příklad vyhodnotí dva dokumenty, jeden v angličtině a druhý ve španělštině.
+Rozhraní API pro analýzu mínění rozpozná mínění sady textových záznamů pomocí [metody Sentiment](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Následující příklad vyhodnotí dva dokumenty, jeden v angličtině a druhý ve španělštině.
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Node.js.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Node.JS.
 2. Přidejte níže uvedený kód.
 3. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Nahraďte umístění v `uri` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
@@ -253,7 +253,7 @@ get_sentiments (documents);
 
 Rozhraní API pro extrakci klíčových frází extrahuje klíčové fráze z textového dokumentu pomocí [metody Key Phrases](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčové fráze z anglického i španělského dokumentu.
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Node.js.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Node.JS.
 2. Přidejte níže uvedený kód.
 3. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Nahraďte umístění v `uri` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
@@ -369,7 +369,7 @@ get_key_phrases (documents);
 
 Rozhraní API pro entity identifikuje dobře známé entity v textovém dokumentu pomocí [metody Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). Následující příklad identifikuje entity pro anglické dokumenty.
 
-1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Node.js.
+1. Ve svém oblíbeném integrovaném vývojovém prostředí vytvořte nový projekt Node.JS.
 2. Přidejte níže uvedený kód.
 3. Hodnotu `accessKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
 4. Nahraďte umístění v `uri` (momentálně `westus`) oblastí, kterou jste si zaregistrovali.
@@ -600,12 +600,12 @@ get_entities (documents);
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

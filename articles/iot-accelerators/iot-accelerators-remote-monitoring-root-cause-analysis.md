@@ -5,15 +5,15 @@ author: aditidugar
 ms.author: adugar
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 11/08/2018
+ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 9d95734f8930d9a80e2d2872d95fdf891088dd21
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824825"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284555"
 ---
 # <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Kurz: Analýza hlavní příčiny pro upozornění
 
@@ -40,7 +40,7 @@ K výběru připojených zařízení, která se zobrazí na stránce **Řídicí
 
 [![Vyfiltrování nákladních vozů na řídicím panelu](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-trucks-expanded.png#lightbox)
 
-Když použijete filtr, na mapě a panelu telemetrie na stránce **Řídicí panel** se zobrazí pouze zařízení, která splňují podmínky filtru. Uvidíte, že k akcelerátoru řešení jsou připojené dva nákladní vozy (včetně nákladního vozu **truck-02**).
+Když filtr použijete, jenom zařízení, které splňují podmínky filtru se zobrazí na mapě a na panelu telemetrie na **řídicí panel**. Uvidíte, že k akcelerátoru řešení jsou připojené dva nákladní vozy (včetně nákladního vozu **truck-02**).
 
 ## <a name="view-real-time-telemetry"></a>Zobrazení telemetrie v reálném čase
 
@@ -62,25 +62,25 @@ Jakmile se průzkumník spustí, uvidíte seznam všech vašich zařízení:
 
 [![Počáteční zobrazení průzkumníka TSI](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/initial-tsi-view-expanded.png#lightbox)
 
-Zařízení vyfiltrujte zadáním řetězce **delivery-truck** do pole filtru a výběrem **teploty** jako **míry** na levém panelu:
+Filtrovat zařízení tak, že zadáte **doručování truck** pole filtru, a vyberte **teploty** jako **míru** na levém panelu:
 
 [![Teplota vozu v průzkumníku TSI](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/filter-tsi-temp-expanded.png#lightbox)
 
-Uvidíte stejné zobrazení, které jste viděli na řídicím panelu vzdáleného monitorování. Teď si můžete přiblížit časový rámec, ve kterém se upozornění aktivovalo:
+Zobrazí stejné zobrazení, které jste viděli v řídicím panelu vzdáleného monitorování. Kromě toho můžete nyní lupy blíže časový rámec, pro který byla výstraha v rámci:
 
 [![Přiblížení v průzkumníku TSI](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-zoom-expanded.png#lightbox)
 
-Můžete také přidat další streamy telemetrických dat přicházející z nákladních vozů. Klikněte na tlačítko **Add** (Přidat) v levém horním rohu. Zobrazí se nové podokno:
+Můžete také přidat další streamy telemetrických dat přicházející z nákladních vozů. Klikněte na tlačítko **přidat** tlačítko v levém horním rohu. Zobrazí se nové podokno:
 
 [![Průzkumník TSI s novým podoknem](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-pane-expanded.png#lightbox)
 
-V novém podokně změňte název nového popisku na **Devices** (Zařízení) tak, aby odpovídalo předchozímu názvu. Pokud chcete do zobrazení přidat telemetrická data zeměpisné výšky, vyberte **zeměpisnou výšku** jako **míru** a **iothub-connection-device-id** jako hodnotu, **podle které se má provádět rozdělení**:
+V novém podokně změňte název nového popisku na **Devices** (Zařízení) tak, aby odpovídalo předchozímu názvu. Vyberte **výška** jako **míru** a **iothub připojení zařízení id** jako **rozdělit podle** přidat výšku telemetrická data do hodnotu zobrazení:
 
 [![Průzkumník TSI s teplotou a výškou](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/tsi-add-altitude-expanded.png#lightbox)
 
 ## <a name="diagnose-the-alert"></a>Diagnostika upozornění
 
-Když se na streamy podíváte v aktuálním zobrazení, můžete vidět, že jsou profily zeměpisné výšky pro tyto dva nákladní vozy velmi odlišné. Také uvidíte to, že k poklesu teploty ve voze **delivery-truck-02** dojde, když vůz dosáhne vysoké zeměpisné výšky. Tímto zjištěním jste překvapeni, protože vozy měly naplánovanou stejnou trasu.
+Při pohledu na datových proudů v aktuálním zobrazení uvidíte, že výška profily pro dva trucks se liší. Také uvidíte to, že k poklesu teploty ve voze **delivery-truck-02** dojde, když vůz dosáhne vysoké zeměpisné výšky. Tímto zjištěním jste překvapeni, protože vozy měly naplánovanou stejnou trasu.
 
 Abyste si potvrdili domněnku, že každý z vozů jel jinou cestou, přidejte na boční panel další podokno pomocí tlačítka **Add** (Přidat). V novém podokně změňte název nového popisku na **Devices** (Zařízení) tak, aby odpovídalo předchozímu názvu. Pokud chcete do zobrazení přidat telemetrická data zeměpisné délky, vyberte **zeměpisnou délku** jako **míru** a **iothub-connection-device-id** jako hodnotu, **podle které se má provádět rozdělení**. Když se podíváte na rozdíly mezi streamy **zeměpisné délky**, uvidíte, že vozy jely různými cestami:
 
@@ -88,7 +88,7 @@ Abyste si potvrdili domněnku, že každý z vozů jel jinou cestou, přidejte n
 
 ## <a name="create-a-new-rule"></a>Vytvoření nového pravidla
 
-Zatímco trasy nákladních vozů se obvykle optimalizují předem, zjistíte, že vzory provozu, počasí a další nepředvídatelné události mohou způsobit zdržení a nechat rozhodování o trase na poslední chvíli na řidičích vozů, kteří se rozhodnou podle svého nejlepšího úsudku. Vzhledem k tomu, že teplota vašich prostředků uvnitř vozidla je velmi důležitá, měli byste ve svém řešení vzdáleného monitorování vytvořit další pravidlo, kterým zajistíte, že se v případě překročení průměrné zeměpisné výšky o 350 stop za 1 minutu zobrazí upozornění:
+Zatímco trasy nákladní vozidlo jsou obvykle optimalizované předem, zjistíte, že vzory provozu, počasí a jiné nepředvídatelné události můžete způsobit prodlevy a ponechat rozhodnutí o směrování poslední minutu truck ovladače podle jejich nejlepší rozhodnutí. Ale vzhledem k tomu, že teplota vaše prostředky uvnitř vozidlo je velmi důležité, by měl vytvořit další pravidla ve vašem řešení vzdáleného monitorování. Toto pravidlo je zajistit, že se zobrazí upozornění, pokud průměrná výška za interval 1 minuty překročí 350 nohou:
 
 [![Karta pravidel vzdáleného monitorování s nastavením pravidla pro zeměpisnou výšku](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-inline.png)](./media/iot-accelerators-remote-monitoring-root-cause-analysis/new-rule-altitude-expanded.png#lightbox)
 

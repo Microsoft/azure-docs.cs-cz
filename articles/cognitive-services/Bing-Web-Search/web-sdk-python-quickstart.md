@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: aahi
-ms.openlocfilehash: 68d086a3ed4ea89632ce2e7625597985f0caba0e
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d810704d0f18915d805a4db46818df30147c8dfa
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165369"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283276"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Python
 
@@ -206,7 +206,7 @@ V této ukázce jsou použité parametry `count` a `offset` k omezení počtu v�
 
 ### <a name="filter-for-news-and-freshness"></a>Filtrování zpráv podle stáří
 
-V této ukázce použijeme parametry `response_filter` a `freshness` k filtrování výsledků hledání vrácených [metodou `search`](https://docs.microsoft.com//api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python#search) sady SDK. Vrácené výsledky hledání jsou omezené na nové zprávy a stránky, které Bing našel za posledních 24 hodin. Vytiskne se `name` a `URL` prvního výsledku.
+V této ukázce použijeme parametry `response_filter` a `freshness` k filtrování výsledků hledání vrácených [metodou `search`](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations#search) sady SDK. Vrácené výsledky hledání jsou omezené na nové zprávy a stránky, které Bing našel za posledních 24 hodin. Vytiskne se `name` a `URL` prvního výsledku.
 
 1. Do projektu v Pythonu přidejte tento kód:
     ```python

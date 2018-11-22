@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: 406936200a39e21d7377e7b2dba19a7ee745de57
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ad09c1d6f9e7cea1150ce1638c723c5c35d66a32
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568831"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52284434"
 ---
 # <a name="quickstart-bing-spell-check-sdk-with-c"></a>Rychlý start: Sada SDK pro kontrolu pravopisu Bingu za použití C#
 
@@ -23,26 +23,26 @@ Sada SDK Kontrola pravopisu Bingu obsahuje funkce rozhraní REST API pro kontrol
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
 
-Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Kontrola pravopisu Bingu, přejděte v sadě Visual Studio v Průzkumníku řešení na možnost `Manage NuGet Packages`. Přidejte balíček `Microsoft.Azure.CognitiveServices.SpellCheck`.
+Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Kontrola pravopisu Bingu, přejděte v sadě Visual Studio v Průzkumníku řešení na možnost `Manage NuGet Packages`. Přidejte balíček `Microsoft.Azure.CognitiveServices.Language.SpellCheck`.
 
 Instalací [balíčku SpellCheck SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck/1.2.0) se nainstalují také závislosti, včetně:
 
 * Microsoft.Rest.ClientRuntime
-* Microsoft.Rest.ClientRuntime.AZure
+* Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
 ## <a name="spell-check-client"></a>Klient kontroly pravopisu
 
-Pokud chcete vytvořit instanci klienta `SpellCheckAPI`, přidejte direktivu using:
+Pokud chcete vytvořit instanci klienta `SpellCheckClient`, přidejte direktivu using:
 
 ```cs
-using Microsoft.Azure.CognitiveServices.SpellCheck;
+using Microsoft.Azure.CognitiveServices.Language.SpellCheck;
 ```
 
 Potom vytvořte instanci klienta:
 
 ```cs
-var client = new SpellCheckAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+var client = new SpellCheckClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 ```
 
 Klienta použijte ke kontrole pravopisu:
@@ -102,7 +102,7 @@ namespace SpellCheckSDK
     {
         static void Main(string[] args)
         {
-            var client = new SpellCheckAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+            var client = new SpellCheckClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
             try
             {
@@ -146,6 +146,8 @@ namespace SpellCheckSDK
                 Console.WriteLine("Encountered exception. " + ex.Message);
             }
 
+            SpellCheckError("YOUR-ACCESS-KEY");
+
             Console.WriteLine("Any key to exit...");
             Console.ReadKey();
         }
@@ -153,15 +155,16 @@ namespace SpellCheckSDK
         // This will trigger an error response from the API.
         public static void SpellCheckError(string subscriptionKey)
         {
-            var client = new SpellCheckAPI(new ApiKeyServiceClientCredentials(subscriptionKey));
+            var client = new SpellCheckClient(new ApiKeyServiceClientCredentials(subscriptionKey));
 
             try
             {
-                var result = client.SpellCheckerAsync(mode: "proof").Result;
-                Console.WriteLine("Correction for Query# \"empty text field\"");
+                var result = client.SpellCheckerAsync(text: "", mode: "proof").Result;
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Correction for Query# \"empty text field\"");
+
                 if (ex.GetBaseException().GetType() == typeof(Exception) )
                 {
                     Console.WriteLine("Encountered exception. " + ex.Message);

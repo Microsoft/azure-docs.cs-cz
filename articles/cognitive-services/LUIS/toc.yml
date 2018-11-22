@@ -85,12 +85,14 @@ items:
   - name: Osvědčené postupy
     href: luis-concept-best-practices.md
   - name: Plánování aplikace
+    displayName: simple, hierarchical, composite, prebuilt, list, regex, regular expression
     href: luis-how-plan-your-app.md
   - name: Vytváření aplikací
     items:
     - name: Cyklus vytváření
       href: luis-concept-app-iteration.md
     - name: Spolupráce
+      displayName: shared, transfer, ownership, author, access
       href: luis-concept-collaborator.md
     - name: Správa verzí
       href: luis-concept-version.md
@@ -99,6 +101,7 @@ items:
     - name: Záměry
       href: luis-concept-intent.md
     - name: Entity
+      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed
       href: luis-concept-entity-types.md
     - name: Projevy
       href: luis-concept-utterance.md
@@ -139,6 +142,7 @@ items:
   - name: Zabezpečení
     items:
     - name: Přístup k aplikacím
+      displayName: public, public app, AAD, compliance, ISO, certification, trust center
       href: luis-concept-security.md
     - name: Vytváření a klíče koncových bodů
       href: luis-concept-keys.md
@@ -179,22 +183,29 @@ items:
       - name: Robot webové aplikace
         items:
         - name: Node.js
+          displayName: ABS, azure bot, service
           href: luis-nodejs-tutorial-build-bot-framework-sample.md
         - name: C#
+          displayName: ABS, azure bot, service
           href: luis-csharp-tutorial-build-bot-framework-sample.md
       - name: Application Insights
         items:
         - name: Node.js
+          displayName: Application insight, kusto
           href: luis-tutorial-function-appinsights.md
         - name: C#
+          displayName: Application insight, kusto
           href: luis-tutorial-bot-csharp-appinsights.md
   - name: Zlepšení přesnosti předpovědi
     items:
     - name: Kontrola promluv koncového bodu
+      displayName: active learning
       href: luis-how-to-review-endoint-utt.md
     - name: Přidání seznamu frází
+      displayName: synonym, interchange
       href: luis-how-to-add-features.md
     - name: Přidání vzorů
+      displayName: syntax, template
       href: luis-how-to-model-intent-pattern.md
   - name: Trénování
     href: luis-how-to-train.md
@@ -209,14 +220,18 @@ items:
   - name: Správa aplikace
     items:
     - name: S využitím řídicího panelu
+      displayName: analytics, usage
       href: luis-how-to-use-dashboard.md
     - name: Vytvoření klíčů koncového bodu
+      displayName: azure portal
       href: luis-how-to-azure-subscription.md
     - name: Přidání klíčů koncového bodu k aplikaci
+      displayName: assign key, assign
       href: luis-how-to-manage-keys.md
     - name: Správa verzí
       href: luis-how-to-manage-versions.md
     - name: Správa autorů a spolupracovníků
+      displayName: access, transfer, AAD, tenant, Azure AD, consent
       href: luis-how-to-collaborate.md
     - name: Správa klíčů pro vytváření obsahu
       href: luis-how-to-account-settings.md
@@ -289,6 +304,7 @@ items:
     - name: Rozhraní REST API V2 koncového bodu
       href: https://aka.ms/luis-endpoint-apis
     - name: Kódy HTTP
+      displayName: 400, 401, 403, 409, 410, 414, 429
       href: luis-reference-response-codes.md
   - name: Sady SDK
     items:
@@ -368,9 +384,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Znalostní báze
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 43d36dd8f08508139bc74904c9c155b947ace52e
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d5a40f294e63ad72c667ed94fd367588537450c6
+ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139665"
+ms.lasthandoff: 11/21/2018
+ms.locfileid: "52283259"
