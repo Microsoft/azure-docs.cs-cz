@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: juliako
-ms.openlocfilehash: e9b66721135456320134f41c614b194d1e22b10f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 758a3b30717e3bf516c1bceb5c255c397a6072cc
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380962"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291382"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Porovnání služeb Azure Media Services v3 přednastavení a Video Indexer 
 
@@ -30,8 +30,8 @@ V současné době je k překrytí mezi součástmi, které nabízí [Video Inde
 
 |Funkce|Video Indexer API |Analyzátor videa a zvuku analyzátor přednastavení<br/>v rozhraní API služby Media Services v3|
 |---|---|---|
-|Přehled Media|[Rozšířené](../../cognitive-services/video-indexer/video-indexer-output-json-v2.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json) |[Základy](../latest/intelligence-concept.md)|
-|Prostředí|Podívejte se na seznam podporovaných funkcí: <br/> [Přehled](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)|Vrátí pouze poznatků z videí|
+|Přehled Media|[Rozšířené](video-indexer-output-json-v2.md) |[Základy](../latest/intelligence-concept.md)|
+|Prostředí|Podívejte se na seznam podporovaných funkcí: <br/> [Přehled](video-indexer-overview.md)|Vrátí pouze poznatků z videí|
 |Fakturace|[Ceny za Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Ceny za Media Services](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
 |Dodržování předpisů|Bude doplněno|Služba Media Services je kompatibilní s mnoha certifikace. Podívejte se na [Offerings.pdf dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) a vyhledejte položku "Media Services", chcete-li zobrazit, pokud je v souladu s certifikátem, které vás zajímají.|
 |Bezplatná zkušební verze|USA – východ|Není k dispozici.|
@@ -39,6 +39,6 @@ V současné době je k překrytí mezi součástmi, které nabízí [Video Inde
 
 ## <a name="next-steps"></a>Další postup
 
-[Přehled Video Indexeru](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)
+[Přehled Video Indexeru](video-indexer-overview.md)
 
-[Přehled služby Media Services v3](../../media-services/latest/media-services-overview.md)
+[Přehled služby Media Services v3](../latest/media-services-overview.md)

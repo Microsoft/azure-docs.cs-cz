@@ -7,13 +7,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/11/2018
-ms.openlocfilehash: 4209ce8d15bf53381825e8bb3e47f0a16366a436
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 11/21/2018
+ms.openlocfilehash: 5124e06296962f1b673c77bfe318ff48d7fb11aa
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49346692"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291319"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Řešení potíží s Azure Stream Analytics výstupy
 
@@ -29,7 +29,7 @@ Tato stránka popisuje běžné problémy s výstupní připojení a jak je ře�
       - Pokud úloha používá centra událostí, zkontrolujte, zda je text zprávy *Null*.
       
     - Pokud chyby převodu dat > 0 a tato hodnota roste, může platit následující:
-      - Úloha nemusí být možné deserializovat události.
+      - Výstupní událost neodpovídá schématu cílové jímky. 
       - Schéma událostí nemusí odpovídat definovaná nebo očekávanému schématu událostí v dotazu.
       - Datové typy některých polí v události nemusí odpovídat očekávání.
       

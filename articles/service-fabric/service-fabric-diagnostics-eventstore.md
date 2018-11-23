@@ -1,9 +1,9 @@
 ---
-title: Azure Service Fabric událostí Store | Microsoft Docs
-description: Další informace o EventStore Azure Service Fabric
+title: Azure Service Fabric události Store | Dokumentace Microsoftu
+description: Další informace o Azure Service Fabric Eventstoru
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,46 +12,49 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
-ms.author: dekapur
-ms.openlocfilehash: 1d235d5a75975c8d58cad1bbde0f16df2b1b3e7a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 11/21/2018
+ms.author: srrengar
+ms.openlocfilehash: cd58e24a51b153d6bf217f7d32a82e882183ed73
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206512"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290667"
 ---
-# <a name="eventstore-service-overview"></a>Přehled služby EventStore
-
->[!NOTE]
->Od verze Service Fabric verze 6.2. rozhraní API EventStore jsou aktuálně ve verzi preview pro clustery Windows jenom spuštěné v Azure. Pracujeme na portování tuto funkci do systému Linux a také naše samostatné clustery.
+# <a name="eventstore-service-overview"></a>Přehled služby Eventstoru
 
 ## <a name="overview"></a>Přehled
 
-Počínaje verze 6.2, je služba EventStore možnosti monitorování v Service Fabric, která poskytuje způsob, jak můžete zjistit stav clusteru nebo úlohy k danému bodu v čase. Službu EventStore zpřístupní události Service Fabric prostřednictvím rozhraní API, které můžete provádět volání. Tato rozhraní API EventStore umožňují dotazování clusteru přímo k získání diagnostiky dat na všechny entity v clusteru a je využívat pro:
-* Diagnostikovat problémy v vývoj nebo testování nebo kde může pomocí monitorování kanálu
-* Potvrďte, že akce správy, které jsou s ohledem na váš cluster jsou zpracovávány správně clusteru
+Počínaje verze 6.2, je služba Eventstoru možnosti monitorování v Service Fabric, která poskytuje způsob, jak můžete porozumět stavu clusteru nebo úloh v daném bodě v čase. Služba Eventstoru zpřístupňuje události Service Fabric prostřednictvím sady rozhraní API (přístupná prostřednictvím koncové body REST nebo Klientská knihovna). Tato rozhraní API Eventstoru umožňují dotazů clusteru přímo k získání diagnostických dat na entitu ve vašem clusteru a by měla sloužit ke:
 
-Pokud chcete zobrazit úplný seznam událostí, které jsou k dispozici v EventStore, najdete v části [události Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
+* Diagnostikujte problémy ve vývoj a testování, nebo kde může pomocí monitorování kanálu
+* Potvrďte, že akce správy, které je možné ve vašem clusteru jsou zpracovávány správně clusteru
 
-Službu EventStore můžete položit dotaz na události, které jsou k dispozici pro každou entitu a typ entity v clusteru. To znamená, že mohou odesílat dotazy na události na následujících úrovních;
-* Cluster: všechny clusteru úroveň události
-* Uzly: všechny uzlu úroveň události
-* Uzel: události specifické pro jeden uzel, na základě `nodeName`
-* Aplikací: úroveň události všechny aplikace
+Pokud chcete zobrazit úplný seznam událostí, které jsou k dispozici v Eventstoru, naleznete v tématu [události Service Fabric](service-fabric-diagnostics-event-generation-operational.md).
+
+>[!NOTE]
+>Od verze Service Fabric verze 6.2. rozhraní API Eventstoru jsou aktuálně ve verzi preview pro clustery Windows pouze běžící v Azure. Pracujeme na přenos tuto funkci pro Linux, stejně jako naše samostatné clustery.
+
+Pro události, které jsou k dispozici pro každou entitu a typ entity ve vašem clusteru může být dotazována Eventstoru služby. To znamená, že můžete zadat dotaz na události v případě následujících stupňů;
+* Cluster: všechny clusteru událostí na úrovni
+* Uzly: všechny uzel úroveň události
+* Uzlu: specifické pro jeden uzel, na základě událostí `nodeName`
+* Aplikace: všech událostí na úrovni aplikace
 * Aplikace: specifické pro jednu aplikaci události
-* Služba: události ze všech služeb v clusterech služby
-* Služba: události z konkrétní službu
+* Služby: události ze všech služeb ve vašich clusterů
+* Služby: události z konkrétní služby
 * Oddíly: události ze všech oddílů
 * Oddíl: události z konkrétního oddílu
-* Repliky: události ze všech replik / instance
+* Repliky: události ze všech replik nebo instancí
 * Replika: události z konkrétní repliky / instance
 
 
-Službu EventStore má také umožňuje korelovat události v clusteru. Pohledem na události, které byly napsané ve stejnou dobu z různých entit, které může mít dopad na sobě navzájem, služba EventStore je možné připojit tyto události, které usnadní identifikaci příčiny aktivity v clusteru. Například pokud jeden z vašich aplikací se stane se bez změny vyvolané není v pořádku, EventStore se taky podívejte se na další události vystavené platformy a to s může korelovat `NodeDown` událostí. To pomáhá s rychlejší detekce chyb a hlavní příčiny analýzy.
+Služba Eventstoru má také možnost ke korelaci událostí ve vašem clusteru. Zobrazením událostí, které byly vytvořeny ve stejnou dobu od různé entity, které může mít vliv na sobě navzájem, služba Eventstoru je moci připojit k těmto událostem a pomůže identifikovat příčiny pro aktivity ve vašem clusteru. Například pokud nastane jednou z vašich aplikací bez nutnosti jakkoli měnit vyvolané špatného, Eventstoru se také podívat na další události vystavené platformy a to s může korelovat `NodeDown` událostí. To pomáhá při rychlejší detekce chyb a hlavní příčiny potíží analýzy.
 
-Abyste mohli začít používat službu EventStore, najdete v části [dotazu EventStore rozhraní API pro události clusteru](service-fabric-diagnostics-eventstore-query.md).
+Doporučujeme pomocí Eventstoru pro rychlou analýzu a získat snímek představu, jak provozování clusteru a pokud se dějí věci jako očekává.
+
+Abyste mohli začít s používáním služby Eventstoru, naleznete v tématu [rozhraní API Eventstoru dotazu pro události clusteru](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>Další postup
-* Přehled monitorování a Diagnostika v Service Fabric - [monitorovací a diagnostické pro Service Fabric](service-fabric-diagnostics-overview.md)
-* Další informace o monitorování cluster- [monitorování clusteru a platforma](service-fabric-diagnostics-event-generation-infra.md).
+* Přehled monitorování a diagnostiky v Service Fabric – [monitorování a Diagnostika pro Service Fabric](service-fabric-diagnostics-overview.md)
+* Další informace o monitorování clusteru- [monitorování clusteru a platforma](service-fabric-diagnostics-event-generation-infra.md).

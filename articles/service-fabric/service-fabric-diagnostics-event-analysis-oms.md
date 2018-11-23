@@ -12,17 +12,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/29/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 6dee895ba9fc024baac0500619b7d6cc62167b6d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: ed6a709418871ededc8ddfe06b0eb1ab3e4546e1
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404473"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291075"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Události analýzy a vizualizace s využitím Log Analytics
-Log Analytics shromažďuje a analyzuje telemetrii z aplikace a služby hostované v cloudu a poskytuje analýzy nástroje, které vám umožní maximalizovat jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v Log Analytics k získání přehledu a řešení potíží s co se děje ve vašem clusteru. Se podrobněji probírají následující běžné otázky:
+ Log Analytics shromažďuje a analyzuje telemetrii z aplikace a služby hostované v cloudu a poskytuje analýzy nástroje, které vám umožní maximalizovat jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v Log Analytics k získání přehledu a řešení potíží s co se děje ve vašem clusteru. Se podrobněji probírají následující běžné otázky:
 
 * Jak řešit události stavu
 * Jak poznám, kdy se uzel ocitne mimo provoz?
@@ -30,9 +30,12 @@ Log Analytics shromažďuje a analyzuje telemetrii z aplikace a služby hostovan
 
 ## <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
 
+>[!NOTE] 
+>Diagnostické úložiště je povolen ve výchozím nastavení při vytváření clusteru, stále musíte vytvořit pracovní prostor Log Analytics pro čtení z úložiště diagnostiky.
+
 Log Analytics shromažďuje data ze spravovaných prostředků, včetně tabulku úložiště Azure nebo agenta a udržuje v centrálním úložišti. Data lze potom slouží pro analýzy, výstrahy a vizualizace nebo další exportu. Log Analytics podporuje události, údaje o výkonu nebo jiné vlastní data. Podívejte se na [postup pro konfiguraci rozšíření diagnostiky pro agregaci událostí](service-fabric-diagnostics-event-aggregation-wad.md) a [kroky k vytvoření pracovního prostoru Log Analytics pro čtení z události ve službě storage](service-fabric-diagnostics-oms-setup.md) k Ujistěte se, že se data přenášejí do Log Analytics .
 
-Po přijetí dat pomocí Log Analytics, Azure nabízí několik *řešení pro správu* , která jsou připravená řešení pro monitorování příchozích dat, přizpůsobit tak, aby několik scénářů. Mezi ně patří *analýza služby Service Fabric* řešení a *kontejnery* řešení, které jsou dva nejdůležitější ty, které Diagnostika a monitorování clusterů Service Fabric. Tento článek popisuje, jak použít řešení analýza služby Service Fabric, který je vytvořen s pracovním prostorem.
+Po přijetí dat pomocí Log Analytics, Azure nabízí několik *řešení pro správu* , která jsou připravená řešení nebo provozní řídicí panely se budou monitorovat příchozí data upravit tak, aby několik scénářů. Mezi ně patří *analýza služby Service Fabric* řešení a *kontejnery* řešení, které jsou dva nejdůležitější ty, které Diagnostika a monitorování clusterů Service Fabric. Tento článek popisuje, jak použít řešení analýza služby Service Fabric, který je vytvořen s pracovním prostorem.
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Přístup k řešení analýza služby Service Fabric
 
@@ -40,7 +43,7 @@ Po přijetí dat pomocí Log Analytics, Azure nabízí několik *řešení pro s
 
 2. Vyberte prostředek **ServiceFabric\<nameOfOMSWorkspace\>**.
 
-2. Stručně řečeno zobrazí se dlaždice ve formě grafu pro každou z řešení povolené, včetně pro Service Fabric. Klikněte na tlačítko **Service Fabric** graph (první obrázek níže) a pokračujte v Service Fabric analytického řešení (druhý obrázek níže).
+2. V `Summary`, zobrazí se dlaždice ve formě grafu pro každou z řešení povolené, včetně pro Service Fabric. Klikněte na tlačítko **Service Fabric** graph (první obrázek níže) a pokračujte v Service Fabric analytického řešení (druhý obrázek níže).
 
     ![Řešení Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
@@ -48,12 +51,12 @@ Po přijetí dat pomocí Log Analytics, Azure nabízí několik *řešení pro s
 
 Na obrázku výše je domovská stránka řešení analýza služby Service Fabric. Toto je zobrazení snímku, co se děje ve vašem clusteru. Pokud jste povolili Diagnostika při vytváření clusteru, zobrazí se události pro 
 
-* [Provozní kanál](service-fabric-diagnostics-event-generation-operational.md): Chcete získat podrobnější popis operace, které platforma Service Fabric (kolekce služeb system) provádí.
+* [Události clusteru Service Fabric](service-fabric-diagnostics-event-generation-operational.md)
 * [Programovacího modelu Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
 * [Programovacího modelu Reliable Services](service-fabric-reliable-services-diagnostics.md)
 
 >[!NOTE]
->Kromě provozní kanál můžete má shromažďovat podrobné systémové události [aktualizací konfigurace diagnostického rozšíření](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
+>Kromě události Service Fabric připravené, můžete shromážděná podrobnější systémové události [aktualizací konfigurace diagnostického rozšíření](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations).
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Zobrazit události Service Fabric včetně akcí na uzlech
 

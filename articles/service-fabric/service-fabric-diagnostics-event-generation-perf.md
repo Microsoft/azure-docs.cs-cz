@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 1e6ea5d6ae321a0443631ec928912611a68346c6
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 843feb83b8202d3ef8e2c6c8c60cb9b509048530
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408009"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290769"
 ---
 # <a name="performance-metrics"></a>Metriky výkonu
 
@@ -31,6 +31,7 @@ Pro počítače v clusteru vezměte v úvahu shromažďovat následující čít
 
 | Kategorie čítače | Název počítadla |
 | --- | --- |
+| Logický Disk | Volné místo logického disku |
 | Fyzický disk (na Disk) | Střední Délka fronty disku pro čtení |
 | Fyzický disk (na Disk) | Střední Délka fronty disku zápisu |
 | Fyzický disk (na Disk) | Střední Doba disku/čtení |
@@ -49,6 +50,9 @@ Pro počítače v clusteru vezměte v úvahu shromažďovat následující čít
 | Proces (pro službu) | Virtuální bajty |
 | Proces (pro službu) | Pracovní sada |
 | Proces (pro službu) | Pracovní sada – privátní |
+| Interface(all-instances) sítě | Recd bajtů |
+| Interface(all-instances) sítě | Odeslané bajty |
+| Interface(all-instances) sítě | Celkový počet bajtů |
 | Interface(all-instances) sítě | Délka fronty výstupu |
 | Interface(all-instances) sítě | Zrušených výstupních paketů |
 | Interface(all-instances) sítě | Vyřazené přijaté pakety |
@@ -65,6 +69,8 @@ Shromážděte následující čítače, pokud provádíte nasazení služeb .NE
 | Paměť .NET CLR (pro službu) | Celkový počet svěřených bajtů |
 | Paměť .NET CLR (pro službu) | Počet celkový vyhrazených bajtů |
 | Paměť .NET CLR (pro službu) | Počet bajtů ve všech haldách |
+| Paměť .NET CLR (pro službu) | Velikost velkých objektových haldách |
+| Paměť .NET CLR (pro službu) | Počet popisovačů GC |
 | Paměť .NET CLR (pro službu) | Počet úklidů 0 |
 | Paměť .NET CLR (pro službu) | # Počet úklidů 1 |
 | Paměť .NET CLR (pro službu) | # Počet úklidů 2 |
@@ -76,7 +82,7 @@ Service Fabric generuje vyžadovat značné množství vlastní čítače výkon
 
 V aplikacích provádíte nasazení do clusteru, pokud používáte Reliable Actors, přidejte countes z `Service Fabric Actor` a `Service Fabric Actor Method` kategorie (viz [Service Fabric Reliable Diagnostika objektů actor](service-fabric-reliable-actors-diagnostics.md)).
 
-Pokud používáte Reliable Services, podobně jako máme `Service Fabric Service` a `Service Fabric Service Method` kategorie čítačů, které se mají shromažďovat čítače z. 
+Pokud používáte Reliable Services nebo vzdálené komunikace služeb, podobně jako máme `Service Fabric Service` a `Service Fabric Service Method` čítač kategorií by měl shromáždit čítače z viz [monitorování pomocí služby vzdálené komunikace](service-fabric-reliable-serviceremoting-diagnostics.md) a [spolehlivé čítače výkonu služby](service-fabric-reliable-services-diagnostics.md#performance-counters). 
 
 Pokud používáte Reliable Collections, doporučujeme přidat `Avg. Transaction ms/Commit` z `Service Fabric Transactional Replicator` shromažďovat latenci průměrné potvrzení na transakci metriku.
 

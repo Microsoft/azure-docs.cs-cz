@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/11/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 88b956fbe283dd39dfc51d6127b32b6f031e8b85
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408077"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291126"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Nastavení Log Analytics pro cluster
 
@@ -72,7 +72,7 @@ Pokud používáte Windows, pokračujte následujícími kroky pro připojení L
 Analýza služby Service Fabric řešení jste přidali v pracovním prostoru Log Analytics, která je teď správně připojený k platforma vašeho clusteru a tabulku protokolu aplikace. Stejným způsobem můžete přidat další zdroje do pracovního prostoru.
 
 
-## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Nasadit Log Analytics s využitím šablony Resource Manageru
+## <a name="deploy-log-analytics-with-azure-resource-manager"></a>Nasadit Log Analytics pomocí Azure Resource Manageru
 
 Při nasazování clusteru pomocí šablony Resource Manageru šablony vytvoří nový pracovní prostor Log Analytics, přidá řešení Service Fabric do pracovního prostoru a nakonfiguruje ho na čtení dat z tabulky odpovídající úložiště.
 
@@ -93,7 +93,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -Tem
 
 Azure Resource Manager zjistí, že tento příkaz je aktualizace pro existující prostředek. Zpracuje pouze změny mezi šablony řízení stávající nasazení a novou šablonu, která je k dispozici.
 
-## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Nasadit Log Analytics pomocí Azure Powershellu
+## <a name="deploy-log-analytics-with-azure-powershell"></a>Nasadit Log Analytics pomocí Azure Powershellu
 
 Prostředku Log Analytics prostřednictvím prostředí PowerShell můžete také nasadit pomocí `New-AzureRmOperationalInsightsWorkspace` příkazu. Pokud chcete použít tuto metodu, ujistěte se, že jste si nainstalovali [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Pomocí tohoto skriptu můžete vytvořit nový pracovní prostor Log Analytics a k němu přidejte řešení pro Service Fabric: 
 

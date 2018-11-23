@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: a57e7ccedd0c3b776a39c6750a3d5b4b5cc41d88
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 611f7ccf9ef701bf589a8f9450f8f02695357224
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685442"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291177"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Stáhněte si informačního kanálu procesor změnu .NET SDK: A poznámky k verzi
 > [!div class="op_single_selector"]
@@ -43,8 +43,15 @@ ms.locfileid: "51685442"
 
 ### <a name="v2-builds"></a>sestavení v2
 
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* Přidání podpory pro použití vlastního úložiště a zachová tokeny pokračování na oddíl.
+  * Například vlastní zapůjčení úložiště lze rozdělit na oddíly nijak vlastního kolekci zapůjčení služby Azure Cosmos DB.
+  * Vlastní zapůjčení úložiště můžete použít nové ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) bodu rozšiřitelnosti a ILeaseStoreManager veřejného rozhraní.
+  * Rozhraní ILeaseManager teď vyčleněný do více rolí rozhraní.
+* Vedlejší narušující změna: odebrání rozšíření bodu ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager), místo toho použijte ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager).
+
 ### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
-* Opravili jsme problém, ke kterému může dojít při zpracování rozdělit když dělené kolekci zapůjčení. Tento problém může vést k zapůjčení pro pryč oddíly nebyl odstraněn z kolekci zapůjčení. V této verzi je problém vyřešen.
+* Tato vydaná verze opravuje problém, ke které dojde během zpracování rozdělení v monitorované kolekci a pomocí zapůjčení dělené kolekce. Při zpracování zapůjčení pro rozdělení oddílů, se možná neodstranily zapůjčení odpovídající daného oddílu. Problém je vyřešen v této verzi.
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * Opravili jsme Estimator výpočtu pro hlavní server s více účty a nový formát tokenu relace.

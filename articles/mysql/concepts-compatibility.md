@@ -8,13 +8,13 @@ editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 9e56c2bd65f8a9a517a7cdebe02a1d051c689df6
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 11/21/2018
+ms.openlocfilehash: 4232e1850a1354fe247258d46b280e1bfa653972
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985881"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290820"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Ovladače MySQL a nástroje pro správu kompatibilní s využitím Azure Database for MySQL
 Tento článek popisuje ovladačů a nástrojů pro správu, které jsou kompatibilní s využitím Azure Database for MySQL.
@@ -24,23 +24,24 @@ Azure Database for MySQL používá na světě nejoblíbenější community edit
 
 | **Ovladač** | **Odkazy** | **Kompatibilní verze** | **Nekompatibilní verze** | **Poznámky** |
 | :-------- | :------------------------ | :----------- | :---------------------- | :--------------------------------------- |
-| PHP | https://secure.php.net/downloads.php | 5.5 5.6 7.x | 5.3 | Pro PHP 7.0 připojení pomocí SSL MySQLi přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT v připojovacím řetězci. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Sada PDO: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` možnost na hodnotu false.|
+| PHP | https://secure.php.net/downloads.php | 5.5, 5.6, 7.x | 5.3 | Pro PHP 7.0 připojení pomocí SSL MySQLi přidejte MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT v připojovacím řetězci. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Sada PDO: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` možnost na hodnotu false.|
 | .Net | [MySqlConnector na Githubu](https://github.com/mysql-net/MySqlConnector) <br> [Instalace balíčku od Nugetu](https://www.nuget.org/packages/MySqlConnector/) | 0.27 a po provedení | 0.26.5 a před | |
-| Prostředí Nodejs |  [MySQLjs na Githubu](https://github.com/mysqljs/mysql/releases) <br> Instalační balíček z NPM:<br> Spustit `npm install mysql` z NPM | 2.15 | 2.14.1 a před | |
+| MySQL Connector/NET | [MySQL Connector/NET](https://github.com/mysql/mysql-connector-net) | 8.0, 7.0, 6.10 |  | Kódování chyb může způsobit selhání v některých systémech Windows UTF8 připojení. |
+| Prostředí Nodejs |  [MySQLjs na Githubu](https://github.com/mysqljs/mysql/) <br> Instalační balíček z NPM:<br> Spustit `npm install mysql` z NPM | 2.15 | 2.14.1 a před | |
 | PŘEJÍT | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2 a před | Použít allowNativePasswords = true v připojovacím řetězci |
 | Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 | 1.2.2 a před | |
-| Java | https://downloads.mariadb.org/connector-java/ | 2.1 2.0 1.6 | 1.5.5 a před | |
+| Java | https://downloads.mariadb.org/connector-java/ | 2.1, 2.0, 1.6 | 1.5.5 a před | |
 
 ## <a name="management-tools"></a>Nástroje pro správu
 Výhodou kompatibility se rozšiřuje do nástrojů pro správu databází i. Svoje stávající nástroje by měla dál pracovat se službou Azure Database for MySQL, tak dlouho, dokud manipulace s databázemi funguje v rámci uživatelských oprávnění. V následující tabulce jsou uvedeny tři běžné nástroje pro správu databází, které byly testovány a nenašel se kvůli kompatibilitě s – Azure Database for MySQL 5.6 a 5.7:
 
 |                                     | **Aplikace MySQL Workbench 6.x a vyšší** | **Navicat 12** | **Phpmyadmin zobrazuje 4.x a vyšší** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| Vytvoření, aktualizaci, čtení, zápisu a odstranění | × | × | × |
-| Připojení SSL | × | × | × |
-| Automatické dokončování dotazů SQL | × | × |  |
-| Import a Export dat | × | × | × |
-| Export do několika formátů | × | × | × |
-| Zálohování a obnovení |  | × |  |
-| Zobrazit parametry serveru | × | × | × |
-| Zobrazení připojení klientů | × | × | × |
+| Vytvoření, aktualizaci, čtení, zápisu a odstranění | X | X | X |
+| Připojení SSL | X | X | X |
+| Automatické dokončování dotazů SQL | X | X |  |
+| Import a Export dat | X | X | X |
+| Export do několika formátů | X | X | X |
+| Zálohování a obnovení |  | X |  |
+| Zobrazit parametry serveru | X | X | X |
+| Zobrazení připojení klientů | X | X | X |

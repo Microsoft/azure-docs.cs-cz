@@ -12,22 +12,24 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/04/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: aedbc5925a6e101299170843abef79ef6125eafe
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: f9c7a70eae4c49173b3e11b7fbfa901f7e5b89d6
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230416"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291041"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Události analýzy a vizualizace s využitím Application Insights
 
-Microsoft Azure Application Insights je rozšiřitelná platforma pro monitorování a diagnostiku aplikací. Obsahuje výkonné analytické a dotazování na nástroj, přizpůsobitelného řídicího panelu a vizualizací a další možnosti, včetně automatické upozorňování. Je doporučená platforma pro monitorování a Diagnostika aplikace Service Fabric a služeb. Tento článek pomůže vyřešit tyto běžné dotazy
+Součást služby Azure Monitor, Application Insights je rozšiřitelná platforma pro monitorování a diagnostiku aplikací. Obsahuje výkonné analytické a dotazování na nástroj, přizpůsobitelného řídicího panelu a vizualizací a další možnosti, včetně automatické upozorňování. Integrace Application Insights s využitím Service Fabric obsahuje nástroje prostředí pro Visual Studio a Azure portal, stejně jako konkrétní metriky Service Fabric, zajistit prostředí s komplexní out-of-the-box protokolování. Přestože mnoho protokoly se automaticky vytváří a shromážděné za vás pomocí Application Insights, doporučujeme přidat další vlastní protokolování do vašich aplikací pro vytvoření pohodlnější a pestřejší prostředí diagnostiky.
 
-* Jak zjistím, co se děje v mé aplikace a služby a shromažďování telemetrických dat
-* Jak řešit Moje aplikace, zejména služby komunikaci mezi sebou
-* Jak získat metriky o jak Moje služby fungují, například, doba načítání stránek, požadavky http
+Tento článek pomůže řešit běžné otázky, na následující:
+
+* Jak zjistím, co se děje v mé aplikace a služby a shromažďování telemetrických dat?
+* Jak řešit Moje aplikace, zejména služby komunikaci mezi sebou?
+* Jak získat metriky o jak Moje služby fungují, například, doba načítání stránek, požadavky HTTP
 
 Účelem tohoto článku je ukazují, jak zkoumat a řešit z v rámci Application Insights. Pokud chcete získat informace tom, jak vytvořit a nakonfigurovat Application Insights s využitím Service Fabric, najdete v tomto [kurzu](service-fabric-tutorial-monitoring-aspnet.md).
 

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 11/21/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d249753dd954ba610a757a88060c6c0f7c58ad95
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 03dd056363cd99f5354dc10ed5ae328eb39c3ec2
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427089"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291058"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Ověřování pomocí Azure Active Directory z aplikace pro přístup k objektům BLOB a fronty (Preview)
 
@@ -169,10 +169,25 @@ StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
 // Create a block blob using those credentials
 CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.core.windows.net/sample-container/Blob1.txt"), storageCredentials);
+
+blob.UploadTextAsync("Blob created by Azure AD authenticated user.");
 ```
 
 > [!NOTE]
 > Integrace Azure AD pomocí služby Azure Storage vyžaduje použití protokolu HTTPS pro operace služby Azure Storage.
+
+V předchozím příkladu zpracovává klientské knihovny .NET autorizaci žádost o vytvoření objektů blob bloku. Ostatní klientské knihovny pro úložiště taky autorizaci žádosti za vás. Ale při volání operace služby Azure Storage k tokenu OAuth pomocí rozhraní REST API, pak bude nutné povolit tato žádost pomocí tokenu OAuth.   
+
+K volání operací služby objektů Blob a fronty použitím přístupových tokenů OAuth, předejte přístupového tokenu v **autorizace** pomocí hlavičky **nosiče** schéma a 2017-11-09 nebo vyšší jako verzi služby můžete vidět v následujícím příkladu:
+
+```
+GET /container/file.txt HTTP/1.1
+Host: mystorageaccount.blob.core.windows.net
+x-ms-version: 2017-11-09
+Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
+```
+
+Další informace o povolení operací služby Azure Storage z REST, naleznete v tématu [ověřování pomocí Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory).
 
 ## <a name="next-steps"></a>Další postup
 

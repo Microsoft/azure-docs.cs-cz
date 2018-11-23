@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 11/01/2018
+ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e7204c223681b9a33c439b0d9fc653167422384a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4a715020e37d5885dac26ac0573efe985c3f2cfb
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011693"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291211"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM
 
@@ -34,6 +34,47 @@ Tato část obsahuje seznam všech výstrah zabezpečení pro role adresáře, j
 * **Střední**: není potřeba reagovat okamžitě, ale signály potenciální porušení zásad.
 * **Nízká**: není potřeba reagovat okamžitě, ale navrhuje změna vhodnější zásad.
 
+### <a name="administrators-arent-using-their-privileged-roles"></a>Nepoužívají správci svoje privilegované role
+
+| | |
+| --- | --- |
+| **Závažnost** | Nízká |
+| **Proč se zobrazí toto upozornění?** | Uživatelé, kteří mají přiřazený privilegované role, které nepotřebují se zvyšuje riziko útoku. Je také jednodušší pro útočníky zůstanou v účtech, které nejsou aktivně používá bez povšimnutí. |
+| **Jak vyřešit?** | Projděte si uživatelé ze seznamu a odebere je z privilegované role, které nejsou potřeba. |
+| **Ochrany před únikem informací** | Privilegované role přiřadíte jenom uživatelé, kteří mají obchodní odůvodnění. </br>Plánování pravidelně [kontrol přístupu](pim-how-to-start-security-review.md) k ověření, že uživatelé stále potřebují přístup. |
+| **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |
+| **Trigger** | Aktivuje, pokud uživatel přejde určitou dobu bez aktivace role. |
+| **Počet dnů** | Toto nastavení určuje počet dní od 0 do 100, který uživatel přejít bez aktivace role.|
+
+### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>Role nevyžadují ověřování službou Multi-Factor Authentication pro aktivaci
+
+| | |
+| --- | --- |
+| **Závažnost** | Nízká |
+| **Proč se zobrazí toto upozornění?** | Bez MFA ohrožených uživatelů můžete aktivovat privilegované role. |
+| **Jak vyřešit?** | Projděte si seznam rolí a [vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli. |
+| **Ochrany před únikem informací** | [Vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli.  |
+| **Na portálu zmírňující opatření** | Díky aktivace privilegovaných rolí vyžaduje se MFA. |
+
+### <a name="the-tenant-doesnt-have-azure-ad-premium-p2"></a>Tenant nemá Azure AD Premium P2
+
+| | |
+| --- | --- |
+| **Závažnost** | Nízká |
+| **Proč se zobrazí toto upozornění?** | Aktuálního tenanta Azure AD Premium P2 nemá. |
+| **Jak vyřešit?** | Přečtěte si informace o [edice Azure AD](../fundamentals/active-directory-whatis.md). Upgrade na Azure AD Premium P2. |
+
+### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potenciální zastaralé účty v privilegovaných rolí
+
+| | |
+| --- | --- |
+| **Závažnost** | Střednědobé používání |
+| **Proč se zobrazí toto upozornění?** | Účty, které nebyly změněny jejich heslo nedávno může být služba nebo sdílené účty, které nejsou dodržovány. Tyto účty v privilegovaných rolích se pak můžou útočníci. |
+| **Jak vyřešit?** | Projděte si účty v seznamu. Pokud už potřebují přístup, odeberte je ze svoje privilegované role. |
+| **Ochrany před únikem informací** | Ujistěte se, že účty, které jsou sdíleny jsou otáčení silná hesla, když dojde ke změně v uživatele, kteří znát heslo. </br>Pravidelně revize účty s privilegované role pomocí [kontrol přístupu](pim-how-to-start-security-review.md) a odeberte přiřazení rolí, které už nejsou potřeba. |
+| **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |
+| **Osvědčené postupy** | Sdílené služby, a které ověřování pomocí hesla a jsou přiřazeny k vysoce privilegované role pro správu, jako je například globální správce nebo správce zabezpečení účtů pro nouzový přístup by měl mít svá hesla otočen v následujících případech:<ul><li>Po incidentu zabezpečení zahrnující zneužití nebo ohrožení zabezpečení pro správu přístupových práv</li><li>Po každý uživatel oprávnění se změní tak, aby už nejsou správce (například po zaměstnanec, který byl listy správce IT nebo opustí organizaci)</li><li>V pravidelných intervalech (pro příklad, čtvrtletně nebo ročně), i když došlo žádné známé porušení zabezpečení nebo změna IT pracovníky</li></ul>Od několika lidí přístup k přihlašovacím údajům tyto účty, by měl zajistit, že osoby, které ještě zbývá jejich role už mít přístup k účtům otočit přihlašovací údaje. [Další informace](https://aka.ms/breakglass) |
+
 ### <a name="roles-are-being-assigned-outside-of-pim"></a>Role se přiřazení mimo PIM
 
 | | |
@@ -43,28 +84,6 @@ Tato část obsahuje seznam všech výstrah zabezpečení pro role adresáře, j
 | **Jak vyřešit?** | Projděte si uživatelé ze seznamu a odebere je z privilegované role přiřazené mimo PIM. |
 | **Ochrany před únikem informací** | Prozkoumejte, kde uživatelé jsou přiřazení privilegovaných rolí mimo PIM a zakázat budoucí přiřazení z něj. |
 | **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |
-
-### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potenciální zastaralé účty v privilegovaných rolí
-
-| | |
-| --- | --- |
-| **Závažnost** | Střednědobé používání |
-| **Proč se zobrazí toto upozornění?** | Účty, které nebyly změněny jejich heslo nedávno může být služba nebo sdílené účty, které nejsou dodržovány. Tyto účty v privilegovaných rolích se pak můžou útočníci. |
-| **Jak vyřešit?** | Projděte si účty v seznamu. Pokud už potřebují přístup, odeberte je ze svoje privilegované role. |
-| **Ochrany před únikem informací** | Ujistěte se, že účty, které jsou sdíleny jsou otáčení silná hesla, když dojde ke změně v uživatele, kteří znát heslo. </br>Pravidelně Zkontrolujte účty s privilegované role pomocí kontrol přístupu a odeberte přiřazení rolí, které už nejsou potřeba. |
-| **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |
-
-### <a name="users-arent-using-their-privileged-roles"></a>Uživatelé nepoužívají svoje privilegované role
-
-| | |
-| --- | --- |
-| **Závažnost** | Nízká |
-| **Proč se zobrazí toto upozornění?** | Uživatelé, kteří mají přiřazený privilegované role, které nepotřebují se zvyšuje riziko útoku. Je také jednodušší pro útočníky zůstanou v účtech, které nejsou aktivně používá bez povšimnutí. |
-| **Jak vyřešit?** | Projděte si uživatelé ze seznamu a odebere je z privilegované role, které nejsou potřeba. |
-| **Ochrany před únikem informací** | Privilegované role přiřadíte jenom uživatelé, kteří mají obchodní odůvodnění. </br>Plán kontrol pravidelný přístup k ověření, že uživatelé stále potřebují přístup. |
-| **Na portálu zmírňující opatření** | Odebere účet z svou privilegovanou roli. |
-| **Trigger** | Aktivuje, pokud uživatel přejde určitou dobu bez aktivace role. |
-| **Počet dnů** | Toto nastavení určuje počet dní od 0 do 100, který uživatel přejít bez aktivace role.|
 
 ### <a name="there-are-too-many-global-administrators"></a>Existuje příliš mnoho globálních správců
 
@@ -91,16 +110,6 @@ Tato část obsahuje seznam všech výstrah zabezpečení pro role adresáře, j
 | **Trigger** | Aktivuje, pokud uživatel aktivuje stejné privilegovaných rolí více než jednou v zadaném období. Můžete nakonfigurovat časové období a počet aktivací. |
 | **Časový rámec prodloužení aktivace** | Toto nastavení určuje dny, hodiny, minuty a sekundy časové období chcete použít ke sledování podezřelých obnovení. |
 | **Počet prodloužení aktivace** | Toto nastavení určuje počet aktivací, od 2 do 100, které považujete za albertových upozornění v časovém rámci, kterou jste zvolili. Je toto nastavení můžete změnit přesunutím posuvníku nebo zadáním čísla do textového pole. |
-
-### <a name="roles-dont-require-mfa-for-activation"></a>Role nevyžadují MFA pro aktivaci
-
-| | |
-| --- | --- |
-| **Závažnost** | Nízká |
-| **Proč se zobrazí toto upozornění?** | Bez MFA ohrožených uživatelů můžete aktivovat privilegované role. |
-| **Jak vyřešit?** | Projděte si seznam rolí a [vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli. |
-| **Ochrany před únikem informací** | [Vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli.  |
-| **Na portálu zmírňující opatření** | Díky aktivace privilegovaných rolí vyžaduje se MFA. |
 
 ## <a name="configure-security-alert-settings"></a>Konfigurace nastavení výstrah zabezpečení
 

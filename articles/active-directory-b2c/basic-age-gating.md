@@ -1,5 +1,5 @@
 ---
-title: Používat ověřování věku v Azure Active Directory B2C | Dokumentace Microsoftu
+title: Povolit věku v Azure Active Directory B2C | Dokumentace Microsoftu
 description: Další informace o tom, jak identifikovat nezletilým vaši aplikaci používají.
 services: active-directory-b2c
 author: davidmu1
@@ -7,52 +7,104 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2018
+ms.date: 11/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a1020dfcb6c8d312001fbdb1c170987e1216c5d5
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a9220349249315d807a9dba675f6b074ddd385fa
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318856"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291092"
 ---
-# <a name="using-age-gating-in-azure-ad-b2c"></a>Používat ověřování věku v Azure AD B2C
+# <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Povolit věku v Azure Active Directory B2C
 
 >[!IMPORTANT]
->Tato funkce je ve verzi private preview.  Podrobnosti najdete na naší [blog služby](https://blogs.msdn.microsoft.com/azureadb2c/) podrobnosti, jako to bude k dispozici, nebo se obraťte AADB2CPreview@microsoft.com.  Nepoužívejte to o adresářích produkčního prostředí, pomocí těchto nových funkcích může vést ke ztrátě dat a může mít neočekávaným změnám v chování, až přejdeme do všeobecné dostupnosti.  
+>Tato funkce je ve verzi public preview. Nepoužívejte funkci aplikacích v produkčním prostředí. 
 >
 
-## <a name="age-gating"></a>Věku
-Věku umožňuje používat k identifikaci nezletilé osoby ve vaší aplikaci Azure AD B2C.  Můžete nastavit blokování uživatele z přihlášení k aplikaci nebo zajistí, aby přejděte zpět do aplikace s další deklarace identity, které identifikují uživatele kategorie age group a jejich stav svolení rodičů.  
+Věku v Azure Active Directory (Azure AD) B2C umožňuje identifikovat nezletilé osoby, které chcete používat vaši aplikaci. Můžete blokovat menší přihlašování do aplikace. Uživatele můžete také přejít zpět do aplikace a identifikovat jejich kategorie age group a jejich stav svolení rodičů. Azure AD B2C můžete zablokovat nezletilým bez svolení rodičů. Azure AD B2C můžete také nastavit aby aplikace mohla rozhodnout, co dělat s nezletilé osoby.
 
->[!NOTE]
->Svolení rodičů je sledována v atributu uživatele volá `consentProvidedForMinor`.  Můžete aktualizovat tuto vlastnost prostřednictvím rozhraní Graph API a použije toto pole při aktualizaci `legalAgeGroupClassification`.
->
+Po povolení věku ve vaší [tok uživatele](active-directory-b2c-reference-policies.md), uživatelé budou vyzvaní, když se narodili a jaké země žijí. Pokud se uživatel přihlásí, který nebyl dříve zadali informace, budete potřebovat k jeho zadání při příštím přihlášení. Pravidla se použijí pokaždé, když se uživatel přihlásí.
 
-## <a name="setting-up-your-directory-for-age-gating"></a>Nastavení v adresáři věku
-Chcete-li použít věku v toku uživatele, budete muset nastavení konfigurace adresáře mít další vlastnosti. Tuto operaci lze provést prostřednictvím `Properties` v nabídce (což bude k dispozici pouze v případě, že jste součástí privátní verze preview).  
-1. V rozšíření Azure AD B2C, klikněte na **vlastnosti** pro vašeho tenanta v nabídce na levé straně.
-2. V části **věku** části, klikněte na **konfigurovat** tlačítko.
-3. Počkejte na dokončení operace a nastaví adresář se věku.
+Azure AD B2C používá informace, které uživatel zadá k určení, zda jsou za. **AgeGroup** pole se pak aktualizuje v jejich účtu. Hodnota může být `null`, `Undefined`, `Minor`, `Adult`, a `NotAdult`.  **AgeGroup** a **consentProvidedForMinor** pole se následně použijí k výpočtu hodnoty **legalAgeGroupClassification**.
 
-## <a name="enabling-age-gating-in-your-user-flow"></a>Povolení věku ve svém toku uživatele
-Po použití věku nastavení adresáře, se pak můžete tuto funkci v tocích uživatelů verze preview.  Tato funkce vyžaduje změny, které nemusel být kompatibilní s existující typy toky uživatelů.  Povolíte věku pomocí následujících kroků:
-1. Vytvořte tok uživatele ve verzi preview.
-2. Po jeho vytvoření, přejděte na **vlastnosti** v nabídce.
-3. V **věku** části, stiskněte klávesu tímto přepínačem můžete povolit funkci.
-4. Můžete pak, jak chcete spravovat uživatele, které identifikují jako nezletilé osoby.
+Věku zahrnuje dvě hodnoty stáří: věk, který už je někdo považuje za nezletilého a věk, ve kterém musí mít za svolení rodičů. Následující tabulka uvádí pravidla věku, které se používají k definování za a dílčí vyžadující souhlas.
 
-## <a name="what-does-enabling-age-gating-do"></a>Povolení věku k čemu slouží?
-Po věku povolení ve svém toku uživatele uživatelské prostředí změny.  V registraci zobrazí se uživatelům dotaz nyní pro svoje datum narození a zemi, kde bydlíte spolu s atributy uživatele, který je nakonfigurovaný pro tok uživatele.  Přihlašování vyzve uživatele, kteří ještě dříve zadané datum narození a zemi, kde bydlíte pro tyto informace při příštím přihlášení.  Z těchto dvou hodnot, bude Azure AD B2C zjistit, jestli je uživatel za a aktualizovat `ageGroup` pole, hodnota může být `null`, `Undefined`, `Minor`, `Adult`, a `NotAdult`.  `ageGroup` a `consentProvidedForMinor` pole se následně použijí k výpočtu `legalAgeGroupClassification`. 
+| Země | Jméno země | Stáří menší souhlas | Vedlejší věk |
+| ------- | ------------ | ----------------- | --------- |
+| Výchozí | Žádný | Žádný | 18 |
+| AE | Spojené arabské emiráty | Žádný | 21 |
+| AT | Rakousko | 14 | 18 |
+| BE | Belgie | 14 | 18 |
+| BG | Bulharsko | 16 | 18 |
+| BH | Bahrajn | Žádný | 21 |
+| CM | Kamerun | Žádný | 21 |
+| CY | Kypr | 16 | 18 |
+| CZ | Česká republika | 16 | 18 |
+| DE | Německo | 16 | 18 |
+| DK | Dánsko | 16 | 18 |
+| EE | Estonsko | 16 | 18 |
+| EG | Egypt | Žádný | 21 |
+| ES | Španělsko | 13 | 18 |
+| FR | Francie | 16 | 18 |
+| GB | Spojené království | 13 | 18 |
+| GR | Řecko | 16 | 18 |
+| HR | Chorvatsko | 16 | 18 |
+| HU | Maďarsko | 16 | 18 |
+| IE | Irsko | 13 | 18 |
+| IT | Itálie | 16 | 18 |
+| KR | Korejská republika | 14 | 18 |
+| LT | Litva | 16 | 18 |
+| LU | Lucembursko | 16 | 18 |
+| LV | Lotyšsko | 16 | 18 |
+| MT | Malta | 16 | 18 |
+| Není k dispozici | Namibie | Žádný | 21 |
+| NL | Nizozemsko | 16 | 18 |
+| PL | Polsko | 13 | 18 |
+| PT | Portugalsko | 16 | 18 |
+| RO | Rumunsko | 16 | 18 |
+| SE | Švédsko | 13 | 18 |
+| SG | Singapur | Žádný | 21 |
+| SI | Slovinsko | 16 | 18 |
+| SK | Slovensko | 16 | 18 |
+| TD | Čad | Žádný | 21 |
+| TH | Thajsko | Žádný | 20 |
+| TW | Tchaj-wan | Žádný | 20 | 
+| USA | Spojené státy | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Možnosti ověřování věku.
-Můžete mít Azure AD B2C zablokovat nezletilým bez svolení rodičů nebo jim povolit a máte aplikaci rozhodování o tom, jak s nimi dělat.  
-
+ 
 ### <a name="allowing-minors-without-parental-consent"></a>Povolení nezletilé osoby bez svolení rodičů
-Toky uživatelů, které povolit buď sign up, přihlaste se nebo obojí můžete zvolit, aby nezletilé osoby bez svolení do vaší aplikace.  Pro nezletilé osoby bez svolení rodičů, jim byl povolen se přihlaste nebo zaregistrujte normální a službou Azure AD B2C vydá token ID s `legalAgeGroupClassification` deklarací identity.  Pomocí této deklarace identity můžete použít prostředí, které mají tito uživatelé například přejdete prostřednictvím prostředí pro shromažďování svolení rodičů (a aktualizovat `consentProvidedForMinor` pole).
+
+Pro toky uživatelů, které umožňují registrace, přihlášení nebo obojí, můžete zvolit, aby nezletilé osoby bez svolení do vaší aplikace. Nezletilé osoby bez svolení rodičů budou moci přihlásit nebo zaregistrovat jako normální a službou Azure AD B2C vydá token ID s **legalAgeGroupClassification** deklarací identity. Tato deklarace identity definuje prostředí, která uživatelé používají, jako je například shromažďování svolení rodičů a aktualizuje **consentProvidedForMinor** pole.
 
 ### <a name="blocking-minors-without-parental-consent"></a>Zablokování nezletilé osoby bez svolení rodičů
-Toky uživatelů, které povolit buď sign up, přihlaste se nebo obojí můžete zablokovat nezletilým bez souhlasu z aplikace.  Existují dvě možnosti pro zpracování blokovaným uživatelům v Azure AD B2C:
-* Poslat JSON zpět do aplikace – tato možnost pošle odpověď zpět do aplikace, za byl zablokován.
-* Zobrazit chybovou stránku - uživateli se zobrazí stránka s informací, že nemají přístup k aplikaci
+
+Toky uživatelů, které umožňují buď registrace, přihlášení, nebo obojí můžete k zablokování nezletilé osoby bez svolení od aplikace. Tyto možnosti jsou k dispozici pro zpracování blokovaným uživatelům v Azure AD B2C:
+
+- Poslat JSON zpět do aplikace – tuto možnost odešle odpověď zpět do aplikace, za byl zablokován.
+- Zobrazit chybovou stránku – uživatel je zobrazen na stránce informuje o tom, že nemají přístup k aplikaci.
+
+## <a name="set-up-your-tenant-for-age-gating"></a>Nastavení klientů pro věku
+
+Pokud chcete použít, věku v toku uživatele, musíte nakonfigurovat tenanta pro další vlastnosti.
+
+1. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce. Vyberte adresář, který obsahuje váš tenant. 
+2. Vyberte **všechny služby** v levém horním rohu webu Azure portal, vyhledejte a vyberte **Azure AD B2C**.
+3. Vyberte **vlastnosti** pro vašeho tenanta v nabídce na levé straně.
+2. V části **věku** části, klikněte na **konfigurovat**.
+3. Počkejte na dokončení operace a nastaví vašeho tenanta se věku.
+
+## <a name="enable-age-gating-in-your-user-flow"></a>Povolit věku ve svém toku uživatele
+
+Po nastavený věku použití vašeho tenanta se pak můžete použít tuto funkci v [toky uživatelů](user-flow-versions.md) kde je povolena. Povolíte věku pomocí následujících kroků:
+
+1. Vytvořte tok uživatele, který má povolené věku.
+2. Když vytvoříte tok uživatele, vyberte **vlastnosti** v nabídce.
+3. V **věku** vyberte **povoleno**.
+4. Potom rozhodnout, jak chcete spravovat uživatele, které identifikují jako nezletilé osoby. Pro **registrace nebo přihlašování**, vyberete `Allow minors to access your application` nebo `Block minors from accessing your application`. Pokud je vybrána zablokování nezletilé osoby, můžete vybrat `Send a JSON bcak to the application` nebo `Show an error message`. 
+
+
+
+

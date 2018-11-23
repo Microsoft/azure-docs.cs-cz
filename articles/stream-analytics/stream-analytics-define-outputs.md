@@ -2,19 +2,18 @@
 title: Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 description: Tento článek popisuje možnosti výstupní data k dispozici ve službě Azure Stream Analytics, včetně Power BI pro výsledky analýzy.
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/22/2018
-ms.openlocfilehash: 2ef599fe704b184e82de2d704753e3fb4a274a2a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/21/2018
+ms.openlocfilehash: 1502277276489d1977540018f2a22681ad48d8a7
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257795"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291466"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data. 
@@ -70,8 +69,8 @@ Chcete obnovit autorizaci, **Zastavit** úlohy > přejděte na výstup do Data L
 | Alias pro výstup |Popisný název používaný v dotazech na přímé výstup dotazu k této databázi. |
 | Databáze | Název databáze, kde jsou odesílání výstupu. |
 | Název serveru | Název databáze SQL serveru. |
-| Uživatelské jméno | Uživatelské jméno, která má přístup k zápisu do databáze. |
-| Heslo | Heslo pro připojení k databázi |
+| Uživatelské jméno | Uživatelské jméno, která má přístup k zápisu do databáze. Stream Analytics podporuje jenom ověřování SQL. |
+| Heslo | Heslo pro připojení k databázi. |
 | Table | Název tabulky, kde je zapsán výstup. Název tabulky je velká a malá písmena a schéma této tabulky musí přesně shodovat počet polí a jejich typy generovaná výstupu úlohy. |
 
 > [!NOTE]

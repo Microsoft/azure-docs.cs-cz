@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/26/2018
+ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: bc86ef5a32e08bc00b5a2fa53dccb8d6313f167b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 0675e06564fcacf5f7d14ef6986762f36df18b1b
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230981"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290318"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Monitorování výkonu pomocí rozšíření Windows Azure Diagnostics
 
@@ -106,6 +106,89 @@ Tady je příklad konfigurace s čítačem pro *celkový čas procesoru* (množs
 
  Vzorkovací frekvence čítače lze upravit podle vašich potřeb. Formát pro něj `PT<time><unit>`, takže pokud chcete počítadlo shromažďované každou sekundu, pak byste měli nastavit `"sampleRate": "PT15S"`.
 
+ Můžete také použít proměnné šablony ARM shromažďovat celou řadu čítačů výkonu, které můžou mít po ruce při shromažďování čítačů výkonu jeden proces. V následujícím příkladu, shromažďujeme čas procesoru a systému uvolňování paměti proces a pak 2 čítače výkonu v samotných uzlech pomocí proměnné. 
+
+ ```json
+"variables": {
+  "copy": [
+      {
+        "name": "processorTimeCounters",
+        "count": "[length(parameters('monitoredProcesses'))]",
+        "input": {
+          "counterSpecifier": "\\Process([parameters('monitoredProcesses')[copyIndex('processorTimeCounters')]])\\% Processor Time",
+          "sampleRate": "PT1M",
+          "unit": "Percent",
+          "sinks": "applicationInsights",
+          "annotation": [
+            {
+              "displayName": "[concat(parameters('monitoredProcesses')[copyIndex('processorTimeCounters')],' Processor Time')]",
+              "locale": "en-us"
+            }
+          ]
+        }
+      },
+      {
+        "name": "gcTimeCounters",
+        "count": "[length(parameters('monitoredProcesses'))]",
+        "input": {
+          "counterSpecifier": "\\.NET CLR Memory([parameters('monitoredProcesses')[copyIndex('gcTimeCounters')]])\\% Time in GC",
+          "sampleRate": "PT1M",
+          "unit": "Percent",
+          "sinks": "applicationInsights",
+          "annotation": [
+            {
+              "displayName": "[concat(parameters('monitoredProcesses')[copyIndex('gcTimeCounters')],' Time in GC')]",
+              "locale": "en-us"
+            }
+          ]
+        }
+      }
+    ],
+    "machineCounters": [
+      {
+        "counterSpecifier": "\\Memory\\Available Bytes",
+        "sampleRate": "PT1M",
+        "unit": "KB",
+        "sinks": "applicationInsights",
+        "annotation": [
+          {
+            "displayName": "Memory Available Kb",
+            "locale": "en-us"
+          }
+        ]
+      },
+      {
+        "counterSpecifier": "\\Memory\\% Committed Bytes In Use",
+        "sampleRate": "PT15S",
+        "unit": "percent",
+        "annotation": [
+          {
+            "displayName": "Memory usage",
+            "locale": "en-us"
+          }
+        ]
+      }
+    ]
+  }
+....
+"WadCfg": {
+    "DiagnosticMonitorConfiguration": {
+      "overallQuotaInMB": "50000",
+      "Metrics": {
+        "metricAggregation": [
+          {
+            "scheduledTransferPeriod": "PT1M"
+          }
+        ],
+        "resourceId": "[resourceId('Microsoft.Compute/virtualMachineScaleSets', variables('vmNodeTypeApp2Name'))]"
+      },
+      "PerformanceCounters": {
+        "scheduledTransferPeriod": "PT1M",
+        "PerformanceCounterConfiguration": "[concat(variables ('processorTimeCounters'), variables('gcTimeCounters'),  variables('machineCounters'))]"
+      },
+....
+```
+
  >[!NOTE]
  >I když můžete použít `*` určit skupiny čítačů výkonu, které jsou pojmenovány podobně, odesílání všechny čítače prostřednictvím jímky (do Application Insights) vyžaduje, že jsou jednotlivě deklarovány. 
 
@@ -115,8 +198,9 @@ Tady je příklad konfigurace s čítačem pro *celkový čas procesoru* (množs
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. Po dokončení upgradu zavádět (přijímá mezi 15 až 45 minut), WAD by měly pokračovat ve shromažďování čítačů výkonu a odesílání do tabulky s názvem WADPerformanceCountersTable v účtu úložiště spojené s vaším clusterem. Zobrazit čítače výkonu ve službě Application Insights pomocí [přidání jímky AI do šablony Resource Manageru](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
+5. Po dokončení upgradu zavádět (přijímá mezi 15 až 45 minut v závislosti na tom, zda je prvním nasazení a velikost vaší skupiny prostředků), WAD by měl být shromažďování čítačů výkonu a jejich odesílání do tabulky s názvem WADPerformanceCountersTable v účtu úložiště spojené s vaším clusterem. Zobrazit čítače výkonu ve službě Application Insights pomocí [přidání jímky AI do šablony Resource Manageru](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Další postup
 * Shromažďování dalších čítačů výkonu pro váš cluster. Zobrazit [metriky výkonu](service-fabric-diagnostics-event-generation-perf.md) seznam čítačů, na které se mají shromažďovat.
 * [Použití monitorováním a diagnostikou pomocí šablony Azure Resource Manageru a virtuální počítač Windows](../virtual-machines/windows/extensions-diagnostics-template.md) provádět další úpravy vaše `WadCfg`, včetně dalších účtů úložiště k odesílání diagnostických dat konfigurace.
+* Přejděte [WadCfg Tvůrce](http://azure.github.io/azure-diagnostics-tools/config-builder/) k vytvoření šablony ze začátku a ujistěte se, že je vaše syntaxe správná.

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 804ac964949c947baf5285b3ec591b3d28263f4d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 8a5b34cd92f3afd166d5d67ca445c99a52c684e2
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282733"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290888"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Scénář Azure Automation – zřízení virtuálního počítače s AWS
 V tomto článku se dozvíte, jak se dají využít Azure Automation ke zřízení virtuálního počítače ve vašem předplatném služby AWS (Amazon Web) a poskytnout tohoto virtuálního počítače konkrétním názvem – AWS označuje jako "označení" virtuální počítač.
@@ -41,7 +41,7 @@ Váš virtuální počítač zřizování runbook využívá modul Powershellu A
 Po nasazení modulu PowerShell AWS, nyní můžete vytvořit runbook můžete automatizovat zřizování virtuálního počítače v AWS pomocí Powershellového skriptu. Následující kroky ukazují, jak využívat nativní skript prostředí PowerShell ve službě Azure Automation.  
 
 > [!NOTE]
-> Další možnosti a informace o tomto skriptu najdete [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/New-AwsVM/DisplayScript).
+> Další možnosti a informace o tomto skriptu najdete [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/New-AwsVM/).
 > 
 
 1. Stáhněte Poweshellový skript New-AwsVM z Galerie prostředí PowerShell tak, že otevřete relaci Powershellu a následujícího příkazu:<br>
