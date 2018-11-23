@@ -10,13 +10,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: e0edd31027480df3592b46a4c1246462611da26e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
-ms.translationtype: HT
+ms.date: 11/21/2018
+ms.openlocfilehash: f0e76dff32038ba53dbdf7f869f5a04e75316e12
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265325"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290701"
 ---
 # <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí Node.js
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí [Node.js](https://nodejs.org/) z platforem Windows, Ubuntu Linux a Mac. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí Node.js a teprve začínáte pracovat se službou Azure Database for MySQL.
@@ -28,24 +28,24 @@ Tento rychlý start jako výchozí bod využívá prostředky vytvořené v něk
 
 Budete také muset:
 - Nainstalovat modul runtime [Node.js](https://nodejs.org).
-- Nainstalovat balíček [mysql2](https://www.npmjs.com/package/mysql2) pro připojení k MySQL z aplikace Node.js. 
+- Nainstalujte [mysql](https://www.npmjs.com/package/mysql) balíčku pro připojení k MySQL z aplikace Node.js. 
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>Instalace Node.js a konektoru MySQL
-V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslušné části. Pomocí npm nainstalujte balíček mysql2 a jeho závislosti do složky vašeho projektu.
+V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslušné části. Pomocí npm nainstalujte balíček mysql a jeho závislosti do složky vašeho projektu.
 
 ### <a name="windows"></a>**Windows**
 1. Přejděte na [stránku pro stažení Node.js](https://nodejs.org/en/download/) a vyberte požadovanou možnost Instalační služby systému Windows.
 2. Vytvořte místní složku projektu, například `nodejsmysql`. 
 3. Spusťte příkazový řádek a přejděte do složky projektu, například `cd c:\nodejsmysql\`.
-4. Spusťte nástroj NPM a nainstalujte knihovnu mysql2 do složky projektu.
+4. Spusťte nástroj NPM a nainstalujte mysql knihovny do složky projektu.
 
    ```cmd
    cd c:\nodejsmysql\
-   "C:\Program Files\nodejs\npm" install mysql2
+   "C:\Program Files\nodejs\npm" install mysql
    "C:\Program Files\nodejs\npm" list
    ```
 
-5. Ověřte instalaci kontrolou, že text výstupu příkazu `npm list` obsahuje `mysql2@1.3.5`.
+5. Ověřte instalaci kontrolou `npm list` panelem text. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 1. Spuštěním následujících příkazů nainstalujte **Node.js** a **npm** – správce balíčků pro Node.js.
@@ -54,15 +54,15 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
    sudo apt-get install -y nodejs npm
    ```
 
-2. Spuštěním následujících příkazů vytvořte složku projektu `mysqlnodejs` a nainstalujte do ní balíček mysql2.
+2. Pomocí následujících příkazů vytvořte složku projektu `mysqlnodejs` a nainstalovat balíček mysql do této složky.
 
    ```bash
    mkdir nodejsmysql
    cd nodejsmysql
-   npm install --save mysql2
+   npm install --save mysql
    npm list
    ```
-3. Ověřte instalaci kontrolou, že text výstupu příkazu npm list obsahuje `mysql2@1.3.5`.
+3. Ověřte instalaci kontrolou textový výstup seznamu npm. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
 ### <a name="mac-os"></a>**Mac OS**
 1. Zadejte následující příkazy, abyste nainstalovali **brew**, snadno použitelného správce balíčků pro Mac OS X a **Node.js**.
@@ -71,21 +71,21 @@ V závislosti na vaší platformě nainstalujte Node.js podle pokynů v příslu
    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    brew install node
    ```
-2. Spuštěním následujících příkazů vytvořte složku projektu `mysqlnodejs` a nainstalujte do ní balíček mysql2.
+2. Pomocí následujících příkazů vytvořte složku projektu `mysqlnodejs` a nainstalovat balíček mysql do této složky.
 
    ```bash
    mkdir nodejsmysql
    cd nodejsmysql
-   npm install --save mysql2
+   npm install --save mysql
    npm list
    ```
 
-3. Ověřte instalaci kontrolou, že text výstupu příkazu `npm list` obsahuje `mysql2@1.3.6`. Číslo verze se může lišit v závislosti na vydávání nových oprav.
+3. Ověřte instalaci kontrolou `npm list` panelem text. Číslo verze se může lišit v závislosti na vydávání nových oprav.
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
@@ -105,7 +105,7 @@ Metoda [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-
 Parametry `host`, `user`, `password` a `database` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze.
 
 ```javascript
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 var config =
 {
@@ -172,7 +172,7 @@ Metoda [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-
 Parametry `host`, `user`, `password` a `database` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze.
 
 ```javascript
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 var config =
 {
@@ -224,7 +224,7 @@ Metoda [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-
 Parametry `host`, `user`, `password` a `database` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze.
 
 ```javascript
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 var config =
 {
@@ -272,7 +272,7 @@ Metoda [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-
 Parametry `host`, `user`, `password` a `database` nahraďte hodnotami, které jste zadali při vytváření serveru a databáze.
 
 ```javascript
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 var config =
 {
@@ -312,6 +312,6 @@ function deleteData(){
 };
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Migrace vaší databáze pomocí exportu a importu](./concepts-migrate-import-export.md)

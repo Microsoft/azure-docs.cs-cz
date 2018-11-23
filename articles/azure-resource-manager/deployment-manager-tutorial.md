@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/08/2018
+ms.date: 11/21/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a7829c14997287ed130b0b4300c7f5aa0f3a30
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: af586656889919ed9b3407f2c41253dfadddc742
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345568"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52291245"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Private Preview)
 
@@ -50,12 +50,12 @@ K dokončení tohoto článku potřebujete:
 * Určité zkušenosti s vývojem [šablon Azure Resource Manageru](./resource-group-overview.md).
 * Azure Deployment Manager je ve verzi Private Preview. Pokud se chcete zaregistrovat k používání Azure Deployment Manageru, vyplňte [registrační formulář](https://aka.ms/admsignup). 
 * Azure PowerShell Další informace najdete v tématu [Začínáme s Azure PowerShellem](https://docs.microsoft.com/powershell/azure/get-started-azureps).
-* Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete nové okno PowerShellu a použijte následující příkaz:
+* Rutiny Deployment Manageru. K instalaci těchto předběžných verzí rutin potřebujete nejnovější verzi modulu PowerShellGet. Pokud chcete získat nejnovější verzi, přečtěte si článek [Instalace modulu PowerShellGet](/powershell/gallery/installing-psget). Jakmile nainstalujete PowerShellGet, zavřete okno PowerShellu. Otevřete okno Powershellu new se zvýšenými oprávněními a zadejte následující příkaz:
 
     ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
-* [Průzkumníka služby Microsoft Azure Storage](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409). Průzkumník služby Azure Storage se nevyžaduje, ale usnadní vám práci.
+* [Průzkumníka služby Microsoft Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Průzkumník služby Azure Storage se nevyžaduje, ale usnadní vám práci.
 
 ## <a name="understand-the-scenario"></a>Vysvětlení scénáře
 
@@ -145,10 +145,10 @@ V pozdější části kurzu nasadíte uvedení. K provedení akcí nasazení (na
 Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigurovat řízení přístupu pro vaše předplatné.
 
 > [!IMPORTANT]
-> Spravovaná identita přiřazená uživatelem musí být ve stejném umístění jako [uvedení](#create-the-rollout-template). V současné době je možné prostředky Deployment Manageru, včetně uvedení, vytvářet pouze v oblastech USA – střed nebo USA – východ 2.
+> Spravovaná identita přiřazená uživatelem musí být ve stejném umístění jako [uvedení](#create-the-rollout-template). V současné době je možné prostředky Deployment Manageru, včetně uvedení, vytvářet pouze v oblastech USA – střed nebo USA – východ 2. Nicméně to platí pouze pro nástroj Deployment Manager prostředky (například topologie služby, služby, služby jednotky, zavedení a kroky). Cílové prostředky je možné nasadit do libovolné podporované oblasti Azure. V tomto kurzu například USA (střed) jsou nasazené prostředky Deployment Manager, ale služby jsou nasazené na USA – východ a USA – západ. Toto omezení se zruší v budoucnu.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vytvořte [spravovanou identitu přiřazenou uživatelem](../active-directory/managed-identities-azure-resources/overview.md).
+2. Vytvořte [spravovanou identitu přiřazenou uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. V levé nabídce portálu vyberte **Předplatná** a pak vyberte své předplatné.
 4. Vyberte **Řízení přístupu (IAM)** a pak **Přidat**.
 5. Zadejte nebo vyberte tyto hodnoty:
@@ -211,7 +211,7 @@ Vytvoříte soubor parametrů, který se použije pro šablonu topologie.
     - **azureResourceLocation:** Pokud jsou pro vás umístění Azure novinkou, použijte pro účely tohoto kurzu **centralus**.
     - **artifactSourceSASLocation:** Zadejte identifikátor URI SAS kořenového adresáře (kontejner objektů blob), ve kterém jsou uložené soubory šablon a parametrů jednotek služeb pro účely nasazení.  Viz [Příprava artefaktů](#prepare-the-artifacts).
     - **templateArtifactRoot:** Pokud nezměníte strukturu složek artefaktů, použijte pro účely tohoto kurzu **templates/1.0.0.0**.
-    - **tragetScriptionID:** Zadejte ID vašeho předplatného Azure.
+    - **targetScriptionID**: Zadejte ID svého předplatného Azure.
 
 > [!IMPORTANT]
 > Šablona topologie a šablona uvedení sdílí několik společných parametrů. Tyto parametry musí mít stejné hodnoty. Těmito parametry jsou: **namePrefix**, **azureResourceLocation** a **artifactSourceSASLocation** (v tomto kurzu oba zdroje artefaktů sdílí stejný účet úložiště).
@@ -242,7 +242,7 @@ V sekci proměnných se definují názvy prostředků. Ujistěte se, že název 
 
 Na kořenové úrovni se definují tři prostředky: zdroj artefaktů, krok a uvedení.
 
-Definice zdroje artefaktů je stejná jako v šabloně topologie.  Další informace najdete v části [Vytvoření šablony topologie služby](#create-the-service-topology-tempate).
+Definice zdroje artefaktů je stejná jako v šabloně topologie.  Další informace najdete v části [Vytvoření šablony topologie služby](#create-the-service-topology-template).
 
 Následující snímek obrazovky ukazuje definici kroku čekání:
 
@@ -310,7 +310,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
     Políčko **Zobrazit skryté typy** musí být zaškrtnuté, aby se prostředky zobrazily.
 
-3. Nasaďte šablonu uvedení:
+3. <a id="deploy-the-rollout-template"></a>Nasazení šablony nasazení:
 
     ```azurepowershell-interactive
     # Create the rollout
@@ -325,7 +325,7 @@ K nasazení šablon je možné použít Azure PowerShell.
 
     ```azurepowershell-interactive
     # Get the rollout status
-    $rolloutname = "<Enter the Rollout Name>"
+    $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzureRmDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
         -Name $rolloutName
@@ -365,7 +365,7 @@ Jakmile budete mít novou verzi (1.0.0.1) webové aplikace, můžete ji nasadit 
 
 1. Otevřete soubor CreateADMRollout.Parameters.json.
 2. Aktualizujte hodnotu **binaryArtifactRoot** na **binaries/1.0.0.1**.
-3. Znovu nasaďte uvedení podle pokynů v části [Nasazení šablon](#deploy-the-templates).
+3. Znovu nasaďte uvedení podle pokynů v části [Nasazení šablon](#deploy-the-rollout-template).
 4. Ověřte nasazení podle pokynů v části [Ověření nasazení](#verify-the-deployment). Na webové stránce by se teď měla zobrazit verze 1.0.0.1.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

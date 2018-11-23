@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
-ms.openlocfilehash: b0e8c4dabea6aeae8d93d64d97b598ec97b2d18a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: e734f11fb3f6a833b8c080deb57b9153c6c12dde
+ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52277010"
+ms.lasthandoff: 11/22/2018
+ms.locfileid: "52290684"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Rychlý start: Ingestování dat s využitím dat Explorer .NET Standard SDK služby Azure (Preview)
 
-Průzkumník Azure dat (ADX) je služba pro zkoumání dat rychlá a vysoce škálovatelné pro data protokolů a telemetrie. ADX nabízí dva klientské knihovny pro .NET Standard: [ingestování knihovny](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) a [knihovna dat](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto rychlém startu nejdříve vytvoříte mapování tabulky a dat v testovacím clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
+Průzkumník Azure dat (ADX) je služba pro zkoumání dat rychlá a vysoce škálovatelné pro data protokolů a telemetrie. ADX nabízí dva klientské knihovny pro .NET Standard: [ingestování knihovny](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Ingest.NETStandard) a [knihovna dat](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto rychlém startu nejdříve vytvoříte mapování tabulky a dat v testovacím clusteru. Fronty ingestování do clusteru a ověřte výsledky.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -75,14 +75,14 @@ var kustoConnectionStringBuilder =
 
 ## <a name="set-source-file-information"></a>Nastavení informací o zdrojovém souboru
 
-Nastavit konstanty pro datový zdroj soubor. Tento příklad používá ukázkový soubor hostovaný v Azure Blob Storage. Ukázková datová sada **StormEvents** obsahuje data týkající se počasí od [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
+Nastavte cestu pro zdrojový soubor. Tento příklad používá ukázkový soubor hostovaný v Azure Blob Storage. Ukázková datová sada **StormEvents** obsahuje data týkající se počasí od [National Centers for Environmental Information](https://www.ncdc.noaa.gov/stormevents/).
 
 ```csharp
 var blobPath = "https://kustosamplefiles.blob.core.windows.net/samplefiles/StormEvents.csv?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D";
 ```
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Vytvoření tabulky v testovacím clusteru
-Vytvořte tabulku, která odpovídá schématu dat v souboru `StormEvents.csv`. Když se tento kód spustí, vrátí podobnou zprávu: *Pokud se chcete přihlásit, otevřete ve webovém prohlížeči stránku https://microsoft.com/devicelogin a zadejte kód F3W4VWZDM k ověření*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu. Následující bloky kódu, které provedou připojení, vyžadují, abyste se znovu přihlásili.
+Vytvořte tabulku s názvem `StormEvents` , který odpovídá schématu dat `StormEvents.csv` souboru.
 
 ```csharp
 var table = "StormEvents";
@@ -122,7 +122,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 
 ## <a name="define-ingestion-mapping"></a>Definování mapování ingestace
 
-Namapujte příchozí data CSV na názvy sloupců a datové typy použité při vytváření tabulky.
+Mapování příchozích dat sdíleného svazku clusteru na názvy sloupců použité při vytváření tabulky.
 Zřízení [sdíleného svazku clusteru sloupce mapování objektu](/azure/kusto/management/tables#create-ingestion-mapping) v této tabulce
 
 ```csharp
@@ -193,12 +193,12 @@ using (var ingestClient = KustoIngestFactory.CreateQueuedIngestClient(ingestConn
 
 ## <a name="validate-data-was-ingested-into-the-table"></a>Ověřit data se ingestují do tabulky
 
-Počkejte pět až deset minut, než se tak ve frontě příjem dat k plánování ingestování a načtení dat do ADX. Pak spuštěním následujícího kódu získejte počet záznamů v tabulce StormEvents.
+Počkejte pět až deset minut, než se tak ve frontě příjem dat k plánování ingestování a načtení dat do ADX. Pak spuštěním následujícího kódu získejte počet záznamů v tabulce `StormEvents`.
 
 ```csharp
 using (var cslQueryProvider = KustoClientFactory.CreateCslQueryProvider(kustoConnectionStringBuilder))
 {
-    var query = "StormEvents | count";
+    var query = $"{table} | count";
 
     var results = cslQueryProvider.ExecuteQuery<long>(query);
     Console.WriteLine(results.Single());
@@ -224,7 +224,7 @@ Spuštěním následujícího příkazu zobrazíte stav všech operací ingestac
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte. Pokud ne, spuštěním následujícího příkazu v databázi tabulku StormEvents vyčistěte.
+Pokud plánujete postupovat podle našich dalších rychlých startů a kurzů, vytvořené prostředky zachovejte. Pokud ne, spuštěním následujícího příkazu v databázi tabulku `StormEvents` vyčistěte.
 
 ```Kusto
 .drop table StormEvents
