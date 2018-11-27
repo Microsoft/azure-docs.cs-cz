@@ -88,7 +88,7 @@ cs IE | angličtina (Irsko) |Muž | "Microsoft serveru řeči Text na řeč hlas
 en-IN | English (India) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, Heera, Apollo)"
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, PriyaRUS)"
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (en-IN, Ravi, Apollo)"
-cs-CZ | English (US) |Žena | "Microsoft serveru řeči Text na řeč hlas (en US, ZiraRUS)"
+en-US | English (US) |Žena | "Microsoft serveru řeči Text na řeč hlas (en US, ZiraRUS)"
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaRUS)"
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (en US, BenjaminRUS)"
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)"
