@@ -11,7 +11,7 @@ ms.author: renash
 ms.component: files
 ms.openlocfilehash: 380a7be6a42109f90da5dbd39ea557c06be4be6a
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51253699"

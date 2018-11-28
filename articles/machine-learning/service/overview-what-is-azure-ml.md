@@ -11,7 +11,7 @@ ms.author: garye
 ms.date: 09/24/2018
 ms.openlocfilehash: 1dac11b8ad71a936b33742b52c95ac998176baf7
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51244933"

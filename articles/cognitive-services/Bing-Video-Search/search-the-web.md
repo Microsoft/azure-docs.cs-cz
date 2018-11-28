@@ -12,7 +12,7 @@ ms.date: 04/15/2017
 ms.author: scottwhi
 ms.openlocfilehash: e48a0a056628e0c863330de792f8edfaa48aae34
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51261855"

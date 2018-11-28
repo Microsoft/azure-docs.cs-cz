@@ -10,7 +10,7 @@ ms.author: rogarana
 ms.component: common
 ms.openlocfilehash: 347092fd7d5865379911265b19477ac16e3bcd69
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51261379"

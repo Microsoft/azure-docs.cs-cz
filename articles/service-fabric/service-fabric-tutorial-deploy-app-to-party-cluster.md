@@ -17,7 +17,7 @@ ms.author: ryanwi,mikhegn
 ms.custom: mvc
 ms.openlocfilehash: fe6df20d294a3b1802d396085c36a6587dc45730
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51249077"

@@ -12,7 +12,7 @@ ms.date: 09/22/2018
 ms.author: spelluru
 ms.openlocfilehash: be08be43269dfb332dca1d5f62ce661940d311cc
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51259373"

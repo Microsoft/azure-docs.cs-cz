@@ -12,7 +12,7 @@ ms.devlang: python
 ms.custom: mvc
 ms.openlocfilehash: 78381bd34bd7fe7a8941d7e3a567ec1282d6a8d9
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51261396"

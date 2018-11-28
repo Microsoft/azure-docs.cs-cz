@@ -15,7 +15,7 @@ ms.author: sngun
 ms.custom: devcenter, vs-azure
 ms.openlocfilehash: 22856b6e9b543504db66bce074d32d9ad70f5238
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51247666"

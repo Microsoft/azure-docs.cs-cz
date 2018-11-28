@@ -16,7 +16,7 @@ ms.date: 12/09/2017
 ms.author: juliako;anilmur
 ms.openlocfilehash: aaf9fba7b3a2667577c26ade9cd88bcc87c60f61
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51243841"

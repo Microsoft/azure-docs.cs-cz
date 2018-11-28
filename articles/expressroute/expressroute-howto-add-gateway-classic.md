@@ -10,7 +10,7 @@ ms.date: 11/05/2018
 ms.author: charwen
 ms.openlocfilehash: d0425b68f1b241bde4b2100d13d60165e5a1f1fe
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51255164"

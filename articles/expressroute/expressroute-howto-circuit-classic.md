@@ -9,7 +9,7 @@ ms.date: 07/26/2018
 ms.author: ganesr;cherylmc
 ms.openlocfilehash: 6e8eac885303531abc7014f2fadc7b6056bde510
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51251691"
