@@ -14,7 +14,7 @@ ms.date: 01/30/2018
 ms.author: kgremban
 ms.openlocfilehash: c91dad17016cd9619d2d42a3fcee04a7d14b5eab
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51242515"

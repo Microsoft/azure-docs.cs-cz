@@ -18,7 +18,7 @@ ms.date: 08/03/2016
 ms.author: cephalin
 ms.openlocfilehash: b1ae61b5372fa1061448c02e7b5c589a167888c9
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51237209"

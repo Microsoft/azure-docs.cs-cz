@@ -14,7 +14,7 @@ ms.author: lizross
 ms.reviewer: richagi
 ms.openlocfilehash: 297184a2623a6a7cfa3894a51f5de0e3bd3db622
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51232772"

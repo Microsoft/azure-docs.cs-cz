@@ -19,7 +19,7 @@ ms.author: markvi
 ms.reviewer: calebb
 ms.openlocfilehash: 2673a0ec1e9ed66c9a1bb6e369ad5300a570ba0a
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51240439"

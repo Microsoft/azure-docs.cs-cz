@@ -10,7 +10,7 @@ ms.date: 06/18/2018
 ms.author: danlep
 ms.openlocfilehash: c6715242ab1a2fd60f876ee97558715ed54c5e18
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51239606"

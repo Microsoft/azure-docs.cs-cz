@@ -12,7 +12,7 @@ ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 6f744815b9b2670ddf9b2a873956715a3964bcd6
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51242394"

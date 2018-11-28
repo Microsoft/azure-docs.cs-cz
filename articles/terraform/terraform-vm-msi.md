@@ -11,7 +11,7 @@ ms.topic: tutorial
 ms.date: 3/12/2018
 ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51242088"

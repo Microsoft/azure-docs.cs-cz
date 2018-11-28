@@ -14,7 +14,7 @@ ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: c5c2e4cd26954efb92d470f5432f709e4dc3f887
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51240575"

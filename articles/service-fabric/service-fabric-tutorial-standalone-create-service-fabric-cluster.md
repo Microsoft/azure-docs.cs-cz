@@ -17,7 +17,7 @@ ms.author: dastanfo
 ms.custom: mvc
 ms.openlocfilehash: b740aa205982bc0c1104b59e3ea89e2d5980d461
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51240337"
