@@ -9,61 +9,62 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: c1af99d64f9d9a7544d98ad34da5953fdda58222
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 6086c03961294a18fbf6a106188593c79c88d663
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012873"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309993"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Pomocí HDInsight Interactive Query
-Interactive Query (také nazývané Hive LLAP nebo [s nízkou latencí analytické zpracování](https://cwiki.apache.org/confluence/display/Hive/LLAP)) Azure HDInsight je [typ clusteru](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interactive Query podporuje ukládání do mezipaměti v paměti, takže se dotazy Hive mnohem více interaktivní a rychlejší.
+Interactive Query (také nazývané Apache Hive LLAP nebo [s nízkou latencí analytické zpracování](https://cwiki.apache.org/confluence/display/Hive/LLAP)) Azure HDInsight je [typ clusteru](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interactive Query podporuje ukládání do mezipaměti v paměti, takže se dotazy Apache Hive, rychlejší a mnohem vyšší interaktivitou.
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)] 
 
-Se liší od Hadoop cluster cluster Interactive Query. Obsahuje jedinou službou Hive. 
+Cluster Interactive Query se liší od cluster Apache Hadoop. Obsahuje jedinou službou Hive. 
 
 > [!NOTE]
-> Můžete přístup ke službě Hive v clusteru Interactive Query pouze prostřednictvím zobrazení Ambari Hive, Beeline a ovladače Microsoft Hive Open Database Connectivity (rozhraní ODBC Hive). Nelze k němu přístup přes konzolu Hive, Templeton, rozhraní příkazového řádku Azure Classic nebo Azure Powershellu. 
+> Můžete přístup ke službě Hive v clusteru Interactive Query pouze prostřednictvím zobrazení Ambari Hive Apache, Beeline a ovladače Microsoft Hive Open Database Connectivity (rozhraní ODBC Hive). Nelze k němu přístup přes konzolu Hive, Templeton, rozhraní příkazového řádku Azure Classic nebo Azure Powershellu. 
 > 
 > 
 
 ## <a name="create-an-interactive-query-cluster"></a>Vytvořte cluster Interactive Query
-Informace o vytváření clusteru HDInsight najdete v tématu [vytváření clusterů Hadoop v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Zvolte typ clusteru Interactive Query.
+Informace o vytváření clusteru HDInsight najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Zvolte typ clusteru Interactive Query.
 
-## <a name="execute-hive-queries-from-interactive-query"></a>Spouštění dotazů Hive v Interactive Query
+## <a name="execute-apache-hive-queries-from-interactive-query"></a>Spustit dotazy Apache Hive v Interactive Query
 Ke spouštění dotazů Hive, máte následující možnosti:
 
 * Použití Power BI
 
-    Zobrazit [data vizualizovat Interactive Query Hive pomocí Power BI v Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) naleznete v tématu [vizualizovat velké objemy dat v Power BI v Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
+    Zobrazit [vizualizace dat Interactive Query Apache Hive pomocí Power BI v Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) naleznete v tématu [vizualizovat velké objemy dat v Power BI v Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
  
-* Použití Zeppelin
+* Použití Apache Zeppelinu
 
-    Zobrazit [použití Zeppelinu ke spouštění dotazů Hive v HDInsight Azure ](../hdinsight-connect-hive-zeppelin.md).
+    Zobrazit [použití Apache Zeppelinu ke spouštění dotazů Apache Hive v Azure HDInsight ](../hdinsight-connect-hive-zeppelin.md).
 
 * Použití Visual Studia
 
-    Zobrazit [připojení k Azure HDInsight a spouštět dotazy Hivu pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
+    Zobrazit [připojení k Azure HDInsight a spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
 
 * Použijte Visual Studio Code
 
-    Zobrazit [použití nástroje Visual Studio Code pro Hive, LLAP nebo pySpark](../hdinsight-for-vscode.md).
-* Spuštění Hive pomocí zobrazení Ambari Hive.
+    Zobrazit [použití nástroje Visual Studio Code pro Apache Hive, LLAP nebo pySpark](../hdinsight-for-vscode.md).
+* Spusťte Apache Hive pomocí zobrazení Hive Apache Ambari.
   
-    Zobrazit [použití zobrazení Hivu s Hadoopem ve Azure HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md).
-* Použití Beeline spustíte Hive.
+    Zobrazit [zobrazení Apache Hive pomocí Apache Hadoop v Azure HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md).
+
+* Použití Beeline spustíte Apache Hive.
   
-    Zobrazit [použití Hivu s Hadoopem v HDInsight s Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
+    Zobrazit [použití Apache Hivu s Apache Hadoop v HDInsight s Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
   
     Můžete Beeline z hlavního uzlu nebo z prázdných hraničních uzlů. Doporučujeme používat Beeline z prázdných hraničních uzlů. Informace o vytváření clusteru služby HDInsight pomocí prázdných hraničních uzlů najdete v tématu [použití prázdných hraničních uzlů v HDInsight](../hdinsight-apps-use-edge-node.md).
-* Spusťte Hivu pomocí Hive ODBC.
+* Spusťte Apache Hivu pomocí Hive ODBC.
   
-    Zobrazit [připojení Excelu k Hadoopu pomocí ovladače Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+    Zobrazit [připojení Excelu k systému Apache Hadoop pomocí ovladače Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 
 Chcete-li nalezen připojovací řetězec připojení k databázi Java (JDBC):
 
-1. Přihlaste se k Ambari pomocí následující adresy URL: https://\<název clusteru\>. AzureHDInsight.net.
+1. Přihlaste se k Apache Ambari pomocí následující adresy URL: https://\<název clusteru\>. AzureHDInsight.net.
 2. V nabídce vlevo vyberte **Hive**.
 3. Zkopírujte adresu URL, vyberte ikonu schránky:
    
@@ -73,10 +74,10 @@ Chcete-li nalezen připojovací řetězec připojení k databázi Java (JDBC):
 
 * Zjistěte, jak [v HDInsight vytvořit clusterům Interactive Query](../hdinsight-hadoop-provision-linux-clusters.md).
 * Zjistěte, jak [vizualizovat velké objemy dat v Power BI v Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-* Zjistěte, jak [použití Zeppelinu ke spouštění dotazů Hive v HDInsight Azure ](../hdinsight-connect-hive-zeppelin.md).
-* Zjistěte, jak [spouštění dotazů Hive pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
+* Zjistěte, jak [použití Apache Zeppelinu ke spuštění dotazy Apache Hive v HDInsight Azure ](../hdinsight-connect-hive-zeppelin.md).
+* Zjistěte, jak [spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-hive-queries).
 * Zjistěte, jak [použití nástrojů HDInsight pro Visual Studio Code](../hdinsight-for-vscode.md).
-* Zjistěte, jak [použijte zobrazení Hive se systémem Hadoop v HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md)
-* Zjistěte, jak [odesílání dotazů Hive v HDInsight pomocí Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
-* Zjistěte, jak [připojení Excelu k Hadoopu pomocí ovladače Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+* Zjistěte, jak [zobrazení Apache Hive pomocí Apache Hadoop v HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md)
+* Zjistěte, jak [použití Beeline odesílat dotazy Apache Hive v HDInsight](../hadoop/apache-hadoop-use-hive-beeline.md).
+* Zjistěte, jak [připojení Excelu k systému Apache Hadoop pomocí ovladače Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 

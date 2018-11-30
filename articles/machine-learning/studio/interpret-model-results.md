@@ -1,5 +1,5 @@
 ---
-title: Interpretace výsledků modelu ve službě Machine Learning | Dokumentace Microsoftu
+title: Interpretace výsledků modelu ve službě Machine Learning Studio – Azure | Dokumentace Microsoftu
 description: Jak vybrat optimální parametr nastavit pro objekt pomocí algoritmu a vypíše vizualizovat určení skóre modelu.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 7fe481619da217238cc790acac212857566d01f3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: c06b05989270b4199e5d97ca399a1411b73a702b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264977"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310265"
 ---
-# <a name="interpret-model-results-in-azure-machine-learning"></a>Interpretace výsledků modelu ve službě Azure Machine Learning
+# <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretace výsledků modelu v nástroji Azure Machine Learning Studio
 Toto téma vysvětluje, jak vizualizovat a interpretace výsledků predikce v Azure Machine Learning Studio. Po Trénink modelu a provádí predictions nad rámec jeho ("skóre modelu"), musíte pochopit a interpretace výsledků předpovědí.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]

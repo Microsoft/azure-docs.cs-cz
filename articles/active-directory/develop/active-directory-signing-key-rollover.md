@@ -16,18 +16,18 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: eaaeaf1b37c0d732d8d0009ad5a66f2118674b66
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: e00591338fd09cbba6d97e6affebc9dce2399f7c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240450"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423758"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisových klíčů ve službě Azure Active Directory
 Tento článek popisuje, co potřebujete vědět o veřejných klíčů, které se používají ve službě Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto výměny klíčů a v pravidelných intervalech a ve stavu nouze, může být převracet okamžitě. Všechny aplikace, které používají službu Azure AD by možné programově zpracovávat procesu výměny klíčů nebo vytvořit proces periodické ruční výměna. Pokračujte ve čtení pochopit, jak fungují klíče, jak posoudit dopad efekt přechodu do vaší aplikace a jak aktualizovat vaše aplikace nebo vytvoření procesu periodické ruční výměna zpracování výměny klíčů, v případě potřeby.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Přehled podpisových klíčů ve službě Azure AD
-Azure AD používá založená na standardech kryptografie využívající veřejný klíč k navázání vztahu důvěryhodnosti mezi samostatně a aplikace, které ji používají. V praxi, tento postup funguje následujícím způsobem: Azure AD používá podpisového klíče, které obsahuje pár veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Azure AD pro ověřování Azure AD vytvoří token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaná pomocí jeho privátní klíč, před odesláním zpět do aplikace Azure AD. Pokud chcete ověřit, že je token platný a pocházející ze ze služby Azure AD, musí aplikace ověřit podpis tokenu pomocí veřejný klíč vystavený službou Azure AD, která je součástí vašeho tenanta [dokument zjišťování OpenID Connect](http://openid.net/specs/openid-connect-discovery-1_0.html) nebo SAML / WS-Fed [dokument metadat federace](azure-ad-federation-metadata.md).
+Azure AD používá založená na standardech kryptografie využívající veřejný klíč k navázání vztahu důvěryhodnosti mezi samostatně a aplikace, které ji používají. V praxi, tento postup funguje následujícím způsobem: Azure AD používá podpisového klíče, které obsahuje pár veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Azure AD pro ověřování Azure AD vytvoří token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaná pomocí jeho privátní klíč, před odesláním zpět do aplikace Azure AD. Pokud chcete ověřit, že je token platný a pocházející ze ze služby Azure AD, musí aplikace ověřit podpis tokenu pomocí veřejný klíč vystavený službou Azure AD, která je součástí vašeho tenanta [dokument zjišťování OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) nebo SAML / WS-Fed [dokument metadat federace](azure-ad-federation-metadata.md).
 
 Z bezpečnostních důvodů Azure AD podpisový klíč zobrazí v pravidelných intervalech a v případě nouze, může provádět jednotlivě okamžitě. Všechny aplikace, která se integruje s Azure AD by měli být připraveni zpracování události bez ohledu na to, jak často může dojít k výměně klíče. Pokud tomu tak není a aplikace se pokusí pomocí vypršela platnost klíče ověřování podpisu tokenu, žádost o přihlášení selže.
 

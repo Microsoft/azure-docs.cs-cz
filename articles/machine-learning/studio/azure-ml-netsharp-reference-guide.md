@@ -1,6 +1,6 @@
 ---
-title: 'NET # Neuronové sítě Průvodce specifikace jazyka – Azure Machine Learning | Dokumentace Microsoftu'
-description: 'Syntaxe Net # neuronové sítě specifikačnímu jazyku, spolu s příklady toho, jak vytvořit model vlastní neuronové sítě pomocí Net #'
+title: 'NET # Neuronové sítě – Azure Machine Learning Studio | Dokumentace Microsoftu'
+description: 'Syntaxe Net # neuronových sítí specifikačnímu jazyku, spolu s příklady toho, jak vytvořit model vlastní neuronové sítě pomocí Net # s Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 8adb3c78f97311085aec3a5c86a062ec14f53e61
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 3aa364e92dd7ce3742d28ac2b36d9a7f16cbebbf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263668"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315303"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Příručka ke specifikačnímu jazyku neuronových sítí Net # pro Azure Machine Learning Studio
 
 NET # je jazyk vyvinutý microsoftem, který se používá k definování architektur neuronové sítě. Pomocí Net # pro definici struktury neuronové sítě umožňuje definovat složité struktury, jako jsou hluboké neuronové sítě nebo convolutions libovolného dimenzí, kterých se ví, ke zlepšení učení na data, například obrázek, zvuk nebo video.
 

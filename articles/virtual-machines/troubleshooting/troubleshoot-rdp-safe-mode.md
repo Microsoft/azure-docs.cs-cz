@@ -13,23 +13,23 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 8dfe61430423298eea81510d3e92d49066217a05
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 3ff1db9ee7dc34ce529702d61b3ac5970bb5d9df
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708719"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309860"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nelze provést připojení RDP k virtuálnímu počítači, protože virtuální počítač se spustí v nouzovém režimu
 
-Tento článek popisuje, jak vyřešit problém, ve kterém nemůžete vzdálené plochy Azure Windows Virtual Machines (VM) vzhledem k tomu, že virtuální počítač je nakonfigurovaný na spuštění v nouzovém režimu.
+Tento článek popisuje, jak vyřešit problém, ve kterém nemůže připojit k Azure Windows Virtual Machines (VM), protože virtuální počítač je nakonfigurovaný na spuštění v nouzovém režimu.
 
 > [!NOTE] 
 > Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic. 
 
 ## <a name="symptoms"></a>Příznaky 
 
-Nelze provádět další připojení (např. HTTP) a připojení ke vzdálené ploše virtuálního počítače v Azure vzhledem k tomu, že virtuální počítač je nakonfigurovaný na spuštění v nouzovém režimu. Když vrátíte se změnami na snímku obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, zobrazí se pravděpodobně virtuální počítač se spustí normálně, ale není k dispozici síťové rozhraní:
+Nemůžete provádět připojení ke vzdálené ploše nebo jiné připojení (např. HTTP) k virtuálnímu počítači v Azure vzhledem k tomu, že virtuální počítač je nakonfigurovaný na spuštění v nouzovém režimu. Když vrátíte se změnami na snímku obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, můžete všimnout, že virtuální počítač se spustí normálně, ale není k dispozici síťové rozhraní:
 
 ![Obrázek o inferce sítě v nouzovém režimu](./media/troubleshoot-rdp-safe-mode/network-safe-mode.png)
 
@@ -54,11 +54,11 @@ Pokud chcete tento problém vyřešit, pomocí sériového portu ovládací prve
 
     Pokud virtuální počítač je nakonfigurovaný pro spuštění v nouzovém režimu, zobrazí se další příznak v části **Windows spouštěcí zavaděč** část s názvem **bezpečného**. Pokud se nezobrazí **bezpečného** příznak, virtuální počítač není v nouzovém režimu. Tento článek se nevztahuje na váš scénář.
 
-    Příznak bezpečného může zobrazit následující hodnoty:
+    **Bezpečného** příznak může zobrazit následující hodnoty:
     - Minimální
     - Síť
 
-    V některém z těchto dvou režimů nebude spuštěno protokolu RDP. Oprava tak zůstává stejná.
+    V některém z těchto dvou režimech nebude spuštěno protokolu RDP. Proto oprava zůstává stejná.
 
     ![Obrázek o příznak Nouzový režim](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
@@ -66,7 +66,7 @@ Pokud chcete tento problém vyřešit, pomocí sériového portu ovládací prve
 
         bcdedit /deletevalue {current} safeboot
         
-4. Zkontrolujte konfigurační data spouštění, abyste měli jistotu, že příznak bezpečného odebrání:
+4. Zkontrolujte, že konfigurační data spouštění **bezpečného** odebrán příznak:
 
         bcdedit /enum
 
@@ -120,14 +120,14 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
         bcdedit /store F:\boot\bcd /enum
     Take note of the Identifier name of the partition that has the **\windows** folder. By default, the  Identifier name is "Default".  
 
-    If the VM is configured to boot into Safe Mode, you will see an extra flag under the **Windows Boot Loader** section called **safeboot**. If you do not see the “safeboot” flag, this article does not apply to your scenario.
+    If the VM is configured to boot into Safe Mode, you will see an extra flag under the **Windows Boot Loader** section called **safeboot**. If you do not see the **safeboot** flag, this article does not apply to your scenario.
 
     ![The image about boot Identifier](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
 3. Remove the **safeboot** flag, so the VM will boot into normal mode:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
-4. Check the boot configuration data to make sure that the safeboot flag is removed:
+4. Check the boot configuration data to make sure that the **safeboot** flag is removed:
 
         bcdedit /store F:\boot\bcd /enum
 5. [Detach the OS disk and recreate the VM](../windows/troubleshoot-recovery-disks-portal.md). Then check whether the issue is resolved.

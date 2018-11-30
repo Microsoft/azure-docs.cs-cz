@@ -4,11 +4,11 @@ Společnost Microsoft a přispěvatelé vám udělují licenci k dokumentaci spo
 
 Microsoft, Windows, Microsoft Azure a/nebo dalších produktech a službách a odkazované v dokumentaci k mohou být ochranné známky nebo registrované ochranné známky společnosti Microsoft ve Spojených státech amerických a dalších zemích.
 Licence pro tento projekt vám neuděluje práva používat jakékoli názvy, loga nebo ochranné známky společnosti Microsoft.
-Obecné pokyny Microsoftu najdete na [ http://go.microsoft.com/fwlink/?LinkID=254653 ](https://go.microsoft.com/fwlink/?LinkID=254653).
+Obecné pokyny Microsoftu najdete na [ https://go.microsoft.com/fwlink/?LinkID=254653 ](httpss://go.microsoft.com/fwlink/?LinkID=254653).
 
 Informace o ochraně osobních údajů najdete v [https://privacy.microsoft.com/en-us/](https://privacy.microsoft.com/en-us/)
 
 Microsoft a přispěvatelé si všechna ostatní práva, ať už v rámci příslušných autorských práv, patentů nebo ochranných známek, ať už implikací, formou zákonné překážky nebo jinak.
 
-Přejít gopher, byla navržena podle [Renee Francouzština](http://reneefrench.blogspot.com/).
+Přejít gopher, byla navržena podle [Renee Francouzština](https://reneefrench.blogspot.com/).
 Návrh je licencován [licence Creative Commons 3.0 Poděkování](https://creativecommons.org/licenses/by/3.0/us/).

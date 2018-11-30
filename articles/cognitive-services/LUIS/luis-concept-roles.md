@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8a92852a2721bd391ddf7c3cf3489b820c4a1400
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f5f790d4cdba8b6ebc1ed2694cb4552cb565f676
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277611"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427212"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entita role ve vzorech jsou kontextové subtypes
 Role jsou pojmenované, kontextové podtypy entity používá pouze v [vzory](luis-concept-patterns.md).
@@ -29,7 +29,7 @@ Role zadejte název těchto rozdílů:
 |Umístění|počátek|kde opustí rovině z|
 |Umístění|cíl|kde jsou rovina|
 |Předem připravené datetimeV2|na|Koncové datum|
-|Předem připravené datetimeV2|od|Počáteční datum|
+|Předem připravené datetimeV2|Od|Počáteční datum|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak se používají role ve vzorech?
 Role v utterance vzor šablony, se používají v rámci utterance: 
@@ -43,7 +43,7 @@ Role v utterance vzor šablony, se používají v rámci utterance:
 Entity a role jsou uzavřeny v závorkách, `{}`. Entity a role jsou odděleny dvojtečkou. 
 
 
-[!INCLUDE[H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+[!INCLUDE [H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
 
 ## <a name="roles-with-prebuilt-entities"></a>Role s předem vytvořenými entitami
 

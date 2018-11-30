@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 3163d4d61dba958cdf71dd0470b943bba69b0191
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2f3c2ba6849540f90117ef127e25030ff56b569
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237192"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427161"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back endu, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -95,7 +95,7 @@ Následující fragment kódu ukazuje příklad odpovědi:
 
 ## <a name="diagnostic-logging"></a>Diagnostické protokoly
 
-Můžete použít různé typy protokolů v Azure pro správu a řešení potíží s application Gateway. Některé z těchto protokolů jsou přístupné z webu Azure Portal. Všechny protokoly je možné extrahovat z úložiště objektů Blob v Azure a zobrazit v různých nástrojů, jako například [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Excelu a Power BI. Vám může Další informace o různých typech protokoly z následujícího seznamu:
+Můžete použít různé typy protokolů v Azure pro správu a řešení potíží s application Gateway. Některé z těchto protokolů jsou přístupné z webu Azure Portal. Všechny protokoly je možné extrahovat z úložiště objektů Blob v Azure a zobrazit v různých nástrojů, jako například [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Excelu a Power BI. Vám může Další informace o různých typech protokoly z následujícího seznamu:
 
 * **Protokol aktivit**: můžete použít [protokolů aktivit Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (dříve označované jako provozní protokoly a protokoly auditu) Chcete-li zobrazit všechny operace, které se pošlou do vašeho předplatného Azure a jejich stav. Položky protokolu aktivit se ve výchozím nastavení shromažďují a můžete si je zobrazit na webu Azure Portal.
 * **Přístup k protokolu**: můžete zobrazit vzory přístupu k Application Gateway a analyzovat důležité informace, včetně IP volajícího, požadovanou adresu URL, latence odpovědi, návratový kód a bajtů dovnitř a ven můžete použít tento protokol. Přístup k protokolu shromažďovaných každých 300 sekund. Tento protokol obsahuje jeden záznam za instance služby Application Gateway. Instance Application Gateway lze identifikovat podle vlastnosti ID instance.
@@ -303,7 +303,7 @@ Data protokolu aktivit si můžete zobrazit použitím jedné z následujících
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Zobrazení a analýza přístup, výkonu a protokoly brány firewall
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) může shromažďovat soubory čítač a protokol událostí z vašeho účtu úložiště objektů Blob. Zahrnuje vizualizace a výkonné vyhledávací funkce k analýze protokolů.
+Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) může shromažďovat soubory čítač a protokol událostí z vašeho účtu úložiště objektů Blob. Zahrnuje vizualizace a výkonné vyhledávací funkce k analýze protokolů.
 
 Můžete se také připojit k účtu úložiště a načíst položky protokolu JSON s protokoly přístupu a výkonu. Po stažení souborů JSON je můžete převést do formátu CSV a zobrazit si je v Excelu, Power BI nebo jiném nástroji s vizualizací dat.
 
@@ -379,7 +379,7 @@ Informace o tom Další informace o webhooky a jak je můžete využít s výstr
 
 ## <a name="next-steps"></a>Další postup
 
-* Vizualizujte čítače a protokoly událostí s využitím [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md).
+* Vizualizujte čítače a protokoly událostí s využitím [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md).
 * [Vizualizujte váš protokol aktivit Azure v Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogový příspěvek.
 * [Zobrazení a analýza protokolů aktivit Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogový příspěvek.
 

@@ -17,12 +17,12 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: dc3bbab2242321ae736f3f2cefb1eed5e96e834e
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 7ce11b3e54a8770a2b3d53e335afc57f52d3d14e
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288726"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425305"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář pro vývojáře Azure Active Directory
 
@@ -173,7 +173,7 @@ Osvědčené postupy zásady vytváření názvů, je použití formátu "resour
 
 ## <a name="security-token"></a>token zabezpečení
 
-Podepsaný dokument obsahující deklarace identity, například tokenu OAuth2 nebo kontrolního výrazu SAML 2.0. Pro OAuth2 [udělení autorizace](#authorization-grant), [přístupový token](#access-token) (OAuth2) a [ID Token](http://openid.net/specs/openid-connect-core-1_0.html#IDToken) jsou typy tokenů zabezpečení, které jsou implementovány jako [JSON Web Token (JWT)][JWT].
+Podepsaný dokument obsahující deklarace identity, například tokenu OAuth2 nebo kontrolního výrazu SAML 2.0. Pro OAuth2 [udělení autorizace](#authorization-grant), [přístupový token](#access-token) (OAuth2) a [ID Token](https://openid.net/specs/openid-connect-core-1_0.html#IDToken) jsou typy tokenů zabezpečení, které jsou implementovány jako [JSON Web Token (JWT)][JWT].
 
 ## <a name="service-principal-object"></a>instanční objekt
 
@@ -191,7 +191,7 @@ Funkce přihlášení aplikace se obvykle používá k implementaci jednotného 
 
 Přidružený proces unauthenticating koncového uživatele, odpojení stavu uživatele [klientská aplikace](#client-application) relace během [přihlášení](#sign-in)
 
-## <a name="tenant"></a>tenant
+## <a name="tenant"></a>tenanta
 
 Instance adresáře služby Azure AD se označuje jako klient služby Azure AD. Poskytuje několik funkcí, včetně:
 
@@ -251,6 +251,6 @@ Pomocí následujícího oddílu pro komentáře na svůj názor a pomozte Upře
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
-[OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
-[OpenIDConnect-AuthZ-Endpoint]: http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
-[OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html
+[OpenIDConnect-AuthZ-Endpoint]: https://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
+[OpenIDConnect-ID-Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken

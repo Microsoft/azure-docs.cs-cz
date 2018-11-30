@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení portálu pro vývojáře API Management pomocí šablon-Azure | Microsoft Docs
-description: Naučte se přizpůsobovat portál pro vývojáře Azure API Management pomocí šablon.
+title: Přizpůsobení portálu pro správu rozhraní API pro vývojáře pomocí šablon – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak přizpůsobit portál pro vývojáře Azure API Management pomocí šablon.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 2bdb8c30ffa630f85d666f3a16ce2b9dcdab6492
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 90084f6c4fb270c34165bf12763109d9be2398aa
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29118220"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446955"
 ---
-# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Postup přizpůsobení portálu pro vývojáře Azure API Management pomocí šablon
+# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Přizpůsobení portálu pro vývojáře Azure API Management pomocí šablon
 
 Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývojáře ve službě Azure API Management:
 
@@ -29,38 +29,41 @@ Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývo
 * [Aktualizace stylů použitých pro elementy stránek napříč portálem pro vývojáře][customize-styles]
 * [Úprava šablony použité pro stránky vytvořený portál][portal-templates] (popsáno v této příručce)
 
-Šablony slouží k přizpůsobení obsah stránky portálu vývojáře generované systémem (například dokumentace rozhraní API, produktů, ověřování uživatelů, atd.). Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a zadané sadu prostředků lokalizovaný řetězec, ikony a ovládací prvky stránky, máte flexibilitu při konfiguraci obsahu stránek, podle potřeby.
+Šablony umožňují přizpůsobit obsah stránek portálu pro vývojáře systémem generovaných (například dokumentace rozhraní API, produkty, ověřování uživatelů, atd.). Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxi a zadané sadě prostředků lokalizované řetězce, ikon a ovládací prvky stránky, máte velkou flexibilitu konfigurovat obsahu stránek podle svých potřeb.
 
-## <a name="developer-portal-templates-overview"></a>Přehled šablon portálu vývojáře
-Úprava šablony se provádí z **portál pro vývojáře** při právě přihlášeni jako správce. Tam dostat nejdřív otevřete portál Azure a klikněte na tlačítko **portál pro vývojáře** na panelu nástrojů služby instanci služby API Management.
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-Pro přístup k portálu šablony vývojáře, klikněte na ikonu přizpůsobit na levé straně zobrazení nabídky přizpůsobení, a klikněte na **šablony**.
+## <a name="developer-portal-templates-overview"></a>Přehled šablon portálu pro vývojáře
 
-![Šablony na portálu vývojáře][api-management-customize-menu]
+Úpravy šablon se provádí z **portál pro vývojáře** když jste přihlášení jako správce. Tam dostat nejprve otevřít na webu Azure Portal a klikněte na tlačítko **portál pro vývojáře** z panelu nástrojů služby vaší instance služby API Management.
 
-Seznam šablon se zobrazí několik kategorií šablon pokrývajících na různých stránkách v portálu pro vývojáře. Každá šablona se liší, ale postup upravit je a publikovat změny jsou stejné. Chcete-li upravit šablonu, klikněte na název šablony.
+Pro přístup k šablon portálu pro vývojáře, klikněte na ikonu přizpůsobení na levé straně zobrazí nabídka vlastní nastavení a klikněte na tlačítko **šablony**.
 
-![Šablony na portálu vývojáře][api-management-templates-menu]
+![Šablon portálu pro vývojáře][api-management-customize-menu]
 
-Klepnutím na šablonu přejdete na stránku portálu vývojáře, která lze přizpůsobit pomocí této šablony. V tomto příkladu **seznam produktů** se šablony zobrazí. **Seznam produktů** šablony řídí oblasti obrazovky označená červeným rámečkem. 
+Seznam šablon se zobrazí několik kategorií šablon vztahující se na různých stránkách portálu pro vývojáře. Každá šablona je odlišná, ale postup je upravit a publikovat změny jsou stejné. Chcete-li upravit šablonu, klikněte na název šablony.
 
-![Šablona seznam produktů][api-management-developer-portal-templates-overview]
+![Šablon portálu pro vývojáře][api-management-templates-menu]
 
-Některé šablony, jako **profil uživatele** šablony, přizpůsobit různých součástí stejné stránky. 
+Klepnutím na šablonu přejdete na stránku portálu pro vývojáře, který lze přizpůsobit pomocí této šablony. V tomto příkladu **seznam produktů** se šablony zobrazí. **Seznam produktů** šablony určuje oblasti obrazovky označená červeným rámečkem. 
+
+![Šablona seznamu produktů][api-management-developer-portal-templates-overview]
+
+Některé šablony, jako jsou **profilu uživatele** šablony, přizpůsobení různých součástí stejné stránky. 
 
 ![Šablony profilu uživatele][api-management-user-profile-templates]
 
-Editor pro každé šablony portálu pro vývojáře má dvě části, které se zobrazí v dolní části stránky. Na levé straně zobrazí podokna úprav pro šablonu, a na pravé straně datový model pro šablonu. 
+Editor pro každé šablony portálu pro vývojáře má dvě části zobrazí v dolní části stránky. Zobrazí na levé straně podokna úprav šablony a na pravé straně datový model pro šablonu. 
 
-Šablona úpravy podokně obsahuje kód, který řídí vzhled a chování odpovídající stránky v portálu pro vývojáře. Značky v šabloně používají [DotLiquid](http://dotliquidmarkup.org/) syntaxe. Je jeden oblíbených editor pro DotLiquid [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Všechny změny provedené v šabloně úpravy se zobrazují v reálném čase v prohlížeči, ale nejsou, uvidí vaši zákazníci dokud [Uložit](#to-save-a-template) a [publikování](#to-publish-a-template) šablony.
+Úpravy podokně šablony obsahuje kód, který řídí vzhled a chování odpovídající stránku na portálu pro vývojáře. Značky v šabloně používají [DotLiquid](http://dotliquidmarkup.org/) syntaxe. Je jeden oblíbený editor pro DotLiquid [DotLiquid pro profesionální návrháře využívající](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Všechny změny provedené při úpravách šablony se zobrazují v reálném čase v prohlížeči, ale nejsou viditelné pro vaše zákazníky dokud [Uložit](#to-save-a-template) a [publikovat](#to-publish-a-template) šablony.
 
 ![Kód šablony][api-management-template]
 
-**Data šablony** podokně poskytuje návod, jak do datového modelu entity, které jsou k dispozici pro použití v konkrétní šablonu. Tato příručka poskytuje zobrazením za provozu data, která jsou aktuálně zobrazeny v portálu pro vývojáře. Podokna šablony můžete rozbalit kliknutím obdélníku v pravém horním rohu **data šablony** podokně.
+**Data šablony** podokně poskytuje Průvodce datovým modelem entity, které jsou k dispozici pro použití v konkrétní šablonu. Tato příručka poskytuje tím, že zobrazuje dynamická data, která se aktuálně zobrazují na portálu pro vývojáře. Podokna šablony můžete rozbalit kliknutím na tlačítko v pravém horním rohu obdélníku **data šablony** podokně.
 
 ![Šablona datového modelu][api-management-template-data]
 
-V předchozím příkladu jsou dva produkty zobrazí v portálu pro vývojáře, které byly získány ze údaje zobrazené na **data šablony** podokně, jak je znázorněno v následujícím příkladu:
+V předchozím příkladu jsou dva produkty, které se zobrazí na portálu pro vývojáře, které byly načteny z data zobrazená v **data šablony** podokně, jak je znázorněno v následujícím příkladu:
 
 ```json
 {
@@ -98,7 +101,7 @@ V předchozím příkladu jsou dva produkty zobrazí v portálu pro vývojáře,
 }
 ```
 
-Kód v **seznam produktů** šablony zpracovává data, která mají poskytnout požadovaný výstupní pomocí iterace kolekce produktů můžete zobrazit informace a odkaz na jednotlivé jednotlivé produkty. Poznámka: `<search-control>` a `<page-control>` elementy ve značkách. Tyto řízení zobrazení hledání a stránkování ovládací prvky na stránce. `ProductsStrings|PageTitleProducts`odkaz na lokalizovaný řetězec, který obsahuje `h2` text záhlaví pro stránku. Seznam řetězcové prostředky, ovládací prvky stránky a ikony, které jsou k dispozici pro použití v šablonách portálu vývojáře najdete v tématu [API managementu vývojáře portálu šablony](api-management-developer-portal-templates-reference.md).
+Značky **seznam produktů** šablony zpracovává data k poskytnutí požadovaného výstupu tak provede iterace přes kolekce produktů můžete zobrazit informace a odkaz na jednotlivé produkty. Poznámka: `<search-control>` a `<page-control>` elementy v kódu. Tyto ovládací prvek zobrazení hledání a stránkování ovládacích prvků na stránce. `ProductsStrings|PageTitleProducts` obsahuje odkaz na lokalizované řetězce `h2` text záhlaví stránky. Seznam prostředků řetězců, ovládací prvky stránky a ikony, které jsou k dispozici pro použití v šablon portálu pro vývojáře najdete v tématu [šablon portálu pro vývojáře rozhraní API managementu](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>
@@ -126,62 +129,62 @@ Kód v **seznam produktů** šablony zpracovává data, která mají poskytnout 
 </div>
 ```
 
-## <a name="to-save-a-template"></a>Pokud chcete uložit šablonu
-Chcete-li uložit šablonu, klikněte na tlačítko Uložit v editoru šablony.
+## <a name="to-save-a-template"></a>Chcete-li uložit šablonu
+Uložte šablonu, klikněte na Uložit v editoru šablon.
 
 ![Uložení šablony][api-management-save-template]
 
-Změny uloženy nejsou za provozu v portálu pro vývojáře, dokud nejsou publikovány.
+Uložené změny nejsou v portálu pro vývojáře, dokud se zveřejní.
 
 ## <a name="to-publish-a-template"></a>K publikování šablony
-Uložené šablony mohou být publikovány buď jednotlivě, nebo všechny společně. K publikování jednotlivých šablony, klikněte na tlačítko Publikovat v editoru šablony.
+Uložené šablony mohou být publikovány buď jednotlivě, nebo všechno dohromady. Chcete-li publikovat jednotlivé šablony, publikování kliknutím v editoru šablon.
 
 ![Publikování šablony][api-management-publish-template]
 
-Klikněte na tlačítko **Ano** potvrďte a zajistit, že šablona za provozu na portál pro vývojáře.
+Klikněte na tlačítko **Ano** potvrďte a ujistěte se, šablony na portálu pro vývojáře.
 
-![Potvrďte publikování][api-management-publish-template-confirm]
+![Potvrzení publikování][api-management-publish-template-confirm]
 
-Chcete-li publikovat všechny aktuálně publikování šablony verze, klikněte na tlačítko **publikovat** v seznamu šablon. Publikování šablon jsou označeny hvězdičkou následující název šablony. V tomto příkladu **seznam produktů** a **produktu** publikování šablony.
+Chcete-li publikovat všechny aktuálně nepublikovaných šablony verze, klikněte na tlačítko **publikovat** v seznamu šablon. Publikování šablon jsou označeny hvězdičkou po názvu šablony. V tomto příkladu **seznam produktů** a **produktu** publikují se šablony.
 
-![Publikování šablon][api-management-publish-templates]
+![Publikování šablony][api-management-publish-templates]
 
-Klikněte na tlačítko **publikovat vlastní nastavení** k potvrzení.
+Klikněte na tlačítko **publikovat vlastní nastavení** potvrďte.
 
-![Potvrďte publikování][api-management-publish-customizations]
+![Potvrzení publikování][api-management-publish-customizations]
 
-Přehled nově publikovaných šablony jsou efektivní hned v portálu pro vývojáře.
+Přehled nově publikovaných šablon jsou efektivní okamžitě na portálu pro vývojáře.
 
-## <a name="to-revert-a-template-to-the-previous-version"></a>Chcete-li obnovit šablonu pro předchozí verze
-Můžete obnovit šablonu na předchozí publikovanou verzi, klikněte na tlačítko Obnovit v editoru šablony.
+## <a name="to-revert-a-template-to-the-previous-version"></a>Obnovit šablonu a předchozí verze
+Obnovit šablonu na předchozím publikovanou verzi, klikněte na tlačítko Obnovit v editoru šablon.
 
-![Obnovit šablonu][api-management-revert-template]
+![Obnovit šablony][api-management-revert-template]
 
 Pro potvrzení klikněte na tlačítko **Ano**.
 
 ![Potvrdit][api-management-revert-template-confirm]
 
-Po dokončení této operace je za provozu v portálu pro vývojáře dřív publikovaná verze šablony.
+Po dokončení operace vrácení dřív publikovaná verze šablony je v provozu na portálu pro vývojáře.
 
-## <a name="to-restore-a-template-to-the-default-version"></a>Chcete-li obnovit šablonu výchozí verze
-Obnovení šablony na jejich výchozí verze je dvoustupňový proces. Nejprve je nutné obnovit šablony, a pak musí být publikován obnovené verze.
+## <a name="to-restore-a-template-to-the-default-version"></a>Chcete-li obnovit výchozí verze šablony
+Obnovení na jejich výchozí verze šablony je dvoustupňový proces. Nejdřív je potřeba obnovit šablony a pak musí být obnovená verze publikovány.
 
-Chcete-li obnovit jednu šablonu, která má výchozí verze kliknutím na tlačítko Obnovit v editoru šablony.
+Chcete-li obnovit jednu šablonu, která výchozí verze, kliknutím na tlačítko Obnovit v editoru šablon.
 
-![Obnovit šablonu][api-management-reset-template]
+![Obnovit šablony][api-management-reset-template]
 
 Pro potvrzení klikněte na tlačítko **Ano**.
 
 ![Potvrdit][api-management-reset-template-confirm]
 
-Chcete-li obnovit všechny šablony na jejich výchozí verze, klikněte na tlačítko **obnovit výchozí šablony** na seznam šablon.
+Pokud chcete obnovit všechny šablony na jejich výchozí verze, klikněte na tlačítko **obnovit výchozí šablony** v seznamu šablon.
 
 ![Obnovit šablony][api-management-restore-templates]
 
-Obnovená šablony musí pak publikovat samostatně nebo všechny najednou podle kroků v [k publikování šablony](#to-publish-a-template).
+Obnovené šablony musí pak lze publikovat samostatně nebo celou najednou pomocí následujících kroků v [publikovat šablony](#to-publish-a-template).
 
 ## <a name="next-steps"></a>Další postup
-Referenční informace pro vývojáře portálu šablony, řetězcové prostředky, ikony a ovládací prvky stránky najdete v tématu [API managementu vývojáře portálu šablony](api-management-developer-portal-templates-reference.md).
+Referenční informace pro šablon portálu pro vývojáře, řetězcové prostředky, ikony a ovládací prvky stránky najdete v tématu [šablon portálu pro vývojáře rozhraní API managementu](api-management-developer-portal-templates-reference.md).
 
 [modify-content-layout]: api-management-modify-content-layout.md
 [customize-styles]: api-management-customize-styles.md

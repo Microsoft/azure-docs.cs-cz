@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ac58c6b951a03b403375fdc17dcd45f8e624deac
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387273"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311449"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
 
@@ -255,7 +255,7 @@ Pro uživatele B2B bude moct přihlásit k aplikaci SaaS pomocí Azure AD, ale S
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Podporuje automatické zřizování uživatelů pro SaaS aplikace pracují s dynamickými skupinami ve službě Azure AD?
 
-Ano. Když nakonfigurovaný "synchronizovat jenom přiřazené uživatelům a skupinám", služba zřizování uživatelů Azure AD můžete zřizovat nebo rušit přístup uživatelů v aplikaci SaaS v závislosti na Určuje, jestli jsou členové [dynamická skupina](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]). Dynamické skupiny pracovat i s možností "se synchronizují všichni uživatelé a skupiny".
+Ano. Když nakonfigurovaný "synchronizovat jenom přiřazené uživatelům a skupinám", služba zřizování uživatelů Azure AD můžete zřizovat nebo rušit přístup uživatelů v aplikaci SaaS v závislosti na Určuje, jestli jsou členové [dynamická skupina](../users-groups-roles/groups-create-rule.md). Dynamické skupiny pracovat i s možností "se synchronizují všichni uživatelé a skupiny".
 
 Použití dynamických skupin může mít vliv na celkový výkon začátku do konce zřizování uživatelů z Azure AD pro aplikace SaaS. Při použití dynamické skupiny, prosím mějte tyto upozornění a doporučení:
 

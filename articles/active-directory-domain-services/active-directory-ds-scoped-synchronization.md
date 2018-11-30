@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: 7726a28e0254f4316759c3d8c74f57db6a9e399e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 1df9b07d5a0a9e5018fc024038e65723c606ef71
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242190"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442977"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurace vymezených synchronizace z Azure AD do spravované domény
 V tomto článku se dozvíte, jak nakonfigurovat pouze konkrétní uživatelské účty, které se mají synchronizovat z adresáře služby Azure AD do spravované domény služby Azure AD Domain Services.
@@ -47,7 +47,12 @@ Následující tabulka vám pomůže určit, jak používat vymezenou synchroniz
 >
 
 
-## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization"></a>Vytvořit nové spravované domény a povolit synchronizaci s vymezeným oborem se na základě skupin
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Vytvořit nové spravované domény a povolit na základě skupin s vymezeným oborem synchronizace pomocí webu Azure portal
+
+1. Postupujte podle [příručce Začínáme](active-directory-ds-getting-started.md) vytvořit spravovanou doménu.
+2. Zvolte **obor** při výběru stylu synchronizace v Průvodci vytvořením Azure AD Domain Services.
+
+## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-powershell"></a>Vytvořit nové spravované domény a povolit na základě skupin s vymezeným oborem synchronizace pomocí Powershellu
 Dokončete tuto sadu kroků pomocí prostředí PowerShell. Přečtěte si pokyny k [povolit Azure Active Directory Domain Services pomocí Powershellu](active-directory-ds-enable-using-powershell.md). Několik kroků v tomto článku jsou mírně upravit tak, aby konfigurace synchronizace s vymezeným oborem.
 
 Proveďte následující kroky konfigurace na základě skupin s vymezeným oborem synchronizace se spravovanou doménou:

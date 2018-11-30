@@ -1,5 +1,5 @@
 ---
-title: 'Krok 4: Natrénování a vyhodnocení modelů prediktivní analýzy | Dokumentace Microsoftu'
+title: 'Krok 4: Trénování modelů prediktivní analýzy - Azure Machine Learning Studio | Dokumentace Microsoftu'
 description: 'Vývoj prediktivního řešení návod krok 4: trénování, stanovení skóre a vyhodnotit několik modelů v Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
@@ -16,17 +16,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: d0277db665259d485c5a5a06f0013f3c0d6a177c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 4b4ffcf8e6c886a2f182c844f940e53c24d1efa0
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261781"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313465"
 ---
-# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>Krok 4 průvodce: Natrénování a vyhodnocení modelů prediktivní analýzy
+# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models-in-machine-learning-studio"></a>Krok 4 průvodce: Natrénování a vyhodnocení modelů prediktivní analýzy v nástroji Machine Learning Studio
 Toto téma obsahuje návod, čtvrtý krok [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
-1. [Vytvoření pracovního prostoru Machine Learning](walkthrough-1-create-ml-workspace.md)
+1. [Vytvoření pracovního prostoru Machine Learning Studio](walkthrough-1-create-ml-workspace.md)
 2. [Nahrání existujících dat](walkthrough-2-upload-data.md)
 3. [Vytvoření nového experimentu](walkthrough-3-create-new-experiment.md)
 4. **Natrénování a vyhodnocení modelů**
@@ -41,7 +41,7 @@ V experiment, který vyvíjíme v tomto názorném postupu vytvoříme dva různ
 Existují různé modely, které jsme mohli vybírat. Pokud chcete zobrazit dostupné modely, rozbalte **Machine Learning** uzel paletě modulů a potom rozbalte **inicializovat Model** a uzlů pod ním. Pro účely tohoto experimentu, jsme vyberete [Two-Class Support Vector Machine][two-class-support-vector-machine] (SVM) a [Two-Class Boosted Decision Tree][two-class-boosted-decision-tree] moduly.    
 
 > [!TIP]
-> Nechte si poradit který nejlepší algoritmus Machine Learning vyhovuje konkrétního problému, který se snažíte vyřešit, najdete v článku [jak zvolit algoritmy pro Microsoft Azure Machine Learning](algorithm-choice.md).
+> Nechte si poradit který nejlepší algoritmus Machine Learning vyhovuje konkrétního problému, který se snažíte vyřešit, najdete v článku [jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio](algorithm-choice.md).
 > 
 > 
 

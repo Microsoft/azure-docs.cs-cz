@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 706f51ae1e2d81e2003f2fcd637def95c7a42f8e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: ff09926d61d64294a4f12ccf959f6685910539f1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567532"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317887"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -31,7 +31,7 @@ ms.locfileid: "51567532"
 
 * Přidání dalšího ověření v konfiguraci modulu pro rozpoznávání a přidal další chybové zprávy.
 * Vylepšené zpracování dlouholetý nečinnosti uprostřed zvukový soubor.
-* Balíček NuGet: pro rozhraní .NET Framework projekty zabránit sestavování s využitím konfigurace AnyCPU.
+* Balíček NuGet: pro projekty .NET Framework, zabraňuje sestavování s využitím konfigurace AnyCPU.
 
 **Opravy chyb**
 

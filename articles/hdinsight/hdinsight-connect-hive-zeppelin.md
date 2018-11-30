@@ -10,23 +10,23 @@ ms.custom: hdinsightactive,
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 75ec0e17e9866d2cd3420ff6ecf648bf22a8ae8e
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 035e70eef88d5d5dae08c329017430db25c20464
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277949"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494828"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-hive-queries-in-azure-hdinsight"></a>Použití Apache Zeppelinu ke spuštění dotazy Apache Hive v Azure HDInsight 
 
-Clustery HDInsight Interactive Query zahrnují poznámkových bloků Apache Zeppelin, které můžete použít ke spuštění interaktivních dotazů Hive. V tomto článku se dozvíte, jak k použití Apache Zeppelinu ke spuštění dotazy Apache Hive v Azure HDInsight. 
+Clustery HDInsight Interactive Query zahrnují [Apache Zeppelin](https://zeppelin.apache.org/) poznámkových bloků, které můžete použít ke spuštění interaktivních dotazů Hive. V tomto článku se dozvíte, jak k použití Apache Zeppelinu ke spuštění [Apache Hive](https://hive.apache.org/) dotazy v Azure HDInsight. 
 
 ## <a name="prerequisites"></a>Požadavky
 Před provedením tohoto článku, musíte mít následující položky:
 
 * **Cluster HDInsight Interactive Query**. Zobrazit [vytvořit cluster](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster) k vytvoření clusteru HDInsight.  Nezapomeňte vybrat typ Interactive Query. 
 
-## <a name="create-a-apache-zeppelin-note"></a>Vytvořit poznámku Apache Zeppelin
+## <a name="create-an-apache-zeppelin-note"></a>Vytvoření Zeppelinu poznámky Apache
 
 1. Přejděte na následující adresu URL:
 
@@ -69,12 +69,12 @@ Před provedením tohoto článku, musíte mít následující položky:
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak k vizualizaci dat z HDInsight pomocí Power BI.  Další informace naleznete v následujících článcích:
+V tomto článku jste zjistili, jak k vizualizaci dat pomocí HDInsight [Microsoft Power BI](https://powerbi.microsoft.com/).  Další informace naleznete v následujících článcích:
 
-* [Vizualizace dat Hive pomocí Microsoft Power BI v Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md).
-* [Vizualizace dat Interactive Query Hive pomocí Power BI v Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
+* [Vizualizace dat pomocí Microsoft Power BI v Azure HDInsight s Apache Hive](hadoop/apache-hadoop-connect-hive-power-bi.md).
+* [Vizualizace dat Interactive Query Apache Hive pomocí Power BI v Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).
 * [Připojení Excelu k HDInsight pomocí ovladače ODBC Microsoft Hivu](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
-* [Připojení Excelu k Hadoopu pomocí Power Query](hadoop/apache-hadoop-connect-excel-power-query.md).
-* [Připojení k Azure HDInsight a spouštění dotazů Hive pomocí nástrojů Data Lake pro Visual Studio](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* [Připojení Excelu k systému Apache Hadoop pomocí doplňku Power Query](hadoop/apache-hadoop-connect-excel-power-query.md).
+* [Připojení k Azure HDInsight a spouštět dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 * [Pomocí nástroje Azure HDInsight pro Visual Studio Code](hdinsight-for-vscode.md).
 * [Nahrání dat do HDInsight](./hdinsight-upload-data.md).

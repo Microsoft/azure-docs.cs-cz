@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: e18e1fb3e97dd9f846ee71be4f0fbb66aeca3d88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 88f6a27d4092e638403c641d72916ed9d2540708
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238858"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427059"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>Technický průvodce do šablony řešení Cortana Intelligence pro energie prognózy poptávky
 ## <a name="overview"></a>**Přehled**
@@ -159,14 +159,14 @@ Po spuštění generátor dat kanálu začne získat HYDRATOVANÝ a různých ko
 Tato část popisuje, jak nastavit řídicí panel Power BI pro vizualizace dat v reálném čase ze služby Azure stream analytics (horká cesta), stejně jako prognózy výsledky z aplikace Azure machine learning (studená cesta).
 
 ### <a name="setup-hot-path-dashboard"></a>Nastavení řídicího panelu kritickou cestu
-Následující kroky vás provedou jak vizualizace dat v reálném čase výstup z úlohy Stream Analytics, které byly vytvořeny v době nasazení řešení. A [Power BI online](http://www.powerbi.com/) účtu se vyžaduje k provedení následujících kroků. Pokud účet nemáte, můžete si [vytvořit](https://powerbi.microsoft.com/pricing).
+Následující kroky vás provedou jak vizualizace dat v reálném čase výstup z úlohy Stream Analytics, které byly vytvořeny v době nasazení řešení. A [Power BI online](https://www.powerbi.com/) účtu se vyžaduje k provedení následujících kroků. Pokud účet nemáte, můžete si [vytvořit](https://powerbi.microsoft.com/pricing).
 
 1. Přidáte výstup Power BI v Azure Stream Analytics (ASA).
 
    * Budete muset postupovat podle pokynů v [Azure Stream Analytics a Power BI: řídicí panel analýzy v reálném čase pro streamovaná data v reálném čase viditelnost](stream-analytics/stream-analytics-power-bi-dashboard.md) nastavit výstup úlohy Azure Stream Analytics jako řídicí panel Power BI .
    * Vyhledejte úlohu stream analytics ve vaší [webu Azure portal](https://portal.azure.com). Název úlohy musí být: YourSolutionName + "streamingjob" + náhodné číslo + "asapbi" (to znamená demostreamingjob123456asapbi).
    * Přidáte výstup Power BI pro úlohu Azure Stream Analytics. Nastavte **výstup Alias** jako **"PBIoutput"**. Nastavte vaše **název datové sady** a **název tabulky** jako **"EnergyStreamData"**. Po přidání výstup, klikněte na tlačítko **"Start"** v dolní části stránky a spusťte úlohu Stream Analytics. Měli byste obdržet potvrzovací zpráva (například "spuštění úlohy stream analytics myteststreamingjob12345asablob bylo úspěšné").
-2. Přihlaste se k [Power BI online](http://www.powerbi.com)
+2. Přihlaste se k [Power BI online](https://www.powerbi.com)
 
    * Na levém panelu, část datové sady v pracovním prostoru, byste měli vidět nové datové sady ukazující na levém panelu Power BI. Toto je streamovaných dat, které jste nasdíleli z Azure Stream Analytics v předchozím kroku.
    * Ujistěte se, ***vizualizace*** podokně je otevřený a je zobrazena na pravé straně obrazovky.
@@ -207,7 +207,7 @@ V trase datového kanálu základní cílem je získat prognózu poptávky každ
    * V lokalitě pop si okna nahradit **"Server"** a **"Databázi"** s vlastními názvy serveru a databáze a pak klikněte na tlačítko **"OK"**. Pro název serveru, je nutné zadat port 1433 (**YourSolutionName.database.windows.net, 1433**). Ignorujte upozornění, které se zobrazí na obrazovce.
    * V dalším pop si okno se zobrazí dvě možnosti, v levém podokně (**Windows** a **databáze**). Klikněte na tlačítko **"Databázi"**, vyplňte vaše **"Username"** a **"Password"** (Toto je uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvoří Azure SQL database). V ***jaké úroveň, která se použije toto nastavení vyberte***, zaškrtněte možnost na úrovni databáze. Pak klikněte na tlačítko **"Připojit"**.
    * Jakmile budete s asistencí zpět na předchozí stránku, zavřete okno. Zpráva POP navýšení kapacity – klikněte na tlačítko **použít**. A konečně, klikněte na tlačítko **Uložit** tlačítko Uložit změny. Váš soubor Power BI má nyní navázalo se připojení k serveru. Pokud vaše vizualizace jsou prázdné, nezapomeňte že vymazat výběry na vizualizace, která bude vizualizovat všechna data kliknutím na ikonu gumy v pravém horním rohu legend. Pomocí tlačítka aktualizovat tak, aby odrážely nová data na vizualizace. Na začátku zobrazí jenom data počáteční hodnoty na vaše vizualizace jako služby data factory je naplánovaná aktualizace každé 3 hodiny. Po 3 hodiny by se zobrazit projeví ve svých vizualizacích při aktualizaci dat nových předpovědí.
-3. (Volitelné) Publikovat na řídicím panelu studené cesty [Power BI online](http://www.powerbi.com/). Všimněte si, že tento krok potřebuje účet Power BI (nebo účet Office 365).
+3. (Volitelné) Publikovat na řídicím panelu studené cesty [Power BI online](https://www.powerbi.com/). Všimněte si, že tento krok potřebuje účet Power BI (nebo účet Office 365).
 
    * Klikněte na tlačítko **"Publikovat"** a několik sekund později se zobrazí okno zobrazení "Publikování do Power BI úspěch!" s zelená značka zaškrtnutí. Kliknutím na následující odkaz "Otevřít demoprediction.pbix v Power BI". Podrobné pokyny najdete v tématu [publikování z Power BI Desktopu](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
    * Chcete-li vytvořit nový řídicí panel: klikněte na tlačítko **+** podepsat vedle **řídicí panely** části v levém podokně. Zadejte název "Ukázka Prognózování poptávky" pro tento nový řídicí panel.

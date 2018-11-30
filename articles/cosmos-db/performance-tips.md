@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 3e724301d235db49ab9332dedc877d7315460ecc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 91da40613e940b3dd577362273cf14e68d019f26
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256166"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442471"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy ke zvýšení výkonu pro službu Azure Cosmos DB a .NET
 
@@ -104,7 +104,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
     Azure Cosmos DB požadavků probíhají přes protokol HTTPS nebo rozhraní REST, když používáte režim brány a jsou vystaveny výchozí limit pro připojení za název hostitele nebo IP adresu. Budete muset nastavit MaxConnections na vyšší hodnotu (100-1000) tak, aby Klientská knihovna může využívat více současných připojení ke službě Azure Cosmos DB. V sadě .NET SDK 1.8.0 a nad výchozí hodnotu pro [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) je 50 a ke změně hodnoty, můžete nastavit [Documents.Client.ConnectionPolicy.MaxConnectionLimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx)na vyšší hodnotu.   
 4. **Ladění používejte u dělených kolekcí paralelní dotazy**
 
-     SQL SDK pro .NET verze 1.9.0 a novější paralelní dotazy podpory, které vám umožní dotazovat do dělené kolekce paralelně (naleznete v tématu [práce spolu se sadami SDK](sql-api-partition-data.md#working-with-the-azure-cosmos-db-sdks) a související [ukázky kódu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) Další informace). Paralelní dotazy jsou navržené ke zlepšení latence dotazu a propustnost nad jejich protějšky sériového portu. Paralelní dotazy poskytují dva parametry, které můžou uživatelé naladit k jejich požadavky (a) z MaxDegreeOfParallelism odpovídal: maximální počet oddílů pak může být dotazována v paralelních úloh a (b) MaxBufferedItemCount ovládací prvek: řídit počet předem počet získaných výsledků.
+     SQL SDK pro .NET verze 1.9.0 a novější paralelní dotazy podpory, které vám umožní dotazovat do dělené kolekce paralelně. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) týkající se práce spolu se sadami SDK. Paralelní dotazy jsou navržené ke zlepšení latence dotazu a propustnost nad jejich protějšky sériového portu. Paralelní dotazy poskytují dva parametry, které můžou uživatelé naladit k jejich požadavky (a) z MaxDegreeOfParallelism odpovídal: maximální počet oddílů pak může být dotazována v paralelních úloh a (b) MaxBufferedItemCount ovládací prvek: řídit počet předem počet získaných výsledků.
 
     (a) ***ladění z MaxDegreeOfParallelism\:***  paralelní dotaz funguje dotazováním více oddílů souběžně. Data z jednotlivých oddílů shromažďování je však načíst sériově s ohledem na dotaz. Ano nastavení z MaxDegreeOfParallelism na počtu oddílů má maximální příležitost dosáhnout většina výkonných dotazů, zadaná všech ostatních situacích, systém zůstávají stejné. Pokud si nejste jisti počet oddílů, můžete nastavit z MaxDegreeOfParallelism na velký počet a systém zvolí jako z MaxDegreeOfParallelism minimální (počet oddílů, vstup uživatele, které jsou k dispozici).
 
@@ -172,7 +172,7 @@ Takže pokud máte s dotazem "Jak můžu vylepšit výkon Moje databáze?" Zvaž
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
     ```
 
-    Další informace najdete v tématu [zásadám indexování služby Azure Cosmos DB](indexing-policies.md).
+    Další informace najdete v tématu [zásadám indexování služby Azure Cosmos DB](index-policy.md).
 
 ## <a name="throughput"></a>Propustnost
 <a id="measure-rus"></a>

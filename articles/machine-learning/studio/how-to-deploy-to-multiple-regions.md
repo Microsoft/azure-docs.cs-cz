@@ -1,5 +1,5 @@
 ---
-title: Jak nasadit webovou službu do více oblastí | Dokumentace Microsoftu
+title: Jak nasadit webovou službu do více oblastí - Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Postup nasazení (kopie) nové webové služby do jiné oblasti.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.custom: (previous ms.author=aashishb, author=aashishb)
 ms.author: amlstudiodocs
-ms.openlocfilehash: cf63eb4d99de6e381caa911192b239268066ad7b
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ab28cce0f973c4798bfd6995cc275c4724b7bcc9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263791"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308015"
 ---
-# <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>Jak nasadit webovou službu do více oblastí
+# <a name="azure-machine-learning-studio-deploy-a-web-service-to-multiple-regions"></a>Azure Machine Learning Studio: Nasazení webové služby do více oblastí
 Nové webové služby Azure umožňují snadno nasadit webovou službu do více oblastí, aniž by bylo více předplatná a pracovní prostory. 
 
 Ceny se liší podle, že proto je nutné definovat fakturační plán pro každou oblast, ve kterém se nasadit také webovou službu oblastí.

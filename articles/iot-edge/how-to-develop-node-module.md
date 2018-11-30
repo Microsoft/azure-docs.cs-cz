@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 92746b37d6c7577691b46bf34a00f607ad707ff9
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 51c2154f4132340e00b8fddcfaeb6e999519c48f
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569035"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446700"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-nodejs-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Node.js pro Azure IoT Edge
 
@@ -65,7 +65,7 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge založené na Node.j
 6. Zadejte název pro vaše řešení. 
 7. Zvolte **modul Node.js** jako šablona pro první modul v rámci řešení.
 8. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru. 
-9. Zadejte úložiště imagí pro modul. VS Code autopopulates modulu pojmenovat, abyste měli pouze nahradit **localhost:5000** nahraďte svými vlastními informacemi registru. Pokud používáte místní registru Dockeru pro testování, pak místního hostitele je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte.
+9. Zadejte úložiště imagí pro modul. VS Code autopopulates modulu pojmenovat, abyste měli pouze nahradit **localhost:5000** nahraďte svými vlastními informacemi registru. Pokud používáte místní registru Dockeru pro testování, pak místního hostitele je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte. Konečný řetězec vypadá jako \<název registru\>.azurecr.io/\<modulename\>.
 
    ![Zadání úložiště imagí Dockeru](./media/how-to-develop-node-module/repository.png)
 
@@ -80,6 +80,7 @@ V řešení máte tři položky:
    >Pokud zadáte úložišti imagí pro modul je jenom vytvořen soubor prostředí. Pokud jste přijali výchozí nastavení localhost testovat a ladit v místním prostředí, pak není nutné deklarovat proměnné prostředí. 
 
 * A **deployment.template.json** souborů obsahuje nový modul spolu s ukázku **tempSensor** modul, který simuluje data, která můžete použít pro testování. Další informace o způsobu práce manifesty nasazení najdete v tématu [pochopit, jak můžete použít moduly IoT Edge a způsob jejich konfiguraci a znovu použít](module-composition.md).
+* A **deployment.debug.template.json** souboru kontejnery ladicí verze modulu bitové kopie s možností správný kontejner.
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
@@ -92,6 +93,14 @@ Visual Studio Code podporuje pro Node.js. Další informace o [jak pracovat s No
 ## <a name="launch-and-debug-module-code-without-container"></a>Spuštění a ladění kódu modulu bez kontejneru
 
 Modul IoT Edge Node.js závisí na sadu SDK pro zařízení Azure IoT Node.js. V modulu kódu výchozí inicializaci **ModuleClient** nastavení prostředí a zadejte název, což znamená, že modul IoT Edge Node.js vyžaduje nastavení prostředí a spustíte a je také potřeba odeslat nebo směrování zpráv do vstupního kanálů. Výchozí modul Node.js obsahuje pouze jednu vstupní kanál a název je **vstup1**.
+
+### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>Nastavení simulátoru IoT Edge pro řešení IoT Edge
+
+Ve vývojovém počítači můžete spustit simulátor IoT Edge místo instalace démon zabezpečení IoT Edge pro spuštění vašeho řešení IoT Edge. 
+
+1. V Průzkumníku zařízení na levé straně, klikněte pravým tlačítkem na hraničních zařízeních IoT zařízení ID, vyberte **nastavení IoT Edge simulátor** spusťte simulátor připojovacím řetězcem zařízení.
+
+2. Uvidíte, že simulátor IoT Edge se úspěšně instalace v integrovaném terminálu.
 
 ### <a name="setup-iot-edge-simulator-for-single-module-app"></a>Nastavení simulátoru IoT Edge pro jeden modul aplikace
 
@@ -152,12 +161,7 @@ Ve vývojovém počítači můžete spustit simulátor IoT Edge místo instalace
 
 ### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Sestavit a spustit kontejner pro ladění a ladění v připojení režimu
 
-1. V nástroji VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL bitové kopie modulu přidáním **.debug** na konec.
-
-2. Nahraďte CreateOptions field modul Node.js v **deployment.template.json** níže obsah a uložte tento soubor: 
-    ```json
-    "createOptions": "{\"ExposedPorts\":{\"9229/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"9229/tcp\":[{\"HostPort\":\"9229\"}]}}}"
-    ```
+1. V nástroji VS Code, přejděte `deployment.debug.template.json` souboru. V místní nabídce klikněte na tlačítko **sestavení a spuštění hraničních zařízeních IoT řešení v simulátoru**. Můžete sledovat všechny kontejneru modulu protokoly ve stejném okně. Můžete také přejít na Průzkumník Dockeru a sledujte stav kontejneru.
 
 3. Přejděte do zobrazení ladění VS Code. Vyberte konfigurační soubor ladění pro modul. Název možnosti ladění by měl být podobný **ModuleName vzdálené ladění (Node.js)** nebo **ModuleName vzdálené ladění (Node.js v kontejneru Windows)**, které závisí na typu vašeho kontejneru na vývojovém počítači.
 

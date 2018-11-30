@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: 2e4a5d9b7ee2a1a88bcfe819be6540385458108f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 28153e71ba6f2336398517454a81cfce39b93956
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622359"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496344"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -25,7 +25,7 @@ ms.locfileid: "51622359"
 
 Všechny operace odstranění jsou trvalé, včetně páry otázek a odpovědí, souborů, adresy URL, vlastní otázky a odpovědi, znalostních bází nebo prostředky Azure. Ujistěte se, že exportujete ze znalostní báze **nastavení** stránky před odstraněním libovolné části znalostní báze. 
 
-### <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>Proč je můj adresy URL / soubory není extrahování páry otázka – odpověď?
+### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>Proč je můj adres(y) URL či souborům není extrahování páry otázka – odpověď?
 
 Je možné, že nástroj QnA Maker nelze automaticky extrahovat otázky a odpovědi (QnA) obsah z platných adres URL Častých. V takových případech můžete vložit obsah otázek a odpovědí v souboru .txt a zobrazit, pokud nástroj může ingestovat. Alternativně můžete pomocí redakčních úprav přidat obsah do znalostní báze prostřednictvím [portál QnA Maker](https://qnamaker.ai).
 
@@ -41,13 +41,13 @@ Zatím jste ještě nevytvořili žádné služby QnA Maker v Azure. Čtení [ta
 
 Sdílení funguje na úrovni služby QnA Maker, to znamená všechny znalostních bází ve službě bude sdílena. Čtení [tady](./How-To/collaborate-knowledge-base.md) jak spolupracovat na znalostní bázi.
 
-### <a name="can-you-share-a-kb-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-kb"></a>Můžete sdílet s přispěvatele, která není ve stejném tenantovi AAD, chcete-li upravit znalostní bázi znalostní bázi? 
+### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>Můžete sdílet s přispěvatele, která není ve stejném tenantovi AAD, chcete-li upravit znalostní bázi knowledge base? 
 
 Sdílení je založená na řízení přístupu Azure na základě rolí (RBAC). Pokud můžete sdílet _jakékoli_ prostředků v Azure s jiným uživatelem, můžete také sdílet QnA Maker.
 
-### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-kbs-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-kb"></a>Pokud máte plán služby App Service s 5 znalostní báze QnA maker. Aby každý z nich měli přístup k rozhraní QnAMaker pouze 1 KB můžete přiřadit oprávnění pro čtení a zápis 5 různých uživatelů?
+### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>Pokud máte plán služby App Service s 5 znalostních bází QnA maker. Můžete přiřadit oprávnění pro čtení a zápis 5 různých uživatelů tak, aby každý z nich přístup pouze 1 znalostní báze QnA maker?
 
-Můžete sdílet celou službu QnA maker, ne z individuálních znalostní báze.
+Můžete sdílet celou službu QnA maker, ne z individuálních znalostních bází.
 
 ### <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Jak můžete změnit výchozí zprávu, pokud není nalezena žádná shoda dobré?
 
@@ -65,8 +65,7 @@ Výchozí zprávu je součástí nastavení ve službě App service.
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Proč není získávání extrahovat odkaz SharePoint?
 
-Nástroj analyzuje pouze veřejné adresy URL a ověřených zdrojů v tuto chvíli nepodporuje. Alternativně můžete stáhnout soubor a pomocí možnosti nahrávání souborů extrakce otázek a odpovědí.
-
+Zobrazit [umístění zdroje dat](./Concepts/data-sources-supported.md#data-source-locations) Další informace.
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Aktualizace provedené ve znalostní bázi při publikování neprojevily. Proč ne?
 
@@ -94,9 +93,13 @@ Aktualizovat službu app service, pokud je ikona upozornění vedle hodnoty verz
 
 Aktualizujte klíče koncového bodu, pokud máte podezření, že byl napaden.
 
-### <a name="can-i-use-the-same-azure-search-resource-for-kbs-using-multiple-languages"></a>Můžete použít stejný prostředek Azure Search pro znalostní báze pomocí více jazyků?
+### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>Můžete použít stejný prostředek Azure Search pro znalostní báze pomocí více jazyků?
 
-Pokud chcete použít víc jazyků a vícenásobné znalostní báze, má uživatel a vytvoří prostředek QnA Maker pro jednotlivé jazyky. Tím se vytvoří samostatné Azure vyhledávací služby pro každý jazyk. Kombinování jiný jazyk znalostní báze ve službě Azure search jednoho způsobí snížení relevance výsledků.
+Pokud chcete použít víc jazyků a více znalostních bází, má uživatel a vytvoří prostředek QnA Maker pro jednotlivé jazyky. Tím se vytvoří samostatné Azure vyhledávací služby pro každý jazyk. Kombinování jiný jazyk znalostních bází ve službě Azure search jednoho způsobí snížení relevance výsledků.
+
+### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Jak můžete změnit název prostředku Azure Search používá nástroj QnA Maker?
+
+Název prostředku Azure Search je název prostředku QnA Maker se některé náhodné písmena přidán na konec. Díky tomu se obtížně rozlišovat mezi více hledat prostředky pro nástroj QnA Maker. Vytvoření samostatné služby Azure Search (pojmenování tak, jak byste chtěli) a připojení ke službě QnA. Postup je podobný postupu je potřeba udělat, abyste [upgrade Azure Search](How-To/upgrade-qnamaker-service.md#upgrade-azure-search-service).
 
 ## <a name="integrate-with-other-services-including-bots"></a>Integrace s dalšími službami, včetně robotů
 

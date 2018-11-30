@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/02/2018
 ms.author: spelluru
-ms.openlocfilehash: 523394010058ace7f61da2196a110fd3e6db610c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: f1f796f7dc0a5ca4e1143f07303c218117e745e7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739852"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314315"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Zpráva relací: první, nejprve-out (FIFO) 
 
 Microsoft Azure Service Bus relace povolí zpracování smíšený a seřazených nevázaných sekvencí souvisejících zpráv. Jak začít využívat ve službě Service Bus se zárukou FIFO, použijte relace. Service Bus není doporučené ohledně povahy vztah mezi zprávy a také nedefinuje konkrétní vzor určující, kde pořadí zpráv začíná nebo končí.
 
 > [!NOTE]
-> Úroveň basic služby Service Bus nepodporuje relace. Úrovně standard a premium podporují relace. Další informace najdete v tématu [cenách služby Service Bus](/pricing/details/service-bus/).
+> Úroveň basic služby Service Bus nepodporuje relace. Úrovně standard a premium podporují relace. Další informace najdete v tématu [cenách služby Service Bus](service-bus-pricing-billing.md).
 
 Žádné odesilatele, může znamenat relace při odesílání zpráv do tématu nebo fronty tak, že nastavíte [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) vlastnost některé definovaného aplikací jedinečný identifikátor pro relaci. Na úrovni protokolu AMQP 1.0, tato hodnota odpovídá *id skupiny* vlastnost.
 

@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 1d996469c01640a70b68d70e8c24c617e0defd64
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250800"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444798"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatické škálování instance služby Azure API Management  
 
@@ -32,6 +32,8 @@ Postupujte podle kroků v tomto článku, musíte:
 + Žádná instance Azure API Management. Další informace najdete v tématu [vytvoření instance Azure API Management](get-started-create-service-instance.md).
 + Vysvětlení konceptu [kapacity instance Azure API Management](api-management-capacity.md).
 + Vysvětlení [ruční škálování procesu instance Azure API Management](upgrade-and-scale.md), včetně nákladů důsledky.
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="azure-api-management-autoscale-limitations"></a>Omezení automatického škálování služby Azure API Management
 

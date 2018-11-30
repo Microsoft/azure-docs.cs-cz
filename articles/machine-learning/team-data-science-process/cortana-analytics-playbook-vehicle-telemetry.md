@@ -2,25 +2,21 @@
 title: Předpověď stavu vozidel a jízdních návycích – Azure | Dokumentace Microsoftu
 description: Pomocí možností Cortana Intelligence získat v reálném čase a prediktivní přehledy o stavu vozidel a jízdních návycích.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
-ms.author: deguhath
+author: marktab
+ms.author: tdsp
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 09fad60b-2f48-488b-8a7e-47d1f969ec6f
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.openlocfilehash: 0594b9b40fdf8647f99946a31dbb47a95c9694ac
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 688a821667b38423b43af87b7a26525e52d9a7aa
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300349"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444155"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook"></a>Řešení analýzy Telemetrie vozidla
 

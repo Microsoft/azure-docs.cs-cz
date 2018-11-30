@@ -9,14 +9,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: c87596099995cbd34a0ee32ec287de81ec741bda
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4b673423bcf3785b29cc287e025d1ee52bc402f7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008058"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312898"
 ---
-# <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>Použití Apache Phoenixu s clustery se systémem Linux HBase v HDInsight
+# <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Použití Apache Phoenixu s clustery založené na Linuxu Apache HBase v HDInsight
 Další informace o použití [Apache Phoenix](http://phoenix.apache.org/) v Azure HDInsight a jak používat SQLLine. Další informace o Phoenix, naleznete v tématu [Phoenix za 15 minut nebo i rychleji](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Gramatika Phoenix, naleznete v tématu [Phoenix gramatiky](http://phoenix.apache.org/language/index.html).
 
 > [!NOTE]
@@ -30,13 +30,13 @@ Další informace o použití [Apache Phoenix](http://phoenix.apache.org/) v Azu
 ### <a name="prerequisites"></a>Požadavky
 Než budete moct použít SQLLine, musíte mít následující položky:
 
-* **Cluster HBase v HDInsight**. Pokud chcete jeden vytvořit, přečtěte si téma [Začínáme s Apache HBase v HDInsight](./apache-hbase-tutorial-get-started-linux.md).
+* **Clustery Apache HBase v HDInsight**. Pokud chcete jeden vytvořit, přečtěte si téma [Začínáme s Apache HBase v HDInsight](./apache-hbase-tutorial-get-started-linux.md).
 
-Když se připojíte ke clusteru služby HBase, musíte připojit k jednomu z virtuálních počítačů ZooKeeper. Každý cluster HDInsight má tři virtuální počítače ZooKeeper.
+Když se připojíte ke clusteru služby HBase, budete muset připojit k jednomu z [Apache ZooKeeper](https://zookeeper.apache.org/) virtuálních počítačů. Každý cluster HDInsight má tři virtuální počítače ZooKeeper.
 
 **Chcete-li získat název hostitele ZooKeeper**
 
-1. Otevření Ambari procházením **https://\<název clusteru\>. azurehdinsight.net**.
+1. Otevřít [Apache Ambari](https://ambari.apache.org/) procházením **https://\<název clusteru\>. azurehdinsight.net**.
 2. Pro přihlášení, zadejte protokol HTTP (clusteru) uživatelského jména a hesla.
 3. V nabídce vlevo vyberte **ZooKeeper**. Tři **ZooKeeper Server** instance patří.
 4. Vyberte jednu z **ZooKeeper Server** instancí. Na **Souhrn** podokně vyhledejte **název hostitele**. Vypadá podobně jako *zk1 jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net*.
@@ -61,16 +61,16 @@ Když se připojíte ke clusteru služby HBase, musíte připojit k jednomu z vi
 
         !quit
 
-Další informace najdete v tématu [SQLLine ruční](http://sqlline.sourceforge.net/#manual) a [Phoenix gramatiky](http://phoenix.apache.org/language/index.html).
+Další informace najdete v tématu [SQLLine ruční](http://sqlline.sourceforge.net/#manual) a [Apache Phoenix gramatiky](http://phoenix.apache.org/language/index.html).
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak používat Apache Phoenix v HDInsight. Další informace najdete v těchto článcích:
 
 * [Přehled HDInsight HBase][hdinsight-hbase-overview].
-  HBase je databáze NoSQL open source Apache postavená na Hadoop poskytující náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat.
-* [Zřizování clusterů HBase ve službě Azure Virtual Network][hdinsight-hbase-provision-vnet].
-  Integrace virtuální sítě je možné nasadit clustery HBase používané ke stejné virtuální síti jako vaše aplikace, takže aplikace můžou komunikovat přímo s HBase.
-* [Konfigurace replikace HBase v HDInsight](apache-hbase-replication.md). Zjistěte, jak nastavit replikace HBase ve dvou datacentrech Azure.
+  Apache HBase je databáze NoSQL open source Apache postavená na Apache Hadoopu, která umožňuje náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat.
+* [Apache HBase zřizování clusterů na Azure Virtual Network][hdinsight-hbase-provision-vnet].
+  Integrace virtuální sítě je možné nasadit clustery Apache HBase ke stejné virtuální síti jako vaše aplikace, takže aplikace můžou komunikovat přímo s HBase.
+* [Konfigurace replikace Apache HBase v HDInsight](apache-hbase-replication.md). Zjistěte, jak nastavit replikaci Apache HBase ve dvou datacentrech Azure.
 
 
 [azure-portal]: https://portal.azure.com

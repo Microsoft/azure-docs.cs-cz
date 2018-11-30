@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: aad23f1b50a3156d01ce127270e29368f82d18b3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 569030cc6d72d206411a73703ec0d359e033bef7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014036"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311666"
 ---
-# <a name="use-azure-kubernetes-service-with-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s využitím Kafka v HDInsight
+# <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Použití služby Azure Kubernetes s využitím Apache Kafka v HDInsight
 
-Zjistěte, jak používat Azure Kubernetes Service (AKS) s využitím Kafka v clusteru HDInsight. Kroky v tomto dokumentu používají aplikace Node.js hostované ve službě AKS k ověření připojení s využitím systému Kafka. Tato aplikace používá [kafka uzel](https://www.npmjs.com/package/kafka-node) balíček ke komunikaci s využitím systému Kafka. Používá [Socket.io](https://socket.io/) pro zasílání zpráv mezi klientský prohlížeč a back-end hostovaný ve službě AKS řízené událostmi.
+Další informace o použití Azure Kubernetes Service (AKS) pomocí [Apache Kafka](https://kafka.apache.org/) v clusteru HDInsight. Kroky v tomto dokumentu používají aplikace Node.js hostované ve službě AKS k ověření připojení s využitím systému Kafka. Tato aplikace používá [kafka uzel](https://www.npmjs.com/package/kafka-node) balíček ke komunikaci s využitím systému Kafka. Používá [Socket.io](https://socket.io/) pro zasílání zpráv mezi klientský prohlížeč a back-end hostovaný ve službě AKS řízené událostmi.
 
 [Apache Kafka](https://kafka.apache.org) je open source distribuovaná streamovací platforma, kterou lze použít k vytváření aplikací a kanálů pro streamování dat v reálném čase. Azure Kubernetes Service spravuje vaše hostované prostředí Kubernetes a umožňuje rychlé a snadné nasazování kontejnerizovaných aplikací. Pomocí služby Azure Virtual Network, propojíte tyto dvě služby.
 
@@ -93,14 +93,14 @@ Pokud již nemáte AKS cluster, použijte jednu z následujících dokumentech s
 
     Nechte ve všech polích výchozí hodnoty a pak vyberte __OK__ konfigurace partnerského vztahu.
 
-## <a name="install-kafka-on-hdinsight"></a>Instalace systému Kafka v HDInsight
+## <a name="install-apache-kafka-on-hdinsight"></a>Instalace Apache Kafka v HDInsight
 
 Při vytváření Kafka v clusteru HDInsight, musíte připojit virtuální síť vytvořili dříve pro HDInsight. Další informace týkající se vytvoření clusteru Kafka, najdete v článku [vytvoření clusteru Kafka](apache-kafka-get-started.md) dokumentu.
 
 > [!IMPORTANT]
 > Při vytváření clusteru, je nutné použít __upřesňující nastavení__ připojení k virtuální síti, kterou jste vytvořili pro HDInsight.
 
-## <a name="configure-kafka-ip-advertising"></a>Konfigurace IP reklamy Kafka
+## <a name="configure-apache-kafka-ip-advertising"></a>Nakonfigurovat inzerování IP Apache Kafka
 
 Použijte následující postup ke konfiguraci Kafka inzerovat IP adres místo názvů domén:
 
@@ -152,7 +152,7 @@ Použijte následující postup ke konfiguraci Kafka inzerovat IP adres místo n
 
 V tomto okamžiku Kafka a Azure Kubernetes Service jsou v komunikaci prostřednictvím partnerských virtuálních sítích. K otestování tohoto připojení, použijte následující kroky:
 
-1. Vytvoří téma Kafka, který používá testovací aplikace. Informace o vytváření témat Kafka, najdete v článku [vytvoření clusteru Kafka](apache-kafka-get-started.md) dokumentu.
+1. Vytvoří téma Kafka, který používá testovací aplikace. Informace o vytváření témat Kafka, najdete v článku [vytvořit cluster Apache Kafka](apache-kafka-get-started.md) dokumentu.
 
 2. Stáhněte si ukázková aplikace z [ https://github.com/Blackmist/Kafka-AKS-Test ](https://github.com/Blackmist/Kafka-AKS-Test).
 
@@ -161,7 +161,7 @@ V tomto okamžiku Kafka a Azure Kubernetes Service jsou v komunikaci prostředni
     * `var topic = 'mytopic'`: Nahradit `mytopic` s názvem tématu Kafka používaný touto aplikací.
     * `var brokerHost = '176.16.0.13:9092`: Nahradit `176.16.0.13` s interní IP adresa z jednoho z hostitelů zprostředkovatele pro váš cluster.
 
-        Interní IP adresa zprostředkovatele hostitele (workernodes) v clusteru, najdete v tématu [rozhraní Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentu. Vyberte IP adresu jedné z položek, kde začíná název domény `wn`.
+        Interní IP adresa zprostředkovatele hostitele (workernodes) v clusteru, najdete v tématu [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) dokumentu. Vyberte IP adresu jedné z položek, kde začíná název domény `wn`.
 
 4. Z příkazového řádku ve `src` adresáře, nainstalujte závislosti a sestavte image pro nasazení pomocí Dockeru:
 
@@ -224,12 +224,12 @@ V tomto okamžiku Kafka a Azure Kubernetes Service jsou v komunikaci prostředni
 
 Následující odkazy popisují používání Apache Kafka ve službě HDInsight:
 
-* [Začínáme s Kafka ve službě HDInsight](apache-kafka-get-started.md)
+* [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md)
 
-* [Vytvoření repliky Kafka ve službě HDInsight pomocí MirrorMakeru](apache-kafka-mirroring.md)
+* [Vytvoření repliky Apache Kafka v HDInsight pomocí Mirrormakeru](apache-kafka-mirroring.md)
 
-* [Použití Apache Stormu se systémem Kafka ve službě HDInsight](../hdinsight-apache-storm-with-kafka.md)
+* [Použití Apache Stormu s Apache Kafka v HDInsight](../hdinsight-apache-storm-with-kafka.md)
 
-* [Použití Apache Sparku se systémem Kafka ve službě HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Použití Apache Sparku s využitím Apache Kafka v HDInsight](../hdinsight-apache-spark-with-kafka.md)
 
-* [Připojení k systému Kafka přes virtuální síť Azure](apache-kafka-connect-vpn-gateway.md)
+* [Připojení k Apache Kafka přes virtuální síť Azure](apache-kafka-connect-vpn-gateway.md)

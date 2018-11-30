@@ -1,5 +1,5 @@
 ---
-title: Služby Machine learning tahák k algoritmům – Azure | Dokumentace Microsoftu
+title: Služby Machine learning tahák k algoritmům - Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Tisknutelný strojového učení tahák k algoritmům pomůže vám zvolit správný algoritmus pro prediktivní model Azure Machine Learning Studio.
 keywords: tahák k algoritmům, tahák, algoritmu strojového učení
 services: machine-learning
@@ -13,12 +13,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 3a9ef7843b671a6b2b16fda5429449cd3439c3a9
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 307a2d442fc8cf82630b111b6ea73e180c740c64
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264059"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307406"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning tahák pro Azure Machine Learning Studio
 

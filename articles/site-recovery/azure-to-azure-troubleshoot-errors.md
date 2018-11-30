@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 040ace1eab4062c011ed82a59e7f5bfb789c256b
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 7d11460fd1db5ba92725567a41aaaeab9e752adb
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945735"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308116"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -150,28 +150,36 @@ Vzhledem k tomu operačním systémem SuSE Linux používá symbolických odkaz�
 
 U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy URL nebo IP rozsahy se vyžaduje z virtuálního počítače. Pokud se váš virtuální počítač nachází za bránou firewall nebo používá síť pravidla skupiny zabezpečení (NSG) k řízení odchozího připojení, může setkat jednu z těchto problémů.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151037-br"></a>Úkol 1: Nepovedlo se zaregistrovat virtuální počítač Azure s využitím Site Recovery (151037) </br>
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Úkol 1: Nepovedlo se zaregistrovat virtuální počítač Azure s využitím Site Recovery (151195) </br>
 - **Možná příčina** </br>
-  - K řízení odchozího přístupu používáte skupiny zabezpečení sítě na virtuálním počítači a požadované IP rozsahy nejsou na seznamu povolených pro odchozí přístup.
-  - Při použití brány firewall třetích stran nástrojů a požadované rozsahy IP/URL nejsou na seznamu povolených.
+  - Nelze navázat připojení ke koncovým bodům obnovení lokality kvůli chybě rozlišení DNS.
+  - To je často viděli při opětovné ochrany když budete mít převzetí služeb při selhání virtuálního počítače, ale DNS server není dostupný z oblasti pro zotavení po Havárii.
+  
+- **Řešení**
+   - Pokud používáte vlastní DNS, ujistěte se, že DNS server přístupný z oblasti pro zotavení po havárii. Ke kontrole, pokud máte vlastní DNS, přejděte do virtuálního počítače > síť pro obnovení po havárii > servery DNS. Zkuste se na serveru DNS z virtuálního počítače. Pokud není k dispozici a pak si všechno přístupné selhání serveru DNS nebo vytvoření čáry lokality mezi sítí zotavení po Havárii a DNS.
+  
+    ![Chyba com](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
+ 
 
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Úkol 2: (151196) se nepovedlo nakonfigurovat službu Site Recovery
+- **Možná příčina** </br>
+  - Nelze navázat připojení k Office 365 ověřování a identita IP4 koncových bodů.
 
 - **Řešení**
-   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server brány firewall, ujistěte se, že požadované adresy URL nebo rozsahy IP adres datacentra jsou povolené. Informace najdete v tématu [proxy pokyny s branou firewall](https://aka.ms/a2a-firewall-proxy-guidance).
-   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte pravidla skupiny zabezpečení sítě, ujistěte se, že rozsahy IP adres požadavků datacentra jsou povolené. Informace najdete v tématu [pokyny pro skupiny zabezpečení sítě](azure-to-azure-about-networking.md).
-   - Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](azure-to-azure-about-networking.md).
+  - Azure Site Recovery požadovaných pro ověřování přístupu k rozsahy IP adres Office 365.
+    Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server pravidla nebo brána firewall sítě Azure zabezpečení skupiny (NSG), zajistěte, aby že byla povolena komunikace s O365 rozsahy IP adres. Vytvoření [značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na základě pravidel skupiny zabezpečení sítě umožňující přístup ke všem IP adresám v odpovídající službě AAD
+        - Pokud do Azure Active Directory (AAD) se přidají nové adresy v budoucnu, musíte vytvořit nová pravidla skupiny zabezpečení sítě.
 
-### <a name="issue-2-site-recovery-configuration-failed-151072"></a>Úkol 2: (151072) se nepovedlo nakonfigurovat službu Site Recovery
+
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Úkol 3: (151197) se nepovedlo nakonfigurovat službu Site Recovery
 - **Možná příčina** </br>
-  - Nelze navázat připojení ke koncovým bodům služby Site Recovery
-
+  - Nelze navázat připojení ke koncovým bodům služby Azure Site Recovery.
 
 - **Řešení**
-   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte proxy server brány firewall, ujistěte se, že požadované adresy URL nebo rozsahy IP adres datacentra jsou povolené. Informace najdete v tématu [proxy pokyny s branou firewall](https://aka.ms/a2a-firewall-proxy-guidance).
-   - Pokud k řízení odchozího síťového připojení u virtuálního počítače používáte pravidla skupiny zabezpečení sítě, ujistěte se, že rozsahy IP adres požadavků datacentra jsou povolené. Informace najdete v tématu [pokyny pro skupiny zabezpečení sítě](https://aka.ms/a2a-nsg-guidance).
-   - Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](site-recovery-azure-to-azure-networking-guidance.md).
+  - Azure Site Recovery vyžaduje přístup k [rozsahy IP služby Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) v závislosti na oblasti. Ujistěte se, že požadované rozsahy ip adres jsou přístupné z virtuálního počítače.
+    
 
-### <a name="issue-3-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Úkol 3: Replikace A2A selhala při síťový provoz prochází skrz místní proxy server (151072)
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Úkol 4: Replikace A2A selhala při síťový provoz prochází skrz místní proxy server (151072)
  - **Možná příčina** </br>
    - Nastavení vlastní proxy server jsou neplatné a agenta služby Mobility Azure Site Recovery bez automatického rozpoznávání nastavení proxy serveru z Internet Exploreru
 

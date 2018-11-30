@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 01e8b5c518931411ba6e2d75168de6753bf55260
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34c11c911b6c2ffbc4d4800cd7203a8d430814fb
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971718"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311241"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a předplatná
 
@@ -97,7 +97,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
 
 ## <a name="cli"></a>Vytvoření partnerského vztahu – rozhraní příkazového řádku Azure
 
-Tento kurz používá různé účty pro každé předplatné. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočte kroky pro přihlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení rolí uživatele. Nahraďte UserA@azure.com a UserB@azure.com ve všech z následujících skriptů se uživatelská jména, že používáte UserA a UserB. Proveďte následující kroky pomocí Azure classic CLI a Azure CLI. Kroky v Azure Cloud Shell, můžete dokončit právě výběrem **vyzkoušet** tlačítko v některém z následujících kroků, nebo po instalaci [rozhraní příkazového řádku classic](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [rozhraní příkazového řádku](/cli/azure/install-azure-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a spuštění příkazů v místním počítači.
+Tento kurz používá různé účty pro každé předplatné. Pokud používáte účet, který má oprávnění k oběma předplatným, můžete použít stejný účet pro všechny kroky, přeskočte kroky pro přihlášení z Azure a odebrat řádky skriptu, které vytvářejí přiřazení rolí uživatele. Nahraďte UserA@azure.com a UserB@azure.com ve všech z následujících skriptů se uživatelská jména, že používáte UserA a UserB. Proveďte následující kroky pomocí Azure classic CLI a Azure CLI. Kroky v Azure Cloud Shell, můžete dokončit právě výběrem **vyzkoušet** tlačítko v některém z následujících kroků, nebo po instalaci [rozhraní příkazového řádku classic](/cli/azure/install-classic-cli) a [rozhraní příkazového řádku](/cli/azure/install-azure-cli) a spuštění příkazů v místním počítači.
 
 1. Pokud používáte Cloud Shell, přejděte ke kroku 2, protože službě Cloud Shell se automaticky přihlásí můžete do Azure. Otevřete relaci příkazového řádku a přihlášení do Azure s využitím `azure login` příkazu.
 2. Spuštění rozhraní příkazového řádku classic v režimu správy služby tak, že zadáte `azure config mode asm` příkazu.
@@ -272,7 +272,7 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
 ## <a name="delete"></a>Odstranit prostředky
 Po dokončení tohoto kurzu, můžete chtít odstranit prostředky, které jste vytvořili v tomto kurzu, takže se vám neúčtovaly poplatky za využívání. Odstranění skupiny prostředků se odstraní také všechny prostředky, které jsou ve skupině prostředků.
 
-### <a name="delete-portal"></a>Azure portal
+### <a name="delete-portal"></a>Azure Portal
 
 1. Portálového vyhledávacího pole zadejte **myResourceGroupA**. Ve výsledcích hledání klikněte na tlačítko **myResourceGroupA**.
 2. Na **myResourceGroupA** okna, klikněte na tlačítko **odstranit** ikonu.
@@ -281,7 +281,7 @@ Po dokončení tohoto kurzu, můžete chtít odstranit prostředky, které jste 
 5. V **myVnetB** okna, klikněte na tlačítko **odstranit**.
 6. Potvrďte odstranění kliknutím na **Ano** v **odstranění virtuální sítě** pole.
 
-### <a name="delete-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="delete-cli"></a>Azure CLI
 
 1. Přihlaste se k Azure pomocí rozhraní příkazového řádku se odstranit virtuální síť (Resource Manager) pomocí následujícího příkazu:
 

@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: automation
 ms.component: update-management
 manager: carmonm
-ms.openlocfilehash: 20bd2fe8877c635b0f55bb4f904658a595658518
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: adaeb3087fca57a4a868f4525d588e014ff36fcf
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828193"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335823"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Vysvětlení výsledky kontroly systému Linux agenta v Update Management
 
-Může být mnoho důvodů, proč počítač nezobrazuje **připravené** v Update Management. V Update Management můžete zkontrolovat stav agenta Hybrid Worker, chcete-li zjistit příčinu problému. Tento článek popisuje, jak spustit Poradce při potížích se z portálu Azure portal a v případě offline scénářů.
+Může být mnoho důvodů, proč počítač Azure se nezobrazuje **připravené** v Update Management. V Update Management můžete zkontrolovat stav agenta Hybrid Worker, chcete-li zjistit příčinu problému. Tento článek popisuje, jak spustit Poradce při potížích se z portálu Azure portal a v případě offline scénářů.
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
@@ -54,7 +54,8 @@ Kontrola operačního systému, ověří, pokud funkce Hybrid Runbook Worker s n
 
 ### <a name="oms-agent"></a>Agenta OMS
 
-Této kontroly zajistí, že je nainstalovaný Agent OMS pro Linux. Pokyny k její instalaci najdete v tématu [instalace agenta pro Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux).
+Této kontroly zajistí, že je nainstalovaný Agent OMS pro Linux. Pokyny k její instalaci najdete v tématu [instalace agenta pro Linux](../../log-analytics//log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux
+).
 
 ### <a name="oms-agent-status"></a>Stav agenta OMS
 

@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 8f66c95202e0ccdef86f9630f7a98c20023a8955
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: b903d0ddbccac8fe4fa8b251d409bd8addebb435
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087742"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425995"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metrik a protokolování diagnostiky 
 
@@ -101,7 +101,7 @@ Chcete povolit streamování telemetrická data diagnostiky pro **Azure SQL Data
    ![Konfigurace diagnostiky pro SQL Database](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> Z databáze nastavení diagnostiky se nedá povolit protokol auditu. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2)a také zobrazit [protokoly auditu SQL v Azure Log Analytics a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Protokoly auditu zabezpečení není možné z databáze nastavení diagnostiky. Pokud chcete povolit streamování protokolů auditu, naleznete v tématu [nastavení auditování databáze](sql-database-auditing.md#subheading-2)a také zobrazit [protokoly auditu SQL v Azure Log Analytics a Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 >
 
 > [!TIP]
@@ -182,7 +182,7 @@ Chcete povolit streamování telemetrická data diagnostiky pro **Managed Instan
 2. Vyberte **nastavení diagnostiky**
 3. Vyberte **zapnout diagnostiku** Pokud neexistují žádné předchozí nastavení, nebo vyberte **upravit nastavení** upravit předchozí nastavení
 
-   ![Povolit diagnostiku pro Managed Instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![Povolit diagnostiku pro Managed Instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 4. Zadejte název pro nastavení – pro vlastní potřebu
 5. Vyberte, na který prostředek se má datový proud diagnostická data z elastického fondu: **archivovat do účtu úložiště**, **Stream do centra událostí**, nebo **odesílat do Log Analytics**
@@ -190,7 +190,7 @@ Chcete povolit streamování telemetrická data diagnostiky pro **Managed Instan
 7. Zaškrtněte políčko pro instanci telemetrická data diagnostiky **ResourceUsageStats**
 8. Klikněte na **Uložit**.
 
-   ![Konfigurace diagnostiky pro Managed Instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![Konfigurace diagnostiky pro Managed Instance](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
 > [!TIP]
 > Opakujte předchozí postup pro každý Managed Instance, které chcete monitorovat.
@@ -413,7 +413,7 @@ Shromážděné telemetrické monitorování lze použít pro vlastní **vlastn�
 
 |Vlastnost|Popis|
 |---|---|
-|ID Tenanta|ID vašeho tenanta.|
+|TenantId|ID vašeho tenanta.|
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
 |Typ|Vždy: AzureDiagnostics|
@@ -440,7 +440,7 @@ Shromážděné telemetrické monitorování lze použít pro vlastní **vlastn�
 
 |Vlastnost|Popis|
 |---|---|
-|ID Tenanta|ID vašeho tenanta.|
+|TenantId|ID vašeho tenanta.|
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
 |Typ|Vždy: AzureDiagnostics|
@@ -491,7 +491,7 @@ Další informace o [Query Store runtime statistická data](https://docs.microso
 
 |Vlastnost|Popis|
 |---|---|
-|ID Tenanta|ID vašeho tenanta.|
+|TenantId|ID vašeho tenanta.|
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
 |Typ|Vždy: AzureDiagnostics|
@@ -529,7 +529,7 @@ Další informace o [Query Store počkejte statistická data](https://docs.micro
 
 |Vlastnost|Popis|
 |---|---|
-|ID Tenanta|ID vašeho tenanta.|
+|TenantId|ID vašeho tenanta.|
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
 |Typ|Vždy: AzureDiagnostics|
@@ -558,7 +558,7 @@ Další informace o [chybových zpráv systému SQL Server](https://msdn.microso
 
 |Vlastnost|Popis|
 |---|---|
-|ID Tenanta|ID vašeho tenanta.|
+|TenantId|ID vašeho tenanta.|
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
 |Typ|Vždy: AzureDiagnostics|
@@ -587,7 +587,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 
 |Vlastnost|Popis|
 |---|---|
-|ID Tenanta|ID vašeho tenanta.|
+|TenantId|ID vašeho tenanta.|
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
 |Typ|Vždy: AzureDiagnostics|
@@ -610,7 +610,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 
 |Vlastnost|Popis|
 |---|---|
-|ID Tenanta|ID vašeho tenanta.|
+|TenantId|ID vašeho tenanta.|
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
 |Typ|Vždy: AzureDiagnostics|
@@ -634,7 +634,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 
 |Vlastnost|Popis|
 |---|---|
-|ID Tenanta|ID vašeho tenanta.|
+|TenantId|ID vašeho tenanta.|
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC] |Časové razítko, kdy se přihlášení v protokolu.|
 |Typ|Vždy: AzureDiagnostics|
@@ -655,7 +655,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 
 |Vlastnost|Popis|
 |---|---|
-|ID Tenanta|ID vašeho tenanta.|
+|TenantId|ID vašeho tenanta.|
 |SourceSystem|Vždy: Azure|
 |TimeGenerated [UTC]|Časové razítko, kdy se přihlášení v protokolu.|
 |Typ|Vždy: AzureDiagnostics|
@@ -675,7 +675,7 @@ Další informace o [databáze statistiky čekání](https://docs.microsoft.com/
 |Schema_s|Schéma databáze.|
 |Table_s|Tabulka vliv.|
 |IndexName_s|Název indexu.|
-|IndexColumns_s|Název sloupce.|
+|IndexColumns_s|Název sloupce|
 |IncludedColumns_s|Zahrnuté sloupce.|
 |EstimatedImpact_s|Odhadovaný dopad doporučení automatického ladění JSON.|
 |Event_s|Typ události automatického ladění.|

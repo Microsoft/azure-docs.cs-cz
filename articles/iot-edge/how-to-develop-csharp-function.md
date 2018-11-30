@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 343264f90ecf067786db9c0096625b87b2dbd319
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 40b8dfef3100ff8440165de74fb41f6b36afe37a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004404"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315099"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění Azure functions pro Azure IoT Edge
 
@@ -71,6 +71,7 @@ Existují čtyři položky v rámci řešení:
    >Pokud zadáte úložišti imagí pro modul je jenom vytvořen soubor prostředí. Pokud jste přijali výchozí nastavení localhost testovat a ladit v místním prostředí, pak není nutné deklarovat proměnné prostředí. 
 
 * A **deployment.template.json** souborů obsahuje nový modul spolu s ukázku **tempSensor** modulu, která simuluje data, která můžete použít pro testování. Další informace o způsobu práce manifesty nasazení najdete v tématu [zjistěte, jak můžete nasadit moduly a vytvářet manifesty nasazení](module-composition.md).
+* A **deployment.debug.template.json** souboru kontejnery ladicí verze modulu bitové kopie s možností správný kontejner.
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
@@ -79,12 +80,10 @@ Výchozí funkce Azure Functions se kód, který je součástí řešení nachá
 Jakmile budete připraveni k přizpůsobení šablony funkce Azure Functions s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
 
 ## <a name="build-your-module-for-debugging"></a>Vytvoření modulu pro ladění
-1. Chcete-li spustit ladění, použijte **Dockerfile.amd64.debug** znovu sestavte image dockeru a znovu nasaďte řešení Edge. V Průzkumníku VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL vaší funkce image tak, že přidáte `.debug` na konec.
-
-    ![Sestavení image ladění](./media/how-to-debug-csharp-function/build-debug-image.png)
-
+1. Chcete-li spustit ladění, použijte **Dockerfile.amd64.debug** znovu sestavte image dockeru a znovu nasaďte řešení Edge. V Průzkumníku VS Code, přejděte `deployment.debug.template.json` souboru.
 2. Znovu sestavte řešení. V nástroji VS Code paletu příkazů, zadejte a spusťte příkaz **Azure IoT Edge: řešení IoT Edge sestavení**.
-3. V Průzkumníku zařízení centra IoT Azure, klikněte pravým tlačítkem na ID zařízení IoT Edge a pak vyberte **vytvoření nasazení pro hraniční zařízení**. Vyberte `deployment.json` soubor `config` složky. Zobrazí se vám nasazení s ID nasazení, v terminálu VS Code integrované se úspěšně vytvořil.
+3. Vyberte `deployment.debug.template.json` soubor pro vaše řešení z palety příkazů. 
+4. V Průzkumníku zařízení centra IoT Azure, klikněte pravým tlačítkem na ID zařízení IoT Edge a pak vyberte **vytvoření nasazení pro hraniční zařízení**. Vyberte `deployment.debug.amd64.json` soubor `config` složky. Zobrazí se vám nasazení s ID nasazení, v terminálu VS Code integrované se úspěšně vytvořil.
 
 Kontrola stavu kontejneru v Průzkumníku VS Code Dockeru nebo spuštěním `docker ps` příkazu v terminálu.
 

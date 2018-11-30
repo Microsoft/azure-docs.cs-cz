@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: 9d41ab26876d464187466f566bbfafc4861c799d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708714"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333247"
 ---
 # <a name="configure-expressroute-global-reach-using-azure-cli-preview"></a>Konfigurace ExpressRoute globální dosah pomocí rozhraní příkazového řádku Azure (Preview)
 Tento článek vám pomůže nakonfigurovat ExpressRoute globální dosah pomocí Azure CLI. Další informace najdete v tématu [ExpressRouteRoute globální dosah](expressroute-global-reach.md).

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d40b82b5beac2da78038e303cb50402d6fa0be7a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b8d8223647d42213eff53c2ff8310bed0cfe6cdb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566019"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446734"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů jazyka C pro Azure IoT Edge
 
@@ -59,7 +59,7 @@ Podle následujících kroků vytvořte modul IoT Edge založené na Azure IoT C
 
 7. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru. 
 
-8. Zadejte název modulu úložiště imagí. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte. 
+8. Zadejte název modulu úložiště imagí. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte. Konečný řetězec vypadá jako \<název registru\>.azurecr.io/\<modulename\>.
 
    ![Zadání úložiště imagí Dockeru](./media/how-to-develop-c-module/repository.png)
 
@@ -87,20 +87,11 @@ Jakmile budete připraveni k přizpůsobení šablony jazyka C s vlastním kóde
 
 Ve složce každého modulu existuje několik souborů Docker pro typy jiný kontejner. Použijte některý z těchto souborů, které končí příponou **.debug** vytvořit váš modul pro testování. V současné době C moduly podporu ladění pouze v amd64 kontejnery Linuxu.
 
-1. V nástroji VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL bitové kopie modulu přidáním **.debug** na konec.
-
-    ![Přidat *** .debug na název obrázku](./media/how-to-develop-c-module/image-debug.png)
-
-2. Nahraďte CreateOptions field modulu jazyka C v **deployment.template.json** níže obsah a uložte tento soubor: 
-    
-    ```json
-    "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
-    ```
-
+1. V nástroji VS Code, přejděte `deployment.debug.template.json` souboru. Tento soubor obsahuje ladicí verze modulu možnosti vytvoření imagí pomocí správné. 
 2. V nástroji VS Code paletu příkazů, zadejte a spusťte příkaz **Azure IoT Edge: sestavení a Push hraničních zařízeních IoT řešení**.
-3. Vyberte `deployment.template.json` soubor pro vaše řešení z palety příkazů. 
+3. Vyberte `deployment.debug.template.json` soubor pro vaše řešení z palety příkazů. 
 4. V Azure IoT Hub Device Explorer klikněte pravým tlačítkem na ID zařízení IoT Edge Potom vyberte **vytvoření nasazení pro jedno zařízení**. 
-5. Otevřít vaše řešení **config** složky. Vyberte `deployment.json` souboru. Zvolte **vyberte Manifest nasazení Edge**. 
+5. Otevřít vaše řešení **config** složky. Vyberte `deployment.debug.amd64.json` souboru. Zvolte **vyberte Manifest nasazení Edge**. 
 
 Zobrazí se vám nasazení s ID nasazení, v terminálu VS Code integrované se úspěšně vytvořil.
 

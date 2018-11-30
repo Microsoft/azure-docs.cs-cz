@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d4523a9e2d5a5466c1617930d14a8a2d25a0e16f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d77e5265349db2fc433d2bb9a42140a6a4209ba1
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238773"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317483"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Opravit konfigurace zabezpečení v Azure Security Center
 Azure Security Center analyzuje denně operační systém (OS) virtuálních počítačů (VM) a počítačů pro konfiguraci, které by mohly znamenat virtuálních počítačů a počítačů, které jsou zranitelnější vůči útokům. Security Center doporučuje, abyste vyřešili ohrožení zabezpečení, když vaše konfigurace operačního systému se neshoduje s pravidla konfigurace doporučené zabezpečení a doporučuje změny konfigurace, které tyto nedostatky zabezpečení řeší.
@@ -101,7 +101,7 @@ Jaké konkrétní konfigurace se monitorují najdete v tématu [seznam doporuče
 Další informace o službě Security Center, najdete v následujících zdrojích:
 
 * Seznam podporovaných virtuálních počítačů s Linuxem a Windows, naleznete v tématu [podporovaných platforem ve službě Azure Security Center](security-center-os-coverage.md).
-* Další informace o konfiguraci zásad zabezpečení pro vaše předplatná Azure a skupiny prostředků, najdete v článku [nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md).
+* Další informace o konfiguraci zásad zabezpečení pro vaše předplatná Azure a skupiny prostředků, najdete v článku [nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md).
 * Informace o tom, jak vám doporučení pomáhají chránit prostředky Azure, najdete v článku [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 * Zjistěte, jak můžete monitorovat stav svých prostředků Azure, najdete v článku [sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md).
 * Zjistěte, jak spravovat a reagovat na výstrahy zabezpečení, najdete v článku [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md).

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 40f3f56c15956a93176a753f7c66f66df1b8f5f4
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: f8f7d43d4b42f5236c6c8d25c88314043053b0cc
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515722"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445701"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -84,17 +84,17 @@ K dipozici máte také **denní** zobrazení, abyste se mohli podívat na nákla
 
 ![Denní zobrazení](./media/quick-acm-cost-analysis/daily-view.png)
 
-Výběrem možnosti **Seskupit podle** můžete vybrat kategorii skupiny a změnit data zobrazená v horním celkovém plošném grafu. Seskupení vám umožňuje rychle zobrazit, jak jsou vaše útraty kategorizovány podle typu prostředku. Tady je zobrazení nákladů na služby Azure pro zobrazení minulého měsíce.
+Výběrem možnosti **Seskupit podle** můžete vybrat kategorii skupiny a změnit data zobrazená v horním celkovém plošném grafu. Seskupení umožňuje rychle zjistíte, jak vaší útraty jsou rozdělené do kategorií podle společné vlastnosti prostředku a využití, jako jsou skupiny prostředků nebo značky prostředku. Seskupit podle značky, vyberte klíč značky, které chcete seskupit podle a uvidíte náklady porušena každá hodnota značky, další segment pro prostředky, které nemají dané klíčové slovo použít. Všimněte si, že Cost Management podporuje pouze značky prostředků ode dne, kdy jsou značky použít přímo na prostředek. Skupiny značky prostředku se nepodporují ještě dnes. Tady je zobrazení nákladů na služby Azure pro zobrazení minulého měsíce.
 
 ![Seskupené denní kumulované zobrazení](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Kontingenční grafy pod horním celkovým zobrazením znázorňují zobrazení pro různé kategorie seskupení a filtrování. Když vyberete kteroukoli kategorii seskupení, zobrazí se v dolní části zobrazení úplná sada dat pro celkové zobrazení. Tady je příklad skupin prostředků.
+Kontingenční grafy v rámci hlavní grafu zobrazit různé seskupení abyste získali širší představu o celkové náklady pro vybrané časové období a filtry. Vyberte vlastnost nebo značek zobrazíte souhrnné náklady podle dimenzí. Kompletní sadu dat pro celkový počet zobrazení je v dolní části obrazovky tak, že rozbalíte **Data** zásobník nebo tak, že vyberete **Exportovat > stáhnout CSV** v horní části obrazovky. Tady je příklad dat zásobník pro skupiny prostředků.
 
 ![Úplná data pro aktuální zobrazení](./media/quick-acm-cost-analysis/full-data-set.png)
 
-Na předchozím obrázku jsou znázorněny názvy skupin prostředků. Zobrazení značek prostředků není dostupné v žádném zobrazení, filtrech ani seskupeních analýzy nákladů.
+Na předchozím obrázku jsou znázorněny názvy skupin prostředků. Zatímco můžete seskupit podle značky, chcete-li zobrazit celkové náklady pro jednotlivé značky, zobrazení všech značek na prostředek nebo skupina prostředků není k dispozici v zobrazení analýzy nákladů.
 
-Při seskupování nákladů podle konkrétního atributu je zobrazeno deset nejvýznamnějších přispěvatelů k nákladům, od nejvyššího k nejnižšímu. Pokud je skupin více než deset, je zobrazeno devět horních přispěvatelů a potom skupina **Ostatní**, která pokrývá všechny zbývající skupiny dohromady.
+Při seskupování nákladů podle konkrétního atributu je zobrazeno deset nejvýznamnějších přispěvatelů k nákladům, od nejvyššího k nejnižšímu. Pokud je skupin více než deset, je zobrazeno devět horních přispěvatelů a potom skupina **Ostatní**, která pokrývá všechny zbývající skupiny dohromady. Při seskupování podle klíčových slov, může se zobrazit také **Untagged** pro náklady, které nemají značku klíč použít. **Neoznačených** je vždy poslední, i když nejsou více neoznačených nákladů než příznakem náklady. Pokud existuje 10 nebo více hodnot značek, neoznačených nákladů bude součástí **ostatní**.
 
 Prostředky virtuálních počítačů, sítě a úložiště *Classic* (Azure Service Management nebo ASM) nesdílí podrobná data o fakturaci. Ta jsou při seskupování nákladů sloučena do položky **Classic services**.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 24b7e03808cb5df9fa4c122ca4c9317f723dac72
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c6097c96c0211c1efac2c2652eb0ef7d668d6877
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414637"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427042"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statické veřejné IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,9 @@ Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2
 
 ## <a name="create-a-static-ip-address"></a>Vytvoření statické IP adresy
 
-Při vytváření statickou veřejnou IP adresu pro použití službou AKS prostředek IP adresy musí být vytvořeny ve **uzel** skupinu prostředků. Získání názvu skupiny prostředků s [az aks zobrazit] [ az-aks-show] příkaz a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad získá uzlu skupiny prostředků pro AKS název clusteru *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
+Při vytváření statickou veřejnou IP adresu pro použití službou AKS prostředek IP adresy mají být vytvořeny v **uzel** skupinu prostředků. Pokud chcete samostatné prostředky, najdete v článku [použijte statickou IP adresu mimo skupinu prostředků uzel](#use-a-static-ip-address-outside-of-the-node-resource-group).
+
+Získání názvu uzlu skupiny prostředků s [az aks zobrazit] [ az-aks-show] příkaz a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad získá uzlu skupiny prostředků pro AKS název clusteru *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
 ```azurecli
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv

@@ -10,16 +10,16 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: cd57e9a90b07447392fbff48017bb29f002ad29e
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035947"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495595"
 ---
-# <a name="use-batch-transcription"></a>Použití služby batch přepis
+# <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
-Přepis batch je ideální, pokud máte velké množství zvuku ve službě storage. Pomocí rozhraní REST API, můžete pomocí sdíleného přístupového podpisu (SAS) identifikátor URI přejděte na příkaz zvukové soubory a asynchronně přijímat přepisů.
+Přepis batch je ideální, pokud máte velké množství zvuku ve službě storage. Pomocí vyhrazené rozhraní REST API, můžete pomocí sdíleného přístupového podpisu (SAS) identifikátor URI přejděte na příkaz zvukové soubory a asynchronně přijímat přepisů.
 
 ## <a name="the-batch-transcription-api"></a>Přepis rozhraní API služby Batch
 
@@ -36,16 +36,16 @@ Rozhraní API služby Batch určené k transkripci nabízí asynchronní přepis
 
 Rozhraní API služby Batch určené k transkripci podporuje následující formáty:
 
-Název| Kanál  |
-----|----------|
-MP3 |   Mono   |   
-MP3 |  Stereo  | 
-WAV |   Mono   |
-WAV |  Stereo  |
-Díle|   Mono   |
-Díle|  Stereo  |
+| Formát | Kodek | S přenosovou rychlostí | Vzorkovací frekvence |
+|--------|-------|---------|-------------|
+| WAV | PCM | 16 bitů | 8 nebo 16 mono, stereo kHz, |
+| MP3 | PCM | 16 bitů | 8 nebo 16 mono, stereo kHz, |
+| OGG | DÍLE | 16 bitů | 8 nebo 16 mono, stereo kHz, |
 
-Pro stereo zvukové datové proudy určené k transkripci batch rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Výstupní kanál, včetně vlastností pro nastavení filtr vulgárních výrazů a interpunkční znaménka modelu, můžete vidět v následujícím příkladu JSON:
+> [!NOTE]
+> Rozhraní API služby Batch určené k transkripci vyžaduje klíč rozhraní S0 (platit úroveň). Nefunguje s klíčem free (f0).
+
+Přepis rozhraní API služby Batch pro stereo zvukové datové proudy, rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Podle následující ukázky JSON ukazuje výstup kanál, includuing vlastností pro nastavení filtr vulgárních výrazů a interpunkční znaménka modelu.
 
 ```json
 {
@@ -62,6 +62,16 @@ Pro stereo zvukové datové proudy určené k transkripci batch rozdělí levéh
 
 > [!NOTE]
 > Rozhraní API určené k transkripci služby Batch používá službu REST pro požadování přepisů, jejich stav a přidružené výsledky. Můžete použít rozhraní API z jakéhokoli jazyka. Další část popisuje, jak se používá rozhraní API.
+
+### <a name="query-parameters"></a>Parametry dotazu
+
+Tyto parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
+
+| Parametr | Popis | Povinné / volitelné |
+|-----------|-------------|---------------------|
+| `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže filtrování vulgárních výrazů `masked` hvězdičky, která nahradí vulgárních výrazů `removed` výsledek, který zruší všechny vulgárních výrazů nebo `tags` které přidá značky "vulgárních výrazů". Ve výchozím nastavení je `masked`. | Nepovinné |
+| `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `none` který zakáže interpunkční znaménka, `dictated` což naznačuje explicitní interpunkce, `automatic` které umožní dekodér řešit interpunkční znaménka, nebo `dictatedandautomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. | Nepovinné |
+
 
 ## <a name="authorization-token"></a>Autorizační token
 

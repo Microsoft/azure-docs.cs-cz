@@ -1,6 +1,6 @@
 ---
-title: Šablony aplikací ve službě Azure API Management | Microsoft Docs
-description: Zjistěte, jak přizpůsobit obsah stránky aplikace v portálu pro vývojáře ve službě Azure API Management.
+title: Šablony aplikací ve službě Azure API Management | Dokumentace Microsoftu
+description: Zjistěte, jak přizpůsobit obsah stránek aplikací na portálu pro vývojáře ve službě Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,31 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 40a4d159afff4db78e27f89b448e21b1d94cd378
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0eead6201f737448b4de76476802518a506375da
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23834898"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446230"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Šablony aplikací ve službě Azure API Management
-Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.  
+Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a do editoru podle vašeho výběru, jako například [DotLiquid pro profesionální návrháře využívající](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), nebo umístění zadaná sada [prostředky řetězce, které](api-management-template-resources.md#strings), [glyfů prostředky](api-management-template-resources.md#glyphs), a [stránce ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu konfigurovat obsahu stránek podle svých potřeb, pomocí těchto šablon.  
   
- Šablony v této části umožňují přizpůsobit obsah stránky aplikace v portálu pro vývojáře.  
+ Šablony v této části umožňují přizpůsobit obsah stránek aplikací na portálu pro vývojáře.  
   
 -   [Seznam aplikací](#ProductList)  
   
 -   [Aplikace](#Application)  
   
 > [!NOTE]
->  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale mohou být změněna z důvodu průběžné vylepšení. Za provozu výchozí šablony můžete zobrazit v portálu pro vývojáře přechodem na jednotlivé požadované šablony. Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Ukázka výchozí šablony jsou zahrnuty v následující dokumentaci, ale můžou se změnit kvůli průběžně vylepšujeme. Živé výchozí šablony můžete zobrazit na portálu pro vývojáře tak, že přejdete na jednotlivé požadované šablony. Další informace o práci se šablonami najdete v tématu [přizpůsobení portálu pro správu rozhraní API pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a>Seznam aplikací  
- **Seznam aplikací** šablona umožňuje přizpůsobit text seznamu stránka aplikace v portálu pro vývojáře.  
+##  <a name="ProductList"></a> Seznam aplikací  
+ **Seznam aplikací** šablony vám umožní přizpůsobit těla stránky seznamu aplikací na portálu pro vývojáře.  
   
- ![Šablony portálu vývojář stránky v seznamu aplikací](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM aplikace seznamu vývojář stránky portálu šablony")  
+ ![Šablon portálu pro vývojáře stránku v seznamu aplikací](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "šablony portálu seznamu vývojář aplikací pro služby APIM")  
   
-### <a name="default-template"></a>Výchozí šablony  
+### <a name="default-template"></a>Výchozí šablona  
   
 ```xml  
 <div class="row">  
@@ -71,7 +73,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Product list` Šablona může používat následující [stránka ovládací prvky](api-management-page-controls.md).  
+ `Product list` Šablona může používat následující [stránce ovládací prvky](api-management-page-controls.md).  
   
 -   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
@@ -79,9 +81,9 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
   
 |Vlastnost|Typ|Popis|  
 |--------------|----------|-----------------|  
-|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekce aplikací.|  
+|Stránkování|[Stránkování](api-management-template-data-model-reference.md#Paging) entity.|Informace o stránkování pro kolekci aplikací.|  
 |Aplikace|Kolekce [aplikace](api-management-template-data-model-reference.md#Application) entity.|Aplikace, které jsou viditelné pro aktuálního uživatele.|  
-|CategoryName|Řetězec|Kategorie aplikace.|  
+|CategoryName|řetězec|Kategorie aplikace.|  
   
 ### <a name="sample-template-data"></a>Ukázková data šablony  
   
@@ -134,12 +136,12 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 }  
 ```  
   
-##  <a name="Application"></a>Aplikace  
- **Aplikace** šablona umožňuje přizpůsobit text stránka aplikace v portálu pro vývojáře.  
+##  <a name="Application"></a> Aplikace  
+ **Aplikace** šablony vám umožní přizpůsobit text na stránce aplikace na portálu pro vývojáře.  
   
- ![Šablony portálu vývojář stránky aplikací](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM aplikace vývojář stránky portálu šablony")  
+ ![Šablon portálu pro vývojáře stránky aplikace](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "šablon portálu pro vývojáře stránky v aplikaci služby APIM")  
   
-### <a name="default-template"></a>Výchozí šablony  
+### <a name="default-template"></a>Výchozí šablona  
   
 ```xml  
 <h2>{{title}}</h2>  
@@ -178,7 +180,7 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Application` Šablona neumožňuje použití libovolného [stránka ovládací prvky](api-management-page-controls.md).  
+ `Application` Šablona neumožňuje použití žádné [stránce ovládací prvky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
  [Aplikace](api-management-template-data-model-reference.md#Application) entity.  
@@ -220,5 +222,5 @@ Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portál
 }  
 ```
 
-## <a name="next-steps"></a>Další kroky
-Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).
+## <a name="next-steps"></a>Další postup
+Další informace o práci se šablonami najdete v tématu [přizpůsobení portálu pro správu rozhraní API pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).

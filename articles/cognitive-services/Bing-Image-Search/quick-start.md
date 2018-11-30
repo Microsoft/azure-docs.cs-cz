@@ -1,6 +1,6 @@
 ---
-title: Bitové kopie rozhraní API služby Search úvodní | Microsoft Docs
-description: Ukazuje, jak začít používat rozhraní API služby Bing bitové kopie Search.
+title: Rychlý start pro rozhraní API pro vyhledávání obrázků | Dokumentace Microsoftu
+description: Ukazuje, jak začít používat rozhraní API pro vyhledávání obrázků Bingu.
 services: cognitive-services
 author: swhite-msft
 manager: ehansen
@@ -10,43 +10,43 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 9e211cf5acd17ab80948d0b7161bdd2a9220c4a6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5742efb2dca02565735cf308d9ede9316ce6d12e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342444"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314860"
 ---
-# <a name="your-first-images-search-query"></a>Vaše první Image vyhledávání dotazu
+# <a name="your-first-images-search-query"></a>Vaše první Image vyhledávací dotaz
 
-Předtím, než bude možné vytvářet první volání, které je potřeba získat předplatné klíč kognitivní služby Bing vyhledávání. Získat klíč, najdete v části [zkuste kognitivní služby](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
+Předtím, než můžete provést první volání, je nutné získat klíč předplatného služeb Cognitive Services vyhledávání Bingu. Postup, jak klíč získat, najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-Pokud chcete získat výsledky hledání bitové kopie, by odeslat požadavek GET na následující koncový bod:  
+Chcete-li získat výsledky hledání obrázků, by odeslat požadavek GET na následující koncový bod:  
   
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/search
 ```
   
-Žádost musí používat protokol HTTPS.
+Požadavek musí používat protokol HTTPS.
 
-Doporučujeme vám, že všechny požadavky pocházejí ze serveru. Distribuce klíč v rámci klientské aplikace poskytuje další možnost pro škodlivý třetích stran k přístupu. Navíc volání ze serveru poskytuje snadný upgrade pro budoucí verze rozhraní API.
+Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče v rámci klientské aplikace poskytuje škodlivým třetím stranám víc příležitostí získat k ní přístup. Voláním ze serveru také zajistíte, že u budoucích verzí rozhraní API bude stačit upgradovat pouze jediný bod.
 
-Musíte zadat požadavek [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query) parametr dotazu, který obsahuje uživatele hledaný termín. Přestože je volitelné, žádost by také určit [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#mkt) parametr dotazu, který identifikuje na trhu, kam chcete výsledky pocházet z. Seznam volitelné dotaz parametry `freshness` a `size`, najdete v části [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí být kódovaná adresou URL.  
+Požadavek musí obsahovat parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query), který obsahuje hledaný termín daného uživatele. Přestože je volitelný, měl by požadavek obsahovat také parametr dotazu [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#mkt), který identifikuje trh, ze kterého chcete obdržet výsledky. Seznam volitelných parametrů dotazu jako `freshness` nebo `size` naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.  
   
-Musíte zadat požadavek [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#subscriptionkey) záhlaví. I když je volitelné, vám doporučujeme, aby se také určit následující hlavičky:  
+Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#subscriptionkey). Přestože jsou volitelné, doporučujeme, aby požadavek obsahoval i následující hlavičky:  
   
--   [Uživatelský Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#useragent)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#clientid)  
--   [X-vyhledávání – když](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#clientip)  
--   [Umístění X vyhledávání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#location)  
+-   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#clientip)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#location)  
 
-Hlavičky protokolu IP a umístění klienta jsou důležité pro vrácení obsahu vědět umístění.  
+IP a hlavičky klienta jsou důležité pro vrácení obsahu závislého na umístění.  
 
-Seznam všech hlaviček žádostí a odpovědí najdete v tématu [hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers).
+Seznam všech hlaviček žádostí a odpovědí najdete v tématu [Hlavičky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#headers).
 
-## <a name="the-request"></a>Požadavek
+## <a name="the-request"></a>Žádost
 
-Na obrázku je žádost o vyhledávání obsahující všechny parametry navrhované dotazu a hlavičky. Pokud je první čas volání některé z rozhraní API služby Bing, neobsahují záhlaví ID klienta. Pokud jste dříve volat rozhraní API pro Bing a Bing vrátil ID klienta pro uživatele a zařízení kombinace pouze zahrnují ID klienta. 
+Následuje ukázka požadavku hledání, která obsahuje všechny navrhované parametry a hlavičky dotazu. Pokud je první čas volání některé z rozhraní API služby Bing, nezahrnujte záhlaví ID klienta. ID klienta zahrňte pouze v případě, že jste již dříve volali rozhraní API Bingu a Bing vrátil ID klienta pro příslušnou kombinaci uživatele a zařízení. 
   
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&mkt=en-us HTTP/1.1  
@@ -57,7 +57,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Následující obrázek znázorňuje odpověď na předchozí požadavek.
+Následující příklad ukazuje odpověď na předchozí požadavek.
 
 ```json
 {
@@ -132,10 +132,10 @@ Následující obrázek znázorňuje odpověď na předchozí požadavek.
 
 ## <a name="next-steps"></a>Další postup
 
-Vyzkoušejte rozhraní API. Přejděte na [obrázek hledání API testovací konzolu](https://dev.cognitive.microsoft.com/docs/services/8336afba49a84475ba401758c0dbf749/operations/571fab09dbe2d933e891028f). 
+Vyzkoušejte si rozhraní API. Přejděte na [konzole testování rozhraní API pro vyhledávání obrázků](https://dev.cognitive.microsoft.com/docs/services/8336afba49a84475ba401758c0dbf749/operations/571fab09dbe2d933e891028f). 
 
-Podrobnosti o spotřebě objektů odpovědi najdete v tématu [vyhledávání na webu](./search-the-web.md).
+Podrobnosti o využití objektů odpovědi naleznete v [dokumentaci k rozhraní API Bingu pro vyhledávání na webu](./search-the-web.md).
 
-Podrobnosti o získání přehledy o image, jako jsou webové stránky, které obsahují image nebo osoby, které byly rozpoznány v bitové kopii, najdete v části [Image Insights](./image-insights.md).  
+Podrobnosti o podrobný přehled o bitovou kopii jako jsou například webové stránky, které obsahují image nebo osoby, které nebyly rozpoznány v imagi najdete v tématu [přehledy obrázků](./image-insights.md).  
   
-Podrobnosti o bitových kopiích, které jsou trendů na sociálních médiích najdete v tématu [trendů image](./trending-images.md).  
+Podrobnosti o imagích, které jsou trendů na sociálních médiích najdete v tématu [populárních obrázků](./trending-images.md).  

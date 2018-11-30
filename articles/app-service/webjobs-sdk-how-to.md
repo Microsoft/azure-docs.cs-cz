@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 3e06dc82baed4043ce490769aa0ec84ab3de8c24
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 2266f63f9689ec4d22659eb4a7c4876e25fa08b1
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577007"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335210"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Použití sady Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -462,7 +462,7 @@ Doporučujeme, abyste protokolovacího rozhraní, který byl vyvinut pro technol
 
 ### <a name="log-filtering"></a>Filtrování protokolu
 
-Každý protokol vytvořené `ILogger` instance má přiřazený `Category` a `Level`. [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel#Microsoft_Extensions_Logging_LogLevel) je výčet a kód celé číslo označuje relativní význam:
+Každý protokol vytvořené `ILogger` instance má přiřazený `Category` a `Level`. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) je výčet a kód celé číslo označuje relativní význam:
 
 |LogLevel    |Kód|
 |------------|---|
@@ -474,7 +474,7 @@ Každý protokol vytvořené `ILogger` instance má přiřazený `Category` a `L
 |Kritická    | 5 |
 |Žádný        | 6 |
 
-Každá kategorie je možné nezávisle na sobě filtrovat na konkrétní [LogLevel](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loglevel). Například můžete chtít zobrazit všechny protokoly pro zpracování objektů blob aktivační událost ale jenom `Error` nebo vyšší pro všechno ostatní.
+Každá kategorie je možné nezávisle na sobě filtrovat na konkrétní [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel). Například můžete chtít zobrazit všechny protokoly pro zpracování objektů blob aktivační událost ale jenom `Error` nebo vyšší pro všechno ostatní.
 
 Aby bylo snazší k určení pravidel filtrování, poskytuje sada WebJobs SDK `LogCategoryFilter` , který může být předán do řady poskytovatelů existující protokolování, včetně Application Insights a konzoly.
 

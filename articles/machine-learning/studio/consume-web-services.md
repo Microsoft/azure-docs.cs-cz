@@ -1,6 +1,6 @@
 ---
-title: Jak využívat Azure Machine Learning webové služby | Dokumentace Microsoftu
-description: Po nasazení služby machine learning službu RESTFul webová služba, která je k dispozici mohou být spotřebovány buď jako službu v reálném čase žádost odpověď, nebo jako služba batch execution.
+title: Způsob využívání webové služby Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Po nasazení služby machine learning service z Azure Machine Learning Studio RESTFul webová služba může zpracovat buď jako službu v reálném čase žádost odpověď, nebo jako služba batch execution.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: 0f95ea1de572beb02cd1680864d3fee781e9abc1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: df837c64cf0e40f3bfc1c596b2950a9d23c74a90
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262818"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309102"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Jak využívat Azure Machine Learning webové služby
+# <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Způsob využívání webové služby Azure Machine Learning Studio
 
 Po nasazení Azure Machine Learning prediktivní model jako webovou službu můžete použít rozhraní REST API k odeslání dat a získání předpovědi. Můžete odeslat data v reálném čase nebo v dávkovém režimu.
 

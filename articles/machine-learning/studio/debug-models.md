@@ -1,6 +1,6 @@
 ---
-title: Ladění modelu ve službě Azure Machine Learning | Dokumentace Microsoftu
-description: Jak ladit chyby, vytvořené moduly Train Model a Score Model ve službě Azure Machine Learning.
+title: Ladění modelu ve službě Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Jak ladit chyby, vytvořené moduly Train Model a Score Model v Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.openlocfilehash: fd81ff0ade0267d052862beed9d84649a7721ee9
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: bb1a3e778dcbcfacbc9e605ebf2d855786d71510
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263685"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312591"
 ---
-# <a name="debug-your-model-in-azure-machine-learning"></a>Ladění modelu ve službě Azure Machine Learning
+# <a name="debug-your-model-in-azure-machine-learning-studio"></a>Ladění modelu ve službě Azure Machine Learning Studio
 
 Tento článek vysvětluje potenciální důvody, proč některý z následujících dvou chyby můžou nastat při spuštění modelu:
 

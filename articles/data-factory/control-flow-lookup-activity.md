@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: e437e7b7d5298af325ae2a5e2ba689b417bad022
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e682b3780c26da9cf2398e93adc32cb107127d9c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002916"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426787"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání ve službě Azure Data Factory
 
@@ -58,7 +58,7 @@ Název | Popis | Typ | Povinné?
 ---- | ----------- | ---- | --------
 Datové sady | Poskytuje odkaz na datovou sadu pro vyhledávání. Získat tak podrobné údaje z **vlastnosti datové sady** části každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
 source | Obsahuje vlastnosti zdroje specifických pro datovou sadu, stejně jako zdroj kopírování. Získat tak podrobné údaje z **vlastnosti aktivity kopírování** části každého článku odpovídající konektor. | Dvojice klíč/hodnota | Ano
-firstRowOnly | Určuje, jestli se mají vrátit pouze první řádek nebo všechny řádky. | Logická hodnota | Ne. Výchozí hodnota je `true`.
+firstRowOnly | Určuje, jestli se mají vrátit pouze první řádek nebo všechny řádky. | Logická hodnota | Ne. Výchozí formát je `true`.
 
 > [!NOTE]
 
@@ -297,6 +297,15 @@ Tuto instanci Azure SQL Database s daty, které se mají zkopírovat do úloži�
     }
 ]
 ```
+
+## <a name="limitations-and-workarounds"></a>Omezení a řešení
+
+Tady jsou některá omezení, aktivita vyhledávání a navrhovaná alternativní řešení.
+
+| Omezení | Alternativní řešení |
+|---|---|
+| Aktivita vyhledávání má maximálně 5 000 řádků a maximální velikosti 2 MB. | Navrhněte dvouúrovňová kanálu, kde vnější kanálu Iteruje přes vnitřní kanál, který načte data, která nepřekračuje maximální počet řádků nebo velikosti. |
+| | |
 
 ## <a name="next-steps"></a>Další postup
 Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 

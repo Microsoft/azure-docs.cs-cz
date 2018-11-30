@@ -10,28 +10,28 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 602ea8028cf89b23df692d5c2fb9b781f64bcad4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7062d98d40c15f4e9e873038fc12fc1b104c996d
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341680"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333475"
 ---
 # <a name="categorizing-images"></a>Kategorizace obrázků
 
-Kromě označování a popisy pro počítačové zpracování obrazu vrací taxonomie podle kategorie definované v předchozích verzích. Tyto kategorie jsou uspořádané jako taxonomie s dědičného hierarchie nadřazený/podřízený. Všechny kategorie jsou v angličtině. Bylo možné samostatně nebo s naší novou označování modely.
+Kromě označování a popisy pro počítačové zpracování obrazu vrací taxonomie podle kategorie definované v předchozích verzích. Tyto kategorie jsou taxonomicky uspořádané jako dědičné hierarchie nadřízených a podřízených prvků. Všechny kategorie jsou v angličtině. Bylo možné samostatně nebo s naší novou označování modely.
 
-## <a name="the-86-category-concept"></a>Koncept 86 kategorie
+## <a name="the-86-category-concept"></a>Systém 86 kategorií
 
-Na základě seznamu konceptů 86 vidět v následujícím diagramu, bitovou kopii lze označit od široké do konkrétní. Úplné taxonomie v textovém formátu, naleznete v tématu [taxonomie kategorií](category-taxonomy.md).
+Na základě seznamu konceptů 86 vidět v následujícím diagramu, bitovou kopii lze označit od široké do konkrétní. Celou taxonomii v textovém formátu najdete v článku o [taxonomických kategoriích](category-taxonomy.md).
 
-![Analýza kategorie](./Images/analyze_categories.png)
+![seskupené seznam všech kategorií taxonomie kategorií](./Images/analyze_categories-v2.png)
 
 ## <a name="image-categorization-examples"></a>Příklady kategorizace obrázků
 
 Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu vrací při zařazení na obrázku podle jeho vizuální funkce.
 
-![Žena stříška](./Images/woman_roof.png)
+![Žena na střeše](./Images/woman_roof.png)
 
 ```json
 {
@@ -54,10 +54,10 @@ Následující tabulka ukazuje typické bitové kopie sady a kategorie vrátil p
 
 | Image | Kategorie |
 |-------|----------|
-| ![Rodinných fotografií](./Images/family_photo.png) | people_group |
-| ![Roztomilá pes](./Images/cute_dog.png) | animal_dog |
-| ![Venkovní Horská oblast](./Images/mountain_vista.png) | outdoor_mountain |
-| ![Pro zpracování obrazu analyzovat Bread potravin](./Images/bread.png) | food_bread |
+| ![Rodinná fotka](./Images/family_photo.png) | people_group |
+| ![Pejsek](./Images/cute_dog.png) | animal_dog |
+| ![Na horách](./Images/mountain_vista.png) | outdoor_mountain |
+| ![Vizuální analýza pečiva](./Images/bread.png) | food_bread |
 
 ## <a name="next-steps"></a>Další postup
 

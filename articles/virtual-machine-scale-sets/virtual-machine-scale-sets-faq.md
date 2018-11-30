@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 7b8faca82a23875b403d0b51b2e8719549d845fb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740683"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447176"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -371,7 +371,7 @@ Pro emulaci předávání v certifikátu jako řetězec ve formátu base64, mů�
 
 Škálovací sady virtuálních počítačů a virtuálních počítačů musí být zabalené certifikáty v objekty JSON. 
 
-Podporují se i typ obsahu application/x-pkcs12. Pokyny k používání application/x-pkcs12 najdete v tématu [certifikáty PFX ve službě Azure Key Vault](http://www.rahulpnath.com/blog/pfx-certificate-in-azure-key-vault/).
+Podporují se i typ obsahu application/x-pkcs12. 
  
 Aktuálně nepodporujeme soubory .cer. Pokud chcete použít soubory .cer, je exportujte do kontejnerů .pfx.
 

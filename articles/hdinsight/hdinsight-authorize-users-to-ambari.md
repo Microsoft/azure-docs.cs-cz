@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 4e05d4ff9c090fac0242921e15ef16439d3ed27f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d2e7077e1196ab862d9f610f242fe30dde18ded4
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954445"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496884"
 ---
-# <a name="authorize-users-for-ambari-views"></a>Autorizace uživatelů pro zobrazení Ambari
+# <a name="authorize-users-for-apache-ambari-views"></a>Autorizace uživatelů pro zobrazení Apache Ambari
 
-[Enterprise Security Package (ESP) povolena clustery HDInsight](./domain-joined/apache-domain-joined-introduction.md) poskytuje funkce na podnikové úrovni, včetně ověřování pomocí Azure Active Directory. Je možné [synchronizovat noví uživatelé](hdinsight-sync-aad-users-to-cluster.md) přidán do skupiny Azure AD, které byly zadány přístup ke clusteru, tyto konkrétní uživatelé můžou k provedení určité akce. Práce s uživatele, skupiny a oprávnění v Ambari je podporován pro clustery HDInsight ESP i standardní clustery HDInsight.
+[Enterprise Security Package (ESP) povolena clustery HDInsight](./domain-joined/apache-domain-joined-introduction.md) poskytuje funkce na podnikové úrovni, včetně ověřování pomocí Azure Active Directory. Je možné [synchronizovat noví uživatelé](hdinsight-sync-aad-users-to-cluster.md) přidán do skupiny Azure AD, které byly zadány přístup ke clusteru, tyto konkrétní uživatelé můžou k provedení určité akce. Práce s uživatele, skupiny a oprávnění v [Apache Ambari](https://ambari.apache.org/) se podporuje pro clustery HDInsight ESP i clusterů HDInsight standard.
 
-Uživatelé služby Active Directory může přihlásit k uzlům clusteru pomocí svých přihlašovacích údajů domény. Přihlašovacích údajů domény může také používat k ověření clusteru interakce s dalších schválených koncových bodech, jako jsou Hue, zobrazení Ambari, rozhraní ODBC, JDBC, PowerShell a rozhraní REST API.
+Uživatelé služby Active Directory může přihlásit k uzlům clusteru pomocí svých přihlašovacích údajů domény. Přihlašovacích údajů domény může také používat k ověření clusteru interakce s dalších schválených koncových bodech, jako je [Hue](http://gethue.com/), zobrazení Ambari, rozhraní ODBC, JDBC, PowerShell a rozhraní REST API.
 
 > [!WARNING]
 > Neměňte heslo Ambari sledovacích (hdinsightwatchdog) ve vašem clusteru HDInsight se systémem Linux. Změna hesla dělí schopnost pomocí skriptových akcí nebo provádění operací škálování s vaším clusterem.
@@ -29,13 +29,13 @@ Pokud jste tak již neučinili, postupujte podle [tyto pokyny](./domain-joined/a
 
 ## <a name="access-the-ambari-management-page"></a>Přístup ke stránce správy Ambari
 
-Abyste se dostali **Ambari stránku pro správu** na [webovému uživatelskému rozhraní Ambari](hdinsight-hadoop-manage-ambari.md), přejděte do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Zadejte uživatelské jméno správce clusteru a heslo, které jste definovali při vytváření clusteru. V dalším kroku vyberte na řídicím panelu Ambari **spravovat Ambari** pod **správce** nabídky:
+Zobrazíte **stránku Správa Ambari** na [webové uživatelské rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md), přejděte do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Zadejte uživatelské jméno správce clusteru a heslo, které jste definovali při vytváření clusteru. V dalším kroku vyberte na řídicím panelu Ambari **spravovat Ambari** pod **správce** nabídky:
 
 ![Správa Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
-## <a name="grant-permissions-to-hive-views"></a>Udělení oprávnění k zobrazení Hive
+## <a name="grant-permissions-to-apache-hive-views"></a>Udělení oprávnění k zobrazení Apache Hive
 
-Ambari obsahuje zobrazení instance pro Hive a Tez, mimo jiné. Pokud chcete udělit přístup k jedné nebo více instancí zobrazení Hive, přejděte **stránku Správa Ambari**.
+Ambari obsahuje zobrazení instance pro [Apache Hive](https://hive.apache.org/) a [Apache TEZ](https://tez.apache.org/), mimo jiné. Pokud chcete udělit přístup k jedné nebo více instancí zobrazení Hive, přejděte **stránku Správa Ambari**.
 
 1. Ze stránky správy vyberte **zobrazení** odkaz pod **zobrazení** záhlaví nabídky na levé straně.
 
@@ -72,9 +72,9 @@ Ambari obsahuje zobrazení instance pro Hive a Tez, mimo jiné. Pokud chcete ud�
 
 Přidání uživatele přímo k zobrazení je užitečné, pokud chcete přiřadit oprávnění uživateli pomocí tohoto zobrazení, ale nechcete, aby mohly být členem skupiny, které obsahuje další oprávnění. Pro snížení správní režie, může být jednodušší přiřazení oprávnění skupinám.
 
-## <a name="grant-permissions-to-tez-views"></a>Udělení oprávnění k zobrazení Tez
+## <a name="grant-permissions-to-apache-tez-views"></a>Udělení oprávnění k zobrazení Apache TEZ
 
-Zobrazit instance Tez umožňují monitorovat a ladit všechny úlohy Tez Odeslané dotazy Hive a skriptů Pig. Existuje jedna výchozí instance zobrazení Tez, který je vytvořen při zřizování clusteru.
+[Apache TEZ](https://tez.apache.org/) zobrazit instance povolit uživatelům monitorovat a ladit všechny úlohy Tez odeslal [Apache Hive](https://hive.apache.org/) dotazy a [Apache Pig](https://pig.apache.org/) skripty. Existuje jedna výchozí instance zobrazení Tez, který je vytvořen při zřizování clusteru.
 
 Přiřazení uživatelů a skupin na instanci zobrazení Tez, rozbalte **TEZ** řádek na stránce zobrazení, jak je popsáno výše.
 
@@ -136,7 +136,7 @@ Jsme naše uživatele domény Azure AD "hiveuser2" přiřadili *uživatele clust
 
 ## <a name="next-steps"></a>Další postup
 
-* [Konfigurace zásad Hivu ve HDInsight s ESP](./domain-joined/apache-domain-joined-run-hive.md)
+* [Nakonfigurovat zásady Apache Hive v HDInsight s ESP](./domain-joined/apache-domain-joined-run-hive.md)
 * [Správa clusterů HDInsight ESP](./domain-joined/apache-domain-joined-manage.md)
-* [Použití zobrazení Hivu s Hadoopem v HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
+* [Použití zobrazení Hivu Apache s Apache Hadoop v HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Synchronizace uživatelů Azure AD do clusteru](hdinsight-sync-aad-users-to-cluster.md)

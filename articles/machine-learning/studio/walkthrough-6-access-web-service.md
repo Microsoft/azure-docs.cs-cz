@@ -1,6 +1,6 @@
 ---
-title: 'Krok 6: Přístup ke službě Machine Learning Web | Dokumentace Microsoftu'
-description: 'Krok 6 vývoj prediktivního řešení návod: přístup k aktivní službě Azure Machine Learning Web.'
+title: 'Krok 6: Přístup k webové změna Machine Learning Studio | Dokumentace Microsoftu'
+description: 'Krok 6 vývoj prediktivního řešení návod: přístup k active webové službě Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: b71f98c9ba4e21f2a33b62977ec54f6230443e1b
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5402f228a650a1a3d3282180a52f9e9f9cc10a3a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264144"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306450"
 ---
-# <a name="walkthrough-step-6-access-the-azure-machine-learning-web-service"></a>Krok 6 průvodce: Přístup k webové službě Azure Machine Learning
+# <a name="walkthrough-step-6-access-the-azure-machine-learning-studio-web-service"></a>Krok 6 Průvodce: Přístup k webové službě Azure Machine Learning Studio
 
 Toto je poslední krok tohoto průvodce, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 

@@ -2,25 +2,21 @@
 title: Návody pro provádění vědecké zpracování týmových dat v Azure | Dokumentace Microsoftu
 description: Jak kombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: aa63d5a5-25ee-4c4b-9a4c-7553b98d7f6e
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: deguhath
-ms.openlocfilehash: 86024316344ccbce87f48adbc0598c94e61c5e6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 28586d960bab75704a0aae6e39517ae83a74d60e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253563"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495890"
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Názorné postupy vědeckého zpracování týmových dat provádění
 
@@ -32,7 +28,6 @@ Tyto **začátku do konce návody** předvádíme kroky v vědecké zpracování
 Zde je stručný popis těchto příkladech návod poskytuje na příslušné platformy:
 
 
-- [Azure Machine Learning Workbench](walkthroughs-aml-with-tdsp.md) tyto návod kurzy a ukázky ukazují, jak vytvářet projekty strukturované týmu datové vědy s Azure Machine Learning Workbench pro zpracování přirozeného jazyka a klasifikace.
 - [Návody pro HDInsight Spark pomocí Pysparkem a Scalou](walkthroughs-spark.md) těchto kurzů použijte Pysparkem a Scalou v clusteru Spark v Azure pro prediktivní analýzy.
 - [Návody pro HDInsight Hadoop Hive pomocí](walkthroughs-hdinsight-hadoop.md) těchto kurzů použijte Hive s clusterem HDInsight Hadoop pro prediktivní analýzy.
 - [Návody pro Azure Data Lake U-SQL pomocí](walkthroughs-azure-data-lake.md) těchto kurzů použijte U-SQL s Azure Data Lake pro prediktivní analýzy.

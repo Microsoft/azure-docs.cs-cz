@@ -1,6 +1,6 @@
 ---
-title: 'Řešení potíží: Vytvoření a připojení k pracovnímu prostoru Machine Learning | Dokumentace Microsoftu'
-description: Řešení běžných problémů při vytváření a připojení k pracovnímu prostoru Azure Machine Learning
+title: 'Řešení potíží: Vytvořit, připojit k pracovnímu prostoru Machine Learning Studio – Azure | Dokumentace Microsoftu'
+description: Tato příručka poskytuje řešení pro některé často problémy při nastavení pracovních prostorů Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: f86018c78de842717bf387c007fdd4c7cd048ef1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5e52abeeef7d40ac5594f4edfa2b80ef553081e4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265198"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312045"
 ---
-# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>Průvodce odstraňováním potíží: Vytvoření pracovního prostoru Machine Learning a připojení k němu
-Tato příručka poskytuje řešení pro některé často zjistil problémy při nastavení pracovních prostorů Azure Machine Learning.
+# <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-studio-workspace"></a>Průvodce odstraňováním potíží: vytvoření a připojení k pracovnímu prostoru Machine Learning Studio
+Tato příručka poskytuje řešení pro některé často problémy při nastavení pracovních prostorů Azure Machine Learning Studio.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

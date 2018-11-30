@@ -1,12 +1,24 @@
-
-Předchozí příklad ukázal standardní přihlášení, která vyžaduje, aby klient kontaktovat poskytovatele identit a back-end služby Azure při každém spuštění aplikace. Tato metoda je neefektivní a může mít problémy související s využití, pokud mnoho zákazníků, pokuste se spustit aplikaci současně. Lepší přístup je ukládat do mezipaměti autorizační token vrácený služby Azure a pokuste se použít tento první před použitím u založenou na poskytovateli přihlášení.
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: crdun
+ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440059"
+---
+Předchozí příklad ukázal standardní přihlášení, které vyžaduje klient kontaktovat zprostředkovatele identity a back-end služeb Azure při každém spuštění aplikace. Tato metoda je neefektivní a může mít související s problémy, pokud mnoho zákazníků, pokuste se spustit aplikaci současně. Lepším řešením je ukládat do mezipaměti autorizační token vrácený služby Azure a zkuste použít první před použitím u založené na zprostředkovatele přihlášení.
 
 > [!NOTE]
-> Můžete mezipaměti token vystavený back-end služby Azure bez ohledu na to, jestli používáte ověřování klienta spravovat nebo spravované služby. Tento kurz používá službu spravovat ověřování.
+> Můžete ukládat do mezipaměti u tokenu vydaného službou back-end služby Azure bez ohledu na to, jestli používáte ověřování klienta spravovat nebo spravované služby. Tento kurz používá spravovaný službou ověřování.
 >
 >
 
-1. Otevřete soubor ToDoActivity.java a přidejte následující příkazy pro import:
+1. Otevřete souboru ToDoActivity.java a přidejte následující příkazy pro import:
 
     ```java
     import android.content.Context;
@@ -14,7 +26,7 @@ Předchozí příklad ukázal standardní přihlášení, která vyžaduje, aby 
     import android.content.SharedPreferences.Editor;
     ```
 
-2. Přidejte následující členy `ToDoActivity` třídy.
+2. Přidat následující členy do `ToDoActivity` třídy.
 
     ```java
     public static final String SHAREDPREFFILE = "temp";
@@ -22,7 +34,7 @@ Předchozí příklad ukázal standardní přihlášení, která vyžaduje, aby 
     public static final String TOKENPREF = "tkn";
     ```
 
-3. V souboru ToDoActivity.java, přidejte následující definice pro `cacheUserToken` metoda.
+3. V souboru ToDoActivity.java přidejte následující definice `cacheUserToken` metody.
 
     ```java
     private void cacheUserToken(MobileServiceUser user)
@@ -35,14 +47,14 @@ Předchozí příklad ukázal standardní přihlášení, která vyžaduje, aby 
     }
     ```
 
-    Tato metoda ukládá ID uživatele a token v souboru předvoleb, která je označena privátní. To by měla chránit přístup k mezipaměti, aby další aplikace v zařízení nebudete mít přístup k tokenu. Předvolba je v izolovaném prostoru pro aplikace. Ale pokud někdo získá přístup k zařízení, je možné, že získají přístup k tokenu mezipaměti jinými způsoby.
+    Tato metoda ukládá ID uživatele a token v souboru předvoleb, který je označen jako privátní. To by měla chránit přístup k mezipaměti tak, aby ostatní aplikace na zařízení nebudou mít přístup k tokenu. Předvolba je pro aplikace v izolovaném prostoru. Pokud někdo získá přístup k zařízení, je však možné, že může získat přístup k mezipaměti tokenů jinými způsoby.
 
    > [!NOTE]
-   > Token s šifrování, jde dál chránit, pokud token přístup k datům se považuje za vysoce citlivé a někdo může získat přístup k zařízení. Zcela bezpečné řešení je nad rámec tohoto kurzu, ale a závisí na požadavky na zabezpečení.
+   > Token se šifrováním, jde dál chránit, pokud token přístupu k datům se považuje za vysoce citlivá a někdo může získat přístup k zařízení. Zcela zabezpečené řešení je nad rámec tohoto návodu, ale a závisí na vaše požadavky na zabezpečení.
    >
    >
 
-4. V souboru ToDoActivity.java, přidejte následující definice pro `loadUserTokenCache` metoda.
+4. V souboru ToDoActivity.java přidejte následující definice `loadUserTokenCache` metody.
 
     ```java
     private boolean loadUserTokenCache(MobileServiceClient client)
@@ -63,7 +75,7 @@ Předchozí příklad ukázal standardní přihlášení, která vyžaduje, aby 
     }
     ```
 
-5. V *ToDoActivity.java* souboru, nahraďte `authenticate` a `onActivityResult` metody následující těmi, které používá mezipamětí tokenů. Zprostředkovatel přihlášení změňte, pokud chcete použít účet, než Google.
+5. V *ToDoActivity.java* souboru, nahradí `authenticate` a `onActivityResult` metody s následující dotazy, které používá mezipaměť tokenu. Změňte na zprostředkovatele přihlášení, pokud chcete použít jiný než Google.
 
     ```java
     private void authenticate() {
@@ -102,4 +114,4 @@ Předchozí příklad ukázal standardní přihlášení, která vyžaduje, aby 
     }
     ```
 
-6. Sestavení aplikace a testovací ověření pomocí platného účtu. Spusťte alespoň dvakrát. Při prvním spuštění mělo by se zobrazit výzva k přihlášení a vytvoření mezipamětí tokenů. Potom každé spuštění pokusí načíst mezipamětí tokenů pro ověřování. Nesmí se budete muset přihlásit.
+6. Vytvářejte aplikace a testování ověřování pomocí platného účtu. Spusťte alespoň dvakrát. Při prvním spuštění mělo by se zobrazit výzva k přihlášení a vytvoření mezipamětí tokenů. Potom každé spuštění pokusí načíst mezipaměť tokenu pro ověření. By neměl muset přihlásit.

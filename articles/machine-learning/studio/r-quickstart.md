@@ -1,5 +1,5 @@
 ---
-title: Rychlý úvodní kurz pro jazyk R pro Machine Learning | Dokumentace Microsoftu
+title: Rychlý úvodní kurz pro jazyk R pro Machine Learning Studio – Azure | Dokumentace Microsoftu
 description: V tomto kurzu programovacího jazyka R můžete začít rychle používat jazyk R s Azure Machine Learning Studio k vytvoření řešení Prognózování.
 keywords: Rychlý start, jazyk r, programovací jazyk r, kurz programovacího jazyka r
 services: machine-learning
@@ -17,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 028672a9bb0fb1aa256083a0422cc1c565977250
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: eea61419e76f4363a286f796e6df28a4e90a9ed7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265317"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317666"
 ---
-# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Stručný úvodní kurz k programovacímu jazyku R pro službu Azure Machine Learning
+# <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Rychlý úvodní kurz pro programovací jazyk pro Azure Machine Learning Studio R
 
 <!-- Stephen F Elston, Ph.D. -->
 

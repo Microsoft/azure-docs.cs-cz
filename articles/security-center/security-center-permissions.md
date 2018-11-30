@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 42220a94eb0d0259b8b410e7343ffbfe09e8bfa5
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e853ea6d05585fa764ad6e019a3a4390ed840263
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007854"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313431"
 ---
 # <a name="permissions-in-azure-security-center"></a>Oprávnění ve službě Azure Security Center
 
@@ -59,7 +59,7 @@ Následující tabulka zobrazuje role a povolené akce ve službě Security Cent
 ## <a name="next-steps"></a>Další postup
 Tento článek je vysvětleno, jak Security Center používá RBAC pro přiřazení oprávnění pro uživatele a identifikovat povolené akce pro každou roli. Teď, když jste obeznámeni s přiřazení rolí, které jsou potřeba k monitorování stavu zabezpečení vašeho předplatného, upravit zásady zabezpečení a doporučení uplatnit, zjistěte, jak:
 
-- [Nastavení zásad zabezpečení ve službě Security Center](security-center-policies.md)
+- [Nastavení zásad zabezpečení ve službě Security Center](security-center-azure-policy.md)
 - [Správa doporučení zabezpečení v Security Center](security-center-recommendations.md)
 - [Monitorování stavu zabezpečení vašich prostředků Azure](security-center-monitoring.md)
 - [Správa a reakce na výstrahy zabezpečení ve službě Security Center](security-center-managing-and-responding-alerts.md)

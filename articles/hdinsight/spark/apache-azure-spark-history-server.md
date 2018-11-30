@@ -9,22 +9,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4627593e4ab96c63423a7afd6152f3a004bc6c3f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 349298ba30de5540d5c86c81f483a1bd344dba9c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042359"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497277"
 ---
-# <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Použít rozšířený Server historie Sparku k ladění a Diagnostika aplikací Spark
+# <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Použít rozšířený Server historie Sparku Apache pro ladění a Diagnostika aplikací Apache Spark
 
-Tento článek poskytuje pokyny, jak používat rozšířené Server historie Sparku k ladění a Diagnostika aplikací Spark dokončení a spuštěná. Rozšíření obsahuje na kartu data a grafu kartu a karta Diagnostika. Na **Data** kartě uživatele můžete zkontrolovat vstupní a výstupní data úlohy Spark. Na **grafu** kartě uživatele můžete zkontrolovat tok dat a přehrát graf úlohy. Na **diagnostiku** kartu, uživatel může odkazovat na **Nerovnoměrná distribuce dat**, **časového posunu** a **prováděcí modul analýzy využití**.
+Tento článek poskytuje pokyny, jak používat rozšířené Server historie Apache Spark pro ladění a Diagnostika aplikací Spark dokončení a spuštěná. Rozšíření obsahuje na kartu data a grafu kartu a karta Diagnostika. Na **Data** kartě uživatele můžete zkontrolovat vstupní a výstupní data úlohy Spark. Na **grafu** kartě uživatele můžete zkontrolovat tok dat a přehrát graf úlohy. Na **diagnostiku** kartu, uživatel může odkazovat na **Nerovnoměrná distribuce dat**, **časového posunu** a **prováděcí modul analýzy využití**.
 
-## <a name="get-access-to-spark-history-server"></a>Získejte přístup k Server historie Sparku
+## <a name="get-access-to-apache-spark-history-server"></a>Získejte přístup k serveru Apache Spark historie
 
-Server historie Sparku je ve webovém uživatelském rozhraní pro dokončené a spuštěné aplikace Spark. 
+Server historie Apache Spark je ve webovém uživatelském rozhraní pro dokončené a spuštěné aplikace Spark. 
 
-### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>Otevřete rozhraní Web Server historie Sparku z webu Azure portal
+### <a name="open-the-apache-spark-history-server-web-ui-from-azure-portal"></a>Z webu Azure portal otevřete Apache Server historie Sparku webového uživatelského rozhraní
 
 1. Z [webu Azure portal](https://portal.azure.com/), otevřete Spark cluster. Další informace najdete v tématu [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 2. Z **rychlé odkazy**, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **Server historie Sparku**. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru Spark. 
@@ -87,7 +87,7 @@ Vyberte ID úlohy klikněte **Data** získat zobrazení dat v nabídce Nástroje
     ![zpětnou vazbu grafu](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="graph-tab-in-spark-history-server"></a>Graf kartu Server historie Sparku
+## <a name="graph-tab-in-apache-spark-history-server"></a>Karta grafu v Apache Server historie Sparku
 Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce Nástroje.
 
 + Graf úlohy generované a zkontrolujte přehled vaší úlohy. 
@@ -158,7 +158,7 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
     ![zpětnou vazbu grafu](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="diagnosis-tab-in-spark-history-server"></a>Karta Diagnostika v Server historie Sparku
+## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Karta Diagnostika v Apache Server historie Sparku
 Vyberte ID úlohy klikněte **diagnostiku** v nabídce Nástroje k dosažení zobrazení diagnostiky. Karta Diagnostika obsahuje **Nerovnoměrná distribuce dat**, **časového posunu**, a **prováděcí modul analýzy využití**.
     
 + Zkontrolujte **Nerovnoměrná distribuce dat**, **časového posunu**, a **prováděcí modul analýzy využití** výběrem karty v uvedeném pořadí.
@@ -326,8 +326,8 @@ Pokud chcete provést upgrade pomocí opravy hotfix, použijte níže uvedený s
 
 ## <a name="next-steps"></a>Další postup
 
-* [Správa prostředků v clusteru Spark v HDInsight](apache-spark-resource-manager.md)
-* [Konfigurace nastavení Sparku](apache-spark-settings.md)
+* [Správa prostředků v clusteru Apache Spark v HDInsight](apache-spark-resource-manager.md)
+* [Konfigurace nastavení Apache Sparku](apache-spark-settings.md)
 
 
 ## <a name="contact-us"></a>Kontaktujte nás

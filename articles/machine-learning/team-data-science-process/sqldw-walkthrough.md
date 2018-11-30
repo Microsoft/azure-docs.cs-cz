@@ -2,30 +2,26 @@
 title: 'Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse | Dokumentace Microsoftu'
 description: Proces pokročilých analýz a technologie v akci
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 88ba8e28-0bd7-49fe-8320-5dfa83b65724
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: deguhath
-ms.openlocfilehash: 192af40df3a8bc0545c9c3a86792e7eb8cb31de9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 87c3b0b597a401041b8bf1b6f3997431d8816e92
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586100"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445700"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse
 V tomto kurzu jsme vás provede procesem vytvoření a nasazení modelu strojového učení pomocí SQL Data Warehouse (SQL data Warehouse) veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Binární klasifikační model vytvořený předpovídá, zda tip platí pro cesty a které předpovědět distribuce pro tip částky zaplacené jsou popsány také pro víc tříd klasifikačních a regresních modelů.
 
-Následující postup [vědecké zpracování týmových dat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) pracovního postupu. Vám ukážeme, jak nastavit prostředí pro datové vědy jak načíst data do SQL data Warehouse a použití SQL data Warehouse nebo IPython Notebook pro zkoumání dat a inženýr funkce do modelu. Potom ukážeme, jak sestavit a nasadit model s využitím Azure Machine Learning.
+Následující postup [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) pracovního postupu. Vám ukážeme, jak nastavit prostředí pro datové vědy jak načíst data do SQL data Warehouse a použití SQL data Warehouse nebo IPython Notebook pro zkoumání dat a inženýr funkce do modelu. Potom ukážeme, jak sestavit a nasadit model s využitím Azure Machine Learning.
 
 ## <a name="dataset"></a>Cesty taxíkem NYC datové sady
 Data o jízdách taxislužby NYC se skládá z přibližně 20GB komprimované soubory CSV (nekomprimovaný ~ 48GB), záznam 173 milionů jednotlivé trips a tarify placené pro každou cestu. Každý záznam o jízdách zahrnuje sbírat míčky a dropoff umístění a čas, anonymizované hack (ovladač) číslo licence a číslo Medailon (jedinečné id taxislužby.). Data v roce 2013 zahrnuje všechny cesty a je dostupné pro každý měsíc následující dvě datové sady:

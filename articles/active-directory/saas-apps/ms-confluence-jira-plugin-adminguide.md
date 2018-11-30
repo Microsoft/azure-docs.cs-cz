@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 49516523abdd927c3ae60235fcd74473689c6856
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 65649c3fdc11d74b5888b26b81ae85e10f2788bd
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019732"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426872"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Od společnosti Atlassian Jira a Confluence příručky pro správce Azure Active Directory
 
@@ -67,9 +67,23 @@ Než nainstalujete modul plug-in, mějte na paměti následující informace:
 
 Modul plug-in podporuje následující verze systému Jira a Confluence:
 
-* Základní Jira a Software: 6.0 k 7,8
-* Oddělení služeb Jira: 3.0 na 3.2
+* Základní Jira a Software: 6.0 k 7.12
+* Oddělení služeb Jira: 3.0.0 k 3.5.0
+* JIRA podporuje také 5.2. Další podrobnosti získáte kliknutím [Microsoft Azure Active Directory jednotného přihlašování pro JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
 * Confluence: 5.0 k 5.10
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
 ## <a name="installation"></a>Instalace
 
@@ -79,7 +93,7 @@ Pokud chcete nainstalovat modul plug-in, postupujte takto:
 
 2. Přejděte do konzoly pro správu systému Jira/Confluence a vyberte **doplňky**.
 
-3. Vyhledejte Atlassian Marketplace, **modulu plug-in Microsoft SAML SSO**.
+3. Stáhnout z webu Microsoft Download Center [modulu plug-in Microsoft SAML jednotného přihlašování pro Jira](https://www.microsoft.com/download/details.aspx?id=56506)/ [modulu plug-in Microsoft SAML jednotného přihlašování pro Confluence](https://www.microsoft.com/download/details.aspx?id=56503).
 
    Příslušnou verzi modulu plug-in se zobrazí ve výsledcích hledání.
 
@@ -171,9 +185,23 @@ Ne. Modul plug-in podporuje jenom místní verze systému Jira a Confluence.
 
 Modul plug-in podporuje tyto verze:
 
-* Základní Jira a Software: 6.0 k 7,8
-* Oddělení služeb Jira: 3.0 na 3.2
+* Základní Jira a Software: 6.0 k 7.12
+* Oddělení služeb Jira: 3.0.0 k 3.5.0
+* JIRA podporuje také 5.2. Další podrobnosti získáte kliknutím [Microsoft Azure Active Directory jednotného přihlašování pro JIRA 5.2](https://docs.microsoft.com/azure/active-directory/saas-apps/jira52microsoft-tutorial)
 * Confluence: 5.0 k 5.10
+* Confluence: 6.0.1
+* Confluence: 6.1.1
+* Confluence: 6.2.1
+* Confluence: 6.3.4
+* Confluence: 6.4.0
+* Confluence: 6.5.0
+* Confluence: 6.6.2
+* Confluence: 6.7.0
+* Confluence: 6.8.1
+* Confluence: 6.9.0
+* Confluence: 6.10.0
+* Confluence: 6.11.0
+* Confluence: 6.12.0
 
 ### <a name="is-the-plug-in-free-or-paid"></a>Je modul plug-in bezplatné nebo placené?
 

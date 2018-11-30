@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 5b39094ef081aadc813849399ebebc0c2e8a666d
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 087dcfd10b191dcd80ec4a70be8eb2e373e1d56b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291287"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427535"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Postup použití Twilia pro hlasové hovory a SMS z Azure
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh pomocí služby Twilio API v Azure. Pokryté scénáře zahrnují vytváření telefonních hovorů a posílání zpráv služby krátké zprávy (SMS). Další informace o Twilio a používání hlasové hovory a SMS ve svých aplikacích najdete v tématu [další kroky](#NextSteps) oddílu.
@@ -29,8 +29,10 @@ Twilio je provozování budoucí komunikaci business, umožňuje vývojářům v
 
 **Twilio pro hlasové hovory** umožňuje vašim aplikacím, ujistěte se, a přijímat telefonní hovory. **Twilio SMS** umožňuje aplikacím odesílat a přijímat zprávy SMS. **Twilio klienta** umožňuje provádět volání VoIP z libovolného telefonu, tabletu nebo prohlížeče a podporuje WebRTC.
 
-## <a id="Pricing"></a>Ceny Twilio
-Twilio je služba s průběžnými platbami. Neexistují žádné poplatky za nastavení a můžete kdykoli zavřít svůj účet. Můžete najít další podrobnosti najdete v [ceny Twilio](http://www.twilio.com/voice/pricing).
+## <a id="Pricing"></a>Ceny Twilio a speciální nabídky
+Zákazníkům Azure poskytujeme [speciální nabídka](https://www.twilio.com/azure): praktického 10 USD kreditu Twilio při upgradu vašeho účtu Twilio. Tento kredit Twilio můžete použít pro jakékoli využití Twilio (10 USD kreditu ekvivalentní k odesílání až 1 000 zpráv SMS nebo přijímání až 1 000 příchozí hlasové minut v závislosti na umístění cílové vaše telefonní číslo a zpráva nebo volání). Uplatnění tento kredit Twilio a začněte s [ahoy.twilio.com/azure](https://ahoy.twilio.com/azure).
+
+Twilio je služba s průběžnými platbami. Neexistují žádné poplatky za nastavení a můžete kdykoli zavřít svůj účet. Můžete najít další podrobnosti najdete v [ceny Twilio](https://www.twilio.com/voice/pricing).
 
 ## <a id="Concepts"></a>Koncepty
 Rozhraní API Twilia je rozhraní RESTful API, která poskytuje hlasové hovory a SMS funkce pro aplikace. Klientské knihovny jsou k dispozici v několika jazycích; seznam najdete v tématu [knihovny rozhraní API Twilia][twilio_libraries].
@@ -40,7 +42,7 @@ Klíčové aspekty Twilio API jsou příkazy Twilio a Twilio Markup Language (Tw
 ### <a id="Verbs"></a>Příkazy Twilio
 Rozhraní API využívá Twilio příkazů například **&lt;Say&gt;** příkaz nastaví Twilio zvukově doručení zprávy na volání.
 
-Následuje seznam příkazů Twilio.  Další informace o ostatních příkazů a funkce prostřednictvím [dokumentaci Twilio Markup Language](http://www.twilio.com/docs/api/twiml).
+Následuje seznam příkazů Twilio.  Další informace o ostatních příkazů a funkce prostřednictvím [dokumentaci Twilio Markup Language](https://www.twilio.com/docs/api/twiml).
 
 * `<Dial>`: Volající se připojí k jiný telefon.
 * `<Gather>`: Shromažďuje číslice zadané na klávesnici telefonu.
@@ -96,9 +98,9 @@ Twilio nabízí pět knihovny pro vývojáře na platformě .NET:
 
 Ukázky popsané v této příručce použít knihovnu Twilio.API.
 
-Může být knihoven [nainstalovat pomocí rozšíření Správce balíčků NuGet](http://www.twilio.com/docs/csharp/install) k dispozici pro sadu Visual Studio 2010 až 2015.  Zdrojový kód je hostován aplikací [Githubu][twilio_github_repo], což zahrnuje Wiki, která obsahuje kompletní dokumentace pro používání knihovny.
+Může být knihoven [nainstalovat pomocí rozšíření Správce balíčků NuGet](https://www.twilio.com/docs/csharp/install) k dispozici pro sadu Visual Studio 2010 až 2015.  Zdrojový kód je hostován aplikací [Githubu][twilio_github_repo], což zahrnuje Wiki, která obsahuje kompletní dokumentace pro používání knihovny.
 
-Ve výchozím nastavení nainstaluje Microsoft Visual Studio 2010 verze 1.2 NuGet. Instalace knihoven Twilio vyžaduje verzi 1.6 NuGet nebo vyšší. Informace o instalaci nebo aktualizaci NuGet naleznete v tématu [ http://nuget.org/ ] [ nuget].
+Ve výchozím nastavení nainstaluje Microsoft Visual Studio 2010 verze 1.2 NuGet. Instalace knihoven Twilio vyžaduje verzi 1.6 NuGet nebo vyšší. Informace o instalaci nebo aktualizaci NuGet naleznete v tématu [ https://nuget.org/ ] [ nuget].
 
 > [!NOTE]
 > K instalaci nejnovější verze Nugetu, musíte nejprve odinstalovat načtená verze pomocí Správce rozšíření sady Visual Studio. Uděláte to tak, musíte spustit aplikaci Visual Studio jako správce. V opačném případě je zakázáno na tlačítko odinstalovat.
@@ -126,7 +128,7 @@ const string authToken = "your_twilio_authentication_token";
 TwilioClient.Init(accountSID, authToken);
 
 // Use the Twilio-provided site for the TwiML response.
-var url = "http://twimlets.com/message";
+var url = "https://twimlets.com/message";
 url = $"{url}?Message%5B0%5D=Hello%20World";
 
 // Set the call From, To, and URL values to use for the call.
@@ -139,7 +141,7 @@ var call = CallResource.Create(
     }
 ```
 
-Další informace o parametrech předaná **CallResource.Create** metodu, najdete v článku [ http://www.twilio.com/docs/api/rest/making-calls ] [ twilio_rest_making_calls].
+Další informace o parametrech předaná **CallResource.Create** metodu, najdete v článku [ https://www.twilio.com/docs/api/rest/making-calls ] [ twilio_rest_making_calls].
 
 Jak už bylo zmíněno, tento kód používá poskytované Twilio webu vrátit TwiML odpovědi. Místo toho můžete použít svůj vlastní web k poskytování TwiML odpovědi. Další informace najdete v tématu [jak: Zadejte TwiML odpovědi z vlastní web](#howto_provide_twiml_responses).
 
@@ -171,10 +173,10 @@ catch (TwilioException ex)
 ```
 
 ## <a id="howto_provide_twiml_responses"></a>Postupy: poskytování TwiML odezvy z vlastního webu
-Pokud aplikace zahájí volání rozhraní API Twilia – například prostřednictvím **CallResource.Create** metoda - Twilio odešle požadavek na adresu URL, která se má vrátit odpověď TwiML. V příkladu v [postupy: volání odchozí](#howto_make_call) používá adresu URL poskytnutou Twilio [ http://twimlets.com/message ] [ twimlet_message_url] vrátit odpověď.
+Pokud aplikace zahájí volání rozhraní API Twilia – například prostřednictvím **CallResource.Create** metoda - Twilio odešle požadavek na adresu URL, která se má vrátit odpověď TwiML. V příkladu v [postupy: volání odchozí](#howto_make_call) používá adresu URL poskytnutou Twilio [ https://twimlets.com/message ] [ twimlet_message_url] vrátit odpověď.
 
 > [!NOTE]
-> TwiML je určen k použití webových služeb, ale když zobrazíte TwiML v prohlížeči. Klikněte například na [ http://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná `<Response>` element; další příklad, klikněte na tlačítko [ http://twimlets.com/message?Message%5B0%5D=Hello%20World ](http://twimlets.com/message?Message%5B0%5D=Hello%20World) zobrazíte `<Response>` element, který obsahuje &lt;Say&gt; elementu.
+> TwiML je určen k použití webových služeb, ale když zobrazíte TwiML v prohlížeči. Klikněte například na [ https://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná `<Response>` element; další příklad, klikněte na tlačítko [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ](https://twimlets.com/message?Message%5B0%5D=Hello%20World) zobrazíte `<Response>` element, který obsahuje &lt;Say&gt; elementu.
 >
 
 Aniž byste museli spoléhat na URL poskytnutou Twilio, můžete vytvořit vlastní adresu URL webu, který vrací odpovědi protokolu HTTP. Můžete vytvořit web v jakémkoli jazyce, který vrací odpovědi protokolu HTTP. Toto téma předpokládá, že budete hostovat adresu URL z ASP.NET obecné obslužné rutiny.
@@ -271,17 +273,17 @@ Další informace o používání Twilio v Azure s využitím technologie ASP.NE
 
 [howto_phonecall_dotnet]: partner-twilio-cloud-services-dotnet-phone-call-web-role.md
 
-[twimlet_message_url]: http://twimlets.com/message
+[twimlet_message_url]: https://twimlets.com/message
 
-[twilio_rest_making_calls]: http://www.twilio.com/docs/api/rest/making-calls
+[twilio_rest_making_calls]: https://www.twilio.com/docs/api/rest/making-calls
 
-[vs_project]:http://msdn.microsoft.com/library/windowsazure/ee405487.aspx
-[nuget]:http://nuget.org/
+[vs_project]:https://msdn.microsoft.com/library/windowsazure/ee405487.aspx
+[nuget]:https://nuget.org/
 [twilio_github_repo]:https://github.com/twilio/twilio-csharp
 
 [twilio_libraries]: https://www.twilio.com/docs/libraries
-[twiml]: http://www.twilio.com/docs/api/twiml
-[twilio_api]: http://www.twilio.com/api
+[twiml]: https://www.twilio.com/docs/api/twiml
+[twilio_api]: https://www.twilio.com/api
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_account]:  https://www.twilio.com/console
 [verify_phone]: https://www.twilio.com/console/phone-numbers/verified

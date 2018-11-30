@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: af3b87fbe79624143b6c2b7e0a3c50852e532524
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 89c74b0c2144776d3bbc8a87f660b546ad40987f
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042117"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495412"
 ---
-# <a name="use-the-hbase-net-sdk"></a>Použití sady .NET SDK
+# <a name="use-the-net-sdk-for-apache-hbase"></a>Použití sady .net SDK pro Apache HBase
 
-[HBase](apache-hbase-overview.md) poskytuje dvě primární možnosti pro práci s daty: [Hive dotazy a volání rozhraní RESTful API HBase na](apache-hbase-tutorial-get-started-linux.md). Může spolupracovat přímo s použitím rozhraní REST API `curl` příkaz nebo podobného nástroje.
+[Apache HBase](apache-hbase-overview.md) poskytuje dvě primární možnosti pro práci s daty: [dotazy Apache Hive a volání rozhraní RESTful API HBase na](apache-hbase-tutorial-get-started-linux.md). Může spolupracovat přímo s použitím rozhraní REST API `curl` příkaz nebo podobného nástroje.
 
 Pro aplikace C# a .NET [Microsoft HBase REST Client Library pro .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) poskytuje knihovna klienta nad HBase REST API.
 
@@ -37,7 +37,7 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-Nahraďte název clusteru s názvem clusteru HDInsight HBase a uživatelské jméno a heslo zadané při vytvoření clusteru Hadoop přihlašovací údaje. Je výchozí uživatelské jméno Hadoop **správce**.
+Nahraďte název clusteru s názvem clusteru HDInsight HBase a uživatelské jméno a heslo zadané při vytvoření clusteru Apache Hadoop přihlašovací údaje. Je výchozí uživatelské jméno Hadoop **správce**.
 
 ## <a name="create-a-new-table"></a>Vytvořit novou tabulku
 
@@ -113,7 +113,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase implementuje BigTable, tak, že formát dat vypadá nějak takto:
+Implementuje HBase [cloudu BigTable](https://cloud.google.com/bigtable/), tak, že formát dat vypadá nějak takto:
 
 ![Uživatel s rolí uživatele clusteru](./media/apache-hbase-rest-sdk/table.png)
 
@@ -189,4 +189,4 @@ finally
 ## <a name="next-steps"></a>Další postup
 
 * [Začínáme s příkladem Apache HBase v HDInsight](apache-hbase-tutorial-get-started-linux.md)
-* Sestavení aplikace začátku do konce se [analýza v reálném čase sentimentu Twitter s HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* Sestavení aplikace začátku do konce se [analýza v reálném čase sentimentu Twitter s Apache HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)

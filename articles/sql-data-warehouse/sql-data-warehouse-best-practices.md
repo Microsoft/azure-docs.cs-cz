@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/18/2018
+ms.date: 11/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 81fd5ea082fe05c9908b2eb0689aba9a4fe4e789
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0324a6f71a0a30fc9f3005a041b4c5413e6af8da
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307128"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317298"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy pro službu Azure SQL Data Warehouse
 Tento článek je kolekce doporučené postupy vám pomohou dosáhnout optimálního výkonu služby Azure SQL Data Warehouse.  Některé koncepty v tomto článku jsou základní a snadno se vysvětlují, další koncepty jsou pokročilejší a v tomto článku se jich jenom lehce dotýkáme.  Účelem tohoto článku je poskytnout vám základní pokyny a zvýšit povědomí o důležitých oblastech, na které byste se měli zaměřit, když budete sestavovat svůj datový sklad.  Každá část vám představí nějaký koncept a odkáže vás na podrobnější články, které se danému konceptu věnují více do hloubky.
@@ -39,7 +39,7 @@ Pro jednorázové nahrávání do malé tabulky příkazem INSERT nebo dokonce i
 Viz také [INSERT][INSERT].
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>Použijte PolyBase k rychlému načítání a exportu dat
-SQL Data Warehouse podporuje načítání a export dat prostřednictvím různých nástrojů, včetně Azure Data Factory, PolyBase a BCP.  Pro malá množství dat, kde není výkon tak důležitý, by vám měl stačit libovolný nástroj.  Když však načítáte nebo exportujete velká množství dat nebo vyžadujete vysoký výkon, nejlepší volbou je PolyBase.  PolyBase je navržena pro využití architektury MPP (Massively Parallel Processing) služby SQL Data Warehouse a proto bude načítat a exportovat data řádově rychleji, než jakýkoli jiný nástroj.  Úlohy funkce PolyBase můžete spustit pomocí příkazů CTAS nebo INSERT INTO.  **Použití příkazu CTAS minimalizuje protokolování transakce a je to nejrychlejší způsob, jak načíst vaše data.**  Azure Data Factory také podporuje úlohy funkce PolyBase.  PolyBase podporuje řadu formátů souborů, včetně souborů GZip.  **Pro maximalizaci propustnosti při použití textových souborů GZip rozdělte soubory na 60 nebo více souborů, čímž maximalizujete paralelismus vaší úlohy.**  Pro rychlejší celkovou propustnost zvažte souběžné načítání dat.
+SQL Data Warehouse podporuje načítání a export dat prostřednictvím různých nástrojů, včetně Azure Data Factory, PolyBase a BCP.  Pro malá množství dat, kde není výkon tak důležitý, by vám měl stačit libovolný nástroj.  Když však načítáte nebo exportujete velká množství dat nebo vyžadujete vysoký výkon, nejlepší volbou je PolyBase.  PolyBase je navržena pro využití architektury MPP (Massively Parallel Processing) služby SQL Data Warehouse a proto bude načítat a exportovat data řádově rychleji, než jakýkoli jiný nástroj.  Úlohy funkce PolyBase můžete spustit pomocí příkazů CTAS nebo INSERT INTO.  **Použití příkazu CTAS minimalizuje protokolování transakce a je to nejrychlejší způsob, jak načíst vaše data.**  Azure Data Factory také podporuje načítání PolyBase a dosáhnout podobné výkonu jako CTAS.  PolyBase podporuje řadu formátů souborů, včetně souborů GZip.  **Pro maximalizaci propustnosti při použití textových souborů GZip rozdělte soubory na 60 nebo více souborů, čímž maximalizujete paralelismus vaší úlohy.**  Pro rychlejší celkovou propustnost zvažte souběžné načítání dat.
 
 Viz také [Načtení dat][Load data], [Průvodce používáním funkce PolyBase][Guide for using PolyBase], [Vzory a strategie načítání služby Azure SQL Data Warehouse][Azure SQL Data Warehouse loading patterns and strategies], [Načtení dat pomocí služby Azure Data Factory][Load Data with Azure Data Factory], [Přesun dat pomocí služby Azure Data Factory][Move data with Azure Data Factory], [CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT], [CREATE TABLE AS SELECT (CTAS)][Create table as select (CTAS)].
 

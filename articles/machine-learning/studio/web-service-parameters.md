@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Machine Learning parametrů webové služby | Dokumentace Microsoftu
+title: Použití parametrů webové služby Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Jak používat parametry webové služby Azure Machine Learning k úpravě chování modelu při přístupu k webové službě.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 34ae252ff2c37a6e4e9f90155c4fda79b81e29a2
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0e8a1a4bb90f935bf3890bd803b9375d10261aa7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264331"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312006"
 ---
-# <a name="use-azure-machine-learning-web-service-parameters"></a>Použití parametrů webové služby Azure Machine Learning
+# <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Použití parametrů webové služby Azure Machine Learning Studio
 Webové služby Azure Machine Learning je vytvořen a publikujte experiment, který obsahuje moduly s konfigurovatelné parametry. V některých případech můžete změnit chování modulu, zatímco je webová služba spuštěna. *Webová služba parametry* umožňují provést tuto úlohu. 
 
 Běžným příkladem je nastavení [Import dat] [ reader] modulu tak, aby uživatel publikované webové služby můžete zadat jiný zdroj dat při přístupu k webové službě. Nebo konfigurace [exportovat Data] [ writer] modulu tak, aby se dá nastavit jiný cíl. Mezi další příklady patří změna počtu bitů pro [Hashování] [ feature-hashing] modulu nebo počet požadovaných funkcí pro [výběr součástí na základě filtru] [ filter-based-feature-selection] modulu. 

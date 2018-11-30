@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d063c5e5a5b81f16d8921864ab2e2a0c3504e334
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 878c2596a1d884e26a4b4a4ed4764cfd9ce6b39b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289015"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424096"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>verze 2.0 protokolů – SPA pomocí implicitní tok
 
@@ -34,7 +34,7 @@ S koncovým bodem v2.0 se můžete přihlásit uživatele své jednostránkové 
 * Mnoho serverů autorizace a zprostředkovatelů identity požadavků CORS nepodporují.
 * Od aplikace stát zejména invazivní uživatelské prostředí pro přesměrování prohlížeče celou stránku.
 
-V případě těchto aplikací (AngularJS, Ember.js, React.js atd.) podporuje Azure Active Directory (Azure AD) tok implicitní Grant OAuth 2.0. Implicitní tok je popsána v [specifikaci OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.2). Jeho primární výhodou je, že umožňuje aplikaci získat tokeny ze služby Azure AD bez provedení back-end serveru výměnou přihlašovacích údajů. To umožňuje aplikaci pro uživatele, Udržovat relaci a získat tokeny do dalších webových rozhraní API vše v rámci klienta kódu jazyka JavaScript. Existuje několik důležité informace o zabezpečení vzít v úvahu při použití implicitní tok konkrétně přibližně [klienta](http://tools.ietf.org/html/rfc6749#section-10.3) a [zosobnění uživatele](http://tools.ietf.org/html/rfc6749#section-10.3).
+V případě těchto aplikací (AngularJS, Ember.js, React.js atd.) podporuje Azure Active Directory (Azure AD) tok implicitní Grant OAuth 2.0. Implicitní tok je popsána v [specifikaci OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.2). Jeho primární výhodou je, že umožňuje aplikaci získat tokeny ze služby Azure AD bez provedení back-end serveru výměnou přihlašovacích údajů. To umožňuje aplikaci pro uživatele, Udržovat relaci a získat tokeny do dalších webových rozhraní API vše v rámci klienta kódu jazyka JavaScript. Existuje několik důležité informace o zabezpečení vzít v úvahu při použití implicitní tok konkrétně přibližně [klienta](https://tools.ietf.org/html/rfc6749#section-10.3) a [zosobnění uživatele](https://tools.ietf.org/html/rfc6749#section-10.3).
 
 Pokud chcete použít implicitní tok a Azure AD k přidání ověřování do aplikace jazyka JavaScript, doporučujeme, abyste použili open source knihovna jazyka JavaScript, [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js). 
 
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `redirect_uri` | Doporučené |Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. |
 | `scope` | povinné |Seznam oborů oddělených mezerami. Pro OpenID Connect, musí zahrnovat obor `openid`, který se přeloží na "Přihlášení" oprávnění v souhlasu uživatelského rozhraní. Volitelně můžete také chtít zahrnout `email` nebo `profile` [obory](v2-permissions-and-consent.md) pro získání přístupu k datům uživatele. V této žádosti pro vyžádání souhlasu k různým prostředkům mohou zahrnovat také další obory. |
 | `response_mode` | nepovinné |Určuje metodu, která se má použít k odeslání výsledný token zpátky do vaší aplikace. Výchozí hodnota je dotaz na přístupový token, ale fragment, pokud požadavek obsahuje tokentu id_token. |
-| `state` | Doporučené |Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](http://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
+| `state` | Doporučené |Hodnota v požadavku, která se také vrátit v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
 | `nonce` | povinné |Hodnota v požadavku, generovaný aplikací, který bude obsahovat výsledný id_token jako deklarace identity. Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodnou jedinečného řetězce, který můžete použít k identifikaci původcem požadavku. Povinné pouze v případě, že je požadováno tokentu id_token. |
 | `prompt` | nepovinné |Určuje typ interakce s uživatelem, který je požadován. Jedinými platnými hodnotami v tuto chvíli jsou "přihlášení", "žádný", "select_account" a "souhlas". `prompt=login` Vynutí uživatele k zadání přihlašovacích údajů tohoto požadavku negace jednotného přihlašování. `prompt=none` je opakem – zajistí, že uživatel se nezobrazí se žádné interaktivní výzvu jakýmkoli způsobem. Žádost nejde dokončit tiše prostřednictvím jednotného přihlašování, koncový bod verze 2.0 vrátí chybu. `prompt=select_account` odešle uživateli nástroj pro výběr účtu ve kterém se zobrazí všechny účty zapamatovaných v relaci. `prompt=consent` Dialogové okno souhlasu OAuth se aktivuje, až se uživatel přihlásí, s výzvou uživateli udělit oprávnění k aplikaci. |
 | `login_hint`  |nepovinné |Umožňuje předem vyplnit pole uživatelské jméno nebo e-mailová adresa přihlašovací stránka pro uživatele, pokud znáte svoje uživatelské jméno předem. Často aplikace bude používat tento parametr během opětovné ověření uživatelského jména s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity.|
@@ -131,7 +131,7 @@ error=access_denied
 
 ## <a name="validate-the-idtoken"></a>Ověření požadavku id_token
 
-Pouhého získání tokentu id_token není dostatečná k ověření uživatele. musí také ověřit podpis požadavku id_token a ověřte, deklarace identity v tokenu na základě požadavků vaší aplikace. Koncový bod verze 2.0 používá [webové tokeny JSON (Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
+Pouhého získání tokentu id_token není dostatečná k ověření uživatele. musí také ověřit podpis požadavku id_token a ověřte, deklarace identity v tokenu na základě požadavků vaší aplikace. Koncový bod verze 2.0 používá [webové tokeny JSON (Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
 
 Můžete také ověřit `id_token` v klientovi kód, ale běžnou praxí je odeslat `id_token` back-end server a provést ověření existuje. Jakmile ověříte podpisu požadavku id_token, existují několik deklarací identity, které budete muset ověřit. Najdete v článku [ `id_token` odkaz](id-tokens.md) Další informace, včetně [ověřování tokenů](id-tokens.md#validating-an-idtoken) a [důležité informace o podepisování výměny klíčů](active-directory-signing-key-rollover.md). Doporučujeme, abyste využívající knihovnu k analýze a ověřování tokenů: k dispozici aspoň jeden k dispozici pro většinu jazyky a platformy.
 

@@ -1,6 +1,6 @@
 ---
-title: Analýza výpovědí zákazníků pomocí služby Machine Learning | Dokumentace Microsoftu
-description: Případová studie vývoje modelu integrované analýzy a vyhodnocování výpovědi zákazníků
+title: Analýza výpovědi zákazníků s Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Případová studie vývoje modelu integrované analýzy a vyhodnocování výpovědi zákazníků pomocí Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 7c55e35370e2aed67045333eaee7a42c3c69d318
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0ab398cc87472e3ede361f48f8e755ef294746da
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261169"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314980"
 ---
-# <a name="analyzing-customer-churn-using-azure-machine-learning"></a>Analýza výpovědí zákazníků pomocí služby Azure Machine Learning
+# <a name="analyzing-customer-churn-using-azure-machine-learning-studio"></a>Analýza výpovědí zákazníků pomocí Azure Machine Learning Studio
 ## <a name="overview"></a>Přehled
 Tento článek představuje referenční implementaci projektu pro analýzu přechodu se zákazník je vytvořená pomocí Azure Machine Learning. V tomto článku se podíváme na přidružených modelech obecné pro holistické řešení problému přechodu firemních zákazníků změn. Můžeme také měřit přesnost modelů, které jsou vytvořeny pomocí Machine Learning a posoudit pokynů pro další vývoj.  
 

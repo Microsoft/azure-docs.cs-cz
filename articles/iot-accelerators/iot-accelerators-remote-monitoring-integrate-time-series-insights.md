@@ -8,14 +8,14 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ba6d79661a2c07ba3eef1f16a117992a858830b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 3ae41ff4cf501a58668d25b16027029f6bae4749
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605925"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317480"
 ---
-# <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights pomocí vzdáleného monitorování
+# <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights se vzdáleným monitorováním
 
 Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která umožňuje správu dat časových řad v IoT měřítku v cloudu. Time Series Insights můžete použít k ukládání a správu dat časových řad, prozkoumat a vizualizovat událostí současně, provádět analýzy původních příčin a porovnávat několik webů a prostředků.
 
@@ -49,7 +49,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 V dalším kroku nasaďte Time Series Insights jako zdroj dalších do vašeho řešení vzdáleného monitorování a připojení ke službě IoT hub.
 
-1. Přihlaste se k [portálu Azure](http://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com/).
 
 1. Vyberte **vytvořit prostředek** > **Internet of Things** > **Time Series Insights**.
 
@@ -292,6 +292,6 @@ Konfigurace prostředí, které `standard` nasazení pro aktualizace mikroslužb
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o tom, jak zkoumat data a Diagnostika výstrahu v Průzkumníku Time Series Insights, najdete v našem kurzu na [analýzu provádění kořenové příčiny](/tutorials).
+* Další informace o tom, jak zkoumat data a Diagnostika výstrahu v Průzkumníku Time Series Insights, najdete v našem kurzu na [analýzu provádění kořenové příčiny](iot-accelerators-remote-monitoring-root-cause-analysis.md).
 
 * Zjistěte, jak zkoumat a dotazování dat v Průzkumníku Time Series Insights, najdete v článku dokumentace na [Průzkumníka služby Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

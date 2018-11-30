@@ -1,5 +1,5 @@
 ---
-title: Experimenty v galerii Azure AI | Dokumentace Microsoftu
+title: Experimenty Azure galerii AI – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Zjišťování a sdílení experimenty v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
-ms.openlocfilehash: 43e5cc14ac98b85dd50391380033834cf642b1a9
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 66b5e30a26c57676bdd65b4861d34ca90c0c25af
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264467"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317462"
 ---
 # <a name="discover-experiments-in-azure-ai-gallery"></a>Zjistit experimenty v galerii Azure AI
 
-[Galerie Azure AI](http://gallery.cortanaintelligence.com) má celou řadu [experimenty](https://gallery.cortanaintelligence.com/experiments) , které byly vyvinuty v [Azure Machine Learning Studio](https://studio.azureml.net). Experimenty v rozsahu od rychlé testování konceptu experimenty, které ukazují na konkrétní počítač studijní techniku pro propracovaný řešení problémů složitých machine learning.
+[Galerie Azure AI](http://gallery.cortanaintelligence.com) obsahuje řadu [experimenty](https://gallery.cortanaintelligence.com/experiments) , které byly vyvinuty v [Azure Machine Learning Studio](https://studio.azureml.net). Experimenty v rozsahu od rychlé testování konceptu experimenty, které ukazují na konkrétní počítač studijní techniku pro propracovaný řešení problémů složitých machine learning.
 
 > [!NOTE]
 > ***Experimentovat*** je plátna v nástroji Machine Learning Studio, který vám pomůže vytvořit tak model prediktivní analýzy. Vytvoření modelu po propojení dat s různými analytickým modulům. Zkuste jiné nápady, proveďte zkušební spuštění a nakonec svůj model nasadit jako webovou službu v Azure. Příklad toho, jak vytvořit základní experimentu najdete v části [kurz Machine learningu: vytvoření prvního experimentu v Azure Machine Learning Studio](create-experiment.md). Komplexnější návod, jak vytvořit řešení prediktivní analýzy, najdete v části [názorný postup: vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning](walkthrough-develop-predictive-solution.md).

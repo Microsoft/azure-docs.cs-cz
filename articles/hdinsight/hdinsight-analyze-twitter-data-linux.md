@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: d037c4fc65bc32ff183ddc7a8925cd2f51411ea0
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 41b9d295837d377df98208d43c9cd4699f380b86
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034622"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494385"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Analýza dat Twitteru pomocí Apache Hivu a Apache Hadoop v HDInsight
 
-Informace o používání Apache Hive ke zpracování dat Twitteru. Výsledkem je seznam uživatelů Twitteru, kteří odeslané většina tweety, které obsahují určité slovo.
+Další informace o použití [Apache Hive](https://hive.apache.org/) zpracovává data Twitteru. Výsledkem je seznam uživatelů Twitteru, kteří odeslané většina tweety, které obsahují určité slovo.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu byly testovány v HDInsight 3.6.
@@ -182,7 +182,7 @@ Tyto příkazy uložení dat do umístění, které můžou přistupovat všechn
 
 ## <a name="run-the-hiveql-job"></a>Spustit úlohu HiveQL
 
-1. Chcete-li vytvořit soubor, který obsahuje příkazy HiveQL použijte následující příkaz:
+1. Pomocí následujícího příkazu vytvořte soubor obsahující [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) příkazy:
 
    ```bash
    nano twitter.hql
@@ -322,7 +322,7 @@ Tyto příkazy uložení dat do umístění, které můžou přistupovat všechn
 
 ## <a name="next-steps"></a>Další postup
 
-Jste se naučili, jak transformovat nestrukturované datové sady JSON do strukturovaného tabulky Hive. Další informace o Hive v HDInsight, najdete v následujících dokumentech:
+Jste se naučili, jak má být transformován nestrukturované datové sady JSON strukturované [Apache Hive](https://hive.apache.org/) tabulky. Další informace o Hive v HDInsight, najdete v následujících dokumentech:
 
 * [Začínáme s HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Analýza zpoždění letů pomocí HDInsight](hdinsight-analyze-flight-delay-data-linux.md)

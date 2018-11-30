@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: 2f4721155610da3be3ff0db3608d7c1e163aa344
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e73659dca034c0333a73786788c8f342b57598da
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211838"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314657"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replikace virtuálních počítačů Azure do jiné oblasti Azure
 
@@ -53,7 +53,15 @@ Povolení replikace. Tento postup předpokládá, že primární oblast Azure je
     - **Cílové účty úložiště (Pokud je váš zdrojový virtuální počítač nepoužívá spravované disky)**: ve výchozím nastavení vytvoří Site Recovery nový cílový účet úložiště tak napodobuje konfiguraci úložiště zdrojového virtuálního počítače. V případě, že účet úložiště už existuje, je znovu.
     - **Repliky spravovaných disků (Pokud zdrojový virtuální počítač používá spravované disky)**: Site Recovery vytvoří nové spravované disky repliky v cílové oblasti zrcadlící spravované disky zdrojového Virtuálního počítače se stejným typem úložiště (Standard nebo premium), protože zdrojový virtuální počítač spravovaný disk.
     - **Účty úložiště mezipaměti**: Site Recovery potřebuje účet úložiště s názvem úložiště mezipaměti ve zdrojové oblasti. Všechny změny aktivit ve zdrojových virtuálních počítačů jsou sledovány a odeslat do účtu úložiště mezipaměti před replikaci do cílového umístění.
-    - **Skupina dostupnosti**: ve výchozím nastavení Azure Site Recovery vytvoří novou skupinu s názvem, který má příponu "Azure Site Recovery" v cílové oblasti dostupnosti. V případě, že skupina dostupnosti Azure Site Recovery vytvoří již existuje, je znovu.
+    - **Cílové skupiny dostupnosti**: ve výchozím nastavení Azure Site Recovery vytvoří nové dostupnosti v cílové oblasti s názvem, který má příponu "Azure Site Recovery" pro virtuální počítače součástí skupiny dostupnosti ve zdrojové oblasti. V případě, že skupina dostupnosti Azure Site Recovery vytvoří již existuje, je znovu.
+    - **Cílové zóny dostupnosti**: ve výchozím nastavení, Site Recovery přiřadí číslo zóny jako zdrojové oblasti v cílové oblasti, v případě, že cílové oblasti podporují zóny dostupnosti.
+
+    Pokud cílová oblast nepodporuje zóny dostupnosti, jsou cílové virtuální počítače ve výchozím nastavení nakonfigurované jako jedné instance. V případě potřeby můžete nakonfigurovat tyto virtuální počítače kliknutím na "Vlastní" jako součást skupiny dostupnosti v cílové oblasti.
+
+    >[!NOTE]
+    >Typ dostupnosti - jediné instance, set nebo dostupnost zónu dostupnosti, nelze změnit po povolení replikace. Budete muset zakázat a povolit replikaci, chcete-li změnit typ dostupnosti.
+    >
+    
     - **Zásady replikace**: definuje nastavení pro obnovení bodu uchování historie a aplikace konzistentní frekvence pořizování snímků. Ve výchozím nastavení Azure Site Recovery vytvoří novou zásadu replikace s výchozím nastavením ' 24 hodin pro uchování bodu obnovení a "60 minut, než se frekvence snímků konzistentní vzhledem k aplikacím aplikace.
 
     ![Povolení replikace](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)

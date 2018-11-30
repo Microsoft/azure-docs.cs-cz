@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0dfe096bb3a2a2116ead2423f53a5e44c8f02630
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: c3cf2b703760debb368e26d629ee73f56ce93d39
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567515"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441246"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-python-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění moduly Pythonu pro Azure IoT Edge
 
@@ -66,7 +66,7 @@ Podle následujících kroků vytvořte modul IoT Edge založené na Pythonu sad
 
 7. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru. 
 
-8. Zadejte název modulu úložiště imagí. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte. 
+8. Zadejte název modulu úložiště imagí. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte. Konečný řetězec vypadá jako \<název registru\>.azurecr.io/\<modulename\>.
 
    ![Zadání úložiště imagí Dockeru](./media/how-to-develop-c-module/repository.png)
 
@@ -81,6 +81,7 @@ Existují čtyři položky v rámci řešení:
    > Pokud zadáte úložišti imagí pro modul je jenom vytvořen soubor prostředí. Pokud jste přijali výchozí nastavení localhost testovat a ladit v místním prostředí, pak není nutné deklarovat proměnné prostředí. 
 
 * A **deployment.template.json** souborů obsahuje nový modul spolu s ukázku **tempSensor** modulu, která simuluje data, která můžete použít pro testování. Další informace o způsobu práce manifesty nasazení najdete v tématu [zjistěte, jak můžete nasadit moduly a vytvářet manifesty nasazení](module-composition.md). 
+* A **deployment.debug.template.json** souboru kontejnery ladicí verze modulu bitové kopie s možností správný kontejner.
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
@@ -92,13 +93,7 @@ Jakmile budete připraveni k přizpůsobení šablony Python s vlastním kódem,
 
 Ve složce každého modulu existuje několik souborů Docker pro typy jiný kontejner. Použijte některý z těchto souborů, které končí příponou **.debug** vytvořit váš modul pro testování. V současné době podporují moduly Pythonu ladění pouze v amd64 kontejnery Linuxu. 
 
-1. V nástroji VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL bitové kopie modulu přidáním **.debug** na konec.
-
-2. Nahraďte CreateOptions field modul Python v **deployment.template.json** níže obsah a uložte tento soubor: 
-    
-    ```json
-    "createOptions": "{\"ExposedPorts\":{\"5678/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"5678/tcp\":[{\"HostPort\":\"5678\"}]}}}"
-    ```
+1. V nástroji VS Code, přejděte `deployment.debug.template.json` souboru. Tento soubor obsahuje ladicí verze modulu možnosti vytvoření imagí pomocí správné. 
 
 3. Přejděte na `main.py`, přidejte následující kódy za část importování
     
@@ -132,9 +127,9 @@ Ve složce každého modulu existuje několik souborů Docker pro typy jiný kon
     ```
 
 2. V nástroji VS Code paletu příkazů, zadejte a spusťte příkaz **Azure IoT Edge: sestavení a Push hraničních zařízeních IoT řešení**.
-3. Vyberte `deployment.template.json` soubor pro vaše řešení z palety příkazů. 
+3. Vyberte `deployment.debug.template.json` soubor pro vaše řešení z palety příkazů. 
 4. V Azure IoT Hub Device Explorer klikněte pravým tlačítkem na ID zařízení IoT Edge Potom vyberte **vytvoření nasazení pro jedno zařízení**. 
-5. Otevřít vaše řešení **config** složky. Vyberte `deployment.json` souboru. Zvolte **vyberte Manifest nasazení Edge**. 
+5. Otevřít vaše řešení **config** složky. Vyberte `deployment.debug.amd64.json` souboru. Zvolte **vyberte Manifest nasazení Edge**. 
 
 Zobrazí se vám nasazení s ID nasazení, v terminálu VS Code integrované se úspěšně vytvořil.
 

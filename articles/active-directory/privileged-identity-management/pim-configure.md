@@ -1,5 +1,5 @@
 ---
-title: Co je Azure AD Privileged Identity Management? | Microsoft Docs
+title: Co je Azure AD Privileged Identity Management? | Dokumenty Microsoft
 description: Tento článek obsahuje přehled služby Azure Active Directory Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
-ms.translationtype: HT
+ms.openlocfilehash: 6720294fe9a3e166d0d6ef8f141e53212ef4b194
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465856"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496808"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -73,7 +73,7 @@ Privileged Identity Management podporuje následující scénáře:
 
 - Zobrazit žádosti čekající na schválení
 - Schvalovat nebo zamítat žádosti o zvýšení oprávnění role (jednotně nebo hromadně)
-- Uvést odůvodnění schválení nebo zamítnutí 
+- Uvést odůvodnění schválení nebo zamítnutí 
 
 **Jako oprávněný uživatel role můžete:**
 
@@ -81,22 +81,13 @@ Privileged Identity Management podporuje následující scénáře:
 - Zobrazit stav vaší žádosti o aktivaci
 - Dokončit požadovanou úlohu v Azure AD, pokud se aktivace schválí
 
-## <a name="enable-privileged-identity-management-for-your-directory"></a>Povolení služby Privileged Identity Management pro adresář
+## <a name="who-can-do-what-in-pim"></a>Kdo může co dělat v PIM
 
-S používáním služby Azure AD Privileged Identity Management můžete začít na webu [Azure Portal](https://portal.azure.com/).
+Pokud jste první, kdo používat PIM, se automaticky přiřazují [správce zabezpečení](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) a [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) v daném adresáři.
 
-> [!NOTE]
-> Pokud chcete pro adresář povolit Azure AD Privileged Identity Management, musíte být globální správce s účtem organizace (například @yourdomain.com), a ne s účtem Microsoft (například @outlook.com).
+Pro role Azure AD jenom uživatel, který je v roli správce privilegovaných rolí můžou Spravovat přiřazení pro jiní správci v PIM. Je možné [udělit přístup na jiné správce ke správě PIM](pim-how-to-give-access-to-pim.md). Globální správci, správci zabezpečení a čtenáři zabezpečení můžete zobrazit přiřazení role Azure AD PIM.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce adresáře.
-2. Pokud má vaše organizace víc než jeden adresář, vyberte své uživatelské jméno v pravém horním rohu webu Azure Portal. Vyberte adresář, ve kterém budete Azure AD Privileged Identity Management používat.
-3. Vyberte **Všechny služby** a pomocí textového pole Filtr najděte **Azure AD Privileged Identity Management**.
-4. Zaškrtněte **Připnout na řídicí panel** a potom klikněte na **Vytvořit**. Aplikace Privileged Identity Management se otevře.
-
-Pokud jste první, kdo bude ve vašem adresáři používat Azure AD Privileged Identity Management, a přejdete do rolí adresáře Azure AD, [průvodce zabezpečením](pim-security-wizard.md) vás provede počátečním přiřazením. Automaticky se pak stanete prvním **správcem zabezpečení** a **správcem privilegovaných rolí** adresáře.
-
-V případě rolí Azure AD může přiřazení ostatních správců v Azure AD PIM spravovat pouze uživatel, který je v roli správce privilegovaných rolí. [Ostatním uživatelům můžete udělit možnost spravovat role adresáře v PIM](pim-how-to-give-access-to-pim.md). Globální správci, správci zabezpečení a čtenáři zabezpečení můžou v Azure AD PIM zobrazit přiřazení k rolím Azure AD.
-V případě rolí Azure RBAC může přiřazení ostatních správců v Azure AD PIM spravovat pouze správce předplatného, vlastník prostředku nebo správce uživatelského přístupu k prostředku.  Uživatelé, kteří jsou správci privilegovaných rolí, správci zabezpečení nebo čtenáři zabezpečení, nemají ve výchozím nastavení přístup k zobrazení přiřazení k rolím Azure RBAC v Azure AD PIM.
+Pro role prostředků Azure, pouze správce předplatného, vlastník prostředku nebo prostředku správce přístupu uživatelů můžou Spravovat přiřazení pro jiní správci v PIM. Uživatelé, kteří jsou správci privilegovaných rolí, správci zabezpečení nebo čtenáře zabezpečení není ve výchozím nastavení mají přístup k zobrazení přiřazení role prostředků Azure v PIM.
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Přehled služby Privileged Identity Management (vstupní bod)
 
@@ -182,10 +173,10 @@ Druhou možností je nastavit pravidelné [kontroly přístupu](pim-how-to-start
 ## <a name="azure-ad-pim-at-subscription-expiration"></a>Azure AD PIM při vypršení platnosti předplatného
 
 Před použitím Azure AD PIM musí mít tenant zkušební nebo placené předplatné Azure AD Premium P2 (nebo EMS E5).  Správci tenanta navíc musí mít přiřazené licence.  Konkrétně musí mít licence přiřazené správci v rolích Azure AD spravovaných přes Azure AD PIM, správci v rolích Azure RBAC spravovaných přes Azure AD PIM a všichni uživatelé bez oprávnění správce, kteří provádějí kontroly přístupu.
-Pokud vaše organizace předplatné Azure AD Premium P2 neprodlouží nebo vyprší platnost vaší zkušební verze, funkce Azure AD PIM přestanou být ve vašem tenantovi dostupné, oprávněná přiřazení rolí se odeberou a uživatelé ztratí možnost aktivovat role. Další informace najdete v článku věnovaném [požadavkům na předplatné Azure AD PIM](./subscription-requirements.md).
+Pokud vaše organizace předplatné Azure AD Premium P2 neprodlouží nebo vyprší platnost vaší zkušební verze, funkce Azure AD PIM přestanou být ve vašem tenantovi dostupné, oprávněná přiřazení rolí se odeberou a uživatelé ztratí možnost aktivovat role. Další informace najdete v tématu [Požadavky na předplatné Azure AD PIM](./subscription-requirements.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
+- [Zahájení práce s PIM](pim-getting-started.md)
 - [Požadavky na předplatné pro použití PIM](subscription-requirements.md)
-- [Role adresáře Azure AD, které může spravovat v PIM](pim-roles.md)
 - [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

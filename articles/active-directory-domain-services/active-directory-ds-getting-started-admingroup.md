@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: 0dc4019d2b3f33bfc92d73aeadadc0c64ecaab3b
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: cac1814057b5adbb75d9484b332bd3f8aaa31a18
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158512"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446854"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí webu Azure portal
 
@@ -42,6 +42,22 @@ Průvodce automaticky vytvoří příslušné skupiny pro správu v adresáři s
 
 3. Jakmile budete hotovi, klikněte na tlačítko **OK** přesunout do **Souhrn** stránky průvodce.
 
+## <a name="configure-synchronization"></a>Konfigurace synchronizace
+
+Azure AD Domain Services umožňuje buď úplná synchronizace všech uživatelů a skupin, které jsou k dispozici ve službě Azure AD, nebo můžete vybrat s vymezeným oborem synchronizace pro synchronizaci jenom na konkrétní skupiny. Pokud vyberete možnost Úplná synchronizace, bude **není** zvolit s vymezeným oborem synchronizace později. Další informace o synchronizaci s vymezeným oborem, najdete [obor článku synchronizace Azure AD Domain Services](active-directory-ds-scoped-synchronization.md).
+
+### <a name="full-synchronization"></a>Úplná synchronizace
+
+1. Pro úplnou synchronizaci, stačí kliknout na "OK" v dolní části obrazovky jako plně je již vybrána.
+    ![Úplná synchronizace](./media\active-directory-domain-services-admin-guide\create-sync-all.PNG)
+
+### <a name="scoped-synchronization"></a>Synchronizace s vymezeným oborem
+
+1. Přepínací tlačítko synchronizace "Obor" a na stránce Vybrat skupiny se zobrazí. Z tohoto uvidíte, jaké skupiny jsou již vybrány synchronizovat do spravované domény.
+    ![Synchronizace s vymezeným oborem](media\active-directory-domain-services-admin-guide\create-sync-scoped.PNG)
+2. Klikněte na tlačítko **vybrat skupiny** v horním navigačním panelu. Z tohoto místa ovládacího prvku pro výběr skupiny objeví na straně. Použijte a vyberte všechny další skupiny pro synchronizaci Azure AD Domain Services. Až budete hotovi, klikněte na tlačítko **vyberte** zavřete Nástroj pro výběr skupiny a přidejte tyto skupiny do vybraného seznamu.
+    ![Vyberte skupiny s vymezeným oborem synchronizace](media\active-directory-domain-services-admin-guide\create-sync-scoped-groupselect.PNG)
+3. Klikněte na tlačítko **OK** přejděte na stránku Souhrn v.
 
 ## <a name="deploy-your-managed-domain"></a>Nasazení vaší spravované domény
 

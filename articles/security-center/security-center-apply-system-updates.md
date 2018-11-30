@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7b5f4415351ad5b51b874e5dc17349160f65e9ef
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a0d0cbacfa03080d519e5d9e3592ad01ed58b933
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240371"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316579"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému ve službě Azure Security Center
 Azure Security Center monitoruje denní Windows a Linuxem a virtuální počítače (VM) pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných zabezpečení a kritických aktualizací ze služby Windows Update nebo Windows Server Update Services (WSUS), podle toho, která služba je nakonfigurována na počítači Windows. Security Center také vyhledává nejnovější aktualizace v systémech Linux. Pokud virtuální počítač nebo počítači chybí aktualizace systému, Security Center vám doporučí použít aktualizace systému.
@@ -84,7 +84,7 @@ Restartujte virtuální počítač z Azure na dokončení procesu.
 ## <a name="next-steps"></a>Další postup
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení v Azure Security Center](security-center-azure-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.

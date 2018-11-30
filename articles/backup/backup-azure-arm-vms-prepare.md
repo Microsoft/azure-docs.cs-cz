@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 086399f669b704a0ae2c9f719906e7efa672b5b1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1092f5e21eab1e037c360408f17548b544a9e922
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262498"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422792"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Příprava na zálohování virtuálních počítačů Azure
 
@@ -49,13 +49,14 @@ Předtím, než je připravit vaše prostředí, nezapomeňte seznámit s těmit
 * Zálohování virtuálních počítačů s Linuxem zašifrovaná pomocí šifrování na Linuxu Unified klíč instalační program (LUKS) se nepodporuje.
 * Nedoporučujeme zálohování virtuálních počítačů, které obsahují konfiguraci sdílené svazky clusteru (CSV) nebo souborového serveru se Škálováním. Pokud budete hotovi, očekává se selhání zapisovačů sdíleného svazku clusteru. Vyžadují zahrnující všechny virtuální počítače, které jsou součástí konfigurace clusteru během úlohu snímku. Azure Backup nepodporuje konzistence více virtuálních počítačů.
 * Zálohovaná data neobsahuje síti připojené jednotky připojené k virtuálnímu počítači.
-* Nahrazení existujícího virtuálního počítače během obnovení se nepodporuje. Pokud se pokusíte obnovit virtuální počítač, virtuální počítač existuje, operaci obnovení se nezdaří.
+* **Nahradit stávající** možnost **obnovit konfiguraci** pomáhá nahradit existující disky v aktuální virtuální počítač s bodem obnovení. Tuto operaci lze provést pouze, pokud aktuální virtuální počítač existuje. 
 * Mezi různými oblastmi zálohování a obnovení nejsou podporovány.
 * Při konfiguraci back up, ujistěte se, **virtuální sítí a bran firewall** nastavení účtu úložiště povolit přístup ze všech sítí.
 * Pro vybrané sítě, po dokončení konfigurace brány firewall a nastavení virtuální sítě pro váš účet úložiště, vyberte **Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště** jako výjimku do Povolit službě Azure Backup přístup k účtu úložiště s omezenou sítí. Obnovení na úrovni položek se nepodporuje pro účty úložiště s omezenou sítí.
 * Můžete zálohovat virtuální počítače ve všech veřejných oblastech Azure. (Viz [kontrolní seznam](https://azure.microsoft.com/regions/#services) z oblasti jsou podporované.) Pokud dnes není podporován oblasti, kterou hledáte, nezobrazí se v rozevíracím seznamu při vytváření trezoru.
 * Obnovení řadiče domény (DC) virtuálního počítače, který je součástí konfigurace s více řadiči domény se podporuje jenom přes PowerShell. Další informace najdete v tématu [obnovení řadiče domény s více řadiči domény](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Snímek na akcelerátor zápisu disku se nepodporuje. Toto omezení blokuje schopnost služby Azure Backup provádět snímek konzistentní vzhledem k v aplikaci všech disků virtuálního počítače.
+* Azure Backup nepodporuje automatickou úpravu hodiny pro letní čas – změny pro zálohování virtuálních počítačů Azure. V případě potřeby upravte zásady provést změnu letního času úspory času v úvahu.
 * Obnovení virtuálních počítačů, které mají následující konfigurace speciální sítě je podporována pouze prostřednictvím prostředí PowerShell. Virtuální počítače vytvořené v pracovním postupu obnovení v uživatelském rozhraní nebudou mít tyto konfigurace sítě, po dokončení operace obnovení. Další informace najdete v tématu [obnovení virtuálních počítačů se speciální konfigurací sítě](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
   * Virtuální počítače v rámci konfigurace služby Vyrovnávání zatížení (interní a externí)
   * Virtuální počítače s víc vyhrazených IP adres

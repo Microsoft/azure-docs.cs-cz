@@ -1,25 +1,21 @@
 ---
 title: Spuštění úloh datových věd - Azure Machine Learning | Dokumentace Microsoftu
 description: Jak můžete spustit projekt vědeckého zpracování dat v organizovaným, odborník přes data správy verzí a spolupráce.
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: 19267429510207129b0229dc55fbd46f12977d5d
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 7e25e2c95f377b1ad40cba24b29ababd0561e32a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112640"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495689"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Spuštění úloh datových věd: zkoumání, modelování a nasazení
 
@@ -34,7 +30,7 @@ Typické úloh vědeckého zpracování zahrnout zkoumání dat, modelování a 
 
 Můžete provádět mezi odborníky přes data, prozkoumávání a vytváření sestav v mnoha různými způsoby: pomocí knihoven nebo balíčků, které jsou k dispozici pro jazyk Python (například matplotlib) nebo s jazykem R (ggplot nebo mřížkových příkladu). Odborníci přes data můžete přizpůsobit podle potřeb zkoumání dat pro konkrétní scénáře takového kódu. Požadavky pro práci se strukturovanými daty se liší, který pro Nestrukturovaná data, jako je například text nebo obrázky. 
 
-Produkty, jako je Azure Machine Learning Workbench také poskytují [Pokročilá Příprava dat](../desktop-workbench/tutorial-bikeshare-dataprep.md) tahání dat a zkoumání, včetně vytváření funkce. Uživatel měli rozhodnout na nástroje, knihovny a balíčky, které osvědčené suite jejich potřeb. 
+Produkty, jako jsou služby Azure Machine Learning také poskytují [Pokročilá Příprava dat](../service/how-to-transform-data.md) tahání dat a zkoumání, včetně vytváření funkce. Uživatel měli rozhodnout na nástroje, knihovny a balíčky, které osvědčené suite jejich potřeb. 
 
 Dodávky na konci této fáze je sestava průzkumu data. Sestava by měla poskytnout poměrně rozsáhlý náhled na data, která má být použit pro modelování a určuje, zda je vhodné, pokračujte ke kroku modelování data posouzení. Vědecké zpracování týmových dat (TDSP) nástroje popsané v následujících částech poloautomatických průzkumných, modelování a vytváření sestav také poskytuje standardizované zkoumání a modelování sestavy. 
 
@@ -90,7 +86,7 @@ Produkční nasazení umožňuje modelu k přehrání aktivní roli v podniku. P
 Existují různé přístupy a platformy pro převedení modely do produkčního prostředí. Tady je několik možností:
 
 
-- [Nasazení modelu ve službě Azure Machine Learning](../desktop-workbench/model-management-overview.md)
+- [Nasazení modelu ve službě Azure Machine Learning](../service/how-to-deploy-and-where.md)
 - [Nasazení modelu v systému SQL server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

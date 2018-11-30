@@ -2,25 +2,21 @@
 title: Přesun dat do služby Azure SQL Database pro Azure Machine Learning | Dokumentace Microsoftu
 description: Vytvoření tabulky SQL a načtení dat do tabulky SQL
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 50f8b862-4d32-44b2-a1e2-4fbc8024acaa
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2018
-ms.author: deguhath
-ms.openlocfilehash: 5fa86387861ca87f9280a4c900d9dd83db5f1a39
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 1c65e2b622d9c70626411f470593730570de813b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344531"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445341"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Přesun dat do služby SQL Database pro Azure Machine Learning
 

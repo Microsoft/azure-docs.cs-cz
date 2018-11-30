@@ -1,5 +1,5 @@
 ---
-title: 'Krok 2: Nahrání dat do experimentu Machine Learning | Dokumentace Microsoftu'
+title: 'Krok 2: Nahrání dat do experimentu Machine Learning Studio – Azure | Dokumentace Microsoftu'
 description: 'Vývoj prediktivního řešení návod krok 2: nahrání uloženou veřejná data do Azure Machine Learning Studio.'
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 81f0cd108075d39c4694163736ad391cf938f958
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0dc39d42e1ad7cc955b0bdc91d9a4c5cb49a2f2e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263702"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311972"
 ---
-# <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-experiment"></a>Krok 2 průvodce: Nahrání stávajících dat do experimentu služby Azure Machine Learning
+# <a name="walkthrough-step-2-upload-existing-data-into-an-azure-machine-learning-studio-experiment"></a>Krok 2 průvodce: Nahrání stávajících dat do experimentu Azure Machine Learning Studio
 Toto je druhém kroku tohoto návodu, [vývoj řešení prediktivní analýzy v Azure Machine Learning](walkthrough-develop-predictive-solution.md)
 
 1. [Vytvoření pracovního prostoru Machine Learning](walkthrough-1-create-ml-workspace.md)

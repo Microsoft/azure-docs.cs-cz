@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 159d3d1576ab3a38baaba94594b3abf04ef3ad56
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b1a4354db23cdfdc6201decbb793a3f9a3ad8206
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287978"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496159"
 ---
-# <a name="use-apache-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Použití Apache Spark strukturované streamování s využitím Kafka a Azure Cosmos DB
+# <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Použití Apache strukturovaného streamování Sparku s využitím Apache Kafka a Azure Cosmos DB
 
-Zjistěte, jak pomocí strukturovaného streamování Apache Sparku číst data ze systému Apache Kafka v Azure HDInsight a potom uložení dat do služby Azure Cosmos DB.
+Další informace o použití [Apache Spark](https://spark.apache.org/) [strukturované streamování](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) číst data z [Apache Kafka](https://kafka.apache.org/) v Azure HDInsight a potom úložiště dat do služby Azure Cosmos DB.
 
-Azure Cosmos DB je globálně distribuovaná vícemodelová databáze. Tento příklad používá model databáze SQL API. Další informace najdete v tématu [Vítá vás Azure Cosmos DB](../cosmos-db/introduction.md) dokumentu.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je globálně distribuovaná a vícemodelová databáze. Tento příklad používá model databáze SQL API. Další informace najdete v tématu [Vítá vás Azure Cosmos DB](../cosmos-db/introduction.md) dokumentu.
 
 Strukturované streamování Sparku je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty. Další informace o strukturovaném streamování najdete v tématu [strukturované streamování Průvodce programováním pro službu](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) na webu Apache.org.
 
@@ -143,7 +143,7 @@ Koncový bod dokumentu a informacemi o primárním klíči se podobá následuj�
 > [!IMPORTANT]
 > Uložte koncový bod a hodnoty klíče, podle potřeby poznámkové bloky Jupyter.
 
-## <a name="get-the-kafka-brokers"></a>Získání zprostředkovatelů Kafka
+## <a name="get-the-apache-kafka-brokers"></a>Získat zprostředkovatelům systému Apache Kafka
 
 Kód v tomto příkladu se připojí k hostiteli zprostředkovatele Kafka v clusteru Kafka. K vyhledání adresy dvěma hostiteli zprostředkovatele Kafka použijte následující příklad PowerShell nebo Bash:
 
@@ -201,12 +201,12 @@ Jakmile se nahrály soubory, vyberte __Stream taxislužby data na kafka.ipynb__ 
 
 ## <a name="process-taxi-data-using-spark-structured-streaming"></a>Zpracování dat taxislužby pomocí strukturovaného streamování Sparku
 
-Na domovské stránce Poznámkový blok Jupyter, vyberte __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ položka. Postupujte podle kroků v poznámkovém bloku pro streamování dat z Kafka a do služby Azure Cosmos DB pomocí strukturovaného streamování Sparku.
+Z [Poznámkový blok Jupyter](https://jupyter.org/) domovské stránky, vyberte __Stream-data-from-Kafka-to-Cosmos-DB.ipynb__ položka. Postupujte podle kroků v poznámkovém bloku pro streamování dat z Kafka a do služby Azure Cosmos DB pomocí strukturovaného streamování Sparku.
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili, jak pomocí strukturovaného streamování Sparku, najdete v následujících dokumentech Další informace o práci s Spark, Kafka a Azure Cosmos DB:
+Teď, když jste se naučili, jak pomocí strukturovaného streamování Apache Sparku, najdete v následujících dokumentech Další informace o práci s Apache Spark, Apache Kafka a Azure Cosmos DB:
 
-* [Jak používat streamování Sparku (DStream) s využitím systému Kafka](hdinsight-apache-spark-with-kafka.md)
-* [Začínáme s poznámkovými bloky Jupyter a Sparkem ve službě HDInsight](spark/apache-spark-jupyter-spark-sql.md)
+* [Jak používat streamování Apache Sparku (DStream) se Apache Kafka](hdinsight-apache-spark-with-kafka.md).
+* [Začínáme s poznámkovými bloky Jupyter a Apache Spark v HDInsight](spark/apache-spark-jupyter-spark-sql.md)
 * [Vítá vás Azure Cosmos DB](../cosmos-db/introduction.md)

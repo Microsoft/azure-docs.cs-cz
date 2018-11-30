@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 11/26/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3ce7c5111fa176bb7fa734f54084b9e14e7afbef
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1b66f40594d0dd578e2e5680fb0d5bb0f82f1241
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016042"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311802"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -76,6 +76,8 @@ Můžete mít až 1 000 e-mailových akcí do skupiny akcí. Zobrazit [tady info
 **ITSM** – můžete mít až 10 akce ITSM jedná o smluvní jednání akce skupiny ITSM vyžaduje připojení ITSM. Zjistěte, jak vytvořit [připojení ITSM](../log-analytics/log-analytics-itsmc-overview.md).
 
 **Aplikace logiky** – může mít až 10 akce aplikace logiky do skupiny akcí
+
+**Funkce App** – funkční klávesy pro aplikace Function App nakonfigurovaný jako akce jsou číst prostřednictvím rozhraní API funkce, které aktuálně vyžaduje v2 aplikace function App ke konfiguraci nastavení "AzureWebJobsSecretStorageType" k "files" aplikace, najdete v článku [ Změní na správu klíčů ve V2 funkce]( https://aka.ms/funcsecrets) Další informace.
 
 **Sada Runbook** -může obsahovat až 10 akce sada Runbook akce skupiny najdete [limity předplatného Azure](../azure-subscription-service-limits.md) omezení datových částí sady Runbook pro
 

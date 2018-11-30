@@ -9,17 +9,17 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: tyfox
-ms.openlocfilehash: d5d4c951bb104159730814f9b1b5820cb17f9f1a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4de4674d8a4c2b573df12648739971e460531636
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234778"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495090"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Správa clusterů Apache Hadoop v HDInsight pomocí rozhraní příkazového řádku Azure Classic
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Další informace o použití [rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md) spravovat clustery systému Apache Hadoop v Azure HDInsight. Rozhraní příkazového řádku classic je implementované v Node.js. Dá se použít na jakékoli platformě, která podporuje Node.js, včetně systému Windows, Mac a Linux.
+Další informace o použití [rozhraní příkazového řádku Azure Classic](../cli-install-nodejs.md) ke správě [Apache Hadoop](https://hadoop.apache.org/) clustery v Azure HDInsight. Rozhraní příkazového řádku classic je implementované v Node.js. Dá se použít na jakékoli platformě, která podporuje Node.js, včetně systému Windows, Mac a Linux.
 
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
@@ -74,7 +74,7 @@ azure group delete <Resource Group Name>
 ```
 
 ## <a name="scale-clusters"></a>Škálování clusterů
-Chcete-li změnit velikost clusteru Hadoop:
+Chcete-li změnit velikost clusteru Apache Hadoop:
 
 ```cli
 azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>

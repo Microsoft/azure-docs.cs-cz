@@ -8,24 +8,29 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 11/27/2018
 ms.author: luisca
-ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: f9ff3f66f3a73fbaf1a4c2ca280c85f4bde65444
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731389"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442025"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>Pojmenované rozpoznávání entit kognitivních dovedností
 
-**Rozpoznávání entit s názvem** dovednosti z textu extrahuje pojmenované entity. Dostupné entity zahrnují `person`, `location`, a `organization`.
+**Rozpoznávání entit s názvem** dovednosti z textu extrahuje pojmenované entity. Dostupné entity zahrnují `person`, `location` a `organization`.
 
 > [!NOTE]
-> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
+> <ul>
+> <li>Cognitive Search je ve veřejné verzi Preview. Funkce spuštění sady dovedností, extrakce a normalizace image jsou v současnosti nabízené zdarma. Ceny těchto funkcí oznámíme později. </li>
+> <li> Dovednosti rozpoznávání pojmenovaných entit je považován za "zastaralé" a nebude podporovat oficiálně od 15 února 2019. Postupujte podle doporučení uvedených v <a href="cognitive-search-skill-deprecated.md">zastaralé kognitivní dovednosti vyhledávací</a> stránky pro migraci podporované dovedností</li>
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
+
+## <a name="data-limits"></a>Omezení dat
+Maximální velikost záznamu by měla být 50 000 znaků pohledu `String.Length`. Pokud je potřeba rozdělit data před odesláním k extrakci klíčových frází, zvažte použití [dovedností rozdělit textové](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 
@@ -33,8 +38,8 @@ Parametry rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| Kategorie    | Pole kategorií, které má být extrahován.  Typy možných kategorií: `"Person"`, `"Location"`, `"Organization"`. Pokud je k dispozici žádná kategorie, budou vráceny všechny typy.|
-|defaultLanguageCode |  Kód jazyka vstupního textu. Jsou podporovány následující jazyky: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
+| categories    | Pole kategorií, které má být extrahován.  Typy možných kategorií: `"Person"`, `"Location"`, `"Organization"`. Pokud je k dispozici žádná kategorie, budou vráceny všechny typy.|
+|defaultLanguageCode |  Kód jazyka vstupního textu. Jsou podporovány následující jazyky: `de, en, es, fr, it`|
 | minimumPrecision  | Číslo mezi 0 a 1. Pokud přesnost je menší než tato hodnota, se vrátí entity. Výchozí hodnota je 0.|
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
@@ -58,7 +63,7 @@ Parametry rozlišují malá a velká písmena.
 ```json
   {
     "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
-    "categories": [ "Person"],
+    "categories": [ "Person", "Location", "Organization"],
     "defaultLanguageCode": "en",
     "inputs": [
       {
@@ -83,7 +88,7 @@ Parametry rozlišují malá a velká písmena.
         "recordId": "1",
         "data":
            {
-             "text": "This is a the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
+             "text": "This is the loan application for Joe Romero, he is a Microsoft employee who was born in Chile and then moved to Australia… Ana Smith is provided as a reference.",
              "languageCode": "en"
            }
       }
@@ -101,32 +106,38 @@ Parametry rozlišují malá a velká písmena.
       "data" : 
       {
         "persons": [ "Joe Romero", "Ana Smith"],
-        "locations": ["Seattle"],
-        "organizations":["Microsoft Corporation"],
+        "locations": ["Chile", "Australia"],
+        "organizations":["Microsoft"],
         "entities":  
         [
           {
             "category":"person",
             "value": "Joe Romero",
-            "offset": 45,
+            "offset": 33,
             "confidence": 0.87
           },
           {
             "category":"person",
             "value": "Ana Smith",
-            "offset": 59,
+            "offset": 124,
             "confidence": 0.87
           },
           {
             "category":"location",
-            "value": "Seattle",
-            "offset": 5,
+            "value": "Chile",
+            "offset": 88,
+            "confidence": 0.99
+          },
+          {
+            "category":"location",
+            "value": "Australia",
+            "offset": 112,
             "confidence": 0.99
           },
           {
             "category":"organization",
-            "value": "Microsoft Corporation",
-            "offset": 120,
+            "value": "Microsoft",
+            "offset": 54,
             "confidence": 0.99
           }
         ]
@@ -138,9 +149,10 @@ Parametry rozlišují malá a velká písmena.
 
 
 ## <a name="error-cases"></a>Případy chyb
-Pokud zadáte kód nepodporovaný jazyk, nebo pokud obsah neodpovídá jazyk je zadán, je Vrácená chyba a jsou extrahovány žádné entity.
+Pokud kód jazyka pro dokument není podporován, vrátí se chyba a jsou extrahovány žádné entity.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
 + [Definování dovedností](cognitive-search-defining-skillset.md)
++ [Dovednosti rozpoznávání entit](cognitive-search-skill-entity-recognition.md)

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 58992c80344902674b2b21a71b07925c752911a4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: eb0fa1edaadddfe055f3fc53a6d232e5a1293490
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230935"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424931"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy k Azure Multi-Factor Authentication
 
@@ -212,7 +212,7 @@ Tady je několik důvodů, že by mohla uživatelé vyzváni k registraci jejich
 
 Při pokusu o přihlášení k aplikaci nezaložené na prohlížeči, nainstalované na místním počítači, který nefunguje s účty, které vyžadují dvoustupňové ověření, dojde k chybě 0x800434D4L.
 
-Alternativní řešení pro tuto chybu je mít samostatné uživatelské účty pro správu související a operace bez oprávnění správce. Později můžete propojit poštovní schránky mezi účtem správce a účet bez oprávnění správce tak, aby můžete se přihlásit k aplikaci Outlook pomocí účtu bez oprávnění správce. Další podrobnosti o tomto řešení, zjistěte, jak [správce umožnit otevřít a zobrazit obsah z poštovní schránky uživatele](http://help.outlook.com/141/gg709759.aspx?sl=1).
+Alternativní řešení pro tuto chybu je mít samostatné uživatelské účty pro správu související a operace bez oprávnění správce. Později můžete propojit poštovní schránky mezi účtem správce a účet bez oprávnění správce tak, aby můžete se přihlásit k aplikaci Outlook pomocí účtu bez oprávnění správce. Další podrobnosti o tomto řešení, zjistěte, jak [správce umožnit otevřít a zobrazit obsah z poštovní schránky uživatele](https://help.outlook.com/141/gg709759.aspx?sl=1).
 
 ## <a name="next-steps"></a>Další postup
 

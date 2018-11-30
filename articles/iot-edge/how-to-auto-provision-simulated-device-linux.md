@@ -8,18 +8,18 @@ ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 703dedc69e491377ce0890610a2882ab95ae6e5a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 61da3b8e139cf5091aec4c1ab835c23fe319ea46
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51565067"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446237"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Vytvoření a zřízení hraničního zařízení s virtuální čip TPM na virtuální počítač s Linuxem
 
-Zařízení Azure IoT Edge může být automatické zřízení pomocí [služby Device Provisioning](../iot-dps/index.yml) stejně jako zařízení, která nejsou povolena edge. Pokud neznáte proces automatického zřizování, přečtěte si [konceptům automatického zřizování](../iot-dps/concepts-auto-provisioning.md) než budete pokračovat. 
+Zařízení Azure IoT Edge můžou být autoprovisioned pomocí [služby Device Provisioning](../iot-dps/index.yml) stejně jako zařízení, která nejsou povolena edge. Pokud neznáte proces autoprovisioning, přečtěte si [autoprovisioning koncepty](../iot-dps/concepts-auto-provisioning.md) než budete pokračovat. 
 
-Tento článek ukazuje, jak otestovat automatického zřizování na simulovaném zařízení Edge pomocí následujících kroků: 
+Tento článek ukazuje, jak otestovat autoprovisioning na simulovaném zařízení Edge pomocí následujících kroků: 
 
 * Vytvoření virtuálního počítače (VM) s Linuxem v technologii Hyper-V s Simulovaná Trusted Platform Module (TPM) pro zabezpečení hardwaru.
 * Vytvoření instance z IoT Hubu zařízení zřizování služby (DPS).
@@ -35,7 +35,7 @@ Kroky v tomto článku jsou určená pro účely testování.
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>Vytvoření virtuálního počítače s Linuxem pomocí virtuální čip TPM
 
-V této části vytvoříte nový virtuální počítač Linux v technologii Hyper-V, který má Simulovaná čipu TPM, takže ho můžete použít pro testování, jak funguje automatické zřizování pomocí IoT Edge. 
+V této části vytvoříte nový virtuální počítač Linux v technologii Hyper-V, který má Simulovaná čipu TPM, takže ho můžete použít pro testování, jak funguje autoprovisioning pomocí IoT Edge. 
 
 ### <a name="create-a-virtual-switch"></a>Vytvoření virtuálního přepínače
 
@@ -65,7 +65,7 @@ Pokud se zobrazí chyby při vytváření nového virtuálního přepínače, uj
    2. **Konfigurace sítí**: nastavte hodnotu **připojení** k virtuálnímu přepínači, který jste vytvořili v předchozí části. 
    3. **Možnosti instalace**: vyberte **nainstalovat operační systém ze souboru bitové spouštěcí kopie** a přejděte do souboru image disku, který jste uložili místně.
 
-Zobrazení minut pro vytvoření nového virtuálního počítače může trvat. 
+Může trvat několik minut pro vytvoření nového virtuálního počítače. 
 
 ### <a name="enable-virtual-tpm"></a>Povolit virtuální čip TPM
 
@@ -136,7 +136,7 @@ Vědět, službě Device Provisioning **rozsah ID** a zařízení **ID registrac
 
 Aby modul runtime IoT Edge k automatickému zřízení zařízení potřebuje přístup do čipu TPM. 
 
-Následujícím postupem TPM přístup. Alternativně můžete provést totéž přepsáním nastavení systemd tak, aby *iotedge* služba může běžet jako uživatel root. 
+Můžete poskytnout přístup TPM na modul runtime IoT Edge tak, že přepíšete systemd nastavení tak, aby *iotedge* služby má oprávnění root. Pokud nechcete, aby ke zvýšení oprávnění služby, můžete použít následující kroky také ručně poskytnout přístup čipu TPM. 
 
 1. Najít cestu k modulu hardwarového TPM na vašem zařízení a uložte ho jako lokální proměnné. 
 
@@ -180,8 +180,10 @@ Následujícím postupem TPM přístup. Alternativně můžete provést totéž 
    Úspěšný výstup by měl vypadat nějak takto:
 
    ```output
-   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
+   crw-rw---- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
+
+   Pokud se nezobrazí, zda byla použita správná oprávnění, zkuste restartovat systém aktualizovat udev. 
 
 8. Otevřete soubor přepíše modul runtime IoT Edge. 
 
@@ -224,7 +226,7 @@ Zkontrolujte, zda je spuštěn modul runtime IoT Edge.
    sudo systemctl status iotedge
    ```
 
-Pokud vidíte chyby zřizování, může být, že změny konfigurace ještě nevstoupilo v platnost. Restartujte démona zisk IoT Edge. 
+Pokud vidíte chyby zřizování, může být, že změny konfigurace ještě nevstoupilo v platnost. Restartujte démona IoT Edge znovu. 
 
    ```bash
    sudo systemctl daemon-reload
@@ -234,7 +236,7 @@ Nebo, zkuste restartovat virtuální počítač zobrazíte, pokud se změny proj
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
-Pokud modul runtime byl úspěšně spuštěn, můžete přejít do služby IoT Hub a podívejte se, že nové zařízení byla automaticky zřízena a je připraven ke spuštění moduly IoT Edge. 
+Pokud modul runtime byl úspěšně spuštěn, můžete přejít do služby IoT Hub a najdete v článku, že byl automaticky zřídit nové zařízení. Vaše zařízení je nyní připraven ke spuštění moduly IoT Edge. 
 
 Kontrola stavu démona IoT Edge.
 
@@ -257,4 +259,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Další postup
 
-Proces registrace služby Device Provisioning umožňuje nastavit ID zařízení a značky dvojčat zařízení ve stejnou dobu, jak zřídit nové zařízení. Tyto hodnoty můžete cílit na jednotlivá zařízení nebo skupin pomocí automatické správy zařízení. Zjistěte, jak [nasazení a monitorování modulů při škálování na portálu Azure IoT Edge](how-to-deploy-monitor.md) nebo [pomocí Azure CLI](how-to-deploy-monitor-cli.md)
+Proces registrace služby Device Provisioning umožňuje nastavit ID zařízení a značky dvojčat zařízení ve stejnou dobu, jak zřídit nové zařízení. Tyto hodnoty můžete cílit na jednotlivá zařízení nebo skupin pomocí automatické správy zařízení. Zjistěte, jak [nasazení a monitorování modulů při škálování na portálu Azure IoT Edge](how-to-deploy-monitor.md) nebo [pomocí Azure CLI](how-to-deploy-monitor-cli.md).

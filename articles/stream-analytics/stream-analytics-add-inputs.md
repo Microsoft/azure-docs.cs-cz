@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 219fe9e8f91f9b02e64b3b44ab4301f77820561f
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: b3b7b7374b02210f44fde408f28fd0378bf9bd12
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648951"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310850"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Vysvětlení vstupy pro Azure Stream Analytics
 
@@ -27,7 +27,7 @@ Stream Analytics je prvotřídní integrace z tři druhy prostředků jako vstup
 
 Tyto prostředky vstupní může existovat ve stejném předplatném Azure jako svou úlohu Stream Analytics, nebo z jiného předplatného.
 
-Můžete použít [webu Azure portal](stream-analytics-quick-create-portal.md#configure-input-to-the-job), [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [rozhraní REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), a [sady Visual Studio](stream-analytics-tools-for-visual-studio-install.md)vytvářet, upravovat a testovat vstupy úlohy Stream Analytics.
+Můžete použít [webu Azure portal](stream-analytics-quick-create-portal.md#configure-job-input), [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [rozhraní REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input), a [sady Visual Studio](stream-analytics-tools-for-visual-studio-install.md)vytvářet, upravovat a testovat vstupy úlohy Stream Analytics.
 
 ## <a name="stream-and-reference-inputs"></a>Stream a odkaz na vstupy
 Jak se data odesílají do zdroje dat, má používané úlohy Stream Analytics a zpracovávat v reálném čase. Vstupy jsou rozděleny do dvou typů: data datového proudu vstupů a referenční datové výstupy.

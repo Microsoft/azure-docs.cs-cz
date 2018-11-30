@@ -1,5 +1,5 @@
 ---
-title: Nelze provést připojení k vzdálené ploše na virtuálních počítačích Azure protože zakázané DHCP | Dokumentace Microsoftu
+title: Nelze vzdáleně připojit k Azure Virtual Machines vzhledem k tomu, že je zakázané DHCP | Dokumentace Microsoftu
 description: Informace o řešení potíží s RDP problém, který je způsobeno tím, služba Klient DHCP je zakázaný ve službě Microsoft Azure. | Dokumentace Microsoftu
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: c1a6cf8972a745379098983614c6dd25bcd11cc6
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: a469fe0d6057d865ec006d9eb14ad95f2d4b7005
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51708713"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308427"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nelze RDP na virtuálních počítačích Azure, protože služba Klient DHCP je zakázána.
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 65dd4b172c0913e11bb7f25909eb062e93a4a03a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e78f0d2012cf4f6152e69fff1bab04f827c0eef7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015226"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310884"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>Postup konfigurace Apache Kafka v HDInsight pro automatické vytvoření témata
 
-Ve výchozím nastavení Kafka v HDInsight neumožňuje vytvoření automatického tématu. Můžete povolit automatického vytváření témat pro stávajících clusterů pomocí nástroje Ambari. Povolení automatického vytváření témat můžou také při vytváření nového clusteru Kafka pomocí šablony Azure Resource Manageru.
+Ve výchozím nastavení [Apache Kafka](https://kafka.apache.org/) na HDInsight neumožňuje vytvoření automatického tématu. Můžete povolit automatického vytváření témat pro existující clustery pomocí [Apache Ambari](https://ambari.apache.org/). Povolení automatického vytváření témat můžou také při vytváření nového clusteru Kafka pomocí šablony Azure Resource Manageru.
 
-## <a name="ambari-web-ui"></a>Ambari Web UI
+## <a name="apache-ambari-web-ui"></a>Apache Ambari webového uživatelského rozhraní
 
 Pokud chcete povolit automatické tématu Vytvoření v existujícím clusteru prostřednictvím webového uživatelského rozhraní Ambari, postupujte následovně:
 
@@ -56,7 +56,7 @@ Pokud chcete povolit automatické tématu Vytvoření v existujícím clusteru p
     ![Obrázek výběru restartování](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]
-> Můžete také nastavit hodnoty Ambari pomocí rozhraní Ambari REST API. To je obvykle obtížnější, protože je nutné provést několik volání REST, chcete-li načíst aktuální konfiguraci, upravit ho, atd. Další informace najdete v tématu [HDInsight Správa clusterů pomocí rozhraní Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentu.
+> Můžete také nastavit hodnoty Ambari pomocí rozhraní Ambari REST API. To je obvykle obtížnější, protože je nutné provést několik volání REST, chcete-li načíst aktuální konfiguraci, upravit ho, atd. Další informace najdete v tématu [HDInsight Správa clusterů pomocí rozhraní REST API Apache Ambari](../hdinsight-hadoop-manage-ambari-rest-api.md) dokumentu.
 
 ## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
@@ -79,7 +79,7 @@ Při vytváření clusteru Kafka pomocí šablony Azure Resource Manageru, můž
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste zjistili, jak můžete povolit automatické tématu vytváření pro Kafka v HDInsight. Další informace o práci s platformou Kafka najdete v následujících tématech:
+V tomto dokumentu jste zjistili, jak můžete povolit automatické tématu vytváření pro Apache Kafka v HDInsight. Další informace o práci s platformou Kafka najdete v následujících tématech:
 
-* [Analýza protokolů Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replikace dat mezi clustery Kafka](apache-kafka-mirroring.md)
+* [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
+* [Replikace dat mezi clustery Apache Kafka](apache-kafka-mirroring.md)

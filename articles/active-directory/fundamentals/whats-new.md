@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1377280cf3b7272d710b47322b9b27ff8cb36327
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: dc4e421808ab0f79070224edea4b75f527affaf0
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707159"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426233"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Co je nového ve službě Azure Active Directory?
 
->Dostanete o tom, kdy revidovat tuto stránku aktualizace přidáním tohoto [URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us/) do vaší ![ikona RSS](./media/whats-new/feed-icon-16x16.png) kanálů.
+>Dostanete o tom, kdy revidovat tuto stránku aktualizace zkopírováním a vložením tuto adresu URL: `https://docs.microsoft.com/api/search/rss?search=%22release+notes+for+azure+AD%22&locale=en-us` do vaší ![ikona RSS](./media/whats-new/feed-icon-16x16.png) kanálů.
 
 Azure AD obdrží vylepšení průběžně. Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek poskytuje informace o:
 
@@ -148,7 +148,7 @@ Přístup k této funkci a další informace najdete v tématu [Azure Active Dir
 **Kategorie služby:** Moje aplikace  
 **Funkce produktu:** jednotného přihlašování
 
-Podívejte se na nový plán nasazení, který je k dispozici pro Moje aplikace přístupového panelu (http://aka.ms/deploymentplans).
+Podívejte se na nový plán nasazení, který je k dispozici pro Moje aplikace přístupového panelu (https://aka.ms/deploymentplans).
 Moje aplikace přístupový panel poskytuje uživatelům na jednom místě vyhledat a získat přístup k jejich aplikacím. Tento portál poskytuje také uživatelům samoobslužné služby příležitosti, jako je žádost o přístup k aplikacím a skupinám nebo správy přístupu k těmto prostředkům jménem jiných uživatelů.
 
 Další informace najdete v tématu [novinky na portálu Moje aplikace?](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)

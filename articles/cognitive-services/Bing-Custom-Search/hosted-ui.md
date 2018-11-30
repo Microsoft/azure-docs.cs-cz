@@ -3,19 +3,19 @@ title: Prohledávání webového serveru, použijte prostředí vlastní vyhled�
 titlesuffix: Azure Cognitive Services
 description: Popisuje, jak nakonfigurovat vlastní vyhledávání Bingu hostované uživatelského rozhraní.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: v-brapel
-ms.openlocfilehash: 77845cb60dac707326acdb08b0198f8725a36f62
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: aahi
+ms.openlocfilehash: c71597cf540cca67b9558ce28d20ce1d21ae0243
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48813970"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424982"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí uživatelského rozhraní
 
@@ -29,7 +29,7 @@ Ke konfiguraci prostředí uživatelského rozhraní pro vaši webovou aplikaci,
   
 2. Klikněte na instanci vlastního vyhledávání. Vytvoření instance najdete v tématu [vytvořit první instanci vlastního vyhledávání Bingu](quick-start.md).  
 
-3. Klikněte na tlačítko **hostované uživatelského rozhraní** kartu.  
+3. Klikněte na kartu **Hostované uživatelské rozhraní**.  
   
 4. Vyberte rozložení.
   
@@ -37,13 +37,13 @@ Ke konfiguraci prostředí uživatelského rozhraní pro vaši webovou aplikaci,
   - Výsledky pouze &mdash; toto rozložení zobrazuje jenom výsledky hledání. Toto rozložení nezobrazí vyhledávací pole. Je nutné zadat vyhledávací dotaz tak, že přidáte parametr dotazu (& q =\<řetězec dotazu >) na adrese URL požadavku na fragment kódu jazyka JavaScript nebo koncový bod odkazu HTML.
   - POP – selhání &mdash; toto rozložení poskytuje vyhledávací pole a zobrazí výsledky hledání v posuvné překrytí.
       
-5. Vyberte barvu motivu. Je to možné motivy jsou: 
+5. Vyberte barevný motiv. Je to možné motivy jsou: 
   
   - Classic
   - Tmavý
   - Snímky měst modrá
 
-  Klikněte na jednotlivé motivy, které chcete zobrazit, jaký motiv funguje nejlépe s vaší webovou aplikací. Pokud je potřeba optimalizovat barevný motiv k lepší integraci s vaší webovou aplikací, klikněte na tlačítko **vlastní motiv**. Ne všechny barva vaše konfigurace vztahovat na všechny motivy rozložení. Chcete-li změnit barvu, zadejte do příslušného textového pole barvy RGB HEXADECIMÁLNÍ hodnotu (například #366eb8). Nebo, klikněte na tlačítko barvy a potom klikněte na odstín, který vám vyhovuje. 
+  Klikněte na jednotlivé motivy, které chcete zobrazit, jaký motiv funguje nejlépe s vaší webovou aplikací. Pokud potřebujete barevný motiv doladit, aby se lépe integroval s vaší webovou aplikací, klikněte na **Přizpůsobit motiv**. Ne všechny konfigurace barev je možné použít ve všech motivech rozložení. Pokud chcete změnit barvu, zadejte do odpovídajícího textového pole šestnáctkovou hodnotu RGB barvy (například #366eb8). Nebo, klikněte na tlačítko barvy a potom klikněte na odstín, který vám vyhovuje. 
   
   Po změně barvy, podívejte se jak tato změna má vliv na pravé straně příkladu ve verzi preview. Vždy můžete kliknout na **obnovit výchozí** se můžete vrátit k výchozí barvy pro vybraný motiv.
 
@@ -105,7 +105,7 @@ Ke konfiguraci prostředí uživatelského rozhraní pro vaši webovou aplikaci,
 > [!NOTE]
 > Při provádění změn pro vlastní prostředí konfigurace uživatelského rozhraní, poskytuje na podokno na pravé straně visual odkaz pro změny. Zobrazené výsledky nejsou skutečné výsledky pro vaši instanci.
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="consume-custom-ui"></a>Využívat vlastního uživatelského rozhraní
 
@@ -143,5 +143,5 @@ Další informace, včetně vaší vlastní ID konfigurace, přejděte na **konc
 
 ## <a name="next-steps"></a>Další postup
 
-- [Použití dekorace značek zvýraznění textu](./hit-highlighting.md)
-- [Stránka webové stránky](./page-webpages.md)
+- [Zvýraznění textu pomocí dekoračních značek](./hit-highlighting.md)
+- [Stránkování webových stránek](./page-webpages.md)

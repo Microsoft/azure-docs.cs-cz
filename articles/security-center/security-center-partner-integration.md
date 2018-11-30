@@ -3,7 +3,7 @@ title: Integrace řešení zabezpečení v Azure Security Center | Dokumentace M
 description: Zjistěte, jak Azure Security Center umožňuje integrací s partnerskými řešeními zvýšit celkové zabezpečení vašich prostředků Azure.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/20/2018
-ms.author: terrylan
-ms.openlocfilehash: 1abf9efb5c0bed205ce5b87b1f055c14a11ce9ec
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.date: 11/26/2018
+ms.author: rkarlin
+ms.openlocfilehash: bbdda5012e6132940d00ae23a6d26469b0216fd0
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245003"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335432"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -47,14 +47,17 @@ Mezi integrovaná řešení zabezpečení v současné době patří:
 | Endpoint Protection (Ochrana koncových bodů)               | Platformy                             | Instalace Security Center | Zjišťování Security Center |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
 | Windows Defender (antimalware Microsoftu)                  | Windows Server 2016                   | Ne, součást operačního systému           | Ano                       |
-| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 | Prostřednictvím rozšíření                | Ano                       |
+| Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření                | Ano                       |
 | Trend Micro – všechny verze         | Řada Windows Serverů                 | Ne                           | Ano                       |
 | Symantec v12.1.1100+              | Řada Windows Serverů                 | Ne                           | Ano                       |
 | McAfee v10+                       | Řada Windows Serverů                 | Ne                           | Ano                       |
 | Kaspersky                         | Řada Windows Serverů                 | Ne                           | Ne                        |
 | Sophos                            | Řada Windows Serverů                 | Ne                           | Ne                        |
 
-
+> [!NOTE]
+> Zjišťování nástroje System Center Endpoint Protection (SCEP) na virtuálním počítači s Windows serverem 2008 R2 vyžaduje SCEP k instalaci prostředí PowerShell 3.0 (nebo horním verze).
+>
+>
 
 ## <a name="how-security-solutions-are-integrated"></a>Způsob integrace řešení zabezpečení
 Řešení zabezpečení Azure nasazená ze služby Security Center se automaticky připojí. Můžete také připojit další zdroje dat zabezpečení, včetně:

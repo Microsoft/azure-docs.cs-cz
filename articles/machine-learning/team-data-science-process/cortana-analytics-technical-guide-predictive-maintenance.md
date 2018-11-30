@@ -2,25 +2,21 @@
 title: Prediktivní údržby v leteckém průmyslu s Azure – technický průvodce řešení Cortana Intelligence | Dokumentace Microsoftu
 description: Technický průvodce do šablony řešení s Microsoft Cortana Intelligence pro účely prediktivní údržby v leteckém průmyslu, nástroje a doprava.
 services: machine-learning
-documentationcenter: ''
-author: fboylu
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 2c4d2147-0f05-4705-8748-9527c2c1f033
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: fboylu
-ms.openlocfilehash: 28900c39e658a2a8c66b2ded6f2d70b50bf17e80
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=fboylu, ms.author=fboylu)
+ms.openlocfilehash: 904e9c22f23255f1bee7f532d7f577c7cd457778
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231511"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443742"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Šablony řešení Cortana Intelligence pro účely prediktivní údržby v leteckém průmyslu a další provozovny – technický průvodce
 

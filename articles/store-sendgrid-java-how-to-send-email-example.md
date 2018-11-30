@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: 400c8ac229e00e818e336f1c47b126d3e8a2d155
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: c2f2a6e5f2dd551cfb300d333081874fef2f405c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253835"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421943"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Odesílání e-mailu pomocí SendGrid z Javy v nasazení Azure
 Následující příklad ukazuje, jak můžete SendGrid k odesílání e-mailů z webové stránky hostované v Azure. Výsledné aplikace vyzve uživatele k e-mailu hodnot, jak je znázorněno na následujícím snímku obrazovky.
@@ -32,7 +32,7 @@ Výsledný e-mailu bude vypadat podobně jako na následujícím snímku obrazov
 
 Bude potřeba ji pomocí kódu v tomto tématu následujícím způsobem:
 
-1. Třeba získat JAR javax.mail z <http://www.oracle.com/technetwork/java/javamail/index.html>.
+1. Třeba získat JAR javax.mail z <https://www.oracle.com/technetwork/java/javamail/index.html>.
 2. Přidáte kromě souborů JAR vaše cesta sestavení Java.
 3. Pokud používáte Eclipse k vytvoření této aplikace v Javě, můžete zahrnout knihovny SendGrid ve vašem nasazení souboru aplikace (WAR) pomocí funkce sestavení nasazení pro Eclipse. Pokud nepoužíváte Eclipse k vytvoření této aplikace v Javě, zkontrolujte knihoven jsou zahrnuté ve stejné roli Azure jako vaši aplikaci v Javě a přidány do cesty třídy vaší aplikace.
 
@@ -45,7 +45,7 @@ Následující kód ukazuje, jak vytvořit webový formulář data uživatele k 
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -101,7 +101,7 @@ Následující kód, který se volá, když dokončíte formulář v nástrojíc
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" import="javax.activation.*, javax.mail.*, javax.mail.internet.*, java.util.Date, java.util.Properties" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">

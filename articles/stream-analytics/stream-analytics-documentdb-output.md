@@ -4,17 +4,16 @@ description: Tento článek popisuje, jak používat Azure Stream Analytics se u
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 8dc85c55dd67d8acd394d7922e947c91234ef23b
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.date: 11/21/2017
+ms.openlocfilehash: 9bdb012db2e7502d765fd342a636591bbbcb2c6c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957123"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311734"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Výstup Azure Stream Analytics ke službě Azure Cosmos DB  
 Stream Analytics můžete směrovat [služby Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) výstup ve formátu JSON, povolení archivace a s nízkou latencí dotazy na data nestrukturovaných dat JSON. Tento dokument uvádí i některé doporučené postupy pro implementaci této konfigurace.
@@ -26,7 +25,10 @@ Pro ty, kteří zkušenosti se službou Cosmos DB, podívejte se na [výuky pro 
 > Další rozhraní API služby Azure Cosmos DB se zatím nepodporují. Pokud bod Azure Stream Analytics k účtům Azure Cosmos DB vytvořené pomocí jiných rozhraní API, nemusí být data uložená správně. 
 
 ## <a name="basics-of-cosmos-db-as-an-output-target"></a>Základy služby Cosmos DB jako cíl výstupu
-Výstup Azure Cosmos DB ve službě Stream Analytics, který umožňuje zapisovat datový proud zpracování výsledky jako výstup ve formátu JSON do vašeho kolekcí Cosmos DB. Stream Analytics nepodporuje vytváření kolekcí v databázi, místo toho by bylo potřeba vytvořit předem. Je to tak, aby fakturačních nákladů kolekce Cosmos DB se řídí vám a tak, aby mohli vyladit výkon, konzistence a kapacitu vaší kolekce přímo pomocí [API služby Cosmos DB](https://msdn.microsoft.com/library/azure/dn781481.aspx). 
+Výstup Azure Cosmos DB ve službě Stream Analytics, který umožňuje zapisovat datový proud zpracování výsledky jako výstup ve formátu JSON do vašeho kolekcí Cosmos DB. Stream Analytics nepodporuje vytváření kolekcí v databázi, místo toho by bylo potřeba vytvořit předem. Je to tak, aby fakturačních nákladů kolekce Cosmos DB se řídí vám a tak, aby mohli vyladit výkon, konzistence a kapacitu vaší kolekce přímo pomocí [API služby Cosmos DB](https://msdn.microsoft.com/library/azure/dn781481.aspx).
+
+> [!Note]
+> 0.0.0.0 je nutné přidat do seznamu povolených IP adres z vaší brány firewall služby Azure Cosmos DB.
 
 Některé možnosti kolekce Cosmos DB je podrobně popsaný níže.
 

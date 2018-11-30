@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 400cb16e4f4440283a783116c4ee843bc0a7344c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d9d34441f36ea60141ed2659b3e33efdaac94ad3
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248567"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497126"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
 
@@ -64,7 +64,7 @@ RTVS vylepšuje pracovního postupu R tím, že nabízí nástroje, jako [intera
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Odesílání úloh do clusteru služby HDInsight ML
 
-Pomocí klienta Microsoft ML Server nebo Microsoft R v počítači Windows pomocí klienta PuTTY, můžete vytvořit výpočetní kontext, který se spustí distribuované `RevoScaleR` funkcí z místního klienta do clusteru HDInsight. Použití `RxSpark` vytvoření výpočetního kontextu zadání vašeho uživatelského jména, Hadoop cluster hraniční uzel, přepínače SSH a tak dále.
+Pomocí klienta Microsoft ML Server nebo Microsoft R v počítači Windows pomocí klienta PuTTY, můžete vytvořit výpočetní kontext, který se spustí distribuované `RevoScaleR` funkcí z místního klienta do clusteru HDInsight. Použití `RxSpark` vytvoření výpočetního kontextu zadání vašeho uživatelského jména, cluster Apache Hadoop hraniční uzel, přepínače SSH a tak dále.
 
 1. Chcete-li najít název hostitele hraničního uzlu, otevřete podokno vaší služby ML HDInsight clusteru v Azure a pak vyberte **Secure Shell (SSH)** v horní nabídce podokno s přehledem.
 
@@ -132,7 +132,7 @@ Pomocí klienta Microsoft ML Server nebo Microsoft R v počítači Windows pomoc
 
         ![Zkopírovaný soubor](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
 
-6. Až budete hotovi, pomocí aktuálního kontextu Sparku, je potřeba ho zastavit. Nelze spustit více kontexty najednou.
+6. Jakmile budete hotovi, pomocí aktuálního kontextu Apache Sparku, je nutné zastavit. Nelze spustit více kontexty najednou.
 
     ```R
     rxStopEngine(mySparkCluster)

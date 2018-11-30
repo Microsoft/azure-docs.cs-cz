@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 36099a49cc9e6c810727606bb73d2669f1e0df79
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 9c5cdf6c2baf4197b693b522848fc1fd04db7abf
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985688"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422506"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
 
@@ -42,7 +42,7 @@ Můžete použít tyto zálohy na:
 
 ## <a name="how-long-are-backups-kept"></a>Jak dlouho se zálohy uchovávat
 
-Každá záloha databáze SQL má výchozí dobu uchování, která je založená na úrovni služeb databáze a liší [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Můžete aktualizovat období uchování zálohy pro databázi. Zobrazit [období uchování zálohy změnu](#how-to-change-backup-retention-period) další podrobnosti.
+Každá databáze SQL má výchozí období uchovávání záloh mezi 7 až 35 dnů, na kterých závisí [nákupní model a úroveň služeb](#pitr-retention-period). Můžete aktualizovat období uchování zálohy pro databázi na logickém serveru Azure (Tato funkce bude brzy povolená ve spravované instanci). Zobrazit [období uchování zálohy změnu](#how-to-change-backup-retention-period) další podrobnosti.
 
 Když odstraníte databáze, databáze SQL zachovají zálohy stejným způsobem, který by tomu bylo online databáze. Například pokud odstraníte databázi Basic, který má dobu uchování o délce sedm dní, zálohy, která je starší čtyř dní uložená pro další tři dny.
 

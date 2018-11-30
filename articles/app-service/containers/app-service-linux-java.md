@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: a6752f9127a176eef9fd03e7ffddfa7450772def
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 8d15aeb92911a26a9a42a0449a24e8c0fee4467b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037655"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497335"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -28,6 +28,10 @@ Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře v Javě p
 ## <a name="logging-and-debugging-apps"></a>Protokolování a ladění aplikací
 
 Sestavy o výkonu, provoz vizualizace a kontroly stavu jsou k dispozici pro aplikaci eeach prostřednictvím webu Azure portal. Zobrazit [Přehled diagnostiky služby Azure App Service](/azure/app-service/app-service-diagnostics) Další informace o tom, jak přistupovat a používat tyto diagnostické nástroje.
+
+## <a name="application-performance-monitoring"></a>Funkce Application performance monitoring
+
+Zobrazit [funkce Application performance monitoring nástroje s aplikacemi v Javě ve službě Azure App Service v Linuxu](how-to-java-apm-monitoring.md) pro podrobné pokyny ke konfiguraci New Relic a AppDynamics s Java aplikace spuštěné ve službě App Service v Linuxu.
 
 ### <a name="ssh-console-access"></a>Přístup ke konzole SSH 
 
@@ -124,7 +128,7 @@ Alternativně můžete nakonfigurovat nastavení aplikace pomocí modulu plug-in
 </appSettings> 
 ```
 
-## <a name="secure-application"></a>Zabezpečení aplikace
+## <a name="secure-applications"></a>Zabezpečené aplikace
 
 Aplikace Java spuštěná ve službě App Service pro Linux mají stejnou sadu [osvědčené postupy zabezpečení](/azure/security/security-paas-applications-using-app-services) jako ostatní aplikace. 
 
@@ -168,7 +172,7 @@ U zdrojů dat na úrovni aplikace:
 
 1. Přidat `context.xml` souboru, pokud není k dispozici pro webové aplikace a přidejte ho `META-INF` adresáři svůj soubor WAR při sestavení projektu.
 
-2. V tomto souboru, přidejte `Context` položka cesty zdroje dat odkaz na adresu JNDI. Na
+2. V tomto souboru, přidejte `Context` položka cesty zdroje dat odkaz na adresu JNDI.
 
     ```xml
     <Context>
@@ -192,7 +196,7 @@ U zdrojů dat na úrovni aplikace:
 
 Sdílené prostředky na úrovni serveru:
 
-1. Zkopírujte obsah `/usr/local/tomcat/conf` do `/home/tomcat` ve vaší App Service pro Linux instance pomocí protokolu SSH, pokud konfigurace existuje ještě nemáte.
+1. Zkopírujte obsah `/usr/local/tomcat/conf` do `/home/tomcat/conf` ve vaší App Service pro Linux instance pomocí protokolu SSH, pokud konfigurace existuje ještě nemáte.
 
 2. Přidat kontext, který má vaše `server.xml`
 
@@ -231,7 +235,7 @@ Sdílené prostředky na úrovni serveru:
 
     3. Připojení na místní port tunelového propojení s vašeho klienta protokolu SFTP a odesílání souborů do `/home/tomcat/lib` složky.
 
-5. Restartování aplikace App Service pro Linux. Tomcat resetuje `CATALINA_HOME` k `/home/tomcat` a použít aktualizovanou konfiguraci a třídy.
+5. Restartování aplikace App Service pro Linux. Tomcat resetuje `CATALINA_HOME` k `/home/tomcat/conf` a použít aktualizovanou konfiguraci a třídy.
 
 ## <a name="docker-containers"></a>Kontejnery Dockeru
 

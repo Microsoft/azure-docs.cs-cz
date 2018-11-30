@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 92f9732adadc4eb580d89f8a43cf76177450aeb7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 50edabb395380c8b0185736205834dd65e47317f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160738"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425249"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Správa hesel – nejčastější dotazy
 
@@ -35,7 +35,7 @@ Tyto nejčastější dotazy je rozdělený do následujících částí:
 
 * **Otázka: Moje uživatelé registrovat svá vlastní data pro resetování hesla?**
 
-  > **Odpověď:** Ano. Resetování hesla je povoleno a pokud jsou licencované, uživatel může přejít na portál pro registraci resetování hesel (https://aka.ms/ssprsetup) k registraci jejich ověřovacích informací. Uživatelé můžou taky zaregistrovat přes přístupový Panel (http://myapps.microsoft.com). Registrace přes přístupový Panel, vyberte jejich profilový obrázek, vyberte potřebují **profilu**a pak vyberte **zaregistrovat pro resetování hesla** možnost.
+  > **Odpověď:** Ano. Resetování hesla je povoleno a pokud jsou licencované, uživatel může přejít na portál pro registraci resetování hesel (https://aka.ms/ssprsetup) k registraci jejich ověřovacích informací. Uživatelé můžou taky zaregistrovat přes přístupový Panel (https://myapps.microsoft.com). Registrace přes přístupový Panel, vyberte jejich profilový obrázek, vyberte potřebují **profilu**a pak vyberte **zaregistrovat pro resetování hesla** možnost.
   >
   >
 * **Otázka: je-li povolit heslo resetovat pro skupinu a potom se rozhodnete povolit všem uživatelům se Moje uživatelů vyžaduje znovu zaregistrovat?**
@@ -170,7 +170,7 @@ Tyto nejčastější dotazy je rozdělený do následujících částí:
   >
 * **Otázka: jsem nakonfiguroval Moje zásady budou muset uživatelé použít bezpečnostní otázky pro obnovení, ale Azure správci zdá se, že se konfigurují jinak.**
 
-  > **Odpověď:** jedná se o očekávané chování. Microsoft vynucuje přísné výchozí zásady resetování hesla dvě brány pro libovolnou roli správce Azure. To zabrání tomu, aby správce pomocí bezpečnostních otázek. Další informace o těchto zásadách v [zásady hesel a omezení v Azure Active Directory](concept-sspr-policy.md) článku.
+  > **Odpověď:** jedná se o očekávané chování. Microsoft pro všechny role správců Azure vynucuje přísné výchozí zásady resetování hesel. To zabrání tomu, aby správce pomocí bezpečnostních otázek. Další informace o těchto zásadách v [zásady hesel a omezení v Azure Active Directory](concept-sspr-policy.md) článku.
   >
   >
 * **Otázka: Pokud uživatel zaregistroval více než maximální počet otázek požadovaných k resetování, jak se na otázky zabezpečení, které vybírají během obnovení?**

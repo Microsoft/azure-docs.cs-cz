@@ -1,5 +1,5 @@
 ---
-title: Import dat do nástroje Machine Learning Studio z jiného experimentu | Dokumentace Microsoftu
+title: Import dat do nástroje Machine Learning Studio z jiného experimentu – Azure | Dokumentace Microsoftu
 description: Postup uložení trénovacích dat v Azure Machine Learning Studio a používat ho v jiného experimentu.
 keywords: Importujte dat, data, zdroje dat, trénovacích dat
 services: machine-learning
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: cb024f757772ec22adcf4513c422d41628ab7360
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 098459c3c2c8402a4dbcefd88fd79d0883611053
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265147"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308033"
 ---
 # <a name="import-your-data-into-azure-machine-learning-studio-from-another-experiment"></a>Import dat do nástroje Azure Machine Learning Studio z jiného experimentu
 

@@ -1,5 +1,5 @@
 ---
-title: Zobrazení a odstranění dat z Galerie Azure AI | Dokumentace Microsoftu
+title: Zobrazení a odstranění dat z Galerie Azure AI – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Můžete exportovat a odstraňovat svá data v rámci produktu uživatele z Galerie Azure AI pomocí rozhraní nebo rozhraní API katalogu AI galerie. V tomto článku se dozvíte, jak.
 services: machine-learning
 author: ericlicoding
@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.component: studio
 ms.topic: conceptual
 ms.date: 05/25/2018
-ms.openlocfilehash: 472a27fb129f8ed9d4745610bde17fb2b69326c3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 6603428599a84a265566fb98da0b151ab4962f81
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264824"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314452"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Zobrazení a odstranit data uživatelů v rámci produktu z Galerie Azure AI
 

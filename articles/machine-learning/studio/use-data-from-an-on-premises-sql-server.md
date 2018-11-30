@@ -1,6 +1,6 @@
 ---
-title: Použít místní SQL Server ve službě Azure Machine Learning | Dokumentace Microsoftu
-description: Data z místní databáze systému SQL Server použijte k provádění pokročilých analýz Azure Machine Learning.
+title: V místním SQL serverem a Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Data z místní databáze systému SQL Server použijte k provádění pokročilých analýz Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.openlocfilehash: 83ec812f18e7e47f30db79a6d665d60fae9e0e5d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: d28c39ef909cffdc1ed907e05b60e61f02353710
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263209"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310952"
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>Provádění pokročilých analýz dat místní databáze SQL Serveru pomocí služby Azure Machine Learning
 
 Často podniky, které fungují s místními daty by chtěli využívat škálování a flexibility cloudu k jejich počítači strojové učení. Ale nebudete chtít narušit jejich aktuální obchodní procesy a pracovní postupy díky přesunu jejich místní data do cloudu. Azure Machine Learning teď podporuje čtení dat z místní databáze systému SQL Server a pak trénování a vyhodnocování modelu s těmito daty. Už máte ručně zkopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho **Import dat** modulu v nástroji Azure Machine Learning Studio teď najdete přímo z místní databáze SQL serveru pro trénování a vyhodnocování úlohy.
 
-Tento článek poskytuje přehled o tom, jak příchozího přenosu dat místní data SQL serveru do Azure Machine Learning. Předpokládá, že jste obeznámeni s koncepty Azure Machine Learning, jako jsou pracovní prostory, moduly, datové sady, experimenty, *atd*.
+Tento článek poskytuje přehled o tom, jak příchozího přenosu dat místní data SQL serveru do Azure Machine Learning Studio. Předpokládá, že jste obeznámeni s koncepty Azure Machine Learning, jako jsou pracovní prostory, moduly, datové sady, experimenty, *atd*.
 
 > [!NOTE]
 > Tato funkce není k dispozici pro bezplatné pracovní prostory. Další informace o úrovních a Machine Learning – ceny najdete v tématu [Azure Machine Learning – ceny](https://azure.microsoft.com/pricing/details/machine-learning/).

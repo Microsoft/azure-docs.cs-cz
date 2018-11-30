@@ -1,5 +1,5 @@
 ---
-title: Vytvoření více modelů z jednoho experimentu | Dokumentace Microsoftu
+title: Vytvoření více modelů z jednoho experimentu - Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Použití Powershellu k vytvoření více modelů Machine Learning a webových koncových bodů služby se stejný algoritmus, ale s jinou cvičných datových sad.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: c3ba87459c8c24a948683319f6b3ab54436c88e1
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e1a6eb4f61869c3c6299011c46a5953f93cc7305
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262363"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316561"
 ---
-# <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>Vytvoření mnoha modelů Machine Learning a koncových bodů webové služby z jednoho experimentu pomocí prostředí PowerShell
+# <a name="azure-machine-learning-studio-use-powershell-to-create-many-models-and-web-service-endpoints-from-one-experiment"></a>Azure Machine Learning Studio: Použití Powershellu k vytvoření mnoha modelů a web koncové body služby z jednoho experimentu
+
 Tady je běžný problém machine learning: Chcete vytvořit mnoho modelů, které mají stejný pracovní postup školení a použít stejný algoritmus. Ale být vhodné tak, aby měly různé cvičných datových sad jako vstup. Tento článek ukazuje, jak to udělat ve velkém měřítku v Azure Machine Learning Studio pomocí pouze jednoho experimentu.
 
 Řekněme například, že vlastníte firma franšízová pronájem globální kolo. Chcete sestavit regresní model k predikci poptávky pronájem na základě historických dat. Máte 1 000 pronájem umístění po celém světě a jste jste shromáždili datovou sadu pro každé umístění. Patří mezi ně důležité funkce, jako je datum, čas, počasí a provoz, které jsou specifické pro každé umístění.

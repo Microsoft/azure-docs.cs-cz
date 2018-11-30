@@ -1,6 +1,6 @@
 ---
-title: Přeučování existující prediktivní webové služby | Dokumentace Microsoftu
-description: Zjistěte, jak model přetrénujete a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
+title: Přeučování existující prediktivní webové služby – Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Zjistěte, jak model přetrénujete a aktualizovat webovou službu, která používá nově trained model v Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 9fb3ccee9a50fa7758547fffe2573104679aef7e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8da3c5d5c79ce52f1f5176a8b3317ce2a0e0bc5f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263447"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311292"
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Přeučování existující prediktivní webové služby
 Tento dokument popisuje retraining proces pro následující scénáře:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: d78e5ba030a8b68b99a92be8a830a365c2870c1f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c8a2caf2826069824a993294f4eba514ea870d9c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235883"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307371"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Použít šifrování disku ve službě Azure Security Center
 Azure Security Center doporučuje použít šifrování disku, pokud máte Windows nebo virtuální počítač s Linuxem disky, které nejsou šifrované službou Azure Disk Encryption. Disk Encryption umožňuje šifrování disků Windows a virtuálních počítačů IaaS s Linuxem.  Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty.
@@ -56,7 +56,7 @@ Tento dokument vám ukázali, jak implementovat doporučení služby Security Ce
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.

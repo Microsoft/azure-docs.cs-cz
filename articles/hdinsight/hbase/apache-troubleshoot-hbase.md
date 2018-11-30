@@ -8,14 +8,14 @@ ms.author: nitinver
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 7/7/2017
-ms.openlocfilehash: e25a2dcaf9b7c820f5d7e0312fb2cb55fc558882
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 771f01f18c5cb54a0458d624a65ec1a69345cadd
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593895"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317224"
 ---
-# <a name="troubleshoot-hbase-by-using-azure-hdinsight"></a>Řešení potíží s HBase pomocí Azure HDInsight
+# <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Řešení potíží s Apache HBase pomocí Azure HDInsight
 
 Další informace o nejčastější problémy a jejich řešení při práci s datovými částmi Apache HBase v Apache Ambari.
 
@@ -30,7 +30,7 @@ Děr může být způsobeno offline oblastí, takže přiřazení nejprve opravt
 Přenést do normálního stavu nepřiřazené oblastí, proveďte následující kroky:
 
 1. Přihlaste se ke clusteru HDInsight HBase pomocí SSH.
-2. Chcete-li připojit s k ZooKeeper prostředí, spusťte `hbase zkcli` příkazu.
+2. Chcete-li připojit pomocí prostředí Apache ZooKeeper, spusťte `hbase zkcli` příkazu.
 3. Spustit `rmr /hbase/regions-in-transition` příkazu nebo `rmr /hbase-unsecure/regions-in-transition` příkazu.
 4. Pro ukončení `hbase zkcli` prostředí, použijte `exit` příkazu.
 5. Otevřete uživatelské rozhraní Apache Ambari a potom restartujte službu aktivní hlavní server HBase.
@@ -46,7 +46,7 @@ Potenciální příčinu vypršení časového limitu problémy při použití `
 ### <a name="resolution-steps"></a>Postup řešení
 
 1. Přihlaste se ke clusteru HDInsight HBase pomocí SSH.
-2. Chcete-li připojit s k ZooKeeper prostředí, spusťte `hbase zkcli` příkazu.
+2. Chcete-li připojit pomocí prostředí Apache ZooKeeper, spusťte `hbase zkcli` příkazu.
 3. Spustit `rmr /hbase/regions-in-transition` nebo `rmr /hbase-unsecure/regions-in-transition` příkazu.
 4. Chcete-li ukončit `hbase zkcli` prostředí, použijte `exit` příkazu.
 5. V uživatelském rozhraní Ambari restartujte službu aktivní hlavní server HBase.
@@ -56,7 +56,7 @@ Potenciální příčinu vypršení časového limitu problémy při použití `
 
 ### <a name="issue"></a>Problém
 
-V nouzovém režimu v clusteru HDInsight se zasekla místní soubor systému HDFS (Hadoop Distributed).
+V nouzovém režimu v clusteru HDInsight se zasekla místní Apache HDFS Hadoop Distributed File System ().
 
 ### <a name="detailed-description"></a>Podrobný popis
 
@@ -211,7 +211,7 @@ Dolů na byla změněna velikost clusteru HDInsight velmi několika uzlů. Poče
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-Pro připojení k Phoenix, musíte zadat IP adresu některý aktivní uzel ZooKeeper. Zajistěte, aby službě ZooKeeper a které sqlline.py se pokouší o připojení je zprovozněný.
+Pro připojení k Apache Phoenix, je nutné zadat IP adresu z aktivního uzlu Apache ZooKeeper. Zajistěte, aby službě ZooKeeper a které sqlline.py se pokouší o připojení je zprovozněný.
 1. Přihlaste se ke clusteru HDInsight pomocí SSH.
 2. Zadejte následující příkaz:
                 
@@ -247,7 +247,7 @@ Pro připojení k Phoenix, musíte zadat IP adresu některý aktivní uzel ZooKe
    ```apache
            ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189) 
    ```
-6. V uživatelském rozhraní Ambari proveďte následující kroky a restartujte službu HMaster na všechny uzly ZooKeeper:
+6. V Uživatelském rozhraní Apache Ambari proveďte následující kroky a restartujte službu HMaster na všechny uzly ZooKeeper:
 
     1. V **Souhrn** část HBase, přejděte na **HBase** > **aktivní hlavní server HBase**. 
     2. V **součásti** části, restartujte službu hlavní server HBase.
@@ -331,7 +331,7 @@ Jedná se o známý problém službou HMaster. Úlohy po spuštění obecné clu
   
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. V uživatelském rozhraní Ambari, přejděte na **HBase** > **Configs**. V souboru vlastní hbase-site.xml přidejte následující nastavení: 
+1. V Uživatelském rozhraní Apache Ambari, přejděte na **HBase** > **Configs**. V souboru vlastní hbase-site.xml přidejte následující nastavení: 
 
    ```apache
    Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -344,9 +344,9 @@ Jedná se o známý problém službou HMaster. Úlohy po spuštění obecné clu
 
 ### <a name="issue"></a>Problém
 
-Selhání restartování na oblastním serveru může být bráněno následující osvědčené postupy. Doporučujeme, abyste při plánování restartování serverů oblasti HBase pozastavení úlohy heavy aktivity. Pokud aplikace i nadále připojit se servery pro oblast, když probíhá vypnutí, operace restartování serveru oblasti sníží se o několik minut. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční dokumentace o tom, jak vyprázdnění tabulky, najdete v části [HDInsight HBase: jak vylepšit čas restartování clusteru HBase pomocí vyčištění tabulek](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
+Selhání restartování na oblastním serveru může být bráněno následující osvědčené postupy. Doporučujeme, abyste při plánování restartování serverů oblasti HBase pozastavení úlohy heavy aktivity. Pokud aplikace i nadále připojit se servery pro oblast, když probíhá vypnutí, operace restartování serveru oblasti sníží se o několik minut. Je také vhodné nejprve vyprázdnit všechny tabulky. Referenční dokumentace o tom, jak vyprázdnění tabulky, najdete v části [HDInsight HBase: jak čas restartování clusteru Apache HBase můžete zlepšit vyčištění tabulek](https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Pokud spustíte operace restartování na servery oblasti HBase v uživatelském rozhraní Ambari, můžete okamžitě zjistit, že servery oblasti byl vypnut, ale není to hned restartovat. 
+Pokud spustíte operace restartování na servery oblasti HBase v uživatelském rozhraní Apache Ambari, můžete okamžitě zjistit, že servery oblasti byl vypnut, ale není to hned restartovat. 
 
 Zde je, co se děje na pozadí: 
 

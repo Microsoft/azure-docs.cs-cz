@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines-linux
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: cynthn
+ms.openlocfilehash: de7d5ab73eb95e79cfca150f0692d5e793b16b76
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52330864"
+---
 Další informace o discích najdete v tématu věnovaném [diskům a virtuálním pevným diskům pro virtuální počítače](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 <a id="attachempty"></a>

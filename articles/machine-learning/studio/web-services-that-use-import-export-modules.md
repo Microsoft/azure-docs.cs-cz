@@ -1,5 +1,5 @@
 ---
-title: Použití Import/Export dat ve službě Azure Machine Learning web services | Dokumentace Microsoftu
+title: Použití Import/Export dat ve webových službách Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Další informace o použití modulů Data importovat a exportovat Data odesílat a přijímat data z webové služby.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 3fa33572e60a43c66eca404e426232f9864a294e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ee7d0fb4792983099dc6192de8f85338daee357f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264637"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306943"
 ---
-# <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>Nasazování webových služeb Azure ML používajících moduly Import dat a Export dat
+# <a name="deploy-azure-machine-learning-studio-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webové služby Azure Machine Learning Studio, které používají moduly Import dat a Export dat
 
 Při vytváření prediktivní experiment přidáte obvykle webové služby vstup a výstup. Při nasazení experimentu příjemci můžou odesílat a přijímat data z webové služby prostřednictvím vstupy a výstupy. U některých aplikací může být k dispozici z datového kanálu uživatelských dat nebo se již nacházejí v externího zdroje dat jako jsou úložiště objektů Blob v Azure. V těchto případech nemusí číst a zapisovat data pomocí webové služby vstupy a výstupy. Mohou, místo toho dat ze zdroje dat pomocí modulu Import dat pomocí služby Batch Execution (BES) a bodovací výsledky zapsat do různých datových umístění pomocí modulu exportovat Data.
 

@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e6c4097f4886213bde8adcaac51f36a3bfef702
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0f9d786988cb547771b8fd999b911bd228cdc3e2
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010287"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311037"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Začínáme s příkladem Apache HBase ve službě HDInsight
 
-Naučte se vytvářet cluster HBase v HDInsight, vytvářet tabulky HBase a dotazovat tabulky pomocí Hive. Obecné informace o HBase najdete v tématu [Přehled HBase ve službě HDInsight][hdinsight-hbase-overview].
+Zjistěte, jak vytvořit [Apache HBase](http://hbase.apache.org/) clusteru v HDInsight vytvářet tabulky HBase a dotazovat tabulky pomocí [Apache Hive](https://hive.apache.org/).  Obecné informace o HBase najdete v tématu [Přehled HBase ve službě HDInsight][hdinsight-hbase-overview].
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -30,7 +30,7 @@ Než se pustíte do tohoto příkladu HBase, musíte mít následující položk
 * [Secure Shell (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md). 
 * [curl](http://curl.haxx.se/download.html).
 
-## <a name="create-hbase-cluster"></a>Vytvoření clusteru HBase
+## <a name="create-apache-hbase-cluster"></a>Vytvoření clusteru Apache HBase
 Následující postup používá šablonu Azure Resource Manageru pro vytvoření clusteru HBase a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o použití Data Lake Storage Gen2 najdete v tématu [Rychlý start: Nastavení clusterů ve službě HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Kliknutím na následující obrázek otevřete šablonu na portálu Azure Portal. Tuto šablonu najdete v [šablonách Azure pro rychlý start](https://azure.microsoft.com/resources/templates/).
@@ -56,13 +56,13 @@ Následující postup používá šablonu Azure Resource Manageru pro vytvořen�
 > 
 
 ## <a name="create-tables-and-insert-data"></a>Vytváření tabulek a vkládání dat
-SSH můžete použít při připojení ke clusterům HBase a používání prostředí HBase k vytváření tabulek HBase, vkládání dat a dotazování na data. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+SSH slouží k připojení ke clusterům HBase a používání [Apache HBase Shell](http://hbase.apache.org/0.94/book/shell.html) k vytváření tabulek HBase, vkládání dat a dotazování na data. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Pro většinu osob se data zobrazí v tabulkovém formátu:
 
 ![Tabulková data HDInsight HBase][img-hbase-sample-data-tabular]
 
-V HBase (implementace BigTable) vypadají stejná data následovně:
+V HBase (implementace [cloudu BigTable](https://cloud.google.com/bigtable/)), vypadají stejná data následovně:
 
 ![Velké objemy tabulkových dat HDInsight HBase][img-hbase-sample-data-bigtable]
 
@@ -100,7 +100,7 @@ V HBase (implementace BigTable) vypadají stejná data následovně:
    
     Měly by se zobrazit stejné výsledky jako pomocí příkazu vyhledávání, protože existuje pouze jeden řádek.
    
-    Další informace o schématu tabulky HBase najdete v tématu [Úvod do navrhování schémat HBase][hbase-schema]. Další příkazy HBase najdete v tématu [Referenční příručka Apache HBase][hbase-quick-start].
+    Další informace o schématu tabulky HBase najdete v tématu [Úvod do navrhování schémat HBase Apache][hbase-schema]. Další příkazy HBase najdete v tématu [Referenční příručka Apache HBase][hbase-quick-start].
 5. Opusťte prostředí
    
     ```hbaseshell
@@ -124,7 +124,7 @@ Ukázkový datový soubor najdete ve veřejném kontejneru objektů blob: *wasb:
     4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
     16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
 
-Volitelně můžete vytvořit textový soubor a nahrát ho do vlastního účtu úložiště. Pokyny najdete v tématu [Nahrávání dat pro úlohy Hadoop do služby HDInsight][hdinsight-upload-data].
+Volitelně můžete vytvořit textový soubor a nahrát ho do vlastního účtu úložiště. Pokyny najdete v tématu [nahrávání dat pro úlohy Apache Hadoop v HDInsight][hdinsight-upload-data].
 
 > [!NOTE]
 > Tento postup používá tabulku kontaktů HBase, kterou jste vytvořili v posledním postupu.
@@ -144,9 +144,9 @@ Volitelně můžete vytvořit textový soubor a nahrát ho do vlastního účtu 
 
 3. Prostředí HBase můžete otevřít a použít příkaz skenování k zobrazení seznamu obsahu tabulky.
 
-## <a name="use-hive-to-query-hbase"></a>Použití Hive k dotazování HBase
+## <a name="use-apache-hive-to-query-apache-hbase"></a>Použití Apache Hive k dotazování služby Apache HBase
 
-Data v tabulkách HBase můžete dotazovat pomocí Hive. V této části vytvoříte tabulku Hive, která se namapuje na tabulku HBase, a použijete ji k dotazování dat v tabulce HBase.
+Data v tabulkách HBase můžete dotazovat pomocí [Apache Hive](https://hive.apache.org/). V této části vytvoříte tabulku Hive, která se namapuje na tabulku HBase, a použijete ji k dotazování dat v tabulce HBase.
 
 1. Otevřete **PuTTY** a připojte se ke clusteru.  Pokyny naleznete v předchozím postupu.
 2. Z relace SSH pomocí následujícího příkazu spusťte Beeline:
@@ -157,7 +157,7 @@ Data v tabulkách HBase můžete dotazovat pomocí Hive. V této části vytvoř
 
     Další informace o Beeline najdete v tématu [Použití Hivu s Hadoopem ve službě HDInsight s Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
        
-3. Spusťte následující skript HiveQL k vytvoření tabulky Hive, která se mapuje na tabulku HBase. Před spuštěním tohoto prohlášení ověřte, zda jste vytvořili ukázkové tabulky odkazované dříve v tomto kurzu pomocí prostředí HBase.
+3. Spusťte následující příkaz [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) skript k vytvoření tabulky Hive, která se mapuje na tabulku HBase. Před spuštěním tohoto prohlášení ověřte, zda jste vytvořili ukázkové tabulky odkazované dříve v tomto kurzu pomocí prostředí HBase.
 
     ```hiveql   
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -268,13 +268,14 @@ Aby se zabránilo nekonzistencím, doporučujeme zakázat tabulky HBase před od
 Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](../hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste se dozvěděli, jak vytvořit cluster HBase a jak vytvářet tabulky a zobrazovat data v těchto tabulkách z prostředí HBase. Také jste se naučili, jak používat dotazy na data Hive v tabulkách HBase a jak používat rozhraní REST API HBase C# k vytvoření tabulky HBase a načtení dat z tabulky.
+V tomto článku jste zjistili, jak vytvořit cluster Apache HBase a jak vytvářet tabulky a zobrazovat data v těchto tabulkách z prostředí HBase. Také jste se naučili, jak používat dotazy na data Hive v tabulkách HBase a jak používat rozhraní REST API HBase C# k vytvoření tabulky HBase a načtení dat z tabulky.
 
 Další informace naleznete v tématu:
 
-* [Přehled HBase ve službě HDInsight][hdinsight-hbase-overview]: HBase je NoSQL open source databáze Apache postavená na systému Hadoop, která poskytuje náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat.
+* [Přehled HDInsight HBase][hdinsight-hbase-overview]: Apache HBase je databáze NoSQL open source Apache postavená na Apache Hadoopu, která umožňuje náhodný přístup a silnou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat. .
 
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
+
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hbase-reference]: http://hbase.apache.org/book.html#importtsv
 [hbase-schema]: http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf

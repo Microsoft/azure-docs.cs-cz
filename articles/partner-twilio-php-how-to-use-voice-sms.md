@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 27df7d306b55b7280c871d4638dc34c8fcd33acb
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 50613e4ba244403c61d711927f1e809accbcebeb
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903661"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421704"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>Postup použití Twilia pro hlasové hovory a SMS v jazyce PHP.
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh pomocí služby Twilio API v Azure. Pokryté scénáře zahrnují vytváření telefonních hovorů a posílání zpráv služby krátké zprávy (SMS). Další informace o Twilio a používání hlasové hovory a SMS ve svých aplikacích najdete v tématu [další kroky](#NextSteps) oddílu.
@@ -30,7 +30,7 @@ Twilio je provozování budoucí komunikaci business, umožňuje vývojářům v
 **Twilio pro hlasové hovory** umožňuje vašim aplikacím, ujistěte se, a přijímat telefonní hovory. **Twilio SMS** umožňuje vaší aplikaci odesílat a přijímat textové zprávy. **Twilio klienta** umožňuje provádět volání VoIP z libovolného telefonu, tabletu nebo prohlížeče a podporuje WebRTC.
 
 ## <a id="Pricing"></a>Ceny Twilio a speciální nabídky
-Zákazníkům Azure poskytujeme [speciální nabídka](http://www.twilio.com/azure): praktického 10 USD kreditu Twilio při upgradu vašeho účtu Twilio. Tento kredit Twilio můžete použít pro jakékoli využití Twilio (10 USD kreditu ekvivalentní k odesílání až 1 000 zpráv SMS nebo přijímání až 1 000 příchozí hlasové minut v závislosti na umístění cílové vaše telefonní číslo a zpráva nebo volání). Uplatnění tento kredit Twilio a začněte s: [ http://ahoy.twilio.com/azure ](http://ahoy.twilio.com/azure).
+Zákazníkům Azure poskytujeme [speciální nabídka](https://www.twilio.com/azure): praktického 10 USD kreditu Twilio při upgradu vašeho účtu Twilio. Tento kredit Twilio můžete použít pro jakékoli využití Twilio (10 USD kreditu ekvivalentní k odesílání až 1 000 zpráv SMS nebo přijímání až 1 000 příchozí hlasové minut v závislosti na umístění cílové vaše telefonní číslo a zpráva nebo volání). Uplatnění tento kredit Twilio a začněte s: [ https://ahoy.twilio.com/azure ](https://ahoy.twilio.com/azure).
 
 Twilio je služba s průběžnými platbami. Neexistují žádné poplatky za nastavení a můžete kdykoli zavřít svůj účet. Můžete najít další podrobnosti najdete v [Twilio ceny][twilio_pricing].
 
@@ -42,7 +42,7 @@ Klíčové aspekty Twilio API jsou příkazy Twilio a Twilio Markup Language (Tw
 ### <a id="Verbs"></a>Příkazy Twilio
 Rozhraní API využívá Twilio příkazů například **&lt;Say&gt;** příkaz nastaví Twilio zvukově doručení zprávy na volání.
 
-Následuje seznam příkazů Twilio. Další informace o ostatních příkazů a funkce prostřednictvím [dokumentaci Twilio Markup Language](http://www.twilio.com/docs/api/twiml).
+Následuje seznam příkazů Twilio. Další informace o ostatních příkazů a funkce prostřednictvím [dokumentaci Twilio Markup Language](https://www.twilio.com/docs/api/twiml).
 
 * **&lt;Volání&gt;**: volající se připojí k jiný telefon.
 * **&lt;Shromážděte&gt;**: shromažďuje číslice zadané na klávesnici telefonu.
@@ -75,7 +75,7 @@ Až budete připraveni začít účtu Twilio, zaregistrujte se na [zkuste Twilio
 Při registraci účtu Twilio, obdržíte ID účtu a ověřovací token. Obojí je potřeba volat rozhraní API Twilia. Pokud chcete zabránit neoprávněnému přístupu ke svému účtu, zabezpečit ověřovací token. ID účtu a ověřování jsou zobrazené v tokenu [stránka účtu Twilio][twilio_account], v polích s popiskem **SID účtu** a **Ověřovacím TOKENEM**v uvedeném pořadí.
 
 ## <a id="create_app"></a>Vytvoření PHP aplikace
-Aplikace v jazyce PHP, který používá služba Twilio a běží v Azure se nijak neliší od jiné PHP aplikace, které používá služba Twilio. Zatímco služby Twilio jsou založené na protokolu REST a může být volána z PHP několika způsoby, tento článek se zaměří na použití služby Twilio s [Twilio knihovny pro PHP z Githubu][twilio_php]. Další informace o použití knihovny Twilio pro jazyk PHP najdete v tématu [ http://readthedocs.org/docs/twilio-php/en/latest/index.html ] [ twilio_lib_docs].
+Aplikace v jazyce PHP, který používá služba Twilio a běží v Azure se nijak neliší od jiné PHP aplikace, které používá služba Twilio. Zatímco služby Twilio jsou založené na protokolu REST a může být volána z PHP několika způsoby, tento článek se zaměří na použití služby Twilio s [Twilio knihovny pro PHP z Githubu][twilio_php]. Další informace o použití knihovny Twilio pro jazyk PHP najdete v tématu [ https://readthedocs.org/docs/twilio-php/en/latest/index.html ] [ twilio_lib_docs].
 
 Podrobné pokyny pro vytváření a nasazování aplikací Twilio/PHP do Azure najdete na adrese [jak provádět v aplikaci PHP v Azure Twilio pomocí telefonního hovoru][howto_phonecall_php].
 
@@ -116,7 +116,7 @@ Následující ukazuje, jak provádět volání pomocí odchozí **Services_Twil
     $to_number = "NNNNNNNNNNN";
 
     // Use the Twilio-provided site for the TwiML response.
-    $url = "http://twimlets.com/message";
+    $url = "https://twimlets.com/message";
 
     // The phone message text.
     $message = "Hello world.";
@@ -174,7 +174,7 @@ Následující ukazuje, jak odeslat zprávu SMS pomocí **Services_Twilio** tř�
     }
 
 ## <a id="howto_provide_twiml_responses"></a>Postupy: poskytování TwiML odezvy z vlastního webu
-Pokud aplikace zahájí volání rozhraní API pro Twilio, Twilio pošle vaši žádost na adresu URL, která se očekává navrácení TwiML odpovědi. Výše uvedený příklad používá adresu URL poskytnutou Twilio [ http://twimlets.com/message ] [ twimlet_message_url]. (TwiML je určen pro Twilio, ale když zobrazíte it v prohlížeči. Klikněte například na [ http://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná `<Response>` element; další příklad, klikněte na tlačítko [ http://twimlets.com/message?Message%5B0%5D=Hello%20World ] [ twimlet_message_url_hello_world]zobrazíte `<Response>` element, který obsahuje `<Say>` elementu.)
+Pokud aplikace zahájí volání rozhraní API pro Twilio, Twilio pošle vaši žádost na adresu URL, která se očekává navrácení TwiML odpovědi. Výše uvedený příklad používá adresu URL poskytnutou Twilio [ https://twimlets.com/message ] [ twimlet_message_url]. (TwiML je určen pro Twilio, ale když zobrazíte it v prohlížeči. Klikněte například na [ https://twimlets.com/message ] [ twimlet_message_url] zobrazíte prázdná `<Response>` element; další příklad, klikněte na tlačítko [ https://twimlets.com/message?Message%5B0%5D=Hello%20World ] [ twimlet_message_url_hello_world]zobrazíte `<Response>` element, který obsahuje `<Say>` elementu.)
 
 Aniž byste museli spoléhat na URL poskytnutou Twilio, můžete vytvořit vlastní web, který vrátí odpovědi protokolu HTTP. Můžete vytvořit web v jakémkoli jazyce, který vrací odpovědí ve formátu XML; Toto téma předpokládá, že budete použití PHP k vytvoření TwiML.
 
@@ -241,28 +241,28 @@ Teď, když jste se naučili základy služba Twilio, použijte tyto odkazy na d
 * [Obraťte se na podporu Twilio][twilio_support]
 
 [twilio_php]: https://github.com/twilio/twilio-php
-[twilio_lib_docs]: http://readthedocs.org/docs/twilio-php/en/latest/index.html
+[twilio_lib_docs]: https://readthedocs.org/docs/twilio-php/en/latest/index.html
 [twilio_github_readme]: https://github.com/twilio/twilio-php/blob/master/README.md
 [ssl_validation]: https://www.twilio.com/docs/api/errors
 [twilio_api_service]: https://api.twilio.com
 [howto_phonecall_php]: partner-twilio-php-make-phone-call.md
 [twilio_voice_request]: https://www.twilio.com/docs/api/twiml/twilio_request
 [twilio_sms_request]: https://www.twilio.com/docs/api/twiml/sms/twilio_request
-[misc_role_config_settings]: http://msdn.microsoft.com/library/windowsazure/hh690945.aspx
-[twimlet_message_url]: http://twimlets.com/message
-[twimlet_message_url_hello_world]: http://twimlets.com/message?Message%5B0%5D=Hello%20World
+[misc_role_config_settings]: https://msdn.microsoft.com/library/windowsazure/hh690945.aspx
+[twimlet_message_url]: https://twimlets.com/message
+[twimlet_message_url_hello_world]: https://twimlets.com/message?Message%5B0%5D=Hello%20World
 [twiml_reference]: https://www.twilio.com/docs/api/twiml
-[twilio_pricing]: http://www.twilio.com/pricing
-[special_offer]: http://ahoy.twilio.com/azure
+[twilio_pricing]: https://www.twilio.com/pricing
+[special_offer]: https://ahoy.twilio.com/azure
 [twilio_libraries]: https://www.twilio.com/docs/libraries
-[twiml]: http://www.twilio.com/docs/api/twiml
-[twilio_api]: http://www.twilio.com/api
+[twiml]: https://www.twilio.com/docs/api/twiml
+[twilio_api]: https://www.twilio.com/api
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_account]:  https://www.twilio.com/user/account
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
-[twilio_api_documentation]: http://www.twilio.com/api
-[twilio_security_guidelines]: http://www.twilio.com/docs/security
-[twilio_howtos]: http://www.twilio.com/docs/howto
+[twilio_api_documentation]: https://www.twilio.com/api
+[twilio_security_guidelines]: https://www.twilio.com/docs/security
+[twilio_howtos]: https://www.twilio.com/docs/howto
 [twilio_on_github]: https://github.com/twilio
-[twilio_support]: http://www.twilio.com/help/contact
-[twilio_quickstarts]: http://www.twilio.com/docs/quickstart
+[twilio_support]: https://www.twilio.com/help/contact
+[twilio_quickstarts]: https://www.twilio.com/docs/quickstart

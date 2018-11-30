@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: d8ab61d99b617f21557b6f1ef476418e25bcee55
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1d5a6dc6db3eaa46f6f2bd9944af7aefe759fbc7
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016926"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496115"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>Připojení HDInsightu k místní síti
 
@@ -321,12 +321,12 @@ K přímému připojení k HDInsight prostřednictvím virtuální sítě, použ
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-2. Pokud chcete určit port, který je k dispozici na službu, naleznete v tématu [porty používané služby Hadoop v HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
+2. Pokud chcete určit port, který je k dispozici na službu, naleznete v tématu [portů používaných služeb Apache Hadoop v HDInsight](./hdinsight-hadoop-port-settings-for-services.md) dokumentu.
 
     > [!IMPORTANT]
     > Některé služby hostované na hlavní uzly jsou aktivní na jednom uzlu jenom po jednom. Pokud pokusu o přístup k službě na jeden hlavní uzel a selže, přejděte k hlavnímu uzlu.
     >
-    > Například Ambari je aktivní pouze na jeden hlavní uzel v čase. Pokud se pokusíte přístup k Ambari na jeden hlavní uzel a vrátí chybu 404, je spuštěna na k hlavnímu uzlu.
+    > Například Apache Ambari slouží pouze na jeden hlavní uzel aktivní najednou. Pokud se pokusíte přístup k Ambari na jeden hlavní uzel a vrátí chybu 404, je spuštěna na k hlavnímu uzlu.
 
 ## <a name="next-steps"></a>Další postup
 

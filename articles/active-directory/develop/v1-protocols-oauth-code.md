@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b7b8ccf7e84239db4eef0914346c453a2f205f91
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c4a18fa022304e7ccfb4503cf2e02650555d6d7b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237889"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425118"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorizace přístupu k webovým aplikacím služby Azure Active Directory pomocí toku přidělení kódu OAuth 2.0
 
@@ -60,7 +60,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | response_type |povinné |Musí zahrnovat `code` pro tok autorizačního kódu. |
 | redirect_uri |Doporučené |Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. Pro nativní a mobilní aplikace, byste měli použít výchozí hodnotu `urn:ietf:wg:oauth:2.0:oob`. |
 | response_mode |nepovinné |Určuje metodu, která se má použít k odeslání výsledný token zpátky do vaší aplikace. Může být `query`, `fragment`, nebo `form_post`. `query` poskytuje kód jako parametru řetězce dotazu na váš identifikátor URI pro přesměrování. Pokud se požaduje token ID pomocí implicitního toku, nemůžete použít `query` podle [OpenID specifikace](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Pokud požadujete přesně takový kód, můžete použít `query`, `fragment`, nebo `form_post`. `form_post` provede příspěvek, který obsahuje kód, který váš identifikátor URI pro přesměrování. Výchozí hodnota je `query` pro tok kódu.  |
-| state |Doporučené |Hodnota v požadavku, který je také vrácen v odpovědi tokenu. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](http://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
+| state |Doporučené |Hodnota v požadavku, který je také vrácen v odpovědi tokenu. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
 | prostředek | Doporučené |Identifikátor URI ID aplikace cílového webového rozhraní API (zabezpečeným prostředkům). Identifikátor ID URI aplikace najdete na webu Azure Portal klikněte na tlačítko **Azure Active Directory**, klikněte na tlačítko **registrace aplikací**, otevřete aplikaci **nastavení** stránce a potom klikněte na  **Vlastnosti**. Může být také externí prostředek jako `https://graph.microsoft.com`. Vyžaduje se v jednom autorizace nebo žádostí o token. K zajištění méně ověřování výzvy umístěte žádost o autorizaci, ujistěte se, že přijetí souhlasu uživatele. |
 | scope | **Ignorovat** | Pro aplikace Azure AD v1, musí být staticky nakonfigurován obory na webu Azure Portal v části aplikace **nastavení**, **požadovaná oprávnění**. |
 | řádek |nepovinné |Označuje typ interakce s uživatelem, který je požadován.<p> Platné hodnoty jsou: <p> *přihlášení*: uživatel by měl vyzván donutit k. <p> *select_account*: uživatel je vyzván k výběru účtu, přerušení na jednotné přihlašování. Uživatel může vybrat existující účet přihlášeného, zadejte své přihlašovací údaje pro účet zapamatovaných nebo můžete použít jiný účet úplně se vynechá. <p> *souhlas*: souhlas uživatele bylo uděleno, ale je potřeba aktualizovat. Uživatel by měl výzva k vyjádření souhlasu. <p> *admin_consent*: Správce by měl být vyzváni k udělit souhlas jménem všech uživatelů v organizaci |
@@ -102,7 +102,7 @@ error=access_denied
 
 | Parametr | Popis |
 | --- | --- |
-| error |Chybová hodnota kódu definované v části 5.2 [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). Následující tabulka popisuje kódy chyb, které vrátí Azure AD. |
+| error |Chybová hodnota kódu definované v části 5.2 [Framework autorizace OAuth 2.0](https://tools.ietf.org/html/rfc6749). Následující tabulka popisuje kódy chyb, které vrátí Azure AD. |
 | error_description |Podrobnější popis chyby. Tato zpráva není určen jako koncový uživatel zařízení. |
 | state |Hodnota stavu je náhodně generované-znovu použít hodnotu, která se odesílají v požadavku a vrátila v reakci na padělání (CSRF) útokům podvržení žádosti. |
 
@@ -175,7 +175,7 @@ Pokud webové rozhraní API prostředku vrátí `invalid_token` kód chyby: to m
 | Parametr | Popis |
 | --- | --- |
 | access_token |Požadovaná [přístupový token](access-tokens.md) jako podepsané JSON Web Token (JWT). Aplikace můžete používat tento token k ověření k zabezpečeným prostředkům, jako je například webové rozhraní API. |
-| token_type |Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je nosiče. Další informace o nosných tokenů najdete v tématu [Framework autorizace OAuth 2.0: použití nosného tokenu (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
+| token_type |Určuje hodnotu pro typ tokenu. Jediný typ, který podporuje Azure AD je nosiče. Další informace o nosných tokenů najdete v tématu [Framework autorizace OAuth 2.0: použití nosného tokenu (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Jak dlouho je přístupový token platný (v sekundách). |
 | expires_on |Čas, kdy vyprší platnost přístupového tokenu. Datum je vyjádřena jako počet sekund od 1970-01-01T0:0:0Z UTC až do okamžiku vypršení platnosti. Tato hodnota se používá k určení doby života tokenů v mezipaměti. |
 | prostředek |Identifikátor URI ID aplikace webového rozhraní API (zabezpečeným prostředkům). |
@@ -235,7 +235,7 @@ Následující tabulka uvádí stavové kódy HTTP, která vrací koncový bod v
 | temporarily_unavailable |Server je dočasně příliš zaneprázdněn a nemůže žádost zpracovat. |Zkuste požadavek. Klientská aplikace může vysvětlit uživateli, odpověď se zpožďuje kvůli dočasnému chybovému stavu. |
 
 ## <a name="use-the-access-token-to-access-the-resource"></a>Použití přístupového tokenu pro přístup k prostředku
-Teď, když jste úspěšně získala `access_token`, můžete token v žádosti k webovým rozhraním API, včetně v `Authorization` záhlaví. [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) specifikace vysvětluje, jak pomocí nosných tokenů v požadavcích HTTP pro přístup k chráněným prostředkům.
+Teď, když jste úspěšně získala `access_token`, můžete token v žádosti k webovým rozhraním API, včetně v `Authorization` záhlaví. [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.txt) specifikace vysvětluje, jak pomocí nosných tokenů v požadavcích HTTP pro přístup k chráněným prostředkům.
 
 ### <a name="sample-request"></a>Ukázková žádost
 ```
@@ -258,7 +258,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | Parametr | Popis |
 | --- | --- |
 | authorization_uri |Identifikátor URI (fyzický koncový bod) autorizačního serveru. Tato hodnota se také používá jako klíč vyhledávání zobrazíte další informace o serveru z koncového bodu zjišťování. <p><p> Klienta musíte ověřit, že autorizační server je důvěryhodný. Když prostředek je chráněný službou Azure AD, je dostačující k ověření, že adresa URL začíná https://login.microsoftonline.com nebo jiný název hostitele, který podporuje Azure AD. Prostředek specifickým pro tenanta by měl vždy vrátit specifickým pro tenanta autorizace identifikátoru URI. |
-| error |Chybová hodnota kódu definované v části 5.2 [Framework autorizace OAuth 2.0](http://tools.ietf.org/html/rfc6749). |
+| error |Chybová hodnota kódu definované v části 5.2 [Framework autorizace OAuth 2.0](https://tools.ietf.org/html/rfc6749). |
 | error_description |Podrobnější popis chyby. Tato zpráva není určen jako koncový uživatel zařízení. |
 | pro resource_id platí omezení |Vrací jedinečný identifikátor prostředku. Klientská aplikace může jako hodnotu pomocí tohoto identifikátoru `resource` parametr při požadavku na token prostředku. <p><p> Je důležité pro klientskou aplikaci, chcete-li ověřit tuto hodnotu, jinak může být škodlivý služby moct zahájit **zvýšení úrovně oprávnění** útoku <p><p> K zamezení útoku doporučujeme ověřit, jestli `resource_id` odpovídá základní webové adresy URL rozhraní API, ke kterému přistupujete. Například pokud https://service.contoso.com/data je přistupováno, `resource_id` může být htttps://service.contoso.com/. Klientská aplikace musí odmítnout `resource_id` , který nezačíná základní adresa URL není spolehlivé alternativní způsob, jak ověřit id. |
 

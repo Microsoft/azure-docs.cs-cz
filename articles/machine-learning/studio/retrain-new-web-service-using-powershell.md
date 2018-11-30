@@ -1,5 +1,5 @@
 ---
-title: Přeučování webové služby nové Azure Machine Learning pomocí Powershellu | Dokumentace Microsoftu
+title: Přeučování nové webové služby Machine Learning Studio pomocí Powershellu – Azure | Dokumentace Microsoftu
 description: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning pomocí rutin prostředí PowerShell pro Machine Learning Management.
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 77ae0c9f8af82e238b58945d1427afd6a01173e3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 59d12ae91f8c75ab0fdd2058057cc8de158897e7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263025"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314180"
 ---
-# <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Přeučování webové služby založené na nové Resource Manageru pomocí rutin prostředí PowerShell pro Machine Learning Management
+# <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-studio-management-powershell-cmdlets"></a>Přeučování nové služby založené na Resource Manager pomocí rutin prostředí PowerShell pro Machine Learning Studio správu
 Když jste přeučování nové webové služby, aktualizujte definice prediktivní webové služby tak, aby odkazovaly na nový trénovaný model.
 
 ## <a name="prerequisites"></a>Požadavky

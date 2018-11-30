@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 1345d4c4d349ed2fa5bb95ee35299c77fb391359
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: HT
+ms.openlocfilehash: 5aff783735d38a2707f42efe8a1632bd5aaafc4b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42884981"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316765"
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>Vytvoření webové aplikace .NET Core ve službě App Service v Linuxu
 
@@ -66,7 +66,6 @@ Spusťte aplikaci místně, abyste viděli, jak by měla vypadat po nasazení do
 Obnovte balíčky NuGet a spusťte aplikaci.
 
 ```bash
-dotnet restore
 dotnet run
 ```
 
@@ -186,7 +185,7 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření webové aplikace .NET Core využívající SQL Database ve službě Azure App Service v Linuxu](tutorial-dotnetcore-sqldb-app.md)

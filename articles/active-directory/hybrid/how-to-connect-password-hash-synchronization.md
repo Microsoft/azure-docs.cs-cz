@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 3579a17ab28bd39ddad5008e1d0f8f7834237807
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5936157a46643ff76b5e1cc11d636aa6be9175ff
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281995"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427467"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -80,7 +80,7 @@ Následující část popisuje podrobný fungování synchronizaci hodnot hash h
 
 
 1. Každé dvě minuty, agent synchronizace hodnoty hash hesla na serveru AD Connect vyžaduje hodnoty hash hesel uložených (atributu unicodePwd) z řadiče domény pomocí standardu [MS DRSR](https://msdn.microsoft.com/library/cc228086.aspx) replikace protokol použitý k synchronizaci dat mezi řadiče domény. Účet služby musí mít replikace změn adresáře a replikovat všechny změny adresáře AD oprávněním (ve výchozím nastavení na instalaci) k získání hodnoty hash hesla.
-2. Před odesláním, řadič domény šifruje hodnota hash MD4 hesla pomocí klíče, který je [MD5](http://www.rfc-editor.org/rfc/rfc1321.txt) hash klíče relace vzdáleného volání Procedur a sůl. Potom pošle výsledek k agentovi synchronizace hodnoty hash hesla přes RPC. Řadič domény taky předá sůl agenta synchronizace, aby pomocí protokolu replikace řadiče domény, tak agent bude schopná dešifrovat obálky.
+2. Před odesláním, řadič domény šifruje hodnota hash MD4 hesla pomocí klíče, který je [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) hash klíče relace vzdáleného volání Procedur a sůl. Potom pošle výsledek k agentovi synchronizace hodnoty hash hesla přes RPC. Řadič domény taky předá sůl agenta synchronizace, aby pomocí protokolu replikace řadiče domény, tak agent bude schopná dešifrovat obálky.
 3.  Šifrované obálky po agenta synchronizace hodnot hash hesel používá [MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) a hodnota salt chcete vygenerovat klíč pro dešifrování přijatých dat. zpět na původním formátu MD4. V žádném bodě agenta synchronizace hodnot hash hesel má přístup k hesla v nešifrovaném textu. Heslo hash agenta synchronizace, aby pro použití algoritmu MD5 je určené výhradně pro kompatibilitu protokolů replikace s řadiči domény a používá se pouze v místním prostředí mezi řadiči domény a agenta synchronizace hodnot hash hesel.
 4.  Agent synchronizace hodnot hash hesel rozšíří hodnotu hash hesla binární 16 bajtů 64 bajtů převedením první-the-hash na 32 bajtů šestnáctkový řetězec, pak převedete tento řetězec zpět do binárního souboru s kódováním UTF-16.
 5.  Přidá agenta synchronizace hodnot hash hesel za uživatele hodnota salt, skládající se z hodnota salt délku 10 bajtů na binární 64 bajtů dalším stupněm ochrany původní hodnoty hash.

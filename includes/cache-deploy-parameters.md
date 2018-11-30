@@ -1,6 +1,18 @@
-
+---
+author: wesmc7777
+ms.service: redis-cache
+ms.topic: include
+ms.date: 11/21/2018
+ms.author: wesmc
+ms.openlocfilehash: 1ddb81de479317a098f9de8aa5756cbaae59cb72
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52330877"
+---
 ### <a name="cacheskuname"></a>cacheSKUName
-Cenová úroveň nové Azure Redis Cache.
+Cenová úroveň na nový Azure Redis Cache.
 
     "cacheSKUName": {
       "type": "string",
@@ -14,11 +26,11 @@ Cenová úroveň nové Azure Redis Cache.
       }
     },
 
-Šablona definuje hodnoty, které jsou povoleny pro tento parametr (Basic nebo Standard) a přiřadí výchozí hodnotu (Basic), pokud není zadaná žádná hodnota. Basic poskytuje jeden uzel s více velikostí, které jsou k dispozici až do 53 GB.
-Standard poskytuje dva uzly primární/replika s více velikostí, které jsou k dispozici až do 53 GB a 99,9 % SLA.
+Šablona definuje hodnoty, které jsou povoleny pro tento parametr (Basic nebo Standard) a přiřadí výchozí hodnotu (Basic), pokud není zadána žádná hodnota. Basic poskytuje jeden uzel s více velikostí až do 53 GB.
+Standard poskytuje dva uzly primární/replika s více velikostí až do 53 GB a 99,9 % smlouva SLA.
 
 ### <a name="cacheskufamily"></a>cacheSKUFamily
-Dané řadě pro verze sku.
+Řada pro danou skladovou jednotku.
 
     "cacheSKUFamily": {
       "type": "string",
@@ -33,7 +45,7 @@ Dané řadě pro verze sku.
 
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
-Velikost novou instanci služby Azure Redis Cache. 
+Velikost nové instance Azure Redis Cache. 
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -53,5 +65,5 @@ Velikost novou instanci služby Azure Redis Cache.
     }
 
 
-Šablona definuje hodnoty, které jsou povoleny pro tento parametr (0, 1, 2, 3, 4, 5 nebo 6) a přiřadí výchozí hodnota (0), pokud není zadaná žádná hodnota. Tyto čísla odpovídají následující velikosti mezipaměti: 0 = 250 MB, 1 = 1 GB, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
+Šablona definuje hodnoty, které jsou povoleny pro tento parametr (0, 1, 2, 3, 4, 5 nebo 6) a přiřadí výchozí hodnotu (0), pokud není zadána žádná hodnota. Tato čísla odpovídají následující velikosti mezipaměti: 0 = 250 MB, 1 = 1 GB, 2 = 2,5 GB, 3 = 6 GB, 4 = 13 GB, 5 = 26 GB, 6 = 53 GB
 

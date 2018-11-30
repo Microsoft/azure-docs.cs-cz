@@ -16,16 +16,16 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 8879cc331c5d0e8c6aab24e8c6178d96ab23bf9d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8738205aec8e0b00115a185886ca293b2f96033c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955394"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422367"
 ---
 # <a name="native-apps"></a>Nativní aplikace
 
-Nativní aplikace jsou aplikace, které volání webového rozhraní API jménem uživatele. Tento scénář je založený na typ udělení kódu autorizace OAuth 2.0 s veřejným klientem, jak je popsáno v části 4.1 [specifikaci OAuth 2.0](http://tools.ietf.org/html/rfc6749). Nativní aplikace získá přístupový token pro uživatele s použitím protokolu OAuth 2.0. Tento přístupový token se pak odešle přes požadavek do webového rozhraní API, které opravňují uživatele a vrátí požadovaný prostředek.
+Nativní aplikace jsou aplikace, které volání webového rozhraní API jménem uživatele. Tento scénář je založený na typ udělení kódu autorizace OAuth 2.0 s veřejným klientem, jak je popsáno v části 4.1 [specifikaci OAuth 2.0](https://tools.ietf.org/html/rfc6749). Nativní aplikace získá přístupový token pro uživatele s použitím protokolu OAuth 2.0. Tento přístupový token se pak odešle přes požadavek do webového rozhraní API, které opravňují uživatele a vrátí požadovaný prostředek.
 
 ## <a name="diagram"></a>Diagram
 

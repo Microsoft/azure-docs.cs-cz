@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 6cf2aa31e8a7207b041b9789ddde23b616f47150
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 58db410fe5a6c2b081507eae2ccad3a258ec0864
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258438"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427586"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -104,7 +104,7 @@ A [spustitelný soubor typu Host](service-fabric-guest-executables-introduction.
 ## <a name="application-lifecycle"></a>Životní cyklus aplikace
 Podle jiných platforem, aplikace v Service Fabric obvykle prochází následující fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. Service Fabric poskytuje prvotřídní podporu pro celou aplikaci životního cyklu cloudových aplikací, od vývoje až po nasazení, každodenní správu a údržbu na případné vyřazení z provozu. Model služby umožňuje několik různých rolí se účastnit životního cyklu aplikací nezávisle na sobě. [Životní cyklus aplikace Service Fabric](service-fabric-application-lifecycle.md) obsahuje základní informace o rozhraní API a jak se používají v různých rolích v průběhu fáze životního cyklu aplikací Service Fabric. 
 
-Životní cyklus celá aplikace je možné spravovat pomocí [rutin prostředí PowerShell](/powershell/module/ServiceFabric/), [příkazy rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rozhraní Java API](/java/api/system.fabric._application_management_client), a [ Rozhraní REST API](/rest/api/servicefabric/). Můžete také nastavit průběžné integrace a nasazování kanálů pomocí nástroje, jako [kanály Azure](service-fabric-set-up-continuous-integration.md) nebo [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
+Životní cyklus celá aplikace je možné spravovat pomocí [rutin prostředí PowerShell](/powershell/module/ServiceFabric/), [příkazy rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rozhraní Java API](/java/api/overview/azure/servicefabric), a [ Rozhraní REST API](/rest/api/servicefabric/). Můžete také nastavit průběžné integrace a nasazování kanálů pomocí nástroje, jako [kanály Azure](service-fabric-set-up-continuous-integration.md) nebo [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
 
 Následující video Microsoft Virtual Academy popisuje, jak spravovat životní cyklus vaší aplikace: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">

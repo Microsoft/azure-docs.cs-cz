@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: 06a0f2416ecff9e2f9a21877e26487b56452d0a0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 14e675097a23b50c8ff193c69c377ac8edfb989f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251317"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317258"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Použití Ansible ke správě virtuálního počítače s Linuxem v Azure
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat virtuální počítače Azure stejně jako jakékoli jiné prostředky. V tomto článku se dozvíte, jak pomocí playbooku Ansible spustit a zastavit virtuální počítač s Linuxem. 
@@ -139,6 +139,6 @@ Tato část ukazuje, jak pomocí Ansible spustit uvolněný (zastavený) virtuá
     localhost                  : ok=2    changed=1    unreachable=0    failed=0
     ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
-> [Použití Ansible ke správě dynamického inventáře Azure](/articles/ansible/ansible-manage-azure-dynamic-inventories)
+> [Použití Ansible ke správě dynamického inventáře Azure](~/articles/ansible/ansible-manage-azure-dynamic-inventories.md)

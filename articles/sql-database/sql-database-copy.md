@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 639795824bf75bb99d34f12d4dfc4e0695341986
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: f3da1a8cef5abc8fd30a0dc7760005ad5fff5446
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868408"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335365"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Zkopírujte transakčně konzistentní kopie databáze Azure SQL
 
@@ -26,6 +26,9 @@ Azure SQL Database nabízí několik metod pro vytvoření transakčně konziste
 ## <a name="overview"></a>Přehled
 
 Kopie databáze je snímek zdrojové databáze k datu požadavku kopírování. Můžete vybrat na stejný server nebo jiný server, úroveň služby a velikost výpočetního nebo různými výpočetními velikost v rámci stejné úrovně služeb (edice). Jakmile se kopírování dokončí, bude plně funkční, nezávislé databáze. V tomto okamžiku můžete upgradovat nebo downgradovat pro všechny edice. Přihlášení, uživatelů a oprávnění se dají spravovat nezávisle.  
+
+> [!NOTE]
+> [Automatizované zálohování databáze](sql-database-automated-backups.md) se používají při vytvoření kopie databáze.
 
 ## <a name="logins-in-the-database-copy"></a>Přihlašovacích údajů ve službě kopie databáze
 

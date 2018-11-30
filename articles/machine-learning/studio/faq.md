@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy ke službě Azure Machine Learning | Dokumentace Microsoftu
-description: 'Představení služby Azure Machine Learning: časté otázky k fakturaci, schopnostem a omezením cloudové služby pro efektivní prediktivní modelování'
+title: Machine Learning Studio – nejčastější dotazy (FAQ) – Azure | Dokumentace Microsoftu
+description: 'Azure Machine Learning Studio: Časté otázky k fakturaci, schopnostem a omezením cloudové služby pro efektivní prediktivní modelování.'
 keywords: úvod ke strojovému učení, prediktivní modelování, co je strojové učení
 services: machine-learning
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 9545c9a0cf77274b4ea68dea7a6640453a849093
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: c9c80da55737d0093813b84e33d3d90c5d7d4603
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263422"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309136"
 ---
-# <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Nejčastější dotazy ke službě Azure Machine Learning: fakturace, možnosti, omezení a podpora
+# <a name="azure-machine-learning-studio-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Nejčastější dotazy k Azure Machine Learning Studio: fakturace, schopnosti, omezení a podpora
 Zde jsou některé nejčastější dotazy (a příslušné odpovědi) týkající se cloudové služby Azure Machine Learning, která slouží k vývoji prediktivních modelů a zprovozňování řešení prostřednictvím webových služeb. Najdete tu dotazy ke způsobu používání této služby, včetně modelu fakturace, možností, omezení a podpory.
 
 **Máte dotaz, který tady nemůžete najít?**
@@ -30,12 +30,6 @@ Zde jsou některé nejčastější dotazy (a příslušné odpovědi) týkajíc�
 Azure Machine Learning má fórum na webu MSDN, kde se členové komunity odborníků přes data můžou ptát na věci související se službou Azure Machine Learning. Toto fórum monitoruje tým služby Azure Machine Learning. Přejděte na [fórum služby Azure Machine Learning](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) a vyhledejte odpovědi nebo zadejte novou vlastní otázku.
 
 ## <a name="general-questions"></a>Obecné otázky
-**Co je Azure Machine Learning?**
-
-Azure Machine Learning je plně spravovaná služba, kterou můžete využít k vytváření, testování, provozování a správě řešení prediktivní analýzy v cloudu. Vystačíte si jen s prohlížečem, přes který se můžete přihlásit, nahrát data a okamžitě začít experimentovat se strojovým učením. Prediktivní modelování podporující přetahování myší, rozsáhlá paleta modulů a knihovna šablon, se kterými je možné hned začít, značně usnadňují a urychlují běžné úkoly strojového učení. Další informace najdete v tématu [Přehled služby Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/). Úvod ke strojovému učení, ve kterém se vysvětluje klíčová terminologie a koncepty, najdete v [úvodu ke službě Azure Machine Learning](what-is-machine-learning.md).
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 **Co je Machine Learning Studio?**
 
 Machine Learning Studio je pracovní prostředí, ke kterému přistupujete pomocí webového prohlížeče. Machine Learning Studio nabízí mnoho modulů s vizuálním kompozičním rozhraním, které umožňuje vytvořit komplexní pracovní postup založený na datové vědě ve formě experimentu.

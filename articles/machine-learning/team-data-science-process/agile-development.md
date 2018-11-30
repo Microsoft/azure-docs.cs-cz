@@ -1,25 +1,21 @@
 ---
 title: Agilní vývoj projektů datové vědy – Azure Machine Learning | Dokumentace Microsoftu
 description: Jak můžete spustit projekt vědeckého zpracování dat v systematické, verzi řízen vývojáři a spolupráce v týmu projektu pomocí vědeckého zpracování týmových dat.
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: deguhath
-ms.openlocfilehash: a032127d249f944d08cc6578a03f1a7e5a658361
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 9fd8714e4c9fdc89036a3b05ba835b140363c0e3
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301085"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443368"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agilní vývoj projekty datových věd
 

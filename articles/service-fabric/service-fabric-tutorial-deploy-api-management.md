@@ -15,18 +15,23 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 0d7c3691b3496da7c178f7dc13b981abdff48d4a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 207dad0386ec53be1e8a860a85fe6670d8542043
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255008"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422639"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integraci služby API Management s využitím Service Fabric v Azure
 
 Nasazení služby Azure API Management s využitím Service Fabric je pokročilý scénář.  Služba API Management je užitečná v případě, že potřebujete publikovat rozhraní API s bohatou sadou pravidel směrování pro vaše back-end služby Service Fabric. Cloudové aplikace obvykle potřebují front-end bránu, která poskytuje jediný bod příjmu příchozího přenosu od uživatelů, zařízení nebo dalších aplikací. V Service Fabric může být brána bezstavová služba navržená pro příjem provozu, například aplikace ASP.NET Core, služba Event Hubs, služba IoT Hub nebo služba Azure API Management.
 
 V tomto článku se dozvíte, jak nastavit [Azure API Management](../api-management/api-management-key-concepts.md) s využitím Service Fabric pro směrování provozu do back-end služby v Service Fabric.  Po dokončení budete mít nasazenou službu API Management ve virtuální síti a nakonfigurovanou operaci rozhraní API pro odesílání provozu do back-end bezstavové služby. Další informace o scénářích služby Azure API Management s využitím Service Fabric najdete v článku [Přehled](service-fabric-api-management-overview.md).
+
+## <a name="availability"></a>Dostupnost
+
+> [!IMPORTANT]
+> Tato funkce je dostupná v **Premium** a **Developer** podporu úrovních služby API Management kvůli požadované virtuální sítě.
 
 ## <a name="prerequisites"></a>Požadavky
 

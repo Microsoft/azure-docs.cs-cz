@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a2864ca743adf4ced1418630940146fed21b7fd5
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 89ab5ecb4e1a6a39e785a51c61e1344631b1f394
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625296"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335176"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -109,10 +109,11 @@ Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
 ```
 
 ### <a name="system-requirements"></a>Systémové požadavky
-- Serveru se systémem Windows Server 2012 R2 nebo Windows serveru 2016:
+- Serveru se systémem Windows Server 2012 R2, Windows serveru 2016 nebo Windows Server 2019:
 
     | Verze | Podporované skladové položky | Možnosti podporovaného nasazení |
     |---------|----------------|------------------------------|
+    | Windows Server. 2019 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
     | Windows Server 2016 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
     | Windows Server 2012 R2 | Datacenter a Standard | Úplné (server s uživatelským rozhraním) |
 
@@ -198,10 +199,10 @@ Společnosti Microsoft interní antivirových řešení, program Windows Defende
 ### <a name="backup-solutions"></a>Řešení zálohování
 Jako jsou antivirové řešení řešení pro zálohování může způsobit odvolání vrstvené soubory. Doporučujeme použít zálohování sdílené složky Azure místo produktu pro zálohování místních řešení cloudového zálohování.
 
-Pokud používáte místní záložní řešení, je třeba provést zálohování na serveru ve skupině synchronizace, který má zakázaný vrstvení cloudu. Při obnovování souborů v rámci umístění koncového bodu serveru, použijte možnost obnovení na úrovni souboru. Obnovit soubory se budou synchronizovat na všechny koncové body ve skupině synchronizace a existující soubory nahradí verzi obnovení ze zálohy.
+Pokud používáte místní záložní řešení, je třeba provést zálohování na serveru ve skupině synchronizace, který má zakázaný vrstvení cloudu. Když provádíte obnovení, použijte možnosti obnovení na úrovni svazků nebo souborů. Soubory obnovit pomocí možnosti obnovení na úrovni souboru se budou synchronizovat na všechny koncové body ve skupině synchronizace a existující soubory nahradí verzi obnovení ze zálohy.  Obnovení na úrovni svazku nenahradí novější verze souborů do sdílené složky Azure nebo jiné koncové body serveru.
 
 > [!Note]  
-> S ohledem na aplikace, na úrovni svazku a úplné možnosti obnovení (BMR) může vést k neočekávaným výsledkům a nejsou aktuálně podporovány. Obnovení, tyto možnosti budou podporované v budoucích vydáních.
+> Obnovení úplné – obnovení (BMR) může vést k neočekávaným výsledkům a v tuto chvíli nepodporuje.
 
 ### <a name="encryption-solutions"></a>Řešení šifrování
 Podpora pro řešení šifrování závisí na tom, jak jsou implementované. Azure File Sync je známo, že pracovat:

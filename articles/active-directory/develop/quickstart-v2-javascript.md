@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 69c77896f894201d1419aaef33470a02ac45ff91
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d044b1ad18df6eee1235e881038bbb9734a999ff
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986284"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317343"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Rychlý start: Přihlášení uživatelů a získání přístupového tokenu z aplikace v jazyce JavaScript
 
@@ -36,12 +36,12 @@ V tomto rychlém startu budete zjistěte, jak pomocí vzorového kódu, který u
 > #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 >
 > 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pro registraci aplikace.
-> 1. Pokud váš účet umožňuje přístup k více než jednoho tenanta, vyberte svůj účet v pravém horním rohu a nastavení portálu relace k požadované službě Azure AD tenanta.
-> 1. V levém navigačním podokně, vyberte **Azure Active Directory** služby a pak vyberte **registrace aplikací (Preview) > Nový registrační**.
+> 1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+> 1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak **Registrace aplikací (Preview) > Nová registrace**.
 > 1. Když **zaregistrovat aplikaci** se zobrazí stránka, zadejte název pro vaši aplikaci.
 > 1. V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
 > 1. Vyberte **webové** platformu v rámci **identifikátor URI pro přesměrování** tématu a nastavte hodnotu na `http://localhost:30662/`.
-> 1. Až budete hotovi, vyberte **zaregistrovat**.  V aplikaci **přehled** stránce si poznamenejte **ID aplikace (klient)** hodnotu.
+> 1. Až budete hotovi, vyberte **Zaregistrovat**.  V aplikaci **přehled** stránce si poznamenejte **ID aplikace (klient)** hodnotu.
 > 1. Tento rychlý start vyžaduje [implicitní tok poskytování](v2-oauth2-implicit-grant-flow.md) povolit. V levém navigačním podokně zaregistrovanou aplikaci vyberte **ověřování**.
 > 1. V **upřesňující nastavení**v části **implicitní grant**, oboje povolili **tokeny typu ID** a **přístupové tokeny** zaškrtávací políčka. Tokeny typu ID a přístupové tokeny jsou povinné, protože tato aplikace potřebuje přihlásit uživatele a volat rozhraní API.
 > 1. Vyberte **Uložit**.
@@ -53,7 +53,7 @@ V tomto rychlém startu budete zjistěte, jak pomocí vzorového kódu, který u
 > > [Tyto změny provést pro mě]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Už nakonfigurovali](media/quickstart-v2-javascript/green-check.png) vaše aplikace je nakonfigurovaná s těmito atributy.
+> > ![Už nakonfigurované](media/quickstart-v2-javascript/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
 
 #### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu
 
@@ -66,7 +66,7 @@ Extrahujte soubor zip do místní složky, například **C:\Azure-Samples**.
 #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurace aplikace pro JavaScript
 
 > [!div renderon="docs"]
-> Upravit `index.html` a nahraďte `Enter_the_Application_Id_here` pod `applicationConfig` s ID aplikace ID aplikace, které jste právě zaregistrovali.
+> Upravit `index.html` a nastavit `clientID` a `authority` hodnoty v rámci `applicationConfig`.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Upravit `index.html` a nahraďte `applicationConfig` pomocí:
@@ -74,13 +74,25 @@ Extrahujte soubor zip do místní složky, například **C:\Azure-Samples**.
 ```javascript
 var applicationConfig = {
     clientID: "Enter_the_Application_Id_here",
+    authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
     graphScopes: ["user.read"],
     graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 ```
+> [!div renderon="docs"]
+>
+> Kde:
+> - Hodnota `Enter_the_Application_Id_here` je **ID aplikace (klienta)**, kterou jste zaregistrovali.
+> - Hodnota `Enter_the_Tenant_Info_Here` je nastavená na jednu z následujících možností:
+>   - Pokud vaše aplikace podporuje režim **Účty jen v tomto organizačním adresáři**, nahraďte tuto hodnotu za **ID tenanta** nebo **Název tenanta** (například contoso.microsoft.com).
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři**, nahraďte tuto hodnotu za `organizations`.
+>   - Pokud vaše aplikace podporuje režim **Účty v libovolném organizačním adresáři a osobní účty Mircosoft**, nahraďte tuto hodnotu za `common`.
+>
+> > [!TIP]
+> > Hodnoty **ID aplikace (klienta)**, **ID adresáře (tenanta)** a **Podporované typy účtu** najdete na stránce **Přehled** aplikace na webu Azure Portal.
+
 > [!NOTE]
->Pokud používáte [Node.js](https://nodejs.org/en/download/), *server.js* souboru je nakonfigurovaný pro server zahájit naslouchání na portu 30662.
-> Pokud používáte [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/), ukázkový kód *.csproj* souboru je nakonfigurovaný pro server zahájit naslouchání na portu 30662.
+> Server je nakonfigurovaná k naslouchání na portu 30662 v *server.js* ve [Node.js](https://nodejs.org/en/download/) projektu a *.csproj* ve [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)projektu.
 >
 
 #### <a name="step-4-run-the-project"></a>Krok 4: Spuštění projektu
@@ -121,7 +133,7 @@ npm install msal
 Kód tohoto rychlého startu také ukazuje, jak inicializovat knihovnu:
 
 ```javascript
-var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, null, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
+var myMSALObj = new Msal.UserAgentApplication(applicationConfig.clientID, applicationConfig.authority, acquireTokenRedirectCallBack, {storeAuthStateInCookie: true, cacheLocation: "localStorage"});
 ```
 
 > |Kde  |  |

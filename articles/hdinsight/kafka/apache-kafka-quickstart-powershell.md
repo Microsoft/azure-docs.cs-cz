@@ -1,6 +1,6 @@
 ---
 title: Začínáme s Apache Kafka – Rychlý start pro Azure HDInsight
-description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí Azure PowerShellu. Dozvíte se také o tématech, předplatitelích a konzumentech platformy Kafka.
+description: V tomto rychlém startu se dozvíte, jak vytvořit cluster Apache Kafka v Azure HDInsight pomocí Azure PowerShellu. Také se seznámíte s tématy, předplatiteli a konzumenty Kafka.
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 8f552967dcf7e5c5d41d468914a2c829cad3dc96
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 8ac288a3b62b305ca45ba8ef2dcc6cdaf6aaf6bd
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010285"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309637"
 ---
-# <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření systému Kafka v clusteru HDInsight
+# <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření clusteru Apache Kafka ve službě HDInsight
 
-Kafka je open source distribuovaná streamovací platforma. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. 
+[Apache Kafka](https://kafka.apache.org/) je open source distribuovaná streamovací platforma. Často se používá jako zprostředkovatel zpráv, protože nabízí funkce podobné frontě pro publikování a odběr zpráv. 
 
 V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https://kafka.apache.org) pomocí Azure PowerShellu. Dozvíte se také, jak používat obsažené nástroje k odesílání a příjmu zpráv pomocí platformy Kafka.
 
@@ -27,7 +27,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit cluster [Apache Kafka](https:
 > [!IMPORTANT]
 > Rozhraní API Kafka je přístupné jenom pro prostředky ve stejné virtuální síti. V tomto rychlém startu budete ke clusteru přistupovat přímo pomocí SSH. Pokud chcete k platformě Kafka připojit jiné služby, sítě nebo virtuální počítače, musíte nejprve vytvořit virtuální síť a pak v síti vytvořit prostředky.
 >
-> Další informace najdete v dokumentu [Připojení k platformě Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md).
+> Další informace najdete v dokumentu [Připojení k platformě Apache Kafka pomocí virtuální sítě](apache-kafka-connect-vpn-gateway.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -95,9 +95,9 @@ $storageContext = New-AzureStorageContext `
 New-AzureStorageContainer -Name $containerName -Context $storageContext 
 ```
 
-## <a name="create-a-kafka-cluster"></a>Vytvoření clusteru Kafka
+## <a name="create-an-apache-kafka-cluster"></a>Vytvoření clusteru Apache Kafka
 
-Pomocí [New-AzureRmHDInsightCluster](/powershell/module/AzureRM.HDInsight/New-AzureRmHDInsightCluster) vytvořte cluster Kafka v clusteru HDInsight.
+Vytvoření Apache Kafka v clusteru HDInsight s [New-AzureRmHDInsightCluster](/powershell/module/AzureRM.HDInsight/New-AzureRmHDInsightCluster).
 
 ```powershell
 # Create a Kafka 1.0 cluster
@@ -182,11 +182,11 @@ Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ssuhuser@hn0-mykafk:~$
 ```
 
-## <a id="getkafkainfo"></a>Získání informací o hostiteli Zookeeper a Broker
+## <a id="getkafkainfo"></a>Získání informací o Apache Zookeeper a Broker hostiteli
 
-Při práci s platformou Kafka musíte znát hostitele *Zookeeper* a *Broker*. Tito hostitelé se používají s rozhraním Kafka API s mnohými z nástrojů, které se s tímto systémem dodávají.
+Při práci s platformou Kafka musíte znát *Apache Zookeeper* a *zprostředkovatele* hostitele. Tito hostitelé se používají s rozhraním Kafka API s mnohými z nástrojů, které se s tímto systémem dodávají.
 
-V této části získáte informace o hostiteli z rozhraní REST API Ambari v clusteru.
+V této části můžete získat informace o hostiteli od Apache Ambari REST API v clusteru.
 
 1. Připojte se ke clusteru přes SSH a následujícím příkazem nainstalujte nástroj `jq`. Tento nástroj slouží k parsování dokumentů JSON a je užitečný při načítání informací o hostiteli:
    
@@ -241,7 +241,7 @@ V této části získáte informace o hostiteli z rozhraní REST API Ambari v cl
    
     `wn1-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092,wn0-kafka.eahjefxxp1netdbyklgqj5y1ud.cx.internal.cloudapp.net:9092`
 
-## <a name="manage-kafka-topics"></a>Správa témat Kafka
+## <a name="manage-apache-kafka-topics"></a>Správa témat Apache Kafka
 
 Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí nástroje `kafka-topics.sh`.
 
@@ -267,7 +267,7 @@ Kafka ukládá datové proudy do *témat*. Témata můžete spravovat pomocí n�
         > [!IMPORTANT] 
         > Kafka nemá o doménách selhání Azure žádné informace. Při vytváření replik oddílu pro témata se nemusí repliky distribuovat správně z hlediska vysoké dostupnosti.
 
-        K zajištění vysoké dostupnosti použijte [nástroj pro obnovení rovnováhy oddílů Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj se musí spustit z připojení SSH k hlavnímu uzlu clusteru Kafka.
+        Pokud chcete zajistit vysokou dostupnost, použijte [nástroj pro obnovení rovnováhy oddílů Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj se musí spustit z připojení SSH k hlavnímu uzlu clusteru Kafka.
 
         K zajištění nejvyšší dostupnosti dat Kafka byste měli obnovit rovnováhu replik oddílů pro vaše téma v těchto situacích:
 
@@ -329,7 +329,7 @@ Pokud chcete uložit záznamy do dříve vytvořeného tématu test a pak je na�
 
 4. Konzumenta zastavíte stisknutím __Ctrl+C__.
 
-Můžete také programově vytvořit producenty a spotřebitele. Příklad používání tohoto rozhraní API najdete v dokumentu [Rozhraní API pro producenta a konzumenta Kafka pomocí HDInsight](apache-kafka-producer-consumer-api.md).
+Můžete také programově vytvořit producenty a spotřebitele. Příklad použití tohoto rozhraní API, najdete v článku [Apache Kafka Producer and Consumer API ve službě HDInsight](apache-kafka-producer-consumer-api.md) dokumentu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -344,7 +344,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 > 
 > Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Použití Apache Sparku se systémem Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)
+> [Použití Apache Sparku s využitím Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

@@ -1,6 +1,6 @@
 ---
-title: Ovládací prvky stránky Azure API Management | Microsoft Docs
-description: Další informace o ovládací prvky stránky, která je k dispozici pro použití v šablonách portálu vývojáře ve službě Azure API Management.
+title: Ovládací prvky stránky Azure API Management | Dokumentace Microsoftu
+description: Další informace o ovládacích prvků stránky, která je k dispozici pro použití v šablon portálu pro vývojáře ve službě Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,41 +13,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: da68c9b7ebbb1880e35bd60b12db9f920f51e13c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d87293d89e4009512494bf47f9742ea5901f909a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936136"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445358"
 ---
 # <a name="azure-api-management-page-controls"></a>Ovládací prvky stránky Azure API Management
-Azure API Management poskytuje následující ovládací prvky pro použití v vývojář portálu šablony.  
+Azure API Management poskytuje následující ovládací prvky pro použití v vývojář šablon portálu.  
   
-Použití ovládacího prvku, umístěte ho na požadované místo v šabloně portálu pro vývojáře. Některé ovládací prvky, jako například [akcí aplikace](#app-actions) řízení, musí mít parametry, jak je znázorněno v následujícím příkladu:  
+Použití ovládacího prvku, umístěte ho do požadovaného umístění v šabloně portálu pro vývojáře. Některé ovládací prvky, jako [akcí aplikace](#app-actions) řídit, které mají parametry, jak je znázorněno v následujícím příkladu:  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
 ```  
   
- Hodnoty parametrů jsou předána jako součást datový model pro šablonu. Ve většině případů můžete jednoduše vložit zadaný příklad pro každý ovládací prvek pro mohl správně fungovat. Další informace o hodnoty parametrů uvidíte oddíl modelu dat ke každé šabloně, ve kterém může použít ovládacího prvku.  
+ Hodnoty pro parametry jsou předány v rámci datový model pro šablonu. Ve většině případů můžete jednoduše vložit do zadané příklad pro každý ovládací prvek, aby to fungovalo správně. Další informace o hodnoty parametrů uvidíte datové části model ke každé šabloně, ve kterém ovládací prvek slouží.  
   
- Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+ Další informace o práci se šablonami najdete v tématu [přizpůsobení portálu pro správu rozhraní API pro vývojáře pomocí šablon](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-## <a name="developer-portal-template-page-controls"></a>Ovládací prvky stránky šablony portálu vývojáře  
+## <a name="developer-portal-template-page-controls"></a>Ovládací prvky stránky šablony portálu pro vývojáře  
   
--   [Akce aplikace](#app-actions)  
--   [Basic přihlášení](#basic-signin)  
+-   [aplikace akcí](#app-actions)  
+-   [Basic – přihlášení](#basic-signin)  
 -   [ovládací prvek stránkování](#paging-control)  
 -   [Zprostředkovatelé](#providers)  
--   [ovládací prvek vyhledávání](#search-control)  
--   [registrace](#sign-up)  
--   [přihlášení k odběru tlačítko](#subscribe-button)  
+-   [ovládací prvek hledání](#search-control)  
+-   [Zaregistrujte se](#sign-up)  
+-   [tlačítko přihlášení odběru](#subscribe-button)  
 -   [zrušení předplatného](#subscription-cancel)  
   
-##  <a name="app-actions"></a> Akce aplikace  
- `app-actions` Řízení poskytuje uživatelské rozhraní pro interakci s aplikacemi na stránce profilu uživatele na portál pro vývojáře.  
+##  <a name="app-actions"></a> aplikace akcí  
+ `app-actions` Ovládacího prvku poskytuje uživatelské rozhraní pro interakci s aplikací na stránku profilu uživatele na portálu pro vývojáře.  
   
- ![aplikace&#45;akce řízení](./media/api-management-page-controls/APIM-app-actions-control.png "APIM akcí aplikace řízení")  
+ ![aplikace&#45;akce řízení](./media/api-management-page-controls/APIM-app-actions-control.png "APIM akcí aplikace ovládací prvek")  
   
 ### <a name="usage"></a>Využití  
   
@@ -61,15 +63,15 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
 |---------------|-----------------|  
 |appId|Id aplikace.|  
   
-### <a name="developer-portal-templates"></a>Šablony na portálu vývojáře  
- `app-actions` Řízení je možné použít následující šablony portálu developer:  
+### <a name="developer-portal-templates"></a>Šablon portálu pro vývojáře  
+ `app-actions` Ovládací prvek lze použít v následujících šablon portálu pro vývojáře:  
   
 -   [Aplikace](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a> Basic přihlášení  
- `basic-signin` Řízení poskytuje ovládací prvek pro shromažďování uživatelské přihlašovací údaje na stránce přihlášení v portálu pro vývojáře.  
+##  <a name="basic-signin"></a> Basic – přihlášení  
+ `basic-signin` Ovládací prvek obsahuje ovládací prvek k shromažďování údajů o uživatelské přihlašovací údaje na stránce přihlášení v portálu pro vývojáře.  
   
- ![základní&#45;přihlášení řízení](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic přihlášení řízení")  
+ ![základní&#45;signin řízení](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM basic signin ovládacího prvku")  
   
 ### <a name="usage"></a>Využití  
   
@@ -80,15 +82,15 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
 ### <a name="parameters"></a>Parametry  
  Žádné.  
   
-### <a name="developer-portal-templates"></a>Šablony na portálu vývojáře  
- `basic-signin` Řízení je možné použít následující šablony portálu developer:  
+### <a name="developer-portal-templates"></a>Šablon portálu pro vývojáře  
+ `basic-signin` Ovládací prvek lze použít v následujících šablon portálu pro vývojáře:  
   
 -   [Přihlásit se](api-management-page-templates.md#SignIn)  
   
 ##  <a name="paging-control"></a> ovládací prvek stránkování  
- `paging-control` Poskytuje funkce stránkování vývojáře portálu stránky zobrazující seznam položek.  
+ `paging-control` Poskytuje funkce stránkování na vývojáře portálu stránek, které zobrazují seznam položek.  
   
- ![stránkování řízení](./media/api-management-page-controls/APIM-paging-control.png "APIM stránkování ovládacího prvku")  
+ ![ovládací prvek stránkování](./media/api-management-page-controls/APIM-paging-control.png "ovládací prvek stránkování APIM")  
   
 ### <a name="usage"></a>Využití  
   
@@ -99,19 +101,19 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
 ### <a name="parameters"></a>Parametry  
  Žádné.  
   
-### <a name="developer-portal-templates"></a>Šablony na portálu vývojáře  
- `paging-control` Řízení je možné použít následující šablony portálu developer:  
+### <a name="developer-portal-templates"></a>Šablon portálu pro vývojáře  
+ `paging-control` Ovládací prvek lze použít v následujících šablon portálu pro vývojáře:  
   
--   [Rozhraní API seznamu](api-management-api-templates.md#APIList)  
+-   [Seznam rozhraní API](api-management-api-templates.md#APIList)  
   
 -   [Seznam problémů](api-management-issue-templates.md#IssueList)  
   
 -   [Seznam produktů](api-management-product-templates.md#ProductList)  
   
 ##  <a name="providers"></a> Zprostředkovatelé  
- `providers` Řízení poskytuje ovládací prvek pro výběr zprostředkovatele ověřování na stránce přihlášení v portálu pro vývojáře.  
+ `providers` Ovládací prvek obsahuje ovládací prvek pro výběr zprostředkovatele ověřování na stránce přihlášení v portálu pro vývojáře.  
   
- ![poskytovatelé řízení](./media/api-management-page-controls/APIM-providers-control.png "APIM poskytovatelé řízení")  
+ ![ovládací prvek Providers](./media/api-management-page-controls/APIM-providers-control.png "APIM ovládací prvek providers")  
   
 ### <a name="usage"></a>Využití  
   
@@ -122,15 +124,15 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
 ### <a name="parameters"></a>Parametry  
  Žádné.  
   
-### <a name="developer-portal-templates"></a>Šablony na portálu vývojáře  
- `providers` Řízení je možné použít následující šablony portálu developer:  
+### <a name="developer-portal-templates"></a>Šablon portálu pro vývojáře  
+ `providers` Ovládací prvek lze použít v následujících šablon portálu pro vývojáře:  
   
 -   [Přihlásit se](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a> ovládací prvek vyhledávání  
- `search-control` Poskytuje funkce hledání vývojáře portálu stránky zobrazující seznam položek.  
+##  <a name="search-control"></a> ovládací prvek hledání  
+ `search-control` Obsahuje vyhledávací funkce pro vývojáře portálu stránek, které zobrazují seznam položek.  
   
- ![hledání řízení](./media/api-management-page-controls/APIM-search-control.png "APIM vyhledávání řízení")  
+ ![Hledat ovládací prvek](./media/api-management-page-controls/APIM-search-control.png "ovládací prvek hledání služby APIM")  
   
 ### <a name="usage"></a>Využití  
   
@@ -141,17 +143,17 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
 ### <a name="parameters"></a>Parametry  
  Žádné.  
   
-### <a name="developer-portal-templates"></a>Šablony na portálu vývojáře  
- `search-control` Řízení je možné použít následující šablony portálu developer:  
+### <a name="developer-portal-templates"></a>Šablon portálu pro vývojáře  
+ `search-control` Ovládací prvek lze použít v následujících šablon portálu pro vývojáře:  
   
--   [Rozhraní API seznamu](api-management-api-templates.md#APIList)  
+-   [Seznam rozhraní API](api-management-api-templates.md#APIList)  
   
 -   [Seznam produktů](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a> registrace  
- `sign-up` Řízení poskytuje ovládací prvek pro shromažďování informací o profilu uživatele na stránce registrace v portálu pro vývojáře.  
+##  <a name="sign-up"></a> Zaregistrujte se  
+ `sign-up` Ovládací prvek obsahuje ovládací prvek pro shromažďování informací o profilu uživatele na stránce registrace v portálu pro vývojáře.  
   
- ![přihlašovací&#45;až řízení](./media/api-management-page-controls/APIM-sign-up-control.png "APIM registrace ovládacího prvku")  
+ ![znaménko&#45;nahoru ovládacího prvku](./media/api-management-page-controls/APIM-sign-up-control.png "Zaregistrujte ovládací prvek služby APIM")  
   
 ### <a name="usage"></a>Využití  
   
@@ -162,15 +164,15 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
 ### <a name="parameters"></a>Parametry  
  Žádné.  
   
-### <a name="developer-portal-templates"></a>Šablony na portálu vývojáře  
- `sign-up` Řízení je možné použít následující šablony portálu developer:  
+### <a name="developer-portal-templates"></a>Šablon portálu pro vývojáře  
+ `sign-up` Ovládací prvek lze použít v následujících šablon portálu pro vývojáře:  
   
--   [Registrace](api-management-page-templates.md#SignUp)  
+-   [Zaregistrovat se](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a> přihlášení k odběru tlačítko  
- `subscribe-button` Poskytuje ovládací prvek pro přihlášení k odběru uživatele k produktu.  
+##  <a name="subscribe-button"></a> tlačítko přihlášení odběru  
+ `subscribe-button` Poskytuje ovládací prvek pro přihlášení k odběru uživatelů do produktu.  
   
- ![přihlášení k odběru&#45;tlačítko řízení](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM přihlášení k odběru tlačítko – ovládací prvek")  
+ ![přihlášení odběru&#45;ovládacímu prvku tlačítko](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM odběru – ovládací prvek")  
   
 ### <a name="usage"></a>Využití  
   
@@ -181,15 +183,15 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
 ### <a name="parameters"></a>Parametry  
  Žádné.  
   
-### <a name="developer-portal-templates"></a>Šablony na portálu vývojáře  
- `subscribe-button` Řízení je možné použít následující šablony portálu developer:  
+### <a name="developer-portal-templates"></a>Šablon portálu pro vývojáře  
+ `subscribe-button` Ovládací prvek lze použít v následujících šablon portálu pro vývojáře:  
   
--   [Produktu](api-management-product-templates.md#Product)  
+-   [Produkt](api-management-product-templates.md#Product)  
   
 ##  <a name="subscription-cancel"></a> zrušení předplatného  
- `subscription-cancel` Řízení poskytuje ovládací prvek pro zrušení odběru produktu na stránce profilu uživatele v portálu pro vývojáře.  
+ `subscription-cancel` Ovládací prvek obsahuje ovládací prvek pro zrušení odběru produktů na stránce profilu uživatele na portálu pro vývojáře.  
   
- ![předplatné&#45;zrušit řízení](./media/api-management-page-controls/APIM-subscription-cancel-control.png "řízení APIM zrušit předplatné")  
+ ![předplatné&#45;zrušit řízení](./media/api-management-page-controls/APIM-subscription-cancel-control.png "řízení zrušit předplatné služby APIM")  
   
 ### <a name="usage"></a>Využití  
   
@@ -203,13 +205,13 @@ Použití ovládacího prvku, umístěte ho na požadované místo v šabloně p
   
 |Parametr|Popis|  
 |---------------|-----------------|  
-|subscriptionId|Id předplatného zrušit.|  
-|cancelUrl|Předplatné zruší adresy URL.|  
+|subscriptionId|Id odběru, který chcete zrušit.|  
+|cancelUrl|Předplatné se zruší adresa URL.|  
   
-### <a name="developer-portal-templates"></a>Šablony na portálu vývojáře  
- `subscription-cancel` Řízení je možné použít následující šablony portálu developer:  
+### <a name="developer-portal-templates"></a>Šablon portálu pro vývojáře  
+ `subscription-cancel` Ovládací prvek lze použít v následujících šablon portálu pro vývojáře:  
   
--   [Produktu](api-management-product-templates.md#Product)
+-   [Produkt](api-management-product-templates.md#Product)
 
 ## <a name="next-steps"></a>Další postup
-Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).
+Další informace o práci se šablonami najdete v tématu [přizpůsobení portálu pro správu rozhraní API pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).

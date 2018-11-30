@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB škálování a testování výkonu | Microsoft Docs
-description: Naučte se provádět škálování a výkon testování pomocí Azure Cosmos DB
+title: Škálování služby Azure Cosmos DB a testování výkonu | Dokumentace Microsoftu
+description: Zjistěte, jak testovat škálování a výkon pomocí služby Azure Cosmos DB
 keywords: Testování výkonu
 services: cosmos-db
 author: SnehaGunda
@@ -11,46 +11,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: ce2c0ddcce3813990bf819477f7db425d70e3595
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09ed72c73acf16f944c3b1101aff5ea04acb624d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34612295"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308167"
 ---
-# <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Výkonu a možností škálování testování pomocí Azure Cosmos DB
+# <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Testování pomocí služby Azure Cosmos DB výkonu a škálování
 
-Testování výkonu a škálování je klíče krok při vývoji aplikace. Mnoho aplikací databázové vrstvy má významný dopad na celkový výkon a škálovatelnost. Proto je zásadní součástí testování výkonu. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je vytvořeného pro tento účel pro elastické škálování a předvídatelný výkon. Tyto funkce umožňují skvělé přizpůsobit pro aplikace, které potřebují a vysoce výkonné databázové vrstvy. 
+Testování výkonu a škálování je klíče krok ve vývoji aplikací. Pro mnoho aplikací na úrovni databáze má významný dopad na celkový výkon a škálovatelnost. Proto je zásadní součástí sady testování výkonu. [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) účelově vytvořené pro pružné škálování a předvídatelný výkon. Tyto možnosti umožňují skvěle hodí pro aplikace, které potřebují vysoce výkonné databázové vrstvě. 
 
-Tento článek je odkaz pro vývojáře implementace sad testů výkonu pro své úlohy Azure Cosmos DB. Také může sloužit k vyhodnocení Azure Cosmos DB pro vysoce výkonné aplikace scénáře. Se zaměřují hlavně na test výkonnosti izolované databáze, ale také obsahuje osvědčené postupy pro výrobní aplikace.
+Tento článek je odkaz pro vývojáře v implementaci sad testů výkonu pro své úlohy služby Azure Cosmos DB. To také umožňuje vyhodnotit službu Azure Cosmos DB pro scénáře vysoce výkonných aplikací. Se zaměřují hlavně na testování výkonu izolované databáze, ale také obsahuje osvědčené postupy pro produkční aplikace.
 
-Po přečtení tohoto článku, budete moct odpovězte si na následující otázky: 
+Po přečtení tohoto článku, budete moci odpovědět na následující otázky: 
 
-* Kde najdu ukázkovou aplikaci klienta rozhraní .NET pro testování výkonu databáze Cosmos Azure? 
-* Jak dosáhnout vysoké propustnosti úrovně s Azure Cosmos DB z mé aplikace klienta?
+* Kde najdu ukázková klientská aplikace .NET pro testování výkonnosti služby Azure Cosmos DB? 
+* Jak dosáhnout vysoké propustnosti s Azure Cosmos DB z Moje klientská aplikace?
 
-Pokud chcete začít s kódem, stáhněte si projekt z [testování ukázkové výkonu Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark). 
-
-> [!NOTE]
-> Cílem této aplikace je ukazují, jak získat nejlepší výkon z databáze Cosmos Azure s malý počet klientských počítačů. Cílem vzorku se dosáhnout kapacita propustnosti ve špičce Azure DB Cosmos (který můžete škálovat bez žádné omezení).
-> 
-> 
-
-Pokud hledáte možnosti konfigurace na straně klienta pro zlepšení výkonu Azure Cosmos DB, přečtěte si téma [tipy pro zvýšení výkonu Azure Cosmos DB](performance-tips.md).
-
-## <a name="run-the-performance-testing-application"></a>Spuštění testování aplikace výkonu
-Pro zkompilování a spuštění vzorového .NET je nejrychlejší způsob, jak začít pracovat, jak je popsáno v následujících krocích. Můžete také zkontrolovat zdrojový kód a implementovat podobné konfigurace na vlastní klientské aplikace.
-
-**Krok 1:** stáhnout projekt z [testování ukázkové výkonu Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), nebo rozvětvit úložiště GitHub.
-
-**Krok 2:** upravit nastavení adresa URL koncového bodu, authorizationkey tak, CollectionThroughput a DocumentTemplate (volitelné) v souboru App.config.
+Abyste mohli začít s kódem, stáhněte si projekt z [testování ukázkové výkonu služby Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark). 
 
 > [!NOTE]
-> Než zřídíte kolekce s vysokou propustnost, naleznete [cenová stránky](https://azure.microsoft.com/pricing/details/cosmos-db/) k zjištění přibližné hodnoty náklady na kolekci. Azure účtuje poplatky za úložiště Cosmos databáze a propustnost nezávisle na hodinu. Odstraněním nebo snížení propustnost vaší kolekce Azure Cosmos DB po testování může významně snížit náklady.
+> Cílem této aplikace je ukazují, jak získat nejlepší výkon ze služby Azure Cosmos DB s malý počet klientských počítačů. Cílem vzorku není k dosažení maximální kapacitu propustnosti služby Azure Cosmos DB (která může škálovat bez žádné omezení).
 > 
 > 
 
-**Krok 3:** zkompilování a spuštění aplikace konzoly z příkazového řádku. Měli byste vidět výstup podobný tomuto:
+Pokud hledáte možnosti konfigurace na straně klienta pro zlepšení výkonu služby Azure Cosmos DB, přečtěte si téma [tipy ke zvýšení výkonu služby Azure Cosmos DB](performance-tips.md).
+
+## <a name="run-the-performance-testing-application"></a>Spuštění aplikace pro testování výkonu
+Nejrychlejší způsob, jak začít pracovat se kompilace a spuštění ukázky .NET, jak je popsáno v následujících krocích. Můžete také zkontrolujte zdrojový kód a implementovat podobné konfigurace na vlastní klientské aplikace.
+
+**Krok 1:** stáhnete projekt z [testování ukázkové výkonu služby Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark), nebo vytvořit fork úložiště GitHub.
+
+**Krok 2:** upravit nastavení pro EndpointUrl, authorizationkey tak, CollectionThroughput a DocumentTemplate (volitelné) v souboru App.config.
+
+> [!NOTE]
+> Než zřídíte kolekce s vysokou propustností, odkazovat [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) odhadnout náklady na kolekci. Azure Cosmos DB účtů úložiště a propustnost nezávisle na po hodinách. Dá ušetřit odstraněním nebo po testování snížení propustnosti kolekce Azure Cosmos DB.
+> 
+> 
+
+**Krok 3:** kompilace a spuštění aplikace konzoly z příkazového řádku. Byste měli vidět výstup podobný tomuto:
 
     C:\Users\cosmosdb\Desktop\Benchmark>DocumentDBBenchmark.exe
     Summary:
@@ -93,15 +93,15 @@ Pro zkompilování a spuštění vzorového .NET je nejrychlejší způsob, jak 
     Press any key to exit...
 
 
-**Krok 4 (v případě potřeby):** propustnost hlášené (RU/s) z nástroje musí být stejná nebo vyšší než zřízené propustnosti kolekce nebo sady kolekcí. Pokud není, zvýšení DegreeOfParallelism v malých přírůstcích vám můžou pomoct dosáhne omezení. Pokud náhorních plošinách propustnost z vaší klientské aplikace, spusťte více instancí aplikace na další klientské počítače. Pokud potřebujete pomoc s Tento krok, e-mailu askcosmosdb@microsoft.com nebo soubor lístek podpory z [portál Azure](https://portal.azure.com).
+**Krok 4 (v případě potřeby):** propustnost hlášené (RU/s) z nástroje by měla být stejná nebo vyšší. zřízená propustnost kolekce nebo sady kolekcí. Pokud není, zvýšení DegreeOfParallelism po malých krocích vám můžou pomoct dosáhla limitu. Pokud se propustnost z klientské aplikace plateaus spusťte více instancí aplikace na další klientské počítače. Pokud potřebujete pomoc s tímto krokem, e-mailu askcosmosdb@microsoft.com nebo z lístek podpory [webu Azure portal](https://portal.azure.com).
 
-Až budete mít aplikaci spuštěnou, můžete zkusit jiný [indexování zásady](indexing-policies.md) a [úrovně konzistence](consistency-levels.md) pochopit jejich dopad na propustnosti a latence. Můžete také zkontrolovat zdrojový kód a implementovat podobné konfigurace sad testů nebo výrobní aplikace.
+Jakmile budete mít spuštěnou aplikaci, můžete zkusit jiný [zásadám indexování](index-policy.md) a [úrovně konzistence](consistency-levels.md) pochopit jejich dopad na propustnost a latenci. Můžete také zkontrolovat zdrojový kód a implementovat podobné konfigurace vlastními testovacích sad nebo aplikacích v produkčním prostředí.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jsme se podívali na tom, jak můžete provádět výkonu a možností škálování testování pomocí Azure Cosmos DB pomocí konzolové aplikace .NET. Další informace najdete v následujících článcích:
+V tomto článku jsme se podívali na tom, jak můžete provádět testování pomocí služby Azure Cosmos DB pomocí konzolové aplikace .NET výkonu a škálování. Další informace najdete v následujících článcích:
 
-* [Testování ukázkové Azure Cosmos DB výkonu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
-* [Možnosti konfigurace klienta pro zlepšení výkonu Azure Cosmos DB](performance-tips.md)
-* [Dělení na straně serveru v Azure Cosmos DB](partition-data.md)
+* [Testování ukázkové výkonu Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Možnosti konfigurace klienta pro zlepšení výkonu služby Azure Cosmos DB](performance-tips.md)
+* [Dělení na straně serveru ve službě Azure Cosmos DB](partition-data.md)
 
 

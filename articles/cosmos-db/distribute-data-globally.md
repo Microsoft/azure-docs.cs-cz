@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
-ms.openlocfilehash: c90450fa4cc35b460198f5a351a965aee4ea4f4b
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 181a8ad7291a8e8a0aa2a8373985c8747bd4569b
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636406"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446819"
 ---
-# <a name="build-globally-distributed-applications-with-azure-cosmos-db"></a>Vytváření globálně distribuovaných aplikací pomocí služby Azure Cosmos DB
+# <a name="global-data-distribution-with-azure-cosmos-db"></a>Distribuce globálních dat pomocí služby Azure Cosmos DB
 
-Řada dnešních aplikací vyžadují provozují v několika datových centrech. Tyto aplikace jsou označovány jako globálně distribuovaných aplikací. Tyto aplikace jsou vždy "on" a jsou přístupné uživatelům po celém světě. Správa globální distribuce dat, která používá tyto aplikace poskytuje nízkou latenci, elastickou škálovatelnost výkonu a vysoké dostupnosti po celém světě, je obtížné problém. Azure Cosmos DB je globálně distribuovaná databázová služba, která je určená k poskytnutí nízkou latenci, elastickou škálovatelnost propustnosti, sémantiku jasně definovaných pro konzistenci dat a vysokou dostupnost. Stručně řečeno pokud se potřeby vaší aplikace zaručit krátkou dobu odezvy kdekoli na světě, pokud vyžaduje, aby se vždy online a vyžaduje neomezenou a elastické škálovatelnosti propustnost a úložiště, měli byste zvážit vytváření aplikací pomocí služby Azure Cosmos DB.
+Dnešní aplikace vyžadují s velmi rychlou odezvou a vždy online. Pokud chcete dosáhnout nízké latence a vysoká dostupnost, instancí těchto aplikací je nutné nasadit v datových centrech, která jsou blízko uživatelů. Tyto aplikace jsou obvykle nasazené v několika datových centrech a jsou volány globálně distribuované. Globálně distribuované aplikace potřebují globálně distribuovanou databázi, která umí transparentně replikovat data kdekoli ve světě umožnit aplikacím provozovat na kopii dat, která je blízko uživatelů. Azure Cosmos DB je globálně distribuovaná databázová služba, která je určená k poskytnutí nízkou latenci, elastickou škálovatelnost propustnosti, sémantiku jasně definovaných pro konzistenci dat a vysokou dostupnost. Stručně řečeno pokud se potřeby vaší aplikace zaručit krátkou dobu odezvy kdekoli na světě, pokud vyžaduje, aby se vždy online a vyžaduje neomezenou a elastické škálovatelnosti propustnost a úložiště, měli byste zvážit vytváření aplikací pomocí služby Azure Cosmos DB.
 
 Azure Cosmos DB je základní služby Azure a je k dispozici ve všech [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/) ve výchozím nastavení. Microsoft provozuje datových center Azure v 54 + oblastech po celém světě a nadále rozšiřuje místní přítomnost na rostoucí potřeby zákazníků. Při vytváření účtu Azure Cosmos je rozhodnout, které položky nakoupené by měly být nasazeny v. Microsoft provozuje služby Azure Cosmos DB služeb 24 hodin denně, 7, takže se můžete soustředit na aplikace.
 
-Můžete nakonfigurovat vaše databáze bude globálně distribuovaná a k dispozici ve všech oblastech Azure. Snížit latenci, měli byste umístit data blíž k kde jsou vaši uživatelé. Volba požadované oblasti závisí na globální dosah aplikace, a kde se nachází vaši uživatelé. Data v rámci svého účtu Azure Cosmos DB transparentně replikuje do všech oblastí, které jsou spojené s vaším účtem. Poskytuje jeden systémový obraz globálně distribuovanou databázi Azure Cosmos a kontejnerů, které vaše aplikace může číst a zapisovat do místně. Pomocí služby Azure Cosmos DB můžete přidat nebo odebrat oblasti spojené s vaším účtem v každém okamžiku. Vaše aplikace nemusí pozastavená nebo znovu nasadit do přidat nebo odebrat oblasti. Pokračuje k zajištění vysoké dostupnosti neustále kvůli možnostmi multihomingu, které služba poskytuje.
+Můžete nakonfigurovat vaše databáze bude globálně distribuovaná a k dispozici ve všech oblastech Azure. Snížit latenci, měli byste umístit data blíž k kde jsou vaši uživatelé. Volba požadované oblasti závisí na globální dosah aplikace, a kde se nachází vaši uživatelé. Data v rámci svého účtu Azure Cosmos DB transparentně replikuje do všech oblastí, které jsou spojené s vaším účtem. Poskytuje jeden systémový obraz globálně distribuované databáze Azure Cosmos a kontejnerů, které vaše aplikace může číst a zapisovat do místně. Pomocí služby Azure Cosmos DB můžete přidat nebo odebrat oblasti spojené s vaším účtem v každém okamžiku. Vaše aplikace nemusí pozastavená nebo znovu nasadit do přidat nebo odebrat oblasti. Pokračuje k zajištění vysoké dostupnosti neustále kvůli možnostmi multihomingu, které služba poskytuje.
 
 ## <a name="key-benefits-of-global-distribution"></a>Klíčové výhody globální distribuce
 

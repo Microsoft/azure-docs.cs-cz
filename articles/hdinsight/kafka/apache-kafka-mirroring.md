@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 21fa41db2e205a7b17deae6d018308fe6e7ff213
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: fd9094d646b917cf811c28c9770fc2427a404ab4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006766"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309034"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Replikace témat Apache Kafka s využitím Kafka v HDInsight pomocí Mirrormakeru
 
@@ -25,11 +25,11 @@ V tomto příkladu je zrcadlení používanou k replikaci témata mezi dvěma cl
 > [!WARNING]
 > Zrcadlení by neměly být zahrnuté jako prostředek k dosažení odolnost proti chybám. Posun na položky v rámci tématu se liší mezi zdrojovým a cílovým clustery, aby klienti nemohou použít dva Zaměnitelně.
 >
-> Pokud máte obavy o odolnosti proti chybám, byste měli nastavit replikaci pro témata v rámci vašeho clusteru. Další informace najdete v tématu [Začínáme s Kafka v HDInsight](apache-kafka-get-started.md).
+> Pokud máte obavy o odolnosti proti chybám, byste měli nastavit replikaci pro témata v rámci vašeho clusteru. Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 
-## <a name="how-kafka-mirroring-works"></a>Jak funguje Kafka zrcadlení
+## <a name="how-apache-kafka-mirroring-works"></a>Jak funguje zrcadlení Apache Kafka
 
-Zrcadlení funguje s použitím nástroje nástroje MirrorMaker (součást platformy Apache Kafka) konzumovat záznamy z témat ve zdrojovém clusteru a pak vytvořit místní kopii v cílovém clusteru. Nástroje MirrorMaker používá (nejméně jeden) *příjemci* , který číst ze zdrojového clusteru a *producent* , která zapisuje do clusteru místní (cíl).
+Zrcadlení s využitím funguje [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) nástroj (součást platformy Apache Kafka) konzumovat záznamy z témat ve zdrojovém clusteru a pak vytvořit místní kopii v cílovém clusteru. Nástroje MirrorMaker používá (nejméně jeden) *příjemci* , který číst ze zdrojového clusteru a *producent* , která zapisuje do clusteru místní (cíl).
 
 Následující obrázek znázorňuje proces zrcadlení:
 
@@ -56,7 +56,7 @@ Pokud potřebujete pro zrcadlení mezi clustery Kafka v různých sítích, exis
 
 Další informace o propojení dvou virtuálních sítích Azure najdete v tématu [konfigurace připojení typu VNet-to-VNet](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 
-## <a name="create-kafka-clusters"></a>Vytvoření clusterů Kafka
+## <a name="create-apache-kafka-clusters"></a>Vytvoření clusterů systému Apache Kafka
 
 I když můžete vytvořit virtuální síť Azure a ručně clustery Kafka, je jednodušší použít šablonu Azure Resource Manageru. V následujícím návodu pro nasazení služby Azure virtual network a dva clustery Kafka se svým předplatným Azure.
 
@@ -106,7 +106,7 @@ I když můžete vytvořit virtuální síť Azure a ručně clustery Kafka, je 
 
     Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Pro zdrojový cluster najít hostiteli Zookeeper použijte následující příkazy:
+2. Najít pro zdrojový cluster hostitelů Apache Zookeeper použijte následující příkazy:
 
     ```bash
     # Install jq if it is not installed
@@ -295,10 +295,10 @@ Vzhledem k tomu, že kroky v tomto dokumentu vytvořte obou clusterech ve stejn�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto dokumentu jste zjistili, jak pomocí nástroje MirrorMaker vytvoření repliky clusteru Kafka. Zjistit další způsoby, jak pracovat s využitím Kafka pomocí následujících odkazů:
+V tomto dokumentu jste zjistili, jak používat [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) k vytvoření repliky [Apache Kafka](https://kafka.apache.org/) clusteru. Zjistit další způsoby, jak pracovat s využitím Kafka pomocí následujících odkazů:
 
 * [Dokumentace Apache Kafka nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) na cwiki.apache.org.
 * [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md)
-* [Použití Apache Sparku se systémem Kafka ve službě HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Použití Apache Stormu se systémem Kafka ve službě HDInsight](../hdinsight-apache-storm-with-kafka.md)
-* [Připojení k systému Kafka přes virtuální síť Azure](apache-kafka-connect-vpn-gateway.md)
+* [Použití Apache Sparku s využitím Apache Kafka v HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Použití Apache Stormu s Apache Kafka v HDInsight](../hdinsight-apache-storm-with-kafka.md)
+* [Připojení k Apache Kafka přes virtuální síť Azure](apache-kafka-connect-vpn-gateway.md)

@@ -1,5 +1,5 @@
 ---
-title: Využívání webové služby Machine Learning pomocí šablony webové aplikace | Dokumentace Microsoftu
+title: Využívání webové služby Machine Learning pomocí šablony webové aplikace – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Použití šablony webové aplikace v Azure Marketplace k využívání prediktivní webové služby ve službě Azure Machine Learning.
 keywords: Webová služba, operacionalizace, rozhraní REST API, strojové učení
 services: machine-learning
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 39add830d44cac43e620a4c13d20e282f3d59e47
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 2c0bba4a442b73b82ebc271c3516f65954d6d8a4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264213"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311564"
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Využívání webové služby Azure Machine Learning pomocí šablony webové aplikace
 

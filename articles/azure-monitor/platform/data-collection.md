@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 7eabe50ed1069a6027d5ec387f0c1dba45feb58e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 756e1426d417c47210e3b766d9d67ef1a70d2516
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828225"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334138"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../../azure-monitor/overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -131,14 +131,14 @@ Protokoly jsou zvláště užitečné pro kombinování dat z různých zdrojů,
 Shromážděné službou Azure Monitor protokoly se ukládají ve službě Log Analytics, která shromažďuje telemetrii a další data z různých zdrojů. Poskytuje Bohatý dotazovací jazyk a analytics modul, který poskytuje přehled o fungování vašich aplikací a prostředků. Služby, jako ostatní Azure [Azure Security Center](../../security-center/security-center-intro.md) ukládají data v Log Analytics, aby bylo možné poskytovat společnou datovou platformu napříč správu Azure.
 
 > [!IMPORTANT]
-> Data ze služby Application Insights se ukládají ve službě Log Analytics jako jiná data protokolu s tím rozdílem, že je uložena v samostatném oddílu. Tento atribut podporuje stejné funkce jako ostatní data služby Log Analytics, ale je nutné použít [konzoly Application Insights](/application-insights/app-insights-analytics.md) nebo [API pro Application Insights](https://dev.applicationinsights.io/) pro přístup k těmto datům. Můžete použít [napříč prostředky dotazu](../../log-analytics/log-analytics-cross-workspace-search.md) k analýze dat aplikací společně s další data protokolu.
+> Data ze služby Application Insights se ukládají ve službě Log Analytics jako jiná data protokolu s tím rozdílem, že je uložena v samostatném oddílu. Tento atribut podporuje stejné funkce jako ostatní data služby Log Analytics, ale je nutné použít [konzoly Application Insights](../../application-insights/app-insights-analytics.md) nebo [API pro Application Insights](https://dev.applicationinsights.io/) pro přístup k těmto datům. Můžete použít [napříč prostředky dotazu](../../log-analytics/log-analytics-cross-workspace-search.md) k analýze dat aplikací společně s další data protokolu.
 
 
 ### <a name="sources-of-log-data"></a>Zdroje dat protokolu
 Log Analytics může shromažďovat data z široké škály zdrojů i v rámci Azure i z místních prostředků. Zdroje dat zapsaných do Log Analytics patří následující:
 
 - [Protokoly aktivit](../../log-analytics/log-analytics-activity.md) z prostředků Azure, které obsahují informace o své konfiguraci a stavu a [diagnostické protokoly](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) , které poskytují přehled o jejich operace.
-- Agenty na [Windows](../../log-analytics/log-analytics-windows-agent.md) a [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuálních počítačů, které odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdroje dat](../../log-analytics/log-analytics-data-sources.md) , který můžete nakonfigurovat.
+- Agenty na [Windows](../../log-analytics/log-analytics-windows-agent.md) a [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuálních počítačů, které odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) , který můžete nakonfigurovat.
 - Aplikace data shromážděná pomocí [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Data a poskytují přehled o konkrétní aplikaci nebo službu [řešení monitorování](../insights/solutions.md) nebo funkce, jako jsou přehledy o kontejnerech, Insights virtuálního počítače nebo Insights skupiny prostředků.
 - Shromážděná data zabezpečení [Azure Security Center](https://docs.microsoft.com/azure/security-center/).
@@ -156,7 +156,7 @@ Log Analytics může shromažďovat data z široké škály zdrojů i v rámci A
 
 - Použití [stránce Log Analytics](../../log-analytics/query-language/get-started-analytics-portal.md) na webu Azure Portal psát dotazy, analýza dat protokolu.  Připnout výsledky se vykresluje jako tabulky nebo grafy [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurace [pravidel upozornění protokolů](../../monitoring-and-diagnostics/alert-log.md) , který odešle oznámení, nebo má [automatizované akce](../../monitoring-and-diagnostics/monitoring-action-groups.md) při výsledky dotazu splňují konkrétní výsledek.
-- Vytvořit pracovní postup na základě dat v Log Analytics pomocí [Logic Apps]().
+- Vytvořit pracovní postup na základě dat v Log Analytics pomocí [Logic Apps](~/articles/logic-apps/index.yml).
 - Export výsledků dotazu na [Power BI](../../log-analytics/log-analytics-powerbi.md) a použít různé vizualizace a sdílet s uživateli mimo Azure.
 - Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) nebo [rozhraní REST API](https://dev.loganalytics.io/).
 

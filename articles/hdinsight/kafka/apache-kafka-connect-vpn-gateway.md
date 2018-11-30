@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: da98873b133d69d78271494b991b67caea1d5a11
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 7fd201dd7c766880b1ed892abe3900b523d75145
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283066"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307470"
 ---
-# <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k systému Kafka v HDInsight pomocí služby Azure Virtual Network
+# <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka v HDInsight pomocí služby Azure Virtual Network
 
-Zjistěte, jak k přímému připojení k systému Kafka v HDInsight pomocí Azure Virtual Network. Tento dokument obsahuje informace o připojení k systému Kafka pomocí následující konfigurace:
+Zjistěte, jak se přímo připojit k Apache Kafka v HDInsight pomocí Azure Virtual Network. Tento dokument obsahuje informace o připojení k systému Kafka pomocí následující konfigurace:
 
 * Z prostředků v místní síti. Toto připojení prostřednictvím zařízení VPN (softwaru nebo hardwaru) ve vaší místní síti.
 * Z vývojového prostředí pomocí softwarového klienta sítě VPN.
@@ -37,7 +37,7 @@ HDInsight neumožňuje přímé připojení k systému Kafka přes veřejný int
     4. Konfigurace předávání mezi serverem DNS v každé síti.
     5. Vytvořte systém Kafka na clusteru HDInsight ve virtuální síti.
 
-    Další informace najdete v tématu [připojení k systému Kafka z místní sítě](#on-premises) oddílu. 
+    Další informace najdete v tématu [připojení k Apache Kafka z místní sítě](#on-premises) oddílu. 
 
 * Připojení jednotlivých počítačů k virtuální síti pomocí sítě VPN gateway a klienta VPN. Pokud chcete povolit tuto konfiguraci, proveďte následující úkoly:
 
@@ -47,7 +47,7 @@ HDInsight neumožňuje přímé připojení k systému Kafka přes veřejný int
     4. Nakonfigurujte Kafka pro reklamní účely IP. Tato konfigurace umožňuje klientovi připojit pomocí zprostředkovatele IP adres místo názvů domény.
     5. Stažení a použití klienta VPN ve vývojovém systému.
 
-    Další informace najdete v tématu [připojení k systému Kafka s klienta VPN](#vpnclient) oddílu.
+    Další informace najdete v tématu [připojit k Apache Kafka se službou klienta VPN](#vpnclient) oddílu.
 
     > [!WARNING]
     > Tato konfigurace se doporučuje jenom pro účely vývoje z důvodu následující omezení:
@@ -57,7 +57,7 @@ HDInsight neumožňuje přímé připojení k systému Kafka přes veřejný int
 
 Další informace o používání HDInsight ve virtuální síti najdete v tématu [rozšířit HDInsight pomocí Azure Virtual Networks](../hdinsight-extend-hadoop-virtual-network.md).
 
-## <a id="on-premises"></a> Připojení k systému Kafka z místní sítě
+## <a id="on-premises"></a> Připojení k Apache Kafka z místní sítě
 
 K vytvoření clusteru Kafka, který komunikuje s vaší místní sítí, postupujte podle kroků v [HDInsight připojit k místní síti](./../connect-on-premises-network.md) dokumentu.
 
@@ -73,7 +73,7 @@ Tyto kroky vytvoří následující konfiguraci:
 
 Pokud chcete ověřit, Kafka klient může připojit ke clusteru v místním, postupujte podle kroků v [příklad: Pythonového klienta](#python-client) části.
 
-## <a id="vpnclient"></a> Připojení k systému Kafka s klienta VPN
+## <a id="vpnclient"></a> Připojení k Apache Kafka pomocí klienta VPN
 
 Postupujte podle kroků v této části vytvořte následující konfiguraci:
 
@@ -237,7 +237,7 @@ Postupujte podle kroků v této části vytvořte následující konfiguraci:
 
 ### <a name="configure-kafka-for-ip-advertising"></a>Konfigurace Kafka pro reklamní účely IP
 
-Ve výchozím nastavení Zookeeper vrátí název domény zprostředkovatelům systému Kafka klientům. Tuto konfiguraci nebude fungovat pomocí softwarového klienta sítě VPN, jak ho nelze použít překlad názvů pro entity ve virtuální síti. Pro tuto konfiguraci použijte ke konfiguraci Kafka inzerovat IP adres místo názvů domény následující kroky:
+Ve výchozím nastavení Apache Zookeeper vrátí název domény zprostředkovatelům systému Kafka klientům. Tuto konfiguraci nebude fungovat pomocí softwarového klienta sítě VPN, jak ho nelze použít překlad názvů pro entity ve virtuální síti. Pro tuto konfiguraci použijte ke konfiguraci Kafka inzerovat IP adres místo názvů domény následující kroky:
 
 1. Pomocí webového prohlížeče, přejděte na https://CLUSTERNAME.azurehdinsight.net. Nahraďte __CLUSTERNAME__ s názvem Kafka v clusteru HDInsight.
 
@@ -371,7 +371,7 @@ Další informace o vytvoření služby Azure Virtual Network pomocí brány VPN
 
 * [Konfigurace připojení typu Point-to-Site pomocí Azure Powershellu](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 
-Další informace o práci se systémem Kafka v prostředí HDInsight najdete v následujících dokumentech:
+Další informace o práci s Apache Kafka v HDInsight najdete v následujících dokumentech:
 
-* [Začínáme s Kafka ve službě HDInsight](apache-kafka-get-started.md)
-* [Použití zrcadlení s využitím Kafka v HDInsight](apache-kafka-mirroring.md)
+* [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md)
+* [Použití zrcadlení s využitím Apache Kafka v HDInsight](apache-kafka-mirroring.md)

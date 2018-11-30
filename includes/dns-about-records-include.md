@@ -1,3 +1,16 @@
+---
+author: vhorne
+ms.service: dns
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: victorh
+ms.openlocfilehash: f7fa018225d82e2db4a3c51b333aea6fcb9a1514
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52330872"
+---
 ### <a name="record-names"></a>Názvy záznamů
 
 V Azure DNS se záznamy zadávají pomocí relativních názvů. „Plně kvalifikovaný“ *název* domény (FQDN) obsahuje název zóny, zatímco „relativní“ název ho *neobsahuje.* Například relativní název záznamu „www“ v zóně „contoso.com“ dává plně kvalifikovaný název záznamu www.contoso.com.

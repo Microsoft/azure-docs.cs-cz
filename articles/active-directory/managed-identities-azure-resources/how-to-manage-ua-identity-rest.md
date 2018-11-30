@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/26/2018
 ms.author: daveba
-ms.openlocfilehash: 4bf77cd34ba985dfcfa568db0543150c0510c406
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 86d2f013567d768437e589df366c5c131e1bcf50
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300094"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421907"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Vytvoření seznamu nebo odstranit uživatelem přidělenou spravovanou identitu volání rozhraní REST API
 
@@ -44,8 +44,6 @@ V tomto článku zjistíte, jak vytvořit, vypsat a odstranit spravovanou identi
 
 Pro vytvoření uživatelsky přiřazené identity spravované, musí váš účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
 
-Pro vytvoření uživatelsky přiřazené identity spravované, použijte následující požadavek CURL k rozhraní API Azure Resource Manageru. Nahradit `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, `<USER ASSIGNED IDENTITY NAME>`,`<LOCATION>`, a `<ACCESS TOKEN>` hodnoty vlastními hodnotami:
-
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```bash
@@ -54,31 +52,61 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 ation": "<LOCATION>"}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 
+```HTTP
+PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
+s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
+```
+
+**Hlavičky žádosti**
+
+|Hlavička požadavku  |Popis  |
+|---------|---------|
+|*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
+|*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token.        |
+
+**Text žádosti**
+
+|Název  |Popis  |
+|---------|---------|
+|location     | Povinná hodnota. Umístění prostředku.        |
+
 ## <a name="list-user-assigned-managed-identities"></a>Seznam uživatelsky přiřazené spravované identity
 
 Do seznamu/čtení uživatelsky přiřazené spravovanou identitu, musí váš účet [operátor spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-operator) nebo [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
 
-Seznam uživatelsky přiřazené identity spravované, použijte následující požadavek CURL k rozhraní API Azure Resource Manageru. Nahradit `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, a `<ACCESS TOKEN>` hodnoty vlastními hodnotami:
-
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
+
+```HTTP
+GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview HTTP/1.1
+```
+
+|Hlavička požadavku  |Popis  |
+|---------|---------|
+|*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
+|*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token.        |
+
 ## <a name="delete-a-user-assigned-managed-identity"></a>Odstranění spravované identity přiřazené uživateli
 
 Pokud chcete odstranit spravovanou identitu uživatele přiřazeny, musí váš účet [Přispěvatel spravovaných identit](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) přiřazení role.
 
-Pokud chcete odstranit spravovanou identitu uživatele přiřazeny, použijte následující požadavek CURL k rozhraní API Azure Resource Manageru. Nahradit `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>`, a `<ACCESS TOKEN>` parametry hodnoty vlastními hodnotami:
-
 > [!NOTE]
-> Odstraňuje se uživatel přiřazenou spravovanou identitu nedojde k odebrání odkazu ze všech prostředků, který byl přiřazen. Odebrání uživatel přiřazenou spravované z virtuálního počítače pomocí příkazu CURL naleznete v tématu [odebrání virtuálního počítače Azure uživatelsky přiřazené identity](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
+> Odstraňuje se uživatel přiřazenou spravovanou identitu nedojde k odebrání odkazu ze všech prostředků, který byl přiřazen. Odebrat uživatelsky přiřazené spravovaná identita z virtuálního počítače pomocí příkazu CURL najdete v článku [odebrání virtuálního počítače Azure uživatelsky přiřazené identity](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview' -X DELETE -H "Authorization: Bearer <ACCESS TOKEN>"
 ```
 
+```HTTP
+DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616f423ca/resourceGroups/TestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
+```
+|Hlavička požadavku  |Popis  |
+|---------|---------|
+|*Content-Type*     | Povinná hodnota. Nastavte na `application/json`.        |
+|*Autorizace*     | Povinná hodnota. Nastaven na platné `Bearer` přístupový token.        |
+
 ## <a name="next-steps"></a>Další postup
 
 Informace o tom, jak přiřadit uživateli přiřazena spravované identity do Azure VM/VMSS pomocí příkazu CURL naleznete v tématu, [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí volání rozhraní REST API](qs-configure-rest-vm.md#user-assigned-managed-identity) a [spravované konfigurace pro prostředky Azure na virtuální počítač škálovací sady s použitím volání rozhraní REST API identit](qs-configure-rest-vmss.md#user-assigned-managed-identity).
-
-

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 11/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: 925f45f8d251882cfc8acf4b04902cea45451dd4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 91ee57ccd676d1d5e806e3f22eed3389d0fe5e73
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007251"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334189"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Přizpůsobení konfiguracemi zabezpečení operačního systému ve službě Azure Security Center (Preview)
 
@@ -32,7 +32,7 @@ Azure Security Center monitoruje konfigurace zabezpečení s použitím sady [v�
 Přizpůsobením pravidla organizace řídit, jaké možnosti konfigurace jsou vhodnější pro jejich prostředí. Můžete nastavit vlastní hodnocení zásad a použijte ji ve všech příslušných počítačích v rámci předplatného.
 
 > [!NOTE]
-> - Přizpůsobení konfigurace zabezpečení operačního systému v současné době je k dispozici pro Windows Server verze 2008, 2008 R2, 2012 a 2012 R2 pouze operační systémy.
+> - Přizpůsobení konfigurace zabezpečení operačního systému v současné době je k dispozici pro Windows Server verze 2008, 2008 R2, 2012, 2012 R2 a 2016 pouze operační systémy.
 > - Bude konfigurace platit pro všechny virtuální počítače a počítače, které jsou připojené ke všem pracovním prostorům ve vybraném předplatném.
 > - Přizpůsobení konfigurace zabezpečení operačního systému je k dispozici pouze v Security Center úrovně standard.
 >
@@ -60,7 +60,7 @@ Chcete-li přizpůsobit výchozí konfigurace zabezpečení operačního systém
 3.  V řádku předplatné, které chcete upravit, klikněte na tlačítko **upravit nastavení**.
 
 4. Vyberte **upravit konfigurace zabezpečení**.  
-    
+
     ![Okna "Upravit konfigurace zabezpečení"](media/security-center-customize-os-security-config/blade.png)
 
 5. Postupujte podle kroků ke stažení, upravit a nahrajte upravený soubor.

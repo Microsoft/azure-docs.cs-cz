@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 843b03ce33d1897e2e985ac832f883e1fae12960
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dd876462559ac10fc0463c64413bf11eabbc88a1
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959039"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443521"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -27,7 +27,8 @@ Azure API Management se dá nasadit ve virtuální síti (VNET), aby měl přís
 
 > [!NOTE]
 > Azure API Management podporuje classic a Azure Resource virtuálních sítí správce.
->
+
+[!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -38,7 +39,6 @@ Chcete-li provést postup popsaný v tomto článku, budete potřebovat:
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + Instanci služby APIM. Další informace najdete v tématu [vytvoření instance Azure API Management](get-started-create-service-instance.md).
-+ Připojení virtuální sítě je k dispozici jenom úrovně Premium a pro vývojáře. Přepnout na jednu z těchto úrovní pomocí následujícího postupu v [upgradu a škálování](upgrade-and-scale.md#upgrade-and-scale) tématu.
 
 ## <a name="enable-vpn"> </a>Povolení připojení k virtuální síti
 

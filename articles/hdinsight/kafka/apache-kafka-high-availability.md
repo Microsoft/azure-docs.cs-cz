@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: e2cd03f28e4a3cd8176f6126817c61508697af94
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: e39829d4fa08e466f98930becc831c6f4b551aed
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007786"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315830"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>Vysoká dostupnost dat s využitím Apache Kafka ve službě HDInsight
 
-Zjistěte, jak nakonfigurovat repliky oddílů pro témata Kafka a využít výhod konfigurace použitého hardwarového racku. Tato konfigurace zajišťuje dostupnost dat uložených v Apache Kafka ve službě HDInsight.
+Zjistěte, jak nakonfigurovat repliky oddílů pro témata Apache Kafka a využít výhod konfigurace použitého hardwarového racku. Tato konfigurace zajišťuje dostupnost dat uložených v Apache Kafka ve službě HDInsight.
 
-## <a name="fault-and-update-domains-with-kafka"></a>Domény selhání a aktualizační domény s využitím Kafka
+## <a name="fault-and-update-domains-with-apache-kafka"></a>Selhání a aktualizačními doménami s využitím Apache Kafka
 
 Doména selhání je logické seskupení základního hardwaru v datovém centru Azure. Všechny domény selhání sdílí společný zdroje napájení a síťový přepínač. Virtuální počítače a spravované disky, které implementují uzly v clusteru služby HDInsight, jsou distribuované napříč těmito doménami selhání. Tato architektura omezuje potenciální dopad selhání fyzického hardwaru.
 
@@ -44,15 +44,15 @@ K zajištění nejvyšší dostupnost dat Kafka byste měli obnovit rovnováhu r
 
 Pokud musíte použít oblast, která obsahuje jenom dvě domény selhání, použijte faktor replikace 4, abyste zajistili rovnoměrné rozložení replik napříč těmito dvěma doménami selhání.
 
-Příklad vytvoření tématu a nastavení faktoru replikace najdete v dokumentu [Začínáme s Kafka ve službě HDInsight](apache-kafka-get-started.md).
+Příklad vytvoření tématu a nastavení faktoru replikace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) dokumentu.
 
 ## <a name="how-to-rebalance-partition-replicas"></a>Jak obnovit rovnováhu replik oddílů
 
-K obnovení rovnováhy vybraných témat použijte [nástroj pro obnovení rovnováhy oddílů Kafka](https://github.com/hdinsight/hdinsight-kafka-tools). Tento nástroj se musí spustit z relace SSH na hlavní uzel clusteru Kafka.
+Použití [nástroj pro obnovení rovnováhy oddílů Apache Kafka](https://github.com/hdinsight/hdinsight-kafka-tools) k obnovení rovnováhy vybraných témat. Tento nástroj se musí spustit z relace SSH na hlavní uzel clusteru Kafka.
 
 Další informace o připojení ke službě HDInsight pomocí SSH najdete v dokumentu [Použití SSH s HDInsightem](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Škálovatelnost Kafka ve službě HDInsight](apache-kafka-scalability.md)
-* [Zrcadlení s využitím Kafka ve službě HDInsight](apache-kafka-mirroring.md)
+* [Škálovatelnost Apache Kafka v HDInsight](apache-kafka-scalability.md)
+* [Zrcadlení s využitím Apache Kafka v HDInsight](apache-kafka-mirroring.md)

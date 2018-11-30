@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 809196411df56c7448a9d0f983c17c60d5d3b4ae
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bd8bfb8775bc9c988bb7484ac25f189c3ff46991
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015413"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317275"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analýza protokolů pro Apache Kafka v HDInsight
 
 Zjistěte, jak používat službu Log Analytics k analýze protokolů generovaných Apache Kafka v HDInsight.
 
-## <a name="enable-log-analytics-for-kafka"></a>Povolení Log Analytics pro systém Kafka
+## <a name="enable-log-analytics-for-apache-kafka"></a>Povolení Log Analytics pro Apache Kafka
 
 Postup povolení Log Analytics pro HDInsight je stejný pro všechny clustery HDInsight. Chcete-li pochopit, jak vytvořit a nakonfigurovat požadované služby použijte následující odkazy:
 
@@ -74,9 +74,9 @@ Postup povolení Log Analytics pro HDInsight je stejný pro všechny clustery HD
 
 Další informace o Log Analytics najdete v článku [Začínáme s pracovním prostorem Log Analytics](../../log-analytics/log-analytics-get-started.md) dokumentu.
 
-Další informace o práci s platformou Kafka najdete v následujících dokumentech:
+Další informace o práci s využitím Apache Kafka najdete v následujících dokumentech:
 
- * [Zrcadlení mezi clustery HDInsight Kafka](apache-kafka-mirroring.md)
- * [Zvýšení škálovatelnosti systému Kafka v HDInsight](apache-kafka-scalability.md)
- * [Použití Sparku streamování (diskretizovanými streamy) s využitím Kafky](../hdinsight-apache-spark-with-kafka.md)
- * [Použití strukturovaného streamování Sparku se systémem Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)
+ * [Apache Kafka zrcadlení mezi clustery HDInsight](apache-kafka-mirroring.md)
+ * [Zvýšení škálovatelnosti systému Apache Kafka v HDInsight](apache-kafka-scalability.md)
+ * [Použití Apache Sparku s využitím Apache Kafka streamování (diskretizovanými streamy)](../hdinsight-apache-spark-with-kafka.md)
+ * [Použití Apache strukturovaného streamování Sparku s využitím Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

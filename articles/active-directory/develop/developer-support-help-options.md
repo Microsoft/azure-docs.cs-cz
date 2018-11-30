@@ -17,12 +17,12 @@ ms.date: 10/27/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 9b2ccce4ef6fad4f7710ba2092d67ac5f4e73b71
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 60186d44437a866793b40c9d6f0263235803475f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39602008"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422435"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti podporu a nápovědu pro vývojáře 
 
@@ -67,13 +67,13 @@ Pokud nemůžete najít odpověď na váš problém prostřednictvím vyhledáv�
 
 |Komponenta nebo oblast  |Značky  |
 |---------|---------|
-|Knihovna ADAL |[[adal]](http://stackoverflow.com/questions/tagged/adal)|
-|Knihovna MSAL     |[[msal]](http://stackoverflow.com/questions/tagged/msal)|
-|OWIN middleware  |[[azure-active-directory]](http://stackoverflow.com/questions/tagged/azure-active-directory)|
-|[Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure ad b2b]](http://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](http://stackoverflow.com/questions/tagged/azure-ad-b2b)|
-|[Microsoft Graph API](https://developer.microsoft.com/graph/) |[[microsoft-graph]](http://stackoverflow.com/questions/tagged/microsoft-graph)
-|Další oblasti související s ověřením nebo autorizací témata |[[azure-active-directory]](http://stackoverflow.com/questions/tagged/azure-active-directory)
+|Knihovna ADAL |[[adal]](https://stackoverflow.com/questions/tagged/adal)|
+|Knihovna MSAL     |[[msal]](https://stackoverflow.com/questions/tagged/msal)|
+|OWIN middleware  |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)|
+|[Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  |[[azure ad b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  |[[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2b)|
+|[Microsoft Graph API](https://developer.microsoft.com/graph/) |[[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph)
+|Další oblasti související s ověřením nebo autorizací témata |[[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory)
 <br/>
 > [!TIP]
 > Následující příspěvky z přetečení zásobníku obsahují tipy, jak provádět dotazy a tipy k přidání zdrojového kódu – držet těchto pokynů může přispět k vyšší pravděpodobnost pro členy komunity k vyhodnocení a rychle reagovat na vaši otázku:  

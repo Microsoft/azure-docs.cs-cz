@@ -14,12 +14,12 @@ ms.component: compliance
 ms.date: 11/15/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: c1ae6e8c67ab42207aea73932bb2e887db727f16
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5a68657a0aaedb389ccaaacebb890583ab6292ee
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263380"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307844"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Vytvoření kontroly přístupu členů skupiny nebo přístupu k aplikacím v Azure AD
 
@@ -77,7 +77,7 @@ Tento článek popisuje, jak vytvořit nová kontrola přístupu pro členy skup
 1. Použití **by neměly odpovídat kontrolor** seznamu k určení, co se stane, že pro uživatele, kteří nejsou zkontrolované recenzentem během období vyhodnocování. Toto nastavení nemá vliv na uživatele, kteří byly zkontrolovány podle revidující ručně. Pokud poslední revidující rozhodnutí je Deny přístup uživatele se odebere.
 
     - **Žádná změna** – nechte beze změny přístupu uživatele
-    - **Odebrání přístupu** – odebrání přístupu uživatele
+    - **Odebrat přístup** – odebrání přístupu uživatele
     - **Schválit přístup** -schválit přístup uživatelů
     - **Přijmout doporučení** – využijte doporučení v systému se zamítnout nebo schválení uživatele je nadále přístup
 

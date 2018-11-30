@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6448e592db8024d911831b0b3634dabb4ed3b101
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 31e7307e427b175eb7424ecaee380bd90ce8150e
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063111"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443399"
 ---
 # <a name="suspended-domains"></a>Pozastavené domén
 Když Azure Active Directory Domain Services (Azure AD DS) není schopen služby spravované domény pro dlouhou dobu, uloží je do pozastaveného stavu spravované domény. Tento článek vysvětluje, proč jsou pozastavené spravovaných domén a způsobu řešení pozastavené domény.
@@ -43,7 +43,7 @@ Spravované domény, který je správně nakonfigurované a provozní pravideln�
 
 
 ### <a name="needs-attention-state"></a>Stav "Vyžaduje pozornost"
-Spravovaná doména se v **potřebuje pozornost** stavu, pokud jeden nebo více problémů požadovat, aby správce akci. Stránka stavu vaší spravované domény obsahuje jedno nebo několik upozornění v tomto stavu. 
+Spravovaná doména se v **potřebuje pozornost** stavu, pokud jeden nebo více problémů požadovat, aby správce akci. Stránka stavu vaší spravované domény obsahuje jedno nebo několik upozornění v tomto stavu.
 
 Například pokud omezující skupiny zabezpečení sítě nakonfigurované pro vaši virtuální síť, Microsoft nemusí být možné aktualizovat a monitorování vaší spravované domény. Tato neplatná konfigurace aktivuje výstrahu, která se zařadí do stavu "Needs Attention" vaší spravované domény.
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/22/2018
 ms.author: jeedes
-ms.openlocfilehash: f3f7fc3b837dd4eef9bab8ff34a36329436bad9a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 608269a05ae1ed699954cd301aa03056e089fa8a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010724"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML JIRA společností Microsoft
 
@@ -154,11 +154,26 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/addon12.png)
 
-9. Když je nainstalovaný modul plug-in, zobrazí se v **uživatel nainstaloval** doplňky část **spravovat doplněk** části. Klikněte na tlačítko **konfigurovat** konfigurace nového modulu plug-in.
+9. Scénář pro spuštění řešení JIRA reverzní proxy server scénář nebo službu Vyrovnávání zatížení proveďte následující kroky:
+
+    > [!NOTE]
+    > By měl být konfigurujete serveru nejprve s pod pokynů a nainstalujte modul plug-in.
+
+    a. Přidejte následující atribut v **konektor** port v **server.xml** souboru JIRA serverové aplikace.
+
+    `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
+
+    ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+
+    b. Změna **základní adresu URL** v **nastavení systému** podle proxy serveru/vyrovnávání zátěže.
+
+    ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+
+10. Když je nainstalovaný modul plug-in, zobrazí se v **uživatel nainstaloval** doplňky část **spravovat doplněk** části. Klikněte na tlačítko **konfigurovat** konfigurace nového modulu plug-in.
 
     ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/addon13.png)
 
-10. Proveďte následující kroky na stránce konfigurace:
+11. Proveďte následující kroky na stránce konfigurace:
 
     ![Konfigurace jednotného přihlašování](./media/jiramicrosoft-tutorial/addon52.png)
 

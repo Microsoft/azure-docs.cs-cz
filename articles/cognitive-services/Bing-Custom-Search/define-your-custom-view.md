@@ -3,19 +3,19 @@ title: Definovat vlastní zobrazení – vlastní vyhledávání Bingu
 titlesuffix: Azure Cognitive Services
 description: Popisuje, jak vytvořit web a vertikální vyhledávací služby
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: v-brapel
-ms.openlocfilehash: 5e168608202f81f698221b52315de83e9713feab
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.author: aahi
+ms.openlocfilehash: d45d917d733727eca3286bb6335ce77591f39685
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282915"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427280"
 ---
 # <a name="configure-your-custom-search-experience"></a>Konfigurace prostředí pro vlastní vyhledávání
 
@@ -160,7 +160,7 @@ Použijte následující postup slouží k přidání kolekce obsahuje nějaké 
 5.  Klikněte na tlačítko **přidat web** vedle výsledků, které chcete zahrnout.
 6.  Klikněte na tlačítko **OK**.
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="view-statistics"></a>Zobrazení statistik
 

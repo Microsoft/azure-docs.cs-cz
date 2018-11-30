@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: f424abd339bda6c29079e3d286cbe96593f16f52
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 287a0986d921798bc7735e5a75d279f010712b16
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040036"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335619"
 ---
 # <a name="prebuilt-domain-reference"></a>Referenční informace k předem připraveným doménám
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
@@ -27,27 +27,27 @@ Služba LUIS nabízí 20 předem připravených domén.
 
 | Předem připravená doména | Popis | Podporované jazyky |
 | ---------------- |-----------------------|:------:|
-| Kalendář | Doména kalendáře poskytuje záměr a entity pro přidávání, odstraňování, nebo úpravy události, kontrola dostupnosti účastníků a hledání informací o události v kalendáři.| cs-CZ<br/> zh-CN |
-| Fotoaparát | Doména fotoaparátu poskytuje záměry a entity pro provádění obrázky, nahrávání videa a všesměrového vysílání video k aplikaci.| cs-CZ |
-| Komunikace | Zasílání zpráv a telefonní hovor.| cs-CZ <br/> zh-CN |
-| Zábava  | Zpracování dotazů souvisejících s hudba, filmů a televizního vysílání.| cs-CZ |
-| Události | Rezervace letenek pro koncerty, festivalů, sportovní hry a komedie ukazuje.| cs-CZ |
-| Způsobilost | Zpracování žádosti týkající se sledování vhodnosti aktivity.| cs-CZ |
-| Hraní her | Zpracování žádostí souvisejících her straně hry pro více hráčů.| cs-CZ |
-| HomeAutomation | Řízení inteligentní domácí zařízení, jako jsou indikátory a zařízení.| cs-CZ<br/> zh-CN |
-| MovieTickets | Rezervace lístky na filmy v celé obrazovky video.| cs-CZ |
-| Hudba | Přehrávání hudby v hudební přehrávač.| cs-CZ<br/> zh-CN |
-| Poznámka | Poznámka: domény poskytuje záměry a entity týkající se vytváření, úpravám a hledání poznámky.| cs-CZ<br/> zh-CN |
-| OnDevice | Doména OnDevice poskytuje záměry a entity související řízení zařízení.| cs-CZ<br/> zh-CN |
-| Místa  | Zpracování dotazů souvisejících s jako firmám, instituce, restaurace, veřejné mezery a adresy.| cs-CZ<br/> zh-CN |
-| Připomenutí | Zpracování žádosti týkající se vytváření, úprav a vyhledání připomenutí.| cs-CZ<br/> zh-CN |
-| RestaurantReservation | Zpracování požadavků pro správu restaurace rezervace.| cs-CZ<br/> zh-CN |
-| Taxislužby města | Zpracování rezervací taxislužby.| cs-CZ<br/> zh-CN |
-| Překlad | Překlad textu do cílového jazyka.| cs-CZ<br/> zh-CN |
-| TV | Řízení televizí.| cs-CZ |
-| Veřejné služby  | Zpracování požadavků, které jsou běžné v mnoha oblastech, jako je "Nápověda", "opakování", "začít znovu."| cs-CZ |
-| Počasí | Načtení počasí a předpovědi.| cs-CZ<br/> zh-CN |
-| Web | Přejděte na web.| cs-CZ<br/> zh-CN |
+| Kalendář | Doména kalendáře poskytuje záměr a entity pro přidávání, odstraňování, nebo úpravy události, kontrola dostupnosti účastníků a hledání informací o události v kalendáři.| en-US<br/> zh-CN |
+| Fotoaparát | Doména fotoaparátu poskytuje záměry a entity pro provádění obrázky, nahrávání videa a všesměrového vysílání video k aplikaci.| en-US |
+| Komunikace | Zasílání zpráv a telefonní hovor.| en-US <br/> zh-CN |
+| Zábava  | Zpracování dotazů souvisejících s hudba, filmů a televizního vysílání.| en-US |
+| Události | Rezervace letenek pro koncerty, festivalů, sportovní hry a komedie ukazuje.| en-US |
+| Způsobilost | Zpracování žádosti týkající se sledování vhodnosti aktivity.| en-US |
+| Hraní her | Zpracování žádostí souvisejících her straně hry pro více hráčů.| en-US |
+| HomeAutomation | Řízení inteligentní domácí zařízení, jako jsou indikátory a zařízení.| en-US<br/> zh-CN |
+| MovieTickets | Rezervace lístky na filmy v celé obrazovky video.| en-US |
+| Hudba | Přehrávání hudby v hudební přehrávač.| en-US<br/> zh-CN |
+| Poznámka | Poznámka: domény poskytuje záměry a entity týkající se vytváření, úpravám a hledání poznámky.| en-US<br/> zh-CN |
+| OnDevice | Doména OnDevice poskytuje záměry a entity související řízení zařízení.| en-US<br/> zh-CN |
+| Místa  | Zpracování dotazů souvisejících s jako firmám, instituce, restaurace, veřejné mezery a adresy.| en-US<br/> zh-CN |
+| Připomenutí | Zpracování žádosti týkající se vytváření, úprav a vyhledání připomenutí.| en-US<br/> zh-CN |
+| RestaurantReservation | Zpracování požadavků pro správu restaurace rezervace.| en-US<br/> zh-CN |
+| Taxislužby města | Zpracování rezervací taxislužby.| en-US<br/> zh-CN |
+| Překlad | Překlad textu do cílového jazyka.| en-US<br/> zh-CN |
+| TV | Řízení televizí.| en-US |
+| Veřejné služby  | Zpracování požadavků, které jsou běžné v mnoha oblastech, jako je "Nápověda", "opakování", "začít znovu."| en-US |
+| Počasí | Načtení počasí a předpovědi.| en-US<br/> zh-CN |
+| Web | Přejděte na web.| en-US<br/> zh-CN |
 
 Další podrobnosti o každé domény najdete v následující části.
 
@@ -68,7 +68,7 @@ Doména kalendáře poskytuje záměry a entity související položky v kalend�
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
 | Umístění | Umístění položky kalendáře, schůzce nebo události. Adresy, města a oblasti jsou dobrým příkladem umístění.| 209 americkém Nashvillu Posilovně <br/><br/>897 masopustní house<br/><br/>Garáži|
-| Předmět | Název schůzky nebo události.| Událost zubní lékař. <br/><br/>Oběd s Julia<br/><br/>Lékaři|
+| Subjekt | Název schůzky nebo události.| Událost zubní lékař. <br/><br/>Oběd s Julia<br/><br/>Lékaři|
 
 ## <a name="camera"></a>Fotoaparát 
 Doména fotoaparátu poskytuje záměry a entity související s používáním kamery. Příkazů se věnují zachytávání fotky, selfie, snímku obrazovky nebo videa a vysílání videa k aplikaci.
@@ -107,7 +107,7 @@ Doména komunikace poskytuje záměry a entity související s e-mailu, zpráv a
 | FindContact| Najdete kontaktní údaje podle názvu.|Najít číslo Karolínu<br/>Zobrazit číslo Karolínu<br/>|
 | FindSpeedDial| Najdete číslo rychlé vytáčení, telefonní číslo je nastavena na a naopak.|Co je volání čísla 5?<br/>Je nutné rychlost vytáčení sady?<br/>Co je počet volání pro 941-5555-333?|
 | GetForwardingsStatus| Získejte aktuální stav předávání volání.|Moje předávání volání zapnutý?<br/>Řekněte mi, pokud je můj stav volání zapnutí nebo vypnutí<br/>|
-| GoBack| Přejděte zpět na předchozí krok.|Přejděte zpět na twitteru<br/>Přejděte zpět krok<br/>Přejít zpátky|
+| GoBack| Přejděte zpět na předchozí krok.|Přejděte zpět na twitteru<br/>Přejděte zpět krok<br/>Zpět|
 | Ignorovat| Ignorujte příchozí volání.|Není odpovědět<br/>Ignorovat volání|
 | IgnoreWithMessage| Ignorovat příchozí volání a místo toho odpovědět s textem.|Toto volání není odpovědět, ale místo odeslání zprávy.<br/>Ignorovat a odeslala textová zpráva zpět.|
 | PressKey| Na klávesnici stiskněte tlačítko nebo číslo.|Volání na hvězdičku.<br/>Stiskněte 1 2 3.|
@@ -171,7 +171,7 @@ Doména události poskytuje záměry a entity související s rezervace letenek 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Knihy| Nákup lístků na událost.|Chci si chcete koupit lístku symphony tento víkendu.|
+| Book| Nákup lístků na událost.|Chci si chcete koupit lístku symphony tento víkendu.|
 
 
 ### <a name="entities"></a>Entity
@@ -250,7 +250,7 @@ When is Captain Omar showing?
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Knihy | Nákup lístků video.|Rezervuje dvě lístky pro vedoucího Omar a dvě musketeers<br/>Budu chtít koupit lístek filmu dneška<br/>Chci, aby lístek pro 2. část Omar Captian další středa|
+| Book | Nákup lístků video.|Rezervuje dvě lístky pro vedoucího Omar a dvě musketeers<br/>Budu chtít koupit lístek filmu dneška<br/>Chci, aby lístek pro 2. část Omar Captian další středa|
 |GetShowTime| Získejte showtime videa.|Když se zobrazuje vedoucího Omar?|
 
 
@@ -415,9 +415,9 @@ At what time does Safeway close?
 |Hodnocení|Získáte popis hodnocení restaurace nebo místa.|Kolik hvězdiček DIČ Contoso má?|
 |ReadAloud|Seznam míst číst nahlas.|Soubor Readme první z nich<br/>Soubor Readme podrobnosti|
 |Selectitem –|Zvolte položku ze seznamu voleb týkajících se místa nebo místa.|Vyberte druhou<br/>Vyberte první|
-|ShowMap|Zobrazit mapu oblast.|Zobrazit mapu pro druhý<br/>Zobrazení mapy<br/>Najít kalifornském San Franciscu na mapě|
+|ShowMap|Zobrazit mapu oblast.|Zobrazit mapu pro druhý<br/>Zobrazit mapu<br/>Najít kalifornském San Franciscu na mapě|
 |ShowNext|Zobrazte další položky v řadě.|Zobrazit další příkaz<br/>Přejít na další stránku|
-|ShowPrevious|Zobrazte předchozí položky v řadě.|Zobrazit předchozí<br/>Předchozí<br/>Přejít na předchozí|
+|ShowPrevious|Zobrazte předchozí položky v řadě.|Zobrazit předchozí<br/>předchozí<br/>Přejít na předchozí|
 |StartOver|Restartování aplikace nebo zahájit novou relaci.|Začít znovu<br/>Nová relace<br/>
 restart|
 |TakesReservations|Dotaz, jestli místo přijímá rezervace.|Nepřijme umělecké galerie rezervace<br/>Je možné provádět rezervace na kachnami Olivově
@@ -511,7 +511,7 @@ Cancel my Uber
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Knihy | Volání taxislužby. |Načítání me souboru cab<br/>Najít taxislužby města<br/>Rezervuje mě uber x|
+| Book | Volání taxislužby. |Načítání me souboru cab<br/>Najít taxislužby města<br/>Rezervuje mě uber x|
 | Zrušit | Zrušte akci týkajících se rezervace taxislužby.|Zrušit Moje taxislužby města<br/>Zrušit Moje Uber|
 | sledování | Sledování postupu taxislužby.|Jak dlouho je nutné čekat Moje taxislužby?<br/>Kde je Moje Uber?|
 
@@ -588,7 +588,7 @@ Repeat last question please
 | Zrušit | Zrušte akci.|Zrušit zprávy<br/>Nechci už odeslat e-mailu|
 | Potvrdit | Potvrďte akci.|Ano ale potvrzuji, že<br/>Kvalitní můžu jsem potvrzení<br/>Dobře I jsem potvrzení|
 | FinishTask | Dokončení úkolu uživatel začal.|Už mám všechno<br/>Dokončena<br/>To se dělá|
-| GoBack | Vrátit zpět o jeden krok nebo návrat k předchozímu kroku.|Přejděte zpět na Twitteru<br/>Přejděte zpět krok<br/>Přejít zpátky|
+| GoBack | Vrátit zpět o jeden krok nebo návrat k předchozímu kroku.|Přejděte zpět na Twitteru<br/>Přejděte zpět krok<br/>Zpět|
 | Nápověda | Žádost o pomoc.|Pomozte<br/>Otevření nápovědy<br/>Nápověda|
 | Opakovat | Opakujte akci.|Opakujte prosím poslední dotaz<br/>Opakujte poslední skladby|
 | ShowNext | Zobrazte další položky v řadě. |Zobrazit další příkaz<br/>Přejít na další stránku|

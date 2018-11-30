@@ -1,5 +1,5 @@
 ---
-title: Řešení galerii Azure AI | Dokumentace Microsoftu
+title: Řešení galerii Azure AI – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Vyhledání řešení v galerii Azure AI.
 services: machine-learning
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: ebdecfa1ae936b9cc12a27a99b3b92c84869d1e3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 4a16cdde41e17b334df389c4ef9dab64d959885a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261305"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308944"
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Vyhledání řešení v galerii Azure AI
 

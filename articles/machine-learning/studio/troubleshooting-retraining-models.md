@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s přetrénování webové služby Azure Machine Learning Classic | Dokumentace Microsoftu
-description: Identifikujte a opravte transakčnímu programu běžné problémy, když jsou přetrénování modelu pro webové služby Azure Machine Learning.
+title: Řešení potíží s přetrénování klasickou webovou službou Machine Learning Studio – Azure | Dokumentace Microsoftu
+description: Identifikovat a vyřešit běžné problémy k chybě, když jsou přetrénování modelu pro webové služby Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
-ms.openlocfilehash: 49a76729d38662667328632c83e98a1211438a98
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1105b81d0f8ba80bd76bcdf140fe79b9e8a7102d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261697"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307198"
 ---
-# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Řešení potíží s přeučováním webové služby Azure Machine Learning Classic
+# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-studio-classic-web-service"></a>Řešení potíží s přeučováním klasické webové služby Azure Machine Learning Studio
 ## <a name="retraining-overview"></a>Přeškolení – přehled
 Při nasazování prediktivní experiment jako hodnoticí webové služby je statický model. K dispozici nová data nebo když příjemce rozhraní API má svá vlastní data, musí být retrained modelu. 
 

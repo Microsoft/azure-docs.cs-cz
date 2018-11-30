@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f830a27e9caf032443c2b27bdd2f95fa8069bcf2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4e8a39e16bd67169aac8dd7328338197b604e93f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247275"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426906"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Kurz: Integrace jednu doménovou strukturu AD pomocí synchronizace hodnot hash hesel (PHS)
 
@@ -224,7 +224,7 @@ Nyní jsme ověří, že uživatelé, které jsme měli v našem místním adres
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Test přihlášení pomocí jednoho z našich uživatelů
 
-1.  Přejděte na [http://myapps.microsoft.com](https://myapps.microsoft.com)
+1.  Přejděte na [https://myapps.microsoft.com](httpss://myapps.microsoft.com)
 2. Přihlaste se pomocí uživatelského účtu, který byl vytvořen v našich nového tenanta.  Budete muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel použije k přihlášení místní.</br>
 ![Ověření](media/tutorial-password-hash-sync/verify1.png)</br>
 

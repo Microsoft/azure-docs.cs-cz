@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2302061d5a3eaf9ef51543b1304104e2dbe54bd9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cb6f74a1de3e91868d7b20563a790352486862ee
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312904"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425689"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Synchronizace Azure AD Connect: Functions – Reference
 Ve službě Azure AD Connect funkce se používají k práci s hodnotu atributu během synchronizace.  
@@ -600,7 +600,7 @@ Funkce FormatDateTime slouží k formátování datum a čas na řetězec pomoc�
 * formát: řetězec představující převést na formát.
 
 **Poznámky:**  
-Možné hodnoty pro formát najdete tady: [formátu data a času definované uživatelem (formát funkce)](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+Možné hodnoty pro formát najdete tady: [formátu data a času definované uživatelem (formát funkce)](https://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
 
 **Příklad:**  
 
@@ -1013,7 +1013,7 @@ PadRight – funkce vpravo-dotyková zařízení a řetězce na určenou délku 
 **Poznámky:**
 
 * Pokud délka řetězce je menší než délka, pak padCharacter opakovaně připojen na konci (vpravo) řetězce dokud má délku rovna délce.
-* padCharacter může být znak mezery, ale nemůže být hodnota null.
+* PadCharacter může být znak mezery, ale nemůže být hodnota null.
 * Pokud délka řetězce je roven nebo větší než délka, řetězec je vrácen beze změny.
 * Pokud řetězec má délku větší než nebo rovna délce, vrátí se stejný řetězec jako řetězec.
 * Pokud délka řetězce je menší než délka, je vrácena nový řetězec má požadovanou délku obsahující řetězce, aby bylo vytvořeno padCharacter.

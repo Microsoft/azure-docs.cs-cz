@@ -1,5 +1,5 @@
 ---
-title: Přeučování webové služby Classic | Dokumentace Microsoftu
+title: Přeučování webové služby Classic – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
 services: machine-learning
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: bd8fb59390bc54e5819183d13f16a557d62ec7ce
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e94fa4b6382a4672e5763b382a22fb812991cb03
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260745"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308457"
 ---
 # <a name="retrain-a-classic-web-service"></a>Přeučování webové služby Classic
 Prediktivní webové služby, kterou jste nasadili je výchozí bodovací koncový bod. Výchozí koncové body se udržovat synchronizované s původní trénování a vyhodnocování experimenty, a proto nejde nahradit trénovaný model pro výchozí koncový bod. Chcete-li přeučování webové služby, je nutné přidat nový koncový bod webové služby. 

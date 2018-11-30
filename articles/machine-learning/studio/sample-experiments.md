@@ -1,6 +1,6 @@
 ---
-title: Vytváření experimentů na základě příkladů strojového učení – Azure | Dokumentace Microsoftu
-description: Naučte se používat příklady experimentů se strojovým učením k vytváření nových experimentů s galerií Azure AI a službou Azure Machine Learning.
+title: Vytváření experimentů Machine Learning Studio z příkladů – Azure | Dokumentace Microsoftu
+description: Naučte se používat příklady experimentů se strojovým učením k vytváření nových experimentů s galerií Azure AI a Azure Machine Learning Studio.
 keywords: machine learning examples, sample experiment, machine learning sample, AI examples
 services: machine-learning
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/05/2018
-ms.openlocfilehash: 7bb6f054b81b21783cecb15c3b5caa9bcf6f77cd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 568732c5a1d2abbb9f304b624d885b2a3c692706
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264286"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306676"
 ---
 # <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>Vytváření experimentů se strojovým učením na základě funkčních příkladů v galerii Azure AI
 

@@ -1,5 +1,5 @@
 ---
-title: Nelze provést vzdálené plochy na Azure Virtual Machines, protože síťová karta je zakázaná. | Dokumentace Microsoftu
+title: Nelze vzdáleně připojit k Azure Virtual Machines vzhledem k tomu, že síťová karta je zakázaná. | Dokumentace Microsoftu
 description: Zjistěte, jak řešit potíže, ve kterém RDP selže, protože síťové rozhraní je zakázaný ve virtuálním počítači Azure | Dokumentace Microsoftu
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 6b14530bd6b4c1b6617cb1d5c88d710a32e5372c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f9e4731146409f51d16a8c92c01d07a8ff11a7ea
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634695"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314520"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nelze provést vzdálené plochy k virtuálnímu počítači, protože síťové rozhraní je zakázaná.
 
-Tento článek ukazuje, jak vyřešit problém, ve kterém nemůžete vzdálené plochy Azure Windows Virtual Machines (VM) vzhledem k tomu, že síťové rozhraní je zakázaná.
+Tento článek vysvětluje, jak vyřešit problém, ve kterém nemůžete provádět připojení ke vzdálené ploše do Azure Windows Virtual Machines (VM) je zakázána. síťové rozhraní.
 
 > [!NOTE] 
 > Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic. 
@@ -51,7 +51,7 @@ Pokud chcete povolit rozhraní pro virtuální počítač, použití sériového
 
         netsh interface set interface name="interface Name" admin=enabled
 
-    Například pokud propojení 16b rozhraní názvy "Ethernet 2", spusťte následující příkaz:
+    Například pokud propojení 16b rozhraní s názvem "Ethernet 2", spusťte následující příkaz:
 
         netsh interface set interface name=""Ethernet 2" admin=enabled
     
@@ -62,8 +62,8 @@ Pokud chcete povolit rozhraní pro virtuální počítač, použití sériového
 
     Restartujte virtuální počítač v tuto chvíli nemusíte. Virtuální počítač bude znovu dosažitelné.
         
-5.  Připojení k virtuálnímu počítači a zobrazit, pokud se problém vyřeší.
+5.  Připojit k virtuálnímu počítači a podívat se, zda byl problém vyřešen.
 
 ## <a name="reset-network-interface"></a>Resetování síťové rozhraní
 
-Resetování síťové rozhraní, změňte IP adresu na jinou IP adresu, která je dostupná v podsíti s využitím webu Azure portal nebo Azure Powershellu. Další informace najdete v tématu [resetování síťové rozhraní](reset-network-interface.md). 
+Resetování síťové rozhraní, změňte IP adresu na jinou IP adresu, která je dostupná v podsíti. To provedete pomocí webu Azure portal nebo Azure Powershellu. Další informace najdete v tématu [resetování síťové rozhraní](reset-network-interface.md). 

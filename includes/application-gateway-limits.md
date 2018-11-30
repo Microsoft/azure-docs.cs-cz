@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: victorh
-ms.openlocfilehash: 44f9400a1ecebd3c204ec0b891c5d7fe01bdfd25
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 3d66d825306c5183bdd8d8e611d98904eef2022a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51628112"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440067"
 ---
 | Prostředek | Výchozí omezení | Poznámka |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ ms.locfileid: "51628112"
 | Certifikáty pro ověřování |40 | |
 | Minimální časový limit požadavku |1 sekunda | |
 | Maximální časový limit požadavku |24 hodin | |
-| Počet webů |20 |1 na naslouchací proces HTTP |
+| Počet webů |40 |1 na naslouchací proces HTTP |
 | Map URL na naslouchací proces |1 | |
 | Mapování maximální pravidel založené na cestě na adresu URL|100|
 | Konfigurace přesměrování |40| |

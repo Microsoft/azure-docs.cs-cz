@@ -1,5 +1,5 @@
 ---
-title: Vytváření koncových bodů webové služby v Machine Learning | Dokumentace Microsoftu
+title: Vytváření koncových bodů webové služby v Machine Learning – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Vytváření koncových bodů webové služby ve službě Azure Machine Learning
 services: machine-learning
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.openlocfilehash: f046db11bf3c04c9ea15e759b4e0080cab4f71d5
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 266970bec1e61dca808bb6358f2b4580359ee70d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265062"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314009"
 ---
-# <a name="creating-endpoints"></a>Vytváření koncových bodů
+# <a name="creating-endpoints"></a>Vytváření koncových bodů 
 > [!NOTE]
 >  Toto téma popisuje postupy aplikovatelné **Classic** Machine Learning webové služby.
 > 
@@ -31,7 +31,7 @@ ms.locfileid: "52265062"
 
 Při vytváření webové služby, které prodáváte blíž k vašim zákazníkům musíte poskytovat trénované modely pro jednotlivé zákazníky, které jsou stále spojeny do experimentu, ze kterého byla vytvořena webová služba. Kromě toho všechny aktualizace do experimentu bude použito selektivní do koncového bodu bez přepsání přizpůsobení.
 
-K tomu Azure Machine Learning umožňuje vytvořit několik koncových bodů pro nasazenou webovou službu. Každý koncový bod webové služby je nezávisle na sobě zákazníky a vyřešené, omezení a spravované. Každý koncový bod je jedinečnou adresu URL a autorizačního klíče, které můžete distribuovat zákazníkům.
+K tomu Azure Machine Learning Studio můžete vytvořit několik koncových bodů pro nasazenou webovou službu. Každý koncový bod webové služby je nezávisle na sobě zákazníky a vyřešené, omezení a spravované. Každý koncový bod je jedinečnou adresu URL a autorizačního klíče, které můžete distribuovat zákazníkům.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 

@@ -10,17 +10,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: b4c58a13c8b66add8ebd7e535ecac9d7b0f1075b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1560b8e574b0932e258353648c73f030ef19d314
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032117"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333492"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Testování pomocí sady projevy příklad služby batch
+
  Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. 
 
 <a name="batch-testing"></a>
+
 ## <a name="import-a-dataset-file-for-batch-testing"></a>Importovat datovou sadu pro testování služby batch
 
 1. Vyberte **testovací** v horní části panelu a pak vyberte **Batch testování panel**.
@@ -36,6 +38,7 @@ ms.locfileid: "47032117"
 4. Vyberte **Done** (Hotovo). Přidá soubor datové sady.
 
 ## <a name="run-rename-export-or-delete-dataset"></a>Spuštění, přejmenování, export nebo odstranění datové sady
+
 Chcete-li spustit, přejmenovat, export nebo odstranění datové sady, použijte na tři tečky (***...*** ) tlačítko na konci řádku datové sady.
 
 ![Akce datové sady](./media/luis-how-to-batch-test/batch-testing-options.png)
@@ -55,7 +58,9 @@ Ke stažení datová sada je stejný soubor, který byl nahrán pro testování 
 |![Jste připravení ikona testu](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test je připraven ke spuštění.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
+
 ## <a name="view-batch-test-results"></a>Zobrazení výsledků testu služby batch 
+
 Chcete-li zkontrolovat výsledky testů služby batch, vyberte **zobrazit výsledky**.
 
 ![Výsledky testu služby batch](./media/luis-how-to-batch-test/run-test-results.png)
@@ -64,6 +69,7 @@ Chcete-li zkontrolovat výsledky testů služby batch, vyberte **zobrazit výsle
 
 
 <a name="filter-chart-results-by-intent-or-entity"></a>  
+
 ## <a name="filter-chart-results"></a>Filtrování grafu výsledků
 
 Filtrování grafu specifické cílem nebo entity, vyberte na pravé straně panelu filtrování záměr nebo entity. Datové body a jejich distribuci aktualizací v grafu podle vašeho výběru. 
@@ -71,6 +77,7 @@ Filtrování grafu specifické cílem nebo entity, vyberte na pravé straně pan
 ![Výsledek testu vizualizovaný služby Batch](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
 ## <a name="view-single-point-utterance-data"></a>Zobrazení jednoho bodu utterance dat
+
 V diagramu najeďte myší na datový bod zobrazíte skóre jistoty jeho předpovědí. Vyberte datový bod k načtení jeho odpovídajícího utterance v seznamu projevy v dolní části stránky. 
 
 ![Vybrané utterance](./media/luis-how-to-batch-test/selected-utterance.png)
@@ -78,7 +85,9 @@ V diagramu najeďte myší na datový bod zobrazíte skóre jistoty jeho předpo
 
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+
 ## <a name="view-section-data"></a>Část dat zobrazení
+
 V grafu čtyři části, vyberte název oddílu, jako je například **falešně pozitivní** v pravém horním rohu grafu. Pod grafem všechny projevy v této části zobrazí pod grafem v seznamu. 
 
 ![Vybrané projevy oddílu](./media/luis-how-to-batch-test/selected-utterances-by-section.png)

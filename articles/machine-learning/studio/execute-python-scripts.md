@@ -1,6 +1,6 @@
 ---
-title: Spouštění skriptů Pythonu machine learning | Dokumentace Microsoftu
-description: Jsou podrobněji popsány dále návrh zásadami pro podporu pro skripty Python v Azure Machine Learning a scénáře základní informace o využití, možnosti a omezení.
+title: Spuštění skriptů strojového učení Pythonu – Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Jsou podrobněji popsány dále návrh zásadami pro podporu pro skripty Python v Azure Machine Learning Studio a scénáře základní informace o využití, možnosti a omezení.
 keywords: Python strojového učení, balíčky pandas, pandas v pythonu, skriptů pythonu, spouštění skriptů pythonu
 services: machine-learning
 documentationcenter: ''
@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 8378ccaf64dae9c3116bb175e6cb44ba75a2e367
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 958dd91277a81a9082a4149d2b0026fc11bf882a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261526"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317581"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Spouštění skriptů strojového učení v Pythonu v nástroji Azure Machine Learning Studio
 

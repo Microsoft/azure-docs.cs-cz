@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: e6025ba2645c284cca87483b48b2d79a9558d574
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 420a1c2ee09f84586f99864878e226df59606f2d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012526"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496870"
 ---
 # <a name="scp-programming-guide"></a>Průvodce programováním pro spojovací bod služby
 Spojovací bod služby je platformou můžete tvořit v reálném čase spolehlivé a konzistentní a zpracování dat vysoce výkonné aplikace. Systém orchard je založen na horní [Apache Storm](http://storm.incubator.apache.org/) – systém ve komunity OSS pro zpracování datových proudů. Storm je určen Nathan marz a byla open source služba Twitter. Využívá [Apache ZooKeeper](http://zookeeper.apache.org/), jiný projekt Apache umožňující vysoce spolehlivých distribuovaných správy koordinace a stavu. 
@@ -207,7 +207,7 @@ Pro podporu ack netransakční bolt, by měl explicitně `Ack()` nebo `Fail()` o
 ### <a name="statestore"></a>Úložiště stavu
 `StateStore` poskytuje metadatových služeb, monotónní posloupnosti generování a čekání bez koordinace. Abstrakce vyšší úrovně distribuované souběžnosti se dají `StateStore`, včetně distribuované zámky, distribuované fronty, překážek a transakce služby.
 
-Spojovací bod služby aplikace mohou používat `State` objekt a zachová některé informace v ZooKeeper, zejména pro transakční topologie. To proto, pokud transakční spout dojde k chybě a restartování, můžete získat potřebné informace z ZooKeeper a restartujte kanálu.
+Spojovací bod služby aplikace mohou používat `State` objekt a zachová některé informace v [Apache ZooKeeper](https://zookeeper.apache.org/), zejména pro transakční topologie. To proto, pokud transakční spout dojde k chybě a restartování, můžete získat potřebné informace z ZooKeeper a restartujte kanálu.
 
 `StateStore` Objekt hlavně má tyto metody:
 
@@ -642,9 +642,9 @@ Tato topologie obsahuje Java Spout a a C\# Bolt. Použije se výchozí serializa
 Tento příklad je stejný jako HelloWorld v podstatě. Jediným rozdílem je, že uživatelský kód je zkompilován jako knihovnu DLL a topologii se odešle pomocí SCPHost.exe. V části "Spojovací bod služby hostitele režim" podrobnější vysvětlení.
 
 ## <a name="next-steps"></a>Další kroky
-Příklady topologie Storm, které jsou vytvořené pomocí spojovacího bodu služby najdete v následujících dokumentech:
+Příklady topologií Apache Storm, které jsou vytvořené pomocí spojovacího bodu služby najdete v následujících dokumentech:
 
 * [Vývoj topologií C# pro Apache Storm v HDInsight pomocí sady Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
-* [Zpracování událostí z Azure Event Hubs se Stormem v HDInsight](apache-storm-develop-csharp-event-hub-topology.md)
-* [Zpracování dat snímače vozidla ze služby Event Hubs pomocí Stormu v HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [Extrakce, transformace a načítání (ETL) z Azure Event Hubs do služby HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [Zpracování událostí z Azure Event Hubs pomocí Apache Storm v HDInsight](apache-storm-develop-csharp-event-hub-topology.md)
+* [Zpracování dat snímače vozidla ze služby Event Hubs pomocí Apache Storm v HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
+* [Extrakce, transformace a načítání (ETL) ze služby Azure Event Hubs pro Apache HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)

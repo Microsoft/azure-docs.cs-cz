@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d104b5de22281817626f8de0f41029e76e06e3a2
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5db43c6488a4592eb46d9a0fe9a044dde36fc494
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824808"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423343"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Azure Cosmos DB globální distribuce - pod pokličkou
 
@@ -72,7 +72,7 @@ Pro databáze Cosmos nakonfigurované s využitím více oblastí zápisu systé
 
 Zda databáze Cosmos nakonfigurovat jeden nebo více oblastí zápisu, můžete vybrat z pěti jasně definované modely konzistence. Nově přidaná podpora pro povolení více oblastí zápisu následují několik důležitých aspektů úrovně konzistence:  
 
-Jako dříve, konzistenci omezená neaktuálnost zaručuje, že všechny operace čtení se během předpon k nebo t sekund od poslední zápis v libovolné oblasti. Kromě toho čtení pomocí konzistenci omezená neaktuálnost je zaručena monotónní a záruky konzistence předpon. Protokol ochrany proti entropie funguje způsobem míra časově omezený a zajistí, že předpony není accumulate a nebude muset použít protitlak na zápisy. Jako dříve, relace, záruky konzistence monotónní čtení, monotónní zápis čtení vlastních zápisů, zápis čtení způsobem a konzistentní předpona zaručuje po celém světě. Pro databáze nakonfigurované s silnou konzistenci přepínače systému zpět do jedné oblasti pro zápis při označení lídr v rámci každé sady oddílů. 
+Jako dříve, konzistenci omezená neaktuálnost zaručuje, že všechny operace čtení se během předpon k nebo t sekund od poslední zápis v libovolné oblasti. Kromě toho čtení pomocí konzistenci omezená neaktuálnost je zaručena monotónní a záruky konzistence předpon. Protokol ochrany proti entropie funguje způsobem míra časově omezený a zajistí, že předpony není accumulate a nebude muset použít protitlak na zápisy. Jako dříve, relace, záruky konzistence monotónní čtení, monotónní zápis čtení vlastních zápisů, zápis čtení způsobem a konzistentní předpona zaručuje po celém světě. Pro databáze nakonfigurované s silnou konzistenci, výhod více zvládnutí (zápisu s nízkou latencí, zápis vysoké dostupnosti) se nevztahují kvůli synchronní replikace napříč oblastmi.
 
 Sémantika pět modelů konzistence ve službě Cosmos DB jsou popsány [tady](consistency-levels.md) a matematicky zobrazit Díky vysoké úrovně specifikace TLA + [tady](https://github.com/Azure/azure-cosmos-tla).
 

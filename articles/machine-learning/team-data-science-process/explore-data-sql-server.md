@@ -2,25 +2,21 @@
 title: Zkoumání dat na virtuálním počítači SQL serveru v Azure | Dokumentace Microsoftu
 description: Popisuje, jak zkoumat data, která je uložena v virtuálního počítače s SQL serverem v Azure.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ccbb3085-af9e-4ec2-9df2-15dcab261d05
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: deguhath
-ms.openlocfilehash: 546d75172b9e6dbd77d63c36e5b8cebd0835a582
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: da01a1a386e1ffc590f4cbbb85d9d50a180d4973
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345602"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442926"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Zkoumání dat na virtuálním počítači s SQL Serverem v Azure
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2713f48ce490aa42b6b1aa4e69a71f8f8053d1fb
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296392"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426200"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: resetování hesla pomocí samoobslužné služby Azure AD
 
@@ -189,7 +189,7 @@ Resetování hesla a změny jsou plně podporovány ve všech konfiguracích bus
    * **Uživatelé, kteří se zaregistrují prostřednictvím** samoobslužnou registraci: Pokud organizace partnerství s používané [samoobslužnou registraci](../users-groups-roles/directory-self-service-signup.md) funkce do tenanta, informujeme je resetovat heslo pomocí e-mailu jsou registrované.
    * **Uživatele B2B**: jakékoli nové uživatele B2B, které jsou vytvořené pomocí nových [možnosti Azure AD B2B](../active-directory-b2b-what-is-azure-ad-b2b.md) budete také moct resetovat heslo pomocí e-mailu, registruje se během procesu pozvánku.
 
-K otestování tohoto scénáře, přejděte na http://passwordreset.microsoftonline.com s jedním z těchto partnerů. Pokud mají alternativní e-mailu nebo e-mail pro ověření definované, resetování hesla funguje podle očekávání.
+K otestování tohoto scénáře, přejděte na https://passwordreset.microsoftonline.com s jedním z těchto partnerů. Pokud mají alternativní e-mailu nebo e-mail pro ověření definované, resetování hesla funguje podle očekávání.
 
 > [!NOTE]
 > Účty Microsoft, kterým byl udělen přístup hosta pro vašeho tenanta Azure AD, například Hotmail.com, Outlook.com nebo jiné osobní e-mailové adresy nejsou možné použít samoobslužné resetování HESLA Azure AD. Potřebují k resetování hesla pomocí informací v nalezen [když nemůžete se přihlásit ke svému účtu Microsoft](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) článku.

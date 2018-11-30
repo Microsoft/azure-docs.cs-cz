@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: a5a2300bd0b768b4a29b01e75f9558c4923ac11c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: eea981800147f24025e01826f7550a95041c107f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395119"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427297"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (privátní verze Preview)
 
@@ -24,7 +24,7 @@ K nasazení vaší služby napříč mnoha oblastmi a ujistěte se, že funguje 
 
 Deployment Manager je funkce Resource Manageru. Vaše možnosti rozšiřuje během nasazení. Pomocí Správce nasazení v případě, že máte komplexní služby, který musí být nasazený do několika oblastí. Postupným zavedením služby, můžete najít potenciální problémy dříve, než bude nasazena do všech oblastí. Pokud není nutné další bezpečnostní opatření postupné zavádění, použijte standardní [možnosti nasazení](resource-group-template-deploy-portal.md) pro Resource Manager. Deployment Manager se hladce integrují s všechny stávající nástroje třetích stran, které podporují nasazení Resource Manageru, jako jsou například průběžná integrace a průběžné doručování (CI/CD) nabídky. 
 
-Azure Deployment Manager je ve verzi private preview. Chcete-li používat Azure Deployment Manager, proveďte [registrační formulář](https://aka.ms/admsignup). Pomoc se tím, že poskytuje vylepšení funkce [zpětnou vazbu](https://aka.ms/admfeedback).
+Azure Deployment Manager je ve verzi Private Preview. Chcete-li používat Azure Deployment Manager, proveďte [registrační formulář](https://aka.ms/admsignup). Pomoc se tím, že poskytuje vylepšení funkce [zpětnou vazbu](https://aka.ms/admfeedback).
 
 Pokud chcete použít nástroj Deployment Manager, budete muset vytvořit čtyři soubory:
 
@@ -34,6 +34,8 @@ Pokud chcete použít nástroj Deployment Manager, budete muset vytvořit čtyř
 * Soubor parametrů pro zavedení
 
 Nasazení šablony topologie před nasazením šablony nasazení.
+
+Referenční dokumentace rozhraní REST API služby Azure Deployment Manager můžete najít [tady](https://docs.microsoft.com/rest/api/deploymentmanager/).
 
 ## <a name="supported-locations"></a>Podporovaná umístění
 

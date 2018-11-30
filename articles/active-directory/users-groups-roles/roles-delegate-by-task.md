@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: b4704e9f078b248ef1835babb3b63c378b011c4e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: bd63e8379051864a19c473779625a925446185f2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516152"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445017"
 ---
 # <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Role správce úlohou identity v Azure Active Directory
 
@@ -107,7 +107,7 @@ Spravovat domény | Globální správce |
 Úkol | Nejméně privilegovaných rolí | Další role
 ---- | --------------------- | ----------------
 Vytvoření instance služby Azure AD Domain Services | Globální správce | 
-Úlohy provést všechny Azure AD Domain Services | Skupiny Azure AD DC Administrators ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
+Provádět všechny úlohy služby Azure AD Domain Services | Skupiny Azure AD DC Administrators ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
 Číst všechny konfigurace | Čtenář předplatného Azure, který obsahuje službu AD DS | 
 
 ## <a name="devices"></a>Zařízení
@@ -147,7 +147,7 @@ Přiřadit licenci | Správce uživatelských účtů |
 Vytvořit skupinu | Správce uživatelských účtů | 
 Vytvoření, aktualizace nebo odstranění kontroly přístupu, skupiny nebo aplikace | Správce uživatelských účtů | 
 Správa platnosti skupiny | Správce uživatelských účtů | 
-Správa nastavení skupin | Správce uživatelských účtů | 
+Správa nastavení skupin | Globální správce | 
 Načíst všechny konfiguraci (s výjimkou skrytých členství) | Uživatelé čtoucí z adresáře | Výchozí role uživatele ([naleznete v dokumentaci](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Čtení skrytých členství | Člen skupiny | Vlastník skupiny, heslo správce, správce Exchange, správce Sharepointu, týmy správce, správce uživatelských účtů
 Čtení členství ve skupinách s skrytých členství | Správce technické podpory | Správce uživatelských účtů, týmy správce

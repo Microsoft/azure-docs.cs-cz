@@ -9,22 +9,22 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: f963ae53e1396b1ef6279f2bd6502e5ab0cd23a1
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: ac287f2ee50501d703b7d7b79a436ecb5335d1bd
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034553"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497397"
 ---
 # <a name="install-published-application---streamsets-data-collector"></a>Instalace publikované aplikace – StreamSets Data Collector
 
-Tento článek popisuje, jak nainstalovat a spustit [kolekce dat StreamSets pro HDInsight](https://streamsets.com/) publikovat aplikace Apache Hadoop v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Tento článek popisuje, jak nainstalovat a spustit [kolekce dat StreamSets pro HDInsight](https://streamsets.com/) publikované [Apache Hadoop](https://hadoop.apache.org/) aplikaci v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalovat aplikace jiných výrobců Apache Hadoop](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-streamsets-data-collector"></a>O StreamSets Data Collector
 
 StreamSets Data Collector se nasazuje nad aplikaci HDInsight v Azure. StreamSets Data Collector poskytuje plně vybavené integrované vývojové prostředí (IDE), že kanály ingestace umožňuje navrhnout, testovat, nasazovat a spravovat any-to-any. Tyto kanály můžete sítě datového proudu data a data dávek a zahrnují různé transformace ve streamu vše bez nutnosti psát vlastní kód.
 
-StreamSets Data Collector vám umožní pomocí mnoha součástmi velké objemy dat, jako je HDFS, Kafka, Solr, Hive, HBASE a Kudu sestavení datové toky. Jakmile StreamSets Data Collector je spuštěná na hraničním serveru nebo v clusteru Hadoop, získáte v reálném čase, monitorování pro anomálie data i data toku provozu. Toto monitorování zahrnuje založené na prahových hodnotách výstrahy, detekci anomálií a automatické nápravy záznamy o chybách.
+StreamSets Data Collector umožňuje sestavení datové toky pomocí mnoha součástmi velké objemy dat, například [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), [Apache Kafka](https://kafka.apache.org/), [Apache Solr](https://lucene.apache.org/solr/), [ Apache Hive](https://hive.apache.org/), [Apache HBase](https://hbase.apache.org/), a [Apache Kudu](https://kudu.apache.org/). Jakmile StreamSets Data Collector je spuštěná na hraničním serveru nebo v clusteru Hadoop, získáte v reálném čase, monitorování pro anomálie data i data toku provozu. Toto monitorování zahrnuje založené na prahových hodnotách výstrahy, detekci anomálií a automatické nápravy záznamy o chybách.
 
 StreamSets Data Collector slouží k logické izolaci každá fáze v kanálu, tak nové obchodní požadavky lze splnit vyřazením nové procesory a konektory bez psaní kódu a s minimálními výpadky.
 
@@ -46,7 +46,7 @@ K instalaci této aplikace na nový cluster HDInsight nebo stávajícího cluste
 
 ## <a name="install-the-streamsets-data-collector-published-application"></a>Instalace kolekce dat StreamSets publikované aplikace
 
-Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých výrobců softwaru, přečtěte si [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md).
+Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých výrobců softwaru, přečtěte si [instalovat aplikace jiných výrobců Apache Hadoop](hdinsight-apps-install-applications.md).
 
 ## <a name="launch-streamsets-data-collector"></a>Spusťte kolekce dat StreamSets
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d7359c4c151d93dcd40bd475e865c76399ff5355
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 6303fe4313f68d4f38151ce9ba85eae2d6de96ca
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711767"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426991"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -34,7 +34,7 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 
 | Služba                 | Typ prostředku                           | Logs        | Metriky     | Řešení |
 | --- | --- | --- | --- | --- |
-| Application Gateway    | Microsoft.Network/applicationGateways   | Diagnostika | Diagnostika | [Analýzy Azure Application Gateway](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
+| Application Gateway    | Microsoft.Network/applicationGateways   | Diagnostika | Diagnostika | [Analýzy Azure Application Gateway](../azure-monitor/insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
 | Application insights    |                                         | Spojovací čára   | Spojovací čára   | [Application Insights Connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (Preview) |
 | Účty Automation     | Microsoft.Automation/AutomationAccounts | Diagnostika |             | [Další informace](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Účty Batch          | Microsoft.Batch/batchAccounts           | Diagnostika | Diagnostika | |
@@ -44,10 +44,10 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 | Data Lake store         | Microsoft.DataLakeStore/accounts        | Diagnostika |             | |
 | Obor názvů centra událostí     | Microsoft.EventHub/namespaces           | Diagnostika | Diagnostika | |
 | IoT Huby                | Microsoft.Devices/IotHubs               |             | Diagnostika | |
-| Key Vault               | Microsoft.KeyVault/vaults               | Diagnostika |             | [Analýza služby KeyVault](log-analytics-azure-key-vault.md) |
+| Key Vault               | Microsoft.KeyVault/vaults               | Diagnostika |             | [Analýza služby KeyVault](../azure-monitor/insights/azure-key-vault.md) |
 | Nástroje pro vyrovnávání zatížení          | Microsoft.Network/loadBalancers         | Diagnostika |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnostika | Diagnostika | |
-| Network Security Groups (Skupiny zabezpečení sítě) | Microsoft.Network/networksecuritygroups | Diagnostika |             | [Analýzy skupin zabezpečení sítě Azure](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
+| Network Security Groups (Skupiny zabezpečení sítě) | Microsoft.Network/networksecuritygroups | Diagnostika |             | [Analýzy skupin zabezpečení sítě Azure](../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | Trezory služby Recovery         | Microsoft.RecoveryServices/vaults       |             |             | [Analýza (Preview) služby Azure Recovery Services](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Služby hledání         | Microsoft.Search/searchServices         | Diagnostika | Diagnostika | |
 | Obor názvů služby Service Bus   | Microsoft.ServiceBus/namespaces         | Diagnostika | Diagnostika | [Služba Service Bus Analytics (Náhled)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|

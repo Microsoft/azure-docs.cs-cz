@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: 8315647afec0166b41ce7a75f491077edd56db46
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fd13cb25fbe3696bf67615ef956f478b7c355547
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036256"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422048"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Správa prostředků Azure Blob Storage pomocí Storage Exploreru
 ## <a name="overview"></a>Přehled
@@ -29,7 +29,7 @@ Službu Blob Storage můžete používat ke zveřejňování dat pro celý svět
 ## <a name="prerequisites"></a>Požadavky
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-* [Stažení a instalace Průzkumníka služby Storage](http://www.storageexplorer.com)
+* [Stažení a instalace Průzkumníka služby Storage](https://www.storageexplorer.com)
 * [Připojení k účtu úložiště nebo službě Azure](vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
@@ -213,7 +213,7 @@ Následující kroky ukazují, jak spravovat objekty BLOB (a složky) v rámci k
      3. V potvrzovacím dialogovém okně klikněte na **Ano**.
 
 ## <a name="next-steps"></a>Další postup
-* Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](http://www.storageexplorer.com).
+* Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](https://www.storageexplorer.com).
 * Zjistěte, jak [vytvářet aplikace pomocí objektů blob, tabulek, dotazů a souborů Azure](https://azure.microsoft.com/documentation/services/storage/).
 
 [0]: ./media/vs-azure-tools-storage-explorer-blobs/blob-containers-create-context-menu.png

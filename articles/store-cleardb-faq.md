@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: cce6555c71829110781a6dd13757078b105dbb41
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 253f817099bd2705d8b9ea98741dc8fd28f09efe
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230627"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421653"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím ClearDB MySQL ve službě Azure App Service
 Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se použití a nakupování databází ClearDB MySQL pro Azure Web Apps.
@@ -25,7 +25,7 @@ Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se použit�
 > [!IMPORTANT]
 > Od 13. června 2018 se ClearDB přešla společnost Microsoft aktuálně účtují přímé fakturační model s ClearDB zákazníkům založené na Azure. Informace v tomto článku je nyní zastaralá. Už bude možné vytvořit nebo upgradovat databázi ClearDB, který byl vytvořen v Azure.
 >
-> Další podrobnosti a další kroky najdete v tématu [změní na plány služeb ClearDB](http://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/).
+> Další podrobnosti a další kroky najdete v tématu [změní na plány služeb ClearDB](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/).
 
 
 ## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Jaké jsou možnosti pro MySQL v Azure?

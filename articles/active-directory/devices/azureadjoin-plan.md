@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 7f553300ce87ad24042e4d75b2e6e3742125783b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 34b2658ef4b25b3d545932ceffd2f3cf8969034e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284621"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309358"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Postupy: Naplánování vaší implementace připojení k Azure AD
 
@@ -62,7 +62,7 @@ K naplánování vaší implementace hybridní služby Azure AD, které byste se
 Zatímco hybridní připojení ke službě Azure AD může být upřednostňované pro určité scénáře, připojení ke službě Azure AD vám umožní přechod k modelu upřednostněním cloudu s Windows. Pokud máte v úmyslu modernizovat správu zařízení a zařízení: náklady na IT, připojení ke službě Azure AD poskytuje skvělé základ k dosažení těchto cílů.  
 
  
-Pokud vaše cíle bylo v souladu s byste měli zvážit připojení ke službě Azure AD následující kritéria:
+Připojení ke službě Azure AD je třeba zvážit, pokud vaše cíle bylo v souladu s následujícími kritérii:
 
 - Microsoft 365 se zavést jako sada produktivity pro vaše uživatele.
 
@@ -95,12 +95,14 @@ Federovaném prostředí by měl mít zprostředkovatele identity, která podpor
 
 - **WS-Trust:** tento protokol se vyžaduje pro přihlášení k zařízení připojené k doméně Azure AD. 
 
-Pokud váš zprostředkovatel identity nepodporuje tyto protokoly, nefunguje připojení k Azure AD nativně. Od verze Windows 10 1809, vaši uživatelé můžete přihlásit k zařízení připojené k doméně Azure AD pomocí zprostředkovatele identity založené na SAML prostřednictvím [webové přihlášení ve Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). 
+Pokud váš zprostředkovatel identity nepodporuje tyto protokoly, nefunguje připojení k Azure AD nativně. Od verze Windows 10 1809, vaši uživatelé můžete přihlásit k zařízení připojené k doméně Azure AD pomocí zprostředkovatele identity založené na SAML prostřednictvím [webové přihlášení ve Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). V současné době webové přihlášení je pouze ve verzi preview funkce.
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>Čipové karty a ověřování na základě certifikátu
 
 Čipové karty nebo ověřování pomocí certifikátu nelze použít k připojení zařízení k Azure AD. Čipové karty však lze použít pro přihlášení k zařízení připojených k Azure AD, pokud máte službu AD FS nakonfigurovaný.
+
+**Doporučení:** implementací Windows Hello pro firmy bez hesla, silné ověřování pro zařízení s Windows 10.
 
 
 ### <a name="user-configuration"></a>Konfigurace uživatele
@@ -209,7 +211,9 @@ Podpora k zařízením Azure AD, které jsou připojené k nepodporují u místn
 
 **Doporučení:** zvažte vyřazení těchto aplikací a přesunutí do svých moderních alternativy.
 
+### <a name="remote-desktop-services"></a>Vzdálená plocha
 
+Připojení ke vzdálené ploše zařízení připojená k Azure AD vyžaduje na hostitelském počítači být buď připojené k Azure AD nebo hybridní připojená k Azure AD. Vzdálená plocha ze zařízení s odpojit nebo jiných Windows se nepodporuje. Další informace najdete v tématu [počítač připojený k připojení ke vzdálené službě Azure AD](https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc)
 
 
 ## <a name="understand-your-provisioning-options"></a>Popis možností zřizování

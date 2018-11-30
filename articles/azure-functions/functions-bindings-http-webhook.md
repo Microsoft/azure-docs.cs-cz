@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 333e73af3578cdc363e7ede08ca52207cfd0fdb0
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: a20dec67201cb7d8b7ccd3a7662438f2afabfe63
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248897"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446785"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP aktivačními událostmi a vazbami
 
@@ -157,13 +157,13 @@ public static string Run(CustomObject req, ILogger log)
 }
 
 public class CustomObject {
-     public String name {get; set;}
+     public string name {get; set;}
 }
 ```
 
-### <a name="trigger---f-example"></a>Aktivační události – příklad F #
+### <a name="trigger---f-example"></a>Aktivační události – F# příklad
 
-Následující příklad ukazuje vazbu aktivační události v *function.json* souboru a [funkce jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce Hledat `name` parametr v řetězci dotazu nebo textu požadavku HTTP.
+Následující příklad ukazuje vazbu aktivační události v *function.json* souboru a [ F# funkce](functions-reference-fsharp.md) , který používá vazba. Funkce Hledat `name` parametr v řetězci dotazu nebo textu požadavku HTTP.
 
 Tady je *function.json* souboru:
 
@@ -188,7 +188,7 @@ Tady je *function.json* souboru:
 
 [Konfigurace](#trigger---configuration) bodu vysvětluje tyto vlastnosti.
 
-Tady je kód F #:
+Tady je F# kódu:
 
 ```fsharp
 open System.Net
@@ -348,7 +348,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="trigger---usage"></a>Aktivační události – využití
 
-Pro funkce C# a F #, je možné deklarovat typ triggeru zadejte buď `HttpRequestMessage` nebo vlastního typu. Pokud se rozhodnete `HttpRequestMessage`, získáte plný přístup k objektu žádosti. Pro vlastní typ modul runtime pokusí analyzovat datovou část JSON žádosti můžete nastavit vlastnosti objektu.
+Pro C# a F# funkce, je možné deklarovat typ triggeru zadejte buď `HttpRequestMessage` nebo vlastního typu. Pokud se rozhodnete `HttpRequestMessage`, získáte plný přístup k objektu žádosti. Pro vlastní typ modul runtime pokusí analyzovat datovou část JSON žádosti můžete nastavit vlastnosti objektu.
 
 Pro funkce jazyka JavaScript poskytuje modul runtime služby Functions tělo požadavku místo objekt žádosti. Další informace najdete v tématu [příklad v jazyce JavaScript aktivační událost](#trigger---javascript-example).
 
@@ -434,6 +434,45 @@ Ve výchozím nastavení, jsou všechny funkce trasy s předponou *api*. Můžet
 }
 ```
 
+### <a name="working-with-client-identities"></a>Práce s identitami klienta
+
+Pokud používáte aplikaci function app [ověřování pomocí služby App Service / autorizace](../app-service/app-service-authentication-overview.md), zobrazí se informace o ověření klienti z vašeho kódu. Tyto informace jsou k dispozici jako [vloženy platformu hlavičky požadavku](../app-service/app-service-authentication-how-to.md#access-user-claims). 
+
+Také můžete přečíst tyto informace z vytvoření vazby mezi daty. Tato možnost je pouze na modul runtime verze 2.x funkce k dispozici. Je také aktuálně k dispozici pouze pro jazyky .NET.
+
+Jazyků .NET, tyto informace jsou k dispozici jako [ClaimsPrincipal](https://docs.microsoft.com/en-us/dotnet/api/system.security.claims.claimsprincipal?view=netstandard-2.0). Je k dispozici objektu ClaimsPrincipal v rámci kontextu požadavku, jak je znázorněno v následujícím příkladu:
+
+```csharp
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+public static IActionResult Run(HttpRequest req, ILogger log)
+{
+    ClaimsPrincipal identities = req.HttpContext.User;
+    // ...
+    return new OkResult();
+}
+```
+
+Alternativně objektu ClaimsPrincipal jednoduše lze vložit jako další parametr v signatuře funkce:
+
+```csharp
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
+{
+    // ...
+    return;
+}
+
+```
+
 ### <a name="authorization-keys"></a>Autorizace klíče
 
 Funkce vám umožní používat klíče pro znesnadnit přístup vašich koncových bodů HTTP funkce během vývoje.  Standardní triggeru HTTP může být nutné že tyto klíče rozhraní API se v požadavku. 
@@ -483,7 +522,7 @@ Můžete povolit anonymní požadavky, které nevyžadují žádné klíče. Mů
 
 Plně zabezpečit vaše koncové body funkce v produkčním prostředí, je třeba zvážit, implementace některého z následujících možností funkce zabezpečení na úrovni aplikace:
 
-* Zapnout ověřování pomocí služby App Service / autorizace pro vaši aplikaci function app. Platformu App Service vám umožní použít Azure Active Directory (AAD) a několik poskytovatelů identit třetích stran k ověřování klientů. To vám umožní implementovat vlastní autorizační pravidla pro vaše funkce a můžete pracovat s informací o uživateli z vašeho kódu funkce. Další informace najdete v tématu [ověřování a autorizace ve službě Azure App Service](../app-service/app-service-authentication-overview.md).
+* Zapnout ověřování pomocí služby App Service / autorizace pro vaši aplikaci function app. Platformu App Service vám umožní použít Azure Active Directory (AAD) a několik poskytovatelů identit třetích stran k ověřování klientů. To vám umožní implementovat vlastní autorizační pravidla pro vaše funkce a můžete pracovat s informací o uživateli z vašeho kódu funkce. Další informace najdete v tématu [ověřování a autorizace ve službě Azure App Service](../app-service/app-service-authentication-overview.md) a [práci s identitami klienta](#working-with-client-identities).
 
 * Azure API Management (APIM) se používají k ověření požadavků. APIM poskytuje celou řadu možností zabezpečení rozhraní API pro příchozí požadavky. Další informace najdete v tématu [zásady služby API Management ověřování](../api-management/api-management-authentication-policies.md). Pomocí služby APIM na místě můžete nakonfigurovat aplikaci function app, aby přijímal požadavky jenom z IP adresy vaší instanci APIM. Další informace najdete v tématu [omezení podle IP adresy](ip-addresses.md#ip-address-restrictions).
 

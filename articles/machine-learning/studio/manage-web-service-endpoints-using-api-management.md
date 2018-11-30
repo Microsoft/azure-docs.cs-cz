@@ -1,5 +1,5 @@
 ---
-title: Zjistěte, jak spravovat webové služby Azure ml pomocí služby API Management | Dokumentace Microsoftu
+title: Správa webových služeb Machine Learning Studio pomocí služby API Management – Azure | Dokumentace Microsoftu
 description: Příručka ukazuje, jak spravovat webové služby Azure ml pomocí služby API Management.
 keywords: ve službě Machine learning, api management
 services: machine-learning
@@ -17,16 +17,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
-ms.openlocfilehash: bc0c8f40c8e2fb75e95e1745b53332aa8e4588ca
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0a262b2f8716c6d950dc84793a88277f62c3e6a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265215"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308235"
 ---
-# <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>Zjistěte, jak spravovat webové služby Azure ML pomocí služby API Management
+# <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Správa webových služeb Azure Machine Learning Studio pomocí služby API Management
 ## <a name="overview"></a>Přehled
-Tento průvodce vám ukáže, jak rychle začít používat ke správě webové služby Azure ml API Management.
+Tento průvodce vám ukáže, jak rychle začít pomocí služby API Management ke správě vašich webových služeb Azure Machine Learning Studio.
 
 ## <a name="what-is-azure-api-management"></a>Co je Azure API Management?
 Azure API Management je služba Azure, která vám umožní spravovat definováním přístup uživatelů, omezení využití a řídicího panelu monitorování koncových bodů rozhraní REST API. Klikněte na tlačítko [tady](https://azure.microsoft.com/services/api-management/) podrobné informace o službě Azure API Management. Klikněte na tlačítko [tady](../../api-management/api-management-get-started.md) pokyny o tom, jak začít pracovat s Azure API Management. Tato další příručku, která je na základě této příručce, popisuje další témata, včetně konfigurace oznámení, ceny, zpracování odpovědi, ověřování uživatelů, vytvoření produkty, předplatná pro vývojáře a mnoha využití.

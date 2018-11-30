@@ -1,6 +1,6 @@
 ---
-title: Vyhodnotit výkon modelu ve službě Machine Learning | Dokumentace Microsoftu
-description: Vysvětluje, jak vyhodnotit výkon modelu ve službě Azure Machine Learning.
+title: Vyhodnocení výkonu modelu - Azure Machine Learning Studio | Dokumentace Microsoftu
+description: Tento článek ukazuje, jak vyhodnotit výkon modelu v nástroji Azure Machine Learning Studio a poskytuje stručný dostupné metriky pro tuto úlohu.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 98704f00c6b086772d9e0440ace79c3ca713f13a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: de013f8deb5e64077aad96bd34d64135f981166d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261596"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311482"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Jak vyhodnotit výkon modelu ve službě Azure Machine Learning
 Tento článek ukazuje, jak vyhodnotit výkon modelu v nástroji Azure Machine Learning Studio a poskytuje stručný dostupné metriky pro tuto úlohu. Jsou uvedeny tři běžné scénáře učení: 
@@ -39,7 +39,7 @@ Služba Azure Machine Learning podporuje vyhodnocení modelu projdeme dvě z jeh
 ## <a name="evaluation-vs-cross-validation"></a>Vyhodnocení vs. Křížové ověření
 Vyhodnocení a křížového ověření jsou standardní způsoby, jak měřit výkon modelu. Oba generovat metrik, které můžete kontrolovat nebo porovnání u dalších modelů.
 
-[Vyhodnocení modelu] [ evaluate-model] očekává Vyhodnocená datovou sadu jako vstup (nebo 2 v případě byste chtěli porovnat výkon jednotlivých 2 různých modelů). To znamená, že je potřeba trénování modelu pomocí [trénování modelu] [ train-model] modulu a zkontrolujte předpovědí na některé datové sadě pomocí [Score Model] [ score-model]modulu, než můžete vyhodnotit výsledky. Hodnocení je založeno na skóre popisky/pravděpodobnosti spolu s true popisky, které jsou výstupem [Score Model] [ score-model] modulu.
+[Vyhodnocení modelu] [ evaluate-model] očekává Vyhodnocená datovou sadu jako vstup (nebo v případě byste chtěli porovnat výkon jednotlivých dva různé modely 2). To znamená, že je potřeba trénování modelu pomocí [trénování modelu] [ train-model] modulu a zkontrolujte předpovědí na některé datové sadě pomocí [Score Model] [ score-model]modulu, než můžete vyhodnotit výsledky. Hodnocení je založeno na skóre popisky/pravděpodobnosti spolu s true popisky, které jsou výstupem [Score Model] [ score-model] modulu.
 
 Alternativně můžete křížového ověření provést několik trénování skóre vyhodnotit operací (10 složení) automaticky na různé podmnožiny vstupní data. Vstupní data je rozdělit na části 10, kde jedna je vyhrazena pro testování, a další 9 pro vzdělávání. Tento postup se opakuje 10krát a metrik hodnocení zprůměrovány. To pomáhá určit, jak dobře model by generalize do nové datové sady. [Cross-Validate modelu] [ cross-validate-model] modul přijímá Nezkušený modelu a některé datové sady s popiskem a vypíše výsledky vyhodnocení jednotlivých 10 složení, kromě průměrné výsledky.
 
@@ -66,7 +66,7 @@ Obrázek 1. Vyhodnocení regresní Model.
 ### <a name="inspecting-the-evaluation-results"></a>Kontrola výsledků vyhodnocení
 Po spuštění testu, můžete kliknout na výstupní port modulu [Evaluate Model] [ evaluate-model] modul a vyberte *vizualizovat* zobrazíte výsledky hodnocení. Jsou k dispozici pro regresní modely hodnocení metriky: *znamenat absolutní chyba*, *Root, znamená absolutní chyba*, *relativní absolutní chyba*,  *Relativní spolehlivosti chyba*a *koeficient spolehlivosti*.
 
-Termín "Chyba" představuje rozdíl mezi předpovězenou a skutečnou hodnotou. Absolutní hodnota nebo druhou mocninu tohoto rozdílu jsou obvykle vypočtenou hodnotu capture celková velikost chyby napříč všemi instancemi jako rozdíl mezi hodnotou předpokládané a true může být v některých případech záporná. Chybové metriky měření výkonu prediktivních regresní model z hlediska odchylku střední jeho predikcím ze skutečné hodnoty. Nižší hodnoty chyba bude model přesnější při vytváření předpovědí. Celková metrika chyby 0 znamená, že model odpovídá zpracovávaným datům nemusíte zajistit dokonalou.
+Termín "Chyba" představuje rozdíl mezi předpovězenou a skutečnou hodnotou. Absolutní hodnota nebo druhou mocninu tohoto rozdílu je obvykle vypočtenou hodnotu capture celková velikost chyby napříč všemi instancemi jako rozdíl mezi hodnotou předpokládané a true může být v některých případech záporná. Chybové metriky měření výkonu prediktivních regresní model z hlediska odchylku střední jeho predikcím ze skutečné hodnoty. Nižší hodnoty chyba bude model přesnější při vytváření předpovědí. Celková metrika chyba nula znamená, že model odpovídá zpracovávaným datům dokonale.
 
 Koeficient rozhodnutí, která se také označuje jako R spolehlivosti, je také standardní způsob měření, jak dobře model odpovídá zpracovávaným datům. Může být interpretován jako podíl varianta je vysvětleno v modelu. Vyšší poměr v tomto případě je lepší kde 1 označuje ideální řešení.
 
@@ -75,7 +75,7 @@ Koeficient rozhodnutí, která se také označuje jako R spolehlivosti, je také
 Obrázek 2. Lineární regrese metrik.
 
 ### <a name="using-cross-validation"></a>Použití křížového ověření
-Jak už bylo zmíněno dříve, můžete provést opakovaný školení, vyhodnocení a hodnocení automaticky pomocí [Cross-Validate modelu] [ cross-validate-model] modulu. V takovém případě stačí datové sady, model Nezkušený a [Cross-Validate modelu] [ cross-validate-model] modulu (viz obrázek níže). Všimněte si, že je potřeba nastavit popisek sloupce *cena* v [Cross-Validate modelu] [ cross-validate-model] vlastnosti modulu.
+Jak už bylo zmíněno dříve, můžete provést opakovaný školení, vyhodnocení a hodnocení automaticky pomocí [Cross-Validate modelu] [ cross-validate-model] modulu. V takovém případě stačí datové sady, model Nezkušený a [Cross-Validate modelu] [ cross-validate-model] modulu (viz obrázek níže). Je nutné nastavit sloupci popisek *cena* v [Cross-Validate modelu] [ cross-validate-model] vlastnosti modulu.
 
 ![Křížové ověření regresní Model](./media/evaluate-model-performance/3.png)
 
@@ -116,7 +116,7 @@ Z tohoto důvodu je užitečné vypočítat další metriky, které zachycení v
 
 Obrázek 6. Binární klasifikace chybová matice.
 
-Když se vrátíme k příjmu klasifikace problému, jsme byste měli zadat několik otázek hodnocení, které nám pomáhají porozumět výkonu tohoto třídění použít. Je velmi přirozené otázku: "mimo osob, kterým modelu očekává se vydělávat > 50 TIS (TP + FP), kolik se správnou klasifikaci (TP)?" Tento dotaz může zodpovědět pohledem **přesnost** modelu, který je poměr pozitivní nálezy, které mají správnou klasifikaci: TP/(TP+FP). Další běžné otázkou je "mimo všechny vysoce zvyšovat své zaměstnance s příjmem > 50 tis. (TP + FN), kolik třídění klasifikovat správně (TP)". Toto je ve skutečnosti **odvolat**, nebo true kladné frekvence: TP/(TP+FN) třídění. Můžete si všimnout, že je zřejmé kompromis mezi přesnosti a odvolání. Například poměrně vyvážené datové sady, třídění, který bude předpovídat většinou kladné instancí, by měli vysokou odvolání, ale spíš málo přesnost tolik negativní instance by misclassified což vede k velký počet falešně pozitivních výsledků. Se liší v tom, jak tyto dvě metriky graf zobrazíte klepnutím na křivky "Přesnost/odvolání" na stránce hodnocení výsledek výstup (horní levé části Obrázek 7).
+Když se vrátíme k příjmu klasifikace problému, jsme byste měli zadat několik otázek hodnocení, které nám pomáhají porozumět výkonu tohoto třídění použít. Je velmi přirozené otázku: "mimo osob, kterým modelu očekává se vydělávat > 50 TIS (TP + FP), kolik se správnou klasifikaci (TP)?" Tento dotaz může zodpovědět pohledem **přesnost** modelu, který je poměr pozitivní nálezy, které mají správnou klasifikaci: TP/(TP+FP). Další běžné otázkou je "mimo všechny vysoce zvyšovat své zaměstnance s příjmem > 50 tis. (TP + FN), kolik třídění klasifikovat správně (TP)". Toto je ve skutečnosti **odvolat**, nebo true kladné frekvence: TP/(TP+FN) třídění. Můžete si všimnout, že je zřejmé kompromis mezi přesnosti a odvolání. Například poměrně vyvážené datové sady, třídění, který bude předpovídat většinou kladné instancí, by měli vysokou odvolání, ale spíš málo přesnost tolik negativní instance by misclassified což vede k velký počet falešně pozitivních výsledků. Se liší v tom, jak tyto dvě metriky graf zobrazíte klepnutím na **přesnost/spojené s VRACENÍM** křivku na stránce výstup výsledku vyhodnocení (horní levé části Obrázek 7).
 
 ![Výsledky vyhodnocení binární klasifikace](./media/evaluate-model-performance/7.png)
 

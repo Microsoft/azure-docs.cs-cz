@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: b94c797bc2351706badb98075514e5324d90a249
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 078c4253f990e3ad2759afb9f5b55832c78d9e73
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52277263"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334087"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Vytváření a správa Azure Database pro koncové body služby virtuální sítě MariaDB a pravidla virtuální sítě pomocí webu Azure portal
 
@@ -54,9 +54,5 @@ Koncové body služeb virtuální sítě (VNet) a pravidla rozšiřují privátn
    ![Povolené koncové body služeb virtuální sítě a vytvoří pravidlo virtuální sítě](./media/howto-manage-vnet-portal/3-vnet-service-endpoints-enabled-vnet-rule-created.png)
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [konfigurace protokolu SSL v Azure Database for MySQL](howto-configure-ssl.md)
-
-<!--
-- Similarly, you can script to [Enable VNet service endpoints and create a VNET rule for Azure Database for MySQL using Azure CLI](howto-manage-vnet-using-cli.md).
-- For help in connecting to an Azure Database for MySQL server, see [Connection libraries for Azure Database for MySQL](./concepts-connection-libraries.md)
--->
+- Další informace o [konfigurace protokolu SSL v Azure Database pro MariaDB](howto-configure-ssl.md)
+- Podobně můžete používat skripty pro [koncové body služby povolit virtuální sítě a vytvořit pravidlo virtuální sítě – Azure Database pro MariaDB pomocí Azure CLI](howto-manage-vnet-cli.md).

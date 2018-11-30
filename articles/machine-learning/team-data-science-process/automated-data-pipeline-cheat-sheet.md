@@ -2,25 +2,21 @@
 title: Tahák pro datový kanál automatizované Azure Machine Learning | Dokumentace Microsoftu
 description: Tisknutelný tahák, který ukazuje, jak nastavit automatizovanému datovému kanálu webové služby Azure Machine Learning, jestli vaše data jsou v místním, streamování v Azure nebo služby třetích stran.
 services: machine-learning
-documentationcenter: ''
-author: garyericson
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 22674d6b-4491-4805-a3ac-d423611177bb
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: garye
-ms.openlocfilehash: 32c7fca1b56e5426bc422b816279dd0919599f0f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=garyericson, ms.author=garye)
+ms.openlocfilehash: 07f7334a98c1220d051ed1be9d04e4e4e86d4dcc
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243994"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444425"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Tahák k automatizovanému datovému kanálu pro predikce služby Azure Machine Learning
 **Microsoft Azure Machine Learning automatizované tahák pro datový kanál** si projdete tuto technologii můžete použít k přesunu dat pro Machine Learning pomáhá webová služba, kde mohou být upraveny prediktivní analýzy model.

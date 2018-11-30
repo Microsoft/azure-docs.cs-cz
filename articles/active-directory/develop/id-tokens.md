@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 35e6cd988a0532221d88b22cdd51fc29d7f17ba9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: ab2c0f671eaf6147baad24b426c4a527f07e136f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158750"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422401"
 ---
 # <a name="id-tokens"></a>Tokeny ID
 
@@ -70,8 +70,8 @@ Zobrazit tento token ukázkové verze 2.0 v [jwt.ms](https://jwt.ms/#id_token=ey
 |`idp`|Řetězec, obvykle o identifikátor URI služby tokenů zabezpečení | Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota se shoduje s hodnotu deklarace identity vystavitele, není-li uživatelský účet není ve stejném tenantovi jako vystavitel - hosté, třeba. Pokud deklarace identity není k dispozici, znamená to, že hodnota `iss` lze použít.  Pro osobní účty, které se používá v kontextu orgnizational (například pomocí osobního účtu pozvat do tenanta služby Azure AD) `idp` deklarace může být 'live.com' nebo identifikátor URI služby tokenů zabezpečení obsahující tenanta účtu Microsoft `9188040d-6c67-4c5b-b112-36a304b66dad`. |
 |`nbf` |  int, UNIXOVÉ časové razítko | Deklarace identity "nbf" (ne dřív) označuje čas, před kterým musí nebylo přijato tokenů JWT pro zpracování.|
 |`exp` |  int, UNIXOVÉ časové razítko | Deklarace identity "exp" (čas vypršení platnosti) označuje čas vypršení platnosti na nebo za které se token JWT nesmí přijaté ke zpracování.  Je důležité si uvědomit, že prostředek může před tímto časem také – Pokud například změny v ověřování se vyžaduje token zrušení byl zjištěn či odmítnout token. |
-| `c_hash`| Řetězec |Hodnota hash kódu je součástí tokeny typu ID, pouze v případě, že je vydaný ID token s autorizačního kódu OAuth 2.0. Slouží k ověření pravosti autorizační kód. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
-|`at_hash`| Řetězec |Přístup, který je zahrnuta hodnota hash tokenu v ID tokeny, pouze pokud ID token vydaný s přístupovým tokenem OAuth 2.0. Slouží k ověření pravosti tokenu přístupu. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html). |
+| `c_hash`| Řetězec |Hodnota hash kódu je součástí tokeny typu ID, pouze v případě, že je vydaný ID token s autorizačního kódu OAuth 2.0. Slouží k ověření pravosti autorizační kód. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`at_hash`| Řetězec |Přístup, který je zahrnuta hodnota hash tokenu v ID tokeny, pouze pokud ID token vydaný s přístupovým tokenem OAuth 2.0. Slouží k ověření pravosti tokenu přístupu. Podrobnosti o provedení tohoto ověření naleznete v tématu [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Neprůhledný řetězec | Vnitřní deklarace, která používá Azure AD při zaznamenávání dat pro opakované použití tokenu. Třeba ji ignorovat.|
 |`preferred_username` | Řetězec | Primární uživatelské jméno, který reprezentuje uživatele. Může to být e-mailovou adresu, telefonní číslo nebo obecný uživatelské jméno bez zadaného formátu. Jeho hodnota je měnitelné a může v průběhu času měnit. Protože je proměnlivá, tato hodnota se nesmí používat pro autorizační rozhodnutí. `profile` Oboru se vyžaduje aby bylo možné dostávat tato deklarace identity.|
 |`email` | Řetězec | `email` Deklarace identity je k dispozici ve výchozím nastavení pro účet hosta, které mají e-mailovou adresu.  Vaše aplikace můžou požádat o deklarace identity e-mailu pro spravované uživatele (ty ze stejného tenanta jako prostředek) pomocí `email` [volitelnou deklaraci](active-directory-optional-claims.md).  Na koncový bod v2.0, vaše aplikace také můžete vyžádat `email` obor OpenID Connect - není nutné požádat o volitelnou deklaraci a obor získat deklarace identity.  Deklarace identity e-mailu podporuje pouze adresovatelný e-mailu z informací v profilu uživatele. |

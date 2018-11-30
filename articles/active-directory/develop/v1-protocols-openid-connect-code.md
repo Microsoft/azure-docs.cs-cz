@@ -17,16 +17,16 @@ ms.date: 04/17/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a830527f65cdbd485ef57ea43e4564363f3ca98b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3b60a659700b1e464f4d8f70516a2ceaa0f08b6b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967757"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423741"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autorizace přístupu k webovým aplikacím pomocí OpenID Connect a službou Azure Active Directory
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) je jednoduchý identity vrstva postavené na protokol OAuth 2.0. OAuth 2.0 definuje mechanismy získání a použití [ **přístupové tokeny** ](access-tokens.md) pro přístup k chráněným prostředkům, ale nemá definován standardní metody, které poskytují informace o identitě. Ověřování OpenID Connect implementuje jako rozšíření proces autorizace OAuth 2.0. Poskytuje informace o koncový uživatel ve formě [ `id_token` ](id-tokens.md) , který ověřuje identitu uživatele a poskytuje základní profil informace o uživateli.
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) je jednoduchý identity vrstva postavené na protokol OAuth 2.0. OAuth 2.0 definuje mechanismy získání a použití [ **přístupové tokeny** ](access-tokens.md) pro přístup k chráněným prostředkům, ale nemá definován standardní metody, které poskytují informace o identitě. Ověřování OpenID Connect implementuje jako rozšíření proces autorizace OAuth 2.0. Poskytuje informace o koncový uživatel ve formě [ `id_token` ](id-tokens.md) , který ověřuje identitu uživatele a poskytuje základní profil informace o uživateli.
 
 Naše doporučení OpenID Connect se, pokud vytváříte webovou aplikaci, která je hostována na serveru a získat přístup z prohlížeče.
 
@@ -96,7 +96,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Hodnota Nonce |povinné |Hodnota zahrnutý v požadavku, vygenerované aplikaci, která je zahrnutá ve výsledné `id_token` jako deklarace identity. Aplikace pak můžete ověřit tuto hodnotu a zmírnění útoků opětovného přehrání tokenu. Hodnota je obvykle náhodného, jedinečný řetězec nebo identifikátor GUID, který slouží k určení původu žádosti. |
 | redirect_uri |Doporučené |Redirect_uri vaší aplikace, kde můžete odesílat a přijímat aplikací pro žádosti o ověření. Musí odpovídat přesně jeden z redirect_uris, které jste zaregistrovali na portálu, s tím rozdílem, musí být kódování url. |
 | response_mode |nepovinné |Určuje metodu, která se má použít k odeslání výsledný authorization_code zpět do aplikace. Podporované hodnoty jsou `form_post` pro *HTTP post formuláře* a `fragment` pro *fragment adresy URL*. Pro webové aplikace, doporučujeme používat `response_mode=form_post` k zajištění nejvyšší zabezpečení přenosu tokeny do vaší aplikace. Ve výchozím nastavení všech toků, včetně tokentu id_token `fragment`.|
-| state |Doporučené |Hodnota v požadavku, který je vrácený v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](http://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
+| state |Doporučené |Hodnota v požadavku, který je vrácený v odpovědi tokenu. Může být řetězec jakéhokoli obsahu, který chcete. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
 | řádek |nepovinné |Určuje typ interakce s uživatelem, který je požadován. V současné době pouze platné hodnoty jsou "přihlášení", "žádný" a "souhlas". `prompt=login` donutí uživatele k zadání přihlašovacích údajů tohoto požadavku negace jednotného přihlašování. `prompt=none` je opakem – zajišťuje, že uživatel se nezobrazí se žádné interaktivní výzvu jakýmkoli způsobem. Pokud žádost nejde dokončit tiše prostřednictvím jednotného přihlašování, koncový bod vrátí chybu. `prompt=consent` aktivační události OAuth souhlas dialogové okno po přihlášení uživatele, s výzvou uživateli udělit oprávnění k aplikaci. |
 | login_hint |nepovinné |Umožňuje předem vyplnit pole uživatelské jméno nebo e-mailová adresa stránky přihlášení pro uživatele, pokud znáte svoje uživatelské jméno předem. Tento parametr použijte, často aplikace během opětovné ověření, uživatelské jméno s již extrahovat z předchozí přihlášení pomocí `preferred_username` deklarací identity. |
 
@@ -117,7 +117,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | Parametr | Popis |
 | --- | --- |
 | id_token |`id_token` Požadovanou aplikaci. Můžete použít `id_token` ověřit identitu uživatele a zahájit relaci s uživatelem. |
-| state |Hodnota v požadavku, který je také vrácen v odpovědi tokenu. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](http://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
+| state |Hodnota v požadavku, který je také vrácen v odpovědi tokenu. Náhodně generované jedinečná hodnota se obvykle používá pro [prevence útoků proti padělání žádosti více webů](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě, například stránky nebo zobrazení, které byly na. |
 
 ### <a name="error-response"></a>Odpověď na chybu
 

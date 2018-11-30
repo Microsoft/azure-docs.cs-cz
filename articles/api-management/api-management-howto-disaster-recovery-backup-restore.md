@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: e729d163428723d099157ad62d1c89a7ed917900
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 1653cfe0f75914fa321771a70284602cab75330d
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711425"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444864"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
@@ -32,8 +32,8 @@ Tato příručka ukazuje, jak ověřování požadavků Azure Resource Manageru.
 > Proces zálohování a obnovení instance služby API Management pro zotavení po havárii lze použít také pro replikaci instance služby API Management pro scénáře, jako je pracovní.
 >
 > Každá záloha vyprší po 30 dnech. Pokud se pokusíte obnovit zálohu po vypršení doby platnosti 30 dnů, obnovení se nezdaří s `Cannot restore: backup expired` zprávy.
->
->
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="authenticating-azure-resource-manager-requests"></a>Požadavky na ověřování Azure Resource Manageru
 

@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 86a047fe291c7872fe275ba7246b9f3e59044723
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6a0a2dec6beeecca3779f4b047d3b5fe6295a1e6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236819"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495301"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Pomocí rozhraní Apache Spark REST API můžete odesílat vzdálené úlohy ke clusteru HDInsight Spark
 
-Další informace o použití Livy, Apache Spark REST API, které se používá k odeslání vzdálené úlohy do clusteru Azure HDInsight Spark. Podrobnou dokumentaci najdete v tématu [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
+Další informace o použití [Apache Livy](https://livy.incubator.apache.org/), [Apache Spark](https://spark.apache.org/) rozhraní REST API, které se používá k odeslání vzdálené úlohy do clusteru Azure HDInsight Spark. Podrobnou dokumentaci najdete v tématu [ http://livy.incubator.apache.org/ ](http://livy.incubator.apache.org/).
 
 Livy můžete použít ke spuštění interaktivních Spark prostředí nebo odesílání úloh služby batch běžet ve Sparku. Tento článek pojednává o pomocí Livy odesílat úlohy služby batch. Fragmenty kódu v tomto článku používáme nástroj cURL k volání rozhraní REST API ke koncovému bodu Livy Spark.
 
@@ -28,8 +28,8 @@ Livy můžete použít ke spuštění interaktivních Spark prostředí nebo ode
 
 * [cURL](http://curl.haxx.se/). Tento článek používá cURL k předvedení jak provádět volání rozhraní REST API pro cluster HDInsight Spark.
 
-## <a name="submit-a-livy-spark-batch-job"></a>Odeslat úlohu služby batch Livy Spark
-Před odesláním úlohy služby batch, musíte nahrát soubor jar aplikace v úložišti clusteru přidružené ke clusteru. Můžete k tomu použít nástroj příkazového řádku [**AzCopy**](../../storage/common/storage-use-azcopy.md). Existují různé klienty, které vám umožní nahrát data. Další informace najdete v tématu [Nahrání dat pro úlohy Hadoopu do služby HDInsight](../hdinsight-upload-data.md).
+## <a name="submit-an-apache-livy-spark-batch-job"></a>Odeslat úlohu služby batch Apache Livy Spark
+Před odesláním úlohy služby batch, musíte nahrát soubor jar aplikace v úložišti clusteru přidružené ke clusteru. Můžete k tomu použít nástroj příkazového řádku [**AzCopy**](../../storage/common/storage-use-azcopy.md). Existují různé klienty, které vám umožní nahrát data. Můžete najít další informace o nich v [nahrávání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).
 
     curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 
@@ -164,7 +164,7 @@ HDInsight 3.5 clusterů a výše, ve výchozím nastavení, zakázat použití m
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Odesílání úloh Livy pro cluster v rámci virtuální sítě Azure
 
-Pokud se připojíte ke clusteru HDInsight Spark z v rámci virtuální sítě Azure, můžete přímo připojit k Livy v clusteru. V takovém případě je adresa URL pro koncový bod Livy `http://<IP address of the headnode>:8998/batches`. Tady **8998** je port, na kterém poběží Livy hlavního uzlu clusteru. Další informace o přístup ke službám na jiných veřejných portech najdete v tématu [porty používané služby Hadoop v HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
+Pokud se připojíte ke clusteru HDInsight Spark z v rámci virtuální sítě Azure, můžete přímo připojit k Livy v clusteru. V takovém případě je adresa URL pro koncový bod Livy `http://<IP address of the headnode>:8998/batches`. Tady **8998** je port, na kterém poběží Livy hlavního uzlu clusteru. Další informace o přístup ke službám na jiných veřejných portech najdete v tématu [portů používaných služeb Apache Hadoop v HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -182,7 +182,7 @@ Tady jsou některé problémy, které se můžete setkat při používání Livy
 
 ## <a name="next-step"></a>Další krok
 
-* [Dokumentace k Livy REST API](http://livy.incubator.apache.org/docs/latest/rest-api.html)
+* [Dokumentace k rozhraní REST API Apache Livy](http://livy.incubator.apache.org/docs/latest/rest-api.html)
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
 * [Sledování a ladění úloh spuštěných v clusteru Apache Spark v HDInsight](apache-spark-job-debugging.md)
 

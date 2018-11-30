@@ -2,25 +2,21 @@
 title: Azure Data Lake data science návody pomocí U-SQL | Dokumentace Microsoftu
 description: Příklady, které se provedou pomocí U-SQL v Azure Data Lake pro prediktivní analýzy.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 6625a2b1e02801a3adea08fc0e301c56d8db3f1b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 2f01ec6dc97dccbca15c61d4f1a087f6f1a9abe2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49392419"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444218"
 ---
 # <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Azure Data Lake data science návody pomocí U-SQL
 

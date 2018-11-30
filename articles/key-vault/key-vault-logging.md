@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: e86d68107278641e40346327fa3a8cb7059b7d71
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9790cd7c79efa1b64220f9e128de9a3b8eb902c0
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159584"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426940"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vault
 Azure Key Vault je dostupný ve většině oblastí. Další informace najdete na [stránce s cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -265,7 +265,7 @@ Následující tabulka obsahuje seznam operací (operationName) a odpovídajíc�
 
 ## <a id="loganalytics"></a>Použití Log Analytics
 
-Řešení Azure Key Vault v Log Analytics můžete využít ke kontrole protokolů AuditEvent služby Azure Key Vault. Další informace včetně nastavení najdete v tématu [Řešení Azure Key Vault v Log Analytics](../log-analytics/log-analytics-azure-key-vault.md). Tento článek také obsahuje pokyny, pokud je potřeba migrovat z původního řešení Key Vault, které se nabízelo pro Log Analytics ve verzi Preview, kdy jste protokoly nejdřív směrovaly do účtu Azure Storage a potom nakonfigurovali službu Log Analytics, aby je odtud četla.
+Řešení Azure Key Vault v Log Analytics můžete využít ke kontrole protokolů AuditEvent služby Azure Key Vault. Další informace včetně nastavení najdete v tématu [Řešení Azure Key Vault v Log Analytics](../azure-monitor/insights/azure-key-vault.md). Tento článek také obsahuje pokyny, pokud je potřeba migrovat z původního řešení Key Vault, které se nabízelo pro Log Analytics ve verzi Preview, kdy jste protokoly nejdřív směrovaly do účtu Azure Storage a potom nakonfigurovali službu Log Analytics, aby je odtud četla.
 
 ## <a id="next"></a>Další kroky
 Chcete-li používat Azure Key Vault ve webové aplikaci, podívejte se na kurz [Použití Azure Key Vault z webové aplikace](key-vault-use-from-web-application.md).

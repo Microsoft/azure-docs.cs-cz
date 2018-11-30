@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 10a63768550182309f3193b39c2d00992398d190
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 3b3b15db171dc00519c532a229205df96ef29e31
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244555"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316884"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Úvod k virtuálnímu počítači pro datové vědy pro Linux a Windows
 
@@ -108,9 +108,9 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](https://togaware.com/rattle/) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | Ne | Ano (pouze Ubuntu) |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CatBoost](https://tech.yandex.com/catboost/) | Ne | Ano (pouze Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/), [Sparkling Water](https://www.h2o.ai/sparkling-water/), [Deep Water](https://www.h2o.ai/deep-water/) | Ne | Ano (pouze Ubuntu) |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [H2O](https://www.h2o.ai/h2o/), [Sparkling Water](https://www.h2o.ai/sparkling-water/) | Ne | Ano (pouze Ubuntu) |
 | **Nástroje pro hloubkové učení** <br>Všechny nástroje fungují na grafickém procesoru nebo procesoru. |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) (Windows 2016) | Ano | Ano |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | Ano | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow](https://www.tensorflow.org/) | Ano (Windows 2016) | Ano |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Horovod](https://github.com/uber/horovod) | Ne | Ano (Ubuntu) |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Ano (Windows 2016) | Ano|
@@ -138,5 +138,5 @@ Virtuální počítač pro datovou vědu obsahuje mnoho oblíbených nástrojů 
 * Další informace o vytvoření virtuálního počítače pro datovou vědu pro Ubuntu a jeho použití najdete v článku [Zřízení virtuálního počítače pro datovou vědu pro Linux (Ubuntu)](dsvm-ubuntu-intro.md). Další informace o vytvoření virtuálního počítače pro datovou vědu pro CentOS a jeho použití najdete v článku [Zřízení virtuálního počítače pro datovou vědu pro Linux CentOS](linux-dsvm-intro.md).
 * Postup provedení několika běžných úloh vědeckého zpracování dat na virtuálním počítači Linux (v systémech CentOS a Ubuntu) najdete v článku [Datová věda na virtuálním počítači pro datovou vědu pro Linux](linux-dsvm-walkthrough.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Příručka pro vývojáře v R pro Azure](../r-developers-guide.md)

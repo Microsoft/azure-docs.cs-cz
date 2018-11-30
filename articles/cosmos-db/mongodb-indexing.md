@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: a3dadfc4257d43f9df1b93f5d486e5577b7889d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ad04976136fc8db04dbe52bf78bea49a9149e5db
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055307"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312693"
 ---
 # <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Indexování ve službě Azure Cosmos DB: MongoDB API
 
@@ -99,5 +99,5 @@ Předchozí příkaz způsobí odstranění všech dokumentů v kolekci ```db.co
 V současné době je vytváření jedinečných indexů možné pouze v případě, že kolekce neobsahuje žádné dokumenty. Oblíbené nástroje pro migraci MongoDB se pokouší vytvořit jedinečné indexy po importu dat. Pokud chcete tento problém obejít, doporučujeme vytvořit odpovídající kolekce a jedinečné indexy ručně, a nepovolovat nástroj pro migraci (v případě ```mongorestore``` se tohoto chování dosahuje použitím příznaku --noIndexRestore na příkazovém řádku).
 
 ## <a name="next-steps"></a>Další postup
-* [Jak služba Azure Cosmos DB indexuje data?](../cosmos-db/indexing-policies.md)
+* [Jak služba Azure Cosmos DB indexuje data?](../cosmos-db/index-policy.md)
 * [Automatické vypršení platnosti dat v kolekcích Azure Cosmos DB s využitím hodnoty TTL (Time to Live)](../cosmos-db/time-to-live.md)

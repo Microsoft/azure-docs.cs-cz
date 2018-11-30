@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 9402147e2dab7fbf52fc893f339f6f3b8e112377
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 3fd0dfb327e925ecb28a7ca12e03b79c873118dc
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515637"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309340"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -93,6 +93,7 @@ Pro verze operačního systému Windows nižší úrovně, které jsou v místn�
 
 >[!Note] 
 >Pro zaregistrovaná zařízení doporučujeme, abyste vymazání obsahu zařízení k zajištění, že uživatelé nemají přístup k prostředkům. Další informace najdete v tématu [registrovat zařízení pro správu v Intune](https://docs.microsoft.com/intune/deploy-use/enroll-devices-in-microsoft-intune). 
+
 ---
 
 # <a name="azure-ad-join-faq"></a>Nejčastější dotazy k Azure AD Join
@@ -103,6 +104,20 @@ Pro verze operačního systému Windows nižší úrovně, které jsou v místn�
 - Hybridní zařízení připojeno k Azure AD Ujistěte se, že chcete vypnout automatické registrace, aby se naplánovaná úloha nezaregistroval zařízení znovu. Dále otevřete příkazový řádek jako správce a zadejte `dsregcmd.exe /debug /leave`. Alternativně můžete tento příkaz Spustit jako skript v různých zařízeních na zrušení služby hromadně.
 
 - Pro čistě připojeno k Azure AD zařízení, ujistěte se, že jste správcem offline místní účet nebo vytvořit novou, nebudou moct přihlásit pomocí libovolné přihlašovací údaje uživatele Azure AD. Dále přejděte na **nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a klikněte na **odpojit**. Postupujte podle zobrazených výzev a zadejte přihlašovací údaje místního správce, po zobrazení výzvy. Restartujte zařízení provést odpojení.
+
+---
+
+**Otázka: Moje přihlášení k zařízení připojená k Azure AD, která byla odstraněna, nebo zakázaný ve službě Azure AD? ** 
+ **A:** Ano. Windows uložil do mezipaměti přihlašovací možnost povolit, dříve přihlášení uživatelé pro přístup k ploše rychle i bez připojení k síti. Pokud zařízení se odstraní nebo je zakázaný ve službě Azure AD, není znám do zařízení Windows. Takže dříve přihlášení uživatelé můžou dál přístup k ploše s přihlášení uložené v mezipaměti. Ale jak zařízení se odstraní nebo zakázán, uživatelé nemají přístup k prostředkům nechrání podmíněným přístupem na základě zařízení. 
+
+Uživatelé, kteří se ještě nepřihlásili nelze přístupu k zařízení, protože není k dispozici žádné uložené v mezipaměti přihlášení povolený pro ně. 
+
+---
+
+**Otázka: je zakázán nebo je odstraněný přihlášení k zařízení připojených k Azure AD? ** 
+ **A:** Ano, ale pouze po omezenou dobu. Když uživatel se odstranil nebo zakázaný ve službě Azure AD, není okamžitě známé zařízení Windows. Takže dříve přihlášení uživatelé mají přístup k ploše s přihlášení uložené v mezipaměti. Jakmile je zařízení přehled o stavu uživatele (obvykle v méně než 4 hodinami), Windows zablokuje uživatelům přístup k ploše. Jako uživatel se odstraní nebo je zakázaný ve službě Azure AD, se jejich tokeny odvolá, nemají přístup k žádným prostředkům. 
+
+Odstraněné nebo zakázaných uživatelů, kteří dříve nepřihlásili nelze přístup k zařízení, protože není k dispozici žádné uložené v mezipaměti přihlášení povolený pro ně. 
 
 ---
 

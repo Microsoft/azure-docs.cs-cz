@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 5635998eb72f08ddc665793e77008890b2cdb05d
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: bf7f1f58250d94d821e6ec41266b518d7ebe105b
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061309"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427547"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Protokolování diagnostiky pro skupiny zabezpečení sítě
 
@@ -199,7 +199,7 @@ Protokol čítač pravidlo obsahuje informace o každé pravidlo použito pro pr
 ## <a name="view-and-analyze-logs"></a>Zobrazení a analýza protokolů
 
 Další postup zobrazení diagnostických protokolů dat najdete v tématu [přehled diagnostických protokolů Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud budete posílat diagnostická data pro:
-- **Log Analytics**: můžete použít [analýzy skupin zabezpečení sítě](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
+- **Log Analytics**: můžete použít [analýzy skupin zabezpečení sítě](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
 ) řešení pokročilých přehledů. Řešení poskytuje vizualizace pro pravidla NSG, která povolují nebo zakazují provoz na adresu MAC síťového rozhraní na virtuálním počítači.
 - **Účet služby Azure Storage**: Data se zapisují do souboru PT1H.json. Můžete najít:
     - Protokol událostí v následující cestě: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`

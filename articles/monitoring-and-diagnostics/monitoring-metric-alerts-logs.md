@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a8baa67296c721fdda4cb0728e1b68f2e67e217c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 92474bdead021429792f5d51a28ffb7bafc5be2b
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824230"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334240"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Vytvářet upozornění metrik, protokolů ve službě Azure Monitor  
 
@@ -21,10 +21,10 @@ ms.locfileid: "51824230"
 Azure podporuje monitorování [výstrahu typu metrika](monitoring-near-real-time-metric-alerts.md) které má výhody [klasických upozornění](alert-metric-classic.md). Metriky jsou k dispozici pro [velké seznam služeb Azure](monitoring-supported-metrics.md). Tento článek vysvětluje použití podmnožiny (to znamená) pro prostředek - `Microsoft.OperationalInsights/workspaces`. 
 
 Upozornění na metriku můžete použít na oblíbené Log Analytics protokoly extrahovat jako metriky jako součást metriky z protokolů, včetně prostředků v Azure nebo místním. Podporované řešení Log Analytics jsou uvedeny níže:
-- [Čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) u počítačů s Windows a Linuxu
+- [Čítače výkonu](../azure-monitor/platform/data-sources-performance-counters.md) u počítačů s Windows a Linuxu
 - [Záznamy prezenčního signálu služby Agent Health](../azure-monitor/insights/solution-agenthealth.md)
 - [Správa aktualizací](../automation/automation-update-management.md) záznamů
-- [Data události](../log-analytics/log-analytics-data-sources-windows-events.md) protokoly
+- [Data události](../azure-monitor/platform/data-sources-windows-events.md) protokoly
  
 Existuje mnoho výhod pro používání **upozornění metriky pro protokoly** přes na základě dotazu [upozornění protokolů](alert-log.md) v Azure; některé z nich jsou uvedeny níže:
 - Upozornění na metriku nabízejí monitorovací schopností v téměř reálném čase a upozornění metriky pro forky data protokolů ze zdroje protokolu pro zajištění stejné
@@ -47,8 +47,8 @@ Data metriky z oblíbených protokolů je přesměrovaná před zpracováním v 
 Před metriky pro protokoly se shromažďují v Log Analytics data funguje, následující musí být nastavena spuštěné a dostupné:
 1. **Aktivní pracovní prostor Log Analytics**: musí být platné a aktivní pracovní prostor Log Analytics. Další informace najdete v tématu [vytvořit pracovní prostor Log Analytics na webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 2. **Agent je nakonfigurován pro pracovní prostor Log Analytics**: Agent musí být nakonfigurovaná pro virtuální počítače Azure (a/nebo) na místním virtuálním počítačům k odesílání dat do pracovního prostoru Log Analytics používá v dřívějším kroku. Další informace najdete v tématu [Log Analytics – přehled agenta](../azure-monitor/platform/agents-overview.md).
-3. **Je nainstalovaná podporovaných řešení Log Analytics**: řešení Log Analytics by měla být nakonfigurovaná a odesílání dat do pracovního prostoru Log Analytics – podporované řešení jsou [čítače výkonu pro Windows a Linuxu](../log-analytics/log-analytics-data-sources-performance-counters.md), [Záznamy prezenčního signálu služby Agent Health](../azure-monitor/insights/solution-agenthealth.md), [Update management, a [data události](../log-analytics/log-analytics-data-sources-windows-events.md).
-4. **Protokolu analytická řešení, které jsou nakonfigurované k odeslání protokolů**: řešení Log Analytics by měly mít odpovídající požadované protokoly a data na [metriky podporovat pro pracovní prostory Log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces) povolena. Například pro *% dostupné paměti* čítač ho musí být nakonfigurovány v [čítače výkonu](../log-analytics/log-analytics-data-sources-performance-counters.md) řešení první.
+3. **Je nainstalovaná podporovaných řešení Log Analytics**: řešení Log Analytics by měla být nakonfigurovaná a odesílání dat do pracovního prostoru Log Analytics – podporované řešení jsou [čítače výkonu pro Windows a Linuxu](../azure-monitor/platform/data-sources-performance-counters.md), [Záznamy prezenčního signálu služby Agent Health](../azure-monitor/insights/solution-agenthealth.md), [Update management, a [data události](../azure-monitor/platform/data-sources-windows-events.md).
+4. **Protokolu analytická řešení, které jsou nakonfigurované k odeslání protokolů**: řešení Log Analytics by měly mít odpovídající požadované protokoly a data na [metriky podporovat pro pracovní prostory Log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces) povolena. Například pro *% dostupné paměti* čítač ho musí být nakonfigurovány v [čítače výkonu](../azure-monitor/platform/data-sources-performance-counters.md) řešení první.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Konfigurace upozornění na metriku pro protokoly
  upozornění metrik je možné vytvořit a spravovat pomocí webu Azure portal, šablon Resource Manageru, rozhraní REST API, Powershellu a rozhraní příkazového řádku Azure. Protože upozornění metriky pro protokoly, hodnotu typu variant upozornění na metriku – po dokončení požadavků, vytvářet upozornění na metriku pro protokoly pro zadaný pracovní prostor Log Analytics. Všechny vlastnosti a funkce [ upozornění na metriku](monitoring-near-real-time-metric-alerts.md) bude možné použít k upozornění na metriku pro protokoly, i, včetně datové části schéma, příslušné kvóty a ceny se fakturuje.
@@ -58,8 +58,7 @@ Podrobné informace a ukázky – naleznete v tématu [vytváření a Správa up
 - Signál, zvolená pro upozornění metriky pro vybraný *pracovní prostor Log Analytics* je typu **metrika**
 - Filtr pro konkrétní podmínky nebo prostředku pomocí filtrů dimenzí; metriky pro protokoly jsou multidimenzionální
 - Při konfiguraci *logiku signálů*, jediná výstraha je možné vytvořit rozložit více hodnot dimenzí (například počítač)
-- Pokud **není** pomocí webu Azure portal k vytvoření upozornění metriky pro vybrané *pracovní prostor Log Analytics*; potom musí uživatel ručně nejprve vytvořit explicitní pravidla pro převod data protokolu na metriku pomocí [Azure Monitor – pravidla naplánovaného dotazu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules
-).
+- Pokud **není** pomocí webu Azure portal k vytvoření upozornění metriky pro vybrané *pracovní prostor Log Analytics*; potom musí uživatel ručně nejprve vytvořit explicitní pravidla pro převod data protokolu na metriku pomocí [Azure Monitor – pravidla naplánovaného dotazu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules).
 
 > [!NOTE]
 > Při vytváření upozornění na metriku pro pracovní prostor Log Analytics prostřednictvím webu Azure portal – odpovídající pravidlo pro převod dat protokolu do metrika prostřednictvím [Azure Monitor – naplánované pravidla dotazu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) se automaticky vytvoří na pozadí,  *bez nutnosti jakéhokoli zásahu uživatele nebo akce*. Upozornění na metriku pro vytvoření protokoly pomocí znamená, že kromě webu Azure portal, najdete v části [prostředků šablony pro upozornění metriky pro protokoly](#resource-template-for-metric-alerts-for-logs) věnované ukázkové prostředky vytváření ScheduledQueryRule na základě protokolu pro pravidlo převod metriky dřív, než upozornění na metriku Vytvoření - else nebude žádná data pro upozornění metriky na protokoly vytvořené.

@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 8941a7332c19b1a9d5c04abb0e4b03ae83e98016
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 143df8a8c82e84b193bdb48a3d41682fca19156b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260478"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315423"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Použití Apache Kafka v HDInsight pomocí Azure IoT Hub
 
-Další informace o použití [Kafka připojení Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) konektor pro přesun dat mezi Apache Kafka v HDInsight a Azure IoT Hub. V tomto dokumentu se dozvíte, jak pro spuštění konektoru služby IoT Hub z hraniční uzel v clusteru.
+Další informace o použití [Apache Kafka připojení Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) konektor pro přesun dat mezi Apache Kafka v HDInsight a Azure IoT Hub. V tomto dokumentu se dozvíte, jak pro spuštění konektoru služby IoT Hub z hraniční uzel v clusteru.
 
-Rozhraní API systému Kafka připojení umožňuje implementovat konektory, které průběžně načítat data do Kafka nebo zápis dat z Kafka do jiného systému. [Kafka připojení Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) je konektor, který získává data ze služby Azure IoT Hub do Kafka. To může také nabízet data z Kafka do služby IoT Hub. 
+Rozhraní API systému Kafka připojení umožňuje implementovat konektory, které průběžně načítat data do Kafka nebo zápis dat z Kafka do jiného systému. [Apache Kafka připojení Azure IoT Hub](https://github.com/Azure/toketi-kafka-connect-iothub) je konektor, který získává data ze služby Azure IoT Hub do Kafka. To může také nabízet data z Kafka do služby IoT Hub. 
 
 Při přijetí ze služby IoT Hub, můžete použít __zdroj__ konektoru. Při nabízení do služby IoT Hub, můžete použít __jímky__ konektoru. Konektor služby IoT Hub poskytuje zdroj a jímku konektory.
 
@@ -84,7 +84,7 @@ Další informace o rozhraní API pro připojení najdete v tématu [ https://ka
 >
 >    Tento příkaz vytvoří soubor s názvem `kafka-connect-iothub-assembly_2.11-0.6.jar` v `target/scala-2.11` adresář pro projekt.
 
-## <a name="configure-kafka"></a>Konfigurace systému Kafka
+## <a name="configure-apache-kafka"></a>Konfigurace platformy Apache Kafka
 
 Z připojení SSH k hraničnímu uzlu použijte následující postup ke konfiguraci Kafka pro spuštění konektoru v samostatném režimu:
 
@@ -111,7 +111,7 @@ Z připojení SSH k hraničnímu uzlu použijte následující postup ke konfigu
 
     `wn0-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092,wn1-kafka.w5ijyohcxt5uvdhhuaz5ra4u5f.ex.internal.cloudapp.net:9092`
 
-4. Získáte adresu uzly Zookeeper. Existuje několik uzly Zookeeper jsou v clusteru, ale potřebujete odkazovat na jeden nebo dva. Pokud chcete získat adresu dva uzly Zookeeper, použijte následující příkaz:
+4. Získání adresy uzlů Apache Zookeeper. Existuje několik uzly Zookeeper jsou v clusteru, ale potřebujete odkazovat na jeden nebo dva. Pokud chcete získat adresu dva uzly Zookeeper, použijte následující příkaz:
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -335,7 +335,7 @@ K odesílání zpráv prostřednictvím konektoru použijte následující kroky
     > [!WARNING]
     > Protože se jedná nové připojení SSH `$KAFKABROKERS` proměnné neobsahuje žádné informace. Ji nastavit, použijte jednu z následujících metod:
     >
-    > * Postupujte podle prvních tří kroků v [konfiguraci Kafka](#configure-kafka) oddílu.
+    > * Postupujte podle prvních tří kroků v [konfigurace Apache Kafka](#configure-apache-kafka) oddílu.
     > * Použití `echo $KAFKABROKERS` z předchozí připojení SSH k získání hodnoty a potom nahraďte `$KAFKABROKERS` v následujícím příkazu se skutečnými hodnotami.
 
     ```bash
@@ -367,7 +367,7 @@ Další informace o použití konektoru jímky, najdete v části [ https://gith
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto dokumentu jste zjistili, jak používat rozhraní API systému Kafka připojení ke spuštění konektoru IoT Kafka v HDInsight. Zjistit další způsoby, jak pracovat s využitím Kafka pomocí následujících odkazů:
+V tomto dokumentu jste zjistili, jak použít rozhraní Apache Kafka připojení API spuštění konektoru IoT Kafka v HDInsight. Zjistit další způsoby, jak pracovat s využitím Kafka pomocí následujících odkazů:
 
-* [Použití Apache Sparku se systémem Kafka ve službě HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Použití Apache Stormu se systémem Kafka ve službě HDInsight](../hdinsight-apache-storm-with-kafka.md)
+* [Použití Apache Sparku s využitím Apache Kafka v HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Použití Apache Stormu s Apache Kafka v HDInsight](../hdinsight-apache-storm-with-kafka.md)

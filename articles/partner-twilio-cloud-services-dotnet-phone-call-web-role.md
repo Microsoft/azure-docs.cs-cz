@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 83f648b67ae4f8e6fb964d82c245f1c7ba475542
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: e7cf7518a20f1901e3347350f090c9a8588a7a7c
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568535"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422911"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak telefonování pomocí Twilio ve webové roli v Azure
 Tato příručka ukazuje, jak se k volání z webové stránky hostované v Azure použít Twilio. Výsledné aplikace vyzve uživatele k volání daného čísla, zpráva, ujistěte se, jak je znázorněno na následujícím snímku obrazovky.
@@ -29,7 +29,7 @@ Tato příručka ukazuje, jak se k volání z webové stránky hostované v Azur
 ## <a name="twilio-prereqs"></a>Požadavky
 Budete muset následujícím postupem použít kód v tomto tématu:
 
-1. Získání účtu Twilio a ověřování tokenů z [Twilio konzoly][twilio_console]. Abyste mohli začít s platformou Twilio, zaregistrujte se na [ https://www.twilio.com/try-twilio ] [ try_twilio]. Můžete si vyzkoušet ceny na [ http://www.twilio.com/pricing ] [ twilio_pricing]. Informace o rozhraní API poskytovaných Twilio, naleznete v tématu [ http://www.twilio.com/voice/api ] [ twilio_api].
+1. Získání účtu Twilio a ověřování tokenů z [Twilio konzoly][twilio_console]. Abyste mohli začít s platformou Twilio, zaregistrujte se na [ https://www.twilio.com/try-twilio ] [ try_twilio]. Můžete si vyzkoušet ceny na [ https://www.twilio.com/pricing ] [ twilio_pricing]. Informace o rozhraní API poskytovaných Twilio, naleznete v tématu [ https://www.twilio.com/voice/api ] [ twilio_api].
 2. Přidat *knihovny Twilio .NET* pro vaši webovou roli. Zobrazit **Twilio knihovny přidat do projektu webové role**dále v tomto tématu.
 
 Měli byste se seznámit s vytvářením základní [webová Role na Azure][azure_webroles_get_started].
@@ -126,7 +126,7 @@ namespace WebRole1
                 // Create a URL using the Twilio message and the user-entered
                 // text. You must replace spaces in the user's text with '%20'
                 // to make the text suitable for a URL.
-                var url = $"http://twimlets.com/message?Message%5B0%5D={myMessage.Replace(" ", "%20")}";
+                var url = $"https://twimlets.com/message?Message%5B0%5D={myMessage.Replace(" ", "%20")}";
                 var twimlUri = new Uri(url);
 
                 // Display the endpoint, API version, and the URL for the message.
@@ -148,7 +148,7 @@ Při volání a koncový bod Twilio, verze rozhraní API a stav volání se zobr
 
 ![Azure volání odpovědi HTTP pomocí platformy Twilio a ASP.NET][twilio_dotnet_basic_form_output]
 
-Další informace o TwiML najdete [ http://www.twilio.com/docs/api/twiml ] [ twiml]. Další informace o &lt;Say&gt; a ostatní operace Twilio lze nalézt v [ http://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
+Další informace o TwiML najdete [ https://www.twilio.com/docs/api/twiml ] [ twiml]. Další informace o &lt;Say&gt; a ostatní operace Twilio lze nalézt v [ https://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
 
 ## <a id="nextsteps"></a>Další kroky
 Tento kód byl poskytnut zobrazit základní funkce s použitím Twilio webovou roli ASP.NET v Azure. Před nasazením v produkčním prostředí do Azure, můžete přidat další zpracování chyb nebo jiné funkce. Příklad:
@@ -162,15 +162,15 @@ Tento kód byl poskytnut zobrazit základní funkce s použitím Twilio webovou 
 * [Postup použití Twilia pro hlasové hovory a SMS možnosti z Azure](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console
-[twilio_pricing]: http://www.twilio.com/pricing
-[try_twilio]: http://www.twilio.com/try-twilio
-[twilio_api]: http://www.twilio.com/voice/api
+[twilio_pricing]: https://www.twilio.com/pricing
+[try_twilio]: https://www.twilio.com/try-twilio
+[twilio_api]: https://www.twilio.com/voice/api
 [verify_phone]: https://www.twilio.com/console/phone-numbers/verified
 
 [twilio_dotnet_basic_form]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form.png
 [twilio_dotnet_basic_form_output]: ./media/partner-twilio-cloud-services-dotnet-phone-call-web-role/WA_twilio_dotnet_basic_form_output.png
 
-[twiml]: http://www.twilio.com/docs/api/twiml
+[twiml]: https://www.twilio.com/docs/api/twiml
 
 
 
@@ -181,10 +181,10 @@ Tento kód byl poskytnut zobrazit základní funkce s použitím Twilio webovou 
 [howto_sql_azure_dotnet]: https://www.windowsazure.com/develop/net/how-to-guides/sql-database/
 
 
-[twilio_docs_security]: http://www.twilio.com/docs/security
-[twilio_docs]: http://www.twilio.com/docs
-[twilio_say]: http://www.twilio.com/docs/api/twiml/say
+[twilio_docs_security]: https://www.twilio.com/docs/security
+[twilio_docs]: https://www.twilio.com/docs
+[twilio_say]: https://www.twilio.com/docs/api/twiml/say
 
 
-[azure_runtime_ref_dotnet]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
+[azure_runtime_ref_dotnet]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
 [azure_webroles_get_started]: https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-get-started

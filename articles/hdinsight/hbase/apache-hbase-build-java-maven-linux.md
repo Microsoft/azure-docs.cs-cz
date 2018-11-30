@@ -3,24 +3,24 @@ title: Klient HBase Javy – Azure HDInsight
 description: Zjistěte, jak sestavit aplikaci Apache HBase založené na jazyce Java a pak ji nasadit do HBase v Azure HDInsight pomocí nástroje Apache Maven.
 services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/30/2018
-ms.author: hrasheed
-ms.openlocfilehash: 677714487aac6e25a0505cce978792c76bb1cee4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/27/2018
+ms.openlocfilehash: 721e37349b406705a2cdfb52c64b5796cb590d78
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016076"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445647"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Apache HBase v Javě
 
 Zjistěte, jak vytvořit [Apache HBase](http://hbase.apache.org/) aplikace v Javě. Potom s použitím aplikace s HBase v Azure HDInsight.
 
-Kroky v tomto dokumentu pomocí [Maven](http://maven.apache.org/) vytvořte a sestavte projekt. Maven je software, řízení projektů a porozumění nástroj, který vám umožní vytvářet software, dokumentaci a sestav pro projekty Java.
+Kroky v tomto dokumentu pomocí [Apache Maven](https://maven.apache.org/) vytvořte a sestavte projekt. Maven je software, řízení projektů a porozumění nástroj, který vám umožní vytvářet software, dokumentaci a sestav pro projekty Java.
 
 > [!NOTE]
 > Kroky v tomto dokumentu se jako poslední byly testovány s HDInsight 3.6.
@@ -35,9 +35,9 @@ Kroky v tomto dokumentu pomocí [Maven](http://maven.apache.org/) vytvořte a se
     > [!NOTE]
     > HDInsight verze 3.5 nebo novější vyžaduje Java 8. Starší verze systému HDInsight vyžadují Java 7.
 
-* [Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
-* [Cluster Azure HDInsight založených na Linuxu s HBase](apache-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
+* [Cluster Azure HDInsight založených na Linuxu s Apache HBase](apache-hbase-tutorial-get-started-linux.md#create-apache-hbase-cluster)
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
@@ -59,7 +59,7 @@ Kroky v tomto dokumentu pomocí [Maven](http://maven.apache.org/) vytvořte a se
    * **pom.xml**: The Model objektu projektu ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
    * **src**: adresář obsahující **main/java/com/microsoft/příklady** adresáře, kde můžete vytvářet aplikace.
 
-3. Odstranit `src/test/java/com/microsoft/examples/apptest.java` souboru. Není možné použít v tomto příkladu.
+3. Odstranit `src/test/java/com/microsoft/examples/apptest.java` souboru. Není použit v tomto příkladu.
 
 ## <a name="update-the-project-object-model"></a>Aktualizace objektu modelu projektu
 
@@ -81,9 +81,9 @@ Kroky v tomto dokumentu pomocí [Maven](http://maven.apache.org/) vytvořte a se
     Tato část znamená, že projekt měl **hbase-client** a **phoenix core** komponenty. V době kompilace jsou tyto závislosti stáhnout z úložiště Maven výchozí. Můžete použít [vyhledávání centrálního úložiště Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) získat další informace o této závislosti.
 
    > [!IMPORTANT]
-   > Číslo verze klienta hbase musí odpovídat verzi HBase, který je součástí vašeho clusteru HDInsight. V následující tabulce můžete najít na správné číslo verze.
+   > Číslo verze klienta hbase musí odpovídat verzi Apache HBase, který je součástí vašeho clusteru HDInsight. V následující tabulce můžete najít na správné číslo verze.
 
-   | Verze clusteru HDInsight | HBase verze se má použít |
+   | Verze clusteru HDInsight | Apache HBase verze se má použít |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
    | 3.3, 3.4, 3.5 a 3.6 |1.1.2 |
@@ -363,7 +363,7 @@ Kroky v tomto dokumentu pomocí [Maven](http://maven.apache.org/) vytvořte a se
 
 ## <a name="upload-the-jar-and-run-jobs-ssh"></a>Nahrát soubor JAR a spouštět úlohy (SSH)
 
-Následující kroky použijte `scp` zkopírovat soubor JAR k primárnímu hlavnímu uzlu vaše HBase v clusteru HDInsight. `ssh` Příkazu se pak použije k připojení ke clusteru a spuštění příkladu přímo na hlavní uzel.
+Následující kroky použijte `scp` zkopírovat soubor JAR k primárnímu hlavnímu uzlu vaše řešení Apache HBase v clusteru HDInsight. `ssh` Příkazu se pak použije k připojení ke clusteru a spuštění příkladu přímo na hlavní uzel.
 
 1. Pokud chcete nahrát soubor jar do clusteru, použijte následující příkaz:
 
@@ -412,7 +412,7 @@ Následující kroky použijte `scp` zkopírovat soubor JAR k primárnímu hlavn
 
 ## <a name="upload-the-jar-and-run-jobs-powershell"></a>Nahrát soubor JAR a spouštět úlohy (PowerShell)
 
-Následující kroky soubor JAR odešlete do výchozího úložiště pro HBase cluster pomocí Azure Powershellu. HDInsight rutiny se použije pro vzdálené spuštění příkladů.
+V následujících krocích používá prostředí Azure PowerShell k nahrání do výchozího úložiště pro váš cluster Apache HBase soubor JAR. HDInsight rutiny se použije pro vzdálené spuštění příkladů.
 
 1. Po instalaci a konfiguraci prostředí Azure PowerShell vytvořte soubor s názvem `hbase-runner.psm1`. Jako obsah souboru použijte následující text:
 
@@ -683,4 +683,4 @@ __Z prostředí Azure PowerShell__:
 
 ## <a name="next-steps"></a>Další postup
 
-[Další informace o použití SQuirreL SQL s HBase](apache-hbase-phoenix-squirrel-linux.md)
+[Další informace o použití s Apache HBase SQuirreL SQL](apache-hbase-phoenix-squirrel-linux.md)

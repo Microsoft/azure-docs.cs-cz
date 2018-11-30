@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2018
 ms.author: rkarlin
-ms.openlocfilehash: a6bfc5cc577a60b4f1a89b05089af201e024f2dd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5129ea20dcf6c866d5391a6a3aad5c54a6fa81af
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297668"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313067"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade na Security Center úrovně Standard pro zvýšení zabezpečení
 Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami pro úlohy běžící v Azure, na místních systémech a v jiných cloudech. Poskytuje přehled a kontrolu nad hybridními cloudovými úlohami aktivní ochrany, které sníží vaši zranitelnost vůči hrozbám a inteligentního zjišťování, které vám pomůžou udržet krok s rychle vyvíjejícími se kybernetickými útoky.
@@ -28,7 +28,8 @@ Azure Security Center zajišťuje jednotnou správu zabezpečení a pokročilou 
 Security Center se nabízí ve dvou úrovních:
 
 - **Free** úroveň se automaticky zapnulo Všechna předplatná Azure a poskytuje užitečná doporučení zabezpečení k ochraně vašich prostředků Azure, zásady zabezpečení a nepřetržité posuzování zabezpečení.
-- **Standardní** úroveň rozšiřuje možnosti na úrovni Free pro úlohy běžící v soukromé i jinými veřejnými cloudy, poskytuje jednotné bezpečnostní správu a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Úroveň Standard přidává také upřesnit hrozeb funkce detekce, která používá integrované analýzy chování a strojové učení k identifikaci útoků a zneužití nultého dne, řízení přístupu a aplikací a snižte tak vystavení útokům na síť a malware, a Další. Úroveň Standard je po dobu prvních 60 dní zdarma.
+- **Standardní** úroveň rozšiřuje možnosti na úrovni Free pro úlohy běžící v soukromé i jinými veřejnými cloudy, poskytuje jednotné bezpečnostní správu a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Úroveň Standard přidává také upřesnit hrozeb funkce detekce, která používá integrované analýzy chování a strojové učení k identifikaci útoků a zneužití nultého dne, řízení přístupu a aplikací a snižte tak vystavení útokům na síť a malware, a Další. Úroveň Standard je po dobu prvních 60 dní zdarma. Security Center úrovně Standard podporuje prostředky Azure, včetně virtuálních počítačů, služby App Service a serverů SQL. Pokud máte v Azure Security Center úrovně Standard můžete zrušit podporu na základě typu prostředku. 
+
 
 Další informace najdete v Centru zabezpečení v [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -45,7 +46,7 @@ Pokud chcete získat na úrovni Standard:
 4. Vyberte **standardní** k upgradu.
 5. Klikněte na **Uložit**.
 
-![Incident zabezpečení][1]
+![Ceny Security Center](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
 > Pokud chcete povolit všechny funkce Security Center, musíte použít cenovou úroveň pro předplatné nebo skupinu prostředků obsahující příslušný virtuální počítače Standard. Konfigurace ceny pro pracovní prostor není povoleno pouze v přístup podle potřeby, adaptivní řízení aplikací a zjištění sítě pro prostředky Azure.

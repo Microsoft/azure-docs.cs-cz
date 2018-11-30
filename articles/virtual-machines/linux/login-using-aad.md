@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 8bf87f9d1d1ab6da4b034890f1fbe058199eca41
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4f86dee539e3cc5a90db828ed11dbd225a00555d
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007130"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334631"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -39,7 +39,7 @@ Existuje mnoho výhod používání ověřování Azure AD k přihlášení do v
 
 - **Bezproblémová spolupráce:** řízení přístupu With Role-Based (RBAC), můžete určit, kdo může přihlásit k daného virtuálního počítače jako běžný uživatel nebo s oprávněním správce. Když uživatelé připojit nebo opustit váš tým, můžete aktualizovat zásady RBAC pro virtuální počítač k udělení přístupu podle potřeby. Toto prostředí je mnohem jednodušší než by bylo nutné procházení virtuálních počítačů odebrat nepotřebné veřejné klíče SSH. Když zaměstnanci opustí organizaci a jeho uživatelský účet je zakázán nebo odebrány ze služby Azure AD, že už nebude mít přístup k vašim prostředkům.
 
-### <a name="supported-azure-regions-and-linux-distributions"></a>Podporované oblasti Azure a distribucí systému Linux
+## <a name="supported-azure-regions-and-linux-distributions"></a>Podporované oblasti Azure a distribucí systému Linux
 
 Následující distribucí systému Linux jsou aktuálně podporované ve verzi preview tato funkce:
 

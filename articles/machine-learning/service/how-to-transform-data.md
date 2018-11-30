@@ -10,30 +10,30 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 76b417d1592671006d3d5cfa2363e306e4db48fd
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 988301f24f710a3e29fad1254d405501166e8a4e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263029"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309789"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
-[Sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk) nabízí různé transformace metody můžete vyčistit svá data. Tyto metody usnadňují přidání sloupce, odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty.
+V tomto článku se dozvíte, načítání dat pomocí různých metod [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk). Sada SDK nabízí funkce se dají jednoduše přidat sloupce, odfiltrovat nežádoucí řádky nebo sloupce a dává chybějící hodnoty.
 
-Aktuálně jsou dostupné metody pro následující úlohy:
+Aktuálně jsou dostupné funkce pro následující úlohy:
+
 - [Přidání sloupce pomocí výrazu](#column)
 - [Dává chybějící hodnoty](#impute-missing-values)
 - [Odvození sloupce podle příkladu](#derive-column-by-example)
 - [Filtrování](#filtering)
 - [Vlastních transformací Pythonu](#custom-python-transforms)
 
-<a name=column>
 ## <a name="add-column-using-an-expression"></a>Přidání sloupce pomocí výrazu
 
-Obsahuje sadu SDK pro Azure Machine Learning Data Prep `substring` výrazy můžete použít k výpočtu hodnoty z existujících sloupců a vložte tuto hodnotu v novém sloupci. V tomto příkladu jsme budete načtení dat a znovu zkusíte přidat sloupce pro vstupní data.
+Obsahuje sadu SDK pro Azure Machine Learning Data Prep `substring` výrazy můžete použít k výpočtu hodnoty z existujících sloupců a vložte tuto hodnotu v novém sloupci. V tomto příkladu načtěte data a pokusu o přidání sloupců do vstupní data.
 
-```
+```python
 import azureml.dataprep as dprep
 
 # loading data
@@ -48,10 +48,9 @@ dataflow.head(3)
 |2|10140270|HY329253|07/05/2015 11:20:00 PM|121XX LOŽIT FRONT|0486|BATERIE|JEDNODUCHÉ DOMÁCÍ BATERIE|ULICE|false (nepravda)|true (pravda)|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
 
 
+Použití `substring(start, length)` výraz, který se extrahovat předponu ze sloupce číslo případ a vložit tento řetězec v novém sloupci `Case Category`. Předání `substring_expression` proměnnou `expression` parametr vytvoří nový počítaný sloupec, který provádí výraz u jednotlivých záznamů.
 
-Použití `substring(start, length)` výraz, který se extrahovat předponu ze sloupce číslo případ a vložit tato data v novém sloupci: kategorie případu.
-
-```
+```python
 substring_expression = dprep.col('Case Number').substring(0, 2)
 case_category = dataflow.add_column(new_column_name='Case Category',
                                     prior_column='Case Number',
@@ -67,8 +66,9 @@ case_category.head(3)
 
 
 
-Použití `substring(start)` výraz k extrahování pouze číslo z případ číslo sloupce, pak ho převést na číselný datový typ a vložit ho do nového sloupce: ID případu.
-```
+Použití `substring(start)` výraz k extrahování pouze číslo z případ číslo sloupce a vytvoří nový sloupec. Převod na číselný datový typ pomocí `to_number()` fungovat a předat jako parametr řetězec název sloupce.
+
+```python
 substring_expression2 = dprep.col('Case Number').substring(2)
 case_id = dataflow.add_column(new_column_name='Case Id',
                               prior_column='Case Number',
@@ -85,9 +85,9 @@ case_id.head(3)
 
 ## <a name="impute-missing-values"></a>Dává chybějící hodnoty
 
-Sady SDK pro Azure Machine Learning Data Prep můžete dává chybějící hodnoty v zadaných sloupcích. V tomto příkladu se načíst hodnoty zeměpisné šířky a délky a potom se pokuste dává chybějící hodnoty ve vstupních datech.
+Sady SDK můžete dává chybějící hodnoty v zadaných sloupcích. V tomto příkladu načíst hodnoty zeměpisné šířky a délky a potom se pokuste dává chybějící hodnoty ve vstupních datech.
 
-```
+```python
 import azureml.dataprep as dprep
 
 # loading input data
@@ -105,10 +105,11 @@ df.head(5)
 |3|10139885|false (nepravda)|41.902152|-87.754883|
 |4|10140379|false (nepravda)|41.885610|-87.657009|
 
-Třetí záznamu chybí hodnoty zeměpisné šířky a délky. Chcete-li dává tyto chybějící hodnoty, můžete použít `ImputeMissingValuesBuilder` další oprava programu. To dává sloupce s buď výpočtová `MIN`, `MAX`, nebo `MEAN` hodnotu nebo `CUSTOM` hodnotu. Když `group_by_columns` není zadána, chybějící hodnoty budou uložené ve skupině s `MIN`, `MAX`, a `MEAN` počítá na skupinu.
+Třetí záznamu chybí hodnoty zeměpisné šířky a délky. Dává tyto chybějící hodnoty, použijte `ImputeMissingValuesBuilder` další výraz pevné. To dává sloupce s buď výpočtová `MIN`, `MAX`, `MEAN` hodnotu, nebo `CUSTOM` hodnotu. Když `group_by_columns` není zadána, chybějící hodnoty budou uložené ve skupině s `MIN`, `MAX`, a `MEAN` počítá na skupinu.
 
-Za prvé, rychle zkontrolovat, `MEAN` hodnota zeměpisné šířky sloupce.
-```
+Zkontrolujte `MEAN` hodnotu pomocí zeměpisné šířky sloupce `summarize()` funkce. Tato funkce přijímá pole sloupců `group_by_columns` parametr k určení úrovně agregace. `summary_columns` Parametr přijímá `SummaryColumnsValue` volání. Toto volání funkce určuje aktuální název sloupce, nový název počítaného pole a `SummaryFunction` provádět.
+
+```python
 df_mean = df.summarize(group_by_columns=['Arrest'],
                        summary_columns=[dprep.SummaryColumnsValue(column_id='Latitude',
                                                                  summary_column_name='Latitude_MEAN',
@@ -121,10 +122,11 @@ df_mean.head(1)
 |-----|-----|----|
 |0|false (nepravda)|41.878961|
 
-`MEAN` Hodnotu meze vypadá dobře, takže ho můžete dává zeměpisná šířka. Chybí hodnota délky jsme se to dává s 42 na základě externí znalostí.
+`MEAN` Vypadá přesná hodnota meze, použijte `ImputeColumnArguments` funkce dává ji. Tato funkce přijme `column_id` řetězce a `ReplaceValueFunction` k určení typu impute. Pro chybějící hodnoty zeměpisné délky dává s 42 na základě externí znalostí.
 
+Dává kroky je možné zřetězit do `ImputeMissingValuesBuilder` objektu pomocí funkce Tvůrce `impute_missing_values()`. `impute_columns` Parametr přijímá pole `ImputeColumnArguments` objekty. Volání `learn()` funkci pro uložení impute kroky a použijte na objektu toku dat pomocí `to_dataflow()`.
 
-```
+```python
 # impute with MEAN
 impute_mean = dprep.ImputeColumnArguments(column_id='Latitude',
                                           impute_function=dprep.ReplaceValueFunction.MEAN)
@@ -152,20 +154,22 @@ df_imputed.head(5)
 |4|10140379|false (nepravda)|41.885610|-87.657009|
 
 Jak je znázorněno výše výsledek, chybějící šířky byl splněn s `MEAN` hodnotu `Arrest=='false'` skupiny. Chybějící délky byl splněn s 42.
-```
+
+```python
 imputed_longitude = df_imputed.to_pandas_dataframe()['Longitude'][2]
 assert imputed_longitude == 42
 ```
 
 ## <a name="derive-column-by-example"></a>Odvození sloupce podle příkladu
-Jeden z pokročilejší nástroje v sadě SDK pro Azure Machine Learning Data Prep je schopnost odvodit sloupců pomocí příklady požadované výsledky. Díky tomu můžete poskytnout sadu SDK příklad tak může také generovat kód pro dosažení zamýšlený odvození.
 
-```
+Jeden z pokročilejší nástroje v sadě SDK pro Azure Machine Learning Data Prep je schopnost odvodit sloupců pomocí příklady požadovaných výsledků. Díky tomu můžete poskytnout sadu SDK příklad tak může také generovat kód pro dosažení zamýšlený transformace.
+
+```python
 import azureml.dataprep as dprep
 dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
-df = dataflow.head(10)
-df
+dataflow.head(10)
 ```
+
 ||DATE (Datum)|REPORTTYPE (Typ zprávy)|HOURLYDRYBULBTEMPF (Teplota suchého teploměru ve stupních Fahrenheita)|HOURLYRelativeHumidity (Hodinová relativní vlhkost)|HOURLYWindSpeed (Hodinová rychlost větru)|
 |----|----|----|----|----|----|
 |0|1/1/2015 0:54|FM-15|22|50|10|
@@ -179,11 +183,9 @@ df
 |8|1/1/2015 6:54|FM-15|23|50|14|
 |9|1/1/2015 7:00|FM-12|23|50|14|
 
-Jak je vidět, tento soubor je poměrně jednoduché. Ale předpokládat, že je potřeba připojit tento soubor s datovou sadou, kde jsou data a času ve formátu "10. března 2018 | 2: 00 – 4: 00 ".
+Předpokládejme, že je potřeba připojit tento soubor s datovou sadou, kde jsou data a času ve formátu "10. března 2018 | 2: 00 – 4: 00 ".
 
-Transformujte data na obrazec, který potřebujete.
-
-```
+```python
 builder = dataflow.builders.derive_column_by_example(source_columns=['DATE'], new_column_name='date_timerange')
 builder.add_example(source_data=df.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
 builder.preview() 
@@ -202,17 +204,14 @@ builder.preview()
 |8|1/1/2015 6:54|1. ledna 2015 6: 00 - 8: 00|
 |9|1/1/2015 7:00|1. ledna 2015 6: 00 - 8: 00|
 
-Výše uvedený kód nejprve vytvoří tvůrce odvozené sloupce. Poskytuje celou řadu zdrojové sloupce, které byste měli zvážit (`DATE`) a název pro nový sloupec, který chcete přidat.
+Výše uvedený kód nejprve vytvoří tvůrce odvozené sloupce. Zadejte pole zdrojové sloupce, které byste měli zvážit (`DATE`) a název pro nový sloupec, který chcete přidat. Jako v prvním příkladu předejte ve druhém řádku (index 1) a poskytují očekávaná hodnota pro odvozených sloupců.
 
-Pak, jako v prvním příkladu předané ve druhém řádku (index 1) a dala očekávaná hodnota pro odvozených sloupců.
-
-Nakonec jste volali `builder.preview()` a lze zobrazit odvozené sloupce vedle zdrojového sloupce. Formát vypadá dobře, ale hodnoty se zobrazí jenom pro stejné datum "1. ledna 2015".
+Nakonec proveďte volání `builder.preview()` a lze zobrazit odvozené sloupce vedle zdrojového sloupce. Formát zdá se, že správný, ale hodnoty se zobrazí jenom pro stejné datum "1. ledna 2015".
 
 Nyní, předejte počet řádků, které chcete `skip` z horní části zobrazte řádků níže.
 
 ```
-preview_df = builder.preview(skip=30)
-preview_df
+builder.preview(skip=30)
 ```
 
 ||DATE (Datum)|date_timerange|
@@ -228,14 +227,11 @@ preview_df
 |38|11/2/2015 4:00|1. února 2015 4: 00 - 6: 00|
 |39|11/2/2015 4:54|1. února 2015 4: 00 - 6: 00|
 
-Zde můžete zobrazit problém s generovaného programu: založené výhradně na jeden příklad, který jste zadali výše, program odvodit zvolili analyzovat datum jako "Den/měsíc/rok", což je nechcete v tomto případě.
+Tady najdete v článku o problém s generovaného programu. Založené výhradně na jeden příklad, který jste zadali výše, program odvodit zvolili analyzovat datum jako "Den/měsíc/rok", což je nechcete v tomto případě. Chcete tento problém vyřešit, zadejte jiný příklad použití `add_example()` na fungovat `builder` proměnné.
 
-Chcete-li vyřešit tento problém, budete muset zadat další příklad.
-
-```
+```python
 builder.add_example(source_data=preview_df.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
-preview_df = builder.preview(skip=30, count=10)
-preview_df
+builder.preview(skip=30, count=10)
 ```
 
 ||DATE (Datum)|date_timerange|
@@ -251,10 +247,9 @@ preview_df
 |38|1/2/2015 4:00|2. ledna 2015 4: 00 - 6: 00|
 |39|1/2/2015 4:54|2. ledna 2015 4: 00 - 6: 00|
 
+Nyní správně ošetřit řádků "1/2/2015' jako 'Jan 2 2015", ale pokud se podíváte níže odvozených sloupců, můžete vidět, že hodnoty na konci mají nic v odvozených sloupců. Který chcete vyřešit, budete muset zadat další příklad pro řádek 66.
 
-Nyní správně ošetřit řádků "1/2/2015' jako 'Jan 2 2015", ale pokud se podíváte níže odvozených sloupců, uvidíte, že hodnoty na konci nesouvisí v odvozených sloupců. Který chcete vyřešit, budete muset zadat další příklad pro řádek 66.
-
-```
+```python
 builder.add_example(source_data=preview_df.iloc[66], example_value='Jan 29, 2015 8PM-10PM')
 builder.preview(count=10)
 ```
@@ -272,14 +267,13 @@ builder.preview(count=10)
 |8|1/2/2015 4:00|2. ledna 2015 4: 00 - 6: 00|
 |9|1/2/2015 4:54|2. ledna 2015 4: 00 - 6: 00|
 
-Všechno, co vypadá dobře, ale můžete si všimnout, že je přesně jsme chtěli. Budete muset oddělit datum a čas pomocí "|" generovat správný formát.
+K oddělení datum a čas pomocí "|", přidat další příklad. Tentokrát, namísto předání za sebou z verze preview, vytvořit slovník název sloupce na hodnotu `source_data` parametru.
 
-Který chcete vyřešit, můžete přidat další příklad. Tentokrát, namísto předání za sebou z verze preview, vytvořit slovník název sloupce na hodnotu `source_data` parametru.
-
-```
+```python
 builder.add_example(source_data={'DATE': '11/11/2015 0:54'}, example_value='Nov 11, 2015 | 12AM-2AM')
 builder.preview(count=10)
 ```
+
 ||DATE (Datum)|date_timerange|
 |-----|-----|-----|
 |0|1/1/2015 22:54|Žádný|
@@ -293,12 +287,10 @@ builder.preview(count=10)
 |8|1/2/2015 4:00|Žádný|
 |9|1/2/2015 4:54|Žádný|
 
-To jasně mělo negativní důsledky, jsou nyní pouze řádky, ve kterých některé hodnoty v odvozených sloupců, které přesně odpovídají příklady, které jsme zadali.
+To jasně mělo negativní důsledky, jsou nyní pouze řádky, ve kterých některé hodnoty v odvozených sloupců, které přesně odpovídají příklady, které jsme zadali. Volání `list_examples()` tvůrce objektu zobrazíte seznam aktuální příklad odvození.
 
-Podívejme se na příklady:
-```
+```python
 examples = builder.list_examples()
-examples
 ```
 
 | |DATE (Datum)|Příklad|example_id|
@@ -308,11 +300,11 @@ examples
 |2|29/1/2015 20:54|29. ledna 2015 20: 00 – 22: 00|-3|
 |3|11/11/2015 0:54|11. listopadu 2015 \| 12 AM - 2 AM|-4|
 
-Uvidíte, že jsme zadali nekonzistentní příklady. Pokud chcete problém vyřešit, musíme nahraďte první tři příklady správné (včetně "|" mezi data a času).
+V tomto případě byly zadány nekonzistentní příklady. Pokud chcete problém vyřešit, nahraďte první tři příklady správné (včetně "|" mezi data a času).
 
-Můžeme dosáhnout odstraněním příklady, které jsou nesprávné (buď předáním `example_row` z pandas DataFrame nebo předáním `example_id` hodnota) a přidání nových upravovat příklady zpět.
+Oprava nekonzistentní příklady tak, že odstraníte příklady, které jsou nesprávné (buď předáním `example_row` z pandas DataFrame nebo předáním `example_id` hodnota) a přidání nových upravovat příklady zpět.
 
-```
+```python
 builder.delete_example(example_id=-1)
 builder.delete_example(example_row=examples.iloc[1])
 builder.delete_example(example_row=examples.iloc[2])
@@ -335,12 +327,11 @@ builder.preview()
 | 8 | 1/1/2015 6:54 | 1. ledna 2015 \| 6: 00 - 8: 00|
 | 9 | 1/1/2015 7:00 | 1. ledna 2015 \| 6: 00 - 8: 00|
 
-Nyní správná data a nakonec jsme volat `to_dataflow()` na tvůrce, který vrátí toku dat s požadovanou odvozených sloupců, které jsou přidány.
+Nyní správná data a zavoláte `to_dataflow()` na tvůrce, který vrátí toku dat s požadovanou odvozených sloupců, které jsou přidány.
 
-```
+```python
 dataflow = builder.to_dataflow()
 df = dataflow.to_pandas_dataframe()
-df
 ```
 
 ## <a name="filtering"></a>Filtrování
@@ -348,12 +339,14 @@ df
 Sada SDK zahrnuje metody `Dataflow.drop_columns` a `Dataflow.filter` umožňuje odfiltrovat sloupců nebo řádků.
 
 ### <a name="initial-setup"></a>Počáteční nastavení
-```
+
+```python
 import azureml.dataprep as dprep
 from datetime import datetime
 dataflow = dprep.read_csv(path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|
@@ -370,10 +363,11 @@ Chcete-li filtrovat sloupce, použijte `Dataflow.drop_columns`. Tato metoda pře
 
 V tomto příkladu `drop_columns` přebírá seznam řetězců. Každý řetězec by měl přesně odpovídat na požadovaný sloupec vyřadit.
 
-``` 
+```python
 dataflow = dataflow.drop_columns(['Store_and_fwd_flag', 'RateCodeID'])
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|
@@ -383,12 +377,14 @@ dataflow.head(5)
 |4|2013-08-01 10:38:35|2013-08-01 10:38:51|0|0|0|0|1|.00|0|0|3.25|
 
 #### <a name="filtering-columns-with-regex"></a>Filtrování sloupce s použitím regex
-Alternativně můžete použít `ColumnSelector` výraz vyřazení sloupce, které odpovídají regulárnímu výrazu. V tomto příkladu jsme vyřadit všechny sloupce, které odpovídají výrazu `Column*|.*longitude|.*latitude`.
 
-```
+Můžete taky použít `ColumnSelector` výraz vyřazení sloupce, které odpovídají regulárnímu výrazu. V tomto příkladu je vyřadit všechny sloupce, které odpovídají výrazu `Column*|.*longitude|.*latitude`.
+
+```python
 dataflow = dataflow.drop_columns(dprep.ColumnSelector('Column*|.*longitud|.*latitude', True, True))
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|Žádný|
@@ -403,18 +399,19 @@ Chcete-li filtrovat řádky, použijte `DataFlow.filter`. Tato metoda přebírá
 
 ### <a name="filtering-rows-with-simple-expressions"></a>Filtrování řádků pomocí jednoduchých výrazů
 
-Tvůrce výrazů `col`, zadejte název sloupce jako argument řetězec `col('column_name')` a v kombinaci s jedním z následujících standardní operátory >, <>, =, < =, ==,! =, například pokud chcete výraz sestavit `col('Tip_amount') > 0`. A konečně, předejte sestavené výraz do `Dataflow.filter` funkce.
+Tvůrce výrazů `col`, zadejte název sloupce jako argument řetězec `col('column_name')`. Tento výraz použít v kombinaci s jedním z následujících standardní operátory >, <>, =, < =, ==,! = k sestavování, jako výraz `col('Tip_amount') > 0`. A konečně, předejte sestavené výraz do `Dataflow.filter` funkce.
 
 V tomto příkladu `dataflow.filter(col('Tip_amount') > 0)` vrátí nového toku dat s řádky, ve kterém hodnotu `Tip_amount` je větší než 0.
 
 > [!NOTE] 
 > `Tip_amount` nejprve převeden na číselnou hodnotu, která umožňuje vytvářet výrazu porovnání oproti dalších číselných hodnot.
 
-```
+```python
 dataflow = dataflow.to_number(['Tip_amount'])
 dataflow = dataflow.filter(dprep.col('Tip_amount') > 0)
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-01 19:33:28|2013-08-01 19:35:21|5|.00|0,08|0|4.58|
@@ -429,11 +426,12 @@ Filtrovat pomocí složité výrazy, jeden nebo více jednoduché výrazy s tvů
 
 V tomto příkladu `Dataflow.filter` vrátí nového toku dat s řádky kde `'Passenger_count'` je menší než 5 a `'Tolls_amount'` je větší než 0.
 
-```
+```python
 dataflow = dataflow.to_number(['Passenger_count', 'Tolls_amount'])
 dataflow = dataflow.filter(dprep.f_and(dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
 dataflow.head(5)
 ```
+
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-08 12:16:00|2013-08-08 12:16:00|1.0|.00|2.25|5.00|19.75|
@@ -447,7 +445,7 @@ Je také možné filtrovat řádky kombinování více než jeden Tvůrce výraz
 > [!NOTE]
 > `lpep_pickup_datetime` a `Lpep_dropoff_datetime` jsou nejprve převeden na typ datetime, která umožňuje vytvářet výrazu porovnání oproti jiné hodnoty data a času.
 
-```
+```python
 dataflow = dataflow.to_datetime(['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
 dataflow = dataflow.to_number(['Total_amount', 'Trip_distance'])
 mid_2013 = datetime(2013,7,1)
@@ -470,9 +468,9 @@ dataflow.head(5)
 |3|2013-08-25 16:46:51 + 00:00|2013-08-25 17:13:55 + 00:00|2.0|9.66|7.37|5.33|44.20|
 |4|2013-08-25 17:42:11 + 00:00|2013-08-25 18:02:57 + 00:00|1.0|9.60|6.87|5.33|41.20|
 
-## <a name="custom-python-transforms"></a>Vlastních transformací Pythonu 
+## <a name="custom-python-transforms"></a>Vlastních transformací Pythonu
 
-Budou existovat scénáře při nejjednodušší věc, kterou musíte udělat, je napsat kód Pythonu. Sada SDK poskytuje tři Rozšiřovací body, které můžete použít.
+Bude vždy scénáře při nejjednodušší možnost pro provedení transformace je psaní vlastního skriptu. Sada SDK poskytuje tři Rozšiřovací body, které můžete použít pro vlastní skripty Python.
 
 - Nový sloupec skriptu
 - Nový filtr skriptu
@@ -484,13 +482,14 @@ Každé rozšíření je podporována v běhu vertikálně navýšit kapacitu a 
 
 Začněte tím, že načítání nějaká data z objektů Blob v Azure.
 
-```
+```python
 import azureml.dataprep as dprep
 col = dprep.col
 
 df = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
 df.head(5)
 ```
+
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|-----|
 |0|ALABAMA|1|101710|Hale kraj|10171002158| |
@@ -501,12 +500,13 @@ df.head(5)
 
 Trim dolů datové sady a provádět některé základní transformací.
 
-```
+```python
 df = df.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
 df = df.replace_na(columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
 df = df.to_number(['ncessch', 'MAM_MTH00numvalid_1011'])
 df.head(5)
 ```
+
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale kraj|1.017100e + 10|Žádný|
@@ -515,9 +515,9 @@ df.head(5)
 |3|ALABAMA|Hale kraj|1.017100e + 10|2|
 |4|ALABAMA|Hale kraj|1.017100e + 10|Žádný|
 
-Vyhledejte pomocí filtru hodnot null. Se tady nějaké, takže teď vyplňte tyto chybějící hodnoty.
+Vyhledejte pomocí filtru, který tyto hodnoty null.
 
-```
+```python
 df.filter(col('MAM_MTH00numvalid_1011').is_null()).head(5)
 ```
 
@@ -531,17 +531,19 @@ df.filter(col('MAM_MTH00numvalid_1011').is_null()).head(5)
 
 ### <a name="transform-partition"></a>Transformace oddílu
 
-Funkce po ruce pandas můžete nahradit všechny hodnoty null na 0. Tento kód spustí oddílu, nikoli na všechny datové sady v čase. To znamená, že na velkou datovou sadu, tento kód může spouštět paralelně jak modul runtime zpracovává data, oddílu pomocí oddílů.
+Pomocí funkce pandas nahradit všechny hodnoty null na 0. Tento kód se spustí oddílu není na najednou celou datovou sadu. To znamená, že na velkých sadách dat, tento kód může spouštět paralelně jak modul runtime zpracovává data, oddílu pomocí oddílů.
 
-```
+Skript v jazyce Python musí definovat funkci s názvem `transform()` , který přebírá dva argumenty, `df` a `index`. `df` Argument bude pandas dataframe, obsahující data pro oddíl a `index` argument je jedinečný identifikátor oddílu. Funkce transformace může plně upravit předané datového rámce, ale musí vracet datový rámec. Všechny knihovny, které importuje skript v jazyce Python musí existovat v prostředí, ve kterém se spouští toku.
+
+```python
 df = df.transform_partition("""
 def transform(df, index):
     df['MAM_MTH00numvalid_1011'].fillna(0,inplace=True)
     return df
 """)
-h = df.head(5)
-h
+df.head(5)
 ```
+
 ||stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale kraj|1.017100e + 10|0.0|
@@ -554,14 +556,16 @@ h
 
 Vytvoří nový sloupec, který má název kraje a název stavu a také velké první písmeno názvu stavu, můžete použít kód v Pythonu. Chcete-li to provést, použijte `new_script_column()` metodu na datový tok.
 
-```
+Skript v jazyce Python musí definovat funkci s názvem `newvalue()` , která přijímá jeden argument `row`. `row` Argument je dict (`key`: název sloupce `val`: aktuální hodnota) a předá pro tuto funkci pro každý řádek v datové sadě. Tato funkce musí vracet hodnotu pro použití v tomto novém sloupci. Všechny knihovny, které importuje skript v jazyce Python musí existovat v prostředí, ve kterém se spouští toku.
+
+```python
 df = df.new_script_column(new_column_name='county_state', insert_after='leanm10', script="""
 def newvalue(row):
     return row['leanm10'] + ', ' + row['stnam'].title()
 """)
-h = df.head(5)
-h
+df.head(5)
 ```
+
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale kraj|Kraj hale, Alabama|1.017100e + 10|0.0|
@@ -569,18 +573,18 @@ h
 |2|ALABAMA|Hale kraj|Kraj hale, Alabama|1.017100e + 10|0.0|
 |3|ALABAMA|Hale kraj|Kraj hale, Alabama|1.017100e + 10|2.0|
 |4|ALABAMA|Hale kraj|Kraj hale, Alabama|1.017100e + 10|0.0|
+
 ### <a name="new-script-filter"></a>Nový filtr skriptu
 
-Nyní, sestavit Python výraz k filtrování datovou sadu, která pouze řádky, kde "Hale" není na novém `county_state` sloupce. Výraz vrací `True` Pokud my chceme zajistit řádku a `False` vyřadit řádku.
+Sestavit výraz Python k filtrování sady dat pro pouze řádky, kde "Hale" není na novém `county_state` sloupce. Výraz vrací `True` Pokud my chceme zajistit řádku a `False` vyřadit řádku.
 
-```
+```python
 df = df.new_script_filter("""
 def includerow(row):
     val = row['county_state']
     return 'Hale' not in val
 """)
-h = df.head(5)
-h
+df.head(5)
 ```
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|

@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 9ef754e9952bcbd47d668331e906b19ad582b90c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 84c37927eda65be71eb837aef2cb4968a121ee29
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818594"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426889"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Jak telefonování pomocí Twilio v aplikace v Javě v Azure
 Následující příklad ukazuje, jak Twilio můžete uskutečnit volání z webové stránky hostované v Azure. Výsledné aplikace se zobrazí výzva pro hodnoty telefonního hovoru, jak je znázorněno na následujícím snímku obrazovky.
@@ -28,7 +28,7 @@ Následující příklad ukazuje, jak Twilio můžete uskutečnit volání z web
 
 Bude potřeba ji pomocí kódu v tomto tématu následujícím způsobem:
 
-1. Získání účtu Twilio a ověřovací token. Abyste mohli začít s platformou Twilio, vyhodnocení ceny na [ http://www.twilio.com/pricing ] [ twilio_pricing]. Můžete se zaregistrovat v [ https://www.twilio.com/try-twilio ] [ try_twilio]. Informace o rozhraní API poskytovaných Twilio, naleznete v tématu [ http://www.twilio.com/api ] [ twilio_api].
+1. Získání účtu Twilio a ověřovací token. Abyste mohli začít s platformou Twilio, vyhodnocení ceny na [ https://www.twilio.com/pricing ] [ twilio_pricing]. Můžete se zaregistrovat v [ https://www.twilio.com/try-twilio ] [ try_twilio]. Informace o rozhraní API poskytovaných Twilio, naleznete v tématu [ https://www.twilio.com/api ] [ twilio_api].
 2. Získáte Twilio soubor JAR. Na [ https://github.com/twilio/twilio-java ] [ twilio_java_github], můžete stáhnout kódů Githubu a vytvořit svůj vlastní soubor JAR nebo stažení předem vytvořených JAR (s nebo bez závislosti).
    Kód v tomto tématu se napsané s využitím předem připravených JAR TwilioJava 3.3.8 s závislosti.
 3. Přidáte soubor JAR pro vaše cesta sestavení Java.
@@ -42,7 +42,7 @@ Následující kód ukazuje, jak vytvořit webový formulář data uživatele pr
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -88,7 +88,7 @@ Následující kód, který se volá, když uživatel vykoná formuláře zobraz
     import="com.twilio.sdk.resource.factory.*"
     import="com.twilio.sdk.resource.instance.*"
     pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -130,7 +130,7 @@ Následující kód, který se volá, když uživatel vykoná formuláře zobraz
          userText = userText.replace(" ", "%20");
 
          // Create a URL using the Twilio message and the user-entered text.
-         String Url="http://twimlets.com/message";
+         String Url="https://twimlets.com/message";
          Url = Url + "?Message%5B0%5D=" + userText;
 
          // Display the message URL.
@@ -183,7 +183,7 @@ Tento kód byl poskytnut zobrazit základní funkce s použitím Twilio v jazyce
 
 * Místo použití webového formuláře, můžete použít objekty BLOB služby Azure storage nebo SQL Database k ukládání telefonní čísla a volání text. Informace o použití objektů BLOB Azure storage v Javě, naleznete v tématu [použití služby Blob Storage z Javy][howto_blob_storage_java]. 
 * Můžete použít **RoleEnvironment.getConfigurationSettings** načíst Twilio ID účtu a ověřovací token z nastavení konfigurace vašeho nasazení, namísto pevně kódováno pomocí hodnot v makecall.jsp. Informace o tom, **RoleEnvironment** najdete v tématu [pomocí knihovny Runtime služeb Azure v JSP] [ azure_runtime_jsp] a balíček modulu Runtime služby Azure documentation [ http://dl.windowsazure.com/javadoc][azure_javadoc].
-* Kód makecall.jsp přiřadí URL poskytnutou Twilio, [ http://twimlets.com/message ] [ twimlet_message_url]do **Url** proměnné. Tato adresa URL obsahuje odpověď Twilio Markup Language (TwiML), která informuje Twilio, jak postupovat u volání. Například může obsahovat TwiML, který je vrácen **&lt;Say&gt;** příkaz, který má za následek text, se kterým se mluví příjemce volání. Namísto použití URL poskytnutou Twilio, může sestavení vlastní služby reagovat na žádosti pro Twilio; Další informace najdete v tématu [postupy použití Twilia pro hlasové hovory a SMS v jazyce Java][howto_twilio_voice_sms_java]. Další informace o TwiML najdete [ http://www.twilio.com/docs/api/twiml ] [ twiml]a další informace o **&lt;Say&gt;** a ostatní operace Twilio můžete najít v [ http://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
+* Kód makecall.jsp přiřadí URL poskytnutou Twilio, [ https://twimlets.com/message ] [ twimlet_message_url]do **Url** proměnné. Tato adresa URL obsahuje odpověď Twilio Markup Language (TwiML), která informuje Twilio, jak postupovat u volání. Například může obsahovat TwiML, který je vrácen **&lt;Say&gt;** příkaz, který má za následek text, se kterým se mluví příjemce volání. Namísto použití URL poskytnutou Twilio, může sestavení vlastní služby reagovat na žádosti pro Twilio; Další informace najdete v tématu [postupy použití Twilia pro hlasové hovory a SMS v jazyce Java][howto_twilio_voice_sms_java]. Další informace o TwiML najdete [ https://www.twilio.com/docs/api/twiml ] [ twiml]a další informace o **&lt;Say&gt;** a ostatní operace Twilio můžete najít v [ https://www.twilio.com/docs/api/twiml/say ] [ twilio_say].
 * Přečtěte si pokyny pro zabezpečení platformy Twilio na [ https://www.twilio.com/docs/security ] [ twilio_docs_security].
 
 Další informace o Twilio, naleznete v tématu [ https://www.twilio.com/docs ] [ twilio_docs].
@@ -192,23 +192,23 @@ Další informace o Twilio, naleznete v tématu [ https://www.twilio.com/docs ] 
 * [Postup použití Twilia pro hlasové hovory a SMS v jazyce Java][howto_twilio_voice_sms_java]
 * [Přidání certifikátu do Store certifikát certifikační Autority Java][add_ca_cert]
 
-[twilio_pricing]: http://www.twilio.com/pricing
-[try_twilio]: http://www.twilio.com/try-twilio
-[twilio_api]: http://www.twilio.com/api
+[twilio_pricing]: https://www.twilio.com/pricing
+[try_twilio]: https://www.twilio.com/try-twilio
+[twilio_api]: https://www.twilio.com/api
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
-[twilio_java_github]: http://github.com/twilio/twilio-java
-[twimlet_message_url]: http://twimlets.com/message
-[twiml]: http://www.twilio.com/docs/api/twiml
-[twilio_api_service]: http://api.twilio.com
+[twilio_java_github]: https://github.com/twilio/twilio-java
+[twimlet_message_url]: https://twimlets.com/message
+[twiml]: https://www.twilio.com/docs/api/twiml
+[twilio_api_service]: https://api.twilio.com
 [add_ca_cert]: java-add-certificate-ca-store.md
 [azure_java_eclipse_hello_world]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app 
 [howto_twilio_voice_sms_java]: partner-twilio-java-how-to-use-voice-sms.md
-[howto_blob_storage_java]: http://www.windowsazure.com/develop/java/how-to-guides/blob-storage/
-[howto_sql_azure_java]: http://msdn.microsoft.com/library/windowsazure/hh749029.aspx
-[azure_runtime_jsp]: http://msdn.microsoft.com/library/windowsazure/hh690948.aspx
+[howto_blob_storage_java]: https://www.windowsazure.com/develop/java/how-to-guides/blob-storage/
+[howto_sql_azure_java]: https://msdn.microsoft.com/library/windowsazure/hh749029.aspx
+[azure_runtime_jsp]: https://msdn.microsoft.com/library/windowsazure/hh690948.aspx
 [azure_javadoc]: http://dl.windowsazure.com/javadoc
-[twilio_docs_security]: http://www.twilio.com/docs/security
-[twilio_docs]: http://www.twilio.com/docs
-[twilio_say]: http://www.twilio.com/docs/api/twiml/say
+[twilio_docs_security]: https://www.twilio.com/docs/security
+[twilio_docs]: https://www.twilio.com/docs
+[twilio_say]: https://www.twilio.com/docs/api/twiml/say
 [twilio_java]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaCallForm.jpg
 [twilio_java_response]: ./media/partner-twilio-java-phone-call-example/WA_TwilioJavaMakeCall.jpg

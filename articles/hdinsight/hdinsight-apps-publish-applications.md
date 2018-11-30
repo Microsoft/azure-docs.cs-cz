@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4206301296c94bd0d24743854756ac6dd1d712dd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c8b54631f0d37e0e90135dd9e23ff85591cead1b
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014322"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495368"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikování aplikace HDInsight na Azure Marketplace
 Aplikace Azure HDInsight můžete nainstalovat na clusteru HDInsight se systémem Linux. V tomto článku se dozvíte, jak k publikování aplikace HDInsight na Azure Marketplace. Obecné informace o publikování na webu Azure Marketplace najdete v tématu [publikování nabídky na webu Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
@@ -102,6 +102,6 @@ Chcete-li publikovat aplikace HDInsight:
 * Zjistěte, jak [instalovat aplikace HDInsight](hdinsight-apps-install-applications.md) ve vašich clusterů.
 * Zjistěte, jak [instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md) a nasazovat nepublikované aplikace HDInsight do HDInsight.
 * Zjistěte, jak [přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md) a přidat další aplikace. 
-* Zjistěte, jak [Vytvoření clusterů Hadoop na systému Linux v HDInsight pomocí šablon Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+* Zjistěte, jak [vytvářet clustery založené na Linuxu Apache Hadoop v HDInsight pomocí šablon Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 * Zjistěte, jak [použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md) pro přístup k clusterů HDInsight, testovat aplikace HDInsight a hostovat aplikace HDInsight.
 

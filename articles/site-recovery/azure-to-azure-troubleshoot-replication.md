@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: asgang
-ms.openlocfilehash: 0ac90d8ef29d4293a5eeb5f932687788320c218e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 22ea3d955fe2910dc99ab4015165008da899d48e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615792"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312846"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Řešení potíží s probíhající replikaci virtuálních počítačů Azure do Azure
 
@@ -29,7 +29,7 @@ ID CHYBY: 153007 </br>
 Azure Site Recovery konzistentně replikuje data ze zdrojové oblasti do oblasti pro zotavení po havárii a vytváří konzistentní pro případ chyby bodu každých 5 minut. Pokud se Site Recovery je schopna vytvářet body obnovení po dobu 60 minut, upozorní uživatele. V následující tabulce jsou příčiny, které by mohly vést k této chybě:
 
 **1. příčina: [vysoké údaje změnit rychlost na zdrojovém virtuálním počítači](#high-data-change-rate-on-the-source-virtal-machine)**    
-**2. příčina: [problém se sítí ](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**2. příčina: [problém se sítí ](#Network-connectivity-issue)**
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
 
@@ -77,5 +77,10 @@ Tato možnost je možné, pouze pokud četnost změn dat disku je menší než 1
 
 ### <a name="Network-connectivity-issue"></a>Problém síťového připojení
 
+#### <a name="network-latency-to-cache-storage-account-"></a>Latence sítě do účtu úložiště mezipaměti:
+ Site Recovery odešle replikovaná data účet úložiště mezipaměti a problému může dojít, pokud nahrávání dat z virtuálního počítače do účtu úložiště mezipaměti je pomalejší, že 4 MB v 3 sekundy. Zkontrolujte, jestli je jakýkoli problém související s latencí použití [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) k odesílání dat z virtuálního počítače do účtu úložiště mezipaměti.<br>
+Pokud je vysoká latence, zkontrolujte, pokud používáte síťových virtuálních zařízení k řízení odchozího síťového provozu z virtuálních počítačů. Když se všechny replikace provoz prochází přes síťové virtuální zařízení může získat omezí na zařízení. Doporučujeme vytvořit koncový bod služby sítě ve vaší virtuální síti pro "Úložiště" tak, aby provoz replikace se nepřenáší na síťové virtuální zařízení. Přečtěte si [konfiguraci síťového virtuálního zařízení](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)
+
+#### <a name="network-connectivity"></a>Připojení k síti
 U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy URL nebo IP rozsahy se vyžaduje z virtuálního počítače. Pokud se váš virtuální počítač nachází za bránou firewall nebo používá síť pravidla skupiny zabezpečení (NSG) k řízení odchozího připojení, může setkat jednu z těchto problémů.</br>
-Odkazovat na [odchozí připojení k adresám URL služby Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors?#outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072)
+Odkazovat na [odchozí připojení k adresám URL služby Site Recovery](https://docs.microsoft.com/en-us/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) k Ujistěte se, že všechny adresy URL jsou připojené. 

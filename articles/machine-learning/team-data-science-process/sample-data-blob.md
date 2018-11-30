@@ -1,26 +1,22 @@
 ---
 title: Ukázková data v Azure blob storage | Dokumentace Microsoftu
 description: Ukázková data ve službě Azure Blob Storage
-services: machine-learning,storage
-documentationcenter: ''
-author: deguhath
+services: machine-learning
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: e8d9ad2c-86c5-43d6-80b8-d355b5c0dccf
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 9f987daf8b0f111f8d527b2f18dc5e3428df282a
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 5fe7c11bd21e9c2f432f443a6a8dd5880646a1a2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344922"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444184"
 ---
 # <a name="heading"></a>Ukázková data v Azure blob storage
 

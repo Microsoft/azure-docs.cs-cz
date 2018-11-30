@@ -12,19 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 11/25/2018
 ms.author: cenkd;juliako
-ms.openlocfilehash: 6060f294820281df3124fb2fc702ece59a006af1
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: e0eaf88117aa3c67f7ffecad2e3811a22449a5f8
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282403"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312965"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrů a dynamických manifestů
+
+> [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
+> * [Verze 2](media-services-dynamic-manifest-overview.md)
+> * [Verze 3](../latest/filters-dynamic-manifest-overview.md)
+
 Od verze 2.17, Media Services vám umožní definovat filtry pro vaše prostředky. Tyto filtry jsou pravidla na straně serveru, která vám umožní vašim zákazníkům zadáte věci, jako je: přehrávání pouze část videa (namísto přehrání celý video), nebo zadat pouze podmnožinu interpretace zvuku a videa, zařízení vašich zákazníků může zpracovat () Ne všechny interpretace, které jsou přidruženy asset). Toto filtrování vaše prostředky se dosahuje prostřednictvím **dynamické Manifest**, které jsou vytvořeny na vyžádání vašich zákazníků, abyste mohli Streamovat video podle zadané filtry.
 
-Toto téma popisuje běžné scénáře, ve kterém pomocí filtrů by být velmi užitečné pro zákazníky a odkazy na témata, která ukazují, jak programově vytvářet filtry.
+Toto téma popisuje běžné scénáře, ve kterém pomocí filtrů by být užitečné pro zákazníky a odkazy na témata, která ukazují, jak programově vytvářet filtry.
 
 ## <a name="overview"></a>Přehled
 Při doručování obsahu zákazníkům (streamování živých událostí a videa na vyžádání) vaším cílem je poskytovat vysoce kvalitní videa pro různá zařízení v různých síťových podmínkách. K dosažení tohoto cíle provést následující kroky:
@@ -102,7 +107,7 @@ Existují dva typy filtrů prostředku:
 Globální a místní filtrování typů mají stejné vlastnosti. Hlavní rozdíl mezi nimi je pro scénáře, které je vhodnější jaký typ vyfiltrovat. Globální filtry jsou obecně vhodné pro profily zařízení (interpretace filtrování), kde může použít místní filtry mají být odebrány konkrétní prostředek.
 
 ## <a id="scenarios"></a>Obvyklé scénáře
-Jak jsem už zmínili, než při doručování obsahu zákazníkům (streamování živých událostí a videa na vyžádání) je vaším cílem poskytování vysoce kvalitního videa pro různá zařízení v různých síťových podmínkách. Kromě toho vaše může mít jiné požadavky, které se týkají filtrování vaše prostředky a použití **dynamické Manifest**s. Následující části poskytují na stručný přehled různých scénářů filtrování.
+Jak jsem už zmínili, než při doručování obsahu zákazníkům (streamování živých událostí a videa na vyžádání) vaším cílem je poskytovat vysoce kvalitní videa pro různá zařízení v různých síťových podmínkách. Kromě toho může mít jiné požadavky, které se týkají filtrování vaše prostředky a použití **dynamické Manifest**s. Následující části poskytují na stručný přehled různých scénářů filtrování.
 
 * Zadejte pouze podmnožinu audio a video interpretace, které určitá zařízení mohou zpracovávat (ne všechny interpretací, které jsou spojeny s asset). 
 * Přehrávání pouze část videa (namísto přehrání videa celý).

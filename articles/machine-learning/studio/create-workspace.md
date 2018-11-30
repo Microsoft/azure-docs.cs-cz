@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby Machine Learning Studio prostoru | Dokumentace Microsoftu
-description: Vytvoření pracovního prostoru pro Azure Machine Learning Studio
+title: Vytvoření Azure Machine Learning Studio prostoru | Dokumentace Microsoftu
+description: Pokud chcete používat Azure Machine Learning Studio, musíte mít pracovní prostor Machine Learning Studio. Tento pracovní prostor obsahuje nástroje potřebné k vytváření, správě a publikování experimentů.
 services: machine-learning
 author: ericlicoding
 ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
@@ -13,12 +13,12 @@ ms.component: studio
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: c05a7720cf3ac039fc2503221a602e0281738a2c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8362468d329f12ad8ebf25c8d205ec7d35ac6c28
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264195"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307215"
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Vytvoření a sdílení pracovního prostoru Azure Machine Learning
 

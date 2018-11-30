@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: ac4aa3c8aafae24736cc7b48a9ca4e8ba9fd0742
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e3dfbc4fc4d7ed40ebac7de6fe78398b13eafd58
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125183"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316544"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Vlastní nastavení zásad ochrany informací SQL ve službě Azure Security Center (Preview)
  
@@ -54,7 +54,7 @@ Chcete-li upravit zásady služby information protection pro vašeho tenanta Azu
 2. V **označení citlivosti konfigurovat** obrazovky, můžete vytvořit nebo změnit název popisku a popis. Můžete také nastavit, jestli je popisek aktivní nebo zakázaný přepnutím **povoleno** zapnout nebo vypnout. Nakonec můžete přidat nebo odebrat typy informací, které jsou spojené s popiskem. Žádná data zjištění odpovídající, že typ informací automaticky zahrne označení citlivosti přidružené doporučení klasifikace.
 3. Klikněte na **OK**.
  
-   ![Konfigurace označení citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
+   ![Nakonfigurovat popisek citlivosti](./media/security-center-info-protection-policy/config-sensitivity-label.png)
  
 4. Popisky jsou uvedeny v pořadí podle vzestupně citlivosti. Chcete-li změnit pořadí mezi popisky, přetáhnout a změnit jejich pořadí v tabulce, nebo použít popisky **nahoru** a **přesunout dolů** tlačítka, chcete-li změnit pořadí. 
  
@@ -86,7 +86,7 @@ V tomto článku jste se dozvěděli o definování zásady SQL Information Prot
 Další informace o zabezpečení zásady a zabezpečení dat ve službě Azure Security Center najdete v následujících článcích:
  
 - [Přehled zásad zabezpečení](security-center-policies-overview.md): Získejte přehled o zásad zabezpečení ve službě Security Center
-- [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků
+- [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků
 - [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md): Zjistěte, jak se spravuje Security Center a chrání data
 
 

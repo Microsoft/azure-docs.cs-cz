@@ -347,5 +347,5 @@
 ## [Ceny](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=active-directory)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)

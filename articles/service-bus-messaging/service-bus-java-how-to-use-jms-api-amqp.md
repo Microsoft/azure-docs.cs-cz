@@ -1,6 +1,6 @@
 ---
 title: Jak pomocí protokolu AMQP 1.0 rozhraní Java API služby Service Bus | Dokumentace Microsoftu
-description: Jak používat službu zpráva Java (JMS) s Azure Service Bus a rozšířené zprávy služby Řízení front Protodol protokol AMQP 1.0.
+description: Jak používat službu zpráva Java (JMS) pomocí služby Azure Service Bus a rozšířené řízení front zpráv protokolu (AMQP) 1.0.
 services: service-bus-messaging
 documentationcenter: java
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 9a223c67e0c1f2e71d2953be63924a114e7420af
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: fbd74b227afd2191616100d74c7864eacf015add
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018226"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308066"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak Java Message Service (JMS) rozhraní API pomocí služby Service Bus a protokolu AMQP 1.0
 Rozšířené řízení front zpráv protokolu (AMQP) 1.0 je efektivní a spolehlivý přenosový protokol zasílání zpráv, který vám pomůže vytvářet aplikace napříč platformami, robustní zasílání zpráv.
@@ -66,7 +66,7 @@ queue.QUEUE = queue1
 #### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>Kontext JNDI nainstalovat a nakonfigurovat ConnectionFactory
 
 **ConnectionString** odkazuje k dispozici "sdílené zásady přístupu' v jedné [webu Azure Portal](https://portal.azure.com) pod **primární připojovací řetězec**
-```
+```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
 // connection string. 
@@ -89,7 +89,7 @@ Destination queue = (Destination) context.lookup("QUEUE");
 Slouží k definování cíle v poskytovateli Qpid vlastnosti souboru JNDI položka je v následujícím formátu:
 
 Chcete-li vytvořit cílovou frontu pro výrobce- 
-```
+```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
 
@@ -103,7 +103,7 @@ MessageProducer producer = session.createProducer(queue);
 ```
 
 Chcete-li vytvořit cílovou frontu pro spotřebitele- 
-```
+```java
 String queueName = "queueName";
 Destination queue = (Destination) queueName;
 
@@ -351,7 +351,7 @@ Při použití JMS prostřednictvím protokolu AMQP 1.0 se Service Bus, konkrét
 
 Kromě toho Azure Service Bus rozdělí rovina řízení v rovině dat a proto nepodporuje řadu funkcí pro JMS dynamické topologie:
 
-| Nepodporovaná – metoda          | Nahraďte                                                                             |
+| Nepodporovaná – metoda          | Nahradit hodnotou                                                                             |
 |-----------------------------|------------------------------------------------------------------------------------------|
 | createDurableSubscriber     | Vytvoří předplatné tématu přenos zprávy modulu pro výběr                                 |
 | createDurableConsumer       | Vytvoří předplatné tématu přenos zprávy modulu pro výběr                                 |

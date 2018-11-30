@@ -2,25 +2,21 @@
 title: Ukázková Data v SQL serveru v Azure | Dokumentace Microsoftu
 description: Ukázková Data v SQL serveru v Azure
 services: machine-learning
-documentationcenter: ''
-author: deguhath
-manager: cgeonlun
+author: marktab
+manager: cgronlun
 editor: cgronlun
-ms.assetid: 33c030d4-5cca-4cc9-99d7-2bd13a3926af
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 7852a0fc548980227723c9f6a259c63367159201
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 6483ba9f070252f58e0e3706472939dbfab12b59
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346235"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445034"
 ---
 # <a name="heading"></a>Ukázková data v SQL serveru v Azure
 

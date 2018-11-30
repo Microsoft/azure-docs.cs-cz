@@ -1,5 +1,5 @@
 ---
-title: Použití ukázkových datových sad v nástroji Machine Learning Studio | Dokumentace Microsoftu
+title: Použití ukázkových datových sad - Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Popis datové sady použité v ukázkových modelů, které jsou zahrnuté v nástroji Machine Learning Studio. Tyto ukázkové datové sady můžete použít pro vaše experimenty.
 services: machine-learning
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 79775e287f398b22866c78fb8bb03c5959246976
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 57d9e1c7b501b67a441dc3490356261fa29ebb7d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262277"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308830"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Použití vzorových datových sad v Azure Machine Learning Studiu
 [top]: #machine-learning-sample-datasets

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 161a5710766db626e4c4ec6bb6fdfafcc20650d5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 50868d32b35e77495965b9ee9d0023d23b43fd5a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248040"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426379"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Kurz: Vytvoření federace pro jedno prostředí doménové struktury AD do cloudu
 
@@ -280,7 +280,7 @@ Nyní jsme ověří, že uživatelé, které jsme měli v našem místním adres
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Test přihlášení pomocí jednoho z našich uživatelů
 
-1.  Přejděte na [http://myapps.microsoft.com](https://myapps.microsoft.com)
+1.  Přejděte na [https://myapps.microsoft.com](httpss://myapps.microsoft.com)
 2. Přihlaste se pomocí uživatelského účtu, který byl vytvořen v našich nového tenanta.  Budete muset přihlásit pomocí následujícího formátu: (user@domain.onmicrosoft.com). Použijte stejné heslo, které uživatel použije k přihlášení místní.
 ![Ověření](media/tutorial-password-hash-sync/verify1.png)
 

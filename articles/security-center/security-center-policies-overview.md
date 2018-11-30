@@ -1,6 +1,6 @@
 ---
-title: Nastavení zásad zabezpečení Azure Security Center | Dokumentace Microsoftu
-description: Konfigurovat nastavení zásad zabezpečení Azure Security Center.
+title: Nastavení Azure Security Center | Dokumentace Microsoftu
+description: Konfigurace nastavení Azure Security Center.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,23 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3d2687f56b69174fde783060d994e3c01763ec94
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2aa4545aa79260bea792392e1bebf4166253fc87
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256625"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52315711"
 ---
-# <a name="security-policy-settings"></a>Nastavení zásad zabezpečení
-Tento článek obsahuje přehled funkcí zabezpečení nastavení zásad ve službě Security Center.
+# <a name="security-center-settings"></a>Nastavení Centra zabezpečení
+Tento článek obsahuje přehled nastavení ve službě Security Center.
 
-## <a name="what-are-security-policies"></a>Co jsou zásady zabezpečení?
-Zásady zabezpečení definují požadovanou konfiguraci úloh a pomáhají zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení. Ve službě Azure Security Center můžete definovat zásady pro vaše předplatná Azure a je typu úlohy nebo citlivosti dat. přizpůsobit. Aplikace, které používají regulovaná data, jako jsou identifikovatelné osobní údaje, například může vyžadovat vyšší úroveň zabezpečení než jiné úlohy.
-
-Můžete nastavit následující v části zásady zabezpečení:
+V části zásady zabezpečení se dá kontaktovat následující nastavení:
 
 - **Shromažďování dat**: Určuje zřizování agentů a [shromažďování dat](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) nastavení.
-- **Zásady zabezpečení**: Určuje, který určuje Security Center monitoruje a doporučuje. Můžete upravit [zásady zabezpečení](security-center-policies.md) ve službě Security Center. Můžete také použít [Azure Policy](security-center-azure-policy.md) vytvářet nové definice, definovat další zásady a přiřazovat zásady napříč skupinami pro správu. 
+- **Zásady zabezpečení**: Určuje, který určuje Security Center monitoruje a doporučuje. Můžete upravit [zásady zabezpečení](security-center-azure-policy.md) ve službě Security Center. Můžete také použít [Azure Policy](security-center-azure-policy.md) vytvářet nové definice, definovat další zásady a přiřazovat zásady napříč skupinami pro správu. 
 - **E-mailová oznámení**: Určuje kontakty zabezpečení a [e-mailová oznámení](security-center-provide-security-contact-details.md) nastavení.
 - **Cenová úroveň**: definuje free nebo standard [výběr cenové](security-center-pricing.md). Zvolená úroveň určí, které funkce Security Center budou dostupné pro prostředky v daném rozsahu. Můžete určit úroveň pro předplatná, skupiny prostředků a pracovní prostory.
 
@@ -49,7 +46,7 @@ Security Center používá Role-Based řízení přístupu (RBAC), který poskyt
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste se dozvěděli o zásad zabezpečení ve službě Azure Security Center. Další informace o službě Azure Security Center, najdete v následujících článcích:
 
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Zjistěte, jak doporučení služby Security Center vám pomoct chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.

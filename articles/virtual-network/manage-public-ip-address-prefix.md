@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 32ad02583f84a84c494dc8300834cd9ff2f0d771
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a0ae1f3fbf9189068cae4b18ac92f0bea0498f67
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094969"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427569"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Vytvoření, změna nebo odstranění předponu veřejné IP adresy
 
@@ -91,7 +91,7 @@ Jakmile vytvoříte předponu, je nutné vytvořit statické IP adresy z předpo
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ network public-ip předponu seznamu](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) na seznamu veřejné IP adresy [az network public-ip předponu zobrazit](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) zobrazíte nastavení. [az network public-ip předponu aktualizace](/cli/azure/network/public-ip-prefix#az-network-public-ip-prefix-update) aktualizovat; [az network public-ip předponu odstranit](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) odstranit|
+|Rozhraní příkazového řádku|[AZ network public-ip předponu seznamu](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) na seznamu veřejné IP adresy [az network public-ip předponu zobrazit](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) zobrazíte nastavení. [az network public-ip předponu aktualizace](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) aktualizovat; [az network public-ip předponu odstranit](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) odstranit|
 |PowerShell|[Get-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/get-azurermpublicipprefix) načíst objekt veřejné IP adresy a zobrazte její nastavení [Set-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/set-azurermpublicipprefix) aktualizovat nastavení. [Odebrat AzureRmPublicIpPrefix](/powershell/module/azurerm.network/remove-azurermpublicipprefix) odstranit|
 
 ## <a name="permissions"></a>Oprávnění

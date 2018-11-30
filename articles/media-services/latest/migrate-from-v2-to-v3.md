@@ -13,20 +13,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 11/15/2018
+ms.date: 11/21/2018
 ms.author: juliako
-ms.openlocfilehash: 41ad4b26247fa8037de01ff956921146a2238abc
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 73d4ecec2665e238236de4a778d6cdd43642c87b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823365"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310391"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přechod ze služby Media Services v2 na v3
 
 Tento článek popisuje změny, které byly zavedeny v Azure Media Services v3, jsou uvedeny rozdíly mezi dvěma verzemi a poskytuje pokyny k migraci.
 
 Pokud máte službu poskytování videí dnes vyvinuté v horní části [starší verze rozhraní API služby Media Services v2](../previous/media-services-overview.md), měli byste si přečíst následující pokyny a důležité informace před migrací do rozhraní API v3. Existuje mnoho výhod a nových funkcí v rozhraní API v3, které vylepšují prostředí pro vývojáře a možnosti v Media Services. Jak již však volané ve [známé problémy v sadě](#known-issues) části tohoto článku, existují také určitá omezení z důvodu změny mezi verzí rozhraní API. Tato stránka se zachová, a tým Media Services umožňuje další vylepšení rozhraní API v3 se zaměřuje na mezery mezi verzemi. 
+
+> [!NOTE]
+> V současné době nelze použít na webu Azure portal ke správě prostředků v3. Použití [rozhraní REST API](https://aka.ms/ams-v3-rest-sdk), rozhraní příkazového řádku, nebo jeden z podporovaných sad SDK.
 
 ## <a name="benefits-of-media-services-v3"></a>Výhody služby Media Services v3
 

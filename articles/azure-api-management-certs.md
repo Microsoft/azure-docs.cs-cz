@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 788ce1f2543b9ed76d718cf01d28292f49594414
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 62bc6507e4b56c9df31a561f7677907486b0d562
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037350"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421585"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Nahrát certifikát pro správu služby Azure
 Certifikáty pro správu umožňují ověření pomocí modelu nasazení classic poskytovaný platformou Azure. Mnoho programech a nástrojích (např. Visual Studio nebo pomocí sady SDK Azure) použijte tyto certifikáty k automatizaci konfigurace a nasazení různých služeb Azure. 
@@ -38,7 +38,7 @@ Můžete také použít [Azure Active Directory](https://azure.microsoft.com/ser
 ## <a name="upload-a-management-certificate"></a>Nahrání certifikátu pro správu
 Jakmile budete mít vytvořený certifikát správy, (soubor .cer s pouze veřejný klíč) nahrajte ho do portálu. Je-li certifikát k dispozici na portálu, každý, kdo má odpovídajícího certifikátu (privátní klíč) připojení přes rozhraní API pro správu a přístup k prostředkům pro přidružené předplatné.
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Klikněte na tlačítko **všechny služby** v dolním seznamu služeb Azure, pak vyberte **předplatná** v _Obecné_ skupinu služeb.
 
     ![Nabídka předplatného](./media/azure-api-management-certs/subscriptions_menu.png)

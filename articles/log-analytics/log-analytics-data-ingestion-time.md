@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4f7b0f7c1cd08168db3f0f0ffd6cf6c4fa2c604e
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955239"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334546"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Doba příjem dat v Log Analytics
 Azure Log Analytics je vysoce škálované datové služby ve službě Azure Monitor, která slouží tisíce zákazníků odesílání terabajty dat měsíčně rostoucí tempem. Jsou často dotazy týkající se čas potřebný pro data k dispozici ve službě Log Analytics po shromáždění zpracovat. Tento článek vysvětluje různé faktory ovlivňující tuto latenci.
@@ -40,7 +40,7 @@ Podrobnosti o různých latencí v tomto procesu jsou popsané níže.
 Agenti a řešení pro správu používají různé strategie ke shromažďování dat z virtuálního počítače, který může mít vliv na latenci. Některé konkrétní příklady patří:
 
 - Okamžitě se shromažďují události Windows, události procesu syslog a metriky výkonu. Čítače výkonu systému Linux jsou dotazovat každých 30 sekund.
-- Jakmile se změní jejich časového razítka se shromažďují protokoly služby IIS a vlastní protokoly. Pro protokoly služby IIS, to je ovlivněno [nakonfigurovaný ve službě IIS plán výměny](log-analytics-data-sources-iis-logs.md). 
+- Jakmile se změní jejich časového razítka se shromažďují protokoly služby IIS a vlastní protokoly. Pro protokoly služby IIS, to je ovlivněno [nakonfigurovaný ve službě IIS plán výměny](../azure-monitor/platform/data-sources-iis-logs.md). 
 - Řešení Active Directory replikace provede posouzení každých pět dní, během řešení Active Directory Assessment provádí týdenní hodnocení infrastruktury služby Active Directory. Agent bude shromažďovat protokoly pouze po dokončení hodnocení.
 
 ### <a name="agent-upload-frequency"></a>Frekvence odesílání agenta
@@ -61,7 +61,7 @@ Naleznete v dokumentaci pro každé řešení určit její interval shromažďov
 Jakmile jsou záznamy protokolu přijatých do kanálu Log Analytics, jsou napsaná do dočasného úložiště zajistit izolaci klientů a ujistěte se, že data nejsou ztracena. Tento postup přidá obvykle 5 až 15 sekund. Některá řešení pro správu implementují těžší algoritmy ke shromáždění dat a vyvoďte z nich jako streamování dat v. Například monitorování výkonu sítě agreguje příchozích dat přes 3minutové intervaly efektivně přidání 3minutové latence. Jiný proces, který zvyšuje latenci je proces, který zpracuje vlastní protokoly. V některých případech může tento proces přidat několik minut, latenci na protokoly, které se shromažďují ze souborů pomocí agenta.
 
 ### <a name="new-custom-data-types-provisioning"></a>Nové vlastní datové typy zřizování
-Při vytvoření nového typu vlastních dat z [vlastního protokolu](../log-analytics/log-analytics-data-sources-custom-logs.md) nebo [rozhraní API kolekce dat](../log-analytics/log-analytics-data-collector-api.md), systém vytvoří kontejner vyhrazeného úložiště. Toto je jednorázová režijní náklady, ke které dochází pouze na první výskyt tento typ dat.
+Při vytvoření nového typu vlastních dat z [vlastního protokolu](../log-analytics/../azure-monitor/platform/data-sources-custom-logs.md) nebo [rozhraní API kolekce dat](../log-analytics/log-analytics-data-collector-api.md), systém vytvoří kontejner vyhrazeného úložiště. Toto je jednorázová režijní náklady, ke které dochází pouze na první výskyt tento typ dat.
 
 ### <a name="surge-protection"></a>Nárůst ochrany
 Hlavní prioritou Log Analytics je zajistit, že žádná zákaznická data nejsou ztracena, tak systém obsahuje integrovanou ochranu pro data nárůstů. To zahrnuje vyrovnávací paměti k zajištění, že i v rámci obrovské zatížení, systém bude nadále funkční. Při normálním zatížení tyto ovládací prvky přidat méně než minutu, ale v extrémní podmínky a selhání, přidat spoustu času, zatímco je zajištěna dat je bezpečné.

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 42bd8ef95ac1b55e76fe1cf0702b79de91832741
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: aca81bd529fe6151dce7aba6754874355189fc59
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870175"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444380"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Data o využití pro službu LUIS ze služby Azure Cloud Shell
 Na webu Azure portal umožňuje pomocí rutin prostředí PowerShell pro práci s prostředky služby LUIS. 
@@ -32,7 +32,7 @@ Jakmile máte účet úložiště a ověření, můžete spustit rutiny prostře
 ## <a name="open-cloud-shell"></a>Otevření služby Cloud Shell
 Při použití portálu Azure cloud shell, jste vždy na nejnovější verzi prostředí PowerShell. 
 
-Použití **spustit Cloud Shell** tlačítko otevřete Cloud Shell nebo otevřete prohlížeč s [ https://shell.azure.com ](https://shell.azure.com). 
+Použití **spustit Cloud Shell** tlačítko otevřete Cloud Shell nebo otevřete prohlížeč s [ https://shell.azure.com ](https://shell.azure.com). Vyberte jako prostředí Power Shell. Pokud nemáte účet Azure Storage, je potřeba ho vytvořit. 
 
 <a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
 

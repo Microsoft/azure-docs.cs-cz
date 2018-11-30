@@ -1,5 +1,5 @@
 ---
-title: Galerie Azure AI | Dokumentace Microsoftu
+title: Galerie Azure AI – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Sdílení a vyhledání prostředků analýzy a další v galerii Azure AI. Učte se od ostatních a vlastní přispívání do komunity.
 services: machine-learning
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.openlocfilehash: 91d83c0551571c376fd7ef7dd4d174147e4ff4fe
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 99742e8b25a406dcc08371812b943c0d01dde113
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52260575"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310599"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a vyhledání prostředků v galerii Azure AI
 

@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b7b93ca9c8638451d23a27edeed823e593a95b23
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 62499c35fd71d83f80a60e0511e6a27ce0109275
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035641"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495868"
 ---
-# <a name="access-apache-yarn-application-logs-on-windows-based-hdinsight"></a>Přístup k Apache YARN protokolům aplikací na HDInsight se systémem Windows
-Tento dokument popisuje, jak získat přístup k protokolům aplikací Apache YARN, které dokončení na clusteru Hadoop využívající systém Windows v Azure HDInsight
+# <a name="access-apache-hadoop-yarn-application-logs-on-windows-based-hdinsight"></a>Přístup k Apache Hadoop YARN protokolům aplikací na HDInsight se systémem Windows
+Tento dokument popisuje, jak získat přístup k protokolům pro [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) aplikace, které dokončení na Apache Hadoop založené na Windows cluster v Azure HDInsight
 
 > [!IMPORTANT]
-> Informace v tomto dokumentu se vztahuje pouze na clustery HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o přístupu k YARN protokoly na clusterech HDInsight založených na Linuxu, naleznete v tématu [protokolům aplikací YARN Apache přístup v systému Linux Hadoop v HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+> Informace v tomto dokumentu se vztahuje pouze na clustery HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Informace o přístupu k YARN protokoly na clusterech HDInsight založených na Linuxu, naleznete v tématu [protokolům aplikací přístup Apache Hadoop YARN v linuxu Apache Hadoop v HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 >
 
 
 ### <a name="prerequisites"></a>Požadavky
-* Cluster HDInsight se systémem Windows.  Zobrazit [v HDInsight clusterů Hadoop založených na Windows vytvořit](hdinsight-hadoop-provision-linux-clusters.md).
+* Cluster HDInsight se systémem Windows.  Zobrazit [systémem Windows vytvořit Apache Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="yarn-timeline-server"></a>YARN Timeline Server
-<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a> poskytuje obecné informace o hotových aplikacích, informace o aplikaci stejně jako specifické pro architekturu prostřednictvím dvou různých rozhraní. Zejména:
+<a href="http://hadoop.apache.org/docs/r2.4.1/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">Apache Hadoop YARN Timeline Server</a> poskytuje obecné informace o hotových aplikacích, informace o aplikaci stejně jako specifické pro architekturu prostřednictvím dvou různých rozhraní. Zejména:
 
 * Ukládání a načítání informací o obecná aplikace na clusterech HDInsight bylo povolené verze 3.1.1.374 nebo vyšší.
 * Součást informace specifické pro architekturu aplikace serveru časová osa není aktuálně k dispozici v clusterech HDInsight.
@@ -53,7 +53,7 @@ YARN podporuje několik programovacích modelů oddělením správy prostředků
 * Kontejner poskytuje kontext pro základní pracovní jednotkou. 
 * Práce, která se provádí v rámci kontejneru se provádí na kontejneru byl přidělen do jednoho pracovního uzlu. 
 
-Další informace najdete v tématu [YARN koncepty][YARN-concepts].
+Další informace najdete v tématu [Apache Hadoop YARN koncepty][YARN-concepts].
 
 Protokoly aplikací (a protokoly přiřazeným kontejnerem) jsou velmi důležité při ladění aplikací Hadoop jiných problematické. YARN poskytuje dobré architekturu pro shromažďování, shromažďování a ukládání protokolů aplikace pomocí [protokolu agregace] [ log-aggregation] funkce. Funkce agregace protokolu je přístup k protokolům aplikací deterministického, protože protokoly agreguje přes všechny kontejnery na pracovním uzlu a uloží je jako jeden agregované souboru protokolu na pracovní uzel na výchozí systém souborů po dokončení aplikace. Vaše aplikace může používat stovek nebo tisíců kontejnerů, ale protokolů pro všechny kontejnery, které běží na uzlu jeden pracovního procesu se agregují do jednoho souboru, což v jednom souboru na pracovní uzel používá vaše aplikace. Ve výchozím nastavení v clusterech HDInsight je povolené protokolu agregace (verze 3.0 a vyšší), a agregované protokoly najdete ve výchozím kontejneru vašeho clusteru v následujícím umístění:
 

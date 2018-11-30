@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 31461e1d316953c2e69d252f1313180c57562dfd
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 194f84d2ce5360aa9ad9f3d771bf24f153ac6f5c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009187"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496301"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště pro HDInsight
 
 Zjistěte, jak přidat další služby Azure storage účty do HDInsight pomocí skriptových akcí. Kroky v tomto dokumentu přidání účtu úložiště do existujícího clusteru HDInsight se systémem Linux.
 
 > [!IMPORTANT]
-> Informace v tomto dokumentu je o přidání dalšího úložiště do clusteru po jeho vytvoření. Informace o přidání účtů úložiště při vytváření clusteru najdete v tématu [nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další](hdinsight-hadoop-provision-linux-clusters.md).
+> Informace v tomto dokumentu je o přidání dalšího úložiště do clusteru po jeho vytvoření. Informace o přidání účtů úložiště při vytváření clusteru najdete v tématu [nastavení clusterů v HDInsight se Apache Hadoop, Apache Spark, Apache Kafka a další](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -43,7 +43,7 @@ Během zpracování skript provede následující akce:
 
 * Účet úložiště se přidá do souboru core-site.xml.
 
-* Zastaví a restartuje službu Oozie, YARN, MapReduce2 a HDFS. Zastavení a spuštění těchto služeb umožňuje je, aby používaly nový účet úložiště.
+* Zastaví a restartuje [Apache Oozie](https://oozie.apache.org/), [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), a [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) služby. Zastavení a spuštění těchto služeb umožňuje je, aby používaly nový účet úložiště.
 
 > [!WARNING]
 > Použití účtu úložiště v jiném umístění než HDInsight cluster se nepodporuje.

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2018
+ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin, andret, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, dadobali, negoe
 ms.custom: aaddev
-ms.openlocfilehash: 3e9765bf2c6b746b892f7fbc97ea3124f80d772e
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 6c11062dbae18eed618fe7dde95daa55024d2ddd
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976006"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444847"
 ---
 # <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Porovnání koncového bodu Azure AD v2.0 s koncovým bodem v1.0
 
@@ -137,7 +137,7 @@ Pro každou aplikaci, kterou chcete integrovat s koncovým bodem v2.0, můžete 
 Registrace aplikací, které podporují pracovní a školní účty a osobní účty mají následující upozornění:
 
 * Jsou povolené jenom dva tajné kódy aplikace za ID aplikace.
-* Registrace aplikace s registrovaných uživatelů pomocí osobního účtu Microsoft v portálu pro registraci aplikace můžete zobrazit a spravovat jenom jeden vývojářský účet. Není možné sdílet mezi více vývojářů. Pokud chcete sdílet vaše registrace aplikace s více vývojářů, můžete vytvořit aplikaci pomocí části registrace aplikací (Preview) na webu Azure portal.
+* Aplikace, který nebyl registrován v tenantovi můžete spravovat pouze účet, který ho zaregistroval. Není možné sdílet s ostatními vývojáři. To platí pro většinu aplikací, které jste zaregistrovali v portálu pro registraci aplikace pomocí osobního účtu Microsoft. Pokud chcete sdílet vaše registrace aplikace s více vývojářů, zaregistrovat aplikaci v tenantovi pomocí **registrace aplikací (Preview)** části webu Azure portal.
 * Existuje několik omezení se týkají formátu adresy URL pro přesměrování, který je povolen. Další informace o adresu URL pro přesměrování najdete v další části.
 
 ### <a name="restrictions-on-redirect-urls"></a>Omezení pro přesměrování adresy URL
@@ -183,7 +183,7 @@ Podpora knihovny pro koncový bod verze 2.0 je aktuálně omezená. Pokud chcete
 * Pokud vytváříte webovou aplikaci, bezpečně můžete middleware obecně dostupné na straně serveru k provedení ověřování přihlášení a token. Patří mezi ně middleware OWIN OpenID Connect pro ASP.NET a Node.js Passport modulu plug-in. Ukázky kódu, které používají Microsoft middleware, najdete v článku [v2.0 Začínáme](v2-overview.md#getting-started) oddílu.
 * Pokud vytváříte desktopové nebo mobilní aplikace, můžete použít jednu z verze preview knihovny Microsoft Authentication (MSAL). Tyto knihovny jsou ve verzi preview s podporou produkčního prostředí, takže je bezpečný pro použití v aplikacích v produkčním prostředí. Další informace o podmínkách verze preview a dostupné knihovny v [referenční dokumentace knihoven ověřování](reference-v2-libraries.md).
 * Pro platformy není pokrytá knihoven Microsoftu můžete integrovat s koncovým bodem v2.0 pomocí přímo, odesílání a přijímání zprávy protokolu v kódu aplikace. Protokoly OpenID Connect a OAuth 2.0 [výslovně popsanými](active-directory-v2-protocols.md) můžete provádět tato integrační.
-* Nakonec můžete použít open source knihovny OpenID Connect a OAuth pro integraci s koncovým bodem v2.0. Koncový bod v2.0 by měl být kompatibilní s mnoha protokol open source knihoven beze změn. Dostupnost tyto druhy knihoven se liší podle jazyka a libovolné platformy. [OpenID Connect](http://openid.net/connect/) a [OAuth 2.0](http://oauth.net/2/) websites udržovat seznam oblíbených implementace. Další informace najdete v tématu [knihovny Azure Active Directory v2.0 a ověřování](reference-v2-libraries.md)a seznam open source klientské knihovny a ukázky, které byly testovány s koncovým bodem v2.0.
+* Nakonec můžete použít open source knihovny OpenID Connect a OAuth pro integraci s koncovým bodem v2.0. Koncový bod v2.0 by měl být kompatibilní s mnoha protokol open source knihoven beze změn. Dostupnost tyto druhy knihoven se liší podle jazyka a libovolné platformy. [OpenID Connect](https://openid.net/connect/) a [OAuth 2.0](https://oauth.net/2/) websites udržovat seznam oblíbených implementace. Další informace najdete v tématu [knihovny Azure Active Directory v2.0 a ověřování](reference-v2-libraries.md)a seznam open source klientské knihovny a ukázky, které byly testovány s koncovým bodem v2.0.
 * Pro srovnání `.well-known` je koncový bod pro společný koncový bod v2.0 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`. Nahraďte `common` za ID vašeho tenanta se získat konkrétní data do svého tenanta.  
 
 ### <a name="protocol-changes"></a>Protokol změn

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 77e5d6c278436a1fc192421c9867106409389a66
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 424de36dbbd3b09e635679900110148b9edd0242
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888217"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422878"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -278,8 +278,8 @@ namespace SampleApp
   Activity Output section:
   "exitcode": 0
   "outputs": [
-    "https://shengcstorbatch.blob.core.windows.net/adfjobs/<GUID>/output/stdout.txt",
-    "https://shengcstorbatch.blob.core.windows.net/adfjobs/<GUID>/output/stderr.txt"
+    "https://<container>.blob.core.windows.net/adfjobs/<GUID>/output/stdout.txt",
+    "https://<container>.blob.core.windows.net/adfjobs/<GUID>/output/stderr.txt"
   ]
   "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US)"
   Activity Error section:
@@ -292,7 +292,11 @@ Pokud chcete využívat obsah stdout.txt v podřízené aktivity, můžete získ
 
   > [!IMPORTANT]
   > - Activity.json, linkedServices.json a datasets.json jsou uloženy ve složce modulu runtime úlohy služby Batch. V tomto příkladu activity.json, linkedServices.json a datasets.json jsou uloženy v "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" cesta. V případě potřeby, musíte ho PROČISTIT samostatně. 
-  > - Pro propojené služby se používá modul Integration Runtime, citlivé informace, jako jsou klíče nebo hesla je jím zašifrovaná modul Integration Runtime, aby přihlašovací údaje definované zůstane v zákazníka privátním síťovém prostředí. Při odkazu kód vlastní aplikace tímto způsobem, může být některá citlivá pole chybí. V extendedProperties namísto používání odkaz na propojenou službu, v případě potřeby použijte SecureString. 
+  > - Pro propojené služby, která používá modul Integration Runtime citlivé informace, jako jsou klíče nebo hesla je jím zašifrovaná modul Integration Runtime k zajištění přihlašovacích údajů zůstávají v zákazník definovaný privátním síťovém prostředí. Při odkazu kód vlastní aplikace tímto způsobem, může být některá citlivá pole chybí. V extendedProperties namísto používání odkaz na propojenou službu, v případě potřeby použijte SecureString. 
+
+## <a name="pass-outputs-to-another-activity"></a>Předejte výstup do jiné
+
+Můžete odeslat vlastní hodnoty z kódu ve vlastní aktivitě zpátky do služby Azure Data Factory. To lze provést napsáním do `outputs.json` z vaší aplikace. Data Factory kopíruje obsah `outputs.json` a připojí ji jako hodnotu do výstup aktivity `customOutput` vlastnost. (Maximální velikost je 2MB.) Pokud chcete využívat obsah `outputs.json` v podřízené aktivity, můžete získat hodnotu s použitím výrazu `@activity('<MyCustomActivity>').output.customOutput`.
 
 ## <a name="retrieve-securestring-outputs"></a>Načíst SecureString výstupy
 

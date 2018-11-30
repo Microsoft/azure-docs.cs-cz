@@ -6,18 +6,18 @@ author: bryanla
 manager: mbaldwin
 services: key-vault
 ms.author: bryanla
-ms.date: 09/05/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: d9fc845316d6e785d8215ac738b893ebc080d911
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1eadea53dda60ef5ac8bbbc3d9e9cfe4b5b373dc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300966"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423588"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba služba do služby Azure Key Vault pomocí rozhraní .NET
 
@@ -183,18 +183,16 @@ Použití certifikátu k přihlašování do služby Azure AD:
 
 1. Vytvoření [certifikátu instančního objektu](/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
 
-2. Nasaďte certifikát do buď _LocalMachine_ nebo _CurrentUser_ ukládat. 
+2. Nasaďte certifikát do buď *LocalMachine* nebo *CurrentUser* ukládat. 
 
 3. Nastavte proměnnou prostředí s názvem **AzureServicesAuthConnectionString** na:
 
     ```
     RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};
-          CertificateStoreLocation={LocalMachine or CurrentUser}
+          CertificateStoreLocation={CertificateStore}
     ```
  
-    Nahraďte _{AppId}_, _{TenantId}_, a _{Thumbprint}_ s hodnotami, které jsou generovány v kroku 1.
-
-    **CertificateStoreLocation** musí být buď _CurrentUser_ nebo _LocalMachine_, podle plánu nasazení.
+    Nahraďte *{AppId}*, *{TenantId}*, a *{Thumbprint}* s hodnotami, které jsou generovány v kroku 1. Nahraďte *{CertificateStore}* s oběma `LocalMachine` nebo `CurrentUser`, podle plánu nasazení.
 
 4. Spusťte aplikaci. 
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: b3d46e10facdef26b36c910a5c23b40a415a2894
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2e65c5f0d6c2d493abcd61bea4077cbdd8ff95fa
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988396"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52330874"
 ---
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
@@ -32,18 +32,18 @@ Zaregistrovat aplikaci několika způsoby. Vyberte možnost, která nejlépe vyh
 1. Přihlaste se k [registrace aplikace Azure portal (preview)](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) pro registraci aplikace.
 1. Na **zaregistrovat aplikaci** stránky, zadejte název pro vaši aplikaci.
 1. V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
-1. Až budete hotovi, vyberte **zaregistrovat**.
+1. Až budete hotovi, vyberte **Zaregistrovat**.
 1. Postupujte podle pokynů rychlý start ke stažení a automaticky jedním kliknutím nakonfigurujte novou aplikaci za vás.
 
 ### <a name="option-2-register-your-application-advanced-mode"></a>Možnost 2: Registrace vaší aplikace (rozšířený režim)
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pro registraci aplikace.
-1. Pokud váš účet umožňuje přístup k více než jednoho tenanta, vyberte svůj účet v pravém horním rohu a nastavení portálu relace k požadované službě Azure AD tenanta.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby a pak vyberte **registrace aplikací (Preview) > Nový registrační**.
+1. Pokud váš účet umožňuje přístup k více tenantům, vyberte svůj účet v pravém horním rohu a nastavte relaci portálu na požadovaného tenanta Azure AD.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** a pak **Registrace aplikací (Preview) > Nová registrace**.
 1. Když **zaregistrovat aplikaci** se zobrazí stránka, zadejte název pro vaši aplikaci.
 1. V části **podporovaných typů účtu**vyberte **účty v jakékoli organizaci adresáři a osobní účty Microsoft**.
 1. V části **identifikátor URI pro přesměrování** vyberte **webové** platformy a nastavte hodnotu na adresu URL aplikace založené na vašem webovém serveru. Naleznete níže uvedených částech pokyny o tom, jak nastavit a získat adresu URL pro přesměrování ve Visual Studiu a uzel.
-1. Až budete hotovi, vyberte **zaregistrovat**.
+1. Až budete hotovi, vyberte **Zaregistrovat**.
 1. V aplikaci **přehled** stránce si poznamenejte **ID aplikace (klient)** hodnotu.
 1. Tento rychlý start vyžaduje [implicitní tok poskytování](../articles/active-directory/develop/v2-oauth2-implicit-grant-flow.md) povolit. V levém navigačním podokně zaregistrovanou aplikaci vyberte **ověřování**.
 1. V **upřesňující nastavení**v části **implicitní grant**, oboje povolili **tokeny typu ID** a **přístupové tokeny** zaškrtávací políčka. Tokeny typu ID a přístupové tokeny jsou povinné, protože tato aplikace potřebuje přihlásit uživatele a volat rozhraní API.
@@ -67,7 +67,8 @@ Zaregistrovat aplikaci několika způsoby. Vyberte možnost, která nejlépe vyh
 
     ```javascript
     var applicationConfig = {
-        clientID: "[Enter the application Id here]",
+        clientID: "Enter_the_Application_Id_here",
+        authority: "https://login.microsoftonline.com/common",
         graphScopes: ["user.read"],
         graphEndpoint: "https://graph.microsoft.com/v1.0/me"
     };

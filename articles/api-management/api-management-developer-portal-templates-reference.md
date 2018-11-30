@@ -1,6 +1,6 @@
 ---
-title: Šablony portálu Azure API Management vývojáře | Microsoft Docs
-description: Zjistěte, jak přizpůsobit obsah stránky na portálu vývojáře pomocí sadu šablon ve službě Azure API Management.
+title: Azure šablon portálu pro vývojáře rozhraní API Management | Dokumentace Microsoftu
+description: Zjistěte, jak přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon ve službě Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,23 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 540e9804d2ee84c050531f5287d4c4b8922ae999
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 0f339984a9db1a337f97e6db24571004cc34f679
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26128745"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445476"
 ---
-# <a name="developer-portal-templates"></a>Šablony na portálu vývojáře
+# <a name="developer-portal-templates"></a>Šablon portálu pro vývojáře
 
-Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.  
+Azure API Management poskytuje schopnost přizpůsobit obsah stránek portálu pro vývojáře pomocí sady šablon, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a do editoru podle vašeho výběru, jako například [DotLiquid pro profesionální návrháře využívající](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), nebo umístění zadaná sada [prostředky řetězce, které](api-management-template-resources.md#strings), [glyfů prostředky](api-management-template-resources.md#glyphs), a [stránce ovládací prvky](api-management-page-controls.md), máte velkou flexibilitu konfigurovat obsahu stránek podle svých potřeb, pomocí těchto šablon.  
   
-Další informace o práci se šablonami najdete v tématu [postup přizpůsobení portálu pro vývojáře API Management pomocí šablon](api-management-developer-portal-templates.md).  
+Další informace o práci se šablonami najdete v tématu [přizpůsobení portálu pro správu rozhraní API pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).  
 
-##  <a name="DeveloperPortalTemplates"></a>Šablony na portálu vývojáře  
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+##  <a name="DeveloperPortalTemplates"></a> Šablon portálu pro vývojáře  
   
 -   [Rozhraní API](api-management-api-templates.md)  
-    -   [Rozhraní API seznamu](api-management-api-templates.md#APIList)  
+    -   [Seznam rozhraní API](api-management-api-templates.md#APIList)  
     -   [Operace](api-management-api-templates.md#Product)  
     -   [Ukázky kódu](api-management-api-templates.md#CodeSamples)  
         -   [Curl](api-management-api-templates.md#Curl)  
@@ -43,7 +45,7 @@ Další informace o práci se šablonami najdete v tématu [postup přizpůsoben
         -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [Produkty](api-management-product-templates.md)  
     -   [Seznam produktů](api-management-product-templates.md#ProductList)  
-    -   [Produktu](api-management-product-templates.md#Product)  
+    -   [Produkt](api-management-product-templates.md#Product)  
 -   [Aplikace](api-management-application-templates.md)  
     -   [Seznam aplikací](api-management-application-templates.md#ProductList)  
     -   [Aplikace](api-management-application-templates.md#Application)  
@@ -56,12 +58,12 @@ Další informace o práci se šablonami najdete v tématu [postup přizpůsoben
     -   [Aktualizovat informace o účtu](api-management-user-profile-templates.md#UpdateAccountInfo)  
 -   [Stránky](api-management-page-templates.md)  
     -   [Přihlásit se](api-management-page-templates.md#SignIn)  
-    -   [Registrace](api-management-page-templates.md#SignUp)  
+    -   [Zaregistrovat se](api-management-page-templates.md#SignUp)  
     -   [Stránka nebyla nalezena.](api-management-page-templates.md#PageNotFound)
 
-## <a name="next-steps"></a>Další kroky  
+## <a name="next-steps"></a>Další postup  
 
-+ [Odkaz na šablonu](api-management-developer-portal-templates-reference.md)  
++ [Referenční informace k šablonám](api-management-developer-portal-templates-reference.md)  
 + [Referenční informace k datovému modelu](api-management-template-data-model-reference.md)  
 + [Ovládací prvky stránek](api-management-page-controls.md)  
 + [Prostředky šablon](api-management-template-resources.md)

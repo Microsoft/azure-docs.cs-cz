@@ -1,7 +1,19 @@
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 11/25/2018
+ms.author: crdun
+ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52440078"
+---
+1. Otevřete projekt v nástroji Android Studio.
 
-1. Otevřete projekt v Android Studio.
-
-2. V **Project Exploreru** v Android studiu, otevřete `ToDoActivity.java` souboru a přidejte následující příkazy pro import:
+2. V **Project Exploreru** v nástroji Android Studio, otevřete `ToDoActivity.java` a přidejte následující příkazy pro import:
 
     ```java
     import java.util.concurrent.ExecutionException;
@@ -47,12 +59,12 @@
     }
     ```
 
-    Tento kód vytvoří metodu pro zpracování procesu ověřování Google. Zobrazí se dialogové okno zobrazí ID ověřeného uživatele. Pouze můžete přejít na úspěšné ověření.
+    Tento kód vytvoří metodu ke zpracování procesu ověřování Google. Dialogové okno zobrazí ID ověřeného uživatele. Pouze můžete přejít na úspěšné ověřování.
 
     > [!NOTE]
-    > Pokud používáte zprostředkovatele identity než Google, změňte hodnotu předaný **přihlášení** metodu pro jednu z následujících hodnot: _MicrosoftAccount_, _Facebook_, _Twitter_, nebo _windowsazureactivedirectory_.
+    > Pokud používáte zprostředkovatelů identity než Google, změňte hodnotu předanou **přihlášení** metody do jednoho z následujících hodnot: _MicrosoftAccount_, _Facebook_, _Twitter_, nebo _windowsazureactivedirectory_.
 
-4. V **onCreate** metoda, přidejte následující řádek kódu po kód, který vytvoří instanci `MobileServiceClient` objektu.
+4. V **onCreate** metodu, přidejte následující řádek kódu za kód, který vytvoří instanci `MobileServiceClient` objektu.
 
     ```java
     authenticate();
@@ -60,7 +72,7 @@
 
     Toto volání zahájí proces ověřování.
 
-5. Přesunout kód zbývající po `authenticate();` v **onCreate** metoda na nový **createTable** metoda:
+5. Přesunout zbývající kód po `authenticate();` v **onCreate** metoda do nového **createTable** metody:
 
     ```java
     private void createTable() {
@@ -80,7 +92,7 @@
     }
     ```
 
-6. Aby přesměrování funguje podle očekávání, přidejte následující fragment `RedirectUrlActivity` k `AndroidManifest.xml`:
+6. Chcete-li zajistit přesměrování funguje podle očekávání, přidejte následující fragment `RedirectUrlActivity` k `AndroidManifest.xml`:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
@@ -94,7 +106,7 @@
     </activity>
     ```
 
-7. Přidat `redirectUriScheme` k `build.gradle` vaší aplikace Android.
+7. Přidat `redirectUriScheme` k `build.gradle` vaší aplikace pro Android.
 
     ```gradle
     android {
@@ -111,7 +123,7 @@
     }
     ```
 
-8. Přidat `com.android.support:customtabs:23.0.1` k závislosti ve vaší `build.gradle`:
+8. Přidat `com.android.support:customtabs:23.0.1` závislostí ve vaší `build.gradle`:
 
     ```gradle
     dependencies {
@@ -120,9 +132,9 @@
     }
     ```
 
-9. Z **spustit** nabídky, klikněte na tlačítko **spuštění aplikace** spusťte aplikaci a přihlaste se pomocí zprostředkovatele identity vybrané.
+9. Z **spustit** nabídky, klikněte na tlačítko **spuštění aplikace** spusťte aplikaci a přihlaste se pomocí zprostředkovatele identity zvolená.
 
 > [!WARNING]
 > Schéma adresy URL uvedené rozlišuje velká a malá písmena. Ujistěte se, že všechny výskyty `{url_scheme_of_you_app}` velká a malá písmena.
 
-Pokud jste úspěšně přihlášeni, aplikace se budou spouštět bez chyby a nyní byste měli mít provést aktualizace dat a zadat dotaz na back-end službu.
+Pokud jste úspěšně přihlášení, aplikace by měla běžet bez chyb a by měl mít provést aktualizace dat a dotazování na back-end službu.

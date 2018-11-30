@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 5267ce5c50e8a57843f0bc54165289b38013ad91
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2baae0a1932bdcb7fa5e29ac06dd8ae7a7020a30
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986111"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421840"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Konfigurace virtuální sítě (classic) pomocí souboru konfigurace sítě
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a classic](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala model nasazení Resource Manager.
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala model nasazení Resource Manager.
 
 Můžete vytvořit a nakonfigurovat virtuální síť (klasická) s konfiguračním souboru sítě pomocí rozhraní příkazového řádku Azure classic (rozhraní příkazového řádku) nebo Azure Powershellu. Nejde vytvořit nebo upravit virtuální sítě pomocí modelu nasazení Azure Resource Manageru pomocí souboru konfigurace sítě. Na webu Azure portal k vytvoření nebo úpravě virtuální sítě (classic) pomocí souboru konfigurace sítě, ale můžete využívat na webu Azure portal k vytvoření virtuální sítě (classic), nelze použít bez použití konfiguračního souboru sítě.
 
@@ -44,7 +44,7 @@ Prostředí PowerShell nebo rozhraní Azure CLI classic můžete exportovat soub
     Get-AzureVNetConfig -ExportToFile c:\azure\networkconfig.xml
     ```
 
-### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+### <a name="azure-classic-cli"></a>Azure Classic CLI
 
 1. [Instalace Azure classic CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dokončete zbývající kroky z klasického příkazového řádku CLI.
 2. Přihlaste se k Azure zadáním `azure login` příkazu.
@@ -132,9 +132,9 @@ Chcete-li importovat soubor konfigurace sítě můžete použít PowerShell nebo
     Set-AzureVNetConfig  -ConfigurationPath c:\azure\networkconfig.xml
     ```
 
-### <a name="azure-classic-cli"></a>Klasické rozhraní příkazového řádku Azure
+### <a name="azure-classic-cli"></a>Azure Classic CLI
 
-1. [Instalace Azure classic CLI](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dokončete zbývající kroky z klasického příkazového řádku CLI.
+1. [Instalace Azure classic CLI](/cli/azure/install-classic-cli). Dokončete zbývající kroky z klasického příkazového řádku CLI.
 2. Přihlaste se k Azure zadáním `azure login` příkazu.
 3. Zkontrolujte jestli pracujete v režimu asm tak, že zadáte `azure config mode asm` příkazu.
 4. Změňte adresář a název souboru v následujícím příkazu podle potřeby, pomocí příkazu importujte soubor konfigurace sítě:

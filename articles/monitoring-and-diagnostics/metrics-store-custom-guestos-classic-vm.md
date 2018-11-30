@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: db0de3ec354fd599d2c10b26eea2991469410c12
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 0b1209c1d8d92b08d15cfbfd6e323b7bd748e2f5
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163363"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316913"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Odeslání metrik hostovaného operačního systému k úložišti dat monitorování Azure pro Windows virtuální počítač (klasický)
 
@@ -27,7 +27,7 @@ Proces, který je popsaný v tomto článku funguje pouze v klasických virtuál
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musí být [Správce služeb nebo spolupracující správce](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md) v rámci předplatného Azure. 
+- Musí být [Správce služeb nebo spolupracující správce](../billing/billing-add-change-azure-subscription-administrator.md) v rámci předplatného Azure. 
 
 - Předplatné musí být zaregistrovaná s [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal). 
 

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d72ffd849f9e1e6e661b0e54b7182b02a16c8024
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 3e50bf42076132f69fcb655da61a790fe207b949
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568984"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444405"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-java-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů Java pro Azure IoT Edge
 
@@ -64,7 +64,7 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge založené na jazyce
 7. Zvolte **modul Java** jako šablona pro první modul v rámci řešení.
 8. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru. 
 8. Zadejte hodnotu pro groupId nebo přijměte výchozí **com.edgemodule**.
-9. Zadejte úložiště imagí pro modul. VS Code autopopulates modulu pojmenovat, abyste měli pouze nahradit **localhost:5000** nahraďte svými vlastními informacemi registru. Pokud používáte místní registru Dockeru pro testování, pak místního hostitele je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte.
+9. Zadejte úložiště imagí pro modul. VS Code autopopulates modulu pojmenovat, abyste měli pouze nahradit **localhost:5000** nahraďte svými vlastními informacemi registru. Pokud používáte místní registru Dockeru pro testování, pak místního hostitele je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte. Konečný řetězec vypadá jako \<název registru\>.azurecr.io/\<modulename\>.
 
    ![Zadání úložiště imagí Dockeru](./media/how-to-develop-node-module/repository.png)
 
@@ -79,6 +79,8 @@ V řešení máte tři položky:
    >Pokud zadáte úložišti imagí pro modul je jenom vytvořen soubor prostředí. Pokud jste přijali výchozí nastavení localhost testovat a ladit v místním prostředí, pak není nutné deklarovat proměnné prostředí. 
 
 * A **deployment.template.json** souborů obsahuje nový modul spolu s ukázku **tempSensor** modul, který simuluje data, která můžete použít pro testování. Další informace o způsobu práce manifesty nasazení najdete v tématu [pochopit, jak můžete použít moduly IoT Edge a způsob jejich konfiguraci a znovu použít](module-composition.md).
+* A **deployment.debug.template.json** souboru kontejnery ladicí verze modulu bitové kopie s možností správný kontejner.
+
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
@@ -90,6 +92,14 @@ Visual Studio Code obsahuje podporu pro Javu. Další informace o [jak pracovat 
 
 ## <a name="launch-and-debug-module-code-without-container"></a>Spuštění a ladění kódu modulu bez kontejneru
 Modul IoT Edge Java závisí na sadu SDK pro zařízení Azure IoT Java. V modulu kódu výchozí inicializaci **ModuleClient** nastavení prostředí a zadejte název, což znamená, že modul IoT Edge Java vyžaduje nastavení prostředí a spustíte a je také potřeba odeslat nebo směrování zpráv do vstupní kanály. Výchozí modul Java obsahuje pouze jednu vstupní kanál a název je **vstup1**.
+
+### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>Nastavení simulátoru IoT Edge pro řešení IoT Edge
+
+Ve vývojovém počítači můžete spustit simulátor IoT Edge místo instalace démon zabezpečení IoT Edge pro spuštění vašeho řešení IoT Edge. 
+
+1. V Průzkumníku zařízení na levé straně, klikněte pravým tlačítkem na hraničních zařízeních IoT zařízení ID, vyberte **nastavení IoT Edge simulátor** spusťte simulátor připojovacím řetězcem zařízení.
+
+2. Uvidíte, že simulátor IoT Edge se úspěšně instalace v integrovaném terminálu.
 
 ### <a name="setup-iot-edge-simulator-for-single-module-app"></a>Nastavení simulátoru IoT Edge pro jeden modul aplikace
 
@@ -132,7 +142,7 @@ Modul IoT Edge Java závisí na sadu SDK pro zařízení Azure IoT Java. V modul
 
 ## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>Vytvořit kontejner modulu pro ladění a ladění v připojení režimu
 
-Výchozí řešení obsahuje dva moduly, jeden je modul simulované teplotní snímač a druhý je v modulu kanálu Java. Simulované teplotní snímač odesílá zprávy do kanálu modulu Java a pak zprávy jsou směrované do služby IoT Hub. Ve složce modulu, který jste vytvořili existuje několik souborů Docker pro typy jiný kontejner. Použijte některý z těchto souborů, které končí příponou **.debug** vytvořit váš modul pro testování. Moduly v jazyce Java v současné době pouze podpory ladění do kontejnerů linuxu amd64 a linux arm32v7.
+Výchozí řešení obsahuje dva moduly, jeden je modul simulované teplotní snímač a druhý je v modulu kanálu Java. Simulované teplotní snímač odesílá zprávy do kanálu modulu Java a pak zprávy jsou směrované do služby IoT Hub. Ve složce modulu, který jste vytvořili existuje několik souborů Docker pro typy jiný kontejner. Použijte některý z těchto souborů, které končí příponou **.debug** vytvořit váš modul pro testování. Ve výchozím nastavení **deployment.debug.template.json** obsahuje ladicí verze Image. Moduly v jazyce Java v současné době pouze podpory ladění do kontejnerů linuxu amd64 a linux arm32v7. Přepínač nástroje DEVENV můžete váš výchozí platformu Azure IoT Edge ve stavovém nástroji VS Code.
 
 ### <a name="setup-iot-edge-simulator-for-iot-edge-solution"></a>Nastavení simulátoru IoT Edge pro řešení IoT Edge
 
@@ -144,12 +154,9 @@ Ve vývojovém počítači můžete spustit simulátor IoT Edge místo instalace
 
 ### <a name="build-and-run-container-for-debugging-and-debug-in-attach-mode"></a>Sestavit a spustit kontejner pro ladění a ladění v připojení režimu
 
-1. V nástroji VS Code, přejděte `deployment.template.json` souboru. Aktualizovat adresu URL bitové kopie modulu přidáním **.debug** na konec.
+1. Přejděte na adresu `App.java`. Přidejte zarážku v tomto souboru.
 
-2. Nahraďte CreateOptions field modul Java v **deployment.template.json** níže obsah a uložte tento soubor: 
-    ```json
-    "createOptions":"{\"HostConfig\":{\"PortBindings\":{\"5005/tcp\":[{\"HostPort\":\"5005\"}]}}}"
-    ```
+2. V Průzkumníku souborů VS Code, vyberte `deployment.debug.template.json` soubor pro vaše řešení v místní nabídce klikněte na tlačítko **sestavení a spuštění hraničních zařízeních IoT řešení v simulátoru**. Můžete sledovat všechny kontejneru modulu protokoly ve stejném okně. Můžete také přejít na Průzkumník Dockeru a sledujte stav kontejneru.
 
 5. Přejděte do zobrazení ladění VS Code. Vyberte konfigurační soubor ladění pro modul. Název možnosti ladění by měl být podobný **ModuleName vzdálené ladění (Java)**.
 

@@ -9,20 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 60b80843ce343c667413be55b59d02ac14b349f3
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d2aeb41c2fcc11c37ec56707932eabcf63e026a0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037511"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497209"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Instalace publikované aplikace – H2O Sparkling Water
 
-Tento článek popisuje, jak nainstalovat a spustit [H20 Sparkling Water](http://www.h2o.ai/) publikovat aplikace Apache Hadoop v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Tento článek popisuje, jak nainstalovat a spustit [H20 Sparkling Water](http://www.h2o.ai/) publikované [Apache Hadoop](https://hadoop.apache.org/) aplikaci v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-h2o-sparkling-water"></a>O H2O Sparkling Water
 
-H2O Sparkling Water je open source platforma pro distribuované plně v paměti strojové učení s lineární škálovatelnost. H2O Sparkling Water umožňuje kombinovat rychlé a škálovatelné algoritmy machine learningu H2O se schopnostmi Sparku. S Sparkling Water můžete uživatele přimět výpočtu z jazyků Scala, R a Python s pomocí uživatelského rozhraní H2O Flow.
+H2O Sparkling Water je open source platforma pro distribuované plně v paměti strojové učení s lineární škálovatelnost. H2O Sparkling Water umožňuje kombinovat rychlé a škálovatelné algoritmy machine learningu H2O se schopnostmi [Apache Spark](https://spark.apache.org/). S Sparkling Water, můžete uživatele přimět výpočtu z [Scala](https://www.scala-lang.org/), R a Python s pomocí uživatelského rozhraní H2O Flow.
 
 H2O Sparkling Water umožňuje:
 
@@ -49,11 +49,11 @@ K instalaci této aplikace na nový cluster HDInsight nebo stávajícího cluste
 
 ## <a name="install-the-h2o-sparkling-water-published-application"></a>Instalace H2O Sparkling Water publikované aplikace
 
-Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých výrobců softwaru, přečtěte si [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md).
+Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých výrobců softwaru, přečtěte si [instalovat aplikace jiných výrobců Apache Hadoop](hdinsight-apps-install-applications.md).
 
 ## <a name="launch-h2o-sparkling-water"></a>Spusťte H2O Sparkling Water
 
-1. Po dokončení instalace můžete začít používat H2O Sparkling Water (h2o sparklingwater) z váš cluster na webu Azure portal tak, že otevřete poznámkové bloky Jupyter (`https://<ClusterName>.azurehdinsight.net/jupyter`). Získáte taky pro Jupyter tak, že vyberete **řídicí panel clusteru** z podokna clusteru na portálu, pak vyberete **Poznámkový blok Jupyter**. Zobrazí se výzva k zadání přihlašovacích údajů. Zadejte přihlašovací údaje clusteru Hadoop je definován na vytváření clusteru.
+1. Po dokončení instalace můžete začít používat H2O Sparkling Water (h2o sparklingwater) z váš cluster na webu Azure portal tak, že otevřete [poznámkové bloky Jupyter](https://jupyter.org/) (`https://<ClusterName>.azurehdinsight.net/jupyter`). Získáte taky pro Jupyter tak, že vyberete **řídicí panel clusteru** z podokna clusteru na portálu, pak vyberete **Poznámkový blok Jupyter**. Zobrazí se výzva k zadání přihlašovacích údajů. Zadejte přihlašovací údaje clusteru Hadoop je definován na vytváření clusteru.
 
 2. V Jupyter, uvidíte tři složky: H2O. PySparkling příklady, příklady PySpark a Scala příklady. Vyberte **H2O. PySparkling příklady** složky.
 

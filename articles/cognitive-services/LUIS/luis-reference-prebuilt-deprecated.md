@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: ae23e6b8fd1d2f6d63293a9626880ae3823afc61
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5f722e9eae45f2df86b8c0831ffd33ad3edd8e5b
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033273"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334104"
 ---
 # <a name="deprecated-entities"></a>Zastaralé entity
 Následující předem připravených entit se považují za zastaralé a nelze přidat do nové aplikace LUIS.
@@ -29,7 +29,7 @@ Následující předem připravených entit se považují za zastaralé a nelze 
 
 #### <a name="3-geography-subtypes"></a>3 podtypy zeměpisné oblasti
 
-Předem připravených entit   |   Příklad utterance   |   JSON
+Předem připravených entit   |   Ukázková promluva   |   JSON
 ------|------|------|
 ```builtin.geography.city```   |  ```seattle```    |```{ "type": "builtin.geography.city", "entity": "seattle" }```|
 ```builtin.geography.city```   |  ```paris```    |```{ "type": "builtin.geography.city", "entity": "paris" }```|
@@ -64,7 +64,7 @@ Integrované entity encyklopedie obsahuje více než 100 podtypy v následujíc�
  ```
 
 
-Předem připravených entit   |   Předem připravených entit (podtypy)   |   Příklad utterance
+Předem připravených entit   |   Předem připravených entit (podtypy)   |   Ukázková promluva
 ------|------|------|
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.people.person ```|```bryan adams``` |
 ```builtin.encyclopedia.people.person```| ```builtin.encyclopedia.film.producer ```| ```walt disney``` |

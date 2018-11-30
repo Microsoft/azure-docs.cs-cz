@@ -9,34 +9,27 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 11/20/2018
-ms.openlocfilehash: 08510961616d2be8eac9b6a19063d5f0d613321f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 11/27/2018
+ms.openlocfilehash: 91d0f3565db484504a67a3b6ae0989b9291cd24f
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263294"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446419"
 ---
 # <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Příprava dat pro modelování s Azure Machine Learning
- 
-V tomto článku se dozvíte o případy použití a jedinečné funkce sady SDK pro Azure Machine Learning Data Prep. Příprava dat je nejdůležitější část služby machine learning pracovního postupu. Data z reálného světa často nefunguje, nekonzistentní nebo nejde použít jako trénovacích dat bez významného čištění a transformace. Oprava chyby a anomálie v nezpracovaných dat a vytváření nových funkcí, které jsou relevantní pro problém, který se snažíte vyřešit, zvýší přesnost modelu.
+
+V tomto článku se dozvíte o případy použití a jedinečné funkce sady SDK pro Azure Machine Learning Data Prep. Příprava dat je nejdůležitější část služby machine learning pracovního postupu. Data z reálného světa často nefunguje, nekonzistentní nebo nejde použít jako trénovacích dat bez významného čištění a transformace. Oprava chyby a anomálie v nezpracovaných dat a vytváření nových funkcí, které jsou relevantní pro problém, který se snažíte vyřešit, zvýší přesnost modelu. Sada SDK byla navržena jako zkušenosti uživatelů z dalších běžných dat přípravu knihoven, při nabídky výhod pro klíčové scénáře a udržování vzájemná funkční spolupráce s těmito knihovnami.
 
 Můžete připravit vaše data v Pythonu pomocí [sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk).
 
 ## <a name="azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning přípravy dat sady SDK
 
-[Sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk) je knihovna Python, která zahrnuje:
-+ Mnoho běžných nástrojů předzpracování dat
-+ Vytváření automatizovaných funkcí a transformace odvozený z příkladů
+[Sady SDK služby Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk) je knihovna Python, která nabízí:
 
-Sada SDK, jako je základní funkce podobný Oblíbené knihovny **Pandas** a **PySpark**, zatím nabízí větší flexibilitu. Pandas je obvykle nejužitečnější na menší sady dat (< 2 – 5 GB), než kapacita omezení paměti mít vliv na výkon. Naproti tomu PySpark je obecně pro velké objemy dat aplikace, ale provede další režií, která usnadňuje práci s malými sadami dat mnohem pomalejší.
-
-Sady SDK pro Azure Machine Learning Data Prep nabízí:
-- Praktických a pohodlí při práci s malými sadami dat
-
-- Škálovatelnost pro moderní aplikace pro velké objemy dat
-
-- Možnost používat a škálovat stejný kód pro oba případy použití
+* Inteligentní čas ukládání transformace, jako je přibližných shod seskupení, odvozené sloupec podle příkladu, automaticky rozdělení, inteligentní číst soubor a doprava – nerovné zpracování schématu.
+* Jedno rozhraní API, která funguje na malé data místně nebo velkých objemů dat v cloudu, s **několik bez jediné změny kódu**.
+* Možnost více efektivně škálovat na jednom počítači prostřednictvím datových proudů přístup ke zpracování dat, nikoli načtení do paměti.
 
 ### <a name="install-the-sdk"></a>Instalace sady SDK
 
@@ -57,9 +50,12 @@ import azureml.dataprep as dprep
 Další informace o modulech a funkce této sady SDK najdete v tématu [referenční dokumentace sady SDK pro Data Prep](https://aka.ms/data-prep-sdk).
 
 Následující příklady zvýrazněte některé jedinečné funkce sady SDK, včetně:
-+ Automatické rozpoznání typu
-+ Vytváření automatizovaných funkcí
-+ Souhrnné statistiky
+
+* Automatické rozpoznání typu
+* Inteligentní transformace
+* Souhrnné statistiky
+* Funkce víc prostředí
+
 
 #### <a name="automatic-file-type-detection"></a>Automatické rozpoznání typu
 
@@ -69,7 +65,7 @@ Použití `smart_read_file()` funkce načtěte svá data bez nutnosti zadávat t
 dataflow = dprep.smart_read_file(path="<your-file-path>")
 ```
 
-#### <a name="automated-feature-engineering"></a>Vytváření automatizovaných funkcí
+#### <a name="intelligent-transforms"></a>Inteligentní transformace
 
 Použití sady SDK k rozdělení a odvození sloupce podle příkladu a odvození k automatizaci vytváření funkcí. Předpokládá, že jste pole v toku dat objektu volat `datetime` s hodnotou `2018-09-15 14:30:00`.
 
@@ -130,6 +126,7 @@ Pokud chcete zobrazit podrobné příklady a kód pro jednotlivé kroky přípra
 ![Proces přípravy dat.](./media/concept-data-preparation/data-prep-process.png)
 
 ## <a name="next-steps"></a>Další postup
+
 Kontrola [Poznámkový blok příklad](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/tutorials/getting-started/getting-started.ipynb) přípravy dat pomocí sady SDK pro Azure Machine Learning Data Prep.
 
 Azure Machine Learning Data Prep SDK [referenční dokumentaci](https://docs.microsoft.com/python/api/overview/azure/dataprep/intro?view=azure-dataprep-py).

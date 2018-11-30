@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: jroth
-ms.openlocfilehash: a748532de7e8b8e910e335b67a693c4470861bf1
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: b19cf9cd4b67479d811a590cb80a618680f3b3d5
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003555"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496480"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Ceny pokyny pro virtuální počítače Azure s SQL serverem
 
@@ -90,6 +90,9 @@ Vytvoření virtuálního počítače Azure s SQL serverem 2017 s jedním z těc
 >
 >Nezahrnuje dodatečné licenční náklady na pro edice Web, Standard a Enterprise systému SQL Server. Pokud chcete získat co nejvíce zpřesnili cenové odhad, vyberte svůj operační systém a edice systému SQL Server na stránce s cenami [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
+> [!NOTE]
+> Nyní je možné změnit licenční model plateb za využití na používání vlastní licence (BYOL) a zpět. Další informace najdete v tématu [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). 
+
 ## <a id="byol"></a> Používání vlastní licence (BYOL)
 
 **Přináší díky mobilitě licencí používat vlastní licenci na SQL Server**, která se také označují jako **BYOL**, znamená, že pomocí stávající licence SQL Server svazek s programem Software Assurance na Virtuálním počítači Azure. SQL Server virtuálního počítače s pomocí BYOL jenom poplatky za náklady na provozování virtuálního počítače, nikoli pro licencování SQL serveru, vzhledem k tomu, že jste už získali licencí se Software Assurance prostřednictvím multilicenčního programu.
@@ -123,7 +126,9 @@ Vytvoření virtuálního počítače Azure s SQL serverem 2017 s jedním z těc
 > Dejte nám vědět do 10 dnů kolik licencí SQL serveru, který používáte v Azure. Odkazy na předchozí obrázky jsou pokyny o tom, jak to provést.
 
 > [!NOTE]
-> Není možné změnit licenční model platbami za sekundu virtuálního počítače s SQL serverem používat vlastní licenci. V takovém případě musíte vytvořit nový virtuální počítač BYOL a migrovat databáze do nového virtuálního počítače.
+> Nyní je možné změnit licenční model plateb za využití na používání vlastní licence (BYOL) a zpět. Další informace najdete v tématu [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). 
+
+
 
 ## <a name="reduce-costs"></a>Snížení nákladů
 

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 8986f18b9f1f2953ad0612679d31996628870cb1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a965cd70e3eba04f278cf432196b9386b537462d
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988219"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424336"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Architektura v Azure Active Directory
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) slouží k uspořádání objektů, jako jsou 
 
 ## <a name="who-can-sign-in-to-your-app"></a>Kdo se může přihlásit do aplikace?
 
-Při rozhodování o vývoj aplikací, mohou zvolit bude jedním tenantem nebo více tenanty při registraci aplikace ve své aplikaci nakonfigurovat tak, [webu Azure portal](http://portal.azure.com).
+Při rozhodování o vývoj aplikací, mohou zvolit bude jedním tenantem nebo více tenanty při registraci aplikace ve své aplikaci nakonfigurovat tak, [webu Azure portal](https://portal.azure.com).
 * Aplikace s jedním tenantem jsou dostupné jenom v tenantovi, které jste zaregistrovali v rámci, označované také jako jejich domovské tenanta.
 * Aplikace s více tenanty jsou dostupné pro uživatele v jeho domovském tenantovi a jiných tenantů.
 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3bce69236586bcd0a250c47f1129ac0d94e8b26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ef8b621b41bb43c46ef728e28d3b312ac49f1da3
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231478"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308779"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -39,7 +39,10 @@ Azure AD Connect používá 3 účty, aby bylo možné synchronizovat informace 
 
 Kromě tyto tři účty používají ke spouštění služby Azure AD Connect budete také potřebovat následující další účty k instalaci Azure AD Connect.  Jsou to:
 
-- **Účet správce podnikové sítě AD DS**: použitý k instalaci Azure AD Connect
+- **Účet místního správce**: správce, který je instalace Azure AD Connect a který má oprávnění místního správce na počítači.
+
+- **Účet správce podnikové sítě AD DS**: Volitelně můžete použít k vytvoření "účet AD DS konektoru" výše.
+
 - **Účet Azure AD globálního správce**: použít k vytvoření účtu Azure AD Connector a nakonfigurovat služby Azure AD.
 
 - **Účet SQL SA (volitelné)**: použili k vytvoření databáze ADSync při použití plnou verzi systému SQL Server.  Tento Server SQL může být místní nebo vzdálené instalace služby Azure AD Connect.  Tento účet může být stejný účet jako správce podnikové sítě.  Zřizování může databáze nyní možné provádět vzdáleně správce SQL a následně je nainstalován Správce služby Azure AD Connect s oprávněními vlastníka databáze.  Informace o najdete v článku [instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](how-to-connect-install-sql-delegation.md)

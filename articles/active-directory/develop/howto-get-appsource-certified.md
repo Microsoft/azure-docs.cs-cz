@@ -17,12 +17,12 @@ ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 603da0add9efba4e68088bf0eb6ab919ec9988e2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 30dff14f322bcd66ea56b4b12843a6293cd95326
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955483"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423792"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Získání certifikace AppSource pro Azure Active Directory
 
@@ -118,9 +118,9 @@ Další informace o AppSource zkušební prostředí, najdete v části [toto vi
 
 ## <a name="get-support"></a>Získat podporu
 
-Integrace služby Azure AD, používáme [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou k poskytování podpory. 
+Integrace služby Azure AD, používáme [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) s komunitou k poskytování podpory. 
 
-Důrazně doporučujeme nejprve pokládání otázek na Stack Overflow a Procházet zobrazíte, pokud někdo položil dotaz před stávající problémy. Ujistěte se, že jsou označené svoje dotazy nebo připomínky [ `[azure-active-directory]` a `[appsource]` ](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
+Důrazně doporučujeme nejprve pokládání otázek na Stack Overflow a Procházet zobrazíte, pokud někdo položil dotaz před stávající problémy. Ujistěte se, že jsou označené svoje dotazy nebo připomínky [ `[azure-active-directory]` a `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource).
 
 Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah.
 

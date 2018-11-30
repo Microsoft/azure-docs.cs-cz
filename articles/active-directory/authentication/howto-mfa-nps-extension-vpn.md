@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f08bf6a65a93c31d76c5b336cc6ef433153d71c4
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297567"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423113"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrovat vaše infrastruktura sítě VPN s Azure MFA pomocí rozšíření Server NPS pro Azure
 
@@ -438,7 +438,7 @@ Související události z protokolu ověřování Azure Multi-Factor Authenticat
 
 Postup řešení potíží pro pokročilé zkontrolujte soubory protokolu formátu databáze serveru NPS ve kterém je nainstalovaná služba NPS. Soubory protokolu se vytvoří v _%SystemRoot%\System32\Logs_ složky jako soubory text oddělený čárkami. Popis souborů protokolu najdete v tématu [interpretovat NPS formátu soubory protokolů databáze](https://technet.microsoft.com/library/cc771748.aspx). 
 
-Položky v těchto souborech protokolu jsou obtížně interpretovat, ledaže byste je vyexportovali pro tabulku nebo databázi. Můžete najít mnoho služby IAS (Internet Authentication) analýza online nástroje pro pomoc při interpretaci souborů protokolu. Výstup těchto ke stažení [shareware aplikace](http://www.deepsoftware.com/iasviewer) je znázorněna zde: 
+Položky v těchto souborech protokolu jsou obtížně interpretovat, ledaže byste je vyexportovali pro tabulku nebo databázi. Můžete najít mnoho služby IAS (Internet Authentication) analýza online nástroje pro pomoc při interpretaci souborů protokolu. Výstup těchto ke stažení [shareware aplikace](https://www.deepsoftware.com/iasviewer) je znázorněna zde: 
 
 ![Shareware aplikace](./media/howto-mfa-nps-extension-vpn/image49.png)
 

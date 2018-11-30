@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/6/2018
 ms.author: tylerfox
-ms.openlocfilehash: 4bf46501a75b9dd5be7ae1b446a0db90c20be559
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 936e53ca328b0f54bfd75e7b3d4f6747b0037669
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235254"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495171"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí Azure Powershellu
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Prostředí Azure PowerShell slouží k řízení a automatizaci nasazení a správu vašich úloh v Azure. V tomto článku se dozvíte, jak spravovat clustery systému Apache Hadoop v Azure HDInsight pomocí Azure Powershellu. Seznam rutin Powershellu pro HDInsight najdete v tématu [Reference k rutinám HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx).
+Prostředí Azure PowerShell slouží k řízení a automatizaci nasazení a správu vašich úloh v Azure. V tomto článku se dozvíte, jak spravovat [Apache Hadoop](https://hadoop.apache.org/) clustery v Azure HDInsight pomocí Azure Powershellu. Seznam rutin Powershellu pro HDInsight najdete v tématu [Reference k rutinám HDInsight](https://msdn.microsoft.com/library/azure/dn479228.aspx).
 
 **Požadavky**
 
@@ -80,12 +80,12 @@ Funkce škálování clusteru umožňuje změnit počet uzlů pracovního proces
 
 Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight:
 
-* Hadoop
+* Apache Hadoop
 
     Bezproblémově můžete zvýšit počet pracovních uzlů v clusteru Hadoop, na kterém běží bez dopadu na všechny úlohy čekající na vyřízení nebo spuštěné. Nové úlohy můžete odeslat také když probíhá operace. Selhání v rámci operace škálování jsou zpracovány bez výpadku v tak, aby cluster zůstane vždy ve funkčním stavu.
 
     Pokud je Hadoop cluster je kapacitu vertikálně snížit snížením počtu datových uzlů, jsou restartovat některé ze služeb v clusteru. Restartování služeb způsobí, že všechny spuštěné a čekající úlohy selhání po dokončení operace škálování. Můžete, ale neúspěšné úlohy po dokončení operace.
-* HBase
+* Apache HBase
 
     Bezproblémově můžete přidat nebo odebrat uzly do clusteru HBase během jejího běhu. Oblastní servery jsou automaticky rovnoměrně rozdělen do několika minut od dokončení operace škálování. Můžete však také ručně vyvážit místní servery. přihlášením k hlavnímu uzlu clusteru a pak spusťte následující příkazy z okna příkazového řádku:
 
@@ -95,7 +95,7 @@ Dopad Změna počtu datových uzlů pro každý typ clusteru podporuje HDInsight
     >balancer
     ```
 
-* Storm
+* Apache Storm
 
     Bezproblémově můžete přidat nebo odebrat datových uzlů do clusteru Storm během jejího běhu. Ale po úspěšném dokončení operace škálování, budete muset vyrovnat topologie.
 
@@ -207,25 +207,25 @@ $resourceGroupName = $cluster.ResourceGroup
 
 
 ## <a name="submit-jobs"></a>Odesílání úloh
-**Odesílat úlohy MapReduce**
+**Odesílat úlohy Apache Hadoop MapReduce**
 
-Zobrazit [spuštění příkladů MapReduce součástí HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
+Zobrazit [spuštění příkladů Apache Hadoop MapReduce součástí HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
-**K odesílání úloh Hive**
+**Odesílat úlohy Apache Hive**
 
-Zobrazit [spouštění dotazů Hive pomocí prostředí PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
+Zobrazit [spouštění Apache dotazů Hive pomocí prostředí PowerShell](hadoop/apache-hadoop-use-hive-powershell.md).
 
-**Odeslání úlohy Pig**
+**Odesílat úlohy Apache Pig**
 
-Zobrazit [úlohy Pig spuštění pomocí prostředí PowerShell](hadoop/apache-hadoop-use-pig-powershell.md).
+Zobrazit [úloh spustit Apache Pig s využitím Powershellu](hadoop/apache-hadoop-use-pig-powershell.md).
 
-**K odesílání úloh Sqoop**
+**Odesílat úlohy Apache Sqoop**
 
-Zobrazit [použití nástroje Sqoop se HDInsight](hadoop/hdinsight-use-sqoop.md).
+Zobrazit [použití Apache Sqoop s HDInsight](hadoop/hdinsight-use-sqoop.md).
 
-**K odesílání úloh Oozie**
+**Odesílat úlohy Apache Oozie**
 
-Zobrazit [použití Oozie s Hadoopem k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie.md).
+Zobrazit [použití Apache Oozie s Hadoopem Apache k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů Blob v Azure
 Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
@@ -236,7 +236,7 @@ Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
 * [Správa HDInsight pomocí rozhraní příkazového řádku][hdinsight-admin-cli]
 * [Vytvoření clusterů HDInsight][hdinsight-provision]
 * [Nahrání dat do služby HDInsight][hdinsight-upload-data]
-* [Odesílání úloh Hadoop prostřednictvím kódu programu][hdinsight-submit-jobs]
+* [Odeslání úloh systému Apache Hadoop prostřednictvím kódu programu][hdinsight-submit-jobs]
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/

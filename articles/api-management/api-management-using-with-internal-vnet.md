@@ -14,26 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 6b6fd7395f7aff303f4950fb07bd0472cf7057a2
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: acaf73c2d981761b0bc57cfccbbf6c6a48e5e0c2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145736"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446498"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Pomocí služby Azure API Management k interní virtuální síti
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není přístupný na Internetu. Řadu technologií VPN jsou k dispozici při připojování. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:
 * Externí
 * Interní
 
-
 Když API Management se nasadí v režimu interní virtuální síti, jsou viditelné ve virtuální síti, které řídí přístup k pouze všechny koncové body služby (brána, portál pro vývojáře, webu Azure portal, Přímá správa a Git). Žádný z koncových bodů služby je zaregistrovaná na veřejném serveru DNS.
 
 Použití služby API Management v interní režimu, můžete dosáhnout následujících scénářů:
+
 * Ujistěte se, rozhraní API hostované ve vašem privátním datacentru bezpečně je zpřístupnit třetími stranami mimo něj pomocí připojení site-to-site a připojení Azure ExpressRoute VPN.
 * Povolte hybridní cloudové scénáře vystavení rozhraní API založená na cloudu a místním rozhraním API prostřednictvím společnou bránu.
 * Správa rozhraní API hostovaná v několika geografických umístěních pomocí koncového bodu jednu bránu. 
 
+[!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -51,7 +52,7 @@ Služba API Management v interní virtuální síti je hostovaných za službou 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Povolit připojení k virtuální síti pomocí webu Azure portal
 
 1. Přejděte k vaší instanci Azure API Management v [webu Azure portal](https://portal.azure.com/).
-2. Vyberte **virtuální síť**.
+2. Vyberte **Virtuální síť**.
 3. Konfigurace instance API Management k nasazení ve virtuální síti.
 
     ![Nabídky pro nastavení Azure API Management v interní virtuální síti][api-management-using-internal-vnet-menu]

@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: c85ad59acc8e307de05f41365855f3a9669ac2b5
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 0d2f55538517881ce6cc237885f3bcadfa084520
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034672"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52494956"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Použití zobrazení Apache Ambari k ladění úloh Tez Apache v HDInsight
 
-Apache Ambari webového uživatelského rozhraní pro HDInsight obsahuje Apache Tez zobrazení, které můžete použít k pochopení a ladění úloh, které používají Tez. Zobrazení Tez umožňuje vizualizovat úlohy jako graf připojené položky, jednotlivé položky Přejít k podrobnostem a získat statistiky a informace o protokolování.
+[Apache Ambari](https://ambari.apache.org/) obsahuje webové uživatelské rozhraní pro HDInsight [Apache TEZ](https://tez.apache.org/) zobrazení, které můžete použít k pochopení a ladění úloh, které používají Tez. Zobrazení Tez umožňuje vizualizovat úlohy jako graf připojené položky, jednotlivé položky Přejít k podrobnostem a získat statistiky a informace o protokolování.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Správa verzí komponenty HDInsight](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -101,8 +101,8 @@ Ke spuštění dotazu Hive, který používá Tez, postupujte následovně:
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste se naučili, jak používat zobrazení Tez, další informace o [používání Hive s HDInsight](hadoop/hdinsight-use-hive.md).
+Teď, když jste se naučili, jak používat zobrazení Apache Tez, další informace o [pomocí Apache Hive s HDInsight](hadoop/hdinsight-use-hive.md).
 
-Podrobné technické informace na Tez, najdete v článku [Tez stránku na Hortonworks](http://hortonworks.com/hadoop/tez/).
+Podrobné technické informace o Apache Tez, najdete v článku [Apache Tez stránku na Hortonworks](http://hortonworks.com/hadoop/tez/).
 
-Další informace o používání Ambari se službou HDInsight, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)
+Další informace o používání Apache Ambari se službou HDInsight najdete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)

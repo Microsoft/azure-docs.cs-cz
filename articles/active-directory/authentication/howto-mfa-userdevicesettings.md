@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 2f73d9795ba807e5901568507ad2fae5b001c91a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: cf470ad14c27fd36cf60bb540e823b15fc58eded
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161285"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496896"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Správa nastavení uživatelů pomocí ověřování Azure Multi-Factor Authentication v cloudu
 
@@ -54,7 +54,7 @@ Tato nastavení odstraní všechna hesla aplikací, které uživatel vytvořil. 
 10. Klikněte na tlačítko **zavřete**.
 
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>Obnovit vícefaktorové ověřování u všech zapamatovaných zařízení pro uživatele
-Mezi konfigurovatelné funkce ověřování Azure Multi-Factor Authentication je udělení uživatelům možnost označit zařízení jako důvěryhodné. Další informace najdete v tématu [nastavení konfigurace Azure Multi-Factor Authentication](howto-mfa-mfasettings.md#remember-multi-factor-authentication-for-devices-that-users-trust).
+Mezi konfigurovatelné funkce ověřování Azure Multi-Factor Authentication je udělení uživatelům možnost označit zařízení jako důvěryhodné. Další informace najdete v tématu [nastavení konfigurace Azure Multi-Factor Authentication](howto-mfa-mfasettings.md#remember-multi-factor-authentication).
 
 Uživatelé se můžou rozhodnout mimo dvoustupňové ověřování pro Konfigurovatelný počet dnů v jejich běžná zařízení. Pokud dojde k narušení účtu nebo dojde ke ztrátě důvěryhodné zařízení, musíte být schopni odebrat stavu důvěryhodnosti a vyžadovat dvoustupňové ověřování znovu.
 

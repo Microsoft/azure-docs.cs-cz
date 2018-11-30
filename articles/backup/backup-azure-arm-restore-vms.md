@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: 7de9d1674860a6369c1dc09462a06def672fbdf2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 0d78ae294cea383fbe59a1f7968d8bf18b1942d1
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420519"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422952"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Obnovení virtuálních počítačů pomocí webu Azure portal
 Chraňte vaše data pořizování snímků dat definovaných intervalech. Tyto snímky jsou označovány jako body obnovení a jsou uloženy v trezorech služby Recovery Services. Pokud je nutné opravit nebo znovu vytvořit virtuální počítač (VM), můžete obnovit virtuální počítač z některé z bodů obnovení uložených. Při obnovení bodu obnovení můžete provést tyto akce:
@@ -151,7 +151,7 @@ Na **obnovit konfiguraci** okně vyberte **OK** dokončete konfiguraci obnovení
 V **místo obnovení** se provádí prostřednictvím karty **nahradit existující**.
 
 ## <a name="replace-existing-disks-from-a-restore-point"></a>Nahraďte existující disky z bodu obnovení
-**Nahradit stávající** pomůže nahradit existující disky v aktuální virtuální počítač s bodem obnovení. Tuto operaci lze provést pouze, pokud aktuální virtuální počítač existuje. Tuto operaci nelze provést, pokud byla odstraněna z jakékoli důvodů, Alternativně můžete s nimi dělat doporučujeme **vytvořit nový** operace obnovení virtuálního počítače nebo disky a pokračujte. Během nahradit stávající operace disky jako preventivní opatření jsme zálohovat data, před zahajuje nahrazení disky operace. Pokud bod obnovení obsahuje disky odráží více nebo méně než aktuální virtuální počítač, pak počet disků v bodu obnovení pouze ve virtuálním počítači. **Nahradit stávající** možnost je aktuálně není podporováno pro nespravované disky a šifrovaných virtuálních počítačů. Je také Nepodporovaná [zobecněný virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) a pro virtuální počítače vytvořené využitím [vlastních imagí](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).  
+**Nahradit stávající** pomůže nahradit existující disky v aktuální virtuální počítač s bodem obnovení. Tuto operaci lze provést pouze, pokud aktuální virtuální počítač existuje. Tuto operaci nelze provést, pokud byla odstraněna z jakékoli důvodů, Alternativně můžete s nimi dělat doporučujeme **vytvořit nový** operace obnovení virtuálního počítače nebo disky a pokračujte. Během této operace, jako preventivní opatření doporučujeme zálohovat data, před zahajuje nahrazení disky operace. Tím se vytvoří snímek a také bod obnovení v trezoru s dobou uchování podle plánu v zásadě nakonfigurované zálohování. Pokud bod obnovení obsahuje disky odráží více nebo méně než aktuální virtuální počítač, pak počet disků v bodu obnovení pouze ve virtuálním počítači. **Nahradit stávající** možnost je aktuálně není podporováno pro nespravované disky a šifrovaných virtuálních počítačů. Je také Nepodporovaná [zobecněný virtuální počítače](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) a pro virtuální počítače vytvořené využitím [vlastních imagí](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/).  
 
  Na **obnovit konfiguraci** okna, je jediným vstupu, který musí být vybraná **pracovní umístění**.
 

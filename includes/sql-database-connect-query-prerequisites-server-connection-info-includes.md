@@ -4,12 +4,12 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: genemi
-ms.openlocfilehash: 642f1348032a9e4c3ad8efa63287d8f27c93295a
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b78d52f23de8d02189f10b32d26e070fb6deea68
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269626"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52339618"
 ---
 <!-- sql-database-connect-query-prerequisites-server-connection-info-includes.md 
 
@@ -19,10 +19,11 @@ ms.locfileid: "52269626"
 Získejte informace o připojení potřebné pro připojení k databázi SQL Azure. V dalších postupech budete potřebovat plně kvalifikovaný název serveru, název databáze a přihlašovací údaje.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
-3. Na stránce **Přehled** pro vaši databázi si prohlédněte plně kvalifikovaný název serveru, jak je znázorněno na následujícím obrázku. Pokud na název serveru najedete myší, můžete vyvolat možnost **Kopírování kliknutím**.  
 
-   ![název-serveru](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png) 
+1. V nabídce vlevo vyberte **Databáze SQL** a na stránce **Databáze SQL** klikněte na vaši databázi.
 
-4. Pokud zapomenete přihlašovací informace pro váš server, přejděte na stránku serveru služby SQL Database, abyste zobrazili jméno správce serveru. V případě potřeby obnovte heslo.
+1. Na stránce **Přehled** pro vaši databázi si prohlédněte plně kvalifikovaný název serveru, jak je znázorněno na následujícím obrázku. Najedete myší **název serveru** zobrazíte **kopírování kliknutím** možnost.  
 
+   ![název-serveru](./media/sql-database-connect-query-prerequisites-server-connection-info-includes/server-name.png)
+
+1. Pokud zapomenete přihlašovací údaje pro váš server, můžete kliknout na **název serveru** přejděte **systému SQL server** stránky a zobrazení **správce serveru** název. V případě potřeby vyberte **resetovat heslo**.

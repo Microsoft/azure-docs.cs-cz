@@ -4,17 +4,17 @@ description: Tento článek vás provede kroky pro povolení modulu Resource Gra
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: resource-graph
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 001805aaf87ed6c3481a8ad8378cdc22ef74d274
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: 6bd7ceaeaf0b064ebbd8f069a4741489349bb980
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646384"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427501"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Spusťte nejdříve dotaz na Resource Graph použitím Azure PowerShell
 
@@ -37,9 +37,6 @@ Modul Azure Resource Graph vyžaduje následující software:
   - Pro PowerShell Core použijte verzi **Az** modulu Azure PowerShell.
 
   - Pro Windows PowerShell použijte verzi **AzureRm** modulu Azure PowerShell.
-
-  > [!NOTE]
-  > Aktuálně není doporučeno nainstalovat modul ve službě Cloud Shell.
 
 - PowerShellGet 2.0.1 nebo novější. Pokud není nainstalovaný nebo aktualizovaný, postupujte podle [těchto pokynů](/powershell/gallery/installing-psget).
 
@@ -137,7 +134,7 @@ Remove-Module -Name 'AzureRm.ResourceGraph'
 > [!NOTE]
 > Tím se neodstraní dříve stažený soubor s modulem. Pouze ho odebere ze spuštěného relace PowerShell.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Získejte další informace o [dotazovacím jazyce](./concepts/query-language.md)
 - Naučte se [prozkoumat zdroje](./concepts/explore-resources.md)

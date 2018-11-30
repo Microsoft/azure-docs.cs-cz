@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: eb2145d2e7b787bafa0b546449282454f7059999
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 537ae87fa694a8b0e82cb2830dd8ad1f62986093
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283406"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496429"
 ---
-# <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Kurz: Proces tweetuje pomocí Azure Event Hubs a Spark v HDInsight
+# <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Kurz: Proces tweetuje pomocí Azure Event Hubs a Apache Spark v HDInsight
 
-V tomto kurzu se dozvíte, jak vytvořit Apache Spark streaming aplikaci k odesílání tweetů do služby Azure event hub a vytvořte jinou aplikaci ke čtení tweetů ze služby event hub. Podrobné vysvětlení streamování Sparku, najdete v článku [přehled streamování Apache Sparku](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight přináší stejné funkce streamování na clusteru Spark v Azure.
+V tomto kurzu se dozvíte, jak vytvořit [Apache Spark](https://spark.apache.org/) streamování aplikaci k odesílání tweetů do služby Azure event hub a vytvořte jinou aplikaci ke čtení tweetů ze služby event hub. Podrobné vysvětlení streamování Sparku, najdete v článku [přehled streamování Apache Sparku](http://spark.apache.org/docs/latest/streaming-programming-guide.html#overview). HDInsight přináší stejné funkce streamování na clusteru Spark v Azure.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -102,7 +102,7 @@ Ukládat tweety pomocí centra událostí.
 
 Je potřeba vytvořit poznámkový blok Jupyter a pojmenujte ho **SendTweetsToEventHub**. 
 
-1. Spusťte následující kód k přidání externí knihovny Maven:
+1. Spusťte následující kód k přidání externí knihovny Apache Maven:
 
     ```
     %%configure
@@ -184,7 +184,7 @@ Je potřeba vytvořit poznámkový blok Jupyter a pojmenujte ho **SendTweetsToEv
 
 Je potřeba vytvořit jiný Poznámkový blok Jupyter a pojmenujte ho **ReadTweetsFromEventHub**. 
 
-1. Spusťte následující kód k přidání externí knihovny Maven:
+1. Spusťte následující kód k přidání externí knihovny Apache Maven:
 
     ```
     %%configure -f

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 3f93f96c6c9fc551b8b66167eab58861b0ac0b52
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ce701c029c63256714452aa13f646af77991cb67
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005950"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496923"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Zprovoznění služby ML clusteru v Azure HDInsight
 
@@ -79,9 +79,9 @@ Po použití služby ML clusteru v HDInsight k dokončení modelování vašich 
 
     d. V možnostech nabídky zobrazí, zadejte **E** vrátit do hlavní nabídky a pak zadejte **8** ukončete nástroj pro správu.
 
-### <a name="long-delays-when-consuming-web-service-on-spark"></a>Dlouhá zpoždění při využívání webové služby ve Sparku
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Dlouhá zpoždění při využívání webové služby na Apache Sparku
 
-Pokud dochází k dlouhým zpožděním při pokusech o využívání webové služby vytvořené pomocí funkcí mrsdeploy ve výpočetním kontextu Sparku, možná budete muset přidat některé chybějící složky. Pokaždé, když je aplikace Spark vyvolaná z webové služby pomocí funkcí mrsdeploy, patří uživateli *rserve2*. Náhradní řešení tohoto problému:
+Pokud dochází k dlouhým zpožděním při pokusech o využívání webové služby vytvořené pomocí funkcí mrsdeploy ve Apache Spark výpočetním kontextu, budete muset přidat některé chybějící složky. Pokaždé, když je aplikace Spark vyvolaná z webové služby pomocí funkcí mrsdeploy, patří uživateli *rserve2*. Náhradní řešení tohoto problému:
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -139,7 +139,7 @@ Pokud chcete škálovat výpočetní uzly, nejprve vyřadit z provozu pracovní 
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>Krok 1: Vyřazení z provozu pracovní uzly
 
-Cluster se službou ML Services není spravován přes YARN. Pokud pracovní uzly nevyřadí, správce prostředků YARN nebude fungovat podle očekávání, protože nebude vědět o prostředcích, které server. Abyste této situaci zabránili, doporučujeme před horizontálním navýšením kapacity výpočetních uzlů vyřadit z provozu pracovní uzly.
+Cluster se službou ML Services není spravován přes [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html). Pokud pracovní uzly nevyřadí, správce prostředků YARN nebude fungovat podle očekávání, protože nebude vědět o prostředcích, které server. Abyste této situaci zabránili, doporučujeme před horizontálním navýšením kapacity výpočetních uzlů vyřadit z provozu pracovní uzly.
 
 Použijte následující postup vyřazení pracovních uzlů z provozu:
 

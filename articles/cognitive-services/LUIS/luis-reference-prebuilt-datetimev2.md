@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: b7d5b14121f533c49f29759293c0e5379ea2555e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd28981ae0c5b4d6ccff3168f92f0f99be768b10
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036690"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335772"
 ---
 # <a name="datetimev2-entity"></a>Entita DatetimeV2
 

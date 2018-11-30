@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: bcdc665c59a900d4c57d03140654fffec26af0eb
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 7f653eca0c768cc35df039cbd51153484710d80a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706751"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422249"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory
 
@@ -75,7 +75,7 @@ Chcete-li vyřešit chybu bez instalace MyApps zabezpečené přihlašování ro
     - Příkaz, který identifikuje původní příčinu problému.
 2.  Vraťte se do služby Azure AD a najít **otestovat jednotné přihlašování** okno.
 3.  V textovém poli nahoře **pomoc rozlišení**, vložte chybové zprávě.
-3.  Klikněte na tlačítko **pomoc rozlišení** zobrazíte kroky vedoucí k vyřešení problému. Pokyny mohou vyžadovat informace z požadavku SAML nebo odpověď SAML. Pokud nepoužíváte rozšíření MyApps zabezpečené přihlašování, budete nejspíš muset nástroj, jako [Fiddler](http://www.telerik.com/fiddler) získat požadavek SAML a odpovědi.
+3.  Klikněte na tlačítko **pomoc rozlišení** zobrazíte kroky vedoucí k vyřešení problému. Pokyny mohou vyžadovat informace z požadavku SAML nebo odpověď SAML. Pokud nepoužíváte rozšíření MyApps zabezpečené přihlašování, budete nejspíš muset nástroj, jako [Fiddler](https://www.telerik.com/fiddler) získat požadavek SAML a odpovědi.
 4.  Ověřte, že cíl v požadavku SAML odpovídá SAML jednotné přihlašování služby Adresa URL získaná z Azure Active Directory
 5.  Ověřte, že issuer v požadavku SAML je stejný identifikátor, který jste nakonfigurovali pro aplikaci v Azure Active Directory. K vyhledání aplikace ve vašem adresáři používá Azure AD vystavitele.
 6.  Ověřte, že AssertionConsumerServiceURL je, kde se očekává, že aplikace přijímat tokenu SAML ze služby Azure Active Directory. Tuto hodnotu můžete nakonfigurovat ve službě Azure Active Directory, ale není povinné, pokud se jedná o požadavek SAML.
@@ -90,7 +90,7 @@ Chcete-li vyřešit chybu:
 1. Pokud je aplikace v galerii Azure AD, ověřte, zda že jste provedli všechny kroky pro integraci aplikace s Azure AD. Pokyny k integraci vaší aplikace najdete v tématu [seznamu kurzů integrace aplikací SaaS](../saas-apps/tutorial-list.md).
 2. Načte odpověď SAML.
     - Pokud je nainstalovaná rozšíření Moje aplikace zabezpečené přihlašování, z **otestovat jednotné přihlašování** okna, klikněte na tlačítko **stáhnout odpověď SAML**.
-    - Pokud není nainstalovaná rozšíření, použijte nástroj, jako [Fiddler](http://www.telerik.com/fiddler) načíst odpověď SAML. 
+    - Pokud není nainstalovaná rozšíření, použijte nástroj, jako [Fiddler](https://www.telerik.com/fiddler) načíst odpověď SAML. 
 3. Všimněte si, že tyto prvky v tokenu SAML odpovědi:
     - Jedinečný identifikátor uživatele NameID hodnota a formátu
     - Deklarací identity vystavených v tokenu

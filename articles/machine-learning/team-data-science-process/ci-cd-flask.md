@@ -1,26 +1,22 @@
 ---
 title: 'DevOps pro aplikace s umělou inteligencí (AI): vytvoření kanálu průběžné integrace v Azure pomocí Docker, Kubernetes a Python Flask aplikace'
 description: 'DevOps pro aplikace s umělou inteligencí (AI): vytvoření kanálu průběžné integrace v Azure pomocí Dockeru a Kubernetes'
-services: machine-learning, team-data-science-process
-documentationcenter: ''
-author: jainr
-manager: deguhath
+services: machine-learning
+author: marktab
+manager: cgronlun
 editor: cgronlun
-ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
-ms.author: jainr
-ms.openlocfilehash: fb162c45b8bd53fd4d994e0eb83a38438873d627
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: tdsp
+ms.custom: (previous author=jainr, ms.author=jainr)
+ms.openlocfilehash: c232680d5d1bf0eb761ff974ebf6608b67922f33
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094382"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496743"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>DevOps pro aplikace s umělou inteligencí (AI): vytvoření kanálu průběžné integrace v Azure pomocí Dockeru a Kubernetes
 Aplikace AI jsou často dvěma datovými proudy práce, datovým vědcům sestavování modelů strojového učení a vývojáře aplikací, vytváření aplikace, která bude vystavená koncovým uživatelům využívat. V tomto článku jsme ukazují, jak implementovat průběžné integrace (CI) / průběžné doručování (CD) kanálů pro aplikaci AI. Aplikace AI je kombinací kódu aplikace, které jsou vložené s modelem které je předem vytrénované machine learning (ML). Pro účely tohoto článku jsme pretrained modelu načítají z účtu úložiště objektů blob v Azure privátní, může to být účet AWS S3. Pro článek budeme používat webovou aplikaci flask python jednoduché.
@@ -55,7 +51,7 @@ Architektura kanálu je uvedena níže.
 1. Vývojářské práce na sběrnici IDE podle svého výběru na kód aplikace.
 2. Tito uživatelé potvrdí kód do správy zdrojového kódu podle vlastní volby (Azure DevOps má dobrou podporu pro různé ovládací prvky zdroje)
 3. Samostatně odborník přes data pracovat na vývoji modelu.
-4. Jakmile spokojení, že jejich model publikujte do modelu úložiště, v tomto případě používáme účet blob storage. To může snadno nahradit aplikaci Azure ML Workbench služba Správa modelů prostřednictvím svých rozhraní REST API.
+4. Jakmile spokojení, že jejich model publikujte do modelu úložiště, v tomto případě používáme účet blob storage. 
 5. Sestavení je vydáno v Azure DevOps, které jsou založené na potvrzení v Githubu.
 6. Stáhne nejnovější model z kontejneru objektů Blob a vytváří kontejner Azure DevOps sestavení kanálu.
 7. Azure DevOps odešle obrázek do úložiště privátních imagí ve službě Azure Container Registry

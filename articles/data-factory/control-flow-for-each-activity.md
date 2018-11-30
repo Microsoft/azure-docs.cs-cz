@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 11/26/2018
 ms.author: shlo
-ms.openlocfilehash: 23f00280a69212b9e623ae1da16a681ca30c9d51
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: e38a0ec39227b0064175c3c39d32bf87970ef9f5
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42055434"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423724"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Aktivita ForEach ve službě Azure Data Factory
 Aktivita ForEach definuje ve vašem kanálu opakovaný tok řízení. Tato aktivita se používá k opakování v kolekci a spouští zadané aktivity ve smyčce. Implementace smyčky této aktivity se podobá struktuře smyčky Foreach v programovacích jazycích.
@@ -572,6 +572,17 @@ Výraz pro shromažďování výstupu všechny iterace ForEach `@activity('Nameo
 ]
 
 ```
+
+## <a name="limitations-and-workarounds"></a>Omezení a řešení
+
+Tady jsou některá omezení aktivita ForEach a navrhovaná alternativní řešení.
+
+| Omezení | Alternativní řešení |
+|---|---|
+| Nelze vnořovat smyčku ForEach uvnitř jiného smyčky ForEach (nebo do dokud smyčky). | Navrhněte dvouúrovňová kanálu, kde vnější kanál s vnější smyčky ForEach Iteruje přes kanál vnitřní s vnořené smyčky. |
+| Aktivita ForEach může mít nejvýše `batchCount` 50 pro paralelní zpracování a maximálně 100 000 položek. | Navrhněte dvouúrovňová kanálu, kde vnější kanálu s aktivitou ForEach Iteruje přes vnitřní kanálu. |
+| | |
+
 ## <a name="next-steps"></a>Další postup
 Zobrazit další aktivity toku řízení podporovaných službou Data Factory: 
 

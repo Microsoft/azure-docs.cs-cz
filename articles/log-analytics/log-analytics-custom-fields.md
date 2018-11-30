@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: fdac7d1fd7fbcea28d6ce8e614e4968f168566ba
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3e1acb714cfc1c059f8d02240c2a6d49be9f4971
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010583"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335278"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Vlastní pole v Log Analytics
 **Vlastní pole** funkce Log Analytics můžete rozšířit existující záznamy ve službě Log Analytics tak, že přidáte vlastní prohledávatelná pole.  Vlastní pole se vyplní automaticky z dat extrahují z dalších vlastností ve stejném záznamu.
@@ -81,7 +81,7 @@ Můžete zobrazit seznam všech vlastních polí ve skupině pro správu z **Up�
 Existují dva způsoby, jak odstranit vlastní pole.  První je **odebrat** možnost pro každé pole při prohlížení seznamu dokončení, jak je popsáno výše.  Další metodou je načíst záznam a klikněte na tlačítko vlevo od pole.  V nabídce bude mít možnost odstranit vlastní pole.
 
 ## <a name="sample-walkthrough"></a>Ukázkový názorný postup
-Následující části vás provede úplný příklad vytvoření vlastního pole.  V tomto příkladu získává název služby v události Windows, které označují mění se stav služby.  To závisí na události vytvořené v systémovém protokolu v počítačích s Windows pomocí Správce řízení služeb.  Pokud chcete postupovat podle tohoto příkladu, musí být [shromažďování událostí informace v systémovém protokolu](log-analytics-data-sources-windows-events.md).
+Následující části vás provede úplný příklad vytvoření vlastního pole.  V tomto příkladu získává název služby v události Windows, které označují mění se stav služby.  To závisí na události vytvořené v systémovém protokolu v počítačích s Windows pomocí Správce řízení služeb.  Pokud chcete postupovat podle tohoto příkladu, musí být [shromažďování událostí informace v systémovém protokolu](../azure-monitor/platform/data-sources-windows-events.md).
 
 Jsme zadejte následující dotaz, který vrátí všechny události ze Správce řízení služeb, které mají ID události z 7036, což je událost, která znamená spouštění nebo zastavování služby.
 
@@ -141,5 +141,5 @@ Teď můžeme použít vlastní pole, stejně jako jakoukoli jinou vlastnosti z�
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [prohledávání protokolů](log-analytics-queries.md) sestavování dotazů pomocí vlastních polí pro kritéria.
-* Monitorování [vlastního protokolu souborů](log-analytics-data-sources-custom-logs.md) , která můžete analyzovat pomocí vlastní pole.
+* Monitorování [vlastního protokolu souborů](../azure-monitor/platform/data-sources-custom-logs.md) , která můžete analyzovat pomocí vlastní pole.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: e7bb7f0c4cb63390b91012e071589611991a2866
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4bd2b72596912d968ad6fc323ce32e620336d932
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068326"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316986"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Rozšířená ochrana před internetovými útoky pomocí Azure Security Center programu Windows Defender
 
@@ -99,12 +99,12 @@ Generovat upozornění na neškodné ochrany ATP v programu Windows Defender:
 
 3. Pokud příkaz je úspěšná, zobrazí se vám nové výstrahy na řídicím panelu Azure Security Center a na portálu ochrany ATP v programu Windows Defender. Tato výstraha může trvat několik minut.
 
-4. Pokud chcete zkontrolovat upozornění ve službě Security Center, přejděte na **výstrahy zabezpečení** >  **podezřelý příkazový řádek Powershellu**.
+4. Pokud chcete zkontrolovat upozornění ve službě Security Center, přejděte na **výstrahy zabezpečení** >  **podezřelý příkazový řádek Powershellu**.
 
 5. V okně šetření vyberte odkaz přejdete na portál ochrany ATP v programu Windows Defender.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+- [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md): Zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 - [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md): Zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 - [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.

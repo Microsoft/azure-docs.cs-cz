@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 1521bba188fcd7d8bade88196fe687929f414f93
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 8f7edecf1abd1f01a2f40f1420a6a85224271239
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283508"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423497"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>Kurz 6: Seskupovat a extrahovat souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
@@ -97,7 +97,7 @@ Extrahovaných dat z koncového bodu by měl obsahovat tyto informace a vrátit 
 ]
 ```
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Na **záměry** stránce **MoveEmployee** záměr. 
 

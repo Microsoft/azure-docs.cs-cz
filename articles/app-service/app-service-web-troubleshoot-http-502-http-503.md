@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1a64e40b13b05fc7f9fdb6f5aa99c8d8cc47c471
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d0d1efcdaab07e77d835319544fc70eb8687702f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251606"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316340"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Řešení potíží s chybami HTTP typu "502 – Chybná brána" a "503 Služba není dostupná" ve službě Azure web apps
 "502 – Chybná brána" a "503 Služba není k dispozici" jsou běžné chyby ve webové aplikaci hostované v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tento článek pomůže při řešení těchto chyb.
@@ -74,22 +74,10 @@ Další informace naleznete v tématu:
 <a name="collect" />
 
 ### <a name="2-collect-data"></a>2. Shromažďování dat
-#### <a name="use-the-azure-app-service-support-portal"></a>Použití portálu pro podporu služby Azure App Service
-Funkce Web Apps poskytuje schopnost řešit problémy spojené s vaší webové aplikace pomocí protokolu HTTP protokolů, protokoly událostí, výpisy stavu procesu, a další. Dostanete tyto informace použít portál pro podporu na **http://&lt;název vaší aplikace >.scm.azurewebsites.net/Support**
+#### <a name="use-the-diagnostics-tool"></a>Pomocí diagnostického nástroje
+Služba App Service poskytuje inteligentní a interaktivní prostředí při odstraňování webové aplikace bez nezbytné konfigurace. Pokud narazíte na problémy s vaší webovou aplikací, diagnostický nástroj, který bude odkazovat, co je špatně a provede vás na ty správné informace k snadno a rychle odstraňovat potíže a řešit potíže.
 
-Portál podpory Azure App Service nabízí tři samostatné karty pro podporu tři kroky pro běžné scénáře řešení potíží:
-
-1. Sledovat aktuální chování
-2. Analýza tím, že shromažďování diagnostických informací integrované analyzátory
-3. Oprava
-
-Pokud tento problém se děje právě teď, klikněte na tlačítko **analyzovat** > **diagnostiky** > **diagnostikovat nyní** diagnostické relace vytvořit za vás, které bude shromažďovat protokoly HTTP, protokoly Prohlížeče událostí, paměti, že se výpisy paměti, protokoly chyb PHP a PHP zpracování sestavy.
-
-Jakmile jsou data shromážděna, bude také na těchto datech spusťte analýzu a poskytují zprávu ve formátu HTML.
-
-V případě, že budete chtít stahovat data, ve výchozím nastavení, by být uloženy ve složce D:\home\data\DaaS.
-
-Další informace o portál podpory Azure App Service najdete v tématu [nové aktualizace rozšíření webu podpory pro Azure Websites](https://azure.microsoft.com/blog/new-updates-to-support-site-extension-for-azure-websites).
+Pro přístup k diagnostice App Service, přejděte do App Service Environment ve vaší aplikaci služby App Service [webu Azure portal](https://portal.azure.com). V levém navigačním panelu klikněte na **diagnostikovat a řešit problémy**.
 
 #### <a name="use-the-kudu-debug-console"></a>Použijte konzolu pro ladění Kudu
 Funkce Web Apps se dodává s konzolou pro ladění, který můžete použít pro ladění, zkoumat a nahrávání souborů, stejně jako koncové body JSON pro získání informací o vašem prostředí. Tento postup se nazývá *konzola Kudu* nebo *řídicího panelu SCM* pro vaši webovou aplikaci.

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 6eb06a2a4e83c9c293474f1692c2d33d4d0dfb36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 3e9c46e1315257d619f1624c06441adc08daddb2
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995733"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427008"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro Android
 
@@ -38,9 +38,9 @@ Tento rychlý start obsahuje vzorek kódu, který demonstruje, jak může aplika
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>Registrace a stažení
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>Registrace a konfigurace aplikace a vzorek kódu
+> ### <a name="register-and-configure-your-application-and-code-sample"></a>Registrace a konfigurace aplikace a vzorový kód
 > #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
-> Postup při registraci aplikace a přidání informací o registraci zařízení k řešení:
+> Postup při registraci aplikace a přidání informací o registraci aplikace k řešení:
 > 1. Abyste mohli zaregistrovat aplikaci, přejděte na [portál pro registraci aplikací Microsoft](https://apps.dev.microsoft.com/portal/register-app).
 > 1. Do pole **Application Name** (Název aplikace) zadejte název vaší aplikace.
 > 1. Zkontrolujte, že není zaškrtnuté políčko **Guided Setup** (Instalační program s asistencí) a vyberte **Create** (Vytvořit).
@@ -123,7 +123,7 @@ Pročtěte si následující oddíly, které obsahují další informace o tomto
 
 ### <a name="msal"></a>MSAL
 
-MSAL ([com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)) je knihovna, která slouží k přihlašování uživatelů a vyžádání tokenů pro přístup k rozhraní API chráněného službou Microsoft Azure Active Directory (Azure AD). Nainstalovat ji můžete pomocí nástroje Gradle tak, že přidáte následující řetězec v části **Gradle Scripts** (Skripty Gradle)  > **build.gradle (Module: app)** v části **Dependencies** (Závislosti):
+MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) je knihovna, která slouží k přihlašování uživatelů a vyžádání tokenů pro přístup k rozhraní API chráněného službou Microsoft Azure Active Directory (Azure AD). Nainstalovat ji můžete pomocí nástroje Gradle tak, že přidáte následující řetězec v části **Gradle Scripts** (Skripty Gradle)  > **build.gradle (Module: app)** v části **Dependencies** (Závislosti):
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
@@ -158,7 +158,7 @@ Knihovna MSAL používá k získání tokenů dvě metody: `acquireToken` a `acq
 
 Některá řešení vyžadují, aby uživatelé museli komunikovat s koncovým bodem Azure AD v2.0. Výsledkem je kontextové přepnutí do systémového prohlížeče, aby bylo možné ověřit přihlašovací údaje uživatele nebo získat jeho souhlas. Možné příklady:
 
-* Při prvním přihlášení k aplikaci
+* Při prvním přihlášení uživatele k aplikaci
 * Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
 * Když vaše aplikace žádá o přístup k prostředku, ke kterému musí dát uživatel souhlas
 * Když je nutné dvoufaktorové ověřování
@@ -185,9 +185,9 @@ sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 > | `SCOPES` | Obsahuje požadované obory (to znamená `{ "user.read" }` pro Microsoft Graph nebo `{ "<Application ID URL>/scope" }` pro vlastní webová rozhraní API (např. `api://<Application ID>/access_as_user`) |
 > | `getAuthInteractiveCallback` | Zpětné volání, když se ovládací prvek předá zpět do aplikace po ověření |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Naučte se vytvořit aplikaci za použití tohoto rychlého startu
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>Postup vytvoření aplikace použité v tomto rychlém startu
 
 Vyzkoušejte kurz pro Android, kde najdete podrobný návod k vytváření aplikací a nových funkcí, včetně úplného popisu tohoto rychlého startu.
 

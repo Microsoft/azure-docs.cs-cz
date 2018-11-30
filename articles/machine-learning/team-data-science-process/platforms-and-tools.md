@@ -1,25 +1,21 @@
 ---
 title: Platformy a nástroje pro datové vědy týmové projekty – Azure | Dokumentace Microsoftu
 description: Najdete výčet a popisuje prostředky dat a analýz, které jsou dostupné pro podniky standardizují používáním vědecké zpracování týmových dat.
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: deguhath
-ms.openlocfilehash: 5cfe86414473f352673f39850a34f8ef265c91f5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: 5df2cbabeb704453d71a0ac1db14c618dae352d2
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258897"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446445"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty datových věd
 
@@ -152,4 +148,4 @@ Pokud používáte počítače s Linuxem (CentOS) ke spuštění příkazů git,
 
 Úplné začátku do konce návody, které ukazují všechny kroky v procesu pro **konkrétních scénářů** jsou také k dispozici. Jsou uvedena v seznamu a propojené s Miniatura popisy v [příklad návody](walkthroughs.md) tématu. Jejich ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
 
-Příklady provádět kroky v vědecké zpracování týmových dat, které používají Azure Machine Learning Studio, najdete v článku [pomocí Azure ML](https://aka.ms/datascienceprocess) výuky.
+Příklady provádět kroky v vědecké zpracování týmových dat, které používají Azure Machine Learning Studio, najdete v článku [pomocí Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) výuky.

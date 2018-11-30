@@ -1,5 +1,5 @@
 ---
-title: Použití lineární regrese ve službě Machine Learning | Dokumentace Microsoftu
+title: Použití lineární regrese v nástroji Machine Learning Studio – Azure | Dokumentace Microsoftu
 description: Porovnání modelů lineární regrese v aplikaci Excel a nástroji Azure Machine Learning Studio
 metakeywords: ''
 services: machine-learning
@@ -17,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: b96143ff587cbf5828f4a1d2d1dc11f5bcc33412
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: d7ff9e157f776ebf683846652fe4788fc35e19af
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261390"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311054"
 ---
-# <a name="using-linear-regression-in-azure-machine-learning"></a>Používání lineární regrese ve službě Azure Machine Learning
+# <a name="using-linear-regression-in-azure-machine-learning-studio"></a>Použití lineární regrese v nástroji Azure Machine Learning Studio
 > *Kate Baroni* a *Robert Boatman* jsou podnikové architekty řešení ve společnosti Microsoft Data Insights bez System Center. V tomto článku popisují práci migrace sady existující regresní analýzy na cloudové řešení, které využívá Azure Machine Learning. 
 > 
 > 

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 0811f0e115545a37b6c570c436900a8548adae61
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3a65b66619351462fcd9c77c3fb9b935cf99ebcc
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006358"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496454"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Začínáme se službou ML Services v Azure HDInsight
 
-Azure HDInsight umožňuje vytvořit cluster služby ML Services. Díky této možnosti můžou skripty R používat Spark a MapReduce ke spouštění distribuovaných výpočtů. V tomto dokumentu se naučíte vytvořit cluster služby ML Services v HDInsight a následně spustit skript R, který ukazuje použití Sparku k distribuovaným výpočtům jazyka R.
+Azure HDInsight umožňuje vytvořit cluster služby ML Services. Tato možnost umožňuje skripty R používat [Apache Spark](https://spark.apache.org/) a [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) ke spouštění distribuovaných výpočtů. V tomto dokumentu se naučíte vytvořit cluster služby ML Services v HDInsight a následně spustit skript R, který ukazuje použití Sparku k distribuovaným výpočtům jazyka R.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +37,7 @@ Azure HDInsight umožňuje vytvořit cluster služby ML Services. Díky této mo
 
     * **Název clusteru:** Název clusteru HDInsight.
     * **Předplatné:** Vyberte předplatné, které chcete použít.
-    * **Uživatelské jméno přihlášení clusteru** a **Heslo přihlášení clusteru**: Přihlašovací údaje pro přístup ke clusteru pomocí protokolu HTTPS. Tyto přihlašovací údaje se používají i pro přístup ke službám, jako jsou webové uživatelské rozhraní Ambari nebo REST API.
+    * **Uživatelské jméno přihlášení clusteru** a **Heslo přihlášení clusteru**: Přihlašovací údaje pro přístup ke clusteru pomocí protokolu HTTPS. Pomocí těchto přihlašovacích údajů pro přístup ke službám, jako jsou webové uživatelské rozhraní Apache Ambari nebo REST API.
     * **Uživatelské jméno Secure Shell (SSH:)** Přihlašovací údaje používané pro přístup ke clusteru přes SSH. Ve výchozím nastavení je heslo stejné jako pro přihlášení ke clusteru.
     * **Skupina prostředků:** Skupina prostředků, ve které se cluster vytváří.
     * **Umístění:** Oblast Azure, ve které se cluster vytváří.

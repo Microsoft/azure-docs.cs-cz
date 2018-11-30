@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4da20ffebb9943787fa487336dbd2ba22fdcf875
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
+ms.openlocfilehash: fb1ef9c2bb448d74d447e647f6dc8122cda6e1f7
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458169"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445751"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Kubernetes Service (AKS)
 
@@ -188,7 +188,7 @@ spec:
 Pomocí příkazu [kubectl apply][kubectl-apply] spusťte aplikaci.
 
 ```azurecli-interactive
-kubectl create -f azure-vote.yaml
+kubectl apply -f azure-vote.yaml
 ```
 
 Následující příklad výstupu ukazuje prostředky Kubernetes vytvořené ve vašem clusteru AKS:
@@ -263,7 +263,7 @@ V tomto rychlém startu se k vytvoření nasazení Kubernetes použily předem v
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci.
 

@@ -1,18 +1,25 @@
 ---
-title: Řešení potíží s převzetí služeb při selhání do Azure | Dokumentace Microsoftu
-description: Tento článek popisuje, jak řešit běžné problémy během převzetí služeb při selhání do Azure pomocí Azure Site Recovery.
+title: Řešení potíží s převzetí služeb při selhání do Azure selhání | Dokumentace Microsoftu
+description: Tento článek popisuje, jak řešit běžné chyby v přebírání služeb při selhání do Azure
+services: site-recovery
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
+ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
-ms.author: ponatara
-ms.openlocfilehash: 420d061b34734c7b5997f5cdd58fe7faaee9cb82
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.tgt_pltfrm: na
+ms.workload: storage-backup-recovery
+ms.date: 11/27/2018
+ms.author: mayg
+ms.openlocfilehash: 1e7486dc646843c473cfb355445e194893934a1a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236752"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447142"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače do Azure
 
@@ -22,7 +29,7 @@ Může zobrazit jedna z následující chyby při provádění převzetí služe
 
 Site Recovery se nepodařilo vytvořit nezdařené přes virtuální počítač v Azure. K tomu mohlo dojít vlivem jednoho z následujících důvodů:
 
-* Není k dispozici dostatečnou kvótu pro vytvoření virtuálního počítače k dispozici: dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](https://aka.ms/getazuresupport) o navýšení kvóty.
+* Není k dispozici dostatečnou kvótu pro vytvoření virtuálního počítače k dispozici: dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](http://aka.ms/getazuresupport) o navýšení kvóty.
 
 * Pokoušíte se převzetí služeb při selhání virtuálních počítačů z různých velikostní řady ve stejné sadě dostupnosti. Ujistěte se, že zvolíte stejnou řadu velikostí pro všechny virtuální počítače ve stejné sadě dostupnosti. Změnit velikost tak, že přejdete do nastavení výpočty a síť virtuálního počítače a pak zkuste převzetí služeb při selhání.
 
@@ -30,7 +37,7 @@ Site Recovery se nepodařilo vytvořit nezdařené přes virtuální počítač 
 
 ## <a name="failover-failed-with-error-id-28092"></a>Převzetí služeb při selhání s ID chyby 28092
 
-Site Recovery se nepodařilo vytvořit síťové rozhraní, pro které bylo provedeno přes virtuální počítač. Ujistěte se, že máte dostatečnou kvótu pro vytvoření síťových rozhraní v rámci předplatného k dispozici. Dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](https://aka.ms/getazuresupport) o navýšení kvóty. Pokud máte dostatečnou kvótu, pak může se jednat přerušovaný vydávání, zkuste operaci zopakovat. Pokud se problém nevyřeší ani po opakovaných pokusů, pak napište komentář na konci tohoto dokumentu.  
+Site Recovery se nepodařilo vytvořit síťové rozhraní, pro které bylo provedeno přes virtuální počítač. Ujistěte se, že máte dostatečnou kvótu pro vytvoření síťových rozhraní v rámci předplatného k dispozici. Dostupnou kvótu můžete zkontrolovat tak, že přejdete k předplatnému -> využití a kvóty. Můžete otevřít [novou žádost o podporu](http://aka.ms/getazuresupport) o navýšení kvóty. Pokud máte dostatečnou kvótu, pak může se jednat přerušovaný vydávání, zkuste operaci zopakovat. Pokud se problém nevyřeší ani po opakovaných pokusů, pak napište komentář na konci tohoto dokumentu.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Převzetí služeb při selhání s ID chyby 70038
 
@@ -38,7 +45,37 @@ Site Recovery se nepodařilo vytvořit nezdařené přes klasický virtuální p
 
 * Jeden z prostředků, jako je například virtuální síť, která se vyžaduje pro virtuální počítač, který se má vytvořit neexistuje. Vytvoření virtuální sítě, jak je uvedeno v části Nastavení výpočty a síť virtuálního počítače nebo upravit nastavení pro virtuální síť, která již existuje a zkuste převzetí služeb při selhání.
 
-## <a name="unable-to-connectrdpssh---vm-connect-button-grayed-out"></a>Nelze se připojit nebo RDP/SSH - připojení virtuálního počítače nejde aktivovat tlačítko
+## <a name="failover-failed-with-error-id-170010"></a>Převzetí služeb při selhání s 170010 ID chyby
+
+Site Recovery se nepodařilo vytvořit nezdařené přes virtuální počítač v Azure. K tomu mohlo dojít, protože se nepovedlo interní aktivitu dosazení dat pro místní virtuální počítač.
+
+Zobrazíte všechny počítače v Azure, prostředí Azure vyžaduje některé z ovladačů ve spouštěcí start stavu a služeb, jako je DHCP ve stavu automatické spuštění. Proto dosazení dat do aktivity, v okamžiku převzetí služeb při selhání, převede typ spouštění **atapi, intelide, storflt, vmbus a storvsc ovladače** do začátku spuštění. Také převádí typ spuštění několik služeb, jako je DHCP na automatické spuštění. Tato aktivita může selhat z důvodu konkrétní chyby prostředí. Chcete-li ručně změnit typ spouštění ovladačů, postupujte následujících kroků:
+
+1. [Stáhněte si](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) ne dosazování skript a spustit ho jako následující. Tento skript kontroluje, pokud virtuální počítač dosazování.
+
+    `.\Script-no-hydration.ps1`
+
+    Pokud je potřeba dosazení dat poskytuje následující výsledek:
+
+        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+
+        This system doesn't meet no-hydration requirement.
+
+    V případě, že virtuální počítač splňuje požadavek na dosazení Ne, tento skript vám poskytne výsledek "Tento systém splňuje požadavek na dosazení ne". V takovém případě všechny ovladače a služby jsou ve stavu podle potřeby Azure a dosazení dat na virtuálním počítači se nevyžaduje.
+
+2. Spusťte skript č. dosazení dat do sady následujícím způsobem, pokud virtuální počítač nesplňuje požadavek na dosazení č.
+
+    `.\Script-no-hydration.ps1 -set`
+    
+    Tím se převede typ spouštění ovladačů a poskytne výsledek podobná níže uvedenému příkladu:
+    
+        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
+
+        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+
+        This system is now no-hydration compatible. 
+
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nelze se připojit nebo RDP/SSH k se přes virtuální počítač z důvodu nejde aktivovat tlačítko Připojit na virtuálním počítači
 
 Pokud **připojit** tlačítko na převzetí virtuálního počítače v Azure je zobrazena šedě a nejste připojení k Azure přes Expressroute nebo VPN typu Site-to-Site připojení, potom
 

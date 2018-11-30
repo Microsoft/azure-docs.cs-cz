@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9b9754c9087f2d0064cc1aa75e76520731dfb3a9
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 86e5381096633e58d7a1a28ac94728136273c685
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242854"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312778"
 ---
 # <a name="set-up-sign-in-azure-active-directory-accounts-a-built-in-policy-in-azure-active-directory-b2c"></a>Nastavení přihlášení účtů Azure Active Directory předdefinovaných zásad v Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ V tomto článku se dozvíte, jak povolit přihlášení pro uživatele z konkr�
 
 ## <a name="create-an-azure-ad-app"></a>Vytvoření aplikace Azure AD
 
-Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD, budete muset zaregistrovat aplikaci v rámci organizační tenanta Azure AD, který není stejný jako vám tenanta Azure AD B2C.
+Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD, budete muset zaregistrovat aplikaci v rámci organizační tenanta Azure AD, který není stejný jako vašeho tenanta Azure AD B2C.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresáře, který obsahuje klikněte na filtr adresářů a předplatných v horní nabídce vyberte adresář, který obsahuje váš tenant Azure AD a vašeho tenanta Azure AD.

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 7fb69fd52c03300ee554fd903cba1670f2aa2421
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 10b2b6e67c22efaf1dcab2cfe8abdd42b7576dbc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318601"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426063"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -359,7 +359,7 @@ K provádění rozšířené možnosti řešení problémů, zkontrolujte soubor
 
 Popis těchto souborů protokolu najdete v tématu [interpretovat NPS formátu soubory protokolů databáze](https://technet.microsoft.com/library/cc771748.aspx). Položky v těchto protokolových souborech může být obtížné pro interpretaci bez jejich importování do tabulky nebo databáze. Pomoc při interpretaci souborů protokolu můžete najít několik služby ověřování v Internetu analyzátory online. 
 
-Následující obrázek ukazuje výstup těchto ke stažení [shareware aplikace](http://www.deepsoftware.com/iasviewer). 
+Následující obrázek ukazuje výstup těchto ke stažení [shareware aplikace](https://www.deepsoftware.com/iasviewer). 
 
 ![Shareware aplikace](./media/howto-mfa-nps-extension-rdg/image35.png)
 

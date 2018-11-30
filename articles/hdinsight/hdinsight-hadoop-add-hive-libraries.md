@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: f9788c82e74b47d4550640a1069f6d97487eecc6
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 79ee129390c6b364ec65e8ae1e893e98f358751e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035301"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497101"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Přidat vlastní knihovny Apache Hive při vytváření clusteru HDInsight
 
-Zjistěte, jak přednačíst knihovny Apache Hive v HDInsight. Tento dokument obsahuje informace o použití akce skriptu k předběžné načtení knihovny během vytváření clusteru. Knihovny přidané pomocí kroků v tomto dokumentu jsou globálně k dispozici v podregistru – není nutné používat [přidat JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) je načíst.
+Zjistěte, jak předběžné načtení [Apache Hive](https://hive.apache.org/) knihovny v HDInsight. Tento dokument obsahuje informace o použití akce skriptu k předběžné načtení knihovny během vytváření clusteru. Knihovny přidané pomocí kroků v tomto dokumentu jsou globálně k dispozici v podregistru – není nutné používat [přidat JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) je načíst.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
@@ -93,4 +93,4 @@ Po dokončení vytváření clusteru, budete moct použít JAR přidané pomocí
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o práci s Hive najdete v tématu [použití Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)
+Další informace o práci s Hive najdete v tématu [použití Apache Hivu se službou HDInsight](hadoop/hdinsight-use-hive.md)

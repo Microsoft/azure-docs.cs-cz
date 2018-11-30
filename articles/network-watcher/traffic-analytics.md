@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 2b057a94022077aa210b1e4ebb6122eaf350a40b
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: dd07ed66b630f541ed3e2001dffdebed150bb71a
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457404"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443028"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -53,9 +53,39 @@ Analýza provozu prozkoumá nezpracovaných protokolů toku NSG a zachytí sní�
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Můžete použít analýzu provozu pro skupiny zabezpečení sítě v některém z následujících oblastí: střed USA – Západ, USA – východ, USA – východ 2, střed USA – sever, střed USA – Jih, střed USA, USA – Západ, USA – západ 2, Kanada – střed, západní Evropa, Severní Evropa, Velká Británie – Západ, Velká Británie – Jih, Japonsko – východ, Indie – střed , Austrálie – východ, Austrálie – jihovýchod a jihovýchodní Asie. 
+Použití analýzy provozu pro skupiny zabezpečení sítě v některém z následujících podporovaných oblastech:
 
-Pracovní prostor log analytics, musí existovat v střed USA – Západ, východní USA, západní Evropa, Velká Británie – Jih, Střední Kanada, Japonsko – východ, Indie centrální Austrálie – jihovýchod nebo jihovýchodní Asie.
+* Kanada – střed
+* Západní střed USA
+* USA – východ
+* Východní USA 2
+* Střed USA – sever
+* Střed USA – jih
+* USA – střed
+* USA – západ
+* USA – západ 2
+* Západní Evropa
+* Severní Evropa
+* Brazílie – jih
+* Spojené království – západ
+* Velká Británie – jih
+* Austrálie – východ
+* Austrálie – jihovýchod
+* Jihovýchodní Asie
+* Střed Indie
+* Indie – jih
+* Japonsko – východ 
+
+Pracovní prostor Log Analytics, musí existovat v těchto oblastech:
+* Kanada – střed
+* Západní střed USA
+* USA – východ
+* Západní Evropa
+* Velká Británie – jih
+* Austrálie – jihovýchod
+* Jihovýchodní Asie
+* Střed Indie
+* Japonsko – východ
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: f5be273401fa9fdfdc2c97296f5f2265dbb3c447
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f36d89fb01e7892ef10576b7f5f0b5fa86d8a21b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042373"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314247"
 ---
-# <a name="phoenix-query-server-rest-sdk"></a>Phoenix Query Server REST SDK
+# <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
-[Apache Phoenix](http://phoenix.apache.org/) je open source, vrstva masivně paralelní relační databáze nad [HBase](apache-hbase-overview.md). Phoenix umožňuje použít dotazy na podobném SQL s HBase SSH pomocí nástrojů, jako [SQLLine](apache-hbase-phoenix-squirrel-linux.md). Phoenix také poskytuje server HTTP volá Phoenix Query Server (PQS), tenkým klientům, který podporuje dva mechanismy přenosu pro komunikaci klienta: JSON a Protocol Buffers. Protocol Buffers je výchozího mechanismu a nabízí mnohem efektivnější komunikaci než pro JSON.
+[Apache Phoenix](http://phoenix.apache.org/) je open source, vrstva masivně paralelní relační databáze nad [Apache HBase](apache-hbase-overview.md). Phoenix umožňuje použít dotazy na podobném SQL s HBase SSH pomocí nástrojů, jako [SQLLine](apache-hbase-phoenix-squirrel-linux.md). Phoenix také poskytuje server HTTP volá Phoenix Query Server (PQS), tenkým klientům, který podporuje dva mechanismy přenosu pro komunikaci klienta: JSON a Protocol Buffers. Protocol Buffers je výchozího mechanismu a nabízí mnohem efektivnější komunikaci než pro JSON.
 
 Tento článek popisuje způsob použití PQS REST SDK k vytváření tabulek, řádky upsert jednotlivě a hromadně a výběr dat pomocí příkazů jazyka SQL. V příkladech se používá [ovladač rozhraní Microsoft .NET pro Apache Phoenix Query Server](https://www.nuget.org/packages/Microsoft.Phoenix.Client). Tato sada SDK je postavená na [Apache Calcite Avatica](https://calcite.apache.org/avatica/) rozhraní API, která používají Protocol Buffers výlučně pro formát serializace.
 
@@ -32,7 +32,7 @@ Ovladač Microsoft .NET pro Apache Phoenix Query Server k dispozici jako balíč
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Vytvoření instance nového objektu PhoenixClient
 
-Pokud chcete začít používat knihovny, vytvoření instance nového `PhoenixClient` objekt předávání v `ClusterCredentials` obsahující `Uri` do clusteru a clusteru Hadoop uživatelské jméno a heslo.
+Pokud chcete začít používat knihovny, vytvoření instance nového `PhoenixClient` objekt předávajícího `ClusterCredentials` obsahující `Uri` do vašeho clusteru a Apache Hadoop uživatelské jméno a heslo clusteru.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -540,5 +540,5 @@ FM: 5
 
 ## <a name="next-steps"></a>Další postup 
 
-* [Phoenix v HDInsight](../hdinsight-phoenix-in-hdinsight.md)
-* [Pomocí sady SDK REST HBase](apache-hbase-rest-sdk.md)
+* [Apache Phoenix v HDInsight](../hdinsight-phoenix-in-hdinsight.md)
+* [Použití Apache HBase REST SDK](apache-hbase-rest-sdk.md)

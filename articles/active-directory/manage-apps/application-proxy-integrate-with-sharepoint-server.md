@@ -15,12 +15,12 @@ ms.date: 10/19/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 89852e90daa548dc82455cb6317d367b7423ba65
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456894"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425203"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolit vzdálený přístup k Sharepointu pomocí Azure AD Application Proxy
 
@@ -119,7 +119,7 @@ Nejjednodušší způsob, jak si máte nastavit hlavní názvy služby má násl
 1. Přejděte na web pomocí hlavního názvu služby z jiného počítače.
  Když použijete, relevantní sada lístky protokolu Kerberos je uložit do mezipaměti na počítači. Tyto lístky obsahovat hlavní název služby, který jste vyhledali cílového webu.
 
-2. Hlavní název služby pro danou lokalitu si můžete vyžádat pomocí nástroje volá [příkaz](http://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html). V příkazovém okně, na kterém běží ve stejném kontextu jako uživatel, který se připojil k serveru v prohlížeči spusťte následující příkaz:
+2. Hlavní název služby pro danou lokalitu si můžete vyžádat pomocí nástroje volá [příkaz](https://web.mit.edu/kerberos/krb5-devel/doc/user/user_commands/klist.html). V příkazovém okně, na kterém běží ve stejném kontextu jako uživatel, který se připojil k serveru v prohlížeči spusťte následující příkaz:
 ```
 Klist
 ```

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 4dd54a4a4985a33bc14022d7f722bdf83224c4aa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10023d34a245f9493cfe244882dbdc1351a78513
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240847"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447210"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zásady omezení přístupu služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -133,6 +133,10 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 -   **Zásady obory:** produktu  
   
 ##  <a name="LimitCallRateByKey"></a> Omezení četnosti volání podle klíče  
+
+> [!IMPORTANT]
+> Tato funkce je k dispozici v **spotřeby** úroveň služby API Management.
+
  `rate-limit-by-key` Zásada zabraňuje špičky využití rozhraní API na základě klíče za tím, že omezíte počet volání na zadané číslo za zadané časové období. Klíč může obsahovat libovolné řetězcovou hodnotu a se většinou poskytuje pomocí výrazů zásad. Volitelný krok podmínku lze přidat k určení, které požadavky by měla být započítává limit. Jakmile se tato zásada se aktivuje volající přijímat `429 Too Many Requests` stavového kódu odpovědi.  
   
  Další informace a příklady těchto zásad najdete v tématu [pokročilé omezování požadavků pomocí Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  
@@ -285,6 +289,10 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 -   **Zásady obory:** produktu  
   
 ##  <a name="SetUsageQuotaByKey"></a> Nastavení kvóty využití podle klíče  
+
+> [!IMPORTANT]
+> Tato funkce je k dispozici v **spotřeby** úroveň služby API Management.
+
  `quota-by-key` Zásada vynucuje obnovitelných nebo doba života volání svazku a/nebo šířku pásma kvóty, na základě za klíč. Klíč může obsahovat libovolné řetězcovou hodnotu a se většinou poskytuje pomocí výrazů zásad. Volitelný krok podmínku lze přidat k určení, které požadavky by měla být započítává kvóty. Pokud více zásad by zvýšit stejnou hodnotu klíče, je pouze jednou zvýší na požadavek. Při dosažení limitu volání volající obdrží `403 Forbidden` stavového kódu odpovědi.
   
  Další informace a příklady těchto zásad najdete v tématu [pokročilé omezování požadavků pomocí Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  

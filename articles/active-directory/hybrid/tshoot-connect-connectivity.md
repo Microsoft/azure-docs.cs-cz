@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f34b0015a4a6d7b8c2c23f539cf21232adaec58
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5d5eee525c6f071840d186cb6bd54faf9bf2787b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311098"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52310663"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Řešení potíží s připojením u služby Azure AD Connect
 Tento článek vysvětluje, jak funguje připojení mezi Azure AD Connect a službou Azure AD a jak řešit problémy s připojením. Tyto problémy jsou pravděpodobně se zobrazí v prostředí s proxy serverem.
@@ -46,7 +46,7 @@ Z těchto adres URL v následující tabulce je absolutní minimum, bude moct p�
 | --- | --- | --- |
 | mscrl.microsoft.com |HTTP/80 |Používá ke stahování seznamů CRL. |
 | \*.verisign.com |HTTP/80 |Používá ke stahování seznamů CRL. |
-| \*. entrust.com |HTTP/80 |Používá ke stahování seznamů CRL pro vícefaktorové ověřování. |
+| \*. entrust.net |HTTP/80 |Používá ke stahování seznamů CRL pro vícefaktorové ověřování. |
 | \*.windows.net |HTTPS/443 |Používá k přihlášení do služby Azure AD. |
 | secure.aadcdn.microsoftonline-p.com |HTTPS/443 |Používá se pro MFA. |
 | \*.microsoftonline.com |HTTPS/443 |Slouží ke konfiguraci adresáře služby Azure AD a import/export dat. |

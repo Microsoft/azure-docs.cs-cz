@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/3/2018
+ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: f865a0a609422ae4938a9cccf15d9cd176a9400a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 779efdd509460ac8175b3922097d701edf8b9b68
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227786"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311224"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Správa a zpracování výstrah zabezpečení v Azure Security Center
 Tento dokument vám pomůže používat Azure Security Center ke správě výstrah zabezpečení a reagování na ně.
 
 > [!NOTE]
-> Pokud chcete povolit rozšířené detekce, upgradujte na Azure Security Center Standard. K dispozici je bezplatná 60denní zkušební verze. Pokud chcete provést upgrade, vyberte v [zásadách zabezpečení](security-center-policies.md) cenovou úroveň. Další informace najdete v článku o [cenách Azure Security Center](security-center-pricing.md).
+> Pokud chcete povolit rozšířené detekce, upgradujte na Azure Security Center Standard. K dispozici je bezplatná 60denní zkušební verze. Pokud chcete provést upgrade, vyberte v [zásadách zabezpečení](security-center-azure-policy.md) cenovou úroveň. Další informace najdete v článku o [cenách Azure Security Center](security-center-pricing.md).
 >
 >
 
@@ -63,6 +63,20 @@ V dolní části této stránky jsou uvedené podrobnosti pro každou výstrahu.
 > [!NOTE]
 > Výstrahy zabezpečení, které generuje Security Center, se také zobrazí v části Protokol aktivit Azure. Další informace o tom, jak získat přístup k Protokolu aktivit Azure, najdete v popisu [zobrazení protokolů aktivit pro auditování akcí u prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
 >
+
+
+### <a name="alert-severity"></a>Závažnost upozornění
+
+> [!NOTE]
+> Závažnost výstrahy je jinak zobrazí na portálu a rozhraní REST API, rozdíly jsou popsány v níže uvedeném seznamu.
+
+-   **Vysoká**: je vysoká pravděpodobnost, že dojde k ohrožení vašich prostředků. Byste se podívat do něj okamžitě. Security Center má vysokou spolehlivostí škodlivým činnostem závěry používají k vydávání výstrahu. Například výstrahy, které se zjistí spuštění známé škodlivé nástroje, jako je nástroj Mimikatz, běžné nástroj používaný pro krádež přihlašovacích údajů. 
+-   **Střední (nízké nároky na rozhraní REST API)**: to je pravděpodobně podezřelou aktivitu, která může znamenat, že dojde k ohrožení prostředku.
+Security Center důvěru v analytické nebo hledání se střední a spolehlivosti škodlivým činnostem je střední na vysokou. Ty by obvykle neměl machine learning nebo detekce anomálií, na základě. Například znak při pokusu o z neobvyklého umístění.
+-   **Nízká (informace v rozhraní REST API)**: může to být neškodné pozitivní nebo zablokování útoku. 
+    - Security Center není dostatečně přesvědčeni, že je cílem škodlivý a aktivity mohou být zcela nevinné. Vymazat protokol je například akci, která může dojít v případě, že útočník pokusí skrýt svoje stopy, ale v mnoha případech je běžné operace prováděné správci.
+    - Security Center nebude zjistit obvykle při se zablokoval útoky, pokud je zajímavé případ, který doporučujeme, abyste že si prohlédnout. 
+-   **Informativní (tichý režim v rozhraní REST API)**: informativní výstrahy se zobrazí pouze, když k podrobnostem na incident zabezpečení, nebo pokud používáte rozhraní REST API s konkrétní výstrahy ID. Incident je obvykle obsahují celou řadu výstrah, z nichž některé mohou zobrazit na svoje vlastní, které bude jenom informativní, ale v kontextu jiných oznámení může být albertových podívat podrobněji. 
 
 ### <a name="filtering-alerts"></a>Filtrování výstrah
 Výstrahy můžete filtrovat podle data, stavu nebo závažnosti. Filtrování výstrah může být užitečné v případech, kdy potřebujete zúžit obor zobrazených výstrah zabezpečení. Například můžete chtít zabývat se výstrahami zabezpečení, k nimž došlo v posledních 24 hodinách, protože zjišťujete případný průnik do systému.
