@@ -1,5 +1,5 @@
 ---
-title: Kurz – použití Azure Key Vault s Windows virtuální počítač Azure v Pythonu | Dokumentace Microsoftu
+title: Kurz – použití Azure Key Vault s Linuxových virtuálních počítačů Azure v Pythonu | Dokumentace Microsoftu
 description: 'Kurz: Konfigurace aplikace ASP.NET Core pro čtení tajného klíče z trezoru klíčů'
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 26b5b16e3eb016edbe53c3526e51c3aa44f307b5
+ms.openlocfilehash: 5f56022be7968d3be65fd06fef791d859acf14c0
 ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583580"
+ms.locfileid: "52585316"
 ---
-# <a name="tutorial-how-to-use-azure-key-vault-with-azure-windows-virtual-machine-in-python"></a>Kurz: Jak používat Azure Key Vault s Windows virtuální počítač Azure v Pythonu
+# <a name="tutorial-how-to-use-azure-key-vault-with-azure-linux-virtual-machine-in-python"></a>Kurz: Jak používat Azure Key Vault s Linuxových virtuálních počítačů Azure v Pythonu
 
 Azure Key Vault pomáhá chránit tajné klíče, jako jsou klíče rozhraní API nebo databázové připojovací řetězce potřebné pro přístup k aplikacím, službám a prostředkům IT.
 
@@ -100,13 +100,36 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 ```
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
-Postupujte podle následujících odkazech k vytvoření virtuálního počítače s Windows
 
-[Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli) 
+Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az_vm_create).
 
-[Powershell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
+Následující příklad vytvoří virtuální počítač *myVM* a přidá uživatelský účet *azureuser*. Parametr `--generate-ssh-keys` slouží k automatickému vygenerování klíče SSH a jeho uložení do výchozího umístění klíčů (*~/.ssh*). Pokud místo toho chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
-[Azure Portal](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
+```azurecli-interactive
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --generate-ssh-keys
+```
+
+Vytvoření virtuálního počítače a podpůrných prostředků trvá několik minut. Následující příklad ukazuje, že operace vytvoření virtuálního počítače byla úspěšná.
+
+```
+{
+  "fqdns": "",
+  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "location": "westus",
+  "macAddress": "00-00-00-00-00-00",
+  "powerState": "VM running",
+  "privateIpAddress": "XX.XX.XX.XX",
+  "publicIpAddress": "XX.XX.XXX.XXX",
+  "resourceGroup": "myResourceGroup"
+}
+```
+
+Poznamenejte si vlastní adresu `publicIpAddress` ve výstupu z vašeho virtuálního počítače. Tato adresa se používá pro přístup k virtuálnímu počítači v dalších krocích.
 
 ## <a name="assign-identity-to-virtual-machine"></a>Přiřazení identit k virtuálnímu počítači
 V tomto kroku vytváříme systému identity přiřazené k virtuálnímu počítači spuštěním následujícího příkazu v rozhraní příkazového řádku Azure
@@ -142,10 +165,10 @@ Níže je právě ukázkového souboru s názvem "Sample.py". Používá [požad
 ## <a name="edit-samplepy"></a>Upravit Sample.py
 Po vytvoření Sample.py otevřete soubor a zkopírujte níže uvedeného kódu
 
-```
-The below is a 2 step process. 
-1. Fetch a token from the local MSI endpoint on the VM which in turn fetches a token from Azure Active Directory
-2. Pass the token to Key Vault and fetch your secret 
+Níže je o 2 krocích. 
+1. Načíst token z koncového bodu místní instalační služby MSI ve virtuálním počítači, který pak načte token ze služby Azure Active Directory
+2. Předat token do služby Key Vault a načtou se vaše tajný klíč 
+
 ```
     # importing the requests library 
     import requests 
@@ -166,14 +189,15 @@ The below is a 2 step process.
     print(kvSecret.json()["value"])
 ```
 
-By running you should see the secret value 
+Spuštěním byste měli vidět tajná hodnota 
+
 ```
-Python Sample.py
+python Sample.py
 ```
 
-The above code shows you how to do operations with Azure Key Vault in an Azure Windows Virtual Machine. 
+Výše uvedený kód ukazuje, jak provádět operace se službou Azure Key Vault ve virtuálním počítači Windows Azure. 
 
-## Next steps
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+> [Rozhraní REST API služby Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/)

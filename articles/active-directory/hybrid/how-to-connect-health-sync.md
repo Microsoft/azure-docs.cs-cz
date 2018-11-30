@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eebeb8d1f27631e7ecb40072f78d6a04b5152a8f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 9811c51485ec30e7fe692c52f4e65cefd93e5cb0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277133"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499068"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Sledování synchronizace Azure AD Connect pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health.  Informace o sledování služby AD FS pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD FS](how-to-connect-health-adfs.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md).
@@ -62,7 +62,7 @@ Tato funkce nabízí grafické zobrazení trendu v počtu změn, které se vyhod
 
 ![Latence synchronizace](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report-preview"></a>Sestava chyb synchronizace na úrovni objektu (verze Preview)
+## <a name="object-level-synchronization-error-report"></a>Sestava chyb synchronizace na úrovni objektu
 Tato funkce poskytuje sestavu chyb synchronizace, ke kterým může dojít při synchronizaci dat identity mezi službou Windows Server AD a Azure AD pomocí služby Azure AD Connect.
 
 * Sestava obsahuje chyby zaznamenané klientem synchronizace (Azure AD Connect verze 1.1.281.0 nebo vyšší).
@@ -74,7 +74,7 @@ Tato funkce poskytuje sestavu chyb synchronizace, ke kterým může dojít při 
   * Seznam chybných objektů podle kategorie
   * Všechna data o chybách na jednom místě
   * Souběžné porovnání objektů, u kterých došlo k chybě z důvodu konfliktu
-  * Stažení sestavy chyb ve formátu CSV (připravuje se)
+  * Stažení sestavy chyb ve formátu CSV
 
 ### <a name="categorization-of-errors"></a>Kategorizace chyb
 Sestava zařazuje stávající chyby synchronizace do následujících kategorií:

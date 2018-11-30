@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 83e277eceea2df746de6f6e9a33130989e2d874d
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 5f59f14f93b5bfc79c07b096a07ac109be0bedb6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278357"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499092"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Apache Sparku se systémem Apache Kafka ve službě HDInsight
 
-V tomto kurzu se dozvíte, jak pomocí strukturovaného streamování Apache Sparku číst a zapisovat data s využitím systému Apache Kafka ve službě Azure HDInsight.
+Tento kurz ukazuje, jak používat [strukturovaného streamování Apache Sparku](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) ke čtení a zápisu dat pomocí [Apache Kafka](https://kafka.apache.org/) v Azure HDInsight.
 
 Strukturované streamování Sparku je modul pro zpracování datových proudů založený na Spark SQL. Umožňuje zrychlit streamované i dávkové výpočty se statickými daty. 
 
@@ -35,11 +35,11 @@ Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Znalost používání poznámkových bloků Jupyter se Sparkem ve službě HDInsight. Další informace najdete v tématu [Načítání dat a spouštění dotazů s využitím Sparku ve službě HDInsight](spark/apache-spark-load-data-run-query.md).
+* Seznámení se s použitím [poznámkové bloky Jupyter](https://jupyter.org/) pomocí Spark v HDInsight. Další informace najdete v tématu [načtení dat a spouštění dotazů s Apache Spark v HDInsight](spark/apache-spark-load-data-run-query.md) dokumentu.
 
 * Znalost programovacího jazyku [Scala](https://www.scala-lang.org/). Kód použitý v tomto kurzu je napsaný v jazyce Scala.
 
-* Znalost vytváření témat Kafka. Další informace najdete v dokumentu [Rychlý start k systému Kafka ve službě HDInsight](kafka/apache-kafka-get-started.md).
+* Znalost vytváření témat Kafka. Další informace najdete v tématu [Apache Kafka v HDInsight quickstart](kafka/apache-kafka-get-started.md) dokumentu.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují skupinu prostředků Azure obsahující cluster Spark ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
@@ -48,7 +48,7 @@ Jakmile budete hotovi s kroky v tomto dokumentu, nezapomeňte clustery odstranit
 >
 > Další informace o použití služby HDInsight ve virtuální síti najdete v dokumentu [Rozšíření služby HDInsight pomocí virtuální sítě](hdinsight-extend-hadoop-virtual-network.md).
 
-## <a name="structured-streaming-with-kafka"></a>Strukturované streamování s využitím systému Kafka
+## <a name="structured-streaming-with-apache-kafka"></a>Strukturované streamování s využitím Apache Kafka
 
 Strukturované streamování Sparku je modul pro zpracování datových proudů založený na modulu Spark SQL. Při použití strukturovaného streamování můžete psát streamovací dotazy stejným způsobem jako dávkové dotazy.
 
@@ -203,9 +203,9 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 > 
 > Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak pomocí strukturovaného streamování Sparku zapisovat a číst data ze systému Kafka ve službě HDInsight. Na následujícím odkazu zjistíte, jak používat Storm se systémem Kafka.
+V tomto kurzu jste zjistili, jak používat [strukturovaného streamování Apache Sparku](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) pro zápis a čtení dat z [Apache Kafka](https://kafka.apache.org/) v HDInsight. Použijte tento odkaz na další informace o použití [Apache Storm](https://storm.apache.org/) s využitím systému Kafka.
 
 > [!div class="nextstepaction"]
-> [Použití Apache Stormu se systémem Kafka](hdinsight-apache-storm-with-kafka.md)
+> [Použití Apache Stormu s využitím Apache Kafka](hdinsight-apache-storm-with-kafka.md)

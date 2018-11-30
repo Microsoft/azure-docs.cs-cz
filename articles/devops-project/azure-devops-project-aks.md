@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Nasazení aplikace ASP.NET Core do Azure Kubernetes Service (AKS) pomocí projektů Azure DevOps'
+title: 'Kurz: Nasazení aplikace ASP.NET Core do služby Azure Kubernetes Service s projekty Azure DevOps'
 description: Azure DevOps Projects umožňuje snadno začít používat Azure. S projekty DevOps můžete nasadit aplikaci ASP.NET Core s Azure Kubernetes Service (AKS) v několika rychlých krocích.
 ms.author: mlearned
 ms.manager: douge
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 6e2b53e51d7da117a7f690cb676d0ec096bcb1cd
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 7980ea439cfd3eaefcaa308795836a909f980043
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165542"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620638"
 ---
-# <a name="tutorial-deploy-your-aspnet-core-app-to-azure-kubernetes-service-aks-by-using-azure-devops-projects"></a>Kurz: Nasazení aplikace ASP.NET Core do Azure Kubernetes Service (AKS) pomocí projektů Azure DevOps
+# <a name="tutorial-deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-projects"></a>Kurz: Nasazení aplikace ASP.NET Core do služby Azure Kubernetes Service s projekty Azure DevOps
 
 Projekty Azure DevOps představuje zjednodušené prostředí, ve kterém můžete přenést váš stávající kód a úložiště Git nebo jej vybrat ukázkovou aplikaci k vytvoření kanálu průběžného doručování (CD) do Azure a kontinuální integrace (CI). 
 
@@ -24,6 +24,7 @@ Projekty DevOps také:
 * Automaticky vytváří prostředky Azure, jako je Azure Kubernetes Service (AKS).
 * Vytvoří a nakonfiguruje kanál pro vydávání verzí v Azure DevOps, který nastaví kolekci sestavení a vydaná verze kanálu pro CI/CD.
 * Vytvoří prostředek služby Azure Application Insights pro monitorování.
+* Umožňuje [monitorování Azure pro kontejnery](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) k monitorování výkonu pro úlohy kontejneru v clusteru AKS
 
 V tomto kurzu provedete následující:
 

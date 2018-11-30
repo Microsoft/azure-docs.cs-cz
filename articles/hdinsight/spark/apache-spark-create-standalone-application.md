@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: 529dc37187f6709ecfa93bf3a6d71f053ba49103
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: d83c04946b67dd25bae306c2fa41a0864287bfc8
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008959"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499306"
 ---
-# <a name="tutorial-create-a-scala-maven-application-for-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace Scala Maven pro Spark ve službě HDInsight pomocí IntelliJ
+# <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace v jazyce Scala Maven pro Apache Spark v HDInsight pomocí IntelliJ
 
-V tomto kurzu zjistíte, jak pomocí IntelliJ IDEA vytvořit aplikaci Spark napsanou v jazyce Scala a používající Maven. Tento článek jako sestavovací systém používá Apache Maven a začíná existujícím archetypem Maven pro Scala, který poskytuje IntelliJ IDEA.  Vytvoření aplikace Scala v IntelliJ IDEA zahrnuje následující kroky:
+V tomto kurzu se dozvíte, jak vytvořit [Apache Spark](https://spark.apache.org/) aplikaci napsanou v [Scala](https://www.scala-lang.org/) pomocí [Apache Maven](https://maven.apache.org/) s IntelliJ IDEA. Tento článek jako sestavovací systém používá Apache Maven a začíná existujícím archetypem Maven pro Scala, který poskytuje IntelliJ IDEA.  Vytvoření aplikace Scala v IntelliJ IDEA zahrnuje následující kroky:
 
 * Použití Mavenu jako sestavovacího systému
 * Aktualizace souboru POM (Project Object Model) pro zajištění převodu závislostí modulů Sparku
@@ -27,7 +27,7 @@ V tomto kurzu zjistíte, jak pomocí IntelliJ IDEA vytvořit aplikaci Spark naps
 * Spuštění aplikace v clusteru Spark pomocí Livy
 
 > [!NOTE]
-> HDInsight také nabízí nástroj v podobě modulu plug-in pro IntelliJ IDEA, který zjednodušuje proces vytváření a odesílání aplikací do clusteru HDInsight Spark v Linuxu. Další informace najdete v tématu [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA k vytvoření a odesílání aplikací Spark](apache-spark-intellij-tool-plugin.md).
+> HDInsight také nabízí nástroj v podobě modulu plug-in pro IntelliJ IDEA, který zjednodušuje proces vytváření a odesílání aplikací do clusteru HDInsight Spark v Linuxu. Další informace najdete v tématu [použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Apache Spark](apache-spark-intellij-tool-plugin.md).
 > 
 
 V tomto kurzu se naučíte:
@@ -183,16 +183,16 @@ Nainstalujte modul plug-in Scala pomocí následujících kroků:
        
         ![Vytvoření souboru JAR](./media/apache-spark-create-standalone-application/output.png)
 
-## <a name="run-the-application-on-the-spark-cluster"></a>Spuštění aplikace v clusteru Spark
+## <a name="run-the-application-on-the-apache-spark-cluster"></a>Spuštění aplikace v clusteru Apache Spark
 Ke spuštění aplikace v clusteru můžete použít následující postupy:
 
-* **Zkopírujte soubor JAR aplikace do objektu blob úložiště Azure** přidruženého ke clusteru. Můžete k tomu použít nástroj příkazového řádku [**AzCopy**](../../storage/common/storage-use-azcopy.md). Existuje také řada dalších klientů, které můžete k nahrání dat použít. Další informace najdete v tématu [Nahrání dat pro úlohy Hadoopu do služby HDInsight](../hdinsight-upload-data.md).
-* **Použijte Livy ke vzdálenému odeslání úlohy aplikace** do clusteru Spark. Clustery Spark ve službě HDInsight zahrnují rozhraní Livy, které zveřejňuje koncové body REST pro vzdálené odesílání úloh Sparku. Další informace najdete v tématu [Vzdálené odesílání úloh Sparku do clusterů Spark ve službě HDInsight pomocí Livy](apache-spark-livy-rest-interface.md).
+* **Zkopírujte soubor JAR aplikace do objektu blob úložiště Azure** přidruženého ke clusteru. Můžete k tomu použít nástroj příkazového řádku [**AzCopy**](../../storage/common/storage-use-azcopy.md). Existuje také řada dalších klientů, které můžete k nahrání dat použít. Můžete najít další informace o nich v [nahrávání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).
+* **Odeslat úlohu aplikace vzdáleně pomocí Apache Livy** ke clusteru Spark. Clustery Spark ve službě HDInsight zahrnují rozhraní Livy, které zveřejňuje koncové body REST pro vzdálené odesílání úloh Sparku. Další informace najdete v tématu [úlohy odeslání Apache Spark vzdáleně pomocí Apache Livy Spark na HDInsight clusterů](apache-spark-livy-rest-interface.md).
 
 ## <a name="next-step"></a>Další krok
 
-V tomto článku jste zjistili, jak vytvořit aplikaci Spark Scala. V dalším článku zjistíte, jak tuto aplikaci spustit v clusteru HDInsight Spark pomocí Livy.
+V tomto článku jste zjistili, jak vytvářet aplikace scala Apache Spark. V dalším článku zjistíte, jak tuto aplikaci spustit v clusteru HDInsight Spark pomocí Livy.
 
 > [!div class="nextstepaction"]
->[Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](./apache-spark-livy-rest-interface.md)
+>[Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](./apache-spark-livy-rest-interface.md)
 

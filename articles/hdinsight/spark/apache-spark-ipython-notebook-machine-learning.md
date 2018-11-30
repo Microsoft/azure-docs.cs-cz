@@ -9,22 +9,22 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: eac44d3b8daae27afec8aa24f4767bdb5dbf991a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: a730f6ccba9f935855b233ca804a8180aa7f504b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239555"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580555"
 ---
-# <a name="tutorial-build-a-spark-machine-learning-application-in-hdinsight"></a>Kurz: Vytvoření aplikace strojového učení Sparku ve službě HDInsight 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-hdinsight"></a>Kurz: Vytvoření Apache Spark machine learningu aplikace v HDInsight 
 
-V tomto kurzu zjistíte, jak pomocí poznámkového bloku Jupyter vytvořit aplikaci strojového učení Apache Sparku pro službu Azure HDInsight. 
+V tomto kurzu se dozvíte, jak používat [Poznámkový blok Jupyter](https://jupyter.org/) k sestavení [Apache Spark](https://spark.apache.org/) služby machine learning aplikací pro Azure HDInsight. 
 
 [MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) je knihovna škálovatelného strojového učení Sparku, která se skládá z běžných algoritmů a nástrojů strojového učení, včetně klasifikace, regrese, clusteringu, filtrování založeného na spolupráci, snížení počtu dimenzí a také základních primitiv optimalizace.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Vývoj aplikace strojového učení Sparku
+> * Vývoj Apache Spark machine learningu aplikace
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -186,11 +186,11 @@ V této aplikaci použijete [kanál ML](https://spark.apache.org/docs/2.2.0/ml-p
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Použití knihovny Anaconda scikit-learn pro strojové učení Sparku
 Clustery Apache Spark ve službě HDInsight obsahují knihovny Anaconda. Jejich součástí je také knihovna **scikit-learn** pro strojové učení. Knihovna obsahuje také různé datové sady, které můžete použít k vytváření ukázkových aplikací přímo z poznámkového bloku Jupyter. Příklady použití knihovny scikit-learn najdete tady: [http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
-* Vývoj aplikace strojového učení Sparku
+* Vývoj Apache Spark machine learningu aplikace
 
 V dalším kurzu se dozvíte, jak používat IntelliJ IDEA pro úlohy Sparku. 
 

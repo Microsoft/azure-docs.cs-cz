@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 51f3bcee3a2e5bab8f3592d97f0caa91e8002dd4
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: b7c44184d0a0d8d5a8f1fbd80b053230f2c1ae84
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615976"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582016"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Kurz: Vizualizace a analýza událostí z prostory vaší digitální dvojče Azure s využitím Time Series Insights
 
@@ -160,6 +160,10 @@ Můžete použít [Event Hubs](../event-hubs/event-hubs-about.md) služby k vytv
 Pokud chcete zastavit zkoumání digitální dvojče Azure nad rámec tohoto bodu, bez obav odstraňte prostředky vytvořené v tomto kurzu:
 
 1. V levé nabídce v [webu Azure portal](http://portal.azure.com)vyberte **všechny prostředky**, vyberte skupinu prostředků digitální dvojče a pak vyberte **odstranit**.
+
+    > [!TIP]
+    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
+
 2. V případě potřeby odstraňte ukázkové aplikace na svém počítači práce. 
 
 

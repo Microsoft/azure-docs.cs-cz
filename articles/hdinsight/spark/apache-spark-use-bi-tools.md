@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: dcd28d8e33045f4c0324f964a854e98dfe004321
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e862000df1edc5101c0768f1f96c11953f1485c7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712411"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583274"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Kurz: Analýza dat Apache Spark v HDInsight pomocí Power BI 
 
-Zjistěte, jak pomocí Microsoft Power BI vizualizovat data v clusteru Apache Spark ve službě Azure HDInsight.
+Další informace o použití [Microsoft Power BI](https://powerbi.microsoft.com/) k vizualizaci dat [Apache Spark](https://spark.apache.org/) cluster v [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="verify-the-data"></a>Ověření dat
 
-Poznámkový blok Jupyter, který jste vytvořili v [předchozím kurzu](apache-spark-load-data-run-query.md), obsahuje kód pro vytvoření tabulky `hvac`. Tato tabulka je založená na souboru CSV, který je k dispozici ve všech clusterech HDInsight Spark v umístění **\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv**. Pomocí následujícího postupu ověřte data.
+[Poznámkový blok Jupyter](https://jupyter.org/) , kterou jste vytvořili v [předchozí kurz o službě](apache-spark-load-data-run-query.md) obsahuje kód pro vytvoření `hvac` tabulky. Tato tabulka je založená na souboru CSV, který je k dispozici ve všech clusterech HDInsight Spark v umístění **\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv**. Pomocí následujícího postupu ověřte data.
 
 1. Do poznámkového bloku Jupyter vložte následující kód a pak stiskněte **SHIFT + ENTER**. Kód ověří existenci tabulek.
 
@@ -164,7 +164,7 @@ Služba Power BI umožňuje sdílet sestavy a řídicí panely napříč organiz
 
 10. V sestavě klikněte na **Přejít na řídicí panel**. 
 
-Váš vizuál je připnutý na řídicím panelu. Do sestavy můžete přidat další vizuály a připnout je na stejný řídicí panel. Další informace o sestavách a řídicích panelech najdete v tématech [Sestavy v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) a [Řídicí panely v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
+Váš vizuál je připnutý na řídicím panelu. Do sestavy můžete přidat další vizuály a připnout je na stejný řídicí panel. Další informace o sestavách a řídicích panelů najdete v tématu [sestavy v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-reports/) a [řídicí panely v Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/).
 
 <!--
 ## <a name="tableau"></a>Use Tableau Desktop 
@@ -214,9 +214,9 @@ Váš vizuál je připnutý na řídicím panelu. Do sestavy můžete přidat da
 
 V tomto kurzu jste se naučili:
 
-- Vizualizace dat Sparku pomocí Power BI
+- Vizualizace dat Apache Sparku s využitím Power BI.
 
 V dalším článku se dozvíte, jak můžete data zaregistrovaná ve Sparku přetáhnout do nástroje pro analýzu BI, jako je Power BI. 
 > [!div class="nextstepaction"]
-> [Spuštění úlohy streamování Sparku](apache-spark-eventhub-streaming.md)
+> [Spuštění úlohy streamování Apache Spark](apache-spark-eventhub-streaming.md)
 
