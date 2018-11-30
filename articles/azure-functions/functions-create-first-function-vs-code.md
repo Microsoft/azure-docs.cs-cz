@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce4adface65237ec6f4ed0ef8f8ba9bbdf72355c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: c5889d89ec8c913d9300fa85318a16b4eb452d3b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421046"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633754"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Vytvoření první funkce pomocí Visual Studio Code
 
@@ -49,39 +49,9 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="install-the-azure-function-extension"></a>Instalace rozšíření Azure Functions
+[!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
 
-Rozšíření Azure Functions slouží k vytváření, testování a nasazování funkcí do Azure.
-
-1. Ve Visual Studio Code otevřete **Rozšíření** a vyhledejte `azure functions`, nebo [otevřete tento odkaz ve Visual Studio Code](vscode:extension/ms-azuretools.vscode-azurefunctions).
-
-1. Vyberte **Nainstalovat** a nainstalujte rozšíření do Visual Studio Code. 
-
-    ![Instalace rozšíření pro Azure Functions](./media/functions-create-first-function-vs-code/vscode-install-extension.png)
-
-1. Restartujte Visual Studio Code a vyberte ikonu Azure na panelu aktivit. Měla by se na postranním panelu zobrazit oblast Azure Functions.
-
-    ![Oblast Azure Functions na postranním panelu](./media/functions-create-first-function-vs-code/azure-functions-window-vscode.png)
-
-## <a name="create-an-azure-functions-project"></a>Vytvoření projektu Azure Functions
-
-Šablona projektu Azure Functions ve Visual Studio Code vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
-
-1. Ve Visual Studio Code vyberte logo Azure, aby se zobrazila oblast **Azure: Functions**, pak vyberte ikonu Vytvořit nový projekt.
-
-    ![Vytvoření projektu aplikace funkcí](./media/functions-create-first-function-vs-code/create-function-app-project.png)
-
-1. Vyberte umístění pro pracovní prostor vašeho projektu a zvolte **Vybrat**.
-
-    > [!NOTE]
-    > Tento článek je navržený k dokončení mimo pracovní prostor. V tomto případě nevybírejte složku projektu, která je součástí pracovního prostoru.
-
-1. Vyberte jazyk pro váš projekt aplikace funkcí. V tomto článku se používá jazyk JavaScript.
-    ![Zvolit jazyk projektu](./media/functions-create-first-function-vs-code/create-function-app-project-language.png)
-
-1. Po zobrazení výzvy zvolte **Přidat do pracovního prostoru**.
-
-Visual Studio Code vytvoří projekt aplikace funkcí v novém pracovním prostoru. Tento projekt obsahuje konfigurační soubory [host.json](functions-host-json.md) a [local.settings.json](functions-run-local.md#local-settings-file) a navíc všechny soubory projektu pro konkrétní jazyk. Získáte také nové úložiště Git ve složce projektu.
+[!INCLUDE [functions-create-function-app-vs-code](../../includes/functions-create-function-app-vs-code.md)]
 
 ## <a name="create-an-http-triggered-function"></a>Vytvoření funkce aktivované protokolem HTTP
 
@@ -127,57 +97,9 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
-Než můžete aplikaci publikovat, musíte se přihlásit do Azure.
-
-1. V oblasti **Azure: Functions** zvolte **Přihlásit se k Azure**. Pokud ještě žádný nemáte, můžete si **vytvořit bezplatný účet Azure**.
-
-    ![Odezva místního hostitele funkce v prohlížeči](./media/functions-create-first-function-vs-code/functions-sign-into-azure.png)
-
-1. Po zobrazení výzvy vyberte **Kopírovat a otevřít**, nebo zkopírujte zobrazený kód a otevřete <https://aka.ms/devicelogin> v prohlížeči.
-
-1. Na stránce **Přihlášení zařízení** vložte zkopírovaný kód, ověřte přihlášení pro Visual Studio Code a pak vyberte **Pokračovat**.  
-
-1. Dokončete přihlášení pomocí přihlašovacích údajů vašeho účtu Azure. Po úspěšném přihlášení můžete prohlížeč zavřít.
-
-## <a name="publish-the-project-to-azure"></a>Publikování projektu do Azure
-
-Visual Studio Code umožňuje publikovat projekt funkcí přímo do Azure. Během postupu vytvoříte aplikaci funkcí a související prostředky ve vašem předplatném Azure. Aplikace funkcí poskytuje kontext spuštění pro vaše funkce. Projekt se zabalí a nasadí do nové aplikace funkcí ve vašem předplatném Azure. 
-
-Tento článek předpokládá, že vytváříte novou aplikaci funkcí. Publikování do existující aplikace funkcí přepíše obsah této aplikace v Azure.
-
-1. V oblasti **Azure: Functions** vyberte ikonu Nasadit do Function App.
-
-    ![Nastavení aplikace funkcí](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
-
-1. Zvolte složku projektu, která je vaším aktuálním pracovním prostorem.
-
-1. Pokud máte víc předplatných, vyberte to, které má hostovat vaši aplikaci funkcí, a pak zvolte **+ Vytvořit novou aplikaci funkcí**.
-
-1. Zadejte globálně jedinečný název, který identifikuje vaši aplikaci funkcí, a stiskněte klávesu Enter. Platné znaky pro název aplikace funkcí jsou `a-z`, `0-9` a `-`.
-
-1. Zvolte **+ Vytvořit novou skupinu prostředků**, zadejte název skupiny prostředků, například `myResourceGroup`, a stiskněte klávesu Enter. Můžete také použít existující skupinu prostředků.
-
-1. Zvolte **+ Vytvořit nový účet úložiště**, zadejte globálně jedinečný název pro nový účet úložiště používaný vaší aplikací funkcí a potom stiskněte klávesu Enter. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete taky použít existující účet.
-
-1. Zvolte umístění v [oblasti](https://azure.microsoft.com/regions/) ve své blízkosti nebo v blízkosti jiných služeb, které vaše funkce využívají.
-
-    Vytvoření aplikace funkcí se zahájí po zvolení umístění. Po vytvoření aplikace funkcí a použití balíčku nasazení se zobrazí oznámení.
-
-1. V oznámení vyberte **Zobrazit výstup**, abyste zobrazili výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili.
-
-    ![Výstup vytvoření aplikace funkcí](./media/functions-create-first-function-vs-code/function-create-notifications.png)
-
-1. Poznamenejte si adresu URL nové aplikace funkcí v Azure. Použijete ji k otestování funkce po publikování projektu do Azure.
-
-    ![Výstup vytvoření aplikace funkcí](./media/functions-create-first-function-vs-code/function-create-output.png)
-
-1. Zpátky v oblasti **Azure: Functions** uvidíte, že nová aplikace funkcí se zobrazí pod vaším předplatným. Rozbalením tohoto uzlu se zobrazí funkce v aplikaci funkcí, stejně jako nastavení aplikace a proxy servery funkcí.
-
-    ![Nastavení aplikace funkcí](./media/functions-create-first-function-vs-code/function-app-project-settings.png)
-
-    Z uzlu aplikace funkcí klikněte se stisknutou klávesou Ctrl (klikněte pravým tlačítkem), abyste zvolili provádění z nabídky různých úloh správy a konfigurace pro aplikaci funkcí v Azure. Můžete také zvolit zobrazení aplikace funkcí na webu Azure Portal.
+[!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
 ## <a name="test-your-function-in-azure"></a>Testování funkce v Azure
 
@@ -191,7 +113,7 @@ Tento článek předpokládá, že vytváříte novou aplikaci funkcí. Publikov
 
     ![Odezva funkce v prohlížeči](./media/functions-create-first-function-vs-code/functions-test-remote-browser.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pomocí Visual Studio Code jste vytvořili aplikaci funkcí s jednoduchou funkcí aktivovanou protokolem HTTP. Další informace o vývoji funkcí v určitém jazyce naleznete v referenčních příručkách jazyka pro [JavaScript](functions-reference-node.md), [.NET](functions-dotnet-class-library.md) nebo [Javu](functions-reference-java.md).
 

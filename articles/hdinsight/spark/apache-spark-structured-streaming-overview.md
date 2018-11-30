@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 7470783ba3ebac652c83c397ba2bbe683023c657
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 23702c12f5ec538da4b980ed42fe2282dea69409
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041581"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582209"
 ---
-# <a name="overview-of-spark-structured-streaming"></a>Přehled strukturovaného streamování Sparku
+# <a name="overview-of-apache-spark-structured-streaming"></a>Přehled strukturovaného streamování Apache Sparku
 
-Strukturované streamování Sparku umožňuje implementovat škálovatelné, vysoce propustné odolné aplikace pro zpracování datových proudů. Strukturované streamování je založena na stroji Spark SQL a dále to vylepšuje konstrukce ze snímků dat Spark SQL a datové sady, takže můžete psát streamování dotazy stejným způsobem, který můžete by psát dotazy služby batch.  
+[Apache Spark](https://spark.apache.org/) strukturované streamování umožňuje implementovat škálovatelné, vysoce propustné odolné aplikace pro zpracování datových proudů. Strukturované streamování je založena na stroji Spark SQL a dále to vylepšuje konstrukce ze snímků dat Spark SQL a datové sady, takže můžete psát streamování dotazy stejným způsobem, který můžete by psát dotazy služby batch.  
 
-Strukturované streamování aplikace poběží na clusterech HDInsight Spark a připojte se k streamování dat z Kafka, TCP soketu (pro účely ladění), Azure Storage nebo Azure Data Lake Store. Druhé dvě možnosti, které jsou závislé na externí úložiště, umožňují sledovat soubory přidané do úložiště a zpracování jejich obsah, jako kdyby byly zpracovány pomocí proudu. 
+Strukturované streamování aplikace poběží na clusterech HDInsight Spark a připojit se k streamovaná data z [Apache Kafka](https://kafka.apache.org/), TCP soketu (pro účely ladění), Azure Storage nebo Azure Data Lake Store. Druhé dvě možnosti, které jsou závislé na externí úložiště, umožňují sledovat soubory přidané do úložiště a zpracování jejich obsah, jako kdyby byly zpracovány pomocí proudu. 
 
 Strukturované streamování vytvoří dlouho běžící dotaz, během které použijete pro vstupní data, jako je například výběr, projekce, agregace, oken a propojení datových proudů datový rámec s odkazem na datových rámců operace. V dalším kroku vypíše výsledky do služby file storage (objekty BLOB Azure Storage nebo Data Lake Store) nebo na jakékoli úložiště dat pomocí vlastního kódu (jako je SQL Database nebo Power BI). Strukturované streamování také poskytuje výstup do konzoly pro ladění místně a do tabulky v paměti, abyste si mohli zobrazit data generovaná pro ladění v HDInsight. 
 
@@ -39,7 +39,7 @@ Ve strukturované streamování data dorazí na systém a ingestuje se hned do v
 
 Zpracování dat ve výsledcích tabulek můžou obsahovat jenom data, která je nový od posledního času dotaz (*režimu připojení*), nebo v tabulce může být zcela aktualizují pokaždé, když se nová data tak, že v tabulce jsou zahrnuty všechny výstupní data od začátku datového proudu dotazu (*úplný režim*).
 
-### <a name="append-mode"></a>Režimu připojení
+### <a name="append-mode"></a>Režim připojení
 
 V režimu připojení, pouze řádky přidány do tabulky výsledků od posledního spuštění dotazu jsou k dispozici v tabulce výsledků a zapisovat do externího úložiště. Například nejjednodušší dotazu právě kopíruje veškerá data ze vstupní tabulky do tabulky výsledků v nezměněném stavu. Pokaždé, když trigger interval uplyne, se zpracují nová data a řádky, které představují tato nová data se zobrazí v tabulce výsledků. 
 
@@ -105,7 +105,7 @@ Spusťte streamování dotazu a až do ukončení signál.
 
     val query = streamingOutDF.start()  
 
-### <a name="view-the-results"></a>Zobrazit výsledky
+### <a name="view-the-results"></a>Zobrazení výsledků
 
 Když dotaz běží ve stejném SparkSession spustíte SparkSQL dotazovat `temps` tabulky, kde jsou uloženy výsledky dotazu. 
 
@@ -124,7 +124,7 @@ Tento dotaz vrací výsledky podobné následujícím:
 |{u'start': u "2016-07-26T07:00:00.000Z", u'end'...  |95 |   96.980971 | 99 |
 |{u'start': u "2016-07-26T08:00:00.000Z", u'end'...  |95 |   96.965997 | 99 |  
 
-Podrobnosti o rozhraní API Spark strukturovaný Stream, spolu s daty o vstupní zdroje, operace a výstupní jímky ji podporuje, najdete v článku [Spark strukturované streamování Průvodce programováním pro službu](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
+Podrobnosti o rozhraní API Spark strukturovaný Stream, spolu s daty o vstupní zdroje, operace a výstupní jímky ji podporuje, najdete v článku [Apache Spark strukturované streamování Průvodce programováním pro službu](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html).
 
 ## <a name="checkpointing-and-write-ahead-logs"></a>Vytváření kontrolních bodů a zápis dávky protokolů
 
@@ -132,14 +132,14 @@ K zajištění odolnosti proti chybám a odolnost proti chybám, strukturované 
 
 ## <a name="deploying-spark-streaming-applications"></a>Nasazení aplikací Spark Streaming
 
-Obvykle sestavit aplikace Spark Streaming místně do souboru JAR a nasadit ho na Spark v HDInsight zkopírováním souboru JAR do výchozího úložiště připojené ke clusteru HDInsight. Vaše aplikace může začínat LIVY REST API, který je k dispozici z clusteru pomocí operace POST. Text příspěvku obsahuje dokument JSON, který obsahuje cestu k JAR, název třídy, jejichž hlavní metoda definuje a spouští aplikace streaming a volitelně požadavky na prostředky úlohy (například počet moduly provádění, paměti a jader) , a všechna nastavení konfigurace kódu aplikace vyžaduje.
+Obvykle sestavit aplikace Spark Streaming místně do souboru JAR a nasadit ho na Spark v HDInsight zkopírováním souboru JAR do výchozího úložiště připojené ke clusteru HDInsight. Začnete aplikaci [Apache Livy](https://livy.incubator.apache.org/) REST API, které jsou k dispozici z clusteru pomocí operace POST. Text příspěvku obsahuje dokument JSON, který obsahuje cestu k JAR, název třídy, jejichž hlavní metoda definuje a spouští aplikace streaming a volitelně požadavky na prostředky úlohy (například počet moduly provádění, paměti a jader) , a všechna nastavení konfigurace kódu aplikace vyžaduje.
 
 ![Nasazení aplikace Spark Streaming](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Stav všech aplikací můžete také zkontrolovat požadavek GET na koncový bod LIVY. Nakonec můžete ukončit běžící aplikaci vydáním odstranit požadavek na koncový bod LIVY. Podrobnosti o rozhraní API LIVY najdete v tématu [vzdálené úlohy s LIVY](apache-spark-livy-rest-interface.md)
+Stav všech aplikací můžete také zkontrolovat požadavek GET na koncový bod LIVY. Nakonec můžete ukončit běžící aplikaci vydáním odstranit požadavek na koncový bod LIVY. Podrobnosti o rozhraní API LIVY najdete v tématu [vzdálené úlohy s Apache LIVY](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>Další postup
 
 * [Vytvoření clusteru Apache Spark v HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Spark strukturované streamování Průvodce programováním](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
-* [Spuštění úlohy Spark vzdáleně pomocí LIVY](apache-spark-livy-rest-interface.md)
+* [Apache Spark strukturované streamování Průvodce programováním](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html)
+* [Spouštět úlohy Apache Sparku s využitím Apache LIVY](apache-spark-livy-rest-interface.md)

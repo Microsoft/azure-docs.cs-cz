@@ -2,25 +2,21 @@
 title: Pokročilé zkoumání a modelování se Sparkem | Dokumentace Microsoftu
 description: Pomocí HDInsight Spark ke zkoumání dat a trénování binární klasifikačních a regresních modelů pomocí křížového ověření a hyperparameter optimalizace.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: f90d9a80-4eaf-437b-a914-23514390cd60
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
-ms.author: deguhath
-ms.openlocfilehash: 3763b7df8830d2555afd9beb492cb6878505afa4
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: e0fa3d481e18cdb15095968e791bd9eee630f8af
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566495"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446326"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 
@@ -200,7 +196,7 @@ Jakmile data, nemůžete do Sparku, je dalším krokem v vědecké zpracování 
 Tento kód a další fragmenty použití magický příkaz jazyka SQL k dotazování ukázka a místní magic k vykreslení data.
 
 * **Magický příkaz jazyka SQL (`%%sql`)** jádra PySpark HDInsight podporuje snadno vložené HiveQL dotazů kontext sqlContext. (-O VARIABLE_NAME) argument ukládá jako Pandas DataFrame na serveru Jupyter výstup příkazu jazyka SQL. To znamená, že je k dispozici v místním režimu.
-* **`%%local` Magic** se používá ke spouštění kódu místně na serveru Jupyter, což je hlavního uzlu clusteru HDInsight. Obvykle použijete `%%local` magic po `%%sql -o` magic slouží ke spuštění dotazu. Parametr -o by trvalý výstup příkazu jazyka SQL místně. Pak bude `%%local` magic vyvolá další sadu fragmenty kódu do výstupu dotazů SQL, který obsahuje místní trvalé spouštět místně. Výstup se automaticky vizualizuje po spuštění kódu.
+*  **`%%local` Magic** se používá ke spouštění kódu místně na serveru Jupyter, což je hlavního uzlu clusteru HDInsight. Obvykle použijete `%%local` magic po `%%sql -o` magic slouží ke spuštění dotazu. Parametr -o by trvalý výstup příkazu jazyka SQL místně. Pak bude `%%local` magic vyvolá další sadu fragmenty kódu do výstupu dotazů SQL, který obsahuje místní trvalé spouštět místně. Výstup se automaticky vizualizuje po spuštění kódu.
 
 Tento dotaz načte zkracuje dobu odezvy podle počtu osobní. 
 

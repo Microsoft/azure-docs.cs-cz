@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 18141e0f58a0b5227c3f5f5c36210017da101780
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 6e8f7f18196eb23900c815048e12d57a238d08f7
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625330"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52423052"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k rozhraní Azure AD Graph API
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
 V tomto kurzu se dozvíte, jak použít spravovanou identitu přiřazenou systémem na virtuálním počítači s Windows pro přístup k rozhraní Microsoft Graph API za účelem načtení jeho členství ve skupinách. Spravované identity pro prostředky Azure se spravují automaticky v Azure a umožňují vám ověřovat přístup ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu.  V tomto kurzu se budete dotazovat na členství identity virtuálního počítače ve skupinách služby Azure AD. Informace o skupinách se často používají například při rozhodování o autorizaci. Spravovaná identita virtuálního počítače je uvnitř služby Azure AD reprezentovaná **instančním objektem**. Před dotazem na skupiny přidejte do některé skupiny ve službě Azure AD instanční objekt reprezentující identitu virtuálního počítače. Můžete to udělat přes Azure PowerShell, Azure AD PowerShell nebo Azure CLI.
 

@@ -2,25 +2,21 @@
 title: Identifikace scénářů a plánování procesu analytics – Azure | Dokumentace Microsoftu
 description: Plán pro pokročilou analýzu o tom, na několik klíčových otázek.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath
-ms.openlocfilehash: 949bd8337ced7aa12d4354a46f6ee887a1922a7c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: b61f6c12aaa94fc61063e8d3bd7e339f1548781c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227735"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52446414"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Jak určit scénáře a plánovat zpracování dat pokročilé analýzy
 Jaké prostředky můžete plán zahrnout při nastavování prostředí pro pokročilé analýzy zpracování pro datovou sadu? Tento článek navrhuje řadu otázky, které pomáhají identifikovat úloh a prostředků odpovídající vašemu scénáři. Pořadí hrubý nástin postupu pro prediktivní analýzy je popsaný v [novinky zpracování týmových dat vědy (TDSP)?](overview.md). Každý z těchto kroků vyžaduje konkrétní prostředky pro úlohy, které jsou relevantní pro váš konkrétní scénář. Klíčových otázek k identifikaci vašeho scénáře se týkají logistiky dat, charakteristiky, kvalitu datové sady, nástroje a jazyky, které chcete provést analýzu.

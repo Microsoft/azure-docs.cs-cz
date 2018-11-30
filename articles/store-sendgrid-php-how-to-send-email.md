@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
-ms.openlocfilehash: f58fd08e8cffed6d2920f318aa74bcf9682c29dc
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ee338e2011a7b86a069bd42a028d65b23a123037
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820514"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427093"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Jak používat službu e-mailu Sendgridu z PHP
 
@@ -116,7 +116,7 @@ Chcete-li odeslat e-mailu pomocí rozhraní API SendGrid SMTP, použijte *Swift 
  }
 ```
 
-### <a name="web-api"></a>Webové rozhraní API
+### <a name="web-api"></a>Web API
 Použití PHP na [curl funkce] [ curl function] k odesílání e-mailu pomocí webového rozhraní API SendGrid.
 
 ```php
@@ -240,7 +240,7 @@ Další řádek kódu vypadá takto:
 
 Tento řádek kódu volá metodu připojení na `Swift\_Message` objektu a používá statickou metodu `fromPath` na `Swift\_Attachment` třídy k získání a připojit soubor na zprávu.
 
-### <a name="web-api"></a>Webové rozhraní API
+### <a name="web-api"></a>Web API
 
 Odeslání přílohy pomocí rozhraní Web API je velmi podobný jako poslání e-mailu pomocí rozhraní Web API. Mějte však na paměti, že v následujícím příkladu pole parametrů musí obsahovat tento element:
 
@@ -248,7 +248,7 @@ Odeslání přílohy pomocí rozhraní Web API je velmi podobný jako poslání 
     'files['.$fileName.']' => '@'.$filePath.'/'.$fileName
 ```
 
-#### <a name="example"></a>Příklad
+#### <a name="example"></a>Příklad:
 
 ```php
 <?php
@@ -308,7 +308,7 @@ Použití [Composer] k instalaci knihovny:
 php composer.phar require sendgrid/sendgrid 2.1.1
 ```
 
-### <a name="example"></a>Příklad  
+### <a name="example"></a>Příklad:  
 
 ```php
 <?php
@@ -418,9 +418,9 @@ Další informace najdete v tématu taky [středisko pro vývojáře PHP](https:
 [https://sendgrid.com]: https://sendgrid.com
 [https://sendgrid.com/transactional-email/pricing]: https://sendgrid.com/transactional-email/pricing
 [special offer]: https://www.sendgrid.com/windowsazure.html
-[Packaging and Deploying PHP Applications for Azure]: http://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
+[Packaging and Deploying PHP Applications for Azure]: https://msdn.microsoft.com/library/windowsazure/hh674499(v=VS.103).aspx
 [http://swiftmailer.org/download]: http://swiftmailer.org/download
-[curl function]: http://php.net/curl
+[curl function]: https://php.net/curl
 [založené na cloudu e-mailové služby]: https://sendgrid.com/email-solutions
 [doručování transakční e-mailů]: https://sendgrid.com/transactional-email
 [Knihovna sendgrid php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1

@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 3f45f062cabaf31a10f24b01583575f5066bdaaf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 195776cda0005b3a79aa82220660fcc328f6ee98
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231517"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426250"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence řešení šablony Playbook pro prognózování poptávky po energii
 ## <a name="executive-summary"></a>Shrnutí
@@ -122,7 +122,7 @@ Jak je vidět z této tabulky, je velmi důležité rozlišovat mezi krátkodob�
 ### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Příklad použití případ 1: eSmart systémy – optimalizace přetížení
 Důležité role [inteligentní mřížky](https://en.wikipedia.org/wiki/Smart_grid) je dynamicky a průběžně optimalizace a optimalizace pro změnu vzorce spotřeby. Spotřeba energie může mít dopad na krátkodobou změnou hlavně způsobených fluktuace teploty (*třeba*, vyšší výkon se používá pro podmínku air nebo vytápění). Ve stejnou dobu spotřebu energie ovlivňuje také dlouhodobé trendy. Ty mohou obsahovat sezónnosti efekty, státních svátků v USA, dlouhodobé růstu využití a dokonce ekonomické faktorů, jako je index příjemce, cena ropy a HDP.
 
-V tomto případě se [eSmart](http://www.esmartsystems.com/) kterých chcete nasadit cloudové řešení, která umožňuje předpověď tendence situace přetížení na jakékoli dané transformovny mřížky. Zejména eSmart chtěli identifikovat Rozvodny, které jsou pravděpodobně přetížení během následující hodiny, takže lze provést okamžitou akci k zamezení nebo řešení této situace.
+V tomto případě se [eSmart](https://www.esmartsystems.com/) kterých chcete nasadit cloudové řešení, která umožňuje předpověď tendence situace přetížení na jakékoli dané transformovny mřížky. Zejména eSmart chtěli identifikovat Rozvodny, které jsou pravděpodobně přetížení během následující hodiny, takže lze provést okamžitou akci k zamezení nebo řešení této situace.
 
 Přesný a rychlé provádění předpovědi vyžaduje implementaci ze tří prediktivní modelů:
 
@@ -365,7 +365,7 @@ Jakmile jsme nailed dolů fáze modelování a ověření výkonu modelu jsme p�
 V rámci kontextu prognóza poptávky energie naše cílem je vyvolat nepřetržitý a pravidelných předpovědí přitom zajistit, že je k dispozici pro model čerstvá data a že předpokládaných data se odesílají zpět do klienta náročné.
 
 ### <a name="web-services-deployment"></a>Nasazení webové služby
-Hlavní nasaditelný stavebního bloku v Azure ML je webová služba. Toto je nejúčinnější způsob, jak povolit spotřebu prediktivního modelu v cloudu. Webová služba zapouzdřuje modelu a zabalí jej s [RESTful](http://www.restapitutorial.com/) rozhraní API (Application Programming Interface). Rozhraní API můžete použít jako součást jakýkoli kód klienta, jak je znázorněno v následujícím diagramu.
+Hlavní nasaditelný stavebního bloku v Azure ML je webová služba. Toto je nejúčinnější způsob, jak povolit spotřebu prediktivního modelu v cloudu. Webová služba zapouzdřuje modelu a zabalí jej s [RESTful](https://www.restapitutorial.com/) rozhraní API (Application Programming Interface). Rozhraní API můžete použít jako součást jakýkoli kód klienta, jak je znázorněno v následujícím diagramu.
 
 ![Jsme nasazení služby a využití](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 

@@ -9,28 +9,32 @@ ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: fb9b50ecb16bd37d005403a14ea11c6d89f50dfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7319dc02d07ef1e100b39dbe138870676578fd69
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983640"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634281"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravované identity pro App Service a Azure Functions
 
 > [!NOTE] 
-> App Service v Linuxu a Web App for Containers spravovaných identit momentálně nepodporují.
+> Podpora spravovaných identit pro službu App Service v Linuxu a Web App for Containers je aktuálně ve verzi preview.
 
 > [!Important] 
 > Spravované identity pro App Service a Azure Functions nebude chovat dle očekávání, pokud je vaše aplikace migrovat předplatných a tenantů. Aplikace bude muset získat novou identitu, která se dá dělat pomocí zakázat a znovu povolit funkci. Zobrazit [odebrání identitu](#remove) níže. Podřízené prostředky se také musí být aktualizované, aby používaly novou identitu zásady přístupu.
 
 V tomto tématu se dozvíte, jak vytvořit spravovanou identitu pro aplikace služby App Service a Azure Functions a jak ji používat pro přístup k dalším prostředkům. Spravovanou identitu ze služby Azure Active Directory umožňuje aplikaci snadno přistupovat k jiné prostředky s ochranou AAD jako je Azure Key Vault. Identita je spravovaná Platforma Azure a není nutné zřizovat nebo otočit jakýchkoli tajných kódů. Další informace o spravovaných identit ve službě AAD najdete v tématu [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="creating-an-app-with-an-identity"></a>Vytvoření aplikace s identitou
+Aplikaci lze udělit dva typy identit: 
+- A **systém přiřadil identity** se váže na vaši aplikaci a je odstranit, pokud vaše aplikace se odstraní. Aplikace může mít pouze jednu identitu systém přiřadil. Podpora systém přiřadil identit je obecně dostupná pro aplikace Windows. 
+- A **uživatelsky přiřazené identity** jde o samostatné prostředků Azure, které můžete přiřadit do vaší aplikace. Aplikace může obsahovat více uživatelsky přiřazené identity. Podpora uživatelsky přiřazené identity je pro všechny typy aplikací ve verzi preview.
 
-Vytvoření aplikace s identitou vyžaduje další vlastnosti nastavit na aplikaci.
+## <a name="adding-a-system-assigned-identity"></a>Přidání identity se systém přiřadil
+
+Vytvoření aplikace s identitou systém přiřadil vyžaduje další vlastnosti nastavit na aplikaci.
 
 ### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
 
@@ -42,9 +46,9 @@ Nastavení spravovaných identit na portálu, nejprve vytvoříte aplikaci jako 
 
 3. Vyberte **se identita spravované**.
 
-4. Přepínač **registraci do Azure Active Directory** k **na**. Klikněte na **Uložit**.
+4. V rámci **přiřazenou systémem** přepněte **stav** k **na**. Klikněte na **Uložit**.
 
-![Spravovaná identita ve službě App Service](media/app-service-managed-service-identity/msi-blade.png)
+![Spravovaná identita ve službě App Service](media/app-service-managed-service-identity/msi-blade-system.png)
 
 ### <a name="using-the-azure-cli"></a>Použití Azure CLI
 
@@ -94,7 +98,7 @@ Následující postup vás provede procesem vytvoření webové aplikace a její
     New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
 
-3. Spustit `identity assign` příkaz pro vytvoření identity pro tuto aplikaci:
+3. Spustit `Set-AzureRmWebApp -AssignIdentity` příkaz pro vytvoření identity pro tuto aplikaci:
 
     ```azurepowershell-interactive
     Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
@@ -111,7 +115,10 @@ Prostředek typu `Microsoft.Web/sites` mohou vytvořit s identitou, včetně ná
 }    
 ```
 
-To říká Azure můžete vytvářet a spravovat identitu pro vaši aplikaci.
+> [!NOTE] 
+> Aplikace může mít systém přiřadil i uživatelsky přiřazené identity ve stejnou dobu. V takovém případě `type` by být vlastnost `SystemAssigned,UserAssigned`
+
+Přidání typu systém přiřadil informuje Azure můžete vytvářet a spravovat identitu pro vaši aplikaci.
 
 Například webové aplikace, může vypadat takto:
 ```json
@@ -139,12 +146,100 @@ Například webové aplikace, může vypadat takto:
 Při vytvoření webu má tyto další vlastnosti:
 ```json
 "identity": {
+    "type": "SystemAssigned",
     "tenantId": "<TENANTID>",
     "principalId": "<PRINCIPALID>"
 }
 ```
 
 Kde `<TENANTID>` a `<PRINCIPALID>` jsou nahrazeny identifikátory GUID. Identifikuje vlastnost tenantId jaké identity patří do tenanta služby AAD. PrincipalId je jedinečný identifikátor pro novou identitu aplikace. V rámci AAD služby, které má stejný název, který jste přiřadili k vaší instanci služby App Service nebo Azure Functions.
+
+
+## <a name="adding-a-user-assigned-identity-preview"></a>Přidání uživatelsky přiřazené identity (preview)
+
+> [!NOTE] 
+> Uživatelsky přiřazené identity jsou aktuálně ve verzi preview. Cloudy Sovreign se zatím nepodporují.
+
+Vytvoření aplikace pomocí uživatelsky přiřazené identity vyžaduje vytvoření identity a pak přidejte svůj identifikátor prostředku ke konfiguraci vaší aplikace.
+
+### <a name="using-the-azure-portal"></a>Použití webu Azure Portal
+
+> [!NOTE] 
+> Toto prostředí portálu se nasazuje a ještě možná není k dispozici ve všech oblastech.
+
+Nejprve budete muset vytvoření uživatelsky přiřazené identity prostředku.
+
+1. Vytvoření uživatelsky přiřazené identity spravovaných prostředků podle [tyto pokyny](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
+
+2. Vytvoření aplikace na portálu jako obvykle. Přejděte na ni na portálu.
+
+3. Pokud používáte aplikaci function app, přejděte na **funkce platformy**. Pro další typy aplikací, přejděte dolů k položce **nastavení** skupinu v levém navigačním panelu.
+
+4. Vyberte **se identita spravované**.
+
+5. V rámci **uživatel přiřazenou (preview)** klikněte na tlačítko **přidat**.
+
+6. Vyhledejte identita, kterou jste vytvořili dříve a vyberte ji. Klikněte na tlačítko **Add** (Přidat).
+
+![Spravovaná identita ve službě App Service](media/app-service-managed-service-identity/msi-blade-user.png)
+
+### <a name="using-an-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
+
+Šablony Azure Resource Manageru můžete použít k automatizaci nasazení vašich prostředků Azure. Další informace o nasazení do App Service a Functions najdete v tématu [automatizace nasazování prostředků ve službě App Service](../app-service/app-service-deploy-complex-application-predictably.md) a [automatizace nasazování prostředků ve službě Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
+
+Prostředek typu `Microsoft.Web/sites` mohou vytvořit s identitou, včetně následující blok v definici prostředků, nahraďte `<RESOURCEID>` s ID prostředku požadované identity:
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {}
+    }
+}    
+```
+
+> [!NOTE] 
+> Aplikace může mít systém přiřadil i uživatelsky přiřazené identity ve stejnou dobu. V takovém případě `type` by být vlastnost `SystemAssigned,UserAssigned`
+
+Přidat typ uživatel přiřazenou a cotells Azure můžete vytvářet a spravovat identitu pro vaši aplikaci.
+
+Například webové aplikace, může vypadat takto:
+```json
+{
+    "apiVersion": "2016-08-01",
+    "type": "Microsoft.Web/sites",
+    "name": "[variables('appName')]",
+    "location": "[resourceGroup().location]",
+    "identity": {
+        "type": "UserAssigned"
+    },
+    "properties": {
+        "name": "[variables('appName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "hostingEnvironment": "",
+        "clientAffinityEnabled": false,
+        "alwaysOn": true
+    },
+    "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+    ]
+}
+```
+
+Při vytvoření webu má tyto další vlastnosti:
+```json
+"identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+        "<RESOURCEID>": {
+            "principalId": "<PRINCIPALID>",
+            "clientId": "<CLIENTID>"
+        }
+    }
+}
+```
+
+Kde `<PRINCIPALID>` a `<CLIENTID>` jsou nahrazeny identifikátory GUID. PrincipalId je jedinečný identifikátor pro identitu, která se používá pro správu na AAD. ClientId je jedinečný identifikátor aplikace novou identitu, která slouží k určení, která identita se má použít během volání modulu runtime.
+
 
 ## <a name="obtaining-tokens-for-azure-resources"></a>Získání tokenů pro prostředky Azure
 
@@ -188,7 +283,8 @@ Aplikace s využitím spravované identity má dvě proměnné prostředí defin
 > |-----|-----|-----|
 > |prostředek|Dotaz|AAD identifikátor URI prostředku, pro která by měla být získána token.|
 > |verze API-version|Dotaz|Verze rozhraní API tokenů, který se má použít. "2017-09-01" je momentálně podporována pouze verze.|
-> |Tajný kód|Záhlaví|Hodnota proměnné prostředí MSI_SECRET.|
+> |Tajný kód|Hlavička|Hodnota proměnné prostředí MSI_SECRET.|
+> |ID klienta|Dotaz|(Volitelné) ID uživatelsky přiřazené identity použít. Pokud tento parametr vynechán, systém přiřadil identita se používá.|
 
 
 Úspěšná odpověď 200 OK obsahuje text JSON s následujícími vlastnostmi:
@@ -241,7 +337,7 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
 
 <a name="token-js"></a>V Node.JS:
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
     var options = {
         uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=${apiver}`,
@@ -265,7 +361,7 @@ $accessToken = $tokenResponse.access_token
 
 ## <a name="remove"></a>Odebírá se identita
 
-Identita je možné odebrat tím, že zakážete funkci stejným způsobem, pokud byl vytvořený pomocí portálu, Powershellu nebo rozhraní příkazového řádku. V šabloně protokolu REST/ARM se provádí tak, že nastavíte typ, který má "None":
+Systém přiřadil identitou lze odebrat tím, že zakážete funkci stejným způsobem, pokud byl vytvořený pomocí portálu, Powershellu nebo rozhraní příkazového řádku. Uživatelsky přiřazené identity je odebrat samostatně. Pokud chcete odebrat všechny identity, v protokolu REST/ARM šablony, se provádí tak, že nastavíte typ, který má "None":
 
 ```json
 "identity": {
@@ -273,7 +369,7 @@ Identita je možné odebrat tím, že zakážete funkci stejným způsobem, poku
 }    
 ```
 
-Odebrání identitu tímto způsobem se odstraní také objekt zabezpečení ze služby AAD. Systém uživatelsky přiřazené identity jsou automaticky odebrány ze služby AAD při odstraňování prostředků aplikace.
+Odebrání identitou systém přiřadil tímto způsobem také odstranit ji ze služby AAD. Systém uživatelsky přiřazené identity taky automaticky odeberou z AAD při odstraňování prostředků aplikace.
 
 > [!NOTE] 
 > Je také nastavení aplikace, kterou můžete nastavit, WEBSITE_DISABLE_MSI, tím se zakáže pouze místní služby tokenů. Ale ponechá identity na místě a nástrojů se stále zobrazí spravovanou identitu jako "on" nebo "povoleno". Použití tohoto nastavení v důsledku toho není doporučená.

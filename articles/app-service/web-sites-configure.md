@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 73d2da542c4f7da0933187d800f562de76bfb3e6
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115518"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443504"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurace webových aplikací v prostředí Azure App Service
 
@@ -78,6 +78,8 @@ Tato část obsahuje dvojice název/hodnota, které webové aplikace se načtou 
 
 Nastavení aplikace se vždy šifrují, pokud uložená (šifrovaná at-rest).
 
+Nastavení aplikace lze vyřešit pomocí služby Key Vault [služby Key Vault odkazuje](app-service-key-vault-references.md).
+
 ### <a name="connection-strings"></a>Připojovací řetězce
 Připojovací řetězce pro odkazované zdroje. 
 
@@ -93,6 +95,8 @@ Tato nastavení budou k dispozici jako proměnné prostředí za běhu, před kt
 Například, pokud se název připojovacího řetězce MySql `connectionstring1`, by být přístupné prostřednictvím proměnné prostředí `MYSQLCONNSTR_connectionString1`.
 
 Připojovací řetězce se vždy šifrují, pokud uložená (šifrovaná at-rest).
+
+Připojovací řetězce lze vyřešit pomocí služby Key Vault [služby Key Vault odkazuje](app-service-key-vault-references.md).
 
 ### <a name="default-documents"></a>Výchozí dokumenty
 Výchozí dokument je webová stránka, která se zobrazí na adrese URL kořenového webu.  V seznamu první odpovídající soubor se používá. 

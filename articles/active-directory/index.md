@@ -117,7 +117,7 @@ ms.locfileid: "50413073"
                                                             <a href="b2b/index.yml"><i>Další informace&gt;</i></a>
                                                             </p>
                                                         <br><br>
-                                                        <h3><a href="/azure/active-directory-b2c/index">B2C (Business-to-Customer)</a></h3>
+                                                        <h3><a href="/azure/active-directory-b2c/index">Firmy zákazníka (B2C)</a></h3>
                                                         <p>
                                                             <a href="/azure/active-directory-b2c/tutorial-create-tenant">Vytvoření tenanta Azure AD B2C</a><br>
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Povolení ověřování pro webovou aplikaci</a><br>
@@ -158,7 +158,7 @@ ms.locfileid: "50413073"
                                                             <a href="devices/index.yml"><i>Další informace&gt;</i></a><br>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="/azure/active-directory-domain-services/index">Domain Services</a></h3>
+                                                        <h3><a href="/azure/active-directory-domain-services/index">Doménové služby</a></h3>
                                                         <p>
                                                             <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Povolení služby Azure AD Domain Services</a><br>
                                                             <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal">Připojení virtuálního počítače s Windows Serverem ke spravované doméně</a><br>

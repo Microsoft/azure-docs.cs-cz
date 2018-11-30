@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8e77a33667bd6794f667348958e0edb9c6a8fb0d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 41edbc621baede92c548f43ad2730b73f59756c0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094973"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496101"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kdy použít poskytovatele Azure Multi-Factor Authentication
 
@@ -26,13 +26,11 @@ Poskytovatele Azure Multi-Factor Auth umožňuje využít výhod funkcí poskyto
 Pokud máte licence, které pokrývají všechny uživatele ve vaší organizaci, pak nepotřebujete poskytovatele Azure Multi-Factor auth. Vytvoření poskytovatele ověřování Azure Multi-Factor Authentication, pouze v případě, že budete taky muset zadat dvoustupňové ověřování pro uživatele, kteří nemají licence.
 
 > [!NOTE]
-> Může vytvořit už nebude platit 1. září 2018 nové zprostředkovatelé vícefaktorového ověřování. Existující zprostředkovatelé vícefaktorového ověřování nadále používat a aktualizovat. Ověřování službou Multi-Factor Authentication bude i nadále k dispozici funkce v licence Azure AD Premium.
+> Může vytvořit už nebude platit 1. září 2018 nové zprostředkovatelé vícefaktorového ověřování. Existující zprostředkovatelé vícefaktorového ověřování nadále používat a aktualizovat. Ověřování službou Multi-Factor Authentication bude nadále k dispozici jako funkci v licence Azure AD Premium.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Upozornění související s Azure MFA SDK
 
-Pokud si chcete stáhnout sadu SDK, budete potřebovat poskytovatele Azure Multi-Factor Auth. Poznámka: Sada SDK je zastaralá a již není podporována pro nové zákazníky a pouze budou nadále fungovat až do 14. listopadu 2018. Po tomto datu se volání této sady SDK nezdaří.
-
-Chcete-li stáhnout sadu SDK, vytvořte poskytovatele Azure Multi-Factor Auth i v případě, že máte licence Azure MFA, AAD Premium nebo jiné sady. Pokud vytvoříte poskytovatele Azure Multi-Factor Auth pro tento účel a máte už licence, nezapomeňte poskytovatele vytvořit podle modelu **Na povoleného uživatele**. Potom propojte poskytovatele s adresáři, který obsahuje Azure MFA, Azure AD Premium nebo licence na ostatní sady. Tato konfigurace zajistí, že nebudete dostávat faktury, pokud nemáte více jedinečných uživatelů provádějících dvoustupňové ověřování než počet vlastněných licencí.
+Poznámka: Sada SDK se už nepoužívá a pouze budou nadále fungovat až do 14. listopadu 2018. Po tomto datu se volání této sady SDK nezdaří.
 
 ## <a name="what-is-an-mfa-provider"></a>Co je poskytovatel MFA?
 

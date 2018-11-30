@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 8f680b60a8f457e1a8619ac044798ff02df15694
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9898a56991a44f3ac87fde4c34676943b1ab8341
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013645"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581897"
 ---
-# <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Vytvoření úlohy Spark Streaming vysokou dostupnost s YARN
+# <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>Vytvoření úlohy streamování Apache Sparku vysokou dostupnost s YARN
 
-Spark Streaming umožňuje implementovat škálovatelné, vysoce propustné odolné aplikace pro zpracování datových proudů. Aplikace Spark Streaming v clusteru HDInsight Spark se můžete připojit k řadě zdrojů dat, jako je Azure Event Hubs, Azure IoT Hub, Kafka, Flume, Twitter, ZeroMQ, nezpracovaná sockety TCP, nebo při sledování změn systému souborů HDFS. Spark Streaming podporuje odolnost proti chybám s zárukou, že danou událost je zpracována právě jednou, i při selhání uzlu.
+[Apache Spark](https://spark.apache.org/) streamování umožňuje implementovat škálovatelné, vysoce propustné odolné aplikace pro zpracování datových proudů. Aplikace Spark Streaming v clusteru HDInsight Spark můžete připojit k řadě zdrojů dat, jako jsou Azure Event Hubs, Azure IoT Hub [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ ZeroMQ](http://zeromq.org/), nezpracovaná TCP sockety, nebo na základě sledování [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) systému souborů pro změny. Spark Streaming podporuje odolnost proti chybám s zárukou, že danou událost je zpracována právě jednou, i při selhání uzlu.
 
 Spark Streaming vytvoří dlouhotrvajících úloh, během které je možné použít transformace dat, a potom vydat výsledky systémy souborů, databází, řídicí panely a konzoly. Spark Streaming zpracovává micro dávek dat, tak, že první dávku událostí, které shromažďují za definovaný časový interval. V dalším kroku této služby batch se odesílají na zpracování a výstup. Časové intervaly batch se obvykle definují v zlomků sekund.
 
@@ -54,7 +54,7 @@ Rdd mít několik vlastností, které pomáhají vysoce dostupné a odolné prot
 
 Chcete-li vytvořit aplikaci, která zpracovává každé události (pouze jednou a jednou), vezměte v úvahu jak restartuje všechny body selhání systému se vyskytl problém, a jak se můžete vyhnout ztrátě dat. Přesně – Jakmile sémantiku vyžaduje, aby se neztratí kdykoli a zpracování této zprávy je restartování, bez ohledu na to, kde dojde k selhání. Zobrazit [vytvořit streamování Sparku s přesně úlohy-událostí zpracování](apache-spark-streaming-exactly-once.md).
 
-## <a name="spark-streaming-and-yarn"></a>Streamování Sparku a YARN
+## <a name="spark-streaming-and-apache-hadoop-yarn"></a>Streamování Sparku a Apache Hadoop YARN
 
 V HDInsight, cluster pracovní koordinuje přes *ještě další Resource Negotiator* (YARN). Návrh vysoké dostupnosti a Spark Streaming zahrnuje techniky pro streamování Sparku a také pro součásti YARN.  Příklad konfigurace pomocí YARN je uveden níže. 
 
@@ -120,8 +120,8 @@ Souhrnně řečeno, pomocí vytváření kontrolních bodů, WAL + spolehlivé p
 
 ## <a name="next-steps"></a>Další postup
 
-* [Přehled streamování Sparku](apache-spark-streaming-overview.md)
-* [Vytvoření úlohy streamování Sparku s přesně-událostí zpracování](apache-spark-streaming-exactly-once.md)
-* [Dlouho běžící Streamovacích úloh na základě YARNU Sparku](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
+* [Apache Spark Streaming přehled](apache-spark-streaming-overview.md)
+* [Vytvoření úlohy streamování Apache Sparku s přesně-událostí zpracování](apache-spark-streaming-exactly-once.md)
+* [Dlouho běžící Apache Sparku na technologii YARN úlohy streamování](http://mkuthan.github.io/blog/2016/09/30/spark-streaming-on-yarn/) 
 * [Strukturované streamování: Sémantiku odolný vůči chybám odolné](http://spark.apache.org/docs/2.1.0/structured-streaming-programming-guide.html#fault-tolerance-semantics)
 * [Diskretizovaný datových proudů: Odolné proti chybám Model pro zpracování škálovatelné Stream](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2012/EECS-2012-259.pdf)

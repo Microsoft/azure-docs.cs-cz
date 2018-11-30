@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 7b6752196d3512ab3ede4f5e339d681948e732e8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 93cbb9a891f83eed623f095f208319c9071e287e
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853737"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635539"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak připojit Azure monitorovat pro virtuální počítače (Preview)
 Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače s monitorováním stavu operačního systému virtuálních počítačů Azure a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí, včetně zjišťování a mapování závislostí aplikace který může hostovat na ně.  
@@ -151,8 +151,8 @@ Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy
 
 | Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Kromě [agenta Log Analytics pro Windows](../../log-analytics/log-analytics-agent-overview.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
-| Agenti systému Linux | Ano | Kromě [agenta Log Analytics pro Linux](../../log-analytics/log-analytics-agent-overview.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Windows | Ano | Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Linux | Ano | Kromě [agenta Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
 | Skupina pro správu nástroje System Center Operations Manager | Ne | |  
 
 Agent závislostí lze stáhnout z následujícího umístění.
@@ -205,7 +205,7 @@ Shrnuto jsou kroky, které je potřeba provést předem nakonfigurovat váš pra
 Pokud nemáte pracovní prostor Log Analytics, projděte si dostupné metody navrhované pod [požadavky](#log-analytics) části k jejímu vytvoření.  
 
 #### <a name="enable-performance-counters"></a>Povolit čítače výkonu
-Pokud již získat čítače výkonu požadováno řešením není nakonfigurovaný pracovní prostor Log Analytics odkazuje řešení, se musí být povolené. Můžete to provést ručně, jak je popsáno [tady](../../log-analytics/log-analytics-data-sources-performance-counters.md), nebo tak, že stažení a spuštění skriptu PowerShell, který je k dispozici z [Galerie prostředí Powershell Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
+Pokud již získat čítače výkonu požadováno řešením není nakonfigurovaný pracovní prostor Log Analytics odkazuje řešení, se musí být povolené. Můžete to provést ručně, jak je popsáno [tady](../../azure-monitor/platform/data-sources-performance-counters.md), nebo tak, že stažení a spuštění skriptu PowerShell, který je k dispozici z [Galerie prostředí Powershell Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
  
 #### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>Nainstalujte řešení ServiceMap a InfrastructureInsights
 Tato metoda zahrnuje šablony JSON, který určuje konfiguraci, aby zajistilo komponenty řešení do pracovního prostoru Log Analytics.  
@@ -531,9 +531,9 @@ Failed: (0)
 ## <a name="enable-for-hybrid-environment"></a>Povolit pro hybridní prostředí
 Tato část vysvětluje, jak připojit virtuální počítače nebo fyzického počítače, které se hostované ve vašem datovém centru nebo jiné cloudové prostředí pro monitorování, tak monitorování Azure pro virtuální počítače.  
 
-Azure Monitor pro virtuální počítače mapu závislostí agenta nepřenáší vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Mapy dat je vždy přenášených v rámci agenta Log Analytics ve službě Azure Monitor, buď přímo nebo prostřednictvím [bránu OMS](../../log-analytics/log-analytics-oms-gateway.md) Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu.
+Azure Monitor pro virtuální počítače mapu závislostí agenta nepřenáší vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Mapy dat je vždy přenášených v rámci agenta Log Analytics ve službě Azure Monitor, buď přímo nebo prostřednictvím [bránu OMS](../../azure-monitor/platform/gateway.md) Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu.
 
-Seznamte se s požadavky a metody nasazení pro [agenta Log Analytics Linux a Windows](../../log-analytics/log-analytics-agent-overview.md).  
+Seznamte se s požadavky a metody nasazení pro [agenta Log Analytics Linux a Windows](../../azure-monitor/platform/log-analytics-agent.md).  
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -591,7 +591,7 @@ Soubory pro agenta závislostí jsou umístěny v následujících adresářích
 | Binární soubory úložiště | /var/opt/microsoft/dependency-agent/storage |
 
 ### <a name="enable-performance-counters"></a>Povolit čítače výkonu
-Pokud již získat čítače výkonu požadováno řešením není nakonfigurovaný pracovní prostor Log Analytics odkazuje řešení, se musí být povolené. Můžete to provést ručně, jak je popsáno [tady](../../log-analytics/log-analytics-data-sources-performance-counters.md), nebo tak, že stažení a spuštění skriptu PowerShell, který je k dispozici z [Galerie prostředí Powershell Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
+Pokud již získat čítače výkonu požadováno řešením není nakonfigurovaný pracovní prostor Log Analytics odkazuje řešení, se musí být povolené. Můžete to provést ručně, jak je popsáno [tady](../../azure-monitor/platform/data-sources-performance-counters.md), nebo tak, že stažení a spuštění skriptu PowerShell, který je k dispozici z [Galerie prostředí Powershell Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
  
 ### <a name="onboard-azure-monitor-for-vms"></a>Připojení Azure Monitor pro virtuální počítače
 Tato metoda zahrnuje šablony JSON, který určuje konfiguraci, aby zajistilo komponenty řešení do pracovního prostoru Log Analytics.  

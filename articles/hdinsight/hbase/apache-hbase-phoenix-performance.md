@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: ff194ef7f5ae609eba5334eb5c66db02d660ab08
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8a67327497c96cba570d2ddb8c525bf5a60be790
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049627"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308206"
 ---
-# <a name="phoenix-performance-best-practices"></a>Osvědčené postupy pro Phoenix z hlediska výkonu
+# <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix osvědčené postupy z hlediska výkonu
 
-Nejdůležitější aspekty Phoenix výkonu je k optimalizaci základní HBase. Phoenix vytvoří relačním datovým modelem nad HBase, který převádí dotazy SQL HBase operace, jako je prohledávání. Phoenix výkon ovlivnit návrh schéma tabulky, výběr a pořadí polí ve primárního klíče a vaše využití všechny indexy.
+Nejdůležitější aspekty [Apache Phoenix](https://phoenix.apache.org/) výkonu je k optimalizaci základní [Apache HBase](http://hbase.apache.org/). Phoenix vytvoří relačním datovým modelem nad HBase, který převádí dotazy SQL HBase operace, jako je prohledávání. Phoenix výkon ovlivnit návrh schéma tabulky, výběr a pořadí polí ve primárního klíče a vaše využití všechny indexy.
 
 ## <a name="table-schema-design"></a>Návrh schématu tabulky
 
@@ -229,5 +229,5 @@ Podrobnosti o tomto a dalších možností najdete v tématu [Phoenix gramatiky]
 
 ## <a name="next-steps"></a>Další postup
 
-* [Průvodci optimalizací Phoenix](https://phoenix.apache.org/tuning_guide.html)
+* [Průvodci optimalizací Apache Phoenix](https://phoenix.apache.org/tuning_guide.html)
 * [Sekundární indexy](http://phoenix.apache.org/secondary_indexing.html)

@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: cdc6e082207b9128be3e3005305510f3ee493850
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 0cb75c1acb731432ed524560698e3355699b2500
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427837"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422078"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Odesílání e-mailu pomocí SendGrid z Javy
 Tato příručka ukazuje, jak k provádění běžných programovacích úloh s e-mailové služby SendGrid v Azure. Ukázky jsou napsané v jazyce Java. Mezi popsané scénáře patří **vytváření e-mailu**, **odesílání e-mailů**, **přidávání příloh**, **pomocí filtrů**a **aktualizují se vlastnosti**. Další informace o SendGrid a odesílání e-mailu, najdete v článku [další kroky](#next-steps) oddílu.
@@ -34,13 +34,13 @@ SendGrid je [založené na cloudu e-mailové služby] , která poskytuje spolehl
 * Předávání dotazy zákazníků
 * E-mailových oznámení z aplikace
 
-Další informace naleznete v tématu <http://sendgrid.com>.
+Další informace naleznete v tématu <https://sendgrid.com>.
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu SendGrid
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="how-to-use-the-javaxmail-libraries"></a>Postupy: použití knihoven javax.mail
-Získat javax.mail knihovny, například z <http://www.oracle.com/technetwork/java/javamail> a importujte je do vašeho kódu. Na hlavní proces pomocí knihovny javax.mail k odesílání e-mailu pomocí protokolu SMTP je provést následující kroky:
+Získat javax.mail knihovny, například z <https://www.oracle.com/technetwork/java/javamail> a importujte je do vašeho kódu. Na hlavní proces pomocí knihovny javax.mail k odesílání e-mailu pomocí protokolu SMTP je provést následující kroky:
 
 1. Zadejte hodnoty SMTP, včetně serveru SMTP, který je pro SendGrid smtp.sendgrid.net.
 
@@ -184,13 +184,13 @@ Teď, když jste se naučili základy služby e-mailu Sendgridu, použijte tyto 
 * Dokumentace k rozhraní API SendGrid: <https://sendgrid.com/docs/API_Reference/index.html>
 * SendGrid speciální nabídka pro zákazníky Azure: <https://sendgrid.com/windowsazure.html>
 
-[http://sendgrid.com]: https://sendgrid.com
-[http://sendgrid.com/pricing.html]: http://sendgrid.com/pricing.html
+[https://sendgrid.com]: https://sendgrid.com
+[https://sendgrid.com/pricing.html]: https://sendgrid.com/pricing.html
 [http://www.sendgrid.com/azure.html]: https://www.sendgrid.com/windowsazure.html
-[http://sendgrid.com/features]: https://sendgrid.com/features
-[http://www.oracle.com/technetwork/java/javamail]: http://www.oracle.com/technetwork/java/javamail/index.html
+[https://sendgrid.com/features]: https://sendgrid.com/features
+[https://www.oracle.com/technetwork/java/javamail]: https://www.oracle.com/technetwork/java/javamail/index.html
 [Filter Settings]: https://sendgrid.com/docs/API_Reference/Web_API/filter_settings.html
 [SendGrid API documentation]: https://sendgrid.com/docs/API_Reference/index.html
-[http://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
+[https://sendgrid.com/azure.html]: https://sendgrid.com/windowsazure.html
 [založené na cloudu e-mailové služby]: https://sendgrid.com/email-solutions
 [doručování transakční e-mailů]: https://sendgrid.com/transactional-email

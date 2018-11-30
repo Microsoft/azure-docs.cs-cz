@@ -1,6 +1,6 @@
 ---
-title: Nasazení webové služby Machine Learning | Dokumentace Microsoftu
-description: Postup převedení školicího experimentu na prediktivní experiment, její přípravu na nasazení a pak ji nasadit jako webovou službu Azure Machine Learning.
+title: Nasazení webové služby Machine Learning Studio – Azure | Dokumentace Microsoftu
+description: Postup převedení školicího experimentu na prediktivní experiment, její přípravu na nasazení a pak ji nasadit jako webovou službu Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: a5730b6b1d1b8d74b773ae21d4347a85bf370de7
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: d96755f00aa5023d57c9c4c2b2457902c337e29d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262580"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314264"
 ---
-# <a name="deploy-an-azure-machine-learning-web-service"></a>Nasazení webové služby Azure Machine Learning
+# <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Nasazení webové služby Azure Machine Learning Studio
 Azure Machine Learning umožňuje vytvářet, testovat a nasazovat řešení prediktivní analýzy.
 
 Z vysoké úrovni bodu kolegů se provádí ve třech krocích:

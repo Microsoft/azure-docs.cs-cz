@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8eb5a2429db26c987e9a6a40130e25c8034a210b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5f07f462fc33761f7d29944594491a72f283cd31
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011642"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582549"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
-Zjistěte, jak vytvořit topologie založené na jazyce Java pro Apache Storm. Vytváření topologie Storm, který implementuje aplikace počet slov. Použití Mavenu k sestavení a zabalení projektu. Potom se dozvíte, jak definovat topologii s použitím rozhraní tok.
+Zjistěte, jak vytvořit topologie založené na jazyce Java pro [Apache Storm](http://storm.apache.org/). Vytváření topologie Storm, který implementuje aplikace počet slov. Použijete [Apache Maven](https://maven.apache.org/) chcete sestavit a zabalit projekt. Potom se dozvíte, jak definovat topologii s použitím rozhraní tok.
 
 Po dokončení kroků v tomto dokumentu, můžete nasadit topologii do Apache Storm v HDInsight.
 
@@ -30,7 +30,7 @@ Po dokončení kroků v tomto dokumentu, můžete nasadit topologii do Apache St
 
 * [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks)
 
-* [Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): sestavovací systém projektů pro projekty Java je Maven.
+* [Nástroje Apache Maven (https://maven.apache.org/download.cgi)](https://maven.apache.org/download.cgi): sestavovací systém projektů pro projekty Java je Maven.
 
 * Textový editor a integrované vývojové prostředí.
 
@@ -534,7 +534,7 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>Konfigurace protokolování
 
-Storm používá Apache Log4j k ukládání informací. Pokud neprovedete konfiguraci protokolování, topologii vysílá diagnostické informace. Pokud chcete řídit, co se do protokolu zapíše, vytvořte soubor s názvem `log4j2.xml` v `resources` adresáře. Použijte následující kód XML jako obsah souboru.
+Storm používá [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) k protokolování informací. Pokud neprovedete konfiguraci protokolování, topologii vysílá diagnostické informace. Pokud chcete řídit, co se do protokolu zapíše, vytvořte soubor s názvem `log4j2.xml` v `resources` adresáře. Použijte následující kód XML jako obsah souboru.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -559,7 +559,7 @@ Tato konfigurace XML nakonfiguruje pro nový protokolovací nástroj `com.micros
 
 `<Root level="error">` Části nakonfiguruje kořenové úrovni protokolování (vše, co není v `com.microsoft.example`) se protokolovat jenom informace o chybě.
 
-Další informace o konfiguraci protokolování pro Log4j, naleznete v tématu [ http://logging.apache.org/log4j/2.x/manual/configuration.html ](http://logging.apache.org/log4j/2.x/manual/configuration.html).
+Další informace o konfiguraci protokolování pro Log4j 2 najdete v tématu [ http://logging.apache.org/log4j/2.x/manual/configuration.html ](http://logging.apache.org/log4j/2.x/manual/configuration.html).
 
 > [!NOTE]
 > Storm verzi 0.10.0 a vyšší využití Log4j 2.x. Používat starší verzí storm Log4j 1.x, který používá jiný formát pro konfiguraci protokolu. Informace o konfiguraci starší, naleznete v tématu [ http://wiki.apache.org/logging-log4j/Log4jXmlFormat ](http://wiki.apache.org/logging-log4j/Log4jXmlFormat).
@@ -588,7 +588,7 @@ Mezi emisí slov a počty je interval 5 sekund. **WordCount** součást je nakon
 
 ## <a name="convert-the-topology-to-flux"></a>Převést na topologii na tok
 
-Tok je nový rámec dostupná se Stormem 0.10.0 a vyšší, který umožňuje oddělit konfiguraci z implementace. Vaše komponenty jsou stále definována v Javě, ale topologii je definováno pomocí souboru YAML. Můžete balíček výchozí definici topologie s projektem, nebo použijte samostatný soubor při odesílání topologie. Při odesílání topologie do Storm, můžete použít proměnné prostředí nebo konfigurační soubory k naplnění hodnot v definici topologie YAML.
+[Tok](http://storm.apache.org/releases/2.0.0-SNAPSHOT/flux.html) je nový rámec dostupná se Stormem 0.10.0 a vyšší, který umožňuje oddělit konfiguraci z implementace. Vaše komponenty jsou stále definována v Javě, ale topologii je definováno pomocí souboru YAML. Můžete balíček výchozí definici topologie s projektem, nebo použijte samostatný soubor při odesílání topologie. Při odesílání topologie do Storm, můžete použít proměnné prostředí nebo konfigurační soubory k naplnění hodnot v definici topologie YAML.
 
 Soubor YAML definuje součásti, které budou používat pro topologii a data tok mezi nimi. Soubor YAML můžete zahrnout jako součást na soubor jar nebo můžete použít externí soubor YAML.
 
@@ -762,23 +762,23 @@ Další informace o toku, najdete v části [tok framework (https://storm.apache
 
     Jakmile se spustí na topologii, měli byste zaznamenat, čas mezi emitovaný dávky se změnila tak, aby odrážely hodnotu v newtopology.yaml. Abyste viděli, že můžete změnit konfiguraci prostřednictvím souboru YAML bez nutnosti znovu kompilovat topologie.
 
-Další informace o těchto a dalších funkcích rozhraní tok, najdete v části [tok (https://storm.apache.org/releases/1.0.6/flux.html)](https://storm.apache.org/releases/1.0.6/flux.html).
+Další informace o těchto a dalších funkcích rozhraní tok, najdete v části [tok (http://storm.apache.org/releases/current/flux.html)](http://storm.apache.org/releases/current/flux.html).
 
 ## <a name="trident"></a>Trident
 
-Trident má vysokou úroveň abstrakce, která je poskytována Storm. Podporuje stavové zpracování. Hlavní výhodou Trident je, že může zaručit, že všechny zprávy, která vstupuje do topologie se zpracuje pouze jednou. Bez použití Trident, topologii pouze zaručit, že zprávy se zpracuje alespoň jednou. Existují také další rozdíly, jako je integrované součásti, které je možné použít místo vytváření boltů. Ve skutečnosti funkce bolts jsou nahrazené méně obecný komponenty, například funkcí, projekce a filtry.
+[Trident](http://storm.apache.org/releases/current/Trident-API-Overview.html) je vysokou úroveň abstrakce, která je poskytována Storm. Podporuje stavové zpracování. Hlavní výhodou Trident je, že může zaručit, že všechny zprávy, která vstupuje do topologie se zpracuje pouze jednou. Bez použití Trident, topologii pouze zaručit, že zprávy se zpracuje alespoň jednou. Existují také další rozdíly, jako je integrované součásti, které je možné použít místo vytváření boltů. Ve skutečnosti funkce bolts jsou nahrazené méně obecný komponenty, například funkcí, projekce a filtry.
 
 Trident aplikací můžete vytvořit pomocí projektů Maven. Použijte stejný základní postup uvedenou výše v tomto článku – pouze pro kód se liší. Trident také (aktuálně) nejde v rámci toku.
 
-Další informace o Trident naleznete v tématu [přehled rozhraní API Trident](http://storm.apache.org/documentation/Trident-API-Overview.html).
+Další informace o Trident naleznete v tématu [přehled rozhraní API Trident](http://storm.apache.org/releases/current/Trident-API-Overview.html).
 
 ## <a name="next-steps"></a>Další kroky
 
-Jste se naučili, jak vytvářet topologie Storm pomocí Javy. Teď zjistěte, jak:
+Jste se naučili, jak vytvořit Apache Storm topologii s použitím jazyka Java. Teď zjistěte, jak:
 
 * [Nasazení a správa topologií Apache Storm v HDInsight](apache-storm-deploy-monitor-topology.md)
 
 * [Vývoj topologií C# pro Apache Storm v HDInsight pomocí sady Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
 
-Příklad lze najít další topologií Storm návštěvou [příklad topologií pro Storm v HDInsight](apache-storm-example-topology.md).
+Příklad lze najít další topologií Apache Storm návštěvou [příklad topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md).
 

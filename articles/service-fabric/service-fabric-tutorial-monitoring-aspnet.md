@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b592ac10d483bbf0ca058e87f819b8f67847c54e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 9bbff92b7706fd207894616b83580c4ddf85e5eb
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296104"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444780"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Kurz: Monitorování a diagnostika aplikace ASP.NET Core na platformě Service Fabric pomocí Application Insights
 
@@ -79,6 +79,8 @@ Postupujte podle těchto kroků a nakonfigurujte Application Insights pro služb
 1. Klikněte pravým tlačítkem na název služby a pak klikněte na **Nakonfigurovat Application Insights**.
 
     ![Konfigurace Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/configure-ai.png)
+>[!NOTE]
+>V závislosti na typu projektu když jste klikněte pravým tlačítkem na název služby, budete muset klikněte na tlačítko Přidat -> Telemetrie Application Insights...
 
 2. Klikněte na **Začít zdarma**.
 3. Přihlaste se ke svému účtu (se kterým jste také nastavili své předplatné Azure) a vyberte předplatné, ve kterém jste vytvořili prostředek Application Insights. Vyhledejte prostředek v rozevírací nabídce Prostředek v části *Stávající prostředek Application Insights*. Kliknutím na **Zaregistrovat** přidejte Application Insights do své služby.
@@ -179,7 +181,7 @@ Přejděte ke svému prostředku Application Insights na webu Azure Portal.
 Kliknutím na **Přehled** se vraťte na úvodní stránku vašeho prostředku. Pak kliknutím na **Vyhledávání** v horní části zobrazte příchozí trasování. Zobrazení trasování v Application Insights trvá několik minut. V případě, že se žádné nezobrazí, chvíli počkejte a stiskněte tlačítko **Aktualizovat** v horní části.
 ![Zobrazení trasování Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/ai-search.png)
 
-Když se posunete dolů v okně *Vyhledávání*, zobrazí se veškerá příchozí telemetrie, která je součástí Application Insights. Pro každou akci, kterou jste provedli v hlasovací aplikaci, by se měl zobrazit odchozí požadavek PUT ze služby *VotingWeb* (PUT Votes/Put [název]),příchozí požadavek PUT ze služby *VotingData* (PUT VoteData/Put [název]) a pár požadavků GET pro aktualizaci zobrazovaných dat. Vzhledem k tomu, že se jedná o požadavky HTTP, zobrazí se také trasování závislosti protokolu HTTP na místním hostiteli. Tady je příklad toho, co se zobrazí po přidání jednoho hlasu: ![Trasování ukázkového požadavku Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
+Když se posunete dolů v okně *Vyhledávání*, zobrazí se veškerá příchozí telemetrie, která je součástí Application Insights. Pro každou akci, kterou trvala v hlasovací aplikaci, musí být požadavek PUT odchozí ze *VotingWeb* (PUT hlasy nebo Put [name]), z příchozí žádosti PUT *VotingData* (PUT VoteData nebo Put název []), za nímž následuje pár požadavků GET pro aktualizace dat, které se zobrazí. Vzhledem k tomu, že se jedná o požadavky HTTP, zobrazí se také trasování závislosti protokolu HTTP na místním hostiteli. Tady je příklad toho, co se zobrazí po přidání jednoho hlasu: ![Trasování ukázkového požadavku Application Insights](./media/service-fabric-tutorial-monitoring-aspnet/sample-request.png)
 
 Kliknutím na některé z trasování můžete zobrazit další podrobnosti. Zobrazí se užitečné informace o požadavku, které poskytuje Application Insights, včetně *doby odezvy* a *adresy URL požadavku*. Navíc vzhledem k tomu, že jste přidali balíček NuGet specifický pro Service Fabric, se v části *Vlastní data* uvedené níže zobrazí také data o vaší aplikaci v kontextu clusteru Service Fabric. To zahrnuje kontext služby, takže se zobrazí *ID oddílu* a *ID repliky* zdroje požadavku, pomocí kterých můžete lépe vyhledat problémy při diagnostice chyb v aplikaci.
 
@@ -251,7 +253,7 @@ Až budete hotovi s prováděním změn, **spusťte** aplikaci, aby se sestavila
 
 ![vlastní události](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 > [!div class="checklist"]

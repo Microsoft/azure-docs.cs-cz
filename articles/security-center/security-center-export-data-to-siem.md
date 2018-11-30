@@ -1,5 +1,5 @@
 ---
-title: Azure data zabezpečení export do SIEM – konfigurace kanálu [Preview] | Dokumentace Microsoftu
+title: Azure data zabezpečení export do SIEM – konfigurace kanálu | Dokumentace Microsoftu
 description: Tento článek dokumenty produkci získání Azure security center protokolů do SIEM
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
+ms.date: 11/26/2018
 ms.author: barclayn
-ms.openlocfilehash: aede60a729fe9c0594ded485e189c0b467e34271
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4cc9478197b39198a94ace1cbefab81de3cdb32b
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298229"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52306722"
 ---
-# <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Azure data zabezpečení export do SIEM – konfigurace kanálu [Preview]
+# <a name="azure-security-data-export-to-siem-pipeline-configuration"></a>Export dat Azure zabezpečení do SIEM kanálu konfigurace
 
 Tento dokument obsahuje podrobnosti o postupu při exportu dat zabezpečení Azure Security Center do SIEM.
 
@@ -37,11 +37,11 @@ Podrobný přehled
 
 ## <a name="what-is-the-azure-security-data-exposed-to-siem"></a>Co je Azure security data vystavená do systému SIEM?
 
-V této verzi preview zveřejňujeme [výstrahy zabezpečení.](../security-center/security-center-managing-and-responding-alerts.md) V nadcházejících vydáních jsme se rozšířit datové sady s doporučení týkající se zabezpečení.
+V této verzi jsme vystavit [výstrahy zabezpečení.](../security-center/security-center-managing-and-responding-alerts.md) V nadcházejících vydáních jsme se rozšířit datové sady s doporučení týkající se zabezpečení.
 
-## <a name="how-to-setup-the-pipeline"></a>Jak nastavit kanál? 
+## <a name="how-to-setup-the-pipeline"></a>Nastavení kanálu
 
-### <a name="create-an-event-hub"></a>Vytvoření centra událostí 
+### <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
 Než začnete, budete muset [vytvořte obor názvů služby Event Hubs](../event-hubs/event-hubs-create.md). Tento obor názvů a centra událostí je cílem pro všemi daty monitorování.
 
