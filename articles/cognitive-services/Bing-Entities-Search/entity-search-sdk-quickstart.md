@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: abf7e4344bea88fd86b86135ffab30672d77922e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
-ms.translationtype: HT
+ms.openlocfilehash: 7cbb97fbf237e14d6822edfa174ca469f8988e2d
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814096"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307354"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-c"></a>Rychlý start: Sada SDK Bingu pro vyhledávání entit pomocí jazyka C#
 
@@ -24,6 +24,7 @@ Rozhraní API Bingu pro vyhledávání entit obsahuje funkce rozhraní REST API 
 [Zdrojový kód pro ukázky sady SDK Bingu pro vyhledávání entit pomocí jazyka C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingEntitySearch) je k dispozici na GitHubu.
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
+Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK pro vyhledávání entit Bingu, přejděte v sadě Visual Studio v Průzkumníkovi řešení na možnost `Manage NuGet Packages`.  Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.EntitySearch`.
 
@@ -314,6 +315,6 @@ Následující kód spustí špatný požadavek a ukáže, jak číst chybovou o
         }
 
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
