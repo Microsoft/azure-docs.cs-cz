@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6dc10bc2dedfe99573b5ad646461e66827c6df9e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.openlocfilehash: 7ac298ad5c5b93b5dce0ce2dd59ffe541888db88
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320165"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52307759"
 ---
 # <a name="quickstart-using-the-bing-custom-search-sdk-with-c"></a>Rychlý start: Použití sady SDK pro Vlastní vyhledávání Bingu s jazykem C#
 
@@ -27,7 +27,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 - Instance vlastního vyhledávání připravená k použití. Přečtěte si téma [Vytvoření první instance Vlastního vyhledávání Bingu](quick-start.md).  
   
-- Klíč předplatného. Klíč předplatného můžete získat aktivací [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) nebo můžete použít klíč placeného předplatného z řídicího panelu Azure (informace najdete v tématu [Účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).  
+- Klíč předplatného. Klíč předplatného můžete získat aktivací [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) nebo můžete použít klíč placeného předplatného z řídicího panelu Azure (informace najdete v tématu [Účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
   
 - Nainstalovaná sada Visual Studio 2017. Pokud ji ještě nemáte, můžete stáhnout **bezplatnou** verzi [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/).  
   
@@ -168,7 +168,7 @@ else
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prohlédněte si ukázky sady SDK. Každá ukázka obsahuje soubor ReadMe s podrobnostmi o požadavcích a instalaci a spuštění ukázky.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9f77beb8c51fb3a06045183433907e1c634fb45d
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7c7891d8a73142c78b1ca80027d685b93a062d06
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820263"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317904"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Vytvořit úložiště s využitím Azure Maps
 
@@ -81,7 +81,7 @@ Podíváme na snímku obrazovky dat, můžeme provádět následující poznámk
 * Některé další sloupce obsahují metadata související v kavárnách: telefonní číslo, logickou sloupce pro Wi-Fi hotspotů a vozíku usnadnění a úložiště otevírání a zavírání časy ve 24hodinovém formátu. Můžete vytvořit vlastní sloupce obsahující metadata, která souvisí s víc dat o poloze.
 
 > [!Note]
-> Azure maps používá ke kulovému Mercato projekce (EPSG:3857).
+> Azure Maps vykreslí data v kulovité projekci Mercator "EPSG:3857", ale čte data v "EPSG:4325" používajících WGS84 datum. 
 
 Existuje mnoho způsobů, jak vystavit datovou sadu, která aplikace. Jedním z přístupů je načíst data do databáze a zpřístupňují webové služby, který dotazuje data a odesílá výsledky do prohlížeče uživatele. Tato možnost je ideální pro velké datové sady nebo datových sad, které se často aktualizují. Tato možnost však vyžaduje podstatně více vývojové práce a má vyšší náklady. 
 

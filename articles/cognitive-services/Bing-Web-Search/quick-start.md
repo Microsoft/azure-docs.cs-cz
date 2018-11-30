@@ -11,18 +11,18 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: af32abe1c61c44b14d0f70033aee54aa7eba7c8b
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.openlocfilehash: 6e4c5a47ea19a4308865de78f3a4c059a9f8ac79
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126237"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312397"
 ---
 # <a name="your-first-bing-search-query"></a>Váš první vyhledávací dotaz Bingu
 
-Než budete moct provést první volání, je nutné nejprve získat klíč předplatného služeb Cognitive Services. Postup, jak klíč získat, najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+Než budete moct provést první volání, je nutné nejprve získat klíč předplatného služeb Cognitive Services. Postup, jak klíč získat, najdete v tématu [Zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-Pokud chcete získat výsledky vyhledávání na webu, odešlete požadavek GET následujícímu koncovému bodu:  
+Pokud chcete získat výsledky hledávání na webu, odešlete požadavek GET na následující koncový bod:  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search
@@ -264,7 +264,7 @@ BingAPIs-Market: en-US
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vyzkoušejte si rozhraní API. Přejděte na [testovací konzolu rozhraní API pro vyhledávání na webu](https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d).
 

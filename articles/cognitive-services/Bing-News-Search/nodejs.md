@@ -3,23 +3,23 @@ title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, Node.js'
 titlesuffix: Azure Cognitive Services
 description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 923566dc2764037164725f795e411beef939d92a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: d0bb2d9b35c93d8730ca17fbf70e41df5deb1834
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802066"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316901"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-nodejs"></a>Rychlý start pro rozhraní API pro vyhledávání zpráv v Node.js
 
-Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání zpráv, které je součástí služby Microsoft Cognitive Services v Azure. V tomto článku se sice používá Node.js, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
+Tento článek vám ukazuje, jak používat rozhraní API Bingu pro vyhledávání zpráv, které je součástí služeb Microsoft Cognitive Services v Azure. V tomto článku se sice používá Node.js, ale rozhraní API je webová služba RESTful kompatibilní s každým programovacím jazykem, který dokáže provádět požadavky HTTP a parsovat JSON. 
 
 Příklad je napsaný v JavaScriptu a běží pod Node.js 6.
 
@@ -27,7 +27,7 @@ Technické podrobnosti o rozhraních API najdete v [referenci k rozhraní API](h
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Pro aktivaci bezplatné zkušební verze budete potřebovat přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="bing-news-search"></a>Vyhledávání zpráv Bingu
 
@@ -191,7 +191,7 @@ bing_news_search(term);
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Stránkování zpráv](paging-news.md)

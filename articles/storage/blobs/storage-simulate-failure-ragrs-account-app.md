@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 84ced8a529c2e717dc3e5888466d9a2e1e7e928a
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: HT
+ms.openlocfilehash: 044cc30a418f3c54053a6f4878f97f5c9ea9f9e2
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180939"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335108"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Kurz: Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení
 
@@ -145,7 +145,7 @@ Zadáním následujícího příkazu na příkazovém řádku Windows nebo termi
  
 Nahraďte `<destination_ip>` IP adresou vašeho učtu úložiště a `<gateway_ip>` IP adresou místního hostitele. Obnovte chod aplikace stisknutím **libovolné klávesy**.
 
-Jakmile se aplikace znovu spustí, žádosti na primární koncový bod začnou být neúspěšné. Aplikace se pokusí znovu připojit k primárnímu koncovému bodu pětkrát. Po dosažení prahové hodnoty pěti pokusů aplikace zažádá o bitovou kopii ze sekundárního koncového bodu jen pro čtení. Jakmile aplikace dvacetkrát úspěšně načte bitovou kopii ze sekundárního koncového bodu, pokusí se připojit k primárnímu koncovému bodu. Pokud je primární koncový bod stále nedostupný, obnoví aplikace čtení ze sekundárního koncového bodu. Tento model představuje model [Jistič](/azure/architecture/patterns/circuit-breaker.md) popsaný v předchozím kurzu.
+Jakmile se aplikace znovu spustí, žádosti na primární koncový bod začnou být neúspěšné. Aplikace se pokusí znovu připojit k primárnímu koncovému bodu pětkrát. Po dosažení prahové hodnoty pěti pokusů aplikace zažádá o bitovou kopii ze sekundárního koncového bodu jen pro čtení. Jakmile aplikace dvacetkrát úspěšně načte bitovou kopii ze sekundárního koncového bodu, pokusí se připojit k primárnímu koncovému bodu. Pokud je primární koncový bod stále nedostupný, obnoví aplikace čtení ze sekundárního koncového bodu. Tento model představuje model [Jistič](/azure/architecture/patterns/circuit-breaker) popsaný v předchozím kurzu.
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Simulovat obnovení primárního koncového bodu
 
@@ -168,7 +168,7 @@ Obnovte chod aplikace stisknutím **libovolné klávesy**. Aplikace bude pokrač
 ![Obnovení chodu aplikace](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Ve druhé části série jste získali informace o simulaci selhání za účelem testování geograficky redundantního úložiště s přístupem pro čtení. Například jste se dozvěděli, jak:
 

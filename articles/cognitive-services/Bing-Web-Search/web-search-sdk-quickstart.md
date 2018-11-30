@@ -3,19 +3,19 @@ title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro j
 titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce C#. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
-ms.author: erhopf
-ms.openlocfilehash: 04a70c2afbd499d3965e23487cd49540b38e08af
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: ae536166d75af48ea653b256924b5432cfd1f5ef
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318652"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309976"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro jazyk C#
 
@@ -23,8 +23,9 @@ Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhled�
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>Požadavky
+Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
+## <a name="prerequisites"></a>Požadavky
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) nebo
@@ -409,7 +410,7 @@ V této ukázce použijeme parametry `answer_count`, `promote` a `safe_search` k
 
 Až projekt dokončíte, nezapomeňte z kódu aplikace odebrat klíč předplatného.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Node.js SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a3ca6422bf5335604e561b71db6c75a889a74586
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 0bcff6e0cec234f17b0aaab9828602eb4a194d85
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51615751"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334206"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Kurz: Integrace služby Azure Key Vault v nasazení šablony Resource Manageru
 
@@ -93,7 +93,7 @@ Vytvoření služby Key Vault:
     * **Název služby Key Vault:** Přiřaďte jedinečný název. 
     * **ID tenanta:** Funkce šablony automaticky načte ID vašeho tenanta.  Výchozí hodnotu neměňte.
     * **ID uživatele AD:** Zadejte své ID objektu uživatele Azure AD, které jste získali předchozím postupem.
-    * **Název tajného klíče:** Výchozí název je **mAdminPassword**. Pokud tady změníte název tajného klíče, bude potřeba aktualizovat název tajného klíče i při nasazování virtuálního počítače.
+    * **Název tajného kódu**: výchozí název je **vmAdminPassword**. Pokud tady změníte název tajného klíče, bude potřeba aktualizovat název tajného klíče i při nasazování virtuálního počítače.
     * **Hodnota tajného klíče:** Zadejte svůj tajný klíč.  Tajný klíč je heslo pro přihlášení k virtuálnímu počítači. Doporučuje se použít vygenerované heslo, které jste vytvořili předchozím postupem.
     * **Souhlasím s podmínkami a ujednáními uvedenými nahoře:** Toto políčko zaškrtněte.
 3. V horní části vyberte **Upravit parametry** a prohlédněte si šablonu.

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/27/2018
 ms.author: victorh
-ms.openlocfilehash: 781365e32ce5602e9fb99b620e068ddf68de8c44
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: d69bd055c95592961216f5da1efaedc4a642fd63
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854165"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316391"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Kurz: Nasazení a konfigurace služby Azure Firewall v hybridní síti pomocí Azure PowerShellu
 
@@ -309,9 +309,6 @@ Dále vytvořte několik tras:
 
 - Trasa z podsítě brány rozbočovače do podsítě paprsku přes IP adresu brány firewall
 - Výchozí trasa z podsítě paprsku přes IP adresu brány firewall
-
-> [!NOTE]
-> Brány Firewall Azure naučí vaší místní sítí pomocí protokolu BGP. To může zahrnovat výchozí trasu, která směruje provoz Internet zpět prostřednictvím místní sítě. V produkčním nasazení můžete chtít přenosy z Internetu k odeslání přímo ze brána firewall na Internetu. Můžete přidat uživatelský výchozí trasa (0.0.0.0/0) na AzureFirewallSubnet s typem dalšího segmentu směrování **Internet**. Provoz směřující na místním je stále vynucené tunelové propojení prostřednictvím brány VPN/ExpressRoute pomocí konkrétnější směrování převzatá z protokolu BGP.
 
 ```azurepowershell
 #Create a route table

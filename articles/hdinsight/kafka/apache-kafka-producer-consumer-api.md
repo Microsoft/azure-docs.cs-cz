@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 2a441e3cd90eba8fc2b1201671047cfcd9d277a6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 947eb76f84f865135e87803b53fa94e20eecb78c
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277728"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52313809"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
 
-Zjistěte, jak používat rozhraní Kafka Producer and Consumer API se systémem Kafka ve službě HDInsight.
+Zjistěte, jak používat rozhraní Apache Kafka Producer and Consumer API se systémem Kafka ve službě HDInsight.
 
 Rozhraní Kafka Producer API umožňuje aplikacím odesílat datové proudy do clusteru Kafka. Rozhraní Kafka Consumer API umožňuje aplikacím číst datové proudy z clusteru.
 
@@ -56,7 +56,7 @@ Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou 
 
 ## <a name="set-up-your-deployment-environment"></a>Nastavení vývojového prostředí
 
-Tento kurz vyžaduje Apache Kafka ve službě HDInsight 3.6. Informace o vytvoření clusteru Kafka ve službě HDInsight najdete v dokumentu [Začínáme se systémem Kafka ve službě HDInsight](apache-kafka-get-started.md).
+Tento kurz vyžaduje Apache Kafka ve službě HDInsight 3.6. Zjistěte, jak vytvořit systém Kafka na clusteru HDInsight, najdete v článku [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) dokumentu.
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
@@ -171,7 +171,7 @@ Soubor [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-star
         read -p 'Enter your Kafka cluster name:' CLUSTERNAME
         ```
     
-    2. K získání hostitelů zprostředkovatelů Kafka a hostitelů Zookeeper použijte následující příkazy. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
+    2. Chcete-li získat zprostředkovatele Kafka, hostitele a hostitele Apache Zookeeper, použijte následující příkazy. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin).
     
         ```bash
         export KAFKABROKERS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2`; \
@@ -225,10 +225,10 @@ Konzumace klienty ze stejné skupiny se realizuje rozdělením tématu na oddíl
 
 Záznamy se v systému Kafka ukládají v pořadí, ve kterém je oddíl přijme. Pro dosažení doručování záznamů ve správném pořadí *v rámci oddílu* vytvořte skupinu příjemců, ve které bude počet instancí konzumentů odpovídat počtu oddílů. Pro dosažení doručování záznamů ve správném pořadí *v rámci tématu* vytvořte skupinu obsahující pouze jednu instanci konzumenta.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto dokumentu jste zjistili, jak používat rozhraní Kafka Producer and Consumer API se systémem Kafka ve službě HDInsight. Další informace o práci s platformou Kafka najdete v těchto zdrojích:
+V tomto dokumentu jste zjistili, jak používat Apache Kafka Producer and Consumer API s využitím Kafka v HDInsight. Další informace o práci s platformou Kafka najdete v těchto zdrojích:
 
-* [Analýza protokolů Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replikace dat mezi clustery Kafka](apache-kafka-mirroring.md)
-* [Rozhraní API pro datové proudy Kafka pomocí HDInsight](apache-kafka-streams-api.md)
+* [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
+* [Replikace dat mezi clustery Apache Kafka](apache-kafka-mirroring.md)
+* [Apache Kafka Streams API ve službě HDInsight](apache-kafka-streams-api.md)

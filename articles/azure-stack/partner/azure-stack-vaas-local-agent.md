@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 6a7d1f886bd3a8457b6cad2e9fea11820805e7c9
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 0608da33e816b40f7fadbeb1b5da3feb926c28aa
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651709"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334053"
 ---
 # <a name="deploy-the-local-agent"></a>Nasazení místního agenta
 

@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: get-started-article
 ms.date: 08/18/2016
-ms.openlocfilehash: 07b7cce4b026464ba34296b54c4ae90d6d2b1afa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981157"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334223"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Koncepty, terminologie a entity ve službě Azure Scheduler
 
@@ -244,7 +244,7 @@ Pokud definice JSON úlohy zahrnuje objekt **recurrence**, úloha se bude opakov
 | **frequency** | Ano, pokud se používá **opakování** | Minute (minuta), Hour (hodina), Day (den), Week (týden), Month (měsíc), Year (rok) | Časová jednotka intervalu mezi opakováními | 
 | **interval** | Ne | 1 až 1000 (včetně) | Kladné číslo, které určuje počet časových jednotek mezi jednotlivými opakováními na základě vlastnosti **frequency** | 
 | **schedule** | Ne | Různé | Podrobnosti pro složitější a pokročilejší plány. Viz **hours**, **minutes**, **weekDays**, **months** a **monthDays**. | 
-| **hours** | Ne | 1 až 24 | Pole s hodinami, kdy se má úloha spustit | 
+| **hours** | Ne | 1 až 60 | Pole s hodinami, kdy se má úloha spustit | 
 | **minutes** | Ne | 1 až 60 | Pole s minutami, kdy se má úloha spustit | 
 | **months** | Ne | 1 až 12 | Pole s měsíci, kdy se má úloha spustit | 
 | **monthDays** | Ne | Různé | Pole se dny v měsíci, kdy se má úloha spustit | 
@@ -313,11 +313,11 @@ Příklad:
 }
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Co je Azure Scheduler?](scheduler-intro.md)
 * [Koncepty, terminologie a hierarchie entit](scheduler-concepts-terms.md)
 * [Vytváření složitých plánů a pokročilých opakování](scheduler-advanced-complexity.md)
 * [Omezení, kvóty, výchozí hodnoty a kódy chyb](scheduler-limits-defaults-errors.md)
-* [REST API Azure Scheduleru – referenční informace](https://docs.microsoft.com/rest/api/schedule)
+* [REST API Azure Scheduleru – referenční informace](/rest/api/scheduler)
 * [Rutiny PowerShellu pro Azure Scheduler – referenční informace](scheduler-powershell-reference.md)

@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 8b0c7bf97592309d68313ef7cc2a919f7aa1c324
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: a6245472f0fc3f65dcbeebdf251387efed5f02b8
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49644960"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333005"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Zpráva k vydání verze pro ověření jako služba
 

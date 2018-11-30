@@ -10,19 +10,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: John.Haskin
-ms.openlocfilehash: 8fd551156d424adbe4d6ce7eb38a6a6a00aa8f83
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: fc2659fb9bbe043a61f1ad49bb4290b7ccf834f8
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651363"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422010"
 ---
 # <a name="create-an-oem-package"></a>Vytvoření balíčku výrobce OEM
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Balíček rozšíření Azure Stack OEM je mechanismus, podle které OEM konkrétní obsah se přidá do infrastruktury Azure stacku pro použití v nasazení, jakož i provozní procesy, jako je aktualizace, rozšíření a nahrazení pole.
 

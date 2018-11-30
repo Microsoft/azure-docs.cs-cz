@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 3eb46e493ce2fd6a8d759cabf2de968b802af2e7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 871df693878611b0322a0f06634c62a7a9efd90a
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651362"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52335159"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>Ověření jako klíčové koncepty služby
 

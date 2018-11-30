@@ -10,16 +10,16 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 7919f13e8c5aaa592a416190d3cd11edbf31af2c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: f01f31c5cfc30ac31ea41db2a8504454e1f05799
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802473"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316867"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-java"></a>Rychlý start: Sada SDK Bingu pro vyhledávání zpráv s využitím Javy
 
-Sada SDK Bingu pro vyhledávání zpráv poskytuje funkce rozhraní REST API pro dotazy na zprávy a parsování výsledků. 
+Sada SDK Bingu pro vyhledávání zpráv poskytuje funkce rozhraní REST API pro dotazy na zprávy a parsování výsledků.  Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
 
 [Zdrojový kód ukázek sady SDK Bingu pro vyhledávání zpráv v Javě](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch) je k dispozici na GitHubu.
 
@@ -284,7 +284,7 @@ public class NewsSearchSDK {
     // Include the methods described in this article.
 }
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Ukázky kognitivních služeb sady Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
 

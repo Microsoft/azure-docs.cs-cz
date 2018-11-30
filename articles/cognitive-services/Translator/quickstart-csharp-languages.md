@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Získání podporovaných jazyků, C# – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API s C#.
+description: V tomto rychlém startu můžete získat seznam jazyků podporovaných pro překlad, přepis a vyhledávací slovník pomocí rozhraní Translator Text API.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,165 +10,239 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: erhopf
-ms.openlocfilehash: 9ac881adcf7d273c9a3bcea55d084acced59c107
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
+ms.openlocfilehash: cc5d9efd017ec2045cc94bbad98e26e8b95e071d
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645398"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334682"
 ---
 # <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-c"></a>Rychlý start: Získání podporovaných jazyků pomocí rozhraní REST API služby Translator Text (C#)
 
-V tomto rychlém startu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady s použitím služby Translator Text API.
+V tomto rychlém startu můžete získat seznam jazyků podporovaných pro překlad, přepis a vyhledávací slovník pomocí rozhraní Translator Text API.
+
+K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke spuštění tohoto kódu ve Windows budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
+* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
+* [Balíček NuGet Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), nebo vašem oblíbeném textovém editoru
+* Klíč rozhraní předplatné Azure pro službu rozpoznávání řeči
 
-Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si, [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
+## <a name="create-a-net-core-project"></a>Vytvoření projektu .NET Core
 
-## <a name="languages-request"></a>Žádost Languages
+Otevřete nový příkazový řádek (nebo relaci Terminálové služby) a spusťte tyto příkazy:
 
-> [!TIP]
-> Získejte z [GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) nejnovější verzi kódu.
+```console
+dotnet new console -o languages-sample
+cd languages-sample
+```
 
-Pomocí následujícího kódu získáte seznam jazyků podporovaných pro překlad, transkripci a vyhledávání ve slovníku a příklady pomocí metody [Languages](./reference/v3-0-languages.md).
+První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `languages-sample`. Druhý příkaz změní adresář pro projekt.
 
-1. Ve svém oblíbeném prostředí IDE vytvořte nový projekt C#.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `key` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+V dalším kroku budete muset nainstalovat Json.Net. Z adresáře vašeho projektu spusťte:
+
+```console
+dotnet add package Newtonsoft.Json --version 11.0.2
+```
+
+## <a name="add-required-namespaces-to-your-project"></a>Do projektu přidejte požadované obory názvů
+
+`dotnet new console` Příkaz, který byl dříve vytvořili projekt, včetně `Program.cs`. Tento soubor je místo, kam budete dáte kódu aplikace. Otevřít `Program.cs`a nahraďte existující příkazy using. Tyto příkazy Ujistěte se, že máte přístup ke všem typům, které jsou potřebné k sestavení a spuštění ukázkové aplikace.
 
 ```csharp
 using System;
 using System.Net.Http;
 using System.Text;
-// NOTE: Install the Newtonsoft.Json NuGet package.
 using Newtonsoft.Json;
+```
 
-namespace TranslatorTextQuickStart
+## <a name="create-a-function-to-get-a-list-of-languages"></a>Vytvořit funkci, kterou chcete získat seznam jazyků
+
+V rámci `Program` třídy, vytvořte funkci s názvem `GetLanguages`. Tato třída zapouzdří kód používá k volání zdroje jazyky a vytiskne výsledek do konzoly.
+
+```csharp
+static void GetLanguages()
 {
-    class Program
-    {
-        static string host = "https://api.cognitive.microsofttranslator.com";
-        static string path = "/languages?api-version=3.0";
+  /*
+   * The code for your call to the translation service will be added to this
+   * function in the next few sections.
+   */
+}
+```
 
-        // NOTE: Replace this example key with a valid subscription key.
-        static string key = "ENTER KEY HERE";
+## <a name="set-the-subscription-key-host-name-and-path"></a>Nastavte klíč předplatného, název hostitele a cestu
 
-        async static void GetLanguages()
-        {
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-            var uri = host + path;
-            var response = await client.GetAsync(uri);
-            var result = await response.Content.ReadAsStringAsync();
-            var json = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(result), Formatting.Indented);
-            // Note: If writing to the console, set this.
-            // Console.OutputEncoding = UnicodeEncoding.UTF8;
-            System.IO.File.WriteAllBytes("output.txt", Encoding.UTF8.GetBytes(json));
-        }
+Přidejte tyto řádky do `GetLanguages` funkce.
 
-        static void Main(string[] args)
-        {
-            GetLanguages();
-            Console.ReadLine();
-        }
+```csharp
+string host = "https://api.cognitive.microsofttranslator.com";
+string route = "/languages?api-version=3.0";
+string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+```
+
+## <a name="instantiate-the-client-and-make-a-request"></a>Vytvořte instanci klienta a vytvořit žádost
+
+Vytvoření instance tyto řádky `HttpClient` a `HttpRequestMessage`:
+
+```csharp
+using (var client = new HttpClient())
+using (var request = new HttpRequestMessage())
+{
+  // In the next few sections you'll add code to construct the request.
+}
+```
+
+## <a name="construct-the-request-and-print-the-response"></a>Vytvořit požadavek a tisku odpověď
+
+Uvnitř `HttpRequestMessage` , je nutné:
+
+* Deklarovat metodu HTTP
+* Vytvořit identifikátor URI požadavku
+* Přidat povinné hlavičky
+* Ujistěte se, asynchronního požadavku
+* Tisk odpovědi
+
+Přidejte tento kód `HttpRequestMessage`:
+
+```csharp
+// Set the method to GET
+request.Method = HttpMethod.Get;
+
+// Construct the full URI
+request.RequestUri = new Uri(host + route);
+
+// Add the authorization header
+request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+
+// Send request, get response
+var response = client.SendAsync(request).Result;
+var jsonResponse = response.Content.ReadAsStringAsync().Result;
+
+// Print the response
+Console.WriteLine(jsonResponse);
+Console.WriteLine("Press any key to continue.");
+```
+
+## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
+
+Posledním krokem je volání `GetLanguages()` v `Main` funkce. Vyhledejte `static void Main(string[] args)` a přidejte tyto řádky:
+
+```csharp
+GetLanguages();
+Console.ReadLine();
+```
+
+## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
+
+Je to, jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo relaci Terminálové služby) přejděte do adresáře vašeho projektu a spusťte:
+
+```console
+dotnet run
+```
+
+## <a name="sample-response"></a>Ukázková odpověď
+
+```json
+{
+    "translation": {
+        "af": {
+            "name": "Afrikaans",
+            "nativeName": "Afrikaans",
+            "dir": "ltr"
+        },
+        "ar": {
+            "name": "Arabic",
+            "nativeName": "العربية",
+            "dir": "rtl"
+        },
+        ...
+    },
+    "transliteration": {
+        "ar": {
+            "name": "Arabic",
+            "nativeName": "العربية",
+            "scripts": [
+                {
+                    "code": "Arab",
+                    "name": "Arabic",
+                    "nativeName": "العربية",
+                    "dir": "rtl",
+                    "toScripts": [
+                        {
+                            "code": "Latn",
+                            "name": "Latin",
+                            "nativeName": "اللاتينية",
+                            "dir": "ltr"
+                        }
+                    ]
+                },
+                {
+                    "code": "Latn",
+                    "name": "Latin",
+                    "nativeName": "اللاتينية",
+                    "dir": "ltr",
+                    "toScripts": [
+                        {
+                            "code": "Arab",
+                            "name": "Arabic",
+                            "nativeName": "العربية",
+                            "dir": "rtl"
+                        }
+                    ]
+                }
+            ]
+        },
+      ...
+    },
+    "dictionary": {
+        "af": {
+            "name": "Afrikaans",
+            "nativeName": "Afrikaans",
+            "dir": "ltr",
+            "translations": [
+                {
+                    "name": "English",
+                    "nativeName": "English",
+                    "dir": "ltr",
+                    "code": "en"
+                }
+            ]
+        },
+        "ar": {
+            "name": "Arabic",
+            "nativeName": "العربية",
+            "dir": "rtl",
+            "translations": [
+                {
+                    "name": "English",
+                    "nativeName": "English",
+                    "dir": "ltr",
+                    "code": "en"
+                }
+            ]
+        },
+      ...
     }
 }
 ```
 
-## <a name="languages-response"></a>Odpověď metody Languages
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
+Ujistěte se, že zdrojový kód ukázkové aplikace, jako jsou klíče předplatného odebrání jakýchkoli důvěrných informací.
 
-```json
-{
-  "translation": {
-    "af": {
-      "name": "Afrikaans",
-      "nativeName": "Afrikaans",
-      "dir": "ltr"
-    },
-    "ar": {
-      "name": "Arabic",
-      "nativeName": "العربية",
-      "dir": "rtl"
-    },
-...
-  },
-  "transliteration": {
-    "ar": {
-      "name": "Arabic",
-      "nativeName": "العربية",
-      "scripts": [
-        {
-          "code": "Arab",
-          "name": "Arabic",
-          "nativeName": "العربية",
-          "dir": "rtl",
-          "toScripts": [
-            {
-              "code": "Latn",
-              "name": "Latin",
-              "nativeName": "اللاتينية",
-              "dir": "ltr"
-            }
-          ]
-        },
-        {
-          "code": "Latn",
-          "name": "Latin",
-          "nativeName": "اللاتينية",
-          "dir": "ltr",
-          "toScripts": [
-            {
-              "code": "Arab",
-              "name": "Arabic",
-              "nativeName": "العربية",
-              "dir": "rtl"
-            }
-          ]
-        }
-      ]
-    },
-...
-  },
-  "dictionary": {
-    "af": {
-      "name": "Afrikaans",
-      "nativeName": "Afrikaans",
-      "dir": "ltr",
-      "translations": [
-        {
-          "name": "English",
-          "nativeName": "English",
-          "dir": "ltr",
-          "code": "en"
-        }
-      ]
-    },
-    "ar": {
-      "name": "Arabic",
-      "nativeName": "العربية",
-      "dir": "rtl",
-      "translations": [
-        {
-          "name": "English",
-          "nativeName": "English",
-          "dir": "ltr",
-          "code": "en"
-        }
-      ]
-    },
-...
-  }
-}
-```
+## <a name="next-steps"></a>Další postup
 
-## <a name="next-steps"></a>Další kroky
-
-Prozkoumejte vzorový kód pro tento rychlý start a další, včetně překladu a transkripce, a také další vzorové projekty Translator Text na GitHubu.
+Prozkoumejte vzorový kód pro tento a další rychlé starty, včetně transkripce a identifikace jazyka a také dalších vzorových projektů služby Translator Text na GitHubu.
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte příklady C# na GitHubu](https://aka.ms/TranslatorGitHub?type=&language=c%23)
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+* [Překlad textu](quickstart-csharp-translate.md)
+* [Transliterace textu](quickstart-csharp-transliterate.md)
+* [Identifikace jazyka podle vstupu](quickstart-csharp-detect.md)
+* [Získání alternativních překladů](quickstart-csharp-dictionary.md)
+* [Určení délky věty ze vstupu](quickstart-csharp-sentences.md)

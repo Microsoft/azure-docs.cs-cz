@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d73284ecf40b2dfcd4954c1ddee82bf92a8931b9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 3bad68d1a388a5bc8780df633313206afaadcef9
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281791"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52422418"
 ---
 # <a name="tutorial-2-identify-common-intents-and-entities"></a>Kurz 2: Identifikace běžných záměrů a entit
 V tomto kurzu se upravíte aplikaci pro lidské zdroje. Přidejte do ukázkové aplikace pro lidské zdroje předem připravené záměry a entity a získejte tak rychle předpověď záměru a extrakci dat. Není potřeba označovat promluvy s předem vytvořenými entitami, protože příslušná entita se rozpozná automaticky.
@@ -48,7 +48,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 ## <a name="add-prebuilt-intents"></a>Přidání předem připravených záměrů
 Služba LUIS poskytuje několik předem připravených záměrů, které vám pomůžou s běžnými záměry uživatelů.  
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Vyberte **Add prebuilt intent** (Přidat předem připravený záměr). 
 
@@ -173,7 +173,7 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Díky přidávání předem připravených záměrů a entit může klientská aplikace určovat běžné záměry uživatelů a extrahovat běžné datové typy. 
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9038947ad20f63638af1830ca660de8cac802d9b
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: ee5ba6783a50ad50489a20aa662f17af2ca4ae6a
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282080"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52421993"
 ---
 # <a name="tutorial-5-extract-free-form-data"></a>Kurz 5: Extrakce dat volného tvaru
 
@@ -59,7 +59,7 @@ Různá délka promluv zahrnuje slova, která můžou službě LUIS komplikovat 
 > * Trénování
 > * Test nového vzoru
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Použití existující aplikace
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
@@ -141,7 +141,7 @@ Entita Pattern.any extrahuje entity různé délky. Funguje pouze ve vzoru, prot
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu se do stávajícího záměru přidaly ukázkové promluvy a pak se vytvořila nová entita Pattern.any pro název formuláře. Pak se vytvořil vzor pro stávající záměr s novými ukázkovými promluvami a entitou. Interaktivní testování ukázalo, že se předpověděl vzor a jeho záměr, protože se našla entita. 
 

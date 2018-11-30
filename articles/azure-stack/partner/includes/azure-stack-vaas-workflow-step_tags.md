@@ -2,13 +2,13 @@
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
-ms.openlocfilehash: 43bfd4d1275c73392f921fa915b90aa80e19fe49
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: d42eaf45ec3c0092b6d96b08f4b78bb59521aeee
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651412"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52336161"
 ---
 (Volitelné) Popisek pracovního postupu pomocí značek podle vašeho výběru. Při správě pracovních postupů pro řešení můžete filtrovat pracovní postupy v tomto textu.

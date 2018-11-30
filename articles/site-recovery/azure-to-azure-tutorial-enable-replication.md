@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/18/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cff6d38867ef8ecaf1435fd4c4cc22fe63d70575
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 586e60316ba8bf4f485a151e77015fa3ed104df7
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283237"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52317411"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -131,7 +131,7 @@ Site Recovery načte seznam virtuálních počítačů přidružených k předp
 Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou oblast. Můžete změnit nastavení podle potřeby.
 
 1. Kliknutím na **Nastavení** zobrazte nastavení cíle a replikace.
-2. Pokud chcete přepsat výchozí nastavení cíle, klikněte na **Přizpůsobit** vedle textu **Skupina prostředků, síť, úložiště a skupiny dostupnosti**.
+2. Chcete-li přepsat výchozí nastavení cíle, klikněte na tlačítko **vlastní** vedle **skupinu prostředků, síť, úložiště a dostupnosti**.
 
   ![Konfigurace nastavení](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
@@ -154,7 +154,14 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
       >
 
     - **Repliky spravovaných disků (pokud zdrojový virtuální počítač používá spravované disky):** Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti repliky spravovaných disků zrcadlící spravované disky zdrojového virtuálního počítače se stejným typem úložiště (Standard nebo Premium) jako u spravovaných disků zdrojového virtuálního počítače.
-    - **Cílové skupiny dostupnosti:** Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu dostupnosti s příponou asr. Skupiny dostupnosti můžete přidávat pouze v případě, že jsou virtuální počítače ve zdrojové oblasti součástí sady.
+    - **Cílové skupiny dostupnosti**: ve výchozím nastavení Azure Site Recovery vytvoří nové dostupnosti v cílové oblasti s názvem, který má příponu "Azure Site Recovery" pro virtuální počítače součástí skupiny dostupnosti ve zdrojové oblasti. V případě, že skupina dostupnosti Azure Site Recovery vytvoří již existuje, je znovu.
+    - **Cílové zóny dostupnosti**: ve výchozím nastavení, Site Recovery přiřadí číslo zóny jako zdrojové oblasti v cílové oblasti, v případě, že cílové oblasti podporují zóny dostupnosti. 
+
+    Pokud cílová oblast nepodporuje zóny dostupnosti, jsou cílové virtuální počítače ve výchozím nastavení nakonfigurované jako jedné instance. V případě potřeby můžete nakonfigurovat tyto virtuální počítače kliknutím na "Vlastní" jako součást skupiny dostupnosti v cílové oblasti.
+
+    >[!NOTE]
+    >Typ dostupnosti - jediné instance, set nebo dostupnost zónu dostupnosti, nelze změnit po povolení replikace. Budete muset zakázat a povolit replikaci, chcete-li změnit typ dostupnosti.
+    >
 
 4. Chcete-li přizpůsobit nastavení zásad replikace, klikněte na tlačítko **vlastní** vedle **zásady replikace**a upravte následující nastavení podle potřeby:
 

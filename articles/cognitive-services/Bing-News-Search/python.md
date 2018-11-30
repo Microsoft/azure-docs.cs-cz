@@ -3,19 +3,19 @@ title: 'Rychlý start: Rozhraní API Bingu pro vyhledávání zpráv, Python'
 titlesuffix: Azure Cognitive Services
 description: Umožňuje získat informace a ukázky kódu, které vám pomůžou rychle začít používat rozhraní API Bingu pro vyhledávání zpráv.
 services: cognitive-services
-author: v-jerkin
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 583b304a742d9abfd799442c9aa2999ad6783a34
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 738b139cb2070f2244442311d3670757caac6541
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803541"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308813"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-python"></a>Rychlý start pro rozhraní API pro vyhledávání zpráv v Pythonu
 Tento návod představuje jednoduchý příklad volání rozhraní API Bingu pro vyhledávání zpráv a následného zpracování výsledného objektu JSON. Další informace najdete v [dokumentaci k vyhledávání zpráv Bingu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).  
@@ -26,7 +26,7 @@ Tuto ukázku můžete spustit jako poznámkový blok Jupyter v [MyBinderu](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu vám bude stačit [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč, nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k **rozhraním API pro vyhledávání Bingu**. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Budete potřebovat přístupový klíč k dispozici při aktivaci vaší bezplatné zkušební verze.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="running-the-walkthrough"></a>Spuštění návodu
 Nejprve nastavte `subscription_key` na váš klíč rozhraní API pro službu rozhraní API Bingu.
@@ -37,7 +37,7 @@ subscription_key = None
 assert subscription_key
 ```
 
-Pak ověřte, že koncový bod `search_url` je správný. V tomto návodu se pro rozhraní API Bingu pro vyhledávání používá pouze jeden koncový bod. Pokud se při autorizaci objeví chyby, znovu zkontrolujte tuto hodnotu a porovnejte ji s koncovým bodem Vyhledávání Bingu na řídicím panelu Azure.
+Pak ověřte, že koncový bod `search_url` je správný. V tomto návodu se pro rozhraní API Bingu pro vyhledávání používá pouze jeden koncový bod. Pokud se při autorizaci objeví chyby, znovu zkontrolujte tuto hodnotu a porovnejte ji s koncovým bodem vyhledávání Bingu na řídicím panelu Azure.
 
 
 ```python
@@ -80,13 +80,13 @@ rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc) for desc in descriptions]
 HTML("<table>"+rows+"</table>")
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Stránkování zpráv](paging-news.md)
 > [Zvýraznění textu pomocí dekoračních značek](hit-highlighting.md)
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Vyhledávání zpráv na internetu](search-the-web.md)  
  [Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)

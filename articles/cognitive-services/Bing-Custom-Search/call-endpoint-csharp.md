@@ -3,19 +3,19 @@ title: 'Rychlý start: Volání koncového bodu pomocí jazyka C# – Vlastní v
 titlesuffix: Azure Cognitive Services
 description: Tento rychlý start ukazuje, jak si z instance vlastního vyhledávání vyžádat výsledky hledání prostřednictvím volání koncového bodu Vlastního vyhledávání Bingu pomocí jazyka C#.
 services: cognitive-services
-author: brapel
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: c0e315f9b96133d68bf1f9c02da1436b877baf40
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 3a7ba0f464dc82751df5daabd4226fc521fe6916
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468411"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316187"
 ---
 # <a name="quickstart-call-bing-custom-search-endpoint-c"></a>Rychlý start: Volání koncového bodu Vlastního vyhledávání Bingu (C#)
 
@@ -27,7 +27,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
 - Instance vlastního vyhledávání připravená k použití. Přečtěte si téma [Vytvoření první instance vlastního vyhledávání Bingu](quick-start.md).
 - Nainstalované rozhraní [.Net Core](https://www.microsoft.com/net/download/core).
-- Klíč předplatného. Klíč předplatného můžete získat aktivací [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) nebo můžete použít klíč placeného předplatného z řídicího panelu Azure (informace najdete v tématu [Účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+- Klíč předplatného. Klíč předplatného můžete získat aktivací [bezplatné zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) nebo můžete použít klíč placeného předplatného z řídicího panelu Azure (informace najdete v tématu [Účet rozhraní API služby Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).   Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 
 ## <a name="run-the-code"></a>Spuštění kódu
@@ -132,7 +132,7 @@ Pokud chcete tuto ukázku spustit, postupujte takto:
     dotnet **PATH TO OUTPUT**
     </pre>
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - [Konfigurace prostředí pro hostované uživatelské rozhraní](./hosted-ui.md)
 - [Zvýraznění textu pomocí dekoračních značek](./hit-highlighting.md)
 - [Stránkování webových stránek](./page-webpages.md)

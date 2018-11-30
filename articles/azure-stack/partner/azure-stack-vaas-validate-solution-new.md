@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 777609b89bc08cd61489d2c3a3669ec07ccbc372
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 7949e764baa7a4e20eb988c78817b6b4f0045593
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647002"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52333764"
 ---
 # <a name="validate-a-new-azure-stack-solution"></a>Ověření nové řešení Azure Stack
 

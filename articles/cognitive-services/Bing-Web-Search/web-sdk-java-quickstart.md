@@ -3,19 +3,19 @@ title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání a webu pro ja
 titleSuffix: Azure Cognitive Services
 description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.author: erhopf
-ms.openlocfilehash: 854cf1646d716f7cd721a7286b79a0f733243268
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 8883a312bf6da4167936e844e75047ae40cac9f3
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416221"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309293"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání a webu pro jazyk Java
 
@@ -25,8 +25,9 @@ Chcete se rovnou podívat na kód? [Ukázky sady SDK Bingu pro vyhledávání na
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>Požadavky
+Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
+## <a name="prerequisites"></a>Požadavky
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [JDK 7 nebo 8](https://aka.ms/azure-jdks)
@@ -291,11 +292,11 @@ mvn compile exec:java
 
 Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatného.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Ukázky kognitivních služeb sady Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Referenční informace k sadě Azure Java SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)

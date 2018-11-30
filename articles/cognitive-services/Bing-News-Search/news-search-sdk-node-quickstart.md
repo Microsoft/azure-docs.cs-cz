@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: bc168cf696d6280ce4c0e7cb46f90af4a2ad7aa0
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 075ce771b6fa92663f172734aabf57b089b294a9
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686482"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52316935"
 ---
 # <a name="quickstart-bing-news-search-sdk-with-node"></a>Rychlý start: Sada SDK Bingu pro vyhledávání zpráv s využitím jazyka Node
 
@@ -24,6 +24,7 @@ Sada SDK Bingu pro vyhledávání zpráv obsahuje funkce rozhraní REST API pro 
 [Zdrojový kód pro ukázky sady SDK Bingu pro vyhledávání zpráv v Node](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) je dostupný na GitHubu.
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
+Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
 
 Nastavení konzolovou aplikaci pomocí sady SDK vyhledávání zpráv Bingu:
 * Spustit `npm install ms-rest-azure` ve vašem vývojovém prostředí.

@@ -3,19 +3,19 @@ title: 'Rychlý start: Hledání pomocí Node.js – Rozhraní API Bingu pro vyh
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu pomocí Node.js a dostanete odpověď ve formátu JSON.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 9/26/2018
-ms.author: erhopf
-ms.openlocfilehash: debaa63adeb97063d0ea42e1da36352dc2c9c4e7
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.author: aahi
+ms.openlocfilehash: 4c6e74d4ce9e3c1f9d81e640f7fa8071f73ec776
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405852"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52309291"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-bing-web-search-api"></a>Rychlý start: Použití Node.js k volání rozhraní API Bingu pro vyhledávání na webu  
 
@@ -23,8 +23,9 @@ V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="prerequisites"></a>Požadavky
+Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
+## <a name="prerequisites"></a>Požadavky
 Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [Node.js 6](https://nodejs.org/en/download/) nebo novější
@@ -265,7 +266,7 @@ Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt 
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)

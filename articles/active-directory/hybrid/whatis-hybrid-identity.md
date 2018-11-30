@@ -1,5 +1,5 @@
 ---
-title: Připojení Active Directory s Azure Active Directory | Microsoft Docs
+title: Připojení Active Directory s Azure Active Directory | Dokumenty Microsoft
 description: Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro aplikace Office 365, Azure a SaaS integrované s Azure AD.
 keywords: Úvod k Azure AD Connect, přehled Azure AD Connect, co je Azure AD Connect, instalace active directory
 services: active-directory
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/02/2018
+ms.date: 11/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2aca42c23cc213d5d7e451105052d5d5d697b77d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: c8ab6b6e6bab7451de7d975dde644386fd4cb84e
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979467"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311530"
 ---
 # <a name="hybrid-identity-and-microsoft-identity-solutions"></a>Hybridní identita a řešení pro správu identit od Microsoftu
 Řešení hybridní identity v [Microsoft Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) umožňují synchronizovat místní objekty adresářové služby s Azure AD a zachovat přitom místní správu uživatelů. Při plánování synchronizace místní služby Windows Server Active Directory s Azure AD je nejprve potřeba se rozhodnout, jestli chcete používat spravované identity nebo federovanou identitu. 
 
-- **Spravované identity** – Uživatelské účty a skupiny synchronizované z místní služby Active Directory a ověřování uživatelů spravuje Azure.   
+- **Spravované identity** – uživatelské účty a skupiny synchronizované z místní služby Active Directory a ověřování uživatelů spravuje Azure.   
 - **Federované identity** poskytují lepší kontrolu nad uživateli tím, že oddělují ověřování uživatelů od Azure a delegují ověřování důvěryhodnému místnímu zprostředkovateli identity. 
 
 Při konfiguraci hybridní identity je k dispozici několik možností. Při zvažování, který model identit nejlépe vyhovuje potřebám vaší organizace, je potřeba vzít v úvahu také čas, stávající infrastrukturu, složitost a náklady. Tyto faktory se pro každou organizaci liší a v průběhu času se můžou měnit. Pokud se však vaše požadavky změní, máte možnost přepnout na jiný model identit.
@@ -42,7 +42,7 @@ Přestože je spravovaná identita nejjednodušší a nejrychlejší metoda, va�
 Pro většinu organizací, které pouze potřebují umožnit uživatelům přihlášení k Office 365, aplikacím SaaS nebo jiným prostředkům založeným na Azure AD, se doporučuje výchozí možnost synchronizace hodnot hash hesel. Pokud vám to nestačí, budete se muset rozhodnout mezi předávacím ověřováním a AD FS.
 
 > [!TIP]
-> Uživatelská hesla se ukládají v místní službě Windows Server Active Directory v podobě hodnoty hash, která představuje skutečné uživatelské heslo. Hodnota hash je výsledkem jednosměrné matematické funkce (hashovací algoritmus). Neexistuje žádný způsob, jak výsledek jednosměrné funkce převést zpět na heslo v prostém textu. Hodnotu hash hesla není možné použít pro přihlášení k místní síti. Pokud se rozhodnete pro synchronizaci hesel, Azure AD Connect extrahuje hodnoty hash hesel z místní služby Active Directory a před jejich synchronizací do Azure AD provede jejich dodatečné bezpečnostní zpracování. Synchronizaci hodnot hash hesel je možné používat také společně se zpětným zápisem hesel a umožnit tak samoobslužné resetování hesla v Azure AD. Kromě toho můžete povolit jednotné přihlašování pro uživatele na počítačích připojených k doméně, kteří jsou připojení k podnikové síti. Uživatelům s povoleným jednotným přihlašováním stačí k zabezpečenému přístupu ke cloudovým prostředkům zadat pouze uživatelské jméno. 
+> Uživatelská hesla se ukládají v místní službě Windows Server Active Directory v podobě hodnoty hash, která představuje skutečné uživatelské heslo. Hodnota hash je výsledkem jednosměrné matematické funkce (hashovací algoritmus). Neexistuje žádný způsob, jak výsledek jednosměrné funkce převést zpět na heslo v prostém textu. Hodnotu hash hesla není možné použít pro přihlášení k místní síti. Pokud se rozhodnete k synchronizaci hodnot hash hesel, Azure AD Connect extrahuje hodnoty hash hesel z místní služby Active Directory a platí další bezpečnostní zpracování pro hodnotu hash hesla předtím, než se synchronizují do služby Azure AD. Synchronizaci hodnot hash hesel je možné používat také společně se zpětným zápisem hesel a umožnit tak samoobslužné resetování hesla v Azure AD. Kromě toho můžete povolit jednotné přihlašování pro uživatele na počítačích připojených k doméně, kteří jsou připojení k podnikové síti. Uživatelům s povoleným jednotným přihlašováním stačí k zabezpečenému přístupu ke cloudovým prostředkům zadat pouze uživatelské jméno. 
 >
 
 ## <a name="pass-through-authentication"></a>Předávací ověřování
@@ -190,7 +190,7 @@ Azure AD Connect Health pro službu Active Directory Domain Services (AD DS) pod
 
 Tady najdete další informace o [Používání služby Azure AD Connect Health se službou AD DS](how-to-connect-health-adds.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 
 - [Hardware a předpoklady](how-to-connect-install-prerequisites.md) 

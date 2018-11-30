@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 60cfc4a2b20d3c443562a1f66e9c205244d0beef
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c6884ff0949949c03787ff5c0b8c7f8c1397400f
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645588"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334019"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>Řešení potíží s ověření jako služba
 

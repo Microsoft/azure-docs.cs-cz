@@ -10,12 +10,12 @@ ms.component: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 69bcca7871d9bf4bebf64c0c0ae1b54cd8408927
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: f94e3b5a6070da5ef9510216abd3f52a958030c5
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684116"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52311377"
 ---
 # <a name="quickstart-bing-entity-search-sdk-with-node"></a>Rychlý start: Sada SDK Bingu pro vyhledávání entit pomocí Node
 
@@ -23,6 +23,7 @@ Sada SDK Bingu pro vyhledávání entit obsahuje funkce rozhraní REST API pro d
 
 [Zdrojový kód pro ukázky sady SDK Bingu pro vyhledávání entit pomocí jazyka C#](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/entitySearch.js) je k dispozici na GitHubu.
 ## <a name="application-dependencies"></a>Závislosti aplikace
+Načtěte si pod **Search** (Hledání) [přístupový klíč služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 Nastavení konzolovou aplikaci pomocí sady SDK vyhledávání entit Bingu:
 * Spustit `npm install ms-rest-azure` ve vašem vývojovém prostředí.

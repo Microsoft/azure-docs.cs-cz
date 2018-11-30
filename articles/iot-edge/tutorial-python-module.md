@@ -5,16 +5,16 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 09/21/2018
+ms.date: 11/25/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5c05145c550e0d218e009ad33b2a88a2ec0dfd18
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 00e04f4cab11b33dc0d7bf718ac15009c673727f
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566291"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312812"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Kurz: Vývoj modulu IoT Edge Python a jeho nasazení na simulované zařízení
 
@@ -56,16 +56,31 @@ Prostředky pro vývoj:
 >Ujistěte se, že se vaše složka `bin` nachází v cestě pro vaši platformu. Obvykle je to `~/.local/` pro UNIX a macOS nebo `%APPDATA%\Python` ve Windows.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
-V tomto kurzu pomocí rozšíření Azure IoT Edge pro VS Code sestavíte modul a ze souborů vytvoříte **image kontejneru**. Tuto image pak nasdílíte do **registru**, ve kterém se ukládají a spravují vaše image. Nakonec nasadíte svou image z registru pro spuštění na zařízení IoT Edge.  
 
-Pro účely tohoto kurzu můžete použít jakýkoli registr kompatibilní s Dockerem. V cloudu jsou k dispozici dvě oblíbené služby registrů Dockeru – [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) a [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). V tomto kurzu se používá služba Azure Container Registry. 
+V tomto kurzu pomocí rozšíření Azure IoT Edge pro Visual Studio Code sestavíte modul a vytvořte **image kontejneru** ze souborů. Tuto image pak nasdílíte do **registru**, ve kterém se ukládají a spravují vaše image. Nakonec nasadíte svou image z registru pro spuštění na zařízení IoT Edge.  
 
-1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Kontejnery** > **Azure Container Registry**.
-2. Zadejte název registru, zvolte předplatné a skupinu prostředků a nastavte skladovou položku na **Basic**. 
-3. Vyberte **Vytvořit**.
-4. Po vytvoření registru kontejneru do něj přejděte a vyberte **Přístupové klíče**. 
-5. Přepněte přepínač **Uživatel s rolí správce** na **Povolit**.
-6. Zkopírujte hodnoty pro **Přihlašovací server**, **Uživatelské jméno** a **Heslo**. Tyto hodnoty použijete v pozdější části kurzu. 
+Pro uložení imagí kontejnerů, můžete použít jakýkoli registr kompatibilní s Dockerem. Jsou dvě oblíbené služby registrů Dockeru [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) a [Docker Hubu](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). V tomto kurzu se používá služba Azure Container Registry. 
+
+Pokud ještě nemáte registr kontejnerů, postupujte podle těchto kroků a vytvořte nový v Azure:
+
+1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Vytvořit prostředek** > **Kontejnery** > **Container Registry**.
+
+2. Zadejte následující hodnoty pro vytvoření registru kontejneru:
+
+   | Pole | Hodnota | 
+   | ----- | ----- |
+   | Název registru | Zadejte jedinečný název. |
+   | Předplatné | V rozevíracím seznamu vyberte předplatné. |
+   | Skupina prostředků | Pro všechny testovací prostředky, které vytvoříte v průběhu rychlých startů a kurzů pro IoT Edge, doporučujeme použít stejnou skupinu prostředků. Například **IoTEdgeResources**. |
+   | Umístění | Zvolte umístění, které je blízko vás. |
+   | Uživatel s rolí správce | Nastavte na **Povolit**. |
+   | Skladová jednotka (SKU) | Vyberte **Basic**. | 
+
+5. Vyberte **Vytvořit**.
+
+6. Po vytvoření registru kontejneru do něj přejděte a vyberte **Přístupové klíče**. 
+
+7. Zkopírujte hodnoty pro **Přihlašovací server**, **Uživatelské jméno** a **Heslo**. Tyto hodnoty použijete v pozdější části kurzu a zajistit tak přístup do registru kontejneru. 
 
 ## <a name="create-an-iot-edge-module-project"></a>Vytvoření projektu modulu IoT Edge
 Následujícími kroky vytvoříte pomocí editoru Visual Studio Code a rozšíření Azure IoT Edge modul IoT Edge Python.
@@ -74,7 +89,7 @@ Následujícími kroky vytvoříte pomocí editoru Visual Studio Code a rozší�
 
 Pomocí balíčku Python **cookiecutter** vytvořte šablonu řešení Python, na jejímž základě můžete tvořit. 
 
-1. V nástroji Visual Studio Code vyberte, že chcete **zobrazit** > **integrovaný terminál**, aby se otevřel integrovaný terminál VS Code.
+1. Ve Visual Studio Code vyberte **Zobrazit** > **Terminál**, aby se otevřel integrovaný terminál VS Code.
 
 2. V integrovaném terminálu zadejte následující příkaz k instalaci (nebo aktualizaci) balíčku **cookiecutter**, který použijete k vytvoření šablony řešení IoT Edge v editoru VS Code:
 
@@ -82,27 +97,33 @@ Pomocí balíčku Python **cookiecutter** vytvořte šablonu řešení Python, n
     pip install --upgrade --user cookiecutter
     ```
    >[!Note]
-   >Ujistěte se, že se adresář, do kterého se balíček cookiecutter nainstaluje, nachází v cestě `Path` vašeho prostředí, aby bylo možné ho vyvolat z příkazového řádku. Ve Windows byste obvykle měli přidat cestu `%APPDATA%\Python\PythonVersion\Scripts` a místo PythonVersion použít vaši verzi Pythonu.
+   >Zkontrolujte adresář nainstalovanou cookiecutter aby bylo možné vyvolat z příkazového řádku je v CESTĚ k vašemu prostředí. Adresář je součástí výstupu instalační skript, například `C:\Users\{user}\AppData\Roaming\Python\Python{version}\Scripts`.
+   >
+   >Restartujte Visual Studio Code, aby přebíral změny do cesty. 
 
 3. Výběrem **View** (Zobrazit)  > **Command Palette** (Paleta příkazů) otevřete paletu příkazů VS Code. 
 
 4. Na paletě příkazů zadejte a spusťte příkaz **Azure: Sign in** (Azure: Přihlásit se) a postupujte podle pokynů pro přihlášení k účtu Azure. Pokud už přihlášení jste, můžete tento krok přeskočit.
 
-5. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Na paletě příkazů zadejte následující informace k vytvoření řešení: 
+5. Na paletě příkazů zadejte a spusťte příkaz **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: Nové řešení IoT Edge). Vytvořte řešení podle výzev, které se zobrazí na paletě příkazů.
 
-   1. Vyberte složku, ve které chcete vytvořit řešení. 
-   2. Zadejte název pro vaše řešení nebo přijměte výchozí název **EdgeSolution**.
-   3. Jako šablonu modulu zvolte **Python Module**. 
-   4. Pojmenujte modul **PythonModule**. 
-   5. Jako úložiště imagí pro první modul určete registr kontejneru Azure, který jste vytvořili v předchozí části. Nahraďte **localhost:5000** hodnotou pro přihlašovací server, kterou jste zkopírovali. Konečný řetězec vypadá takto: \<název_registru\>.azurecr.io/pythonmodule.
+   | Pole | Hodnota |
+   | ----- | ----- |
+   | Vyberte složku | Zvolte umístění na vývojovém počítači, ve kterém VS Code vytvoří soubory řešení. |
+   | Zadejte název řešení | Zadejte popisný název pro vaše řešení nebo přijměte výchozí **EdgeSolution**. |
+   | Vyberte šablonu modulu | Zvolte **Modul Python**. |
+   | Zadejte název modulu | Pojmenujte modul **PythonModule**. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. Konečný řetězec vypadá takto: \<název_registru\>.azurecr.io/pythonmodule. |
  
    ![Zadání úložiště imagí Dockeru](./media/tutorial-python-module/repository.png)
 
-V okně nástroje VS Code se načte pracovní prostor řešení IoT Edge. Pracovní prostor řešení obsahuje pět komponent nejvyšší úrovně. Soubor **\.gitignore** v tomto kurzu upravovat nebudete. Složka **modules** obsahuje kód Pythonu pro váš modul a také soubory Dockerfile pro sestavení modulu jako image kontejneru. V souboru **\.env** jsou uložené přihlašovací údaje k vašemu registru kontejneru. Soubor **deployment.template.json** obsahuje informace, které modul runtime IoT Edge používá k nasazení modulů do zařízení. 
+V okně nástroje VS Code se načte pracovní prostor řešení IoT Edge. Pracovní prostor řešení obsahuje pět komponent nejvyšší úrovně. Složka **modules** obsahuje kód Pythonu pro váš modul a také soubory Dockerfile pro sestavení modulu jako image kontejneru. V souboru **\.env** jsou uložené přihlašovací údaje k vašemu registru kontejneru. Soubor **deployment.template.json** obsahuje informace, které modul runtime IoT Edge používá k nasazení modulů do zařízení. A **deployment.debug.template.json** souboru kontejnery ladicí verzi modulů. Složku **\.vscode** ani soubor **\.gitignore** v tomto kurzu upravovat nebudete.  
 
 Pokud jste při vytváření řešení nezadali registr kontejneru, ale přijali jste výchozí hodnotu localhost:5000, nebudete mít soubor \.env. 
 
-   ![Pracovní prostor řešení Pythonu](./media/tutorial-python-module/workspace.png)
+<!--
+   ![Python solution workspace](./media/tutorial-python-module/workspace.png)
+-->
 
 ### <a name="add-your-registry-credentials"></a>Přidání přihlašovacích údajů registru
 
@@ -183,7 +204,27 @@ Každá šablona zahrnuje ukázkový kód, který vezme simulovaná data sníma�
 
 7. Soubor uložte.
 
-## <a name="build-your-iot-edge-solution"></a>Sestavení řešení IoT Edge
+8. V Průzkumníku VS Code, Otevřít **deployment.template.json** souboru. 
+
+   Tento soubor sděluje modulu **$edgeAgent**, že se mají nasadit dva moduly: **tempSensor**, který simuluje data zařízení, a **PythonModule**. Výchozí platformu IoT Edge je nastavena **amd64** ve vaší VS Code stavového řádku, což znamená, že vaše **PythonModule** je nastavena na Linuxu amd64 verzi image. Změnit výchozí platforma ve stavovém řádku z **amd64** k **arm32v7** nebo **windows amd64** Pokud tomu tak architektuře zařízení IoT Edge. Další informace o manifestech nasazení najdete ve [vysvětlení, jak lze moduly IoT Edge používat, konfigurovat a opětovně používat](module-composition.md).
+
+   Tento soubor obsahuje také přihlašovací údaje registru. V souboru šablony se vaše uživatelské jméno a heslo vyplní zástupnými symboly. Při generování manifestu nasazení se daná pole aktualizují hodnotami, které jste přidali do souboru .env. 
+
+9. Přidejte do manifestu nasazení dvojče modulu **PythonModule**. Vložte následující obsah JSON do dolní části oddílu **moduleContent** za dvojče modulu **$edgeHub**: 
+
+   ```json
+       "PythonModule": {
+           "properties.desired":{
+               "TemperatureThreshold":25
+           }
+       }
+   ```
+
+   ![Dvojče zařízení přidat do šablony nasazení](./media/tutorial-python-module/module-twin.png)
+
+10. Soubor uložte.
+
+## <a name="build-and-push-your-solution"></a>Vytváření a nasdílení změn vašeho řešení
 
 V předchozí části jste vytvořili řešení IoT a do modulu **PythonModule** jste přidali kód, který odfiltruje zprávy, ve kterých je hlášená teplota počítače nižší než přípustná mezní hodnota. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru. 
 
@@ -194,24 +235,7 @@ V předchozí části jste vytvořili řešení IoT a do modulu **PythonModule**
    ```
    Použijte uživatelské jméno, heslo a přihlašovací server zkopírované ze služby Azure Container Registry v první části. Tyto hodnoty můžete také načíst z oddílu **Přístupové klíče** v registru na webu Azure Portal.
 
-2. V průzkumníku VS Code otevřete soubor deployment.template.json v pracovním prostoru řešení IoT Edge. 
-
-   Tento soubor sděluje modulu **$edgeAgent**, že se mají nasadit dva moduly: **tempSensor**, který simuluje data zařízení, a **PythonModule**. Hodnota **PythonModule.image** je nastavená na verzi image Linux amd64. Další informace o manifestech nasazení najdete ve [vysvětlení, jak lze moduly IoT Edge používat, konfigurovat a opětovně používat](module-composition.md).
-
-   Tento soubor obsahuje také přihlašovací údaje registru. V souboru šablony se vaše uživatelské jméno a heslo vyplní zástupnými symboly. Při generování manifestu nasazení se daná pole aktualizují hodnotami, které jste přidali do souboru .env. 
-
-3. Přidejte do manifestu nasazení dvojče modulu **PythonModule**. Vložte následující obsah JSON do dolní části oddílu **moduleContent** za dvojče modulu **$edgeHub**: 
-    ```json
-        "PythonModule": {
-            "properties.desired":{
-                "TemperatureThreshold":25
-            }
-        }
-    ```
-
-4. Soubor uložte.
-
-5. V průzkumníku VS Code klikněte pravým tlačítkem na soubor deployment.template.json a vyberte **Build and Push IoT Edge solution** (Vytvořit a odeslat řešení IoT Edge). 
+2. V průzkumníku VS Code klikněte pravým tlačítkem na soubor deployment.template.json a vyberte **Build and Push IoT Edge solution** (Vytvořit a odeslat řešení IoT Edge). 
 
 Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, nejdříve se načtou informace ze šablony nasazení a v nové složce s názvem **config** se vygeneruje soubor deployment.json. Pak se v integrovaném terminálu spustí dva příkazy: `docker build` a `docker push`. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vašeho kódu Python a kód odešlou do registru kontejneru, který jste zadali při inicializaci řešení. 
 

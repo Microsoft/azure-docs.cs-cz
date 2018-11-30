@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 11/23/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: cc6af421551ba8ca973c15455daebf58c317d6f5
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976481"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52314660"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -88,7 +88,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 - Služba backup infrastruktury přesune z [síťové infrastruktury veřejných](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) k [síť veřejných virtuálních IP adres](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network). Zákazníci se musí zajistit služby má přístup k umístění úložiště zálohy z veřejné sítě VIP.  
 
 > [!IMPORTANT]  
-> Pokud máte bránu firewall, která neumožňuje připojení z veřejné sítě VIP k souborovému serveru, tato změna způsobí, že infrastruktura zálohování se nezdaří s "Chyba 53 cesta sítě nebyla nalezena." Toto je zásadní změnu, která nemá žádné rozumné řešení. Microsoft se na základě názorů zákazníků, vrátí tuto změnu v opravu hotfix. Podívejte se prosím [publikovat aktualizace krokům](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-update-1809#post-update-steps) pro další informace o dostupných oprav hotfix pro 1809. Jakmile je k dispozici oprava hotfix, nezapomeňte použít po aktualizaci na 1809 pouze v případě, že vaše zásady sítě neumožňují veřejnou síť virtuálních IP adres pro přístup k prostředků infrastruktury. v 1811 tato změna uplatní na všech systémech. Pokud jste použili v 1809 opravy hotfix, není vyžadována žádná další akce.  
+> Pokud máte bránu firewall, která neumožňuje připojení z veřejné sítě VIP k souborovému serveru, tato změna způsobí, že infrastruktura zálohování se nezdaří s "Chyba 53 cesta sítě nebyla nalezena." Toto je zásadní změnu, která nemá žádné rozumné řešení. Microsoft se na základě názorů zákazníků, vrátí tuto změnu v opravu hotfix. Podívejte se prosím [publikovat aktualizace krokům](#post-update-steps) pro další informace o dostupných oprav hotfix pro 1809. Jakmile je k dispozici oprava hotfix, nezapomeňte použít po aktualizaci na 1809 pouze v případě, že vaše zásady sítě neumožňují veřejnou síť virtuálních IP adres pro přístup k prostředků infrastruktury. v 1811 tato změna uplatní na všech systémech. Pokud jste použili v 1809 opravy hotfix, není vyžadována žádná další akce.  
 
 ### <a name="common-vulnerabilities-and-exposures"></a>Common Vulnerabilities and Exposures
 
@@ -173,7 +173,7 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 > Příprava vašeho nasazení Azure stacku pro rozšíření hostitele, který je povolený další balíček aktualizace. Příprava systému podle následujících pokynů k [Příprava hostitele rozšíření pro službu Azure Stack](azure-stack-extension-host-prepare.md).
 
 Po instalaci této aktualizace nainstalujte všechny příslušné opravy hotfix. Další informace naleznete následující články znalostní báze, stejně jako naše [zásady obsluhy](azure-stack-servicing-policy.md).  
-- [KB 4471993 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1809.3.96](https://support.microsoft.com/help/4471993/)  
+- [KB 4477849 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
 
 ## <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
 
@@ -226,7 +226,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
    
   Spustit [testovací AzureStack](azure-stack-diagnostic-test.md) rutina pro ověření stavu instance rolí infrastruktury a škálování jednotek uzlů. Pokud nejsou zjištěny žádné problémy podle [testovací AzureStack](azure-stack-diagnostic-test.md), tato upozornění můžete ignorovat. Pokud se zjistí problém, pokuste se spustit instanci role infrastruktury nebo uzlu pomocí portálu pro správu nebo prostředí PowerShell.
 
-  Tento problém je vyřešen v nejnovější verzi [vydání opravy hotfix 1809](https://support.microsoft.com/help/4471993/), takže je nutné k instalaci této opravy hotfix, pokud dojde k problému. 
+  Tento problém je vyřešen v nejnovější verzi [vydání opravy hotfix 1809](https://support.microsoft.com/help/4477849/), takže je nutné k instalaci této opravy hotfix, pokud dojde k problému. 
 
 <!-- 1264761 - IS ASDK -->  
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  

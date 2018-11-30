@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: erhopf
-ms.openlocfilehash: da91a7f84aa2860ef495af1cec412e34213d7e41
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 06e294187247636c552dfd4a7d02167eb55be19a
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291228"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334699"
 ---
 # <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>Rychlý start: Překlad textu pomocí rozhraní REST API služby Translator Text (C#)
 
@@ -41,6 +41,12 @@ cd translate-sample
 
 První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `translate-sample`. Druhý příkaz změní adresář pro projekt.
 
+V dalším kroku budete muset nainstalovat Json.Net. Z adresáře vašeho projektu spusťte:
+
+```console
+dotnet add package Newtonsoft.Json --version 11.0.2
+```
+
 ## <a name="add-required-namespaces-to-your-project"></a>Do projektu přidejte požadované obory názvů
 
 `dotnet new console` Příkaz, který byl dříve vytvořili projekt, včetně `Program.cs`. Tento soubor je místo, kam budete dáte kódu aplikace. Otevřít `Program.cs`a nahraďte existující příkazy using. Tyto příkazy Ujistěte se, že máte přístup ke všem typům, které jsou potřebné k sestavení a spuštění ukázkové aplikace.
@@ -52,9 +58,9 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
-## <a name="create-a-function-to-translate-text"></a>Vytvoření funkce pro překlad textu
+## <a name="create-a-function-to-translate-text"></a>Vytvoření funkce pro převod textu
 
-V rámci `Program` třídy, vytvořte funkci s názvem `TranslateText`. Tato třída zapouzdří kód používaný k volání zdroje přeložit a vytiskne výsledek do konzoly.
+V rámci `Program` třídy, vytvořte funkci s názvem `TranslateText`. Tato třída zapouzdří kód používá k volání zdroje přeložit a vytiskne výsledek do konzoly.
 
 ```csharp
 static void TranslateText()
@@ -121,7 +127,7 @@ request.Content = new StringContent(requestBody, Encoding.UTF8, "application/jso
 // Add the authorization header
 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-// Send request to Azure service, get response
+// Send request, get response
 var response = client.SendAsync(request).Result;
 var jsonResponse = response.Content.ReadAsStringAsync().Result;
 
@@ -141,7 +147,7 @@ Console.ReadLine();
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
-Je to, jste připraveni spustit převod textu na řeč ukázkovou aplikaci. Z příkazového řádku (nebo relaci Terminálové služby) přejděte do adresáře vašeho projektu a spusťte:
+Je to, jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo relaci Terminálové služby) přejděte do adresáře vašeho projektu a spusťte:
 
 ```console
 dotnet run

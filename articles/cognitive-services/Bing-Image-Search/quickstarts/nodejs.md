@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 1584b3e0a1e1c560d42b5f8320d0e15ad6242918
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 189533e496e90dc072f33c9560275323ba5e62c4
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294590"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52312048"
 ---
 # <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-nodejs"></a>Rychlý start: Odesílání vyhledávacích dotazů pomocí rozhraní REST API Bingu pro vyhledávání obrázků a Node.js
 
@@ -28,10 +28,12 @@ Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější verze [Node.js](https://nodejs.org/en/download/)
+* Nejnovější verze [Node.js](https://nodejs.org/en/download/).
 
 * [Knihovna žádostí JavaScriptu](https://github.com/request/request)
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+
+Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
@@ -102,7 +104,7 @@ Zdrojový kód této ukázky je dostupný na [GitHubu](https://github.com/Azure-
 
 ## <a name="json-response"></a>Odpověď JSON
 
-Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vracejí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
+Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vrátí jako JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
 ```json
 {
@@ -148,15 +150,15 @@ Odpovědi od rozhraní API Bingu pro vyhledávání obrázků se vracejí jako J
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Kurz jednostránkové aplikace pro vyhledávání obrázků Bingu](../tutorial-bing-image-search-single-page-app.md)
+> [Vyhledávání obrázků Bingu – kurz jednostránkové aplikace](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Co je Vyhledávání obrázků Bingu?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Vyzkoušení online interaktivní ukázky](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Vyzkoušet online interaktivní ukázku](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Získání přístupového klíče služeb Cognitive Services zdarma](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Dokumentace Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenční informace k rozhraní API Bingu pro vyhledávání obrázků](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

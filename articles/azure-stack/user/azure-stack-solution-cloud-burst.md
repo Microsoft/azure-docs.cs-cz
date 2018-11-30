@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 68021d25e3deab1c6551d29b0febd9f07e144b57
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 645a32f56ee2bdc4132377f2d56f61b963104e42
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095334"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334886"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Kurz: Vytvoření řešení škálování cloudu s Azure
 
@@ -49,7 +49,7 @@ V tomto kurzu vytvoříte ukázkové prostředí:
 -   Předplatné Azure. V případě potřeby vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před zahájením.
 
 - Integrovaný systém Azure Stack nebo nasazení Azure Stack Development Kit.
-    - Najít pokyny k instalaci služby Azure Stack na [instalace sady Azure Stack Development Kit](/articles/azure-stack/asdk/asdk-install).
+    - Najít pokyny k instalaci služby Azure Stack na [instalace sady Azure Stack Development Kit](../asdk/asdk-install.md).
     - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) Tato instalace může vyžadovat několik hodin.
 
 -   Nasazení [služby App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) služeb PaaS do služby Azure Stack.
@@ -97,7 +97,7 @@ Aktualizace souboru zóny DNS pro doménu. Azure AD ověří vlastnictví vlastn
 Nasazení webové aplikace do Azure a Azure Stackem nastavit hybridní průběžné integrace a průběžného nasazování (CI/CD) a automaticky doručovat změny pro oba cloudy.
 
 > [!Note]  
-> Azure Stack pomocí správné imagí syndikovat do běhu (Windows Server a SQL) a nasazení služby App Service jsou povinné. Projděte si dokumentaci k App Service "[před zahájením práce s App Service ve službě Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" část pro operátor Azure stacku.
+> Azure Stack pomocí správné imagí syndikovat do běhu (Windows Server a SQL) a nasazení služby App Service jsou povinné. Projděte si dokumentaci k App Service "[před zahájením práce s App Service ve službě Azure Stack](../azure-stack-app-service-before-you-get-started.md)" část pro operátor Azure stacku.
 
 ### <a name="add-code-to-visual-studio-team-services-project"></a>Přidání kódu do sady Visual Studio Team Services projektu
 
@@ -259,7 +259,7 @@ Teď, když existuje informace o koncovém bodu VSTS pro připojení služby Azu
 ## <a name="develop-the-application-build"></a>Vývoj aplikace sestavení
 
 > [!Note]  
-> Azure Stack pomocí správné imagí syndikovat do běhu (Windows Server a SQL) a nasazení služby App Service jsou povinné. Projděte si dokumentaci k App Service "[před zahájením práce s App Service ve službě Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" část pro operátor Azure stacku.
+> Azure Stack pomocí správné imagí syndikovat do běhu (Windows Server a SQL) a nasazení služby App Service jsou povinné. Projděte si dokumentaci k App Service "[před zahájením práce s App Service ve službě Azure Stack](../azure-stack-app-service-before-you-get-started.md)" část pro operátor Azure stacku.
 
 Použití [šablony Azure Resource Manageru, jako je web](https://azure.microsoft.com/resources/templates/) kód aplikace z VSTS pro nasazení pro oba cloudy.
 

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/21/2018
 ms.author: erhopf
-ms.openlocfilehash: fcf913762eb883d299c93e4579c9c81b03739ddb
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 4987a50f7a689b74062154b8427fd7bec8e2e8a6
+ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290871"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52334306"
 ---
 # <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-c"></a>Rychlý start: Transliterace textu pomocí rozhraní REST API služby Translator Text (C#)
 
@@ -41,6 +41,12 @@ cd transliterate-sample
 
 První příkaz provede dvě věci. Vytvoří novou konzolovou aplikaci .NET a vytvoří adresář s názvem `transliterate-sample`. Druhý příkaz změní adresář pro projekt.
 
+V dalším kroku budete muset nainstalovat Json.Net. Z adresáře vašeho projektu spusťte:
+
+```console
+dotnet add package Newtonsoft.Json --version 11.0.2
+```
+
 ## <a name="add-required-namespaces-to-your-project"></a>Do projektu přidejte požadované obory názvů
 
 `dotnet new console` Příkaz, který byl dříve vytvořili projekt, včetně `Program.cs`. Tento soubor je místo, kam budete dáte kódu aplikace. Otevřít `Program.cs`a nahraďte existující příkazy using. Tyto příkazy Ujistěte se, že máte přístup ke všem typům, které jsou potřebné k sestavení a spuštění ukázkové aplikace.
@@ -52,9 +58,9 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
-## <a name="create-a-function-to-translate-text"></a>Vytvoření funkce pro překlad textu
+## <a name="create-a-function-to-transliterate-text"></a>Vytvoření funkce, která se transkripce text
 
-V rámci `Program` třídy, vytvořte funkci s názvem `TransliterateText`. Tato třída zapouzdří kód používaný k volání zdroje přeložit a vytiskne výsledek do konzoly.
+V rámci `Program` třídy, vytvořte funkci s názvem `TransliterateText`. Tato třída zapouzdří kód používá k volání Transliterate prostředků a vytiskne výsledek do konzoly.
 
 ```csharp
 static void TransliterateText()
@@ -68,7 +74,7 @@ static void TransliterateText()
 
 ## <a name="set-the-subscription-key-host-name-and-path"></a>Nastavte klíč předplatného, název hostitele a cestu
 
-Přidejte tyto řádky do `TransliterateText` funkce. Uvidíte, že spolu s `api-version`, dva další parametry se připojili k `route`. Tyto parametry slouží k nastavení překladu výstupy. V této ukázce je nastaven na němčinu (`de`) a italština (`it`). Nezapomeňte že aktualizovat hodnotu klíče předplatného.
+Přidejte tyto řádky do `TransliterateText` funkce. Uvidíte, že spolu s `api-version`, dva další parametry se připojili k `route`. Tyto parametry slouží k nastavení jazyk a skriptů pro přepis. V tomto příkladu je nastavena na japonština (`jpan`) a latinky (`latn`). Nezapomeňte že aktualizovat hodnotu klíče předplatného.
 
 ```csharp
 string host = "https://api.cognitive.microsofttranslator.com";
@@ -76,7 +82,7 @@ string route = "/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScr
 string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 ```
 
-Dále musíme vytvořit a serializaci objektu JSON, který obsahuje text, který chcete přeložit. Mějte na paměti, můžete předat více než jeden objekt `body` pole.
+Dále musíme vytvořit a serializaci objektu JSON, který obsahuje text, který chcete transkripce. Mějte na paměti, můžete předat více než jeden objekt `body` pole.
 
 ```csharp
 System.Object[] body = new System.Object[] { new { Text = @"こんにちは" } };
@@ -121,7 +127,7 @@ request.Content = new StringContent(requestBody, Encoding.UTF8, "application/jso
 // Add the authorization header
 request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-// Send request to Azure service, get response
+// Send request, get response
 var response = client.SendAsync(request).Result;
 var jsonResponse = response.Content.ReadAsStringAsync().Result;
 
@@ -141,7 +147,7 @@ Console.ReadLine();
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
-Je to, jste připraveni spustit převod textu na řeč ukázkovou aplikaci. Z příkazového řádku (nebo relaci Terminálové služby) přejděte do adresáře vašeho projektu a spusťte:
+Je to, jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo relaci Terminálové služby) přejděte do adresáře vašeho projektu a spusťte:
 
 ```console
 dotnet run
@@ -164,7 +170,7 @@ Ujistěte se, že zdrojový kód ukázkové aplikace, jako jsou klíče předpla
 
 ## <a name="next-steps"></a>Další postup
 
-Prozkoumejte vzorový kód pro tento a další rychlé starty, včetně transkripce a identifikace jazyka a také dalších vzorových projektů služby Translator Text na GitHubu.
+Prozkoumejte vzorový kód pro tento a další rychlé starty, včetně překladu a identifikace jazyka a také dalších vzorových projektů služby Translator Text na GitHubu.
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte příklady C# na GitHubu](https://aka.ms/TranslatorGitHub?type=&language=c%23)
