@@ -7,20 +7,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 6b44e08fc1dce489e703bea1cbef2a7e94ae0f2a
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: 83785e532523c3e921b0772ddaa50502b2dc867d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961022"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633788"
 ---
 # <a name="manage-conflicts-between-regions"></a>Správa konfliktů mezi oblastmi
 
-V případě zápisů do více oblastí platí, že pokud dojde ke konfliktu dat, můžete ho vyřešit pomocí různých zásad řešení konfliktů. Tento článek popisuje, jak spravovat zásady řešení konfliktů s využitím různých jazyků a platforem.
+V případě zápisů do více oblastí platí, že pokud dojde ke konfliktu dat, můžete ho vyřešit pomocí různých zásad řešení konfliktů. Tento článek popisuje, jak spravovat zásady řešení konfliktu s použitím platformy jiný jazyk.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Vytvoření vlastní zásady řešení konfliktů
 
-Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů. Tyto konflikty se zobrazí v informačním kanálu konfliktů.
+Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů. Tyto konflikty se zobrazí v informačním kanálu ke konfliktu.
 
 ### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK
 
@@ -83,9 +83,9 @@ manual_collection = {
 manual_collection = client.CreateContainer(database['_self'], collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-with-stored-procedure"></a>Vytvoření vlastní zásady řešení konfliktů s využitím uložené procedury
+## <a name="create-a-custom-conflict-resolution-policy-with-a-stored-procedure"></a>Vytvoření zásady překladu IP adres vlastní konflikt pomocí uložené procedury
 
-Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty se **nezobrazí** v informačním kanálu konfliktů, pokud ve vaší uložené proceduře nedojde k chybě.
+Tyto ukázky předvádějí, jak nastavit kontejner s vlastní zásadou řešení konfliktů s využitím uložené procedury, která konflikt vyřeší. Tyto konflikty nezobrazují v konfliktu informačního kanálu, pokud dojde k chybě v uložené proceduře.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK
 
@@ -102,7 +102,7 @@ DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`.
+Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK
 
@@ -114,7 +114,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`.
+Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK
 
@@ -127,7 +127,7 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`.
+Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
@@ -146,7 +146,7 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`.
+Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
 
 ### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK
 
@@ -154,11 +154,11 @@ Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`
 
 ```
 
-Po vytvoření kontejneru bude potřeba vytvořit uloženou proceduru `resolver`.
+Po vytvoření kontejneru, je nutné vytvořit `resolver` uložené procedury.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvoření zásady řešení konfliktů Poslední zapisovatel vyhrává
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Vytvořit zásadu řešení konfliktu poslední zápis
 
-Tyto ukázky předvádějí, jak nastavit kontejner se zásadou řešení konfliktů Poslední zapisovatel vyhrává. Pokud cesta není zadaná nebo je neplatná, jako výchozí hodnota se použije vlastnost `_ts` (pole časového razítka). Tyto konflikty se **nezobrazí** v informačním kanálu konfliktů.
+Tyto ukázky předvádějí, jak vytvořit kontejner s zásada řešení konfliktů poslední zápis. Pokud cesta není nastavena nebo je neplatná, bude výchozí `_ts` vlastnost. Tato vlastnost je pole časového razítka. Tyto konflikty nezobrazují v informačním kanálu ke konfliktu.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -210,7 +210,7 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Pokud vynecháte vlastnost `conflictResolutionPath`, jako výchozí hodnota se použije vlastnost `_ts`.
+Pokud vynecháte `conflictResolutionPath` vlastnost, použije se výchozí `_ts` vlastnost.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK
 
@@ -227,7 +227,7 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="read-from-conflict-feed"></a>Čtení z informačního kanálu konfliktů
 
-Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. V informačním kanálu konfliktů se zobrazí pouze konflikty, které se nevyřešily automaticky.
+Tyto ukázky předvádějí, jak číst z informačního kanálu konfliktů kontejneru. Je v konfliktu se zobrazí konflikt kanálu pouze v případě, že nebyly rozpoznány automaticky.
 
 ### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK
 
@@ -275,10 +275,10 @@ while conflict:
     conflict = next(conflicts_iterator, None)
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Teď se můžete přesunout k učení následujících konceptů služby Cosmos DB:
+Další informace o konceptech služby Azure Cosmos DB, následující:
 
 * [Dělení a distribuce dat](partition-data.md)
-* [Indexování ve službě Cosmos DB](indexing-policies.md)
+* [Indexování ve službě Azure Cosmos DB](indexing-policies.md)
 

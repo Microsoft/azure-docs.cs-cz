@@ -11,12 +11,12 @@ ms.service: automation
 ms.component: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ad9fc7deb73cdcbcf83cc10b9b28f7d7e4ac7661
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: fa483ea766d1c93256054a5360470edcbef94250
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283787"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635114"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Zjišťování, jaký software je nainstalovaný na počítačích Azure a jiných počítačích než Azure
 
@@ -70,7 +70,7 @@ Vyberte **+ Přidat virtuální počítač Azure**. Otevře se stránka **Virtu�
 
 ## <a name="onboard-a-non-azure-machine"></a>Připojení počítače mimo Azure
 
-Pokud chcete přidat počítače mimo Azure, nainstalujte agenta pro [Windows](../log-analytics/log-analytics-agent-windows.md) nebo [Linux](automation-linux-hrw-install.md) v závislosti na vašem operačním systému. Jakmile bude agent nainstalovaný, přejděte ve svém účtu Automation do části **Inventory** v části **SPRÁVA KONFIGURACE**. Po kliknutí na **Spravovat počítače** se zobrazí seznam počítačů, které se hlásí do vašeho pracovního prostoru Log Analytics a které nemají řešení povolené. Vyberte odpovídající možnost pro vaše prostředí.
+Pokud chcete přidat počítače mimo Azure, nainstalujte agenta pro [Windows](../azure-monitor/platform/agent-windows.md) nebo [Linux](automation-linux-hrw-install.md) v závislosti na vašem operačním systému. Jakmile bude agent nainstalovaný, přejděte ve svém účtu Automation do části **Inventory** v části **SPRÁVA KONFIGURACE**. Po kliknutí na **Spravovat počítače** se zobrazí seznam počítačů, které se hlásí do vašeho pracovního prostoru Log Analytics a které nemají řešení povolené. Vyberte odpovídající možnost pro vaše prostředí.
 
 * **Povolit na všech dostupných počítačích** – Tato možnost povolí řešení na všech počítačích, které se aktuálně hlásí do vašeho pracovního prostoru Log Analytics.
 * **Povolit na všech dostupných i budoucích počítačích** – Tato možnost povolí řešení na všech počítačích, které se hlásí do vašeho pracovního prostoru Log Analytics, a následně i na všech počítačích, které se do pracovního prostoru přidají v budoucnu.

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 11/28/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: c3c5e904d8e933c09754e13ccb22d6c16d0a37eb
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 68d5742f5da542d5146997390e470180cf8c5776
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713465"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620689"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -53,7 +53,6 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 |  | Název položky | Popis | Vydavatel |
 | --- | --- | --- | --- |
 | ![Windows Server](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | Řešení podnikové úrovně, které jsou jednoduché nasazení, nákladově efektivní, zaměřená na aplikace a zaměřené na uživatele. Tyto Image jsou pravidelně aktualizovány s nejnovějšími opravami. **Důležité informace: Image stáhli dříve, než 18. ledna 2018 musí být odstraněny a nahrazeny nejnovější verze.** | Microsoft |
-| ![Vzdálená plocha](media/azure-stack-marketplace-azure-items/remotedesktopservicesdeployment.png) | [Nasazení služby Vzdálená plocha (RDS)](https://azuremarketplace.microsoft.com/marketplace/apps/rds.remote-desktop-services-basic-deployment) | Vytvoření základní nasazení služby Vzdálená plocha (RDS). **Stáhněte si nejnovější image Windows serveru 2016 Datacenter.** | Microsoft |
 | ![Zkušební verze služby SharePoint Server 2013](media/azure-stack-marketplace-azure-items/sharepoint.png) | [Zkušební verze služby SharePoint Server 2013](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2013Trial) | Microsoft SharePoint Server 2013 – zkušební verze na Windows Server 2012 Datacenter a Visual Studio 2017 community edition. | Microsoft |
 | ![Zkušební verze služby SharePoint serveru 2016](media/azure-stack-marketplace-azure-items/sharepoint.png) | [Zkušební verze služby SharePoint serveru 2016](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | Microsoft SharePoint Server 2016 – zkušební verze na Windows Server 2016 Datacenter. | Microsoft |
 | ![SQL Server 2014 SP2 v systému Windows Server 2012 R2](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2014 SP2 v systému Windows Server 2012 R2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQL2014SP2-WS2012R2) | SQL Server 2014 Service Pack 2. **Vyžaduje ke stažení:** rozšíření SQL IaaS. | Microsoft |
@@ -203,7 +202,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![RabbitMQ clusteru](media/azure-stack-marketplace-azure-items/rabbitmq.png) | [RabbitMQ clusteru](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rabbitmq-cluster) | RabbitMQ je zprostředkovatel zasílání zpráv poskytuje společnou platformu pro odesílání a přijímání zpráv a bezpečné místo, kde si live, dokud se přijaté zprávy aplikace. Toto řešení používá několik virtuálních počítačů ke zřízení více uzlů v clusteru s RabbitMQ tvoří jednu logickou zprostředkovatele. **Tato šablona řešení také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
 | ![Re: dash](media/azure-stack-marketplace-azure-items/redash.png) | [Re: dash](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redash) | A vizualizace dat Open-source platforma pro spolupráci. | Bitnami |
 | ![Redis](media/azure-stack-marketplace-azure-items/redis.png) | [Redis](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis) | Výkonná open source párů klíč hodnota. | Bitnami |
-| ![Redis vysoké dostupnosti](media/azure-stack-marketplace-azure-items/redis.png) | [Redis vysoké dostupnosti](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-redis) | Výkonná open source párů klíč hodnota. **Tato šablona řešení vyžaduje služby Azure Stack na verze 1807 nebo novější a také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
+| ![Redis vysoké dostupnosti](media/azure-stack-marketplace-azure-items/redis.png) | [Redis vysoké dostupnosti](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis-cluster) | Výkonná open source párů klíč hodnota. **Tato šablona řešení vyžaduje služby Azure Stack na verze 1807 nebo novější a také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
 | ![Redmine](media/azure-stack-marketplace-azure-items/redmine.png) | [Redmine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmine) | Výkonné projektu Správa webové aplikace | Bitnami |
 | ![Redmine+Agile](media/azure-stack-marketplace-azure-items/redmineagile.png) | [Redmine + Agile](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmineplusagile) | Aplikace pro řízení projektů předkonfigurované agilní modulu plug-in. | Bitnami |
 | ![ReportServer komunity](media/azure-stack-marketplace-azure-items/reportserver.png) | [ReportServer komunity](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | Platforma Open source business intelligence. | Bitnami |
@@ -250,5 +249,5 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![PT Application firewallu](media/azure-stack-marketplace-azure-items/pt.png) | [PT Application firewallu](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT Application firewallu detekuje známé & Neznámý ohrožení zabezpečení a zabraňuje útokům ve službě web apps. **Stažení položek z obou PT Marketplace.** | Pozitivní technologie |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umožňuje automatizovat celý životní cyklus vaší infrastruktury Azure stacku. **Stažení položek z obou Puppet Marketplace.** | Puppet |
 | ![Quest rychlého obnovení](media/azure-stack-marketplace-azure-items/quest.png) | [Quest rychlého obnovení Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rychlé obnovení rozšířené ochrany dat sjednocuje zálohování, replikace a obnovení v jediném řešení softwaru snadným ovládáním. | Quest softwaru |
-| ![SUSE správce 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE správce 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSE-Manager) | Správa infrastruktury ve své třídě nejlepší open source. | SUSE |
+| ![SUSE správce 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE správce 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos?tab=Overview) | Správa infrastruktury ve své třídě nejlepší open source. | SUSE |
 | ![BCaaS ZeroDown softwaru](media/azure-stack-marketplace-azure-items/zerodown.png) | [Kontinuita podnikových procesů ZeroDown Software jako služba](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | Firmách nepřetržitý přístup ke své firemní data prostřednictvím jejich obchodní kontinuity podnikových procesů poskytuje technologie ZeroDown® Software jako služba (BCaaS)™ architektury, ochranu aplikací a transakce, pokud dojde k přerušení sítě, který se normálně cripple podniku. | ZeroDown softwaru |

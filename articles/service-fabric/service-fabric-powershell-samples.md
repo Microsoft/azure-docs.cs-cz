@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
-ms.date: 04/09/2018
+ms.date: 11/29/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 65f6252ecfa4e5850824fc7aa2e6eca2bdb88692
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: 5d8137b2ca6c47713b7a681090963dd2749dd1f2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205752"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634043"
 ---
 # <a name="azure-powershell-samples"></a>Ukázky Azure PowerShellu
 
@@ -33,7 +33,6 @@ Následující tabulka obsahuje odkazy na ukázkové skripty PowerShellu pro vyt
 |-|-|
 | **Vytvoření clusteru** ||
 | [Vytvoření clusteru (Azure)](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)| Vytvoří cluster Azure Service Fabric. |
-|[Vytvoření testovacího clusteru (Azure)](./scripts/service-fabric-powershell-create-test-cluster.md)| Vytvoří v Azure testovací cluster Service Fabric se třemi uzly.|
 | **Správa clusterů, uzlů a infrastruktury** ||
 | [Přidání certifikátu aplikace](./scripts/service-fabric-powershell-add-application-certificate.md)| Přidá certifikát X.509 aplikace do všech uzlů v clusteru. |
 | [Aktualizace rozsahu portů RDP na virtuálních počítačích clusteru](./scripts/service-fabric-powershell-change-rdp-port-range.md)|Změní rozsah portů RDP na virtuálních počítačích uzlů v nasazeném clusteru.|

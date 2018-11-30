@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 11/29/2018
 ms.author: anwestg
-ms.openlocfilehash: aa745d827db7633dc9f8601f65fa31dfadbb4076
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: cd16bf400c5a5e5a07c7e2dc459d801e6fc810b9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614051"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635369"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -202,17 +202,17 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 
     ![Správa služby App Service](media/azure-stack-app-service-deploy/image12.png)
 
-   >[!IMPORTANT]
-   >Pokud nasazení provádíte do existující virtuální sítě a pomocí interní IP adresu pro připojení k souborového serveru, je nutné přidat odchozí pravidlo zabezpečení. Toto pravidlo aktivuje přenosy SMB mezi podsítě pracovního procesu a souborového serveru.  Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:<br>
-    >  - Zdroj: žádné
-    >  - Zdrojový rozsah portů: *
-    >  - Cíl: IP adresy
-    >  - Rozsah cílových IP adres: rozsah IP adres pro souborového serveru
-    >  - Rozsah cílových portů: 445
-    >  - Protocol: TCP
-    >  - Akce: Povolit
-    >  - Priorita: 700
-    >  - Název: Outbound_Allow_SMB445
+    Pokud nasazení provádíte do existující virtuální sítě a pomocí interní IP adresu pro připojení k souborového serveru, je nutné přidat odchozí pravidlo zabezpečení. Toto pravidlo aktivuje přenosy SMB mezi podsítě pracovního procesu a souborového serveru.  Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
+
+    - Zdroj: žádné
+    - Zdrojový rozsah portů: *
+    - Cíl: IP adresy
+    - Rozsah cílových IP adres: rozsah IP adres pro souborového serveru
+    - Rozsah cílových portů: 445
+    - Protocol: TCP
+    - Akce: Povolit
+    - Priorita: 700
+    - Název: Outbound_Allow_SMB445
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>Vyzkoušejte si App Service ve službě Azure Stack
 

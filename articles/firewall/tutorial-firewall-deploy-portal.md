@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 1d7c880a56c79d516c3904c3f532eb7006f0b68c
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: be4cbc7e955e56853809378f98e9733ffe4a20c3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705833"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633720"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -40,7 +40,7 @@ V tomto kurzu se naučíte:
 > * Nastavit testovací síťové prostředí
 > * Nasadit bránu firewall
 > * Vytvořit výchozí trasu
-> * Nakonfigurovat aplikaci pro povolení přístupu k webu github.com
+> * Konfigurace aplikace pro povolení přístupu k msn.com
 > * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
 > * Otestovat bránu firewall
 
@@ -78,7 +78,7 @@ Tato virtuální síť bude obsahovat tři podsítě.
 11. Ostatní výchozí nastavení ponechte a potom klikněte na **Vytvořit**.
 
 > [!NOTE]
-> Minimální velikost podsítě AzureFirewallSubnet je /25.
+> Minimální velikost podsítě AzureFirewallSubnet je /26.
 
 ### <a name="create-additional-subnets"></a>Vytvoření dalších podsítí
 
@@ -136,7 +136,7 @@ Nasaďte do virtuální sítě bránu firewall.
 2. Klikněte na **Sítě** a vedle **Doporučené** klikněte na **Zobrazit vše**.
 3. Klikněte na **Brána firewall** > **Vytvořit**. 
 4. Na stránce **Vytvoření brány firewall** nakonfigurujte bránu firewall podle následující tabulky:
-   
+
    |Nastavení  |Hodnota  |
    |---------|---------|
    |Název     |Test-FW01|
@@ -146,12 +146,12 @@ Nasaďte do virtuální sítě bránu firewall.
    |Volba virtuální sítě     |**Použijte existující**: Test-FW-VN.|
    |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
 
-2. Klikněte na **Zkontrolovat a vytvořit**.
-3. Zkontrolujte souhrn a potom kliknutím na **Vytvořit** vytvořte bránu firewall.
+5. Klikněte na **Zkontrolovat a vytvořit**.
+6. Zkontrolujte souhrn a potom kliknutím na **Vytvořit** vytvořte bránu firewall.
 
    Nasazení může několik minut trvat.
-4. Po dokončení nasazení přejděte do skupiny prostředků **Test-FW-RG** a klikněte na bránu firewall **Test-FW01**.
-6. Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
+7. Po dokončení nasazení přejděte do skupiny prostředků **Test-FW-RG** a klikněte na bránu firewall **Test-FW01**.
+8. Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
 
 ## <a name="create-a-default-route"></a>Vytvořit výchozí trasu
 
@@ -182,7 +182,7 @@ U podsítě **Workload-SN** nakonfigurujte výchozí trasu v odchozím směru, k
 
 ## <a name="configure-an-application-rule"></a>Konfigurace pravidla aplikace
 
-Toto pravidlo aplikace povoluje odchozí přístup k webu github.com.
+Toto je pravidlo brány application, který umožňuje odchozí přístup k msn.com.
 
 1. Otevřete skupinu prostředků **Test-FW-RG** a klikněte na bránu firewall **Test-FW01**.
 2. Na stránce **Test-FW01** v části **Nastavení** klikněte na **Pravidla**.
@@ -194,7 +194,7 @@ Toto pravidlo aplikace povoluje odchozí přístup k webu github.com.
 8. V části **pravidla**, **Target plně kvalifikované názvy domény**, pro **název**, typ **AllowGH**.
 9. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
 10. V části **Protokol:Port** zadejte **http, https**.
-11. V části **Cílové plně kvalifikované názvy domén** zadejte **github.com**.
+11. Pro **Target plně kvalifikované názvy domény**, typ **msn.com**
 12. Klikněte na tlačítko **Add** (Přidat).
 
 Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené. Tyto plně kvalifikované názvy domén jsou specifické pro tuto platformu a pro jiné účely je nelze použít. Další informace najdete v tématu [Plně kvalifikované názvy domén infrastruktury](infrastructure-fqdns.md).
@@ -204,17 +204,17 @@ Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukt
 Toto pravidlo sítě povoluje odchozí přístup ke dvěma IP adresám na portu 53 (DNS).
 
 1. Klikněte na tlačítko **sítě kolekce pravidel** kartu.
-1. Klikněte na **Přidat kolekci pravidel sítě**.
-2. Jako **název** zadejte **Net-Coll01**.
-3. V části **Priorita** zadejte **200**.
-4. V části **Akce** vyberte **Povolit**.
+2. Klikněte na **Přidat kolekci pravidel sítě**.
+3. Jako **název** zadejte **Net-Coll01**.
+4. V části **Priorita** zadejte **200**.
+5. V části **Akce** vyberte **Povolit**.
 
 6. V části **Pravidla** jako **Název** zadejte **AllowDNS**.
-8. V části **Protokol** vyberte **UDP**.
-9. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
-10. V části Cílová adresa zadejte **209.244.0.3,209.244.0.4**
-11. V části **Cílové porty** zadejte **53**.
-12. Klikněte na tlačítko **Add** (Přidat).
+7. V části **Protokol** vyberte **UDP**.
+8. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
+9. V části Cílová adresa zadejte **209.244.0.3,209.244.0.4**
+10. V části **Cílové porty** zadejte **53**.
+11. Klikněte na tlačítko **Add** (Přidat).
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Změna primární a sekundární adresy DNS u síťového rozhraní **Srv-Work**
 
@@ -235,12 +235,12 @@ Teď bránu firewall otestujte a ověřte, že funguje podle očekávání.
 1. Zkontrolujte na webu Azure Portal síťová nastavení virtuálního počítače **Srv-Work** a poznamenejte si privátní IP adresu.
 2. Připojte k virtuálnímu počítači **Srv-Jump** vzdálenou plochu a z ní otevřete další připojení k vzdálené ploše pomocí privátní IP adresy virtuálního počítače **Srv-Work**.
 
-5. Otevřete prohlížeč Internet Explorer a přejděte na adresu http://github.com.
-6. U výstrah zabezpečení klikněte na **OK** > **Zavřít**.
+3. Otevřete prohlížeč Internet Explorer a přejděte na adresu http://msn.com.
+4. U výstrah zabezpečení klikněte na **OK** > **Zavřít**.
 
-   Měla by se zobrazit domovská stránka GitHubu.
+   Zobrazí se domovská stránka služby MSN.
 
-7. Přejděte na http://www.msn.com.
+5. Přejděte na http://www.msn.com.
 
    Brána firewall by vás měla zablokovat.
 
