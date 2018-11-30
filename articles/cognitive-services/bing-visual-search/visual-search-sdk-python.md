@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: 935241d5574a59edfa256b74db3a0aeab2f7bf91
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
+ms.openlocfilehash: 9f2a6d9b75ccf704862d169b96ea1a1f2edb9815
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458101"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445680"
 ---
 # <a name="quickstart-bing-visual-search-sdk-python"></a>Rychlý start: Sada SDK Vizuálního vyhledávání Bingu v Pythonu
 
@@ -30,7 +30,16 @@ Situace s kódy jsou popsané pod těmito nadpisy:
 * [Značky, akce a actionType](#tags-actions)
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
-* Vyžaduje se klíč rozhraní API kognitivních služeb k ověření volání sady SDK. Zaregistrujte si [bezplatný zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Zkušební verze klíče je platná sedm dní s 1 voláním za sekundu. Do výroby si [kupte přístupový klíč](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Podívejte se také na [informace o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Pro účely tohoto rychlého startu budete muset spustit si předplatné v cenové úrovni S9, jak je znázorněno v [Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+K zahájení předplatného na webu Azure portal:
+1. Zadejte do textového pole v horní části webu Azure portal s textem "BingSearchV7" `Search resources, services, and docs`.  
+2. V části Marketplace v rozevíracím seznamu vyberte `Bing Search v7`.
+3. Zadejte `Name` pro nový prostředek.
+4. Vyberte `Pay-As-You-Go` předplatného.
+5. Vyberte `S9` cenovou úroveň.
+6. Klikněte na tlačítko `Enable` k zahájení odběru.
+ 
 * Pokud nemáte Python, nainstalujte si ho. Sada SDK je kompatibilní s Pythonem 2.7, 3.3, 3.4, 3.5 a 3.6.
 * Obecně se pro vývoj v jazyce Python doporučuje používat [virtuální prostředí](https://docs.python.org/3/tutorial/venv.html). Nainstalujte a inicializujte virtuální prostředí s [modulem venv](https://pypi.python.org/pypi/virtualenv). Nainstalujte virtualenv pro Python 2.7.
 ```
@@ -323,6 +332,6 @@ Následující kód pošle token insights obrázku v parametru knowledgeRequest 
         print("Couldn't find image tags!")
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/17/2018
+ms.date: 11/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c3766713c87dd721f7e4c9a90624192cdb402be9
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 78e56286e0dec3307c7481a6097c53a1362f57cc
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393826"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427518"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Kurz: Zapojení kabeláže a připojení k Azure Data Boxu
 
@@ -30,7 +30,9 @@ V tomto kurzu se naučíte:
 Než začnete, ujistěte se, že:
 
 1. Dokončili jste [Kurz: Objednání Azure Data Boxu](data-box-deploy-ordered.md).
-2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**. V průhledném pouzdře připevněném k zařízení pod elektrickým kabelem najdete expediční štítek. Tento štítek bezpečně uschovejte, protože ho budete potřebovat pro zpáteční zásilku.
+2. Obdrželi jste Data Box a stav objednávky na portálu je **Doručeno**. 
+    - V průhledném pouzdře připevněném k zařízení pod elektrickým kabelem najdete expediční štítek. Tento štítek bezpečně uschovejte, protože ho budete potřebovat pro zpáteční zásilku.
+    - Některé oblasti v Evropě se může zobrazit zařízení zabalené v poli. Ujistěte se, že máte rozbalit zařízení a uložit do pole pro zpáteční zásilku.
 3. Prostudovali jste si [bezpečnostní pokyny k Data Boxu](data-box-safety.md).
 4. Obdrželi jste jeden uzemněný napájecí kabel pro použití s 100TB úložným zařízením.
 5. Máte hostitelský počítač, který obsahuje data, která chcete zkopírovat do Data Boxu. Hostitelský počítač musí splňovat tyto požadavky:
@@ -90,7 +92,7 @@ Jakmile budou nakonfigurovaná datová síťová rozhraní, můžete k získán�
 
 Po dokončení nastavení zařízení se můžete připojit ke sdíleným složkám zařízení a zkopírovat do zařízení data z vašeho počítače. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 

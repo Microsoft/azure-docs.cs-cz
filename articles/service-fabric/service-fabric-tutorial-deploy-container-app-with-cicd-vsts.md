@@ -1,6 +1,6 @@
 ---
 title: Nasazení aplikace typu kontejner s CI/CD do clusteru Azure Service Fabric
-description: V tomto kurzu se dozvíte, jak nastavit kontinuální integraci a nasazování pro aplikaci Azure Service Fabric typu kontejner pomocí Visual Studio Team Services (VSTS).
+description: V tomto kurzu se dozvíte, jak nastavit průběžnou integraci a nasazování pro aplikaci Azure Service Fabric kontejneru s využitím Azure DevOps sady Visual Studio.
 services: service-fabric
 documentationcenter: .net
 author: TylerMSFT
@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: twhitney
 ms.custom: mvc
-ms.openlocfilehash: a7cb139da2cdbfb187a62eeadc707f7206de8a34
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 06bc4be6ee485e61523d210b692c3fe2567cc62c
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300181"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443487"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace typu kontejner s CI/CD do clusteru Service Fabric
 
-V tomto kurzu, který je druhou částí série, se dozvíte, jak nastavit kontinuální integraci a nasazování pro aplikaci Azure Service Fabric typu kontejner pomocí Visual Studio Team Services.  Je zapotřebí existující aplikace Service Fabric; jako příklad se používá aplikace vytvořená v článku [Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabric](service-fabric-host-app-in-a-container.md).
+Tento kurz je součástí série a popisuje, jak nastavit průběžnou integraci a nasazování pro aplikaci kontejneru Azure Service Fabric pomocí sady Visual Studio a Azure DevOps.  Je zapotřebí existující aplikace Service Fabric; jako příklad se používá aplikace vytvořená v článku [Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabric](service-fabric-host-app-in-a-container.md).
 
 Ve druhé části této série se naučíte:
 
 > [!div class="checklist"]
 > * Přidání správy zdrojového kódu do projektu
-> * Vytvoření definice sestavení v Team Services
-> * Vytvoření definice verze v Team Services
+> * Vytvořte definici sestavení v aplikaci Visual Studio Team Explorer
+> * Vytvoření definice verze v sadě Visual Studio Team Explorer
 > * Automatické nasazení a upgrade aplikace
 
 ## <a name="prerequisites"></a>Požadavky
@@ -43,23 +43,23 @@ Než začnete s tímto kurzem:
 
 ## <a name="prepare-a-publish-profile"></a>Příprava profilu publikování
 
-Teď, když jste [nasadili aplikaci typu kontejner](service-fabric-host-app-in-a-container.md), jste připraveni nastavit kontinuální integraci.  Nejprve v rámci své aplikace připravte profil publikování, který použije proces nasazení, který se provádí v rámci Team Services.  Profil publikování by měl být nakonfigurovaný tak, aby cílil na cluster, který jste předtím vytvořili.  Spusťte sadu Visual Studio a otevřete existující projekt aplikace Service Fabric.  V **Průzkumníku řešení** klikněte pravým tlačítkem na aplikaci a vyberte **Publikovat...**
+Teď, když jste [nasadili aplikaci typu kontejner](service-fabric-host-app-in-a-container.md), jste připraveni nastavit kontinuální integraci.  Nejprve ve své aplikaci připravte profil publikování použitý procesem nasazení, který se provádí v rámci Azure DevOps.  Profil publikování by měl být nakonfigurovaný tak, aby cílil na cluster, který jste předtím vytvořili.  Spusťte sadu Visual Studio a otevřete existující projekt aplikace Service Fabric.  V **Průzkumníku řešení** klikněte pravým tlačítkem na aplikaci a vyberte **Publikovat...**
 
-Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracovní postup průběžné integrace, například Cloud.  Zadejte koncový bod připojení clusteru.  Zaškrtněte políčko **Upgradovat aplikaci**, aby se vaše aplikace upgradovala pro každé nasazení v Team Services.  Kliknutím na hypertextový odkaz **Uložit** uložte nastavení do profilu publikování a pak kliknutím na **Zrušit** zavřete dialogové okno.
+Zvolte v rámci projektu aplikace cílový profil, který se použije pro pracovní postup průběžné integrace, například Cloud.  Zadejte koncový bod připojení clusteru.  Zaškrtněte políčko **Upgradovat aplikaci**, aby se vaše aplikace upgradovala pro každé nasazení v Azure DevOps.  Kliknutím na hypertextový odkaz **Uložit** uložte nastavení do profilu publikování a pak kliknutím na **Zrušit** zavřete dialogové okno.
 
 ![Nasdílení profilu][publish-app-profile]
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>Sdílení řešení sady Visual Studio do nového úložiště Team Services Git
+## <a name="share-your-visual-studio-solution-to-a-new-azure-devops-git-repo"></a>Sdílení řešení sady Visual Studio do nového úložiště Gitu Azure DevOps
 
-Zdrojové soubory své aplikace můžete sdílet do týmového projektu v Team Services, abyste mohli generovat sestavení.
+Sdílejte zdrojové soubory své aplikace do týmového projektu v Azure DevOps, abyste mohli generovat sestavení.
 
 Vytvořte pro svůj projekt nové místní úložiště Git tím, že na stavovém řádku v pravém dolním rohu sady Visual Studio vyberete **Přidat do správy zdrojového kódu** -> **Git**.
 
-V zobrazení **Nasdílení změn** v **Team Exploreru** vyberte v části **Nasdílet do Visual Studio Team Services** tlačítko **Publikovat úložiště Git**.
+V zobrazení **Nasdílet změny** v **Team Exploreru** vyberte v části **Doručovat do Azure DevOps** tlačítko **Publikovat úložiště Git**.
 
 ![Nasdílení úložiště Git][push-git-repo]
 
-Ověřte svůj e-mail a v rozevíracím seznamu **Doména Team Services** vyberte svůj účet. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
+Ověřte svůj e-mail a vyberte svoji organizaci v **účet** rozevíracího seznamu. Budete muset nastavit organizace, pokud ho ještě nemáte. Zadejte název svého úložiště a vyberte **Publikovat úložiště**.
 
 ![Nasdílení úložiště Git][publish-code]
 
@@ -67,22 +67,22 @@ Publikováním úložiště se ve vašem účtu vytvoří nový týmový projekt
 
 ## <a name="configure-continuous-delivery-with-vsts"></a>Konfigurace průběžného doručování s VSTS
 
-Definice sestavení Team Services popisuje pracovní postup, který se skládá z řady postupně prováděných kroků sestavení. Vytvořte definici sestavení, která vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Další informace o [definicích sestavení Team Services](https://www.visualstudio.com/docs/build/define/create). 
+Definici sestavení Azure DevOps popisuje pracovní postup, který se skládá ze sady kroků sestavení, které jsou spouštěny postupně. Vytvořte definici sestavení, která vytvoří balíček aplikace Service Fabric a další artefakty pro nasazení do clusteru Service Fabric. Další informace o Azure DevOps [definice sestavení](https://www.visualstudio.com/docs/build/define/create). 
 
-Definice verze Team Services popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití definice sestavení a definice verze provedou celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Další informace o [definicích verzí](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition) Team Services.
+Definice vydané verze Azure DevOps popisuje pracovní postup, který nasadí balíček aplikace do clusteru. Při společném použití definice sestavení a definice verze provedou celý pracovní postup od zdrojových souborů až po spuštění aplikace v clusteru. Další informace o Azure DevOps [definice verzí](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
 
 ### <a name="create-a-build-definition"></a>Vytvoření definice sestavení
 
-Otevřete webový prohlížeč a přejděte do nového týmového projektu na adrese: [https://&lt;váš_účet&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
+Otevřete nový týmový projekt tak, že přejdete do https://dev.azure.com ve webovém prohlížeči a vyberte vaše organizace, následovaný nový projekt. 
 
-Vyberte kartu **Sestavení a vydání**, pak **Sestavení** a pak klikněte na **Nový kanál**.
+Vyberte **kanály** možnost na levém panelu a potom klikněte na **nový kanál**.
 
 >[!NOTE]
 >Pokud se šablona definice sestavení nezobrazí, ujistěte se, že je vypnutá funkce **Nové prostředí pro tvorbu kanálů YAML**. Tato funkce se konfiguruje v části **Funkce Preview** vašeho účtu DevOps.
 
 ![Nový kanál][new-pipeline]
 
-Vyberte zdroj **VSTS Git**, týmový projekt **Voting**, úložiště **Voting** a výchozí větev **master** nebo ruční a plánovaná sestavení.  Pak klikněte na **Pokračovat**.
+Vyberte **úložiště Git v Azure** jako zdroj, název, váš projekt úložišti, váš tým projektu a **hlavní** výchozí větev nebo ruční a plánovaná sestavení.  Pak klikněte na **Pokračovat**.
 
 V části **Vybrat šablonu** vyberte šablonu **Aplikace Azure Service Fabric s podporou Dockeru** a klikněte na **Použít**.
 
@@ -104,7 +104,7 @@ V části **Typ registru kontejneru** vyberte **Azure Container Registry**. Vybe
 
 ![Výběr možnosti Nabídnout image v Dockeru][select-push-images]
 
-V části **Triggery** povolte průběžnou integraci zaškrtnutím políčka **Povolit průběžnou integraci**. V části **Filtry větví** klikněte na **+ Přidat** a do pole **Specifikace větve** se vyplní výchozí hodnota **master**.
+V části **triggery** kartu, povolte průběžnou integraci kontrolou **aktivovat nepřetržitou integraci**. V části **Filtry větví** klikněte na **+ Přidat** a do pole **Specifikace větve** se vyplní výchozí hodnota **master**.
 
 Kliknutím na **Uložit a zařadit do fronty** v dialogu **Uložit kanál buildu a zařadit do fronty** ručně spusťte build.
 
@@ -114,7 +114,7 @@ Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. 
 
 ### <a name="create-a-release-definition"></a>Vytvoření definice verze
 
-Vyberte kartu **Sestavení a vydání**, pak **Vydání** a nakonec **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
+Vyberte **kanály** možnost na levém panelu a potom **verze**, pak **+ nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
 
 ![Výběr šablony vydání][select-release-template]
 
@@ -151,7 +151,7 @@ Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clust
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Potvrzení a nasdílení změn, aktivace vydání
 
-Ověřte fungování kanálu průběžné integrace tím, že do Team Services vrátíte se změnami nějaký kód.
+Ověřte fungování kanálu kontinuální integrace tím, že do Azure DevOps vrátíte se změnami nějaký kód.
 
 Při psaní kódu sada Visual Studio automaticky sleduje provedené změny. Potvrďte změny do svého místního úložiště Git tím, že vyberete ikonu probíhajících změn (![Čekající na vyřízení][pending]) na stavovém řádku v pravém dolním rohu.
 
@@ -159,11 +159,11 @@ V zobrazení **Změny** v Team Exploreru přidejte zprávu s popisem vaší aktu
 
 ![Potvrdit vše][changes]
 
-Vyberte ikonu nepublikovaných změn (![Nepublikované změny][unpublished-changes]) na stavovém řádku nebo zobrazení Synchronizace v Team Exploreru. Vyberte **Nasdílet změny** a aktualizujte svůj kód v Team Services nebo v sadě TFS.
+Vyberte ikonu nepublikovaných změn (![Nepublikované změny][unpublished-changes]) na stavovém řádku nebo zobrazení Synchronizace v Team Exploreru. Výběrem možnosti **Nasdílet změny** aktualizujte kód v Azure DevOps.
 
 ![Nasdílení změn][push]
 
-Nasdílením změn do Team Services se automaticky aktivuje sestavení.  Po úspěšném dokončení definice sestavení se automaticky vytvoří vydaná verze a začne se upgradovat aplikace v clusteru.
+Nasdílením změn do Azure DevOps se automaticky aktivuje build.  Po úspěšném dokončení definice sestavení se automaticky vytvoří vydaná verze a začne se upgradovat aplikace v clusteru.
 
 Pokud chcete zkontrolovat průběh sestavení, přepněte v **Team Exploreru** v sadě Visual Studio na kartu **Sestavení**.  Jakmile ověříte, že se sestavení úspěšně provádí, nadefinujte definici verze, která nasadí vaši aplikaci do clusteru.
 

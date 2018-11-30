@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 06d6bc8e53276b5542210c2843d7221d6fd79c09
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 62780500d29c891182d3869bf0ba3ccdc5e2f715
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386430"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441057"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>Kurz: ImageInsightsToken sady SDK Vizuálního vyhledávání Bingu a výsledky
 Sada SDK Vizuálního vyhledávání zahrnuje možnost najít obrázky online z předešlého hledání, která vrátí `ImageInsightsToken`.  Tento příklad načte `ImageInsightsToken` a použije tento token v následném hledání.  Kód pošle `ImageInsightsToken` do Bingu a vrátí výsledky, které zahrnují adresy URL Vyhledávání Bingu a adresy URL podobných obrázků nalezených online.
@@ -24,6 +24,16 @@ Sada SDK Vizuálního vyhledávání zahrnuje možnost najít obrázky online z 
 Sada Visual Studio 2017. V případě potřeby si můžete stáhnout komunitní verzi zdarma odsud: https://www.visualstudio.com/vs/community/.
 Vyžaduje se klíč rozhraní API kognitivních služeb k ověření volání sady SDK. Zaregistrujte si bezplatný zkušební klíč. Zkušební verze klíče je platná sedm dní s jedním voláním za sekundu. Do výroby si kupte přístupový klíč. Podívejte se také na informace o cenách.
 Možnost spouštět .NET core SDK, aplikace .net core 1.1. CORE, Framework a modul Runtime můžete získat odsud: https://www.microsoft.com/net/download/.
+
+Pro účely tohoto kurzu, budete muset spustit si předplatné v cenové úrovni S9, jak je znázorněno v [Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+K zahájení předplatného na webu Azure Portal:
+1. Zadejte do textového pole v horní části webu Azure Portal s textem "BingSearchV7" `Search resources, services, and docs`.  
+2. V části Marketplace v rozevíracím seznamu vyberte `Bing Search v7`.
+3. Zadejte `Name` pro nový prostředek.
+4. Vyberte `Pay-As-You-Go` předplatného.
+5. Vyberte `S9` cenovou úroveň.
+6. Klikněte na tlačítko `Enable` k zahájení odběru.
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
 Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Vyhledávání na webu Bingu, přejděte v sadě Visual Studio v Průzkumníku řešení na možnost Spravovat balíčky NuGet. Přidejte:
@@ -289,5 +299,5 @@ namespace VisualSearchFeatures
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Odpověď Vizuálního vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)

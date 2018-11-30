@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/21/2018
-ms.openlocfilehash: 1f8537408325aff0ba3ec198ed0e2bb697134845
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.openlocfilehash: 74cdaed91624e9d0602ce6a85ccc5cd341b9519e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036338"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496628"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu se systémem Apache Kafka ve službě HDInsight
 
-V tomto kurzu se dozvíte, jak použít topologii Apache Storm ke čtení a zápisu dat s využitím systému Apache Kafka ve službě HDInsight. Kurz také předvádí, jak uložit data do úložiště kompatibilního s HDFS na clusteru Storm.
+Tento kurz ukazuje, jak pomocí [Apache Storm](https://storm.apache.org/) topologie ke čtení a zápisu dat pomocí [Apache Kafka](https://kafka.apache.org/) v HDInsight. Tento kurz také ukazuje, jak uchování dat [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibilní úložiště na Storm cluster.
 
 V tomto kurzu se naučíte:
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 
 * Znalost vytváření témat Kafka. Další informace najdete v dokumentu [Rychlý start k systému Kafka ve službě HDInsight](./kafka/apache-kafka-get-started.md).
 
-* Znalost vytváření a nasazení řešení Storm (topologií). Konkrétně topologií, které používají architekturu Flux. Další informace naleznete v části [Vytvoření topologie Storm v Javě](./storm/apache-storm-develop-java-topology.md).
+* Znalost vytváření a nasazení řešení Storm (topologií). Konkrétně topologií, které používají [tok](https://storm.apache.org/releases/current/flux.html) rozhraní framework. Další informace naleznete v části [Vytvoření topologie Storm v Javě](./storm/apache-storm-develop-java-topology.md).
 
 * [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) nebo vyšší. HDInsight 3.5 nebo vyšší vyžadují Java 8.
 
@@ -63,7 +63,7 @@ Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou 
 
 ## <a name="storm-and-kafka"></a>Storm a Kafka
 
-Apache Storm poskytuje několik komponent pro práci se systémem Kafka. V tomto kurzu jsou použité následující komponenty:
+Apache Storm poskytuje několik komponent pro práci s využitím Apache Kafka. V tomto kurzu jsou použité následující komponenty:
 
 * `org.apache.storm.kafka.KafkaSpout`: Tato komponenta čte data ze systému Kafka. Závisí na následujících komponentách:
 
@@ -82,7 +82,7 @@ Apache Storm poskytuje několik komponent pro práci se systémem Kafka. V tomt
 Tyto komponenty jsou dostupné v balíčku `org.apache.storm : storm-kafka`. Použijte verzi balíčku, která odpovídá verzi Stormu. Pro HDInsight 3.6 je verze Stormu 1.1.0.
 Budete také potřebovat balíček `org.apache.kafka : kafka_2.10` s dalšími komponentami systému Kafka. Použijte verzi balíčku, která odpovídá verzi systému Kafka. Pro HDInsight 3.6 je verze Kafka 0.10.0.0.
 
-Následující kód XML představuje deklaraci závislosti v `pom.xml` pro projekt Maven:
+Následující kód XML je deklarace závislostí v `pom.xml` pro [Apache Maven](https://maven.apache.org/) projektu:
 
 ```xml
 <!-- Storm components for talking to Kafka -->
@@ -369,7 +369,7 @@ Projekt obsahuje soubor s názvem `dev.properties`, který se používá pro př
 
 | Soubor dev.properties | Popis |
 | --- | --- |
-| `kafka.zookeeper.hosts` | Hostitelé Zookeeper pro cluster Kafka. |
+| `kafka.zookeeper.hosts` | [Apache ZooKeeper](https://zookeeper.apache.org/) hostitelů pro Kafka cluster. |
 | `kafka.broker.hosts` | Hostitelé zprostředkovatelů Kafka (pracovní uzly). |
 | `kafka.topic` | Téma Kafka, které topologie používají. |
 | `hdfs.write.dir` | Adresář, do kterého topologie Kafka-reader zapisuje. |
@@ -384,7 +384,7 @@ Následující diagram znázorňuje tok komunikace mezi Stormem a systémem Kafk
 ![Diagram clusterů Storm a Kafka ve virtuální síti Azure](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
 
 > [!NOTE]
-> Další služby v clusteru, jako jsou SSH a Ambari, jsou přístupné přes internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
+> Další služby v clusteru, jako jsou SSH a [Apache Ambari](https://ambari.apache.org/) přístupné přes internet. Další informace o veřejných portech dostupných ve službě HDInsight najdete v tématu [Porty a identifikátory URI používané službou HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 
 K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafka a Storm v rámci této sítě použijte následující postup:
 
@@ -635,10 +635,10 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 > 
 > Odstraněním clusteru Kafka ve službě HDInsight odstraníte také všechna data uložená v systému Kafka.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak pomocí topologií Storm zapisovat a číst data ze systému Kafka ve službě HDInsight. Naučili jste se také ukládat data do úložiště kompatibilního s HDFS používaného službou HDInsight.
+V tomto kurzu jste zjistili, jak pomocí [Apache Storm](https://storm.apache.org/) topologie, která bude zapisovat a číst z [Apache Kafka](https://kafka.apache.org/) v HDInsight. Můžete také zjistili, jak ukládat data do [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) kompatibilní úložiště využitá službou HDInsight.
 
-Další informace o použití systému Kafka ve službě HDInsight najdete v dokumentu [Použití rozhraní API producenta a konzumenta systému Kafka](kafka/apache-kafka-producer-consumer-api.md).
+Další informace o použití systému Kafka v HDInsight, najdete v článku [použití Apache Kafka Producer and Consumer API](kafka/apache-kafka-producer-consumer-api.md) dokumentu.
 
 Informace o nasazení a monitorování topologií ve službě HDInsight na Linuxu najdete v dokumentu [Nasazení a správa topologií Apache Storm v HDInsight na Linuxu](storm/apache-storm-deploy-monitor-topology-linux.md).

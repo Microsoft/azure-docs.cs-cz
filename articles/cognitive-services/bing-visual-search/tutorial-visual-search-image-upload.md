@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 2e65313207e2bb29ae269425012cc6c340261ba4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: HT
+ms.openlocfilehash: b13f2e5c96ba50fc76d7bfae256e5fcc1c8b56ce
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888335"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443453"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Kurz: Rozdělení nahrávání Vizuálního vyhledávání Bingu
 
@@ -23,6 +23,15 @@ Tento kurz rozděluje proces nahrávání obrázku do Bingu a získávání pře
 
 Tento kurz je určený vývojáři, který chce prozkoumat obsah odpovědi Vizuálního vyhledávání Bingu. Neaplikuje veškeré požadavky na použití a zobrazení (například neposkytuje odkaz na zásady ochrany osobních údajů společnosti Microsoft). Všechny požadavky na použití najdete v tématu [Požadavky na zobrazení a použití Bingu](./use-and-display-requirements.md).
 
+Pro účely tohoto kurzu, budete muset spustit si předplatné v cenové úrovni S9, jak je znázorněno v [Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+K zahájení předplatného na webu Azure Portal:
+1. Zadejte do textového pole v horní části webu Azure Portal s textem "BingSearchV7" `Search resources, services, and docs`.  
+2. V části Marketplace v rozevíracím seznamu vyberte `Bing Search v7`.
+3. Zadejte `Name` pro nový prostředek.
+4. Vyberte `Pay-As-You-Go` předplatného.
+5. Vyberte `S9` cenovou úroveň.
+6. Klikněte na tlačítko `Enable` k zahájení odběru.
 
 ## <a name="where-to-start"></a>Kde začít?
 
@@ -1329,6 +1338,6 @@ Tady je kompletní příklad v HTML a JavaScriptu.
 </html>      
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete zjistit, jak funguje získávání přehledu pomocí tokenu insights, přečtěte si [Kurz k tokenu ImageInsightsToken sady SDK pro Vizuální vyhledávání Bingu](.\tutorial-visual-search-insights-token.md).

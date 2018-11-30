@@ -10,16 +10,26 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: aahi
-ms.openlocfilehash: b493f65e47f5e4c932ed1229e4c00ee1af3cd5ab
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: fe7159e88bd70ba8af23909559264fa5f210ef10
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161850"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443884"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>Kurz: Vizuální vyhledávání v jednostránkové webové aplikaci
 
 API pro vizuální vyhledávání Bingu poskytuje prostředí podobné podrobnostem obrázků zobrazeným na Bing.com/images. Pomocí vizuálního vyhledávání můžete zadat obrázek a získat zpět přehledy o obrázku, například vizuálně podobné obrázky, nákupní zdroje, webové stránky, na kterých se obrázek nachází, a další. 
+
+Pro účely tohoto kurzu, budete muset spustit si předplatné v cenové úrovni S9, jak je znázorněno v [Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+K zahájení předplatného na webu Azure portal:
+1. Zadejte do textového pole v horní části webu Azure portal s textem "BingSearchV7" `Search resources, services, and docs`.  
+2. V části Marketplace v rozevíracím seznamu vyberte `Bing Search v7`.
+3. Zadejte `Name` pro nový prostředek.
+4. Vyberte `Pay-As-You-Go` předplatného.
+5. Vyberte `S9` cenovou úroveň.
+6. Klikněte na tlačítko `Enable` k zahájení odběru.
 
 Tento kurz rozšiřuje jednostránkovou webovou aplikaci z kurzu pro vyhledávání obrázků Bingu (viz [Jednostránková webová aplikace](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)). Úplný zdrojový kód pro zahájení tohoto kurzu najdete ve [zdrojovém kódu jednostránkové webové aplikace](../Bing-Image-Search/tutorial-bing-image-search-single-page-app-source.md). Poslední zdrojový kód v tomto kurzu najdete v kurzu pro [jednostránkovou webovou aplikaci pro vizuální vyhledávání](tutorial-bing-visual-search-single-page-app-source.md).
 

@@ -9,12 +9,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 66e17c00da898e575bb858dbe16a35d1c44a2780
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 27141c014c9ccdf9d62c9bde5c96bd31abfc025e
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226906"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447091"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>Kurz: Oblast oříznutí obrázku sady SDK Vizuálního vyhledávání Bingu a výsledky
 Sada SKD Vizuálního vyhledávání zahrnuje možnost vybrat oblast obrázku a najít online obrázky, které se oblasti oříznutí většího obrázku podobají.  Tento příklad určuje oblast oříznutí zobrazující jednu osobu z obrázku, který obsahuje několik osob.  Kód pošle oblast oříznutí a adresu URL většího obrázku a vrátí výsledky, které zahrnují adresy URL Vyhledávání Bingu a adresy URL podobných obrázků nalezených online.
@@ -23,7 +23,15 @@ Sada SKD Vizuálního vyhledávání zahrnuje možnost vybrat oblast obrázku a 
 
 Pokud chcete tento kód spustit na Windows, budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Bude stačit bezplatná verze Community Edition.)
 
-Musíte mít [účet API Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s přístupem k rozhraním API pro vyhledávání Bingu. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Při aktivaci bezplatné zkušební verze budete potřebovat poskytnutý přístupový klíč nebo můžete použít klíč placeného předplatného z řídicího panelu Azure.
+Pro účely tohoto kurzu, budete muset spustit si předplatné v cenové úrovni S9, jak je znázorněno v [Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+K zahájení předplatného na webu Azure Portal:
+1. Zadejte do textového pole v horní části webu Azure Portal s textem "BingSearchV7" `Search resources, services, and docs`.  
+2. V části Marketplace v rozevíracím seznamu vyberte `Bing Search v7`.
+3. Zadejte `Name` pro nový prostředek.
+4. Vyberte `Pay-As-You-Go` předplatného.
+5. Vyberte `S9` cenovou úroveň.
+6. Klikněte na tlačítko `Enable` k zahájení odběru.
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
 Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Vyhledávání na webu Bingu, přejděte v sadě Visual Studio v Průzkumníku řešení na možnost Spravovat balíčky NuGet. Přidejte balíček Microsoft.Azure.CognitiveServices.Search.VisualSearch.
@@ -181,5 +189,5 @@ namespace VisualSearchFeatures
 }
 
 ```
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Odpověď Vizuálního vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)

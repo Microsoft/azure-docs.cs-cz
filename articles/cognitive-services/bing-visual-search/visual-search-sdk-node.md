@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 77b8f956ca2a6985121cb5dbfebc2755fa73a35c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: cca39fb16c47eb13887f6198833dafc64974d301
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685969"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444456"
 ---
 # <a name="quickstart-bing-visual-search-sdk-node"></a>Rychlý start: Sada SDK pro Vizuální vyhledávání Bingu v Nodu 
 
@@ -28,7 +28,15 @@ Scénáře kódu jsou popsané pod těmito nadpisy:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vyžaduje se klíč rozhraní API Cognitive Services k ověření volání sady SDK. Zaregistrujte si [bezplatný zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Zkušební verze klíče je platná sedm dní s jedním voláním za sekundu. Pro produkční scénáře si [kupte přístupový klíč](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Podívejte se také na [informace o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Pro účely tohoto rychlého startu budete muset spustit si předplatné v cenové úrovni S9, jak je znázorněno v [Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+K zahájení předplatného na webu Azure portal:
+1. Zadejte do textového pole v horní části webu Azure portal s textem "BingSearchV7" `Search resources, services, and docs`.  
+2. V části Marketplace v rozevíracím seznamu vyberte `Bing Search v7`.
+3. Zadejte `Name` pro nový prostředek.
+4. Vyberte `Pay-As-You-Go` předplatného.
+5. Vyberte `S9` cenovou úroveň.
+6. Klikněte na tlačítko `Enable` k zahájení odběru.
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
 

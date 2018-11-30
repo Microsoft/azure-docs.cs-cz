@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 57e719c6ef75b08d8c188d2d2d344867bbf590b1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b58bfc5345e06f82b2550ea2a1a53443946f2096
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623090"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427450"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Kurz: Použití spravované identity přiřazené systémem na virtuálním počítači s Linuxem pro přístup k rozhraní Azure AD Graph API
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
 V tomto kurzu se dozvíte, jak použít spravovanou identitu přiřazenou systémem na virtuálním počítači s Linuxem pro přístup k rozhraní Azure AD Graph API za účelem načtení jeho členství ve skupinách. Spravované identity pro prostředky Azure se spravují automaticky v Azure a umožňují vám ověřovat přístup ke službám podporujícím ověřování Azure AD bez nutnosti vložení přihlašovacích údajů do kódu.  
 
@@ -135,7 +135,7 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
 
 1. Na portálu přejděte ke svému linuxovému virtuálnímu počítači a v části **Přehled** klikněte na **Připojit**.  
 2. **Připojte** se vybraným klientem SSH k virtuálnímu počítači. 
-3. V okně terminálu požádejte nástrojem CURL místní spravované identity o koncový bod prostředků Azure, abyste získali přístupový token pro Azure AD Graph.  
+3. V okně terminálu pomocí příkazu CURL, ujistěte se, požadavek na místní spravovaných identit pro koncový bod prostředků Azure k získání přístupového tokenu Azure AD Graph.  
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://graph.windows.net' -H Metadata:true
@@ -155,7 +155,7 @@ K dokončení tohoto postupu budete potřebovat klienta SSH. Pokud používáte 
    }
    ```
 
-4. Pomocí ID objektu instančního objektu virtuálního počítače (hodnota, kterou jste získali v předchozích krocích) se můžete dotazovat rozhraní Azure AD Graph API a načíst jeho členství ve skupinách. `<OBJECT-ID>` nahraďte ID objektu instančního objektu virtuálního počítače a `<ACCESS-TOKEN>` dříve získaným přístupovým tokenem:
+4. Pomocí ID objektu instančního objektu virtuálního počítače (hodnota, kterou jste získali v předchozích krocích) se můžete dotazovat rozhraní Azure AD Graph API a načíst jeho členství ve skupinách. Nahraďte `<OBJECT-ID>` s ID objektu z objektu virtuálního počítače a služby a `<ACCESS-TOKEN>` pomocí dříve obdrženého přístupového tokenu:
 
    ```bash
    curl 'https://graph.windows.net/myorganization/servicePrincipals/<OBJECT-ID>/getMemberGroups?api-version=1.6' -X POST -d "{\"securityEnabledOnly\": false}" -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS-TOKEN>"

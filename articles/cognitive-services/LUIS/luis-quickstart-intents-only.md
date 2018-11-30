@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: cc631f139e7f11d82f2caac83770754060353d07
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 30c9f572d77caacbeecf5f15d74fd8517e9fa883
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277711"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426855"
 ---
 # <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>Kurz 1: Vytvoření vlastní aplikace k určení záměrů uživatele
 
@@ -71,7 +71,7 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 
     [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Snímek obrazovky se zadáváním nových promluv pro záměr MyStore (Můj obchod)")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
 
 ## <a name="none-intent"></a>Žádný záměr 
@@ -156,11 +156,11 @@ Vraťte se na web služby LUIS a vytvořte nový záměr pro určení, zda se pr
 
 ## <a name="train-again"></a>Nové trénování
 
-[!INCLUDE[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-again"></a>Nové publikování
 
-[!INCLUDE[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
 ## <a name="get-intent-again"></a>Nové získání záměru
 
@@ -199,7 +199,7 @@ Vraťte se na web služby LUIS a vytvořte nový záměr pro určení, zda se pr
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili aplikaci Human Resources, dva záměry, přidali jste ukázkové promluvy jednotlivých záměrů, přidali jste ukázkové promluvy do záměru None a vytrénovali, publikovali a otestovali jste aplikaci na koncovém bodu. Toto jsou základní kroky vytvoření modelu LUIS. 
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 2ce6e7c796faf0c7377a33dabe1e8c05e81fde2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: a4e294687b6c3ea2ba6ff8003e7a8f1ac69ea639
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280692"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425067"
 ---
 # <a name="tutorial-4-extract-exact-text-matches"></a>4. kurz: Extrakce shodného textu
 V tomto kurzu se dozvíte, jak získat data která přesně odpovídají předdefinovanému seznamu položek. Ke každé položce v seznamu může existovat seznam synonym. V aplikaci pro lidské zdroje může být zaměstnanec identifikovaný různými klíčovými údaji, jako je jeho jméno, e-mail, telefonní číslo nebo daňové identifikační číslo. 
@@ -41,7 +41,7 @@ Entita seznamu je vhodná pro tento typ dat, když platí následující:
 > * Publikování
 > * Zjistit záměry a entity z koncového bodu
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Použití existující aplikace
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
@@ -57,7 +57,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
 ## <a name="moveemployee-intent"></a>Záměr MoveEmployee
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Vyberte **Create new intent** (Vytvořit nový záměr). 
 
@@ -84,7 +84,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
     Nezapomeňte, že hodnoty number a datetimeV2 byly přidány v předchozím kurzu. Pokud budou nalezeny v ukázkových promluvách, budou označeny automaticky.
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="employee-list-entity"></a>Entita seznamu zaměstnanců
 Když teď má záměr **MoveEmployee** (Přesunutí zaměstnance) ukázkové promluvy, musí služba LUIS porozumět tomu, co je zaměstnanec. 
@@ -266,7 +266,7 @@ Primárním _kanonickým_ názvem každé položky je číslo zaměstnance. Tady
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili nový záměr, přidali jste ukázkové promluvy a pak jste vytvořili entitu seznamu určenou k extrakci shodného textu ze záznamů. Po natrénování a publikování aplikace jste dotazem adresovaným koncovému bodu zjistili záměr a vrátili extrahovaná data.
 
 > [!div class="nextstepaction"]

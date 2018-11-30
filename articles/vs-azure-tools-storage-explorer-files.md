@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 536092c1ee50045e6df4e2933c7d6eb0ee7a8b42
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: d039654fc1d652a3997515a12caa48acaac124fe
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429783"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52425288"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Použití Storage Exploreru se službou Azure File Storage
 
@@ -29,7 +29,7 @@ Azure File Storage je služba, která nabízí sdílené složky v cloudu přes 
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-- [Stažení a instalace Průzkumníka služby Storage](http://www.storageexplorer.com/)
+- [Stažení a instalace Průzkumníka služby Storage](https://www.storageexplorer.com/)
 
 - [Připojení k účtu úložiště nebo službě Azure](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -257,8 +257,8 @@ Následující postup ukazuje, jak spravovat soubory (a složky) v rámci sdíle
 
         c. V potvrzovacím dialogovém okně klikněte na **Ano**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-- Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](http://www.storageexplorer.com/).
+- Podívejte se na [nejnovější poznámky k verzi a videa pro Průzkumníka služby Storage](https://www.storageexplorer.com/).
 
 - Zjistěte, jak [vytvářet aplikace pomocí objektů blob, tabulek, dotazů a souborů Azure](https://azure.microsoft.com/documentation/services/storage/).

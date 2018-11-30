@@ -9,21 +9,21 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: b22a701d9e876ca011381810e330fed60b7177d4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 8319376c597f16a5bfe1a357d74c59453b797e51
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278697"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495134"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Kurz: Rozhraní Apache Kafka Streams API
 
-Zjistěte, jak vytvořit aplikaci využívající rozhraní Kafka Streams API a spustit ji pomocí systému Kafka ve službě HDInsight. 
+Zjistěte, jak vytvořit aplikaci, která používá rozhraní API Apache Kafka datových proudů a spustit ji s využitím Kafka v HDInsight. 
 
 Aplikace použitá v tomto kurzu počítá slova v datovém proudu. Přečte textová data z tématu Kafka, extrahuje jednotlivá slova a pak uloží slova a jejich počet do jiného tématu Kafka.
 
 > [!NOTE]
-> Zpracování datových proudů Kafka se často provádí pomocí Apache Sparku nebo Stormu. V systému Kafka verze 0.10.0 (ve službě HDInsight 3.5 a 3.6) se zavedlo rozhraní Kafka Streams API. Toto rozhraní API umožňuje transformovat datové proudy mezi vstupními a výstupními tématy. V některých případech to může být alternativa k vytváření řešení streamování Sparku nebo Stormu. 
+> Zpracování datových proudů Kafka se často provádí pomocí Apache Spark nebo Apache Storm. V systému Kafka verze 0.10.0 (ve službě HDInsight 3.5 a 3.6) se zavedlo rozhraní Kafka Streams API. Toto rozhraní API umožňuje transformovat datové proudy mezi vstupními a výstupními tématy. V některých případech to může být alternativa k vytváření řešení streamování Sparku nebo Stormu. 
 >
 > Další informace o datových proudech Kafka najdete v [úvodní dokumentaci k datovým proudům](https://kafka.apache.org/10/documentation/streams/) na webu Apache.org.
 
@@ -38,9 +38,9 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Cluster Kafka ve službě HDInsight 3.6. Informace o vytvoření clusteru Kafka ve službě HDInsight najdete v dokumentu [Začínáme se systémem Kafka ve službě HDInsight](apache-kafka-get-started.md).
+* Cluster Kafka ve službě HDInsight 3.6. Zjistěte, jak vytvořit systém Kafka na clusteru HDInsight, najdete v článku [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md) dokumentu.
 
-* Dokončete kroky v dokumentu [Rozhraní Kafka Consumer and Producer API](apache-kafka-producer-consumer-api.md). Kroky v tomto dokumentu používají ukázkovou aplikaci a témata vytvořená v tomto kurzu.
+* Proveďte kroky v [Apache Kafka příjemce a rozhraní API pro producenta](apache-kafka-producer-consumer-api.md) dokumentu. Kroky v tomto dokumentu používají ukázkovou aplikaci a témata vytvořená v tomto kurzu.
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
@@ -158,7 +158,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
    
     Místo `sshuser` použijte jméno uživatele SSH pro váš cluster a místo `clustername` zadejte název clusteru. Pokud se zobrazí výzva, zadejte heslo uživatelského účtu SSH. Další informace o použití `scp` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-kafka-topics"></a>Vytvoření témat Kafka
+## <a name="create-apache-kafka-topics"></a>Vytvářejte témata Apache Kafka
 
 1. K navázání připojení SSH ke clusteru použijte následující příkaz:
 
@@ -175,7 +175,7 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
     read -p 'Enter your Kafka cluster name:' CLUSTERNAME
     ```
 
-3. K získání hostitelů zprostředkovatelů Kafka a hostitelů Zookeeper použijte následující příkazy. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin). Zobrazí se dvě výzvy k zadání hesla.
+3. Chcete-li získat zprostředkovatele Kafka, hostitele a hostitele Apache Zookeeper, použijte následující příkazy. Po zobrazení výzvy zadejte heslo pro účet přihlášení clusteru (admin). Zobrazí se dvě výzvy k zadání hesla.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`; \
@@ -253,9 +253,9 @@ Pokud chcete sestavit a nasadit projekt do clusteru Kafka ve službě HDInsight,
 
 7. Producenta ukončíte stisknutím __Ctrl+C__. Pokračujte a pomocí __Ctrl + C__ ukončete aplikaci i konzumenta.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto dokumentu jste zjistili, jak používat rozhraní Kafka Streams API se systémem Kafka ve službě HDInsight. Další informace o práci s platformou Kafka najdete v těchto zdrojích:
+V tomto dokumentu jste zjistili, jak pomocí rozhraní API Apache Kafka datové proudy Kafka v HDInsight. Další informace o práci s platformou Kafka najdete v těchto zdrojích:
 
-* [Analýza protokolů Kafka](apache-kafka-log-analytics-operations-management.md)
-* [Replikace dat mezi clustery Kafka](apache-kafka-mirroring.md)
+* [Analýza protokolů platformy Apache Kafka](apache-kafka-log-analytics-operations-management.md)
+* [Replikace dat mezi clustery Apache Kafka](apache-kafka-mirroring.md)

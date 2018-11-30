@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/21/2018
+ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: af586656889919ed9b3407f2c41253dfadddc742
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: e4489fd9119bce0e38e14f536f41940b74205e95
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291245"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424999"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Private Preview)
 
-Zjistěte, jak pomocí [Azure Deployment Manageru](./deployment-manager-overview.md) nasazovat aplikace napříč několika oblastmi. Pokud chcete používat Deployment Manager, musíte vytvořit dvě šablony:
+Zjistěte, jak pomocí [Azure Deployment Manageru](./deployment-manager-overview.md) nasazovat aplikace napříč několika oblastmi. Pokud chcete použít nástroj Deployment Manager, je potřeba vytvořit dvě šablony:
 
 * **Šablona topologie:** popisuje prostředky Azure, ze kterých se skládá vaše aplikace, a kam se mají nasadit.
 * **Šablona uvedení:** popisuje kroky, které se mají provést při nasazování aplikací.
@@ -40,6 +40,8 @@ Tento kurz se zabývá následujícími úkony:
 > * Ověření nasazení
 > * Nasazení nejnovější verze
 > * Vyčištění prostředků
+
+Referenční dokumentace rozhraní REST API služby Azure Deployment Manager můžete najít [tady](https://docs.microsoft.com/rest/api/deploymentmanager/).
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -199,6 +201,9 @@ Následující snímek obrazovky ukazuje pouze několik částí definice topolo
 - **artifactSourceId** slouží k přidružení prostředku zdroje artefaktů k prostředku topologie služby.
 - **dependsOn:** Všechny prostředky topologie služby jsou závislé na prostředku zdroje artefaktů.
 - **artifacts** odkazuje na artefakty šablony.  Používají se zde relativní cesty. Úplná cesta se vytvoří zřetězením hodnot artifactSourceSASLocation (definovaná ve zdroji artefaktů), artifactRoot (definovaná ve zdroji artefaktů) a templateArtifactSourceRelativePath (nebo parametersArtifactSourceRelativePath).
+
+> [!NOTE]
+> Názvy jednotek musí obsahovat 31 znaků nebo méně. 
 
 ### <a name="topology-parameters-file"></a>Soubor parametrů topologie
 

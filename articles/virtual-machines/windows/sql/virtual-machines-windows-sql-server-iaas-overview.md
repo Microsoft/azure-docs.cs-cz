@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/12/2018
 ms.author: jroth
-ms.openlocfilehash: 905caa7d0de514ae9fd13cb058b2b7826b8b6abf
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
-ms.translationtype: HT
+ms.openlocfilehash: 141a65032d3d97a7977bb3e725edb47b6f25d55c
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003667"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496656"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
 
@@ -67,8 +67,13 @@ Následující tabulka obsahuje matici imagí SQL Serveru s průběžnými platb
 
 Dostupné image virtuálních počítačů s Linuxem a SQL Serverem najdete v tématu [Přehled SQL Serveru na virtuálních počítačích Azure (Linux)](../../linux/sql/sql-server-linux-virtual-machines-overview.md).
 
+> [!NOTE]
+> Nyní je možné změnit licenční model plateb za využití virtuálního počítače SQL serveru používat vlastní licenci. Další informace najdete v tématu [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). 
+
 ### <a id="BYOL"></a> Používání vlastní licence
 Můžete také používat vlastní licenci (BYOL). V tomto scénáři zaplatíte jenom za virtuální počítač bez jakýchkoli dalších poplatků za licencování SQL Serveru.  Používáním vlastní licence můžete časem ušetřit peníze za nepřetržité produkční úlohy. Požadavky k použití této možnosti najdete v tématu [Doprovodné materiály k cenám pro virtuální počítače Azure s SQL Serverem](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
+
+Používání vlastní licence, můžete buď převést existující virtuální počítač SQL platby za využití nebo můžete nasadit bitovou kopii s předponou **{BYOL}**. Další informace o přepínání mezi platby za využití a BYOL váš licenční model, najdete v části [jak změnit licenční model virtuálního počítače SQL](virtual-machines-windows-sql-ahb.md). 
 
 | Verze | Operační systém | Edice |
 | --- | --- | --- |
@@ -77,7 +82,6 @@ Můžete také používat vlastní licenci (BYOL). V tomto scénáři zaplatíte
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2), [Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-Na portálu mají názvy těchto imagí předponu **{BYOL}**.
 
 ### <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
 Po vytvoření virtuálního počítače s SQL Serverem se k němu připojte z aplikací nebo nástrojů, jako je například SQL Server Management Studio (SSMS). Pokyny najdete v tématu [Připojení k virtuálnímu počítači SQL Serveru na Azure](virtual-machines-windows-sql-connect.md).
@@ -107,7 +111,7 @@ Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (
 * [Dokumentace SQL Serveru](https://docs.microsoft.com/sql/index)
 * [Porovnání Azure SQL Database](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začínáme s SQL Serverem na virtuálních počítačích Azure:
 

@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4cb6e79b563ac0172f93b3a721b79c230a96a1d5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
+ms.openlocfilehash: 25b01de47767e335d614aa0a8cf32c344c7305d8
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457982"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52442842"
 ---
 # <a name="quickstart-bing-visual-search-sdk-c"></a>Rychlý start: Sada SDK pro Vizuální vyhledávání Bingu v C#
 
@@ -33,7 +33,16 @@ Situace s kódy jsou popsané pod těmito nadpisy:
 ## <a name="prerequisites"></a>Požadavky
 
 * Sada Visual Studio 2017. V případě potřeby si můžete stáhnout komunitní verzi zdarma odsud: https://www.visualstudio.com/vs/community/.
-* Vyžaduje se klíč rozhraní API Cognitive Services k ověření volání sady SDK. Zaregistrujte si [bezplatný zkušební klíč](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Zkušební verze klíče je platná sedm dní s jedním voláním za sekundu. Do výroby si [kupte přístupový klíč](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Podívejte se také na [informace o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Pro účely tohoto rychlého startu budete muset spustit si předplatné v cenové úrovni S9, jak je znázorněno v [Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+K zahájení předplatného na webu Azure portal:
+1. Zadejte do textového pole v horní části webu Azure portal s textem "BingSearchV7" `Search resources, services, and docs`.  
+2. V části Marketplace v rozevíracím seznamu vyberte `Bing Search v7`.
+3. Zadejte `Name` pro nový prostředek.
+4. Vyberte `Pay-As-You-Go` předplatného.
+5. Vyberte `S9` cenovou úroveň.
+6. Klikněte na tlačítko `Enable` k zahájení odběru.
+
 * Možnost spouštět .NET core SDK, aplikace .net core 1.1. CORE, Framework a modul Runtime můžete získat odsud: https://www.microsoft.com/net/download/.
 
 ## <a name="application-dependencies"></a>Závislosti aplikace
@@ -512,6 +521,6 @@ public static void VisualSearchUrlWithJson(string subscriptionKey)
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Ukázky Cognitive Services sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

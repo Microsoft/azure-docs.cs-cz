@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: d94b7f7f2f032278f71053e5de8bb2935af01f3f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300145"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496203"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Informace o službě VPN gateway pro Azure Stack
 
@@ -117,6 +117,10 @@ Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost
 *Poznámka: (1)* -propustnosti sítě VPN není zaručena propustnost pro připojení mezi místními systémy přes Internet. Je maximální možné měření propustnosti.  
 *Poznámka: [2]* – maximální počet tunelových propojení je celkem jedno nasazení služby Azure Stack pro všechna předplatná.  
 *Poznámka: [3]* – směrování protokolu BGP není podporován pro základní SKU.
+
+>[!NOTE]
+>Lze vytvořit pouze jedno připojení Site-to-Site VPN mezi dvěma nasazeními Azure Stack.  Toto je kvůli omezením platformy, které vám umožní jenom jedno připojení sítě VPN pro stejnou IP adresu.  Protože Azure Stack využívá víceklientská brána, která používá jednu veřejnou IP adresu pro všechny brány sítě VPN v systému Azure Stack, může být jenom jednoho připojení sítě VPN mezi dvěma systémy Azure Stack.  Toto omezení platí také pro propojíte s více než jedno připojení VPN typu Site-to-Site VPN Gateway, která používá jedna IP adresa.  Azure Stack neumožní více než jeden prostředku brány místní sítě, který se má vytvořit pomocí stejné IP adresy.
+
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3903f247df0bc9dc4bc27d61b195492c585d7634
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: d3b8d0597f0732a4a3cfab79125a885b2d141c9f
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282267"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52424696"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>Kurz 5: Extrakce dat souvisejících s kontextem
 V tomto kurzu vyhledáte související části dat na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné. Pro vygenerování pracovního zařazení se mohou vyžadovat obě části dat, které spolu vzájemně souvisí.  
@@ -57,7 +57,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Odebrání předem připravené entity čísla z aplikace
 Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchické entity, odeberte dočasně předem připravenou entitu čísla.
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. V levé nabídce vyberte **Entities** (Entity).
 
@@ -83,7 +83,7 @@ Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchi
 
     V kurzu k [entitám seznamu](luis-quickstart-intent-and-list-entity.md) je zaměstnanec určen pomocí jména, e-mailu, čísla telefonní linky, čísla mobilního telefonu a čísla amerického federálního sociálního pojištění. V promluvách se používají tato čísla zaměstnanců. Předchozí příklady promluv obsahují různé způsoby (zobrazené tučně), jak označit počáteční a cílové místo. Dvě z těchto promluv obsahují záměrně jen cílové místo. To pomáhá aplikaci LUIS porozumět tomu, jak jsou tato místa v promluvě umístěna, když není určeno počáteční místo.     
 
-    [!INCLUDE[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+    [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 
 ## <a name="create-a-location-entity"></a>Vytvoření entity místa
 Služba LUIS potřebuje porozumět tomu, co je místo, tím, že v promluvách označí počáteční a cílové místo. Pokud potřebujete promluvu zobrazit v zobrazení tokenů (nezpracovaných), vyberte přepínač na panelu nad promluvami s popiskem **Entities View** (Zobrazení entit). Po přepnutí přepínače bude mít tento ovládací prvek popisek **Tokens View** (Zobrazení tokenů).
@@ -253,7 +253,7 @@ Místa v tomto příkladu, jako je třeba `a-1234`, používají specifický for
 
 Další informace najdete v tématu věnovaném [porovnání rolí a hierarchických entit](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili nový záměr a přidali ukázkové promluvy pro kontextově naučená data počátečního a cílového umístění. Jakmile aplikaci vytrénujete a publikujete, klientská aplikace může tyto informace použít k vytvoření lístku přesunu s relevantními informacemi.
 
 > [!div class="nextstepaction"] 

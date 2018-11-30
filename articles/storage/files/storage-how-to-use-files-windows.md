@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: f1dd07756ca484171a3d662df35493efbe5a5ee7
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: ee6b93c26918b4f70eb23e7055db813f35d3787d
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415608"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52445731"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -24,9 +24,9 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 
 | Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Možnost připojit v místním prostředí |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019 (Preview)<sup>1</sup> | SMB 3.0 | Ano | Ano |
-| Windows 10<sup>2</sup> | SMB 3.0 | Ano | Ano |
-| Pololetní kanál Windows Serveru<sup>3</sup> | SMB 3.0 | Ano | Ano |
+| Windows Server. 2019    | SMB 3.0 | Ano | Ano |
+| Windows 10<sup>1</sup> | SMB 3.0 | Ano | Ano |
+| Pololetní kanál Windows Server<sup>2</sup> | SMB 3.0 | Ano | Ano |
 | Windows Server 2016    | SMB 3.0     | Ano                   | Ano                  |
 | Windows 8.1            | SMB 3.0     | Ano                   | Ano                  |
 | Windows Server 2012 R2 | SMB 3.0     | Ano                   | Ano                  |
@@ -34,9 +34,8 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 | Windows 7              | SMB 2.1     | Ano                   | Ne                   |
 | Windows Server 2008 R2 | SMB 2.1     | Ano                   | Ne                   |
 
-<sup>1</sup>Windows Server 2019 je dostupný ve verzi Preview prostřednictvím [programu Windows Server Insiders](https://insider.windows.com/for-business-getting-started-server/). Windows Server 2019 se zatím nepodporuje pro produkční použití. Přesto nám dejte vědět, pokud budete mít nějaké problémy s připojením ke sdíleným složkám Azure nad rámec problémů popsaných v [příručce pro řešení potíží pro Windows](storage-troubleshoot-windows-file-connection-problems.md).  
-<sup>2</sup>Windows 10 verze 1507, 1607, 1703, 1709 a 1803.  
-<sup>3</sup>Windows Server verze 1709 a 1803.
+<sup>1</sup>Windows 10 verze 1507, 1607, 1703, 1709, 1803 a 1809.  
+<sup>2</sup>systému Windows Server verze 1709 a 1803.
 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
@@ -290,7 +289,7 @@ Po vytvoření tohoto klíče registru musíte server restartovat, aby se protok
 - [Zjišťování protokolu SMB 1 v prostředí pomocí DSCEA](https://blogs.technet.microsoft.com/ralphkyttle/2017/04/07/discover-smb1-in-your-environment-with-dscea/)
 - [Zakázání protokolu SMB 1 prostřednictvím Zásad skupiny](https://blogs.technet.microsoft.com/secguide/2017/06/15/disabling-smbv1-through-group-policy/)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o službě Soubory Azure najdete na těchto odkazech:
 - [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
 * [Nejčastější dotazy](../storage-files-faq.md)

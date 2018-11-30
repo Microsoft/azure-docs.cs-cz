@@ -10,16 +10,26 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 10/04/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 26fb74dc122682e915c0f9a517bdee58d6c974db
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 4e08044fbfa36663da2da9ed18adf3249cb59930
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291194"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52444138"
 ---
 # <a name="tutorial-visual-search-single-page-web-app"></a>Kurz: Vizuální vyhledávání v jednostránkové webové aplikaci
 
 Toto je úplný zdrojový kód probíraný v kurzu [Vizuální vyhledávání v jednostránkové webové aplikaci](tutorial-bing-visual-search-single-page-app.md) pro Vizuální vyhledávání Bingu. Pokud chcete aplikaci spustit, zkopírujte zdrojový kód do Poznámkového bloku nebo jiného textového editoru a uložte ho jako `bing-visual-search.html`. Potom otevřete uložený soubor v Microsoft Edgi nebo jiném oblíbeném prohlížeči.
+## <a name="prerequisites"></a>Požadavky
+Pro účely tohoto rychlého startu budete muset spustit si předplatné v cenové úrovni S9, jak je znázorněno v [Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/search-api/). 
+
+K zahájení předplatného na webu Azure portal:
+1. Zadejte do textového pole v horní části webu Azure portal s textem "BingSearchV7" `Search resources, services, and docs`.  
+2. V části Marketplace v rozevíracím seznamu vyberte `Bing Search v7`.
+3. Zadejte `Name` pro nový prostředek.
+4. Vyberte `Pay-As-You-Go` předplatného.
+5. Vyberte `S9` cenovou úroveň.
+6. Klikněte na tlačítko `Enable` k zahájení odběru.
 
 ```html
 <!DOCTYPE html>

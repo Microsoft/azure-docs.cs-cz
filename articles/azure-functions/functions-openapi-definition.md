@@ -8,18 +8,19 @@ manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 12/15/2017
+ms.date: 11/26/2018
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 62c04e5893eaefcc5eb7272eb9a99cf932086205
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.openlocfilehash: 2d50e4c2352444d29bdb090bc9a2a7947ecc6a50
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086859"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496035"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Vytvoření definice OpenAPI pro funkci
+
 Rozhraní REST API se často popisují pomocí definice OpenAPI (dříve označované jako soubor [Swagger](http://swagger.io/)). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API.
 
 V tomto kurzu vytvoříte funkci, která určí, jestli je nouzová oprava větrné turbíny nákladově efektivní. Pak vytvoříte definici OpenAPI pro aplikaci funkcí, aby bylo možné funkci volat i z jiných aplikací a služeb.
@@ -33,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Otestování definice zavoláním funkce
 
 > [!IMPORTANT]
-> Funkce OpenAPI ve verzi Preview je v současné době k dispozici pouze v modulu runtime verze 1.x. Informace o tom, jak vytvořit aplikaci funkcí 1.x [najdete tady](./functions-versions.md#creating-1x-apps).
+> OpenAPI funkce je aktuálně ve verzi preview a je dostupná jenom pro verzi 1.x modulu runtime Azure Functions.
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
@@ -41,6 +42,11 @@ K hostování provádění funkcí musíte mít aplikaci Function App. Aplikace 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
+## <a name="set-the-functions-runtime-version"></a>Nastavení verze modulu runtime Functions
+
+Ve výchozím nastavení používá aplikace function app vytvoříte verze 2.x modulu runtime. Verze modulu runtime je nutné nastavit zpět do 1.x před vytvořením funkce.
+
+[!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
 ## <a name="create-the-function"></a>Vytvoření funkce
 
@@ -50,34 +56,27 @@ Tento kurz používá funkci aktivovanou protokolem HTTP, která přijímá dva 
 
     ![Stručný úvod do služby Functions na webu Azure Portal](media/functions-openapi-definition/add-first-function.png)
 
-2. Do vyhledávacího pole zadejte `http` a zvolte pro šablonu triggeru HTTP **jazyk C#**. 
- 
+1. Do vyhledávacího pole zadejte `http` a zvolte pro šablonu triggeru HTTP **jazyk C#**. 
+
     ![Volba triggeru HTTP](./media/functions-openapi-definition/select-http-trigger-portal.png)
 
-3. Jako **Název** funkce zadejte `TurbineRepair`, jako **[Úroveň ověřování](functions-bindings-http-webhook.md#http-auth)** zvolte `Function` a pak vyberte **Vytvořit**.  
+1. Jako **Název** funkce zadejte `TurbineRepair`, jako **[Úroveň ověřování](functions-bindings-http-webhook.md#http-auth)** zvolte `Function` a pak vyberte **Vytvořit**.  
 
     ![Vytvoření funkce aktivované protokolem HTTP](./media/functions-openapi-definition/select-http-trigger-portal-2.png)
 
 1. Nahraďte obsah souboru run.csx následujícím kódem a klikněte na **Uložit**:
 
     ```csharp
-    #r "Newtonsoft.Json"
-
     using System.Net;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Primitives;
-    using Newtonsoft.Json;
 
-    const double revenuePerkW = 0.12; 
-    const double technicianCost = 250; 
+    const double revenuePerkW = 0.12;
+    const double technicianCost = 250;
     const double turbineCost = 100;
 
-    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
-    {   
+    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    {
         //Get request body
-        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-        dynamic data = JsonConvert.DeserializeObject(requestBody);
+        dynamic data = await req.Content.ReadAsAsync<object>();
         int hours = data.hours;
         int capacity = data.capacity;
 
@@ -93,13 +92,14 @@ Tento kurz používá funkci aktivovanou protokolem HTTP, která přijímá dva 
             repairTurbine = "No";
         }
 
-        return (ActionResult) new OkObjectResult(new{
+        return req.CreateResponse(HttpStatusCode.OK, new{
             message = repairTurbine,
             revenueOpportunity = "$"+ revenueOpportunity,
-            costToFix = "$"+ costToFix         
-        }); 
+            costToFix = "$"+ costToFix
+        });
     }
     ```
+
     Tento kód funkce vrátí zprávu `Yes` nebo `No`, která značí, jestli je nouzová oprava nákladově efektivní, a obsahuje také možné výnosy turbíny a náklady na opravu turbíny. 
 
 1. Pokud chcete funkci otestovat, kliknutím na **Test** úplně vpravo rozbalte kartu Test. Jako **Text požadavku** zadejte následující hodnotu a klikněte na **Spustit**.
@@ -132,7 +132,7 @@ Nyní jste připraveni vygenerovat definici OpenAPI. Tuto definici můžou použ
     1. V části **Vybrané metody HTTP** zrušte všechny možnosti kromě **POST** a pak klikněte na **Uložit**.
 
         ![Vybrané metody HTTP](media/functions-openapi-definition/selected-http-methods.png)
-        
+
 1. Klikněte na název vaší aplikace funkcí (například **function-demo-energy**) > **Funkce platformy** > **Definice rozhraní API**.
 
     ![Definice rozhraní API](media/functions-openapi-definition/api-definition.png)
@@ -185,7 +185,8 @@ Nyní jste připraveni vygenerovat definici OpenAPI. Tuto definici můžou použ
     Tato definice je popsaná jako _šablona_, protože k tomu, aby byla úplnou definicí OpenAPI, vyžaduje více metadat. Definici upravíte v dalším kroku.
 
 ## <a name="modify-the-openapi-definition"></a>Úprava definice OpenAPI
-Když teď máte definici šablony, upravíte ji, aby poskytovala další metadata o operacích a datových strukturách rozhraní API. V **definici rozhraní API** odstraňte vygenerovanou definici od `post` až do konce definice, vložte níže uvedený obsah a klikněte na **Uložit**.
+
+Teď, když máte definici šablony, upravíte ji, aby poskytovala další metadata týkající se operací rozhraní API a datových struktur. V **definici rozhraní API** odstraňte vygenerovanou definici od `post` až do konce definice, vložte níže uvedený obsah a klikněte na **Uložit**.
 
 ```yaml
     post:
@@ -249,15 +250,15 @@ securityDefinitions:
 
 V tomto případě můžete prostě vložit aktualizovaná metadata, ale je důležité porozumět typům úprav, které jsme s výchozí šablonou provedli:
 
-+ Určili jsme, že rozhraní API generuje a spotřebovává data ve formátu JSON.
+* Určili jsme, že rozhraní API generuje a spotřebovává data ve formátu JSON.
 
-+ Určili jsme požadované parametry a jejich názvy a datové typy.
+* Určili jsme požadované parametry a jejich názvy a datové typy.
 
-+ Určili jsme návratové hodnoty úspěšné odpovědi a jejich názvy a datové typy.
+* Určili jsme návratové hodnoty úspěšné odpovědi a jejich názvy a datové typy.
 
-+ Zadali jsme popisné souhrny a popisy rozhraní API, jeho operací a parametrů. To je důležité pro lidi, kteří budou tuto funkci používat.
+* Zadali jsme popisné souhrny a popisy rozhraní API, jeho operací a parametrů. To je důležité pro lidi, kteří budou tuto funkci používat.
 
-+ Přidali jsme x-ms-summary a x-ms-visibility, které se používají v uživatelském rozhraní pro Microsoft Flow a Logic Apps. Další informace najdete v tématu [Rozšíření OpenAPI pro vlastní rozhraní API v Microsoft Flow](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/).
+* Přidali jsme x-ms-summary a x-ms-visibility, které se používají v uživatelském rozhraní pro Microsoft Flow a Logic Apps. Další informace najdete v tématu [Rozšíření OpenAPI pro vlastní rozhraní API v Microsoft Flow](https://preview.flow.microsoft.com/documentation/customapi-how-to-swagger/).
 
 > [!NOTE]
 > V definici zabezpečení jsme ponechali výchozí metodu ověřování – klíč rozhraní API. Kdybyste použili jiný typ ověřování, tuto část definice byste změnili.
@@ -265,6 +266,7 @@ V tomto případě můžete prostě vložit aktualizovaná metadata, ale je důl
 Další informace o definování operací rozhraní API najdete ve [specifikaci OpenAPI](https://swagger.io/specification/#operationObject).
 
 ## <a name="test-the-openapi-definition"></a>Test definice OpenAPI
+
 Než definici rozhraní API použijete, je vhodné ji otestovat v uživatelském rozhraní služby Azure Functions.
 
 1. Na kartě **Správa** pro vaši funkci v části **Klíče hostitele** zkopírujte **výchozí** klíč.
@@ -294,7 +296,7 @@ Než definici rozhraní API použijete, je vhodné ji otestovat v uživatelském
 
     ![Odeslání požadavku](media/functions-openapi-definition/send-request.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
@@ -305,5 +307,6 @@ V tomto kurzu jste se naučili:
 > * Otestování definice zavoláním funkce
 
 Přejděte k dalšímu tématu, kde se naučíte vytvořit aplikaci PowerApps používající definici OpenAPI, kterou jste vytvořili.
+
 > [!div class="nextstepaction"]
 > [Volání funkce z PowerApps](functions-powerapps-scenario.md)

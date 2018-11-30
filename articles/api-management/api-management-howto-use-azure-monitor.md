@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 683b77e47857e4efbe2c24425953e9a3d83177f9
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 8b95c311cd91ab6db84fb6640be5b6c1a6c0a9a5
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418838"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52443113"
 ---
 # <a name="monitor-published-apis"></a>Monitorování publikovaných rozhraní API
 
@@ -42,6 +42,8 @@ Následující video ukazuje, jak pomocí služby Azure Monitor monitorovat slu�
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Projděte si následující rychlý start: [Vytvoření instance Azure API Managementu](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="view-metrics-of-your-apis"></a>Zobrazení metrik vašich rozhraní API
 
@@ -177,7 +179,7 @@ API Management v současné době poskytuje diagnostické protokoly (dávkované
 | time | date-time | Časové razítko přijetí požadavku HTTP v bráně. |
 | operationName | řetězec | Konstantní hodnota Microsoft.ApiManagement/GatewayLogs. |
 | category | řetězec | Konstantní hodnota GatewayLogs. |
-| durationMs | celé číslo | Počet milisekund od chvíle, kdy brána přijala požadavek, do chvíle odeslání úplné odpovědi. |
+| durationMs | integer | Počet milisekund od chvíle, kdy brána přijala požadavek, do chvíle odeslání úplné odpovědi. |
 | callerIpAddress | řetězec | IP adresa bezprostředního volajícího brány (může být prostředníkem). |
 | correlationId | řetězec | Jedinečný identifikátor požadavku HTTP přiřazený službou API Management. |
 | location | řetězec | Název oblasti Azure, ve které se nachází brána, která požadavek zpracovala. |
@@ -190,14 +192,14 @@ API Management v současné době poskytuje diagnostické protokoly (dávkované
 | responseCode | celé číslo | Stavový kód odpovědi HTTP odeslané do klienta. |
 | backendMethod | řetězec | Metoda HTTP požadavku odeslaného do back-endu. |
 | backendUrl | řetězec | Adresa URL požadavku odeslaného do back-endu. |
-| backendResponseCode | celé číslo | Kód odpovědi HTTP přijaté z back-endu. |
+| backendResponseCode | integer | Kód odpovědi HTTP přijaté z back-endu. |
 | backendProtocol | řetězec | Verze protokolu HTTP požadavku odeslaného do back-endu. | 
 | requestSize | celé číslo | Počet bajtů přijatých z klienta během zpracování požadavku. | 
 | responseSize | celé číslo | Počet bajtů odeslaných do klienta během zpracování požadavku. | 
 | cache | řetězec | Stav zapojení mezipaměti služby API Management ve zpracování požadavku (tj. úspěšný přístup, neúspěšný přístup, žádné). | 
-| cacheTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích mezipaměti služby API Management (připojování, odesílání a příjem bajtů). | 
-| backendTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích back-endu (připojování, odesílání a příjem bajtů). | 
-| clientTime | celé číslo | Počet milisekund strávený na všech vstupně-výstupních operacích klienta (připojování, odesílání a příjem bajtů). | 
+| cacheTime | integer | Počet milisekund strávený na všech vstupně-výstupních operacích mezipaměti služby API Management (připojování, odesílání a příjem bajtů). | 
+| backendTime | integer | Počet milisekund strávený na všech vstupně-výstupních operacích back-endu (připojování, odesílání a příjem bajtů). | 
+| clientTime | integer | Počet milisekund strávený na všech vstupně-výstupních operacích klienta (připojování, odesílání a příjem bajtů). | 
 | apiId | řetězec | Identifikátor entity rozhraní API pro aktuální požadavek. | 
 | operationId | řetězec | Identifikátor entity operace pro aktuální požadavek. | 
 | productId | řetězec | Identifikátor entity produktu pro aktuální požadavek. | 
@@ -205,14 +207,14 @@ API Management v současné době poskytuje diagnostické protokoly (dávkované
 | apimSubscriptionId | řetězec | Identifikátor entity předplatného pro aktuální požadavek. | 
 | backendId | řetězec | Identifikátor entity back-endu pro aktuální požadavek. | 
 | LastError | objekt | Poslední chyba zpracování požadavku. | 
-| elapsed | celé číslo | Počet milisekund, které uplynuly od přijetí požadavku bránou do chvíle, kdy došlo k chybě. | 
+| elapsed | integer | Počet milisekund, které uplynuly od přijetí požadavku bránou do chvíle, kdy došlo k chybě. | 
 | source | řetězec | Název zásady nebo interní obslužné rutiny zpracování, která způsobila chybu. | 
 | scope | řetězec | Obor dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | section | řetězec | Část dokumentu zásad obsahující zásadu, která způsobila chybu. | 
 | reason | řetězec | Důvod chyby | 
 | zpráva | řetězec | Chybová zpráva | 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

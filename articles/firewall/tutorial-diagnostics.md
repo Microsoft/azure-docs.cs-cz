@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
-ms.translationtype: HT
+ms.openlocfilehash: 1354faad4abf9a8a4b56414628d39d9a6f90d721
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987424"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52426163"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Kurz: Monitorování protokolů a metrik brány Azure Firewall
 
 Bránu Azure Firewall můžete monitorovat pomocí protokolů brány firewall. K auditu operací na prostředcích brány Azure Firewall můžete také použít protokoly aktivit. Pomocí metrik můžete zobrazit čítače výkonu na portálu. 
 
-Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly můžete odeslat do služeb [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Storage a Event Hubs a analyzovat je můžete ve službě Log Analytics nebo jinými nástroji, jako je Excel nebo Power BI.
+Některé z těchto protokolů jsou přístupné z webu Azure Portal. Protokoly můžete odeslat do služeb [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Storage a Event Hubs a analyzovat je můžete ve službě Log Analytics nebo jinými nástroji, jako je Excel nebo Power BI.
 
 V tomto kurzu se naučíte:
 
@@ -94,7 +94,7 @@ Data protokolu aktivit si můžete zobrazit použitím jedné z následujících
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>Zobrazení a analyzování protokolů pravidel sítě a aplikace
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) shromažďuje soubory protokolů čítačů a událostí. Zahrnuje vizualizace a výkonné vyhledávací funkce k analýze protokolů.
+Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) shromažďuje soubory protokolů čítačů a událostí. Zahrnuje vizualizace a výkonné vyhledávací funkce k analýze protokolů.
 
 Ukázkové dotazy Log Analytics pro službu Azure Firewall najdete v [ukázkách Log Analytics pro Azure Firewall](log-analytics-samples.md).
 
@@ -106,12 +106,12 @@ Můžete se také připojit k účtu úložiště a načíst položky protokolu 
 ## <a name="view-metrics"></a>Zobrazit metriky
 Přejděte k bráně Azure Firewall a v části **Sledování** klikněte na **Metriky**. Chcete-li zobrazit dostupné hodnoty, vyberte rozevírací seznam **METRIKA**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Když jste nakonfigurovali bránu firewall, aby shromažďovala protokoly, můžete teď prozkoumat službu Log Analytics a zobrazit si svá data.
 
 > [!div class="nextstepaction"]
-> [Síťová řešení monitorování v Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)
+> [Síťová řešení monitorování v Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

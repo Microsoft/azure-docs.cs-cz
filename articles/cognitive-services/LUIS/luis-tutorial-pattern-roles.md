@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: dd73ca876385cf81059228088f7b027f533315eb
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: d13d77fdb741f7f7cf16e3d25c755f4363e56f93
+ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277832"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52427484"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>Kurz 4: Extrakce vzorů souvisejících s kontextem
 
@@ -49,7 +49,7 @@ Pokud máte potíže s určováním jednoduché entity, protože jde o název, n
 > * Vytvořit seznam frází měst
 > * Zjistit záměry a entity z koncového bodu
 
-[!INCLUDE[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="use-existing-app"></a>Použití existující aplikace
 Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
@@ -64,7 +64,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
 ## <a name="create-new-entities"></a>Tvorba nových entit
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. V levé navigaci vyberte **Entities** (Entity). 
 
@@ -254,7 +254,7 @@ Názvy měst jsou, stejně jako jména lidí, nevypočitatelné. Můžou obsahov
 
 ## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entit z koncového bodu
 
-1. [!INCLUDE[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Na konec adresy URL zadejte `Move wayne berry from miami to mount vernon`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
@@ -387,7 +387,7 @@ Další informace najdete v tématu věnovaném [porovnání rolí a hierarchick
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento kurz přidal entitu s rolemi a záměr s ukázkovými promluvami. První predikce koncového bodu za použití entity správně predikovala záměr, ale s nízkým skóre sebejistoty. Detekovala se jen jedna entita ze dvou. Tento kurz dále přidal vzor, který použil role entity a seznam frází ke zvýšení hodnoty názvů měst v promluvách. Druhá predikce koncového bodu vrátila vysoké skóre sebejistoty a našla obě role entity. 
 
