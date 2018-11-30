@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 2c931ebd2d415b3423f1de16462e2c780f59b8d8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 8beabfb8c77d4d62b9b15dca8ae3146c34c3b20a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406953"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634808"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>Rychlý start: Odesílání a přijímání zpráv pomocí Azure CLI a Javy
 
@@ -57,7 +57,7 @@ az servicebus queue create --resource-group myResourceGroup \
 # Get the connection string for the namespace
 connectionString=$(az servicebus namespace authorization-rule keys list \
    --resource-group myResourceGroup \
-   --namespace-name  $namespaceName \
+   --namespace-name $namespaceName \
    --name RootManageSharedAccessKey \
    --query primaryConnectionString --output tsv)
 ```
@@ -261,7 +261,7 @@ void registerReceiver(QueueClient queueClient) throws Exception {
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste vytvořil obor názvů služby Service Bus a další prostředky potřebné k odesílání a přijímání zpráv z fronty. Další informace o psaní kódu souvisejícího s odesíláním a přijímáním zpráv získáte, když budete pokračovat následujícím kurzem služby Service Bus:
 

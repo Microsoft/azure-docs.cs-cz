@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: cwatson
-ms.openlocfilehash: 9b30e5a47b49b707c9efc53add9af44502201641
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: c5b41d86133bbcafcc61423b4d60e59846edc2f2
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273671"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580911"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Vysvětlení podmínek vašeho Microsoft Azure podrobných poplatků za využití 
 
@@ -88,5 +88,6 @@ Pokud v souboru podrobné informace o využití, která chcete podrobnosti na po
 ## <a name="external"></a>A co poplatků za externí služby?
 Externí služby (označované také jako Marketplace objednávky) jsou k dispozici služba nezávislá dodavatelé a služby se účtují zvlášť. Poplatky se nezobrazují na faktuře Azure. Další informace najdete v tématu [vysvětlení Azure poplatků za externí služby](billing-understand-your-azure-marketplace-charges.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?) pro rychlé vyřešení problému.
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

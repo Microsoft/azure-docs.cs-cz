@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 1472e6cf05485b942c93f632c147fcb0b0311c61
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 87ceb682f35626c5bf468afd83a2f4a35901ef2b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828209"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632343"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
-Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../../log-analytics/log-analytics-data-sources.md) na agentech a také [shromažďovat data z Azure](../../log-analytics/log-analytics-azure-storage.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
+Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) na agentech a také [shromažďovat data z Azure](../../log-analytics/log-analytics-azure-storage.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
 
 Tento kurz vás provede procesem vytvoření a plánování runbooku ve službě Azure Automation k zápisu dat do Log Analytics.
 
@@ -212,7 +212,7 @@ Při každém spuštění sady runbook [se vytvoří úloha](../../automation/au
 
 
 ## <a name="next-steps"></a>Další postup
-- Použití [Návrhář zobrazení](../../log-analytics/log-analytics-view-designer.md) vytvořit zobrazení, zobrazení dat shromážděných v úložišti Log Analytics.
+- Použití [Návrhář zobrazení](../../azure-monitor/platform/view-designer.md) vytvořit zobrazení, zobrazení dat shromážděných v úložišti Log Analytics.
 - Vaše sada runbook v balíčku [řešení pro správu](../../azure-monitor/insights/solutions-creating.md) distribuovat zákazníkům.
 - Další informace o [Log Analytics](https://docs.microsoft.com/azure/log-analytics/).
 - Další informace o [Azure Automation](https://docs.microsoft.com/azure/automation/).

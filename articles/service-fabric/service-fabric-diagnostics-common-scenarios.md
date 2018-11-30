@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 35d1fa5f8963d007b1d8b59ccf0f1dec7abafa09
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 146ea6431516f7b78d23cd4b36aff43110639e83
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402229"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633091"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnostikovat běžné scénáře s využitím Service Fabric
 
@@ -142,6 +142,6 @@ Zkontrolujte tyto odkazy pro úplný seznam čítačů výkonu na spolehlivé [s
 * [Nastavte si upozornění v umělé Inteligenci](../application-insights/app-insights-alerts.md) abyste dostávali oznámení o změny ve výkonu a využití
 * [Inteligentní zjišťování ve službě Application Insights](../application-insights/app-insights-proactive-diagnostics.md) provádí proaktivní analýzu telemetrických dat odesílaných do AI upozornit vás na potenciální problémy s výkonem
 * Další informace o službě Log Analytics [upozorňování](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika.
-* Log Analytics nabízí místními clustery brány (dopředu proxy server HTTP), který slouží k odesílání dat do Log Analytics. Další informace o, že v [počítače bez připojení k Internetu připojení ke službě Log Analytics pomocí brány Log Analytics](../log-analytics/log-analytics-oms-gateway.md)
+* Log Analytics nabízí místními clustery brány (dopředu proxy server HTTP), který slouží k odesílání dat do Log Analytics. Další informace o, že v [počítače bez připojení k Internetu připojení ke službě Log Analytics pomocí brány Log Analytics](../azure-monitor/platform/gateway.md)
 * Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízená v rámci služby Log Analytics
 * Získejte podrobnější přehled o Log Analytics a navíc nabízejí, přečtěte si [co je služba Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)

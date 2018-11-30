@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 39db03170d6a9c9d481b1448b54bdbd52e205921
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 85bd9e93fbd4c5ab5c0d2388d19334bc2cd3cb9e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037291"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497521"
 ---
-# <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analýza dat Twitteru pomocí Hivu ve službě HDInsight
+# <a name="analyze-twitter-data-using-apache-hive-in-hdinsight"></a>Analýza dat Twitteru pomocí Apache Hive v HDInsight
 Sociální weby jsou jedním z hlavních dodávala vynutí pro velké objemy dat přijetí. Veřejné rozhraní API pomocí Twitteru, jako jsou k dispozici jsou užitečné zdroje dat pro analýzu a pochopení trendů Oblíbené.
-V tomto kurzu bude dostávat tweety pomocí Twitteru streamovacího rozhraní API a pak pomocí Apache Hive v Azure HDInsight získat seznam uživatelů Twitteru, kteří odeslané většina tweety, které obsahovala určité slovo.
+V tomto kurzu dostávat tweety pomocí Twitteru streamovacího rozhraní API a pak použít [Apache Hive](https://hive.apache.org/) v Azure HDInsight získat seznam uživatelů Twitteru, kteří odeslané nejvíce tweety, které určitým slovem.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Konkrétní kroky do clusteru se systémem Linux najdete v tématu [analýza Twitteru dat pomocí Hivu ve službě HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Konkrétní kroky do clusteru se systémem Linux najdete v tématu [analýza Twitteru dat pomocí Apache Hive v HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
@@ -243,7 +243,7 @@ V tomto kurzu použijete prostředí Windows PowerShell provádět volání webo
 Jako postup ověření, můžete zkontrolovat soubor výstup **/tutorials/twitter/data/tweets.txt**, ve vašem úložišti objektů Blob v Azure pomocí Průzkumníka služby Azure storage nebo Azure Powershellu. Ukázkový skript prostředí Windows PowerShell pro zobrazení seznamu souborů, najdete v části [použití Blob storage s HDInsight][hdinsight-storage-powershell].
 
 ## <a name="create-hiveql-script"></a>Vytvořte skript HiveQL
-Pomocí Azure Powershellu, můžete spustit více příkazy HiveQL jeden po druhém nebo balíček příkaz HiveQL do souboru skriptu. V tomto kurzu vytvoříte skript HiveQL. Soubor skriptu musí být odeslán do služby Azure Blob storage. V další části se spustí soubor skriptu pomocí Azure Powershellu.
+Pomocí Azure Powershellu, můžete spustit více [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) příkazy jeden čas nebo balíček příkaz HiveQL do souboru skriptu. V tomto kurzu vytvoříte skript HiveQL. Soubor skriptu musí být odeslán do služby Azure Blob storage. V další části se spustí soubor skriptu pomocí Azure Powershellu.
 
 > [!NOTE]
 > Soubor skriptu Hive a soubor, který obsahuje 10 000 tweety se nahrály do veřejného kontejneru objektů Blob. Pokud chcete použít nahraných souborů, můžete tuto část přeskočit.
@@ -454,7 +454,7 @@ Dokončili jste všechny přípravné kroky. Nyní jste vyvolání skriptu Hivu 
 Pomocí následujícího skriptu prostředí Windows PowerShell pro spuštění skriptu Hive. Budete muset nastavit první proměnné.
 
 > [!NOTE]
-> Pokud chcete použít v posledních dvou částech tweety a skript HiveQL jste nahráli, nastavte $hqlScriptFile "/ tutorials/twitter/twitter.hql". Pokud chcete použít ty, které byly nahrány do veřejných objektů blob za vás, nastavte $hqlScriptFile "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql".
+> Používat tweetech a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) skript, který jste nahráli v posledních dvou oddílech, nastavte $hqlScriptFile na "/ tutorials/twitter/twitter.hql". Pokud chcete použít ty, které byly nahrány do veřejných objektů blob za vás, nastavte $hqlScriptFile "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql".
 
 ```powershell
 #region variables and constants
@@ -532,16 +532,16 @@ Write-Host "==================================" -ForegroundColor Green
 > [!NOTE]
 > V tabulce Hive \001 používá jako oddělovač. Oddělovač není ve výstupu.
 
-Po výsledky analýzy byly umístěny do úložiště objektů Blob v Azure, můžete exportovat data do serveru Azure SQL database a SQL, exportovat data do aplikace Excel pomocí doplňku Power Query nebo připojení aplikace k datům pomocí ovladače ODBC Hive. Další informace najdete v tématu [Sqoop použití s HDInsight][hdinsight-use-sqoop], [analyzovat zpoždění letů pomocí HDInsight][hdinsight-analyze-flight-delay-data], [ Připojení Excelu k HDInsight pomocí Power Query][hdinsight-power-query], a [připojení Excelu k HDInsight pomocí ovladače ODBC Microsoft Hivu][hdinsight-hive-odbc].
+Po výsledky analýzy byly umístěny do úložiště objektů Blob v Azure, můžete exportovat data do serveru Azure SQL database a SQL, exportovat data do aplikace Excel pomocí doplňku Power Query nebo připojení aplikace k datům pomocí ovladače ODBC Hive. Další informace najdete v tématu [použití Apache Sqoop s HDInsight][hdinsight-use-sqoop], [analyzovat zpoždění letů pomocí HDInsight][hdinsight-analyze-flight-delay-data], [ Připojení Excelu k HDInsight pomocí Power Query][hdinsight-power-query], a [připojení Excelu k HDInsight pomocí ovladače ODBC Microsoft Hivu][hdinsight-hive-odbc].
 
 ## <a name="next-steps"></a>Další postup
-V tomto kurzu jsme viděli, jak transformovat nestrukturované datové sady JSON na tabulku Hive strukturovaných dotazů, zkoumat a analyzovat data z Twitteru s využitím HDInsight v Azure. Další informace naleznete v tématu:
+V tomto kurzu jsme viděli, jak transformovat nestrukturované datové sady JSON do strukturovaného tabulky Apache Hive k dotazování, zkoumat a analyzovat data z Twitteru s využitím HDInsight v Azure. Další informace naleznete v tématu:
 
 * [Začínáme s HDInsight][hdinsight-get-started]
 * [Analýza zpoždění letů pomocí HDInsight][hdinsight-analyze-flight-delay-data]
 * [Připojení Excelu k HDInsight pomocí Power Query][hdinsight-power-query]
 * [Připojení Excelu k HDInsight pomocí ovladače ODBC Microsoft Hivu][hdinsight-hive-odbc]
-* [Použití Sqoopu se službou HDInsight][hdinsight-use-sqoop]
+* [Použití Apache Sqoop s HDInsight][hdinsight-use-sqoop]
 
 [curl]: http://curl.haxx.se
 [curl-download]: http://curl.haxx.se/download.html

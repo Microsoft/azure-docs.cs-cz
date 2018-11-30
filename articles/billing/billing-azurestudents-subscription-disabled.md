@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 03/01/2018
 ms.author: cwatson
 ROBOTS: NOINDEX
-ms.openlocfilehash: d7bf1d06c598dd7e548c109f68d0996c0be2b6b8
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c8d78d51425ea5a5fc2f3b326710b3c2ad5a6a06
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391364"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581828"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Proč se Moje předplatné Azure for Students zakázána a jak ho znovu?
 
@@ -57,6 +57,6 @@ Na konci 12 měsíců vyprší platnost vašeho kreditu Azure for Students. Po v
 
 Pokud se omylem jste zrušili vaše předplatné Azure for Students, můžete je aktivovat kontaktováním [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Jakmile aktivujete, máte stále přístup k zbývající kredit a bezplatné služby po dobu 12 měsíců od registrace data.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

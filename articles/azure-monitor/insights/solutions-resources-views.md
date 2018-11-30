@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: f00c11881da7624809b1253361c17285666d9ba3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 97e499612082d0d58cd75bb9f8854b8c4e0f669e
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715191"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635760"
 ---
 # <a name="views-in-management-solutions-preview"></a>Zobrazení v řešení pro správu (Preview)
 > [!NOTE]
 > Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.    
 
 
-[Řešení pro správu](solutions.md) bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené [Návrhář zobrazení](../../log-analytics/log-analytics-view-designer.md) a zahrnout do řešení pro správu.  
+[Řešení pro správu](solutions.md) bude obvykle obsahovat jedno nebo více zobrazení, která bude vizualizovat data.  Tento článek popisuje, jak exportovat zobrazení vytvořené [Návrhář zobrazení](../../azure-monitor/platform/view-designer.md) a zahrnout do řešení pro správu.  
 
 > [!NOTE]
 > Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure](solutions-creating.md)
@@ -37,7 +37,7 @@ ms.locfileid: "51715191"
 Tento článek předpokládá, že jste již obeznámeni s postupy [vytvořte řešení pro správu](solutions-creating.md) a struktura souboru řešení.
 
 ## <a name="overview"></a>Přehled
-V rámci řešení pro správu zahrnují zobrazení, vytvoření **prostředků** pro něj v [soubor řešení](solutions-creating.md).  Ve formátu JSON, který popisuje podrobnou konfiguraci zobrazení je obvykle složitý ale a nemít něco, že autor typické řešení budou moct vytvořit ručně.  Nejběžnější metodou je vytvořte pomocí zobrazení [Návrhář zobrazení](../../log-analytics/log-analytics-view-designer.md), exportujte ho a pak přidejte jeho podrobnou konfiguraci řešení.
+V rámci řešení pro správu zahrnují zobrazení, vytvoření **prostředků** pro něj v [soubor řešení](solutions-creating.md).  Ve formátu JSON, který popisuje podrobnou konfiguraci zobrazení je obvykle složitý ale a nemít něco, že autor typické řešení budou moct vytvořit ručně.  Nejběžnější metodou je vytvořte pomocí zobrazení [Návrhář zobrazení](../../azure-monitor/platform/view-designer.md), exportujte ho a pak přidejte jeho podrobnou konfiguraci řešení.
 
 Základní postup pro přidání do řešení zobrazení jsou následující.  Každý krok je podrobně popsán dále v následujících částech.
 
@@ -46,7 +46,7 @@ Základní postup pro přidání do řešení zobrazení jsou následující.  K
 3. Přidáním podrobností o zobrazení.
 
 ## <a name="export-the-view-to-a-file"></a>Zobrazení exportovat do souboru
-Postupujte podle pokynů na adrese [Návrhář zobrazení Log Analytics](../../log-analytics/log-analytics-view-designer.md) zobrazení export do souboru.  Exportovaný soubor bude ve formátu JSON se stejným [prvky jako soubor řešení](solutions-solution-file.md).  
+Postupujte podle pokynů na adrese [Návrhář zobrazení Log Analytics](../../azure-monitor/platform/view-designer.md) zobrazení export do souboru.  Exportovaný soubor bude ve formátu JSON se stejným [prvky jako soubor řešení](solutions-solution-file.md).  
 
 **Prostředky** element zobrazit soubor bude mít prostředek typu **Microsoft.OperationalInsights/workspaces** , která představuje pracovní prostor Log Analytics.  Tento element bude mít dílčí element typu **zobrazení** , který představuje zobrazení a obsahuje jeho podrobnou konfiguraci.  Bude kopírovat podrobnosti tohoto elementu a zkopírujte je do vašeho řešení.
 

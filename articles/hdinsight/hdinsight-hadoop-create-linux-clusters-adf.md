@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 76651874951255d9b01efdc6e91892f6852d948d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 1e55da981daf29aca491c480d58f399bc681fd27
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036372"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499546"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytvoření clusterů na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-V tomto článku se dozvíte, jak vytvořit cluster Apache Hadoop na vyžádání v Azure HDInsight pomocí Azure Data Factory. Pak použijete datové kanály ve službě Azure Data Factory ke spuštění úlohy Hive a cluster odstranit. Na konci tohoto kurzu se dozvíte, jak pro zprovoznění úlohu velké objemy dat spouštět, kde se vytvoření clusteru, spuštění úlohy a odstranění clusteru provádět podle plánu.
+V tomto článku se dozvíte, jak vytvořit [Apache Hadoop](https://hadoop.apache.org/) clusteru na vyžádání v Azure HDInsight pomocí Azure Data Factory. Pak použijete datové kanály ve službě Azure Data Factory ke spuštění úlohy Hive a cluster odstranit. Na konci tohoto kurzu se dozvíte, jak pro zprovoznění úlohu velké objemy dat spouštět, kde se vytvoření clusteru, spuštění úlohy a odstranění clusteru provádět podle plánu.
 
 Tento kurz se zabývá následujícími úkony: 
 
@@ -43,7 +43,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
-V této části vytvoříte účet úložiště, který se použije jako výchozí úložiště pro cluster HDInsight, které vytvoříte na vyžádání. Tento účet úložiště obsahuje také vzorový skript HiveQL (**hivescript.hql**), který používáte pro simulaci ukázkové úlohy Hive, která běží na clusteru.
+V této části vytvoříte účet úložiště, který se použije jako výchozí úložiště pro cluster HDInsight, které vytvoříte na vyžádání. Tento účet úložiště obsahuje také ukázky [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) skriptu (**hivescript.hql**), který používáte k simulaci ukázku [Apache Hive](https://hive.apache.org/) úlohu, která běží v clusteru.
 
 Tato část používá skript Azure Powershellu k vytvoření účtu úložiště a zkopírujte požadované soubory v rámci účtu úložiště. Ukázkový skript Azure Powershellu v této části provádí následující úlohy:
 
@@ -338,7 +338,7 @@ Alternativně můžete odstranit celou skupinu prostředků, kterou jste vytvoř
 
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak používat Azure Data Factory k vytvoření clusteru HDInsight na vyžádání a spouštět úlohy Hive. Přejděte k další artciel informace o vytváření clusterů HDInsight s vlastní konfigurací.
+V tomto článku jste zjistili, jak pomocí Azure Data Factory k vytvoření clusteru HDInsight na vyžádání a spusťte [Apache Hive](https://hive.apache.org/) úlohy. Přejděte k další artciel informace o vytváření clusterů HDInsight s vlastní konfigurací.
 
 > [!div class="nextstepaction"]
 >[Vytvoření clusterů Azure HDInsight s vlastní konfigurací](hdinsight-hadoop-provision-linux-clusters.md)

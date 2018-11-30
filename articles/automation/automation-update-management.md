@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/05/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a2678db223fc26a377de8daa79b85a9b8cda7a02
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: caa1b6f31325cd67aad106f7829bd32a5e7aeb53
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284944"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635811"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -69,7 +69,7 @@ Následující tabulka uvádí seznam podporovaných operačních systémů:
 |Operační systém  |Poznámky  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Podporuje pouze aktualizovat posouzení.         |
-|Windows Server 2008 R2 SP1 a novější     |Rozhraní .NET framework 4.5.1 nebo novější je povinný. ([Stáhnout rozhraní .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Vyžaduje se Windows PowerShell 4.0 nebo novější. ([Stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 se doporučuje pro zvýšení spolehlivosti.  ([Stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 a novější (včetně Windows serveru 2012 a 2016)    |Rozhraní .NET framework 4.5.1 nebo novější je povinný. ([Stáhnout rozhraní .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Vyžaduje se Windows PowerShell 4.0 nebo novější. ([Stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> Windows PowerShell 5.1 se doporučuje pro zvýšení spolehlivosti.  ([Stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Podle klasifikace opravy vyžaduje "yumu" vrátit data zabezpečení, které CentOS nemá úprav.         |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
@@ -88,7 +88,7 @@ Následující tabulka uvádí operační systémy, které nejsou podporovány:
 
 #### <a name="windows"></a>Windows
 
-Agenti Windows musí být nakonfigurován pro komunikaci se serverem WSUS nebo musí mít přístup ke službě Microsoft Update. Update Management můžete použít s nástrojem System Center Configuration Manager. Další informace o scénářích integrace najdete v tématu [integrace System Center Configuration Manager s Update managementem](oms-solution-updatemgmt-sccmintegration.md#configuration). [Agenta Windows](../log-analytics/log-analytics-agent-windows.md) je povinný. Agent se nainstaluje automaticky, pokud jste připojení virtuálního počítače Azure.
+Agenti Windows musí být nakonfigurován pro komunikaci se serverem WSUS nebo musí mít přístup ke službě Microsoft Update. Update Management můžete použít s nástrojem System Center Configuration Manager. Další informace o scénářích integrace najdete v tématu [integrace System Center Configuration Manager s Update managementem](oms-solution-updatemgmt-sccmintegration.md#configuration). [Agenta Windows](../azure-monitor/platform/agent-windows.md) je povinný. Agent se nainstaluje automaticky, pokud jste připojení virtuálního počítače Azure.
 
 #### <a name="linux"></a>Linux
 
@@ -148,7 +148,7 @@ Na počítači s Windows můžete zkontrolovat následující informace, chcete-
 1. V Ovládacích panelech otevřete **agenta Microsoft Monitoring Agent**. Na **Azure Log Analytics** agenta na kartě se zobrazí následující zpráva: **agenta Microsoft Monitoring Agent se úspěšně připojila k Log Analytics**.
 2. Otevřete protokol událostí Windows. Přejděte na **Application and Services Logs\Operations Manager** a vyhledejte ID události 3000 a 5002 ID události ze zdroje **konektoru služby**. Tyto události značí, že počítač je zaregistrovaná s pracovním prostorem Log Analytics a přijímá konfiguraci.
 
-Pokud agent nemůže komunikovat s Log Analytics a agent je nakonfigurován pro komunikaci s Internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Zjistěte, jak ověřit, zda je správně nakonfigurována brána firewall nebo proxy server, najdete v článku [konfiguraci sítě pro agenta Windows](../log-analytics/log-analytics-agent-windows.md) nebo [konfigurace sítě pro linuxového agenta](../log-analytics/log-analytics-agent-linux.md).
+Pokud agent nemůže komunikovat s Log Analytics a agent je nakonfigurován pro komunikaci s Internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Zjistěte, jak ověřit, zda je správně nakonfigurována brána firewall nebo proxy server, najdete v článku [konfiguraci sítě pro agenta Windows](../azure-monitor/platform/agent-windows.md) nebo [konfigurace sítě pro linuxového agenta](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
 > Pokud jsou vaše Linuxové systémy nakonfigurován pro komunikaci pomocí serveru proxy nebo brány Log Analytics a připojujete toto řešení, aktualizace *proxy.conf* oprávnění udělit skupině omiuser udělili oprávnění ho číst pomocí Následující příkazy:
@@ -583,6 +583,6 @@ Pokračujte ke kurzu se naučíte spravovat aktualizace pro virtuální počíta
 > [Správa aktualizací a oprav pro virtuální počítače Azure s Windows](automation-tutorial-update-management.md)
 
 * Použijte hledání v protokolu [Log Analytics](../log-analytics/log-analytics-log-searches.md) k zobrazení podrobných údajů o aktualizaci.
-* [Vytvořit upozornění](../log-analytics/log-analytics-alerts.md) při důležité aktualizace jsou rozpoznány jako chybějící z počítačů nebo pokud má počítač zakázané automatické aktualizace.
+* [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-alerts.md) při důležité aktualizace jsou rozpoznány jako chybějící z počítačů nebo pokud má počítač zakázané automatické aktualizace.
 
 * Zjistěte, jak pracovat s Update managementem přes rozhraní REST API, najdete v článku [konfigurace aktualizace softwaru](/rest/api/automation/softwareupdateconfigurations)

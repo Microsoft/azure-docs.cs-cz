@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 669e597424ae936dda59564ad072ac7d77107321
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 584342b3dd223c45495db36ad49d83dece858137
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276152"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581778"
 ---
 # <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Žádné předplatné Nenalezeno chyby v portálu Azure portal nebo v centru účtů Azure
 
@@ -53,6 +53,6 @@ Zkontrolujte, zda je účet, který jste použili účet správce. Pokud chcete 
 1. Vyberte předplatné, které chcete zkontrolovat a pak hledejte v části **nastavení**.
 1. Vyberte **vlastnosti**. Správce účtu předplatného se zobrazí v **správce účtu** pole.  
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) pro rychlé vyřešení problému. 
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 5522b076fdf3d4e339f5e170679f389259ff1359
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: ce9b3df5093d51eac0a151269b486b5f1310700c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713125"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584855"
 ---
 # <a name="speech-service-rest-apis"></a>Speech Service REST API
 
@@ -286,7 +286,7 @@ Zvuk se poslala v těle HTTP `POST` požadavku. Musí být v jednom z formátů,
 | OGG | DÍLE | 16 bitů | 16 kHz, mono |
 
 >[!NOTE]
->Výše uvedené formáty jsou podporované prostřednictvím rozhraní REST API a objektu websocket na straně služby řeči. [Sadou SDK pro řeč](/index.yml) aktuálně podporuje jenom WAV naformátuje PCM kodek.
+>Výše uvedené formáty jsou podporované prostřednictvím rozhraní REST API a objektu websocket na straně služby řeči. [Sadou SDK pro řeč](speech-sdk.md) aktuálně podporuje jenom WAV naformátuje PCM kodek.
 
 ### <a name="sample-request"></a>Ukázková žádost
 
@@ -433,8 +433,8 @@ Speech Service podporuje výstupní zvuková 24 KHz, spolu s 16 Khz výstupy, kt
 
 | Národní prostředí | Jazyk   | Pohlaví | Mapování |
 |--------|------------|--------|---------|
-| cs-CZ  | Jazykovou verzi US English | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" |
-| cs-CZ  | Jazykovou verzi US English | Muž   | "Microsoft serveru řeči Text na řeč hlas (en US, Guy24kRUS)" |
+| en-US  | Jazykovou verzi US English | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" |
+| en-US  | Jazykovou verzi US English | Muž   | "Microsoft serveru řeči Text na řeč hlas (en US, Guy24kRUS)" |
 
 Zobrazit úplný seznam dostupných hlasů [podporované jazyky](language-support.md#text-to-speech).
 

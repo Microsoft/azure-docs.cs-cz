@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 97d99aa59c490cf2dcdd4a69f32411a051942d36
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 9e9ccb1ba3d19e0240df869dfea1e27ac4124c34
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037800"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498765"
 ---
 # <a name="install-published-application---datameer"></a>Instalace publikované aplikace – Datameer
 
-Tento článek popisuje, jak nainstalovat a spustit [Datameer](https://www.datameer.com/) publikovat aplikace Apache Hadoop v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
+Tento článek popisuje, jak nainstalovat a spustit [Datameer](https://www.datameer.com/) publikované [Apache Hadoop](https://hadoop.apache.org/) aplikaci v Azure HDInsight. Přehled aplikační platforma HDInsight a seznam z dostupných nezávislý výrobce softwaru (ISV) publikované aplikace, najdete v části [instalovat aplikace jiných výrobců Apache Hadoop](hdinsight-apps-install-applications.md). Pokyny pro instalaci vašich vlastních aplikací najdete v článku [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).
 
 ## <a name="about-datameer"></a>O Datameer
 
@@ -34,7 +34,7 @@ K instalaci této aplikace na nový cluster HDInsight nebo stávajícího cluste
 
 ## <a name="install-the-datameer-published-application"></a>Instalace Datameer publikované aplikace
 
-Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých výrobců softwaru, přečtěte si [instalace aplikací Hadoop jiných výrobců](hdinsight-apps-install-applications.md).
+Podrobné pokyny k instalaci Tato a další dostupné aplikace nezávislých výrobců softwaru, přečtěte si [instalovat aplikace jiných výrobců Apache Hadoop](hdinsight-apps-install-applications.md).
 
 ## <a name="launch-datameer"></a>Spuštění Datameer
 

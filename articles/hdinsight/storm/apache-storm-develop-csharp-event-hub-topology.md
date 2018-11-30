@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0eb283eda04d4123e0c05d2c48663a5aca88ebc4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 027c8155c84959ca429eb9b093a155ac22aaf324
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249553"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582204"
 ---
-# <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs se Stormem v HDInsight (C#)
+# <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs pomocí Apache Storm v HDInsight (C#)
 
-Zjistěte, jak pracovat s Azure Event Hubs v Apache Storm v HDInsight. Tento dokument topologie Storm v jazyce C# používá ke čtení a zápisu dat ze služby Event Hubs
+Zjistěte, jak pracovat s Azure Event Hubs z [Apache Storm](http://storm.apache.org/) v HDInsight. Tento dokument topologie Storm v jazyce C# používá ke čtení a zápisu dat ze služby Event Hubs
 
 > [!NOTE]
-> Verze Javy pro tento projekt, naleznete v tématu [zpracovávat události z Azure Event Hubs se Stormem v HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
+> Verze Javy pro tento projekt, naleznete v tématu [zpracovávat události z Azure Event Hubs pomocí Apache Storm v HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/).
 
 ## <a name="scpnet"></a>SCP.NET
 
@@ -225,4 +225,4 @@ V tomto dokumentu jste se dozvěděli, jak používat Java Event Hubs spout a fu
 
 * [Vývoj topologií C# pro Apache Storm v HDInsight pomocí sady Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
 * [Průvodce programováním pro spojovací bod služby](apache-storm-scp-programming-guide.md)
-* [Příklad topologií pro Storm v HDInsight](apache-storm-example-topology.md)
+* [Příklad topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md)

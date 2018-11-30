@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: cwatson
-ms.openlocfilehash: ab0b48f8c8579af8a3314bad14dafbe79f9a9781
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 77022b442a78c8d14284e06af4f156302c1e6ffc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393736"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584396"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Vytvoření služeb zahrnutých s bezplatným účtem Azure
 
@@ -34,6 +34,6 @@ Další informace o dostupnosti služby Azure podle oblasti najdete v tématu [d
 ## <a name="multiple-instances-of-services-can-be-created-within-allowed-limits"></a>Můžete vytvořit více instancí služby v povoleném rozsahu
 Více instancí služby můžete vytvořit zdarma za předpokladu součet použití je v rámci omezení využití. Například získáte 750 hodin virtuálního počítače B1S Windows zdarma každý měsíc s bezplatným účtem Azure. V libovolné kombinaci, které chcete, můžete využít 750 hodin. Můžete například vytvořit 5 virtuální počítače B1S Windows a používat je pro 150 hodin. 
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

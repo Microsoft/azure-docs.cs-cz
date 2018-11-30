@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: qianw211
-ms.openlocfilehash: cd94f17c6f8bb8cc5bc09222d4b561eefff6b20c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 1efe65feaac6e71437958451e8c1a44027495fce
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52266833"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620009"
 ---
 # <a name="private-offers"></a>Soukromé nabídky
 
@@ -37,7 +37,7 @@ Soukromé nabídky umožňuje vydavatelům Využijte výhod škálování a glob
 
 Soukromé nabídky jsou teď k dispozici pro virtuální počítač, aplikace Azure (implementovaná jako šablony řešení nebo spravované aplikace) a nabízejí aplikace SaaS. Jako jsou nabídky veřejné, soukromé nabídky můžete vytvořit a spravovat prostřednictvím [portál partnerů cloudu](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  Zákazníci lze udělit nebo odvolat přístup k soukromé nabídky během několika minut.
 
-## <a name="creating-private-offers-using-skus-and-plans"></a>Pomocí SKU a plány vytváření soukromé nabídky
+## <a name="creating-private-offers-using-skus-and-plans"></a>Vytvoření soukromého nabízí pomocí skladové položky a plány
 
 Pro *nové nebo existující nabídek s SKU veřejné nebo plány*, vydavatelů můžete snadno vytvářet nové, privátní variace vytvořením nové skladové položky nebo plány a označit jako soukromé.  [Privátní SKU](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus) a plány jsou součástí nabídky a jsou jenom viditelné a prodejní cílové zákazníky. Privátní SKU a plány můžete znovu použít základní Image a/nebo nabízejí metadat již publikována pro veřejné SKU nebo plán. Tato možnost umožňuje vydavatelům vytvořit několik privátních variant veřejné nabídka bez nutnosti publikování několika verzí stejné základní image a nabízejí metadat. Pro virtuální počítač Azure aplikace nabídky a pouze když privátní SKU sdílí základní image veřejné SKU, se všechny změny základní image nabídky rozšíří do všechny SKU veřejné a soukromé použití této základní image.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7c06d53e3823bd81707608f566f581fa44638fc
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 2371f52591db667498398daa889ebc14708a9674
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037752"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499218"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí sady .NET SDK
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -228,7 +228,7 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 To můžete udělat také pomocí portálu. Zobrazit [Správa HDInsight pomocí webu Azure portal][hdinsight-admin-portal].
 
 ## <a name="update-http-user-credentials"></a>Aktualizace přihlašovacích údajů uživatele HTTP
-Je stejným způsobem jako [HTTP udělení nebo odvolání přístupu](#grant/revoke-access). Pokud cluster má udělen přístup protokolu HTTP, musí se nejprve odvolat.  A potom jim udělit přístup pomocí nových přihlašovacích údajů uživatele HTTP.
+Je stejným způsobem jako [HTTP udělení nebo odvolání přístupu](#grant/revoke-access).  Pokud cluster má udělen přístup protokolu HTTP, musí se nejprve odvolat.  A potom jim udělit přístup pomocí nových přihlašovacích údajů uživatele HTTP.
 
 ## <a name="find-the-default-storage-account"></a>Najít výchozí účet úložiště
 Následující fragment kódu ukazuje, jak získat výchozí název účtu úložiště a výchozí klíč účtu úložiště pro cluster.
@@ -242,25 +242,25 @@ foreach (var key in results.Configuration.Keys)
 ```
 
 ## <a name="submit-jobs"></a>Odesílání úloh
-**Odesílat úlohy MapReduce**
+**Odesílat úlohy Apache Hadoop MapReduce**
 
-Zobrazit [ukázky spouštění Hadoop MapReduce v HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
+Zobrazit [ukázky spouštění Hadoop MapReduce Apache v HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
 
 **Odesílat úlohy Apache Hive** 
 
-Zobrazit [spouštění dotazů Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
+Zobrazit [spouštění Apache dotazů Hive pomocí sady .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 
 **Odesílat úlohy Apache Pig**
 
-Zobrazit [úlohy Pig spustit pomocí sady .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
+Zobrazit [Apache Pig spuštění úlohy pomocí sady .NET SDK](hadoop/apache-hadoop-use-pig-dotnet-sdk.md).
 
 **Odesílat úlohy Apache Sqoop**
 
-Zobrazit [použití nástroje Sqoop se HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
+Zobrazit [použití Apache Sqoop s HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
 
 **Odesílat úlohy Apache Oozie**
 
-Zobrazit [použití Oozie s Hadoopem k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie-linux-mac.md).
+Zobrazit [použití Apache Oozie s Hadoopem k definování a spuštění workflowu v HDInsight](hdinsight-use-oozie-linux-mac.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Nahrání dat do úložiště objektů Blob v Azure
 Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].

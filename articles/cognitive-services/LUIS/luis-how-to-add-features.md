@@ -8,18 +8,22 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: feb51cd55801addaf5ce2486e5527542f794bbc5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830986"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580946"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Použijte frázi v seznamech boost signál seznam slov
 
 Přidání funkcí do své aplikace LUIS a zvýšit jeho přesnost. Funkce pomáhají LUIS tím, že poskytuje pomocné parametry tohoto slova a frází jsou součástí slovníku domény aplikaci. 
+
+A [seznam frází](luis-concept-feature.md) obsahuje skupinu hodnot (slova nebo fráze), která patří do stejné třídy a musí být zacházeno podobně (například názvy města nebo produkty). Služba LUIS dozvídá o jeden z nich se automaticky využije na ostatní také. Tento seznam není uzavřený seznam entit (přesný text odpovídá) z odpovídajících slov.
+
+Seznam frází přidá do slovníku domény aplikace jako druhý signál k LUIS o těchto slov.
 
 ## <a name="add-phrase-list"></a>Přidat seznam frází
 
@@ -47,9 +51,6 @@ Přidání funkcí do své aplikace LUIS a zvýšit jeho přesnost. Funkce pomá
 
 > [!Note]
 > Můžete odstranit nebo deaktivovat frázi seznamu z panelu nástrojů kontextové na **frázi seznamy** stránky.
-
-## <a name="pattern-regular-expression-feature"></a>Funkce vzorku (regulární výraz) 
-**Tato funkce je zastaralá**. Nové funkce vzor nelze přidat do služby LUIS. Všechny existující funkce vzoru jsou podporovány května 2018. Přispívat standardní LUIS porovnávání regulárních výrazů s žádostí o přijetí změn do [úložiště Github rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text). 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4e7cc47bddf3663cbc1c8bb5c4470020a84073e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 11a14bc8b593e5e7d81e9bdbd4ac4ee3b2bbecaa
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441647"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582883"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Pomocí Azure Active Directory B2C (Azure AD B2C) vlastní zásady, můžete poslat parametr v řetězci dotazu. Předáním parametru do vašeho koncového bodu ve formátu HTML můžete dynamicky měnit obsah stránky. Můžete například změnit obrázek pozadí na Azure AD B2C registrace / přihlášení ve stránce, na základě parametru, který můžete předat z vašich webových nebo mobilních aplikací. 
+Pomocí Azure Active Directory B2C (Azure AD B2C) vlastní zásady, můžete poslat parametr v řetězci dotazu. Předáním parametru do vašeho koncového bodu HTML můžete dynamicky měnit obsah stránky. Můžete například změnit obrázek pozadí na registrační nebo přihlašovací stránce Azure AD B2C na základě parametru, který předáte z vašeho webu nebo mobilní aplikace. 
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek se zaměřuje na tom, jak přizpůsobit uživatelské rozhraní Azure AD B2C s *dynamický obsah* pomocí vlastních zásad. Abyste mohli začít, najdete v článku [přizpůsobení uživatelského rozhraní ve vlastních zásadách](active-directory-b2c-ui-customization-custom.md). 
@@ -80,7 +80,7 @@ V tomto podrobném návodu můžete:
 
     ![Výběr šablony webové aplikace](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-create-project2.png)
 
-6. Vyberte **OK** pro vytvoření projektu.
+6. Vyberte **OK** a vytvořte projekt.
 
 ## <a name="step-2-create-mvc-view"></a>Krok 2: Vytvoření zobrazení MVC
 ### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2.1: Stáhněte šablonu B2C integrované HTML5
@@ -178,7 +178,7 @@ Vyhledejte `<img>` element, který obsahuje `ID` hodnotu *background_background_
 
 3. V **CORS** okno v **povolené zdroje** pole, proveďte jednu z následujících akcí:
 
-    * Zadejte adresu URL nebo adresy URL, které chcete povolit předávat volání JavaScriptu.
+    * Zadejte adresu URL nebo adresy URL, které chcete povolit předávat volání JavaScriptu. Budete muset použít jenom malá písmena. v adresách URL, které zadáte.
     * Zadejte hvězdičku (*) k určení, že se přijímají všechny zdrojové domény.
 
 4. Vyberte **Uložit**.

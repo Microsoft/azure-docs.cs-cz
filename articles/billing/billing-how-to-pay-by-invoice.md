@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 207cc6f114153bebea82bbd996b02f92782b248b
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: bea7f0e88a371474db907dd74f08bd74c0e7c9e1
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275096"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584362"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Odeslat žádost o platbu předplatného Azure na základě faktury
 
@@ -50,6 +50,6 @@ Můžete změnit způsob platby vašeho předplatného Azure na fakturu, odešle
 
 Pokud bychom někdy potřebovali provést ověřování kredibility kvůli množství kreditu, který potřebujete, pošleme vám kredit ověření. Po odeslání aplikace žádosti o kredit může trvat 5 – 7 dní ke zpracování.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

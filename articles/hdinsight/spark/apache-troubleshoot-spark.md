@@ -7,22 +7,22 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 835a56413a4274a2be2511278b4dedd7f83c54c3
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ab7602f7bae4dfb77a733dd7efe011a29b730377
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016671"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581581"
 ---
-# <a name="troubleshoot-spark-by-using-azure-hdinsight"></a>Řešení potíží s Sparku s využitím Azure HDInsight
+# <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Řešení potíží s Apache Sparku s využitím Azure HDInsight
 
-Další informace o nejčastější problémy a jejich řešení při práci s datovými částmi Apache Spark v Apache Ambari.
+Další informace o nejčastější problémy a jejich řešení při práci s [Apache Spark](https://spark.apache.org/) datové části v [Apache Ambari](https://ambari.apache.org/).
 
-## <a name="how-do-i-configure-a-spark-application-by-using-ambari-on-clusters"></a>Konfigurace aplikace Spark prostřednictvím Ambari v clusterech
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Sparku s využitím Apache Ambari v clusterech?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-Hodnoty konfigurace pro tento postup byly dříve nastavené v HDInsight. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception). 
+Hodnoty konfigurace pro tento postup byly dříve nastavené v HDInsight. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že výjimka OutofMemoryError aplikací Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
 1. Vyberte v seznamu clusterů **Spark2**.
 
@@ -84,14 +84,14 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Sparku na clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Konfigurace aplikace Spark pomocí poznámkového bloku Jupyter v clusterech
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Sparku s využitím Poznámkový blok Jupyter v clusterech?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že výjimka OutofMemoryError aplikací Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception).
 
 2. V první buňky Poznámkový blok Jupyter po **%% konfigurace** směrnice, určení konfigurací Sparku v platném formátu JSON. Podle potřeby změňte skutečnými hodnotami:
 
@@ -99,14 +99,14 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Sparku na clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-livy-on-clusters"></a>Konfigurace aplikace Spark prostřednictvím Livy v clusterech
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Jak nakonfigurovat aplikaci Apache Spark pomocí Apache Livy v clusterech?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception). 
+1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že výjimka OutofMemoryError aplikací Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception). 
 
 2. Odeslání aplikace Spark na Livy pomocí klienta REST jako cURL. Použijte příkaz podobný následujícímu. Podle potřeby změňte skutečnými hodnotami:
 
@@ -116,14 +116,14 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Sparku na clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="how-do-i-configure-a-spark-application-by-using-spark-submit-on-clusters"></a>Jak nakonfigurovat aplikace s použitím skriptu spark-submit Sparku na clusterech
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Jak nakonfigurovat aplikaci s použitím skriptu spark-submit Apache Spark v clusterech?
 
 ### <a name="resolution-steps"></a>Postup řešení
 
-1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že Spark výjimka OutofMemoryError aplikace](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Chcete-li určit, které Spark konfigurace muset nastavit a jaké hodnoty, najdete v tématu [co způsobí, že výjimka OutofMemoryError aplikací Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception).
 
 2. Spusťte prostředí sparku s využitím příkaz podobný následujícímu. Podle potřeby změňte skutečné hodnoty konfigurace: 
 
@@ -133,10 +133,10 @@ Tyto změny jsou platné pro celý cluster, ale lze přepsat při odesílání �
 
 ### <a name="additional-reading"></a>Další čtení
 
-[Odeslání úlohy Sparku na clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+[Odeslání úlohy Apache Spark v clusterech HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
 
-## <a name="what-causes-a-spark-application-outofmemoryerror-exception"></a>Co způsobí, že Spark výjimka OutofMemoryError aplikace?
+## <a name="what-causes-an-apache-spark-application-outofmemoryerror-exception"></a>Co způsobí, že výjimka OutofMemoryError aplikací Apache Spark?
 
 ### <a name="detailed-description"></a>Podrobný popis
 
@@ -217,8 +217,8 @@ Nejpravděpodobnější příčinou této výjimky je, že není dostatek pamět
 
 ### <a name="additional-reading"></a>Další čtení
 
-- [Přehled správy paměti Spark](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
-- [Ladění aplikace Spark na clusteru služby HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+- [Přehled správy paměti Apache Sparku](http://spark.apache.org/docs/latest/tuning.html#memory-management-overview)
+- [Ladit aplikace Apache Spark v clusteru služby HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
 
 
 ### <a name="see-also"></a>Viz také

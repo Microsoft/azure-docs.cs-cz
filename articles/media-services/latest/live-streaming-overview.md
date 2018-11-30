@@ -1,6 +1,6 @@
 ---
 title: Přehled živého streamování využívajícího službu Azure Media Services | Dokumentace Microsoftu
-description: Toto téma poskytuje přehled živého streamování využívajícího službu Azure Media Services v3.
+description: Tento článek poskytuje přehled živého streamování využívajícího službu Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,153 +11,123 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: a4569505cb9a42f6682391a8b06725dea5e539dc
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: 634563a2010562e20691abae132dc7540ef8faf2
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344967"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632693"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
-Při doručování živě streamovaných událostí pomocí Azure Media Services se běžně podílejí následující komponenty:
+Azure Media Services umožňuje doručovat živé události do vašich zákazníků v cloudu Azure. Ke streamování živých událostí pomocí služby Media Services, budete potřebovat následující:  
 
-* Kamera používaná k vysílání události.
-* Živé video encoder, který převádí signály z kamery (nebo jiné zařízení, jako jsou přenosné počítače) pro datové proudy, které se odesílají do služby živého streamování. Signály mohou zahrnovat také inzerování SCTE 35 a Ad pomůcky. 
-* Služba Media Services Live Streaming vám umožňuje ingestovat, ve verzi preview, balení, záznamu, šifrování a všesměrového vysílání obsahu vašim zákazníkům nebo do sítě CDN pro další distribuci.
+- Fotoaparát, který se používá k zachycení živé události.
+- Živé video encoder, který převádí signály z kamery (nebo jiné zařízení, jako je přenosný počítač) příspěvek informačního kanálu, který je odeslán do Media Services. Příspěvek kanál může obsahovat signály související s reklamy, jako je například SCTE 35 značky.
+- Komponenty ve službě Media Services, která umožňuje ingestovat, ve verzi preview, balení, záznamu, šifrování a vysílat živě přenášená akce vašim zákazníkům nebo do sítě CDN pro další distribuci.
 
-Tento článek poskytuje podrobný přehled a zahrnuje diagramy hlavní součásti účastnící se živé streamování pomocí služby Media Services.
+Tento článek poskytuje podrobný přehled najdete pokyny a zahrnuje diagramy hlavní součásti účastnící se živé streamování pomocí služby Media Services.
 
 ## <a name="overview-of-main-components"></a>Přehled hlavních komponent
 
-Ve službě Media Services zodpovídají za zpracování obsahu živého streamování události [LiveEvent](https://docs.microsoft.com/rest/api/media/liveevents). Poskytuje vstupní koncový bod Livestream (adresa URL ingestu), pak poskytnete místní kodér služby live Encoding. Livestream přijímat živé vstupní datové proudy z live encoder ve formátu RTMP nebo technologie Smooth Streaming a zpřístupňuje je prostřednictvím jednoho nebo více datových proudů [koncové body streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints). A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) vám umožňuje řídit publikování, nahrávání a nastavení okna DVR, živého datového proudu. Livestream také poskytuje koncový bod ve verzi preview (adresa URL náhledu), který používáte k zobrazení náhledu a ověření datového proudu před dalším zpracováním a doručením. 
+Pokud chcete doručovat na vyžádání a živé datové proudy pomocí služby Media Services, musíte mít aspoň jeden [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints). Při vytvoření účtu Media Services **výchozí** StreamingEndpoint se přidá k němu **Zastaveno** stavu. Je nutné začít StreamingEndpoint, ze kterého chcete Streamovat obsah do vašeho prohlížeče. Můžete použít výchozí **StreamingEndpoint**, nebo vytvořte další přizpůsobené **StreamingEndpoint** požadované konfigurace a nastavení CDN. Můžete se rozhodnout povolit více koncové body streamování, každý z nich cílení na různé sítě CDN a poskytuje jedinečný název hostitele pro doručování obsahu. 
 
-Služba Media Services poskytuje **dynamické balení**, která umožňuje ve verzi preview a váš obsah MPEG DASH, HLS, technologie Smooth Streaming pro vysílání datových proudů formátů, aniž byste museli ručně znovu zabalit do těchto formátů streamování. Můžete přehrávat pomocí libovolné HLS, DASH nebo Smooth kompatibilní přehrávače. Můžete také použít [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) k testování datového proudu.
+Ve službě Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za příjem a zpracování živého videa informačních kanálů. Při vytváření Livestream se vytvoří, můžete použít k odesílání živě signál z vzdálený kodér vstupní koncový bod. Vzdáleném kodér služby live Encoding odešle informační kanál k příspěvek vstupní koncový bod buď pomocí [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) nebo [technologie Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming#Microsoft_Smooth_Streaming) protocol (fragmentovaný soubor MP4).  
 
-Služba Media Services umožňuje doručovat obsah zašifrovaný dynamicky (**dynamického šifrování**) s Advanced Encryption Standard (AES-128) nebo některou z systémy pro správu (DRM) tři hlavní digitálních práv: Microsoft PlayReady Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům.
+Jakmile **Livestream** spustí příjem příspěvků datového kanálu, můžete použít svůj koncový bod ve verzi preview (Náhled adresy URL pro zobrazení náhledu a ověření, že vám posíláme živého datového proudu před dalším publikování. Po kontrole, že datový proud ve verzi preview je dobré, vám pomůže Livestream uvolněte živého datového proudu pro doručení prostřednictvím jednoho nebo více (předem vytvořené) **koncové body streamování**. Chcete-li to provést, vytvořte nový [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) na **Livestream**. 
 
-V případě potřeby můžete také použít **dynamické filtrování**, které je možné řídit počet stop, formátů, přenosových rychlostí, který společností zašleme hráči. Služba Media Services také podporuje vkládání reklam.
+**LiveOutput** objektu je jako pásku rekordéru, který bude zachytávat a poznamenejte si live stream do prostředku ve vašem účtu Media Services. Zaznamenaný obsah bude trvale uložit do účtu služby Azure Storage, který je připojený ke svému účtu, do kontejneru definované pomocí prostředků resource.  **LiveOuput** také umožňuje řídit některé vlastnosti odchozí živého datového proudu, jako je například kolik datového proudu se ukládají v záznamu archivu (například kapacita cloudového DVR). Archiv na disku je do kruhové archivu "okno", který obsahuje pouze množství obsahu, který je zadán v **archiveWindowLength** vlastnost **LiveOutput**. Obsah, který spadá mimo toto okno se automaticky zruší z kontejneru úložiště a nepůjde obnovit. Můžete vytvořit více LiveOutputs (maximálně až tři) na Livestream se archiv různých délek a nastavení.  
 
-### <a name="new-live-encoding-improvements"></a>Nová vylepšení migrace za provozu kódování
+Pomocí služby Media Services můžete využít výhod **dynamické balení**, která umožňuje zobrazit náhled a všesměrového vysílání živé streamy v [formátů MPEG DASH, HLS a Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) z příspěvku informačního kanálu že odesíláte do služby. Vaši uživatelé můžou přehrávat živé streamování pomocí libovolné kompatibilní hráči HLS, DASH nebo Smooth Streaming. Můžete použít [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) ve vašich webových nebo mobilních aplikací můžete poskytovat datový proud v některém z těchto protokolů.
 
-Následující nová vylepšení byly dokončeny v nejnovější verzi.
+Služba Media Services umožňuje doručovat obsah zašifrovaný dynamicky (**dynamického šifrování**) s Advanced Encryption Standard (AES-128) nebo některou z systémy pro správu (DRM) tři hlavní digitálních práv: Microsoft PlayReady Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM licence autorizovaným klientům. Další informace o tom, jak šifrování obsahu pomocí služby Media Services najdete v tématu [ochrana obsahu – přehled](content-protection-overview.md)
 
-- Nový režim s nízkou latencí. Další informace najdete v tématu [latence](#latency).
+V případě potřeby můžete také použít dynamické filtrování, který slouží k řízení počet stop, formáty, přenosových rychlostí a prezentace časových oken, které se pošlou hráči. 
+
+### <a name="new-capabilities-for-live-streaming-in-v3"></a>Nové možnosti pro živé streamování ve verzi 3
+
+S v3 rozhraní API z Media Services můžete využívat následující nové funkce:
+
+- Nový režim s nízkou latencí. Další informace najdete v tématu [latence](live-event-latency.md).
 - (Zvýšení stability a další podporu zdrojového kodér) Vylepšená podpora RTMP ve službě.
-- Ingestování RTMPS zabezpečené.
-
-    Při vytváření Livestream získáte 4 ingestované adresy URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS.   
-- Podpora překódování 24 hodin. 
-- Vylepšená podpora ad signalizace v RTMP prostřednictvím SCTE35.
+- Ingestování RTMPS zabezpečené.<br/>Při vytváření Livestream získáte 4 ingestované adresy URL. Ingestování 4 adresy URL jsou téměř identické, mít stejný token streamování (AppId), jenom část čísla portu se liší. Dva z adres URL jsou primární a záložní pro RTMPS.   
+- Můžete Streamovat živé události, které jsou dlouhé až 24 hodin, pokud informační kanál pomocí služby Media Services pro překódování příspěvek s jednou přenosovou rychlostí do výstupního datového proudu, který má více přenosových rychlostí. 
 
 ## <a name="liveevent-types"></a>Typy Livestream
 
-A [Livestream](https://docs.microsoft.com/rest/api/media/liveevents) může být jeden ze dvou typů: kódování v reálném čase a předávací. 
-
-### <a name="live-encoding-with-media-services"></a>Živé kódování pomocí Media Services
-
-![živé kódování](./media/live-streaming/live-encoding.png)
-
-Místní kodér služby live Encoding odešle datový proud s jednou přenosovou rychlostí Livestream, který má povolené provádět živé kódování pomocí Media Services v jednom z těchto protokolů: RTMP nebo technologie Smooth Streaming (fragmentovaný MP4). Livestream potom provede kódování v reálném čase z příchozí datový proud s jednou přenosovou rychlostí na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
-
-Při vytváření tohoto typu Livestream, zadejte **základní** (LiveEventEncodingType.Basic).
+A [Livestream](https://docs.microsoft.com/rest/api/media/liveevents) může být jeden ze dvou typů: Předávací tak pro živé kódování. 
 
 ### <a name="pass-through"></a>Průchod
 
 ![Předávací](./media/live-streaming/pass-through.png)
 
-Předávací je optimalizovaný pro dlouho běžící živé streamy nebo 24 x 7 lineární kódování v reálném čase pomocí místní kodér služby live Encoding. Místní kodér odešle s více přenosovými rychlostmi **RTMP** nebo **technologie Smooth Streaming** (fragmentovaný soubor MP4) k Livestream, který je nakonfigurovaný pro **předávací** doručování. **Předávací** doručování nastává, když ingestované datové proudy prochází **Livestream**bez dalšího zpracování. 
+Při použití průchozích Livestream se spoléháte na vaše místní kodér služby live Encoding pro vygenerování více datový proud videa s přenosovou rychlostí a odeslat, že jako příspěvek informační kanál k Livestream (pomocí protokolu RTMP nebo fragmentovaný soubor MP4). Livestream se pak provede prostřednictvím příchozí datové proudy videa bez dalšího zpracování. Předávací Livestream je optimalizovaný pro dlouho běžící živě přenášené události nebo 24 × 365 lineární živé streamování. Při vytváření tohoto typu Livestream, zadejte None (LiveEventEncodingType.None).
 
-Předávací LiveEvents může podporovat až k rozlišení 4K a HEVC procházet při použití s technologie Smooth Streaming ingestování protokolu. 
-
-Při vytváření tohoto typu Livestream, zadejte **žádný** (LiveEventEncodingType.None).
+Můžete odeslat příspěvek kanálu na rozlišení až 4 kB a v objektu frame míra 60 snímků za sekundu s H.264/AVC nebo H.265/HEVC video kodeků a AAC (AAC-LC, HE-AACv1 nebo HE-AACv2) zvukový kodek.  Zobrazit [Livestream typy porovnání a omezení](live-event-types-comparison.md) , kde najdete další podrobnosti.
 
 > [!NOTE]
 > Použití průchozí metody je nejekonomičtější způsob, jak živě streamovat při pořádání několika událostí po delší dobu, když jste už investovali do místních kodérů. Viz podrobnosti o [cenách](https://azure.microsoft.com/pricing/details/media-services/).
 > 
 
-## <a name="liveevent-types-comparison"></a>Porovnání typů Livestream 
+Podívejte se na příklad za provozu v [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126).
 
-Následující tabulka obsahuje porovnání funkcí těchto dvou typů Livestream.
+### <a name="live-encoding"></a>Kódování v reálném čase  
 
-| Funkce | Předávací Livestream | Standardní Livestream |
-| --- | --- | --- |
-| Vstup s jednou přenosovou rychlostí je zakódován do více přenosových rychlostí v cloudu |Ne |Ano |
-| Maximální rozlišení, počet vrstev |4Kp30  |720p, 6 vrstvy, 30 snímků za sekundu |
-| Vstupní protokoly |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
-| Cena |Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu "Živé Video" |Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) |
-| Maximální doba běhu |Nepřetržitě |Nepřetržitě |
-| Podpora vkládaní slaty |Ne |Ano |
-| Podpora ad signalizace přes rozhraní API|Ne |Ano |
-| Podpora ad signalizace prostřednictvím SCTE35 inband|Ano |Ano |
-| Předávací titulky CEA 608/708 |Ano |Ano |
-| Schopnost zotavení z stručný přepínání v příspěvku informačního kanálu |Ano |Ne (Livestream se začne slating po sekundách 6 bez vstupních dat)|
-| Podpora pro vstupní GOPs nerovnoměrné |Ano |Ne – vstup musí být nastaven GOPs 2 s |
-| Podpora pro vstup míra proměnné rámce |Ano |Ne – vstup musí být stanovena snímkovou frekvenci.<br/>Malé změny jsou například tolerovat při vysoké pohybu scény. Ale kodér nelze umístit do 10 snímků za sekundu. |
-| Dojde ke ztrátě Auto přístupnými z Livestream při zadání informačního kanálu |Ne |Po 12 hodinách, pokud neexistuje žádný LiveOutput spuštění |
+![živé kódování](./media/live-streaming/live-encoding.png)
 
-## <a name="liveevent-states"></a>Stavy Livestream 
+Pokud používáte živé kódování pomocí Media Services, nakonfigurujete by vaše místní kodér služby live Encoding odesílat videa s jednou přenosovou rychlostí jako příspěvek informačního kanálu Livestream (pomocí protokolu RTMP nebo fragmentovaný soubor Mp4). Livestream kóduje této příchozí s jednou přenosovou rychlostí na datový proud stream [více přenosovými rychlostmi datový proud videa](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), zpřístupní pro doručení pro přehrávání zařízení prostřednictvím protokolů, jako jsou MPEG-DASH, HLS a Smooth Streaming. Při vytváření tohoto typu Livestream, zadejte jako typ kódování **základní** (LiveEventEncodingType.Basic).
 
-Aktuální stav Livestream. Možné hodnoty:
+Můžete odeslat příspěvek kanálu na až rozlišení 1080 p rychlostí rámec 30 snímků/druhé kodek H.264/AVC videa a AAC (AAC-LC, HE-AACv1 nebo HE-AACv2) zvukový kodek. Zobrazit [Livestream typy porovnání a omezení](live-event-types-comparison.md) , kde najdete další podrobnosti.
 
-|Stav|Popis|
-|---|---|
-|**Zastavení**| Toto je počáteční stav Livestream po jeho vytvoření (Pokud byla vybrána autostart zadat.) Vyvolá se v tomto stavu bez fakturace. V tomto stavu je možné aktualizovat vlastnosti Livestream ale streamování není povolené.|
-|**Spuštění**| Livestream se spouští. Vyvolá se v tomto stavu bez fakturace. V tomto stavu nejsou povolené žádné aktualizace ani streamování. Pokud dojde k chybě Livestream se vrátí do stavu Zastaveno.|
-|**Spuštění**| Livestream se dokáže zpracovávat živé streamy. To je nyní fakturaci využití. Je nutné zastavit Livestream, aby se zabránilo další fakturace.|
-|**Zastavení**| Livestream se zastavuje. Vyvolá se v tomto přechodném stavu bez fakturace. V tomto stavu nejsou povolené žádné aktualizace ani streamování.|
-|**Odstraňuje se**| Livestream se odstraňuje. Vyvolá se v tomto přechodném stavu bez fakturace. V tomto stavu nejsou povolené žádné aktualizace ani streamování.|
+## <a name="liveevent-types-comparison"></a>Porovnání typů Livestream
+
+V následujícím článku obsahuje tabulku, která obsahuje porovnání funkcí těchto dvou typů Livestream: [porovnání](live-event-types-comparison.md).
 
 ## <a name="liveoutput"></a>LiveOutput
 
-A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) vám umožňuje řídit publikování, nahrávání a nastavení okna DVR, živého datového proudu. Je podobná tradičním médiím, kde (Livestream) kanál obsahuje nepřetržitý datový proud obsahu a program (LiveOutput) je vymezen na určité načasované události v této Livestream relace Livestream a LiveOutput.
-Můžete určit počet hodin, které chcete uchovávat zaznamenaný obsah LiveOutput nastavením **ArchiveWindowLength** vlastnost. **ArchiveWindowLength** je formátu ISO 8601 časový interval platnosti délka okna archivu (digitální Video záznam nebo formátu DVR). Tuto hodnotu můžete nastavit v rozmezí od 5 minut po 25 hodin. 
+A [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) vám umožňuje řídit vlastnosti odchozí živého datového proudu, například kolik datového proudu je zaznamenán (např. kapacita cloudového DVR) a zda prohlížeče můžete spustit sledování živého datového proudu. Vztah mezi **Livestream** a jeho **LiveOutput**vztah s je podobná tradičním televizní vysílání, kterým kanál (**Livestream**) představuje nepřetržitý datový proud videa a nahrávání (**LiveOutput**) působí na určité časové segmentů (například večer novinky od 18:30:00 do 19:00:00). Můžete zaznamenat televizoru pomocí záznamu pro digitální Video (DVR) – ekvivalentní funkce v LiveEvents se spravuje přes vlastnost ArchiveWindowLength. Je formátu ISO 8601 časový interval doba trvání (například PTHH:MM:SS), která určuje kapacitu DVR a můžete nastavit na minimálně 3 minuty, které maximálně 25 hodin.
 
-**ArchiveWindowLength** také určuje maximální počet časových klientů můžete posunout zpátky v čase od aktuální živé pozice. LiveOutputs můžou běžet po určenou dobu, obsah, který se do délky okna nevejde se bude vždy zahozen. Hodnota této vlastnosti také určuje, jak dlouho můžou růst manifesty klientů.
 
-Každý LiveOutput je přidružený [Asset](https://docs.microsoft.com/rest/api/media/assets)a zaznamenává data do kontejneru v úložišti Azure, které jsou připojené k účtu Media Services. Pokud chcete publikovat LiveOutput, musíte vytvořit [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) pro přidružený asset. Tento lokátor vám umožní sestavit adresu URL pro streamování, kterou potom poskytnete svým klientům.
+> [!NOTE]
+> **LiveOutput**s spuštění při vytvoření a zastavení při odstranění. Když odstraníte **LiveOutput**, nejsou odstranění podkladové **Asset** a obsahu v prostředku.  
 
-Livestream podporuje až tři současně spuštěné LiveOutputs, takže můžete vytvořit několik archivů stejného příchozího datového proudu. To vám umožní podle potřeby publikovat a archivovat různé části události. Například je vaše firemní požadavky vysílání 24 x 7 živé lineární kanál, ale chcete vytvořit "záznamy" programů v průběhu dne nabídnout zákazníkům jako obsah na vyžádání pro zobrazení můžete projít.  V tomto scénáři je nejprve vytvořit primární LiveOutput s krátkou archivačního okna 1 hodina pro zákazníky Nalaďte si jako primární živého datového proudu. By vytvořit StreamingLocator pro tento LiveOutput a publikovat do aplikace nebo webu jako kanál "Live".  Kdy je spuštěná informačního kanálu, můžete programově vytvořit druhý souběžných LiveOutput na začátku zobrazit (nebo 5 minut, než již v rané fázi poskytují některé popisovače mají být odebrány později.) Tento druhý LiveOutput lze zastavit 5 minut po skončení programu nebo události a pak můžete vytvořit nové StreamingLocator publikovat tento program jako prostředek na vyžádání v katalogu vaší aplikace.  Můžete tento postup opakujte více než jednou pro ostatní meze programů nebo upozorňuje, že chcete sdílet jako na vyžádání, okamžitě, všechny při "Live" informační kanál z první LiveOutput nadále vysílání lineární kanál.  Kromě toho můžete využít výhod podpory dynamického filtru oříznout head a konec archivu z LiveOutput zavedena pro "překrytí safety" mezi aplikacemi a zajištění přesnější začátek a konec obsahu. Archivovaný obsah můžete také odeslat do katalogu [transformace](https://docs.microsoft.com/rest/api/media/transforms) pro kódování nebo přesné oříznutím rámce do více formátů výstupu má být použit jako syndikace k jiným službám.
+Další informace najdete v tématu [použití cloudového DVR](live-event-cloud-dvr.md).
 
 ## <a name="streamingendpoint"></a>StreamingEndpoint
 
-Jakmile se datový proud přenáší do události LiveEvent, můžete zahájit událost streamování vytvořením prostředku, výstupu LiveOutput a lokátoru streamování StreamingLocator. To bude archivovat datového proudu a zpřístupní ji se divákům prostřednictvím [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints).
+Jakmile máte datový proud plyne do **Livestream**, streamování událostí můžete začít tak, že vytvoříte **Asset**, **LiveOutput**, a **StreamingLocator** . To bude archivovat datového proudu a zpřístupní ji se divákům prostřednictvím [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints).
 
 Po vytvoření účtu Media Services je ke svému účtu v zastaveném stavu přidá výchozí koncový bod streamování. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete Streamovat obsah musí být ve spuštěném stavu.
 
+## <a name="a-idbilling-liveevent-states-and-billing"></a><a id="billing" />Stavy Livestream a fakturace
+
+Livestream začne fakturace jako jeho stav přejde do **systémem**. Pokud chcete zastavit Livestream z fakturace, je nutné zastavit Livestream.
+
+Podrobné informace najdete v tématu [stavy a fakturace](live-event-states-billing.md).
+
 ## <a name="latency"></a>Latence
 
-Tato část popisuje výsledky, které se zobrazí při použití nastavení s nízkou latencí a různé přehrávače. Výsledky lišit v závislosti na latenci sítě CDN.
+Podrobné informace o latenci LiveEvents najdete v tématu [latence](live-event-latency.md).
 
-Pokud chcete využít novou funkci LowLatency, můžete nastavit **StreamOptionsFlag** k **LowLatency** na Livestream. Po vytvoření a spuštění je datový proud, můžete [Azure Media Player](http://ampdemo.azureedge.net/) (AMP) ukázka stránku a nastavit možnosti přehrávání použít "S nízkou latencí heuristiky profil".
+## <a name="live-streaming-workflow"></a>Pracovní postup živého streamování
 
-### <a name="pass-through-liveevents"></a>Předávací LiveEvents
+Tady jsou kroky pro pracovní postup živého streamování:
 
-||2S GOP nízká latence povoleno|1s GOP nízká latence povoleno|
-|---|---|---|
-|POMLČKA v knihovně AMP|10s|8S|
-|HLS v přehrávači nativní aplikace pro iOS|14s|10s|
-|HLS. JS v přehrávači Mixer|30 s|16s|
+1. Vytvoření Livestream.
+2. Vytvořte nový objekt Asset.
+3. Vytvořte LiveOutput a použijte název assetu, kterou jste vytvořili.
+4. Pokud máte v úmyslu šifrování obsahu pomocí DRM vytvořte klíč obsahu a streamování zásad.
+5. Pokud není v rámci předdefinovaných typů zásad streamování pomocí DRM, vytvořte Lokátor streamování.
+6. Seznam cest na streamování zásadám a získat zpět adresy URL používat (Toto jsou deterministické).
+7. Získáte název hostitele koncového bodu streamování chcete z datového proudu. 
+8. Adresu URL v kroku 6 v kombinaci s názvem hostitele v kroku 7 zobrazíte úplnou adresu URL.
 
-## <a name="billing"></a>Fakturace
-
-Livestream začne fakturace jako jeho stav změní na "Spuštěno". Pokud chcete zastavit Livestream z fakturace, je nutné zastavit Livestream.
-
-> [!NOTE]
-> Když **LiveEventEncodingType** na vaše [Livestream](https://docs.microsoft.com/rest/api/media/liveevents) je nastavena pro Basic, Media Services se automaticky přístupnými jakékoli Livestream, který je stále ve stavu "Spuštěno" po ztratí vstupní kanál a existuje 12 hodin žádné LiveOutputs spuštěná. Ale můžete pořád účtovat čas, kdy Livestream byl ve stavu "Spuštěno".
->
-
-Následující tabulka ukazuje, jak Livestream stavů k režimu fakturace.
-
-| Livestream stavu | Je to fakturace? |
-| --- | --- |
-| Spouštění |Ne (přechodný stav) |
-| Spuštěno |ANO |
-| Zastavování |Ne (přechodný stav) |
-| Zastaveno |Ne |
+Další informace najdete v tématu [živého streamování kurzu](stream-live-tutorial-with-api.md) , který je založen na [Live .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live) vzorku.
 
 ## <a name="next-steps"></a>Další postup
 
-[Živé streamování kurz](stream-live-tutorial-with-api.md)
+- [Porovnání typů Livestream](live-event-types-comparison.md)
+- [Stavy a fakturace](live-event-states-billing.md)
+- [Latence](live-event-latency.md)

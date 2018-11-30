@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 0db76d7133e28a0826d9ff07cefe02134cd95a47
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 69c24e08ce2434c39b8bb67cb53173f9ceaee51b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274468"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581438"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Přidání, aktualizace nebo odebrání kreditní nebo debetní kartou pro Azure
 
@@ -102,6 +102,6 @@ Bohužel Azure v současné době nepodporuje platby jednorázové pro kreditní
 
 Chcete-li přidat nebo aktualizovat daňové identifikační číslo, navštivte [ **profilu** v centru účtů Azure](https://account.azure.com/Profile)a pak vyberte **daňové záznam**. Toto DIČ slouží k výpočtu slevy na dani a zobrazí se na vaší faktuře.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

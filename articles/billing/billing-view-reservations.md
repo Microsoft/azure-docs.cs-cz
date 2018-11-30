@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: cwatson
-ms.openlocfilehash: 2ae30ca55f3ca03a64438025960ddd807e288216
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 4506d65d173ea483558a772d89fe7cbc8cd84944
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48272633"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584583"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazit Azure rezervace na webu Azure Portal
 
@@ -30,7 +30,7 @@ Ve výchozím nastavení, při nákupu rezervace, je správce účtu může zobr
  
 Chcete-li zobrazit rezervace jako vlastník nebo čtečka otisku prstů,
 
-1. Přihlaste se k [portálu Azure]( http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal]( http://portal.azure.com).
 1. Hledat na **rezervace**.
 
     ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-reservation-search.png)
@@ -45,7 +45,7 @@ Pokud potřebujete změnit obor rezervace, rezervaci dělené tunelové propojen
 
 Chcete-li zobrazit transakce rezervace na webu Azure portal
 
-1. Přihlaste se k [portálu Azure]( http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal]( http://portal.azure.com).
 1. Hledat na **Cost Management a fakturace**.
 
     ![Snímek obrazovky zobrazující Azure search na portálu](./media/billing-view-reservation/portal-cm-billing-search.png)
@@ -71,6 +71,6 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Vysvětlení využití rezervace pro předplatná CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

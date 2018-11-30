@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: a1b21afb02cffe608ece8687359a021c84b05e1e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 951292a34f59fd143a7997571513a3c852bbce81
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014291"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497993"
 ---
-# <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights pomocí Sparku v HDInsight
+# <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analýza protokolů telemetrie Application Insights s Apache Spark v HDInsight
 
-Zjistěte, jak používat Spark v HDInsight k analýze dat telemetrie Application Insights.
+Další informace o použití [Apache Spark](https://spark.apache.org/) v HDInsight k analýze dat telemetrie Application Insights.
 
 [Visual Studio Application Insights](../../application-insights/app-insights-overview.md) je analytická služba, která monitoruje webové aplikace. Telemetrická data generovaná službou Application Insights je možné exportovat do služby Azure Storage. Jakmile jsou data ve službě Azure Storage, HDInsight je možné ho analyzovat.
 
@@ -26,7 +26,7 @@ Zjistěte, jak používat Spark v HDInsight k analýze dat telemetrie Applicatio
 
 * Aplikace, který je nakonfigurován pro použití služby Application Insights.
 
-* Znalost vytvoření clusteru HDInsight se systémem Linux. Další informace najdete v tématu [vytvořit Spark v HDInsight](apache-spark-jupyter-spark-sql.md).
+* Znalost vytvoření clusteru HDInsight se systémem Linux. Další informace najdete v tématu [vytvořit Apache Spark v HDInsight](apache-spark-jupyter-spark-sql.md).
 
   > [!IMPORTANT]
   > Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -362,14 +362,14 @@ Pro přidání účtu úložiště Azure do existujícího clusteru, použijte i
 
 ## <a name="next-steps"></a>Další postup
 
-Další příklady použití Sparku pro práci s daty a službami v Azure najdete v následujících dokumentech:
+Další příklady použití Apache Sparku pro práci s daty a službami v Azure najdete v následujících dokumentech:
 
-* [Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza protokolu webu pomocí Sparku v HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 Informace o vytváření a spouštění aplikací Spark najdete v následujících dokumentech:
 
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Livy](apache-spark-livy-rest-interface.md)

@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 1d029a2ab214ba85932dad022e4c3cb862b8688a
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: d9328b293d38114d319d79e38b91b1b67e410d94
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712989"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581818"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Jak nasadit modely do služby Azure Kubernetes Service ze služby Azure Machine Learning
 
@@ -127,7 +127,7 @@ print(aks_target.provisioning_errors)
 Pokud máte existující cluster AKS ve vašem předplatném Azure, můžete ji Pokud chcete nasadit svou image. Následující fragment kódu ukazuje, jak připojit cluster do pracovního prostoru. 
 
 > [!IMPORTANT]
-> Je podporována pouze verze 1.11.2 AKS.
+> Je podporována pouze verze 1.11.3 AKS.
 
 ```python
 # Get the resource id from https://porta..azure.com -> Find your resource group -> click on the Kubernetes service -> Properties

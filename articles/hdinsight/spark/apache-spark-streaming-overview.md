@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 229c3eff0db4f3689f4e2e3fd457410ecccb8ba7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 86d64ef0e9abab4368569c2f7c5ccd633660085c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041518"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583209"
 ---
-# <a name="overview-of-spark-streaming"></a>Přehled streamování Sparku
+# <a name="overview-of-apache-spark-streaming"></a>Přehled streamování Apache Sparku
 
-Spark Streaming poskytuje zpracování datového proudu dat ve Sparku pro HDInsight clustery se zárukou, že se všechny vstupní události zpracována právě jednou, i v případě, že dojde k selhání uzlu. Spark Stream je dlouho běžící úlohu, která přijímá vstupní data z nejrůznějších zdrojů, včetně služby Azure Event Hubs, Azure IoT Hub, Kafka, Flume, Twitter, ZeroMQ nezpracovaná TCP sockety, nebo z monitorování systémy souborů HDFS. Na rozdíl od procesu výhradně založený na událostech Spark Stream dávek vstupní data do časových oken, jako je například určitý řez 2sekundové a potom transformací pro jednotlivé dávky dat s využitím map, snížit, připojte se k a extrahovat operace. Spark Stream Transformovaná data zapíše navýšení kapacity pro systémy souborů, databází, řídicí panely a konzoly.
+[Apache Spark](https://spark.apache.org/) streamování poskytuje v clusterech HDInsight Spark, se zárukou, že žádný vstup události pro zpracování datových proudů dat je zpracována právě jednou, i když dojde k selhání uzlu. Spark Stream je dlouho běžící úlohu, která přijímá vstupní data z nejrůznějších zdrojů, včetně služby Azure Event Hubs, Azure IoT Hub, [Apache Kafka](https://kafka.apache.org/), [Apache Flume](https://flume.apache.org/), Twitter, [ZeroMQ ](http://zeromq.org/), nezpracovaná TCP sockety, nebo z monitorování [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) systémy souborů. Na rozdíl od procesu výhradně založený na událostech Spark Stream dávek vstupní data do časových oken, jako je například určitý řez 2sekundové a potom transformací pro jednotlivé dávky dat s využitím map, snížit, připojte se k a extrahovat operace. Spark Stream Transformovaná data zapíše navýšení kapacity pro systémy souborů, databází, řídicí panely a konzoly.
 
 ![Stream zpracování ve službě HDInsight a streamování Sparku](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
 
@@ -86,7 +86,7 @@ Spusťte aplikace pro streaming a až do ukončení signál.
     ssc.start()            
     ssc.awaitTermination()
 
-Podrobnosti o rozhraní API služby Stream Spark, spolu s zdroje událostí, transformace a výstupní operace, které podporuje, najdete v části [Průvodce programováním pro Spark Streaming](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
+Podrobnosti o rozhraní API služby Stream Spark, spolu s zdroje událostí, transformace a výstupní operace, které podporuje, najdete v části [Apache Spark Streaming Průvodce programováním pro službu](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html).
 
 Následující ukázkové aplikace je samostatný, abyste mohli spustit ji uvnitř [Poznámkový blok Jupyter](apache-spark-jupyter-notebook-kernels.md). Tento příklad vytvoří zdroj dat mock ve třídě DummySource, jejichž výstupem jsou hodnoty čítače a aktuální čas v milisekundách každých pět sekund. Nový objekt StreamingContext má batch intervalu 30 sekund. Pokaždé, když se vytvoří dávky, aplikace streaming prozkoumá RDD vytvořen, převede RDD Spark DataFrame a vytvoří dočasné tabulky prostřednictvím datového rámce.
 
@@ -211,10 +211,10 @@ Obvykle sestavit aplikace Spark Streaming místně do souboru JAR a nasadit ho n
 
 ![Nasazení aplikace Spark Streaming](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
 
-Stav všech aplikací můžete také zkontrolovat požadavek GET na koncový bod LIVY. Nakonec můžete ukončit běžící aplikaci vydáním odstranit požadavek na koncový bod LIVY. Podrobnosti o rozhraní API LIVY najdete v tématu [vzdálené úlohy s LIVY](apache-spark-livy-rest-interface.md)
+Stav všech aplikací můžete také zkontrolovat požadavek GET na koncový bod LIVY. Nakonec můžete ukončit běžící aplikaci vydáním odstranit požadavek na koncový bod LIVY. Podrobnosti o rozhraní API LIVY najdete v tématu [vzdálené úlohy s Apache LIVY](apache-spark-livy-rest-interface.md)
 
 ## <a name="next-steps"></a>Další postup
 
 * [Vytvoření clusteru Apache Spark v HDInsight](../hdinsight-hadoop-create-linux-clusters-portal.md)
-* [Průvodce programováním v streamování Sparku](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
-* [Spuštění úlohy Spark vzdáleně pomocí LIVY](apache-spark-livy-rest-interface.md)
+* [Apache Spark Streaming Průvodce programováním](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html)
+* [Spouštět úlohy Apache Sparku s využitím Apache LIVY](apache-spark-livy-rest-interface.md)

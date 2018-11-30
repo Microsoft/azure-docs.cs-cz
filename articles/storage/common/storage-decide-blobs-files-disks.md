@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 11/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bc6d615409f3c2d0f46286d2ad2ba20c32574afd
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: c7e9c841e7a1d73fcdedd99e210eefb1e52bbf3e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091707"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498747"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Rozhodování, jestli použít Azure Blobs, soubory Azure nebo Azure Disks
 
@@ -42,7 +42,7 @@ Následující tabulka porovnává soubory Azure s využitím objektů BLOB Azur
 |Koncové body|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |Adresáře|Plochý obor názvů|Hodnota TRUE adresářových objektů|  
 |Rozlišování velikosti písmen názvů|Malá a velká písmena se rozlišují.|Malá a velká písmena, ale zachování velikosti písmen|  
-|Kapacita|Až 500 TB kontejnery|5 TiB sdílené složky|  
+|Kapacita|Až 2 omezení PiB účtu |5 TiB sdílené složky|  
 |Propustnost|Až 60 MiB/s na objekt blob bloku|Až 60 MiB/s na sdílenou složku|  
 |Velikost objektu|Až o 4,75 TB za objekty blob bloku|Až 1 TB na soubor|  
 |Billed kapacity|Zapsané bajty podle|Na základě velikosti souborů|  

@@ -10,19 +10,19 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e553833f8b9a5daab5c454cea628acdda0320e76
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f9ee5946d9748388cc1f606d89d4edeacb0b9c02
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257635"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498093"
 ---
-# <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Knihovna Spark MLlib používat k sestavení služby machine learning aplikací a analyzovat datové sady
+# <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k sestavení služby machine learning aplikací a analyzovat datové sady
 
-Další informace o použití Sparku [MLlib](https://spark.apache.org/mllib/) k vytvoření služby machine learning aplikace provést jednoduché prediktivní analýzy pro otevřete datovou sadu. Spark integrované strojového učení knihovny, tento příklad používá *klasifikace* prostřednictvím logistické regrese. 
+Další informace o použití Apache Spark [MLlib](https://spark.apache.org/mllib/) k vytvoření služby machine learning aplikace provést jednoduché prediktivní analýzy pro otevřete datovou sadu. Spark integrované strojového učení knihovny, tento příklad používá *klasifikace* prostřednictvím logistické regrese. 
 
 > [!TIP]
-> V tomto příkladu jsou také dostupné jako poznámkový blok Jupyter v clusteru Spark (Linux), který vytvoříte v HDInsight. Plnohodnotném poznámkovém bloku umožňuje spouštět fragmenty kódu Pythonu z poznámkového bloku samotný. Chcete-li postupovat podle kurzu z v rámci poznámkového bloku, vytvoření clusteru Spark a spustit Poznámkový blok Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Spusťte Poznámkový blok **Spark Machine Learning – prediktivní analýzy na data kontroly potravin pomocí MLlib.ipynb** pod **Python** složky.
+> V tomto příkladu je také k dispozici [Poznámkový blok Jupyter](https://jupyter.org/) na cluster Spark (Linux), který vytvoříte v HDInsight. Plnohodnotném poznámkovém bloku umožňuje spouštět fragmenty kódu Pythonu z poznámkového bloku samotný. Chcete-li postupovat podle kurzu z v rámci poznámkového bloku, vytvoření clusteru Spark a spustit Poznámkový blok Jupyter (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Spusťte Poznámkový blok **Spark Machine Learning – prediktivní analýzy na data kontroly potravin pomocí MLlib.ipynb** pod **Python** složky.
 >
 >
 
@@ -47,7 +47,7 @@ V tomto příkladu pomocí Spark provádět některé prediktivní analýzy dat 
 
 V následujících krocích vývoj modelu, pokud chcete zobrazit, co je potřeba k úspěšné nebo neúspěšné kontroly potravin.
 
-## <a name="create-a-spark-mllib-machine-learning-app"></a>Vytvoření aplikace Spark MLlib machine learning
+## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Vytvoření aplikace Apache Spark MLlib machine learning
 
 1. Vytvořte poznámkový blok Jupyter pomocí jádra PySpark. Pokyny najdete v tématu [Vytvoření poznámkového bloku Jupyter](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
@@ -178,7 +178,7 @@ Začněme představu, co obsahuje datovou sadu.
     SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
     ```
 
-    `%%sql` Magic, za nímž následuje `-o countResultsdf` zajistí, že výstup dotazu se ukládají místně na serveru Jupyter (obvykle hlavního uzlu clusteru). Výstup se ukládají jako [Pandas](http://pandas.pydata.org/) datový rámec se zadaným názvem **countResultsdf**. Další informace o magických příkazech `%%sql` a dalších magických příkazech, které jsou k dispozici s jádrem PySpark, najdete v části [Jádra dostupná v poznámkových blocích Jupyter s clustery Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+    `%%sql` Magic, za nímž následuje `-o countResultsdf` zajistí, že výstup dotazu se ukládají místně na serveru Jupyter (obvykle hlavního uzlu clusteru). Výstup se ukládají jako [Pandas](http://pandas.pydata.org/) datový rámec se zadaným názvem **countResultsdf**. Další informace o `%%sql` magic a dalších Magic, které jsou k dispozici s jádrem pyspark, najdete v části [jádra dostupná v poznámkových blocích Jupyter s clustery Apache Spark HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
     Výstup bude:
 
@@ -385,19 +385,19 @@ Po dokončení spuštění aplikace byste měli vypínat Poznámkový blok a uvo
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Analýza protokolu webu pomocí Sparku v HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití poznámkových bloků Zeppelin s clusterem Sparku v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro poznámkový blok Jupyter v clusteru Sparku pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
+* [Jádra dostupná pro poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
 

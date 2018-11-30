@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 057c98d4bac87b4e43e5beb8268d3d3bdbe3ec85
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 6033a61351423e65490edfe0b0607f2395c80f86
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364253"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498346"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 
@@ -41,7 +41,7 @@ Prvním krokem při ochraně vašich virtuálních počítačů je, aby, který 
 **Osvědčený postup**: přístup k virtuálním počítačům ovládacího prvku.   
 **Podrobnosti o**: použití [zásady Azure](../azure-policy/azure-policy-introduction.md) k zahájení vytváření názvů pro prostředky ve vaší organizaci a vytvářet vlastní zásady. Použít tyto zásady na prostředky, jako například [skupiny prostředků](../azure-resource-manager/resource-group-overview.md). Virtuální počítače, které patří do skupiny prostředků dědit její zásady.
 
-Pokud má vaše organizace více předplatných, můžete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů u těchto předplatných. [Skupiny pro správu Azure](../azure-resource-manager/management-groups-overview.md) zajišťují určitou úroveň oboru nad předplatných. Uspořádání předplatných do skupin pro správu (kontejnerů) a použít vaše podmínky zásad správného řízení do těchto skupin. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky na skupinu aplikují. Skupiny pro správu poskytují správy na podnikové úrovni ve velkém měřítku bez ohledu na to, jaký typ předplatného můžete mít.
+Pokud má vaše organizace více předplatných, můžete potřebovat způsob, jak efektivně spravovat přístup, zásady a dodržování předpisů u těchto předplatných. [Skupiny pro správu Azure](../azure-resource-manager/management-groups-overview.md) zajišťují určitou úroveň oboru nad předplatných. Uspořádání předplatných do skupin pro správu (kontejnerů) a použít vaše podmínky zásad správného řízení do těchto skupin. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky na skupinu aplikují. Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.
 
 **Osvědčený postup**: snížit proměnlivé instalace a nasazení virtuálních počítačů.   
 **Podrobnosti o**: použití [Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) šablony, které posílí vaše možnosti nasazení a lépe pochopit a inventáře virtuálních počítačů ve vašem prostředí.
@@ -51,7 +51,7 @@ Pokud má vaše organizace více předplatných, můžete potřebovat způsob, j
 
 - [Přispěvatel virtuálních počítačů](../role-based-access-control/built-in-roles.md#virtual-machine-contributor): může spravovat virtuální počítače, ale nikoli virtuální síť nebo účet úložiště ke kterému jsou připojené.
 - [Přispěvatel virtuálních počítačů modelu Classic](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): může spravovat virtuální počítače vytvořené pomocí modelu nasazení classic, ale virtuální sítě nebo úložiště účet ke kterému jsou připojené virtuální počítače.
-- [Správce zabezpečení](../role-based-access-control/built-in-roles.md#security-manager): může spravovat součásti zabezpečení, zásady zabezpečení a virtuální počítače.
+- [Správce zabezpečení](../role-based-access-control/built-in-roles.md#security-admin): V Security Center jenom: můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení.
 - [Uživatel služby DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user): můžete zobrazit vše, co a připojení, spuštění, restartování a vypínání virtuálních počítačů.
 
 Správci předplatného a coadmins můžete změnit toto nastavení, díky kterým jsou správci všech virtuálních počítačů v rámci předplatného. Ujistěte se, že důvěřujete všech správců předplatného a coadmins se přihlaste k některé z vašich počítačů.

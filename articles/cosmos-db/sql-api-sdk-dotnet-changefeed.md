@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 611f7ccf9ef701bf589a8f9450f8f02695357224
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 327873d228fe92a9da495f802c97eb73612caef9
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291177"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632479"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Stáhněte si informačního kanálu procesor změnu .NET SDK: A poznámky k verzi
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ ms.locfileid: "52291177"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="v2-builds"></a>sestavení v2
+
+### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+* Přidání nové vlastnosti ChangeFeedProcessorOptions.StartContinuation pro podporu počáteční změnit informační kanál z žádosti o token pro pokračování. To se používá pouze při zapůjčení kolekce je prázdná nebo zapůjčení nemá ContinuationToken nastavit. Zapůjčení v kolekci zapůjčení, které mají ContinuationToken nastavit se používá token ContinuationToken a ChangeFeedProcessorOptions.StartContinuation se ignoruje.
 
 ### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
 * Přidání podpory pro použití vlastního úložiště a zachová tokeny pokračování na oddíl.

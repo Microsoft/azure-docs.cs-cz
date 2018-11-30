@@ -2,25 +2,21 @@
 title: Týmu vědecké zpracování dat pro odborníky přes data | Dokumentace Microsoftu
 description: Obsahuje pokyny k pochopení zatížení analytics pomocí Azure Machine Learning a vědecké zpracování týmových dat.
 services: machine-learning
-documentationcenter: ''
-author: deguhath
+author: marktab
 manager: cgronlun
 editor: cgronlun
-ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: deguhath
-ms.openlocfilehash: 80f006c4e8f051c3f744168be114f1c9fb3b1a0f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.author: tdsp
+ms.custom: (previous author=deguhath, ms.author=deguhath)
+ms.openlocfilehash: ddf73f15dc7c269ba3bf9a2912c3713fd4e847f2
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092487"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497577"
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>Vědecké zpracování týmových dat pro odborníky přes data
 
@@ -65,7 +61,7 @@ Položky v následující tabulce můžete použít a provede vlastní až. Čte
 | Použití Power BI k vizualizaci výsledků                                                         | [Power BI](https://powerbi.microsoft.com/guided-learning/)                                                                                     | Power BI je nástroj pro vizualizaci dat společnosti Microsoft. Je k dispozici na několika platformách z webu pro mobilní zařízení a stolních počítačů. V tomto článku se dozvíte, jak pracovat s výstupem řešení, které jste vytvořili, přístup k výsledky ze služby Azure storage a vytvoření vizualizací pomocí Power BI.                                                                                                                                                                                                                                                                                                                             | [Dokončení tohoto kurzu v Power BI.](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) Připojte se k objektu Blob sdíleného svazku clusteru, vytvořené v jednom experimentu spuštění Power BI.                                                                                                                                                                                                                                                                       |
 | Monitorování řešení                                                                     | [Application Insights](../../application-insights/app-insights-overview.md)                                            | Existuje několik nástrojů, které vám umožní monitorovat vaše koncové řešení. Azure Application Insights usnadňuje integraci, integrované monitorování do vašeho řešení.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | [Nastavení Application Insights se monitorovat aplikaci](https://cmatskas.com/visual-studio-code-integration-with-azure-application-insights/).                                                                                                                                                                                                                                                                                                                  |
 |                                                                                           | [Azure Log Analytics](../../log-analytics/log-analytics-overview.md)                                                   | Jinou metodou pro monitorování vaší aplikace je k jeho integraci do vaším procesem DevOps. Systém Azure Log Analytics poskytuje bohatou sadu funkcí, které umožňují sledovat analytické řešení po jejich nasazení.                                                                                                                                                                                                                                                                                                                                                                                                                       | [Dokončení tohoto kurzu](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-the-Analytics-portal) týkající se použití Azure Log Analytics.                                                                                                                                                                                                                                                                                                       |
-| Dokončete tento postup výuky                                                               | Další projekty k akci                                                                                                                           | Blahopřejeme! Dokončili jste tento postup výuky. Je mnohem víc informací, které další informace. Složitější příklad vytváří zákazník změn modelu ve službě Azure Machine Learning. [Vyzkoušejte si tady](../desktop-workbench/scenario-churn-prediction.md).                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+| Dokončete tento postup výuky                                                               |                                                                                                                           | Blahopřejeme! Dokončili jste tento postup výuky. Je mnohem víc informací, které další informace.                                                                                                                                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
 ## <a name="next-steps"></a>Další postup
 [Týmu vědecké zpracování dat pro vývojáře operace](team-data-science-process-for-devops.md) Tento článek prozkoumává vývojářských operací (DevOps) funkce, které jsou specifické pro implementaci řešení pokročilé analýzy a Cognitive Services. 

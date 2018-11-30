@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3bd4adcd6df07aa47312223c559f0e9ed4fc0b14
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8cc24ad5c15cf456f0a66a34d549a43e55d02706
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264340"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52585660"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -38,14 +38,14 @@ Storage úrovně Premium: podporováno
 Ukládání do mezipaměti služby Premium Storage: podporováno
 
 | Velikost             | virtuálních procesorů | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
-|------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|------------------------------------------------|
-| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 / 31 (32)           | 3200 / 47                | Střední                                       |
-| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 / 63 (64)           | 6400 / 95                | Střední                                       |
-| Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16000 / 127 (128)        | 12800 / 190              | Vysoký                                           |
-| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 / 255 (256)        | 25600 / 380              | Vysoký                                           |
-| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 / 512 (512)        | 51200 / 750              | Velmi vysoké                                 |
-| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 / 1024 (1024)     | což odpovídá 80 000 v / 1100             | Velmi vysoké                                 |
-| Standard_F72s_v2<sup>2, 3</sup> | 72 | 144 | 576         | 32             | 144000 / 1152 (1520)     | což odpovídá 80 000 v / 1100             | Velmi vysoké                                 |
+|------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
+| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 / 31 (32)           | 3200 / 47                | 2 / 875                 |
+| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 / 63 (64)           | 6400 / 95                | 2 / 1,750               |
+| Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16000 / 127 (128)        | 12800 / 190              | 4 / 3 500               |
+| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 / 255 (256)        | 25600 / 380              | 4 / 7000               |
+| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 / 512 (512)        | 51200 / 750              | 8 / 14 000              |
+| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 / 1024 (1024)     | což odpovídá 80 000 v / 1100             | 8 / 28,000              |
+| Standard_F72s_v2<sup>2, 3</sup> | 72 | 144 | 576         | 32             | 144000 / 1152 (1520)     | což odpovídá 80 000 v / 1100             | 8 / 30,000              |
 
 
 <sup>1</sup> funkcí technologie Intel® Hyper-Threading Fsv2-series Virtuálních počítačů

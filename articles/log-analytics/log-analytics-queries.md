@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 921be3f6cc793857a701cb56236d75680d0c1232
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 4aeb14bd7962205b89e1207e082f551999f54558
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282307"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634519"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analýza dat Log Analytics ve službě Azure Monitor
 
@@ -42,8 +42,8 @@ Různé způsoby, že budete používat dotazy v Log Analytics patří následuj
 
 - **Portály.** Můžete provádět interaktivní analýzu dat protokolu v [webu Azure portal](log-analytics-log-search-portals.md).  To umožňuje upravit dotaz a analyzujte výsledky v různých formátech a vizualizace.  
 - **Pravidla upozornění.** [Pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktivně identifikovat problémy z dat ve vašem pracovním prostoru.  Každé pravidlo výstrahy je založen na prohledávání protokolu, který se spouští automaticky v pravidelných intervalech.  Výsledky jsou kontrolovány k určení Pokud by měla být vytvořena výstraha.
-- **Řídicí panely.** Můžete připnout výsledky jakéhokoli dotazu do [řídicí panel Azure](log-analytics-dashboards.md) který vám umožní vizualizovat data protokolů a metrik společně a volitelně sdílet s ostatními uživateli Azure. 
-- **Zobrazení.**  Možnost tvorby vizualizací dat mají být zahrnuty v řídicích panelech uživatele s [Návrhář zobrazení](log-analytics-view-designer.md).  Protokol dotazů, které poskytují data používá [dlaždice](log-analytics-view-designer-tiles.md) a [části vizualizace](log-analytics-view-designer-parts.md) v každém zobrazení.  
+- **Řídicí panely.** Můžete připnout výsledky jakéhokoli dotazu do [řídicí panel Azure](../azure-monitor/platform/dashboards.md) který vám umožní vizualizovat data protokolů a metrik společně a volitelně sdílet s ostatními uživateli Azure. 
+- **Zobrazení.**  Možnost tvorby vizualizací dat mají být zahrnuty v řídicích panelech uživatele s [Návrhář zobrazení](../azure-monitor/platform/view-designer.md).  Protokol dotazů, které poskytují data používá [dlaždice](../azure-monitor/platform/view-designer-tiles.md) a [části vizualizace](../azure-monitor/platform/view-designer-parts.md) v každém zobrazení.  
 - **Export.**  Při importu dat z pracovního prostoru Log Analytics do aplikace Excel nebo [Power BI](log-analytics-powerbi.md), vytvořte dotaz protokolu pro definování dat k exportu.
 - **PowerShell.** Skript prostředí PowerShell můžete spustit z příkazového řádku nebo runbooku Azure Automation, který používá [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) k načtení dat ze služby Log Analytics.  Tato rutina vyžaduje dotazu určit data, která mají načíst.
 - **Rozhraní API služby log Analytics.**  [Protokolu v log Analytics rozhraní API pro vyhledávání](../monitoring-and-diagnostics/monitoring-overview-alerts.md) umožňuje jakéhokoli klienta REST API k načtení dat protokolu z pracovního prostoru.  Žádosti rozhraní API obsahuje dotaz, který je spuštěn proti Log Analytics k určení dat k načtení.
@@ -111,4 +111,4 @@ Zatímco [Application Insights](../application-insights/app-insights-overview.md
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [prohledávání protokolů portály, které použijete k vytvoření a úprava](log-analytics-log-search-portals.md).
-- Podívejte se [kurz o psaní dotazů](log-analytics-tutorial-viewdata.md) pomocí nového dotazovacího jazyka.
+- Podívejte se [kurz o psaní dotazů](query-language/get-started-queries.md) pomocí nového dotazovacího jazyka.

@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 11/29/2018
 ms.author: spelluru
-ms.openlocfilehash: e2efe2bfb26fa7a14a9e80c26fba1322f82cb0eb
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c5df5f43c4f01013cc44a2497203947f303f3e81
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856917"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634825"
 ---
 # <a name="message-expiration-time-to-live"></a>Vypršení platnosti zpráv (hodnota TTL)
 
-Datová část uvnitř zprávy, nebo příkaz nebo dotaz, která přenáší zprávy pro příjemce, je téměř vždy v souladu s určitou formu lhůta vypršení platnosti úrovni aplikace. Po ukončení už se daný obsah doručuje nebo požadovaná operace je již spuštěn.
+Datová část v zprávu, nebo příkaz nebo dotaz, která přenáší zprávy pro příjemce, je téměř vždy v souladu s určitou formu lhůta vypršení platnosti úrovni aplikace. Po ukončení už se daný obsah doručuje nebo požadovaná operace je již spuštěn.
 
 Pro vývojová a testovací prostředí, ve kterých front a témat se často používají v souvislosti s částečnou spuštění aplikace nebo součásti aplikace je také vhodné pro izolované testovací zprávy automaticky uvolněn z paměti tak, aby další testovací běh může Vyčištění zahájeno.
 
-Vypršení platnosti pro všechny jednotlivé zprávy se dá nastavit podle nastavení [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) vlastnost systému, který určuje relativní dobu trvání. Vypršení platnosti je absolutní rychlé, pokud je zpráva ve frontě do entity. V tu chvíli [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) vlastnost přebírá hodnotu [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive).
+Vypršení platnosti pro všechny jednotlivé zprávy se dá nastavit podle nastavení [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) vlastnost systému, který určuje relativní dobu trvání. Vypršení platnosti je absolutní rychlé, pokud je zpráva ve frontě do entity. V tu chvíli [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) vlastnost přebírá hodnotu [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive). Nastavení time to live (TTL) na zprostředkované zprávy se nevynucuje, když se aktivně nenaslouchá žádný klient.
 
 Posledních **ExpiresAtUtc** rychlé, zprávy způsobilé pro načtení. Vypršení platnosti nemá vliv na zprávy, které jsou momentálně uzamčena pro dodávku; Tyto zprávy jsou zpracovány stále normálně. Pokud vyprší platnost zámku, nebo opuštění zprávy, vypršení platnosti se projeví okamžitě.
 
@@ -44,15 +44,37 @@ Kombinace [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive
 
 Představte si třeba webovou stránku, která je potřeba spolehlivě spouštět úlohy na back-end omezené škálování a které občas prostředí provoz špičky nebo chce být izolována dostupnost epizody tento back-end. V případě regulární obslužné rutiny na straně serveru pro data uživatelů odeslaných vložení informací do fronty a následně obdrží odpověď potvrzení úspěšné zpracování transakce do fronty odpovědí. Pokud je prudký nárůst přenosů a back-endu obslužné rutiny nelze zpracovat své nevyřízené položky v čase, vypršela platnost úlohy, které budou vráceny do fronty nedoručených zpráv. Interaktivní uživatel můžete být upozorněni, že požadovaná operace bude trvat déle než obvykle a žádost pak lze do jiné fronty pro zpracování cesta kde konečné zpracování výsledku je uživateli odeslána e-mailem. 
 
+
 ## <a name="temporary-entities"></a>Dočasné entity
 
 Fronty služby Service Bus, témat a předplatných lze vytvořit jako dočasné entit, které se automaticky odeberou, když nebyly použity na zadanou dobu.
  
 Automatické vyčištění je užitečné pro vývojové a testovací scénáře, ve kterých entity dynamicky se vytvářejí a nejsou vyčištění po použití, z důvodu některých přerušení testu nebo spuštění ladění. Je také užitečné, pokud aplikace vytvoří dynamický entitami, jako je například frontu odpovědí pro příjem odpovědí zpět do procesu webového serveru nebo do jiného objektu relativně krátkodobé, kde je obtížné spolehlivě vyčištění těchto entit při objektu instance zmizí.
 
-Aby byla povolená funkce pomocí [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) vlastnost, která je nastavena na dobu trvání, pro kterou má být entity nečinnosti (nepoužívané) předtím, než se automaticky odstraní. Minimální doba trvání je 5 minut.
+Aby byla povolená funkce pomocí [autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) vlastnost. Tato vlastnost nastavena na dobu trvání, pro kterou entity musí být nečinnosti (nepoužívané) předtím, než se automaticky odstraní. Minimální hodnota pro tuto vlastnost je 5.
  
-**AutoDeleteOnIdle** prostřednictvím operace Azure Resource Manageru nebo přes klienta rozhraní .NET Framework musí být nastavena vlastnost [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) rozhraní API. Nejde ji nastavit na portálu.
+**AutoDeleteOnIdle** prostřednictvím operace Azure Resource Manageru nebo přes klienta rozhraní .NET Framework musí být nastavena vlastnost [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) rozhraní API. Nelze nastavit ji na portálu.
+
+## <a name="idleness"></a>Nečinnosti
+
+Tady je co považována za nečinnost přechodu entit (fronty, témata a odběry):
+
+- Fronty
+    - Žádné odešle  
+    - Ne obdrží  
+    - Žádné aktualizace do fronty  
+    - Žádné plánované zprávy  
+    - Procházení a náhled 
+- Témata  
+    - Žádné odešle  
+    - Žádné aktualizace do tématu  
+    - Žádné plánované zprávy 
+- Předplatná
+    - Ne obdrží  
+    - Žádné aktualizace k předplatnému  
+    - Žádná nová pravidla k předplatnému  
+    - Procházení a náhled  
+ 
 
 
 ## <a name="next-steps"></a>Další postup

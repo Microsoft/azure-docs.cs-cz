@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 1bcdac43eea41a044e920c14310a9f3cd4df793b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 34d42f9987303c1381584ae4b2991a8f30a67ed5
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285440"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52618955"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Řešení potíží s odchozí SMTP připojení v Azure
 
@@ -44,7 +44,7 @@ Když předplatné s průběžnými platbami nebo Microsoft Partner Network virt
 > Společnost Microsoft si vyhrazuje právo odebrat tato výjimka, pokud je zjištěno, že došlo k porušení podmínek služby.
 
 ## <a name="msdn-azure-pass-azure-in-open-education-bizspark-and-free-trial"></a>MSDN, Azure Pass, Azure v programu Open, vzdělávání, BizSpark a bezplatná zkušební verze
-Pokud jste vytvořili webu MSDN, Azure Pass, Azure v Open, vzdělávání, BizSpark a bezplatná zkušební verze předplatného po 15. listopadu 2017, budete mít technická omezení bloku e-mail odeslaný z virtuálních počítačů v rámci těchto předplatných přímo k e-mailu poskytovatelů. Zamezilo se provádějí omezení. Udělí se žádné žádosti o odebrání tohoto omezení.
+Pokud jste vytvořili webu MSDN, Azure Pass, Azure v Open, vzdělávání, BizSpark, nabídky Azure Sponsorship, Azure Student, bezplatné zkušební verze nebo jakékoli předplatné sady Visual Studio po 15. listopadu 2017, budete mít technická omezení bloku e-mail odeslaný z virtuálních počítačů v rámci těchto předplatná přímo k e-mailu poskytovatelů. Zamezilo se provádějí omezení. Udělí se žádné žádosti o odebrání tohoto omezení.
 
 Pokud používáte tyto typy předplatného, už vám doporučujeme využívat služby pro přenos přes SMTP, jak je uvedeno výše v tomto článku.
 

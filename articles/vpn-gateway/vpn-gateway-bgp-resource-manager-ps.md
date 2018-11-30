@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 4eb62786522dd1ad7cbf1d5668a4c4493028733c
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684330"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632581"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Postup konfigurace protokolu BGP na Azure VPN Gateway pomocí Powershellu
 Tento článek vás provede kroky k povolení protokolu BGP pro připojení VPN typu Site-to-Site (S2S) mezi místními a připojení typu VNet-to-VNet pomocí modelu nasazení Resource Manageru a Powershellu.
@@ -167,7 +167,7 @@ $BGPPeerIP5 = "10.52.255.254"
 Pár věcí, které poznámka týkající se parametry brány místní sítě:
 
 * Brána místní sítě může být ve stejném nebo jiném umístění a skupině prostředků jako brány sítě VPN. Tento příklad ukazuje, je v různých skupinách prostředků v různých umístěních.
-* Minimální předponou, které je potřeba deklarovat pro bránu místní sítě je adresa hostitele vaše IP adresa partnera BGP ve vašem zařízení VPN. V tomto případě jde /32 předponu "10.52.255.254/32".
+* Předpona, kterou je potřeba deklarovat pro bránu místní sítě je adresa hostitele vaše IP adresa partnera BGP ve vašem zařízení VPN. V tomto případě jde /32 předponu "10.52.255.254/32".
 * Připomínáme je nutné použít různá čísla ASN protokolu BGP mezi vaší místní sítí a virtuální sítě Azure. Pokud se shodují, musíte změnit ASN virtuální sítě, pokud vaše místní zařízení VPN již používá číslo ASN pro vytvoření partnerského vztahu s dalším sousedům protokolu BGP.
 
 Než budete pokračovat, zkontrolujte, že jste stále připojeni k předplatnému 1.

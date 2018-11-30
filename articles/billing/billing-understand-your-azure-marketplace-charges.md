@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 36db8274c42477631a480d4721a4331202db6c09
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 0e90c043976fc1798f675f8bf480b02e0ed93536
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276530"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581914"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>Porozumět fakturaci Azure pro poplatků za externí služby
 Externí služby se publikují dodavateli softwaru třetích stran na Azure Marketplace. Například SendGrid je externích služeb, které si můžete koupit v Azure, ale nebyl vydán microsoftem.
@@ -86,6 +86,7 @@ Pokud chcete zrušit objednávku externí služby, odstranění prostředku v [w
 
 ![Odstranit prostředek](./media/billing-understand-your-azure-marketplace-charges/deleteMarketplaceOrder.PNG)
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud jste ještě další dotazy, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

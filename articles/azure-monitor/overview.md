@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 6a3e33fe74199f0b9c02c6924d5e5e41b37f385c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: d1b7b5baeba88ec0209abff60e9327031afa8b66
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820966"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633771"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -38,16 +38,16 @@ Všechna data shromážděná službou Azure Monitor zapadá do jednoho ze dvou 
 
 Pro řadu prostředků Azure uvidíte data shromážděná službou Azure Monitor přímo v jejich stránce Přehled na webu Azure Portal. Podíváme se na jakýkoli virtuální počítač například a zobrazí se vám několik grafů zobrazení metrik výkonu. Klikněte na libovolné grafy k otevírání těchto dat v [Průzkumník metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md) na webu Azure Portal, která umožňuje graf hodnoty několika metrik v čase.  Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace.
 
-![metriky](media/overview/metrics.png)
+![Metriky](media/overview/metrics.png)
 
 Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která zahrnuje [Bohatý dotazovací jazyk](../log-analytics/log-analytics-queries.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [stránce Log Analytics](../log-analytics/log-analytics-log-search-portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [ pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
 
 Dotazovací jazyk Log Analytics je vhodný pro jednoduchá protokolu dotazy, ale zahrnuje také pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Můžete rychle naučit jazyk dotazu pomocí [více lekce](../log-analytics/query-language/get-started-queries.md) , které jsou k dispozici.  Pro uživatele, kteří již znají [SQL](../log-analytics/query-language/sql-cheatsheet.md) a [Splunk](../log-analytics/query-language/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
 
-![Protokoly](media/overview/logs.png)
+![Logs](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Jaká data shromažďuje nástroj Azure Monitor?
-Azure Monitor může shromažďovat data z různých zdrojů. Můžete si představit sledování dat pro vaše aplikace na úrovních, od aplikace, libovolný operační a služeb, které spoléhá na, na platformě, jako takové. Azure Monitor provádí sběr dat ze všech následujících úrovních:
+Azure Monitor může shromažďovat data z různých zdrojů. Můžete si představit sledování dat pro vaše aplikace na úrovních, od aplikace, libovolný operační systém a služeb, které spoléhá na, na platformě, jako takové. Azure Monitor provádí sběr dat ze všech následujících úrovních:
 
 - **Monitorování dat aplikací**: Data o výkonu a funkce kódu jste napsali, bez ohledu na jeho platformu.
 - **Data monitorování hostovaného operačního systému**: Data o operačním systému, na kterém je aplikace spuštěna. To může být spuštěn v Azure, jiného cloudu nebo místně. 
@@ -57,7 +57,7 @@ Azure Monitor může shromažďovat data z různých zdrojů. Můžete si předs
 
 Jakmile vytvoříte předplatné Azure a začněte přidávat prostředky, jako jsou virtuální počítače a webové aplikace, spustí monitorování Azure, shromažďování dat.  [Protokoly aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) zaznamenat při vytvoření nebo úpravě prostředky. [Metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md) zjistíte, jaký je výkon prostředku a prostředky, které je spotřebovává. 
 
-Roztáhnout svá data ukládáte do aktuální operace prostředky podle [povolení diagnostiky](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a [Přidání agenta](../log-analytics/log-analytics-agent-windows.md) k výpočetním prostředkům. To bude shromažďovat telemetrii pro interní operace prostředku a umožňují konfigurovat různé [zdroje dat](../log-analytics/log-analytics-data-sources.md) shromažďovat protokoly a metriky z hostovaného operačního systému Windows a Linux. 
+Roztáhnout svá data ukládáte do aktuální operace prostředky podle [povolení diagnostiky](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a [Přidání agenta](../azure-monitor/platform/agent-windows.md) k výpočetním prostředkům. To bude shromažďovat telemetrii pro interní operace prostředku a umožňují konfigurovat různé [zdroje dat](../azure-monitor/platform/agent-data-sources.md) shromažďovat protokoly a metriky z hostovaného operačního systému Windows a Linux. 
 
 [Přidat Instrumentační balíček do vaší aplikace](../application-insights/app-insights-azure-web-apps.md)povolte Application Insights shromažďovat podrobné informace o vaší aplikaci, včetně zobrazení stránek, žádosti o aplikace a výjimky. Dále ověřte dostupnost vaší aplikace tím, že nakonfigurujete [test dostupnosti](../application-insights/app-insights-monitor-web-app-availability.md) můžete simulovat provoz uživatelů.
 
@@ -66,7 +66,7 @@ Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST po
 
 
 
-## <a name="insights"></a>Přehledy
+## <a name="insights"></a>Insights
 Sledování dat je pouze užitečné, pokud zvýšíte svůj vhled do provozu vaše výpočetní prostředí. Azure Monitor obsahuje několik funkcí a nástrojů, které poskytují cenné přehledy o vašich aplikací a další prostředky, které jsou závislé. [Řešení monitorování](../azure-monitor/insights/solutions.md) a funkce, jako [Application Insights](../application-insights/app-insights-overview.md) a přehledy o kontejnerech poskytnout podrobný přehled o různých aspektech vaší aplikace a konkrétních služeb Azure. 
 
 ### <a name="application-insights"></a>Application Insights
@@ -86,7 +86,7 @@ Azure insights monitorování virtuálního počítače monitoruje virtuální p
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Řešení monitorování
-[Řešení monitorování](../azure-monitor/insights/solutions.md) ve službě Azure Monitor jsou zabalené sady logik, které poskytují přehledy pro konkrétní aplikaci nebo službě. Shromažďování dat do Log Analytics spolu s dalšími daty monitorování pomocí [dotazy](../log-analytics/log-analytics-queries.md) pro analýzu a [zobrazení](../log-analytics/log-analytics-view-designer.md) pro vizualizaci. Řešení pro monitorování [od Microsoftu k dispozici](../azure-monitor/insights/solutions-inventory.md) a partnery nabízí monitorování pro různé služby Azure a další aplikace.
+[Řešení monitorování](../azure-monitor/insights/solutions.md) ve službě Azure Monitor jsou zabalené sady logik, které poskytují přehledy pro konkrétní aplikaci nebo službě. Shromažďování dat do Log Analytics spolu s dalšími daty monitorování pomocí [dotazy](../log-analytics/log-analytics-queries.md) pro analýzu a [zobrazení](../azure-monitor/platform/view-designer.md) pro vizualizaci. Řešení pro monitorování [od Microsoftu k dispozici](../azure-monitor/insights/solutions-inventory.md) a partnery nabízí monitorování pro různé služby Azure a další aplikace.
 
 ![Řešení monitorování](media/overview/solutions-overview.png)
 
@@ -94,12 +94,12 @@ Azure insights monitorování virtuálního počítače monitoruje virtuální p
 Mimo možnosti k interaktivní analýze dat monitorování, musí být schopné proaktivně reagovat na kritické ujednání identifikovat data, která shromažďuje efektivní řešení monitorování. To může odesílat textové nebo e-mailu do správce zodpovědným za vyšetřování problém. Nebo může spustit automatizovaný proces, který se pokusí opravit chybovou podmínku.
 
 
-### <a name="alerts"></a>Upozornění
+### <a name="alerts"></a>Výstrahy
 [Výstrahy ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) zajistit aktivní upozorňování kritického stavu a potenciálně se pokusí provést opravné akce. Pravidla upozornění na základě metrik poskytuje téměř reálném čase výstrahy podle číselných hodnot, zatímco pravidla založená na protokolech umožňují komplexní logiku napříč daty z více zdrojů.
 
 Pravidla, která používá Azure Monitor výstrah [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md), které obsahují jedinečné sady příjemců a akce, které mohou být sdíleny napříč více pravidel. V závislosti na vašich požadavcích, skupiny akcí lze provádět činnosti, jako mají výstrahy spustit externí akce nebo integrují s vašimi nástroji ITSM pomocí webhooků.
 
-![Upozornění](media/overview/alerts.png)
+![Výstrahy](media/overview/alerts.png)
 
 ### <a name="autoscale"></a>Automatické škálování
 Automatické škálování umožňuje mít správného množství prostředků systémem pro zpracování zátěže ve své aplikaci. Umožňuje vytvořit pravidla, která pomocí metrik shromážděných službou Azure Monitor k určení, kdy se mají automaticky přidávat prostředky zpracovat nárůst zatížení a také prostředky, které jsou sedí ušetříte peníze nečinnosti. Můžete zadat minimální a maximální počet instancí a logiku, kdy chcete zvýšit nebo snížit prostředky.
@@ -115,7 +115,7 @@ Automatické škálování umožňuje mít správného množství prostředků s
 ![Řídicí panel](media/overview/dashboard.png)
 
 ### <a name="views"></a>Zobrazení
-[Zobrazení ve službě Azure Monitor](../log-analytics/log-analytics-view-designer.md) vizuálně reprezentují data protokolů v Log Analytics.  Každé zobrazení obsahuje jednu dlaždici, která operací na kombinaci vizualizací, jako jsou pruhové a spojnicové grafy kromě seznamy se souhrnem důležitých data.  Řešení monitorování zahrnují zobrazení se souhrnem dat pro konkrétní aplikaci a můžete vytvořit vlastní zobrazení pro reprezentaci dat z jakékoli hledání v protokolu Log Analytics. Jako další elementy ve službě Azure Monitor zobrazení jde přidat na řídicí panely Azure.
+[Zobrazení ve službě Azure Monitor](../azure-monitor/platform/view-designer.md) vizuálně reprezentují data protokolů v Log Analytics.  Každé zobrazení obsahuje jednu dlaždici, která operací na kombinaci vizualizací, jako jsou pruhové a spojnicové grafy kromě seznamy se souhrnem důležitých data.  Řešení monitorování zahrnují zobrazení se souhrnem dat pro konkrétní aplikaci a můžete vytvořit vlastní zobrazení pro reprezentaci dat z jakékoli hledání v protokolu Log Analytics. Jako další elementy ve službě Azure Monitor zobrazení jde přidat na řídicí panely Azure.
 
 ![Zobrazení v Log Analytics](media/overview/view.png)
 

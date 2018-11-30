@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: f5917cd7a5e4fcc2733765f642ad0958092372c1
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: ab9e04b8a9eb4290891b3c7d55f8262c4ba64d44
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616210"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584042"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Sestavování a nasazování modelů klasifikace obrázků s Azure Machine Learning
 
@@ -37,7 +37,7 @@ Při vytváření a nasazování tento model s AMLPCV, můžete přejít pomocí
 7. Nasazení webové služby
 8. Webová služba zátěžové testování
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) slouží jako rozhraní hloubkového učení školení se provádí místně na počítači s využitím GPU, jako ([hloubkového učení virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), a nasazení pomocí rozhraní příkazového řádku Azure ML Operacionalizace.
+[CNTK](https://docs.microsoft.com/cognitive-toolkit/) slouží jako rozhraní hloubkového učení školení se provádí místně na počítači s využitím GPU, jako ([hloubkového učení virtuální počítač pro datové vědy](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), a nasazení pomocí rozhraní příkazového řádku Azure ML Operacionalizace.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -175,7 +175,7 @@ display(annotation_ui.ui)
 
 ## <a name="augment-images"></a>Posílení imagí
 
-[ `augmentation` Modulu](https://docs.microsoft.com/python/api/cvtk.augmentation) poskytuje funkce, které rozšiřují pomocí všechny transformace je popsáno v objektu dataset [imgaug](https://github.com/aleju/imgaug) knihovny. Transformace bitové kopie mohou být seskupeny do jednoho kanálu, v takovém případě jsou všechny transformace v kanálu použít současně každé image. 
+[ `augmentation` Modulu](/python/api/cvtk/cvtk.augmentation.augmentation) poskytuje funkce, které rozšiřují pomocí všechny transformace je popsáno v objektu dataset [imgaug](https://github.com/aleju/imgaug) knihovny. Transformace bitové kopie mohou být seskupeny do jednoho kanálu, v takovém případě jsou všechny transformace v kanálu použít současně každé image. 
 
 Pokud chcete použít jiné rozšíření samostatně nebo v různých způsobem, můžete definovat více kanálů a předat je do *augment_dataset* funkce. Další informace a příklady rozšíření image, najdete v článku [imgaug dokumentaci](https://github.com/aleju/imgaug).
 
@@ -248,7 +248,7 @@ dnn_model = CNTKTLModel(train_set.labels,
     Successfully downloaded ResNet18_ImageNet_CNTK
     
 
-## <a name="train-the-classifier"></a>Trénování třídění
+## <a name="train-the-classifier"></a>Trénování klasifikátoru
 
 Můžete vybrat jednu z následujících metod pro předem vytrénovaných DNN.
 

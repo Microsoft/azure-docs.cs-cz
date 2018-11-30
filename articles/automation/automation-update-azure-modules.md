@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 11/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6cbefe01632b37c225e0a5d4cd916c66f8c4524d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9fc605ab45241280d9331ad7d515ba007a015daa
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274785"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583649"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
@@ -63,7 +63,7 @@ Jak je uvedeno, **aktualizace modulů Azure** tlačítko není dostupné v suver
 
 Můžete importovat a spustit [aktualizace AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) sady runbook se pokuste aktualizovat moduly Azure ve vašem účtu Automation. Tento proces může selhat, pokud je verze, které se pokoušíte importovat z Galerie nejsou kompatibilní se službami Azure, které jsou aktuálně nasazené do cílového prostředí Azure. To může vyžadovat Ujistěte se, že kompatibilní verze moduly jsou uvedeny v parametry runbooku.
 
-Použití `AzureRmEnvironment` parametr předat správné prostředí do runbooku.  Přípustné hodnoty jsou **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**, a **AzureUSGovernmentCloud**. Tyto hodnoty lze získat pomocí `Get-AzureRmEnvironment | select Name`. Pokud nemáte předat hodnotu tomuto parametru, sada runbook bude ve výchozím nastavení veřejného cloudu Azure **AzureCloud**
+Použití `AzureRmEnvironment` parametr předat správné prostředí do runbooku.  Přípustné hodnoty jsou **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**, a **AzureUSGovernment**. Tyto hodnoty lze získat pomocí `Get-AzureRmEnvironment | select Name`. Pokud nemáte předat hodnotu tomuto parametru, sada runbook bude ve výchozím nastavení veřejného cloudu Azure **AzureCloud**
 
 Pokud chcete použít konkrétní verzi modulu Azure Powershellu místo nejnovější dostupné v galerii prostředí PowerShell, předat tyto verze volitelného `ModuleVersionOverrides` parametr **aktualizace AzureModule** sady runbook. Příklady najdete v tématu [aktualizace AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) sady runbook. Moduly prostředí Azure PowerShell, které nejsou uvedené v `ModuleVersionOverrides` parametru jsou aktualizovány pomocí nejnovější verze modulu v galerii prostředí PowerShell. Pokud předáte nic `ModuleVersionOverrides` parametr, všechny moduly jsou aktualizovány pomocí nejnovější verze modulu v galerii prostředí PowerShell. Toto chování je stejné jako **aktualizace modulů Azure** tlačítko.
 

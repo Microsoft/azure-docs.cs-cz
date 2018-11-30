@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: 03a9aced256b72789ad6d3e01515348fb1ffe129
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e5011dbaad5e5935f3aa792bd3a3ed2b271f23bc
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715265"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632429"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Osvědčené postupy pro vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -31,7 +31,7 @@ Tento článek obsahuje osvědčené postupy pro [vytváření souboru řešení
 - Zdroje dat mohou být [nakonfigurované pomocí šablony Resource Manageru](../../log-analytics/log-analytics-template-workspace-configuration.md), ale by neměly být obsažené v souboru řešení.  Důvodem je, že konfigurace zdroje dat není aktuálně idempotentní, což znamená, že vaše řešení může přepsat existující konfigurace v pracovním prostoru uživatele.<br><br>Vaše řešení například může vyžadovat upozornění a chybové události z protokolu událostí aplikace.  Pokud toto určíte jako zdroj dat ve vašem řešení, riskujete odebrání – informační události, pokud má uživatel nakonfigurovaný v jejich pracovním prostoru.  Pokud jste zahrnuli všechny události, pak vám může pokračovat ve shromažďování nadměrné – informační události v pracovním prostoru uživatele.
 
 - Pokud vaše řešení vyžaduje data z jedné z standardních datových zdrojů, pak byste měli definovat to jako předpoklad.  V dokumentaci k stavu, že zákazník musí zdroj dat nakonfigurovat pro svoje vlastní.  
-- Přidat [ověření toku dat](../../log-analytics/log-analytics-view-designer-tiles.md) zprávy k zobrazením v rámci vašeho řešení pro pokyn uživateli na zdroje dat, které je potřeba nakonfigurovat pro požadovaná data se mají shromažďovat.  Tato zpráva se zobrazí na dlaždici zobrazení, když nebyla nalezena požadovaná data.
+- Přidat [ověření toku dat](../../azure-monitor/platform/view-designer-tiles.md) zprávy k zobrazením v rámci vašeho řešení pro pokyn uživateli na zdroje dat, které je potřeba nakonfigurovat pro požadovaná data se mají shromažďovat.  Tato zpráva se zobrazí na dlaždici zobrazení, když nebyla nalezena požadovaná data.
 
 
 ## <a name="runbooks"></a>Runbooky
@@ -40,8 +40,8 @@ Tento článek obsahuje osvědčené postupy pro [vytváření souboru řešení
 - Použití [proměnné služeb automatizace](../../automation/automation-schedules.md) zadejte hodnoty do řešení, které mohou uživatelé chtít později změnit.  I když toto řešení je nakonfigurovaná tak, aby obsahovala proměnné, její hodnotu změnit půjdou.
 
 ## <a name="views"></a>Zobrazení
-- Jedno zobrazení, které se zobrazuje uživatele portálu by měl obsahovat všechna řešení.  Zobrazení může obsahovat více [části vizualizace](../../log-analytics/log-analytics-view-designer-parts.md) pro ilustraci různých sad dat.
-- Přidat [ověření toku dat](../../log-analytics/log-analytics-view-designer-tiles.md) zprávy k zobrazením v rámci vašeho řešení pro pokyn uživateli na zdroje dat, které je potřeba nakonfigurovat pro požadovaná data se mají shromažďovat.
+- Jedno zobrazení, které se zobrazuje uživatele portálu by měl obsahovat všechna řešení.  Zobrazení může obsahovat více [části vizualizace](../../azure-monitor/platform/view-designer-parts.md) pro ilustraci různých sad dat.
+- Přidat [ověření toku dat](../../azure-monitor/platform/view-designer-tiles.md) zprávy k zobrazením v rámci vašeho řešení pro pokyn uživateli na zdroje dat, které je potřeba nakonfigurovat pro požadovaná data se mají shromažďovat.
 - Nakonfigurujte řešení, aby [obsahovat](solutions-solution-file.md#solution-resource) zobrazení tak, že je odstranit, pokud se odebere řešení.
 
 ## <a name="alerts"></a>Výstrahy

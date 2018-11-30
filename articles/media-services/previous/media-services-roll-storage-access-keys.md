@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: e8d8067fcf30b16dd3dbc7f6cf50129d837aa3a5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4ab2c58e5a0f9e04d824eeea443a13af7a32617d
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306852"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619652"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizace Media Services po postupném zavedení přístupových klíčů k úložišti
 
 Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se výzva, vyberte účet služby Azure Storage, který se používá k ukládání vašeho mediálního obsahu. Můžete přidat více účtů úložiště do účtu Media Services. Tento článek ukazuje, jak otočení klíčů úložiště. Také ukazuje, jak přidat účty úložiště do účtu media. 
 
-K provádění akcí popsaných v tomto článku, měli byste použít [rozhraní API Azure Resource Manageru](https://docs.microsoft.com/rest/api/media/mediaservice) a [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.media).  Další informace najdete v tématu [Správa prostředků Azure pomocí Resource Manageru a Powershellu](../../azure-resource-manager/powershell-azure-resource-manager.md)
+K provádění akcí popsaných v tomto článku, měli byste použít [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.media).  Další informace najdete v tématu [Správa prostředků Azure pomocí Resource Manageru a Powershellu](../../azure-resource-manager/powershell-azure-resource-manager.md).
 
 ## <a name="overview"></a>Přehled
 

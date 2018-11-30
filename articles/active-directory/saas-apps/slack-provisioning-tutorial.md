@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 83155e448f350618446fb22bf52e831b1cc8d499
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 74bfd49fd69353e95a275f31fa0bba9e9b558227
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636539"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632921"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace Slack pro automatické zřizování uživatelů
 
@@ -113,6 +113,14 @@ Tento výsledek v jakýchkoli objektů skupiny přiřazené k Slack v **uživate
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
+## <a name="connector-limitations"></a>Omezení konektoru
+
+  * Při konfiguraci pro Slack **displayName** atribut, mějte na paměti následující chování: 
+  * Hodnoty nejsou zcela jedinečné (například 2 uživatelé mohou mít stejný zobrazovaný název)
+  * Podporuje jiných než anglických znaků, mezer, malá a velká písmena. 
+  * Interpunkční znaménka povolené jsou tečky, podtržítka, pomlčky, apostrofy, hranaté závorky (třeba **([{}])**) a oddělovače (třeba **, /;**).
+  * Aktualizuje pouze pokud jsou tato dvě nastavení nakonfigurované v síti na pracovišti na Slack a organizace – **synchronizaci profilu je povolená** a **uživatelé nemohou změnit jejich zobrazovaného jména**.
+  * Na Slack **uživatelské jméno** atribut musí být v části 21 znaků a mít jedinečnou hodnotu. 
 
 ## <a name="additional-resources"></a>Další prostředky
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 88b956fbe283dd39dfc51d6127b32b6f031e8b85
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 2cdc9f780e0d9ddb6e688e53208e5597b000aa56
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291126"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632768"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Nastavení Log Analytics pro cluster
 
@@ -128,4 +128,4 @@ Můžete také přidat další řešení a provádět další úpravy do pracovn
 ## <a name="next-steps"></a>Další postup
 * [Nasadit agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) na svých uzlech shromažďování čítačů výkonu a shromáždit statistiky dockeru a protokoly pro vaše kontejnery
 * Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízená v rámci služby Log Analytics
-* [Návrhář zobrazení použít k vytváření vlastních zobrazení v Log Analytics](../log-analytics/log-analytics-view-designer.md)
+* [Návrhář zobrazení použít k vytváření vlastních zobrazení v Log Analytics](../azure-monitor/platform/view-designer.md)

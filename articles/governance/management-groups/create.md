@@ -5,17 +5,17 @@ author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 6a45ffa13ead40b72fd1a0a3c2696a6e6829a4d5
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.topic: conceptual
+ms.openlocfilehash: 699a9b7a371a004213419567d0672f56b5365598
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956404"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620110"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci poskytující prostředky a správu
 
@@ -29,7 +29,7 @@ Skupina pro správu můžete vytvořit pomocí portálu, Powershellu nebo rozhra
 
 ### <a name="create-in-portal"></a>Vytvořit na portálu
 
-1. Přihlaste se na [Azure Portal](http://portal.azure.com).
+1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
 1. Vyberte **všechny služby** > **skupin pro správu**.
 
@@ -76,8 +76,8 @@ az account management-group create --name 'Contoso'
 
 Další informace o řešeních pro správu najdete v následujících tématech:
 
-- [Uspořádání prostředků se skupinami pro správu Azure](overview.md)
+- [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
-- [Instalace modulu Azure PowerShellu](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Specifikace rozhraní REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Nainstalujte rozšíření Azure CLI](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Zkontrolujte skupiny pro správu v modulu Azure PowerShell prostředky](https://aka.ms/mgPSdocs)
+- [Zkontrolujte skupiny pro správu v rozhraní REST API](https://aka.ms/mgAPIdocs)
+- [Zkontrolujte skupiny pro správu v Azure CLI](https://aka.ms/mgclidoc)

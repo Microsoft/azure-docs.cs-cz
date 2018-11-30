@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3e792eb9ab2e2902bfc9c84db7c1c344fb0cf67f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 93929df86057b48e132048a0879bc7347402652a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622338"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497747"
 ---
-# <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analyzovat zpoždění letů pomocí Hivu ve službě HDInsight
-Hive poskytuje způsob zpracování úlohy Apache Hadoop MapReduce nástrojem podobném SQL skriptovacího jazyka nazvaného  *[HiveQL][hadoop-hiveql]*, které lze použít ke shrnutí, dotazování a analýze velkých objemů dat.
+# <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analyzovat zpoždění letů pomocí Apache Hive v HDInsight
+[Apache Hive](https://hive.apache.org/) poskytuje způsob spuštění [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) úlohy prostřednictvím skriptovacím jazyce podobném SQL volat *[HiveQL] [ hadoop-hiveql]*, který je možné použít ke shrnutí, dotazování a analýze velkých objemů dat.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Pokyny, které pracují s clusterem založených na Linuxu najdete v tématu [analyzovat zpoždění letů pomocí Hivu ve službě HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Pokyny, které pracují s clusterem založených na Linuxu najdete v tématu [analyzovat zpoždění letů pomocí Apache Hive v HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md).
 
 Jeden z největších výhod Azure HDInsight je oddělení dat úložiště a výpočetního výkonu. HDInsight využívá úložiště dat Azure Blob storage. Typické úlohy sestává ze tří částí:
 
@@ -44,7 +44,7 @@ Hlavní část tohoto kurzu se dozvíte, jak pomocí jeden skript prostředí Wi
 V dodatky najdete pokyny pro nahrávání zpoždění letů, vytváření a nahrávání řetězec dotazu Hive a příprava úlohy Sqoop Azure SQL database.
 
 > [!NOTE]
-> Kroky v tomto dokumentu jsou specifická pro clustery HDInsight se systémem Windows. Pokyny, které pracují s clusterem založených na Linuxu najdete v tématu [analyzovat zpoždění letů pomocí Hivu ve službě HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md)
+> Kroky v tomto dokumentu jsou specifická pro clustery HDInsight se systémem Windows. Pokyny, které pracují s clusterem založených na Linuxu najdete v tématu [analyzovat zpoždění letů pomocí Apache Hive v HDInsight (Linux)](hdinsight-analyze-flight-delay-data-linux.md)
 
 ### <a name="prerequisites"></a>Požadavky
 Před zahájením tohoto kurzu musíte mít tyto položky:
@@ -76,7 +76,7 @@ Následující tabulka uvádí soubory používané v tomto kurzu:
 
 ## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Vytvoření clusteru a spouštět úlohy Hive a Sqoop
 Hadoop MapReduce je dávkové zpracování. Cenově nejvýhodnější způsob spuštění úlohy Hive je vytvoření clusteru pro úlohy a odstraňte úlohu po dokončení úlohy. Následující skript pokrývá celý proces.
-Další informace o vytváření clusteru služby HDInsight a spouštění úloh Hive najdete v tématu [vytváření clusterů Hadoop v HDInsight] [ hdinsight-provision] a [použití Hivu se službou HDInsight] [hdinsight-use-hive].
+Další informace o vytváření clusteru služby HDInsight a spouštění úloh Hive najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight] [ hdinsight-provision] a [použití Apache Hivu se službou HDInsight] [hdinsight-use-hive].
 
 **Ke spouštění dotazů Hive pomocí Azure Powershellu**
 
@@ -237,10 +237,10 @@ Další informace o vytváření clusteru služby HDInsight a spouštění úloh
 - - -
 
 ## <a id="appendix-a"></a>Příloha A – nahrávání letu zpoždění data do úložiště objektů Blob v Azure
-Ukládání dat souborů a soubory skriptů HiveQL (viz [dodatku B](#appendix-b)) vyžaduje plánování. Cílem je ukládat datové soubory a soubor HiveQL před vytvořením clusteru služby HDInsight a spuštění úlohy Hive. Máte dvě možnosti:
+Nahrání datového souboru a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) soubory skriptů (viz [dodatku B](#appendix-b)) vyžaduje plánování. Cílem je ukládat datové soubory a soubor HiveQL před vytvořením clusteru služby HDInsight a spuštění úlohy Hive. Máte dvě možnosti:
 
 * **Použijte stejný účet Azure Storage, který se použije jako výchozí systém souborů v clusteru HDInsight.** Vzhledem k tomu, že HDInsight cluster bude mít přístupový klíč účtu úložiště, není nutné provádět žádné další změny.
-* **Použijte jiný účet služby Azure Storage z výchozího systému souborů clusteru HDInsight.** Pokud je to tento případ, je třeba upravit vytváření součástí prostředí Windows PowerShell skriptu najdete v [clusteru HDInsight vytvořit a spouštět úlohy Hive a Sqoop](#runjob) propojit účet úložiště jako další účet úložiště. Pokyny najdete v tématu [vytváření clusterů Hadoop v HDInsight][hdinsight-provision]. HDInsight cluster pak zná přístupový klíč pro účet úložiště.
+* **Použijte jiný účet služby Azure Storage z výchozího systému souborů clusteru HDInsight.** Pokud je to tento případ, je třeba upravit vytváření součástí prostředí Windows PowerShell skriptu najdete v [clusteru HDInsight vytvořit a spouštět úlohy Apache Hive a Sqoop](#runjob) propojit účet úložiště jako další účet úložiště. Pokyny najdete v tématu [vytvořit Apache Hadoop clusterů v HDInsight][hdinsight-provision]. HDInsight cluster pak zná přístupový klíč pro účet úložiště.
 
 > [!NOTE]
 > Cesta objektu Blob úložiště pro datový soubor je zakódovaný v souboru skript HiveQL. Je třeba jej aktualizovat odpovídajícím způsobem.
@@ -359,7 +359,7 @@ Cesta kurzy/flightdelay/data jsou virtuální složka, kterou jste vytvořili, k
 - - -
 
 ## <a id="appendix-b"></a>Příloha B – vytvoření a nahrání skript HiveQL
-Pomocí Azure Powershellu, můžete spustit více příkazy HiveQL jeden po druhém nebo balíček příkaz HiveQL do souboru skriptu. V této části se dozvíte, jak vytvořit skript HiveQL a nahrát ho do úložiště objektů Blob v Azure pomocí Azure Powershellu. Hive vyžaduje skriptů HiveQL k uložení do úložiště objektů Blob v Azure.
+Pomocí Azure Powershellu, můžete spustit více [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) příkazy jeden čas nebo balíček příkaz HiveQL do souboru skriptu. V této části se dozvíte, jak vytvořit skript HiveQL a nahrát ho do úložiště objektů Blob v Azure pomocí Azure Powershellu. Hive vyžaduje skriptů HiveQL k uložení do úložiště objektů Blob v Azure.
 
 Skript HiveQL provede následující:
 
@@ -369,7 +369,7 @@ Skript HiveQL provede následující:
 4. **Vytvoření tabulky zpoždění**. Je vhodné vyčistit data před další zpracování. Tento dotaz vytvoří novou tabulku *zpoždění*, z delays_raw tabulky. Všimněte si, že nejsou zkopírovány TEMP sloupce (jak je uvedeno nahoře) a že **podřetězec** funkce slouží k odebrání dat uvozovky.
 5. **Výpočetní průměrné počasí zpoždění a skupiny výsledky podle názvu města.** Také se zobrazí výstup výsledků do úložiště objektů Blob. Mějte na paměti, že dotaz apostrofy se odebere z dat a bude vyloučit řádky, ve kterých hodnota **weather_delay** má hodnotu null. To je nezbytné, protože pak nebude Sqoop později v tomto kurzu používá elegantně zpracovat tyto hodnoty ve výchozím nastavení.
 
-Úplný seznam příkazů HiveQL najdete v tématu [jazyka Hive][hadoop-hiveql]. Jednotlivé příkazy HiveQL musí ukončit středníkem.
+Úplný seznam příkazů HiveQL najdete v tématu [Apache Hive jazyka][hadoop-hiveql]. Každý [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) příkaz musí končit středníkem.
 
 **Chcete-li vytvořit skript HiveQL**
 
@@ -712,13 +712,13 @@ Skript HiveQL provede následující:
 5. Ověření výstupu skriptu. Ujistěte se, že skript proběhla úspěšně.
 
 ## <a id="nextsteps"></a> Další kroky
-Teď chápete, jak nahrát soubor do úložiště objektů Blob v Azure, jak vyplnit tabulku Hive pomocí dat z úložiště objektů Blob v Azure, jak spouštět dotazy Hive a jak pomocí Sqoopu exportovat data z HDFS do služby Azure SQL database. Další informace naleznete v následujících článcích:
+Nyní víte, jak nahrát soubor do úložiště objektů Blob v Azure, jak naplnit tabulky Apache Hive s použitím dat z úložiště objektů Blob v Azure, jak spouštět dotazy Hive a jak pomocí Sqoopu exportovat data z [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html) do Azure SQL databáze. Další informace naleznete v následujících článcích:
 
 * [Začínáme s HDInsight][hdinsight-get-started]
-* [Použití Hivu se službou HDInsight][hdinsight-use-hive]
-* [Použití Oozie se službou HDInsight][hdinsight-use-oozie]
-* [Použití Sqoopu se službou HDInsight][hdinsight-use-sqoop]
-* [Použití Pigu se službou HDInsight][hdinsight-use-pig]
+* [Použití Apache Hivu se službou HDInsight][hdinsight-use-hive]
+* [Použití Apache Oozie s HDInsight][hdinsight-use-oozie]
+* [Použití Apache Sqoop s HDInsight][hdinsight-use-sqoop]
+* [Použití Apache Pig s HDInsight][hdinsight-use-pig]
 * [Vývoj programů Java MapReduce pro HDInsight][hdinsight-develop-mapreduce]
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/

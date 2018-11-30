@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a5deccbe87bc8de6f6438259c2a43cc4618c24ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a4c429b1c54c6bf71175abbc763a178792281a0f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016697"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633142"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Propojení Configuration Manageru k Log Analytics
 Můžete svoje prostředí System Center Configuration Manager připojit ke službě Azure Log Analytics k synchronizaci zařízení shromažďování dat a odkazují na tyto kolekce v Log Analytics a Azure Automation.  
@@ -57,7 +57,7 @@ V následujícím postupu udělíte *Přispěvatel* role ve vašem pracovním pr
 6. V části **přiřadit přístup k** rozevíracího seznamu vyberte aplikace nástroje Configuration Manager předtím vytvořili ve službě AD a potom klikněte na tlačítko **OK**.  
 
 ## <a name="download-and-install-the-agent"></a>Stažení a instalace agenta
-Přečtěte si článek [počítače Windows se připojit ke službě Log Analytics v Azure](log-analytics-agent-windows.md) k porozumění metodám, k dispozici pro instalaci agenta Microsoft Monitoring Agent na počítači, který hostuje službu Configuration Manager role systému lokality spojovacího bodu.  
+Přečtěte si článek [počítače Windows se připojit ke službě Log Analytics v Azure](../azure-monitor/platform/agent-windows.md) k porozumění metodám, k dispozici pro instalaci agenta Microsoft Monitoring Agent na počítači, který hostuje službu Configuration Manager role systému lokality spojovacího bodu.  
 
 ## <a name="add-a-log-analytics-connection-to-configuration-manager"></a>Přidání připojení k Log Analytics do Configuration Manageru
 Pokud chcete přidat připojení k Log Analytics, musíte mít prostředí Configuration Manageru [spojovací bod služby](https://technet.microsoft.com/library/mt627781.aspx) konfigurován pro online režim.

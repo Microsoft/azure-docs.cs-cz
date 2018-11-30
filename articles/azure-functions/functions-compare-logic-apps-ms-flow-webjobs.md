@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: c5c2e4cd26954efb92d470f5432f709e4dc3f887
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c22d75b4eb058942da5a3b0699cbb4a23eec42f3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240575"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634927"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Porovnání služeb Flow, Logic Apps, Functions a WebJobs
 
@@ -53,7 +53,7 @@ Následující tabulka vám pomůže určit, jestli je pro danou integraci nejle
 
 Functions a Logic Apps jsou služby Azure, které umožňují provádění úloh bez serveru. Azure Functions je služba pro provádění výpočtů bez serveru, zatímco služba Azure Logic Apps umožňuje provádění pracovních postupů bez serveru. Obě služby můžou vytvářet komplexní *orchestrace*. Orchestrace je kolekce funkcí nebo kroků (v Logic Apps se nazývají *akce*), jejichž spouštěním se provede složitý úkol. Při zpracování dávky objednávek můžete například spustit velký počet instancí funkce současně, počkat na dokončení všech instancí a pak spustit funkci, která vypočítá výsledek pro agregaci.
 
-K vývoji orchestrací pro Azure Functions se používá zápis kódu a [rozšíření Durable Functions](durable-functions-overview.md). K vytváření orchestrací pro Logic Apps se používá grafické rozhraní (GUI) nebo úprava konfiguračních souborů.
+K vývoji orchestrací pro Azure Functions se používá zápis kódu a [rozšíření Durable Functions](durable/durable-functions-overview.md). K vytváření orchestrací pro Logic Apps se používá grafické rozhraní (GUI) nebo úprava konfiguračních souborů.
 
 Při sestavování orchestrace lze služby kombinovat, takže je možné volat funkce z aplikací logiky a volat aplikace logiky z funkcí. Způsob sestavování orchestrace volte na základě možností těchto služeb nebo podle svých potřeb. Následující tabulka uvádí některé hlavní rozdíly mezi těmito službami:
  
@@ -63,7 +63,7 @@ Při sestavování orchestrace lze služby kombinovat, takže je možné volat f
 | Připojení | [Zhruba tucet předdefinovaných typů vazeb](functions-triggers-bindings.md#supported-bindings), zápis kódu pro vlastní vazby | [Rozsáhlá kolekce konektorů](../connectors/apis-list.md), [Enterprise Integration Pack pro scénáře B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [sestavení vlastních konektorů](../logic-apps/custom-connector-overview.md) |
 | Akce | Každá aktivita je funkce Azure; zápis kódu pro funkce aktivity |[Rozsáhlá kolekce předdefinovaných akcí](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | Monitorování | [Azure Application Insights](../application-insights/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
-| Správa | [REST API](durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/?view=azurermps-5.6.0), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
+| Správa | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/?view=azurermps-5.6.0), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | Kontext spuštění | Může se spustit [místně](functions-runtime-overview.md) nebo v cloudu. | Spouští se jenom v cloudu.|
 
 <a name="function"></a>
@@ -117,7 +117,7 @@ Tok může volat aplikaci logiky. Aplikace logiky může volat funkci a funkce m
 
 Integrace mezi službami Flow, Logic Apps a Functions se v průběhu času neustále zlepšuje. Můžete něco vytvořit v jedné službě a používat to v ostatních službách.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začněte vytvořením svého prvního toku, aplikace logiky nebo aplikace funkcí. Klikněte na některý z následujících odkazů:
 

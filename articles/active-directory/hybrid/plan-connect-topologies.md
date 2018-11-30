@@ -12,15 +12,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 10/09/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 74b2cea8e3adfb6689d4ac7049e7892f8f0ecf4a
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158852"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582628"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie pro Azure AD Connect
 Tento článek popisuje různé místní a topologie služby Azure Active Directory (Azure AD), ve kterých pomocí synchronizace Azure AD Connect jako klíče integrační řešení. Tento článek popisuje podporované a nepodporované konfigurace.
@@ -84,7 +84,9 @@ Můžete najít další informace naleznete v [Principy výchozí konfigurace](c
 
 S více než jeden server synchronizace Azure AD Connect připojené do jednoho tenanta Azure AD se nepodporuje. Výjimkou je použití [pracovní server](#staging-server).
 
-### <a name="multiple-forests-separate-topologies"></a>Více doménových struktur, samostatné topologie
+Tato topologie se liší od uvedený níže v tomto **víc synchronizačních serverů** připojené k jedné službě Azure AD tenanta nepodporuje.
+
+### <a name="multiple-forests-single-sync-server-users-are-represented-in-only-one-directory"></a>Více doménových struktur, jeden synchronizační server, jsou uživatelé reprezentovaní ve pouze jeden adresář
 ![Možnost představující ve všech adresářích jenom jednou uživatelů](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
 ![Znázornění více doménových struktur a samostatné topologie](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)

@@ -1,5 +1,5 @@
 ---
-title: Správa přístupu k fakturaci, pomocí role Azure | Dokumentace Microsoftu
+title: Správa přístupu k fakturaci Azure | Dokumentace Microsoftu
 description: ''
 services: ''
 documentationcenter: ''
@@ -13,70 +13,95 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2017
+ms.date: 11/02/2018
 ms.author: cwatson
-ms.openlocfilehash: 0a8b5532f00d5feb964109710132816a191298e7
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 7a4e19ae5bf770949623f4cee7fa0d3033ccfa29
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274768"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582611"
 ---
-# <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Správa přístupu k fakturačních údajů pro Azure pomocí řízení přístupu na základě rolí
+# <a name="manage-access-to-billing-information-for-azure"></a>Správa přístupu k fakturačních údajů pro Azure
 
-Přístup k fakturačním údajům Azure můžete členům vašeho týmu poskytnout přiřazením jedné z následujících uživatelských rolí k vašemu předplatnému: Správce účtu, Správce služeb, Spolusprávce, Vlastník, Přispěvatel, Čtenář a Čtenář fakturace. By mají přístup k fakturační údaje v [webu Azure portal](https://portal.azure.com/), a můžete použít [rozhraní API pro fakturaci](billing-usage-rate-card-overview.md) prostřednictvím kódu programu získat faktury (jednou přihlásí) a podrobnosti o použití. Další informace o, kdo může udělit rolí a rolí můžete udělat, najdete v článku [role v Azure RBAC](../role-based-access-control/built-in-roles.md).
+Pro většinu předplatných, můžete poskytnout fakturační informace přístup členům vašeho týmu z **předplatná** na webu Azure Portal. Pokud jste zákazník Azure se smlouvou Enterprise (EA zákazníka) a jsou správce rozlehlé sítě, můžete udělit oprávnění k oddělení správci a vlastníci účtu na portálu Enterprise.
 
-## <a name="opt-in"></a> Povolíte dalším uživatelům pro přístup k faktury
+## <a name="give-access-to-billing"></a>Poskytnout přístup k fakturaci
 
-Správce účtu musí přihlásit pomocí [webu Azure portal](https://portal.azure.com/) povolit přístup k faktury pro ostatní uživatele a prostřednictvím rozhraní API.
+Všechny s výjimkou zákazníky se smlouvou EA může udělit přístup k Azure fakturační údaje přiřazením jednu z následujících rolí uživatele členům vašeho týmu:
 
+- Správce účtu
+- Správce služeb
+- Spolusprávce
+- Vlastník
+- Přispěvatel
+- Čtenář
+- Čtenář fakturace
+
+Přiřazení rolí, najdete v článku [správě přístupu pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md).
+
+Tyto role mají přístup k fakturační údaje v [webu Azure portal](https://portal.azure.com/). Můžete také použít osoby, která jsou přiřazena těmto rolím [API pro fakturaci](billing-usage-rate-card-overview.md) programově získání faktury a podrobnosti o použití. Další informace najdete v tématu [role v Azure RBAC](../role-based-access-control/built-in-roles.md).
+
+### <a name="opt-in"></a> Povolit uživatelům stahovat faktury
+
+Poté co přiřaďte odpovídající role, které chcete členům vašeho týmu účtu správce musíte zapnout vyhodnocení ke stažení faktury na webu Azure Portal. Faktury starší než prosince 2016 jsou k dispozici pouze pro účet správce.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Jako správce účtu, vyberte své předplatné z [okně předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure portal.
 
 1. Vyberte **faktury** a potom **přístup na fakturách**.
 
     ![Snímek obrazovky ukazuje, jak delegovat přístup k faktury](./media/billing-manage-access/AA-optin.png)
 
-1. Zapnout **na** přístup a ukládají se změny, umožňuje uživatelům v předplatném obor role stáhnout fakturu.
+1. Vyberte **na** a uložit.
 
     ![Snímek obrazovky ukazuje zapnutí nebo vypnutí pro delegování přístupu k faktuře](./media/billing-manage-access/AA-optinAllow.png)
 
-Vyjádření výslovného souhlasu umožňuje Správce služeb, spolusprávce, vlastník, Přispěvatel, Čtenář a čtenář fakturace na předplatné, které chcete stahovat PDF faktury na webu Azure Portal. Starší než prosince 2016 faktury jsou však k dispozici pouze pro účet správce teď.
-
 Správce účtu může také nakonfigurovat odesílání faktur e-mailem. Další informace najdete v tématu věnovaném [dostávání faktur e-mailem](billing-download-azure-invoice-daily-usage-date.md).
 
-## <a name="adding-users-to-the-billing-reader-role"></a>Přidání uživatele k roli Čtenář fakturace
+## <a name="give-read-only-access-to-billing"></a>Poskytnout přístup jen pro čtení k fakturaci
 
-Role Čtenář fakturace má přístup jen pro čtení na fakturační informace o předplatném na webu Azure portal a žádné přístup ke službám, jako jsou virtuální počítače a účty úložiště. Přiřazení role Čtenář fakturace jinému uživateli, který potřebuje přístup k fakturační informace o předplatném, ale není možnost správy služeb Azure. Tato role je vhodný pro uživatele v organizaci, kteří pouze provádět správu finanční a poplatků za odběr služeb Azure.
+Role Čtenář fakturace přiřadíte jinému vyžadující oprávnění jen pro čtení na fakturační informace o předplatném, ale ne schopnost spravovat nebo vytvoření služby Azure. Tato role je vhodný pro uživatele v organizaci, kteří jsou zodpovědní za správu finanční a poplatků za odběr služeb Azure.
 
+Pokud jste zákazník EA, vlastník účtu nebo správce oddělení můžete přiřadit role Čtenář fakturace členům týmu. Pro tento Čtenář fakturace k zobrazení fakturačních údajů pro oddělení nebo účet, musíte povolit správce rozlehlé sítě, ale **AO zobrazit náklady** nebo **DA zobrazit náklady** zásady na portálu Enterprise.
+
+Čtenář fakturace funkce je ve verzi preview a zatím nepodporuje neglobální cloudy.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Vyberte požadované předplatné v [okně Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) na webu Azure Portal.
 
-1. Vyberte **řízení přístupu (IAM)** a potom klikněte na tlačítko **přidat**.
-
-    ![Snímek obrazovky ukazuje IAM v okně předplatného](./media/billing-manage-access/select-iam.PNG)
-
-1. Zvolte **Čtenář fakturace** v **vybrat roli** stránky.
-
-    ![Snímek obrazovky ukazuje Čtenář fakturace v zobrazení místní nabídky](./media/billing-manage-access/select-roles.PNG)
-
-1. Zadejte e-mail uživatele, kterého chcete pozvat, a potom kliknutím na **OK** odešlete pozvánku.
-
-    ![Snímek obrazovky zobrazující k zadání e-mailu na pozvání uživatele](./media/billing-manage-access/add-user.PNG)
-
-1. Postupujte podle pokynů v e-mailové pozvánce a přihlaste se jako čtenář fakturace.
+1. Vyberte **řízení přístupu (IAM)**.
+1. Vyberte **přiřazení rolí** zobrazíte všechna přiřazení rolí pro toto předplatné.
+1. Vyberte **přidat** > **přidat přiřazení role**.
+1. V **Role** rozevíracího seznamu, zvolte **Čtenář fakturace**.
+1. V **vyberte** textového pole zadejte název nebo e-mailu pro uživatele, které chcete přidat.
+1. Vyberte **Uložit**.
+1. Po chvíli se má uživatel přiřazenou roli Čtenář fakturace v oboru předplatného.
+1. Čtenář fakturace obdrží e-mail s odkazem pro přihlášení.
 
     ![Snímek obrazovky, který ukazuje, co všechno uvidí Čtenář fakturace na webu Azure portal](./media/billing-manage-access/billing-reader-view.png)
 
-> [!NOTE]
-> Čtenář fakturace funkce je ve verzi preview a zatím nepodporuje neglobální cloudy. Předplatné Enterprise můžete zobrazit náklady, pokud má správce rozlehlé sítě povolené zobrazit náklady.
+## <a name="allow-department-administrator-or-account-owner-billing-access"></a>Povolit přístup fakturační oddělení správce nebo vlastníka účtu
 
-## <a name="adding-users-to-other-roles"></a>Přidání uživatelů do jiné role
+Správce rozlehlé sítě umožňuje správcům oddělení a vlastníci účtu k zobrazení informací o využití a náklady spojené s oddělení a účty, které spravují.
 
-Uživatelé v jiných rolích, jako je například roli vlastníka nebo přispěvatele, můžou používat jenom fakturační údaje, ale také služby Azure. Ke správě těchto rolí, najdete v článku [správě přístupu pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md).
+1. Jako správce podnikové sítě, přihlaste se k [portál EA](https://ea.azure.com/).
+1. Vyberte **spravovat**.
+1. V části **registrace**, změnit **DA zobrazit náklady** k **povoleno** pro oddělení správcům zobrazit využití a náklady.
+1. Změna **AO zobrazit náklady** k **povoleno** vlastníka účtu, který chcete zobrazit využití a nákladů.
 
-## <a name="who-can-access-the-account-centerhttpsaccountwindowsazurecom"></a>Kdo má přístup k [centra pro účty](https://account.windowsazure.com)?
 
-Pouze správce účtu může přihlásit do centra pro účty. Správce účtu se jejím právoplatným vlastníkem předplatného. Ve výchozím nastavení, osoby, která registrovanou službu nebo zakoupili předplatné Azure je správcem účtu, pokud [bylo převedeno vlastnictví předplatného](billing-subscription-transfer.md) někomu jinému. Správce účtu můžete vytvářet odběry, zrušit předplatná, změnit fakturační adresu pro přihlášení k odběru a spravovat zásady přístupu pro předplatné.
+Další informace najdete v tématu [správních rolí pochopit smlouvy Azure Enterprise v Azure](billing-understand-ea-roles.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="only-account-admins-can-access-account-center"></a>Pouze správce účtu může přístup k centru účtů
 
-Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Správce účtu se jejím právoplatným vlastníkem předplatného. Ve výchozím nastavení, osoby, která registrovanou službu nebo zakoupili předplatné Azure je správcem účtu, pokud [bylo převedeno vlastnictví předplatného](billing-subscription-transfer.md) někomu jinému. Správce účtu může vytvářet předplatná, zrušit předplatná, změnit adresu fakturace předplatného a spravovat zásady přístupu pro předplatné z [centra pro účty](https://account.azure.com/Subscriptions).
+
+## <a name="next-steps"></a>Další postup
+
+- Uživatelé v jiných rolích, jako je například roli vlastníka nebo přispěvatele, můžou používat jenom fakturační údaje, ale také služby Azure. Ke správě těchto rolí, najdete v článku [správě přístupu pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md).
+- Další informace o rolích najdete v tématu [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md).
+
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

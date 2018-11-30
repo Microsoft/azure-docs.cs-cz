@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: raynew
-ms.openlocfilehash: 9ec69b474f72115f2104060b6f55af1992c31517
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 2755cc4e8e0e5a1b2a0e491b00fc73530dd9b958
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819300"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635675"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Seskupení počítačů s využitím mapování závislostí počítačů
 
@@ -35,7 +35,7 @@ Využití vizualizace závislostí, je potřeba přiřadit pracovní prostor Log
 > Nelze změnit pracovní prostor, přidružené k projektu migrace.
 
 ### <a name="download-and-install-the-vm-agents"></a>Stažení a instalace agentů virtuálního počítače
-Po konfiguraci pracovního prostoru, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete vyhodnotit. Kromě toho, pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat [Log Analytics gateway](../log-analytics/log-analytics-oms-gateway.md) na ně.
+Po konfiguraci pracovního prostoru, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete vyhodnotit. Kromě toho, pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat [Log Analytics gateway](../azure-monitor/platform/gateway.md) na ně.
 
 1. V **přehled**, klikněte na tlačítko **spravovat** > **počítače**a vyberte požadovaný počítač.
 2. V **závislosti** sloupce, klikněte na tlačítko **instalovat agenty**.
@@ -76,7 +76,7 @@ Další informace o podpoře agenta závislostí [Windows](../azure-monitor/insi
 
 [Další informace](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) o použití skriptů k instalaci agenta závislostí.
 
-## <a name="create-a-group"></a>Vytvořit skupinu
+## <a name="create-a-group"></a>Vytvoření skupiny
 
 1. Po instalaci agentů, přejděte na portál a klikněte na tlačítko **spravovat** > **počítače**.
 2. Hledání počítače, kam jste nainstalovali agenty.

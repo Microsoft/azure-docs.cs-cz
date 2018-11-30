@@ -2,19 +2,18 @@
 title: Jak se zaměřit na verze modulu runtime Azure Functions
 description: Služba Azure Functions podporuje více verzí modulu runtime. Zjistěte, jak určit verzi modulu runtime aplikace funkcí hostované v Azure.
 services: functions
-documentationcenter: ''
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/05/2018
+ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: 6d89746c0a2d4642e5025789d352803195c0a3b9
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a0f66f5a1ba64c955fe0669d3ed215ee7c2895c0
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886803"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498393"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak se zaměřit na verze modulu runtime Azure Functions
 
@@ -37,23 +36,13 @@ Hodnoty můžete nastavit `FUNCTIONS_EXTENSION_VERSION` nastavení, které povol
 
 ## <a name="view-and-update-the-current-runtime-version"></a>Zobrazit a aktualizovat aktuální verze modulu runtime
 
-Následující postup použijte k zobrazení verze modulu runtime momentálně používáte aplikaci function app.
+Můžete změnit verzi modulu runtime používané jste aplikaci function app. Z důvodu potenciál rozbíjející změny v by měl změnit pouze verze modulu runtime, než vytvoříte všechny funkce v aplikaci function app. I když se verze modulu runtime závisí `FUNCTIONS_EXTENSION_VERSION` nastavení, by měl provedení této změny na webu Azure Portal a není to změnou nastavení přímo. Je to proto, že na portálu ověří změny a provádět další související změny podle potřeby.
 
-1. V [webu Azure portal](https://portal.azure.com), přejděte do aplikace function app.
+### <a name="from-the-azure-portal"></a>Na webu Azure Portal
 
-1. V části **nakonfigurovat funkce**, zvolte **fungovat nastavení aplikace**.
+[!INCLUDE [Set the runtime version in the portal](../../includes/functions-view-update-version-portal.md)]
 
-    ![Vyberte nastavení aplikace function app](./media/set-runtime-version/add-update-app-setting.png)
-
-1. V **fungovat nastavení aplikace** kartu, vyhledejte **verze modulu Runtime**. Poznamenejte si verzi modulu runtime specifické a požadovaný hlavní verze. V následujícím příkladu verze nastavena `~2`.
-
-   ![Vyberte nastavení aplikace function app](./media/set-runtime-version/function-app-view-version.png)
-
-1. Chcete-li připnout aplikace function app na modul runtime verze 1.x, zvolte **~ 1** pod **verze modulu Runtime**. Tento přepínač je zakázaný, pokud máte ve vaší aplikaci funkcí.
-
-1. Pokud jste změnili verzi modulu runtime, přejděte zpátky k **přehled** kartě a zvolte **restartovat** aplikaci restartovat.  Restartování aplikace function app běží na modul runtime verze 1.x a šablony verze 1.x se používají při vytváření funkce.
-
-## <a name="view-and-update-the-runtime-version-using-azure-cli"></a>Zobrazit a aktualizovat verzi modulu runtime pomocí Azure CLI
+### <a name="view-and-update-the-runtime-version-using-azure-cli"></a>V Azure CLI
 
 Můžete také zobrazit a nastavit `FUNCTIONS_EXTENSION_VERSION` z příkazového řádku Azure.
 

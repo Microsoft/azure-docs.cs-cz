@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: ashish
-ms.openlocfilehash: 82995f2cc8facac9bef6f8c84c9667775ac81463
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: abb80bb0877f99dfb1623e320078e935f581d833
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038514"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498670"
 ---
-# <a name="use-ambari-to-optimize-hdinsight-cluster-configurations"></a>Optimalizace konfigurace clusterů HDInsight pomocí Ambari
+# <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Použití Apache Ambari optimalizovat konfigurace clusterů HDInsight
 
-HDInsight nabízí clustery systému Apache Hadoop pro rozsáhlé zpracování dat aplikace. Správa, monitorování a optimalizace tyto komplexní clustery s několika uzly může být náročné. [Apache Ambari](http://ambari.apache.org/) je webové rozhraní pro správu a monitorování clusterů HDInsight s Linuxem.  V případě clusterů Windows pomocí Ambari [rozhraní REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
+HDInsight poskytuje [Apache Hadoop](https://hadoop.apache.org/) clustery pro rozsáhlé zpracování dat aplikace. Správa, monitorování a optimalizace tyto komplexní clustery s několika uzly může být náročné. [Apache Ambari](http://ambari.apache.org/) je webové rozhraní pro správu a monitorování clusterů HDInsight s Linuxem.  V případě clusterů Windows používat [rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-Úvod do pomocí webového uživatelského rozhraní Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)
+Úvod do pomocí webového uživatelského rozhraní Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 
 Přihlaste se k Ambari v `https://CLUSTERNAME.azurehdidnsight.net` pomocí svých přihlašovacích údajů clusteru. Na úvodní obrazovce se zobrazí řídicího panelu s přehledem.
 
@@ -59,16 +59,16 @@ Chcete-li změnit velikost haldy NameNode Java:
 
     ![Uložit změny](./media/hdinsight-changing-configs-via-ambari/save-changes.png)
 
-## <a name="hive-optimization"></a>Optimalizace Hive
+## <a name="apache-hive-optimization"></a>Apache Hive optimalizace
 
-Následující části popisují možnosti konfigurace pro optimalizaci celkový výkon Hive.
+Následující části popisují možnosti konfigurace pro optimalizaci celkový výkon Apache Hive.
 
 1. Chcete-li upravit parametry konfigurace Hive, vyberte **Hive** postranním panelu služby.
 1. Přejděte **Configs** kartu.
 
 ### <a name="set-the-hive-execution-engine"></a>Nastavit spouštěcí modul Hive
 
-Hive obsahuje dva motory spuštění: MapReduce a Tez. Tez je rychlejší než MapReduce. Clustery HDInsight Linux mají jako výchozí prováděcí modul Tez. Chcete-li změnit prováděcí modul:
+Hive obsahuje dva motory spuštění: [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) a [Apache TEZ](https://tez.apache.org/). Tez je rychlejší než MapReduce. Clustery HDInsight Linux mají jako výchozí prováděcí modul Tez. Chcete-li změnit prováděcí modul:
 
 1. V podregistru **Configs** kartu, zadejte **prováděcí modul** v poli filtru.
 
@@ -99,7 +99,7 @@ Tyto změny se projeví všechny úlohy Tez napříč serveru. K získání opti
 
 ### <a name="tune-reducers"></a>Vyladění reduktorů
 
-ORC a Snappy nabízí vysoký výkon. Ale Hive pravděpodobně příliš málo reduktorů ve výchozím nastavení, příčinou kritických bodů.
+[Apache ORC](https://orc.apache.org/) a [Snappy](https://google.github.io/snappy/) oboje poskytuje vysoký výkon. Ale Hive pravděpodobně příliš málo reduktorů ve výchozím nastavení, příčinou kritických bodů.
 
 Řekněme například, že mají velikost vstupních dat 50 GB. Formát dat v ORC se Tenhle komprese je 1 GB. Hive odhady počtu reduktorů potřebné jako: (počet bajtů vstup mapovačů / `hive.exec.reducers.bytes.per.reducer`).
 
@@ -287,9 +287,9 @@ Další doporučení pro optimalizaci prováděcí modul Hive:
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
 | `tez.am.container.idle.release-timeout-max.millis` | 40000+ | 20000 |
 
-## <a name="pig-optimization"></a>Optimalizace pig
+## <a name="apache-pig-optimization"></a>Apache Pig optimalizace
 
-Pig vlastnosti lze změnit webové uživatelské rozhraní vyladění dotazů Pig Ambari. Úpravy vlastností Pig z Ambari přímo upraví vlastnosti Pig `/etc/pig/2.4.2.0-258.0/pig.properties` souboru.
+[Apache Pig](https://pig.apache.org/) vlastnosti lze změnit webové uživatelské rozhraní vyladění dotazů Pig Ambari. Úpravy vlastností Pig z Ambari přímo upraví vlastnosti Pig `/etc/pig/2.4.2.0-258.0/pig.properties` souboru.
 
 1. K úpravě vlastností Pig, přejděte Pig **Configs** kartu a potom rozbalte **rozšířené vlastnosti pig** podokně.
 
@@ -326,7 +326,7 @@ Pig zkopíruje soubory JAR vyžadované uživatelem definovanými funkcemi distr
 
 1. Chcete-li povolit, nastavte `pig.user.cache.enabled` na hodnotu true. Výchozí hodnota je false.
 
-1. Chcete-li nastavena základní cesta v mezipaměti JAR, nastavte `pig.user.cache.location` základní cestu. Výchozí hodnota je `/tmp`.
+1. Chcete-li nastavena základní cesta v mezipaměti JAR, nastavte `pig.user.cache.location` základní cestu. Výchozí formát je `/tmp`.
 
 
 ### <a name="optimize-performance-with-memory-settings"></a>Optimalizujte výkon pomocí nastavení paměti
@@ -344,7 +344,7 @@ Pig generuje dočasných souborů během provádění úlohy. Komprese dočasné
 
 * `pig.tmpfilecompression`: V případě hodnoty true umožňuje komprese dočasný soubor. Výchozí hodnota je false.
 
-* `pig.tmpfilecompression.codec`: Kompresní kodek pro kompresi dočasné soubory. Kodeky doporučené komprese jsou LZO a Snappy nižší využití procesoru.
+* `pig.tmpfilecompression.codec`: Kompresní kodek pro kompresi dočasné soubory. Kodeky doporučené komprese jsou [LZO](https://www.oberhumer.com/opensource/lzo/) a Snappy nižší využití procesoru.
 
 ### <a name="enable-split-combining"></a>Povolit kombinování rozdělení
 
@@ -361,9 +361,9 @@ Počet mapovačů je řízen pomocí úpravy vlastnosti `pig.maxCombinedSplitSiz
 Počet reduktorů se počítá na základě parametru `pig.exec.reducers.bytes.per.reducer`. Parametr určuje počet bajty zpracovaných za redukční funkci, ve výchozím nastavení 1 GB. Chcete-li omezit maximální počet reduktorů, nastavte `pig.exec.reducers.max` vlastnosti ve výchozím nastavení 999.
 
 
-## <a name="hbase-optimization-with-the-ambari-web-ui"></a>Optimalizace HBase pomocí webového uživatelského rozhraní Ambari
+## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Optimalizace Apache HBase pomocí webového uživatelského rozhraní Ambari
 
-Konfigurace HBase se liší od **HBase Configs** kartu. Následující části popisují některé důležité konfigurační nastavení, které ovlivňují výkon HBase.
+[Apache HBase](https://hbase.apache.org/) konfigurace se liší od **HBase Configs** kartu. Následující části popisují některé důležité konfigurační nastavení, které ovlivňují výkon HBase.
 
 ### <a name="set-hbaseheapsize"></a>Nastavte HBASE_HEAPSIZE
 
@@ -453,5 +453,5 @@ Využití vyrovnávací paměti místního přidělení paměťového úložišt
 
 ## <a name="next-steps"></a>Další postup
 
-* [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Ambari](hdinsight-hadoop-manage-ambari.md)
-* [Rozhraní Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
+* [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
+* [Apache Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md)

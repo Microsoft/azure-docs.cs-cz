@@ -10,12 +10,12 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 100d2a6163c6b2b7a7bf8a557e69e1082b48eaee
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: b985521fdcfc5ca67b6410719ad72c0962004df6
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979212"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499603"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Odkaz na místní firmy hledání rozhraní API Bingu v7
 

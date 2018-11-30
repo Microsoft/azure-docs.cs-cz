@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2018
+ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 49341b320df98bb08ee4f5c4ee061a51bec29ff2
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb8eb4eae192cf0dd3a3555a3b1209705dd83aaf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686156"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583687"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 
@@ -33,13 +33,15 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Rozpočty jsou k dispozici pro všechny zákazníky Azure EA. Pro vytváření a správu rozpočtů musíte mít k předplatnému Azure EA přístup pro čtení. Můžete vytvořit jednotlivé rozpočty pro skupiny prostředků a předplatných EA. Nelze však vytvořit rozpočty pro fakturační účty EA.
+Rozpočty jsou k dispozici pro všechny zákazníky Azure EA. Musíte mít oprávnění ke čtení pro rozpočty zobrazení předplatného Azure EA. Vytvoření a Správa rozpočtů, musí mít oprávnění přispěvatele. Můžete vytvořit jednotlivé rozpočty pro skupiny prostředků a předplatných EA. Nelze však vytvořit rozpočty pro fakturační účty EA.
 
 Následující oprávnění Azure se podporuje na předplatné pro rozpočty uživatelů a skupin:
 
 - Vlastník – Může vytvářet, upravovat a odstraňovat rozpočty u předplatných.
-- Přispěvatel – Může vytvářet, upravovat a odstraňovat svoje vlastní rozpočty. Může měnit částky rozpočtu pro rozpočty, které vytvářejí jiní uživatelé.
-- Čtenář – Může zobrazovat rozpočty, ke kterým má oprávnění.
+- Přispěvatel a přispěvatelů Cost Management – můžete vytvořit, upravit nebo odstranit vlastní rozpočty. Může měnit částky rozpočtu pro rozpočty, které vytvářejí jiní uživatelé.
+- Čtenář a čtečky Cost Management – můžete zobrazit rozpočty, ke kterým mají oprávnění.
+
+Další informace o přiřazování oprávnění k datům služby Cost Management najdete v tématu [přiřazení přístupu k datům služby Cost Management](assign-access-acm-data.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 

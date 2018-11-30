@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aecd68734999c30f3dc8e7a2ea8c7d5e9cdfacb0
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 78882742549632e7f1f6362f9e3ad0ae0034ffda
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166334"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634672"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizace výkonu a spolehlivosti Azure Functions
 
@@ -37,7 +37,7 @@ Pokaždé, když je to možné, refaktorace rozsáhlé funkce do menších funkc
 
 ### <a name="cross-function-communication"></a>Různé komunikační – funkce
 
-[Odolná služba Functions](durable-functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) jsou za účelem správy přechodů mezi stavy a komunikaci mezi více funkcí.
+[Odolná služba Functions](durable/durable-functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) jsou za účelem správy přechodů mezi stavy a komunikaci mezi více funkcí.
 
 Pokud nepoužíváte Durable Functions nebo Logic Apps můžete integrovat s více funkcí, je obecně osvědčeným postupem je použití front služby storage pro různé funkce komunikace.  Hlavním důvodem je, že front služby storage jsou levnější a mnohem snadněji zřizovat. 
 

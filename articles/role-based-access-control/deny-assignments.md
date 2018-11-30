@@ -11,20 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 8ef3a2ec44c5eff80d3a50a6c56805667e164ba8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fa1a979c01999bd79c45d24e4c7771edaf346dd8
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980164"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632411"
 ---
-# <a name="understand-deny-assignments"></a>Vysvětlení zamítnout přiřazení
+# <a name="understand-deny-assignments"></a>Vysvětlení zamítnutých přiřazení
 
-Přiřazení role, podobně jako *zamítnout přiřazení* akce odepřít vazby skupinu pro uživatele, skupinu nebo instanční objekt v určitém rozsahu pro účely odepření přístupu. Odepřít přiřazení můžete také vyloučit objekty zabezpečení a zabránit dědění za účelem podřízené obory, které se liší od přiřazení rolí. V současné době zamítnout přiřazení **jen pro čtení** a lze nastavit pouze v Azure. Tento článek popisuje, jak zakázat přiřazení jsou definovány.
+Přiřazení role, podobně jako *zamítnout přiřazení* akce Odepřít bude k obrazci skupinu pro uživatele, skupinu nebo instanční objekt v určitém rozsahu pro účely odepření přístupu. Zamítnout přiřazení zablokovat uživatelům provádět konkrétní akce i v případě přiřazení role uděluje přístup. Některé prostředek, který poskytovatelů služeb v Azure teď obsahují zamítnout přiřazení. Přiřazení zamítnutí jsou momentálně **jen pro čtení** a může je nastavit jen Azure.
+
+V některých ohledech odeprete přiřazení se liší od přiřazení rolí. Zamítnout přiřazení můžete vyloučit objekty zabezpečení a zabránit dědění za účelem podřízených oborech. Zamítnout přiřazení platí také pro [klasický správce předplatného](rbac-and-directory-admin-roles.md) přiřazení.
+
+Tento článek popisuje, jak zakázat přiřazení jsou definovány.
 
 ## <a name="deny-assignment-properties"></a>Zamítnout přiřazení vlastnosti
 
@@ -41,18 +45,18 @@ Přiřazení role, podobně jako *zamítnout přiřazení* akce odepřít vazby 
 > | `Permissions.NotDataActions` | Ne | Řetězec] | Pole řetězců, které určují operace s daty chcete vyloučit z přiřazení odepřít. |
 > | `Scope` | Ne | Řetězec | Řetězec, který určuje obor, vztahující se k přiřazení odepřít. |
 > | `DoNotApplyToChildScopes` | Ne | Logická hodnota | Určuje, zda Odepřít přiřazení se vztahuje na podřízené obory. Výchozí hodnota je false. |
-> | `Principals[i].Id` | Ano | Řetězec] | Pole instanční objekt Azure AD ID (uživatele, skupinu nebo instanční objekt služby), u kterých bude použito přiřazení odepřít. Nastavit na prázdný identifikátor GUID `00000000-0000-0000-0000-000000000000` představující všem uživatelům. |
-> | `Principals[i].Type` | Ne | Řetězec] | Pole typů objekt reprezentovaný .id objekty zabezpečení [i]. Nastavte na `Everyone` představující všem uživatelům. |
-> | `ExcludePrincipals[i].Id` | Ne | Řetězec] | Pole instanční objekt Azure AD ID (uživatele, skupinu nebo instanční objekt služby), do kterých se přiřazení odepřít nevztahuje. |
+> | `Principals[i].Id` | Ano | Řetězec] | Pole instanční objekt Azure AD ID (uživatele, skupiny, instanční objekt nebo spravovanou identitu), u kterých bude použito přiřazení odepřít. Nastavit na prázdný identifikátor GUID `00000000-0000-0000-0000-000000000000` představující všechny objekty zabezpečení. |
+> | `Principals[i].Type` | Ne | Řetězec] | Pole typů objekt reprezentovaný .id objekty zabezpečení [i]. Nastavte na `SystemDefined` představující všechny objekty zabezpečení. |
+> | `ExcludePrincipals[i].Id` | Ne | Řetězec] | Pole instanční objekt Azure AD ID (uživatele, skupiny, instanční objekt nebo spravovanou identitu), do kterých se přiřazení odepřít nevztahuje. |
 > | `ExcludePrincipals[i].Type` | Ne | Řetězec] | Pole typů objekt reprezentovaný .id ExcludePrincipals [i]. |
 > | `IsSystemProtected` | Ne | Logická hodnota | Určuje, zda to zamítnout přiřazení vytvořil Azure a nelze upravovat ani odstranit. V současné době všechny odepřít systému chráněné jsou odevzdané úkoly. |
 
-## <a name="everyone-principal"></a>Všichni instančního objektu
+## <a name="system-defined-principal"></a>Objekt zabezpečení definované v systému
 
-Pro podporu zamítnout přiřazení, všichni instančního objektu je zavedený. Všichni hlavní představuje uživatele, skupiny nebo instanční objekty v adresáři Azure AD. Pokud je ID objektu zabezpečení žádný identifikátor GUID `00000000-0000-0000-0000-000000000000` a typ objektu zabezpečení je `Everyone`, objekt zabezpečení představuje všem uživatelům. Každý instanční objekt je možné kombinovat s `ExcludePrincipals` odepřít všem uživatelům kromě některých uživatelů. Hlavní všichni mají následující omezení:
+Pro podporu zamítnout přiřazení, **systémem definovaná hlavní** je zavedený. Tento objekt zabezpečení představuje uživatele, skupiny, instančních objektů a spravovaných identit v adresáři Azure AD. Pokud je ID objektu zabezpečení žádný identifikátor GUID `00000000-0000-0000-0000-000000000000` a typ objektu zabezpečení je `SystemDefined`, objekt zabezpečení představuje všechny objekty zabezpečení. `SystemDefined` je možné kombinovat s `ExcludePrincipals` pro všechny objekty zabezpečení, s výjimkou někteří uživatelé odepření. `SystemDefined` má následující omezení:
 
 - Lze použít pouze ve `Principals` a nelze jej použít v `ExcludePrincipals`.
-- `Principals[i].Type` musí být nastaveno na `Everyone`.
+- `Principals[i].Type` musí být nastaveno na `SystemDefined`.
 
 ## <a name="next-steps"></a>Další postup
 

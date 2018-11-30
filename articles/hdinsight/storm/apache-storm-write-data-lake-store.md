@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: d38b4e511defbb50dd5f74ae72e71d3316a57b3c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 524195372abde91b302ee03c13152f234ef56406
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567124"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498269"
 ---
-# <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do HDFS z Apache Storm v HDInsight
+# <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do Apache Hadoop HDFS z Apache Storm v HDInsight
 
-Zjistěte, jak použít k zápisu dat do HDFS kompatibilního úložiště využitá službou Apache Storm v HDInsight Storm. HDInsight můžete použít obě služby Azure Storage a Azure Data Lake úložiště jako HDFS kompatibilního úložiště. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenta, která zapisuje data do rozhraní HDFS. Tento dokument obsahuje informace o zápisu do obou typů úložiště z HdfsBolt. 
+Další informace o použití [Apache Storm](http://storm.apache.org/) zapsat data do HDFS kompatibilního úložiště využitá službou Apache Storm v HDInsight. HDInsight můžete použít obě služby Azure Storage a Azure Data Lake úložiště jako HDFS kompatibilního úložiště. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenta, která zapisuje data do rozhraní HDFS. Tento dokument obsahuje informace o zápisu do obou typů úložiště z HdfsBolt. 
 
 > [!IMPORTANT]
 > Topologii příkladu v tomto dokumentu se spoléhá na součásti, které jsou součástí Storm v HDInsight. Může vyžadovat změny pro práci s Azure Data Lake Store při použití s další clustery Apache Storm.
@@ -129,7 +129,7 @@ Tato YAML definuje následující položky:
 * `rotationPolicy`: Určuje, kdy obměna soubory. V tomto příkladu se provádí bez otočení.
 * `hdfs-bolt`: Používá předchozí komponenty jako parametry konfigurace pro `HdfsBolt` třídy.
 
-Další informace o rozhraní tok, najdete v části [ https://storm.apache.org/releases/1.1.2/flux.html ](https://storm.apache.org/releases/1.1.2/flux.html).
+Další informace o rozhraní tok, najdete v části [ https://storm.apache.org/releases/current/flux.html ](https://storm.apache.org/releases/current/flux.html).
 
 ## <a name="configure-the-cluster"></a>Konfigurace clusteru
 
@@ -219,5 +219,5 @@ Topologie Storm běží až do ukončení nebo odstranění clusteru. Pokud chce
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili, jak používat Storm k zápisu do služby Azure Storage a Azure Data Lake Store, zjišťovat další [příklady Storm pro HDInsight](apache-storm-example-topology.md).
+Teď, když jste se naučili, jak zapsat do služby Azure Storage a Azure Data Lake Store pomocí Apache Storm, zjišťovat další [příklady Apache Storm pro HDInsight](apache-storm-example-topology.md).
 

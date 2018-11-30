@@ -3,7 +3,7 @@ title: Playbook zabezpečení v Azure Security Center | Dokumentace Microsoftu
 description: Tento dokument vám pomůže automatizovat reakce na incidenty zabezpečení pomocí playbooků zabezpečení v Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/09/2018
-ms.author: yurid
-ms.openlocfilehash: 05245b2a7a4f7bf61052b13da5ee2a98be721f7c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: c0001f12dd71436bacb1735828ad56b628e02360
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259951"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619907"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Playbook zabezpečení v Azure Security Center (Preview)
 Tento dokument vám pomůže reagovat na problémy související se zabezpečením pomocí playbooků zabezpečení v Azure Security Center.
 
 ## <a name="what-is-security-playbook-in-security-center"></a>Co je playbook zabezpečení ve službě Security Center?
-Playbook zabezpečení je kolekce procedur, které je možné spustit ze služby Security Center, jakmile se určitý playbook aktivuje z vybrané výstrahy. Playbook zabezpečení může pomoct automatizovat a orchestrovat reakci na konkrétní výstrahu zabezpečení, kterou zjistí služba Security Center. Playbooky zabezpečení ve službě Security Center jsou založené na [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps). To znamená, že můžete používat šablony Logic Apps z kategorie zabezpečení a upravovat je podle svých potřeb nebo můžete vytvářet nové playbooky pomocí [pracovního postupu Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) a službu Security Center používat jako trigger. 
+Playbook zabezpečení je kolekce procedur, které je možné spustit ze služby Security Center, jakmile se určitý playbook aktivuje z vybrané výstrahy. Playbook zabezpečení může pomoct automatizovat a orchestrovat reakci na konkrétní výstrahu zabezpečení, kterou zjistí služba Security Center. Playbooky zabezpečení ve službě Security Center jsou založené na [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps). To znamená, že můžete používat šablony Logic Apps z kategorie zabezpečení a upravovat je podle svých potřeb nebo můžete vytvářet nové playbooky pomocí [pracovního postupu Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) a službu Security Center používat jako trigger.
 
 > [!NOTE]
-> Playbooky využívají Azure Logic Apps, proto se za ně účtují poplatky. Další podrobnosti najdete na stránce s cenami [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/). 
+> Playbooky využívají Azure Logic Apps, proto se za ně účtují poplatky. Další podrobnosti najdete na stránce s cenami [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/).
 
 ## <a name="how-to-create-a-security-playbook-from-security-center"></a>Jak vytvořit playbook zabezpečení ve službě Security Center?
 Pokud chcete ve službě Security Center vytvořit nový playbook zabezpečení, postupujte následovně:
@@ -37,7 +37,7 @@ Pokud chcete ve službě Security Center vytvořit nový playbook zabezpečení,
 2.  V části **Automatizace a orchestrace** v levém podokně klikněte na **Playbooky (Preview)**.
 
     ![Aplikace logiky](./media/security-center-playbooks/security-center-playbooks-fig17.png)
- 
+
 3. Na stránce **Security Center – Playbooky (Preview)** klikněte na tlačítko **Přidat**.
 
     ![Vytvoření aplikace logiky](./media/security-center-playbooks/security-center-playbooks-fig2.png)
@@ -47,7 +47,7 @@ Pokud chcete ve službě Security Center vytvořit nový playbook zabezpečení,
     ![Vytvoření aplikace logiky](./media/security-center-playbooks/security-center-playbooks-fig3.png)
 
 5. Zobrazí se **Návrhář aplikace logiky**. Kliknutím na **Prázdná aplikace logiky** vytvořte nový playbook. Můžete také vybrat kategorii **Zabezpečení** a použít některou ze šablon.
-    
+
     ![Návrhář aplikace logiky](./media/security-center-playbooks/security-center-playbooks-fig4.png)
 
 6. Do pole **Prohledat všechny konektory a triggery** zadejte *Azure Security Center* a vyberte **Při aktivaci odpovědi na upozornění služby Azure Security Center**.
@@ -57,7 +57,7 @@ Pokud chcete ve službě Security Center vytvořit nový playbook zabezpečení,
 7. Teď můžete definovat, co se stane po aktivaci playbooku. Můžete přidat akci, logickou podmínku, podmínky případu přepínače nebo smyčky.
 
     ![Návrhář aplikace logiky](./media/security-center-playbooks/security-center-playbooks-fig5.png)
-     
+
 ## <a name="how-to-run-a-security-playbook-in-security-center"></a>Jak spustit playbook zabezpečení ve službě Security Center?
 
 Playbook zabezpečení ve službě Security Center můžete spustit, když chcete provést orchestraci, získání dalších informací z ostatních služeb nebo nápravné kroky. Pokud chcete získat přístup k playbookům, postupujte následovně:
@@ -78,7 +78,7 @@ Playbook zabezpečení ve službě Security Center můžete spustit, když chcet
 
 ### <a name="history"></a>Historie
 
-Po spuštění playbooku máte přístup i k předchozím spuštěním a krokům, které obsahují další informace o stavu dříve spuštěných playbooků. Historie se uvádí v kontextu jednotlivých výstrah, což znamená, že historie playbooku zobrazená na této stránce koreluje s výstrahou, která tento playbook aktivovala. 
+Po spuštění playbooku máte přístup i k předchozím spuštěním a krokům, které obsahují další informace o stavu dříve spuštěných playbooků. Historie se uvádí v kontextu jednotlivých výstrah, což znamená, že historie playbooku zobrazená na této stránce koreluje s výstrahou, která tento playbook aktivovala.
 
 ![Historie](./media/security-center-playbooks/security-center-playbooks-fig16.png)
 
@@ -86,7 +86,7 @@ Pokud chcete zobrazit další podrobnosti o spuštění konkrétního playbooku,
 
 ![Podrobnosti](./media/security-center-playbooks/security-center-playbooks-fig14.png)
 
-V tomto pracovním postupu vidíte, jak dlouho trvalo spuštění jednotlivých úloh, a každou úlohu můžete rozbalit a zobrazit její výsledek. 
+V tomto pracovním postupu vidíte, jak dlouho trvalo spuštění jednotlivých úloh, a každou úlohu můžete rozbalit a zobrazit její výsledek.
 
 ### <a name="changing-an-existing-playbook"></a>Změna existujícího playbooku
 
@@ -102,7 +102,6 @@ V tomto dokumentu jste zjistili, jak používat playbooky ve službě Azure Secu
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.
 * [Monitorování stavu zabezpečení ve službě Azure Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
 * [Principy výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Seznamte se s dalšími typy výstrah zabezpečení.
-* [Průvodce odstraňováním potíží pro službu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center. 
+* [Průvodce odstraňováním potíží pro službu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md). Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
-

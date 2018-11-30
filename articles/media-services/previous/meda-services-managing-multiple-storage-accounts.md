@@ -1,6 +1,6 @@
 ---
-title: Správa Media Services prostředky napříč více účtů úložiště | Microsoft Docs
-description: Tento článek poskytují pokyny o tom, jak spravovat media services prostředky v rámci více účtů úložiště.
+title: Správa Media Services prostředků napříč několika účty úložiště | Dokumentace Microsoftu
+description: Tento článek poskytují pokyny o tom, jak spravovat mediálních materiálů služeb napříč několika účty úložiště.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,36 +13,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: 89d1838eb9fed1751581b026d82b06bc20de4ecc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aa9386182f521119012ea59fe6b64fb31099169e
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788554"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620264"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa Media Services prostředky napříč více účtů úložiště
-Od verze Microsoft Azure Media Services 2.2, můžete k jednomu účtu Media Services připojit více účtů úložiště. Možnost připojit více účtů úložiště k účtu Media Services poskytuje následující výhody:
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa Media Services prostředků napříč několika účty úložiště
+Od Microsoft Azure Media Services 2.2, můžete k jednomu účtu Media Services připojit více účtů úložiště. Možnost připojit více účtů úložiště do účtu Azure Media Services nabízí následující výhody:
 
-* Vyrovnávání zatížení vaše prostředky napříč více účtů úložiště.
-* Škálování Media Services pro velké objemy zpracování obsahu (jako účet jednoho úložiště aktuálně má maximální limit 500 TB). 
+* Vyrovnávání zatížení vašich prostředků napříč několika účty úložiště.
+* Škálování Media Services pro velké objemy zpracování obsahu (jako je aktuálně na jeden účet úložiště má maximální limit 500 TB). 
 
-Tento článek ukazuje, jak připojit více účtů úložiště k účtu Media Services pomocí [rozhraní API Správce Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](/powershell/module/azurerm.media). Také ukazuje, jak při vytváření prostředků pomocí sady Media Services SDK zadat jiným účtům úložiště. 
+Tento článek ukazuje, jak připojit více účtů úložiště do účtu Media Services pomocí [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](/powershell/module/azurerm.media). Také ukazuje, jak zadat jiný účet úložiště při vytváření prostředků pomocí sady SDK služby Media Services. 
 
 ## <a name="considerations"></a>Požadavky
-Při připojování více účtů úložiště k účtu Media Services, platí následující aspekty:
+Při připojování k účtu Media Services více účtů úložiště, platí následující aspekty:
 
-* Všechny účty úložiště připojené k účtu Media Services musí být ve stejném datovém centru jako účet Media Services.
-* V současné době po účet úložiště je připojen k zadaný účet Media Services, nemohou být odstraněny.
-* Je uvedeno v době vytvoření účtu Media Services je účet primárního úložiště. V současné době nelze změnit výchozí účet úložiště. 
-* Aktuálně Pokud chcete přidat účet studeného úložiště k účtu AMS, účet úložiště musí být typu Blob a nastavit na neprimární.
+* Všechny účty úložiště připojené k účtu Azure Media Services musí být ve stejném datovém centru jako účet Media Services.
+* V současné době po účet úložiště je připojen k uvedenému účtu Media Services, ho nelze odpojit.
+* Primární účet úložiště je síť určená při vytváření účtu Media Services. V současné době nelze změnit výchozí účet úložiště. 
+* V současné době Pokud chcete přidat účet studeného úložiště do účtu AMS, účet úložiště musí být typu Blob a nastavit pro jiné než primární.
 
 Další důležité informace:
 
-Služba Media Services použije hodnotu **IAssetFile.Name** vlastnost při sestavování adresy URL pro streamování obsah (například http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ streamingParameters.) Z tohoto důvodu není povoleno kódování v procentech. Hodnota vlastnosti Název nemůže mít žádné z následujících [procent kódování vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Navíc může existovat pouze jedna '. " pro příponu názvu souboru.
+Služba Media Services použije hodnotu **IAssetFile.Name** vlastnost při vytváření adres URL pro streamování obsahu (například http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ streamingParameters.) Z tohoto důvodu není povoleno kódování procent. Hodnota vlastnosti Název nesmí obsahovat žádný z následujících [procent kódování – vyhrazené znaky](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Kromě toho může existovat pouze jeden "." pro příponu názvu souboru.
 
-## <a name="to-attach-storage-accounts"></a>Připojit účty úložiště  
+## <a name="to-attach-storage-accounts"></a>Pro připojení účtů úložiště  
 
-Připojit ke svému účtu AMS účty úložiště, použijte [rozhraní API Správce Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](/powershell/module/azurerm.media), jak je znázorněno v následujícím příkladu:
+Chcete-li připojit ke svému účtu AMS účty úložiště, použijte [rozhraní API Azure Resource Manageru](/rest/api/media/operations/azure-media-services-rest-api-reference) a [Powershellu](/powershell/module/azurerm.media), jak je znázorněno v následujícím příkladu:
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -60,15 +60,15 @@ Připojit ke svému účtu AMS účty úložiště, použijte [rozhraní API Spr
 
 ### <a name="support-for-cool-storage"></a>Podpora pro studeného úložiště
 
-Aktuálně Pokud chcete přidat účet studeného úložiště k účtu AMS, účet úložiště musí být typu Blob a nastavit na neprimární.
+V současné době Pokud chcete přidat účet studeného úložiště do účtu AMS, účet úložiště musí být typu Blob a nastavit pro jiné než primární.
 
-## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>Ke správě prostředků Media Services napříč více účtů úložiště
-Následující kód používá nejnovější sady Media Services SDK k provádění následujících úloh:
+## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>Ke správě prostředků služby Media Services ve více účtech úložiště
+Následující kód používá nejnovější sadu Media Services SDK k provádění následujících úloh:
 
-1. Zobrazí všechny účty úložiště přidružené zadaný účet Media Services.
-2. Získat název výchozí účet úložiště.
-3. Vytvoření nového prostředku v výchozí účet úložiště.
-4. Vytvořte prostředek výstup úlohy kódování v zadaný účet úložiště.
+1. Zobrazí všechny účty úložiště přidružené k uvedenému účtu Media Services.
+2. Načtěte název výchozí účet úložiště.
+3. Vytvoření nového prostředku ve výchozí účet úložiště.
+4. Vytvoření assetu výstup úlohy kódování v zadaný účet úložiště.
    
 ```
 using Microsoft.WindowsAzure.MediaServices.Client;

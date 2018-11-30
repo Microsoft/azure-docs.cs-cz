@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e73b0e88a98c1b06216378078626b4338c598816
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
-ms.translationtype: HT
+ms.openlocfilehash: 8e98c778c89a74b6c3c1cfa7dc7feb311c62b076
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422962"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499522"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Služba Azure Cosmos DB: Vytváření, zadávání dotazů a procházení grafu v konzole Gremlin
 
@@ -42,7 +42,7 @@ Abyste si mohli vytvořit účet služby Azure Cosmos DB pro tento rychlý start
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Musíte si také nainstalovat [konzolu Gremlin](http://tinkerpop.apache.org/). Použijte verzi 3.2.5 nebo vyšší.
+Musíte si také nainstalovat [konzolu Gremlin](http://tinkerpop.apache.org/). Použijte verzi 3.2.5 nebo vyšší. (Pomocí konzoly Gremlin na Windows, je potřeba nainstalovat [modul Runtime Java](https://www.oracle.com/technetwork/java/javase/overview/index.html).)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -313,7 +313,7 @@ Blahopřejeme! Dokončili jste kurz rozhraní Gremlin API služby Azure Cosmos D
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se seznámili se způsobem vytvoření účtu služby Azure Cosmos DB, vytvoření grafu pomocí Průzkumníku dat, vytváření vrcholů a okrajů a procházení grafu pomocí konzoly Gremlin. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 

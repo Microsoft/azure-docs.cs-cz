@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: caffa1f1a3684de3a7514e1ce1a4fe3014a7dbf8
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 95083ec1d909333596fd36ad998022778a4f9ec9
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706139"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582732"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -44,13 +44,13 @@ Ujistěte se, že jsou splněné následující požadavky.
 
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
-1. Identifikujte server se systémem Windows Server 2012 R2 nebo novější spustit Azure AD Connect. Přidejte server do stejné doménové struktuře služby Active Directory jako uživatelé, jejichž hesla je potřeba ověřit.
+1. Identifikujte server se systémem Windows Server 2012 R2 nebo novější spustit Azure AD Connect. Pokud již, není povoleno [protokol TLS 1.2 na serveru](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect). Přidejte server do stejné doménové struktuře služby Active Directory jako uživatelé, jejichž hesla je potřeba ověřit.
 2. Nainstalujte [nejnovější verzi služby Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) na serveru identifikován v předchozím kroku. Pokud už máte Azure AD Connect běží, ujistěte se, že verze je 1.1.750.0 nebo novější.
 
     >[!NOTE]
     >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 máte problém související se synchronizace hodnot hash hesel. Pokud jste _není_ používat synchronizaci hodnot hash hesel ve spojení se předávací ověřování, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470).
 
-3. Identifikujte jednu nebo více dalších serverů (s Windows serverem 2012 R2 nebo novější) kde můžete spouštět samostatný agentů ověřování. Tyto další servery jsou potřebné k zajištění vysoké dostupnosti žádostí o přihlášení. Přidáte servery do stejné doménové struktuře služby Active Directory jako uživatelé, jejichž hesla je potřeba ověřit.
+3. Určit jeden nebo více dalších serverů (s Windows serverem 2012 R2 nebo novější, s protokolem TLS 1.2 povoleno) kde můžete spouštět samostatný agentů ověřování. Tyto další servery jsou potřebné k zajištění vysoké dostupnosti žádostí o přihlášení. Přidáte servery do stejné doménové struktuře služby Active Directory jako uživatelé, jejichž hesla je potřeba ověřit.
 
     >[!IMPORTANT]
     >V produkčním prostředí doporučujeme, abyste měli aspoň 3 agentů ověřování systémem ve svém tenantovi. Platí omezení systému 12 agentů ověřování každého tenanta. A jako osvědčený postup považovat všechny servery vrstvy 0 systémy spuštěná agentů ověřování (viz [odkaz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
@@ -85,7 +85,7 @@ Pokud jste již nainstalovali Azure AD Connect s použitím [Expresní instalace
 ![Azure AD Connect: Změna uživatele přihlášení](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
 >[!IMPORTANT]
->Předávací ověřování je funkce úrovni tenanta. Zapnutí ovlivňuje přihlášení pro uživatele napříč _všechny_ spravovaných domén ve vašem tenantovi. Pokud přecházíte z Active Directory Federation Services (AD FS) na předávací ověřování, byste měli počkat alespoň 12 hodin před ukončením infrastruktury služby AD FS. Tato čekací doba je zajistit, že uživatelé můžete zachovat přihlášení k Exchange ActiveSync během přechodu. Další informace o migraci ze služby AD FS na předávací ověřování, najdete v naší příručce podrobné nasazení, publikování [tady](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx).
+>Předávací ověřování je funkce úrovni tenanta. Zapnutí ovlivňuje přihlášení pro uživatele napříč _všechny_ spravovaných domén ve vašem tenantovi. Pokud přecházíte z Active Directory Federation Services (AD FS) na předávací ověřování, byste měli počkat alespoň 12 hodin před ukončením infrastruktury služby AD FS. Tato čekací doba je zajistit, že uživatelé můžete zachovat přihlášení k Exchange ActiveSync během přechodu. Další nápovědu o migraci ze služby AD FS na předávací ověřování, podívejte se na náš podrobný nasazení plán publikování [tady](https://aka.ms/adfstoptadpdownload).
 
 ## <a name="step-3-test-the-feature"></a>Krok 3: Testování funkce
 

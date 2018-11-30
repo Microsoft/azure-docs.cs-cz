@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: cwatson
-ms.openlocfilehash: dfce0a97812cb958e4fb299d0225b42a7aa8f68f
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: de5fd6e52ab93132920b1c98188cbea92b9900b5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276296"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584345"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Zrušení předplatného pro Azure
 
@@ -58,6 +58,6 @@ Pokud zrušíte předplatné s průběžnými platbami omylem, můžete si [akti
 
 Pokud vaše předplatné s průběžnými platbami, obraťte se na podporu do 90 dnů od zrušení a znovu aktivujte vaše předplatné.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud jste ještě další dotazy, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

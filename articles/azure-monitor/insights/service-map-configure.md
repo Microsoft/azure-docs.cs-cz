@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 9885783428b51a71fee8733a9d054e82eca0f2f9
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: cead67bf18dcd0ea7b5c1479588083884dab475f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828195"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632955"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -133,8 +133,8 @@ Následující část obsahuje seznam podporovaných operačních systémech pro
 
 | Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Windows. <br><br>Kromě [agenta Log Analytics pro Windows](../../log-analytics/log-analytics-agent-overview.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
-| Agenti systému Linux | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Linuxem. <br><br>Kromě [agenta Log Analytics pro Linux](../../log-analytics/log-analytics-agent-overview.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Windows | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Windows. <br><br>Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Linux | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Linuxem. <br><br>Kromě [agenta Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
 | Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Service Map analyzuje a shromažďuje data z agentů Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md). <br><br>Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
 | Účet služby Azure Storage | Ne | Řešení Service Map shromažďuje data z počítačů s agenty, takže není žádná data z něj získat ze služby Azure Storage. |
 
@@ -153,7 +153,7 @@ Pokud jste zákazníkem System Center Operations Manageru se skupiny pro správu
 - Agenty System Center Operations Manager můžete získat přístup k Internetu pro připojení ke službě Log Analytics, není nutná žádná další konfigurace.  
 - Agenty System Center Operations Manager nemůže získat přístup k Log Analytics přes Internet, musíte nakonfigurovat bránu Log Analytics pro práci s nástrojem System Center Operations Manager.
   
-Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení k pracovnímu prostoru Log Analytics pomocí brány. Další informace o tom, jak nasadit a nakonfigurovat bránu Log Analytics najdete v tématu [připojit počítače bez připojení k Internetu pomocí brány Log Analytics](../../log-analytics/log-analytics-oms-gateway.md).  
+Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení k pracovnímu prostoru Log Analytics pomocí brány. Další informace o tom, jak nasadit a nakonfigurovat bránu Log Analytics najdete v tématu [připojit počítače bez připojení k Internetu pomocí brány Log Analytics](../../azure-monitor/platform/gateway.md).  
 
 ### <a name="management-packs"></a>Sady Management Pack
 Při řešení Service Map se aktivuje v pracovním prostoru Log Analytics, 300 KB management pack je předán do všech serverů Windows v daném pracovním prostoru. Pokud používáte agenty System Center Operations Manager v [připojené skupiny pro správu](../../log-analytics/log-analytics-om-agents.md), sada management pack Service Map bude nasazena ze System Center Operations Manager. 
@@ -230,7 +230,7 @@ Agent závislostí můžete nainstalovat ručně počítačích s Windows spušt
 
 Použijte následující postup k instalaci agenta závislostí na každém počítači s Windows:
 
-1.  Instalace agenta Log Analytics pro Windows, jednu z metod popsaných v následující [přehled agenta Log Analytics](../../log-analytics/log-analytics-agent-overview.md).
+1.  Instalace agenta Log Analytics pro Windows, jednu z metod popsaných v následující [přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md).
 2.  Stáhnout agenta Windows a spusťte ho pomocí následujícího příkazu: 
     
     `InstallDependencyAgent-Windows.exe`
@@ -258,7 +258,7 @@ Agenta závislostí je nainstalován na počítačích s Linuxem z `InstallDepen
 
 Instalace agenta závislostí na každý počítač s Linuxem pomocí následujících kroků:
 
-1.  Instalace agenta Log Analytics, jednu z metod popsaných v následující [přehled agenta Log Analytics](../../log-analytics/log-analytics-agent-overview.md).
+1.  Instalace agenta Log Analytics, jednu z metod popsaných v následující [přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md).
 2.  Instalace agenta závislostí Linux jako uživatel root spuštěním následujícího příkazu:
     
     `sh InstallDependencyAgent-Linux64.bin`
@@ -390,7 +390,7 @@ Pokud vaše instalace agenta závislostí proběhla úspěšně, ale nevidíte s
 
         Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
 
-Obdrželi jste různých událostí ve výsledcích? Jsou data poslední? Pokud ano, agenta Log Analytics je správně funguje a komunikovat s Log Analytics. Pokud ne, zkontrolujte agenta na serveru: [agenta Log Analytics pro řešení potíží s Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) nebo [agenta Log Analytics pro řešení potíží pro Linux](../../log-analytics/log-analytics-agent-linux-support.md).
+Obdrželi jste různých událostí ve výsledcích? Jsou data poslední? Pokud ano, agenta Log Analytics je správně funguje a komunikovat s Log Analytics. Pokud ne, zkontrolujte agenta na serveru: [agenta Log Analytics pro řešení potíží s Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) nebo [agenta Log Analytics pro řešení potíží pro Linux](../../azure-monitor/platform/agent-linux-troubleshoot.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server se zobrazí v Service Map, ale nemá žádné procesy
 Pokud se zobrazí váš server v Service Map, ale nemá žádná data proces nebo připojení, která označuje, že agenta závislostí je nainstalovaná a spuštěná, ale ovladač jádra se nenačetla. 

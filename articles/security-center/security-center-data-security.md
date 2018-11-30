@@ -3,7 +3,7 @@ title: Zabezpečení dat ve službě Azure Security Center | Dokumentace Microso
 description: Tento dokument popisuje způsob správy a ochrany dat ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 33f2c9f4-21aa-4f0c-9e5e-4cd1223e39d7
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2017
-ms.author: yurid
-ms.openlocfilehash: 587dd2af0e04b8557182ab041a817878592923d4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: bbf861c582ec8b5297bc1d29aa558b86404b6d99
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230440"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620298"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
 Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, detekovat je a reagovat na ně tím, že shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí, souborů se stavem systému a dalších dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
@@ -31,7 +31,7 @@ Azure Security Center analyzuje data z následujících zdrojů a poskytuje pře
 
 - Služby Azure: Využívá informace o konfiguraci služeb Azure, které máte nasazené, tím, že komunikuje s poskytovatelem prostředků pro příslušnou službu.
 - Síťový provoz: Využívá vzorkovaná metadata síťového provozu z infrastruktury společnosti Microsoft, jako je třeba zdrojová a cílová IP adresa/port, velikost paketu nebo síťový protokol.
-- Partnerská řešení: Využívá výstrahy zabezpečení ze všech integrovaných partnerských řešení, jako jsou třeba brány firewall a antimalwarová řešení. 
+- Partnerská řešení: Využívá výstrahy zabezpečení ze všech integrovaných partnerských řešení, jako jsou třeba brány firewall a antimalwarová řešení.
 - Virtuální počítače a servery: Využívá z vašich virtuálních počítačů konfigurační informace a informace o událostech zabezpečení, jako jsou třeba protokoly událostí a auditů systému Windows, protokoly IIS, zprávy syslog a soubory se stavem systému. Při vytvoření výstrahy Azure Security Center může navíc vygenerovat snímek příslušného disku virtuálního počítače a z tohoto disku extrahovat artefakty související s příslušnou výstrahou (jako je třeba soubor registru) pro účely forenzní analýzy.
 
 
@@ -44,7 +44,7 @@ Azure Security Center analyzuje data z následujících zdrojů a poskytuje pře
 
 ## <a name="data-location"></a>Umístění dat
 
-**Vaše pracovní prostory:** Pracovní prostor je zadaný pro následující geografie a data shromážděná z vašich virtuálních počítačů Azure, včetně výpisů stavu systému a některých typů dat výstrah, se ukládají v nejbližším pracovním prostoru. 
+**Vaše pracovní prostory:** Pracovní prostor je zadaný pro následující geografie a data shromážděná z vašich virtuálních počítačů Azure, včetně výpisů stavu systému a některých typů dat výstrah, se ukládají v nejbližším pracovním prostoru.
 
 | Geografie virtuálního počítače                        | Geografie pracovního prostoru |
 |-------------------------------|---------------|
@@ -53,20 +53,21 @@ Azure Security Center analyzuje data z následujících zdrojů a poskytuje pře
 | Asie a Tichomoří, Japonsko, Indie    | Asie a Tichomoří  |
 | Austrálie                     | Austrálie     |
 
- 
+
 Snímky disků virtuálních počítačů se ukládají ve stejném účtu úložiště jako disk virtuálního počítače.
- 
-Pro virtuální počítače a servery spuštěné v jiných prostředích, například místně, můžete zadat pracovní prostor a oblast, kde se shromážděná data ukládají. 
+
+Pro virtuální počítače a servery spuštěné v jiných prostředích, například místně, můžete zadat pracovní prostor a oblast, kde se shromážděná data ukládají.
 
 **Azure Security Center Storage:** Informace o výstrahách zabezpečení, včetně partnerských výstrah, se ukládají místně v závislosti na umístění souvisejícího prostředku Azure, zatímco informace o stavu zabezpečení a doporučení se ukládají centrálně v USA nebo v Evropě, v závislosti na umístění zákazníka.
 Azure Security Center shromažďuje dočasné kopie souborů se stavem systému a analyzuje je za účelem detekce stop pokusů o napadení zabezpečení, neúspěšných i úspěšných. Azure Security Center provádí tuto analýzu v rámci stejné geografie jako pracovní prostor a po dokončení analýzy tyto dočasné kopie odstraní.
 
-Artefakty počítačů se ukládají centrálně ve stejné oblasti jako virtuální počítač. 
+Artefakty počítačů se ukládají centrálně ve stejné oblasti jako virtuální počítač.
 
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Správa shromažďování dat z virtuálních počítačů
 
-Když povolíte službu Security Center v Azure, u každého vašeho předplatného Azure se zapne funkce shromažďování dat. Shromažďování dat pro předplatná můžete zapnout také v části Zásady zabezpečení služby Azure Security Center. Když je funkce shromažďování dat zapnutá, služba Azure Security Center zřídí ve všech stávajících i nově vytvořených podporovaných virtuálních počítačích agenta Microsoft Monitoring Agent. Microsoft Monitoring Agent prohledává různé konfigurace týkající se zabezpečení a zapisuje události do složek [Trasování událostí pro Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW). Operační systém bude kromě toho během chodu počítače shromažďovat události protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Microsoft Monitoring Agent načte položky protokolu událostí a trasování ETW a zkopíruje je do vašich pracovní prostorů za účelem analýzy. Microsoft Monitoring Agent do vašich pracovních prostorů zkopíruje také soubory se stavem systému, povolí události vytváření procesů a povolí auditování příkazového řádku.
+Když povolíte službu Security Center v Azure, u každého vašeho předplatného Azure se zapne funkce shromažďování dat. Shromažďování dat pro předplatná můžete zapnout také v části Zásady zabezpečení služby Azure Security Center. Když je funkce shromažďování dat zapnutá, služba Azure Security Center zřídí ve všech stávajících i nově vytvořených podporovaných virtuálních počítačích agenta Microsoft Monitoring Agent.
+Microsoft Monitoring Agent prohledává různé konfigurace týkající se zabezpečení a zapisuje události do složek [Trasování událostí pro Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW). Operační systém bude kromě toho během chodu počítače shromažďovat události protokolu událostí. Mezi příklady těchto údajů patří: typ a verze operačního systému, protokoly operačního systému (protokoly událostí systému Windows), spuštěné procesy, název počítače, IP adresy, přihlášený uživatel a ID klienta. Microsoft Monitoring Agent načte položky protokolu událostí a trasování ETW a zkopíruje je do vašich pracovní prostorů za účelem analýzy. Microsoft Monitoring Agent do vašich pracovních prostorů zkopíruje také soubory se stavem systému, povolí události vytváření procesů a povolí auditování příkazového řádku.
 
 Pokud používáte Azure Security Center úrovně Free, můžete pomocí zásad zabezpečení také zakázat shromažďování dat z virtuálních počítačů. Pro předplatná na úrovni Standard se shromažďování dat požaduje. Shromažďování artefaktů a snímků disku virtuálního počítače bude nadále povolené i v případě, že shromažďování dat je zakázané.
 
@@ -79,7 +80,7 @@ Zákazníci můžou využívat data související se službou Security Center z 
 
 
 > [!NOTE]
-> Doporučení zabezpečení je možné využívat také prostřednictvím rozhraní REST API. Další informace najdete v [referenčních materiálech k rozhraní REST API poskytovatele prostředků zabezpečení](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx). 
+> Doporučení zabezpečení je možné využívat také prostřednictvím rozhraní REST API. Další informace najdete v [referenčních materiálech k rozhraní REST API poskytovatele prostředků zabezpečení](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 V tomto dokumentu jste se dozvěděli informace o způsobu správy a ochrany ve službě Azure Security Center. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:

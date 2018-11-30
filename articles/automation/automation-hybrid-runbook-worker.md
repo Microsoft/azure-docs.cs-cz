@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb7e422e0eb4a71e0f88a911083f8f5d6fb0ef2f
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: d42a9458afa6244e0b6d8e7deb420a8ac49a130f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092164"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634162"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizace prostředky v datovém centru nebo v cloudu s využitím procesu Hybrid Runbook Worker
 
@@ -95,7 +95,7 @@ Můžete odebrat skupinu, budete nejdřív muset odebrat funkce Hybrid Runbook W
 
 ### <a name="hybrid-worker-role"></a>Role pracovního procesu hybrid
 
-Pro Hybrid Runbook Worker mohl připojit a zaregistrovat pomocí Log Analytics musí mít přístup k portu a adresám URL, které jsou popsány v této části. Tento přístup je v horní části [portů a adresám URL požadovaným pro agenta Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) pro připojení ke službě Log Analytics.
+Pro Hybrid Runbook Worker mohl připojit a zaregistrovat pomocí Log Analytics musí mít přístup k portu a adresám URL, které jsou popsány v této části. Tento přístup je v horní části [portů a adresám URL požadovaným pro agenta Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md) pro připojení ke službě Log Analytics.
 
 Pokud používáte proxy server pro komunikaci mezi agentem a službou Log Analytics, ujistěte se, že jsou dostupné příslušné prostředky. Pokud používáte k omezení přístupu k Internetu bránu firewall, musíte nakonfigurovat bránu firewall, aby povolovala přístup. Pokud používáte bránu Log Analytics jako proxy server, ujistěte se, že je nakonfigurovaný pro proces hybrid Worker. Pokyny, jak to udělat, najdete v části [konfigurace brány Log Analytics pro Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
 

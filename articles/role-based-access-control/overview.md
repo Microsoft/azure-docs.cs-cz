@@ -1,5 +1,5 @@
 ---
-title: Co je řízení přístupu na základě role (RBAC) v Azure? | Microsoft Docs
+title: Co je řízení přístupu na základě role (RBAC) v Azure? | Dokumenty Microsoft
 description: Získejte přehled řízení přístupu na základě role (RBAC) v Azure. Použijte přiřazení rolí k řízení přístupu k prostředkům v Azure.
 services: active-directory
 documentationcenter: ''
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d264160fb3f1c14db3379a314e60efdadb6905b5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: d9a28ea43e732c53afb75e96f20cb13b9bbb27a6
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210410"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632612"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co je řízení přístupu na základě role (RBAC)?
 
@@ -50,13 +50,14 @@ Způsob řízení přístupu k prostředkům pomocí RBAC spočívá ve vytvoře
 
 ### <a name="security-principal"></a>Objekt zabezpečení
 
-*Objekt zabezpečení* je objekt, který představuje uživatele, skupinu nebo instanční objekt žádající o přístup k prostředkům Azure.
+A *objektu zabezpečení* je objekt, který představuje uživatele, skupiny, instanční objekt nebo spravovanou identitu, která žádá o přístup k prostředkům Azure.
 
 ![Objekt zabezpečení pro přiřazení role](./media/overview/rbac-security-principal.png)
 
 - Uživatel – jednotlivec, který má profil ve službě Azure Active Directory. Můžete také přiřadit role uživatelům v jiných tenantech. Informace o uživatelích v jiných organizacích najdete v článku o [B2B ve službě Azure Active Directory](../active-directory/b2b/what-is-b2b.md).
 - Skupina – skupina uživatelů vytvořená ve službě Azure Active Directory. Když přiřadíte roli skupině, budou mít danou roli všichni její uživatelé. 
 - Instanční objekt – identita zabezpečení, kterou používají aplikace nebo služby pro přístup ke konkrétním prostředkům Azure. Můžete si ji představit jako *identitu uživatele* (uživatelské jméno a heslo nebo certifikát) pro aplikaci.
+- Spravované identity – identita v Azure Active Directory, který je automaticky spravuje Azure. Obvykle použijete [spravovaných identit](../active-directory/managed-identities-azure-resources/overview.md) při vývoji cloudových aplikací ke správě přihlašovacích údajů pro ověřování služby Azure.
 
 ### <a name="role-definition"></a>Definice role
 
@@ -91,7 +92,7 @@ Když udělíte přístup na úrovni nadřízeného oboru, podřízené obory zd
 
 ### <a name="role-assignments"></a>Přiřazení rolí
 
-*Přiřazení role* je proces svázání definice role s uživatelem, skupinou nebo instančním objektem v určitém oboru za účelem udělení přístupu. Přístup se uděluje vytvořením přiřazení role a odvolává se odebráním přiřazení role.
+A *přiřazení role* je proces připojování definice role pro uživatele, skupiny, instanční objekt nebo spravovaná identita v určitém rozsahu pro účely poskytování přístupu. Přístup se uděluje vytvořením přiřazení role a odvolává se odebráním přiřazení role.
 
 Následující diagram znázorňuje příklad přiřazení role. V tomto příkladu byla marketingové skupině přiřazena role [Přispěvatel](built-in-roles.md#contributor) pro skupinu prostředků prodeje farmaceutických výrobků. To znamená, že uživatelé marketingové skupiny mohou vytvářet a spravovat prostředky Azure ve skupině prostředků prodeje farmaceutických výrobků. Uživatelé marketingové skupiny nemají přístup k prostředkům mimo skupinu prostředků prodeje farmaceutických výrobků, pokud nejsou součástí přiřazení jiné role.
 
@@ -101,9 +102,7 @@ Přiřazení rolí můžete vytvořit pomocí portálu Azure Portal, Azure CLI, 
 
 ## <a name="deny-assignments"></a>Přiřazení zamítnutí
 
-Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Podobně jako u přiřazení rolí vytváří *přiřazení zamítnutí* vazbu mezi sadou akcí zamítnutí a uživatelem, skupinou nebo instančním objektem v určitém oboru za účelem zamítnutí přístupu. Přiřazení role definuje sadu akcí, které jsou *povolené*, naopak přiřazení zamítnutí definuje sadu akcí, které *povolené nejsou*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí.
-
-Přiřazení zamítnutí jsou momentálně **jen pro čtení** a může je nastavit jen Azure. Nemůžete sice vytvářet vlastní přiřazení zamítnutí, můžete ale vytvořit jejich seznam, protože můžou ovlivnit účinnost vašich oprávnění. K získání informací o přiřazení zamítnutí potřebujete oprávnění `Microsoft.Authorization/denyAssignments/read`, které je obsaženo ve většině [předdefinovaných rolí](built-in-roles.md#owner). Další informace najdete v článku, který [vysvětluje přiřazení zamítnutí](deny-assignments.md).
+Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Přiřazení role, podobně jako *zamítnout přiřazení* akce Odepřít bude k obrazci skupinu pro uživatele, skupiny, instanční objekt nebo spravovaná identita v určitém rozsahu pro účely odepření přístupu. Přiřazení role definuje sadu akcí, které jsou *povolené*, zatímco přiřazení odepřít definuje sadu akcí, které jsou *nepovoluje*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí. Přiřazení zamítnutí jsou momentálně **jen pro čtení** a může je nastavit jen Azure. Další informace najdete v tématu [porozumění zamítnout přiřazení](deny-assignments.md) a [zobrazení zamítnout přiřazení pomocí webu Azure portal](deny-assignments-portal.md).
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Jak se v modelu RBAC určí, jestli má uživatel přístup k prostředku
 
@@ -125,7 +124,7 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 
 1. Pokud ano, přístup se zablokuje. Pokud ne, přístup je udělen.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Rychlý start: Udělení přístupu pro uživatele pomocí RBAC a webu Azure Portal](quickstart-assign-role-user-portal.md)
 - [Správa přístupu pomocí RBAC a portálu Azure Portal](role-assignments-portal.md)

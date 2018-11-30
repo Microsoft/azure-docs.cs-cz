@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 264e7f3d885535304470c833e228660ba51fefc6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 83ff526eb0bd0c51822fc52c90b958d50022a834
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312302"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497733"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure AD Connect Health
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) týkající se Azure Active Directory (Azure AD) Connect Health. Tyto nejčastější dotazy k pokrytí otázek o tom, jak používat službu, která zahrnuje fakturační model, možnosti, omezení a podpory.
@@ -62,7 +62,7 @@ Příklad:
 
 **Otázka: podporuje Azure AD Connect Health podpory Azure Germany cloudu?**
 
-Azure AD Connect Health se nepodporuje v německého cloudu s výjimkou [funkce sestavy chyb synchronizace](how-to-connect-health-sync.md#object-level-synchronization-error-report-preview). 
+Azure AD Connect Health se nepodporuje v německého cloudu s výjimkou [funkce sestavy chyb synchronizace](how-to-connect-health-sync.md#object-level-synchronization-error-report). 
 
 | Role | Funkce | Podporované v německém cloudu |
 | ------ | --------------- | --- |
@@ -137,7 +137,7 @@ Agent stavu může selhat registrace z následujících možných důvodů:
 
 **Otázka: nemůžu jsem získávání upozorněni, že "data služby Health Service není aktuální." Jak řešit potíže?**
 
-Azure AD Connect Health vygeneruje výstrahu, pokud neobdrží všechny datové body od serveru za posledních dvou hodin. [Přečtěte si další informace](how-to-connect-health-data-freshness.md).
+Azure AD Connect Health vygeneruje výstrahu, pokud neobdrží všechny datové body od serveru za posledních dvou hodin. [Další informace](how-to-connect-health-data-freshness.md).
 
 ## <a name="operations-questions"></a>Operace dotazy
 **Dotaz: potřebuji k povolení auditování pro servery proxy webových aplikací?**

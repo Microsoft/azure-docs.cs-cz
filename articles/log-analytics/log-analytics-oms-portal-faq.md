@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 9aa90c5a99da70aa0803aad4894e928a422b8fcf
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 5f5143800c423bdbaac9994b55e500723018dce4
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712241"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634349"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -84,7 +84,7 @@ Spravovat většinu nastavení připojené zdroje v **upřesňující nastavení
 | System Center     | **Upřesňující nastavení** nabídce pracovního prostoru. |
 | Office 365        | Zobrazit [dokumentaci k řešení pro správu Office 365](../azure-monitor/insights/solution-office-365.md) podrobnosti o konfiguraci. |
 | Telemetrie Windows | Nabídka nastavení řešení. Zobrazit [Windows Analytics na portálu Azure portal](/windows/deployment/update/windows-analytics-azure-portal) podrobnosti o konfiguraci. |
-| Konektor ITSM    | Zobrazit [připojení ITSM produktů a služeb. s IT Service Management Connector](../log-analytics/log-analytics-itsmc-connections.md) pokyny týkající se připojení ITSM služby s využitím Log Analytics. |
+| Konektor ITSM    | Zobrazit [připojení ITSM produktů a služeb. s IT Service Management Connector](../log-analytics/../azure-monitor/platform/itsmc-connections.md) pokyny týkající se připojení ITSM služby s využitím Log Analytics. |
 
 ### <a name="data"></a>Data
 Spravovat většinu dat nastavení v **upřesňující nastavení** nabídce pracovního prostoru. Následující tabulka obsahuje podrobnosti pro jednotlivé oddíly této nabídky.
@@ -113,7 +113,7 @@ Na portálu OMS z Galerie řešení nainstalovat řešení pro správu a odebrá
 Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sjednocené prostředí pro upozorňování](../monitoring-and-diagnostics/alert-metric.md). Zobrazit [jak rozšíření upozornění z Log Analytics do upozornění Azure](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) podrobné informace o konfiguraci a použití upozornění na webu Azure Portal.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Jak získám přístup do své řídicí panely?
-[Můj řídicí panel](../log-analytics/log-analytics-dashboards.md) funkce v Log Analytics je zastaralá. Tato funkce umožňují mít privátní kolekci částí Návrhář zobrazení a nahrazována integrované funkce řídicího panelu systému Azure. Můžete pokračovat k vizualizaci dat v Log Analytics pomocí [Návrhář zobrazení](../log-analytics/log-analytics-view-designer.md) pro sdílená zobrazení. Můžete také připnout vizualizace z těchto zobrazení nebo [jednotlivé dotazy](../log-analytics/log-analytics-tutorial-dashboards.md) do řídicích panelů Azure.
+[Můj řídicí panel](../log-analytics/../azure-monitor/platform/dashboards.md) funkce v Log Analytics je zastaralá. Tato funkce umožňují mít privátní kolekci částí Návrhář zobrazení a nahrazována integrované funkce řídicího panelu systému Azure. Můžete pokračovat k vizualizaci dat v Log Analytics pomocí [Návrhář zobrazení](../log-analytics/../azure-monitor/platform/view-designer.md) pro sdílená zobrazení. Můžete také připnout vizualizace z těchto zobrazení nebo [jednotlivé dotazy](../log-analytics/log-analytics-tutorial-dashboards.md) do řídicích panelů Azure.
 
 ## <a name="how-do-i-check-my-usage"></a>Jak můžu zkontrolovat využití?
 Teď můžete snadno zobrazit a spravovat vaše využití a náklady na služby Log Analytics tak, že vyberete **využití a odhadované náklady** ve vašem pracovním prostoru.

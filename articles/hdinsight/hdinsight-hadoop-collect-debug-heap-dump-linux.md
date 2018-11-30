@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 966f05fba96cc829c3a11331e2a66609705f6f4f
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 58f4827910d863aef14171574d40e4b3acfc04d9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037677"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498682"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Povolení výpisů paměti haldy pro služby Apache Hadoop v HDInsight se systémem Linux
 
@@ -39,7 +39,7 @@ Můžete také povolení výpisů paměti haldy pro mapy a snížit procesy spu�
 
 ## <a name="configuration"></a>Principy konfigurace výpisu paměti haldy
 
-Předáním možnosti jsou povolené výpisů paměti haldy (někdy označované jako požádá o, nebo parametry) na JVM při spuštění služby. Pro většinu služby Hadoop můžete upravit skript prostředí, používá ke spuštění služby k předání těchto možností.
+Předáním možnosti jsou povolené výpisů paměti haldy (někdy označované jako požádá o, nebo parametry) na JVM při spuštění služby. Pro většinu [Apache Hadoop](https://hadoop.apache.org/) služby, můžete upravit skript prostředí, používá ke spuštění služby k předání těchto možností.
 
 Do každého skriptu se export pro  **\* \_OPTS**, který obsahuje možnosti předané JVM. Například v **hadoop env.sh** řádek, který začíná skriptu `export HADOOP_NAMENODE_OPTS=` obsahuje možnosti pro službu NameNode.
 
@@ -49,7 +49,7 @@ Mapovací a redukční procesy se mírně liší, jak tyto operace jsou podříz
 * **mapreduce.admin.reduce.child.java.opts**
 
 > [!NOTE]
-> Doporučujeme použít k úpravě skripty a nastavení mapred-site.xml, jako popisovač Ambari replikace změn napříč uzly v clusteru Apache Ambari. Zobrazit [pomocí Ambari](#using-ambari) najdete konkrétní kroky.
+> Doporučujeme používat [Apache Ambari](https://ambari.apache.org/) upravit skripty a nastavení mapred-site.xml, jako Ambari zpracování replikace změn napříč uzly v clusteru. Zobrazit [pomocí Apache Ambari](#using-apache-ambari) najdete konkrétní kroky.
 
 ### <a name="enable-heap-dumps"></a>Povolení výpisů paměti haldy
 
@@ -77,11 +77,11 @@ Můžete také spustit skript po **OutOfMemoryError** vyvolá. Například aktiv
     -XX:OnOutOfMemoryError=/path/to/script
 
 > [!NOTE]
-> Hadoop je distribuovaný systém, libovolný skript, které musí být umístěn na všech uzlech v clusteru, který služba běží na.
+> Apache Hadoop je distribuovaný systém, libovolný skript, které musí být umístěn na všech uzlech v clusteru, který služba běží na.
 > 
 > Skript musí také být v umístění, které je přístupný pro účet služby spouští jako a musíte zadat spustit oprávnění. Například můžete chtít uložit skripty v `/usr/local/bin` a použít `chmod go+rx /usr/local/bin/filename.sh` pro čtení a oprávnění ke spouštění.
 
-## <a name="using-ambari"></a>Pomocí nástroje Ambari
+## <a name="using-apache-ambari"></a>Pomocí nástroje Apache Ambari
 
 Pokud chcete upravit konfiguraci pro službu, postupujte následovně:
 

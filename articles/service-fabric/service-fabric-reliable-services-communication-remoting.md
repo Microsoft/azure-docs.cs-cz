@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: ddd78e2fad401add35bc246a64236e2679c33cbc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023541"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620519"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Vzdálená komunikace služby v jazyce C# s využitím Reliable Services
 
@@ -98,7 +98,7 @@ Vytvoření služby proxy je nenáročná operace, takže si můžete vytvořit 
 
 ### <a name="service-proxy-factory-lifetime"></a>Doba platnosti objekt pro vytváření proxy služby
 
-[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) je objekt factory, který vytváří instance serveru proxy pro různé vzdálené komunikace rozhraní. Pokud používáte rozhraní API `ServiceProxy.Create` rozhraní vytvořit proxy server, vytvoří proxy služby typu singleton.
+[ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) je objekt factory, který vytváří instance serveru proxy pro různé vzdálené komunikace rozhraní. Pokud používáte rozhraní API `ServiceProxyFactory.CreateServiceProxy` rozhraní vytvořit proxy server, vytvoří proxy služby typu singleton.
 Je vhodné vytvořit jeden ručně, když budete chtít přepsat [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) vlastnosti.
 Vytvoření objektu Factory je náročná operace. Objekt pro vytváření proxy služby udržuje interní mezipaměť klienta komunikace.
 Osvědčeným postupem je ukládat do mezipaměti objekt proxy server služby pro vytváření pro co nejdéle.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 74d8629eb8fc29f3cb572be0b1ccb8b6149ab971
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1f53d87d6de76c0ff6954c9bd38d95e05981d822
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016280"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499471"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Úvod do služby ML a možnosti open-source jazyka R v HDInsight
 
@@ -27,7 +27,7 @@ Microsoft Machine Learning Server je dostupná jako možnost nasazení, při vyt
 
 Služby ML v HDInsight poskytuje nejnovější funkce pro analýzy založené na jazyce R na datových sadách prakticky jakékoli velikosti, načteno do úložiště objektů Blob v Azure nebo Data Lake. Vzhledem k tomu, že cluster se službou ML Services je založená na open-source systému R, můžete využít aplikace založené na jazyce R, které vytváříte, některé balíčky R open source 8000 +. Rutiny v ScaleR balíček analýzy velkých objemů dat společnosti Microsoft jsou k dispozici.
 
-Hraničním uzlu clusteru poskytuje praktické místo k připojení ke clusteru a ke spuštění skriptů jazyka R. Díky hraniční uzel máte možnost spuštění paralelizované distribuované funkcí ScaleR mezi jádry hraničního uzlu serveru. Můžete také spustit je na uzlech clusteru s použitím jeho ScaleR Hadoop Map Reduce nebo kontexty služby compute Spark.
+Hraničním uzlu clusteru poskytuje praktické místo k připojení ke clusteru a ke spuštění skriptů jazyka R. Díky hraniční uzel máte možnost spuštění paralelizované distribuované funkcí ScaleR mezi jádry hraničního uzlu serveru. Použít také na uzlech clusteru s využitím Hadoop Map Reduce nebo Apache Spark výpočetní kontext ScaleR společnosti.
 
 Modely nebo předpovědi, které jsou výsledkem analýzy si můžete stáhnout pro místní použití. Jejich lze také se mají zprovoznit jinde v Azure, zejména prostřednictvím [Azure Machine Learning Studio](http://studio.azureml.net) [webová služba](../../machine-learning/studio/publish-a-machine-learning-web-service.md).
 
@@ -114,7 +114,7 @@ Pokud právě používáte rutiny z knihovny ScaleR napříč clusterem, nepotř
 
 Po vytvoření clusteru, můžete v takových případech nainstalovat další balíčky pomocí akce skriptu. Další informace najdete v tématu [spravovat služby ML v clusteru HDInsight](r-server-hdinsight-manage.md).
 
-### <a name="change-hadoop-mapreduce-memory-settings"></a>Změňte nastavení paměti Hadoop MapReduce
+### <a name="change-apache-hadoop-mapreduce-memory-settings"></a>Změňte nastavení paměti Apache Hadoop MapReduce
 
 Chcete-li změnit velikost paměti, která je k dispozici služby ML při spuštění úlohy MapReduce lze upravit clusteru. Pokud chcete upravit clusteru, použijte rozhraní Apache Ambari, která je k dispozici prostřednictvím okno Azure portal pro váš cluster. Pokyny ohledně toho, jak získat přístup k rozhraní Ambari, Uživatelskému pro váš cluster, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
 

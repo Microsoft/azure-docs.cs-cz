@@ -4,28 +4,27 @@ description: Přehled průběžné integrace a průběžného nasazování pro A
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 11/12/2018
+ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 06dec64a55aaece4cd67ebf0485e34aa206a8936
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 16dac996f871241b8c9b5e4c1b797d07d79aeb79
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633729"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632558"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
 
-Můžete snadno přijmout DevOps s vašimi aplikacemi Azure IoT Edge s [Azure IoT Edge pro Azure kanály](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) nebo [modul plug-in Azure IoT Edge pro Jenkinse](https://plugins.jenkins.io/azure-iot-edge). Tento článek ukazuje, jak můžete pomocí průběžné integrace a průběžného nasazování funkce kanály Azure a Microsoft Team Foundation Server (TFS) k vytváření, testování a rychle a efektivně nasadit aplikace pro vaše Azure IoT Edge. 
+Můžete snadno přijmout DevOps s vašimi aplikacemi Azure IoT Edge integrované úlohy Azure IoT Edge v kanálech Azure nebo [modul plug-in Azure IoT Edge pro Jenkinse](https://plugins.jenkins.io/azure-iot-edge) na serveru Jenkins. Tento článek ukazuje, jak můžete pomocí průběžné integrace a průběžného nasazování funkce kanály Azure a Azure DevOps Server sestavení, testování a rychle a efektivně nasadit aplikace pro vaše Azure IoT Edge. 
 
 V tomto článku se dozvíte, jak:
 * Vytvoření a vrátit se změnami ukázkové řešení IoT Edge.
-* Nainstalujte rozšíření Azure IoT Edge pro Azure DevOps.
 * Nakonfiguruje kontinuální integraci (CI), abyste mohli sestavit řešení.
 * Konfigurace průběžného nasazování (CD) k nasazení řešení a zobrazování odpovědí.
 
-Bude trvat 30 minut na dokončení kroků v tomto článku.
+Bude trvat 20 minut, než k dokončení kroků v tomto článku.
 
 ![CI a CD](./media/how-to-ci-cd/cd.png)
 
@@ -34,7 +33,7 @@ Bude trvat 30 minut na dokončení kroků v tomto článku.
 
 V této části vytvoříte ukázkové hraničních zařízeních IoT řešení obsahující testy jednotek, které můžete spouštět jako součást procesu sestavení. Než budete postupovat pokyny v této části, proveďte kroky v [vývoj řešení IoT Edge s několika moduly v aplikaci Visual Studio Code](tutorial-multiple-modules-in-vscode.md).
 
-1. Paleta příkazů VS Code, zadejte a spusťte příkaz **Azure IoT Edge: nový IoT Edge řešení**. Vyberte si složku pracovního prostoru, zadejte název řešení (výchozí název je **EdgeSolution**) a vytvořit modulu jazyka C# (**FilterModule**) jako první modul uživatele v tomto řešení. Bude také nutné zadat úložiště imagí Dockeru pro první modul. Výchozí úložiště imagí vychází z místního registru Dockeru (`localhost:5000/filtermodule`). Je třeba změnit ho do služby Azure Container Registry (`<your container registry address>/filtermodule`) nebo centra Dockeru pro další průběžnou integraci.
+1. Paleta příkazů VS Code, zadejte a spusťte příkaz **Azure IoT Edge: nový IoT Edge řešení**. Vyberte si složku pracovního prostoru, zadejte název řešení (výchozí název je **EdgeSolution**) a vytvořit modulu jazyka C# (**FilterModule**) jako první modul uživatele v tomto řešení. Bude také nutné zadat úložiště imagí Dockeru pro první modul. Výchozí úložiště imagí vychází z místního registru Dockeru (`localhost:5000/filtermodule`). Změňte ho na Azure Container Registry (`<your container registry address>/filtermodule`) nebo centra Dockeru pro další průběžnou integraci.
 
     ![Nastavení služby ACR](./media/how-to-ci-cd/acr.png)
 
@@ -42,7 +41,7 @@ V této části vytvoříte ukázkové hraničních zařízeních IoT řešení 
 
 3. Ukázku řešení IoT Edge je teď připravený. Výchozí C# modul funguje jako zprávy modulu kanálu. V `deployment.template.json`, uvidíte toto řešení obsahuje dva moduly. Zpráva se budou generovat z `tempSensor` modulu a budou směrované přímo prostřednictvím `FilterModule`, pak odešlou do služby IoT hub.
 
-4. Uložte tyto projekty a potom vrátit se změnami do úložiště Azure nebo v sadě TFS úložiště.
+4. Uložte tyto projekty a potom vrátit se změnami do úložiště Azure nebo Azure DevOps serveru úložiště.
     
 > [!NOTE]
 > Další informace o použití úložiště Azure najdete v tématu [sdílení kódu pomocí sady Visual Studio a úložiště Azure](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
@@ -55,15 +54,11 @@ V této části vytvoříte kanál sestavení, která je nakonfigurována na aut
 
     ![Vrácení se změnami kódu](./media/how-to-ci-cd/init-project.png)
 
-1. Navštivte [Azure IoT Edge pro Azure kanály](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) na Azure DevOps Marketplace. Klikněte na tlačítko **získání bezplatného** a postupujte podle pokynů průvodce a nainstalujte toto rozšíření pro vaši organizaci Azure DevOps nebo ke stažení pro TFS.
-
-    ![Instalace rozšíření](./media/how-to-ci-cd/install-extension.png)
-
-1. V Azure kanálů, otevřete **sestavení a vydání** hub a v **sestavení** kartě **+ nový kanál**. Nebo, pokud již máte kanály pro sestavování, vyberte **+ nová** tlačítko.
+1. V Azure kanálů, otevřete **sestavení** kartě **+ nový kanál**. Nebo, pokud již máte kanály pro sestavování, vyberte **+ nová** tlačítko. Potom vyberte **nové vytvoření kanálu**.
 
     ![Nový kanál](./media/how-to-ci-cd/add-new-build.png)
 
-1. Pokud se zobrazí výzva, vyberte **Git** typ zdroje. Vyberte projekt, úložiště a větev, ve kterém se nachází váš kód. Zvolte **pokračovat**.
+1. Pokud se zobrazí výzva, vyberte **Azure DevOps Git** typ zdroje. Vyberte projekt, úložiště a větev, ve kterém se nachází váš kód. Zvolte **pokračovat**.
 
     ![Vyberte git](./media/how-to-ci-cd/select-vsts-git.png)
 
@@ -79,15 +74,19 @@ V této části vytvoříte kanál sestavení, která je nakonfigurována na aut
     
     ![Konfigurace agenta sestavení](./media/how-to-ci-cd/configure-env.png)
 
-1. Úlohy agenta, klikněte na tlačítko "+" a přidejte dvě úlohy v kanálu sestavení. První z nich je z **Azure IoT Edge**. A druhý je z **publikujte artefakty sestavení**
+1. Úlohy agenta, klikněte na tlačítko "+" a přidejte tři úkoly v kanálu sestavení. První dvě jsou z **Azure IoT Edge**. A třetí příkaz je z **publikujte artefakty sestavení**
     
     ![Přidat úlohy](./media/how-to-ci-cd/add-tasks.png)
 
-1. V prvním **Azure IoT Edge** úkolů, aktualizujte **zobrazovaný název** k **modul sestavení a nabízených oznámení**a v **akce** rozevíracího seznamu vyberte možnost **Vytváření a nasdílení změn**. V **Module.json souboru** textové pole, přidat následující cestu k němu. Klikněte na tlačítko **typ registru kontejneru**, ujistěte se, že nakonfigurujete a vyberte stejné registr ve vaší code(module.json). Tato úloha bude sestavovat a push všechny moduly v řešení a publikování do registru kontejneru, který jste zadali. Pokud moduly se vloží do různých registrů, můžete mít více **modul sestavení a Push** úlohy. V případě, že řešení IoT Edge není v kořenovém adresáři vašeho úložiště kódu, můžete zadat **kořen řešení cestě z okraje** v definici sestavení.
+1. V prvním **Azure IoT Edge** úkolů, aktualizujte **zobrazovaný název** k **Azure IoT Edge – bitové kopie sestavení modulu**a v **akce** rozevíracího seznamu Vyberte možnost **vytváření bitové kopie modulu**. V **. soubor template.json** ovládací prvek, vyberte **deployment.template.json** soubor, který popisuje vaše řešení IoT Edge. Klikněte na tlačítko **výchozí platformu**, ujistěte se, že vyberete jako zařízení IoT Edge stejnou platformu. Tato úloha se sestaví všechny moduly v řešení s cílovou platformu, kterou jste zadali. A vygenerovat také **deployment.json** souboru, cesta k souboru můžete najít ve výstupní proměnné. Nastavte alias na `edge` pro tuto proměnnou.
     
     ![Vytváření a nasdílení změn](./media/how-to-ci-cd/build-and-push.png)
 
-1. V **publikujte artefakty sestavení** úkolu, zadali byste nasazení soubor generovaný nástrojem pro úkol sestavení. Nastavte **cesta k publikování** na "config/deployment.json". Pokud nastavíte **kořen řešení cestě z okraje** v posledním úkolem, budete muset připojit v kořenové cestě. Například, pokud cesta Edge kořen řešení je ". / edgesolution", pak bude **cesta k publikování** by měl být ". / edgesolution/config/deployment.json". `deployment.json` Soubor se generuje během doby sestavení, takže je bezpečné ignorovat červenou chybovou řádků do textového pole. 
+1. Ve druhém **Azure IoT Edge** úkolů, aktualizujte **zobrazovaný název** k **Azure IoT Edge – bitové kopie modulu nabízených**a v **akce** rozevíracího seznamu Vyberte možnost **Push bitové kopie modulu**. Zvolte typ registru kontejneru, ujistěte se, že nakonfigurujete a vyberte stejné registr ve vaší code(module.json). V **. soubor template.json** ovládací prvek, vyberte **deployment.template.json** soubor, který popisuje vaše řešení IoT Edge. Klikněte na tlačítko **výchozí platformu**, ujistěte se, že vyberete stejnou platformu pro vaše Image sestavené modulu. Tato úloha zařadí všechny bitové kopie modulu do registru kontejneru, který jste vybrali. A také přidat přihlašovací údaje registru kontejneru v **deployment.json** souboru, cesta k souboru můžete najít ve výstupní proměnné. Nastavte alias na `edge` pro tuto proměnnou. Pokud máte více registrů kontejnerů k hostování vaší bitové kopie modulu, budete muset Duplikovat tuto úlohu, vyberte jiný registr kontejneru a použijte **obejít modulu nebo modulech** v upřesňujících nastaveních obejít imagí, které nejsou pro tuto konkrétního registru.
+
+    ![Nabízená oznámení](./media/how-to-ci-cd/push.png)
+
+1. V **publikujte artefakty sestavení** úkolu, zadali byste nasazení soubor generovaný nástrojem pro úkol sestavení. Nastavte **cesta k publikování** k `$(edge.DEPLOYMENT_FILE_PATH)`.
 
     ![Publikování artefaktů](./media/how-to-ci-cd/publish-build-artifacts.png)
 
@@ -133,21 +132,21 @@ V této části vytvoříte kanál pro vydávání verzí, která je nakonfiguro
 
     ![Přidání úkolů pro kontrolu kvality](./media/how-to-ci-cd/add-task-qa.png)
 
-5. V úloze Azure IoT Edge, přejděte **akce** rozevíracího seznamu vyberte **nasadit do zařízení IoT Edge**. Vyberte vaše **předplatného Azure** a vstupní vaše **název centra IoT**. Můžete zadat IoT Edge **ID nasazení** a nasazení **priority**. Můžete také nasadit do jedné nebo více zařízení. Pokud provádíte nasazení do **více zařízení**, je třeba zadat zařízení **cílová podmínka**. Cílová podmínka se filtr tak, aby odpovídaly sadu hraničních zařízení ve službě IoT Hub. Pokud chcete použít značky zařízení jako podmínka, musíte aktualizovat dvojče zařízení služby IoT Hub zařízení odpovídající značky. Předpokládejme, že máte několik IoT Edge zařízení byla označena jako "qa", pak by měl být konfigurace úlohy jako na následujícím snímku obrazovky. 
+5. V úloze Azure IoT Edge, přejděte **akce** rozevíracího seznamu vyberte **nasadit do zařízení IoT Edge**. Vyberte vaše **předplatného Azure** a vstupní vaše **název centra IoT**. Můžete nasadit do jedné nebo více zařízení. Pokud provádíte nasazení do **více zařízení**, je třeba zadat zařízení **cílová podmínka**. Cílová podmínka se filtr tak, aby odpovídaly sadu hraničních zařízení ve službě IoT Hub. Pokud chcete použít značky zařízení jako podmínka, musíte aktualizovat dvojče zařízení služby IoT Hub zařízení odpovídající značky. Aktualizace **ID nasazení IoT Edge** "nasazení – qa" v upřesňujících nastavení. Předpokládejme, že máte několik IoT Edge zařízení byla označena jako "qa", pak by měl být konfigurace úlohy jako na následujícím snímku obrazovky. 
 
     ![Nasazení do dotazů a odpovědí](./media/how-to-ci-cd/deploy-to-qa.png)
 
     Uložte nový kanál pro vydávání verzí. Klikněte na tlačítko **Uložit**. A pak klikněte na tlačítko **kanálu** se vrátíte do kanálu.
 
-6. Druhá fáze je pro vaše produkční prostředí. Chcete-li přidat nový fáze "Produkční", můžete jednoduše klonovat fáze "QA" a přejmenovat naklonované fázi **produkční**,
+6. Druhá fáze je pro vaše produkční prostředí. Chcete-li přidat nový fáze "Produkční", můžete klonovat fáze "QA" a přejmenovat naklonované fázi **produkční**,
 
     ![Klonovat fáze](./media/how-to-ci-cd/clone-stage.png)
 
-7. Nakonfigurujte úlohy pro vaše produkční prostředí. Předpokládejme, že máte několik IoT Edge zařízení byla označena jako "produkční", v konfiguracích úlohy aktualizovat cílovou podmínku "produkční" a nastavit id nasazení jako "nasazení prod". Klikněte na tlačítko **Uložit**. A pak klikněte na tlačítko **kanálu** se vrátíte do kanálu.
+7. Nakonfigurujte úlohy pro vaše produkční prostředí. Předpokládejme, že máte několik IoT Edge zařízení byla označena jako "produkční", v konfiguracích úlohy aktualizovat cílovou podmínku "produkční" a nastavit ID nasazení jako "nasadit prod" v části Upřesnit nastavení. Klikněte na tlačítko **Uložit**. A pak klikněte na tlačítko **kanálu** se vrátíte do kanálu.
     
     ![Nasazení do produkčního prostředí](./media/how-to-ci-cd/deploy-to-prod.png)
 
-7. V současné době naše artefakt sestavení aktivuje se průběžné **QA** fáze a potom **produkční** fázi. Ale většině případů je potřeba integrovat některé testovací případy na zařízeních, dotazů a odpovědí a ručně schválit bity. Bity později se nasadí do PRODUKČNÍHO prostředí. Žádost o schválení v produkční fázi následující nastavení.
+7. V současné době naše artefakt sestavení aktivuje se průběžné **QA** fáze a potom **produkční** fázi. Ale většině případů je potřeba integrovat některé testovací případy na zařízeních, dotazů a odpovědí a ručně schválit bity. Bity později se nasadí do PRODUKČNÍHO prostředí. Nastavení schválení v produkční fázi jako na následujícím snímku obrazovky.
 
     1. Otevřít **podmínky před nasazením** panel nastavení.
 
@@ -158,7 +157,7 @@ V této části vytvoříte kanál pro vydávání verzí, která je nakonfiguro
         ![Nastavení podmínek](./media/how-to-ci-cd/set-pre-deployment-conditions.png)
 
 
-8. Nyní kanálu pro vydávání verzí je nastavený jako následující.
+8. Nyní kanálu pro vydávání verzí je nastavený jako následující snímek obrazovky.
 
     ![Kanál pro vydávání verzí](./media/how-to-ci-cd/release-pipeline.png)
 
@@ -171,11 +170,11 @@ V této části se aktivují sestavení, aby kanál CI/CD fungovat. Ověřte, ž
 
     ![Ruční aktivační události](./media/how-to-ci-cd/manual-trigger.png)
 
-2. Pokud kanál sestavení bylo úspěšně dokončeno, bude vyvolal vydání do **QA** fázi. Přejděte do kanálu protokoly o sestavení a měli byste vidět následující.
+2. Pokud kanál sestavení bylo úspěšně dokončeno, bude vyvolal vydání do **QA** fázi. Přejděte do kanálu protokoly o sestavení a měli byste vidět na následujícím snímku obrazovky.
 
     ![Protokoly o sestavení](./media/how-to-ci-cd/build-logs.png)
 
-3. Úspěšné nasazení **QA** fáze aktivuje oznámení schvalovateli. Přejděte na kanál verze, zobrazí se následující. 
+3. Úspěšné nasazení **QA** fáze aktivuje oznámení schvalovateli. Přejděte na kanál verze, vidíte na následujícím snímku obrazovky. 
 
     ![Čeká na schválení](./media/how-to-ci-cd/pending-approval.png)
 

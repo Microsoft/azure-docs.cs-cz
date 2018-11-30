@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 451480f5046d5ed8a1bd7262fd8f6a800e66dfc7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402756"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582492"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
@@ -30,7 +30,7 @@ Analýza provozu vyžaduje následující požadavky:
 
 - Sledovací proces sítě povolené předplatné.
 - Protokoly toku skupina zabezpečení sítě (NSG) povolena pro skupiny zabezpečení sítě, kterou chcete monitorovat.
-- Účet služby Azure Storage k ukládání nezpracovaná flog protokoly.
+- Účet služby Azure Storage k ukládání protokolů nezpracovaná toku.
 - Pracovní prostor Azure Log Analytics pomocí oprávnění ke čtení a zápisu.
 
 Váš účet musí splňovat jeden z následujících akcí k povolení analýzy provozu:
@@ -63,7 +63,38 @@ Pokud nevidíte žádný výstup, obraťte se na příslušného předplatného 
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>Ve které oblasti jsou analýzu provozu dostupné?
 
-Analýza provozu můžete použít pro skupiny zabezpečení sítě v některém z následujících podporovaných oblastí: střed USA – Západ, USA – východ, USA – východ 2, střed USA – sever, střed USA – Jih, střed USA, USA – Západ, USA – západ 2, západní Evropa, Severní Evropa, Velká Británie – Západ, Velká Británie – Jih, Austrálie – východ, Austrálie – jihovýchod a Jihovýchodní Asie. Pracovní prostor Log Analytics musí existovat v na západní USA, střed USA, východní USA, západní Evropa, Velká Británie – Jih, Austrálie – jihovýchod nebo jihovýchodní Asie.
+Použití analýzy provozu pro skupiny zabezpečení sítě v některém z následujících podporovaných oblastech:
+- Kanada – střed
+- Západní střed USA
+- USA – východ
+- Východní USA 2
+- Střed USA – sever
+- Střed USA – jih
+- USA – střed
+- USA – západ
+- USA – západ 2
+- Západní Evropa
+- Severní Evropa
+- Brazílie – jih
+- Spojené království – západ
+- Velká Británie – jih
+- Austrálie – východ
+- Austrálie – jihovýchod 
+- Jihovýchodní Asie
+- Střed Indie
+- Indie – jih
+- Japonsko – východ
+
+Pracovní prostor Log Analytics, musí existovat v těchto oblastech:
+- Kanada – střed
+- Západní střed USA
+- USA – východ
+- Západní Evropa
+- Velká Británie – jih
+- Austrálie – jihovýchod
+- Jihovýchodní Asie 
+- Střed Indie
+- Japonsko – východ
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Můžete povolit tok skupiny zabezpečení sítě se protokoly pro v různých oblastech, než pracovní prostor?
 
@@ -94,8 +125,8 @@ Vyberte podporovanou oblast. Pokud vyberete oblast není podporováno, se zobraz
 Tok protokolování fungovalo správně, musí mít zaregistrovaný poskytovatel Microsoft.Insights. Pokud si nejste jisti, zda je pro vaše předplatné zaregistrovaný poskytovatel Microsoft.Insights, nahraďte *xxxxx-xxxxx-xxxxxx-xxxx* v následující příkaz a spusťte následující příkazy z prostředí PowerShell:
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Konfiguroval jsem řešení. Proč mi nezobrazují nic na řídicím panelu?

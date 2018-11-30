@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: 9ad7330960540e0bddc0130736265df402d582ff
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 1df23a35e16d4ba3562ebbc9d89a7a8003afc784
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009317"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498943"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>Konfigurace úložiště a škálovatelnosti pro platformu Apache Kafka v prostředí HDInsight
 
-Naučte se konfigurovat spravované disky, které využívá Apache Kafka v prostředí HDInsight.
+Naučte se konfigurovat spravované disky používané systémem [Apache Kafka](https://kafka.apache.org/) v HDInsight.
 
 Platforma Kafka ve službě HDInsight používá místní disky virtuálních počítačů v clusteru HDInsight. Protože je platforma Kafka náročná na V/V prostředky, k zajištění vysoké propustnosti a vyšší kapacity úložiště na každý uzel se využívá služba [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md). Kdyby platforma Kafka využívala tradiční virtuální pevné disky (VHD), každý uzel by byl omezený na 1 TB. Díky službě Managed Disks můžete používat více disků, se kterými každý uzel v clusteru nabídne kapacitu až 16 TB.
 
@@ -53,11 +53,11 @@ Můžete najít úplnou šablonu, která ukazuje, jak nakonfigurovat spravované
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o práci se systémem Kafka v prostředí HDInsight najdete v následujících dokumentech:
+Další informace o práci s Apache Kafka v HDInsight najdete v následujících dokumentech:
 
-* [Vytvoření repliky Kafka ve službě HDInsight pomocí MirrorMakeru](apache-kafka-mirroring.md)
-* [Použití Apache Stormu se systémem Kafka ve službě HDInsight](../hdinsight-apache-storm-with-kafka.md)
-* [Použití Apache Sparku se systémem Kafka ve službě HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Připojení k systému Kafka přes virtuální síť Azure](apache-kafka-connect-vpn-gateway.md)
+* [Vytvoření repliky Apache Kafka v HDInsight pomocí Mirrormakeru](apache-kafka-mirroring.md)
+* [Použití Apache Stormu s Apache Kafka v HDInsight](../hdinsight-apache-storm-with-kafka.md)
+* [Použití Apache Sparku s využitím Apache Kafka v HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Připojení k Apache Kafka přes virtuální síť Azure](apache-kafka-connect-vpn-gateway.md)
 
-* [Příspěvek na blogu HDInsight o spravovaných discích se systémem Kafka](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)
+* [Blogu HDInsight o spravovaných disků s využitím Apache Kafka](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/)

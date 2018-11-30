@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 4fc38d033181b60f105fd016a3fa968acd9d9177
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 4255b70746eb1d307617a66714301fa7f8609a77
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828217"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634264"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:
@@ -77,5 +77,5 @@ Možná bude nutné určitou kombinaci těchto agentů monitorování virtuáln�
 
 ## <a name="next-steps"></a>Další postup
 
-- Zobrazit [přehled agenta Log Analytics](../../log-analytics/log-analytics-agent-overview.md) zkontrolovat požadavky a podporované metody nasazení agenta do počítače hostované v Azure, do vašeho datového centra nebo jiné cloudové prostředí.
+- Zobrazit [přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) zkontrolovat požadavky a podporované metody nasazení agenta do počítače hostované v Azure, do vašeho datového centra nebo jiné cloudové prostředí.
 

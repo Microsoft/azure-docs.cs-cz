@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 49a2c03664ba39a624871b24c0b86a968a67eddb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 4a0fcb95ed34ed3d98c6b25b475c0866135897f3
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521519"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584668"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Zobrazení stavu úlohy Azure Import/Export
 
@@ -23,7 +23,6 @@ Tento článek obsahuje informace o tom, jak zobrazit stav disku a úlohy pro ú
 Můžete sledovat stav importu nebo exportu úloh na webu Azure Portal. Klikněte na tlačítko **Import/Export** kartu. Na stránce se zobrazí seznam vašich úloh.
 
 ![Zobrazení stavu úlohy](./media/storage-import-export-service/jobstate.png)
-
 
 ## <a name="view-job-status"></a>Zobrazení stavu úlohy
 
@@ -74,7 +73,7 @@ Množství čas potřebný ke zpracování úlohu importu/exportu se liší v z�
 -  Typ úlohy a velikosti dat kopírování
 -  Počet disků v rámci úlohy. 
 
-Služba Import/Export nemá žádnou smlouvu SLA, ale službě se snaží dokončete kopírování v 7 až 10 dní, po přijetí disky. Kromě stavu zveřejněný na webu Azure Portal rozhraní REST API je možné sledovat průběh úlohy. Dokončeno v parametru [vypisovat úlohy]() volání operace rozhraní API poskytuje průběh kopírování procento.
+Služba Import/Export nemá žádnou smlouvu SLA, ale službě se snaží dokončete kopírování v 7 až 10 dní, po přijetí disky. Kromě stavu zveřejněný na webu Azure Portal rozhraní REST API je možné sledovat průběh úlohy. Dokončeno v parametru [vypisovat úlohy](/previous-versions/azure/dn529083(v=azure.100)) volání operace rozhraní API poskytuje průběh kopírování procento.
 
 
 ## <a name="next-steps"></a>Další postup
@@ -82,4 +81,3 @@ Služba Import/Export nemá žádnou smlouvu SLA, ale službě se snaží dokon�
 * [Nastavení nástroje WAImportExport](storage-import-export-tool-how-to.md)
 * [Přenos dat pomocí příkazového řádku azcopy](storage-use-azcopy.md)
 * [Ukázkový Import exportovat rozhraní REST API služby Azure](https://azure.microsoft.com/documentation/samples/storage-dotnet-import-export-job-management/)
-

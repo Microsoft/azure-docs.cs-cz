@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 803fa89145d3a38b2df34666754fe8949a74eb53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a36ad31531e41782f5be457450737a74f476c543
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262331"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584872"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady API managementu
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -253,7 +253,7 @@ Toto téma obsahuje odkaz pro následující zásady služby API Management. Inf
 -   **Zásady obory:** všechny obory
 
 ##  <a name="LimitConcurrency"></a> Omezení souběžnosti
- `limit-concurrency` Zásada zabraňuje uzavřené zásady spouštění více než určitý počet požadavků v daném okamžiku. Při překročení tohoto čísla, nové požadavky selže okamžitě 429 příliš mnoho požadavků stavovým kódem.
+ `limit-concurrency` Zásada zabraňuje uzavřené zásady spouštění více než určitý počet požadavků v každém okamžiku. Při překročení tohoto čísla, nové požadavky selže okamžitě 429 příliš mnoho požadavků stavovým kódem.
 
 ###  <a name="LimitConcurrencyStatement"></a> Prohlášení o zásadách
 
@@ -649,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Atribut|Popis|Požaduje se|Výchozí|
 |---------------|-----------------|--------------|-------------|
 |režim = "řetězec"|Určuje, zda se jedná novou žádost o nebo kopii aktuálního požadavku. V odchozí režim režim = kopírování neinicializuje datovou část požadavku.|Ne|Nová|
-|Název proměnné odpovědi = "řetězec"|Název kontextové proměnné, která bude dostávat objektu odpovědi. Pokud proměnnou neexistuje, vytvoří se po úspěšné spuštění zásad a bude přístupné prostřednictvím [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) kolekce.|Ano|neuvedeno|
+|Název proměnné odpovědi = "řetězec"|Název kontextové proměnné, která bude dostávat objektu odpovědi. Pokud proměnná neexistuje, vytvoří se po úspěšném spuštění zásad a budou přístupné prostřednictvím [ `context.Variable` ](api-management-policy-expressions.md#ContextVariables) kolekce.|Ano|neuvedeno|
 |časový limit = "celočíselné"|Interval časového limitu v sekundách, než volání adresy URL se nezdaří.|Ne|60|
 |Ignorovat chybu|Pokud true a výsledky požadavku k chybě:<br /><br /> – Pokud je název proměnné odpovědi byla zadána, bude obsahovat hodnotu null.<br />– Pokud nebyl zadán název proměnné odpovědi, kontext. Požadavek se nebude aktualizovat.|Ne|false (nepravda)|
 |jméno|Určuje název hlavičky, která se má nastavit.|Ano|neuvedeno|
@@ -876,7 +876,7 @@ Všimněte si použití [vlastnosti](api-management-howto-properties.md) jako ho
 
 ```xml
 
-<trace source="arbitrary string literal"/>
+<trace source="arbitrary string literal">
     <!-- string expression or literal -->
 </trace>
 

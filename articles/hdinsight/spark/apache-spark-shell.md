@@ -9,20 +9,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.openlocfilehash: 5aaf169418962c08f5f45413f53d4c92588a98bd
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f8c296fddaafb8364cc5e0f07b54d850606322d9
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041478"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581421"
 ---
-# <a name="run-spark-from-the-spark-shell"></a>Spark spouštět z prostředí Sparku
+# <a name="run-apache-spark-from-the-spark-shell"></a>Apache Spark spouštět z prostředí Sparku
 
-Interaktivní prostředí Sparku poskytuje pro spouštění Spark příkazy jeden po druhém a výsledky vidíme dispozici prostředí REPL (čtení spuštění tisk smyčky). Tento proces je užitečný pro vývoj a ladění. Spark poskytuje jeden prostředí pro každý z jeho podporované jazyky: Scala, Python a R.
+Interaktivní [Apache Spark](https://spark.apache.org/) poskytuje prostředí pro spouštění Spark příkazy jeden po druhém a výsledky vidíme dispozici prostředí REPL (čtení spuštění tisk smyčky). Tento proces je užitečný pro vývoj a ladění. Spark poskytuje jeden prostředí pro každý z jeho podporované jazyky: Scala, Python a R.
 
-## <a name="get-to-a-spark-shell-with-ssh"></a>Přístup k prostředí Sparku pomocí protokolu SSH
+## <a name="get-to-an-apache-spark-shell-with-ssh"></a>Přístup k prostředí Apache Sparku pomocí protokolu SSH
 
-Přístup k prostředí Sparku v HDInsight pomocí připojení k primárnímu hlavnímu uzlu clusteru pomocí SSH:
+Připojení k primárnímu hlavnímu uzlu clusteru pomocí SSH pro přístup prostředí Apache Spark v HDInsight:
 
      ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
 
@@ -40,7 +40,7 @@ Získáte úplný příkaz SSH pro váš cluster na webu Azure Portal:
 
 Podrobnosti o použití SSH pro připojení k HDInsight najdete v tématu [použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="run-a-spark-shell"></a>Spusťte prostředí Sparku
+## <a name="run-an-apache-spark-shell"></a>Spusťte prostředí Apache Sparku
 
 Spark poskytuje prostředí pro Scala (spark-shell), Pythonu (pyspark) a R (sparkR). V relaci SSH na hlavní uzel clusteru HDInsight zadejte jeden z následujících příkazů:
 
@@ -69,7 +69,7 @@ Příkaz prostředí Sparku (`spark-shell`, `pyspark`, nebo `sparkR`) podporuje 
 
 ## <a name="next-steps"></a>Další postup
 
-- Zobrazit [Představujeme Spark v Azure HDInsight](apache-spark-overview.md) Přehled.
+- Zobrazit [Úvod k Apache Sparku v Azure HDInsight](apache-spark-overview.md) Přehled.
 - Zobrazit [vytvořit cluster Apache Spark v Azure HDInsight](apache-spark-jupyter-spark-sql.md) pro práci s clustery Spark a SparkSQL.
-- Zobrazit [novinky strukturovaného streamování Sparku?](apache-spark-streaming-overview.md) pro psaní aplikací, které zpracovávají datové proudy dat pomocí Sparku.
+- Zobrazit [novinky strukturovaného streamu Apache Spark?](apache-spark-streaming-overview.md) pro psaní aplikací, které zpracovávají datové proudy dat pomocí Sparku.
 

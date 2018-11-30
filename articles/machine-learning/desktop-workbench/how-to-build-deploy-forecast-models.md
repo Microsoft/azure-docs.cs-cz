@@ -10,12 +10,12 @@ ms.author: mattcon
 author: matthewconners
 ms.date: 07/13/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: d3fac7c6d0a2274813c6ba6d96d8014d6452d28f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: f06f4f958d59978e886cbfda47a9ed73f8353592
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284893"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634978"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů prognóz službou Azure Machine Learning
 
@@ -1386,10 +1386,10 @@ grid_cv_rf = TSGridSearchCV(randomforest_model_for_cv, param_grid_rf, cv=rollcv)
 
 # fit and predict
 randomforest_cv_fitted= grid_cv_rf.fit(train_feature_tsdf, y=train_feature_tsdf.ts_value)
-print('Best paramter: {}'.format(randomforest_cv_fitted.best_params_))
+print('Best parameter: {}'.format(randomforest_cv_fitted.best_params_))
 ```
 
-    Best paramter: {'estimator__n_estimators': 100}
+    Best parameter: {'estimator__n_estimators': 100}
     
 
 **Model Sweeping**  

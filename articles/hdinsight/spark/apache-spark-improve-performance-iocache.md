@@ -7,16 +7,16 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 3616183b5ea34b8a14712d2c449de87950443111
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 724e6c57f10fb85b4b91c2236d17a64899953d67
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954500"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581931"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Zlepšení výkonu úlohy Apache Sparku s využitím Azure HDInsight vstupně-výstupních operací Cache (Ukázková verze)
 
-Mezipaměti vstupně-výstupních operací je služba pro ukládání do mezipaměti dat pro Azure HDInsight, který zlepšuje výkon úloh Apache Spark. V/v mezipaměti funguje také s úlohy Tez a Hive, které můžou běžet v clusterech Spark. V/v mezipaměti používá open sourcové mezipaměti komponenta s názvem RubiX. RubiX je místní disk mezipaměti pro použití s moduly analýzy velkých objemů dat, které přístup k datům z cloudových úložných systémech. RubiX je jedinečný mezi systémy, ukládání do mezipaměti, protože používá Solid-State disky (SSD) namísto provozní rezerva paměti pro účely ukládání do mezipaměti. Služba mezipaměti vstupně-výstupních operací spouští a spravuje RubiX metadat servery na každý pracovní uzel clusteru. Nakonfiguruje taky všechny služby clusteru pro transparentní použití RubiX mezipaměti.
+Mezipaměti vstupně-výstupních operací je služba pro ukládání do mezipaměti dat pro Azure HDInsight, který zlepšuje výkon úloh Apache Spark. V/v mezipaměti funguje taky s [Apache TEZ](https://tez.apache.org/) a [Apache Hive](https://hive.apache.org/) úlohy, které můžou běžet na [Apache Spark](https://spark.apache.org/) clustery. V/v mezipaměti používá open sourcové mezipaměti komponenta s názvem RubiX. RubiX je místní disk mezipaměti pro použití s moduly analýzy velkých objemů dat, které přístup k datům z cloudových úložných systémech. RubiX je jedinečný mezi systémy, ukládání do mezipaměti, protože používá Solid-State disky (SSD) namísto provozní rezerva paměti pro účely ukládání do mezipaměti. Služba mezipaměti vstupně-výstupních operací spouští a spravuje RubiX metadat servery na každý pracovní uzel clusteru. Nakonfiguruje taky všechny služby clusteru pro transparentní použití RubiX mezipaměti.
 
 Většina disky SSD poskytují více než 1 GByte za sekundu šířky pásma. Tuto šířku pásma, doplněných mezipaměť v paměti souborů operačního systému, poskytuje dostatečnou šířku pásma pro načtení velkého objemu dat výpočetní moduly pro zpracování, jako je Apache Spark. Provozní paměť zůstane k dispozici pro Apache Spark pro zpracování úloh silně závislé na paměti, jako je například podle okolí posouvá. Výhradní použití operační paměti umožňuje Apache Spark, abyste dosáhli optimální využití.  
 
@@ -52,7 +52,7 @@ Azure HDInsight v/v mezipaměti je deaktivováno ve výchozím nastavení ve ver
   
 Může docházet k chybám místa na disku, spouštění úloh Spark po povolení mezipaměti vstupně-výstupních operací. Vzhledem k tomu Spark také používá pro ukládání dat během přesouvání operace úložiště na místním disku dojde k těmto chybám. Spark nemusí mít dostatek místa na discích SSD, jakmile se vstupně-výstupní mezipaměť je povolená a snižuje prostor pro Spark úložiště. Množství místa, které používají výchozí hodnoty mezipaměti vstupně-výstupních operací na polovinu celkového místa na discích SSD. Využití místa na disku pro v/v mezipaměti je možné konfigurovat ve Ambari. Pokud dojde k chybám místa na disku, snížit objem místa na discích SSD použitých pro mezipaměť v/v a restartujte službu. Chcete-li změnit místo, nastavte pro v/v mezipaměti, proveďte následující kroky:
 
-1. V Ambari, vyberte **HDFS** služby na levé straně.
+1. V Apache Ambari, vyberte **HDFS** služby na levé straně.
 
 1. Vyberte **Configs** a **Upřesnit** karty.
 

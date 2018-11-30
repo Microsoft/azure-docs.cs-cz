@@ -5,17 +5,17 @@ author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 627ef0123f05e768dd8a83c197b25da7f161a37c
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.topic: conceptual
+ms.openlocfilehash: 10dfa9812a0546f3a8c57e28227851b6f72657fc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852992"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582407"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Správa vašich prostředků pomocí skupin pro správu
 
@@ -272,12 +272,26 @@ Přesunout skupinu pro správu pomocí Azure CLI pomocí příkazu update.
 az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 ```
 
+## <a name="audit-management-groups-using-activity-logs"></a>Skupiny pro správu auditu pomocí protokolů aktivit
+
+Chcete-li sledovat skupin pro správu přes toto rozhraní API, použijte [rozhraní API pro klienty aktivitu protokolu](/rest/api/monitor/tenantactivitylogs). Aktuálně není možné pomocí Powershellu, rozhraní příkazového řádku nebo portálu Azure portal ke sledování aktivit správy skupin.
+
+1. Jako správce tenanta Azure AD tenanta [zvýšení úrovně přístupu](../../role-based-access-control/elevate-access-global-admin.md) pak auditování uživateli přes obor přiřadit role Čtenář `/providers/microsoft.insights/eventtypes/management`.
+1. Jako uživatel, auditování, zavolejte [rozhraní API pro klienty aktivitu protokolu](/rest/api/monitor/tenantactivitylogs) zobrazíte aktivity skupiny správy. Budete chtít filtrovat podle poskytovatele prostředků **Microsoft.Management** za všechny aktivity skupiny správy.  Příklad:
+
+```xml
+GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+```
+
+> [!NOTE]
+> Jednoduše volat toto rozhraní API z příkazového řádku, zkuste [ARMClient](https://github.com/projectkudu/ARMClient).
+
 ## <a name="next-steps"></a>Další postup
 
-Další informace o skupinách správy, naleznete v tématu:
+Další informace o řešeních pro správu najdete v následujících tématech:
 
-- [Uspořádání prostředků se skupinami pro správu Azure](overview.md)
 - [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
-- [Instalace modulu Azure Powershell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Specifikace rozhraní REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Nainstalujte rozšíření Azure CLI](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
+- [Zkontrolujte skupiny pro správu v modulu Azure PowerShell prostředky](https://aka.ms/mgPSdocs)
+- [Zkontrolujte skupiny pro správu v rozhraní REST API](https://aka.ms/mgAPIdocs)
+- [Zkontrolujte skupiny pro správu v Azure CLI](https://aka.ms/mgclidoc)

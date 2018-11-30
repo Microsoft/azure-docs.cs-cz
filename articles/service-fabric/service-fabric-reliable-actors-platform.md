@@ -1,6 +1,6 @@
 ---
-title: Reliable Actors v Service Fabric | Microsoft Docs
-description: Popisuje, jak jsou vrstvu na spolehlivé služby Reliable Actors a pomocí funkcí platformy Service Fabric.
+title: Reliable Actors ve službě Service Fabric | Dokumentace Microsoftu
+description: Popisuje, jak jsou rozloženy do vrstev v Reliable Services v Reliable Actors a pomocí funkcí platformy Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: f8e6ad4b23eeaf46cccac9c8ff9d41f71511129d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bd3a77e1486d4af61539e55f67811221dd971b37
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642848"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582328"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak objekty Reliable Actors využívají platformu Service Fabric
-Tento článek vysvětluje, jak fungují Reliable Actors na platformě Azure Service Fabric. Spustit v rozhraní, které je hostován v implementaci stavové spolehlivé služby Reliable Actors názvem *služby objektu actor*. Služby objektu actor obsahuje všechny komponenty potřebné ke správě životního cyklu a odeslání pro vaše aktéři zpráva:
+Tento článek vysvětluje, jak fungují Reliable Actors na platformě Azure Service Fabric. Spustit v rozhraní framework, která je hostována v implementaci spolehlivé stavové služby Reliable Actors volá se, *služba objektu actor*. Služba objektu actor obsahuje všechny komponenty potřebné ke správě životního cyklu a odesílání vašeho actors zpráva:
 
-* Modul Runtime objektu Actor spravuje životní cyklus, uvolňování paměti a vynucuje jednovláknové přístup.
-* Naslouchací proces vzdálené komunikace služby objektu actor přijímá volání aktéři vzdáleného přístupu a je odešle do dispečera směrovat na příslušné objektu actor instanci.
-* Zprostředkovatel stavu objektu Actor zabalí zprostředkovatelů stavu (např. zprostředkovatele stavu spolehlivé kolekce) a poskytuje adaptér pro správu stavu objektu actor.
+* Modulu Runtime Actor životního cyklu uvolňování paměti spravuje a vynucuje přístup s jedním vláknem.
+* Naslouchací proces vzdálené komunikace služby objektu actor přijímá volání vzdáleného přístupu pro objekty actor a odesílá je do dispečera směrovat do instance odpovídající objektu actor.
+* Poskytovatel stavu objektu Actor zabalí zprostředkovatelů stavu (například zprostředkovatele stavu Reliable Collections) a poskytuje adaptér pro správu stavu objektu actor.
 
-Tyto součásti společně tvoří spolehlivé objektu Actor framework.
+Tyto součásti společně tvoří rozhraní Reliable Actors.
 
 ## <a name="service-layering"></a>Služba vrstvení
-Protože samotné služby objektu actor je spolehlivá služba, všechny [aplikačního modelu](service-fabric-application-model.md), životního cyklu, [balení](service-fabric-package-apps.md), [nasazení](service-fabric-deploy-remove-applications.md), upgrade a škálování koncepty spolehlivé služby použít stejným způsobem jako do služby objektu actor.
+Protože samotnou službu objektu actor je spolehlivá služba, všechny [aplikační model](service-fabric-application-model.md), životní cyklus, [balení](service-fabric-package-apps.md), [nasazení](service-fabric-deploy-remove-applications.md), upgrade a škálování koncepty spolehlivé Služby použít stejným způsobem jako do služby objektu actor.
 
-![Rozvrstvení služby objektu actor][1]
+![Vrstvení služby objektu actor][1]
 
-Předchozí diagram znázorňuje vztah mezi architektury aplikace Service Fabric a uživatelského kódu. Modré elementy reprezentují rozhraní spolehlivé služby, oranžová představuje rozhraní objektu Actor spolehlivé a zelená představuje uživatelského kódu.
+Předchozí diagram znázorňuje vztah mezi Service Fabric aplikační architektury a uživatelského kódu. Modré elementy reprezentují rozhraní framework aplikace Reliable Services, orange představuje Reliable Actors rozhraní framework a zelená představuje uživatelský kód.
 
-V spolehlivé služby, služby dědí `StatefulService` třídy. Tato třída je sám odvozené od `StatefulServiceBase` (nebo `StatelessService` pro bezstavové služby). V Reliable Actors pomocí služby objektu actor. Je na různé implementace služby objektu actor `StatefulServiceBase` třídu, která implementuje vzor objektu actor, kde vaše aktéři spustit. Protože je právě implementací samotné služby objektu actor `StatefulServiceBase`, můžete napsat vlastní službu, která je odvozena z `ActorService` a implementovat funkce úrovně služeb stejným způsobem jako při dědění `StatefulService`, jako například:
+V Reliable Services, službě dědí `StatefulService` třídy. Tato třída je odvozen z `StatefulServiceBase` (nebo `StatelessService` pro bezstavové služby). V Reliable Actors použijte službu objektu actor. Služba objektu actor se na různé implementace `StatefulServiceBase` třídu, která implementuje vzor objektu actor, ve kterém se spouští vaše objektů actor. Protože je právě implementace samotnou službu objektu actor `StatefulServiceBase`, můžete napsat vlastní služby, která je odvozena z `ActorService` a implementujte funkce na úrovni služby, stejně jako byste to udělali při dědění `StatefulService`, například:
 
-* Služba zálohování a obnovení.
-* Sdílené funkce pro všechny účastníky, například jistič.
-* Vzdálená volání procedur v samotné služby objektu actor a v každé jednotlivé objektu actor.
+* Zálohování a obnovení služby.
+* Sdílené funkce pro všechny objekty actor, například jističe.
+* Vzdálené volání procedur na samotnou službu objektu actor a na každé jednotlivé objektu actor.
 
-Další informace najdete v tématu [implementace funkce na úrovni služby ve službě objektu actor](service-fabric-reliable-actors-using.md).
+Další informace najdete v tématu [implementace funkce na úrovni služby v rámci služby objektu actor](service-fabric-reliable-actors-using.md).
 
 ## <a name="application-model"></a>Aplikační model
-Služby objektu actor jsou spolehlivé služby, takže aplikačního modelu je stejný. Však nástroje sestavení objektu actor framework generovat některé soubory modelu aplikace za vás.
+Služby objektů actor jsou spolehlivé služby, takže aplikační model je stejný. Ale nástroje pro sestavení rozhraní objektu actor vygenerovat některé soubory modelu aplikace za vás.
 
 ### <a name="service-manifest"></a>Manifest služby
-Nástroje sestavení objektu actor framework automaticky generovat obsah souboru ServiceManifest.xml služby objektu actor. Tento soubor obsahuje:
+Nástroje pro sestavení rozhraní objektu actor automaticky generovat obsah souborů ServiceManifest.xml služba objektu actor. Tento soubor obsahuje:
 
-* Typ služby objektu actor. Název typu je vytvořen na základě názvu objektu actor projektu. Založená na atributu trvalost na vaše objektu actor, je HasPersistedState také nastavený příznak odpovídajícím způsobem.
+* Typ služby objektu actor. Název typu je generován a základě název projektu objektu actor. Na základě trvalost atributu na objekt actor, HasPersistedState není zároveň nastavený příznak odpovídajícím způsobem.
 * Balíček kódu.
-* Konfigurační balíček.
-* Koncové body a prostředky.
+* Balíček config.
+* Prostředky a koncových bodů.
 
 ### <a name="application-manifest"></a>Manifest aplikace
-Nástroje sestavení objektu actor framework automaticky vytvoří definici výchozí služby pro služby objektu actor. Nástroje pro sestavení naplnit výchozí vlastnosti služby:
+Nástroje pro sestavení rozhraní objektu actor automaticky vytvořit výchozí definice služby pro vaši službu objektu actor. Nástroje sestavení naplnit výchozí vlastnosti služby:
 
-* Počet sady replik je určen podle atribut trvalost na vaše objektu actor. Pokaždé, když trvalost atribut na vaše objektu actor mění, počet sady replik v definici výchozí služby se resetuje odpovídajícím způsobem.
-* Schéma oddílu a rozsah jsou nastaveny na Uniform Int64 s plný rozsah klíče Int64.
+* Počet sady replik je určen atribut trvalost na objekt actor. Pokaždé, když trvalost atribut na objekt actor se změní, počet sady replik ve výchozí definici služby se resetuje odpovídajícím způsobem.
+* Schéma oddílu a rozsah nastavené jednotné Int64 s plný rozsah klíčů Int64.
 
-## <a name="service-fabric-partition-concepts-for-actors"></a>Koncepty oddílu Service Fabric actors
-Služby objektu actor jsou oddílů stavové služby. Každý oddíl služby objektu actor obsahuje sadu aktéři. Oddílů služby je automaticky distribuovaná přes více uzlů v Service Fabric. Instance objektu actor jsou distribuovány v důsledku.
+## <a name="service-fabric-partition-concepts-for-actors"></a>Koncepty oddílů Service Fabric actors
+Služby objektu actor se dělené stavové služby. Každý oddíl službu actor service obsahuje sadu objektů actor. Oddíly služby jsou automaticky rozloženy na více uzlů v Service Fabric. Instance objektu actor se distribuují ve výsledku.
 
-![Objekt actor vytváření oddílů a distribuci][5]
+![Objekt actor vytváření oddílů a rozdělení][5]
 
-Spolehlivé služby můžete vytvořit s schémata jiný oddíl a oddíl rozsahy klíčů. Služby objektu actor používá schéma rozdělení oddílů Int64 s plný rozsah klíče Int64 k mapování aktéři na oddíly.
+Reliable Services lze vytvořit pomocí různých oddílů schémata a rozsahů klíče oddílů. Služba objektu actor pomocí Int64 schéma rozdělení oddílů s plný rozsah klíčů Int64 mapuje actors na oddíly.
 
 ### <a name="actor-id"></a>ID objektu actor
-Každý objekt actor, který se vytvoří ve službě má jedinečné ID přidružený reprezentována `ActorId` třídy. `ActorId` je neprůhledné hodnoty ID, které je možné pro rovnoměrné aktéři mezi oddílů služby tak, že generuje náhodné ID:
+Každý objekt actor, který se vytvoří ve službě má jedinečné ID přidružené k jeho reprezentována `ActorId` třídy. `ActorId` neprůhledná hodnota ID, který slouží pro rovnoměrné actors napříč oddíly služby vygenerováním náhodné ID je:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -80,7 +80,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Každý `ActorId` se rozdělí na datovém typu Int64. Z tohoto důvodu služby objektu actor musí používat schéma rozdělení oddílů Int64 s plný rozsah klíče Int64. Však můžete použít vlastní hodnoty ID pro `ActorID`, včetně GUID/UUID, řetězce a Int64s.
+Každý `ActorId` se počítají hašovací hodnoty pro typ Int64. To je důvod, proč služba objektu actor musí používat schéma dělení Int64 s plný rozsah klíčů Int64. Vlastní ID hodnoty však lze použít pro `ActorID`, včetně GUID/UUID, řetězce a Int64s.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -93,15 +93,15 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-Pokud používáte GUID/UUID a řetězce, hodnoty rozdělí na datovém typu Int64. Ale když explicitně zadáváte Int64 pro `ActorId`, Int64 se mapování přímo na oddíl bez další algoritmu hash. Tento postup na ovládací prvek oddíl, který aktéři jsou umístěny v můžete použít.
+Při používání identifikátorů GUID/UUID a řetězce, jsou hodnoty mají hodnotu hash pro typ Int64. Ale když explicitně zadáváte Int64 do `ActorId`, Int64 namapuje přímo do oddílu bez další algoritmu hash. Můžete použít tuto techniku k oddíl, který actors jsou umístěny do ovládacího prvku.
 
 
 ## <a name="next-steps"></a>Další postup
-* [Řízení stavu objektu actor](service-fabric-reliable-actors-state-management.md)
-* [Kolekce paměti a životního cyklu objektu actor](service-fabric-reliable-actors-lifecycle.md)
-* [Referenční dokumentace rozhraní API actors](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Ukázkový kód rozhraní .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázkový kód Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Správa stavu objektu actor](service-fabric-reliable-actors-state-management.md)
+* [Životní cyklus a uvolňování paměti kolekce objektu actor](service-fabric-reliable-actors-lifecycle.md)
+* [Referenční dokumentace rozhraní API objektů actor](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet#microsoft_servicefabric_actors)
+* [Vzorový kód .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Vzorový kód Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

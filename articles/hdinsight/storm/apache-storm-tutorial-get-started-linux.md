@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: d2181fb22079112c84e3e7c65575b12aa0c867ac
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 900180c9991932f4efaa07f9881e9f3f897cd99e
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006545"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498279"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Začínáme s Apache Storm v HDInsight pomocí příkladů topologie Storm Starter
 
-Naučte se používat systém Apache Storm v HDInsight pomocí příkladů topologie Storm Starter.
+Další informace o použití [Apache Storm](http://storm.apache.org/) v HDInsight pomocí příkladů topologie storm starter.
 
 Apache Storm je škálovatelný výpočetní systém v reálném čase odolný proti chybám, distribuovaný určený pro zpracování datových proudů. Pomocí Storm v Azure HDInsight můžete vytvořit cloudový cluster Storm, který bude provádět analýzy velkých objemů dat v reálném čase.
 
@@ -34,7 +34,7 @@ Apache Storm je škálovatelný výpočetní systém v reálném čase odolný p
 
 * **Znalost SSH a SCP**. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-a-storm-cluster"></a>Vytvoření clusteru Storm
+## <a name="create-an-apache-storm-cluster"></a>Vytvoření clusteru Apache Storm
 
 Pomocí následujících kroků můžete vytvořit Storm na clusteru HDInsight:
 
@@ -139,7 +139,7 @@ Ke sledování topologie pomocí uživatelského rozhraní Storm použijte násl
 
     * **Deaktivovat** – pozastaví spuštěné topologie.
 
-    * **Znovu vyvážit** – upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Nové vyvážení upraví paralelismus, aby se vykompenzovalo zvýšení nebo snížení počtu uzlů v clusteru. Další informace najdete v části [Pochopení paralelismu topologie Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+    * **Znovu vyvážit** – upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Nové vyvážení upraví paralelismus, aby se vykompenzovalo zvýšení nebo snížení počtu uzlů v clusteru. Další informace najdete v tématu [pochopení paralelismu topologie Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
     * **Ukončit** – ukončí topologii Storm po zadaném časovém limitu.
 
@@ -187,15 +187,15 @@ Pokud narazíte na problém s vytvářením clusteru HDInsight, podívejte se na
 
 ## <a id="next"></a>Další kroky
 
-V tomto kurzu Apache Storm jste se naučili základy práce se Stormem v HDInsightu. Dále se naučíte, jak [Vyvíjet topologie založené na jazyce Java pomocí nástroje Maven](apache-storm-develop-java-topology.md).
+V tomto kurzu Apache Storm jste se naučili základy práce se Stormem v HDInsightu. Dále se naučíte, jak [založené na jazyce Java vyvíjet topologie pomocí nástroje Apache Maven](apache-storm-develop-java-topology.md).
 
 Pokud jste již obeznámeni s vývojem topologií založených na jazyce Java, přečtěte si dokument [Nasazení a správa topologií Apache Storm v HDInsight](apache-storm-deploy-monitor-topology-linux.md).
 
-Pokud jste vývojář .NET, můžete s použitím sady Visual Studio vytvořit topologie C# nebo hybridní topologie C#/Java. Další informace najdete v tématu [Vývoj topologií C# pro Apache Storm ve službě HDInsight pomocí nástrojů Hadoop pro Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md).
+Pokud jste vývojář .NET, můžete s použitím sady Visual Studio vytvořit topologie C# nebo hybridní topologie C#/Java. Další informace najdete v tématu [vývoj C# topologií pro Apache Storm v HDInsight pomocí nástroje Apache Hadoop pro Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md).
 
 Příklady topologií, které se dají použít se systémem Storm ve službě HDInsight:
 
-* [Příklad topologií pro Storm v HDInsight](apache-storm-example-topology.md)
+* [Příklad topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md)
 
 [apachestorm]: https://storm.incubator.apache.org
 [stormdocs]: http://storm.incubator.apache.org/documentation/Documentation.html

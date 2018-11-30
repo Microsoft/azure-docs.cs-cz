@@ -1,5 +1,5 @@
 ---
-title: Správa Azure
+title: Správa Azure – přehled
 description: Přehled oblastí správy pro aplikace Azure a prostředky s odkazy na obsah na nástroje pro správu Azure.
 author: DCtheGeek
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: dacoulte
-ms.openlocfilehash: 268526277dc935ccffc30120f2bb170ad3ff3ef1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 180b0cb9f52858d9b0f079ea711fd5ccab738ecf
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978215"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582270"
 ---
 # <a name="management-in-azure"></a>Správa v Azure
 
@@ -43,7 +43,7 @@ Zásady správného řízení v Azure jsou primárně implementované pomocí dv
 
 ## <a name="secure"></a>Zabezpečení
 
-Správa zabezpečení aplikací, prostředků a dat zahrnuje kombinaci vyhodnocování hrozeb, shromažďování a analýza dat zabezpečení a zajištění, že vaše aplikace a prostředky jsou navržené a nakonfigurované zabezpečeným způsobem. Monitorování zabezpečení a analýzu hrozeb zajišťuje služba [Azure Security Center](../security-center/security-center-intro.md), která poskytuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Měli byste si také projít [úvod do zabezpečení Azure](../security/azure-security.md), kde najdete kompletní informace o zabezpečení v Azure a pokyny pro zabezpečenou konfiguraci prostředků Azure.
+Správa zabezpečení aplikací, prostředků a dat zahrnuje kombinaci vyhodnocování hrozeb, shromažďování a analýza dat zabezpečení a zajištění, že vaše aplikace a prostředky jsou navržené a nakonfigurované zabezpečeným způsobem. Analýza hrozeb a monitorování zabezpečení jsou k dispozici služba Azure Security Center, která zahrnuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami. Měli byste si také projít [úvod do zabezpečení Azure](../security/azure-security.md), kde najdete kompletní informace o zabezpečení v Azure a pokyny pro zabezpečenou konfiguraci prostředků Azure.
 
 ## <a name="protect"></a>Ochrana
 

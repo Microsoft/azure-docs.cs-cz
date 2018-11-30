@@ -3,7 +3,7 @@ title: Propojení Microsoft Advanced Threat Analytics a Azure Security Center | 
 description: Zjistěte, jak Azure Security Center umožňuje integrací s Microsoft Advanced Threat Analytics.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
-ms.author: yurid
-ms.openlocfilehash: 6129c83e33d046c2fc9ce1724a27efce5efdfa0e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: bcd9b006c5451cb2d251cd5ff9e6ae5e0bd17f3c
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258795"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634009"
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Propojení Microsoft Advanced Threat Analytics a Azure Security Center
 Tento dokument vám umožní nakonfigurovat integraci Microsoft Advanced Threat Analytics a Azure Security Center.
 
 ## <a name="why-add-advanced-threat-analytics-data"></a>Proč přidat Advanced Threat Analytics data?
-[Advanced Threat Analytics (ATA)](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata) je místní platforma, která pomáhá odhalit podezřelé uživatele chování. Při připojení, budete moct zobrazit podezřelé akce zjištěná službou ATA ve službě Security Center. Tato integrace umožňuje zobrazení, korelovat a prošetřování výstrahy zabezpečení související s vašimi hybridními cloudovými úlohami ve službě Security Center. 
+[Advanced Threat Analytics (ATA)](https://docs.microsoft.com/advanced-threat-analytics/what-is-ata) je místní platforma, která pomáhá odhalit podezřelé uživatele chování. Při připojení, budete moct zobrazit podezřelé akce zjištěná službou ATA ve službě Security Center. Tato integrace umožňuje zobrazení, korelovat a prošetřování výstrahy zabezpečení související s vašimi hybridními cloudovými úlohami ve službě Security Center.
 
 ## <a name="how-do-i-configure-this-integration"></a>Jak nakonfigurovat tuto integraci?
 Za předpokladu, že už máte instalace ATA, a funguje správně v místním, postupujte podle těchto kroků a nakonfigurujte tato integrační:
@@ -46,7 +46,7 @@ Za předpokladu, že už máte instalace ATA, a funguje správně v místním, p
 8. V části **Advanced Threat Analytics**, klikněte na tlačítko **přidat**.
 
     ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig3.png)
-    
+
 9. Přejít na poslední krok a klikněte na tlačítko **stáhnout agenta**.
 
     ![ATA](./media/security-center-ata-integration/security-center-ata-integration-fig4.png)
@@ -62,13 +62,13 @@ Za předpokladu, že už máte instalace ATA, a funguje správně v místním, p
 12. Instalace tohoto agenta ve službě ATA Center. Během instalace, je nutné vybrat možnost **připojit agenta k Azure Log Analytics**a poskytují *ID pracovního prostoru*, a *primární klíč* na požádání.
 
 
-Po dokončení instalace, integrace se dokončí a budete moci zobrazit nové výstrahy odeslané z ATA ke službě Security Center v **hledání** výsledek. Řešení se zobrazí v **řešení zabezpečení** stránce v části **připojená řešení**. 
+Po dokončení instalace, integrace se dokončí a budete moci zobrazit nové výstrahy odeslané z ATA ke službě Security Center v **hledání** výsledek. Řešení se zobrazí v **řešení zabezpečení** stránce v části **připojená řešení**.
 
 ## <a name="next-steps"></a>Další postup
 V tomto dokumentu jste zjistili, jak se připojit ke službě Security Center Microsoft ATA. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Propojení Azure Active Directory Identity Protection a Azure Security Center](security-center-aadip-integration.md)
-* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-azure-policy.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.
@@ -76,5 +76,3 @@ V tomto dokumentu jste zjistili, jak se připojit ke službě Security Center Mi
 - [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md) – zjistěte, jak data správy a ochrany ve službě Security Center.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější zprávy zabezpečení Azure a informace.
-
-

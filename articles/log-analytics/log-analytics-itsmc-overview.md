@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: c5b05b4ce33222ee9dd84950066b3bd36ea315de
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: cab78d09038b8ab00c318b3ce615d99139e9b005
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824859"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634026"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí IT Service Management Connector
 
@@ -84,10 +84,10 @@ Pro vytvoření připojení, musíte povolit připojení z řešení ITSM konekt
 
 V závislosti na produktu ITSM, ke kterému se připojujete použijte následující postup:
 
-- [System Center Service Manager (SCSM)](log-analytics-itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
-- [ServiceNow](log-analytics-itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
-- [Provance](log-analytics-itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
-- [Cherwell](log-analytics-itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
+- [System Center Service Manager (SCSM)](../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [ServiceNow](../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
+- [Provance](../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
+- [Cherwell](../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
 Jakmile budete mít připravenou na to nástrojům ITSM, postupujte podle pokynů můžete vytvořit připojení:
 
@@ -100,7 +100,7 @@ Jakmile budete mít připravenou na to nástrojům ITSM, postupujte podle pokyn�
 
     ![Přidat připojení ITSM](media/log-analytics-itsmc-overview/add-new-itsm-connection.png)
 
-4.  Zadejte nastavení připojení, jak je popsáno v [konfiguraci připojení ITSMC vašich produktů nebo služeb Team Foundation článek ITSM](log-analytics-itsmc-connections.md).
+4.  Zadejte nastavení připojení, jak je popsáno v [konfiguraci připojení ITSMC vašich produktů nebo služeb Team Foundation článek ITSM](../azure-monitor/platform/itsmc-connections.md).
 
     > [!NOTE]
 
@@ -291,7 +291,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - Ujistěte se, že jste správně zadali uživatelské jméno, heslo, ID klienta a tajný kód klienta pro každé připojení.  
     - zaškrtněte, pokud máte dostatečná oprávnění v odpovídající produktu ITSM. k vytvoření připojení.  
  - U připojení k portálu Service Manager  
-    - Zajistěte, aby byla úspěšně nasazena aplikace, webové a hybridní připojení je vytvořené. K ověření, připojení se úspěšně naváže s počítačem v místním prostředí portálu Service Manager, navštivte adresu URL webové aplikace podle popisu v dokumentaci k provádění [hybridní připojení](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).  
+    - Zajistěte, aby byla úspěšně nasazena aplikace, webové a hybridní připojení je vytvořené. K ověření, připojení se úspěšně naváže s počítačem v místním prostředí portálu Service Manager, navštivte adresu URL webové aplikace podle popisu v dokumentaci k provádění [hybridní připojení](../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Pokud se data z ServiceNow získávání nesynchronizuje do Log Analytics, ujistěte se, že ServiceNow instance není pozastaveno. Instance ServiceNow Dev někdy přechází do režimu spánku při nečinnosti dlouhou dobu. Jinak ohlaste ho.
 3.  Pokud se aktivuje upozornění Log Analytics ale fungovat položky nejsou vytvářena v produktu ITSM. nebo položky konfigurace nejsou vytvořeny nebo propojených pracovních položek nebo další obecné informace, podívejte se na následujících místech:
@@ -301,7 +301,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Řešení potíží s nasazení portálu Service Manager webových aplikací
 1.  V případě jakýchkoli problémů s nasazení webové aplikace Ujistěte se, že máte dostatečná oprávnění v rámci předplatného uvedených k vytvoření a nasazení prostředků.
 2.  Pokud dojde **"Objekt odkaz není nastaven na instanci objektu"** Chyba při spuštění [skript](log-analytics-itsmc-service-manager-script.md), ujistěte se, že jste zadali platné hodnoty v rámci **konfigurace uživatele** oddílu .
-3.  Pokud chcete vytvořit obor názvů služby Service bus relay, ujistěte se, že požadovaný prostředek poskytovatel je zaregistrovaný v rámci předplatného. Pokud není zaregistrovaný, ručně vytvořte obor názvů služby Service bus relay z webu Azure portal. Můžete také vytvořit, je při [vytváření hybridního připojení](log-analytics-itsmc-connections.md#configure-the-hybrid-connection) z portálu Azure portal.
+3.  Pokud chcete vytvořit obor názvů služby Service bus relay, ujistěte se, že požadovaný prostředek poskytovatel je zaregistrovaný v rámci předplatného. Pokud není zaregistrovaný, ručně vytvořte obor názvů služby Service bus relay z webu Azure portal. Můžete také vytvořit, je při [vytváření hybridního připojení](../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) z portálu Azure portal.
 
 
 ## <a name="contact-us"></a>Kontaktujte nás
@@ -309,4 +309,4 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 Pro jakékoli dotazy nebo připomínky na IT Service Management Connector kontaktujte nás na adrese [ omsitsmfeedback@microsoft.com ](mailto:omsitsmfeedback@microsoft.com).
 
 ## <a name="next-steps"></a>Další postup
-[Přidat ITSM produktů a služeb IT Service Management Connector](log-analytics-itsmc-connections.md).
+[Přidat ITSM produktů a služeb IT Service Management Connector](../azure-monitor/platform/itsmc-connections.md).

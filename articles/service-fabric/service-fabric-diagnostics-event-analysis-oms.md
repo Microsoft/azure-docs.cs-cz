@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ed6a709418871ededc8ddfe06b0eb1ab3e4546e1
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 332939710517e99aaa77642dc5e67256b476bd66
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291075"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634571"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Události analýzy a vizualizace s využitím Log Analytics
  Log Analytics shromažďuje a analyzuje telemetrii z aplikace a služby hostované v cloudu a poskytuje analýzy nástroje, které vám umožní maximalizovat jejich dostupnost a výkon. Tento článek popisuje, jak spouštět dotazy v Log Analytics k získání přehledu a řešení potíží s co se děje ve vašem clusteru. Se podrobněji probírají následující běžné otázky:
@@ -108,7 +108,7 @@ Je výkonný dotazovací jazyk Kusto. Další cenné dotaz, který můžete spus
 ## <a name="next-steps"></a>Další postup
 
 * Pokud chcete povolit infrastruktury, například monitorování čítače výkonu, přejděte na [Přidání agenta Log Analytics](service-fabric-diagnostics-oms-agent.md). Agent shromažďuje čítače výkonu a přidá je do existujícího pracovního prostoru.
-* Log Analytics nabízí místními clustery brány (dopředu proxy server HTTP), který slouží k odesílání dat do Log Analytics. Další informace o, že v [počítače bez připojení k Internetu připojení k Log Analytics pomocí Log Analytics gateway](../log-analytics/log-analytics-oms-gateway.md).
+* Log Analytics nabízí místními clustery brány (dopředu proxy server HTTP), který slouží k odesílání dat do Log Analytics. Další informace o, že v [počítače bez připojení k Internetu připojení k Log Analytics pomocí Log Analytics gateway](../azure-monitor/platform/gateway.md).
 * Konfigurace [automatické upozorňování](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika.
 * Seznamte se s funkcemi [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) nabízenými jako součást Log Analytics.
 * Získejte podrobnější přehled o Log Analytics a navíc nabízejí, přečtěte si [co je služba Log Analytics?](../operations-management-suite/operations-management-suite-overview.md).

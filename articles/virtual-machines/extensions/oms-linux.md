@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: roiyz
-ms.openlocfilehash: dc0d7857dbbbdc862878201ba9d47632d2b5affd
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4c35820daa9cc25f40dfa0034d9ce632ece235a7
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404847"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633401"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics rozšíření virtuálního počítače pro Linux
 
@@ -219,7 +219,7 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 | 51 | Toto rozšíření nepodporuje operační systém Virtuálního počítače | |
 | 55 | Nejde se připojit ke službě Log Analytics nebo požadované balíčky je uzamčen chybí nebo je dpkg Správce balíčků| Zkontrolujte, že systém má přístup k Internetu nebo že byl poskytnut správný proxy server HTTP. Kromě toho zkontrolujte správnost ID pracovního prostoru a ověřte, zda jsou nainstalované nástroje curl a cíl. |
 
-Další informace o odstraňování potíží najdete na [Průvodce odstraňováním potíží se Log Analytics agenta pro Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
+Další informace o odstraňování potíží najdete na [Průvodce odstraňováním potíží se Log Analytics agenta pro Linux](../../azure-monitor/platform/vmext-troubleshoot.md).
 
 ### <a name="support"></a>Podpora
 

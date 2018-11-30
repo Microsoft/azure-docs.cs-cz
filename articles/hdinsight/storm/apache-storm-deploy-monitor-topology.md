@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 53f729e23ced00bd0acb5674308f8c610bff8868
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: ce39e3ffce0b7721bde84254c7e5a35ec28465dc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005372"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583155"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Nasazení a správa topologií Apache Storm v HDInsight se systémem Windows
 
-Řídicí panel Storm umožňuje snadno nasadíte a zprovozníte topologií Apache Storm na clusteru HDInsight pomocí webového prohlížeče. Řídicí panel můžete také monitorovat a spravovat spuštěné topologie. Pokud používáte sadu Visual Studio, nástroje HDInsight pro Visual Studio poskytuje podobné funkce v sadě Visual Studio.
+[Apache Storm](http://storm.apache.org/) řídicí panel umožňuje snadno nasadit a spustit topologií Apache Storm pro HDInsight, vaše clusteru pomocí webového prohlížeče. Řídicí panel můžete také monitorovat a spravovat spuštěné topologie. Pokud používáte sadu Visual Studio, nástroje HDInsight pro Visual Studio poskytuje podobné funkce v sadě Visual Studio.
 
 Řídicí panel Storm a funkce Storm v HDInsight Tools využívají Storm REST API, které je možné vytvořit vlastní, monitorování a řešení pro správu.
 
@@ -88,7 +88,7 @@ Vyberte odkaz z **souhrn topologie** části zobrazí následující informace o
 
   * **Obnovit rovnováhu**: upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. To umožňuje topologii upravovat paralelismus za účelem kompenzace zvýšení nebo snížení počtu uzlů v clusteru.
 
-      Další informace najdete v části [Pochopení paralelismu topologie Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+      Další informace najdete v tématu [pochopení paralelismu topologie Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
   * **Ukončit**: ukončí topologii Storm po zadaný časový limit.
 
@@ -118,7 +118,7 @@ Výběr spout z **Spouts** nebo **Bolts** části zobrazí následující inform
 
 ## <a name="hdinsight-tools-for-visual-studio"></a>Nástroje HDInsight pro Visual Studio
 
-Nástroje HDInsight je možné odeslat jazyka C# nebo hybridní topologie pro váš cluster Storm. Následující kroky používají ukázková aplikace. Informace o vytváření vlastních topologií pomocí nástrojů HDInsight najdete v tématu [vývoj topologií C# pomocí nástrojů HDInsight pro Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md).
+[Nástroje HDInsight](https://azure.microsoft.com/resources/videos/hdinsight-tools-for-visual-studio/) slouží k odeslání C# nebo hybridní topologie pro váš cluster Storm. Následující kroky používají ukázková aplikace. Informace o vytváření vlastních topologií pomocí nástrojů HDInsight najdete v tématu [vývoj topologií C# pomocí nástrojů HDInsight pro Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md).
 
 Nasadit ukázku Storm v clusteru HDInsight, pak zobrazení a Správa topologie pomocí následujících kroků.
 
@@ -159,7 +159,7 @@ Nasadit ukázku Storm v clusteru HDInsight, pak zobrazení a Správa topologie p
 
 Uživatelské rozhraní Storm je postavený na rozhraní REST API, takže můžete provádět podobné správy a monitorování funkce pomocí rozhraní REST API. Rozhraní REST API můžete použít k vytvoření vlastních nástrojů pro správu a monitorování topologií Storm.
 
-Další informace najdete v tématu [rozhraní REST API pro uživatelské rozhraní Storm](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md). Tyto informace je specifická pro Apache Storm v HDInsight pomocí rozhraní REST API.
+Další informace najdete v tématu [Apache Storm uživatelského rozhraní REST API](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md). Tyto informace je specifická pro Apache Storm v HDInsight pomocí rozhraní REST API.
 
 ### <a name="base-uri"></a>Základní identifikátor URI
 
@@ -174,7 +174,7 @@ Požadavky rozhraní REST API musí používat **základní ověřování**, tak
 
 ### <a name="return-values"></a>Návratové hodnoty
 
-Použitelné z v rámci clusteru nebo virtuálním počítačům ve stejné virtuální síti Azure jako cluster může být pouze informace vrácené z rozhraní REST API. Například plně kvalifikovaný název domény (FQDN) vrátil pro servery Zookeeper nejsou přístupné z Internetu.
+Použitelné z v rámci clusteru nebo virtuálním počítačům ve stejné virtuální síti Azure jako cluster může být pouze informace vrácené z rozhraní REST API. Například plně kvalifikovaný název domény (FQDN) vrátil pro [Apache ZooKeeper](https://zookeeper.apache.org/) servery nejsou přístupné z Internetu.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -182,9 +182,9 @@ Teď, když jste zjistili, jak nasazení a monitorování topologií pomocí ř�
 
 * [Vývoj topologií C# pomocí nástrojů HDInsight pro Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
 
-* [Vývoj topologií založených na Javě pomocí Maven](apache-storm-develop-java-topology.md)
+* [Vývoj topologií založených na Javě pomocí nástroje Apache Maven](apache-storm-develop-java-topology.md)
 
-Seznam Další příklad topologie najdete v tématu [příklad topologií pro Storm v HDInsight](apache-storm-example-topology.md).
+Seznam Další příklad topologie najdete v tématu [příklad topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md).
 
 [hdinsight-dashboard]: ./media/apache-storm-deploy-monitor-topology/dashboard-link.png
 [storm-dashboard-submit]: ./media/apache-storm-deploy-monitor-topology/submit.png

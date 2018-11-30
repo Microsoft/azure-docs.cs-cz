@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 0ee34d99c78eb090514385de16cd77d04ddca4e4
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 32e95c9098999305d4c48d5c43fae5ef6d3ac36e
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267694"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619771"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Začínáme s dotazy v Log Analytics
 
@@ -138,7 +138,7 @@ SecurityEvent
 ## <a name="specify-a-time-range"></a>Zadejte časový rozsah
 
 ### <a name="time-picker"></a>Výběr času
-Výběr času je v levém horním rohu, což znamená, že jsme se dotazuje pouze záznamy z posledních 24 hodin. Toto je výchozí časový rozsah, použije na všechny dotazy. Chcete-li získat pouze záznamy z poslední hodina, vyberte _za poslední hodinu_ a spusťte dotaz znovu.
+Výběr času vedle tlačítka Spustit je a indikuje, že jsme při dotazování pouze záznamy z posledních 24 hodin. Toto je výchozí časový rozsah, použije na všechny dotazy. Chcete-li získat pouze záznamy z poslední hodina, vyberte _za poslední hodinu_ a spusťte dotaz znovu.
 
 ![Výběr času](media/get-started-queries/timepicker.png)
 
@@ -226,14 +226,14 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>Vytvořit souhrn podle sloupce pro čas
 Seskupování výsledků můžete také založené na sloupec času nebo jinou hodnotu. Jednoduše sumarizace `by TimeGenerated` ale by vytvořit skupiny pro každou jeden milisekund v příslušném časovém rozsahu, protože to jsou jedinečné hodnoty. 
 
-Chcete-li vytvořit skupiny založené na průběžné hodnoty, je nejlepší přerušit jednotkami pomocí rozsahu **bin**. Následující dotaz analyzuje *výkonu* záznamy, které měří volná paměť (*počet MB k dispozici*) v určitém počítači. Vypočítá průměrnou hodnotu pro každé období, pokud 1 hodina, posledních 2 dnech:
+Chcete-li vytvořit skupiny založené na průběžné hodnoty, je nejlepší přerušit jednotkami pomocí rozsahu **bin**. Následující dotaz analyzuje *výkonu* záznamy, které měří volná paměť (*počet MB k dispozici*) v určitém počítači. Vypočítá průměrnou hodnotu pro každé období, pokud 1 hodina, posledních 7 dnech:
 
 ```Kusto
 Perf 
-| where TimeGenerated > ago(2d)
+| where TimeGenerated > ago(7d)
 | where Computer == "ContosoAzADDS2" 
 | where CounterName == "Available MBytes" 
-| summarize count() by bin(TimeGenerated, 1h)
+| summarize avg(CounterValue) by bin(TimeGenerated, 1h)
 ```
 
 Aby byl srozumitelnější výstup, vyberete zobrazíte jako čas – graf, zobrazuje dostupné paměti v průběhu času:

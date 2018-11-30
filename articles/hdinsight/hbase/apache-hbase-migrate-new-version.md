@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 64b3762c40cc2e01944d78c546ebe267503526a7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 71285ce3b1fb3cc592fc65b4ad96c6783de0c408
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049326"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499303"
 ---
-# <a name="migrate-an-hbase-cluster-to-a-new-version"></a>Migrace clusteru HBase na novou verzi.
+# <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBase na novou verzi.
 
-Clustery založené na úlohách, jako jsou jednoduchý upgrade - Sparku a Hadoopu, najdete v článku [clusteru HDInsight Upgrade na novější verzi](../hdinsight-upgrade-cluster.md):
+Clustery založené na úlohách, například [Apache Spark](https://spark.apache.org/) a [Apache Hadoop](https://hadoop.apache.org/), jsou jednoduché k upgradu – viz [clusteru HDInsight Upgrade na novější verzi](../hdinsight-upgrade-cluster.md):
 
 1. Zálohování dat přechodné (místně uložené).
 2. Odstranění existujícího clusteru.
@@ -26,14 +26,14 @@ Clustery založené na úlohách, jako jsou jednoduchý upgrade - Sparku a Hadoo
 4. Umožňuje importovat přechodné data.
 5. Spuštění úlohy a pokračovat ve zpracování na novém clusteru.
 
-Upgrade clusteru HBase jsou potřeba další kroky, jak je popsáno v tomto článku.
+Upgrade [Apache HBase](http://hbase.apache.org/) clusteru jsou potřeba další kroky, jak je popsáno v tomto článku.
 
 > [!NOTE]
 > Prostoje při upgradu by měl být minimální v řádu minut. Tento výpadek je způsobeno kroky k vyprázdnění všech dat v paměti, pak čas ke konfiguraci a znovu spusťte služby v novém clusteru. Vaše výsledky se budou lišit v závislosti na počtu uzlů, velikost dat a jiné proměnné.
 
-## <a name="review-hbase-compatibility"></a>Kontrola kompatibility HBase
+## <a name="review-apache-hbase-compatibility"></a>Kontrola kompatibility Apache HBase
 
-Před upgradem HBase, ujistěte se, že jsou kompatibilní verze HBase na zdrojových a cílových clusterech. Další informace najdete v tématu [Hadoop s HDInsight dostupné komponenty a verze](../hdinsight-component-versioning.md).
+Před upgradem Apache HBase, ujistěte se, že jsou kompatibilní verze HBase na zdrojových a cílových clusterech. Další informace najdete v tématu [Hadoop s HDInsight dostupné komponenty a verze](../hdinsight-component-versioning.md).
 
 > [!NOTE]
 > Důrazně doporučujeme, abyste si přečetli matici kompatibility verzí v [HBase knihy](https://hbase.apache.org/book.html#upgrading).
@@ -57,7 +57,7 @@ Tady je příklad verze kompatibility matici, kde Y označuje kompatibilitu a N 
 > [!NOTE]
 > Jakékoli zásadní nekompatibility by měl popsané v zpráva k vydání verze HBase.
 
-## <a name="upgrade-with-same-hbase-major-version"></a>Upgrade se stejnou hlavní verzi HBase
+## <a name="upgrade-with-same-apache-hbase-major-version"></a>Upgrade se stejnou hlavní verzi Apache HBase
 
 Následující příklad je pro upgrade na 3.6 (jsou součástí Apache HBase 1.1.2) se stejnou hlavní verzí HBase HDInsight 3.4. Jiné verze upgradu jsou podobné, dokud nejsou žádné problémy s kompatibilitou mezi zdrojovým a cílovým verze.
 
@@ -187,7 +187,7 @@ Následující příklad je pro upgrade na 3.6 (jsou součástí Apache HBase 1.
     
 4. Zastavte příjem pro původní cluster HBase.
 5. Chcete-li zajistit všechna poslední data v metody vyprazdňuje, spusťte znovu skript pro předchozí.
-6. Přihlaste se k Ambari v původním clusteru (https://OLDCLUSTERNAME.azurehdidnsight.net) a zastavit služby HBase. Po zobrazení výzvy potvrďte, že chcete zastavit služby, zaškrtněte políčko Zapnout režim údržby pro HBase. Další informace o připojení k a pomocí nástroje Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
+6. Přihlaste se k [Apache Ambari](https://ambari.apache.org/) v původním clusteru (https://OLDCLUSTERNAME.azurehdidnsight.net) a zastavit služby HBase. Po zobrazení výzvy potvrďte, že chcete zastavit služby, zaškrtněte políčko Zapnout režim údržby pro HBase. Další informace o připojení k a pomocí nástroje Ambari, naleznete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).
 
     ![V Ambari klikněte na kartu služby, potom HBase v nabídce vlevo, pak v části Akce službu zastavit](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
 
@@ -211,9 +211,9 @@ Následující příklad je pro upgrade na 3.6 (jsou součástí Apache HBase 1.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o HBase a inovace clusterů HDInsight, naleznete v následujících článcích:
+Další informace o [Apache HBase](http://hbase.apache.org/) a inovace clusterů HDInsight, naleznete v následujících článcích:
 
 * [Upgrade clusteru HDInsight na novější verzi](../hdinsight-upgrade-cluster.md)
-* [Monitorování a správa Azure HDInsight pomocí webového uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md)
-* [Komponenty a verze Hadoopu](../hdinsight-component-versioning.md)
-* [Optimalizace konfigurace pomocí nástroje Ambari](../hdinsight-changing-configs-via-ambari.md#hbase-optimization-with-the-ambari-web-ui)
+* [Monitorování a správa Azure HDInsight pomocí webového uživatelského rozhraní Apache Ambari](../hdinsight-hadoop-manage-ambari.md)
+* [Apache Hadoop komponenty a verze](../hdinsight-component-versioning.md)
+* [Optimalizace konfigurace pomocí nástroje Apache Ambari](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d0a38defe41ea7c4e0da32cb73cf2bd73fd80950
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952796"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498208"
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Vytvoření kompletního linuxového prostředí pomocí rozhraní příkazového řádku Azure Classic
 V tomto článku jsme integrovali jednoduchá síť s nástroji pro vyrovnávání zatížení a dvojice virtuálních počítačů, které jsou užitečné pro vývoj a jednoduché výpočetního prostředí. Provedeme procesem příkazu command, dokud nebudete mít dvě funkční, zabezpečené virtuální počítače s Linuxem ke kterým se můžete připojit z kdekoliv na Internetu. Potom můžete přesunout složitější sítě a prostředí.
@@ -54,7 +54,7 @@ azure config mode arm
 
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad `myResourceGroup`, `mystorageaccount`, a `myVM`.
 
-Vytvořte skupinu prostředků. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westeurope` umístění:
+Vytvořte skupinu prostředků. Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umístění `westeurope`:
 
 ```azurecli
 azure group create -n myResourceGroup -l westeurope
@@ -279,7 +279,7 @@ azure config mode arm
 V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Zahrnout názvy parametrů příklad `myResourceGroup`, `mystorageaccount`, a `myVM`.
 
 ## <a name="create-resource-groups-and-choose-deployment-locations"></a>Vytvoření skupiny prostředků a zvolte umístění nasazení
-Skupiny prostředků Azure jsou logické nasazení entity, které obsahují informace o konfiguraci a metadata k povolení logické správy nasazení prostředků. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v `westeurope` umístění:
+Skupiny prostředků Azure jsou logické nasazení entity, které obsahují informace o konfiguraci a metadata k povolení logické správy nasazení prostředků. Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umístění `westeurope`:
 
 ```azurecli
 azure group create --name myResourceGroup --location westeurope

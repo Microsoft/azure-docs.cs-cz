@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 9bab98d8009704d570dc4b03a97b9cbc5d085b4c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3cd6ef1716d455c5ac755122b8696dbc43fdf459
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007548"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581863"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Na váš počítač nainstalovat Poznámkový blok Jupyter a připojte se k Apache Spark v HDInsight
 
-V tomto článku se dozvíte, jak instalace Poznámkový blok Jupyter s vlastní PySpark (pro jazyk Python) a Spark (pro Scala) jader s Spark magic a připojení ke clusteru HDInsight poznámkového bloku. Může existovat několik důvodů, proč instalace Jupyteru do místního počítače a může být také některé běžné problémy. Další informace o to, najdete v části [proč by instalace Jupyteru do počítače](#why-should-i-install-jupyter-on-my-computer) na konci tohoto článku.
+V tomto článku se dozvíte, jak instalace Poznámkový blok Jupyter s vlastní PySpark (pro jazyk Python) a Apache Sparku (pro Scala) jader s Spark magic a připojení ke clusteru HDInsight poznámkového bloku. Může existovat několik důvodů, proč instalace Jupyteru do místního počítače a může být také některé běžné problémy. Další informace o to, najdete v části [proč by instalace Jupyteru do počítače](#why-should-i-install-jupyter-on-my-computer) na konci tohoto článku.
 
 Při instalaci do počítače Jupyter a Spark magic jsou tři klíčové kroky.
 
@@ -124,7 +124,7 @@ V této části nakonfigurujete Kouzlo Spark, který jste dříve nainstalovali 
     >Pokud chcete aktualizovat konfiguraci poznámkového bloku pro připojení do jiného clusteru, aktualizujte config.json s novou sadu hodnot, jak je znázorněno v kroku 3 výše.
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Proč instalace Jupyteru do počítače?
-Může existovat několik důvodů, proč můžete chtít nainstalovat do počítače Jupyter a připojte ho ke clusteru Spark v HDInsight.
+Může existovat několik důvodů, proč můžete chtít nainstalovat do počítače Jupyter a připojte ho ke clusteru Apache Spark v HDInsight.
 
 * I když poznámkové bloky Jupyter jsou už k dispozici pro cluster Spark v Azure HDInsight, instalace Jupyteru do počítače poskytuje možnost vytvořit místně vašich poznámkových bloků, test aplikace proti spuštěný cluster a pak nahrajte poznámkové bloky do clusteru. K nahrání poznámkových bloků do clusteru, můžete nahrát je pomocí poznámkového bloku Jupyter, na kterém běží nebo cluster nebo je uložit do složky /HdiNotebooks v účtu úložiště přidruženého clusteru. Další informace o tom, jak jsou poznámkové bloky uložené v clusteru, naleznete v tématu [umístění ukládaných poznámkové bloky Jupyter](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
 * S poznámkovými bloky k dispozici místně, můžete připojit k jiné clustery Spark podle požadavků vašich aplikací.
@@ -141,20 +141,20 @@ Může existovat několik důvodů, proč můžete chtít nainstalovat do počí
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Spark s BI: Provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza protokolu webu pomocí Sparku v HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Apache Spark s BI: provádějte interaktivní analýzy dat pomocí Sparku v HDInsight pomocí nástrojů BI](apache-spark-use-bi-tools.md)
+* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Apache Livy](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Nástroje a rozšíření
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití poznámkových bloků Zeppelin s clusterem Sparku v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro poznámkový blok Jupyter v clusteru Sparku pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
+* [Jádra dostupná pro poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 
 ### <a name="manage-resources"></a>Správa prostředků

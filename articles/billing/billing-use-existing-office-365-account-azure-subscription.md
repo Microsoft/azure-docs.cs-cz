@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: f46d975c33d10688b04fca40b55c249b913fe5a1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: f34bed915350b43f7964b4341d1375fb67a6f134
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394671"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584430"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Zaregistrujte si předplatné Azure pomocí účtu Office 365
 Pokud máte předplatné Office 365, můžete použít svůj účet Office 365 k vytvoření předplatného Azure. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí Office 365 uživatelské jméno a heslo. Pokud chcete nastavení virtuálních počítačů nebo využívat další služby Azure, které musíte zaregistrovat předplatné Azure. Vaše předplatné Azure můžete sdílet s ostatními a [použít řízení přístupu na základě Role můžete spravovat přístup k vašemu předplatnému Azure a prostředky](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
@@ -55,5 +55,6 @@ Office 365 a Azure pomocí služby Azure AD pro správu uživatelů a předplatn
 
 Další informace najdete v tématu [předplatné Azure propojeno se službou Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému. 
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

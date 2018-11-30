@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a803353b5dacaa56c181cdad0955191d547eb3c4
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 8e1c58f2d60ee95189fb583e032d8748fedb88d4
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092249"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620213"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -165,7 +165,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 Jakmile dokončíte konfiguraci plánu, vyberte **vytvořit** se vrátit na řídicí panel stavu. **Naplánované** tabulky zobrazí plán nasazení, který jste vytvořili.
 
 > [!NOTE]
-> Správa aktualizací podporuje nasazení první strany aktualizací a oprav předem stahování. To vyžaduje změny v systémech se opravit, naleznete v tématu [první strany a předem stáhnout podporu](automation-update-management.md#firstparty-predownload) Další informace o konfiguraci těchto nastavení ve vašich systémech.
+> Update Management podporuje nasazování aktualizací od Microsoftu a předběžné stahování oprav. To vyžaduje změny v systémech se opravit, naleznete v tématu [první strany a předem stáhnout podporu](automation-update-management.md#firstparty-predownload) Další informace o konfiguraci těchto nastavení ve vašich systémech.
 
 ## <a name="view-results-of-an-update-deployment"></a>Zobrazení výsledků nasazení aktualizací
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 45d296b8867884a4c40dc10adc1f9aa83d7f9eab
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 14e89d5eab058b9fa42c20811df9c5ac0ceca44a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715212"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633193"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -477,7 +477,7 @@ Můžete odebrat pomocí procesu v řešení pro správu Office 365 [odebrat ře
 
 ## <a name="data-collection"></a>Shromažďování dat
 ### <a name="supported-agents"></a>Podporovaní agenti
-Řešení Office 365 nenačítá data z libovolného [agentů Log Analytics](../../log-analytics/log-analytics-data-sources.md).  Načte data přímo z Office 365.
+Řešení Office 365 nenačítá data z libovolného [agentů Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  Načte data přímo z Office 365.
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 Může trvat několik hodin se zpočátku shromážděná data. Jakmile začne shromažďování, odešle Office 365 [oznámení webhooku](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) s podrobná data do Log Analytics pokaždé, když je vytvořen záznam. Tento záznam je k dispozici ve službě Log Analytics v rámci pár minut od jejich obdržení.
@@ -710,5 +710,5 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 ## <a name="next-steps"></a>Další postup
 * K zobrazení podrobných údajů o aktualizaci použijte Hledání v protokolu služby [Log Analytics](../../log-analytics/log-analytics-queries.md).
-* [Vytvářejte vlastní řídicí panely](../../log-analytics/log-analytics-dashboards.md) zobrazíte váš oblíbený vyhledávací dotazy Office 365.
+* [Vytvářejte vlastní řídicí panely](../../azure-monitor/platform/dashboards.md) zobrazíte váš oblíbený vyhledávací dotazy Office 365.
 * [Vytvořit upozornění](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktivně upozornit důležité aktivit Office 365.  

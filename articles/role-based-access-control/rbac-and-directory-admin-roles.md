@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/07/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 5e32968ae83ef826fbc8e81f1b04eca687642343
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: HT
+ms.openlocfilehash: 9fce35f811a4d2440ba73e4f305ede6891928069
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637664"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633278"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasického správce předplatného, role Azure RBAC a role správce Azure AD
 
@@ -77,13 +77,13 @@ Zbývající předdefinované role umožňují správu konkrétních prostředk�
 
 Řízení přístupu na základě role (RBAC) podporují pouze portál Azure Portal a rozhraní API Azure Resource Manageru. Uživatelé, skupiny a aplikace s přiřazenými rolemi RBAC nemohou používat [rozhraní API modelu nasazení Azure Classic](../azure-resource-manager/resource-manager-deployment-model.md).
 
-Na portálu Azure Portal se přiřazení rolí pomocí RBAC zobrazují v okně **Řízení přístupu (IAM)**. Toto okno najdete na celém portálu, například u předplatných, skupin prostředků a různých prostředků.
+Na portálu Azure Portal se přiřazení rolí pomocí RBAC zobrazují v okně **Řízení přístupu (IAM)**. V tomto okně můžete najít v rámci portálu, jako je například skupiny pro správu, předplatná, skupiny prostředků a různým prostředkům.
 
-![Okno Řízení přístupu (IAM) na portálu Azure Portal](./media/rbac-and-directory-admin-roles/access-control.png)
+![Okno Řízení přístupu (IAM) na portálu Azure Portal](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
 Když kliknete na možnost **Role**, zobrazí se seznam předdefinovaných a vlastních rolí.
 
-![Předdefinované role na portálu Azure Portal](./media/rbac-and-directory-admin-roles/built-in-roles.png)
+![Předdefinované role na portálu Azure Portal](./media/rbac-and-directory-admin-roles/roles-list.png)
 
 ## <a name="azure-ad-administrator-roles"></a>Role správce Azure AD
 
@@ -120,7 +120,7 @@ Několik rolí správce Azure AD pokrývá Azure AD a Microsoft Office 365, nap�
 
 ![Role Azure RBAC versus role správce Azure AD](./media/rbac-and-directory-admin-roles/azure-office-roles.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Co je řízení přístupu na základě role (RBAC)?](overview.md)
 - [Přiřazení rolí správce v Azure Active Directory](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)

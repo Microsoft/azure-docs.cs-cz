@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: cwatson
-ms.openlocfilehash: df049a87763f3aae8da2db153f876b88ed39b988
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: cb3584101dea4dc8d8d888632175415480a6a1b3
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47390234"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581524"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Kontrola využití bezplatných služeb je součástí bezplatného účtu Azure 
 
@@ -68,7 +68,6 @@ Využití soubor obsahuje informace o bezplatných nebo placených služeb využ
 
 ![Snímek obrazovky zobrazující využití bezplatných služeb](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
-
-Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

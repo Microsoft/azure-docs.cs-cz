@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f690e6c930a1a119c9b7bf4b83ec04a564e47c9
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: ca99f9ac36281ecddf41bcc228440adcad90412b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288743"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582413"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Co je Azure Internet of Things (IoT)?
 
@@ -113,7 +113,7 @@ Existuje několik služeb souvisejících s IoT v Azure a může být matoucí z
 
 5. [**IoT Edge**](/azure/iot-edge/): Tato služba postavená na službě IoT Hub. Slouží k analýze dat na zařízeních IoT, nikoli v cloudu. Díky přesunu částí úlohy do hraničních zařízení, třeba méně zpráv k odeslání do cloudu. 
 
-6. [**Azure digitální dvojče**](/azure/azure-digital-twins/): Tato služba umožňuje vytvářet komplexní modely fyzických prostředí. Lze modelovat vztahy a interakce mezi lidmi, mezery a zařízení. Například můžete předpovídat údržby musí objekt pro vytváření, analýza v reálném čase energie požadavky k elektrické mřížky nebo optimalizovat využití volného místa pro office.
+6. [**Azure digitální dvojče**](../digital-twins/index.yml): Tato služba umožňuje vytvářet komplexní modely fyzických prostředí. Lze modelovat vztahy a interakce mezi lidmi, mezery a zařízení. Například můžete předpovídat údržby musí objekt pro vytváření, analýza v reálném čase energie požadavky k elektrické mřížky nebo optimalizovat využití volného místa pro office.
 
 7. [**Time Series Insights**](/azure/time-series-insights): Tato služba umožňuje ukládat, vizualizaci a dotazování velkých objemů dat časových řad generované zařízeními IoT. Pomocí služby IoT Hub můžete použít tuto službu. 
 

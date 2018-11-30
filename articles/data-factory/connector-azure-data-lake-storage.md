@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/09/2018
+ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 2fad3ad8bc6e1c0ca87038af6c461d863065fc95
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: ca2591f34a0aba598c12815de684ec6bb8fca929
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345959"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620349"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen2 Preview pomocí Azure Data Factory (Preview)
 
@@ -29,7 +29,7 @@ Kopírovat data ze všech podporovaných zdrojů úložišť dat do Data Lake St
 
 Konkrétně tento konektor podporuje:
 
-- Kopírování dat pomocí klíče účtu.
+- Kopírování dat pomocí klíče účtu, instanční objekt nebo spravovaných identit pro ověřování prostředků Azure.
 - Kopírování souborů jako-je analýza kódu nebo generování souborů pomocí [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md).
 
 >[!TIP]
@@ -49,7 +49,15 @@ Následující části obsahují podrobnosti o vlastnostech, které se používa
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro Data Lake Storage Gen2 propojené služby jsou podporovány následující vlastnosti:
+Azure Data Lake Storage Gen2 konektor podporuje následující typy ověřování, přečtěte si odpovídající část na podrobnosti:
+
+- [Ověření pomocí klíče účtu](#account-key-authentication)
+- [Ověřování instančních objektů](#service-principal-authentication)
+- [Spravovaných identit pro ověřování prostředků Azure](#managed-identity)
+
+### <a name="account-key-authentication"></a>Ověření pomocí klíče účtu
+
+Pokud chcete použít ověřování pomocí klíče účtu úložiště, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
@@ -62,7 +70,7 @@ Pro Data Lake Storage Gen2 propojené služby jsou podporovány následující v
 
 ```json
 {
-    "name": "AzureDataLakeStorageLinkedService",
+    "name": "AzureDataLakeStorageGen2LinkedService",
     "properties": {
         "type": "AzureBlobFS",
         "typeProperties": {
@@ -71,6 +79,95 @@ Pro Data Lake Storage Gen2 propojené služby jsou podporovány následující v
                 "type": "SecureString", 
                 "value": "<accountkey>" 
             }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="service-principal-authentication"></a>Ověřování instančních objektů
+
+Pokud chcete používat ověřování instančních objektů, postupujte takto:
+
+1. Zaregistrovat aplikaci entity ve službě Azure Active Directory (Azure AD) pomocí následujících [registrace aplikace pomocí tenanta služby Azure AD](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Poznamenejte si následující hodnoty, které slouží k definování propojené služby:
+
+    - ID aplikace
+    - Klíč aplikace
+    - ID tenanta
+
+2. Udělte hlavní správné oprávnění služby ve službě Azure storage.
+
+    - **Jako zdroj**, do Access control (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
+    - **Jako jímku**, do Access control (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
+
+Tyto vlastnosti jsou podporovány v propojené službě:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost type musí být nastavená na **AzureBlobFS**. |Ano |
+| url | Koncový bod pro Data Lake Storage Gen2 s vzor `https://<accountname>.dfs.core.windows.net`. | Ano | 
+| servicePrincipalId | Zadejte ID klienta vaší aplikace. | Ano |
+| servicePrincipalKey | Zadejte klíč aplikace. Označte toto pole jako **SecureString** bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| tenant | Zadejte informace o tenantovi (domény ID tenanta nebo název) v rámci které se nachází vaše aplikace. Načtení podržením ukazatele myši v pravém horním rohu webu Azure portal. | Ano |
+| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+
+**Příklad:**
+
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>" 
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="managed-identity"></a> Spravovaných identit pro ověřování prostředků Azure
+
+Objekt pro vytváření dat můžou být spojené s [spravované identity pro prostředky Azure](data-factory-service-identity.md), která představuje této konkrétní datové továrně. Tuto identitu služby můžete použít přímo pro ověření úložiště objektů Blob podobně jako u vlastních instančního objektu. To umožňuje tento určený objekt pro vytváření pro přístup a kopírování dat z/do úložiště objektů Blob.
+
+Použití spravované identity pro ověřování prostředků Azure, postupujte podle těchto kroků:
+
+1. [Načíst identita služeb datové továrny](data-factory-service-identity.md#retrieve-service-identity) tak, že zkopírujete hodnotu "ID aplikace IDENTITY služby" generované spolu se svým objektem pro vytváření.
+
+2. Udělení oprávnění správné spravovanou identitu ve službě Azure storage. 
+
+    - **Jako zdroj**, do Access control (IAM), udělit alespoň **čtecí modul dat pro úložiště objektů Blob** role.
+    - **Jako jímku**, do Access control (IAM), udělit alespoň **Přispěvatel dat objektu Blob úložiště** role.
+
+Tyto vlastnosti jsou podporovány v propojené službě:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost type musí být nastavená na **AzureBlobFS**. |Ano |
+| url | Koncový bod pro Data Lake Storage Gen2 s vzor `https://<accountname>.dfs.core.windows.net`. | Ano | 
+| connectVia | [Prostředí integration runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
+
+**Příklad:**
+
+```json
+{
+    "name": "AzureDataLakeStorageGen2LinkedService",
+    "properties": {
+        "type": "AzureBlobFS",
+        "typeProperties": {
+            "url": "https://<accountname>.dfs.core.windows.net", 
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

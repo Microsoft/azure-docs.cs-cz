@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 01603655be9b6051be9b894da4e55338ff4df810
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: e702e1f5eb1816b007317765e4c9a9f88bb99bfd
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262121"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635420"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 
@@ -42,7 +42,12 @@ Prozkoumat data podrobněji, klikněte na ikonu v horní části napravo od buď
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Řešení potíží způsobujících větší využití, než se čekalo
 Větší využití je způsobeno jedním nebo obojím z těchto aspektů:
 - Do Log Analytics se odesílá více dat, než se čekalo.
-- Do Log Analytics odesílá data více uzlů, než se čekalo.
+- Více uzlů, než očekávané odesílání dat do služby Log Analytics nebo některé uzly posílají více dat než obvykle.
+
+Pojďme se podívat, jak jsme se dozvíte o oba z těchto příčin. 
+
+> [!NOTE]
+> Některá pole datového typu využití při pořád ve schématu, jsou zastaralé a jejich hodnoty jsou již nejsou naplněny. Jedná se o **počítače** a také související s příjmem pole (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** a **AverageProcessingTimeMs**.
 
 ### <a name="data-volume"></a>Objem dat 
 Na **využití a odhadované náklady** stránky, *příjem dat podle řešení* graf ukazuje celkový objem dat odesílaných a kolik je odesíláno každé řešení. Díky tomu můžete určit trendy, jako je například, jestli se rozrůstá celkové využití dat (nebo využití podle konkrétního řešení), zbývající konstantní nebo se snižuje. Query sloužící ke generování to je
@@ -60,7 +65,7 @@ Můžete přejít na trendy v datech najdete konkrétní datové typy, napříkl
 
 ### <a name="nodes-sending-data"></a>Uzlů odesílajících data
 
-Chcete-li undersand počet uzlů vykazujících data za poslední měsíc, použijte
+Chcete-li pochopit počet uzlů vykazujících data za poslední měsíc, použijte
 
 `Heartbeat | where TimeGenerated > startofday(ago(31d))
 | summarize dcount(ComputerIP) by bin(TimeGenerated, 1d)    
@@ -69,16 +74,20 @@ Chcete-li undersand počet uzlů vykazujících data za poslední měsíc, použ
 Pokud chcete zobrazit počet událostí může ingestovat počítače, použijte
 
 `union withsource = tt *
-| summarize count() by Computer |sort by count_ nulls last`
+| summarize count() by Computer | sort by count_ nulls last`
 
-Pomocí tohoto dotazu opatrně, jako je nákladné ke spuštění. Pokud chcete zobrazit typy dat, které jsou sendng dat k určitému počítači, použijte:
+Pomocí tohoto dotazu opatrně, jako je nákladné ke spuštění. Pokud chcete zobrazit počet účtovaných událostí může ingestovat počítače, použijte 
+
+`union withsource = tt * 
+| where _IsBillable == true 
+| summarize count() by Computer  | sort by count_ nulls last`
+
+Pokud chcete zobrazit typy fakturovatelné dat, které posílají dat k určitému počítači, použijte:
 
 `union withsource = tt *
 | where Computer == "*computer name*"
-| summarize count() by tt |sort by count_ nulls last `
-
-> [!NOTE]
-> Některá pole datového typu využití, zatímco stále ve schématu, jsou zastaralé a bude, že jejich hodnoty jsou již nejsou naplněny. Jedná se o **počítače** a také související s příjmem pole (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**,  **BatchesCapped** a **AverageProcessingTimeMs**.
+| where _IsBillable == true 
+| summarize count() by tt | sort by count_ nulls last `
 
 Pokud chcete dostat hlouběji do zdroje dat pro konkrétní datový typ, tady jsou některé užitečné příklady dotazů:
 

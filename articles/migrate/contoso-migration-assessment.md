@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: ea0987eaea8ee558df35ecce6afb5e7bab3ac4de
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 6b4b1b74ace534517157edc20c33236d516205c5
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087612"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635012"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: posouzení vhodnosti místních úloh pro migraci do Azure
 
@@ -125,8 +125,8 @@ Contoso a ostatní uživatelé musí splňovat následující požadavky pro ass
 - Alespoň dva místní virtuální počítače VMware, na jednom z nichž běží databáze SQL Serveru.
 - Oprávnění k instalaci agentů Azure Migrate na každém virtuálním počítači.
 - Virtuální počítače by měly mít přímé připojení k internetu.  
-        – Internetový přístup můžete omezit na [požadované adresy URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
-        – Pokud je vaše virtuální počítače nemají připojení k Internetu, Azure [Log Analytics Gateway](../log-analytics/log-analytics-oms-gateway.md) musí být nainstalované a agenta přenášená přes něj.
+    - Můžete omezit přístup k Internetu [požadované adresy URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
+    - Pokud vaše virtuální počítače nemají připojení k Internetu, Azure [Log Analytics Gateway](../azure-monitor/platform/gateway.md) musí být nainstalované a agenta přenášená přes něj.
 - Plně kvalifikovaný název domény virtuálního počítače, na kterém je spuštěná instance SQL Serveru, pro účely posouzení databáze.
 - Brány Windows Firewall spuštěnou na virtuálním počítači SQL serveru by měla umožňovat externí připojení na portu TCP 1433 (výchozí). Toto nastavení umožní Data Migration Assistant pro připojení.
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: a7c11e4bd3ac30c930ec717426c43d4361e32088
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 2baadd0bcb5aba401e2dd6cec9a82ca401b3c9bd
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43088858"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620485"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Vytvoření datové továrny Azure pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -133,9 +133,8 @@ Ve složce **C:\ADFTutorial** vytvořte soubor JSON s názvem **ADFTutorialARM.j
         "apiVersion": "2017-09-01-preview",
         "type": "Microsoft.DataFactory/factories",
         "location": "[parameters('dataFactoryLocation')]",
-        "properties": {
-            "loggingStorageAccountName": "[parameters('storageAccountName')]",
-            "loggingStorageAccountKey": "[parameters('storageAccountKey')]"
+        "identity": {
+            "type": "SystemAssigned"
         },
         "resources": [{
                 "type": "linkedservices",
@@ -646,5 +645,5 @@ Všimněte si, že první příkaz používá soubor parametrů pro vývojové p
 Šablonu můžete také znovu použít k provádění opakujících se úloh. Můžete například vytvořit mnoho datových továren s jedním nebo více kanály, které implementují stejnou logiku, ale každá datová továrna používá jiný účet úložiště Azure. V tomto scénáři použijete k vytvoření datových továren stejnou šablonu ve stejném prostředí (vývojové, testovací nebo produkční) s různými soubory parametrů. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Kanál v této ukázce kopíruje data z jednoho umístění do jiného umístění v úložišti objektů blob v Azure. Projděte si [kurzy](tutorial-copy-data-dot-net.md), kde se dozvíte o použití služby Data Factory ve více scénářích. 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/7/2018
 ms.author: alinast
-ms.openlocfilehash: 590a7aa875f5f8c40576d69d7e73bdfc31fffbf8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: e11ae90655e1d4ce7a2475f0eacefb25491416da
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636250"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582390"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Rychlý start: Najít dostupné místnosti s použitím digitálních Dvojčat Azure
 
@@ -150,6 +150,10 @@ A pokračujte v kurzech, není nevyčišťujte prostředky vytvořené v rámci 
 
 1. Odstraňte složku, která byla vytvořena, když jste si stáhli ukázkové úložiště.
 1. V nabídce na levé straně v [webu Azure portal](http://portal.azure.com)vyberte **všechny prostředky**. Pak vyberte prostředek digitální dvojče. V horní části **všechny prostředky** vyberte **odstranit**.
+   
+    > [!TIP]
+    > Pokud zaznamenal/zaznamenala jste potíže odstraníte instanci digitální dvojče, aktualizace služby se týká jenom s opravou. Zkuste to prosím znovu odstraníte instanci.
+
 
 ## <a name="next-steps"></a>Další postup
 

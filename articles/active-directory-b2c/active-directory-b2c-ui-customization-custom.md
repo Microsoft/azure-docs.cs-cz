@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d4b4d99ac943749faaca8cd699b1455795b9c399
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 237d22054ecb4eea58494c1b5066eb8e00ecd2fc
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625790"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583445"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -100,7 +100,7 @@ Vytvoření veřejného kontejneru v úložišti objektů Blob, postupujte takto
 Konfigurace úložiště objektů Blob pro sdílení prostředků různého původu následujícím způsobem:
 
 1. V nabídce vyberte **CORS**.
-2. Pro **povolené zdroje**, zadejte `your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `fabrikam.b2clogin.com`.
+2. Pro **povolené zdroje**, zadejte `your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `fabrikam.b2clogin.com`. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta.
 3. Pro **povolené metody**, vyberte oba `GET` a `OPTIONS`.
 4. Pro **povolené hlavičky**, zadejte hvězdičku (*).
 5. Pro **zveřejněné hlavičky**, zadejte hvězdičku (*).

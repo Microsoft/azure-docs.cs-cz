@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 220fc7b2b0ce3a4c5fd943c35952a345379a1b91
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 77872ab809f4375523a91f4ebc9b24f8606e6c94
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284212"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619809"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
 
@@ -34,7 +34,7 @@ Kontrola [Tato příručka](https://docs.microsoft.com/azure/security/azure-ad-c
 
 Předávací ověřování je bezplatná funkce. Není nutné žádné placené edice Azure AD, aby ho použít.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Je k dispozici v předávací ověřování [cloudu Microsoft Azure Germany](http://www.microsoft.de/cloud-deutschland) a [cloudu Microsoft Azure Government](https://azure.microsoft.com/features/gov/)?
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Je k dispozici v předávací ověřování [cloudu Microsoft Azure Germany](https://www.microsoft.de/cloud-deutschland) a [cloudu Microsoft Azure Government](https://azure.microsoft.com/features/gov/)?
 
 Ne. Předávací ověřování je k dispozici pouze v celosvětové instance služby Azure AD.
 
@@ -44,7 +44,7 @@ Ano. Všechny možnosti podmíněného přístupu, včetně Azure Multi-Factor A
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Podporuje předávací ověřování "Alternativní ID" jako uživatelské jméno, namísto "userPrincipalName"?
 
-Ano. Předávací ověřování podporuje `Alternate ID` jako uživatelské jméno při konfiguraci ve službě Azure AD Connect. Další informace najdete v tématu [vlastní instalace služby Azure AD Connect](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID`. Odkazovat na konkrétní aplikaci dokumentace k podpoře.
+Ano, podporuje předávací ověřování `Alternate ID` jako uživatelské jméno při konfiguraci ve službě Azure AD Connect. Jako předpoklad, musí Azure AD Connect synchronizaci v místní službě Active Directory `UserPrincipalName` atribut Azure AD. Další informace najdete v tématu [vlastní instalace služby Azure AD Connect](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID`. Odkazovat na konkrétní aplikaci dokumentace k podpoře.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Synchronizaci hodnot hash hesel fungují jako záložní předávací ověřování?
 
@@ -119,6 +119,10 @@ Pokud migrujete ze služby AD FS (nebo jiné technologie federation) na předáv
 
 Ano. Podporují se prostředí s více doménovými strukturami, pokud existují vztahy důvěryhodnosti doménové struktury mezi vaší doménové struktury služby Active Directory a v případě směrování přípon názvů je správně nakonfigurovaný.
 
+## <a name="does-pass-through-authentication-provide-load-balancing-across-multiple-authentication-agents"></a>Předávací ověřování poskytuje Vyrovnávání zatížení napříč více agentů ověřování?
+
+Ne, instalaci víc agentů předávací ověřování zajišťuje pouze [vysoké dostupnosti](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability). Neposkytuje deterministické rozložení zátěže mezi agentů ověřování. Žádné ověřovací Agent (náhodně) může zpracovat přihlašovací požadavek určitého uživatele.
+
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>Kolik agentů předávací ověřování je nutné nainstalovat?
 
 Instalace více agentů předávací ověřování zajišťuje [vysoké dostupnosti](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability). Ale neposkytuje deterministické rozložení zátěže mezi agentů ověřování.
@@ -149,6 +153,22 @@ Znovu spusťte Průvodce Azure AD Connect a změňte metodu přihlašování už
 ## <a name="what-happens-when-i-uninstall-a-pass-through-authentication-agent"></a>Co se stane, když při odinstalaci agenta předávací ověřování?
 
 Pokud odinstalujete agenta předávací ověřování ze serveru, způsobí, že server zastavit přijímání žádostí o přihlášení. Pokud chcete vyhnout přerušení funkce přihlašování uživatelů ve vašem tenantovi, ujistěte se, že máte jiného ověřovacího agenta spuštěna před odinstalováním agenta předávací ověřování.
+
+## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Mám starší tenanta, který byl původně instalaci pomocí služby AD FS.  Jsme nedávno provedla migraci do PTA, ale teď nezobrazují naše změny UPN nesynchronizuje do Azure AD.  Proč jsou naše UPN se změní není synchronizované?
+
+Odpověď: v následujících případech nemusí přestane synchronizovat změny místní hlavní název uživatele:
+
+- Před 15. června 2015 byla vytvořena vašeho tenanta Azure AD
+- Zpočátku se byly Federovaná pomocí vašeho tenanta Azure AD pomocí služby AD FS pro ověřování
+- Přepnutí s spravovat uživatele, kteří používají PTA jako ověřování
+
+Je to proto, že výchozí chování tenanty vytvořené před 15. června 2015 byla zablokovat změny hlavní název uživatele.  Pokud je potřeba zrušit blokování hlavního názvu uživatele změn budete muset spustit následující rutinu Powershellu:  
+
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+
+Tenanty vytvořené po 15. června 2015 mají výchozí chování synchronizace změn hlavní název uživatele.   
+
+
 
 ## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](how-to-connect-pta-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.

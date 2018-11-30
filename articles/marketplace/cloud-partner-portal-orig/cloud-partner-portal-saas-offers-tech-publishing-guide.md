@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7430e57ceaec8a280c17f1276d503919a9703182
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e648d6d3bd8d8ac14fb3f9723f4667c1cc33ac6
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228891"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620179"
 ---
 <a name="saas-application-technical-publishing-guide"></a>SaaS aplikace technický průvodce publikováním
 ===========================================
@@ -32,7 +32,7 @@ Přehled všechny ostatní nabídky Marketplace najdete [Příručka pro vydavat
 <a name="what-are-pre-requisites-for-publishing-a-saas-app"></a>Jaké jsou požadavky pro publikování aplikace SaaS?
 -------------------------------------------------
 
-Portál pro publikování poskytuje přístup na základě rolí na portálu pro povolení více osob ke spolupráci na publikování nabídky. Další informace najdete v tématu [spravovat uživatele](./cloud-partner-portal-manage-users.md). 
+[Portál partnerů cloudu](https://cloudpartner.azure.com) poskytuje přístup na základě rolí na portálu pro povolení více osob ke spolupráci na publikování nabídky. Další informace najdete v tématu [spravovat uživatele](./cloud-partner-portal-manage-users.md). 
 
 Před publikováním nabídky jménem vydavatel účtu, jeden z uživatelé, kteří mají *vlastníka* role je potřeba souhlasit s [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/), [Microsoft PrivacyStatement](https://www.microsoft.com/privacystatement/default.aspx), a [Microsoft Azure Certified ProgramAgreement](https://azure.microsoft.com/support/legal/marketplace/certified-program-agreement/).
 
@@ -58,7 +58,7 @@ Nabídky SaaS aplikace se skládá z pěti oddílů, jsou popsané v následují
 
 ### <a name="creating-a-new-offer"></a>Vytváří se nová nabídka
 
-Po přihlášení na portál Cloud Partner, vyberte **nová nabídka** položka na levém řádku nabídek, které se zobrazí nabídka dostupných nabídek. Následující obrázek ukazuje příklad tyto nabídky:
+Po přihlášení k [portál partnerů cloudu](https://cloudpartner.azure.com), vyberte **nová nabídka** položka na levém řádku nabídek, které se zobrazí nabídka dostupných nabídek. Následující obrázek ukazuje příklad tyto nabídky:
 
 ![Nová nabídka SaaS](media/cpp-creating-saas-offers/saas-new-offer.png)
 
@@ -154,7 +154,7 @@ Následující tabulka popisuje pole uvádění na trh:
 
 | **Nabídka pole** | **Popis**                                                                                                          |
 |------------------| ------------------------------------------------------------------------------------------------------------------------ |
-| Loga            | Pokud jste **prodávat prostřednictvím Azure** aplikace SaaS, měli byste zadat všechny bitové kopie logo. Pokud jste právě výpis, pouze 2 loga jsou povinné. Všechny nahrané v portál partnerů cloudu loga musí pomocí následujících pokynů:     <br/> -Zachovat počet primární a sekundární barvy na vaše logo nízké. Design Azure má jednoduchou paletu barev.     <br/> -Vyhněte se použití černé nebo bílé jako barva pozadí loga. Barvy motivu na webu Azure Portal je černobílý. Místo toho použijte některé barvy, které by vaše logo viditelného na webu Azure Portal. Doporučujeme použít jednoduché primární barvy. Pokud používáte průhledným pozadím, ujistěte se, že logem a text nejsou černou, bílá nebo modrou.     <br/> -Nepoužívejte barevného přechodu pozadí na loga.     <br/> -Předejde text, dokonce i vaše společnost nebo název značky, loga. Vzhled a chování vašeho loga musí být "ploché" a přechody se měli vyhnout.    <br/> By neměl být roztažený – obrázek loga.                   |
+| Loga            | Pokud jste **prodávat prostřednictvím Azure** aplikace SaaS, měli byste zadat všechny bitové kopie logo. Pokud jste právě výpis, pouze 2 loga jsou povinné. Všechny loga nahrané v [portál partnerů cloudu](https://cloudpartner.azure.com) používejte následující pokyny:     <br/> -Zachovat počet primární a sekundární barvy na vaše logo nízké. Design Azure má jednoduchou paletu barev.     <br/> -Vyhněte se použití černé nebo bílé jako barva pozadí loga. Barvy motivu na webu Azure Portal je černobílý. Místo toho použijte některé barvy, které by vaše logo viditelného na webu Azure Portal. Doporučujeme použít jednoduché primární barvy. Pokud používáte průhledným pozadím, ujistěte se, že logem a text nejsou černou, bílá nebo modrou.     <br/> -Nepoužívejte barevného přechodu pozadí na loga.     <br/> -Předejde text, dokonce i vaše společnost nebo název značky, loga. Vzhled a chování vašeho loga musí být "ploché" a přechody se měli vyhnout.    <br/> By neměl být roztažený – obrázek loga.                   |
 | Videa           | Umožňuje přidat odkazy tohoto videa o vaší nabídce. Můžete použít odkazy na videa YouTube nebo Vimeo, které se zobrazují společně s vaší nabídky zákazníkům. Musíte také zadat obrázek miniatury videa, s obrázkem png 1280 × 720 pixelů. Může mít maximálně čtyři videí na nabídku. |
 | Dokumenty        | Umožňuje přidat marketingové dokumenty pro vaši nabídku. Všechny dokumenty musí být ve formátu PDF a může mít maximálně tři dokumentů na nabídku.                                                                                                                                                      |
 | Snímky obrazovek      | Umožňuje přidat snímky obrazovky vaší nabídky. Je maximálně pět snímky obrazovky, které mohou být přidány za nabídky. Maximální velikost je 1280 × 720 pixelů.                                                                                                                                             |

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 466cb9ea116030d3f6ee6b41809011dae9acc00b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 578479d43279dc1edb9edd24fd57d6841784166a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011200"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498139"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Řešení Azure Storage pro ML služeb v Azure HDInsight
 
@@ -26,7 +26,7 @@ Služby ML na HDInsight využívat širokou škálu řešení úložišť se zac
 
 Máte také možnost přístupu k více účtům úložiště Azure nebo kontejnery s vaším clusterem HDInsight. Azure File storage je možnost úložiště dat vhodné pro použití na hraničním uzlu, umožňující připojení sdílené složky Azure Storage, například systém souborů Linux. Ale sdílených složek Azure můžete připojit a používat libovolný systém, který je podporovaný operační systém, jako je například Windows nebo Linux. 
 
-Když vytvoříte Hadoop cluster v HDInsight, můžete zadat buď **služby Azure storage** účtu nebo **Data Lake store**. Kontejner konkrétní úložiště z tohoto účtu obsahuje systém souborů pro cluster, který vytvoříte (například Hadoop Distributed File System). Další informace a pokyny najdete v tématu:
+Když vytvoříte cluster Apache Hadoop v HDInsight, můžete zadat buď **služby Azure storage** účtu nebo **Data Lake store**. Kontejner konkrétní úložiště z tohoto účtu obsahuje systém souborů pro cluster, který vytvoříte (například Hadoop Distributed File System). Další informace a pokyny najdete v tématu:
 
 - [Použití služby Azure storage s HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 - [Použití Data Lake Store s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
@@ -170,6 +170,6 @@ Hlavní výhodou souborů Azure je, že sdílené složky můžete připojit a p
 ## <a name="next-steps"></a>Další postup
 
 * [Přehled služby ML clusteru v HDInsight](r-server-overview.md)
-* [Začínáme s clusterem služby ML na systému Hadoop](r-server-get-started.md)
+* [Začínáme s clusterem služby ML na Apache Hadoopu](r-server-get-started.md)
 * [Možnosti výpočetního kontextu pro cluster služby ML Services v HDInsight](r-server-compute-contexts.md)
 

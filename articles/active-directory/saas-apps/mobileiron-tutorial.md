@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 53cec59841fbda49e4e410f069882ea76996f9fb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428287"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584107"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Kurz: Integrace Azure Active Directory se službou MobileIron
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s MobileIron, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - MobileIron jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace MobileIron do služby Azure AD, budete muset přidat Mobil
 
 **Chcete-li přidat MobileIron z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -106,22 +106,21 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
  
     ![Jednotné přihlašování – dialogové okno](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
-1. Na **MobileIron domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+1. Na **MobileIron domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![MobileIron domény a adresy URL jednotného přihlašování – informace](./media/mobileiron-tutorial/tutorial_mobileiron_url.png)
 
-    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.mobileiron.com/<key>`
+    1. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.mobileiron.com/<key>`
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<host>.mobileiron.com/saml/SSO/alias/<key>`
+    1. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<host>.mobileiron.com/saml/SSO/alias/<key>`
 
-1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![MobileIron domény a adresy URL jednotného přihlašování](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<host>.mobileiron.com/user/login.html`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<host>.mobileiron.com/user/login.html`
     
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Zobrazí se hodnoty klíče a hostitele z portálu pro správu v MobileIron, který je vysvětlen později v tomto kurzu.
+    > [!NOTE]  Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Zobrazí se hodnoty klíče a hostitele z portálu pro správu v MobileIron, který je vysvětlen později v tomto kurzu.
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -174,13 +173,13 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Dialogové okno uživatele](./media/mobileiron-tutorial/create_aaduser_04.png)
 
-    a. V **název** zadejte **BrittaSimon**.
+    1. V **název** zadejte **BrittaSimon**.
 
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
+    1. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+    1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
 
-    d. Klikněte na možnost **Vytvořit**.
+    1. Klikněte na možnost **Vytvořit**.
   
 ### <a name="create-a-mobileiron-test-user"></a>Vytvoření zkušebního uživatele MobileIron
 
@@ -199,13 +198,13 @@ V případě MobileIron zřizování se ruční úlohy.
 
     ![Konfigurovat Single Sign-On tlačítko Přidat uživatele](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
 
-    a. V **e-mailovou adresu** textové pole, zadejte e-mailu uživatele, jako je brittasimon@contoso.com.
+    1. V **e-mailovou adresu** textové pole, zadejte e-mailu uživatele, jako je brittasimon@contoso.com.
 
-    b. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je Britta.
+    1. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je Britta.
 
-    c. V **příjmení** textové pole, zadejte příjmení uživatele, jako je Simon.
+    1. V **příjmení** textové pole, zadejte příjmení uživatele, jako je Simon.
     
-    d. Klikněte na **Done** (Hotovo).  
+    1. Klikněte na **Done** (Hotovo).  
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -237,7 +236,7 @@ V této části je povolit Britta Simon k udělení přístupu k MobileIron pou�
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

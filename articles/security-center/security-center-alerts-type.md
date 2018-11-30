@@ -3,7 +3,7 @@ title: Výstrahy zabezpečení podle typu ve službě Azure Security Center | Do
 description: Tento článek popisuje různé druhy výstrah zabezpečení dostupných ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/21/2018
-ms.author: yurid
-ms.openlocfilehash: 0573442568115fc872cc4cf4cf8c369cd635028e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.date: 11/29/2018
+ms.author: rkarlin
+ms.openlocfilehash: 24c6487ee7ec7d8398f933e29ca51cc9e390f47f
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262110"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633261"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Principy výstrah zabezpečení ve službě Azure Security Center
 Tento článek vám pomůže porozumět různým typům výstrah zabezpečení a souvisejícím přehledům, které jsou dostupné ve službě Azure Security Center. Další informace o správě těchto výstrah a incidentů najdete v tématu [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md).
 
-Pokud chcete nastavit rozšířené detekce, upgradujte na Azure Security Center Standard. K dispozici je bezplatná 60denní zkušební verze. Pokud chcete provést upgrade, v [zásadách zabezpečení](security-center-policies.md) vyberte **cenovou úroveň**. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Pokud chcete nastavit rozšířené detekce, upgradujte na Azure Security Center Standard. K dispozici je bezplatná 60denní zkušební verze. Pokud chcete provést upgrade, v [zásadách zabezpečení](security-center-azure-policy.md) vyberte **cenovou úroveň**. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
 > Ve službě Security Center byla vydána ve verzi Limited Preview nová sada detekcí, které využívají záznamy auditu, což je běžný auditní rámec, k detekci škodlivého chování na počítačích s Linuxem. Pokud se chcete připojit k verzi Preview, zašlete [nám](mailto:ASC_linuxdetections@microsoft.com) e-mail s ID vašich předplatných.
@@ -48,7 +48,7 @@ Azure Security Center může pomocí analýzy chování identifikovat ohrožené
 Security Center používá pokročilou analýzu k identifikaci ohrožených prostředků na základě analýzy protokolů událostí virtuálního počítače. Například události vytváření procesů a události přihlášení. Kromě toho se pomocí vzájemné souvislosti s dalšími signály hledají podpůrné důkazy rozšířené kampaně.
 
 * **Zjištění podezřelého spouštění procesů**: Útočníci se často pokoušejí nepozorovaně spustit škodlivý kód tak, že ho maskují za neškodné procesy. Tyto výstrahy indikují, že spuštění procesu odpovídá některému z následujících vzorů:
-    * Spustil se proces, o kterém je známo, že se používá ke škodlivým účelům. Jednotlivé příkazy se sice můžou zdát neškodné, ale výstraha se vyhodnocuje na základě agregace těchto příkazů.
+    * Spustil se proces, o kterém je známo, že se používá ke škodlivým účelům. Zatímco jednotlivé příkazy můžou zdát neškodné, ale, výstraha se vyhodnocuje na základě agregace těchto příkazů.
     * Proces se spustil z neobvyklého umístění.
     * Proces se spustil z umístění, ve kterém se vyskytují známé podezřelé soubory.
     * Proces se spustil z podezřelé cesty.
@@ -57,7 +57,7 @@ Security Center používá pokročilou analýzu k identifikaci ohrožených pros
     * Spustil se proces s podezřelou příponou.
     * Proces se spustil s podezřelou dvojitou příponou.
     * Spustil se proces, v jehož názvu souboru se vyskytuje podezřelý znak pro zápis zprava doleva.
-    * Spustil se proces, jehož název se podobá často spouštěnému procesu, ale mírně se od něj liší.
+    * Spustil se proces, jehož název je podobný ale liší od běžně spuštění procesu
     * Spustil se proces, jehož název odpovídá známému nástroji používanému útočníky.
     * Spustil se proces s náhodným názvem.
     * Spustil se proces s podezřelou příponou.
@@ -82,7 +82,7 @@ Security Center používá pokročilou analýzu k identifikaci ohrožených pros
 * **Podezřelá aktivita prostředku RDP**: Útočníci často cílí útoky hrubou silou na otevřené porty pro správu, jako je port RDP. Tyto výstrahy indikují podezřelou aktivitu přihlášení Vzdálené plochy, což může znamenat toto:
     * Došlo k pokusům o přihlášení Vzdálené plochy.
     * Došlo k pokusům o přihlášení Vzdálené plochy pomocí neplatných účtů.
-    * Došlo k pokusům o přihlášení Vzdálené plochy, přičemž při některých z nich mohlo dojít k úspěšnému přihlášení k počítači.
+    * Došlo k pokusu o přihlášení vzdálené plochy, některé z nich bylo možné úspěšně se přihlásit k počítači.
 * **Podezřelá aktivita prostředku SSH**: Útočníci často cílí útoky hrubou silou na otevřené porty pro správu, jako je port SSH. Tyto výstrahy indikují podezřelou aktivitu přihlášení SSH, což může znamenat toto:
     * Došlo k neúspěšným pokusům o přihlášení SSH.
     * Došlo k pokusům o přihlášení SSH, přičemž některé z nich byly úspěšné.
@@ -96,15 +96,15 @@ Security Center používá pokročilou analýzu k identifikaci ohrožených pros
 * **Odstranění všech stínových kopií souborů**: Tato výstraha indikuje, že došlo k odstranění stínových kopií.
 * **Podezřelé příkazy pro čištění souborů**: Tato výstraha indikuje kombinaci příkazů systeminfo, které se používají k provedení samočinného čištění po škodlivé činnosti.  *Systeminfo.exe* je sice legitimní nástroj Windows, ale jeho spuštění dvakrát za sebou s následným použitím příkazu pro odstranění, jak k tomu došlo tady, není obvyklé.
 * **Podezřelé vytvoření účtu**: Tato výstraha indikuje, že byl vytvořen účet, který se velmi podobá existujícímu předdefinovanému účtu s oprávněními správce. Tento postup můžou použít útočníci k vytvoření podvodného účtu, aniž by došlo k jeho detekci.
-* **Podezřelá aktivita stínové kopie svazku**: Tato výstraha indikuje aktivitu odstranění stínové kopie u daného prostředku. Stínová kopie svazku je důležitý artefakt, který uchovává snímky dat. Tato aktivita je obvykle spojena s ransomwarem, ale může být také legitimní.
+* **Podezřelá aktivita stínové kopie svazku**: Tato výstraha indikuje aktivitu odstranění stínové kopie u daného prostředku. Stínová kopie svazku je důležitý artefakt, který uchovává snímky dat. Tato aktivita je spojena s Ransomwarem, ale může být také legitimní.
 * **Metoda přetrvávání v registru Windows**: Tato výstraha indikuje pokus o zachování spustitelného souboru v registru Windows. Tuto techniku používá malware často k tomu, aby nedošlo k jeho odstranění při spuštění počítače.
 * **Podezřelé nové pravidlo firewallu**: Tato výstraha indikuje, že prostřednictvím *netsh.exe* se přidalo nové pravidlo firewallu, které povoluje přenosy ze spustitelného souboru v podezřelém umístění.
-* **Podezřelé spouštění příkazu XCOPY**: Tato výstraha indikuje posloupnost spuštění příkazu XCOPY, která může signalizovat, že došlo k napadení jednoho z vašich počítačů a k jeho použití k šíření malwaru.
-* **Potlačení zobrazování právních upozornění uživatelům při přihlášení**: Tato výstraha indikuje, že došlo ke změně klíče registru, který určuje, jestli se mají uživatelům při přihlášení zobrazovat právní upozornění. Jde o běžnou aktivitu prováděnou útočníky po napadení hostitele.
+* **Podezřelé spouštění příkazu xcopy**: Tato výstraha indikuje posloupnost spuštění příkazu XCOPY, která může signalizovat, že jeden z vašich počítačů došlo k napadení a jeho použití k šíření malwaru.
+* **Potlačení právních upozornění uživatelům při přihlášení zobrazí**: Tato výstraha indikuje, že ke změně klíče registru, který určuje, zda právní upozornění se zobrazí uživatelům při přihlášení. Jde o běžnou aktivitu prováděnou útočníky po napadení hostitele.
 * **Zjištění neobvyklé kombinace velkých a malých písmen na příkazovém řádku**: Tato výstraha indikuje použití kombinace velkých a malých písmen na příkazovém řádku, což je technika používaná útočníky ke skrytí před pravidlem počítače, které využívá rozlišování velkých a malých písmen nebo hodnotu hash.
 * **Obfuskovaný příkazový řádek**: Tato výstraha indikuje detekci podezřelých indikátorů obfuskace na příkazovém řádku.
 * **Dotazování na více účtů domény**: Útočníci při rekognoskaci uživatelů, účtů správců domén, řadičů domén a vztahů důvěryhodnosti mezi doménami často provádějí dotazy na účty domény AD. Tato výstraha indikuje, že během krátkého časového období se uskutečnilo dotazování na neobvyklý počet různých účtů domény.
-* **Možná aktivita místní rekognoskace**: Tato výstraha indikuje, že došlo ke spuštění kombinace příkazů systeminfo, která je spojovaná s aktivitou rekognoskace.  *Systeminfo.exe* je sice legitimní nástroj Windows, ale jeho spuštění dvakrát za sebou není obvyklé.
+* **Možná aktivita místní rekognoskace**: Tato výstraha indikuje, že byl proveden kombinaci příkazů systeminfo s aktivitou rekognoskace.  *Systeminfo.exe* je sice legitimní nástroj Windows, ale jeho spuštění dvakrát za sebou není obvyklé.
 * **Možné spuštění spustitelného souboru keygen**: Tato výstraha indikuje, že se spustil proces, jehož název naznačuje, že může jít o nástroj keygen. Tyto nástroje se obvykle používají k překonání mechanismů pro licencování softwaru, ale jejich soubor ke stažení často obsahuje i jiný škodlivý software.
 * **Podezřelé spuštění přes rundll32.exe**: Tato výstraha indikuje, že se pomocí rundll32.exe spustil proces s neobvyklým názvem, který odpovídá schématu názvů procesů, jež útočníci používají k instalaci implantátu první fáze na napadený hostitelský počítač.
 * **Podezřelá kombinace HTA a PowerShellu**: Tato výstraha indikuje, že Microsoft HTML Application Host (HTA) spouští příkazy PowerShellu. Jde o techniku používanou útočníky ke spuštění škodlivých skriptů PowerShellu.
@@ -113,7 +113,7 @@ Security Center používá pokročilou analýzu k identifikaci ohrožených pros
 * **Vytvoření účtu na více hostitelích během 24 hodin**: Tato výstraha indikuje, že došlo k pokusu o vytvoření stejného uživatelského účtu na více hostitelích, což může být známka toho, že po napadení jedné nebo více entit sítě se útočník v síti neoprávněně pohybuje.
 * **Podezřelé použití příkazu CACLS, kterým se snižuje stav zabezpečení systému**: Tato výstraha indikuje, že došlo ke změně seznamu pro řízení přístupu (CACLS). Útočníci tento postup často používají k získání úplného přístupu k systémovým binárním souborům, jako jsou ftp.exe, net.exe, wscript.exe atd.
 * **Parametry naznačující podezření na útok Kerberos Golden Ticket**: Tato výstraha indikuje, že došlo ke spuštění parametrů příkazového řádku, které odpovídají útoku Kerberos Golden Ticket. Napadený klíč krbtgt může útočník zneužít k zosobnění libovolného uživatele.
-* **Povolení klíče registru WDigest UseLogonCredential**: Tato výstraha indikuje, že došlo ke změně klíče registru, kterou se povoluje uchovávání přihlašovacích údajů ve formátu prostého textu v paměti místní autority zabezpečení (LSA), ze které je lze potom získat.
+* **Povolení klíče registru WDigest UseLogonCredential**: Tato výstraha indikuje, že klíč registru byl změněn na povolit přihlašování v přihlašovacích údajích k uložení ve formátu prostého textu v paměti LSA, které lze potom získat z paměti.
 * **Možné podezřelé použití nástroje Telegram**: Tato výstraha indikuje instalaci Telegramu, bezplatné cloudové služby rychlých zpráv, pomocí které útočníci přenášejí škodlivé binární soubory na jakýkoli jiný počítač, telefon nebo tablet.
 * **Vytvoření nového bodu ASEP**: Tato výstraha indikuje vytvoření nového bodu ASEP(Auto Start Extensibility Point), který má za následek automatické spouštění procesu, jehož název se identifikuje na příkazovém řádku, a který může útočník využít k přetrvávání v systému.
 * **Podezřelé změny Set-ExecutionPolicy a WinRM**: Tato výstraha indikuje změny konfigurace, které jsou spojené s použitím škodlivého webshellu ChinaChopper.
@@ -134,7 +134,7 @@ Security Center používá pokročilou analýzu k identifikaci ohrožených pros
 * **Podezřelé argumenty příkazového řádku**: Tato výstraha indikuje podezřelé argumenty příkazového řádku, které se používají ve spojení s obráceným prostředím (reverse shell), které používá skupina aktivity HYDROGEN.
 * **Podezřelé přihlašovací údaje k dokumentu**: Tato výstraha indikuje podezřelou předvypočítanou hodnotu hash hesla, kterou používá malware používaný ke spouštění souboru.
 * **Dynamické vytváření skriptu PS**: Tato výstraha indikuje dynamické vytváření skriptu PowerShellu. Útočníci používají tuto techniku k postupnému vytváření skriptu s cílem obejít systémy IDS (zjišťování neoprávněných vniknutí).
-* **Indikátory Metasploitu**: Tato výstraha indikuje aktivitu spojenou s architekturou Metasploitu, která útočníkovi poskytuje celou řadu funkcí a nástrojů.
+* **Indikátory Metasploit**: Tato výstraha indikuje aktivitu spojenou s architekturou metasploitu, která poskytuje celou řadu útočník funkcí a nástrojů.
 * **Podezřelá aktivita účtu**: Tato výstraha indikuje, že došlo k pokusu o připojení k počítači pomocí účtu, který byl nedávno napaden.
 * **Vytvoření účtu**: Tato výstraha indikuje vytvoření nového účtu v počítači.
 
@@ -146,7 +146,7 @@ Metoda analýzy paměti ve výpisu stavu systému slouží ke zjištění sofist
 
 Pokud dojde k chybě softwaru, ve výpisu stavu systému se zaznamená část paměti v době selhání. Taková chyba může být způsobena malwarem, běžnou aplikací nebo systémovými problémem. Díky analýze paměti ve výpisu stavu systému dokáže služba Security Center zjišťovat techniky, které využívají zranitelností softwaru, získávají přístup k důvěrným datům a nenápadně přetrvávají v napadeném počítači. Díky tomu, že se tato analýza provádí v back-endu služby Security Center, má minimální dopad na výkon hostitele.
 
-* **Zjištění injektáže kódu**: Injektáž kódu představuje vložení spustitelných modulů do spuštěných procesů nebo vláken. Tato technika je používána malwarem pro přístup k datům, ukrytí malwaru nebo zabránění jeho odstranění. Tato výstraha znamená, že ve výpisu je injektovaný modul. Vývojáři legitimního softwaru někdy provádějí injektáž kódu bez zlých úmyslů, například kvůli úpravě nebo rozšiřování stávající aplikace nebo součásti operačního systému. Security Center rozlišuje škodlivé injektované moduly a moduly bez zlých úmyslů na základě profilů podezřelého chování. Výsledek kontroly je u výstrahy uveden v poli SIGNATURE a určuje závažnost výstrahy, popis výstrahy a nápravné kroky.
+* **Zjištění injektáže kódu**: Injektáž kódu představuje vložení spustitelných modulů do spuštěných procesů nebo vláken. Tuto techniku používá malware k přístup k datům, skrýt nebo zabránění jeho odstranění (například trvalost). Tato výstraha znamená, že ve výpisu je injektovaný modul. Vývojáři legitimního softwaru někdy provádějí injektáž kódu bez zlých úmyslů, například kvůli úpravě nebo rozšiřování stávající aplikace nebo součásti operačního systému. Security Center rozlišuje škodlivé injektované moduly a moduly bez zlých úmyslů na základě profilů podezřelého chování. Výsledek kontroly je u výstrahy uveden v poli SIGNATURE a určuje závažnost výstrahy, popis výstrahy a nápravné kroky.
 * **Podezřelý segment kódu**: Výstraha podezřelého segmentu kódu indikuje, že k přidělení segmentu kódu se použily nestandardní metody, například používané reflektivní injektáží a hloubením procesů. Zpracovávají se další charakteristiky segmentu kódu, které poskytují kontext v souvislosti s jeho možnostmi a chováním.
 * **Zjištění skrytého spustitelného kódu**: Skrytý spustitelný kód je datová část, která se spouští potom, co malware zneužije chybu zabezpečení softwaru. Tato výstraha znamená, že při analýze výpisu stavu systému byl nalezen spustitelný kód, který vykazuje chování typické pro škodlivý software. Někdy se může takovým způsobem chovat i software bez zlých úmyslů, pro běžný vývoj softwaru ale toto chování není typické.
 * **Zjištění napadení modulu**: Systém Windows umožňuje softwaru využívat základní systémové funkce prostřednictvím knihoven DLL (Dynamic Link Libraries). Při napadení knihoven DLL malware pozmění pořadí načítání knihoven DLL tak, aby umožnil načtení škodlivých datových částí do paměti, ze které je pak bude možné spustit. Tato výstraha znamená, že při analýze výpisu stavu systému byly nalezeny dva moduly s podobným názvem, ale načítané z různých cest. Jedna z načtených cest odpovídá běžnému umístění binárních souborů systému Windows. Vývojáři legitimního softwaru někdy mění pořadí načítání knihoven DLL bez zlých úmyslů, například při instrumentaci, rozšiřování operačního systému Windows nebo rozšiřování aplikací. Security Center u načteného modulu rozlišuje škodlivé změny pořadí načítání knihoven DLL od pravděpodobně bezpečných změn na základě profilů podezřelého chování.
@@ -184,15 +184,15 @@ Analýza prostředků ve službě Security Center se soustředí na služby mode
 * **Útok hrubou silou na přihlašovací údaje SQL:** Tato výstraha se aktivuje, pokud byly zaznamenán neobvykle vysoký počet neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
 
 ## <a name="contextual-information"></a>Kontextové informace
-Během šetření analytici potřebují další kontext, aby došli k závěru ohledně povahy hrozby a způsobu, jak ji zmírnit.  Představte si například, že byla zjištěna síťová anomálie. Bez informací o tom, co dalšího se v síti děje, a s ohledem na cílový prostředek je velmi obtížné pochopit, jaká opatření je třeba provést. Bezpečnostní incident může zahrnovat artefakty, související události a další informace, které mohou vyšetřovateli pomoci. Dostupnost dalších informací se bude lišit v závislosti na typu zjištěné hrozby a konfiguraci vašeho prostředí. Nebudou dostupné pro všechny incidenty zabezpečení.
+Během šetření analytici potřebují další kontext, aby došli k závěru ohledně povahy hrozby a způsobu, jak ji zmírnit.  Představte si například, že byla zjištěna síťová anomálie. Bez informací o tom, co dalšího se v síti děje, a s ohledem na cílový prostředek je velmi obtížné pochopit, jaká opatření je třeba provést. Pro usnadnění, které, bezpečnostní Incident může zahrnovat artefakty, související události a informace, které mohou vyšetřovateli pomoci. Dostupnost dalších informací se bude lišit v závislosti na typu zjištěné hrozby a konfiguraci vašeho prostředí. Nebudou dostupné pro všechny incidenty zabezpečení.
 
 Pokud jsou dostupné další informace, zobrazí se v incidentu zabezpečení pod seznamem výstrah. Může se jednat o informace tohoto typu:
 
 - Události vymazání protokolu
 - Zařízení PNP zapojená z neznámého zařízení
-- Výstrahy, na které není možné reagovat
+- Výstrahy, které nejsou užitečné
 - Vytvoření nového účtu
-- Dekódovaný soubor pomocí nástroje certutil 
+- Dekódovaný soubor pomocí nástroje certutil
 
 ![Výstraha na neobvyklý přístup](./media/security-center-alerts-type/security-center-alerts-type-fig20.png)
 

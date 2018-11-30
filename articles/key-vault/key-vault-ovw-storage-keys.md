@@ -1,6 +1,6 @@
 ---
 ms.assetid: ''
-title: Klíče účtu úložiště Azure Key Vault
+title: Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 description: Klíče účtu úložiště poskytují seemless integrace mezi službami Azure Key Vault a klíče přístupu na základě do účtu úložiště Azure.
 ms.topic: conceptual
 services: key-vault
@@ -9,14 +9,14 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: e62c599d82f488bf1fc30ce503c271084c5ae59d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e110a24af6a0d49ea949db6bc30ab344c81d0f48
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300215"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619278"
 ---
-# <a name="azure-key-vault-storage-account-keys"></a>Klíče účtu úložiště Azure Key Vault
+# <a name="azure-key-vault-managed-storage-account---cli"></a>Služba Azure Key Vault spravovat účet úložiště – rozhraní příkazového řádku
 
 > [!NOTE]
 > [Azure storage teď podporuje ověřování AAD](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Doporučujeme použít Azure Active Directory pro ověřování a autorizace pro úložiště, jak uživatelé nemusí dělat starosti o otáčení své klíče účtu úložiště.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: d6cbd2992968a57cfba99117e9f1fc1ab9b5b5b3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 2ece10c43f25ac637a29324f46a88e50d9655431
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711833"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620434"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 se připojit ke službě Azure IoT Hub
 
@@ -119,12 +119,12 @@ Kliknutím na tlačítko B testování snímačům. Pokračujte stisknutím a uv
 
 Doporučujeme [Azure IoT Workbench](https://aka.ms/iot-workbench) rozšíření pro Visual Studio Code pro vývoj na DevKit.
 
-Azure IoT Workbench poskytuje integrované prostředí pro vývoj řešení IoT. To pomáhá i na vývoj zařízení a cloud pomocí Azure IoT a dalších služeb. Podívejte se na toto video na Channel9 mít přehled toho, co dělá.
+Azure IoT Workbench poskytuje integrované prostředí pro vývoj řešení IoT. To pomáhá i na vývoj zařízení a cloud pomocí Azure IoT a dalších služeb. Můžete si pusťte toto [videa Channel 9](https://channel9.msdn.com/Shows/Internet-of-Things-Show/IoT-Workbench-extension-for-VS-Code) mít přehled toho, co dělá.
 
 Použijte následující postup Příprava vývojového prostředí pro DevKit:
 
 1. Stáhněte a nainstalujte [rozhraním Arduino IDE](https://www.arduino.cc/en/Main/Software). Poskytuje nezbytné sady nástrojů pro kompilaci a nahrání kódu Arduino.
-    * **Windows**: verze Instalační služby systému Windows použít.
+    * **Windows**: verze Instalační služby systému Windows použít. Neinstalujte z app storu.
     * **macOS**: přetažení extrahované **Arduino.app** do `/Applications` složky.
     * **Ubuntu**: například rozbalte do složky `$HOME/Downloads/arduino-1.8.5`
 
@@ -133,15 +133,15 @@ Použijte následující postup Příprava vývojového prostředí pro DevKit:
 3. Vyhledejte **Azure IoT Workbench** v marketplace pro rozšíření a nainstalujte ho.
     ![Instalace aplikace Azure IoT Workbench](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png) spolu s IoT aplikace Workbench, se nainstaluje další závislé rozšíření.
 
-4. Otevřít **soubor > Předvolby > Nastavení** a přidejte následující řádky do konfigurace Arduino.
-    * **Windows:**
-
+4. Konfigurace Arduino
+    * **Windows**: na **Windows** otevřít **soubor > Předvolby > Nastavení** klikněte na tlačítko **...**  a otevřete settings.json. pak přidejte následující řádky do konfigurace Arduino. 
+      
     ```json
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
 
-    * **macOS**:
+    * **macOS**: na **macOS** otevřít **kód > Předvolby > Nastavení** klikněte na tlačítko **...**  a otevřete settings.json. pak přidejte následující řádky do konfigurace Arduino
 
     ```json
     "arduino.path": "/Applications",

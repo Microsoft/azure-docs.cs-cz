@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ecb613dd2f624b9e0910a0ddcdf931f4b266aa96
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: c96e195d425cff640a4961e34305c1af447f6f28
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036576"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499429"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Použití uživatelského rozhraní Apache Tez k ladění úloh Tez na HDInsight se systémem Windows
-Uživatelského rozhraní Tez lze použít k ladění úloh Hive, které používají jako prováděcí modul Tez. Uživatelského rozhraní Tez vizualizuje úlohy graf připojené položky, můžete přejít k podrobnostem jednotlivých položek a získání statistik a informace o protokolování.
+[Apache TEZ](https://tez.apache.org/) uživatelského rozhraní lze použít k ladění [Apache Hive](https://hive.apache.org/) úlohy, které používají jako prováděcí modul Tez. Uživatelského rozhraní Tez vizualizuje úlohy graf připojené položky, můžete přejít k podrobnostem jednotlivých položek a získání statistik a informace o protokolování.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, používající Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -32,7 +32,7 @@ Uživatelského rozhraní Tez lze použít k ladění úloh Hive, které použí
 * Klient vzdálené plochy se systémem Windows.
 
 ## <a name="understanding-apache-tez"></a>Principy Apache Tez
-Tez je rozšiřitelná platforma pro zpracování dat v Apache Hadoop a poskytuje vyšší rychlostí než tradiční MapReduce zpracování. Můžete povolit Tez zahrnutím následujícího textu jako součást dotazu Hive:
+Tez je rozšiřitelná platforma pro zpracování dat v Apache Hadoop a poskytuje vyšší rychlostí než tradiční [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) zpracování. Můžete povolit Tez zahrnutím následujícího textu jako součást dotazu Hive:
 
     set hive.execution.engine=tez;
 
@@ -134,6 +134,6 @@ Použijte následující postup ke spuštění dotazu Hive, který používá Te
     ![Detail úlohy](./media/hdinsight-debug-tez-ui/taskdetails.png)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili, jak používat zobrazení Tez, další informace o [používání Hive s HDInsight](hadoop/hdinsight-use-hive.md).
+Teď, když jste se naučili, jak používat [Apache TEZ](https://tez.apache.org/) zobrazení, další informace o [pomocí Apache Hive s HDInsight](hadoop/hdinsight-use-hive.md).
 
-Podrobné technické informace na Tez, najdete v článku [Tez stránku na Hortonworks](http://hortonworks.com/hadoop/tez/).
+Podrobné technické informace na Tez, najdete v článku [Apache Tez stránku na Hortonworks](http://hortonworks.com/hadoop/tez/).

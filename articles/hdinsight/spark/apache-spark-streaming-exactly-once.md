@@ -8,14 +8,14 @@ ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6c39eb02e9610e0020ab2abe8a192dabf0b768d9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 78d18bfe0f47517067fbb053a2d7e076b15761a7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241308"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580996"
 ---
-# <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytvoření úlohy streamování Sparku s přesně-událostí zpracování
+# <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Vytvoření úlohy streamování Apache Sparku s přesně-událostí zpracování
 
 Stream zpracování aplikací využít různé přístupy jak jejich zpracování opětovné zpracování zpráv po některé selhání v systému:
 
@@ -25,7 +25,7 @@ Stream zpracování aplikací využít různé přístupy jak jejich zpracován�
 
 Tento článek ukazuje, jak nakonfigurovat Spark Streaming k dosažení přesně – jedno zpracování.
 
-## <a name="exactly-once-semantics-with-spark-streaming"></a>Přesně-jednou sémantiku službou Spark Streaming
+## <a name="exactly-once-semantics-with-apache-spark-streaming"></a>Přesně-jednou sémantika s Apache Spark Streaming
 
 Nejprve, zvažte, jak všechny body selhání systému restartuje se vyskytl problém, a jak se můžete vyhnout ztrátě dat. Aplikace Spark Streaming má:
 
@@ -41,11 +41,11 @@ Přesně – Jakmile sémantiku vyžaduje, aby se neztratí kdykoli a zpracován
 
 Aplikace Spark Streaming je čtení události ze zdroje musí být *opakovatelná*. To znamená, že v případech, ve kterém zpráva se načetla, ale pak systém selhal předtím, než může být zachována nebo zpracovat zprávu, zdroj musí poskytnout stejnou zprávu znovu.
 
-V Azure Azure Event Hubs a Kafka v HDInsight poskytují opakovatelná zdroje. Dalším příkladem opakovatelná zdroje je systém odolný proti chybám souborů, jako je HDFS, objekty BLOB služby Azure Storage, nebo Azure Data Lake Store, ve kterém všechna data se ukládají navždy a v libovolném okamžiku můžete znovu čte data v celém rozsahu.
+V Azure, jak Azure Event Hubs a [Apache Kafka](https://kafka.apache.org/) na HDInsight poskytují opakovatelná zdroje. Další příklad opakovatelná zdroje je odolné proti chybám souborový systém jako [Apache Hadoop HDFS](https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html), objekty BLOB služby Azure Storage nebo Azure Data Lake Store, ve kterém všechna data se ukládají navždy a v libovolném okamžiku můžete znovu načtěte data v celém rozsahu.
 
 ### <a name="reliable-receivers"></a>Spolehlivé příjemců
 
-Ve Spark Streaming, zdrojů, jako jsou Event Hubs a Kafka *spolehlivé příjemci*, kde každý příjemce uchovává informace o průběhu čtení zdroji. Spolehlivé příjemce udržuje svůj stav do úložiště odolné proti chybám, v rámci ZooKeeper nebo ve Spark Streaming kontrolní body zapisovat do rozhraní HDFS. Pokud takový příjemce selže a je pozdější restartování, ho můžete pokračovat tam, kde skončila.
+Ve Spark Streaming, zdrojů, jako jsou Event Hubs a Kafka *spolehlivé příjemci*, kde každý příjemce uchovává informace o průběhu čtení zdroji. Spolehlivé příjemce nevyřeší stavu do úložiště odolné proti chybám, buď v rámci [Apache ZooKeeper](https://zookeeper.apache.org/) nebo Spark Streaming kontrolní body zapisovat do rozhraní HDFS. Pokud takový příjemce selže a je pozdější restartování, ho můžete pokračovat tam, kde skončila.
 
 ### <a name="use-the-write-ahead-log"></a>Použití protokolu dávky zápisu
 
@@ -89,5 +89,5 @@ Dalším příkladem je pomocí systému souborů oddílů, jako jsou objekty BL
 
 ## <a name="next-steps"></a>Další postup
 
-* [Přehled streamování Sparku](apache-spark-streaming-overview.md)
-* [Vytváření vysoce dostupné úlohy streamování Sparku v YARNU](apache-spark-streaming-high-availability.md)
+* [Apache Spark Streaming přehled](apache-spark-streaming-overview.md)
+* [Vytvoření vysoce dostupné úlohy streamování Apache Sparku v Apache Hadoop YARN](apache-spark-streaming-high-availability.md)

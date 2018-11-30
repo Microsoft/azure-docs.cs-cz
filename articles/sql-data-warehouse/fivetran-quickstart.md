@@ -1,5 +1,5 @@
 ---
-title: Fivetran rychlý start s Azure SQL Data Warehouse | Dokumentace Microsoftu
+title: Fivetran quickstart pro Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Začněte rychle pomocí Fivetran a Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: hirokib
@@ -10,69 +10,75 @@ ms.component: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 8e738becfe356908af5baffc0ebf225916b2616e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 50f5f813444ddf38d15863d028b1f61bb9b0d55c
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355405"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52580523"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Rychlé zahájení práce díky Fivetran a SQL Data Warehouse
 
-V tomto rychlém startu se předpokládá, že už máte existující instanci služby SQL Data Warehouse.
+Tento rychlý start popisuje způsob nastavení nového uživatele Fivetran pro práci s Azure SQL Data Warehouse. Tento článek předpokládá, že máte existující instanci služby SQL Data Warehouse.
 
-## <a name="setup-connection"></a>Nastavit připojení
+## <a name="set-up-a-connection"></a>Nastavit připojení
 
-1. Najdete plně kvalifikovaný název serveru a název databáze pro připojení k Azure SQL Data Warehouse.
+1. Najdete plně kvalifikovaný název serveru a název databáze, který použijete k připojení k SQL Data Warehouse.
+    
+    Pokud potřebujete pomoc, jak najít tyto informace, přečtěte si téma [připojení k Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md).
 
-   [Jak najít název serveru a název databáze z portálu?](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connect-overview)
+2. V Průvodci instalací vyberte, jestli se má připojit databázi přímo nebo pomocí tunelu SSH.
 
-2. V Průvodci instalací rozhodněte, jestli chcete pro připojení databáze přímo nebo prostřednictvím tunelu SSH.
+   Pokud budete chtít připojit přímo k databázi, musíte vytvořit pravidlo brány firewall umožňující přístup. Tato metoda je nejjednodušší a nejbezpečnější metodu.
 
-   Pokud se rozhodnete připojit přímo k databázi, je potřeba vytvořit pravidlo brány firewall umožňující přístup. Tato metoda je nejjednodušší a nejbezpečnější metodu.
+   Pokud budete chtít připojit pomocí tunelu SSH, Fivetran připojí na samostatný server ve vaší síti. Server poskytuje tunelového propojení SSH k vaší databázi. Pokud je vaše databáze do nedostupný podsítě ve virtuální síti, musíte použít tuto metodu.
 
-   Pokud se rozhodnete připojení přes tunelové propojení SSH, Fivetran se připojí na samostatný server ve vaší síti, která poskytuje tunelového propojení SSH k vaší databázi. Tato metoda je nezbytná, pokud je vaše databáze do nedostupný podsítě ve virtuální síti.
+3. Přidat IP adresu **52.0.2.4** do vaší brány firewall na úrovni serveru umožňuje příchozí připojení k vaší instanci SQL Data Warehouse z Fivetran.
 
-3. Přidat "52.0.2.4" IP adresu v bráně firewall úrovni serveru umožňuje příchozí připojení k Azure SQL Data Warehouse z Fivetran.
+   Další informace najdete v tématu [vytvořit pravidlo brány firewall na úrovni serveru](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
 
-   [Postup přidání brány firewall na úrovni serveru?](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal#create-a-server-level-firewall-rule)
+## <a name="set-up-user-credentials"></a>Nastavit přihlašovací údaje uživatele
 
-## <a name="setup-user-credentials"></a>Nastavení přihlašovacích údajů uživatele
+1. Připojení k Azure SQL Data Warehouse pomocí SQL Server Management Studio nebo nástroj, který preferujete. Přihlaste se jako uživatel správce serveru. Potom spusťte následující příkazy SQL pro vytvoření uživatele pro Fivetran:
+    - V hlavní databázi: 
+    
+      ```
+      CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
+      ```
 
-Připojení k Azure SQL Data Warehouse pomocí aplikace SQL Server Management Studio nebo nástroje podle výběru jako uživatel s rolí správce serveru a spusťte následující příkazy SQL pro vytvoření uživatele pro Fivetran:
+    - V databázi SQL Data Warehouse:
 
-V hlavní databázi: ` CREATE LOGIN fivetran WITH PASSWORD = '<password>'; `
+      ```
+      CREATE USER fivetran_user_without_login without login;
+      CREATE USER fivetran FOR LOGIN fivetran;
+      GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
+      ```
 
-V databázi SQL Data Warehouse:
+2. Udělte oprávnění ke svému skladu Fivetran uživatele:
 
-```
-CREATE USER fivetran_user_without_login without login;
-CREATE USER fivetran FOR LOGIN fivetran;
-GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
-```
+    ```
+    GRANT CONTROL to fivetran;
+    ```
 
-Po vytvoření uživatele fivetran jí udělte následující oprávnění do skladu:
+    Vytvořte přihlašovací údaje s rozsahem databáze, které se používají, když uživatel načte soubory z úložiště objektů Blob v Azure pomocí PolyBase je potřeba oprávnění ovládacího PRVKU.
 
-```
-GRANT CONTROL to fivetran;
-```
+3. Přidáte třídu prostředků se vhodné Fivetran uživateli. Třída prostředků, které používáte, závisí na paměti, které je nutné vytvořit columnstore index. Například integrace s produkty, jako jsou služby Marketo nebo Salesforce vyžadují vyšší třídě prostředků z důvodu velkého počtu sloupců a větší objem dat produkty používat. Vyšší třídě prostředků vyžaduje víc paměti k vytvoření indexů columnstore.
 
-Přidáte třídu prostředků se vhodné k vytvořenému uživateli, v závislosti na požadavek na paměť vytváření indexu columnstore. Například integrace, jako jsou služby Marketo nebo Salesforce potřebovat vyšší třídě prostředků z důvodu velký počet sloupců nebo větší objem dat, který vyžaduje víc paměti k vytvoření indexů columnstore.
+    Doporučujeme použít statických tříd prostředků. Můžete začít s `staticrc20` třídy prostředků. `staticrc20` Třída prostředků se přiděluje 200 MB pro každého uživatele, bez ohledu na úroveň výkonu použít. Pokud indexu columnstore selže na úrovni třídy původní zdroj, zvýšit třídy prostředků.
 
-Doporučuje se použití statických tříd prostředků. Můžete začít s Třída prostředků `staticrc20`, který přiděluje 200 MB pro uživatele bez ohledu na úroveň výkonu můžete použít. Pokud indexu columnstore selže s aktuální třídě prostředků, máme zvýšit třídy prostředků.
+    ```
+    EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
+    ```
 
-```
-EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
-```
+    Další informace, přečtěte si informace o [omezení paměti a souběžnosti](memory-and-concurrency-limits.md) a [třídy prostředků](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
 
-Další informace, podívejte se na dokumenty, kde [omezení paměti a souběžnosti](https://docs.microsoft.com/azure/sql-data-warehouse/memory-and-concurrency-limits#data-warehouse-limits) a [třídy prostředků](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-memory-optimizations-for-columnstore-compression#ways-to-allocate-more-memory)
 
-Ovládací PRVEK oprávnění je potřeba k vytvoření přihlašovacích údajů s rozsahem databáze, které se použijí při načítání souborů z úložiště objektů Blob pomocí PolyBase.
+## <a name="sign-in-to-fivetran"></a>Přihlaste se k Fivetran
 
-Zadejte přihlašovací údaje pro přístup k Azure SQL Data Warehouse
+Pro přihlášení k Fivetran, zadejte přihlašovací údaje, které používáte pro přístup k SQL Data Warehouse: 
 
-1. Hostitele (název vašeho serveru)
-2. Port
-3. Databáze
-4. Uživatel (uživatelské jméno by měly být `fivetran@<server_name>` kde `<server_name>` je součástí váš identifikátor uri pro azure hostitele: `<server_name>.database.windows.net`)
-5. Heslo
+* Hostitele (název vašeho serveru).
+* Port.
+* Databáze.
+* Uživatel (uživatelské jméno by měly být **fivetran @_název_serveru_**  kde *název_serveru* je součástí identifikátor URI pro Azure hostitele: ***server_name*.database.windows .net** ).
+* Heslo.

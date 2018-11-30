@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 04c7b521ad13db9f5ec9573fd1ab966ad1282e8e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 442aa7034c3fec57b3b9394e6b0f46d4dec47849
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954309"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633108"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Přidání, změna nebo odstranění podsítě virtuální sítě
 
@@ -69,7 +69,7 @@ Před dokončením kroků v jakékoli části tohoto článku, proveďte násled
 4. V seznamu podsítí vyberte podsíť, kterou chcete změnit nastavení pro. Můžete změnit následující nastavení:
 
     - **Rozsah adres:** Pokud žádné prostředky se nasadí v rámci podsítě, můžete změnit rozsah adres. Pokud všechny prostředky v podsíti, musíte buď prostředky přesunout do jiné podsítě nebo nejprve odstraňte z podsítě. Kroky, jak můžete přesunout nebo odstranit prostředek se liší v závislosti na prostředku. Zjistěte, jak se přesunout nebo odstranit prostředky, které jsou v podsítích, najdete v dokumentaci pro každý typ prostředku, který chcete přesunout nebo odstranit. V tématu omezení pro **rozsah adres** v kroku 5 [přidat podsíť](#add-a-subnet).
-    - **Uživatelé**: přístup k podsíti můžete řídit pomocí předdefinovaných nebo vlastní role. Další informace o přiřazování rolí a uživatelů pro přístup k podsíti, najdete v článku [použití přiřazení rolí ke správě přístupu k prostředkům Azure](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access).
+    - **Uživatelé**: přístup k podsíti můžete řídit pomocí předdefinovaných nebo vlastní role. Další informace o přiřazování rolí a uživatelů pro přístup k podsíti, najdete v článku [použití přiřazení rolí ke správě přístupu k prostředkům Azure](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-role-assignment).
     - **Skupina zabezpečení sítě** a **směrovací tabulka**: najdete v kroku 5 části [přidat podsíť](#add-a-subnet).
     - **Koncové body služby**: zobrazit koncové body služby v kroku 5 části [přidat podsíť](#add-a-subnet). Při povolení koncového bodu služby pro existující podsíť, ujistěte se, že žádné důležité úlohy běží na prostředky v podsíti. Koncové body služby přepnout trasy na každé síťové rozhraní v podsíti z pomocí výchozí trasa s *0.0.0.0/0* předponu a dalším segmentem směrování typu *Internet*, pomocí novou trasu s služby a typem dalšího segmentu směrování z předpony adres *VirtualNetworkServiceEndpoint*. Během přepnutí může být ukončena všechna otevřená připojení TCP. Koncový bod služby není povoleno, dokud přenosové toky ve službě pro všechna síťová rozhraní jsou aktualizovány pomocí nového trasy. Další informace o směrování najdete v tématu [Přehled směrování](virtual-networks-udr-overview.md).
     - **Delegování podsítě:** zobrazit koncové body služby v kroku 5 části [přidat podsíť](#add-a-subnet). Delegování podsítě můžete upravit tak, aby nula nebo více delegování povoleno pro něj. Pokud je prostředek pro službu již nasazený v podsíti, delegování podsíť nejde odstranit, dokud se odeberou všechny prostředky pro službu. Na delegáta pro jiné služby, vyberte službu chcete delegovat z **služby** seznamu. 

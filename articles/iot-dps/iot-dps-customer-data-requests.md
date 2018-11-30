@@ -7,12 +7,12 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d6355926c8fac62b01c36d28265842b1233ce213
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5dd027c886e8102e77ddefe93817daee0e1ec29b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666934"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584142"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Souhrnné informace o zákaznická data žádosti o funkce
 
@@ -39,9 +39,9 @@ Další informace najdete v tématu [Správa registrace zařízení](how-to-mana
 
 Je také možné provést operace odstranění registrace a registraci záznamů pomocí rozhraní REST API:
 
-* Pokud chcete odstranit informace o registraci pro jedno zařízení, můžete použít [registrace zařízení – odstranit](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/delete).
-* Pokud chcete odstranit informace o registraci pro skupinu zařízení, můžete použít [skupiny pro registraci zařízení – odstranit](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/delete).
-* Můžete odstranit informace o zařízení, které se zřizují, můžete použít [stav registrace – odstranit stav registrace](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/deleteregistrationstate).
+* Pokud chcete odstranit informace o registraci pro jedno zařízení, můžete použít [registrace zařízení – odstranit](/rest/api/iot-dps/deleteindividualenrollment/deleteindividualenrollment).
+* Pokud chcete odstranit informace o registraci pro skupinu zařízení, můžete použít [skupiny pro registraci zařízení – odstranit](/rest/api/iot-dps/deleteenrollmentgroup/deleteenrollmentgroup).
+* Můžete odstranit informace o zařízení, které se zřizují, můžete použít [stav registrace – odstranit stav registrace](/rest/api/iot-dps/deletedeviceregistrationstate/deletedeviceregistrationstate).
 
 ## <a name="exporting-customer-data"></a>Export zákaznických dat
 
@@ -53,9 +53,9 @@ Další informace o tom, jak spravovat registrace najdete v tématu [Správa reg
 
 Je také možné provádět operace export pro registrace a registraci záznamů pomocí rozhraní REST API:
 
-* Pokud chcete exportovat informace o registraci pro jedno zařízení, můžete použít [registrace zařízení – Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollment/get).
-* Pokud chcete exportovat informace o registraci pro skupinu zařízení, můžete použít [skupiny pro registraci zařízení – Get](https://docs.microsoft.com/rest/api/iot-dps/deviceenrollmentgroup/get).
-* Pokud chcete exportovat informace o zařízeních, která už máte zřízená, můžete použít [stav registrace – získat stav registrace](https://docs.microsoft.com/rest/api/iot-dps/registrationstate/getregistrationstate).
+* Pokud chcete exportovat informace o registraci pro jedno zařízení, můžete použít [registrace zařízení – Get](/rest/api/iot-dps/getindividualenrollment/getindividualenrollment).
+* Pokud chcete exportovat informace o registraci pro skupinu zařízení, můžete použít [skupiny pro registraci zařízení – Get](/rest/api/iot-dps/getenrollmentgroup/getenrollmentgroup).
+* Pokud chcete exportovat informace o zařízeních, která už máte zřízená, můžete použít [stav registrace – získat stav registrace](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate).
 
 > [!NOTE]
 > Při použití služby enterprise od Microsoftu, Microsoft generuje určité informace, označované jako protokoly generované systémem. Některé služby Device Provisioning systémem generované protokoly nejsou přístupné nebo exportovat správci tenanta. Tyto protokoly představují skutečné akce provedené v rámci služby a diagnostických dat týkající se pro jednotlivá zařízení.

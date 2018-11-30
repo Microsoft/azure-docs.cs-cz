@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 7ead955be3835f4ce3e602fe27a06c00d014195c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262195"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584770"
 ---
 # <a name="azure-database-security-overview"></a>Přehled zabezpečení služby Azure database
 
@@ -199,7 +199,7 @@ SQL pokročilé Threat Protection (ATP) poskytuje sadu pokročilé funkce zabezp
 - Přístup z potenciálně škodlivé aplikace 
 - Hrubá síla databáze Azure pro postgresql – přihlašovací údaje 
 
-[Azure Database for MySQL Advanced Threat Protection](/mysql/concepts-data-access-and-security-threat-protection.md) poskytuje ochranu podobný PostgreSQL rozšířenou ochranu.  
+[Azure Database for MySQL Advanced Threat Protection](../mysql/concepts-data-access-and-security-threat-protection.md) poskytuje ochranu podobný PostgreSQL rozšířenou ochranu.  
 
 ## <a name="centralized-security-management"></a>Centralizované zabezpečení správy
 
@@ -220,7 +220,7 @@ Security Center podporuje přístup na základě rolí.
 
 Kromě toho vypočítá výsledek nastavit citlivost příkazů jazyka SQL, tak, aby dotazy, které extrahují citlivá data dají explicitně auditovat a data můžou být chráněné. Další informace o SQL Information Protection najdete v Azure SQL Database Data zjišťování a klasifikace.
 
-Můžete nakonfigurovat [zásady SQL Information Protection](/security-center/security-center-info-protection-policy.md) ve službě Azure Security Center.
+Můžete nakonfigurovat [zásady SQL Information Protection](../security-center/security-center-info-protection-policy.md) ve službě Azure Security Center.
 
 ## <a name="azure-marketplace"></a>Azure Marketplace
 

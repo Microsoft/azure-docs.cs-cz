@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 0f0bee419fdb119fcd99f0e72cc61ddf20f6253a
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 8aabcf342cde6de9fd4438014c9c400b28470e9b
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712938"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632666"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozšíření upozornění Log Analytics do Azure Alerts
 Dokud se nedávno, Azure Log Analytics zahrnuté vlastní výstrahy funkce, které by vás proaktivně upozorní podmínek založených na datech Log Analytics. Můžete spravovat pravidla výstrah ve službě portál Microsoft Operations Management Suite. Nové prostředí upozornění teď obsahuje integrované výstrahy napříč různými službami v Microsoft Azure. Tato možnost je dostupná jako **výstrahy** v části Azure Monitor na webu Azure Portal a podporuje upozornění z aktivity protokolů, metrik a protokolů v Log Analytics a Azure Application Insights. 
@@ -55,7 +55,7 @@ Při pokusu upravit existující upozornění nebo vytvořit nové oznámení na
 > Ujistěte se, že oprávnění přiřazená uživateli osobám, které potřebujete k přidání nebo úpravě výstrahy jsou správně přiřazené v Azure. Chcete-li pochopit, jaká oprávnění je nutné udělit, přečtěte si téma [oprávnění pro pomocí Azure monitoru a výstrahy](monitoring-roles-permissions-security.md).  
 > 
 
-Můžete pokračovat k vytvoření výstrahy [rozhraní API služby Log Analytics](../log-analytics/log-analytics-api-alerts.md) a [šablony prostředku Log Analytics](../azure-monitor/insights/solutions-resources-searches-alerts.md). Pokud tak učiníte, musíte zahrnout skupiny akcí.
+Můžete pokračovat k vytvoření výstrahy [rozhraní API služby Log Analytics](../azure-monitor/platform/api-alerts.md) a [šablony prostředku Log Analytics](../azure-monitor/insights/solutions-resources-searches-alerts.md). Pokud tak učiníte, musíte zahrnout skupiny akcí.
 
 ## <a name="next-steps"></a>Další postup
 

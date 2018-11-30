@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 119853df5b5234b65bdade890df1fecb72c326b7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: 48ac46a9087e8027d0282533afccc4d9b28481ba
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157373"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582447"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Rychlý start: Vytvoření a správa sdílené složky Azure pomocí Azure PowerShellu 
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí PowerShellu. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
@@ -49,7 +49,7 @@ $storageAcct = New-AzureRmStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-Teď můžete vytvořit svou první sdílenou složku Azure. Sdílenou složku můžete vytvořit pomocí rutiny [New-AzureStorageShare](/powershell/module/azurerm.storage/new-azurestorageshare). Tento příklad vytvoří sdílenou složku `myshare`.
+Teď můžete vytvořit svou první sdílenou složku Azure. Sdílenou složku můžete vytvořit pomocí rutiny [New-AzureStorageShare](/powershell/module/azure.storage/new-azurestorageshare). Tento příklad vytvoří sdílenou složku `myshare`.
 
 ```azurepowershell-interactive
 New-AzureStorageShare `
@@ -79,7 +79,7 @@ Ve většině případů budete se sdílenou složkou Azure pracovat přes proto
 Následující příklady ukazují, jak pomocí modulu AzureRM PowerShellu manipulovat se sdílenou složkou Azure s využitím souborového protokolu REST. 
 
 #### <a name="create-directory"></a>Vytvoření adresáře
-Vytvořte nový adresář *myDirectory* v kořenovém adresáři sdílené složky Azure pomocí rutiny [New-AzureStorageDirectory](/powershell/module/azurerm.storage/new-azurestoragedirectory).
+Vytvořte nový adresář *myDirectory* v kořenovém adresáři sdílené složky Azure pomocí rutiny [New-AzureStorageDirectory](/powershell/module/azure.storage/new-azurestoragedirectory).
 
 ```azurepowershell-interactive
 New-AzureStorageDirectory `
@@ -238,7 +238,7 @@ Get-AzureStorageShare -Context $storageAcct.Context | Where-Object { $_.IsSnapsh
 Remove-AzureRmStorageAccount -ResourceGroupName $storageAcct.ResourceGroupName -Name $storageAcct.StorageAccountName
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Co je služba Soubory Azure?](storage-files-introduction.md)

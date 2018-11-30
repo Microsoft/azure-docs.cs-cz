@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 68c95ba7e45f1c6d504906b1d90f1517f97babc8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 2380cd3712c47ca08e9b9b3597f09f4119238af3
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276580"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52581609"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
 
@@ -127,6 +127,6 @@ Pouze správce účtu může změnit správce služeb pro předplatné. Ve vých
 * Další informace o všech rolí v Azure najdete v tématu [pochopit různé role v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md).
 * Další informace o službě Azure Active Directory najdete v tématu [předplatné Azure propojeno se službou Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md) a [přiřazení rolí správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

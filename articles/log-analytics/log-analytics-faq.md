@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 88df62b6e8c4eb519c51d82763634cf7d6d14418
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 4c31831aedefabc285c92861e9010b242cacf0d7
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262648"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635777"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analytics v Microsoft Azure. Pokud máte nějaké další dotazy o službě Log Analytics, pokračujte [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -160,7 +160,7 @@ A. Ne, není v tuto chvíli možné si číst z libovolného tabulky nebo kontej
 
 A. Služba Log Analytics je postavená na Azure. Log Analytics IP adresy jsou ve [Microsoft Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/details.aspx?id=41653).
 
-Jakmile dojde k nasazení služeb, změňte skutečné IP adresy služby Log Analytics. Názvy DNS, aby prostřednictvím brány firewall jsou dokumentovány v článku [požadavky na síťovou](log-analytics-agent-overview.md#network-firewall-requirements).
+Jakmile dojde k nasazení služeb, změňte skutečné IP adresy služby Log Analytics. Názvy DNS, aby prostřednictvím brány firewall jsou dokumentovány v článku [požadavky na síťovou](../azure-monitor/platform/log-analytics-agent.md#network-firewall-requirements).
 
 ### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>Otázka: Můžu použít ExpressRoute pro připojení k Azure. Používá Moje Log Analytics provoz připojení ExpressRoute?
 
@@ -198,9 +198,22 @@ V části **Azure Log Analytics (OMS)**, odeberte všechny pracovní prostory uv
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Otázka: Proč se při pokusu o přesunutí Můj pracovní prostor z jednoho předplatného Azure na jiný dochází k chybě?
 
-Odpověď: Pokud používáte na webu Azure portal, ujistěte se, že je vybrána pouze pracovní prostor pro přesunutí. Nesmí být zvolen řešení – bude automaticky přesunut po přesunutí pracovního prostoru. 
+Odpověď: pracovní prostor přesunout do jiné předplatné nebo skupinu prostředků, je nutné nejprve zrušit účtu Automation v pracovním prostoru. Zrušení propojení účtu Automation vyžaduje odebrání těchto řešení, pokud jsou nainstalovány v pracovním prostoru: Update Management, Change Tracking nebo spuštění/zastavení virtuálních počítačů mimo špičku se odeberou. Po odebrání těchto řešení zrušení propojení účtu Automation vyberte **propojené pracovní prostory** v levém podokně v automatizaci účtu prostředek a klikněte na tlačítko **zrušit propojení pracovního prostoru** na pásu karet.
+ > Odebrat řešení je třeba znovu nainstalovat v pracovním prostoru a propojení služby Automation s pracovním prostorem musí revidovat po přesunutí.
 
 Ujistěte se, že máte oprávnění v obou předplatných Azure.
+
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-update-a-savedsearch"></a>Otázka: Proč se při pokusu aktualizovat elementu SavedSearch dochází k chybě?
+
+Odpověď: je třeba přidat 'etag' v těle rozhraní API nebo vlastností šablony Azure Resource Manageru:
+```
+"properties": {
+   "etag": "*",
+   "query": "SecurityEvent | where TimeGenerated > ago(1h) | where EventID == 4625 | count",
+   "displayName": "An account failed to log on",
+   "category": "Security"
+}
+```
 
 ## <a name="agent-data"></a>Data agenta
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>Otázka: Kolik dat můžu poslat přes agenta ke službě Log Analytics? Je maximální objem dat jednoho zákazníka?

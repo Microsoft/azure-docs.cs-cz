@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32ce9cb456e302647e2e09db6ed549cd4795fed7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f9cdb11bad5d4aa94fdc083a0fc7dc6a2c5787cd
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448386"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635148"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Datový model log Analytics pro Azure zálohování – uložená data
 Datový model Log Analytics můžete použijte k vytvoření sestav. S datovým modelem můžete vytvořit vlastní dotazy a řídicí panely nebo přizpůsobení zálohování Azure – uložená data, ale chcete.
@@ -281,4 +281,4 @@ Tato tabulka obsahuje podrobnosti o trezoru související pole.
 | ResourceType |Text |Typ prostředku, pro které se shromažďují data. Například trezory Recovery Services |
 
 ## <a name="next-steps"></a>Další postup
-Jakmile zkontrolujete datový model pro vytváření sestav Azure Backup, můžete začít [vytváření řídicího panelu](../log-analytics/log-analytics-dashboards.md) v Log Analytics.
+Jakmile zkontrolujete datový model pro vytváření sestav Azure Backup, můžete začít [vytváření řídicího panelu](../azure-monitor/platform/dashboards.md) v Log Analytics.

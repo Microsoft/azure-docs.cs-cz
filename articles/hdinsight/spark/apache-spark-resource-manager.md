@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 166d52322504e57e01a4bd798252fc956c1a3e44
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 3536fb21d50dd54ec71615eba25c2d60fc727f34
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014580"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583291"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků v clusteru Apache Spark v Azure HDInsight 
 
-Zjistěte, jak získat přístup k rozhraních, jako je uživatelské rozhraní Ambari, uživatelského rozhraní YARN a Server historie Sparku, který je přidružený k váš cluster Spark a jak optimalizovat konfiguraci clusteru pro zajištění optimálního výkonu.
+Zjistěte, jak získat přístup k rozhraních, jako je [Apache Ambari](https://ambari.apache.org/) uživatelského rozhraní, [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) uživatelského rozhraní a Server historie Sparku, který je přidružený k vaší [Apache Spark](https://spark.apache.org/) clusteru a jak vylaďte konfiguraci clusteru pro zajištění optimálního výkonu.
 
 **Požadavky:**
 
@@ -26,7 +26,7 @@ Zjistěte, jak získat přístup k rozhraních, jako je uživatelské rozhraní 
 
 ## <a name="open-the-ambari-web-ui"></a>Otevřete webové uživatelské rozhraní Ambari
 
-Apache Ambari slouží k monitorování clusteru a provést změny konfigurace. Další informace najdete v tématu [spravovat Hadoop clusterů v HDInsight pomocí webu Azure portal](../hdinsight-administer-use-portal-linux.md#open-the-ambari-web-ui)
+Apache Ambari slouží k monitorování clusteru a provést změny konfigurace. Další informace najdete v tématu [spravovat Apache Hadoop clusterů v HDInsight pomocí webu Azure portal](../hdinsight-administer-use-portal-linux.md#open-the-apache-ambari-web-ui)
 
 ## <a name="open-the-spark-history-server"></a>Otevřete Server historie Sparku
 
@@ -158,19 +158,19 @@ Spuštění uživatelského rozhraní Yarn, jak je znázorněno na začátku toh
 
 ### <a name="for-data-analysts"></a>Pro datové analytiky
 
-* [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](apache-spark-machine-learning-mllib-ipython.md)
-* [Analýza protokolu webu pomocí Sparku v HDInsight](apache-spark-custom-library-website-log-analysis.md)
-* [Analýza dat telemetrie Application Insights pomocí Sparku v HDInsight](apache-spark-analyze-application-insight-logs.md)
+* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Analýza protokolu webu pomocí Apache Spark v HDInsight](apache-spark-custom-library-website-log-analysis.md)
+* [Application Insight analýza dat telemetrie používat Apache Spark v HDInsight](apache-spark-analyze-application-insight-logs.md)
 * [Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark](apache-spark-deep-learning-caffe.md)
 
-### <a name="for-spark-developers"></a>Pro vývojáře Spark
+### <a name="for-apache-spark-developers"></a>Pro vývojáře v Apache Spark
 
 * [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Sparku pomocí Livy](apache-spark-livy-rest-interface.md)
+* [Vzdálené spouštění úloh na clusteru Apache Spark pomocí Livy](apache-spark-livy-rest-interface.md)
 * [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití poznámkových bloků Zeppelin s clusterem Sparku v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro poznámkový blok Jupyter v clusteru Sparku pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
+* [Použití modulu plug-in nástroje HDInsight pro IntelliJ IDEA pro vzdálené ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
+* [Jádra dostupná pro poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)

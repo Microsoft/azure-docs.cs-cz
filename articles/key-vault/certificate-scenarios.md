@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: 4b7192b0c406d2c5df42e3bb3e604f26c56c7bd4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d4d2ce4dcda9ea72d4a33ee363efd3519c2118aa
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235186"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635828"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují některé z primární použití služby Key Vault certificate management včetně další kroky potřebné pro vytvoření vaší první certifikát do svého trezoru klíčů.
@@ -51,14 +51,14 @@ Certifikáty se skládají z tři vzájemně propojené prostředky dohromady ja
 
 **Krok 3** -správce společnosti Contoso A společně s zaměstnanec společnosti Contoso (Key Vault uživatele), který vlastní certifikáty, v závislosti na certifikační Autority, certifikát můžete získat od správce nebo přímo z účtu s certifikační Autoritou.  
 
--   Zahájit operaci přidat přihlašovací údaje k trezoru klíčů pomocí [nastavení vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer) prostředků. Vystavitel certifikátu se entitě reprezentované v Azure Key Vault (KV) jako prostředek CertificateIssuer. Používá se k zadání informací o zdroji KV certifikátu; název vystavitele, poskytovatele, přihlašovací údaje a další podrobnosti o správě.
+-   Zahájit operaci přidat přihlašovací údaje k trezoru klíčů pomocí [nastavení vystavitele certifikátu](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) prostředků. Vystavitel certifikátu se entitě reprezentované v Azure Key Vault (KV) jako prostředek CertificateIssuer. Používá se k zadání informací o zdroji KV certifikátu; název vystavitele, poskytovatele, přihlašovací údaje a další podrobnosti o správě.
     -   Například MyDigiCertIssuer  
         -   Poskytovatel  
         -   Přihlašovací údaje – přihlašovací údaje účtu certifikační Autority. Každou certifikační Autoritu se konkrétní data.  
 
      Další informace o vytváření účtů s poskytovateli certifikační Autoritu, najdete v příspěvku související [blog služby Key Vault](https://aka.ms/kvcertsblog).  
 
-**Krok 3.1** – nastavení [kontakty certifikátu](/rest/api/keyvault/setcertificatecontacts) pro oznámení. Toto je kontakt pro uživatele služby Key Vault. Key Vault nevynucuje tento krok.  
+**Krok 3.1** – nastavení [kontakty certifikátu](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) pro oznámení. Toto je kontakt pro uživatele služby Key Vault. Key Vault nevynucuje tento krok.  
 
 Poznámka: Tento proces, krok 3.1, je jednorázová operace.  
 
@@ -83,7 +83,7 @@ Poznámka: Tento proces, krok 3.1, je jednorázová operace.
       -   Informace o obnovení - > např. 90 dní před vypršením platnosti  
 
   - Proces vytvoření certifikátu je obvykle asynchronního procesu a zahrnuje dotazování trezoru klíčů pro stav operace vytvoření certifikátu.  
-[Získat operace certifikátu](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
+[Získat operace certifikátu](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Stav: dokončeno, se nezdařilo s informace o chybě, nebo zrušené  
       -   Z důvodu zpoždění vytvořit lze inicializovat operaci zrušit. Zrušení může nebo nemusí být účinné.  
 

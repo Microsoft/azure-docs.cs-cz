@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: roiyz
-ms.openlocfilehash: 8883111387bea4a78e81123f95201ed4826dcb1c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: e36390bbdc243237c97d605d4721fc1ad2cbe0ea
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820337"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498887"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladačů NVIDIA GPU pro Linux
 
@@ -69,24 +69,24 @@ Následující kód JSON ukazuje schématu pro rozšíření.
 }
 ```
 
-### <a name="properties"></a>Vlastnost
+### <a name="properties"></a>Vlastnosti
 
-| název | Hodnota / příklad | Typ dat |
+| Název | Hodnota / příklad | Typ dat |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | datum |
+| apiVersion | 2015-06-15 | date |
 | vydavatele | Microsoft.HpcCompute | řetězec |
-| Typ | NvidiaGpuDriverLinux | řetězec |
+| type | NvidiaGpuDriverLinux | řetězec |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Nastavení
 
 Všechna nastavení jsou volitelná. Výchozí chování je k aktualizaci jádra není-li vyžadované pro instalaci ovladače, nainstalujte nejnovější podporované ovladače a CUDA toolkit (podle vhodnosti).
 
-| název | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
+| Název | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | Aktualizovat jádro i v případě, že není nutné pro instalaci ovladače | false (nepravda) | Hodnota TRUE, false | boolean |
-| driverVersion | NV: Verze ovladače mřížky<br> NC/ND: CUDA toolkit verze. Nejnovější ovladače pro vybranou CUDA nainstalují automaticky. | nejnovější | GRID: "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | řetězec |
-| installCUDA | Nainstalujte CUDA toolkit. Platí pouze pro řady NC/ND virtuálních počítačů. | true (pravda) | Hodnota TRUE, false | boolean |
+| updateOS | Aktualizovat jádro i v případě, že není nutné pro instalaci ovladače | false (nepravda) | Hodnota TRUE, false | Boolean |
+| driverVersion | NV: Verze ovladače mřížky<br> NC/ND: CUDA toolkit verze. Nejnovější ovladače pro vybranou CUDA nainstalují automaticky. | nejnovější | GRID: "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | řetězec |
+| installCUDA | Nainstalujte CUDA toolkit. Platí pouze pro řady NC/ND virtuálních počítačů. | true (pravda) | Hodnota TRUE, false | Boolean |
 
 
 ## <a name="deployment"></a>Nasazení
@@ -120,7 +120,7 @@ V následujícím příkladu se předpokládá, že rozšíření je vnořená d
 }
 ```
 
-### <a name="powershell"></a>Prostředí Power Shell
+### <a name="powershell"></a>PowerShell
 
 ```powershell
 Set-AzureRmVMExtension
@@ -154,7 +154,7 @@ az vm extension set `
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření se dají načíst z portálu Azure portal a pomocí Azure Powershellu a rozhraní příkazového řádku Azure. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 

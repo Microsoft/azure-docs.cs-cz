@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 3230692208d27ebac073e257266c885b5e03095c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b320696a56855baaa4af10177d25dfe9973ee73a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233629"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635437"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Konektory pro Azure Logic Apps
 
@@ -74,7 +74,7 @@ Tady jsou integrované akce pro práci s výstupů dat a jejich formáty:
 
 |   |   | 
 |---|---| 
-| ![Předdefinovanou ikonu][data-operations-icon]<br/>**Operace s daty** | Provádění operací s daty: <p>- **Compose**: vytvoření jediného výstupu z více vstupů s různými typy. <br>- **Vytvoření tabulky CSV**: vytvořit tabulku – oddělovači (CSV) z pole s objekty JSON. <br>- **Vytvoření tabulky HTML**: vytvoření tabulky HTML z pole s objekty JSON. <br>- **Filtrování pole**: vytvoří pole z položek v jiném poli, které splňují vaše kritéria. <br>- **Připojte se k**: vytvoření řetězce z všechny položky v poli a tyto položky oddělujte zadaného oddělovače. <br>- **Parsování formátu JSON**: vytváření uživatelsky přívětivé tokenů z vlastností a jejich hodnoty ve formátu JSON obsahu tak, že tyto vlastnosti lze použít v pracovním postupu. <br>- **Vyberte**: vytvořit pole s objekty JSON po transformacích položky nebo hodnoty v jiném poli a mapování těchto položek do zadané vlastnosti. | 
+| [![Předdefinovanou ikonu][data-operations-icon]<br/>**operace s daty**][data-operations-doc] | Provádění operací s daty: <p>- **Compose**: vytvoření jediného výstupu z více vstupů s různými typy. <br>- **Vytvoření tabulky CSV**: vytvořit tabulku – oddělovači (CSV) z pole s objekty JSON. <br>- **Vytvoření tabulky HTML**: vytvoření tabulky HTML z pole s objekty JSON. <br>- **Filtrování pole**: vytvoří pole z položek v jiném poli, které splňují vaše kritéria. <br>- **Připojte se k**: vytvoření řetězce z všechny položky v poli a tyto položky oddělujte zadaného oddělovače. <br>- **Parsování formátu JSON**: vytváření uživatelsky přívětivé tokenů z vlastností a jejich hodnoty ve formátu JSON obsahu tak, že tyto vlastnosti lze použít v pracovním postupu. <br>- **Vyberte**: vytvořit pole s objekty JSON po transformacích položky nebo hodnoty v jiném poli a mapování těchto položek do zadané vlastnosti. | 
 | ![Předdefinovanou ikonu][date-time-icon]<br/>**Datum a čas** | Provádění operací s časovými razítky: <p>- **Přičíst k času**: přidat zadaný počet jednotek do časového razítka. <br>- **Převést časové pásmo**: převést časové razítko ze zdrojového časového pásma na časové pásmo cíle. <br>- **Aktuální čas**: Vrátí aktuální časové razítko jako řetězec. <br>- **Získat budoucí čas**: Vrátí aktuální časové razítko plus zadané časové jednotky. <br>- **Získat minulý čas**: Vrátí aktuální časové razítko minus zadané časové jednotky. <br>- **Odečíst od času**: odečíst počet časových jednotek z časové razítko. |
 | [![Předdefinovanou ikonu][variables-icon]<br/>**proměnné**][variables-doc] | Provádění operací s proměnnými: <p>- **Připojení k proměnné pole**: Vložit hodnotu jako poslední položky v poli uložených v proměnné. <br>- **Připojení k proměnné řetězce**: Vložit hodnotu jako poslední znak v řetězci uložených v proměnné. <br>- **Dekrementuje proměnnou**: snížit proměnnou s konstantní hodnotou. <br>- **Zvýšení hodnoty proměnné**: proměnná se tak zvýší o konstantní hodnotu. <br>- **Inicializace proměnné**: Vytvoření proměnné a deklarovat jeho datový typ a počáteční hodnota. <br>- **Nastavit proměnnou**: přiřadit jinou hodnotu existující proměnné. |
 |  |  | 
@@ -193,6 +193,7 @@ Chcete-li zveřejnit vlastní aplikace API nebo konektory pro každého, kdo pro
 [switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "Uspořádání akcí do případů, které jsou přiřazeny jedinečné hodnoty. Spusťte pouze případ, jehož hodnota se shoduje s výsledkem výrazů, objektu nebo token. Pokud neexistují žádné shody, spusťte na výchozí případ."
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Zastavit nebo zrušit aktivně spuštěný pracovní postup aplikace logiky"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Opakujte akce, dokud je zadaná podmínka pravdivá nebo u některých stavů, se změnila."
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Provádět operace s daty jako je například filtrování pole nebo vytvoření tabulky CSV a HTML"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Provádění operací s proměnnými, jako je inicializace, sady, přírůstek, snížení a připojení k proměnné řetězce nebo pole"
 
 <!--Managed API doc links-->

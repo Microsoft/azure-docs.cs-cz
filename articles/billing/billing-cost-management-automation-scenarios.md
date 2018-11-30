@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 97f6339e5c9532250245a97a81dade12db139e98
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 09ecd46837a12f5f1a8278b1644dc099701bcd00
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227363"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584719"
 ---
 # <a name="billing-and-cost-management-automation-scenarios"></a>Scénáře automatizace správy fakturace a nákladů
 
@@ -122,4 +122,4 @@ Tato rozhraní API poskytují podobné sady dat, ale mají různé skupiny uživ
 
 - Informace o použití rozhraní API pro Azure prostřednictvím kódu programu získat přehled o využívání služeb Azure najdete v tématu [přehled rozhraní API Azure Consumption](billing-consumption-api-overview.md) a [přehled rozhraní API pro fakturaci Azure](billing-usage-rate-card-overview.md).
 - Porovnat faktuře se podrobný soubor denní využití a sestav služby cost management na webu Azure Portal, najdete v článku [vysvětlení vašeho vyúčtování služeb Microsoft Azure](billing-understand-your-bill.md)
-- Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+- Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

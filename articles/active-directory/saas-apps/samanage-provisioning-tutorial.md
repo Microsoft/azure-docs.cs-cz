@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: e5a69fa2ee9a8c4baaeb6586627c7a9a3c9ba4a8
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 53b78231dba4f525410f53dc1ae60901c67f043d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347949"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634502"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Kurz: Konfigurace Samanage pro automatické zřizování uživatelů
 
@@ -141,7 +141,7 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 
     ![Samanage zřizování](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-15. Definovat uživatele a/nebo skupiny, které chcete k poskytování Samanage výběrem požadované hodnoty do **oboru** v **nastavení** oddílu.
+15. Definovat uživatele a/nebo skupiny, které chcete k poskytování Samanage výběrem požadované hodnoty do **oboru** v **nastavení** oddílu. Při výběru **synchronizovat všechny uživatele a skupiny** možnost, zvažte omezení, jak je popsáno v **omezení konektoru** níže v části.
 
     ![Samanage zřizování](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
@@ -153,6 +153,10 @@ Tato část vás provede kroky pro konfiguraci Azure AD služby zřizování a v
 Tato operace spustí počáteční synchronizaci všech uživatelů a/nebo skupiny definované v **oboru** v **nastavení** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování sestava aktivity, která popisuje všechny akce, které provádí služba na Samanage zřizování Azure AD.
 
 Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Omezení konektoru
+
+* Pokud **synchronizovat všechny uživatele a skupiny** výběru a výchozí hodnota je nastavena pro Samanage **role** atribut, ujistěte se, že na požadovanou hodnotu v rámci **výchozí hodnotu, pokud má hodnotu null (je volitelné)** poli je vyjádřen v následujícím formátu **{"displayName": "role"}** kde role je požadovanou výchozí hodnotu.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

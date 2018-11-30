@@ -10,16 +10,16 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: b46fa5eb9772a19a5613fc276071167d884f6057
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 04046b4c7c36418b9024a690ad5279f9e34578a5
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008755"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583631"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj topologií Apache Storm pomocí Pythonu v HDInsight
 
-Zjistěte, jak vytvořit Apache Storm topologie, která používá komponent v Pythonu. Apache Storm podporuje více jazyků, dokonce i díky tomu můžete kombinovat součásti z různých jazyků v jedné topologie. Tok framework (zavedl se Stormem 0.10.0) umožňuje snadno vytvářet řešení, která používají komponent v Pythonu.
+Zjistěte, jak vytvořit [Apache Storm](http://storm.apache.org/) topologie, která používá komponent v Pythonu. Apache Storm podporuje více jazyků, dokonce i díky tomu můžete kombinovat součásti z různých jazyků v jedné topologie. [Tok](http://storm.apache.org/releases/current/flux.html) framework (zavedl se Stormem 0.10.0) umožňuje snadno vytvářet řešení, která používají komponent v Pythonu.
 
 > [!IMPORTANT]
 > Informace v tomto dokumentu byl testován pomocí Storm v HDInsight 3.6. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -32,7 +32,7 @@ Kód pro tento projekt je k dispozici na [ https://github.com/Azure-Samples/hdin
 
 * Java JDK 1.8 nebo vyšší
 
-* Maven 3
+* [Nástroje Apache Maven 3](https://maven.apache.org/download.cgi)
 
 * (Volitelné) Místní vývojové prostředí Storm. Místní prostředí Storm je potřeba pouze v případě, že chcete spustit topologii místně. Další informace najdete v tématu [nastavení vývojového prostředí](http://storm.apache.org/releases/1.1.2/Setting-up-development-environment.html).
 
@@ -148,5 +148,5 @@ Chcete-li ukončit topologii, použijte __Ctrl + C__.
 
 Najdete v následujících dokumentech další způsoby, jak používat Python s HDInsight:
 
-* [Použití Pythonu pro streamovacích úloh MapReduce](../hadoop/apache-hadoop-streaming-python.md)
-* [Jak používat Python uživateli definované funkce (UDF) v Pigu a Hivu](../hadoop/python-udf-hdinsight.md)
+* [Použití Pythonu pro datové proudy úlohy Apache Hadoop MapReduce](../hadoop/apache-hadoop-streaming-python.md)
+* [Jak používat Python uživateli definované funkce (UDF) v Apache Pig a Apache Hive](../hadoop/python-udf-hdinsight.md)

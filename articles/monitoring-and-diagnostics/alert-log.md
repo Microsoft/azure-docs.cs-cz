@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 74b9673d7ef9dedbcc34682d4707103e696bece3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 6e6db7ef2f2de075aea41a29e69b2c674efafa17
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711697"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635352"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -223,7 +223,7 @@ Proto níže uvedené části obsahují podrobnosti o použití rozhraní API pr
 ### <a name="powershell-cli-or-api-for-log-analytics"></a>Prostředí PowerShell, CLI nebo API pro Log Analytics
 Log Analytics výstrah REST API je RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manageru. Proto je přístupný z příkazového řádku Powershellu a rozhraní API bude vypsání výsledků vyhledávání, ve formátu JSON, abyste mohli používat výsledky mnoha různými způsoby prostřednictvím kódu programu.
 
-Další informace o [vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API](../log-analytics/log-analytics-api-alerts.md), včetně příkladů přístup k rozhraní API z Powershellu.
+Další informace o [vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API](../azure-monitor/platform/api-alerts.md), včetně příkladů přístup k rozhraní API z Powershellu.
 
 ### <a name="powershell-cli-or-api-for-application-insights"></a>Prostředí PowerShell, CLI nebo API pro Application Insights
 [Azure Monitor – naplánovaných pravidel dotazu API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) je rozhraní REST API a plně kompatibilní s rozhraním REST API Azure Resource Manageru. Proto může sloužit prostřednictvím Powershellu pomocí rutiny Resource Manageru a Azure CLI.

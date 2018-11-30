@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 71322869eb9272fb59b98a0e21b1f639129572b7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c63e2e3ec922d2cf26603fe19606008b1e8d3f45
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255914"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52498174"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Použití Caffe pro distribuované obsáhlého learningu v Azure HDInsight Spark
 
@@ -22,9 +22,9 @@ ms.locfileid: "51255914"
 
 Obsáhlý learning se dopadu na všechno od zdravotní péče na transportation do výroby a další. Podniky přecházejí ke hloubkového učení řeší těžké problémy, jako je třeba [klasifikace obrázků](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [rozpoznávání řeči](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)objektu rozpoznávání a počítač překladu. 
 
-Existují [mnoho oblíbených architektur](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), včetně [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano, atd. Caffe je jedno z rozhraní nejslavnějšího-symbolické (imperativní) neuronové sítě a běžně používá v mnoha oblastech, včetně pro počítačové zpracování obrazu. Kromě toho [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) kombinuje Caffe s Apache Sparkem v takovém případě obsáhlý learning můžete snadno použít v existujícím clusteru Hadoop. Obsáhlý learning spolu s kanály Spark ETL, snížení složitosti systému a latence můžete použít pro učení tak získají kompletní řešení.
+Existují [mnoho oblíbených architektur](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), včetně [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, atd. [Caffe](http://caffe.berkeleyvision.org/) je jedno z rozhraní nejslavnějšího-symbolické (imperativní) neuronové sítě a běžně používá v mnoha oblastech, včetně pro počítačové zpracování obrazu. Kromě toho [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) kombinuje Caffe s Apache Sparkem v takovém případě obsáhlý learning můžete snadno použít v existujícím clusteru Hadoop. Obsáhlý learning spolu s kanály Spark ETL, snížení složitosti systému a latence můžete použít pro učení tak získají kompletní řešení.
 
-[HDInsight](https://azure.microsoft.com/services/hdinsight/) je nabídka Hadoopu v cloudu, který poskytuje optimalizované opensourcové analytické clustery pro Spark, Hive, Hadoop, HBase, Storm, Kafka a služby ML. HDInsight je zajištěná smlouvou SLA 99,9 %. Každá z těchto technologií pro velké objemy dat a aplikace nezávislých výrobců softwaru je jednoduše nasadit jako spravovaný cluster se zabezpečením a monitorováním pro podniky.
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) je nabídka Apache Hadoop v cloudu, který poskytuje optimalizované opensourcové analytické clustery pro Apache Spark, Apache Hive, Apache Hadoop, Apache HBase, Apache Storm, Apache Kafka a služby ML. HDInsight je zajištěná smlouvou SLA 99,9 %. Každá z těchto technologií pro velké objemy dat a aplikace nezávislých výrobců softwaru je jednoduše nasadit jako spravovaný cluster se zabezpečením a monitorováním pro podniky.
 
 Tento článek ukazuje, jak nainstalovat [Caffe ve Sparku](https://github.com/yahoo/CaffeOnSpark) pro HDInsight cluster. Tento článek také používá integrované ukázka mnist ručně k věnovaných ukázce používání distribuovaných hloubkového učení pomocí Sparku v HDInsight v procesorech.
 
@@ -69,7 +69,7 @@ Abyste mohli začít, lze pouze spustit tuto akci se skripty u vašeho clusteru 
 ![Skript akce instalace závislostí](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-the-head-node"></a>Krok 2: Vytvoření Caffe ve Sparku pro HDInsight hlavního uzlu
+## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>Krok 2: Vytvoření Caffe na Apache Sparku pro HDInsight hlavního uzlu
 
 Druhým krokem je vytvoření Caffe v hlavního uzlu a pak distribuovat kompilovaných knihoven do všech pracovních uzlů. V tomto kroku je nutné [ssh do vašeho hlavního uzlu](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix). Poté je třeba dodržovat [proces sestavení CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Níže je skript, který můžete použít k sestavení CaffeOnSpark v několika dalších krocích. 
 
@@ -294,8 +294,8 @@ V této dokumentaci jste se pokusili nainstalovat CaffeOnSpark se spouštěním 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
-* [Spark s Machine Learning: Používejte Spark v HDInsight pro analýzu teploty v budově pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark s Machine Learning: Používejte Spark v HDInsight k předpovědím výsledků kontrol potravin](apache-spark-machine-learning-mllib-ipython.md)
+* [Apache Spark s Machine Learning: používejte Spark v HDInsight pro analýzu stavební teploty pomocí dat HVAC](apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark s Machine Learning: používejte Spark v HDInsight k předpovědím výsledků kontroly potravin](apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>Správa prostředků
 * [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)

@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 06/29/2018
+ms.date: 11/21/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7d00d6236b601d145be03e6086bec2d72faafcd
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 4c58c1972fee782a93f9641d00376db916021f95
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344933"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634485"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 
 <tr><td>**Kurz vývoje webové aplikace**</td><td>[Vývoj webových aplikací pomocí služby Azure Cosmos DB](sql-api-java-application.md)</td></tr>
 
-<tr><td>**Minimální podporovaný modul runtime**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
+<tr><td>**Minimální podporovaný modul runtime**</td><td>[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
@@ -105,7 +105,7 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 * Opravili jsme několik chyb v kontejneru relace, které mohou způsobit výjimku "Vlastník prostředek nebyl nalezen" požadavkům ihned po vytvoření kolekce.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Přidání podpory pro dotazy agregace (počet, MIN, MAX, součet a průměr). Zobrazit [podporu agregace](sql-api-sql-query.md#Aggregates).
+* Přidání podpory pro dotazy agregace (počet, MIN, MAX, součet a průměr). Zobrazit [podporu agregace](how-to-sql-query.md#Aggregates).
 * Přidání podpory pro kanál změn.
 * Přidání podpory pro informace o kvótě kolekce prostřednictvím RequestOptions.setPopulateQuotaInfo.
 * Přidání podpory pro uloženou proceduru skript protokolování prostřednictvím RequestOptions.setScriptLoggingEnabled.

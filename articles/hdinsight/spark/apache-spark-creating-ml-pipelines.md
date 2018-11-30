@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3cd27438247b801e384b80d96ba288896b4c5aae
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d422b56acd56f87cb855c5e045e3a91666eee571
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234218"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499407"
 ---
-# <a name="create-a-spark-machine-learning-pipeline"></a>Vytvoření kanálu strojového učení Sparku
+# <a name="create-an-apache-spark-machine-learning-pipeline"></a>Vytvoření Apache Spark machine learningu kanálu
 
 Knihovna pro Apache Spark škálovatelné machine learning (MLlib) přináší možnosti modelování pro distribuované prostředí. Balíček Spark [ `spark.ml` ](http://spark.apache.org/docs/latest/ml-pipeline.html) je sada rozhraní API vysoké úrovně využívající datových rámců. Tato rozhraní API umožňují vytvářet a ladit kanály praktické strojového učení.  *Spark machine learning* odkazuje na tento datový rámec MLlib rozhraní API, není starší na základě RDD kanálu rozhraní API.
 
@@ -131,4 +131,4 @@ only showing top 20 rows
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Použití Scaly a Sparku v Azure pro datové vědy](../../machine-learning/team-data-science-process/scala-walkthrough.md)
+* [Vědecké zkoumání dat pomocí Scala a Apache Spark v Azure](../../machine-learning/team-data-science-process/scala-walkthrough.md)

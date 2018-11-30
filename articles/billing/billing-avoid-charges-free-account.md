@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: cwatson
-ms.openlocfilehash: 37e43e4bb8b2aea21e0fa396dd197ca41793469d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e20faa36f14e681b6eb81203024e79a649f47c95
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394161"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582543"
 ---
 # <a name="avoid-getting-charged-for-your-azure-free-account"></a>Vyhněte se účtovat poplatky, bezplatného účtu Azure
 
@@ -62,6 +62,6 @@ Bezplatné služby a množství vyprší na konci 12 měsíců. Datum vypršení
 
 Po vypršení bezplatné služby a množství poplatky za Azure vám průběžných plateb za služby, které používáte. Na webu Azure portal můžete odstranit prostředky služeb, které nepoužíváte. Pokud nemáte v úmyslu použít libovolnou službu Azure, můžete si [zrušení předplatného](billing-how-to-cancel-azure-subscription.md).
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

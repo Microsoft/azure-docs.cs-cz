@@ -8,20 +8,20 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b97a88a36631af1de3c95f0730a9a951b9a3a907
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: cd077c1a552a14582fce48bbe60f56ef08e5a4d7
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569059"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584838"
 ---
-# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale"></a>Vysvětlení nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku
+# <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Principy automatického nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku
 
 Postupujte podle zařízení Azure IoT Edge [životní cyklus zařízení](../iot-hub/iot-hub-device-management-overview.md) , který se podobá jiným typům zařízení IoT:
 
-1. Zřizování zařízení IoT Edge, která zahrnuje imaging zařízení s operační systém a instalaci [modul runtime IoT Edge](iot-edge-runtime.md).
-2. Zařízení jsou nakonfigurovaná ke spuštění [moduly IoT Edge](iot-edge-modules.md)a potom monitorovat zdraví. 
-3. A konečně zařízení může vyřadí z provozu v případě nahradit nebo jsou zastaralé.  
+1. Zřizovat nová zařízení IoT Edge imaging zařízení s operační systém a instalaci [modul runtime IoT Edge](iot-edge-runtime.md).
+2. Konfigurace zařízení ke spuštění [moduly IoT Edge](iot-edge-modules.md)a potom monitorovat jejich stav. 
+3. Nakonec vyřazení zařízení, když se nahradí nebo jsou zastaralé.  
 
 Azure IoT Edge poskytuje dva způsoby, jak nakonfigurovat moduly, které chcete spustit na zařízeních IoT Edge: jeden pro vývoj a rychlé iterace na jednom zařízení (použít tuto metodu ve službě Azure IoT Edge [kurzy](tutorial-deploy-function.md)), a jeden pro správu velkého loďstev z Zařízení IoT Edge. Oba tyto přístupy jsou k dispozici na webu Azure Portal a prostřednictvím kódu programu. Pro cílí na skupiny nebo velký počet zařízení, můžete určit zařízení, která byste chtěli nasadit moduly pomocí [značky](../iot-edge/how-to-deploy-monitor.md#identify-devices-using-tags) ve dvojčeti zařízení. Následující kroky mluvit o nasazení pro skupinu zařízení státu Washington, který je identifikován vlastnost tags. 
 
@@ -29,16 +29,16 @@ Tento článek se zaměřuje na konfiguraci a monitorování fáze pro flotily n
 
 1. Operátor definuje nasazení, který popisuje sadu modulů, stejně jako cílová zařízení. Každé nasazení má manifest nasazení, který odráží tyto informace. 
 2. Služba IoT Hub komunikuje se všechna cílová zařízení nakonfigurovat požadované moduly. 
-3. Služba IoT Hub načítá stav ze zařízení IoT Edge a poskytuje informace pro operátor monitorování.  Operátor můžete třeba zjistit, když se úspěšně nakonfigurovala hraničního zařízení nebo pokud modulu nezdaří za běhu. 
+3. Služba IoT Hub načítá stav ze zařízení IoT Edge a zpřístupní je operátor.  Operátor můžete třeba zjistit, když se úspěšně nakonfigurovala hraničního zařízení nebo pokud modulu nezdaří za běhu. 
 4. V každém okamžiku nová zařízení IoT Edge, které splňují podmínky cílení jsou nakonfigurované pro nasazení. Například nasazení, které cílí na všechna zařízení IoT Edge ve státě Washington automaticky nakonfiguruje nová zařízení IoT Edge je zřízený a přidán do skupiny zařízení státě Washington. 
  
 Tento článek popisuje jednotlivých komponent zahrnutých v konfiguraci a monitorování nasazení. Postup vytvoření a nasazení aktualizace, najdete v části [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).
 
 ## <a name="deployment"></a>Nasazení
 
-Automatické nasazení IoT Edge přiřadí IoT Edge bitové kopie modulu spouštět jako instance na cílovou sadu zařízení IoT Edge. Funguje to tím, že nakonfigurujete manifest nasazení IoT Edge do seznamu modulů s odpovídající inicializační parametry pro zahrnutí. Nasazení je možné přiřadit na jediné zařízení (podle ID zařízení) nebo do skupiny zařízení (na základě značek). Po zařízení IoT Edge dostane manifest nasazení, stáhne a nainstaluje modul imagí kontejneru z úložišť příslušného kontejneru a nakonfiguruje je odpovídajícím způsobem. Po vytvoření nasazení operátor můžete monitorovat stav nasazení chcete zobrazit, zda jsou správně nakonfigurované cílová zařízení.
+Automatické nasazení IoT Edge přiřadí IoT Edge bitové kopie modulu spouštět jako instance na cílovou sadu zařízení IoT Edge. Funguje to tím, že nakonfigurujete manifest nasazení IoT Edge do seznamu modulů s odpovídající inicializační parametry pro zahrnutí. Nasazení je možné přiřadit na jediné zařízení (podle ID zařízení) nebo do skupiny zařízení (na základě značek). Po zařízení IoT Edge dostane manifest nasazení, stáhne a nainstaluje Image kontejneru z úložišť příslušného kontejneru a nakonfiguruje je odpovídajícím způsobem. Po vytvoření nasazení operátor můžete monitorovat stav nasazení chcete zobrazit, zda jsou správně nakonfigurované cílová zařízení.
 
-Zařízení je potřeba zřídit jako zařízení IoT Edge nakonfigurovat nasazení. Následující požadavky musí být na zařízení, než může přijímat nasazení:
+Nasazení můžete nakonfigurovat pouze zařízení IoT Edge. Následující požadavky musí být na zařízení, než může přijímat nasazení:
 
 * Základní operační systém
 * Systém správy kontejneru, jako je Moby nebo Dockeru
@@ -52,8 +52,8 @@ Zahrnuje metadat konfigurace pro každý modul: 
 
 * Verze 
 * Typ 
-* Stav (např. spuštěná nebo zastavená) 
-* Opětovné spuštění zásad 
+* Stav (například spuštěná nebo zastavená) 
+* Zásady restartování 
 * Image a container registry
 * Trasy pro vstupní a výstupní data 
 
@@ -61,9 +61,9 @@ Pokud je bitové kopie modulu uložené v privátním registru kontejneru, agent
 
 ### <a name="target-condition"></a>Cílová podmínka
 
-Cílová podmínka se průběžně vyhodnocuje tak zahrnula nová zařízení, které splňují požadavky nebo odebrat zařízení, která již plní celou dobu životnosti nasazení. Nasazení bude znovu aktivovat, pokud služba detekuje všechny změny stavu cílového. 
+Cílová podmínka se průběžně Vyhodnocená throughtout životnost nasazení. Všechna nová zařízení, které splňují požadavky jsou zahrnuty, a odeberou se všechna existující zařízení, která už se. Nasazení se znovu aktivovat, pokud služba detekuje všechny změny stavu cílového. 
 
-Například máte nasazení A s tags.environment podmínku cílové = 'prod'. Pokud zahájíte nasazení, jsou deset zařízení produkčního prostředí. Moduly se úspěšně nainstaloval v těchto deset zařízení. Stav agenta IoT Edge se zobrazuje jako 10 Celkový počet zařízení, 10 úspěšné odpovědi, 0 odpovědí na selhání a 0 odpovědi – čekání. Teď přidáte pět další zařízení s tags.environment = 'prod'. Služba zjistí změnu a stav agenta IoT Edge bude 15 celkový počet zařízení, 10 úspěšné odpovědi, 0 odpovědí na selhání a 5 odpovědi – čekání při pokusu o nasazení do pěti nových zařízení.
+Například máte nasazení A s tags.environment podmínku cílové = 'prod'. Pokud zahájíte nasazení, se 10 zařízení produkčního prostředí. Moduly se úspěšně nainstaloval v těchto 10 zařízení. Stav agenta IoT Edge se zobrazuje jako 10 Celkový počet zařízení, 10 úspěšné odpovědi, 0 odpovědí na selhání a 0 odpovědi – čekání. Teď přidáte pět další zařízení s tags.environment = 'prod'. Služba zjistí změnu a stav agenta IoT Edge bude 15 celkový počet zařízení, 10 úspěšné odpovědi, 0 odpovědí na selhání a 5 odpovědi – čekání při pokusu o nasazení do pěti nových zařízení.
 
 Vybrat cílová zařízení pomocí značky dvojčat zařízení nebo deviceId jakoukoli logickou podmínku. Pokud chcete použít podmínku se značkami, budete muset přidat "tags":{} oddílu ve dvojčeti zařízení v rámci stejné úrovně jako vlastnosti. [Další informace o značkách ve dvojčeti zařízení](../iot-hub/iot-hub-devguide-device-twins.md)
 
@@ -78,8 +78,8 @@ Příklady podmínek cíl:
 Tady jsou některé omezí při konstrukci cílovou podmínku:
 
 * Ve dvojčeti zařízení může vytvořit pouze cílovou podmínku pomocí značek nebo ID zařízení.
-* Dvojité uvozovky nejsou povolené v každé části cílovou podmínku. Použijte prosím jednoduché uvozovky.
-* Jednoduché uvozovky představují hodnoty cílovou podmínku. Proto musíte před jednoduchá uvozovka s jinou jednoduché uvozovky, pokud je součástí názvu zařízení. Například cílovou podmínku pro: operator'sDevice by bylo potřeba zapsat, protože deviceId =' operátor "sDevice".
+* Dvojité uvozovky nejsou povolené v každé části cílovou podmínku. Použijte jednoduché uvozovky.
+* Jednoduché uvozovky představují hodnoty cílovou podmínku. Proto musíte před jednoduchá uvozovka s jinou jednoduché uvozovky, pokud je součástí názvu zařízení. Například cíl na nějaké zařízení názvem `operator'sDevice`, zápis `deviceId='operator''sDevice'`.
 * V cílové podmínku hodnoty jsou povoleny číslice, písmena a následující znaky: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Priorita
@@ -97,7 +97,7 @@ Chcete-li zjistit, jestli se úspěšně použity pro všechny cílové zaříze
 * **Cíl** uvedena na hraničních zařízeních IoT zařízení, které odpovídají nasazení cílí na podmínku.
 * **Skutečné** zobrazuje cílové hraničních zařízeních IoT zařízení, která nejsou cílem jiné nasazení s vyšší prioritou.
 * **V pořádku** zobrazuje na hraničních zařízeních IoT zařízení, která mají hlášeny zpět do služby, moduly byla nasazena úspěšně. 
-* **Není v pořádku** ukazuje na hraničních zařízeních IoT zařízení hlášeny zpět ke službě, že jedna nebo moduly nebyly nasazeny úspěšně. Aby to prověřili chybu, vzdáleně připojit do tohoto zařízení a zobrazit soubory protokolů.
+* **Není v pořádku** ukazuje na hraničních zařízeních IoT zařízení hlášeny zpět ke službě, že jedna nebo moduly nebyly nasazeny úspěšně. Aby to prověřili chybu, vzdálené připojení k těmto zařízením a zobrazit soubory protokolů.
 * **Neznámý** zobrazuje zařízení, u kterých není nahlášená libovolný stav týkající se tohoto nasazení IoT Edge. Aby to prověřili, zobrazte služby informace a soubory protokolu.
 
 ## <a name="phased-rollout"></a>Postupné zavádění 
@@ -115,7 +115,7 @@ Postupné zavádění je proveden v následujících fází a kroků: 
 
 ## <a name="rollback"></a>Vrácení zpět
 
-Nasazení lze vrátit v případě chyby nebo chybné konfigurace.  Protože nasazení definuje konfiguraci absolutní modulu pro zařízení IoT Edge, další nasazení musí také cílit na stejné zařízení s nižší prioritou i v případě, že cílem je odebrat všechny moduly.  
+Nasazení může být vrácena zpět, pokud se zobrazí chyby nebo chybné konfigurace.  Protože nasazení definuje konfiguraci absolutní modulu pro zařízení IoT Edge, další nasazení musí také cílit na stejné zařízení s nižší prioritou i v případě, že cílem je odebrat všechny moduly.  
 
 Proveďte vrácení zpět v následujícím pořadí: 
 

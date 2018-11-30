@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 6f4f2f6a7999b2d26e198a11bb7cee27991a775b
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 81728e7963767cd90bf2486a35fbce55043a76f7
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711952"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52633465"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Řešení pro monitorování kontejnerů ve službě Log Analytics
 
@@ -126,7 +126,7 @@ Po instalaci Dockeru, použijte následující nastavení pro hostitele kontejne
 
 **Pro všechny hostitele kontejneru Linuxu s výjimkou CoreOS:**
 
-- Další informace a pokyny k instalaci agenta Log Analytics pro Linux najdete v tématu [přehled agenta Log Analytics](log-analytics-agent-overview.md).
+- Další informace a pokyny k instalaci agenta Log Analytics pro Linux najdete v tématu [přehled agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md).
 
 **Pro včetně CoreOS všichni hostitelé s kontejneru Linuxu:**
 
@@ -524,9 +524,9 @@ Další informace o konfiguraci démona Dockeru, který se používá s kontejne
 
 #### <a name="install-windows-agents"></a>Instalace agentů Windows
 
-Pokud chcete povolit monitorování kontejnerů Windows a Hyper-V, nainstalujte Microsoft Monitoring Agent (MMA) v počítačích s Windows, které jsou hostitelé kontejneru. Pro počítače se systémem Windows ve vašem místním prostředí, najdete v článku [počítače Windows se připojit ke službě Log Analytics](log-analytics-agent-windows.md). Pro virtuální počítače spuštěné v Azure a jejich připojení k Log Analytics pomocí [rozšíření virtuálního počítače](log-analytics-quick-collect-azurevm.md).
+Pokud chcete povolit monitorování kontejnerů Windows a Hyper-V, nainstalujte Microsoft Monitoring Agent (MMA) v počítačích s Windows, které jsou hostitelé kontejneru. Pro počítače se systémem Windows ve vašem místním prostředí, najdete v článku [počítače Windows se připojit ke službě Log Analytics](../azure-monitor/platform/agent-windows.md). Pro virtuální počítače spuštěné v Azure a jejich připojení k Log Analytics pomocí [rozšíření virtuálního počítače](log-analytics-quick-collect-azurevm.md).
 
-Můžete monitorovat kontejnery Windows se spuštěnou v Service Fabric. Nicméně pouze [virtuální počítače provozované v Azure](log-analytics-quick-collect-azurevm.md) a [počítače se systémem Windows ve vašem místním prostředí](log-analytics-agent-windows.md) jsou aktuálně podporovány pro Service Fabric.
+Můžete monitorovat kontejnery Windows se spuštěnou v Service Fabric. Nicméně pouze [virtuální počítače provozované v Azure](log-analytics-quick-collect-azurevm.md) a [počítače se systémem Windows ve vašem místním prostředí](../azure-monitor/platform/agent-windows.md) jsou aktuálně podporovány pro Service Fabric.
 
 Můžete ověřit, jestli je správně nastavené řešení pro monitorování kontejnerů pro Windows. Chcete-li zkontrolovat, zda byla sada management pack správně ke stažení, vyhledejte *ContainerManagement.xxx*. Soubory musí být ve složce C:\Program Files\Microsoft Monitoring Agent\Agent\Health State\Management aktualizace.
 
@@ -543,7 +543,7 @@ Na webu Azure Portal, přejděte *Galerie řešení* a přidejte **řešení pro
 Data jsou shromažďována každé 3 minuty, následující typy agenta.
 
 - [Agenta log Analytics pro Linux](log-analytics-quick-collect-linux-computer.md)
-- [Agenta Windows](log-analytics-agent-windows.md)
+- [Agenta Windows](../azure-monitor/platform/agent-windows.md)
 - [Rozšíření log Analytics virtuální počítače](log-analytics-quick-collect-azurevm.md)
 
 

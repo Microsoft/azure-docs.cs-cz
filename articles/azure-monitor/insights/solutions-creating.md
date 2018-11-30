@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4fba078487f99347804362a888bcc2c33dde1ef
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 4fd36d58574b60e3e6351cba03c68b9217bc703d
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715208"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632462"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -42,16 +42,16 @@ Nejběžnější vzor jako řešení pro správu je znázorněno v následujíc�
 
 
 ### <a name="data-sources"></a>Zdroje dat
-Prvním krokem při navrhování řešení je určení data, která budete potřebovat v úložišti Log Analytics.  Tato data mohou být shromážděné [zdroj dat](../../log-analytics/log-analytics-data-sources.md) nebo [jiné řešení]( solutions.md), nebo řešení může být nutné zadat proces shromažďování vyžadováno.
+Prvním krokem při navrhování řešení je určení data, která budete potřebovat v úložišti Log Analytics.  Tato data mohou být shromážděné [zdroj dat](../../azure-monitor/platform/agent-data-sources.md) nebo [jiné řešení]( solutions.md), nebo řešení může být nutné zadat proces shromažďování vyžadováno.
 
-Existuje mnoho způsobů, zdroje dat, které můžete shromážděných v úložišti Log Analytics, jak je popsáno v [zdroje dat v Log Analytics](../../log-analytics/log-analytics-data-sources.md).  To zahrnuje události v protokolu událostí Windows nebo generovaných Syslog kromě čítače výkonu pro klienty Windows a Linux.  Může také shromažďovat data z prostředků Azure, které jsou shromážděné službou Azure Monitor.  
+Existuje mnoho způsobů, zdroje dat, které můžete shromážděných v úložišti Log Analytics, jak je popsáno v [zdroje dat v Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  To zahrnuje události v protokolu událostí Windows nebo generovaných Syslog kromě čítače výkonu pro klienty Windows a Linux.  Může také shromažďovat data z prostředků Azure, které jsou shromážděné službou Azure Monitor.  
 
 Pokud potřebujete data, která není dostupný pomocí některého z dostupných datových zdrojů, pak můžete použít [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md) která umožňuje zápis dat do úložiště Log Analytics z libovolného klienta, která může volat rozhraní REST API.  Nejčastěji používané prostředky kolekce vlastních dat v řešení pro správu, je vytvořit [sady runbook ve službě Azure Automation](../../automation/automation-runbook-types.md) , který shromažďuje požadovaná data z Azure nebo externích prostředků a používá k zápisu do rozhraní API kolekce dat úložiště.  
 
 ### <a name="log-searches"></a>Prohledávání protokolů
 [Prohledávání protokolů](../../log-analytics/log-analytics-queries.md) slouží k extrahování a analýzy dat v úložišti Log Analytics.  Používají se v zobrazeních a výstrahy navíc umožňuje uživateli provádět ad hoc analýzy dat v úložišti.  
 
-Byste měli definovat žádné dotazy, které si myslíte, že bude pro uživatele užitečné, i v případě, že nejsou použity žádné zobrazení nebo výstrahy.  To budou k dispozici jako uložená hledání na portálu, a můžete je použít také [části vizualizace dotazy seznamu](../../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) vlastní zobrazení.
+Byste měli definovat žádné dotazy, které si myslíte, že bude pro uživatele užitečné, i v případě, že nejsou použity žádné zobrazení nebo výstrahy.  To budou k dispozici jako uložená hledání na portálu, a můžete je použít také [části vizualizace dotazy seznamu](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part) vlastní zobrazení.
 
 ### <a name="alerts"></a>Výstrahy
 [Upozornění v Log Analytics](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) identifikovat problémy prostřednictvím [prohledávání protokolů](#log-searches) s daty v úložišti.  Jsou buď upozornit uživatele, nebo automaticky spustit akci v odpovědi. By měl určit různé podmínky upozornění pro vaši aplikaci a zahrnout do souboru řešení odpovídající pravidla upozornění.
@@ -61,9 +61,9 @@ Pokud tento problém můžete opravit potenciálně pomocí automatizovaného pr
 Pokud vaše řešení nevyžaduje externí funkce v reakci na výstrahu a pak můžete použít [odpověď webhooku](../../monitoring-and-diagnostics/alert-metric.md).  To umožňuje volání externí webové služby, odesílání informací z výstrahy.
 
 ### <a name="views"></a>Zobrazení
-Zobrazení v Log Analytics se používají k vizualizaci dat v úložišti Log Analytics.  Každé řešení bude obvykle obsahovat na jednom místě [dlaždici](../../log-analytics/log-analytics-view-designer-tiles.md) , která se zobrazí v hlavním řídicím panelu uživatele.  Zobrazení může obsahovat libovolný počet [části vizualizace](../../log-analytics/log-analytics-view-designer-parts.md) poskytovat různé vizualizace shromážděných dat uživatele.
+Zobrazení v Log Analytics se používají k vizualizaci dat v úložišti Log Analytics.  Každé řešení bude obvykle obsahovat na jednom místě [dlaždici](../../azure-monitor/platform/view-designer-tiles.md) , která se zobrazí v hlavním řídicím panelu uživatele.  Zobrazení může obsahovat libovolný počet [části vizualizace](../../azure-monitor/platform/view-designer-parts.md) poskytovat různé vizualizace shromážděných dat uživatele.
 
-Můžete [vytváření vlastních zobrazení pomocí návrháře zobrazení](../../log-analytics/log-analytics-view-designer.md) který můžete později to taky pro zahrnutí do souboru řešení.  
+Můžete [vytváření vlastních zobrazení pomocí návrháře zobrazení](../../azure-monitor/platform/view-designer.md) který můžete později to taky pro zahrnutí do souboru řešení.  
 
 
 ## <a name="create-solution-file"></a>Vytvořit soubor řešení

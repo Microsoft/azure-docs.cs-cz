@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 10/26/2018
 ms.author: glenga
-ms.openlocfilehash: 506bbcf31833b20a6ee06e85fbad166d1f0b80e2
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 44a2cb196e1a89b0abe229f478c0b76b146aa268
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567141"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620621"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -70,8 +70,6 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 ```
 
 ### <a name="exporting-an-async-function"></a>Export asynchronní funkce
-Při použití jazyka JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarace nebo v opačném případě vrací JavaScript [Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (není k dispozici s funkcí v1.x), není potřeba explicitně volat [ `context.done` ](#contextdone-method) zpětné volání pro signalizaci, že vaše funkce byla dokončena. Funkce skončí po dokončení asynchronní exportované funkce/Promise.
-
 Při použití [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) prohlášení nebo prostý JavaScript [příslibů](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) ve verzi 2.x modul runtime služby Functions, není nutné explicitně volat [ `context.done` ](#contextdone-method) zpětné volání pro signalizaci, že vaše funkce byla dokončena. Funkce skončí po dokončení asynchronní exportované funkce/Promise. Pro funkce cílení na modul runtime verze 1.x, musí stále volat [ `context.done` ](#contextdone-method) až váš kód provádí.
 
 V následujícím příkladu je jednoduchou funkci, která zaznamená, že byla spuštěna a okamžitě se dokončí provádění.

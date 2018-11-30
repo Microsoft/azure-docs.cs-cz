@@ -9,24 +9,24 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: b31be534641f2777bcbfaaa33497d96b457db191
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 127bd965fdce93ae44fbb38a037477174c9cb3fe
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684082"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583240"
 ---
-# <a name="configure-spark-settings"></a>Konfigurace nastavení Sparku
+# <a name="configure-apache-spark-settings"></a>Konfigurace nastavení Apache Sparku
 
-Cluster Spark v HDInsight zahrnuje instalaci knihovně Apache Spark.  Každý cluster HDInsight zahrnuje výchozí hodnoty parametrů konfigurace pro všechny jeho nainstalovaných služeb, včetně Spark.  Klíčový aspekt správě clusteru HDInsight Hadoop je monitorování úloh, včetně Sparkových úloh, abyste měli jistotu, že úlohy, které jsou spuštěny předvídatelným způsobem. Chcete-li nejlépe spouštět úlohy Spark, zvažte konfigurace fyzického clusteru při zjišťování toho, jak optimalizovat logické konfigurace clusteru.
+Cluster Spark v HDInsight zahrnuje instalaci [Apache Spark](https://spark.apache.org/) knihovny.  Každý cluster HDInsight zahrnuje výchozí hodnoty parametrů konfigurace pro všechny jeho nainstalovaných služeb, včetně Spark.  Klíčový aspekt správě clusteru HDInsight Apache Hadoop je monitorování úloh, včetně Sparkových úloh, abyste měli jistotu, že úlohy, které jsou spuštěny předvídatelným způsobem. Chcete-li nejlépe spouštět úlohy Spark, zvažte konfigurace fyzického clusteru při zjišťování toho, jak optimalizovat logické konfigurace clusteru.
 
-Výchozí cluster HDInsight Apache Spark zahrnuje následující uzly: tři uzly ZooKeeper, dva hlavní uzly a jeden nebo více uzlů pracovních procesů:
+Výchozí cluster HDInsight Apache Spark zahrnuje následující uzly: tři [Apache ZooKeeper](https://zookeeper.apache.org/) uzly, dva hlavní uzly a jeden nebo více uzlů pracovních procesů:
 
 ![Architektura HDInsight Spark](./media/apache-spark-settings/spark-hdinsight-arch.png)
 
 Počet virtuálních počítačů a velikosti virtuálních počítačů, pro uzly v clusteru HDInsight může také ovlivnit konfiguraci Spark. Nestandardní HDInsight konfigurační hodnoty často vyžadují jiné než výchozí Spark konfigurační hodnoty. Když vytvoříte cluster HDInsight Spark, jsou uvedeny doporučené velikosti virtuálních počítačů pro všechny komponenty. Aktuálně [velikostí optimalizovaných pro paměť virtuálního počítače s Linuxem](../../virtual-machines/linux/sizes-memory.md) Azure jsou D12 v2 nebo vyšší.
 
-## <a name="spark-versions"></a>Verze Sparku
+## <a name="apache-spark-versions"></a>Apache Spark verze
 
 Používejte doporučené verze Sparku pro váš cluster.  Služba HDInsight zahrnuje několik verzí Spark a HDInsight samotný.  Sada výchozích nastavení clusteru zahrnuje každá verze Sparku.  
 
@@ -52,7 +52,7 @@ Když vyberete konkrétní verzi Sparku, váš cluster obsahuje výchozí nastav
     spark.sql.files.openCostInBytes 1099511627776
 ```
 
-Výše uvedený příklad přepíše několik výchozích hodnot pro parametry konfigurace pět Spark.  Jedná se o kompresní kodek, Hadoop MapReduce rozdělí minimální velikost a parquet velikosti bloku a také oddíl Spar SQL a otevřít soubor velikosti výchozí hodnoty.  Protože je možné zvolit těchto změn konfigurace úlohy (v tomto příkladu genomová datová) a přidružená data mají konkrétní vlastnosti, které provede lépe pomocí těchto nastavení vlastní konfigurace.
+Výše uvedený příklad přepíše několik výchozích hodnot pro parametry konfigurace pět Spark.  Jedná se o kompresní kodek, Apache Hadoop MapReduce rozdělí minimální velikost a parquet velikosti bloku a také oddíl Spar SQL a otevřít soubor velikosti výchozí hodnoty.  Protože je možné zvolit těchto změn konfigurace úlohy (v tomto příkladu genomová datová) a přidružená data mají konkrétní vlastnosti, které provede lépe pomocí těchto nastavení vlastní konfigurace.
 
 ---
 
@@ -60,7 +60,7 @@ Výše uvedený příklad přepíše několik výchozích hodnot pro parametry k
 
 Ověřte aktuální nastavení konfigurace clusteru HDInsight před provedením optimalizace výkonu v clusteru. Spuštění řídicího panelu HDInsight z portálu Azure portal kliknutím **řídicí panel** odkaz v podokně clusteru Spark. Přihlaste se pomocí uživatelského jména a hesla správce clusteru.
 
-Webové uživatelské rozhraní Ambari, zobrazí se zobrazení řídicího panelu klíčových clusteru metriky využití prostředků.  Ambari řídicí panel ukazuje konfiguraci Apache Spark a dalším službám, které jste nainstalovali. Řídicí panel obsahuje **Config historie** kartu, kde můžete zobrazit informace o konfiguraci pro všechny nainstalované služby, včetně Spark.
+Webové uživatelské rozhraní Apache Ambari, zobrazí se zobrazení řídicího panelu klíčových clusteru metriky využití prostředků.  Ambari řídicí panel ukazuje konfiguraci Apache Spark a dalším službám, které jste nainstalovali. Řídicí panel obsahuje **Config historie** kartu, kde můžete zobrazit informace o konfiguraci pro všechny nainstalované služby, včetně Spark.
 
 Pokud chcete zobrazit hodnoty konfigurace pro Apache Spark, vyberte **Config historie**a pak vyberte **Spark2**.  Vyberte **Configs** kartu a potom vyberte `Spark` (nebo `Spark2`, v závislosti na vaší verzi) odkaz v seznamu služeb.  Zobrazí seznam hodnot konfigurace pro váš cluster:
 
@@ -96,13 +96,13 @@ Další zdroje informací o prostředcích používá prováděcí moduly Spark 
 
 ![Prováděcí moduly Spark](./media/apache-spark-settings/spark-executors.png)
 
-Alternativně můžete použít rozhraní Ambari REST API programově ověřit nastavení konfigurace clusteru HDInsight a Spark.  Další informace jsou k dispozici na [reference k rozhraní API Ambari na Githubu](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+Alternativně můžete použít rozhraní Ambari REST API programově ověřit nastavení konfigurace clusteru HDInsight a Spark.  Další informace jsou k dispozici na [reference k rozhraní API Apache Ambari na Githubu](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
 V závislosti na vašich úloh Spark můžete určit, že nevýchozí konfigurace Spark poskytuje více optimalizované Spark se prováděné úlohy.  Měli byste provést srovnávací test testování pomocí ukázkových úloh k ověření konfigurace clusteru jiné než výchozí.  Zde jsou některé společné parametry, které může být vhodné nastavení:
 
 * `--num-executors` Nastaví počtu prováděcích procesů.
 * `--executor-cores` Nastaví počet jader pro každý prováděcího modulu. Doporučujeme používat middle-sized moduly provádění, jako jiné procesy také využívat některé části dostupné paměti.
-* `--executor-memory` ovládací prvky velikosti paměti (velikost haldy) každý prováděcí modul na YARN a vy budete muset opustit část paměti pro režijní náklady na spuštění.
+* `--executor-memory` Určuje velikost paměti (velikost haldy) každý prováděcí modul na [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), a budete se muset nechat paměti pro režijní náklady na spuštění.
 
 Tady je příklad dvou uzlů pracovního procesu s jinou konfiguraci hodnoty:
 
@@ -125,8 +125,8 @@ Clustery Spark v HDInsight zahrnují komponent ve výchozím nastavení. Každá
 
 * Spark Core – Spark Core, Spark SQL, streamování rozhraní API, GraphX a MLlib ve Sparku
 * Anaconda – Správce balíčků pythonu
-* Livy – Apache Spark REST API, používá k odeslání vzdálené úlohy ke clusteru HDInsight Spark
-* Bloky Jupyter a Zeppelin – interaktivní webové rozhraní pro interakci s vaším clusterem Sparku
+* [Apache Livy](https://livy.incubator.apache.org/) – Apache Spark REST API používá k odeslání vzdálené úlohy ke clusteru HDInsight Spark
+* [Jupyter](https://jupyter.org/) a [Apache Zeppelin](https://zeppelin.apache.org/) poznámkových bloků – interaktivní webové rozhraní pro interakci s vaším clusterem Sparku
 * Ovladač ODBC – připojení k nástroji business intelligence (BI), jako je například Microsoft Power BI a tableau. představují clustery Spark v HDInsight
 
 Pro aplikace běžící v poznámkovém bloku Jupyter, použijte `%%configure` příkazu konfigurace se změní z v rámci samotného poznámkového bloku. Tyto změny konfigurace se použijí k Sparkových úloh spustit z vaší instance poznámkového bloku. Měli byste zajistit takové změny na začátku aplikace před spuštěním vaší první buňky kódu. Změny konfigurace se použijí pro relaci Livy když se vytvoří.
@@ -147,8 +147,8 @@ Existuje několik základních nastavení konfigurace, které potřebujete k mon
 
 ## <a name="next-steps"></a>Další postup
 
-* [Komponenty a verze Hadoopu HDInsight přináší?](../hdinsight-component-versioning.md)
-* [Správa prostředků v clusteru Spark v HDInsight](apache-spark-resource-manager.md)
-* [Nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další](../hdinsight-hadoop-provision-linux-clusters.md)
+* [Apache Hadoop dostupné komponenty a verze s HDInsight?](../hdinsight-component-versioning.md)
+* [Správa prostředků v clusteru Apache Spark v HDInsight](apache-spark-resource-manager.md)
+* [Nastavení clusterů v HDInsight se Apache Hadoop, Apache Spark, Apache Kafka a další](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Konfigurace Apache Spark](https://spark.apache.org/docs/latest/configuration.html)
-* [Spouštění Spark na technologii YARN](https://spark.apache.org/docs/latest/running-on-yarn.html)
+* [Spuštěné Apache Spark na systému Apache Hadoop YARN](https://spark.apache.org/docs/latest/running-on-yarn.html)

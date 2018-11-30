@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 14a33a6480cdb2dbc19b912d51eebda386c55d75
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: d291a46eaac0f5e4023d343f700448d029765098
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713159"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634876"
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 
@@ -52,7 +52,7 @@ Z využití pohledu doporučujeme, abyste že nejdříve vytvoříte jako někol
 * Jste poskytovatel spravované služby a potřebujete uchovávat data Log Analytics pro každého zákazníka odděleně od dat ostatních zákazníků.
 * Spravujete víc zákazníků a chcete, aby každý zákazník / oddělení nebo obchodní skupina mohli podívat na svoje vlastní data, ale ne data od ostatních.
 
-Při používání agentů Windows ke shromažďování dat můžete [každého agenta konfigurovat tak, aby ukládal data do jednoho nebo více pracovních prostorů](log-analytics-agent-windows.md).
+Při používání agentů Windows ke shromažďování dat můžete [každého agenta konfigurovat tak, aby ukládal data do jednoho nebo více pracovních prostorů](../azure-monitor/platform/agent-windows.md).
 
 Pokud používáte System Center Operations Manager, můžete připojit každou skupinu nástroje Operations Manager jen do jednoho pracovního prostoru. Můžete nainstalovat Microsoft Monitoring Agent do počítačů spravovaných nástrojem Operations Manager a nastavit agenta tak, aby odesílal data do nástroje Operations Manager i do jiného pracovního prostoru Log Analytics.
 
@@ -239,7 +239,7 @@ Váš nový datový tarif se zobrazí pásu karet portálu OMS v horní části 
 ![Pás karet OMS](./media/log-analytics-manage-access/data-plan-changed.png)
 
 ## <a name="next-steps"></a>Další postup
-* Zobrazit [přehled agenta Log Analytics](log-analytics-agent-overview.md) ke shromažďování dat z počítačů ve vašem datovém centru nebo jiných cloudovém prostředí.
+* Zobrazit [přehled agenta Log Analytics](../azure-monitor/platform/log-analytics-agent.md) ke shromažďování dat z počítačů ve vašem datovém centru nebo jiných cloudovém prostředí.
 * V článku [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md) najdete informace o konfiguraci shromažďování dat z virtuálních počítačů Azure.  
 * Článek [Přidání řešení Log Analytics z galerie řešení](../azure-monitor/insights/solutions.md) popisuje přidání funkcí a shromažďování dat.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 06350d30999cb056babbd001f98a6c3a5fdbac6c
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cfe2620801f743831f77fb76f344c156676966d3
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576990"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635063"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API s použitím OAuth 2.0 s Azure Active Directory a API Management
 
@@ -100,8 +100,6 @@ Teď, když jste se zaregistrovali k reprezentaci rozhraní API a vývojářské
 
 > [!NOTE]
 > Pokud **Azure Active Directory** není uveden v seznamu oprávnění k ostatním aplikacím, vyberte **přidat** přidat ze seznamu.
-> 
-> 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>Povolit autorizaci uživatelů OAuth 2.0 v konzole pro vývojáře
 
@@ -109,7 +107,7 @@ V tomto okamžiku jste vytvořili vaší aplikace ve službě Azure AD a mít ud
 
 V tomto příkladu je konzola pro vývojáře klientskou aplikaci. Následující kroky popisují, jak povolit autorizaci uživatelů OAuth 2.0 v konzole pro vývojáře. 
 
-1. Přejděte k vaší instanci API Management.
+1. Na webu Azure Portal přejděte k vaší instanci API Management.
 
 2. Vyberte **OAuth 2.0** > **přidat**.
 
@@ -120,6 +118,9 @@ V tomto příkladu je konzola pro vývojáře klientskou aplikaci. Následujíc�
 5. Pro **typy udělení autorizace**vyberte **autorizační kód**.
 
 6. Zadejte **adresu URL koncového bodu autorizace** a **adresu URL koncového bodu Token**. Načtení z těchto hodnot **koncové body** stránky ve vašem tenantovi Azure AD. Přejděte **registrace aplikací** stránku znovu a vyberte **koncové body**.
+
+    >[!NOTE]
+    > Použití **v1** zde koncových bodů
 
 7. Kopírovat **koncový bod autorizace OAuth 2.0**a vložte ho do **adresu URL koncového bodu autorizace** textového pole.
 
@@ -154,6 +155,9 @@ Dalším krokem je povolit autorizaci uživatelů OAuth 2.0 pro vaše rozhraní 
 5. Vyberte **Uložit**.
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>Úspěšně volat rozhraní API z portálu pro vývojáře
+
+> [!NOTE]
+> Tato část se nevztahuje **spotřeby** úroveň, která nepodporuje portál pro vývojáře.
 
 Teď, když je zapnutá autorizaci uživatelů OAuth 2.0 `Echo API`, vývojářské konzole získá přístupový token jménem uživatele, před voláním rozhraní API.
 

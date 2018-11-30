@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 2fff332665652516e4ac25c4eb1a4612c15e2412
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 4200accee94840a8a4455308f24a857fd5d7034a
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824672"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632972"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat ze služby Azure Monitor
 Tento článek obsahuje přehled dostupných metod k vizualizaci dat uložených ve službě Azure Monitor. Jedná se o [metriky v úložišti Azure metriky](../azure-monitor/platform/data-collection.md#metrics) a [dat protokolů v Log Analytics](../azure-monitor/platform/data-collection.md#logs). 
@@ -50,7 +50,7 @@ Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monito
 - Omezené kontextové procházení.
 
 ## <a name="azure-monitor-views"></a>Azure Monitor zobrazení
-[Zobrazení ve službě Azure Monitor](../log-analytics/log-analytics-view-designer.md) vám umožňují vytvářet vlastní vizualizace s objemu dat uložených ve službě Log Analytics. Jsou používány [řešení monitorování](../azure-monitor/insights/solutions.md) data můžete prezentovat tak jejich shromažďování.
+[Zobrazení ve službě Azure Monitor](../azure-monitor/platform/view-designer.md) vám umožňují vytvářet vlastní vizualizace s objemu dat uložených ve službě Log Analytics. Jsou používány [řešení monitorování](../azure-monitor/insights/solutions.md) data můžete prezentovat tak jejich shromažďování.
 
 ![Zobrazení](media/visualizations/view.png)
 
@@ -58,7 +58,7 @@ Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monito
 - Bohaté vizualizace pro data služby Log Analytics.
 - Export a import zobrazení přenést do jiné skupiny prostředků a předplatných.
 - Integruje se do protokolu analytická správy modelu s pracovními prostory a monitorování řešení.
-- [Filtry](../log-analytics/log-analytics-view-designer-filters.md) pro vlastní parametry.
+- [Filtry](../azure-monitor/platform/view-designer-filters.md) pro vlastní parametry.
 - Interaktivní, podporuje víceúrovňové procházení v (zobrazení, která přechází do jiného zobrazení)
 
 ### <a name="limitations"></a>Omezení
@@ -140,7 +140,7 @@ Prostřednictvím svých rozhraní API z libovolného klienta REST, které vám 
 ## <a name="next-steps"></a>Další postup
 - Další informace o [data shromážděná službou Azure Monitor](../azure-monitor/platform/data-collection.md).
 - Další informace o [řídicích panelů Azure](../azure-portal/azure-portal-dashboards.md).
-- Další informace o [zobrazení ve službě Azure Monitor](../log-analytics/log-analytics-view-designer.md).
+- Další informace o [zobrazení ve službě Azure Monitor](../azure-monitor/platform/view-designer.md).
 - Další informace o [sešity ve službě Application Insights](../application-insights/app-insights-usage-workbooks.md).
 - Další informace o [importovat do Power BI data protokolu](../log-analytics/log-analytics-powerbi.md).
 - Další informace o [modulu plug-in zdroje dat monitorování Azure Grafana](../monitoring-and-diagnostics/monitor-send-to-grafana.md).

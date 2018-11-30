@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 11/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ebd5c06b8174c9838a398e97439671e4d3f4c518
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 8b061ad2926110e27524ededb5c33dffa5ea04b6
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713482"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52635454"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Připojení nástroje Operations Manager ke službě Log Analytics
 Chcete-li zachovat stávající investice do [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) a použití rozšířené možnosti službou Log Analytics, můžete integrovat nástroje Operations Manager se službou pracovního prostoru Log Analytics. Díky tomu budete moct využívat to, co nabízí Log Analytics, a současně nadále používat nástroj Operations Manager pro tyto činnosti:
@@ -37,7 +37,7 @@ Následující diagram znázorňuje propojení mezi servery pro správu a agenty
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-Pokud zásady zabezpečení IT neumožňují počítačů ve vaší síti pro připojení k Internetu, servery pro správu je nakonfigurovat pro připojení k bráně Log Analytics pro příjem informací o konfiguraci a posílání shromážděných dat v závislosti na řešení povolené. Další informace a postup konfigurace skupiny pro správu nástroje Operations Manager ke komunikaci přes bránu Log Analytics ke službě Log Analytics najdete v tématu [připojení počítačů ke službě Log Analytics pomocí Log Analytics gateway](log-analytics-oms-gateway.md).  
+Pokud zásady zabezpečení IT neumožňují počítačů ve vaší síti pro připojení k Internetu, servery pro správu je nakonfigurovat pro připojení k bráně Log Analytics pro příjem informací o konfiguraci a posílání shromážděných dat v závislosti na řešení povolené. Další informace a postup konfigurace skupiny pro správu nástroje Operations Manager ke komunikaci přes bránu Log Analytics ke službě Log Analytics najdete v tématu [připojení počítačů ke službě Log Analytics pomocí Log Analytics gateway](../azure-monitor/platform/gateway.md).  
 
 ## <a name="prerequisites"></a>Požadavky 
 Než začnete, zkontrolujte následující požadavky.
@@ -49,10 +49,13 @@ Než začnete, zkontrolujte následující požadavky.
 
 >[!NOTE]
 >Nedávné změny rozhraní API Správce Azure zabrání zákazníci nebudou moct úspěšně konfigurovat integraci mezi jejich skupiny pro správu a Log Analytics poprvé. Pro zákazníky, kteří už integrovali jejich skupiny pro správu ve službě nejsou vliv, pokud je potřeba překonfigurovat existující připojení.  
->Pro každou verzi nástroje Operations Manager byla vydala novou sadu management pack:  
+>V následujících verzích nástroje Operations Manager byla vydala novou sadu management pack:
+>  
 >* Pro System Center Operations Manageru 1801 stažení management packu z [zde](https://www.microsoft.com/download/details.aspx?id=57173)  
 >* System Center 2016 – Operations Manager, stáhněte si sadu management pack z [zde](https://www.microsoft.com/download/details.aspx?id=57172)  
 >* System Center Operations Manager 2012 R2, stáhněte si sadu management pack z [zde](https://www.microsoft.com/download/details.aspx?id=57171)  
+>
+>Tato aktualizace management pack neplatí pro System Center Operations Manager 1807, což je o verzi aktualizace z verze 1801 a úplné sestavení produktu.   
 
 ### <a name="network"></a>Síť
 V následujícím seznamu najdete konfiguraci pro proxy a firewall nutnou pro komunikaci agenta Operations Manager, serverů pro správu a konzoly Operations Console s Log Analytics. Přenosy z jednotlivých součástí odchází z vaší sítě do služby Log Analytics.   

@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 6cb3102206174422a3d8b4a0fb18f989d875e093
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61f5f0d0b9e88174f82e960eb5d92db99d0cae71
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259050"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582837"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Nasazení a správa topologií Apache Storm v Azure HDInsight 
 
-V tomto dokumentu přečtěte si základní informace o správě a monitorování topologií Storm spuštěných ve Stormu v clusterech HDInsight.
+V tomto dokumentu, seznamte se se základy monitorování a správa [Apache Storm](http://storm.apache.org/) topologií Storm a systémem v clusterech HDInsight.
 
 > [!IMPORTANT]
 > Kroky v tomto článku vyžadují linuxovým Storm v clusteru HDInsight. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement). 
@@ -186,7 +186,7 @@ Vyberte odkaz z **souhrn topologie** části zobrazí následující informace o
   * **Deaktivovat**: Pozastaví spuštěné topologie.
   * **Obnovit rovnováhu**: upraví paralelismus topologii. Po změně počtu uzlů v clusteru musíte znovu vyvážit spuštěné topologie. Tato operace umožňuje topologii upravovat paralelismus za účelem kompenzace zvýšení nebo snížení počtu uzlů v clusteru.
 
-    Další informace najdete v části <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">Pochopení paralelismu topologie Storm</a>.
+    Další informace najdete v tématu <a href="http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">pochopení paralelismu topologie Apache Storm</a>.
   * **Ukončit**: ukončí topologii Storm po zadaný časový limit.
 * **Statistiky topologie**: statistické údaje o topologii. Pokud chcete nastavit časový rámec pro zbývající položky na stránce, použijte odkazy v **okno** sloupce.
 * **Spouts**: spoutů používat topologii. Chcete-li zobrazit další informace o konkrétních funkcích spouts pomocí odkazů v této části.
@@ -208,10 +208,10 @@ Výběr spout z **Spouts** nebo **Bolts** části zobrazí následující inform
 
 Uživatelské rozhraní Storm je postavený na rozhraní REST API, takže můžete provádět podobné správy a monitorování funkce pomocí rozhraní REST API. Rozhraní REST API můžete použít k vytvoření vlastních nástrojů pro správu a monitorování topologií Storm.
 
-Další informace najdete v tématu [rozhraní REST API pro uživatelské rozhraní Storm](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Tyto informace je specifická pro Apache Storm v HDInsight pomocí rozhraní REST API.
+Další informace najdete v tématu [Apache Storm uživatelského rozhraní REST API](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Tyto informace je specifická pro Apache Storm v HDInsight pomocí rozhraní REST API.
 
 > [!IMPORTANT]
-> Rozhraní REST API Storm není veřejně přístupné přes internet a musí přistupovat přes tunelové propojení SSH k hlavnímu uzlu clusteru HDInsight. Informace o vytváření a používání tunelu SSH najdete v tématu [používání tunelového propojení SSH pro přístup k webové uživatelské rozhraní Ambari, ResourceManager, JobHistory, NameNode, Oozie a dalším webovým uživatelským rozhraním](../hdinsight-linux-ambari-ssh-tunnel.md).
+> Rozhraní REST API Storm není veřejně přístupné přes internet a musí přistupovat přes tunelové propojení SSH k hlavnímu uzlu clusteru HDInsight. Informace o vytváření a používání tunelu SSH najdete v tématu [používání tunelového propojení SSH pro přístup k webové uživatelské rozhraní Apache Ambari, ResourceManager, JobHistory, NameNode, Apache Oozie a dalším webovým uživatelským rozhraním](../hdinsight-linux-ambari-ssh-tunnel.md).
 
 ### <a name="base-uri"></a>Základní identifikátor URI
 
@@ -232,10 +232,10 @@ Požadavky rozhraní REST API musí používat **základní ověřování**, tak
 
 ### <a name="return-values"></a>Návratové hodnoty
 
-Použitelné z v rámci clusteru může být pouze informace vrácené z rozhraní REST API. Například plně kvalifikovaný název domény (FQDN) pro servery Zookeeper není přístupný z Internetu.
+Použitelné z v rámci clusteru může být pouze informace vrácené z rozhraní REST API. Například plně kvalifikovaný název domény (FQDN) vrátil pro [Apache ZooKeeper](https://zookeeper.apache.org/) serverů není přístupný z Internetu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistěte, jak [založené na jazyce Java vyvíjet topologie pomocí nástroje Maven](apache-storm-develop-java-topology.md).
+Zjistěte, jak [založené na jazyce Java vyvíjet topologie pomocí nástroje Apache Maven](apache-storm-develop-java-topology.md).
 
-Seznam Další příklad topologie najdete v tématu [příklad topologií pro Storm v HDInsight](apache-storm-example-topology.md).
+Seznam Další příklad topologie najdete v tématu [příklad topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md).

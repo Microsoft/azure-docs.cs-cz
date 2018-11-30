@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: fa872c184429e69eb46fb4da112c08ee9432f1c4
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 256f36ac56126fc76561a6dbe4281ac4975df6e4
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913984"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632785"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure
 
@@ -43,18 +43,33 @@ Ne, spravované identity pro prostředky Azure zatím není sadou ADAL nebo MSAL
 
 Hranice zabezpečení identity je prostředek, ke kterému je připojený. Například hranice zabezpečení pro virtuální počítač se spravovaným identitám pro prostředky Azure povolena, je virtuální počítač. Jakýkoli kód spuštěn na tomto virtuálním počítači, je možné volat koncový bod a žádosti o tokeny spravovaných identit pro prostředky Azure. Je podobné prostředí s další prostředky, které podporují spravované identity pro prostředky Azure.
 
+### <a name="what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request"></a>Jaké identity bude IMDS výchozí, pokud nechcete zadat identitu v požadavku?
+
+- V případě spravovanou identitu přiřazenou systémem je povolen a je v požadavku je zadaná žádná identita, IMDS bude ve výchozím nastavení systém přiřadil spravovaná identita.
+- Pokud spravovanou identitu přiřazenou systémem není povoleno a existuje jenom jeden spravovaný identity přiřazené uživateli, IMDS bude ve výchozím nastavení tento jeden spravované identity přiřazené uživateli. 
+- Pokud není povoleno spravovanou identitu přiřazenou systémem a existuje více spravovaných identit přiřazených uživateli, zadáním spravovanou identitu v požadavku je povinný.
+
 ### <a name="should-i-use-the-managed-identities-for-azure-resources-vm-imds-endpoint-or-the-vm-extension-endpoint"></a>Použít spravované identity pro koncový bod virtuálního počítače IMDS prostředků Azure nebo koncového bodu virtuálního počítače rozšíření?
 
 Při použití spravované identity pro prostředky Azure s virtuálními počítači, doporučujeme pomocí spravované identity pro koncový bod IMDS prostředků Azure. Služba Azure Instance Metadata je koncový bod REST, která je přístupná pro všechny virtuální počítače IaaS vytvořené prostřednictvím Azure Resource Manageru. Mezi výhody použití spravované identity pro prostředky Azure prostřednictvím IMDS patří:
-
-1. Všechny operační systémy podporované IaaS s nástrojem Azure můžete použít spravovaných identit pro prostředky Azure prostřednictvím IMDS. 
-2. Už nebude potřeba nainstalovat rozšíření na vašem virtuálním počítači povolit spravovaných identit pro prostředky Azure. 
-3. Certifikáty používané službou spravovaných identit pro prostředky Azure, už nejsou k dispozici ve virtuálním počítači. 
-4. Koncový bod IMDS je dobře známé nesměrovatelných IP adresu, k dispozici pouze z v rámci virtuálního počítače. 
+    - Všechny operační systémy podporované IaaS s nástrojem Azure můžete použít spravovaných identit pro prostředky Azure prostřednictvím IMDS.
+    - Už nebude potřeba nainstalovat rozšíření na vašem virtuálním počítači povolit spravovaných identit pro prostředky Azure. 
+    - Certifikáty používané službou spravovaných identit pro prostředky Azure, už nejsou k dispozici ve virtuálním počítači.
+    - Koncový bod IMDS je dobře známé nesměrovatelných IP adresu, k dispozici pouze z v rámci virtuálního počítače.
 
 Spravované identity pro prostředky Azure, které je stále k dispozici pro použití dnes; rozšíření virtuálního počítače ale v budoucnu jsme se ve výchozím nastavení pomocí IMDS koncového bodu. Spravované identity pro prostředky Azure, které rozšíření virtuálního počítače se přestanou používat v lednu 2019. 
 
 Další informace o Azure Instance Metadata Service, najdete v části [IMDS dokumentace](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+
+### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>Se spravovaným identitám znovu vytvoří automaticky když předplatné přesunu do jiného adresáře?
+
+Ne. Pokud je předplatné přesunout do jiného adresáře, budete muset ručně je znovu vytvořit a udělit přiřazení role Azure RBAC znovu.
+    - Pro systém přiřadil spravovaných identit: zakázat a znovu povolit.
+    - Pro uživatele, přiřazenou spravovaných identit: odstranění, znovu vytvořte a připojte je znovu k potřebné prostředky (např. virtuální počítače)
+
+### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>Můžete použít spravovanou identitu pro přístup k prostředku v jiném tenantovi/adresáři?
+
+Ne. Spravované identity aktuálně nepodporují adresář různé scénáře. 
 
 ### <a name="what-are-the-supported-linux-distributions"></a>Jaké jsou podporované distribuce systému Linux?
 

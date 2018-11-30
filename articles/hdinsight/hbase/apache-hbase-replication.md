@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: b978adcdcc025c24746167ef5ab92aebe94aca8b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 44ed4075af290e3253b3d8f090c289ceba9750a6
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016229"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584175"
 ---
-# <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru HBase ve virtuálních sítích Azure
+# <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure
 
-Zjistěte, jak nastavit replikace HBase ve virtuální síti, nebo mezi dvěma virtuálními sítěmi v Azure.
+Zjistěte, jak nastavit [Apache HBase](http://hbase.apache.org/) replikace v rámci virtuální sítě nebo mezi dvěma virtuálními sítěmi v Azure.
 
 Replikace clusteru používá metodologie zdroj nabízené oznámení. HBase cluster může být zdroj nebo cíl, nebo může najednou splnit obě role. Je asynchronní replikace. Cílem replikace je konečné konzistence. Když zdroj obdrží úpravy do rodiny sloupců po povolení replikace, úpravy se šíří do všech cílových clusterech. Pokud data se replikují z jednoho clusteru do druhého, zdrojový cluster a všechny clustery, které jste už využili data jsou sledovány, aby se zabránilo replikační cykly.
 
@@ -46,16 +46,16 @@ Než začnete tento kurz, musíte mít předplatné Azure. Zobrazit [získat bez
 
 Existují tři možnosti konfigurace:
 
-- Dva clustery HBase v jedné virtuální síti Azure.
-- Dva clustery HBase ve dvou různých virtuálních sítích ve stejné oblasti.
-- Dva clustery HBase ve dvou různých virtuálních sítích ve dvou různých oblastech (geografické replikace).
+- Dva clustery Apache HBase v jedné virtuální síti Azure.
+- Dva clustery Apache HBase ve dvou různých virtuálních sítích ve stejné oblasti.
+- Dva clustery Apache HBase ve dvou různých virtuálních sítích ve dvou různých oblastech (geografické replikace).
 
 Tento článek popisuje scénář geografickou replikaci.
 
 Můžete nastavovat prostředí, jsme vytvořili některé [šablon Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md). Pokud chcete nastavit prostředí pomocí jiné metody, naleznete v tématu:
 
-- [Vytvoření clusterů Hadoop v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
-- [Vytváření clusterů HBase ve virtuální síti Azure](apache-hbase-provision-vnet.md)
+- [Vytvořte clustery systému Apache Hadoop v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
+- [Vytvoření clusterů Apache HBase ve virtuální síti Azure](apache-hbase-provision-vnet.md)
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>Nastavit dvěma virtuálními sítěmi ve dvou různých oblastech
 
@@ -256,9 +256,9 @@ K testování této konfigurace DNS, můžete připojit na dva virtuální poč�
 sudo service bind9 status
 ```
 
-## <a name="create-hbase-clusters"></a>Vytvářejte clustery HBase
+## <a name="create-apache-hbase-clusters"></a>Vytvoření clusterů Apache HBase
 
-Vytvářejte clustery HBase v každé dvě virtuální sítě s následující konfigurací:
+Vytvoření [Apache HBase](http://hbase.apache.org/) clusteru v každém ze dvou virtuálních sítí s následující konfigurací:
 
 - **Název skupiny prostředků**: použijte stejný název skupiny prostředků, při vytváření virtuální sítě.
 - **Typ clusteru**: HBase
@@ -274,7 +274,7 @@ K zajištění, že je prostředí správně nakonfigurováno, musí být poslat
 
 Při replikaci clusteru, je nutné zadat tabulky, které chcete replikovat. V této části můžete načíst data do zdrojového clusteru. V další části povolíte replikaci mezi dvěma clustery.
 
-Chcete-li vytvořit **kontakty** tabulku a vložte některá data v tabulce, postupujte podle pokynů na adrese [kurz HBase: začněte používat Apache HBase v HDInsight](apache-hbase-tutorial-get-started-linux.md).
+Chcete-li vytvořit **kontakty** tabulku a vložte některá data v tabulce, postupujte podle pokynů na adrese [kurz Apache HBase: začněte používat Apache HBase v HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
 ## <a name="enable-replication"></a>Povolení replikace
 
@@ -293,7 +293,7 @@ Následující kroky popisují, jak volat skript akce skriptu z webu Azure porta
   3.  **Hlavní**: Ujistěte se tato možnost je vybrána. Zrušte jiné typy uzlů.
   4. **Parametry**: následující ukázkové parametry povolíte replikaci pro všechny existující tabulky a pak zkopírujte všechna data ze zdrojového clusteru do cílového clusteru:
 
-          -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
+          -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
     >[!note]
     >
@@ -317,7 +317,7 @@ Volitelné argumenty:
 |-su nebo--src-ambari-user | Určuje uživatelské jméno správce pro Ambari ve zdrojovém clusteru HBase. Výchozí hodnota je **správce**. |
 |-du – dst ambari uživatele | Určuje uživatelské jméno správce pro Ambari v cílovém clusteru HBase. Výchozí hodnota je **správce**. |
 |-t,--seznam tabulek | Určuje tabulky, které chcete replikovat. Příklad:--tabulkového seznamu = "table1, table2; Tabulka3". Pokud nezadáte tabulky, se replikují všechny existujících tabulek HBase.|
-|-min, - počítač | Určuje hlavní uzel, ve kterém běží akce skriptu. Hodnota je buď **hn1** nebo **hn0**. Vzhledem k tomu, **hn0** hlavního uzlu je obvykle Vytíženější, doporučujeme používat **hn1**. Tuto možnost použijte, pokud používáte skript hodnotou 0 USD jako akci skriptu z portálu HDInsight nebo Azure Powershellu.|
+|-min, - počítač | Určuje hlavní uzel, ve kterém běží akce skriptu. Hodnota je buď **hn0** nebo **hn1** a měli na základě které je aktivní hlavní uzel. Tuto možnost použijte, pokud používáte skript hodnotou 0 USD jako akci skriptu z portálu HDInsight nebo Azure Powershellu.|
 |-prohlášení cp, - copydata | Umožňuje migraci existujících dat v tabulkách, kde je povolená replikace. |
 |-ot. / min, - replikace-phoenix-meta | Umožňuje replikaci pro Phoenix systémové tabulky. <br><br>*Tuto možnost používejte s opatrností.* Doporučujeme, abyste před použitím tohoto skriptu znovu vytvořit Phoenix tabulek v clusterech repliky. |
 |-h, – Nápověda | Zobrazí informace o použití. |
@@ -332,19 +332,19 @@ Následující seznam obsahuje některé obecné použití případů a jejich n
 
 - **Povolení replikace u všech tabulek mezi dvěma clustery**. Tento scénář nevyžaduje kopírování nebo migrace existujících dat v tabulkách a nepoužívá Phoenix tabulky. Použijte následující parametry:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>  
 
 - **Povolte replikaci na konkrétní tabulky**. Pokud chcete povolit replikaci na table1, table2 a tabulka3, použijte následující parametry:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
 - **Povolíte replikaci pro konkrétní tabulky a zkopírovat existující data**. Pokud chcete povolit replikaci na table1, table2 a tabulka3, použijte následující parametry:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
 - **Povolíte replikaci pro všechny tabulky a replikovat Phoenix metadata ze zdroje do cíle**. Phoenix metadata replikace není ideální. Používejte ji opatrně. Použijte následující parametry:
 
-        -m hn1 -s <source cluster DNS name> -d <destination cluster DNS name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
+        -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta
 
 ## <a name="copy-and-migrate-data"></a>Zkopírujte a migraci dat
 
@@ -379,7 +379,7 @@ Můžete postupujte stejným způsobem, který je popsaný v [povolit replikaci]
 
 Pokud chcete zakázat replikaci, použijte jiný skript akce skriptu z [Githubu](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh). Můžete postupujte stejným způsobem, který je popsaný v [povolit replikaci](#enable-replication) volat akci skriptu. Použijte následující parametry:
 
-    -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
+    -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> <-all|-t "table1;table2;...">  
 
 `print_usage()` Část [skript](https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_disable_replication.sh) obsahuje podrobné vysvětlení parametrů.
 
@@ -387,20 +387,20 @@ Pokud chcete zakázat replikaci, použijte jiný skript akce skriptu z [Githubu]
 
 - **Zakažte replikaci na všechny tabulky**:
 
-        -m hn1 -s <source cluster DNS name> -sp Mypassword\!789 -all
+        -m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all
   nebo
 
-        --src-cluster=<source cluster DNS name> --dst-cluster=<destination cluster DNS name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
+        --src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>
 
 - **Zakažte replikaci na zadaných tabulek (table1, table2 a tabulka3)**:
 
-        -m hn1 -s <source cluster DNS name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+        -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak nastavit replikace HBase ve virtuální síti, nebo mezi dvěma virtuálními sítěmi. Další informace o HDInsight a HBase, najdete v těchto článcích:
+V tomto kurzu jste zjistili, jak nastavit replikaci Apache HBase ve virtuální síti, nebo mezi dvěma virtuálními sítěmi. Další informace o HDInsight a Apache HBase, najdete v těchto článcích:
 
 * [Začínáme s Apache HBase v HDInsight](./apache-hbase-tutorial-get-started-linux.md)
-* [Přehled HDInsight HBase](./apache-hbase-overview.md)
-* [Vytváření clusterů HBase ve virtuální síti Azure](./apache-hbase-provision-vnet.md)
+* [Přehled HDInsight Apache HBase](./apache-hbase-overview.md)
+* [Vytvoření clusterů Apache HBase ve virtuální síti Azure](./apache-hbase-provision-vnet.md)
 

@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 11/28/2018
 ms.author: danlep
-ms.openlocfilehash: e060d8cf1ec16ac3c900180c01eb3384a56d5e13
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e03a35b31c9089abe973c7e4388b508f668a3970
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713023"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52619839"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Nasazení instancí kontejneru do služby Azure virtual network
 
@@ -73,7 +73,7 @@ Podsítě, který používáte pro skupiny kontejnerů může obsahovat pouze sk
 
 Profil sítě je šablonu konfigurace sítě pro prostředky Azure. Určuje určité vlastnosti sítě pro prostředek, třeba podsíť, do kterého mají být nasazeny. Při prvním použití [az container vytvořit] [ az-container-create] příkaz pro nasazení skupiny kontejnerů do podsítě (a tedy virtuální sítě), Azure vytvoří profil sítě za vás. Pak můžete použít tento profil sítě pro budoucí nasazení do podsítě. 
 
-Použití šablony Resource Manageru, soubor YAML nebo programové metody k nasazení skupiny kontejnerů k podsíti, budete muset zadat úplné ID prostředku Resource Manageru profilu sítě. Můžete použít profil dříve vytvořené využitím [az container vytvořit][az-container-create], nebo vytvořte profil pomocí šablony Resource Manageru (naleznete v tématu [odkaz](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Chcete-li získat ID dříve vytvořený profil, použijte [az přehled profilu sítě] [ az-network-profile-list] příkazu. 
+Použití šablony Resource Manageru, soubor YAML nebo programové metody k nasazení skupiny kontejnerů k podsíti, budete muset zadat úplné ID prostředku Resource Manageru profilu sítě. Můžete použít profil dříve vytvořené využitím [az container vytvořit][az-container-create], nebo vytvořte profil pomocí šablony Resource Manageru (naleznete v tématu [příkladu šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) a [odkaz](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Chcete-li získat ID dříve vytvořený profil, použijte [az přehled profilu sítě] [ az-network-profile-list] příkazu. 
 
 V následujícím diagramu se nasadilo do podsítě delegovat do služby Azure Container Instances několik skupin kontejnerů. Po nasazení jedné skupiny kontejnerů na podsíť, do něj můžete nasadit další kontejneru skupiny tak, že zadáte stejný profil sítě.
 
@@ -296,6 +296,9 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 ```
 
 ## <a name="next-steps"></a>Další postup
+
+Pokud chcete nasadit nové virtuální sítě, podsítě, profil sítě a skupinu kontejnerů pomocí šablony Resource Manageru, najdete v článku [vytvořit novou skupinu kontejnerů Azure s virtuální sítí](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+).
 
 Několik prostředky virtuální sítě a funkce byly popisovaných v tomto článku, i když stručně. Dokumentace ke službě Azure Virtual Network výrazně obsahuje tato témata:
 

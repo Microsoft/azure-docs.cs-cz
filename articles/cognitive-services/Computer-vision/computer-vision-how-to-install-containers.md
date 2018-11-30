@@ -10,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 2ba7039fe42e3b5638b99161e12e9888bc852f87
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 67dbf3bdf6631785fc876283847e36349e857a77
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634980"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634638"
 ---
-# <a name="install-and-run-containers"></a>Instalace a spouštění kontejnerů
+# <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
 
 Kontejnerizace je přístup k distribuci softwaru, ve kterém je zabalená aplikace nebo služby, jako image kontejneru. Konfigurace a závislosti pro aplikaci nebo službě jsou součástí image kontejneru. Image kontejneru je potom nasadit na hostiteli s téměř nebo vůbec žádné změny. Kontejnery jsou izolované od sebe navzájem a základní operační systém s menší nároky na místo než virtuální počítač. Kontejnery můžete vytvořené z imagí kontejneru pro krátkodobé úlohy a odebrat, pokud už je nepotřebujete.
 
@@ -60,9 +60,6 @@ Proveďte následující kroky k vytvoření a načtení informací z prostředk
 
 1. Vytvoření prostředku Azure na webu Azure Portal.  
    Pokud chcete použít kontejner rozpoznat Text, musíte nejprve vytvořit odpovídající prostředek pro počítačové zpracování obrazu na webu Azure Portal. Další informace najdete v tématu [rychlý start: vytvoření účtu služeb Cognitive Services na webu Azure Portal](../cognitive-services-apis-create-account.md).
-
-   > [!IMPORTANT]
-   > Prostředek pro počítačové zpracování obrazu musí používat F0 cenovou úroveň.
 
 1. Získáte klíče koncového bodu adresy URL a předplatného pro prostředky Azure.  
    Po vytvoření prostředku Azure musíte použít koncový bod adresy URL a klíč předplatného z tohoto prostředku pro vytvoření instance kontejneru odpovídající rozpoznat Text. Koncový bod adresy URL a klíč předplatného můžete zkopírovat z v uvedeném pořadí, rychlý Start a klíče stránky pro počítačové zpracování obrazu prostředků na portálu Azure portal.

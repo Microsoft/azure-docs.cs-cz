@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 4a7777be01cc15ed5cc4c9c091230afe1ddfa897
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: dc1fe8a3d9a1f0da0a190275b4fbb8bd18fff610
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047438"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499145"
 ---
-# <a name="optimize-spark-jobs"></a>Optimalizace sparkových úloh
+# <a name="optimize-apache-spark-jobs"></a>Optimalizace Apache Sparkových úloh
 
-Zjistěte, jak optimalizovat konfiguraci clusteru Spark pro konkrétní úlohu.  Nejběžnější výzvou je přetížení paměti z důvodu nesprávné konfigurace (zejména nesprávné velikosti prováděcí moduly), dlouhotrvající operace a úlohy, jejichž výsledkem Kartézském operace. Můžete urychlit úlohy s odpovídající ukládání do mezipaměti a tím, že pro [Nerovnoměrná distribuce dat](#optimize-joins-and-shuffles). Pro zajištění nejlepšího výkonu monitorování a zkontrolujte dlouhotrvající a využívání prostředků se prováděné úlohy Spark.
+Zjistěte, jak optimalizovat [Apache Spark](https://spark.apache.org/) konfigurace clusteru pro konkrétní úlohu.  Nejběžnější výzvou je přetížení paměti z důvodu nesprávné konfigurace (zejména nesprávné velikosti prováděcí moduly), dlouhotrvající operace a úlohy, jejichž výsledkem Kartézském operace. Můžete urychlit úlohy s odpovídající ukládání do mezipaměti a tím, že pro [Nerovnoměrná distribuce dat](#optimize-joins-and-shuffles). Pro zajištění nejlepšího výkonu monitorování a zkontrolujte dlouhotrvající a využívání prostředků se prováděné úlohy Spark.
 
 Následující části popisují běžné úlohy optimalizace Spark a doporučení.
 
@@ -94,7 +94,7 @@ Pro srovnání si struktura paměti Spark a některé parametry paměti klíče 
 
 ### <a name="spark-memory-considerations"></a>Požadavky na paměť Spark
 
-Pokud používáte YARN, YARN řídí maximální součtem velikostí paměti používané všechny kontejnery na každém uzlu Spark.  Následující diagram ukazuje klíčové objekty a jejich vztahy.
+Pokud používáte [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), pak YARN řídí maximální součtem velikostí paměti používané všechny kontejnery na každém uzlu Spark.  Následující diagram ukazuje klíčové objekty a jejich vztahy.
 
 ![Správa paměti YARN Spark](./media/apache-spark-perf/yarn-spark-memory.png)
 
@@ -212,9 +212,9 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Další postup
 
-* [Ladění Sparkových úloh, které běží na Azure HDInsight](apache-spark-job-debugging.md)
-* [Správa prostředků v clusteru Spark v HDInsight](apache-spark-resource-manager.md)
-* [Rozhraní Spark REST API můžete odesílat vzdálené úlohy do clusteru Spark](apache-spark-livy-rest-interface.md)
-* [Ladění Sparku](https://spark.apache.org/docs/latest/tuning.html)
-* [Postupy při skutečně vyladit Spark úloh tak fungují](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
+* [Ladění Apache Spark úloh spuštěných v Azure HDInsight](apache-spark-job-debugging.md)
+* [Správa prostředků v clusteru Apache Spark v HDInsight](apache-spark-resource-manager.md)
+* [Apache Spark REST API můžete odesílat vzdálené úlohy do clusteru Apache Spark](apache-spark-livy-rest-interface.md)
+* [Ladění Apache Sparku](https://spark.apache.org/docs/latest/tuning.html)
+* [Jak se ve skutečnosti vyladit Apache Spark úlohy tak fungují](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 * [Kryo serializace](https://github.com/EsotericSoftware/kryo)

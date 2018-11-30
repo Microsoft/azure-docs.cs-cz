@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: da8eebb2fc6b87b8916e944495679b45aa34dbf2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5283782188eaebe3997b6de31b087da74cf10486
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960324"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620128"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Oprávnění a souhlas v koncovém bodu Azure Active Directory v2.0
 
@@ -48,7 +48,7 @@ Totéž platí pro všechny prostředky třetích stran, které integrovaly s pl
 
 * Číst kalendář uživatele
 * Zápis do kalendáře uživatele
-* Odesílat poštu jménem uživatele
+* Odesílání pošty jménem uživatele
 
 Definováním těchto typů oprávnění prostředek má detailní kontrolu nad jeho data a jak rozhraní API funkce jsou dostupné. Aplikace třetí strany můžete požádat tato oprávnění uživatelům a správcům, kteří musí schválit žádost o dříve, než aplikace můžete získat přístup k datům nebo jednat jménem uživatele. Podle bloků funkce prostředku do menších sady oprávnění, aplikace třetích stran se dají s žádostí o pouze konkrétní oprávnění, které potřebují k provedení jejich funkce. Uživatelé a správci můžou znáte přesně jaká data aplikace má přístup k a je možné si větší jistotu, že se nechová se zlými úmysly. Vývojáři by měla vždy dodržováním konceptu nejnižších oprávnění žádá o oprávnění, které potřebují pro své aplikace fungovat.
 
@@ -64,13 +64,13 @@ Aplikace požádá o nejčastěji, že tyto oprávnění tak, že zadáte obory 
 
 Platforma identit Microsoft podporuje dva typy oprávnění: **delegovaná oprávnění** a **oprávnění aplikace**.
 
-- **Delegovaná oprávnění** jsou používány aplikací, které mají přihlášeného uživatele k dispozici. Pro tyto aplikace uživatel nebo správce souhlasí s oprávněními, žádosti o aplikace a aplikace je delegovaná oprávnění tak, aby fungoval jako přihlášený uživatel při volání cílový prostředek. Některé delegovaná oprávnění lze vyjádřit souhlas uživatelé bez oprávnění správce, ale některá oprávnění vyšší úrovní oprávnění vyžadují [souhlas správce](v2-permissions-and-consent.md#admin-restricted-scopes).  
+* **Delegovaná oprávnění** jsou používány aplikací, které mají přihlášeného uživatele k dispozici. U těchto aplikací uživatel nebo správce souhlasí s oprávněními, žádosti o aplikace a aplikace je delegovaná oprávnění tak, aby fungoval jako přihlášený uživatel při volání cílový prostředek. Některé delegovaná oprávnění lze vyjádřit souhlas uživatelé bez oprávnění správce, ale některá oprávnění vyšší úrovní oprávnění vyžadují [souhlas správce](v2-permissions-and-consent.md#admin-restricted-scopes). Informace o tom, které správce rolí můžou udělit souhlas s delegovaná oprávnění, najdete v článku [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
-- **Oprávnění aplikace** aplikací používají, na kterých běží bez přihlášeného uživatele k dispozici, například aplikace, na kterých běží jako služby na pozadí nebo procesy démon.  Oprávnění aplikace může být pouze [schválená správcem](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). 
+* **Oprávnění aplikace** aplikací používají, na kterých běží bez přihlášeného uživatele k dispozici, například aplikace, na kterých běží jako služby na pozadí nebo procesy démon.  Oprávnění aplikace může být pouze [schválená správcem](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 _Skutečná oprávnění_ jsou oprávnění, která vaše aplikace bude mít při zasílání požadavků na cílový prostředek. Je důležité pochopit rozdíl mezi delegované a oprávnění aplikací, kterým je uděleno oprávnění aplikace a jeho skutečná oprávnění, při volání cílový prostředek.
 
-- Delegovaná oprávnění _efektivní oprávnění_ vaší aplikace bude nejnižším oprávněním průnik delegovaná oprávnění aplikace získala (prostřednictvím souhlas) a pověření aktuálně přihlášeného uživatele. Aplikace nemůže mít nikdy více oprávnění než přihlášený uživatel. V rámci organizací je možné oprávnění přihlášeného uživatele určit pomocí zásady nebo členství v jedné nebo několika rolích správce. Další informace o rolích správce najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+- Delegovaná oprávnění _efektivní oprávnění_ vaší aplikace bude nejnižším oprávněním průnik delegovaná oprávnění aplikace získala (prostřednictvím souhlas) a pověření aktuálně přihlášeného uživatele. Aplikace nemůže mít nikdy více oprávnění než přihlášený uživatel. V rámci organizací je možné oprávnění přihlášeného uživatele určit pomocí zásady nebo členství v jedné nebo několika rolích správce. Informace o tom, které správce rolí můžou udělit souhlas s delegovaná oprávnění, najdete v článku [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
   Předpokládejme například, udělil vaší aplikace _User.ReadWrite.All_ delegovaná oprávnění. Toto oprávnění vaší aplikaci výslovně uděluje oprávnění ke čtení a aktualizaci profilu každého uživatele v organizaci. Pokud je přihlášený uživatel globální správce, vaše aplikace bude moct aktualizovat profil každého uživatele v organizaci. Pokud však přihlášený uživatel není v roli správce, vaše aplikace bude moct aktualizovat pouze profil přihlášeného uživatele. Nebude moct aktualizovat profily ostatních uživatelů v organizaci, protože uživatel, jehož jménem má aplikace oprávnění jednat, tato oprávnění nemá.
   
 - Pro oprávnění aplikací _efektivní oprávnění_ vaší aplikace bude úrovni úplná oprávnění odvozené od oprávnění. Například aplikace, který má _User.ReadWrite.All_ oprávnění k aplikaci můžete aktualizovat profil každého uživatele v organizaci. 
@@ -87,13 +87,13 @@ Pokud aplikace provádí přihlášení s použitím [OpenID Connect](active-dir
 
 `email` Rozsahu jde použít s `openid` obor a všechny ostatní. Poskytuje přístup k aplikaci primární e-mailovou adresu uživatele v podobě `email` deklarací identity. `email` Deklarací identity je součástí token pouze v případě, že uživatelský účet, který není vždy případ přidružen e-mailovou adresu. Pokud se používá `email` oboru, vaše aplikace by měla být připravena ke zpracování případ, ve kterém `email` deklarace identity v tokenu neexistuje.
 
-### <a name="profile"></a>Profil
+### <a name="profile"></a>profil
 
 `profile` Rozsahu jde použít s `openid` obor a všechny ostatní. Poskytuje přístup k aplikaci k vyžadovat značné množství informací o uživateli. Obsahuje informace, které má přístup, ale není omezena pouze na uživatele křestní jméno, příjmení, upřednostňované uživatelské jméno a ID objektu. Úplný seznam profilu deklarací, který je k dispozici v parametru id_tokens pro konkrétního uživatele, najdete v článku [ `id_tokens` odkaz](id-tokens.md).
 
 ### <a name="offlineaccess"></a>offline_access
 
-[ `offline_access` Oboru](http://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) poskytuje aplikaci přístup k prostředkům jménem uživatele po delší dobu. Na stránce pracovní účet souhlasu tento obor se zobrazí jako "Přístup k vašim datům kdykoli" oprávnění. Na osobní účet souhlasu stránce Microsoft zobrazí se jako "Vaše údaje časově neomezený přístup k" oprávnění. Pokud uživatel potvrdí `offline_access` oboru, vaše aplikace může přijímat tokeny obnovení z koncového bodu v2.0 tokenu. Obnovovací tokeny jsou s dlouhým poločasem rozpadu. Aplikace můžete získat nové přístupové tokeny, protože platnost starších ty.
+[ `offline_access` Oboru](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) poskytuje aplikaci přístup k prostředkům jménem uživatele po delší dobu. Na stránce pracovní účet souhlasu tento obor se zobrazí jako "Přístup k vašim datům kdykoli" oprávnění. Na osobní účet souhlasu stránce Microsoft zobrazí se jako "Vaše údaje časově neomezený přístup k" oprávnění. Pokud uživatel potvrdí `offline_access` oboru, vaše aplikace může přijímat tokeny obnovení z koncového bodu v2.0 tokenu. Obnovovací tokeny jsou s dlouhým poločasem rozpadu. Aplikace můžete získat nové přístupové tokeny, protože platnost starších ty.
 
 Pokud vaše aplikace nebude vyžadovat `offline_access` oboru, nezíská obnovovací tokeny. To znamená, že když uplatníte autorizační kód v [tok autorizačního kódu OAuth 2.0](active-directory-v2-protocols.md), zobrazí se pouze přístupového tokenu z `/token` koncového bodu. Přístupový token je platný po krátkou dobu. Obvykle vyprší platnost přístupového tokenu v jedné hodiny. AT, že bod, vaše aplikace potřebuje k přesměruje uživatele zpět `/authorize` koncový bod pro získání nové autorizační kód. Během toto přesměrování, v závislosti na typu aplikace může uživatel muset znovu zadat své přihlašovací údaje nebo znovu souhlas oprávnění.
 

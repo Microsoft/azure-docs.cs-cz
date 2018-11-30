@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 71d5c26c8c41c470e188291dea4a4dab2811a67e
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 6e19735f604fdcd6d6642814e776fd9987d11fde
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963111"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499508"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
 [Power BI](http://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](app-insights-overview.md).
@@ -109,7 +109,6 @@ Pokud snižování datové sady z dotazu Analytics nesplňuje vaše požadavky, 
    * Nahraďte  **https://management.azure.com/subscriptions/...**
    * s  **https://api.applicationinsights.io/beta/apps/...**
 3. Nakonec aktualizujte přihlašovací údaje na základní a použijte svůj klíč rozhraní API.
- �
 
 **Existujícího skriptu**
  ```

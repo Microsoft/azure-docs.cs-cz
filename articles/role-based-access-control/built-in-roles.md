@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/19/2018
+ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: a57aae3b5f854871c94d5a4d62b41ad6a1bafcfd
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 58bec272733d0ad83665f4e06f37ae528eb2f8b9
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824927"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499661"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -39,7 +39,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [AcrImageSigner](#acrimagesigner) | podepisující osoba image ACR |
 | [AcrQuarantineReader](#acrquarantinereader) | čtenář dat karantény ACR |
 | [AcrQuarantineWriter](#acrquarantinewriter) | zapisovatel dat karantény ACR |
-| [Přispěvatel služby API Management](#api-management-service-contributor) | Umožňuje spravovat služby API Management, ale ne přístup k nim. |
+| [Přispěvatel služby API Management](#api-management-service-contributor) | Může spravovat službu a rozhraní API |
 | [Role operátor služby API Management](#api-management-service-operator-role) | Může spravovat službu, ale ne rozhraní API. |
 | [Role Čtenář služby API Management](#api-management-service-reader-role) | Přístup ke službě a rozhraním API jen ke čtení |
 | [Přispěvatel součástí Application Insights](#application-insights-component-contributor) | Může spravovat součásti Application Insights. |
@@ -53,7 +53,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel zálohování](#backup-contributor) | Umožňuje spravovat službu zálohování, ale neumožňuje vytvářet trezory a udělovat přístup ostatním uživatelům. |
 | [Operátor zálohování](#backup-operator) | Umožňuje spravovat služby zálohování s výjimkou odebírání záloh, vytváření trezorů a udělování přístupu jiným uživatelům. |
 | [Čtenář záloh](#backup-reader) | Může zobrazovat služby zálohování, ale nemůže provádět změny. |
-| [Čtenář fakturace](#billing-reader) | Umožňuje číst fakturačních dat |
+| [Čtenář fakturace](#billing-reader) | Povolí přístup pro čtení fakturačních údajů. |
 | [Přispěvatel BizTalk](#biztalk-contributor) | Umožňuje správu služeb BizTalk, ale ne přístup k nim. |
 | [Přispěvatel koncového bodu CDN](#cdn-endpoint-contributor) | Může spravovat koncové body CDN, ale nemůže udělovat přístup jiným uživatelům. |
 | [Čtenář koncového bodu CDN](#cdn-endpoint-reader) | Může zobrazovat koncové body CDN, ale nemůže je měnit. |
@@ -70,12 +70,14 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Služba Cost Management čtečky](#cost-management-reader) | Může zobrazovat data a konfiguraci nákladů (např. rozpočty, exporty). |
 | [Přispěvatel data Box](#data-box-contributor) | Umožňuje spravovat vše ve službě Data Box Service kromě udělení přístupu jiným uživatelům. |
 | [Čtecí modul dat pole](#data-box-reader) | Umožňuje spravovat službu Data Box Service kromě vytváření objednávky nebo úpravy podrobností o objednávce a udělení přístupu jiným uživatelům. |
-| [Přispěvatel data Factory](#data-factory-contributor) | Umožňuje spravovat datové továrny, ale ne přístup k nim. |
+| [Přispěvatel data Factory](#data-factory-contributor) | Umožňuje vytvářet a spravovat datové továrny i podřízené prostředky v nich. |
 | [Vývojář data Lake Analytics](#data-lake-analytics-developer) | Umožňuje odesílat, monitorovat a spravovat vlastní úlohy, ale neumožňuje vytvářet ani odstraňovat účty Data Lake Analytics. |
 | [Purger dat](#data-purger) | Může vyprázdnit analytická data. |
-| [Uživatel služby DevTest Labs](#devtest-labs-user) | Umožňuje připojení, spuštění, restartování a vypínání virtuálních počítačů ve vaší službě Azure DevTest Labs. |
+| [Uživatel služby DevTest Labs](#devtest-labs-user) | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
 | [Přispěvatel zóny DNS](#dns-zone-contributor) | Umožňuje spravovat zóny DNS a sady záznamů v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) | Můžete spravovat účty služby Azure Cosmos DB. Azure Cosmos DB je dříve DocumentDB. |
+| [Přispěvatel EventSubscription EventGrid (Preview)](#eventgrid-eventsubscription-contributor-preview) | Umožňuje spravovat EventGrid operací odběru události. |
+| [Čtenář EventSubscription EventGrid (Preview)](#eventgrid-eventsubscription-reader-preview) | Umožňuje číst EventGrid odběry událostí. |
 | [Přispěvatel služby HDInsight domény](#hdinsight-domain-services-contributor) | Může číst, vytvářet, upravovat a odstraňovat operace, které souvisí s Domain Services a jsou nezbytné pro Balíček zabezpečení podniku HDInsight. |
 | [Přispěvatel účtů inteligentních systémů](#intelligent-systems-account-contributor) | Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim. |
 | [Přispěvatel Key Vaultu](#key-vault-contributor) | Umožňuje spravovat trezory klíčů, ale ne přistupovat k nim. |
@@ -101,7 +103,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel kolekcí úloh scheduleru](#scheduler-job-collections-contributor) | Umožňuje správu kolekcí úloh Scheduleru, ale ne přístup k nim. |
 | [Přispěvatel služby Search](#search-service-contributor) | Umožňuje správu služeb Search, ale ne přístup k nim. |
 | [Správce zabezpečení](#security-admin) | Ve službě Security Center jenom: můžete zobrazit zásady zabezpečení, zobrazení stavu zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, Zavřít upozornění a doporučení |
-| [Správce zabezpečení](#security-manager) | Umožňuje spravovat součásti zabezpečení, zásady zabezpečení a virtuální počítače |
+| [Správce zabezpečení (starší verze)](#security-manager-legacy) | Toto je starší verze role. Místo toho použijte Správce zabezpečení |
 | [Čtenář zabezpečení](#security-reader) | Ve službě Security Center jenom: můžete zobrazit doporučení a výstrahy, zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny zobrazení |
 | [Přispěvatel Site Recovery](#site-recovery-contributor) | Umožňuje spravovat službu Site Recovery, ale ne vytvářet trezory a přiřazovat role. |
 | [Operátor Site Recovery](#site-recovery-operator) | Umožňuje provádět převzetí služeb při selhání a navrácení služeb po obnovení, ale žádné jiné operace správy služby Site Recovery. |
@@ -119,7 +121,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel Traffic Manageru](#traffic-manager-contributor) | Umožňuje spravovat profily Traffic Manageru, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Správce uživatelských přístupů](#user-access-administrator) | Umožňuje správu přístupu uživatelů k prostředkům Azure. |
 | [Přihlášení správce virtuálního počítače](#virtual-machine-administrator-login) | Zobrazit virtuální počítače na portálu a přihlásit se jako správce |
-| [Přispěvatel virtuálních počítačů](#virtual-machine-contributor) | Umožňuje spravovat virtuální počítače, ale ne přístup k nim a není virtuální síť nebo účet úložiště, který jste připojeni k. |
+| [Přispěvatel virtuálních počítačů](#virtual-machine-contributor) | Umožňuje správu virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
 | [Přihlášení uživatele virtuálního počítače](#virtual-machine-user-login) | Zobrazit virtuální počítače na portálu a přihlásit se jako běžný uživatel |
 | [Přispěvatel webových plánů](#web-plan-contributor) | Umožňuje správu webových plánů pro weby, ale ne přístup k nim. |
 | [Přispěvatel webů](#website-contributor) | Umožňuje správu webů (ne webových plánů), ale ne přístup k nim. |
@@ -146,8 +148,8 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Authorization/*/Delete | Nelze odstranit, role a přiřazení rolí |
 > | Microsoft.Authorization/*/Write | Nelze vytvořit role a přiřazení rolí |
 > | Microsoft.Authorization/elevateAccess/Action | Udělí volajícímu přístup Správce uživatelských přístupů v oboru tenanta. |
-> | Microsoft.Blueprint/blueprintAssignments/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu. |
-> | Microsoft.Blueprint/blueprintAssignments/delete | Odstraní všechny artefakty podrobného plánu. |
+> | Microsoft.Blueprint/blueprintAssignments/write | Vytvoří nebo aktualizuje všechny artefakty podrobného plánu |
+> | Microsoft.Blueprint/blueprintAssignments/delete | Odstranit všechny artefakty podrobného plánu |
 
 ## <a name="reader"></a>Čtenář
 > [!div class="mx-tableFixed"]
@@ -165,8 +167,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Popis** | podepisující osoba image ACR |
 > | **ID** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Akce** |  |
-> | Microsoft.ContainerRegistry/registries/*/read |  |
-> | Microsoft.ContainerRegistry/registries/*/write |  |
+> | Microsoft.ContainerRegistry/registries/sign/write | Vyžádanou metadata obsahu vztahu důvěryhodnosti pro službu container registry. |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -175,7 +176,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Popis** | čtenář dat karantény ACR |
 > | **ID** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Akce** |  |
-> | Microsoft.ContainerRegistry/registries/quarantineRead/read |  |
+> | Microsoft.ContainerRegistry/registries/quarantineRead/read | O přijetí změn nebo získat v karanténě imagí z registru kontejneru |
 
 ## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
@@ -184,14 +185,14 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Popis** | zapisovatel dat karantény ACR |
 > | **ID** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **Akce** |  |
-> | Microsoft.ContainerRegistry/registries/quarantineWrite/write |  |
-> | Microsoft.ContainerRegistry/registries/quarantineRead/read |  |
+> | Microsoft.ContainerRegistry/registries/quarantineRead/read | O přijetí změn nebo získat v karanténě imagí z registru kontejneru |
+> | Microsoft.ContainerRegistry/registries/quarantineWrite/write | Zápis nebo upravit stav karantény v karanténě imagí |
 
 ## <a name="api-management-service-contributor"></a>Přispěvatel služby API Management
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje spravovat služby API Management, ale ne přístup k nim. |
+> | **Popis** | Může spravovat službu a rozhraní API |
 > | **ID** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Akce** |  |
 > | Microsoft.ApiManagement/service/* | Vytvoření a Správa služby API Management |
@@ -536,7 +537,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje číst fakturačních dat |
+> | **Popis** | Povolí přístup pro čtení fakturačních údajů. |
 > | **ID** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
@@ -813,7 +814,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje spravovat datové továrny, ale ne přístup k nim. |
+> | **Popis** | Umožňuje vytvářet a spravovat datové továrny i podřízené prostředky v nich. |
 > | **ID** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení role |
@@ -872,7 +873,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje připojení, spuštění, restartování a vypínání virtuálních počítačů ve vaší službě Azure DevTest Labs. |
+> | **Popis** | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
 > | **ID** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení role |
@@ -883,13 +884,14 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Compute/virtualMachines/restart/action | Umožňuje restartovat virtuální počítač. |
 > | Microsoft.Compute/virtualMachines/start/action | Umožňuje spustit virtuální počítač. |
 > | Microsoft.DevTestLab/*/read | Číst vlastnosti služby testovacího prostředí |
-> | Microsoft.DevTestLab/labs/createEnvironment/action | Vytvoření virtuálních počítačů v testovacím prostředí. |
 > | Microsoft.DevTestLab/labs/claimAnyVm/action | Deklarace identity náhodný nárokovatelný virtuální počítač v testovacím prostředí. |
+> | Microsoft.DevTestLab/labs/createEnvironment/action | Vytvoření virtuálních počítačů v testovacím prostředí. |
 > | Microsoft.DevTestLab/labs/formulas/delete | Odstraňte vzorce. |
 > | Microsoft.DevTestLab/labs/formulas/read | Další vzorce. |
 > | Microsoft.DevTestLab/labs/formulas/write | Přidat nebo upravit vzorce. |
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Vyhodnotí zásady testovacího prostředí. |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | Převzít vlastnictví existujícího virtuálního počítače |
+> | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | Obsahuje příslušné spustit/zastavit plány. |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Připojí pro fond adres back-endu nástroje pro vyrovnávání zatížení |
 > | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Připojí pravidla příchozích pravidel nat služby load balancer |
 > | Microsoft.Network/networkInterfaces/*/read | Čtení vlastností síťového rozhraní (třeba všechny nástroje pro vyrovnávání zatížení, které se síťové rozhraní je součástí) |
@@ -936,6 +938,37 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>Přispěvatel EventSubscription EventGrid (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje spravovat EventGrid operací odběru události. |
+> | **ID** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
+> | **Akce** |  |
+> | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
+> | Microsoft.EventGrid/eventSubscriptions/* |  |
+> | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | Seznam předplatných globální události podle typu tématu |
+> | Microsoft.EventGrid/locations/eventSubscriptions/read | Seznam předplatných místní události |
+> | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | Seznam odběrů událostí regionální topictype |
+> | Microsoft.Insights/alertRules/* | Vytvoření a Správa pravidel výstrah Insights |
+> | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
+> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+
+## <a name="eventgrid-eventsubscription-reader-preview"></a>Čtenář EventSubscription EventGrid (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje číst EventGrid odběry událostí. |
+> | **ID** | 2414bbcf-6497-4FAF-8c65-045460748405 |
+> | **Akce** |  |
+> | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
+> | Microsoft.EventGrid/eventSubscriptions/read | Přečtěte si eventSubscription |
+> | Microsoft.EventGrid/topicTypes/eventSubscriptions/read | Seznam předplatných globální události podle typu tématu |
+> | Microsoft.EventGrid/locations/eventSubscriptions/read | Seznam předplatných místní události |
+> | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | Seznam odběrů událostí regionální topictype |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 
 ## <a name="hdinsight-domain-services-contributor"></a>Přispěvatel Doménových služeb HDInsight
 > [!div class="mx-tableFixed"]
@@ -1089,6 +1122,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Popis** | Umožňuje číst a provádět akce s prostředky spravované aplikace. |
 > | **ID** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | **Akce** |  |
+> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
 > | Microsoft.Solutions/applications/read | Načte seznam aplikací. |
 
 ## <a name="managed-applications-reader"></a>Čtenář Managed Applications
@@ -1185,7 +1219,6 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
-> | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>Vydavatel metrik monitorování
 > [!div class="mx-tableFixed"]
@@ -1332,15 +1365,17 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Security/locations/tasks/activate/action | Aktivovat doporučení zabezpečení |
 > | Microsoft.Security/locations/tasks/dismiss/action | Zavřít doporučení zabezpečení |
 > | Microsoft.Security/policies/write | Aktualizuje zásady zabezpečení |
-> | Microsoft.Security/securityContacts/write | Aktualizace kontaktů zabezpečení |
+> | Microsoft.Security/pricings/write | Aktualizace nastavení cen pro obor |
+> | Microsoft.Security/pricings/delete | Odstraní nastavení cen pro obor |
 > | Microsoft.Security/securityContacts/delete | Odstraní kontaktů zabezpečení |
+> | Microsoft.Security/securityContacts/write | Aktualizace kontaktů zabezpečení |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
-## <a name="security-manager"></a>Správce zabezpečení
+## <a name="security-manager-legacy"></a>Správce zabezpečení (starší verze)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje spravovat součásti zabezpečení, zásady zabezpečení a virtuální počítače |
+> | **Popis** | Toto je starší verze role. Místo toho použijte Správce zabezpečení |
 > | **ID** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
@@ -1559,11 +1594,13 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Vytvářejte a spravujte zásady auditování SQL serveru |
 > | Microsoft.Sql/servers/auditingSettings/* | Vytvářet a spravovat nastavení auditování serveru SQL |
+> | Microsoft.Sql/servers/extendedAuditingSettings/read | Načíst podrobnosti o objektu blob rozšířený server auditování zásady nakonfigurované na daném serveru |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | Vytvářet a spravovat zásady auditování databáze SQL serveru |
 > | Microsoft.Sql/servers/databases/auditingSettings/* | Vytvářet a spravovat nastavení auditování databáze SQL serveru |
 > | Microsoft.Sql/servers/databases/auditRecords/read | Záznamy auditu pro čtení |
 > | Microsoft.Sql/servers/databases/connectionPolicies/* | Vytvoření a Správa zásad připojení databáze serveru SQL |
 > | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | Vytvoření a Správa zásad maskování dat z databáze SQL serveru |
+> | Microsoft.Sql/servers/databases/extendedAuditingSettings/read | Načíst podrobnosti o rozšířený objekt blob auditu zásady, které jsou nakonfigurované na danou databázi |
 > | Microsoft.Sql/servers/databases/read | Vrátí seznam databází nebo získá vlastnosti pro určenou databázi. |
 > | Microsoft.Sql/servers/databases/schemas/read | Načíst seznam schémata databáze |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Načíst seznam sloupců tabulky. |
@@ -1753,7 +1790,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje spravovat virtuální počítače, ale ne přístup k nim a není virtuální síť nebo účet úložiště, který jste připojeni k. |
+> | **Popis** | Umožňuje správu virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
 > | **ID** | 9980e02c-c2be-4D73-94e8-173b1dc7cf3c |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Autorizace pro čtení |

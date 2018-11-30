@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 35b80223552181e44beac011f5fb541158466acc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bdb2e355b29306c8a78a3a773269baeee13fc9d1
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255395"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497547"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa služby ML clusteru v Azure HDInsight
 
@@ -33,7 +33,7 @@ Více souběžných uživatelů pro služby ML clusteru v HDInsight můžete pov
 
 ![Souběžný uživatel 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
 
-- **Uživatelské jméno přihlášení clusteru:** Uživatel HTTP pro ověřování prostřednictvím brány HDInsight, která slouží k ochraně vytvořených clusterů HDInsight. Tento uživatel HTTP slouží k přístupu k uživatelskému rozhraní Ambari, uživatelskému rozhraní YARN a dalším komponentám uživatelského rozhraní.
+- **Uživatelské jméno přihlášení clusteru:** Uživatel HTTP pro ověřování prostřednictvím brány HDInsight, která slouží k ochraně vytvořených clusterů HDInsight. Tento uživatel HTTP slouží k přístupu k rozhraní Apache Ambari, uživatelskému rozhraní YARN Apache Hadoop, jakož i dalším komponentám uživatelského rozhraní.
 - **Uživatelské jméno Secure Shell (SSH):** Uživatel SSH sloužící k přístupu ke clusteru přes Secure Shell. Tento uživatel je uživatel v systému Linux pro všechny hlavní uzly, pracovní uzly a hraniční uzly. Proto můžete použít Secure Shell pro přístup k jakémukoli uzlu ve vzdáleném clusteru.
 
 R Studio Server Community verze použitá v clusteru služby ML v HDInsight přijímá jako přihlašovací mechanismus pouze Linuxové uživatelské jméno a heslo. Nepodporuje předávání tokenů. Ano při pokusu o přístup k R Studio poprvé v clusteru služby ML, musíte se přihlásit dvakrát.
@@ -52,7 +52,7 @@ Protože RStudio běží na hraničním uzlu clusteru, existuje několik kroků:
 
 ### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>Krok 1: Přihlášení k hraničnímu uzlu pomocí vytvořeného uživatele SSH
 
-Postupujte podle pokynů na adrese [připojení k HDInsight (Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) pro přístup k hraničnímu uzlu. Adresa hraničního uzlu pro cluster služby ML na HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
+Postupujte podle pokynů na adrese [připojení k HDInsight (Apache Hadoop) pomocí protokolu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) pro přístup k hraničnímu uzlu. Adresa hraničního uzlu pro cluster služby ML na HDInsight je `CLUSTERNAME-ed-ssh.azurehdinsight.net`.
 
 ### <a name="step-2-add-more-linux-users-in-edge-node"></a>Krok 2: Přidání dalších uživatelů Linuxu na hraničním uzlu
 
@@ -104,7 +104,7 @@ Můžete nastavit přístup k výpočetním kontextu Spark v HDInsight ze vzdál
       consoleOutput= TRUE
     )
 
-Další informace najdete v části "Použití Microsoft Machine Learning Server jako klienta Hadoop" v [použití RevoScaleR ve výpočetním kontextu Spark](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
+Další informace najdete v části "Pomocí Microsoft Machine Learning Server jako Apache klienta Hadoop" v [použití RevoScaleR ve výpočetním kontextu Apache Sparku](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)
 
 ## <a name="use-a-compute-context"></a>Použití výpočetního kontextu
 
@@ -250,7 +250,7 @@ Pokud stále používáte kontext Spark, tento příkaz vrátí hodnoty nodename
         nodename
     "wn3-mymlser"
 
-## <a name="access-data-in-hive-and-parquet"></a>Přístup k datům v Hive a Parquet
+## <a name="access-data-in-apache-hive-and-parquet"></a>Přístup k datům v Apache Hive a Parquet
 
 Služby ML HDInsight umožňuje přímý přístup k datům v Hive a Parquet pro použití ve funkcích scaler ve výpočetním kontextu Spark. Tyto možnosti jsou dostupné prostřednictvím nových funkcí zdroje dat ScaleR s názvem RxHiveData a RxParquetData. Funkce pomocí Spark SQL načtou data přímo do struktury DataFrame ve Sparku, aby je ScaleR mohl analyzovat.
 

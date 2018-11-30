@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2e14112220eeea1df094ff0c5844429fa3891a9b
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 8337d6b353b6651a2699176813220ed7a7a0f879
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612801"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634791"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
@@ -84,7 +84,7 @@ Jsou už nebude možné vytvořit nové pracovní prostory na portálu OMS. Post
 Byl [rozšíří do portálu Azure portal](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Po jejím dokončení akce správy na výstrahy budou k dispozici pouze na webu Azure portal. Existující výstrahy bude dál zobrazovat na portálu OMS. Pokud k upozorněním přistupujete programově s využitím Log Analytics výstrah REST API nebo šablonu oznámení prostředku Log Analytics, budete muset použít skupiny akcí místo akcí ve volání rozhraní API, šablon Azure Resource Manageru a příkazech Powershellu.
 
 ### <a name="alert-management-solution"></a>Řešení pro správu výstrah
-Místo [řešení alert managementu](log-analytics-solution-alert-management.md), můžete použít [unified Azure Monitor výstrah rozhraní](../monitoring-and-diagnostics/monitoring-overview-alerts.md) vizualizovat a spravovat upozornění. Toto nové prostředí agreguje výstrahy z více zdrojů v rámci Azure včetně upozornění protokolů ze služby Log Analytics. Můžete naleznete v tématu distribuce upozornění, využít výhod automatizovaného seskupení souvisejících výstrah pomocí inteligentní skupin a zobrazit výstrahy napříč několika předplatnými při použití bohaté filtrů. Všechny tyto funkce jsou dostupné ve verzi preview od 4. června 2018. Správa výstrah řešení nebude k dispozici na webu Azure Portal. 
+Místo [řešení alert managementu](../azure-monitor/platform/alert-management-solution.md), můžete použít [unified Azure Monitor výstrah rozhraní](../monitoring-and-diagnostics/monitoring-overview-alerts.md) vizualizovat a spravovat upozornění. Toto nové prostředí agreguje výstrahy z více zdrojů v rámci Azure včetně upozornění protokolů ze služby Log Analytics. Můžete naleznete v tématu distribuce upozornění, využít výhod automatizovaného seskupení souvisejících výstrah pomocí inteligentní skupin a zobrazit výstrahy napříč několika předplatnými při použití bohaté filtrů. Všechny tyto funkce jsou dostupné ve verzi preview od 4. června 2018. Správa výstrah řešení nebude k dispozici na webu Azure Portal. 
 
 Údaje shromážděné tímto řešením Správa výstrah (záznamů s typem upozornění) i nadále v Log Analytics, dokud je řešení nainstalováno pro pracovní prostor. Od srpna 2018 se datové proudy upozornění neupozorňovala sjednocené do pracovních prostorů se povolí, nahraďte tuto funkci. Některé změny schématu se očekává, že a oznámíme později.
 
@@ -98,7 +98,7 @@ Díky podpoře [dotazy napříč prostředky](log-analytics-cross-workspace-sear
 
 
 ## <a name="azure-network-security-group-analytics"></a>Analýzy skupin zabezpečení sítě Azure
-[Řešení analýzy skupin zabezpečení sítě Azure](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) nahradí s nedávno uvedená [analýzu provozu](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) který poskytuje přehled o aktivitě uživatelů a aplikací v cloudových sítích. Analýza provozu umožňuje auditovat aktivitu sítě vaší organizace, zabezpečených aplikací a dat, optimalizovat výkon úloh a zajistěte dodržování předpisů. 
+[Řešení analýzy skupin zabezpečení sítě Azure](../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) nahradí s nedávno uvedená [analýzu provozu](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) který poskytuje přehled o aktivitě uživatelů a aplikací v cloudových sítích. Analýza provozu umožňuje auditovat aktivitu sítě vaší organizace, zabezpečených aplikací a dat, optimalizovat výkon úloh a zajistěte dodržování předpisů. 
 
 Toto řešení analyzuje protokoly toků NSG a poskytuje přehledy o následující.
 

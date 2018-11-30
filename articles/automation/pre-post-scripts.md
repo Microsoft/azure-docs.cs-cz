@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 245cbd86ae43560e4e41f4b97350f9a5857e1b25
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d84596b586ea54dd4a64faf46b32226862d83198
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956610"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584616"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Spravovat skripty před a po (Preview)
 
@@ -220,8 +220,6 @@ if ($summary.Type -eq "Error")
 ## <a name="known-issues"></a>Známé problémy
 
 * Pro parametry nelze předat objekty nebo pole, při použití skriptů před a po. Runbook se nezdaří.
-* Sady Runbook, které nejsou publikovány se zobrazí při výběru skriptů před a po jako volitelnou. Jenom runbooky, které jsou publikovány je třeba zvolit, jak zrušit publikované sady runbook nelze spustit a se nezdaří.
-* Počítače přidat do nasazení s použitím [dynamické skupiny (preview)](automation-update-management.md#using-dynamic-groups) nejsou aktuálně součástí **SoftwareUpdateConfigurationRunContext** parametr, který je předán do skriptů před a po.
 
 ## <a name="next-steps"></a>Další postup
 

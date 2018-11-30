@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 9/26/2018
+ms.date: 11/28/2018
 ms.author: victorh
-ms.openlocfilehash: 868c20e6f0244794299678214902adf3e6e95f14
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: b90496b0ccc6c8243c2d1b3ead1e7c4faa4801ec
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241408"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582034"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -67,12 +67,11 @@ Brána Azure Firewall má následující známé problémy:
 |Konflikt s funkcí Just-in-Time (JIT) služby Azure Security Center (ASC)|Pokud se k virtuálnímu počítači přistupuje metodou JIT a je v podsíti s uživatelem definovanou trasou, která odkazuje na Azure Firewall jako na výchozí bránu, nebude ASC JIT fungovat. To je důsledkem asymetrického směrování – paket přichází přes veřejnou IP adresu virtuálního počítače (JIT otevřel přístup), ale návratový paket odchází přes bránu firewall, která ho zahodí, protože v bráně firewall nebyla otevřena žádná relace.|Tento problém odstraníte tak, že umístíte virtuální počítače s JIT do samostatné podsítě, která nemá uživatelem definovanou trasu do firewallu.|
 |Hvězdicová architektura s globálním peeringem se nepodporuje|Používáte hvězdicovou architekturu, kdy jsou rozbočovač a brána firewall nasazené v jedné oblasti Azure a koncové body v jiné oblasti Azure. Připojení k rozbočovači prostřednictvím globálního VNET peeringu se nepodporují.|Toto chování je úmyslné. Další informace najdete v tématu [Limity, kvóty a omezení předplatného a služeb Azure](../azure-subscription-service-limits.md#azure-firewall-limits).|
 Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP) nebudou fungovat pro provoz do internetu.|Pravidla síťového filtrování pro jiné protokoly než TCP/UDP nefungují s překladem SNAT na veřejnou IP adresu. Jiné protokoly než TCP/UDP jsou ale podporované mezi koncovými podsítěmi a virtuálními sítěmi.|Azure Firewall používá vyvažování zatížení úrovně Standard, [které v současnosti nepodporuje SNAT pro protokol IP](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Zkoumáme možnosti, jak podporu tohoto scénáře zahrnout do budoucích verzí.|
-|Určení NAT (DNAT) nefunguje pro port 80 a 22.|Pole Cílový port v kolekci pravidel NAT nemůže obsahovat port 80 nebo 22.|Pracujeme na tom, abychom to v blízké budoucnosti opravili. Do té doby použijte jako cílový port v pravidlech NAT jakýkoliv jiný port. Port 80 nebo 22 může i nadále sloužit jako překládaný port (například můžete namapovat veřejnou adresu ip:81 na privátní ip:80).|
 |Chybějící podpora PowerShellu a rozhraní příkazového řádku pro protokol ICMP|Azure PowerShell a rozhraní příkazového řádku nepodporují ICMP jako platný protokol v pravidlech sítě.|ICMP můžete pořád používat jako protokol prostřednictvím portálu a rozhraní REST API. Pracujeme na brzkém přidání protokolu ICMP do PowerShellu a rozhraní příkazového řádku.|
 |Značky plně kvalifikovaného názvu domény vyžadují, aby byl nastavený protokol: port|Pravidla aplikace se značkami plně kvalifikovaného názvu domény vyžadují definici port:protokol.|Jako hodnotu port: protokol můžete použít **https**. Pracujeme na tom, aby toto pole bylo při použití značek plně kvalifikovaného názvu domény nepovinné.|
-|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného není podporované.|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného není podporované.|Podporu této funkčnosti máme v plánu doplnit. Pokud chcete bránu firewall přesunout do jiné skupiny prostředků nebo předplatného, musíte odstranit aktuální instanci a znovu ji vytvořit v nové skupině prostředků nebo předplatném.|
+|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného není podporované.|Přesunutí brány firewall do jiné skupiny prostředků nebo předplatného není podporované.|Podpora této funkce se na náš podrobný popis. Pokud chcete bránu firewall přesunout do jiné skupiny prostředků nebo předplatného, musíte odstranit aktuální instanci a znovu ji vytvořit v nové skupině prostředků nebo předplatném.|
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal](tutorial-firewall-deploy-portal.md)
 - [Nasazení brány Azure Firewall pomocí šablony](deploy-template.md)

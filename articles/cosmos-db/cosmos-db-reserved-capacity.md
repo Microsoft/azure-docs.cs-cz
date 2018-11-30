@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 79b3b84695bd547d6a4b12665aff822b21dfb781
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d389b3b7e50c83246542fd6b446827055a5a002a
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354219"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52583462"
 ---
 # <a name="prepay-for-azure-cosmos-db-resources-with-reserved-capacity"></a>Předplatíte prostředky Azure Cosmos DB pomocí vyhrazené kapacity
 
@@ -58,7 +58,7 @@ Velikost rezervace by měla vycházet z celkové množství propustnost, které 
    |Předplatné  |   Předplatné, které se používá k úhradě služby Azure Cosmos DB rezervované kapacity. Způsob platby u vybraného předplatného se používá v účtování pořizovací náklady. Tento typ předplatného musí být jeden z následujících akcí: <br/><br/>  [Smlouva Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (číslo nabídky: MS-AZR - 0017 P): pro předplatné Enterprise, se poplatky za odečteno od zůstatku peněžním závazkem registrace nebo účtovat jako překročení částky. <br/><br/> [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) (číslo nabídky: MS-AZR - 0003 P): pro předplatné s průběžnými platbami, poplatky se fakturují na kreditní kartou nebo fakturou způsob platby v rámci předplatného.    |
    |Rozsah   |   Možnost, která určuje, kolik předplatných fakturační benefit přidružené k rezervaci můžete využít. Také určuje, jak se má rezervace použít na konkrétní předplatné.   <br/><br/>  Pokud vyberete **jedno předplatné**, sleva za rezervaci se použije pro instance služby Azure Cosmos DB ve vybraném předplatném. <br/><br/>  Pokud vyberete **Shared**, sleva za rezervaci se použije pro instance služby Azure Cosmos DB, které běží v kterékoli předplatné v rámci vaší fakturační kontextu. Kontext fakturace je založená na tom, jak jste zaregistrovali službu Azure. Pro podnikové zákazníky sdílený obor je registraci a zahrnuje všechna předplatná (s výjimkou předplatná pro vývoj/testování) během registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.  <br/><br/> Po nákupu rezervované kapacity můžete změnit obor rezervace.  |
    |Typ rezervované kapacity   |  Jako jednotky žádostí zřízenou propustnost.|
-   |Jednotky rezervované kapacity  |      Množství propustnost, které chcete rezervovat. Tuto hodnotu můžete vypočítat tak, že určíte propustnost potřebné pro všechny vaše služby Cosmos DB prostředky (například databáze nebo kontejnery) v jedné oblasti. Můžete pak vynásobit se podle počtu oblastí, které budete přidružíte k databázi Cosmos DB.  <br/><br/> Příklad: Pokud máte pět oblastí s 1 milion RU/s v každé oblasti, vyberte 5 milionů RU/s pro nákup rezervace kapacitu.    |
+   |Rezervované jednotky kapacity  |      Množství propustnost, které chcete rezervovat. Tuto hodnotu můžete vypočítat tak, že určíte propustnost potřebné pro všechny vaše služby Cosmos DB prostředky (například databáze nebo kontejnery) v jedné oblasti. Můžete pak vynásobit se podle počtu oblastí, které budete přidružíte k databázi Cosmos DB.  <br/><br/> Příklad: Pokud máte pět oblastí s 1 milion RU/s v každé oblasti, vyberte 5 milionů RU/s pro nákup rezervace kapacitu.    |
    |Označení  |   Jeden nebo tři roky.   |
 
 5. Sleva a cenu za rezervaci v **náklady** oddílu. Tato rezervace ceny platí pro prostředky Azure Cosmos DB s propustností zřízené ve všech oblastech.  
@@ -85,7 +85,7 @@ Sleva za rezervaci se automaticky využije na prostředky Azure Cosmos DB, kter�
    * [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](../billing/billing-understand-reserved-instance-usage.md)
    * [Rezervace Azure v programu Partnerské centrum CSP](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
+## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
 
-Pokud máte další otázky, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.
+Pokud máte otázky nebo potřebujete pomoc, [vytvořit žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

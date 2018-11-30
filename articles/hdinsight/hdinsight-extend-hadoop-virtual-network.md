@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 62502e946922928b8b4179d38ce9f9ae55f9930d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 308527bce2048921c2af65aa78a12d8ef2c2bed2
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238977"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497792"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí Azure Virtual Network
 
@@ -25,7 +25,7 @@ Zjistěte, jak používat HDInsight s [Azure Virtual Network](../virtual-network
 
 * Připojování k datům HDInsight ukládají ve službě Azure Virtual network.
 
-* Přímý přístup k systému Apache Hadoop služby, které nejsou k dispozici veřejně přes internet. Například rozhraní API systému Kafka nebo HBase Java API.
+* Přímý přístup k [Apache Hadoop](https://hadoop.apache.org/) služby, které nejsou k dispozici veřejně přes internet. Například [Apache Kafka](https://kafka.apache.org/) rozhraní API nebo [Apache HBase](https://hbase.apache.org/) rozhraní Java API.
 
 > [!WARNING]
 > Informace v tomto dokumentu jsou nutné znalosti toho sítě TCP/IP. Pokud nejste obeznámeni s prací v síti TCP/IP, by měla spolupracovat s někým, kdo je před provedením změny do produkčních sítích.
@@ -171,11 +171,11 @@ Pokud chcete povolit překlad mezi virtuální sítí a prostředky v sítích p
 
 Další informace najdete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
-## <a name="directly-connect-to-hadoop-services"></a>Připojit přímo k služby Hadoop
+## <a name="directly-connect-to-apache-hadoop-services"></a>Přímé připojení ke službám Apache Hadoop
 
 Můžete připojit ke clusteru v https://CLUSTERNAME.azurehdinsight.net. Tato adresa se používá veřejnou IP adresu, která nemusí být dostupný, pokud jste použili skupiny Nsg k omezení příchozí provoz z Internetu. Kromě toho při nasazování clusteru ve virtuální síti k němu máte přístup pomocí privátního koncového bodu https://CLUSTERNAME-int.azurehdinsight.net. Tento koncový bod se přeloží na privátní IP adresu ve virtuální síti pro přístup ke clusteru.
 
-Pro připojení k Ambari a další webové stránky prostřednictvím virtuální sítě, postupujte následovně:
+Pro připojení k Apache Ambari a další webové stránky prostřednictvím virtuální sítě, použijte následující postup:
 
 1. Ke zřízení uzlů clusteru HDInsight interní plně kvalifikované názvy domény (FQDN), použijte jednu z následujících metod:
 
@@ -316,7 +316,7 @@ Pokud máte v úmyslu používat síť **virtuální zařízení brány firewall
 * 11000-11999
 * 14000-14999
 
-Seznam portů pro určité služby, najdete v článku [porty používané služby Hadoop v HDInsight](hdinsight-hadoop-port-settings-for-services.md) dokumentu.
+Seznam portů pro určité služby, najdete v článku [portů používaných služeb Apache Hadoop v HDInsight](hdinsight-hadoop-port-settings-for-services.md) dokumentu.
 
 Další informace o pravidlech brány firewall pro virtuální zařízení, najdete v článku [virtuální zařízení scénář](../virtual-network/virtual-network-scenario-udr-gw-nva.md) dokumentu.
 
@@ -660,8 +660,8 @@ Po dokončení těchto kroků se můžete připojit k prostředkům ve virtuáln
 ## <a name="next-steps"></a>Další postup
 
 * Příklad začátku do konce konfigurace HDInsight pro připojení k místní síti, najdete v části [HDInsight připojit k místní síti](./connect-on-premises-network.md).
-* Konfigurace clusterů Hbase ve virtuálních sítích Azure, najdete v části [vytváření clusterů HBase v HDInsight ve virtuální síti Azure](hbase/apache-hbase-provision-vnet.md).
-* Konfigurace geografické replikace HBase, naleznete v tématu [nastavení replikace clusteru HBase ve virtuálních sítích Azure](hbase/apache-hbase-replication.md).
+* Konfigurace clusterů Apache Hbase ve virtuálních sítích Azure, najdete v části [clusterů vytvořit Apache HBase v HDInsight ve virtuální síti Azure](hbase/apache-hbase-provision-vnet.md).
+* Konfigurace geografické replikace Apache HBase, naleznete v tématu [nastavení replikace clusteru Apache HBase ve virtuálních sítích Azure](hbase/apache-hbase-replication.md).
 * Další informace o virtuálních sítích Azure najdete v článku [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 
 * Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/security-overview.md).

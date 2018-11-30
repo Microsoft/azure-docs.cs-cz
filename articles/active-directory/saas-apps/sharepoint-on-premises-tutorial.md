@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 31f4c64296c180ac441f2fb691514a4b9fb35a57
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 954eec8566173dd4707926d5f713a5cd509bdd9b
+ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687193"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52620060"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -314,14 +314,14 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 
 <!--Image references-->
 
-[1]: ./media\sharepoint-on-premises-tutorial/tutorial_general_01.png
-[2]: ./media\sharepoint-on-premises-tutorial/tutorial_general_02.png
-[3]: ./media\sharepoint-on-premises-tutorial/tutorial_general_03.png
-[4]: ./media\sharepoint-on-premises-tutorial/tutorial_general_04.png
+[1]: ./media/sharepoint-on-premises-tutorial/tutorial_general_01.png
+[2]: ./media/sharepoint-on-premises-tutorial/tutorial_general_02.png
+[3]: ./media/sharepoint-on-premises-tutorial/tutorial_general_03.png
+[4]: ./media/sharepoint-on-premises-tutorial/tutorial_general_04.png
 
-[100]: ./media\sharepoint-on-premises-tutorial/tutorial_general_100.png
+[100]: ./media/sharepoint-on-premises-tutorial/tutorial_general_100.png
 
-[200]: ./media\sharepoint-on-premises-tutorial/tutorial_general_200.png
-[201]: ./media\sharepoint-on-premises-tutorial/tutorial_general_201.png
-[202]: ./media\sharepoint-on-premises-tutorial/tutorial_general_202.png
-[203]: ./media\sharepoint-on-premises-tutorial/tutorial_general_203.png
+[200]: ./media/sharepoint-on-premises-tutorial/tutorial_general_200.png
+[201]: ./media/sharepoint-on-premises-tutorial/tutorial_general_201.png
+[202]: ./media/sharepoint-on-premises-tutorial/tutorial_general_202.png
+[203]: ./media/sharepoint-on-premises-tutorial/tutorial_general_203.png

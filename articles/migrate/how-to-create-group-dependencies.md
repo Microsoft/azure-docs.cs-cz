@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 352ff105f5cd443fba74e05ebce22c14f08e63a0
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823669"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52634298"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnění skupiny s využitím mapování závislostí skupin
 
@@ -39,7 +39,7 @@ Využití vizualizace závislostí, je potřeba přiřadit pracovní prostor Log
 > Nelze změnit pracovní prostor, přidružené k projektu migrace.
 
 ### <a name="download-and-install-the-vm-agents"></a>Stažení a instalace agentů virtuálního počítače
-Chcete-li zobrazit závislosti skupiny, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který je součástí skupiny. Kromě toho, pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat [Log Analytics gateway](../log-analytics/log-analytics-oms-gateway.md) na ně.
+Chcete-li zobrazit závislosti skupiny, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který je součástí skupiny. Kromě toho, pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat [Log Analytics gateway](../azure-monitor/platform/gateway.md) na ně.
 
 1. V **přehled**, klikněte na tlačítko **spravovat** > **skupiny**, přejděte do požadované skupiny.
 2. V seznamu počítačů v **agenta závislostí** sloupce, klikněte na tlačítko **vyžaduje instalaci** zobrazíte pokyny ohledně toho, jak stáhnout a nainstalovat agenty.

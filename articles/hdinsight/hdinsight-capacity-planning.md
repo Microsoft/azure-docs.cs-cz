@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: c3bdad6f1c199dda867370126eb7dcf5c296a12d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 853bf9cfce458e6f112101b1382dd5bfd5df202d
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230423"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52499124"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -61,7 +61,7 @@ Pro cluster s uzly 48 doporučujeme 4 až 8 účty úložiště. I když už mů
 
 ## <a name="choose-a-cluster-type"></a>Vybrat typ clusteru
 
-Typ clusteru určuje úlohy, které váš cluster HDInsight je konfigurován pro běh, jako jsou Hadoop, Storm, Kafka a Spark. Podrobný popis typy clusteru k dispozici, najdete v části [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Každý typ clusteru má topologii nasazení, která obsahuje požadavky na velikost a počet uzlů.
+Určuje typ clusteru úloh clusteru HDInsight je nakonfigurován ke spuštění, například [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/), nebo [ Apache Spark](https://spark.apache.org/). Podrobný popis typy clusteru k dispozici, najdete v části [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Každý typ clusteru má topologii nasazení, která obsahuje požadavky na velikost a počet uzlů.
 
 ## <a name="choose-the-vm-size-and-type"></a>Zvolte velikost virtuálního počítače a typ
 
@@ -79,7 +79,7 @@ Velikost virtuálního počítače a typ se určuje podle procesoru, výkon, vel
 
 ## <a name="choose-the-cluster-scale"></a>Zvolte možnost škálování clusteru
 
-Škálování clusteru se určuje podle množství jeho uzly virtuálních počítačů. Pro všechny typy clusteru jsou typy uzlů, které mají určité měřítko a typy uzlů, které podporují horizontální navýšení kapacity. Cluster může například vyžadovat přesně tři uzly ZooKeeper nebo dva hlavní uzly. Pracovní uzly, které provést zpracování dat, distribuované může využívat horizontální navýšení kapacity, tak, že přidáte pracovní uzly.
+Škálování clusteru se určuje podle množství jeho uzly virtuálních počítačů. Pro všechny typy clusteru jsou typy uzlů, které mají určité měřítko a typy uzlů, které podporují horizontální navýšení kapacity. Cluster například může vyžadovat přesně tři [Apache ZooKeeper](https://zookeeper.apache.org/) uzly nebo dva hlavní uzly. Pracovní uzly, které provést zpracování dat, distribuované může využívat horizontální navýšení kapacity, tak, že přidáte pracovní uzly.
 
 V závislosti na typu vašeho clusteru zvýšit počet pracovních uzlů přidá další výpočetní kapacity (například více jader), ale může také přidat do celkové množství paměti požadované pro celý cluster pro podporu v paměti úložiště dat, zpracování. Stejně jako volba velikosti virtuálního počítače a typ výběru správné clusteru škálování je obvykle spojit empirických, simulované zatížení nebo testovací dotazy.
 
@@ -90,7 +90,7 @@ Můžete horizontálně navýšit požadavkům zatížení ve špičce, pak šk�
 Bude vám účtována životnosti clusteru. Pokud jsou pouze konkrétní časy, že potřebujete clusteru nahoru a spuštěná, můžete si [vytváření clusterů na vyžádání pomocí Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). Můžete také vytvořit Powershellové skripty, které zřízení a odstranění clusteru a poté naplánujte tyto skripty pomocí [Azure Automation](https://azure.microsoft.com/services/automation/).
 
 > [!NOTE]
-> Při odstranění clusteru se odstraní také jeho výchozí metastore Hive. Pokud chcete zachovat metastoru pro další opakované vytváření clusteru, použijte externím úložištěm metadat například – Azure Database nebo Oozie.
+> Při odstranění clusteru se odstraní také jeho výchozí metastore Hive. Pokud chcete zachovat metastoru pro další opakované vytváření clusteru, použijte externím úložištěm metadat jako je Azure Database nebo [Apache Oozie](https://oozie.apache.org/).
 <!-- see [Using external metadata stores](hdinsight-using-external-metadata-stores.md). -->
 
 ### <a name="isolate-cluster-job-errors"></a>Izolovat chyby clusteru úloh
@@ -109,5 +109,5 @@ Ale existují některá omezení pevné kvóty, například v rámci jednoho př
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další](hdinsight-hadoop-provision-linux-clusters.md): Zjistěte, jak vytvořit a nakonfigurovat clusterů v HDInsight pomocí Hadoop, Spark, Kafka, Interactive Hive, HBase, služby ML nebo Storm.
+* [Nastavení clusterů v HDInsight se Apache Hadoop, Spark, Kafka a další](hdinsight-hadoop-provision-linux-clusters.md): Zjistěte, jak vytvořit a nakonfigurovat clusterů v HDInsight se Apache Hadoop, Spark, Kafka, Interactive Hive, HBase, služby ML nebo Storm.
 * [Monitorování výkonu clusteru](hdinsight-key-scenarios-to-monitor.md): Další informace o klíčových scénářích monitorování pro cluster HDInsight, které můžou ovlivnit kapacitu vašeho clusteru.

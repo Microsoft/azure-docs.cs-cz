@@ -10,27 +10,27 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 9873347683fdfabd93083b44d034a8d9d5bcaeef
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f0b13480c06e154b85300f4a8a2f8a84db04c31b
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297533"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582373"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS pomocí ověřování Azure Multi-Factor Authentication
 
-Rozšíření serveru NPS (Network Policy Server) pro Azure MFA přidává funkce vícefaktorové ověřování založené na cloudu pro vaši infrastrukturu ověřování pomocí existujících serverů. Rozšíření serveru NPS můžete přidat telefonní hovor, textová zpráva nebo ověřovacích telefonních aplikací do vašeho existujícího toku ověřování bez nutnosti instalovat, konfigurovat a spravovat nové servery. 
+Rozšíření serveru NPS (Network Policy Server) pro Azure MFA přidává funkce vícefaktorové ověřování založené na cloudu pro vaši infrastrukturu ověřování pomocí existujících serverů. Rozšíření serveru NPS můžete přidat telefonní hovor, textová zpráva nebo ověřovacích telefonních aplikací do vašeho existujícího toku ověřování bez nutnosti instalovat, konfigurovat a spravovat nové servery. 
 
 Toto rozšíření byla vytvořena pro organizace, které chcete chránit pomocí sítě VPN bez nasazení zásady Azure MFA serveru. Rozšíření NPS server slouží jako adaptér mezi RADIUS a založené na cloudu Azure MFA, aby zajišťoval druhý faktor ověřování pro federované nebo synchronizovaných uživatelů.
 
-Pokud používáte rozšíření NPS pro Azure MFA, tok ověřování zahrnuje následující součásti: 
+Pokud používáte rozšíření NPS pro Azure MFA, tok ověřování zahrnuje následující součásti: 
 
-1. **Server NAS/VPN** přijímá požadavky od klientů VPN a převede je na požadavky protokolu RADIUS serveru NPS servery. 
-2. **NPS Server** připojí ke službě Active Directory pro primární ověřování pro požadavky protokolu RADIUS a po úspěšném nasazení, předává žádosti do jakékoli nainstalovaná rozšíření.  
-3. **Rozšíření serveru NPS** aktivuje požadavek na Azure MFA pro sekundární ověřování. Po rozšíření obdrží odpověď, a pokud bude úspěšné ověřovacím testem MFA, ten se dokončí požadavek na ověření tím, že poskytuje NPS server s tokeny zabezpečení, které obsahují deklaraci identity MFA, vystavené služby tokenů zabezpečení Azure.  
+1. **Server NAS/VPN** přijímá požadavky od klientů VPN a převede je na požadavky protokolu RADIUS serveru NPS servery. 
+2. **NPS Server** připojí ke službě Active Directory pro primární ověřování pro požadavky protokolu RADIUS a po úspěšném nasazení, předává žádosti do jakékoli nainstalovaná rozšíření.  
+3. **Rozšíření serveru NPS** aktivuje požadavek na Azure MFA pro sekundární ověřování. Po rozšíření obdrží odpověď, a pokud bude úspěšné ověřovacím testem MFA, ten se dokončí požadavek na ověření tím, že poskytuje NPS server s tokeny zabezpečení, které obsahují deklaraci identity MFA, vystavené služby tokenů zabezpečení Azure.  
 4. **Azure MFA** komunikuje se službou Azure Active Directory k načtení podrobností uživatele a provádí sekundární ověření pomocí jiné metody ověřování nakonfigurovat tak, aby uživatel.
 
-Následující diagram znázorňuje tento tok požadavku základní ověřování: 
+Následující diagram znázorňuje tento tok požadavku základní ověřování: 
 
 ![Vývojový diagram ověřování](./media/howto-mfa-nps-extension/auth-flow.png)
 
@@ -118,7 +118,7 @@ Existují dva faktory, které ovlivňují, jaké metody ověřování jsou k dis
 
 Při nasazení rozšíření NPS se používá k vyhodnocení, které metody jsou k dispozici pro vaši uživatelé tyto faktory. Pokud podporuje protokol PAP vašeho klienta protokolu RADIUS, ale klient uživatelského prostředí nemá vstupní pole pro ověřovací kód, pak telefonních hovorů a oznámení mobilní aplikace jsou dvě podporované možnosti.
 
-Je možné [zakázat metody nepodporované ověřování](howto-mfa-mfasettings.md#selectable-verification-methods) v Azure.
+Je možné [zakázat metody nepodporované ověřování](howto-mfa-mfasettings.md#verification-methods) v Azure.
 
 ### <a name="register-users-for-mfa"></a>Registrace uživatelů pro MFA
 
@@ -212,15 +212,31 @@ Vyhledejte certifikát podepsaný svým držitelem vytvořený instalační prog
 
 Otevřete příkazový řádek Powershellu a spusťte následující příkazy:
 
-```
+``` PowerShell
 import-module MSOnline
 Connect-MsolService
-Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1
 ```
 
 Tyto příkazy vytiskne všechny certifikáty přidružení tenanta s vaší instancí rozšíření NPS v relaci Powershellu. Vyhledejte certifikát tak, že vyexportujete klientský certifikát jako soubor "x.509, kódování Base-64" bez soukromého klíče a porovná ho s seznamu z Powershellu.
 
+Následující příkaz vytvoří soubor s názvem "npscertificate" na "C:" disk ve formátu .cer.
+
+``` PowerShell
+import-module MSOnline
+Connect-MsolService
+Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
+```
+
+Po spuštění tohoto příkazu, přejděte k jednotce C, vyhledejte soubor a poklikejte na ni. Přejít na podrobnosti a posuňte se dolů "kryptografický otisk", porovnání kryptografického otisku certifikátu nainstalovaného na serveru do tohoto objektu. Kryptografické otisky certifikátu by měl odpovídat.
+
 Platné – a – dokud časová razítka, která jsou v čitelné formě, lze použít k filtrování zřejmé misfits Pokud příkaz vrátí více než jeden certifikát.
+
+-------------------------------------------------------------
+
+### <a name="why-cant-i-sign-in"></a>Proč není se lze přihlásit?
+
+Zkontrolujte, jestli nevypršela platnost vašeho hesla. Rozšíření NPS nepodporuje změny hesel jako součást pracovního postupu přihlásit. Prosím požádejte o další pomoc pracovníky IT vaší organizace.
 
 -------------------------------------------------------------
 

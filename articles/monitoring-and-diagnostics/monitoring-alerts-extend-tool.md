@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 325da912c8fc4e453df895976df970f8e0f56412
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 6cbcb42ee8c77ff0c8ded966b4f04af8815ca726
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614939"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52632989"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozšíření upozornění z Log Analytics do upozornění Azure
 Funkce výstrah ve službě Azure Log Analytics teď nahrazuje Azure Alerts. Jako součást tohoto přechodu je výstrahy, které jste nakonfigurovali v Log Analytics se rozšířit do Azure. Pokud nechcete čekat na jejich automaticky přesunou na Azure, můžete zahájit proces:
@@ -150,7 +150,7 @@ Pokud je požadavek POST úspěšná, vrátí stav HTTP 200 OK, spolu s následu
 }
 ```
 
-Tato odpověď označuje, že výstrahy se úspěšně rozšířily do upozornění Azure. Vlastnost verze je pouze pro kontrolu, pokud upozornění rozšířit do Azure a mít žádný vztah k položce [rozhraní API služby Log Analytics Search](../log-analytics/log-analytics-api-alerts.md). Jakmile výstrahy se rozšíří do Azure úspěšně, některé e-mailové adresy zadaná v příspěvku požadavku se odesílají sestavy. Pokud všechna upozornění v zadaný pracovní prostor se už naplánované rozšíření, odpověď na váš požadavek POST je, že tento pokus bylo zakázáno (403 stavový kód). Zobrazit všechny chybové zprávy nebo pochopit, pokud se zablokuje a procesu, můžete odeslat požadavek GET. Pokud dojde k chybě, bude vrácen, spolu s souhrnné informace.
+Tato odpověď označuje, že výstrahy se úspěšně rozšířily do upozornění Azure. Vlastnost verze je pouze pro kontrolu, pokud upozornění rozšířit do Azure a mít žádný vztah k položce [rozhraní API služby Log Analytics Search](../azure-monitor/platform/api-alerts.md). Jakmile výstrahy se rozšíří do Azure úspěšně, některé e-mailové adresy zadaná v příspěvku požadavku se odesílají sestavy. Pokud všechna upozornění v zadaný pracovní prostor se už naplánované rozšíření, odpověď na váš požadavek POST je, že tento pokus bylo zakázáno (403 stavový kód). Zobrazit všechny chybové zprávy nebo pochopit, pokud se zablokuje a procesu, můžete odeslat požadavek GET. Pokud dojde k chybě, bude vrácen, spolu s souhrnné informace.
 
 ```json
 {
