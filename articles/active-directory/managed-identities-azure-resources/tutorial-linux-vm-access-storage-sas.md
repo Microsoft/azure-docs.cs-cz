@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 32fa417d5fcb5c8547dfc7c10b34b3c97ed70559
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 16bcc56dd05c86b7c2adb324de480e7482f80fef
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626061"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724294"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: Použití spravované přiřazené systémem na virtuálním počítači s Linuxem pro přístup k Azure Storage prostřednictvím pověření SAS
 
@@ -68,9 +68,9 @@ Později nahrajeme a stáhneme soubor do nového účtu úložiště. Soubory vy
 
 Azure Storage nativně nepodporuje ověřování Azure AD.  Pomocí spravované identity přiřazené systémem virtuálního počítače ale můžete načíst SAS úložiště z Resource Manageru a pak ho použít pro přístup k úložišti.  V tomto kroku udělíte spravované identitě přiřazené systémem virtuálního počítače přístup k SAS účtu úložiště.   
 
-1. Vraťte se k nově vytvořenému účtu úložiště.   
+1. Přejděte zpět k nově vytvořenému účtu úložiště.
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.  
-3. Nahoře na stránce klikněte na **+ Přidat** a přiřaďte virtuálnímu počítači novou roli.
+3. Klikněte na tlačítko **+ přidat přiřazení role** nad stránky a přidat nové přiřazení role pro váš virtuální počítač
 4. Na pravé straně stránky nastavte položku **Role** na Přispěvatel účtů úložiště. 
 5. V dalším rozevíracím seznamu **Přiřadit přístup k** nastavte prostředek na Virtuální počítač.  
 6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na Všechny skupiny prostředků.  

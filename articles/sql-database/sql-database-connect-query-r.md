@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/07/2018
-ms.openlocfilehash: 382ac23ea4c8e0ec54314bb754c00a8e6e43e9f6
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.date: 11/30/2018
+ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300961"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725739"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Rychlý start: Použití služby Machine Learning Services (s jazykem R) ve službě Azure SQL Database (Preview)
 
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Služba Machine Learning Services (s jazykem R) verze Public Preview ve službě SQL Database není ve výchozím nastavení povolená. Odeslání e-mailu společnosti Microsoft na [ sqldbml@microsoft.com ](mailto:sqldbml@microsoft.com) zaregistrovat verzi public preview.
 
-Po registraci do programu vás Microsoft připojí k verzi Public Preview a buď do služby s podporou R migruje vaši stávající databázi, nebo v ní vytvoří novou databázi.
+Jakmile jste zaregistrováni v programu, Microsoft bude připojení je verze public Preview a buď migrovat stávající databázi, nebo vytvořit novou databázi na službě jazyka R povolena.
 
 Služba Machine Learning Services (s jazykem R) ve službě SQL Database je momentálně dostupná pouze v nákupním modelu založeném na virtuálních jádrech na úrovních služby **Pro obecné účely** a **Pro důležité obchodní informace** pro jednoúčelové databáze a databáze ve fondu. V této počáteční verzi Public Preview se nepodporuje úroveň služby **Hyperškálování** ani **Spravovaná instance**. Během období Public Preview byste službu Machine Learning Services s jazykem R neměli používat pro produkční úlohy.
 
@@ -51,11 +51,10 @@ Tento rychlý start dále vyžaduje, abyste nakonfigurovali pravidlo brány fire
 
 ## <a name="different-from-sql-server"></a>Rozdíly oproti SQL Serveru
 
-Funkce služby Machine Learning Services (s jazykem R) ve službě Azure SQL Database jsou podobné jako ve službě [SQL Server Machine Learning Services](https://review.docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Existuje však několik rozdílů:
+Funkce služby Machine Learning Services (s jazykem R) ve službě Azure SQL Database jsou podobné jako ve službě [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Existuje však několik rozdílů:
 
 - Pouze jazyk R. Python se v současné době nepodporuje.
 - Není nutné konfigurovat `external scripts enabled` prostřednictvím příkazu `sp_configure`.
-- Uživatelům není potřeba udělovat oprávnění ke spouštění skriptů.
 - Balíčky se musí instalovat pomocí nástroje **sqlmlutils**.
 - Neexistují žádné samostatné zásady správného řízení externích prostředků. Prostředky R tvoří určité procento prostředků SQL v závislosti na úrovni.
 
@@ -82,16 +81,26 @@ Můžete ověřit, že je pro vaši databázi SQL povolená služba Machine Lear
 
 1. Pokud se zobrazí nějaké chyby, může to být proto, že služba Machine Learning Services (s jazykem R) verze Public Preview není pro vaši databázi SQL povolená. Postup registrace verze Public Preview najdete výše.
 
+## <a name="grant-permissions"></a>Udělení oprávnění
+
+Pokud jste správce, můžete spustit externí kód automaticky. Všichni ostatní musí být udělena oprávnění.
+
+Nahraďte `<username>` s platnou databázi přihlášení uživatele před spuštěním příkazu.
+
+```sql
+GRANT EXECUTE ANY EXTERNAL SCRIPT TO <username>
+```
+
 ## <a name="basic-r-interaction"></a>Základní interakce s jazykem R
 
 Kód R můžete ve službě SQL Database spustit dvěma způsoby:
 
-+ Přidejte skript R jako argument systémové uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql//relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md).
-+ Ze [vzdáleného klienta R](https://review.docs.microsoft.com/sql/advanced-analytics/r/set-up-a-data-science-client) se připojte ke své databázi SQL a spusťte kód s použitím výpočetního kontextu služby SQL Database.
++ Přidat skript jazyka R jako argument systémové uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
++ Ze [vzdáleného klienta R](https://docs.microsoft.com/sql/advanced-analytics/r/set-up-a-data-science-client) se připojte ke své databázi SQL a spusťte kód s použitím výpočetního kontextu služby SQL Database.
 
 Následující cvičení se zaměřuje na první model interakce: jak předat kód R do uložené procedury.
 
-1. Spusťte jednoduchý skript a podívejte se, jak je možné spustit skript R v databázi SQL.
+1. Spusťte jednoduchý skript, který naleznete v tématu Jak spustí skript R ve službě SQL database.
 
     ```sql
     EXECUTE sp_execute_external_script
@@ -119,7 +128,7 @@ Mějte na paměti, že vše uvnitř argumentu `@script` musí být platný kód 
 
 ## <a name="inputs-and-outputs"></a>Vstupy a výstupy
 
-Ve výchozím nastavení přijímá [sp_execute_external_script](https://review.docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) jednu vstupní datovou sadu, kterou obvykle zadáte v podobě platného dotazu SQL. Jiné typy vstupu je možné předat jako proměnné SQL.
+Ve výchozím nastavení přijímá [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) jednu vstupní datovou sadu, kterou obvykle zadáte v podobě platného dotazu SQL. Jiné typy vstupu je možné předat jako proměnné SQL.
 
 Uložená procedura jako výstup vrátí jeden datový rámec R. Ve výstupu však můžete vrátit také skaláry a modely jako proměnné. Ve výstupu můžete vrátit například natrénovaný model jako binární proměnnou a předat ji do příkazu T-SQL INSERT, aby se tento model zapsal do tabulky. Můžete také generovat diagramy (v binárním formátu) nebo skaláry (jednotlivé hodnoty, jako je datum a čas, uplynulý čas trénování modelu atd.).
 
@@ -284,7 +293,7 @@ Pomocí jazyka R můžete natrénovat model a uložit ho do tabulky v databázi 
     - Poskytnutí vstupních dat pro použití při trénování modelu.
 
     > [!TIP]
-    > Pokud si potřebujete připomenout lineární modely, doporučujeme projít si tento kurz, který popisuje proces vytvoření modelu s použitím funkce rxLinMod: [Vytváření lineárních modelů](https://docs.microsoft.com/r-server/r/how-to-revoscaler-linear-model).
+    > Pokud si potřebujete připomenout lineární modely, doporučujeme projít si tento kurz, který popisuje proces vytvoření modelu s použitím funkce rxLinMod: [Vytváření lineárních modelů](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model).
 
     Model sestavíte tak, že v kódu R definujete vzorec a jako vstupní parametr předáte data.
 
@@ -337,7 +346,7 @@ Pomocí jazyka R můžete natrénovat model a uložit ho do tabulky v databázi 
     WHERE model_name = 'default model'
     ```
 
-4. Obecně platí, že výstup kódu R z uložené procedury [sp_execute_external_script](https://review.docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql.md) je omezený na jeden datový rámec.
+4. Obecně platí, že výstup kódu R z uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) je omezený na jeden datový rámec.
 
     Kromě datového rámce však můžete vracet i výstupy jiných typů, například skaláry.
 
@@ -381,7 +390,7 @@ Použijte model, který jste vytvořili v předchozí části, k hodnocení pře
     VALUES (40), (50), (60), (70), (80), (90), (100)
     ```
 
-    Vzhledem k tomu, že je váš model založený na algoritmu **rxLinMod**, který je součástí balíčku **RevoScaleR**, místo obecné funkce R `predict` zavoláte v tomto příkladu funkci [rxPredict](https://docs.microsoft.com/r-server/r-reference/revoscaler/rxpredict).
+    Vzhledem k tomu, že je váš model založený na algoritmu **rxLinMod**, který je součástí balíčku **RevoScaleR**, místo obecné funkce R `predict` zavoláte v tomto příkladu funkci [rxPredict](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxpredict).
 
     ```sql
     DECLARE @speedmodel varbinary(max) = 
@@ -410,7 +419,7 @@ Použijte model, který jste vytvořili v předchozí části, k hodnocení pře
     + Po načtení modelu z tabulky zavolá pro model funkci `unserialize`.
 
         > [!TIP] 
-        > Prozkoumejte také nové [funkce serializace](https://docs.microsoft.com/r-server/r-reference/revoscaler/rxserializemodel) v balíčku RevoScaleR, které podporují bodování v reálném čase.
+        > Prozkoumejte také nové [funkce serializace](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel) v balíčku RevoScaleR, které podporují bodování v reálném čase.
     + Použije na model funkci `rxPredict` s odpovídajícími argumenty a zadá nová vstupní data.
 
     + V tomto příkladu se ve fázi testování přidá funkce `str`, která kontroluje schéma dat vracených z kódu R. Tento příkaz můžete později odebrat.
@@ -439,7 +448,7 @@ Pokud potřebujete použít balíček, který ještě ve vaší databázi SQL ne
     R -e "install.packages('RODBCext', repos='https://cran.microsoft.com')"
     ```
 
-    Pokud se vám zobrazí chyba typu **'R' is not recognized as an internal or external command, operable program or batch file** („R“ nebylo rozpoznáno jako interní ani externí příkaz, spustitelný program ani dávkový soubor), pravděpodobně to znamená, že proměnná prostředí **PATH** ve Windows neobsahuje cestu k souboru R.exe. Příslušný adresář můžete přidat do proměnné prostředí nebo do něj můžete přejít na příkazovém řádku (například `cd C:\Program Files\R\R-3.5.1\bin`).
+    Pokud se zobrazí následující chyba, "" R"nebyl rozpoznán jako vnitřního ani vnějšího příkazu, spustitelného programu nebo dávkového souboru", pravděpodobně znamená, že cesta k R.exe není součástí vaší **cesta** proměnné prostředí na Windows. Můžete přidat adresář do proměnné prostředí nebo přejděte do adresáře, v příkazovém řádku (například `cd C:\Program Files\R\R-3.5.1\bin`) před spuštěním příkazu.
 
 1. Pomocí příkazu **R CMD INSTALL** nainstalujte nástroj **sqlmlutils**. Zadejte cestu k adresáři, do kterého jste stáhli soubor ZIP, a název soubor ZIP. Příklad:
 
@@ -523,7 +532,7 @@ Pokud potřebujete použít balíček, který ještě ve vaší databázi SQL ne
 
 Další informace o službě Machine Learning Services najdete v následujících článcích o službě SQL Server Machine Learning Services. Přestože jsou tyto články určené pro SQL Server, většina uvedených informací platí také pro službu Machine Learning Services (s jazykem R) ve službě Azure SQL Database.
 
-- [SQL Server Machine Learning Services](https://review.docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Kurz: Seznámení s analýzou v databázi pomocí jazyka R na SQL Serveru](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [Ucelený průvodce datovými vědami pro jazyk R a SQL Server](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Kurz: Použití funkcí R v RevoScaleR s daty SQL Serveru](https://review.docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
+- [Kurz: Seznámení s analýzou v databázi pomocí jazyka R na SQL Serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
+- [Ucelený průvodce datovými vědami pro jazyk R a SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
+- [Kurz: Použití funkcí R v RevoScaleR s daty SQL Serveru](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

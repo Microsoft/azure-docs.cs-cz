@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/11/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f870902e5bd5ef92d12d1e5e846696c4b26362a3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: e0161073c0c3e7d6ef491a4f2b86510e826b85dc
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425098"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678657"
 ---
 # <a name="tutorial-build-a-net-core-and-sql-database-web-app-in-azure-app-service"></a>Kurz: Vytvoření webové aplikace .NET Core využívající službu SQL Database ve službě Azure App Service
 
@@ -216,6 +216,10 @@ Pokud tento kód zjistí, že je spuštěný v produkčním prostředí (což zn
 
 Volání `Database.Migrate()` vám pomůže při spuštění v Azure, protože automaticky vytvoří databáze, které vaše aplikace .NET Core potřebuje, podle příslušné konfigurace migrace. 
 
+> [!IMPORTANT]
+> Pro produkční aplikace, které je potřeba škálovat na více systémů, postupujte podle osvědčených postupů v [použití migrace v produkčním prostředí](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production).
+> 
+
 Uložte provedené změny a potom je potvrďte v úložišti Gitu. 
 
 ```bash
@@ -378,7 +382,7 @@ Na začátku portál zobrazí stránku **Přehled** vaší webové aplikace. Tat
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
 <a name="next"></a>
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Naučili jste se:
 

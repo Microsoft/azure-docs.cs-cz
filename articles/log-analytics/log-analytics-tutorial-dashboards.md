@@ -10,18 +10,17 @@ ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 8ab6107279fe546205605b24da53073f49c7a204
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 6423b1347d5748b46c4ee35928515cec6891e167
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014444"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725586"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytváření a sdílená řídicích panelů s daty Log Analytics
 
@@ -72,7 +71,7 @@ Když teď máte dotaz připnutý na řídicím panelu, všimněte si, že je po
 
 ![Dokončená konfigurace ukázkového řídicího panelu](media/log-analytics-tutorial-dashboards/log-analytics-modify-dashboard-02.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak vytvořit řídicí panel na webu Azure Portal a přidat na něj prohledávání protokolu.  V dalším kurzu se seznámíte s různými reakcemi, které můžete implementovat na základě výsledků prohledávání protokolu.  
 
 > [!div class="nextstepaction"]

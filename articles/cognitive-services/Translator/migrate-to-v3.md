@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 2f0b2984bf2390a9af0b824495b84c71d04aeac2
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ce6446caf74e16f69369d5ee8ee7b6342870e826
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852839"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682586"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 na V3 migrace
 
@@ -105,11 +105,33 @@ Globální
 
 [Slovník/příklad](reference/v3-0-dictionary-examples.md)
 
-## <a name="customization"></a>Přizpůsobení
+## <a name="compatibility-and-customization"></a>Kompatibilita a přizpůsobení
 
-Ve výchozím nastavení používá Microsoft Translator V3 Neurální strojový překlad. V důsledku toho jej nelze použít v centru Microsoft Translator. Překladač rozbočovače podporuje pouze starší verze statistické strojového překladu. Přizpůsobení pro Neurální překladové je nyní dostupné s použitím překladač vlastní. [Další informace o přizpůsobení Neurální strojový překlad](customization.md)
+Ve výchozím nastavení používá Microsoft Translator V3 Neurální strojový překlad. V důsledku toho jej nelze použít v centru Microsoft Translator. Překladač rozbočovače podporuje pouze starší verze statistické strojového překladu. Přizpůsobení pro Neurální překladové je nyní dostupné s použitím překladač vlastní. [Další informace o přizpůsobení Neurální strojový překlad](custom-translator/overview.md)
 
 Neurální překladové s V3 text API nepodporuje použití standardní kategorie (SMT, řeči, text, generalnn).
+
+| |Koncový bod|    Dodržování předpisů GDPR procesoru|  Použití centra Translator| Použít vlastní Translator (Preview)|
+|:-----|:-----|:-----|:-----|:-----|
+|Translator Text API verze 2| API.microsofttranslator.com|    Ne  |Ano    |Ne|
+|Translator Text API verze 3| API.cognitive.microsofttranslator.com|  Ano|    Ne| Ano|
+
+**Translator Text API verze 3**
+* Je obecně dostupné a plně podporovaná.
+* Splňuje všechny požadavky 20001 a 20018 a SOC 3 certifikace ISO je jako zpracovatel dodržovat nařízení GDPR. 
+* Umožňuje vyvolat systémů překladu neuronové sítě, které jste upravili s vlastní překlady (Preview), nové funkce Translator NMT vlastního nastavení. 
+* Neposkytuje přístup k vlastní překlad systémy vytvořené pomocí Microsoft Translatoru Hub.
+
+Pokud používáte api.cognitive.microsofttranslator.com koncový bod používáte verze 3 Translator Text API.
+
+**Translator Text API verze 2**
+* je zastaralý. To bude ukončena 30. dubna 2019. 
+* Nevyhovuje všechny ISO 20001,20018 a požadavky na certifikaci SOC 3. 
+* Neumožňuje k vyvolání systémů překladu neuronové sítě, které můžete přizpůsobit pomocí funkce Translator vlastního nastavení.
+* Poskytuje přístup k vlastní překlad systémy vytvořené pomocí Microsoft Translatoru Hub.
+* Pokud používáte api.microsofttranslator.com koncový bod používáte verze 2 rozhraní Translator Text API.
+
+Žádná verze Translator API vytvoří záznam překlady. Překlady jsou nikdy sdílet s kýmkoli. Další informace o [bez trasování Translator](http://www.aka.ms/NoTrace) webové stránky.
 
 
 ## <a name="links"></a>Odkazy

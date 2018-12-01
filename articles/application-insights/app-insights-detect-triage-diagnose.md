@@ -9,17 +9,16 @@ ms.assetid: 6ccab5d4-34c4-4303-9d3b-a0f1b11e6651
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 41c8fd0092af035153b3161c4a6c3eb5c5ef3f1d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.openlocfilehash: cb106abaff2446fdbc2d025ae96c95745bc53150
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958895"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728051"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Přehled Application Insights pro DevOps
 
@@ -225,7 +224,7 @@ Toto byla ukázka jednoho týmu, který pomocí Application Insights nejen řeš
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V závislosti na vlastnostech vaší aplikace můžete začít několika způsoby. Vyberte si, co vám nejvíce vyhovuje:
 
 * [Webová aplikace ASP.NET](app-insights-asp-net.md)

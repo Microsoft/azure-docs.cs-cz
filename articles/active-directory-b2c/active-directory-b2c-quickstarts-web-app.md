@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/24/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c4fa3f9cbba558cd743f85119dd9e91bd73ce062
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
-ms.translationtype: HT
+ms.openlocfilehash: edfd17763a7d555e773e7d271ed5cc22a0307996
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250593"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726589"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro aplikaci ASP.NET pomocí služby Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro 
 
     Ukázkové řešení obsahuje tyto dva projekty:
 
-    - **TaskWebApp** – Webová aplikace pro vytvoření a úpravy seznamu úkolů. Tato webová aplikace používá k registraci nebo přihlašování uživatelů zásady **registrace nebo přihlašování**.
+    - **TaskWebApp** – Webová aplikace pro vytvoření a úpravy seznamu úkolů. Webová aplikace používá **registrace nebo přihlašování** tok uživatele k registraci nebo přihlašování uživatelů.
     - **TaskService** – Webové rozhraní API, které podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Toto webové rozhraní API je chráněné službou Azure AD B2C a volané webovou aplikací.
 
 ## <a name="run-the-application-in-visual-studio"></a>Spuštění aplikace v sadě Visual Studio
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) B2C poskytuje správu cloudových identit pro 
 
 ## <a name="edit-your-profile"></a>Úprava profilu
 
-Azure Active Directory B2C poskytuje funkci, která uživatelům umožňuje aktualizovat své profily. Ukázková webová aplikace pro tento pracovní postup využívá zásady úprav profilu Azure AD B2C. 
+Azure Active Directory B2C poskytuje funkci, která uživatelům umožňuje aktualizovat své profily. Ukázková webová aplikace používá tok Azure AD B2C upravit profil uživatele pro pracovní postup. 
 
 1. Na řádku nabídek aplikace klikněte na název vašeho profilu a vyberte **Edit profile** (Upravit profil), abyste mohli upravit svůj vytvořený profil.
 
@@ -93,7 +93,7 @@ Azure Active Directory B2C poskytuje funkci, která uživatelům umožňuje aktu
 
 Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů nebo rychlých startů pro Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svého tenanta Azure AD B2C odstranit](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste použili ukázkovou aplikaci ASP.NET k přihlášení pomocí vlastní přihlašovací stránky, přihlášení pomocí zprostředkovatele sociální identity, vytvoření účtu Azure AD B2C a zavolání webového rozhraní API chráněného službou Azure AD B2C. 
 

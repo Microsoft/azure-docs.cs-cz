@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: 1f1e7ce41c00078c0181fc5f32c43b7e5885eef8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.openlocfilehash: 6db5bb4ee1995e08bd00588203db1fdba87a3db5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857665"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727325"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Důvěryhodnost obsahu ve službě Azure Container Registry
 
@@ -77,7 +77,7 @@ Následují podrobnosti o udělení role `AcrImageSigner` na webu Azure Portal a
 
 ### <a name="azure-portal"></a>portál Azure
 
-Na webu Azure Portal přejděte do svého registru a pak vyberte **Řízení přístupu (IAM)** > **Přidat**. V části **Přidat oprávnění** v poli **Role** vyberte `AcrImageSigner`, pak **vyberte** jednoho nebo několik uživatelů nebo instančních objektů a pak klikněte na **Uložit**.
+Přejděte do svého registru na webu Azure Portal a potom vyberte **řízení přístupu (IAM)** > **přidat přiřazení role**. V části **přidat přiřazení role**vyberte `AcrImageSigner` pod **Role**, pak **vyberte** uživatele nebo instanční objekty, pak **Uložit**.
 
 V tomto příkladu se role `AcrImageSigner` přiřadila dvěma entitám: instančnímu objektu service-principal a uživateli Azure User.
 
@@ -188,7 +188,7 @@ Pokud chcete pro svůj registr zakázat důvěryhodnost obsahu, přejděte do to
 
 ![Zakázání důvěryhodnosti obsahu pro registr na webu Azure Portal][content-trust-03-portal]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o důvěryhodnosti obsahu najdete v dokumentaci k Dockeru. Přestože se tento článek zabýval několika klíčovými body, důvěryhodnost obsahu je rozsáhlé téma, kterému se podrobněji věnuje dokumentace k Dockeru.
 

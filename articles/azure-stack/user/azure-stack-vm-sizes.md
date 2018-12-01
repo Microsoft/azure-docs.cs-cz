@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 1af7a1d595b39878f3ed30591e8ad78e767e8cf7
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 5127b748111f993f95f940f4add81c42a032e038
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087487"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722084"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Velikosti virtuálních počítačů, které jsou podporované ve službě Azure Stack
 
@@ -28,7 +28,7 @@ Tento článek obsahuje seznam velikostí virtuálních počítačů (VM), kter�
 
 ## <a name="general-purpose"></a>Obecné účely
 
-Pro obecné účely velikosti virtuálních počítačů nabízejí vyvážený poměr procesorů k paměti. Používají se pro testování a vývoj, malé až střední databáze a s nízkým a středním provozem webových serverů.
+Pro obecné účely velikosti virtuálních počítačů nabízejí vyvážený poměr procesorů k paměti. Používají se pro testování a vývoj, malé až střední databáze a s nízkým a středním provozem webových serverů. Každý datový disk je 2300 vstupně-výstupních operací pro velikosti virtuálních počítačů úrovně premium, s výjimkou základní A series. Velikost datového disku pro základní A je 500 IOPS.
 
 ### <a name="basic-a"></a>Basic A
 

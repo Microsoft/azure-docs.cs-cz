@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: c7e14e2c2d6d38055304610c805a6bede10a6828
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340439"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679286"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
@@ -88,6 +88,9 @@ Zvukový vstup je ve formátu souboru zvuk zvukového průběhu (WAVE nebo více
 Všimněte si, že velikost celkový počet souborů (bajty 4-7) a velikost "data" (v bajtech 40-43) jsou nastaveny na hodnotu nula. To je v pořádku pro scénář streamování, ve kterém je celková velikost není znám nutně předem.
 
 Po odeslání hlaviček WAV (RIFF), klient odešle bloky zvuková data. Klient bude obvykle datový proud pevnou velikost bloků dat představující pevnou platnost (například datový proud 100 MS zvuku současně).
+
+### <a name="signal-the-end-of-the-utterance"></a>Signalizuje, že na konec utterance
+Translator Speech API vrátí přepisu a překladu zvukový datový proud jako e-mail posíláte zvuku. Konečné přepisu, konečný překlad a přeložený zvuk se vrátí, až po konec utterance. V některých případech můžete chtít vynutit ukončení utterance. Odešlete 2,5 sekundách nečinnosti vynutit ukončení utterance. 
 
 ### <a name="final-result"></a>Konečný výsledek
 Na konci utterance se vygeneruje výsledek rozpoznání řeči finální. Výsledkem je ze služby předány klienta pomocí protokolu WebSocket zpráva typu Text. Obsah zprávy se serializací JSON objektu s následujícími vlastnostmi:
@@ -171,7 +174,7 @@ Když klientská aplikace dokončení vysílání datového proudu zvuku, obdrž
 |Hlasu|(prázdné)|Určuje co hlasu pro převod textu na řeč vykreslování přeloženého textu. Hodnota je jeden z identifikátorů hlasové z oboru převod textu na řeč v odpovědi z rozhraní API pro jazyky. Pokud hlasový vstup není zadán, že systém bude automaticky zvolte jeden, pokud je povolena funkce Převod textu na řeč.|query|řetězec|
 |Formát|(prázdné)|Určuje formát převod textu na řeč zvukový stream vrácený poskytovatelem služby. Dostupné možnosti jsou:<ul><li>`audio/wav`: Zvukový datový proud zvukového průběhu. Klient musí použít hlavičku WAV správně interpretovat zvukový formát. Zvuk WAV pro převod textu na řeč je 16 bitů, jeden kanál PCM s vzorkovací frekvenci 24kHz nebo 16kHz.</li><li>`audio/mp3`: Zvukový datový proud MP3.</li></ul>Výchozí hodnota je `audio/wav`.|query|řetězec|
 |ProfanityAction    |(prázdné)    |Určuje způsob, jakým služba pracovat profanities rozpoznán v řeči. Jsou platné akce:<ul><li>`NoAction`: Profanities je ponechán beze změny.</li><li>`Marked`: Profanities jsou nahrazeny značku. Zobrazit `ProfanityMarker` parametru.</li><li>`Deleted`: Profanities se odstraní. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stane `"He is a .".`</li></ul>Výchozí hodnota je označen.|query|řetězec|
-|ProfanityMarker|(prázdné)    |Určuje, jak zjištěné profanities jsou zpracovány při `ProfanityAction` je nastavena na `Marked`. Platné možnosti jsou:<ul><li>`Asterisk`: Profanities se nahradí řetězcem `***`. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stane `"He is a ***.".`</li><li>`Tag`: Vulgárních výrazů jsou ohraničeny vulgárních výrazů – značka XML. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stanou `"He is a <profanity>jackass</profanity>."`.</li></ul>Výchozí hodnota je `Asterisk`.|query|řetězec|
+|ProfanityMarker|(prázdné)    |Určuje, jak zjištěné profanities jsou zpracovány při `ProfanityAction` je nastavena na `Marked`. Platné možnosti jsou:<ul><li>`Asterisk`: Profanities se nahradí řetězcem `***`. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stane `"He is a ***.".`</li><li>`Tag`: Vulgárních výrazů jsou ohraničeny vulgárních výrazů – značka XML. Například pokud slovo `"jackass"` je považován za vulgárních výrazů frázi `"He is a jackass."` se stanou `"He is a <profanity>jackass</profanity>."`.</li></ul>Výchozí formát je `Asterisk`.|query|řetězec|
 |Autorizace|(prázdné)  |Určuje hodnotu klienta nosný token. Použijte předponu `Bearer` za nímž následuje hodnotu `access_token` hodnoty vrácené službou tokenu ověřování.|záhlaví   |řetězec|
 |OCP-Apim-Subscription-Key|(prázdné)|Požadováno pokud `Authorization` není zadána hlavička.|záhlaví|řetězec|
 |access_token|(prázdné)   |Alternativní způsob, jak předat platný přístupový token OAuth. Nosný token je obvykle poskytují s hlavičkou `Authorization`. Některé knihovny pomocí protokolu websocket neumožňují klientským kódem, aby nastavení hlaviček. V takovém případě může klient použít `access_token` parametr předat platný token dotazu. Při použití přístupového tokenu pro ověření, pokud `Authorization` není nastavena hlavička, pak `access_token` musí být nastavena. Pokud jsou nastaveny záhlaví a parametr dotazu, je ignorován parametr dotazu. Klienti měli používat jenom jedna metoda předat token.|query|řetězec|

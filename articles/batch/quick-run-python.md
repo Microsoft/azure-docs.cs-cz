@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0ce9d6854f464efdf0ff6eea8644fedc5ad90d1f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 13ed37dddefc5e71e972248545c3e9242bd233ad
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427315"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678196"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rychlý start: Spuštění první úlohy služby Batch pomocí rozhraní Python API
 
@@ -110,7 +110,7 @@ Když aplikaci spouštíte v její výchozí konfiguraci, je obvyklá doba prov�
 Aplikace Python v tomto rychlém startu provádí tyto kroky:
 
 * Odešle tři malé textové soubory do kontejneru objektů blob ve vašem účtu služby Azure Storage. Tyto soubory představují vstup pro zpracování úlohami služby Batch.
-* Vytvoří fond dvou výpočetních uzlů se systémem Ubuntu 16.04 LTS.
+* Vytvoří fond dvou výpočetních uzlů se systémem Ubuntu 18.04 LTS.
 * Vytvoří úlohu a tři úkoly ke spuštění v uzlech. Každý úkol zpracovává pomocí příkazového řádku prostředí Bash jeden vstupní soubor.
 * Zobrazí soubory vrácené úkoly.
 
@@ -151,7 +151,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>Vytvoření fondu výpočetních uzlů
 
-K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Tady objekt [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) určuje odkaz [ImageReference](/python/api/azure.batch.models.imagereference) na image Ubuntu Server 16.04 LTS publikovanou v Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
+K vytvoření fondu služby Batch aplikace používá třídu [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter), která nastavuje počet uzlů, velikost virtuálních počítačů a konfiguraci fondu. Tady [VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) určuje objekt [ImageReference](/python/api/azure.batch.models.imagereference) do image Ubuntu Server 18.04 LTS publikovaných na webu Azure Marketplace. Batch podporuje široké spektrum imagí Linuxu a Windows Serveru v Azure Marketplace, ale i vlastní image virtuálních počítačů.
 
 Počet uzlů (`_POOL_NODE_COUNT`) a velikost virtuálního počítače (`_POOL_VM_SIZE`) jsou definované konstanty. Ukázka ve výchozím nastavení vytvoří fond se 2 uzly velikosti *Standard_A1_v2*. Navržená velikost nabízí pro tento rychlý příklad dobrou rovnováhu mezi výkonem a náklady.
 
@@ -164,10 +164,10 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04-LTS",
+            sku="18.04-LTS",
             version="latest"
             ),
-        node_agent_sku_id="batch.node.ubuntu 16.04"),
+        node_agent_sku_id="batch.node.ubuntu 18.04"),
     vm_size=config._POOL_VM_SIZE,
     target_dedicated_nodes=config._POOL_NODE_COUNT
 )

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: gracez
-ms.openlocfilehash: 10ebb5f549aba42c4de74cec2c16ed63f90532a1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 09db18f38cd64d462815793e3067b29fa0989cf9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633737"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719313"
 ---
 # <a name="release-notes-of-cognitive-services-speech-devices-sdk"></a>Poznámky k verzi sady Cognitive Services zařízení sadou SDK pro řeč
 
@@ -24,7 +24,8 @@ Následující změny části seznamu v nejnovější vydané verze.
 ## <a name="cognitive-services-speech-devices-sdk-110-2018-nov-release"></a>Cognitive Services zařízení sadou SDK pro řeč 1.1.0: verze listopadu 2018 
 
 * Aktualizuje [sadou SDK pro řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) součásti na verzi 1.1.0. Další informace najdete v tématu jeho [poznámky k verzi](https://aka.ms/csspeech/whatsnew). 
-* Vylepšili jsme úplně přesnost rozpoznávání řeči pole s algoritmem naše vylepšené zpracování zvuku  
+* Vylepšili jsme úplně přesnost rozpoznávání řeči pole s algoritmem naše rozšířené zpracování zvuku.
+* Ukázková aplikace přidat podporou čínský řeči.
 
 ## <a name="cognitive-services-speech-devices-sdk-101-2018-oct-release"></a>Cognitive Services zařízení sadou SDK pro řeč 1.0.1: verze října 2018 
 

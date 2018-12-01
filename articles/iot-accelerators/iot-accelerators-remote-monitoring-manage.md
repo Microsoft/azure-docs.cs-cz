@@ -1,35 +1,32 @@
 ---
-title: Kurz správy zařízení v řešení vzdáleného monitorování založeném na Azure | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak spravovat zařízení připojená k akcelerátoru řešení vzdáleného monitorování.
+title: Konfigurace zařízení v založené na Azure vzdálené monitorování řešení kurzu | Dokumentace Microsoftu
+description: V tomto kurzu se dozvíte, jak nakonfigurovat zařízení připojená k akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 11/08/2018
+ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b54f7601f66bd115b7ceb937e2c0ebf8ca8eb01e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: b8352b062efdb49df01834bd3c2a5e1393e11a44
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821043"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679150"
 ---
-# <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Kurz: Konfigurace a správa zařízení připojených k řešení monitorování
+# <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Kurz: Konfigurace zařízení připojených k řešení monitorování
 
-V tomto kurzu použijete akcelerátor řešení vzdáleného monitorování ke konfiguraci a správě připojených zařízení IoT. Do akcelerátoru řešení přidáte nové zařízení, nakonfigurujete ho a aktualizujete jeho firmware.
+V tomto kurzu použijete akcelerátor řešení vzdáleného monitorování ke konfiguraci a správě připojených zařízení IoT. Přidat nové zařízení k akcelerátoru řešení a konfigurace zařízení.
 
-Společnost Contoso si objednala nové stroje pro rozšíření jednoho ze svých závodů. Při čekání na doručení nových strojů budete chtít spustit simulaci a otestovat chování vašeho řešení. Simulaci spustíte tak, že do akcelerátoru řešení vzdáleného monitorování přidáte nové simulované zařízení motoru a otestujete, jestli toto simulované zařízení správně reaguje na akce a aktualizace konfigurace.
-
-Akcelerátor řešení vzdáleného monitorování využívá funkce služby IoT Hub, jako jsou [úlohy](../iot-hub/iot-hub-devguide-jobs.md) a [přímé metody](../iot-hub/iot-hub-devguide-direct-methods.md), a poskytuje tak rozšiřitelný způsob konfigurace a správy zařízení. Přestože se v tomto kurzu používají simulovaná zařízení, vývojář zařízení může implementovat přímé metody do [fyzického zařízení připojeného k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
+Společnost Contoso si objednala nové stroje pro rozšíření jednoho ze svých závodů. Při čekání na doručení nových strojů budete chtít spustit simulaci a otestovat chování vašeho řešení. Při spuštění simulace, přidat nové zařízení simulovaného modul akcelerátor řešení vzdálené monitorování a test, který toto simulované zařízení správně reaguje na aktualizace konfigurace. Přestože se v tomto kurzu používají simulovaná zařízení, vývojář zařízení může implementovat přímé metody do [fyzického zařízení připojeného k akcelerátoru řešení vzdáleného monitorování](iot-accelerators-connecting-devices.md).
 
 V tomto kurzu se naučíte:
 
 >[!div class="checklist"]
 > * Zřízení simulovaného zařízení
 > * Test simulovaného zařízení
-> * Aktualizace firmwaru zařízení
 > * Změna konfigurace zařízení
 > * Uspořádání zařízení
 
@@ -60,24 +57,6 @@ V části **Podrobnosti o zařízení** ověřte, že vaše nové zařízení od
 Na panelu **Podrobnosti o zařízení** se zobrazí další informace o zařízení, jako například hodnoty značek, podporované metody a vlastnosti, které zařízení hlásí.
 
 Pokud chcete zobrazit podrobnou diagnostiku posuňte se na panelu **Podrobnosti o zařízení** dolů do části **Diagnostika**.
-
-## <a name="act-on-a-device"></a>Práce na zařízení
-
-Pokud chcete otestovat, že simulované zařízení motoru správně reaguje na akce inicializované z řídicího panelu, spusťte metodu **FirmwareUpdate**. Pokud chcete pracovat na zařízení spuštěním metody, vyberte zařízení v seznamu zařízení a pak klikněte na **Úlohy**. Pokud chcete pracovat na více zařízeních, můžete vybrat více než jedno zařízení. V **úlohy** panelu, vyberte **metody**. Model zařízení **Engine** (Motor) určuje tři metody: **FirmwareUpdate**, **FillTank** a **EmptyTank**:
-
-[![Metody motoru](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmethods-expanded.png#lightbox)
-
-Zvolte **FirmwareUpdate**, nastavte název úlohy na **UpdateEngineFirmware**, verzi firmwaru na **2.0.0**, identifikátor URI firmwaru na **http://contoso.com/engine.bin** a pak klikněte na **Použít**:
-
-[![Plánování metody aktualizace firmwaru](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatejob-expanded.png#lightbox)
-
-Pokud chcete sledovat stav úlohy, klikněte na **Zobrazit stav úlohy**:
-
-[![Monitorování naplánované úlohy aktualizace firmwaru](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-inline.png)](./media/iot-accelerators-remote-monitoring-manage/firmwareupdatestatus-expanded.png#lightbox)
-
-Po dokončení úlohy se vraťte na stránku **Zařízení**. Zobrazí se nová verze firmwaru pro zařízení motoru.
-
-Pokud na stránce **Zařízení** vyberete několik zařízení různých typů, přesto můžete vytvořit úlohu, která na těchto několika zařízeních spustí metodu. Na panelu **Úlohy** se zobrazí pouze metody společné pro všechna vybraná zařízení.
 
 ## <a name="reconfigure-a-device"></a>Změna konfigurace zařízení
 

@@ -10,17 +10,16 @@ ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 2fbf3c902416935f0b1fff0bc423a2535f3ba077
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 90faa1d3a24a77743beb5109373b1b6ba0bb4156
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012992"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722101"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Reakce na události s upozorněními služby Azure Monitor
 Upozornění služby Azure Monitor zjišťují důležité informace v úložišti Log Analytics. Vytvářejí se na základě pravidel upozornění, která automaticky v pravidelných intervalech spouští prohledávání protokolů. Pokud výsledky prohledávání protokolů odpovídají určitým kritériím, vytvoří se záznam upozornění, který je možné nakonfigurovat, aby reagoval automaticky.  Tento kurz je pokračováním kurzu [Vytváření a sdílení řídicích panelů s daty Log Analytics](log-analytics-tutorial-dashboards.md).   
@@ -71,7 +70,7 @@ Vytvořená upozornění si v Azure můžete prohlédnout v jediném podokně, k
 
 Když se výstraha aktivuje, zobrazí se stav v tabulce, včetně informace o počtu výskytů ve vybraném časovém intervalu (výchozí je posledních šest hodin).  V doručené poště byste měli mít příslušný e-mail, který bude vypadat podobně jako následující příklad. Informuje o problematických virtuálních počítačích a nejdůležitějších výsledcích, které odpovídají nastavenému vyhledávacímu dotazu.<br><br> ![Příklad akce upozornění e-mailem](./media/log-analytics-tutorial-response/azure-alert-email-notification-01.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak můžou pravidla upozornění proaktivně identifikovat problémy spouštěním prohledávání protokolů v naplánovaných intervalech a reagovat na problémy v případě, že výsledky prohledávání splní konkrétní kritéria.
 
 Na tomto odkazu najdete předem připravené ukázky skriptů pro Log Analytics.  

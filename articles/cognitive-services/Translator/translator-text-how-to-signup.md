@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: erhopf
-ms.openlocfilehash: e7ba72c95959a0c31ca724f91f519ac705d669fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f97b1ed30c3f8263c5c4c3465951bb7010466ac
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245779"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678283"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Jak se zaregistrovat pro rozhraní Translator Text API
 
@@ -48,6 +48,8 @@ Při registraci Translator Text získáte přizpůsobené přístupový klíč j
 
 - [Příklady kódu na Githubu](https://github.com/MicrosoftTranslator)
 - [Fórum podpory služby Microsoft Translator](https://www.aka.ms/TranslatorForum)
+
+Microsoft Translator obecně umožní vaší první několik požadavků uplynout, než ho se ověřit stav účtu předplatného. Pokud první několik požadavků Microsoft Translator API úspěšné pak volání selže, budou odpovědi na chybu označují problém. Abyste si mohli zobrazit z důvodu, přihlaste se na odpověď rozhraní API.
 
 ## <a name="pricing-options"></a>Cenové možnosti
 

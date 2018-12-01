@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 7e075434b8c785665d28a2981233fc17e2a1ceac
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726334"
 documentType: LandingData
 title: Uživatelská dokumentace ke službě Azure Automation
 metadata:
@@ -10,16 +16,9 @@ metadata:
   manager: carmonm
   ms.service: automation
   ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/13/2017
   ms.author: gwallace
-  ms.openlocfilehash: b2b155480cd43ce8daa0b4916b244910f094a032
-  ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/11/2018
-  ms.locfileid: "27773821"
 abstract:
   description: Přečtěte si, jak pomocí služby Automation nakonfigurovat a automatizovat provozní úlohy v hybridním prostředí. V kurzech, referencích k rozhraním API a další dokumentaci se dozvíte, jak automatizovat procesy, provádět správu aktualizací, zajistit požadovaný stav konfigurace, sledovat změny a shromažďovat údaje o inventáři.
 sections:
@@ -54,7 +53,7 @@ sections:
     - html: <a href="/azure/automation/automation-onboard-solutions">Začlenění ve velkém měřítku</a>
     - html: <a href="/azure/automation/automation-tutorial-installed-software">Identifikace softwaru nainstalovaného na virtuálním počítači</a>
     - html: <a href="/azure/automation/automation-tutorial-troubleshoot-changes">Řešení potíží se změnami na virtuálním počítači</a>
-- title: Odkaz
+- title: Referenční informace
   items:
   - type: list
     style: cards

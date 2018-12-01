@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.author: davidmu
-ms.date: 01/23/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: HT
+ms.openlocfilehash: bd900071bbcd894d4fe71e0f8a265d98348eb262
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604336"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726402"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API ASP.NET z webové aplikace pomocí Azure Active Directory B2C
 
@@ -120,7 +120,7 @@ Ukázkové webové rozhraní API je součástí projektu, který jste stáhli v 
 
 Ukázkové řešení obsahuje dva projekty:
 
-**Ukázková webová aplikace (TaskWebApp):** Webová aplikace umožňující vytvoření a úpravy seznamu úkolů. Tato webová aplikace používá k registraci nebo přihlašování uživatelů pomocí e-mailové adresy zásady **registrace nebo přihlašování**.
+**Ukázková webová aplikace (TaskWebApp):** Webová aplikace umožňující vytvoření a úpravy seznamu úkolů. Tato webová aplikace používá **registrace nebo přihlašování** tok uživatele k registraci nebo přihlašování uživatelů pomocí e-mailovou adresu.
 
 **Ukázková aplikace webového rozhraní API (TaskService):** Webové rozhraní API, které podporuje funkce vytvoření, čtení, aktualizace a odstranění seznamu úkolů. Toto webové rozhraní API je zabezpečené službou Azure AD B2C a volané webovou aplikací.
 
@@ -162,10 +162,10 @@ Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
     <add key="ida:ClientId" value="<The Application ID for your web API obtained from the Azure portal>"/>
     ```
 
-4. Aktualizujte nastavení zásad s použitím názvu vygenerovaného při vytváření zásad registrace a přihlášení.
+4. Aktualizace nastavení hlavního názvu uživatele tok s názvem vygeneruje, když vytváření nahoru a tok přihlášení uživatele.
 
     ```C#
-    <add key="ida:SignUpSignInPolicyId" value="B2C_1_SiUpIn" />
+    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_SiUpIn" />
     ```
 
 5. Nakonfigurujte nastavení oborů tak, aby odpovídaly oborům, které jste vytvořili na portálu.
@@ -195,7 +195,7 @@ Když vytvoříte položku seznamu úkolů, webová aplikace odešle do webovéh
 
 Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů k Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svého tenanta Azure AD B2C odstranit](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Tento článek vás provedl ochranou webového rozhraní API ASP.NET prostřednictvím registrace a definice oborů v Azure AD B2C. Další podrobnosti o vývoji tohoto scénáře, včetně podrobného vysvětlení kódů, najdete v dalším kurzu.
 

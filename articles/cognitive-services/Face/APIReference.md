@@ -10,25 +10,23 @@ ms.component: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 283a042bb8ea32f8f6db9bebb211bc2762a3a4c1
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: be3e408b3f5f6393786a35108202d51ae871ea3b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578043"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679728"
 ---
 # <a name="api-reference"></a>Referenční materiály k rozhraní API
 
-Rozhraní API pro rozpoznávání tváře Microsoftu je rozhraní API založené na cloudu, které poskytuje špičkové algoritmy pro rozpoznávání tváře a uznání.
+Rozhraní API pro rozpoznávání tváře Azure je rozhraní API založené na cloudu, které poskytuje algoritmy pro rozpoznávání tváře a uznání. Rozhraní API pro rozpoznávání tváře zahrnuje tyto kategorie:
 
-Rozhraní API pro rozpoznávání tváře pokrytí následujících kategorií:
-
-- [Algoritmus rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236): zahrnuje základní funkce, jako [detekce](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [Najít podobné](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237), [ověření](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a), [identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), a [skupiny](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
-- [Rozhraní API pro správu FaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b): použít ke správě FaceList pro [Najít podobné](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
-- [Rozhraní API pro správu LargePersonGroup osoba](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40): použít ke správě LargePersonGroup tváří pro [identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
-- [Rozhraní API pro správu LargePersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d): použít ke správě LargePersonGroup datové sady pro [identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
-- [Rozhraní API pro správu LargeFaceList](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc): použít ke správě LargeFaceList pro [Najít podobné](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
-- [Rozhraní API pro správu jeden objekt PersonGroup osoba](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c): použít ke správě jeden objekt PersonGroup tváří pro [identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
-- [Rozhraní API pro správu jeden objekt PersonGroup](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244): použít ke správě datové sady pro jeden objekt PersonGroup [identifikace](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239).
+- [Algoritmus rozhraní API pro rozpoznávání tváře](https://docs.microsoft.com/rest/api/cognitiveservices/face/face): zahrnuje základní funkce, jako [detekce](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/detectwithstream), [Najít podobné](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar), [ověření](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/verifyfacetoface), [identifikace](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify), a [skupiny](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/group).
+- [Rozhraní API pro správu FaceList](https://docs.microsoft.com/rest/api/cognitiveservices/face/facelist): použít ke správě FaceList pro [Najít podobné](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar).
+- [Rozhraní API pro správu LargePersonGroup osoba](https://docs.microsoft.com/rest/api/cognitiveservices/face/largepersongroupperson): použít ke správě LargePersonGroup tváří pro [identifikace](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
+- [Rozhraní API pro správu LargePersonGroup](https://docs.microsoft.com/rest/api/cognitiveservices/face/largepersongroup): použít ke správě LargePersonGroup datové sady pro [identifikace](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
+- [Rozhraní API pro správu LargeFaceList](https://docs.microsoft.com/rest/api/cognitiveservices/face/largefacelist): použít ke správě LargeFaceList pro [Najít podobné](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/findsimilar).
+- [Rozhraní API pro správu jeden objekt PersonGroup osoba](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroupperson): použít ke správě jeden objekt PersonGroup tváří pro [identifikace](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
+- [Rozhraní API pro správu jeden objekt PersonGroup](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup): použít ke správě datové sady pro jeden objekt PersonGroup [identifikace](https://docs.microsoft.com/rest/api/cognitiveservices/face/face/identify).
 
 <!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->

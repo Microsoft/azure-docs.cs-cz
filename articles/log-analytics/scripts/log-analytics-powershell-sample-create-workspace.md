@@ -1,6 +1,6 @@
 ---
-title: Azure skript prostředí PowerShell ukázkový – vytvořit pracovní prostor analýzy protokolů | Microsoft Docs
-description: Azure skript prostředí PowerShell ukázkový – vytvořit pracovní prostor analýzy protokolů pro
+title: 'Skript Azure Powershellu ukázkový: vytvoření pracovního prostoru Log Analytics | Dokumentace Microsoftu'
+description: Skript Azure Powershellu ukázkový – vytvořit pracovní prostor Log Analytics
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -9,22 +9,21 @@ editor: tysonn
 tags: ''
 ms.assetid: ''
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 30d036ae56acc3a798d2776f292243f65cbea43d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 5ad04c52da4709a7097ff7915d7af7404d6725eb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855436"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680255"
 ---
-# <a name="create-a-log-analytics-workspace-with-powershell"></a>Pomocí prostředí PowerShell vytvořit pracovní prostor analýzy protokolů
+# <a name="create-a-log-analytics-workspace-with-powershell"></a>Vytvoření pracovního prostoru Log Analytics pomocí Powershellu
 
-Tento skript získá je spuštěná rychle se pracovní prostor analýzy protokolů Azure, který je nutný, pokud chcete spustit shromažďování, analýze a pořízení akce na data.  
+Tento skript vám pomůže zprovoznit rychle k pracovnímu prostoru Azure Log Analytics, která je vyžadována, pokud chcete spustit shromažďování, analýze a akce a současně s daty.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -36,15 +35,15 @@ Tento skript získá je spuštěná rychle se pracovní prostor analýzy protoko
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření nové pracovní prostor analýzy protokolů v rámci vašeho předplatného. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy k vytvoření nového pracovního prostoru Log Analytics v rámci vašeho předplatného. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace) | Získá informace o existujícímu pracovnímu prostoru. |
-| [Nové AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace) | Vytvoří pracovního prostoru v zadaná skupina prostředků a umístění. |
+| [Get-AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightsworkspace) | Získá informace o existujícího pracovního prostoru. |
+| [Nový AzureRmOperationalInsightsWorkspace](/powershell/module/azurerm.operationalinsights/new-azurermoperationalinsightsworkspace) | Vytvoří pracovní prostor v zadané skupině prostředků a umístění. |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

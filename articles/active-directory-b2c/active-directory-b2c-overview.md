@@ -1,5 +1,5 @@
 ---
-title: Co je Azure Active Directory B2C? | Microsoft Docs
+title: Co je Azure Active Directory B2C? | Dokumenty Microsoft
 description: Zjistěte, jak vytvořit a spravovat přihlašovací prostředí aplikace pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 10/23/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fdb856f92bf790df0065cfc74ce5896f1d10c47b
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 2f9c4acc1a2a98978e12aaf5356a5bc270b8d017
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954094"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724022"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Co je Azure Active Directory B2C?
 
@@ -60,9 +60,9 @@ Azure AD B2C pracuje se zprostředkovateli identity, zákazníky, jinými systé
 
 Azure AD B2C chrání před útoky na dostupnost služby (DOS) a před útoky na hesla proti vaší aplikaci. K ochraně prostředků před útoky na dostupnost služby používá zjišťovací a omezovací techniky, jako jsou soubory cookie SYN a omezení frekvence a počtu připojení. Omezení rizik je rovněž obsaženo pro útoky na hesla hrubou silou a slovníkové útoky na hesla.
 
-#### <a name="built-in-policies"></a>Předdefinované zásady
+#### <a name="user-flows"></a>Toky uživatele
 
-Každá žádost zaslaná do Azure AD B2C určuje zásadu. Zásada řídí chování, jak aplikace komunikuje s Azure AD B2C. Integrované zásady jsou předdefinované pro nejběžnější úkoly identity, například registraci, přihlašování a úpravy profilu.  Například zásada registrace umožňuje řídit chování pomocí konfigurace následujícího nastavení:
+Každý požadavek zaslaný do Azure AD B2C určuje tok uživatele, který je zásada, která řídí chování jak aplikace komunikuje s Azure AD B2C. Předdefinované toky uživatelů pro nejběžnější úkoly identity, jako například registrace, přihlašování a úpravy profilu, jsou k dispozici na portálu Azure AD B2C.  Například tok registrace uživatele umožňuje řídit chování konfigurací následujícího nastavení:
 
 - Účty na sociálních sítích, které zákazník použije při registraci k aplikaci
 - Data shromážděná od zákazníka, jako jsou jméno nebo PSČ
@@ -110,7 +110,7 @@ Pokud jste vývojář desktopové aplikace, nastavte aplikaci na ověřování �
 
 Pokud jste vývojář jednostránkové aplikace pomocí Node.js, nastavte aplikaci na ověřování účtů pomocí postupu v článku [Kurz: Povolení ověřování s účty pomocí Azure AD B2C přes jednostránkovou aplikaci](active-directory-b2c-tutorials-spa.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Začněte konfigurovat svoji aplikaci pro prostředí registrace a přihlášení – pokračujte tímto kurzem.
 

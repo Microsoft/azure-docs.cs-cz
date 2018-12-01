@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dfaee72be883ee8902fe4550890d757f114ff932
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: e526c5f2f446a1ae8134a3e2ca72fcc42024d904
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426101"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724090"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
 
@@ -91,11 +91,11 @@ Při vytváření prvního účtu Batch v režimu předplatného uživatele mus�
 
     ![Registrace poskytovatele Microsoft.Batch][register_provider]
 
-1. Na stránce **Předplatné** vyberte **Řízení přístupu (IAM)** > **Přidat**.
+1. V **předplatné** stránce **řízení přístupu (IAM)** > **přiřazení rolí** > **přidat přiřazení role**.
 
     ![Řízení přístupu pro předplatné][subscription_access]
 
-1. Na stránce **Přidejte oprávnění** vyberte roli **Přispěvatel** a vyhledejte rozhraní API služby Batch. Hledejte každý z těchto řetězců, dokud nenajdete rozhraní API:
+1. Na **přidat přiřazení role** stránky, vyberte **Přispěvatel** role, vyhledejte rozhraní API služby Batch. Hledejte každý z těchto řetězců, dokud nenajdete rozhraní API:
     1. **MicrosoftAzureBatch**.
     1. **Microsoft Azure Batch**. Novější tenanti služby Azure AD mohou používat tento název.
     1. **ddbf3205-c6bd-46ae-8127-60eb93363864** je ID rozhraní API služby Batch. 
@@ -120,7 +120,7 @@ K vytváření a správě účtů Batch můžete kromě webu Azure Portal použ�
 * [Azure CLI](batch-cli-get-started.md)
 * [Knihovna Batch Management .NET](batch-management-dotnet.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o koncepcích a funkcích služby Batch najdete v článku [Přehled funkcí Batch](batch-api-basics.md). Článek popisuje primární prostředky služby Batch, například fondy, výpočetní uzly a úlohy, a nabízí přehled funkcí služby pro velké výpočetní úlohy.
 * Seznamte se se základy vývoje aplikací s podporou služby Batch pomocí [klientské knihovny Batch .NET](quick-run-dotnet.md) nebo [Pythonu](quick-run-python.md). Tyto rychlé starty vás provedou ukázkovou aplikací, která používá službu Batch ke spouštění úlohy na několika výpočetních uzlech, a představí vám použití služby Azure Storage k přípravě a načítání souborů úloh.
 

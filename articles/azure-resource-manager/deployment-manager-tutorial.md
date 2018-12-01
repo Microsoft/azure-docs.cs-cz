@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e4489fd9119bce0e38e14f536f41940b74205e95
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 8ec180b40e52c5702495a0124bf8ae33d2dc24a1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424999"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727779"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Kurz: Použití Azure Deployment Manageru s šablonami Resource Manageru (Private Preview)
 
@@ -152,7 +152,7 @@ Je potřeba vytvořit spravovanou identitu přiřazenou uživatelem a nakonfigur
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vytvořte [spravovanou identitu přiřazenou uživatelem](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. V levé nabídce portálu vyberte **Předplatná** a pak vyberte své předplatné.
-4. Vyberte **Řízení přístupu (IAM)** a pak **Přidat**.
+4. Vyberte **řízení přístupu (IAM)** a pak vyberte **přidat přiřazení role**.
 5. Zadejte nebo vyberte tyto hodnoty:
 
     ![Kurz Azure Deployment Manageru – řízení přístupu spravované identity přiřazené uživatelem](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-access-control.png)

@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 6f679536d69f700fd6678eb3bbbb869e42439cde
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8302a444f28e4fb330a1eedbac9a5da762979d6c
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853349"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681955"
 ---
 # <a name="translator-text-api-v30"></a>Verze Translator Text API 3.0
 
@@ -31,11 +31,22 @@ Verze 3 rozhraní Translator Text API poskytuje moderní webové API založené 
 
 ## <a name="base-urls"></a>Základní adresy URL
 
-Text API v3.0 je dostupná v následujících cloudu:
+Microsoft Translator je provádět z více umístění datového centra. Aktuálně jsou umístěny v 6 [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions):
 
-| Popis | Oblast | Základní adresa URL                                        |
-|-------------|--------|-------------------------------------------------|
-| Azure       | Globální | API.cognitive.microsofttranslator.com           |
+* **Jižní Americe:** západní USA 2 a střed USA – západ 
+* **Asie a Tichomoří:** jihovýchodní Asii a Korea – jih
+* **Evropa:** Severní Evropa a západní Evropa
+
+Požadavky na rozhraní Microsoft Translator Text API jsou ve většině případů zpracovat datacenter, která je nejblíž k původu žádosti. V případě datacenter selhání může být žádost směrována mimo oblast.
+
+Vynutit požadavek na ošetřit konkrétní datové centrum, změňte globální koncový bod rozhraní API požadavek na požadovanou místní koncový bod:
+
+|Popis|Oblast|Základní adresa URL|
+|:--|:--|:--|
+|Azure|Globální|  API.cognitive.microsofttranslator.com|
+|Azure|Severní Amerika|   rozhraní API nam.cognitive.microsofttranslator.com|
+|Azure|Evropa|  rozhraní API eur.cognitive.microsofttranslator.com|
+|Azure|Asie a Tichomoří|    rozhraní API apc.cognitive.microsofttranslator.com|
 
 
 ## <a name="authentication"></a>Authentication

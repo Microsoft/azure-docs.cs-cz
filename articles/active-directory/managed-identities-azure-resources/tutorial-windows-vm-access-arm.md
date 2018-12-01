@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 19b4a1382b2a9b6034fd6ac9feed776dcca6a124
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 53f9850d794061f5aaebc556743291ae8f3305fb
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704354"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721285"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Resource Manageru
 
@@ -41,7 +41,7 @@ Když použijete spravované identity pro prostředky Azure, může kód získat
 1.  Přejděte ke kartě **Skupiny prostředků**. 
 2.  Vyberte **skupinu prostředků**, kterou jste pro **virtuální počítač s Windows** vytvořili. 
 3.  Na panelu vlevo přejděte na **Řízení přístupu (IAM)**. 
-4.  Klikněte na **Přidat** a přiřaďte svému **virtuálnímu počítači s Windows** novou roli.  V poli **Role** zvolte **Čtenář**. 
+4.  Potom **přidat přiřazení role** přiřazení nové role pro vaše **virtuálního počítače Windows**.  V poli **Role** zvolte **Čtenář**. 
 5.  V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte prostředek **Virtuální počítač**. 
 6.  Potom zkontrolujte, že je v rozevíracím seznamu **Předplatné** uvedené správné předplatné. A ve **skupině prostředků** vyberte **Všechny skupiny prostředků**. 
 7.  Nakonec **vyberte** v rozevíracím seznamu svůj virtuální počítač s Windows a klikněte na **Uložit**.

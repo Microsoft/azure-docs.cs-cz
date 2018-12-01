@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/26/2018
 ms.author: erhopf
-ms.openlocfilehash: d0921d67867e412ed1862c597297e27c2c56ae3b
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: b77113378803b3d40e3612c668a5048a936edbe2
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334529"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679320"
 ---
 # <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-c"></a>Rychlý start: Vyhledání alternativních překladů pomocí rozhraní REST API služby Translator Text (C#)
 
@@ -28,7 +28,7 @@ K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services]
 * [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Balíček NuGet Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), nebo vašem oblíbeném textovém editoru
-* Klíč rozhraní předplatné Azure pro službu rozpoznávání řeči
+* Klíč předplatného Azure pro službu Translator Text
 
 ## <a name="create-a-net-core-project"></a>Vytvoření projektu .NET Core
 
