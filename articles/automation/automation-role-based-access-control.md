@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 538208c39d6436c15b95760133e00c980e2e8277
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094213"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727898"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Řízení přístupu na základě role ve službě Azure Automation
 
@@ -274,12 +274,13 @@ Následující části se dozvíte, jak nakonfigurovat RBAC na účtu Automation
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a na stránce Účty Automation otevřete svůj účet Automation.
 2. Klikněte na **řízení přístupu (IAM)** ovládací prvek v levém horním rohu. Tím se otevře **řízení přístupu (IAM)** stránce, kde můžete přidat nové uživatele, skupiny, a účet aplikace pro správu automatizace a zobrazovat existující role, které je možné nakonfigurovat pro účet služby Automation.
+3. Klikněte na tlačítko **přiřazení rolí** kartu.
 
    ![Tlačítko Přístup](media/automation-role-based-access-control/automation-01-access-button.png)
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>Přidání nového uživatele a přiřazení role
 
-1. Z **řízení přístupu (IAM)** klikněte na **+ přidat** otevřít **přidat oprávnění** stránku, kde můžete přidat uživatele, skupinu nebo aplikaci a přiřadit jim roli.
+1. Z **řízení přístupu (IAM)** klikněte na **+ přidat přiřazení role** otevřít **přidat přiřazení role** stránku, kde můžete přidat uživatele, skupinu nebo aplikaci a přiřazení role k nim.
 
 2. V seznamu dostupných rolí vyberte jednu roli. Můžete vybrat některý z dostupných předdefinované role, které účet Automation podporuje nebo jakoukoli vlastní roli, kterou jste definovali.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
 ms.author: TylerMSFT
-ms.openlocfilehash: 1041f37486c556ae29eed47728336a1ccb518e78
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 154869c3e6bcd44a71480a3cf7363537dddcebf9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040359"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727677"
 ---
 # <a name="supported-service-fabric-versions"></a>Podporované verze Service Fabric
 
@@ -42,5 +42,6 @@ Tady je seznam podporovaných verzích Service Fabric a jejich podpora koncové 
 | 5.7.* | 5.4.164.* |Menší nebo rovna verze 2.7 |Prosinec 15,2017  |
 | 6.0.* | 5.6.205.* |Menší nebo rovna verze 2.8 |Březen 30,2018     |
 | 6.1.* | 5.7.221.* |Menší nebo rovna verzi 3.0 |Červenec 15,2018      |
-| 6.2. * | 6.0.232.* |Menší nebo rovna verzi 3.1 |Říjen 26,2018 |
-| 6.3. * | 6.1.480.* |Menší nebo rovna verzi 3.2 |Aktuální verze a proto žádné datum ukončení |
+| 6.2. * | 6.0.232.* |Menší nebo rovna verzi 3.1 |Říjen 26,2018   |
+| 6.3. * | 6.1.480.* |Menší nebo rovna verzi 3.2 |Únor 28,2019  |
+| 6.4. * | 6.2.301.* |Menší nebo rovna verze 3.3 |Aktuální verze a proto žádné datum ukončení |

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8cec3d3695eaff8719757dd022951b969de99f6a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: bccbf5462668913f6f3025e8d2274c115d49457f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010639"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727235"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory (Azure AD) B2C. Kontrolovat novinky.
@@ -34,7 +34,7 @@ V tenantovi Azure AD, uživatelé, kteří patří do tenanta Přihlaste se pomo
 
 V tenantovi Azure AD B2C, většina aplikací, aby uživatel musel přihlásit pomocí libovolné libovolné e-mailovou adresu (například joe@comcast.net, bob@gmail.com, sarah@contoso.com, nebo jim@live.com). Tento typ účtu je místní účet.  Také podporujeme libovolného uživatelská jména jako místní účty (například joe, bob, sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C na webu Azure Portal můžete s jedním z těchto dvou typů místní účet. Ve vašem tenantovi Azure AD B2C, klikněte na tlačítko **zprostředkovatelé Identity** a pak vyberte **uživatelské jméno** pod místní účty. 
 
-Uživatelské účty pro aplikace se musí vždycky vytvořit prostřednictvím zásady registrace, registrace nebo přihlašování – v zásadách nebo pomocí Azure AD Graph API. Uživatelské účty vytvořené na webu Azure Portal slouží pouze ke správě tenanta.
+Uživatelské účty pro aplikace je nutné vytvořit vždy prostřednictvím registrace uživatele tok, tok registrace / přihlášení uživatele, nebo pomocí Azure AD Graph API. Uživatelské účty vytvořené na webu Azure Portal slouží pouze ke správě tenanta.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Které zprostředkovatele sociální identity podporujete nyní? Ty, které plánujete podporovat v budoucnu?
 Aktuálně podporujeme sítě Facebook, Google +, LinkedIn, Amazon, Twitteru (preview), WeChat (preview), Weibo (preview) a QQ (Preview). Přidáme podporou dalších zprostředkovatelů oblíbených sociálních identit, podle potřeb zákazníků.
@@ -79,8 +79,8 @@ V současné době neexistuje žádný způsob, jak změnit "z:" na e-mailu.
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Jak můžu migrovat své existující uživatelská jména, hesla a profily z databáze do Azure AD B2C?
 Azure AD Graph API můžete použít k zápisu vašeho nástroje pro migraci. Najdete v článku [uživatelská příručka migrace](active-directory-b2c-user-migration.md) podrobnosti.
 
-### <a name="what-password-policy-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jaké zásady pro hesla se používá pro místní účty v Azure AD B2C?
-Zásady hesel Azure AD B2C pro místní účty je na základě zásad pro službu Azure AD. V Azure AD B2C registrovat a zaregistrujte se nebo přihlašovací jméno a heslo resetovat používá zásady šifrování "bezpečné" heslo a platnost pasu nevyprší všechna hesla. Přečtěte si [zásady hesel služby Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) další podrobnosti. Informace o uzamčení účtu a hesla najdete v tématu [spravuje hrozby k prostředkům a datům v Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
+### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jaký tok uživatele heslo se používá pro místní účty v Azure AD B2C?
+Tok uživatele Azure AD B2C heslo pro místní účty je na základě zásad pro službu Azure AD. V Azure AD B2C registrovat a zaregistrujte se nebo přihlašovací jméno a heslo toky uživatelů pro resetování použít síly hesla "silné" a není vypršení platnosti hesla. Přečtěte si [zásady hesel služby Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) další podrobnosti. Informace o uzamčení účtu a hesla najdete v tématu [spravuje hrozby k prostředkům a datům v Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Můžete použít Azure AD Connect k migraci identit zákazníků, které jsou uložené na můj místní služby Active Directory k Azure AD B2C?
 Ne, Azure AD Connect není navržena pro práci s Azure AD B2C. Zvažte použití [rozhraní Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) pro migraci uživatele.  Najdete v článku [uživatelská příručka migrace](active-directory-b2c-user-migration.md) podrobnosti.

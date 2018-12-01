@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 507bbc9013d8b02084b639f8d9fac0c7d97503f4
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0787d023676c707a987b4b69cb5601394db4bd3b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014274"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728374"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -22,7 +22,7 @@ Tento článek je určen můžete odstraňovat potíže a řešit problémy, kte
 
 1. [Fórum služby Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata).
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
-3. podporu Microsoftu. Chcete-li vytvořit novou žádost o podporu, na webu Azure Portal, na **pomáhají** kartu, vyberte možnost **Nápověda a podpora** tlačítko a pak vyberte **nová žádost o podporu**.
+3. Podporu Microsoftu. Chcete-li vytvořit novou žádost o podporu, na webu Azure Portal, na **pomáhají** kartu, vyberte možnost **Nápověda a podpora** tlačítko a pak vyberte **nová žádost o podporu**.
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Mám potíže s Azure File Sync na serveru (synchronizace, cloud vrstvení atd.). By měla odebrat a znovu vytvořte koncový bod pro tento server?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -96,8 +96,9 @@ Následující předdefinované role mají všechna oprávnění vyžadovaná Au
 Chcete-li zjistit, zda vaše uživatelská role účet má potřebná oprávnění:  
 1. Na webu Azure Portal, vyberte **skupiny prostředků**.
 2. Vyberte skupinu prostředků, které je umístěný účet úložiště a pak vyberte **řízení přístupu (IAM)**.
-3. Vyberte **role** (například vlastníka nebo přispěvatele) pro váš uživatelský účet.
-4. V **poskytovatele prostředků** seznamu vyberte **Microsoft Authorization**. 
+3. Vyberte **přiřazení rolí** kartu.
+4. Vyberte **Role** (například vlastníka nebo přispěvatele) pro váš uživatelský účet.
+5. V **poskytovatele prostředků** seznamu vyberte **Microsoft Authorization**. 
     * **Přiřazení role** by měl mít **čtení** a **zápisu** oprávnění.
     * **Definice role** by měl mít **čtení** a **zápisu** oprávnění.
 
@@ -248,7 +249,7 @@ Pokud chcete zobrazit tyto chyby, spusťte **FileSyncErrorsReport.ps1** skript p
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. Azure File Sync vytvoří dočasné snímek služby VSS jednou za den na serveru, aby synchronizovat soubory, které mají otevřených popisovačů. |
 | 0x20 | 32 | ERROR_SHARING_VIOLATION | Soubor nelze synchronizovat, protože je používán. Soubor bude synchronizován, až se už používá. | Není vyžadována žádná akce. |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Změnu souboru nebo adresáře nejde zatím synchronizovat, protože ještě není synchronizovaná závislá složka. Tato položka se synchronizuje po závislých změn. | Není vyžadována žádná akce. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Nějaký soubor se během synchronizace změnil, takže je nutné ho synchronizovat znovu. | Není vyžadována žádná akce. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Soubor byl změněn během synchronizace, proto musí znovu synchronizovat. | Není vyžadována žádná akce. |
 
 #### <a name="handling-unsupported-characters"></a>Zpracování nepodporované znaky.
 Pokud **FileSyncErrorsReport.ps1** skript prostředí PowerShell ukazuje selhání kvůli nepodporované znaky (kódy chyb 0x7b a 0x8007007b), by měl neodeberete nebo nepřejmenujete znaky na selhání z názvů příslušných souborů. Prostředí PowerShell pravděpodobně vytiskne tyto znaky jako otazník nebo prázdný obdélníky, protože většina z těchto znaků mít žádné standardní vizuálního kódování. [Nástroj pro vyhodnocení](storage-sync-files-planning.md#evaluation-tool) slouží k identifikaci znaky, které nejsou podporovány.
@@ -447,7 +448,7 @@ K této chybě může dojít, pokud vaše organizace používá SSL proxy ukonč
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Když nastavíte tuto hodnotu registru, agent funkce Synchronizace souborů Azure přijme při přenosu dat mezi serverem a cloudovou službou jakýkoli místně důvěryhodný certifikát protokolu SSL.
+Nastavením této hodnoty registru, agenta Azure File Sync přijímat všechny místně důvěryhodný certifikát SSL při přenosu dat mezi serverem a cloudovou službu.
 
 <a id="-2147012894"></a>**Nelze navázat připojení ke službě.**  
 | | |
@@ -540,7 +541,7 @@ V případech, kdy existuje mnoho za chyby synchronizace souborů, může relace
 | **Text chyby** | ECS_E_SYNC_INVALID_PATH |
 | **Požadována náprava** | Ano |
 
-Ujistěte se, že cesta existuje, je na místním svazku NTFS a není to spojovací bod nebo existující koncový bod serveru.
+Ujistěte se, že cesta existuje, je na místním svazku NTFS a se spojovacím bodem nebo existující koncový bod serveru.
 
 <a id="-2134376373"></a>**Služba je momentálně není k dispozici.**  
 | | |
@@ -705,8 +706,9 @@ if ($fileShare -eq $null) {
 
 <a id="troubleshoot-rbac"></a>**Ujistěte se, že má přístup k účtu úložiště Azure File Sync.**  
 # <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
-1. Klikněte na tlačítko **řízení přístupu (IAM)** v levé tabulce obsah přejít na seznam uživatelů a aplikací (*instanční*) která mají přístup k vašemu účtu úložiště.
-2. Ověřte **hybridní služby File Sync** se zobrazí v seznamu **Čtenář a přístup k datům** role. 
+1. Klikněte na tlačítko **řízení přístupu (IAM)** v obsahu vlevo.
+1. Klikněte na tlačítko **přiřazení rolí** kartu do seznamu uživatelů a aplikací (*instanční*), které mají přístup k vašemu účtu úložiště.
+1. Ověřte **hybridní služby File Sync** se zobrazí v seznamu **Čtenář a přístup k datům** role. 
 
     ![Snímek obrazovky instančnímu objektu služby File Sync hybridní v kartě pro řízení přístupu k účtu úložiště](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 

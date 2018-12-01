@@ -12,92 +12,97 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
+ms.date: 10/23/2018
 ms.author: dekapur
-ms.openlocfilehash: 03dac03405588ba00a0f8ca5b127956c40853e36
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a568fc6316211755fabc15ab3cf0227e3a87cb01
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868509"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727336"
 ---
 # <a name="list-of-service-fabric-events"></a>Seznam událostí Service Fabric 
 
-Service Fabric poskytuje sadu události clusteru pro informování o stavu vašeho clusteru jako primární [události Service Fabric](service-fabric-diagnostics-events.md). Jsou založeny na rozhodnutích týkajících se správy od vlastníka nebo operátor clusteru nebo akce provádět na svých uzlech i cluster Service Fabric. Tyto události můžete přistupovat pomocí dotazu [Eventstoru](service-fabric-diagnostics-eventstore.md) ve vašem clusteru, nebo prostřednictvím provozní kanál. Na počítačích s Windows provozní kanál je také připojili do protokolu událostí – abyste si mohli zobrazit události Service Fabric v prohlížeči událostí. 
+Service Fabric poskytuje sadu události clusteru pro informování o stavu vašeho clusteru jako primární [události Service Fabric](service-fabric-diagnostics-events.md). Jsou založeny na rozhodnutích týkajících se správy od vlastníka nebo operátor clusteru nebo akce provádět na svých uzlech i cluster Service Fabric. Tyto události je přístupná pomocí konfigurace v několika způsoby, včetně konfigurace [Log Analytics pro cluster](service-fabric-diagnostics-oms-setup.md), nebo dotazování [Eventstoru](service-fabric-diagnostics-eventstore.md). Na počítačích s Windows získávají tyto události do protokolu událostí –, abyste si mohli zobrazit události Service Fabric v prohlížeči událostí. 
 
->[!NOTE]
->Seznam událostí Service Fabric pro clustery v verze < 6.2 najdete v následující části. 
+Tady jsou některé vlastnosti tyto události
+* Každá událost se váže na konkrétní entitu v clusteru např. aplikace, služby, uzel, repliky.
+* Každá událost obsahuje sadu společných polí: EventInstanceId EventName a kategorie.
+* Každá událost obsahuje pole, které jsou události zpět do entity, který je přidružený. Událost ApplicationCreated by obsahovat pole, které identifikují název aplikace vytvořená.
+* Události jsou strukturované tak, že mohou být využívány v různých nástrojů provést hlubší analýzu. Kromě toho související podrobnosti o události jsou definovány jako samostatné vlastnosti na rozdíl od dlouhý řetězec. 
+* Události se zapisují podle různé subsystémy v Service Fabric jsou označeny Source(Task) níže. Další informace jsou k dispozici na těchto subsystémů v [architektura Service Fabric](service-fabric-architecture.md) a [Service Fabric – technický přehled](service-fabric-technical-overview.md).
 
-Tady je k dispozici na platformě, seřazené podle entity, které jsou mapovány na seznam všech událostí.
+Tady je seznam těchto událostí Service Fabric uspořádané podle entity.
 
 ## <a name="cluster-events"></a>Události clusteru
 
 **Události upgrade clusteru**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
-| --- | --- | --- | --- | --- | --- |
-| 29627 | ClusterUpgradeStarted | Bylo zahájeno upgradu clusteru | CM | Informační | 1 |
-| 29628 | ClusterUpgradeCompleted | Dokončení upgradu clusteru| CM | Informační | 1 |
-| 29629 | ClusterUpgradeRollbackStarted | Upgrade clusteru začal vrácení zpět | CM | Informační | 1 |
-| 29630 | ClusterUpgradeRollbackCompleted | Upgrade clusteru dokončení vrácení zpět | CM | Informační | 1 |
-| 29631 | ClusterUpgradeDomainCompleted | Dokončení upgradu domény během upgradu clusteru | CM | Informační | 1 |
+Najdete další podrobnosti o clusteru upgrady [tady](service-fabric-cluster-upgrade-windows-server.md).
+
+| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
+| --- | --- | --- | --- | --- | --- | 
+| 29627 | ClusterUpgradeStarted | Upgrade | Bylo zahájeno upgradu clusteru | CM | Informační |
+| 29628 | ClusterUpgradeCompleted | Upgrade | Dokončení upgradu clusteru | CM | Informační | 
+| 29629 | ClusterUpgradeRollbackStarted | Upgrade | Upgrade clusteru začal vrácení zpět  | CM | Upozornění | 
+| 29630 | ClusterUpgradeRollbackCompleted | Upgrade | Upgrade clusteru dokončení vrácení zpět | CM | Upozornění | 
+| 29631 | ClusterUpgradeDomainCompleted | Upgrade | Upgradovací doména dokončil upgrade během upgradu clusteru | CM | Informační | 
 
 ## <a name="node-events"></a>Uzel události
 
 **Události životního cyklu uzlu** 
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
-| --- | --- | ---| --- | --- | --- |
-| 18602 | NodeDeactivateCompleted | Deaktivace uzlu byla dokončena. | PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační | 1 |
-| 18603 | NodeUp | Cluster zjistil, že uzel má spuštění | PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační | 1 |
-| 18604 | NodeDown | Cluster zjistil, že uzel byl vypnut. |  PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační | 1 |
-| 18605 | NodeAddedToCluster | Byl přidán nový uzel do clusteru | PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační | 1 |
-| 18606 | NodeRemovedFromCluster | Odebral uzel z clusteru | PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační | 1 |
-| 18607 | NodeDeactivateStarted | Bylo zahájeno deaktivace uzlu | PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační | 1 |
-| 25620 | NodeOpening | Uzel se spouští. První fáze životního cyklu uzlu | FabricNode | Informační | 1 |
-| 25621 | NodeOpenSucceeded | Uzel byl úspěšně spuštěn | FabricNode | Informační | 1 |
-| 25622 | NodeOpenFailed | Uzel se nepovedlo spustit | FabricNode | Informační | 1 |
-| 25623 | NodeClosing | Uzel se vypíná. Začátek závěrečná fáze životního cyklu uzlu | FabricNode | Informační | 1 |
-| 25624 | NodeClosed | Uzel úspěšně vypnuta | FabricNode | Informační | 1 |
-| 25625 | NodeAborting | Spouští se uzel ungracefully vypnutí | FabricNode | Informační | 1 |
-| 25626 | NodeAborted | Uzel má ungracefully vypnout | FabricNode | Informační | 1 |
+| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň |
+| --- | --- | ---| --- | --- | --- | 
+| 18602 | NodeDeactivateCompleted | StateTransition | Deaktivace uzlu byla dokončena. | FM | Informační | 
+| 18603 | NodeUp | StateTransition | Cluster zjistil, že uzel má spuštění | FM | Informační | 
+| 18604 | NodeDown | StateTransition | Cluster zjistil, že uzel byl vypnut. Při restartování uzlu zobrazí se NodeDown událostí, za nímž následuje NodeUp událostí |  FM | Chyba | 
+| 18605 | NodeAddedToCluster | StateTransition |  Byl přidán nový uzel do clusteru a Service Fabric můžete nasazovat aplikace do tohoto uzlu | FM | Informační | 
+| 18606 | NodeRemovedFromCluster | StateTransition |  Uzel byl odebrán z clusteru. Service Fabric se už moct nasazovat aplikace do tohoto uzlu | FM | Informační | 
+| 18607 | NodeDeactivateStarted | StateTransition |  Bylo zahájeno deaktivace uzlu | FM | Informační | 
+| 25621 | NodeOpenSucceeded | StateTransition |  Uzel byl úspěšně spuštěn | FabricNode | Informační | 
+| 25622 | NodeOpenFailed | StateTransition |  Uzel se nepovedlo spustit a připojit se k okruhu | FabricNode | Chyba | 
+| 25624 | NodeClosed | StateTransition |  Uzel úspěšně vypnuta | FabricNode | Informační | 
+| 25626 | NodeAborted | StateTransition |  Uzel má ungracefully vypnout | FabricNode | Chyba | 
 
 ## <a name="application-events"></a>Události aplikace
 
 **Události životního cyklu aplikace**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
-| --- | --- | ---| --- | --- | --- |
-| 29620 | ApplicationCreated | Vytvoření nové aplikace | CM | Informační | 1 |
-| 29625 | ApplicationDeleted | Existující aplikace byla odstraněna. | CM | Informační | 1 |
-| 23083 | ApplicationProcessExited | Došlo k ukončení procesu v rámci aplikace | Hostování | Informační | 1 |
+| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
+| --- | --- | --- | --- | --- | --- | 
+| 29620 | ApplicationCreated | Životní cyklus | Vytvoření nové aplikace | CM | Informační | 
+| 29625 | ApplicationDeleted | Životní cyklus | Existující aplikace byla odstraněna. | CM | Informační | 
+| 23083 | ApplicationProcessExited | Životní cyklus | Došlo k ukončení procesu v rámci aplikace | Hostování | Informační | 
 
 **Události upgradu aplikace**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
-| --- | --- | ---| --- | --- | --- |
-| 29621 | ApplicationUpgradeStarted | Upgrade aplikace byla spuštěna. | CM | Informační | 1 |
-| 29622 | ApplicationUpgradeCompleted | Upgrade aplikace byla dokončena. | CM | Informační | 1 |
-| 29623 | ApplicationUpgradeRollbackStarted | Upgrade aplikace spustila na vrácení zpět |CM | Informační | 1 |
-| 29624 | ApplicationUpgradeRollbackCompleted | Upgrade aplikace dokončení vrácení zpět | CM | Informační | 1 |
-| 29626 | ApplicationUpgradeDomainCompleted | Dokončení upgradu domény během upgradu aplikace | CM | Informační | 1 |
+Najdete další podrobnosti o upgradech aplikací [tady](service-fabric-application-upgrade.md).
+
+| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
+| --- | --- | ---| --- | --- | --- | 
+| 29621 | ApplicationUpgradeStarted | Upgrade | Upgrade aplikace byla spuštěna. | CM | Informační | 
+| 29622 | ApplicationUpgradeCompleted | Upgrade | Upgrade aplikace byla dokončena. | CM | Informační | 
+| 29623 | ApplicationUpgradeRollbackStarted | Upgrade | Upgrade aplikace spustila na vrácení zpět |CM | Upozornění | 
+| 29624 | ApplicationUpgradeRollbackCompleted | Upgrade | Upgrade aplikace dokončení vrácení zpět | CM | Upozornění | 
+| 29626 | ApplicationUpgradeDomainCompleted | Upgrade | Upgradovací doména dokončil upgrade během upgradu aplikace | CM | Informační | 
 
 ## <a name="service-events"></a>Události služby
 
 **Události životního cyklu služeb**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
 | --- | --- | ---| --- | --- | --- |
-| 18657 | ServiceCreated | Byla vytvořena nová služba | PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační | 1 |
-| 18658 | ServiceDeleted | Existující služba se odstranila. | PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační | 1 |
+| 18657 | ServiceCreated | Životní cyklus | Byla vytvořena nová služba | FM | Informační | 
+| 18658 | ServiceDeleted | Životní cyklus | Existující služba se odstranila. | FM | Informační | 
 
 ## <a name="partition-events"></a>Oddíl události
 
 **Události pohybu oddílu**
 
-| ID události | Název | Popis |Zdroj (úloha) | Úroveň | Verze |
+| ID události | Název | Kategorie | Popis |Zdroj (úloha) | Úroveň | 
 | --- | --- | ---| --- | --- | --- |
-| 18940 | PartitionReconfigured | Rekonfigurace oddílu byla dokončena. | VZDÁLENÁ POMOC | Informační | 1 |
+| 18940 | PartitionReconfigured | Životní cyklus | Rekonfigurace oddílu byla dokončena. | VZDÁLENÁ POMOC | Informační | 
 
 ## <a name="container-events"></a>Události kontejneru
 
@@ -110,6 +115,12 @@ Tady je k dispozici na platformě, seřazené podle entity, které jsou mapován
 | 23082 | ContainerExited | Kontejner se ukončil - zkontrolujte soubor UnexpectedTermination příznak | Hostování | Informační | 1 |
 
 ## <a name="health-reports"></a>Sestav stavu
+
+[Modelu stavu Service Fabric](service-fabric-health-introduction.md) poskytuje bohaté možnosti, flexibilní a rozšiřitelné stav vyhodnocení a vytváření sestav. Spouští se Service Fabric verze 6.2, data o stavu je zapisují jako události platformy poskytnout historické záznamy o stavu. Pokud chcete zachovat objemu událostí stavu s nízkou, napíšeme pouze následující události Service Fabric:
+
+* Všechny `Error` nebo `Warning` sestav stavu
+* `Ok` sestavy stavu během přechodů
+* Když `Error` nebo `Warning` událost stavu – platnost vyprší. To umožňuje zjistit, jak dlouho entity není v pořádku
 
 **Události sestavy stavu clusteru**
 
@@ -233,11 +244,12 @@ Tady je úplný seznam událostí Service Fabric poskytuje starší než verze 6
 | 29624 | ApplicationUpgradeRollbackComplete | CM | Informační |
 | 29625 | ApplicationDeleted | CM | Informační |
 | 29626 | ApplicationUpgradeDomainComplete | CM | Informační |
-| 18566 | ServiceCreated | PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační |
-| 18567 | ServiceDeleted | PŘEVZETÍ SLUŽEB PŘI SELHÁNÍ | Informační |
+| 18566 | ServiceCreated | FM | Informační |
+| 18567 | ServiceDeleted | FM | Informační |
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o celkové [generování událostí na úrovni platformy](service-fabric-diagnostics-event-generation-infra.md) v Service Fabric
+* Získejte přehled o [diagnostiky v Service Fabric](service-fabric-diagnostics-overview.md)
+* Další informace o Eventstoru v [Service Fabric – přehled Eventstoru](service-fabric-diagnostics-eventstore.md)
 * Úprava vaše [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) konfigurace shromažďování protokolů více
 * [Nastavení Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) zobrazíte vaší provozní kanál protokoly

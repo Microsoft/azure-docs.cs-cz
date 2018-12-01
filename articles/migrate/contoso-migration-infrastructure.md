@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 2210aaa5d4d0ba9d730e5aee97972565ea0c1090
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 32a489ee6266018ef1160a0870fe236cc6a72d36
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092966"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726980"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso – nasazení infrastruktury migrace
 
@@ -256,8 +256,8 @@ Azure [řízení přístupu na základě Role (RBAC)](https://docs.microsoft.com
 
 Contoso správce nyní přiřadí role do skupiny AD, které jsou synchronizované z místní.
 
-1. V **ControlCobRG** skupinu prostředků, klikněte na tlačítko **řízení přístupu (IAM)** > **přidat**.
-2. V **přidat oprávnění** > **Role**, > **Přispěvatel**, vyberou **ContosoCobRG** skupiny AD ze seznamu. Skupiny se pak objeví v **Vybraní členové** seznamu. 
+1. V **ControlCobRG** skupinu prostředků, klikněte na tlačítko **řízení přístupu (IAM)** > **přidat přiřazení role**.
+2. V **přidat přiřazení role** > **Role**, > **Přispěvatel**, vyberou **ContosoCobRG** skupiny AD ze seznamu. Skupiny se pak objeví v **Vybraní členové** seznamu. 
 3. Opakujte tento postup se stejnými oprávněními pro jiné skupiny prostředků (s výjimkou **ContosoAzureAdmins**), přidáním oprávnění přispěvatele do účtu AD, který odpovídá skupině prostředků.
 4. Pro **ContosoAzureAdmins** skupiny AD, přiřadí **vlastníka** role.
 

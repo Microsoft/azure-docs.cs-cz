@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: ed97a2c31897d1e5e61421ea489a35af377f4f37
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0d5243a1dd2a7c9244860da15d39f407b281e1e3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621441"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726793"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpečení přístupu k datům služby Azure Cosmos DB
 Tento článek obsahuje základní informace o zabezpečení přístupu k datům uloženým v [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
@@ -180,8 +180,8 @@ DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 Přidat přístup čtenáře účtu služby Azure Cosmos DB s vaším uživatelským účtem, jste vlastníkem předplatného, proveďte následující kroky na webu Azure Portal.
 
 1. Otevřete na webu Azure portal a vyberte svůj účet služby Azure Cosmos DB.
-2. Klikněte na tlačítko **řízení přístupu (IAM)** kartu a potom klikněte na tlačítko **+ přidat**.
-3. V **přidat oprávnění** podokno v **Role** vyberte **Role čtenáře účtu Cosmos DB**.
+2. Klikněte na tlačítko **řízení přístupu (IAM)** kartu a potom klikněte na tlačítko **+ přidat přiřazení role**.
+3. V **přidat přiřazení role** podokno v **Role** vyberte **Role čtenáře účtu Cosmos DB**.
 4. V **přiřadit přístup k poli**vyberte **uživatele Azure AD, skupinu nebo aplikaci**.
 5. Vyberte uživatele, skupinu nebo aplikaci ve vašem adresáři, ke kterému chcete udělit přístup.  Zobrazované jméno, e-mailovou adresu nebo identifikátory objektu v adresáři můžete vyhledávat.
     Vybraný uživatel, skupina nebo aplikace se zobrazí v seznamu vybraných členů.

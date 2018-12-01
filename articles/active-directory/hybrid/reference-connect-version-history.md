@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b42dc0f86a70feb06b32a20c7cbdd513920f65d6
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 816992fa05613bc8904cfaf4b34345a02c9b3ba2
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263517"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728289"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -36,6 +36,17 @@ Kroky pro upgrade z Azure AD Connect | Různé způsoby [upgrade z předchozí v
 Požadovaná oprávnění | Oprávnění potřebná k aktualizaci použít, najdete v části [účtech a oprávněních](reference-connect-accounts-permissions.md#upgrade).
 
 Stáhnout | [Stažení služby Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="12680"></a>1.2.68.0
+
+### <a name="release-status"></a>Stav verze 
+
+11/30/2018: všeobecně dostupné ke stažení
+
+### <a name="fixed-issues"></a>Oprava potíží
+
+Tato oprava hotfix sestavení opravy ke konfliktu, kde může dojít k chybě ověřování z důvodu nezávislé přítomnost modulu MSOnline Galerie prostředí PowerShell na serveru pro synchronizaci.
+
 
 
 ## <a name="12670"></a>1.2.67.0

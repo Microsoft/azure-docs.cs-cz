@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 17/07/2018
 ms.author: sedusch
-ms.openlocfilehash: 2f3b8371357403071e70dd2e351cd75dbd34f746
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2a0934fa3bb46eebba02029a8292b9bee6b12c62
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006323"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728221"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Konektor SAP LaMa pro Azure
 
@@ -87,13 +87,13 @@ Konektor Azure je dodáván od SAP LaMa 3.0 SP05. Doporučujeme vždy nejprve na
 Instanční objekt služby nemá oprávnění pro přístup k prostředkům Azure ve výchozím nastavení. Je potřeba udělit oprávnění instančního objektu pro přístup k nim.
 
 1. Přejděte na https://portal.azure.com.
-1. Otevře se okno skupiny prostředků
+1. Otevřete okno skupiny prostředků.
 1. Vyberte skupinu prostředků, kterou chcete použít
 1. Klikněte na řízení přístupu (IAM)
-1. Klikněte na Přidat
+1. Klikněte na Přidat přiřazení role
 1. Vyberte roli přispěvatele
 1. Zadejte název aplikace, kterou jste vytvořili výše
-1. Klepněte na tlačítko OK
+1. Kliknutí na Uložit
 1. Krok 3 až 8 opakujte pro všechny skupiny prostředků, kterou chcete použít v LaMa SAP
 
 Otevřít web, který SAP LaMa a přejděte do infrastruktury. Přejděte na kartu Správce cloudu a klikněte na Přidat. Vyberte adaptér cloudu Microsoft Azure a klikněte na tlačítko Další. Zadejte následující informace:

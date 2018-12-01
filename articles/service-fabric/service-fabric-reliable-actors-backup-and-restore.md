@@ -1,6 +1,6 @@
 ---
-title: Zálohování a obnovení Azure Service Fabric aktéři | Microsoft Docs
-description: Zjistěte, jak implementovat zálohování a obnovení ve vašem aktéři Azure Service Fabric.
+title: Zálohování a obnovení Azure Service Fabric actors | Dokumentace Microsoftu
+description: Zjistěte, jak implementovat zálohování a obnovení ve vaší aplikaci Azure Service Fabric actors.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -12,17 +12,22 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 10/29/2018
 ms.author: vturecek
-ms.openlocfilehash: c72aea9d104264243ef0654aea01e0a41f33ed6f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d5922e21dd464b8cbd0075e7bd2515ffa73607e6
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206862"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726929"
 ---
-# <a name="implement-reliable-actors-backup-and-restore"></a>Implementace Reliable Actors zálohování a obnovení
-V následujícím příkladu, zpřístupní služby objektu actor vlastní metodu zálohování dat objektu actor využívat výhod naslouchacího procesu vzdálené komunikace, která je již v `ActorService`:
+# <a name="implement-reliable-actors-backup-and-restore"></a>Reliable Actors implementovat zálohování a obnovení
+
+> [!NOTE]
+> Společnost Microsoft doporučuje používat [pravidelné zálohování a obnovení](service-fabric-backuprestoreservice-quickstart-azurecluster.md) pro konfiguraci zálohování dat Reliable Stateful services a Reliable Actors. 
+> 
+
+V následujícím příkladu služba objektu actor vlastní zpřístupní metodu k zálohování dat objektu actor s využitím naslouchací proces vzdálené komunikace, která je již v `ActorService`:
 
 ```csharp
 public interface IMyActorService : IService
@@ -98,7 +103,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 }
 ```
 
-V tomto příkladu `IMyActorService` je Vzdálená komunikace kontrakt, který implementuje `IService` (C#) a `Service` (Java) a pak je implementováno modulem `MyActorService`. Přidáním této smlouvy vzdálenou komunikaci, metody na `IMyActorService` jsou nyní k dispozici také ke klientovi vytvořením proxy vzdálenou komunikaci prostřednictvím `ActorServiceProxy`:
+V tomto příkladu `IMyActorService` je kontrakt vzdálené komunikace, která implementuje `IService` (C#) a `Service` (Java) a následně implementované `MyActorService`. Přidáním této smlouvy vzdálené komunikace, metod na `IMyActorService` jsou teď dostupné na klienta tak, že vytvoříte proxy server vzdálené komunikace prostřednictvím `ActorServiceProxy`:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -113,12 +118,12 @@ MyActorService myActorServiceProxy = ActorServiceProxy.create(MyActorService.cla
 myActorServiceProxy.backupActorsAsync();
 ```
 
-Další informace o Reliable Actors přečtěte si následující:
-* [Řízení stavu objektu actor](service-fabric-reliable-actors-state-management.md)
-* [Kolekce paměti a životního cyklu objektu actor](service-fabric-reliable-actors-lifecycle.md)
-* [Referenční dokumentace rozhraní API actors](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Ukázkový kód rozhraní .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Ukázkový kód Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+Další informace o Reliable Actors v následujících článcích:
+* [Správa stavu objektu actor](service-fabric-reliable-actors-state-management.md)
+* [Životní cyklus a uvolňování paměti kolekce objektu actor](service-fabric-reliable-actors-lifecycle.md)
+* [Referenční dokumentace rozhraní API objektů actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Vzorový kód .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Vzorový kód Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

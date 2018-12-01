@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 9da213525a5921295d6271adfd473b7a05a049a4
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 14513e23aafd05796767e1ae08d4d4c14cecdfbc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497921"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728306"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje různé nastavení prostředků infrastruktury pro cluster Service Fabric, kterou můžete přizpůsobit. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Další informace najdete v tématu [upgradovat konfiguraci clusteru Azure](service-fabric-cluster-config-upgrade-azure.md). Pro samostatné clustery, můžete upravit nastavení aktualizací *ClusterConfig.json* souborů a provádění konfigurace upgradu ve vašem clusteru. Další informace najdete v tématu [upgradovat konfiguraci samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -138,6 +138,13 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |IsEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Povolí nebo zakáže služba DnsService. Služba DnsService je ve výchozím nastavení vypnutá. Tato konfigurace se musí nastavit, aby je. |
 |PartitionPrefix|řetězec, výchozí hodnota je "--"|Statická|Určuje předponu řetězce oddílu v dotazy DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní s RFC, protože ji budete součást dotazu DNS.</li><li>Nesmí obsahovat tečku, ".", jak je tečka, dochází ke kolizím s chování příponu DNS.</li><li>Nesmí být delší než 5 znaků.</li><li>Nemůže být prázdný řetězec.</li><li>Pokud je přepsána PartitionPrefix nastavení, pak PartitionSuffix musí přepsat a naopak.</li></ul>Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md).|
 |PartitionSuffix|řetězec, výchozí hodnota je ""|Statická|Určuje řetězcovou hodnotu přípony oddílu v dotazy DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní s RFC, protože ji budete součást dotazu DNS.</li><li>Nesmí obsahovat tečku, ".", jak je tečka, dochází ke kolizím s chování příponu DNS.</li><li>Nesmí být delší než 5 znaků.</li><li>Pokud je přepsána PartitionPrefix nastavení, pak PartitionSuffix musí přepsat a naopak.</li></ul>Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md). |
+
+## <a name="eventstore"></a>Eventstoru
+| **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |
+| --- | --- | --- | --- |
+|MinReplicaSetSize|int, výchozí je 0|Statická|MinReplicaSetSize služby Eventstoru |
+|PlacementConstraints|řetězec, výchozí hodnota je ""|Statická|  PlacementConstraints služby Eventstoru |
+|TargetReplicaSetSize|int, výchozí je 0|Statická| TargetReplicaSetSize služby Eventstoru |
 
 ## <a name="fabricclient"></a>FabricClient
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Doprovodné materiály nebo krátký popis** |

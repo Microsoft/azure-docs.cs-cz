@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: cb8644ea4d949e81e4fb68bf572956bfe3444c0c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 04ed8e0e99f0aba4ca067700f8a651b6d6c52423
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997892"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727473"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí - Resource Manageru, různá předplatná
 
@@ -58,7 +58,7 @@ Následující kroky používají různé účty pro každé předplatné. Pokud
     - **Umístění**: *USA – východ*
 4. V **vyhledat prostředky** pole v horní části portálu zadejte *myVnetA*. Vyberte **myVnetA** když se zobrazí ve výsledcích hledání. 
 5. Vyberte **řízení přístupu (IAM)** z svislý seznam možností na levé straně.
-6. V části **myVnetA – řízení přístupu (IAM)** vyberte **+ přidat**.
+6. V části **myVnetA – řízení přístupu (IAM)** vyberte **+ přidat přiřazení role**.
 7. Vyberte **Přispěvatel sítě** v **Role** pole.
 8. V **vyberte** vyberte *UserB*, nebo zadejte e-mailovou adresu vaší UserB ji najít.
 9. Vyberte **Uložit**.
@@ -294,7 +294,7 @@ Pokud jsou virtuální sítě v různých předplatných, a že předplatná jso
 ## <a name="delete"></a>Odstranit prostředky
 Po dokončení tohoto kurzu, můžete chtít odstranit prostředky, které jste vytvořili v tomto kurzu, takže se vám neúčtovaly poplatky za využívání. Odstranění skupiny prostředků se odstraní také všechny prostředky, které jsou ve skupině prostředků.
 
-### <a name="delete-portal"></a>Azure portal
+### <a name="delete-portal"></a>Azure Portal
 
 1. Přihlaste se k webu Azure portal jako UserA.
 2. Portálového vyhledávacího pole zadejte **myResourceGroupA**. Ve výsledcích hledání vyberte **myResourceGroupA**.
@@ -303,7 +303,7 @@ Po dokončení tohoto kurzu, můžete chtít odstranit prostředky, které jste 
 5. Odhlaste se z portálu jako UserA a přihlaste se jako UserB.
 6. Proveďte kroky 2 až 4 pro myResourceGroupB.
 
-### <a name="delete-cli"></a>Rozhraní příkazového řádku Azure
+### <a name="delete-cli"></a>Azure CLI
 
 1. Připojte se k Azure jako UserA a spusťte následující příkaz:
 

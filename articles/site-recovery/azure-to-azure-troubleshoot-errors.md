@@ -5,16 +5,15 @@ services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 7d11460fd1db5ba92725567a41aaaeab9e752adb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 84875a47df1830a7f5aa439a17df233d8c93ba1c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308116"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728238"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -61,37 +60,37 @@ Vzhledem k tomu operačním systémem SuSE Linux používá symbolických odkaz�
 
       ``# cd /etc/ssl/certs``
 
-3. Zkontrolujte, jestli je k dispozici kořenový certifikát certifikační Autority Symantec.
+1. Zkontrolujte, jestli je k dispozici kořenový certifikát certifikační Autority Symantec.
 
       ``# ls VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-4. Pokud není nalezen kořenový certifikát certifikační Autority Symantec, spusťte následující příkaz ke stažení souboru. Zkontrolujte chyby a postupujte podle pokynů doporučené akce pro selhání sítě.
+2. Pokud není nalezen kořenový certifikát certifikační Autority Symantec, spusťte následující příkaz ke stažení souboru. Zkontrolujte chyby a postupujte podle pokynů doporučené akce pro selhání sítě.
 
       ``# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-5. Zkontrolujte, jestli certifikát Baltimore kořenové certifikační Autority je k dispozici.
+3. Zkontrolujte, jestli certifikát Baltimore kořenové certifikační Autority je k dispozici.
 
       ``# ls Baltimore_CyberTrust_Root.pem``
 
-6. Pokud nebyl nalezen certifikát kořenové certifikační Autority Baltimore, stáhněte si certifikát.  
+4. Pokud nebyl nalezen certifikát kořenové certifikační Autority Baltimore, stáhněte si certifikát.  
 
     ``# wget http://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root.pem``
 
-7. Zkontrolujte, jestli certifikát DigiCert_Global_Root_CA je k dispozici.
+5. Zkontrolujte, jestli certifikát DigiCert_Global_Root_CA je k dispozici.
 
     ``# ls DigiCert_Global_Root_CA.pem``
 
-8. Pokud se nenajde DigiCert_Global_Root_CA, spusťte následující příkazy ke stažení certifikátu.
+6. Pokud se nenajde DigiCert_Global_Root_CA, spusťte následující příkazy ke stažení certifikátu.
 
     ``# wget http://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt``
 
     ``# openssl x509 -in DigiCertGlobalRootCA.crt -inform der -outform pem -out DigiCert_Global_Root_CA.pem``
 
-9. Spusťte rehash skript pro aktualizaci certifikátu subjektu hodnoty hash pro nově staženým certifikáty.
+7. Spusťte rehash skript pro aktualizaci certifikátu subjektu hodnoty hash pro nově staženým certifikáty.
 
     ``# c_rehash``
 
-10. Zaškrtněte, pokud předmět hashuje vytvářené symbolických odkazů pro certifikáty.
+8.  Zaškrtněte, pokud předmět hashuje vytvářené symbolických odkazů pro certifikáty.
 
     - Příkaz
 
@@ -120,11 +119,11 @@ Vzhledem k tomu operačním systémem SuSE Linux používá symbolických odkaz�
       ``lrwxrwxrwx 1 root root   27 Jan  8 09:48 399e7759.0 -> DigiCert_Global_Root_CA.pem
       -rw-r--r-- 1 root root 1380 Jun  5  2014 DigiCert_Global_Root_CA.pem``
 
-11. Vytvoření kopie souboru VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem s b204d74a.0 název souboru
+9.  Vytvoření kopie souboru VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem s b204d74a.0 název souboru
 
     ``# cp VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem b204d74a.0``
 
-12. Vytvoření kopie souboru Baltimore_CyberTrust_Root.pem s 653b494a.0 název souboru
+10. Vytvoření kopie souboru Baltimore_CyberTrust_Root.pem s 653b494a.0 název souboru
 
     ``# cp Baltimore_CyberTrust_Root.pem 653b494a.0``
 

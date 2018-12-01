@@ -8,16 +8,15 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: bf247748415822d5ba1a0e652fdeff384d8e8db1
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: dc776dcfe6fa2e03225649d856ae161c9f23c737
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982047"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727265"
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Monitorování aplikace s více komponentami pomocí Application Insights (preview)
 

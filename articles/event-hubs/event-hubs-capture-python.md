@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 11/16/2018
 ms.author: shvija
-ms.openlocfilehash: 76102e1238346cbbb8f5159d2ffcd94c788c16d6
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 0733d26839cbb2dc40f4dd99b60d6a5628cc1f1a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060547"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727082"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture návod: Python
 
@@ -38,10 +38,9 @@ Tento příklad používá [sady Azure Python SDK](https://azure.microsoft.com/d
 ## <a name="prerequisites"></a>Požadavky
 
 - Python 2.7.x
-- Předplatné Azure
-- Aktivní [Event Hubs oboru názvů a Centrum událostí](event-hubs-create.md)
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
+- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Aktivní [Event Hubs oboru názvů a Centrum událostí](event-hubs-create.md). 
+- Povolit **zachycení** funkce pro Centrum událostí podle pokynů z: [povolení funkce Event Hubs Capture pomocí webu Azure portal](event-hubs-capture-enable-through-portal.md)
 
 ## <a name="create-an-azure-blob-storage-account"></a>Vytvoření účtu úložiště objektů Blob v Azure
 1. Přihlaste se na web [Azure Portal][Azure portal].

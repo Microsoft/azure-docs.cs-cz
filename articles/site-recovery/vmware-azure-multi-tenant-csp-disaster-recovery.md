@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: c26421f848cf25e391589fa791f801e30fd14797
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d4eac6a2a0b4b9414fdf110c599ff557cabeede5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50208897"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727099"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Nastavení zotavení po havárii VMware v prostředí více tenantů v programu Cloud Solution Provider (CSP)
 
@@ -72,9 +72,13 @@ Teď můžete provádět a spravovat všechny operace Site Recovery pro příslu
 
       ![Stránku odběru služby CSP vašeho tenanta](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-      b) vytvoření nového uživatele, nyní zadáním relevantní podrobnosti a výběrem oprávnění, nebo tak že nahrajete seznam uživatelů v souboru CSV.
+    b) vytvoření nového uživatele, nyní zadáním relevantní podrobnosti a výběrem oprávnění, nebo tak že nahrajete seznam uživatelů v souboru CSV.
+    
     c) po vytvoření nového uživatele, přejděte zpět na web Azure Portal. V **předplatné** stránky, vyberte příslušné předplatné.
-    d) vyberte **řízení přístupu (IAM)** a potom klikněte na tlačítko **přidat**, pokud chcete přidat uživatele s úrovní odpovídající přístup. Uživatelé, které byly vytvořeny na portálu zprostředkovatele kryptografických služeb se automaticky zobrazí na stránce, které se otevře po kliknutí na úroveň přístupu.
+
+    d) vyberte **řízení přístupu (IAM)** a potom klikněte na tlačítko **přiřazení rolí**.
+
+    (e) klikněte na **přidat přiřazení role** přidat uživatele s úrovní odpovídající přístup. Uživatelé, které byly vytvořeny na portálu zprostředkovatele kryptografických služeb se zobrazují na kartě přiřazení Role.
 
       ![Přidání uživatele](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
 

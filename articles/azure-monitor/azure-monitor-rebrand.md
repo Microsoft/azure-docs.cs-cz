@@ -7,18 +7,17 @@ editor: tysonn
 services: azure-monitor
 documentationcenter: azure-monitor
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: bwren
-ms.openlocfilehash: f85f0785f180bf333477bd45508f8c670349669e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b260c4eecd0a1aff31c86766e2f03208ba6b1460
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980470"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727252"
 ---
 # <a name="azure-monitor-branding-changes"></a>Azure Monitor změny brandingu
 Tento článek popisuje poslední brandingu a název změny nedávno provedené služeb Azure pro správu. 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 2380cd3712c47ca08e9b9b3597f09f4119238af3
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 53cecc845ed8bd15311e1bcec3ec9b36db8f5c2c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581609"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727864"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
 
@@ -42,10 +42,10 @@ Pokud chcete do předplatného Azure někoho přidat jako správce, přiřaďte 
 1. Navštivte [ **předplatná** na webu Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 2. Vyberte předplatné, ke kterému chcete udělit přístup.
 3. V seznamu vyberte **Řízení přístupu (IAM)**.
-4. Vyberte **Přidat**.
-   (Pokud tlačítko Přidat chybí, nemáte oprávnění k přidání oprávnění.)
+4. Vyberte **přidat přiřazení role**.
+   (Pokud chybí tlačítko Přidat přiřazení role, nemáte oprávnění k přidání oprávnění.)
 5. V poli **Role** vyberte **Vlastník**. 
-6. V poli **Přiřadit přístup k** vyberte **Uživatel, skupina nebo aplikace Azure AD**. 
+6. V **přiřadit přístup k** vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**. 
 7. Do pole **Vybrat** zadejte e-mailovou adresu uživatele, kterého chcete přidat jako vlastníka. Vyberte uživatele a pak vyberte **Uložit**.
 
     ![Snímek obrazovky zobrazující vybrané role vlastníka](./media/billing-add-change-azure-subscription-administrator/add-role.png)

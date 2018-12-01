@@ -9,16 +9,15 @@ ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4df6780fa61c1ed32279d882f383097dc0287716
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 91ba5024dc87ac7707d5ba1d2cdc94a7bfeb02b5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275911"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727447"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Monitorování aplikací Dockeru ve službě Application Insights
 

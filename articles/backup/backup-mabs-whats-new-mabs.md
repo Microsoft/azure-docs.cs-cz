@@ -7,13 +7,13 @@ manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: adigan; kasinh
-ms.openlocfilehash: e963f675dfe2a57fc19f3169beeb1d7d4066af93
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: adigan
+ms.openlocfilehash: 21eed0e69054b2f5c5b5705aa0e3b2d81c862ff3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315592"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727286"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Co je nového v Microsoft Azure Backup serveru
 

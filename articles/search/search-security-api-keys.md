@@ -1,6 +1,6 @@
 ---
-title: Vytvářet, spravovat a zabezpečit správce a dotaz klíče api Key pro službu Azure Search | Microsoft Docs
-description: klíče API Key řízení přístupu ke koncovému bodu služby. Klíče správce udělení oprávnění k zápisu. Klíče dotazu lze vytvořit pro přístup jen pro čtení.
+title: Vytvořit, spravovat a zabezpečit správce a dotaz klíče api Key pro službu Azure Search | Dokumentace Microsoftu
+description: klíče API Key řídit přístup ke koncovému bodu služby. Klíče správce udělují oprávnění k zápisu. Pro přístup jen pro čtení můžete vytvořit klíče dotazu.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
@@ -10,38 +10,38 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: heidist
-ms.openlocfilehash: 2ec720f26cfbadb9963ff3991ad1795c9b30c136
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 0a8975fad21645535a6e7407bcd2d59f537a9fff
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284977"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52727969"
 ---
-# <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytvářet a spravovat klíče api Key pro službu Azure Search
+# <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytvoření a správa klíče rozhraní api pro službu Azure Search
 
-Všechny žádosti o službu vyhledávání třeba jen pro čtení rozhraní api – klíč, který byl vygenerován speciálně pro vaši službu. Klíč rozhraní api se jedná o jedinou mechanismus pro ověřování přístupu do vašeho koncového bodu služby vyhledávání a musí být obsaženy na každý požadavek. V [REST řešení](search-get-started-nodejs.md#update-the-configjs-with-your-search-service-url-and-api-key), klíč rozhraní api se obvykle zadává v hlavičce žádosti. V [.NET řešení](search-howto-dotnet-sdk.md#core-scenarios), je často zadaný jako nastavení konfigurace a pak předá jako klíč [pověření](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (klíč správce) nebo [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (klíč) na [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient).
+Všechny požadavky na služby search nutné jen pro čtení klíče api-key, který byl vygenerován speciálně pro vaši službu. Klíč rozhraní api je jediným mechanismus ověřování přístupu do vašeho koncového bodu služby search a musí obsahovat u každého požadavku. V [REST řešení](search-get-started-nodejs.md#update-the-configjs-with-your-search-service-url-and-api-key), klíč rozhraní api se obvykle zadává v hlavičce požadavku. V [řešení .NET](search-howto-dotnet-sdk.md#core-scenarios), je často zadaný jako nastavení konfigurace a pak předán jako klíč [pověření](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (klíč správce) nebo [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (klíč dotazu) na [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient).
 
-Klíče jsou vytvořeny pomocí služby search během zajišťování služby. Můžete zobrazit a získat hodnoty klíče v [portál Azure](https://portal.azure.com).
+Klíče jsou vytvořeny pomocí služby search během zřizování služby. Můžete zobrazit a získat hodnoty klíče v [webu Azure portal](https://portal.azure.com).
 
-![Stránky portálu, nastavení klíče oddílu](media/search-manage/azure-search-view-keys.png)
+![Stránka portálu, nastavení klíče oddílu](media/search-manage/azure-search-view-keys.png)
 
 ## <a name="what-is-an-api-key"></a>Co je klíč rozhraní api
 
-Klíč rozhraní api je řetězec tvořený náhodně generované číslic a písmen. Prostřednictvím [oprávnění na základě rolí](search-security-rbac.md), můžete odstranit nebo čtení klíčů, ale nelze nahradit klíč uživatelské heslo nebo použít služby Active Directory jako primární ověřování metody pro přístup k operace hledání. 
+Klíč rozhraní api se řetězec skládá náhodně generované čísel a písmen. Prostřednictvím [oprávnění na základě rolí](search-security-rbac.md), můžete odstranit nebo čtení klíčů, ale nelze nahradit klíč uživatelské heslo nebo použít službu Active Directory jako metodologii primární ověřování pro přístup k operace hledání. 
 
-Dva typy klíčů se používají k přístupu ke službě vyhledávání: správce (pro čtení a zápis) a dotazů (jen pro čtení).
+Dva typy klíče používané pro přístup k vaší vyhledávací služby: admin (čtení a zápis) a dotaz (jen pro čtení).
 
 |Klíč|Popis|Omezení|  
 |---------|-----------------|------------|  
-|Správa|Uděluje úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat.<br /><br /> Dva klíče správce, označuje jako *primární* a *sekundární* klíče na portálu, jsou generovány, pokud služba je vytvořena a můžete znovu vygeneruje jednotlivě na vyžádání. Máte dva klíče můžete vrátit přes jeden klíč při použití druhý klíč pro nepřetržitý přístup ke službě.<br /><br /> Správce klíčů jsou určené jenom v hlavičkách žádosti protokolu HTTP. Rozhraní api-key správce nelze umístit v adrese URL.|Maximálně 2 na služby|  
-|Dotaz|Uděluje přístup jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.<br /><br /> Klíče dotazu jsou vytvořeny na vyžádání. Můžete je vytvořit ručně na portálu nebo prostřednictvím kódu programu prostřednictvím [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Klíče dotazu lze zadat v hlavičce požadavku HTTP pro vyhledávání, návrh nebo operace vyhledávání. Alternativně můžete předat klíč dotazu jako parametr na adresu URL. V závislosti na tom, jak klientské aplikace výrobky zpracovává požadavek může být snazší předat klíč jako parametr dotazu:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11&api-key=[query key]`|50 pro službu|  
+|Správa|Uděluje úplná práva ke všem operacím, včetně možnosti spravovat službu, vytvářet a odstraňovat indexy, indexery a zdroje dat.<br /><br /> Dva klíče správce, označuje jako *primární* a *sekundární* klíče na portálu jsou generovány, pokud je služba se vytvoří a může znovu vygenerovat jednotlivě na vyžádání. Existence dvou klíčů umožňuje nespotřebujete jeden z nich při používání druhý klíč pro přístup ke službě.<br /><br /> Klíče správce se zadávají pouze v hlavičkách žádosti protokolu HTTP. Rozhraní api-key správce nelze umístit v adrese URL.|Maximálně 2 na službu|  
+|Dotaz|Uděluje oprávnění jen pro čtení k indexům a dokumentům a obvykle se distribuují klientským aplikacím, které vydávají požadavky hledání.<br /><br /> Na vyžádání se vytvoří klíče dotazu. Můžete je vytvořit ručně na portálu nebo prostřednictvím kódu programu přes [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/).<br /><br /> Klíče dotazu se dá nastavit v záhlaví požadavku HTTP pro hledání, návrh nebo operace vyhledávání. Alternativně můžete předat klíč dotazu jako parametr na adrese URL. V závislosti na tom, jak klientské aplikace výrobky zpracovává žádost může být snazší předat klíč jako parametr dotazu:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11&api-key=[query key]`|50 na službu|  
 
- Vizuální není žádný rozdíl mezi klíč správce a klíč dotazu. Oba klíče se, řetězce tvořený 32 náhodně generované alfanumerické znaky. Pokud ztratíte zaznamenávat, jaký typ klíče je zadán v aplikaci, můžete [zkontrolujte hodnoty klíče na portálu](https://portal.azure.com) nebo použít [REST API](https://docs.microsoft.com/rest/api/searchmanagement/) vrátí hodnotu a typ klíče.  
+ Vizuálně není žádný rozdíl mezi klíč správce a klíč dotazu. Oba klíče jsou řetězce, na které se skládá z 32 náhodně generované alfanumerické znaky. Pokud ztratíte přehled o jaký typ klíče, který je zadán v aplikaci, můžete si [zkontrolujte hodnoty klíče na portálu](https://portal.azure.com) nebo použijte [rozhraní REST API](https://docs.microsoft.com/rest/api/searchmanagement/) vrátí hodnotu a typ klíče.  
 
 > [!NOTE]  
->  Postup nízký zabezpečení k předávání citlivých dat, jako považuje `api-key` v identifikátoru URI požadavku. Z tohoto důvodu Azure Search přijímá pouze klíč dotazu jako `api-key` v dotazu řetězec a vy byste neměli tak, pokud obsah indexu by měly být veřejně dostupné. Obecně platí, doporučujeme předávání vaší `api-key` jako hlavičku požadavku.  
+>  Bude považován za špatné bezpečnostních předávat citlivá data `api-key` v identifikátoru URI požadavku. Z tohoto důvodu Azure Search přijímá pouze klíč dotazu jako `api-key` v dotazu řetězec který byste se vyhnout tím, pokud by měl být veřejně dostupný obsah vašeho indexu. Obecně platí, doporučujeme předávání vaše `api-key` jako hlavičku požadavku.  
 
-## <a name="find-api-keys-for-your-service"></a>Najít klíče api Key služby
+## <a name="find-api-keys-for-your-service"></a>Najít klíče api Key pro vaši službu
 
 Můžete získat přístupové klíče na portálu nebo prostřednictvím [REST API pro správu](https://docs.microsoft.com/rest/api/searchmanagement/). Další informace najdete v tématu [spravovat správce a dotaz klíče api Key](search-security-api-keys.md).
 
@@ -49,28 +49,28 @@ Můžete získat přístupové klíče na portálu nebo prostřednictvím [REST 
 2. Seznam [vyhledávací služby](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) pro vaše předplatné.
 3. Vyberte službu a na stránce služby najít **nastavení** >**klíče** zobrazíte klíče správce a dotazu.
 
-![Stránky portálu, nastavení klíče oddílu](media/search-security-overview/settings-keys.png)
+![Stránka portálu, nastavení klíče oddílu](media/search-security-overview/settings-keys.png)
 
 ## <a name="regenerate-admin-keys"></a>Znovu vygenerovat klíče správce
 
-Jsou vytvořeny dva klíče správce pro každou službu, aby bylo možné výměny primární klíč, pomocí sekundární klíč pro nepřetržitý přístup.
+Dva klíče správce se vytvoří pro každou službu, abyste mohli výměny primární klíč, pomocí sekundárního klíče pro přístup.
 
-Pokud jste znovu vygenerovat primární a sekundární klíče ve stejnou dobu, bude všechny aplikace, která používá buď klíč pro přístup k operací služby již mít přístup ke službě.
+Pokud byste znovu generovali primární a sekundární klíče ve stejnou dobu, bude všech aplikacích používajících ani jeden klíč pro přístup k operacím služby už mít přístup ke službě.
 
 1. V **nastavení** >**klíče** stránky, zkopírujte sekundární klíč.
-2. Pro všechny aplikace aktualizujte nastavení klíč rozhraní api používat sekundární klíč.
-3. Obnovit primární klíč.
-4. Aktualizujte všechny aplikace na používání nové primární klíče.
+2. Pro všechny aplikace aktualizace nastavení api-key používat sekundární klíč.
+3. Znovu vygenerovat primární klíč.
+4. Aktualizujte všechny aplikace, aby používaly nový primární klíč.
 
-## <a name="secure-api-keys"></a>Zabezpečovací klíče rozhraní api
-Zabezpečení klíčů je zajištěno omezení přístupu prostřednictvím portálu nebo rozhraní správce prostředků (prostředí PowerShell nebo rozhraní příkazového řádku). Jak jsme uvedli, správci předplatného můžete zobrazit a obnovit všechny klíče rozhraní api. Z důvodu zkontrolujte přiřazení rolí pochopit, kdo má přístup ke klíčům správce.
+## <a name="secure-api-keys"></a>Zabezpečení klíče api Key
+Zabezpečení klíče je zajištěno omezení přístupu prostřednictvím portálu nebo rozhraní správce prostředků (prostředí PowerShell nebo rozhraní příkazového řádku). Jak je uvedeno, správci předplatného můžete zobrazit a znovu generovat všechny klíče rozhraní api. Jako preventivní opatření zkontrolujte přiřazení rolí pochopit, kdo má přístup ke klíčům správce.
 
-+ V řídicím panelu služby, klikněte na **přístup k ovládacímu prvku (IAM)** zobrazíte přiřazení rolí pro vaši službu.
++ Na řídicím panelu služby, klikněte na tlačítko **řízení přístupu (IAM)** a pak **přiřazení rolí** kartě přiřazení rolí pro vaši službu.
 
-Můžete zobrazit a znovu vygenerovat klíče členy následujících rolí: vlastník, Přispěvatel, [přispěvatelé služby vyhledávání](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
+Členy z těchto druhů rolí můžete zobrazit a znovu generovat klíče: vlastník, Přispěvatel, [přispěvatelé služby Search](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor)
 
 > [!Note]
-> Pro přístup na základě identity prostřednictvím výsledky hledání můžete vytvořit filtry zabezpečení oříznout výsledky identita, odebírání dokumentů, pro které žadatel by neměly mít přístup. Další informace najdete v tématu [filtrů zabezpečení](search-security-trimming-for-azure-search.md) a [zabezpečeného se službou Active Directory](search-security-trimming-for-azure-search-with-aad.md).
+> Pro přístup na základě identity výsledků vyhledávání můžete vytvořit filtry zabezpečení mají být odebrány výsledky podle identity, odebírání dokumentů, pro které žadatel by přístup mít neměly. Další informace najdete v tématu [filtry zabezpečení](search-security-trimming-for-azure-search.md) a [zabezpečené službou Active Directory](search-security-trimming-for-azure-search-with-aad.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

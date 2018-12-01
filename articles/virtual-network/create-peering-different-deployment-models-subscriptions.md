@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 34c11c911b6c2ffbc4d4800cd7203a8d430814fb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 666e4c434d05bb953950893f32c262183055becd
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311241"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52728160"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Vytvoření partnerského vztahu virtuálních sítí – různé modely nasazení a předplatná
 
@@ -56,8 +56,8 @@ Tento kurz používá různé účty pro každé předplatné. Pokud používát
     - **Umístění**: *USA – východ*
 4. V **vyhledat prostředky** pole v horní části portálu zadejte *myVnetA*. Klikněte na tlačítko **myVnetA** když se zobrazí ve výsledcích hledání. Zobrazí se okno pro **myVnetA** virtuální sítě.
 5. V **myVnetA** okno, které se zobrazí, klikněte na tlačítko **řízení přístupu (IAM)** z svislý seznam možností na levé straně okna.
-6. V **myVnetA – řízení přístupu (IAM)** okno, které se zobrazí, klikněte na tlačítko **+ přidat**.
-7. V **přidat oprávnění** okno, které se zobrazí, vyberte **Přispěvatel sítě** v **Role** pole.
+6. V **myVnetA – řízení přístupu (IAM)** okno, které se zobrazí, klikněte na tlačítko **+ přidat přiřazení role**.
+7. V **přidat přiřazení role** okno, které se zobrazí, vyberte **Přispěvatel sítě** v **Role** pole.
 8. V **vyberte** pole, vyberte UserB nebo zadejte e-mailovou adresu vaší UserB ji najít. Seznam uživatelů, zobrazí se ze stejného tenanta služby Azure Active Directory jako při nastavování partnerský vztah pro virtuální síť. Když se objeví v seznamu, klikněte na tlačítko UserB.
 9. Klikněte na **Uložit**.
 10. Odhlaste se z portálu jako UserA a přihlaste se jako UserB.
