@@ -5,19 +5,18 @@ services: log-analytics
 ms.service: log-analytics
 ms.subservice: performance
 ms.custom: ''
-ms.devlang: na
 ms.topic: conceptual
 author: danimir
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/26/2018
 ms.author: v-daljep
-ms.openlocfilehash: 57faa347b2733ebf65757b02ee9395f94776cf10
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b2c8ed30e26f5408123fe77606ddfec67479bcad
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635386"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726147"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -29,7 +28,7 @@ Pomocí metrik, která shromáždíte pomocí řešení můžete vytvořit vlast
 
 Praktické přehled o použití řešení Azure SQL Analytics a typické scénáře využití najdete v části vložené video:
 
->[!VIDEO https://youtu.be/j-NDkN4GIzg]
+>[!VIDEO https://www.youtube.com/embed/j-NDkN4GIzg]
 >
 
 ## <a name="connected-sources"></a>Připojené zdroje
@@ -38,8 +37,8 @@ Azure SQL Analytics je cloud určený jen pro monitorování řešení podpůrn�
 
 | Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
-| [Diagnostika Azure](log-analytics-azure-storage.md) | **Ano** | Azure data metrik a protokolů se odesílají do Log Analytics přímo v Azure. |
-| [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Log Analytics nemá číst data z účtu úložiště. |
+| [Diagnostika Azure](../azure-monitor/platform/collect-azure-metrics-logs.md) | **Ano** | Azure data metrik a protokolů se odesílají do Log Analytics přímo v Azure. |
+| [Účet služby Azure Storage](../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Log Analytics nemá číst data z účtu úložiště. |
 | [Agenti systému Windows](../azure-monitor/platform/agent-windows.md) | Ne | Přímí agenti Windows nejsou používány nástrojem řešení. |
 | [Agenti systému Linux](log-analytics-quick-collect-linux-computer.md) | Ne | Přímí agenti systému Linux nejsou používány nástrojem řešení. |
 | [Skupina pro správu System Center Operations Manager](log-analytics-om-agents.md) | Ne | Přímé připojení z agenta Operations Manageru k Log Analytics se nepoužívá tímto řešením. |

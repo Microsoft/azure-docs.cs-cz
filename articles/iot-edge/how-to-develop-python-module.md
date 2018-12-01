@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c3cf2b703760debb368e26d629ee73f56ce93d39
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 3097e6fcfcd219f73927131106e1f35ff54210b0
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441246"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679422"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-python-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění moduly Pythonu pro Azure IoT Edge
 
@@ -108,7 +108,7 @@ Ve složce každého modulu existuje několik souborů Docker pro typy jiný kon
     ptvsd.break_into_debugger()
     ```
 
-   Například, pokud chcete ladit `receive_message_callback` metody. Je to možné hmyz jediný řádek kódu, jako je níže.
+   Například, pokud chcete ladit `receive_message_callback` metody. Můžete vložit jediný řádek kódu jako níže.
 
     ```python
     def receive_message_callback(message, hubManager):

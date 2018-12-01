@@ -7,13 +7,13 @@ manager: guaravd
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
-ms.author: rajanki
-ms.openlocfilehash: e97d736e7e117e0ccce6dc021a9de2ea15ac5484
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.author: rajanaki
+ms.openlocfilehash: 3c9cfc4fb1d741801b64f1ba0416bfb5b81999bd
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210138"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723481"
 ---
 # <a name="overview-of-failback"></a>Přehled o navrácení služeb po obnovení
 

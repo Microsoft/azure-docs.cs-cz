@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/25/2018
+ms.date: 12/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: a40774faadc4393a1ebbb6e26673ba7dff22560c
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 042be0b818ba448d64aa5e8631926420f00f4b5e
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092300"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679660"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu? 
 
@@ -121,6 +121,7 @@ Poskytovatelé aktuálně nabízí kompatibilní služby patří:
 - [Datacard Entrust](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
+- [Symantec virtuálních IP adres](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
 
 Další informace o těchto služeb obraťte se na zprostředkovatele přímo.

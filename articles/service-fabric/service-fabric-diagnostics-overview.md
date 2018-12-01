@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 82c02c0212fd79d8847d374022b6ac8f862f042a
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 8d6865349f103278131a02c2385557fb53ee24f5
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291109"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720588"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorování a diagnostiky pro Azure Service Fabric
 
 Tento článek obsahuje přehled monitorování a diagnostiky pro Azure Service Fabric. Monitorování a Diagnostika jsou zásadní pro vývoj, testování a nasazování úloh v jakémkoli prostředí cloud. Můžete například sledovat, jak vaše aplikace se používají, akce prováděné pomocí platformy Service Fabric, využití prostředků pomocí čítačů výkonu a celkový stav clusteru. Tyto informace můžete diagnostikovat a opravit problémy a zabránili jejich výskytu v budoucnu. Další několik části stručně popisují každou oblast Service Fabric monitorování vzít v úvahu pro produkční úlohy. 
 
-## <a name="application-monitoring"></a>Monitorování aplikací
+## <a name="application-monitoring"></a>Monitorování aplikace
 Monitorování aplikací, sleduje používání funkcí a komponent vaší aplikace. Budete chtít monitorovat Ujistěte se, že problémy tohoto dopadu, které jsou zachyceny uživatelé vaší aplikace. Je na starost monitorování aplikací na uživatele, kteří vyvíjejí aplikace a jeho služeb, protože je jedinečné pro obchodní logice aplikace. Monitorování aplikací může být užitečné v následujících scénářích:
 * Kolik provozu mojí aplikaci dochází? – Je potřeba škálovat vaše služby, které splňují požadavky na uživatele nebo adresu potenciální problémová místa ve vaší aplikaci?
 * Jsou moje volání mezi službami úspěšné a sledované?
@@ -40,9 +40,10 @@ Máme také kurz s postupy [nastavíte pro aplikace .NET](service-fabric-tutoria
 ## <a name="platform-cluster-monitoring"></a>Monitorování platformy (Cluster)
 Uživatel má kontrolu nad jaké telemetrická data pochází z jejich aplikace protože uživatel zapíše kód samotné, ale co o diagnostické z platformy Service Fabric? Jedním z cílů Service Fabric je udržovat aplikace odolné vůči selhání hardwaru. Tento cíl se dosahuje prostřednictvím možnosti platformy systémových služeb ke zjištění problémů s infrastrukturou a rychlé převzetí služeb při selhání úlohy jiným uzlům v clusteru. Ale v tomto konkrétním případě co když vlastních služeb systému mají problémy? Nebo pokud při pokusu o nasazení nebo přesunutí úlohy, jsou pravidla pro umístění služby došlo k porušení? Service Fabric nabízí diagnostiku pro tyto a další zajistit, aby že byli informováni o probíhající ve vašem clusteru aktivity. Několik ukázkových scénářů pro monitorování clusterů patří:
 
-* Service Fabric chová tak, jak můžu očekávat, co se týče uvedení vaší aplikace a vyrovnávání alternativní clusteru? 
-* Pocházejí akce uživatelů ve vašem clusteru potvrzení a spouštět v podle očekávání? Například Škálování, převzetí služeb při selhání, nasazení
-* Je Service Fabric nesleduje uzlů, které jsou součástí clusteru a informovat mě při se vyskytl problém v jednom?
+Service Fabric nabízí komplexní sadu událostí úprav. Tyto [události Service Fabric](service-fabric-diagnostics-events.md) přístupné prostřednictvím Eventstoru nebo provozní kanál (událost kanálu vystavené platformu). 
+* Eventstoru - Eventstoru je funkce nabízených platformou, která poskytuje události platformy Service Fabric jsou k dispozici v Service Fabric Exploreru a prostřednictvím rozhraní REST API. Zobrazí se zobrazení snímku, co se děje ve vašem clusteru pro každou entitu například uzel, služby, aplikace a pro dotazy podle času události. Můžete také další informace o Eventstoru na [přehled Eventstoru](service-fabric-diagnostics-eventstore.md).    
+
+* Service Fabric události kanálů – Windows na Service Fabric jsou k dispozici z jednoho zprostředkovatele trasování událostí pro Windows se sadou relevantní `logLevelKeywordFilters` použijí k výběru mezi provozní Data a zasílání zpráv v kanálech – Toto je způsob, ve kterém jsme oddělit odchozí Service Fabric události filtrovanou na podle potřeby. Události Service Fabric v Linuxu, procházejí LTTng a jsou vloženy do jedné tabulky úložiště, ze které se dají se filtrovat podle potřeby. Tyto kanály obsahovat kurátorované, strukturované události, které lze použít pro lepší pochopení stavu vašeho clusteru. Je povolená Diagnostika ve výchozím nastavení při vytváření clusteru, které vytvářejí tabulce Azure Storage se odešle události z těchto kanálů pro vás k dotazování v budoucnu. 
 
 Diagnostika k dispozici jsou ve formě komplexní sadu událostí úprav. Tyto [události Service Fabric](service-fabric-diagnostics-events.md) znázorňují akce prováděné platformy na různé entity, jako je například uzly, aplikace, služby, oddíly atd. V posledním scénáři nad uzel, přestanou fungovat, pokud platformu by generování `NodeDown` událostí a může dostat tak oznámení okamžitě tak váš nástroj pro sledování podle výběru. Další běžné příklady `ApplicationUpgradeRollbackStarted` nebo `PartitionReconfigured` při selhání. **Stejné události jsou k dispozici na clustery s Linuxem a Windows.**
 

@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: dc5480b90ef6b5520f47c51f0c105202d7071089
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 672eb1100731d636ae7c34f16d371c4f93b5716c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093589"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721812"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie výjimek: datový model Application Insights
 

@@ -9,16 +9,15 @@ ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 83852333d8e66c76f2d2710b1813a4400622e624
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c9eaa997a4110be4cf2013413735b97929b7c4d0
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417306"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725994"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Oddělení telemetrická data z vývoj, testování a produkce
 

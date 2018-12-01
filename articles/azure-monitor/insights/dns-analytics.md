@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e7fd5649f1cd08713b066a20887b36b9a3c38e7c
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 510fe187661534c4c82ae7ec62904de51eb4b221
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633074"
+ms.locfileid: "52682724"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -47,7 +47,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 | [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace DNS z agentů Windows. |
 | [Agenti systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímí agenti systému Linux. |
 | [Skupina pro správu System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení z agenta Operations Manageru ke službě Log Analytics není potřeba. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
-| [Účet služby Azure Storage](../../log-analytics/log-analytics-azure-storage.md) | Ne | Úložiště Azure se nepoužívá tímto řešením. |
+| [Účet služby Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Úložiště Azure se nepoužívá tímto řešením. |
 
 ### <a name="data-collection-details"></a>Podrobné informace o shromažďování dat
 

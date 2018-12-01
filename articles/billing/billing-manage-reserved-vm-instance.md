@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 6a070d9ebd46d117041276436107abcc958d58d4
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 670aafeb8eb107fc5970b70bfa85d7469c343483
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583733"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722849"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 
@@ -54,7 +54,7 @@ Delegovat správu přístupu k rezervaci:
 2. Vyberte **všechny služby** > **rezervace** do seznamu rezervace, které máte přístup.
 3. Vyberte rezervace, které chcete delegovat přístup ostatním uživatelům.
 4. Vyberte **řízení přístupu (IAM)**.
-5. Vyberte **přidat** > **Role** > **vlastníka**. Nebo, pokud chcete udělit omezený přístup, vyberte jinou roli.
+5. Vyberte **přidat přiřazení role** > **Role** > **vlastníka**. Nebo, pokud chcete udělit omezený přístup, vyberte jinou roli.
 6. Zadejte e-mailovou adresu uživatele, kterého chcete přidat jako vlastníka.
 7. Vyberte uživatele a pak vyberte **Uložit**.
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8e1c58f2d60ee95189fb583e032d8748fedb88d4
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 2ba34a6d1ecc33e8a4d355aeacb0da8a764a784d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620213"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679519"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -128,7 +128,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 - **Název**: Zadejte jedinečný název pro identifikaci nasazení aktualizace.
 - **Operační systém**: vyberte **Windows** nebo **Linux**.
 - **Skupiny, které se mají aktualizovat (Preview)**: Definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek a vytvořte dynamickou skupinu virtuálních počítačů Azure, která se má zahrnout do vašeho nasazení. Další informace najdete v tématu věnovaném [dynamickým skupinám](automation-update-management.md#using-dynamic-groups).
-- **Počítače k aktualizaci**: Zvolte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
+- **Počítače k aktualizaci**: Zvolte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md).
 
   ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
 

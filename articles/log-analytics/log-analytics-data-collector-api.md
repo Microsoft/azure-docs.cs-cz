@@ -10,17 +10,16 @@ ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 497b5b9d33ab2dea37e1017fa2d5bf2d0db66a5f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 881188e7dab0e50b5bc62258c87cb546020c8410
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007667"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723580"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Posílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (public preview)
 V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odesílání dat do Log Analytics z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na oprávnění od Log Analytics.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
@@ -472,4 +471,4 @@ post_data(customer_id, shared_key, body, log_type)
 ## <a name="next-steps"></a>Další postup
 - Použití [rozhraní API pro vyhledávání protokolu](log-analytics-queries.md) k načtení dat v úložišti Log Analytics.
 
-- Další informace o tom [vytvoření datového kanálu pomocí rozhraní API kolekce dat](log-analytics-create-pipeline-datacollector-api.md) pomocí pracovního postupu aplikace logiky do Log Analytics.
+- Další informace o tom [vytvoření datového kanálu pomocí rozhraní API kolekce dat](../azure-monitor/platform/create-pipeline-datacollector-api.md) pomocí pracovního postupu aplikace logiky do Log Analytics.

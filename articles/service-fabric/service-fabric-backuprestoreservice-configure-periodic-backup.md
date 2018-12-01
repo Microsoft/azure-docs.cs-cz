@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: eeaa0e9a940f16c2416418959c98cd17e4816afc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 1a9034d7cbc276f35c5f01b06f6973553222d1c4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387629"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722373"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Principy pravidelné zálohování konfigurace v Azure Service Fabric
 
@@ -110,6 +110,7 @@ Zásady zálohování se skládá z následujících konfigurací:
             ```
 
         2. _Ochranu sdílené složky pomocí uživatelského jména a hesla_, kterých je přístup ke sdílené složce k dispozici pro určité uživatele. Specifikace úložiště sdílené složky souboru také poskytuje možnost zadání sekundární uživatelské jméno a sekundární heslo pro pověření fall zpět v případě selhání ověřování s primární uživatelské jméno a heslo primární. V takovém případě nastavte následující pole konfigurace _sdílenou složku_ záložní úložiště využívající SSD disky.
+
             ```json
             {
                 "StorageKind": "FileShare",
@@ -125,6 +126,17 @@ Zásady zálohování se skládá z následujících konfigurací:
 > [!NOTE]
 > Ujistěte se, že spolehlivost úložiště splňuje nebo překračuje požadavky spolehlivost dat záloh.
 >
+
+* **Zásady uchovávání informací**: Určuje zásady pro uchovávání záloh v nakonfigurovaného úložiště. Je podporován pouze základní zásady uchovávání informací.
+    1. **Základní zásady uchovávání informací**: tyto zásady uchovávání umožňují zajistit optimální úložiště využití Odebírání záložních souborů, které jsou požadovány žádné další. `RetentionDuration` lze nastavit časové období, pro kterou jsou požadovány pro zachování v úložišti záloh. `MinimumNumberOfBackups` je volitelný parametr, který je možné zadat pro Ujistěte se, že zadaný počet zálohy se vždy zachovají bez ohledu na `RetentionDuration`. Následující příklad znázorňuje konfiguraci pro uchovávání záloh pro _10_ dnů a neumožňuje počet zálohy přejít níže _20_.
+
+        ```json
+        {
+            "RetentionPolicyType": "Basic",
+            "RetentionDuration" : "P10D",
+            "MinimumNumberOfBackups": 20
+        }
+        ```
 
 ## <a name="enable-periodic-backup"></a>Povolit pravidelné zálohování
 Po definování zásad zálohování pro splnění požadavků pro zálohování dat, zásady zálohování by měly být správně přidružené buď _aplikace_, nebo _služby_, nebo _oddílu_.
@@ -178,6 +190,13 @@ Pokud není nutné k zálohování dat, můžete zásady zálohování zakázán
 * Zakázání zásady zálohování pro _služby_ zastaví všechny zálohy periodických dat. děje v důsledku šíření tyto zásady zálohování na oddíly _služby_.
 
 * Zakázání zásady zálohování pro _oddílu_ zastaví všechny zálohy periodických dat. děje z důvodu zásad zálohování v oddílu.
+
+* Při zakazování zálohy pro entity(application/service/partition) `CleanBackup` může být nastaven na _true_ odstranit všechny zálohy v nakonfigurovaného úložiště.
+    ```json
+    {
+        "CleanBackup": true 
+    }
+    ```
 
 ## <a name="suspend--resume-backup"></a>Pozastavit a obnovit zálohování
 Dočasné pozastavení pravidelné zálohování dat může vyžadují určité situace. V takové situaci, v závislosti na požadavek na pozastavení zálohování rozhraní API může použít na _aplikace_, _služby_, nebo _oddílu_. Pravidelné zálohování pozastavení je přenositelný podstrom hierarchie aplikace od okamžiku, kdy se použije. 

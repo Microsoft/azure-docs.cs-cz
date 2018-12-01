@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a664ec3643100f4bf477fbc58070ae966088d3af
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 086bddb34017d41e3e7efe86531e3c849ccd80ab
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426046"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679932"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -354,4 +354,4 @@ Pokud nechcete zachovat součásti účet Azure Automation, můžete každý ru�
 
 - Další informace o tom, jak vytvářet různé vyhledávací dotazy a zkontrolujte protokoly úloh služby Automation s Log Analytics najdete v tématu [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md).
 - Další informace o spouštění runbooků, postupy při monitorování úloh runbooků a další technické podrobnosti najdete v článku [Sledování úlohy runbooku](automation-runbook-execution.md).
-- Další informace o Log Analytics a zdrojích pro shromažďování dat, naleznete v tématu [shromažďování dat úložiště Azure v Log Analytics – přehled](../log-analytics/log-analytics-azure-storage.md).
+- Další informace o Log Analytics a zdrojích pro shromažďování dat, naleznete v tématu [shromažďování dat úložiště Azure v Log Analytics – přehled](../azure-monitor/platform/collect-azure-metrics-logs.md).

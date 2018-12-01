@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aa543ad119716b25b7f3ab00d49efb9fe6fb6c3f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 88805f26869ad75830cef1aa074cd90cb947e76f
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244232"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681734"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Předávání Azure Automation stavu konfigurační data pro generování sestav do služby Log Analytics
 
@@ -197,4 +197,4 @@ Log Analytics poskytuje větší provozní viditelnost ke svým datům stav konf
 - Informace o cenách najdete v tématu [ceny konfigurace stavu služby Azure Automation](https://azure.microsoft.com/pricing/details/automation/)
 - Příklad použití Azure Automation stav konfigurace v kanálu průběžného nasazování najdete v tématu [nepřetržité nasazení pomocí Azure Automation konfigurace stavu a Chocolatey](automation-dsc-cd-chocolatey.md)
 - Další informace o tom, jak vytvářet různé vyhledávací dotazy a kontrolovat protokoly stav konfigurace Automation s Log Analytics najdete v tématu [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md)
-- Další informace o Log Analytics a zdrojích pro shromažďování dat, naleznete v tématu [shromažďování dat úložiště Azure v Log Analytics – přehled](../log-analytics/log-analytics-azure-storage.md)
+- Další informace o Log Analytics a zdrojích pro shromažďování dat, naleznete v tématu [shromažďování dat úložiště Azure v Log Analytics – přehled](../azure-monitor/platform/collect-azure-metrics-logs.md)

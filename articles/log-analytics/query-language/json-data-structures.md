@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: ff0514a3432ed74baa6df2574157066daff895bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bf5a1c33433bec94c757f06ed7ea4c5eedafdcff
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961259"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678062"
 ---
 # <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>Práce s formátem JSON a datovými struktury v dotazy Log Analytics
 

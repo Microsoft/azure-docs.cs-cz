@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 1f94e297e784d000c829a50c077e7fa6d303333f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 2cda1d0f216678f1dd8c074136ae35683c52d910
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962210"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719670"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatizace vlastní sestavy s daty Azure Application Insights
 

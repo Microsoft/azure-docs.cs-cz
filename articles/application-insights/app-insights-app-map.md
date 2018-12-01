@@ -9,17 +9,16 @@ ms.assetid: 3bf37fe9-70d7-4229-98d6-4f624d256c36
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 9b39eef5accec4764f61ab31dd894d368242ee3d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1ecdbdfb657d0372fea87c4260226f9de8ded9ce
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094646"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682499"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: Třídění distribuovaných aplikací
 

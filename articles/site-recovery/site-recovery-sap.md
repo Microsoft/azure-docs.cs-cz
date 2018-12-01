@@ -6,16 +6,15 @@ manager: rochakm
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: 1f38cd62a1394d45716e7224cc03a059fcaf9e13
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8ccd5a99abff96760ea842dca84b66810b91ae72
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247737"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680914"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Nastavení zotavení po havárii pro nasazení vícevrstvé aplikace SAP NetWeaver
 
@@ -93,8 +92,8 @@ Dále jsou uvedené kroky pro nastavení zotavení po havárii
 2. Návrh sítě pro zotavení
 3.  Replikace řadiče domény
 4.  Replikace dat základní úrovni 
-5.  Provést testovací převzetí služeb 
-6.  Služeb při selhání 
+5.  Provedení testovacího převzetí služeb při selhání 
+6.  Provedení převzetí služeb při selhání 
 
 Níže je doporučení pro zotavení po havárii pro každou vrstvu použitý v tomto příkladu. 
 
@@ -150,7 +149,7 @@ Nejčastěji používané skriptů Azure Site Recovery můžete nasadit do účt
 
 1.  Na webu Azure Portal vyberte svůj trezor služby Recovery Services.
 2.  Vyberte plán obnovení, který jste vytvořili pro aplikace SAP.
-3.  Vyberte **testovací převzetí služeb při selhání**.
+3.  Vyberte **Testovací převzetí služeb při selhání**.
 4.  Chcete-li spustit proces testovacího převzetí služeb při selhání, vyberte bod obnovení a virtuální síť Azure.
 5.  Pokud je sekundární prostředí, proveďte ověření.
 6.  Po dokončení ověření chcete-li vyčistit prostředí převzetí služeb při selhání vyberte **vyčištění testovacího převzetí služeb při selhání**.
@@ -161,7 +160,7 @@ Další informace najdete v tématu [testovací převzetí služeb při selhán�
 
 1.  Na webu Azure Portal vyberte svůj trezor služby Recovery Services.
 2.  Vyberte plán obnovení, který jste vytvořili pro aplikace SAP.
-3.  Vyberte **převzetí služeb při selhání**.
+3.  Vyberte **Převzetí služeb při selhání**.
 4.  Chcete-li zahájit proces převzetí služeb při selhání, vyberte bod obnovení.
 
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 38839379f584b40cdbefad3e4cbb3bc47881c9a7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 1afd98026a2aad552258b636ba078ca4f9bd2d58
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094591"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723138"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojte se k prostředí Azure-SSIS integration runtime k virtuální síti
 Připojte se k prostředí Azure-SSIS integration runtime (IR) ke službě Azure virtual network v následujících scénářích: 
@@ -198,19 +198,21 @@ Musíte nakonfigurovat virtuální sítě, než bude možné připojit Azure-SSI
 
 1. Připojte se k **MicrosoftAzureBatch** k **Přispěvatel virtuálních počítačů modelu Classic** role pro virtuální síť. 
 
-    a. Vyberte **řízení přístupu (IAM)** v levé nabídce a vyberte **přidat** na panelu nástrojů. 
+    a. Vyberte **řízení přístupu (IAM)** v levé nabídce a vyberte **přiřazení rolí** kartu. 
 
     !["Řízení přístupu" a "Přidání" tlačítka](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
-    b. Na **přidat oprávnění** stránce **Přispěvatel virtuálních počítačů modelu Classic** pro **Role**. Vložit **ddbf3205-c6bd-46ae-8127-60eb93363864** v **vyberte** a potom vyberte **Microsoft Azure Batch** ze seznamu výsledků hledání. 
+    b. Vyberte **přidat přiřazení role**.
 
-    ![Na stránce "Přidání oprávnění" výsledky hledání](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+    c. Na **přidat přiřazení role** stránce **Přispěvatel virtuálních počítačů modelu Classic** pro **Role**. Vložit **ddbf3205-c6bd-46ae-8127-60eb93363864** v **vyberte** a potom vyberte **Microsoft Azure Batch** ze seznamu výsledků hledání. 
 
-    c. Vyberte **Uložit** nastavení uložte a zavřete stránku. 
+    ![Na stránce "Přidání přiřazení role" výsledky hledání](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+
+    d. Vyberte **Uložit** nastavení uložte a zavřete stránku. 
 
     ![Uložit nastavení přístupu](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
-    d. Zkontrolujte, jestli se **Microsoft Azure Batch** v seznamu přispěvatelé. 
+    e. Zkontrolujte, jestli se **Microsoft Azure Batch** v seznamu přispěvatelé. 
 
     ![Ověření přístupu služby Azure Batch](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 

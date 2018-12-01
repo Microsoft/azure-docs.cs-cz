@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 43812b68b10f9e4f8510d24cb08c8bb368b3b8f8
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e81efb0a7977bbd50c63834f676b7cc75201dc68
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445757"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680681"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Klientská knihovna Python pro Microsoft Azure Machine Learning ve verzi preview můžete povolit zabezpečený přístup k vaší datové sady Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a Správa datových sad v pracovním prostoru.
@@ -61,7 +61,7 @@ Pokud máte na svém počítači nainstalovaný git, můžete nainstalovat pří
 ## <a name="datasetAccess"></a>Používání fragmentů kódu Studio pro přístup k datové sady
 Klientská knihovna Python poskytuje programový přístup k stávajících objektech datových sad z experimenty, které byly spuštěny.
 
-Z webového rozhraní Studio můžete vytvořit fragmenty kódu, které zahrnují všechny informace potřebné ke stažení a deserializovat datové sady jako pandas DataFrame objekty na svém počítači umístění.
+Z webového rozhraní Studio můžete vytvořit fragmenty kódu, které zahrnují všechny informace potřebné ke stažení a deserializovat datové sady jako pandas DataFrame objekty na svém místním počítači.
 
 ### <a name="security"></a>Zabezpečení pro přístup k datům
 Fragmenty kódu Studio k dispozici pro použití s klientské knihovny pro Python obsahuje id pracovního prostoru a autorizační token. Tyto poskytují úplný přístup k vašemu pracovnímu prostoru a musí být chráněn, jako je heslo.

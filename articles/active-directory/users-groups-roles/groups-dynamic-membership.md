@@ -14,12 +14,12 @@ ms.date: 11/07/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: adb53bb5722bff2374097626e8a3f1679ca00788
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 0c14055209c6094585e0d1df892fea24a3f3ea55
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633525"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721064"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny ve službě Azure Active Directory
 
@@ -352,7 +352,7 @@ Můžete použít následující atributy zařízení.
  deviceCategory | Název kategorie platné zařízení | (device.deviceCategory - eq "BYOD")
  deviceManufacturer | Libovolnou hodnotou řetězce | (device.deviceManufacturer - eq "Samsung")
  deviceModel | Libovolnou hodnotou řetězce | (device.deviceModel - eq "iPad Air")
- deviceOwnership | Osobní, podnikové, neznámé | (device.deviceOwnership - eq "Podniková")
+ deviceOwnership | Osobní, společnosti, neznámé | (device.deviceOwnership - eq "Company")
  domainName | Libovolnou hodnotou řetězce | (device.domainName - eq "contoso.com")
  enrollmentProfileName | Název profilu profil registrace zařízení Apple nebo Windows Autopilot | (device.enrollmentProfileName - eq "DEP Iphony")
  isRooted | Hodnota TRUE, false | (device.isRooted - eq true)
@@ -360,6 +360,9 @@ Můžete použít následující atributy zařízení.
  deviceId | platné ID zařízení Azure AD | (device.deviceId - eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  ID objektu | ID objektu platný Azure AD |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
  systemLabels | jakýkoli řetězec odpovídající vlastnosti zařízení Intune pro označování moderního pracoviště zařízení | (device.systemLabels – obsahuje "M365Managed")
+
+> [!Note]  
+> Pro deviceOwnership při vytváření dynamické skupiny zařízení, je nutné nastavit hodnotu rovnající se "Společnost". V Intune reprezentována vlastnictví zařízení jako firemní. místo toho. Odkazovat na [OwnerTypes](https://docs.microsoft.com/en-us/intune/reports-ref-devices#ownertypes) další podrobnosti. 
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: b6cfae20f09b19a57cf411777e78abb1dbbf0484
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 3c1ef0a7a5a9c2ad416589118b61432210428e1c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094107"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720643"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Kontext telemetrie: datový model Application Insights
 

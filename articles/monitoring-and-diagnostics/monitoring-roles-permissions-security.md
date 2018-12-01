@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 10/27/2017
+ms.date: 11/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: caa1b4b3bf1f9b8fb1a34bd58dde04f13fbc6c88
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 367ecd4534a2221e996e706f8b4426ea6f70f213
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614562"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680493"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Začínáme s rolemi, oprávnění a zabezpečení prostřednictvím služby Azure Monitor
 Mnoho týmů potřebuje pro výhradně regulovat přístup k monitorování data a nastavení. Například pokud jste členy týmu, kteří pracují výhradně na monitorování (techniky podpory, technikům devops) nebo pokud používáte poskytovatel spravované služby, můžete jim udělit přístup k datům monitorování pouze při omezení jejich schopnost vytvářet, upravovat, nebo Odstraňte prostředky. Tento článek ukazuje, jak rychle použít předdefinované role RBAC monitorování na uživatele v Azure nebo vytvářet vlastní vlastní role pro uživatele, který potřebuje monitorování omezená oprávnění. Pak popisuje aspekty zabezpečení pro vaše prostředky související s Azure Monitor a jak můžete omezit přístup k datům, které obsahují.
@@ -86,7 +86,7 @@ Pokud výše uvedené vestavěné role nevyhovují přesné potřebám vašeho t
 | Microsoft.Insights/MetricDefinitions/Read |Přečíst definice metrik (seznam dostupných typů metriky pro prostředek). |
 | Microsoft.Insights/Metrics/Read |Číst metriky pro prostředek. |
 | Microsoft.Insights/Register/Action |Registrace poskytovatele prostředků Azure monitoru. |
-| Microsoft.Insights/ScheduledQueryRules/[Read, zápis, odstranění] |Upozornění protokolů pro čtení/zápis/delete pro službu Application Insights. |
+| Microsoft.Insights/ScheduledQueryRules/[Read, zápis, odstranění] |Upozornění pro čtení/zápis/delete protokolu ve službě Azure Monitor. |
 
 
 
@@ -154,7 +154,7 @@ New-AzureRmRoleDefinition -Role $role
 > 
 
 ### <a name="limiting-access-to-monitoring-related-event-hubs"></a>Omezení přístupu k související s monitorování event hubs
-Platí podobný vzorec s event hubs, ale nejdřív je potřeba vytvořit vyhrazený autorizační pravidlo naslouchání. Pokud chcete udělit přístup k aplikaci, která potřebuje pouze k naslouchání služby související s monitorování event hubs, postupujte takto:
+Platí podobný vzorec s event hubs, ale nejdřív je potřeba vytvořit vyhrazený autorizační pravidlo naslouchání. Pokud budete chtít udělit, přístup k aplikaci, která potřebuje pouze k naslouchání služby související s monitorování event hubs, postupujte takto:
 
 1. Vytvořte zásady sdíleného přístupu na události rozbočovače, které byly vytvořeny pro streamování dat monitorování s jenom deklarace identity naslouchání. To můžete udělat na portálu. Například může říkat "monitoringReadOnly." Pokud je to možné můžete udělit tomuto klíči přímo pro příjemce a přejděte na další krok.
 2. Pokud příjemce musí být schopni získat klíče ad-hoc, udělte uživateli klíče Listkey akce pro tohoto centra událostí. To je nezbytné pro uživatele, kteří potřebují mít možnost nastavit nastavení diagnostiky nebo profil protokolu pro streamování do event hubs. Například může vytvořit pravidlo RBAC:

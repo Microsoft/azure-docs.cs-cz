@@ -1,5 +1,5 @@
 ---
-title: Pravidelné zálohování a obnovení v Azure Service Fabric (verze Preview) | Dokumentace Microsoftu
+title: Pravidelné zálohování a obnovení v Azure Service Fabric | Dokumentace Microsoftu
 description: Použít Service Fabric pravidelné zálohování a obnovení funkce umožňující použití periodických dat. zálohování dat ve vašich aplikacích.
 services: service-fabric
 documentationcenter: .net
@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2018
+ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: ef92212b84496802dc2464498a0b6789f79a729b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 57848a7a4d8e627e952a9f46d438b073c73d833a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246697"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725858"
 ---
-# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Pravidelné zálohování a obnovení v Azure Service Fabric (verze Preview)
+# <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Pravidelné zálohování a obnovení v Azure Service Fabric 
 > [!div class="op_single_selector"]
 > * [Clustery v Azure](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [Samostatné clustery](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)
@@ -31,20 +31,17 @@ Service Fabric je platforma distribuovaných systémů, který usnadňuje vývoj
 
 Service Fabric replikuje stav napříč několika uzly k zajištění, zda je služba s vysokou dostupností. I když selže jeden uzel v clusteru, bude služba nadále být k dispozici. V některých případech je však stále vhodná pro data služby spolehlivé před širším chybami.
  
-Služba může být například vhodné zálohovat svá data z důvodu ochrany z následujících scénářů:
+Služba může například chcete zálohovat svá data z důvodu ochrany z následujících scénářů:
 - V případě trvalé ztrátě celý cluster Service Fabric.
 - Trvalé ztrátě většinou repliky oddílu služby
 - Chyb správy kterým stav omylem získá odstraněn nebo poškozen. Například správce s dostatečná oprávnění omylem odstraní službu.
 - Chyby ve službě, které dojít k poškození dat. Například tomu může dojít v případě upgrade kódu služby zahájí zápis vadným dat k Reliable Collection. V takovém případě se kód a data možná muset vrátit do předchozího stavu.
 - Zpracování dat v režimu offline. Může být užitečné mít offline zpracování dat pro business intelligence, která se stane odděleně od služby, který generuje data.
 
-Service Fabric nabízí integrované rozhraní API do bodu v čase [zálohování a obnovení](service-fabric-reliable-services-backup-restore.md). Vývojáři aplikací mohou pomocí těchto rozhraní API pravidelně zálohovat stav služby. Kromě toho Pokud správci služeb, aby se spustit zálohování z mimo službu v určitý čas, stejně jako před upgradem aplikace, vývojáři potřebují vystavit zálohování (a obnovení) jako rozhraní API ze služby. Další poplatky nad touto je udržování zálohy. Můžete například trvat 5 přírůstkové zálohy každou půlhodinu, za nímž následuje úplné zálohy. Po dokončení úplné zálohování můžete odstranit předchozí přírůstkové zálohování. Tento přístup vyžaduje další kód, což vede k další náklady během vývoje aplikace.
+Service Fabric nabízí integrované rozhraní API do bodu v čase [zálohování a obnovení](service-fabric-reliable-services-backup-restore.md). Vývojáři aplikací mohou pomocí těchto rozhraní API pravidelně zálohovat stav služby. Kromě toho Pokud správci služeb, aby se spustit zálohování z mimo službu v určitý čas, stejně jako před upgradem aplikace, vývojáři potřebují vystavit zálohování (a obnovení) jako rozhraní API ze služby. Další poplatky nad touto je udržování zálohy. Chcete například provést pět přírůstkových záloh každou půlhodinu, za nímž následuje úplné zálohy. Po dokončení úplné zálohování můžete odstranit předchozí přírůstkové zálohování. Tento přístup vyžaduje další kód, což vede k další náklady během vývoje aplikace.
 
-Zálohování dat aplikace v pravidelných intervalech je základní potřebu správy distribuované aplikace a zabezpečení proti ztrátě dat nebo dlouhotrvající ztrátou dostupnosti služby. Service Fabric poskytuje volitelný zálohování a obnovení služby, která umožňuje konfigurovat pravidelné zálohování stavovém modelu Reliable Services (včetně služby objektu Actor) bez nutnosti psát žádný další kód. Zajišťuje také obnovení už provedli zálohy. 
+Zálohování a obnovení služby v Service Fabric umožňuje snadné a automatické zálohování informací uložených v stavové služby. Zálohování dat aplikace v pravidelných intervalech je zásadní pro zabezpečení proti nedostupnost dat ztráty a služby. Service Fabric poskytuje volitelný zálohování a obnovení služby, která umožňuje konfigurovat pravidelné zálohování stavovém modelu Reliable Services (včetně služby objektu Actor) bez nutnosti psát žádný další kód. Zajišťuje také obnovení už provedli zálohy. 
 
-> [!NOTE]
-> Pravidelné zálohování a obnovení funkce je v současné době v **ve verzi Preview** a nepodporuje se pro produkční úlohy. 
->
 
 Service Fabric nabízí sadu rozhraní API k dosažení následující funkce vztahující se k pravidelné zálohování a obnovení funkce:
 
@@ -58,7 +55,7 @@ Service Fabric nabízí sadu rozhraní API k dosažení následující funkce vz
 - Správa uchovávání záloh (nadcházející)
 
 ## <a name="prerequisites"></a>Požadavky
-* Cluster Service Fabric s Fabric verze 6.2 a novějším. Cluster by měl být instalační program na Windows serveru. Přečtěte si [článku](service-fabric-cluster-creation-via-arm.md) postup vytvoření Service Fabric cluster pomocí šablony Azure resource.
+* Cluster Service Fabric s Fabric verze 6.2 a novějším. Cluster by měla nastavit na Windows serveru. Projít tento [článku](service-fabric-cluster-creation-via-arm.md) postup vytvoření Service Fabric cluster pomocí šablony Azure resource.
 * Certifikát X.509 pro šifrování tajných kódů, které jsou potřebné pro připojení do služby storage k ukládání záloh. Přečtěte si [článku](service-fabric-cluster-creation-via-arm.md) vědět, jak získat nebo vytvořit certifikát X.509.
 * Service Fabric Reliable stavové aplikace sestavené pomocí Service Fabric SDK verze 3.0 nebo vyšší. Aplikace cílené na.Net Core 2.0, aplikace by měly být sestaveny pomocí Service Fabric SDK verze 3.1 nebo novější.
 * Vytvoření účtu Azure Storage pro ukládání záloh aplikace.
@@ -116,7 +113,7 @@ Projděme si postup povolení pravidelné zálohování služby Reliable Statefu
 
 ### <a name="create-backup-policy"></a>Vytvoření zásady zálohování
 
-Prvním krokem je vytvoření zásady zálohování popisující plán zálohování, cílové úložiště pro zálohovaná data, název zásady a maximální přírůstkové zálohování povolené před aktivací úplné zálohování. 
+Prvním krokem je vytvoření zásady zálohování popisující plán zálohování, cílové úložiště pro zálohovaná data, název zásady, maximální přírůstkové zálohování povolené před aktivací úplnou zálohu a zásady uchovávání informací pro úložiště záloh. 
 
 Pro úložiště záloh pomocí služby Azure Storage, který je účet vytvořený výše. Kontejner `backup-container` je nakonfigurovaná pro ukládání záloh. Vytvoření kontejneru s tímto názvem již neexistuje, při zálohování nahrávání. Naplnění `ConnectionString` platným připojovacím řetězcem pro účet služby Azure Storage, nahrazení `account-name` s názvem vašeho účtu úložiště a `account-key` vaším klíčem účtu úložiště.
 
@@ -134,15 +131,21 @@ $ScheduleInfo = @{
     ScheduleKind = 'FrequencyBased'
 }
 
+$RetentionPolicy = @{ 
+    RetentionPolicyType = 'Basic'
+    RetentionDuration =  'P10D'
+}
+
 $BackupPolicy = @{
     Name = 'BackupPolicy1'
     MaxIncrementalBackups = 20
     Schedule = $ScheduleInfo
     Storage = $StorageInfo
+    RetentionPolicy = $RetentionPolicy
 }
 
 $body = (ConvertTo-Json $BackupPolicy)
-$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.2-preview"
+$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/BackupRestore/BackupPolicies/$/Create?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
@@ -158,7 +161,7 @@ $BackupPolicyReference = @{
 }
 
 $body = (ConvertTo-Json $BackupPolicyReference)
-$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/EnableBackup?api-version=6.2-preview"
+$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/EnableBackup?api-version=6.4"
 
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ``` 
@@ -176,7 +179,7 @@ Zálohy přidružené všechny oddíly, které patří k Reliable Stateful servi
 Spusťte následující skript Powershellu pro vyvolání rozhraní HTTP API k vytvoření výčtu zálohy vytvořené pro všechny oddíly uvnitř `SampleApp` aplikace.
 
 ```powershell
-$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.2-preview"
+$url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"
 
 $response = Invoke-WebRequest -Uri $url -Method Get -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 
@@ -223,10 +226,9 @@ CreationTimeUtc         : 2018-04-06T21:25:36Z
 FailureError            : 
 ```
 
-## <a name="preview-limitation-caveats"></a>Omezení verze Preview / upozornění
+## <a name="limitation-caveats"></a>Omezení / upozornění
 - Rutiny prostředí PowerShell předdefinované bez Service Fabric.
 - Žádná podpora pro Service Fabric CLI.
-- Žádná podpora pro automatizované vyprazdňování zálohování. [Zálohování uchování skript](https://github.com/Microsoft/service-fabric-scripts-and-templates/tree/master/scripts/BackupRetentionScript) může být uvedené nastavení externí automatizace skript na základě odstraňovat zařízení nepřipojená k zálohování.
 - Žádná podpora pro Service Fabric clustery v Linuxu.
 
 ## <a name="next-steps"></a>Další postup

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: bf7f1f58250d94d821e6ec41266b518d7ebe105b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 25d5bd3b798af181b8dd4e7028dd4a531995d464
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427547"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682589"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Protokolování diagnostiky pro skupiny zabezpečení sítě
 
@@ -132,7 +132,7 @@ Zobrazení a analýza protokolů. Další informace najdete v tématu [zobrazen�
 Diagnostická data může být:
 - [Zapsat do účtu služby Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), pro auditování nebo ruční kontrolu. Můžete zadat dobu uchování (ve dnech), pomocí nastavení diagnostiky prostředku.
 - [Streamovat do centra událostí](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) za účelem ingestování datových služby třetích stran nebo vlastních analýzy řešení, jako je například Power BI.
-- [Zapsat do služby Azure Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics).
+- [Zapsat do služby Azure Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics).
 
 ## <a name="log-categories"></a>Kategorie protokolu
 

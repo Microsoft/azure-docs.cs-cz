@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b16ac10e10655bbc7e41d9336378228097ca19ff
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 88609f4daac176f082e7f4962d557267946ab98c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014716"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724430"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurovat požadavky na složitost hesel
 
@@ -26,22 +26,21 @@ Azure Active Directory B2C (Azure AD B2C) podporuje se měnící požadavky na s
 
 ## <a name="when-password-rules-are-enforced"></a>Když se vynucují pravidla pro hesla
 
-Při registraci nebo resetování hesla, koncový uživatel musí zadat heslo, které splňuje pravidla složitosti.  Podle zásad se vynucují pravidla složitosti hesla.  Je možné mít jednu zásadu vyžadují čtyřmístný PIN kód během registrace při jiné zásady, vyžaduje řetězec osm znaků během registrace.  Například můžete použít zásady s jiným heslem složitost pro dospělé než pro děti.
+Při registraci nebo resetování hesla, koncový uživatel musí zadat heslo, které splňuje pravidla složitosti.  Každý tok uživatele se vynucují pravidla složitosti hesla.  Je možné mít jeden tok uživatele vyžadují čtyřmístný PIN kód během registrace nějakou jinou tok uživatele vyžaduje řetězec osm znaků během registrace.  Můžete například použít tok uživatele s jiným heslem složitost pro dospělé než pro děti.
 
 Složitost hesla nikdy vynucuje během přihlašování.  Uživatelé nikdy vyzváni během přihlášení změnit své heslo, protože nesplňuje požadavek na aktuální složitost.
 
-Toto jsou typy zásad kde lze nastavit složitost hesla:
+Toto jsou typy toky uživatelů kde lze nastavit složitost hesla:
 
-* Zásady registrace / přihlášení
-* Zásady pro resetování hesla
+* Tok uživatele. registrace nebo přihlašování
+* Tok uživatele resetování hesla
 * Vlastní zásady ([nakonfigurujte složitost hesla ve vlastních zásadách](active-directory-b2c-reference-password-complexity-custom.md))
 
 ## <a name="how-to-configure-password-complexity"></a>Jak nakonfigurovat složitost hesla
 
-1. Otevřít **zásady registrace / přihlášení**.
-2. Vyberte zásadu a klikněte na tlačítko **upravit**.
-3. Otevřít **složitost hesla používal**.
-4. Složitost hesla pro tuto zásadu změnit **jednoduché**, **silné**, nebo **vlastní**.
+1. Otevřít **toky uživatelů**.
+2. Vyberte tok uživatele a klikněte na tlačítko **vlastnosti**.
+3. V části **složitost hesla**, složitost hesla pro tohoto uživatele toku můžete změnit **jednoduché**, **silné**, nebo **vlastní**.
 
 ### <a name="comparison-chart"></a>Graf porovnání
 

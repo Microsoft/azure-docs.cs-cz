@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ca9f2fa249a3d9f4387d0fa45e3c5874eea26120
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2091fb75e07b9ed01394621af2d82c02f5598430
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625483"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721319"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>Kurz: Použití spravované identity systém přiřadil virtuálního počítače Windows pro přístup k úložišti Azure pomocí pověření SAS
 
@@ -68,7 +68,7 @@ Azure Storage nativně nepodporuje ověřování Azure AD.  Můžete však použ
 
 1. Přejděte zpět k nově vytvořenému účtu úložiště.   
 2. Na panelu vlevo klikněte na odkaz **Řízení přístupu (IAM)**.  
-3. Nahoře na stránce klikněte na **+ Přidat** a přiřaďte virtuálnímu počítači novou roli.
+3. Klikněte na tlačítko **+ přidat přiřazení role** nad stránky a přidat nové přiřazení role pro váš virtuální počítač
 4. Na pravé straně stránky nastavte položku **Role** na Přispěvatel účtů úložiště.  
 5. V dalším rozevíracím seznamu **Přiřadit přístup k** nastavte prostředek na Virtuální počítač.  
 6. Potom se ujistěte, že v rozevíracím seznamu **Předplatné** je správné předplatné, a nastavte **Skupinu prostředků** na Všechny skupiny prostředků.  

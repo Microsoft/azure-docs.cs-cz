@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 87ceb682f35626c5bf468afd83a2f4a35901ef2b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4cea2b7feb6d21a0566a4876414b2d75abc29959
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632343"
+ms.locfileid: "52681751"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
-Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) na agentech a také [shromažďovat data z Azure](../../log-analytics/log-analytics-azure-storage.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
+Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) na agentech a také [shromažďovat data z Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
 
 Tento kurz vás provede procesem vytvoření a plánování runbooku ve službě Azure Automation k zápisu dat do Log Analytics.
 

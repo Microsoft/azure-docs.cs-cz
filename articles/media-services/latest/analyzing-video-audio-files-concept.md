@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 3af8aec6bb2fe08c4bd1ef65e4f272a6f85af50b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6d2e87c50eba293df7c5130ea6bf192ed7f83277
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427410"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679813"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analýza videosouborů a zvukových souborů
 
@@ -33,7 +33,8 @@ Služba Media Services aktuálně podporuje následující předdefinované anal
 
 |**Název předvolby**|**Scénář**|**Podrobnosti**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analýza zvuku|Přednastavení platí předem definovanou sadu operace analýzy založené na AI včetně určené k transkripci řeči. V současné době podporuje přednastavení zpracování obsahu pomocí jednoho zvuková stopa.<br/>Můžete určit jazyk pro zvuk datovou část vstup ve formátu BCP-47 "jazyk značky region" (například "en US"). Seznam podporovaných jazyků je, "en US", "en-GB", "es-ES", "es-MX", "fr-FR", "it-IT", "ja-JP", "pt-BR", "zh-CN". Pokud jazyk není zadán nebo je nastavena na hodnotu Null, se použijí automatické rozpoznávání jazyka. Funkce detekce automatické jazyka aktuálně podporuje angličtina, čínština, francouzština, němčina, italština, japonština, španělština, ruština a portugalštině.|
+|**AudioAnalyzerPreset**|Analýza zvuku|Přednastavení platí předem definovanou sadu operace analýzy založené na AI včetně určené k transkripci řeči. V současné době podporuje přednastavení zpracování obsahu pomocí jednoho zvuková stopa.<br/>Můžete určit jazyk pro zvuk datovou část vstup ve formátu BCP-47 "jazyk značky region" (například "en US"). "en US", "en-GB", "es-ES", "es-MX",
+"fr-FR", "it-IT", "ja-JP", "pt-BR", "zh-CN", "de-DE", "ar – např.,"ru-RU","hi-IN". Pokud jazyk není zadán nebo je nastavena na hodnotu Null, se použijí automatické rozpoznávání jazyka. Funkce detekce automatické jazyka aktuálně podporuje angličtina, čínština, francouzština, němčina, italština, japonština, španělština, ruština a portugalštině. Funkce detekce jazyka automatické funguje nejlépe s zvukové záznamy s jasně viditelné řeči. Pokud automatické rozpoznávání jazyka nenajde žádné jazyce, přepis přejdou na angličtinu.|
 |**VideoAnalyzerPreset**|Analýza zvuku a videa|Extrahuje insights (bohatých metadat) z audio a video a uloží soubor formátu JSON. Můžete určit, zda chcete pouze poznatky zvuku při zpracování souboru videa. Další informace najdete v tématu [analyzovat video](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
@@ -152,7 +153,7 @@ Příklad:
 |knownPersonId|Pokud se jedná o známé osoba, jeho interní ID.|
 |referenceId|Pokud je celebrit Bing, jeho ID Bingu.|
 |Hodnota referenceType|Aktuálně jenom Bingu.|
-|název|Pokud se jedná celebrit, jeho název (například "CEO společnosti Microsoft").|
+|nadpis|Pokud se jedná celebrit, jeho název (například "CEO společnosti Microsoft").|
 |imageUrl|Pokud se jedná celebrit jeho adresa url obrázku.|
 |instance|Toto jsou instance z kde zobrazovaly plochu v daném časovém rozsahu. Každá instance má také thumbnailsId. |
 

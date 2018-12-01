@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 5da34e8e79c0df88cfad0b398aa8e1c22f158489
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 5f558ea851d63b08885293efcff3fef600f2cc17
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428874"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726385"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Spravovat přístupová práva k Azure Blob a fronty dat pomocí RBAC (Preview)
 
@@ -61,15 +61,16 @@ Následující části vysvětlují, jak přiřadit role omezená na účet úlo
 Přiřazení předdefinované role uděluje přístup pro všechny kontejnery nebo front v účtu úložiště na webu Azure Portal:
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště.
-2. Vyberte svůj účet úložiště a pak vyberte **řízení přístupu (IAM)** zobrazíte nastavení řízení přístupu k účtu. Klikněte na tlačítko **přidat** tlačítko Přidat novou roli.
+1. Vyberte svůj účet úložiště a pak vyberte **řízení přístupu (IAM)** zobrazíte nastavení řízení přístupu k účtu. Vyberte **přiřazení rolí** kartu pro zobrazení seznamu přiřazení rolí.
 
     ![Snímek obrazovky zobrazující nastavení řízení přístupu úložiště](media/storage-auth-aad-rbac/portal-access-control.png)
 
-3. V **přidat oprávnění** okna, vyberte roli, kterou chcete přiřadit k Azure AD identity. Potom prohledávat při vyhledávání identity, kterým chcete přiřadit danou roli. Například na následujícím obrázku **Čtenář dat objektu Blob služby Storage (Preview)** role přiřazené uživateli.
+1. Klikněte na tlačítko **přidat přiřazení role** tlačítko Přidat novou roli.
+1. V **přidat přiřazení role** okna, vyberte roli, kterou chcete přiřadit k Azure AD identity. Potom prohledávat při vyhledávání identity, kterým chcete přiřadit danou roli. Například na následujícím obrázku **Čtenář dat objektu Blob služby Storage (Preview)** role přiřazené uživateli.
 
     ![Snímek obrazovky ukazující, jak přiřadit roli RBAC](media/storage-auth-aad-rbac/add-rbac-role.png)
 
-4. Klikněte na **Uložit**. Identity, kterému jste přiřadili roli objeví v seznamu pod tuto roli. Například následující obrázek ukazuje, že uživatelé přidaní Teď máte oprávnění ke čtení pro všechna data objektů blob v účtu úložiště.
+1. Klikněte na **Uložit**. Identity, kterému jste přiřadili roli objeví v seznamu pod tuto roli. Například následující obrázek ukazuje, že uživatel přidaný teď má oprávnění ke čtení pro všechna data objektů blob v účtu úložiště.
 
     ![Snímek obrazovky zobrazující seznam uživatelů, které jsou přiřazeny k roli](media/storage-auth-aad-rbac/account-scoped-role.png)
 
@@ -78,17 +79,20 @@ Přiřazení předdefinované role uděluje přístup pro všechny kontejnery ne
 Postup pro přiřazení předdefinované role obor do kontejneru, nebo do fronty jsou podobné. Zde zobrazená procedura přiřadí role omezená na kontejner, ale můžete použít stejný postup přiřazení role obor pro frontu: 
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště a zobrazit **přehled** pro účet.
-2. V části služby Blob Service, vyberte **procházet objekty BLOB**. 
-3. Najděte kontejner, pro kterou chcete přiřadit roli a zobrazí nastavení kontejneru. 
-4. Vyberte **řízení přístupu (IAM)** zobrazíte nastavení řízení přístupu pro kontejner.
-5. V **přidat oprávnění** okna, vyberte roli, kterou chcete přiřadit k Azure AD identity. Potom lokalizováním identit, ke kterému chcete přiřadit danou roli.
-6. Klikněte na **Uložit**. Identity, kterému jste přiřadili roli objeví v seznamu pod tuto roli. Například následující obrázek ukazuje, že uživatel přidaný teď má oprávnění ke čtení k datům v kontejneru s názvem *ukázkový kontejner*.
+1. V části Služba vyberte **objekty BLOB**. 
+1. Najděte kontejner, pro kterou chcete přiřadit roli a zobrazí nastavení kontejneru. 
+1. Vyberte **řízení přístupu (IAM)** zobrazíte nastavení řízení přístupu pro kontejner. Vyberte **přiřazení rolí** kartu pro zobrazení seznamu přiřazení rolí.
+
+    ![Snímek obrazovky zobrazující nastavení řízení přístupu kontejneru](media/storage-auth-aad-rbac/portal-access-control-container.png)
+1. Klikněte na tlačítko **přidat přiřazení role** tlačítko Přidat novou roli.
+1. V **přidat přiřazení role** okna, vyberte roli, kterou chcete přiřadit k Azure AD identity. Potom lokalizováním identit, ke kterému chcete přiřadit danou roli.
+1. Klikněte na **Uložit**. Identity, kterému jste přiřadili roli objeví v seznamu pod tuto roli. Například následující obrázek ukazuje, že uživatel přidaný teď má oprávnění ke čtení k datům v kontejneru s názvem *ukázkový kontejner*.
 
     ![Snímek obrazovky zobrazující seznam uživatelů, které jsou přiřazeny k roli](media/storage-auth-aad-rbac/container-scoped-role.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o RBAC najdete v tématu [Začínáme s řízením přístupu na základě rolí](../../role-based-access-control/overview.md).
+- Další informace o RBAC najdete v tématu [co je řízení přístupu na základě rolí (RBAC)?](../../role-based-access-control/overview.md).
 - Naučte se přiřazovat a spravovat přiřazení rolí pro RBAC pomocí Azure Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API, najdete v těchto článcích:
     - [Správa řízení přístupu na základě rolí (RBAC) pomocí Azure Powershellu](../../role-based-access-control/role-assignments-powershell.md)
     - [Správa řízení přístupu na základě rolí (RBAC) pomocí rozhraní příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md)

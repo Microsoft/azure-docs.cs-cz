@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 0f69a7f5e7aef4da798ec7c9ce3b7af3a456c00e
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 22c9aeaa9f02d91ea90083fae69f28fa5984c565
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613354"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680612"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorování aktivit předplatného s protokolem aktivit Azure
 
@@ -83,7 +83,7 @@ Na webu Azure Portal můžete filtrovat protokol aktivit na základě těchto po
 
 Po definování sady filtrů můžete připnout dotaz na řídicím panelu Azure vždy dohlížet na konkrétní události.
 
-Pro ještě větší výkon, můžete kliknout na **protokoly** ikonu, která zobrazuje data protokolu aktivit v [řešení Log Analytics Activity Log Analytics](../log-analytics/log-analytics-activity.md). Okno Protokol aktivit nabízí prostředí základní filtr nebo přejděte na protokoly, ale Log Analytics umožňuje otáčení, dotazování a vizualizace dat výkonnější způsoby.
+Pro ještě větší výkon, můžete kliknout na **protokoly** ikonu, která zobrazuje data protokolu aktivit v [řešení Log Analytics Activity Log Analytics](../azure-monitor/platform/collect-activity-logs.md). Okno Protokol aktivit nabízí prostředí základní filtr nebo přejděte na protokoly, ale Log Analytics umožňuje otáčení, dotazování a vizualizace dat výkonnější způsoby.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Exportovat protokol aktivit k profilu protokolu
 A **profilu protokolu** řídí, jak exportovat protokol aktivit. Pomocí profilu protokolu, můžete nakonfigurovat:

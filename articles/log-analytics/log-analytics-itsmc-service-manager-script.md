@@ -10,17 +10,16 @@ ms.assetid: 879e819f-d880-41c8-9775-a30907e42059
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 2bbcfc95895ca925b585ab15d4a2edf404eb162f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a942a13b4a35953d11b43c3e4b3907132c31c98f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634842"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52719942"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření aplikace webového portálu Service Manager pomocí automatického skriptu
 

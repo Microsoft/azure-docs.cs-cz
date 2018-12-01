@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: f8bef8c6ab5c0639f9a99eb2c0443c33d7b6d84e
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 4ef1e302a305f683155139063891b838d8144008
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50244063"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680459"
 ---
 # <a name="log-analytics-query-language"></a>Protokolovat dotazovací jazyk Analytics
 Log Analytics poskytuje shromažďování protokolů a analýzu pro monitorování Azure. Je založená na Průzkumník dat Azure a používá verzi stejné dotazovací jazyk. [Dokumentace k jazyku dotazu Průzkumník dat Azure](/azure/kusto/query) má všechny informace pro jazyk a musí být váš primární prostředek pro zápis dotazy Log Analytics. Tato stránka obsahuje odkazy na další zdroje pro učit, jak psát dotazy a na rozdíly s implementací jazyka Log Analytics.

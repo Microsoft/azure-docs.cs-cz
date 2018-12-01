@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 764c43a382442096a5d130334e54afdc135ba419
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 11216d8b5bbdcea4770ca83a203b349dc424a924
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966671"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679881"
 ---
 # <a name="aggregations-in-log-analytics-queries"></a>Agregace v dotazy Log Analytics
 

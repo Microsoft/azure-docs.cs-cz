@@ -10,17 +10,16 @@ ms.assetid: d0e5162d-584b-428c-8e8b-4dcaa746e783
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d291a46eaac0f5e4023d343f700448d029765098
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 19af09e3c335d9b83fc5568014cba70630d25d24
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634876"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720809"
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 

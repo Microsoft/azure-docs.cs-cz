@@ -9,16 +9,15 @@ ms.assetid: 3b722e47-38bd-4667-9ba4-65b7006c074c
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3e838cd45eefa5b5b644992bb8eae36abf3ec33a
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 7bdf53ac7adc8b3165a2483a56247cefeaad7ea5
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276342"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680308"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights pro ASP.NET Core
 

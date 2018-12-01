@@ -9,17 +9,16 @@ editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8337d6b353b6651a2699176813220ed7a7a0f879
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5010426db97a9cd404d265d1ea9b319877eda1de
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634791"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723954"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
@@ -92,7 +91,7 @@ Místo [řešení alert managementu](../azure-monitor/platform/alert-management-
 Mobilní aplikaci OMS bude sunsetted spolu se na portálu OMS. Místo mobilní aplikaci OMS přístup k informacím o vašich IT infrastruktury, řídicí panely a uložené dotazy, můžete přistupovat na webu Azure portal přímo z prohlížeče v mobilním zařízení. Abyste mohli dostávat upozornění, měli byste nakonfigurovat [skupiny akcí Azure](../monitoring-and-diagnostics/monitoring-action-groups.md) pro příjem oznámení ve formě SMS nebo hlasový hovor
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector a řešení
-[Application Insights Connector](log-analytics-app-insights-connector.md) poskytuje způsob, jak přenést data Application Insights do pracovního prostoru Log Analytics. Tato duplikace dat nebyla nutná k zajištění viditelnost napříč dat infrastruktury a aplikací.
+[Application Insights Connector](../azure-monitor/platform/app-insights-connector.md) poskytuje způsob, jak přenést data Application Insights do pracovního prostoru Log Analytics. Tato duplikace dat nebyla nutná k zajištění viditelnost napříč dat infrastruktury a aplikací.
 
 Díky podpoře [dotazy napříč prostředky](log-analytics-cross-workspace-search.md), už není potřebě duplicitní data. V důsledku toho se přestanou existující řešení Application Insights. Od října se nebudou moct propojit nové prostředky Application Insights do pracovních prostorů Log Analytics. Existující odkazy a řídicí panely, budou nadále fungovat až do 15. ledna 2019.
 

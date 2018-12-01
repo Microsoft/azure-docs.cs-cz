@@ -9,15 +9,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: ae02a1bcbf00a022cfd884b02141ce084f1fffa8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 806d68370921a7658066a9bad770b36b4e8e59bf
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232456"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680034"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Plánování infrastruktury zálohování virtuálních počítačů v Azure
-Tento článek obsahuje výkonu a prostředků návrhy vám pomohou při plánování infrastruktury zálohování virtuálních počítačů. Také definuje klíčové aspekty služby Backup; Tyto aspekty může být důležité při určování architektury, plánování kapacity a plánování. Pokud jste [připravit vaše prostředí](backup-azure-arm-vms-prepare.md), plánování je dalším krokem, než začnete [k zálohování virtuálních počítačů](backup-azure-arm-vms.md). Pokud potřebujete další informace o virtuálních počítačích Azure, přečtěte si [dokumentace k virtuálním počítačům](https://azure.microsoft.com/documentation/services/virtual-machines/). 
+Tento článek obsahuje výkonu a prostředků návrhy vám pomohou při plánování infrastruktury zálohování virtuálních počítačů. Také definuje klíčové aspekty služby Backup; Tyto aspekty může být důležité při určování architektury, plánování kapacity a plánování. Pokud jste [připravit vaše prostředí](backup-azure-arm-vms-prepare.md), plánování je dalším krokem, než začnete [k zálohování virtuálních počítačů](backup-azure-arm-vms.md). Pokud potřebujete další informace o virtuálních počítačích Azure, přečtěte si [dokumentace k virtuálním počítačům](https://azure.microsoft.com/documentation/services/virtual-machines/).
 
 > [!NOTE]
 > Tento článek je pro použití s spravované a nespravované disky. Pokud používáte nespravované disky, existují doporučení pro účet úložiště. Pokud používáte [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md), není nutné se starat o problémy s využitím výkonu nebo prostředek. Nastavení Azure optimalizuje využití úložiště za vás.
@@ -96,7 +96,19 @@ Celkový čas zálohování za méně než 24 hodin je platný pro přírůstkov
 
 ### <a name="why-are-backup-times-longer-than-12-hours"></a>Proč jsou časy zálohování delší než 12 hodin?
 
-Zálohování se skládá ze dvou fází: pořizování snímků a snímky přenosu do trezoru. Služba Backup optimalizuje úložiště. Při přenosu dat snímků do trezoru, přenese službu pouze přírůstkové změny z předchozího snímku.  Pokud chcete zjistit přírůstkové změny, vypočítá službu kontrolních součtů bloků. Pokud se změní bloku, blok je označena jako blok, který se pošlou do trezoru. Cvičení služby potom dále do všech identifikovaných bloky, hledají příležitosti minimalizovat objem dat pro přenos. Po vyhodnocení všechny změněné bloky, služba spojí změny a odešle je do trezoru. V některých starších aplikací nejsou malé, fragmentované zápisy optimální pro úložiště. Pokud tento záznam obsahuje mnoho malých, fragmentované zápisy, službu stráví další čas zpracování dat zapsaných aplikace. Pro aplikace běžící uvnitř virtuálního počítače je minimální doporučené zápisům aplikace bloku 8 KB. Pokud vaše aplikace používá blok méně než 8 KB, se provádí výkon zálohování. Nápovědu k ladění aplikace ke zlepšení výkonu zálohování, naleznete v tématu [ladění aplikací pro zajištění optimálního výkonu pomocí úložiště Azure](../virtual-machines/windows/premium-storage-performance.md). I když v článku věnovaném výkon zálohování se používají příklady úložiště úrovně Premium, je možné použít disky storage úrovně Standard pokynů.
+Zálohování se skládá ze dvou fází: pořizování snímků a snímky přenosu do trezoru. Služba Backup optimalizuje úložiště. Při přenosu dat snímků do trezoru, přenese službu pouze přírůstkové změny z předchozího snímku.  Pokud chcete zjistit přírůstkové změny, vypočítá službu kontrolních součtů bloků. Pokud se změní bloku, blok je označena jako blok, který se pošlou do trezoru. Cvičení služby potom dále do všech identifikovaných bloky, hledají příležitosti minimalizovat objem dat pro přenos. Po vyhodnocení všechny změněné bloky, služba spojí změny a odešle je do trezoru. V některých starších aplikací nejsou malé, fragmentované zápisy optimální pro úložiště. Pokud tento záznam obsahuje mnoho malých, fragmentované zápisy, službu stráví další čas zpracování dat zapsaných aplikace. Pro aplikace běžící uvnitř virtuálního počítače je minimální doporučené zápisům aplikace bloku 8 KB. Pokud vaše aplikace používá blok méně než 8 KB, se provádí výkon zálohování. Nápovědu k ladění aplikace ke zlepšení výkonu zálohování, naleznete v tématu [ladění aplikací pro zajištění optimálního výkonu pomocí úložiště Azure](../virtual-machines/windows/premium-storage-performance.md). I když v článku věnovaném výkon zálohování se používají příklady úložiště úrovně Premium, je možné použít disky storage úrovně Standard pokynů.<br>
+Může existovat několik důvodů, proč čas dlouho zálohování:
+  1. **První zálohování pro nově přidaný disk do už chráněných virtuálních počítačů** <br>
+    Pokud virtuální počítač je již přijít o které jsou předmětem přírůstkové zálohování, když je přidán nový disky zálohování SLA 1 den v závislosti na velikosti nový disk.
+  2. **Fragmentace** <br>
+    Pokud aplikace zákazníka je špatně nakonfigurována, která přebírá fragmentované malých zápisů.<br>
+  3. **Účet úložiště zákazníka přetížení** <br>
+      a. Pokud je naplánováno zálohování v době zákazníka produkční aplikace.  
+      b. Pokud více než 5 až 10 disků jsou hostované v rámci stejného účtu úložiště.<br>
+  4. **Režim Check(CC) konzistence** <br>
+      > 1 TB disky, pokud probíhá zálohování v režimu kopie z důvodů uvedených níže:<br>
+        a. Přesune spravovaného disku jako součást zákazníka restartování virtuálního počítače.<br>
+        b. Zákazník podporuje snímku na základní objekt blob.<br>
 
 ## <a name="total-restore-time"></a>Obnovení celkový čas
 

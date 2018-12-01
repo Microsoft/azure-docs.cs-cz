@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f0fd4efe7fc6f8f217d889b5f87c133b5e250b54
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 938472edf0c82da6f3e1fdaf4e6b052ac178bd8a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809389"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722968"
 ---
 <a name="logic-app-test-drive"></a>Jednotky Test aplikace logiky
 ====================
@@ -48,7 +48,7 @@ Další části a vyplňte je že nabízejí podrobné informace o vaše testova
 
 ![Podrobnosti o ovladači testu](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Popis –** *[povinné pole]* Toto je místo, kde píšete hlavní popis o tom, co je na vaše testovací verze. Zákazník Sem přijde na jaké scénáře vaše testovací verze se zahrnující informace o tomto produktu. 
+**Popis –** *[povinné pole]* Toto je místo, kde píšete hlavní popis o tom, co je na vaše testovací verze. Zákazník Sem přijde na jaké scénáře vaše testovací verze se zahrnující informace o tomto produktu. 
 
 **Uživatelská příručka -** *[povinné pole]* Toto je podrobný návod prostředí Test Drive. Zákazník se otevře toto a můžete projít přesně co chcete udělat v rámci jejich testovací verze. Je důležité, že tento obsah je snadno srozumitelný a postupujte podle! (Musí být soubor PDF)
 
@@ -126,15 +126,13 @@ Klikněte na Uložit. Posledním krokem je zkopírovat ID aplikace pro tuto regi
 Zadané aplikace se používá k nasazení do předplatného, potřebujeme pro tuto aplikaci přidat jako přispěvatele daného předplatného. Tyto pokyny jsou jako níže:
 
 1. Přejděte do okna odběry a vyberte odpovídající předplatné, který používáte pro pouze na testovací verzi.
-2. Klikněte na řízení přístupu (IAM).
-3. Stiskněte klávesu + přidat v novém okně.
-4. Nastavte jako přispěvatele roli.
-5. Zadejte název aplikace AAD a vyberte aplikaci AAD k přiřazení role.
-6. Klikněte na Uložit.
-
-![Azure Active Directory, přidání nového objektu zabezpečení řízení přístupu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-
-![Oprávnění Azure Active Directory](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **přiřazení rolí** kartu.  ![Azure Active Directory, přidání nového objektu zabezpečení řízení přístupu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Klikněte na tlačítko **přidat přiřazení role**.
+1. Nastavit jako roli **Přispěvatel**.
+1. Zadejte název aplikace Azure AD a vyberte aplikaci, pokud chcete přiřadit roli.
+    ![Oprávnění Azure Active Directory](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Klikněte na **Uložit**.
 
 **Klíč aplikace Azure AD –** *[povinné pole]* poslední pole má generovat ověřovací klíč. V části klíče přidejte popis klíče, nastavte dobu trvání nikdy nevyprší, pak vyberte možnost uložit. Je **důležité** abyste se vyhnuli nutnosti vypršela klíčů, což naruší vaše testovací verze v produkčním prostředí. Zkopírujte tuto hodnotu a vložte ho do vašeho povinné pole testovací verze.
 

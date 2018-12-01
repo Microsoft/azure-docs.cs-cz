@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: log-analytics
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 77d47b1f4946a8539b58b9335b967321b6bbf2e9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93fc2d78344bea1861ef0131b712ca65c35de0e4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259866"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722611"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Log Analytics pomocí konektoru pro Microsoft Flow
 [Microsoft Flow](https://ms.flow.microsoft.com) můžete vytvářet automatizované pracovní postupy pomocí stovek akce pro širokou škálu služeb. Výstup z jedné akce můžete použít jako vstup do druhé umožňuje vytvářet integrace mezi různými službami.  Azure Log Analytics connector pro Microsoft Flow umožňují vytvářet pracovní postupy, které zahrnují data načtená pomocí prohledávání protokolů v Log Analytics.

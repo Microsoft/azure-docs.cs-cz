@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 7cf7078353de27c35a607fa8ef1921d6ed4b54b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ab54dcd94ebf0a1bad71613a8d749cef0de64f4
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247343"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678674"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému ve službě Azure App Service
 Tento článek popisuje běžné funkce operačního systému směrný plán, který je k dispozici pro všechny aplikace Windows běží na [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje soubor, sítě a přístup k registru a diagnostické protokoly a události. 
@@ -60,7 +60,12 @@ Ve své podstatě služby App Service je služba spuštěná nad infrastrukturou
 - Disku s aplikací, který obsahuje soubory balíčku Azure cspkg používá výhradně ve službě App Service (a znepřístupníme pro zákazníky)
 - "User" jednotka (jednotka C:\), jejichž velikost se liší v závislosti na velikosti virtuálního počítače. 
 
-Je důležité monitorovat vaše využití disku s růstem vaší aplikace. Když se dosáhne kvóty disku může mít nežádoucí účinky do vaší aplikace.
+Je důležité monitorovat vaše využití disku s růstem vaší aplikace. Když se dosáhne kvóty disku může mít nežádoucí účinky do vaší aplikace. Příklad: 
+
+- Aplikace může vyvolat chybu s informacemi není dostatek místa na disku.
+- Když přejdete do konzoly Kudu, může se zobrazit chyby na disku.
+- Nasazování z VSTS nebo sady Visual Studio může selhat s `ERROR_NOT_ENOUGH_DISK_SPACE: Web deployment task failed. (Web Deploy detected insufficient space on disk)`.
+- Vaše aplikace může dojít ke snížení nízký výkon.
 
 <a id="NetworkDrives"></a>
 

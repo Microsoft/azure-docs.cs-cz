@@ -4,16 +4,16 @@ description: Použití zařízení Azure IoT Edge jako transparentní brána, kt
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2018
+ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a867122aef5dd9d2152bca3ac10c11459ffc03f5
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 55968393ff64d9eed1f5b384094a77d0d169dc5d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568467"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681190"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
 
@@ -258,7 +258,11 @@ Můžete zkontrolovat, které moduly jsou spuštěny na zařízení pomocí př�
 6. V **šablona kontrolní** stránce **odeslat**.
 
 ## <a name="route-messages-from-downstream-devices"></a>Směrování zpráv ze zařízení příjem dat
-Modul runtime IoT Edge může směrovat zprávy odeslané ze zařízení příjem dat, stejně jako zprávy odeslané moduly. To umožňuje provádět analýzy v modulu na bráně spuštěna před odesláním všechna data do cloudu. Níže trasy se použije pro odesílání zpráv ze zařízení příjem dat s názvem `sensor` název modulu `ai_insights`.
+Modul runtime IoT Edge může směrovat zprávy odeslané ze zařízení příjem dat, stejně jako zprávy odeslané moduly. To umožňuje provádět analýzy v modulu na bráně spuštěna před odesláním všechna data do cloudu. 
+
+V současné době je tak, jak směrovat zprávy odesílané zařízeními podřízené rozlišení na zprávy odeslané moduly. Zprávy odesílané všechny moduly obsahují systém vlastnost s názvem **connectionModuleId** ale zprávy odesílané zařízeními, podřízené, tomu tak není. Klauzule WHERE trasy můžete vyloučit všechny zprávy, které obsahují tuto vlastnost systému. 
+
+Níže trasy se použije pro odesílání zpráv z libovolného zařízení pro příjem dat s názvem modulu `ai_insights`.
 
 ```json
 {
@@ -269,7 +273,7 @@ Modul runtime IoT Edge může směrovat zprávy odeslané ze zařízení příje
 }
 ```
 
-Další informace o směrování zpráv, najdete v části [složení modulu](./module-composition.md).
+Další informace o směrování zpráv, najdete v části [nasadit moduly a vytvářet](./module-composition.md#declare-routes).
 
 [!INCLUDE [iot-edge-extended-ofline-preview](../../includes/iot-edge-extended-offline-preview.md)]
 

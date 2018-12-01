@@ -8,18 +8,17 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: c1e5b420c4821732aa8cc19328b0955070100926
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d173cd8ddcd713e39fc925a101b42bdd918e5499
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138492"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721150"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Řešení potíží s nástrojů analýzy chování uživatelů ve službě Application Insights
 Máte otázky týkající [nástrojů analýzy chování uživatelů ve službě Application Insights](app-insights-usage-overview.md): [uživatelé, relace, události](app-insights-usage-segmentation.md), [trychtýře](usage-funnels.md), [toky uživatelů](app-insights-usage-flows.md), [Uchování](app-insights-usage-retention.md), nebo kohorty? Tady jsou odpovědi.

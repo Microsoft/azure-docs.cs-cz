@@ -10,16 +10,15 @@ ms.assetid: 59df5bec-d959-457d-8731-7b20f7f1013e
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
-ms.author: adigan;
-ms.openlocfilehash: 73a5e8126ebe6223d790a5b58db7bd5d04b5350f
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.author: adigan
+ms.openlocfilehash: 575b994fb34d673578b1a40ae4bdd9f6716b6687
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267289"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720027"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualizace Azure Backup centrálního generování sestav balíčku obsahu 
 

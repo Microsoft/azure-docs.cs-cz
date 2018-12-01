@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 39a461a27e8d9d6d1b9712449586bfabf6124d22
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cadcd2272cb93b4f6e0108c2955fadf9474a72bb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989443"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680510"
 ---
 # <a name="joins-in-log-analytics-queries"></a>Spojení v dotazy Log Analytics
 

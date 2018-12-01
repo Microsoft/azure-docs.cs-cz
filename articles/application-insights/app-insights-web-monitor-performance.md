@@ -9,17 +9,16 @@ ms.assetid: 40650472-e860-4c1b-a589-9956245df307
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 7e6aad6f6a0664d7834e6ea889dba14c1cbcdf0a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e11c34b2587dcb7602161d36ba4deda1dca73c82
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095357"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720962"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Sledování výkonu webových aplikací
 

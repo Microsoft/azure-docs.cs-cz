@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 81608dd7281ceddce7e0701535ad99e1c9e44315
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: d96b4a99b2ea66cdeff43f06c1789dd133c2c31a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142355"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723002"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurovat Application Insights Profiler
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 025e447995d302c24ab2a7d1c8668857cb47ffdd
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 10648551728e4f3cb41b82433e4cd0d442f9daeb
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42060743"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679252"
 ---
 # <a name="auto-provisioning-concepts"></a>Koncepty automatického zřizování
 
@@ -64,6 +64,33 @@ Následující diagram obsahuje Souhrn rolí a pořadí operací během automati
 > [!NOTE]
 > Volitelně výrobce můžete také provést pomocí rozhraní API služby zřizování zařízení operace "Registraci identity zařízení" (nikoli prostřednictvím operátoru). Podrobné informace o této klasifikace a další, najdete v článku [nulové registrace zařízení dotykové ovládání s videem Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) (cena začíná na 41:00 značky)
 
+## <a name="roles-and-azure-accounts"></a>Role a účty Azure
+
+Jak je každá role mapována k účtu Azure závisí na scénáři a několik scénářů, které mohou být zahrnuty. Běžné vzory níže by měly pomoci poskytují obecné znalosti týkající se způsobu role obecně mapování na účet Azure.
+
+#### <a name="chip-manufacturer-provides-security-services"></a>Výrobce čipu poskytuje zabezpečení služby
+
+V tomto scénáři výrobce spravuje zabezpečení pro zákazníky, úroveň: 1. Tento scénář může být upřednostňuje tito zákazníci první úrovně, která si uživatelé nebudou muset spravovat podrobné zabezpečení. 
+
+Výrobce zavádí zabezpečení do modulů hardwarového zabezpečení (HSM). Toto zabezpečení mohou zahrnovat výrobce získání klíče, certifikáty a další z potenciálních zákazníků, kteří už mají instance Device Provisioning a registrace skupiny nastavení. Výrobce může také generovat bezpečnostních informací pro své zákazníky.
+
+V tomto scénáři může existovat dva účty Azure zahrnuté:
+
+- **Účet #1**: pravděpodobně sdílen napříč role operátor a pro vývojáře do určité míry. Tuto stranu koupit od výrobce čipů po modulu hardwarového zabezpečení. Tyto čipy jsou odkazoval instance distribučních bodů přidružené k 1. účet. S registrací distribučních bodů můžete tuto stranu zapůjčení zařízení více zákazníkům úrovně dvě překonfigurováním nastavení registrace zařízení ve službě DPS. Tuto stranu mohou mít i centra IoT hub přidělené pro back-endových systémůf koncových uživatelů k vytvoření rozhraní pro přístup k telemetrii zařízení atd. V takovém případě se nemusí být potřeba druhého účtu.
+
+- **Účet #2**: koncoví uživatelé, druhé úrovně zákazníci můžou mít vlastní centra IoT hub. Strana přidružená k účtu č. 1 pouze body zapůjčena správná zařízení v rámci tohoto účtu. Tato konfigurace vyžaduje propojení služby Device Provisioning a IoT hubs mezi účty Azure, které lze provést pomocí šablon Azure Resource Manageru.
+
+#### <a name="all-in-one-oem"></a>Vše v jednom OEM
+
+Výrobce může být "Výrobce OEM vše v jednom", kde pouze jednoho výrobce účtu, bylo by potřeba. Výrobce zajišťuje zabezpečení a komplexní zřizování.
+
+Výrobce může poskytovat cloudové aplikace pro zákazníky, kteří si koupí zařízení. Tato aplikace by rozhraní službou IoT Hub přidělené výrobce.
+
+Automaty nebo automatizované kávy počítače představují příklady v tomto scénáři.
+
+
+
+
 ## <a name="next-steps"></a>Další postup
 
 Vám může být užitečné k oblíbeným položkám v tomto článku jako bod odkazu, při práci projděte odpovídající rychlých startů automatického zřizování. 
@@ -71,7 +98,7 @@ Vám může být užitečné k oblíbeným položkám v tomto článku jako bod 
 Začněte tím, že dokončení rychlého startu "Nastavení automatického zřizování", který nejlépe vyhovuje stylu vaší preferovaný nástroj pro správu, který vás provede fáze "Konfigurace služby":
 
 - [Nastavení automatického zřizování pomocí Azure CLI](quick-setup-auto-provision-cli.md)
-- [Nastavení automatického zřizování na webu Azure Portal](quick-setup-auto-provision.md)
+- [Nastavení automatického zřizování na webu Azure portal](quick-setup-auto-provision.md)
 - [Nastavení automatického zřizování pomocí šablony Resource Manageru](quick-setup-auto-provision-rm.md)
 
 Potom pokračujte "Automatické zřízení simulovaného zařízení" rychlý start, která vyhovuje mechanismu ověřování zařízení a sady SDK služby Device Provisioning Service/jazykové předvolby. V tomto rychlém startu si projdete fáze "Registrace zařízení" a "registraci zařízení a konfigurace": 

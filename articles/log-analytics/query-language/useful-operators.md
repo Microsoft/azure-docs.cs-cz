@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 0b14c13462f15dd90285ed9e37080487324a4d85
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 8fb2d9563623cdae98bd0d387a51f36478d2cbf8
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831275"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678079"
 ---
 # <a name="useful-operators-in-log-analytics-queries"></a>Užitečné operátorů v dotazech Log Analytics
 

@@ -7,12 +7,13 @@ ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.date: 10/11/2018
 ms.author: ramamill
-ms.openlocfilehash: 667cbbbcc0a74550b389d7a75e17cecd00b88d06
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.topic: conceptual
+ms.openlocfilehash: 12719d678372a84e3b19b3822d5f663458437963
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976608"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679337"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Vyloučení disků z replikace virtuálních počítačů VMware do Azure
 

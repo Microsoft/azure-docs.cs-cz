@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2bf5593507d99f6fb45994eb73333b21ca8904a5
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 949b3f60574f132544b54c4848787318411616a1
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706309"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679218"
 ---
 # <a name="working-with-strings-in-log-analytics-queries"></a>Práce s řetězci v dotazech Log Analytics
 

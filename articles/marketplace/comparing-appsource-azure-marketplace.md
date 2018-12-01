@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 926fc46a4afd4e434e9769802ac096347b4ce4f0
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: f204f01fae0bd01f9f2f0e242c63ec2070d6d195
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620077"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678045"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>Porovnání AppSource a na webu Azure Marketplace
 Prodejní místa v [Azure Marketplace](https://azuremarketplace.microsoft.com) a [Microsoft AppSource](https://appsource.microsoft.com) sloužit jedinečných zákaznických požadavků. Podle role pomocí prodejní místa na cílové uživatele. Můžete nabízet vhodné řešení nebo službu, kterou vaše zákazníky.
@@ -29,7 +29,7 @@ Vybrat storu, začněte určením cílovou skupinou pro vaši nabídku. Pokud na
 
 | Azure Marketplace | AppSource |
 |:--- |:--- |
-| IT specialisté a vývojáři | Pracovníci s rozhodovací pravomocí |
+| IT specialisté a vývojáři | Podnikoví uživatelé a pracovníci s rozhodovací pravomocí |
  
 Následující tabulka popisuje výhody z prodejních míst:
 

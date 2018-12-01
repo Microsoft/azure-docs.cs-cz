@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 13ba4d774cbc347830c32385ba4927a0df687159
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6170b69d213470b1f5b7e75c9b102e5e07c09209
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035466"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682866"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Předávání stavu úlohy a datové proudy úlohy ze služby Automation do Log Analytics
 
@@ -182,4 +182,4 @@ Log Analytics poskytuje větší provozní viditelnost do úloh služby Automati
 * Další informace o tom, jak vytvářet různé vyhledávací dotazy a zkontrolujte protokoly úloh služby Automation s Log Analytics najdete v tématu [prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md).
 * Postup vytvoření a načtení výstupu a chybové zprávy z runbooků najdete v tématu [Runbook výstup a zprávy](automation-runbook-output-and-messages.md).
 * Další informace o spouštění runbooků, postupy při monitorování úloh runbooků a další technické podrobnosti najdete v článku [Sledování úlohy runbooku](automation-runbook-execution.md).
-* Další informace o Log Analytics a zdrojích pro shromažďování dat, naleznete v tématu [shromažďování dat úložiště Azure v Log Analytics – přehled](../log-analytics/log-analytics-azure-storage.md).
+* Další informace o Log Analytics a zdrojích pro shromažďování dat, naleznete v tématu [shromažďování dat úložiště Azure v Log Analytics – přehled](../azure-monitor/platform/collect-azure-metrics-logs.md).

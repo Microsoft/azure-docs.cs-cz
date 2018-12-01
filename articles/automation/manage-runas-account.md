@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 569efa7fbbd111937f00ba3b1e28219c163e2221
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7bd84b42cfa61d199d70e02345f9229a45fd7704
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958155"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726164"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů služby Automation spustit jako pro Azure
 
@@ -358,11 +358,11 @@ Pokud chcete certifikát obnovit, postupujte takto:
 
 K řízení cílení služby automation s prostředky ve službě Azure Automation, účet Spustit jako ve výchozím nastavení je povoleno oprávněním přispěvatele v předplatném. Pokud potřebujete omezit, co můžete dělat instančního objektu RunAs, můžete odebrat účet z role přispěvatele k předplatnému a přidat jako přispěvatelé do skupiny prostředků, kterou chcete zadat.
 
-Na webu Azure Portal, vyberte **předplatná** a zvolte předplatné účtu Automation. Vyberte **řízení přístupu (IAM)** a vyhledejte instančním objektu pro svůj účet Automation (vypadá jako \<AutomationAccountName\>_unique identifikátor). Vyberte účet a klikněte na tlačítko **odebrat** odebrat z předplatného.
+Na webu Azure Portal, vyberte **předplatná** a zvolte předplatné účtu Automation. Vyberte **řízení přístupu (IAM)** a pak vyberte **přiřazení rolí** kartu. Hledání pro instanční objekt pro svůj účet Automation (vypadá jako \<AutomationAccountName\>_unique identifikátor). Vyberte účet a klikněte na tlačítko **odebrat** odebrat z předplatného.
 
 ![Přispěvatelé předplatného](media/manage-runas-account/automation-account-remove-subscription.png)
 
-Přidání instančního objektu do skupiny prostředků, vyberte skupinu prostředků v Azure portal a vyberte **řízení přístupu (IAM)**. Vyberte **přidat**, tím se otevře **přidat oprávnění** stránky. Pro **Role**vyberte **Přispěvatel**. V **vyberte** textového pole zadejte název objektu služby pro účet Spustit jako a vyberte ho ze seznamu. Kliknutím na **Uložit** uložte změny. Proveďte tyto kroky pro skupiny prostředků, kterou chcete přidělit Azure Automation spustit jako službu objektu zabezpečení přístup k.
+Přidání instančního objektu do skupiny prostředků, vyberte skupinu prostředků v Azure portal a vyberte **řízení přístupu (IAM)**. Vyberte **přidat přiřazení role**, tím se otevře **přidat přiřazení role** stránky. Pro **Role**vyberte **Přispěvatel**. V **vyberte** textového pole zadejte název objektu služby pro účet Spustit jako a vyberte ho ze seznamu. Kliknutím na **Uložit** uložte změny. Proveďte tyto kroky pro skupiny prostředků, kterou chcete přidělit Azure Automation spustit jako službu objektu zabezpečení přístup k.
 
 ## <a name="misconfiguration"></a>Chybná konfigurace
 

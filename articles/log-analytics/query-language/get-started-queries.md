@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 32e95c9098999305d4c48d5c43fae5ef6d3ac36e
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: cd5333cc36afa9c914d628fac8f1fd865d3f7663
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619771"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678861"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Začínáme s dotazy v Log Analytics
 

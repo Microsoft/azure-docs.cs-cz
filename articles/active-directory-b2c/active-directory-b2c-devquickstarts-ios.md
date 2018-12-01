@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5f95b71497b59eafff09d4add2b4bb1c20656592
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9f475c7bc373afd8a109873908bb583bc07708f1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339354"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722543"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Aplikace pro iOS pomocí přihlášení
 
@@ -38,16 +38,16 @@ Dále musíte vytvořit aplikaci v adresáři B2C. Registrace aplikací poskytuj
 * Poznamenejte si **ID aplikace** přiřazené vaší aplikaci. Budete potřebovat později tento identifikátor GUID.
 * Nastavení **identifikátor URI pro přesměrování** s vlastním schématem (například com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Budete později potřebovat pomocí tohoto identifikátoru URI.
 
-## <a name="create-your-policies"></a>Vytvořte svoje zásady
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci. Vytvořte tuto zásadu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Při vytváření zásady nezapomeňte na následující:
+## <a name="create-your-user-flows"></a>Vytvářet toky uživatelů
+V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci. Vytvořte tento tok uživatele podle popisu v [článku toku uživatele](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Když vytvoříte tok uživatele, nezapomeňte na následující:
 
 * V části **atributy registrace**, vyberte atribut **zobrazovaný název**.  Můžete vybrat i jiné atributy.
 * V části **deklarace identit aplikace**, vyberte deklarace identity **zobrazovaný název** a **ID objektu uživatele**. Můžete vybrat i další deklarace identity.
-* Po vytvoření každé zásady si poznamenejte její **Název**. Je název vaší zásady předponu `b2c_1_` při ukládání zásad.  Název zásady budete potřebovat později.
+* Kopírovat **název** každý toku uživatele. po jeho vytvoření. Vaše uživatelské jméno tok předchází `b2c_1_` když uložíte tok uživatele.  Název toku uživatele budete potřebovat později.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Po vytvoření zásad jste připraveni k sestavení aplikace.
+Po vytvoření toků uživatelů, budete připraveni k sestavení aplikace.
 
 ## <a name="download-the-sample-code"></a>Stáhněte si ukázkový kód
 Poskytujeme ukázku práci, která používá AppAuth s Azure AD B2C [na Githubu](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c). Můžete stáhnout kód a spustíme ji. Použití vašeho vlastního tenanta Azure AD B2C, postupujte podle pokynů [README.md](https://github.com/Azure-Samples/active-directory-ios-native-appauth-b2c/blob/master/README.md).
@@ -64,7 +64,7 @@ Tato ukázka byla vytvořena podle následujících pokynů README podle [iOS Ap
 
 Je-li nakonfigurovat komunikaci s Azure AD B2C, zadáte koncový bod autorizace a koncový bod tokenu identifikátory URI.  Ke generování těchto identifikátorů URI, budete potřebovat následující informace:
 * ID tenanta (například contoso.onmicrosoft.com).
-* Název zásad (například B2C\_1\_SignUpIn)
+* Název toku uživatele (například B2C\_1\_SignUpIn)
 
 Koncový bod tokenu identifikátor URI je vygenerovat tak, že nahradíte Tenanta\_ID a zásad\_názvu v následující adrese URL:
 

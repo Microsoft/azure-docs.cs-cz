@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 90c434a37d3209e0c11a04425c337ec6930cfd00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 85e6dc8d72588ff64c0119a6c1944755ce5686f4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025255"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720928"
 ---
 <a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
 =================================
@@ -382,15 +382,13 @@ Klikněte na Uložit. Posledním krokem je zkopírovat ID aplikace pro tuto regi
 Zadané aplikace se používá k nasazení do předplatného, potřebujeme pro tuto aplikaci přidat jako přispěvatele daného předplatného. Tyto pokyny jsou jako níže:
 
 1. Přejděte do okna odběry a vyberte odpovídající předplatné, který používáte pro pouze na testovací verzi.
-2. Klikněte na řízení přístupu (IAM).
-3. Stiskněte klávesu + přidat v novém okně.
-4. Nastavte jako přispěvatele roli.
-5. Zadejte název aplikace AAD a vyberte aplikaci AAD k přiřazení role.
-6. Klikněte na Uložit.
-
-![Přidat nový objekt řízení přístupu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-
-![Přidat oprávnění](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Klikněte na tlačítko **řízení přístupu (IAM)**.
+1. Klikněte na tlačítko **přiřazení rolí** kartu.  ![Přidat nový objekt řízení přístupu](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. Klikněte na tlačítko **přidat přiřazení role**.
+1. Nastavit jako roli **Přispěvatel**.
+1. Zadejte název aplikace Azure AD a vyberte aplikaci, pokud chcete přiřadit roli.
+    ![Přidat oprávnění](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Klikněte na **Uložit**.
 
 **Klíč aplikace Azure AD –** *vyžaduje* poslední pole má generovat ověřovací klíč. V části klíče přidejte popis klíče, nastavte dobu trvání nikdy nevyprší, pak vyberte možnost uložit. Je **důležité** abyste se vyhnuli nutnosti vypršela klíčů, což naruší vaše testovací verze v produkčním prostředí. Zkopírujte tuto hodnotu a vložte ho do vašeho povinné pole testovací verze.
 

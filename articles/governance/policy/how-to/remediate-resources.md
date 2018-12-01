@@ -8,12 +8,12 @@ ms.date: 09/25/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: adba2322bce5f0884cba51078e65feeaeaf193d9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 5b503c1a96d0c0a5ce3d14e98622040116873045
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392685"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724651"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
@@ -123,7 +123,7 @@ Přidání role pro toto přiřazení spravovanou identitu, postupujte podle tě
 
 1. Přejděte na prostředek nebo prostředky nadřazeného kontejneru (skupinu prostředků, předplatné, skupina pro správu), který se musí ručně přidat definice role.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)** odkaz na stránce prostředků a klikněte na tlačítko **+ přidat** v horní části stránku řízení přístupu.
+1. Klikněte na tlačítko **řízení přístupu (IAM)** odkaz na stránce prostředků a klikněte na tlačítko **+ přidat přiřazení role** v horní části stránku řízení přístupu.
 
 1. Vyberte vhodnou roli, která odpovídá **roleDefinitionIds** z definice zásady. Ponechte **přiřadit přístup k** nastavenou na výchozí hodnotu "Azure AD uživatele, skupiny nebo aplikace". V **vyberte** pole, vložte nebo napište část ID prostředku přiřazení dříve nachází. Po dokončení hledání, klikněte na objekt se stejným názvem vyberte id a klikněte na **Uložit**.
 

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7b460efbdc50c5b243c3ef78bad568b720e75e59
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: ffceb8fd6f1afcd054bfc4c4035fb2b8b93ed390
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51635553"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720537"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Sada přesměrovaly na b2clogin.com pro Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Použití b2clogin.com poskytuje další výhody, jako například:
 Vezměte v úvahu tato nastavení, které může být nutné změnit při použití b2clogin.com:
 
 - Nastavení přesměrování adresy URL ve vašich aplikacích zprostředkovatele identity použití b2clogin.com. 
-- Nastavte aplikaci Azure AD B2C k použití b2clogin.com pro token koncových bodů a odkazy na zásady. 
+- Nastavte aplikaci Azure AD B2C k použití b2clogin.com pro token koncových bodů a odkazy na tok uživatele. 
 - Pokud používáte MSAL, je nutné nastavit **ValidateAuthority** vlastnost `false`.
 - Ujistěte se, že změníte některá **povolené zdroje** , který jste definovali v nastavení CORS pro [přizpůsobení uživatelského rozhraní](active-directory-b2c-ui-customization-custom-dynamic.md).  
 
@@ -56,7 +56,7 @@ Informace o nastavení pro zprostředkovatele identity najdete v následujícíc
 
 ## <a name="update-your-application"></a>Aktualizace aplikace
 
-Aplikace Azure AD B2C pravděpodobně odkazuje na `login.microsoftonline.com` na několika místech, jako jsou odkazy na zásady a koncové body tokenu.  Ujistěte se, že koncový bod autorizace, koncový bod tokenu a vystavitele byla aktualizována, aby používat `your-tenant-name.b2clogin.com`.  
+Aplikace Azure AD B2C pravděpodobně odkazuje na `login.microsoftonline.com` na několika místech, jako jsou odkazy na tok uživatele a token koncových bodů.  Ujistěte se, že koncový bod autorizace, koncový bod tokenu a vystavitele byla aktualizována, aby používat `your-tenant-name.b2clogin.com`.  
 
 ## <a name="set-the-validateauthority-property"></a>Nastavte vlastnost ValidateAuthority
 

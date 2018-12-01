@@ -12,12 +12,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 5f0b5d1695603a7cd2a3c7ac1dbc484e44257d88
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249607"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724940"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>Přiřazení role adresáře Azure AD v PIM
 
@@ -125,13 +125,15 @@ Postupujte podle těchto kroků přiřazení role správce přístupu uživatel�
 
 1. Zvolte vaše předplatné.
 
-1. Zvolte **Řízení přístupu (IAM)** a zobrazte aktuální seznam přiřazení rolí v oboru předplatného.
+1. Zvolte **Řízení přístupu (IAM)**.
+
+1. Zvolte **přiřazení rolí** zobrazíte aktuální seznam přiřazení rolí v oboru předplatného.
 
    ![Okno pro kontrolu (IAM) přístup k předplatnému](./media/pim-how-to-add-role-to-user/ms-pim-access-control.png)
 
 1. Zkontrolujte, zda **MS-PIM** instančnímu objektu přiřadí **správce uživatelských přístupů** role.
 
-1. Pokud ne, zvolte **přidat** otevřít **přidat oprávnění** podokně.
+1. Pokud ne, zvolte **přidat přiřazení role** otevřít **přidat přiřazení role** podokně.
 
 1. V **Role** rozevíracího seznamu, vyberte **správce uživatelských přístupů** role.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 1fc1d3b4418b178921dc32ee834342b75fa31f20
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: fe564e9809a3621ca04e4dad75488fb255f7dc0e
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311071"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682941"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
@@ -40,7 +40,7 @@ Tady jsou některé věci, které vám pomůžou s využitím diagnostických pr
 
 * Uložte je do [ **účtu úložiště** ](monitoring-archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete určit pomocí uchování (ve dnech) **nastavení diagnostiky prostředků**.
 * [Stream je **Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
-* Analyzovat pomocí [Log Analytics](../log-analytics/log-analytics-azure-storage.md)
+* Analyzovat pomocí [Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md)
 
 Můžete použít účet úložiště nebo oboru názvů Event Hubs, která není ve stejném předplatném jako ta, které vysílá protokoly. Uživatel, který konfiguruje nastavení, musí mít správný přístup RBAC k oběma předplatným.
 
@@ -235,4 +235,4 @@ Přidání nastavení diagnostiky zobrazí zobrazení nastavení diagnostiky, kd
 
 * [Stream protokolů diagnostiky prostředků k **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Změnit nastavení diagnostiky prostředků pomocí REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx)
-* [Analýza protokolů ze služby Azure storage s využitím Log Analytics](../log-analytics/log-analytics-azure-storage.md)
+* [Analýza protokolů ze služby Azure storage s využitím Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md)

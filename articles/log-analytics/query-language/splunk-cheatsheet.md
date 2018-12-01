@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 5ea9790695b8afe7bd42b98b071869756b301350
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 61f0cff661c79f994a5b3c20646996f617a31b7e
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447389"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52683060"
 ---
 # <a name="splunk-to-log-analytics"></a>Splunk ke službě Log Analytics
 
@@ -39,7 +37,7 @@ Následující tabulka porovnává koncepty a datových struktur mezi Splunk a L
  | Datový záznam | událost | řádek |  Terminologie pouze změny. |
  | Atribut záznam dat | Pole |  Sloupec |  Ve službě Log Analytics je předdefinovaná jako součást struktura tabulky. Každá událost ve Splunku, má svou vlastní sadu polí. |
  | Typy | datový typ |  datový typ |  Log Analytics datové typy jsou více explicitní, jako jsou nastaveny na sloupce. Oba se budou moct pracovat dynamicky datových typů a zhruba ekvivalentní sadu datových typů včetně podpory JSON. |
- | Dotazy a hledání  | hledat | query |  Koncepty jsou v podstatě stejné mezi Log Analytics a Splunk. |
+ | Dotazy a hledání  | Hledání | query |  Koncepty jsou v podstatě stejné mezi Log Analytics a Splunk. |
  | Čas ingestování události | Systémový čas | ingestion_time() |  Každé události ve Splunku, získá systému časové razítko času, které události se indexovat. V Log Analytics můžete definovat zásadu ingestion_time, který zpřístupňuje systémový sloupec, který může být odkazováno pomocí funkce ingestion_time(). |
 
 ## <a name="functions"></a>Functions
@@ -57,11 +55,11 @@ Následující tabulka obsahuje funkce v Log Analytics, která jsou rovnocenná 
 | substr – | substring() | (1)<br>Všimněte si také, že používá Splunk založen na jedničce indexy. Log Analytics zaznamená indexy od nuly. |
 | ToLower |  ToLower() byly | (1) |
 | ToUpper | ToUpper() | (1) |
-| shoda | odpovídá regulárnímu |  (2)  |
+| Shoda | odpovídá regulárnímu |  (2)  |
 | regulární výraz | odpovídá regulárnímu | Ve Splunku `regex` je operátor. Ve službě Log Analytics je relační operátor. |
 | searchmatch | == | Ve Splunku `searchmatch` umožňuje vyhledat přesný řetězec.
 | náhodná | rand()<br>rand(n) | Splunk vaší funkce vrátí číslo od nuly do 2<sup>31</sup>-1. Log Analytics vrátí číslo v rozsahu od 0,0 do 1,0, nebo pokud parametr zadán, mezi 0 a n-1.
-| teď | Now () | (1)
+| teď | now() | (1)
 | relative_time | ToTimeSpan() | (1)<br>Ve službě Log Analytics je od Splunk ekvivalent relative_time (datetimeVal, offsetVal) datetimeVal + totimespan(offsetVal).<br>Například <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> stane <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
 (1) ve Splunku, funkce se vyvolala s `eval` operátor. Ve službě Log Analytics se používá jako součást `extend` nebo `project`.<br>(2) ve Splunku, funkce se vyvolala s `eval` operátor. Ve službě Log Analytics můžete použít s `where` operátor.
@@ -80,7 +78,7 @@ Ve Splunku, můžete vynechat `search` – klíčové slovo a zadejte řetězec 
 | |  | |
 |:---|:---|:---|
 | Splunk | **search** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| Log Analytics | **Najít** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+| Log Analytics | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
 ### <a name="filter"></a>Filtr

@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: e63345c0265d52fdd80fe4542efb7f13324926cf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0f2a19c4e74db4fa0329587023995aa43b7b6a2a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989614"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681384"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Vytváření grafů a diagramů z dotazy Log Analytics
 

@@ -9,17 +9,16 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2017
 ms.reviewer: yossiy
 ms.author: mbullwin
-ms.openlocfilehash: 8394584b2b4f8cbc47a6fdaadd754e8649c3f794
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 776c923910866b3c65271a8acdc00edc6eb6df59
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960918"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723818"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](app-insights-overview.md) automaticky upozorní téměř v reálném čase, zda prostředích vašich webových aplikací neobvykle zvýší počet neúspěšných žádostí. Zjistí neobvyklý nárůst míry požadavků protokolu HTTP nebo volání závislostí, které se ohlásí jako neúspěšný. Pro požadavků neúspěšných požadavků jsou obvykle s kódy odpovědí 400 nebo vyšší. Umožňují posuzovat a diagnostikovat potíže, analýzu povaze chyby a související telemetrii najdete v oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Funkce potřebuje žádné instalace ani konfigurace, protože používá algoritmy strojového učení k předpovědi normální míra neúspěchů.

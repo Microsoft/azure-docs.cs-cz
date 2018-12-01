@@ -9,16 +9,15 @@ ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e19735f604fdcd6d6642814e776fd9987d11fde
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4a30e562b04a3414a1305604a521e0d659753142
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499508"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720401"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
 [Power BI](http://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](app-insights-overview.md).
@@ -52,18 +51,18 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
     ![Snímek obrazovky s Power BI Desktopu, se zvýrazněným rozšířený Editor](./media/app-insights-export-power-bi/power-bi-import-analytics-query.png)
 
-1. Povolte Power BI přístup k Azure, bude pravděpodobně k zadání přihlašovacích údajů. Použití **účet organizace** se přihlásit pomocí účtu Microsoft.
+5. Povolte Power BI přístup k Azure, bude pravděpodobně k zadání přihlašovacích údajů. Použití **účet organizace** se přihlásit pomocí účtu Microsoft.
    
     ![Dialogové okno nastavení snímku obrazovky z Power BI dotazu](./media/app-insights-export-power-bi/power-bi-import-sign-in.png)
 
     Pokud potřebujete k ověření přihlašovacích údajů, použijte **nastavení zdroje dat** příkazu nabídky v editoru dotazů. Nezapomeňte zadat přihlašovací údaje, které používáte pro Azure, který se může lišit od přihlašovacích údajů pro Power BI.
-2. Zvolte vizualizaci pro váš dotaz a vyberte pole pro osu x, y a segmentace dimenze.
+6. Zvolte vizualizaci pro váš dotaz a vyberte pole pro osu x, y a segmentace dimenze.
    
     ![Snímek obrazovky s Power BI Desktopu Možnosti vizualizace](./media/app-insights-export-power-bi/power-bi-analytics-visualize.png)
-3. Publikování sestavy do pracovního prostoru Power BI cloudu. Odtud můžete vkládat synchronizované verze do jiných webových stránek.
+7. Publikování sestavy do pracovního prostoru Power BI cloudu. Odtud můžete vkládat synchronizované verze do jiných webových stránek.
    
     ![Snímek obrazovky s Power BI Desktopu, se zvýrazněným tlačítkem Publikovat](./media/app-insights-export-power-bi/publish-power-bi.png)
-4. Aktualizovat sestavu ručně v intervalech nebo nastavit plánovanou aktualizaci na stránce Možnosti.
+8. Aktualizovat sestavu ručně v intervalech nebo nastavit plánovanou aktualizaci na stránce Možnosti.
 
 ### <a name="export-a-funnel"></a>Export trychtýře
 1. [Ujistěte se, svém trychtýři](usage-funnels.md).

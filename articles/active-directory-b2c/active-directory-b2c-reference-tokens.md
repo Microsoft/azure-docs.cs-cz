@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 10de56ac8945be4bb0920f95774b469d283f575b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339973"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721370"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Referenci tokenu
 
@@ -66,7 +66,7 @@ Vaše rozhraní API přijímá token přístupu, musí [ověřit podpis](#token-
 
 ### <a name="claims-in-id-and-access-tokens"></a>Deklarace identity v tokenech ID a přístup
 
-Pokud používáte Azure AD B2C, budete mít přesnou kontrolu nad obsahem z vašich tokenů. Můžete nakonfigurovat [zásady](active-directory-b2c-reference-policies.md) odesílat určité sady dat uživatele v deklaracích identity, které vaše aplikace vyžaduje pro jeho operace. Tato deklarace identity můžou obsahovat standardní vlastnosti, například uživatele `displayName` a `emailAddress`. Může také obsahovat [vlastní uživatelské atributy](active-directory-b2c-reference-custom-attr.md) definující ve svém adresáři B2C. Každé ID a access token, který se zobrazí obsahuje sadu deklarací identity související se zabezpečením. Aplikace můžete použít tyto deklarace mohla bezpečně ověřit uživatele a požadavků.
+Pokud používáte Azure AD B2C, budete mít přesnou kontrolu nad obsahem z vašich tokenů. Můžete nakonfigurovat [toky uživatelů](active-directory-b2c-reference-policies.md) a vlastních zásad odesílat určité sady dat uživatele v deklaracích identity, které vaše aplikace vyžaduje pro jeho operace. Tato deklarace identity můžou obsahovat standardní vlastnosti, například uživatele `displayName` a `emailAddress`. Může také obsahovat [vlastní uživatelské atributy](active-directory-b2c-reference-custom-attr.md) definující ve svém adresáři B2C. Každé ID a access token, který se zobrazí obsahuje sadu deklarací identity související se zabezpečením. Aplikace můžete použít tyto deklarace mohla bezpečně ověřit uživatele a požadavků.
 
 Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovolném pořadí. Kromě toho nových deklarací identity můžete zavedena v ID tokenů v každém okamžiku. Vaše aplikace by neměl přerušit zavedeném nových deklarací identity. Tady jsou deklarace identity, které očekáváte, že existují v ID a přístupové tokeny vydané službou Azure AD B2C. Nějaké další deklarace identity se určují podle zásady. Postup, zkuste to zkontrolujete deklarací identity v tokenu ID ukázka vložením do [jwt.ms](https://jwt.ms). Další podrobnosti najdete v [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html).
 
@@ -81,7 +81,7 @@ Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovoln
 | Kód hash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Hodnota hash kódu je součástí ID token jenom v případě, že token, který vydává spolu s autorizačního kódu OAuth 2.0. Hodnota hash kódu slouží k ověření pravosti autorizační kód. Další podrobnosti o tom, jak toto ověření proveďte najdete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html).  |
 | Hodnota hash tokenu přístupu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Algoritmus hash tokenu přístupu je součástí ID token jenom v případě, že token, který vydává spolu s přístupového tokenu OAuth 2.0. Algoritmus hash tokenu přístupu slouží k ověření pravosti tokenu přístupu. Další podrobnosti o tom, jak toto ověření proveďte najdete v tématu [specifikace OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html)  |
 | Hodnota Nonce |`nonce` |`12345` |Hodnotu nonce je strategie zmírnit útoky opětovného přehrání tokenu. Vaše aplikace může určit hodnotu nonce v žádost o autorizaci s použitím `nonce` parametr dotazu. Hodnota je zadat v požadavku bude vygenerován bez jakýchkoli úprav v `nonce` pouze ID tokenu deklarací identity. To umožňuje aplikaci, můžete ověřit hodnoty s hodnotou zadanou v požadavku, která přidruží dané ID tokenu relace aplikace. Vaše aplikace by měl provést toto ověření během procesu ověření tokenu ID. |
-| Předmět |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |Toto je hlavní o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Slouží k provádění kontroly autorizace bezpečně, třeba když se používá token pro přístup k prostředku. Ve výchozím nastavení deklarace identity subjektu se vyplní ID objektu uživatele v adresáři. Další informace najdete v tématu [Azure Active Directory B2C: Token, relace a konfigurace jednotného přihlašování](active-directory-b2c-token-session-sso.md). |
+| Subjekt |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |Toto je hlavní o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Slouží k provádění kontroly autorizace bezpečně, třeba když se používá token pro přístup k prostředku. Ve výchozím nastavení deklarace identity subjektu se vyplní ID objektu uživatele v adresáři. Další informace najdete v tématu [Azure Active Directory B2C: Token, relace a konfigurace jednotného přihlašování](active-directory-b2c-token-session-sso.md). |
 | Informace o třídě kontext ověřování |`acr` |Neuvedeno |Není v současné době nepoužívá, s výjimkou starší zásady. Další informace najdete v tématu [Azure Active Directory B2C: Token, relace a konfigurace jednotného přihlašování](active-directory-b2c-token-session-sso.md). |
 | Rozhraní framework zásady důvěryhodnosti |`tfp` |`b2c_1_sign_in` |Jde o název, který se používá k získání tokenu ID zásad. |
 | Čas ověřování |`auth_time` |`1438535543` |Tato deklarace identity je čas, kdy poslední zadané přihlašovací údaje uživatele, reprezentovaný v unixovém čase. |
@@ -148,7 +148,7 @@ Když svou aplikaci nebo API obdrží ID token, má také provést několik kont
 ## <a name="token-lifetimes"></a>Životnost tokenů
 Ještě své znalosti v oblasti jsou k dispozici následující životností tokenů. Mohou vám pomoci při vývoji a ladění aplikací. Všimněte si, že vaše aplikace, neměl by být zapsaný můžete očekávat některé z těchto životnosti zůstat konstantní. Mohou a změní. Další informace najdete [přizpůsobení životností tokenů](active-directory-b2c-token-session-sso.md) v Azure AD B2C.
 
-| Podpisový | Doba života | Popis |
+| Podpisový | Životnost | Popis |
 | --- | --- | --- |
 | Tokeny ID |Jedna hodina |Tokeny typu ID jsou obvykle platné hodiny. Webové aplikace můžete udržovat svůj vlastní relace s uživateli (doporučeno) tohoto životního cyklu. Můžete také na celý život jiné relaci. Jestli vaše aplikace musí získat nové ID tokenu, jednoduše je potřeba vytvořit novou žádost o přihlášení do služby Azure AD. Pokud má uživatel platné prohlížeče relace s Azure AD, tento uživatel nemusí muset znovu zadat přihlašovací údaje. |
 | Obnovovacích tokenů |Až do 14 dnů |Jedno aktualizační token je platný pro maximálně 14 dnů. Token obnovení však mohou stát neplatnými kdykoli z několika důvodů. Vaše aplikace by měla pokračovat se pokouší použít obnovovací token, dokud žádost selže, nebo aplikace nahradí nový token obnovení. Obnovovací token se také mohou stát neplatnými, pokud od poslední zadání přihlašovacích údajů uplynulo 90 dnů. |

@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6013c0a1b404336ad7cca21edafb7adec5c7f7ca
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 7b7aad2cb8aa9b4faeada795f20c818995f62fb6
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978838"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720435"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Poradce při potížích, povolení nebo zobrazení Application Insights Profiler
 
@@ -46,9 +45,6 @@ Profiler zapisuje zprávy trasování a vlastní události do vašeho prostředk
 
 1. Pokud existují požadavky během časového období spuštění profileru, ujistěte se, že jsou požadavky zpracovávány podle části aplikace, který má povolené profileru. Někdy se aplikace skládají z několika součástí, ale Profiler je povolená jenom pro některé, ne všechny součásti. Na stránce konfigurace Application Insights Profiler se zobrazí součásti, které jste nahráli trasování.
 
-### <a name="net-core-21-bug"></a>.Net Core 2.1 chyb
-Agent profileru, který zabrání odesílání trasování z aplikací běžících na ASP.NET Core 2.1 je chyba. Jsme pracují na opravě a bude mít je připraven brzy. Oprava této chyby se nasadí do konce října.
-
 ### <a name="other-things-to-check"></a>Chcete-li zkontrolovat další věci:
 * Vaše aplikace běží na rozhraní .NET Framework 4.6.
 * Když je vaše aplikace webové aplikace ASP.NET Core, musí používat minimálně ASP.NET Core 2.0.
@@ -69,10 +65,11 @@ Vyplňte lístek podpory na portálu. Nezapomeňte zahrnout ID korelace z chybov
 ## <a name="troubleshooting-profiler-on-app-services"></a>Řešení potíží s Profiler v App Service
 ### <a name="for-the-profiler-to-work-properly"></a>Pro profiler fungovala správně:
 * Plán služby app service web musí být na úrovni Basic nebo vyšší.
-* Webové aplikace musí mít rozšíření Application Insights pro aplikaci služby (2.6.5) nainstalovaný.
+* Webové aplikace musí mít povolené Application Insights.
 * Webové aplikace musí mít **APPINSIGHTS_INSTRUMENTATIONKEY** nastavení aplikace, které jsou nakonfigurované se stejným klíčem instrumentace, který používá sadu SDK Application Insights.
 * Webové aplikace musí mít **APPINSIGHTS_PROFILERFEATURE_VERSION** nastavení aplikace, které definované a nastavená na 1.0.0.
-* **ApplicationInsightsProfiler2** webové úlohy musí být spuštěna. Webovou úlohu můžete zkontrolovat tak, že přejdete do [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)a otevřete **řídicím panelu webjobs nechat** do nabídky Nástroje. Jak je vidět na snímcích obrazovky níže, kliknutím na odkaz ApplicationInsightsProfiler2, zobrazí se podrobnosti o webové úlohy, včetně protokolu.
+* Webové aplikace musí mít **DiagnosticServices_EXTENSION_VERSION** nastavení aplikace, které definované a nastavte hodnotu na přibližně 3.
+* **ApplicationInsightsProfiler3** webové úlohy musí být spuštěna. Webovou úlohu můžete zkontrolovat tak, že přejdete do [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)a otevřete **řídicím panelu webjobs nechat** do nabídky Nástroje. Jak je vidět na snímcích obrazovky níže, kliknutím na odkaz ApplicationInsightsProfiler2, zobrazí se podrobnosti o webové úlohy, včetně protokolu.
 
     Tady je odkaz, který budete muset kliknout a podívat se webová úloha. Podrobnosti: 
 
@@ -91,11 +88,7 @@ Když konfigurujete Profiler, jsou provedeny aktualizace nastavení webové apli
 1. Nastavte **Always On** k **na**.
 1. Přidat **APPINSIGHTS_INSTRUMENTATIONKEY** aplikace nastavení a nastavte hodnotu na stejný klíč instrumentace, který se používá sada SDK.
 1. Přidat **APPINSIGHTS_PROFILERFEATURE_VERSION** nastavení aplikace a nastavte hodnotu na 1.0.0.
-1. Otevřít **Rozšířené nástroje**.
-1. Vyberte **Přejít** otevřete web Kudu.
-1. Na webu Kudu, vyberte **rozšířením webu**.
-1. Nainstalujte **Application Insights** z Galerie Azure Web Apps.
-1. Restartujte webovou aplikaci.
+1. Přidat **DiagnosticServices_EXTENSION_VERSION** nastavení aplikace a nastavte hodnotu na přibližně 3.
 
 ### <a name="too-many-active-profiling-sessions"></a>Příliš mnoho aktivní relace profilování
 

@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 1f6d3594b54e036b5ac82181d21e80c979247d9a
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f5b668c69917cc1ba652be4c93e9da4cb5ef6671
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977127"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681412"
 ---
 # <a name="using-functions-in-azure-monitor-log-analytics"></a>Pomocí funkcí ve službě Azure Monitor Log Analytics
 

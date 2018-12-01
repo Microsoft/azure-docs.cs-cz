@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: bdfc78757c799f5255488d06c30de4414b39459c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 08af5cd3dcce1044bd77e03ed5a28e9422ff2b23
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009993"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721574"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Pokyny pro osobní údaje uložené v Log Analytics a Application Insights
 

@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
-ms.openlocfilehash: b60be3db14a756407e62540bb89f3b0924597067
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 87e197821be7c7c72ca1704d6b0123d76d41b30f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49960325"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721081"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postupy: použití portálu k vytvoření aplikace a instančního objektu, který má přístup k prostředkům Azure AD
 
@@ -65,9 +65,9 @@ Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. 
    Pokud nevidíte předplatné, které hledáte, vyberte **filtr globálních předplatných**. Ujistěte se, že předplatné, které chcete, aby je vybrán pro portál. 
 
 1. Vyberte **řízení přístupu (IAM)**.
-1. Vyberte **Přidat**.
+1. Vyberte **přidat přiřazení role**.
 
-   ![Výběr možnosti Přidat](./media/howto-create-service-principal-portal/select-add.png)
+   ![Výběr možnosti Přidat přiřazení role](./media/howto-create-service-principal-portal/select-add.png)
 
 1. Vyberte roli, kterou chcete přiřadit k aplikaci. Aby aplikace mohla provést akce, jako je **restartovat**, **start** a **Zastavit** instance, vyberte **Přispěvatel** role. Ve výchozím nastavení nejsou zobrazeny aplikacím služby Azure AD v dostupných možnostech. Najít aplikace, vyhledejte název a vyberte ji.
 

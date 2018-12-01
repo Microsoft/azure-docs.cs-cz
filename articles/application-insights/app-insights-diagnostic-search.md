@@ -9,16 +9,15 @@ ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: bf722756ed04349a06cbcb7b9686e6340e8d4b6c
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 5bff5c5cfd022134c1d86883a267528717969c59
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958402"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721676"
 ---
 # <a name="using-search-in-application-insights"></a>Pomocí vyhledávání ve službě Application Insights
 Hledání je funkce [Application Insights](app-insights-overview.md) , který používáte k vyhledání a prozkoumejte telemetrická data jednotlivých položek, například zobrazení stránek, výjimky nebo webové požadavky. A můžete zobrazit trasování protokolů a událostí, které jste nakódovali.

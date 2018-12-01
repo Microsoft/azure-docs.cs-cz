@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cec9e5bfea16e5ba11f8cd7324acf15188fb907a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: b5d3703f052ef47bcbacf0be04072357ee5b9986
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633789"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722594"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informace o přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -23,13 +23,13 @@ Možnost vytvoření a přizpůsobení uživatelského rozhraní (UI), které ob
 
 V závislosti na vašich potřebách při rozhodování o těchto možností, přizpůsobení uživatelského rozhraní aplikace různými způsoby. Příklad:
 
-- Pokud používáte [integrované zásady](active-directory-b2c-reference-policies.md) k zadání hesla registrace / přihlášení, resetování nebo upravování profilu prostředí ve vaší aplikaci, můžete použít [web Azure portal a přizpůsobení uživatelského rozhraní](tutorial-customize-ui.md).
+- Pokud používáte [toky uživatelů](active-directory-b2c-reference-policies.md) k zadání hesla registrace / přihlášení, resetování nebo upravování profilu prostředí ve vaší aplikaci, můžete použít [web Azure portal a přizpůsobení uživatelského rozhraní](tutorial-customize-ui.md).
 - Pokud zadáváte přihlásit pouze, stránku pro resetování hesla jeho související a ověření e-mailem, můžete použít stejný postup přizpůsobení, které se používají pro [přihlašovací stránku Azure AD](../active-directory/fundamentals/customize-branding.md).
 - Pokud zákazníci se pokusí upravovat svůj profil, než se přihlásí, bude přesměrován na stránku přizpůsobit pomocí stejného postupu, které se používají pro přizpůsobení na přihlašovací stránku Azure AD.
 - Pokud používáte [vlastní zásady](active-directory-b2c-overview-custom.md) registrace / přihlášení, heslo resetovat, nebo profil úpravy ve vaší aplikaci, použijte [soubory zásad přizpůsobit uživatelské rozhraní](active-directory-b2c-ui-customization-custom.md).
 - Pokud je třeba zadat dynamický obsah podle zákazníka rozhodnutí, můžete použít [obsahu stránky vlastní zásady, které můžete změnit](active-directory-b2c-ui-customization-custom-dynamic.md) v závislosti na parametr, který se odešle v řetězci dotazu. Například obrázek pozadí na stránce registrace nebo přihlášení Azure AD B2C se změní, založené na parametr předat z vašich webových nebo mobilních aplikací.
 
-Azure AD B2C kód v prohlížeči vašeho zákazníka a využívá moderní přístup a volá [sdílení prostředků mezi zdroji (CORS)](http://www.w3.org/TR/cors/). V době běhu obsah je načten z adresy URL, který zadáte v zásadách. Můžete zadat různé adresy URL pro různé stránky. Po načtení obsahu z vaší adresy URL je sloučen s fragment HTML z Azure AD B2C vložili a následně se zobrazí na vaše zákazníky.
+Azure AD B2C kód v prohlížeči vašeho zákazníka a využívá moderní přístup a volá [sdílení prostředků mezi zdroji (CORS)](http://www.w3.org/TR/cors/). V době běhu obsah je načten z adresy URL, kterou zadáte v toku uživatele nebo zásad. Můžete zadat různé adresy URL pro různé stránky. Po načtení obsahu z vaší adresy URL je sloučen s fragment HTML z Azure AD B2C vložili a následně se zobrazí na vaše zákazníky.
 
 Než začnete, projděte si následující pokyny:
 
@@ -118,6 +118,6 @@ Příklady přizpůsobení, stáhněte a přečtěte si tyto [ukázkové soubory
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud používáte integrované zásady, můžete začít přizpůsobení uživatelského rozhraní s kurzem: [přizpůsobení uživatelského rozhraní svých aplikací v Azure Active Directory B2C](tutorial-customize-ui.md).
+- Pokud používáte toky uživatelů, můžete začít přizpůsobení uživatelského rozhraní s kurzem: [přizpůsobení uživatelského rozhraní svých aplikací v Azure Active Directory B2C](tutorial-customize-ui.md).
 - Pokud používáte vlastní zásady, můžete začít přizpůsobením uživatelského rozhraní s článkem: [přizpůsobit uživatelské rozhraní vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
 

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2018
+ms.date: 11/30/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 32dbef04febb1f3a0cdd8654fc5ec1c5c367439e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 1e3dbe04652be479a327ed9494299f89ef13492a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51819997"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679388"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Nasazení aplikace do Azure App Service pomocí FTP/S
 
@@ -31,7 +31,7 @@ Koncový bod FTP/S pro aplikace je již aktivní. Žádná konfigurace je nutná
 
 V [webu Azure portal](https://portal.azure.com), otevřete v této aplikaci [stránka s materiály pro](../azure-resource-manager/resource-group-portal.md#manage-resources).
 
-Řídicí panel FTP, klikněte na tlačítko **průběžné doručování (Preview)** > **FTP** > **řídicí panel**.
+Řídicí panel FTP, klikněte na tlačítko **Deployment Center** > **FTP** > **řídicí panel**.
 
 ![Otevřít řídicí panel FTP](./media/app-service-deploy-ftp/open-dashboard.png)
 
@@ -107,6 +107,6 @@ Azure App Service podporuje připojení přes aktivní a pasivní režim. Pasivn
 
 Pro pokročilejší scénáře nasazení, zkuste [nasazení do Azure pomocí Gitu](app-service-deploy-local-git.md). Nasazení z Gitu do Azure umožňuje správu verzí, obnovení balíčku, nástroj MSBuild a další.
 
-## <a name="more-resources"></a>Další materiály
+## <a name="more-resources"></a>Další zdroje informací
 
 * [Přihlašovací údaje pro nasazení služby Azure App Service](app-service-deployment-credentials.md)

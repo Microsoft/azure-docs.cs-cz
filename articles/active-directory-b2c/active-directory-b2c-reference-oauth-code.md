@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/16/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: d388242b4b0c882d60a83227a37af997b1ceb1f6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: f39efcbc051bf57ab350357b020039eddd0f7c18
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282641"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720773"
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: Tok autorizačního kódu OAuth 2.0
 Udělení autorizačního kódu OAuth 2.0 můžete použít v aplikacích, které jsou nainstalované v zařízení získat přístup k chráněným prostředkům, jako je například webové rozhraní API. Pomocí Azure Active Directory B2C (Azure AD B2C) provádění OAuth 2.0, můžete přidat registrace, přihlašování a identity management. Další úkoly do vašich mobilních a desktopových aplikací. Tento článek je nezávislým na jazyku. V následujícím článku zjistíte, jak posílat a přijímat zprávy HTTP bez použití jakékoli knihovny open-source.
@@ -27,15 +27,15 @@ Tento článek se týká **veřejní klienti** tok autorizačního kódu OAuth 2
 > [!NOTE]
 > Chcete-li přidat správy identit do webové aplikace pomocí Azure AD B2C, použijte [OpenID Connect](active-directory-b2c-reference-oidc.md) místo OAuth 2.0.
 
-Azure AD B2C rozšiřuje standard, kterou toky OAuth 2.0 lepší než jednoduché ověřování a autorizace. Zavádí [parametr zásad](active-directory-b2c-reference-policies.md). Pomocí předdefinovaných zásad vám pomůže OAuth 2.0 přidejte uživatelské prostředí pro vaši aplikaci, například registrace, přihlašování a správy profilů. V tomto článku ukážeme, jak každá z těchto možností implementace v nativních aplikací pomocí OAuth 2.0 a zásady. Můžeme také ukazují, jak získat přístupové tokeny pro přístup k webovým rozhraním API.
+Azure AD B2C rozšiřuje standard, kterou toky OAuth 2.0 lepší než jednoduché ověřování a autorizace. Zavádí [parametr toku uživatele](active-directory-b2c-reference-policies.md). Toky uživatelů, můžete pomocí OAuth 2.0 přidáte uživatelské prostředí pro vaši aplikaci, jako například registrace, přihlašování a správy profilů. V tomto článku ukážeme, jak používat toky OAuth 2.0 a uživatel k implementaci každého z těchto možností v nativních aplikací. Můžeme také ukazují, jak získat přístupové tokeny pro přístup k webovým rozhraním API.
 
-V žádosti o příklad HTTP v tomto článku používáme naše ukázka adresář Azure AD B2C, **fabrikamb2c.onmicrosoft.com**. Použijeme také naše ukázková aplikace a zásady. Požadavky můžete také vyzkoušet sami s využitím těchto hodnot, nebo je můžete nahradit vlastními hodnotami.
-Zjistěte, jak [získat vlastní adresáře Azure AD B2C, aplikace a zásady](#use-your-own-azure-ad-b2c-directory).
+V žádosti o příklad HTTP v tomto článku používáme naše ukázka adresář Azure AD B2C, **fabrikamb2c.onmicrosoft.com**. Použijeme také toky naší ukázkové aplikace a uživatele. Požadavky můžete také vyzkoušet sami s využitím těchto hodnot, nebo je můžete nahradit vlastními hodnotami.
+Zjistěte, jak [získat vlastní toky adresáře, aplikace a uživatele Azure AD B2C](#use-your-own-azure-ad-b2c-directory).
 
 ## <a name="1-get-an-authorization-code"></a>1. Získání autorizačního kódu
-Tok autorizačního kódu začíná klienta směruje uživatele `/authorize` koncového bodu. Toto je interaktivní součástí toku, kdy uživatel provede akci. V této žádosti, klient naznačuje v `scope` parametr oprávnění, která je potřeba získat od uživatele. V `p` parametru, označuje zásady ke spuštění. Následující tři příklady (pomocí konců řádků pro lepší čitelnost) každý používají jiné zásady.
+Tok autorizačního kódu začíná klienta směruje uživatele `/authorize` koncového bodu. Toto je interaktivní součástí toku, kdy uživatel provede akci. V této žádosti, klient naznačuje v `scope` parametr oprávnění, která je potřeba získat od uživatele. V `p` parametru, označuje tok uživatele k provedení. Následující tři příklady (pomocí konců řádků pro lepší čitelnost) každý použít tok jiný uživatel.
 
-### <a name="use-a-sign-in-policy"></a>Použití zásad přihlášení
+### <a name="use-a-sign-in-user-flow"></a>Použijte tok přihlášení uživatele
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -47,7 +47,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_in
 ```
 
-### <a name="use-a-sign-up-policy"></a>Použijte zásady registrace
+### <a name="use-a-sign-up-user-flow"></a>Použijte tok registrace uživatele
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -59,7 +59,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_up
 ```
 
-### <a name="use-an-edit-profile-policy"></a>Pomocí zásady úprav profilu
+### <a name="use-an-edit-profile-user-flow"></a>Použít tok, který upravit profil uživatele
 ```
 GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
@@ -78,13 +78,13 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | redirect_uri |Požaduje se |Identifikátor URI přesměrování vaší aplikace, kde jsou žádosti o ověření odesílat a přijímat vaší aplikace. Ho musí přesně odpovídat jedné z přesměrování identifikátory URI, které jste zaregistrovali na portálu s tím rozdílem, že musí být kódovaná adresou URL. |
 | scope |Požaduje se |Seznam oborů oddělených mezerami. Hodnota jeden obor značí do Azure Active Directory (Azure AD) i oprávnění, které jsou požadovány. Pomocí ID klienta jako obor Určuje, že vaše aplikace potřebuje přístupový token, dá se použít pro vlastní služba nebo webové rozhraní API, reprezentovaný stejné ID klienta.  `offline_access` Obor Určuje, že vaše aplikace potřebuje obnovovací token pro dlouhodobé přístup k prostředkům. Můžete také použít `openid` oboru k vyžádání tokenu ID z Azure AD B2C. |
 | response_mode |Doporučené |Metoda, která můžete používat k odesílání výsledný autorizační kód zpět do vaší aplikace. Může to být `query`, `form_post`, nebo `fragment`. |
-| state |Doporučené |Hodnota v požadavku, který se může jednat o řetězec veškerý obsah, který chcete použít. Obvykle náhodně generované jedinečná hodnota se používá, prevenci proti útokům padělání žádosti více webů. Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě. Například stránka, kterou uživatel byl v nebo právě provedenou zásadu. |
-| p |Požaduje se |Zásada, která se spustí. Je název zásady, které se vytvoří v adresáři Azure AD B2C. Hodnota názvu zásad by měl začínat **b2c\_1\_**. Další informace o zásadách najdete v tématu [integrované zásady Azure AD B2C](active-directory-b2c-reference-policies.md). |
+| state |Doporučené |Hodnota v požadavku, který se může jednat o řetězec veškerý obsah, který chcete použít. Obvykle náhodně generované jedinečná hodnota se používá, prevenci proti útokům padělání žádosti více webů. Stav se také používá ke kódování informace o stavu uživatele v aplikaci předtím, než požadavek na ověření došlo k chybě. Například stránka, kterou uživatel byl v nebo právě spuštěný tok uživatele. |
+| p |Požaduje se |Tok uživatele, který se spouští. Jde o název toku uživatele, který je vytvořen v adresáři Azure AD B2C. Hodnota názvu toku uživatele by měl začínat **b2c\_1\_**. Další informace o toky uživatelů najdete v tématu [toky uživatelů Azure AD B2C](active-directory-b2c-reference-policies.md). |
 | řádek |Nepovinné |Typ interakce s uživatelem, který je požadován. V současné době je jedinou platnou hodnotou `login`, které donutí uživatele k zadání přihlašovacích údajů tohoto požadavku. Jednotné přihlašování se projeví. |
 
-V tomto okamžiku se uživateli výzva k dokončení pracovního postupu zásady. To může zahrnovat uživatele při zadávání uživatelského jména a hesla, přihlašování přes sociální identity, k adresáři nebo jakékoli jiné číslo kroky. O tom, jak je definované zásady závisí akce uživatele.
+V tomto okamžiku je uživatel vyzván k dokončení pracovního postupu tok uživatele. To může zahrnovat uživatele při zadávání uživatelského jména a hesla, přihlašování přes sociální identity, k adresáři nebo jakékoli jiné číslo kroky. Uživatel akce závisí na tok uživatele bude definován takhle.
 
-Když uživatel vykoná zásadu, Azure AD vrátí odpověď do vaší aplikace na hodnotu jste použili pro `redirect_uri`. Používá metodu určenou v příkazu `response_mode` parametru. Odpověď je přesně stejný pro jednotlivé uživatele akce scénáře, nezávisle na provedenou zásadu.
+Když uživatel dokončil tok uživatele, Azure AD vrátí odpověď do vaší aplikace na hodnotu jste použili pro `redirect_uri`. Používá metodu určenou v příkazu `response_mode` parametru. Odpověď je přesně stejný pro jednotlivé uživatele akce scénáře, nezávisle na spuštěný tok uživatele.
 
 Úspěšná odpověď, která používá `response_mode=query` vypadá přibližně takto:
 
@@ -128,7 +128,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | Parametr | Povinné? | Popis |
 | --- | --- | --- |
-| p |Požaduje se |Zásada, která byla použita k získání autorizačního kódu. V této žádosti nelze použít jiné zásady. Všimněte si, že přidáte tento parametr *řetězec dotazu*, ne v textu POST. |
+| p |Požaduje se |Tok uživatele, který byl použitý k získání autorizačního kódu. V této žádosti nelze použít tok jiný uživatel. Všimněte si, že přidáte tento parametr *řetězec dotazu*, ne v textu POST. |
 | client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [webu Azure portal](https://portal.azure.com). |
 | Parametr grant_type |Požaduje se |Typ udělení. Tok autorizačního kódu, musí být typ udělení `authorization_code`. |
 | scope |Doporučené |Seznam oborů oddělených mezerami. Hodnota jeden obor značí do služby Azure AD i oprávnění, které jsou požadovány. Pomocí ID klienta jako obor Určuje, že vaše aplikace potřebuje přístupový token, dá se použít pro vlastní služba nebo webové rozhraní API, reprezentovaný stejné ID klienta.  `offline_access` Obor Určuje, že vaše aplikace potřebuje obnovovací token pro dlouhodobé přístup k prostředkům.  Můžete také použít `openid` oboru k vyžádání tokenu ID z Azure AD B2C. |
@@ -192,7 +192,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&client_s
 
 | Parametr | Povinné? | Popis |
 | --- | --- | --- |
-| p |Požaduje se |Zásada, která byla použita k získání původní token obnovení. V této žádosti nelze použít jiné zásady. Všimněte si, že přidáte tento parametr *řetězec dotazu*, ne v textu POST. |
+| p |Požaduje se |Tok uživatele, který byl použitý k získání původní token obnovení. V této žádosti nelze použít tok jiný uživatel. Všimněte si, že přidáte tento parametr *řetězec dotazu*, ne v textu POST. |
 | client_id |Požaduje se |ID aplikace přiřazené vaší aplikaci v [webu Azure portal](https://portal.azure.com). |
 | Hodnota client_secret |Požaduje se |Hodnota client_secret přidružené k vaší client_id v [webu Azure portal](https://portal.azure.com). |
 | Parametr grant_type |Požaduje se |Typ udělení. Pro tuto větev tok autorizačního kódu musí být typ udělení `refresh_token`. |
@@ -240,5 +240,5 @@ Pokud chcete vyzkoušet tyto požadavky, proveďte následující kroky. Nahraď
 
 1. [Vytvoření adresáře Azure AD B2C](active-directory-b2c-get-started.md). Použijte název vašeho adresáře v požadavcích.
 2. [Vytvoření aplikace](active-directory-b2c-app-registration.md) k získání ID aplikace a identifikátor URI přesměrování. Zahrňte nativního klienta ve vaší aplikaci.
-3. [Vytvořte svoje zásady](active-directory-b2c-reference-policies.md) získat názvy vašich zásad.
+3. [Vytvářet toky uživatelů](active-directory-b2c-reference-policies.md) získat názvy tok uživatele.
 

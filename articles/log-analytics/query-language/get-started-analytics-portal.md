@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 3bcc5368a99dc7c7c32381ca0226119d81fc2c0a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9d045fefaccc9bc155f80e7b40c340d6531a7dda
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978195"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52683043"
 ---
 # <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Začínáme se službou Log Analytics na portálu Azure portal
 
@@ -71,7 +69,7 @@ Spusťte dotaz kliknutím **spustit** tlačítko nebo stisknutím klávesy **Shi
 - Časový rozsah - časový rozsah _posledních 24 hodin_ ve výchozím nastavení. Pokud chcete použít jiný rozsah, použijte Výběr času nebo přidat explicitní čas filtr rozsahu do dotazu.
 
 
-## <a name="understand-the-schema"></a>Pochopení schématu
+## <a name="understand-the-schema"></a>Vysvětlené schématu
 Schéma je kolekce tabulek vizuálně seskupené pod logických kategorií. Některé z kategorií jsou z monitorování řešení. _LogManagement_ kategorie obsahuje běžné data, jako jsou Windows a protokolu Syslog události, údaje o výkonu a prezenční signály klienta.
 
 ![Schéma](media/get-started-analytics-portal/schema.png)

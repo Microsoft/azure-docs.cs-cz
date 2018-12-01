@@ -9,16 +9,15 @@ ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 25ee061f489df0a666d59871661478f987b28e3f
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: d579a9b628ac515877c1977f700940547e96f0c0
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51344803"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726606"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak používat Micrometer pomocí Azure Application Insights Java SDK
 Micrometer monitorování míry metriky aplikací pro aplikace založené na JVM kódu a umožňuje exportovat data do své oblíbené systémy pro monitorování. V tomto článku se dozvíte, jak používat Micrometer pro Spring Boot a aplikace Spring Boot s využitím Application Insights.

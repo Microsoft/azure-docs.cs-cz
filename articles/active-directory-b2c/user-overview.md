@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2354bf02b47c9fbc74dbc0dab07e30ca321279cf
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f517754a8076fc18ed29f7db49f6ff9bfc6c7b3d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669885"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725756"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Přehled uživatelských účtů v Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ K dispozici jsou následující typy účtů:
 
 - **Pracovní účet** – pracovní účet přístup k prostředkům v tenantovi, a pomocí Správce rolí, můžete spravovat klienty.
 - **Účet Guest** – pomocí účtu guest může být jenom účet Microsoft nebo Azure Active Directory uživatele, který slouží k přístupu k aplikacím nebo správě tenantů. 
-- **Uživatelský účet** – uživatelský účet je vytvořen prostřednictvím zásady registrace v aplikaci Azure AD B2C, nebo pomocí Azure AD Graph API a používá se uživatelé aplikace, které jsou registrované v Azure AD B2C. 
+- **Uživatelský účet** – uživatelský účet je vytvořen prostřednictvím tok registrace uživatele v aplikaci Azure AD B2C, nebo pomocí Azure AD Graph API a používá se uživatelé aplikace, které jsou registrované v Azure AD B2C. 
 
 ## <a name="work-account"></a>Pracovní účet
 
@@ -73,7 +73,7 @@ Můžete také použít [Microsoft Graph API](https://developer.microsoft.com/en
 
 ## <a name="consumer-user"></a>Příjemce uživatele
 
-Příjemce uživatel může přihlásit k aplikacím, které jsou zabezpečené pomocí Azure AD B2C, ale nemají přístup k prostředkům Azure, jako je například na webu Azure portal.  Uživatel příjemce může použít místní účet nebo účty federované, jako je Facebook nebo Twitter. Uživatelský účet je vytvořen pomocí [zásady registrace / přihlášení](../active-directory-b2c/active-directory-b2c-reference-policies.md).
+Příjemce uživatel může přihlásit k aplikacím, které jsou zabezpečené pomocí Azure AD B2C, ale nemají přístup k prostředkům Azure, jako je například na webu Azure portal.  Uživatel příjemce může použít místní účet nebo účty federované, jako je Facebook nebo Twitter. Uživatelský účet je vytvořen pomocí [tok registrace / přihlášení uživatele](../active-directory-b2c/active-directory-b2c-reference-policies.md).
 
 Můžete zadat data, která shromažďuje, když uživatelský účet uživatele je vytvořená pomocí vlastní uživatelské atributy. Další informace najdete v tématu [definovat vlastní atributy v Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
 

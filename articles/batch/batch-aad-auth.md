@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: 67f8b49cd2205403dec8843beebb92c9f41f6e37
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 964ef3bd988d71bfb90dbaa473b4b259769064b3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955792"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722051"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch pomocí Active Directory
 
@@ -139,9 +139,10 @@ K ověření pomocí instančního objektu, musíte přiřadit roli RBAC pro va�
 
 1. Na webu Azure Portal přejděte na účet Batch používá vaše aplikace.
 2. V **nastavení** okno účtu Batch vyberte **řízení přístupu (IAM)**.
-3. Klikněte na tlačítko **Přidat**. 
-4. Z **Role** rozevíracího seznamu, zvolte buď _Přispěvatel_ nebo _čtečky_ role pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).  
-5. V **vyberte** zadejte název vaší aplikace. Vyberte svou aplikaci ze seznamu a klikněte na tlačítko **Uložit**.
+3. Klikněte na tlačítko **přiřazení rolí** kartu.
+4. Klikněte na tlačítko **přidat přiřazení role** tlačítko. 
+5. Z **Role** rozevíracího seznamu, zvolte buď _Přispěvatel_ nebo _čtečky_ role pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s řízením přístupu na základě rolí na portálu Azure portal](../role-based-access-control/overview.md).  
+6. V **vyberte** zadejte název vaší aplikace. Vyberte svou aplikaci ze seznamu a klikněte na tlačítko **Uložit**.
 
 Aplikace by teď zobrazují v nastavení řízení přístupu se přiřazenou roli RBAC. 
 

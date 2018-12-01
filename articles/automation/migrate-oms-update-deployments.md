@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0b380aa6046daa235098516a8c93d3ba72533a6
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: d2e99abfbc89d96f1dc5ca3c59789e13dd157a10
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054424"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678946"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Proveďte migraci vašich nasazení aktualizace OMS do Azure
 
@@ -43,7 +43,7 @@ V budoucnu můžete přejít přímo na webu Azure portal, v části **všechny 
 
 ## <a name="recreate-existing-deployments"></a>Znovu vytvořit existující nasazení
 
-Máte všechna nasazení aktualizací, které jsou vytvořené na portálu OMS [uložené výsledky hledání](../log-analytics/log-analytics-computer-groups.md) označované také jako skupinu počítačů, se stejným názvem jako nasazení aktualizace, která existuje. Uložené výsledky hledání obsahuje seznam počítačů, které bylo naplánováno v nasazení aktualizací.
+Máte všechna nasazení aktualizací, které jsou vytvořené na portálu OMS [uložené výsledky hledání](../azure-monitor/platform/computer-groups.md) označované také jako skupinu počítačů, se stejným názvem jako nasazení aktualizace, která existuje. Uložené výsledky hledání obsahuje seznam počítačů, které bylo naplánováno v nasazení aktualizací.
 
 ![Update Management](media/migrate-oms-update-deployments/oms-deployment.png)
 
@@ -61,12 +61,12 @@ Pro počítače, které chcete aktualizovat, vyberte uložené výsledky hledán
 | --- | --- |
 |Název |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Vyberte **Linux** nebo **Windows**.|
-|Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud se rozhodnete **počítače**, připravenosti na počítači se zobrazí v **připravenost agenta aktualizací** sloupce.</br> Další informace o různých metod vytváření skupiny počítačů v Log Analytics najdete v tématu [skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
+|Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md). |
 |Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete. CentOS nepodporuje to úprav.|
 |Aktualizace k vyloučení|Zadejte aktualizace k vyloučení. Pro Windows, zadejte článku znalostní BÁZE bez **KB** předponu. Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
 |Nastavení plánu|Vyberte čas spuštění a pak vyberte buď **jednou** nebo **periodický** opakování.|| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut nebo déle než 6 hodin. |
 | Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
-| Restartovat ovládacího prvku| Ohraničujícím zpracování restartování počítače.</br>Dostupné možnosti jsou:</br>Restartování v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy restartování</br>Pouze restartovat – nebude instalace aktualizace|
+| Restartovat ovládacího prvku| Ohraničujícím zpracování restartování počítače.</br>Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
 
 Klikněte na tlačítko **naplánovaná nasazení aktualizací** zobrazíte stav nasazení aktualizace nově vytvořený.
 

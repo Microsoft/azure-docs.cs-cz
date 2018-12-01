@@ -7,17 +7,16 @@ manager: carmonm
 ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 4b24ab406cc9cdbc3ce03ee203ec034843d5630a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: fd54d3425e342de688c5b573a4c329ab32af0c98
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986419"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681989"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Sledování skupiny prostředků pomocí Azure monitoru (preview)
 
@@ -100,7 +99,7 @@ Zobrazí se dotaz Log Analytics, která řídí vizualizaci s tabulkou.
 
 Můžete upravit dotaz přímo. Nebo můžete použít jako referenci a vypůjčit z něj při návrhu vlastní parametry sešitu.
 
-### <a name="investigate-performance"></a>Vyšetřování výkonu
+### <a name="investigate-performance"></a>Prověřit výkon
 
 Výkon nabízí svůj vlastní galerie sešity. Pro službu App Service nabízí předem připravených sešitu výkonu aplikace následujícím způsobem:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: a564e72cc695830edfa5092eddc1f4f9b80ba519
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: b4f38d80bfddc342d83a3552efe5d4a60cf6350f
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583515"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680119"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Vysvětlení limitu útraty Azure a jeho odstranění
 
@@ -29,7 +29,7 @@ Aby se zabránilo za požadovaná částka v Azure limit útraty existuje. Všem
 
 Při použití výsledky v poplatky, které vyčerpání měsíčních součástí vašeho předplatného, jsou zakázané služby, které jste nasadili pro zbytek daném fakturačním období. 
 
-Například když strávíte veškerý kredit součástí vašeho předplatného, cloudové služby, které jste nasadili, budou odebrány z produkčního prostředí a virtuální počítače Azure se zastaví a zrušit přidělení. Data v účtech úložišť a databází jsou dostupné v režimu jen pro čtení.
+Například když strávíte veškerý kredit součástí vašeho předplatného, cloudové služby, které jste nasadili, budou odebrány z produkčního prostředí a virtuální počítače Azure se zastaví a zrušit přidělení. Data v účtu úložiště jsou k dispozici v režimu jen pro čtení.
 
 Na začátku dalšího fakturačního období, pokud vaše předplatné nabídka zahrnuje kredit na několik měsíců, vaše předplatné se znovu aktivuje, automaticky. Můžete znovu nasadit své cloudové služby a úplný přístup k účtům úložišť a databázím.
 

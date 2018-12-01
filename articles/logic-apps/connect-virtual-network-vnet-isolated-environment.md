@@ -1,6 +1,6 @@
 ---
 title: Připojení k virtuálním sítím Azure z Azure Logic Apps prostřednictvím integrace služby prostředí (ISE)
-description: Vytvořit prostředí integrační služby (ISE) aby logic apps a účty pro integraci měli přístup k virtuálním sítím Azure, při zachování soukromých a izolované od veřejné nebo "globální" Azure
+description: Vytvořit prostředí integrační služby (ISE) aby logic apps a účty pro integraci měli přístup k virtuálním sítím Azure (Vnet), při zachování soukromých a izolované od veřejné nebo "globální" Azure
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,24 +8,24 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/25/2018
-ms.openlocfilehash: d9a849fb5556332fab39467c270360c09c774cc9
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 11/29/2018
+ms.openlocfilehash: 798b50887bcfdf5b4298c37beb1b9eea8f9abdda
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231776"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682193"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps prostřednictvím integrace služby prostředí (ISE)
 
 > [!NOTE]
 > Tato funkce je v *ve verzi private preview*. Chcete-li požádat o přístup, [vytváření žádosti o připojení tady](https://aka.ms/iseprivatepreview).
 
-Pro scénáře integrace, kde se vaše aplikace logiky a účty pro integraci potřebují přístup k [virtuální síť Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), což je privátní a izolované prostředí, které používá vyhrazeného úložiště a dalším prostředkům udržovány odděleně od veřejně nebo *globální* služba Logic Apps. Toto oddělení také snižuje předejde jiných tenantů Azure může mít na výkon vaší aplikace. Tento ISE můžete propojit vaši virtuální síť Azure, které služba Logic Apps pak nasadí do vaší virtuální sítě. Při vytváření logiku aplikace nebo integračního účtu, vyberte tento ISE jako jejich umístění. Váš účet integrace nebo aplikace logiky můžete pak přímý přístup k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby ve vaší virtuální síti. 
+Pro scénáře, ve kterém logic apps a účty pro integraci potřebují přístup k [virtuální síť Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je privátní a izolované prostředí, která používá vyhrazeného úložiště a další prostředky, které uchovávají nezávislá na infrastruktuře veřejného nebo *globální* služba Logic Apps. Toto oddělení také snižuje předejde jiných tenantů Azure může mít na výkon vaší aplikace. Je vaše ISE *vložený* do ke službě Azure virtual network, která pak nasadí služba Logic Apps do vaší virtuální sítě. Při vytváření logiku aplikace nebo integračního účtu, vyberte tento ISE jako jejich umístění. Váš účet integrace nebo aplikace logiky můžete pak přímý přístup k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby ve vaší virtuální síti. 
 
 ![Vyberte prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
-Tento článek popisuje, jak k provádění těchto úkolů:
+Tento článek popisuje, jak k dokončení těchto úloh:
 
 * Nastavení oprávnění ve vaší virtuální sítí Azure, tak soukromé instanci aplikace logiky můžete přistupovat k vaší virtuální sítě.
 
@@ -35,16 +35,13 @@ Tento článek popisuje, jak k provádění těchto úkolů:
 
 * Vytvoření účtu pro integraci pro vaše aplikace logiky v vaše ISE.
 
-Další informace o prostředí integrační služby naleznete v tématu [přístup k prostředkům Azure Virtual Network z izolované Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+Další informace o prostředí integrační služby naleznete v tématu [přístup k prostředkům Azure Virtual Network v Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-* Pokud nemáte virtuální síť Azure, zjistěte, jak [vytvořit virtuální síť Azure](../virtual-network/quick-create-portal.md). 
-
-  > [!IMPORTANT]
-  > Když už nebudete potřebovat virtuální síť Azure pro vytváření prostředí, můžete *pouze* výběr virtuální sítě jako partnera pro vaše prostředí při vytváření tohoto prostředí. 
+* [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Pokud nemáte virtuální síť, zjistěte, jak [vytvořit virtuální síť Azure](../virtual-network/quick-create-portal.md). 
 
 * Do aplikace logiky umožnit přímý přístup ke službě Azure virtual network, [nastavení oprávnění řízení přístupu na základě Role (RBAC)](#vnet-access) tak služba Logic Apps má oprávnění pro přístup k vaší virtuální sítě. 
 
@@ -54,19 +51,19 @@ Další informace o prostředí integrační služby naleznete v tématu [přís
 
 ## <a name="set-virtual-network-permissions"></a>Nastavit oprávnění pro virtuální síť
 
-Při vytváření vašeho prostředí integrační služby, můžete vybrat virtuální síť Azure jako *peer* pro vaše prostředí. Však lze provést pouze tento krok nebo *partnerský vztah*, při vytváření vašeho prostředí. Tento vztah umožňuje připojit se přímo k prostředkům v dané virtuální síti služba Logic Apps a poskytuje prostředí přístup k těmto prostředkům. 
-
-Abyste mohli vybrat virtuální síť, musíte vytvořit oprávnění řízení přístupu na základě Role (RBAC) ve vaší virtuální síti. Tento úkol provést, musíte přiřadit specifické role ve službě Azure Logic Apps.
+Při vytváření prostředí integrační služby (ISE), vyberte virtuální síť Azure tom, kde jste *vložit* vašeho prostředí. Ale předtím, než můžete vybrat virtuální síť pro vkládání prostředí, musíte vytvořit oprávnění řízení přístupu na základě Role (RBAC) ve vaší virtuální síti. Nastavení oprávnění, přiřaďte tyto konkrétní role ve službě Azure Logic Apps:
 
 1. V [webu Azure portal](https://portal.azure.com)vyhledejte a vyberte virtuální síť. 
 
 1. V nabídce vaší virtuální sítě, vyberte **řízení přístupu (IAM)**. 
 
-1. V části **řízení přístupu**vyberte **přiřazení Role** Pokud ještě není vybraná. Na **přiřazení Role** nástrojů, zvolte **přidat**. 
+1. V části **řízení přístupu (IAM)**, zvolte **přidat**. 
 
-   ![Přidání přiřazení role](./media/connect-virtual-network-vnet-isolated-environment/set-up-role-based-access-control-vnet.png)
+   ![Přidání rolí](./media/connect-virtual-network-vnet-isolated-environment/set-up-role-based-access-control-vnet.png)
 
-1. Na **přidat oprávnění** podokno nastavení každou roli v této tabulce pro službu Azure Logic Apps. Ujistěte se, že zvolíte **Uložit** po dokončení každé role:
+1. Na **přidat přiřazení role** podokno nastavení každou roli pro službu Azure Logic Apps, jak je popsáno v tabulce v tomto kroku. Ujistěte se, že zvolíte **Uložit** po dokončení každé role.
+
+   ![Přidání přiřazení role](./media/connect-virtual-network-vnet-isolated-environment/add-contributor-roles.png)
 
    | Role | Přiřadit přístup k | Vyberte | 
    |------|------------------|--------|
@@ -74,55 +71,7 @@ Abyste mohli vybrat virtuální síť, musíte vytvořit oprávnění řízení 
    | **Přispěvatel modelu Classic** | **Azure AD uživatele, skupinu nebo aplikaci** | Zadejte **Azure Logic Apps**. Jakmile se zobrazí seznam členů, vyberte stejnou hodnotu. <p>**Tip**: Pokud nelze najít tuto službu, zadejte ID aplikace služby Logic Apps: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` | 
    |||| 
 
-   Příklad:
-
-   ![Přidání oprávnění](./media/connect-virtual-network-vnet-isolated-environment/add-contributor-roles.png)
-
-   Další informace o roli oprávnění požadovaná pro partnerský vztah, najdete v článku [oprávnění tématu Vytvoření, změna nebo odstranění partnerského vztahu virtuálních sítí](../virtual-network/virtual-network-manage-peering.md#permissions). 
-
-Pokud vaše virtuální síť připojená prostřednictvím Azure ExpressRoute, sítě VPN Azure Point-to-Site nebo Azure VPN typu Site-to-Site, pokračujte v další části, můžete přidat podsíť vyžaduje brána. V opačném případě pokračujte [vytvořit prostředí](#create-environment).
-
-<a name="add-gateway-subnet"></a>
-
-## <a name="add-gateway-subnet-for-virtual-networks-with-expressroute-or-vpns"></a>Přidání podsítě brány pro virtuální sítě s využitím ExpressRoute nebo VPN
-
-Po dokončení předchozích kroků, abyste prostředí integrační služby (ISE) přístup ke službě Azure virtual network, který je připojený prostřednictvím [Azure ExpressRoute](../expressroute/expressroute-introduction.md), [Azure Point-to-Site VPN](../vpn-gateway/point-to-site-about.md), nebo [Azure VPN typu Site-to-Site](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), musíte taky přidat [ *podsíť brány* ](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsub) ke službě virtual network:
-
-1. V [webu Azure portal](https://portal.azure.com)vyhledejte a vyberte virtuální síť. V nabídce vaší virtuální sítě, vyberte **podsítě**a klikněte na tlačítko **podsíť brány** > **OK**.
-
-   ![Přidání podsítě brány](./media/connect-virtual-network-vnet-isolated-environment/add-gateway-subnet.png)
-
-1. Teď vytvořte [ *směrovací tabulka*](../virtual-network/manage-route-table.md), který budete přidružit podsíť brány, který jste vytvořili dříve.
-
-   1. V hlavní nabídce Azure zvolte **vytvořit prostředek** > 
-    **sítě** > **směrovací tabulka**.
-
-      ![Vytvoření směrovací tabulky](./media/connect-virtual-network-vnet-isolated-environment/create-route-table.png)
-
-   1. Zadání informací o směrovací tabulky, jako je například název, vaše předplatné Azure se má použít, skupinu prostředků Azure a umístění. Ujistěte se, že **šíření tras BGP** je nastavena na **povoleno**a klikněte na tlačítko **vytvořit**.
-
-      ![Zadejte podrobnosti směrovací tabulky](./media/connect-virtual-network-vnet-isolated-environment/enter-route-table-information.png)
-
-   1. V nabídce směrovací tabulku, vyberte **podsítě**a klikněte na tlačítko **přidružit**. 
-
-      ![Připojte směrovací tabulky k podsíti](./media/connect-virtual-network-vnet-isolated-environment/associate-route-table.png)
-
-   1. Vyberte **virtuální síť**a potom vyberte virtuální síť.
-   
-   1. Vyberte **podsítě**a potom vyberte podsíť dříve vytvořené brány.
-
-   1. Jakmile budete hotovi, zvolte **OK**.
-
-1. Pokud máte připojení VPN point-to-site, příliš proveďte následující kroky:
-
-   1. V Azure vyhledejte a vyberte váš prostředek brány virtuální sítě.
-
-   1. V nabídce brány, vyberte **KonfiguracePoint-to-site**. 
-   a klikněte na tlačítko **stáhnout klienta VPN** tak, že máte nejaktuálnější konfiguraci klienta VPN.
-
-      ![Stáhněte si nejnovější verzi klienta VPN](./media/connect-virtual-network-vnet-isolated-environment/download-vpn-client.png)
-
-Teď budete hotovi s nastavením podsíť brány pro virtuální sítě, které používají ExpressRoute a VPN typu point-to-site, VPN typu site-to-site. Pokud chcete pokračovat ve vytváření vašeho prostředí integrační služby, postupujte podle dalších kroků.
+Další informace najdete v tématu [oprávnění pro přístup k virtuální síti](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
 <a name="create-environment"></a>
 
@@ -141,22 +90,24 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
 
    ![Zvolte možnost "Vytvořit"](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
 
-1. Uveďte následující údaje pro vaše prostředí:
+1. Zadejte tyto údaje pro vaše prostředí a pak zvolte **revize + vytvořit**, například:
 
    ![Zadejte podrobnosti prostředí](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
-   | **Název** | Ano | <*Název prostředí*> | Název prostředí | 
    | **Předplatné** | Ano | <*název_předplatného_Azure*> | Předplatné Azure, které můžete použít pro vaše prostředí | 
    | **Skupina prostředků** | Ano | <*Azure-resource-group-name*> | Skupina prostředků Azure, ve kterém chcete vytvořit prostředí |
-   | **Umístění** | Ano | <*Oblast datového centra Azure*> | Datacentru Azure v oblasti kam se mají ukládat informace o vašem prostředí |
-   | **Partnerská virtuální síť** | Ne | <*Název virtuální sítě Azure*> | Virtuální síť Azure pro přidružení k prostředí jako *peer* tak logiku aplikace v daném prostředí mají přístup k vaší virtuální sítě. Než budete moct vytvořit tuto relaci, ujistěte se, že jste již [nastavit řízení přístupu na základě role ve službě virtual network pro Azure Logic Apps](#vnet-access). <p>**Důležité**: i když se virtuální síť se nevyžaduje, můžete vybrat virtuální síť *pouze* při vytváření vašeho prostředí. | 
-   | **Název partnerského vztahu** | Ano, s vybranou virtuální síť. | <*Název partnerského vztahu*> | Název sdílené relace | 
-   | **Rozsah adres IP pro virtuální síť** | Ano, s vybranou virtuální síť. | <*Rozsah IP adres*> | Rozsah IP adres pro vytváření prostředků ve vašem prostředí. Musíte použít tento rozsah [notace CIDR (Classless Inter-Domain Routing) formát](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing), například 10.0.0.1/16 a vyžaduje třídy B adresní prostor. Rozsah nesmí existovat v rámci adresního prostoru virtuální sítě vybraný v **partnerské virtuální sítě** vlastností, ani v žádné jiné privátních IP adres ve kterém je připojená síť sdílené, buď prostřednictvím partnerského vztahu ani brány. <p><p>**Důležité**: můžete *nelze změnit* tento rozsah adres po vytvoření prostředí. |
+   | **Název prostředí integrační služby** | Ano | <*Název prostředí*> | Název prostředí | 
+   | **Umístění** | Ano | <*Oblast datového centra Azure*> | Oblast datového centra Azure, jak nasadíte prostředí | 
+   | **Kapacita** | Ano | 0, 1, 2, 3 | Počet jednotek zpracování pro tento prostředek ISE | 
+   | **Virtuální síť** | Ano | <*Azure--název virtuální sítě –*> | Virtuální síť Azure ve které chcete vložit prostředí, takže aplikace logiky v daném prostředí mají přístup k vaší virtuální sítě. Pokud nejste připojeni k síti, můžete jeden vytvořit tady. <p>**Důležité**: můžete *pouze* provádět tento vkládání při vytváření vašeho ISE. Ale předtím, než budete moct vytvořit tuto relaci, ujistěte se, že jste již [nastavit řízení přístupu na základě role ve službě virtual network pro Azure Logic Apps](#vnet-access). | 
+   | **Podsítě** | Ano | <*Rozsah IP adres*> | ISE vyžaduje čtyři *prázdný* podsítě, které nemají delegování k libovolné službě a slouží k vytváření prostředků ve vašem prostředí. Každá podsíť musí splňovat tato kritéria: <p>-Používá [notace CIDR (Classless Inter-Domain Routing) formát](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>-Vyžaduje třídy B adresní prostor. <br>-Má název, který nezačíná znakem čísla nebo pomlčku. <br>-Zahrnuje `/27`, například každá podsíť určuje rozsah adres 32-bit: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, a `10.0.0.96/27`. <br>– Musí neexistuje ve stejném rozsahu adres pro vámi zvolené virtuální síti ani žádné jiné privátních IP adres ve kterých je připojený virtuální sítě. <br>– Musí být prázdný. <p><p>**Důležité**: můžete *nelze změnit* tyto rozsahy IP adres po vytvoření prostředí. |
    |||||
-   
-1. Jakmile budete hotoví, vyberte **Vytvořit**. 
+
+1. Když Azure úspěšně ověří vaše ISE informace, zvolte **vytvořit**, například:
+
+   ![Po úspěšném ověření zvolte možnost "Vytvořit"](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
    Azure spustí nasazení prostředí, ale tento proces může trvat *až dvě hodiny* před dokončením. 
    Chcete-li zkontrolovat stav nasazení, na panelu nástrojů Azure, vyberte ikonu oznámení, které se otevře podokno oznámení.
@@ -173,25 +124,23 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
 
 ## <a name="create-logic-app---ise"></a>Vytvoření aplikace logiky – ISE
 
-K vytváření aplikací logiky, které používají prostředí integrační služby (ISE), postupujte podle kroků obvyklé v [jak vytvořit aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) , ale tyto rozdíly a aspekty: 
+K vytváření aplikací logiky, které používají prostředí integrační služby (ISE), postupujte podle kroků v [jak vytvořit aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) ale s těmito rozdíly: 
 
-* Když vytvoříte aplikaci logiky **umístění** vaše ISEs podle seznamů vlastností **prostředí integrační služby** spolu se dozvíte dostupné oblasti. Vyberte vaše ISE, místo oblasti, například:
+* Když vytvoříte aplikaci logiky, vyberte vaše ISE, místo oblasti Azure, ze **umístění** ze seznamu **prostředí integrační služby** části, například:
 
   ![Vyberte prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
 
-* Můžete použít stejném předdefinované, jako je například HTTP triggeru nebo akce, které běží v prostředí ISE stejné jako nadřazená aplikace logiky. Konektory s **ISE** popisek také spustit v prostředí ISE stejné jako nadřazená aplikace logiky. Konektory bez **ISE** popisek spustit v globální službě Logic Apps.
+* Můžete používat stejné integrované triggery a akce, jako je například HTTP, které běží v prostředí ISE stejné jako aplikace logiky. Konektory s **ISE** popisek také spustit v prostředí ISE stejné jako aplikace logiky. Konektory bez **ISE** popisek spustit v globální službě Logic Apps.
 
   ![Výběr konektorů ISE](./media/connect-virtual-network-vnet-isolated-environment/select-ise-connectors.png)
 
-* Pokud jste dříve nastavili vaše ISE s Azure virtual network jako na partnera, logic apps v vaše ISE můžete přímo přístup k prostředkům v dané virtuální síti. Pro místní systémy ve virtuální síti, který je propojen ISE aplikace logiky přímo přístupné tyto systémy pomocí některé z těchto položek: 
+* Po vložení vaše ISE do služby Azure virtual network, logic apps v vaše ISE můžete přímo přístup k prostředkům v dané virtuální síti. Pro místní systémy ve virtuální síti, který je propojen ISE aplikace logiky přímo přístupné tyto systémy pomocí některé z těchto položek: 
 
   * ISE konektor pro daný systém, například SQL Server
-
   * Akce HTTP 
-
   * Vlastní konektor
 
-  Pro místní systémy, které nejsou ve virtuální síti nebo nemají ISE konektory, můžete se připojit až [nastavit a používat místní brány dat](../logic-apps/logic-apps-gateway-install.md).
+  Pro místní systémy, které nejsou ve virtuální síti nebo nemají ISE konektory, nejprve [nastavit a používat místní brány dat](../logic-apps/logic-apps-gateway-install.md).
 
 <a name="create-integration-account-environment"></a>
 

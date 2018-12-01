@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: 256f36ac56126fc76561a6dbe4281ac4975df6e4
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b535939e200b533c06c97686897e283fb6cf57bc
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632785"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720180"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure
 
@@ -113,9 +113,9 @@ Když funkce exportu schématu je k dispozici pro spravované identity pro rozš
 
 Pokud v okně Konfigurace virtuálního počítače není na vašem virtuálním počítači, pak spravovaných identit pro prostředky Azure není povolená na portálu ve vaší oblasti ještě.  Zkuste to znovu později.  Můžete také povolit spravovaných identit pro prostředky Azure pro virtuální počítač pomocí [PowerShell](qs-configure-powershell-windows-vm.md) nebo [rozhraní příkazového řádku Azure](qs-configure-cli-windows-vm.md).
 
-### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>Nelze přiřadit přístup k virtuálním počítačům v okně řízení přístupu (IAM)
+### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>Nelze přiřadit přístup k virtuálním počítačům v okně přístupové ovládacího prvku (IAM)
 
-Pokud **virtuálního počítače** nezobrazí na portálu Azure portal jako volba pro **přiřadit přístup k** v **řízení přístupu (IAM)** > **přidat oprávnění**, pak spravovaných identit pro prostředky Azure na portálu ve vaší oblasti ještě nepovolil. Zkuste to znovu později.  Stále můžete vybrat identitu pro přiřazení role virtuálního počítače tak, že spravovaných identit pro prostředky Azure instanční objekt služby.  Zadejte název virtuálního počítače v **vyberte** pole a objektu zabezpečení se zobrazí ve výsledcích hledání.
+Pokud **virtuálního počítače** nezobrazí na portálu Azure portal jako volba pro **přiřadit přístup k** v **řízení přístupu (IAM)** > **přidat roli přiřazení**, pak spravovaných identit pro prostředky Azure na portálu ve vaší oblasti ještě nepovolil. Zkuste to znovu později.  Stále můžete vybrat identitu pro přiřazení role virtuálního počítače tak, že spravovaných identit pro prostředky Azure instanční objekt služby.  Zadejte název virtuálního počítače v **vyberte** pole a objektu zabezpečení se zobrazí ve výsledcích hledání.
 
 ### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Virtuální počítač se nepodaří spustit po přesunutí ze skupiny prostředků nebo předplatného
 

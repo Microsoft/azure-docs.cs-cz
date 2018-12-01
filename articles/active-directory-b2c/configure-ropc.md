@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2ea9356f1292669f115d2bb482419435320f644c
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 1b07825bd3ff46267764467bba815c1097278084
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978821"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726283"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Nakonfigurujte tok přihlašovacího hesla vlastníka prostředku v Azure AD B2C
 
@@ -35,14 +35,17 @@ Nejsou podporovány v následujících tocích:
 - **Na serveru**: systému identity protection potřebuje shromážděných z volající (Nativní klient) jako součást interakce spolehlivé IP adresu. Ve volání rozhraní API na straně serveru je použít jenom IP adresa serveru. Pokud dojde k překročení dynamická prahová hodnota neúspěšné ověřování, může systém ochrany identit identifikovat opakované IP adresu jako útočník.
 - **Tok důvěrnému klientovi**: ověření ID klienta aplikace, ale neověří tajný klíč aplikace.
 
-##  <a name="create-a-resource-owner-policy"></a>Vytvoření zásady vlastníka prostředku
+##  <a name="create-a-resource-owner-user-flow"></a>Vytvořit tok uživatele vlastníka prostředku
 
-1. Přihlaste se k webu Azure portal jako globální správce tenanta Azure AD B2C.
-2. Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
-3. V části **zásady**vyberte **zásady vlastníka prostředku**.
-4. Zadejte název zásady, jako třeba *ROPC_Auth*a pak vyberte **deklarace identit aplikace**.
-5. Vyberte deklarace identit aplikace, které potřebujete pro vaši aplikaci, jako například *zobrazovaný název*, *e-mailovou adresu*, a *zprostředkovatele Identity*.
-6. Vyberte **OK** a potom vyberte **Vytvořit**.
+1.  Přihlaste se k webu Azure portal jako globální správce tenanta Azure AD B2C.
+2.  Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
+3.  Klikněte na tlačítko **toky uživatelů**a vyberte **nový tok uživatele**.
+4.  Klikněte na tlačítko **všechny** kartě a vyberte **vlastníka prostředku**.
+5.  Zadejte název pro tok uživatele, jako třeba *ROPC_Auth*.
+6.  V části **deklarace identit aplikace**, klikněte na tlačítko **zobrazit více**.
+7.  Vyberte deklarace identit aplikace, které potřebujete pro vaši aplikaci, jako je zobrazované jméno, e-mailovou adresu a zprostředkovatele Identity.
+8.  Vyberte **OK** a potom vyberte **Vytvořit**.
+9.  Klikněte na tlačítko **spustit tok uživatele**.
 
    Zobrazí koncový bod jako je například v tomto příkladu:
 
@@ -57,9 +60,9 @@ Nejsou podporovány v následujících tocích:
 4. Nechte ostatní hodnoty, jak jsou a pak vyberte **vytvořit**.
 5. Vyberte novou aplikaci a poznamenejte si ID aplikace pro pozdější použití.
 
-## <a name="test-the-policy"></a>Testování zásad
+## <a name="test-the-user-flow"></a>Testování tohoto toku uživatele
 
-Generovat volání rozhraní API pomocí aplikace pro vývoj oblíbených rozhraní API a zkontrolovat odpověď, chcete-li ladit vaše zásady. Sestavit podobné volání pomocí informací v následující tabulce jako text požadavku POST:
+Generovat volání rozhraní API pomocí oblíbených rozhraní API vývoje aplikace a zkontrolujte odpověď na ladění vašeho toku uživatele. Sestavit podobné volání pomocí informací v následující tabulce jako text požadavku POST:
 - Nahraďte  *\<yourtenant.onmicrosoft.com >* s názvem vašeho tenanta B2C.
 - Nahraďte  *\<B2C_1A_ROPC_Auth >* úplným názvem zásady pověření heslo vlastníka prostředku.
 - Nahraďte  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* s ID aplikace z vaší registrace.

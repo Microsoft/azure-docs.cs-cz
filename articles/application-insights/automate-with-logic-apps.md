@@ -8,16 +8,15 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1e9170c955f2a36d68600372e3dcdac2a63056c1
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 44e654202cdaebedab82f40f154c1483b7e979ae
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50957740"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725688"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace procesů Application Insights s využitím Logic Apps
 

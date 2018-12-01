@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: dda137ecba91e3ac59be635eed22d18e5bcadcce
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: dc9884d72bc2e09c88bf1d5dc238ec5d1ff56430
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277303"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52681275"
 ---
 # <a name="app-expression-in-log-analytics-query"></a>výraz App() použijte v dotazu Log Analytics
 

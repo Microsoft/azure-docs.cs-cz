@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5634c14ee2b25600d66ff0f2c7385b2aaa9f1810
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a1457b2aa571b58502b7d819eb3bcf142c10dac1
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699494"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725059"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Vlastní zásady v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Vlastní zásady jsou konfigurační soubory, které definují chování vašeho tenanta Azure Active Directory (Azure AD) B2C. Předdefinované zásady jsou předdefinovány na portálu Azure AD B2C pro nejběžnější úkoly identity. Vlastní zásady je může plně upravit vývojář identit k dokončení celou řadu různých úloh.
+Vlastní zásady jsou konfigurační soubory, které definují chování vašeho tenanta Azure Active Directory (Azure AD) B2C. Toky uživatelů jsou předdefinovány na portálu Azure AD B2C pro nejběžnější úkoly identity. Vlastní zásady je může plně upravit vývojář identit k dokončení celou řadu různých úloh.
 
-## <a name="comparing-built-in-policies-and-custom-policies"></a>Porovnání integrovaných zásad a vlastních zásad
+## <a name="comparing-user-flows-and-custom-policies"></a>Porovnání toky uživatelů a vlastních zásad
 
-| | Předdefinované zásady | Vlastní zásady |
+| | Toky uživatele | Vlastní zásady |
 |-|-------------------|-----------------|
 | Cílových uživatelů | S nebo bez znalosti identity všechny vývojáře aplikací. | Profesionály pracující identitami, systémovým integrátorům, konzultantům a interních identity týmy. Jsou zvyklí OpenIDConnect toky a pochopit poskytovatelů identit a ověřování nezaloženého na deklaracích. |
 | Metodě konfigurace | Azure portal s přívětivější uživatelské rozhraní (UI). | Přímá úprava souborů XML a potom nahrajete na webu Azure portal. |
@@ -33,7 +33,7 @@ Vlastní zásady jsou konfigurační soubory, které definují chování vašeho
 | Vlastní nastavení atributu | Standardní a vlastní atributy. | Stejné |
 | Token a relace správy | Vlastní token a více možností relace. | Stejné |
 | Zprostředkovatelé identit | Předdefinované místní nebo sociálních sítí poskytovatele. | Založené na standardech OIDC, protokolu OAUTH a SAML. |
-| Identita úlohy | Registrace nebo přihlášení pomocí místních nebo mnoho účtů na sociálních sítích.<br><br>Samoobslužné resetování hesla.<br><br>Upravit profil.<br><br>Ověřování službou Multi-Factor Authentication.<br><br>Přizpůsobení tokenů a relací.<br><br>Toky tokenu přístupu. | Dokončení stejných úkolů jako integrované zásady používání vlastních poskytovatelů identit nebo použijte vlastní obory.<br><br>Poskytnutí uživatelského účtu v jiném systému v době registrace.<br><br>Odeslání Uvítacího e-mailu pomocí vlastního poskytovatele e-mailové služby.<br><br>Použití úložiště uživatele mimo Azure AD B2C.<br><br>Ověření uživatele pomocí rozhraní API poskytuje informace o důvěryhodných systémem. |
+| Identita úlohy | Registrace nebo přihlášení pomocí místních nebo mnoho účtů na sociálních sítích.<br><br>Samoobslužné resetování hesla.<br><br>Upravit profil.<br><br>Ověřování službou Multi-Factor Authentication.<br><br>Přizpůsobení tokenů a relací.<br><br>Toky tokenu přístupu. | Dokončení úloh toky uživatelů pro používání vlastních poskytovatelů identit nebo použijte vlastní obory.<br><br>Poskytnutí uživatelského účtu v jiném systému v době registrace.<br><br>Odeslání Uvítacího e-mailu pomocí vlastního poskytovatele e-mailové služby.<br><br>Použití úložiště uživatele mimo Azure AD B2C.<br><br>Ověření uživatele pomocí rozhraní API poskytuje informace o důvěryhodných systémem. |
 
 ## <a name="policy-files"></a>Zásady souborů
 
@@ -43,7 +43,7 @@ Tyto tři typy zásad souborů se používají:
 - **Rozšíření souboru** – má jedinečnou konfiguraci změny pro vašeho tenanta.
 - **Předávající strany (RP) soubor** – jeden soubor zaměřený na úkol, který je vyvolán přímo z aplikace nebo služby (také označované jako předávající strana). Každý úkol jedinečné vyžaduje svou vlastní RP a v závislosti na branding požadavky, může být tento počet "Celkový počet aplikací x celkového počtu případů použití."
 
-Předdefinované zásady v Azure AD B2C mají tvar tři soubor uvedené výše, ale vývojář se zobrazují pouze soubor předávající strany, zatímco na webu Azure portal provede změny na pozadí do souboru rozšíření.
+Toky uživatelů v Azure AD B2C mají tvar tři soubor uvedené výše, ale vývojář se zobrazují pouze soubor předávající strany, zatímco na webu Azure portal provede změny na pozadí do souboru rozšíření.
 
 ## <a name="custom-policy-core-concepts"></a>Vlastní zásady pro základní koncepty
 

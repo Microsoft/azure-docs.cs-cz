@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 289aa893a0ffa598d5b9fae67a81e9bf0c9782f7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a46989ea197166065b4ca482200a0d30e1def7c9
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014393"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723087"
 ---
 # <a name="configure-advanced-networking-in-azure-kubernetes-service-aks"></a>Konfigurace rozšířeného sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -49,9 +49,9 @@ Plán IP adres pro AKS cluster se skládá z virtuální sítě, alespoň jednu 
 | Rozsah adres / Azure resource | Omezení a změna velikosti |
 | --------- | ------------- |
 | Virtuální síť | Virtuální síť Azure můžou být velké až /8, ale je omezená na 65 536 nakonfigurovaných IP adres. |
-| Podsíť | Musí být dostatečně velký, aby uzly, podů a všechny Kubernetes a Azure prostředky, které může být zřízené ve vašem clusteru. Například pokud nasadíte interní Azure Load Balancer, jeho front-endových IP adres se přidělují z podsítě clusteru, není veřejné IP adresy. Velikost podsítě musí rovněž brát v úvahu upgradu operace účtů nebo budoucích potřeb škálování.<p />Chcete-li vypočítat *minimální* velikost podsítě, včetně dalšího uzlu pro operace upgradu: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Příklad pro cluster s 50 uzly: `(51) + (51  * 30 (default)) = 1,581` (/ 21, nebo větší)<p/>Příklad 50 uzlu clusteru, který také zahrnuje ustanovení vertikálně navýšit kapacitu dalších 10 uzlů: `(61) + (61 * 30 (default)) = 2,440` (/ 20, nebo větší)<p>Pokud nechcete zadat maximální počet podů na uzlu při vytváření clusteru, maximální počet podů na uzel nastavena na *30*. Minimální počet IP adres, vyžaduje se podle této hodnoty. Pokud vypočítáte vaše minimální požadavky IP adres na jinou maximální hodnotu, přečtěte si téma [konfigurace maximální počet podů na uzel](#configure-maximum---new-clusters) na nastavte tuto hodnotu při nasazování clusteru. |
+| Podsíť | Musí být dostatečně velký, aby uzly, podů a všechny Kubernetes a Azure prostředky, které může být zřízené ve vašem clusteru. Například pokud nasadíte interní Azure Load Balancer, jeho front-endových IP adres se přidělují z podsítě clusteru, není veřejné IP adresy. Velikost podsítě musí rovněž brát v úvahu upgradu operace účtů nebo budoucích potřeb škálování.<p />Chcete-li vypočítat *minimální* velikost podsítě, včetně dalšího uzlu pro operace upgradu: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Příklad pro cluster s 50 uzly: `(51) + (51  * 30 (default)) = 1,581` (/ 21, nebo větší)<p/>Příklad 50 uzlu clusteru, který také zahrnuje ustanovení vertikálně navýšit kapacitu dalších 10 uzlů: `(61) + (61 * 30 (default)) = 1,891` (/ 21, nebo větší)<p>Pokud nechcete zadat maximální počet podů na uzlu při vytváření clusteru, maximální počet podů na uzel nastavena na *30*. Minimální počet IP adres, vyžaduje se podle této hodnoty. Pokud vypočítáte vaše minimální požadavky IP adres na jinou maximální hodnotu, přečtěte si téma [konfigurace maximální počet podů na uzel](#configure-maximum---new-clusters) na nastavte tuto hodnotu při nasazování clusteru. |
 | Rozsah adres služby Kubernetes | Tento rozsah by neměly používat libovolný prvek sítě na nebo připojení k této virtuální síti. Adresa služby CIDR musí být menší než /12. |
-| IP adresa služby Kubernetes DNS | IP adresu v rámci rozhraní Kubernetes služby rozsah adres, který bude používat zjišťování služby cluster (kube-dns). |
+| IP adresa služby Kubernetes DNS | IP adresu v rámci rozhraní Kubernetes služby rozsah adres, který bude používat zjišťování služby cluster (kube-dns). Nepoužívejte první IP adresu ve vaší rozsah adres, jako je například.1. První adresou v rozsahu vaší podsítě se používá pro *kubernetes.default.svc.cluster.local* adresu. |
 | Adresa mostu docker | IP adresa (v notaci CIDR) použít jako Docker bridge IP adresu na uzlech. Výchozí 172.17.0.1/16. |
 
 ## <a name="maximum-pods-per-node"></a>Maximální podů na jeden uzel
@@ -93,7 +93,7 @@ Při vytváření clusteru AKS následující parametry se dají konfigurovat pr
 
 I když je technicky možné určit rozsah adres služby v rámci stejné virtuální síti jako cluster, tím proto nedoporučujeme. Pokud překrývající se rozsahy IP adres se používají může způsobit nepředvídatelné chování. Další informace najdete v tématu [nejčastější dotazy k](#frequently-asked-questions) části tohoto článku. Další informace o službách Kubernetes najdete v části [služby] [ services] v dokumentaci ke Kubernetes.
 
-**IP adresa služby Kubernetes DNS**: IP adresa pro službu DNS clusteru. Tato adresa musí být v rámci *rozsah adres služby Kubernetes*.
+**IP adresa služby Kubernetes DNS**: IP adresa pro službu DNS clusteru. Tato adresa musí být v rámci *rozsah adres služby Kubernetes*. Nepoužívejte první IP adresu ve vaší rozsah adres, jako je například.1. První adresou v rozsahu vaší podsítě se používá pro *kubernetes.default.svc.cluster.local* adresu.
 
 **Adresa mostu docker**: IP adresa a síťová maska přiřadit mostu Docker. Tato IP adresa nesmí být v rámci rozsahu IP adres virtuální sítě ve vašem clusteru.
 

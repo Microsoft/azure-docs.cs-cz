@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 2f2f338f7c4ddb885bc909f49815783e616b94c8
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: d54820acf8742ad2f95e8cc8527d9e252ffe3c30
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300451"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720129"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Vytváření, výpisu, odstranit nebo přiřadit roli uživatele přiřazeny spravovanou identitu pomocí webu Azure portal
 
@@ -69,18 +69,18 @@ Pokud chcete odstranit spravovanou identitu uživatele přiřazeny, musí váš 
 
 ![Odstranit uživatelsky přiřazené identity spravované](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
-## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Přiřazení role uživatel přiřazenou spravované identity
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Přiřazení role uživatel přiřazenou spravované identity 
 
 Přiřazení role pro uživatelsky přiřazené spravovanou identitu, musí váš účet [správce uživatelských přístupů](/azure/role-based-access-control/built-in-roles#user-access-administrator) přiřazení role.
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) seznam uživatelsky přiřazené identity spravované pomocí účtu přidružených k předplatnému Azure.
 2. Do vyhledávacího pole zadejte *identit spravovaných*a v rámci služeb, klikněte na tlačítko **identit spravovaných**.
 3. Seznam uživatelsky přiřazené spravované identity pro vaše předplatné se vrátí.  Vyberte uživatelsky přiřazené spravovanou identitu, kterou chcete přiřadit roli.
-4. Vyberte **řízení přístupu (IAM)** a pak vyberte **přidat**.
+4. Vyberte **řízení přístupu (IAM)** a pak vyberte **přidat přiřazení role**.
 
    ![Uživatelsky přiřazené identity spravované spuštění](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. V okně Přidat oprávnění nakonfigurujte následující hodnoty a pak klikněte na tlačítko **Uložit**:
+5. V okně Přidat přiřazení role, nakonfigurujte následující hodnoty a pak klikněte na tlačítko **Uložit**:
    - **Role** -roli, kterou chcete přiřadit
    - **Přiřazení přístupu k** -prostředek, který chcete přiřadit uživateli přiřazena spravované identity
    - **Vyberte** – člen, který chcete přiřadit přístup

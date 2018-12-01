@@ -9,16 +9,15 @@ ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 2a5717f95e5e40fe04f4fa22eaedf168539e20f3
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 01ba8b6d9ebef5d79b660638d60d5b745c624786
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309225"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725382"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
 Můžete automatizovat konfiguraci [výstrahy](app-insights-alerts.md) v [Application Insights](app-insights-overview.md).
@@ -108,10 +107,10 @@ Stejné pravidlo lze použít pro metriku hlásí pomocí [měření parametr](a
 | `clientPerformance.sendRequest.value` |Čas odeslání žádosti |Doba, za kterou prohlížeč odešlete žádost. |
 | `clientPerformance.total.value` |Čas načítání stránky prohlížeče |Doba od žádosti uživatele do načtení DOM, šablon stylů, skriptů a obrázků |
 | `performanceCounter.available_bytes.value` |Dostupná paměť |Fyzická paměť k dispozici pro proces nebo pro použití systémem. |
-| `performanceCounter.io_data_bytes_per_sec.value` |Frekvence V/V procesu |Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu |
+| `performanceCounter.io_data_bytes_per_sec.value` |Frekvence v/v procesu |Celkem bajtů čtených ze souborů, sítě a zařízení nebo do nich zapisovaných za sekundu |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |frekvence výjimek |Výjimek vyvolaných za sekundu. |
 | `performanceCounter.percentage_processor_time.value` |Proces – procesor |Procentuální hodnotu uplynulého času všechny podprocesy procesu používají procesor pro spouštění instrukcí pro proces aplikace. |
-| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, které procesor stráví na nečinných vláknech |
+| `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, které procesor stráví na nečinných vláknech. |
 | `performanceCounter.process_private_bytes.value` |Privátní bajty procesu |Paměť exkluzivně přiřazená k procesům monitorované aplikace |
 | `performanceCounter.request_execution_time.value` |Doba provádění požadavku ASP.NET |Doba provádění nejnovější žádosti |
 | `performanceCounter.requests_in_application_queue.value` |Požadavky ASP.NET ve frontě na spuštění |Délka fronty žádostí na aplikace |

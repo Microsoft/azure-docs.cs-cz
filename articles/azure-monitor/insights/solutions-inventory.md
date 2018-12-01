@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 7f0334bdd1922c6ec410ca912ccfbf639e5c770f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 6aa0ad6d13a7a75a0d9bfb520944c04cae11f1ab
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634434"
+ms.locfileid: "52682975"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti shromažďování dat pro řešení pro správu v Azure
 Tento článek obsahuje seznam [řešení pro správu](solutions.md) od Microsoftu k dispozici s odkazy na jejich podrobnou dokumentaci.  Poskytuje také informace o jejich metoda a četnost shromažďování dat do Log Analytics.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům datového toku a připojení pro jiné řešení, můžete použít informace v tomto článku. 
@@ -41,7 +41,7 @@ Vysvětlení sloupců jsou následující:
 
 | **Řešení pro správu** | **Platforma** | **Agent sledování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** | **Četnost shromažďování dat** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Activity Log Analytics](../../log-analytics/log-analytics-activity.md) | Azure | | | | | | v oznámení |
+| [Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md) | Azure | | | | | | v oznámení |
 | [Posouzení AD](../../azure-monitor/insights/ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dní |
 | [Stav replikace AD](../../azure-monitor/insights/ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 dní |
 | [Stav agenta](solution-agenthealth.md) | Windows a Linux | &#8226; | &#8226; | | | &#8226; | 1 minuta |
@@ -49,7 +49,7 @@ Vysvětlení sloupců jsou následující:
 | [Správa výstrah](../../azure-monitor/platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 minuta |
 | [Správa výstrah](../../azure-monitor/platform/alert-management-solution.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
 | [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | neuvedeno |
-| [Application Insights Connector (Preview)](../../log-analytics/log-analytics-app-insights-connector.md) | Azure | | | |  |  | v oznámení |
+| [Application Insights Connector (Preview)](../../azure-monitor/platform/app-insights-connector.md) | Azure | | | |  |  | v oznámení |
 | [Hybrid Worker služby Automation](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | neuvedeno |
 | [Analýzy Azure Application Gateway](../../azure-monitor/insights/azure-networking-analytics.md) | Azure |  |  |  |  |  | v oznámení |
 | **Řešení pro správu** | **Platforma** | **Agent sledování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** | **Četnost shromažďování dat** |

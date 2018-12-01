@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2018
 ms.author: terrylan
-ms.openlocfilehash: caab7e3d15f6d82ee4daf6eb343601ff849bfde5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 6175ca26412dccf7ff6dfbce02df738ea8b6eb1a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298774"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721540"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získejte potřebný Přehled celého tenanta pro Azure Security Center
 Tento článek vám pomůže začít pracovat způsobem několik akcí, které Maximalizace výhod, které poskytuje Azure Security Center. Provedení těchto akcí umožňuje získat přehled o ve všech předplatných Azure, které jsou propojeny do svého tenanta Azure Active Directory a efektivně spravovat stavu zabezpečení vaší organizace ve velkém měřítku pomocí zásad zabezpečení napříč více předplatná aggregative způsobem.
@@ -38,7 +38,7 @@ Podrobný přehled skupin pro správu, najdete v článku [uspořádání prost�
 Můžete uspořádat do skupin pro správu předplatných a zásad správného řízení zásad do skupin pro správu. Všechna předplatná v rámci skupiny pro správu automaticky dědí zásady, které se vztahují na skupinu pro správu. Zatímco skupin pro správu nebude muset připojit Security Center, důrazně doporučujeme vytvořit alespoň jednu skupinu pro správu, vytvořit skupinu root management. Po vytvoření skupiny se k němu propojí Všechna předplatná v rámci vašeho tenanta Azure AD. Pokyny pro prostředí PowerShell a další informace najdete v tématu [vytvoření skupin pro správu ke správě prostředků a organizace](../azure-resource-manager/management-groups-create.md).
 
  
-1. Přihlaste se k [portálu Azure](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 2. Vyberte **všechny služby** > **skupin pro správu**.
 3. Na hlavní stránce vyberte **skupiny pro správu nový.** 
 
@@ -93,13 +93,16 @@ K získání přehledu pro všechna předplatná, správcům tenantů nutné př
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Přiřazení role RBAC uživatelům prostřednictvím portálu Azure portal: 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
-2. Chcete-li zobrazit skupiny pro správu, vyberte **všechny služby** v hlavní nabídce Azure zvolte **skupin pro správu**.
-3.  Vyberte skupinu pro správu a klikněte na tlačítko **podrobnosti**.
+1. Chcete-li zobrazit skupiny pro správu, vyberte **všechny služby** v hlavní nabídce Azure zvolte **skupin pro správu**.
+1.  Vyberte skupinu pro správu a klikněte na tlačítko **podrobnosti**.
 
     ![Snímek obrazovky podrobnosti skupiny správy](./media/security-center-management-groups/management-group-details.PNG)
  
-4. Klikněte na tlačítko **řízení přístupu (IAM)** pak **přidat**.
-5. Vyberte roli, kterou chcete přiřadit a uživatele a potom klikněte na tlačítko **Uložit**.  
+1. Klikněte na tlačítko **řízení přístupu (IAM)** pak **přiřazení rolí**.
+
+1. Klikněte na tlačítko **přidat přiřazení role**.
+
+1. Vyberte roli, kterou chcete přiřadit a uživatele a potom klikněte na tlačítko **Uložit**.  
    
    ![Přidat snímek obrazovky role Čtenář zabezpečení](./media/security-center-management-groups/asc-security-reader.png)
 

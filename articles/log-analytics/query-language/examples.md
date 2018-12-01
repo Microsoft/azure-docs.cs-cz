@@ -10,17 +10,15 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 9ef5af3f32e6734188d24c520cf0ff1df5044f40
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 486e485a78f767c4d75461558d06068a2e1c4525
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071151"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682805"
 ---
 # <a name="log-analytics-query-examples"></a>Příklady dotazů analýzy protokolů
 Tento článek obsahuje příklady různých [dotazy](../log-analytics-queries.md) pomocí [Kusto jazyk](https://docs.microsoft.com/azure/kusto/query/) načíst různé typy dat ze služby Log Analytics. Různé metody slouží ke konsolidaci a analýzu dat, takže tyto ukázky můžete použít k identifikaci různé strategie, které můžete použít pro vaše požadavky.  

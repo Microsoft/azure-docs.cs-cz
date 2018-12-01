@@ -9,16 +9,15 @@ documentationcenter: azure-monitor
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: 4200accee94840a8a4455308f24a857fd5d7034a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b2011003306e72ac9fb243b640e388e6f3d5e7d3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632972"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722203"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat ze služby Azure Monitor
 Tento článek obsahuje přehled dostupných metod k vizualizaci dat uložených ve službě Azure Monitor. Jedná se o [metriky v úložišti Azure metriky](../azure-monitor/platform/data-collection.md#metrics) a [dat protokolů v Log Analytics](../azure-monitor/platform/data-collection.md#logs). 

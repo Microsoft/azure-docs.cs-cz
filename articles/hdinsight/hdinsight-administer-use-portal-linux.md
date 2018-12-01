@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: hrasheed
-ms.openlocfilehash: 77f1d0f9d1f9ad07b977750e7701b660781d63e5
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c615188e5f198cb8707b12643e0942e8d8821983
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499384"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725178"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí webu Azure portal
 
@@ -64,7 +64,7 @@ Při vytváření clusteru služby HDInsight, je nutné zadat předplatné Azure
     1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     2. Klikněte na tlačítko **skupiny prostředků** v levé nabídce na seznam skupin prostředků.
     3. Klikněte na skupinu prostředků, kterou chcete použít pro vytvoření clusteru HDInsight.
-    4. Klikněte na tlačítko **řízení přístupu (IAM)** a ověřte, že jste (nebo skupiny, musíte patřit do) mají alespoň přístup přispěvatele do skupiny prostředků.
+    4. Klikněte na tlačítko **řízení přístupu (IAM)** a **přiřazení rolí**a ověřte, že jste (nebo skupiny, musíte patřit do) mají alespoň přístup přispěvatele do skupiny prostředků.
 
 Pokud se zobrazí chyba NoRegisteredProviderFound nebo Chyba MissingSubscriptionRegistration, přečtěte si téma [řešit běžné chyby nasazení v Azure pomocí Azure Resource Manageru](../azure-resource-manager/resource-manager-common-deployment-errors.md).
 
@@ -106,7 +106,7 @@ Pokud se zobrazí chyba NoRegisteredProviderFound nebo Chyba MissingSubscription
 * **Nastavení diagnostiky**: nastavení, ve kterém můžete ukládat metriky diagnostiku **podpora a řešení potíží**
     * **Služba Resource health**: viz [přehled Azure resource health](../service-health/resource-health-overview.md).
     * **Nová žádost o podporu**: vám umožní vytvořit lístek podpory s podporou Microsoftu.
-
+    
 6. Klikněte na tlačítko **vlastnosti**:
 
     Mezi vlastnosti patří:

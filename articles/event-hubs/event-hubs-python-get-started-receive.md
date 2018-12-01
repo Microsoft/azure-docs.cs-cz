@@ -7,14 +7,14 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: db177c3356d378317c41e0c91c10865db5e05992
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 8009a2ef3f89a359bc645485dd75b80cc5d0b868
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286975"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722832"
 ---
 # <a name="receive-events-from-event-hubs-using-python"></a>Příjem událostí ze služby Event Hubs pomocí Pythonu
 
@@ -30,11 +30,9 @@ Kód v tomto kurzu je převzatý z [ukázek Githubu](https://github.com/Azure/az
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
+- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Python 3.4 nebo novější.
 - Stávající služby Event Hubs oboru názvů a Centrum událostí. Tyto entity můžete vytvořit podle pokynů v [v tomto článku](event-hubs-create.md). 
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
 
 ## <a name="install-python-package"></a>Instalovat balíček Pythonu
 

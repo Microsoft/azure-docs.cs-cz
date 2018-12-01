@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9c7a1ec33f82239a5b95e9bf116fe35694d9df36
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: c6aa5cdd565a32367cf391625c1d5d6aca7ee186
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852856"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721195"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Provedení prohledávání protokolů napříč prostředky ve službě Log Analytics  
 

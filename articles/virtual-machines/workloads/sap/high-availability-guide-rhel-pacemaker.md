@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: f8e16af629eaa18b49b054be9fc478d633263ddb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: d023bf4428790667ef192a3ce981087694224f50
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637762"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724532"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Nastavení Pacemaker na Red Hat Enterprise Linux v Azure
 
@@ -224,10 +224,10 @@ Přiřazení vlastní role "Linux ohrazení agenta roli", který byl vytvořen v
 1. Otevřete v okně všechny prostředky
 1. Vyberte virtuální počítač na prvním uzlu clusteru
 1. Klikněte na řízení přístupu (IAM)
-1. Klikněte na tlačítko Přidat.
+1. Klikněte na tlačítko Přidat přiřazení role
 1. Vyberte roli "Linux ohrazení agenta roli"
 1. Zadejte název aplikace, kterou jste vytvořili výše
-1. Klikněte na tlačítko OK
+1. Kliknutí na Uložit
 
 Opakujte předchozí kroky pro druhý uzel clusteru.
 

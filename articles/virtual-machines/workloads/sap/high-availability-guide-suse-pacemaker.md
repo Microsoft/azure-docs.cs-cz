@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 9d3d1e5ba7ebc7e2afefb31df3be9f2a8f43e153
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 34a72bb38c87902648ad92261a70d6545f10d0fa
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685391"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723682"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -527,10 +527,10 @@ Přiřazení vlastní role "Linux ohrazení agenta roli", který byl vytvořen v
 1. Otevřete v okně všechny prostředky
 1. Vyberte virtuální počítač na prvním uzlu clusteru
 1. Klikněte na řízení přístupu (IAM)
-1. Klikněte na tlačítko Přidat.
+1. Klikněte na tlačítko Přidat přiřazení role
 1. Vyberte roli "Linux ohrazení agenta roli"
 1. Zadejte název aplikace, kterou jste vytvořili výše
-1. Klikněte na tlačítko OK
+1. Kliknutí na Uložit
 
 Opakujte předchozí kroky pro druhý uzel clusteru.
 

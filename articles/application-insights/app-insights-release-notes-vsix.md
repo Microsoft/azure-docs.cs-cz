@@ -9,17 +9,16 @@ ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2017
 ms.reviewer: aruna
 ms.author: mbullwin
-ms.openlocfilehash: 016d13a08ea3fe591529ad6dd29b25534d9c603d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 358d17f29960983af1834e87f502331141fcff46
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303740"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726113"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Poznámky k verzi pro Developer Analytics Tools
 
@@ -229,7 +228,7 @@ Pokud už máte jedno z těchto rozhraní protokolování nakonfigurované, nás
 
 Pokud máte nainstalován adaptér protokolování, spusťte aplikaci a ujistěte se, že se zobrazí data v kartě diagnostické nástroje, například takto:
 
-![Trasování](./media/app-insights-release-notes-vsix/Traces.png)
+![trasování](./media/app-insights-release-notes-vsix/Traces.png)
 
 ### <a name="jump-to-or-find-the-code-where-the-telemetry-event-property-is-emitted"></a>Přejít na nebo kódu najít, kde je vygenerován vlastnost události telemetrie
 V nové verzi může uživatel kliknout na libovolnou hodnotu v události podrobností a tím bude hledat odpovídající řetězce v aktuálním řešení otevřené. Výsledky se zobrazí v sadě Visual Studio "Výsledky hledání" seznamu, jak je znázorněno níže:
@@ -249,7 +248,7 @@ Přidali jsme nová karta s předdefinované dotazy pro všechna data souvisejí
 ### <a name="forward-and-back-history-in-search"></a>Vpřed a zpět v historii hledání
 Teď můžete přejít vpřed a zpět mezi výsledky hledání.
 
-![Přejít zpátky](./media/app-insights-release-notes-vsix/GoBAck.png)
+![Zpět](./media/app-insights-release-notes-vsix/GoBAck.png)
 
 ## <a name="version-41"></a>Verze 4.1
 Tato verze přináší několik nových funkcí a aktualizací. Musíte mít nainstalovanou nainstalovat tuto verzi Update 1.

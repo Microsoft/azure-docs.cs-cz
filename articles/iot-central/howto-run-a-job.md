@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 09/15/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 35db7bf87c7b72fc31d820c9058b1df8415bd553
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ac5accc72369d811c0d36c4ef64cd8d523a061f3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031301"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724498"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Vytvoření a spuštění úlohy v aplikaci Azure IoT Central
 
@@ -56,8 +56,13 @@ V této části se dozvíte, jak vytvořit a spustit úlohu. Každý krok proch�
 
 Pokud chcete zastavit úlohu, která je aktuálně spuštěna, klikněte na název spuštěné úlohy, která byste chtěli zastavit. Zvolte **Zastavit** tlačítko na panelu. Uvidíte, že se že stav úlohy změnilo tak, aby odrážely, úloha se zastavila.
 
-> [!NOTE]
-> Jakmile se zastavil úlohu nelze restartovat. Je nutné vytvořit další práci s požadované operace a zařízení.
+   ![Zastavit úlohu](./media/howto-run-a-job/stopjob.png)
+
+### <a name="run-a-stopped-job"></a>Spustit úlohu zastaveno
+
+Pokud chcete spustit úlohu, která je nyní zastavena, klikněte na název zastavenou úlohu, která chcete spustit. Zvolte **spustit** tlačítko na panelu. Uvidíte, že stav úlohy se změnila tak, aby odrážely, že úloha je nyní spuštěna znovu.
+
+   ![Obnovit úlohy](./media/howto-run-a-job/resumejob.png)
 
 ## <a name="view-the-job-status"></a>Zobrazení stavu úlohy
 

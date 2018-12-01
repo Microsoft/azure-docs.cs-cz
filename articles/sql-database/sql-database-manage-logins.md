@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/07/2018
-ms.openlocfilehash: f2627aab2598a706e717e8e1d18fd2f8c944835c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 11/29/2018
+ms.openlocfilehash: 56a121e8b8f7f929b16a0c3507d45402ff586b96
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161457"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682669"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělování přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -28,7 +28,7 @@ Po konfiguraci pravidel brány firewall, budete moct připojit k Azure [SQL Data
 >  Toto téma se vztahuje k serveru Azure SQL a SQL Database a SQL Data Warehouse databáze vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. 
 
 > [!TIP]
-> Podívejte se kurz [zabezpečení služby Azure SQL Database](sql-database-security-tutorial.md).
+> Podívejte se kurz [zabezpečení služby Azure SQL Database](sql-database-security-tutorial.md). V tomto kurzu se nedá použít u **Azure SQL Database Managed Instance**.
 
 ## <a name="unrestricted-administrative-accounts"></a>Neomezené účty pro správu
 Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce Active Directory**). Pokud chcete zjistit tyto účty správce pro svůj SQL server, otevřete web Azure Portal a přejděte k vlastnostem SQL serveru.
@@ -68,6 +68,10 @@ Návod, jak vytvořit server, databázi, pravidla brány firewall na úrovni ser
 
 
 ## <a name="additional-server-level-administrative-roles"></a>Další správní role na úrovni serveru
+
+>[!IMPORTANT]
+>Tato část se nevztahuje na **Azure SQL Database Managed Instance** jsou specifická pro tyto role **Azure SQL Database**.
+
 Kromě správních rolí na úrovni serveru popsaných v předchozích částech poskytuje služba SQL Database v hlavní databázi dvě správní role s omezením přístupu, do kterých můžete přidávat uživatelské účty, a které udělují oprávnění k vytváření databází nebo správě přihlašování.
 
 ### <a name="database-creators"></a>Autoři databází

@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 8b83650acfee638ae2a667cd0925fd91d44b80b2
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 63c6c231477a1c5abea15903b17843717e61f96a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282692"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679950"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>výraz Workspace() v dotazu Log Analytics
 

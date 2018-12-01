@@ -5,19 +5,19 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 11/30/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 35869e0a345299f2b0724f01201154fc8d090e4f
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 5781112d4e45d29f8d623e3175fa5eb8e82444f9
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51975375"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682295"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Sjednocené upozorňování a monitorování ve službě Azure Monitor nahradí classic upozorňování a monitorování
 
-Azure Monitor se teď stal jednotné plnohodnotných monitorovací službu, která teď podporuje "Jeden metrik" a "Jedné výstrahy" v prostředcích; Další informace najdete v tématu naše [blogový příspěvek na nový Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Nové Azure, monitorování a upozorňování platformy je sestavený Build bude rychlejší a chytřejší vytváření a rozšiřitelné – uchování kroku s rostoucí expanse cloud computingu a v řádku s filozofií inteligentního cloudu společnosti Microsoft. 
+Azure Monitor teď stal jednotné plnohodnotných sledování služby, které teď podporuje v prostředků; "Jedné výstrahy" a "jedna metrika. Další informace najdete v tématu naše [blogový příspěvek na nový Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Nové Azure, monitorování a upozorňování platformy je sestavený Build bude rychlejší a chytřejší vytváření a rozšiřitelné – uchování kroku s rostoucí expanse cloud computingu a v řádku s filozofií inteligentního cloudu společnosti Microsoft. 
 
 S novou Azure monitorování a upozorňování platformy na místě můžeme vyřazení "klasickém", monitorování a upozorňování platformu – hostované v rámci *zobrazit upozornění classic* části upozornění v Azure, se nebude používat roku 2019. června.
 
@@ -53,9 +53,13 @@ Starší classic monitorování a upozorňování se vyřadí z provozu 30. čer
 - Starší (classic) platformy a vlastní metriky pro Application Insights jako upozornění na ně jako aktuálně k dispozici prostřednictvím [upozornění (klasická) části](monitoring-overview-alerts-classic.md) z webu Azure portal a dostupné jako [microsoft.insights/ alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) prostředků
 - Starší (classic) anomálie selhání výstraha aktuálně k dispozici jako [inteligentního zjišťování v Application Insights,](../application-insights/app-insights-proactive-diagnostics.md) na webu Azure Portal; nakonfigurovaná upozornění ukazuje [upozornění (klasická) části](monitoring-overview-alerts-classic.md) Azure portál
 
-Všechny klasické monitorování a upozorňování systémy včetně odpovídající [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](insights-alerts-powershell.md), [rozhraní příkazového řádku](insights-alerts-command-line-interface.md), [stránka na webu Azure portal](alert-metric-classic.md)a [ Prostředek šablony](monitoring-enable-alerts-using-template.md) zůstane až do června 2019 použitelné. Po tomto datu classic monitorování a výstrahy služby budou vyřazený a už nebude k dispozici pro použití; Při jakékoli upozornění pravidla, která nadále existovat v upozornění (klasická) nad rámec 2019 dne bude dál spustit, ale není k dispozici pro úpravy.
+Všechny klasické monitorování a upozorňování systémy včetně odpovídající [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](insights-alerts-powershell.md), [rozhraní příkazového řádku](insights-alerts-command-line-interface.md), [stránka na webu Azure portal](alert-metric-classic.md)a [ Prostředek šablony](monitoring-enable-alerts-using-template.md) zůstane až do konce dne 2019 použitelné. 
 
-Všechny výstrahy zbývajících v klasickém monitoring a alerting platformy nad rámec 2019 dne, bude automaticky migrovat od Microsoftu na ekvivalentní na nové platformě Azure monitor v červenci 2019. Proces bude bezproblémové bez jakýchkoli prostojů a ujistěte se, že zákazníci mají bez ztráty monitorování pokrytí.
+Na konci dne. 2019 ve službě Azure Monitor:
+
+- Klasické služby monitorování a oznamování bude vyřazeno a již není k dispozici pro vytvoření nového pravidla upozornění
+- Pravidla výstrah, které dál existovat v upozornění (klasická) nad rámec 2019 dne bude i nadále spouštět a aktivují upozornění, ale nebudou k dispozici pro úpravy.
+- Od července 2019 se všechna pravidla upozornění v klasickém monitoring a alerting budou automaticky migrovat od Microsoftu na ekvivalentní na nové platformě Azure monitor. Proces bude bezproblémové bez výpadku a bez ztráty monitorování pokrytí budou mít zákazníci.
 
 Brzy budeme poskytovat nástroje, aby bylo možné odpojit migrovat vaše upozornění z [upozornění (klasická) části](monitoring-overview-alerts-classic.md) z webu Azure portal a nová upozornění Azure. Všechna pravidla nakonfigurovaných ve výstrahách (classic), které se migrují na nový Azure Monitor, zůstanou a nebudou účtovat. Migrované pravidla upozornění classic také nenese žádné poplatky pro odesílání nabízených oznámení prostřednictvím e-mailu, webhooku nebo aplikaci LogicApp. Použití novější oznámení nebo akce typů (jako je SMS, hlasovým hovorem, integraci ITSM atd.) bude však fakturovatelné, zda je přidána do migrovaných nebo nové výstrahy. Další informace najdete v tématu [ceny služby Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
 

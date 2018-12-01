@@ -9,14 +9,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/21/2018
+ms.date: 11/28/2018
 ms.author: barclayn
-ms.openlocfilehash: ca72d33b52bdda2ebce432dffd46a84963a7bce5
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a711fbfe262ea3f9e12e0a4b4f5bf73243a6c726
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319523"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678964"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Sítě Azure vyhrazené HSM
 

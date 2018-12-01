@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/21/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c58c1972fee782a93f9641d00376db916021f95
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4a1be3b948ca5571972179e08ba8b85657b0bb8d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634485"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725161"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -52,6 +52,23 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* Podpora více oblastí zápisu přidá pro přímý režim.
+* Přidání podpory pro zpracování IOExceptions vyvolána jako ServiceUnavailable výjimky z proxy serveru.
+* Oprava chyby v zásadách koncového bodu zjišťování opakování.
+* Je opravená chyba, aby ukazatel s hodnotou null, které nejsou ve BaseDatabaseAccountConfigurationProvider vyvolání výjimky.
+* Je opravená chyba, ujistěte se, že iterátor dotaz nevrací hodnoty Null.
+* Je opravená chyba, ujistěte se, že je povolené velké PartitionKey
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* Podpora více oblastí zápisu pro režim bránu přidat.
+
+### <a name="a-name11641164"></a><a name="1.16.4"/>1.16.4
+* Oprava chyby v oddílu čtení klíče oblastí pro dotaz.
+
+### <a name="a-name11631163"></a><a name="1.16.3"/>1.16.3
+* Oprava chyby v nastavení velikost záhlaví token pokračování v režimu DirectHttps.
 
 ### <a name="a-name11621162"></a><a name="1.16.2"/>1.16.2
 * Přidání streamovaných převzetí služeb při selhání podpory.
@@ -205,6 +222,10 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [2.1.1](#2.1.1) |21. listopadu 2018 |--- |
+| [2.0.0](#2.0.0) |21. září 2018 |--- |
+| [1.16.4](#1.16.4) |10. září 2018 |--- |
+| [1.16.3](#1.16.3) |09. září 2018 |--- |
 | [1.16.2](#1.16.2) |29. června 2018 |--- |
 | [1.16.1](#1.16.1) |16. května 2018 |--- |
 | [1.16.0](#1.16.0) |15. března 2018 |--- |

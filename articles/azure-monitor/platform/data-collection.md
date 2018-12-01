@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 756e1426d417c47210e3b766d9d67ef1a70d2516
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 5f7c82143ab11787f5ce186623c1ed4903891c18
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334138"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680347"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../../azure-monitor/overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -137,13 +137,13 @@ Shromážděné službou Azure Monitor protokoly se ukládají ve službě Log A
 ### <a name="sources-of-log-data"></a>Zdroje dat protokolu
 Log Analytics může shromažďovat data z široké škály zdrojů i v rámci Azure i z místních prostředků. Zdroje dat zapsaných do Log Analytics patří následující:
 
-- [Protokoly aktivit](../../log-analytics/log-analytics-activity.md) z prostředků Azure, které obsahují informace o své konfiguraci a stavu a [diagnostické protokoly](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) , které poskytují přehled o jejich operace.
+- [Protokoly aktivit](../../azure-monitor/platform/collect-activity-logs.md) z prostředků Azure, které obsahují informace o své konfiguraci a stavu a [diagnostické protokoly](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) , které poskytují přehled o jejich operace.
 - Agenty na [Windows](../../log-analytics/log-analytics-windows-agent.md) a [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuálních počítačů, které odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) , který můžete nakonfigurovat.
 - Aplikace data shromážděná pomocí [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Data a poskytují přehled o konkrétní aplikaci nebo službu [řešení monitorování](../insights/solutions.md) nebo funkce, jako jsou přehledy o kontejnerech, Insights virtuálního počítače nebo Insights skupiny prostředků.
 - Shromážděná data zabezpečení [Azure Security Center](https://docs.microsoft.com/azure/security-center/).
 - [Metriky](#metrics) z prostředků Azure. To umožňuje ukládat metriky po dobu delší než 93 dnů a analyzujte je pomocí jiných dat protokolu.
-- Telemetrická data zapsána do [služby Azure Storage](../../log-analytics/log-analytics-azure-storage-iis-table.md).
+- Telemetrická data zapsána do [služby Azure Storage](../../azure-monitor/platform/azure-storage-iis-table.md).
 - Vlastní data z jakéhokoli klienta REST API pomocí [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md) klienta nebo z [aplikace logiky Azure](https://docs.microsoft.com/azure/logic-apps/) pracovního postupu.
 
 ![Komponenty služby Log Analytics](media/data-collection/logs-overview.png)
@@ -170,7 +170,7 @@ Všechna data ze služby Log Analytics jsou načítány s použitím [dotaz prot
 ### <a name="metrics-to-logs"></a>Metriky, které protokoly
 Metriky můžete zkopírovat do provádět komplexní analýzy s jinými datovými typy s použitím jeho Bohatý dotazovací jazyk Log Analytics. Můžete také zachovat data protokolu pro delší dobu než metriky, které umožňuje provádět sledování trendů v čase. Když metriky nebo jiná data výkonu je uložená ve službě Log Analytics, která data funguje jako protokol. Použití metrik pro podporu téměř v reálném čase analýzy a upozornění při používání protokolů pro sledování trendů a analýzy s ostatními daty.
 
-Pokyny pro shromažďování metrik z prostředků v Azure můžete získat [metriky pro použití v Log Analytics a Azure shromažďovat protokoly služby](../../log-analytics/log-analytics-azure-storage.md). Získejte pokyny pro shromažďování metrik prostředků z prostředků Azure PaaS za [konfigurace shromažďování metrik prostředků Azure PaaS s využitím Log Analytics](../../log-analytics/log-analytics-collect-azurepass-posh.md).
+Pokyny pro shromažďování metrik z prostředků v Azure můžete získat [metriky pro použití v Log Analytics a Azure shromažďovat protokoly služby](../../azure-monitor/platform/collect-azure-metrics-logs.md). Získejte pokyny pro shromažďování metrik prostředků z prostředků Azure PaaS za [konfigurace shromažďování metrik prostředků Azure PaaS s využitím Log Analytics](../../azure-monitor/platform/collect-azurepass-posh.md).
 
 ### <a name="logs-to-metrics"></a>Protokoly a metriky
 Jak je popsáno výše, jsou responzivní více než tento počet protokolů, metrik, takže můžete vytvářet upozornění s nižší latencí a s nižšími náklady. Log Analytics shromažďuje značné množství číselná data, která je vhodná pro metriky, ale není uložený v databázi Azure metriky.  Běžným příkladem jsou data o výkonu shromážděná z agentů a řešení pro správu. Některé z těchto hodnot je možné zkopírovat do databáze metrik, kde jsou k dispozici pro výstrahy a analýzy s Průzkumníkem metrik.

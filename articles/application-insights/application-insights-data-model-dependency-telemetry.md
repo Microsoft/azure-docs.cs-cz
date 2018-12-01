@@ -8,17 +8,16 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 5765be9fc88cbe38841078b5c298d3ee12269e6d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 0f09561c362494d1e41edf29b85dee77dbbc3678
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092549"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721591"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrie závislostí: datový model Application Insights
 

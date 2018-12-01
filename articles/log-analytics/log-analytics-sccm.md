@@ -10,17 +10,16 @@ ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a4c429b1c54c6bf71175abbc763a178792281a0f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 4e20d787bef4da518765d1eeeb33237ddd612606
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633142"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721217"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Propojení Configuration Manageru k Log Analytics
 Můžete svoje prostředí System Center Configuration Manager připojit ke službě Azure Log Analytics k synchronizaci zařízení shromažďování dat a odkazují na tyto kolekce v Log Analytics a Azure Automation.  
@@ -38,7 +37,7 @@ Následující kroky shrnují postup konfigurace integrace nástroje Configurati
 4. V nástroji Configuration Manager [aktualizovat vlastnosti připojení](#update-oms-connection-properties) Pokud tajný klíč klienta nebo hesla nikdy vyprší platnost nebo dojde ke ztrátě.
 5. [Stáhnout a nainstalovat agenta Microsoft Monitoring Agent](#download-and-install-the-agent) v počítači s aplikací nástroji Configuration Manager service připojení role systému lokality bodu. Agent odesílá data Configuration Manageru k pracovnímu prostoru Log Analytics.
 6. Ve službě Log Analytics [importovat kolekce z nástroje Configuration Manager](#import-collections) jako skupiny počítačů.
-7. V Log Analytics, zobrazení dat z nástroje Configuration Manager jako [skupiny počítačů](log-analytics-computer-groups.md).
+7. V Log Analytics, zobrazení dat z nástroje Configuration Manager jako [skupiny počítačů](../azure-monitor/platform/computer-groups.md).
 
 Další informace o připojení nástroje Configuration Manager ke službě Log Analytics na [synchronizovat data z nástroje Configuration Manager ke službě Microsoft Log Analytics](https://technet.microsoft.com/library/mt757374.aspx).
 
@@ -52,8 +51,8 @@ V následujícím postupu udělíte *Přispěvatel* role ve vašem pracovním pr
 1. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-sccm/azure-portal-01.png)<br><br>  
 2. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor změnit.
 3. V levém podokně vyberte **řízení přístupu (IAM)**.
-4. Na stránce řízení přístupu, klikněte na **přidat** a **přidat oprávnění** otevře se podokno.
-5. V **přidat oprávnění** podokně v části **Role** rozevíracího seznamu vyberte **Přispěvatel** role.  
+4. V stránku řízení přístupu (IAM), klikněte na tlačítko **přidat přiřazení role** a **přidat přiřazení role** otevře se podokno.
+5. V **přidat přiřazení role** podokně v části **Role** rozevíracího seznamu vyberte **Přispěvatel** role.  
 6. V části **přiřadit přístup k** rozevíracího seznamu vyberte aplikace nástroje Configuration Manager předtím vytvořili ve službě AD a potom klikněte na tlačítko **OK**.  
 
 ## <a name="download-and-install-the-agent"></a>Stažení a instalace agenta
@@ -107,7 +106,7 @@ Po dokončení počáteční konfiguraci pro import kolekce zařízení v hierar
    ![Skupiny počítačů – SCCM kartu](./media/log-analytics-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Zobrazení dat z nástroje Configuration Manager
-Po přidání připojení k Log Analytics do nástroje Configuration Manager a instalace agenta v počítači se spuštěnou nástroji Configuration Manager service připojení role systému lokality bodu, z agenta se odešlou do služby Log Analytics. Vaše kolekce nástroje Configuration Manager ve službě Log Analytics se zobrazí jako [skupiny počítačů](log-analytics-computer-groups.md). Můžete zobrazit skupiny z **nástroje Configuration Manager** stránky **Settings\Computer skupiny**.
+Po přidání připojení k Log Analytics do nástroje Configuration Manager a instalace agenta v počítači se spuštěnou nástroji Configuration Manager service připojení role systému lokality bodu, z agenta se odešlou do služby Log Analytics. Vaše kolekce nástroje Configuration Manager ve službě Log Analytics se zobrazí jako [skupiny počítačů](../azure-monitor/platform/computer-groups.md). Můžete zobrazit skupiny z **nástroje Configuration Manager** stránky **Settings\Computer skupiny**.
 
 Po importu kolekce se zobrazí, kolik počítačů s členstvím v kolekci byl zjištěn. Zobrazí se také počet kolekcí, které byly naimportovány.
 

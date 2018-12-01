@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/14/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2e93a8340699d1fcf68c53baa87990e799bc933d
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3283e7b0e0b7e20d4b8522f08ab2460504fa355f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447575"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723427"
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: Sestavení webového rozhraní API .NET
 
@@ -39,17 +39,17 @@ Dále musíte vytvořit aplikaci webového rozhraní API v adresáři B2C. Azure
 * Zadejte identifikátor aplikace do **Identifikátor URI ID aplikace**. Zkopírujte celý **Identifikátor URI ID aplikace**. Budete ho potřebovat později.
 * Přidejte oprávnění prostřednictvím nabídky **Publikované obory**.
 
-## <a name="create-your-policies"></a>Vytvořte svoje zásady
+## <a name="create-your-user-flows"></a>Vytvářet toky uživatelů
 
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Budete muset vytvořit zásadu pro komunikaci s Azure AD B2C. Doporučujeme používat kombinovanou zásadu registrace/přihlášení, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md). Při vytváření zásady nezapomeňte na následující:
+V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md). Je potřeba vytvořit tok uživatele ke komunikaci s Azure AD B2C. Doporučujeme používat flow kombinované přihlášení-registrace/přihlášení uživatele, jak je popsáno v [článku toku uživatele](active-directory-b2c-reference-policies.md). Při vytváření toku uživatele si nezapomeňte na následující:
 
-* Zvolit **Zobrazovaný název** a další atributy registrace ve svojí zásadě.
-* Zvolit **Zobrazovaný název** a deklarace identity **ID objektu** jako deklarace identity aplikace v každé zásadě. Můžete zvolit i další deklarace identity.
-* Po vytvoření každé zásady si poznamenejte její **Název**. Název zásady budete potřebovat později.
+* Zvolte **zobrazovaný název** a další atributy registrace ve svém toku uživatele.
+* Zvolte **zobrazovaný název** a **ID objektu** deklarace identity jako deklarace identity aplikace pro každý tok uživatele. Můžete zvolit i další deklarace identity.
+* Kopírovat **název** každý toku uživatele. po jeho vytvoření. Název toku uživatele budete potřebovat později.
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-Po úspěšném vytvoření této zásady jste připraveni k sestavení aplikace.
+Po úspěšném vytvoření toku uživatele budete připraveni k sestavení aplikace.
 
 ## <a name="download-the-code"></a>Stáhněte si kód
 
@@ -63,20 +63,20 @@ Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohl
 
 ### <a name="update-the-azure-ad-b2c-configuration"></a>Aktualizace konfigurace Azure AD B2C
 
-Naše ukázka je nakonfigurovaná k použití zásad a ID klienta naše ukázkového tenanta. Pokud chcete použít vlastního tenanta, musíte provést následující akce:
+Naše ukázka je nakonfigurovaná pro toky uživatelů a ID klienta naše ukázkového tenanta. Pokud chcete použít vlastního tenanta, musíte provést následující akce:
 
 1. Otevřete `web.config` v projektu `TaskService` a nahraďte následující hodnoty:
     * `ida:Tenant` názvem vašeho tenanta
     * `ida:ClientId` identifikátorem aplikace webového rozhraní API
-    * `ida:SignUpSignInPolicyId` názvem zásady registrace/přihlášení
+    * `ida:SignUpSignInPolicyId` s názvem "Registrace nebo přihlášení" toku uživatele
 
 2. Otevřete `web.config` v projektu `TaskWebApp` a nahraďte následující hodnoty:
     * `ida:Tenant` názvem vašeho tenanta
     * `ida:ClientId` identifikátorem webového aplikace
     * `ida:ClientSecret` tajným klíčem webové aplikace
-    * `ida:SignUpSignInPolicyId` názvem zásady registrace/přihlášení
-    * `ida:EditProfilePolicyId` názvem zásady pro úpravu profilu
-    * `ida:ResetPasswordPolicyId` názvem zásady pro resetování hesla
+    * `ida:SignUpSignInPolicyId` s názvem "Registrace nebo přihlášení" toku uživatele
+    * `ida:EditProfilePolicyId` s názvem "Upravit profil" toku uživatele
+    * `ida:ResetPasswordPolicyId` s názvem "Resetovat heslo" toku uživatele
     * `api:ApiIdentifier` identifikátorem URI ID aplikace
 
 
@@ -169,7 +169,7 @@ public class TasksController : ApiController
 
 ### <a name="get-user-information-from-the-token"></a>Získání informací o uživateli z tokenu
 
-`TasksController` ukládá úkoly do databáze, kde má každý úkol přidruženého uživatele, který úkol „vlastní“. Vlastník je identifikován pomocí **ID objektu** uživatele. (To je důvod, proč bylo nutné přidat ID objektu jako deklaraci identity aplikace ve všech vašich zásadách.)
+`TasksController` ukládá úkoly do databáze, kde má každý úkol přidruženého uživatele, který úkol „vlastní“. Vlastník je identifikován pomocí **ID objektu** uživatele. (To je důvod, proč je nutné přidat ID objektu jako aplikace deklarace identity ve všech vašich toků uživatelů.)
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -204,6 +204,6 @@ public IEnumerable<Models.Task> Get()
 
 Nakonec sestavte a spusťte `TaskWebApp` a `TaskService`. Vytvořte nějaké úkoly v seznamu úkolů uživatele a všimněte si, že jsou zachované v rozhraní API i po vypnutí a restartování klienta.
 
-## <a name="edit-your-policies"></a>Úprava zásad
+## <a name="edit-your-user-flows"></a>Upravit vaše toky uživatelů
 
-Po zabezpečení rozhraní API pomocí Azure AD B2C můžete experimentovat se zásadou registrace/přihlášení a zjistit, jaký vliv mají (nebo nemají) na rozhraní API. Můžete také manipulovat s deklaracemi identity aplikace v zásadách a změnit, jaké informace o uživateli mají být přístupné v rozhraní API. Jakékoli přidané deklarace identity budou dostupné vašemu webovému rozhraní API .NET MVC v objektu `ClaimsPrincipal`, jak je popsáno výše.
+Po mají zabezpečení rozhraní API pomocí Azure AD B2C, můžete experimentovat s přihlašování – v registrace/přihlášení toku uživatele si a zjistit, jaký vliv (nebo nemají) na rozhraní API. Můžete manipulovat s deklaracemi identity aplikace v tocích uživatelů a změnit informace o uživateli, který je k dispozici ve webovém rozhraní API. Jakékoli přidané deklarace identity budou dostupné vašemu webovému rozhraní API .NET MVC v objektu `ClaimsPrincipal`, jak je popsáno výše.

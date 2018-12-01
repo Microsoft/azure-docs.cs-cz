@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 8343c27693538480757a879e477ec77fba08de3d
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 350c009f77bc37ae2201b1d5c3b701e89301b7aa
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958334"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721693"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics
 
@@ -73,7 +72,7 @@ Kontrola [využití Log Analytics a odhadované náklady](log-analytics-usage.md
 ### <a name="manage-the-maximum-daily-data-volume"></a>Správa maximální denní objem dat 
 Následující kroky popisují, jak nakonfigurovat limit Správa objemu dat, která Log Analytics bude ingestovat za den.  
 
-1. V pracovním prostoru vyberte **využití a odhadované náklady** v levém podokně.
+1. V levém podokně vašeho pracovního prostoru vyberte **Využití a odhadované náklady**.
 2. Na **využití a odhadované náklady** stránek pro vybraný pracovní prostor, klikněte na tlačítko **Správa objemu dat** z horní části stránky. 
 5. Denní limit je **OFF** ve výchozím nastavení – klikněte na tlačítko **ON** ji povolit, a pak nastavit limit objemu dat v GB za den.<br><br> ![Konfigurace omezení dat log Analytics](media/log-analytics-manage-cost-storage/set-daily-volume-cap-01.png)
 
@@ -99,8 +98,8 @@ Po upozornění je definován a dosáhnete limitu, výstraha se aktivuje a prov�
 ## <a name="change-the-data-retention-period"></a>Změnit dobu uchování dat 
 Následující kroky popisují, jak nakonfigurovat jak dlouho protokol dat se uchovává ve vašem pracovním prostoru.
  
-1. V pracovním prostoru vyberte **využití a odhadované náklady** v levém podokně.
-2. Na **využití a odhadované náklady** klikněte na **Správa objemu dat** z horní části stránky.
+1. V levém podokně vašeho pracovního prostoru vyberte **Využití a odhadované náklady**.
+2. V horní části stránky **Využití a odhadované náklady** klikněte na **Správa objemu dat**.
 5. V podokně s pomocí posuvníku zvyšte nebo snižte počet dní a potom klikněte na tlačítko **OK**.  Pokud používáte *bezplatné* úroveň, nebudete moci upravit dobu uchovávání dat a budete muset upgradovat na placenou úroveň cílem kontrolovat, toto nastavení.<br><br> ![Změna nastavení uchovávání dat pracovního prostoru](media/log-analytics-manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží

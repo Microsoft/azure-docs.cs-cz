@@ -9,16 +9,15 @@ editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 31070d03711891353823a72ed9c805995d36024b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 90918b306b83a17476107ae427fc938509712d9e
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633159"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725977"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor řešení – nejčastější dotazy
 

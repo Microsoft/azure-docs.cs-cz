@@ -9,16 +9,15 @@ ms.assetid: 9cd2ecdb-c2b9-4e4a-b6aa-beb0c2ca4ffc
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6ee2f879a401167958d6b2d4ae6d81cf140b5474
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 343593929c31a8da7542695fbc6f5d95cfbdc0cd
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094511"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720826"
 ---
 # <a name="sdk-release-notes---application-insights"></a>Poznámky k verzi sady SDK – Application Insights
 Tady jsou podrobná zpráva k vydání a aktualizace pokyny, jak naše sady SDK:

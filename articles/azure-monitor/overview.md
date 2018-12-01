@@ -9,16 +9,15 @@ documentationcenter: monitoring-and-diagnostics
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: d1b7b5baeba88ec0209abff60e9327031afa8b66
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5ef451da3eae696c3506f25ee9458b3ad3286b07
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633771"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721178"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -137,7 +136,7 @@ Automatické škálování umožňuje mít správného množství prostředků s
 ### <a name="logic-apps"></a>Logic Apps
 [Logic Apps](https://azure.microsoft.com/services/logic-apps) je služba, která umožňuje automatizovat úlohy a obchodních procesů pomocí pracovních postupů, které se integrují s různými systémy a službami. Aktivity jsou k dispozici, čtení a zápis metrik a protokolů ve službě Azure Monitor, které umožňuje vytvářet pracovní postupy integrace s celou řadu jiných systémů.
 
-![Aplikace logiky](../log-analytics/media/log-analytics-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
+![Aplikace logiky](platform/media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="api"></a>Rozhraní API
 Několik rozhraní API jsou dostupná pro čtení a zápis metriky a protokoly z Azure monitoru a kromě přístupu vygenerované výstrahy. Můžete také nakonfigurovat a načíst výstrahy. To vám poskytne v podstatě neomezené možnosti, jak vytvářet vlastní řešení, které se integrují se službou Azure Monitor.

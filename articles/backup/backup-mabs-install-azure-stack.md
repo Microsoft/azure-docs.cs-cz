@@ -10,16 +10,15 @@ keywords: Azure backup serveru. Chraňte úlohy; zálohování úloh
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 14379d82b4b60c0ea555388ac61c9c7b8fbe9e4f
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576693"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721425"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -328,10 +327,10 @@ Jakmile budete vědět o stavu možnosti připojení Azure a předplatné Azure,
 | Stav připojení | předplatné Azure | Zálohování do Azure | Zálohování na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
 | Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
-| Připojeno |Vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Připojeno |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Připojeno |Zrušení zřízení |Zastaveno |Zastaveno |Body obnovení zastavena a Azure odstranit |Zastaveno |
 | Došlo ke ztrátě připojení > 15 dnů |Aktivní |Zastaveno |Zastaveno |Povoleno |Povoleno |
-| Došlo ke ztrátě připojení > 15 dnů |Vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Došlo ke ztrátě připojení > 15 dnů |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Došlo ke ztrátě připojení > 15 dnů |Zrušení zřízení |Zastaveno |Zastaveno |Body obnovení zastavena a Azure odstranit |Zastaveno |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovit ze ztráty připojení

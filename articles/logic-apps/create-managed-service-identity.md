@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 10/05/2018
-ms.openlocfilehash: 84529e1097678ba7a039ffaeec57a9293c93dafd
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 19e6693de673eae6fe0b885580975c4cefc35d60
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229635"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725144"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Ověřování a přístup k prostředkům pomocí spravované identity v Azure Logic Apps
 
@@ -128,13 +128,13 @@ Udělit přístup do jiného prostředku Azure pro svou aplikaci logiky, systém
 
 1. Na webu Azure Portal přejděte k prostředku Azure ve které chcete přiřadit přístup pro spravovanou identitu. 
 
-1. V nabídce prostředků vyberte **řízení přístupu (IAM)** a zvolte **přidat**. 
+1. V nabídce prostředků vyberte **řízení přístupu (IAM)** a zvolte **přidat přiřazení role**. 
 
-   ![Přidání oprávnění](./media/create-managed-service-identity/add-permissions-logic-app.png)
+   ![Přidání přiřazení role](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. V části **přidat oprávnění**, vyberte **Role** chcete použít pro identitu. 
+1. V části **přidat přiřazení role**, vyberte **Role** chcete použít pro identitu. 
 
-1. V **přiřadit přístup k** vlastnosti, vyberte **uživatele Azure AD, skupinu nebo aplikaci**, pokud ještě není vybraná.
+1. V **přiřadit přístup k** vlastnosti, vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**, pokud ještě není vybraná.
 
 1. V **vyberte** pole, počínaje první znak v názvu vaší aplikace logiky, zadejte název vaší aplikace logiky. Jakmile se zobrazí vaše aplikace logiky, vyberte aplikaci logiky.
 

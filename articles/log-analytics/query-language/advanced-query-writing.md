@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 3bb7e9837f74fd04d38cc77a9504cc26c6dcf803
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 77f2304d8d589e69f6a8b255f423fa4dd105c125
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854182"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680272"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>Zápis pokročilé dotazy v Log Analytics
 

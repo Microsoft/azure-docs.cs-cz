@@ -9,16 +9,15 @@ ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a031ede814a963f25f1a3a3fc9725d9e5670a8e
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: f5179730223609def5ddb0e45317c2f986584139
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824638"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680476"
 ---
 # <a name="monitor-azure-web-app-performance"></a>Monitorování výkonu webových aplikací Azure
 Na webu [Azure Portal](https://portal.azure.com) můžete pro své [webové aplikace Azure](../app-service/app-service-web-overview.md) nastavit monitorování výkonu. [Azure Application Insights](app-insights-overview.md) využívá vaši aplikaci k odesílání telemetrických dat o jejích aktivitách do služby Application Insights, kde se ukládají a analyzují. Tam lze grafy metrik a vyhledávací nástroje použít při řešení problémů s diagnostikou, při zvyšování výkonu a při vyhodnocování využití.
@@ -43,9 +42,9 @@ Pokud už webovou aplikaci v Azure spouštíte, máte již monitorování do jis
 
     ![Používejte webovou aplikaci.](./media/app-insights-azure-web-apps/create-resource.png)
 
-2. Po vytvoření vyberte váš prostředek **kontrola a aktualizace rozšíření Application Insights pro webovou aplikaci** potvrďte, že rozšíření je aktuální.
+2. Po určení, který prostředek se má použít, můžete nastavit, jak chcete application insights shromažďovat data pro jednotlivé platformy pro vaši aplikaci.
 
-     ![Zkontrolujte a aktualizujte rozšíření webu](./media/app-insights-azure-web-apps/check-and-update.png)
+    ![Vyberte možnosti jednotlivé platformy](./media/app-insights-azure-web-apps/choose-options.png)
 
 3. Po instalaci Application Insights **webovou aplikaci používejte**.
 
@@ -64,7 +63,7 @@ Později můžete pomocí Application Insights aplikaci sestavit, pokud budete c
 
 *Jak lze odebrat Application Insights nebo přepnout na odesílání do jiného prostředku?*
 
-* V Azure otevřete okno s ovládacími prvky webové aplikace a v části Vývojové nástroje otevřete **Rozšíření**. Odstraňte rozšíření Application Insights. Potom v části Monitorování zvolte Application Insights a vytvořte nebo vyberte požadovaný prostředek.
+* V Azure, otevřete ovládací okno webové aplikace a v části nastavení, otevřete **Application Insights**. Application Insights můžete vypnout kliknutím **zakázat** v horní části stránky, nebo vybrat nový prostředek v **změnit váš prostředek** oddílu.
 
 ## <a name="build-the-app-with-application-insights"></a>Sestavení aplikace s použitím Application Insights
 Application Insights může poskytovat podrobnější telemetrie po nainstalování sady SDK do příslušné aplikace. Konkrétně je možné shromažďovat protokoly trasování, [psát vlastní telemetrii](app-insights-api-custom-events-metrics.md)a získávat podrobnější sestavy výjimek.

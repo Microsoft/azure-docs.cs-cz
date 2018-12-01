@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: caa1b6f31325cd67aad106f7829bd32a5e7aeb53
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: c6202ff6f00412a779fb62b7a3bcc3f30ecbb25a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635811"
+ms.locfileid: "52682313"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -52,7 +52,7 @@ Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nast
 
 Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Aktualizace klasifikované jako *volitelné* nejsou zahrnuté do oboru nasazení pro počítače s Windows. Pouze požadované aktualizace jsou součástí rozsahu nasazení. 
 
-Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů. Zadáte také plán pro schválení a nastavení určitou dobu, během které se můžou aktualizace instalovat.
+Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../azure-monitor/platform/computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů. Zadáte také plán pro schválení a nastavení určitou dobu, během které se můžou aktualizace instalovat.
 
 Aktualizace se instalují podle runbooků ve službě Azure Automation. Nelze zobrazit tyto sady runbook a runbook nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace nasazení aktualizace vytvoří plán, který se spustí hlavní runbook aktualizace v zadanou dobu pro zahrnuté počítače. Hlavní runbook spouští podřízený runbook na každém agentovi k instalaci požadovaných aktualizací.
 
@@ -192,7 +192,7 @@ Spustit hledání v protokolu, který vrací informace o počítači, aktualizac
 
 ## <a name="install-updates"></a>Instalovat aktualizace
 
-Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače ve vašem pracovním prostoru, můžete nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadáte datum a čas pro nasazení a počítač nebo skupinu počítačů, které chcete zahrnout do oboru nasazení. Další informace o skupinách počítačů najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
+Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače ve vašem pracovním prostoru, můžete nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadáte datum a čas pro nasazení a počítač nebo skupinu počítačů, které chcete zahrnout do oboru nasazení. Další informace o skupinách počítačů najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md).
 
  Když do svého nasazení aktualizací zahrnete skupiny počítačů, členství ve skupině se vyhodnotí jenom jednou, v době vytvoření plánu. Následné změny ve skupině se neprojeví. K orientaci použijte [dynamické skupiny](#using-dynamic-groups), tyto skupiny jsou vyřešené v době nasazení a jsou definované v dotazu.
 
@@ -210,7 +210,7 @@ Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení
 | Název |Jedinečný název pro identifikaci nasazení aktualizace. |
 |Operační systém| Linux nebo Windows|
 | Skupiny, které se aktualizace (preview)|Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups)|
-| Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md). |
+| Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md). |
 |Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
 |Zahrnout nebo vyloučit aktualizace|Tím se otevře **zahrnout/vyloučit** stránky. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](automation-update-management.md#inclusion-behavior) |
 |Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|

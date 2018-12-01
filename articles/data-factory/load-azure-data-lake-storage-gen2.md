@@ -9,18 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 558b426ea85decb0309390e36910eb18719e6e99
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 108ced5416eb7cd6826f4f96d4f62fd33e8f5653
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002523"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680850"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-preview-with-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen2 (Náhled) pomocí služby Azure Data Factory
 
-[Azure Data Lake Storage Gen2 (Preview)](../storage/data-lake-storage/introduction.md) Přidá protokol pomocí funkcí obor názvů a zabezpečení systému hierarchické souboru do Azure Blob Storage, což usnadňuje připojení analytics architektury do vrstvy odolné úložiště. V Data Lake Storage Gen2 (Preview), zůstanou všechny vlastnosti objektu úložiště při přidávání výhody rozhraní systému souborů.
+Azure Data Lake Storage Gen2 ve verzi Preview je sada funkcí, které jsou vyhrazené pro analýzy velkých objemů dat, integrované do [úložiště objektů Blob v Azure](../storage/blobs/storage-blobs-introduction.md). Umožňuje uživateli rozhraní s vašimi daty použitím obou paradigmat souboru systému a objektu úložiště.
 
 Azure Data Factory je služba pro integraci plně spravovaný cloudový datový. Služby můžete použít k naplnění lake s daty z široké místních a cloudových dat ukládá a ušetřit čas při vytváření vlastních analytických řešení. Podrobný seznam podporovaných konektorů, najdete v tabulce [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -76,14 +76,14 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
     ![Stránka zdrojové úložiště dat s3](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
     
 4. V **připojení zadejte Amazon S3** stránce, proveďte následující kroky:
-   1. Zadejte **Access Key ID** hodnotu.
-   2. Zadejte **tajný přístupový klíč** hodnotu.
-   3. Klikněte na tlačítko **Test připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
+
+    1. Zadejte **Access Key ID** hodnotu.
+    2. Zadejte **tajný přístupový klíč** hodnotu.
+    3. Klikněte na tlačítko **Test připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
+    4. Uvidíte, že se vytvoří nové připojení. Vyberte **Další**.
    
-   ![Zadání účtu Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-   
-   4. Uvidíte, že se vytvoří nové připojení. Vyberte **Další**.
-   
+    ![Zadání účtu Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      
 5. V **zvolte vstupní soubor nebo složku** stránce, přejděte do složky a souboru, který chcete zkopírovat. Vyberte složky nebo souboru, vyberte **zvolit**:
 
     ![Zvolte vstupní soubor nebo složku](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
@@ -99,7 +99,7 @@ V tomto článku se dozvíte, jak pomocí nástroje pro kopírování dat Data F
 8. V **připojení zadejte Azure Data Lake Storage** stránce, proveďte následující kroky:
 
    1. Vyberte vaše Data Lake Storage Gen2 podporující účet z "názvu účtu úložiště" rozevírací seznam.
-   2. Vyberte **Další**.
+   2. Vyberte **Dokončit** k vytvoření připojení. Pak vyberte **Další**.
    
    ![Zadejte účet Azure Data Lake Storage Gen2](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 

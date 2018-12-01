@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: d650e0d8b76af8d6bdef5aeadf821e3d8f6d1c79
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fd62e216f70c416cb152971d27d6a6e542d3a936
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241867"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680221"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 
@@ -43,8 +43,8 @@ Následující tabulky uvádějí hlavní funkce systému SQL Server a poskytuje
 | [Automatické ladění (vynucení plánu)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| [Ano](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatické ladění (indexy)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| Ne |
 | [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Ano | Ano |
-| [Soubor BACPAC (export)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ano – viz [export databáze SQL](sql-database-export.md) | Ne |
-| [Soubor BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ano – viz [import databáze SQL](sql-database-import.md) | Ne |
+| [Soubor BACPAC (export)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ano – viz [export databáze SQL](sql-database-export.md) | Ano |
+| [Soubor BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ano – viz [import databáze SQL](sql-database-import.md) | Ano |
 | [Příkaz BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Ne, najdete v článku pouze systém automatických záloh spouštěných - [automatické zálohování](sql-database-automated-backups.md) | Systémem vyvolaného automatizovaných záloh a uživatel inicioval pouze kopie zálohy – viz [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Předdefinované funkce](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina – viz jednotlivých funkcí | Ano – viz [uložené procedury, funkce, aktivační události rozdíly](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
 | [Funkce Change data capture](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Ne | Ano |

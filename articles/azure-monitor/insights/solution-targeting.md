@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: e4e0ff288b9d5539a0110fb157e32b4f23d06bb6
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 53f28d29b9667bb885a5c3d0da8d926f756f3427
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715171"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682061"
 ---
 # <a name="targeting-management-solutions-in-azure-preview"></a>Cílení na řešení pro správu v Azure (Preview)
 Když přidáte řešení pro správu k vašemu předplatnému, se automaticky nasadí ve výchozím nastavení pro všechny agenty Windows a Linuxem, připojený k pracovnímu prostoru Log Analytics.  Můžete chtít spravovat náklady a omezit objem dat shromážděných pro řešení podle omezení na konkrétní sadu agentů.  Tento článek popisuje způsob použití **cílení řešení** což je funkce, která vám umožní použít obor do vašich řešení.
@@ -29,7 +29,7 @@ Existují tři kroky pro cílení na řešení, jak je popsáno v následující
 
 
 ### <a name="1-create-a-computer-group"></a>1. Vytvořit skupinu počítačů
-Zadejte počítače, které chcete zahrnout do oboru tak, že vytvoříte [skupinu počítačů](../../log-analytics/log-analytics-computer-groups.md) v Log Analytics.  Skupina počítačů můžete podle hledání v protokolu nebo importovat z jiných zdrojů, jako jsou skupiny služby Active Directory nebo služby WSUS. Jako [popisovaném](#solutions-and-agents-that-cant-be-targeted), zahrne jenom počítače, které jsou připojeny přímo k Log Analytics v oboru.
+Zadejte počítače, které chcete zahrnout do oboru tak, že vytvoříte [skupinu počítačů](../../azure-monitor/platform/computer-groups.md) v Log Analytics.  Skupina počítačů můžete podle hledání v protokolu nebo importovat z jiných zdrojů, jako jsou skupiny služby Active Directory nebo služby WSUS. Jako [popisovaném](#solutions-and-agents-that-cant-be-targeted), zahrne jenom počítače, které jsou připojeny přímo k Log Analytics v oboru.
 
 Jakmile máte skupinu počítačů, které jsou vytvořené v pracovním prostoru, budete jej zahrnout v konfiguraci oboru, který lze použít na jeden nebo více řešení.
  
@@ -75,4 +75,4 @@ Cílení na řešení nelze použít s následující řešení i v případě, 
 
 ## <a name="next-steps"></a>Další postup
 - Další informace o řešení pro správu řešení, které je možné nainstalovat ve vašem prostředí na včetně [řešení pro správu přidat Azure Log Analytics pro váš pracovní prostor](solutions.md).
-- Další informace o vytváření skupin počítačů na [prohledávání protokolů skupiny počítačů v Log Analytics](../../log-analytics/log-analytics-computer-groups.md).
+- Další informace o vytváření skupin počítačů na [prohledávání protokolů skupiny počítačů v Log Analytics](../../azure-monitor/platform/computer-groups.md).

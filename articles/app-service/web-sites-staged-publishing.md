@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: cb7b114836c83338f71c85f59299ecf1dc4613a9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 32f3dd0543e841c4aae87cf48654c95a4609e51a
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52317615"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682839"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -174,7 +174,7 @@ Při použití [Auto-Swap](#Auto-Swap), některé aplikace mohou vyžadovat akce
     <system.webServer>
         <applicationInitialization>
             <add initializationPage="/" hostName="[app hostname]" />
-            <add initializationPage="/Home/About" hostname="[app hostname]" />
+            <add initializationPage="/Home/About" hostName="[app hostname]" />
         </applicationInitialization>
     </system.webServer>
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9b85ce6bdb7f72c5e4f1cf0d47cc324f5f75ec20
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: cf408cc125362d2ea05c606a0b2e148d60647281
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642484"
+ms.locfileid: "52679575"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Správa instancí v Durable Functions (Azure Functions)
 
@@ -460,7 +460,7 @@ public static Task Run(
     [OrchestrationClient] DurableOrchestrationClient client,
     [TimerTrigger("0 0 12 * * *")]TimerInfo myTimer)
 {
-    return client.InnerClient.PurgeInstanceHistoryAsync( 
+    return client.PurgeInstanceHistoryAsync( 
                     DateTime.MinValue,
                     DateTime.UtcNow.AddDays(-30),  
                     new List<OrchestrationStatus> 

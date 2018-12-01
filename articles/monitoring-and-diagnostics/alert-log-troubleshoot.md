@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: e2326f56ad367f744bc7895bc8c4bfd6f32d0310
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0612a7798d3cc2e43efc296bd2b749735e74f765
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264875"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720843"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
 ## <a name="overview"></a>Přehled
 Tento článek ukazuje, jak řešit běžné problémy, kterým dochází při nastavování upozornění protokolů ve službě Azure monitor. Poskytuje také řešení, která často kladené dotazy týkající se konfigurace upozornění protokolů nebo funkce. 
 
-Termín **upozornění protokolů** k popisu výstrahy, fire podle vlastního dotazu v [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Další informace o funkci, terminologie a typy v [upozornění - Přehled protokolů](monitor-alerts-unified-log.md).
+Termín **upozornění protokolů** popisuje výstrahy, fire podle vlastního dotazu v [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Další informace o funkci, terminologie a typy v [upozornění - Přehled protokolů](monitor-alerts-unified-log.md).
 
 > [!NOTE]
 > Tento článek nebere v úvahu případech, kdy se zobrazí na webu Azure portal a výstraha spuštěná pravidla a provádí přidružené skupiny akcí oznámení. Pro tyto případy, najdete informace v článku na [skupiny akcí](monitoring-action-groups.md).
@@ -35,8 +35,7 @@ Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](
 Ke zmírnění zpoždění příjmu dat, systému vyčká a pokusí znovu výstraha dotazu více než jednou pokud zjistí, že zatím není přijatých potřebná data. Systém má exponenciálně rostoucím čekací doba nastavena. Protokol výstrah pouze aktivační události po dat je k dispozici, takže jejich zpoždění může být způsobeno ingestování protokol pomalých operací. 
 
 ### <a name="incorrect-time-period-configured"></a>Nakonfigurované správné časové období
-Jak je popsáno v článku na [terminologie pro výstrahy protokolu](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types), čas období uvedená v konfiguraci Určuje časový rozsah dotazu. Dotaz vrátí pouze záznamy, které byly vytvořeny v tomto časovém rozsahu. Časové období omezuje data načtena dotaz protokolu, aby se zabránilo zneužití a připojení, vyřešíte nepřetržitou jakýkoli příkaz času (například před) používaných v dotazu protokolu. 
-*Například toto časové období je nastavený na 60 minut a spuštění dotazu v 13:15, se používají pouze záznamy vytvořené mezi 12:15 PM a 1:15 PM pro dotaz protokolu. Pokud dotaz protokolu používá čas příkaz podobný *před (1d)*, dotaz stále pouze používá data mezi 12:15 PM a 1:15 PM, protože toto časové období je nastavena na tento interval.*
+Jak je popsáno v článku na [terminologie pro výstrahy protokolu](monitor-alerts-unified-log.md#log-search-alert-rule---definition-and-types), čas období uvedená v konfiguraci Určuje časový rozsah dotazu. Dotaz vrátí pouze záznamy, které byly vytvořeny v tomto časovém rozsahu. Časové období omezuje data načtena dotaz protokolu, aby se zabránilo zneužití a připojení, vyřešíte nepřetržitou jakýkoli příkaz čas (jako je *před*) používaných v dotazu protokolu. Například toto časové období je nastavený na 60 minut a spuštění dotazu v 13:15, se používají pouze záznamy vytvořené mezi 12:15 PM a 1:15 PM pro dotaz protokolu. Pokud dotaz protokolu používá čas příkaz podobný *před (1d)*, protože toto časové období je nastavena na tento interval.* dotaz stále pouze používá data mezi 12:15 PM a 1:15 PM
 
 Proto zkontrolujte v konfiguraci tohoto časového období odpovídá vašemu dotazu. Například bylo uvedeno dříve, pokud používá dotaz protokolu *před (1d)* jak je znázorněno s zelené značky, pak časové období musí být nastavená na 24 hodin nebo 1 440 minut (jak je uvedeno v Red), aby se dotaz provádí tak, jak má.
 
@@ -77,12 +76,14 @@ Další podrobné jsou některé běžné důvody, proč nakonfigurovaného [pra
 ### <a name="alert-triggered-by-partial-data"></a>Výstraha se aktivuje částečná data
 Provozování Log Analytics a Application Insights Analytics podléhají zpoždění ingestování a zpracování. to v době při spuštění dotaz na upozornění protokolu zadaná - může být případ žádná data k dispozici nebo jenom některá data, které jsou k dispozici. Další informace najdete v tématu [doba příjem dat v Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
 
-V závislosti na konfiguraci pravidla upozornění, může být chybně spalování v případě, že žádná data nebo částečná data v protokolech v době spuštění výstrahy. V takových případech se doporučuje změnit dotaz na upozornění nebo konfigurace. *Například pokud pravidlo výstrah protokolu je nakonfigurován na aktivovat, když počet výsledků dotazu analytics je menší než (Řekněme) 5; potom když žádná data (žádný záznam) nebo částečné výsledky (jeden záznam) získat aktivovat pravidlo upozornění. Kde – po ingestování zpoždění, kdy stejný dotaz se spustí v Analytics dotaz s úplná data může poskytnout výsledek jako 10 záznamů.*
+V závislosti na konfiguraci pravidla upozornění, může mít chybné spalování neexistuje žádná data nebo částečná data v protokolech v době spuštění výstrahy. V takovém případě doporučujeme vám změnit dotaz na upozornění nebo konfigurace. 
+
+Například, pokud je nakonfigurovaný pravidel upozornění protokolů aktivovat, když počet výsledků z dotazu analytics je menší než 5, pak upozornění aktivuje, když není žádná data (žádný záznam) nebo částečné výsledky (jeden záznam). Po prodlevě příjmu dat, ale stejný dotaz s úplnou může poskytnout výsledek 10 záznamů.
 
 ### <a name="alert-query-output-misunderstood"></a>Dotaz na upozornění výstupu nesprávně pochopeny
-Pro upozornění protokolu logiku pro upozornění pochází od uživatele prostřednictvím analytického dotazu. Zadaný dotaz analytics můžete použít různé velké objemy dat a matematické funkce vytvořit konkrétní konstrukce. Výstrahy služby spustí dotaz zajišťované zákazníkem v intervalech zadán s daty za časové období zadaný; upozorňování service umožňuje drobným změní na dotaz zadaný – podle typu výstrahy zvolili a stejné může být dosvědčuje v části "Dotazu má být proveden" Konfigurovat signál logiku obrazovky, jak je znázorněno níže: ![provedení dotazu](./media/monitor-alerts-unified/LogAlertPreview.png)
+Poskytuje logiku pro výstrahy protokolu v dotazu analytics. Analytický dotaz může používat různé velké objemy dat a matematických funkcí.  Výstrahy služby provede dotaz na zadaných s daty pro zadané časové období. Výstrahy služby díky malých změn zadaný dotaz podle typu výstrahy zvolili. To lze zobrazit v části "Dotazu má být proveden" *konfigurovat logiku signálů* obrazovky, jak je znázorněno níže: ![provedení dotazu](./media/monitor-alerts-unified/LogAlertPreview.png)
  
-Jak je zobrazeno v **dotaz, který se spustí** jaké protokolu je oddíl se spustí služba upozornění; uživatel může spustit stanovených dotazu, stejně jako timespan prostřednictvím [portál Analytics](../log-analytics/log-analytics-log-search-portals.md) nebo [rozhraní API pro analýzu](https://docs.microsoft.com/rest/api/loganalytics/) -Pokud chtějí porozumět, než vytvoření výstrahy, může být jaký výstup dotaz na upozornění.
+Jak ukazuje příklad **dotaz, který se spustí** pole je, cokoli běží služba upozornění protokolu. Můžete spustit stanovených dotazu, stejně jako timespan prostřednictvím [portál Analytics](../log-analytics/log-analytics-log-search-portals.md) nebo [rozhraní API pro analýzu](https://docs.microsoft.com/rest/api/loganalytics/) Pokud chcete pochopit, co výstraha dotazu výstup, může být před samotným vytvořením výstrahy.
  
 ## <a name="next-steps"></a>Další postup
 

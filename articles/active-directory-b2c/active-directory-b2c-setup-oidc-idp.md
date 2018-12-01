@@ -7,26 +7,26 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 30bc3e0f1a8230bdbcad653c8c2db7dc078629bb
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 49f3f80832597b231aec812a4c1613da9897f72a
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180344"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52722441"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s OpenID Connect pomocí služby Azure Active Directory B2C
 
 >[!NOTE]
 > Tato funkce je ve verzi public preview. Nepoužívejte tuto funkci v produkčním prostředí.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) je ověřovací protokol, postavený na OAuth 2.0, který umožňuje bezpečně přihlásit uživatele. Většina poskytovatelů identit, které používají tento protokol vyžadoval, jako například [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md), jsou podporovány v Azure AD B2C. Tento článek vysvětluje, jak můžete přidat vlastní poskytovatele OpenID Connect identity do integrovaných zásad.
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) je ověřovací protokol, postavený na OAuth 2.0, který umožňuje bezpečně přihlásit uživatele. Většina poskytovatelů identit, které používají tento protokol vyžadoval, jako například [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md), jsou podporovány v Azure AD B2C. Tento článek vysvětluje, jak můžete přidat vlastní poskytovatele OpenID Connect identity do vašich toků uživatelů.
 
 ## <a name="add-the-identity-provider"></a>Přidat zprostředkovatele identity
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce tenanta Azure AD B2C.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **zprostředkovatelé Identity**a potom klikněte na tlačítko **přidat**.

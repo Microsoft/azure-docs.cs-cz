@@ -1,6 +1,6 @@
 ---
-title: Vytvoření nového prostředku Azure Application Insights | Microsoft Docs
-description: Ručně nastavte Application Insights monitorování nové aplikace za provozu.
+title: Vytvořit nový prostředek služby Azure Application Insights | Dokumentace Microsoftu
+description: Ručně nastavte monitorování pomocí Application Insights pro nové živé aplikace.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,65 +9,64 @@ ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 59bb8564613e9a0cebda00c2c847283ff218b882
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5b6afe4856e7e2c643a636f070937e81a2add2dd
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294713"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724226"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
-Azure Application Insights zobrazí data o vaší aplikaci v Microsoft Azure *prostředků*. Vytvoření nového prostředku, proto je součástí [nastavení Application Insights pro monitorování nové aplikace][start]. V mnoha případech vytvoření prostředku můžete provést automaticky rozhraní IDE. Ale v některých případech můžete vytvořit prostředek ručně – například mít samostatné prostředky pro vývoj a produkční sestavení vaší aplikace.
+Azure Application Insights zobrazí data o vaší aplikaci v Microsoft Azure *prostředků*. Vytváří se nový prostředek je proto součástí [nastavení Application Insights pro monitorování nové aplikace][start]. V mnoha případech vytvoření prostředku můžete udělat automaticky integrovaným vývojovým prostředím. Ale v některých případech můžete vytvořit prostředek ručně – například mít samostatné prostředky pro vývoj a produkčním prostředí sestavení vaší aplikace.
 
-Po vytvoření prostředku, můžete získat svůj klíč instrumentace a použít ke konfiguraci SDK v aplikaci. Klíč prostředku propojí telemetrie do prostředku.
+Po vytvoření prostředku, získejte svůj Instrumentační klíč a použít ke konfiguraci sady SDK v aplikaci. Klíč prostředku propojí telemetrická data do prostředku.
 
-## <a name="sign-up-to-microsoft-azure"></a>Zaregistrujte si Microsoft Azure
-Pokud jste to ještě získali [Microsoft account, pořiďte si ho](http://live.com). (Pokud používáte služby jako Outlook.com, OneDrive, Windows Phone nebo XBox Live, už máte účet Microsoft.)
+## <a name="sign-up-to-microsoft-azure"></a>Zaregistrovat do služby Microsoft Azure
+Pokud jste ještě se dostali [Microsoft account, získejte ji nyní](http://live.com). (Pokud používáte služby jako Outlook.com, OneDrive, Windows Phone nebo XBox Live, již máte účet Microsoft.)
 
-Potřebujete předplatné [Microsoft Azure](http://azure.com). Pokud váš tým nebo společnost má předplatné Azure, vlastník můžete přidat můžete, pomocí účtu Windows Live ID. Se účtují poplatky se používá. Základní plán výchozí umožňuje určité množství experimentální použití zdarma.
+Budete potřebovat předplatné [Microsoft Azure](http://azure.com). Pokud váš tým nebo organizace má předplatné Azure, vlastník vás může přidat do něj pomocí účtu Windows Live ID. Je jenom za využité. Výchozí základní plán umožňuje určitou dobu bezplatně experimentální použití.
 
-Pokud máte k dispozici přístup do předplatného, přihlaste se k Application Insights na [ http://portal.azure.com ](https://portal.azure.com)a používat svůj Live ID k přihlášení.
+Když máte přístup k předplatnému, přihlaste se k Application Insights na [ http://portal.azure.com ](https://portal.azure.com)a použijte účet Live ID se můžete přihlásit.
 
 ## <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 V [portal.azure.com](https://portal.azure.com), přidejte prostředek Application Insights:
 
 ![Klikněte na tlačítko Nový, Application Insights](./media/app-insights-create-new-resource/01-new.png)
 
-* **Typ aplikace** ovlivňuje, co se zobrazí v okně Přehled a vlastnosti, které jsou k dispozici v [metriky explorer][metrics]. Pokud nevidíte vašeho typu aplikace, vyberte Obecné.
-* **Předplatné** je váš účet platebních v Azure.
-* **Skupina prostředků** je užitečný pro správu vlastnosti jako řízení přístupu. Pokud jste již vytvořili ostatní prostředky služby Azure, je možné uvést tento nový prostředek do stejné skupiny.
-* **Umístění** je, kde společnost Microsoft uchovávat data.
-* **Připnout na řídicí panel** vloží dlaždici rychlý přístup pro prostředek na Azure domovské stránky. Nedoporučuje.
+* **Typ aplikace** ovlivňuje, co se zobrazí na kartě s přehledem a k dispozici ve vlastnosti [Průzkumník metrik][metrics]. Pokud se váš typ aplikace, vyberte Obecné.
+* **Předplatné** je váš účet platby v Azure.
+* **Skupina prostředků** je usnadnění pro správu vlastností, jako je řízení přístupu. Pokud jste již vytvořili další prostředky Azure, můžete vložit tento nový prostředek ve stejné skupině.
+* **Umístění** je, kde jsme zachovejte si svá data.
+* **Připnout na řídicí panel** umístí rychlý přístup k dlaždici pro váš prostředek Azure domovskou stránku. Doporučené.
 
-Po vytvoření aplikace, otevře se nové okno. Toto okno je, kde uvidíte data o využití a výkonu o vaší aplikaci. 
+Po vytvoření aplikace se otevře nové okno. V tomto okně je, kde se zobrazí data o využití a výkonu o vaší aplikaci. 
 
-Chcete-li se vrátit k němu při příštím přihlášení do Azure, vyhledejte dlaždice úvodní vaší aplikace na Tabule start (domovskou obrazovku). Nebo klikněte na tlačítko Procházet a najít.
+Chcete-li vrátit zpět do ji při příštím přihlášení k Azure, vyhledejte vaší aplikace rychlý start dlaždici na úvodní panel (domovské obrazovky). Nebo klikněte na tlačítko Procházet a vyhledejte jej.
 
-## <a name="copy-the-instrumentation-key"></a>Zkopírovat klíč instrumentace
-Klíč instrumentace identifikuje prostředek, který jste vytvořili. Je nutné ji poskytnout k sadě SDK.
+## <a name="copy-the-instrumentation-key"></a>Zkopírujte klíč instrumentace
+Instrumentační klíč identifikuje prostředek, který jste vytvořili. Potřebujete ji k sadě SDK.
 
 ![Klikněte na tlačítko Essentials, klikněte na klíč instrumentace, CTRL + C](./media/app-insights-create-new-resource/02-props.png)
 
-## <a name="install-the-sdk-in-your-app"></a>Instalace sady SDK v aplikaci
-Nainstalujte službu Application Insights SDK ve vaší aplikaci. Tento krok výraznou závisí na typu aplikace. 
+## <a name="install-the-sdk-in-your-app"></a>Instalace sady SDK do vaší aplikace
+Nainstalujte službu Application Insights SDK ve vaší aplikaci. Tento krok závisí do značné míry na typu aplikace. 
 
-Klíč instrumentace použít ke konfiguraci [sady SDK, který nainstalujete v aplikaci][start].
+Použijte Instrumentační klíč ke konfiguraci [sady SDK, který nainstalujete v aplikaci][start].
 
-Sada SDK zahrnuje standardní moduly, které odesílat telemetrická data bez nutnosti psaní jakéhokoli kódu. Sledování akcí uživatele nebo diagnostikovat problémy podrobněji, [použít rozhraní API] [ api] k odeslání vlastní telemetrie.
+Sada SDK obsahuje standardní moduly, které odesílají telemetrii, aniž byste museli psát jakýkoli kód. Sledovat uživatelské akce nebo diagnostikovat problémy ve více podrobností, [pomocí rozhraní API] [ api] k odesílání vlastní telemetrie.
 
-## <a name="monitor"></a>Zobrazit data telemetrie
-Zavřete okno rychlý start se vraťte do okna vaší aplikací na portálu Azure.
+## <a name="monitor"></a>Prohlédnout telemetrická data
+Toto okno zavřete, rychlý start se vraťte do okna vaší aplikace na webu Azure Portal.
 
-Kliknutím na dlaždici hledání najdete v části [diagnostické vyhledávání][diagnostic], kde se zobrazí první události. 
+Klikněte na tlačítko hledání dlaždici zobrazíte [diagnostické vyhledávání][diagnostic], kde se zobrazí u prvních událostí. 
 
-Pokud očekáváte více dat, klikněte na tlačítko **aktualizovat** za několik sekund.
+Pokud očekáváte více dat, klikněte na tlačítko **aktualizovat** po pár sekundách.
 
 ## <a name="creating-a-resource-automatically"></a>Vytvoření prostředku automaticky
-Můžete napsat [skript prostředí PowerShell](app-insights-powershell.md) automaticky vytvoření prostředku.
+Můžete napsat [skript prostředí PowerShell](app-insights-powershell.md) automaticky vytvořit prostředek.
 
 ## <a name="next-steps"></a>Další postup
 * [Vytvoření řídicího panelu](app-insights-dashboards.md)

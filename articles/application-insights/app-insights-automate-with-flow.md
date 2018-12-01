@@ -8,16 +8,15 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 65909e13c75ae4d2577ea29f562b841a1eb20477
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c53016c6e8760f2fef15c73f460886c46ac8a58c
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256421"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52679201"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Azure Application Insights pomocí konektoru pro Microsoft Flow
 
@@ -35,7 +34,7 @@ V tomto kurzu se dozvíte, jak vytvořit tok, který používá algoritmus autom
 
 ### <a name="step-1-create-a-flow"></a>Krok 1: Vytvoření toku
 1. Přihlaste se k [Microsoft Flow](https://flow.microsoft.com)a pak vyberte **Moje toky**.
-1. Klikněte na tlačítko **vytvoření toku od začátku**.
+2. Klikněte na tlačítko **vytvoření toku od začátku**.
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Vytvoření aktivační události pro váš tok
 1. Vyberte **plán**a pak vyberte **plán – opakování**.

@@ -7,13 +7,13 @@ manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/28/2018
-ms.author: rayne
-ms.openlocfilehash: 1a9a89138dc71f7a0255b8ab4084182848d6e994
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.author: raynew
+ms.openlocfilehash: 8be247535384fe0fe3dddb5e3f096e457d1a96c4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211736"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726181"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Nastavení IP adres pro připojení po převzetí služeb při selhání do sekundární místní lokality
 

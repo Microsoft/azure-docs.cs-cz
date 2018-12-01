@@ -9,17 +9,16 @@ ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: 6d19c64c74a01a012bac3d867e2d65393ae21cd3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: fbeece7bf9e460453bc3c1c6a9df1f19f767ce48
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577767"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725025"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Usnadňuje korelování dat Application Insights s vlastním zdrojům dat
 

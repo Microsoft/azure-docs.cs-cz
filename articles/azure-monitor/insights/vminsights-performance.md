@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ece5700965018a8a9a98e16a1577309a909b7b7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: cfee8295fc344b1210010a463612fe7d10de280d
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334989"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682907"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Jak graf výkonu pomocí Azure monitoru pro virtuální počítače (Preview)
 Azure Monitor pro virtuální počítače obsahuje sadu grafy výkonu, které se zaměřují provádění několika klíčových ukazatelů výkonu (KPI), které vám pomohou určit, jak dobře virtuálního počítače. Grafy zobrazit využití prostředků za časové období, abyste mohli identifikovat kritické body, anomálie, nebo přepněte do pohledu výpis každý počítač, chcete-li zobrazit využití prostředků na základě metriky vybrané. I když existují mnoho prvků vzít v úvahu při práci s výkonem, monitorování Azure pro virtuální počítače se zaměřuje na operačním systému tak, jak se prostřednictvím procesor, paměť, síťové adaptéry a disky. Výkon doplňuje funkci monitorování stavu a pomáhá vystavit problémy, které označují selhání součásti systému je to možné, podpora ladění a optimalizace pro dosažení efektivity nebo podporují plánování kapacity.  
@@ -33,7 +33,7 @@ Ze služby Azure Monitor funkce výkon poskytuje zobrazení více virtuálních 
 
 ![Zobrazení výkonu nejlepších N insights virtuálního počítače](./media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Na **Top N grafy** kartu, pokud máte více než jeden pracovní prostor Log Analytics vyberte pracovní prostor povolený s řešením z **pracovní prostor** selektoru v horní části stránky. **Skupiny** výběr předplatného, skupiny prostředků, vrátí [skupiny počítačů](../../log-analytics/log-analytics-computer-groups.md)a škálovací sady virtuálních počítačů z počítače související s vybraný pracovní prostor, který vám umožní dál filtrovat výsledky se zobrazí v grafech na této stránce a na stránkách. Výběr pouze se vztahuje na funkce výkonu a ne přenesou do stavu nebo mapy.  
+Na **Top N grafy** kartu, pokud máte více než jeden pracovní prostor Log Analytics vyberte pracovní prostor povolený s řešením z **pracovní prostor** selektoru v horní části stránky. **Skupiny** výběr předplatného, skupiny prostředků, vrátí [skupiny počítačů](../../azure-monitor/platform/computer-groups.md)a škálovací sady virtuálních počítačů z počítače související s vybraný pracovní prostor, který vám umožní dál filtrovat výsledky se zobrazí v grafech na této stránce a na stránkách. Výběr pouze se vztahuje na funkce výkonu a ne přenesou do stavu nebo mapy.  
 
 Ve výchozím nastavení zobrazit grafy posledních 24 hodin. Použití **TimeRange** selektor, můžete zadat dotaz na historické časových rozsahů ukazují, jak výkon hledá v minulosti až 30 dnů.   
 

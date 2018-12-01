@@ -8,19 +8,18 @@ manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 08/13/2018
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: f20963f030c9040b696f7d6a33b25bcee2dc517f
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f38c4a03a0d9b67b6ec8b20e489a6e4926d511c4
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40130287"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720217"
 ---
-# <a name="dependency-auto-collection"></a>Závislost automatického sběru
+# <a name="dependency-auto-collection"></a>Automatické shromažďování závislostí
 
 Níže je seznam aktuálně podporovaných volání závislostí, které jsou automaticky zjištěny jako závislosti nevyžaduje žádné další změny kódu aplikace. To se skládá z odchozích volání komunikačních knihoven, klienti úložiště, protokolování a metriky knihovny, jakož i příchozí volání do aplikační architektury a servery. Ve službě Application Insights jsou vizualizována tyto závislosti [Mapa aplikace](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) a [Diagnostika transakcí](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) zobrazení. Pokud vaše závislosti není v níže uvedeném seznamu, můžete dál sledovat ručně pomocí [sledování volání závislosti](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 

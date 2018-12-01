@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 9/24/2018
+ms.date: 11/29/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75b5fd2f586a9122aa1248ba88d7ceab59b13215
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 5b67f6bbb9ef2a8ee6bd42c89de56a0ff5a3024d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269288"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724158"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -51,10 +51,28 @@ ms.locfileid: "48269288"
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2
+* Přidání podpory pro datový typ MultiPolygon
+* Oprava chyby v relaci, přečtěte si zásady opakování
+* Oprava chyby u nesprávné odsazení problémů při dekódování výplně řetězce base 64
+
+### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1
+* Oprava chyby v LocationCache
+* Oprava chyby logiky opakování koncového bodu
+* Oprava dokumentace
+
 ### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
 * Podpora pro více oblastí zápisu.
 * Namespace změní na azure.cosmos.
 * Přejmenovat na kontejneru a položku, document_client přejmenován na cosmos_client koncepty kolekce a dokumentu. 
+
+### <a name="a-name233233"></a><a name="2.3.3"/>2.3.3
+* Přidání podpory pro proxy server
+* Přidání podpory pro čtení kanálu změn
+* Přidání podpory pro kolekce hlaviček kvóty
+* Opravu pro velké relaci tokeny problém
+* Opravu pro ReadMedia rozhraní API
+* Opravu v mezipaměti rozsah klíče oddílu
 
 ### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
 * Přidání podpory pro výchozí opakovaných pokusů o problémech s připojením.
@@ -145,6 +163,9 @@ Služba odmítne všechny žádosti do služby Cosmos DB pomocí vyřazeno sady 
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
+| [3.0.2](#3.0.2) |15. listopadu 2018 |--- |
+| [3.0.1](#3.0.1) |04. října 2018 |--- |
+| [2.3.3](#2.3.3) |08. září 2018 |--- |
 | [2.3.2](#2.3.2) |08. května 2018 |--- |
 | [2.3.1](#2.3.1) |21. prosince 2017 |--- |
 | [2.3.0](#2.3.0) |10. listopadu 2017 |--- |

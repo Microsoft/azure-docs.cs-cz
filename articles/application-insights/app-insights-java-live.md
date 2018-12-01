@@ -9,16 +9,15 @@ ms.assetid: 12f3dbb9-915f-4087-87c9-807286030b0b
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: 92b13c27d5f9c110dbcb4aa70aa9b8ddde17531a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 8e8a2e19e97bc07ed481adb3ecc3ae1d34ea8368
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096736"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720996"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Application Insights pro webové aplikace v Javě, které jsou již live
 

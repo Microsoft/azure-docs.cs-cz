@@ -9,17 +9,16 @@ ms.assetid: 015ab744-d514-42c0-8553-8410eef00368
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 7fca6ffa9efa3eed9f7c74ee89ad8bb9651494bb
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d9dfedd89e362f12f97d0106f3e56d465a89bb76
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044701"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52723839"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 

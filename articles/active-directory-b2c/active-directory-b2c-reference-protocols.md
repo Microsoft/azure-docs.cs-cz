@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/07/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6cfa3e0cb23f13b50c0fb7cd4f07a8d53c0f3186
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: fa6ae230a209d804f244d8bc46a3c6ac1abf6071
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340762"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52725569"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: Protokoly pro ověřování
 Azure Active Directory B2C (Azure AD B2C) poskytuje identitu jako služba pro vaše aplikace díky podpoře dvou standardních oborových protokolů: OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, ale žádné dvě implementace těchto protokolů můžete jemně lišit. 
@@ -50,12 +50,12 @@ Téměř všechny toky OAuth a OpenID Connect čtyři strany podílejí na excha
 
 * **Server prostředků** je, ve kterém se nachází zdroj nebo data. Důvěřuje autorizační server pro zabezpečené ověřování a autorizaci klienta OAuth. Využívá také přístupových tokenů nosiče k zajištění, že lze udělit přístup k prostředku.
 
-## <a name="policies"></a>Zásady
+## <a name="policies-and-user-flows"></a>Zásady a uživatel toků
 Nejdůležitější funkce služby jsou pravděpodobně, zásady Azure AD B2C. Úvod do zásad Azure AD B2C je rozšířením standardní protokoly OAuth 2.0 a OpenID Connect. Tyto rutiny umožňují Azure AD B2C k provedení mnohem více než jednoduché ověřování a autorizace. 
 
-Zásady plně popisují činnosti identity uživatelů, včetně registrace, přihlášení a úpravy profilu. Zásady můžete definovat v správu uživatelského rozhraní. Mohou být provedeny s použitím parametru speciální dotazu v žádosti o ověření protokolu HTTP. 
+Můžete nastavit zvládnout běžné úkoly identity, na portálu Azure AD B2C zahrnuje předdefinované, Konfigurovatelné zásady volá **toky uživatelů**. Toky uživatelů plně popisují činnosti identity uživatelů, včetně registrace, přihlášení a úpravy profilu. Toky uživatelů lze definovat v správu uživatelského rozhraní. Mohou být provedeny s použitím parametru speciální dotazu v žádosti o ověření protokolu HTTP. 
 
-Zásady nejsou standardních funkcí OAuth 2.0 a OpenID Connect, proto byste měli podniknout čas, abyste je líp pochopili. Další informace najdete v tématu [referenční příručka zásady Azure AD B2C](active-directory-b2c-reference-policies.md).
+Zásady a toky uživatelů nejsou standardních funkcí OAuth 2.0 a OpenID Connect, proto byste měli podniknout čas, abyste je líp pochopili. Další informace najdete v tématu [Azure AD B2C uživatele tok referenční příručka](active-directory-b2c-reference-policies.md).
 
 ## <a name="tokens"></a>Tokeny
 Azure AD B2C provádění OAuth 2.0 a OpenID Connect díky rozsáhlé používání šířky nosné tokeny, včetně nosné tokeny, které jsou reprezentovány ve formě webové tokeny JSON (Jwt). Nosný token je token zjednodušené zabezpečení, která uděluje "nosiče" přístup k chráněnému prostředku.

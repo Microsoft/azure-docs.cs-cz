@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 3e8230ea7b2d6d0e44468bd90289ee82d5a82367
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 0226e5dc03c3f10b951a4e4cc1d97a999c952f3b
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715175"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52678868"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Pomocí Azure monitoru pro virtuální počítače (Preview) mapu pochopit součásti aplikace
 Zobrazení komponenty zjištěnou aplikaci virtuálních počítačích s Windows a Linuxem v Azure, prostředí můžete pozorovat dvě možnosti, jak pomocí Azure monitoru pro virtuální počítače z virtuálního počítače přímo nebo přes skupiny virtuálních počítačů ze služby Azure Monitor. 
@@ -107,7 +107,7 @@ Funkci Mapa ze služby Azure Monitor poskytuje globální přehled o vašich vir
 
 ![Mapa Přehled služby Azure Monitor více virtuálních počítačů](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
-Z **pracovní prostor** selektoru v horní části stránky, pokud máte více než jednomu pracovnímu prostoru Log Analytics vyberte pracovní prostor, který je povolená s řešením a má virtuální počítače, které mu podává zprávy. **Skupiny** výběr předplatného, skupiny prostředků, vrátí [skupiny počítačů](../../log-analytics/log-analytics-computer-groups.md)a VM scale sets počítačů související s vybraný pracovní prostor. Výběr pouze se vztahuje na funkce mapování a není přenesou na výkon nebo mapy.
+Z **pracovní prostor** selektoru v horní části stránky, pokud máte více než jednomu pracovnímu prostoru Log Analytics vyberte pracovní prostor, který je povolená s řešením a má virtuální počítače, které mu podává zprávy. **Skupiny** výběr předplatného, skupiny prostředků, vrátí [skupiny počítačů](../../azure-monitor/platform/computer-groups.md)a VM scale sets počítačů související s vybraný pracovní prostor. Výběr pouze se vztahuje na funkce mapování a není přenesou na výkon nebo mapy.
 
 Ve výchozím nastavení zobrazí na mapě posledních 30 minut. Použití **TimeRange** selektor, můžete zadat dotaz na historické časových rozsahů až jednu hodinu, než ukazují, jak závislosti hledá v minulosti (například během incident nebo předtím, než došlo ke změně).   
 

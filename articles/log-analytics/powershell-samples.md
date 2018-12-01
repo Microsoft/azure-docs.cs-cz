@@ -1,6 +1,6 @@
 ---
-title: Ukázky PowerShell Azure Log Analytics | Microsoft Docs
-description: Ukázky PowerShell analýzy protokolů Azure
+title: Ukázky Powershellu Azure Log Analytics | Dokumentace Microsoftu
+description: Ukázky Powershellu Azure Log Analytics
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -9,27 +9,26 @@ editor: tysonn
 tags: ''
 ms.assetid: ''
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 934ecb54a795d9248dae89d7b6fe19b5979a1fad
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a2681990f43266e35a6aede61baad1f6f2946fbe
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131571"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52721914"
 ---
-# <a name="azure-log-analytics-powershell-samples"></a>Ukázek Azure Log Analytics prostředí PowerShell
+# <a name="azure-log-analytics-powershell-samples"></a>Ukázky Azure Powershellu Log Analytics
 
-Následující tabulka obsahuje odkazy na ukázky skripty prostředí PowerShell k provádění různých funkcí v analýzy protokolů.
+Následující tabulka obsahuje odkazy na ukázkové skripty Powershellu pro provádění různých funkcí ve službě Log Analytics.
 
 | | |
 |---|---|
-|**Vytvořit pracovní prostor**||
-| [Vytvořit pracovní prostor analýzy protokolů](scripts/log-analytics-powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří pracovního prostoru v analýzy protokolů.|
+|**Vytvoření pracovního prostoru**||
+| [Vytvoření pracovního prostoru Log Analytics](scripts/log-analytics-powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří pracovní prostor Log Analytics.|
 | | |
 

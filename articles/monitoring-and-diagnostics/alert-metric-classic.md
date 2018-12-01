@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e18b670b94962c0e7aa469402228fd4ed95d846b
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 9b9789979f6fa3beb606007ca252827c7a1599e0
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287247"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52682278"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytvořit, zobrazit a spravovat klasické metriky upozornění pomocí Azure monitoru
 
@@ -24,7 +24,7 @@ Klasického upozornění metrik ve službě Azure Monitor poskytují způsob, ja
 
 2. V **monitorování** vyberte **upozornění (klasická)**. Text a ikona se mohou mírně lišit pro různé prostředky. Pokud nenajdete **upozornění (klasická)** tady, je možné v **výstrahy** nebo **pravidla upozornění**.
 
-    ![Sledování](media/alert-metric-classic/AlertRulesButton.png)
+    ![Monitorování](media/alert-metric-classic/AlertRulesButton.png)
 
 3. Vyberte **přidat upozornění metriky (klasické)** příkaz a potom přejít k vyplnění polí.
 
@@ -126,36 +126,9 @@ Tato část ukazuje, jak pomocí prostředí PowerShell příkazů vytvořit, zo
     Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Můžete použít `Add-AlertRule` rutina pro vytvoření, aktualizace nebo zakázání pravidla upozornění. Můžete vytvořit e-mailu a webhook vlastností pomocí `New-AzureRmAlertRuleEmail` a `New-AzureRmAlertRuleWebhook`v uvedeném pořadí. V rutině pravidlo upozornění přiřadit jako akce, které tyto vlastnosti **akce** vlastnost pravidla výstrahy. Následující tabulka popisuje parametry a hodnoty použité k vytvoření upozornění použitím metrik.
-
-    | parametr | hodnota |
-    | --- | --- |
-    | Název |simpletestdiskwrite |
-    | Umístění tohoto upozornění pravidla |Východ USA |
-    | Skupina prostředků |montest |
-    | TargetResourceId |/subscriptions/S1/resourceGroups/montest/providers/Microsoft.COMPUTE/virtualMachines/testconfig |
-    | MetricName výstrahy, která je vytvořena |\PhysicalDisk (využití _celkem) \Disk zápisů za sekundu. Zobrazit `Get-MetricDefinitions` rutiny o tom, jak získat přesné názvy metrik |
-    | – Operátor |GreaterThan |
-    | Prahová hodnota (počet za sekundu za pro tuto metriku) |1 |
-    | Velikost_okna (ve formátu hh: mm:) |00:05:00 |
-    | agregátoru (Statistika metriky, které v tomto případě používá průměrný počet) |Průměr |
-    | vlastní e-mailů (pole řetězců) |'foo@example.com','bar@example.com' |
-    | poslat vlastníci, přispěvatelé a čtenáři e-mailu |-SendToServiceOwners |
-
-9. Vytvořit e-mailové akce
-
-    ```PowerShell
-    $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com
-    ```
-
-10. Vytvoření akce Webhooku
-
-    ```PowerShell
-    $actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri https://example.com?token=mytoken
-    ```
+8. Klasické upozornění pravidla je možné vytvořit již prostřednictvím prostředí PowerShell. Chcete-li vytvořit pravidlo výstrahy je třeba použít nový ["Přidat AzureRmMetricAlertRule"](https://docs.microsoft.com/powershell/module/azurerm.insights/add-azurermmetricalertrule?view=azurermps-6.13.0) příkazu.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru](monitoring-enable-alerts-using-template.md).
 - [Mít klasických upozornění na metriku oznámení do systému mimo Azure, pomocí webhooku](insights-webhooks-alerts.md).
-

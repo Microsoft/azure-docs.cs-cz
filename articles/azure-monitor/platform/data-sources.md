@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 201e9e2cb74f18e69d919ff16132cb889d1b6455
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f242176ef77f2fd419f9e2e52354c73f74f74557
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635318"
+ms.locfileid: "52681547"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Zdroje dat ve službě Azure Monitor
 Tento článek popisuje zdroje dat shromážděných službou Azure Monitor k monitorování stavu a výkonu svých prostředků a aplikace běžící na ně. Tyto prostředky může být v Azure, v jiném cloudu nebo lokálně.  Zobrazit [Data shromážděná službou Azure Monitor](data-collection.md) podrobnosti o tom, jak tato data uložená a jak ji zobrazit.
@@ -63,7 +63,7 @@ Většina služeb Azure vygeneruje [platformy metriky](data-collection.md#metric
 ### <a name="resource-diagnostic-logs"></a>Protokolů diagnostiky prostředků
 Poskytuje informace o operace prováděné s prostředky Azure zdrojem pro úroveň protokolu aktivit [diagnostické protokoly](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) poskytují přehled o provozu vlastní prostředek.   Požadavky na konfiguraci a obsah těchto protokolů [se liší podle typu prostředku](../../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
-Nelze přímo zobrazit diagnostické protokoly na webu Azure Portal, ale můžete [odeslání do úložiště Azure pro archivaci](../../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) a exportovat je do [centra událostí](../../event-hubs/event-hubs-about.md) pro přesměrování do dalších služeb nebo [do protokolu Analytics](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) pro analýzu. Některé prostředky dokáže zapisovat přímo do Log Analytics, zatímco ostatní teprve pak ji bude zapisovat do účtu úložiště [importovat do Log Analytics](../../log-analytics/log-analytics-azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
+Nelze přímo zobrazit diagnostické protokoly na webu Azure Portal, ale můžete [odeslání do úložiště Azure pro archivaci](../../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) a exportovat je do [centra událostí](../../event-hubs/event-hubs-about.md) pro přesměrování do dalších služeb nebo [do protokolu Analytics](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) pro analýzu. Některé prostředky dokáže zapisovat přímo do Log Analytics, zatímco ostatní teprve pak ji bude zapisovat do účtu úložiště [importovat do Log Analytics](../../azure-monitor/platform/azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage).
 
 ### <a name="monitoring-solutions"></a>Řešení monitorování
  [Řešení monitorování](../../azure-monitor/insights/solutions.md) shromažďování dat k poskytování dalších přehledů o fungování nějaká konkrétní služba nebo aplikace. Shromažďovat data do Log Analytics, kde mohou být analyzovány pomocí [dotazovací jazyk](../../log-analytics/log-analytics-queries.md) nebo [zobrazení](../../azure-monitor/platform/view-designer.md) , které jsou typicky zahrnuty v řešení.

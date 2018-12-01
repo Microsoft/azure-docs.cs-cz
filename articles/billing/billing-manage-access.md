@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: cwatson
-ms.openlocfilehash: 7a4e19ae5bf770949623f4cee7fa0d3033ccfa29
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 00b29ddf29ae334154d41eedd0bf9e66556e09ad
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582611"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720115"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Správa přístupu k fakturačních údajů pro Azure
 
@@ -72,9 +72,10 @@ Pokud jste zákazník EA, vlastník účtu nebo správce oddělení můžete př
 
 1. Vyberte **řízení přístupu (IAM)**.
 1. Vyberte **přiřazení rolí** zobrazíte všechna přiřazení rolí pro toto předplatné.
-1. Vyberte **přidat** > **přidat přiřazení role**.
+1. Vyberte **přidat přiřazení role**.
 1. V **Role** rozevíracího seznamu, zvolte **Čtenář fakturace**.
 1. V **vyberte** textového pole zadejte název nebo e-mailu pro uživatele, které chcete přidat.
+1. Vyberte uživatele.
 1. Vyberte **Uložit**.
 1. Po chvíli se má uživatel přiřazenou roli Čtenář fakturace v oboru předplatného.
 1. Čtenář fakturace obdrží e-mail s odkazem pro přihlášení.
