@@ -1,15 +1,15 @@
 ---
 author: manish-shukla01
-ms.author: manshuk
+ms.author: cwatson
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 08-03-2018
-ms.openlocfilehash: 41216fe12e10f72f76043f1a8bc361b538259ac1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.date: 11-20-2018
+ms.openlocfilehash: 044f735560eb7d57a90a16c1e3ce1255a9fe0d54
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39721226"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742371"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Flexibilita velikost virtuálního počítače s rezervovanými instancemi virtuálních počítačů
 
@@ -117,9 +117,16 @@ Další informace najdete v tématu [velikostí virtuálních počítačů pro o
 | Velikost | Poměr|
 |---|---|
 |Standard_DS11_v2|1|
+|Standard_DS11-1_v2|1|
 |Standard_DS12_v2|2|
+|Standard_DS12-1_v2|2|
+|Standard_DS12-2_v2|2|
 |Standard_DS13_v2|4|
+|Standard_DS13-2_v2|4|
+|Standard_DS13-4_v2|4|
 |Standard_DS14_v2|8|
+|Standard_DS14-4_v2|8|
+|Standard_DS14-8_v2|8|
 |Standard_DS15_v2|10|
 
 Další informace najdete v tématu [paměťově optimalizované velikosti virtuálních počítačů](../articles/virtual-machines/windows/sizes-memory.md#dsv2-series-11-15).
@@ -178,12 +185,21 @@ Další informace najdete v tématu [velikostí virtuálních počítačů pro o
 
 | Velikost | Poměr|
 |---|---|
-| Standard_E2s_v3|1|
+|Standard_E2s_v3|1|
 |Standard_E4s_v3|2|
+|Standard_E4 2s_v3|2|
 |Standard_E8s_v3|4|
+|Standard_E8 2s_v3|4|
+|Standard_E8 4s_v3|4|
 |Standard_E16s_v3|8|
+|Standard_E16 4s_v3|8|
+|Standard_E16 8s_v3|8|
 |Standard_E32s_v3|16|
+|Standard_E32 8s_v3|16|
+|Standard_E32 16s_v3|16|
 |Standard_E64s_v3|32|
+|Standard_E64 16s_v3|32|
+|Standard_E64 32s_v3|32|
 
 Další informace najdete v tématu [paměťově optimalizované velikosti virtuálních počítačů](../articles/virtual-machines/windows/sizes-memory.md#esv3-series).
 
@@ -289,9 +305,15 @@ Další informace najdete v tématu [paměťově optimalizované velikosti virtu
 
 | Velikost | Poměr|
 |---|---|
-| Typu Standard_M8ms|1|
+|Typu Standard_M8ms|1|
+|Standard_M8 až 2 MS|1|
+|Standard_M8 4ms|1|
 |Typu Standard_M16ms|2|
+|Standard_M16 4ms|2|
+|Standard_M16 8ms|2|
 |Typu Standard_M32ms|4|
+|Standard_M32 8ms|4|
+|Standard_M32 16ms|4|
 
 Další informace najdete v tématu [paměťově optimalizované velikosti virtuálních počítačů](../articles/virtual-machines/windows/sizes-memory.md#m-series).
 
@@ -309,7 +331,11 @@ Další informace najdete v tématu [paměťově optimalizované velikosti virtu
 | Velikost | Poměr|
 |---|---|
 | Standard_M64ms|1|
+|Standard_M64 16ms|1|
+|Standard_M64 32ms|1|
 |Standard_M128ms|2|
+|Standard_M128 32ms|2|
+|Standard_M128 64ms|2|
 
 Další informace najdete v tématu [paměťově optimalizované velikosti virtuálních počítačů](../articles/virtual-machines/windows/sizes-memory.md#m-series).
 

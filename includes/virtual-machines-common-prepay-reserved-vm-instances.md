@@ -1,15 +1,15 @@
 ---
 author: yashesvi
-ms.author: yashar
+ms.author: cwatson
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 09/05/2018
-ms.openlocfilehash: 40551fa60aa17e9a46d24ffdf17bb61a884a48f2
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.date: 11/30/2018
+ms.openlocfilehash: a35c3a9a6d914cf7e6620819b24e34d954f55c2d
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585668"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742235"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances
 
@@ -32,7 +32,6 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
 
 - Sleva za rezervaci neplatí pro následující virtuální počítače:
   - Klasické virtuální počítače a cloudové služby
-  - Virtuální procesory s omezením velikosti
   - Řadu virtuálních počítačů: Řady A-series Av2-series a G-series
   - Virtuální počítače ve verzi Preview: všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview
 - Cloudy: Rezervace nejsou dostupné ke koupi v oblastí Německo a Čína.

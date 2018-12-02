@@ -2,50 +2,52 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: 9ad715f47f2de9c6f9032ed07232f45fb33b0114
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 0d9f0a24d84bd18bdf1fac84c744cc34a7d89ab3
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133510"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742513"
 ---
-Pokud chcete povolit upravování profilu ve své aplikaci, můžete použít **upravování profilu** zásad. Tato zásada popisuje prostředí, které zákazníci budou procházet při upravování profilu a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
+Pokud chcete povolit upravování profilu ve své aplikaci, můžete použít **upravování profilu** tok uživatele. Tento tok uživatele popisuje prostředí, které zákazníci budou procházet při upravování profilu a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-V nastavení v části Zásady vyberte **Zásady upravování profilu** a klikněte na **+ Přidat**.
+V části **spravovat**vyberte **toky uživatelů** a klikněte na +**nový tok uživatele**.
 
-![Výběr zásad upravování profilu a kliknutí na tlačítko Přidat](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-policy.png)
+![Vyberte nový tok uživatele](media/active-directory-b2c-create-profile-editing-policy/add-b2c-new-user-flow.png)
 
-Zadejte **Název** zásady, který v aplikaci použijete jako referenci. Zadejte například `SiPe`.
+Na **doporučená** kartu, vyberte možnost **upravování profilu**.
 
-Vyberte **Zprostředkovatelé identity** a zaškrtněte políčko **Přihlášení místním účtem**. Volitelně můžete vybrat také zprostředkovatele sociální identity, pokud už jsou nakonfigurováni. Klikněte na **OK**.
+Zadejte tok uživatele **název** pro vaši aplikaci odkazovat. Zadejte například `SiPe`.
 
-![Výběr možnosti Přihlášení místním účtem jako zprostředkovatele identity a kliknutí na tlačítko OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-identity-providers.png)
+V části **zprostředkovatelé Identity**, zkontrolujte **přihlášení místním účtem**. Volitelně můžete vybrat také zprostředkovatele sociální identity, pokud už jsou nakonfigurováni.
 
-Vyberte **Atributy profilu**. Zvolte, které atributy může uživatel ve svém profilu zobrazit a upravit. Zaškrtněte například políčka **Země/oblast**, **Zobrazované jméno** a **PSČ**. Klikněte na **OK**.
+![Výběr možnosti Přihlášení místním účtem jako zprostředkovatele identity a kliknutí na tlačítko OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-identity-providers.png)
 
-![Výběr atributů a kliknutí na tlačítko OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-attributes.png)
+V části **atributy uživatele**, klikněte na tlačítko **zobrazit více**. V **shromažďování atribut** sloupce, vyberte atributy, můžete zobrazit a upravit příjemce ve svém profilu. Zaškrtněte například políčka **Země/oblast**, **Zobrazované jméno** a **PSČ**.
 
-Vyberte **Deklarace identit aplikace**. Zvolte deklarace identit, které se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšném upravování profilu. Vyberte například **Zobrazované jméno** a **PSČ**.
+V **návratový deklarace identity** sloupce, zvolte deklarace identit, které se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšném upravování profilu. Vyberte například **Zobrazované jméno** a **PSČ**.
 
-![Výběr deklarací identit aplikace a kliknutí na tlačítko OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-editing-application-claims.png)
+Klikněte na **OK**.
 
-Kliknutím na **Vytvořit** přidejte zásadu. Zásada se zobrazí jako **B2C_1_SiPe**. K názvu se připojí předpona **B2C_1_**.
+![Výběr deklarací identit aplikace a kliknutí na tlačítko OK](media/active-directory-b2c-create-profile-editing-policy/add-b2c-user-attributes.png)
 
-Otevřete zásadu výběrem **B2C_1_SiPe**. Ověřte nastavení uvedená v tabulce a potom klikněte na **Spustit**.
+Klikněte na tlačítko **vytvořit** přidat tok uživatele. Tok uživatele je uveden jako **B2C_1_SiPe**. K názvu se připojí předpona **B2C_1_**.
 
-![Výběr a spuštění zásady](media/active-directory-b2c-create-profile-editing-policy/run-b2c-editing-policy.png)
+Vyberte **spustit tok uživatele**. Ověřte nastavení uvedená v tabulce a klikněte na **spustit tok uživatele**.
+
+![Vyberte tok uživatele a spusťte jej](media/active-directory-b2c-create-profile-editing-policy/add-b2c-profile-editing-run-user-flow.png)
 
 | Nastavení      | Hodnota  |
 | ------------ | ------ |
 | **Aplikace** | Aplikace Contoso B2C |
-| **Výběr adresy URL odpovědi** | `https://localhost:44316/` |
+| **Adresa URL odpovědi** | `https://localhost:44316/` |
 
 Otevře se nová karta prohlížeče a můžete zkontrolovat nakonfigurované uživatelské prostředí pro upravování profilu.
 
 > [!NOTE]
-> Trvá až minutu, než se vytvoření zásady a aktualizace projeví.
+> Trvá minutu pro vytvoření toku uživatele a aktualizace se projeví.
 >

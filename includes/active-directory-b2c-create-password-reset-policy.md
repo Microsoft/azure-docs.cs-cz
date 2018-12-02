@@ -2,38 +2,42 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
+ms.date: 11/30/2018
 ms.author: patricka
-ms.openlocfilehash: bff2543ec48c66c10db697650def0077e3de28be
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 78abb190dccd27c5bf70dfe12f978e1118601815
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50134122"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52742260"
 ---
-Pokud chcete povolit jemné resetování hesla na aplikace, použijete **resetování hesla** zásad. Všimněte si, že možnost resetování hesel v rámci celého tenanta je specifikovaná [zde](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Tato zásada popisuje prostředí, které zákazníci budou procházet při resetování hesla a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
+Pokud chcete povolit jemné resetování hesla na aplikace, použijete **resetování hesla** tok uživatele. Všimněte si, že možnost resetování hesel v rámci celého tenanta je zadán [tady](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md). Tento tok uživatele popisuje prostředí, které zákazníci budou procházet při resetování hesla a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-V nastavení v části Zásady vyberte **Zásady resetování hesel** a klikněte na **+ Přidat**.
+V části **spravovat**vyberte **toky uživatelů** a klikněte na +**nový tok uživatele**.
 
-![Výběr zásad registrace nebo přihlášení a kliknutí na tlačítko Přidat](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-policy.png)
+![Vyberte nový tok uživatele](media/active-directory-b2c-create-password-reset-policy/add-b2c-new-user-flow.png)
 
-Zadejte **Název** zásady, který v aplikaci použijete jako referenci. Zadejte například `SSPR`.
+Na **doporučená** kartu, vyberte možnost **resetování hesla**.
 
-Vyberte **Zprostředkovatelé identity** a zaškrtněte políčko **Resetovat heslo pomocí e-mailové adresy**. Klikněte na **OK**.
+Zadejte tok uživatele **název** pro vaši aplikaci odkazovat. Zadejte například `SSPR`.
 
-![Výběr možnosti Resetovat heslo pomocí e-mailové adresy jako zprostředkovatele identity a kliknutí na tlačítko OK](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-identity-providers.png)
+V části **zprostředkovatelé Identity**, zkontrolujte **resetovat heslo pomocí e-mailovou adresu**.
 
-Vyberte **Deklarace identit aplikace**. Zvolte deklarace identit, které se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšném resetování hesel. Vyberte například **ID objektu uživatele**.
+![Zadejte název a vyberte možnost Resetovat heslo pomocí e-mailové adresy jako zprostředkovatele identity](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-identity-providers.png)
+
+V části **deklarace identit aplikace**, klikněte na tlačítko **zobrazit více** a zvolte deklarace identit, které se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšném resetování hesla prostředí. Vyberte například **ID objektu uživatele**.
+
+Klikněte na **OK**.
 
 ![Výběr deklarací identit aplikace a kliknutí na tlačítko OK](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-application-claims.png)
 
-Kliknutím na **Vytvořit** přidejte zásadu. Zásada se zobrazí jako **B2C_1_SSPR**. K názvu se připojí předpona **B2C_1_**.
+Klikněte na tlačítko **vytvořit** přidat tok uživatele. Tok uživatele je uveden jako **B2C_1_SSPR**. K názvu se připojí předpona **B2C_1_**.
 
-Otevřete zásadu výběrem **B2C_1_SSPR**. Ověřte nastavení uvedená v tabulce a potom klikněte na **Spustit**.
+Klikněte na tlačítko **spustit tok uživatele**. Ověřte nastavení uvedená v tabulce a klikněte na **spustit tok uživatele**.
 
-![Výběr a spuštění zásady](media/active-directory-b2c-create-password-reset-policy/run-b2c-password-reset-policy.png)
+![Vyberte tok uživatele a spusťte jej](media/active-directory-b2c-create-password-reset-policy/add-b2c-sspr-run-user-flow.png)
 
 | Nastavení      | Hodnota  |
 | ------------ | ------ |
