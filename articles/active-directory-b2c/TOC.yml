@@ -45,7 +45,7 @@ items:
     href: active-directory-b2c-apps.md
   - name: Protokoly pro ověřování
     href: active-directory-b2c-reference-protocols.md
-  - name: Předdefinované zásady
+  - name: Toky uživatele
     href: active-directory-b2c-reference-policies.md
   - name: Architektura prostředí identit
     items:
@@ -322,9 +322,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: b77f66eba2486adbd53575698a23209b02f12236
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f46d54408e62f04519bc8e93f619d5e8d6d8640b
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633567"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52720503"
