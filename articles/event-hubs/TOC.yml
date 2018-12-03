@@ -104,6 +104,8 @@ items:
     maintainContext: true
 - name: Návody
   items:
+  - name: Odesílání, příjem a zachytávání událostí pomocí Pythonu
+    href: event-hubs-python.md
   - name: Nastavení diagnostických protokolů
     href: event-hubs-diagnostic-logs.md
   - name: Event Hubs pro Apache Kafka
@@ -184,9 +186,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 28260650a8859f76aa6d8bd6ff9333d57c65e55a
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: d6fb88ed6bfcf48cb35da068e50b670f4b1b685c
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51281452"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52726963"
