@@ -29,12 +29,12 @@ items:
     - name: S využitím Azure Data Lake Store
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
-  - name: Použití Hadoopu pro interaktivní dotazy
+  - name: Použití Apache Hadoopu pro interaktivní dotazy
     items:
-    - name: Hive se systémem Hadoop
+    - name: Použití Apache Hivu s Hadoopem
       href: ../hadoop/hdinsight-use-hive.md
       items:
-      - name: Použití Zeppelin
+      - name: Použití Apache Zeppelinu
         href: ../hdinsight-connect-hive-zeppelin.md
         maintainContext: true
       - name: Nástroje pro sadu Visual Studio
@@ -46,7 +46,7 @@ items:
       - name: Nástroje služby Data Lake s Hortonworks Sandbox
         href: ../hdinsight-hadoop-emulator-visual-studio.md
         maintainContext: true
-      - name: Použití zobrazení Hivu
+      - name: Použití zobrazení Apache Hivu
         href: ../hadoop/apache-hadoop-use-hive-ambari-view.md
         maintainContext: true
       - name: Použití Beeline
@@ -74,7 +74,7 @@ items:
     - name: Použití uživatelem definovaných funkcí v Javě s Hivem
       href: ../hadoop/apache-hadoop-hive-java-udf.md
       maintainContext: true
-    - name: Odeslání úloh systému Hadoop
+    - name: Odesílání úloh Apache Hadoopu
       href: ../hadoop/submit-apache-hadoop-jobs-programmatically.md
       maintainContext: true
   - name: Vývoj
@@ -91,7 +91,7 @@ items:
     - name: Použití uživatelem definovaných funkcí jazyka C#
       href: ../hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
       maintainContext: true
-    - name: Použití Pythonu s Hivem a Pig
+    - name: Použití Pythonu s Apache Hivem a Apache Pig
       href: ../hadoop/python-udf-hdinsight.md
       maintainContext: true
     - name: Vytváření aplikací .NET HDInsight pro neinteraktivní ověřování
@@ -104,13 +104,13 @@ items:
       maintainContext: true
     - name: Připojení Power BI k modulu Interactive Query
       href: ./apache-hadoop-connect-hive-power-bi-directquery.md
-    - name: Připojení Power BI k Hadoopu
+    - name: Připojení Power BI k Apache Hadoopu
       href: ../hadoop/apache-hadoop-connect-hive-power-bi.md
       maintainContext: true
-    - name: Připojení Excelu k službě HDInsight
+    - name: Připojení Excelu k Apache Hadoopu
       href: ../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
       maintainContext: true
-    - name: Připojení pomocí ovladače Hive JDBC
+    - name: Připojení pomocí ovladače Apache Hive JDBC
       href: ../hadoop/apache-hadoop-connect-hive-jdbc-driver.md
       maintainContext: true
     - name: Analýza uložených dat snímačů
@@ -122,7 +122,7 @@ items:
     - name: Analýza údajů o zpoždění letů
       href: ../hdinsight-analyze-flight-delay-data-linux.md
       maintainContext: true
-    - name: Analýza webových protokolů pomocí Hivu
+    - name: Analýza webových protokolů pomocí Apache Hivu
       href: ../hadoop/apache-hive-analyze-website-log.md
       maintainContext: true
   - name: Rozšíření clusterů
@@ -136,10 +136,10 @@ items:
     - name: Vývoj akcí skriptů
       href: ../hdinsight-hadoop-script-actions-linux.md
       maintainContext: true
-    - name: Přidání knihoven Hivu
+    - name: Přidání knihoven Apache Hivu
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: Použití Zeppelin
+    - name: Použití Apache Zeppelinu
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
       maintainContext: true
     - name: Použití Grafany
@@ -180,7 +180,7 @@ items:
     - name: Omezení přístupu k datům
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Autorizace uživatelů pro zobrazení Ambari
+    - name: Autorizace uživatelů pro zobrazení Apache Ambari
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
   - name: Spravovat
@@ -210,7 +210,7 @@ items:
     - name: Vytváření clusterů na vyžádání
       href: ../hdinsight-hadoop-create-linux-clusters-adf.md
       maintainContext: true
-    - name: Použití clusterů Hadoop
+    - name: Správa clusterů Apache Hadoop
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: Použití sady .NET SDK
@@ -223,13 +223,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Správa clusterů pomocí webového uživatelského rozhraní Ambari
+    - name: Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Ambari
+      - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Apache Ambari
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Použití rozhraní Ambari REST API
+      - name: Použití rozhraní Apache Ambari REST API
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -245,7 +245,7 @@ items:
     - name: Přidání účtů úložiště
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Nahrání dat pro úlohy systému Hadoop
+    - name: Nahrání dat pro úlohy Apache Hadoopu
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Několik clusterů HDInsight se službou Data Lake Store
@@ -272,13 +272,13 @@ items:
     - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: Řešení potíží s HDFS
+    - name: Řešení potíží s Apache Hadoop HDFS
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: Řešení potíží s HIVE
+    - name: Řešení potíží s Apache HIVE
       href: ../hdinsight-troubleshoot-hive.md
       maintainContext: true
-    - name: Řešení potíží s YARN
+    - name: Řešení potíží s Apache Hadoop YARN
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: Zdroje a prostředky
@@ -286,25 +286,25 @@ items:
       - name: Informace o používání HDInsightu v Linuxu
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Výkon a paměť Hadoopu
+      - name: Výkon a paměť Apache Hadoopu
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Přístup k protokolům aplikací Hadoop YARN v Linuxu
+      - name: Přístup k protokolům aplikací Apache Hadoop YARN v Linuxu
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Povolení výpisů paměti haldy pro služby Hadoop
+      - name: Povolení výpisů paměti haldy pro služby Apache Hadoop
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: Vysvětlení a řešení chyb WebHCat
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: Nastavení Hivu pro opravení chyb typu Nedostatek paměti
+      - name: Nastavení Apache Hivu pro opravu chyb typu Nedostatek paměti
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Použití zobrazení Ambari k ladění úloh Tez
+      - name: Použití zobrazení Apache Ambari k ladění úloh Apache TEZ
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Optimalizace dotazů Hive
+      - name: Optimalizace dotazů Apache Hive
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
     maintainContext: true
@@ -324,7 +324,7 @@ items:
     - name: Konfigurace podnikového zabezpečení ve službě HDInsight s využitím Azure AD DS
       href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
       maintainContext: true
-    - name: Konfigurace zásad Hivu
+    - name: Konfigurace zásad Apache Hivu
       href: ../domain-joined/apache-domain-joined-run-hive.md
       maintainContext: true
     - name: Správa clusterů s podnikovým zabezpečením
@@ -355,18 +355,24 @@ items:
 - name: Referenční informace
   items:
   - name: Ukázky kódů
-    href: https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight
+    href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
     href: /powershell/module/azurerm.hdinsight
-  - name: .NET (Hadoop)
-    href: https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet
-  - name: .NET (HBase)
+  - name: .NET SDK
+    href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
+  - name: Python SDK
+    href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
+  - name: Java SDK
+    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
+  - name: Go SDK
+    href: ../hdinsight-go-sdk-overview.md
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: Zdroje a prostředky
   items:
@@ -390,9 +396,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 04dffd82ea74230d7c315401783addaef62b9ff6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5dd6517a42a906db7297cbfe5bbded3299b0834a
+ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959100"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52308403"

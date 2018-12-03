@@ -1,0 +1,26 @@
+items:
+- name: Rezervované HSM
+  tocHref: /dedicated-hsm/
+  topicHref: /dedicated-hsm/index
+  items:
+  - name: Přehled
+    tocHref: /dedicated-hsm/Overview/
+    topicHref: /dedicated-hsm/index
+  - name: Kurzy
+    tocHref: /dedicated-hsm/Tutorials/
+    topicHref: /dedicated-hsm/index
+  - name: Koncepty
+    tocHref: /dedicated-hsm/Concepts/
+    topicHref: /dedicated-hsm/index
+  - name: Návody
+    tocHref: /dedicated-hsm/How-to guides/
+    topicHref: /dedicated-hsm/index
+  - name: Zdroje a prostředky
+    tocHref: /dedicated-hsm/Resources/
+    topicHref: /dedicated-hsm/index
+ms.openlocfilehash: d8842fc5fa708e7c42a9bdf415050afc5559a1d5
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52447434"

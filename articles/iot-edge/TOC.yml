@@ -42,20 +42,22 @@ items:
   items:
   - name: Modul runtime IoT Edge
     href: iot-edge-runtime.md
-  - name: Certifikáty IoT Edge
-    href: iot-edge-certs.md
   - name: Moduly IoT Edge
     items:
     - name: Vysvětlení modulů Azure IoT Edge
       href: iot-edge-modules.md
     - name: Vývoj
       href: module-development.md
-    - name: Složení
-      href: module-composition.md
     - name: Agent Edge a vlastnosti centra
       href: module-edgeagent-edgehub.md
-  - name: Nasazení
-    href: module-deployment-monitoring.md
+  - name: Nasazení modulu
+    items:
+    - name: Manifest nasazení
+      href: module-composition.md
+    - name: Automatická nasazení
+      href: module-deployment-monitoring.md
+  - name: Certifikáty IoT Edge
+    href: iot-edge-certs.md
   - name: Offline možnosti
     href: offline-capabilities.md
   - name: Zařízení IoT Edge jako brána
@@ -68,6 +70,8 @@ items:
       href: iot-edge-security-manager.md
   - name: Podpora platformy
     href: support.md
+  - name: Kontrolní seznam pro produkční nasazení
+    href: production-checklist.md
   - name: Glosář IoT Edge
     href: iot-edge-glossary.md
 - name: Návody
@@ -218,9 +222,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 7ad5c5da9162c2b5d9b5908dbea5630cf277393c
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 27bc0b00a51f10695c5ce1e2e600b91a1f97b0ab
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613898"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52582798"

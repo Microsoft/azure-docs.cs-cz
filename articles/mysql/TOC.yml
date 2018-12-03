@@ -98,6 +98,8 @@ items:
       href: concepts-database-application-development.md
     - name: Odolnost připojení
       href: concepts-connectivity.md
+    - name: Vývoj s využitím služby Azure Kubernetes Service (AKS)
+      href: concepts-aks.md
   - name: Replikace
     items:
     - name: Replikace příchozích dat
@@ -232,9 +234,9 @@ items:
     href: partners-migration-mysql.md
   - name: Průvodce migrací databází
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: a6f77b9d823edbdffedab97202697bf9535c6b8e
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 4bb7ab9d3944d958c1975663a7334d385f8cd9ed
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276563"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496359"

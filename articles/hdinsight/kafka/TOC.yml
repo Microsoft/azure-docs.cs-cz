@@ -3,7 +3,7 @@ items:
   href: /azure/hdinsight
 - name: Přehled
   items:
-  - name: Informace o Kafka v HDInsightu
+  - name: Informace o Apache Kafka ve službě HDInsight
     href: apache-kafka-introduction.md
   - name: Správa verzí komponent
     href: ../hdinsight-component-versioning.md
@@ -13,23 +13,23 @@ items:
     maintainContext: true
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření clusteru Kafka – portál
+  - name: Vytvoření clusteru Apache Kafka – portál
     href: apache-kafka-get-started.md
-  - name: Vytvoření clusteru Kafka – PowerShell
+  - name: Vytvoření clusteru Apache Kafka – PowerShell
     href: apache-kafka-quickstart-powershell.md
-  - name: Vytvoření clusteru Kafka – šablona
+  - name: Vytvoření clusteru Apache Kafka – šablona
     href: apache-kafka-quickstart-resource-manager-template.md
 - name: Kurzy
   items:
-  - name: 1. Použití strukturovaného streamování Sparku
+  - name: 1. Použití strukturovaného streamování Apache Sparku
     href: ../hdinsight-apache-kafka-spark-structured-streaming.md
     maintainContext: true
-  - name: 2. Zápis/čtení ze systému Kafka se Stormem
+  - name: 2. Zápis/čtení z Apache Kafka pomocí Apache Stormu
     href: ../hdinsight-apache-storm-with-kafka.md
     maintainContext: true
-  - name: 3. Použití rozhraní Kafka Producer and Consumer API
+  - name: 3. Použití rozhraní Apache Kafka Producer and Consumer API
     href: apache-kafka-producer-consumer-api.md
-  - name: 4. Vývoj aplikace s využitím rozhraní Kafka Streams API
+  - name: 4. Vývoj aplikace s využitím rozhraní Apache Kafka Streams API
     href: apache-kafka-streams-api.md
 - name: Koncepty
   items:
@@ -44,26 +44,26 @@ items:
   items:
   - name: Povolení automatického vytváření témat
     href: apache-kafka-auto-create-topics.md
-  - name: Použití Kafka se službou IoT Hub
+  - name: Použití Apache Kafka se službou IoT Hub
     href: apache-kafka-connector-iot-hub.md
   - name: Instalace aplikací HDInsight
     href: ../hdinsight-apps-install-applications.md
     maintainContext: true
-  - name: Použití Kafky ve virtuální síti
+  - name: Použití Apache Kafka ve virtuální síti
     href: apache-kafka-connect-vpn-gateway.md
-  - name: Replikace dat Kafky
+  - name: Replikace dat Apache Kafka
     href: apache-kafka-mirroring.md
-  - name: Analýza protokolů Kafky
+  - name: Analýza protokolů Apache Kafka
     href: apache-kafka-log-analytics-operations-management.md
   - name: Vytváření streamovacích kanálů
     items:
-    - name: Spark, Kafka a Azure Cosmos DB
+    - name: Apache Spark, Apache Kafka a Azure Cosmos DB
       href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
       maintainContext: true
-    - name: Kafka a Spark (DStream)
+    - name: Apache Kafka a Apache Spark (DStream)
       href: ../hdinsight-apache-spark-with-kafka.md
       maintainContext: true
-    - name: Použití Kafka s Azure Container Service
+    - name: Použití Apache Kafka s Azure Container Service
       href: apache-kafka-azure-container-services.md
   - name: Vývoj
     items:
@@ -143,7 +143,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
-    - name: Použití clusterů Hadoop
+    - name: Správa clusterů Apache Hadoop
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: Použití sady .NET SDK
@@ -156,13 +156,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Správa clusterů pomocí webového uživatelského rozhraní Ambari
+    - name: Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Ambari
+      - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Apache Ambari
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Použití rozhraní Ambari REST API
+      - name: Použití rozhraní Apache Ambari REST API
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -172,7 +172,7 @@ items:
     - name: Přidání účtů úložiště
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Nahrání dat pro úlohy systému Hadoop
+    - name: Nahrání dat pro úlohy Apache Hadoopu
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Několik clusterů HDInsight se službou Data Lake Store
@@ -196,10 +196,10 @@ items:
     - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: Řešení potíží s HDFS
+    - name: Řešení potíží s Apache Hadoop HDFS
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: Řešení potíží s YARN
+    - name: Řešení potíží s Apache Hadoop YARN
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: Zdroje a prostředky
@@ -207,13 +207,13 @@ items:
       - name: Informace o používání HDInsightu v Linuxu
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Výkon a paměť Hadoopu
+      - name: Výkon a paměť Apache Hadoopu
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
       - name: Přístup k protokolům aplikací Hadoop YARN v Linuxu
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Povolení výpisů paměti haldy pro služby Hadoop
+      - name: Povolení výpisů paměti haldy pro služby Apache Hadoop
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
     maintainContext: true
@@ -257,7 +257,7 @@ items:
     href: ../hdinsight-go-sdk-overview.md
   - name: REST
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: Zdroje a prostředky
   items:
@@ -274,9 +274,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 9b172aaedcab44b4557368c5d2a5bd6dfd010903
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 0b0fc56015adb5fcecd5bcd6ce501c828e694164
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155010"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52495680"

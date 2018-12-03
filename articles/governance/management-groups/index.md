@@ -6,17 +6,17 @@ manager: rithorn
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/28/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: b5a99ff8cfc0a915b70c6d90b8aa04d020177d54
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.topic: overview
+ms.openlocfilehash: ea34296e170d18a1d5636c50e7cae316b1d97948
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748166"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584600"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -28,12 +28,12 @@ Zásady můžete například použít pro skupinu pro správu, která omezuje ob
 
 Můžete vytvořit flexibilní strukturu skupin pro správu a předplatných a uspořádat tak prostředky do hierarchie umožňující využít jednotné zásady a správu přístupu. Následující diagram ukazuje příklad vytvoření hierarchie pro zásady správného řízení s využitím skupin pro správu.
 
-![strom](./media/MG_overview.png)
+![strom](./media/tree.png)
 
-Vytvořením hierarchie jako v tomto příkladu můžete použít zásadu, jako je třeba omezení umístění virtuálního počítače na oblast USA – západ, pro skupinu „Skupina pro správu týmu infrastruktury" tak, aby povolovala interní zásady zabezpečení a dodržování předpisů. Tato zásada se v této skupině pro správu bude dědit do obou předplatných EA a bude se vztahovat na všechny virtuální počítače v rámci těchto předplatných. Protože tato zásada zabezpečení se ze skupiny pro správu dědí do předplatných, nemůže ji změnit vlastník prostředku nebo předplatného. Výsledkem je vylepšení zásad správného řízení.
+Vytvořte hierarchii, abyste mohli použít zásadu, jako je například omezení umístění virtuálních počítačů ve skupině „Skupina pro správu týmu infrastruktury“ na oblast USA – západ. Tato zásada se v této skupině pro správu bude dědit do obou předplatných EA a bude se vztahovat na všechny virtuální počítače v rámci těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
 
-Dalším scénářem, kde by se skupiny pro správu použily, je poskytnutí uživatelského přístupu k několika předplatným. Přesunutím několika předplatných do skupiny pro správu máte možnost vytvořit v této skupině jedno přiřazení [řízení přístupu na základě rolí](../../role-based-access-control/overview.md), které zdědí tento přístup pro všechna předplatná.
-Jedno přiřazení v rámci skupiny pro správu tak může uživatelům umožnit přístup ke všemu, co potřebují, a není potřeba vytvářet skript pro přiřazení RBAC přes několik předplatných.
+Dalším scénářem, kde by se skupiny pro správu použily, je poskytnutí uživatelského přístupu k několika předplatným. Přesunutím několika předplatných do skupiny pro správu můžete v této skupině vytvořit jedno přiřazení [řízení přístupu na základě role](../../role-based-access-control/overview.md), které zdědí tento přístup pro všechna předplatná.
+Jedno přiřazení v rámci skupiny pro správu tak může uživatelům umožnit přístup ke všemu, co potřebují, a není potřeba vytvářet skript řízení přístupu na základě role pro různá předplatná.
 
 ### <a name="important-facts-about-management-groups"></a>Důležité informace o skupinách pro správu
 
@@ -42,7 +42,7 @@ Jedno přiřazení v rámci skupiny pro správu tak může uživatelům umožnit
   - Toto omezení nezahrnuje kořenovou úroveň ani úroveň předplatného.
 - Každá skupina pro správu a předplatné může mít jenom jeden nadřazený prvek.
 - Každá skupina pro správu může mít několik podřízených položek.
-- Všechny skupiny pro správu a předplatná jsou v rámci adresáře obsažené v jedné hierarchii. Výjimky ve verzi Preview jsou popsané v tématu věnovaném [důležitým informacím o kořenových skupinách pro správu](#important-facts-about-the-root-management-group).
+- Všechny skupiny pro správu a předplatná jsou v rámci adresáře v jedné hierarchii. Výjimky ve verzi Preview jsou popsané v tématu věnovaném [důležitým informacím o kořenových skupinách pro správu](#important-facts-about-the-root-management-group).
 
 ## <a name="root-management-group-for-each-directory"></a>Kořenová skupina pro správu pro jednotlivé adresáře
 
@@ -73,19 +73,19 @@ Když libovolný uživatel začne využívat skupiny pro správu, musí proběhn
 
 ## <a name="trouble-seeing-all-subscriptions"></a>Potíže se zobrazením všech předplatných
 
-U několika adresářů, které začaly využívat skupiny pro správu v rané fázi verze Preview před 25. červencem 2018, může docházet k chybě, kdy se do hierarchie nedostanou všechna předplatná.  Důvodem je skutečnost, že procesy pro zařazení předplatných do hierarchie se implementovaly až po přiřazení zásad nebo role pro kořenovou skupinu pro správu v příslušném adresáři.
+U několika adresářů, které začaly využívat skupiny pro správu v rané fázi verze Preview před 25. červnem 2018, může docházet k chybě, kdy se do hierarchie nedostanou všechna předplatná.  Procesy pro zařazení předplatných do hierarchie se implementovaly až po přiřazení zásad nebo role pro kořenovou skupinu pro správu v příslušném adresáři.
 
 ### <a name="how-to-resolve-the-issue"></a>Jak tyto potíže vyřešit
 
-Existují dvě možnosti samoobslužného vyřešení těchto potíží.
+Tento problém můžete vyřešit dvěma způsoby.
 
 1. Odebrání všech přiřazení rolí a zásad z kořenové skupiny pro správu
-    1. Odebrání všech přiřazení zásad a rolí z kořenové skupiny pro správu způsobí, že tato služba obnoví všechna předplatná do hierarchie při příštím nočním cyklu.  Důvodem této kontroly se zajistit, že se žádnému z klientských předplatných neposkytne náhodný přístup nebo přiřazení zásad.
+    1. Odebrání všech přiřazení zásad a rolí z kořenové skupiny pro správu způsobí, že tato služba obnoví všechna předplatná do hierarchie při příštím nočním cyklu.  Smyslem tohoto procesu je zajistit, že se žádnému z klientských předplatných neposkytne náhodný přístup nebo přiřazení zásad.
     1. Nejlepší způsob, jak to provést bez dopadu na vaše služby, je použít přiřazení zásad nebo rolí o jednu úroveň pod kořenovou skupinu pro správu. Potom můžete všechna přiřazení z kořenového oboru odebrat.
 1. Přímé volání rozhraní API pro zahájení procesu obnovení
-    1. Libovolný autorizovaný uživatel adresáře může volat rozhraní API *TenantBackfillStatusRequest* nebo *StartTenantBackfillRequest*. Rozhraní API StartTenantBackfillRequest po zavolání zahájí proces nastavení přesunu všech předplatných do hierarchie. Tento proces také začne vynucovat, aby se všechna nová předplatná stala podřízeným elementem kořenové skupiny pro správu. Tento postup se dá udělat beze změny přiřazení na kořenové úrovni, protože jím říkáte, že je v pořádku, když se přiřazení zásad nebo přístupu na kořenové úrovni použije pro všechna předplatná.
+    1. Libovolný uživatel adresáře může volat rozhraní API *TenantBackfillStatusRequest* nebo *StartTenantBackfillRequest*. Rozhraní API StartTenantBackfillRequest po zavolání zahájí proces nastavení přesunu všech předplatných do hierarchie. Tento proces také začne vynucovat, aby se všechna nová předplatná stala podřízeným elementem kořenové skupiny pro správu. Tento postup se dá udělat beze změny přiřazení na kořenové úrovni. Voláním rozhraní API říkáte, že je v pořádku, když se přiřazení zásad nebo přístupu na kořenové úrovni použije pro všechna předplatná.
 
-Pokud máte k tomuto procesu obnovení nějaké dotazy, obraťte se prosím na managementgroups@microsoft.com.  
+Pokud máte k tomuto procesu obnovení nějaké dotazy, obraťte se na managementgroups@microsoft.com.  
   
 ## <a name="management-group-access"></a>Přístup ke skupinám pro správu
 
@@ -111,12 +111,26 @@ Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 
 Vlastní role RBAC se u skupin pro správu momentálně nepodporují. Aktuální stav si můžete prohlédnout na [fóru pro názory na skupiny pro správu](https://aka.ms/mgfeedback).
 
+## <a name="audit-management-groups-using-activity-logs"></a>Audit skupin pro správu s využitím protokolů aktivit
+
+Pokud chcete přes toto rozhraní API sledovat skupiny pro správu, použijte [rozhraní API protokolů aktivit tenanta](/rest/api/monitor/tenantactivitylogs). Ke sledování aktivit skupin pro správu aktuálně není možné použít PowerShell, rozhraní příkazového řádku ani Azure Portal.
+
+1. Jako správce tenanta Azure AD [zvyšte úroveň přístupu](../../role-based-access-control/elevate-access-global-admin.md) uživateli provádějícímu audit a pak mu přiřaďte roli Čtenář v oboru `/providers/microsoft.insights/eventtypes/management`.
+1. Jako uživatel provádějící audit zavoláním [rozhraní API protokolů aktivit tenanta](/rest/api/monitor/tenantactivitylogs) zobrazte aktivity skupiny pro správu. Doporučujeme vyfiltrovat poskytovatele prostředků **Microsoft.Management**, aby se zobrazily všechny aktivity skupiny pro správu.  Příklad:
+
+```
+GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+```
+
+> [!NOTE]
+> Pokud chcete toto rozhraní API pohodlně volat z příkazového řádku, vyzkoušejte [ARMClient](https://github.com/projectkudu/ARMClient).
+
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o řešeních pro správu najdete v následujících tématech:
 
 - [Vytváření skupin pro správu pro organizaci prostředků Azure](create.md)
 - [Jak měnit, odstraňovat nebo spravovat skupiny pro správu](manage.md)
-- [Instalace modulu Azure PowerShellu](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Specifikace rozhraní REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Instalace rozšíření Azure CLI](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [Kontrola skupin pro správu v modulu Prostředky Azure PowerShellu](https://aka.ms/mgPSdocs)
+- [Kontrola skupin pro správu v rozhraní REST API](https://aka.ms/mgAPIdocs)
+- [Kontrola skupin pro správu v Azure CLI](https://aka.ms/mgclidoc)

@@ -57,6 +57,22 @@ items:
     href: concepts-storage.md
   - name: Měřítko
     href: concepts-scale.md
+  - name: Osvědčené postupy
+    items:
+    - name: Pro operátory clusteru
+      items:
+      - name: Víceklientská architektura a izolace clusteru
+        href: operator-best-practices-cluster-isolation.md
+      - name: Základní funkce plánovače
+        href: operator-best-practices-scheduler.md
+      - name: Pokročilé funkce plánovače
+        href: operator-best-practices-advanced-scheduler.md
+      - name: Ověřování a autorizace
+        href: operator-best-practices-identity.md
+    - name: Pro vývojáře aplikací
+      items:
+      - name: Správa prostředků
+        href: developer-best-practices-resource-management.md
   - name: Kvóty a místní omezení
     href: container-service-quotas.md
   - name: Migrace z ACS do AKS
@@ -188,6 +204,9 @@ items:
       href: spark-job.md
     - name: Použití GPU
       href: gpu-cluster.md
+    - name: Použití služby Azure Database for PostgreSQL
+      href: ../postgresql/concepts-aks.md
+      maintainContext: true
   - name: DevOps
     items:
     - name: Použití Ansible k vytvoření clusteru AKS
@@ -246,9 +265,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: 1bb1c6689831eb2057771c22aced1c8567bd22b0
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: fc7f58330bf5ca0819cf0da494e521324fd2a6ea
+ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51611518"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52441668"

@@ -1,0 +1,137 @@
+items:
+- name: Dokumentace k rozšíření Durable Functions
+- name: Přehled
+  items:
+  - name: Informace o službě Azure Functions
+    href: ../functions-overview.md
+  - name: Informace o rozšíření Durable Functions
+    href: durable-functions-overview.md
+  - name: Porovnání bez serveru
+    href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+- name: Šablony Rychlý start
+  items:
+  - name: Vytvoření odolné funkce – C#
+    displayName: get started, chaining
+    href: durable-functions-create-first-csharp.md
+  - name: Vytvoření odolné funkce – JavaScript
+    displayName: get started, chaining
+    href: quickstart-js-vscode.md
+  expanded: true
+- name: Kurzy
+  items:
+  - name: Scénář fan-in/fan-out
+    href: durable-functions-cloud-backup.md
+  - name: Monitory
+    href: durable-functions-monitor.md
+  - name: Lidská interakce
+    href: durable-functions-phone-verification.md
+  - name: Publikování ve službě Event Grid
+    href: durable-functions-event-publishing.md
+- name: Ukázky
+  items:
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+
+  - name: Azure CLI
+    href: ../functions-cli-samples.md
+- name: Koncepty
+  items:
+  - name: Typy funkcí
+    href: durable-functions-types-features-overview.md
+  - name: Vazby
+    href: durable-functions-bindings.md
+  - name: Časovače
+    href: durable-functions-timers.md
+  - name: Externí události
+    href: durable-functions-external-events.md
+  - name: Dílčí orchestrace
+    href: durable-functions-sub-orchestrations.md
+  - name: Centra úloh
+    href: durable-functions-task-hubs.md
+  - name: Spolehlivé provádění
+    href: durable-functions-checkpointing-and-replay.md
+  - name: Správa verzí
+    href: durable-functions-versioning.md
+- name: Návody
+  items:
+  - name: Plánování a návrh
+    items:
+    - name: Řetězení funkcí
+      href: durable-functions-sequence.md
+    - name: Externí orchestrace
+      href: durable-functions-eternal-orchestrations.md
+    - name: Orchestrace s jedním prvkem
+      href: durable-functions-singletons.md
+    - name: Výkon a škálování
+      href: durable-functions-perf-and-scale.md
+    - name: Vysoká dostupnost
+      href: durable-functions-disaster-recovery-geo-distribution.md
+  - name: Vývoj
+    items:
+    - name: Vytvoření na webu Azure Portal
+      href: durable-functions-create-portal.md
+    - name: Správa připojení
+      href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Zpracování chyb
+      href: durable-functions-error-handling.md
+    - name: Testování částí
+      href: durable-functions-unit-testing.md
+    - name: Vytvoření jako WebJobs
+      href: durable-functions-webjobs-sdk.md
+  - name: Nasazení
+    items:
+    - name: Průběžné nasazování
+      href: ../functions-continuous-deployment.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Nasazení souboru Zip
+      href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Spuštění z balíčku
+      href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+  - name: Spravovat
+    items:
+    - name: Správa instancí
+      href: durable-functions-instance-management.md
+  - name: Monitorování
+    items:
+    - name: Monitorování funkcí
+      href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: Stav vlastní orchestrace
+      href: durable-functions-custom-orchestration-status.md
+  - name: Řešení potíží
+    items:
+    - name: Diagnostika
+      href: durable-functions-diagnostics.md
+- name: Referenční informace
+  items:
+  - name: HTTP API
+    href: durable-functions-http-api.md
+- name: Zdroje a prostředky
+  items:
+  - name: Získávání dovedností pomocí Microsoft Learn
+    href: /learn/browse/?products=azure-functions
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=compute
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/functions/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/regions/services/
+  - name: Videa
+    href: https://www.youtube.com/c/AzureFunctions
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-functions
+  - name: Twitter
+    href: https://twitter.com/hashtag/DurableFunctions?src=hash
+  - name: Poskytnutí zpětné vazby k produktu
+    href: https://feedback.azure.com/forums/355860-azure-functions
+  - name: Úložiště GitHub – Durable Functions
+    href: https://github.com/Azure/azure-functions-durable-extension
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
+ms.openlocfilehash: a6a0849aa272b53131c1bef7883fd0b0f76938fa
+ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52636610"

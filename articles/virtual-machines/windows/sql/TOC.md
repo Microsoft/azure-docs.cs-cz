@@ -1,6 +1,7 @@
 # Přehled
 ## [Virtuální počítače s Windows a SQL Serverem](virtual-machines-windows-sql-server-iaas-overview.md) 
- 
+## [Poznámky k verzi](virtual-machines-windows-sql-server-iaas-release-notes.md) 
+
 # Šablony Rychlý start
 ## [Vytvoření virtuálního počítače SQL – portál](quickstart-sql-vm-create-portal.md)
 ## [Vytvoření virtuálního počítače SQL – PowerShell](quickstart-sql-vm-create-powershell.md)
@@ -40,6 +41,7 @@
 #### [Několik oblastí](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### Instance clusteru převzetí služeb při selhání
 #### [Konfigurace](virtual-machines-windows-portal-sql-create-failover-cluster.md)
+## [Změna modelu licencování pro virtuální počítač SQL](virtual-machines-windows-sql-ahb.md)
 
 # Referenční informace
 ## [Azure PowerShell](/powershell/azure/overview)

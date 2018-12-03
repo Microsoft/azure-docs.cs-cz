@@ -5,6 +5,8 @@ items:
   items:
   - name: Vysvětlení informací na faktuře
     href: billing-understand-your-bill.md
+  - name: Vysvětlení informací na faktuře – jenom EA
+    href: billing-understand-your-bill-ea.md
   - name: Získání faktury a dat o využití
     href: billing-download-azure-invoice-daily-usage-date.md
   - name: Poplatky za služby třetích stran
@@ -18,6 +20,8 @@ items:
   items:
   - name: Jak zabránit neočekávaným nákladům
     href: billing-getting-started.md
+  - name: Zobrazit ceny EA
+    href: billing-ea-pricing.md
   - name: Použití značek prostředků
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
   - name: Začínáme s analýzou nákladů – jenom EA
@@ -82,6 +86,8 @@ items:
     href: billing-how-to-change-azure-account-profile.md
   - name: Udělení přístupu k fakturaci
     href: billing-manage-access.md
+  - name: Role EA v Azure
+    href: billing-understand-ea-roles.md
   - name: Propojení ID partnera
     href: billing-partner-admin-link-started.md
   - name: Zobrazení fakturačních účtů
@@ -112,7 +118,9 @@ items:
     href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
   - name: Přesun prostředků Azure
     href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
-  - name: Vytváření předplatných Enterprise
+  - name: Vytvoření dalších předplatných
+    href: billing-create-subscription.md
+  - name: Programové vytváření předplatných Enterprise
     href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
   - name: Export informací o předplatném
     href: billing-export-subscriptions.md
@@ -180,9 +188,9 @@ items:
     items:
     - name: Rozhraní REST API služby Enterprise Reporting
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 88e6864df13312c1963e39ff2c23eb63fde50bc2
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 5de05f7b1426a959c046b1e651f09c2f8e584b8a
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268136"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52497832"

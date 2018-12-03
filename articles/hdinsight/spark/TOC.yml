@@ -3,9 +3,9 @@ items:
   href: /azure/hdinsight
 - name: Přehled
   items:
-  - name: Informace o Sparku v HDInsightu
+  - name: Informace o Apache Sparku ve službě HDInsight
     href: apache-spark-overview.md
-  - name: Součásti systému Hadoop ve službě HDInsight
+  - name: Součásti systému Apache Hadoop ve službě HDInsight
     href: ../hdinsight-component-versioning.md
     maintainContext: true
   - name: HDInsight 4.0
@@ -13,19 +13,19 @@ items:
     maintainContext: true
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření clusteru Spark – portál
+  - name: Vytvoření clusteru Apache Spark – portál
     href: apache-spark-jupyter-spark-sql-use-portal.md
-  - name: Vytvoření clusteru Spark – PowerShell
+  - name: Vytvoření clusteru Apache Spark – PowerShell
     href: apache-spark-jupyter-spark-sql-use-powershell.md
-  - name: Vytvoření clusteru Spark – šablona
+  - name: Vytvoření clusteru Apache Spark – šablona
     href: apache-spark-jupyter-spark-sql.md
 - name: Kurzy
   items:
-  - name: Spouštění dotazů v clusteru Spark
+  - name: Spouštění dotazů v clusteru Apache Spark
     href: apache-spark-load-data-run-query.md
-  - name: Použití VSCode pro spouštění sparkových dotazů
+  - name: Použití VSCode ke spouštění dotazů Apache Sparku
     href: ../hdinsight-for-vscode.md
-  - name: Použití IntelliJ pro spouštění sparkových dotazů
+  - name: Použití IntelliJ ke spouštění dotazů Apache Sparku
     href: apache-spark-intellij-tool-plugin.md
   - name: Analýza dat pomocí nástrojů BI
     href: apache-spark-use-bi-tools.md
@@ -33,7 +33,7 @@ items:
     href: apache-spark-eventhub-streaming.md
   - name: Vytvoření aplikace strojového učení
     href: apache-spark-ipython-notebook-machine-learning.md
-  - name: Vytvoření sparkové aplikace v IntelliJ
+  - name: Vytvoření aplikace Apache Spark v IntelliJ
     href: apache-spark-create-standalone-application.md
 - name: Postup
   items:
@@ -47,17 +47,17 @@ items:
       maintainContext: true
   - name: Vývoj
     items:
-    - name: Použití interaktivního prostředí Sparku
+    - name: Použití interaktivního prostředí Apache Sparku
       href: apache-spark-shell.md
-    - name: Vzdálené úlohy s Livy
+    - name: Vzdálené úlohy s Apache Livy
       href: apache-spark-livy-rest-interface.md
     - name: Vytváření aplikací pomocí Eclipse
       href: apache-spark-eclipse-tool-plugin.md
     - name: Vytváření aplikací pomocí IntelliJ
       href: apache-spark-intellij-tool-plugin.md
-    - name: Vzdálené ladění sparkových úloh pomocí IntelliJ přes SSH
+    - name: Vzdálené ladění úloh Apache Spark pomocí IntelliJ přes SSH
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-    - name: Vzdálené ladění sparkových úloh pomocí IntelliJ přes VPN
+    - name: Vzdálené ladění úloh Apache Spark pomocí IntelliJ přes síť VPN
       href: apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
     - name: Vytváření aplikací .NET HDInsight pro neinteraktivní ověřování
       href: ../hdinsight-create-non-interactive-authentication-dotnet-applications.md
@@ -77,9 +77,9 @@ items:
     - name: PySpark pro VSCode
       href: ../set-up-pyspark-interactive-environment.md
       maintainContext: true
-    - name: Ladění Sparku v IntelliJ
+    - name: Ladění Apache Sparku v IntelliJ
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
-  - name: Použití poznámkových bloků se Sparkem
+  - name: Použití poznámkových bloků s Apache Sparkem
     items:
     - name: Použití místní aplikace Jupyter Notebook
       href: apache-spark-jupyter-notebook-install-locally.md
@@ -89,7 +89,7 @@ items:
       href: apache-spark-jupyter-notebook-use-external-packages.md
     - name: Použití externích balíčků s Jupyterem s využitím akcí skriptů
       href: apache-spark-python-package-installation.md
-    - name: Použití poznámkových bloků Zeppelin
+    - name: Použití poznámkových bloků Apache Zeppelin
       href: apache-spark-zeppelin-notebook.md
   - name: Použití s ostatními službami Azure
     items:
@@ -97,7 +97,7 @@ items:
       href: apache-spark-use-with-data-lake-store.md
     - name: Připojení k Azure SQL Database
       href: apache-spark-connect-to-sql-database.md
-    - name: Implementace architektury lambda pomocí Sparku a Cosmos DB
+    - name: Implementace architektury lambda pomocí Apache Sparku a Cosmos DB
       href: ../../cosmos-db/lambda-architecture.md
       maintainContext: true
   - name: Streamování Sparku
@@ -106,20 +106,20 @@ items:
       href: apache-spark-streaming-overview.md
     - name: Přehled strukturovaného streamování
       href: apache-spark-structured-streaming-overview.md
-    - name: Vytvoření vysoce dostupných streamovacích úloh Sparku v YARNu
+    - name: Vytvoření vysoce dostupných streamovacích úloh Apache Sparku v Apache Hadoop YARNu
       href: apache-spark-streaming-high-availability.md
-    - name: Strukturované streamování s využitím Kafky
+    - name: Strukturované streamování s využitím Apache Kafka
       href: ../hdinsight-apache-kafka-spark-structured-streaming.md
       maintainContext: true
-    - name: Strukturované streamování z Kafka do CosmosDB
+    - name: Strukturované streamování z Apache Kafka do CosmosDB
       href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
       maintainContext: true
-    - name: Streamování Sparku (DStream) s využitím Kafky
+    - name: Streamování Sparku (DStream) s využitím Apache Kafka
       href: ../hdinsight-apache-spark-with-kafka.md
       maintainContext: true
-    - name: Vytvoření streamovacích úloh Sparku s přesně jedním zpracováním událostí
+    - name: Vytvoření streamovacích úloh Apache Sparku s přesně jedním zpracováním událostí
       href: apache-spark-streaming-exactly-once.md
-  - name: Spark a Machine Learning
+  - name: Apache Spark a Machine Learning
     items:
     - name: Předpověď výsledků kontroly potravin
       href: apache-spark-machine-learning-mllib-ipython.md
@@ -129,11 +129,11 @@ items:
       href: apache-spark-deep-learning-caffe.md
     - name: Použití se sadou Microsoft Cognitive Toolkit
       href: apache-spark-microsoft-cognitive-toolkit.md
-    - name: Vytvoření kanálu strojového učení Sparku
+    - name: Vytvoření kanálu strojového učení Apache Sparku
       href: apache-spark-creating-ml-pipelines.md
   - name: Analýza velkých objemů dat
     items:
-    - name: Použití Sparku ke čtení a zápisu dat HBase
+    - name: Použití Apache Sparku ke čtení a zápisu dat Apache HBase
       href: ../hdinsight-using-spark-query-hbase.md
       maintainContext: true
     - name: Analýza protokolů Telemetrie Application Insights
@@ -155,16 +155,16 @@ items:
     - name: Instalace nebo aktualizace Mono
       href: ../hdinsight-hadoop-install-mono.md
       maintainContext: true
-    - name: Přidání knihoven Hivu
+    - name: Přidání knihoven Apache Hivu
       href: ../hdinsight-hadoop-add-hive-libraries.md
       maintainContext: true
-    - name: Použití Giraph
+    - name: Použití Apache Giraphu
       href: ../hdinsight-hadoop-giraph-install-linux.md
       maintainContext: true
     - name: Použití Hue
       href: ../hdinsight-hadoop-hue-linux.md
       maintainContext: true
-    - name: Použití Solr
+    - name: Použití Apache Solru
       href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
     - name: Použití prázdných hraničních uzlů
@@ -206,19 +206,21 @@ items:
     - name: Omezení přístupu k datům
       href: ../hdinsight-storage-sharedaccesssignature-permissions.md
       maintainContext: true
-    - name: Autorizace uživatelů pro zobrazení Ambari
+    - name: Autorizace uživatelů pro zobrazení Apache Ambari
       href: ../hdinsight-authorize-users-to-ambari.md
       maintainContext: true
   - name: Spravovat
     items:
     - name: Správa prostředků clusteru
       href: apache-spark-resource-manager.md
-    - name: Správa sparkových aplikací y využitím rozšířeného serveru historie
+    - name: Správa aplikací Apache Spark s využitím rozšířeného serveru historie
       href: apache-azure-spark-history-server.md
-    - name: Konfigurace nastavení Sparku
+    - name: Konfigurace nastavení Apache Sparku
       href: apache-spark-settings.md
-    - name: Optimalizace sparkových úloh
+    - name: Optimalizace úloh Apache Spark
       href: apache-spark-perf.md
+    - name: Povolení ukládání do mezipaměti s využitím IO Cache
+      href: apache-spark-improve-performance-iocache.md
     - name: Plánování kapacity clusteru
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -260,13 +262,13 @@ items:
       - name: Použití Azure Classic CLI
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
-    - name: Správa clusterů pomocí webového uživatelského rozhraní Ambari
+    - name: Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Ambari
+      - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Apache Ambari
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Použití rozhraní Ambari REST API
+      - name: Použití rozhraní Apache Ambari REST API
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -276,13 +278,13 @@ items:
     - name: Přidání účtů úložiště
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Nahrání dat pro úlohy systému Hadoop
+    - name: Nahrání dat pro úlohy Apache Hadoopu
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Několik clusterů HDInsight se službou Data Lake Store
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
-    - name: Import a export dat pomocí Sqoop
+    - name: Import a export dat pomocí Apache Sqoopu
       href: ../hadoop/hdinsight-use-sqoop.md
       items:
       - name: Připojení přes SSH
@@ -301,7 +303,7 @@ items:
     - name: Použití Oozie pro pracovní postupy
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: Použití časových koordinátorů Oozie
+    - name: Použití časových koordinátorů Apache Oozie
       href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: Porty a identifikátory URI clusterů a služeb
@@ -321,21 +323,21 @@ items:
       maintainContext: true
   - name: Řešení potíží
     items:
-    - name: Ladění sparkových úloh
+    - name: Ladění úloh Apache Spark
       href: apache-spark-job-debugging.md
-    - name: Ladění sparkových úloh pomocí grafu úloh
+    - name: Ladění úloh Apache Spark pomocí grafu úloh
       href: apache-azure-spark-history-server.md
-    - name: Použití IntelliJ pro ladění sparkových úloh
+    - name: Použití IntelliJ k ladění úloh Apache Spark
       href: apache-spark-intellij-tool-debug-remotely-through-ssh.md
     - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: Řešení potíží se Sparkem
+    - name: Řešení potíží s Apache Sparkem
       href: apache-troubleshoot-spark.md
-    - name: Řešení potíží s HDFS
+    - name: Řešení potíží s Apache Hadoop HDFS
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: Řešení potíží s YARN
+    - name: Řešení potíží s Apache Hadoop YARN
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: Známé problémy
@@ -345,25 +347,25 @@ items:
       - name: Informace o používání HDInsightu v Linuxu
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Výkon a paměť Hadoopu
+      - name: Výkon a paměť Apache Hadoopu
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
-      - name: Přístup k protokolům aplikací Hadoop YARN v Linuxu
+      - name: Přístup k protokolům aplikací Apache Hadoop YARN v Linuxu
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Povolení výpisů paměti haldy pro služby Hadoop
+      - name: Povolení výpisů paměti haldy pro služby Apache Hadoop
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
       - name: Vysvětlení a řešení chyb WebHCat
         href: ../hdinsight-hadoop-templeton-webhcat-debug-errors.md
         maintainContext: true
-      - name: Nastavení Hivu pro opravení chyb typu Nedostatek paměti
+      - name: Nastavení Apache Hivu pro opravu chyb typu Nedostatek paměti
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Použití zobrazení Ambari k ladění úloh Tez
+      - name: Použití zobrazení Apache Ambari k ladění úloh Apache Tez
         href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
-      - name: Optimalizace dotazů Hive
+      - name: Optimalizace dotazů Apache Hive
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
 - name: Připravenost pro podnikové zpracování
@@ -382,7 +384,7 @@ items:
     - name: Konfigurace podnikového zabezpečení ve službě HDInsight s využitím Azure AD DS
       href: ../domain-joined/apache-domain-joined-configure-using-azure-adds.md
       maintainContext: true
-    - name: Konfigurace zásad Hivu
+    - name: Konfigurace zásad Apache Hivu
       href: ../domain-joined/apache-domain-joined-run-hive.md
       maintainContext: true
     - name: Správa clusterů s podnikovým zabezpečením
@@ -413,18 +415,24 @@ items:
 - name: Referenční informace
   items:
   - name: Ukázky kódů
-    href: https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight
+    href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
     href: /powershell/module/azurerm.hdinsight
-  - name: .NET (Hadoop)
-    href: https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet
-  - name: .NET (HBase)
+  - name: .NET SDK
+    href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
+  - name: Python SDK
+    href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
+  - name: Java SDK
+    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
+  - name: Go SDK
+    href: ../hdinsight-go-sdk-overview.md
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST API
     href: /rest/api/hdinsight/
-  - name: REST API (Spark)
+  - name: REST API (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: Zdroje a prostředky
   items:
@@ -448,9 +456,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 5ddb8feb0f2fda7264aa7f371576a9310a49bc3d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 35ef5face0f64b6766993eeb7f546923726bd166
+ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981072"
+ms.lasthandoff: 11/29/2018
+ms.locfileid: "52584328"

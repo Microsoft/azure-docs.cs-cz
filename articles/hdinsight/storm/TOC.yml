@@ -1,7 +1,7 @@
 items:
 - name: Dokumentace k Azure HDInsightu
   href: /azure/hdinsight
-- name: Storm v HDInsightu
+- name: Apache Storm v HDInsight
   items:
   - name: Přehled
     href: apache-storm-overview.md
@@ -13,7 +13,7 @@ items:
     maintainContext: true
 - name: Začínáme
   items:
-  - name: Vytvoření clusteru Storm
+  - name: Vytvoření clusteru Apache Storm
     href: apache-storm-tutorial-get-started-linux.md
   - name: Instalace aplikací HDInsight
     href: ../hdinsight-apps-install-applications.md
@@ -23,7 +23,7 @@ items:
     maintainContext: true
 - name: Postup
   items:
-  - name: Vývoj topologií Storm
+  - name: Vývoj topologií Apache Storm
     items:
     - name: Vývoj topologií pomocí Javy
       href: apache-storm-develop-java-topology.md
@@ -33,22 +33,22 @@ items:
       href: apache-storm-develop-csharp-visual-studio-topology.md
     - name: Průvodce programováním pro SCP.NET
       href: apache-storm-scp-programming-guide.md
-    - name: Příklady použití Storm
+    - name: Příklady použití Apache Stormu
       href: apache-storm-example-topology.md
   - name: Nasazení a monitorování topologií
     href: apache-storm-deploy-monitor-topology-linux.md
   - name: Vytváření streamovacích kanálů
     items:
-    - name: Kafka a Storm (Java)
+    - name: Apache Kafka a Apache Storm (Java)
       href: ../hdinsight-apache-storm-with-kafka.md
       maintainContext: true
     - name: Event Hub, Storage a Data Lake Store (Java)
       href: https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/
-    - name: Event Hub a Storm (C# a Java)
+    - name: Event Hub a Apache Storm (C# a Java)
       href: apache-storm-develop-csharp-event-hub-topology.md
     - name: Azure Storage/Data Lake Store (Java)
       href: apache-storm-write-data-lake-store.md
-    - name: Event Hub, HBase (Java)
+    - name: Centrum událostí, Apache HBase (Java)
       href: apache-storm-sensor-data-analysis.md
   - name: Rozšíření clusterů
     items:
@@ -124,7 +124,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
-    - name: Použití clusterů Hadoop
+    - name: Správa clusterů Apache Hadoop
       href: ../hdinsight-administer-use-portal-linux.md
       items:
       - name: Použití sady .NET SDK
@@ -137,13 +137,13 @@ items:
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
-    - name: Správa clusterů pomocí webového uživatelského rozhraní Ambari
+    - name: Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari
       href: ../hdinsight-hadoop-manage-ambari.md
       items:
-      - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Ambari
+      - name: Optimalizace clusterů s využitím webového uživatelského rozhraní Apache Ambari
         href: ../hdinsight-changing-configs-via-ambari.md
         maintainContext: true
-      - name: Použití rozhraní Ambari REST API
+      - name: Použití rozhraní Apache Ambari REST API
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
@@ -153,13 +153,13 @@ items:
     - name: Přidání účtů úložiště
       href: ../hdinsight-hadoop-add-storage.md
       maintainContext: true
-    - name: Nahrání dat pro úlohy systému Hadoop
+    - name: Nahrání dat pro úlohy Apache Hadoopu
       href: ../hdinsight-upload-data.md
       maintainContext: true
     - name: Několik clusterů HDInsight se službou Data Lake Store
       href: ../hdinsight-multiple-clusters-data-lake-store.md
       maintainContext: true
-    - name: Import a export dat pomocí Sqoop
+    - name: Import a export dat pomocí Apache Sqoopu
       href: ../hdinsight-use-sqoop.md
       items:
       - name: Připojení přes SSH
@@ -175,10 +175,10 @@ items:
         href: ../hdinsight-hadoop-use-sqoop-powershell.md
         maintainContext: true
       maintainContext: true
-    - name: Použití Oozie pro pracovní postupy
+    - name: Použití Apache Oozie pro pracovní postupy
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: Použití časových koordinátorů Oozie
+    - name: Použití časových koordinátorů Apache Oozie
       href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: Porty a identifikátory URI clusterů a služeb
@@ -202,12 +202,12 @@ items:
     - name: Řešení potíží s pomalým clusterem HDInsight nebo jeho selháním
       href: ../hdinsight-troubleshoot-failed-cluster.md
       maintainContext: true
-    - name: Řešení potíží s HDFS
+    - name: Řešení potíží s Apache Hadoop HDFS
       href: ../hdinsight-troubleshoot-hdfs.md
       maintainContext: true
-    - name: Řešení potíží se STORM
+    - name: Řešení potíží s Apache STORM
       href: apache-troubleshoot-storm.md
-    - name: Řešení potíží s YARN
+    - name: Řešení potíží s Apache Hadoop YARN
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
     - name: Zdroje a prostředky
@@ -215,13 +215,13 @@ items:
       - name: Informace o používání HDInsightu v Linuxu
         href: ../hdinsight-hadoop-linux-information.md
         maintainContext: true
-      - name: Výkon a paměť Hadoopu
+      - name: Výkon a paměť Apache Hadoopu
         href: ../hdinsight-hadoop-stack-trace-error-messages.md
         maintainContext: true
       - name: Přístup k protokolům aplikací Hadoop YARN v Linuxu
         href: ../hdinsight-hadoop-access-yarn-app-logs-linux.md
         maintainContext: true
-      - name: Povolení výpisů paměti haldy pro služby Hadoop
+      - name: Povolení výpisů paměti haldy pro služby Apache Hadoop
         href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md
         maintainContext: true
     maintainContext: true
@@ -263,13 +263,13 @@ items:
     href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
   - name: Go SDK
     href: ../hdinsight-go-sdk-overview.md
-  - name: .NET (HBase)
+  - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
     href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
-  - name: REST (Spark)
+  - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
 - name: Související
   items:
@@ -281,15 +281,15 @@ items:
     - name: Migrace řešení .NET do linuxových clusterů
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: Nasazení a správa topologií Storm
+    - name: Nasazení a správa topologií Apache Storm
       href: apache-storm-deploy-monitor-topology.md
-    - name: Použití Maven k vytváření aplikací v Javě
+    - name: Použití Apache Mavenu k vytváření aplikací v Javě
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
     - name: Přizpůsobení pomocí akce skriptu
       href: ../hdinsight-hadoop-customize-cluster.md
       maintainContext: true
-    - name: Přístup k protokolům aplikace YARN
+    - name: Přístup k protokolům aplikací Apache Hadoop YARN
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
     - name: Vývoj akcí skriptů
@@ -298,7 +298,7 @@ items:
     - name: Správa clusterů pomocí webu Azure Portal
       href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
-    - name: Monitorování clusterů pomocí rozhraní Ambari API
+    - name: Monitorování clusterů pomocí rozhraní Apache Ambari API
       href: ../hdinsight-monitor-use-ambari-api.md
       maintainContext: true
 - name: Zdroje a prostředky
@@ -316,9 +316,9 @@ items:
   - name: Nástroje Windows pro HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 056413070b6b268db215a119dd216d8ad711ffb7
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 2d3a2999c69833f759cbaab0241136609e068bf2
+ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365471"
+ms.lasthandoff: 11/28/2018
+ms.locfileid: "52496229"
