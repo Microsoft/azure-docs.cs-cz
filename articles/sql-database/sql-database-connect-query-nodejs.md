@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/26/2018
-ms.openlocfilehash: 3a6060c59c2b338a2fad3327fe89dcf3df955ef5
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 22c783574897076b697b4b2bb3e8fc1da284dcae
+ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496693"
+ms.lasthandoff: 12/01/2018
+ms.locfileid: "52724668"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rychlý start: Použití Node.js k dotazování databáze SQL Azure
 
@@ -98,7 +98,7 @@ Otevřete příkazový řádek a vytvořte složku *sqltest*. Přejděte do slo�
         console.log('Reading rows from the Table...');
 
         // Read all rows from table
-        request = new Request(
+        var request = new Request(
             "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc "
                 + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid",
             function(err, rowCount, rows)
