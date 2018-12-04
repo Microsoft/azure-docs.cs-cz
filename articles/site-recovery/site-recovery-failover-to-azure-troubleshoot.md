@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: da5ae8220c63333b92c671a3f2ab288ef5ff4b48
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5df31c4b2e82ef47c8b94d9aac498cce31f6f243
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679074"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847180"
 ---
 # <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>Řešení chyb při selhání virtuálního počítače do Azure
 

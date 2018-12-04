@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 71ecffebe095fd325837aeb1d6e741a2f3321aea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 88952d09672fb4dd2d31878d56a59cb425f53de2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421834"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Kurz: Integrace Azure Active Directory pomocí Mimecast osobní portálu
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD pomocí portálu osobní Mimecast, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Portálu osobní Mimecast jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurovat integraci portálu osobní Mimecast do služby Azure AD, budete mus
 
 **Chcete-li přidat portál osobní Mimecast z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -114,7 +114,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | --------------- | --------------- | 
     | Evropa          | `https://eu-api.mimecast.com/login/saml`|
     | Spojené státy   | `https://us-api.mimecast.com/login/saml`|
-    | Jihoafrická republika    | `https://za-api.mimecast.com/login/saml`|
+    | Jižní Afrika    | `https://za-api.mimecast.com/login/saml`|
     | Austrálie       | `https://au-api.mimecast.com/login/saml`|
     | Poskytuje        | `https://jer-api.mimecast.com/login/saml`|
 
@@ -124,7 +124,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | --------------- | --------------- |
     | Evropa          | `https://eu-api.mimecast.com/sso/<accountcode>`|
     | Spojené státy   | `https://us-api.mimecast.com/sso/<accountcode>`|    
-    | Jihoafrická republika    | `https://za-api.mimecast.com/sso/<accountcode>`|
+    | Jižní Afrika    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | Austrálie       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | Poskytuje        | `https://jer-api.mimecast.com/sso/<accountcode>`|
 
@@ -134,12 +134,12 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | --------------- | --------------- | 
     | Evropa          | `https://eu-api.mimecast.com/login/saml`|
     | Spojené státy   | `https://us-api.mimecast.com/login/saml`|
-    | Jihoafrická republika    | `https://za-api.mimecast.com/login/saml`|
+    | Jižní Afrika    | `https://za-api.mimecast.com/login/saml`|
     | Austrálie       | `https://au-api.mimecast.com/login/saml`|
     | Poskytuje        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
-    > Hodnota identifikátoru není skutečný. Identifikátor skutečné zaktualizujte příslušnou hodnotu. Kontakt [tým podpory osobní klienta portálu Mimecast](http://www.mimecast.com/customer-success/technical-support/) má být získána hodnota. 
+    > Hodnota identifikátoru není skutečný. Identifikátor skutečné zaktualizujte příslušnou hodnotu. Kontakt [tým podpory osobní klienta portálu Mimecast](https://www.mimecast.com/customer-success/technical-support/) má být získána hodnota. 
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
@@ -288,7 +288,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

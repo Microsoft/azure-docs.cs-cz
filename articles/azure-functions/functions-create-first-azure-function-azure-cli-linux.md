@@ -9,22 +9,22 @@ ms.date: 11/28/2018
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: multiple
+ms.devlang: javascript
 manager: jeconnoc
-ms.openlocfilehash: 49845cb3b07076c566ea046fca49a72812857fbf
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 6597e0058176eaa819170a494e4908ab44456360
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619975"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850529"
 ---
 # <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli-preview"></a>Vytvoření první funkce hostované v Linuxu pomocí Core Tools a Azure CLI (Preview)
 
-Azure Functions umožňuje spuštění kódu v prostředí Linux bez nutnosti nejprve vytvořit virtuální počítač nebo publikovat webovou aplikaci. Hostování v Linuxu je aktuálně ve verzi preview, vyžaduje [modul runtime Functions 2.0](functions-versions.md)a spustí jenom [plán služby App Service](functions-scale.md#app-service-plan).
+Služba Azure Functions umožňuje spuštění kódu v [bezserverovém](https://azure.microsoft.com/overview/serverless-computing/) prostředí Linuxu, aniž byste nejprve museli vytvořit virtuální počítač nebo publikovat webovou aplikaci. Hostování v Linuxu je aktuálně ve verzi Preview a vyžaduje [modul runtime služby Functions 2.0](functions-versions.md). Další informace o aspektech týkajících se ve verzi preview pro spuštění vaší aplikace function App v Linuxu najdete v tématu [to funguje v systému Linux článku](https://aka.ms/funclinux).
 
 Tento článek Rychlý start vás provede použitím Azure CLI k vytvoření první aplikace funkcí spuštěné v Linuxu. Kód funkce se vytvoří místně a pak se nasadí do Azure pomocí [Azure Functions Core Tools](functions-run-local.md).
 
-Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. Tento článek popisuje, jak vytvářet funkce v JavaScriptu nebo jazyce C#.
+Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux. Tento článek popisuje, jak vytvářet funkce v JavaScriptu nebo jazyce C#. Informace o vytváření funkcí Pythonu najdete v tématu [vytvoření první funkce Pythonu pomocí základní nástroje a rozhraní příkazového řádku Azure (preview)](functions-create-first-function-python.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,6 +50,9 @@ Po zobrazení výzvy použijte klávesy se šipkami a vyberte modul runtime pra
 
 + `dotnet`: vytvoří projekt knihovny třídy .NET (.csproj).
 + `node`: vytvoří projekt jazyka JavaScript.
++ `python`: vytvoří projekt Python. Funkce Pythonu najdete v článku [rychlý start Python](functions-create-first-function-python.md).
+
+Při spuštění příkazu se zobrazí něco jako následující výstup:
 
 ```output
 Writing .gitignore
@@ -74,12 +77,12 @@ Initialized empty Git repository in C:/functions/MyFunctionProj/.git/
 
 ## <a name="create-a-linux-function-app-in-azure"></a>Vytvoření linuxové aplikace funkcí v Azure
 
-K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplikace funkcí poskytuje bezserverové prostředí pro provádění kódu funkcí. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Aplikaci funkcí spuštěnou v Linuxu vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#az_functionapp_create).
+K hostování provádění funkcí v Linuxu musíte mít aplikaci funkcí. Aplikace funkcí poskytuje bezserverové prostředí pro provádění kódu funkcí. Umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků. Aplikaci funkcí spuštěnou v Linuxu vytvoříte pomocí příkazu [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
 
-V následujícím příkazu nahraďte zástupný text `<app_name>` jedinečným názvem aplikace funkcí a `<storage_name>` názvem účtu úložiště. `<app_name>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure. Také byste měli nastavit `<language>` modul runtime pro aplikace function app, z `dotnet` (C#) nebo `node` (JavaScript).
+V následujícím příkazu nahraďte zástupný text `<app_name>` jedinečným názvem aplikace funkcí a `<storage_name>` názvem účtu úložiště. `<app_name>` je také výchozí doména DNS pro aplikaci funkcí. Tento název musí být jedinečný mezi všemi aplikacemi v Azure. Také byste měli nastavit `<language>` modul runtime pro aplikace function app, z `dotnet` (C#), `node` (JavaScript), nebo `python`.
 
 ```azurecli-interactive
-az functionapp create --resource-group myResourceGroup --plan myAppServicePlan \
+az functionapp create --resource-group myResourceGroup --consumption-plan-location westus --os-type Linux \
 --name <app_name> --storage-account  <storage_name> --runtime <language>
 ```
 
@@ -105,5 +108,5 @@ Teď můžete do nové aplikace funkcí v Azure publikovat svůj projekt.
 
 V tomto článku jste se dozvěděli, jak hostovat aplikaci funkcí ve výchozím kontejneru služby Azure App Service. Funkce v Linuxu můžete hostovat také ve vlastním kontejneru.
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Vytvoření funkce v Linuxu pomocí vlastní image](functions-create-function-linux-custom-image.md)

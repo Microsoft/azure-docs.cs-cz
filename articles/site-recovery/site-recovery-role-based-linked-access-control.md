@@ -2,16 +2,16 @@
 title: Správa přístupu k Azure Site Recovery s řízením přístupu na základě rolí (RBAC) | Dokumentace Microsoftu
 description: Tento článek popisuje, jak použít bontrol přístupu na základě role (RBAC) ke správě přístupu k Azure Site Recovery.
 ms.service: site-recovery
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 19d41d8c9b1a54cefc09190531b064d640048385
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 815eb1f94d80c36824dc34f3f9410458b9837003
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212042"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849526"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Správa přístupu k Site Recovery s řízením přístupu na základě rolí (RBAC)
 

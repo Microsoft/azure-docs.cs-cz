@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a20dec67201cb7d8b7ccd3a7662438f2afabfe63
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 33f04f9deced7c4bc1c27cea5e8c431d4cd5512a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446785"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849322"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions HTTP aktivačními událostmi a vazbami
 
@@ -42,7 +42,7 @@ Jsou součástí vazby HTTP [Microsoft.Azure.WebJobs.Extensions.Http](http://www
 
 ## <a name="trigger"></a>Trigger
 
-HTTP trigger umožňuje vyvolání funkce s žádostí HTTP. Aktivační událost HTTP slouží k vytvoření rozhraní API bez serveru a reagovat na webhooky. 
+HTTP trigger umožňuje vyvolání funkce s žádostí HTTP. Aktivační událost HTTP slouží k vytvoření rozhraní API bez serveru a reagovat na webhooky.
 
 Ve výchozím nastavení, vrátí aktivační událost HTTP HTTP 200 OK s prázdným textem zprávy ve funkcích 1.x nebo HTTP 204 žádný obsah s prázdným textem zprávy ve funkcích 2.x. Chcete-li upravit odpověď, nakonfigurovat [HTTP výstupní vazby](#output).
 
@@ -53,8 +53,9 @@ Podívejte se na příklad specifické pro jazyk:
 * [C#](#trigger---c-example)
 * [C# skript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#trigger---javascript-example)
+* [Python](#trigger---python-example)
 
 ### <a name="trigger---c-example"></a>Aktivační události – příklad v jazyce C#
 
@@ -276,6 +277,61 @@ module.exports = function(context, req) {
 };
 ```
 
+### <a name="trigger---python-example"></a>Aktivační události – příklad v Pythonu
+
+Následující příklad ukazuje vazbu aktivační události v *function.json* souboru a [funkce Pythonu](functions-reference-python.md) , který používá vazba. Funkce Hledat `name` parametr v řetězci dotazu nebo textu požadavku HTTP.
+
+Tady je *function.json* souboru:
+
+```json
+{
+    "scriptFile": "__init__.py",
+    "disabled": false,    
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
+```
+
+[Konfigurace](#trigger---configuration) bodu vysvětluje tyto vlastnosti.
+
+Tady je kód Pythonu:
+
+```python
+import logging
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+
 ### <a name="trigger---java-example"></a>Aktivační události – příklad v jazyce Java
 
 Následující příklad ukazuje vazbu aktivační události v *function.json* souboru a [Java funkce](functions-reference-java.md) , který používá vazba. Funkce vrátí stavový kód 200 odpověď HTTP s hlavní část žádosti, které předpony adres spouštěcí text požadavku s "Hello," pozdrav.
@@ -307,7 +363,7 @@ Tady je kód Java:
 ```java
 @FunctionName("hello")
 public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS), Optional<String> request,
-                        final ExecutionContext context) 
+                        final ExecutionContext context)
     {
         // default HTTP 200 response code
         return String.format("Hello, %s!", request);
@@ -352,12 +408,11 @@ Pro C# a F# funkce, je možné deklarovat typ triggeru zadejte buď `HttpRequest
 
 Pro funkce jazyka JavaScript poskytuje modul runtime služby Functions tělo požadavku místo objekt žádosti. Další informace najdete v tématu [příklad v jazyce JavaScript aktivační událost](#trigger---javascript-example).
 
-
 ### <a name="customize-the-http-endpoint"></a>Upravit koncový bod HTTP
 
 Ve výchozím nastavení při vytváření funkce pro aktivační událost HTTP funkce je adresovatelný trasa ve tvaru:
 
-    http://<yourapp>.azurewebsites.net/api/<funcname> 
+    http://<yourapp>.azurewebsites.net/api/<funcname>
 
 Můžete přizpůsobit tuto trasu pomocí volitelného `route` vlastnost na HTTP trigger se uživatelovo zadání vazby. Jako příklad následující *function.json* soubor definuje `route` vlastnost pro aktivační událost HTTP:
 
@@ -389,7 +444,7 @@ http://<yourapp>.azurewebsites.net/api/products/electronics/357
 To umožňuje kódu funkce, které podporují dva parametry v adrese, _kategorie_ a _id_. Můžete použít libovolnou [omezení trasy webové rozhraní API](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) s parametry. Následující kód funkce jazyka C# používá oba parametry.
 
 ```csharp
-public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
+public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id,
                                                 ILogger log)
 {
     if (id == null)
@@ -421,7 +476,7 @@ module.exports = function (context, req) {
     }
 
     context.done();
-} 
+}
 ```
 
 Ve výchozím nastavení, jsou všechny funkce trasy s předponou *api*. Můžete také upravit nebo odebrat pomocí předpony `http.routePrefix` vlastnost ve vaší [host.json](functions-host-json.md) soubor. Následující příklad odebere *api* předponu trasy s použitím prázdný řetězec pro předponu ve *host.json* souboru.
@@ -533,17 +588,15 @@ Když používáte jednu z těchto metod funkce zabezpečení na úrovni aplikac
 ### <a name="webhooks"></a>Webhooky
 
 > [!NOTE]
-> Webhook režimu je dostupná jenom pro verzi 1.x modul runtime služby Functions.
+> Webhook režimu je dostupná jenom pro verzi 1.x modul runtime služby Functions. Tato změna byla provedena pro zlepšení výkonu triggerů HTTP ve verzi 2.x.
 
-Webhook režim poskytuje další ověřování pro webhook datové části. Ve verzi 2.x, základní triggeru HTTP stále funguje a je doporučený postup pro webhooky.
+Ve verzi 1.x, webhooku šablony poskytují další ověřování pro webhook datové části. Ve verzi 2.x, základní triggeru HTTP stále funguje a je doporučený postup pro webhooky. 
 
 #### <a name="github-webhooks"></a>Webhooky Githubu
 
 Reagovat na webhooky Githubu, nejprve vytvořte funkci s triggerem HTTP a nastavte **webHookType** vlastnost `github`. Zkopírujte její adresu URL a klíč rozhraní API do **přidat webhook** stránka úložiště GitHub. 
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
-
-Příklad najdete v tématu [Vytvoření funkce aktivované webhookem GitHubu](functions-create-github-webhook-triggered-function.md).
 
 #### <a name="slack-webhooks"></a>Slack webhooků
 
@@ -560,7 +613,7 @@ Webhook autorizace zařizuje služba příjemce komponentu webhooku, část trig
 
 Délka požadavku HTTP je omezena na 100 MB (104,857,600 bajtů) a délka adresy URL je omezena na 4 KB (4 096 bajtů). Tato omezení jsou určeny `httpRuntime` element modulu runtime [souboru Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
 
-Pokud funkce, která používá HTTP trigger nemá dokončit během přibližně 2,5 minut, bude časový limit brány a vrátí chybu HTTP 502. Funkce bude pokračovat v běhu, ale nebude možné vrátit odpověď HTTP. Pro dlouho běžící funkce doporučujeme dodržovat asynchronní vzory a vrátí se umístění, kde příkaz ping stav žádosti. Informace o tom, jak dlouho může běžet funkce, najdete v části [škálování a hostování - plánu Consumption](functions-scale.md#consumption-plan). 
+Pokud funkce, která používá HTTP trigger nemá dokončit během přibližně 2,5 minut, bude časový limit brány a vrátí chybu HTTP 502. Funkce bude pokračovat v běhu, ale nebude možné vrátit odpověď HTTP. Pro dlouho běžící funkce doporučujeme dodržovat asynchronní vzory a vrátí se umístění, kde příkaz ping stav žádosti. Informace o tom, jak dlouho může běžet funkce, najdete v části [škálování a hostování - plánu Consumption](functions-scale.md#consumption-plan).
 
 ## <a name="trigger---hostjson-properties"></a>Aktivační události – vlastnosti host.json
 
@@ -574,7 +627,7 @@ Pomocí protokolu HTTP výstupní vazbu reagovat na odesílatel požadavku HTTP.
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru. Pro knihoven tříd C#, nejsou žádné vlastnosti atribut, které odpovídají tyto *function.json* vlastnosti. 
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru. Pro knihoven tříd C#, nejsou žádné vlastnosti atribut, které odpovídají tyto *function.json* vlastnosti.
 
 |Vlastnost  |Popis  |
 |---------|---------|

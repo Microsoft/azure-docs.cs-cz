@@ -1,0 +1,74 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 1be098bb098befecf29863bfe2d0d5220edddb01
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52852404"
+documentType: LandingData
+title: Dokumentace ke službě Azure Notebooks
+metadata:
+  title: Dokumentace ke službě Azure Notebooks – rychlá zprovoznění, kurzy, průvodci | Microsoft Docs
+  description: Zjistěte, jak vytvářet, spouštět a sdílet poznámkové bloky Jupyter prostřednictvím hostovanou služby Azure Notebooks.
+  services: notebooks
+  author: kraigb
+  manager: douge
+  ms.service: notebooks
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/04/2018
+  ms.author: kraigb
+abstract:
+  description: Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. Jupyter (dříve IPython) je opensourcový projekt, který umožňuje snadno kombinovat text markdownu, spustitelný kód (Python, R a F#), trvalá data, grafiku a vizualizace v jednom plátně, které se označuje jako poznámkový blok a dá se sdílet.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Prostřednictvím těchto rychlých zprovoznění se naučíte pracovat se službou Azure Notebooks.
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - href: /azure/notebooks/quickstart-create-share-jupyter-notebook
+      html: <p>Zjistíte, jak vytvořit a spustit poznámkový blok Jupyter ve službě Azure Notebooks a potom tento poznámkový blok sdílet s dalšími uživateli.</p>
+      image:
+        src: media/index/Azure_AddNotebook.svg
+      title: Vytvoření a sdílení poznámkového bloku
+    - href: /azure/notebooks/quickstart-clone-jupyter-notebook
+      html: <p>Naučíte se, jak naklonovat poznámkový blok Jupyter z úložiště GitHub a spustit ho ve vašem účtu služby Azure Notebooks.</p>
+      image:
+        src: media/index/Azure_ClonePage.svg
+      title: Klonování poznámkového bloku
+    - href: /azure/notebooks/quickstart-migrate-local-jupyter-notebook
+      html: <p>Naučíte se, jak poznámkový blok Jupyter přenést z místního počítače nebo webové adresy URL do služby Azure Notebooks a sdílet ho pro účely spolupráce.</p>
+      image:
+        src: media/index/Azure_MigrateNotebook.svg
+      title: Migrace místních poznámkových bloků Jupyter
+    - href: /azure/notebooks/quickstart-create-jupyter-notebook-project-environment
+      html: <p>naučíte se, jak nakonfigurovat projekt Azure Notebooks s využitím konkrétní sady nainstalovaných balíčků a spouštěcích skriptů.</p>
+      image:
+        src: media/index/Azure_CustomEnvironment.svg
+      title: Vytvoření projektu s vlastním prostředím
+    - href: /azure/notebooks/quickstart-sign-in-azure-notebooks
+      html: <p>Zjistíte, jak se přihlásit ke službě Azure Notebooks a nastavit ID uživatele, které vám dává možnost přistupovat k uloženým projektům a sdílet poznámkové bloky s dalšími uživateli.</p>
+      image:
+        src: media/index/Azure_UserAccount.svg
+      title: Přihlášení a nastavení ID uživatele
+- title: Podrobné kurzy
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/notebooks/tutorial-create-run-jupyter-notebook">Další informace o kompletním postupu vytvoření poznámkového bloku</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: 'Při práci se službou Notebooks použijte následující ukázky:'
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/notebooks/azure-notebooks-samples">Ukázkové poznámkové bloky Jupyter</a>

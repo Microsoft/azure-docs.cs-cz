@@ -4,14 +4,14 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure Migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: f7f06636e025eda604caa65ca82d4dd7eb909d3f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ab4af59b71dada84fd99df0299aeccfd5662d474
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165683"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849169"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -21,7 +21,6 @@ ms.locfileid: "47165683"
 ## <a name="overview"></a>Přehled
 
 Posouzení služby Azure Migrate má tři fáze. Posouzení začíná vhodnost analýzy, za nímž následuje velikosti, a nakonec měsíční odhadu nákladů. Počítače s pouze přesune později v případě úspěšného předchozí. Například pokud na počítači selže kontrola vhodnost pro Azure, je označen jako nevhodný pro Azure a změny velikosti a ocenění nebude provedeno.
-
 
 ## <a name="azure-suitability-analysis"></a>Vhodnost pro Azure analysis
 
@@ -119,22 +118,14 @@ K určení velikosti na základě výkonu potřebuje Azure Migrate data o využi
 
    Níže jsou důvody týkající se důvod, proč posouzení můžete narazit nízkou spolehlivosti:
 
-   **Jednorázově**
+   - Neprofilovali jste své prostředí po dobu trvání, pro kterou vytváříte interní hodnocení. Například pokud vytváříte interní hodnocení s dobou výkonu nastavenou na 1 den, budete muset počkat aspoň jeden den po spuštění zjišťování, aby se shromáždily všechny datové body.
 
-   - Statistika v systému vCenter Server není nastavena na úroveň 3. Protože model jednorázového zjišťování závisí na nastavení statistiky systému vCenter Server, pokud nastavení v systému vCenter Server statistiky je nižší než úroveň 3, data o výkonu disku a sítě se shromažďují ze systému vCenter Server. V takovém případě není doporučení služby Azure Migrate týkající se disku a sítě založené na využití. Bez zohlednění vstupně-výstupních operacích za sekundu a propustnosti disku nemůže Azure Migrate určit, jestli disk bude v Azure potřebovat disk Premium, a proto v tomto případě Azure Migrate doporučí pro všechny disky použít disky Standard.
-   - Nastavení statistiky v systému vCenter Server bylo nastavené na úroveň 3 po kratší dobu před zahájením zjišťování. Zvažme například scénář, kdy dnes změníte nastavení statistiky na úroveň 3 a zítra (za 24 hodin) zahájíte zjišťování pomocí zařízení kolektoru. Pokud vytváříte posouzení za jeden den, máte všechny datové body a hodnocení spolehlivosti posouzení bude 5 hvězdiček. Pokud však změníte dobu trvání výkonu ve vlastnostech posouzení na jeden měsíc, hodnocení spolehlivosti se sníží, protože data o výkonu disku a sítě za poslední měsíc nebudou k dispozici. Pokud chcete zohlednit data o výkonu za poslední měsíc, doporučujeme ponechat nastavení statistiky systému vCenter Server na úrovni 3 po dobu jednoho měsíce před zahájením zjišťování.
+   - Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud po nějakou dobu byly některé virtuální počítače vypnuté, nebudeme schopni za toto období shromáždit data o výkonu.
 
-   **Průběžná zjišťování**
-
-   - Vaše prostředí není Profilovat po dobu trvání, pro kterou vytváříte posouzení. Například pokud vytváříte posouzení s dobou trvání výkonu, nastavení 1 den, budete muset počkat aspoň jeden den po spuštění zjišťování pro všechny datové body k získání shromažďovat.
-
-   **Běžné důvody**  
-
-   - Během období, pro které se posouzení počítá, se několik virtuálních počítačů vypnulo. Pokud nějakou dobu byly všechny virtuální počítače vypnuté, jsme nebude možné shromažďovat data o výkonu za toto období.
    - Během období, pro které se posouzení počítá, se vytvořilo několik virtuálních počítačů. Například pokud vytváříte posouzení historie výkonu za poslední měsíc, ale před týdnem se v prostředí vytvořilo několik virtuálních počítačů. V takových případech nebude k dispozici historie výkonu nových virtuálních počítačů za celé období.
 
    > [!NOTE]
-   > Pokud je hodnocení spolehlivosti nějakého posouzení nižší než 4 hvězdičky, jednorázové zjišťování modelu jsme doporučujeme změnit vCenter Server na úroveň nastavení statistiky na 3, počkat po dobu, kterou chcete vezměte v úvahu pro posouzení (1 den, 1 týden, 1 měsíc) a potom proveďte zjišťování a posouzení. Průběžná zjišťování modelu, počkejte aspoň jeden den pro zařízení, která má být profilována prostředí a potom *přepočítat* posouzení. Pokud předchozí nelze provést, určení velikosti na základě výkonu nemusí být spolehlivé a doporučuje se přepnout na *jako v místním nastavení velikosti* změnou vlastností posouzení.
+   > Pokud je hodnocení spolehlivosti nějakého posouzení nižší než 5 hvězdiček, doporučujeme vám počkat aspoň jeden den pro zařízení, která má být profilována prostředí a potom *přepočítat* posouzení. Pokud to není možné, určení velikosti na základě výkonu nemusí být spolehlivé a doporučuje se změnou vlastností posouzení přepnout na *určování stejné velikosti jako v místním prostředí*.
 
 ## <a name="monthly-cost-estimation"></a>Odhad měsíčních nákladů
 

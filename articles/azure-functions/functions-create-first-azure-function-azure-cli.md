@@ -12,12 +12,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: d150a56c04d29ae44b7dbb05016889ad2bcefe8f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 7ff57519cfbb99fa705aff6c970951730c501f3e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620315"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846449"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>Vytvoření první funkce z příkazového řádku
 
@@ -107,19 +107,6 @@ Po vytvoření aplikace Function App se v Azure CLI zobrazí podobné informace 
     // Remaining output has been truncated for readability.
 }
 ```
-
-### <a name="configure-the-function-app-nodejs"></a>Konfigurace aplikace funkcí (Node.js)
-
-Při vytváření aplikace funkcí v JavaScriptu je důležité cílit na správnou verzi Node.js. Modul runtime služby Functions verze 2.x vyžaduje Node.js verze 8.x. Verzi Node.js, kterou používá aplikace funkcí v Azure, řídí nastavení aplikace `WEBSITE_NODE_DEFAULT_VERSION`. Pomocí příkazu [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) nastavte verzi Node.js na `8.11.1`.
-
-V následujícím příkazu Azure CLI je <app_name> název vaší aplikace funkcí.
-
-```azurecli-interactive
-az functionapp config appsettings set --resource-group myResourceGroup \
- --name <app_name> --settings WEBSITE_NODE_DEFAULT_VERSION=8.11.1
-```
-
-Ověřte nové nastavení ve výstupu.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 

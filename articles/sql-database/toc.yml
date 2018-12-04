@@ -143,8 +143,10 @@ items:
     items:
     - name: Spravované instance
       href: sql-database-managed-instance-index.yml
-    - name: Přehled
+    - name: Přehled spravovaných instancí
       href: sql-database-managed-instance.md
+    - name: Vytvoření a správa
+      href: sql-database-managed-instance-create-manage.md
     - name: Omezení prostředků
       href: sql-database-managed-instance-resource-limits.md
     - name: Integrace virtuální sítě
@@ -157,6 +159,8 @@ items:
         href: sql-database-managed-instance-sync-network-configuration.md
       - name: Architektura připojení
         href: sql-database-managed-instance-connectivity-architecture.md
+      - name: Koncové body správy
+        href: sql-database-managed-instance-management-endpoint.md
       - name: Připojení aplikací
         href: sql-database-managed-instance-connect-app.md
     - name: Rozdíly v jazyce T-SQL
@@ -211,7 +215,7 @@ items:
     items:
     - name: Zabezpečení
       href: sql-database-security-index.yml
-    - name: Přehled
+    - name: Přehled zabezpečení
       href: sql-database-security-overview.md
     - name: Rozšířená ochrana před internetovými útoky
       items:
@@ -652,9 +656,9 @@ items:
     href: /azure/architecture/
   - name: Příběhy zákazníků
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 12add5f8ee32ce3c5207a604ef7cad821d5e5a4e
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 2cc5240aa7302d687f0b7a2fad2af29105e86de0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165256"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840414"

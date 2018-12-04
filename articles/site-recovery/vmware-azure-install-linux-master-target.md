@@ -4,14 +4,14 @@ description: Zjistěte, jak nastavit hlavní cílový server Linux pro navrácen
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 415b50b94052e7d428ddfa55d5288c8954a3ff1a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e35a8cf720fffa3a3b4c7d9f1b83c2323041b1c4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212365"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833308"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Instalace hlavního cílového serveru s Linuxem pro navrácení služeb po obnovení
 Po převzetí služeb při selhání virtuálních počítačů do Azure, které můžete navrácení služeb po obnovení virtuálních počítačů do místní lokality. K navrácení služeb po obnovení, budete muset znovu nastavit ochranu virtuálního počítače z Azure do místní lokality. Tento proces je nutné místní hlavní cílový server pro příjem provozu. 
@@ -259,7 +259,7 @@ Chcete-li vytvořit disk pro uchování postupujte následovně:
     
     Vyberte **vložit** zahájíte úpravou souboru. Vytvořit novou čáru a vložte následující text. Upravte více cest ID disku na základě Identifikátoru zvýrazněné více cest z předchozího příkazu.
 
-    **/dev/Mapovač/ <Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
+     **/dev/Mapovač/ <Retention disks multipath id> /mnt/uchování ext4 rw 0 0**
 
     Vyberte **Esc**a pak zadejte **: QW** (zápisu a ukončete) zavřete okno editoru.
 

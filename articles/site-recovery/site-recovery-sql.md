@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/22/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 46f5f73293875cd89036eb615e7bd81188bc4c67
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: d4be7b9c7774163aed8c0efb3414dbd6a794cf7f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210257"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847792"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Nastavení zotavení po havárii pro SQL Server 
 
@@ -35,7 +35,7 @@ Mnoho úloh SQL serveru použít jako základ a dá se integrovat s aplikací, j
 * SQL skupin dostupnosti Always On, zajištění zotavení po havárii pro SQL Server 2012 nebo 2014 Enterprise.
 * SQL zrcadlení databáze v režimu vysoké zabezpečení pro SQL Server Standard edition (libovolná verze) nebo SQL Server 2008 R2.
 
-## <a name="site-recovery-support"></a>Site Recovery podporu
+## <a name="site-recovery-support"></a>Podpora Site Recovery
 
 ### <a name="supported-scenarios"></a>Podporované scénáře
 Site Recovery může chránit SQL Server, jak je uvedené v tabulce.

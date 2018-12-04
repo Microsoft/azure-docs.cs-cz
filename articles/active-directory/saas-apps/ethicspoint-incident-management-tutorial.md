@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: c38c751701b323bf1c985a4127d0e9deac2c8eaa
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c72ed655166dc1fe8045f5b9fdc7221cdf24d567
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446017"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850988"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Kurz: Integrace Azure Active Directory s EthicsPoint Incident Management (EPIM)
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s EthicsPoint Incident Management (EPIM), potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Správy incidentů EthicsPoint (EPIM) jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace nástroje správy incidentů EthicsPoint (EPIM) do služby
 
 **Správa incidentů EthicsPoint (EPIM) přidat z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -123,7 +123,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     c. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<servername>.navexglobal.com/adfs/ls/`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi, identifikátoru a přihlašovací adresa URL. Kontakt [tým podpory Správa incidentů EthicsPoint (EPIM) klienta](http://www.navexglobal.com/company/contact-us) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi, identifikátoru a přihlašovací adresa URL. Kontakt [tým podpory Správa incidentů EthicsPoint (EPIM) klienta](https://www.navexglobal.com/company/contact-us) k získání těchto hodnot. 
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -133,7 +133,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/ethicspoint-incident-management-tutorial/tutorial_general_400.png)
     
-1. Ke konfiguraci jednotného přihlašování na **EthicsPoint Incident Management (EPIM)** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Správa incidentů EthicsPoint (EPIM) ](http://www.navexglobal.com/company/contact-us).
+1. Ke konfiguraci jednotného přihlašování na **EthicsPoint Incident Management (EPIM)** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory Správa incidentů EthicsPoint (EPIM) ](https://www.navexglobal.com/company/contact-us).
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -172,7 +172,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="creating-a-ethicspoint-incident-management-epim-test-user"></a>Vytvoření zkušebního uživatele EthicsPoint Incident Management (EPIM)
 
-V této části vytvoříte uživateli Britta Simon v EthicsPoint Incident Management (EPIM). Spojte se prosím s [tým podpory Správa incidentů EthicsPoint (EPIM)](http://www.navexglobal.com/company/contact-us) přidat uživatele na platformě správy incidentů EthicsPoint (EPIM).
+V této části vytvoříte uživateli Britta Simon v EthicsPoint Incident Management (EPIM). Spojte se prosím s [tým podpory Správa incidentů EthicsPoint (EPIM)](https://www.navexglobal.com/company/contact-us) přidat uživatele na platformě správy incidentů EthicsPoint (EPIM).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

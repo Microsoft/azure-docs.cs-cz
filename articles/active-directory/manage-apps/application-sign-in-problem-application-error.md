@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4cce49509a452153815c845d9ab72a1b4a8a5b7f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 13a628d37ef67d0a1dc3ad8231229493191c4e7f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356378"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849560"
 ---
 # <a name="error-on-an-applications-page-after-signing-in"></a>Chyba na stránce aplikace po přihlášení
 
@@ -30,7 +30,7 @@ Existuje několik možných důvodů, proč aplikace nepřijala odpověď ze slu
 
 -   Pokud aplikace je Galerie Azure AD, ověření, jste provedli všechny kroky v následujícím článku [ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
 
--   Pomocí některého nástroje, například [Fiddler](http://www.telerik.com/fiddler) zaznamenat požadavek SAML, odpověď SAML a tokenu SAML.
+-   Pomocí některého nástroje, například [Fiddler](https://www.telerik.com/fiddler) zaznamenat požadavek SAML, odpověď SAML a tokenu SAML.
 
 -   Sdílejte odpověď SAML se na dodavatele aplikace a vědět, co chybí.
 
@@ -62,7 +62,7 @@ Chcete-li přidat atribut v konfiguraci Azure AD se odešle odpověď na Azure A
 
    * Klikněte na tlačítko **uložit.** V tabulce se zobrazí nový atribut.
 
-9.  Uložte konfiguraci.
+9.  Konfiguraci uložte.
 
 Při příštím přihlášení uživatele k aplikaci Azure AD pošle nový atribut v odpověď SAML.
 

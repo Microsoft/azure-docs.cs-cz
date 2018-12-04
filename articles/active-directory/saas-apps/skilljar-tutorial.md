@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 6a0463640f9a7194632a65cdb10653a520fcc0c9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a997de5530bf8ed475031147369b591b2d44d227
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435226"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850325"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>Kurz: Integrace Azure Active Directory se službou Skilljar
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Skilljar, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Skilljar jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Skilljar do služby Azure AD, budete muset přidat Skillja
 
 **Chcete-li přidat Skilljar z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -117,7 +117,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.skilljar.com/`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory Skilljar klienta](http://support.skilljar.com/hc/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory Skilljar klienta](https://support.skilljar.com/hc/) k získání těchto hodnot. 
  
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -127,7 +127,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/skilljar-tutorial/tutorial_general_400.png)
 
-1. Ke konfiguraci jednotného přihlašování na **Skilljar** straně, je nutné odeslat na stažený **soubor XML s metadaty**, a **název identifikátoru formátu hodnota - urn: oasis: názvy: tc: SAML:1.1:nameid – formát: emailAddress** k [tým podpory Skilljar](http://support.skilljar.com/hc/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **Skilljar** straně, je nutné odeslat na stažený **soubor XML s metadaty**, a **název identifikátoru formátu hodnota - urn: oasis: názvy: tc: SAML:1.1:nameid – formát: emailAddress** k [tým podpory Skilljar](https://support.skilljar.com/hc/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -171,7 +171,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Skilljar. Skilljar p
 Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Skilljar, pokud ještě neexistuje. 
 
 >[!NOTE]
->Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Skilljar](http://support.skilljar.com/hc/). 
+>Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Skilljar](https://support.skilljar.com/hc/). 
 > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD

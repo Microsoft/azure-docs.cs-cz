@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f57dd806e345cad80b8c60424e12211fc74814d6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c4b5a200780761decfdd98289f7e7332244e5645
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213215"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846419"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Nastavení zotavení po havárii místních virtuálních počítačů Hyper-V v cloudech VMM do Azure
 
@@ -55,7 +55,7 @@ Než začnete, doporučujeme [zkontrolovat architekturu](concepts-hyper-v-to-azu
 Při nastavování zdrojové prostředí, nainstalujte zprostředkovatele Azure Site Recovery a agenta služeb zotavení Azure a zaregistrujte na místních serverech v trezoru. 
 
 1. V části **Příprava infrastruktury** klikněte na **Zdroj**.
-2. V okně **Připravit zdroj** klikněte na **+ VMM** a přidejte server VMM. V **přidat Server**, zkontrolujte, že **serveru System Center VMM** se zobrazí v **typ serveru**.
+2. V okně **Připravit zdroj** klikněte na **+ VMM** a přidejte server VMM. V části **Přidat server** zkontrolujte, že se v poli **Typ serveru** zobrazí **Server System Center VMM**.
 3. Stáhněte si instalační program pro zprostředkovatele Microsoft Azure Site Recovery.
 4. Stáhněte registrační klíč trezoru. Budete ho potřebovat po spuštění instalace zprostředkovatele. Klíč je platný pět dní od jeho vygenerování.
 5. Stáhněte agenta služby Recovery Services.
@@ -125,7 +125,7 @@ Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a ú�
 4. Vyberte **contosovmsacct1910171607** účtu úložiště a **ContosoASRnet** sítě Azure.
 5. V části **Virtuální počítače** > **Vybrat** vyberte virtuální počítač, který chcete replikovat. Pak klikněte na **OK**.
 
- Průběh akce **Povolení ochrany** můžete sledovat v části **Úlohy** > **Úlohy Site Recovery**. Po **dokončit ochranu** příslušná úloha skončí, dokončení počáteční replikace a virtuální počítač připravený k převzetí služeb při selhání.
+ Průběh akce **Povolení ochrany** můžete sledovat v části **Úlohy** > **Úlohy Site Recovery**. Po dokončení úlohy **Dokončení ochrany** bude počáteční replikace dokončená a virtuální počítač bude připravený na převzetí služeb při selhání.
 
 
 ## <a name="next-steps"></a>Další postup

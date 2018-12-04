@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 35feb1b2aa593d403b3b54781ddbba41964d15e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: bc6e77643783e1e9f124bc98ea1eb910304a5f32
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394829"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846466"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Stát vydavatelem cloudové Tržiště
 
@@ -78,7 +78,7 @@ Zobrazí se výzva k uveďte následující informace:
 Náš Onboardingový tým Marketplace ověří marketplace registrace podrobné informace uvedené v kroku 3. Po schválení obdržíte Uvítacího e-mailu se přihlašovací údaje k účtu a pokyny k přihlášení ke službě [portál partnerů cloudu](https://cloudpartner.azure.com).
 
 Budete používat [portál partnerů cloudu](https://cloudpartner.azure.com) k vytvoření, publikovat a spravovat nabídky na webu marketplace. Po schválení uvítací e-mail obdržíte, můžete okamžitě přihlásit [portál partnerů cloudu](https://cloudpartner.azure.com) pomocí svého účtu Microsoft k další technické informace o publikování na webu marketplace a vytváření vaší nabídky. 
-*   Další informace o používání portál Cloud Partner [přejděte na Začínáme článek v další části](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal). Musíte být přihlášeni na portál Cloud Partner pro přístup k tyto podrobnosti.
+*   Další informace o používání portál Cloud Partner [přejděte na Začínáme článek v další části](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal). Musíte být přihlášeni na portál Cloud Partner pro přístup k tyto podrobnosti.
 *   Pokud máte otázky nebo by například chcete naplánovat volání přehled rozhraní připojování, přečtěte si prosím další články v této příručce pro vydavatele nebo žádost o podporu v části typ problému > Marketplace registrace z v rámci portálu partnerů cloudu.
 *   Pokud jste nedostali Uvítacího e-mailu, Zkontrolujte prosím složku s nevyžádanou poštou pro e-mail s předmětem "Vítejte na webu Microsoft Marketplace!." Pokud neexistuje žádný e-mailu v složku s nevyžádanou poštou, [obraťte na podporu Microsoftu](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Na stránce podpory prosím vyberte: typ problému > Marketplace registrace.  Náš Onboardingový tým vydavatele Marketplace potěší, která vám pomůže s vaše dotazy. 
 

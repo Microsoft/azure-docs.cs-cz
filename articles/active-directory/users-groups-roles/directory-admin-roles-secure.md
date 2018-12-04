@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: d62559561bf7e8e2dc2a882543d7fa7fc45a7499
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7f2b4d870fdcf250f62d41fa4f3ea5bf13d323c3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821055"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847061"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
@@ -247,7 +247,7 @@ Vyžadovat C-suite vedení, vedoucí vysoké úrovně, kritické IT a zabezpeče
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Projděte si doporučení Národního institutu standardů a technologie pro zpracování incidentů 
 
-Národního institutu standardů a technologie (NIST) obsahuje pokyny pro zpracování incidentů, zejména pro analýzu dat týkajících se incidentu a určení odpovídající odpověď na každý incident. Další informace najdete v tématu [The (NIST) počítači Security Incident Handling Guide (SP 800-61, revize 2)](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf).
+Národního institutu standardů a technologie (NIST) obsahuje pokyny pro zpracování incidentů, zejména pro analýzu dat týkajících se incidentu a určení odpovídající odpověď na každý incident. Další informace najdete v tématu [The (NIST) počítači Security Incident Handling Guide (SP 800-61, revize 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf).
 
 #### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>Implementaci Privileged Identity Management (PIM) pro JIT pro další role správců
 

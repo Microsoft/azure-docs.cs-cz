@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: f35236f369cb1870c4bdfaab77582970b0684966
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 68a2ecc734ab3bbb98d14bef3d30109a2d018781
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720163"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847877"
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Import dat Azure Log Analytics do Power BI
 
@@ -32,7 +32,7 @@ K importu dat do Power BI z pracovního prostoru Log Analytics, vytvoření dato
 ![Log Analytics pro Power BI](media/log-analytics-powerbi/overview.png)
 
 ## <a name="export-query"></a>Exportovat dotaz
-Začněte vytvořením [prohledávání protokolů](log-analytics-queries.md) , která vrací data ze služby Log Analytics, že chcete naplnění datové sady Power BI.  Poté exportovat tento dotaz k [Power Query (M) jazyk](https://msdn.microsoft.com/library/mt807488.aspx) které může využívat Power BI Desktopu.
+Začněte vytvořením [prohledávání protokolů](../azure-monitor/log-query/log-query-overview.md) , která vrací data ze služby Log Analytics, že chcete naplnění datové sady Power BI.  Poté exportovat tento dotaz k [Power Query (M) jazyk](https://msdn.microsoft.com/library/mt807488.aspx) které může využívat Power BI Desktopu.
 
 1. Vytvoření prohledávání protokolů v Log Analytics k extrakci dat pro datové sady.
 2. Pokud používáte portál pro prohledávání protokolu, klikněte na tlačítko **Power BI**.  Pokud používáte portál Analytics, vyberte **exportovat** > **Power BI dotazu (M)**.  Obě tyto možnosti exportovat dotaz do textového souboru s názvem **PowerBIQuery.txt**. 
@@ -80,5 +80,5 @@ Datová sada v Power BI bude mít stejná data, která jste předtím viděli v 
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](log-analytics-queries.md) sestavování dotazů, které je možné exportovat do Power BI.
+* Další informace o [prohledávání protokolů](../azure-monitor/log-query/log-query-overview.md) sestavování dotazů, které je možné exportovat do Power BI.
 * Další informace o [Power BI](https://powerbi.microsoft.com) k vytváření vizualizací založených na exporty Log Analytics.

@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics na hraničních zařízeních IoT (preview)
-description: Vytvořte hraniční úlohy ve službě Azure Stream Analytics a nasazovat je do zařízení používající Azure IoT Edge.
+description: Vytvořte hraniční úlohy ve službě Azure Stream Analytics a nasazovat je do zařízení s Azure IoT Edge.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/16/2017
-ms.openlocfilehash: a9d3b92b9cb3334c8c52a9127a2fab92d187e3d9
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 11/30/2018
+ms.openlocfilehash: 6d3060545946f1f003058932f1ffc50c2a64586f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687431"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846228"
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics na hraničních zařízeních IoT (preview)
 
@@ -151,10 +150,10 @@ Ale tyto funkce zatím nepodporuje hraniční úlohy:
 * Použití více než 14 agregací v jediném kroku.
 * Formát AVRO pro vstup/výstup. V současné době jsou podporovány pouze CSV a JSON.
 * Následující operátory SQL:
-    * Anomalydetection, který
+    * AnomalyDetection
     * Geoprostorové operátory:
         * CreatePoint
-        * : CreatePolygon
+        * CreatePolygon
         * CreateLineString
         * ST_DISTANCE
         * ST_WITHIN
@@ -197,7 +196,7 @@ Chcete-li vytvořit úlohu s referenčními daty na hraničních zařízeních:
 
 3. Máte odkaz na soubor dat připravené na zařízení. Pro kontejner Windows k referenčnímu datovému souboru na místním disku vložit a sdílet s kontejnerem Dockeru místním disku. Pro kontejner Linuxu vytvořte svazek Dockeru a naplnění souboru data na svazek.
 
-4. Nastavte cestu k souboru. Pro zařízení se systémem windows použijte absolutní cestu. Pro Linux zařízení použijte cestu ve svazku.
+4. Nastavte cestu k souboru. Hostitelským operačním systémem Windows a Windows container, použijte absolutní cestu: `E:\<PathToFile>\v1.csv`. Pro kontejner hostitelského operačního systému Windows a Linuxu nebo operačních systémů Linux a kontejner Linuxu, použijte cestu ve svazku: `<VolumeName>/file1.txt`.
 
 ![Nové referenčního datového vstupu pro úlohy Azure Stream Analytics na hraničních zařízeních IoT](./media/stream-analytics-edge/ReferenceDataNewInput.png)
 
@@ -206,7 +205,6 @@ Referenční data ve službě IoT Edge update se aktivuje nasazení. Po aktivaci
 Existují dva způsoby, jak aktualizovat referenční data:
 * Aktualizujte odkaz na cestu k datům v úloze Azure Stream Analytics z portálu Azure portal.
 * Aktualizace nasazení IoT Edge.
-
 
 ## <a name="license-and-third-party-notices"></a>Licence a oznámení třetích stran
 * [Azure Stream Analytics v prostředí IoT Edge preview licence](https://go.microsoft.com/fwlink/?linkid=862827). 

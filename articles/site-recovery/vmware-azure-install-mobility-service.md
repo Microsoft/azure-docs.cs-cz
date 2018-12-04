@@ -4,14 +4,14 @@ description: Zjistěte, jak nainstalovat agenta služby Mobility pro zotavení p
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 14be544c53bf3393466cfa33b2ad815f07d0005d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 30b177578464653499cdcde8cacf65defa5548ef
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007412"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846908"
 ---
 # <a name="install-the-mobility-service-for-disaster-recovery-of-vmware-vms-and-physical-servers"></a>Instalace služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzické servery
 

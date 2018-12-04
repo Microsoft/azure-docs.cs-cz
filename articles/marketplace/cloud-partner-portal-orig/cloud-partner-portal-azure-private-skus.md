@@ -1,5 +1,5 @@
 ---
-title: Privátní SKU | Dokumentace Microsoftu
+title: Privátní SKU a plány | Dokumentace Microsoftu
 description: Jak používat privátní skladové položky ke správě dostupnosti nabídky.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 28fe85c6443701d5fb40d4f90dbec9ba445a234d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 519f0354f2a19e106ca1072170721b27357d173e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230236"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849203"
 ---
-<a name="private-skus"></a>Privátní skladové položky
+<a name="private-skus-and-plans"></a>Privátní SKU a plány
 ============
 
 Privátní SKU umožňují omezit dostupnost SKU pro konkrétní zákazníky. Když skladová položka je označena privátní, není k dispozici ve všech veřejných katalogu včetně na [Azure Marketplace](https://azuremarketplace.microsoft.com) a [webu Azure portal](http://portal.azure.com). Na portálu Azure portal jenom zákazníkům s přístupem k SKU je můžou zobrazit. Kromě toho by také být uživatel vyzván, aby měli přístup k soukromé nabídky.
@@ -91,7 +91,12 @@ Ukázkový obsah souboru CSV:
 
 Když přepnete z ruční zadání do sdíleného svazku clusteru nahrát zobrazení nebo ze souboru CSV pro ruční zadání není zachováno původní seznam ID předplatných s přístupem k SKU. Zobrazí se upozornění a v seznamu je přepsat jenom při ukládání nabídky.
 
-<a name="previewing-private-offers"></a>Zobrazení náhledu soukromé nabídky
+<a name="sync-private-subscriptions"></a>Synchronizace privátní předplatná
+-------------------------
+
+Při přidávání předplatná do publikované nabídky s privátní SKU nebo plán, není potřeba znovu publikovat nabídka přidat informace o cílové skupině. Stačí použijte ID předplatného Azure (plány a skladové položky) nebo ID Tenanta (pouze plány) Chcete-li přidat cílové skupiny.
+
+<a name="previewing-private-offers"></a>Nabízí privátní náhled
 -------------------------
 
 Během verze preview/testovacího kroku, jen pro předplatná nabídky úrovně ve verzi preview bude mít přístup k SKU. To je, že testovací fáze, po kterém můžete ověřit, jaké nabídky může vypadat třeba cílové zákazníkům a je standardní pro všechny typy publikování.

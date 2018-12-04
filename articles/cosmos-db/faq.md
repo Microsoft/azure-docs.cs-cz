@@ -1,21 +1,19 @@
 ---
-title: Nejčastější dotazy k Azure Cosmos DB | Dokumentace Microsoftu
+title: Nejčastější dotazy k Azure Cosmos DB
 description: Získejte odpovědi na nejčastější dotazy ohledně služby Azure Cosmos DB, globálně distribuovaná a vícemodelová databázová služba. Další informace o kapacitě a úrovně výkonu a škálování.
 keywords: Otázky k databázi, a nejčastější dotazy, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: sngun
-ms.openlocfilehash: 50d606486a6d80f00424685494eae28a95fe361a
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: e4ed9ee34260dfffc0034fb7524a037e957fab3f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164706"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851175"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 

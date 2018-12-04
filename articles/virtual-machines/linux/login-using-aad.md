@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 4f86dee539e3cc5a90db828ed11dbd225a00555d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: e75758c5a4171adc7af56581026a727db2ef4740
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334631"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850971"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -129,7 +129,7 @@ Nejprve zobrazte veřejnou IP adresu vašeho virtuálního počítače s [az vm 
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Přihlaste se k virtuálnímu počítači Azure s Linuxem pomocí svých přihlašovacích údajů Azure AD. `-l` Parametr umožňuje určit vlastní adresu účtu služby Azure AD. Zadejte veřejnou IP adresu vašeho virtuálního počítače jako výstup v předchozím příkazu:
+Přihlaste se k virtuálnímu počítači Azure s Linuxem pomocí svých přihlašovacích údajů Azure AD. `-l` Parametr umožňuje určit vlastní adresu účtu služby Azure AD. Účet adresy by měly být zadány v všechna písmena malá. Použijte veřejnou IP adresu vašeho virtuálního počítače z předchozího příkazu:
 
 ```azurecli-interactive
 ssh -l azureuser@contoso.onmicrosoft.com publicIps

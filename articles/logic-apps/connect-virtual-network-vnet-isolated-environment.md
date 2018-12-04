@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/29/2018
-ms.openlocfilehash: 798b50887bcfdf5b4298c37beb1b9eea8f9abdda
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.date: 12/03/2018
+ms.openlocfilehash: 8ad4c356c5826532b94721bc4d9071179e8bd93a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682193"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846680"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps prostřednictvím integrace služby prostředí (ISE)
 
@@ -57,19 +57,28 @@ Při vytváření prostředí integrační služby (ISE), vyberte virtuální s�
 
 1. V nabídce vaší virtuální sítě, vyberte **řízení přístupu (IAM)**. 
 
-1. V části **řízení přístupu (IAM)**, zvolte **přidat**. 
+1. V části **řízení přístupu (IAM)**, zvolte **přidat přiřazení role**. 
 
    ![Přidání rolí](./media/connect-virtual-network-vnet-isolated-environment/set-up-role-based-access-control-vnet.png)
 
-1. Na **přidat přiřazení role** podokno nastavení každou roli pro službu Azure Logic Apps, jak je popsáno v tabulce v tomto kroku. Ujistěte se, že zvolíte **Uložit** po dokončení každé role.
+1. Na **přidat přiřazení role** podokno, přidejte nezbytné rolí do služby Azure Logic Apps, jak je popsáno. 
+
+   1. V části **Role**vyberte **Přispěvatel sítě**. 
+   
+   1. V části **přiřadit přístup k**vyberte **uživatele Azure AD, skupinu nebo aplikaci**.
+
+   1. V části **vyberte**, zadejte **Azure Logic Apps**. 
+
+   1. Po dokončení se zobrazí seznam členů, vyberte **Azure Logic Apps**. 
+
+      > [!TIP]
+      > Pokud nemůžete najít tuto službu, zadejte ID aplikace služby Logic Apps: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` 
+   
+   1. Jakmile budete hotoví, vyberte **Uložit**.
+
+   Příklad:
 
    ![Přidání přiřazení role](./media/connect-virtual-network-vnet-isolated-environment/add-contributor-roles.png)
-
-   | Role | Přiřadit přístup k | Vyberte | 
-   |------|------------------|--------|
-   | **Přispěvatel sítě** | **Azure AD uživatele, skupinu nebo aplikaci** | Zadejte **Azure Logic Apps**. Jakmile se zobrazí seznam členů, vyberte stejnou hodnotu. <p>**Tip**: Pokud nelze najít tuto službu, zadejte ID aplikace služby Logic Apps: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` | 
-   | **Přispěvatel modelu Classic** | **Azure AD uživatele, skupinu nebo aplikaci** | Zadejte **Azure Logic Apps**. Jakmile se zobrazí seznam členů, vyberte stejnou hodnotu. <p>**Tip**: Pokud nelze najít tuto službu, zadejte ID aplikace služby Logic Apps: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` | 
-   |||| 
 
 Další informace najdete v tématu [oprávnění pro přístup k virtuální síti](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
 
@@ -102,8 +111,31 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
    | **Umístění** | Ano | <*Oblast datového centra Azure*> | Oblast datového centra Azure, jak nasadíte prostředí | 
    | **Kapacita** | Ano | 0, 1, 2, 3 | Počet jednotek zpracování pro tento prostředek ISE | 
    | **Virtuální síť** | Ano | <*Azure--název virtuální sítě –*> | Virtuální síť Azure ve které chcete vložit prostředí, takže aplikace logiky v daném prostředí mají přístup k vaší virtuální sítě. Pokud nejste připojeni k síti, můžete jeden vytvořit tady. <p>**Důležité**: můžete *pouze* provádět tento vkládání při vytváření vašeho ISE. Ale předtím, než budete moct vytvořit tuto relaci, ujistěte se, že jste již [nastavit řízení přístupu na základě role ve službě virtual network pro Azure Logic Apps](#vnet-access). | 
-   | **Podsítě** | Ano | <*Rozsah IP adres*> | ISE vyžaduje čtyři *prázdný* podsítě, které nemají delegování k libovolné službě a slouží k vytváření prostředků ve vašem prostředí. Každá podsíť musí splňovat tato kritéria: <p>-Používá [notace CIDR (Classless Inter-Domain Routing) formát](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>-Vyžaduje třídy B adresní prostor. <br>-Má název, který nezačíná znakem čísla nebo pomlčku. <br>-Zahrnuje `/27`, například každá podsíť určuje rozsah adres 32-bit: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, a `10.0.0.96/27`. <br>– Musí neexistuje ve stejném rozsahu adres pro vámi zvolené virtuální síti ani žádné jiné privátních IP adres ve kterých je připojený virtuální sítě. <br>– Musí být prázdný. <p><p>**Důležité**: můžete *nelze změnit* tyto rozsahy IP adres po vytvoření prostředí. |
+   | **Podsítě** | Ano | <*Rozsah IP adres*> | ISE vyžaduje čtyři *prázdný* podsítě. Tyto podsítě jsou undelegated k libovolné službě a jsou používány pro vytváření prostředků ve vašem prostředí. Můžete *nelze změnit* tyto rozsahy IP adres po vytvoření prostředí. <p><p>K vytvoření každé podsíti [, použijte postup v této tabulce](#create-subnet). Každá podsíť musí splňovat tato kritéria: <p>– Musí neexistuje ve stejném rozsahu adres pro vámi zvolené virtuální síti ani žádné jiné privátních IP adres ve kterých je připojený virtuální sítě. <br>-Používá název, který nezačíná znakem čísla nebo pomlčku. <br>-Používá [notace CIDR (Classless Inter-Domain Routing) formát](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). <br>-Vyžaduje třídy B adresní prostor. <br>-Zahrnuje `/27`. Například každá podsíť určuje rozsah adres 32-bit: `10.0.0.0/27`, `10.0.0.32/27`, `10.0.0.64/27`, a `10.0.0.96/27`. <br>– Musí být prázdný. |
    |||||
+
+   <a name="create-subnet"></a>
+
+   **Vytvoření podsítě**
+
+   1. V části **podsítě** klikněte na položku **spravovat konfiguraci podsítě**.
+
+      ![Spravovat konfiguraci podsítě](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+
+   1. Na **podsítě** podokně zvolte **podsítě**.
+
+      ![Přidání podsítě](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+
+   1. Na **přidat podsíť** podokně zadejte tyto informace.
+
+      * **Název**: název pro vaši podsíť
+      * **Rozsah adres (blok CIDR)**: rozsah vaší podsítě ve virtuální síti a ve formátu CIDR
+
+      ![Přidat podrobnosti o podsíti](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
+
+   1. Jakmile budete hotovi, zvolte **OK**.
+
+   1. Tento postup opakujte pro tři další podsítě.
 
 1. Když Azure úspěšně ověří vaše ISE informace, zvolte **vytvořit**, například:
 
@@ -126,7 +158,7 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
 
 K vytváření aplikací logiky, které používají prostředí integrační služby (ISE), postupujte podle kroků v [jak vytvořit aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) ale s těmito rozdíly: 
 
-* Když vytvoříte aplikaci logiky, vyberte vaše ISE, místo oblasti Azure, ze **umístění** ze seznamu **prostředí integrační služby** části, například:
+* Když vytvoříte aplikaci logiky, v části **umístění** vlastnosti, vyberte vaše ISE z **prostředí integrační služby** části, například:
 
   ![Vyberte prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/create-logic-app-with-integration-service-environment.png)
 
@@ -134,13 +166,15 @@ K vytváření aplikací logiky, které používají prostředí integrační sl
 
   ![Výběr konektorů ISE](./media/connect-virtual-network-vnet-isolated-environment/select-ise-connectors.png)
 
-* Po vložení vaše ISE do služby Azure virtual network, logic apps v vaše ISE můžete přímo přístup k prostředkům v dané virtuální síti. Pro místní systémy ve virtuální síti, který je propojen ISE aplikace logiky přímo přístupné tyto systémy pomocí některé z těchto položek: 
+* Po vložení vaše ISE do služby Azure virtual network, logic apps v vaše ISE můžete přímo přístup k prostředkům v dané virtuální síti. Pro místní systémy, které jsou připojené k virtuální síti vložit ISE do této sítě tak, aby aplikace logiky můžete tyto systémy přístup přímo pomocí některé z těchto položek: 
 
   * ISE konektor pro daný systém, například SQL Server
+  
   * Akce HTTP 
+  
   * Vlastní konektor
 
-  Pro místní systémy, které nejsou ve virtuální síti nebo nemají ISE konektory, nejprve [nastavit a používat místní brány dat](../logic-apps/logic-apps-gateway-install.md).
+  Pro místní systémy, které nejsou ve virtuální síti nebo nemají ISE konektory, nejprve [nastavit na místní bránu dat](../logic-apps/logic-apps-gateway-install.md).
 
 <a name="create-integration-account-environment"></a>
 
@@ -148,7 +182,7 @@ K vytváření aplikací logiky, které používají prostředí integrační sl
 
 Použití účtu pro integraci s logic apps v prostředí integrační služby (ISE), musíte použít tento účet pro integraci *stejné prostředí* jako logic apps. Aplikace logiky do ISE může odkazovat pouze účty pro integraci v prostředí ISE stejné. 
 
-Chcete-li vytvořit integrační účet, který používá ISE, postupujte podle obvyklé kroky v [vytvoření účtů pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) s výjimkou **umístění** vlastnost, která nyní obsahuje vaše ISEs pod  **Prostředí integrační služby** spolu se dozvíte dostupné oblasti. Vyberte vaše ISE, místo oblasti, například:
+Chcete-li vytvořit integrační účet, který používá ISE, postupujte podle kroků v [vytvoření účtů pro integraci](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) s výjimkou **umístění** vlastnost kde **prostředí integrační služby**  nyní se zobrazí část. Místo toho vyberte váš ISE, místo oblasti, například:
 
 ![Vyberte prostředí integrační služby](./media/connect-virtual-network-vnet-isolated-environment/create-integration-account-with-integration-service-environment.png)
 

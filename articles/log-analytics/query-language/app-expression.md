@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: dc9884d72bc2e09c88bf1d5dc238ec5d1ff56430
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 84d1a08cd8ec4aafcc382ca74987bc5486f673d7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681275"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849747"
 ---
 # <a name="app-expression-in-log-analytics-query"></a>výraz App() použijte v dotazu Log Analytics
 
@@ -79,4 +79,4 @@ union
 ## <a name="next-steps"></a>Další postup
 
 - Najdete v článku [pracovní prostor výraz](workspace-expression.md) k odkazování na pracovní prostor Log Analytics.
-- Přečtěte si, jak [dat Log Analytics](../../log-analytics/log-analytics-queries.md) uložená.
+- Přečtěte si, jak [dat Log Analytics](../../azure-monitor/log-query/log-query-overview.md) uložená.

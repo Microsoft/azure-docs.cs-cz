@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e66f74edf93688a2793b3f24516f8b14328a8bb9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5afb8e03dedbe09c2c95495fb6ff18333f4c648d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634944"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847588"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizujete si prostředí SQL s řešením kontroly stavu SQL serveru ve službě Log Analytics
 
@@ -184,7 +184,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](../../log-analytics/log-analytics-queries.md), pak se změní výše uvedeném dotazu následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](../../azure-monitor/log-query/log-query-overview.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -209,7 +209,7 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
     ```
 
     >[!NOTE]
-    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](../../log-analytics/log-analytics-queries.md), pak se změní výše uvedeném dotazu následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](../../azure-monitor/log-query/log-query-overview.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -265,4 +265,4 @@ Pokud máte doporučení, která má být ignorována, můžete vytvořit textov
 * Ano, naleznete v tématu [ignorujte doporučení](#ignore-recommendations) výše uvedené části.
 
 ## <a name="next-steps"></a>Další postup
-* [Hledání protokolů](../../log-analytics/log-analytics-queries.md) informace o analýze podrobných dat o kontrolu stavu SQL a doporučení.
+* [Hledání protokolů](../../azure-monitor/log-query/log-query-overview.md) informace o analýze podrobných dat o kontrolu stavu SQL a doporučení.

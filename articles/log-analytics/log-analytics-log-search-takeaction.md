@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 737fea452e80782446fdd4a6252ab6af0caaa1dc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7257dae7c522029e0f09bfbcb076970f6c65baec
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723308"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849373"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Provést akci s Runbook Automation z výsledků na vyhledávacím protokolu Log Analytics
 
@@ -27,11 +27,11 @@ Ve výsledku hledání protokolů ve službě Azure Log Analytics, můžete teď
 
 ## <a name="components-and-features-used"></a>Použité komponenty a funkce
 * [Účet Azure Automation](../automation/automation-quickstart-create-account.md)
-* [Pracovní prostor služby Log Analytics](log-analytics-queries.md)
+* [Pracovní prostor služby Log Analytics](../azure-monitor/log-query/log-query-overview.md)
 
 ## <a name="to-initiate-runbook-from-log-search"></a>K zahájení sady runbook z prohledávání protokolů
 
-Reagovat na události a zahájit z výsledků vyhledávání protokolu sady runbook, začněte vytvořením prohledávání protokolu a z výsledků můžete vyvolat sadu runbook na vyžádání.  Toho lze dosáhnout z protokolu vyhledávací funkce [webu Azure portal](log-analytics-queries.md).  V tomto příkladu budeme provádět prohledávání protokolů z webu Azure portal pomocí základní ukázku této funkce.
+Reagovat na události a zahájit z výsledků vyhledávání protokolu sady runbook, začněte vytvořením prohledávání protokolu a z výsledků můžete vyvolat sadu runbook na vyžádání.  Toho lze dosáhnout z protokolu vyhledávací funkce [webu Azure portal](../azure-monitor/log-query/log-query-overview.md).  V tomto příkladu budeme provádět prohledávání protokolů z webu Azure portal pomocí základní ukázku této funkce.
 
 1. Na webu Azure Portal, klikněte na tlačítko **všechny služby** a vyberte **Log Analytics**.  
 2. Vyberte pracovní prostor Log Analytics.
@@ -50,5 +50,5 @@ Pokud můžete vybrat sadu runbook, která byla nakonfigurovaná na stav [volat 
     
 ## <a name="next-steps"></a>Další postup
 
-* Zkontrolujte [protokolu v log Analytics search odkaz](log-analytics-queries.md) zobrazíte všechna pole hledání a omezující vlastnosti, které jsou k dispozici ve službě Log Analytics.
+* Zkontrolujte [protokolu v log Analytics search odkaz](../azure-monitor/log-query/log-query-overview.md) zobrazíte všechna pole hledání a omezující vlastnosti, které jsou k dispozici ve službě Log Analytics.
 * Zjistěte, jak vyvolat Automation runbook automaticky, najdete v tématu [volání runbooku Azure Automation z upozornění Log Analytics](../automation/automation-create-alert-triggered-runbook.md).  

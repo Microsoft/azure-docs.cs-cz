@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: fe6251f70ae62440bbbefc8c3aa5d92d934d8ba0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b24d32afed5acfd846f9a8e8316339665524ad2e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249349"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849756"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Zabezpečení Frame: Správa konfigurace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -507,7 +507,7 @@ K zákazu sdílení CORS pro kontroler nebo akce, pomocí atributu [DisableCors]
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Povolení zabezpečeného spouštění a bit locker šifrování zařízení na Windows 10 IoT Core](https://developer.microsoft.com/windows/iot/win10/sb_bl) |
+| **Odkazy**              | [Povolení zabezpečeného spouštění a bit locker šifrování zařízení na Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
 | **Kroky** | Zabezpečené spouštění UEFI omezuje systému umožňuje pouze podepsána zadaným autoritou binárních souborů. Tato funkce brání neznámý kód spuštěn na platformě a potenciálně oslabení stav zabezpečení ho. Povolení zabezpečeného spouštění UEFI a omezit seznam certifikačních autorit, které jsou důvěryhodné pro podepisování kódu. Podepište veškerý kód, který je nasazený na zařízení pomocí jedné z důvěryhodné autority. |
 
 ## <a id="partition-iot"></a>Šifrování operačního systému a další oddíly zařízení IoT s bit schránky

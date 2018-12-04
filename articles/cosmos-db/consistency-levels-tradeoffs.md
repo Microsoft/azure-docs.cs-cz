@@ -1,20 +1,19 @@
 ---
-title: Dostupnost a výkon kompromisy pro různé úrovně konzistence ve službě Azure Cosmos DB | Dokumentace Microsoftu
+title: Dostupnost a výkon kompromisy pro různé úrovně konzistence ve službě Azure Cosmos DB
 description: Dostupnost a výkon kompromisy pro různé úrovně konzistence ve službě Azure Cosmos DB.
 keywords: konzistence, výkon, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: mjbrown
-ms.openlocfilehash: f2b69af6300c6044f7b65d0478301cc6e7b875bb
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: af17815d2dcf36909ba9b2109f0f9939c79508c0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680549"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848693"
 ---
 # <a name="availability-and-performance-tradeoffs-for-various-consistency-levels-in-azure-cosmos-db"></a>Dostupnost a výkon kompromisy pro různé úrovně konzistence ve službě Azure Cosmos DB
 

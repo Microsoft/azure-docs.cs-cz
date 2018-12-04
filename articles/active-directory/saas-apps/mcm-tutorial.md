@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 5ddd28838e7db7b7f2798b18028aba56246fda4c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b8ff27413888e1745bd9a83e2e2e8c7b77fba34
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437786"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Kurz: Integrace Azure Active Directory se službou MCM
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s ŽÁDNÝM, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - MCM jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace MCM do služby Azure AD, budete muset přidat MCM z Galeri
 
 **Chcete-li přidat MCM z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -117,7 +117,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://myaba.co.uk/<companyname>`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory MCM klienta](http://mcmtechnology.com/support/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory MCM klienta](https://mcmtechnology.com/support/) k získání těchto hodnot. 
  
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -127,7 +127,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/mcm-tutorial/tutorial_general_400.png) 
 
-1. Ke konfiguraci jednotného přihlašování na **MCM** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory MCM](http://mcmtechnology.com/support/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **MCM** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory MCM](https://mcmtechnology.com/support/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -166,7 +166,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="creating-a-mcm-test-user"></a>Vytvoření zkušebního uživatele MCM
 
-V této části vytvoříte uživatele v MCM jako Britta Simon. Práce s [tým podpory MCM](http://mcmtechnology.com/support/) přidat uživatele na platformě MCM.
+V této části vytvoříte uživatele v MCM jako Britta Simon. Práce s [tým podpory MCM](https://mcmtechnology.com/support/) přidat uživatele na platformě MCM.
 
 > [!NOTE]
 > Můžete použít jakékoli jiné MCM uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných MCM uživatelským účtům, zřídit AAD.

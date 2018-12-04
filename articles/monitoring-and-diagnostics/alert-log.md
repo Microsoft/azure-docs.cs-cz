@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6e6db7ef2f2de075aea41a29e69b2c674efafa17
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: cca15447587fcec7253b449d93fc2f644fe6c249
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635352"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851039"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -57,7 +57,7 @@ Další podrobné je podrobný návod k použití protokolu výstrah pomocí roz
 
    > [!NOTE]
 
-   > Upozornění seznamy můžete importovat dotaz analytics jako typ signálu - **protokolu (uložený dotaz)**, jak je znázorněno výše obrázku. Tak, že uživatelé mohou zdokonalujete dotazu v Analytics a pak je ukládejte pro budoucí použití v upozornění – další podrobnosti o použití uložení dotazu, které jsou k dispozici na [pomocí prohledávání protokolů v log analytics](../log-analytics/log-analytics-queries.md) nebo [sdíleného dotazu ve službě application insights Analytics](../log-analytics/log-analytics-queries.md). 
+   > Upozornění seznamy můžete importovat dotaz analytics jako typ signálu - **protokolu (uložený dotaz)**, jak je znázorněno výše obrázku. Tak, že uživatelé mohou zdokonalujete dotazu v Analytics a pak je ukládejte pro budoucí použití v upozornění – další podrobnosti o použití uložení dotazu, které jsou k dispozici na [pomocí prohledávání protokolů v log analytics](../azure-monitor/log-query/log-query-overview.md) nebo [sdíleného dotazu ve službě application insights Analytics](../azure-monitor/log-query/log-query-overview.md). 
 
 1.  *Upozornění protokolů*: Po výběru dotazu pro generování výstrah můžou zobrazovat v **vyhledávací dotaz** pole; Pokud syntaxe dotazu není správná, pole se zobrazí chyba červeně. Pokud je správná syntaxe dotazu – pro referenci historických dat stanovených dotazu se zobrazuje jako graf s možností pro upravit časový interval z posledních šest hodin na poslední týden.
 
@@ -246,5 +246,5 @@ az group deployment create --resource-group myRG --template-file sampleScheduled
 * Další informace o [upozornění protokolů ve výstrahách Azure](monitor-alerts-unified-log.md)
 * Vysvětlení [akce Webhooku pro výstrahy protokolu](monitor-alerts-unified-log-webhook.md)
 * Další informace o [Application Insights](../application-insights/app-insights-analytics.md)
-* Další informace o [Log Analytics](../log-analytics/log-analytics-queries.md). 
+* Další informace o [Log Analytics](../azure-monitor/log-query/log-query-overview.md). 
 

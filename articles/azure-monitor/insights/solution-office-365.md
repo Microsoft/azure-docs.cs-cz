@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 14e89d5eab058b9fa42c20811df9c5ac0ceca44a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 80a5b49d27ffc2b75cc9a1092a4d9f17e09bef24
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633193"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848863"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -30,7 +30,7 @@ ms.locfileid: "52633193"
 - Monitorování aktivit správce ke sledování změn konfigurace a operace vysoká oprávnění.
 - Detekujte a prošetřete chování uživatele, který lze přizpůsobit potřebám vaší organizace.
 - Předvedení audit a dodržování předpisů. Můžete například monitorovat operací přístupu k souboru na důvěrné soubory, které vám pomohou s procesu audit a dodržování předpisů.
-- Provádět provozní řešení potíží s použitím [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) nad data aktivit Office 365 vaší organizace.
+- Provádět provozní řešení potíží s použitím [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) nad data aktivit Office 365 vaší organizace.
 
 ## <a name="prerequisites"></a>Požadavky
 Je nutné provést následující před toto řešení je nainstalovaná a nakonfigurovaná.
@@ -709,6 +709,6 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro zázna
 
 
 ## <a name="next-steps"></a>Další postup
-* K zobrazení podrobných údajů o aktualizaci použijte Hledání v protokolu služby [Log Analytics](../../log-analytics/log-analytics-queries.md).
+* K zobrazení podrobných údajů o aktualizaci použijte Hledání v protokolu služby [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 * [Vytvářejte vlastní řídicí panely](../../azure-monitor/platform/dashboards.md) zobrazíte váš oblíbený vyhledávací dotazy Office 365.
 * [Vytvořit upozornění](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktivně upozornit důležité aktivit Office 365.  

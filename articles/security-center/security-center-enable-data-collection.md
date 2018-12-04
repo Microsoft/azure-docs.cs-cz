@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/2/2018
+ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: d88a59d3b9a39a42120b302fd8e7989c968db952
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 27d27f582c1306d8a8370567fd9c6858ad439ca8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624773"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52851141"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -48,7 +48,7 @@ Při zapnuté automatické zřizování, Security Center zřídí agenta Microso
 
 Povolení automatického zřizování agenta Microsoft Monitoring Agent:
 1. V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
-2. Vyberte předplatné.
+2. Klikněte na tlačítko **upravit nastavení** ve sloupci nastavení z požadovaného předplatného v seznamu.
 
   ![Výběr předplatného][7]
 
@@ -135,7 +135,7 @@ Vyberte existující pracovní prostor Log Analytics:
 
     a.  V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.
      
-    b.  Vyberte požadovaný pracovní prostor, ve které máte v úmyslu připojení agenta.
+    b.  Vyberte požadovaný pracovní prostor, ve kterém chcete připojit agenta kliknutím **upravit nastavení** ve sloupci nastavení z požadovaného předplatného v seznamu.
         ![Vyberte pracovní prostor][8] c. Nastavte cenovou úroveň.
         ![Vyberte cenovou úroveň.][9] 
    

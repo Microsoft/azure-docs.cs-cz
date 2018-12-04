@@ -11,16 +11,18 @@ items:
     href: functions-compare-logic-apps-ms-flow-webjobs.md
 - name: Šablony Rychlý start
   items:
-  - name: Vytvoření funkce – portál
-    href: functions-create-first-azure-function.md
   - name: Vytvoření funkce – Visual Studio
     href: functions-create-your-first-function-visual-studio.md
   - name: Vytvoření funkce – Visual Studio Code
     href: functions-create-first-function-vs-code.md
   - name: Vytvoření funkce – Java/Maven
     href: functions-create-first-java-maven.md
+  - name: Vytvoření funkce – Python
+    href: functions-create-first-function-python.md
   - name: Vytvoření funkce – Azure CLI
     href: functions-create-first-azure-function-azure-cli.md
+  - name: Vytvoření funkce – portál
+    href: functions-create-first-azure-function.md
   - name: Vytvoření funkce – Linux
     href: functions-create-first-azure-function-azure-cli-linux.md
   - name: Aktivační události
@@ -86,6 +88,8 @@ items:
       href: functions-reference-node.md
     - name: Java
       href: functions-reference-java.md
+    - name: Python
+      href: functions-reference-python.md
   - name: Diagnostika
     href: ../app-service/app-service-diagnostics.md
   - name: Otázky výkonu
@@ -114,6 +118,8 @@ items:
       href: functions-create-maven-intellij.md
     - name: Vývoj s využitím Eclipse
       href: functions-create-maven-eclipse.md
+    - name: Vytvoření linuxové aplikace funkcí
+      href: create-function-app-linux-app-service-plan.md
     - name: Správa připojení
       href: manage-connections.md
     - name: Zpracování chyb
@@ -188,6 +194,14 @@ items:
       href: functions-recover-storage-account.md
 - name: Referenční informace
   items:
+  - name: Referenční informace k rozhraní API
+    items:
+    - name: Java
+      href: https://docs.microsoft.com/java/api/overview/azure/functions/runtime?view=azure-java-stable
+    - name: Python
+      href: https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python
+  - name: Reference k nastavení aplikací
+    href: functions-app-settings.md
   - name: Vazby
     items:
     - name: Blob Storage
@@ -229,13 +243,12 @@ items:
     - name: Twilio
       href: functions-bindings-twilio.md
   - name: Reference k host.json
+    href: functions-host-json.md
     items:
     - name: Functions 2.x
       href: functions-host-json.md
     - name: Functions 1.x
       href: functions-host-json-v1.md
-  - name: Reference k nastavení aplikací
-    href: functions-app-settings.md
   - name: Reference k OpenAPI
     href: functions-api-definition.md
 - name: Zdroje a prostředky
@@ -264,9 +277,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: facc469c576bf1de905441bb5b56a00bd745e924
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: bd85d1f3afa9e6ebc580f252782756bff278b9d8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632292"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850636"

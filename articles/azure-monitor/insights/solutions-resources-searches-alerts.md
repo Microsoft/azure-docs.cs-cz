@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c496bd6f7ccec4cc08ca5eead02cb06ff3efde09
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 74987d09a9b8979d3c3596c87764f8f3bd4b5795
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715201"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846661"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -27,7 +27,7 @@ ms.locfileid: "51715201"
 > Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.   
 
 
-[Řešení pro správu](solutions.md) by měl obvykle zahrnovat [uložená hledání](../../log-analytics/log-analytics-queries.md) v Log Analytics k analýze data shromážděná tímto řešením.  Můžou také definovat [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) upozornit uživatele, nebo automaticky provést akce v reakci na kritický problém.  Tento článek popisuje, jak definovat uložené výsledky hledání Log Analytics a upozornění [šablony Resource Manageru](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) tak mohou být zahrnuty v [řešení pro správu](solutions-creating.md).
+[Řešení pro správu](solutions.md) by měl obvykle zahrnovat [uložená hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k analýze data shromážděná tímto řešením.  Můžou také definovat [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) upozornit uživatele, nebo automaticky provést akce v reakci na kritický problém.  Tento článek popisuje, jak definovat uložené výsledky hledání Log Analytics a upozornění [šablony Resource Manageru](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) tak mohou být zahrnuty v [řešení pro správu](solutions-creating.md).
 
 > [!NOTE]
 > Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure](solutions-creating.md)  
@@ -54,9 +54,9 @@ Následující tabulka uvádí verze rozhraní API pro prostředek, který použ
 
 
 ## <a name="saved-searches"></a>Uložená hledání
-Zahrnout [uložená hledání](../../log-analytics/log-analytics-queries.md) v řešení, které umožňují uživatelům provádět dotazy na data shromážděná z vašeho řešení.  Uložená hledání se zobrazí v rámci **uložená hledání** na webu Azure Portal.  Uložené výsledky hledání je také nutný pro každou výstrahu.   
+Zahrnout [uložená hledání](../../azure-monitor/log-query/log-query-overview.md) v řešení, které umožňují uživatelům provádět dotazy na data shromážděná z vašeho řešení.  Uložená hledání se zobrazí v rámci **uložená hledání** na webu Azure Portal.  Uložené výsledky hledání je také nutný pro každou výstrahu.   
 
-[Uložené výsledky hledání log Analytics](../../log-analytics/log-analytics-queries.md) prostředky mají typ `Microsoft.OperationalInsights/workspaces/savedSearches` a mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
+[Uložené výsledky hledání log Analytics](../../azure-monitor/log-query/log-query-overview.md) prostředky mají typ `Microsoft.OperationalInsights/workspaces/savedSearches` a mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",

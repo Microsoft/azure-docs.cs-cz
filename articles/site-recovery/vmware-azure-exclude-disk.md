@@ -5,15 +5,15 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
-ms.date: 10/11/2018
+ms.date: 11/27/2018
 ms.author: ramamill
 ms.topic: conceptual
-ms.openlocfilehash: 12719d678372a84e3b19b3822d5f663458437963
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: af610aaec238e1b2ae8ec2387e5a8f71225cab8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679337"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848157"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Vyloučení disků z replikace virtuálních počítačů VMware do Azure
 

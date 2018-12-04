@@ -1,19 +1,19 @@
 ---
 title: Jak spravovat účet Azure Maps a klíče | Dokumentace Microsoftu
 description: Na webu Azure portal můžete použít ke správě vašeho účtu Azure Maps a správě přístupových klíčů.
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 12/02/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 29fd63139d31d146cfc67153f35bd57650b08cfa
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 2678b9d9adeddd7599680b6fc3f6e54cecd61a26
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541615"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848098"
 ---
 # <a name="how-to-manage-your-azure-maps-account-and-keys"></a>Jak spravovat účet Azure Maps a klíčů
 
@@ -23,7 +23,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-a-new-account"></a>Vytvoření nového účtu
 
-1. Přihlaste se k [portálu Azure](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
 
 2. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 
@@ -53,5 +53,10 @@ Zobrazí se stránka s potvrzením. Potvrzení odstranění účtu zadáním jej
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o použití Azure Maps hledání rozhraní API v [hledání adresy](./how-to-search-for-address.md).
-* Další informace o použití Azure maps [javascriptový ovládací prvek mapy](./how-to-use-map-control.md).
+Další informace o správě cenová úroveň účtu Azure Maps:
+> [!div class="nextstepaction"]
+> [Správa cenová úroveň](./how-to-manage-pricing-tier.md)
+
+Zjistěte, jak vidět metriky využití rozhraní API pro váš účet Azure Maps:
+> [!div class="nextstepaction"]
+> [Zobrazit metriky využití](./how-to-view-api-usage.md)

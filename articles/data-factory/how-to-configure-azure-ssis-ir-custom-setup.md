@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/3/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: df020fc3a4e2f57730dea7329b08e1e46660e610
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: fab03f12f4099fe2df2525cb3a6fa093170d1c79
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037035"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850172"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro prostředí Azure-SSIS integration runtime
 
@@ -131,7 +131,7 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
 
     c. Vyberte připojené kontejner, ve verzi Public Preview a dvakrát klikněte `CustomSetupScript` složky. V této složce jsou následující položky:
 
-       1. A `Sample` složky, která obsahuje vlastní instalační program a nainstalujte základní úlohy na každém uzlu Azure-SSIS IR. Úloha nemá žádný účinek ale z režimu spánku na několik sekund. Složka také obsahuje `gacutil` složky, která obsahuje `gacutil.exe`. Kromě toho `main.cmd` obsahuje komentáře k uchování přihlašovacích údajů pro přístup pro sdílené složky.
+       1. A `Sample` složky, která obsahuje vlastní instalační program a nainstalujte základní úlohy na každém uzlu Azure-SSIS IR. Úloha nemá žádný účinek ale z režimu spánku na několik sekund. Složka také obsahuje `gacutil` složky, celý obsah (`gacutil.exe`, `gacutil.exe.config`, a `1033\gacutlrc.dll`) je možné zkopírovat je do kontejneru. Kromě toho `main.cmd` obsahuje komentáře k uchování přihlašovacích údajů pro přístup pro sdílené složky.
 
        1. A `UserScenarios` složky, která obsahuje některá vlastní nastavení pro skutečné uživatelské scénáře.
 
@@ -146,8 +146,6 @@ K přizpůsobení prostředí Azure-SSIS IR, budete potřebovat následující v
        1. A `BCP` složky, která obsahuje vlastní instalační program a nainstalujte nástroje příkazového řádku systému SQL Server (`MsSqlCmdLnUtils.msi`), včetně program hromadného kopírování (`bcp`), na každém uzlu Azure-SSIS IR.
 
        1. `EXCEL` Složky, která obsahuje vlastní nastavení pro instalaci sestavení open source (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, a `ExcelDataReader.dll`) na každém uzlu Azure-SSIS IR.
-
-       1. `MSDTC` Složky, která obsahuje vlastní nastavení k úpravě konfigurace sítě a zabezpečení pro službu Microsoft distribuované transakce koordinátor (MSDTC) na každém uzlu z vašeho prostředí Azure-SSIS IR. Aby bylo zajištěno, že je spuštěna služba MSDTC, přidejte prosím úloha spuštění procesu na začátku tok řízení v vaše balíčky ke spuštění následujícího příkazu: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
        1. `ORACLE ENTERPRISE` Složky, která obsahuje vlastní instalační skript (`main.cmd`) a konfigurační soubor bezobslužné instalace (`client.rsp`) instalace konektorů Oracle a OCI ovladač na každém uzlu vašeho prostředí Azure-SSIS IR Enterprise Edition. Toto nastavení umožňuje používat Správce připojení Oracle, zdroj a cíl. Nejdřív stáhněte v5.0 Connectors Microsoftu pro Oracle (`AttunitySSISOraAdaptersSetup.msi` a `AttunitySSISOraAdaptersSetup64.msi`) z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) a nejnovější klienta Oracle – například `winx64_12102_client.zip` – od [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), nahrajte je všechny spolu s `main.cmd` a `client.rsp` do kontejneru. Pokud používáte pro připojení k Oracle TNS, budete také muset stáhnout `tnsnames.ora`, upravit jej a nahrajte ho do kontejneru, takže je možné zkopírovat do instalační složky sady Oracle během instalace.
 

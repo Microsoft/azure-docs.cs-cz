@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: ca42d6c8ca1333f2ffba77b79584b7092b26f03e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d5c86186cd6ee02d83800c6483a2e35d8f1fb3c7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438592"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848710"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Kurz: Integrace Azure Active Directory se službou eDigitalResearch
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s eDigitalResearch, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - EDigitalResearch jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace eDigitalResearch do služby Azure AD, budete muset přidat
 
 **Chcete-li přidat eDigitalResearch z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -115,7 +115,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<company-name>.edigitalresearch.com/login/consume`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory eDigitalResearch](http://www.maruedr.com/contact) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory eDigitalResearch](https://www.maruedr.com/contact) k získání těchto hodnot.
  
 
 
@@ -131,7 +131,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![eDigitalResearch konfigurace](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_configure.png) 
 
-1. Ke konfiguraci jednotného přihlašování na **eDigitalResearch** straně, je nutné odeslat na stažený **soubor certifikátu (Base64)**, **SAML Entity ID**, a **odhlášení Adresa URL** k [tým podpory eDigitalResearch](http://www.maruedr.com/contact). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **eDigitalResearch** straně, je nutné odeslat na stažený **soubor certifikátu (Base64)**, **SAML Entity ID**, a **odhlášení Adresa URL** k [tým podpory eDigitalResearch](https://www.maruedr.com/contact). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -172,7 +172,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 Cílem této části je vytvořte uživatele Britta Simon v eDigitalResearch. 
 
-Práce s [tým podpory eDigitalResearch](http://www.maruedr.com/contact) se získat uživatele vytvořit.     
+Práce s [tým podpory eDigitalResearch](https://www.maruedr.com/contact) se získat uživatele vytvořit.        
     
  > [!NOTE]
  > Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
@@ -207,7 +207,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

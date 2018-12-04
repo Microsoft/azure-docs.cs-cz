@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e5f6cbec75a9f652cf05c9608c412e00489288b9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: c0d5b556cfeaf26e58104c1cbb7d394e5594f3e5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212926"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850495"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Nastavení zotavení po havárii do sekundární oblasti Azure pro virtuální počítač Azure 
 
@@ -54,17 +54,17 @@ Po dokončení úlohy replikace můžete zkontrolovat stav replikace, upravit na
 
 Virtuální počítač v primární oblasti se přestane replikovat, když pro něj zakážete replikaci:
 
-- Automaticky se vyčistí nastavení replikace zdroje.
+- Automaticky se vyčistí nastavení replikace zdroje. Mějte prosím na paměti, že rozšíření služby Site Recovery, který je nainstalován jako součást replikace není odebrán a musí být odstraněny ručně. 
 - Zastaví se také fakturace služby Site Recovery pro daný virtuální počítač.
 
-Následujícím způsobem zakažte replikaci:
+Následujícím způsobem zakažte replikaci
 
 1. Vyberte virtuální počítač.
 2. V části **Zotavení po havárii** klikněte na **Zakázat replikaci**.
 
    ![Zákaz replikace](media/azure-to-azure-quickstart/disable2-replication.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste replikovali jeden virtuální počítač do sekundární oblasti. Teď můžete prozkoumat další možnosti a vyzkoušet replikaci sady virtuálních počítačů Azure s využitím plánu obnovení.
 

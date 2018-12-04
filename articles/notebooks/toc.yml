@@ -1,0 +1,55 @@
+items:
+- name: Dokumentace ke službě Azure Notebooks
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Co je služba Azure Notebooks?
+    href: azure-notebooks-overview.md
+- name: Šablony Rychlý start
+  items:
+  - name: Přihlášení a nastavení ID uživatele
+    href: quickstart-sign-in-azure-notebooks.md
+  - name: Vytvoření a sdílení poznámkového bloku
+    href: quickstart-create-share-jupyter-notebook.md
+  - name: Klonování poznámkového bloku
+    href: quickstart-clone-jupyter-notebook.md
+  - name: Migrace místních poznámkových bloků Jupyter
+    href: quickstart-migrate-local-jupyter-notebook.md
+  - name: Použití vlastního prostředí
+    href: quickstart-create-jupyter-notebook-project-environment.md
+- name: Kurzy
+  items:
+  - name: Vytvoření a spuštění poznámkového bloku
+    href: tutorial-create-run-jupyter-notebook.md
+- name: Ukázky
+  items:
+  - name: Ukázkové poznámkové bloky
+    href: azure-notebooks-samples.md
+- name: Koncepty
+  items:
+  - name: Účty
+    href: azure-notebooks-user-account.md
+  - name: Profily
+    href: azure-notebooks-user-profile.md
+- name: Návody
+  items:
+  - name: Vytváření a klonování projektů
+    href: create-clone-jupyter-notebooks.md
+  - name: Správa a konfigurace projektů
+    href: configure-manage-azure-notebooks-projects.md
+  - name: Instalace balíčků v poznámkovém bloku
+    href: install-packages-jupyter-notebook.md
+  - name: Předložení prezentace
+    href: present-jupyter-notebooks-slideshow.md
+  - name: Práce s datovými soubory
+    href: work-with-project-data-files.md
+  - name: Přístup k datovým prostředkům
+    href: access-data-resources-jupyter-notebooks.md
+  - name: Použití služeb Azure Machine Learning Services
+    href: use-machine-learning-services-jupyter-notebooks.md
+ms.openlocfilehash: 95122e9ec45fb606e07a29e474e411d6e49278c0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52852386"

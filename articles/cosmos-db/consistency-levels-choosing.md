@@ -1,20 +1,19 @@
 ---
-title: Výběr správné konzistence úroveň pro vaši aplikaci, která používá službu Azure Cosmos DB | Dokumentace Microsoftu
+title: Výběr správné konzistence úroveň pro vaši aplikaci, která používá službu Azure Cosmos DB
 description: Výběr správné konzistence úroveň pro vaši aplikaci ve službě Azure Cosmos DB.
 keywords: konzistence, výkon, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: 42128a05ad9f82ff6b202eb6566c1fea60caa760
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: a1c7d750bcd0c3f37d2269aee299e0ccd8c4ef4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162415"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849288"
 ---
 # <a name="choose-the-right-consistency-level-for-your-application"></a>Vyberte úroveň konzistence správné pro vaši aplikaci
 

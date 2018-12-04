@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 814646902a88c7170da66397709ff3a8c7b081fd
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 57fda5ea9fdafffd0267f749016ed97b8fc06e15
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715202"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847112"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Přidání prostředků služby Azure Automation do řešení pro správu (Preview)
 > [!NOTE]
@@ -317,8 +317,8 @@ Runbook by měl záviset na modulu prostředků a ověřte, že je vytvořen př
 ### <a name="updating-modules"></a>Aktualizace modulů
 Pokud aktualizujete řešení pro správu, který obsahuje sadu runbook, která používá plánu a novou verzi vašeho řešení se nový modul používaný dané sady runbook, může sada runbook používají starší verzi modulu.  By měl obsahovat následující sady runbook ve vašem řešení a vytvořte úlohu pro spuštění před všechny runbooky.  Tím se zajistí, že se aktualizovaly všechny moduly, které vyžaduje předtím, než se načítají sady runbook.
 
-* [Aktualizace ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) zajistí, že jsou všechny moduly používané v sadách runbook ve vašem řešení na nejnovější verzi.  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) bude znovu zaregistrujte všechny prostředky plánu zajistit, že runbooky propojené s jejich s použitím nejnovější moduly.
+* [Aktualizace ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/) zajistí, že jsou všechny moduly používané v sadách runbook ve vašem řešení na nejnovější verzi.  
+* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/) bude znovu zaregistrujte všechny prostředky plánu zajistit, že runbooky propojené s jejich s použitím nejnovější moduly.
 
 
 

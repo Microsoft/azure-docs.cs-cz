@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5e3ebd7d3aa5555fbe5ea77dece6eb3177809de7
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1f3168cef503fed0aea09228c9bc11dfb456f2ab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215068"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52848472"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci SharePoint pro zotavení po havárii pomocí Azure Site Recovery
 
@@ -54,7 +54,7 @@ SharePoint je možné nasadit na jeden nebo více serverů pomocí vrstvené top
 ![Model nasazení 1](./media/site-recovery-sharepoint/sharepointarch.png)
 
 
-## <a name="site-recovery-support"></a>Site Recovery podporu
+## <a name="site-recovery-support"></a>Podpora Site Recovery
 
 Pro vytvoření tohoto článku, byly použity virtuální počítače VMware s Windows Server 2012 R2 Enterprise. Byly použity SharePoint 2013 Enterprise edition a SQL server 2014 Enterprise edition. Flexibilní použití je replikace Site Recovery se očekává doporučení uvedená tady přidržte i následující scénáře.
 

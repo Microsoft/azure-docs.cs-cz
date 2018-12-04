@@ -1,21 +1,19 @@
 ---
-title: Protokolování diagnostiky služby Azure Cosmos DB | Dokumentace Microsoftu
+title: Protokolování diagnostiky služby Azure Cosmos DB
 description: Pomocí tohoto kurzu můžete začít pracovat s Azure Cosmos DB protokolování.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 tags: azure-resource-manager
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 1c25db0a217d6aff984029a28932242b06096735
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e8548497666e7dc49a8ada6bdf686647e427d0d0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423225"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850461"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky služby Azure Cosmos DB
 

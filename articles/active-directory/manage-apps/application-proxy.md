@@ -15,18 +15,18 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 428f094dae2b9a69b58912190d2959a7dfc467ec
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 212628c0ec97524e91ab8eaeb766c3e405023aaf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365258"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846160"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím
 
-Zaměstnanci chtějí ještě dnes mohli pracovat kdekoli, kdykoli a z jakéhokoli zařízení. Chtějí pracovat na vlastních zařízeních, ať jde tabletech, telefonech nebo přenosné počítače. Navíc očekávají, bude mít přístup k jejich aplikací, i aplikace SaaS v cloudu a podnikové aplikace v místním. Poskytuje přístup k místním aplikacím se tradičně podílejí virtuální privátní sítě (VPN) nebo demilitarizovaná zóny (zóny DMZ). Jenom tato řešení jsou složité a těžko zabezpečení, ale jsou nákladné na nastavit a spravovat.
+Dnešní zaměstnanci chtějí být produktivní, ať jsou kdekoli, a to neustále a na jakémkoli zařízení. Chtějí pracovat na vlastních zařízeních, ať jde tabletech, telefonech nebo přenosné počítače. Navíc očekávají, bude mít přístup k jejich aplikací, i aplikace SaaS v cloudu a podnikové aplikace v místním. Poskytnutí přístupu k místním aplikacím tradičně zahrnovalo virtuální privátní sítě (VPN) nebo demilitarizované zóny (DMZ). Tato řešení jsou nejen složitá a obtížně zabezpečitelná, ale jsou také nákladná na nastavení a správu.
 
-Je lepší způsob!
+Existuje však lepší způsob.
 
 Moderní pracovníci v prvním mobile světě upřednostňujícím musí řešení moderních vzdáleného přístupu. Azure AD Application Proxy je funkce služby Azure Active Directory, která nabízí vzdáleného přístupu jako služba. To znamená, že je snadno nasazovat a spravovat.
 
@@ -100,5 +100,5 @@ Když publikujete svoji první aplikaci, existuje mnoho dalších úkonů, kter�
 * [Práce s existující místní Proxy servery](application-proxy-configure-connectors-with-proxy-servers.md) 
 * [Nastavit vlastní domovskou stránku](application-proxy-configure-custom-home-page.md)
 
-Nejnovější novinky a aktualizace naleznete na [blogu proxy aplikace](http://blogs.technet.com/b/applicationproxyblog/)
+Nejnovější novinky a aktualizace naleznete na [blogu proxy aplikace](https://blogs.technet.com/b/applicationproxyblog/)
 

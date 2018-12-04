@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 5ef451da3eae696c3506f25ee9458b3ad3286b07
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a3e0125a66c4b8bbda6e0b7087fe5e0e387d43e4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721178"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847384"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -39,7 +39,7 @@ Pro řadu prostředků Azure uvidíte data shromážděná službou Azure Monito
 
 ![Metriky](media/overview/metrics.png)
 
-Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která zahrnuje [Bohatý dotazovací jazyk](../log-analytics/log-analytics-queries.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [stránce Log Analytics](../log-analytics/log-analytics-log-search-portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [ pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která zahrnuje [Bohatý dotazovací jazyk](../azure-monitor/log-query/log-query-overview.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [stránce Log Analytics](../log-analytics/log-analytics-log-search-portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [ pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
 
 Dotazovací jazyk Log Analytics je vhodný pro jednoduchá protokolu dotazy, ale zahrnuje také pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Můžete rychle naučit jazyk dotazu pomocí [více lekce](../log-analytics/query-language/get-started-queries.md) , které jsou k dispozici.  Pro uživatele, kteří již znají [SQL](../log-analytics/query-language/sql-cheatsheet.md) a [Splunk](../log-analytics/query-language/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
 
@@ -85,7 +85,7 @@ Azure insights monitorování virtuálního počítače monitoruje virtuální p
 ![VM Insights](media/overview/vm-insights.png)
 
 ### <a name="monitoring-solutions"></a>Řešení monitorování
-[Řešení monitorování](../azure-monitor/insights/solutions.md) ve službě Azure Monitor jsou zabalené sady logik, které poskytují přehledy pro konkrétní aplikaci nebo službě. Shromažďování dat do Log Analytics spolu s dalšími daty monitorování pomocí [dotazy](../log-analytics/log-analytics-queries.md) pro analýzu a [zobrazení](../azure-monitor/platform/view-designer.md) pro vizualizaci. Řešení pro monitorování [od Microsoftu k dispozici](../azure-monitor/insights/solutions-inventory.md) a partnery nabízí monitorování pro různé služby Azure a další aplikace.
+[Řešení monitorování](../azure-monitor/insights/solutions.md) ve službě Azure Monitor jsou zabalené sady logik, které poskytují přehledy pro konkrétní aplikaci nebo službě. Shromažďování dat do Log Analytics spolu s dalšími daty monitorování pomocí [dotazy](../azure-monitor/log-query/log-query-overview.md) pro analýzu a [zobrazení](../azure-monitor/platform/view-designer.md) pro vizualizaci. Řešení pro monitorování [od Microsoftu k dispozici](../azure-monitor/insights/solutions-inventory.md) a partnery nabízí monitorování pro různé služby Azure a další aplikace.
 
 ![Řešení monitorování](media/overview/solutions-overview.png)
 
@@ -146,4 +146,4 @@ Další informace:
 
 * [Metriky a protokoly](../azure-monitor/platform/data-collection.md) pro data shromážděná službou Azure Monitor.
 * [Zdroje dat](../azure-monitor/platform/data-sources.md) pro jak různých komponent vaší aplikace odesílat telemetrická data.
-* [Log Analytics](../log-analytics/log-analytics-queries.md) analyzovat shromážděná data.
+* [Log Analytics](../azure-monitor/log-query/log-query-overview.md) analyzovat shromážděná data.

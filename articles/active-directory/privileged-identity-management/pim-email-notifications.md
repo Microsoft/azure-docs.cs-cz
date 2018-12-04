@@ -11,76 +11,93 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 09/07/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: de1d29d3ab1b370257c3a2d6b6ff9f677197fc2a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 00b096f59e70962b6883a8024744e8c91a5f9ae3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303060"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846891"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailových oznámení v PIM
 
-Při události kláves se generují v Azure AD Privileged Identity Management (PIM), odešlou se e-mailová oznámení. Například PIM odešle e-mailů pro následující události:
+Azure AD Privileged Identity Management (PIM) vám umožňuje vědět, pokud důležité dojde k událostem, například když je role přiřazení nebo aktivaci. PIM zachová vaši informovanost odesláním hodnoty hash že můžete a ostatní účastníci e-mailová oznámení. Tyto e-maily může také zahrnovat odkazy na příslušné úlohy, tyto aktivace nebo obnovení role. Tento článek popisuje vypadat těchto e-mailů, kdy se odesílají a je obdrží.
 
-- Pokud je aktivace privilegovaných rolí čekající na schválení
-- Po dokončení požadavek aktivace privilegovaných rolí
-- Když se aktivuje privilegovanou roli
-- Když se přiřazení privilegovaných rolí
-- Pokud je povolená Azure AD PIM
+## <a name="sender-email-address-and-subject-line"></a>Odesílatel e-mailové adresy a předmětu řádku
 
-E-mailové oznámení se posílají následujícím správcům:
-
-- Správce privilegované role
-- Správce zabezpečení
-
-E-mailová oznámení jsou také odesílány koncového uživatele, který má privilegovaných rolí pro následující události:
-
-- Po dokončení požadavek aktivace privilegovaných rolí
-- Když se přiřazení privilegovaných rolí
-
-Cena začíná na konci. července 2018, e-mailová oznámení odesílat prostřednictvím PIM mají novou e-mailovou adresu odesílatele a nové vizuální návrh. Tato aktualizace ovlivní obě PIM pro Azure AD a PIM pro prostředky Azure. Všechny události, které dříve aktivovaly e-mailové oznámení bude nadále rozešle e-mail. Některé e-mailů bude aktualizovaný obsah poskytování více cílových informací.
-
-## <a name="sender-email-address"></a>E-mailová adresa odesílatele
-
-E-mailová oznámení od na konci. července 2018 se mají následující adresu:
+E-mailů odeslaných z PIM pro Azure AD a mají následující e-mailovou adresu odesílatele role prostředků Azure:
 
 - E-mailová adresa:  **azure-noreply@microsoft.com**
 - Zobrazovaný název: Microsoft Azure
 
-Dříve musely e-mailová oznámení na následující adresu:
+Zahrnout tyto e-mailů **PIM** předponu v řádku předmětu. Tady je příklad:
 
-- E-mailová adresa:  **azureadnotifications@microsoft.com**
-- Zobrazovaný název: Služba oznámení Microsoft Azure AD
-
-## <a name="email-subject-line"></a>Řádek předmětu e-mailu
-
-Spouští se na konci z července 2018 se e-mailová oznámení pro Azure AD a budou mít role prostředků Azure **PIM** předponu v řádku předmětu. Tady je příklad:
-
-- PIM: Alain Charon byl trvale přiřadit role Čtenář zálohování.
+- PIM: Alain Charon byl trvale přiřadit role Čtenář zálohování
 
 ## <a name="pim-emails-for-azure-ad-roles"></a>E-mailů PIM pro role Azure AD
 
-Spouští se na konci. července 2018, e-mailová oznámení PIM pro role Azure AD mají aktualizovaný návrh. Následuje ukázkový e-mail, který se odešle, když uživatel aktivuje privilegovaných rolí pro fiktivní organizace Contoso.
+PIM odešle e-mailů, když dojde k následujícím událostem pro role Azure AD:
+
+- Pokud je aktivace privilegovaných rolí čekající na schválení
+- Po dokončení požadavek aktivace privilegovaných rolí
+- Když je přiřazení privilegovaných rolí jako oprávněné
+- Pokud je povolená Azure AD PIM
+
+Kdo přijímá tyto e-maily pro role Azure AD závisí na vaší roli, události a oznámení nastavení:
+
+| Uživatel | Aktivace role čeká na schválení | Dokončit žádost o aktivaci role | Role je přiřazená jako oprávněné | Je povolené PIM |
+| --- | --- | --- | --- | --- |
+| Správce privilegované role</br>(Aktivovat/vhodné) | Ano</br>(pouze pokud jsou zadány žádné explicitní schvalovatelům) | Ano* | Ano | Ano |
+| Správce zabezpečení</br>(Aktivovat/vhodné) | Ne | Ano* | Ano | Ano |
+| Globální správce</br>(Aktivovat/vhodné) | Ne | Ano* | Ano | Ano |
+
+\* Pokud [ **oznámení** nastavení](pim-how-to-change-default-settings.md#notifications) je nastavena na **povolit**.
+
+Následuje ukázkový e-mail, který se odešle, když uživatel aktivuje roli Azure AD pro fiktivní organizace Contoso.
 
 ![Nový e-mail PIM pro role Azure AD](./media/pim-email-notifications/email-directory-new.png)
 
-Dříve když uživatel aktivovat privilegovanou roli, e-mailu vypadal následující.
+### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Týdenní e-mail digest PIM pro role Azure AD
 
-![Starý e-mail PIM pro role Azure AD](./media/pim-email-notifications/email-directory-old.png)
+Týdenní souhrn e-mail PIM pro role Azure AD posílá správce privilegovaných rolí, správci zabezpečení a globální správci, které jste povolili PIM. Tento týdenní e-mail obsahuje snímek aktivity PIM pro týden, stejně jako přiřazení privilegovaných rolí. Je dostupná jenom pro klienty ve veřejném cloudu. Tady je příklad e-mailu:
+
+![Týdenní e-mail digest PIM pro role Azure AD](./media/pim-email-notifications/email-directory-weekly.png)
+
+E-mailu obsahuje čtyři dlaždice:
+
+| Dlaždice | Popis |
+| --- | --- |
+| **Uživatelé aktivovat** | Počet pokusů uživatele aktivována jejich oprávněné role v tenantovi. |
+| **Uživatelé, které jsou provedeny trvalé** | Počet uživatelů s oprávněného přiřazení se provádí trvalé. |
+| **Přiřazení rolí v PIM** | Počet pokusů, které uživatelé jsou přiřazení oprávněné role v PIM. |
+| **Přiřazení rolí mimo PIM** | Počet pokusů, které uživatelé jsou přiřazeni roli trvalé mimo PIM (v Azure AD). |
+
+**Přehled hlavní role** části jsou uvedené nahoře pět rolí ve vašem tenantovi závislosti na celkovém počtu oprávněných a trvalých správců pro jednotlivé role. **Provést akci** odkaz otevře [PIM průvodce](pim-security-wizard.md) kde trvalí správci můžete převést na oprávněné správce v dávkách.
 
 ## <a name="pim-emails-for-azure-resource-roles"></a>E-mailů PIM pro role prostředků Azure
 
-Spouští se na konci. července 2018, e-mailová oznámení PIM pro role prostředků Azure mají aktualizovaný návrh. Následuje ukázkový e-mail, který se odešle, když je uživatel přiřazenou privilegovanou roli pro fiktivní organizace Contoso.
+PIM odešle e-mailů vlastníci a správci přístupu uživatelů pro role prostředků Azure dojde k následujícím událostem:
+
+- Při přiřazení role čeká na schválení
+- Když se přiřazení role
+- Když role je brzo vyprší
+- Když má nárok na rozšíření role
+- Když role obnovuje koncovým uživatelem
+- Po dokončení žádost o aktivaci role
+
+PIM odešle e-mailů koncovým uživatelům, když dojde k následujícím událostem pro role prostředků Azure:
+
+- Když role je přiřazená uživateli
+- Pokud je vypršel role uživatele
+- Když je rozšířeno role uživatele
+- Po dokončení žádost o aktivaci role uživatele
+
+Následuje ukázkový e-mail, který se odešle, když uživatel má přiřazenou roli prostředků Azure pro fiktivní organizace Contoso.
 
 ![Nový e-mail PIM pro role prostředků Azure](./media/pim-email-notifications/email-resources-new.png)
-
-Dříve Pokud má uživatel přiřazenou privilegovanou roli, e-mailu vypadal následující.
-
-![Starý e-mail PIM pro role prostředků Azure](./media/pim-email-notifications/email-resources-old.png)
 
 ## <a name="next-steps"></a>Další postup
 

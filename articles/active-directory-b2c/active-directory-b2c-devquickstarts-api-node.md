@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 93c3bd3f902f08c8f019744b3f30745c1fd9fa01
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 15526cc829d556457a7069df613bb6a8d2a2b23b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442419"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847656"
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Zabezpečení webového rozhraní API pomocí Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -47,7 +47,7 @@ Dále musíte ve svém adresáři B2C vytvořit aplikaci, která poskytne Azure 
 * Poznamenejte si **ID aplikace** přiřazené vaší aplikaci. Tato data budete potřebovat později.
 
 ## <a name="create-your-policies"></a>Vytvořte svoje zásady
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje dvě možnosti pro identitu: registraci a přihlášení. Pro každý typ rozhraní musíte vytvořit zásadu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).  Když vytváříte tyto tři zásady, nezapomeňte:
+V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje dvě možnosti pro identitu: registraci a přihlášení. Pro každý typ rozhraní musíte vytvořit zásadu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow).  Když vytváříte tyto tři zásady, nezapomeňte:
 
 * Zvolit **Zobrazovaný název** a další atributy registrace ve svojí registrační zásadě.
 * Zvolit deklarace identity aplikace **Zobrazovaný název** a **ID objektu** v každé zásadě.  Můžete zvolit i další deklarace identity.
@@ -71,12 +71,12 @@ Dokončená aplikace je také [k dispozici jako soubor ZIP](https://github.com/A
 ## <a name="download-nodejs-for-your-platform"></a>Stažení Node.js pro vaši platformu
 Pro úspěšné fungování této ukázky je třeba mít funkční instalaci Node.js.
 
-Nainstalujte si Node.js z [nodejs.org](http://nodejs.org).
+Nainstalujte si Node.js z [nodejs.org](https://nodejs.org).
 
 ## <a name="install-mongodb-for-your-platform"></a>Instalace MongoDB pro vaši platformu
 Pro úspěšné fungování této ukázky je třeba mít funkční instalaci MongoDB. MongoDB budeme používat k zajištění trvalosti REST API napříč instancemi serveru.
 
-Nainstalujte MongoDB z [mongodb.org](http://www.mongodb.org).
+Nainstalujte MongoDB z [mongodb.org](https://www.mongodb.org).
 
 > [!NOTE]
 > Tento návod předpokládá, že používáte výchozí instalaci a koncové body serveru pro MongoDB, což je v době psaní tohoto návodu `mongodb://localhost`.

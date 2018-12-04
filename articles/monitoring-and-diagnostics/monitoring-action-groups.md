@@ -5,19 +5,21 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 11/30/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 1b66f40594d0dd578e2e5680fb0d5bb0f82f1241
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 99444e6b7ab71a531a95245b8e5056127446dbeb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311802"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52847758"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
-Skupiny akcí je kolekce předvolby oznamování definovaný uživatelem. Upozornění Azure Monitor a stavy služeb jsou nakonfigurovány pro použití skupinu určité akce, když se aktivuje upozornění. Různé výstrahy použít stejnou skupinu akcí nebo skupiny různých akcí v závislosti na požadavcích uživatele.
+Skupiny akcí je kolekce předvolby oznamování určené vlastník předplatného Azure. Upozornění Azure Monitor a stavy služeb použití skupin akcí uživatelům oznámit, že výstraha byla aktivována. Různé výstrahy použít stejnou skupinu akcí nebo skupiny různých akcí v závislosti na požadavcích uživatele.
+
+Když akce konfigurován pro osoby pro oznámení e-mailem nebo SMS osoby se zobrazí potvrzení, která udává, že / Jana se přidal do skupiny akcí.
 
 V tomto článku se dozvíte, jak vytvořit a spravovat skupiny akcí na webu Azure Portal.
 

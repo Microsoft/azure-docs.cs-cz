@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/02/2018
+ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: d5a4cfa3a91b82aa0f5b1725f86c732fecf632d4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2ea94e79fdcc331554f42e2396d954af7cb979d8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405442"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850070"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
-Upgrade na Security Center úrovně Standard využívat správu rozšířené zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami.  Můžete vyzkoušet zdarma po dobu 60 dnů Standard. Zobrazit Security Center [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
+Upgrade na Security Center úrovně Standard využívat správu rozšířené zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami.  Můžete zkusit Standard zdarma. Zobrazit Security Center [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
 
 Security Center úrovně Standard zahrnuje:
 
@@ -83,7 +83,7 @@ Pokud máte existující pracovní prostory, jsou uvedeny v části **přidat po
 
 2. V části **zabezpečení a Audit**vyberte **pracovní prostor OMS** vytvořte nový pracovní prostor.
 > [!NOTE]
-> Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
+> Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 3. V části **pracovní prostor OMS**, zadejte informace pro váš pracovní prostor.
 4. V části **pracovní prostor OMS**vyberte **OK**.  Když vyberete OK, se zobrazí odkaz pro stažení agenta Windows nebo Linuxem a klíči pro ID vašeho pracovního prostoru, které použijete při konfiguraci agenta.
 5. V části **zabezpečení a Audit**vyberte **OK**.

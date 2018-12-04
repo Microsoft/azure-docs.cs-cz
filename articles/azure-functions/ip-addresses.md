@@ -7,14 +7,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 12/03/2018
 ms.author: glenga
-ms.openlocfilehash: a92a4183962f71005577478bf27df9b5fb945acf
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 83e5a15d8a7f9c01f6a180ebceb715600b8a39db
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634358"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52849475"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP adresy ve službě Azure Functions
 
@@ -88,13 +88,13 @@ Například je fragment JSON západní Evropě může vypadat:
 
 ## <a name="inbound-ip-address-changes"></a>Příchozí změny IP adresy
 
- Příchozí IP adresu **může** změnit, když jste:
+Příchozí IP adresu **může** změnit, když jste:
 
 - Aplikace function app odstranit a znovu ho vytvořte v jiné skupině prostředků.
 - Odstranit poslední aplikace function app v kombinaci prostředků skupiny a oblast a znovu vytvořit.
 - Odstranění vazby SSL, například během [prodloužení platnosti certifikátu](../app-service/app-service-web-tutorial-custom-ssl.md#renew-certificates)).
 
-Příchozí IP adresa může po ještě nevstoupilo všechny akce, například těch, které jsou uvedené také změnit.
+Při spuštění aplikace function app [plánu Consumption](functions-scale.md#consumption-plan), příchozí IP adresa může po ještě nevstoupilo všechny akce, například těch, které jsou uvedené také změnit.
 
 ## <a name="outbound-ip-address-changes"></a>Změny odchozí IP adresy
 
@@ -103,7 +103,7 @@ Sada k dispozici odchozí IP adresy pro aplikaci function app může změnit, kd
 * Provést žádnou akci, která může měnit příchozí IP adresu.
 * Změňte plán služby App Service s cenovou úroveň. Seznam všech možných odchozí IP adresy vaší aplikace můžete použít pro všechny cenové úrovně, `possibleOutboundIPAddresses` vlastnost. Zobrazit [najít odchozí IP adresy](#find-outbound-ip-addresses).
 
-Příchozí IP adresa může po ještě nevstoupilo všechny akce, například těch, které jsou uvedené také změnit.
+Při spuštění aplikace function app [plánu Consumption](functions-scale.md#consumption-plan), odchozí IP adresa může po ještě nevstoupilo všechny akce, například těch, které jsou uvedené také změnit.
 
 Chcete-li vynutit záměrně změnu odchozí IP adresy:
 

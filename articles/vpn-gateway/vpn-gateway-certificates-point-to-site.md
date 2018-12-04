@@ -5,15 +5,15 @@ services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 09/05/2018
+ms.topic: conceptual
+ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: 18d705f68ff06621e30c051dac9fb9607fd043ac
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300932"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52850954"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a export certifikátů pro Point-to-Site pomocí Powershellu
 
@@ -27,7 +27,7 @@ Pokud nemáte přístup k počítači s Windows 10 nebo Windows Server 2016, mů
 
 Pomocí rutiny New-SelfSignedCertificate vytvořit certifikát podepsaný svým držitelem. Informace o dalších parametrech najdete v části [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
-1. Z počítače se systémem Windows 10 nebo Windows Server 2016 otevřete konzolu Windows Powershellu se zvýšenými oprávněními.
+1. Z počítače se systémem Windows 10 nebo Windows Server 2016 otevřete konzolu Windows Powershellu se zvýšenými oprávněními. Tyto příklady nebudou fungovat ve službě Azure Cloud Shell "Vyzkoušejte si to". Tyto příklady je nutné spustit místně.
 2. Abyste mohli vytvořit certifikát podepsaný svým držitelem, použijte následující příklad. Následující příklad vytvoří certifikát podepsaný svým držitelem s názvem "P2SRootCert", který je automaticky nainstalován v úložišti "Certificates-Current User\Personal\Certificates". Certifikát můžete zobrazit tak, že otevřete *certmgr.msc*, nebo *správu uživatelských certifikátů*.
 
   ```powershell
@@ -104,7 +104,7 @@ Pokud vytváříte dalších klientských certifikátů, nebo nepoužívají ste
 
 ### <a name="export-the-self-signed-root-certificate-and-private-key-to-store-it-optional"></a>Export kořenového certifikátu podepsaného držitelem a privátní klíč a uložit na (volitelné)
 
-Můžete exportovat certifikát podepsaný svým držitelem a uloží je bezpečně zálohování. Pokud třeba, můžete později jej nainstalovat na jiném počítači a generovat další certifiates klienta. Certifikát podepsaný svým držitelem exportovat jako soubor .pfx, vyberte kořenový certifikát a pomocí stejných kroků, jak je popsáno v [exportovat klientský certifikát](#clientexport).
+Můžete exportovat certifikát podepsaný svým držitelem a uloží je bezpečně zálohování. Pokud třeba, můžete později jej nainstalovat na jiném počítači a generovat více klientských certifikátů. Certifikát podepsaný svým držitelem exportovat jako soubor .pfx, vyberte kořenový certifikát a pomocí stejných kroků, jak je popsáno v [exportovat klientský certifikát](#clientexport).
 
 ## <a name="clientexport"></a>4. Export klientského certifikátu
 
