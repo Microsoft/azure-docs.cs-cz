@@ -107,7 +107,7 @@ items:
   - name: Analýza dat
     items:
     - name: Log Analytics
-      href: ../log-analytics/log-analytics-queries.md?toc=/azure/azure-monitor/toc.json
+      href: log-query/log-query-overview.md
     - name: Portály dotazů na protokoly
       href: ../log-analytics/log-analytics-log-search-portals.md?toc=/azure/azure-monitor/toc.json
     - name: Přechod na portál OMS
@@ -1007,9 +1007,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 9c1f8397ce9e88216eaff10cda9c3b2ebbc6e5bd
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 46f8dfa668deed1be2b955fd42b894dfa5513a20
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682924"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52846177"

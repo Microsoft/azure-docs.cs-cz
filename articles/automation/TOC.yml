@@ -33,6 +33,8 @@ items:
     href: automation-tutorial-troubleshoot-changes.md
 - name: Návody
   items:
+  - name: Spuštění/zastavení virtuálních počítačů mimo špičku
+    href: automation-solution-vm-management.md
   - name: Onboarding
     items:
     - name: Onboarding několika virtuálních počítačů z portálu
@@ -134,8 +136,6 @@ items:
       href: automation-managing-data.md
     - name: Předání objektu JSON do runbooku Azure Automation
       href: automation-pass-json-string.md
-    - name: Spuštění/zastavení virtuálních počítačů mimo špičku
-      href: automation-solution-vm-management.md
     - name: Správa balíčků Python 2
       href: python-packages.md
   - name: Hybrid Runbook Worker
@@ -285,9 +285,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: b723e1b7a4ac2aa589a3d8f1730e71bf9cb91418
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: ed1c82c799ea64c43a531d912fbc09022a918414
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820388"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838969"
