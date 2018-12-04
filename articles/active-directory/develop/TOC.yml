@@ -286,6 +286,8 @@ items:
         href: quickstart-v2-uwp.md
       - name: Windows Desktop .NET
         href: quickstart-v2-windows-desktop.md
+      - name: Konzola .NET Core (démon)
+        href: quickstart-v2-netcore-daemon.md
     - name: Služba-služba
       items:
       - name: ASP .NET
@@ -436,9 +438,9 @@ items:
     href: developer-support-help-options.md
   - name: Spravované identity pro prostředky Azure
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 1f5e8259aeaae162d424ec7e66d47ff71e3471d1
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 25d3d8591837606bd470d1881012080c2567bd0a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680442"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833036"
