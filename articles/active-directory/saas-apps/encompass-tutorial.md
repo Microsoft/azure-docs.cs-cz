@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: b2a5050960eee55a7edbdc6048ee717e8345cb2e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1a179751cb8919e260c58564be6e14303f4d3f41
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420287"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845446"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-encompass"></a>Kurz: Integrace Azure Active Directory se službou Encompass
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Encompass, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Encompass jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace Encompass do služby Azure AD, budete muset přidat Encomp
 
 **Chcete-li přidat Encompass z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -115,7 +115,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.voxmobile.com/voxportal/ws/saml/consume`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory Encompass](http://www.voxmobile.com/contact/) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory Encompass](https://www.voxmobile.com/contact/) k získání těchto hodnot.
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
@@ -129,7 +129,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Zahrnovat konfigurace](./media/encompass-tutorial/tutorial_encompass_configure.png) 
 
-1. Ke konfiguraci jednotného přihlašování na **Encompass** straně, je nutné odeslat na stažený **Certificate(Base64) a adresa URL odhlašování SAML jednotné přihlašování – adresa URL služby** k [tým podpory Encompass](http://www.voxmobile.com/contact/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **Encompass** straně, je nutné odeslat na stažený **Certificate(Base64) a adresa URL odhlašování SAML jednotné přihlašování – adresa URL služby** k [tým podpory Encompass](https://www.voxmobile.com/contact/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -168,7 +168,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
   
 ### <a name="create-a-encompass-test-user"></a>Vytvoření zkušebního uživatele Encompass
 
-V této části vytvoříte uživatele v Encompass jako Britta Simon. Práce s [tým podpory Encompass](http://www.voxmobile.com/contact/) přidat uživatele na platformě Encompass. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte uživatele v Encompass jako Britta Simon. Práce s [tým podpory Encompass](https://www.voxmobile.com/contact/) přidat uživatele na platformě Encompass. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -200,7 +200,7 @@ V této části je povolit Britta Simon k udělení přístupu k Encompass použ
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

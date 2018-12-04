@@ -1,9 +1,8 @@
 ---
-title: Připojení aplikace MongoDB ke službě Azure Cosmos DB pomocí Node.js | Microsoft Docs
+title: Připojení aplikace MongoDB ke službě Azure Cosmos DB pomocí Node.js
 description: Naučte se připojovat stávající aplikaci MongoDB s podporou Node.js ke službě Azure Cosmos DB
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc, devcenter
@@ -11,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: sngun
-ms.openlocfilehash: 00824dc7a4fa7589fd01568b82351a68e1d44faa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 6844fc2450154b7e71c74ad9728929c3dc9df2f9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983561"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844477"
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Služba Azure Cosmos DB: Migrace stávající webové aplikace MongoDB s podporou Node.js 
 
@@ -253,7 +252,7 @@ git commit -m "configured MongoDB connection string"
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze služby Azure Cosmos DB a vytvoření kolekce MongoDB pomocí Průzkumníku dat. Teď můžete migrovat data MongoDB do služby Azure Cosmos DB.  
 

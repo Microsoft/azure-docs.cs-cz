@@ -1,22 +1,20 @@
 ---
-title: 'Azure Cosmos DB: Jak provádět dotazy pomocí rozhraní MongoDB API? | Microsoft Docs'
+title: 'Azure Cosmos DB: Jak provádět dotazy pomocí rozhraní MongoDB API?'
 description: Zjistěte, jak provádět dotazy pomocí rozhraní MongoDB API pro službu Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/29/2018
-ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: efb59a73b3c9b0ab06fae2e7b4fe5b97d85249eb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.date: 03/29/2018
+ms.openlocfilehash: 8c865ab7fa997b169e481612ce791d960688da56
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052801"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841502"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní MongoDB API
 
@@ -300,7 +298,7 @@ Další dotaz vrátí všechny rodiny s polem children (děti) velikosti 3.
 
 Nevrátí se žádné výsledky, protože v žádné rodině není více než dvě děti. Tento dotaz bude úspěšný pouze v případě, že parametr bude 2, a pak vrátí celý dokument.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste provedli následující:
 

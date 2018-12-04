@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: bec94e2017660e9804bbc232e0a3163afdaafcb6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277762"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844834"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -101,23 +101,29 @@ Při pokusu o přihlášení se teď uživatelům na přihlašovací obrazovce z
 
 Vaši uživatelé najdou pokyny k použití této funkce v tématu popisujícím [resetování hesla k pracovnímu nebo školnímu účtu](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
 
-## <a name="common-issues"></a>Běžné problémy
+Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu klienta, kde došlo k resetování hesla.
+
+![Příklad resetování hesla na přihlašovací obrazovce v protokolu auditu služby Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
+## <a name="limitations"></a>Omezení
 
 Při testování této funkce s použitím Hyper-V se odkaz Resetovat heslo nezobrazí.
 
 * Přejděte do virtuálního počítače, který používáte k testování, klikněte na **Zobrazit** a pak zrušte zaškrtnutí políčka **Rozšířená relace**.
 
-Při testování této funkce s použitím Vzdálené plochy se odkaz Resetovat heslo nezobrazí.
+Při testování této funkce s použitím vzdálené plochy nebo relaci rozšířeného virtuálního počítače, "Resetovat heslo" odkaz se nezobrazí.
 
 * Resetování hesla u Vzdálené plochy se v současné době nepodporuje.
 
-Pokud je pomocí klíče registru nebo zásad skupiny zakázaná zamykací obrazovka Windows, nebude **resetování hesla** k dispozici.
-
 Pokud zásady vyžadují stisknutí Ctrl+Alt+Del nebo jsou vypnutá oznámení pro uzamčenou obrazovku, nebude **resetování hesla** fungovat.
 
-Protokol auditu služby Azure AD bude obsahovat informace o IP adrese a typu klienta, kde došlo k resetování hesla.
+Je známo, že následující nastavení zásad v konfliktu s možností k resetování hesel
 
-![Příklad resetování hesla na přihlašovací obrazovce v protokolu auditu služby Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+   * HideFastUserSwitching je nastaveno na povoleno nebo 1
+   * DontDisplayLastUserName je nastaveno na povoleno nebo 1
+   * NoLockScreen je nastaveno na povoleno nebo 1
+   * EnableLostMode nastavená na zařízení
+   * Explorer.exe nahradí za vlastní prostředí
 
 Pokud jsou vaše počítače s Windows 10 za proxy serverem nebo bránou firewall, měl by být povolený provoz HTTPS (port 443) na adresu passwordreset.microsoftonline.com and ajax.aspnetcdn.com.
 
@@ -125,7 +131,7 @@ Pokud jsou vaše počítače s Windows 10 za proxy serverem nebo bránou firewal
 
 Pokud se rozhodnete, že už funkci nakonfigurovanou jako součást tohoto kurzu používat nechcete, odstraňte profil konfigurace zařízení Intune, který jste vytvořili, nebo klíč registru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste umožnili uživatelům resetovat svá hesla z přihlašovací obrazovky Windows 10. Pokračujte k dalšímu kurzu, ve kterém se dozvíte, jak můžete integrovat Azure Identity Protection do prostředí pro samoobslužné resetování hesla a vícefaktorové ověřování.
 

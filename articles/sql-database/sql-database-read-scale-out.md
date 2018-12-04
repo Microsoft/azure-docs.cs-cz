@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/19/2018
-ms.openlocfilehash: deadbc8186d80b050fdb40879ecf29fd229c8709
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.date: 12/03/2018
+ms.openlocfilehash: 6b694794da5eabaddf4d6f29203b7d6553ef4940
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465439"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844392"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít repliky jen pro čtení k načtení vyrovnávat zatížení dotazu jen pro čtení (preview)
 
@@ -76,7 +76,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 ## <a name="enable-and-disable-read-scale-out"></a>Povolení a zákaz horizontální navýšení kapacity pro čtení
 
-Ve výchozím nastavení v je povolené horizontální navýšení kapacity pro čtení [Managed Instance](sql-database-managed-instance.md) tier(Preview) pro důležité obchodní informace. By měla být explicitně povolená v [databáze umístěna na logickém serveru](sql-database-logical-servers.md) úrovně Premium a pro důležité obchodní informace. Metody pro povolení a zakázání horizontální navýšení kapacity pro čtení je zde popsáno.
+Ve výchozím nastavení v je povolené horizontální navýšení kapacity pro čtení [Managed Instance](sql-database-managed-instance.md) úroveň pro důležité obchodní informace. By měla být explicitně povolená v [databáze umístěna na logickém serveru](sql-database-logical-servers.md) úrovně Premium a pro důležité obchodní informace. Metody pro povolení a zakázání horizontální navýšení kapacity pro čtení je zde popsáno.
 
 ### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Povolení a zákaz čtení horizontální navýšení kapacity pomocí Azure Powershellu
 

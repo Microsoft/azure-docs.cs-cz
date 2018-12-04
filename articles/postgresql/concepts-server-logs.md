@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 2a6744bdec48e59b820605bb4d1cc01d32702bcf
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2ee9f750ff52b8afe4be54233f1374f523a789f4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867752"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845159"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Protokolů serveru ve službě Azure Database for PostgreSQL 
 Azure Database for PostgreSQL generuje dotaz a chybových protokolů. Dotaz a chybových protokolů umožňuje zjistit, řešit a opravit chyby v konfiguraci a neoptimální výkonu. (Přístup k protokolům transakce není součástí). 
@@ -26,18 +26,18 @@ Protokolování můžete nakonfigurovat na serveru s použitím parametrů proto
 Další informace o těchto parametrech naleznete v tématu PostgreSQL [generování sestav a protokolování chyb](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) dokumentaci. Další informace o konfiguraci – Azure Database for postgresql – parametrů, najdete v článku [dokumentaci k portálu](howto-configure-server-parameters-using-portal.md) nebo [dokumentace k rozhraní příkazového řádku](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>Přístup k protokolům serveru prostřednictvím portálu nebo rozhraní příkazového řádku
-Pokud jste povolili protokoly, které můžete přistupovat k nim z Azure Database for postgresql – protokol úložiště pomocí [webu Azure portal](howto-configure-server-logs-in-portal.md), [rozhraní příkazového řádku Azure](howto-configure-server-logs-using-cli.md)a rozhraní Azure REST API. Soubory protokolů otočit každou hodinu nebo velikost 100MB, podle toho, co nastane dřív. Můžete nastavit dobu uchování pomocí úložiště protokolu **protokolu\_uchování\_období** parametr přidružené k serveru. Výchozí hodnota je 3 dny; Maximální hodnota je 7 dní. Server musí mít dostatek přidělené úložiště pro uložení souborů protokolu. (Tento parametr uchovávání informací se neřídí diagnostické protokoly Azure).
+Pokud jste povolili protokoly, které můžete přistupovat k nim z Azure Database for postgresql – protokol úložiště pomocí [webu Azure portal](howto-configure-server-logs-in-portal.md), [rozhraní příkazového řádku Azure](howto-configure-server-logs-using-cli.md)a rozhraní Azure REST API. Soubory protokolů otočit každou hodinu nebo velikost 100MB, podle toho, co nastane dřív. Můžete nastavit dobu uchování pomocí úložiště protokolu **protokolu\_uchování\_období** parametr přidružené k serveru. Výchozí hodnota je 3 dny; Maximální hodnota je 7 dní. Server musí mít dostatek přidělené úložiště pro uložení souborů protokolu. (Tento parametr uchovávání informací se neřídí diagnostické protokoly Azure).
 
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Azure Database for PostgreSQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly na váš server PostgreSQL, můžete je mít znovu vygenerován pro [Log Analytics](../log-analytics/log-analytics-queries.md), Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, najdete v části s postupy [dokumentace k diagnostickým protokolům](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
+Azure Database for PostgreSQL je integrovaná s diagnostické protokoly Azure monitoru. Jakmile povolíte protokoly na váš server PostgreSQL, můžete je mít znovu vygenerován pro [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs nebo Azure Storage. Další informace o tom, jak povolit diagnostické protokoly, najdete v části s postupy [dokumentace k diagnostickým protokolům](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
 
 
 Následující tabulka popisuje, co je v každém protokolu. V závislosti na výstupního koncového bodu, kterou zvolíte, pole zahrnutá a pořadí, ve kterém jsou uvedeny, se můžou lišit. 
 
 |**Pole** | **Popis** |
 |---|---|
-| ID Tenanta | Vaše ID tenanta |
+| TenantId | Vaše ID tenanta |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Časové razítko, kdy se přihlášení v protokolu ve standardu UTC |
 | Typ | Typ protokolu. Vždy `AzureDiagnostics` |

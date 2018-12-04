@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9f475c7bc373afd8a109873908bb583bc07708f1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9dbe88e1e179df4560d5094cf3f58ca770541323
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722543"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842268"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Aplikace pro iOS pomocí přihlášení
 
@@ -39,7 +39,7 @@ Dále musíte vytvořit aplikaci v adresáři B2C. Registrace aplikací poskytuj
 * Nastavení **identifikátor URI pro přesměrování** s vlastním schématem (například com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect). Budete později potřebovat pomocí tohoto identifikátoru URI.
 
 ## <a name="create-your-user-flows"></a>Vytvářet toky uživatelů
-V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci. Vytvořte tento tok uživatele podle popisu v [článku toku uživatele](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Když vytvoříte tok uživatele, nezapomeňte na následující:
+V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md). Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci. Vytvořte tento tok uživatele podle popisu v [článku toku uživatele](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Když vytvoříte tok uživatele, nezapomeňte na následující:
 
 * V části **atributy registrace**, vyberte atribut **zobrazovaný název**.  Můžete vybrat i jiné atributy.
 * V části **deklarace identit aplikace**, vyberte deklarace identity **zobrazovaný název** a **ID objektu uživatele**. Můžete vybrat i další deklarace identity.

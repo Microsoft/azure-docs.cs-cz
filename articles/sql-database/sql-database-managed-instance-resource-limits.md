@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 97c141b6e0c071a8cea27f9a873f28a6c5113a18
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.date: 12/03/2018
+ms.openlocfilehash: c8a100577ba4bc67d12c7376b5897f397d010d4d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394857"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844919"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
-Tento článek obsahuje základní informace o omezení prostředků Azure SQL Database Managed Instance a poskytuje informace o tom, jak vytvořit žádost o zvýšení počtu výchozí limity předplatného místní. 
+Tento článek obsahuje základní informace o omezení prostředků Azure SQL Database Managed Instance a poskytuje informace o tom, jak vytvořit žádost o zvýšení počtu výchozí limity předplatného místní.
 
 > [!NOTE]
 > Další omezení Managed Instance najdete v části [nákupní model založený na virtuálních jádrech](sql-database-managed-instance.md#vcore-based-purchasing-model) a [úrovně služeb Managed Instance](sql-database-managed-instance.md#managed-instance-service-tiers). Rozdíly v podporovaných funkcích a T-SQL příkazy naleznete v tématu [rozdíly ve funkcích](sql-database-features.md) a [podpora příkazu T-SQL](sql-database-managed-instance-transact-sql-information.md).
@@ -43,9 +43,9 @@ Azure SQL Database Managed Instance je možné nasadit na generování dvě hard
 
 ### <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
 
-Managed Instance má dvě úrovně služeb - obecné účely a pro důležité obchodní informace (Public Preview). Tyto úrovně teď poskytují různé možnosti, jak je popsáno v následující tabulce:
+Managed Instance má dvě úrovně služeb - obecné účely a pro důležité obchodní informace. Tyto úrovně teď poskytují různé možnosti, jak je popsáno v následující tabulce:
 
-| **Funkce** | **Obecné účely** | **Důležité obchodní informace (preview)** |
+| **Funkce** | **Obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
 | Počet virtuálních jader\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
 | Memory (Paměť) | Gen4: 56GB – 156GB<br/>Gen5: 44GB - 440GB<br/>\*Proporční na počet virtuálních jader | Gen4: 56GB – 156GB <br/> Gen5: 44GB - 440GB<br/>\*Proporční na počet virtuálních jader |
@@ -53,7 +53,7 @@ Managed Instance má dvě úrovně služeb - obecné účely a pro důležité o
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
 | Maximální počet databází na instanci | Až 280 | Unlimited |
-| Očekávaný maximální velikosti úložiště vstupně-výstupních operací | 500-5000 ([závisí na velikosti souboru dat](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)). | Závisí na rychlosti podkladové SSD. |
+| Vstupně-výstupní propustnost (přibližné) | 5000 IOPS na jádro s 200 000 maximální IOPS |
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -98,12 +98,12 @@ Tyto limity můžete zvýšit tak, že vytvoříte speciální [žádost o podpo
 
 [Smlouvy Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) předplatné může mít kombinací instancí GP a BC. Existují však některá omezení týkající se umístění instance v podsítí.
 
-> [!Note] 
+> [!Note]
 > [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/) a [Cloud Service Provider (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources) typy předplatného může mít buď jeden pro důležité obchodní informace nebo až na 4 instance pro obecné účely.
 
 Následující příklady pokrývají nasazené služby se neprázdný podsítěmi a smíšené GP a BC úrovně služeb.
 
-|Počet podsítí|podsíť 1|Podsíť 2|Podsíť 3|
+|Počet podsítí|Podsíť 1|Podsíť 2|Podsíť 3|
 |:---|:---|:---|:---|
 |1|1 BC až 8 GP<br>2 BC až 4 GP|neuvedeno| neuvedeno|
 |2|BC 0, až 4 GP|BC 1, až 4 GP<br>BC 2, 0 GP|neuvedeno|
@@ -114,9 +114,10 @@ Následující příklady pokrývají nasazené služby se neprázdný podsítě
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání vyšší kvóty pro spravovanou instanci SQL
 
-Pokud potřebujete více spravovaných instancí v aktuální oblasti, můžete odeslat žádost o podporu pro rozšíření kvóty pomocí webu Azure portal. Chcete-li zahájit proces získávání vyšší kvóty:
+Pokud potřebujete více spravovaných instancí v aktuální oblasti, můžete odeslat žádost o podporu pro rozšíření kvóty pomocí webu Azure portal.
+Chcete-li zahájit proces získávání vyšší kvóty:
 
-1. Otevřít **Nápověda a podpora**a klikněte na tlačítko **nová žádost o podporu**. 
+1. Otevřít **Nápověda a podpora**a klikněte na tlačítko **nová žádost o podporu**.
 
    ![Nápověda a podpora](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Na kartě základy pro novou žádost o podporu:
@@ -140,13 +141,13 @@ Pokud potřebujete více spravovaných instancí v aktuální oblasti, můžete 
      > - Oblasti, které předplatné limit musí být zvýšena
      > - Požadovaný počet instancí na úroveň služby v existující podsítě po kvótu zvýšit (je-li žádné existující podsítě potřeba rozšířit
      > - Požadované číslo nové podsítě a celkový počet instancí na úrovni služby v rámci nové podsítě (Pokud je potřeba nasadit spravované instance v nové podsítě).
-     
+
 5. Klikněte na **Další**.
 6. Na kartě kontaktní informace pro novou žádost o podporu zadejte upřednostňovaný způsob kontaktu (e-mail nebo telefon) a kontaktní údaje.
 7. Klikněte na možnost **Vytvořit**.
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o Managed Instance najdete v tématu [co je Managed Instance?](sql-database-managed-instance.md). 
+- Další informace o Managed Instance najdete v tématu [co je Managed Instance?](sql-database-managed-instance.md).
 - Informace o cenách najdete v tématu [ceny SQL Database Managed Instance](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 - Zjistěte, jak vytvořit první Managed Instance, najdete v článku [příručky rychlý start](sql-database-managed-instance-get-started.md).

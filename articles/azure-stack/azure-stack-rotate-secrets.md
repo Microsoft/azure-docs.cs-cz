@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 8d84801aacfc60bb11aac4c9046a433378a59b79
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 2b1dc0ad28a6608e3a46087d31a3d077e9291a3d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314469"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841672"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Otočit tajné kódy ve službě Azure Stack
 
@@ -44,7 +44,7 @@ Certifikáty služby infrastruktury externích služeb, které jsou k dispozici 
 
    <sup>*</sup> Platí pouze pokud je zprostředkovatel identity prostředí Active Directory Federated Services (AD FS).
 
-> [!NOTE]
+> [!NOTE]  
 > Všechny ostatní zabezpečení klíčů a řetězce, včetně BMC a přepněte hesla, správce ručně aktualizovat hesla k účtům uživatelů a správců. 
 
 Aby bylo možné udržovat tak integritu infrastruktury Azure stacku, operátory nemusí pravidelně obměňovat svoji infrastrukturu tajných kódů v frekvence, které jsou v souladu s požadavky na zabezpečení organizace.

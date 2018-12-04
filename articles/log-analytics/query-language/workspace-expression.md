@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 63c6c231477a1c5abea15903b17843717e61f96a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2909f586ce102b319ca9dfeea191c7812e3f6b06
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679950"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842658"
 ---
 # <a name="workspace-expression-in-log-analytics-query"></a>výraz Workspace() v dotazu Log Analytics
 
@@ -73,4 +73,4 @@ union
 ## <a name="next-steps"></a>Další postup
 
 - Najdete v článku [aplikace výraz](workspace-expression.md) odkázat na aplikaci Application Insights.
-- Přečtěte si, jak [dat Log Analytics](../../log-analytics/log-analytics-queries.md) uložená.
+- Přečtěte si, jak [dat Log Analytics](../../azure-monitor/log-query/log-query-overview.md) uložená.

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: raynew
-ms.openlocfilehash: d0cfab51b686b5b6eb9617d4424ac3f834de8d6f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2423c4fde177ab50552af580a60c7a15550e5586
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241068"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840431"
 ---
 # <a name="customize-an-assessment"></a>Přizpůsobení posouzení
 
@@ -26,7 +26,6 @@ ms.locfileid: "50241068"
     **Nastavení** | **Podrobnosti** | **Výchozí**
     --- | --- | ---
     **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/> Azure Migrate v současné době podporuje 30 oblastí, včetně oblastí Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Indie – střed, USA – střed, Čína – východ, Čína – sever, Východní Asie, USA – východ, Německo – střed, Německo – severovýchod, USA – východ 2, Japonsko – východ, Japonsko – západ, Jižní Korea – střed, Jižní Korea – jih, Střed USA – sever, Severní Evropa, Střed USA – jih, Jihovýchodní Asie, Indie – jih, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US Gov – Texas, US Gov – Virginie, Střed USA – západ, Západní Evropa, Indie – západ, USA – západ a USA – západ 2. |  USA – západ 2 je výchozí umístění.
-    **Cenová úroveň** | Můžete zadat [cenovou úroveň (Basic nebo Standard)](../virtual-machines/windows/sizes-general.md) cílových virtuálních počítačů Azure. Například pokud máte v úmyslu migrovat produkční prostředí, chcete zvážit úroveň Standard. Na druhou stranu, pokud máte prostředí pro vývoj a testování, měli byste zvážit úroveň Basic s virtuálními počítači s vyšší latencí, která je levnější. | Ve výchozím nastavení se použije úroveň [Standard](../virtual-machines/windows/sizes-general.md).
     **Typ úložiště** | Tato vlastnost slouží k určení typu disky, které chcete přidělit v Azure. Pro jako – místní změny velikosti můžete zadat cílový typ disku buď jako Premium managed disks a Standard managed disks. Pro určení velikosti na základě výkonu můžete zadat cílový typ disku jako automatická, Premium managed disks nebo Standard managed disks. Při zadání typu úložiště jako automatické doporučení disku se provádí na základě dat výkonu disků (IOPS a propustnost). Například, pokud chcete dosáhnout [jednu instanci virtuálního počítače SLA 99,9 %](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/), můžete chtít zadat typ úložiště jako spravované disky úrovně Premium, které zajistí, že všechny disky v posouzení se doporučují jako spravované disky úrovně Premium. Poznámka: Azure Migrate podporuje pro posouzení migrace jenom spravované disky. | Výchozí hodnota je spravované disky úrovně Premium (s kritérium určení velikosti jako *jako v místním nastavení velikosti*).
     **Rezervované instance** |  Můžete také zadat, jestli v Azure máte [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/), a Azure Migrate odhadne náklady odpovídajícím způsobem. Rezervované instance se nevztahují na suverénních oblastech (Azure Government, Německo a Čína) a se vztahuje pouze na nabídku průběžných plateb ve službě Azure Migrate. | Výchozí hodnota této vlastnosti je 3 roky, rezervované instance.
     **Kritérium určení velikosti** | Kritérium, podle kterého Azure Migrate určí správnou velikost virtuálních počítačů pro Azure. Můžete provést určení velikosti *na základě výkonu* nebo použít velikost virtuálních počítačů *jako v místním prostředí* bez ohledu na historii výkonu. | Výchozí možnost je určení velikosti na základě výkonu.

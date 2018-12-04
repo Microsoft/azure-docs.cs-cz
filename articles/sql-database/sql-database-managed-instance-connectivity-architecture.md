@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 08/16/2018
-ms.openlocfilehash: 312425d3ea02d15a992b9a694f09cb2be73b6221
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d0747e9e54a48ecccb7051ad4fe9998d86599ffe
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161586"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840728"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL Database Managed Instance architektura připojení 
 
@@ -66,7 +66,7 @@ Klienti připojit k Managed Instance pomocí názvu hostitele, který má podobu
 
 Tato privátní IP adresa patří k na spravované instanci interní zatížení nástroje pro vyrovnávání (ILB), která směruje provoz do na spravované instanci brány (gs). Více spravovaných instancí může potenciálně spuštění ve stejném clusteru GW používá název hostitele Managed Instance pro přesměrování přenosu dat na správné služby stroj SQL. 
 
-Nasazení a správu služeb se připojit k Managed Instance pomocí veřejného koncového bodu, který se mapuje na externím vyrovnáváním zatížení. Provoz se směruje do uzlů pouze tehdy, pokud byla přijata na předdefinované sady porty, které používá jediná komponentami pro správu Managed Instance. Veškerá komunikace mezi komponentami správy a rovina správy se vzájemně certifikát ověřit. 
+Nasazení a správu služeb připojení k Managed Instance pomocí [koncový bod správy](sql-database-managed-instance-management-endpoint.md) , který se mapuje na externím vyrovnáváním zatížení. Provoz se směruje do uzlů pouze v případě, že byla přijata na předdefinovanou sadu porty, které používá jediná komponentami pro správu Managed Instance. Integrované brána firewall na uzlech je nakonfigurována pro povolení provozu pouze z konkrétní rozsahy IP Microsoft. Veškerá komunikace mezi komponentami správy a rovina správy se vzájemně certifikát ověřit. 
 
 ## <a name="next-steps"></a>Další postup 
 

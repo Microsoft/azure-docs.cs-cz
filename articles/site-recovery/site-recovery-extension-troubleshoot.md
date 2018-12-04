@@ -5,14 +5,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: ddbfdc9928122373b82d043fac0777576c5fe99e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7a4ff22bbb4c7c13d8c2feae3638ce8e33a8f7ad
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227469"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845820"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Řešení potíží s agentem Azure Site Recovery
 

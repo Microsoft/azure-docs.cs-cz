@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5216a4a21fbbded4a10429c658f4842db225657
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 5a0fb429c36005edca579cbdb7b379e6b04be60b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161714"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840839"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -52,6 +52,13 @@ ms.locfileid: "52161714"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md).
+
+### <a name="a-name3001-preview3001-preview"></a><a name="3.0.0.1-preview"/>3.0.0.1-Preview
+* Ve verzi Preview 1 [verze 3.0.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) sady .NET SDK pro verzi public preview.
+* Cíl .NET Standard, která podporuje 4.6.1+ rozhraní .NET framework a .NET Core 2.0 +
+* Nový model objektu, pomocí metod a nejvyšší úrovně CosmosClient rozdělit mezi relevantní CosmosDatabases, CosmosContainers a CosmosItems třídy. 
+* Podpora pro datové proudy. 
+* Aktualizované CosmosResponseMessage ze serveru vrátit stavový kód a pouze vyvolat výjimku, pokud není vrácena žádná odpověď. 
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 

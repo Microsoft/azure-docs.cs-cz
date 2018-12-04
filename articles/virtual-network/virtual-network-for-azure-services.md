@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 1c7aedbf819bb704345f05706480e356096bfda4
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c580066032bf6a16dfbde876ec9843d8900d0057
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308887"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844409"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integrace virtuální sítě pro služby Azure
 
@@ -54,7 +54,7 @@ Nasazení služby v rámci virtuální sítě poskytuje následující možnosti
 |Data|[RedisCache](../redis-cache/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Spravovaná Instance Azure SQL Database](../sql-database/sql-database-managed-instance-vnet-configuration.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 Analýzy | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |
 | Identita | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |
-| Containers | [Azure Kubernetes Service (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Instance kontejneru Azure (ACI)](https://www.aka.ms/acivnet)<br/>[Modul Azure Container Service](https://github.com/Azure/acs-engine) s Azure Virtual Network CNI [modulu plug-in](https://github.com/Azure/acs-engine/tree/master/examples/vnet)||
+| Containers | [Azure Kubernetes Service (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Instance kontejneru Azure (ACI)](https://www.aka.ms/acivnet)<br/>[Modul Azure Container Service](https://github.com/Azure/acs-engine) s Azure Virtual Network CNI [modulu plug-in](https://github.com/Azure/acs-engine/tree/master/examples/vnet)||
 | Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service Environment](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>
 <br/>
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 562fc267a056d6908af5b89fd7a93e858f1c6165
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.openlocfilehash: ba23e9b8ac79a0a2a3899332bfc373665cf561af
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092607"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841159"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Linuxem
 
@@ -50,9 +50,9 @@ Security Center jde nad rámec zjišťování dat a poskytuje doporučení k pro
 Abyste mohli získat přehled o konfiguracích zabezpečení virtuálních počítačů, je potřeba v Security Center nastavit shromažďování dat. Zahrnuje to zapnutí shromažďování dat, čímž se na všechny virtuální počítače ve vašem předplatném automaticky nainstaluje Microsoft Monitoring Agent.
 
 1. Na řídicím panelu Security Center klikněte na **Zásady zabezpečení** a pak vyberte své předplatné. 
-2. Pro **Shromažďování dat** v **Automatickém zřizování** vyberte **Zapnuto**.
-3. Pro **Výchozí konfiguraci pracovního prostoru** ponechejte **Použít pracovní prostory vytvořené službou Security Center (výchozí)**.
-4. V části **Události zabezpečení** ponechejte výchozí možnost **Common**.
+2. Pro **Shromažďování dat** vyberte v oblasti **Automatické zřizování** možnost **Zapnuto**.
+3. U možnosti **Výchozí konfigurace pracovního prostoru** ponechejte **Použít pracovní prostory vytvořené službou Security Center (výchozí)**.
+4. V části **Události zabezpečení** ponechejte výchozí možnost **Běžné**.
 4. Klikněte na **Uložit** v horní části stránky. 
 
 Na všechny virtuální počítače se pak nainstaluje agent Security Center pro shromažďování dat a zahájí se shromažďování dat. 
@@ -106,7 +106,7 @@ Když se doporučení napraví, označí se jako vyřešená.
 
 Kromě doporučení ke konfiguraci prostředků zobrazuje Security Center upozornění na zjištěné hrozby. Funkce výstrah zabezpečení agreguje data shromážděná z jednotlivých virtuálních počítačů, síťových protokolů Azure a připojených partnerských řešení a detekuje bezpečnostní hrozby u prostředků Azure. Podrobné informace o možnostech detekce hrozeb v Security Center najdete v tématu [Možnosti detekce v Azure Security Center](../../security-center/security-center-detection-capabilities.md).
 
-Funkce výstrah zabezpečení vyžaduje zvýšení cenové úrovně Security Center z úrovně *Free* na úroveň *Standard*. Při přesunu na tuto vyšší cenovou úroveň je k dispozici 60denní **bezplatná zkušební verze**. 
+Funkce výstrah zabezpečení vyžaduje zvýšení cenové úrovně Security Center z úrovně *Free* na úroveň *Standard*. A **bezplatnou zkušební verzi** je k dispozici při přesunu na tuto vyšší cenovou úroveň. 
 
 Změna cenové úrovně:  
 
@@ -123,7 +123,7 @@ Výběrem výstrahy zobrazíte informace. Můžete například zobrazit popis hr
 
 ![Útok na protokol RDP](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center zkontrolovali virtuální počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

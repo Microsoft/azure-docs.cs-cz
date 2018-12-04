@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 10/02/2018
+ms.date: 11/30/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 33d6d89e91ecdec00c1b17ecddf91128e9d07526
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.openlocfilehash: b5f97dac202edd5405c51b75581275166042ac38
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802096"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841451"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -38,6 +38,8 @@ Kontejnery tradičně nabízejí izolaci závislostí aplikace a zásady správn
 
 Kontejnery jsou obvykle optimalizované pro spouštění jenom jedné aplikace, ale konkrétní požadavky těchto aplikací se můžou značně lišit. Služba Azure Container Instances zajišťuje optimální využití díky tomu, že umožňuje přesnou specifikaci jader procesoru a paměti. Platíte podle toho, co potřebujete, a účtuje se po sekundách, takže můžete podrobně upravovat náklady podle vašich aktuálních potřeb.
 
+Pro úlohy náročné na výpočetní, jako jsou machine learning, Azure Container Instances může plánovat kontejnery Linuxu používat NVIDIA Tesla [GPU prostředky](container-instances-gpu.md) (preview).
+
 ## <a name="persistent-storage"></a>Trvalé úložiště
 
 Pro načtení a uložení stavu pomocí služby Azure Container Instances nabízíme přímé [připojení sdílených složek Azure](container-instances-mounting-azure-files-volume.md).
@@ -59,9 +61,9 @@ Azure Container Instances podporuje plánování [skupin více kontejnerů](cont
 Tato funkce služby Azure Container Instances je aktuálně ve verzi Preview a umožňuje [nasazení instancí kontejneru do virtuální sítě Azure](container-instances-vnet.md). Když nasadíte instance kontejnerů do podsítě ve virtuální síti, můžou zabezpečeně komunikovat s jinými prostředky ve virtuální síti včetně těch, které jsou v místním prostředí (prostřednictvím [brány virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 > [!IMPORTANT]
-> Nasazení skupin kontejnerů do virtuální sítě je aktuálně ve verzi Preview a platí pro něj [určitá omezení](container-instances-vnet.md#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Některé funkce Azure Container Instances jsou ve verzi preview a některé [platí omezení](container-instances-vnet.md#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty těchto funkcí může změnit před obecné dostupnosti (GA).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vyzkoušejte si nasazení kontejneru do Azure jediným příkazem s využitím naší příručky Rychlý start:
 

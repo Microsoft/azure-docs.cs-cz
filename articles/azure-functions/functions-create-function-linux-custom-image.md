@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: de15d1f8c268e80ac1659c53a141ec39cc6d3cb8
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 5d03b7075b1ae590c400eb96525ab84d8487fa3e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564805"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840091"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview)
 
@@ -66,6 +66,7 @@ Po zobrazení výzvy zvolte modul runtime pracovního procesu z následujících
 
 * `dotnet`: vytvoří projekt knihovny třídy .NET (.csproj).
 * `node`: vytvoří projekt jazyka JavaScript.
+* `python`: vytvoří projekt Python.
 
 Při spuštění příkazu se zobrazí něco jako následující výstup:
 

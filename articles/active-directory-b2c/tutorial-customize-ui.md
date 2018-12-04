@@ -7,25 +7,25 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 588ce454248f0577a52515a4327d1e43013d34a5
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f8ebb282d3f6abbc37739891c0f7228bef110d82
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581795"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842675"
 ---
 # <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přizpůsobení uživatelského rozhraní aplikací v Azure Active Directory B2C
 
-Pro běžné uživatelské prostředí jako například registrace, přihlašování a úpravy profilu, můžete použít [integrované zásady](active-directory-b2c-reference-policies.md) v Azure Active Directory (Azure AD) B2C. Informace v tomto kurzu vám umožní získat informace tom, jak [přizpůsobení uživatelského rozhraní (UI)](customize-ui-overview.md) z těchto prostředí s využitím vlastní soubory HTML a CSS.
+Pro běžné uživatelské prostředí jako například registrace, přihlašování a úpravy profilu, můžete použít [toky uživatelů](active-directory-b2c-reference-policies.md) v Azure Active Directory (Azure AD) B2C. Informace v tomto kurzu vám umožní získat informace tom, jak [přizpůsobení uživatelského rozhraní (UI)](customize-ui-overview.md) z těchto prostředí s využitím vlastní soubory HTML a CSS.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření souborů přizpůsobení uživatelského rozhraní
-> * Vytvořte zásadu registrace a přihlašování, která používá soubory
+> * Registrace a přihlašování uživatelů tok, který používá soubory
 > * Testování vlastní uživatelské rozhraní
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -61,7 +61,7 @@ I když můžete ukládat soubory v mnoha směrech pro účely tohoto kurzu, jso
 
 ### <a name="enable-cors"></a>Povolení CORS
 
- Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k načtení vlastního obsahu z adresy URL, který zadáte v zásadách. Prostředků mezi zdroji (CORS) pro sdílení obsahu s omezeným přístupem prostředků umožňuje na webové stránce vyžadované z jiných domén.
+ Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k načtení vlastního obsahu z adresy URL, kterou zadáte v toku uživatele. Prostředků mezi zdroji (CORS) pro sdílení obsahu s omezeným přístupem prostředků umožňuje na webové stránce vyžadované z jiných domén.
 
 1. V nabídce vyberte **CORS**.
 2. Pro **povolené zdroje**, zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta.
@@ -137,9 +137,9 @@ V tomto kurzu ukládáte soubory, které jste vytvořili v účtu úložiště t
 4. Zkopírujte adresu URL souboru, který jste nahráli do použít později v tomto kurzu.
 5. Zopakujte kroky 3 a 4 *style.css* souboru.
 
-## <a name="create-a-sign-up-and-sign-in-policy"></a>Vytvoření zásad registrace a přihlášení
+## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Vytvořit tok registrace a přihlášení uživatele
 
-K dokončení kroků v tomto kurzu, budete muset vytvořit testovací aplikace a zásady registrace nebo přihlašování v Azure AD B2C. Můžete použít zásady popsané v tomto kurzu k jiné uživatelské prostředí, jako je například upravování profilu.
+K dokončení kroků v tomto kurzu, budete muset vytvořit tok testovací aplikace a registrace nebo přihlášení uživatele v Azure AD B2C. Můžete použít zásady popsané v tomto kurzu k jiné uživatelské prostředí, jako je například upravování profilu.
 
 ### <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
@@ -153,29 +153,34 @@ Probíhá komunikace s Azure AD B2C prostřednictvím aplikace, kterou vytvoří
 6. Pro **webová aplikace / webové rozhraní API**vyberte `Yes`a pak zadejte `https://jwt.ms` pro **adresy URL odpovědi**.
 7. Klikněte na možnost **Vytvořit**.
 
-### <a name="create-the-policy"></a>Vytvoření zásad
+### <a name="create-the-user-flow"></a>Vytvořit tok uživatele.
 
-K otestování soubory vlastního nastavení, vytvoření integrované zásady registrace nebo přihlášení, která používá aplikaci, kterou jste vytvořili.
+Otestovat soubory vlastního nastavení, můžete vytvořit tok integrované registrace / přihlášení uživatele, který používá aplikaci, kterou jste vytvořili.
 
-1. Ve vašem tenantovi Azure AD B2C vyberte **zásady registrace nebo přihlášení**a potom klikněte na tlačítko **přidat**.
-2. Zadejte název zásady. Například *signup_signin*. Předpona, která *B2C_1* se automaticky přidá název při vytváření zásady.
-3. Vyberte **zprostředkovatelé Identity**, nastavte **e-mailová registrace** pro místní účet a pak klikněte na tlačítko **OK**.
-4. Vyberte **atributy registrace**, zvolte atributy, které chcete během registrace shromažďovat od zákazníka. Například nastavte **země/oblast**, **zobrazovaný název**, a **PSČ**a potom klikněte na tlačítko **OK**.
-5. Vyberte **deklarace identit aplikace**, zvolte deklarace identit, které se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšné registraci nebo přihlašování prostředí. Vyberte například **zobrazovaný název**, **zprostředkovatele Identity**, **PSČ**, **uživatel je nový** a **ID objektu uživatele** a potom klikněte na tlačítko **OK**.
-6. Vyberte **přizpůsobení uživatelského rozhraní stránky**vyberte **stránku registrace nebo přihlášení Unified**a potom na **Ano** pro **použít vlastní stránku**.
-7. V **vlastní identifikátor URI stránky**, zadejte adresu URL *vlastní ui.html* souboru, že jste si poznamenali dříve a potom klikněte na **OK**.
-8. Klikněte na možnost **Vytvořit**.
+1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů**a potom klikněte na tlačítko **nový tok uživatele**.
+2. Na **doporučená** klikněte na tlačítko **podepsat a přihlašování**.
+3. Zadejte název toku uživatele. Například *signup_signin*. Předpona, která *B2C_1* se automaticky přidá do názvu, když se tok uživatele.
+4. V části **zprostředkovatelé Identity**vyberte **e-mailová registrace**.
+5. V části **atributy uživatele a deklarace identity**, klikněte na tlačítko **zobrazit více**.
+6. V **shromažďování atribut** sloupce, vyberte atributy, které chcete během registrace shromažďovat od zákazníka. Například nastavte **země/oblast**, **zobrazovaný název**, a **PSČ**.
+7. V **návratový deklarace identity** sloupce, zvolte deklarace identit, které se mají vracet v autorizačních tokenech odesílaných zpět do aplikace po úspěšné registraci nebo přihlašování prostředí. Vyberte například **Zobrazované jméno**, **Zprostředkovatel identity**, **PSČ**, **Uživatel je nový** a **ID objektu uživatele**.
+8. Klikněte na **OK**.
+9. Klikněte na možnost **Vytvořit**.
+10. V části **vlastní**vyberte **rozložení stránek**. Vyberte **stránku registrace nebo přihlášení Unified**a potom na **Ano** pro **použít vlastní obsah stránky**.
+11. V **vlastní identifikátor URI stránky**, zadejte adresu URL *vlastní ui.html* soubor, který jste si poznamenali dříve.
+12. V horní části stránky klikněte na tlačítko **Uložit**.
 
-## <a name="test-the-policy"></a>Testování zásad
+## <a name="test-the-user-flow"></a>Testování tohoto toku uživatele
 
-1. Ve vašem tenantovi Azure AD B2C vyberte **zásady registrace nebo přihlášení**a potom vyberte zásadu, kterou jste vytvořili. Například *B2C_1_signup_signin*.
-2. Ujistěte se, že je vybraná aplikace, kterou jste vytvořili v **vyberte aplikaci**a potom klikněte na tlačítko **Run Now**.
+1. Ve vašem tenantovi Azure AD B2C vyberte **toky uživatelů** a vyberte tok uživatele, který jste vytvořili. Například *B2C_1_signup_signin*.
+2. V horní části stránky klikněte na tlačítko **spustit tok uživatele**.
+3. Klikněte na tlačítko **spustit tok uživatele** tlačítko.
 
-    ![Spuštění zásady registrace / přihlášení](./media/tutorial-customize-ui/signup-signin.png)
+    ![Spuštění toku registrace nebo přihlašování uživatelů](./media/tutorial-customize-ui/run-user-flow.png)
 
     Měli byste vidět stránku podobně jako v následujícím příkladu s elementy na střed na základě souboru šablon stylů CSS, který jste vytvořili:
 
-    ![Výsledky zásad](./media/tutorial-customize-ui/run-now.png) 
+    ![Výsledky toku uživatele](./media/tutorial-customize-ui/run-now.png) 
 
 ## <a name="next-steps"></a>Další postup
 
@@ -183,7 +188,7 @@ V tomto článku jste zjistili, jak:
 
 > [!div class="checklist"]
 > * Vytvoření souborů přizpůsobení uživatelského rozhraní
-> * Vytvořte zásadu registrace a přihlašování, která používá soubory
+> * Registrace a přihlašování uživatelů tok, který používá soubory
 > * Testování vlastní uživatelské rozhraní
 
 > [!div class="nextstepaction"]

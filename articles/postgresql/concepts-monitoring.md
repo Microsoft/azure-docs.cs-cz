@@ -8,12 +8,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.openlocfilehash: 8ad7369bc940f682bb7c11c3ed4e3444f1bb056a
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b8d5526b258e70238bf8d5e4dc91ab02f403368e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035080"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843678"
 ---
 # <a name="monitor-and-tune"></a>Monitorování a ladění
 Data o vašich serverech monitorování vám pomůže řešit a optimalizovat pro vaši úlohu. Azure Database for PostgreSQL nabízí různé možnosti monitorování k poskytování přehledů o chování vašeho serveru.
@@ -42,7 +42,7 @@ Tyto metriky jsou k dispozici pro službu Azure Database for PostgreSQL:
 |backup_storage_used|Využité úložiště záloh|B|Velikost úložiště záloh používá.|
 
 ## <a name="server-logs"></a>Protokoly serveru
-Můžete povolit protokolování na server. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v [Log Analytics](../log-analytics/log-analytics-queries.md), Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
+Můžete povolit protokolování na server. Tyto protokoly jsou také k dispozici prostřednictvím Azure diagnostické protokoly v [Log Analytics](../azure-monitor/log-query/log-query-overview.md), Event Hubs a účet úložiště. Další informace o protokolování, najdete [protokoly serveru](concepts-server-logs.md) stránky.
 
 ## <a name="query-store"></a>Úložiště dotazů
 [Query Store](concepts-query-store.md) je funkce ve verzi public preview, která uchovává informace o dotazu dotazování statistické údaje o výkonu v průběhu času včetně a počkejte události. Funkci nevyřeší dotazu informace o výkonu modulu runtime v systémové databázi s názvem **azure_sys** pod query_store schématu. Můžete řídit shromažďování a ukládání dat prostřednictvím různých knoflíky konfigurace.

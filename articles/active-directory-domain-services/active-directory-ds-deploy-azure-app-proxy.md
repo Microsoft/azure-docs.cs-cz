@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 96ef005f095e5ab774a88ec766080f647414a7ce
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4621122d805f37be1578aa7b7c9ae059f3141c77
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155537"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840295"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Proxy aplikací Azure AD ve spravované doméně Azure AD Domain Services
 Proxy aplikací služby Azure Active Directory (AD) umožňuje podporu vzdálených pracovních procesů publikováním místních aplikací, aby byly přístupné přes internet. S Azure AD Domain Services můžete nyní lift and shift starší aplikace spuštěné v místním se službami infrastruktury Azure. Pak můžete publikovat tyto aplikace pomocí Azure AD Application Proxy, k zajištění bezpečného vzdáleného přístupu pro uživatele ve vaší organizaci.
@@ -42,7 +42,7 @@ K provádění úkolů uvedených v tomto článku, budete potřebovat:
 ## <a name="task-1---enable-azure-ad-application-proxy-for-your-azure-ad-directory"></a>Úloha 1 – povolení služby Azure AD Application Proxy pro váš adresář Azure AD
 Proveďte následující kroky, aby Azure AD Application Proxy pro váš adresář Azure AD.
 
-1. Přihlaste se jako správce [webu Azure portal](http://portal.azure.com).
+1. Přihlaste se jako správce [webu Azure portal](https://portal.azure.com).
 
 2. Klikněte na tlačítko **Azure Active Directory** zobrazíte přehledu adresáře. Klikněte na tlačítko **podnikové aplikace**.
 

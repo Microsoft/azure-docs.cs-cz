@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/09/2018
-ms.openlocfilehash: 27228904dab0726a1d84e58751a3315f3ff03447
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.date: 12/03/2018
+ms.openlocfilehash: 52caae38c21fe403735b8479ec2e721ef38f521e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515371"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845786"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Vytvoření a správa izolovaných databází ve službě Azure SQL Database a logické servery
 
-Můžete vytvořit a spravovat logické servery Azure SQL database a izolované databáze pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, rozhraní REST API a příkazů jazyka Transact-SQL.
+Můžete vytvořit a spravovat logické servery Azure SQL Database a izolované databáze pomocí webu Azure portal, Powershellu, rozhraní příkazového řádku Azure, rozhraní REST API a příkazů jazyka Transact-SQL.
 
 ## <a name="azure-portal-manage-logical-servers-and-databases"></a>Azure portal: Správa logických serverů a databází
 
@@ -57,10 +57,10 @@ Chcete-li spravovat stávající databázi, přejděte na **databází SQL** str
 
 ## <a name="powershell-manage-logical-servers-and-databases"></a>Prostředí PowerShell: Správa logických serverů a databází
 
-K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí Azure Powershellu, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Pokud chcete vytvořit a spravovat logické servery Azure SQL, databáze ve fondu a jeden a logický server brány firewall pomocí Azure Powershellu, použijte následující rutiny Powershellu. Pokud potřebujete instalaci nebo upgrade prostředí PowerShell, najdete v článku [instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 > [!TIP]
-> Příklady skriptů Powershellu, najdete v části [použití Powershellu k vytvoření izolované databáze Azure SQL a konfigurace pravidla brány firewall](scripts/sql-database-create-and-configure-database-powershell.md) a [sledování a škálování jednoho SQL database s využitím Powershellu](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> Příklady skriptů Powershellu, najdete v části [použití Powershellu k vytvoření izolované databáze Azure SQL a konfigurace pravidla brány firewall logický server](scripts/sql-database-create-and-configure-database-powershell.md) a [sledování a škálování jednoho SQL database s využitím Powershellu](scripts/sql-database-monitor-and-scale-database-powershell.md).
 
 | Rutina | Popis |
 | --- | --- |
@@ -120,9 +120,8 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí
 
 | Příkaz | Popis |
 | --- | --- |
-|[Vytvoření databáze (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Vytvoří novou databázi. Musíte být připojení k hlavní databázi, a vytvořit novou databázi.|
-| [Příkaz ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Upraví databázi Azure SQL. |
-|[Příkaz ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Upraví službu Azure SQL Data Warehouse.|
+|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Vytvoří nové izolované databáze. Musíte být připojení k hlavní databázi, a vytvořit novou databázi.|
+| [Příkaz ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Upraví databázi Azure SQL. |
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Odstraní databázi.|
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Vrátí edition (úroveň služby), cíl služby (cenová úroveň) a název elastického fondu, pokud existují pro službu Azure SQL database nebo Azure SQL Data Warehouse. Pokud přihlášení k hlavní databázi na serveru Azure SQL Database, vrátí informace ve všech databázích. Pro službu Azure SQL Data Warehouse musí být připojené k hlavní databázi.|
 |[Sys.dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Vrátí spotřeby procesoru, vstupně-výstupní operace a paměti pro databázi Azure SQL Database. Jeden řádek existuje pro každých 15 sekund, i v případě, že neexistuje žádná aktivita v databázi.|
@@ -145,7 +144,7 @@ K vytváření a správě serveru Azure SQL, databází a bran firewall, použij
 |[Servery – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Vytvoří nebo aktualizuje nový server.|
 |[Servery – odstranit](https://docs.microsoft.com/rest/api/sql/servers/delete)|Odstraní systému SQL server.|
 |[Servery – Get](https://docs.microsoft.com/rest/api/sql/servers/get)|Získá serveru.|
-|[Servery – seznam](https://docs.microsoft.com/rest/api/sql/servers/list)|Vrátí seznam serverů.|
+|[Servery – seznam](https://docs.microsoft.com/rest/api/sql/servers/list)|Vrátí seznam serverů v rámci předplatného.|
 |[Servery – seznam podle skupin prostředků](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Vrátí seznam serverů ve skupině prostředků.|
 |[Servery – aktualizace](https://docs.microsoft.com/rest/api/sql/servers/update)|Aktualizuje existující server.|
 |[Databáze – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|

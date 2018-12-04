@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 776ad8445c1968928a631ae1a401db4c65a6bb6d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: afc2d52044a294af0ead373dfce283d0ec994d1e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421228"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840618"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Kurz: Integrace Azure Active Directory s jednotným Přihlašováním SAML odznaky
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s jednotným Přihlašováním SAML odznaky, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - SAML SSO odznaky jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Pokud chcete nakonfigurovat integraci jednotného přihlašování SAML odznaky 
 
 **Chcete-li přidat odznaky SAML SSO z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -120,7 +120,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory odznaky SAML SSO klienta](http://www.insigniasoftware.com/insignia/Techsupport.aspx) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory odznaky SAML SSO klienta](https://www.insigniasoftware.com/insignia/Techsupport.aspx) k získání těchto hodnot. 
  
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
@@ -135,7 +135,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování SAML odznaky](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_configure.png) 
 
-1. Ke konfiguraci jednotného přihlašování na **odznaky SAML SSO** straně, je nutné odeslat na stažený **certifikát (Base64)**, **odhlašování adresy URL a SAML jednotné přihlašování služby** do [Tým podpory odznaky SAML SSO](http://www.insigniasoftware.com/insignia/Techsupport.aspx). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **odznaky SAML SSO** straně, je nutné odeslat na stažený **certifikát (Base64)**, **odhlašování adresy URL a SAML jednotné přihlašování služby** do [Tým podpory odznaky SAML SSO](https://www.insigniasoftware.com/insignia/Techsupport.aspx). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -175,7 +175,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-an-insignia-saml-sso-test-user"></a>Vytvořit testovacího uživatele odznaky SAML SSO
 
-V této části vytvořte uživatele Britta Simon odznaky knihovna systému. Práce s [tým podpory odznaky knihovna systému](http://www.insigniasoftware.com/insignia/Techsupport.aspx) přidat uživatele na platformě odznaky knihovna systému.
+V této části vytvořte uživatele Britta Simon odznaky knihovna systému. Práce s [tým podpory odznaky knihovna systému](https://www.insigniasoftware.com/insignia/Techsupport.aspx) přidat uživatele na platformě odznaky knihovna systému.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -207,7 +207,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

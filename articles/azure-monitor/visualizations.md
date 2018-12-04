@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/15/2018
 ms.author: bwren
-ms.openlocfilehash: b2011003306e72ac9fb243b640e388e6f3d5e7d3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e537795c9dec5f909810a37d4f13d5664bec05a2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722203"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839972"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Vizualizace dat ze služby Azure Monitor
 Tento článek obsahuje přehled dostupných metod k vizualizaci dat uložených ve službě Azure Monitor. Jedná se o [metriky v úložišti Azure metriky](../azure-monitor/platform/data-collection.md#metrics) a [dat protokolů v Log Analytics](../azure-monitor/platform/data-collection.md#logs). 
@@ -32,7 +32,7 @@ Vizualizace, jako jsou tabulky a grafy vám může pomoct analyzovat data monito
 ### <a name="advantages"></a>Výhody
 - Těsnou integraci s Azure. Vizualizace můžete připnout na řídicí panely z více stránek Azure včetně Průzkumníka metrik, Log Analytics a Application Insights.
 - Podporuje metrik a protokolů.
-- Kombinovat data z víc zdrojů, včetně výstup z [Průzkumníka metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md), [dotazy Log Analytics](../log-analytics/log-analytics-queries.md), a [mapuje](../application-insights/app-insights-app-map.md) a [dostupnosti]()ve službě Application Insights.
+- Kombinovat data z víc zdrojů, včetně výstup z [Průzkumníka metrik](../monitoring-and-diagnostics/monitoring-metric-charts.md), [dotazy Log Analytics](../azure-monitor/log-query/log-query-overview.md), a [mapuje](../application-insights/app-insights-app-map.md) a [dostupnosti]()ve službě Application Insights.
 - Možnost pro osobní nebo sdílené řídicí panely. Díky integraci s Azure [ověřování na základě role (RBAC)](../role-based-access-control/overview.md).
 - Automatická aktualizace. Aktualizace metrik závisí na časový rozsah s minimálně pět minut. Aktualizovat protokoly na jednu minutu.
 - Podle řídicí panely metriky s časovým razítkem a vlastní parametry.

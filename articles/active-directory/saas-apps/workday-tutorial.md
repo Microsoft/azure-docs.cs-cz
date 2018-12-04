@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
-ms.openlocfilehash: 78b9fe704c5c8a1f81da480787f1791e88bf4f72
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9c789f5fec9b31b53d316b23faad5c438b52137c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714714"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843338"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Kurz: Integrace Azure Active Directory s aplikací Workday
 
@@ -114,7 +114,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
-    b. V **identifikátor** textového pole zadejte adresu URL: `http://www.workday.com`
+    b. V **identifikátor** textového pole zadejte adresu URL: `https://www.workday.com`
 
 4. Zkontrolujte **zobrazit pokročilé nastavení URL** a postupujte následovně:
 
@@ -225,7 +225,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/workday-tutorial/WorkdaySSOConfiguratio.png "Konfigurace jednotného přihlašování")
 
-    a.  V **ID poskytovatele služby** textové pole, typ **http://www.workday.com**.
+    a.  V **ID poskytovatele služby** textové pole, typ **https://www.workday.com**.
 
     b. Vyberte **není Deflate žádosti o ověření iniciovaného Zprostředkovatelem přihlašování**.
 

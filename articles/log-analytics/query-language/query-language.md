@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: bwren
-ms.openlocfilehash: 4ef1e302a305f683155139063891b838d8144008
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 493c48fe87158ee357d98eb0b0d1bd2a4fad5b2f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680459"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843780"
 ---
 # <a name="log-analytics-query-language"></a>Protokolovat dotazovací jazyk Analytics
 Log Analytics poskytuje shromažďování protokolů a analýzu pro monitorování Azure. Je založená na Průzkumník dat Azure a používá verzi stejné dotazovací jazyk. [Dokumentace k jazyku dotazu Průzkumník dat Azure](/azure/kusto/query) má všechny informace pro jazyk a musí být váš primární prostředek pro zápis dotazy Log Analytics. Tato stránka obsahuje odkazy na další zdroje pro učit, jak psát dotazy a na rozdíly s implementací jazyka Log Analytics.
@@ -29,7 +29,7 @@ Log Analytics poskytuje shromažďování protokolů a analýzu pro monitorován
 -  [Začínáme s dotazy v Log Analytics](get-started-queries.md) je lekce pro psaní dotazů pomocí dat Log Analytics.
 
 ## <a name="concepts"></a>Koncepty
-- [Analýza dat Log Analytics ve službě Azure Monitor](../log-analytics-queries.md) poskytuje stručný přehled protokolu dotazuje a popisuje, jakým způsobem je strukturovaná data služby Log Analytics.
+- [Analýza dat Log Analytics ve službě Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) poskytuje stručný přehled protokolu dotazuje a popisuje, jakým způsobem je strukturovaná data služby Log Analytics.
 - [Zobrazení a analýza dat v Log Analytics](../log-analytics-log-search-portals.md) vysvětluje portály, kde můžete vytvářet a spouštět dotazy Log Analytics.
 
 ## <a name="reference"></a>Referenční informace

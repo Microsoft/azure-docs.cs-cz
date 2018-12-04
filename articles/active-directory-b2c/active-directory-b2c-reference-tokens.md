@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 10de56ac8945be4bb0920f95774b469d283f575b
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 81927c4e69f36fbc4859ac2865bc15cbfacb17fb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721370"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843865"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Referenci tokenu
 
@@ -30,9 +30,9 @@ Nosný token je token zjednodušené zabezpečení, která uděluje "nosiče" p�
 
 Pokud nosný token je přenesen mimo zabezpečený kanál, můžete použít škodlivý stran útok man-in-the-middle k získání tokenu a použije ho k získání neoprávněného přístupu k chráněnému prostředku. Stejné zásady zabezpečení platí při nosné tokeny jsou uložená nebo ukládání do mezipaměti pro pozdější použití. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny bezpečným způsobem.
 
-Další důležité informace o zabezpečení na nosné tokeny, naleznete v tématu [5 část dokumentu RFC 6750](http://tools.ietf.org/html/rfc6750).
+Další důležité informace o zabezpečení na nosné tokeny, naleznete v tématu [5 část dokumentu RFC 6750](https://tools.ietf.org/html/rfc6750).
 
-Mnohé z tokenů, které problémy s Azure AD B2C jsou implementovány jako webové tokeny JSON (Jwt). Token JWT je compact, adresa URL typově bezpečný způsob přenosu informací mezi dvěma stranami. Tokeny Jwt obsahují informace, označované jako deklarace identity. Toto jsou kontrolní výrazy s informací o nositele a předmětem token. Deklarace identity v tokeny Jwt jsou objekty JSON, které jsou zakódovány a serializovat pro přenos. Protože tokeny Jwt vydaného Azure AD B2C jsou podepsané, nikoli však šifrován, můžete snadno kontrolovat obsah token JWT pro ladění. K dispozici několik nástrojů, které můžete udělat, včetně [jwt.ms](https://jwt.ms). Další informace o tokeny Jwt [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
+Mnohé z tokenů, které problémy s Azure AD B2C jsou implementovány jako webové tokeny JSON (Jwt). Token JWT je compact, adresa URL typově bezpečný způsob přenosu informací mezi dvěma stranami. Tokeny Jwt obsahují informace, označované jako deklarace identity. Toto jsou kontrolní výrazy s informací o nositele a předmětem token. Deklarace identity v tokeny Jwt jsou objekty JSON, které jsou zakódovány a serializovat pro přenos. Protože tokeny Jwt vydaného Azure AD B2C jsou podepsané, nikoli však šifrován, můžete snadno kontrolovat obsah token JWT pro ladění. K dispozici několik nástrojů, které můžete udělat, včetně [jwt.ms](https://jwt.ms). Další informace o tokeny Jwt [JWT specifikace](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
 ### <a name="id-tokens"></a>Tokeny ID
 
@@ -68,7 +68,7 @@ Vaše rozhraní API přijímá token přístupu, musí [ověřit podpis](#token-
 
 Pokud používáte Azure AD B2C, budete mít přesnou kontrolu nad obsahem z vašich tokenů. Můžete nakonfigurovat [toky uživatelů](active-directory-b2c-reference-policies.md) a vlastních zásad odesílat určité sady dat uživatele v deklaracích identity, které vaše aplikace vyžaduje pro jeho operace. Tato deklarace identity můžou obsahovat standardní vlastnosti, například uživatele `displayName` a `emailAddress`. Může také obsahovat [vlastní uživatelské atributy](active-directory-b2c-reference-custom-attr.md) definující ve svém adresáři B2C. Každé ID a access token, který se zobrazí obsahuje sadu deklarací identity související se zabezpečením. Aplikace můžete použít tyto deklarace mohla bezpečně ověřit uživatele a požadavků.
 
-Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovolném pořadí. Kromě toho nových deklarací identity můžete zavedena v ID tokenů v každém okamžiku. Vaše aplikace by neměl přerušit zavedeném nových deklarací identity. Tady jsou deklarace identity, které očekáváte, že existují v ID a přístupové tokeny vydané službou Azure AD B2C. Nějaké další deklarace identity se určují podle zásady. Postup, zkuste to zkontrolujete deklarací identity v tokenu ID ukázka vložením do [jwt.ms](https://jwt.ms). Další podrobnosti najdete v [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html).
+Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovolném pořadí. Kromě toho nových deklarací identity můžete zavedena v ID tokenů v každém okamžiku. Vaše aplikace by neměl přerušit zavedeném nových deklarací identity. Tady jsou deklarace identity, které očekáváte, že existují v ID a přístupové tokeny vydané službou Azure AD B2C. Nějaké další deklarace identity se určují podle zásady. Postup, zkuste to zkontrolujete deklarací identity v tokenu ID ukázka vložením do [jwt.ms](https://jwt.ms). Další podrobnosti najdete v [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html).
 
 | Název | Deklarovat | Příklad hodnoty | Popis |
 | --- | --- | --- | --- |
@@ -78,8 +78,8 @@ Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovoln
 | Čas vypršení platnosti |`exp` |`1438539443` |Čas vypršení platnosti, které deklarace identity je doba, jakou token, který se stane neplatným, vyjádřena v unixovém čase. Vaše aplikace by pomocí této deklarace identity k ověření platnosti dobu životnosti tokenu. |
 | Neplatný před |`nbf` |`1438535543` |Tato deklarace identity je doba, jakou bude token platný, zastoupené v unixovém čase. To je obvykle stejná jako čas, kdy byl token vydán. Vaše aplikace by pomocí této deklarace identity k ověření platnosti dobu životnosti tokenu. |
 | Verze |`ver` |`1.0` |Toto je verze ID tokenu, jak jsou definovány službou Azure AD. |
-| Kód hash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Hodnota hash kódu je součástí ID token jenom v případě, že token, který vydává spolu s autorizačního kódu OAuth 2.0. Hodnota hash kódu slouží k ověření pravosti autorizační kód. Další podrobnosti o tom, jak toto ověření proveďte najdete v tématu [OpenID Connect specifikace](http://openid.net/specs/openid-connect-core-1_0.html).  |
-| Hodnota hash tokenu přístupu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Algoritmus hash tokenu přístupu je součástí ID token jenom v případě, že token, který vydává spolu s přístupového tokenu OAuth 2.0. Algoritmus hash tokenu přístupu slouží k ověření pravosti tokenu přístupu. Další podrobnosti o tom, jak toto ověření proveďte najdete v tématu [specifikace OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html)  |
+| Kód hash |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Hodnota hash kódu je součástí ID token jenom v případě, že token, který vydává spolu s autorizačního kódu OAuth 2.0. Hodnota hash kódu slouží k ověření pravosti autorizační kód. Další podrobnosti o tom, jak toto ověření proveďte najdete v tématu [OpenID Connect specifikace](https://openid.net/specs/openid-connect-core-1_0.html).  |
+| Hodnota hash tokenu přístupu |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |Algoritmus hash tokenu přístupu je součástí ID token jenom v případě, že token, který vydává spolu s přístupového tokenu OAuth 2.0. Algoritmus hash tokenu přístupu slouží k ověření pravosti tokenu přístupu. Další podrobnosti o tom, jak toto ověření proveďte najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Hodnota Nonce |`nonce` |`12345` |Hodnotu nonce je strategie zmírnit útoky opětovného přehrání tokenu. Vaše aplikace může určit hodnotu nonce v žádost o autorizaci s použitím `nonce` parametr dotazu. Hodnota je zadat v požadavku bude vygenerován bez jakýchkoli úprav v `nonce` pouze ID tokenu deklarací identity. To umožňuje aplikaci, můžete ověřit hodnoty s hodnotou zadanou v požadavku, která přidruží dané ID tokenu relace aplikace. Vaše aplikace by měl provést toto ověření během procesu ověření tokenu ID. |
 | Subjekt |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |Toto je hlavní o tom, které token vyhodnocuje informace, jako je například uživatel aplikace. Tato hodnota je neměnná a nelze přiřadit nebo znovu použít. Slouží k provádění kontroly autorizace bezpečně, třeba když se používá token pro přístup k prostředku. Ve výchozím nastavení deklarace identity subjektu se vyplní ID objektu uživatele v adresáři. Další informace najdete v tématu [Azure Active Directory B2C: Token, relace a konfigurace jednotného přihlašování](active-directory-b2c-token-session-sso.md). |
 | Informace o třídě kontext ověřování |`acr` |Neuvedeno |Není v současné době nepoužívá, s výjimkou starší zásady. Další informace najdete v tématu [Azure Active Directory B2C: Token, relace a konfigurace jednotného přihlašování](active-directory-b2c-token-session-sso.md). |

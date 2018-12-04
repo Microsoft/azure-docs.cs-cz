@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 40922080857563b86d538586b90513381edb5d89
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 9a20b8df1f0d9cddbde4c4886e11967bc8c04160
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381207"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842403"
 ---
 # <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování profilu technické OpenId Connect ve vlastních zásadách pro Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C poskytuje podporu pro [OpenId Connect](http://openid.net/2015/04/17/openid-connect-certification-program/) protokol zprostředkovatele identity. OpenID Connect 1.0 definuje vrstvu identit přes OAuth 2.0 a představuje nejmodernější optimalizaci pspo v moderních ověřovacích protokolů.  Technický profil může provést federaci s OpenId Connect s OpenId Connect základě zprostředkovatele identity, jako je Azure AD umožňují uživatelům přihlásit se s jejich existujícími sociálních sítí nebo podnikové identity.
+Azure Active Directory (Azure AD) B2C poskytuje podporu pro [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) protokol zprostředkovatele identity. OpenID Connect 1.0 definuje vrstvu identit přes OAuth 2.0 a představuje nejmodernější optimalizaci pspo v moderních ověřovacích protokolů.  Technický profil může provést federaci s OpenId Connect s OpenId Connect základě zprostředkovatele identity, jako je Azure AD umožňují uživatelům přihlásit se s jejich existujícími sociálních sítí nebo podnikové identity.
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
@@ -85,7 +85,7 @@ Technický profil také vrátí hodnotu deklarace identity, které nejsou vráce
 | HttpBinding | Ne | Očekávané vazby HTTP na token a deklarací identity tokenu koncové body přístupu. Možné hodnoty: `GET` nebo `POST`.  |
 | ValidTokenIssuerPrefixes | Ne | Klíč, který lze použít k přihlášení na jednotlivé klienty při použití zprostředkovatele identity s více tenanty jako je Azure Active Directory. |
 | UsePolicyInRedirectUri | Ne | Určuje, jestli se má použít při vytváření identifikátor URI pro přesměrování zásady. Při konfiguraci vaší aplikace v poskytovateli identit, musíte zadat identifikátor URI pro přesměrování. Přesměrování identifikátor URI odkazuje na Azure AD B2C, `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` (login.microsoftonline.com může změnit pomocí vašeho tenanta name.b2clogin.com).  Pokud zadáte `false`, budete muset přidat identifikátor URI přesměrování pro jednotlivé zásady použití. Například: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
-| MarkAsFailureOnStatusCode5xx | Ne | Určuje, zda požadavek na externí služby musí být označené jako selhání, pokud kód stavu Http je v rozsahu 5xx. Výchozí hodnota je `false`. |
+| MarkAsFailureOnStatusCode5xx | Ne | Určuje, zda požadavek na externí služby musí být označené jako selhání, pokud kód stavu Http je v rozsahu 5xx. Výchozí formát je `false`. |
 | DiscoverMetadataByTokenIssuer | Ne | Určuje, zda by měly být zjištěny OIDC metadat pomocí vystavitele tokenu JWT. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče

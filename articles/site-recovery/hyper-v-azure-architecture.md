@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 23b12f5b0423f717e96ec1f59480f0175648c75f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: eb177852be273f1c9af06b1f9d85fbba4cc98567
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210648"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845469"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Technologie Hyper-V na architekturu pro zotavení po havárii Azure
 

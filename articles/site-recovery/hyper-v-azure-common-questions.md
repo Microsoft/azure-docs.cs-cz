@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 6345cf47d19f7990e776e0fe4ec2bafd005c9cf2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 5df508cfc30f5f3aa59519f7e29f2ad2747ea4cb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212484"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844800"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Časté otázky – Hyper-V do Azure zotavení po havárii
 

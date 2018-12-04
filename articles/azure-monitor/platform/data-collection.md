@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 5f7c82143ab11787f5ce186623c1ed4903891c18
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 3ea446a726634ead520b902bd00a54cd8ae32b70
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680347"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844120"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../../azure-monitor/overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -161,7 +161,7 @@ Log Analytics může shromažďovat data z široké škály zdrojů i v rámci A
 - Přístup k hodnoty metrik z příkazového řádku nebo vlastní aplikace s využitím [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) nebo [rozhraní REST API](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Zobrazení dat protokolu
-Všechna data ze služby Log Analytics jsou načítány s použitím [dotaz protokolu](../../log-analytics/log-analytics-queries.md) , který určuje konkrétní sady dat. Dotazy jsou zapsány pomocí [dotazovací jazyk Log Analytics](../../log-analytics/query-language/get-started-queries.md) tedy Bohatý dotazovací jazyk rychle načíst, konsolidovat a analyzovat shromážděná data. Použití [stránce Log Analytics](../../log-analytics/log-analytics-log-search-portals.md) na webu Azure Portal přímo analyzovat data ve vašich metrik, ukládání a graf hodnoty několika metrik v čase. Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst metriky pomocí [Azure, rozhraní REST API pro monitorování](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
+Všechna data ze služby Log Analytics jsou načítány s použitím [dotaz protokolu](../../azure-monitor/log-query/log-query-overview.md) , který určuje konkrétní sady dat. Dotazy jsou zapsány pomocí [dotazovací jazyk Log Analytics](../../log-analytics/query-language/get-started-queries.md) tedy Bohatý dotazovací jazyk rychle načíst, konsolidovat a analyzovat shromážděná data. Použití [stránce Log Analytics](../../log-analytics/log-analytics-log-search-portals.md) na webu Azure Portal přímo analyzovat data ve vašich metrik, ukládání a graf hodnoty několika metrik v čase. Můžete zobrazit grafy interaktivně nebo je připnout na řídicí panel k zobrazení se ostatní vizualizace. Můžete také načíst metriky pomocí [Azure, rozhraní REST API pro monitorování](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md).
 
 ![Logs](media/data-collection/logs.png)
 

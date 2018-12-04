@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 647ff43d0b1e0dc52ccecd2dad709af969c61c15
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49959056"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840657"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Přesunout aplikace ze služby AD FS do Azure AD 
 
@@ -203,7 +203,7 @@ Pokud chcete přiřadit uživatele na portálu Azure AD, přejděte na stránku 
 
 ![Podokno Přidat přiřazení](media/migrate-adfs-apps-to-azure/migrate7.png)
 
-Přístup ověříte tak, že by se uživatelům měla daná aplikace SaaS zobrazit po přihlášení na jejich [přístupovém panelu](../user-help/active-directory-saas-access-panel-introduction.md). Přístupový portál se nachází na adrese http://myapps.microsoft.com. V tomto příkladu byl uživateli úspěšně přidělený přístup k Salesforce i ServiceNow.
+Přístup ověříte tak, že by se uživatelům měla daná aplikace SaaS zobrazit po přihlášení na jejich [přístupovém panelu](../user-help/active-directory-saas-access-panel-introduction.md). Přístupový portál se nachází na adrese https://myapps.microsoft.com. V tomto příkladu byl uživateli úspěšně přidělený přístup k Salesforce i ServiceNow.
 
 ![Příklad přístupového panelu s aplikacemi Salesforce a ServiceNow](media/migrate-adfs-apps-to-azure/migrate8.png)
 

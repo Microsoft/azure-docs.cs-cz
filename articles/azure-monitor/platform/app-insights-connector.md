@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 75120cef7f3da037eb59e05a2ff2f26d6c599f4a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c704639ce696672a87485a36d43a282d04a47a7e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684667"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845163"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy Application Insights Connector (Preview)
 
@@ -267,4 +267,4 @@ Toto řešení nemá sadu ukázky hledání v protokolech zobrazeny na řídicí
 
 ## <a name="next-steps"></a>Další postup
 
-- Použití [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) k zobrazení podrobných informací pro vaše aplikace Application Insights.
+- Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) k zobrazení podrobných informací pro vaše aplikace Application Insights.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 4128d113535c67c0b440dc3fb275af05b5c1c1ae
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 79803a749b6d08c94bcbf5f3ca66aac8b7294fa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306141"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844647"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Zabezpečení Frame: Šifrování | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -172,8 +172,8 @@ ms.locfileid: "43306141"
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | Operační systém zařízení – Windows IoT Core, připojení zařízení – sady SDK pro zařízení Azure IoT |
-| **Odkazy**              | [TPM ve Windows IoT Core](https://developer.microsoft.com/windows/iot/docs/tpm), [nastavení TPM na Windows IoT Core](https://developer.microsoft.com/windows/iot/win10/setuptpm), [TPM sady SDK zařízení IoT Azure](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
-| **Kroky** | Chráněné Symmetric nebo certifikátu privátního klíče bezpečně v hardwaru úložiště, jako je čipy TPM nebo čipové karty. Windows 10 IoT Core podporuje uživatele čip TPM a nebudou již existovat několik kompatibilní čipy TPM, které je možné: https://developer.microsoft.com/windows/iot/win10/tpm. Doporučujeme použít Firmwarovém nebo diskrétní TPM. Čip TPM softwaru by měla sloužit pouze pro účely vývoje a testování. Jakmile je k dispozici TPM a klíče jsou zřízené v ní, by měly být kód, který generuje token zapsány bez pevného kódování žádné citlivé údaje v něm. | 
+| **Odkazy**              | [TPM ve Windows IoT Core](https://developer.microsoft.com/windows/iot/docs/tpm), [nastavení TPM na Windows IoT Core](https://docs.microsoft.com/windows/iot-core/secure-your-device/setuptpm), [TPM sady SDK zařízení IoT Azure](https://github.com/Azure/azure-iot-hub-vs-cs/wiki/Device-Provisioning-with-TPM) |
+| **Kroky** | Chráněné Symmetric nebo certifikátu privátního klíče bezpečně v hardwaru úložiště, jako je čipy TPM nebo čipové karty. Windows 10 IoT Core podporuje uživatele čip TPM a nebudou již existovat několik kompatibilní čipy TPM, které je možné: https://docs.microsoft.com/windows/iot-core/secure-your-device/tpm#discrete-tpm-dtpm. Doporučujeme použít Firmwarovém nebo diskrétní TPM. Čip TPM softwaru by měla sloužit pouze pro účely vývoje a testování. Jakmile je k dispozici TPM a klíče jsou zřízené v ní, by měly být kód, který generuje token zapsány bez pevného kódování žádné citlivé údaje v něm. | 
 
 ### <a name="example"></a>Příklad:
 ```

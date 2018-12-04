@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: jeedes
-ms.openlocfilehash: c9ee0af3cbf2c1aa7b24d2f4cf5fba9d664bc087
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 5d61ac27eb5a6e4f546d8c6db66b84f2c204b507
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248036"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840465"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Kurz: Integrace Azure Active Directory se službou Expensify
 
@@ -132,7 +132,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![image](./media/expensify-tutorial/certificatebase64.png)
 
-7. Pokud chcete povolit jednotné přihlašování v Expensify, je nejprve potřeba povolit **ovládací prvek domény** v aplikaci. Ovládací prvek domény můžete povolit v aplikaci pomocí kroků uvedených v tomto [tady](http://help.expensify.com/domain-control). Potřebujete další podporu, pracovat s [tým podpory Expensify klienta](mailto:help@expensify.com). Jakmile budete mít povolený nástroj řízení domény, postupujte podle těchto kroků:
+7. Pokud chcete povolit jednotné přihlašování v Expensify, je nejprve potřeba povolit **ovládací prvek domény** v aplikaci. Ovládací prvek domény můžete povolit v aplikaci pomocí kroků uvedených v tomto [tady](https://help.expensify.com/domain-control). Potřebujete další podporu, pracovat s [tým podpory Expensify klienta](mailto:help@expensify.com). Jakmile budete mít povolený nástroj řízení domény, postupujte podle těchto kroků:
    
     ![Konfigurace jednotného přihlašování](./media/expensify-tutorial/tutorial_expensify_51.png)
     

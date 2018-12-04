@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b7b233532a526879e886950c3a0d8cfe169251a7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 679d812c239e0f626d2872d29bc9de7848399bc6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441498"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844596"
 ---
 # <a name="heading"></a>Ukázková data v kontejnerech objektů blob v Azure, SQL Server a v tabulkách Hivu
 
@@ -26,7 +26,7 @@ Následující články popisují, jak ukázková data, která je uložena v jed
 * [**Data systému SQL Server** ](sample-data-sql-server.md) je shromažďovat vzorky pomocí SQL a programovací jazyk Python. 
 * [**Data v tabulce Hive** ](sample-data-hive.md) je shromažďovat vzorky pomocí dotazů Hive.
 
-Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 **Proč ukázkových dat?**
 

@@ -10,19 +10,21 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 49f3f80832597b231aec812a4c1613da9897f72a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e6fc9ded2b3509f9505d88f0ae7ccc790e47b0f2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722441"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842760"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s OpenID Connect pomocí služby Azure Active Directory B2C
 
 >[!NOTE]
 > Tato funkce je ve verzi public preview. Nepoužívejte tuto funkci v produkčním prostředí.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) je ověřovací protokol, postavený na OAuth 2.0, který umožňuje bezpečně přihlásit uživatele. Většina poskytovatelů identit, které používají tento protokol vyžadoval, jako například [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md), jsou podporovány v Azure AD B2C. Tento článek vysvětluje, jak můžete přidat vlastní poskytovatele OpenID Connect identity do vašich toků uživatelů.
+
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) je ověřovací protokol, postavený na OAuth 2.0, který umožňuje bezpečně přihlásit uživatele. Většina poskytovatelů identit, které používají tento protokol vyžadoval, jako například [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md), jsou podporovány v Azure AD B2C. Tento článek vysvětluje, jak můžete přidat vlastní poskytovatele OpenID Connect identity do vašich toků uživatelů.
+
 
 ## <a name="add-the-identity-provider"></a>Přidat zprostředkovatele identity
 
@@ -39,13 +41,13 @@ Každý poskytovatele OpenID Connect identity popisuje dokumentu metadat, který
 Umožňuje uživatelům přihlášení zprostředkovatele identity vyžaduje, aby registraci aplikace ve své službě vývojáři. Tato aplikace má ID, které se označuje jako **ID klienta** a **tajný kód klienta**. Zkopírujte tyto hodnoty od zprostředkovatele identity a zadejte do příslušných polí.
 
 > [!NOTE]
-> Tajný kód klienta je volitelný. Ale musíte zadat tajný klíč klienta, pokud chcete použít [tok autorizačního kódu](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), který používá tajný kód k výměně kód pro daný token.
+> Tajný kód klienta je volitelný. Ale musíte zadat tajný klíč klienta, pokud chcete použít [tok autorizačního kódu](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), který používá tajný kód k výměně kód pro daný token.
 
 Obor určuje informace a oprávnění, které pokud chcete shromažďovat z vašeho vlastního zprostředkovatele identity. Musí obsahovat OpenID Connect požadavky `openid` hodnotu oboru pro získání ID token od zprostředkovatele identity. Bez ID tokenu, nebudou se uživatelé moct pro přihlášení k Azure AD B2C pomocí vlastního zprostředkovatele identity. Další obory lze připojit odděleny mezerou. Dokumentaci vlastního zprostředkovatele identity Pokud chcete zobrazit, co může být jiné obory k dispozici.
 
 Typ odpovědi, který popisuje, jaký druh informací se odešle zpět v počáteční volání `authorization_endpoint` z vlastního zprostředkovatele identity. Je možné následující typy odezvy:
 
-- `code`: Jak je uvedeno [tok autorizačního kódu](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), kód se vrátí zpět do Azure AD B2C. Azure AD B2C pokračuje k volání `token_endpoint` k výměně kód pro daný token.
+- `code`: Jak je uvedeno [tok autorizačního kódu](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), kód se vrátí zpět do Azure AD B2C. Azure AD B2C pokračuje k volání `token_endpoint` k výměně kód pro daný token.
 - `token`: Přístupový token se vrátí zpět do Azure AD B2C z vlastního zprostředkovatele identity.
 - `id_token`: ID token se vrátí zpět do Azure AD B2C z vlastního zprostředkovatele identity.
 

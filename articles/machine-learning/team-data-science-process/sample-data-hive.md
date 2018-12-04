@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 793431e6e81712bae5033eff1eecddbf448ce120
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e344ccb02d4d4ac78f4311b1a23a936e6cff99e1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446921"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844885"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Ukázková data v tabulkách Azure HDInsight Hive
 Tento článek popisuje, jak na nižší data uložená v tabulkách Azure HDInsight Hive pomocí dotazů Hive ke snížení velikosti lépe zvládnutelné pro analýzu. Ho pokrývají tři metody popularly používané vzorkování:
@@ -28,7 +28,7 @@ Tento článek popisuje, jak na nižší data uložená v tabulkách Azure HDIns
 **Proč ukázková data?**
 Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. Vzorkování dolů usnadňuje pochopení dat, prozkoumávání a vytváření funkcí. Jejich rolí v vědecké zpracování týmových dat je umožnit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
-Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Postup odesílání dotazů Hive
 Dotazy Hive můžete odeslat z konzoly příkazového řádku Hadoopu hlavního uzlu clusteru Hadoop. Chcete-li to provést, přihlaste se k hlavnímu uzlu clusteru Hadoop, otevřete konzolu příkazového řádku pro Hadoop a odesílání dotazů Hive z něj. Pokyny k odesílání dotazů Hive v konzole nástroje příkazového řádku Hadoopu, najdete v článku [způsob odesílání dotazů Hive](move-hive-tables.md#submit).

@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 10/24/2018
-ms.openlocfilehash: 31b09818f901ecf957364ae77fd8c6e636b04342
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.date: 12/03/2018
+ms.openlocfilehash: 489eccf1b73e7f5df76a3ce681b4479893a9e0ac
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712139"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843202"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru
 
@@ -145,7 +145,7 @@ Spravovaná Instance nemají přístup k souborům, proto nelze vytvořit zprost
 
 ### <a name="collation"></a>Kolace
 
-Kolace serveru je `SQL_Latin1_General_CP1_CI_AS` a nedá se změnit. Zobrazit [kolace](https://docs.microsoft.com/sql/t-sql/statements/collations).
+Je výchozí kolace instance `SQL_Latin1_General_CP1_CI_AS` a je možné zadat jako parametr vytváření. Zobrazit [kolace](https://docs.microsoft.com/sql/t-sql/statements/collations).
 
 ### <a name="database-options"></a>Možnosti databáze
 
@@ -277,7 +277,8 @@ Operace
 ### <a name="logins--users"></a>Přihlášení / uživatelé
 
 - Vytvoření přihlášení SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, a `FROM SID` jsou podporovány. Zobrazit [vytvořit přihlášení](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
-- Přihlašovací údaje Windows vytvořené pomocí `CREATE LOGIN ... FROM WINDOWS` syntaxe nejsou podporovány.
+- Vytvořené pomocí Azure Active Directory (AAD) přihlášení [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) syntaxe nebo [vytvořit uživatele](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) syntaxe jsou podporovány (**ve verzi public preview**).
+- Přihlašovací údaje Windows vytvořené pomocí `CREATE LOGIN ... FROM WINDOWS` syntaxe nejsou podporovány. Pomocí přihlašovacích údajů Azure Active Directory a uživatelů.
 - Azure Active Directory (Azure AD) uživatele, který vytvořil instanci má [neomezená oprávnění správce](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#unrestricted-administrative-accounts).
 - Je možné vytvářet uživatelé bez oprávnění správce služby Azure Active Directory (Azure AD) úrovni databáze pomocí `CREATE USER ... FROM EXTERNAL PROVIDER` syntaxe. Zobrazit [vytvořit uživatele... EXTERNÍ ZPROSTŘEDKOVATELE](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users)
 
@@ -333,7 +334,7 @@ Informace o příkazech obnovení najdete v tématu [obnovit příkazy](https://
 Různé instance služby Service broker se nepodporuje:
 
 - `sys.routes` -Předpoklad: Vyberte adresu sys.routes. Adresa musí být místní na každý trasy. Zobrazit [sys.routes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
-- `CREATE ROUTE` – Nemůžete `CREATE ROUTE` s `ADDRESS` jiné než `LOCAL`. Zobrazit [TRASY vytvořit](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
+- `CREATE ROUTE` – nemůžete použít `CREATE ROUTE` s `ADDRESS` jiné než `LOCAL`. Zobrazit [TRASY vytvořit](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE` nelze `ALTER ROUTE` s `ADDRESS` jiné než `LOCAL`. Zobrazit [TRASY ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql).  
 
 ### <a name="service-key-and-service-master-key"></a>Služby a klíče hlavní klíč služby
@@ -427,12 +428,12 @@ Následující proměnné, funkce a zobrazení vrátí odlišné výsledky:
 
 Každý Managed Instance má vyhrazené pro místa na disku Azure Premium storage 35 TB a každý databázový soubor je umístěn na jiném fyzickém disku. Disky o velikosti může být 128 GB, 256 GB, 512 GB, 1 TB nebo 4 TB. Nevyužité místo na disku se neúčtuje, ale celkový součet velikosti disků typu Premium Azure nemůže být delší než 35 TB. V některých případech může překročit Managed Instance, která nepotřebuje 8 TB celkem 35 TB Azure omezí velikost úložiště, z důvodu interní fragmentace.
 
-Managed Instance může mít například jeden soubor 1,2 TB velikosti, která se nachází na disku 4 TB a 248 soubory každý 1 GB ve velikosti, která jsou umístěné na různých discích 128 GB. V tomto příkladu:
+Managed Instance může mít například jeden soubor 1,2 TB velikosti, který je umístěn na disku 4 TB a 248 soubory (každý 1 GB velikost), které jsou umístěné na různých discích 128 GB. V tomto příkladu:
 
-- Celková velikost úložiště je 1 × 4 TB + 248 x 128 GB = 35 TB.
+- Celkové přidělené úložiště velikosti disku je 1 × 4 TB + 248 x 128 GB = 35 TB.
 - Celkový počet vyhrazené místo pro databáze na instanci je 1 x 1.2 TB + 248 x 1 GB = 1,4 TB.
 
-To ukazuje, že za určitých okolností, z důvodu velmi specifický distribuce souborů, může kontaktovat Managed Instance 35 TB vyhrazené pro připojený Disk Premium Azure při nemusí očekávání.
+To ukazuje, že za určitých okolností kvůli konkrétní distribuce souborů, Managed Instance může kontaktovat 35 TB vyhrazené pro připojený Disk Premium Azure při nemusí očekávání.
 
 V tomto příkladu budou nadále fungovat stávající databáze a můžou růst bez problémů, tak dlouho, dokud nejsou přidány nové soubory. Nové databáze však nelze vytvořit ani obnovit, protože není dostatek místa pro nových diskových jednotek, i když celková velikost všech databází: nebylo dosaženo omezení velikosti instance. Chyba, která je vrácena v takovém případě není jasný.
 
@@ -443,7 +444,10 @@ Ujistěte se, že odeberete úvodního `?` z klíče SAS, který je generován p
 
 ### <a name="tooling"></a>Nástroje
 
-SQL Server Management Studio a SQL Server Data Tools může mít některé problémy při přístupu k Managed Instance. Budou všechny nástroje problémy řešeny před obecnou dostupností.
+SQL Server Management Studio (SSMS) a SQL Server Data Tools (SSDT) může mít některé problémy při přístupu k Managed Instance.
+
+- Pomocí služby Azure AD přihlášení a uživatele (**ve verzi public preview**) s rozšířením SSDT v tuto chvíli nepodporuje.
+- Skriptování pro Azure AD přihlášení a uživatele (**ve verzi public preview**) nejsou podporovány v aplikaci SSMS.
 
 ### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Názvy nesprávné databází v některých zobrazeních, protokoly a zpráv
 
@@ -451,7 +455,7 @@ Několik zobrazení systému, čítače výkonu, chybové zprávy, XEvents a zá
 
 ### <a name="database-mail-profile"></a>Profil databázového e-mailu
 
-Může existovat pouze jedna databáze profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile`. Jedná se o dočasné omezení, která bude brzy odebráno.
+Může existovat pouze jedna databáze profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile`.
 
 ### <a name="error-logs-are-not-persisted"></a>Protokoly chyb jsou trvalé not
 
@@ -496,7 +500,7 @@ Přestože tento kód pracuje s daty v rámci stejné instance nezbytné MSDTC.
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>Moduly CLR a nějakou dobu propojené servery nemůže odkazovat na místní IP adresa
 
-Moduly CLR umístí do Managed Instance a propojené servery pro/distribuované dotazy, které se odkazuje na aktuální instanci nějakou dobu nelze přeložit IP místní instance. Toto je přechodná chyba.
+Moduly CLR umístí do Managed Instance a propojené servery pro/distribuované dotazy, které se odkazuje na aktuální instanci nějakou dobu nelze přeložit IP místní instance. Tato chyba je přechodný problém.
 
 **Alternativní řešení**: Pokud je to možné použít připojení kontextu v modulu CLR.
 

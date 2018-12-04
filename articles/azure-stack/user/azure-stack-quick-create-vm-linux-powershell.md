@@ -11,21 +11,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 09c719dd03f375127448851d0af9dada9238d1f1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a2dea792db39c753d0ea720c8e610a399401315f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377500"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840567"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem serveru pomocí prostředí PowerShell ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Můžete vytvořit virtuální počítač Ubuntu Server 16.04 LTS pomocí Azure Stack Powershellu. Postupujte podle kroků v tomto článku, jak vytvořit a používat virtuální počítač.  Tento článek také obsahuje postup:
+Můžete vytvořit virtuální počítače s Ubuntu Server 16.04 LTS pomocí Azure Stack Powershellu. Postupujte podle kroků v tomto článku, jak vytvořit a používat virtuální počítač.  Tento článek také obsahuje postup:
 
 * Připojení k virtuálnímu počítači pomocí vzdáleného klienta.
 * Nainstalovat webový server NGINX a zobrazit výchozí domovskou stránku.
@@ -47,7 +47,7 @@ Můžete vytvořit virtuální počítač Ubuntu Server 16.04 LTS pomocí Azure 
 
 Skupina prostředků je logický kontejner, ve kterém můžete nasadit a spravovat prostředky služby Azure Stack. Vývojová sada nebo systém integrovat Azure Stack spusťte následující blok kódu a vytvořte skupinu prostředků. Pro všechny proměnné v tomto dokumentu jsou přiřazeny hodnoty, můžete použít tyto hodnoty nebo přiřazení nové hodnoty.
 
-```powershell
+```powershell  
 # Create variables to store the location and resource group names.
 $location = "local"
 $ResourceGroupName = "myResourceGroup"
@@ -61,7 +61,7 @@ New-AzureRmResourceGroup `
 
 Vytvoření účtu úložiště a pak vytvořte kontejner úložiště pro image Ubuntu Server 16.04 LTS.
 
-```powershell
+```powershell  
 # Create variables to store the storage account name and the storage account SKU information
 $StorageAccountName = "mystorageaccount"
 $SkuName = "Standard_LRS"
@@ -395,7 +395,7 @@ Z klienta systému s nainstalované SSH použijte následující příkaz pro p�
 ssh <Public IP Address>
 ```
 
-Po zobrazení výzvy zadejte azureuser jako přihlášení uživatele. Pokud jste použili heslo při vytváření klíčů SSH, budete muset zadat heslo.
+Po zobrazení výzvy, přihlaste se jako **azureuser**. Pokud jste použili heslo při vytváření klíčů SSH, budete muset zadat heslo.
 
 ## <a name="install-the-nginx-web-server"></a>Instalace webového serveru NGINX
 

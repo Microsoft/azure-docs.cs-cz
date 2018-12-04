@@ -2,18 +2,18 @@
 title: Zřízení fondu Azure Batch z vlastní image | Dokumentace Microsoftu
 description: Vytvořte fond z vlastní image ke zřízení výpočetních uzlů, které obsahují software a data, která potřebujete pro vaši aplikaci. Vlastní Image jsou efektivní způsob, jak nakonfigurovat výpočetních uzlů pro spouštění úloh služby Batch.
 services: batch
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
-ms.author: danlep
-ms.openlocfilehash: 7d0526dd233afd3976b22d257300681db0bfcead
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: lahugh
+ms.openlocfilehash: b296dce0a83971626c8e66ddc314c4d1e07d8602
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885202"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840363"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Použití vlastní image k vytvoření fondu virtuálních počítačů 
 
@@ -50,7 +50,13 @@ V Azure můžete připravit spravované image ze snímků operační systém vir
 
 ### <a name="prepare-a-vm"></a>Příprava virtuálního počítače 
 
-Pokud vytváříte nový virtuální počítač pro bitovou kopii, a použít image Azure Marketplace podporované službou Batch jako základní image pro spravované image a pak ji přizpůsobit.  Pokud chcete získat seznam odkazů na obrázky Azure Marketplace podporuje služby Azure Batch, najdete v článku [SKU agenta uzlu seznamu](/rest/api/batchservice/account/listnodeagentskus) operace. Jako základní image nelze použít bitovou kopii třetích stran.
+Pokud vytváříte nový virtuální počítač pro bitovou kopii, a použít image Azure Marketplace podporované službou Batch jako základní image pro spravované image a pak ji přizpůsobit.  Pokud chcete získat seznam odkazů na obrázky Azure Marketplace podporuje služby Azure Batch, najdete v článku [SKU agenta uzlu seznamu](/rest/api/batchservice/account/listnodeagentskus) operace. 
+
+> [!NOTE]
+> Nelze použít bitovou kopii třetí strany, který má další licenci a podmínky nákupu jako základní image. Informace o těchto imagí Marketplace najdete v tématu pokyny pro [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) nebo [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+) virtuálních počítačů.
+
 
 * Ujistěte se, že virtuální počítač se vytvoří při použití spravovaného disku. Toto je výchozí nastavení úložiště při vytváření virtuálního počítače.
 * Neinstalujte rozšíření Azure, jako je například rozšíření vlastních skriptů na virtuálním počítači. Pokud image obsahuje nějaké předinstalované rozšíření, Azure setkat s problémy při nasazení fondu služby Batch.

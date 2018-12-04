@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 249e286b16b78643c33b567f705a4c92991f5553
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 2e118715ea5ff31319f92c70b6dcd2b8045dd026
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404864"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840822"
 ---
 # <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Monitorování clusteru Kubernetes pomocí služby Log Analytics
 
@@ -153,9 +153,9 @@ Na portálu Log Analytics vyhledejte na řídicím panelu souhrnnou dlaždici **
 
 Podobně na webu Azure Portal přejděte do části **Log Analytics** a vyberte název vašeho pracovního prostoru. Dlaždici se souhrnem **Kontejnery** zobrazíte kliknutím na **Řešení** > **Kontejnery**. Podrobnosti zobrazíte kliknutím na dlaždici.
 
-Podrobné pokyny k dotazování a analýze dat monitorování najdete v [dokumentaci k Azure Log Analytics](../../log-analytics/log-analytics-queries.md).
+Podrobné pokyny k dotazování a analýze dat monitorování najdete v [dokumentaci k Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste monitorovali svůj cluster Kubernetes pomocí služby Log Analytics. Mezi probírané úlohy patří:
 

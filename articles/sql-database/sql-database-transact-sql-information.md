@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: fc8336a46f61a7c9ab7c174b5f24d907369f481c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/03/2018
+ms.openlocfilehash: ce539da92b9d58282ab44a3729f4bf4fb8eaedf5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567566"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840329"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů jazyka Transact-SQL během migrace do služby SQL Database
 

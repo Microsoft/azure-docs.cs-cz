@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: d53e8fe6588b7e1b068431a4cd530d0a80a603e6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d8ba4fa1b5f5efd671c13ad2201b0cd34642d346
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261872"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844936"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Plánování kapacity pro zotavení po havárii virtuálních počítačů Hyper-V 
 

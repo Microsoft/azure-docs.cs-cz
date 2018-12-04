@@ -1,21 +1,19 @@
 ---
-title: 'Kurz ke službě Azure Cosmos DB: Vytváření, zadávání dotazů a procházení v konzole Apache TinkerPops Gremlin | Dokumentace Microsoftu'
+title: 'Kurz služby Azure Cosmos DB: vytváření, dotazování a procházení v konzole Apache TinkerPops Gremlin'
 description: Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Gremlin API služby Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 8e98c778c89a74b6c3c1cfa7dc7feb311c62b076
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 7f23ddc5b8f58403e5d2e69f11bd39b859f8d548
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499522"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844447"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Služba Azure Cosmos DB: Vytváření, zadávání dotazů a procházení grafu v konzole Gremlin
 

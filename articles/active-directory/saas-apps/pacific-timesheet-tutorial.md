@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 051e39d0e7a58c79eb00bc3dfb73eaf5389617c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b821da194ce41fc419e769336eeeb5927306684
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448359"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pacific-timesheet"></a>Kurz: Integrace Azure Active Directory s rozvrhu Tichomoří
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s rozvrhu Tichomoří, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Tichomoří rozvrhu jednotné přihlašování povoleno předplatné
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Pokud chcete nakonfigurovat integraci Tichomoří rozvrhu do služby Azure AD, b
 
 **Tichomoří rozvrhu přidat z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -117,7 +117,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<InstanceID>.pacifictimesheet.com/timesheet/home.do`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory a Tichomoří rozvrhu](http://www.pacifictimesheet.com/support) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečné identifikátorem a adresa URL odpovědi. Kontakt [tým podpory a Tichomoří rozvrhu](https://www.pacifictimesheet.com/support) k získání těchto hodnot.
  
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
@@ -131,7 +131,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/pacific-timesheet-tutorial/tutorial_pacifictimesheet_configure.png) 
 
-1. Ke konfiguraci jednotného přihlašování na **Tichomoří rozvrhu** straně, je nutné odeslat na stažený **certifikát (Base64)**, **SAML jednotné přihlašování – adresa URL služby**a **SAML Entity ID** k [tým podpory a Tichomoří rozvrhu](http://www.pacifictimesheet.com/support). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **Tichomoří rozvrhu** straně, je nutné odeslat na stažený **certifikát (Base64)**, **SAML jednotné přihlašování – adresa URL služby**a **SAML Entity ID** k [tým podpory a Tichomoří rozvrhu](https://www.pacifictimesheet.com/support). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -170,7 +170,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="creating-a-pacific-timesheet-test-user"></a>Vytvoření zkušebního uživatele a Tichomoří rozvrhu
 
-V této části vytvořte uživatele Britta Simon v tichomořském rozvrhu. Práce s [tým podpory a Tichomoří rozvrhu](http://www.pacifictimesheet.com/support) a vytvořte uživatele v aplikaci.
+V této části vytvořte uživatele Britta Simon v tichomořském rozvrhu. Práce s [tým podpory a Tichomoří rozvrhu](https://www.pacifictimesheet.com/support) a vytvořte uživatele v aplikaci.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

@@ -1,23 +1,21 @@
 ---
-title: Kurz globální distribuce služby Azure Cosmos DB pro rozhraní Table API | Microsoft Docs
+title: Kurz globální distribuci Azure Cosmos DB pro rozhraní Table API
 description: Zjistěte, jak nastavit globální distribuci služby Azure Cosmos DB pomocí rozhraní Table API.
 services: cosmos-db
 keywords: global distribution, Table
 author: SnehaGunda
-manager: kfile
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-table
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 7baa1e5b4b50d1f420b514854fa4d4c9ef786c99
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.date: 12/13/2017
+ms.openlocfilehash: 92ae0c3dc07c6dada80e081c65484e4f6bf4f947
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582131"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844766"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní Table API
 
@@ -46,7 +44,7 @@ Pokud vlastnost PreferredLocations není nastavená, všechny požadavky se budo
 
 To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste provedli následující:
 

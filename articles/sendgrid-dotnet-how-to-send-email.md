@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
-ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 91d28802b4af23da5b8060fa7c8f9a7e843a7dab
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634964"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840261"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Odeslání e-mailů pomocí Sendgridu s Azure
 ## <a name="overview"></a>Přehled
@@ -43,7 +43,7 @@ Další informace najdete v článku [ https://sendgrid.com ](https://sendgrid.c
 [Balíček SendGrid NuGet](https://www.nuget.org/packages/Sendgrid) představuje nejjednodušší způsob, jak rozhraní API SendGrid a nakonfigurovat svoji aplikaci se všemi závislostmi. NuGet je rozšíření sady Visual Studio, který je součástí sady Microsoft Visual Studio 2015 a výše, který umožňuje snadno instalovat a aktualizovat knihovny a nástroje.
 
 > [!NOTE]
-> Nainstalovat NuGet, pokud používáte verzi sady Visual Studio starší než Visual Studio 2015, najdete v tématu [ http://www.nuget.org ](http://www.nuget.org)a klikněte na tlačítko **nainstalovat NuGet** tlačítko.
+> Nainstalovat NuGet, pokud používáte verzi sady Visual Studio starší než Visual Studio 2015, najdete v tématu [ https://www.nuget.org ](https://www.nuget.org)a klikněte na tlačítko **nainstalovat NuGet** tlačítko.
 >
 >
 

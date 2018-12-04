@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 11/29/2018
-ms.openlocfilehash: eb296a436f6c09a4f592ba3a26ee1c3a0f8e18bb
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.date: 12/03/2018
+ms.openlocfilehash: 5046b1012e0074e9548cad050c16eef25c00cee0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678828"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845191"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network v Azure Logic Apps s využitím prostředí integrační služby (ISEs)
 
@@ -64,13 +64,15 @@ Rozdíl mezi konektory ISE a jiných ISE je v umístění, kde spouštění trig
 
 Při vytváření prostředí integrační služby (ISE), vyberte virtuální síť Azure tom, kde jste *vložit* vašeho prostředí. Vkládání nasadí privátní instanci služby Logic Apps do vaší virtuální sítě. Tato akce výsledků v izolovaném prostředí, ve kterém můžete vytvořit a spustit aplikace logiky na vyhrazených prostředcích. Při vytváření aplikací logiky vyberte váš ISE jako umístění pro vaše aplikace. Tyto aplikace logiky můžete přímo přistupovat k vaší virtuální sítě a připojení k prostředkům v dané síti. 
 
-Pro místní systémy ve virtuální síti, který je propojen ISE aplikace logiky přímo přístupné tyto systémy pomocí některé z těchto položek: 
+Pro systémy, které jsou připojené k virtuální síti můžete vložit ISE do této virtuální sítě tak, aby aplikace logiky můžete tyto systémy přístup přímo pomocí některé z těchto položek: 
 
 * ISE konektor pro daný systém, například SQL Server
+
 * Akce HTTP 
+
 * Vlastní konektor
 
-Pro místní systémy, které nejsou ve virtuální síti nebo nemají ISE konektory, můžete připojit k těmto systémům až [nastavit a používat místní brány dat](../logic-apps/logic-apps-gateway-install.md).
+Pro místní systémy, které nejsou připojené k virtuální síti nebo nemají ISE konektory, můžete připojit k těmto systémům podle [nastavování a pomocí místní brány dat](../logic-apps/logic-apps-gateway-install.md).
 
 Abyste mohli vybrat virtuální síť Azure pro vkládání prostředí, musíte vytvořit oprávnění řízení přístupu na základě Role (RBAC) ve vaší virtuální síti pro službu Azure Logic Apps. Tato úloha vyžaduje, abyste přiřadili **Přispěvatel sítě** a **Přispěvatel modelu Classic** role ve službě Azure Logic Apps.
 Nastavení těchto oprávnění naleznete v tématu [připojit k virtuálním sítím Azure z aplikací logiky](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#vnet-access)

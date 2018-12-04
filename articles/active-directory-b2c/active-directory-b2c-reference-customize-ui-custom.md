@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 8c3684f93bbf5b9fe9f5ea9167396b9822e70c48
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50139505"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841621"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Přizpůsobení uživatelského rozhraní cesty uživatele pomocí vlastních zásad
 
@@ -31,7 +31,7 @@ Integrované uživatelské prostředí je klíčem k jakékoli řešení busines
 
 Azure AD B2C umožňuje přizpůsobit vzhled a chování uživatelského rozhraní (UX) na různých stránkách, které se obsluhují a službou Azure AD B2C zobrazí pomocí vlastních zásad.
 
-Pro tento účel, Azure AD B2C, spustí kód v prohlížeči vašich uživatelů a používá moderní a standardní přístup [sdílení prostředků mezi zdroji (CORS)](http://www.w3.org/TR/cors/) načíst z konkrétní adresy URL, který zadáte do vlastní zásady tak, aby odkazoval na vlastní obsah šablony HTML5 a CSS. CORS je mechanismus, který umožní omezené prostředky, například písma, na webové stránce vyžadované z jiné domény mimo doménu, ze kterého se vytvoří prostředek.
+Pro tento účel, Azure AD B2C, spustí kód v prohlížeči vašich uživatelů a používá moderní a standardní přístup [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/) načíst z konkrétní adresy URL, který zadáte do vlastní zásady tak, aby odkazoval na vlastní obsah šablony HTML5 a CSS. CORS je mechanismus, který umožní omezené prostředky, například písma, na webové stránce vyžadované z jiné domény mimo doménu, ze kterého se vytvoří prostředek.
 
 Porovnání s tradičním způsobem staré, kde stránky šablon jsou vlastněny řešení, které jste zadali omezená textu a obrázků, kde byly nabízeny omezené možnosti kontroly rozložení a vzhled, což vede k více než potíže zajistit bezproblémové prostředí tak, jak CORS podporuje HTML5 a CSS a umožňují:
 
@@ -69,10 +69,10 @@ Aby bylo zajištěno, že vše funguje podle očekávání, musíte mít:
 - Použít absolutní adresy URL například https://yourdomain/content pro všechny odkazy a obsah šablony stylů CSS.
 
 > [!TIP]
-> Ověřte, že hostují váš obsah na lokalitu má zapnuté CORS a testování požadavků CORS, můžete použít web http://test-cors.org/. Díky této lokalitě můžete odeslat požadavek CORS ke vzdálenému serveru (který testuje, jestli se podporuje CORS) nebo odeslat požadavek CORS na testovací server (Chcete-li prozkoumat některé funkce CORS).
+> Ověřte, že hostují váš obsah na lokalitu má zapnuté CORS a testování požadavků CORS, můžete použít web https://test-cors.org/. Díky této lokalitě můžete odeslat požadavek CORS ke vzdálenému serveru (který testuje, jestli se podporuje CORS) nebo odeslat požadavek CORS na testovací server (Chcete-li prozkoumat některé funkce CORS).
 
 > [!TIP]
-> Webu http://enable-cors.org/ také se považuje za více než užitečné zdroje informací o CORS.
+> Webu https://enable-cors.org/ také se považuje za více než užitečné zdroje informací o CORS.
 
 Díky tomu na základě CORS koncoví uživatelé měli konzistentní prostředí mezi vaší aplikací a stránky, které obsluhuje Azure AD B2C.
 
@@ -120,7 +120,7 @@ CORS (sdílení prostředků různého původu) musí být povolené na váš ko
 Ověřte, že úložiště, které hostují váš obsah na má zapnuté CORS, postupujte podle následujících kroků:
 
 1. Otevřete relaci procházení a přejděte na stránku *unified.html* úplnou adresu URL umístění ve vašem účtu úložiště pomocí `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Například, https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
-2. Přejděte na adresu http://test-cors.org. Tento web umožňuje ověřit, že stránka, kterou používáte má zapnuté CORS.  
+2. Přejděte na adresu https://test-cors.org. Tento web umožňuje ověřit, že stránka, kterou používáte má zapnuté CORS.  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->

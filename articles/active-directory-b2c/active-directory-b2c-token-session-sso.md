@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 456e32e2f5194417f004f80feef1852dd3d0befd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c93bc018aea92a63adac4889d9496356543c1e52
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723274"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842726"
 ---
 # <a name="token-session-and-single-sign-on-configuration-in-azure-active-directory-b2c"></a>Token, relace a konfigurace jednotného přihlašování v Azure Active Directory B2C
 
@@ -66,7 +66,7 @@ Tyto vlastnosti umožňují zákazníkům se vyjádřit výslovný souhlas podle
 
 - **Deklarace identity vystavitele (iss)** – tato vlastnost identifikuje tenanta Azure AD B2C, která token vydala.
     - `https://<domain>/{B2C tenant GUID}/v2.0/` – Toto je výchozí hodnota.
-    - `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` – Tato hodnota zahrnuje ID tenanta B2C a uživatelského tok používaný v požadavku na token. Pokud vaše aplikace nebo knihovna musí Azure AD B2C má být zajištěn soulad [zjišťování OpenID Connect 1.0 specifikace](http://openid.net/specs/openid-connect-discovery-1_0.html), používejte tuto hodnotu.
+    - `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/` – Tato hodnota zahrnuje ID tenanta B2C a uživatelského tok používaný v požadavku na token. Pokud vaše aplikace nebo knihovna musí Azure AD B2C má být zajištěn soulad [zjišťování OpenID Connect 1.0 specifikace](https://openid.net/specs/openid-connect-discovery-1_0.html), používejte tuto hodnotu.
 - **Deklarace identity subjektu (sub)** – tato vlastnost identifikuje entitu, pro kterou token vyhodnocuje informace.
     - **ID objektu** – tato vlastnost je výchozí hodnota. Naplní ID objektu uživatele v adresáři do `sub` deklarací identity v tokenu.
     - **Nepodporuje** – tato vlastnost je poskytována pouze z důvodů zpětné kompatibility, a doporučujeme vám, že přejdete na **ObjectID** Jakmile máte možnost.

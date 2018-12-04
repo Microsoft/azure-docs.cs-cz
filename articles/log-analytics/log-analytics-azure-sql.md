@@ -11,12 +11,12 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/26/2018
 ms.author: v-daljep
-ms.openlocfilehash: b2c8ed30e26f5408123fe77606ddfec67479bcad
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 84b5665f434bcf7cdb0ac58a74727244d4155835
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726147"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844545"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -185,7 +185,7 @@ Automatické výstrahy v řešení je založena na psaní dotazu Log Analytics, 
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Vytvoření výstrah pro službu Azure SQL Database
 
-Můžete snadno [vytvářet upozornění](../monitoring-and-diagnostics/alert-metric.md) s daty pocházející z prostředků Azure SQL Database. Tady jsou některé užitečné [prohledávání protokolů](log-analytics-queries.md) dotazy, které můžete používat upozornění protokolu:
+Můžete snadno [vytvářet upozornění](../monitoring-and-diagnostics/alert-metric.md) s daty pocházející z prostředků Azure SQL Database. Tady jsou některé užitečné [prohledávání protokolů](../azure-monitor/log-query/log-query-overview.md) dotazy, které můžete používat upozornění protokolu:
 
 #### <a name="high-cpu-on-azure-sql-database"></a>Vysoké využití procesoru pro službu Azure SQL Database
 
@@ -297,6 +297,6 @@ Při řešení používat, platí spotřeby telemetrická data diagnostiky nad v
 
 ## <a name="next-steps"></a>Další postup
 
-- Použití [prohledávání protokolů](log-analytics-queries.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
+- Použití [prohledávání protokolů](../azure-monitor/log-query/log-query-overview.md) v Log Analytics k zobrazení podrobných dat Azure SQL.
 - [Vytvářejte vlastní řídicí panely](../azure-monitor/platform/dashboards.md) zobrazení dat Azure SQL.
 - [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-alerts.md) Pokud dojde k určité událostem Azure SQL.

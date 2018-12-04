@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9729c7313f275201fc61bb5c7552066eecb13373
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 6a096d95ee883556c03bbaef026c1d0fc8430797
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642988"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844021"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Shromažďovat data protokolu s agentem Azure Log Analytics
 
@@ -124,6 +124,6 @@ Připojování počítačů v předplatném Azure nebo hybridního prostředí p
 
 * Kontrola [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) pochopit zdroje dat dostupné pro shromažďování dat ze systému Windows nebo Linux. 
 
-* Další informace o [protokolu dotazy](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [protokolu dotazy](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
 
 * Další informace o [řešení monitorování](../../azure-monitor/insights/solutions.md) , které doplňují do Azure monitoru a také shromažďovat data do pracovního prostoru Log Analytics.

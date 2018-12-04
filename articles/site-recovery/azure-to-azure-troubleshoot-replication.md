@@ -6,14 +6,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 656481dedcfc86a826bf4b92c9f8090377f47a52
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9a32ac1ae71cb7bd89c4252157c3a5cd395b2694
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682567"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842335"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Řešení potíží s probíhající replikaci virtuálních počítačů Azure do Azure
 

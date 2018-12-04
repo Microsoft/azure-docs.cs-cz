@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 20d1e39a2f2cda66f3b490000f48dd6c5fb72915
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9e72eafc49167848996328774f7d18198667aa3d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727324"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845242"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Jednostránková aplikace přihlásit pomocí implicitního toku OAuth 2.0
 
@@ -25,7 +25,7 @@ ms.locfileid: "52727324"
 * Mnoho serverů autorizace a zprostředkovatelů identity nepodporují prostředků mezi zdroji (CORS) žádosti o sdílení.
 * Přesměrování mají formu celostránkového prohlížeče směrem od aplikace může být výrazně invazivní s uživatelským prostředím.
 
-Pro podporu těchto aplikací Azure Active Directory B2C (Azure AD B2C) používá implicitní tok OAuth 2.0. Tok autorizačního implicitní grant OAuth 2.0 je popsaný v [části 4.2 specifikaci OAuth 2.0](http://tools.ietf.org/html/rfc6749). V implicitní tok, aplikace obdrží tokeny přímo z Azure Active Directory (Azure AD) zajistí autorizaci koncového bodu, bez jakékoli k serveru exchange. Všechna logika ověřování a relace zpracování trvá umístit zcela v klientovi JavaScript bez přesměrování další stránky.
+Pro podporu těchto aplikací Azure Active Directory B2C (Azure AD B2C) používá implicitní tok OAuth 2.0. Tok autorizačního implicitní grant OAuth 2.0 je popsaný v [části 4.2 specifikaci OAuth 2.0](https://tools.ietf.org/html/rfc6749). V implicitní tok, aplikace obdrží tokeny přímo z Azure Active Directory (Azure AD) zajistí autorizaci koncového bodu, bez jakékoli k serveru exchange. Všechna logika ověřování a relace zpracování trvá umístit zcela v klientovi JavaScript bez přesměrování další stránky.
 
 Azure AD B2C rozšiřuje standardní implicitního toku OAuth 2.0 k více než jednoduché ověřování a autorizace. Azure AD B2C zavádí [parametr zásad](active-directory-b2c-reference-policies.md). S parametrem zásad vám pomůže OAuth 2.0 přidání zásad do vaší aplikace, jako například registrace, přihlášení a Profilovat toky uživatelů pro správu. V tomto článku ukážeme, jak implementaci každého z těchto možností v jednostránkové aplikace pomocí implicitního toku a Azure AD. Abyste mohli začít, podívejte se na naše [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) a [rozhraní Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) ukázky.
 
@@ -138,7 +138,7 @@ error=access_denied
 | state |Viz úplný popis v předchozí tabulce. Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické.|
 
 ## <a name="validate-the-id-token"></a>Ověřit ID token
-Přijetí tokenu ID není dostatečná k ověření uživatele. Je nutné ověřit ID token podpisu a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Azure AD B2C používá [webové tokeny JSON (Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
+Přijetí tokenu ID není dostatečná k ověření uživatele. Je nutné ověřit ID token podpisu a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Azure AD B2C používá [webové tokeny JSON (Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
 
 Řada open source knihovny jsou dostupné pro ověřování tokeny Jwt, v závislosti na jazyk, který chcete použít. Vezměte v úvahu zkoumání dostupných knihoven open source, spíše než implementace logiky ověření. Můžete použít informace v tomto článku vám pomůžou získat informace tom, jak správně používat tyto knihovny.
 
@@ -161,7 +161,7 @@ Po ověření podpisu tokenu ID několik deklarací vyžadovat ověření. Pří
 * Ověření `aud` deklaraci identity pro zajištění, že byl vydán ID token pro vaši aplikaci. Jeho hodnota by měla být ID aplikace pro vaši aplikaci.
 * Ověření `iat` a `exp` tvrdí, ujistěte se, že nevypršela platnost tokenu ID.
 
-Několik další ověření, které byste měli provést jsou popsány podrobně [OpenID Connect základní specifikace](http://openid.net/specs/openid-connect-core-1_0.html). Můžete také ověřit další deklarace identity, v závislosti na vašem scénáři. Některé běžné ověření patří:
+Několik další ověření, které byste měli provést jsou popsány podrobně [OpenID Connect základní specifikace](https://openid.net/specs/openid-connect-core-1_0.html). Můžete také ověřit další deklarace identity, v závislosti na vašem scénáři. Některé běžné ověření patří:
 
 * Zajištění, že na uživatele nebo organizaci zaregistroval k aplikaci.
 * Zajištění, že uživatel má příslušná oprávnění a oprávnění.

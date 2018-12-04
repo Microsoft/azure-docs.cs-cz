@@ -12,22 +12,20 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2018
+ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: fb0e503eedf62a7d72bd58fbf94cba3faac524e9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 922e0afb77a9f1e42f014770ccc51d2a356d112b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632904"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843729"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkce detekce ve službě Azure Security Center
-Tento dokument popisuje pokročilé schopnosti detekce služby Azure Security Center, které pomáhají při identifikaci aktivních hrozeb cílených na prostředky Microsoft Azure, a poskytuje vám informace potřebné pro rychlou reakci na tyto hrozby.
+Tento dokument popisuje možnosti pokročilé detekce Azure Security Center, která pomáhá identifikovat aktivní hrozby pro vaše prostředky Microsoft Azure – Windows i Linuxem – a poskytne vám informace potřebné pro rychlou reakci na.
 
-Rozšířená detekce je k dispozici v úrovni Standard služby Azure Security Center. K dispozici je bezplatná 60denní zkušební verze. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](security-center-azure-policy.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+Rozšířená detekce je k dispozici v úrovni Standard služby Azure Security Center. Bezplatná zkušební verze je k dispozici. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](security-center-azure-policy.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-> [!NOTE]
-> Security Center byla vydána ve verzi limited Preview nová sada detekcí, které využívají auditované záznamy běžný auditní rámec, k detekci škodlivého chování na počítačích s Linuxem. Pokud se chcete připojit k verzi Preview, zašlete [nám](mailto:ASC_linuxdetections@microsoft.com) e-mail s ID vašich předplatných.
 
 ## <a name="responding-to-todays-threats"></a>Reakce na současné hrozby
 Za posledních 20 let došlo ve světě hrozeb k významným změnám. V minulosti se společnosti obvykle musely obávat pouze poškození vzhledu webu jednotlivými útočníky, které většinou jen zajímalo předvést, co dokážou udělat. Dnešní útočníci jsou mnohem sofistikovanější a organizovanější. Často mají konkrétní finanční a strategické cíle. Mají také k dispozici větší zdroje, protože mohou být financováni státy nebo organizovanou trestnou činností.

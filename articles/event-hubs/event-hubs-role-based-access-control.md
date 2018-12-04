@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: shvija
-ms.openlocfilehash: ef74600fdf5051394f8b7bfbdd71e144b3f26d8a
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: fd2df221d36b4b09ea5901e42dd9cca8ff27f3f9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005734"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843763"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
@@ -43,13 +43,9 @@ Pokud chcete vytvořit zvláštní účet pro tento scénář [postupujte podle 
 
 ### <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md) v jedné oblasti Azure, které podporují službu Event Hubs ve verzi preview pro RBAC: **oblasti USA – východ**, **USA – východ 2**, nebo **západní Evropa **. 
+Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md) v jedné oblasti Azure, které podporují službu Event Hubs ve verzi preview pro RBAC: **oblasti USA – východ**, **USA – východ 2**, nebo **západní Evropa** . 
 
-Jakmile se vytvoří obor názvů, přejděte do jeho **řízení přístupu (IAM)** stránky na portálu a potom klikněte na **přidat** přidání do role vlastníka účtu uživatele Azure AD. Pokud používáte vlastní uživatelský účet a vytvořili obor názvů, jste již v roli vlastník. Pokud chcete přidat jiný účet k roli, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na položku. Potom klikněte na **Uložit**.
- 
-![](./media/event-hubs-role-based-access-control/rbac1.PNG)
-
-Uživatelský účet má teď přístup k oboru názvů služby Event Hubs a do centra událostí, kterou jste vytvořili dřív.
+Jakmile se vytvoří obor názvů, přejděte do jeho **řízení přístupu (IAM)** stránky na portálu a potom klikněte na **přidat přiřazení role** přidání do role vlastníka účtu uživatele Azure AD. Pokud používáte vlastní uživatelský účet a vytvořili obor názvů, jste již v roli vlastník. Pokud chcete přidat jiný účet k roli, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na položku. Potom klikněte na **Uložit**. Uživatelský účet má teď přístup k oboru názvů služby Event Hubs a do centra událostí, kterou jste vytvořili dřív.
  
 ### <a name="register-the-application"></a>Zaregistrovat aplikaci
 

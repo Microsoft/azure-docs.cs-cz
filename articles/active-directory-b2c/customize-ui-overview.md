@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b5d3703f052ef47bcbacf0be04072357ee5b9986
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 94f7239bdcdc5ddc91f3ed8b49b59378309711e8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722594"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844953"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informace o přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ V závislosti na vašich potřebách při rozhodování o těchto možností, p�
 - Pokud používáte [vlastní zásady](active-directory-b2c-overview-custom.md) registrace / přihlášení, heslo resetovat, nebo profil úpravy ve vaší aplikaci, použijte [soubory zásad přizpůsobit uživatelské rozhraní](active-directory-b2c-ui-customization-custom.md).
 - Pokud je třeba zadat dynamický obsah podle zákazníka rozhodnutí, můžete použít [obsahu stránky vlastní zásady, které můžete změnit](active-directory-b2c-ui-customization-custom-dynamic.md) v závislosti na parametr, který se odešle v řetězci dotazu. Například obrázek pozadí na stránce registrace nebo přihlášení Azure AD B2C se změní, založené na parametr předat z vašich webových nebo mobilních aplikací.
 
-Azure AD B2C kód v prohlížeči vašeho zákazníka a využívá moderní přístup a volá [sdílení prostředků mezi zdroji (CORS)](http://www.w3.org/TR/cors/). V době běhu obsah je načten z adresy URL, kterou zadáte v toku uživatele nebo zásad. Můžete zadat různé adresy URL pro různé stránky. Po načtení obsahu z vaší adresy URL je sloučen s fragment HTML z Azure AD B2C vložili a následně se zobrazí na vaše zákazníky.
+Azure AD B2C kód v prohlížeči vašeho zákazníka a využívá moderní přístup a volá [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/). V době běhu obsah je načten z adresy URL, kterou zadáte v toku uživatele nebo zásad. Můžete zadat různé adresy URL pro různé stránky. Po načtení obsahu z vaší adresy URL je sloučen s fragment HTML z Azure AD B2C vložili a následně se zobrazí na vaše zákazníky.
 
 Než začnete, projděte si následující pokyny:
 

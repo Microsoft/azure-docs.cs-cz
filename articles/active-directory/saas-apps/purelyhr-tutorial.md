@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c02dc274c5d22c16b2bda6d7896ee64c41d6e2ab
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 88388be1a0687c3e56fd39dde2f70e40cf578f2a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438990"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Kurz: Integrace Azure Active Directory se službou PurelyHR
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s PurelyHR, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - PurelyHR jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace PurelyHR do služby Azure AD, budete muset přidat PurelyH
 
 **Chcete-li přidat PurelyHR z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -121,7 +121,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     V **přihlašovací adresa URL** textového pole zadejte hodnotu pomocí následujícího vzorce: `https://<companyID>.purelyhr.com/sso-initiate`
      
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory PurelyHR klienta](http://support.purelyhr.com/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory PurelyHR klienta](https://support.purelyhr.com/) k získání těchto hodnot. 
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 

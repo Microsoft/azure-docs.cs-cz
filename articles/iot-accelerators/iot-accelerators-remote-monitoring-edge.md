@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 329bc41555f2def0e2b7001a7b445cd3de16d439
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 51c19447e115426bd39d39fedc86193c8f091df1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828128"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843304"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Kurz: Detekci anomálií na hraničních zařízeních s akcelerátor řešení vzdálené monitorování
 
@@ -24,16 +24,26 @@ Zavést edge zpracování pomocí vzdáleného monitorování, tento kurz použ�
 
 Contoso chce nasadit do konektoru čerpadlo ropy, který detekuje anomálie teploty modul inteligentních hraničních zařízení. Jiný modul edge odesílá výstrahy k řešení vzdáleného monitorování. Po přijetí upozornění operátor společnosti Contoso provést odeslání technika údržby. Contoso také nakonfigurovat automatizovanou akci, jako je odeslání e-mailu, i když toto řešení se zobrazí upozornění.
 
-Tento kurz používá místním vývojovém počítači Windows jako zařízení IoT Edge. Můžete nainstalovat moduly edge simulovat zařízení ropy čerpadlo konektoru a k detekci anomálií teploty.
+Následující diagram ukazuje klíčové součásti v scénář tohoto kurzu:
+
+![Přehled](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 V tomto kurzu se naučíte:
 
 >[!div class="checklist"]
 > * Do řešení přidat zařízení IoT Edge
 > * Vytvořte Edge manifest
-> * Importovat balíček, který definuje moduly, které chcete spustit na zařízení
+> * Importovat do manifestu jako balíček, který definuje moduly, které chcete spustit na zařízení
 > * Nasadit balíček do zařízení IoT Edge
 > * Zobrazení výstrah ze zařízení
+
+Na zařízení IoT Edge:
+
+* Modul runtime, obdrží balíček a nainstaluje moduly.
+* Modul stream analytics detekuje anomálie teploty v čerpadlo a odesílá příkazy vyřešení problému.
+* Modul stream analytics předává filtrovaná data k akcelerátoru řešení.
+
+Tento kurz používá virtuální počítač s Linuxem jako zařízení IoT Edge. Je také nainstalovat modul edge simulovat zařízení ropy čerpadlo konektoru.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -41,7 +51,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="add-an-iot-edge-device"></a>Přidat zařízení IoT Edge
+## <a name="add-an-iot-edge-device"></a>Přidání zařízení IoT Edge
 
 Existují dva kroky pro přidání zařízení IoT Edge na akcelerátor řešení vzdálené monitorování. V této části se dozvíte, jak používat:
 
@@ -111,54 +121,23 @@ Hraniční zařízení vyžaduje modulu runtime Edge k instalaci. V tomto kurzu 
     az vm create \
       --resource-group IoTEdgeDevices \
       --name EdgeVM \
-      --image Canonical:UbuntuServer:16.04-LTS:latest \
+      --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest \
       --admin-username azureuser \
       --generate-ssh-keys \
       --size Standard_B1ms
     ```
 
-    Poznamenejte si veřejnou IP adresu, budete potřebovat v dalším kroku při připojení pomocí protokolu SSH.
-
-1. Připojení k virtuálnímu počítači pomocí SSH, spusťte následující příkaz ve službě cloud shell:
+1. Konfigurace modulu runtime Edge s připojovacím řetězcem zařízení, spusťte následující příkaz pomocí připojovacího řetězce zařízení, které jste si poznamenali dříve:
 
     ```azurecli-interactive
-    ssh azureuser@{vm IP address}
+    az vm run-command invoke \
+      --resource-group IoTEdgeDevices \
+      --name EdgeVM \
+      --command-id RunShellScript \
+      --scripts 'sudo /etc/iotedge/configedge.sh "YOUR_DEVICE_CONNECTION_STRING"'
     ```
 
-1. Pokud jste připojeni k virtuálnímu počítači, spusťte následující příkazy pro nastavení úložiště ve virtuálním počítači:
-
-    ```azurecli-interactive
-    curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
-    sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-    ```
-
-1. Pokud chcete nainstalovat kontejneru a moduly runtime Edge ve virtuálním počítači, spusťte následující příkazy:
-
-    ```azurecli-interactive
-    sudo apt-get update
-    sudo apt-get install moby-engine
-    sudo apt-get install moby-cli
-    sudo apt-get update
-    sudo apt-get install iotedge
-    ```
-
-1. Konfigurace modulu runtime Edge s připojovacím řetězcem zařízení, upravte konfigurační soubor:
-
-    ```azurecli-interactive
-    sudo nano /etc/iotedge/config.yaml
-    ```
-
-    Přiřadit zařízení připojovací řetězec má **device_connection_string** proměnnou, uložte změny a zavřete editor.
-
-1. Restartujte modulu runtime Edge na použití nové konfigurace:
-
-    ```azurecli-interactive
-    sudo systemctl restart iotedge
-    ```
-
-1. Teď můžete ukončete relaci SSH a zavřít cloud shell.
+    Nezapomeňte zahrnout připojovací řetězec do uvozovek.
 
 Právě jste nainstalovat a nakonfigurovat modul runtime IoT Edge na zařízení s Linuxem. Později v tomto kurzu použijete řešení vzdáleného monitorování můžete nasadit moduly IoT Edge tohoto zařízení.
 

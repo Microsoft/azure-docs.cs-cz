@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 32692cbe7959650d5181c9e9dfcd7dd5ee55a46e
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 8bb95ae776c329e67e9f9936213a9f4c2a0c8f62
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024581"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842590"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Řešení potíží s vlastní zásady Azure AD B2C a architekturu rozhraní identit
 
@@ -60,7 +60,7 @@ Chyba fragment kódu: `Reason: User is currently logged as a user of 'yourtenant
     * Webovou aplikaci/webové rozhraní API: Ne
     * Nativní klient systému: Ne
 
-* Pro sledování výměny zpráv mezi prohlížeče klienta a Azure AD B2C, použijte [Fiddler](http://www.telerik.com/fiddler). Pomůže vám zajistit indikaci, kde se nedaří vaší cesty uživatele v postupu k orchestraci.
+* Pro sledování výměny zpráv mezi prohlížeče klienta a Azure AD B2C, použijte [Fiddler](https://www.telerik.com/fiddler). Pomůže vám zajistit indikaci, kde se nedaří vaší cesty uživatele v postupu k orchestraci.
 
 * V **vývojový režim**, použijte **Application Insights** trasování aktivity vaší cesty uživatele architekturu rozhraní identit. V **vývojový režim**, můžete sledovat výměny deklarací identity mezi rozhraní prostředí pro Identity a různých zprostředkovatelů deklarací identity, které jsou definovány technické profily, jako je například zprostředkovatelů identity, služby založené na rozhraní API Adresář uživatele Azure AD B2C a dalším službám, jako je Azure více ověřování Multi-Factor-Authentication.  
 

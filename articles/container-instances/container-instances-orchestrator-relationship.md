@@ -5,15 +5,15 @@ services: container-instances
 author: seanmck
 ms.service: container-instances
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 11/30/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: c17bdb5a81640a7162ae735a4633a31cdfffbb1d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 08bc344a20ade3d8bb0f7dd23a854fd03ddac006
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803507"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845795"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Služba Azure Container Instances a orchestrátorů kontejnerů
 
@@ -40,9 +40,9 @@ Azure Container Instances umožňuje vrstveného přístupu k orchestraci, posky
 
 Protože základní infrastruktury pro container instances je spravuje Azure, není potřeba zabývat se hledání počítače s vhodného hostitele, ve kterém se spustí jedním kontejnerem platformě nástroje orchestrator. Flexibilitu cloudu zajišťuje, že jeden je vždy k dispozici. Místo toho orchestrator můžete zaměřit na úkoly, které zjednodušují vývoj architektury více kontejnerů, včetně škálování a koordinovaných upgradů.
 
-## <a name="potential-scenarios"></a>Potenciální scénáře
+## <a name="scenarios"></a>Scénáře
 
-Při integraci nástroje orchestrator pomocí služby Azure Container Instances je stále vznikajícím, Očekáváme, že mohou vzniknout několik různých prostředích:
+Zatímco se stále vznikajícím orchestrator integrace se službou Azure Container Instances, Očekáváme, že budou vznikat několik různých prostředích:
 
 ### <a name="orchestration-of-container-instances-exclusively"></a>Orchestrace kontejnerů instance výhradně
 
@@ -54,13 +54,15 @@ Pro úlohy dlouhotrvající, stabilní a Orchestrace kontejnerů v clusteru vyhr
 
 Místo horizontální navýšení kapacity počtu virtuálních počítačů v clusteru, pak nasazení dalších kontejnerů na těchto počítačích, orchestrator můžete jednoduše naplánovat dalších kontejnerů ve službě Azure Container Instances a je odstranit, když už budou potřeba.
 
-## <a name="sample-implementation-virtual-kubelet-for-kubernetes"></a>Ukázková implementace: Virtual Kubelet pro Kubernetes
+## <a name="sample-implementation-virtual-nodes-for-azure-kubernetes-service-aks"></a>Ukázková implementace: virtuální uzly pro Azure Kubernetes Service (AKS)
 
-[Virtual Kubelet] [ aci-connector-k8s] projektu ukazuje, jak integrovat platformy Orchestrace kontejnerů pomocí služby Azure Container Instances.
+Rychle škálovat úlohy aplikací do [Azure Kubernetes Service](../aks/intro-kubernetes.md) clusteru (AKS), můžete použít *virtuální uzly* dynamicky vytvořené ve službě Azure Container Instances. Aktuálně ve verzi preview, povolte virtuální uzly síťové komunikace mezi pody spuštěné v ACI a AKS clusteru. 
 
-Virtual Kubelet napodobuje Kubernetes [kubelet] [ kubelet-doc] prostřednictvím registrace jako uzel s neomezenou kapacitu a odesílání vytváření [podů] [ pod-doc] jako skupiny kontejnerů ve službě Azure Container Instances.
+Virtuální uzly aktuálně podporují instance kontejnerů Linuxu. Začínáme s virtuálními uzly pomocí [rozhraní příkazového řádku Azure](https://go.microsoft.com/fwlink/?linkid=2047538) nebo [webu Azure portal](https://go.microsoft.com/fwlink/?linkid=2047545).
 
-Konektory pro jiných orchestrátorů může být postavená podobně integrovaných se službou prvkům platformu a výkonné funkce orchestrátoru API díky rychlosti a jednoduchost Správa kontejnerů ve službě Azure Container Instances.
+Virtuální uzly pomocí open source [Virtual Kubelet] [ aci-connector-k8s] tak, aby napodoboval Kubernetes [kubelet] [ kubelet-doc] tak, že zaregistrujete jako uzel s využitím neomezeného počtu kapacita. Vytváření odešle Virtual Kubelet [podů] [ pod-doc] jako skupiny kontejnerů ve službě Azure Container Instances.
+
+Zobrazit [Virtual Kubelet](https://github.com/virtual-kubelet/virtual-kubelet) projekt pro rozšíření rozhraní Kubernetes API do platformy bez serveru kontejneru Další příklady.
 
 ## <a name="next-steps"></a>Další postup
 

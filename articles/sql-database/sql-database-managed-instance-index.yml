@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 46e05ef45cca5accd6af817a06b63861c41aa2b3
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 28bdbcbbfa014495feb394bde78a197b274f07d9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52160609"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844171"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -123,6 +123,7 @@ sections:
     - html: Ověřte, že databáze můžete použít k migraci <a href="https://www.microsoft.com/download/details.aspx?id=53595">Asisstant migrace dat</a> nebo <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">Pomocník pro experimentování ve službě Database</a>.
     - html: Přenést vaše databáze do Managed Instance pomocí <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">nativní obnovení</a> nebo <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Database Migration Service</a>.
     - html: Přesuňte své balíčky SSIS do <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS tabulkových modelů za účelem <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">službu Azure Analysis Services</a>, a sestavy SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power BI Premium</a>.
+    - html: Optimalizaci úložiště dat v <a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/">úrovni General Purpose</a>.
     - html: Najít osvědčené postupy a doporučení pro <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">zabezpečení vaší instance</a>.
     - html: Distribuce dat pomocí <a href="/azure/sql-database/replication-with-sql-database-managed-instance">transakční replikace</a>.
 - title: Referenční informace

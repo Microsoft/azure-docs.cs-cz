@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 034d7b61d4a02ac899c7215a042d47bc7938176d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 777586bc24c0962ec1f0ba3913397bfe26d0d0d5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438143"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841060"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Kurz: Integrace Azure Active Directory se službou SpringCM
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s SpringCM, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - SpringCM jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace SpringCM do služby Azure AD, budete muset přidat SpringC
 
 **Chcete-li přidat SpringCM z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -189,7 +189,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 Povolení uživatelů Azure Active Directory pro přihlášení k SpringCM, musí být poskytnuty do SpringCM. V případě SpringCM zřizování se ruční úlohy.
 
 >[!NOTE]
->Další informace najdete v tématu [vytvářet a upravovat uživatele SpringCM](http://knowledge.springcm.com/create-and-edit-a-springcm-user). 
+>Další informace najdete v tématu [vytvářet a upravovat uživatele SpringCM](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
 
 **Ke zřízení uživatelského účtu pro SpringCM, proveďte následující kroky:**
 
@@ -248,7 +248,7 @@ V této části je povolit Britta Simon k udělení přístupu k SpringCM použi
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
- 
+ 
 Po kliknutí na dlaždici SpringCM na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci SpringCM.
 
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 

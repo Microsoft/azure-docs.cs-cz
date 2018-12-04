@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 3012f07d8c56f2581a087bc8e43aa4a089bf9589
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c21d78d1e0660b97c44130539ab3b5c71b8d6f6b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633508"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843032"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Jednotné přihlašování k aplikacím v Azure Active Directory
 Zjistěte, jak zvolit nejvhodnější jednotné přihlašování metodu při konfiguraci aplikací v Azure Active Directory (Azure AD). 
@@ -178,6 +178,6 @@ Další informace najdete v článku [Edice služby Azure Active Directory](../f
 * [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Kurz ke konfiguraci jednotného přihlašování](configure-single-sign-on-portal.md)
 * [Úvod do správy přístupu k aplikacím](what-is-access-management.md)
-* Odkaz ke stažení: [plánu nasazení přihlašování](http://aka.ms/SSODeploymentPlan).
+* Odkaz ke stažení: [plánu nasazení přihlašování](https://aka.ms/SSODeploymentPlan).
 
 

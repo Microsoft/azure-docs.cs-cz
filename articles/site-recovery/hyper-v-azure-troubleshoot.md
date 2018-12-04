@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: c7626c6edceddcfbd4d95ff6efc4678836a4502c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2f9c4c0b973efe26e6ece2235f2d0c7a6878ebef
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247989"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844987"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s technologií Hyper-V do Azure replikace a převzetí služeb při selhání
 

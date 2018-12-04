@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d4728d5f631b0671be67ff4976674bde2044d4c0
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: aa940e238601f06a53247c0da4d1a92f16b6f56c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682861"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840601"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Plánování kapacity virtuálních počítačů Hyper-V s řešením kapacitu a výkon (Preview)
 
@@ -138,4 +138,4 @@ Následující tabulka obsahuje ukázky hledání v protokolech pro kapacitu a v
 
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů v Log Analytics](../../log-analytics/log-analytics-queries.md) k zobrazení podrobných dat o kapacitě a výkonu.
+* Použití [prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md) k zobrazení podrobných dat o kapacitě a výkonu.

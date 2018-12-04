@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: e0fa3d481e18cdb15095968e791bd9eee630f8af
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: fe7d3fb9a88b97eddf0708b7a5b2eefd09111542
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446326"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843423"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 
-Tento návod používá ke zkoumání dat a trénování binární klasifikace a regresních modelů pomocí křížového ověření HDInsight Spark a optimalizace hyperparameter k ukázce NYC taxi cesty a jízdenky 2013 datové sady. Provede vás provede postupem [vědecké zpracování dat](https://aka.ms/datascienceprocess), end až do konce, použití cluster HDInsight Spark pro zpracování a Azure BLOB k ukládání dat a modely. Proces zkoumá a vizualizuje dat získaných z objektu Blob služby Azure Storage a pak připraví data k vytvoření prediktivních modelů. Python se použil, jak se programují řešení a zobrazíte relevantní vykreslení. Tyto modely jsou sestavení pomocí nástrojů knihovna Spark MLlib vykonávat binární klasifikačních a regresních modelování. 
+Tento návod používá ke zkoumání dat a trénování binární klasifikace a regresních modelů pomocí křížového ověření HDInsight Spark a optimalizace hyperparameter k ukázce NYC taxi cesty a jízdenky 2013 datové sady. Provede vás provede postupem [vědecké zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), end až do konce, použití cluster HDInsight Spark pro zpracování a Azure BLOB k ukládání dat a modely. Proces zkoumá a vizualizuje dat získaných z objektu Blob služby Azure Storage a pak připraví data k vytvoření prediktivních modelů. Python se použil, jak se programují řešení a zobrazíte relevantní vykreslení. Tyto modely jsou sestavení pomocí nástrojů knihovna Spark MLlib vykonávat binární klasifikačních a regresních modelování. 
 
 * **Binární klasifikace** úkol je předpovědět, jestli jde placenou tip pro cestu. 
 * **Regrese** úkolu je předpovědět, částky spropitného založených na jiných funkcích tip. 

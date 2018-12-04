@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: d9328b293d38114d319d79e38b91b1b67e410d94
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5db0efd825a655143828e7ccea73704516893ea2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581818"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845259"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Jak nasadit modely do služby Azure Kubernetes Service ze služby Azure Machine Learning
 
@@ -183,6 +183,24 @@ test_sample = bytes(test_sample,encoding = 'utf8')
 prediction = aks_service.run(input_data = test_sample)
 print(prediction)
 ```
+
+## <a name="update-the-web-service"></a>Aktualizovat webovou službu
+
+Pokud chcete aktualizovat webovou službu, použijte `update` metody. Následující kód ukazuje, jak aktualizovat webovou službu, která používá novou bitovou kopii:
+
+```python
+from azureml.core.webservice import Webservice
+
+service_name = 'aci-mnist-3'
+# Retrieve existing service
+service = Webservice(name = service_name, workspace = ws)
+# Update the image used by the service
+service.update(image = new-image)
+print(service.state)
+```
+
+> [!NOTE]
+> Když aktualizujete bitovou kopii, webová služba se neaktualizuje automaticky. Každá služba, kterou chcete použít novou bitovou kopii je nutné ručně aktualizovat.
 
 ## <a name="cleanup"></a>Vyčištění
 

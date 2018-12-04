@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 696d0326530baadfffc6f757c2a25690422a12c7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e117b6e791bde3a8311b35ea5d651dad6bf88737
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441540"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Kurz: Integrace Azure Active Directory se službou Wizergos kancelářský Software
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Wizergos kancelářský Software, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Kancelářský Software Wizergos jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Pokud chcete nakonfigurovat integraci Wizergos kancelářský Software do služb
 
 **Chcete-li přidat Wizergos kancelářský Software z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -110,7 +110,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Wizergos produktivitu softwaru domény a adresy URL jednotného přihlašování – informace](./media/wizergosproductivitysoftware-tutorial/tutorial_wizergosproductivitysoftware_url.png)
 
-    V **identifikátor** textového pole zadejte adresu URL: `http://www.wizergos.net`
+    V **identifikátor** textového pole zadejte adresu URL: `https://www.wizergos.net`
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát** a uložte soubor certifikátu v počítači.
 
@@ -218,7 +218,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

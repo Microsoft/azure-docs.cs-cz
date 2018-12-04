@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f2347601a775c0069c36d8ca453f677f6d0e1568
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 292def9303cf74142a55e1101fe6371476f9f09d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336783"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845208"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Zdroje dat protokolu Syslog v Log Analytics
 Syslog je protokol protokolování událostí, které jsou společné pro Linux.  Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog.  Při instalaci agenta OMS pro Linux, konfiguruje místní démona Syslog na předávání zpráv k agentovi.  Agent pak odešle zprávu do Log Analytics, ve kterém se vytvoří odpovídající záznam v úložišti OMS.  
@@ -207,6 +207,6 @@ Následující tabulka obsahuje příklady různých dotazů na protokoly, kter�
 | Syslog &#124; summarize AggregatedValue = count() podle zařízení |Počet Syslog záznamy podle zařízení. |
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
+* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
 * Použití [vlastní pole](../../log-analytics/log-analytics-custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.
 * [Konfigurace agentů systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) ke shromažďování dalších typů dat.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 924584a77d36ec41488d8c76d9631baf484ff494
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 48a835bf8c63ffa5512173b600fb85abd5c6cb45
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346385"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840346"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro automatické zřizování uživatelů
 
@@ -67,7 +67,7 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 > [!NOTE]
 > Další možné možnost automatizace zřizování uživatelů pro G Suite je použití [Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en). GADS ustanovení vaší místní služby Active Directory identity ke G Suite. Naproti tomu zřídí řešení v tomto kurzu služby Azure Active Directory (cloud) uživatelů a skupin ke G Suite s povoleným e-mailu. 
 
-1. Přihlaste se k [konzoly pro správu služby Google Apps](http://admin.google.com/) pomocí účtu správce a pak vyberte **zabezpečení**. Pokud nevidíte odkaz, může být skrytá pod **další ovládací prvky** nabídce v dolní části obrazovky.
+1. Přihlaste se k [konzoly pro správu služby Google Apps](https://admin.google.com/) pomocí účtu správce a pak vyberte **zabezpečení**. Pokud nevidíte odkaz, může být skrytá pod **další ovládací prvky** nabídce v dolní části obrazovky.
    
     ![Vyberte možnost zabezpečení.][10]
 
@@ -110,7 +110,7 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 
 1. Teď, když po ověření všech domén s Azure AD, musíte ověřit, je znovu s Google Apps. Pro každou doménu, která již není zaregistrovaný u Google proveďte následující kroky:
    
-    a. V [konzoly pro správu služby Google Apps](http://admin.google.com/)vyberte **domén**.
+    a. V [konzoly pro správu služby Google Apps](https://admin.google.com/)vyberte **domén**.
      
      ![Vybrat domény][20]
 
@@ -129,7 +129,7 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
      > [!WARNING]
      > Pokud změníte primární doménou pro vašeho tenanta G Suite, a pokud už máte nakonfigurované jednotné přihlašování s Azure AD, pak budete muset opakovat krok #3 v části [krok 2: povolení jednotného přihlašování](#step-two-enable-single-sign-on).
        
-1. V [konzoly pro správu služby Google Apps](http://admin.google.com/)vyberte **rolí administrátora**.
+1. V [konzoly pro správu služby Google Apps](https://admin.google.com/)vyberte **rolí administrátora**.
    
      ![Vyberte Google Apps][26]
 
@@ -152,7 +152,7 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 
 1. V části **přihlašovacích údajů správce** vyberte **Authorize**. Otevře se dialogové okno ověřování Google v novém okně prohlížeče.
 
-1. Potvrďte, že chcete udělit oprávnění Azure Active Directory provádět změny do svého tenanta služby G Suite. Vyberte **přijmout**.
+1. Potvrďte, že chcete udělit oprávnění Azure Active Directory provádět změny do svého tenanta služby G Suite. Vyberte **Přijmout**.
     
      ![Zkontrolujte oprávnění.][28]
 

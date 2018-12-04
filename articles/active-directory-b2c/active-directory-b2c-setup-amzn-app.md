@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5bc1e0faf01125f498eb339bba841b96f6de9d82
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: cec84b5be64f82d4edd286127330ae3bdebc6367
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181800"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842565"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Amazon pomocí Azure Active Directory B2C
 
 ## <a name="create-an-amazon-application"></a>Vytvoření aplikace Amazon
 
-K použití účtu Amazon jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, budete muset vytvořit aplikaci ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet Amazon získáte ji na [ http://www.amazon.com/ ](http://www.amazon.com/).
+K použití účtu Amazon jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, budete muset vytvořit aplikaci ve vašem tenantovi, který ho zastupuje. Pokud ještě nemáte účet Amazon získáte ji na [ https://www.amazon.com/ ](https://www.amazon.com/).
 
 1. Přihlaste se k [středisko pro vývojáře Amazon](https://login.amazon.com/) pomocí svých přihlašovacích údajů účtu Amazon.
 2. Pokud jste tak již neučinili, klikněte na tlačítko **zaregistrovat**, postupujte podle kroků registrace pro vývojáře a přijměte zásady.
@@ -33,7 +33,7 @@ K použití účtu Amazon jako zprostředkovatele identity v Azure Active Direct
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>Konfigurace účtu Amazon jako zprostředkovatele identity
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce tenanta Azure AD B2C.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
 2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 036378c5ed595ffbaeefad9407fba8519945cf5c
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 4275b734a30310c896c397a5ef9cc1b218d89476
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336815"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842539"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Zdroje dat protokolu událostí Windows ve službě Log Analytics
 Protokoly událostí Windows jsou jedním z nejčastěji používaných [zdroje dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací se zapisují do protokolu událostí Windows.  Kromě zadání jakékoli vlastní protokoly vytvořené pomocí aplikací, které potřebujete k monitorování může shromažďovat události z standardní protokoly jako je například systém a aplikace.
@@ -76,6 +76,6 @@ Následující tabulka obsahuje příklady různých prohledávání protokolů,
 
 ## <a name="next-steps"></a>Další postup
 * Konfigurace Log Analytics ke shromažďování dalších [zdroje dat](agent-data-sources.md) pro analýzu.
-* Další informace o [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 * Použití [vlastní pole](../../log-analytics/log-analytics-custom-fields.md) k analýze záznamů událostí do jednotlivých polí.
 * Konfigurace [shromažďování čítačů výkonu](data-sources-performance-counters.md) z agentů Windows.

@@ -1,9 +1,8 @@
 ---
-title: Vytvoření aplikace Node.js databáze Azure Cosmos využitím rozhraní Gremlin API | Microsoft Docs
+title: Vytvoření aplikace Node.js databáze Azure Cosmos pomocí rozhraní Gremlin API
 description: Obsahuje ukázku kódu Node.js, kterou můžete použít pro připojení a dotazování databáze Azure Cosmos.
 services: cosmos-db
 author: luisbosquez
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
@@ -11,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 5f7e2a30ee4ea069e8c08187312f09e33a5a921a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: 0f2bcc34a1f82c33c8f640dce8eecccf312651fb
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700025"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52844206"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Databáze Azure Cosmos: Vytvoření aplikace Node.js využitím rozhraní Gremlin API
 
@@ -199,7 +198,7 @@ Zkuste filtr otestovat provedením metody `g.V()` s hodnotami `.has('firstName',
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, vytvoření grafu pomocí Průzkumníku dat a spuštění aplikace. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 

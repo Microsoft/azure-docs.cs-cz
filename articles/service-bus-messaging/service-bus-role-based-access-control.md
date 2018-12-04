@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/19/2018
 ms.author: spelluru
-ms.openlocfilehash: 0da4fdf5afc0cbe76e19260b486aa9112d0d74c8
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 0abcbcee7a5f997aff6b6561cdae17fb8a380098
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854316"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842199"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 
@@ -49,9 +49,7 @@ Pokud chcete vytvořit zvláštní účet pro tento scénář [postupujte podle 
 
 Dále [vytvoření oboru názvů služby Service Bus Messaging](service-bus-create-namespace-portal.md) v jedné oblasti Azure, které mají podporu náhledu pro RBAC: **oblasti USA – východ**, **USA – východ 2**, nebo **západní Evropa** . 
 
-Jakmile se vytvoří obor názvů, přejděte do jeho **řízení přístupu (IAM)** stránky na portálu a potom klikněte na **přidat** přidání do role vlastníka účtu uživatele Azure AD. Pokud používáte vlastní uživatelský účet a vytvořili obor názvů, jste již v roli vlastník. Pokud chcete přidat jiný účet k roli, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na položku. Potom klikněte na **Uložit**.
-
-![](./media/service-bus-role-based-access-control/rbac1.PNG)
+Jakmile se vytvoří obor názvů, přejděte do jeho **řízení přístupu (IAM)** stránky na portálu a potom klikněte na **přidat přiřazení role** přidání do role vlastníka účtu uživatele Azure AD. Pokud používáte vlastní uživatelský účet a vytvořili obor názvů, jste již v roli vlastník. Pokud chcete přidat jiný účet k roli, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na položku. Potom klikněte na **Uložit**.
 
 Uživatelský účet má teď přístup k oboru názvů služby Service Bus a do fronty jste předtím vytvořili.
  

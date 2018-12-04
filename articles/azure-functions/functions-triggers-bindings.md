@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: 9b2539d94c645f71b596e53429e6e0d8cc46b9ad
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b071bfe83ba9ef653db2d6d1debad4e3dfa02580
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016739"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845922"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Aktivace Azure Functions a vazby koncepty
 
@@ -231,6 +231,7 @@ Podívejte se na konkrétní jazyk příklad znázorňující použití návrato
 * [C# skript (.csx)](#c-script-example)
 * [F#](#f-example)
 * [JavaScript](#javascript-example)
+* [Python](#python-example)
 
 ### <a name="c-example"></a>Příklad jazyka C#
 
@@ -291,7 +292,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-### <a name="f-example"></a>Příklad F #
+### <a name="f-example"></a>F#Příklad
 
 Zde je výstupní vazbu v *function.json* souboru:
 
@@ -304,7 +305,7 @@ Zde je výstupní vazbu v *function.json* souboru:
 }
 ```
 
-Tady je kód F #:
+Tady je F# kódu:
 
 ```fsharp
 let Run(input: WorkItem, log: ILogger) =
@@ -334,6 +335,29 @@ module.exports = function (context, input) {
     context.log('Node.js script processed queue message', json);
     context.done(null, json);
 }
+```
+
+### <a name="python-example"></a>Příklad v Pythonu
+
+Zde je výstupní vazbu v *function.json* souboru:
+
+```json
+{
+    "name": "$return",
+    "type": "blob",
+    "direction": "out",
+    "path": "output-container/{id}"
+}
+```
+Tady je kód Pythonu:
+
+```python
+def main(input: azure.functions.InputStream) -> str:
+    return json.dumps({
+        'name': input.name,
+        'length': input.length,
+        'content': input.read().decode('utf-8')
+    })
 ```
 
 ## <a name="binding-datatype-property"></a>Vlastnost dataType vazby
@@ -476,7 +500,7 @@ Můžete také vytvořit výrazy částí názvu souboru, jako je například ro
  
 ### <a name="binding-expressions---trigger-metadata"></a>Výrazy vazby - trigger metadat
 
-Řada triggerů kromě datová část poskytované aktivační události (jako je třeba obsah zprávy fronty, která aktivuje funkce), poskytují další metadata hodnoty. Tyto hodnoty slouží jako vstupní parametry v jazyce C# a F # nebo vlastnosti na `context.bindings` objektu v jazyce JavaScript. 
+Řada triggerů kromě datová část poskytované aktivační události (jako je třeba obsah zprávy fronty, která aktivuje funkce), poskytují další metadata hodnoty. Tyto hodnoty slouží jako vstupní parametry v C# a F# nebo vlastnosti `context.bindings` objektu v jazyce JavaScript. 
 
 Například aktivační událost Azure Queue storage podporuje následující vlastnosti:
 
@@ -541,7 +565,7 @@ Následující příklad ukazuje *function.json* soubor funkce webhooku, která 
 }
 ```
 
-Aby to fungovalo v C# a F # je třeba třídu, která definuje pole k deserializaci jako v následujícím příkladu:
+Aby to fungovalo C# a F#, je třeba třídu, která definuje pole k deserializaci jako v následujícím příkladu:
 
 ```csharp
 using System.Net;

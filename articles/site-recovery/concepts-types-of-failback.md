@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: guaravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: rajanaki
-ms.openlocfilehash: 3c9cfc4fb1d741801b64f1ba0416bfb5b81999bd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 11/27/2018
+ms.author: rajanki
+ms.openlocfilehash: 9b181f21affa5b762dd6e9062953badc3a37191d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723481"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841876"
 ---
 # <a name="overview-of-failback"></a>Přehled o navrácení služeb po obnovení
 

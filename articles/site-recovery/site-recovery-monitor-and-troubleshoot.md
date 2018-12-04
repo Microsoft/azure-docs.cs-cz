@@ -5,14 +5,14 @@ author: bsiva
 manager: abhemra
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 07/19/2018
+ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: dc089e29889b12a5a6d3fcb17328cfc13fe8d0c9
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e34409490f9e120cb39daf99b280cc52c59f54e2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211804"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845634"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorování a řešení Site Recovery
 

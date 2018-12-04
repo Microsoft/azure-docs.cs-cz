@@ -18,12 +18,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: b8dba999ac6523aad29aae40b528fd010fec0550
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 7a3c3e39792119d296c849c012d4798ec85a0e03
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687346"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845471"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Postupy: použití Azure AD Graph API
 
@@ -82,7 +82,7 @@ Mějte na paměti následující funkce a omezení Azure AD Graph Exploreru:
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>Použití aplikace Fiddler k zápisu do adresáře
 
-Pro účely této úvodní příručky můžete použít ladicí program webové aplikace Fiddler na postup provedení zápisu operace adresáře služby Azure AD. Například můžete mít a nahrát profilové fotky uživatele (což není možné pomocí Průzkumníka služby Azure AD Graph). Další informace a nainstalovat Fiddler, najdete v části [ http://www.telerik.com/fiddler ](http://www.telerik.com/fiddler).
+Pro účely této úvodní příručky můžete použít ladicí program webové aplikace Fiddler na postup provedení zápisu operace adresáře služby Azure AD. Například můžete mít a nahrát profilové fotky uživatele (což není možné pomocí Průzkumníka služby Azure AD Graph). Další informace a nainstalovat Fiddler, najdete v části [ https://www.telerik.com/fiddler ](https://www.telerik.com/fiddler).
 
 V následujícím příkladu použijte ladicí program webové aplikace Fiddler k vytvoření nové skupiny zabezpečení 'MyTestGroup' v adresáři služby Azure AD.
 

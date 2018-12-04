@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: caef9a93e7d388ab55939876b7cc8344ce6370d0
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 0b5fe1b1df306bf0930715bc6cfb586e5445f85c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012509"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839955"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Operace opětovného zapnutí ochrany převzetí služeb při selhání virtuálních počítačů Azure do primární oblasti
 
@@ -83,4 +83,4 @@ Když aktivujte úlohu znovunastavení ochrany a cílový virtuální počítač
 
 ## <a name="next-steps"></a>Další postup
 
-Po aktivaci ochrany virtuálního počítače můžete spustit převzetí služeb při selhání. Převzetí služeb při vypnutí virtuálního počítače v sekundární oblasti a vytvoří a spustí virtuální počítač v primární oblasti s malý výpadek. Doporučujeme proto vyberte čas a spustit testovací převzetí služeb, ale inicializaci úplné převzetí služeb při selhání do primární lokality. [Další informace](site-recovery-failover.md) o převzetí služeb při selhání.
+Po aktivaci ochrany virtuálního počítače můžete spustit převzetí služeb při selhání. Převzetí služeb při vypnutí virtuálního počítače v sekundární oblasti a vytvoří a spustí virtuální počítač v primární oblasti s malý výpadek. Doporučujeme proto vyberte čas a spustíte test převzetí před zahájením úplné převzetí služeb při selhání do primární lokality. [Další informace](site-recovery-failover.md) o převzetí služeb při selhání.

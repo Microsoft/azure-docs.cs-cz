@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/04/2018
+ms.date: 10/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a65a0b8e054b1d0bb6cd4cbeb2daf9be2b132a9e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 3da4ecb1193959fcc8782f8aa5fdf32c130ee238
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304524"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840142"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění runbooku Azure Automation s webhooku
 
@@ -31,7 +31,7 @@ Následující tabulka popisuje vlastnosti, které je nutné nakonfigurovat pro 
 |:--- |:--- |
 | Název |Můžete zadat libovolný název, který chcete pro webhook, protože to není vystavený klienta. Používá se pouze pro vás k identifikaci sady runbook ve službě Azure Automation. <br> Jako osvědčený postup musíte by měl pojmenovat webhook související klientovi, který ji používá. |
 | zprostředkovatele identity |Adresa URL webhooku je jedinečná adresa, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojena k webhooku. Je generována automaticky při vytvoření webhooku. Nelze zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, která umožňuje sady runbook, který má být volána systémem třetí strany se nevyžaduje další ověřování. Z tohoto důvodu by zpracovávat jako heslo. Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na webu Azure Portal v době, kdy se webhook vytvoří. Poznačte si adresu URL na bezpečném místě pro budoucí použití. |
-| Datum vypršení platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží. Po vytvoření webhooku, je možné upravit toto datum vypršení platnosti. |
+| Datum konce platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží. Po vytvoření webhooku, je možné upravit toto datum vypršení platnosti. |
 | Povoleno |Webhook se ve výchozím nastavení povoleno, při jeho vytvoření. Pokud je nastavena na hodnotu zakázáno, pak žádný klient je moct používat. Můžete nastavit **povoleno** vlastnost při vytváření webhooku nebo kdykoli po jeho vytvoření. |
 
 ### <a name="parameters"></a>Parametry
@@ -133,8 +133,20 @@ param
     [object] $WebhookData
 )
 
+
+
 # If runbook was called from Webhook, WebhookData will not be null.
 if ($WebhookData) {
+
+    # Check header for message to validate request
+    if ($WebhookData.RequestHeader.message -eq 'StartedbyContoso')
+    {
+        Write-Output "Header has required information"}
+    else
+    {
+        Write-Output "Header missing required information";
+        exit;
+    }
 
     # Retrieve VM's from Webhook request body
     $vms = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
@@ -143,7 +155,7 @@ if ($WebhookData) {
 
     Write-Output "Authenticating to Azure with service principal and certificate"
     $ConnectionAssetName = "AzureRunAsConnection"
-    Write-Output "Get connection asset: $ConnectionAssetName" 
+    Write-Output "Get connection asset: $ConnectionAssetName"
 
     $Conn = Get-AutomationConnection -Name $ConnectionAssetName
             if ($Conn -eq $null)
@@ -171,7 +183,7 @@ else {
 
 Následující příklad používá prostředí Windows PowerShell pro spuštění sady runbook pomocí webhooku. Webhook; můžete použít libovolný jazyk, který umí vytvářet požadavky HTTP Prostředí Windows PowerShell slouží jako příklad.
 
-Sada runbook očekává seznam virtuálních počítačů ve formátu JSON v textu požadavku.
+Sada runbook očekává seznam virtuálních počítačů ve formátu JSON v textu požadavku. Sada runbook ověřuje také, že obsahují záhlaví konkrétně definované zprávy ověřit volající webhooku je platná.
 
 ```azurepowershell-interactive
 $uri = "<webHook Uri>"
@@ -181,8 +193,8 @@ $vms  = @(
             @{ Name="vm02";ResourceGroup="vm02"}
         )
 $body = ConvertTo-Json -InputObject $vms
-
-$response = Invoke-RestMethod -Method Post -Uri $uri -Body $body
+$header = @{ message="StartedbyContoso"}
+$response = Invoke-RestMethod -Method Post -Uri $uri -Body $body -Headers $header
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 

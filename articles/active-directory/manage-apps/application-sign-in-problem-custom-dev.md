@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 8ae8fa823b919ec4a67832e7c42088c994bd2d97
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2dade35b05a07b649282ae00bb6fee354adcd195
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356363"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845470"
 ---
 # <a name="problems-signing-in-to-an-custom-developed-application"></a>Potíže při přihlašování k vlastní vyvinuté aplikaci
 
@@ -32,7 +32,7 @@ Existuje několik chyb, které by mohlo být příčinou je nebudou moci přihl�
 
 * Prostředek se vyžádání přístupu ke službě v kódu s nakonfigurovanou oprávnění v porovnání **požadované prostředky** kartu a ujistěte se, že jste pouze požadavky na prostředky, které jste nakonfigurovali.
 
-* Zobrazit [Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory) všechny podobné chyby nebo problémy.
+* Zobrazit [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory) všechny podobné chyby nebo problémy.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -42,4 +42,4 @@ Existuje několik chyb, které by mohlo být příčinou je nebudou moci přihl�
 
 [Videí k Azure AD v2.0 a vyjádření souhlasu konvergované aplikace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
-[Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory>)
+[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory>)

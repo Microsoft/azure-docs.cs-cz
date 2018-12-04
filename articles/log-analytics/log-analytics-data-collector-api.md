@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 881188e7dab0e50b5bc62258c87cb546020c8410
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 8f12649a126cd618991dce0c98b3472a77acbb8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723580"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841315"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Posílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (public preview)
 V tomto článku se dozvíte, jak používat rozhraní API kolekce dat HTTP k odesílání dat do Log Analytics z klienta REST API.  Popisuje jak formátovat data shromážděná z vašich skriptů nebo aplikací, zahrnout do požadavku a jste tento požadavek na oprávnění od Log Analytics.  Příklady jsou k dispozici pro prostředí PowerShell, C# a Python.
@@ -200,7 +200,7 @@ Tato tabulka uvádí kompletní sadu stavové kódy, které může vrátit služ
 Zadat dotaz na data odeslaná Log Analytics HTTP rozhraní API kolekce dat, hledat záznamy s **typ** , který je roven **LogType** hodnotu, která jste zadali, s příponou **_CL**. Například, pokud jste použili **MyCustomLog**, pak by vrátí všechny záznamy s **typ = MyCustomLog_CL**.
 
 >[!NOTE]
-> Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-queries.md), pak se změní výše uvedeném dotazu následující.
+> Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](../azure-monitor/log-query/log-query-overview.md), pak se změní výše uvedeném dotazu následující.
 
 > `MyCustomLog_CL`
 
@@ -469,6 +469,6 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Další postup
-- Použití [rozhraní API pro vyhledávání protokolu](log-analytics-queries.md) k načtení dat v úložišti Log Analytics.
+- Použití [rozhraní API pro vyhledávání protokolu](../azure-monitor/log-query/log-query-overview.md) k načtení dat v úložišti Log Analytics.
 
 - Další informace o tom [vytvoření datového kanálu pomocí rozhraní API kolekce dat](../azure-monitor/platform/create-pipeline-datacollector-api.md) pomocí pracovního postupu aplikace logiky do Log Analytics.

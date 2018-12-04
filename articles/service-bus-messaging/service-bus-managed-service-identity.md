@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 5532c86271fa6a5f2b573e005993a68ac0a9e248
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 25d2db5dcf3979341fc104643f7178047c29483b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857070"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842828"
 ---
 # <a name="managed-identities-for-azure-resources-with-service-bus"></a>Spravované identity pro prostředky Azure pomocí služby Service Bus 
 
@@ -53,10 +53,8 @@ Po povolení funkce, je novou identitu služby vytvořené ve službě Azure Act
 
 Dále [vytvoření oboru názvů služby Service Bus Messaging](service-bus-create-namespace-portal.md) v jedné oblasti Azure, které mají podporu náhledu pro RBAC: **oblasti USA – východ**, **USA – východ 2**, nebo **západní Evropa** . 
 
-Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat** přidáte spravovanou identitu do **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**.
+Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat přiřazení role** přidáte spravovanou identitu do **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**.
 
-![](./media/service-bus-managed-service-identity/msi2.png)
- 
 Webová aplikace spravovaná identita má nyní přístup k oboru názvů služby Service Bus a do fronty jste předtím vytvořili. 
 
 ### <a name="run-the-app"></a>Spuštění aplikace

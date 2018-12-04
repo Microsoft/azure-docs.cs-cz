@@ -4,19 +4,18 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure Migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: 04ae28ca566e97570ec64e78d3408ea8bd1e3d42
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 9baf6ea70a8e9fa0dcd8ceefc9f58d7fa972767a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51010316"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52841961"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
 [Azure Migrate](migrate-overview.md) posuzuje skupiny místních počítačů pro migraci do Azure. Funkce vizualizace závislostí ve službě Azure Migrate můžete použít k vytváření skupin. Tento článek obsahuje informace o této funkci.
-
 
 ## <a name="overview"></a>Přehled
 
@@ -31,7 +30,13 @@ Azure Migrate používá [Service Map](../operations-management-suite/operations
 
     ![Přiřadit pracovní prostor Log Analytics](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- Když vytvoříte nový pracovní prostor, musíte zadat název pracovního prostoru. Pracovní prostor se pak vytvoří v oblasti, ve stejném [zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
+- Při přiřazení pracovního prostoru, bude mít možnost vytvořit nový pracovní prostor nebo připojení existující:
+      - Když vytvoříte nový pracovní prostor, musíte zadat název pracovního prostoru. Pracovní prostor se pak vytvoří v oblasti, ve stejném [zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
+      - Po připojení existujícího pracovního prostoru, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. Všimněte si, že jsou uvedené pouze ty pracovní prostory, které byly vytvořeny v oblasti kde [Service Map je podporována](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Aby bylo možné se připojit s pracovním prostorem, ujistěte se, že máte "Čtečky" přístup do pracovního prostoru.
+
+  > [!NOTE]
+  > Po připojení pracovního prostoru do projektu nejde ji později změnit.
+
 - Přidružené pracovní prostor je označen jako klíč **projekt migrace**a hodnota **název projektu**, který můžete použít pro vyhledávání na webu Azure Portal.
 - Pokud chcete přejít na pracovní prostor přidružený k projektu, můžete přejít na **Essentials** části projektu **přehled** stránce a přístup k pracovnímu prostoru
 

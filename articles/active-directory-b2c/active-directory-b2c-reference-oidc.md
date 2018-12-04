@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e689f93150d225d5b8c9ee9d5cfc422a1154c45a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 41f6027378e48b525345e29e1d1e08dd2c48aaa5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724549"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52843746"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: Webové přihlášení s OpenID Connect
 OpenID Connect je ověřovací protokol, postavený na OAuth 2.0, který umožňuje bezpečně přihlásit uživatele k webovým aplikacím. Pomocí Azure Active Directory B2C (Azure AD B2C) implementaci OpenID Connect, externí pomocí registrace, přihlašování a prostředí pro další správu identit ve vašich webových aplikacích do služby Azure Active Directory (Azure AD). Tato příručka ukazuje, jak postupovat způsobem nezávislým na jazyku. Popisuje jak odesílat a přijímat zprávy HTTP bez použití našich knihoven open source.
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje OAuth 2.0 *autorizace* protokol pro použití jako *ověřování* protokolu. To umožňuje provádět jednotné přihlašování pomocí OAuth. Zavádí koncepci *ID token*, což je token zabezpečení, která umožňuje klientům ověřovat identitu uživatele a získat základní profilové informace o uživateli.
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje OAuth 2.0 *autorizace* protokol pro použití jako *ověřování* protokolu. To umožňuje provádět jednotné přihlašování pomocí OAuth. Zavádí koncepci *ID token*, což je token zabezpečení, která umožňuje klientům ověřovat identitu uživatele a získat základní profilové informace o uživateli.
 
 Vzhledem k tomu, že rozšiřuje OAuth 2.0, také umožňuje aplikacím bezpečně získat *přístupové tokeny*. Můžete použít pro přístup k prostředkům zabezpečeným službou access_tokens [autorizační server](active-directory-b2c-reference-protocols.md#the-basics). Doporučujeme OpenID Connect, pokud vytváříte webovou aplikaci, která je hostována na serveru a přístupných prostřednictvím prohlížeče. Pokud chcete přidat správy identit do mobilních a desktopových aplikací pomocí Azure AD B2C, měli byste použít [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) místo OpenID Connect.
 
@@ -120,7 +120,7 @@ error=access_denied
 | state |Viz úplný popis v první tabulce v této části. Pokud `state` parametr je zahrnutý v požadavku, stejnou hodnotu by se měla zobrazit v odpovědi. Aplikace by měla ověřte, že `state` hodnoty v požadavku a odpovědi jsou identické. |
 
 ## <a name="validate-the-id-token"></a>Ověřit ID token
-Pouhého získání tokenu ID není dostatečná k ověření uživatele. Je nutné ověřit ID token podpisu a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Azure AD B2C používá [webové tokeny JSON (Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
+Pouhého získání tokenu ID není dostatečná k ověření uživatele. Je nutné ověřit ID token podpisu a ověřte, deklarace identity v tokenu podle požadavků vaší aplikace. Azure AD B2C používá [webové tokeny JSON (Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) a kryptografii využívající veřejného klíče pro podepisování tokenů a ověřte, že jsou platné.
 
 Existuje mnoho open source knihoven, které jsou k dispozici pro ověřování tokeny Jwt, v závislosti na jazyku předvoleb. Doporučujeme, abyste namísto implementace logiky ověření zkoumání těchto možností. Zde uvedené informace budou užitečné při tím, jak správně používat tyto knihovny.
 
@@ -143,7 +143,7 @@ Po jste ověření podpisu tokenu ID, existuje několik deklarací identity, kte
 * Měli byste ověřit, `aud` deklaraci identity pro zajištění, že byl vydán ID token pro vaši aplikaci. Jeho hodnota by měla být ID aplikace pro vaši aplikaci.
 * Měli byste ověřit, `iat` a `exp` tvrdí, ujistěte se, že nevypršela platnost tokenu ID.
 
-Existuje také několik další ověření, které byste měli provést. Tyto možnosti jsou popsány podrobně [OpenID Connect základní specifikace](http://openid.net/specs/openid-connect-core-1_0.html).  Můžete také ověřit další deklarace identity, v závislosti na vašem scénáři. Některé běžné ověření patří:
+Existuje také několik další ověření, které byste měli provést. Tyto možnosti jsou popsány podrobně [OpenID Connect základní specifikace](https://openid.net/specs/openid-connect-core-1_0.html).  Můžete také ověřit další deklarace identity, v závislosti na vašem scénáři. Některé běžné ověření patří:
 
 * Zajištění, že uživatel a organizace zaregistrovala pro aplikaci.
 * Zajištění, že uživatel má správnou autorizaci oprávnění.

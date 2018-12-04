@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2018
+ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 68d5742f5da542d5146997390e470180cf8c5776
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: adde29b0719f777bc6cf3ab86adbdeec4befddf0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620689"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52842411"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -236,7 +236,6 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Ovládací prvek, monitorovat a šifrování virtuálních počítačů snadno a s jistotou. **Stáhnete všechny položky CloudLink SecureVM.** | Dell EMC |
 | ![Přehled událostí SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [Přehled událostí SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | Přehled událostí SIEM je komplexního zabezpečení platforma, která poskytuje pokročilé nástroje zabezpečení s možností připravené pro audit dodržování předpisů. | Přehled událostí |
 | ![F5](media/azure-stack-marketplace-azure-items/f5.png) | [Edice virtuálního F5 Big-IP](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Pokročilé Vyrovnávání zatížení, GSLB, síťová brána Firewall, DNS, WAF a přístup k aplikaci. | F5 Networkss |
-| ![Firewall nové generace FortiGate](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | [Firewall nové generace FortiGate](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-fortigate-singlevm) | Technologie firewallu, která poskytuje kompletní ochranu obsahu a sítě a ucelené sady výkonných bezpečnostních funkcí. Řízení aplikací, antivirus, IPS, filtrování webů a síť VPN, spolu s pokročilé funkce, jako je Správa ohrožení zabezpečení fungovat společně k identifikaci a zmírnění nejnovější složité bezpečnostní hrozby. | Fortinet |
 | ![Sandbox Hortonworks Data Platform (HDP)](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Sandbox Hortonworks Data Platform (HDP)](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Používá technologii HDP 2,5 100 % open source platforma pro Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Zabezpečení v Kaspersky hybridním cloudu](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | Kaspersky hybridní Cloud Security umožňuje bez problémů orchestrovaný a adaptivní příkazu o kyberbezpečnosti ekosystém. | Kaspersky testovacího prostředí |
 | ![KEMP LoadMaster zatížení vyrovnávání ADC obsah přepínače](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster zatížení vyrovnávání ADC obsah přepínače](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Vrstvy 4 – 7 Application Delivery Controller (ADC) nástroj pro vyrovnávání zatížení, obsahu přepínače a Traffic Manageru. | KEMP Technologies Inc. |

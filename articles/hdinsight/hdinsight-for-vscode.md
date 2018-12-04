@@ -10,16 +10,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 9603751db01eaffdf9fbe26164aed53017c5e23c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: fe186966dbddb5aa743e465f897aa5a1a0e07db1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499531"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840201"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Použití Azure HDInsight Tools pro Visual Studio Code
 
-Další informace o použití [Azure HDInsight Tools for Visual Studio Code](https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode) (VS Code) k vytvoření a odeslání [Apache Hive](https://hive.apache.org/) dávkové úlohy, interaktivní dotazy Apache Hive a skriptů PySpark. Nástroje Azure HDInsight lze nainstalovat na platformách, které jsou podporovány ve VS Code. Patří sem Windows, Linux a macOS. Můžete najít požadované součásti pro různé platformy.
+Další informace o použití nástroje Azure HDInsight pro Visual Studio Code (VS Code) pro vytvoření a odesílání dávkových úloh Hive Apache Hive, interaktivních dotazů Hive a skriptů PySpark pro Apache Spark. Nejprve popíšeme, jak nainstalovat nástroje HDInsight ve VS Code a potom provedeme procesem odeslání úlohy Hive a Spark. 
+
+Nástroje Azure HDInsight lze nainstalovat na platformách, které jsou podporovány ve VS Code, mezi které patří Windows, Linux a macOS. Níže najdete požadované součásti pro různé platformy.
 
 
 ## <a name="prerequisites"></a>Požadavky

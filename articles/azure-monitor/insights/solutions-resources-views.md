@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 97e499612082d0d58cd75bb9f8854b8c4e0f669e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3807dcf9ea4625db72b0579e0609641e3aedb088
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635760"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845718"
 ---
 # <a name="views-in-management-solutions-preview"></a>Zobrazení v řešení pro správu (Preview)
 > [!NOTE]
@@ -90,7 +90,7 @@ Všimněte si, že celé zobrazení prostředků lze zkopírovat ze souboru expo
 * Proměnné by měl definovaný v řešení a použít v příslušné vlastnosti.
 
 ### <a name="log-analytics-api-version"></a>Verze rozhraní API pro analýzu protokolů
-Všechny prostředky Log Analytics, které jsou definované v šabloně Resource Manageru, mít vlastnost **apiVersion** , který určuje verzi rozhraní API prostředku by měl používat.  Tato verze se liší pro zobrazení s dotazy, které používají [starší verze a upgradované dotazovací jazyk](../../log-analytics/log-analytics-queries.md).  
+Všechny prostředky Log Analytics, které jsou definované v šabloně Resource Manageru, mít vlastnost **apiVersion** , který určuje verzi rozhraní API prostředku by měl používat.  Tato verze se liší pro zobrazení s dotazy, které používají [starší verze a upgradované dotazovací jazyk](../../azure-monitor/log-query/log-query-overview.md).  
 
  Následující tabulka obsahuje verze rozhraní API služby Log Analytics pro zobrazení v pracovních prostorech starších verzí a upgradovat: 
 

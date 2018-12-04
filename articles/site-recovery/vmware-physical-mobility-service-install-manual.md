@@ -1,18 +1,18 @@
 ---
 title: Nainstalovat službu Mobility ručně pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů s Azure Site Recovery | Dokumentace Microsoftu
 description: Zjistěte, jak nainstalovat agenta služby Mobility pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure pomocí služby Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/04/2018
-ms.author: raynew
-ms.openlocfilehash: dfed0209131379843b97ff8050c2f2ba7294537d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.date: 11/27/2018
+ms.author: ramamill
+ms.openlocfilehash: d0180a32f2a4258cb728869e2cb9f2abd57cc545
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019137"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845956"
 ---
 # <a name="install-the-mobility-service-manually-on-vmware-vms-and-physical-servers"></a>Ruční instalace služby Mobility na virtuální počítače VMware a fyzické servery
 

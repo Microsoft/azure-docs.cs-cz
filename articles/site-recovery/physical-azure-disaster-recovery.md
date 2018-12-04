@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4f4a61ad0c1b1fcab4773dcc16c5e22053c4158d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fa2f16f1a7d99a825039e2191c69642a45ff728a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230882"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845225"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Nastavení zotavení po havárii do Azure pro místní fyzické servery
 
@@ -157,10 +157,10 @@ Vyberte a zkontrolujte cílové prostředky.
 
 ## <a name="create-a-replication-policy"></a>Vytvoření zásady replikace
 
-1. Chcete-li vytvořit novou zásadu replikace, klikněte na tlačítko **infrastruktura Site Recovery** > **zásady replikace** > **+ zásada replikace**.
-2. V **vytvoření zásady replikace**, zadejte název zásady.
-3. V **prahová hodnota cíle bodu obnovení**, zadejte cíle (RPO) limit bodů obnovení. Tato hodnota určuje, jak často jsou vytvořeny body obnovení pro data. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
-4. V **uchování bodu obnovení**, určete, jak dlouho (v hodinách) je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu. Je pro počítače replikované do služby premium storage a 72 hodin pro úložiště úrovně standard podporuje až uchování 24 hodin.
+1. Novou zásadu replikace vytvoříte tak, že kliknete na **Infrastruktura Site Recovery** > **Zásady replikace** > **+ Zásada replikace**.
+2. V části **Vytvoření zásad replikace** zadejte název zásady.
+3. V části **Prahová hodnota cíle bodu obnovení** (RPO) zadejte omezení cíle bodu obnovení. Tato hodnota určuje, jak často jsou vytvořeny body obnovení pro data. Když průběžná replikace překročí tento limit, vygeneruje se upozornění.
+4. V části **Uchování bodu obnovení** zadejte (v hodinách), jak dlouhý je interval uchovávání dat pro jednotlivé body obnovení. Replikované virtuální počítače můžete v rámci okna uchování obnovit do libovolného časového bodu. Pro počítače replikované do úložiště úrovně Premium se podporuje uchování po dobu až 24 hodin. V případě úložiště úrovně Standard je to 72 hodin.
 5. V **frekvence snímků konzistentní vzhledem k**, zadat jak často (v minutách) se vytvoří body obnovení obsahující snímky konzistentní s aplikací. Kliknutím na tlačítko **OK** vytvořte zásadu.
 
     ![Zásady replikace](./media/physical-azure-disaster-recovery/replication-policy.png)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 61fb9904e69f5269c345b733ef2396294c6c790a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8c29d054f2e4e9ff4b57785a57e5c6ea512623a6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448168"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Kurz: Integrace Azure Active Directory s vnímání Spojené státy (Non-UltiPro)
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s vnímání Spojené státy (Non-UltiPro), potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Vnímání Spojené státy (Non-UltiPro) jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace nástroje vnímání Spojené státy (Non-UltiPro) do slu�
 
 **Chcete-li přidat vnímání Spojené státy (Non-UltiPro) z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -209,7 +209,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
   
 ### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Vytvoření zkušebního uživatele vnímání Spojené státy (Non-UltiPro)
 
-V této části vytvoříte uživateli Britta Simon v vnímání Spojené státy (Non-UltiPro). Práce s [tým podpory vnímání Spojené státy (Non-UltiPro)](http://www.ultimatesoftware.com/Contact/ContactUs) přidat uživatele na platformě vnímání Spojené státy (Non-UltiPro).
+V této části vytvoříte uživateli Britta Simon v vnímání Spojené státy (Non-UltiPro). Práce s [tým podpory vnímání Spojené státy (Non-UltiPro)](https://www.ultimatesoftware.com/Contact/ContactUs) přidat uživatele na platformě vnímání Spojené státy (Non-UltiPro).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -241,7 +241,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

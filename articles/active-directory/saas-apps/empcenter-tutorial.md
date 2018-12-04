@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: e7e594619c3b7c1ebd34c802d53b3897046a9cd7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 722a5b90b9ca17197cb0a0d117e58a01108d0a9c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426832"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52845038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>Kurz: Integrace Azure Active Directory se službou EmpCenter
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s EmpCenter, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - EmpCenter jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace EmpCenter do služby Azure AD, budete muset přidat EmpCen
 
 **Chcete-li přidat EmpCenter z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -119,7 +119,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | `https://<subdomain>.workforcehosting.com/<instancename>` |
 
     > [!NOTE] 
-    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory EmpCenter klienta](http://www.workforcesoftware.com/services/customer-support/) má být získána hodnota. 
+    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory EmpCenter klienta](https://www.workforcesoftware.com/services/customer-support/) má být získána hodnota. 
  
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
@@ -129,7 +129,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/empcenter-tutorial/tutorial_general_400.png)
 
-1. Ke konfiguraci jednotného přihlašování na **EmpCenter** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory EmpCenter](http://www.workforcesoftware.com/services/customer-support/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+1. Ke konfiguraci jednotného přihlašování na **EmpCenter** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory EmpCenter](https://www.workforcesoftware.com/services/customer-support/). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -168,7 +168,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="creating-an-empcenter-test-user"></a>Vytvoření EmpCenter testovacího uživatele
 
-Chcete-li povolit uživatele Azure AD se přihlaste k EmpCenter, musí být poskytnuty do EmpCenter. V případě EmpCenter, uživatelské účty musí být vytvořené vaší [tým podpory EmpCenter](http://www.workforcesoftware.com/services/customer-support/).
+Chcete-li povolit uživatele Azure AD se přihlaste k EmpCenter, musí být poskytnuty do EmpCenter. V případě EmpCenter, uživatelské účty musí být vytvořené vaší [tým podpory EmpCenter](https://www.workforcesoftware.com/services/customer-support/).
 
 > [!NOTE]
 > Můžete použít jakékoli jiné EmpCenter uživatelského účtu nástrojů pro vytváření nebo rozhraní API poskytovaných EmpCenter ke zřízení služby Azure Active Directory uživatelské účty.

@@ -4,15 +4,15 @@ description: Poskytuje informace o zařízení Kolektoru ve službě Azure Migra
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/30/2018
+ms.date: 11/28/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 81e6731068db84f02073f02c49bea9a8fb7c7c70
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 5a542ae23bf500125fd08338b2efd30dd42d9a8d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241187"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52840907"
 ---
 # <a name="about-the-collector-appliance"></a>Informace o zařízení Kolektoru
 
@@ -20,23 +20,11 @@ ms.locfileid: "50241187"
 
 Azure Migrate Collector je zjednodušené zařízení, který slouží ke zjištění serveru vCenter v místním prostředí pro účely posouzení s [Azure Migrate](migrate-overview.md) service, před migrací do Azure.  
 
-## <a name="discovery-methods"></a>Metody zjišťování
+## <a name="discovery-method"></a>Metoda zjišťování
 
-Existují dvě možnosti pro zařízení Kolektoru, jednorázově nebo průběžná zjišťování.
+Dříve byly dvě možnosti pro zařízení kolektoru, jednorázové zjišťování a průběžná zjišťování. Model jednorázového zjišťování už se nepoužívá jako spoléhal na nastavení statistiky vCenter serveru pro shromažďování dat o výkonu (vyžaduje statistiky nastavení nastavili na úroveň 3) a shromažďují také průměr čítačů (místo ve špičce), které výsledkem snížení velikosti. Model průběžná zjišťování zajišťuje detailní data o shromažďování a výsledkem přesné určení velikosti kvůli shromažďování čítačů ve špičce. Níže je, jak to funguje:
 
-### <a name="one-time-discovery"></a>Jednorázové zjišťování
-
-Zařízení Kolektoru komunikuje jednorázově do systému vCenter Server ke shromažďování metadat virtuální počítače. Pomocí této metody:
-
-- Zařízení není nepřetržitě připojeny k projektu Azure Migrate.
-- Změny v místním prostředí se neprojeví v Azure Migrate po dokončení zjišťování. Tak, aby odrážela všechny změny, budete muset znovu zjišťovat stejné prostředí, ve stejném projektu.
-- Při shromažďování dat výkonu pro virtuální počítač, na zařízení se spoléhá na výkon historických dat uložených v systému vCenter Server. Shromažďuje historie výkonu za poslední měsíc.
-- Historická data výkonu kolekce budete muset nastavení statistiky v systému vCenter Server na úrovni 3. Po nastavení úrovně na tři, budete muset počkat aspoň jeden den pro vCenter pro shromažďování čítačů výkonu. Proto doporučujeme, abyste spustili zjišťování po aspoň jeden den. Pokud chcete posoudit prostředí na základě 1 týden nebo 1 měsíc dat výkonu, budete muset počkat odpovídajícím způsobem.
-- Tato metoda zjišťování Azure Migrate shromažďuje průměrnou čítače pro každou metriku (spíše než čítače ve špičce), které mohou způsobit snížení velikosti. Doporučujeme použít možnost průběžná zjišťování získat přesnější výsledky změny velikosti.
-
-### <a name="continuous-discovery"></a>Průběžné zjišťování
-
-Zařízení Kolektoru je trvalým připojením k projektu Azure Migrate a průběžně shromažďuje údaje o výkonu virtuálních počítačů.
+Zařízení kolektoru je trvalým připojením k projektu Azure Migrate a průběžně shromažďuje údaje o výkonu virtuálních počítačů.
 
 - Kolektor průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase každých 20 sekund.
 - Zařízení shrnuje ukázky 20 sekund a vytvoří jeden datový bod každých 15 minut.
@@ -44,14 +32,16 @@ Zařízení Kolektoru je trvalým připojením k projektu Azure Migrate a průb�
 - Tento model nejsou závislé na nastavení statistiky vCenter Server ke shromažďování dat výkonu.
 - Můžete zastavit průběžné profilování v kdykoli z kolekce.
 
-Mějte na paměti, že zařízení shromažďuje data o výkonu pouze průběžně a nezjistí žádné změny konfigurace v místním prostředí (tj. přidání nebo odstranění virtuálního počítače, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
+**Rychlé provést synchronizaci dříve:** s průběžná zjišťování zařízení, jakmile se dokončí zjišťování (trvá několik hodin v závislosti na počtu virtuálních počítačů), můžete okamžitě vytvořit posouzení. Protože shromažďování dat výkonu spustí, když zahájíte zjišťování, pokud chcete pro rychlé provést synchronizaci dříve, měli vybrat kritérium určení velikosti v posouzení jako *jako místní*. Vyhodnocení na základě výkonu doporučujeme počkejte alespoň jeden den a poté rutinního zjišťování tak, aby Získejte doporučení k reliable velikosti.
+
+Zařízení průběžně pouze shromažďuje údaje o výkonu, nezjistí změny konfigurace v místním prostředí (tj. Přidání virtuálního počítače, odstranění, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
 
 - Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
 
 - Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
 
 > [!NOTE]
-> Průběžná zjišťování funkce je ve verzi preview. Doporučujeme používat tuto metodu, protože shromažďuje podrobná data o výkonu a ve výsledku poskytuje přesné určení správné velikosti.
+> Jednorázové zjišťování zařízení je nyní zastaralý a tato metoda spoléhal na vCenter serveru nastavení statistiky dostupnosti bodu dat výkonu shromážděných čítačů průměrný výkon, které umožňují snížení velikosti virtuálních počítačů pro migraci do Azure.
 
 ## <a name="deploying-the-collector"></a>Nasazení Kolektoru
 
@@ -211,7 +201,7 @@ Po nastavení zařízení, můžete spustit zjišťování. Zde je, jak to fungu
 
 ### <a name="collected-metadata"></a>Shromáždila se metadata
 
-Zařízení kolektoru zjistí následující statické metadata pro virtuální počítače:
+Zařízení kolektoru zjistí následující metadat konfigurace pro každý virtuální počítač. Konfigurační data pro virtuální počítače jsou k dispozici hodinu po spuštění zjišťování.
 
 - Zobrazovaný název virtuálního počítače (v systému vCenter Server)
 - Cesta inventáře Virtuálního počítače (hostitel/složku v systému vCenter Server)
@@ -224,26 +214,18 @@ Zařízení kolektoru zjistí následující statické metadata pro virtuální 
 
 #### <a name="performance-counters"></a>Čítače výkonu
 
-- **Jednorázově**: když čítače se shromažďují, aby jednorázově, pamatujte na Tyhle věci:
+ Zařízení kolektoru shromažďuje následující čítače výkonu pro každý virtuální počítač z hostitele ESXi v intervalech 20 sekund. Tyto čítače jsou čítačů vCenter a i když terminologii říká průměr, 20 sekund ukázky jsou čítačů v reálném čase. Data o výkonu pro virtuální počítače se spustí poté jsou dostupné na portálu, dvě hodiny po mají spustila zjišťování. Důrazně se doporučuje počkejte alespoň den před vytvořením posouzení založená na výkon získat přesné doporučení pro správné velikosti. Pokud chcete pro rychlé provést synchronizaci dříve, můžete vytvořit posouzení s kritérium určení velikosti jako *jako místní* které nebude považovat za data o výkonu pro určení správné velikosti.
 
-    - Může trvat až 15 minut pro shromažďování a odesílání metadat konfigurace do projektu.
-    - Po shromáždění dat konfigurace, může trvat až hodinu, údaje o výkonu k dispozici na portálu.
-    - Po metadat je k dispozici na portálu, zobrazí se seznam virtuálních počítačů a můžete začít vytvářet skupiny pro posouzení.
-- **Průběžná zjišťování**: průběžné zjišťování, pamatujte na Tyhle věci:
-    - Konfigurační data pro virtuální počítač je k dispozici hodinu po spuštění zjišťování
-    - Údaje o výkonu se spustí poté jsou dostupné po 2 hodinách.
-    - Po spuštění zjišťování pro zařízení, která má být profilována prostředí před vytvořením posouzení alespoň den počkejte.
-
-**Čítač** | **Úroveň** | **Úroveň podle zařízení** | **Dopad na posouzení**
---- | --- | --- | ---
-CPU.Usage.average | 1 | Není k dispozici | Doporučené velikosti virtuálních počítačů a náklady  
-mem.usage.average | 1 | Není k dispozici | Doporučené velikosti virtuálních počítačů a náklady  
-virtualDisk.read.average | 2 | 2 | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
-virtualDisk.write.average | 2 | 2  | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
-virtualDisk.numberReadAveraged.average | 1 | 3 |  Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
-virtualDisk.numberWriteAveraged.average | 1 | 3 |   Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
-net.received.average | 2 | 3 |  Vypočítá velikost virtuálního počítače                          |
-net.transmitted.average | 2 | 3 | Vypočítá velikost virtuálního počítače     
+**Čítač** |  **Dopad na posouzení**
+--- | ---
+CPU.Usage.average | Doporučené velikosti virtuálních počítačů a náklady  
+mem.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
+virtualDisk.read.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+virtualDisk.write.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+virtualDisk.numberReadAveraged.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+virtualDisk.numberWriteAveraged.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+net.received.average | Vypočítá velikost virtuálního počítače                          
+net.transmitted.average | Vypočítá velikost virtuálního počítače     
 
 ## <a name="next-steps"></a>Další postup
 
