@@ -4,15 +4,15 @@ description: Tento článek shrnuje běžné otázky při nastavování zotaven�
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 11/19/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 248b2a748088330f91b3cc76564d5d8743f04411
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 99e108da5fc9c13d0a9ec65a485055d1b990f8b7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162479"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838223"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 

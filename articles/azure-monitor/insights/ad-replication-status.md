@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d0156ccc3caea2f47296740d57422ccc706f84f1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: be519dd2a6e6948bedeedd4166c7adf466dbb365
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634230"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836368"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitorování stavu replikace služby Active Directory pomocí služby Log Analytics
 
@@ -110,7 +110,7 @@ Po kliknutí na libovolnou položku v jednom seznamu se zobrazí další podrobn
 
 ![Chyby stavu replikace AD ve výsledcích hledání](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-Z tohoto místa můžete dále filtrovat, Upravit vyhledávací dotaz a podobně. Další informace o používání prohledávání protokolů, najdete v části [prohledávání protokolů](../../log-analytics/log-analytics-queries.md).
+Z tohoto místa můžete dále filtrovat, Upravit vyhledávací dotaz a podobně. Další informace o používání prohledávání protokolů, najdete v části [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md).
 
 **HelpLink** poli se zobrazí adresa URL stránky TechNet s dalšími podrobnosti o této konkrétní chyba. Můžete zkopírovat a vložit tento odkaz do okna prohlížeče, pokud chcete zobrazit informace o řešení potíží a opravě chyby.
 
@@ -154,4 +154,4 @@ Pokud potřebujete pomoc s připojením jeden z řadičů domény, můžete zobr
 Pokud nechcete, aby všechny řadiče domény připojit přímo ke službě Log Analytics nebo System Center Operations Manager, najdete v článku [povolit řadiči domény k odesílání dat AD do služby Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů v Log Analytics](../../log-analytics/log-analytics-queries.md) zobrazíte podrobné údaje o stavu replikace služby Active Directory.
+* Použití [prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md) zobrazíte podrobné údaje o stavu replikace služby Active Directory.

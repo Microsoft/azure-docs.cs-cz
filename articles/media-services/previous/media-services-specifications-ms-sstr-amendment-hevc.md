@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: johndeu;
-ms.openlocfilehash: 6330de2aa67fd83a5d4762c2c13d4916f642743d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f1301ba42c63a8241597bfe0e021a69b2a596758
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250930"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836776"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Technologie Smooth Streaming protokolu (MS-SSTR) změně pro HEVC
 
@@ -65,7 +65,7 @@ Následující termíny jsou specifické pro tento dokument:
 
  ### <a name="121-normative-references"></a>1.2.1 normativní odkazy 
 
->  [MS-SSTR] Smooth Streaming protokol *v20140502* [ http://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/.pdf [MS-SSTR]](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
+>  [MS-SSTR] Smooth Streaming protokol *v20140502* [https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 
 >   [ISO/IEC 14496 12] Mezinárodní organizace pro normalizaci, "informačních technologií – kódování audiovizuální objektů – část 12: ISO základní formát mediálního souboru", ISO/IEC 14496-12:2014, verze 4 a oprava 1, změny 1 a 2.
 >   <http://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>

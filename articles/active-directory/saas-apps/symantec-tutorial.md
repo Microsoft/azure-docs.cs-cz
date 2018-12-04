@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: dbf21c7c22a9b3273a65f7e186a2ac02ccae6ba2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b933bc5f5ecb39c3462e4e9bd300f1e07fd718c0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436203"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838767"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Kurz: Integrace Azure Active Directory s Symantec webové zabezpečení služby (WSS)
 
@@ -40,7 +40,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Symantec webové zabezpečení služby (WSS), potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - S účtem Symantec webové zabezpečení služby (WSS)
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Konfigurace integrace nástroje Symantec webové zabezpečení služby (WSS) do 
 
 **Chcete-li přidat Symantec webové zabezpečení služby (WSS) z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -170,7 +170,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 V této části vytvoříte uživateli Britta Simon v Symantec webové zabezpečení služby (WSS). Odpovídající koncové uživatelské jméno je ručně vytvořit na portálu služby WSS nebo můžete počkat, uživatele nebo skupiny zřízenou ve službě Azure AD a budou synchronizovat na portálu služby WSS za pár minut (přibližně 15 minut). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. Veřejnou IP adresu počítače koncového uživatele, který se použije k procházení websites je také potřeba ho zřídit na portálu společnosti Symantec webové zabezpečení služby (WSS).
 
 > [!NOTE]
-> Prosím [kliknutím sem](http://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) získat váš počítač je veřejná IP adresa.
+> Prosím [kliknutím sem](https://www.bing.com/search?q=my+ip+address&qs=AS&pq=my+ip+a&sc=8-7&cvid=29A720C95C78488CA3F9A6BA0B3F98C5&FORM=QBLH&sp=1) získat váš počítač je veřejná IP adresa.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -202,7 +202,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části budete testovat funkce přihlašování – teď, když jste nakonfigurovali WSS účet pro použití služby Azure AD pro ověřování SAML.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rafats
-ms.openlocfilehash: 4edf637d97070416c0dc2970f4bed483e5f4f34d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: dfb0048b29c5d63a2eee4c239e17ef222aad331e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621305"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837456"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Změna informačního kanálu ve službě Azure Cosmos DB
 

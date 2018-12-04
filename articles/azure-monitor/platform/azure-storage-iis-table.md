@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 78ce4a2bc61d5ab343710bae9f567e6d2b15b7db
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: df5c52de14368896f77e48ebfd4ba7e4b4f38b67
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684975"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837675"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Používání úložiště objektů blob v Azure pro službu IIS a Azure table storage pro události s využitím Log Analytics
 
@@ -123,7 +123,7 @@ Jakmile aktualizované konfigurace diagnostiky se použije ke cloudové službě
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Shromažďování protokolů ze služby Azure Storage pomocí webu Azure portal
 Na webu Azure portal můžete použít ke konfiguraci Log Analytics pro shromažďování protokolů u následujících služeb Azure:
 
-* Clustery Service Fabric
+* Clustery Service Fabricu
 * Virtuální počítače
 * Webové a pracovní role
 
@@ -195,4 +195,4 @@ Projděte si následující ukázkový skript, zkopírujte ho, podle potřeby up
 ## <a name="next-steps"></a>Další postup
 * [Shromažďovat protokoly a metriky pro služby Azure](collect-azure-metrics-logs.md) pro podporované služby Azure.
 * [Povolení řešení](../../azure-monitor/insights/solutions.md) k poskytování přehledů o data.
-* [Pomocí vyhledávacích dotazů](../../log-analytics/log-analytics-queries.md) chcete analyzovat data.
+* [Pomocí vyhledávacích dotazů](../../azure-monitor/log-query/log-query-overview.md) chcete analyzovat data.

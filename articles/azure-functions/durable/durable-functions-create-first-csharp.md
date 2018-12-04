@@ -11,20 +11,20 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c7153823ade64b086eb38046ed6d7cdb0e0a1381
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a0aed1fd65444397b3ca084cc0100aa5af49c918
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638631"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839498"
 ---
-# <a name="create-your-first-durable-function-in-c"></a>Vytvoření první funkce trvalý vC#
+# <a name="create-your-first-durable-function-in-c"></a>Vytvoření první funkce trvalý v jazyce C\#
 
 *Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Rozšíření spravuje stav, kontrolní body a restartuje za vás.
 
 V tomto článku se dozvíte, jak používat nástroje Visual Studio 2017 pro službu Azure Functions místně vytvořit a otestovat funkci "hello world" trvalý.  Tato funkce bude orchestrovat a zřetězit volání dalších funkcí. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást sady funkcí Azure – vývoj v sadě Visual Studio 2017.
 
-![Spouštění odolné funkce v cloudu](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
+![Odolné funkce spuštěné v Azure](./media/durable-functions-create-first-csharp/functions-vs-complete.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 3. Použijte nastavení uvedená v tabulce pod obrázkem.
 
-    ![Dialogové okno Nová funkce v sadě Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png) 
+    ![Dialogové okno Nová funkce v sadě Visual Studio](./media/durable-functions-create-first-csharp/functions-vs-new-function.png)
 
     | Nastavení      | Navrhovaná hodnota  | Popis                      |
     | ------------ |  ------- |----------------------------------------- |

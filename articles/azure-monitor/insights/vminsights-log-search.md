@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: bfed4318d09a776f56a5a4b6218120d75a49fc80
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: d12de42be9cf5d1a48288aabf21b25546e5b4bbc
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715194"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833071"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Jak provádět dotazy protokolů ze služby Azure Monitor pro virtuální počítače (Preview)
-Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, počítače a zpracování dat inventáře a informace o stavu a předá jej do úložiště dat Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [hledání](../../log-analytics/log-analytics-queries.md) v Log Analytics. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
+Azure Monitor pro virtuální počítače shromažďuje metriky výkonu a připojení, počítače a zpracování dat inventáře a informace o stavu a předá jej do úložiště dat Log Analytics ve službě Azure Monitor.  Tato data jsou k dispozici pro [hledání](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics. Tato data můžete použít scénáře, které zahrnují plánování migrace, kapacitu analýza, zjišťování a řešení potíží s výkonem na vyžádání.
 
 ## <a name="map-records"></a>Záznamy mapy
 Jeden záznam se vygeneruje za hodinu pro každý počítač jedinečné a proces, kromě záznamy, které jsou generovány, pokud proces nebo počítače spustí nebo je zprovozněný do Azure monitoru pro funkci mapování virtuálních počítačů. Tyto záznamy mají vlastnosti v následujících tabulkách. Pole a hodnoty v událostech ServiceMapComputer_CL mapují na pole počítače zdroje v rozhraní API Azure Resource Manageru ServiceMap. Pole a hodnoty v událostech ServiceMapProcess_CL mapují na pole v rozhraní API Azure Resource Manageru ServiceMap prostředku procesu. Pole ResourceName_s odpovídá poli Název odpovídající prostředku Resource Manageru. 

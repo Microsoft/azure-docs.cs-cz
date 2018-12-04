@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: stefanmsft
-ms.openlocfilehash: ac7664e94c6e02ab90dbb1b32a54c8234614afe2
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 559c737c4e8309527d588b59759b93750da33a9e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636267"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837711"
 ---
 # <a name="how-to-debug-issues-with-user-defined-functions-in-azure-digital-twins"></a>Jak ladit problémy s uživatelsky definovaných funkcí v Azure digitální dvojče
 
@@ -25,7 +25,7 @@ Vědět, jak diagnostikovat problémy, které vznikají v rámci vaší instanci
 
 ### <a name="enable-log-analytics-for-your-instance"></a>Povolení log analytics pro vaši instanci
 
-Protokoly a metriky pro vaši instanci Azure digitální dvojče jsou přístupné prostřednictvím služby Azure Monitor. Následující dokumentace předpokládá, že jste vytvořili [Azure Log Analytics](../log-analytics/log-analytics-queries.md) pracovní prostor prostřednictvím [webu Azure Portal](../log-analytics/log-analytics-quick-create-workspace.md), pomocí [rozhraní příkazového řádku Azure](../log-analytics/log-analytics-quick-create-workspace-cli.md), nebo prostřednictvím [ Prostředí PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md).
+Protokoly a metriky pro vaši instanci Azure digitální dvojče jsou přístupné prostřednictvím služby Azure Monitor. Následující dokumentace předpokládá, že jste vytvořili [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) pracovní prostor prostřednictvím [webu Azure Portal](../log-analytics/log-analytics-quick-create-workspace.md), pomocí [rozhraní příkazového řádku Azure](../log-analytics/log-analytics-quick-create-workspace-cli.md), nebo prostřednictvím [ Prostředí PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md).
 
 > [!NOTE]
 > Může dojít ke zpoždění 5 minut při odesílání událostí do **Log Analytics** poprvé.

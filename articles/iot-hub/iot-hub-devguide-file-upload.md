@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: dobett
-ms.openlocfilehash: 1d9e5b46460f04ad491ac741a62ee6d644985e61
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 724f655229347aa73747476e6bb4837b30e0fc4f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283423"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839002"
 ---
 # <a name="upload-files-with-iot-hub"></a>Nahrávání souborů pomocí služby IoT Hub
 
@@ -54,7 +54,7 @@ IoT Hub vrací následující údaje, které zařízení použije k nahrání so
 ```json
 {
     "correlationId": "somecorrelationid",
-    "hostName": "contoso.azure-devices.net",
+    "hostName": "yourstorageaccount.blob.core.windows.net",
     "containerName": "testcontainer",
     "blobName": "test-device1/image.jpg",
     "sasToken": "1234asdfSAStoken"

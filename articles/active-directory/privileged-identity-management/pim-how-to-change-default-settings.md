@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 09/21/2018
+ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 87003a053823cfc257a3b6f41699feefadbbcc66
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038988"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835161"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurace nastavení role adresáře Azure AD v PIM
 
@@ -50,7 +50,15 @@ Použití **aktivací** posuvník nastavit maximální dobu v hodinách, že rol
 
 ## <a name="notifications"></a>Oznámení
 
-Použití **oznámení** přepínač k určení, zda systém odesílá e-maily k potvrzení, že se aktivovat roli správce. To může být užitečné pro zjišťování nezákonných nebo neoprávněné aktivace.
+Použití **oznámení** přepínač k určení, jestli správci obdrží e-mailová oznámení, když se aktivují role. To může být užitečné pro zjišťování nezákonných nebo neoprávněné aktivace.
+
+Pokud je nastavena na **povolit**, oznámení se odesílají do:
+
+- Správce privilegované role
+- Správce zabezpečení
+- Globální správce
+
+Další informace najdete v tématu [e-mailová oznámení v PIM](pim-email-notifications.md).
 
 ## <a name="incidentrequest-ticket"></a>Lístek incidentu nebo žádosti
 

@@ -1,22 +1,20 @@
 ---
-title: Úvod do rozhraní API Cassandra v Azure Cosmos DB | Microsoft Docs
+title: Úvod do rozhraní API Cassandra v Azure Cosmos DB
 description: Zjistěte, jak pomocí služby Azure Cosmos DB provést migraci stávajících aplikací metodou „lift and shift“ a vytvářet nové aplikace využívající rozhraní API Cassandra s použitím ovladačů Cassandra a CQL, které už znáte.
 services: cosmos-db
 author: kanshiG
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
-ms.devlang: na
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1037f7921093d38d9020bafd9fd3597f27ca5011
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.openlocfilehash: 79c131be14de05e84eb21d6d53eefd1aa224df16
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230246"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834999"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Úvod do rozhraní API Cassandra v Azure Cosmos DB
 
@@ -40,7 +38,7 @@ Rozhraní API Cassandra umožňuje pracovat s daty uloženými v Azure Cosmos DB
 
 **Podniková úroveň**: V Azure Cosmos DB mají uživatelé k dispozici [certifikáty souladu](https://www.microsoft.com/trustcenter), které jim zajišťují bezpečné používání této platformy. Azure Cosmos DB také poskytuje šifrování v klidovém stavu a za provozu, firewall protokolu IP a protokoly auditu pro aktivity roviny řízení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Můžete rychle začít s vytvářením následujících aplikací v konkrétním jazyce určených k vytváření a správě dat rozhraní API Cassandra:
   - [Aplikace v Node.js](create-cassandra-nodejs.md)

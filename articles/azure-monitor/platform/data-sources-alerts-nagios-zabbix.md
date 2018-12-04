@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 3331ed7775cd3027f1262b195c6230fbea742497
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 32c8acb28eba0d5a19144e7c0f922f206976b6d0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336771"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833665"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Shromažďovat výstrahy z řešení Nagios a Zabbix v Log Analytics z agenta Log Analytics pro Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -80,7 +80,7 @@ Shromažďovat výstrahy Nagios serveru, proveďte následující kroky.
 
 
 ## <a name="alert-records"></a>Záznamy upozornění
-Záznamy upozornění můžete načíst z řešení Nagios a Zabbix pomocí [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) v Log Analytics.
+Záznamy upozornění můžete načíst z řešení Nagios a Zabbix pomocí [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics.
 
 ### <a name="nagios-alert-records"></a>Výstrahy Nagios záznamů
 
@@ -119,4 +119,4 @@ Výstrahy mají záznamy shromážděné Zabbix **typ** z **výstrah** a **Sourc
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) v Log Analytics.
-* Další informace o [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

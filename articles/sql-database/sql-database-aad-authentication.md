@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/03/2018
+ms.openlocfilehash: ff9011dda4a94f323b430a3860eadc8d970a23f7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244066"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838612"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Pomocí ověřování Azure Active Directory pro ověřování pomocí SQL
 
-Ověřování pomocí Azure Active Directory je mechanismus pro připojení k Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) pomocí identit v Azure Active Directory (Azure AD). 
+Ověřování pomocí Azure Active Directory je mechanismus pro připojení k Azure [SQL Database](sql-database-technical-overview.md), [Managed Instance](sql-database-managed-instance.md), a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) s využitím identit v Azure Active Directory (Azure AD). 
 
 > [!NOTE]
 > Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
@@ -84,15 +84,7 @@ Následující členy služby Azure AD se dá zřídit v Azure SQL server nebo S
 - Importované členové z jiných Azure AD, kteří jsou členy nativní nebo federované domény.
 - Skupiny služby Active Directory vytvoří jako skupin zabezpečení.
 
-Azure AD omezení týkající se spravovanou instanci:
-
-- Pouze správce Azure AD může vytvořit databáze, jsou omezená na jednu databázi uživatelů Azure AD a nemají toto oprávnění
-- Vlastnictví databáze:
-  - Instanční objekt Azure AD nemůže změnit vlastnictví databáze (vlastnosti AUTORIZACE ON databáze) a nelze ji nastavit jako vlastníka.
-  - Databáze vytvořené produktem správce Azure AD je nastavený žádný vlastnictví (owner_sid pole v sys.sysdatabases je 0x1).
-- Agent serveru SQL nelze spravovat, když se přihlásí pomocí objekty zabezpečení Azure AD.
-- Správce Azure AD nemůže být zosobněn pomocí EXECUTE AS
-- Objekty zabezpečení Azure AD nepodporuje připojení DAC.
+Azure AD přihlášení a uživatelů jsou podporovány jako funkci ve verzi preview pro [spravované instance](sql-database-managed-instance.md)
 
 Tyto funkce systému vracet hodnoty NULL při spuštění v rámci objektů zabezpečení Azure AD:
 

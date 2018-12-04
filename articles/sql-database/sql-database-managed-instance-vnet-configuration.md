@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 9d3f867dad40017e8e97ec4f5e370533b018263c
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: fcceecbd933980d0ab751fd5e377bbf810b9502e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181160"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837626"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravovanou instanci Azure SQL Database
 
@@ -66,6 +66,9 @@ K vytvoření Managed Instance, vytvořte vyhrazenou podsíť (podsíť Managed 
 |Správa  |80, 443, 12000|TCP     |Všechny              |Všechny        |Povolit |
 |mi_subnet   |Všechny           |Všechny     |Všechny              |MI PODSÍTĚ  |Povolit |
 
+  > [!Note]
+  > I když povinné zabezpečení příchozích pravidel povolit provoz z _jakékoli_ zdroje na portech 9000 9003, 1438, 1440, 1452 tyto porty jsou chráněné bránou firewall integrované. To [článku](sql-database-managed-instance-management-endpoint.md) ukazuje, jak lze zjistit IP adresu koncového bodu správy a ověřte pravidla brány firewall. 
+
 ##  <a name="determine-the-size-of-subnet-for-managed-instances"></a>Určit velikost podsítě pro Managed instance
 
 Když vytvoříte Managed Instance, Platforma Azure přiřadí počet virtuálních počítačů v závislosti na úroveň, na kterou jste zvolili během zřizování. Protože tyto virtuální počítače jsou spojeny s vaší podsítě, vyžadují IP adresy. K zajištění vysoké dostupnosti během standardních operací a údržby služby, může Azure přidělte další virtuální počítače. V důsledku toho počet požadované IP adresy v podsíti je větší než počet spravovaných instancí v této podsíti. 
@@ -73,7 +76,7 @@ Když vytvoříte Managed Instance, Platforma Azure přiřadí počet virtuáln�
 Návrh Managed Instance vyžaduje minimálně 16 IP adresy v podsíti a může použít až 256 IP adresy. V důsledku toho můžete použít masky podsítě velikosti/28 do /24 při definování rozsahy IP adres vaší podsítě. 
 
 > [!IMPORTANT]
-> Velikost podsítě s IP adresami 16 je minimum, s omezenou potenciál pro další Managed Instance horizontální navýšení kapacity. Když zvolíte podsítě s předponou velikost/27 nebo pod důrazně doporučujeme. 
+> Velikost podsítě s IP adresami 16 je minimum, s omezenou potenciál pro další Managed Instance horizontální navýšení kapacity. Když zvolíte podsítě s předponou velikost/27 nebo pod důrazně doporučujeme. 
 
 Pokud budete chtít nasadit víc instancí v podsíti spravované a třeba optimalizovat na velikost podsítě, použijte k výpočtu tyto parametry: 
 
@@ -84,7 +87,7 @@ Pokud budete chtít nasadit víc instancí v podsíti spravované a třeba optim
 **Příklad**: bude mít tři pro obecné účely a dvě obchodní kritické Managed instance. Že znamená, že potřebujete 5 + 3 * 2 + 2 * 4 = 19 IP adresy. Když rozsahy IP adres jsou definovány v Power BI 2, budete potřebovat IP rozsahu 32 (2 ^ 5) IP adresy. Proto musíte rezervovat podsíť s maskou podsítě/27. 
 
 > [!IMPORTANT]
-> Výpočet zobrazený nad bude stát zastaralým další vylepšení. 
+> Výpočet zobrazený nad bude stát zastaralým další vylepšení. 
 
 ## <a name="create-a-new-virtual-network-for-a-managed-instance"></a>Vytvoření nové virtuální sítě pro Managed Instance
 

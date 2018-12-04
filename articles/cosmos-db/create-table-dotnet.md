@@ -1,9 +1,8 @@
 ---
-title: 'Rychlý start: Table API s využitím .NET – Azure Cosmos DB | Dokumentace Microsoftu'
+title: 'Rychlý start: Table API s využitím .NET – Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Table API k vytvoření aplikace pomocí webu Azure Portal a .NET.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.custom: quickstart connect, mvc
@@ -11,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 9cda2c165d7d00ebb92907d54217a30d62df6c18
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: a36c1e68ddd68e497966d50122e9f27c72609948
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700032"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834447"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Table API pomocí .NET a Azure Cosmos DB 
 
@@ -169,7 +168,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření databázového účtu Azure Cosmos DB, vytvoření tabulky pomocí Průzkumníka dat a spuštění aplikace.  Teď můžete zadávat dotazy na svá data pomocí rozhraní API tabulky.  
 

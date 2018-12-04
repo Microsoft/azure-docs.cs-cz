@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5caa4940865ff0f0f684a8aa8c3164fee6f321b2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 383b73d335c8993aa99109c7430d2292a3bfea4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634451"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836436"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware Monitoring (Preview) ve službě Log Analytics
 
@@ -131,7 +131,7 @@ V **VMware** zobrazení řídicího panelu okna jsou uspořádané podle:
 
 Klikněte na libovolné okno otevřete podokno hledání Log Analytics, který zobrazuje detailní informace specifické pro okno.
 
-Tady můžete upravit vyhledávací dotaz upravit pro určitý objekt. Podrobné informace o vytváření prohledávání protokolů, najdete v článku [našla data pomocí prohledávání protokolů v Log Analytics](../../log-analytics/log-analytics-queries.md).
+Tady můžete upravit vyhledávací dotaz upravit pro určitý objekt. Podrobné informace o vytváření prohledávání protokolů, najdete v článku [našla data pomocí prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>Najít akce hostitele ESXi
 Jednoho hostitele ESXi generuje více protokolů na základě jejich procesů. Řešení VMware Monitoring centralizuje je a obsahuje souhrn počtu událostí. Toto zobrazení centralizované vám pomůže pochopit hostitele ESXi, který má k velkému počtu událostí a které události se nejčastěji vyskytují ve vašem prostředí.
@@ -206,6 +206,6 @@ Může existovat několik důvodů:
     d. Pokud soubor neexistuje nebo uživatel a skupina nastavení se nepovedlo, provést nápravné opatření [Příprava serveru s Linuxem](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
+* Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics, chcete-li zobrazit podrobné VMware hostovat data.
 * [Vytvářejte vlastní řídicí panely](../../azure-monitor/platform/dashboards.md) zobrazující data hostitele VMware.
 * [Vytvořit upozornění](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) Pokud dojde k určité událostem hostitele VMware.

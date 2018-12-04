@@ -4,21 +4,18 @@ description: Zjistěte, jak pomocí knihovny BulkExecutor hromadně importovat d
 services: cosmos-db
 keywords: graph, gremlin, bulk, bulkexecutor, migration, data, cosmosdb, cosmos, database, import
 author: luisbosquez
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 39abf6d6da8a8035cf486ceb30b9c21186bbb925
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
-ms.translationtype: HT
+ms.openlocfilehash: d5a25bd7cab68f77a37b14ba41bf3cc832c2125f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234411"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836708"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Použití knihovny BulkExecutor .NET pro grafy k provádění hromadných operací v rozhraní Gremlin API služby Azure Cosmos DB
 
@@ -159,7 +156,7 @@ Nastavení|Popis
 2. Spusťte aplikaci. Tím se dvakrát zavolá `BulkImportAsync`, jednou kvůli importu vrcholů a jednou kvůli importu hran. Pokud některý z objektů při vkládání vygeneruje chybu, přidá se do souboru `.\BadVertices.txt` nebo `.\BadEdges.txt`.
 3. Odešlete dotaz na databázi grafu a vyhodnoťte výsledky. Pokud je možnost `ShouldCleanupOnFinish` nastavená na hodnotu true, databáze se automaticky odstraní.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Podrobné informace o balíčku NuGet a poznámky k verzi knihovny BulkExecutor .NET najdete v [podrobnostech o sadě BulkExecutor SDK](sql-api-sdk-bulk-executor-dot-net.md). 
 * Pokud chcete ještě více optimalizovat využití knihovny BulkExecutor, přečtěte si [Tipy pro zvýšení výkonu](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips).
 * V [článku o oboru názvů BulkExecutor.Graph](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) najdete další podrobnosti o třídách a metodách definovaných v tomto oboru názvů.

@@ -5,14 +5,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: c3e643052c3a4879f1b5cd91e5e58be508880ce5
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 7dc1be1316d833d4a37a8b46bf0145089bb3ae22
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722254"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839115"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Odstranění trezoru služby Site Recovery
 

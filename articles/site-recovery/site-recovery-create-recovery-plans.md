@@ -4,14 +4,14 @@ description: Zjistěte, jak vytvářet a přizpůsobovat plány obnovení pro zo
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 5253b5743216fdb7cea9e3d387f64fdba8f56d8a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: aed37195f352719f3363992e4cee1e339e6e6056
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212331"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835586"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Vytvoření a přizpůsobení plánů obnovení
 

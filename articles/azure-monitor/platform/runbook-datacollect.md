@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 4cea2b7feb6d21a0566a4876414b2d75abc29959
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9f4ee3bdba87747a04dd4a5af9391c9dba6e1b51
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681751"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834209"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
 Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) na agentech a také [shromažďovat data z Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
@@ -145,7 +145,7 @@ Azure Automation obsahuje prostředí tak, aby [otestovat sadu runbook](../../au
     ![Výstup příspěvku](media/runbook-datacollect/post-output.png)
 
 ## <a name="5-verify-records-in-log-analytics"></a>5. Zkontrolujte záznamy v Log Analytics
-Sada runbook byla dokončena v testu a ověřit, že výstup byl úspěšně přijat, můžete ověřit, že záznamy byly vytvořeny pomocí [prohledávání protokolů v Log Analytics](../../log-analytics/log-analytics-queries.md).
+Sada runbook byla dokončena v testu a ověřit, že výstup byl úspěšně přijat, můžete ověřit, že záznamy byly vytvořeny pomocí [prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
 
 ![Výstup protokolu](media/runbook-datacollect/log-output.png)
 

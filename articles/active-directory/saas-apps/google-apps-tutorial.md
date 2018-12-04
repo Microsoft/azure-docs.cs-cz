@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: jeedes
-ms.openlocfilehash: b8f6e69169cd146ec9dd20d8dad43b74ddb59228
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bcea7848c7331ecd326f0ccb6ab9f543ce972205
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726876"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Kurz: Integrace Azure Active Directory se službou G Suite
 
@@ -154,8 +154,8 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     |--|
     | `google.com/a/<yourdomain.com>` |
     | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory G Suite klienta](https://www.google.com/contact/) k získání těchto hodnot.
@@ -190,7 +190,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace G Suite](common/configuresection.png)
 
-9. Otevření nové záložky v prohlížeči a přihlaste se [konzoly pro správu G Suite](http://admin.google.com/) pomocí účtu správce.
+9. Otevření nové záložky v prohlížeči a přihlaste se [konzoly pro správu G Suite](https://admin.google.com/) pomocí účtu správce.
 
 10. Klikněte na tlačítko **zabezpečení**. Pokud nevidíte odkaz, mohou být skryty pod **další ovládací prvky** nabídce v dolní části obrazovky.
 

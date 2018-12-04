@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 558df3fa70989aaf9ba182df3a918994c7dc9db6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1f1797cf3022285f81991eb15818b68df195de4b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243705"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834124"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Přidat vlastníky a uživatele ve službě Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -69,15 +69,11 @@ Následující postup vás provede procesem přidávání roli vlastníka nebo u
 3. V seznamu testovacích prostředí vyberte požadované prostředí.
 4. V okně testovacího prostředí, vyberte **konfigurace a zásad**. 
 5. Na **konfigurace a zásad** stránce **řízení přístupu (IAM)** z nabídky na levé straně. 
-6. Vyberte **přidat** na panelu nástrojů můžete přidat uživatele k roli.
-
-    ![Přidání uživatele](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
+6. Vyberte **přidat přiřazení role** na panelu nástrojů můžete přidat uživatele k roli.
 1. V **přidat oprávnění** okno, proveďte následující akce: 
     1. Vyberte roli (Příklad: uživatel služby DevTest Labs). V části [akce, které lze provádět v každé role](#actions-that-can-be-performed-in-each-role) uvádí různé akce, které mohou provádět uživatelé v rolích vlastník, uživatel služby DevTest a Přispěvatel.
     2. Vyberte uživatele, který má být přidáni do role. 
     3. Vyberte **Uložit**. 
-
-        ![Přidání uživatele do role](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. Po návratu k **uživatelé** okně se uživateli přidala.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Přidat externího uživatele do testovacího prostředí pomocí Powershellu

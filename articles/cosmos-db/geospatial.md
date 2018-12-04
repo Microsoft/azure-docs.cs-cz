@@ -1,20 +1,18 @@
 ---
-title: Práce s Geoprostorová data v účtu rozhraní SQL API služby Azure Cosmos DB | Dokumentace Microsoftu
+title: Práce s Geoprostorová data v účtu rozhraní SQL API služby Azure Cosmos DB
 description: Naučte se vytvářet, indexování a dotazovat Prostorové objekty s Azure Cosmos DB a rozhraní SQL API.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 1de97ef34ab2db79ef7eaeca66cb8d0598ae9262
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 947a39a3660e0755efbf99b74b66d2c16e331e07
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284485"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837048"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Použití geoprostorových a GeoJSON umístění dat pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 

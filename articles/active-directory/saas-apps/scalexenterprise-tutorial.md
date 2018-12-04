@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 04708806b9e1ba224e7b438f11c68dca82d6320e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 60beecc0895fbfb5d3af7817e8b76e0819c89a99
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448814"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Kurz: Integrace Azure Active Directory ScaleX Enterprise
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s ScaleX Enterprise, budete potřebovat následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - ScaleX podnikové jednotné přihlašování v předplatném povolené
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Ke konfiguraci integrace ScaleX Enterprise v Azure AD, budete muset přidat Scal
 
 **Přidání organizace ScaleX z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -123,7 +123,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     V **přihlašovací adresa URL** textového pole zadejte hodnotu pomocí následujícího vzorce: `https://platform.rescale.com/saml2/<company id>/sso/`
      
     > [!NOTE] 
-    > Ty nejsou skutečné hodnoty. Tyto hodnoty aktualizujte pomocí skutečné identifikátor, adresa URL odpovědi nebo přihlašovací adresa URL. Kontakt [tým podpory ScaleX Enterprise Client](http://info.rescale.com/contact_sales) k získání těchto hodnot. 
+    > Ty nejsou skutečné hodnoty. Tyto hodnoty aktualizujte pomocí skutečné identifikátor, adresa URL odpovědi nebo přihlašovací adresa URL. Kontakt [tým podpory ScaleX Enterprise Client](https://info.rescale.com/contact_sales) k získání těchto hodnot. 
 
 1. Vaše aplikace ScaleX očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba upravit mapování vlastních atributů do vaší konfigurace atributy tokenu SAML. Klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** příslušných políček otevřete vlastní atributy nastavení.
 

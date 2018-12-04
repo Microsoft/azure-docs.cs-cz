@@ -1,9 +1,8 @@
 ---
-title: 'Azure Cosmos DB: Vytvoření aplikace seznamu úkolů v prostředí Xamarin | Microsoft Docs'
+title: 'Azure Cosmos DB: Vytvoření aplikace seznamu úkolů v prostředí Xamarin'
 description: Obsahuje ukázku kódu Xamarin, kterou můžete použít k připojení ke službě Azure Cosmos DB a jejímu dotazování.
 services: cosmos-db
 author: codemillmatt
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc
@@ -11,17 +10,18 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: c48c5f116ef9c5716533ca28ccfd58b613facd26
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 0099bacb98d921a852ece8787bcb7152c5eae3f2
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993321"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838562"
 ---
 # <a name="azure-cosmos-db-build-a-todo-app-with-xamarin"></a>Azure Cosmos DB: Vytvoření aplikace seznamu úkolů v prostředí Xamarin
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
+> * [.NET (preview)](create-sql-api-dotnet-preview.md)
 > * [Java](create-sql-api-java.md)
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
@@ -245,7 +245,7 @@ V následujících krocích se dozvíte, jak aplikaci spustit s použitím ladic
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB, vytvoření kolekce pomocí Průzkumníku dat a sestavení a nasazení aplikace Xamarin. Teď můžete do svého účtu služby Azure Cosmos DB importovat další data.
 

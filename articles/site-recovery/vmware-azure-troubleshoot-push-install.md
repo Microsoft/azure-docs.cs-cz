@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 10/29/2018
-ms.openlocfilehash: a9738f95ce8a0de750ffa348e167bce3b0e659f6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.date: 11/27/2018
+ms.openlocfilehash: b3e2beb0245fa790dc60cf742d6ad8938de187f4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821391"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832577"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
@@ -102,7 +102,7 @@ Instalace služby VSS je součástí instalace agenta Mobility. Tato služba se 
 
 Tento problém většinou dochází, když antivirový software blokuje provoz služby Azure Site Recovery. Chcete-li vyřešit,
 
-1. Vyloučit všechny složky, které jsou uvedené [tady](vmware-azure-set-up-source.md#exclude-antivirus-on-the-configuration-server).
+1. Vyloučit všechny složky, které jsou uvedené [tady](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program).
 2. Postupujte podle pokynů publikovaných poskytovatelem antivirový program odblokujete registrace knihovny DLL ve Windows.
 
 ### <a name="vss-error-7-0x7---exit-code-511"></a>Došlo k chybě VSS 7 [0x7] - ukončovací kód 511

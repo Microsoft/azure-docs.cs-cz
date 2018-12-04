@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 6483ba9f070252f58e0e3706472939dbfab12b59
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 1520e683fdd4ab2f2731f5eb0d3a1a30fed81723
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445034"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833478"
 ---
 # <a name="heading"></a>Ukázková data v SQL serveru v Azure
 
@@ -30,9 +30,9 @@ Použití Pythonu vzorkování [pyodbc](https://code.google.com/p/pyodbc/) ODBC 
 > 
 
 **Proč ukázková data?**
-Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. To usnadňuje pochopení dat, prozkoumávání a vytváření funkcí. V jeho role [vědecké zpracování týmových dat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) je umožnit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
+Pokud je velké datové sady, které chcete analyzovat, je obvykle vhodné na nižší dat ke snížení velikosti menší, ale reprezentativní a lépe zvládnutelné. To usnadňuje pochopení dat, prozkoumávání a vytváření funkcí. V jeho role [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) je umožnit rychlé vytváření prototypů funkcí pro zpracování dat a modelů strojového učení.
 
-Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Tato úloha vzorkování je krok [vědecké zpracování týmových dat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="SQL"></a>Pomocí SQL
 Tato část popisuje několik metod, pomocí jazyka SQL k provedení jednoduchého výběrová s daty v databázi. Vyberte metodu na základě velikost vašich dat a jeho distribuci.

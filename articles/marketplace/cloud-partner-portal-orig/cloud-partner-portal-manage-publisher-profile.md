@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 16e3e73e00af1cc6c2c531575345f12c288f1b69
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8459866aa192f2364ae52d0d5d68eace693e127e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853689"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832679"
 ---
 # <a name="manage-azure-marketplace-and-appsource-publisher-profile"></a>Správa profilu vydavatele "Azure Marketplace" a "AppSource.
 
@@ -27,7 +27,7 @@ Tento dokument je návod, jak na zobrazení a správy uživatelů k vašemu prof
 
 V tuto chvíli jste dokončili kroky, abyste se na vydavatele Azure Marketplace a AppSource. Profil vydavatele je zaregistrovaná na **[portál partnerů cloudu](https://cloudpartner.azure.com/)** po schválení vaší žádosti o partnera. Svůj profil vydavatele se budou vztahovat na všechny nabídky a skladové položky publikované z účet použitý během registrace partnera.
 
-Pokud vaše společnost ještě nezaregistrovali jako cloud partner, najdete v článku [začít pracovat s portálem cloud partner](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal).
+Pokud vaše společnost ještě nezaregistrovali jako cloud partner, najdete v článku [začít pracovat s portálem cloud partner](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal).
 
 **Profil vydavatele**: svůj profil vydavatele odlišuje vaší společnosti na Azure Marketplace a AppSource. Zahrnuje ID vydavatele, zobrazovaný název a vlastníka email(s). Dobře spravovaného profilu se zvýší viditelnost a pomozte uživatelům marketplace snadno identifikovat a vyberte příslušné nabídky.
 

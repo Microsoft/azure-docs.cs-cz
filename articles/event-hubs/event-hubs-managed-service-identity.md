@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: shvija
-ms.openlocfilehash: 815a6ff528e024ed1685b09b66f8fabce4d360c1
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 51b9aa33fd186a46d51f7e2fb64b42648b854cd3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784549"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833903"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>Spravované identity pro prostředky Azure pomocí služby Event Hubs
 
@@ -55,11 +55,7 @@ Po povolení funkce, je novou identitu služby vytvořené ve službě Azure Act
 
 Dále [vytvořte obor názvů služby Event Hubs](event-hubs-create.md) v jedné oblasti Azure, které nabízí podporu verze preview pro spravované identity pro prostředky Azure: **oblasti USA – východ**, **USA – východ 2**, nebo  **Západní Evropa**. 
 
-Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat** přidáte spravovanou identitu do **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**.
-
-![](./media/event-hubs-managed-service-identity/msi2.png)
- 
-Spravovaná identita pro webové aplikace teď má přístup k oboru názvů Event Hubs a do centra událostí, kterou jste vytvořili dřív. 
+Přejděte do oboru názvů **řízení přístupu (IAM)** stránky na portálu a potom klikněte na tlačítko **přidat přiřazení role** přidáte spravovanou identitu do **vlastníka** role. Uděláte to tak, vyhledejte název webové aplikace v **přidat oprávnění** panel **vyberte** pole a potom klikněte na příslušnou položku. Potom klikněte na **Uložit**. Spravovaná identita pro webové aplikace teď má přístup k oboru názvů Event Hubs a do centra událostí, kterou jste vytvořili dřív. 
 
 ### <a name="run-the-app"></a>Spuštění aplikace
 

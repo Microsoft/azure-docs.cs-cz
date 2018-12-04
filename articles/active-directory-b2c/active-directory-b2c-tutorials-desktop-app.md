@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.author: davidmu
-ms.date: 2/28/2018
+ms.date: 11/30/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: a7a861ccff168655d866d8c9205160bface79c9e
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: a135dd0b350a6129d94f1c6b0b185c3fb272668f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913406"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834488"
 ---
 # <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Kurz – Povolení ověřování účtů pomocí Azure Active Directory B2C pro desktopovou aplikaci
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Zaregistrovat ukázkovou desktopovou aplikaci ve svém tenantovi Azure AD B2C.
-> * Vytvořit zásady pro registraci a přihlašování uživatelů, úpravy profilu a resetování hesla.
+> * Vytvořit toky uživatelů pro uživatele, registrace a přihlašování, úpravy profilu a resetování hesla.
 > * Nakonfigurovat ukázkovou aplikaci pro použití vašeho tenanta Azure AD B2C.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -57,7 +57,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální s
     | **Zahrnout webovou aplikaci nebo webové rozhraní API** | Ne | V případě desktopové aplikace vyberte **Ne**. |
     | **Zahrnout nativního klienta** | Ano | Vzhledem k tomu, že se jedná o desktopovou aplikaci, považuje se za nativního klienta. |
     | **Identifikátor URI přesměrování** | Výchozí hodnoty | Jedinečný identifikátor, na který Azure AD B2C přesměruje uživatelského agenta v odpovědi OAuth 2.0. |
-    | **Vlastní identifikátor URI přesměrování** | `com.onmicrosoft.contoso.appname://redirect/path` | Zadejte `com.onmicrosoft.<your tenant name>.<any app name>://redirect/path`. Zásady na tento identifikátor URI odesílají tokeny. |
+    | **Vlastní identifikátor URI přesměrování** | `com.onmicrosoft.contoso.appname://redirect/path` | Zadejte `com.onmicrosoft.<your tenant name>.<any app name>://redirect/path` toky uživatelů pro tento identifikátor URI odesílají tokeny. |
     
 3. Kliknutím na **Vytvořit** svou aplikaci zaregistrujte.
 
@@ -67,65 +67,89 @@ Zaregistrované aplikace se zobrazí v seznamu aplikací pro příslušného ten
 
 Poznamenejte si **ID klienta aplikace**. Toto ID jednoznačně identifikuje aplikaci a je potřeba při konfiguraci aplikace později v tomto kurzu.
 
-## <a name="create-policies"></a>Vytvoření zásad
+## <a name="create-user-flows"></a>Vytvořit toky uživatelů
 
-Zásada Azure AD B2C definuje pracovní postupy uživatelů. Běžnými pracovními postupy jsou například registrace, přihlášení, změna hesla a úpravy profilu.
+Tok uživatele Azure AD B2C definuje uživatelské prostředí pro úlohu identity. Například registrace, přihlášení, změna hesla a úpravy profilu jsou běžné toky uživatelů.
 
-### <a name="create-a-sign-up-or-sign-in-policy"></a>Vytvoření zásady registrace nebo přihlašování
+### <a name="create-a-sign-up-or-sign-in-user-flow"></a>Vytvořit tok registrace / přihlášení uživatele
 
-Pro registraci uživatelů, která jim umožní přístup k přihlášení k desktopové aplikaci, vytvořte **zásadu registrace nebo přihlašování**.
+Registrovat uživatele pro přístup k přihlášení do desktopové aplikace, vytvořte **tok registrace / přihlášení uživatele**.
 
-1. Na stránce portálu Azure AD B2C vyberte **Zásady registrace nebo přihlašování** a klikněte na **Přidat**.
+1. Na stránce portálu Azure AD B2C vyberte **toky uživatelů** a klikněte na tlačítko **nový tok uživatele**.
+2. Na **doporučená** klikněte na tlačítko **podepsat a přihlašování**.
 
-    Ke konfiguraci zásady použijte následující nastavení:
+    Ke konfiguraci vašeho toku uživatele, použijte následující nastavení:
 
-    ![Přidání zásady registrace nebo přihlašování](media/active-directory-b2c-tutorials-desktop-app/add-susi-policy.png)
-
-    | Nastavení      | Navrhovaná hodnota  | Popis                                        |
-    | ------------ | ------- | -------------------------------------------------- |
-    | **Název** | SiUpIn | Zadejte **Název** zásady. K názvu zásady se přidá předpona **B2C_1_**. Úplný název zásady **B2C_1_SiUpIn** použijete ve vzorovém kódu. | 
-    | **Zprostředkovatel identity** | E-mailová registrace | Zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
-    | **Atributy registrace** | Zobrazované jméno a PSČ | Vyberte atributy, které se při registraci shromáždí od uživatele. |
-    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, Uživatel je nový, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token). |
-
-2. Kliknutím na **Vytvořit** vytvořte zásadu. 
-
-### <a name="create-a-profile-editing-policy"></a>Vytvoření zásady upravování profilu
-
-Pokud chcete uživatelům umožnit resetovat informace o svém profilu uživatele, vytvořte **zásadu upravování profilu**.
-
-1. Na stránce portálu Azure AD B2C vyberte **Zásady upravování profilu** a klikněte na **Přidat**.
-
-    Ke konfiguraci zásady použijte následující nastavení:
+    ![Přidání toku registrace nebo přihlašování uživatelů](media/active-directory-b2c-tutorials-desktop-app/add-susi-user-flow.png)
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Název** | SiPe | Zadejte **Název** zásady. K názvu zásady se přidá předpona **B2C_1_**. Úplný název zásady **B2C_1_SiPe** použijete ve vzorovém kódu. | 
-    | **Zprostředkovatel identity** | Registrace místního účtu | Zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
-    | **Atributy profilu** | Zobrazované jméno a PSČ | Vyberte atributy, které můžou uživatelé při úpravě profilu změnit. |
-    | **Deklarace identity aplikace** | Zobrazované jméno, PSČ, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token) po úspěšné úpravě profilu. |
+    | **Název** | SiUpIn | Zadejte **název** pro tok uživatele. Název toku uživatele se s předponou **B2C_1_**. Použijte úplné uživatelské jméno, tok **B2C_1_SiUpIn** ve vzorovém kódu. | 
+    | **Zprostředkovatelé identit** | E-mailová registrace | Zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
 
-2. Kliknutím na **Vytvořit** vytvořte zásadu. 
+3.  V části **atributy uživatele a deklarace identity**, klikněte na tlačítko **zobrazit více** a vyberte následující nastavení:
 
-### <a name="create-a-password-reset-policy"></a>Vytvoření zásady resetování hesla
+    ![Přidání uživatele atributech a deklaracích identit](media/active-directory-b2c-tutorials-desktop-app/add-attributes-and-claims.png)
 
-Pokud chcete ve své aplikaci povolit resetování hesla, musíte vytvořit **zásadu resetování hesla**. Tato zásada popisuje uživatelské prostředí pro resetování hesla a obsah tokenů, které bude aplikace přijímat po úspěšném dokončení.
+    | Sloupec      | Navrhované hodnoty  | Popis                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Shromažďovat atribut** | Zobrazované jméno a PSČ | Vyberte atributy, které se při registraci shromáždí od uživatele. |
+    | **Vrátí deklarace identity** | Zobrazované jméno, PSČ, Uživatel je nový, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token). |
 
-1. Na stránce portálu Azure AD B2C vyberte **Zásady resetování hesla** a klikněte na **Přidat**.
+4. Klikněte na **OK**.
 
-    Ke konfiguraci zásady použijte následující nastavení.
+5. Klikněte na tlačítko **vytvořit** vytvoříte požadovaný tok uživatele. 
+
+### <a name="create-a-profile-editing-user-flow"></a>Vytvořit tok uživatele upravování profilu
+
+Povolit uživatelům resetovat jejich informace profilu uživatele na své vlastní, vytvořte **tok uživatele upravování profilu**.
+
+1. Na stránce portálu Azure AD B2C vyberte **tok uživatele** a klikněte na tlačítko **nový tok uživatele**.
+2. Na **doporučená** klikněte na tlačítko **upravování profilu**.
+
+    Ke konfiguraci vašeho toku uživatele, použijte následující nastavení:
 
     | Nastavení      | Navrhovaná hodnota  | Popis                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Název** | SSPR | Zadejte **Název** zásady. K názvu zásady se přidá předpona **B2C_1_**. Úplný název zásady **B2C_1_SSPR** použijete ve vzorovém kódu. | 
-    | **Zprostředkovatel identity** | Resetování hesla s použitím e-mailové adresy | Toto je zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
-    | **Deklarace identity aplikace** | ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token) po úspěšném resetování hesla. |
+    | **Název** | SiPe | Zadejte **název** pro tok uživatele. Název toku uživatele se s předponou **B2C_1_**. Použijte úplné uživatelské jméno, tok **B2C_1_SiPe** ve vzorovém kódu. | 
+    | **Zprostředkovatelé identit** | Registrace místního účtu | Zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
 
-2. Kliknutím na **Vytvořit** vytvořte zásadu. 
+3. V části **atributy uživatele**, klikněte na tlačítko **zobrazit více** a vyberte následující nastavení:
+
+    | Sloupec      | Navrhované hodnoty  | Popis                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Shromažďovat atribut** | Zobrazované jméno a PSČ | Vyberte atributy, které můžou uživatelé při úpravě profilu změnit. |
+    | **Vrátí deklarace identity** | Zobrazované jméno, PSČ, ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token) po úspěšné úpravě profilu. |
+
+4. Klikněte na **OK**.
+5. Klikněte na tlačítko **vytvořit** vytvoříte požadovaný tok uživatele. 
+
+### <a name="create-a-password-reset-user-flow"></a>Vytvořit tok uživatele resetování hesla
+
+Pokud chcete povolit resetování hesla na aplikaci, je potřeba vytvořit **resetování hesel, tok uživatele**. Tento tok uživatele popisuje uživatelské prostředí při resetování hesla a obsah tokenů, které aplikace obdrží při úspěšném dokončení.
+
+1. Na stránce portálu Azure AD B2C vyberte **toky uživatelů** a klikněte na tlačítko **nový tok uživatele**.
+2. Na **doporučená** klikněte na tlačítko **resetování hesla**.
+
+    Ke konfiguraci vašeho toku uživatele, použijte následující nastavení.
+
+    | Nastavení      | Navrhovaná hodnota  | Popis                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Název** | SSPR | Zadejte **název** pro tok uživatele. Název toku uživatele se s předponou **B2C_1_**. Použijte úplné uživatelské jméno, tok **B2C_1_SSPR** ve vzorovém kódu. | 
+    | **Zprostředkovatelé identit** | Resetování hesla s použitím e-mailové adresy | Toto je zprostředkovatel identity sloužící k jednoznačné identifikaci uživatele. |
+
+3. V části **deklarace identit aplikace**, klikněte na tlačítko **zobrazit více** a vyberte následující nastavení:
+
+    | Sloupec      | Navrhovaná hodnota  | Popis                                        |
+    | ------------ | ------- | -------------------------------------------------- |
+    | **Vrátí deklarace identity** | ID objektu uživatele | Vyberte [deklarace identity](../active-directory/develop/developer-glossary.md#claim), které chcete zahrnout do [přístupového tokenu](../active-directory/develop/developer-glossary.md#access-token) po úspěšném resetování hesla. |
+
+4. Klikněte na **OK**.
+5. Klikněte na tlačítko **vytvořit** vytvoříte požadovaný tok uživatele. 
 
 ## <a name="update-desktop-app-code"></a>Aktualizace kódu desktopové aplikace
 
-Když teď máte zaregistrovanou desktopovou aplikaci a vytvořené zásady, musíte svou aplikaci nakonfigurovat tak, aby používala vašeho tenanta Azure AD B2C. V tomto kurzu nakonfigurujete ukázkovou desktopovou aplikaci. 
+Teď máte zaregistrovanou desktopovou aplikaci a vytvořené toky uživatelů, musíte nakonfigurovat aplikaci, aby používala vašeho tenanta Azure AD B2C. V tomto kurzu nakonfigurujete ukázkovou desktopovou aplikaci. 
 
 [Stáhněte si soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip), [projděte si úložiště](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) nebo naklonujte ukázku z GitHubu.
 
@@ -135,7 +159,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.g
 
 Ukázková desktopová aplikace WPF předvádí, jak může desktopová aplikace pomocí Azure AD B2C registrovat a přihlašovat uživatele a volat chráněné rozhraní API.
 
-Aplikaci musíte změnit tak, aby používala registraci aplikace ve vašem tenantovi, a nakonfigurovat zásady, které jste vytvořili. 
+Je třeba změnit aplikaci, aby používala registraci aplikace ve vašem tenantovi a nakonfigurovat toky uživatelů, kterou jste vytvořili. 
 
 Nastavení aplikace můžete změnit následujícím způsobem:
 
@@ -148,7 +172,7 @@ Nastavení aplikace můžete změnit následujícím způsobem:
     private static string ClientId = "The Application ID for your desktop app registered in your tenant";
     ```
 
-3. Aktualizujte proměnnou **PolicySignUpSignIn** na název *zásady registrace nebo přihlašování*, kterou jste vytvořili v předchozím kroku. Nezapomeňte použít předponu *B2C_1_*.
+3. Aktualizace **PolicySignUpSignIn** proměnnou *tok registrace / přihlášení uživatele* názvu, kterou jste vytvořili v předchozím kroku. Nezapomeňte použít předponu *B2C_1_*.
 
     ```C#
     public static string PolicySignUpSignIn = "B2C_1_SiUpIn";
@@ -162,11 +186,11 @@ Ukázková aplikace podporuje registraci, přihlašování, úpravy profilu a re
 
 ### <a name="sign-up-using-an-email-address"></a>Registrace pomocí e-mailové adresy
 
-1. Klikněte na tlačítko **Sign In** (Přihlásit se) a zaregistrujte se jako uživatel desktopové aplikace. Tady se používá zásada **B2C_1_SiUpIn**, kterou jste definovali v předchozím kroku.
+1. Klikněte na tlačítko **Sign In** (Přihlásit se) a zaregistrujte se jako uživatel desktopové aplikace. Tady se používá **B2C_1_SiUpIn** tok uživatele, které jste definovali v předchozím kroku.
 
 2. Azure AD B2C zobrazí přihlašovací stránku s odkazem na registraci. Protože ještě nemáte účet, klikněte na odkaz **Sign up now** (Zaregistrovat se). 
 
-3. Pracovní postup registrace zobrazí stránku pro shromáždění a ověření identity uživatele pomocí e-mailové adresy. Pracovní postup registrace shromažďuje také heslo uživatele a požadované atributy definované v zásadě.
+3. Pracovní postup registrace zobrazí stránku pro shromáždění a ověření identity uživatele pomocí e-mailové adresy. Pracovní postup registrace shromažďuje také heslo uživatele a požadované atributy definované v toku uživatele.
 
     Použijte platnou e-mailovou adresu a proveďte ověření pomocí ověřovacího kódu. Nastavte heslo. Zadejte hodnoty požadovaných atributů. 
 
@@ -183,9 +207,9 @@ Teď se uživatel může přihlásit pomocí své e-mailové adresy a používat
 
 Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů k Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svého tenanta Azure AD B2C odstranit](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak vytvořit tenanta Azure AD B2C, vytvořit zásady a aktualizovat ukázkovou desktopovou aplikaci tak, aby používala vašeho tenanta Azure AD B2C. V dalším kurzu zjistíte, jak zaregistrovat, nakonfigurovat a volat chráněné webové rozhraní API z desktopové aplikace.
+V tomto kurzu jste zjistili, jak vytvořit tenanta Azure AD B2C, vytvořit toky uživatelů a aktualizovat ukázkovou desktopovou aplikaci, aby používala vašeho tenanta Azure AD B2C. V dalším kurzu zjistíte, jak zaregistrovat, nakonfigurovat a volat chráněné webové rozhraní API z desktopové aplikace.
 
 > [!div class="nextstepaction"]
 > 

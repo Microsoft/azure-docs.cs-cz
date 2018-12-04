@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 75ec3cf41a70722001ec51185d83aded0a69efff
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 464e497c806a0b3172cbf4f5ae802693def1b435
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684583"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832662"
 ---
 # <a name="configure-collection-of-azure-paas-resource-metrics-with-log-analytics"></a>Konfigurace shromažďování metrik prostředků Azure PaaS s využitím Log Analytics
 
@@ -81,7 +81,7 @@ Zobrazí výzva k zodpovězení stejné informace, jako když jste spustili skri
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
 
 * Použití [vlastní pole](../../log-analytics/log-analytics-custom-fields.md)(k analýze záznamů událostí do jednotlivých polí.
 

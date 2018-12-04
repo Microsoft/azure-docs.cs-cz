@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: c5422c9894c66348d571b757e50073d2a5501c7b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f46cb8f0d0b04b0cff5d3118906f11a060a55f80
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440094"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Kurz: Integrace Azure Active Directory službami pro správu měřítka
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s účastí Management Services, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Účasti Management Services jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Pokud chcete nakonfigurovat integraci služeb účast správy do služby Azure A
 
 **Přidání služby pro účast z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -113,7 +113,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://id.obc.jp/<tenant information >/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory účast Management Services Client](http://www.obcnet.jp/) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory účast Management Services Client](https://www.obcnet.jp/) k získání těchto hodnot.
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
@@ -242,7 +242,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

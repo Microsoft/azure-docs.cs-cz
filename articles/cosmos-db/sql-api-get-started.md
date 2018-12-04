@@ -11,18 +11,20 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: c4f86b9fa949c854b557812a41aa9d86a11ecc94
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 2e7c36d095121dbdeb6f5f0d5c440df3038d2344
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636981"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834532"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Úvodní kurz k rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
+> * [.NET (preview)](sql-api-dotnet-get-started-preview.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
+> * [.NET core (Preview)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -367,7 +369,7 @@ Blahopřejeme! Úspěšně jste vytvořili dva dokumenty Azure Cosmos DB.
 ![Diagram ilustrující hierarchický vztah mezi účtem, online databází, kolekcí a dokumenty používanými v kurzu NoSQL k vytvoření konzolové aplikace v jazyce C#](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
 ## <a id="Query"></a>Krok 7: Dotazování prostředků Azure Cosmos DB
-Azure Cosmos DB podporuje bohaté [dotazy](sql-api-sql-query.md) na dokumenty JSON uložené v každé z kolekcí.  Následující ukázkový kód ukazuje různé dotazy – používající jak syntaxi SQL služby Azure Cosmos DB, tak LINQ – které můžeme spouštět na dokumenty vložené v předchozím kroku.
+Azure Cosmos DB podporuje bohaté [dotazy](how-to-sql-query.md) na dokumenty JSON uložené v každé z kolekcí.  Následující ukázkový kód ukazuje různé dotazy – používající jak syntaxi SQL služby Azure Cosmos DB, tak LINQ – které můžeme spouštět na dokumenty vložené v předchozím kroku.
 
 Zkopírujte a vložte metodu **ExecuteSimpleQuery** za metodu **CreateFamilyDocumentIfNotExists**.
 
@@ -420,7 +422,7 @@ Následující diagram ilustruje volání syntaxe příkazu jazyka SQL služby A
 
 ![Diagram ilustrující obor a význam dotazu použitého v kurzu NoSQL k vytvoření konzolové aplikace v jazyce C#](./media/sql-api-get-started/nosql-tutorial-collection-documents.png)
 
-Klíčové slovo [FROM](sql-api-sql-query.md#FromClause) je v dotazu volitelné, protože dotazy Azure Cosmos DB již mají obor nastaven na jedinou kolekci. Proto je možné příkaz „FROM Families f“ vyměnit za „FROM root r“ nebo jakoukoli jinou proměnnou, kterou si zvolíte. Azure Cosmos DB standardně vyvodí, že Families, root nebo zvolený název proměnné odkazují na aktuální kolekci.
+Klíčové slovo [FROM](how-to-sql-query.md#FromClause) je v dotazu volitelné, protože dotazy Azure Cosmos DB již mají obor nastaven na jedinou kolekci. Proto je možné příkaz „FROM Families f“ vyměnit za „FROM root r“ nebo jakoukoli jinou proměnnou, kterou si zvolíte. Azure Cosmos DB standardně vyvodí, že Families, root nebo zvolený název proměnné odkazují na aktuální kolekci.
 
 ## <a id="ReplaceDocument"></a>Krok 8: Nahrazení dokumentu JSON
 Azure Cosmos DB podporuje nahrazování dokumentů JSON.  

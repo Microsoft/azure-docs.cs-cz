@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c43497a69b3188b4bc38e91b6ff9b1cc8b6bd21a
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 411ffd9479c3f686495de21b60ef0a811915c260
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624144"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834566"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Oprava uživatelů označených příznakem rizika na portálu Azure Active Directory
 
@@ -58,9 +58,9 @@ Pro přístup **uživatelé označení příznakem rizika** sestavy v Centru pro
 
 Provedení následujících akcí vám pomůže napravit ovlivněné účty a zabezpečit vaše prostředí:
 
-1.  [Ověření správné informace](http://aka.ms/MFAValid) pro vícefaktorové ověřování a samoobslužné služby heslo resetovat. 
-2.  [Povolení služby Multi-Factor authentication](http://aka.ms/MFAuth) pro všechny uživatele. 
-3.  Použijte tento [skript pro nápravu](http://aka.ms/remediate) pro všechny ovlivněné účty automaticky provádět následující kroky: 
+1.  [Ověření správné informace](https://aka.ms/MFAValid) pro vícefaktorové ověřování a samoobslužné služby heslo resetovat. 
+2.  [Povolení služby Multi-Factor authentication](https://aka.ms/MFAuth) pro všechny uživatele. 
+3.  Použijte tento [skript pro nápravu](https://aka.ms/remediate) pro všechny ovlivněné účty automaticky provádět následující kroky: 
 
     a. Resetováním hesla zabezpečit účet a ukončit aktivní relace.
 
@@ -84,10 +84,10 @@ Provedení následujících akcí vám pomůže napravit ovlivněné účty a za
 
 Kromě toho byste měli provést následující:
 
-- Přečtěte si a implementovat tyto [doprovodné materiály pro řešení neobvyklých aktivit](http://aka.ms/fixaccount). 
-- [Povolit kanál auditu](http://aka.ms/improvesecurity) umožňují analyzovat aktivity ve vašem tenantovi. Jakmile budete hotovi, vaše úložiště auditu začne naplňovat protokoly aktivit. V tomto okamžiku můžete také využít [zabezpečení a dodržování předpisů Center vyhledávání a šetření prostředků](http://aka.ms/sccsearch). 
-- Použijte tento [skriptu povolit auditování poštovní schránky](http://aka.ms/mailboxaudit1) pro všechny vaše účty. 
-- Zkontrolovat oprávnění delegáta a pravidla předávání e-mailů pro všechny vaše poštovní schránky. Tuto úlohu můžete provést pomocí tohoto [skriptu PowerShellu](http://aka.ms/delegateforwardrules). 
+- Přečtěte si a implementovat tyto [doprovodné materiály pro řešení neobvyklých aktivit](https://aka.ms/fixaccount). 
+- [Povolit kanál auditu](https://aka.ms/improvesecurity) umožňují analyzovat aktivity ve vašem tenantovi. Jakmile budete hotovi, vaše úložiště auditu začne naplňovat protokoly aktivit. V tomto okamžiku můžete také využít [zabezpečení a dodržování předpisů Center vyhledávání a šetření prostředků](https://aka.ms/sccsearch). 
+- Použijte tento [skriptu povolit auditování poštovní schránky](https://aka.ms/mailboxaudit1) pro všechny vaše účty. 
+- Zkontrolovat oprávnění delegáta a pravidla předávání e-mailů pro všechny vaše poštovní schránky. Tuto úlohu můžete provést pomocí tohoto [skriptu PowerShellu](https://aka.ms/delegateforwardrules). 
 
 ## <a name="next-steps"></a>Další postup
 

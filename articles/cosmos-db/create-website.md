@@ -1,21 +1,19 @@
 ---
-title: Nasazení webové aplikace pomocí šablony – Azure Cosmos DB | Dokumentace Microsoftu
+title: Nasazení webové aplikace pomocí šablony – Azure Cosmos DB
 description: Informace o nasazení účtu služby Azure Cosmos DB, Azure App Service Web Apps a ukázkovou webovou aplikaci pomocí šablony Azure Resource Manageru.
 services: cosmos-db, app-service\web
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 29a2335a3a4077866b71e4303c240ad8352371ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 694682264a38d0b35f00fb6611f843ae7e518ba0
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243773"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838161"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Nasazení služby Azure Cosmos DB a Azure App Service Web Apps pomocí šablony Azure Resource Manageru
 V tomto kurzu se dozvíte, jak pomocí šablony Azure Resource Manageru k nasazení a integrace [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) webové aplikace a ukázkovou webovou aplikaci.

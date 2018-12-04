@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 0463a89b8c320b31929bf5e0322079088c2cdeab
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9cf5092dabf5649f4d063ce05dae169b90228378
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054127"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>Kurz: Integrace Azure Active Directory se službou ClearCompany
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s ClearCompany, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - ClearCompany jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace ClearCompany do služby Azure AD, budete muset přidat Cle
 
 **Chcete-li přidat ClearCompany z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -119,7 +119,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.clearcompany.com`
     
     > [!NOTE] 
-    > Přihlašování byste použili hodnotu URL není skutečné hodnoty. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory ClearCompany klienta](http://www.clearcompany.com/support) tuto výhodu získáte. 
+    > Přihlašování byste použili hodnotu URL není skutečné hodnoty. Aktualizujte tuto hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory ClearCompany klienta](https://www.clearcompany.com/support) tuto výhodu získáte. 
 
 5. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
@@ -133,7 +133,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace ClearCompany](./media/clearcompany-tutorial/tutorial_clearcompany_configure.png) 
 
-8. Ke konfiguraci jednotného přihlašování na **ClearCompany** straně, je nutné odeslat na stažený **Certificate(Base64)** a **SAML jednotné přihlašování – adresa URL služby** k [ Tým podpory ClearCompany](http://www.clearcompany.com/support). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+8. Ke konfiguraci jednotného přihlašování na **ClearCompany** straně, je nutné odeslat na stažený **Certificate(Base64)** a **SAML jednotné přihlašování – adresa URL služby** k [ Tým podpory ClearCompany](https://www.clearcompany.com/support). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -172,7 +172,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-clearcompany-test-user"></a>Vytvoření zkušebního uživatele ClearCompany
 
-V této části vytvoříte uživatele v ClearCompany jako Britta Simon. Práce s [tým podpory ClearCompany](http://www.clearcompany.com/support) přidat uživatele na platformě ClearCompany. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele v ClearCompany jako Britta Simon. Práce s [tým podpory ClearCompany](https://www.clearcompany.com/support) přidat uživatele na platformě ClearCompany. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -204,7 +204,7 @@ V této části je povolit Britta Simon k udělení přístupu k ClearCompany po
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
@@ -214,7 +214,7 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

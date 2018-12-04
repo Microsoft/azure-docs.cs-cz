@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 11452dfb94a5a1c8cf4734b1ef21a44cccafbea1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bccc7abed9a86bcba74a5d994664a20313f3282a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430504"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833801"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Kurz: Integrace Azure Active Directory se službou RedBrick stavu
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s RedBrick stavu, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Stav RedBrick jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace RedBrick stavu do služby Azure AD, budete muset přidat R
 
 **Chcete-li přidat RedBrick stavu z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -110,7 +110,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![RedBrick stavu domény a adresy URL jednotného přihlašování – informace](./media/redbrickhealth-tutorial/tutorial_redbrickhealth_url.png)
 
-    a. V **identifikátor** textového pole zadejte adresu URL: `http://www.redbrickhealth.com`
+    a. V **identifikátor** textového pole zadejte adresu URL: `https://www.redbrickhealth.com`
     
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL: `https://sso-intg.redbrickhealth.com/sp/ACS.saml2`
     
@@ -205,7 +205,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
   
 ### <a name="create-a-redbrick-health-test-user"></a>Vytvoření zkušebního uživatele RedBrick stavu
 
-V této části vytvořte uživatele Britta Simon v RedBrick stavu. Práce s [tým podpory RedBrick stavu](https://home.redbrickhealth.com/contact/) přidat uživatele na platformě RedBrick stavu. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvořte uživatele Britta Simon v RedBrick stavu. Práce s [tým podpory RedBrick stavu](https://home.redbrickhealth.com/contact/) přidat uživatele na platformě RedBrick stavu. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -237,7 +237,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

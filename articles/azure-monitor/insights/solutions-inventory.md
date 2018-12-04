@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 6aa0ad6d13a7a75a0d9bfb520944c04cae11f1ab
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 38ed7a7fff08003563147d6b8eb9bbc33fb32bc9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682975"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836147"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti shromažďování dat pro řešení pro správu v Azure
 Tento článek obsahuje seznam [řešení pro správu](solutions.md) od Microsoftu k dispozici s odkazy na jejich podrobnou dokumentaci.  Poskytuje také informace o jejich metoda a četnost shromažďování dat do Log Analytics.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům datového toku a připojení pro jiné řešení, můžete použít informace v tomto článku. 
@@ -79,4 +79,4 @@ Vysvětlení sloupců jsou následující:
 
 
 ## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [vytvářet dotazy](../../log-analytics/log-analytics-queries.md) k analýze dat shromažďovaných řešeními pro správu.
+* Zjistěte, jak [vytvářet dotazy](../../azure-monitor/log-query/log-query-overview.md) k analýze dat shromažďovaných řešeními pro správu.

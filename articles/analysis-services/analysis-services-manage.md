@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7ca97c52d81af2c224d27025266a628c28c0af78
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 536ae926ad8f401f952a41e17074536cc2b3c5f1
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428892"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832033"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
 Po vytvoření serveru služby Analysis Services v Azure, může být administrace a správa úlohy, které je potřeba provést hned nebo nějakou dobu mimo provoz cestách. Například spusťte zpracování pro aktualizaci dat, řízení, kdo může přistupovat modely na serveru nebo monitorování stavu vašeho serveru. Některé úlohy správy lze provést pouze webu Azure Portal, ostatní v SQL Server Management Studio (SSMS) a některé úkoly lze provést v jednom.
 
 ## <a name="azure-portal"></a>portál Azure
-[Azure portal](http://portal.azure.com/) je, kde můžete vytvořit a odstranit servery, monitorovat prostředky serveru, změna velikosti a spravovat, kdo má přístup k vašim serverům.  Pokud máte nějaké problémy, můžete také odeslat žádost o podporu.
+[Azure portal](https://portal.azure.com/) je, kde můžete vytvořit a odstranit servery, monitorovat prostředky serveru, změna velikosti a spravovat, kdo má přístup k vašim serverům.  Pokud máte nějaké problémy, můžete také odeslat žádost o podporu.
 
 ![Získání názvu serveru v Azure](./media/analysis-services-manage/aas-manage-portal.png)
 

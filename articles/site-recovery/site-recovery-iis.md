@@ -5,14 +5,14 @@ author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: bac995829e90fea35eebf5e5e57a0ffb85bbba0c
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 49435665ae1e99dd2b9696e5e5bb048e438dcc4c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211821"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832952"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Nastavení zotavení po havárii pro vícevrstvou aplikaci webové služby IIS
 
@@ -52,7 +52,7 @@ Založené na službě IIS webové farmy se směrováním žádostí na aplikace
 
 ![Diagram založené na službě IIS webové farmy, která má čtyři vrstvy](./media/site-recovery-iis/deployment-pattern2.png)
 
-## <a name="site-recovery-support"></a>Site Recovery podporu
+## <a name="site-recovery-support"></a>Podpora Site Recovery
 
 U příkladů v tomto článku používáme virtuální počítače VMware s IIS 7.5 na Windows Server 2012 R2 Enterprise. Protože replikace Site Recovery není specifická pro aplikaci, doporučení v tomto článku předpokládá použití ve scénářích uvedené v následující tabulce a pro různé verze služby IIS.
 
@@ -142,7 +142,7 @@ Pokud máte specifické pro aplikaci závislostí, založené na IP adresu virtu
 
 1. Na webu Azure Portal vyberte svůj trezor služby Recovery Services.
 2. Vyberte plán obnovení, který jste vytvořili pro webové farmy služby IIS.
-3. Vyberte **testovací převzetí služeb při selhání**.
+3. Vyberte **Testovací převzetí služeb při selhání**.
 4. Chcete-li spustit proces testovacího převzetí služeb při selhání, vyberte bod obnovení a virtuální síť Azure.
 5. Pokud je sekundární prostředí, můžete provést ověření.
 6. Po dokončení ověření se vyčistit testovací převzetí služeb při selhání prostředí, vyberte **dokončení ověření**.
@@ -153,7 +153,7 @@ Další informace najdete v tématu [testovací převzetí služeb při selhán�
 
 1. Na webu Azure Portal vyberte svůj trezor služby Recovery Services.
 1. Vyberte plán obnovení, který jste vytvořili pro webové farmy služby IIS.
-1. Vyberte **převzetí služeb při selhání**.
+1. Vyberte **Převzetí služeb při selhání**.
 1. Chcete-li zahájit proces převzetí služeb při selhání, vyberte bod obnovení.
 
 Další informace najdete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).

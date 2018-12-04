@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 77c445920041653ffb72d31e1dcfe4c368fb6642
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 76b3d23a042fae452b25b0a707e3c7ff9bbda613
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915921"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838188"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O možnostech sítě v replikaci z Azure do Azure
 
@@ -60,10 +60,9 @@ Pokud k řízení odchozího připojení používáte proxy server založené na
 - Všechny rozsahy IP adres, které odpovídají účty úložiště ve zdrojové oblasti
     - Vytvoření [značka služby úložiště](../virtual-network/security-overview.md#service-tags) podle pravidla NSG pro zdrojové oblasti.
     - Povolte tyto adresy tak, aby data je možné zapisovat na účet úložiště mezipaměti z virtuálního počítače.
-- Všechny rozsahy IP adres, které odpovídají Office 365 [ověřování a identita koncovými body IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
-    - Pokud rozsahy adres Office 365 se přidají nové adresy v budoucnu, musíte vytvořit nová pravidla skupiny zabezpečení sítě.
+- Vytvoření [značky služby Azure Active Directory (AAD)](../virtual-network/security-overview.md#service-tags) na základě pravidel skupiny zabezpečení sítě umožňující přístup ke všem IP adresám v odpovídající službě AAD
+    - Pokud do Azure Active Directory (AAD) se přidají nové adresy v budoucnu, musíte vytvořit nová pravidla skupiny zabezpečení sítě.
 - Site Recovery service koncový bod IP adresy – k dispozici v [soubor XML](https://aka.ms/site-recovery-public-ips) a závisí na cílovém umístění.
--  Je možné [stáhnout a použít tento skript](https://aka.ms/nsg-rule-script), chcete-li automaticky vytvořit požadovaných pravidel na skupiny zabezpečení sítě.
 - Doporučujeme vytvořit požadovaná pravidla NSG na testovací skupiny zabezpečení sítě a ověřte, že neexistují žádné problémy, než vytvoříte pravidla v produkčním prostředí skupiny zabezpečení sítě.
 
 
@@ -78,24 +77,24 @@ Rozsahy adres IP pro obnovení lokality jsou následující:
    Střed USA – sever | 23.96.195.247 | 168.62.249.226
    Severní Evropa | 40.69.212.238 | 52.169.18.8
    Západní Evropa | 52.166.13.64 | 40.68.93.145
-   Východ USA | 13.82.88.226 | 104.45.147.24
-   Západní USA | 40.83.179.48 | 104.40.26.199
+   USA – východ | 13.82.88.226 | 104.45.147.24
+   USA – západ | 40.83.179.48 | 104.40.26.199
    Střed USA – jih | 13.84.148.14 | 104.210.146.250
-   Střed USA | 40.69.144.231 | 52.165.34.144
+   USA – střed | 40.69.144.231 | 52.165.34.144
    Východní USA 2 | 52.184.158.163 | 40.79.44.59
    Japonsko – východ | 52.185.150.140 | 138.91.1.105
    Japonsko – západ | 52.175.146.69 | 138.91.17.38
    Brazílie – jih | 191.234.185.172 | 23.97.97.36
    Austrálie – východ | 104.210.113.114 | 191.239.64.144
    Austrálie – jihovýchod | 13.70.159.158 | 191.239.160.45
-   Střední Kanada | 52.228.36.192 | 40.85.226.62
-   Východní Kanada | 52.229.125.98 | 40.86.225.142
+   Kanada – střed | 52.228.36.192 | 40.85.226.62
+   Kanada – východ | 52.229.125.98 | 40.86.225.142
    Západní střed USA | 52.161.20.168 | 13.78.149.209
-   Západní USA 2 | 52.183.45.166 | 13.66.228.204
+   USA – západ 2 | 52.183.45.166 | 13.66.228.204
    Spojené království – západ | 51.141.3.203 | 51.141.14.113
-   Spojené království – jih | 51.140.43.158 | 51.140.189.52
-   Spojené království – jih 2 | 13.87.37.4| 13.87.34.139
-   Spojené království – sever | 51.142.209.167 | 13.87.102.68
+   Velká Británie – jih | 51.140.43.158 | 51.140.189.52
+   Velká Británie – jih 2 | 13.87.37.4| 13.87.34.139
+   Velká Británie – sever | 51.142.209.167 | 13.87.102.68
    Jižní Korea – střed | 52.231.28.253 | 52.231.32.85
    Jižní Korea – jih | 52.231.298.185 | 52.231.200.144
    Francie – střed | 52.143.138.106 | 52.143.136.55
@@ -120,7 +119,7 @@ Tento příklad ukazuje postup při konfiguraci pravidla skupiny zabezpečení s
 
    **Umístění** | **Site Recovery IP adresa** |  **Site Recovery monitorování IP adresa**
     --- | --- | ---
-   Střed USA | 40.69.144.231 | 52.165.34.144
+   USA – střed | 40.69.144.231 | 52.165.34.144
 
 ### <a name="nsg-rules---central-us"></a>Pravidla skupiny zabezpečení sítě – USA (střed)
 
@@ -134,7 +133,7 @@ Tato pravidla jsou vyžadována proto, že je možné povolit replikaci z cílov
 
    **Umístění** | **Site Recovery IP adresa** |  **Site Recovery monitorování IP adresa**
     --- | --- | ---
-   Střed USA | 13.82.88.226 | 104.45.147.24
+   USA – střed | 13.82.88.226 | 104.45.147.24
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfigurace síťového virtuálního zařízení
 

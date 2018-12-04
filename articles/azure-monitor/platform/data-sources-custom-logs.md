@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 494d4f39965849ebef7dfbbacc7114dd95f48641
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 099fe053f354f2773dfec1d3085c03d83671ed2a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336774"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833852"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Vlastní protokolů v Log Analytics
 Zdroj dat vlastních protokolů v Log Analytics umožňuje shromažďovat události z textových souborů v počítačích se systémy Windows a Linux. Mnoho aplikací protokolovat informace k textovým souborům místo standardní protokolování služby, jako je protokol událostí Windows nebo protokolu Syslog.  Po shromáždění, můžete analyzovat každý záznam v přihlášení u jednotlivých polí pomocí [vlastní pole](../../log-analytics/log-analytics-custom-fields.md) funkce Log Analytics.
@@ -182,4 +182,4 @@ Používáme vlastní pole k definování *čas události*, *kód*, *stav*, a *z
 
 ## <a name="next-steps"></a>Další postup
 * Použití [vlastních polí](../../log-analytics/log-analytics-custom-fields.md) k analýze položek ve vlastní přihlášení u jednotlivých polí.
-* Další informace o [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
+* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.

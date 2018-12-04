@@ -1,20 +1,19 @@
 ---
-title: Použití knihovny Java prováděcí modul hromadného hromadně importovat a aktualizovat operace ve službě Azure Cosmos DB | Dokumentace Microsoftu
+title: Použití knihovny Java prováděcí modul hromadného hromadně importovat a aktualizovat operace ve službě Azure Cosmos DB
 description: Hromadný import a aktualizace pomocí hromadné prováděcí modul Java knihovna dokumenty Azure Cosmos DB.
 services: cosmos-db
 author: tknandu
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 44477f77547c9373bd4a3394c80e217d419bc8e0
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 2767b8e493327e4e8275481ffc7aa18d70c81ccd
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420043"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836793"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java prováděcí modul hromadného budou provádět hromadné operace s daty služby Azure Cosmos DB
 

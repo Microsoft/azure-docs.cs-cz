@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 14d74c879ee37306f541c89d2ba325109a4ff7f3
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 9841d564410931cdef7da45a1c4555f12e2ae008
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214864"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833091"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute pomocí Azure Site Recovery
 

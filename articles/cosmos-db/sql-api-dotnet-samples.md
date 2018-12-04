@@ -2,21 +2,19 @@
 title: 'Azure Cosmos DB: příklady v .NET pro rozhraní SQL API | Microsoft Docs'
 description: Vyhledejte si na GitHubu příklady v C# .NET pro běžné úlohy prováděné pomocí rozhraní SQL API služby Azure Cosmos DB, včetně operací CRUD.
 keywords: Příklad NoSQL
-services: cosmos-db
 author: rnagpal
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: rnagpal
-ms.openlocfilehash: 5cee4a736232e7734be85b2940ce457bfbfd1613
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 3aa8e915cff7ba641a0181639ffb4ce26840d476
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262279"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837745"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: příklady v .NET pro rozhraní SQL API
 > [!div class="op_single_selector"]
@@ -25,14 +23,16 @@ ms.locfileid: "52262279"
 > * [Příklady v asynchronní Javě](sql-api-async-java-samples.md)
 > * [Příklady v Node.js](sql-api-nodejs-samples.md)
 > * [Příklady v Pythonu](sql-api-python-samples.md)
-> * [Galerie vzorového kódu Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
+> * [Galerie ukázkového kódu Azure](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
 
-Nejnovější ukázková řešení, která provádí operace CRUD a další běžné operace s prostředky služby Azure Cosmos DB, jsou součástí úložiště [azure-documentdb-dotnet](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) na GitHubu. Tento článek obsahuje:
+Nejnovější ukázkové řešení, které provádějí operace CRUD a dalších běžných operací s prostředky Azure Cosmos DB jsou součástí [azure-cosmos-dotnet-v2](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples) úložiště GitHub. Tento článek obsahuje:
 
 * Odkazy na úlohy v jednotlivých ukázkových souborech projektů v C# 
 * Odkazy na související referenční obsah rozhraní API
+
+Ukázky kódu pro .NET SDK verze 3.0 (Preview) najdete v tématu nejnovější ukázky [azure-cosmos-dotnet-v3](https://github.com/Azure/azure-cosmos-dotnet-v3) úložiště GitHub. 
 
 **Požadavky**
 
@@ -52,7 +52,7 @@ Budete také potřebovat [balíček NuGet Microsoft.Azure.DocumentDB](http://www
 ## <a name="database-examples"></a>Příklady pro databáze
 Metoda [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) ukázky projektu DatabaseManagement ukazuje, jak provádět následující úlohy.
 
-| Úkol | Referenční informace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření databáze](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L90) |[DocumentClient.CreateDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) |
 | [Dotazování databáze](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L81) |[DocumentQueryable.CreateDatabaseQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdatabasequery.aspx) |
@@ -63,7 +63,7 @@ Metoda [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/5
 ## <a name="collection-examples"></a>Příklady pro kolekce
 Metoda [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) ukázky projektu CollectionManagement ukazuje, jak provádět následující úlohy.
 
-| Úkol | Referenční informace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření kolekce](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L101) |[DocumentClient.CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) |
 | [Získání konfigurovaného výkonu kolekce](https://github.com/Azure/azure-documentdb-dotnet/blob/95521ff51ade486bb899d6913880995beaff58ce/samples/code-samples/CollectionManagement/Program.cs#L198) |[DocumentQueryable.CreateOfferQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createofferquery.aspx) |
@@ -75,7 +75,7 @@ Metoda [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob
 ## <a name="document-examples"></a>Příklady pro dokumenty
 Metoda [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) ukázky projektu DocumentManagement ukazuje, jak provádět následující úlohy.
 
-| Úkol | Referenční informace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření dokumentu](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L198) |[DocumentClient.CreateDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) |
 | [Čtení dokumentu podle ID](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L211) |[DocumentClient.ReadDocumentAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readdocumentasync.aspx) |
@@ -91,7 +91,7 @@ Metoda [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/
 ## <a name="indexing-examples"></a>Příklady indexování
 Metoda [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) ukázky projektu IndexManagement ukazuje, jak provádět následující úlohy.
 
-| Úkol | Referenční informace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vyloučení dokumentu z indexu](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L125-L163) |[IndexingDirective.Exclude](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingdirective.aspx) |
 | [Použití ručního indexování (místo automatického)](https://github.com/Azure/azure-documentdb-dotnet/blob/2e9a48b6a446b47dd6182606c8608d439b88b683/samples/code-samples/IndexManagement/Program.cs#L171-L209) |[IndexingPolicy.Automatic](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.automatic.aspx) |
@@ -106,7 +106,7 @@ Další informace o indexování najdete v tématu pojednávajícím o [zásadá
 ## <a name="geospatial-examples"></a>Příklady geoprostorových funkcí
 Ukázkový soubor pro geoprostorové funkce [azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) ukazuje, jak provádět následující úlohy.  
 
-| Úkol | Referenční informace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Povolení geoprostorového indexování v nové kolekci](https://github.com/Azure/azure-documentdb-dotnet/blob/7b09c085817e850d683bc59bd864c2f6b552d275/samples/code-samples/Geospatial/Program.cs#L45-L63) |[IndexingPolicy](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexingpolicy.aspx) <br> [IndexKind.Spatial](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.indexkind.aspx) <br>[DataType.Point](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.datatype.aspx) |
 | [Vložení dokumentů s body GeoJSON](https://github.com/Azure/azure-documentdb-dotnet/blob/7b09c085817e850d683bc59bd864c2f6b552d275/samples/code-samples/Geospatial/Program.cs#L116-L126) |[DocumentClient.CreateDocumentAsync](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentasync) </br> [DataType.Point](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.datatype.aspx) |
@@ -120,7 +120,7 @@ Další informace o práci s geoprostorovými daty najdete v tématu věnovaném
 ## <a name="query-examples"></a>Příklady dotazů
 Dokumentační soubor dotazů [azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) ukazuje, jak provést následující úlohy pomocí gramatiky dotazů SQL, pomocí zprostředkovatele LINQ s dotazem a pomocí Lambdy.
 
-| Úkol | Referenční informace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Dotazování na všechny dokumenty](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Queries/Program.cs#L122-L138) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
 | [Dotaz na rovnost s využitím ==](https://github.com/Azure/azure-documentdb-dotnet/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/Queries/Program.cs#L251-L268) |[DocumentQueryable.CreateDocumentQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.documentqueryable.createdocumentquery.aspx) |
@@ -142,7 +142,7 @@ Další informace o psaní dotazů najdete v tématu věnovaném [dotazům SQL v
 ## <a name="change-feed-examples"></a>Příklady kanálů změn 
 Ukázka kanálu změn [azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) ukazuje, jak provádět následující úlohy. 
 
-| Úkol | Referenční informace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Čtení kanálu změn](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L132) |[DocumentClient.CreateDocumentChangeFeedQuery](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) | 
 | [Čtení rozsahů klíčů oddílů](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ChangeFeed/Program.cs#L118) |[DocumentClient.ReadPartitionKeyRangeFeedAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.readpartitionkeyrangefeedasync.aspx) | 
@@ -152,7 +152,7 @@ Ukázka procesoru kanálů změn: [Nástroj pro migraci kanálu změn](https://g
 ## <a name="server-side-programming-examples"></a>Příklady programování na straně serveru
 Ukázkový soubor pro programování na straně serveru [azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs) ukazuje, jak provádět následující úlohy.
 
-| Úkol | Referenční informace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření uložené procedury](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L112) |[DocumentClient.CreateStoredProcedureAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createstoredprocedureasync.aspx) |
 | [Spuštění uložené procedury](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/ServerSideScripts/Program.cs#L127) |[DocumentClient.ExecuteStoredProcedureAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.executestoredprocedureasync.aspx) |
@@ -167,7 +167,7 @@ Další informace o programování na straně serveru najdete v tématu o [progr
 ## <a name="user-management-examples"></a>Příklady správy uživatelů
 Ukázkový soubor pro správu uživatelů [azure-documentdb-dotnet/samples/code-samples/UserManagement/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/UserManagement/Program.cs) ukazuje, jak provádět následující úlohy.
 
-| Úkol | Referenční informace k rozhraní API |
+| Úkol | API – referenční informace |
 | --- | --- |
 | [Vytvoření uživatele](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L81) |[DocumentClient.CreateUserAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createuserasync.aspx) |
 | [Nastavení oprávnění pro kolekci nebo dokument](https://github.com/Azure/azure-documentdb-net/blob/d17c0ca5be739a359d105cf4112443f65ca2cb72/samples/code-samples/UserManagement/Program.cs#L85) |[DocumentClient.CreatePermissionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createpermissionasync.aspx) |

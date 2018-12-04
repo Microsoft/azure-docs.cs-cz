@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: d02c71865f900c2b75da60bd2e989e04a6823d11
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 7783a10badd98a29488732d68267241ff619b645
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005236"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838663"
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>Rychlý start: Připojení řešení zabezpečení ke službě Security Center
 
@@ -33,7 +33,7 @@ V tomto rychlém startu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/).
 
-Chcete-li si tento rychlý start použít, budete potřebovat služby Security Center na cenové úrovni Standard. Službu Security Center v cenové úrovni Standard si můžete zdarma vyzkoušet na 60 dní. Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard.
+Chcete-li si tento rychlý start použít, budete potřebovat služby Security Center na cenové úrovni Standard. Security Center úrovně Standard můžete vyzkoušet zdarma. Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 Budete také potřebovat [počítač s Linuxem](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-linux) a službou Syslog, který je již připojený ke službě Security Center.
 
@@ -92,7 +92,7 @@ Pokud chcete vypnout automatické zřizování:
 > Vypnutím automatického zřizování neodeberete agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, na kterých byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste se naučili, jak připojit počítač s Linuxem a službou syslog do služby Security Center pomocí protokolů CEF. Propojením protokolů CEF se službou Security Center můžete využít výhod vyhledávání a vlastních pravidel výstrah a posílit inteligenci zabezpečení pro každý z protokolů. Další informace o tom, jak používat Security Center, najdete v následném kurzu o konfiguraci zásad zabezpečení a o vyhodnocení zabezpečení vašich prostředků.
 
 > [!div class="nextstepaction"]

@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 836fdb5da13465d77c6e9e6ede4780f5d4048597
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ad97543ee6bc40bdee5b0ffc7ec92f061b16dae4
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447159"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839530"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Vědecké zkoumání dat pomocí Scala a Spark v Azure
-Tento článek ukazuje, jak pomocí Scala pro úkoly technik strojového učení pomocí Sparku škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zkoumání dat](https://aka.ms/datascienceprocess): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Modely v článku zahrnují logistické a lineární regrese, náhodných doménové struktury a vylepšené přechodu stromů (GBTs), kromě dvě běžné úkoly technik strojového učení:
+Tento článek ukazuje, jak pomocí Scala pro úkoly technik strojového učení pomocí Sparku škálovatelné MLlib a Spark ML balíčky v clusteru Azure HDInsight Spark. Provede vás provedou úlohami, které tvoří [vědecké zkoumání dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/): příjem dat a zkoumání, vizualizaci, vytváření funkcí, modelování a modelu využití. Modely v článku zahrnují logistické a lineární regrese, náhodných doménové struktury a vylepšené přechodu stromů (GBTs), kromě dvě běžné úkoly technik strojového učení:
 
 * Regresní problém: předpověď tip částka cesty taxíkem ($)
 * Binární klasifikace: predikce tip nebo tip cesty taxíkem (1/0)
@@ -1100,7 +1100,7 @@ V dalším kroku optimalizovat modelu s použitím vlastního kódu a určení n
 Čas spuštění buňku: 61 sekund.
 
 ## <a name="consume-spark-built-machine-learning-models-automatically-with-scala"></a>Použití modelů předdefinovaných ve Spark machine learning automaticky pomocí Scala
-Přehled o tématech, které vás provedou úkoly, které tvoří procesu pro datové vědy v Azure, najdete v části [vědecké zpracování týmových dat](https://aka.ms/datascienceprocess).
+Přehled o tématech, které vás provedou úkoly, které tvoří procesu pro datové vědy v Azure, najdete v části [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 [Průvodce vědeckým zpracováním dat týmu](walkthroughs.md) popisuje další začátku do konce postupy, které popisují kroky v vědecké zpracování týmových dat pro konkrétní scénáře. Názorné postupy také ukazují, jak zkombinovat cloudové a místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací.
 

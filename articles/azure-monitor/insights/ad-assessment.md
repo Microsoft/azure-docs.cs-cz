@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 65acbfbecf8ae34ff25780bfc161c52b5adc1d65
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 21b3ba88037c7956304fa6a53268e779841b14f3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634910"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838357"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimalizace prostředí služby Active Directory s řešením Kontrola stavu služby Active Directory v Log Analytics
 
@@ -186,4 +186,4 @@ Až dalšího naplánovaného spuštění kontroly stavu, ve výchozím nastaven
 * Ano, naleznete v tématu [ignorujte doporučení](#ignore-recommendations) výše uvedené části.
 
 ## <a name="next-steps"></a>Další postup
-* Použití [prohledávání protokolů v Log Analytics](../../log-analytics/log-analytics-queries.md) informace o analýze podrobné doporučení a údaje o kontrolu stavu AD.
+* Použití [prohledávání protokolů v Log Analytics](../../azure-monitor/log-query/log-query-overview.md) informace o analýze podrobné doporučení a údaje o kontrolu stavu AD.

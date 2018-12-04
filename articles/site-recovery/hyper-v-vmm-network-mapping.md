@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: cecc1df23ebed88db315e7de14ea850ba5297697
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 576194f0b85e95f07ab0370c4be7029d3b8aecb9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212977"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833886"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Příprava mapování sítě pro zotavení po havárii virtuálních počítačů Hyper-V do Azure
 
@@ -23,7 +23,7 @@ Tento článek vám pomůže pochopit a příprava na mapování sítě při rep
 
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>Příprava mapování sítí pro replikaci do Azure
 
-Pokud provádíte replikaci do Azure, sítě mapování mapuje sítě virtuálních počítačů na zdrojovém serveru VMM a cílové virtuální sítě Azure. Mapování provede následující akce:
+Pokud provádíte replikaci do Azure, sítě mapování mapuje sítě virtuálních počítačů na zdrojovém serveru VMM a cílové virtuální sítě Azure. Mapování provádí následující:
     -  **Připojení k síti**– zajišťuje, že replikované virtuální počítače Azure jsou připojené k namapované síti. Všechny počítače, které převzetí služeb při selhání ve stejné síti můžete připojit k sobě navzájem i v případě selhání v plánech obnovení jinou.
     - **Brána sítě**– Pokud je v cílové síti Azure nastavená síťová brána, virtuální počítače můžete připojit k jiným místním virtuálním počítačům.
 
@@ -37,7 +37,7 @@ Mapování sítě funguje takto:
 
 ## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Příprava mapování sítí pro replikaci do sekundární lokality
 
-Při replikaci do sekundární lokality, mapování sítě zajišťuje mapování mezi sítěmi virtuálních počítačů na zdrojovém serveru VMM a sítí virtuálních počítačů na cílovém serveru VMM. Mapování provede následující akce:
+Při replikaci do sekundární lokality, mapování sítě zajišťuje mapování mezi sítěmi virtuálních počítačů na zdrojovém serveru VMM a sítí virtuálních počítačů na cílovém serveru VMM. Mapování provádí následující:
 
 - **Připojení k síti**– připojí virtuální počítače k příslušným sítím po převzetí služeb při selhání. Virtuální počítač repliky se připojí k cílové síti, která se mapuje na zdrojové síti.
 - **Optimální umístění virtuálního počítače**– virtuální počítače replik optimálně umístí na hostitelské servery technologie Hyper-V. Replikované virtuální počítače jsou umístěny na hostitelích, kteří mohou přistupovat k namapovanou síť virtuálních počítačů.

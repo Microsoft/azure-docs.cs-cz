@@ -1,5 +1,5 @@
 ---
-title: Načtení ukázkových dat do tabulky rozhraní API Cassandra pro Azure Cosmos DB pomocí aplikace Java | Microsoft Docs
+title: Načíst ukázková data do tabulky Azure Cosmos DB Cassandra API s použitím aplikace v Javě
 description: Tento článek ukazuje, jak načíst ukázková data uživatele do tabulky v rozhraní API Cassandra pro Azure Cosmos DB pomocí aplikace Java.
 services: cosmos-db
 author: kanshiG
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e116dbf1d49fed1a47b830f9a57cd77a33b7ea9c
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: ac297a04936785c76b7651cb5b78080baf4f684c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740716"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836249"
 ---
 # <a name="tutorial-load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>Kurz: Načtení ukázkových dat do tabulky rozhraní API Cassandra služby Azure Cosmos DB
 
@@ -86,7 +86,7 @@ java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.exa
 
 Teď můžete na portálu Azure Portal otevřít Průzkumníka dat a potvrdit, že se informace o uživateli přidaly do tabulky.
     
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili, jak načítat ukázková data do účtu rozhraní API Cassandra pro Azure Cosmos DB. Teď můžete přejít k dalšímu článku:
 

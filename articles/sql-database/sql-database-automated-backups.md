@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/25/2018
-ms.openlocfilehash: 9c5cdf6c2baf4197b693b522848fc1fd04db7abf
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.date: 12/03/2018
+ms.openlocfilehash: 939c008dbfdb996c84132d5aa0b5ed625e0a68ec
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422506"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837898"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
 
@@ -33,8 +33,8 @@ Můžete použít tyto zálohy na:
 
 - Obnovte databázi do doby uchování v daném okamžiku. Tato operace vytvoří novou databázi na stejném serveru jako je původní databáze.
 - Obnovení odstraněné databáze na čas, kdy byla odstraněna nebo libovolný čas v rámci doby uchování. Odstraněnou databázi můžete obnovit jen na stejném serveru, kde původní databáze byla vytvořena.
-- Obnovení databáze do jiné geografické oblasti. Umožňuje provést obnovení po havárii zeměpisné, když nelze přistupovat k serveru a databáze. Vytvoří novou databázi v jakékoli existující server kdekoli v celém světě.
-- Obnovení databáze z konkrétní dlouhodobé zálohování v případě databáze má nakonfigurované zásady dlouhodobého uchovávání informací (LTR). To umožňuje obnovit starší verzi databáze, které by vyhovovaly žádosti o dodržování předpisů nebo spuštění starší verze aplikace. Zobrazit [dlouhodobé uchovávání](sql-database-long-term-retention.md).
+- Obnovení databáze do jiné geografické oblasti. Geografické obnovení umožňuje zotavení po havárii zeměpisné, když nelze přistupovat k serveru a databáze. Vytvoří novou databázi v jakékoli existující server kdekoli v celém světě.
+- Obnovení databáze z konkrétní dlouhodobé zálohování v případě databáze má nakonfigurované zásady dlouhodobého uchovávání informací (LTR). Zleva doprava umožňuje obnovit starší verzi databáze, které by vyhovovaly žádosti o dodržování předpisů nebo spuštění starší verze aplikace. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 - Pokud chcete provést obnovení, najdete v článku [obnovit databázi ze zálohy](sql-database-recovery-using-backups.md).
 
 > [!NOTE]
@@ -42,16 +42,16 @@ Můžete použít tyto zálohy na:
 
 ## <a name="how-long-are-backups-kept"></a>Jak dlouho se zálohy uchovávat
 
-Každá databáze SQL má výchozí období uchovávání záloh mezi 7 až 35 dnů, na kterých závisí [nákupní model a úroveň služeb](#pitr-retention-period). Můžete aktualizovat období uchování zálohy pro databázi na logickém serveru Azure (Tato funkce bude brzy povolená ve spravované instanci). Zobrazit [období uchování zálohy změnu](#how-to-change-backup-retention-period) další podrobnosti.
+Každá databáze SQL má výchozí období uchovávání záloh mezi 7 až 35 dnů, na kterých závisí [nákupní model a úroveň služeb](#pitr-retention-period). Můžete aktualizovat období uchování zálohy pro databázi na logickém serveru Azure. Další informace najdete v tématu [období uchování zálohy změnu](#how-to-change-the-pitr-backup-retention-period).
 
 Když odstraníte databáze, databáze SQL zachovají zálohy stejným způsobem, který by tomu bylo online databáze. Například pokud odstraníte databázi Basic, který má dobu uchování o délce sedm dní, zálohy, která je starší čtyř dní uložená pro další tři dny.
 
-Pokud chcete zachovat zálohy po dobu delší než maximální doba uchovávání PITR, můžete upravit zálohování vlastnosti, které chcete přidat jeden nebo více dlouhodobé období uchovávání dat do databáze. Zobrazit [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md) další podrobnosti.
+Pokud chcete zachovat zálohy po dobu delší než maximální doba uchovávání, můžete upravit záložní vlastnosti, které chcete přidat jeden nebo více dlouhodobé období uchovávání dat do databáze. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
 
 > [!IMPORTANT]
 > Při odstranění serveru Azure SQL server, který je hostitelem databází SQL, odstraní se také všechny elastických fondů a databází, které patří k serveru a nelze ji obnovit. Nelze obnovit server odstranil. Ale pokud jste nakonfigurovali dlouhodobé uchovávání, zálohování databází s LTR nebudou odstraněny, a dají se obnovit tyto databáze.
 
-### <a name="pitr-retention-period"></a>Doba uchování PITR
+### <a name="default-backup-retention-period"></a>Výchozí období uchování zálohy
 
 #### <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
@@ -63,12 +63,10 @@ Výchozí době uchování databáze vytvořené využitím nákupní model zalo
 
 #### <a name="vcore-based-purchasing-model"></a>Model nákupu na základě virtuálních jader
 
-Pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), období uchování zálohy výchozí nastavení je 7 dnů (i na Managed instance a logické servery).
+Pokud používáte [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md), je výchozí období uchování zálohy 7 dní (pro jeden, ve fondu a spravované instanci databáze). Pro všechny databáze Azure SQL (jednoduché, ve fondu, a databáze Managed Instance můžete [změnit období uchování zálohy 35 dnů](#how-to-change-the-pitr-backup-retention-period).
 
-- Pro databáze ve fondu a jeden, můžete [změnit období uchování zálohy 35 dnů](#how-to-change-backup-retention-period).
-- Změna období uchování zálohy není k dispozici ve spravované instanci.
-
-Pokud aktuální dobu uchovávání snížíte, všechny existující zálohy, které jsou starší než novou míru uchování období se již nebude k dispozici. Když aktuální dobu uchovávání prodloužit, SQL Database zachovají existující zálohy, dokud nebude dosaženo delší doba uchovávání dat.
+> [!WARNING]
+> Pokud aktuální dobu uchovávání snížíte, všechny existující zálohy, které jsou starší než novou míru uchování období se již nebude k dispozici. Když aktuální dobu uchovávání prodloužit, SQL Database zachovají existující zálohy, dokud nebude dosaženo delší doba uchovávání dat.
 
 ## <a name="how-often-do-backups-happen"></a>Jak často k dochází zálohy
 
@@ -96,21 +94,24 @@ Pokud vaše databáze je zašifrovaný pomocí šifrování TDE, záloh se šifr
 
 Průběžně technický tým Azure SQL Database automaticky ověřuje obnovení automatizovaných záloh databází ve službě. Při obnovení databáze také přijímat kontroly integrity pomocí příkazu DBCC CHECKDB. Žádné problémů zjištěných během kontroly integrity způsobí výstrahy technickému týmu. Další informace o integritě dat ve službě Azure SQL Database najdete v tématu [integritu dat ve službě Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
-## <a name="how-do-automated-backups-impact-my-compliance"></a>Vliv automatizovaných záloh Moje dodržování předpisů
+## <a name="how-do-automated-backups-impact-compliance"></a>Vliv automatizovaných záloh dodržování předpisů
 
-Při migraci databáze z úrovně služeb na základě DTU se výchozí PITR uchovávání po dobu 35 dní, do vrstvy služeb založený na virtuálních jádrech PITR uchovávání se zachovají zajistit, že není ohrožena zásad pro obnovení dat vaší aplikace. Pokud výchozí uchování nesplňuje vaše požadavky na dodržování předpisů, můžete změnit dobu uchování PITR pomocí Powershellu nebo rozhraní REST API. Zobrazit [období uchování zálohy změnu](#how-to-change-backup-retention-period) další podrobnosti.
+Při migraci databáze z úrovně služeb na základě DTU se výchozí PITR uchovávání po dobu 35 dní, do vrstvy služeb založený na virtuálních jádrech PITR uchovávání se zachovají zajistit, že není ohrožena zásad pro obnovení dat vaší aplikace. Pokud výchozí uchování nesplňuje vaše požadavky na dodržování předpisů, můžete změnit dobu uchování PITR pomocí Powershellu nebo rozhraní REST API. Zobrazit [období uchování zálohy změnu](#how-to-change-the-pitr-backup-retention-period) další podrobnosti.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="how-to-change-backup-retention-period"></a>Změna doby uchovávání záloh
+## <a name="how-to-change-the-pitr-backup-retention-period"></a>Jak změnit PITR období uchování zálohy
 
-> [!Note]
-> Výchozí období uchovávání záloh (7 dní) nelze změnit na Managed Instance.
-
-Můžete změnit výchozí uchování pomocí rozhraní REST API nebo Powershellu. Podporované hodnoty jsou: 7, 14, 21, 28 nebo 35 dnů. Následující příklady ukazují, jak změnit PITR uchovávání informací na 28 dnů.
+Můžete změnit období uchování zálohy PITR výchozí pomocí webu Azure Portal, Powershellu nebo rozhraní REST API. Podporované hodnoty jsou: 7, 14, 21, 28 nebo 35 dnů. Následující příklady ukazují, jak změnit PITR uchovávání informací na 28 dnů.
 
 > [!NOTE]
-> Rozhraní API tez ovlivní pouze PITR dobu uchování. Pokud jste nakonfigurovali zleva doprava pro vaši databázi, nebude mít vliv. Zobrazit [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md) podrobnosti o tom, jak změnit období uchování zleva doprava.
+> Rozhraní API tez ovlivní pouze PITR dobu uchování. Pokud jste nakonfigurovali zleva doprava pro vaši databázi, nebude mít vliv. Další informace o tom, jak změnit období uchování zleva doprava, najdete v části [dlouhodobé uchovávání](sql-database-long-term-retention.md).
+
+### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Změnit PITR období uchování zálohy pomocí webu Azure portal
+
+Chcete-li změnit PITR období uchovávání záloh pomocí webu Azure portal, přejděte do databáze jehož doba uchování, kterou chcete změnit a pak klikněte na tlačítko **přehled**.
+
+![Portál pro změnu PITR Azure](./media/sql-database-automated-backup/configure-backup-retention.png)
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>Změnit PITR období uchování zálohy pomocí Powershellu
 
@@ -154,7 +155,7 @@ Stavový kód: 200
 }
 ```
 
-Zobrazit [rozhraní REST API pro uchování zálohy](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies) další podrobnosti.
+Další informace najdete v tématu [rozhraní REST API pro uchování zálohy](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
 ## <a name="next-steps"></a>Další postup
 

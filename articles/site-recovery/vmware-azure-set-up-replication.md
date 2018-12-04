@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: fd987097c2ca7b1e7509a1a0e63905c36ec8fec8
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: e83b15b5e53a203a3583c02565ea9c316b7c481c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50212892"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52832363"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurace a Správa zásad replikace pro zotavení po havárii VMware do Azure
 Tento článek popisuje, jak nakonfigurovat zásadu replikace, když budete replikovat virtuální počítače VMware do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md).

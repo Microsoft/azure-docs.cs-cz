@@ -12,16 +12,16 @@ ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: b7a3fc6e5dafb59d6981ff4302d4b060b0c73d6b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 02a7a460799a098b6be10a52d6e1a1598b023454
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499241"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839108"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Rychlý start: Vytvoření spravované instance Azure SQL Database
 
-V tomto rychlém startu se dozvíte, jak na webu Azure Portal vytvořit [spravovanou instanci](sql-database-managed-instance.md) Azure SQL Database. 
+V tomto rychlém startu se dozvíte, jak na webu Azure Portal vytvořit [spravovanou instanci](sql-database-managed-instance.md) Azure SQL Database.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -45,7 +45,7 @@ Následujícím postupem vytvoříte spravovanou instanci.
    | ------ | --------------- | ----------- |
    | **Předplatné** | Vaše předplatné | Předplatné, ve kterém máte oprávnění vytvářet nové prostředky |
    |**Název spravované instance**|Libovolné platné jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Přihlašovací jméno správce spravované instance**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte "serveradmin", protože to je vyhrazené serverové role.| 
+   |**Přihlašovací jméno správce spravované instance**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte "serveradmin", protože to je vyhrazené serverové role.|
    |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 16 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Umístění**|Umístění, ve kterém chcete vytvořit spravovanou instanci|Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/).|
    |**Virtuální síť**|Vyberte buď **vytvořit novou virtuální síť** nebo virtuální sítě, kterou jste vytvořili ve skupině prostředků, které jste zadali dříve v tomto formuláři.| Pokud chcete při konfiguraci virtuální sítě pro spravovanou instanci použít vlastní nastavení, přečtěte si článek o [konfiguraci šablony prostředí virtuální sítě pro spravovanou instanci SQL](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) v Githubu. Informace ohledně požadavků na konfiguraci síťového prostředí pro Managed Instance najdete v tématu [konfigurace virtuální sítě pro Azure SQL Database Managed Instance](sql-database-managed-instance-vnet-configuration.md). |
@@ -53,15 +53,16 @@ Následujícím postupem vytvoříte spravovanou instanci.
 
    ![formulář spravované instance](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. Vyberte **cenová úroveň** velikost výpočetních a úložných kapacit také projděte si možnosti cenové úrovně. Výchozí hodnotou je cenová úroveň s 32 GB paměti a 16 virtuálními jádry pro obecné účely.
-6. Pomocí posuvník nebo textových polí zadejte velikost úložiště a počet virtuálních jader. 
-7. Jakmile budete hotovi, zvolte **použít** uložte svůj výběr.  
-8. Vyberte **vytvořit** k nasazení spravované Instance.
-9. Vyberte **oznámení** ikonu k zobrazení stavu nasazení.
+5. Pokud chcete použít jako skupinu převzetí služeb při selhání Instance sekundární Managed Instance, vyberte rezervace a zadejte spravovanou instanci DnsAzurePartner. Tato funkce je ve verzi preview a není vidět doprovodné snímku obrazovky.
+6. Vyberte **cenová úroveň** velikost výpočetních a úložných kapacit také projděte si možnosti cenové úrovně. Výchozí hodnotou je cenová úroveň s 32 GB paměti a 16 virtuálními jádry pro obecné účely.
+7. Pomocí posuvník nebo textových polí zadejte velikost úložiště a počet virtuálních jader.
+8. Jakmile budete hotovi, zvolte **použít** uložte svůj výběr.  
+9. Vyberte **vytvořit** k nasazení spravované Instance.
+10. Vyberte **oznámení** ikonu k zobrazení stavu nasazení.
 
     ![průběh nasazení spravované instance](./media/sql-database-managed-instance-get-started/deployment-progress.png)
 
-10. Vyberte **probíhá nasazení** otevřete okno Managed Instance můžete dále monitorovat průběh nasazení. 
+11. Vyberte **probíhá nasazení** otevřete okno Managed Instance můžete dále monitorovat průběh nasazení.
 
 > [!IMPORTANT]
 > U první instance v podsíti trvá nasazení obvykle mnohem delší než v dalších instancí. Nepřerušujte operace nasazení, protože trvá déle, než jste očekávali. Vytvoření druhé spravované instance v podsíti zabere jenom pár minut.
@@ -78,7 +79,6 @@ Jakmile úspěšně dokončíte nasazení, zkontrolujte vytvořené prostředky 
 
 3. Na **přehled** kartu, vyhledejte **hostitele** vlastnosti a zkopírujte plně kvalifikovaný hostitel adres pro Managed Instance.
 
-
    ![Prostředky spravované instance](./media/sql-database-managed-instance-get-started/host-name.png)
 
    Název se podobá **your_machine_name.a1b2c3d4e5f6.database.windows.net**.
@@ -90,4 +90,4 @@ Jakmile úspěšně dokončíte nasazení, zkontrolujte vytvořené prostředky 
   - Rychlý start o připojení ke spravované instanci z virtuálního počítače Azure najdete v článku o [konfiguraci připojení virtuálního počítače Azure](sql-database-managed-instance-configure-vm.md).
   - Rychlý start s návodem, jak se z místního klientského počítače připojit ke spravované instanci pomocí připojení typu point-to-site, najdete v článku o [konfiguraci připojení typu point-to-site](sql-database-managed-instance-configure-p2s.md).
 - Pokud chcete obnovit stávající databázi SQL Serveru z místní do spravované instance, můžete k migraci použít [službu Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) a obnovit zálohu databáze nebo můžete k obnovení zálohy databáze použít [příkaz T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md).
-- Informace o pokročilém monitorování výkonu databáze spravované instance s využitím integrovaných inteligentních funkcí pro řešení potíží najdete v tématu [Monitorování služby Azure SQL Database pomocí Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+- Rozšířené monitorování výkonu databáze spravované Instance s integrovanými inteligentními funkcemi pro řešení potíží, najdete v části [monitorování Azure SQL Database pomocí Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md)

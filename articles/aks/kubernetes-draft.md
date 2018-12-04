@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: 15fbf254eb479f0935e154806795ebd00cff6adf
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d03324b82d056fc33114f1daa8961158c0a739f6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345943"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837643"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Použití konceptu s Azure Kubernetes Service (AKS)
 
@@ -139,7 +139,7 @@ $ draft connect
 Connect to java:4567 on localhost:49804
 [java]: SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 [java]: SLF4J: Defaulting to no-operation (NOP) logger implementation
-[java]: SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+[java]: SLF4J: See https://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 [java]: == Spark has ignited ...
 [java]: >> Listening on 0.0.0.0:4567
 ```

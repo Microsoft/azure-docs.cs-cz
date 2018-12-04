@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 6e16529740377b9a082fda4f3e4409b57441715e
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4f0e4a745aa054f96bf2ce90ff6f2c33588d1337
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215153"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833616"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Převzetí služeb při selhání virtuálních počítačů a fyzických serverů 
 

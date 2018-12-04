@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: 399c7b000360a73a9bab06b046be21c9d93a1c70
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: ef06e7b1abd66a2204ef982943fe24354bd7f122
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367117"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837439"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnostikovat a řešit problémy ve vašem prostředí Time Series Insights
 
@@ -31,7 +31,7 @@ Tento článek popisuje některé problémy, které se můžou objevovat ve vaš
 Několik běžných důvodů, proč se nemusí zobrazovat data v [Průzkumník služby Azure Time Series Insights](https://insights.timeseries.azure.com):
 
 ### <a name="possible-cause-a-event-source-data-is-not-in-json-format"></a>Možnou příčinou A: události zdroje dat není ve formátu JSON
-Azure Time Series Insights podporuje jenom data JSON. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](time-series-insights-send-events.md#supported-json-shapes).
+Azure Time Series Insights podporuje jenom data JSON. Ukázky JSON najdete v tématu [tvary JSON nepodporuje](./how-to-shape-query-json.md).
 
 ### <a name="possible-cause-b-event-source-key-is-missing-a-required-permission"></a>Klíč zdroje událostí B: možnou příčinou je chybějící požadované oprávnění
 * Pro službu IoT Hub, je potřeba zadat klíč, který má **služba připojit** oprávnění.
@@ -70,7 +70,7 @@ Předpokládejme například, že toto prostředí je ingestovat zprávy z centr
 
 Jak je znázorněno v diagramu, denní rychlost příchozího přenosu dat se ~ 67,000 zprávy. Tato sazba se přeloží přibližně na 46 zprávy každou minutu. Pokud každá zpráva centra událostí se sloučí do jedné události Time Series Insights, zobrazí toto prostředí, nedojde k omezování. Pokud každá zpráva centra událostí se sloučí do 100 událostí Time Series Insights, pak 4,600 události by měly ingestování každou minutu. S1 SKU prostředí, které má kapacitu 3 můžete pouze 2100 událostí příchozího přenosu dat každou minutu (1 milion událostí za den = 700 událostí za minutu za 3 jednotky = 2100 událostí za minutu). Proto se zobrazí s menší prodlevou kvůli omezování. 
 
-Přehled, jak sloučení logiky funguje, najdete v části [tvary JSON nepodporuje](time-series-insights-send-events.md#supported-json-shapes).
+Přehled, jak sloučení logiky funguje, najdete v části [tvary JSON nepodporuje](./how-to-shape-query-json.md).
 
 ### <a name="recommended-resolution-steps-for-excessive-throttling"></a>Doporučené řešení kroky pro omezení nadměrné
 K vyřešení je zpoždění, zvýšit kapacitu skladové položky vašeho prostředí. Další informace najdete v tématu [jak škálovat vaše prostředí Time Series Insights](time-series-insights-how-to-scale-your-environment.md).

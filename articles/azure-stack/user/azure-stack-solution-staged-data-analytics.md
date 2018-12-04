@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/02/2018
+ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237893"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837337"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení pro analýzu pracovních dat s využitím Azure a Azure Stack 
 
@@ -133,7 +133,7 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
     | Nastavení | Navrhovaná hodnota | Popis |
     | ---- | ---- | ---- |
-    | Název aplikace | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a` - `z`, `0``-9`, a `-`. |
+    | App name (Název aplikace) | Globálně jedinečný název | Název identifikující novou aplikaci Function App. Platné znaky jsou `a` - `z`, `0``-9`, a `-`. |
     | Předplatné | Vaše předplatné | Předplatné, pod kterým je tato nová aplikace Function App vytvořena. |
     | **Skupina prostředků** |  |  |
     | myResourceGroup | Název nové skupiny prostředků, ve které chcete vytvořit aplikaci Function App. |  |
@@ -252,7 +252,7 @@ Tyto kroky a použijte nastavení uvedené výše vytvořte další účet a obj
 
 ## <a name="test-the-queue-triggered-function"></a>Funkce aktivovaná testu do fronty
 
-1.  Na webu Azure Portal přejděte do funkce. Rozbalte **protokoly** v dolní části stránky a ujistěte se, není pozastavené streamování protokolů.
+1.  Na portálu Azure Stack přejděte do funkce. Rozbalte **protokoly** v dolní části stránky a ujistěte se, není pozastavené streamování protokolů.
 
 2.  Otevřete Průzkumníka služby Storage a připojte se k účtu úložiště, vytvořili na začátku této části.
 

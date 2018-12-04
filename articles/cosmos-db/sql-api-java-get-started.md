@@ -11,18 +11,20 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 158bfedc8c0eb7d49c72d40cda08588d7377d17d
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: d3354d7e2db7ff33776d5ecd40546b2a3593d702
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636845"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836419"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Kurz k NoSQL: Vytvoření aplikace konzoly Java rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
+> * [.NET (preview)](sql-api-dotnet-get-started-preview.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
+> * [.NET core (Preview)](sql-api-dotnet-core-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
@@ -140,7 +142,7 @@ Dokument lze vytvořit pomocí [createDocument](/java/api/com.microsoft.azure.do
 ![Diagram ilustrující hierarchický vztah mezi účtem, online databází, kolekcí a dokumenty používanými v kurzu NoSQL k vytvoření konzolové aplikace v jazyce Java](./media/sql-api-get-started/nosql-tutorial-account-database.png)
 
 ## <a id="Query"></a>Krok 7: Dotazování prostředků Azure Cosmos DB
-Azure Cosmos DB podporuje bohaté [dotazy](sql-api-sql-query.md) na dokumenty JSON uložené v každé z kolekcí.  Následující ukázkový kód ukazuje dotazování na dokumenty ve službě Azure Cosmos DB pomocí syntaxe SQL a metody [queryDocuments](/java/api/com.microsoft.azure.documentdb._document_client.querydocuments).
+Azure Cosmos DB podporuje bohaté [dotazy](how-to-sql-query.md) na dokumenty JSON uložené v každé z kolekcí.  Následující ukázkový kód ukazuje dotazování na dokumenty ve službě Azure Cosmos DB pomocí syntaxe SQL a metody [queryDocuments](/java/api/com.microsoft.azure.documentdb._document_client.querydocuments).
 
     FeedResponse<Document> queryResults = this.client.queryDocuments(
         "/dbs/familydb/colls/familycoll",

@@ -1,20 +1,21 @@
 ---
 title: Nasazení konfiguračního serveru pro zotavení po havárii VMware pomocí Azure Site Recovery | Dokumentace Microsoftu
-description: Tento článek popisuje postup nasazení konfiguračního serveru pro zotavení po havárii VMware do Azure pomocí Azure Site Recovery
-author: rayne-wiselman
-manager: carmonm
+description: Tento článek popisuje postup nasazení konfiguračního serveru pro zotavení po havárii VMware pomocí Azure Site Recovery
+services: site-recovery
+author: Rajeswari-Mamilla
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/29/2018
-ms.author: raynew
-ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 11/27/2018
+ms.author: ramamill
+ms.openlocfilehash: 5d6510c1e069abe1fc295f2fccd9f2c0a9aad5bf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233153"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837559"
 ---
-# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>Nasazení konfiguračního serveru pro zotavení po havárii VMware do Azure
+# <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
 Při použití se nasadíte místní konfigurační server [Azure Site Recovery](site-recovery-overview.md) pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Konfigurace serveru souřadnice komunikaci mezi místní VMware a Azure. Spravuje taky data replikace. Tento článek vás provede kroky potřebné k nasazení konfiguračního serveru při replikaci virtuálních počítačů VMware do Azure. [Postupujte podle tohoto článku](physical-azure-set-up-source.md) Pokud je potřeba nastavit konfigurační server pro replikaci fyzických serverů.
 

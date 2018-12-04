@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/17/2017
+ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1db805efe7eaec77fcafeb169b3d99098b57f582
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 88cc884489c29f964d68908dd394f23b5b21790f
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978974"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839394"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Vytvoření webové aplikace ASP.NET pomocí Azure Active Directory B2C profil registrace, přihlašování, úpravy a resetování hesla
 
@@ -51,27 +51,27 @@ Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhled
 
 Jakmile budete hotovi, budete mít rozhraní API a nativní aplikace v aplikaci nastavení.
 
-## <a name="create-policies-on-your-b2c-tenant"></a>Vytvoření zásad ve svém tenantovi B2C
+## <a name="create-user-flows-on-your-b2c-tenant"></a>Vytvořit toky uživatelů ve svém tenantovi B2C
 
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato ukázka kódu obsahuje tři činnosti identity: **registrace a přihlášení**, **profilu úpravy**, a **resetování hesla**.  Pro každý typ rozhraní musíte vytvořit zásadu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md). U každé zásady nezapomeňte vybrat atribut název zobrazení nebo deklarací identity a poznamenejte název zásady pro pozdější použití.
+V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md). Toky uživatelů jsou předdefinované zásady, které jsou k dispozici na portálu Azure AD B2C pro vám pomůže nastavit nejběžnější činnosti identity. Tato ukázka kódu obsahuje tři činnosti identity: **registrace a přihlášení**, **profilu úpravy**, a **resetování hesla**.  Je potřeba vytvořit jeden tok uživatele každého typu, jak je popsáno v [článku toku uživatele](active-directory-b2c-reference-policies.md). Pro každý tok uživatele nezapomeňte vybrat atribut název zobrazení nebo deklarací identity a poznamenejte název toku uživatele si pro pozdější použití.
 
 ### <a name="add-your-identity-providers"></a>Přidat svoje zprostředkovatele identit
 
 Nastavení, vyberte **zprostředkovatelé Identity** a možnost registrace uživatelského jména nebo e-mailová registrace.
 
-### <a name="create-a-sign-up-and-sign-in-policy"></a>Vytvoření zásad registrace a přihlášení
+### <a name="create-a-sign-up-and-sign-in-user-flow"></a>Vytvořit tok registrace a přihlášení uživatele
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
-### <a name="create-a-profile-editing-policy"></a>Vytvoření zásady upravování profilu
+### <a name="create-a-profile-editing-user-flow"></a>Vytvořit tok uživatele upravování profilu
 
 [!INCLUDE [active-directory-b2c-create-profile-editing-policy](../../includes/active-directory-b2c-create-profile-editing-policy.md)]
 
-### <a name="create-a-password-reset-policy"></a>Vytvoření zásady resetování hesla
+### <a name="create-a-password-reset-user-flow"></a>Vytvořit tok uživatele resetování hesla
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
-Po vytvoření zásad jste připraveni k sestavení aplikace.
+Po vytvoření toků uživatelů, budete připraveni k sestavení aplikace.
 
 ## <a name="download-the-sample-code"></a>Stáhněte si ukázkový kód
 
@@ -83,16 +83,16 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. Soubor řešení obsahuje dva projekty: `TaskWebApp` a `TaskService`. `TaskWebApp` je webová aplikace MVC, kterou uživatel komunikuje. `TaskService` je back-endové webové rozhraní API aplikace, které ukládá seznam úkolů každého uživatele. Tento článek bude probírat pouze aplikaci `TaskWebApp`. Chcete-li další informace o vytváření `TaskService` pomocí služby Azure AD B2C, najdete v článku [Náš kurz webových rozhraní api .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-## <a name="update-code-to-use-your-tenant-and-policies"></a>Aktualizace kódu pro použití vašeho tenanta a zásady
+## <a name="update-code-to-use-your-tenant-and-user-flows"></a>Aktualizace kódu pro použití vašeho tenanta a uživatel toků
 
-Naše ukázka je nakonfigurovaná k použití zásad a ID klienta naše ukázkového tenanta. Aby se připojila k vašeho vlastního tenanta, budete muset otevřít `web.config` v `TaskWebApp` projektu a nahraďte následující hodnoty:
+Naše ukázka je nakonfigurovaná pro toky uživatelů a ID klienta naše ukázkového tenanta. Aby se připojila k vašeho vlastního tenanta, budete muset otevřít `web.config` v `TaskWebApp` projektu a nahraďte následující hodnoty:
 
 * `ida:Tenant` názvem vašeho tenanta
 * `ida:ClientId` identifikátorem webového aplikace
 * `ida:ClientSecret` tajným klíčem webové aplikace
-* `ida:SignUpSignInPolicyId` názvem zásady registrace/přihlášení
-* `ida:EditProfilePolicyId` názvem zásady pro úpravu profilu
-* `ida:ResetPasswordPolicyId` názvem zásady pro resetování hesla
+* `ida:SignUpSignInPolicyId` s názvem "Registrace nebo přihlášení" toku uživatele
+* `ida:EditProfilePolicyId` s názvem "Upravit profil" toku uživatele
+* `ida:ResetPasswordPolicyId` s názvem "Resetovat heslo" toku uživatele
 
 ## <a name="launch-the-app"></a>Spuštění aplikace
 Ze sady Visual Studio, spusťte aplikaci. Přejděte na kartu seznam úkolů a Všimněte si, že je adresa URl: https://*YourTenantName*.b2clogin.com/*YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName* & client_id =*YourclientID*...
@@ -110,16 +110,16 @@ Chcete-li přidat zprostředkovatelů sociálních sítí do vaší aplikace, za
 * [Nastavení Amazon jako identity](active-directory-b2c-setup-amzn-app.md)
 * [Nastavení Linkedinu jako identity](active-directory-b2c-setup-li-app.md)
 
-Po přidání zprostředkovatele identity do vašeho tenanta B2C, upravit, všechny tři zásady zahrnout nové zprostředkovatelů identity, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md). Po uložení zásady znovu spusťte aplikaci.  Měli byste vidět nové zprostředkovatelů identity, které jsou přidány jako přihlášení a prostředí možností registrace v jednotlivých vaši identitu.
+Po přidání zprostředkovatele identity do vašeho tenanta B2C, úpravy, každý z vašich toků tři uživatele chcete zahrnout nové zprostředkovatelů identity, jak je popsáno v [článku toku uživatele](active-directory-b2c-reference-policies.md). Po uložení vašich toků uživatelů, znovu spusťte aplikaci.  Měli byste vidět nové zprostředkovatelů identity, které jsou přidány jako přihlášení a prostředí možností registrace v jednotlivých vaši identitu.
 
-Můžete experimentovat s vašimi zásadami a můžete sledovat účinek na ukázkovou aplikaci. Přidat nebo odebrat zprostředkovatelů identity, manipulovat s deklaracemi identity aplikace nebo změnit atributy registrace. Experiment, dokud se nezobrazí, jak spojovat zásady žádosti o ověření a OWIN.
+Můžete experimentovat s vašimi toky uživatelů a můžete sledovat účinek na ukázkovou aplikaci. Přidat nebo odebrat zprostředkovatelů identity, manipulovat s deklaracemi identity aplikace nebo změnit atributy registrace. Experiment, dokud se nezobrazí, jak spojovat toky uživatelů, žádosti o ověření a OWIN.
 
 ## <a name="sample-code-walkthrough"></a>Ukázkový názorný postup kódu
 Následující části vysvětlují konfiguraci ukázkový kód aplikace. Můžete ji používat jako vodítko při vývoji budoucí aplikace.
 
 ### <a name="add-authentication-support"></a>Přidání podpory ověřování
 
-Teď můžete nakonfigurovat aplikace pro použití Azure AD B2C. Vaše aplikace komunikovala s Azure AD B2C odesláním žádosti o ověření OpenID Connect. Požadavky určují uživatelské prostředí, které aplikace chce provést tak, že určíte zásady. Společnosti Microsoft OWIN knihovny slouží k odesílání těchto požadavků, spuštění zásady, spravovat uživatelské relace a další věci.
+Teď můžete nakonfigurovat aplikace pro použití Azure AD B2C. Vaše aplikace komunikovala s Azure AD B2C odesláním žádosti o ověření OpenID Connect. Požadavky určují uživatelské prostředí, které aplikace chce provést zadáním tok uživatele. Společnosti Microsoft OWIN knihovny slouží k odesílání těchto požadavků, spouštět toky uživatelů, spravovat uživatelské relace a další věci.
 
 #### <a name="install-owin"></a>Instalace OWIN
 
@@ -207,11 +207,11 @@ public partial class Startup
 
 V `OpenIdConnectAuthenticationOptions` výše definujeme sadu funkcí zpětného volání pro upozornění, které jsou přijaty middlewarem OpenID Connect. Těchto projevů jsou definovány pomocí `OpenIdConnectAuthenticationNotifications` objektu a uložena do `Notifications` proměnné. V naší ukázce budeme definovat tři různé zpětná volání v závislosti na události.
 
-### <a name="using-different-policies"></a>Použití různých zásad
+### <a name="using-different-user-flows"></a>Toky pomocí jiného uživatele
 
-`RedirectToIdentityProvider` Upozornění se aktivuje vždy, když se požadavek na Azure AD B2C. Ve funkci zpětného volání `OnRedirectToIdentityProvider`, zkontrolujeme v odchozích volání, pokud chcete použít jiné zásady. Aby bylo možné provést resetování hesla nebo upravte profil, budete muset použít odpovídající zásady, jako je místo výchozí zásady "Registrace / přihlášení" zásady pro resetování hesla.
+`RedirectToIdentityProvider` Upozornění se aktivuje vždy, když se požadavek na Azure AD B2C. Ve funkci zpětného volání `OnRedirectToIdentityProvider`, zkontrolujeme v odchozích volání, pokud chcete použít tok jiný uživatel. Aby bylo možné provést resetování hesla nebo upravte profil, budete muset použít odpovídající tok uživatele, jako je tok uživatele místo výchozí "Registrace nebo přihlašování" uživatel tok pro resetování hesla.
 
-V naší ukázce když uživatel chce resetovat heslo nebo upravte profil, přidáme na zásadu, kterou jsme dávají přednost používání do kontextu OWIN. To jde udělat následujícím způsobem:
+V naší ukázce když uživatel chce resetovat heslo nebo upravte profil, přidáme tok uživatele, které nám dávají přednost používání do kontextu OWIN. To jde udělat následujícím způsobem:
 
 ```CSharp
     // Let the middleware know you are trying to use the edit profile policy
@@ -246,7 +246,7 @@ private Task OnRedirectToIdentityProvider(RedirectToIdentityProviderNotification
 
 ### <a name="handling-errors"></a>Zpracování chyb
 
-`AuthenticationFailed` Upozornění se aktivuje, pokud se ověření nezdaří. Ve své metodě zpětného volání může zpracovávat chyby podle potřeby. Měli byste ale přidat kontrolu kód chyby: `AADB2C90118`. Při zpracování zásady "Registrace nebo přihlašování" uživatel má možnost vybrat **zapomněli jste heslo?** odkaz. V takovém případě Azure AD B2C pošle vaší aplikace tento kód chyby označující, že vaše aplikace by měl vytvořit žádost o místo toho použít zásady resetování hesla.
+`AuthenticationFailed` Upozornění se aktivuje, pokud se ověření nezdaří. Ve své metodě zpětného volání může zpracovávat chyby podle potřeby. Měli byste ale přidat kontrolu kód chyby: `AADB2C90118`. Během provádění toku uživatele "Registrace nebo přihlašování" uživatel má možnost vybrat **zapomněli jste heslo?** odkaz. V takovém případě Azure AD B2C odešle aplikace tento chyba kódu s upozorněním, že vaše aplikace by měl vytvořit žádost o místo toho použít tok uživatele resetování hesla.
 
 ```CSharp
 /*
@@ -357,7 +357,7 @@ public void SignOut()
 }
 ```
 
-Kromě explicitně vyvolání zásady, můžete použít `[Authorize]` značku ve vašich kontrolerech, zásady se spustí, pokud uživatel není přihlášený. Otevřít `Controllers\HomeController.cs` a přidejte `[Authorize]` značka, které deklarace identity kontroleru.  OWIN Vybere poslední zásady nakonfigurované při `[Authorize]` stiskněte značku.
+Kromě explicitně vyvolání tok uživatele, můžete použít `[Authorize]` značky ve vašich kontrolerech, která se spustí tok uživatele, pokud uživatel není přihlášený. Otevřít `Controllers\HomeController.cs` a přidejte `[Authorize]` značka, které deklarace identity kontroleru.  OWIN Vybere poslední zásady nakonfigurované při `[Authorize]` stiskněte značku.
 
 ```CSharp
 // Controllers\HomeController.cs

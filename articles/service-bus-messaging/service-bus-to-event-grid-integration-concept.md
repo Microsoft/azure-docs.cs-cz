@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: c5dcfcb61903c3dbb92e942a5d3dca264ad454e3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166895"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834379"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
 
@@ -36,10 +36,7 @@ K povolení této funkce potřebujete následující položky:
 ![19][]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Ověření, že máte přístup přispěvatele
-
-Přejděte do svého oboru názvů služby Service Bus a vyberte **Řízení přístupu (IAM)**, jak je vidět tady:
-
-![1][]
+Přejděte do svého oboru názvů služby Service Bus a vyberte **řízení přístupu (IAM)** a vyberte **přiřazení rolí** kartu. Ověřte, že máte přístup přispěvatele k oboru názvů. 
 
 ### <a name="events-and-event-schemas"></a>Události a schémata událostí
 
@@ -173,7 +170,7 @@ New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBS
 
 Teď můžete prozkoumat další možnosti instalace nebo [otestovat tok událostí](#test-that-events-are-flowing).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Příklady](service-bus-to-event-grid-integration-example.md) pro službu Service Bus a Event Grid.
 * Další informace o službě [Event Grid](https://docs.microsoft.com/azure/event-grid/).

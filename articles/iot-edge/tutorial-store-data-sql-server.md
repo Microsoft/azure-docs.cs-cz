@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/19/2018
+ms.date: 12/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 95041ca77930d87bff6ea31e2eab89a6634cfcf5
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: b0d26704d287f2e02541cc667250af8e8005f864
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442960"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833989"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 Zařízení Azure IoT Edge:
 
-* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md). 
 
 Cloudové prostředky:
 
@@ -97,9 +97,13 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
    | Zadejte název modulu | Zadejte název modulu **sqlFunction**. |
    | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Image kontejneru je předem vyplněná z předchozího kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. Konečný řetězec vypadá jako \<název registru\>.azurecr.io/sqlFunction. |
 
-   V okně nástroje VS Code se načte pracovní prostor řešení IoT Edge: složka \.vscode, složka s moduly a soubor šablony manifestu nasazení. a soubor \.env. 
+   V okně nástroje VS Code se načte pracovní prostor řešení IoT Edge. 
    
-4. Pokaždé, když vytvoříte nové řešení IoT Edge, VS Code vás vyzve k zadání přihlašovacích údajů registru v \.souboru env. Tento soubor je ignorován git a rozšíření IoT Edge použije později poskytnout přístup k registru do zařízení IoT Edge. Otevřít \.souboru env. 
+4. Ve vašem řešení IoT Edge, otevřete \.souboru env. 
+
+   Pokaždé, když vytvoříte nové řešení IoT Edge, VS Code vás vyzve k zadání přihlašovacích údajů registru v \.souboru env. Tento soubor je ignorován git a rozšíření IoT Edge použije později poskytnout přístup k registru do zařízení IoT Edge. 
+
+   Pokud neposkytli vašeho registru kontejneru v předchozím kroku, ale přijmout výchozí localhost:5000, nebudete mít \.souboru env.
 
 5. V souboru .env zadejte pro modul runtime IoT Edge své přihlašovací údaje k registru, aby získal přístup k imagím vašich modulů. Najděte sekce **CONTAINER_REGISTRY_USERNAME** a **CONTAINER_REGISTRY_PASSWORD** a vložte své přihlašovací údaje za symbol rovnítka: 
 
@@ -207,6 +211,16 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
 
 7. Uložit **sqlFunction.cs** souboru. 
 
+8. Otevřít **sqlFunction.csproj** souboru.
+
+9. Najít skupinu odkazy na balíček a přidejte nový jedna pro SqlClient zahrnuje. 
+
+   ```csproj
+   <PackageReference Include="System.Data.SqlClient" Version="4.5.1"/>
+   ```
+
+10. Uložit **sqlFunction.csproj** souboru.
+
 ## <a name="add-a-sql-server-container"></a>Přidání kontejneru SQL Serveru
 
 [Manifest nasazení](module-composition.md) deklaruje, které moduly nainstaluje modul runtime IoT Edge na vaše zařízení IoT Edge. Poskytuje kód, který vlastní modul funkce v předchozí části, ale modul SQL Server je už vytvořili. Stačí pouze sdělit modulu runtime IoT Edge, aby ho zahrnul, a pak ho nakonfigurovat na zařízení. 
@@ -225,15 +239,15 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
 
    ```json
    "sql": {
-       "version": "1.0",
-       "type": "docker",
-       "status": "running",
-       "restartPolicy": "always",
-       "env":{},
-       "settings": {
-           "image": "",
-           "createOptions": ""
-       }
+     "version": "1.0",
+     "type": "docker",
+     "status": "running",
+     "restartPolicy": "always",
+     "env":{},
+     "settings": {
+       "image": "",
+       "createOptions": ""
+     }
    }
    ```
 
@@ -244,19 +258,19 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
 
       ```json
       "env": {
-         "ACCEPT_EULA": {"value": "Y"},
-         "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-       },
-       "settings": {
-          "image": "microsoft/mssql-server-windows-developer",
-          "createOptions": {
-              "HostConfig": {
-                  "Mounts": [{"Target": "C:\\\\mssql","Source": "sqlVolume","Type": "volume"}],
-                  "PortBindings": {
-                      "1433/tcp": [{"HostPort": "1401"}]
-                  }
-              }
+        "ACCEPT_EULA": {"value": "Y"},
+        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
+      },
+      "settings": {
+        "image": "microsoft/mssql-server-windows-developer",
+        "createOptions": {
+          "HostConfig": {
+            "Mounts": [{"Target": "C:\\\\mssql","Source": "sqlVolume","Type": "volume"}],
+            "PortBindings": {
+              "1433/tcp": [{"HostPort": "1401"}]
+            }
           }
+        }
       }
       ```
 
@@ -264,19 +278,19 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
 
       ```json
       "env": {
-         "ACCEPT_EULA": {"value": "Y"},
-         "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-       },
-       "settings": {
-          "image": "mcr.microsoft.com/mssql/server:latest",
-          "createOptions": {
-              "HostConfig": {
-                  "Mounts": [{"Target": "/var/opt/mssql","Source": "sqlVolume","Type": "volume"}],
-                  "PortBindings": {
-                      "1433/tcp": [{"HostPort": "1401"}]
-                  }
-              }
+        "ACCEPT_EULA": {"value": "Y"},
+        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
+      },
+      "settings": {
+        "image": "mcr.microsoft.com/mssql/server:latest",
+        "createOptions": {
+          "HostConfig": {
+            "Mounts": [{"Target": "/var/opt/mssql","Source": "sqlVolume","Type": "volume"}],
+            "PortBindings": {
+              "1433/tcp": [{"HostPort": "1401"}]
+            }
           }
+        }
       }
       ```
 
@@ -295,7 +309,7 @@ V předchozích částech jste vytvořili řešení s jedním modulem a pak jste
     docker login -u <ACR username> <ACR login server>
     ```
     
-    Zobrazí se výzva k zadání hesla. Vložte heslo do řádku (heslem je skryté kvůli zabezpečení) a stisknutím klávesy **Enter**. 
+    Zobrazí se výzva k zadání hesla. Vložte heslo do řádku (heslo je skryté kvůli zabezpečení) a stisknutím klávesy **Enter**. 
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>
@@ -322,11 +336,11 @@ Moduly na zařízení můžete nastavit prostřednictvím služby IoT Hub, ale p
 
    ![Vytvoření nasazení pro jedno zařízení](./media/tutorial-store-data-sql-server/create-deployment.png)
 
-6. V Průzkumníku souborů přejděte do složky **config** uvnitř vašeho řešení a zvolte soubor **deployment.json**. Klikněte na **Select Edge deployment manifest** (Vybrat manifest nasazení Edge). 
+6. V Průzkumníku souborů přejděte **config** složky ve vašem řešení a zvolte **deployment.amd64**. Klikněte na **Select Edge deployment manifest** (Vybrat manifest nasazení Edge). 
 
 Pokud nasazení proběhne úspěšně, ve výstupu VS Code se zobrazí potvrzovací zpráva. 
 
-Můžete také zkontrolovat, jestli jsou na vašem zařízení zprovozněné všechny moduly. Spuštěním následujícího příkazu na vašem zařízení IoT Edge zobrazte stav modulů. Může to trvat několik minut.
+Aktualizujte stav vašeho zařízení v části zařízení Azure IoT Hub VS Code. Nové moduly jsou uvedené, se spustí do sestavy, jakoby běžely prostřednictvím několika dalších minut, jako jsou kontejnery nainstalovaný a spuštěný. Můžete také zkontrolovat, jestli jsou na vašem zařízení zprovozněné všechny moduly. Spuštěním následujícího příkazu na vašem zařízení IoT Edge zobrazte stav modulů. 
 
    ```cmd/sh
    iotedge list
@@ -334,11 +348,11 @@ Můžete také zkontrolovat, jestli jsou na vašem zařízení zprovozněné vš
 
 ## <a name="create-the-sql-database"></a>Vytvoření databáze SQL
 
-Když pro své zařízení použijete manifest nasazení, získáte tři spuštěné moduly. Modul tempSensor generuje simulovaná data prostředí. Modul sqlFunction přebírá data a formátuje je pro databázi. 
+Když pro své zařízení použijete manifest nasazení, získáte tři spuštěné moduly. Modul tempSensor generuje simulovaná data prostředí. Modul sqlFunction přebírá data a formátuje je pro databázi. Tato část vás provede nastavením databáze SQL pro ukládání údajů o teplotě. 
 
-Tato část vás provede nastavením databáze SQL pro ukládání údajů o teplotě. 
+Spusťte následující příkazy na zařízení IoT Edge. Tyto příkazy připojení k **sql** modulu běžícího ve vašem zařízení a vytvoří databázi a tabulku pro uchovávání dat teploty odesílané do něj. 
 
-1. V nástroji příkazového řádku připojení k vaší databázi. 
+1. V nástroji příkazového řádku na vašem zařízení IoT Edge připojení k vaší databázi. 
    * Kontejner Windows:
    
       ```cmd

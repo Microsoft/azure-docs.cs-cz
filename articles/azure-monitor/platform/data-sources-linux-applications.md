@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: fe5c355054aab483a7ee8e68305473b7b840779d
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 4ddf163ce37c4adf1b89012c214ee807f55a0d98
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336782"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836318"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linuxové aplikace ve službě Log Analytics 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -170,4 +170,4 @@ Jakmile nakonfigurujete agenta Log Analytics pro Linux pro odesílání dat do L
 
 ## <a name="next-steps"></a>Další postup
 * [Shromažďování čítačů výkonu](data-sources-performance-counters.md) z agentů Linuxu.
-* Další informace o [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 

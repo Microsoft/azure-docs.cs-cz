@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d3cc1a09963c5f7fee613af24c63fd15b1cfffee
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: bf7d639c682e443f29b31b3c6d7438e89c406fde
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809201"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838629"
 ---
 # <a name="how-to-publish-a-new-iot-edge-module-in-the-cloud-partner-portal"></a>Jak publikovat nový modul IoT Edge v portál Cloud Partner
 
@@ -53,7 +53,7 @@ Postupujte podle následujících kroků připravíte svůj výpis modul IoT Edg
 -   Přihlášení k vaší [CPP účet](https://cloudpartner.azure.com/).
 
 >[!Note]
->Obecné informace o na portál Cloud Partner, můžete zkontrolovat [další dokumentace](https://cloudpartner.azure.com/#learn)
+>Obecné informace o na portál Cloud Partner, můžete zkontrolovat [další dokumentace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal)
 
 -   Vyberte **nová nabídka**a pak vyberte **modul IoT Edge**.
 

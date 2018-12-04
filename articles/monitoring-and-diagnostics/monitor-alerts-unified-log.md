@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 4dae003b011e8e33f0ae935d6dd8399a5687dff6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c4279002f599b26ac0333e442bbca7afaebefebe
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633763"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837604"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
 Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](monitoring-overview-alerts.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
@@ -122,4 +122,4 @@ Ceny za upozornění protokolů použít je uvedeno v [ceny služby Azure Monito
 * Vysvětlení [webhooky v protokolu upozornění v Azure](monitor-alerts-unified-log-webhook.md).
 * Další informace o [upozornění Azure](monitoring-overview-alerts.md).
 * Další informace o [Application Insights](../application-insights/app-insights-analytics.md).
-* Další informace o [Log Analytics](../log-analytics/log-analytics-queries.md).    
+* Další informace o [Log Analytics](../azure-monitor/log-query/log-query-overview.md).    

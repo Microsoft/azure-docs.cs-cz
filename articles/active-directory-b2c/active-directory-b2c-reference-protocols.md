@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: fa6ae230a209d804f244d8bc46a3c6ac1abf6071
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 19f3318c8bcaf634447285cab2951a89abf13a67
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725569"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837473"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: Protokoly pro ověřování
 Azure Active Directory B2C (Azure AD B2C) poskytuje identitu jako služba pro vaše aplikace díky podpoře dvou standardních oborových protokolů: OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, ale žádné dvě implementace těchto protokolů můžete jemně lišit. 
@@ -66,7 +66,7 @@ Některé tokeny zabezpečení mají vestavěné mechanismy, které brání neop
 
 Pokud nosný token je přenesen mimo zabezpečený kanál, můžete použít škodlivý stran útok man-in-the-middle k získání tokenu a použije ho k získání neoprávněného přístupu k chráněnému prostředku. Stejné zásady zabezpečení platí při nosné tokeny jsou uložená nebo ukládání do mezipaměti pro pozdější použití. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny bezpečným způsobem.
 
-Důležité informace o další nosný token zabezpečení, najdete v části [5 část dokumentu RFC 6750](http://tools.ietf.org/html/rfc6750).
+Důležité informace o další nosný token zabezpečení, najdete v části [5 část dokumentu RFC 6750](https://tools.ietf.org/html/rfc6750).
 
 Další informace o různých typech tokenů, které se používají v Azure AD B2C jsou k dispozici v [odkaz tokenu Azure AD](active-directory-b2c-reference-tokens.md).
 

@@ -4,14 +4,14 @@ description: Popisuje, jak posoudit velký počet místních počítačů pomoc�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 11/29/2018
 ms.author: raynew
-ms.openlocfilehash: b5685640a55e2ce52a202c341cb293fe9315ab14
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b0965d50781ac3bb6c62338a2c6f17317306d249
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240184"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835535"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -50,9 +50,12 @@ Pokud nasazujete v prostředí s tenanty, tady je jeden způsob, jak nastavit tu
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>Plánování migrace projektů a zjišťování
 
-Jeden kolektor Azure Migrate podporuje zjišťování z více servery vCenter (jednu po druhé) a také podporuje zjišťování tak, aby více projekty migrace (jednu po druhé).
+Podle počtu virtuálních počítačů, které chcete zjišťovat, můžete vytvořit více projektů a nasadit více zařízení ve vašem prostředí. Zařízení může být připojena k jedné systému vCenter Server a jeden projekt (není-li zastavit zjišťování a znovu spustit).
 
-Kolekce, v případě jednorázového zjišťování funguje v spustit a zapomenout modelu, po dokončení zjišťování můžete použít stejné kolekce shromažďovat data z různých vCenter serveru nebo odeslání do projektu různé migrace. V případě průběžná zjišťování je připojen jeden zařízení do jednoho projektu, proto stejné kolekce nelze použít k aktivaci druhý zjišťování.
+V případě jednorázového zjišťování (teď zastaralé), zjišťování funguje v spustit a zapomenout modelu, po dokončení zjišťování, můžete použít stejné kolekce shromažďovat data z různých vCenter serveru nebo odeslání do projektu různé migrace.
+
+> [!NOTE]
+> Jednorázové zjišťování zařízení je nyní zastaralý a tato metoda spoléhal na vCenter serveru nastavení statistiky dostupnosti bodu dat výkonu shromážděných čítačů průměrný výkon, které umožňují snížení velikosti virtuálních počítačů pro migraci do Azure. Doporučuje se přesunout do tohoto jednorázového zjišťování zařízení.
 
 Plán zjišťování a posouzení podle následující omezení:
 
@@ -65,7 +68,7 @@ Plán zjišťování a posouzení podle následující omezení:
 Mějte tyto aspekty plánování:
 
 - Když použijete zjišťování pomocí Azure Migrate collector, můžete nastavit obor zjišťování do složky na serveru vCenter, datacentrum, cluster nebo hostitele.
-- Více než jedno zjišťování proveďte ověření v systému vCenter Server, které jsou virtuální počítače, které chcete zjišťovat složky, datovými centry, clustery nebo hostitele, kteří podporují omezení 1 500 počítačů.
+- Provést více než jedno zjišťování ze stejného serveru vCenter, zkontrolujte v systému vCenter Server, které jsou virtuální počítače, které chcete zjišťovat složky, datovými centry, clustery nebo hostitele, kteří podporují omezení 1 500 počítačů.
 - Doporučujeme, abyste pro účely posouzení ponechat počítačů pomocí vzájemných závislostí v rámci jednoho projektu a posouzení. V systému vCenter Server Ujistěte se, že závislé počítače jsou ve stejném složku, datové centrum nebo cluster pro posouzení.
 
 V závislosti na vašem scénáři můžete rozdělit co jste se dozvěděli podle předepsaného níže:
@@ -73,25 +76,26 @@ V závislosti na vašem scénáři můžete rozdělit co jste se dozvěděli pod
 ### <a name="multiple-vcenter-servers-with-less-than-1500-vms"></a>Více vCenter servery s méně než 1 500 virtuálních počítačů
 Pokud máte více servery vCenter ve vašem prostředí a celkový počet virtuálních počítačů je menší než 1 500, můžete použít následující přístup založený na váš scénář:
 
-**Jednorázově:** jeden kolektor a jedna migrace projektu můžete použít ke zjišťování všech virtuálních počítačů napříč všemi servery vCenter. Protože jednorázově kolektoru zjistí jednomu vCenter serveru současně, můžete spustit stejnou kolekcí pro všechny servery, vCenter, jeden po druhém a kolektoru přejděte na stejný projekt migrace. Po dokončení všech zjišťování si můžete vytvořit posouzení pro počítače.
-
 **Průběžná zjišťování:** v případě průběžná zjišťování, může být jeden zařízení připojena k pouze jeden projekt. Proto budete muset nasadit jeden zařízení pro každou z vCenter servery a pak vytvořte jeden projekt pro každé zařízení a aktivační události zjišťování odpovídajícím způsobem.
+
+**Jednorázové zjišťování (teď zastaralé):** jeden kolektor a jedna migrace projektu můžete použít ke zjišťování všech virtuálních počítačů napříč všemi servery vCenter. Protože jednorázově kolektoru zjistí jednomu vCenter serveru současně, můžete spustit stejnou kolekcí pro všechny servery, vCenter, jeden po druhém a kolektoru přejděte na stejný projekt migrace. Po dokončení všech zjišťování si můžete vytvořit posouzení pro počítače.
+
 
 ### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>Více vCenter servery s více než 1 500 virtuálních počítačů
 
 Pokud máte více servery vCenter s méně než 1 500 virtuálních počítačů na vCenter serveru, ale více než 1 500 virtuálních počítačů napříč všemi servery vCenter, musíte vytvořit více projekty migrace (jeden projekt migrace může obsahovat jenom 1 500 virtuálních počítačů). Můžete dosáhnout vytvořením projektu migrace na vCenter Server a rozdělení zjišťování.
 
-**Jednorázově:** jeden kolektor můžete použít ke zjištění každého systému vCenter Server (jednu po druhé). Pokud chcete zjišťování spuštění ve stejnou dobu, můžete také nasadit více zařízení a při paralelním spuštění zjišťování.
-
 **Průběžná zjišťování:** budete muset vytvořit více kolekcí zařízení (jeden pro každý systém vCenter Server) a připojení každého zařízení k projektu a aktivační události zjišťování odpovídajícím způsobem.
+
+**Jednorázové zjišťování (teď zastaralé):** jeden kolektor můžete použít ke zjištění každého systému vCenter Server (jednu po druhé). Pokud chcete zjišťování spuštění ve stejnou dobu, můžete také nasadit více zařízení a při paralelním spuštění zjišťování.
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Více než 1 500 počítačů v jedné systému vCenter Server
 
 Pokud máte víc než 1500 virtuálních počítačů v jedné systému vCenter Server, budete muset zjišťování rozdělit do několika projekty migrace. Pokud chcete rozdělit zjišťování, můžete využít pole oboru v zařízení a zadejte hostitele, cluster, složka nebo datovém centru, které jste chtěli vyhledat. Například, pokud máte dvě složky v systému vCenter Server, jeden s 1000 virtuálních počítačů (složku1) a druhý s 800 virtuálních počítačů (slozka2), rozsah pole můžete použít k rozdělení zjišťování mezi tyto složky.
 
-**Jednorázově:** stejné kolekce můžete použít k aktivaci obou zjišťování. V první zjišťování, můžete zadat složku1 jako obor a nasměrovat ho na první projekt migrace po dokončení první zjišťování můžete používat stejné kolekce, změnit její obor podrobností projektu slozka2 a migrace na druhý projekt migrace a Proveďte druhou zjišťování.
-
 **Průběžná zjišťování:** v takovém případě budete muset vytvořit dvě kolekce zařízení, což se pro první kolekce, zadejte rozsah jako složku1 a připojte ho k první projekt migrace. Můžete paralelně spustit zjišťování slozka2 použití druhého zařízení kolektoru a jejím připojení k druhé projekt migrace.
+
+**Jednorázové zjišťování (teď zastaralé):** stejné kolekce můžete použít k aktivaci obou zjišťování. V první zjišťování, můžete zadat složku1 jako obor a nasměrovat ho na první projekt migrace po dokončení první zjišťování můžete používat stejné kolekce, změnit její obor podrobností projektu slozka2 a migrace na druhý projekt migrace a Proveďte druhou zjišťování.
 
 ### <a name="multi-tenant-environment"></a>Prostředí s více tenanty
 
@@ -120,14 +124,20 @@ Azure Migrate vytvoří místní virtuální počítač, kterému se říká za�
 Pokud máte více projektů, budete muset stažení zařízení kolektoru pouze jednou k vCenter serveru. Po stažení a nastavení na zařízení, spusťte pro každý projekt a zadáte jedinečné ID a klíč projektu.
 
 1. V projektu služby Azure Migrate klikněte na **Začínáme** > **Zjistit a posoudit** > **Zjistit počítače**.
-2. V části **Zjistit počítače**, existují dvě možnosti k dispozici pro zařízení, kliknutím na tlačítko **Stáhnout** stáhnete odpovídající zařízení založené na dáváte přednost.
+2. V **zjistit počítače**, klikněte na tlačítko **Stáhnout** ke stažení na zařízení.
 
-    a. **Jednorázové zjišťování:** Zařízení pro tento model komunikuje s vCenter Server, aby shromažďovalo metadata o virtuálních počítačích. Pro shromažďování dat o výkonu virtuálních počítačů závisí na historických datech o výkonu uložených ve vCenter Server a shromažďuje historii výkonu za poslední měsíc. V tomto modelu Azure Migrate shromažďuje průměrný čítač (oproti čítači ve špičce) pro jednotlivé metriky – [další informace](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected). Protože jde o jednorázovou zjišťování, změny v místním prostředí se neprojeví, po dokončení zjišťování. Pokud chcete, aby se změny projevily, budete muset provést opakované zjišťování stejného prostředí stejného projektu.
-
-    b. **Průběžné zjišťování:** Zařízení pro tento model průběžně profiluje místní prostředí pro shromažďování dat o využití v reálném čase pro každý virtuální počítač. V tomto modelu se shromažďují čítače ve špičce pro každou metriku (využití procesoru, využití paměti atd.). Tento model není závislý na nastavení statistiky vCenter Server pro shromažďování dat o výkonu. Kdykoli ze zařízení můžete zastavit průběžnou profilaci.
+    Zařízení Azure Migrate komunikuje pomocí systému vCenter Server a průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase pro každý virtuální počítač. Shromažďuje ve špičce čítače pro jednotlivé metriky (využití procesoru, využití paměti atd.). Tento model není závislý na nastavení statistiky vCenter Server pro shromažďování dat o výkonu. Kdykoli ze zařízení můžete zastavit průběžnou profilaci.
 
     > [!NOTE]
-    > Průběžné zjišťování funkce je ve verzi Preview.
+    > Jednorázové zjišťování zařízení je nyní zastaralý a tato metoda spoléhal na vCenter serveru nastavení statistiky dostupnosti bodu dat výkonu shromážděných čítačů průměrný výkon, které umožňují snížení velikosti virtuálních počítačů pro migraci do Azure.
+
+    **Rychlé provést synchronizaci dříve:** s průběžná zjišťování zařízení, jakmile zjišťování je dokončí (trvá několik hodin v závislosti na počtu virtuálních počítačů), můžete okamžitě vytvořit posouzení. Protože shromažďování dat výkonu spustí, když zahájíte zjišťování, pokud chcete pro rychlé provést synchronizaci dříve, měli vybrat kritérium určení velikosti v posouzení jako *jako místní*. Vyhodnocení na základě výkonu doporučujeme počkejte alespoň jeden den a poté rutinního zjišťování tak, aby Získejte doporučení k reliable velikosti.
+
+    Mějte na paměti, že zařízení shromažďuje data o výkonu pouze průběžně a nezjistí žádné změny konfigurace v místním prostředí (tj. přidání nebo odstranění virtuálního počítače, přidání disku atd.). Pokud dojde ke změně konfigurace v místním prostředí, následujícím způsobem můžete zajistit, že se změny projeví na portálu:
+
+    - Přidání položek (virtuální počítače, disky, jádra atd.): Pokud chcete, aby se tyto změny projevily na webu Azure Portal, můžete na zařízení zastavit zjišťování a pak ho spustit znovu. Tím se zajistí, že se změny aktualizují v projektu Azure Migrate.
+
+    - Odstranění virtuálních počítačů: Vzhledem ke způsobu, jakým je zařízení navržené, se odstranění virtuálních počítačů neprojeví ani v případě, že zastavíte a znovu spustíte zjišťování. Důvodem je, že se data z dalších zjišťování připojují ke starším zjišťováním, a nepřepisují se. V takovém případě můžete virtuální počítač na portálu jednoduše ignorovat tak, že ho odeberete ze své skupiny a přepočítáte posouzení.
 
 3. V **kopírování přihlašovacích údajů projektu**, zkopírujte ID a klíč projektu. Budete je potřebovat při konfiguraci kolektoru.
 
@@ -146,7 +156,17 @@ Zkontrolujte, zda soubor OVA zabezpečené před jejím nasazením:
 
 3. Ujistěte se, že generované hodnoty hash shoduje s následujícím nastavením.
 
-#### <a name="one-time-discovery"></a>Jednorázové zjišťování
+#### <a name="continuous-discovery"></a>Průběžné zjišťování
+
+Pro soubory OVA verze 1.0.10.4
+
+**Algoritmus** | **Hodnota hash**
+--- | ---
+MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
+SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
+SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
+
+#### <a name="one-time-discovery-deprecated-now"></a>Jednorázové zjišťování (teď zastaralé)
 
 Pro soubory OVA verze 1.0.9.15 (vydaná 10/23/2018)
 
@@ -188,16 +208,6 @@ MD5 | d5b6a03701203ff556fa78694d6d7c35
 SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
 SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
 
-#### <a name="continuous-discovery"></a>Průběžné zjišťování
-
-Pro soubory OVA verze 1.0.10.4
-
-**Algoritmus** | **Hodnota hash**
---- | ---
-MD5 | 2ca5b1b93ee0675ca794dd3fd216e13d
-SHA1 | 8c46a52b18d36e91daeae62f412f5cb2a8198ee5
-SHA256 | 3b3dec0f995b3dd3c6ba218d436be003a687710abab9fcd17d4bdc90a11276be
-
 ### <a name="create-the-collector-vm"></a>Vytvoření virtuálního počítače kolektoru
 
 Importujte stažený soubor do vCenter serveru:
@@ -221,37 +231,6 @@ Pokud máte více projektů, je potřeba určit ID a klíč pro každý z nich. 
 1. V projektu, vyberte **Začínáme** > **zjistit a posoudit** > **zjistit počítače**.
 2. V **kopírování přihlašovacích údajů projektu**, zkopírujte ID a klíč projektu.
     ![Kopírování přihlašovacích údajů projektu](./media/how-to-scale-assessment/copy-project-credentials.png)
-
-### <a name="set-the-vcenter-statistics-level"></a>Nastavit úroveň statistiky vCenter
-
-Zařízení kolektoru zjistí následující statické metadata o vybrané virtuální počítače.
-
-1. Název zobrazení virtuálních počítačů (na serveru vCenter)
-2. Cesta inventáře Virtuálního počítače (hostitele nebo složku v systému vCenter)
-3. IP adresa
-4. Adresa MAC
-5. Operační systém
-5. Počet jader, disků, síťových adaptérů
-6. Velikost paměti, velikosti disků
-7. A z čítačů výkonu virtuálních počítačů, disku a sítě, jak je uvedeno v následující tabulce.
-
-Jednorázové zjišťování následující tabulka uvádí čítače přesné údaje o výkonu, které se budou shromažďovat a také výsledky posouzení, které jsou by to vliv na konkrétní čítač nejsou shromažďována.
-
-Průběžná zjišťování, čítače se shromažďují v reálném čase (intervalu 20 sekund), takže není žádná závislost na úroveň statistiky vCenter. Zařízení potom zobrazí – až 20 sekund ukázky vytvořte jeden datový bod pro každých 15 minut tak, že vyberete hodnotu ve špičce ukázky 20 sekund a odesílá je do Azure.
-
-|Čítač                                  |Úroveň    |Úroveň podle zařízení  |Hodnocení dopadu                               |
-|-----------------------------------------|---------|------------------|------------------------------------------------|
-|CPU.Usage.average                        | 1       |Není k dispozici                |Doporučené velikosti virtuálních počítačů a náklady                    |
-|mem.usage.average                        | 1       |Není k dispozici                |Doporučené velikosti virtuálních počítačů a náklady                    |
-|virtualDisk.read.average                 | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
-|virtualDisk.write.average                | 2       |2                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
-|virtualDisk.numberReadAveraged.average   | 1       |3                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
-|virtualDisk.numberWriteAveraged.average  | 1       |3                 |Velikost disku, náklady na úložiště a velikost virtuálního počítače         |
-|net.received.average                     | 2       |3                 |Cena za virtuální počítače velikosti a sítě                        |
-|net.transmitted.average                  | 2       |3                 |Cena za virtuální počítače velikosti a sítě                        |
-
-> [!WARNING]
-> Jednorázové zjišťování Pokud jste právě nastavili vyšší úroveň statistiky, ji bude trvat až jeden den generovat čítače výkonu. Proto doporučujeme spustit zjišťování po jednom dni. Průběžná zjišťování modelu počkejte aspoň jeden den po spuštění zjišťování pro zařízení profilu prostředí a pak vytvořit posouzení.
 
 ### <a name="run-the-collector-to-discover-vms"></a>Spuštění kolektoru pro vyhledání virtuálních počítačů
 
@@ -280,16 +259,41 @@ Pro každého zjišťování, které je třeba provést spuštění kolektoru pr
 6.  V **zadejte projekt migrace**, zadejte ID a klíč projektu. Pokud jste je nezkopírovali, otevřete na webu Azure portal virtuálním počítači kolektoru. V projektu **přehled** stránce **zjistit počítače** a zkopírujte hodnoty.  
 7.  V **zobrazit průběh shromažďování**, monitorovat proces zjišťování a zkontrolujte, jestli metadata shromážděná z virtuálních počítačů je v oboru. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat.
 
-
 #### <a name="verify-vms-in-the-portal"></a>Kontrola virtuálních počítačů na portálu
 
-Pro jednorázové zjišťování doba zjišťování závisí na tom, kolik virtuálních počítačů vyhledáváte. Obvykle pro 100 virtuálních počítačů po kolektor spustí trvá přibližně hodinu konfigurace a výkonu shromažďování dat pro dokončení. Okamžitě po dokončení zjišťování můžete vytvořit interní hodnocení (na základě výkonu a nebo na základě místa).
-
-Z důvodu průběžného zjišťování (ve verzi preview), bude kolektor průběžně profilovat místní prostředí a bude posílat data o výkonu v hodinovém intervalu. Za hodinu po zahájení zjišťování můžete zkontrolovat počítače na portálu. Před vytvořením interního hodnocení založeného na výkonu virtuálních počítačů důrazně doporučujeme počkat aspoň jeden den.
+Kolektor se průběžně profilu v místním prostředí a bude posílat data o výkonu v intervalu hodiny. Za hodinu po zahájení zjišťování můžete zkontrolovat počítače na portálu. Před vytvořením interního hodnocení založeného na výkonu virtuálních počítačů důrazně doporučujeme počkat aspoň jeden den.
 
 1. V projektu migrace klikněte na **Spravovat** > **počítače**.
 2. Zkontrolujte, jestli se virtuální počítače, které jste chtěli vyhledat, zobrazí na portálu.
 
+### <a name="data-collected-from-on-premises-environment"></a>Data shromážděná z místního prostředí
+
+Zařízení kolektoru zjistí následující konfigurační data o vybrané virtuální počítače.
+
+1. Název zobrazení virtuálních počítačů (na serveru vCenter)
+2. Cesta inventáře Virtuálního počítače (hostitele nebo složku v systému vCenter)
+3. IP adresa
+4. Adresa MAC
+5. Operační systém
+5. Počet jader, disků, síťových adaptérů
+6. Velikost paměti, velikosti disků
+7. A z čítačů výkonu virtuálních počítačů, disku a sítě, jak je uvedeno v následující tabulce.
+
+Zařízení kolektoru shromažďuje následující čítače výkonu pro každý virtuální počítač z hostitele ESXi v intervalech 20 sekund. Tyto čítače jsou čítačů vCenter a i když terminologii říká průměr, 20 sekund ukázky jsou čítačů v reálném čase. Zařízení potom zobrazí – až 20 sekund ukázky vytvořte jeden datový bod pro každých 15 minut tak, že vyberete hodnotu ve špičce ukázky 20 sekund a odesílá je do Azure. Data o výkonu pro virtuální počítače se spustí poté jsou dostupné na portálu, dvě hodiny po mají spustila zjišťování. Důrazně se doporučuje počkejte alespoň den před vytvořením posouzení založená na výkon získat přesné doporučení pro správné velikosti. Pokud chcete pro rychlé provést synchronizaci dříve, můžete vytvořit posouzení s kritérium určení velikosti jako *jako místní* které nebude považovat za data o výkonu pro určení správné velikosti.
+
+**Čítač** |  **Dopad na posouzení**
+--- | ---
+CPU.Usage.average | Doporučené velikosti virtuálních počítačů a náklady  
+mem.usage.average | Doporučené velikosti virtuálních počítačů a náklady  
+virtualDisk.read.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+virtualDisk.write.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+virtualDisk.numberReadAveraged.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+virtualDisk.numberWriteAveraged.average | Vypočítá velikost disku, náklady na úložiště, velikost virtuálního počítače
+net.received.average | Vypočítá velikost virtuálního počítače                          
+net.transmitted.average | Vypočítá velikost virtuálního počítače     
+
+> [!WARNING]
+> Metoda jednorázově opírající se o nastavení statistiky vCenter serveru pro shromažďování dat výkonu je nyní zastaralá.
 
 ## <a name="next-steps"></a>Další postup
 

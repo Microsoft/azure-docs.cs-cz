@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: d99996bb4177a11342f0897d2cf69f82a5b81bf7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: db607da10898744441ac11bcb60fa63566cdfdd7
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721224"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833948"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -163,7 +163,7 @@ K vývoji vlastní webové služby, který odpovídá specifikaci SCIM, nejdří
   
   ![][3]
   
-2. [Express route obslužné rutiny](http://expressjs.com/guide/routing.html) jsou k dispozici pro analýzu node.js požadavek objektů představujících volání (jak jsou definovány ve specifikaci SCIM) provedené webových služeb node.js.   
+2. [Express route obslužné rutiny](https://expressjs.com/guide/routing.html) jsou k dispozici pro analýzu node.js požadavek objektů představujících volání (jak jsou definovány ve specifikaci SCIM) provedené webových služeb node.js.   
 
 ### <a name="building-a-custom-scim-endpoint"></a>Vytváření koncových bodů vlastního SCIM
 Pomocí rozhraní příkazového řádku knihoven, vývojáře, kteří používají tyto knihovny hostování svých služeb v rámci jakékoli spustitelného sestavení Common Language Infrastructure nebo v rámci Internetové informační služby. Tady je ukázkový kód pro hostování služby v rámci spustitelného sestavení, na adrese http://localhost:9000: 
@@ -357,7 +357,7 @@ Prostředky skupiny prostředků jsou označeny identifikátor schématu http://
 | Ve TelephoneNumber |phoneNumbers [typ eq "fax"] .value |
 | givenName |name.givenName |
 | pracovní funkce |název |
-| e-mailu |e-mailů [typ eq "pracovní"] .value |
+| mail |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |externalId |
 | manažer |manažer |
 | Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
@@ -374,7 +374,7 @@ Prostředky skupiny prostředků jsou označeny identifikátor schématu http://
 | Skupina Azure Active Directory | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
 | --- | --- |
 | displayName |externalId |
-| e-mailu |e-mailů [typ eq "pracovní"] .value |
+| mail |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |displayName |
 | členové |členové |
 | ID objektu |ID |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2018
 ms.author: mjbrown
-ms.openlocfilehash: c0525cfba16fb61f8388ae4d6a693be3bb71674c
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 0333bc5e95b74fc97cfff3d79adbe28aefff5d40
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628929"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834634"
 ---
 # <a name="indexing-in-azure-cosmos-db"></a>Indexování ve službě Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Promítnutí položky v kontejneru jako dokumenty JSON a představující jako s
 
 Kořenový uzel pseudo se vytvoří jako nadřazený pro skutečné uzly odpovídající popisky v dokumentu pod. Vnořené datové struktury jednotka hierarchii ve stromové struktuře. Zprostředkující umělé uzly s popiskem s číselnými hodnotami (například 0, 1,...) se použijí pro zastoupení výčtů a indexy pole.
 
-## <a name="index-paths"></a>Index cesty
+## <a name="index-paths"></a>Cesty indexů
 
 Azure Cosmos DB projekty položky jako dokumenty JSON a indexu jako stromové struktury. Optimalizujte zásad u cest v rámci stromu. Můžete zahrnout nebo vyloučit cesty ze indexování. To můžete nabízet zápisu Vylepšený výkon a snížit index úložiště pro scénáře, ve kterém jsou dopředu známé vzory dotazů. Další informace najdete v tématu [Index cesty](index-paths.md).
 

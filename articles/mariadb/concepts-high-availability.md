@@ -7,16 +7,16 @@ editor: jasonwhowell
 services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 2f06c9515c6ee79ea7475452b7000d1babdbecfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 12/03/2018
+ms.openlocfilehash: 043988066cae672225b850b57864bddb3155689c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956519"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833835"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Koncepty vysoké dostupnosti ve službě Azure Database pro MariaDB
-Azure Database pro MariaDB service poskytuje zaručenou vysokou dostupnost. Je žádnou finančně zajištěnou smlouvu o úrovni služeb (SLA) 99,99 % při všeobecné dostupnosti. Smlouva SLA neplatí pro verzi public preview. Neexistuje žádná aplikace prakticky časové prodlevy při používání této služby.
+Azure Database pro MariaDB service poskytuje zaručenou vysokou dostupnost. Je žádnou finančně zajištěnou smlouvu o úrovni služeb (SLA) 99,99 % při všeobecné dostupnosti. Neexistuje žádná aplikace prakticky časové prodlevy při používání této služby.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 Model vysoké dostupnosti (HA) je založen na integrovaný mechanismus převzetí služeb při selhání, když dojde k přerušení úrovni uzlu. Přerušení úrovni uzlu mohlo dojít z důvodu selhání hardwaru nebo v reakci na nasazení služby.
@@ -34,4 +34,4 @@ Podobně jako u modelu vysokou dostupnost, když je Azure Database pro MariaDB v
 Během operace škálování dojde k přerušení připojení databáze. Nejste připojení klientských aplikací a otevřít nepotvrzené transakce se zrušila. Jakmile se klientská aplikace opakuje připojení, nebo vytvoří nové připojení, brány směruje připojení na nově velikosti instance.
 
 ## <a name="next-steps"></a>Další postup
-- Přehled služby najdete v tématu [– Azure Database pro MariaDB přehled](overview.md)
+- Přehled služby najdete v tématu [– Azure Database pro MariaDB přehled](overview.md)

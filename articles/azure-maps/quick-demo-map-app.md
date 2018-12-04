@@ -3,18 +3,18 @@ title: Interaktivní hledání v mapách s využitím Azure Maps | Microsoft Doc
 description: Rychlý start Azure – Spuštění ukázky interaktivního hledání v mapách s využitím Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/26/2018
+ms.date: 12/02/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d2aa3385dd7556cfc169b42b36d94a3e1d9ee3dd
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 5f828bfd2ceee81daf86382846be0c5ee7f1fe8c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209968"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836572"
 ---
 # <a name="launch-an-interactive-search-map-using-azure-maps"></a>Spuštění interaktivního hledání v mapách s využitím Azure Maps
 
@@ -35,7 +35,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
     - *Název* vašeho nového účtu.
     - *Předplatné*, které chcete pro tento účet použít.
     - *Skupinu prostředků* pro tento účet. Můžete zvolit možnost *Vytvořit novou* nebo *Použít existující* skupinu prostředků.
-    - Vyberte *Umístění skupiny prostředků*.
+    - Vyberte *cenová úroveň* podle vašeho výběru.
     - Přečtěte si *Licenční podmínky* a *Prohlášení o zásadách ochrany osobních údajů* a zaškrtnutím příslušného políčka podmínky přijměte.
     - Nakonec klikněte na tlačítko **Vytvořit**.
 
@@ -66,7 +66,7 @@ Další kurzy obsahují podrobný popis použití a konfigurace Maps s vaším �
 1. Zavřete prohlížeč se spuštěnou webovou aplikací **AzureMapDemo.html**.
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svůj účet Maps. V horní části okna **Všechny prostředky** klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili účet Maps a spustili jste ukázkovou aplikaci. V následujícím kurzu se dozvíte, jak vytvořit vlastní aplikaci s využitím rozhraní Maps API.
 

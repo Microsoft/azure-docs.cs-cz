@@ -1,9 +1,8 @@
 ---
-title: 'Rychlý start: Table API s využitím Pythonu – Azure Cosmos DB | Dokumentace Microsoftu'
+title: 'Rychlý start: Table API s využitím Pythonu – Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Table API k vytvoření aplikace pomocí webu Azure Portal a Pythonu.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: python
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 614e22cbbb6a94d9b148b29474a5fc82c3f0fef4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: 70a7f17ed0ecb78337d13f68a260fc9f860e3a4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696781"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837014"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Table API pomocí Pythonu a Azure Cosmos DB
 
@@ -117,7 +116,7 @@ Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést ú
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření databázového účtu Azure Cosmos DB, vytvoření tabulky pomocí Průzkumníka dat a spuštění aplikace.  Teď můžete zadávat dotazy na svá data pomocí rozhraní API tabulky.  
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 64daab1c5c6c372dc7b8808e2c5d3da75d0fffe6
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: be3fb5ab58afd4287bd572842e19dd9e41e8b13b
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52428722"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839292"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor řešení v Azure
 
@@ -251,7 +251,7 @@ Topologie zobrazené na mapě se topologie vrstvy 3 a neobsahuje vrstvy 2 zaří
 
 ## <a name="log-analytics-search"></a>Hledání log Analytics 
 
-Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [hledání Log Analytics](../../log-analytics/log-analytics-queries.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu.  **Běžné dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
+Všechna data, která je graficky vystavené prostřednictvím řídicího panelu monitorování výkonu sítě a její procházení stránek je taky dostupný nativně v [hledání Log Analytics](../../azure-monitor/log-query/log-query-overview.md). Můžete provádět interaktivní analýzu dat v úložišti a korelovat data z různých zdrojů. Můžete také vytvořit vlastní výstrahy a zobrazení a export dat do Excelu, Power BI nebo ke sdílení odkazu.  **Běžné dotazy** oblasti na řídicím panelu má některé užitečné dotazy, které můžete použít jako výchozí bod k vytvoření vlastních dotazů a sestav. 
 
 ## <a name="alerts"></a>Výstrahy
 

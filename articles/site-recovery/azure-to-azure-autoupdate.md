@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 06a7e23eb16cf6296a8997273ea8d554851600c3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 061811705b0572059f99300f2a658c5c5b4406c5
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456486"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839836"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
 

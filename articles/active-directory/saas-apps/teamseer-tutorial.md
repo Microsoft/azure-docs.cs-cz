@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: a5910689f34c511c6cf7d8a044ef4358d2e0570d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2b9f3c7905fbb301c74a040a259b2f8666c75377
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445576"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamseer"></a>Kurz: Integrace Azure Active Directory se službou TeamSeer
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s TeamSeer, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - TeamSeer jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace TeamSeer ve službě Azure AD, budete muset přidat TeamSe
 
 **Chcete-li přidat TeamSeer z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -115,7 +115,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
      V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.teamseer.com/<companyid>`
 
     > [!NOTE] 
-    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory TeamSeer klienta](http://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) má být získána hodnota. 
+    > Hodnota není skutečný. Aktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory TeamSeer klienta](https://pages.theaccessgroup.com/solutions_business-suite_absence-management_contact.html) má být získána hodnota. 
  
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 

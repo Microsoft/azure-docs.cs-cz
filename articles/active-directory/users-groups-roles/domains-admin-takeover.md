@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 857d58d31565e413a207162202f1a680d7da7c65
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: c07b87d88b884b22f44fe108bb28877cb30f973e
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250729"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837167"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Převzít kontrolu nad nespravovaného adresáře jako správce v Azure Active Directory
 Tento článek popisuje dva způsoby, jak převzít kontrolu nad název domény DNS nespravovaného adresáře v Azure Active Directory (Azure AD). Když se samoobslužný uživatel zaregistruje ke cloudové službě, která využívá Azure AD, přidá se do nespravovaného adresáře Azure AD na základě svojí e-mailové domény. Další informace o samoobslužné nebo "virálního" registraci služby najdete v tématu [co je Samoobslužná registrace do služby Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)
@@ -108,7 +108,11 @@ Pro [RMS pro jednotlivce](/azure/information-protection/rms-for-individuals), kd
 
 Klíč a šablony nejsou přesunuta při nespravovaný tenant je v jiné oblasti. Nespravovaného tenanta je například v Evropě a tenanta, které vlastníte, je v řešení ze Severní Ameriky. 
 
-I když se RMS pro jednotlivce je navržen pro podporu ověřování Azure AD chráněný obsah otevřít, nezabrání uživatelům ve také chrání obsah. Pokud uživatelé chránit obsah pomocí služby RMS pro předplatná jednotlivých uživatelů a klíčů a šablon nepřesunula, nebude tento obsah přístupná po převzetí domény.    
+I když se RMS pro jednotlivce je navržen pro podporu ověřování Azure AD chráněný obsah otevřít, nezabrání uživatelům ve také chrání obsah. Pokud uživatelé chránit obsah pomocí služby RMS pro předplatná jednotlivých uživatelů a klíčů a šablon nepřesunula, nebude tento obsah přístupná po převzetí domény.
+
+#### <a name="more-information-about-power-bi"></a>Další informace o Power BI
+
+Když provádíte externí převzetí, Power BI obsah, který byl vytvořen ještě před převzetí, nachází ve [Power BI archivovaného pracovního prostoru](/power-bi/service-admin-power-bi-archived-workspace). Musíte ručně migrovat veškerý obsah, který chcete použít v nového tenanta.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>Rutiny Azure AD PowerShell pro možnost ForceTakeover
 Zobrazí se tyto rutiny používané v [příklad Powershellu](#powershell-example).

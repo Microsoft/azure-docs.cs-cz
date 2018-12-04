@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Služba Azure backup; Agent virtuálního počítače; Připojení k síti;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 10/30/2018
+ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: d8b78551a762b4388344aaf3b44e7472127737ae
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 9f26a51a8da2c3fec3ff180dbc8c8de08bb0a93a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977110"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833869"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží se selháním Azure Backup: problémy s agentů nebo rozšíření
 
@@ -156,11 +156,11 @@ Kromě toho pokud podsíť nemá trasy pro odchozí přenosy z Internetu, musít
 #### <a name="solution"></a>Řešení
 Agent virtuálního počítače může být poškozený nebo služba zastavila. Opětovná instalace agenta virtuálního počítače pomáhá získat nejnovější verzi. Pomáhá také restartovat komunikaci se službou.
 
-1. Určení, zda se službou Windows agenta hosta virtuálního počítače službami (services.msc). Pokuste se restartovat službu agenta hosta Windows a zahajte zálohování.    
-2. Pokud službu agenta hosta Windows nejsou viditelná ve službách, v Ovládacích panelech, přejděte na **programy a funkce** k určení, zda je nainstalována služba Windows agenta hosta.
-4. Pokud se zobrazí v agentovi hosta Windows **programy a funkce**, odinstalujte agenta hosta Windows.
+1. Určení, zda se službou Windows agenta hosta Azure VM službami (services.msc). Pokuste se restartovat službu agenta hosta Azure pro Windows a zahajte zálohování.    
+2. Pokud nejsou viditelná ve službách, v Ovládacích panelech, službu agenta hosta Azure pro Windows, přejděte na **programy a funkce** k určení, zda je nainstalována Služba agenta hosta Azure pro Windows.
+4. Pokud agenta hosta Azure Windows se zobrazí v **programy a funkce**, odinstalujte agenta hosta Azure Windows.
 5. Stáhněte a nainstalujte [nejnovější verzi MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musíte mít oprávnění správce k dokončení instalace.
-6. Ověřte, že služby agenta hosta Windows služby.
+6. Ověřte, že služby agenta hosta Azure pro Windows do služby.
 7. Spusťte zálohu na vyžádání:
     * Na portálu vyberte **zálohovat nyní**.
 

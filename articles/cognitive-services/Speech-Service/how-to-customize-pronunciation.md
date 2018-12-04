@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 93c8d3302444c7d764849fe41d529bc06696243f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: c7f82e9fb286e53f9408e2134dbdc9c2b24ff267
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466167"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837694"
 ---
 # <a name="enable-custom-pronunciation"></a>Povolit vlastní výslovnost
 S použitím vlastní výslovnost, můžete definovat zapsané ve fonetické formuláře a zobrazení slovo nebo termín. Je vhodný pro zpracování vlastní podmínky, jako jsou názvy produktů nebo zkratky. Vše, co potřebujete je soubor výslovnosti (soubor simple .txt).
@@ -46,7 +46,7 @@ Mluvené slovo formuláře je zapsané ve fonetické posloupnost formulář pro 
 ## <a name="supported-pronunciation-characters"></a>Podporované výslovnost znaků
 Vlastní Výslovnost je aktuálně podporované pro angličtina (en US) a němčina (de-de). V následující tabulce jsou uvedeny znakových sad, které vám umožní express mluvené formy termín (v souboru vlastní výslovnost): 
 
-| Jazyk | Znaky |
+| Jazyk | Postavy |
 |---------- |----------|
 | Angličtina (en US) | a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
 | Němčina (de-de) | ä, cos, ř,?, a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
@@ -61,7 +61,7 @@ Formulář pro zobrazení může být pouze vlastní slova, termín, zkratka neb
 >Nedoporučujeme používat tuto funkci, aby byla znovu formulována běžná slova nebo pro úpravu mluvené slovo formuláře. Je lepší pro spuštění dekodér zobrazíte, jestli jsou některé neobvyklé slova (jako je například zkratky, technické slova nebo cizí slova) správně dekódovat. Pokud ano, můžete je přidat do vlastní výslovnost souboru. V jazykový model pouze a vždy používejte formulář pro zobrazení slova. 
 
 ## <a name="requirements-for-the-file-size"></a>Požadavky na velikost souboru
-Velikost souboru TXT, který obsahuje položky Výslovnost je omezena na 1 megabajtů (MB). Obvykle není nutné nahrávání velkých objemů dat prostřednictvím tohoto souboru. Většina souborů vlastní výslovnost můžou mít velikost několika kilobajtů (kB). Kódování souboru .txt pro všechna národní prostředí by měl být BOM kódování UTF-8. Pro anglické národní prostředí je také ANSI přijatelné.
+Velikost souboru TXT, který obsahuje položky Výslovnost je omezena na 1 MB (1KB pro úroveň free klíče). Obvykle není nutné nahrávání velkých objemů dat prostřednictvím tohoto souboru. Většina souborů vlastní výslovnost můžou mít velikost několika kilobajtů (kB). Kódování souboru .txt pro všechna národní prostředí by měl být BOM kódování UTF-8. Pro anglické národní prostředí je také ANSI přijatelné.
 
 ## <a name="next-steps"></a>Další postup
 * Zlepšit přesnost rozpoznávání tak, že vytvoříte [vlastního akustického modelu](how-to-customize-acoustic-models.md).

@@ -7,22 +7,22 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
-ms.reviewer: ''
+ms.reviewer: kivenkat
 ms.custom: mvc
-ms.openlocfilehash: e82c3de4461e2d663496cd4ae4a98c10e7819466
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 0664316d73b1473ab52b08f8abead2ec33d121b6
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025406"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836742"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Rychlý start: vytvoření serveru virtuálního počítače s Linuxem pomocí portálu Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Můžete vytvořit virtuální počítač Ubuntu Server 16.04 LTS pomocí portálu Azure Stack. Postupujte podle kroků v tomto článku, jak vytvořit a používat virtuální počítač. Tento článek také obsahuje postup:
+Virtuální počítače s Ubuntu Server 16.04 LTS můžete vytvořit pomocí portálu Azure Stack. Postupujte podle kroků v tomto článku, jak vytvořit a používat virtuální počítač. Tento článek také obsahuje postup:
 
 * Připojení k virtuálnímu počítači pomocí vzdáleného klienta.
 * Nainstalujte webový server NGINX.
@@ -36,7 +36,7 @@ Můžete vytvořit virtuální počítač Ubuntu Server 16.04 LTS pomocí portá
 
 * **Image Linuxu v Tržišti Azure Stack**
 
-   Tržiště Azure Stack neobsahuje image Linuxu ve výchozím nastavení. Před vytvořením virtuálního počítače s Linux serverem, ujistěte se, že operátory Azure stacku poskytuje **Ubuntu Server 16.04 LTS** image chcete použít. Operátor, který můžete použít postup popsaný v [stažení položek z marketplace z Azure do služby Azure Stack](../azure-stack-download-azure-marketplace-item.md) článku.
+   Tržiště Azure Stack nemá image Linuxu ve výchozím nastavení. Zkontrolujte, že máte Azure Stack, který obsahuje operátor **Ubuntu Server 16.04 LTS** bitové kopie v marketplace. Operátor, který můžete použít postup popsaný v [stažení položek z marketplace z Azure do služby Azure Stack](../azure-stack-download-azure-marketplace-item.md) článku.
 
 * **Přístup k klienta SSH**
 
@@ -97,11 +97,11 @@ Přihlaste se k portálu Azure Stack. Adresa na portálu Azure Stack závisí, k
 
 ## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-1. Klikněte na tlačítko **připojit** na stránce virtuální počítač. Zobrazí se připojovací řetězec SSH, které potřebujete k připojení k virtuálnímu počítači. 
+1. Klikněte na tlačítko **připojit** na stránce virtuální počítač. Můžete najít připojovací řetězec SSH, který je potřeba připojit k virtuálnímu počítači. 
 
 2. Otevřete PuTTY.
 
-3. Na **konfigurace PuTTY** obrazovky, kterou použijete **kategorie** okno posunout nahoru nebo dolů, aby. Přejděte dolů k položce **SSH**, rozbalte **SSH**a potom klikněte na tlačítko **Auth**. Klikněte na tlačítko **Procházet** a vyberte soubor privátního klíče, který jste uložili.
+3. Na obrazovce konfigurace PuTTY, kterou použijete **kategorie** okno posunout nahoru nebo dolů. Přejděte dolů k položce **SSH**, rozbalte **SSH**a potom klikněte na tlačítko **Auth**. Klikněte na tlačítko **Procházet** a vyberte soubor privátního klíče, který jste uložili.
    ![Připojení virtuálního počítače](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. Posunout nahoru v **kategorie** okna a pak klikněte na tlačítko **relace**.

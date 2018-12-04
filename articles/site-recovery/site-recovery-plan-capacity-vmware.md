@@ -4,15 +4,15 @@ description: Použijte tento článek k plánování kapacity a škálování p�
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 10/28/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: nisoneji
-ms.openlocfilehash: c6ec47017d944a206642932223ebb1d9df9cf942
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 2d418282120ee24a5b5492c18593165fba2c6c12
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011727"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839411"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 

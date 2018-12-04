@@ -1,6 +1,6 @@
 ---
-title: Popis clusteru clusteru Resource Manager | Microsoft Docs
-description: Cluster Service Fabric popisující zadáním domén selhání, Upgrade domény, vlastnosti uzlu a uzel kapacity pro správce prostředků clusteru.
+title: Popis clusteru cluster Resource Manager | Dokumentace Microsoftu
+description: Cluster Service Fabric popisující zadáním domén selhání, Upgrade domény, vlastnosti uzlu a kapacity uzlů pro Cluster Resource Manager.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,108 +14,108 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 13ee238580d645f3e727090bc0e0275b36bdb225
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 64f02b1165d014a0eaa89dae64a7d9aa283cac32
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208807"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834583"
 ---
-# <a name="describing-a-service-fabric-cluster"></a>Popisující service fabric cluster
-Služba Fabric clusteru Resource Manager poskytuje několik mechanismů pro popis clusteru. Během doby běhu správce prostředků clusteru používá tyto informace k zajištění vysoké dostupnosti se služby spuštěné v clusteru. Při vynucování tyto důležité pravidla, je taky automatický pokus o optimalizovat spotřeby prostředků v rámci clusteru.
+# <a name="describing-a-service-fabric-cluster"></a>Popis clusteru service fabric
+Service Fabric Cluster Resource Manager poskytuje několik mechanismů pro popis clusteru. Cluster Resource Manageru za běhu, používá tyto informace k zajištění vysoké dostupnosti služby spuštěné v clusteru. Při vynucování tyto důležité pravidla, je taky automatický pokus o optimalizaci spotřeby prostředků v rámci clusteru.
 
 ## <a name="key-concepts"></a>Klíčové koncepty
-Správce prostředků clusteru podporuje několik funkcí, které popisují clusteru:
+Cluster Resource Manager podporuje několik funkcí, které popisují clusteru:
 
-* Domén selhání
-* Domén upgradu
+* Domény selhání
+* Upgradovací domény
 * Vlastnosti uzlu
 * Uzel kapacity
 
 ## <a name="fault-domains"></a>Domény selhání
-Domény selhání je všechny oblasti koordinované selhání. Jeden počítač je domény selhání (protože ho může selhat v jeho vlastní pro různé příčiny selhání power napájení na jednotce selhání chybný firmwaru síťový adaptér). Počítače připojené ke stejnému přepínači sítě Ethernet jsou ve stejné doméně selhání, jako jsou počítače sdílení jednoho zdroje napájení nebo na jednom místě. Vzhledem k tomu, že je přirozené pro chyby hardwaru na překrývají, jsou ze své podstaty hierarchická domén selhání a jsou reprezentovány jako identifikátory URI v Service Fabric.
+Doména selhání je všechny plochy koordinované selhání. Jeden počítač se doména selhání (vzhledem k tomu může selhat na své vlastní pro z různých důvodů se před výpadky napájení dodavatelského vůči selháním disku chybné firmwaru NIC). Počítače připojené ke stejnému přepínači sítě Ethernet jsou ve stejné doméně selhání, jako jsou počítače sdílení jednoho zdroje napájení nebo na jednom místě. Protože je přirozené pro hardwarových chyb překrytí, jsou ze své podstaty hierarchická domén selhání a jsou reprezentovány jako identifikátory URI v Service Fabric.
 
-Je důležité, aby domén selhání jsou správně nastaveny vzhledem k tomu, že Service Fabric používá tuto informaci k bezpečně umístění služby. Service Fabric nechce umístit služby tak, aby způsobí ztrátu domény selhání (způsobené selhání některé komponenty) služba přejděte. Ve službě Azure prostředí Service Fabric používá poskytnuté prostředím informace o doméně selhání správně nakonfigurovat uzly v clusteru vaším jménem. Pro samostatnou službu prostředků infrastruktury domén selhání jsou definovány v čase, který je nastavený clusteru 
+Je důležité, že domén selhání jsou správně nastavené protože Service Fabric pomocí těchto informací k bezpečné umístění služby. Service Fabric nechce k umístění služby tak, aby ke ztrátě doména selhání (způsobila selhání některé komponenty) způsobí, že služba přejdete. Prostředí Service Fabric v Azure používá doména selhání na základě informací poskytnutých prostředí správnou konfiguraci uzlů v clusteru vaším jménem. Pro samostatnou službu Service Fabric jsou definovány domén selhání v době, která je nastavená clusteru 
 
 > [!WARNING]
-> Je důležité, aby doména selhání informací uvedených na Service Fabric přesná. Například předpokládejme, že uzly clusteru Service Fabric běží uvnitř 10 virtuálních počítačů běžících na pět fyzických hostitelích. V takovém případě i když se 10 virtuálních počítačů, existují jenom 5 různých (nejvyšší úrovně) poruch domén. Sdílení na stejném fyzickém hostiteli způsobí, že virtuální počítače sdílet stejné kořenové domény selhání vzhledem k tomu, že virtuální počítače zaznamenat koordinované selhání, pokud se nezdaří jejich fyzického hostitele.  
+> Je důležité, že doména selhání údaje do Service Fabric je přesné. Například Řekněme, že uzly clusteru Service Fabric běží uvnitř 10 virtuálních počítačů běžících na pět fyzických hostitelích. V takovém případě i když je 10 virtuálních počítačů, existují jenom 5 různých (nejvyšší úrovně) domén selhání. Sdílení na stejném fyzickém hostiteli způsobí, že virtuální počítače, které sdílejí stejnou kořenovou doménu selhání od virtuálních počítačů selhat koordinované Pokud se nezdaří jejich fyzickém hostiteli.  
 >
-> Service Fabric očekává domény selhání uzlu nechcete změnit. Další mechanismy pro zajištění vysoké dostupnosti virtuálních počítačů, jako [HA – VMs](https://technet.microsoft.com/library/cc967323.aspx) mohou způsobit konflikty s Service Fabric, které používají transparentní migraci virtuálních počítačů z jednoho hostitele na druhého. Tyto mechanismy nezadávejte překonfigurovat nebo oznámit kód spuštěný ve virtuálním počítači. Jako takový jsou **nepodporuje** jako prostředí pro spuštění Service Fabric clusterů. Service Fabric musí být používané technologie pouze vysokou dostupnost. Mechanismy, jako je migrace za provozu virtuálního počítače, sítě SAN, nebo jiné nejsou potřebné. Pokud se používá ve spojení s Service Fabric, tyto mechanismy _snížit_ aplikace dostupnost a spolehlivost vzhledem k tomu, že zavést další složitosti, přidejte centralizované zdroje selhání a využívat spolehlivost a strategie dostupnosti, které je v konfliktu s těmi, která v Service Fabric. 
+> Service Fabric očekává, že doména selhání uzlu nebudou je moci měnit. Jiné mechanismy, jako třeba zajistit vysokou dostupnost virtuálních počítačů [vysokou dostupnost virtuálních počítačů](https://technet.microsoft.com/library/cc967323.aspx) může způsobit konflikty s využitím Service Fabric, které používají transparentní migrace virtuálních počítačů z jednoho hostitele do druhého. Tyto mechanismy nejsou opakovaně konfigurovat nebo oznámit spuštění kódu v tomto virtuálním počítači. V důsledku toho jsou **nepodporuje** jako prostředí pro Service Fabric s clustery. Service Fabric by měl být používané technologie pouze vysokou dostupnost. Mechanismy, jako je migrace za provozu virtuálního počítače, sítě SAN, nebo jiné nejsou nezbytné. Pokud se používá ve spojení s využitím Service Fabric, tyto mechanismy _snížit_ aplikace dostupnost a spolehlivost protože přinášejí další složitosti, přidejte centralizované zdroje selhání a využívat spolehlivost a strategie dostupnosti, které jsou v konfliktu s těmi v Service Fabric. 
 >
 >
 
-Na následujícím obrázku jsme barva všech entit, které seznam všech různé chyby domén, které způsobit a přispívat do domény selhání. V tomto příkladu máme datových centrech (dále jen "řadiče domény"), stojany ("R") a okna ("B"). V opačném případě pokud každý okno obsahuje více než jeden virtuální počítač, může dojít další úroveň v hierarchii domény selhání.
+Na následujícím obrázku jsme barva všech entit, které přispívají k domén selhání a seznam všech různých domén selhání, které vyplývají. V tomto příkladu máme datová centra ("řadiče domény"), stojany ("R") a v oknech ("B"). Případně pokud každé okno obsahuje více než jeden virtuální počítač, může dojít další vrstvu v hierarchii doména selhání.
 
 <center>
 ![Uzly uspořádané prostřednictvím domén selhání][Image1]
 </center>
 
-Během doby běhu správce prostředků clusteru Service Fabric zvažuje domén selhání v clusteru a plány rozložení. Stavová repliky nebo bezstavové instance pro danou službu se distribuují tak, aby byly v samostatných doménách selhání. Distribuce služby napříč doménami selhání zajistí, že nedojde k ohrožení dostupnost služby při selhání doména selhání na libovolné úrovni hierarchie.
+Za běhu Service Fabric Cluster Resource Manager bere v úvahu domén selhání v clusteru a plány rozložení. Replik stavových nebo bezstavových instancí pro určitou službu se distribuují tak, aby byly v samostatných doménách selhání. Distribuce službu napříč doménami selhání zajistí, že dostupnost služby nedošlo k ohrožení bezpečnosti selhání doména selhání na libovolné úrovni hierarchie.
 
-Správce prostředků clusteru Service Fabric není v potaz, kolik vrstvy, které jsou v hierarchii domény selhání. Ale pokusí se ujistěte, že ke ztrátě všech jednu část hierarchie nebude mít vliv na běžící v ní. 
+Service Fabric Cluster Resource Manageru není pro vás počet vrstev jsou v hierarchii doména selhání. Ale pokusí se ujistěte, že ztráta jakékoli jedné části hierarchie nebude mít vliv na služby spuštěné v ní. 
 
-Je nejvhodnější při stejný počet uzlů na každé úrovni hloubka v hierarchii domény selhání. Pokud je "stromu" domén selhání nevyváženou v clusteru, obtížnější pro Resource Manager clusteru a pokuste se zjistit doporučené přidělení služeb. Imbalanced rozložení domén selhání znamenají, že ke ztrátě některých domén dopadu na dostupnost služeb víc než jiných doménách. V důsledku toho odpojí správce prostředků clusteru mezi dva cíle: chce použít na počítače v této doméně "těžká" na jejich umístění služby a chce umístit služby v jiných doménách tak, aby ztrátě domény není způsobit problémy. 
+Je vhodné, pokud existují stejný počet uzlů na všech úrovních hloubka v hierarchii doména selhání. Je-li "stromu" domén selhání nevyváženou ve vašem clusteru, obtížnější pro Cluster Resource Manager zjistit nejlepší přidělení služeb. Rozložení imbalanced domén selhání znamenají, že ke ztrátě některých domén dopadu na dostupnost služeb víc než jiných domén. V důsledku toho se odpojí Cluster Resource Manageru se mezi dva cíle: chce použít na počítačích v této doméně "heavy" tak, že služby na nich a chce umístí služeb v jiných doménách, aby nezpůsobí ztrátu domény problémy. 
 
-Co imbalanced domén vypadat? V následujícím diagramu ukážeme dvě rozložení jiného clusteru. V prvním příkladu jsou rovnoměrně rozloženy uzly na domén selhání. V druhém příkladu má jeden doména selhání mnoho více uzlů, než v jiných doménách selhání. 
+Jak imbalanced domén vypadat? Na obrázku níže ukážeme dvě rozložení jiného clusteru. V prvním příkladu se uzly rovnoměrně distribuovaných napříč doménami selhání. V druhém příkladu jednu doménu selhání má mnoho dalších uzlů, než v jiných doménách selhání. 
 
 <center>
 ![Dvě různé clusteru rozložení][Image2]
 </center>
 
-V Azure výběr z nich obsahuje doména selhání uzlu je spravovaná. Ale v závislosti na počtu uzlů, které můžete zřídit můžete stále skončili s domén selhání s více uzly v nich než jiné. Předpokládejme například že máte pět domén selhání v clusteru, ale zřídit sedmi uzlů pro daný typ uzlu. V takovém případě první dva domén selhání skončili s více uzly. Pokud budete pokračovat v nasazování další NodeTypes s pouze několik instancí, získá zhoršení problém. Z toho důvodu, který má doporučeno počet uzlů v každém uzlu typ je násobkem počet domén selhání.
+V Azure volba, z nichž doména selhání obsahuje uzel spravuje za vás. Ale v závislosti na počtu uzlů, které zřizujete můžete stále skončit s doménami selhání s více uzly v nich než jiné. Řekněme například, máte 5 domén selhání v clusteru, ale zřízení sedm uzlů pro daný typ NodeType. V tomto případě první dvě domény selhání skončit s více uzly. Pokud budete pokračovat v nasazování další NodeTypes s pouze několika instancí, získá horší problém. Proto doporučujeme počet uzlů v každém uzlu je typ násobek počtu domén selhání.
 
-## <a name="upgrade-domains"></a>Domén upgradu
-Upgradu domény jsou další funkce, která pomáhá pochopit rozložení clusteru správce prostředků clusteru Service Fabric. Domén upgradu definovat sadu uzlů, které jsou upgradovány na stejnou dobu. Domén upgradu pomoct pochopit a orchestraci management operace, jako je upgrady správce prostředků clusteru.
+## <a name="upgrade-domains"></a>Upgradovací domény
+Upgradovací domény jsou další funkce, která pomáhá Service Fabric Cluster Resource Manager Principy rozložení clusteru. Upgradovací domény definovat sady uzlů, které budou upgradovány ve stejnou dobu. Upgradovací domény pomáhají Cluster Resource Manageru, pochopit a orchestrovat operace správy, jako je inovace.
 
-Upgradu domény jsou mnohem jako domén selhání, ale s několik hlavní rozdíly. Nejprve oblasti selhání koordinované hardwaru definování domén selhání. Zásady jsou definované upgradu domény, na druhé straně. Bude docházet k rozhodování o tom, kolik chcete, místo ho se závisí na prostředí. Můžete mít tolik upgradu domény jako uzly. Další rozdíl mezi domén selhání a upgradu domény je, že Upgrade domény nejsou hierarchické. Místo toho se více podobají prostřednictvím jednoduchých značek. 
+Upgradovací domény jsou mnohem jako domén selhání, ale s několik klíčových rozdílů. Nejprve definujte oblasti selhání hardwaru koordinované domén selhání. Upgradovacích domén, na druhé straně se definice zásady. Dostanete se rozhodnout, kolik chcete, místo jeho diktování prostředím. Můžete mít libovolný počet upgradu domény jako uzly. Další rozdíl mezi doménami selhání a upgradu domény je, že nejsou hierarchické upgradu domény. Místo toho se více podobají jednoduchých značek. 
 
-Následující diagram znázorňuje, že jsou tři domény upgradu rozdělené mezi tři domény selhání. Také ukazuje jeden možné umístění pro tři různé repliky stavové služby, kde každý skončilo v různých selhání a upgradu domény. Toto umístění umožňuje ztrátu domény selhání při uprostřed upgrade služby a ještě jednu kopii kód a data.  
-
-<center>
-![Umístění s doménách selhání a upgradu][Image3]
-</center>
-
-Existují výhody a nevýhody na situaci, kdy velký počet domén upgradu. Další domény upgradu znamená každého kroku upgradu je podrobnější a ovlivňuje menší počet uzlů nebo služby. V důsledku toho méně služby mají přesunout současně, představení méně změn do systému. To může zvýšit spolehlivost, protože méně služby je ovlivněn jakýkoli problém zavedená během upgradu. Další domény upgradu také znamená, je nutné, aby méně dostupné vyrovnávací paměti na jiných uzlech pro zpracování dopad upgradu. Například pokud máte pět upgradu domén, uzly v každé jsou zpracování zhruba 20 % z provozu. Pokud potřebujete vypnout upgradu domény pro účely upgradu, aby byla zátěž obvykle musí někde přejděte. Vzhledem k tomu, že máte čtyři zbývající domény upgradu, každý musí mít dostatek místa pro přibližně 5 % celkového provozu. Další domény upgradu znamená, že budete potřebovat méně vyrovnávací paměť v uzlech v clusteru. Zvažte například, pokud jste měli 10 upgradu domén místo. V takovém případě každý UD by pouze zpracovávat přibližně 10 % celkového provozu. Při upgradu kroky prostřednictvím clusteru, třeba, aby měl prostor pro přibližně 1.1 % celkového provozu pouze každou doménu. Další domény upgradu obecně umožňuje spouštět uzly s vyšší využití, vzhledem k tomu, že budete potřebovat méně rezervované kapacity. Totéž platí pro domény selhání.  
-
-Nevýhodou, že máte velký počet domén upgradu je, že upgrady mívají trvá déle. Service Fabric čeká krátké době po doména Upgrade a provádí kontroly před zahájením upgradu na další stránku. Tyto zpoždění povolit zjišťuje problémy, které jsou zavedené službou upgrade před upgradem. Kompromis je přijatelné, protože chybný změny brání by to ovlivnilo příliš mnoho služby najednou.
-
-Příliš málo upgradu domény má mnoho záporné vedlejší účinky – při každé jednotlivé upgradu domény je mimo provoz a upgraduje velkou část celkové kapacity není k dispozici. Například pokud máte pouze tři domény upgradu můžete trvá dolů o 1/3 celkové služby nebo kapacity clusteru současně. Značná část služby najednou s dolů není žádoucí, vzhledem k tomu, že budete muset mít dostatečnou kapacitu ve zbývající části vašeho clusteru tak umožní zpracovávat zatížení. Zachování této vyrovnávací paměti znamená, že při běžném provozu tyto uzly jsou menší načíst, než by byly jinak. Tím se zvyšuje náklady na provozování vaší služby.
-
-Neexistuje žádné skutečné omezení celkového počtu selhání nebo upgradu domény v prostředí nebo omezení toho, jak se překrývají. Ale nutné dodat, existuje několik běžných vzorů:
-
-- Domén selhání a upgradu domény namapovat 1:1
-- Jednu doménu upgradu na uzel (fyzické nebo virtuální instance operačního systému)
-- Model "prokládané" nebo "matice", kde domén selhání a upgradu domény formuláři pomocí počítače, které obvykle běží dolů úhlopříčkami matici
+Následující diagram znázorňuje, že jsou tři domény upgradu rozdělené mezi tři domény selhání. Také ukazuje jeden možné umístění pro tří různých replik stavové služby, kde každý skončilo v různých chybových nebo upgradu domény. Toto umístění umožňuje ztráty doménu selhání při uprostřed upgrade služby a ještě jednu kopii kódu a data.  
 
 <center>
-![Selhání a upgradu domény rozložení][Image4]
+![Umístění s chybových nebo Upgradovacích doménách][Image3]
 </center>
 
-Není definován že žádný nejvhodnější odpovědět, jaké rozložení byste měli zvolit, každá z nich má některé výhody a nevýhody. 1FD:1UD model je například jednoduché nastavení. 1 upgradu domény na uzlu modelu je většina jako osoby, které se používají k. Během upgradu se aktualizuje každý uzel nezávisle. Toto je podobná jak malého měla sady počítačů upgradovány ručně v minulosti. 
+Existují výhody a nevýhody mají velký počet domén upgradu. Další domény upgradu znamená, že každý krok upgradu je podrobnější a ovlivňuje menší počet uzlů nebo služby. V důsledku toho méně musí přesunout najednou, Představujeme menší změny do systému. To může zvýšit spolehlivost, protože menší služby má vliv jakýkoli problém zavedené během upgradu. Další domény upgradu také znamená, že vám míň dostupné vyrovnávací paměti na jiných uzlech pro zpracování dopad upgradu. Například pokud máte pět upgradu domén, uzly v každém zvládají zhruba 20 % z provozu. Pokud potřebujete vypnout tuto doménu Upgrade pro upgrade, obvykle potřeba přejít někde zátěž. Protože máte čtyři zbývající domén upgradu, každý musí mít místo pro přibližně 5 % celkového provozu. Další domény upgradu znamená, že potřebujete méně vyrovnávací paměti na uzlech v clusteru. Představte si třeba Pokud jste místo toho měli 10 upgradu domén. V takovém případě každý UD bude pouze zpracovávat přibližně 10 % z celkového provozu. Při upgradu prochází clusteru, třeba, aby měl místo pro o 1.1 % z celkového provozu pouze každou doménu. Další domény upgradu obecně umožňují provozovat uzly na vyšší využití, protože budete potřebovat méně záložní kapacitu. Totéž platí pro domén selhání.  
 
-Nejběžnější model je FD/UD matice, kde FDs a UDs vytvoří tabulku a uzly jsou umístěny společně diagonálních spouštění. Jedná se o model používá ve výchozím nastavení v clusterů Service Fabric v Azure. U clusterů s uzly mnoho všechno, co skončilo vyhledávání jako vzoru hustých matice výše.
+Nevýhodou s mnoha upgradu domény je, že upgrady obvykle trvá déle. Service Fabric počká krátké době po dokončení doméně upgradu a provádí kontroly před zahájením upgradu dalším objektem. Tato zpoždění povolit rozpoznání problémy spojené s uvedením upgradu před provedením upgradu. Kompromis představuje to je přijatelné, protože zabraňuje chybný změny výstrahy neovlivňovaly příliš velkou část služby najednou.
 
-## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Selhání a upgradu domény omezení a výsledné chování
+Moc malý počet domén upgradu má mnoho záporné vedlejší účinky – každé jednotlivé upgradu domény je mimo provoz a upgraduje velkou část celkové kapacity je k dispozici. Například pokud máte jenom tři domény upgradu přenášíte dolů přibližně 1/3 služby nebo kapacita clusteru současně. Tolik služby najednou s dolů není žádoucí, protože je třeba mít dostatečnou kapacitu ve zbývající části vašeho clusteru ke zpracování úlohy. Zachování vyrovnávací paměti znamená, že při normálním provozu tyto uzly jsou menší načten, než by se jinak. Tím se zvyšuje náklady na provozování vaší služby.
+
+Neexistuje žádný skutečný omezení celkový počet selhání nebo upgradu domény v prostředí, nebo omezení na tom, jak se překrývají. Ale nutné dodat, existuje několik běžných vzorů:
+
+- Domény selhání a upgradu domény namapovat 1:1
+- Jedna doména upgradu na jeden uzel (fyzický nebo virtuální instance operačního systému)
+- Modelu "prokládané" nebo "Přehled", kde domén selhání a upgradu domény formuláře matice s počítače, které obvykle běží dolů šikmé rozdělení
+
+<center>
+![Selhání a upgradovací doména rozložení][Image4]
+</center>
+
+Neexistuje že žádný nejlepší odpověď jaké rozložení byste měli zvolit, každá má některé výhody a nevýhody. Například 1FD:1UD modelu je snadné nastavení. 1 upgradovat doménu za uzel model je nejvhodnější jako osoby, které se používají k. Během upgradu se aktualizuje každý uzel nezávisle na sobě. To se podobá jak malý byly sady počítačů upgradovány ručně v minulosti. 
+
+Matice FD/ud stejný, kde tabulku tvoří doménami selhání a aktualizačními doménami a uzly jsou umístěny spuštění po diagonální je nejběžnější model. Jedná se o model používá ve výchozím nastavení na clusterech Service Fabric v Azure. U clusterů s mnoha uzly všechno, co končí vypadá jako výše hustému matice modelu.
+
+## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Omezení chyb a doména upgradu a výsledné chování
 ### <a name="default-approach"></a>*Výchozí přístup*
-Ve výchozím nastavení udržuje správce prostředků clusteru služby rovnoměrně rozdělen mezi selhání a upgradu domény. To je modelovaná jako [omezení](service-fabric-cluster-resource-manager-management-integration.md). Omezení stavy selhání a upgradu domény: "pro danou službu oddíl, měla by nikdy existovat rozdíl větší než 1 v počet objektů služby (instance bezstavové služby nebo stavové služby repliky) mezi dvěma doménami na stejné úrovni hierarchie". Řekněme, že toto omezení poskytuje záruku "maximální rozdíl". Omezení selhání a upgradu domény zabraňuje určené přesune nebo uspořádání, které porušují pravidlo uvedené výše. 
+Ve výchozím nastavení Cluster Resource Manageru udržuje služby vyvažují mezi selhání a upgradu domény. To je modelovaná jako [omezení](service-fabric-cluster-resource-manager-management-integration.md). Stavy omezení chyb a doména upgradu: "pro daného oddílu by neměla existovat rozdíl větší než jedna v počet objektů služeb (Bezstavová služba instancí nebo replik pro stavové služby) mezi dvěma doménami na stejné úrovni hierarchie". Řekněme, že toto omezení poskytuje záruku "maximální rozdíl". Omezení chyb a upgradu domény brání určitých operací přesunutí nebo ujednání, které porušují pravidlo bylo uvedeno výše. 
 
-Podívejme se na jedním z příkladů. Řekněme, že se musí na cluster se šesti uzlů, nakonfigurovaný s pěti domén selhání a pět upgradu domény.
+Podívejme se na příklad. Řekněme, že máme cluster s uzly šesti, nakonfigurovaný s pěti doménami selhání a pěti doménami upgradovat.
 
-|  | FD0 | FD1 | FD2: | FD3 | FD4 |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
-| **UD1** |N6 |N2 | | | |
+| **UD1** |N6 |N2. | | | |
 | **UD2** | | |N3 | | |
 | **UD3** | | | |N4 | |
 | **UD4** | | | | |N5 |
 
 *Konfigurace 1*
 
-Nyní Řekněme, že jsme pěti vytvořit službu s TargetReplicaSetSize (nebo bezstavové služby na InstanceCount). Repliky zobrazovat N1 N5. Ve skutečnosti N6 se nikdy nepoužívá bez ohledu na to, kolik služby, jako to, které vytvoříte. Ale proč? Podívejme se na rozdíl mezi aktuální rozložení a co by mohlo dojít, pokud je zvoleno N6.
+Nyní Řekněme, že jsme pět vytvoření služby s TargetReplicaSetSize (nebo pro bezstavovou službu s InstanceCount). Repliky se objevil na N1 N5. Ve skutečnosti N6 se nikdy nepoužívá bez ohledu na to, kolik služby, jako jsou to, které vytvoříte. Ale proč? Podívejme se na rozdíl mezi aktuální rozložení a co by mohlo dojít, pokud je zvolená N6.
 
-Tady je My rozložení a celkového počtu replik na selhání a upgradu domény:
+Tady je rozložení, které nám dává a celkového počtu replik na selhání a upgradu domény:
 
-|  | FD0 | FD1 | FD2: | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** | |R2 | | | |1 |
@@ -127,11 +127,11 @@ Tady je My rozložení a celkového počtu replik na selhání a upgradu domény
 *Rozložení 1*
 
 
-Toto rozložení jsou rovnoměrně z hlediska uzlů na doméně selhání a upgradu domény. Toto pravidlo jsou rovnoměrně také z hlediska počtu replik na selhání a upgradu domény. Každá doména má stejný počet uzlů a stejný počet replik.
+Toto rozložení je balanced z hlediska uzlů na doména selhání a upgradu domény. To je také vyrovnávat z hlediska počtu replik na selhání a upgradu domény. Každá doména má stejný počet uzlů a stejný počet replik.
 
-Teď se podíváme, co by se stalo jsme použití N6 místo N2. Jak by repliky distribuována pak?
+Teď se podívejme se na co by mohlo dojít, pokud jsme použili N6 místo N2. Jak by tyto repliky distribuovat pak?
 
-|  | FD0 | FD1 | FD2: | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R5 | | | | |1 |
@@ -143,9 +143,9 @@ Teď se podíváme, co by se stalo jsme použití N6 místo N2. Jak by repliky d
 *Rozložení 2*
 
 
-Toto rozložení porušuje naše definice záruky "maximální rozdíl" pro omezení domény selhání. FD0 má dvě repliky, zatímco FD1 obsahuje nula, a tím rozdíl mezi FD0 a FD1 celkem dva týdny, která je větší než maximální rozdíl jednoho. Vzhledem k tomu, že porušení omezení správce prostředků clusteru není povoleno toto uspořádání. Podobně pokud jsme zachyceny N2 a N6 (namísto N1 a N2) nám se získat:
+Toto rozložení v rozporu s naší definicí záruku "maximální rozdíl" omezení doména selhání. FD0 má dvě repliky, zatímco FD1 obsahuje nula, a tím rozdíl mezi FD0 a FD1 celkem 2, což je větší než maximální rozdíl jednoho. Protože je porušena omezení, Cluster Resource Manager neumožňuje toto uspořádání. Podobně pokud výběru N2 a N6 (namísto N1 a N2) dostali bychom:
 
-|  | FD0 | FD1 | FD2: | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** | | | | | |0 |
 | **UD1** |R5 |R1 | | | |2 |
@@ -157,16 +157,16 @@ Toto rozložení porušuje naše definice záruky "maximální rozdíl" pro omez
 *Rozložení 3*
 
 
-Toto rozložení jsou rovnoměrně z hlediska domén selhání. Ale nyní ho porušuje omezení upgradu domény protože UD0 má nulové repliky, zatímco UD1 má dva. Toto rozložení proto je neplatná a nebude být zachyceny pomocí Správce prostředků clusteru.
+Toto rozložení je balanced z hlediska domén selhání. Ale teď ji porušuje omezení domény upgradu protože UD0 má nulovou repliky, zatímco UD1 dvě. Proto toto rozložení je neplatné a nebudou odebrány pomocí Cluster Resource Manager.
 
-Tento přístup k distribuci stavová repliky nebo bezstavové instancí poskytuje nejlepší možný odolnost proti chybám. V situaci, kdy jednu doménu přestane fungovat, minimální počet replik nebo instancí je ztraceny. 
+Tento přístup k distribuci replik stavových nebo bezstavových instancí poskytuje nejlepší možné odolnosti proti chybám. V situaci, při jedné domény ocitne mimo provoz, minimální počet replik nebo instancí se ztratí. 
 
-Tento přístup na druhé straně může být příliš přísné a nepovolíte využívat všechny prostředky clusteru. Některé uzly nelze použít pro některé konfigurace clusteru. To může vést k Service Fabric není umístění vaší služby, což vede k zprávy upozornění. V předchozím příkladu některé uzly clusteru nelze použít (N6 v tomto příkladu). I v případě, že by přidat uzly do clusteru (N7 – N10), by replik nebo instancí umístit jenom na N1 – N5 z důvodu selhání a upgradu domény omezení. 
+Tento přístup na druhé straně může být příliš přísné a, aby mohli využívat všechny prostředky clusteru. Některé uzly nelze použít pro některé konfigurace clusteru. To může vést k Service Fabric není umístění služby, což vede k upozornění. V předchozím příkladu některé z uzlů clusteru nesmí být použita (N6 v daném příkladu). I v případě, že by přidání uzlů do tohoto clusteru (N7 – N10), replik a instancí pouze umístěné na N1 – N5 kvůli selhání a upgradu domény. 
 
-|  | FD0 | FD1 | FD2: | FD3 | FD4 |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | |N10 |
-| **UD1** |N6 |N2 | | | |
+| **UD1** |N6 |N2. | | | |
 | **UD2** | |N7 |N3 | | |
 | **UD3** | | |N8 |N4 | |
 | **UD4** | | | |N9 |N5 |
@@ -174,41 +174,41 @@ Tento přístup na druhé straně může být příliš přísné a nepovolíte 
 *Konfigurace 2*
 
 
-### <a name="alternative-approach"></a>*Alternativní způsob*
+### <a name="alternative-approach"></a>*Alternativním přístupem*
 
-Správce prostředků clusteru podporuje jinou verzi aplikace selhání a upgradu domény omezení, které umožňuje, aby umísťování při stále zaručení minimální úroveň zabezpečení. Alternativní omezení selhání a upgradu domény může být uvedeno, následujícím způsobem: "Pro danou službu oddíl repliky distribuční napříč doménami se ujistěte, oddíl nebude vyskytovat ztrátě kvora". Řekněme, že toto omezení poskytuje záruku "kvora bezpečné". 
+Cluster Resource Manager podporuje jinou verzi omezení chyb a doména upgradu, které umožňuje umístění při zůstává zaručena minimální úroveň zabezpečení. Alternativní omezení chyb a doména upgradu můžete uvést následujícím způsobem: "Pro určitou službu oddíl, distribuce replik napříč doménami se ujistěte, že oddíl nezpůsobuje žádné ztrátě kvora". Řekněme, že toto omezení poskytuje záruku "bezpečné kvorum". 
 
 > [!NOTE]
->Pro stavové služby, jsme definovali *ztrátě kvora* v situaci, když jsou většinou replik oddílu dolů ve stejnou dobu. Například pokud TargetReplicaSetSize pět, představuje sadu všechny tři repliky kvora. Podobně pokud TargetReplicaSetSize 6, čtyři repliky jsou nezbytné pro kvorum. Více než dvě repliky můžete v obou případech být mimo provoz ve stejnou dobu, pokud chce oddíl nebude fungovat normálně. Bezstavové služby není k dispozici žádná taková věc jako *ztrátě kvora* jako bezstavové služby conitnue k functionate normálně, i když většina instancí přejděte ve stejnou dobu. Proto se zaměříme na stavové služby ve zbývající části textu.
+>Pro stavové služby definujeme *ztráty kvora* v situaci, když většinou replik oddílů jsou vypnuté ve stejnou dobu. Například pokud TargetReplicaSetSize je pět, představuje sadu všechny tři repliky kvora. Podobně pokud TargetReplicaSetSize 6, čtyři repliky jsou nezbytné pro kvorum. Více než dvě repliky můžou v obou případech být mimo provoz ve stejnou dobu, pokud chce oddílu dál normálně fungovat. Pro bezstavovou službu, je i *ztráty kvora* jako bezstavové služby dál normálně fungovat i v případě, že většina instancí, přestanou fungovat ve stejnou dobu. Proto se zaměříme na stavové služby ve zbývající části textu.
 >
 
-Přejděte zpět do předchozí příklad. Verze "kvora bezpečné" omezení by všechny tři dané rozložení platný. Je to proto, že i v případě, že by selhání FD0 v druhém rozložení a UD1 v třetí rozložení, oddílu by ještě kvora (většinou jejích replik by být stále nahoru). S touto verzí omezení N6 může téměř vždy je možné využít.
+Přejděte zpět do předchozího příkladu. S verzí "kvora bezpečné" omezení by všechna tři dané rozložení platný. Je, že i v případě, že by existovat selhání FD0 v druhé rozložení nebo UD1 ve třetí rozložení, oddílu by stále kvora (většinou jeho repliky stále by šlo nahoru). V této verzi omezení N6 může téměř vždy je možné využít.
 
-"Kvora bezpečné" přístup přináší více flexibility než přístup "maximální rozdíl", jako je snazší najít distribuce repliky, které jsou platné v téměř jakoukoli topologie clusteru. Však tento přístup nemůže zaručit nejlepší odolnost proti chybám charakteristiky protože několika selháními horší než jiné. V nejhorším scénářem případu by mohly být ztraceny s chybou jednu doménu a jedna další replika většinou replik. Například místo nich vyžaduje ke ztrátě kvora s 5 replik nebo instancí 3 selhání, můžete nyní ztratit většinou se ještě dvě selhání. 
+"Kvora bezpečné" přístup přináší více flexibility než přístup "maximální rozdíl" je snazší najít distribuce repliky, které jsou platné v téměř jakékoli Clusterová topologie. Však tento přístup nemůže zaručit nejlepší odolnost proti chybám charakteristiky vzhledem k tomu, že některé chyby jsou horší než jiné. V nejhorším případě případu by mohly být ztraceny kvůli chybě jednu doménu a jedna další replika většinou replik. Například místo nich vyžaduje ke ztrátě kvora s 5 replik nebo instancí 3 selhání, můžete nyní přijít o většinou s chybami jen dva. 
 
 ### <a name="adaptive-approach"></a>*Adaptivní přístup*
-Protože přístupy mají silné a slabé stránky, zavedli jsme adaptivní přístup, který kombinuje tyto dvě strategie.
+Vzhledem k tomu, že oba přístupy mít silné a slabé stránky, jsme naši nabídku doplnili adaptivní přístup, který kombinuje těchto dvou strategií.
 
 > [!NOTE]
->To bude výchozí chování počínaje Service Fabric verze 6.2. 
+>Bude to výchozí chování, počínaje Service Fabric verze 6.2. 
 >
-Adaptivní přístup ve výchozím nastavení používá logiku "maximální rozdíl" a přepínače na logice "kvora bezpečné" pouze v případě potřeby. Správce prostředků clusteru automaticky hodnoty si strategii, kterou je nutné prohlížením konfiguraci clusteru a služby. Pro danou službu: *Pokud dělitelná počet domén selhání a počet domén upgradu TargetReplicaSetSize **a** počet uzlů je menší než nebo rovno (počet domén selhání) * (na počet domén upgradu), Cluster Resource Manager by měla využívat "kvora na základě" logiku pro tuto službu.* Berte v úvahu, že správce prostředků clusteru bude tuto metodu použijte pro bezstavové a stavové služby, bez ohledu ztrátě kvora nebude relevantní pro bezstavové služby.
+Adaptivní přístup ve výchozím nastavení používá "maximální rozdíl" logika a přepne do logiky "kvora bezpečné" pouze v případě potřeby. Cluster Resource Manager se automaticky zjistí strategii, kterou je nutné zobrazením konfiguraci clusteru a služeb. Pro danou službu: *při rovnoměrně dělitelné podle počtu domén selhání a počet domén upgradu TargetReplicaSetSize **a** počet uzlů je menší než nebo rovno (počet domén selhání) * () počet domén upgradu), Cluster Resource Manager by měla využívat "na základě kvora" logiku pro danou službu.* Berte v úvahu, že Cluster Resource Manager bude tuto metodu použijte pro bezstavové a stavové služby, bez ohledu na ztráty kvora, které nejsou relevantní pro bezstavové služby.
 
-Přejděte zpět do předchozí příklad a předpokládají, že cluster má nyní 8 uzlů (cluster je nakonfigurovaný pořád pět domén selhání a pět upgradu domén a TargetReplicaSetSize služby hostované na tento cluster zůstane pět). 
+Přejděte zpět do předchozího příkladu a předpokládá, že cluster má teď 8 uzlů (stále konfigurací clusteru s pěti doménami selhání a pěti doménami upgradovat a TargetReplicaSetSize službě hostované na tento cluster zůstane pět). 
 
-|  | FD0 | FD1 | FD2: | FD3 | FD4 |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 |
 | --- |:---:|:---:|:---:|:---:|:---:|
 | **UD0** |N1 | | | | |
-| **UD1** |N6 |N2 | | | |
+| **UD1** |N6 |N2. | | | |
 | **UD2** | |N7 |N3 | | |
 | **UD3** | | |N8 |N4 | |
 | **UD4** | | | | |N5 |
 
 *Konfigurace 3*
 
-Vzhledem k tomu, že všechny nezbytné podmínky jsou splněny, bude správce prostředků clusteru využít logice "na základě kvora" v distribuci službu. To umožňuje použití N6 – N8. K jednomu distribučnímu možné služby v takovém případě může vypadat podobně jako:
+Vzhledem k tomu, že všechny nezbytné podmínky jsou splněny, bude Cluster Resource Manager využít logiku "na základě kvora" v distribuci službu. To umožňuje použití N6 – N8. K jednomu distribučnímu možné služby v tomto případě by mohla vypadat:
 
-|  | FD0 | FD1 | FD2: | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |R1 | | | | |1 |
 | **UD1** |R2 | | | | |1 |
@@ -219,11 +219,11 @@ Vzhledem k tomu, že všechny nezbytné podmínky jsou splněny, bude správce p
 
 *Rozložení 4*
 
-Pokud vaše služba TargetReplicaSetSize je snížen na čtyři (například), bude správce prostředků clusteru Všimněte si, že změny a obnovit pomocí "maximální rozdíl" logiku, protože už není dělitelné počet FDs a UDs TargetReplicaSetSize. Některé repliky pohybů v důsledku toho dojde k distribuci zbývající čtyři repliky na uzlech N1 N5 tak, aby "maximální rozdíl" verze logiku domény selhání a upgradu domény není došlo k porušení. 
+Pokud vaše služba TargetReplicaSetSize je omezená na čtyři (například), bude Cluster Resource Manageru Všimněte si, že tato změna a obnovit pomocí logiky "maximální rozdíl", protože už není dělitelné počet doménami selhání a aktualizačními doménami TargetReplicaSetSize. V důsledku toho některé repliky pohybů plb typu dojde k distribuci zbývající čtyři repliky v uzlech N1 N5 tak, aby se "maximální rozdíl" verzi logiku domény doména selhání a upgradu došlo k porušení. 
 
-Vyhledávání zpět na čtvrtou rozložení a TargetReplicaSetSize pět. Pokud je z clusteru odebrán N1, počet domén upgradu dřívější čtyři. Správce prostředků clusteru znovu spustí pomocí "maximální rozdíl" logiku, počet UDs není rozdělení rovnoměrně TargetReplicaSetSize služby už. V důsledku toho musí zobrazovat N4 tak, aby selhání a omezení domény upgradu není došlo k porušení repliky R1, když znovu sestaven.
+Hledání zpět na čtvrté rozložení a TargetReplicaSetSize pět. N1 se odebere z clusteru, stane se rovná čtyřem počet domén upgradu. Cluster Resource Manageru znovu spustí pomocí logiky "maximální rozdíl" jako počet aktualizačními doménami není rovnoměrně rozdělit TargetReplicaSetSize služby už. V důsledku toho má replika R1, když znovu sestaven objevil na N4 tak, aby selhání a upgradu domény omezení není došlo k porušení.
 
-|  | FD0 | FD1 | FD2: | FD3 | FD4 | UDTotal |
+|  | FD0 | FD1 | FD2 | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
 | **UD0** |neuvedeno |neuvedeno |neuvedeno |neuvedeno |neuvedeno |neuvedeno |
 | **UD1** |R2 | | | | |1 |
@@ -234,10 +234,10 @@ Vyhledávání zpět na čtvrtou rozložení a TargetReplicaSetSize pět. Pokud 
 
 *Rozložení 5*
 
-## <a name="configuring-fault-and-upgrade-domains"></a>Konfigurace selhání a upgradu domény
-Definování domén selhání a upgradu domény se provádí automaticky v Azure hostovaná nasazení Service Fabric. Service Fabric převezme a používá informace o prostředí z Azure.
+## <a name="configuring-fault-and-upgrade-domains"></a>Konfigurace odolnosti a upgradu domény
+Definice domén selhání a upgradu domény se provádí automaticky v nasazení Service Fabric hostované v Azure. Service Fabric vybere a použije informace o prostředí z Azure.
 
-Pokud vytváříte vlastní cluster (nebo chcete spustit konkrétní topologie vývojem), je informace o doméně selhání a upgradu domény můžete zadat sami. V tomto příkladu jsme definovali místní vývojový cluster devět uzlu, který zahrnuje tři "datových centrech" (každý má tři stojany). Tento cluster má také tři domény upgradu rozdělená mezi tyto tři datových centrech. Zde je příklad konfigurace: 
+Pokud vytváříte vlastní cluster (nebo chcete spustit konkrétní topologie ve vývoji), je informace o doméně selhání a upgradu domény můžete zadat sami. V tomto příkladu definujeme místní vývojový cluster devíti uzlů, která zahrnuje tři "datová centra" (každý má tři stojany). Tento cluster má také tři domény upgradu rozdělená mezi tyto tři datových centrech. Níže je příklad konfigurace: 
 
 ClusterManifest.xml
 
@@ -260,7 +260,7 @@ ClusterManifest.xml
   </Infrastructure>
 ```
 
-pomocí souboru ClusterConfig.json pro samostatné nasazení
+prostřednictvím ClusterConfig.json pro samostatné nasazení
 
 ```json
 "nodes": [
@@ -331,59 +331,59 @@ pomocí souboru ClusterConfig.json pro samostatné nasazení
 ```
 
 > [!NOTE]
-> Při definování clusterů pomocí Azure Resource Manager, jsou přiřazeny domén selhání a upgradu domény Azure. Definice typů uzlů a sady škálování virtuálního počítače do šablony Azure Resource Manager tedy nezahrnuje doména selhání nebo informace o upgradu domény.
+> Při definování clustery prostřednictvím Azure Resource Manageru, jsou přiřazeny doménami selhání a upgradu domény Azure. Typy uzlů a VM Scale Sets definice v šabloně Azure Resource Manageru proto nezahrnuje doménu selhání nebo informace o upgradu domény.
 >
 
 ## <a name="node-properties-and-placement-constraints"></a>Vlastnosti uzlu a omezení umístění
-V některých případech (v faktu, ve většině případů) budete chtít zajistit, že určité úlohy spustit pouze v určitých typů uzlů v clusteru. Pro některé zatížení může například vyžadovat grafickými procesory nebo SSD a jiné nikoli. Skvělé příkladem cílení na hardware pro konkrétní úlohy je téměř každé n vrstvá architektura odhlašování došlo. Některé počítače sloužit jako front-endu nebo obsluhující straně aplikace API a jsou viditelné na klienty nebo internet. Různé počítače, často se různé hardwarové prostředky, zpracování pracovní vrstev výpočtů nebo úložiště. Obvykle se jedná o _není_ přímo vystavený pro klienty nebo Internetu. Service Fabric očekává, že existují případy, kdy je potřeba spustit na konkrétní hardwarové konfigurace konkrétní úlohy. Příklad:
+V některých případech (ve skutečnosti ve většině případů), budete mít jistotu, že určité úlohy spouštěny pouze v určitých typů uzlů v clusteru. Pro některé úlohy může například vyžadovat grafickými procesory nebo disky SSD a jiné ne. Skvělé příkladem cílení na hardware pro konkrétní úlohy je spousta téměř každé n vrstvou architekturu. Některé počítače jako části front end a na straně aplikace slouží rozhraní API a jsou přístupné na klientech nebo na internet. Různých počítačích, často a obsahují různé hardwarové prostředky, zpracování pracovní vrstvy výpočetního výkonu a úložiště. Obvykle se jedná o _není_ přímo zveřejněné klientům nebo Internetu. Service Fabric očekává, že existují případy, kdy je potřeba spustit na konkrétní hardwarové konfigurace konkrétní úlohy. Příklad:
 
-* stávající vícevrstvé aplikace byla "zrušeno a zapuštěno" do prostředí Service Fabric
-* zatížení chce, aby běžela na konkrétní hardware pro výkon, škálování nebo z důvodu izolace zabezpečení
-* Úloha by měla být izolované od ostatních úloh pro zásady nebo prostředek spotřebu důvody
+* existující n vrstvou aplikaci byla "zrušeno a posunuta" do prostředí Service Fabric
+* Úloha chce běžet na konkrétním hardwaru pro výkon, škálování nebo z důvodu izolace zabezpečení
+* Úloha by měla být izolované od jiných úloh důvodů využití zásad nebo prostředků
 
-Pro podporu těchto nastavení neovlivní konfigurace, Service Fabric má první třídy představu o značky, které lze použít na uzly. Tyto značky se nazývají **vlastnosti uzlu**. **Omezení umístění** jsou příkazy, které jsou připojené k jednotlivé služby, které vyberte jeden nebo více vlastností uzlu. Omezení umístění definovat, které by měly běžet služby. Sadu omezení je rozšiřitelný – může fungovat všechny dvojice klíč/hodnota. 
+Service Fabric pro podporu těchto řadu konfigurací, má první třídy hodnoty značek, které se můžou uplatnit na uzly. Tyto značky se nazývají **vlastnosti uzlu**. **Omezení umístění** jsou příkazy připojených služeb, které vyberte jeden nebo více vlastností uzlu. Omezení umístění definovat, ve kterém by měly běžet služby. Je možné rozšířit sadu omezení – všechny dvojice klíč/hodnota může pracovat. 
 
 <center>
-![Různé rozložení zatížení clusteru][Image5]
+![Cluster různými úlohami rozložení][Image5]
 </center>
 
-### <a name="built-in-node-properties"></a>Součástí vlastnosti uzlu
-Service Fabric definuje některé výchozí uzel vlastnosti, které lze použít automaticky bez nutnosti definovat uživatele. Výchozí vlastnosti definované v každém uzlu jsou **NodeType** a **NodeName**. Můžete napsat tak například omezení umístění jako `"(NodeType == NodeType03)"`. Obecně našli jsme, že NodeType bude jeden z nejvíc běžně používá vlastnosti. Je vhodné vzhledem k tomu, že odpovídá 1:1 s typem počítače. Každý typ počítače odpovídá typu úlohy v tradiční n vrstvá aplikaci.
+### <a name="built-in-node-properties"></a>Integrované vlastnosti uzlu
+Service Fabric definuje některé výchozí uzel vlastnosti, které je možné automaticky bez nutnosti jejich definování uživatele. Výchozí vlastnosti definované v každém uzlu jsou **NodeType** a **NodeName**. Můžete tak třeba napsat omezení umístění jako `"(NodeType == NodeType03)"`. Obecně jsme našli NodeType být jeden z nejpoužívanějších běžně používané vlastnosti. To je užitečné, protože odpovídá 1:1 s typem počítače. Každý typ počítače odpovídá typu úlohy v tradiční n vrstvou aplikaci.
 
 <center>
 ![Omezení umístění a vlastnosti uzlu][Image6]
 </center>
 
 ## <a name="placement-constraint-and-node-property-syntax"></a>Omezení umístění a syntaxe vlastnosti uzlu 
-Hodnota zadaná ve vlastnosti uzlu může být řetězec, bool, nebo podepsané dlouho. Příkaz na službu se označuje jako umístění *omezení* vzhledem k tomu, že se omezí, kde se služba může běžet v clusteru. Omezení může být jakékoli Boolean příkaz, který funguje ve vlastnostech jiného uzlu v clusteru. Jsou platné selektory v těchto příkazech logická hodnota:
+Hodnota zadaná ve vlastnosti uzlu může být string, bool, nebo podepsaný dlouho. Příkaz na službu se nazývá umístění *omezení* vzhledem k tomu, že se omezí, ve kterém se služba může běžet v clusteru. Omezení může být jakékoli logická příkaz, který pracuje na vlastnosti jiného uzlu v clusteru. Platný selektory v těchto logická příkazy jsou:
 
-1) Podmíněné kontroly pro vytvoření konkrétní příkazy
+1) Podmíněné kontroly pro vytváření konkrétní příkazy
 
 | Výraz | Syntaxe |
 | --- |:---:|
 | "rovno" | "==" |
-| "není rovno" | "!=" |
+| "nerovná se" | "!=" |
 | "větší než" | ">" |
 | "větší než nebo rovno" | ">=" |
 | "menší než" | "<" |
 | "menší než nebo rovno" | "<=" |
 
-2) Logická hodnota příkazy pro seskupování a logické operace
+2) Logická příkazů pro seskupení a logické operace
 
 | Výraz | Syntaxe |
 | --- |:---:|
 | "a" | "&&" |
 | "nebo" | "&#124;&#124;" |
-| "Ne" | "!" |
-| "skupiny jako jediný příkaz" | "()" |
+| "not" | "!" |
+| "skupiny jako jeden příkaz" | "()" |
 
-Zde jsou některé příklady příkazů základní omezení.
+Tady je několik příkladů příkazů základní omezení.
 
   * `"Value >= 5"`
   * `"NodeColor != green"`
   * `"((OneProperty < 100) || ((AnotherProperty == false) && (OneProperty >= 100)))"`
 
-Službu umístit na něm může mít pouze uzly, které vyhodnotí příkaz celkové omezení umístění na hodnotu "True". Uzly, které nemají vlastnost definovanou se neshodují žádné omezení umístění obsahující tuto vlastnost.
+Služby umístěné v něm může mít pouze uzly, kde příkaz celkové omezení umístění vyhodnotí na hodnotu "True". Uzly, které nemají definované vlastnosti neodpovídají žádné omezení umístění obsahující tuto vlastnost.
 
 Řekněme, že následující vlastnosti uzlu byly definovány pro daný uzel typu:
 
@@ -399,10 +399,10 @@ ClusterManifest.xml
     </NodeType>
 ```
 
-pomocí souboru ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery. 
+prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery. 
 
 > [!NOTE]
-> V šabloně Azure Resource Manager je obvykle parametry typ uzlu. Může vypadat třeba "[parameters('vmNodeType1Name')]" místo "NodeType01".
+> V šabloně Azure Resource Manageru je obvykle s parametry typu uzlu. Může vypadat třeba "[parameters('vmNodeType1Name')]" místo "NodeType01".
 >
 
 ```json
@@ -418,7 +418,7 @@ pomocí souboru ClusterConfig.json pro samostatné nasazení nebo Template.json 
 ],
 ```
 
-Můžete vytvořit umístění služby *omezení* pro službu, jako následujícím způsobem:
+Můžete vytvořit služby umístění *omezení* službu, třeba takto:
 
 C#
 
@@ -437,9 +437,9 @@ Prostředí PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-Pokud jsou všechny uzly NodeType01 platné, můžete také vybrat daný typ uzlu s omezením v atributu "(NodeType == NodeType01)".
+Pokud jsou všechny uzly NodeType01 platné, můžete také vybrat uzel typu s omezením "(NodeType == NodeType01)".
 
-Jedním z nástrojů věcí o omezení umístění služby je, aby bylo možné aktualizovat dynamicky za běhu. Takže pokud budete potřebovat, abyste můžete pohyb služby v clusteru, přidávat a odebírat požadavky atd. Service Fabric postará zajistit, že službu zůstává nahoru a k dispozici i v případě, že jsou vytvářeny těchto typů změn.
+Jedním z bezva věci o omezení umístění služby je, aby bylo možné aktualizovat dynamicky za běhu. Proto pokud je potřeba, můžete přesouvat služby v clusteru, přidat a odebrat požadavky atd. Service Fabric stará o to, že služba zůstane nahoru a k dispozici i v případě, že jsou provedeny těchto typů změn.
 
 C#:
 
@@ -455,26 +455,26 @@ Prostředí PowerShell:
 Update-ServiceFabricService -Stateful -ServiceName $serviceName -PlacementConstraints "NodeType == NodeType01"
 ```
 
-Pro všechny různé služby s názvem instance jsou zadány omezení umístění. Aktualizace vždy provést místa (Přepsat) byl dříve zadán.
+Omezení umístění jsou zadány pro každé jiné pojmenované instanci služby. Aktualizace vždy provést místo (její přepsání) byl dříve zadán.
 
-Definice clusteru definuje vlastnosti na uzlu. Změna vlastnosti uzlu vyžaduje s upgradem konfigurace clusteru. Upgrade vlastnosti uzlu vyžaduje každý ovlivněných uzel restartuje, aby se jeho nové vlastnosti sestav. Tyto vrácení upgradů Service Fabric spravuje.
+Definice clusteru definuje vlastnosti na uzlu. Změna vlastnosti uzlu vyžaduje konfigurace upgradu clusteru. Upgrade vlastnosti uzlu vyžaduje každý ovlivněné uzel restartovat, aby mohla jeho nové vlastnosti sestav. Toto postupné upgrady spravuje nástroj Service Fabric.
 
-## <a name="describing-and-managing-cluster-resources"></a>Popisující a Správa prostředků clusteru
-Jedním z nejdůležitějších úlohy žádné orchestrator je ke správě spotřeby prostředků v clusteru. Správa prostředků clusteru může zahrnovat několik různých věcí. Nejprve existuje zajišťuje, že počítače nejsou přetížené. To znamená, a ujistěte se, že počítače nejsou spuštěné další služby, než se může zpracovat. Druhou je, že vyrovnávání a optimalizace, které jsou kritická pro efektivní spuštění služby. Některé uzly je aktivní, zatímco jiné jsou cold nemůže povolit náklady nabídky služeb citlivé platné nebo výkonu. Aktivní uzly vést k sporu prostředků a nízký výkon a cold uzly představují nevyužité zdroje a vyšší náklady. 
+## <a name="describing-and-managing-cluster-resources"></a>Popis a Správa prostředků clusteru
+Jedna z vašich nejdůležitějších úloh jakékoli orchestrator je při správě spotřeba prostředků v clusteru. Správa prostředků clusteru může znamenat, že několik různých věcí. Nejdřív se existuje se ujistíme, že počítače nejsou přetížené. To znamená, ujistěte se, že počítače neběží další služby, než dokáže zpracovat. Druhou je vyrovnávání a optimalizace, což je důležité pro efektivní spuštění služby. Nákladově efektivní nebo výkonu nabídky služeb citlivé nemůže povolit některé uzly je aktivní, zatímco jiné jsou studenou. Aktivní uzly vést ke kolizi prostředků a slabým výkonem a úplné uzly představují prostoje prostředků a vyšší náklady. 
 
-Service Fabric představuje prostředky jako `Metrics`. Metriky jsou logickou nebo fyzickou prostředku, který chcete popisují do Service Fabric. Příklady metrik věci jako "WorkQueueDepth" nebo "MemoryInMb". Informace o fyzické prostředky, které můžou řídit Service Fabric na uzlech naleznete v tématu [zásad správného řízení prostředků](service-fabric-resource-governance.md). Informace o konfiguraci vlastní metriky a jejich použití naleznete v tématu [v tomto článku](service-fabric-cluster-resource-manager-metrics.md)
+Service Fabric představuje prostředky jako `Metrics`. Metriky jsou fyzické nebo logické prostředků, které chcete popsat do Service Fabric. Příkladem metriky jsou věci, jako je "WorkQueueDepth" nebo "MemoryInMb". Informace o fyzické prostředky, které může řídit Service Fabric na uzlech najdete v tématu [zásady správného řízení prostředků](service-fabric-resource-governance.md). Informace o konfiguraci vlastních metrik a jejich použití naleznete v tématu [v tomto článku](service-fabric-cluster-resource-manager-metrics.md)
 
-Metriky se liší od umísťováním omezení a vlastnosti uzlu. Vlastnosti uzlu jsou statické popisovače v samotných uzlech. Metriky popisují prostředky, které mají uzly a že využívat služby při spuštění na uzlu. Vlastnost uzlu může být "HasSSD" a může být nastavena na hodnotu true nebo false. Množství místa, které jsou k dispozici v této SSD a kolik je využívána služby by metrika jako "DriveSpaceInMb". 
+Metriky se liší od omezení umístění a vlastnosti uzlu. Vlastnosti uzlu jsou statické popisovače samotných uzlech. Metriky popisují prostředky, které mají uzly a že služby využívat při jejich spuštění na uzlu. Vlastnost uzlu může být "HasSSD" a může být nastavena na hodnotu true nebo false. Množství volného místa na tomto SSD a kolik je používané služby by metriky, jako je "DriveSpaceInMb". 
 
-Je důležité si uvědomit, že stejně jako omezení umístění a vlastnosti uzlu, správce prostředků clusteru Service Fabric nerozumí co znamená názvy metriky. Metriky názvy jsou jenom řetězce. Je dobrým zvykem deklarovat jednotky jako součást metriky názvy, které vytvoříte, když může být nejednoznačný.
+Je důležité si uvědomit, že stejně jako omezení umístění a vlastnosti uzlu Service Fabric Cluster Resource Manager nerozumí významu názvy metrik. Názvy metrik jsou pouze řetězce. Je vhodné deklarovat jednotky jako součást názvy metrik, které vytvoříte, když může být nejednoznačný.
 
 ## <a name="capacity"></a>Kapacita
-Pokud jste měli vypnuté všechny prostředků *vyrovnávání*, správce prostředků clusteru Service Fabric stále zajistí, že žádný uzel skončila přes své kapacity. Správa přetečení kapacity je možné, pokud je příliš plná clusteru nebo zatížení je větší než libovolného uzlu. Kapacita je jiné *omezení* že zjistit, kolik prostředků a uzel se používá správce prostředků clusteru. Zbývající kapacity jsou také sledovány clusteru jako celek. Kapacita a spotřeba na úrovni služby jsou vyjádřeny z hlediska metriky. Tak například Metrika může být "ClientConnections" a daný uzel je pravděpodobně kapacity pro "ClientConnections" z 32768. Další uzly může mít jiné omezení některé služby spuštěné v tomto uzlu můžete například ho aktuálně spotřebovává 32256 metrika "ClientConnections".
+Pokud jste měli vypnuté všechny prostředky *vyrovnávání*, Service Fabric Cluster Resource Manager stále zajistí, že žádný uzel skončila nad jeho kapacitu. Správa přetečení kapacitu je možné, pokud je plný cluster nebo je zatížení větší než libovolný uzel. Kapacita je jiný *omezení* , abyste pochopili, jak velká část prostředku se uzel má používá Cluster Resource Manager. Zbývající kapacita je sledována také pro cluster jako celek. Metriky se vyjadřují kapacitě a spotřebě na úrovni služby. Takže například metriku může být "ClientConnections" a daný uzel může mít kapacitu pro "ClientConnections" z 32768. Další omezení, některé služby a systémem, který uzel může Dejme tomu, že ji aktuálně spotřebovává 32256 metriky "ClientConnections" může mít jiné uzly.
 
-Během doby běhu správce prostředků clusteru sleduje zbývající kapacity v clusteru a na uzlech. Aby bylo možné sledovat kapacity odečítá správce prostředků clusteru využití každé služby z uzlu kapacity, kde je služba spuštěna. Pomocí těchto informací může správce prostředků clusteru Service Fabric rozmyslete si, kam umístit nebo přesunout repliky tak, aby uzly si projít kapacity.
+Cluster Resource Manageru za běhu, sleduje zbývající kapacity v clusteru a na uzlech. Aby bylo možné sledovat kapacitu odečte Cluster Resource Manager využití jednotlivých služeb z kapacity uzlu, kde je služba spuštěna. Pomocí těchto informací Service Fabric Cluster Resource Manager můžete zjistit, kam chcete umístit nebo přesuňte repliky tak, aby uzly nenavazují přes kapacity.
 
 <center>
-![Uzly clusteru a kapacity][Image7]
+![Uzly clusteru a kapacita][Image7]
 </center>
 
 C#:
@@ -496,7 +496,7 @@ Prostředí PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("ClientConnections,High,1024,0)
 ```
 
-Můžete zjistit kapacity definované v manifestu clusteru:
+Můžete zobrazit kapacity definovaný v manifestu clusteru:
 
 ClusterManifest.xml
 
@@ -508,7 +508,7 @@ ClusterManifest.xml
     </NodeType>
 ```
 
-pomocí souboru ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery. 
+prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery. 
 
 ```json
 "nodeTypes": [
@@ -521,17 +521,17 @@ pomocí souboru ClusterConfig.json pro samostatné nasazení nebo Template.json 
 ],
 ```
 
-Běžně služby načíst dynamicky změny. Řekněme, že zatížení repliky "ClientConnections" změnil z hodnoty 1 024 na 2048, ale na uzel, který byl spuštěn na pak pouze byl 512 kapacita zbývající pro tuto metriku. Nyní repliky nebo instance umístění je neplatná, protože v tomto uzlu není dostatek místa. Správce prostředků clusteru má nové a získat uzel zpět níže kapacity. Snižuje zatížení na uzlu, který je nad kapacity přesunutím jeden nebo víc replik nebo instancí z tohoto uzlu do dalších uzlů. Při přesunu repliky, pokusí se správce prostředků clusteru minimalizovat náklady na těchto pohybů. Náklady na přesunutí popsané v [v tomto článku](service-fabric-cluster-resource-manager-movement-cost.md) a informace o správce prostředků clusteru je vyrovnává strategie a pravidla je popsaný [zde](service-fabric-cluster-resource-manager-metrics.md).
+Běžně služby změny dynamicky načíst. Řekněme, že repliky zatížení "ClientConnections" změnil z 1024 na hodnotu 2048, ale na uzel, který byl spuštěn na pak pouze měl 512 zbývající pro tuto metriku kapacity. Nyní repliky nebo umístění instance je neplatný, protože na tomto uzlu není dostatek volného místa. Cluster Resource Manager má rozjíždí a získat uzel zpátky pod kapacity. To snižuje zatížení na uzlu, který je překročena kapacita přesunutím jeden nebo více replik nebo instancí z daného uzlu do dalších uzlů. Při přesunu repliky, Cluster Resource Manager snaží minimalizovat náklady na tyto pohybů plb typu. Náklady na přesunutí je podrobněji popsána [v tomto článku](service-fabric-cluster-resource-manager-movement-cost.md) a informace o Cluster Resource Manager je nové vyvážení strategie a pravidla je popsaný [tady](service-fabric-cluster-resource-manager-metrics.md).
 
 ## <a name="cluster-capacity"></a>Kapacita clusteru
-Jak tedy správce prostředků clusteru Service Fabric zachovat celkové clusteru z příliš zaplnění? Dobře s dynamického zatížení, není k dispozici mnoho ho provést. Služby mohou mít jejich zatížení Špička nezávisle na akce prováděné pomocí Správce prostředků clusteru. Cluster s dostatek prostoru dnes v důsledku toho může být underpowered, když jste se famous zítra. Ale nutné dodat, nejsou některé ovládací prvky, které jsou v zaručená, aby se zabránilo problémům. První věcí, kterou by bylo možné službu je bránit vytvoření nové úlohy, které by způsobily clusteru plná.
+Jak Service Fabric Cluster Resource Manager zachovat celkový clusteru z příliš plné? Dobře s dynamického zatížení není k dispozici mnoho lze provádět. Služby může mít jejich zatížení ve špičce nezávisle na akce prováděné pomocí Cluster Resource Manager. Cluster s dostatek prostoru ještě dnes v důsledku toho může být underpowered, až vám budou zítra známý. Ale nutné dodat, existují některé ovládací prvky, které jsou těšte, aby se zabránilo problémům. První, co můžeme udělat je zabránit vytvoření nové úlohy, které by mohly způsobit cluster tak, aby plná.
 
-Řekněme, že vytvoření bezstavové služby a obsahuje některé zatížení s ním spojená. Řekněme, že služba záleží metrika "DiskSpaceInMb". Dále předpokládejme, že se bude používat pět jednotky "DiskSpaceInMb" pro všechny instance služby. Chcete vytvořit tři instancí služby. Výborně! To znamená, že potřebujeme 15 jednotky "DiskSpaceInMb" nacházet v clusteru, abychom vás mohli i tak nebude moci vytvořit tyto instance služby. Správce prostředků clusteru průběžně vypočítá kapacitu a využití každé metriky tak může zjistit, zbývající kapacity v clusteru. Pokud není k dispozici dostatek místa, správce prostředků clusteru odmítne volání služby vytvořit.
+Řekněme, že vytvoření bezstavové služby a má nějaké zatížení s ním spojená. Řekněme, že služba dbá na metriku "DiskSpaceInMb". Také Předpokládejme, že se bude používat pět jednotky "DiskSpaceInMb" pro každou instanci služby. Chcete vytvořit tři instance služby. Výborně! To znamená, že potřebujeme 15 jednotky "DiskSpaceInMb" nacházet v clusteru nám i tak možné k vytvoření těchto instancí služby. Cluster Resource Manager průběžně vypočítá kapacitě a spotřebě jednotlivé metriky tak může zjistit, zbývající kapacity v clusteru. Pokud není k dispozici dostatek místa, Cluster Resource Manager odmítne volání služby vytvořit.
 
-Vzhledem k tomu, že požadavek je pouze to, že existuje možné 15 jednotky, může být tento prostor přiděleno mnoha různými způsoby. Například může existovat jednu jednotku zbývající kapacity v 15 rozdílných uzlech, nebo tři zbývající jednotky kapacity na pět různých uzlech. Pokud správce prostředků clusteru můžete přeuspořádat věcí, takže na tři uzly je k dispozici pět jednotky, umístí službu. Změna uspořádání clusteru je obvykle možné, pokud je téměř plná clusteru, nebo z nějakého důvodu nelze konsolidovat stávající služby.
+Požadavek je pouze to, že není možné 15 jednotky, může toto místo přidělené mnoha různými způsoby. Například může existovat jednu jednotku zbývající kapacity na 15 různých uzlech, nebo tři zbývající jednotky kapacity na pět různých uzlech. Pokud Cluster Resource Manageru můžete uspořádat věci, tak na tři uzly je k dispozici pět jednotky, umístí služby. Změna uspořádání clusteru je obvykle je to možné, pokud je téměř plná clusteru nebo z nějakého důvodu nelze konsolidovat stávající služby.
 
 ## <a name="buffered-capacity"></a>Kapacita ve vyrovnávací paměti
-Kapacita ve vyrovnávací paměti je jiné funkce služby Správce prostředků clusteru. To umožňuje rezervace některé část celkové kapacity uzlu. Této kapacity vyrovnávací paměti se používá pouze k umístění služby během upgradu a selhání uzlu. Kapacita ve vyrovnávací paměti je zadán globálně za Metrika pro všechny uzly. Hodnota, kterou vyberete pro rezervované kapacity je funkce, počtu selhání a upgradu domén, které máte v clusteru. Další selhání a upgradu domény znamená, můžete si vybrat nižší číslo pro vaše kapacita ve vyrovnávací paměti. Pokud máte více domén, můžete očekávat snížení objemu clusteru a mohli být k dispozici během upgradu a selhání. Zadání uložená do vyrovnávací paměti kapacity má smysl pouze, pokud zadáte uzlu kapacity pro metriku.
+Kapacita ve vyrovnávací paměti je jiné funkce Cluster Resource Manager. To umožňuje vyhrazení nějaká část celkové kapacity uzlu. Tato kapacita vyrovnávací paměti slouží pouze k umístění služby během upgradu a selhání uzlů. Kapacita ve vyrovnávací paměti je zadán globálně na metriku pro všechny uzly. Hodnota, kterou vyberete pro rezervované kapacity je funkce počtu selhání a upgradu domény, budete mít v clusteru. Další selhání a upgradu domény znamená, že, můžete si vybrat nižší číslo pro kapacitu ve vyrovnávací paměti. Pokud máte více domén, můžete očekávat menší množství váš cluster bude během upgradu a selhání není k dispozici. Určení kapacity ukládány do vyrovnávací paměti pouze dává smysl, pokud také nastavíte kapacity uzlů pro metriku.
 
 Tady je příklad toho, jak určit kapacitu ve vyrovnávací paměti:
 
@@ -544,7 +544,7 @@ ClusterManifest.xml
         </Section>
 ```
 
-pomocí souboru ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery:
+prostřednictvím ClusterConfig.json pro samostatné nasazení nebo Template.json pro Azure hostované clustery:
 
 ```json
 "fabricSettings": [
@@ -564,17 +564,17 @@ pomocí souboru ClusterConfig.json pro samostatné nasazení nebo Template.json 
 ]
 ```
 
-Vytvoření nové služby selže, když clusteru je mimo ve vyrovnávací paměti kapacity pro metriku. Brání vytvoření nových služeb, aby byla zachována vyrovnávací paměti zajišťuje upgrady a selhání nezpůsobí uzly si projít kapacity. Kapacita ve vyrovnávací paměti je nepovinný, ale doporučuje se v jakékoli clusteru, který definuje kapacity pro metriku.
+Vytvoření nové služby selže, pokud clusteru je mimo kapacitu ve vyrovnávací paměti pro metriku. Zabránění vytvoření nové služby, chcete-li zachovat vyrovnávací paměti zajišťuje upgrady a selhání nezpůsobí uzly si projít kapacity. Kapacita ve vyrovnávací paměti je nepovinný, ale doporučuje se do libovolného clusteru, který definuje kapacity pro metriku.
 
-Správce prostředků clusteru zpřístupní tyto informace zatížení. Pro jednotlivé metriky tyto informace zahrnují: 
+Cluster Resource Manager poskytuje tyto informace načíst. Pro každou metriku tyto informace zahrnují: 
   - Nastavení kapacity ve vyrovnávací paměti
   - Celková kapacita
-  - aktuální spotřeba
-  - jestli je považován za jednotlivé metriky vyrovnáváním nebo ne
-  - Statistika týkající se směrodatné odchylky
-  - uzly, které mají nejvíce a minimálně zatížení  
+  - Aktuální využití
+  - Určuje, zda je považován za jednotlivé metriky s vyrovnáváním nebo ne
+  - statistické údaje o směrodatné odchylky
+  - uzly, které mají nejvíce a nejnižší zatížení  
   
-Níže vidíte příklad tento výstup:
+Níže jsme vidět příklad výstupu:
 
 ```posh
 PS C:\Users\user> Get-ServiceFabricClusterLoadInformation
@@ -603,10 +603,10 @@ LoadMetricInformation     :
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Informace o architektuře a informačního toku v rámci správce prostředků clusteru, podívejte se na [v tomto článku ](service-fabric-cluster-resource-manager-architecture.md)
-* Definování defragmentace metriky je jeden způsob, jak konsolidovat zatížení na uzlech místo rozšíří ho. Naučte se konfigurovat defragmentace, najdete v tématu [v tomto článku](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-* Začít od začátku a [získejte Úvod do Service Fabric clusteru správce prostředků](service-fabric-cluster-resource-manager-introduction.md)
-* Chcete-li zjistit, o tom, jak správce prostředků clusteru spravuje a vyrovnává zatížení v clusteru, podívejte se na článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
+* Informace o architektuře a informačního toku v Cluster Resource Manager, projděte si [v tomto článku ](service-fabric-cluster-resource-manager-architecture.md)
+* Definování defragmentaci metrik je jeden způsob, jak konsolidovat zatížení na uzlech, místo aby rozložil ho navýšení kapacity. Další informace o konfiguraci defragmentace, najdete v tématu [v tomto článku](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+* Začít od začátku a [Úvod do Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
+* Přečtěte si o tom, jak Cluster Resource Manager spravuje a vyrovnává zatížení v clusteru, přečtěte si článek na [Vyrovnávání zatížení](service-fabric-cluster-resource-manager-balancing.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-fault-domains.png
 [Image2]:./media/service-fabric-cluster-resource-manager-cluster-description/cluster-uneven-fault-domain-layout.png

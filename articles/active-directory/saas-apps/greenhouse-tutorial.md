@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 7f48a0c11beb038370a8fc00e64d87127d356dec
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 14cdf0ddf648fb4441785106d3a8123d73a4bde9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424739"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835892"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Kurz: Integrace Azure Active Directory se službou skleníkových
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s skleníkových, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Skleníkových jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace skleníkových do služby Azure AD, budete muset přidat s
 
 **Chcete-li přidat skleníkových z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -127,7 +127,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/greenhouse-tutorial/tutorial_general_400.png)
 
-1. Ke konfiguraci jednotného přihlašování na **skleníkových** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory skleníkových](http://www.greenhouse.io/contact).
+1. Ke konfiguraci jednotného přihlašování na **skleníkových** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory skleníkových](https://www.greenhouse.io/contact).
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -225,7 +225,7 @@ V této části je povolit Britta Simon k udělení přístupu k skleníkových 
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

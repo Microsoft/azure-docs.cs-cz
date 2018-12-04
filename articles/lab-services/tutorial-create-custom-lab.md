@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c3eecfdf4bc2e6bf6798a6b3845cdc2e2e243341
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: ee2def6287a845cd0fd0260254efb20f9638ab2c
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467425"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839037"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Kurz: Nastavení testovacího prostředí ve službě Azure DevTest Labs
 V tomto kurzu vytvoříte testovací prostředí na webu Azure Portal. Správce testovacího prostředí nastaví testovací prostředí v organizaci, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady. Uživatelé testovacího prostředí (například vývojář a testeři) nárokují virtuální počítače v testovacím prostředí, připojují se k nim a používají je. 
@@ -80,15 +80,11 @@ Následující kroky ukazují postup vytvoření testovacího prostředí ve slu
 1. V levé nabídce vyberte **Configuration and policies** (Konfigurace a zásady). 
 
     ![Konfigurace a zásady](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. V nabídce vyberte **Access control (IAM)** (Řízení přístupu (IAM)) a na panelu nástrojů vyberte **+ Add** (+Přidat). 
-
-    ![Řízení přístupu – tlačítko Přidat uživatele](./media/tutorial-create-custom-lab/access-control-add.png)
+1. Vyberte **řízení přístupu (IAM)** z nabídky a vybereme **+ přidat přiřazení role** na panelu nástrojů. 
 1. Na stránce **Add permissions** (Přidat oprávnění) proveďte následující akce:
     1. V části **Role** (Role) vyberte **DevTest Labs User** (Uživatel služby DevTest Labs). 
     2. Vyberte **uživatele**, kterého chcete přidat. 
     3. Vyberte **Uložit**.
-
-        ![Přidání oprávnění](./media/tutorial-create-custom-lab/add-lab-user.png)
 4. Pokud chcete zavřít okno **Configuration and policies - Access control (IAM)** (Konfigurace a zásady – řízení přístupu (IAM)), vyberte **X** v pravém rohu. 
 
 ## <a name="cleanup-resources"></a>Vyčištění prostředků
@@ -99,7 +95,7 @@ Další kurz vám ukáže, jak může uživatel testovacího prostředí nároko
 3. Na panelu nástrojů vyberte **Odstranit skupinu prostředků**. Odstraněním skupiny prostředků se odstraní všechny prostředky ve skupině, včetně testovacího prostředí. 
 4. Tento postup opakujte k odstranění další skupiny prostředků vytvořené pro vás s názvem `<your resource group name><random numbers>`. Například: `splab3988722144001`. Virtuální počítače se vytvoří v této skupině prostředků, nikoli ve skupině prostředků, ve které existuje testovací prostředí. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste vytvořili testovací prostředí s virtuálním počítačem a nastavili jste do něj uživateli přístup. Pokud chcete získat informace o tom, jak k testovacímu prostředí přistupovat jako uživatel testovacího prostředí, přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]

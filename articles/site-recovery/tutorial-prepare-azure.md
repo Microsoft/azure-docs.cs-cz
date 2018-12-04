@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 11/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c00dd8cd412d79093e4ae1fd7ea30a3071c9b54f
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: 5c5699d6e25b1f12f87e389011d044315baccd4d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210240"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838867"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Příprava prostředků Azure na zotavení po havárii místních počítačů
 
@@ -104,7 +104,7 @@ Když se po převzetí služeb při selhání vytvoří z úložiště virtuáln
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Příprava místní infrastruktury VMware na zotavení po havárii do Azure](tutorial-prepare-on-premises-vmware.md)

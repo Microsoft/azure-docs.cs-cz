@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: d79513569b53d2b8958f44fbfac3839c91caaff8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3b75e8607c85f79bb64c57c2154115c41ebe8366
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634298"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835500"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Upřesnění skupiny s využitím mapování závislostí skupin
 
@@ -32,8 +32,9 @@ Využití vizualizace závislostí, je potřeba přiřadit pracovní prostor Log
 
     ![Přiřadit pracovní prostor Log Analytics](./media/concepts-dependency-visualization/associate-workspace.png)
 
-- Když vytvoříte nový pracovní prostor, musíte zadat název pracovního prostoru. Pracovní prostor se pak vytvoří ve stejném předplatném jako projekt migrace a v oblasti, ve stejném [zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
-- **Použít existující** možnost uvádí pouze tyto pracovní prostory, které jsou vytvořené v oblastech, kde je k dispozici řešení Service Map. Pokud máte pracovní prostor v oblasti, kde není k dispozici řešení Service Map, nebudou uvedené v rozevíracím seznamu.
+- Při přiřazení pracovního prostoru, bude mít možnost vytvořit nový pracovní prostor nebo připojení existující:
+    - Když vytvoříte nový pracovní prostor, musíte zadat název pracovního prostoru. Pracovní prostor se pak vytvoří v oblasti, ve stejném [zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
+    - Po připojení existujícího pracovního prostoru, můžete vybrat ze všech dostupných pracovních prostorů ve stejném předplatném jako projekt migrace. Všimněte si, že jsou uvedené pouze ty pracovní prostory, které byly vytvořeny v oblasti kde [Service Map je podporována](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Aby bylo možné se připojit s pracovním prostorem, ujistěte se, že máte "Čtečky" přístup do pracovního prostoru.
 
 > [!NOTE]
 > Nelze změnit pracovní prostor, přidružené k projektu migrace.
@@ -63,7 +64,6 @@ Instalace agenta na počítači s Linuxem:
 2. Instalaci sady pomocí argumentu--install.
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
-
 
 ### <a name="install-the-dependency-agent"></a>Instalace agenta závislostí
 1. Instalace agenta závislostí na počítači s Windows, klikněte dvakrát na instalační soubor a postupujte podle pokynů průvodce.

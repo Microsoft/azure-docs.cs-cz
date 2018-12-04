@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 15d2e40127579fbd278cc3dc18653d782a515caa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f55122b3bf4bb7160459d524b20dd1303cc0fd8
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957308"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52835416"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Podporované jazyky ve službě Azure Functions
 
@@ -37,11 +37,9 @@ Existují tři úrovně podpory:
 
 ### <a name="experimental-languages"></a>Experimentálních jazyků
 
-Experimentálních jazyků ve verzi 1.x dobře neškálují a nepodporují všechny vazby. 1.x Python je například pomalá, protože modul runtime služby Functions spustí *python.exe* s každým vyvolání funkce. A i když Python podporuje vazby protokolu HTTP, nemá přístup k objektu žádosti.
+Experimentálních jazyků ve verzi 1.x dobře neškálují a nepodporují všechny vazby. Například je omezena na verze 5.1, experimentální podporu pro prostředí PowerShell v 1.x, protože to je, co se instaluje standardně na virtuálních počítačích, na které spuštění aplikace function App. Pokud chcete spustit Powershellové skripty, vezměte v úvahu [Azure Automation](https://azure.microsoft.com/services/automation/).
 
-Experimentální podpora pro prostředí PowerShell v 1.x je omezena na verze 5.1, protože to je, co se instaluje standardně na virtuálních počítačích, na které aplikace function App, spusťte. Pokud chcete spustit Powershellové skripty, vezměte v úvahu [Azure Automation](https://azure.microsoft.com/services/automation/).
-
-Nepoužívejte experimentálních jazyků pro všechno, co, které využívají, protože neexistuje žádné oficiální podpora pro ně. Případy podpory by měl být otevřen pro problémy s experimentálních jazyků. 
+Nepoužívejte seznámit s experimentálními funkcemi pro všechny položky, které využívají, protože neexistuje žádné oficiální podpora pro ně. Případy podpory by měl být otevřen pro problémy s experimentálních jazyků. 
 
 Modul runtime verze 2.x nepodporuje experimentálních jazyků. Pouze v případě, že v produkčním prostředí může být podporovaný jazyk je přidána podpora pro nové jazyky. 
 
@@ -64,3 +62,6 @@ Další informace o tom, jak používat jeden z těchto jazyků GA nebo ve verzi
 
 > [!div class="nextstepaction"]
 > [Java](functions-reference-java.md)
+
+> [!div class="nextstepaction"]
+> [Python](functions-reference-python.md)

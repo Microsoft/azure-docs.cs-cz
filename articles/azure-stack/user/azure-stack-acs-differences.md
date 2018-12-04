@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 12/03/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 14e32bdfcde6969b820c0950d59bd5cf946a51e6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: efdc1cda9b52b6b79a3ccdcfd16542f7cb4b891a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802317"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838544"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Úložiště Azure Stack: rozdíly a aspekty
 
@@ -84,10 +84,10 @@ Rozhraní API pro správu služby Azure Storage:
 
 | Klientská knihovna | Podporovaná verze služby Azure Stack | Odkaz                                                                                                                                                                                                                                                                                                                                     | Koncový bod specifikace       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| .NET           | Z 6.2.0 k 8.7.0.          | Balíček Nuget:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | souboru app.config              |
+| .NET           | Z 6.2.0 k 8.7.0.          | Balíček NuGet:<br>https://www.nuget.org/packages/WindowsAzure.Storage/<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-net/releases                                                                                                                                                                                    | souboru app.config              |
 | Java           | Z 4.1.0 k 6.1.0           | Maven balíček:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-java/releases                                                                                                                                                                    | Nastavení připojovací řetězce      |
 | Node.js        | Z 1.1.0 k 2.7.0           | Odkaz na NPM:<br>https://www.npmjs.com/package/azure-storage<br>(Příklad: spuštění "npm nainstalujte azure-storage@2.7.0")<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-node/releases                                                                                                                                         | Deklarace instance služby |
-| C++            | Z 2.4.0 k 3.1.0           | Balíček Nuget:<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | Nastavení připojovací řetězce      |
+| C++            | Z 2.4.0 k 3.1.0           | Balíček NuGet:<br>https://www.nuget.org/packages/wastorage.v140/<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-cpp/releases                                                                                                                                                                                          | Nastavení připojovací řetězce      |
 | PHP            | Z 0.15.0 nastavená na 1.0.0          | Verze Githubu:<br>https://github.com/Azure/azure-storage-php/releases<br> <br>Instalace přes Composer (viz podrobnosti níže)                                                                                                                                                                                                                  | Nastavení připojovací řetězce      |
 | Python         | Z 0.30.0 nastavená na 1.0.0          | Verze Githubu:<br>https://github.com/Azure/azure-storage-python/releases                                                                                                                                                                                                                                                                | Deklarace instance služby |
 | Ruby           | Z 0.12.1 na 1.0.1          | Balíček RubyGems:<br>Běžné:<br>https://rubygems.org/gems/azure-storage-common/<br>Objekt BLOB: https://rubygems.org/gems/azure-storage-blob/<br>Fronta: https://rubygems.org/gems/azure-storage-queue/<br>Tabulka: https://rubygems.org/gems/azure-storage-table/<br> <br>Verze Githubu:<br>https://github.com/Azure/azure-storage-ruby/releases | Nastavení připojovací řetězce      |

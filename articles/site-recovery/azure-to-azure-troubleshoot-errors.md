@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 84875a47df1830a7f5aa439a17df233d8c93ba1c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: dc89eadfc0038d74ced431693c321944a7ee3a12
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728238"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834362"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 

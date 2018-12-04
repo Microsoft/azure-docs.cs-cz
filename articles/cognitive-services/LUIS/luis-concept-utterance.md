@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2b21102a5416c1fd7e2abb35be677c48ffc63263
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 1f86631d75ceec5fc013c21f74f03b9157c78b4a
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638066"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52836453"
 ---
 # <a name="utterances-in-luis"></a>Projevy v LUIS
 
@@ -55,6 +55,10 @@ V každé iteraci modelu nepřidávejte velké množství projevy. Přidání pr
 Služba LUIS sestavení efektivní modely s projevy, které jsou vybrány pečlivě. Přidání příliš mnoho projevy není cenné, protože zavádí nejasnostem.  
 
 Je lepší začít s několika projevy, pak [zkontrolujte koncový bod projevy](luis-how-to-review-endoint-utt.md) správné záměru extrakci předpovědi a entity.
+
+## <a name="punctuation-marks"></a>Interpunkční znaménka
+
+Služba LUIS nebude ignorovat interpunkčních znamének, ve výchozím nastavení, protože některé klientské aplikace mohou klást na těchto známky význam. Zajistěte, aby že vaše příklad projevy pomocí interpunkce a bez interpunkce v pořadí pro obě styly vrátit stejné relativní skóre. Pokud interpunkční znaménka nemá žádný zvláštní význam v klientské aplikace, zvažte [je ignorována interpunkce](#ignoring-words-and-punctuation) pomocí vzorce. 
 
 ## <a name="ignoring-words-and-punctuation"></a>Ignoruje slova a interpunkce
 Pokud chcete ignorovat slova nebo interpunkčním znaménkem v příkladu utterance, použijte [vzor](luis-concept-patterns.md#pattern-syntax) s _Ignorovat_ syntaxe. 

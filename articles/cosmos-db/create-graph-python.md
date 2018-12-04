@@ -1,9 +1,8 @@
 ---
-title: 'Rychlý start: Gremlin API s využitím Pythonu – Azure Cosmos DB | Microsoft Docs'
+title: 'Rychlý start: Gremlin API s využitím Pythonu – Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Gremlin API k vytvoření aplikace pomocí portálu Azure a jazyka Python.
 services: cosmos-db
 author: luisbosquez
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
@@ -11,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: d01ee78c4e3fdf0eab694deaeed03e0f61989851
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: eb7959b1a41c602ce4f34750802d962fe4ff84cf
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699443"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52839309"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření databáze grafů pomocí Pythonu a webu Azure Portal
 
@@ -100,9 +99,9 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 
 ## <a name="update-your-connection-information"></a>Aktualizace informací o připojení
 
-Teď se vraťte na Azure Portal, kde najdete informace o připojení, a zkopírujte je do aplikace. Tato nastavení umožní aplikaci komunikovat s hostovanou databází.
+Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkopírujte je do aplikace. Tato nastavení umožní aplikaci komunikovat s hostovanou databází.
 
-1. Na [portálu Azure Portal](http://portal.azure.com/) klikněte na **Klíče**. 
+1. Na [portálu Azure](http://portal.azure.com/) klikněte na **Klíče**. 
 
     Zkopírujte první část hodnoty identifikátoru URI.
 
@@ -171,7 +170,7 @@ Teď se vraťte na Azure Portal, kde najdete informace o připojení, a zkopí
     
     Pokud dochází k chybám časového limitu, zkontrolujte, jestli jste v části [Aktualizace informací o připojení](#update-your-connection-information) správně aktualizovali informace o připojení, a zkuste poslední příkaz spustit znovu. 
     
-    Po zastavení programu stiskněte Enter a pak v internetovém prohlížeči přejděte zpátky na portál Azure Portal.
+    Po zastavení programu stiskněte Enter a pak v internetovém prohlížeči přejděte zpátky na portál Azure.
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Kontrola a přidání ukázkových dat
@@ -245,7 +244,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu databáze Azure Cosmos, vytvoření grafu pomocí Průzkumníku dat a spuštění aplikace. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 

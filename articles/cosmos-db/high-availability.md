@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: dd018dca2de018733783605bfdb2802f91ebd76b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 112b41aa41706a807a82e708fe1fb4173fd084ca
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621169"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837524"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Vysoká dostupnost s využitím služby Azure Cosmos DB
 

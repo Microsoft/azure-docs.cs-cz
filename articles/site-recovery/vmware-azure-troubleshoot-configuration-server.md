@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/11/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: b819783d127c51c0d5f33b2273a37a4180cb13a6
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 4faadc27648b0d944e61a4d390313a35b4ba8bfa
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571565"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837728"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfigurací serveru
 

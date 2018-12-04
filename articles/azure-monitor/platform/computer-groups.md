@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2b811029e2cadcb89238375e8fe50160a58b0c62
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 7575d55f65598d39a8ffe0c3802cf11fa7470180
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52685010"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52837779"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Prohledávání protokolů skupiny počítačů v Log Analytics
 
-Skupiny počítačů v Log Analytics vám umožní oboru [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v prohledávání protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
+Skupiny počítačů v Log Analytics vám umožní oboru [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) konkrétní sadě počítačů.  Každá skupina se zaplní, buď dotaz, který definujete pomocí počítače nebo importováním skupiny z různých zdrojů.  Skupiny je obsažen v prohledávání protokolu, výsledky jsou omezené na záznamy, které odpovídají počítačů ve skupině.
 
 ## <a name="creating-a-computer-group"></a>Vytvořit skupinu počítačů
 Vytvořit skupinu počítačů v Log Analytics pomocí některé z metod v následující tabulce.  Podrobnosti o každé metody jsou k dispozici v následujících částech. 
@@ -130,11 +130,11 @@ V pracovním prostoru Log Analytics pro každého členství ve skupině počít
 | Počítač |Název členské počítače. |
 | Skupina |Název skupiny. |
 | GroupFullName |Úplná cesta ke skupině, včetně zdroje a název zdroje. |
-| GroupSource |Zdroj skupiny bylo shromážděno z. <br><br>Active Directory<br>SLUŽBA WSUS<br>WSUSClientTargeting |
+| GroupSource |Zdroj skupiny bylo shromážděno z. <br><br>Active Directory<br>WSUS<br>WSUSClientTargeting |
 | GroupSourceName |Název zdroje shromážděné ze skupiny.  Pro Active Directory jde o název domény. |
 | ManagementGroupName |Název skupiny pro správu agentů SCOM.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
 | TimeGenerated |Datum a čas vytvoření nebo aktualizace skupiny počítačů. |
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
 

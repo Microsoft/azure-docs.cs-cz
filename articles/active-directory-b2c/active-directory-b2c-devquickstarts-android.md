@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4a4b9863d8f74592a8d9a700c3dbc850cd867331
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a5bf15289e91cc568524e8110702b5608118bc2d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725552"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52833920"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C: Aplikace pro Android pomocí přihlášení
 
@@ -42,7 +42,7 @@ Dále musíte vytvořit aplikaci v adresáři B2C. Azure AD díky tomu získá i
 
 ## <a name="create-your-user-flows"></a>Vytvářet toky uživatelů
 
-V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md), což je sada zásad, které řídí chování Azure AD. Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci uživatelů flowu. Je potřeba vytvořit tento tok uživatele, jak je popsáno v [článku toku uživatele](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Když vytvoříte tok uživatele, nezapomeňte na následující:
+V Azure AD B2C je každé uživatelské rozhraní určené [tok uživatele](active-directory-b2c-reference-policies.md), což je sada zásad, které řídí chování Azure AD. Tato aplikace obsahuje možnosti pro jednu identitu: kombinované přihlášení a registraci uživatelů flowu. Je potřeba vytvořit tento tok uživatele, jak je popsáno v [článku toku uživatele](active-directory-b2c-reference-policies.md#create-a-sign-up-user-flow). Když vytvoříte tok uživatele, nezapomeňte na následující:
 
 * Zvolte **zobrazovaný název** jako atribut registrace ve svém toku uživatele.
 * Zvolte **zobrazovaný název** a **ID objektu** deklaracemi identity aplikace v každé tok uživatele. Můžete zvolit i další deklarace identity.

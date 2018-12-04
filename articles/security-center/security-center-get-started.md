@@ -13,17 +13,17 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/2/2018
+ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: dc4c07b54085dfea6d97f2ca43a8cdddfcb9e57c
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: HT
+ms.openlocfilehash: 8a0467a383e2c8e3efab685187c5a37d1549f664
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025460"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838154"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rychlý start: Připojení předplatného Azure ke službě Security Center úrovně Standard
-Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Zatímco úroveň Free nabízí pouze omezené zabezpečení vašich prostředků Azure, úroveň Standard tyto možnosti rozšiřuje do místního prostředí a jiných cloudů. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Službu Security Center v cenové úrovni Standard si můžete zdarma vyzkoušet na 60 dní.
+Azure Security Center zajišťuje jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Zatímco úroveň Free nabízí pouze omezené zabezpečení vašich prostředků Azure, úroveň Standard tyto možnosti rozšiřuje do místního prostředí a jiných cloudů. Security Center úrovně Standard pomáhá vyhledávat a opravovat ohrožení zabezpečení, blokovat škodlivou aktivitu pomocí ovládacích prvků přístupu a aplikací, detekovat hrozby s využitím analýz a inteligentních funkcí a rychle reagovat v případě útoku. Security Center úrovně Standard můžete vyzkoušet zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 V tomto článku provedete upgrade na úroveň Standard, která poskytuje dodatečné zabezpečení, a nainstalujete na své virtuální počítače agenta Microsoft Monitoring Agent, který bude monitorovat ohrožení zabezpečení a hrozby.
 
@@ -51,7 +51,7 @@ Během několika minut od prvního spuštění služby Security Center se může
 Pokud chcete využívat všech výhod služby Security Center, musíte dokončením níže uvedených kroků provést upgrade na úroveň Standard a nainstalovat agenta Microsoft Monitoring Agent.
 
 ## <a name="upgrade-to-the-standard-tier"></a>Upgrade na úroveň Standard
-Pro účely rychlých startů a kurzů pro službu Security Center musíte provést upgrade na úroveň Standard. Prvních 60 dnů je zdarma a kdykoli se můžete vrátit na úroveň Free.
+Pro účely rychlých startů a kurzů pro službu Security Center musíte provést upgrade na úroveň Standard. Je bezplatnou zkušební verzi Security Center úrovně Standard. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. V hlavní nabídce služby Security Center vyberte **Začínáme**.
  
@@ -103,7 +103,7 @@ Pokud chcete vypnout automatické zřizování:
 > Vypnutím automatického zřizování neodeberete agenta Microsoft Monitoring Agent z virtuálních počítačů Azure, na kterých byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste upgradem na úroveň Standard a zřízením agenta Microsoft Monitoring Agent získali jednotnou správu zabezpečení a ochranu před hrozbami napříč vašimi hybridními cloudovými úlohami. Další informace o používání služby Security Center najdete v rychlém startu pro připojení počítačů s Windows v místním prostředí a jiných cloudech.
 
 > [!div class="nextstepaction"]

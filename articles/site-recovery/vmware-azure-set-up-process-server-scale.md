@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 50d1170f64ae199f4a1bf4b852c1ed3232df4d42
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 2ef08831706a018422ea3700c8eb63bd6f95c469
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974797"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834943"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>Škálování pro navrácení služeb po obnovení pomocí dalších procesových serverů
 

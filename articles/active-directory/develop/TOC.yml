@@ -323,6 +323,7 @@ items:
       - name: Základy ověřování
         href: authentication-scenarios.md
       - name: Protokoly OAuth 2.0 a OpenID Connect
+        href: active-directory-v2-protocols.md
         items:
         - name: OpenID Connect
           href: v2-protocols-oidc.md
@@ -435,9 +436,9 @@ items:
     href: developer-support-help-options.md
   - name: Spravované identity pro prostředky Azure
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 71ba5312a5cfaf10ee2ece5ae376b87fe44d231f
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1f5e8259aeaae162d424ec7e66d47ff71e3471d1
+ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497495"
+ms.lasthandoff: 11/30/2018
+ms.locfileid: "52680442"

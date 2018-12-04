@@ -5,14 +5,14 @@ author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: e2cba8cb53e73bd1fc25f1fe43fa0365247e2bd2
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: c1714fd6ada45f2b4498a3f5972424200afa9aa3
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50210818"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838136"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Nastavení zotavení po havárii pro vícevrstvé aplikace Dynamics AX 
 
@@ -37,7 +37,7 @@ Implementace zotavení po havárii pro aplikace Dynamics AX pomocí Site Recover
 
 • Azure svůj záložní web, je-li spustit nástroj pro vyhodnocení připravenosti na virtuální počítač Azure na virtuálních počítačích. Musí být kompatibilní se službou Azure Virtual Machines a služby Site Recovery services.
 
-## <a name="site-recovery-support"></a>Site Recovery podporu
+## <a name="site-recovery-support"></a>Podpora Site Recovery
 
 Pro účely vytváření tohoto článku, můžeme použít virtuální počítače VMware s Dynamics AX 2012 R3 na Windows Server 2012 R2 Enterprise. Protože replikace služby site recovery je nezávislý na aplikace, Očekáváme, že doporučení uvedená tady pro uložení v následujících scénářích.
 
@@ -139,7 +139,7 @@ Další informace specifické pro systém SQL server během testovacího převze
 
 2. Vyberte plán obnovení, které jsou vytvořené pro Dynamics AX.
 
-3. Vyberte **testovací převzetí služeb při selhání**.
+3. Vyberte **Testovací převzetí služeb při selhání**.
 
 4. Vyberte virtuální síť, chcete-li spustit proces testovacího převzetí služeb při selhání.
 

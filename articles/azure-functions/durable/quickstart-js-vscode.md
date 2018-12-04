@@ -11,18 +11,20 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 114278b2d53cab8dd3302a8a2c2c074b8a5b24fa
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 7dceed4d81f1e1767cbf91804573043d1204beee
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52638579"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838901"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první funkce trvalý v jazyce JavaScript
 
 *Odolná služba Functions* je rozšířením [Azure Functions](../functions-overview.md) , který umožňuje zapisovat stavové funkce v prostředí bez serveru. Rozšíření spravuje stav, kontrolní body a restartuje za vás.
 
 V tomto článku se dozvíte, jak použít rozšíření Visual Studio Code Azure Functions místně vytvořit a otestovat funkci "hello world" trvalý.  Tato funkce bude orchestrovat a zřetězit volání dalších funkcí. Kód funkce potom publikujete do Azure.
+
+![Odolné funkce spuštěné v Azure](./media/quickstart-js-vscode/functions-vs-code-complete.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,21 +46,21 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="create-a-starter-function"></a>Vytvoření funkce Starter
 
+Nejprve vytvořte funkci aktivovanou protokolem HTTP, který se spustí Orchestrace odolné funkce.
+
 1. Z oblasti **Azure: Functions** zvolte ikonu Vytvořit funkci.
 
-    ![Vytvoření funkce](../media/functions-create-first-function-vs-code/create-function.png)
+    ![Vytvoření funkce](./media/quickstart-js-vscode/create-function.png)
 
 1. Vyberte složku s vaším projektem aplikace funkcí a vyberte šablonu funkce **Trigger HTTP**.
 
-    ![Volba šablony triggeru HTTP](../media/functions-create-first-function-vs-code/create-function-choose-template.png)
+    ![Volba šablony triggeru HTTP](./media/quickstart-js-vscode/create-function-choose-template.png)
 
 1. Jako název funkce zadejte `HttpStart`, stiskněte klávesu Enter a pak vyberte **Anonymní** ověřování.
 
-    ![Volba anonymního ověřování](../media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
+    ![Volba anonymního ověřování](./media/quickstart-js-vscode/create-function-anonymous-auth.png)
 
     Funkce ve vybraném jazyce se vytvoří pomocí šablony funkce aktivované protokolem HTTP.
-
-    ![Šablona funkce aktivované protokolem HTTP ve Visual Studio Code](../media/functions-create-first-function-vs-code/new-function-full.png)
 
 1. Nahraďte index.js s pod JavaScript:
 
@@ -107,23 +109,15 @@ Nyní jsme vytvořili vstupní bod do naší trvalé funkce. Přidejme orchestr�
 
 ## <a name="create-an-orchestrator-function"></a>Vytvoření funkce Orchestrátoru
 
-1. Z oblasti **Azure: Functions** zvolte ikonu Vytvořit funkci.
+Dále vytvoříte další funkce orchestrátoru. Šablonu funkce triggeru HTTP používáme ke zvýšení pohodlí. Samotný kód funkce se nahradí kódem produktu orchestrator.
 
-    ![Vytvoření funkce](../media/functions-create-first-function-vs-code/create-function.png)
+1. Opakujte kroky v předchozí části, chcete-li vytvořit druhou funkci, která pomocí šablony triggeru HTTP. Pojmenujte funkci tentokrát `OrchestratorFunction`.
 
-1. Vyberte složku s vaším projektem aplikace funkcí a vyberte šablonu funkce **Trigger HTTP**. Vzhledem k tomu, že budete nahrazuje tento kód, nebude vadit samotné aktivační událost.
-
-    ![Volba šablony triggeru HTTP](../media/functions-create-first-function-vs-code/create-function-choose-template.png)
-
-1. Jako název funkce zadejte `OrchestratorFunction`, stiskněte klávesu Enter a pak vyberte **Anonymní** ověřování.
-
-    ![Volba anonymního ověřování](../media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
-
-1. Nahraďte index.js s pod JavaScript:
+1. Otevřete soubor index.js nové funkce a nahraďte obsah následujícím kódem:
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-1. Nahraďte function.json se následující JSON:
+1. Otevřete soubor function.json a nahraďte ho následujícím kódem JSON:
 
     [!code-json[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/function.json)]
 
@@ -131,19 +125,9 @@ Přidali jsme orchestrator ke koordinaci aktivit funkce. Přidejme nyní odkazov
 
 ## <a name="create-an-activity-function"></a>Vytvoření funkce aktivity
 
-1. Z oblasti **Azure: Functions** zvolte ikonu Vytvořit funkci.
+1. Opakujte kroky v předchozích částech vytvoříte třetí funkci pomocí šablony triggeru HTTP. Ale tentokrát název funkce `SayHello`.
 
-    ![Vytvoření funkce](../media/functions-create-first-function-vs-code/create-function.png)
-
-1. Vyberte složku s vaším projektem aplikace funkcí a vyberte šablonu funkce **Trigger HTTP**. Vzhledem k tomu, že budete nahrazuje tento kód, nebude vadit samotné aktivační událost.
-
-    ![Volba šablony triggeru HTTP](../media/functions-create-first-function-vs-code/create-function-choose-template.png)
-
-1. Jako název funkce zadejte `SayHello`, stiskněte klávesu Enter a pak vyberte **Anonymní** ověřování.
-
-    ![Volba anonymního ověřování](../media/functions-create-first-function-vs-code/create-function-anonymous-auth.png)
-
-1. Nahraďte index.js s pod JavaScript:
+1. Otevřete soubor index.js nové funkce a nahraďte obsah následujícím kódem:
 
     [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
@@ -151,7 +135,7 @@ Přidali jsme orchestrator ke koordinaci aktivit funkce. Přidejme nyní odkazov
 
     [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
-Teď jsme přidali všechny součásti, které jsou nutné ke spuštění našich Orchestrace a funkce společné aktivity řetězce.
+Teď jsme přidali všechny komponenty potřebné ke spuštění vypnout Orchestrace a řetězce dohromady aktivita funkce.
 
 ## <a name="test-the-function-locally"></a>Místní testování funkce
 

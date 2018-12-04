@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 8123cac1057a6821dc1f8e49562a937e703fe531
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5ad39cab343e17040e0086934e50be580590241d
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684604"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834141"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Shromažďování a analýza protokolů aktivit Azure do Log Analytics
 
@@ -101,4 +101,4 @@ Data protokolu aktivit se zobrazí jenom *po* konfiguraci vašich protokolů akt
 ## <a name="next-steps"></a>Další postup
 
 - Vytvoření [výstraha](../../monitoring-and-diagnostics/alert-metric.md) když se stane konkrétní aktivitu.
-- Použití [prohledávání protokolů](../../log-analytics/log-analytics-queries.md) k zobrazení podrobných informací z protokolů aktivit.
+- Použití [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) k zobrazení podrobných informací z protokolů aktivit.

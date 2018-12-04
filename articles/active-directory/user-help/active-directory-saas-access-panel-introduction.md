@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: d9ed140d404387b94428cea5d925911806b62552
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 129f77ec9ea4d4e2633e1ea0b02795bc0df26433
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705851"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52834702"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co je na portálu MyApps?
 
@@ -41,9 +41,9 @@ Na portálu MyApps je nezávislá na webu Azure portal. Nevyžaduje, abyste měl
 
 ## <a name="access-the-myapps-portal"></a>Přístup k portálu MyApps
 
-Dostanete tak, že přejdete na portálu MyApps `http://myapps.microsoft.com`.
+Dostanete tak, že přejdete na portálu MyApps `https://myapps.microsoft.com`.
 
-Pokud máte vlastní značka nakonfigurovaná pro přihlašovací stránku, můžete načíst branding přidáním domény vaší organizace na adresu URL (například `http://myapps.microsoft.com/<your domain>.com`).
+Pokud máte vlastní značka nakonfigurovaná pro přihlašovací stránku, můžete načíst branding přidáním domény vaší organizace na adresu URL (například `https://myapps.microsoft.com/<your domain>.com`).
 
 Můžete použít libovolný název aktivní nebo ověřené domény, který byl nakonfigurovaný do webu Azure portal, jak je znázorněno zde: ![Wingtip Toys název domény][2]  
 

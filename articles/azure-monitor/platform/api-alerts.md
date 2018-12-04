@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 48f178a3316eb7232fad7d39b28aaa2fdcd77bff
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 63346068529591d4d396b0590db96a73782181e9
+ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642904"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52838850"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
 Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Log Analytics.  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
@@ -28,7 +28,7 @@ Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v L
 REST API pro hledání Log Analytics je RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manageru. V tomto dokumentu najdete příklady kde je rozhraní API pro přístup z příkazového řádku pomocí prostředí PowerShell [ARMClient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku open source, který zjednodušuje volání rozhraní API Azure Resource Manageru. Použití ARMClient a prostředí PowerShell je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful API Azure Resource Manageru provádět volání do pracovních prostorů Log Analytics a provádět příkazy vyhledávání v nich. Rozhraní API bude vypsání výsledků vyhledávání vám ve formátu JSON, abyste mohli používat výsledky hledání prostřednictvím kódu programu mnoha různými způsoby.
 
 ## <a name="prerequisites"></a>Požadavky
-V současné době mohou výstrahy vytvořeny pouze se uložené výsledky hledání v Log Analytics.  Můžete se podívat do [protokolu REST API služby Search](../../log-analytics/log-analytics-queries.md) Další informace.
+V současné době mohou výstrahy vytvořeny pouze se uložené výsledky hledání v Log Analytics.  Můžete se podívat do [protokolu REST API služby Search](../../azure-monitor/log-query/log-query-overview.md) Další informace.
 
 ## <a name="schedules"></a>Plány
 Uložené výsledky hledání můžete mít nejmíň jeden plán. Plán definuje, jak často se hledání spuštění a časový interval nad tím, které je identifikován kritéria.
@@ -510,6 +510,6 @@ Použijte metodu Put se existující ID akce k úpravě akce webhooku pro plán.
 
 
 ## <a name="next-steps"></a>Další postup
-* Použití [rozhraní REST API k provedení prohledávání protokolů](../../log-analytics/log-analytics-queries.md) v Log Analytics.
+* Použití [rozhraní REST API k provedení prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics.
 * Další informace o [upozornění protokolů ve výstrahách azure](../../monitoring-and-diagnostics/monitor-alerts-unified-log.md)
 
