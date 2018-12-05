@@ -1,10 +1,8 @@
 ---
-title: Kurz k MongoDB, Angular a Node pro Azure – Část 3 | Dokumentace Microsoftu
+title: Kurz k MongoDB, Angular a Node pro Azure – část 3
 description: Třetí část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: c71e0d221e4605d95dc754127ec44c62a64472f1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: fc60e66a2e4433ca1dc44470789fe2fc091c46d7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702278"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870210"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – Část 3: Vytvoření uživatelského rozhraní pomocí Angular
 
@@ -494,7 +492,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
      ![Místně spuštěná aplikace Heroes](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste provedli následující:
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f8310885ddf7e2229054f36b8fda92b92c1ab01e
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: c271efceacab7f310b8e08a28d101f653c73a186
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406496"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868544"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Kurz: Monitorování a aktualizace virtuálních počítačů s Linuxem v Azure
 
@@ -208,7 +208,7 @@ Nové nasazení aktualizací pro virtuální počítač naplánujete vybráním 
 * **Klasifikace aktualizací** – Vyberte typy softwaru, které se zahrnou do nasazení aktualizací. Typy klasifikace jsou:
   * Důležité aktualizace a aktualizace zabezpečení
   * Další aktualizace
-* **Aktualizace k vyloučení** – Můžete zadat seznam názvů balíčků, které se mají při nasazování aktualizace přeskočit. Názvy balíčků podporují zástupné znaky (například \*kernal\*).
+* **Aktualizace k vyloučení** – Můžete zadat seznam názvů balíčků, které se mají při nasazování aktualizace přeskočit. Názvy balíčků podporují zástupné znaky (jako jsou například \*jádra\*).
 
   ![Obrazovka nastavení plánu aktualizací](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
 
@@ -310,7 +310,7 @@ Po několika minutách by se nový počítač měl zobrazit v pracovním prostor
 
 ![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nakonfigurovali, zkontrolovali a spravovali aktualizace pro virtuální počítač. Naučili jste se tyto postupy:
 

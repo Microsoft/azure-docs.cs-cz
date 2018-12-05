@@ -1,22 +1,21 @@
 ---
-title: 'Azure Cosmos DB: Úvodní kurz k rozhraní SQL API | Microsoft Docs'
+title: 'Azure Cosmos DB: Úvodní kurz k rozhraní SQL API'
 description: Kurz, v rámci kterého se vytvoří online databáze a konzolová aplikace v jazyce C# pomocí rozhraní SQL API.
 keywords: kurz nosql, online databáze konzolová aplikace jazyka c#
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: 2e7c36d095121dbdeb6f5f0d5c440df3038d2344
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 100524eacb30f77e06204fb3b31e6477dd1320a4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834532"
+ms.locfileid: "52867525"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: Úvodní kurz k rozhraní SQL API
 

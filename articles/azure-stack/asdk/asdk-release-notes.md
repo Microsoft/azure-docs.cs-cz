@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: f853bb32f7c452f1b09ca337db2a866bd0890b82
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: c9ac1c228fd3fd4ba666fd7881e387d79929ed9a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427246"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869955"
 ---
 # <a name="asdk-release-notes"></a>Zpráva k vydání verze ASDK  
 Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit (ASDK). Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -46,32 +46,11 @@ Další informace najdete v tématu [předávání syslog Azure Stack](../azure-
 <!-- TBD - IS ASDK --> 
 - Opravili jsme problém, ve kterém jste vytvořili virtuální počítače na portálu user portal Azure Stack, a na portálu zobrazuje nesprávný počet datových disků, které můžete připojit k DS-series virtuálních počítačů. Virtuálních počítačů řady DS může obsahovat libovolný počet datových disků jako konfiguraci Azure.
 
-- Následující problémy se spravovanými disky jsou opravené v 1809 a také řeší. 1808 [Azure Stack Hotfix 1.1808.7.113](https://support.microsoft.com/help/4471992/): 
-
-   <!--  2966665 – IS, ASDK --> 
-   - Byl opraven problém, v které připojování datových disků SSD na premium velikost spravovaného disku virtuální počítače (DS, DSv2, Fs, Fs_V2) se nezdařilo s chybou: *nepovedlo se aktualizovat disky pro virtuální počítač 'vmname' Chyba: operaci nelze provést, protože požadovaná Typ účtu úložiště 'Premium_LRS' není podporován pro velikost virtuálního počítače "Standard_DS/Ds_V2/FS/Fs_v2)*. 
-   
-   - Vytvoření spravovaného disku virtuálního počítače s použitím **createOption**: **připojit** selže s následující chybou: *dlouho běžící operace se nezdařila se stavem "Se nezdařilo". Další informace: "vnitřní spuštění došlo k chybě."*
-   Kód chyby: InternalExecutionError ErrorMessage: došlo k chybě vnitřního spuštění.
-   
-   Tento problém byl vyřešen.
-
 - <!-- 2702741 -  IS, ASDK --> Oprava potíží, ve které veřejné IP adresy, které se nasadily pomocí dynamického přidělování metoda nebyly zaručit zachování po zastavte a Navraťte vydání. Nyní jsou zachovány.
 
 - <!-- 3078022 - IS, ASDK --> Pokud se virtuální počítač zastavit a uvolnit před. 1808 ho nebylo možné znovu alokovat po 1808 aktualizaci.  Tento problém je vyřešen v 1809. Instance, které byly v tomto stavu a nebylo možné spustit, může být spuštěný v 1809 s touto opravou. Tento problém vyřešit zabrání také nevyskytla.
 
-<!-- 3090289 – IS, ASDK --> 
-- Opravili jsme problém, kde po instalaci aktualizace. 1808, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
-
-   1. Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
-      1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
-      2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
-   2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Chcete-li chybu vyřešit, postupujte takto:
-      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4471992).
-      2. Postupujte podle kroků v [v tomto článku](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
-
 - **Různé opravy** výkonu, stability, zabezpečení a operační systém, který se používá ve službě Azure Stack
-
 
 ### <a name="changes"></a>Změny
 

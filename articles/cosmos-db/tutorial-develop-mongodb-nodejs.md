@@ -1,10 +1,8 @@
 ---
-title: Kurz k MongoDB, Angular a Node pro Azure | Dokumentace Microsoftu
+title: Kurz k MongoDB, Angular a Node pro Azure
 description: V této sérii kurzů založených na videích zjistíte, jak vytvořit aplikaci MongoDB s Angular a Node postavenou na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 1a9d608e7f959b3fc164f87d408ccd268e8d2568
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 300ed850b0abd567fc3a2111a8d41dcb0a9e6d24
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41918318"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866613"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB 
 
@@ -44,7 +42,7 @@ Chcete vytvořit stejnou aplikaci pomocí React? Podívejte se na [sérii videok
 
 Tento kurz vás postupně provede jednotlivými kroky vytvoření aplikace. Pokud si chcete stáhnout dokončený projekt, v [úložišti angular-cosmosdb](https://github.com/Azure-Samples/angular-cosmosdb) na GitHubu můžete získat hotovou aplikaci.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste provedli následující:
 

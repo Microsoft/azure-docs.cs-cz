@@ -2,19 +2,19 @@
 title: Ukázky PowerShellu pro službu Azure Backup
 description: Ukázky PowerShellu pro službu Azure Backup
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: sample
 ms.date: 09/07/2017
-ms.author: markgal
+ms.author: rayne
 ms.custom: mvc
-ms.openlocfilehash: 841e8df146610de636a2f58c02c8ac2633ba2328
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: ccd31f4cda8557a5bbbb954283511991bd0163be
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607477"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878376"
 ---
 # <a name="azure-backup-powershell-samples"></a>Ukázky PowerShellu pro službu Azure Backup
 

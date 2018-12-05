@@ -1,10 +1,8 @@
 ---
-title: Kurz k MongoDB, Angular a Node pro Azure – Část 6 | Dokumentace Microsoftu
+title: Kurz k MongoDB, Angular a Node pro Azure – část 6
 description: Šestá část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 06/17/2018
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 667c1fbce398e06f9f2a6edca21935ae1062a737
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.openlocfilehash: 5188065022ef19a72068aa0bbb36b1c603d830dd
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740566"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869244"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – Část 6: Přidání funkcí Post, Put a Delete do aplikace
 
@@ -189,7 +187,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
     Pokud stránku aktualizujete, na kartě Síť se zobrazí čas potřebný k získání hrdinů. I když jsou tyto časy rychlé, hodně záleží na tom, kde na světě se vaše data nacházejí, a na vaší schopnosti geograficky je replikovat do oblastí blízko vašim uživatelům. Další informace o geografické replikaci najdete v dalším kurzu, který bude vydaný už brzy.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste provedli následující:
 

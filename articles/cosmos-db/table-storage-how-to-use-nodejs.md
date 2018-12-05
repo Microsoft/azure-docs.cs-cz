@@ -1,21 +1,20 @@
 ---
-title: Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js | Microsoft Docs
+title: Jak používat Azure Table storage nebo Azure Cosmos DB Table API z Node.js
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 7ba8671942b0676fb920b051b7d1a0aa75c3eed6
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: e6ebf6c3fc46929666dce8d7722af9dd75d2edd3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284689"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879089"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]

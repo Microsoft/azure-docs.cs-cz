@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/06/2018
-ms.openlocfilehash: 8b0e15ac6cd59a77e283d9256ab5fa4542dfc9a9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.date: 12/04/2018
+ms.openlocfilehash: 3c3127c7fd94ae0f66cd083e8a83dd9119f71dcb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960510"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867932"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: Online migrace MySQL do služby Azure Database for MySQL pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance MySQL do služby [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) s minimálními výpadky. Jinými slovy, můžete dosáhnout migrace s minimálními výpadky aplikace. V tomto kurzu provedete migraci ukázkové databáze **Employees** (Zaměstnanci) z místní instance MySQL verze 5.7 do služby Azure Database for MySQL pomocí aktivity online migrace ve službě Azure Database Migration Service.
@@ -28,6 +28,9 @@ V tomto kurzu se naučíte:
 > * Vytvoření projektu migrace pomocí služby Azure Database Migration Service
 > * Spuštění migrace
 > * Monitorování migrace
+
+> [!NOTE]
+> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance podle cenové úrovně Premium (Preview).
 
 > [!IMPORTANT]
 > Aby migrace proběhla optimálním způsobem, doporučuje Microsoft vytvořit instanci služby Azure Database Migration Service ve stejné oblasti Azure, ve které je cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
@@ -226,7 +229,7 @@ Po dokončení počátečního úplného načtení se databáze označí jako **
 3.  Vyberte **Potvrdit** a pak **Použít**.
 4. Když se stav migrace databází změní na **Dokončeno**, připojte své aplikace k nové cílové službě Azure SQL Database.
  
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Informace o známých problémech a omezeních při provádění online migrací do služby Azure Database for MySQL najdete v článku [Známé problémy s online migracemi do služby Azure Database for MySQL a jejich řešení](known-issues-azure-mysql-online.md).
 - Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
 - Informace o službě Azure Database for MySQL najdete v článku [Co je Azure Database for MySQL?](https://docs.microsoft.com/azure/mysql/overview).

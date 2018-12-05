@@ -1,10 +1,8 @@
 ---
-title: Kurz k MongoDB, Angular a Node pro Azure – Část 2 | Dokumentace Microsoftu
+title: Kurz k MongoDB, Angular a Node pro Azure – část 2
 description: Druhá část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 99fc6c7dc43f66d92b17f25ad0fba52ce8f34413
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: 8e2bce1943096613dab3975863f787fcc904f827
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41920705"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868119"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – Část 2: Vytvoření aplikace Node.js Express pomocí Angular CLI 
 
@@ -168,7 +166,7 @@ V tomto kurzu budete také potřebovat:
     ![Postman se zobrazeným požadavkem a odpovědí](./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste provedli následující:
 
