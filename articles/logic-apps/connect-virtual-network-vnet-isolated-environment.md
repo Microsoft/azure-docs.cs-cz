@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 12/03/2018
-ms.openlocfilehash: 8ad4c356c5826532b94721bc4d9071179e8bd93a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 61255add37d4bc4224278e089879823b1a2f9981
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846680"
+ms.locfileid: "52863546"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps prostřednictvím integrace služby prostředí (ISE)
 
@@ -65,7 +65,7 @@ Při vytváření prostředí integrační služby (ISE), vyberte virtuální s�
 
    1. V části **Role**vyberte **Přispěvatel sítě**. 
    
-   1. V části **přiřadit přístup k**vyberte **uživatele Azure AD, skupinu nebo aplikaci**.
+   1. V části **přiřadit přístup k**vyberte **uživatele, skupinu nebo instanční objekt služby Azure AD**.
 
    1. V části **vyberte**, zadejte **Azure Logic Apps**. 
 

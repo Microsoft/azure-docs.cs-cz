@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 876cb037aab718a91f469f8862c501bb9a29e4d6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8f2bf9707d28744707c39a507108120e948dde7f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846418"
+ms.locfileid: "52866674"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenční příručka k části vizualizace návrháře zobrazení v Log Analytics
 Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat z pracovního prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
@@ -324,7 +324,7 @@ Oddělovač názvu a hodnoty je oddělovač jedním znakem, který má použít 
 Zvažte například vlastnost s názvem *umístění* , které například obsahovat hodnoty *Redmond budování 41* a *Bellevue budování 12*. Oddělovač názvu a hodnoty můžete zadat pomlčku (-) a *město budování* pro název. Tento přístup analyzuje jednotlivé hodnoty do dvě vlastnosti volá *Město* a *vytváření*.
 
 ### <a name="click-through-navigation"></a>Navigace pomocí kliknutí
-Navigace pomocí kliknutí definuje, jaká akce se provedou, když kliknete na záhlaví a seznam položek v zobrazení.  Tím otevřete dotaz v buď [portál pro prohledávání protokolů](../../log-analytics/log-analytics-log-search-portals.md) nebo spuštění jiného zobrazení.
+Navigace pomocí kliknutí definuje, jaká akce se provedou, když kliknete na záhlaví a seznam položek v zobrazení.  Tím otevřete dotaz v buď [portál pro prohledávání protokolů](../../azure-monitor/log-query/portals.md) nebo spuštění jiného zobrazení.
 
 Následující tabulka popisuje nastavení navigace pomocí kliknutí.
 

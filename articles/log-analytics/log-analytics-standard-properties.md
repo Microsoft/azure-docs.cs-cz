@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7fe018a1584561ae12742da6e75f7d265ae82656
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e88ab32d648321e30c11b791ad186180c2e3107c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833546"
+ms.locfileid: "52870516"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Standardní vlastnosti v záznamech Log Analytics
 Data v [Log Analytics](../log-analytics/../azure-monitor/log-query/log-query-overview.md) se ukládá jako sady záznamů, každý s konkrétním datovým typem, který má jedinečnou sadu vlastností. Mnoho datových typů, bude mít standardní vlastnosti, které jsou společné pro více typů. Tento článek popisuje tyto vlastnosti a poskytuje příklady, jak je použít v dotazech.
@@ -89,5 +89,5 @@ AzureActivity
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [Log Analytics data se ukládají](../log-analytics/../azure-monitor/log-query/log-query-overview.md).
-- Získejte lekci na [zápis dotazů v Log Analytics](../log-analytics/query-language/get-started-queries.md).
-- Získejte lekci na [spojování tabulek v dotazy Log Analytics](../log-analytics/query-language/joins.md).
+- Získejte lekci na [zápis dotazů v Log Analytics](../azure-monitor/log-query/get-started-queries.md).
+- Získejte lekci na [spojování tabulek v dotazy Log Analytics](../azure-monitor/log-query/joins.md).

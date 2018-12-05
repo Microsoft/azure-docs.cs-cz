@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: a7d498349342e34cb56f031bfe1440e01e79173b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4e5befa1598edb50de0ecd31ba6f30bf00196031
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841842"
+ms.locfileid: "52864486"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -65,8 +65,7 @@ Tato tabulka shrnuje podporu pro účet úložiště mezipaměti, který se pou�
 **Nastavení** | **Podrobnosti**
 --- | ---
 Obecné účely V2 účty úložiště (horká a studená vrstva přístupu) | Nepodporuje se. | Omezení existuje pro úložiště mezipaměti, protože náklady na transakce pro V2 jsou výrazně vyšší než účtů storage V1.
-Pro virtuální sítě brány firewall služby Azure Storage  | Ne | Umožňuje přístup ke konkrétním virtuálním sítím Azure v používá k ukládání replikovaných dat účtů úložiště mezipaměti není podporována.
-
+Pro virtuální sítě brány firewall služby Azure Storage  | Podporováno | Pokud používáte účet úložiště mezipaměti povolena brána firewall nebo cílový účet úložiště, zajistěte, aby ["Povolit důvěryhodné služby Microsoftu"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 
 ## <a name="replicated-machine-operating-systems"></a>Operační systémy replikované počítače
@@ -145,7 +144,7 @@ SUSE Linux Enterprise Server 12 (SP3 SP1, SP2) | 9.17 | SP1 3.12.49-11-default k
 --- | --- | ---
 Velikost | Libovolná velikost virtuálních počítačů Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/windows/sizes.md).
 Skupiny dostupnosti | Podporováno | Pokud povolíte replikaci pro virtuální počítač Azure s výchozími možnostmi, skupinu dostupnosti se vytvoří automaticky v závislosti na nastavení zdrojové oblasti. Tato nastavení můžete upravit.
-Zóny dostupnosti | Nepodporuje se | Se aktuálně nelze replikovat virtuální počítače nasazené v zónách dostupnosti.
+Zóny dostupnosti | Podporováno |  
 Program hybrid Use Benefit (HUB) | Podporováno | Pokud zdrojový virtuální počítač má licenci centra povolené, testovací převzetí služeb při selhání nebo převzetí služeb při selhání virtuálního počítače také používá licenci ROZBOČOVAČE.
 Škálovací sady virtuálních počítačů | Nepodporuje se |
 Publikované Image z Galerie Azure – Microsoft | Podporováno | Podporováno, pokud virtuální počítač běží na podporovaném operačním systému.
@@ -194,7 +193,7 @@ GRS | Podporováno |
 RA-GRS | Podporováno |
 ZRS | Nepodporuje se |  
 Úložiště Cool a Hot | Nepodporuje se | Disky virtuálního počítače nejsou podporovány na studené a horké úložiště
-Pro virtuální sítě brány firewall služby Azure Storage  | Ano | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, ujistěte se, že jsou povolena důvěryhodným službám Microsoftu přístup k účtu úložiště.
+Pro virtuální sítě brány firewall služby Azure Storage  | Podporováno | Pokud pro přístup k virtuální síti se omezení pro účty úložiště, zajistěte, aby ["Povolit důvěryhodné služby Microsoftu"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 Účty úložiště pro obecné účely V2 (i horká a studená úroveň) | Ne | Zvýšit náklady na transakce podstatně porovnání pro obecné účely V1 účty úložiště
 
 >[!IMPORTANT]

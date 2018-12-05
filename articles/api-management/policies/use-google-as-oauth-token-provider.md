@@ -1,6 +1,6 @@
 ---
-title: Zásady správy Azure API ukázkový – autorizace přístupu pomocí token Google OAuth | Microsoft Docs
-description: Azure API management zásad ukázka - ukazuje, jak autorizace přístupu k koncové body pomocí Google jako zprostředkovatel tokenu OAuth.
+title: Zásady služby Azure API management ukázkový – autorizace přístupu pomocí tokenu služby Google OAuth | Dokumentace Microsoftu
+description: Azure API management zásady ukázkový – ukazuje, jak k autorizaci přístupu pro vaše koncové body pomocí Google jako zprostředkovatel tokenu OAuth.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 22aed976ef69288aa0e49215a739174786843527
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 430f9e57df163ad345f0740e5bd5beca6e892a4c
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284582"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869294"
 ---
-# <a name="authorize-access-using-google-oauth-token"></a>Autorizace přístupu pomocí token Google OAuth
+# <a name="authorize-access-using-google-oauth-token"></a>Povolit přístup pomocí tokenu služby Google OAuth
 
-Tento článek ukazuje Azure API management zásad ukázka, které ukazuje, jak autorizace přístupu k koncové body pomocí Google jako zprostředkovatel tokenu OAuth. Chcete-li nastavit nebo upravit kód zásad, postupujte podle kroků popsaných v [sadu nebo upravit zásadu](../set-edit-policies.md). Další příklady najdete v sekci [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak k autorizaci přístupu pro vaše koncové body pomocí Google jako zprostředkovatel tokenu OAuth. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
@@ -32,7 +32,7 @@ Vložte kód do **příchozí** bloku.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o zásadách APIM:
+Další informace týkající se služby APIM zásad:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

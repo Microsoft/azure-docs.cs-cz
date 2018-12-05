@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6dc003473ed228fa8e10bd6a10d5b4b9a3d0ac49
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: ef0ecc7a9e89168ed57c75ab24c3233692d77151
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621356"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863563"
 documentType: LandingData
 title: Dokumentace ke službě Azure Machine Learning
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/31/2018
+  ms.date: 12/04/2018
   ms.author: jmartens
 abstract:
   description: Zjistěte, jak do aplikací a webů zapracovat inteligentní algoritmy s využitím těchto produktů Azure Machine Learning.  Kurzy, rychlá zprovoznění, reference k rozhraní API a příklady vám ukážou, jak na to.
@@ -32,52 +32,41 @@ sections:
       html: <p>Další informace o tom, jak tato funkce poskytuje odborníkům na data možnost vyvíjet a spravovat řešení AI<br/> pomocí nástrojů CLI a Pythonu a knihoven s využitím široké škály výpočetních služeb a dat Azure. Další informace...</p>
       image:
         src: /azure/machine-learning/media/index/i_machine-learning.svg
-      title: Služba Azure Machine Learning (Preview)
-    - href: /azure/machine-learning/studio/
-      html: <p>Naučte se používat tento nástroj podporující přetahování a spolupráci, ve kterém je možné vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Další informace... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-      image:
-        src: /azure/machine-learning/media/index/machine-learning-studio.svg
-      title: Azure Machine Learning Studio
-- title: Rychlá zprovoznění a kurzy
+      title: Služba Azure Machine Learning
+- title: Rychlé starty a kurzy
   items:
   - type: paragraph
-    text: 'Zjistěte, jak rychle nastavit a používat službu Azure Machine Learning (Preview) a Studio:'
+    text: 'Zjistěte, jak rychle nastavit a používat službu Azure Machine Learning:'
   - type: table
     style: dataMatrix
     columns:
     - image:
         src: media/index/i_machine-learning.svg
-    - image:
-        src: media/index/machine-learning-studio.svg
     rows:
-    - title: Začínáme se službou
+    - title: Začínáme s touto službou na webu Azure Portal
       values:
       - href: /azure/machine-learning/service/quickstart-get-started
-      - href: /azure/machine-learning/studio/create-workspace
+    - title: Začínáme s touto službou v Pythonu
+      values:
+      - href: /azure/machine-learning/service/quickstart-create-workspace-with-python
     - title: Příprava dat pro modelování
       values:
-      - href: /azure/machine-learning/service/how-to-data-prep
-      - href: /azure/machine-learning/studio/walkthrough-2-upload-data
+      - href: /azure/machine-learning/service/tutorial-data-prep
     - title: Sestavení vlastního modelu strojového učení
       values:
       - href: /azure/machine-learning/service/tutorial-train-models-with-aml
-      - href: /azure/machine-learning/studio/walkthrough-3-create-new-experiment
     - title: Automatické generování a ladění algoritmů
       values:
       - href: /azure/machine-learning/service/tutorial-auto-train-models
-      - href: 
     - title: Nasazení modelu jako webové služby
       values:
       - href: /azure/machine-learning/service/tutorial-deploy-models-with-aml
-      - href: /azure/machine-learning/studio/walkthrough-5-publish-web-service
     - title: Využití modelů strojového učení
       values:
       - href: /azure/machine-learning/service/how-to-consume-web-service
-      - href: /azure/machine-learning/studio/walkthrough-6-access-web-service
-    - title: Sestavení, optimalizace a správa kanálů ML
+    - title: Sestavení a správa kanálů strojového učení
       values:
-      - href: /azure/machine-learning/service/concept-ml-pipelines
-      - href: 
+      - href: /azure/machine-learning/service/how-to-create-your-first-pipeline
 - title: Další technologie Microsoftu pro strojové učení
   items:
   - type: list
@@ -90,11 +79,11 @@ sections:
       image:
         src: /azure/machine-learning/media/index/cognitive-services.png
       title: Cognitive Services
-    - href: /azure/batch-ai/
-      html: <p>Spravovaná služba, která pomáhá souběžně experimentovat s vašimi modely AI pomocí libovolné architektury a potom je ve velkém měřítku trénovat napříč grafickými procesory v clusteru</p>
+    - href: /azure/machine-learning/studio/
+      html: <p>Naučte se používat tento nástroj podporující přetahování a spolupráci, ve kterém je možné vytvářet, testovat a nasazovat řešení prediktivní analýzy dat. Další informace... &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
       image:
-        src: /azure/machine-learning/media/index/batch.png
-      title: Batch AI Training
+        src: /azure/machine-learning/media/index/machine-learning-studio.svg
+      title: Azure Machine Learning Studio
     - href: /sql/advanced-analytics/r/r-services
       html: <p>Analýzy v databázích s podporou pro R i Python.</p>
       image:

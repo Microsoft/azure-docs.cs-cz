@@ -2,18 +2,18 @@
 title: Pomocí moderního úložiště záloh Azure Backup serveru
 description: Informace o nových funkcích v Azure Backup serveru. Tento článek popisuje, jak upgradovat Backup Server instalaci.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: 74940c29c4c6c623da569c70a3c0f1ed7194e185
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: fa19cdbb6c51248b5361ba747829c4f9e617ce6a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727422"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865382"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Přidání úložiště do Azure Backup Serveru
 

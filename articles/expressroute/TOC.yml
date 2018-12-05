@@ -19,7 +19,7 @@ items:
   items:
   - name: Modely připojení
     href: expressroute-connectivity-models.md
-  - name: Okruhy a domény směrování
+  - name: Okruhy a peering
     href: expressroute-circuit-peerings.md
   - name: Umístění a partneři
     href: expressroute-locations.md
@@ -225,9 +225,9 @@ items:
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/
     - name: Nastavení veřejného partnerského uzlu pro váš okruh
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/
-ms.openlocfilehash: e5a0212c70e2a1c8096ec473deb7704fc2e0bdb8
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: a078613e1aa94ea5410e6d3bc69e46deb67eb27d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706496"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879217"

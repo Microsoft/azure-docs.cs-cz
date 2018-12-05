@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 4845fdbbfa4dfabf53b1f7e747668cf7f5108eb7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4f4c52bd217bf67206fe1208c1d5402216bd8178
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232704"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879447"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migrace Contoso: Změna hostitele aplikace v místním systému Linux do virtuálních počítačů Azure
 
@@ -145,7 +145,7 @@ Contoso potřebuje několika komponent Azure Site Recovery:
     - Účet úložiště musí být ve stejné oblasti jako trezor služby Recovery Services.
     - Účet general purpose, používají úložiště úrovně standard a replikací LRS.
 
-    ![Site Recovery úložiště](./media/contoso-migration-rehost-linux-vm/asr-storage.png)
+      ![Site Recovery úložiště](./media/contoso-migration-rehost-linux-vm/asr-storage.png)
 
 2. Pomocí účtu sítě a úložiště na místě, vytvořte trezor (ContosoMigrationVault) a jeho umístění **ContosoFailoverRG** skupinu prostředků, v primární oblasti USA – východ 2.
 

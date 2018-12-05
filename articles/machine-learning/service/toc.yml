@@ -1,5 +1,5 @@
 items:
-- name: Dokumentace ke službě Azure Machine Learning (Preview)
+- name: Dokumentace ke službě Azure Machine Learning
   href: index.yml
 - name: Přehled
   items:
@@ -25,18 +25,22 @@ items:
     href: quickstart-create-workspace-with-python.md
 - name: Kurzy
   items:
-  - name: 'Trénování modelů: část 1'
-    href: tutorial-train-models-with-aml.md
-  - name: 'Nasazení modelů: část 2'
-    href: tutorial-deploy-models-with-aml.md
-  - name: Trénování automatizovaných modelů ML
-    displayName: automl
-    href: tutorial-auto-train-models.md
+  - name: Klasifikace obrázků (data MNIST)
+    items:
+    - name: 1. Učení modelu
+      href: tutorial-train-models-with-aml.md
+    - name: 2. Nasazení modelu
+      href: tutorial-deploy-models-with-aml.md
+  - name: Regrese (data newyorské taxislužby)
+    items:
+    - name: 1. Příprava dat pro modelování
+      href: tutorial-data-prep.md
+    - name: 2. Automatické trénování modelu ML
+      displayName: automl, automated, auto ml,
+      href: tutorial-auto-train-models.md
 - name: Ukázky
-  items:
-  - name: Poznámkové bloky Jupyter (GitHub)
-    displayName: example, examples
-    href: https://aka.ms/aml-notebooks
+  displayName: example, examples, jupyter, azure notebooks, python, notebook, github
+  href: samples-notebooks.md
 - name: Koncepty
   items:
   - name: Správa modelů
@@ -52,11 +56,11 @@ items:
     href: how-to-manage-workspace.md
   - name: Nastavení vývojového prostředí 
     items:
-    - name: Konfigurace prostředí
-      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm
+    - name: Konfigurace vývojového prostředí
+      displayName: local, remote, azure notebooks, notebook, jupyter, dsvm, Databricks, ADB
       href: how-to-configure-environment.md
-    - name: Nástroje VS Code pro AI
-      displayName: Visual Studio Code, vscode
+    - name: Rozšíření editoru Visual Studio Code
+      displayName: Visual Studio Code, vscode, tools, ai, vs
       items:
       - name: Začínáme
         href: how-to-vscode-tools.md
@@ -75,7 +79,7 @@ items:
   - name: Trénování modelů
     items:
     - name: Nastavení prostředí trénování
-      displayName: compute target, dsvm, Data Science Virtual Machine, batchai, batch ai, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
+      displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
     - name: Přístup k datům při trénování
       href: how-to-access-data.md
@@ -127,12 +131,16 @@ items:
     - name: Využívání v reálném čase
       displayName: create client, client, consume
       href: how-to-consume-web-service.md
+    - name: Spuštění dávkových predikcí
+      href: how-to-run-batch-predictions.md
   - name: Monitorování webových služeb
     items:
     - name: Shromažďování a vyhodnocování dat modelů
       href: how-to-enable-data-collection.md
     - name: Monitorování pomocí Application Insights
       href: how-to-enable-app-insights.md
+  - name: Vytvoření prvního kanálu
+    href: how-to-create-your-first-pipeline.md
   - name: Správa kvót prostředků
     displayName: limits
     href: how-to-manage-quotas.md
@@ -368,9 +376,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Starší problémy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 308c767eb4a4bd332037093e23a1cb53a9fd1dc7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 67bf0dfb2939cfd561f4558f9003c36883dcef93
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845055"
+ms.locfileid: "52864821"

@@ -1,6 +1,6 @@
 ---
-title: Azure zásady správy rozhraní API-ukázka - obsah odpovědi filtr | Microsoft Docs
-description: Azure API management zásad ukázka - ukazuje, jak filtrovat elementy data z datové části odpovědi na základě produktu přidružený k požadavku.
+title: Rozhraní API správy zásad ukázkový Azure – obsah odpovědi filtr | Dokumentace Microsoftu
+description: Azure API management zásady ukázkový – ukazuje, jak filtrovat datové prvky z datové části odpovědi na základě produktu přidružený k požadavku.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: af362ac51fb8b7d1689451d49f2ed831c5f9ee2e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 26829dfc04acdac2a25fe0d4fdc3e95e4d219057
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284423"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869173"
 ---
-# <a name="filter-response-content"></a>Filtrování obsahu odpovědi
+# <a name="filter-response-content"></a>Filtrovat obsah odpovědi
 
-Tento článek ukazuje rozhraní API služby Azure správy zásad vzorku, který ukazuje, jak filtrovat elementy data z datové části odpovědi na základě produktu přidružený k požadavku. Chcete-li nastavit nebo upravit kód zásad, postupujte podle kroků popsaných v [sadu nebo upravit zásadu](../set-edit-policies.md). Další příklady najdete v sekci [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak filtrovat datové prvky z datové části odpovědi na základě produktu přidružený k požadavku. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
@@ -32,7 +32,7 @@ Vložte kód do **odchozí** bloku.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o zásadách APIM:
+Další informace týkající se služby APIM zásad:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

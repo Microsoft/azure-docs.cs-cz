@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: b6e59834d9a20a26be7c41d964556a45b0d2aab6
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: a7b24ff3f51cdd66391f8dd7c73598530f767420
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642827"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865586"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojení ITSM produktů a služeb s IT Service Management Connector
-Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produkt nebo službu a na IT Service Management Connector (ITSMC) ve službě Log Analytics a centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](../../log-analytics/log-analytics-itsmc-overview.md).
+Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produkt nebo službu a na IT Service Management Connector (ITSMC) ve službě Log Analytics a centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](../../azure-monitor/platform/itsmc-overview.md).
 
 Jsou podporovány následující ITSM produktů a služeb. Vyberte produkt, chcete-li zobrazit podrobné informace o tom, jak se připojit k ITSMC produktu.
 
@@ -43,7 +43,7 @@ Následující části obsahují podrobnosti o tom, jak připojit svůj produkt 
 
 Ujistěte se, že jsou splněné následující požadavky:
 
-- ITSMC nainstalované. Další informace: [přidávání řešení IT Service Management Connector](../../log-analytics/log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC nainstalované. Další informace: [přidávání řešení IT Service Management Connector](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - Nasazení a konfiguraci aplikace webového portálu Service Manager (webová aplikace). Informace o webové aplikace je [tady](#create-and-deploy-service-manager-web-app-service).
 - Hybridní připojení, vytvoření a konfiguraci. Další informace: [konfigurace hybridní připojení](#configure-the-hybrid-connection).
 - Podporované verze portálu Service Manager: 2012 R2 nebo 2016.
@@ -72,7 +72,7 @@ Pomocí následujícího postupu pro připojení k ITSMC instanci aplikace Syste
 | **Název připojení**   | Zadejte název, který chcete připojit pomocí ITSMC instance System Center Service Manager.  Tento název použijete později při konfigurování pracovních položek v tomto případě / zobrazit podrobné log analytics. |
 | **Typ partnera**   | Vyberte **System Center Service Manager**. |
 | **Adresa URL serveru**   | Zadejte adresu URL aplikace webového portálu Service Manager. Další informace o aplikaci webového portálu Service Manager je [tady](#create-and-deploy-service-manager-web-app-service).
-| **ID klienta**   | Zadejte ID klienta, který jste vygenerovali (pomocí automatického skriptu) pro ověřování webové aplikace. Další informace o automatizovaný skript je [tady.](../../log-analytics/log-analytics-itsmc-service-manager-script.md)|
+| **ID klienta**   | Zadejte ID klienta, který jste vygenerovali (pomocí automatického skriptu) pro ověřování webové aplikace. Další informace o automatizovaný skript je [tady.](../../azure-monitor/platform/itsmc-service-manager-script.md)|
 | **Tajný klíč klienta**   | Zadejte tajný kód klienta vygenerovaný pro toto ID.   |
 | **Rozsah synchronizace dat**   | Výběr pracovních položek portálu Service Manager, které chcete synchronizovat prostřednictvím ITSMC.  Tyto pracovní položky jsou importovány do Log Analytics. **Možnosti:** incidenty, žádosti o změnu.|
 | **Synchronizace dat** | Zadejte počet uplynulých dní, které chcete data z. **Maximální limit**: 120 dnů. |
@@ -87,7 +87,7 @@ Pomocí následujícího postupu pro připojení k ITSMC instanci aplikace Syste
 - Můžete vytvořit incidenty, z upozornění Log Analytics nebo záznamy protokolu nebo upozornění v Azure v této instanci portálu Service Manager.
 
 
-Další informace: [pracovní položky ITSM vytvořit z výstrah Azure](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Další informace: [pracovní položky ITSM vytvořit z výstrah Azure](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Vytvoření a nasazení portálu Service Manager web app service
 
@@ -95,11 +95,11 @@ Pro připojení k portálu Service Manager v místním pomocí ITSMC v Azure, sp
 
 Pokud chcete nastavit ITSM webovou aplikaci pro váš portál Service Manager, postupujte takto:
 
-- **Nasazení webové aplikace** – nasazení webové aplikace, nastavte vlastnosti a ověření ve službě Azure AD. Můžete nasadit webové aplikace pomocí [automatizovaných skriptů](../../log-analytics/log-analytics-itsmc-service-manager-script.md) , Microsoft vám poskytuje.
+- **Nasazení webové aplikace** – nasazení webové aplikace, nastavte vlastnosti a ověření ve službě Azure AD. Můžete nasadit webové aplikace pomocí [automatizovaných skriptů](../../azure-monitor/platform/itsmc-service-manager-script.md) , Microsoft vám poskytuje.
 - **Konfigurace hybridních připojení** - [konfigurace tohoto připojení](#configure-the-hybrid-connection), je nutné ručně.
 
 #### <a name="deploy-the-web-app"></a>Nasazení webové aplikace
-Použít automatizované [skript](../../log-analytics/log-analytics-itsmc-service-manager-script.md) k nasazení webové aplikace, nastavte vlastnosti a ověření ve službě Azure AD.
+Použít automatizované [skript](../../azure-monitor/platform/itsmc-service-manager-script.md) k nasazení webové aplikace, nastavte vlastnosti a ověření ve službě Azure AD.
 
 Spusťte skript tím, že poskytuje následující požadované podrobnosti:
 
@@ -186,7 +186,7 @@ Následující části obsahují podrobnosti o tom, jak připojit ServiceNow pro
 
 ### <a name="prerequisites"></a>Požadavky
 Ujistěte se, že jsou splněné následující požadavky:
-- ITSMC nainstalované. Další informace: [přidávání řešení IT Service Management Connector](../../log-analytics/log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC nainstalované. Další informace: [přidávání řešení IT Service Management Connector](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - ServiceNow podporované verze: Kingston, Jakarta, Istanbul, Helsinky, Geneva.
 
 **Správci ServiceNow musíte provést následující v jejich instance ServiceNow**:
@@ -240,7 +240,7 @@ Pomocí následujícího postupu vytvořte připojení ServiceNow:
 
 - Můžete vytvořit incidenty, z upozornění Log Analytics nebo záznamy protokolu nebo upozornění v Azure v této instanci ServiceNow.
 
-Další informace: [pracovní položky ITSM vytvořit z výstrah Azure](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Další informace: [pracovní položky ITSM vytvořit z výstrah Azure](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>Vytvoření role uživatele integrace v aplikaci ServiceNow
 
@@ -292,7 +292,7 @@ Následující části obsahují podrobnosti o tom, jak připojit svůj produkt 
 Ujistěte se, že jsou splněné následující požadavky:
 
 
-- ITSMC nainstalované. Další informace: [přidávání řešení IT Service Management Connector](../../log-analytics/log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC nainstalované. Další informace: [přidávání řešení IT Service Management Connector](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - S Azure AD – by měly být zaregistrovány aplikace provance a ID klienta je k dispozici. Podrobné informace najdete v tématu [ke konfiguraci ověřování služby active directory](../../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
 
 - Role uživatele: správce.
@@ -334,7 +334,7 @@ Pomocí následujícího postupu vytvořte Provance připojení:
 
 - Můžete vytvořit incidenty z upozornění Log Analytics nebo záznamy protokolu nebo v tomto případě Provance upozornění v Azure.
 
-Další informace: [pracovní položky ITSM vytvořit z výstrah Azure](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Další informace: [pracovní položky ITSM vytvořit z výstrah Azure](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>Připojit Cherwell IT Service Management Connector v Azure
 
@@ -344,7 +344,7 @@ Následující části obsahují podrobnosti o tom, jak připojit svůj produkt 
 
 Ujistěte se, že jsou splněné následující požadavky:
 
-- ITSMC nainstalované. Další informace: [přidávání řešení IT Service Management Connector](../../log-analytics/log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
+- ITSMC nainstalované. Další informace: [přidávání řešení IT Service Management Connector](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution).
 - Vygeneruje ID klienta. Další informace: [vygenerovat ID klienta pro Cherwell](#generate-client-id-for-cherwell).
 - Role uživatele: správce.
 
@@ -386,7 +386,7 @@ Pomocí následujícího postupu vytvořte Provance připojení:
 
 - Můžete vytvořit incidenty, z upozornění Log Analytics nebo záznamy protokolu nebo upozornění v Azure v tomto případě Cherwell.
 
-Další informace: [pracovní položky ITSM vytvořit z výstrah Azure](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Další informace: [pracovní položky ITSM vytvořit z výstrah Azure](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="generate-client-id-for-cherwell"></a>Vygenerovat ID klienta pro Cherwell
 
@@ -400,4 +400,4 @@ Generovat klíč/ID klienta pro Cherwell, postupujte takto:
 
 
 ## <a name="next-steps"></a>Další postup
- - [Vytvoření pracovní položky ITSM z výstrah Azure](../../log-analytics/log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+ - [Vytvoření pracovní položky ITSM z výstrah Azure](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)

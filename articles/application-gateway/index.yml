@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: e2419cd46ae9f524c767a722828eb65b2b09b208
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869717"
 documentType: LandingData
 title: Dokumentace ke službě Application Gateway
 metadata:
@@ -11,12 +17,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/01/2018
   ms.author: davidmu
-  ms.openlocfilehash: b49cebd1a9d6554d17a9237ff33c4fcbe0d9f4f7
-  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/28/2018
-  ms.locfileid: "32160252"
 abstract:
   description: Naučte se nasadit kontroler doručování aplikací (ADC) Application Gateway jako službu. Kurzy, reference k rozhraním API a další dokumentace obsahují informace o tom, jak nastavit směrování na úrovni aplikace a vyrovnávání zatížení, což vám umožňuje vytvořit škálovatelný a vysoce dostupný webový front-end.
 sections:
@@ -71,6 +71,6 @@ sections:
     - title: Příkazový řádek
       html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
     - title: Jazyky
-      html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/ApplicationGateways">Node.js</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations#azure.mgmt.network.operations.ApplicationGatewaysOperations">Python</a></p>
+      html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations#azure.mgmt.network.operations.ApplicationGatewaysOperations">Python</a></p>
     - title: REST
       html: <p><a href="https://msdn.microsoft.com/library/mt684941">Referenční informace k rozhraní REST API služby Compute</a></p>

@@ -1,6 +1,6 @@
 ---
-title: Azure API management zásad ukázka - nastavení doby trvání mezipaměti odpověď | Microsoft Docs
-description: Azure API management zásad ukázka - ukazuje, jak nastavit dobu trvání mezipaměti odpovědi v maxAge hodnotu hlavičky Cache-Control poslal back-end...
+title: Azure API management zásady ukázkový – nastavte dobu odezvy mezipaměti | Dokumentace Microsoftu
+description: Azure API management zásady ukázkový – ukazuje, jak nastavit dobu odezvy mezipaměti pomocí maxAge hodnota v hlavičce Cache-Control odesílaných back-endu...
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 8f7126f5cd6bf6f142c603e4b1baee4a6c20dea2
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 042fab72da2d4b890314b6ee9c7237241b492fba
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287547"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869217"
 ---
-# <a name="set-response-cache-duration"></a>Nastavení doby trvání mezipaměti odpovědi
+# <a name="set-response-cache-duration"></a>Nastavení mezipaměti Doba trvání odpovědi
 
-Tento článek ukazuje rozhraní API služby Azure správy zásad vzorku, který ukazuje, jak nastavit dobu trvání mezipaměti odpovědi v maxAge hodnotu hlavičky Cache-Control poslal back-end. Chcete-li nastavit nebo upravit kód zásad, postupujte podle kroků popsaných v [sadu nebo upravit zásadu](../set-edit-policies.md). Další příklady najdete v sekci [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak nastavit dobu odezvy mezipaměti pomocí maxAge hodnota v hlavičce Cache-Control odesílaných back-endu. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
@@ -32,7 +32,7 @@ Vložte kód do **příchozí** bloku.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o zásadách APIM:
+Další informace týkající se služby APIM zásad:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

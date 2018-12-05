@@ -122,7 +122,7 @@ items:
   - name: Úrovně přístupu
     href: storage-blob-storage-tiers.md
   - name: Správa životního cyklu Azure Blob Storage
-    href: ../common/storage-lifecycle-managment-concepts.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    href: ../common/storage-lifecycle-management-concepts.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: Reakce na události
     href: storage-blob-event-overview.md
   - name: Škálovatelnost a cíle výkonnosti
@@ -467,9 +467,9 @@ items:
       href: https://github.com/Azure/azure-storage-ruby
     - name: iOS
       href: https://github.com/Azure/azure-storage-ios
-ms.openlocfilehash: d0273edd4660fb0b646844022205243a0af3b6b9
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 9728d6b7a7dc0d198291098d81b84026b0b6aed8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712071"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864292"

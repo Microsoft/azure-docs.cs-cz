@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: c86609ae5b993328beced468b74c7f2a1b65def4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 4fba15a98757e06aa167fbc18a9606fd042a08dc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283610"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874528"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Úvod do služby Azure Data Lake Storage Gen2 ve verzi Preview
 
@@ -47,7 +47,7 @@ V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a 
 
 - **Nadmnožina POSIX oprávnění**: model zabezpečení pro Data Lake Gen2 podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován prostřednictvím správce nástroje nebo architektury, jako je Hive a Spark.
 
-- **Nákladově efektivní**: nabízí kapacitu úložiště s nízkými náklady a transakce s Data Lake Storage Gen2. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](../common/storage-lifecycle-managment-concepts.md).
+- **Nákladově efektivní**: nabízí kapacitu úložiště s nízkými náklady a transakce s Data Lake Storage Gen2. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](../common/storage-lifecycle-management-concepts.md).
 
 - **Funguje s Blob storage nástroje, platformy a aplikace**: Data Lake Storage Gen2 nadále využívat širokou škálu nástroje, platformy a aplikace, které existují ještě dnes pro úložiště objektů Blob.
 

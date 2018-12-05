@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: f3e40f9d10ce3d0515d466e9bbdde324458e624d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e94b9e6d39a8a2694658a4231c54a027523af10c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834107"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889238"
 ---
 # <a name="use-sql-database-managed-instance-with-virtual-networks-and-near-100-compatibility"></a>U služeb virtual networks a téměř 100 % kompatibilitou pomocí SQL Database Managed Instance
 
@@ -214,7 +214,7 @@ Managed Instance výhody z se vždycky nahoru – k datu v cloudu, což znamená
 
 ### <a name="managed-instance-administration-features"></a>Funkce správy spravované Instance
 
-Managed Instance povolení správce systému a zaměřte se na to, co je nejdůležitější pro firmy. Řada aktivit Správce/DBA systému nejsou vyžadovány, nebo se dají snadno. Například operačního systému nebo RDBMS instalace a používání dílčích oprav, dynamické instanci změny velikosti a konfiguraci, zálohování, [replikace databáze](replication-with-sql-database-managed-instance.md) (včetně systémové databáze), konfigurace vysoké dostupnosti a konfigurace stavu a [performance monitoring pro aplikace](../log-analytics/log-analytics-azure-sql.md) datové proudy.
+Managed Instance povolení správce systému a zaměřte se na to, co je nejdůležitější pro firmy. Řada aktivit Správce/DBA systému nejsou vyžadovány, nebo se dají snadno. Například operačního systému nebo RDBMS instalace a používání dílčích oprav, dynamické instanci změny velikosti a konfiguraci, zálohování, [replikace databáze](replication-with-sql-database-managed-instance.md) (včetně systémové databáze), konfigurace vysoké dostupnosti a konfigurace stavu a [performance monitoring pro aplikace](../azure-monitor/insights/azure-sql.md) datové proudy.
 
 > [!IMPORTANT]
 > Seznam podporovaných, částečně podporované a nepodporované funkce najdete v tématu [funkcí služby SQL Database](sql-database-features.md). Seznam rozdílů jazyka T-SQL ve spravovaných instancí oproti serveru SQL Server najdete v tématu [Managed Instance T-SQL rozdíl oproti serveru SQL Server](sql-database-managed-instance-transact-sql-information.md)
@@ -228,7 +228,7 @@ V následující tabulce jsou uvedeny několik vlastností, které jsou přístu
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 2018-03-07 12.0.2000.8 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejné jako u databáze SQL.|
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje Managed Instance.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`. Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: Moje managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: Moje managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Další postup
 
@@ -237,5 +237,5 @@ V následující tabulce jsou uvedeny několik vlastností, které jsou přístu
 - Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace virtuální sítě pro Managed Instance](sql-database-managed-instance-vnet-configuration.md).
 - Rychlý start, která vytváří Managed Instance a obnoví databázi ze zálohy, naleznete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md).
 - Kurz migrace pomocí Azure Database Migration Service (DMS) najdete v tématu věnovaném [migraci Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
-- Rozšířené monitorování výkonu databáze spravované Instance s integrovanými inteligentními funkcemi pro řešení potíží, najdete v části [monitorování Azure SQL Database pomocí Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md)
+- Rozšířené monitorování výkonu databáze spravované Instance s integrovanými inteligentními funkcemi pro řešení potíží, najdete v části [monitorování Azure SQL Database pomocí Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)
 - Informace o cenách najdete v tématu [ceny SQL Database Managed Instance](https://azure.microsoft.com/pricing/details/sql-database/managed/).

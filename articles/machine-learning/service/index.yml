@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 96efb64ce7d77da567d587857e4a25ae334a3ffc
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 1add464c85d30622bf0940bf20a483ae22d07ea6
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51707108"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865314"
 documentType: LandingData
-title: Dokumentace ke službě Azure Machine Learning (Preview)
+title: Dokumentace ke službě Azure Machine Learning
 metadata:
-  title: Dokumentace ke službě Azure Machine Learning (Preview) – kurzy, reference k rozhraní API | Microsoft Docs
+  title: Dokumentace ke službě Azure Machine Learning – kurzy, reference k rozhraní API | Microsoft Docs
   meta.description: Learn how to build intelligent algorithms into apps and websites. Use Scikit-learn, Tensorflow, Pytorch or any other Python-based framework to build your machine learning model and train it locally or in the cloud. Tutorials, quickstarts, API references, and examples show you how.
   services: machine-learning
   author: j-martens
@@ -41,6 +41,7 @@ sections:
     style: unordered
     items:
     - html: <a href="quickstart-get-started.md">Začínáme s využitím webu Azure Portal</a>
+    - html: <a href="quickstart-create-workspace-with-python.md">Začínáme s využitím Pythonu</a>
 - title: Podrobné kurzy
   items:
   - type: paragraph
@@ -48,9 +49,10 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-train-models-with-aml">Trénování vlastního modelu strojového učení</a>
-    - html: <a href="tutorial-auto-train-models">Automatické vygenerování modelu a jeho automatické ladění</a>
-    - html: <a href="tutorial-deploy-models-with-aml">Nasazení modelu jako webové služby</a>
+    - html: Klasifikace obrázků (část 1)&#58; <a href="tutorial-train-models-with-aml">Trénování vlastního modelu strojového učení</a>
+    - html: Klasifikace obrázků (část 2)&#58; <a href="tutorial-deploy-models-with-aml">Nasazení tohoto modelu</a></br>&nbsp;
+    - html: Regrese (část 1)&#58; <a href="tutorial-data-prep">Příprava dat newyorské taxislužby pro modelování</a>
+    - html: Regrese (část 2)&#58; <a href="tutorial-auto-train-models">Generování modelu s využitím automatizovaného strojového učení</a>
   - type: paragraph
     text: '<b>Ukázkové poznámkové bloky</b>: Prozkoumejte Azure Machine Learning s <a href="https://aka.ms/aml-notebooks">těmito poznámkovými bloky Jupyter</a> odstupnými na GitHubu.'
 - title: Referenční informace

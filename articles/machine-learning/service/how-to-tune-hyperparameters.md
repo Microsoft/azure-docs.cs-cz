@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: e66dcac1d83c71174ad5d7c3fdcd2310143f8e01
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.date: 12/04/2018
+ms.openlocfilehash: b722af6fd5dd29a5b7cef8581d27d421825fb323
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140802"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868153"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Optimalizovat pro váš model hyperparameters
 
@@ -36,8 +36,6 @@ Ve scénářích obsáhlý learning / machine learning výkon modelů silně zá
 
 Azure Machine Learning umožňuje automatizovat hyperparameter zkoumání efektivním způsobem ukládá je spoustu času a prostředků. Zadejte rozsah hodnot hyperparameter a maximální počet školení běhů. Systém pak automaticky spustí více souběžných spuštění s konfiguracemi různých parametrů a najde odpovídající konfiguraci, která má za následek nejlepší výkon, měřený podle metriku, kterou zvolíte. Vypíšou tréninkových spuštění jsou automaticky předčasné ukončení, snížit plýtvání zbytečně velký počet výpočetních prostředků. Tyto prostředky se místo toho používají prozkoumat další hyperparameter konfigurace.
 
->[!NOTE]
-> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.168 
 
 ## <a name="define-search-space"></a>Definování prostor vyhledávání
 
@@ -311,7 +309,7 @@ hyperdrive_run = experiment.submit(hyperdrive_run_config)
 Sada SDK Azure Machine Learning poskytuje spustí Poznámkový blok widget, který vizualizuje průběh trénování. Následující fragment kódu vizualizuje vaše hyperparameter ladění se spustí v poznámkového bloku Jupyter na jednom místě:
 
 ```Python
-from azureml.train.widgets import RunDetails
+from azureml.widgets import RunDetails
 RunDetails(hyperdrive_run).show()
 ```
 
@@ -348,10 +346,9 @@ print('\n batch size:',parameter_values[7])
 ```
 
 ## <a name="sample-notebook"></a>Ukázka poznámkového bloku
-Odkazovat na 
-* [Training/03.Train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow) kurz týkající se ladění hyperparameters Tensorflow modelu. 
-
-Získáte tento poznámkový blok:
+Přečtěte si na tyto poznámkové bloky:
+* [How-to-use-azureml/Training-with-Deep-Learning/Train-hyperparameter-Tune-Deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch) 
+* [How-to-use-azureml/Training-with-Deep-Learning/Train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -1,21 +1,19 @@
 ---
-title: Kurz k Power BI pro konektor služby Azure Cosmos DB | Dokumentace Microsoftu
+title: Kurz k Power BI pro konektor služby Azure Cosmos DB
 description: Pomocí tohoto kurzu Power BI importovat JSON, vytvořit Chytré sestavy a vizualizace dat pomocí konektoru služby Azure Cosmos DB a Power BI.
 keywords: Power bi kurz, vizualizace dat, konektor power bi
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 782de7dc6e099fade0d2f1099ac19b9398562023
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 5f75ada1d37f6bd5cb2d870dd5169de7a4844eb3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622087"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869040"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Vizualizace dat služby Azure Cosmos DB pomocí konektoru služby Power BI
 

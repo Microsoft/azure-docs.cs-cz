@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: c4279002f599b26ac0333e442bbca7afaebefebe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b8d482342d0f8af9f6aebc4aa2b84731532a9c8a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837604"
+ms.locfileid: "52875225"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Upozornění protokolů ve službě Azure Monitor
 Tento článek obsahuje podrobnosti o upozornění protokolů jsou jedním z typů výstrah, které jsou podporovány v rámci [Azure Alerts](monitoring-overview-alerts.md) a umožnit uživatelům použít analytické platformy Azure jako základ pro generování výstrah.
@@ -29,7 +29,7 @@ Upozornění protokolu se skládá z prohledávání protokolů pravidel vytvoř
 Pravidla prohledávání protokolu vytváří služba Azure Alerts pro automatické spouštění zadaných dotazů na protokoly v pravidelných intervalech.  Pokud výsledky dotazu na protokol splňují konkrétní kritéria, vytvoří se záznam upozornění. Pravidlo potom může automaticky spustit jednu nebo více akcí pomocí [skupin akcí](monitoring-action-groups.md). 
 
 Pravidla vyhledávání protokolů jsou definovány následující podrobnosti:
-- **Protokolování dotazu**.  Dotaz, který se spustí pokaždé, když se pravidlo upozornění aktivuje.  Vrácené tímto dotazem záznamy se používají k určení, zda je vytvořena výstraha. Dotaz Analytics může také zahrnovat [volání mezi aplikacemi](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), [různé volání pracovního prostoru a [volání napříč prostředky](../log-analytics/log-analytics-cross-workspace-search.md) zadaný uživatel nemá přístupová práva do externí aplikace. 
+- **Protokolování dotazu**.  Dotaz, který se spustí pokaždé, když se pravidlo upozornění aktivuje.  Vrácené tímto dotazem záznamy se používají k určení, zda je vytvořena výstraha. Dotaz Analytics může také zahrnovat [volání mezi aplikacemi](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), [různé volání pracovního prostoru a [volání napříč prostředky](../azure-monitor/log-query/cross-workspace-query.md) zadaný uživatel nemá přístupová práva do externí aplikace. 
 
     > [!IMPORTANT]
     > Uživatel musí mít [Přispěvatel monitorování Azure](monitoring-roles-permissions-security.md) role pro vytváření, úpravu a aktualizaci upozornění protokolů ve službě Azure Monitor, spolu s přístupem & dotaz provádění práva pro cíle analytics v pravidlo upozornění nebo dotaz na upozornění. Pokud uživatel vytváření nemá přístup k všechny cíle analytics v pravidlo upozornění nebo dotaz na upozornění – vytvoření pravidla může selhat nebo pravidel upozornění protokolů se spustí pomocí částečných výsledků.

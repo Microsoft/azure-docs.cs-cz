@@ -3,7 +3,7 @@ title: Začínáme s úlohy elastické databáze | Dokumentace Microsoftu
 description: Úlohy elastické databáze použijte ke spuštění skriptů T-SQL, které zahrnují více databází.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,27 +12,27 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: ada95f9fc09aeb7e8dac67bc5f9c4af96f9700df
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241357"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863529"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Začínáme s úlohy elastické databáze
 
-
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
 
 Úlohy elastic Database (preview) pro službu Azure SQL Database umožňuje spolehlivě spouštět skripty T-SQL, které zahrnují více databází při automatické opakování a poskytuje záruky konečné dokončení. Další informace o funkci úlohy elastické databáze najdete v tématu [Elastic jobs](sql-database-elastic-jobs-overview.md).
 
 Tento článek rozšiřuje ukázku v [Začínáme s nástroji Elastic Database](sql-database-elastic-scale-get-started.md). Po dokončení se dozvíte, jak vytvářet a spravovat úlohy, které spravovat skupiny souvisejících databází. Není třeba použít nástroje pro elastické škálování pro využití výhod Elastických úloh.
 
 ## <a name="prerequisites"></a>Požadavky
+
 Stáhněte a spusťte [Začínáme s ukázkou nástrojů Elastic Database](sql-database-elastic-scale-get-started.md).
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Vytvořte ukázkovou aplikaci pomocí Správce mapování horizontálního oddílu
+
 Zde vytvořit mapy horizontálních oddílů manager společně s několika horizontálními oddíly, za nímž následuje vložení dat do horizontální oddíly. Pokud už máte s horizontálně dělená data v těchto horizontálních oddílech, můžete přeskočit následující kroky a přejít k další části.
 
 1. Sestavit a spustit **Začínáme s nástroji Elastic Database** ukázkovou aplikaci. Postupujte podle pokynů až do kroku 7 v části [stažení a spuštění ukázkové aplikace](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app). Na konci kroku 7 najdete v příkazovém řádku následující:
@@ -48,8 +48,9 @@ Zde vytvořit mapy horizontálních oddílů manager společně s několika hori
 
 Zde by obvykle vytvoříme mapy horizontálních oddílů cílit pomocí **New-AzureSqlJobTarget** rutiny. Databáze správce mapování horizontálních oddílů musí být nastavena jako cílovou databázi a poté je mapy horizontálních oddílů konkrétní zadané jako cíl. Místo toho budeme možné vytvořit výčet všech databází na serveru a přidejte databáze do nové vlastní kolekce s výjimkou hlavní databázi.
 
-## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Vytvoří vlastní kolekce a přidat všechny databáze na serveru do vlastní kolekce cíle s výjimkou hlavní server.
-   ```
+## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Vytvoří vlastní kolekce a přidat všechny databáze na serveru do vlastní kolekce cíle s výjimkou master
+
+   ```Powershell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -301,23 +302,25 @@ Aktualizujte zásady spouštění požadované aktualizace:
    ```
 
 ## <a name="cancel-a-job"></a>Zrušení úlohy
+
 Úlohy elastic Database podporuje požadavky zrušení úlohy.  Pokud úlohy Elastic Database zjistí požadavek na zrušení úlohy se spouští, pokusí se po zastavení úlohy.
 
 Existují dva různé způsoby, že úlohy Elastic Database můžete provádět zrušení:
 
 1. Ruší se právě spouští úlohy: Pokud se zjistí zrušením zatímco úloha je aktuálně spuštěná, zrušení, dojde k pokusu o v rámci aktuálně prováděné aspekt úlohy.  Příklad: Pokud je dlouho probíhající dotazy aktuálně prováděné při pokusu o zrušení, při pokusu o dotaz zrušíte.
-2. Zrušení úloh opakovaných pokusů: V případě zrušení zjištění vláknem ovládací prvek předtím, než se spustí úloha pro spuštění, vlákno ovládací prvek zabraňuje spuštění úlohy a deklarovat žádost jako zrušená.
+2. Zrušení úloh opakovaných pokusů: V případě zrušení zjištění vláknem ovládací prvek předtím, než se spustí úloha pro spuštění, vlákno ovládací prvek zabraňuje spuštění úlohy a deklaruje žádosti jako zrušená.
 
 Pokud je úloha zrušení požadováno pro nadřazenou úlohou, žádost o zrušení zachovaný nadřazená úloha a všechny jeho podřízené úlohy.
 
 Chcete-li odeslat žádost o zrušení, použijte **Stop-AzureSqlJobExecution** rutiny a nastavit **JobExecutionId** parametr.
 
-   ```
+   ```Powershell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```
 
 ## <a name="delete-a-job-by-name-and-the-jobs-history"></a>Odstranit úlohu podle názvu a historie úlohy
+
 Úlohy elastic Database podporuje asynchronní odstraňování úloh. Úloha může být označený k odstranění a systému odstranění úlohy a všechny jeho historie úloh po dokončení všech provedení úloh pro úlohu. Systém automaticky nezruší prováděné aktivní úlohy.  
 
 Místo toho Stop-AzureSqlJobExecution je nutné volat se zrušit spuštění aktivní úloha.

@@ -5,7 +5,7 @@ items:
   href: index.yml
 - name: Přehled
   items:
-  - name: Informace o službě Time Series Insights (Preview)
+  - name: Informace o službě Time Series Insights
     href: time-series-insights-update-overview.md
 - name: Šablony Rychlý start
   items:
@@ -29,7 +29,7 @@ items:
       href: tutorial-create-populate-tsi-environment.md
   - name: Azure Time Series Insights (Preview)
     items:
-    - name: Vytvoření prostředí TSI
+    - name: Kurz k Azure TSI (Preview)
       href: time-series-insights-update-create-environment.md
 - name: Koncepty
   items:
@@ -51,9 +51,9 @@ items:
       href: time-series-insights-update-storage-ingress.md
     - name: Případy použití
       href: time-series-insights-update-use-cases.md
-    - name: Model služby Time Series
+    - name: Modelování dat
       href: time-series-insights-update-tsm.md
-    - name: Dotaz na službu Time Series
+    - name: Dotazování dat
       href: time-series-insights-update-tsq.md
     - name: Aktualizace vizualizace dat v průzkumníku
       href: time-series-insights-update-explorer.md
@@ -109,25 +109,29 @@ items:
   items:
   - name: Time Series Insights
     items:
-    - name: Obecná dostupnost služby Time Series Insights
+    - name: Azure Time Series Insights (obecná dostupnost)
+      href: /rest/api/time-series-insights/ga
       items:
       - name: Dotaz
+        href: /rest/api/time-series-insights/ga-query
         items:
         - name: Rozhraní API
-          href: /rest/api/time-series-insights/time-series-insights-reference-queryapi
+          href: /rest/api/time-series-insights/ga-query-api
         - name: Syntaxe
-          href: /rest/api/time-series-insights/time-series-insights-reference-query-syntax
+          href: /rest/api/time-series-insights/ga-query-syntax
       - name: Rozhraní API referenčních dat
+        href: /rest/api/time-series-insights/ga-reference-data-api
     - name: Azure Time Series Insights (Preview)
+      href: /rest/api/time-series-insights/preview
       items:
       - name: Dotaz na službu Time Series
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsq
+        href: /rest/api/time-series-insights/preview-query
       - name: Model služby Time Series
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsm
+        href: /rest/api/time-series-insights/preview-model
       - name: Rozhraní API prostředí služby Time Series
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-env
+        href: /rest/api/time-series-insights/preview-env
       - name: Syntaxe a výrazy služby Time Series
-        href: /rest/api/time-series-insights/time-series-insights-reference-update-tsx
+        href: /rest/api/time-series-insights/preview-tsx
 - name: Související
   items:
   - name: Řešení
@@ -176,9 +180,9 @@ items:
     href: https://azure.microsoft.com/support/options/
   - name: Videa
     href: https://azure.microsoft.com/resources/videos/index/?services=time-series-insights
-ms.openlocfilehash: d30b4b2b19a4f055647b4723c91a15a1a977de6d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c75c034e0f54b33e28aa7f0ef5d0c18ad0004e55
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849509"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889987"

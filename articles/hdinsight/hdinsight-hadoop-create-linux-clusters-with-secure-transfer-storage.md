@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: 7ae8a79ac04e1d5263e084d6be4b27f303bd5848
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 07d6b07a583b8a8ce8b490333a87ff659f495e45
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006783"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866983"
 ---
-# <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Vytvoření clusteru Hadoop s účty úložiště s bezpečným přenosem ve službě Azure HDInsight
+# <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Vytvořit cluster Apache Hadoop s bezpečným přenosem účty úložiště v Azure HDInsight
 
 Funkce [Vyžadovat zabezpečený přenos](../storage/common/storage-require-secure-transfer.md) zvyšuje zabezpečení účtu služby Azure Storage tím, že vynucuje přenos všech požadavků na účet přes zabezpečené připojení. Tuto funkci a schéma wasbs podporují pouze clustery HDInsight verze 3.6 nebo novější. 
 
@@ -64,12 +64,12 @@ Existuje několik možností, jak přidat další účty úložiště s povolen�
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili vytvořit cluster HDInsight a povolit zabezpečený přenos pro účty úložiště.
 
-Další informace o analýze dat pomocí HDInsight naleznete v následujících článcích:
+Další informace o analýze dat pomocí HDInsight najdete v následujících článcích:
 
-* Další informace o používání Hivu se službou HDInsight, včetně postupu provádění dotazů Hivu ze sady Visual Studio, najdete v tématu [Použití Hivu se službou HDInsight][hdinsight-use-hive].
-* Další informace o jazyce Pig používaném k transformaci dat najdete v tématu [Použití Pigu se službou HDInsight][hdinsight-use-pig].
-* Další informace o MapReduce, způsobu psaní programů, které zpracovávají data v Hadoopu, najdete v tématu [Použití MapReduce se službou HDInsight][hdinsight-use-mapreduce].
-* Další informace o použití nástrojů HDInsight pro Visual Studio k analýze dat na HDInsight najdete v části [Začněte používat nástroje Visual Studio Hadoop pro HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* Další informace o používání [Apache Hive](https://hive.apache.org/) s HDInsight, včetně postupu provádění dotazů Hivu ze sady Visual Studio, přečtěte si téma [použití Apache Hivu se službou HDInsight][hdinsight-use-hive].
+* Další informace o [Apache Pig](https://pig.apache.org/), jazyk, slouží k transformaci dat, naleznete v tématu [použití Apache Pig s HDInsight][hdinsight-use-pig].
+* Další informace o [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), způsobu psaní programů, které zpracovávají data v Hadoopu, najdete v článku [použití Apache Hadoop MapReduce se službou HDInsight][hdinsight-use-mapreduce].
+* Další informace o použití nástroje HDInsight pro Visual Studio k analýze dat na HDInsight, naleznete v tématu [začněte používat nástroje Visual Studio Apache Hadoop pro HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
 Další informace o způsobu, jakým služba HDInsight ukládá data, nebo jak přenést data do služby HDInsight, najdete v následujících článcích:
 
@@ -79,12 +79,12 @@ Další informace o způsobu, jakým služba HDInsight ukládá data, nebo jak p
 Další informace o vytvoření a správě clusteru HDInsight najdete v následujících článcích:
 
 * Další informace o správě clusteru HDInsight se systémem Linux najdete v části [Správa clusterů HDInsight pomocí Ambari](hdinsight-hadoop-manage-ambari.md).
-* Další informace o možnostech, které můžete vybrat při vytváření clusteru služby HDInsight, naleznete v tématu [Vytváření HDInsight na Linuxu pomocí vlastních možností](hdinsight-hadoop-provision-linux-clusters.md).
-* Je-li obeznámeni s Linux a Hadoop, ale chcete znát podrobnosti o Hadoop na HDInsight, prostudujte si část [Práce s HDInsight v systému Linux](hdinsight-hadoop-linux-information.md). Tento článek obsahuje informace o:
+* Další informace o možnostech, které můžete vybrat při vytváření clusteru služby HDInsight, najdete v tématu [Vytváření HDInsight na Linuxu pomocí vlastních možností](hdinsight-hadoop-provision-linux-clusters.md).
+* Je-li obeznámeni s Linux a Apache Hadoop, ale chcete znát podrobnosti o Hadoop na HDInsight, naleznete v tématu [práce s HDInsight v Linuxu](hdinsight-hadoop-linux-information.md). Tento článek obsahuje informace o:
   
-  * Adresách URL služeb hostovaných v clusteru, například Ambari a WebHCat
-  * Umístění souborů Hadoop a příkladech v místním systému souborů
-  * Používání Azure Storage (WASB) namísto HDFS jako výchozího datového úložiště
+  * Adresy URL služeb hostovaných v clusteru, jako například [Apache Ambari](https://ambari.apache.org/) a [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat)
+  * Umístění [Apache Hadoop](https://hadoop.apache.org/) soubory a příkladech v místním systému souborů
+  * Použití sady Azure Storage (WASB) namísto [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) jako výchozího datového úložiště
 
 [1]: ../HDInsight/hadoop/apache-hadoop-visual-studio-tools-get-started.md
 

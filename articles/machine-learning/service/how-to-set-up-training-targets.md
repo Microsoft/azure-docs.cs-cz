@@ -9,55 +9,56 @@ manager: cgronlun
 ms.service: machine-learning
 ms.component: core
 ms.topic: article
-ms.date: 09/24/2018
-ms.openlocfilehash: 7eacc475145dac61db1717f1860e22cedd022262
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.openlocfilehash: 45a5e4c895a0c7a8f76bb34aa5aaf22fa31f4333
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231443"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864855"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Vyberte a použijte cílové výpočetní prostředí k natrénování modelu
 
-Se službou Azure Machine Learning můžete trénování modelu v různých prostředích. Těchto prostředí volá __cílových výpočetních prostředí__, může být místní nebo v cloudu. V tomto dokumentu se dozvíte o cílových podporovaných výpočetních prostředí a jejich použití.
+Se službou Azure Machine Learning můžete trénování modelu v různých výpočetních prostředků. Tyto výpočetní prostředky, volá __cílových výpočetních prostředí__, může být místní nebo v cloudu. V tomto dokumentu se dozvíte o cílových podporovaných výpočetních prostředí a jejich použití.
 
-Cílové výpočetní prostředí je prostředek, který spouští cvičný skript nebo po jeho nasazení jako webové služby je hostitelem vašeho modelu. Jsou možné vytvářet a spravovat pomocí Azure Machine Learning SDK nebo rozhraní příkazového řádku. Pokud máte cílových výpočetních prostředí, které byly vytvořeny jiným procesem (například webu Azure portal nebo rozhraní příkazového řádku Azure), můžete jejich připojením k pracovnímu prostoru Azure Machine Learning service.
+Cílové výpočetní prostředí je prostředek, kde spustit trénovací skript, nebo váš model je hostována, když nasadit jako webovou službu. Můžete vytvořit a spravovat cílové výpočetní prostředí pomocí Azure Machine Learning SDK, webu Azure portal nebo rozhraní příkazového řádku Azure. Pokud máte cílových výpočetních prostředí, které byly vytvořené pomocí jiné služby (například cluster HDInsight), můžete jejich připojením do pracovního prostoru služby Azure Machine Learning.
 
-Můžete začít s místní spuštění v počítači a potom vertikálně nebo do jiných prostředí, jako je virtuálním počítačům pro datové vědy s GPU nebo Azure Batch AI. 
+Existují tři různé kategorie cílových výpočetních prostředí, které podporuje Azure Machine Learning:
 
->[!NOTE]
-> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.168 
+* __Místní__: místního počítače nebo virtuálního počítače založené na cloudu, který používáte jako prostředí dev/experimentování. 
+
+* __Spravovat výpočetní__: Azure Machine Learning Compute je výpočetní prostředí nabídky, který je spravovaný službou Azure Machine Learning. Umožňuje snadno vytvořit jeden nebo více node výpočetní prostředky pro trénování, testování a odvozování služby batch.
+
+* __Připojené výpočetní__: můžete také přinést výpočetní cloudu Azure a připojení k Azure Machine Learning. Přečtěte si další informace najdete níže na typy podporovaných výpočetních a způsob jejich použití.
+
 
 ## <a name="supported-compute-targets"></a>Cílových podporovaných výpočetních prostředí
 
-Služba Azure Machine Learning podporuje následující cílových výpočetních prostředí:
+Služba Azure Machine Learning nabízí různé podporu napříč různými cílových výpočetních prostředí. Životní cyklus vývoje typické modelu začíná dev/experimentování na malé množství dat ve službě. V této fázi doporučujeme používat místní prostředí. Například místního počítače nebo virtuálního počítače založené na cloudu. Vertikálně navýšit kapacitu trénování na větších datových sad, nebo proveďte distribuované trénování, doporučujeme vytvořit jeden nebo více node cluster tohoto pravidla automatického škálování provedou pokaždé, když odešlete spuštění pomocí Azure Machine Learning Compute. Můžete také připojit své vlastní výpočetní prostředek, ačkoli podpory pro různé scénáře se může lišit jako podrobnosti jsou dole:
 
-|Cílové výpočetní prostředí| Akcelerace GPU | Automatizované hyperparametrů | Výběr automatizované modelu | Je možné v kanálech|
+|Cílové výpočetní prostředí| Akcelerace GPU | Automatizované hyperparametrů | Automatizované strojové učení | Friendly kanálu|
 |----|:----:|:----:|:----:|:----:|
 |[Místní počítač](#local)| Možná | &nbsp; | ✓ | &nbsp; |
-|[Virtuální počítač pro datové vědy (DSVM)](#dsvm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Batch AI](#batch)| ✓ | ✓ | ✓ | ✓ |
+|[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
+|[Vzdáleném virtuálním počítači](#vm) | ✓ | ✓ | ✓ | ✓ |
 |[Azure Databricks](#databricks)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
 |[Azure Data Lake Analytics](#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 > [!IMPORTANT]
-> <a id="pipeline-only"></a>* Azure Databricks a Azure Data Lake Analytics můžete __pouze__ použije v kanálu. Další informace o kanálech najdete v článku [kanály ve službě Azure Machine Learning](concept-ml-pipelines.md) dokumentu.
-
-__[Azure Container Instances (ACI)](#aci)__  lze také použít k trénování modelů. Je bez serveru Cloudová nabídka, která je cenově dostupné a usnadňuje vytváření a používání. ACI nepodporuje GPU akcelerace, automatizované hyper parametr optimalizací, nebo automatických Výběr modelu. Také ho nelze použít v rámci kanálu.
-
-Jsou klíčové rozdíly mezi cílových výpočetních prostředí:
-* __Akcelerace GPU__: grafické procesory jsou k dispozici virtuální počítač pro datové vědy a Azure Batch AI. Můžete mít přístup k grafického procesoru v místním počítači, v závislosti na hardware, ovladače a rozhraní, které jsou nainstalovány.
-* __Automatizované hyperparametrů__: Azure Machine Learning automatizované hyperparameter optimalizace vám pomůže najít nejlepší hyperparameters pro váš model.
-* __Výběr modelu automatizované__: Služba Azure Machine Learning můžete inteligentně doporučujeme algoritmus a hyperparameter výběr při vytváření modelu. Výběr automatizované modelu pomáhá rychleji, než se pokoušet ručně různé kombinace sloučit do vysoce kvalitních modelu. Další informace najdete v tématu [kurz: automaticky vyškolíme model klasifikace pomocí Azure Machine Learning automatizované](tutorial-auto-train-models.md) dokumentu.
-* __Kanály__: Služba Azure Machine Learning umožňuje kombinovat různé úkoly, jako jsou školení a jejich nasazení do kanálu. Kanálů může být spuštění paralelně nebo v pořadí a poskytují mechanismus spolehlivé služby automation. Další informace najdete v tématu [vytvářet kanály machine learning se službou Azure Machine Learning](concept-ml-pipelines.md) dokumentu.
-
-Vytvoření cílových výpočetních prostředí můžete použít sadu SDK Azure Machine Learning, Azure CLI nebo Azure portal. Můžete také použít existující cílových výpočetních prostředí tak, že přidáte (připojení) je do pracovního prostoru.
+> <a id="pipeline-only"></a>__*__ Azure Databricks a Azure Data Lake Analytics můžete __pouze__ použije v kanálu. Další informace o kanálech najdete v článku [kanály ve službě Azure Machine Learning](concept-ml-pipelines.md) dokumentu.
 
 > [!IMPORTANT]
-> Existující Instance kontejnerů Azure nelze připojit k vašemu pracovnímu prostoru. Místo toho musíte vytvořit novou instanci.
+> Azure Machine Learning Compute musí být vytvořené v rámci pracovního prostoru. Existující instance nelze připojit k pracovnímu prostoru.
 >
-> Azure HDInsight, Azure Databricks a Azure Data Lake Store nelze vytvořit v pracovním prostoru. Místo toho musíte vytvořit prostředek a připojte ji k vašemu pracovnímu prostoru.
+> Další cílových výpočetních prostředí musí vytvořit mimo Azure Machine Learning a potom připojit k vašemu pracovnímu prostoru.
+
+> [!NOTE]
+> Některé výpočetní cíle využívají imagí kontejnerů Dockeru při cvičení modelu. Základní image GPU musí použít pouze na služby Microsoft Azure. K tréninku modelu, jsou tyto služby:
+>
+> * Azure Machine Learning Compute
+> * Azure Kubernetes Service
+> * Virtuální počítač pro datové vědy.
 
 ## <a name="workflow"></a>Pracovní postup
 
@@ -73,11 +74,14 @@ Pracovní postup pro vývoj a nasazování modelů Azure Machine Learning zahrnu
 > [!IMPORTANT]
 > Trénovací skript objektu se neváže na cíl konkrétní výpočetní prostředky. Trénování zpočátku do místního počítače a potom přepnout cílových výpočetních prostředí bez nutnosti trénovací skript přepsat.
 
+> [!TIP]
+> Pokaždé, když přiřadíte cílové výpočetní prostředí pomocí pracovního prostoru, tak, že vytvoříte spravované výpočetní nebo připojení existující výpočetní, je potřeba zadat název, který výpočetních prostředků. To by měl být dlouhý 2 až 16 znaků.
+
 Přechod z cílového výpočetního prostředí jeden zahrnuje vytvoření [konfigurace spuštění](concept-azure-machine-learning-architecture.md#run-configuration). Konfigurace spuštění definuje, jak spustit skript v cílové výpočetní prostředí.
 
 ## <a name="training-scripts"></a>Trénovací skripty
 
-Spustíte-li spustit školení, se odesílá celý adresář, který obsahuje trénovací skripty. Snímek se vytvoří a odešle do cílového výpočetního prostředí. Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshot).
+Při spuštění spustit trénovací snímek adresáře, který obsahuje trénovací skripty se vytvoří a odešle do cílového výpočetního prostředí. Další informace najdete v tématu [snímky](concept-azure-machine-learning-architecture.md#snapshot).
 
 ## <a id="local"></a>Místní počítač
 
@@ -99,7 +103,6 @@ run_config_user_managed.environment.python.user_managed_dependencies = True
 #run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
 ```
 
-Poznámkový blok Jupyter, který ukazuje školení v prostředí spravovaného uživatele, najdete v části [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
   
 ### <a name="system-managed-environment"></a>Systém spravované prostředí
 
@@ -121,51 +124,140 @@ run_config_system_managed.auto_prepare_environment = True
 run_config_system_managed.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 ```
 
-Poznámkový blok Jupyter, který ukazuje školení v systému spravovat prostředí, najdete v části [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
+## <a id="amlcompute"></a>Azure Machine Learning Compute
 
-## <a id="dsvm"></a>Virtuální počítač pro datové vědy
+Azure Machine Learning Compute je spravovaná výpočetní infrastruktura, která umožňuje uživatelům snadno vytvořit výpočetní single - do více - node. Vytvoří se __v rámci oblasti vašeho pracovního prostoru__ a je prostředek, který můžete sdílet s ostatními uživateli ve vašem pracovním prostoru. Škálování automaticky při odeslání úlohy a můžete umístit do služby Azure Virtual Network. Spustí v __kontejnerové prostředí__, vytváření balíčků závislostí váš model v kontejneru Dockeru.
 
-Místní počítač nemusí mít výpočetní prostředky ani prostředky GPU prostředků potřebných pro trénování modelu. V takovém případě můžete vertikálně navýšit kapacitu nebo horizontální navýšení kapacity procesu trénování, tak, že přidáte další výpočetní cíle jako je například na Data virtuálních počítačů VĚDY.
+Azure Machine Learning Compute můžete použít k procesu trénování distribuovat napříč clusterem CPU nebo GPU výpočetních uzlů v cloudu. Další informace o velikostech virtuálních počítačů, které zahrnují GPU, najdete v článku [GPU optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) dokumentaci.
+
+> [!NOTE]
+> Azure Machine Learning Compute má výchozí omezení na věci, jako je počet jader, které mohou být přiděleny. Další informace najdete v tématu [spravovat a žádosti o kvóty pro prostředky Azure](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas) dokumentu.
+
+Azure Machine Learning Compute podle potřeby můžete vytvořit při spuštění naplánovat, nebo jako trvalý prostředek.
+
+### <a name="run-based-creation"></a>Tvorby založené na spuštění
+
+Azure Machine Learning Compute můžete vytvořit jako cílové výpočetní prostředí v době běhu. V tomto případě tak výpočetní prostředky se automaticky vytvoří pro spuštění, škálování až na max_nodes, který zadáte v konfiguraci spuštění a pak je __automaticky odstraní__ po dokončení spuštění.
+
+Tato funkce je aktuálně ve verzi Preview a nebude fungovat s úlohami Hyperparametrů nebo automatizované Machine Learning.
+
+```python
+from azureml.core.compute import ComputeTarget, AmlCompute
+
+#Let us first list the supported VM families for Azure Machine Learning Compute
+AmlCompute.supported_vmsizes()
+
+from azureml.core.runconfig import RunConfiguration
+
+# create a new runconfig object
+run_config = RunConfiguration()
+
+# signal that you want to use AmlCompute to execute script.
+run_config.target = "amlcompute"
+
+# AmlCompute will be created in the same region as workspace. Set vm size for AmlCompute from the list returned above
+run_config.amlcompute.vm_size = 'STANDARD_D2_V2'
+
+```
+
+### <a name="persistent-compute-basic"></a>Trvalé výpočetní (Basic)
+
+Trvalé Azure Machine Learning Compute můžete použít opakovaně napříč více úloh. Můžete sdílet s ostatními uživateli v pracovním prostoru kde je udržována mezi úlohami.
+
+Vytvořit prostředek služby Azure Machine Learning Compute trvalé, zadejte `vm_size` a `max_nodes` parametry. Azure Machine Learning potom použije inteligentních výchozích hodnot pro ostatní parametry.  Například výpočetní nastavení automatického škálování na 0 uzlů, pokud se nepoužívá a chcete-li vytvořit vyhrazených virtuálních počítačích ke spouštění úloh podle potřeby. 
+
+* **vm_size**: řadu virtuálních počítačů uzlů vytvořené pomocí Azure Machine Learning Compute.
+* **max_nodes**: maximální počet uzlů k automatickému škálování při spuštění úlohy v Azure Machine Learning Compute.
+
+```python
+from azureml.core.compute import ComputeTarget, AmlCompute
+from azureml.core.compute_target import ComputeTargetException
+
+# Choose a name for your CPU cluster
+cpu_cluster_name = "cpucluster"
+
+# Verify that cluster does not exist already
+try:
+    cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
+    print('Found existing cluster, use it.')
+except ComputeTargetException:
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                           max_nodes=4)
+    cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+
+cpu_cluster.wait_for_completion(show_output=True)
+
+```
+
+### <a name="persistent-compute-advanced"></a>Trvalé výpočetní (Upřesnit)
+
+Můžete také nakonfigurovat několik upřesňující vlastnosti při vytváření, Azure Machine Learning Compute.  Tyto vlastnosti umožňují vytvářet trvalé clusteru s pevnou velikostí, nebo v rámci existující virtuální síť Azure v rámci vašeho předplatného.
+
+Kromě `vm_size` a `max_nodes`, můžete použít následující vlastnosti:
+
+* **min_nodes**: minimální uzly (výchozí hodnota 0 uzlů) snížit při spuštění úlohy v Azure Machine Learning Compute.
+* **vm_priority**: výběr mezi "vyhrazených" (výchozí) a "lowpriority" virtuální počítače při vytváření, Azure Machine Learning Compute. Virtuální počítače s nízkou prioritou použít nadbytečnou kapacitu Azure a jsou tedy levnější ale riziko, přičemž dojde ke zrušení spuštění.
+* **idle_seconds_before_scaledown**: Doba nečinnosti (výchozí 120 sekund) po dokončení běhu, než použití automatického škálování na min_nodes.
+* **vnet_resourcegroup_name**: Skupina prostředků __existující__ virtuální sítě. Azure Machine Learning Compute se vytvoří v rámci této virtuální síti.
+* **vnet_name**: název virtuální sítě. Virtuální síť musí být ve stejné oblasti jako váš pracovní prostor Azure Machine Learning.
+* **subnet_name**: název podsítě v rámci virtuální sítě. Prostředky Azure Machine Learning Compute přiřadí IP adresy z tohoto rozsahu podsítě.
+
+> [!TIP]
+> Když vytvoříte prostředek trvalé Azure Machine Learning Compute máte také možnost aktualizovat jeho vlastnosti, jako je min_nodes nebo max_nodes. Jednoduše zavoláte `update()` funkce pro něj.
+
+```python
+from azureml.core.compute import ComputeTarget, AmlCompute
+from azureml.core.compute_target import ComputeTargetException
+
+# Choose a name for your CPU cluster
+cpu_cluster_name = "cpucluster"
+
+# Verify that cluster does not exist already
+try:
+    cpu_cluster = ComputeTarget(workspace=ws, name=cpu_cluster_name)
+    print('Found existing cluster, use it.')
+except ComputeTargetException:
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                           vm_priority='lowpriority',
+                                                           min_nodes=2,
+                                                           max_nodes=4,
+                                                           idle_seconds_before_scaledown='300',
+                                                           vnet_resourcegroup_name='<my-resource-group>',
+                                                           vnet_name='<my-vnet-name>',
+                                                           subnet_name='<my-subnet-name>')
+    cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+
+cpu_cluster.wait_for_completion(show_output=True)
+
+```
+
+
+## <a id="vm"></a>Vzdáleném virtuálním počítači
+
+Azure Machine Learning podporuje také přináší vlastní výpočetních prostředků a připojíte ho do pracovního prostoru. Jeden takový typ prostředku je libovolný vzdáleném virtuálním počítači, dokud je přístupná ze služby Azure Machine Learning. To může být buď virtuální počítač Azure nebo na vzdáleném serveru ve vaší organizaci nebo v místním. Konkrétně zadaný IP adresu a přihlašovací údaje (uživatelské jméno/heslo nebo klíč SSH), můžete použít jakýkoli dostupný virtuální počítač pro vzdálené spuštění.
+Můžete použít prostředí integrovaného systému conda, již existující prostředí Python nebo kontejneru Docker. Spuštění pomocí kontejneru Dockeru vyžaduje modul Docker na virtuálním počítači spuštěná. Tato funkce je zvlášť užitečné, pokud chcete dev/experimentování flexibilnější a cloudové prostředí než místního počítače.
+
+> [!TIP]
+> Doporučujeme používat virtuální počítač pro datové vědy jako virtuální počítač Azure podle výběru v tomto scénáři. Je předem nakonfigurované datové vědy a AI vývojové prostředí v Azure s možností volby kurátorované sady nástrojů a architektur pro celý životní cyklus vývoje ML. Další informace o používání virtuální počítač pro datové vědy se službou Azure Machine Learning najdete v tématu [nakonfigurovat prostředí pro vývoj](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-environment#dsvm) dokumentu.
 
 > [!WARNING]
 > Azure Machine Learning podporuje pouze virtuální počítače s Ubuntu. Při vytváření virtuálního počítače nebo vyberte existující, musíte vybrat jednu, která používá Ubuntu.
 
 Následující kroky konfigurace Data virtuálního počítače VĚDY jako cíl školení pomocí sady SDK:
 
-1. Vytvořit nebo připojit virtuální počítač
-    
-    * Pokud chcete vytvořit nový DSVM, nejdřív zkontrolujte, pokud budete mít DSVM se stejným názvem, není-li vytvořit nový virtuální počítač:
-    
-        ```python
-        from azureml.core.compute import DsvmCompute
-        from azureml.core.compute_target import ComputeTargetException
+1. Připojit existující virtuální počítač jako cílové výpočetní prostředí, musí poskytovat plně kvalifikovaný název domény, přihlašovací jméno a heslo pro virtuální počítač.  V tomto příkladu nahraďte ```<fqdn>``` s veřejný plně kvalifikovaný název domény virtuálního počítače nebo veřejnou IP adresu. Nahraďte ```<username>``` a ```<password>``` se heslo pro virtuální počítač a uživatele SSH:
 
-        compute_target_name = 'mydsvm'
+    ```python
+    from azureml.core.compute import RemoteCompute
 
-        try:
-            dsvm_compute = DsvmCompute(workspace = ws, name = compute_target_name)
-            print('found existing:', dsvm_compute.name)
-        except ComputeTargetException:
-            print('creating new.')
-            dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
-            dsvm_compute = DsvmCompute.create(ws, name = compute_target_name, provisioning_configuration = dsvm_config)
-            dsvm_compute.wait_for_completion(show_output = True)
-        ```
-    * Připojit existující virtuální počítač jako cílové výpočetní prostředí, musí poskytovat plně kvalifikovaný název domény, přihlašovací jméno a heslo pro virtuální počítač.  V tomto příkladu nahraďte ```<fqdn>``` s veřejný plně kvalifikovaný název domény virtuálního počítače nebo veřejnou IP adresu. Nahraďte ```<username>``` a ```<password>``` se heslo pro virtuální počítač a uživatele SSH:
+    dsvm_compute = RemoteCompute.attach(ws,
+                                    name="attach-dsvm",
+                                    username='<username>',
+                                    address="<fqdn>",
+                                    ssh_port=22,
+                                    password="<password>")
 
-        ```python
-        from azureml.core.compute import RemoteCompute
-
-        dsvm_compute = RemoteCompute.attach(ws,
-                                        name="attach-dsvm",
-                                        username='<username>',
-                                        address="<fqdn>",
-                                        ssh_port=22,
-                                        password="<password>")
-
-        dsvm_compute.wait_for_completion(show_output=True)
-    
-   It takes around 5 minutes to create the DSVM instance.
+    dsvm_compute.wait_for_completion(show_output=True)
 
 1. Create a configuration for the DSVM compute target. Docker and conda are used to create and configure the training environment on DSVM:
 
@@ -197,124 +289,6 @@ Následující kroky konfigurace Data virtuálního počítače VĚDY jako cíl 
     run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 
     ```
-
-1. Pro výpočetní prostředky odstranit, až budete hotovi, použijte následující kód:
-
-    ```python
-    dsvm_compute.delete()
-    ```
-
-Poznámkový blok Jupyter, který ukazuje, školení na virtuální počítač pro datové vědy, naleznete v tématu [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb).
-
-## <a id="batch"></a>Azure Batch AI
-
-Pokud trvá dlouhou dobu k natrénování modelu, můžete distribuovat napříč clusterem výpočetní prostředky v cloudu se školení Azure Batch AI. Batch AI může také potřeba povolit prostředek GPU.
-
-Následující příklad hledá existující cluster Batch AI podle názvu. Pokud jeden není nalezen, je vytvořen:
-
-```python
-from azureml.core.compute import BatchAiCompute
-from azureml.core.compute import ComputeTarget
-import os
-
-# choose a name for your cluster
-batchai_cluster_name = os.environ.get("BATCHAI_CLUSTER_NAME", ws.name + "gpu")
-cluster_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 1)
-cluster_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 3)
-vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_NC6")
-autoscale_enabled = os.environ.get("BATCHAI_CLUSTER_AUTOSCALE_ENABLED", True)
-
-
-if batchai_cluster_name in ws.compute_targets():
-    compute_target = ws.compute_targets()[batchai_cluster_name]
-    if compute_target and type(compute_target) is BatchAiCompute:
-        print('found compute target. just use it. ' + batchai_cluster_name)
-else:
-    print('creating a new compute target...')
-    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
-                                                                vm_priority = 'lowpriority', # optional
-                                                                autoscale_enabled = autoscale_enabled,
-                                                                cluster_min_nodes = cluster_min_nodes, 
-                                                                cluster_max_nodes = cluster_max_nodes)
-
-    # create the cluster
-    compute_target = ComputeTarget.create(ws, batchai_cluster_name, provisioning_config)
-    
-    # can poll for a minimum number of nodes and for a specific timeout. 
-    # if no min node count is provided it will use the scale settings for the cluster
-    compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
-    
-     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
-    print(compute_target.status.serialize())
-```
-
-Připojit existující cluster Batch AI jako cílové výpočetní prostředí, je nutné zadat ID prostředku Azure. Chcete-li získat ID prostředku na webu Azure Portal, postupujte následovně:
-1. Vyhledejte `Batch AI` služby pod **všechny služby**
-1. Klikněte na název pracovního prostoru, do které cluster patří
-1. Vyberte cluster
-1. Klikněte na **vlastnosti**
-1. Kopírovat **ID**
-
-Následující příklad používá sadu SDK připojit cluster do pracovního prostoru. V tomto příkladu nahraďte `<name>` s názvem pro výpočetní prostředky. Název nemusí odpovídat názvu clusteru. Nahraďte `<resource-id>` s prostředky Azure ID výše popsané:
-
-```python
-from azureml.core.compute import BatchAiCompute
-BatchAiCompute.attach(workspace=ws,
-                      name=<name>,
-                      resource_id=<resource-id>)
-```
-
-Můžete také zkontrolovat clusteru a úlohy stavu služby Batch AI pomocí následujících příkazů Azure CLI:
-
-- Kontrola stavu clusteru. Můžete zobrazit, kolik uzly jsou spuštěné s použitím `az batchai cluster list`.
-- Zkontrolujte stav úlohy. Můžete zobrazit, kolik úlohy běží s použitím `az batchai job list`.
-
-Vytvořte cluster Batch AI trvá přibližně 5 minut.
-
-Poznámkový blok Jupyter, který ukazuje školení v clusteru Batch AI, naleznete v tématu [ https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb).
-
-## <a name='aci'></a>Instance kontejneru Azure (ACI)
-
-Služba Azure Container Instances jsou izolovaných kontejnerech, které mají rychlejší časy spuštění a nevyžadují, aby uživatel mohl spravovat žádné virtuální počítače. Služba Azure Machine Learning používá kontejnery Linuxu, které jsou k dispozici v westus, eastus, westeurope, northeurope, westus2 a southeastasia oblastech. Další informace najdete v tématu [dostupnost v oblastech](https://docs.microsoft.com/azure/container-instances/container-instances-quotas#region-availability). 
-
-Následující příklad ukazuje způsob použití sady SDK k vytvoření cílové výpočetní prostředí ACI a použít ho k natrénování modelu: 
-
-```python
-from azureml.core.runconfig import RunConfiguration
-from azureml.core.conda_dependencies import CondaDependencies
-
-# create a new runconfig object
-run_config = RunConfiguration()
-
-# signal that you want to use ACI to run script.
-run_config.target = "containerinstance"
-
-# ACI container group is only supported in certain regions, which can be different than the region the Workspace is in.
-run_config.container_instance.region = 'eastus'
-
-# set the ACI CPU and Memory 
-run_config.container_instance.cpu_cores = 1
-run_config.container_instance.memory_gb = 2
-
-# enable Docker 
-run_config.environment.docker.enabled = True
-
-# set Docker base image to the default CPU-based image
-run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
-
-# use conda_dependencies.yml to create a conda environment in the Docker image
-run_config.environment.python.user_managed_dependencies = False
-
-# auto-prepare the Docker image when used for the first time (if it is not already prepared)
-run_config.auto_prepare_environment = True
-
-# specify CondaDependencies obj
-run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
-```
-
-Může trvat několik sekund až několik minut vytvořte cílové výpočetní prostředí ACI.
-
-Poznámkový blok Jupyter, který ukazuje, školení na instanci kontejneru Azure, najdete v části [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb).
 
 ## <a id="databricks"></a>Azure Databricks
 
@@ -416,7 +390,7 @@ except ComputeTargetException:
 > [!TIP]
 > Azure Machine Learning kanály funguje jenom s daty uloženými v úložišti dat výchozího účtu Data Lake Analytics. Pokud data, je potřeba pracovat s je v jiné než výchozí úložiště, můžete použít [ `DataTransferStep` ](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) ke kopírování dat před školení.
 
-## <a id="hdinsight"></a>Připojit cluster služby HDInsight 
+## <a id="hdinsight"></a>Azure HDInsight 
 
 HDInsight je oblíbená platforma pro analýzy velkých objemů dat. Poskytuje Apache Spark, který slouží k natrénování modelu.
 
@@ -482,7 +456,6 @@ run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
-Poznámkový blok Jupyter, který ukazuje trénováním Spark v HDInsight, naleznete v tématu [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb).
 
 ### <a name="submit-using-a-pipeline"></a>Odeslat pomocí kanálu
 
@@ -532,43 +505,45 @@ Postupujte podle výše uvedené kroky, chcete-li zobrazit seznam cílových vý
 
 1. Klikněte na tlačítko __+__ přihlášení k přidání cílového výpočetního prostředí.
 
-    ![Přidat Compute ](./media/how-to-set-up-training-targets/add-compute-target.png)
+    ![Přidat compute ](./media/how-to-set-up-training-targets/add-compute-target.png)
 
-1. Zadejte název cílového výpočetního prostředí.
-1. Vyberte typ compute připojit pro __školení__. 
+1. Zadejte název cílové výpočetní prostředí
+1. Vyberte **Machine Learning Compute** jako typ výpočetních prostředků a použít pro __školení__
 
     > [!IMPORTANT]
-    > Ne všechny výpočetní typy lze vytvořit pomocí webu Azure portal. Aktuálně jsou typy, které lze vytvořit pro vzdělávání:
-    > 
-    > * Virtuální počítač
-    > * Batch AI
+    > Můžete vytvořit pouze Azure Machine Learning Compute jako spravované výpočetní prostředky pro školení
 
-1. Vyberte __vytvořit nový__ a vyplňte požadované formuláře. 
+1. Vyplňte požadované formulář zejména řadu virtuálních počítačů a maximální počet uzlů pro rozbíhání tak výpočetní prostředky 
 1. Vyberte __Vytvořit__.
-1. Můžete zobrazit stav operace vytvoření cílové výpočetní prostředí výběrem ze seznamu.
+1. Stav operace vytvoření můžete zobrazit výběrem cílového výpočetního prostředí v seznamu
 
-    ![Zobrazení seznamu výpočetní](./media/how-to-set-up-training-targets/View_list.png) se pak zobrazí podrobnosti pro cílové výpočetní prostředí.
-    ![Zobrazit podrobnosti](./media/how-to-set-up-training-targets/vm_view.PNG)
-1. Nyní můžete odeslat běhu pro tyto cíle popsané výše.
+    ![Zobrazení seznamu výpočetní prostředky](./media/how-to-set-up-training-targets/View_list.png)
+
+1. Zobrazí se podrobnosti pro cílové výpočetní prostředí.
+
+    ![Zobrazit podrobnosti](./media/how-to-set-up-training-targets/compute-target-details.png)
+
+1. Nyní můžete odeslat běhu pro tyto cíle popsané výše
+
 
 ### <a name="reuse-existing-compute-in-your-workspace"></a>Znovu použít existující výpočetních prostředků ve vašem pracovním prostoru
 
 Postupujte podle výše uvedené kroky, chcete-li zobrazit seznam cílových výpočetních prostředí a pak znovu použít cílové výpočetní prostředí pomocí následujících kroků:
 
-1. Klikněte na tlačítko **+** přihlášení k přidání cílového výpočetního prostředí.
-2. Zadejte název cílového výpočetního prostředí.
-3. Vyberte typ compute připojit pro vzdělávání.
+1. Klikněte na tlačítko **+** přihlášení k přidání cílového výpočetního prostředí
+2. Zadejte název cílové výpočetní prostředí
+3. Vyberte typ compute připojit pro __školení__
 
     > [!IMPORTANT]
     > Ne všechny výpočetní typy lze připojit pomocí portálu.
     > Aktuálně jsou typy, které je možné připojit k trénování:
     > 
-    > * Virtuální počítač
-    > * Batch AI
+    > * Vzdáleném virtuálním počítači
+    > * Databricks
+    > * Data Lake Analytics
+    > * HDInsight
 
-1. Vyberte možnost použít existující.
-    - Při připojování clustery Batch AI, z rozevíracího seznamu vyberte cílové výpočetní prostředí, vyberte pracovní prostor služby Batch AI a Batch AI Cluster a potom klikněte na tlačítko **vytvořit**.
-    - Při připojování virtuálního počítače, zadejte IP adresu, kombinace uživatelského jména a hesla, privátního nebo veřejného klíče a Port a klikněte na tlačítko vytvořit.
+1. Vyplňte požadované formuláře
 
     > [!NOTE]
     > Společnost Microsoft doporučuje používat klíče SSH jsou bezpečnější než hesla. Hesla jsou zranitelné vůči útokům hrubou silou klíče SSH využívají kryptografické podpisy. Informace o vytváření klíčů SSH pro použití s Azure Virtual Machines najdete v následujících dokumentech:
@@ -576,18 +551,17 @@ Postupujte podle výše uvedené kroky, chcete-li zobrazit seznam cílových vý
     > * [Vytvoření a použití klíčů SSH v Linuxu nebo macOS]( https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
     > * [Vytvoření a používání klíčů SSH na Windows]( https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
-5. Stav zřizování stavu můžete zobrazit výběrem cílového výpočetního prostředí v seznamu.
-6. Nyní můžete odeslat spuštění těchto cílů.
+1. Vyberte připojení
+1. Stav operace připojení můžete zobrazit výběrem cílového výpočetního prostředí v seznamu
+1. Nyní můžete odeslat běhu pro tyto cíle popsané výše
 
 ## <a name="examples"></a>Příklady
-Tyto poznámkové bloky předvedení konceptů v tomto článku:
-* [01.Getting-Started/02.Train-on-local/02.Train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
-* [01.Getting-Started/04.Train-on-Remote-VM/04.Train-on-Remote-VM.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm)
-* [01.Getting-Started/03.Train-on-aci/03.Train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci)
-* [01.Getting-Started/05.Train-in-Spark/05.Train-in-Spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark)
-* [tutorials/01.Train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
+Podívejte se poznámkových bloků v následujících umístěních:
+* [postupy-k-použití azureml a školení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)
 
-Získejte tyto poznámkové bloky: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+* [kurzy/img – klasifikace – část 1 – training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další postup
 

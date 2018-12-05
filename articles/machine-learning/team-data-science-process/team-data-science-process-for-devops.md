@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: af6468e0d9deb08d0a2902de2a6b413b4b9052b8
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 1eb651997f8b0c2c6a98daa1be4618e36e482dc7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447074"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869041"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Vědecké zpracování týmových dat pro operace pro vývojáře
 

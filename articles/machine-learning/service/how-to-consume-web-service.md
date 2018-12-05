@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
-ms.date: 10/30/2018
-ms.openlocfilehash: 58c1b53a4b97aad7b916e593fd4d6b52b51b7a52
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/03/2018
+ms.openlocfilehash: 9b3daca572140229bf2d38cd56f65ce44683f0f7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262895"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864396"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
@@ -100,7 +100,7 @@ Rozhraní REST API očekává, že text žádosti jako dokument JSON s následuj
 > [!IMPORTANT]
 > Strukturu dat musí odpovídat jaké hodnoticí skript a modelu v expect služby. Hodnoticí skript může upravit data před předáním do modelu.
 
-Například modelu v [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) příklad očekává, že pole 10 čísel. Hodnoticí skript v tomto příkladu vytvoří pole Numpy z požadavku a předává je do modelu. Následující příklad ukazuje data, která očekává, že tato služba:
+Například modelu v [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příklad očekává, že pole 10 čísel. Hodnoticí skript v tomto příkladu vytvoří pole Numpy z požadavku a předává je do modelu. Následující příklad ukazuje data, která očekává, že tato služba:
 
 ```json
 {
@@ -126,7 +126,7 @@ Webová služba může přijmout víc kopií dat v jedné žádosti. Vrátí dok
 
 ## <a name="call-the-service-c"></a>Volání služby (C#)
 
-Tento příklad ukazuje, jak používat C# k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) příkladu:
+Tento příklad ukazuje, jak používat C# k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příkladu:
 
 ```csharp
 using System;
@@ -215,7 +215,7 @@ Vrácené výsledky jsou podobné následující dokument JSON:
 
 ## <a name="call-the-service-go"></a>Volání služby (Přejít)
 
-Tento příklad ukazuje použití jazyka Go k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) příkladu:
+Tento příklad ukazuje použití jazyka Go k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příkladu:
 
 ```go
 package main
@@ -307,7 +307,7 @@ Vrácené výsledky jsou podobné následující dokument JSON:
 
 ## <a name="call-the-service-java"></a>Volání služby (Java)
 
-Tento příklad ukazuje použití Javy k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) příkladu:
+Tento příklad ukazuje použití Javy k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příkladu:
 
 ```java
 import java.io.IOException;
@@ -387,7 +387,7 @@ Vrácené výsledky jsou podobné následující dokument JSON:
 
 ## <a name="call-the-service-python"></a>Volání služby (Python)
 
-Tento příklad ukazuje použití Pythonu k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/01.train-within-notebook) příkladu:
+Tento příklad ukazuje použití Pythonu k volání webové služby vytvořené z [trénování v rámci poznámkového bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb) příkladu:
 
 ```python
 import requests

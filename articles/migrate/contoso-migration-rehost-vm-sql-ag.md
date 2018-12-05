@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 18041c95405614768845399f92efac229db53b20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ff8f5c51f17375208fdb32e521bfc85ee3f0c77
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250726"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880212"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálních počítačích Azure a skupiny dostupnosti AlwaysOn SQL serveru
 
@@ -186,11 +186,11 @@ Správce společnosti Contoso clusteru wmm nastavit takto:
     - Umístěte na počítače v podnikové síti USA – VÝCHOD 2 primární oblasti (**připojení typu VNET-PROD-EUS2**), v databázi podsítě (**PROD-DB-EUS2**).
     - Vytváření nové skupiny dostupnosti: **SQLAOGAVSET**s dvěma doménami selhání a pět aktualizačních domén.
 
-    ![VIRTUÁLNÍ POČÍTAČ S SQL](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
+      ![Virtuální počítač SQL](media/contoso-migration-rehost-vm-sql-ag/sql-vm-settings.png)
 
 4. V **nastavení systému SQL Server**, omezují SQL připojení k virtuální síti (privátní) na výchozím portu 1433. K ověřování používají stejné přihlašovací údaje, které používají místní (**contosoadmin**).
 
-    ![VIRTUÁLNÍ POČÍTAČ S SQL](media/contoso-migration-rehost-vm-sql-ag/sql-vm-db.png)
+    ![Virtuální počítač SQL](media/contoso-migration-rehost-vm-sql-ag/sql-vm-db.png)
 
 **Potřebujete další pomoc?**
 
@@ -235,11 +235,11 @@ Před nastavením clusteru, správce společnosti Contoso pořízení snímku di
 
 ![snímek](media/contoso-migration-rehost-vm-sql-ag/snapshot.png)
 
-2. Potom se spuštění skriptu jsme připravili dohromady a vytvoří Cluster převzetí služeb při selhání Windows.
+1. Potom se spuštění skriptu jsme připravili dohromady a vytvoří Cluster převzetí služeb při selhání Windows.
 
     ![Vytvoření clusteru](media/contoso-migration-rehost-vm-sql-ag/create-cluster1.png)
 
-3. Po jejich vytvoření clusteru, ověřte, že virtuální počítače jako uzly clusteru.
+2. Po jejich vytvoření clusteru, ověřte, že virtuální počítače jako uzly clusteru.
 
      ![Vytvoření clusteru](media/contoso-migration-rehost-vm-sql-ag/create-cluster2.png)
 
@@ -351,7 +351,7 @@ Správce společnosti Contoso tyto wmm nastavit takto:
     - Účet pro obecné účely používají úložiště úrovně standard a replikací LRS.
     - Účet musí být ve stejné oblasti jako trezor.
 
-    ![Site Recovery úložiště](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
+      ![Site Recovery úložiště](media/contoso-migration-rehost-vm-sql-ag/asr-storage.png)
 
 3. Pomocí účtu sítě a úložiště na místě, se nyní vytvořit trezor služby Recovery Services (**ContosoMigrationVault**) a umístěte ho **ContosoFailoverRG** skupinu prostředků, v primární oblasti USA – východ 2 .
 
@@ -403,15 +403,15 @@ Po převzetí služeb při selhání Contoso chce mít možnost se připojit k v
 
 1. Pro přístup přes internet jsou:
 
- - Povolte protokol RDP na místním virtuálním počítači před převzetí služeb při selhání
- - Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné** profilu.
- - Zkontrolujte, jestli je povolený protokol RDP v **brány Windows Firewall** > **povolené aplikace** pro všechny profily.
+   - Povolte protokol RDP na místním virtuálním počítači před převzetí služeb při selhání
+   - Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné** profilu.
+   - Zkontrolujte, jestli je povolený protokol RDP v **brány Windows Firewall** > **povolené aplikace** pro všechny profily.
  
 2. Pro přístup přes síť VPN typu site-to-site jsou:
 
- - Povolte na místním počítači protokol RDP.
- - Povolit RDP v **brány Windows Firewall** -> **povolené aplikace a funkce**, pro **doménovou a privátní** sítě.
- - Nastavit zásada SAN operačního systému na virtuálním počítači s místními **OnlineAll**.
+   - Povolte na místním počítači protokol RDP.
+   - Povolit RDP v **brány Windows Firewall** -> **povolené aplikace a funkce**, pro **doménovou a privátní** sítě.
+   - Nastavit zásada SAN operačního systému na virtuálním počítači s místními **OnlineAll**.
 
 Kromě toho při spuštění převzetí služeb při selhání potřebují zkontrolujte následující:
 

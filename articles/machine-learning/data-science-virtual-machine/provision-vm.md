@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 1b293ee8f0f83d727cd647cdcdcc424b4db7e5d3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c6314b4f53969b32040713df4834e5706d31be3a
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240881"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865348"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Zřídit Windows virtuální počítač pro datové vědy v Azure
 Microsoft Data virtuálního počítače VĚDY je image virtuálního počítače (VM) Windows Azure. Má předinstalované a nakonfigurovanou řadu nástrojů, které se používají pro analýzu dat a strojové učení. Tyto nástroje jsou zahrnuty:
@@ -77,7 +77,7 @@ K vytvoření instance z Microsoft virtuální počítač pro datové vědy, pos
 
     i. **Název**. Název serveru datové vědy vytváříte.  
 
-    II. **Typ disku virtuálního počítače**. Zvolte **SSD** nebo **HDD**. Instance NC_v1 GPU jako NVidia Tesla K80 na základě zvolte **HDD** jako typ disku.   
+    ii. **Typ disku virtuálního počítače**. Zvolte **SSD** nebo **HDD**. Instance NC_v1 GPU jako NVidia Tesla K80 na základě zvolte **HDD** jako typ disku.   
 
     III. **Uživatelské jméno**. ID účtu správce pro přihlášení.   
 
@@ -95,7 +95,7 @@ K vytvoření instance z Microsoft virtuální počítač pro datové vědy, pos
 
     i. **Použití spravovaných disků**. Zvolte **spravované** Pokud chcete Azure ke správě disků pro virtuální počítač. Pokud ne, je třeba zadat účet nového nebo existujícího úložiště.  
 
-    II. **Další parametry**. Můžete použít výchozí hodnoty. Pokud chcete použít jiný než výchozí hodnoty, najeďte myší na informační odkaz nápovědy pro konkrétní pole.  
+    ii. **Další parametry**. Můžete použít výchozí hodnoty. Pokud chcete použít jiný než výchozí hodnoty, najeďte myší na informační odkaz nápovědy pro konkrétní pole.  
 
   d. **Souhrn**. Ověřte, zda všechny informace, které jste zadali správný. Vyberte **Vytvořit**. 
 
@@ -150,7 +150,7 @@ Otevřít Visual Studio na něj poklikejte desktopových ikonu nebo **Start** na
 * Azure HDInsight Hadoop a Spark
 * Azure Data Lake 
 
-K dispozici je také modul plug-in volá ```Visual Studio Tools for AI``` , který hladce integruje do Azure Machine Learning a umožňuje rychle sestavovat aplikace AI. 
+K dispozici je také modul plug-in volá ```Azure Machine Learning for Visual Studio Code``` , který hladce integruje do Azure Machine Learning a umožňuje rychle sestavovat aplikace AI. 
 
 > [!NOTE]
 > Může se zobrazit zpráva, že vypršela platnost vašeho zkušebního období. Zadejte svoje přihlašovací údaje účtu Microsoft. Nebo vytvořte nový bezplatný účet, abyste získali přístup k Visual Studio Community. 

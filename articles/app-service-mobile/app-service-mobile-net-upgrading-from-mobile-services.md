@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 25eb5c732927dcfb18bfd92991391ff99d4e3629
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 2d346739cd2e80546aee921317e278c1cff32b34
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918254"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873134"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Upgrade existující mobilní služby Azure .NET do služby App Service
 Mobile App Service je nový způsob vytváření mobilních aplikací pomocí Microsoft Azure. Další informace najdete v tématu [co jsou Mobile Apps?].
@@ -68,7 +68,7 @@ Prvním krokem v rámci upgradu je vytvoření mobilní aplikace prostředku, kt
 
 V dalším kroku následujícím vytvořit druhou instanci aplikace [pokyny k vytvoření back-end .NET](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app). Po zobrazení výzvy vyberte plán služby App Service nebo "plán hostování" zvolte plán migrované aplikace.
 
-Pravděpodobně budete chtít použijte stejnou databázi a centra oznámení, jako jste to udělali v Mobile Services. Tyto hodnoty můžete zkopírovat tak, že otevřete [Azure Portal] a přejdete na původní aplikace, pak klikněte na tlačítko **nastavení** > **nastavení aplikace**. V části **připojovací řetězce**, kopie `MS_NotificationHubConnectionString` a `MS_TableConnectionString`. Přejděte na svůj nový web upgradu a vložte je do přepíše všechny existující hodnoty. Tento postup opakujte pro další nastavení aplikace požadavkům vašich aplikací. Pokud nepoužíváte migrovanou službu, si můžete přečíst připojovací řetězce a nastavení aplikace z **konfigurovat** kartu části Mobile Services [Azure Classic].
+Pravděpodobně budete chtít použijte stejnou databázi a centra oznámení, jako jste to udělali v Mobile Services. Tyto hodnoty můžete zkopírovat tak, že otevřete [Azure Portal] a přejdete na původní aplikace, pak klikněte na tlačítko **nastavení** > **nastavení aplikace**. V části **připojovací řetězce**, kopie `MS_NotificationHubConnectionString` a `MS_TableConnectionString`. Přejděte na svůj nový web upgradu a vložte je do přepíše všechny existující hodnoty. Tento postup opakujte pro další nastavení aplikace požadavkům vašich aplikací. Pokud nepoužíváte migrovanou službu, si můžete přečíst připojovací řetězce a nastavení aplikace z **konfigurovat** kartu části Mobile Services [Portál Azure Classic].
 
 Provedete kopii projektu ASP.NET pro aplikaci a publikujete ji na svůj nový web. Pomocí zkopírovat klientské aplikace aktualizovat novou adresu URL, ověřte, že vše funguje podle očekávání.
 
@@ -84,18 +84,23 @@ Bude existovat mnoho chyb kompilátoru vyplývající z rozdíly mezi sad SDK, a
 ### <a name="base-configuration"></a>Základní konfigurace
 Pak v WebApiConfig.cs, můžete nahradit:
 
-        // Use this class to set configuration options for your mobile service
-        ConfigOptions options = new ConfigOptions();
+```csharp
+// Use this class to set configuration options for your mobile service
+ConfigOptions options = new ConfigOptions();
 
-        // Use this class to set WebAPI configuration options
-        HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
+// Use this class to set WebAPI configuration options
+HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
+```
 
 with
 
-        HttpConfiguration config = new HttpConfiguration();
-        new MobileAppConfiguration()
-            .UseDefaultConfiguration()
-        .ApplyTo(config);
+```csharp
+HttpConfiguration config = new HttpConfiguration();
+new MobileAppConfiguration()
+    .UseDefaultConfiguration()
+.ApplyTo(config);
+
+```
 
 > [!NOTE]
 > Pokud chcete další informace o nové sadě SDK serveru .NET a postup přidání nebo odebrání funkcí z vaší aplikace, naleznete [jak používat sadu SDK serveru .NET] tématu.
@@ -110,8 +115,10 @@ Pokud vaše aplikace provádí pomocí funkce ověřování, budete také muset 
 
 Ujistěte se, že `Configuration()` končí metody:
 
-        app.UseWebApi(config)
-        app.UseAppServiceAuthentication(config);
+```csharp
+app.UseWebApi(config)
+app.UseAppServiceAuthentication(config);
+```
 
 Existují další změny související s ověřováním, které jsou popsané v následující části úplného ověření.
 
@@ -120,7 +127,9 @@ V Mobile Services mobilní aplikace název pracoval jako výchozí název schém
 
 Abyste měli jistotu, že máte stejné schéma, na kterou se odkazuje jako dříve, použijte následující nastavení schématu v DbContext pro vaši aplikaci:
 
-        string schema = System.Configuration.ConfigurationManager.AppSettings.Get("MS_MobileServiceName");
+```csharp
+string schema = System.Configuration.ConfigurationManager.AppSettings.Get("MS_MobileServiceName");
+```
 
 Ujistěte se prosím, že máte MS_MobileServiceName nastavte, pokud provedete výše. Pokud dříve vaší aplikace tím přizpůsobené můžete také zadat jiný název schématu.
 
@@ -140,7 +149,7 @@ Ve službě Azure Mobile Apps systémové vlastnosti už mají zvláštní form�
 * createdAt
 * updatedAt
 * odstraněna
-* verze
+* version
 
 Mobile Apps klientské sady SDK pomocí nové názvy vlastností systému, takže nejsou potřeba pro klientský kód žádné změny. Ale pokud provádíte přímo volání REST pro vaši službu pak by měl změnit své dotazy odpovídajícím způsobem.
 
@@ -156,7 +165,7 @@ V systémech iOS měli byste změnit schéma základních dat pro entity dat tak
 | id |Řetězec, označen jako požadovaný |primární klíč do vzdáleného úložiště |
 | createdAt |Datum |(volitelné) mapuje na vlastnost createdAt systému |
 | updatedAt |Datum |(volitelné) mapuje na vlastnost updatedAt systému |
-| verze |Řetězec |(volitelné) použít k detekci konfliktů, mapuje se na verzi |
+| version |Řetězec |(volitelné) použít k detekci konfliktů, mapuje se na verzi |
 
 #### <a name="querying-system-properties"></a>Dotazování na vlastnosti systému
 Ve službě Azure Mobile Services se neodesílají vlastnosti systému, ve výchozím nastavení, ale pouze v případě, že pochází pomocí řetězce dotazu `__systemProperties`. Naproti tomu v systému Azure Mobile Apps jsou vlastnosti **vždycky vybraná** vzhledem k tomu, že jsou součástí objektového modelu serveru SDK.
@@ -167,28 +176,30 @@ Nejjednodušší způsob, jak tento problém je upravit vaše DTO tak, aby se d�
 
 Například následující definuje `TodoItem` bez vlastností systému:
 
-    using System.ComponentModel.DataAnnotations.Schema;
+```csharp
+using System.ComponentModel.DataAnnotations.Schema;
 
-    public class TodoItem : ITableData
-    {
-        public string Text { get; set; }
+public class TodoItem : ITableData
+{
+    public string Text { get; set; }
 
-        public bool Complete { get; set; }
+    public bool Complete { get; set; }
 
-        public string Id { get; set; }
+    public string Id { get; set; }
 
-        [NotMapped]
-        public DateTimeOffset? CreatedAt { get; set; }
+    [NotMapped]
+    public DateTimeOffset? CreatedAt { get; set; }
 
-        [NotMapped]
-        public DateTimeOffset? UpdatedAt { get; set; }
+    [NotMapped]
+    public DateTimeOffset? UpdatedAt { get; set; }
 
-        [NotMapped]
-        public bool Deleted { get; set; }
+    [NotMapped]
+    public bool Deleted { get; set; }
 
-        [NotMapped]
-        public byte[] Version { get; set; }
-    }
+    [NotMapped]
+    public byte[] Version { get; set; }
+}
+```
 
 Poznámka: Pokud dojde k chybám `NotMapped`, přidejte odkaz na sestavení `System.ComponentModel.DataAnnotations`.
 
@@ -208,12 +219,16 @@ Nyní musí mít všechny ApiControllers, které budou využívat mobilní klien
 
 `ApiServices` Objekt již není součástí sady SDK. Pro přístup k nastavení mobilní aplikace, můžete použít následující:
 
-    MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+```csharp
+MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+```
 
 Obdobně protokolování se teď provádí pomocí standardní zápis trasování ASP.NET:
 
-    ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
-    traceWriter.Info("Hello, World");  
+```csharp
+ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
+traceWriter.Info("Hello, World");  
+```
 
 ## <a name="authentication"></a>Důležité informace o ověřování
 Ověření součástí Mobile Services nyní byly přesunuty do funkce ověřování/autorizace služby App Service. Informace o povolení této pro svůj web najdete [přidání ověřování do vaší mobilní aplikace](app-service-mobile-ios-get-started-users.md) tématu.
@@ -227,11 +242,15 @@ Pokud používáte některou jinou AuthorizeLevel možnosti, jako je například
 ### <a name="getting-additional-user-information"></a>Získání dalších informací o uživatelích
 Můžete získat další uživatelské informace, včetně přístupových tokenů prostřednictvím `GetAppServiceIdentityAsync()` metody:
 
-        FacebookCredentials creds = await this.User.GetAppServiceIdentityAsync<FacebookCredentials>();
+```csharp
+FacebookCredentials creds = await this.User.GetAppServiceIdentityAsync<FacebookCredentials>();
+```
 
 Navíc pokud vaše aplikace má závislosti uživatelské ID, jako je například ukládání do databáze, je důležité si uvědomit, že ID uživatelů mezi službami Mobile Services a App Service Mobile Apps se liší. Stále získáte ID uživatele Mobile Services, ale. Všechny podtřídy ProviderCredentials mít vlastnost ID uživatele. Proto budete pokračovat v příkladu před:
 
-        string mobileServicesUserId = creds.Provider + ":" + creds.UserId;
+```csharp
+string mobileServicesUserId = creds.Provider + ":" + creds.UserId;
+```
 
 Pokud vaše aplikace provést všechny závislosti na ID uživatele, je důležité, pokud je to možné využívat stejné registrace pomocí zprostředkovatele identity. ID uživatelů mají obvykle rozsah registrace aplikace, která byla použita, takže Představujeme nové registrace může způsobit problémy s odpovídající uživatelé na svá data.
 
@@ -243,9 +262,11 @@ Jakmile budete mít provozní back-endu mobilní aplikace, můžete pracovat na 
 
 Jedním z hlavních změn mezi verzemi je, že konstruktory už nevyžadují klíč aplikace. Nyní jednoduše předáváte v adrese URL vaší mobilní aplikace. Například u klientů .NET `MobileServiceClient` je konstruktor:
 
-        public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://contoso.azurewebsites.net", // URL of the Mobile App
-        );
+```csharp
+public static MobileServiceClient MobileService = new MobileServiceClient(
+    "https://contoso.azurewebsites.net", // URL of the Mobile App
+);
+```
 
 Další informace o instalaci nové sady SDK a použití novou strukturu prostřednictvím následujících odkazů:
 
@@ -259,17 +280,12 @@ Až budete mít novou verzi klienta, která je připravená, vyzkoušejte si to 
 <!-- URLs. -->
 
 [Azure Portal]: https://portal.azure.com/
-[Azure Classic]: https://manage.windowsazure.com/
+[Portál Azure Classic]: https://manage.windowsazure.com/
 [Co jsou Mobile Apps?]: app-service-mobile-value-prop.md
-[I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
 [Mobilní aplikace Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
-[Create a Mobile App]: app-service-mobile-xamarin-ios-get-started.md
-[Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /azure/scheduler/
 [Webovou úlohu]: https://github.com/Azure/azure-webjobs-sdk/wiki
 [Jak používat sadu SDK serveru .NET]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
-[Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [Ceny služeb App Service]: https://azure.microsoft.com/pricing/details/app-service/
 [Přehled sady .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

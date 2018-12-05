@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 950ab0b07a97c044b124e56c8d43b79aae29ec88
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: cd4fe69ad42c384bcd8494bd314737ef47905a53
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721268"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868034"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -126,4 +126,4 @@ Po omezenou dobu, budete k němu přístup portálu přes tuto adresu URL s vlas
 ## <a name="next-steps"></a>Další postup
 
 - [Najít a nainstalovat řešení pro správu](../azure-monitor/insights/solutions.md) pomocí webu Azure portal.
-- Další informace o [prohledávání protokolů na webu Azure Portal](log-analytics-log-search-portals.md).
+- Další informace o [prohledávání protokolů na webu Azure Portal](../azure-monitor/log-query/portals.md).

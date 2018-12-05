@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 9dead2c8801340a736b6f67010a85f3dd34fbe85
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 5f52dfb4547cfac991387d333c3f5684544d691f
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51820252"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877506"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do služby Azure App Service
 V tomto článku se dozvíte, jak nakonfigurovat průběžné nasazování pro [služby Azure App Service](app-service-web-overview.md). App Service umožňuje průběžné nasazování z Bitbucketu, Githubu, a [Azure DevOps služby](https://www.visualstudio.com/team-services/) stažením nejnovější aktualizace z existující úložiště v některé z těchto služeb.
@@ -47,7 +47,7 @@ V **sestavení zprostředkovatele** stránce, zvolte poskytovatele sestavení a 
 
 V **konfigurovat** vyberte organizace, úložiště a větev, ze kterých chcete průběžné nasazování. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
-### <a name="option-2-use-azure-devops-services-continuous-delivery"></a>Možnost 2: použití průběžného doručování služeb Azure DevOps
+### <a name="option-2-use-azure-pipelines-preview"></a>Možnost 2: použití kanály Azure (preview)
 
 > [!NOTE]
 > Pro službu App Service k vytváření kanálů nezbytné Azure ve vaší organizaci Azure DevOps služby, musí váš účet Azure mít roli **vlastníka** ve vašem předplatném Azure.
@@ -90,15 +90,18 @@ V **Souhrn** stránky, zkontrolujte možnosti a klikněte na tlačítko **Dokon�
 
 Po dokončení konfigurace jsou nová potvrzení změn na vybrané úložiště průběžně nasazené do aplikace služby App Service.
 
-## <a name="deploy-continuously-from-azure-devops-services"></a>Průběžné nasazování služby Azure DevOps
+## <a name="deploy-continuously-from-azure-repos-devops-services"></a>Průběžné nasazování z úložiště Azure (DevOps služby)
 
-Pokud chcete povolit průběžné nasazování se službou Azure DevOps služby, přejděte na stránku aplikace služby App Service v [webu Azure portal](https://portal.azure.com).
+Povolit průběžné nasazování se službou z [úložišť Azure](https://docs.microsoft.com/azure/devops/repos/index), přejděte na stránku aplikace služby App Service v [webu Azure portal](https://portal.azure.com).
 
-V nabídce vlevo klikněte na tlačítko **Deployment Center** > **Azure DevOps služby** > **pokračovat**. 
+V nabídce vlevo klikněte na tlačítko **Deployment Center** > **úložišť Azure** > **pokračovat**. 
 
 ![](media/app-service-continuous-deployment/vsts-choose-source.png)
 
 V **sestavení zprostředkovatele** stránce, zvolte poskytovatele sestavení a klikněte na > **pokračovat**.
+
+> [!NOTE]
+> Pokud chcete použít existující služby Azure DevOps organizace, která není uvedená, budete muset [propojení organizace služby Azure DevOps s předplatným Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 ### <a name="option-1-use-app-service-kudu-build-server"></a>Možnost 1: použití serveru sestavení App Service Kudu
 
@@ -111,9 +114,6 @@ V **konfigurovat** vyberte Azure DevOps servisní organizaci, projekt, úložiš
 >
 
 V **konfigurovat** stránku, **kód** vyberte Azure DevOps servisní organizaci, projekt, úložiště a větev, ze kterých chcete průběžné nasazování. Až budete hotovi, klikněte na tlačítko **pokračovat**.
-
-> [!NOTE]
-> Pokud chcete použít existující služby Azure DevOps organizace, která není uvedená, budete muset [propojení organizace služby Azure DevOps s předplatným Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 V **konfigurovat** stránku, **sestavení** nastavte jazyk rozhraní, Azure DevOps služby by měl použít k provedení úlohy buildu pro vybrané úložiště. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
@@ -146,11 +146,11 @@ V nabídce vlevo klikněte na tlačítko **Deployment Center** > **Githubu** neb
 * [Použití Azure k automatickému generování kanálu CI/CD pro nasazení aplikace ASP.NET 4](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
 
 [Azure portal]: https://portal.azure.com
-[VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
+[Azure DevOps portal]: https://azure.microsoft.com/services/devops/
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
 [Způsob používání prostředí PowerShell pro Azure]: /powershell/azureps-cmdlets-docs
 [Dokumentace pro Git]: http://git-scm.com/documentation
 
 [Vytvoření úložiště (GitHub)]: https://help.github.com/articles/create-a-repo
 [Vytvoření úložiště (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
-[Začínáme se službami Azure DevOps]: https://www.visualstudio.com/docs/vsts-tfs-overview
+[Začínáme se službami Azure DevOps]: https://docs.microsoft.com/azure/devops/user-guide/devops-alm-overview

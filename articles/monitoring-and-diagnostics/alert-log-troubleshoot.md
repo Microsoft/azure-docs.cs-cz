@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 0612a7798d3cc2e43efc296bd2b749735e74f765
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 94c03c9aa6e361167b396af5218b308e6cacfafe
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720843"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879804"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
 ## <a name="overview"></a>Přehled
@@ -30,7 +30,7 @@ Termín **upozornění protokolů** popisuje výstrahy, fire podle vlastního do
 Tady je několik běžných příčin, proč nakonfigurovaného [pravidel upozornění protokolů ve službě Azure Monitor](alert-log.md) nezobrazí stav [jako *aktivuje* očekával](monitoring-alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Doba příjem dat protokolů
-Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Protože Log Analytics zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [doba příjem dat v Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
+Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Protože Log Analytics zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [doba příjem dat v Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
 
 Ke zmírnění zpoždění příjmu dat, systému vyčká a pokusí znovu výstraha dotazu více než jednou pokud zjistí, že zatím není přijatých potřebná data. Systém má exponenciálně rostoucím čekací doba nastavena. Protokol výstrah pouze aktivační události po dat je k dispozici, takže jejich zpoždění může být způsobeno ingestování protokol pomalých operací. 
 
@@ -56,17 +56,17 @@ Předpokládejme například, že pravidel upozornění protokolů měření met
 - alert logic tří po sobě jdoucí porušení
 - Agregace: při vybrána jako $table
 
-Vzhledem k tomu, že příkaz zahrnuje *... vytvořit souhrn podle* a k dispozici dvě proměnné (časové razítko & $table), systém zvolí $table na "Agregační po". Seřadí tabulku výsledků podle pole *$table* jak je znázorněno níže a poté hledá v několika AggregatedValue pro každý typ tabulky (například availabilityResults) Chcete-li zobrazit, pokud došlo po sobě jdoucí porušení 3 nebo více.
+Vzhledem k tomu, že příkaz zahrnuje *vytvořit souhrn podle* a k dispozici dvě proměnné (časové razítko & $table), systém zvolí $table na agregované po. Seřadí tabulku výsledků podle pole *$table* jak je znázorněno níže a poté hledá v několika AggregatedValue pro každý typ tabulky (například availabilityResults) Chcete-li zobrazit, pokud došlo po sobě jdoucí porušení 3 nebo více.
 
 ![Metriky měření provádění dotazu s více hodnotami](./media/monitor-alerts-unified/LogMMQuery.png)
 
-"Agregační po" je $table – data je seřazená podle sloupce $table (stejně jako v RED); Potom jsme skupině a hledat typy pole "Agregační po" (to znamená) $table – například: hodnoty pro availabilityResults bude považovat za jeden vykreslení na entitu (jako ve zvýrazněných oranžovou). V tuto zobrazovanou hodnotu/entitu – služba upozornění kontroluje tří po sobě jdoucí porušení, ke kterým dochází (jako je uvedené v zelené) pro výstrahy, které se aktivují pro tabulkovou hodnotu "availabilityResults". Podobně pokud se pro jakoukoli jinou hodnotu $table Pokud jsou tři po sobě jdoucí porušení - další oznámení se budou aktivovat pro stejnou věc; pomocí výstrah služby automaticky řazení hodnot v jedné vykreslení na entitu (jako oranžová) podle času.
+Je agregované po $table dat je seřazená podle sloupce $table (stejně jako v RED); pak můžeme skupině a hledat typy pole agregované po (to znamená) $table například: hodnoty pro availabilityResults bude považovat za jeden vykreslení na entitu (jako ve zvýrazněných oranžovou). V tuto zobrazovanou hodnotu/entitu služba upozornění kontroluje tří po sobě jdoucí porušení, ke kterým dochází (jako je uvedené v zelené) pro výstrahy, které se aktivují pro tabulkovou hodnotu "availabilityResults". Podobně pokud se pro jakoukoli jinou hodnotu $table Pokud jsou tři po sobě jdoucí porušení - další oznámení se budou aktivovat pro stejnou věc; pomocí výstrah služby automaticky řazení hodnot v jedné vykreslení na entitu (jako oranžová) podle času.
 
-Nyní předpokládejme, že metriky měření úpravy pravidel upozornění protokolů a byl dotaz `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` se zbytkem config zbývající stejná jako před zahrnutím logika upozornění pro tři po sobě jdoucí porušení. Možnost "Agregace při" v tomto případě bude ve výchozím nastavení: časové razítko. Protože zadat pouze jednu hodnotu v dotazu pro souhrn... (to znamená) časové razítko; podobný předchozímu příkladu na konci provádění výstup by měl jak je znázorněno níže. 
+Nyní předpokládejme, že metriky měření úpravy pravidel upozornění protokolů a byl dotaz `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` se zbytkem config zbývající stejná jako před zahrnutím logika upozornění pro tři po sobě jdoucí porušení. Možnost "Agregace při" v tomto případě bude ve výchozím nastavení: časové razítko. Protože zadat pouze jednu hodnotu v dotazu pro vytvořit souhrn podle timestamp (to znamená); podobný předchozímu příkladu na konci provádění výstup by měl jak je znázorněno níže. 
 
    ![Metriky měření provádění dotazu s hodnotou singulární](./media/monitor-alerts-unified/LogMMtimestamp.png)
 
-"Agregační po" je časové razítko – data je seřazená podle sloupec časového razítka (jako v RED); Potom jsme Seskupit podle časového razítka – například: hodnoty `2018-10-17T06:00:00Z` se považuje za jednu vykreslení na entitu (jako ve zvýrazněných oranžovou). V tuto zobrazovanou hodnotu/entitu – bude služba upozornění najít žádné po sobě jdoucí porušení vyskytujících (protože každá hodnota časového razítka má pouze jedna položka) a proto výstrahy se nikdy se aktivují. Proto v takovém případě uživatel musí buď-
+Protože agregační po časové razítko data seřadí na sloupec časového razítka (jako v RED); pak seskupíme pomocí časového razítka, například: hodnoty `2018-10-17T06:00:00Z` se považuje za jednu vykreslení na entitu (jako ve zvýrazněných oranžovou). V tuto zobrazovanou hodnotu/entitu najdete služba upozornění, že žádné po sobě jdoucí porušení vyskytujících (protože každá hodnota časového razítka má pouze jedna položka) a proto výstrahy se nikdy se aktivují. Proto v takovém případě uživatel musí buď-
 - Přidejte fiktivní proměnnou nebo existující proměnnou (například $table) správně řazení Hotovo pomocí "Aggregate po" pole nakonfigurovaná
 - (Nebo) znovu nakonfigurovat pravidlo upozornění na použití logika upozornění na základě *celkový počet porušení* místo toho správně
  
@@ -74,7 +74,7 @@ Nyní předpokládejme, že metriky měření úpravy pravidel upozornění prot
 Další podrobné jsou některé běžné důvody, proč nakonfigurovaného [pravidel upozornění protokolů ve službě Azure Monitor](alert-log.md) můžou být vyvolány v [Azure Alerts](monitoring-alerts-managing-alert-states.md), když jste Neočekáváme, že se nebudou vydány.
 
 ### <a name="alert-triggered-by-partial-data"></a>Výstraha se aktivuje částečná data
-Provozování Log Analytics a Application Insights Analytics podléhají zpoždění ingestování a zpracování. to v době při spuštění dotaz na upozornění protokolu zadaná - může být případ žádná data k dispozici nebo jenom některá data, které jsou k dispozici. Další informace najdete v tématu [doba příjem dat v Log Analytics](../log-analytics/log-analytics-data-ingestion-time.md).
+Provozování Log Analytics a Application Insights Analytics podléhají zpoždění ingestování a zpracování. to v době při spuštění dotaz na upozornění protokolu zadaná - může být případ žádná data k dispozici nebo jenom některá data, které jsou k dispozici. Další informace najdete v tématu [doba příjem dat v Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
 
 V závislosti na konfiguraci pravidla upozornění, může mít chybné spalování neexistuje žádná data nebo částečná data v protokolech v době spuštění výstrahy. V takovém případě doporučujeme vám změnit dotaz na upozornění nebo konfigurace. 
 
@@ -83,7 +83,7 @@ Například, pokud je nakonfigurovaný pravidel upozornění protokolů aktivova
 ### <a name="alert-query-output-misunderstood"></a>Dotaz na upozornění výstupu nesprávně pochopeny
 Poskytuje logiku pro výstrahy protokolu v dotazu analytics. Analytický dotaz může používat různé velké objemy dat a matematických funkcí.  Výstrahy služby provede dotaz na zadaných s daty pro zadané časové období. Výstrahy služby díky malých změn zadaný dotaz podle typu výstrahy zvolili. To lze zobrazit v části "Dotazu má být proveden" *konfigurovat logiku signálů* obrazovky, jak je znázorněno níže: ![provedení dotazu](./media/monitor-alerts-unified/LogAlertPreview.png)
  
-Jak ukazuje příklad **dotaz, který se spustí** pole je, cokoli běží služba upozornění protokolu. Můžete spustit stanovených dotazu, stejně jako timespan prostřednictvím [portál Analytics](../log-analytics/log-analytics-log-search-portals.md) nebo [rozhraní API pro analýzu](https://docs.microsoft.com/rest/api/loganalytics/) Pokud chcete pochopit, co výstraha dotazu výstup, může být před samotným vytvořením výstrahy.
+Jak ukazuje příklad **dotaz, který se spustí** pole je, cokoli běží služba upozornění protokolu. Můžete spustit stanovených dotazu, stejně jako timespan prostřednictvím [portál Analytics](../azure-monitor/log-query/portals.md) nebo [rozhraní API pro analýzu](https://docs.microsoft.com/rest/api/loganalytics/) Pokud chcete pochopit, co výstraha dotazu výstup, může být před samotným vytvořením výstrahy.
  
 ## <a name="next-steps"></a>Další postup
 
