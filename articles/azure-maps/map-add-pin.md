@@ -1,82 +1,74 @@
 ---
-title: Přidat symboly a značky s Azure Maps | Dokumentace Microsoftu
-description: Postup přidání symboly a značky k mapě jazyka Javascript
-author: walsehgal
-ms.author: v-musehg
-ms.date: 10/30/2018
+title: Přidat vrstvu symbolů ke službě Azure Maps | Dokumentace Microsoftu
+description: Postup přidání symboly mapy jazyka Javascript
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/2/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c56ac35f49c364b7b0f2ad26b82b178411419414
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c921d9bed666e428779a125c17591c65ad690f1c
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282681"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888932"
 ---
-# <a name="add-symbols-and-markers-to-a-map"></a>Přidejte na mapu symboly a značky
+# <a name="add-a-symbol-layer-to-a-map"></a>Přidat vrstvu symbolů do mapy
 
-Tento článek ukazuje, jak přidat do mapy pomocí zdroje dat symboly a značky.
+Tento článek popisuje, jak může vykreslit data bodu ze zdroje dat jako Symbol vrstvu na mapě. Symbol vrstvy jsou vykreslovány pomocí WebGL a podporují výrazně větší počet datových bodů než značky HTML, ale nepodporují pro používání stylů pro tradiční prvky šablon stylů CSS a HTML.  
 
-## <a name="add-a-symbol-marker"></a>Přidání značky symbolů
+> [!TIP]
+> Vykreslí souřadnice všechny geometrie ve zdroji dat se vrstvy symbol ve výchozím nastavení. K omezení vrstvu tak, aby pouze vykreslí bod geometrie funkce set `filter` vlastnost vrstva `['==', '$type', 'Point']`
+
+## <a name="add-a-symbol-layer"></a>Přidat vrstvu symbol
 
 <iframe height='500' scrolling='no' title='Připnout umístění přepínače' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>přepínač připnout umístění</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 První blok výše uvedený kód vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
-V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. Bod je pak vytvořen a přidán do zdroje dat. Bod je [funkce](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) z [bodu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest).
+V druhém bloku kódu, je vytvořen objekt zdroje dat pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy. [Funkce], který obsahuje [bodu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) geometrii je uzavřena v [tvar](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) třídy, aby bylo snazší, pokud chcete aktualizovat, pak vytvořen a přidán do zdroje dat.
 
 Vytvoří třetí bloku kódu [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) a aktualizace souřadnice bodu po myši klikněte na tlačítko horizontálních oddílů pomocí třídy tvar [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest#setcoordinates) metoda.
 
 A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě.  Zdroj dat, naslouchací proces událostí kliknutím a vrstvě symbol vytvořen a přidán do mapování v rámci [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že po načtení mapy plně, zobrazí se místo.
 
-## <a name="add-a-custom-symbol"></a>Přidat vlastní symbol
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>Přidat vlastní ikonu na vrstvu symbol
 
-<iframe height='500' scrolling='no' title='Zdroj dat ve formátu HTML' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/qJVgMx/'>HTML DataSource</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+Symbol vrstvy jsou vykreslovány pomocí WebGL. Jako takové všechny prostředky, jako jsou obrázky ikon musí být načtena do kontextu WebGL. Tento příklad ukazuje, jak přidat vlastní symbol ikonu mapování prostředků a použít jej k vykreslení bodu data pomocí vlastní symbol na mapě. `textField` Vlastnost vrstvy symbol vyžaduje výraz, který se zadat. V tomto případě chceme vykreslení vlastnost teploty funkci bodu jako textové hodnoty. Toho lze dosáhnout pomocí tento výraz: `['get', 'temperature']`. 
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Obrázek ikony vlastní Symbol' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>vlastní Symbol obrázek ikony</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
+## <a name="customize-a-symbol-layer"></a>Přizpůsobení symbol vrstvy 
 
-Druhý bloku kódu přidá [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) na mapy pomocí [značky](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) vlastnost [mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) třídy. HtmlMarker se přidávají do mapy v rámci [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že se zobrazí po načtení mapy plně.
+Symbol vrstva obsahuje mnoho možností stylu. Tady je nástroj pro testování si tyto různé možnosti používání stylů pro.
 
-## <a name="add-bubble-markers"></a>Přidat bublinové značky
+<br/>
 
-<iframe height='500' scrolling='no' title='Zdroj dat BubbleLayer' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Možnosti symbolu vrstvy' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/PxVXje/'>Symbol možností vrstvy</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
-
-Ve výše uvedeném kódu první blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
-
-V druhém bloku kódu, je definován pole pozic a [MultiPoint](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.multipoint?view=azure-iot-typescript-latest) je vytvořen objekt. Objekt zdroje dat se pak vytvoří pomocí [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy a MultiPoint objekt se přidá ke zdroji dat.
-
-A [bublinu vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) vykreslí zabalené v datového bodu [zdroj dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kruhy na mapě. Poslední blok kódu vytvoří bublinu vrstvy a přidá jej do mapy. Zobrazit vlastnosti vrstvy na bublinu [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
-
-Vytvořen a přidán do mapování v rámci MultiPoint objektu, zdroje dat a vrstvy bublinu [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce zajistit, že po načtení mapy plně, zobrazí se kruh.
-
-## <a name="add-bubble-markers-with-label"></a>Přidat bublinové značky s popiskem
-
-<iframe height='500' scrolling='no' title='Zdroj dat s více vrstvami' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>MultiLayer DataSource</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-Výše uvedený kód se dozvíte, jak vizualizovat a popisku dat na mapě. První blok výše uvedený kód vytvoří objekt map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
-
-Vytvoří druhý bloku kódu, [bodu](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) objektu. Poté vytvoří objekt zdroje dat pomocí [zdroj dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) třídy a přidá do zdroje dat je bod.
-
-A [bublinu vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) vykreslí zabalené v datového bodu [zdroj dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako kruhy na mapě. Třetí bloku kódu vytvoří bublinu vrstvy a přidá jej do mapy. Zobrazit vlastnosti vrstvy na bublinu [BubbleLayerOptions](/javascript/api/azure-maps-control/atlas.bubblelayeroptions).
-
-A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) používá k vykreslení dat na základě bodu zabalené v textu nebo ikony [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symboly na mapě. Poslední blok kódu vytvoří a přidává další vrstvu symbol, který vykreslí textový popisek pro bublin mapy. Zobrazit vlastnosti vrstvy symbolu v [SymbolLayerOptions](/javascript/api/azure-maps-control/atlas.symbollayeroptions).
-
-Vytvořen a přidán do mapování v rámci zdroje dat a vrstvy [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) funkce, která se ujistěte, že data se zobrazí po načtení mapy plně.
-
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o třídy a metody používané v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [TexTOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
 
 Naleznete v následujících článcích pro další ukázky kódu pro přidání do vaše mapy:
 
@@ -85,3 +77,9 @@ Naleznete v následujících článcích pro další ukázky kódu pro přidán�
 
 > [!div class="nextstepaction"]
 > [Přidání obrazce](./map-add-shape.md)
+
+> [!div class="nextstepaction"]
+> [Přidat vrstvu bublinový](./map-add-bubble-layer.md)
+
+> [!div class="nextstepaction"]
+> [Přidat tvůrci HTML](./map-add-bubble-layer.md)
