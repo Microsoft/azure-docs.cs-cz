@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: bc88ca63f14c5480210455abcf403771b6a4c232
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: ef4a445539efa27ebd154980a4ea8b70b5aba082
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264120"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956904"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního hledání pomocí dovedností a ukázkových dat
 
@@ -30,18 +30,18 @@ V tomto rychlém startu si můžete vyzkoušet kanál pro rozšiřování na por
 
 Kognitivní hledání si můžete vyzkoušet ve službě Azure Search vytvořené v následujících oblastech:
 
-* Západní USA – střed
-* USA (střed) – jih
+* Západní střed USA
+* Střed USA – jih
 * USA – východ
-* USA – východ 2
-* Západní USA 2
-* Střední Kanada
+* Východní USA 2
+* USA – západ 2
+* Kanada – střed
 * Západní Evropa
-* Spojené království – jih
+* Velká Británie – jih
 * Severní Evropa
 * Brazílie – jih
 * Jihovýchodní Asie
-* Indie – střed
+* Střed Indie
 * Austrálie – východ
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -66,7 +66,7 @@ Nejdříve se do služby Azure Search přihlaste.
 
 1. Klikněte na **Vytvořit prostředek**, vyhledejte Azure Search a klikněte na **Vytvořit**. Pokud službu Search nastavujete poprvé a potřebujete ještě pomoc, přečtěte si informace v článku [Vytvoření služby Azure Search na portálu](search-create-service-portal.md).
 
-  ![Portál řídicího panelu](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Vytvoření služby Azure Search na portálu")
+  ![Portál řídicího panelu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Vytvoření služby Azure Search na portálu")
 
 1. V části Skupina prostředků vytvořte skupinu prostředků, která bude obsahovat všechny prostředky vytvořené během tohoto rychlého startu. To usnadní čištění prostředků, až rychlý start dokončíte.
 
@@ -76,12 +76,14 @@ Nejdříve se do služby Azure Search přihlaste.
 
   Bezplatná služba je omezená na 3 indexy, 16 MB maximální velikosti objektu blob a 2 minuty indexování, což pro úplné využití funkcí kognitivního hledání nestačí. Pokud se chcete podívat na limity pro jednotlivé úrovně, najdete je v článku o [limitech služeb](search-limits-quotas-capacity.md).
 
+  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service1.png "stránku definice služby na portálu")
+  ![stránku definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "stránku definice služby v na portálu")
   > [!NOTE]
   > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Cenu této funkce oznámíme později.
 
 1. Pokud chcete mít k informacím o službě rychlý přístup, připněte si službu na řídicí panel.
 
-  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service.png "Stránka definice služby na portálu")
+  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Stránka definice služby na portálu")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Nastavení služby Azure Blob a načtení ukázkových dat
 
@@ -103,7 +105,7 @@ Přejděte zpátky na stránku řídicího panelu služby Azure Search a na pane
 
 V části **Připojení k datům** > **Azure Blob Storage** vyberte účet a kontejner, které jste vytvořili. Zadejte název pro zdroj dat a u ostatních položek nechejte výchozí hodnoty. 
 
-   ![Konfigurace služby Azure Blob](./media/cognitive-search-quickstart-blob/blob-datasource.png)
+   ![Konfigurace služby Azure Blob](./media/cognitive-search-quickstart-blob/blob-datasource2.png)
 
 
 Kliknutím na tlačítko **OK** vytvořte zdroj dat.

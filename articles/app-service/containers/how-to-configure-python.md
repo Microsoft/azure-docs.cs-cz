@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 9474b2d64c97b6e6d0fc06c3c448fa6e0515e70c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 22afdc0ae483959940776aecd20b0a29854097d9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633644"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970752"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Konfigurace aplikací Pythonu pro službu Azure App Service v Linuxu
 
@@ -48,7 +48,7 @@ Aplikace v Pythonu nasadily do App Service v Linuxu spusťte v kontejneru Docker
 
 Tento kontejner má následující vlastnosti:
 
-- Aplikace se spouštějí pomocí [Gunicorn WSGI HTTP Server](http://gunicorn.org/) za použití dalších argumentů `--bind=0.0.0.0 --timeout 600`.
+- Aplikace se spouštějí pomocí [Gunicorn WSGI HTTP Server](https://gunicorn.org/) za použití dalších argumentů `--bind=0.0.0.0 --timeout 600`.
 
 - Základní image zahrnuje ve výchozím nastavení webovou architekturu Flask, ale kontejner podporuje další formáty, které odpovídají WSGI a jsou kompatibilní s Pythonem 3.7, například Django.
 
@@ -100,7 +100,7 @@ Pokud je hlavní modul v podsložce, například `website`, zadejte tuto složku
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Můžete také k příkazu přidat libovolné další argumenty serveru Gunicorn, jako například `--workers=4`. Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
+Můžete také k příkazu přidat libovolné další argumenty serveru Gunicorn, jako například `--workers=4`. Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
 Pokud chcete zadat vlastní příkaz, proveďte následující kroky:
 

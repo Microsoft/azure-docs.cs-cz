@@ -8,49 +8,42 @@ ms.topic: include
 ms.date: 10/14/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 536857a5fe3ec3cc037f21835a4152f93197bcb8
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 92fb568bb1044df5be8c80372973743e2c0e3dcd
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977390"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52900996"
 ---
-Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Modul IoT Edge je spustitelný balíček implementovaný jako kontejner. V této části nasadíte modul, který generuje telemetrická data pro vaše simulované zařízení.
+Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Modul IoT Edge je spustitelný balíček implementovaný jako kontejner. V této části jsme vám nasazení předem sestavených modulu z [moduly IoT Edge části webu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Tento modul generuje telemetrická data pro vaše simulované zařízení.
 
-1. Na webu Azure Portal přejděte do svého centra IoT.
+1. Na webu Azure Portal, zadejte `Simulated Temperature Sensor` do vyhledávání a otevřete výsledek Marketplace.
 
-2. Přejděte do služby **IoT Edge** v části **Automatická správa zařízení** a vyberte své zařízení IoT Edge.
+   ![Simulované teplotní snímač ve službě Azure search na portálu](./media/iot-edge-deploy-module/search-for-temperature-sensor.png)
 
-3. Vyberte **Nastavit moduly**. Třech krocích průvodce se otevře na portálu, který vás provede přidáním modulů, určení tras a kontrola nasazení. 
+2. V **předplatné** pole, vyberte předplatné, prostřednictvím služby IoT Hub, když používáte, pokud ještě není.
 
-4. V **přidat moduly** kroku průvodce, vyhledejte **moduly nasazení** oddílu. Klikněte na tlačítko **přidat** vyberte **modul IoT Edge**.
+3. V **služby IoT Hub** vyberte název centra IoT používáte, pokud ještě není.
 
-   ![Přidat nový modul IoT Edge](./media/iot-edge-deploy-module/add-module.png)
+4. Klikněte na **najít zařízení**, vyberte zařízení IoT Edge (s názvem `myEdgeDevice`) a pak vyberte **vytvořit**.
 
-5. Do pole **Název** zadejte `tempSensor`.
+5. V **přidat moduly** kroku v průvodci klikněte na **SimulatedTemperatureSensor** modulu, který chcete ověřit nastavení konfigurace, klikněte na tlačítko **Uložit** a vyberte **Další**.
 
-6. Do pole **Identifikátor URI image** zadejte `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`.
-
-7. Ostatní nastavení ponechte beze změny a vyberte **Uložit**.
-
-   ![Uložení modulu IoT Edge po zadání názvu a URI image](./media/iot-edge-deploy-module/name-image.png)
-
-8. Zpět v prvním kroku v průvodci vyberte **Další**.
-
-9. V **určení tras** kroku průvodce, měli byste mít výchozí trasu, která odešle všechny zprávy ze všech modulů pro službu IoT Hub. Pokud tomu tak není, přidejte následující kód a vyberte **Next** (Další).
+6. V **určení tras** kroku v průvodci zkontrolujte trasy správně nastaveny pomocí výchozí trasy, která odešle všechny zprávy ze všech modulů pro službu IoT Hub (`$upstream`). Pokud tomu tak není, přidejte následující kód a vyberte **Next** (Další).
 
    ```json
-   {
-       "routes": {
-           "route": "FROM /messages/* INTO $upstream"
-       }
-   }
+    {
+    "routes": {
+        "route": "FROM /messages/* INTO $upstream",
+        "upstream": "FROM /messages/* INTO $upstream"
+        }
+    }
    ```
 
-10. V **nasazení zkontrolujte** kroku v průvodci vyberte **odeslat**.
+7. V **nasazení zkontrolujte** kroku v průvodci vyberte **odeslat**.
 
-11. Vraťte se na obrazovku podrobností o zařízení a zvolte **Refresh** (Obnovit). Kromě modulu edgeAgent vytvořeného při prvním spuštění služby by měl být v seznamu ještě jiný modul runtime s názvem **edgeHub** a další modul **tempSensor**.
+8. Vraťte se na obrazovku podrobností o zařízení a zvolte **Refresh** (Obnovit). Kromě edgeAgent modulu, který byl vytvořen při prvním spuštění služby, zobrazí se jiný modul runtime s názvem **edgeHub** a **SimulatedTemperatureSensor** uvedený modul.
 
    Může trvat několik minut, než se nové moduly zobrazení. Zařízení IoT Edge se má načíst nové informace o nasazení z cloudu, spuštění kontejnerů a vytvářet zprávy jeho nového stavu zpět do služby IoT Hub. 
 
-   ![Zobrazení modulu tempSensor v seznamu nasazených modulů](./media/iot-edge-deploy-module/deployed-modules.png)
+   ![Zobrazení SimulatedTemperatureSensor v seznamu nasazené moduly](./media/iot-edge-deploy-module/deployed-modules-marketplace-temp.png)

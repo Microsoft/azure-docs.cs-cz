@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 517926a3c78e9c95a9ecef9ae058c33e47566adb
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
+ms.openlocfilehash: 0811b8e81d8c2c4327885007685e15a8d2aea88e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432603"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963398"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Použití vlastní image Dockeru pro službu Web App for Containers
 
@@ -292,7 +292,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Aby vlastn�
     > [!NOTE]
     > Tato konfigurace nepovoluje externí připojení ke kontejneru. SSH je k dispozici pouze prostřednictvím webu Kudu/SCM. Web Kudu/SCM se ověřuje pomocí přihlašovacích údajů pro publikování.
 
-* Pokyn [COPY](https://docs.docker.com/engine/reference/builder/#copy), který dává modulu Dockeru pokyn ke zkopírování souboru [sshd_config](http://man.openbsd.org/sshd_config) do adresáře */etc/ssh/*. Váš konfigurační soubor by měl být založený na [tomto souboru sshd_config](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config).
+* Pokyn [COPY](https://docs.docker.com/engine/reference/builder/#copy), který dává modulu Dockeru pokyn ke zkopírování souboru [sshd_config](https://man.openbsd.org/sshd_config) do adresáře */etc/ssh/*. Váš konfigurační soubor by měl být založený na [tomto souboru sshd_config](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config).
 
     ```docker
     COPY sshd_config /etc/ssh/
@@ -556,7 +556,7 @@ Příkaz zobrazí výstup podobný následujícímu řetězci JSON, který znač
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření webové aplikace Docker Python využívající databázi PostgreSQL v Azure](tutorial-python-postgresql-app.md)

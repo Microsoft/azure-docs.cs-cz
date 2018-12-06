@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 19e7506dac82e4d12d5aecbdb5ae1c14fb944c29
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 632393696274eaf6f876ea717b5fccf7d4fbea3f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961531"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965389"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení geograficky distribuované aplikace s Azure a Azure Stack
 
@@ -81,7 +81,7 @@ V této části vytvoříte webovou aplikaci.
 
 > [!div class="checklist"]
 > - Vytvoření webové aplikace a publikování
-> - Přidání kódu do projektu VSTS
+> - Přidání kódu do úložiště Azure
 > - Sestavení aplikace přejděte na několik cloudových cílů.
 > - Spravovat a konfigurovat proces průběžného Doručování
 
@@ -108,130 +108,130 @@ Nastavení hybridní CI/CD a nasazení webové aplikace do Azure a Azure Stack a
 > [!Note]  
 > Azure Stack pomocí správné imagí syndikovat do běhu (Windows Server a SQL) a nasazení služby App Service jsou povinné. Projděte si dokumentaci k App Service "[před zahájením práce s App Service ve službě Azure Stack](/articles/azure-stack/azure-stack-app-service-before-you-get-started)" část pro operátor Azure stacku.
 
-#### <a name="add-code-to-vsts-project"></a>Přidání kódu do projektu VSTS
+#### <a name="add-code-to-azure-repos"></a>Přidání kódu do úložiště Azure
 
-1. Přihlaste se k programu Visual Studio pomocí **účet, který má práva k vytvoření projektu** ve službě VSTS.
+1. Přihlaste se k programu Visual Studio pomocí **účet, který má práva k vytvoření projektu** na úložiště Azure.
 
     Hybridní průběžné integrace a průběžného doručování (CI/CD) můžete použít kód aplikace a kódu infrastruktury. Použití [šablon Azure Resource Manageru](https://azure.microsoft.com/resources/templates/) i privátní a prostředí pro vývoj pro cloud.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image1.JPG)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image1.JPG)
 
 2. **Naklonujte úložiště** ve vytváření a otevírání výchozí webové aplikace.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image2.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image2.png)
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Vytvoření nasazení webové aplikace v obou cloudy
 
 1.  Upravit **WebApplication.csproj** souboru: vyberte **Runtimeidentifier** a přidejte **win10 x64**. (Viz [Self-contained nasazení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentaci.)
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image3.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image3.png)
 
-1.  **Vrátit se změnami kódu do VSTS** pomocí Team Exploreru.
+1.  **Vrátit se změnami kódu do úložiště Azure** pomocí Team Exploreru.
 
-2.  Ujistěte se, že **kód aplikace** byly vráceny do Visual Studio Team Services.
+2.  Ujistěte se, že **kód aplikace** byly vráceny do úložiště Azure.
 
 ### <a name="create-the-build-definition"></a>Vytvořte definici sestavení
 
-1. **Přihlaste se k VSTS** potvrďte schopnost vytvářet definice sestavení.
+1. **Přihlaste se k Azure kanály** potvrďte schopnost vytvářet definice sestavení.
 
 2. Přidat **- r win10-x64** kódu. To je potřeba aktivovat samostatná nasazení s.Net Core.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image4.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image4.png)
 
 3. **Spuštění sestavení**. [Samostatná nasazení sestavení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) procesu budete publikovat artefakty, které lze spustit v Azure a Azure Stack.
 
 **Pomocí Azure hostovaný Agent**
 
-Pomocí agenta hostované ve službě VSTS je vhodná možnost vytvářet a nasazovat webové aplikace. Údržba a upgrady automaticky provádí Microsoft Azure, takže se vzhledem, bez přerušení vývoj, testování a nasazení.
+Pomocí hostovaný agent v kanálech Azure je vhodná možnost vytvářet a nasazovat webové aplikace. Údržba a upgrady automaticky provádí Microsoft Azure, takže se vzhledem, bez přerušení vývoj, testování a nasazení.
 
 ### <a name="manage-and-configure-the-cd-process"></a>Spravovat a konfigurovat proces průběžného Doručování
 
-Visual Studio Team Services (VSTS) a Team Foundation Server (TFS) poskytuje vysoce konfigurovatelné a spravovatelné kanálu pro vydané verze do více prostředí, jako je vývoj, Fázování importu, dotazů a odpovědí a produkční prostředí; včetně, která vyžadují schválení určitým fázím.
+Azure DevOps a Azure DevOps serveru poskytovat vysoce konfigurovatelné a spravovatelné kanálu pro vydané verze do více prostředí, jako je vývoj, Fázování importu, dotazů a odpovědí a produkční prostředí; včetně, která vyžadují schválení určitým fázím.
 
 #### <a name="create-release-definition"></a>Vytvořte definici vydané verze
 
 
-![Alternativní text](media\azure-stack-solution-geo-distributed\image5.png)
+![Alternativní text](media/azure-stack-solution-geo-distributed/image5.png)
 
 1.  Vyberte **plus** tlačítko pro přidání nové vydané verze v části **kartě vydané verze** na stránce sestavení a vydaná verze sady Visual Studio Online (VSO).
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image6.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. Použít **nasazení služby Azure App Service** šablony.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image7.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image7.png)
 
 3. V části přidat artefakt rozevírací nabídky **přidat artefakt** pro sestavení aplikace cloudu Azure.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image8.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image8.png)
 
 4. Na kartě kanálu, vyberte **fáze, úloha** odkaz prostředí a nastavte hodnoty prostředí cloudu Azure.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image9.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image9.png)
 
 5. Nastavte **název prostředí** a vyberete platformu Azure **předplatné** pro koncový bod cloudu Azure.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image10.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image10.png)
 
 6. V části název prostředí, nastavte požadovaný **název služby Azure app service**.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image11.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image11.png)
 
 7. Zadejte **hostované VS2017** pod frontu agenta pro prostředí Azure hostované v cloudu.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image12.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image12.png)
 
 8. V nabídce nasazení služby Azure App Service, vyberte platnými **balíčku nebo složky** pro prostředí. Kliknutím na tlačítko OK **umístění složky**.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image13.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image13.png)
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image14.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image14.png)
 
 9. Uložte všechny změny a vraťte se do **kanál pro vydávání verzí**.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image15.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image15.png)
 
 10. Přidat **nové artefaktů** výběr sestavení pro aplikaci služby Azure Stack.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image16.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image16.png)
 
 11. Přidejte jeden další použití prostředí **nasazení služby Azure App Service.**
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image17.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image17.png)
 
 12. Název nového prostředí **Azure Stack.**
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image18.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image18.png)
 
 13. Najít prostředí Azure Stack v rámci **úloh** kartu.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image19.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image19.png)
 
 14. Vyberte **předplatné** pro koncový bod služby Azure Stack.
 
-  ![Alternativní text](media\azure-stack-solution-geo-distributed\image20.png)
+  ![Alternativní text](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. Nastavte název webové aplikace služby Azure Stack jako **název služby App service**.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image21.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image21.png)
 
 16. Vyberte **agenta služby Azure Stack**.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image22.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image22.png)
 
 17. V části nasazení Azure App Service vyberte oddíl platnými **balíčku nebo složky** pro prostředí. Kliknutím na tlačítko OK **umístění složky**.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image23.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image23.png)
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image24.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image24.png)
 
 18. V části **proměnnou** karta přidat proměnnou s názvem `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, nastavte ho na hodnotu jako `true`a rozsah `Azure Stack`.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image25.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image25.png)
 
 19. Vyberte **průběžné** ikona aktivační události nasazení v artefakty a povolit **Continues** aktivační události nasazení.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image26.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image26.png)
 
 20. Vyberte **před nasazením** ikonu podmínky v prostředí Azure Stack a nastavte aktivační události na **po vydání.**
 
@@ -244,7 +244,7 @@ Visual Studio Team Services (VSTS) a Team Foundation Server (TFS) poskytuje vyso
 
 [Azure Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. 
 
-![Alternativní text](media\azure-stack-solution-geo-distributed\image27.png)
+![Alternativní text](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
 > - Mapování existujícího vlastního názvu DNS na Azure Web Apps
@@ -296,7 +296,7 @@ Stránka záznamů DNS, lze zobrazit v **Moje domény**. Hledání propojení s 
 
 Následující snímek obrazovky obsahuje příklad stránky záznamů DNS:
 
-![Příklad stránky záznamů DNS](media\azure-stack-solution-geo-distributed\image28.png)
+![Příklad stránky záznamů DNS](media/azure-stack-solution-geo-distributed/image28.png)
 
 1.  V registrátora názvu domény, vyberte **přidat nebo vytvořit** k vytvoření záznamu. Někteří poskytovatelé nabízejí různé odkazy pro přidání různých typů záznamů. V dokumentaci poskytovatele.
 
@@ -306,7 +306,7 @@ Následující snímek obrazovky obsahuje příklad stránky záznamů DNS:
 
 Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následujícím příkladu:
 
-![Přechod do aplikace Azure na portálu](media\azure-stack-solution-geo-distributed\image29.png)
+![Přechod do aplikace Azure na portálu](media/azure-stack-solution-geo-distributed/image29.png)
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>Povolení mapování záznamu CNAME v Azure
 
@@ -348,9 +348,9 @@ Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následu
 
   Může trvat nějakou dobu nové názvy hostitelů se projeví v aplikaci prvku **vlastní domény** stránky. Zkuste aktualizovat prohlížeč, aby se data aktualizovala.
   
-  ![Alternativní text](media\azure-stack-solution-geo-distributed\image31.png) 
+  ![Alternativní text](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  V případě chyby se v dolní části stránky zobrazí oznámení o chybě ověření. ![Chyba ověření](media\azure-stack-solution-geo-distributed\image32.png)
+  V případě chyby se v dolní části stránky zobrazí oznámení o chybě ověření. ![Chyba ověření](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  Výše uvedené kroky může opakovat mapovat zástupnou doménu (\*. northwindcloud.com)... To umožňuje přidání všechny další subdomény, které do této služby app service bez nutnosti vytvářet samostatné záznam CNAME pro každou z nich. Doménový Registrátor pokynů ke konfiguraci tohoto nastavení.
@@ -404,17 +404,17 @@ Vytvořit vazbu vlastního certifikátu SSL do webové aplikace [plán služby A
 
 2.  V nabídce vlevo vyberte **App Services**a pak vyberte název webové aplikace.
 
-![Výběr webové aplikace](media\azure-stack-solution-geo-distributed\image33.png)
+![Výběr webové aplikace](media/azure-stack-solution-geo-distributed/image33.png)
 
 #### <a name="check-the-pricing-tier"></a>Kontrola cenové úrovně
 
 1.  V levém navigačním panelu na stránce webové aplikace, přejděte **nastavení** a vyberte **vertikálně navýšit kapacitu (plán služby App Service)**.
 
-    ![Nabídka Vertikálně navýšit kapacitu](media\azure-stack-solution-geo-distributed\image34.png)
+    ![Nabídka Vertikálně navýšit kapacitu](media/azure-stack-solution-geo-distributed/image34.png)
 
 1.  Zkontrolujte webové aplikace není **Free** nebo **Shared** vrstvy. Aktuální úroveň webové aplikace je zvýrazněná tmavě modrá pole.
 
-    ![Kontrola cenové úrovně](media\azure-stack-solution-geo-distributed\image35.png)
+    ![Kontrola cenové úrovně](media/azure-stack-solution-geo-distributed/image35.png)
 
 Na úrovni **Free** a **Standard** se nepodporuje vlastní SSL. Upscale, postupujte podle kroků v další části, nebo **volba cenové úrovně** stránce a přeskočte k [nahrání a vytvoření vazby certifikátu SSL](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
 
@@ -424,11 +424,11 @@ Na úrovni **Free** a **Standard** se nepodporuje vlastní SSL. Upscale, postupu
 
 2.  Vyberte **vyberte**.
 
-![Výběr cenové úrovně](media\azure-stack-solution-geo-distributed\image36.png)
+![Výběr cenové úrovně](media/azure-stack-solution-geo-distributed/image36.png)
 
 Operace škálování je dokončená, když se zobrazí oznámení.
 
-![Oznámení vertikálního navýšení kapacity](media\azure-stack-solution-geo-distributed\image37.png)
+![Oznámení vertikálního navýšení kapacity](media/azure-stack-solution-geo-distributed/image37.png)
 
 #### <a name="bind-your-ssl-certificate-and-merge-intermediate-certificates"></a>Vytvoření vazby certifikátu SSL a sloučení zprostředkujících certifikátů
 
@@ -491,11 +491,11 @@ Když služba IIS nebo **Certreq.exe** se používají ke generování požadavk
 
 5.  Vyberte **Nahrát**.
 
-![Nahrání certifikátu](media\azure-stack-solution-geo-distributed\image38.png)
+![Nahrání certifikátu](media/azure-stack-solution-geo-distributed/image38.png)
 
 Jakmile App Service dokončí nahrávání certifikátu, zobrazí se v **nastavení SSL** stránky.
 
-![Alternativní text](media\azure-stack-solution-geo-distributed\image39.png)
+![Alternativní text](media/azure-stack-solution-geo-distributed/image39.png)
 
 #### <a name="bind-your-ssl-certificate"></a>Vytvoření vazby certifikátu SSL
 
@@ -514,11 +514,11 @@ Jakmile App Service dokončí nahrávání certifikátu, zobrazí se v **nastave
 
     1.  Vyberte **přidat vazbu**.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image40.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image40.png)
 
 Jakmile App Service dokončí nahrávání certifikátu, zobrazí se v **vazby SSL** oddíly.
 
-![Alternativní text](media\azure-stack-solution-geo-distributed\image41.png)
+![Alternativní text](media/azure-stack-solution-geo-distributed/image41.png)
 
 #### <a name="remap-the-a-record-for-ip-ssl"></a>Přemapujte záznam A pro IP SSL.
 
@@ -534,7 +534,7 @@ Při záznamu A je namapována na webovou aplikaci, musí aktualizovat registr d
 
 V různých prohlížečích zkontrolujte procházet https://<your.custom.domain>to webu, který poskytuje přístupový bod.
 
-![Alternativní text](media\azure-stack-solution-geo-distributed\image42.png)
+![Alternativní text](media/azure-stack-solution-geo-distributed/image42.png)
 
 > [!Note]  
 > Pokud dojde k chybám ověření certifikátu, příčinou může být certifikát podepsaný svým držitelem nebo zprostředkující certifikáty byly ponechat při exportu do souboru PFX.
@@ -545,7 +545,7 @@ Ve výchozím nastavení kdokoli může přístup k webové aplikaci pomocí HTT
 
 Na stránce webové aplikace, vyberte **SL nastavení**. Pak v části **Pouze HTTPS** vyberte **Zapnuto**.
 
-![Vynucení HTTPS](media\azure-stack-solution-geo-distributed\image43.png)
+![Vynucení HTTPS](media/azure-stack-solution-geo-distributed/image43.png)
 
 Po dokončení operace přejděte na jakoukoli adresu URL HTTP odkazující na aplikaci. Příklad:
 
@@ -561,7 +561,7 @@ Umožňuje aplikaci [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1
 
 2.  V **verze protokolu TLS**, vyberte minimální verzi TLS.
 
-![Vynucení protokolu TLS 1.1 nebo 1.2](media\azure-stack-solution-geo-distributed\image44.png)
+![Vynucení protokolu TLS 1.1 nebo 1.2](media/azure-stack-solution-geo-distributed/image44.png)
 
 ### <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
@@ -583,7 +583,7 @@ Umožňuje aplikaci [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1
 
     7.  Po dokončení globálního nasazení profilu služby Traffic Manager je uveden v příslušné skupině prostředků jako jeden z prostředků.
 
-    ![Alternativní text](media\azure-stack-solution-geo-distributed\image45.png)
+    ![Alternativní text](media/azure-stack-solution-geo-distributed/image45.png)
 
 ### <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
 
@@ -632,7 +632,7 @@ Umožňuje aplikaci [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1
 
 1.  Po přidání se oba koncové body zobrazí v části **Profil služby Traffic Manager** a jejich stav monitorování bude **Online**.
 
-  ![Alternativní text](media\azure-stack-solution-geo-distributed\image46.png)
+  ![Alternativní text](media/azure-stack-solution-geo-distributed/image46.png)
 
 **Globální organizace spoléhá na funkce Azure geografická distribuce**
 

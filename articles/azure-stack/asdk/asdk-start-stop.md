@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 98ae7fe0fde922aee28ffc05b64d223a40085447
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 0b1affb708a8d481a1378fa691b6547865b0b214
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340915"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963585"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Spuštění a zastavení Azure Stack Development Kit (ASDK)
 Není doporučeno jednoduše Restartujte hostitelský počítač ASDK. Místo toho by měla podle postupů v tomto článku správně vypne a restartuje ASDK služby. 
@@ -62,7 +62,7 @@ Bez ohledu na to, jak byl ASDK vypnutý používejte následující postup ově�
    ```
 6. Zkontrolujte výstup zajistit, že jste úspěšně restartovat služby Azure Stack.
 
-Další informace o doporučených postupů řádně vypnout a restartovat služby Azure Stack, najdete v článku [spouštění a zastavování služby Azure Stack](.\.\azure-stack-start-and-stop.md). 
+Další informace o doporučených postupů řádně vypnout a restartovat služby Azure Stack, najdete v článku [spouštění a zastavování služby Azure Stack](../azure-stack-start-and-stop.md). 
 
 ## <a name="troubleshoot-startup-and-shutdown"></a>Řešení potíží s spuštění a vypnutí 
 Pokud během dvou hodin po zapnutí ASDK hostitelský počítač není úspěšně spustit služby Azure Stack, proveďte tyto kroky:
@@ -79,7 +79,7 @@ Pokud během dvou hodin po zapnutí ASDK hostitelský počítač není úspěšn
    ```powershell
    Test-AzureStack
    ```
-5. Zkontrolujte výstup a vyřešte všechny chyby. Další informace najdete v tématu [spustit test pro ověření služby Azure Stack](.\.\azure-stack-diagnostic-test.md).
+5. Zkontrolujte výstup a vyřešte všechny chyby. Další informace najdete v tématu [spustit test pro ověření služby Azure Stack](../azure-stack-diagnostic-test.md).
 6. Restartujte služby Azure Stack z v rámci relace období spuštěním **Start AzureStack** rutiny:
 
    ```powershell
@@ -89,4 +89,4 @@ Pokud během dvou hodin po zapnutí ASDK hostitelský počítač není úspěšn
 Pokud systém **Start AzureStack** důsledkem chyby, přejděte [fórum podpory služby Azure Stack](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) zobrazíte ASDK podporu při řešení potíží. 
 
 ## <a name="next-steps"></a>Další postup 
-Další informace o službě Azure Stack pro diagnostické nástroje a vydávání protokolování, najdete v článku [diagnostické nástroje služby Azure Stack](.\.\azure-stack-diagnostics.md).
+Další informace o službě Azure Stack pro diagnostické nástroje a vydávání protokolování, najdete v článku [diagnostické nástroje služby Azure Stack](../azure-stack-diagnostics.md).

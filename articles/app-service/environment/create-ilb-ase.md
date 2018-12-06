@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: e9d1f77a85d4b5cfb5bb7d3cb80380be3c79315d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
-ms.translationtype: HT
+ms.openlocfilehash: e86367d5df8294a7e0f798e47bf87ff3fb8ccf72
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378274"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967568"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Vytvoření a používání interního nástroje pro vyrovnávání zatížení ve službě App Service Environment #
 
@@ -56,7 +56,7 @@ Služba ASE s interním nástrojem pro vyrovnávání zatížení neumožňuje n
 
 Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatížení postupujte takto:
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Web** > **App Service Environment**.
+1. Na webu Azure Portal, vyberte **vytvořit prostředek** > **webové** > **služby App Service Environment**.
 
 1. Vyberte své předplatné.
 
@@ -66,7 +66,7 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 1. Pokud vyberete stávající virtuální síť, je potřeba vytvořit podsíť, která bude obsahovat službu ASE. Nezapomeňte nastavit dostatečnou velikost podsítě, aby umožnila budoucí růst služby ASE. Doporučujeme velikost `/24`, která nabízí 256 adres a dokáže pojmout maximální velikost služby ASE a vyhovět potřebám škálování. 
 
-1. Vyberte položky **Virtuální síť/Umístění** > **Konfigurace virtuální sítě**. U položky **Typ VIP** nastavte možnost **Interní**.
+1. Vyberte **virtuální síť/umístění** > **konfigurace virtuální sítě**. U položky **Typ VIP** nastavte možnost **Interní**.
 
 1. Zadejte název domény. Tato doména se bude používat pro aplikace vytvořené v této službě ASE. Platí určitá omezení. Nesmí se používat tyto domény:
 
@@ -90,20 +90,20 @@ Při vytváření služby ASE s interním nástrojem pro vyrovnávání zatíže
 
 1. Vyberte **OK** a potom vyberte **Vytvořit**.
 
-    ![Vytvoření služby ASE][1]
+    ! [Vytvoření služby ASE] [1]
 
 V okně **Virtuální síť** najdete možnost **Konfigurace virtuální sítě**. U ní můžete vybrat virtuální IP adresu typu Externí nebo Interní. Výchozí hodnota je **Externí**. Pokud vyberete možnost **Externí**, vaše služba ASE bude používat virtuální IP adresu s přístupem na internet. Pokud vyberete možnost **Interní**, vaše služba ASE bude mít nakonfigurovaný interní nástroj pro vyrovnávání zatížení s IP adresou v rámci vaší virtuální sítě.
 
 Po výběru možnosti **Interní** nebude možné přidat do služby ASE další IP adresy. Místo toho je potřeba zadat doménu služby ASE. Ve službě ASE s externí virtuální IP adresou se název služby ASE používá v doméně pro aplikace vytvořené v této službě ASE.
 
-Pokud u položky **Typ VIP** nastavíte hodnotu **Interní**, váš název služby ASE se nepoužije v názvu domény pro danou službu ASE. Doménu potom zadáte explicitně. Pokud máte doménu *contoso.corp.net* a vytvoříte v této službě ASE aplikaci s názvem *timereporting*, tato aplikace bude mít adresu URL timereporting.contoso.corp.net.
+Pokud u položky **Typ VIP** nastavíte hodnotu **Interní**, váš název služby ASE se nepoužije v názvu domény pro danou službu ASE. Doménu potom zadáte explicitně. Pokud je vaší doménou *contoso.corp.net* a vytvoříte aplikaci v tom, že služba ASE s názvem *timereporting*, adresu URL pro tuto aplikaci timereporting.contoso.corp.NET.
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Vytvoření aplikace ve službě ASE s interním nástrojem pro vyrovnání zatížení ##
 
 Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytvoříte stejným způsobem jako v běžné službě ASE.
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek** > **Web a mobilní zařízení** > **Webová aplikace**.
+1. Na webu Azure Portal, vyberte **vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
 
 1. Zadejte název aplikace.
 
@@ -117,9 +117,9 @@ Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytv
 
 1. Vyberte nebo vytvořte plán služby App Service. Pokud chcete vytvořit nový plán služby App Service, vyberte jako umístění svoji službu ASE. Vyberte fond pracovních procesů, ve kterém chcete plán služby App Service vytvořit. Po vytvoření plánu služby App Service vyberte jako umístění svoji službu ASE a zvolte fond pracovních procesů. Po zadání názvu aplikace dojde k nahrazení domény pod názvem aplikace doménou vaší služby ASE.
 
-1. Vyberte **Vytvořit**. Pokud chcete, aby se aplikace zobrazovala na řídicím panelu, zaškrtněte políčko **Připnout na řídicí panel**.
+1. Vyberte **Vytvořit**. Pokud chcete, aby aplikace zobrazovala na řídicím panelu, vyberte **připnout na řídicí panel** zaškrtávací políčko.
 
-    ![Vytvoření plánu služby App Service][2]
+    ! [Vytvoření plánu služby app Service] [2]
 
     V části **Název aplikace** se aktualizuje název domény na doménu vaší služby ASE.
 
@@ -127,9 +127,9 @@ Aplikaci ve službě ASE s interním nástrojem pro vyrovnání zatížení vytv
 
 Služba ASE s interním nástrojem pro vyrovnávání zatížení se trochu liší od služby bez interního nástroje pro vyrovnávání zatížení. Jak už jsme zmínili, je potřeba spravovat vlastní službu DNS. Taky je potřeba poskytnout vlastní certifikát pro připojení HTTPS.
 
-Po vytvoření vaší služby ASE se v názvu domény zobrazí doména, kterou jste zadali. V nabídce **Nastavení** se objeví nová položka s názvem **Certifikát interního nástroje pro vyrovnávání zatížení**. Služba ASE se vytvoří s certifikátem, který nemá určenou doménu služby ASE s interním nástrojem pro vyrovnávání zatížení. Pokud službu ASE použijete s tímto certifikátem, váš prohlížeč bude hlásit, že je certifikát neplatný. Tento certifikát usnadňuje testování protokolu HTTPS, ale je potřeba nahrát váš vlastní certifikát spojený s vaší doménou služby ASE s interním nástrojem pro vyrovnávání zatížení. Tento krok je nutný bez ohledu na to, jestli máte certifikát podepsaný svým držitelem, nebo jste ho získali od certifikační autority.
+Po vytvoření vaší služby ASE se v názvu domény zobrazí doména, kterou jste zadali. Vytvoření nové položky se zobrazí v **nastavení** nabídky s názvem **ILB certifikát**. Služba ASE se vytvoří s certifikátem, který nemá určenou doménu služby ASE s interním nástrojem pro vyrovnávání zatížení. Pokud službu ASE použijete s tímto certifikátem, váš prohlížeč bude hlásit, že je certifikát neplatný. Tento certifikát usnadňuje testování protokolu HTTPS, ale je potřeba nahrát váš vlastní certifikát spojený s vaší doménou služby ASE s interním nástrojem pro vyrovnávání zatížení. Tento krok je nutný bez ohledu na to, jestli máte certifikát podepsaný svým držitelem, nebo jste ho získali od certifikační autority.
 
-![Název domény služby ASE s interním nástrojem pro vyrovnávání zatížení][3]
+! [Název domény služba ASE s ILB] [3]
 
 Vaše služba ASE s interním nástrojem pro vyrovnávání zatížení potřebuje platný certifikát SSL. Použijte interní certifikační autority, kupte si certifikát od externího vystavitele nebo použijte certifikát podepsaný svým držitelem. Bez ohledu na zdroj certifikátu SSL musí být správně nakonfigurované následující atributy certifikátu:
 
@@ -150,11 +150,11 @@ Pokud chcete vytvořit certifikát podepsaný svým držitelem, můžete tady po
 
 Certifikát generovaný těmito příkazy prostředí PowerShell označují prohlížeče příznakem, protože certifikát nevytvořila certifikační autorita, která se nachází v řetězu certifikátů vašeho prohlížeče. Pokud chcete získat certifikát, kterému bude váš prohlížeč důvěřovat, opatřete si ho od komerční certifikační autority v řetězu certifikátů vašeho prohlížeče. 
 
-![Nastavení certifikátu interního nástroje pro vyrovnávání zatížení][4]
+! [Sada ILB certifikátu] [4]
 
 Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte takto:
 
-1. Po vytvoření služby ASE přejděte do uživatelského rozhraní služby ASE. Vyberte položky **ASE** > **Nastavení** > **Certifikát interního nástroje pro vyrovnávání zatížení**.
+1. Po vytvoření služby ASE přejděte do uživatelského rozhraní služby ASE. Vyberte položky **ASE** > **Nastavení** > **Certifikát interního nástroje pro vyrovnávání zatížení**.
 
 1. Pokud chcete nastavit certifikát interního nástroje pro vyrovnávání zatížení, vyberte soubor certifikátu .pfx a zadejte heslo. Zpracování tohoto kroku nějakou dobu trvá. Zobrazí se zpráva s informací, že probíhá operace nahrávání.
 
@@ -174,13 +174,13 @@ Pokud chcete nahrát vlastní certifikáty a otestovat přístup, postupujte tak
 
     b. Pokud chcete provést test publikování nasazení webu nebo získat přístup k rozšířené konzole, vytvořte záznam pro adresu _mytestapp.scm.ilbase.com_.
 
-1. V prohlížeči na tomto virtuálním počítači přejděte na adresu http://mytestapp.ilbase.com. (Nebo přejděte na název vaší webové aplikace ve vaší doméně.)
+1. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com. (Nebo přejděte na název vaší webové aplikace ve vaší doméně.)
 
-1. V prohlížeči na tomto virtuálním počítači přejděte na adresu https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
+1. Na tomto virtuálním počítači prohlížeč a přejděte na https://mytestapp.ilbase.com. Pokud používáte certifikát podepsaný svým držitelem, přijměte nedostatek zabezpečení.
 
     IP adresa vašeho interního nástroje pro vyrovnávání zatížení je uvedená v seznamu **IP adresy**. Tento seznam obsahuje také IP adresy používané externí virtuální IP adresou a k řízení příchozích přenosů.
 
-    ![IP adresa interního nástroje pro vyrovnávání zatížení][5]
+    ! [ILB IP address] [5]
 
 ## <a name="web-jobs-functions-and-the-ilb-ase"></a>Webové úlohy, služba Functions a služba ASE s interním nástrojem pro vyrovnávání zatížení ##
 
@@ -222,13 +222,9 @@ Další informace o konfiguraci služby ASE s interním nástrojem pro vyrovnáv
 ## <a name="get-started"></a>Začínáme ##
 
 * Pokud chcete začít používat službu ASE, prostudujte si téma [Úvod do služby App Service Environment][Intro].
- 
+ 
 <!--Image references-->
-[1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png
-[2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png
-[3]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate.png
-[4]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png
-[5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
+[1]:./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png [2]: [3]./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png:. / Media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-Certificate.PNG [4]: [5./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png ]:./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
 
 <!--Links-->
 [Intro]: ./intro.md
@@ -244,10 +240,10 @@ Další informace o konfiguraci služby ASE s interním nástrojem pro vyrovnáv
 [webapps]: ../app-service-web-overview.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md

@@ -3,7 +3,7 @@ title: Příklad PowerShellu – Aktivní geografická replikace izolované data
 description: Ukázkový skript Azure PowerShellu, který nastaví aktivní geografickou replikaci pro izolovanou databázi SQL Azure a převezme její služby při selhání.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
@@ -12,12 +12,12 @@ ms.date: 09/07/2018
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 428bcde30b87d1e81d0eeb43bd865bfe0827e0b8
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
-ms.translationtype: HT
+ms.openlocfilehash: d102cde625865ea1db6ed09382161366d3994def
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054927"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961905"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-single-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro izolovanou databázi SQL Azure pomocí PowerShellu
 
@@ -30,7 +30,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tom
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
-[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover-database/setup-geodr-and-failover-database.ps1?highlight=17-20 "Set up active geo-replication for single database")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover/setup-geodr-and-failover-single-database.ps1?highlight=17-20 "Set up active geo-replication for single database")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -59,7 +59,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

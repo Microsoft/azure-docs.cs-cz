@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: be6a5c444444c9482b921ea7fd68bf26ac10a2a2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.date: 12/04/2018
+ms.openlocfilehash: aea6b9628ffff4ba5075338c48340b88c95b6174
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50958929"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956853"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-online-using-dms"></a>Kurz: Online migrace SQL Serveru do služby Azure SQL Database pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance SQL Serveru do služby [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) s minimálními výpadky. V tomto kurzu pomocí služby Azure Database Migration Service provedete migraci databáze **Adventureworks2012** obnovené do místní instance SQL Serveru 2016 (nebo novější) do služby Azure SQL Database.
@@ -30,6 +30,9 @@ V tomto kurzu se naučíte:
 > * Spuštění migrace
 > * Monitorování migrace
 > * Stažení sestavy migrace
+
+> [!NOTE]
+> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance podle cenové úrovně Premium (Preview).
 
 > [!IMPORTANT]
 > Aby migrace proběhla optimálním způsobem, doporučuje Microsoft vytvořit instanci služby Azure Database Migration Service ve stejné oblasti Azure, ve které je cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
@@ -117,7 +120,7 @@ Pokud chcete posoudit místní databázi, postupujte následovně:
 
     Po dokončení posouzení se zobrazí výsledky, jak je znázorněno na následujícím obrázku:
 
-    ![Posouzení migrace dat](media\tutorial-sql-server-to-azure-sql-online\dma-assessments.png)
+    ![Posouzení migrace dat](media/tutorial-sql-server-to-azure-sql-online/dma-assessments.png)
 
     V případě služby Azure SQL Database posouzení identifikují problémy s paritou funkcí a problémy blokující migraci.
 
@@ -140,52 +143,52 @@ Pokud chcete migrovat schéma **AdventureWorks2012** do služby Azure SQL Databa
 
     Po provedení předchozích kroků by se mělo zobrazit rozhraní DMA, jak je znázorněno na následujícím obrázku:
     
-    ![Vytvoření projektu nástroje Data Migration Assistant](media\tutorial-sql-server-to-azure-sql-online\dma-create-project.png)
+    ![Vytvoření projektu nástroje Data Migration Assistant](media/tutorial-sql-server-to-azure-sql-online/dma-create-project.png)
 
 4.  Vyberte **Vytvořit** a vytvořte projekt.
 5.  V DMA zadejte podrobnosti o připojení ke zdrojovému SQL Serveru, vyberte **Připojit** a pak vyberte databázi **AdventureWorks2012**.
 
-    ![Podrobnosti o připojení ke zdroji v nástroji Data Migration Assistant](media\tutorial-sql-server-to-azure-sql-online\dma-source-connect.png)
+    ![Podrobnosti o připojení ke zdroji v nástroji Data Migration Assistant](media/tutorial-sql-server-to-azure-sql-online/dma-source-connect.png)
 
 6.  Vyberte **Další**, v části **Připojit k cílovému serveru** zadejte podrobnosti o připojení k cílové službě Azure SQL Database, vyberte **Připojit** a pak vyberte databázi **AdventureWorksAzure**, kterou jste předtím zřídili ve službě Azure SQL Database.
 
-    ![Podrobnosti o připojení k cíli v nástroji Data Migration Assistant](media\tutorial-sql-server-to-azure-sql-online\dma-target-connect.png)
+    ![Podrobnosti o připojení k cíli v nástroji Data Migration Assistant](media/tutorial-sql-server-to-azure-sql-online/dma-target-connect.png)
 
 7.  Vyberte **Další** a přejděte na obrazovku **Vybrat objekty**, na které můžete určit objekty schématu v databázi **AdventureWorks2012**, které je potřeba nasadit do služby Azure SQL Database.
 
     Ve výchozím nastavení jsou vybrané všechny objekty.
 
-    ![Generování skriptů SQL](media\tutorial-sql-server-to-azure-sql-online\dma-assessment-source.png)
+    ![Generování skriptů SQL](media/tutorial-sql-server-to-azure-sql-online/dma-assessment-source.png)
 
 8.  Výběrem možnosti **Vygenerovat skript SQL** vytvořte skripty SQL a pak zkontrolujte, jestli skripty neobsahují chyby.
 
-    ![Skript schématu](media\tutorial-sql-server-to-azure-sql-online\dma-schema-script.png)
+    ![Skript schématu](media/tutorial-sql-server-to-azure-sql-online/dma-schema-script.png)
 
 9.  Vyberte **Nasadit schéma** a nasaďte schéma do služby Azure SQL Database. Po nasazení schématu zkontrolujte případné anomálie na cílovém serveru.
 
-    ![Nasazení schématu](media\tutorial-sql-server-to-azure-sql-online\dma-schema-deploy.png)
+    ![Nasazení schématu](media/tutorial-sql-server-to-azure-sql-online/dma-schema-deploy.png)
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrace poskytovatele prostředků Microsoft.DataMigration
 1. Přihlaste se k webu Azure Portal, vyberte **Všechny služby** a pak vyberte **Předplatná**.
  
-   ![Zobrazení předplatných na portálu](media\tutorial-sql-server-to-azure-sql-online\portal-select-subscription1.png)
+   ![Zobrazení předplatných na portálu](media/tutorial-sql-server-to-azure-sql-online/portal-select-subscription1.png)
        
 2. Vyberte předplatné, ve kterém chcete vytvořit instanci služby Azure Database Migration Service, a pak vyberte **Poskytovatelé prostředků**.
  
-    ![Zobrazení poskytovatelů prostředků](media\tutorial-sql-server-to-azure-sql-online\portal-select-resource-provider.png)
+    ![Zobrazení poskytovatelů prostředků](media/tutorial-sql-server-to-azure-sql-online/portal-select-resource-provider.png)
     
 3.  Vyhledejte „migration“ a pak napravo od **Microsoft.DataMigration** vyberte **Zaregistrovat**.
  
-    ![Registrace poskytovatele prostředků](media\tutorial-sql-server-to-azure-sql-online\portal-register-resource-provider.png)    
+    ![Registrace poskytovatele prostředků](media/tutorial-sql-server-to-azure-sql-online/portal-register-resource-provider.png)    
 
 ## <a name="create-an-instance"></a>Vytvoření instance
 1.  Na webu Azure Portal vyberte **+ Vytvořit prostředek**, vyhledejte „Azure Database Migration Service“ a pak v rozevíracím seznamu vyberte **Azure Database Migration Service**.
 
-    ![Azure Marketplace](media\tutorial-sql-server-to-azure-sql-online\portal-marketplace.png)
+    ![Azure Marketplace](media/tutorial-sql-server-to-azure-sql-online/portal-marketplace.png)
 
 2.  Na obrazovce **Azure Database Migration Service** vyberte **Vytvořit**.
  
-    ![Vytvoření instance služby Azure Database Migration Service](media\tutorial-sql-server-to-azure-sql-online\dms-create1.png)
+    ![Vytvoření instance služby Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql-online/dms-create1.png)
   
 3.  Na obrazovce **Vytvořit službu Migration Service** zadejte název služby, předplatné a novou nebo existující skupinu prostředků.
 
@@ -203,7 +206,7 @@ Pokud chcete migrovat schéma **AdventureWorks2012** do služby Azure SQL Databa
 
     Pokud potřebujete pomoc s výběrem správné úrovně služby Azure Database Migration Service, projděte si doporučení v [tomto](https://go.microsoft.com/fwlink/?linkid=861067) příspěvku.  
 
-     ![Konfigurace nastavení instance služby Azure Database Migration Service](media\tutorial-sql-server-to-azure-sql-online\dms-settings2.png)
+     ![Konfigurace nastavení instance služby Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
 
 7.  Vyberte **Vytvořit** a vytvořte službu.
 
@@ -212,17 +215,17 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 1. Na webu Azure Portal vyberte **Všechny služby**, vyhledejte „Azure Database Migration Service“ a pak vyberte **Služby Azure Database Migration Service**.
  
-      ![Vyhledání všech instancí služby Azure Database Migration Service](media\tutorial-sql-server-to-azure-sql-online\dms-search.png)
+      ![Vyhledání všech instancí služby Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql-online/dms-search.png)
 
 2. Na obrazovce **Služby Azure Database Migration Service** vyhledejte název instance služby Azure Database Migration Service, kterou jste vytvořili, a vyberte ji.
  
-     ![Vyhledání instance služby Azure Database Migration Service](media\tutorial-sql-server-to-azure-sql-online\dms-instance-search.png)
+     ![Vyhledání instance služby Azure Database Migration Service](media/tutorial-sql-server-to-azure-sql-online/dms-instance-search.png)
  
 3. Vyberte **+ Nový projekt migrace**.
 4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli **Typ zdrojového serveru** vyberte **SQL Server** a v textovém poli **Typ cílového serveru** vyberte **Azure SQL Database**.
 5. V části **Zvolte typ aktivity** vyberte **Online migrace dat**.
 
-    ![Vytvoření projektu Database Migration Service](media\tutorial-sql-server-to-azure-sql-online\dms-create-project3.png)
+    ![Vytvoření projektu Database Migration Service](media/tutorial-sql-server-to-azure-sql-online/dms-create-project3.png)
 
     > [!NOTE]
     > Alternativně můžete zvolit možnost **Vytvořit pouze projekt** a vytvořit teď projekt migrace, ale samotnou migraci provést později.
@@ -231,7 +234,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
 
 7. Vyberte **Vytvořit a spustit aktivitu** a vytvořte projekt a spusťte aktivitu migrace.
 
-    ![Vytvoření a spuštění aktivity služby Database Migration Service](media\tutorial-sql-server-to-azure-sql-online\dms-create-and-run-activity.png)
+    ![Vytvoření a spuštění aktivity služby Database Migration Service](media/tutorial-sql-server-to-azure-sql-online/dms-create-and-run-activity.png)
  
 ## <a name="specify-source-details"></a>Zadání podrobností o zdroji
 1. Na obrazovce **Podrobnosti zdroje migrace** zadejte podrobnosti o připojení ke zdrojové instanci SQL Serveru.
@@ -245,57 +248,57 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     > [!CAUTION]
     > Připojení SSL šifrovaná pomocí certifikátu podepsaného svým držitelem neposkytují silné zabezpečení. Jsou náchylná na útoky, kdy se útočníci vydávají za prostředníky. Na připojení SSL s použitím certifikátů podepsaných svým držitelem byste neměli spoléhat v produkčním prostředí ani na serverech připojených k internetu.
 
-   ![Podrobnosti zdroje](media\tutorial-sql-server-to-azure-sql-online\dms-source-details3.png)
+   ![Podrobnosti zdroje](media/tutorial-sql-server-to-azure-sql-online/dms-source-details3.png)
 
 ## <a name="specify-target-details"></a>Zadání podrobností o cíli
 1. Vyberte **Uložit** a pak na obrazovce **Podrobnosti cíle migrace** zadejte podrobnosti o připojení k cílovému serveru služby Azure SQL Database. Tím je předem zřízená služba Azure SQL Database, do které se pomocí DMA nasadilo schéma **AdventureWorks2012**.
 
-    ![Výběr cíle](media\tutorial-sql-server-to-azure-sql-online\dms-select-target3.png)
+    ![Výběr cíle](media/tutorial-sql-server-to-azure-sql-online/dms-select-target3.png)
 
 2. Vyberte **Uložit** a pak na obrazovce **Mapovat na cílové databáze** namapujte zdrojovou a cílovou databázi pro migraci.
 
     Pokud cílová databáze obsahuje stejný název databáze jako zdrojová databáze, služba Azure Database Migration Service ve výchozím nastavení vybere cílovou databázi.
 
-    ![Mapování na cílové databáze](media\tutorial-sql-server-to-azure-sql-online\dms-map-targets-activity3.png)
+    ![Mapování na cílové databáze](media/tutorial-sql-server-to-azure-sql-online/dms-map-targets-activity3.png)
 
 3. Vyberte **Uložit**, na obrazovce **Vybrat tabulky** rozbalte seznam tabulek a zkontrolujte seznam ovlivněných polí.
 
     Azure Database Migration Service automaticky vybere všechny prázdné zdrojové tabulky, které existují v cílové instanci služby Azure SQL Database. Pokud chcete znovu migrovat tabulky, které již obsahují data, musíte tabulky explicitně vybrat v tomto okně.
 
-    ![Výběr tabulek](media\tutorial-sql-server-to-azure-sql-online\dms-configure-setting-activity3.png)
+    ![Výběr tabulek](media/tutorial-sql-server-to-azure-sql-online/dms-configure-setting-activity3.png)
 
 4.  Vyberte **Uložit**, na obrazovce **Shrnutí migrace** do textového pole **Název aktivity** zadejte název aktivity migrace a pak zkontrolujte souhrnné informace a ujistěte se, že podrobnosti zdroje a cíle odpovídají dříve zadaným informacím.
 
-    ![Shrnutí migrace](media\tutorial-sql-server-to-azure-sql-online\dms-migration-summary.png)
+    ![Shrnutí migrace](media/tutorial-sql-server-to-azure-sql-online/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>Spuštění migrace
 - Vyberte **Spustit migraci**.
 
     Zobrazí se okno aktivity migrace a **Stav** aktivity bude **Inicializace**.
 
-    ![Stav aktivity – Inicializace](media\tutorial-sql-server-to-azure-sql-online\dms-activity-status2.png)
+    ![Stav aktivity – Inicializace](media/tutorial-sql-server-to-azure-sql-online/dms-activity-status2.png)
 
 ## <a name="monitor-the-migration"></a>Monitorování migrace
 1. Na obrazovce aktivity migrace vyberte **Aktualizovat** a aktualizujte zobrazení, dokud se **Stav** migrace nezmění na **Spuštěno**.
 
 2. Kliknutím na konkrétní databázi zobrazíte stav migrace pro operace **Úplné načtení dat** a **Přírůstková synchronizace dat**.
 
-    ![Stav aktivity – Probíhá](media\tutorial-sql-server-to-azure-sql-online\dms-activity-in-progress.png)
+    ![Stav aktivity – Probíhá](media/tutorial-sql-server-to-azure-sql-online/dms-activity-in-progress.png)
 
 ## <a name="perform-migration-cutover"></a>Provedení přímé migrace
 Po dokončení počátečního úplného načtení se databáze označí jako **Připraveno k přímé migraci**.
 
 1. Jakmile budete připraveni dokončit migraci databází, vyberte **Spustit přímou migraci**.
 
-    ![Spuštění přímé migrace](media\tutorial-sql-server-to-azure-sql-online\dms-start-cutover.png)
+    ![Spuštění přímé migrace](media/tutorial-sql-server-to-azure-sql-online/dms-start-cutover.png)
  
 2.  Ujistěte se, že jste zastavili všechny příchozí transakce do zdrojové databáze a počkejte, dokud se v čítači **Probíhající změny** nezobrazí **0**.
 3.  Vyberte **Potvrdit** a pak **Použít**.
 4. Když se stav migrace databází změní na **Dokončeno**, připojte své aplikace k nové cílové službě Azure SQL Database.
  
-    ![Stav aktivity – Dokončeno](media\tutorial-sql-server-to-azure-sql-online\dms-activity-completed.png)
+    ![Stav aktivity – Dokončeno](media/tutorial-sql-server-to-azure-sql-online/dms-activity-completed.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 - Informace o známých problémech a omezeních při provádění online migrací do služby Azure Database for MySQL najdete v článku [Známé problémy s online migracemi do služby Azure SQL Database a jejich řešení](known-issues-azure-sql-online.md).
 - Informace o službě Azure Database Migration Service najdete v článku [Co je Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
 - Informace o službě Azure SQL Database najdete v článku [Co je služba Azure SQL Database?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).

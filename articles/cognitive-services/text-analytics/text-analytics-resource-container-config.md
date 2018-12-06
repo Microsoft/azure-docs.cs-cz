@@ -1,5 +1,5 @@
 ---
-title: Konfigurace kontejnery
+title: Konfigurace kontejnerů
 titlesuffix: Text Analytics - Cognitive Services - Azure
 description: Nastavení konfigurace pro kontejnery pro analýzu textu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 0f6b8fa27d2db45be2c677a52c53cff5847acf4a
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 61f435c55d7925554facd9bbaa63767023a779d4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634977"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965015"
 ---
-# <a name="configure-containers"></a>Konfigurace kontejnery
+# <a name="configure-containers"></a>Konfigurace kontejnerů
 
 Rozhraní text Analytics poskytuje každý kontejner se společnou architekturu konfigurace, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrická data a nastavení zabezpečení pro vaše kontejnery.
 
@@ -92,7 +92,7 @@ V následující tabulce jsou popsaná nastavení konfigurace podporované v rá
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení konfigurace Určuje koncový bod identifikátoru URI prostředku pro analýzu textu v Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný koncový bod identifikátoru URI pro prostředek pro analýzu textu v Azure.
+`Billing` Nastavení konfigurace Určuje koncový bod identifikátoru URI prostředku pro analýzu textu v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný koncový bod identifikátoru URI pro prostředek pro analýzu textu v Azure.
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-configuration-setting) nastavení konfigurace se používají společně a je nutné zadat platné hodnoty pro všechny tři je. jinak nebude možné spustit kontejner. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
@@ -103,6 +103,8 @@ V následující tabulce jsou popsaná nastavení konfigurace podporované v rá
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-configuration-setting) nastavení konfigurace se používají společně a je nutné zadat platné hodnoty pro všechny tři je. jinak nebude možné spustit kontejner. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](how-tos/text-analytics-how-to-install-containers.md#billing).
+
+Kontejnery služby cognitive Services jsou licencovaného v rámci vaší smlouvě upravující používání Azure. Pokud nemáte stávající smlouvy řídící používání Azure, vyjadřujete svůj souhlas, že vaší smlouvě upravující používání Azure se Microsoft Online Subscription Agreement (která zahrnuje podmínky Online služeb). Pro verze Preview souhlasíte také s dodatečných podmínkách použití systémů Microsoft Azure Preview. Pomocí kontejneru vyjadřujete souhlas s těmito podmínkami.
 
 ## <a name="fluentd-configuration-settings"></a>Nastavení konfigurace Fluentd
 

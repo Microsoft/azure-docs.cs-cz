@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: tutorial
-ms.date: 07/11/2018
+ms.date: 12/05/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 0c5554ca929cbd5231c99e568e987e6e0b7cf6eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 291f895ed367ab4871d27ea02cd23eddc496434c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844834"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958674"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Kurz: Resetování hesla Azure AD z přihlašovací obrazovky
 
@@ -29,8 +29,8 @@ V tomto kurzu povolíte uživatelům resetovat svá hesla z přihlašovací obra
 ## <a name="prerequisites"></a>Požadavky
 
 * Aktualizace Windows 10 z dubna 2018 nebo novější klient, který je:
-   * [připojený k Azure AD](../device-management-azure-portal.md) nebo 
-   * [k hybridní službě Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md).
+   * [Počítač připojená k Azure AD](../device-management-azure-portal.md) nebo
+   * [Hybridní služby Azure AD připojená k počítači](../device-management-hybrid-azuread-joined-devices-setup.md), s připojením k řadiči domény pro další přihlášení po resetování hesla.
 * Samoobslužné resetování hesla Azure AD musí být povolené.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurace odkazu na resetování hesla pomocí Intune

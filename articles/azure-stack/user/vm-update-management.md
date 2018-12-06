@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
-ms.openlocfilehash: 1ef20dc35b069c5f12c2f31d0979949be27271e0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: be793fa5d346d05e6b7bd9f93f1108b7a3542fa6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324098"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959168"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack VM update a správu
 Následující funkce řešení Azure Automation můžete použít ke správě virtuálních počítačů s Windows, které jsou nasazeny pomocí služby Azure Stack:
@@ -41,7 +41,7 @@ Než začnete používat tyto funkce Aktualizovat a spravovat virtuální počí
 Pokud chcete použít inventář, Change Tracking a Update Management Azure automation funkcí pro virtuální počítače Windows Azure Stack, je nejprve potřeba povolit tato řešení v Azure.
 
 > [!TIP]
-> Pokud už máte tyto funkce povolené pro virtuální počítače Azure, můžete použít už existující pracovní prostor LogAnalytics pověření. Pokud už máte LogAnalytics ID pracovního prostoru a primární klíč, který chcete použít, přeskočte k části [v další části](.\vm-update-management.md#in-the-azure-stack-administration-portal). V opačném případě pokračujte v této části, abyste vytvořili nový účet LogAnalytics pracovní prostor a automatizace.
+> Pokud už máte tyto funkce povolené pro virtuální počítače Azure, můžete použít už existující pracovní prostor LogAnalytics pověření. Pokud už máte LogAnalytics ID pracovního prostoru a primární klíč, který chcete použít, přeskočte k části [v další části](./vm-update-management.md#in-the-azure-stack-administration-portal). V opačném případě pokračujte v této části, abyste vytvořili nový účet LogAnalytics pracovní prostor a automatizace.
 
 Prvním krokem při povolování těchto řešení je [vytvořit pracovní prostor LogAnalytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) ve vašem předplatném Azure. Pracovní prostor Log Analytics je jedinečné prostředí Log Analytics s vlastním úložištěm dat, zdroje dat a řešení. Po vytvoření pracovního prostoru, poznamenejte si ID pracovního prostoru a klíč. Chcete-li zobrazit tyto informace, přejděte do okna pracovního prostoru, klikněte na **upřesňující nastavení**a projděte si **ID pracovního prostoru** a **primární klíč** hodnoty. 
 

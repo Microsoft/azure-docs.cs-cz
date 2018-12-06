@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: b13f2e5c96ba50fc76d7bfae256e5fcc1c8b56ce
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 24b4bacd6a369812a07095b1d9c114f557d10d57
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443453"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960053"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Kurz: Rozdělení nahrávání Vizuálního vyhledávání Bingu
 
@@ -1340,4 +1340,4 @@ Tady je kompletní příklad v HTML a JavaScriptu.
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete zjistit, jak funguje získávání přehledu pomocí tokenu insights, přečtěte si [Kurz k tokenu ImageInsightsToken sady SDK pro Vizuální vyhledávání Bingu](.\tutorial-visual-search-insights-token.md).
+Pokud chcete zjistit, jak funguje získávání přehledu pomocí tokenu insights, přečtěte si [Kurz k tokenu ImageInsightsToken sady SDK pro Vizuální vyhledávání Bingu](./tutorial-visual-search-insights-token.md).

@@ -339,8 +339,6 @@ items:
         href: ../desktop-workbench/model-management-cli-reference.md
       - name: Rozhraní API pro shromažďování dat modelů
         href: ../desktop-workbench/model-data-collection-api-reference.md
-    - name: Staré koncepty
-      href: ../desktop-workbench/overview-general-concepts.md
     - name: Balíčky pro domény
       href: ../desktop-workbench/reference-python-package-overview.md
       items:
@@ -376,9 +374,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Starší problémy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 67bf0dfb2939cfd561f4558f9003c36883dcef93
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 087d101a655d87bdb4c8f7de2b39a5358c21e00e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864821"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962541"

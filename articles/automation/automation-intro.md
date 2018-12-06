@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, desired state configuration, update
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 8f6473603bb6e6ae734bde722742c58514d777c8
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: f91464ebdd29c082fd721e9e4b2e029de991cc1e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428092"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958691"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Seznámení s Azure Automation
 
@@ -40,18 +40,26 @@ Můžete získat inventář prostředků na hostovi a tím i přehled o nainstal
 
 Pomocí Azure Automation můžete aktualizovat systémy Windows i Linux napříč hybridními prostředími. Získáte přehled o kompatibilitě aktualizací mezi Azure, místním prostředím a jinými cloudy. Můžete vytvářet plánovaná nasazení a orchestrovat instalaci aktualizací v rámci definovaného časového období údržby. Pokud by se na počítač některé aktualizace instalovat neměly, můžete takové aktualizace vyloučit z nasazení.
 
-### <a name="shared-capabilities"></a>Sdílené možnosti
+### <a name="shared-resources"></a>Sdílené prostředky
 
 Azure Automation se skládá ze sady sdílených prostředků, které usnadňují automatizaci a konfiguraci prostředí ve velkém měřítku.
 
-* **[Řízení přístupu na základě role](automation-role-based-access-control.md)** – Mějte kontrolu nad přístupem k účtu s rolí operátora služby Automation, která umožňuje spouštění úloh bez udělování schopností vytvářet.
-* **[Proměnné](automation-variables.md)** – Poskytují způsob uložení obsahu, který se může používat napříč runbooky a konfiguracemi. Hodnoty můžete změnit, aniž byste museli měnit runbooky a konfigurace, které na ně odkazují.
-* **[Přihlašovací údaje](automation-credentials.md)** – Zabezpečeně uchovávají citlivé údaje, které můžou za běhu používat runbooky a konfigurace.
-* **[Certifikáty](automation-certificates.md)** – Ukládejte je a zpřístupněte je za běhu, aby se daly použít k ověřování a zabezpečení nasazených prostředků.
-* **[Připojení](automation-connections.md)** – Při připojování k systémům ukládejte páry název-hodnota s informacemi obsahujícími běžné údaje v prostředcích připojení. Připojení pro použití za běhu v runboocích a konfiguracích definuje autor modulu.
 * **[Plány](automation-schedules.md)** – Slouží ve službě k aktivování automatizace v předdefinované časy.
-* **[Integrace se správou zdrojového kódu](automation-source-control-integration.md)** – Propaguje konfiguraci v podobě kódu, kdy je možné runbooky a konfigurace vracet se změnami do systému správy zdrojového kódu.
-* **[Moduly PowerShellu](automation-integration-modules.md)** – Moduly slouží ke správě Azure a další systémů. Importujte je do účtu Automation a získejte tak rutiny a prostředky DSC od Microsoftu, třetích stran, komunity nebo vlastní definované rutiny a prostředky DSC.
+* **[Moduly](automation-integration-modules.md)**  – moduly slouží ke správě Azure a dalšími systémy. Importovat do účtu Automation pro Microsoftu, třetích stran, komunity, nebo vlastní definované rutiny a DSC prostředky.
+* **[Galerie modulů](automation-runbook-gallery.md)**  – nativní integrace se v galerii prostředí PowerShell pro zobrazení sady runbook a importujte je do účtu Automation.
+* **[Balíčky Python 2](python-packages.md)**  -přidat Python 2 balíčky do vašeho účtu automation pro použití ve vašich sadách runbook Python.
+* **[Přihlašovací údaje](automation-credentials.md)** – Zabezpečeně uchovávají citlivé údaje, které můžou za běhu používat runbooky a konfigurace.
+* **[Připojení](automation-connections.md)** – Při připojování k systémům ukládejte páry název-hodnota s informacemi obsahujícími běžné údaje v prostředcích připojení. Připojení pro použití za běhu v runboocích a konfiguracích definuje autor modulu.
+* **[Certifikáty](automation-certificates.md)** – Ukládejte je a zpřístupněte je za běhu, aby se daly použít k ověřování a zabezpečení nasazených prostředků.
+* **[Proměnné](automation-variables.md)** – Poskytují způsob uložení obsahu, který se může používat napříč runbooky a konfiguracemi. Hodnoty můžete změnit, aniž byste museli měnit runbooky a konfigurace, které na ně odkazují.
+
+### <a name="source-control-integration"></a>Integrace správy zdrojového kódu
+
+Azure Automation obsahuje schopnost [integrace se správou zdrojového kódu](source-control-integration.md) který propaguje konfiguraci jako kód, ve kterém runbooky a konfigurace mohla být zařazena do systému správy zdrojového kódu.
+
+### <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
+
+Azure Automation podporuje roli řízení přístupu na základě řízení přístupu k účtu Automation a její prostředky, další informace o konfiguraci RBAC na účtu Automation, runbooků a úlohy, naleznete v tématu [řízení přístupu na základě rolí pro Azure Automatizace](automation-role-based-access-control.md).
 
 ### <a name="windows-and-linux"></a>Windows a Linux
 
@@ -75,7 +83,7 @@ Azure Automation spravuje životní cyklus vaší infrastruktury i aplikací. P�
 
 Ceny služby Azure Automation najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/automation/).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vytvoření účtu Automation](automation-quickstart-create-account.md)

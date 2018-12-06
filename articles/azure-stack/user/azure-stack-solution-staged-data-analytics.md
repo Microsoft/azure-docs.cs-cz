@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b043c5ebe4c2a02bd4d40ca4b2bb7d5f488f5747
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d63faf63012360d4448166ac5d69eba6ede9d0ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837337"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969528"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření řešení pro analýzu pracovních dat s využitím Azure a Azure Stack 
 
@@ -103,7 +103,7 @@ Zvažte, jak vývojářské nástroje a správy zdrojových kódů vám umožní
 
 4.  Vyberte **chcete vytvořit účet úložiště vytvořte**.
 
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image1.png)
+    ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image1.png)
 
 5.  Po vytvoření vyberte název účtu úložiště.
 
@@ -111,7 +111,7 @@ Zvažte, jak vývojářské nástroje a správy zdrojových kódů vám umožní
 
 7.  V horní části okna vyberte **+ kontejner.** a vyberte **kontejneru**.
 
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image2.png)
+    ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image2.png)
 
 8.  Název: **podle vašeho výběru**
 
@@ -146,31 +146,31 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
     **Příklad:**
 
-    ![Určení nastavení nové aplikace Function App](media\azure-stack-solution-staged-data-analytics\image6.png)
+    ![Určení nastavení nové aplikace Function App](media/azure-stack-solution-staged-data-analytics/image6.png)
 
 5.  Aplikaci Function App zřídíte a nasadíte kliknutím na **Vytvořit**.
 
 6.  Vyberte ikonu oznámení v pravém horním rohu portálu a sledujte, kdy se objeví zpráva, že **nasazení bylo úspěšné**.
 
-    ![Určení nastavení nové aplikace Function App](media\azure-stack-solution-staged-data-analytics\image7.png)
+    ![Určení nastavení nové aplikace Function App](media/azure-stack-solution-staged-data-analytics/image7.png)
 
 7.  Vyberte **přejít k prostředku** Chcete-li zobrazit novou aplikaci function app.
 
-![Aplikace Function App byla úspěšně vytvořena.](media\azure-stack-solution-staged-data-analytics\image8.png)
+![Aplikace Function App byla úspěšně vytvořena.](media/azure-stack-solution-staged-data-analytics/image8.png)
 
 ### <a name="add-a-function-to-the-azure-stack-function-app"></a>Přidání funkce do aplikace funkcí Azure Stack
 
 1.  Po kliknutí na vytvořit novou funkci **funkce**, pak bude **+ nová funkce** tlačítko.
 
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image3.png)
+    ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image3.png)
 
 2.  Vyberte **Trigger časovače**.
 
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image4.png)
+    ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image4.png)
 
 3.  Vyberte **C\#**  jako jazyk a název funkce: `upload-to-azure` nastavte plán `0 0 * * * *`, který v procesu CRON zápis je jednou za hodinu.
 
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image5.png)
+    ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image5.png)
 
 ## <a name="create-a-blob-storage-triggered-function"></a>Vytvoření funkce aktivované službou Blob Storage
 
@@ -178,7 +178,7 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
 2.  Do vyhledávacího pole zadejte `blob` a zvolte jazyk požadovaný pro **aktivační událost objektů Blob** šablony.
 
-  ![Vyberte šablonu funkce aktivované úložištěm objektů blob.](media\azure-stack-solution-staged-data-analytics\image10.png)
+  ![Vyberte šablonu funkce aktivované úložištěm objektů blob.](media/azure-stack-solution-staged-data-analytics/image10.png)
 
 3.  Použijte nastavení uvedená v následující tabulce:
 
@@ -190,7 +190,7 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
     **Příklad:**
 
-    ![Vytvoření funkce aktivované službou Blob Storage](media\azure-stack-solution-staged-data-analytics\image11.png)
+    ![Vytvoření funkce aktivované službou Blob Storage](media/azure-stack-solution-staged-data-analytics/image11.png)
 
 4.  Vyberte **vytvořit** vytvořte novou funkci.
 
@@ -202,7 +202,7 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
 3.  Rozbalte účet úložiště **kontejnery objektů Blob**, a objekt blob jste vytvořili dříve. Vyberte **nahrát** a potom **nahrávání souborů**.
 
-    ![Nahrání souboru do kontejneru objektů blob.](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Nahrání souboru do kontejneru objektů blob.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  V dialogovém okně nahrávání souborů vyberte pole soubory. Přejděte k souboru na místním počítači, jako je například soubor obrázku, vyberte ho a vyberte **otevřít** a potom **nahrát**.
 
@@ -210,7 +210,7 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
     **Příklad:**
 
-    ![Zobrazte si zprávy v protokolech.](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![Zobrazte si zprávy v protokolech.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="create-an-azure-stack-storage-account"></a>Vytvoření účtu úložiště Azure Stack
 
@@ -232,9 +232,9 @@ Tyto kroky a použijte nastavení uvedené výše vytvořte další účet a obj
 
 4.  Vyberte **OK.**
 
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image14.png)
+    ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image14.png)
 
-    ![Alternativní text](media\azure-stack-solution-staged-data-analytics\image15.png)
+    ![Alternativní text](media/azure-stack-solution-staged-data-analytics/image15.png)
 
 ## <a name="create-a-queue-triggered-function"></a>Vytvoření funkce aktivované frontou
 
@@ -258,7 +258,7 @@ Tyto kroky a použijte nastavení uvedené výše vytvořte další účet a obj
 
 3.  Rozbalte účet úložiště **kontejnery objektů Blob**, a objekt blob jste vytvořili dříve. Vyberte **nahrát** a potom **nahrávání souborů.**
 
-    ![Nahrání souboru do kontejneru objektů blob.](media\azure-stack-solution-staged-data-analytics\image12.png)
+    ![Nahrání souboru do kontejneru objektů blob.](media/azure-stack-solution-staged-data-analytics/image12.png)
 
 4.  V dialogovém okně nahrávání souborů vyberte pole soubory. Přejděte k souboru na místním počítači, jako je například soubor obrázku, vyberte ho a vyberte **otevřít** a potom **nahrát**.
 
@@ -266,7 +266,7 @@ Tyto kroky a použijte nastavení uvedené výše vytvořte další účet a obj
 
   **Příklad:**
 
-    ![Zobrazte si zprávy v protokolech.](media\azure-stack-solution-staged-data-analytics\image13.png)
+    ![Zobrazte si zprávy v protokolech.](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>Bezpečně uložená a využívaných dat odpovídající
 

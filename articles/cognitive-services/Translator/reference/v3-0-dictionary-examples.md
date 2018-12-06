@@ -10,16 +10,16 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1e6bd1b7ddb38d0fad33ab9d282f8edc4ff8c765
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4b24ba4b4d83ac3f0c8291308debb6317efa4a55
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129125"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967993"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Translator Text API 3.0: Ukázky slovníků
 
-Poskytuje příklady, které ukazují, jak ve slovníku pojmů v kontextu. Tato operace se používá v kombinaci s částí [vyhledávací slovník](.\v3-0-dictionary-lookup.md).
+Poskytuje příklady, které ukazují, jak ve slovníku pojmů v kontextu. Tato operace se používá v kombinaci s částí [vyhledávací slovník](./v3-0-dictionary-lookup.md).
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
   </tr>
   <tr>
     <td>od</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk, který vstupního textu. Zdrojový jazyk musí být jedna z [podporované jazyky](.\v3-0-languages.md) součástí `dictionary` oboru.</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk, který vstupního textu. Zdrojový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí `dictionary` oboru.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](.\v3-0-languages.md) součástí `dictionary` oboru.</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí `dictionary` oboru.</td>
   </tr>
 </table>
 
@@ -73,13 +73,13 @@ Hlavičky žádosti patří:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Tělo požadavku
+## <a name="request-body"></a>Text požadavku
 
 Text požadavku je pole JSON. Každý prvek pole je objekt JSON s následujícími vlastnostmi:
 
-  * `Text`: Řetězec určující termín, který vyhledávání. Měl by to být hodnota `normalizedText` pole z back překlady předchozí [vyhledávací slovník](.\v3-0-dictionary-lookup.md) požadavku. Hodnota může být také `normalizedSource` pole.
+  * `Text`: Řetězec určující termín, který vyhledávání. Měl by to být hodnota `normalizedText` pole z back překlady předchozí [vyhledávací slovník](./v3-0-dictionary-lookup.md) požadavku. Hodnota může být také `normalizedSource` pole.
 
-  * `Translation`: Řetězec určující přeložený text předtím vrátila rutina [vyhledávací slovník](.\v3-0-dictionary-lookup.md) operace. To by měla být hodnota od `normalizedTarget` pole `translations` seznam [vyhledávací slovník](.\v3-0-dictionary-lookup.md) odpovědi. Služba vrátí příklady pro dvojice slov konkrétní zdroj cíl.
+  * `Translation`: Řetězec určující přeložený text předtím vrátila rutina [vyhledávací slovník](./v3-0-dictionary-lookup.md) operace. To by měla být hodnota od `normalizedTarget` pole `translations` seznam [vyhledávací slovník](./v3-0-dictionary-lookup.md) odpovědi. Služba vrátí příklady pro dvojice slov konkrétní zdroj cíl.
 
 Příkladem je:
 

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření prostředí Azure Time Series Insights (preview) | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit prostředí Azure Time Series update
+title: Kurz služby Azure Time Series Insights (Preview) | Dokumentace Microsoftu
+description: Seznamte se s Azure Time Series Insights (Preview)
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,99 +9,184 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.openlocfilehash: 7e256f032c67649a4a8b01311e70d6bc9307ae92
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9a8486a5022a58dd9d4b94ddbe71f3a4e66f18cf
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852904"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969494"
 ---
-# <a name="provisioning-and-managing-an-azure-time-series-insights-preview-environment"></a>Zřizování a správa prostředí Azure Time Series Insights (preview)
+# <a name="azure-time-series-insights-preview-tutorial"></a>Kurz služby Azure Time Series Insights (Preview)
 
-Tento dokument popisuje, jak zřizovat a spravovat nové prostředí Azure Time Series Insights (preview) na webu Azure Portal.
+Tento kurz vás provede procesem vytvoření prostředí Azure Time Series Insights (TSI) ve verzi Preview, naplněný daty ze simulovaných zařízení. V tomto kurzu se naučíte:
 
-## <a name="overview"></a>Přehled
+* Vytvoření prostředí služby TSI (Preview).
+* Připojení prostředí TSI (Preview) v Centru událostí.
+* Spuštění simulace větrné farmy pro streamování dat do prostředí TSI Preview.
+* Proveďte základní analýzy na data.
+* Definujte typ modelu časové řady a hierarchie a přidružte jej k instancím.
 
-Stručný popis o zřizování následující aktualizace služby Time Series Insights:
+## <a name="create-a-time-series-insights-preview-environment"></a>Vytvoření prostředí Time Series Insights (Preview)
 
-* Zřízení prostředí Azure Time Series Insights (TSI) aktualizace.
-* Jako součást procesu vytváření budete muset zadat **ID řady času**. Může být až **tři** (3) klíče. Další informace o [výběr času řady ID](./time-series-insights-update-how-to-id.md).
-* Zřízení prostředí Azure TSI aktualizace vytvoříte dva prostředky Azure, prostředí TSI aktualizace a účet služby Azure Storage pro obecné účely V1.  
-* V budoucnu nových zákazníků Azure bude ve výchozím nastavení pouze možné zřídit účet služby Azure Storage pro obecné účely V2, proto budeme podporovat ho po této změně.  
-* Nepovolujte studené nebo archivní vlastnosti v účtu úložiště, které budete používat.
-* Pak můžete volitelně připojit prostředí update ke zdroji podporovaných událostí Time Series Insights (například služby IoT Hub).
-* Tady byste chtěli poskytnout **ID časového razítka** vlastnost a zadejte skupinu příjemců jedinečný a ujistěte se, že prostředí mají přístup ke všem událostem.
-* Po zřízení, pak můžete volitelně spravovat zásady přístupu a jiné prostředí atributy, které podporují vaše obchodní požadavky.
+Tato část popisuje, jak vytvořit prostředí Azure TSI (Preview) pomocí [webu Azure Portal](https://portal.azure.com/).
 
-## <a name="new-environment-creation"></a>Vytvoření nového prostředí
+1. Přihlaste se pomocí svého účtu předplatného webu Azure Portal
+1. Vlevo nahoře vyberte **+ Vytvořit prostředek**.
+1. Vyberte kategorii **Internet věcí** a potom zvolte **Time Series Insights**.
 
-1. Vyberte `PAYG` z **SKU** rozevíracího seznamu. Budete také zadání názvu prostředí, určit, jaké předplatné a skupinu prostředků, které chcete vytvořit prostředí v a vybrat pro prostředí tak, aby se nacházejí v podporovaném umístění.  
+   ![kurz: 1][1]
 
-1. Vytvořte nový účet úložiště Azure, že vyberete název účtu úložiště a určování výběru replikace. Tím automaticky vytvořit nový účet pro obecné účely verze 1 služby Azure Storage ve stejné oblasti jako prostředí Azure TSI (preview), které jste dříve vybrali.  
+1. Na stránce prostředí Time Series Insights, vyplňte požadované parametry a klikněte na **Další: Zdroj události**
 
-1. Vstup **ID řady času** vlastnost:
+   ![kurz 2][2]
 
-    > [!IMPORTANT]
-    > **ID řady času** velká a malá písmena neměnná a nelze změnit po nastavení.
+1. Na **zdroj události** stránce, vyplňte požadované parametry a klikněte na **revize + vytvořit**.
 
-    Přečtěte si další podrobnosti o tom, že vyberete vhodné **ID řady času** , přečtěte si téma o [osvědčené postupy pro výběr ID řady času](./time-series-insights-update-how-to-id.md).
+   ![kurz 3][3]
 
-    ![environment_details][1]
+1. Zkontrolujte všechny informace a klikněte na **vytvořit** zahájíte zřizování prostředí.
 
-1. Volitelně můžete přidat zdroje událostí:
+   ![kurz 4][4]
 
-    * Azure TSI podporuje jako možnosti služby Azure IoT Hub a Event Hubs. Přestože můžete přidat pouze jednu událost zdroje v okamžiku vytvoření prostředí, je zdrojem událostí další přidat později. Doporučujeme vytvořit skupinu jedinečných uživatelů a ujistěte se, že všechny události jsou viditelné TSI. Můžete vybrat existující skupinu uživatelů nebo vytvořit novou skupinu uživatelů, při přidávání zdroje událostí.
+1. Až se nasazení dokončí úspěšně, dostanete oznámení.
 
-    * Taky určit odpovídající **časové razítko** vlastnost. Ve výchozím nastavení používá TSI čas zařazení do fronty zpráv pro každý zdroj události, které nemusí být správný, pokud jsou dávkové zpracování události nebo nahráním historická data. Proto je nutné zadat vlastnost časového razítka velká a malá písmena, při přidávání zdroje událostí.  
+   ![kurz – pět][5]
 
-     ![environment_event_sources][2]
+## <a name="send-events-to-your-tsi-environment"></a>Odesílání událostí do prostředí TSI
 
-1. Zkontrolovat a vytvořit:
+V této části použijete windmill simulátor zařízení k odesílání událostí do prostředí TSI prostřednictvím centra událostí.
 
-    ![environment_review][3]
+  1. Na webu Azure Portal přejděte k prostředku centra událostí a připojení k prostředí TSI. Přečtěte si [jak se připojit k existující centrum událostí váš prostředek](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
-    Potvrďte, že je vše v pořádku!
+  1. Na stránce prostředků centra událostí, přejděte na **sdílené zásady přístupu** a potom **RootManageSharedAccessKey**. Kopírovat **připojovací řetězec – primární klíč** tady zobrazí.
 
-## <a name="management"></a>Správa
+      ![kurz – 6][6]
 
-Budete mít možnost spravovat TSI aktualizované prostředí pomocí webu Azure portal. Uživatelé obeznámeni s TSI bude klidem ihned s aktualizací update TSI protože většina je přenášet mezi verzemi.
+  1. Přejděte do [ (Nastavení)https://tsiclientsample.azurewebsites.net/windFarmGen.html]( https://tsiclientsample.azurewebsites.net/windFarmGen.html) (Integrace a služby). Tato webová aplikace simuluje windmill zařízení.
+  1. Vložit připojovací řetězec zkopíruje z kroku 3 v **připojovací řetězec centra událostí**
 
-Níže jsou uvedené hlavní rozdíly ve správě L1 TSI prostředí, nikoli S1 nebo S2 prostředí pomocí webu Azure portal:
+      ![kurz – sedm][7]
 
-* Portál TSI Azure *přehled* okno:
+  1. Klikněte na **klikněte na tlačítko Start** odesílání událostí do vašeho centra událostí. V této fázi se soubor s názvem `instances.json` bude stažena do vašeho počítače. Tento soubor uložte, protože jsme budete potřebovat později.
 
-  * Pomocí kartě s přehledem zůstává stejná s výjimkou:
+  1. Vraťte se do vašeho centra událostí. Teď byste měli vidět nové události přijímá hub.d
 
-    * Kapacita je odebrat, protože tento koncept se nevztahuje na L1 prostředí.
-    * **ID řady času** byla přidána vlastnost. To je neměnný vlastnost přidána na čas zřízení a definuje, jak se vaše data rozdělit na oddíly.
-    * Referenční datové sady se odeberou.
+      ![kurz – 8][8]
 
-* Portál TSI Azure *konfigurovat* okno:
-  
-  * Uchovávání dat je odebrat, protože uchovávání dat se nastaví na neomezený počet.
+## <a name="analyze-data-in-your-environment"></a>Analýza dat ve vašem prostředí
 
-    * Očekáváme, že v budoucnu přidat více ovládacích prvků na to, ale teď nejde nastavit omezení na to.
-    * Kapacita, kalkulačky a limit úložiště překročil chování odebrat.
+V této části provedete základní analýzy na dobu aktualizace řady dat Time Series Insights pomocí Průzkumníka.
 
-* Portál TSI Azure *odkaz* okno dat:
+  1. Kliknutím na adresu URL na stránce prostředků na webu Azure Portal přejděte do vaší aktualizace Průzkumníka Time Series Insights.
 
-  * Toto celé okno se odebral jako referenčních dat není součástí L1 prostředí.
+      ![kurz devět][9]
 
-[!INCLUDE [tsi-update-docs](../../includes/time-series-insights-update-documents.md)]
+  1. V Průzkumníkovi, klikněte na **bez nadřazených položek instance** uzlů, čímž zobrazíte všechny časové řady instance v prostředí.
+
+      ![kurz – deset][10]
+
+  1. V tomto kurzu vytvoříme analýza dat odeslaných za poslední den. Pokud chcete udělat, klikněte na **rychlé časy** a vyberte **posledních 24 hodin** možnost.
+
+      ![kurz jedenáct][11]
+
+  1. Vyberte **Sensor_0** a zvolte **zobrazit průměrné hodnoty** k vizualizaci dat odesílaných z této instance řady čas.
+
+      ![kurz – 12][12]
+
+  1. Podobně můžete zobrazit data přicházející z jiné instance řady času provádět základní analýzy.
+
+      ![kurz třináct][13]
+
+## <a name="define-a-type-and-hierarchy"></a>Definujte typ a hierarchie
+
+V této části se vytvořit typ, hierarchie a přidružit k vaší instance řady času. Další informace o [čas řady modely](./time-series-insights-update-tsm.md).
+
+  1. V Průzkumníkovi, klikněte na **modelu** kartu na panelu aplikací.
+
+      ![kurz čtrnáct][14]
+
+  1. V oddílu typy, klikněte na **+ přidat**. To vám umožní vytvořit nový typ modelu řady čas.
+
+      ![kurz patnáct][15]
+
+  1. V Editoru typů, zadejte **název**, **popis**, vytvářet proměnné pro **průměrné**, **Min**, a **maximální** hodnoty, jak je znázorněno níže. Klikněte na **vytvořit** uložte typ.
+
+      ![kurz – šestnáct][16]
+
+      ![kurz sedmnáct][17]
+
+  1. V **hierarchie** části, klikněte na **+ přidat**. To vám umožní vytvořit nový Model řady časovou hierarchii.
+
+     ![kurz osmnáct][18]
+
+  1. V editoru hierarchie, zadejte **název** a přidat hierarchie úrovní, jak je znázorněno níže. Klikněte na **vytvořit** uložit hierarchii.
+
+     ![kurz devatenáct][19]
+
+     ![dvacet kurz][20]
+
+  1. V **instance** , vyberte výchozí instanci a klikněte na **upravit**. To vám umožní přidružit tuto instanci typu a hierarchie.
+
+     ![kurz: dvacet 1][21]
+
+  1. V editoru instance zvolte typ a hierarchii definovaný v krocích 3, 5 výše, jak je znázorněno.
+
+     ![kurz dvacet dvě][22]
+
+  1. Provedete to pro všechny instance najednou, případně můžete upravit `instances.json` soubor, který byl předtím stáhli. V tomto souboru Nahradit vše **typeId** a **hierarchyId** pole s ID získané z kroky 3, 5 výše.
+
+  1. V **instance** části, klikněte na **nahrát JSON** a nahrát upravený `instances.json` sdílené, jak je znázorněno níže.
+
+     ![kurz dvacet tři][23]
+
+  1. Přejděte **Analytics** kartu a aktualizujte svůj prohlížeč. Teď byste měli vidět všechny instance přidružené k typu a hierarchii výše.
+
+     ![kurz – 24][24]
 
 ## <a name="next-steps"></a>Další postup
+
+V tomto kurzu jste se naučili:  
+
+* Vytvoření prostředí služby TSI (Preview).
+* Připojení prostředí TSI (Preview) v Centru událostí.
+* Spuštění simulace větrné farmy pro streamování dat do prostředí TSI (Preview).
+* Proveďte základní analýzy na data.
+* Definování typu modelu časové řady, hierarchie a přidružte jej k instancím.
+
+Teď už víte, jak vytvořit vlastní prostředí TSI aktualizace, přečtěte si informace o klíčových konceptech ve službě TSI.
 
 Přečtěte si informace o konfiguraci úložiště TSI:
 
 > [!div class="nextstepaction"]
-> [Azure TSI (preview) úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
+> [Úložiště Azure TSI (Preview) a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
 
 Další informace o modelech řady čas:
 
 > [!div class="nextstepaction"]
-> [Azure TSI TSM (ve verzi preview)](./time-series-insights-update-tsm.md)
+> [Azure modelování dat TSI (Preview)](./time-series-insights-update-tsm.md)
 
 <!-- Images -->
-[1]: media/v2-update-provision/environment_details.png
-[2]: media/v2-update-provision/environment_event_sources.png
-[3]: media/v2-update-provision/environment_review.png
+[1]: media/v2-update-provision/tutorial-one.png
+[2]: media/v2-update-provision/tutorial-two.png
+[3]: media/v2-update-provision/tutorial-three.png
+[4]: media/v2-update-provision/tutorial-four.png
+[5]: media/v2-update-provision/tutorial-five.png
+[6]: media/v2-update-provision/tutorial-six.png
+[7]: media/v2-update-provision/tutorial-seven.png
+[8]: media/v2-update-provision/tutorial-eight.png
+[9]: media/v2-update-provision/tutorial-nine.png
+[10]: media/v2-update-provision/tutorial-ten.png
+[11]: media/v2-update-provision/tutorial-eleven.png
+[12]: media/v2-update-provision/tutorial-twelve.png
+[13]: media/v2-update-provision/tutorial-thirteen.png
+[14]: media/v2-update-provision/tutorial-fourteen.png
+[15]: media/v2-update-provision/tutorial-fifteen.png
+[16]: media/v2-update-provision/tutorial-sixteen.png
+[17]: media/v2-update-provision/tutorial-seventeen.png
+[18]: media/v2-update-provision/tutorial-eighteen.png
+[19]: media/v2-update-provision/tutorial-nineteen.png
+[20]: media/v2-update-provision/tutorial-twenty.png
+[21]: media/v2-update-provision/tutorial-twenty-one.png
+[22]: media/v2-update-provision/tutorial-twenty-two.png
+[23]: media/v2-update-provision/tutorial-twenty-three.png
+[24]: media/v2-update-provision/tutorial-twenty-four.png

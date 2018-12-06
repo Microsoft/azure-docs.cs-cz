@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 5d3073c3ed499ecdb20243e6db2b217aec3e1448
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254515"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972384"
 ---
 # <a name="azure-stack-administration-basics"></a>Základy správy Azure Stack
 Existuje několik věcí, které je potřeba vědět, pokud je pro vás nová pro správu služby Azure Stack. Tento návod poskytuje přehled o vaší role jako jejich operátory Azure stacku a co je potřeba říct uživatelům pro ně a být tak produktivní rychle.
@@ -32,9 +32,9 @@ Pokud používáte systémech pro Azure Stack integrované, aktualizované verze
  
 ### <a name="development-kit"></a>Vývojová sada
 
-Pokud používáte Azure Stack Development Kit, přečtěte si [co je Azure Stack?](.\asdk\asdk-what-is.md) článek a ujistěte se, že pochopit účel development kit a jaká jsou její omezení. Vývojová sada byste měli používat jako "izolovaném prostoru," kde můžete vyhodnotit Azure Stack a vyvíjet a testovat své aplikace v neprodukčním prostředí. (Informace o nasazení, najdete v článku [nasazení Azure Stack Development Kit](.\asdk\asdk-install.md) článku.)
+Pokud používáte Azure Stack Development Kit, přečtěte si [co je Azure Stack?](./asdk/asdk-what-is.md) článek a ujistěte se, že pochopit účel development kit a jaká jsou její omezení. Vývojová sada byste měli používat jako "izolovaném prostoru," kde můžete vyhodnotit Azure Stack a vyvíjet a testovat své aplikace v neprodukčním prostředí. (Informace o nasazení, najdete v článku [nasazení Azure Stack Development Kit](./asdk/asdk-install.md) článku.)
 
-Jako je Azure můžeme inovovat rychle. Pravidelně vydáváme nové buildy. Pokud používáte development kit a chcete přesunout na nejnovější verzi, je nutné [opětovné nasazení Azure Stack](.\asdk\asdk-redeploy.md). Balíčky aktualizací nelze použít. Tento proces trvá určitou dobu, ale má výhodu, že budete moct vyzkoušet nejnovější funkce. Dokumentaci development kit na našem webu odráží nejnovější sestavení pro vydání.
+Jako je Azure můžeme inovovat rychle. Pravidelně vydáváme nové buildy. Pokud používáte development kit a chcete přesunout na nejnovější verzi, je nutné [opětovné nasazení Azure Stack](./asdk/asdk-redeploy.md). Balíčky aktualizací nelze použít. Tento proces trvá určitou dobu, ale má výhodu, že budete moct vyzkoušet nejnovější funkce. Dokumentaci development kit na našem webu odráží nejnovější sestavení pro vydání.
 
 ## <a name="learn-about-available-services"></a>Další informace o dostupných služeb
 

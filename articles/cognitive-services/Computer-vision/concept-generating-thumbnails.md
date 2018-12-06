@@ -8,41 +8,44 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 11/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 9cb82b40d1fbec513b0219f26d1959fbd7f64570
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7d914f394ecfcf02ed26f41cd8fe2ef799cf6103
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343958"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966734"
 ---
 # <a name="generating-thumbnails"></a>Generování miniatur
 
-Miniatura je znázornění obrázek v plné velikosti. Pohyblivá podle zařízení, jako jsou telefony, tablety a počítače vytvořit potřebu rozložení rozhraní (UX) jiný uživatel a miniatur. Pomocí inteligentního ořezávání, tato funkce pro počítačové zpracování obrazu vám pomůže vyřešit problém.
+Miniatura je reprezentace snížit velikost obrázku. Miniatury se používá k reprezentování obrázky a další data úspornější a podporou rozložení způsobem. Rozhraní API pro počítačové zpracování obrazu používá inteligentní oříznutí, společně se změna velikosti obrázku, k vytvoření intuitivní miniatury pro danou image.
 
-Po nahrání obrázku pro počítačové zpracování obrazu generuje vysoce kvalitní miniaturu a poté analyzuje objekty v rámci bitové kopie k identifikaci *oblasti zájmu* (ROI). To můžete volitelně Oříznout okraje obrázku, aby odpovídal požadavkům na návratnost investic. Vygenerované miniatury lze zobrazit pomocí poměr stran, které se liší od poměru stran u původní bitové kopie, tak, aby vyhovovaly vašim potřebám.
+Generování miniatur algoritmus počítačového zpracování obrazu funguje takto:
+1. Odeberte rušivé prvky z bitové kopie a identifikovat _oblast zájmu_&mdash;oblasti obrázku, ve kterém se zobrazí hlavní objekty.
+1. Oříznout okraje obrázku podle identifikovanou _oblast zájmu_.
+1. Změna poměru stran, aby odpovídala rozměrům cílového miniatur.
 
-Miniatura algoritmus funguje takto:
+## <a name="area-of-interest"></a>Oblast zájmu
 
-1. Odebere rušivé prvky z bitové kopie a identifikuje objekt hlavní oblasti zájmu.
-2. Obrázek ořízne tak, podle zjištěných oblasti zájmu.
-3. Změní poměr stran, aby odpovídala rozměrům cílového miniatur.
+Když nahrajete image, rozhraní API pro počítačové zpracování obrazu analyzuje umožňuje určit, *oblast zájmu*. K určení způsobu Oříznout okraje obrázku, pak může použít této oblasti. Oříznutí operaci, ale bude vždy odpovídat požadovaný poměr stran Pokud je zadaná.
+
+Můžete také získat nezpracovaný ohraničující souřadnice pole tohoto stejného *oblast zájmu* voláním **areaOfInterest** API místo. Tyto informace pak můžete upravit původní bitové kopie, ale chcete.
+
+## <a name="examples"></a>Příklady
 
 Vygenerované miniatury můžou výrazně lišit v závislosti na tom, zadejte pro výšku, šířku a inteligentní oříznutí, jak je znázorněno na následujícím obrázku.
 
 ![Miniatury](./Images/thumbnail-demo.png)
 
-## <a name="thumbnail-generation-examples"></a>Příklady generování miniatur
-
 Následující tabulka ukazuje typické miniatury generovaných pro počítačové zpracování obrazu pro příklad Image. Miniatury byly vygenerovány pro zadanou cílovou výšku a šířku 50 pixelů a inteligentní oříznutí povolené.
 
 | Image | Miniatura |
 |-------|-----------|
-|![Venkovní Horská oblast](./Images/mountain_vista.png) | ![Horská oblast venku miniaturu](./Images/mountain_vista_thumbnail.png) |
-|![Analýza květinu pro zpracování obrazu](./Images/flower.png) | ![Analýza květinu miniaturu pro zpracování obrazu](./Images/flower_thumbnail.png) |
-|![Žena stříška](./Images/woman_roof.png) | ![Žena stříška miniaturu](./Images/woman_roof_thumbnail.png) |
+|![Na horách](./Images/mountain_vista.png) | ![Horská oblast venku miniaturu](./Images/mountain_vista_thumbnail.png) |
+|![Vizuální analýza květiny](./Images/flower.png) | ![Analýza květinu miniaturu pro zpracování obrazu](./Images/flower_thumbnail.png) |
+|![Žena na střeše](./Images/woman_roof.png) | ![Žena stříška miniaturu](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>Další postup
 
-Seznamte se s koncepty [označování imagí](concept-tagging-images.md) a [kategorizace obrázků](concept-categorizing-images.md).
+Další informace o [označování imagí](concept-tagging-images.md) a [kategorizace obrázků](concept-categorizing-images.md).

@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 09/18/2018
+ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 8a99a784292c4294456296c1f105e5f485689368
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d66221dea768d75395300ab663c9466718a0140d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679898"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966777"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Správa aktualizací pro Windows pomocí služby Azure Automation
 
@@ -82,48 +82,24 @@ Kliknutím kamkoli jinam na aktualizaci otevřete podokno **Prohledávání prot
 
 ## <a name="configure-alerts"></a>Konfigurace upozornění
 
-V tomto kroku zjistíte, jak nastavit upozornění, které vás bude informovat o úspěšném nasazení aktualizací prostřednictvím dotazu Log Analytics nebo sledování neúspěšných nasazení v hlavním runbooku pro řešení Update Management.
+V tomto kroku zjistíte, jak nastavit upozornění, abyste mohli zjistit stav nasazení aktualizace.
 
 ### <a name="alert-conditions"></a>Podmínky upozornění
 
-Pro každý typ upozornění je potřeba definovat různé podmínky upozornění.
+Ve vašem účtu Automation v části **monitorování** přejděte na **výstrahy**a potom klikněte na tlačítko **+ nové pravidlo upozornění**.
 
-#### <a name="log-analytics-query-alert"></a>Upozornění dotazu Log Analytics
+Váš účet Automation je už vybraná jako prostředek. Pokud chcete změnit ji můžete kliknout na **vyberte** a na **vyberte prostředek** stránce **účty Automation** v **filtrovat podle typu prostředku** rozevíracího seznamu. Vyberte svůj účet Automation a pak vyberte **Hotovo**.
 
-V případě úspěšných nasazení můžete vytvořit upozornění na základě dotazu Log Analytics. V případě neúspěšných nasazení můžete podle kroků v části [Upozornění runbooku](#runbook-alert) nastavit upozornění na selhání hlavního runbooku, který orchestruje nasazení aktualizací. Můžete napsat vlastní dotaz pro další upozornění, která budou pokrývat řadu různých scénářů.
+Klikněte na tlačítko **přidat podmínku** vyberte signál, který je vhodný pro vaše nasazení aktualizace. Následující tabulka zobrazuje podrobnosti o dvě dostupné signály pro nasazení aktualizací:
 
-Na webu Azure Portal přejděte do části **Monitorování** a pak vyberte **Vytvořit upozornění**.
+|Název signálu|Dimenze|Popis|
+|---|---|---|
+|**Celkový počet aktualizací je spuštěné nasazení**|-Název nasazení aktualizace</br>-Status|Tento signál slouží k upozornění na celkový stav nasazení aktualizace.|
+|**Celkový počet aktualizací spuštění počítače nasazení**|-Název nasazení aktualizace</br>-Status</br>-Cílového počítače</br>– Id spuštění aktualizace nasazení|Tento signál slouží k upozornění na stav nasazení aktualizace cílená na konkrétní počítače|
 
-V části **1. Definujte podmínku upozornění** klikněte na **Vybrat cíl**. V části **Filtrovat podle typu prostředku** vyberte **Log Analytics**. Vyberte váš pracovní prostor Log Analytics a pak vyberte **Hotovo**.
-
-![Vytvoření upozornění](./media/automation-tutorial-update-management/create-alert.png)
-
-Vyberte **Přidat kritéria**.
-
-V části **Konfigurovat logiku signálů** vyberte v tabulce **Vlastní prohledávání protokolu**. Do textového pole **Vyhledávací dotaz** zadejte následující dotaz:
-
-```loganalytics
-UpdateRunProgress
-| where InstallationStatus == 'Succeeded'
-| where TimeGenerated > now(-10m)
-| summarize by UpdateRunName, Computer
-```
-Tento dotaz vrátí počítače a název hromadné postupné aktualizace dokončené v zadaném časovém rámci.
-
-V části **Logika upozornění** jako **Prahová hodnota** zadejte **1**. Jakmile budete hotovi, vyberte **Hotovo**.
+Pro hodnoty rozměrů vyberte platnou hodnotu ze seznamu. Pokud hledáte hodnota není v seznamu, klikněte na tlačítko **\+** znaménko vedle dimenze a zadejte vlastní název. Pak můžete vybrat hodnotu, kterou chcete vyhledat. Pokud chcete vybrat všechny hodnoty z dimenze, klikněte na tlačítko **vyberte \***  tlačítko. Pokud jste nezvolili hodnotu pro dimenzi, daná dimenze se budou ignorovat během vyhodnocení.
 
 ![Konfigurace logiky signálů](./media/automation-tutorial-update-management/signal-logic.png)
-
-#### <a name="runbook-alert"></a>Upozornění runbooku
-
-V případě nasazení, která selžou, je potřeba upozornit na selhání hlavního runbooku.
-Na webu Azure Portal přejděte do části **Monitorování** a pak vyberte **Vytvořit upozornění**.
-
-V části **1. Definujte podmínku upozornění** klikněte na **Vybrat cíl**. V části **Filtrovat podle typu prostředku** vyberte **Účty Automation**. Vyberte svůj účet Automation a pak vyberte **Hotovo**.
-
-V části **Název runbooku** klikněte na symbol **\+** a jako vlastní název zadejte **Patch-MicrosoftOMSComputers**. V části **Stav** zvolte **Neúspěch** nebo klikněte na symbol **\+** a zadejte **Neúspěch**.
-
-![Konfigurace logiky signálů pro runbooky](./media/automation-tutorial-update-management/signal-logic-runbook.png)
 
 V části **Logika upozornění** jako **Prahová hodnota** zadejte **1**. Jakmile budete hotovi, vyberte **Hotovo**.
 
@@ -133,7 +109,7 @@ V části **2. Definujte podrobnosti upozornění** zadejte název a popis upozo
 
 ![Konfigurace logiky signálů](./media/automation-tutorial-update-management/define-alert-details.png)
 
-V části **3. Definujte skupinu akcí** vyberte **Nová skupina akcí**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).
+V části **skupiny akcí**vyberte **vytvořit nový**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).
 
 Do pole **Název skupiny akcí** zadejte název a krátký název upozornění. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 
@@ -159,7 +135,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
 * **Operační systém:** Vyberte cílový operační systém pro nasazení aktualizací.
 
-* **Skupiny, které se mají aktualizovat (Preview)**: Definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek a vytvořte dynamickou skupinu virtuálních počítačů Azure, která se má zahrnout do vašeho nasazení. Další informace najdete v tématu věnovaném [dynamickým skupinám](automation-update-management.md#using-dynamic-groups).
+* **Skupiny, které se mají aktualizovat (Preview)**: Definujte dotaz založený na kombinaci předplatného, skupin prostředků, umístění a značek a vytvořte dynamickou skupinu virtuálních počítačů Azure, která se má zahrnout do vašeho nasazení. Další informace najdete v tématu [dynamické skupiny](automation-update-management.md#using-dynamic-groups)
 
 * **Počítače k aktualizaci:** Vyberte uložené hledání, importovanou skupinu nebo vyberte jednotlivé počítače z rozevírací nabídky. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../azure-monitor/platform/computer-groups.md).
 
@@ -174,7 +150,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
    Popis typů klasifikace najdete v tématu popisujícím [klasifikace aktualizací](automation-update-management.md#update-classifications).
 
-* **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku **Zahrnout nebo vyloučit**. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o tom, jak se zahrnutí provádí, najdete v tématu o [chování zahrnutí](automation-update-management.md#inclusion-behavior).
+* **Aktualizace, které se mají zahrnout nebo vyloučit** – Otevře stránku **Zahrnout nebo vyloučit**. Aktualizace, které se mají zahrnout nebo vyloučit jsou na samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](automation-update-management.md#inclusion-behavior)
 
 * **Nastavení plánu:** Otevře se podokno **Nastavení plánu**. Výchozí čas spuštění je 30 minut po aktuálním čase. Čas spuštění můžete nastavit na jakýkoli čas minimálně 10 minut po aktuálním čase.
 

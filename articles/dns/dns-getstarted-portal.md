@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 11/30/2018
+ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: e9a286e4ce510cd673a7069b8b7e7d6f631ffb6a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9929662f1fe4612e51c82248f64e3191f7fdb223
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726436"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955195"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-by-using-the-portal"></a>Rychlý start: Konfigurace Azure DNS pro překlad názvů pomocí portálu
 
@@ -30,7 +30,7 @@ You can also perform these steps using [Azure PowerShell](dns-getstarted-powersh
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 U všech postupů portálu přihlásit [webu Azure portal](https://portal.azure.com).
-   
+
 ## <a name="create-a-dns-zone"></a>Vytvoření zóny DNS
 
 Zóna DNS obsahuje záznamy DNS pro doménu. Pokud chcete začít hostovat svou doménu v Azure DNS, můžete vytvořit zónu DNS pro daný název domény. 
@@ -68,7 +68,7 @@ Vytvoření položky DNS nebo záznamy pro vaši doménu v zóně DNS. Vytvořte
    - **Jednotka hodnoty TTL**: vyberte **hodin**. Toto je jednotka času **TTL** hodnotu. 
    - **IP adresa**: v tomto příkladu rychlého startu zadejte *10.10.10.10*. Tato hodnota je, že překládá název záznamu IP adresu. Ve skutečném scénáři by zadejte veřejnou IP adresu pro váš webový server.
 
-Protože v tomto rychlém startu nepoužívá skutečné domény, není nutné nakonfigurovat názvové servery Azure DNS u registrátora názvu domény. Skutečné doménu měli byste kdokoli na Internetu, abychom mohli přeložit název hostitele pro připojení k webu nebo aplikaci. Budete navštivte web registrátora názvu domény nahraďte názvové servery Azure DNS záznamy názvového serveru. Další informace najdete v tématu [Delegování domény do DNS Azure](dns-delegate-domain-azure-dns.md).
+Protože v tomto rychlém startu nepoužívá skutečné domény, není nutné nakonfigurovat názvové servery Azure DNS u registrátora názvu domény. Skutečné doménu měli byste kdokoli na Internetu, abychom mohli přeložit název hostitele pro připojení k webu nebo aplikaci. Budete navštivte web registrátora názvu domény nahraďte názvové servery Azure DNS záznamy názvového serveru. Další informace najdete v tématu [kurz: hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
 ## <a name="test-the-name-resolution"></a>Testování překladu IP adres
 

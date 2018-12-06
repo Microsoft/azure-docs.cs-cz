@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 12/05/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 37fb4c330004ce87afd900d9cafebb337261ec06
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 88041cf185aeb6ae5cb27f2405b62401cae069d9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568229"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964249"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -163,7 +163,7 @@ Tato aktualizace obsahuje také ke zmírnění chyby zabezpečení spekulativní
 > Příprava vašeho nasazení Azure stacku pro rozšíření hostitele. Příprava systému podle následujících pokynů k [Příprava hostitele rozšíření pro službu Azure Stack](azure-stack-extension-host-prepare.md).
 
 Po instalaci této aktualizace nainstalujte všechny příslušné opravy hotfix. Další informace naleznete následující články znalostní báze, stejně jako naše [zásady obsluhy](azure-stack-servicing-policy.md). 
-- [KB 4468920 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1808.7.113](https://support.microsoft.com/help/4471992/)
+- [KB 4481066 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/)
 
 
 ## <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
@@ -220,7 +220,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
    
   Spusťte prosím [testovací AzureStack](azure-stack-diagnostic-test.md) rutina pro ověření stavu instance rolí infrastruktury a škálování jednotek uzlů. Pokud nejsou zjištěny žádné problémy podle [testovací AzureStack](azure-stack-diagnostic-test.md), tato upozornění můžete ignorovat. Pokud se zjistí problém, pokuste se spustit instanci role infrastruktury nebo uzlu pomocí portálu pro správu nebo prostředí PowerShell.
 
-  Tento problém je vyřešen v nejnovější verzi [vydání opravy hotfix. 1808](https://support.microsoft.com/help/4471992/), takže je nutné k instalaci této opravy hotfix, pokud dojde k problému.
+  Tento problém je vyřešen v nejnovější verzi [vydání opravy hotfix. 1808](https://support.microsoft.com/help/4481066/), takže je nutné k instalaci této opravy hotfix, pokud dojde k problému.
 
 <!-- 1264761 - IS ASDK --> 
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  
@@ -269,7 +269,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
       1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
       2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
    2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Chcete-li chybu vyřešit, postupujte takto:
-      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4471992/).
+      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4481066/).
       2. Postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
       
 <!-- 3179561 - IS --> 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: bd72abd4f8f23414ea1003c74d2f90cde3b51d34
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 326fd38f7cb738540a389c93de2a9b5be015e0d7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034333"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968728"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Obnovit ze ztráty dat
 
@@ -40,11 +40,11 @@ Tento scénář adresy obnovení v případě selhání celé instalace zaříze
 
 Cesty ochrany Start pro Azure začíná zálohování dat infrastruktury a aplikací nebo tenantovi samostatně. Tento dokument popisuje, jak ochránit infrastrukturu. 
 
-![Počáteční nasazení služby Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow1.png)
+![Počáteční nasazení služby Azure Stack](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
 V nejhorším scénáře kde dojde ke ztrátě všech dat obnovení služby Azure Stack je proces obnovení infrastruktury dat jedinečné, že nasazení Azure Stack a všechna uživatelská data. 
 
-![Opětovné nasazení Azure Stack](media\azure-stack-backup\azure-stack-backup-workflow2.png)
+![Opětovné nasazení Azure Stack](media/azure-stack-backup/azure-stack-backup-workflow2.png)
 
 ## <a name="restore"></a>Obnovení
 

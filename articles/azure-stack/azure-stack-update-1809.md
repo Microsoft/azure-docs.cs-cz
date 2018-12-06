@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/23/2018
+ms.date: 12/05/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 9afce9c6d4ed4d6dc6fbe5bcfcfedc33bdd7cfdf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: bcb135e19796bcab8a8e06e3c1896b247188a58c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314660"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970837"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -57,7 +57,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 <!-- TBD - IS ASDK --> 
 - Opravili jsme problém, ve kterém jste vytvořili virtuální počítače na portálu user portal Azure Stack, a na portálu zobrazuje nesprávný počet datových disků, které můžete připojit k DS-series virtuálních počítačů. Virtuálních počítačů řady DS může obsahovat libovolný počet datových disků jako konfiguraci Azure.
 
-- Následující problémy se spravovanými disky jsou opravené v 1809 a také řeší. 1808 [Azure Stack Hotfix 1.1808.5.110](https://support.microsoft.com/help/4468920/): 
+- Následující problémy se spravovanými disky jsou opravené v 1809 a také řeší. 1808 [Azure Stack Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/): 
 
    <!--  2966665 – IS, ASDK --> 
    - Byl opraven problém, v které připojování datových disků SSD na premium velikost spravovaného disku virtuální počítače (DS, DSv2, Fs, Fs_V2) se nezdařilo s chybou: *nepovedlo se aktualizovat disky pro virtuální počítač 'vmname' Chyba: operaci nelze provést, protože požadovaná Typ účtu úložiště 'Premium_LRS' není podporován pro velikost virtuálního počítače "Standard_DS/Ds_V2/FS/Fs_v2)*. 
@@ -78,14 +78,14 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
       1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
       2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
    2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Chcete-li chybu vyřešit, postupujte takto:
-      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4471992).
+      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4481066).
       2. Postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
 
 
 ### <a name="changes"></a>Změny
 
 <!-- 2635202 - IS, ASDK -->
-- Služba backup infrastruktury přesune z [síťové infrastruktury veřejných](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-infrastructure-network) k [síť veřejných virtuálních IP adres](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-network#public-vip-network). Zákazníci se musí zajistit služby má přístup k umístění úložiště zálohy z veřejné sítě VIP.  
+- Služba backup infrastruktury přesune z [síťové infrastruktury veřejných](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network) k [síť veřejných virtuálních IP adres](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Zákazníci se musí zajistit služby má přístup k umístění úložiště zálohy z veřejné sítě VIP.  
 
 > [!IMPORTANT]  
 > Pokud máte bránu firewall, která neumožňuje připojení z veřejné sítě VIP k souborovému serveru, tato změna způsobí, že infrastruktura zálohování se nezdaří s "Chyba 53 cesta sítě nebyla nalezena." Toto je zásadní změnu, která nemá žádné rozumné řešení. Microsoft se na základě názorů zákazníků, vrátí tuto změnu v opravu hotfix. Podívejte se prosím [publikovat aktualizace krokům](#post-update-steps) pro další informace o dostupných oprav hotfix pro 1809. Jakmile je k dispozici oprava hotfix, nezapomeňte použít po aktualizaci na 1809 pouze v případě, že vaše zásady sítě neumožňují veřejnou síť virtuálních IP adres pro přístup k prostředků infrastruktury. v 1811 tato změna uplatní na všech systémech. Pokud jste použili v 1809 opravy hotfix, není vyžadována žádná další akce.  
@@ -143,7 +143,7 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Instalace nejnovější opravy Hotfix Azure Stack. 1808 před použitím 1809. Další informace najdete v tématu [KB 4471992 – Azure Stack opravu Hotfix Azure Stack opravu Hotfix 1.1808.7.113](https://support.microsoft.com/help/4471992/).
+- Instalace nejnovější opravy Hotfix Azure Stack. 1808 před použitím 1809. Další informace najdete v tématu [KB 4481066 – Azure Stack opravu Hotfix Azure Stack opravu Hotfix 1.1808.9.117](https://support.microsoft.com/help/4481066/).
 
   > [!TIP]  
   > Předplatit následující *RRS* nebo *Atom* kanály, držet krok s Azure Stack opravy hotfix:

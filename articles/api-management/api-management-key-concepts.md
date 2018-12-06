@@ -1,5 +1,5 @@
 ---
-title: Klíčové koncepty a přehled Azure API Managementu | Microsoft Docs
+title: Klíčové koncepty a přehled Azure API Managementu | Dokumentace Microsoftu
 description: Seznamte se s rozhraními API, produkty, rolemi, skupinami a dalšími klíčovými koncepty služby API Management.
 services: api-management
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: cded90d4f36e353241bb594bae35b7c7e03599b9
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
-ms.translationtype: HT
+ms.openlocfilehash: 0ede6c0c55e2f953e0d109d2d371313759ed4d06
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435996"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965151"
 ---
 # <a name="what-is-api-management"></a>Co je služba API Management?
 
@@ -59,7 +59,7 @@ Systém se skládá z následujících součástí:
   * Vytvořit účet a přihlásit se k odběru za účelem získání klíčů rozhraní API.
   * Přistupovat k analýzám jejich využití.
 
-Další informace najdete v bílé knize [Cloudová služba API Management: využití síly rozhraní API](http://j.mp/ms-apim-whitepaper) (formát PDF). Tato bílá kniha s úvodními informacemi o službě API Management vytvořená společností CITO Research obsahuje: 
+Další informace najdete v bílé knize [Cloudová služba API Management: využití síly rozhraní API](https://j.mp/ms-apim-whitepaper) (formát PDF). Tato bílá kniha s úvodními informacemi o službě API Management vytvořená společností CITO Research obsahuje: 
  
  * Běžné požadavky a problémy rozhraní API
  * Oddělení rozhraní API a představení průčelí
@@ -120,7 +120,7 @@ Pokud se chcete o službě API Management dozvědět víc, podívejte se na nás
 > 
 > 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Dokončete následující rychlý start a začněte používat Azure API Management:
 

@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: b36e4598f5ff20b921c5cd150ae19be233cc2d14
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: 4ed5363cc927c3e36e6efa7554511d78e1e96d24
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246509"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970922"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Zahájení monitorování webové aplikace v Javě
 
@@ -130,7 +130,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Grafy metrik serveru](./media/app-insights-java-quick-start/livemetricsjava.png)
 
-Pokud se chcete o monitorování Javy dozvědět víc, podívejte se na [další dokumentaci k Javě pro App Insights](.\app-insights-java-get-started.md).
+Pokud se chcete o monitorování Javy dozvědět víc, podívejte se na [další dokumentaci k Javě pro App Insights](./app-insights-java-get-started.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -139,7 +139,7 @@ Pokud chcete pokračovat v práci s dalšími rychlými starty nebo kurzy, nevym
 1. Na webu Azure Portal v nabídce vlevo klikněte na **Skupiny prostředků** a pak na **myResourceGroup**.
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte **myResourceGroup** a pak klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Vyhledání a diagnostika potíží s výkonem](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

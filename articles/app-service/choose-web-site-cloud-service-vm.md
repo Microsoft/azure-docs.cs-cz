@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 56d5f3b480ddb000f9118fbcc36e39817cb0bce8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5f04279b63ee5133b9900c475537798f6fa16bff
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238501"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958699"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
 
@@ -36,32 +36,32 @@ Následující tabulka porovnává možnosti služeb App Service, Cloud Services
 
 | Funkce | App Service (webové aplikace) | Cloud Services (webové role) | Virtuální počítače | Service Fabric | Poznámky |
 | --- | --- | --- | --- | --- | --- |
-| Téměř okamžité nasazení |× | | |× |Nasazení aplikace nebo aktualizace aplikace do cloudové služby nebo vytvoření virtuálního počítače trvá minimálně několik minut. Nasazení aplikace do webové aplikace trvá několik sekund. |
-| Vertikální navýšení kapacity na větší počítače bez opětovného nasazení |× | | |× | |
-| Instance webových serverů sdílejí obsah a konfiguraci, což znamená, že při škálování nemusíte znovu provádět nasazení ani konfiguraci. |× | | |× | |
-| Více prostředí pro nasazení (produkční a přípravné) |× |× | |× |Service Fabric umožňuje mít pro aplikace více prostředí nebo nasazovat různé verze aplikace vedle sebe. |
-| Automatická správa aktualizací operačního systému |× |× | | |Částečná podpora prostřednictvím aplikace pro orchestraci oprav (POA) a úplná podpora v budoucnu. |
-| Bezproblémové přepínání platformy (snadný přesun mezi 32bitovou a 64bitovou platformou) |× |× | | | |
-| Nasazení kódu pomocí Gitu a protokolu FTP |× | |× | | |
-| Nasazení kódu pomocí rozšíření Nasazení webu |× | |× | |Služba Cloud Services podporuje použití rozšíření Nasazení webu k nasazování aktualizací do jednotlivých instancí rolí. Nemůžete ho však použít k počátečnímu nasazení role, a pokud použijete Nasazení webu pro aktualizaci, musíte ji nasadit do každé instance role samostatně. Více instancí se vyžaduje k získání nároku na smlouvu SLA na službu Cloud Services pro produkční prostředí. |
-| Podpora WebMatrixu |× | |× | | |
-| Přístup ke službám, jako jsou Service Bus, Storage a SQL Database |× |× |× |× | |
-| Hostování vrstvy webů nebo webových služeb z vícevrstvé architektury |× |× |× |× | |
-| Hostování střední vrstvy vícevrstvé architektury |× |× |× |× |Webové aplikace App Service můžou snadno hostovat střední vrstvu rozhraní REST API a funkce [WebJobs](https://go.microsoft.com/fwlink/?linkid=390226) může hostovat úlohy zpracování na pozadí. WebJobs můžete spouštět na vyhrazeném webu a dosáhnout tak nezávislého škálování této úrovně. |
-| Integrovaná podpora MySQL jako služby |× |× | | | |
-| Podpora ASP.NET, klasického ASP, Node.js, PHP a Pythonu |× |× |× |× |Service Fabric podporuje vytvoření webového front-endu pomocí [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md), případně můžete nasadit jakýkoli typ aplikace (Node.js, Java atd.) jako [spustitelný soubor typu Host](../service-fabric/service-fabric-guest-executables-introduction.md). |
-| Horizontální navýšení kapacity na několik instancí bez opětovného nasazení |× |× |× |× |Služba Virtual Machines se může škálovat na více instancí, ale služby v ní spuštěné musí být napsané tak, aby si s tímto škálováním na více instancí poradily. Je potřeba nakonfigurovat nástroj pro vyrovnávání zatížení, který bude přesměrovávat požadavky do počítačů, a ujistit se, že máte v [sadě dostupnosti](../virtual-machines/windows/manage-availability.md) více než jednu instanci virtuálního počítače. |
-| Podpora protokolu SSL |× |× |× |× |Webové aplikace App Service podporují SSL pro vlastní názvy domén pouze v režimu Basic a Standard. Informace o použití SSL s webovými aplikacemi najdete v tématu [Konfigurace certifikátu SSL pro web Azure](app-service-web-tutorial-custom-ssl.md). |
-| Integrace se sadou Visual Studio |× |× |× |× | |
-| Vzdálené ladění |× |× |× | | |
-| Nasazení kódu pomocí sady Team Foundation Server |× |× |× |× | |
-| Izolace sítě pomocí služby [Azure Virtual Network](/azure/virtual-network/) |× |× |× |× |Viz také [Integrace služby Virtual Network ve službě Azure Websites](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/). |
-| Podpora služby [Azure Traffic Manager](/azure/traffic-manager/) |× |× |× |× | |
-| Integrované monitorování koncových bodů |× |× |× | | |
-| Přístup k serveru přes Vzdálenou plochu | |× |× |× | |
-| Instalace jakékoli vlastní Instalační služby MSI | |× |× |× |Service Fabric umožňuje hostovat jakýkoli spustitelný soubor jako [spustitelný soubor typu Host](../service-fabric/service-fabric-guest-executables-introduction.md), případně můžete na virtuální počítače nainstalovat jakoukoli aplikaci. |
-| Možnost definovat a spouštět úlohy při spuštění | |× |× |× | |
-| Možnost naslouchat událostem Trasování událostí pro Windows | |× |× |× | |
+| Téměř okamžité nasazení |X | | |X |Nasazení aplikace nebo aktualizace aplikace do cloudové služby nebo vytvoření virtuálního počítače trvá minimálně několik minut. Nasazení aplikace do webové aplikace trvá několik sekund. |
+| Vertikální navýšení kapacity na větší počítače bez opětovného nasazení |X | | |X | |
+| Instance webových serverů sdílejí obsah a konfiguraci, což znamená, že při škálování nemusíte znovu provádět nasazení ani konfiguraci. |X | | |X | |
+| Více prostředí pro nasazení (produkční a přípravné) |X |X | |X |Service Fabric umožňuje mít pro aplikace více prostředí nebo nasazovat různé verze aplikace vedle sebe. |
+| Automatická správa aktualizací operačního systému |X |X | | |Částečná podpora prostřednictvím aplikace pro orchestraci oprav (POA) a úplná podpora v budoucnu. |
+| Bezproblémové přepínání platformy (snadný přesun mezi 32bitovou a 64bitovou platformou) |X |X | | | |
+| Nasazení kódu pomocí Gitu a protokolu FTP |X | |X | | |
+| Nasazení kódu pomocí rozšíření Nasazení webu |X | |X | |Služba Cloud Services podporuje použití rozšíření Nasazení webu k nasazování aktualizací do jednotlivých instancí rolí. Nemůžete ho však použít k počátečnímu nasazení role, a pokud použijete Nasazení webu pro aktualizaci, musíte ji nasadit do každé instance role samostatně. Více instancí se vyžaduje k získání nároku na smlouvu SLA na službu Cloud Services pro produkční prostředí. |
+| Podpora WebMatrixu |X | |X | | |
+| Přístup ke službám, jako jsou Service Bus, Storage a SQL Database |X |X |X |X | |
+| Hostování vrstvy webů nebo webových služeb z vícevrstvé architektury |X |X |X |X | |
+| Hostování střední vrstvy vícevrstvé architektury |X |X |X |X |Webové aplikace App Service můžou snadno hostovat střední vrstvu rozhraní REST API a funkce [WebJobs](https://go.microsoft.com/fwlink/?linkid=390226) může hostovat úlohy zpracování na pozadí. WebJobs můžete spouštět na vyhrazeném webu a dosáhnout tak nezávislého škálování této úrovně. |
+| Integrovaná podpora MySQL jako služby |X |X | | | |
+| Podpora ASP.NET, klasického ASP, Node.js, PHP a Pythonu |X |X |X |X |Service Fabric podporuje vytvoření webového front-endu pomocí [ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md), případně můžete nasadit jakýkoli typ aplikace (Node.js, Java atd.) jako [spustitelný soubor typu Host](../service-fabric/service-fabric-guest-executables-introduction.md). |
+| Horizontální navýšení kapacity na několik instancí bez opětovného nasazení |X |X |X |X |Služba Virtual Machines se může škálovat na více instancí, ale služby v ní spuštěné musí být napsané tak, aby si s tímto škálováním na více instancí poradily. Je potřeba nakonfigurovat nástroj pro vyrovnávání zatížení, který bude přesměrovávat požadavky do počítačů, a ujistit se, že máte v [sadě dostupnosti](../virtual-machines/windows/manage-availability.md) více než jednu instanci virtuálního počítače. |
+| Podpora protokolu SSL |X |X |X |X |Webové aplikace App Service podporují SSL pro vlastní názvy domén pouze v režimu Basic a Standard. Informace o použití SSL s webovými aplikacemi najdete v tématu [Konfigurace certifikátu SSL pro web Azure](app-service-web-tutorial-custom-ssl.md). |
+| Integrace se sadou Visual Studio |X |X |X |X | |
+| Vzdálené ladění |X |X |X | | |
+| Nasazení kódu pomocí sady Team Foundation Server |X |X |X |X | |
+| Izolace sítě pomocí služby [Azure Virtual Network](/azure/virtual-network/) |X |X |X |X |Viz také [Integrace služby Virtual Network ve službě Azure Websites](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/). |
+| Podpora služby [Azure Traffic Manager](/azure/traffic-manager/) |X |X |X |× | |
+| Integrované monitorování koncových bodů |X |X |X | | |
+| Přístup k serveru přes Vzdálenou plochu | |X |X |X | |
+| Instalace jakékoli vlastní Instalační služby MSI | |X |X |X |Service Fabric umožňuje hostovat jakýkoli spustitelný soubor jako [spustitelný soubor typu Host](../service-fabric/service-fabric-guest-executables-introduction.md), případně můžete na virtuální počítače nainstalovat jakoukoli aplikaci. |
+| Možnost definovat a spouštět úlohy při spuštění | |X |X |X | |
+| Možnost naslouchat událostem Trasování událostí pro Windows | |X |X |X | |
 
 ## <a name="scenarios"></a>Scénáře a doporučení
 Tady je několik běžných scénářů aplikací s doporučeními, jaká možnost hostování webů Azure by mohla pro každý z nich být nejvhodnější.
@@ -176,7 +176,7 @@ Následující materiály vám pomůžou začít s možnostmi, které jste pro s
 [Cloud Services]: /azure/cloud-services/
 [Virtual Machines]: /azure/virtual-machines/
 [Service Fabric]: /azure/service-fabric/
-[WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
+[WebJobs]: https://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
 [Configuring an SSL certificate for an Azure Website]: app-service-web-tutorial-custom-ssl.md
 [azurestore]: https://azuremarketplace.microsoft.com/en-us/marketplace/apps
 [scripting]: https://azure.microsoft.com/documentation/scripts/?services=web-sites

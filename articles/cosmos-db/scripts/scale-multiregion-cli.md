@@ -1,17 +1,17 @@
 ---
-title: Skript Azure CLI – Replikace ve více oblastech pro službu Azure Cosmos DB | Microsoft Docs
+title: Replikace rozhraní příkazového řádku skriptu-Multi oblast Azure pro službu Azure Cosmos DB
 description: Ukázkový skript Azure CLI – Replikace ve více oblastech pro službu Azure Cosmos DB
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: d9f1420b5d2706ed4547e46639739c0f707559ab
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 9981d41a259eeb48354002a98c9440156a7f2481
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015195"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962507"
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-the-azure-cli"></a>Replikace účtu databáze Azure Cosmos DB ve více oblastech a konfigurace priorit převzetí služeb při selhání pomocí Azure CLI
 
@@ -43,7 +43,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az cosmosdb update](/cli/azure/cosmosdb#az-cosmosdb-update) | Aktualizuje účet služby Azure Cosmos DB. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

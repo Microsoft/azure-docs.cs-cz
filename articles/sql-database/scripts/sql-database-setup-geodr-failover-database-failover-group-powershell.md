@@ -3,7 +3,7 @@ title: Příklad PowerShellu – Skupina převzetí služeb při selhání geogr
 description: Ukázkový skript Azure PowerShellu, který nastaví skupinu převzetí služeb při selhání aktivní geografické replikace pro jednu databázi SQL Azure a převezme její služby.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: 923dce806b27b8c07bce426cd2814ced873e776f
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
-ms.translationtype: HT
+ms.openlocfilehash: a419d2953fc2d66e37bc48fd2f870bb55052d170
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053975"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972299"
 ---
 # <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-azure-sql-database"></a>Použití PowerShellu ke konfiguraci skupiny převzetí služeb při selhání aktivní geografické replikace pro jednu databázi SQL Azure
 
@@ -30,7 +30,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tom
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
-[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover-database/setup-geodr-and-failover-database-failover-group.ps1?highlight=19-22 "Set up failover group for single database")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover/setup-geodr-and-failover-database-failover-group.ps1?highlight=19-22 "Set up failover group for single database")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -61,7 +61,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Switch-AzureRMSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | Prohodí role serverů ve skupině převzetí služeb při selhání a přepne všechny sekundární databáze do primární role. |
 | [Get-AzureRMSqlDatabaseFailoverGroup](/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | Získá konkrétní skupinu převzetí služeb při selhání služby Azure SQL Database nebo vypíše skupiny převzetí služeb při selhání na serveru. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

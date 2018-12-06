@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 9e5a8cf59d4f1dc47495c5889f8ed4aae64f7ff7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3cbe7c1d458e95aa27c51f0d1c9f61326888a5ab
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720442"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962677"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Důležité informace o integraci Datacenter pro integrované systémy Azure Stack
 Pokud vás zajímá systémech pro Azure Stack integrované, měli byste porozumět některé hlavní rozhodnutí při plánování nasazení a jak se systém zapadá do vašeho datového centra. Tento článek obsahuje základní přehled o tyto aspekty, které pomůžou při rozhodování důležitou infrastrukturu pro váš systém Azure Stack víc uzlů. Znalost těchto aspektů pomáhá při práci s OEM dodavatele hardwaru, jako jsou nasazení do vašeho datového centra Azure Stack.  
@@ -57,7 +57,7 @@ Musíte vzít v úvahu kterého zprostředkovatele identity, kterou chcete použ
 
 Zvoleného poskytovatele identity nemá žádný vliv na klientské virtuální počítače, identitu systému a účty, které používají, zda se můžete připojit doméně služby Active Directory atd. Toto je samostatný.
 
-Další informace o výběru zprostředkovatele identity v [článku modelů připojení integrované systémy Azure Stack](.\azure-stack-connection-models.md).
+Další informace o výběru zprostředkovatele identity v [článku modelů připojení integrované systémy Azure Stack](./azure-stack-connection-models.md).
 
 ### <a name="ad-fs-and-graph-integration"></a>Integrace služby AD FS a graf
 Pokud budete chtít nasadit Azure Stack pomocí služby AD FS jako zprostředkovatele identity, musíte integrovat instance služby AD FS v Azure stacku s existující instancí služby AD FS přes důvěryhodnost federace. To umožňuje identit v existující doménové struktury služby Active Directory k ověření pomocí prostředků ve službě Azure Stack.

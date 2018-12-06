@@ -3,7 +3,7 @@ title: Příklad PowerShellu – Aktivní geografická replikace databáze SQL A
 description: Ukázkový skript Azure PowerShellu, který nastaví aktivní geografickou replikaci pro databázi SQL Azure ve fondu a převezme její služby při selhání.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: 727333f07d5ab09714b866851b21909e03f9ebfc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
-ms.translationtype: HT
+ms.openlocfilehash: 558ee0b9af5d33743274dba7704f9ee9dcb4cff9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056049"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960273"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>Konfigurace aktivní geografické replikace pro databázi SQL Azure ve fondu pomocí PowerShellu
 
@@ -30,7 +30,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tom
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
-[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover-pool/setup-geodr-and-failover-pool.ps1?highlight=16-19 "Set up active geo-replication for elastic pool")]
+[!code-powershell-interactive[main](../../../powershell_scripts/sql-database/setup-geodr-and-failover/setup-geodr-and-failover-elastic-pool.ps1?highlight=16-19 "Set up active geo-replication for elastic pool")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -59,7 +59,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

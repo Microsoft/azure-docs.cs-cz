@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 841982a4ecbfa5241d826beaaae81921b2859596
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018617"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967329"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: transkripce
 
@@ -42,15 +42,15 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>language</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk textu pro převod z jednoho skriptu do jiného. Je to možné jazyky jsou uvedené v `transliteration` oboru získala při dotazování na službu pro jeho [podporované jazyky](.\v3-0-languages.md).</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk textu pro převod z jednoho skriptu do jiného. Je to možné jazyky jsou uvedené v `transliteration` oboru získala při dotazování na službu pro jeho [podporované jazyky](./v3-0-languages.md).</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Povinný parametr*.<br/>Určuje skript vstupního textu. Vyhledání [podporované jazyky](.\v3-0-languages.md) pomocí `transliteration` oboru se najít vstupní skripty k dispozici pro vybraný jazyk.</td>
+    <td>*Povinný parametr*.<br/>Určuje skript vstupního textu. Vyhledání [podporované jazyky](./v3-0-languages.md) pomocí `transliteration` oboru se najít vstupní skripty k dispozici pro vybraný jazyk.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Povinný parametr*.<br/>Určuje výstupní skript. Vyhledání [podporované jazyky](.\v3-0-languages.md) pomocí `transliteration` oboru najít výstup nejsou k dispozici pro vybranou kombinaci jazyk skripty a vstupní skriptu.</td>
+    <td>*Povinný parametr*.<br/>Určuje výstupní skript. Vyhledání [podporované jazyky](./v3-0-languages.md) pomocí `transliteration` oboru najít výstup nejsou k dispozici pro vybranou kombinaci jazyk skripty a vstupní skriptu.</td>
   </tr>
 </table> 
 
@@ -77,7 +77,7 @@ Hlavičky žádosti patří:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Tělo požadavku
+## <a name="request-body"></a>Text požadavku
 
 Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou vlastnost s názvem `Text`, která představuje řetězec k převedení.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: c463599190c5bfaac47a70dbca7b8a67dc830f3a
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b6ec3283121a3403afb80ccad81f313decf16c88
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363471"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957636"
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Řešení potíží s Microsoft Azure Stack
 
@@ -43,7 +43,7 @@ Toto chování je pravděpodobně právě výsledek výchozí chování příkaz
 Před nasazením virtuálních počítačů ve službě Azure Stack je nutné přidat položku image a Galerie Windows serveru.
 
 ### <a name="after-restarting-my-azure-stack-host-some-vms-may-not-automatically-start"></a>Po restartování hostitele Moje Azure Stack, nemusí některé virtuální počítače spustit automaticky.
-Po restartování hostitele, můžete si všimnout, že služby Azure Stack nejsou ihned k dispozici.  Důvodem je, že Azure Stack [infrastruktury virtuálních počítačů](..\azure-stack\asdk\asdk-architecture.md#virtual-machine-roles) a poskytovatelů prostředků zkontrolovat konzistenci nějakou dobu trvat, ale nakonec bude automaticky spuštěno.
+Po restartování hostitele, můžete si všimnout, že služby Azure Stack nejsou ihned k dispozici.  Důvodem je, že Azure Stack [infrastruktury virtuálních počítačů](../azure-stack/asdk/asdk-architecture.md#virtual-machine-roles) a poskytovatelů prostředků zkontrolovat konzistenci nějakou dobu trvat, ale nakonec bude automaticky spuštěno.
 
 Můžete si také všimnout tohoto tenanta, které virtuální počítače automaticky nespouštět po restartu hostitele služby Azure Stack development kit. To se o známý problém a vyžaduje jen několik Ruční postup jejich převést do režimu online:
 

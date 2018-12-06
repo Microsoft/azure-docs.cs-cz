@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: chlandsi
-ms.openlocfilehash: 7d1e05e13e55b8b7bc07eda71d63f96f12c81ff9
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 3f9b523c1efc22a94ef2a18367689c356c5be8f1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219184"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971619"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>Rychlý start: Rozpoznávání řeči v Objective-C v iOS s využitím sady Speech SDK
 
@@ -25,8 +25,11 @@ V tomto článku se dozvíte, jak v Objective-C vytvořit aplikaci pro iOS pro p
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného pro službu Speech. Viz [Vyzkoušejte si službu Speech zdarma](get-started.md).
-* Mac s nainstalovaným vývojovým prostředím pro iOS Xcode 9.4.1. Tento kurz cílí na iOS verze 11.4. Pokud ještě Xcode nemáte, můžete si ho nainstalovat z [App Storu](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12).
+Než začnete, tady je seznam požadovaných součástí:
+
+* A [klíč předplatného](get-started.md) pro Speech Service
+* Počítače s macOS s [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) nebo novější
+* Cíl nastavena na systém iOS verze 11.4 nebo novější
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Získání sady Speech SDK pro iOS
 
@@ -37,7 +40,7 @@ Aktuální verze sady Cognitive Services Speech SDK je `1.1.0`.
 Sada Cognitive Services Speech SDK pro Mac a iOS je v současné době distribuovaná jako rozhraní Cocoa.
 Můžete si ho stáhnout na adrese https://aka.ms/csspeech/iosbinary. Stáhněte si tento soubor do svého domovského adresáře.
 
-## <a name="create-an-xcode-project"></a>Vytvoření projektu Xcode 
+## <a name="create-an-xcode-project"></a>Vytvoření projektu Xcode
 
 Spusťte Xcode a kliknutím na **File** > **New** > **Project** (Soubor > Nový > Projekt) spusťte nový projekt.
 V dialogovém okně pro výběr šablony zvolte šablonu iOS Single View App (Aplikace pro iOS s jedním zobrazením).
@@ -99,8 +102,7 @@ Sada Speech SDK v současné době podporuje pouze 64bitové platformy iOS.
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Vyhledejte tuto ukázku ve složce `quickstart/objectivec-ios`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Získejte naše ukázky](speech-sdk.md#get-the-samples)
-

@@ -1,6 +1,6 @@
 ---
-title: Příjem událostí ze služby Azure Event Hubs pomocí knihovny .NET Standard | Microsoft Docs
-description: Začínáme s příjmem zpráv pomocí třídy EventProcessorHost v .NET Standard
+title: Příjem událostí ze služby Azure Event Hubs pomocí knihovny .NET Core | Dokumentace Microsoftu
+description: Začínáme s příjmem zpráv pomocí třídy EventProcessorHost v .NET Core
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 9adbd8b9e7934ebe454d14ac6e47fe96898c9184
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: fb99307182ba3ce8ba49a9ae09c12af173799c87
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234387"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963347"
 ---
-# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Začínáme s příjmem zpráv pomocí třídy Event Processor Host v .NET Standard
+# <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>Začínáme s příjmem zpráv pomocí třídy Event Processor Host v .NET Core
 Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT). Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
 Tento kurz ukazuje, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí třídy [Event Processor Host](event-hubs-event-processor-host.md). [Event Processor Host](event-hubs-event-processor-host.md) je třída rozhraní .NET, která zjednodušuje přijímání událostí z center událostí tím, že spravuje trvalé kontrolní body a paralelní příjmy z těchto center událostí. Pomocí třídy Event Processor Host můžete události rozdělit mezi několik příjemců, i když jsou hostovaní v různých uzlech. Tento příklad ukazuje způsob použití třídy Event Processor Host pro jednoho příjemce. Ukázka [horizontálního navýšení kapacity zpracování událostí][Horizontální navýšení kapacity zpracování událostí pomocí služby Event Hubs] znázorňuje způsob použití třídy Event Processor Host v případě několika příjemců.
@@ -205,8 +205,8 @@ Blahopřejeme! Obdrželi jste nyní zprávy z centra událostí pomocí třídy 
 > [!NOTE]
 > Tento kurz používá jednu instanci třídy [EventProcessorHost](event-hubs-event-processor-host.md). Pokud chcete zvýšit propustnost, doporučujeme spustit několik instancí třídy [EventProcessorHost](event-hubs-event-processor-host.md), jak je znázorněno v ukázce [škálovaného zpracování událostí](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3). V těchto případech se spolu navzájem automaticky koordinuje několik instancí, aby dokázaly vyrovnávat zatížení přijatých událostí. 
 
-## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste vytvořili aplikaci .NET Standard, která přijala zprávy z centra událostí. Informace o odesílání událostí do centra událostí pomocí .NET Standard najdete v tématu [Odesílání událostí z centra událostí – .NET Standard](event-hubs-dotnet-standard-getstarted-send.md).
+## <a name="next-steps"></a>Další postup
+V tomto rychlém startu jste vytvořili aplikaci .NET Core, která se zobrazila zprávy z centra událostí. Zjistěte, jak odesílat události do centra událostí pomocí .NET Core, najdete v článku [odesílání událostí z centra událostí – .NET Core](event-hubs-dotnet-standard-getstarted-send.md).
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

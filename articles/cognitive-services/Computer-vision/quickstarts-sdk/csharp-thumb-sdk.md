@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: pafarley
-ms.openlocfilehash: d3340131c1f174201cc9fd1dcb31bd4a4b8cd07a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8c8a15af39972b79086a3eb2d392fdc4e7635323
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854080"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959423"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>Rychlý start: Vygenerování miniatury pomocí sady SDK počítačového zpracování obrazu a C#
 
@@ -32,7 +32,7 @@ V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí klientské kni
 > [!TIP]
 > Získejte z [GitHubu](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) nejnovější verzi kódu jako řešení sady Visual Studio.
 
-Metody `GenerateThumbnailAsync` a `GenerateThumbnailInStreamAsync` využívají [rozhraní API pro získání miniatur](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) pro vzdálené a místní obrázky, v uvedeném pořadí.  Tyto metody můžete použít k vygenerování miniatury obrázku. Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu použije chytré oříznutí, které inteligentně identifikuje oblast zájmu a na základě této oblasti vygeneruje souřadnice oříznutí.
+Metody `GenerateThumbnailAsync` a `GenerateThumbnailInStreamAsync` využívají [rozhraní API pro získání miniatur](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) pro vzdálené a místní obrázky, v uvedeném pořadí.  Tyto metody můžete použít k vygenerování miniatury obrázku. Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu používá inteligentní oříznutí inteligentně identifikovat oblasti zájmu a generovat oříznutí souřadnice založené na danou oblast.
 
 Pokud chcete spustit ukázku, postupujte takto:
 

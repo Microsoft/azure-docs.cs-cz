@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: d7d47b61c926c6704a06dacc55f00d77a1266988
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: d8d88484181c3c38f64cf8f00f9d8feaa3b0217a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038361"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962558"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Povolení zálohování pro Azure Stack z portálu pro správu
-Povolte službu Backup infrastruktury prostřednictvím portálu pro správu Azure stacku vytvářet zálohy. Tyto zálohy lze použít k obnovení svého prostředí pomocí cloudu obnovení v případě [závažnému selhání](.\azure-stack-backup-recover-data.md). Účelem zotavení cloudu je zajistit, že uživatelé a operátoři může přihlásit zpátky na portálu po dokončení obnovení. Uživatelé budou mít svá předplatná obnovit včetně oprávnění k přístupu na základě rolí a rolí, původní plány, nabídky a dříve definované výpočetní prostředky, úložiště a síťové kvóty.
+Povolte službu Backup infrastruktury prostřednictvím portálu pro správu Azure stacku vytvářet zálohy. Tyto zálohy lze použít k obnovení svého prostředí pomocí cloudu obnovení v případě [závažnému selhání](./azure-stack-backup-recover-data.md). Účelem zotavení cloudu je zajistit, že uživatelé a operátoři může přihlásit zpátky na portálu po dokončení obnovení. Uživatelé budou mít svá předplatná obnovit včetně oprávnění k přístupu na základě rolí a rolí, původní plány, nabídky a dříve definované výpočetní prostředky, úložiště a síťové kvóty.
 
 Ale zálohovací služby infrastruktury zálohování virtuálních počítačů IaaS, konfigurace sítě a prostředky úložiště, jako jsou účty úložiště, objekty BLOB, tabulky, a tak dále, proto uživatelé přihlášení po obnovení cloudu dokončení nebude v některém z jejich již existující prostředky. Platforma jako služba (PaaS) prostředkům a datům také nezálohují se službou. 
 
@@ -58,31 +58,31 @@ Pro zálohování a obnovení prostředky IaaS a PaaS odděleně od procesů zá
     ```
 10. Vyberte **OK** uložte nastavení zálohování kontroleru.
 
-    ![Azure Stack – nastavení kontroleru zálohování](media\azure-stack-backup\backup-controller-settings.png)
+    ![Azure Stack – nastavení kontroleru zálohování](media/azure-stack-backup/backup-controller-settings.png)
 
 ## <a name="start-backup"></a>Spustit zálohování
 Pokud chcete spustit zálohování, klikněte na **zálohovat nyní** spustit zálohu na vyžádání. Zálohu na vyžádání nezmění čas příští plánované zálohování. Po dokončení úlohy můžete potvrdit nastavení v **Essentials**:
 
-![Azure Stack – zálohování na vyžádání](media\azure-stack-backup\scheduled-backup.png)
+![Azure Stack – zálohování na vyžádání](media/azure-stack-backup/scheduled-backup.png)
 
 Můžete taky spustit rutinu prostředí PowerShell **Start AzsBackup** ve vašem počítači pro správu služby Azure Stack. Další informace najdete v tématu [zálohování Azure stacku](azure-stack-backup-back-up-azure-stack.md).
 
 ## <a name="enable-or-disable-automatic-backups"></a>Povolí nebo zakáže automatické zálohování
 Zálohy jsou automaticky naplánované povolit zálohování. Další čas plánu zálohování můžete zkontrolovat **Essentials**. 
 
-![Azure Stack – zálohování na vyžádání](media\azure-stack-backup\on-demand-backup.png)
+![Azure Stack – zálohování na vyžádání](media/azure-stack-backup/on-demand-backup.png)
 
 Pokud je nutné zakázat budoucí naplánovaných záloh, klikněte na **zakázat automatické zálohování**. Zakázat automatické zálohy budete mít nakonfigurované nastavení zálohování a zachová plán zálohování. Tato akce jednoduše dává pokyn, aby vynechat budoucí zálohy. 
 
-![Azure Stack – zakázat naplánované zálohy](media\azure-stack-backup\disable-auto-backup.png)
+![Azure Stack – zakázat naplánované zálohy](media/azure-stack-backup/disable-auto-backup.png)
 
 Potvrďte, že budoucí naplánované zálohy byla zakázána v **Essentials**:
 
-![Azure Stack – potvrďte zálohy jsou zakázané.](media\azure-stack-backup\confirm-disable.png)
+![Azure Stack – potvrďte zálohy jsou zakázané.](media/azure-stack-backup/confirm-disable.png)
 
 Klikněte na **povolit automatické zálohování** informovat plánovač spustit budoucích zálohování v naplánovaném čase. 
 
-![Azure Stack – povolení naplánované zálohy](media\azure-stack-backup\enable-auto-backup.png)
+![Azure Stack – povolení naplánované zálohy](media/azure-stack-backup/enable-auto-backup.png)
 
 
 > [!Note]  

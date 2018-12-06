@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: a096bd2f23910eb2eb3bc4aa36e34400ccfbb701
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: bf13ca603927c85784e446157a79cd96fb70ca05
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853400"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956974"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: překlad
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>od</td>
-    <td>*Volitelný parametr*.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním [podporované jazyky](.\v3-0-languages.md) pomocí `translation` oboru. Pokud `from` parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka.</td>
+    <td>*Volitelný parametr*.<br/>Určuje jazyk, který vstupního textu. Najít jazyky, které jsou k dispozici pro převod z vyhledáním [podporované jazyky](./v3-0-languages.md) pomocí `translation` oboru. Pokud `from` parametr není zadán, automatické rozpoznávání jazyka se použije k určení zdrojového jazyka.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](.\v3-0-languages.md) součástí `translation` oboru. Například použít `to=de` pro převod na němčinu.<br/>Je možné převést na různých jazycích současně opakováním parametr v řetězci dotazu. Například použít `to=de&to=it` pro převod a němčina, italština.</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí `translation` oboru. Například použít `to=de` pro převod na němčinu.<br/>Je možné převést na různých jazycích současně opakováním parametr v řetězci dotazu. Například použít `to=de&to=it` pro převod a němčina, italština.</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -86,7 +86,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>AllowFallback</td>
-    <td>*Volitelný parametr*.<br/>Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje. Možné hodnoty jsou: `true` (výchozí) nebo `false`.<br/><br/>`AllowFallback=false` Určuje, zda překlad by měl používat pouze systémy trénovaných ke zpracování `category` určeném požadavkem. Pokud překlad pro jazyk X jazyk Y vyžaduje řetězení prostřednictvím jazyka pivot E, pak všechny systémy v řetězci (X -> E a E -> Y) bude nutné mít vlastní a mají stejné kategorie. Pokud je nalezen žádný systém s konkrétní kategorií, požadavek vrátí stavový kód 400. `AllowFallback=true` Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje.
+    <td>*Volitelný parametr*.<br/>Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje. Možné hodnoty jsou: `true` (výchozí) nebo `false`.<br/><br/>`allowFallback=false` Určuje, zda překlad by měl používat pouze systémy trénovaných ke zpracování `category` určeném požadavkem. Pokud překlad pro jazyk X jazyk Y vyžaduje řetězení prostřednictvím jazyka pivot E, pak všechny systémy v řetězci (X -> E a E -> Y) bude nutné mít vlastní a mají stejné kategorie. Pokud je nalezen žádný systém s konkrétní kategorií, požadavek vrátí stavový kód 400. `allowFallback=true` Určuje, že služba může nouzového řešení ověření pomocí obecného systému při vlastní systému neexistuje.
 </td>
   </tr>
 </table> 
@@ -111,11 +111,6 @@ Hlavičky žádosti patří:
   <tr>
     <td>X-ClientTraceId</td>
     <td>*Volitelné*.<br/>Klientem generovaná identifikátor GUID k jednoznačné identifikaci požadavku. Tato hlavička můžete vynechat, pokud zahrnete ID trasování v řetězci dotazu pomocí parametru dotazu s názvem `ClientTraceId`.</td>
-  </tr>
-  <tr>
-    <td>Systém X MT</td>
-    <td>*Volitelné*.<br/>Určuje typ systému, který se použil pro překlad pro každý "k" Jazyk požadovaný pro překlad. Hodnota je čárkou oddělený seznam řetězců. Každý řetězec označuje typ:<br/><ul><li>Vlastní - žádost obsahuje vlastní systém a aspoň jeden vlastní systém se použil při překladu.</li><li>Tým – všechny ostatní žádosti</li></ul>
-</td>
   </tr>
 </table> 
 
@@ -174,6 +169,21 @@ Platí následující omezení:
 
 Jsou k dispozici v příkladu odpověďmi ve formátu JSON [příklady](#examples) oddílu.
 
+## <a name="response-headers"></a>Hlavičky odpovědi
+
+<table width="100%">
+  <th width="20%">Hlavičky</th>
+  <th>Popis</th>
+    <tr>
+    <td>X-RequestId</td>
+    <td>Hodnota vygenerované službou k identifikaci požadavku. Používá se pro účely odstraňování potíží.</td>
+  </tr>
+  <tr>
+    <td>Systém X MT</td>
+    <td>Určuje typ systému, který se použil pro překlad pro každý "k" Jazyk požadovaný pro překlad. Hodnota je čárkou oddělený seznam řetězců. Každý řetězec označuje typ:<br/><ul><li>Vlastní - žádost obsahuje vlastní systém a aspoň jeden vlastní systém se použil při překladu.</li><li>Tým – všechny ostatní žádosti</li></td>
+  </tr>
+</table> 
+
 ## <a name="response-status-codes"></a>Stavové kódy odezvy
 
 Tady jsou možné stavové kódy HTTP, které vrátí žádost o. 
@@ -199,7 +209,7 @@ Tady jsou možné stavové kódy HTTP, které vrátí žádost o.
   </tr>
   <tr>
     <td>408</td>
-    <td>Požadavek nelze splnit, protože chybí prostředek. Najdete podrobnosti o chybové zprávě. Při použití vlastního `category`, to často určuje, že vlastní překladový systém ještě není k dispozici pro požadavků. Po určité době čekání (např. 10 minut) neúspěšného požadavku.</td>
+    <td>Požadavek nelze splnit, protože chybí prostředek. Najdete podrobnosti o chybové zprávě. Při použití vlastního `category`, to často určuje, že vlastní překladový systém ještě není k dispozici pro požadavků. Po určité době čekání (např. 1 minuta) neúspěšného požadavku.</td>
   </tr>
   <tr>
     <td>429</td>

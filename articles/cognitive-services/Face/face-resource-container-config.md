@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 9410d895c791cd860c53542091608263f601b225
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 1009660df94eb145bbc37c27662411032bd87110
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682482"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970939"
 ---
 # <a name="configure-containers"></a>Konfigurace kontejnerů
 
@@ -91,7 +91,7 @@ V následující tabulce jsou popsaná nastavení konfigurace podporované v rá
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení konfigurace Určuje koncový bod identifikátoru URI prostředku pro rozpoznávání tváře na Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný koncový bod identifikátoru URI pro prostředek pro rozpoznávání tváře na Azure.
+`Billing` Nastavení konfigurace Určuje koncový bod identifikátoru URI prostředku pro rozpoznávání tváře v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný koncový bod identifikátoru URI pro prostředek pro rozpoznávání tváře na Azure.
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-configuration-setting) nastavení konfigurace se používají společně a je nutné zadat platné hodnoty pro všechny tři je. jinak nebude možné spustit kontejner. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](face-how-to-install-containers.md#billing).
@@ -143,6 +143,8 @@ Scénář úložiště je zpracovávat odděleně od připojení vstupní a výs
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-configuration-setting) nastavení konfigurace se používají společně a je nutné zadat platné hodnoty pro všechny tři je. jinak nebude možné spustit kontejner. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](face-how-to-install-containers.md#billing).
+
+Kontejnery služby cognitive Services jsou licencovaného v rámci vaší smlouvě upravující používání Azure. Pokud nemáte stávající smlouvy řídící používání Azure, vyjadřujete svůj souhlas, že vaší smlouvě upravující používání Azure se Microsoft Online Subscription Agreement (která zahrnuje podmínky Online služeb). Pro verze Preview souhlasíte také s dodatečných podmínkách použití systémů Microsoft Azure Preview. Pomocí kontejneru vyjadřujete souhlas s těmito podmínkami.
 
 ## <a name="fluentd-configuration-settings"></a>Nastavení konfigurace Fluentd
 

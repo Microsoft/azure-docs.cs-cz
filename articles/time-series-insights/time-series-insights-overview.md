@@ -1,5 +1,5 @@
 ---
-title: Co je Azure Time Series Insights? | Microsoft Docs
+title: Co je Azure Time Series Insights? | Dokumenty Microsoft
 description: Seznámení s Azure Time Series Insights, novou službou pro analýzu dat časových řad a řešení IoT
 ms.service: time-series-insights
 services: time-series-insights
@@ -9,13 +9,13 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
-ms.date: 01/26/2018
-ms.openlocfilehash: f865086a7e57898adb7d43ec0c02c7d38ef0da9c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.date: 12/05/2018
+ms.openlocfilehash: 91ceb98768db2ce8917c17c9def58e65791bf6bf
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365566"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955136"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Co je Azure Time Series Insights?
 
@@ -34,9 +34,9 @@ Pokud vytváříte aplikaci, ať už pro interní použití nebo pro externí z�
 
 Pokud si nejste jisti, jestli jsou vaše data časovou řadou, měli byste vědět několik věcí.  Data časových řad představují změnu prostředku nebo procesu v průběhu času.  Jsou jedinečná v tom smyslu, že obsahují časové razítko a čas dává největší smysl jako osa.  Data časových řad typicky přicházejí v pořadí podle času a obvykle se zpracovávají jako vložení do databáze, a ne jako aktualizace databáze.  Vzhledem k tomu, že služba Time Series Insights zachytává a ukládá každou novou událost jako řádek, změny se měří v průběhu času, což vám umožní podívat se zpět a předvídat budoucí změny.  Ukládání, indexování, dotazování, analýza a vizualizace velkých objemů dat časových řad může být náročné.  
 
-## <a name="video"></a>Video: 
+## <a name="video"></a>Video
 
-### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>Toto video přináší přehled služby Time Series Insights, analytické platformy IoT založené na cloudu.</br>
+Toto video přináší přehled služby Time Series Insights, analytické platformy IoT založené na cloudu.
 
 > [!VIDEO https://www.youtube.com/embed/qNc9gQTLROs]
 
@@ -76,7 +76,7 @@ Začít můžete za méně než 5 minut.
 ## <a name="time-series-insights-explorer"></a>Průzkumník Time Series Insights
 Tento diagram ukazuje příklad zobrazení dat Time Series Insights v průzkumníku: ![Průzkumník Time Series Insights](media/time-series-insights-explorer/explorer4.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
  - [Zkoumání pomocí průzkumníka Time Series Insights v ukázkovém prostředí](./time-series-quickstart.md)
  - [Plánování vlastního prostředí Time Series Insights](time-series-insights-environment-planning.md)
 

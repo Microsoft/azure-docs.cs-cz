@@ -1,26 +1,21 @@
 ---
-title: Skript Azure PowerShellu – Získání připojovacího řetězce služby Azure Cosmos DB pro aplikace MongoDB | Microsoft Docs
+title: Připojovací řetězec Azure Powershellu Get skriptu Azure Cosmos DB pro aplikace MongoDB
 description: Ukázkový skript Azure PowerShellu – Získání připojovacího řetězce služby Azure Cosmos DB pro aplikace MongoDB
 services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
 ms.service: cosmos-db
+author: SnehaGunda
+ms.author: sngun
 ms.component: cosmosdb-mongo
 ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 05/10/2017
-ms.author: sngun
-ms.openlocfilehash: 149d9d4c8d66c139f8ee8b100b67ac23c7da9aa4
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: HT
+ms.openlocfilehash: 56dd939027d4cf3fd11b89891b0a35a623cd6f68
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41924727"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959559"
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-powershell"></a>Získání připojovacího řetězce služby Azure Cosmos DB pro aplikace MongoDB pomocí PowerShellu
 
@@ -52,7 +47,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

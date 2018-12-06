@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 7f4af06222141eb0e143e67ba4bfcdcb2f5f92fa
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 06123944072142187bfd5b875cbadd36b4d47bd2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614000"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958896"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Protokolování instancí kontejnerů s využitím Azure Log Analytics
 
@@ -24,7 +24,7 @@ Pokud chcete odesílat data z instancí kontejnerů do služby Log Analytics, mu
 
 Abyste mohli povolit protokolování ve vašich instancích kontejnerů, potřebujete následující:
 
-* [Pracovní prostor služby Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md)
+* [Pracovní prostor služby Log Analytics](../azure-monitor/learn/quick-create-workspace.md)
 * [Rozhraní Azure CLI](/cli/azure/install-azure-cli) (nebo službu [Cloud Shell](/azure/cloud-shell/overview))
 
 ## <a name="get-log-analytics-credentials"></a>Získání přihlašovacích údajů služby Log Analytics

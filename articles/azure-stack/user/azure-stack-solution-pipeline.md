@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/07/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 77f9e52da8ada9cdf56d4a710bba65492cc17f75
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 36637137741aef6b34ab8e70109d692f5399043a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51280737"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967057"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: Nasazení aplikace do Azure a Azure Stack
 
@@ -126,27 +126,27 @@ Instanční objekt služby vyžaduje klíče pro ověřování. Použijte násle
 
 1. V Azure Active Directory vyberte z **Registrace aplikací** svou aplikaci.
 
-    ![Vyberte aplikaci](media\azure-stack-solution-hybrid-pipeline\000_01.png)
+    ![Vyberte aplikaci](media/azure-stack-solution-hybrid-pipeline/000_01.png)
 
 2. Poznamenejte si hodnotu **ID aplikace**. Tuto hodnotu použijete při konfiguraci koncového bodu služby v Azure DevOps služby.
 
-    ![ID aplikace](media\azure-stack-solution-hybrid-pipeline\000_02.png)
+    ![ID aplikace](media/azure-stack-solution-hybrid-pipeline/000_02.png)
 
 3. Pokud chcete generovat ověřovací klíč, vyberte **Nastavení**.
 
-    ![Upravit nastavení aplikace](media\azure-stack-solution-hybrid-pipeline\000_03.png)
+    ![Upravit nastavení aplikace](media/azure-stack-solution-hybrid-pipeline/000_03.png)
 
 4. Pokud chcete generovat ověřovací klíč, vyberte **Klíče**.
 
-    ![Konfigurace nastavení klíče](media\azure-stack-solution-hybrid-pipeline\000_04.png)
+    ![Konfigurace nastavení klíče](media/azure-stack-solution-hybrid-pipeline/000_04.png)
 
 5. Zadejte popis klíče a nastavte dobu trvání klíče. Až budete hotovi, vyberte **Uložit**.
 
-    ![Popis klíče a doba trvání](media\azure-stack-solution-hybrid-pipeline\000_05.png)
+    ![Popis klíče a doba trvání](media/azure-stack-solution-hybrid-pipeline/000_05.png)
 
     Po uložení klíče, klíče **hodnotu** se zobrazí. Zkopírujte tuto hodnotu, protože tuto hodnotu nelze získat později. Můžete zadat **hodnotu klíče** s ID aplikace se přihlásit jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
 
-    ![Klíč hodnoty](media\azure-stack-solution-hybrid-pipeline\000_06.png)
+    ![Klíč hodnoty](media/azure-stack-solution-hybrid-pipeline/000_06.png)
 
 ### <a name="get-the-tenant-id"></a>Získání ID tenanta
 
@@ -154,15 +154,15 @@ Jako součást konfigurace koncového bodu služby Azure DevOps Services vyžadu
 
 1. Vyberte **Azure Active Directory**.
 
-    ![Pro tenanta Azure Active Directory](media\azure-stack-solution-hybrid-pipeline\000_07.png)
+    ![Pro tenanta Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_07.png)
 
 2. K získání ID tenanta vyberte v tenantovi Azure AD možnost **Vlastnosti**.
 
-    ![Zobrazení vlastností klienta](media\azure-stack-solution-hybrid-pipeline\000_08.png)
+    ![Zobrazení vlastností klienta](media/azure-stack-solution-hybrid-pipeline/000_08.png)
 
 3. Zkopírujte **ID adresáře**. Tato hodnota představuje ID tenanta.
 
-    ![ID adresáře](media\azure-stack-solution-hybrid-pipeline\000_09.png)
+    ![ID adresáře](media/azure-stack-solution-hybrid-pipeline/000_09.png)
 
 ### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Udělení oprávnění instančního objektu služby k nasazení prostředků v předplatném služby Azure Stack
 
@@ -172,27 +172,27 @@ Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. 
 
 1. Přejděte na úrovni oboru, který chcete přiřadit aplikaci. Například vyberte přiřazení role v oboru předplatného, **předplatná**.
 
-    ![Vyberte předplatné.](media\azure-stack-solution-hybrid-pipeline\000_10.png)
+    ![Vyberte předplatné.](media/azure-stack-solution-hybrid-pipeline/000_10.png)
 
 2. V **předplatné**, vyberte Visual Studio Enterprise.
 
-    ![Visual Studio Enterprise](media\azure-stack-solution-hybrid-pipeline\000_11.png)
+    ![Visual Studio Enterprise](media/azure-stack-solution-hybrid-pipeline/000_11.png)
 
 3. V sadě Visual Studio Enterprise, vyberte **řízení přístupu (IAM)**.
 
-    ![Řízení přístupu (IAM)](media\azure-stack-solution-hybrid-pipeline\000_12.png)
+    ![Řízení přístupu (IAM)](media/azure-stack-solution-hybrid-pipeline/000_12.png)
 
 4. Vyberte **Přidat**.
 
-    ![Přidat](media\azure-stack-solution-hybrid-pipeline\000_13.png)
+    ![Přidat](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 
 5. V **přidat oprávnění**, vyberte roli, kterou chcete přiřadit k aplikaci. V tomto příkladu **vlastníka** role.
 
-    ![Role vlastníka](media\azure-stack-solution-hybrid-pipeline\000_14.png)
+    ![Role vlastníka](media/azure-stack-solution-hybrid-pipeline/000_14.png)
 
 6. Ve výchozím nastavení aplikace Azure Active Directory nejsou zobrazeny v dostupných možnostech. Pokud chcete najít aplikace, musíte zadat jeho název v **vyberte** pole, které chcete ji najít. Vyberte aplikaci.
 
-    ![Výsledek hledání aplikací](media\azure-stack-solution-hybrid-pipeline\000_16.png)
+    ![Výsledek hledání aplikací](media/azure-stack-solution-hybrid-pipeline/000_16.png)
 
 7. Vyberte **Uložit** k dokončení přiřazení role. Zobrazí se vaše aplikace v seznamu Uživatelé přiřazení k roli pro tento obor.
 
@@ -212,37 +212,37 @@ Vytvoření osobní přístupový Token pro přístup ke službám Azure DevOps.
 
 2. Vyberte **spravovat zabezpečení** na stránku vytvoření tokenu přístupu.
 
-    ![Přihlášení uživatele](media\azure-stack-solution-hybrid-pipeline\000_17.png)
+    ![Přihlášení uživatele](media/azure-stack-solution-hybrid-pipeline/000_17.png)
 
-    ![Vyberte projekt](media\azure-stack-solution-hybrid-pipeline\000_18.png)
+    ![Vyberte projekt](media/azure-stack-solution-hybrid-pipeline/000_18.png)
 
-    ![Přidat token pat](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
+    ![Přidat token pat](media/azure-stack-solution-hybrid-pipeline/000_18a.png)
 
-    ![Vytvořit token](media\azure-stack-solution-hybrid-pipeline\000_18b.png)
+    ![Vytvořit token](media/azure-stack-solution-hybrid-pipeline/000_18b.png)
 
 3. Zkopírujte token.
 
     > [!Note]
     > Uložte informace o tokenu. Tyto informace se neuloží a znovu nezobrazí při opuštění webové stránky.
 
-    ![Token pat](media\azure-stack-solution-hybrid-pipeline\000_19.png)
+    ![Token pat](media/azure-stack-solution-hybrid-pipeline/000_19.png)
 
 ### <a name="install-the-azure-devops-services-build-agent-on-the-azure-stack-hosted-build-server"></a>Nainstalujte agenta služby Azure DevOps sestavení ve službě Azure Stack hostování serveru pro sestavení
 
 1. Připojení k serveru sestavení, který jste nasadili na hostitele služby Azure Stack.
 2. Stažení a nasazení agenta sestavení jako služby pomocí osobní přístup token PAT a správce virtuálního počítače účet Spustit jako.
 
-    ![Stáhnout agenta sestavení](media\azure-stack-solution-hybrid-pipeline\010_downloadagent.png)
+    ![Stáhnout agenta sestavení](media/azure-stack-solution-hybrid-pipeline/010_downloadagent.png)
 
 3. Přejděte do složky agenta sestavení byl extrahován. Spustit **config.cmd** soubor z příkazového řádku se zvýšenými oprávněními.
 
-    ![Extrahované sestavovacího agenta](media\azure-stack-solution-hybrid-pipeline\000_20.png)
+    ![Extrahované sestavovacího agenta](media/azure-stack-solution-hybrid-pipeline/000_20.png)
 
-    ![Registraci agenta sestavení](media\azure-stack-solution-hybrid-pipeline\000_21.png)
+    ![Registraci agenta sestavení](media/azure-stack-solution-hybrid-pipeline/000_21.png)
 
 4. Po dokončení config.cmd složka agenta sestavení je aktualizován další soubory. Složka s extrahované obsah by měl vypadat nějak takto:
 
-    ![Aktualizace složky agenta sestavení](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
+    ![Aktualizace složky agenta sestavení](media/azure-stack-solution-hybrid-pipeline/009_token_file.png)
 
     Vidíte agenta ve složce služby Azure DevOps.
 
@@ -250,23 +250,23 @@ Vytvoření osobní přístupový Token pro přístup ke službám Azure DevOps.
 
 Tím, že vytvoříte koncové body, Visual Studio Online (VSTO) build aplikace Azure Service nasadit do služby Azure Stack. Služby Azure DevOps se připojí k agenta sestavení, který se připojuje ke službě Azure Stack.
 
-![NorthwindCloud ukázkovou aplikaci v VSTO](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
+![NorthwindCloud ukázkovou aplikaci v VSTO](media/azure-stack-solution-hybrid-pipeline/012_securityendpoints.png)
 
 1. Přihlaste se k VSTO a přejděte na stránku nastavení aplikací.
 2. Na **nastavení**vyberte **zabezpečení**.
 3. V **skupin služby Azure DevOps**vyberte **koncový bod Creators**.
 
-    ![Koncový bod NorthwindCloud Tvůrce](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
+    ![Koncový bod NorthwindCloud Tvůrce](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
 
 4. Na **členy** kartu, vyberte možnost **přidat**.
 
-    ![Přidat člena](media\azure-stack-solution-hybrid-pipeline\014_members_tab.png)
+    ![Přidat člena](media/azure-stack-solution-hybrid-pipeline/014_members_tab.png)
 
 5. V **přidávat uživatele a skupiny**, zadejte uživatelské jméno a vyberte uživatele ze seznamu uživatelů.
 6. Vyberte **uložit změny**.
 7. V **skupin služby Azure DevOps** seznamu vyberte **koncový bod správci**.
 
-    ![Koncový bod NorthwindCloud správci](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
+    ![Koncový bod NorthwindCloud správci](media/azure-stack-solution-hybrid-pipeline/015_save_endpoint.png)
 
 8. Na **členy** kartu, vyberte možnost **přidat**.
 9. V **přidávat uživatele a skupiny**, zadejte uživatelské jméno a vyberte uživatele ze seznamu uživatelů.
@@ -297,13 +297,13 @@ Můžete vytvořit připojení služby pomocí následující mapování:
 
 Teď, když je vytvořen koncový bod, DevOps pro připojení služby Azure Stack je připravený k použití. Agent sestavení ve službě Azure Stack získá pokyny od DevOps a pak agenta přenáší informace o koncovém bodu pro komunikaci pomocí služby Azure Stack.
 
-![Sestavovacího agenta Azure AD](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+![Sestavovacího agenta Azure AD](media/azure-stack-solution-hybrid-pipeline/016_save_changes.png)
 
 ### <a name="create-an-endpoint-for-ad-fs"></a>Vytvořit koncový bod pro službu AD FS
 
 Nejnovější aktualizace pro Azure DevOps umožňuje vytvořit připojení služby pomocí certifikátu ověřování pomocí instančního objektu. To je potřeba při nasazení Azure Stack se službou AD FS jako zprostředkovatele identity. 
 
-![Agent služby AD FS sestavení](media\azure-stack-solution-hybrid-pipeline\image06.png)
+![Agent služby AD FS sestavení](media/azure-stack-solution-hybrid-pipeline/image06.png)
 
 Můžete vytvořit připojení služby pomocí následující mapování:
 
@@ -342,17 +342,17 @@ Hybridní CI/CD můžete použít kód aplikace a kódu infrastruktury. Použit�
 
 1. Přihlaste se ke službám Azure DevOps s organizací, který má práva k vytvoření projektu ve službě Azure Stack. Následující snímek obrazovky ukazuje, jak se připojit k projektu HybridCICD.
 
-    ![Připojení k projektu](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
+    ![Připojení k projektu](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
 
 2. **Naklonujte úložiště** ve vytváření a otevírání výchozí webové aplikace.
 
-    ![Klonování úložiště](media\azure-stack-solution-hybrid-pipeline\018_link_arm.png)
+    ![Klonování úložiště](media/azure-stack-solution-hybrid-pipeline/018_link_arm.png)
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Vytvoření nasazení samostatné webové aplikace pro App Service v oba cloudy
 
 1. Upravit **WebApplication.csproj** souboru: vyberte **Runtimeidentifier** a pak přidejte `win10-x64.` Další informace najdete v tématu [samostatná nasazení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) dokumentace ke službě.
 
-    ![Konfigurace Runtimeidentifier](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
+    ![Konfigurace Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
 
 2. Zkontrolujte kód do služby Azure DevOps pomocí Team Exploreru.
 
@@ -366,7 +366,7 @@ Hybridní CI/CD můžete použít kód aplikace a kódu infrastruktury. Použit�
 
 3. V **argumenty**, přidejte **- r win10-x64** kódu. To se vyžaduje k aktivaci samostatná nasazení s.Net Core.
 
-    ![Přidat argument sestavení kanálu](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
+    ![Přidat argument sestavení kanálu](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
 
 4. Spuštění sestavení. [Samostatná nasazení sestavení](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) procesu budete publikovat artefakty, které lze spustit v Azure a Azure Stack.
 
@@ -385,89 +385,89 @@ Vytvoření kanál pro vydávání verzí je posledním krokem v aplikaci proces
 1. Přihlaste se ke službám Azure DevOps a přejděte do **kanály Azure** pro váš projekt.
 2. Na **verze** kartu, vyberte možnost  **\[ +]** a potom si vyberte **definice vydané verze vytvořit**.
 
-   ![Vytvoření kanálu pro vydávání verzí](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
+   ![Vytvoření kanálu pro vydávání verzí](media/azure-stack-solution-hybrid-pipeline/021a_releasedef.png)
 
 3. Na **vyberte šablonu**, zvolte **nasazení služby Azure App Service**a pak vyberte **použít**.
 
-    ![Použít šablonu](media\azure-stack-solution-hybrid-pipeline\102.png)
+    ![Použít šablonu](media/azure-stack-solution-hybrid-pipeline/102.png)
 
 4. Na **přidání artefaktu**, z **zdroj (definice sestavení)** rozevírací nabídky vyberte aplikaci sestavení cloudu Azure.
 
-    ![Přidání artefaktu](media\azure-stack-solution-hybrid-pipeline\103.png)
+    ![Přidání artefaktu](media/azure-stack-solution-hybrid-pipeline/103.png)
 
 5. Na **kanálu** kartu, vyberte možnost **1 fáze**, **1 úloha** propojit **zobrazit úlohy prostředí**.
 
-    ![Úlohy v zobrazení kanálu](media\azure-stack-solution-hybrid-pipeline\104.png)
+    ![Úlohy v zobrazení kanálu](media/azure-stack-solution-hybrid-pipeline/104.png)
 
 6. Na **úlohy** kartu, zadejte jako Azure **název prostředí** a vyberte EP Traders webové AzureCloud z **předplatného Azure** rozevíracího seznamu.
 
-    ![Nastavení proměnných prostředí](media\azure-stack-solution-hybrid-pipeline\105.png)
+    ![Nastavení proměnných prostředí](media/azure-stack-solution-hybrid-pipeline/105.png)
 
 7. Zadejte **název služby Azure app service**, což je "firma" dalšího snímku obrazovky.
 
-    ![Název služby App service](media\azure-stack-solution-hybrid-pipeline\106.png)
+    ![Název služby App service](media/azure-stack-solution-hybrid-pipeline/106.png)
 
 8. Fáze agenta vyberte **hostované VS2017** z **frontu agenta** rozevíracího seznamu.
 
-    ![Hostovaný agent](media\azure-stack-solution-hybrid-pipeline\107.png)
+    ![Hostovaný agent](media/azure-stack-solution-hybrid-pipeline/107.png)
 
 9. V **nasazení služby Azure App Service**, vyberte platnými **balíčku nebo složky** pro prostředí.
 
-    ![Vyberte balíček nebo složky](media\azure-stack-solution-hybrid-pipeline\108.png)
+    ![Vyberte balíček nebo složky](media/azure-stack-solution-hybrid-pipeline/108.png)
 
 10. V **vybrat soubor nebo složku**vyberte **OK** k **umístění**.
 
-    ![Alternativní Text](media\azure-stack-solution-hybrid-pipeline\109.png)
+    ![Alternativní Text](media/azure-stack-solution-hybrid-pipeline/109.png)
 
 11. Uložte všechny změny a vraťte se do **kanálu**.
 
-    ![Alternativní Text](media\azure-stack-solution-hybrid-pipeline\110.png)
+    ![Alternativní Text](media/azure-stack-solution-hybrid-pipeline/110.png)
 
 12. Na **kanálu** kartu, vyberte možnost **přidání artefaktu**a zvolte **NorthwindCloud Traders-lodi** z **zdroj (definice sestavení)** rozevíracího seznamu.
 
-    ![Přidání nové artefaktu](media\azure-stack-solution-hybrid-pipeline\111.png)
+    ![Přidání nové artefaktu](media/azure-stack-solution-hybrid-pipeline/111.png)
 
 13. Na **vyberte šablonu**, přidat jiné prostředí. Vyberte si **nasazení služby Azure App Service** a pak vyberte **použít**.
 
-    ![Vyberte šablonu](media\azure-stack-solution-hybrid-pipeline\112.png)
+    ![Vyberte šablonu](media/azure-stack-solution-hybrid-pipeline/112.png)
 
 14. Zadejte "Azure Stack" jako **název prostředí**.
 
-    ![Název prostředí](media\azure-stack-solution-hybrid-pipeline\113.png)
+    ![Název prostředí](media/azure-stack-solution-hybrid-pipeline/113.png)
 
 15. Na **úlohy** kartu, vyhledejte a vyberte Azure Stack.
 
-    ![Prostředí Azure Stack](media\azure-stack-solution-hybrid-pipeline\114.png)
+    ![Prostředí Azure Stack](media/azure-stack-solution-hybrid-pipeline/114.png)
 
 16. Z **předplatného Azure** rozevíracího seznamu vyberte "EP AzureStack lodi Traders" pro koncový bod služby Azure Stack.
 
-    ![Alternativní Text](media\azure-stack-solution-hybrid-pipeline\115.png)
+    ![Alternativní Text](media/azure-stack-solution-hybrid-pipeline/115.png)
 
 17. Zadejte název webové aplikace služby Azure Stack jako **název služby App service**.
 
-    ![Název služby App service](media\azure-stack-solution-hybrid-pipeline\116.png)
+    ![Název služby App service](media/azure-stack-solution-hybrid-pipeline/116.png)
 
 18. V části **Výběr agenta**, můžete si vybrat "AzureStack - bDouglas do části" z **frontu agenta** rozevíracího seznamu.
 
-    ![Výběr agenta](media\azure-stack-solution-hybrid-pipeline\117.png)
+    ![Výběr agenta](media/azure-stack-solution-hybrid-pipeline/117.png)
 
 19. Pro **nasazení služby Azure App Service**, vyberte platnými **balíčku nebo složky** pro prostředí. Na **vybrat soubor nebo složku**vyberte **OK** složky **umístění**.
 
-    ![Vyberte balíček nebo složky](media\azure-stack-solution-hybrid-pipeline\118.png)
+    ![Vyberte balíček nebo složky](media/azure-stack-solution-hybrid-pipeline/118.png)
 
-    ![Schválit umístění](media\azure-stack-solution-hybrid-pipeline\119.png)
+    ![Schválit umístění](media/azure-stack-solution-hybrid-pipeline/119.png)
 
 20. Na **proměnnou** kartu, vyhledejte proměnnou s názvem **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Nastavte hodnotu proměnné **true**a nastavte jeho rozsah **Azure Stack**.
 
-    ![Nakonfigurujte proměnné](media\azure-stack-solution-hybrid-pipeline\120.png)
+    ![Nakonfigurujte proměnné](media/azure-stack-solution-hybrid-pipeline/120.png)
 
 21. Na **kanálu** kartu, vyberte možnost **trigger průběžného nasazování** ikonu pro artefakt NorthwindCloud Traders – Web a nastavte **trigger průběžného nasazování** do **Povolené**.  To samé udělá pro artefakt "NorthwindCloud lodi Traders".
 
-    ![Trigger průběžného nasazování sady](media\azure-stack-solution-hybrid-pipeline\121.png)
+    ![Trigger průběžného nasazování sady](media/azure-stack-solution-hybrid-pipeline/121.png)
 
 22. Prostředí Azure Stack, vyberte **podmínky před nasazením** ikony nastavte aktivační události na **po vydání**.
 
-    ![Aktivační podmínky před nasazením sady](media\azure-stack-solution-hybrid-pipeline\122.png)
+    ![Aktivační podmínky před nasazením sady](media/azure-stack-solution-hybrid-pipeline/122.png)
 
 23. Uložte všechny provedené změny.
 
@@ -480,15 +480,15 @@ Teď, když jste dokončili změny kanál pro vydávání verzí, je čas spusti
 
 1. Na **kanálu** otevřenou kartou **Release** rozevírací seznam a zvolte **vytvořit vydání**.
 
-    ![Vytvoření vydané verze](media\azure-stack-solution-hybrid-pipeline\200.png)
+    ![Vytvoření vydané verze](media/azure-stack-solution-hybrid-pipeline/200.png)
 
 2. Zadejte popis pro vydání, zkontrolujte, zda jsou vybrány správné artefakty a pak zvolte **vytvořit**. Po chvíli se zobrazí banner s označující, že byla vytvořena nová verze a verze název se zobrazí jako odkaz. Klikněte na odkaz zobrazíte na stránce souhrnu vydání.
 
-    ![Banner vytvoření verze](media\azure-stack-solution-hybrid-pipeline\201.png)
+    ![Banner vytvoření verze](media/azure-stack-solution-hybrid-pipeline/201.png)
 
 3. Na stránce souhrnu vydání pro zobrazuje podrobnosti o verzi. Na následujícím snímku obrazovky pro "Release-2" **prostředí** části ukazuje **stav nasazení** pro Azure jako "Probíhající" a stav pro službu Azure Stack je "bylo DOKONČENO". Kdy se stav nasazení pro prostředí Azure změní na "ÚSPĚCH", zobrazí se banner označující, že verze je připravené ke schválení. Při nasazení čeká na vyřízení nebo se nezdařila, modrý **(i)** informační ikona, která se zobrazí. Najeďte myší na ikonu si zobrazíte automaticky otevírané okno, které obsahuje důvodem zpoždění nebo selhání.
 
-    ![Stránce souhrnu vydaných verzí](media\azure-stack-solution-hybrid-pipeline\202.png)
+    ![Stránce souhrnu vydaných verzí](media/azure-stack-solution-hybrid-pipeline/202.png)
 
 Jiných zobrazení, jako je například seznam verzí, se také zobrazí ikonu, která indikuje, že se čeká na schválení. Automaticky otevírané okno pro tato ikona zobrazuje název prostředí a další podrobnosti související s nasazením. Je snadné správce naleznete v části celkový průběh vydaných verzí a zjistěte, která verze se čeká na schválení.
 
@@ -502,7 +502,7 @@ Tato část ukazuje, jak můžete monitorovat a sledujte všechna nasazení. Ver
 
 2. Po dokončení nasazení se v pravém podokně zobrazí celý soubor protokolu. Můžete vybrat libovolný **krok** v levém podokně najdete v jediném kroku, jako je například "Inicializovat úloha" v souboru protokolu. Možnost zobrazit jednotlivé protokoly usnadňuje trasování a ladění součástí celkové nasazení. Můžete také **Uložit** soubor protokolu pro krok, nebo **stáhnout všechny protokoly jako soubor zip**.
 
-    ![Protokoly](media\azure-stack-solution-hybrid-pipeline\203.png)
+    ![Protokoly](media/azure-stack-solution-hybrid-pipeline/203.png)
 
 3. Otevřít **Souhrn** kartu a zobrazí se obecné informace o verzi. Toto zobrazení ukazuje údaje o sestavení, prostředí, který byl nasazen na, stav nasazení a další informace o verzi.
 

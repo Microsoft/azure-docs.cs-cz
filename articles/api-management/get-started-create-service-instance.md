@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: f5465040f7dc0efd90591050ed9953149aca34b0
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
-ms.translationtype: HT
+ms.openlocfilehash: ed3d21719908a4c16b92d610b8ac75ac0b235ec1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456435"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968701"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Vytvoření nové instance služby Azure API Management
 
@@ -31,7 +31,7 @@ Tento rychlý start popisuje kroky pro vytvoření nové instance API Management
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-new-service"></a>Vytvoření nové služby
 
@@ -79,7 +79,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech
 5. Potvrďte odstranění zadáním názvu vaší skupiny prostředků.
 6. Klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Import a publikování vašeho prvního rozhraní API](import-and-publish.md)

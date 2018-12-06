@@ -1,17 +1,17 @@
 ---
-title: Skript Azure CLI – Obnovení klíče účtu služby Azure Cosmos DB | Microsoft Docs
+title: Klíč účtu Azure CLI skript znovu vygenerovat klíč Azure Cosmos DB
 description: Ukázkový skript Azure CLI – Obnovení klíče účtu služby Azure Cosmos DB
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: 06a71ce759a72483d9ac3993e82d14af21e7d9d7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 38ebfde4b9b473f412ae667cdc6b36ea5e991608
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51007803"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958095"
 ---
 # <a name="regenerate-an-azure-cosmos-db-account-key-using-the-azure-cli"></a>Obnovení klíče účtu služby Azure Cosmos DB pomocí Azure CLI
 
@@ -45,7 +45,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az cosmosdb regenerate-key](/cli/azure/cosmosdb#az-cosmosdb-regenerate-key) | Obnoví klíče účtu služby Azure Cosmos DB. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

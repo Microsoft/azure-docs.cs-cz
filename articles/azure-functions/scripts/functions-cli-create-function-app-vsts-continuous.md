@@ -9,12 +9,12 @@ ms.date: 07/03/2018
 ms.topic: sample
 ms.service: azure-functions
 ms.custom: mvc
-ms.openlocfilehash: 680115f64b16059c415d295cf7c6a15301de5a3f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 17e33e3c0e6b06266025a7f0e6403789c9468a16
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166096"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957469"
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-azure-devops"></a>Vytvoření aplikace funkcí a nasazení kódu funkce z Azure DevOps
 
@@ -52,7 +52,7 @@ Tento skript k vytvoření skupiny prostředků, účtu úložiště, aplikace f
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Vytvoří aplikaci funkcí v [plánu Consumption](../functions-scale.md#consumption-plan) bez serveru. |
 | [az functionapp deployment source config](https://docs.microsoft.com/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config) | Přidruží aplikaci funkcí k úložišti Git nebo Mercurial. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

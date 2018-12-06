@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aab9651092f7ad5dbc78c31db8df4ef3538fedfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 82cc5d940a48cfca33a4ad9e160905df34f86454
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039968"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960460"
 ---
 # <a name="quickstart-change-model-using-c"></a>Rychlý start: Změna modelu pomocí C#
 
@@ -98,9 +98,7 @@ Do třídy **Program** přidejte metodu žádosti POST.
 
 Do třídy **Program** přidejte ukázkové promluvy z metody souboru.
 
-   [!code-csharp[Add example utterances from file.
-](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.
-")]
+   [!code-csharp[Add example utterances from file.](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=77-86 "Add example utterances from file.")]
 
 Jakmile se změny na model aplikují, trénujte model. Do třídy **Program** přidejte metodu.
 
@@ -139,6 +137,6 @@ Tento příkazový řádek ukazuje výsledky volání rozhraní API pro přidáv
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Jakmile tento rychlý start dokončíte, odeberte všechny soubory, které jste v něm vytvořili. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
 > [Sestavení aplikace LUIS prostřednictvím kódu programu](luis-tutorial-node-import-utterances-csv.md) 

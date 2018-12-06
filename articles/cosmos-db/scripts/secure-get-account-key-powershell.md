@@ -1,25 +1,20 @@
 ---
-title: Skript Azure PowerShellu – Získání klíčů účtu pro službu Cosmos DB | Microsoft Docs
-description: Ukázkový skript Azure PowerShellu – Získání klíčů účtu pro službu Cosmos DB
+title: Azure PowerShell. skript – získání klíčů účtu pro službu Azure Cosmos DB
+description: Ukázkový skript Azure Powershellu – získání klíčů účtu pro službu Azure Cosmos DB
 services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
 ms.service: cosmos-db
+author: SnehaGunda
+ms.author: sngun
 ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 05/10/2017
-ms.author: sngun
-ms.openlocfilehash: 4ae2b185d5fd25f9d8e0949f956ca4d14e502bd6
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: HT
+ms.openlocfilehash: 4eaf50a2e1ce86353bcaa514c26b517c8d448959
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41920957"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970871"
 ---
 # <a name="get-account-keys-for-azure-cosmos-db-using-powershell"></a>Získání klíčů účtu pro službu Azure Cosmos DB pomocí PowerShellu
 
@@ -51,7 +46,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

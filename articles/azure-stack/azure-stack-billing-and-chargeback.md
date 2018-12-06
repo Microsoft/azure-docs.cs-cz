@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: a5f3b206b83beb15ee3b29d5d5b9e389e85a91fb
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 32d0e0f48a99b5c06b1efa61e6e1a53cf5b0e61b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466983"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971789"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Využití a fakturace ve službě Azure Stack
 
@@ -35,9 +35,9 @@ Každý poskytovatel prostředků ve službě Azure Stack odesílá data o využ
 
 Pokud máte [vaší instance služby Azure Stack a registrované v Azure](azure-stack-register.md), Azure Stack je nakonfigurovaná k odesílání dat o využití do Azure Commerce. Po nahrání dat do Azure můžete přistupovat prostřednictvím fakturačním portálu nebo pomocí Azure resource využití rozhraní API. Další informace o jaké využití více dat se oznamuje službě Azure najdete v tématu [generování sestav dat využití](azure-stack-usage-reporting.md).  
 
-Následující obrázek ukazuje klíčové součásti v kanálu využití: 
+Následující obrázek ukazuje klíčové součásti v kanálu využití:
 
-![Použití kanálu](media\azure-stack-billing-and-chargeback\usagepipeline.png)
+![Použití kanálu](media/azure-stack-billing-and-chargeback/usagepipeline.png)
 
 ## <a name="what-usage-information-can-i-find-and-how"></a>Využití informací můžete najít a jak?
 

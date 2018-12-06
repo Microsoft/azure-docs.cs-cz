@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: e2f3a5655b2fbedf3ad80d555421599e26225196
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: HT
+ms.openlocfilehash: 09a7f02df1102e42bc45b4615a2af4235372bcdc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982076"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957023"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Co je rozhraní API pro počítačové zpracování obrazu verze 1.0?
 
@@ -44,11 +44,11 @@ Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývoj�
 * Rozměry obrázku: větší než 50 × 50 pixelů.
 
 ## <a name="tagging-images"></a>Označování obrázků
-Rozhraní API pro počítačové zpracování obrazu vrací značky na základě více než 2000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Pokud jsou značky nejasné nebo nejsou obecně známé, nabídne API v odpovědi nápovědu, která objasní význam značky v kontextu známého prostředí. Značky nejsou uspořádané podle taxonomie a neexistují hierarchie dědění. Shromážděné značky obsahu tvoří základ „popisu“ obrázku, který se zobrazí v čitelném jazyce formátovaném do celých vět. V tuto chvíli je jediným podporovaným jazykem používaným k popisu obrázku angličtina.
+Rozhraní API pro počítačové zpracování obrazu vrací značky na základě tisíce rozpoznatelných objektů, živých bytostí, krajin a akcí. Pokud jsou značky nejasné nebo nejsou obecně známé, nabídne API v odpovědi nápovědu, která objasní význam značky v kontextu známého prostředí. Značky nejsou uspořádané podle taxonomie a neexistují hierarchie dědění. Shromážděné značky obsahu tvoří základ „popisu“ obrázku, který se zobrazí v čitelném jazyce formátovaném do celých vět. V tuto chvíli je jediným podporovaným jazykem používaným k popisu obrázku angličtina.
 
 Po nahrání obrázku nebo zadání URL obrázku vygenerují algoritmy rozhraní API pro počítačového zpracování obrazu značky, které vycházejí z předmětů, živých bytostí a akcí rozpoznaných na obrázku. Značky se neomezují na hlavní předmět, například postavu v popředí, ale zahrnují také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 ![Dvůr s domem](./Images/house_yard.png) '
 
 ```json
@@ -267,12 +267,12 @@ Poznámka: Tato technologie je v současnosti ve verzi Preview a je dostupná je
 ## <a name="generating-thumbnails"></a>Generování miniatur
 Miniatura je zmenšenina velkého obrázku. Různá zařízení, jako jsou telefony, tablety nebo počítače, potřebují různá rozložení uživatelského prostředí a různě velké miniatury. Tento problém řeší funkce rozhraní API pro počítačové zpracování obrazu s inteligentním ořezáváním.
 
-Po nahrání obrázku se vygeneruje co nejkvalitnější miniatura a algoritmus rozhraní API pro počítačové zpracování obrazu analyzuje objekty na obrázku. Pak obrázek ořízne, aby odpovídal požadavkům oblasti zájmu (ROI). Výstup se zobrazí ve zvláštním formátu. Je to vidět na následujícím obrázku. Vygenerovaná miniatura může mít jiný poměr stran než původní obrázek, aby bylo možné vyhovět potřebám uživatelů.
+Po nahrání obrázku se vygeneruje co nejkvalitnější miniatura a algoritmus rozhraní API pro počítačové zpracování obrazu analyzuje objekty na obrázku. To potom obrázek ořízne tak, aby odpovídal požadavkům oblasti zájmu. Výstup se zobrazí ve zvláštním formátu. Je to vidět na následujícím obrázku. Vygenerovaná miniatura může mít jiný poměr stran než původní obrázek, aby bylo možné vyhovět potřebám uživatelů.
 
 Algoritmus miniatury funguje následovně:
 
-1. Odebere z obrázku rušivé prvky a rozpozná hlavní objekt, tzv. oblast zájmu (ROI).
-2. Ořízne obrázek podle označené oblasti zájmu.
+1. Odebere rušivé prvky z obrázku a rozpozná hlavním objektem, oblast zájmu.
+2. Obrázek ořízne tak, podle zjištěných oblast zájmu.
 3. Změní poměr stran, aby odpovídal rozměrům cílové miniatury.
 
 ![Miniatury](./Images/thumbnail-demo.png)

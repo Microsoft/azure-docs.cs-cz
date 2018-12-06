@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: d50131a9c9e7572f7696a936cbfec3a8568eda2e
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 3759a9845d4ad1514fc5f0183c78b5eca2e31464
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343641"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960647"
 ---
 # <a name="azure-stack-firewall-integration"></a>Integrace brány firewall služby Azure Stack
 Doporučuje se použít zařízení brány firewall umožňující zabezpečení Azure stacku. I když se třeba distribuovanými útoky s cílem odepření služeb (DDOS), zjišťování neoprávněných vniknutí a kontroly obsahu vám může pomoci brány firewall, jsou zároveň může stát kritickým bodem propustnost pro služby Azure storage jako objekty BLOB, tabulky a fronty.
@@ -49,7 +49,7 @@ V nasazení edge služby Azure Stack nasazuje přímo za hraniční směrovač n
 
 Obvykle jsou veřejné IP adresy směrovatelné zadaný pro fond veřejných virtuálních IP adres z externí sítě v době nasazení. Ve scénáři edge se doporučuje použít veřejné IP adresy směrovatelné na jinou síť z bezpečnostních důvodů. Tento scénář umožňuje uživateli prostředí plně svým řízené cloudového prostředí jako veřejný cloud, jako je Azure.  
 
-![Příklad edge brány firewall pomocí Azure Stack](.\media\azure-stack-firewall\firewallScenarios.png)
+![Příklad edge brány firewall pomocí Azure Stack](./media/azure-stack-firewall/firewallScenarios.png)
 
 ## <a name="enterprise-intranet-or-perimeter-network-firewall-scenario"></a>Podnikového intranetu nebo hraniční sítě brány firewall scénáře
 V podnikovém intranetu nebo hraniční nasazení se nasadí Azure Stack na bráně firewall rozdělený zóny s více nebo mezi hraniční bráně firewall a brány firewall interní podnikové sítě. Jeho provoz je poté distribuován mezi zabezpečené, hraniční síti (nebo hraniční síti) a nezabezpečené zóny, jako je popsáno níže:
@@ -58,7 +58,7 @@ V podnikovém intranetu nebo hraniční nasazení se nasadí Azure Stack na brá
 - **Zóna hraniční**. Hraniční síť je tam, kde je to externí nebo aplikace, jako jsou webové servery jsou obvykle implementovány směřujících do Internetu. Obvykle je monitorovaný bránou firewall, aby se zabránilo útokům DDoS a neoprávněného vniknutí (hacking) zároveň umožní zadané příchozí provoz z Internetu. Pouze externí síť veřejných virtuálních IP adres fondu služby Azure Stack by měl být umístěn v zóně DMZ.
 - **Nezabezpečená zóny**. Jedná se o externí síť Internetu. To **není** doporučujeme nasadit Azure Stack v nezabezpečené zóny.
 
-![Příklad hraniční sítě pomocí Azure Stack](.\media\azure-stack-firewall\perimeter-network-scenario.png)
+![Příklad hraniční sítě pomocí Azure Stack](./media/azure-stack-firewall/perimeter-network-scenario.png)
 
 ## <a name="learn-more"></a>Další informace
 Další informace o [portech a protokolech používaných koncové body služby Azure Stack](azure-stack-integrate-endpoints.md).

@@ -5,15 +5,15 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 12/05/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 46fecf6f1b2826f0e23b7b6c4f4511ce9a662d1c
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 4f152273503d9d8026047301975cf54d2ef47d27
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365685"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961486"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Kurz: Vytvoření prostředí Azure Time Series Insights
 
@@ -26,9 +26,9 @@ Tento kurz vás provede procesem vytvoření prostředí Time Series Insight (TS
 > * Spustit simulaci zařízení pro streamování dat do prostředí TSI
 > * Ověřit simulovaná telemetrická data
 
-## <a name="video"></a>Video: 
+## <a name="video"></a>Video
 
-### <a name="in-this-video-we-show-you-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-that-can-be-used-to-get-started-with-time-series-insightsbr"></a>V tomto videu si ukážeme, jak generovat data, která pomáhají v začátcích s Time Series Insights, pomocí akcelerátoru řešení Azure IoT.</br>
+V tomto videu si ukážeme, jak generovat data, která pomáhají v začátcích s Time Series Insights, pomocí akcelerátoru řešení Azure IoT.
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
@@ -226,7 +226,7 @@ V nabídce vlevo na webu Azure Portal:
 1. Klikněte na ikonu **Skupiny prostředků** a vyberte skupinu prostředků, kterou jste vytvořili pro prostředí TSI. V horní části stránky klikněte na **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a potom klikněte na **Odstranit**. 
 2. Klikněte na ikonu **Skupiny prostředků** a vyberte skupinu vytvořenou akcelerátorem řešení simulace zařízení. V horní části stránky klikněte na **Odstranit skupinu prostředků**, zadejte název skupiny prostředků a potom klikněte na **Odstranit**. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: f06094fb82f10276f7a41d1b22f6dd99836a497f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: eaafc8acb73dd48e213d05d953d9ada457c53132
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095506"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957261"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načítá rozdílová data na základě **sledování změn** ve zdrojové databázi Azure SQL do úložiště objektů blob Azure.  
@@ -322,7 +322,7 @@ Klikněte na **Aktivační událost** na panelu nástrojů pro kanál a pak klik
 ### <a name="review-the-results"></a>Kontrola výsledků
 Ve složce `incchgtracking` kontejneru `adftutorial` uvidíte soubor s názvem `incremental-<GUID>.txt`. 
 
-![Výstupní soubor pro úplné kopírování](media\tutorial-incremental-copy-change-tracking-feature-portal\full-copy-output-file.png)
+![Výstupní soubor pro úplné kopírování](media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-output-file.png)
 
 Tento soubor by měl obsahovat data z databáze SQL Azure:
 
@@ -445,7 +445,7 @@ V tomto kroku vytvoříte kanál s následujícími aktivitami a pravidelně ho 
 ### <a name="review-the-results"></a>Kontrola výsledků
 Ve složce `incchgtracking` kontejneru `adftutorial` uvidíte druhý soubor. 
 
-![Výstupní soubor pro přírůstkové kopírování](media\tutorial-incremental-copy-change-tracking-feature-portal\incremental-copy-output-file.png)
+![Výstupní soubor pro přírůstkové kopírování](media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-output-file.png)
 
 Tento soubor by měl obsahovat jenom rozdílová data z databáze SQL Azure. Záznam s `U` je aktualizovaný řádek v databázi a `I` je přidaný řádek. 
 

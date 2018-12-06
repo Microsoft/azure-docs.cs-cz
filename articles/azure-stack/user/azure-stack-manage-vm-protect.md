@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 3c27aecf18fcb5e14347d8f02d71891b351292be
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 87ba13334b037f7eb47264a120bb91b2be5f8a79
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341833"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963909"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Ochrana virtuálních počítačů nasazených v Azure stacku
 
@@ -58,7 +58,7 @@ Plánování strategie obnovení zálohování a zotavení po havárii pro každ
 | **Azure Stack nasazené v datacentru CSP a provozuje CSP** | Virtuální počítače uživatele se nasadí do CSP provozovat Azure Stack. Virtuální počítače uživatele obnovit ze zálohy nebo převzetí služeb při selhání do Azure. | Zprostředkovatel kryptografických služeb pracuje primární a sekundární instance služby Azure Stack v jejich vlastních datových center. Virtuální počítače uživatele jsou obnovení nebo převzetí služeb při selhání mezi dvěma instancemi služby Azure Stack. | Zprostředkovatel kryptografických služeb pracuje Azure Stack v primární lokalitě. Datovým centrem zákazníka je cíl obnovení nebo převzetí služeb při selhání. |
 | **Azure Stack nasazuje do datového centra zákazníka a provozuje zákaznická** | Virtuální počítače uživatele se nasadí do zákazník provozované služby Azure Stack. Virtuální počítače uživatele obnovit ze zálohy nebo převzetí služeb při selhání do Azure. | Zákazník funguje primární a sekundární instance služby Azure Stack v jejich vlastních datových center. Virtuální počítače uživatele jsou obnovení nebo převzetí služeb při selhání mezi dvěma instancemi služby Azure Stack. | Zákazník používá Azure Stack v primární lokalitě. Datacentra CSP je cíl obnovení nebo převzetí služeb při selhání. |
 
-![Kombinace zdroj cíl](media\azure-stack-manage-vm-backup\vm_backupdataflow_01.png)
+![Kombinace zdroj cíl](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 
 ## <a name="application-recovery-objectives"></a>Cíle obnovení aplikace
 
@@ -77,7 +77,7 @@ Je další metriku **průměrný čas potřebný k obnovení** (MTTR), což je p
 
 Nejběžnější schéma ochrany pro aplikace založené na virtuálním počítači je použít zálohovací software. Zálohování virtuálních počítačů obvykle obsahuje operační systém, konfigurace operačního systému, binární soubory aplikace a data aplikací. Zálohy jsou vytvořené pořizování snímku svazků, disků nebo celý virtuální počítač. Pomocí služby Azure Stack flexibilně zálohování z v rámci hostovaného operačního systému nebo z úložiště služby Azure Stack a výpočetní rozhraní API. Azure Stack nepodporuje pořízení zálohy na úrovni hypervisoru.
  
-![Zálohování restor](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
+![Zálohování restor](media/azure-stack-manage-vm-backup/vm_backupdataflow_03.png)
 
 Obnovení aplikace vyžaduje obnovení jednoho nebo více virtuálních počítačů na stejném cloudu nebo do nového cloudu. Zacílení na cloud ve vašem datovém centru nebo ve veřejném cloudu. V cloudu, kterou zvolíte je zcela v rámci ovládacího prvku a je na základě dat o ochraně osobních údajů a suverenity požadavků.
  
@@ -107,7 +107,7 @@ Alternativní přístup k podpoře vysoké dostupnosti je replikace virtuálníc
 
 S tímto přístupem je aplikace nasazená v jeden cloud a jeho virtuální počítač se replikuje v cloudu. Pokud převzetí služeb při selhání se aktivuje, sekundární virtuální počítače potřeba zapnutý v druhé cloudu. V některých případech převzetí služeb při selhání vytvoří disky virtuálních počítačů a připojí k nim. Tento proces může trvat dlouhou dobu pro dokončení, zejména s vícevrstvé aplikace v jazyce, který vyžaduje konkrétní spouštěcí sekvenci. Může to mít také kroky, které musí spustit před jste připravení začít obsluhu požadavků aplikace.
 
-![Replikace ruční převzetí služeb při selhání](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
+![Replikace ruční převzetí služeb při selhání](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
  - RTO: Prostoje v minutách
  - Cíl bodu obnovení: Proměnné únikem informací (v závislosti na četnosti replikací)

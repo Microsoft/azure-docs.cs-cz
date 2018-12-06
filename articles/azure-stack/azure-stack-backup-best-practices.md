@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: ec17f6923fc1c928f24fcb762daedbaea5b688ac
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: cca5fe492032c74a9922780f197065e9c2b40ad3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035097"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966113"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Osvědčené postupy infrastruktury služby Backup
 
@@ -46,7 +46,7 @@ Povolte zálohování infrastruktury po nasazení každý Cloud Azure Stack. Pom
 
 Klíč musí být uložen na bezpečném místě (například veřejné služby Azure Key Vault tajný klíč). Tento klíč musíte použít při opětovné nasazení Azure stacku. 
 
-![Uloží klíč na bezpečném místě.](media\azure-stack-backup\azure-stack-backup-encryption2.png)
+![Uloží klíč na bezpečném místě.](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
 ## <a name="operational-best-practices"></a>Aplikovatelné nejlepší postupy
 

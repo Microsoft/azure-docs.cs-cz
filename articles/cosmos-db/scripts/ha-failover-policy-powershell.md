@@ -1,25 +1,20 @@
 ---
-title: Skript Azure PowerShellu – Vytvoření zásady převzetí služeb při selhání služby Azure Cosmos DB | Microsoft Docs
+title: Skript Azure Powershellu – vytvoření zásady převzetí služeb při selhání služby Azure Cosmos DB
 description: Ukázkový skript Azure PowerShellu – Vytvoření zásady převzetí služeb při selhání služby Azure Cosmos DB
 services: cosmos-db
-documentationcenter: cosmosdb
-author: SnehaGunda
-manager: kfile
-tags: azure-service-management
 ms.service: cosmos-db
+author: SnehaGunda
+ms.author: sngun
 ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 05/10/2017
-ms.author: sngun
-ms.openlocfilehash: f661e513e6c1906661808a40052839bbefa2d85d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: HT
+ms.openlocfilehash: 831faf7122a2fff8297cdc390584add29ee13937
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41917660"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962490"
 ---
 # <a name="create-an-azure-cosmos-db-failover-policy-for-high-availability-using-powershell"></a>Vytvoření zásady převzetí služeb při selhání služby Azure Cosmos DB pro zajištění vysoké dostupnosti pomocí PowerShellu
 
@@ -51,7 +46,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

@@ -1,26 +1,21 @@
 ---
-title: Skript Azure PowerShellu – Vytvoření účtu rozhraní Table API služby Azure Cosmos DB | Microsoft Docs
+title: Skript Azure Powershellu – vytvoření účtu Azure Cosmos DB Table API
 description: Ukázkový skript Azure PowerShellu – Vytvoření účtu rozhraní Table API služby Azure Cosmos DB
 services: cosmos-db
-documentationcenter: cosmosdb
 author: SnehaGunda
-manager: kfile
-tags: azure-service-management
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.custom: mvc
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: cosmosdb
-ms.workload: database
 ms.date: 08/08/2018
-ms.author: sngun
-ms.openlocfilehash: 19a163fe20114eb9866ed816c9ac930dd0e3ecf2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: HT
+ms.openlocfilehash: dacad55370be742dcfc3aa69f9254154568b6a58
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41917922"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52954948"
 ---
 # <a name="azure-cosmos-db-create-a-table-api-account-using-powershell"></a>Azure Cosmos DB: Vytvoření účtu rozhraní Table API pomocí PowerShellu
 
@@ -51,7 +46,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 

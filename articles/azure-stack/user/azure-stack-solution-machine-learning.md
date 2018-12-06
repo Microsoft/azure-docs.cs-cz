@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 8c947e2effab84b17ea88623695e0a6b0d020d0f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7c92b2a060e73484b73a60f9215425cba40ea3f1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285114"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966717"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření edge řešení strojového učení s využitím Azure a Azure Stack
 
@@ -163,23 +163,23 @@ Vytvoření účtu úložiště a kontejner pro vyčistit data uložená.
 
 10. Vyberte **Vytvořit** a vytvořte účet úložiště.
 
-    ![Alternativní text](\media\azure-stack-solution-machine-learning\image1.png)
+    ![Alternativní text](/media/azure-stack-solution-machine-learning/image1.png)
 
 11.  Zvolte účet úložiště, nedávno vytvořili.
 
 12.  Vyberte na **objekty BLOB**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image2.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image2.png)
 
 13.  Vyberte na **+ kontejner** a vyberte na **kontejneru**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image3.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image3.png)
 
 14.  Zadejte název kontejneru **uploadeddata** a zvolte typ přístupu **kontejneru**.
 
 15.  Vyberte na **vytvořit**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image4.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image4.png)
 
 ## <a name="step-2-create-a-data-science-virtual-machine"></a>Krok 2: Vytvoření virtuálního počítače pro datové vědy
 
@@ -189,11 +189,11 @@ Ubuntu dat virtuálního počítače VĚDY vytvořte na webu Azure Portal.
 
 2.  Vyberte na **+ nová** odkaz a vyhledejte "Data Science virtuálních počítačů pro Linux Ubuntu CSP
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image5.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image5.png)
 
 1.  Zvolte **virtuální počítač pro datové vědy pro Linux (Ubuntu)** v seznamu a použijte na obrazovce pokyny k vytvoření datové VĚDY.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image6.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image6.png)
 
 > ! [Důležité]  
 > **Zvolte** heslo ** jako*typ ověřování*.
@@ -268,19 +268,19 @@ Pomocí webu Azure portal ke zřízení účtů Azure Machine Learning:
 
 1.  Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí přihlašovacích údajů pro předplatné Azure, které má být použit. Chcete-li získat předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image7.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image7.png)
 
 1.  Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
-    ![Vytvořit prostředek na webu Azure Portal](media\azure-stack-solution-machine-learning\image8.png)
+    ![Vytvořit prostředek na webu Azure Portal](media/azure-stack-solution-machine-learning/image8.png)
 
 1.  Do panelu vyhledávání zadejte **Machine Learning**. Vyberte výsledek hledání s názvem **Experimentování ve službě Machine Learning (Preview)**.
 
-    ![Vyhledání služby Azure Machine Learning](media\azure-stack-solution-machine-learning\image9.png)
+    ![Vyhledání služby Azure Machine Learning](media/azure-stack-solution-machine-learning/image9.png)
 
 1.  V **experimentování ve službě Machine Learning** podokno, posuňte se dolů a vyberte **vytvořit** a začněte definovat účet experimentování ve službě.
 
-    ![Azure Machine Learning – vytvoření účtu Experimentování](media\azure-stack-solution-machine-learning\image10.png)
+    ![Azure Machine Learning – vytvoření účtu Experimentování](media/azure-stack-solution-machine-learning/image10.png)
 
 1.  V **experimentování v ML** podokně Konfigurace účtu experimentování ve službě Machine Learning.
 
@@ -299,15 +299,15 @@ Pomocí webu Azure portal ke zřízení účtů Azure Machine Learning:
     | Cenová úroveň služby Správa modelů | **DEVTEST** | Vyberte **vybraná žádná cenová úroveň** zadat cenovou úroveň pro nový účet služby Správa modelů. Pro úsporu nákladů vyberte cenovou úroveň DEVTEST, pokud je k dispozici v rámci předplatného (omezená dostupnost). Jinak vyberte cenovou úroveň S1. Zvolte Výběr uložte výběr cenové úrovně. |
     | Připnout na řídicí panel | Kontrola | Vyberte **připnout na řídicí panel** možnost, povolíte snadné sledování účtu experimentování ve službě Machine Learning na úvodní stránce řídicího panelu na webu Azure portal. |
 
-    ![Konfigurace účtu Experimentování ve službě Machine Learning](media\azure-stack-solution-machine-learning\image11.png)
+    ![Konfigurace účtu Experimentování ve službě Machine Learning](media/azure-stack-solution-machine-learning/image11.png)
 
 1.  Vyberte **Vytvořit** a zahajte proces vytváření účtu Experimentování společně s účtem služby Správa modelů.
 
-    ![Konfigurace účtu Experimentování ve službě Machine Learning](media\azure-stack-solution-machine-learning\image12.png)
+    ![Konfigurace účtu Experimentování ve službě Machine Learning](media/azure-stack-solution-machine-learning/image12.png)
 
     To může chvíli trvat vytvoření účtu služby. Zkontrolujte stav procesu nasazení tak, že vyberete ikonu upozornění (zvonek) na panelu nástrojů webu Azure portal.
 
-    ![Oznámení portálu Azure Portal](media\azure-stack-solution-machine-learning\image13.png)
+    ![Oznámení portálu Azure Portal](media/azure-stack-solution-machine-learning/image13.png)
 
 ### <a name="install-and-log-in-to-workbench"></a>Instalace a přihlášení do aplikace workbench 
 
@@ -349,7 +349,7 @@ Aplikace Azure Machine Learning Workbench je dostupná pro Windows nebo macOS. V
 
 1.  V podokně **PROJEKTY** vyberte symbol plus (+) a zvolte **Nový projekt**.
 
-    ![Nový pracovní prostor](media\azure-stack-solution-machine-learning\image14.png)
+    ![Nový pracovní prostor](media/azure-stack-solution-machine-learning/image14.png)
 
 1.  Vyplňte pole formuláře a výběrem tlačítka **Vytvořit** v aplikaci Workbench vytvořte nový projekt.
 
@@ -362,11 +362,11 @@ Aplikace Azure Machine Learning Workbench je dostupná pro Windows nebo macOS. V
     | Vybraný pracovní prostor | IrisGarden (pokud existuje) | Vyberte pracovní prostor vytvořený pro účet experimentování na webu Azure Portal. <br>V rámci rychlého startu, je uvedena pracovního prostoru s názvem IrisGarden. V opačném případě pomocí pracovního prostoru s názvem účtu služby experimentování ve službě nebo názvem preferovaného účtu. |
     | Šablona projektu | Klasifikace Iris | Šablony obsahují skripty a data použitá k produkt zkoumat. Tato šablona obsahuje skripty a data potřebná pro tento rychlý start a další kurzy na tomto webu dokumentace. |
 
-    ![Nový projekt](media\azure-stack-solution-machine-learning\image15.png)
+    ![Nový projekt](media/azure-stack-solution-machine-learning/image15.png)
 
 1.  Vytvoří se nový projekt a otevře se řídicí panel projektu s tímto projektem. Prozkoumejte domovskou stránku projektu, zdroje dat, poznámkové bloky a soubory zdrojového kódu.
 
-    ![Otevřený projekt](media\azure-stack-solution-machine-learning\image16.png)
+    ![Otevřený projekt](media/azure-stack-solution-machine-learning/image16.png)
 
 ### <a name="attach-a-dsvm-compute-target"></a>Připojit cílové výpočetní prostředí DSVM
 
@@ -374,7 +374,7 @@ Po vytvoření datové VĚDY, připojte ji do projektu Azure ML.
 
 1.  Z v rámci aplikace Azure ML Workbench spusťte rozhraní příkazového řádku Azure ML Workbench tak, že vyberete **souboru**->**otevřete PowerShell**
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image17.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image17.png)
 
 1.  Po otevření řádku Powershellu pomocí následujícího příkazu:
 
@@ -384,19 +384,19 @@ Po vytvoření datové VĚDY, připojte ji do projektu Azure ML.
 
 1.  Zobrazí se následující řádek:
 
-     ![Alternativní text](media\azure-stack-solution-machine-learning\image18.png)
+     ![Alternativní text](media/azure-stack-solution-machine-learning/image18.png)
 
 1.  Přejděte na web podle popisu v příkazovém řádku a zadejte kód, který je k dispozici.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image19.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image19.png)
 
 1.  Pokračovat po zobrazení výzvy vyberte a pak vyberte účet Azure, ke které experimentální účet služby Azure ML je přidružená.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image20.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image20.png)
 
 1.  Rozhraní příkazového řádku Azure ML Workbench vám potom pošle následující řádek:
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image21.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image21.png)
 
 1.  Při přihlášení ML účtu a pracovního prostoru se zobrazí jako úspěšně dokončený, připojte datové VĚDY.
 
@@ -406,7 +406,7 @@ Po vytvoření datové VĚDY, připojte ji do projektu Azure ML.
 
     Zobrazí se následující upozornění:
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image22.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image22.png)
 
     ```PowerShell  
         # prepare the Docker image on the DSVM 
@@ -427,15 +427,15 @@ Tento balíček pro přípravu dat je možné předat později do modulu runtime
 
     Tento soubor obsahuje tabulku s 5 sloupci a 50 řádky. Čtyři sloupce obsahují čísla. Pátý sloupec je cílový sloupec řetězcového typu. Žádný sloupec neobsahuje název záhlaví.
 
-    ![iris.csv](media\azure-stack-solution-machine-learning\image23.png)
+    ![iris.csv](media/azure-stack-solution-machine-learning/image23.png)
 
 1.  V **Zobrazení dat** vyberte symbol plus (**+**) a přidejte nový zdroj dat. Otevře se stránka **Přidat zdroj dat**.
 
-    ![Zobrazení dat v aplikaci Azure Machine Learning Workbench](media\azure-stack-solution-machine-learning\image24.png)
+    ![Zobrazení dat v aplikaci Azure Machine Learning Workbench](media/azure-stack-solution-machine-learning/image24.png)
 
 1.  Vyberte **textové soubory (\*CSV, \*.json, \*.txt.,...)** .
 
-    ![Zdroj dat v aplikaci Azure Machine Learning Workbench](media\azure-stack-solution-machine-learning\image25.png)
+    ![Zdroj dat v aplikaci Azure Machine Learning Workbench](media/azure-stack-solution-machine-learning/image25.png)
 
 1.  Vyberte **Další**.
 
@@ -444,39 +444,39 @@ Tento balíček pro přípravu dat je možné předat později do modulu runtime
     > [!Important]  
     > Vyberte **iris.csv** soubor z aktuálního adresáře projektu pro účely tohoto cvičení. V opačném případě pozdější kroky nemusí podařit.
 
-    ![Výběr iris](media\azure-stack-solution-machine-learning\image26.png)
+    ![Výběr iris](media/azure-stack-solution-machine-learning/image26.png)
 
 1.  Nový soubor s názvem `*iris-1.dsource` se vytvoří. Soubor s jedinečným způsobem názvem `-1` protože ukázkový projekt už obsahuje neočíslovaný **iris.dsource** souboru.
 
     Soubor se otevře a zobrazí se data. Řada záhlaví sloupců od **Sloupec1** k **Column5**, se automaticky přidá do této datové sady. Přejděte do dolní části a Všimněte si, že poslední řádek datové sady je prázdný. Řádek je prázdný, z důvodu zalomení řádku navíc v souboru CSV.
 
-    ![Zobrazení dat iris](media\azure-stack-solution-machine-learning\image27.png)
+    ![Zobrazení dat iris](media/azure-stack-solution-machine-learning/image27.png)
 
 1.  Vyberte tlačítko **Metriky**. Vygenerují a zobrazí se histogramy.
 
     Přepněte zpět do zobrazení dat tak, že vyberete **Data** tlačítko.
 
-    ![Zobrazení dat iris](media\azure-stack-solution-machine-learning\image28.png)
+    ![Zobrazení dat iris](media/azure-stack-solution-machine-learning/image28.png)
 
 1.  Podívejte se na histogramy. Pro každý sloupec se vypočítala úplná sada statistik.
 
-    ![Zobrazení dat iris](media\azure-stack-solution-machine-learning\image29.png)
+    ![Zobrazení dat iris](media/azure-stack-solution-machine-learning/image29.png)
 
 1.  Začněte vytvářet balíček pro přípravu dat výběrem tlačítka **Připravit**. Otevře se dialogové okno **Připravit**.
 
     Ukázkový projekt obsahuje **iris.dprep** přípravy dat, který je vybraný ve výchozím nastavení.
 
-    ![Zobrazení dat iris](media\azure-stack-solution-machine-learning\image30.png)
+    ![Zobrazení dat iris](media/azure-stack-solution-machine-learning/image30.png)
 
 1.  Vytvořit nový balíček pro přípravu dat výběrem **+ nový balíček pro přípravu dat** z nabídky.
 
-    ![Zobrazení dat iris](media\azure-stack-solution-machine-learning\image31.png)
+    ![Zobrazení dat iris](media/azure-stack-solution-machine-learning/image31.png)
 
 1.  Zadejte novou hodnotu názvu balíčku (použijte **iris-1**) a pak vyberte **OK**.
 
     Nový balíček pro přípravu dat s názvem **iris-1.dprep** je vytvořen a otevřen v editoru přípravy dat.
 
-    ![Zobrazení dat iris](media\azure-stack-solution-machine-learning\image32.png)
+    ![Zobrazení dat iris](media/azure-stack-solution-machine-learning/image32.png)
 
     V dalším kroku přípravy dat, je potřeba.
 
@@ -484,7 +484,7 @@ Tento balíček pro přípravu dat je možné předat později do modulu runtime
 
     V pořadí, zadejte **Sepal Length**, **Sepal Width**, **Petal Length**, **Petal Width**, a **druhů** pro pět sloupců v uvedeném pořadí.
 
-    ![Přejmenování sloupců](media\azure-stack-solution-machine-learning\image33.png)
+    ![Přejmenování sloupců](media/azure-stack-solution-machine-learning/image33.png)
 
 1.  Počet jedinečných hodnot:
 
@@ -496,23 +496,23 @@ Tento balíček pro přípravu dat je možné předat později do modulu runtime
 
         Pod daty se otevře podokno **Kontroly**. Zobrazí se histogram se čtyři pruhy. Cílový sloupec obsahuje čtyři různé hodnoty: **Iris-virginica**, **Iris-versicolor**,**Iris-setosa**a **(null)** hodnotu.
 
-    ![Výběr možnosti Četnost hodnot](media\azure-stack-solution-machine-learning\image34.png)
+    ![Výběr možnosti Četnost hodnot](media/azure-stack-solution-machine-learning/image34.png)
 
-    ![Histogram počtu hodnot](media\azure-stack-solution-machine-learning\image35.png)
+    ![Histogram počtu hodnot](media/azure-stack-solution-machine-learning/image35.png)
 
 1.  Pokud chcete vyfiltrovat hodnoty null, vyberte pruh (null) a pak symbol minus (**-**).
 
     Záznam (null) pak zešedne, což značí, že je vyfiltrovaný.
 
-    ![Vyfiltrování hodnot null](media\azure-stack-solution-machine-learning\image36.png)
+    ![Vyfiltrování hodnot null](media/azure-stack-solution-machine-learning/image36.png)
 
 1.  Všimněte si jednotlivých kroků přípravy dat, které jsou podrobně popsané v podokně **KROKY**. Jsou přejmenování sloupců a jsou vyfiltrování řádků s hodnotou null, je každá akce zaznamenána jako krok přípravy dat. Upravte jednotlivé kroky k jejich nastavení, změnit pořadí kroků a odebrat kroky.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image37.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image37.png)
 
 1.  Zavřete editor přípravy dat. Výběrem ikony **x** na kartě **iris-1** s ikonou grafu kartu zavřete. Práce se automaticky uloží do **iris-1.dprep** uvedené v části souboru **Příprava dat** záhlaví.
 
-    ![Zavřít](media\azure-stack-solution-machine-learning\image38.png)
+    ![Zavřít](media/azure-stack-solution-machine-learning/image38.png)
 
 ### <a name="generate-python-code-to-invoke-a-data-preparation-package"></a>Vygenerování kódu Pythonu k vyvolání balíčku pro přípravu dat
 
@@ -522,7 +522,7 @@ Výstup balíčku pro přípravu dat můžete prozkoumat přímo v Pythonu nebo 
 
 2.  Klikněte pravým tlačítkem na soubor **iris-1.dprep** a v místní nabídce vyberte **Vygenerovat soubor s kódem pro přístup k datům**.
 
-    ![Generování kódu](media\azure-stack-solution-machine-learning\image39.png)
+    ![Generování kódu](media/azure-stack-solution-machine-learning/image39.png)
 
     Nový soubor s názvem **iris-1.py** otevře s následujícími řádky kódu vyvolávajícími logiku, vytvořili jako balíček pro přípravu dat:
 
@@ -552,18 +552,18 @@ Výstup balíčku pro přípravu dat můžete prozkoumat přímo v Pythonu nebo 
 
 1.  V otevřeném projektu, vyberte **soubory** tlačítko (ikona složky) v podokně úplně vlevo otevřete seznam souborů ve složce projektu.
 
-    ![Otevření projektu aplikace Azure Machine Learning Workbench](media\azure-stack-solution-machine-learning\image40.png)
+    ![Otevření projektu aplikace Azure Machine Learning Workbench](media/azure-stack-solution-machine-learning/image40.png)
 
 1.  Vyberte soubor skriptu Pythonu **iris_sklearn.py**.
 
-    ![Výběr skriptu](media\azure-stack-solution-machine-learning\image41.png)
+    ![Výběr skriptu](media/azure-stack-solution-machine-learning/image41.png)
 
     Kód se v aplikaci Workbench otevře na nové kartě textového editoru.
 
     > [!Note]  
     > Zobrazí kód nemusí být přesně stejný jako předchozí kód protože tento ukázkový projekt se často aktualizuje.
 
-    ![Otevření souboru](media\azure-stack-solution-machine-learning\image42.png)
+    ![Otevření souboru](media/azure-stack-solution-machine-learning/image42.png)
 
 1.  Projděte si kód skriptu Pythonu, abyste se seznámili se stylem kódování.
 
@@ -615,31 +615,31 @@ Výstup balíčku pro přípravu dat můžete prozkoumat přímo v Pythonu nebo 
 
 2.  Vyhledejte kartu **iris_sklearn.py**.
 
-    ![Vyhledání karty se skriptem](media\azure-stack-solution-machine-learning\image43.png)
+    ![Vyhledání karty se skriptem](media/azure-stack-solution-machine-learning/image43.png)
 
 1.  Na panelu nástrojů této karty vyberte **místní** jako spouštěcí prostředí, andiris_sklearn.pyas skript ke spuštění. Tyto hodnoty již můžou být vybrané.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image44.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image44.png)
 
 1.  Přesuňte na pravou stranu panelu nástrojů a enter0.01in **argumenty** pole.
 
     Tato hodnota odpovídá regularizace modelu logistické regrese.
 
-    ![Výběr spouštěcího prostředí local a skriptu](media\azure-stack-solution-machine-learning\image45.png)
+    ![Výběr spouštěcího prostředí local a skriptu](media/azure-stack-solution-machine-learning/image45.png)
 
 1.  Vyberte tlačítko **Spustit**. Okamžitě se naplánuje úloha. Tato úloha se objeví v podokně **Úlohy** na pravé straně okna aplikace Workbench.
 
-    ![Výběr spouštěcího prostředí local a skriptu](media\azure-stack-solution-machine-learning\image46.png)
+    ![Výběr spouštěcího prostředí local a skriptu](media/azure-stack-solution-machine-learning/image46.png)
 
     Po chvíli se stav úlohy změní z **odesílání**do **systémem**a nakonec na **dokončeno**.
 
 1.  V textu stavu úlohy na panelu **Úlohy** vyberte **Dokončeno**.
 
-    ![Spuštění skriptu sklearn](media\azure-stack-solution-machine-learning\image47.png)
+    ![Spuštění skriptu sklearn](media/azure-stack-solution-machine-learning/image47.png)
 
     Automaticky otevírané okno se otevře a zobrazí text standardního výstupu (stdout) spuštění. Pokud chcete text standardního výstupu zavřít, vyberte **zavřete** (**x**) tlačítko v pravém horním rohu v automaticky otevíraném okně.
 
-    ![Standardní výstup](media\azure-stack-solution-machine-learning\image48.png)
+    ![Standardní výstup](media/azure-stack-solution-machine-learning/image48.png)
 
 1.  Ve stejném stavu úlohy na **úlohy** podokně, vyberte modrý text **iris_sklearn.py \[n\] **(* n * je číslo spuštění) hned nad  **Dokončení** stavu a čas spuštění. Otevře se okno **Vlastnosti spuštění**, ve kterém se zobrazí následující informace o tomto konkrétním spuštění:
 
@@ -701,13 +701,13 @@ V aplikaci Azure Machine Learning Workbench každé spuštění skriptu zaznamen
 
 1.  Pokud chcete otevřít seznam **Spuštění**, vyberte tlačítko **Spuštění** (ikona hodin) na levém panelu nástrojů. Potom vyberte **iris_sklearn.py** zobrazíte **řídicí panel spuštění** ofiris_sklearn.py.
 
-    ![Zobrazení spuštění](media\azure-stack-solution-machine-learning\image49.png)
+    ![Zobrazení spuštění](media/azure-stack-solution-machine-learning/image49.png)
 
 1.  Otevře se karta **řídicího panelu spuštění**.
 
     Zkontrolujte statistiky zaznamenané během různých spuštění. V horní části karty se vykreslují grafy. Každé spuštění má po sobě jdoucí čísla a podrobnosti o spuštění jsou uvedeny v tabulce v dolní části obrazovky.
 
-    ![Řídicí panel spuštění](media\azure-stack-solution-machine-learning\image50.png)
+    ![Řídicí panel spuštění](media/azure-stack-solution-machine-learning/image50.png)
 
 1.  Tabulku můžete filtrovat a pak vybírat libovolné grafy, abyste zobrazili stav, dobu trvání, přesnost a míru regularizace jednotlivých spuštění.
 
@@ -715,11 +715,11 @@ V aplikaci Azure Machine Learning Workbench každé spuštění skriptu zaznamen
 
 3.  Pokud se chcete vrátit na **Řídicí panel spuštění**, vyberte tlačítko Zpět pro **Seznam spuštění** v levém horním rohu podokna **Porovnání**.
 
-    ![Návrat na Seznam spuštění](media\azure-stack-solution-machine-learning\image51.png)
+    ![Návrat na Seznam spuštění](media/azure-stack-solution-machine-learning/image51.png)
 
 1.  Výběrem určitého spuštění otevřete jeho podrobné zobrazení. Všimněte si, že v části **Vlastností spuštění** se zobrazí statistika vybraného spuštění. Soubory zapsané do složky výstupu jsou uvedeny v **výstupy** části a stáhněte soubory z něj.
 
-    ![Podrobnosti o spuštění](media\azure-stack-solution-machine-learning\image52.png)
+    ![Podrobnosti o spuštění](media/azure-stack-solution-machine-learning/image52.png)
 
 V části **Vizualizace** se vykreslí dva grafy, chybová matice a křivka ROC s více třídami. Všechny soubory protokolu najdete také v části **Protokoly**.
 
@@ -840,13 +840,13 @@ V části **Vizualizace** se vykreslí dva grafy, chybová matice a křivka ROC 
 
     Výběrem ikony složky v levém podokně vypište soubory projektu.  Otevřete skript Pythonu **run.py**. Tento skript slouží k vytvoření smyčky různými mírami regularizace. 
 
-    ![Vraťte se na seznam spuštění](media\azure-stack-solution-machine-learning\image53.png)
+    ![Vraťte se na seznam spuštění](media/azure-stack-solution-machine-learning/image53.png)
 
 1.  Spusťte několikrát experiment s těmito mírami.
 
     Tento skript spustí` aniris_sklearn.pyjob` s o míry regularizace `10.0` (absurdně vysoké číslo). Skript pak snižuje rychlost do poloviny v následujícím spuštění a tak dále, dokud nedosáhne `0.005`. Skript obsahuje následující kód:
 
-    ![Návrat na Seznam spuštění](media\azure-stack-solution-machine-learning\image54.png)
+    ![Návrat na Seznam spuštění](media/azure-stack-solution-machine-learning/image54.png)
 
 1.  Z příkazového řádku spusťte skript **run.py** následujícím způsobem:
 
@@ -906,7 +906,7 @@ Tento fragment kódu ukazuje, jak se vygeneroval výstupní soubor pickle. Výst
 
     3. Otevře se podokno **Vlastnosti spuštění**. V pravé horní části podokna, Všimněte si, **výstupy** oddílu. d\. Stáhněte soubor pickle tím, zaškrtněte políčko vedle položky **model.pkl** souboru a pak vyberte **Stáhnout**. Uložte soubor do kořenové složky projektu. Tento soubor je potřeba v následujících krocích.  
 
-    ![Stažení souboru pickle](media\azure-stack-solution-machine-learning\image55.png)
+    ![Stažení souboru pickle](media/azure-stack-solution-machine-learning/image55.png)
 
 ### <a name="get-scoring-script-and-schema-files"></a>Získat vyhodnocování skriptu a souborů schématu
 
@@ -918,7 +918,7 @@ Vyhodnocení skriptu je potřeba k nasazení webové služby se souborem modelu.
 
 3.  Vyberte soubor **score_iris.py**. Otevře se skript Pythonu. Tento soubor se používá jako soubor vyhodnocení.
 
-    ![Soubor vyhodnocení](media\azure-stack-solution-machine-learning\image56.png)
+    ![Soubor vyhodnocení](media/azure-stack-solution-machine-learning/image56.png)
 
 1.  Pokud chcete získat soubor schématu, spusťte skript. Na příkazovém řádku vyberte prostředí **local** a skript **score_iris.py** a pak vyberte **Spustit**.
 
@@ -1040,7 +1040,7 @@ K provedení následujících kroků pro zprovoznění modelu je potřeba, aby b
 
     Ujistěte se, že "Stav zřizování" má hodnotu "ÚSPĚCH", jak je vidět, před nastavení prostředí v kroku 5:
 
-    ![Stav zřizování](media\azure-stack-solution-machine-learning\image57.png)
+    ![Stav zřizování](media/azure-stack-solution-machine-learning/image57.png)
 
 1.  Nastavte prostředí.
 
@@ -1160,7 +1160,7 @@ Z v rámci subsystém Windows pro Linux relace použijte následující příkaz
     The key fingerprint is: SHA256:lUtUUjzaqWqGeolEPKeBmsnrhcNGM9Dn2OxYatt05SE  <user>@<machine-name>
     The key's randomart image is:  
     ```
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image58.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image58.png)
 
 4. Po vygenerování klíče, vložte informace klíče pomocí následujících příkazů: 
     ```Bash
@@ -1217,11 +1217,11 @@ Dejte přístupu instančního objektu služby k předplatnému, aby ho může v
 
 9.  Vyberte **+ nový** > **Compute** > **clusteru Kubernetes**. Vyberte **Vytvořit**.
 
-    ![Nasadit šablonu řešení](media\azure-stack-solution-machine-learning\image59.png)
+    ![Nasadit šablonu řešení](media/azure-stack-solution-machine-learning/image59.png)
 
 10\. Vyberte **Základy** v vytvoření clusteru Kubernetes.
 
-    ![Deploy Solution Template](media\azure-stack-solution-machine-learning\image60.png)
+    ![Deploy Solution Template](media/azure-stack-solution-machine-learning/image60.png)
 
 11. Zadejte **uživatelské jméno správce virtuálního počítače Linux**. Uživatelské jméno pro virtuální počítače Linux, které jsou součástí clusteru Kubernetes a DVM.
 
@@ -1250,7 +1250,7 @@ Dejte přístupu instančního objektu služby k předplatnému, aby ho může v
 
 1.  Vyberte **nastavení služby Azure Stack razítko**.
 
-    ![Nasadit šablonu řešení](media\azure-stack-solution-machine-learning\image61.png)
+    ![Nasadit šablonu řešení](media/azure-stack-solution-machine-learning/image61.png)
 
 2.  Zadejte **koncový bod Azure Resource Manageru Tenanta**. Toto je koncový bod Azure Resource Manageru pro připojení k vytvoření skupiny prostředků pro Kubernetes cluster. Koncový bod z operátoru Azure Stack je třeba integrovaný systém. Pro Azure Stack Development Kit (ASDK), použijte `https://management.local.azurestack.external`.
 
@@ -1356,7 +1356,7 @@ Po získání místního souboru JSON, v nové relaci WSL, použijte následují
 
 Nastavení konfigurace Kubernetes bude definici (viz následující výstup).
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image62.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image62.png)
 
 Spusťte službu místní proxy server:
 
@@ -1366,19 +1366,19 @@ kubectl proxy
 
 Přejděte na uživatelské rozhraní clusteru kubernetes na následující adrese: `https://localhost:8001`.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image63.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image63.png)
 
 Teď máte místo, kde můžete nasadit kontejner a kontejner, který se nachází v cloudu, který se zobrazí v místním prostředí.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image64.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image64.png)
 
 Přizpůsobit **iris_deployment.yaml** souboru (umístěný ve /*mnt/c/uživatele/<current user>Kube directory/dokumentů/*) tak **webservicename** a kontejnery  **Obrázek** a **název** odpovídat nasazení pomocí editoru kódu podle výběru.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image65.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image65.png)
 
 Nastavte port kontejneru na **5001.**
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image66.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image66.png)
 
 A pak vytvořte **imagePullSecret**:
 
@@ -1409,7 +1409,7 @@ Uložit **iris_deployment.yaml** souboru (umístěný ve /*mnt/c/uživatele/<cur
 kubectl.exe create -f /mnt/c/users/<current  user>/documents/Kube/iris_deployment.yaml
 ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image67.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image67.png)
 
 Zkontrolujte stav nasazení:
 
@@ -1417,7 +1417,7 @@ Zkontrolujte stav nasazení:
 Kubectl get deployments
 ```
 
-    ![Alt text](media\azure-stack-solution-machine-learning\image68.png)
+    ![Alt text](media/azure-stack-solution-machine-learning/image68.png)
 
 Nasazení může nějakou dobu trvat.
 
@@ -1429,7 +1429,7 @@ Nasazení může nějakou dobu trvat.
 
 2.  Na stránce projektů vyberte **nový projekt**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image69.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image69.png)
 
 1.  Pojmenujte projekt **HybridMLIris**.
 
@@ -1437,7 +1437,7 @@ Nasazení může nějakou dobu trvat.
 
 3.  Vyberte proces a vyberte **vytvořit**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image70.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image70.png)
 
 ### <a name="import-some-code--create-repository"></a>Import kódu vytvoření úložiště
 
@@ -1447,15 +1447,15 @@ Je potřeba úložiště Git pro kód YAML.
 
 1.  Výchozí řídicí panel Projekt vyberte přihlašovací údaje Git generovat.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image71.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image71.png)
 
 1.  Zadejte heslo, kde je povinné a uložení přihlašovacích údajů Git.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image72.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image72.png)
 
 1.  Inicializace úložiště tak, že vyberete **inicializovat** tlačítko a vytváření **README** souboru.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image73.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image73.png)
 
 #### <a name="clone-the-git-repository-locally-and-upload-the-code"></a>Naklonujte úložiště Git místně a odešlete kód. 
 
@@ -1465,7 +1465,7 @@ Je potřeba úložiště Git pro kód YAML.
     sudo mkdir /mnt/c/users/<User>/source sudo mkdir /mnt/c/users/<User>/source/repos sudo mkdir /mnt/c/users/<User>/source/repos/hybridMLIris cd /mnt/c/users/<User>/source/repos/hybridMLIris sudo git clone  https://<yourvstssite>.visualstudio.com/HybridMLIris/_git/HybridMLIris
     ```
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image74.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image74.png)
 
 1.  Přejděte do nově naklonované úložiště:
 
@@ -1474,7 +1474,7 @@ Je potřeba úložiště Git pro kód YAML.
     cd ./HybridMLIris
     ```
     
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image75.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image75.png)
 
 1.  Kopírovat **iris_deployment.yaml** souboru do úložiště.
 
@@ -1488,7 +1488,7 @@ Je potřeba úložiště Git pro kód YAML.
     git add . git commit -m Added Deployment YAML git push
     ```
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image76.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image76.png)
 
 ### <a name="prepare-the-private-build-and-release-agent-for-vsts-integration"></a>Příprava integrace VSTS soukromé sestavení a verze agenta
 
@@ -1514,27 +1514,27 @@ Instanční objekt služby vyžaduje klíče pro ověřování, postupujte podle
 
 1.  Z **registrace aplikací** ve službě Azure Active Directory, vyberte aplikaci.
 
-    ![Výběr aplikace](media\azure-stack-solution-machine-learning\image77.png)
+    ![Výběr aplikace](media/azure-stack-solution-machine-learning/image77.png)
 
 1.  Poznamenejte si hodnotu **ID aplikace. Hodnota se používá při konfiguraci koncového bodu služby ve VSTS.**
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image78.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image78.png)
 
 1.  Pokud chcete generovat ověřovací klíč, vyberte **Nastavení**.
 
-    ![Volba Nastavení](media\azure-stack-solution-machine-learning\image79.png)
+    ![Volba Nastavení](media/azure-stack-solution-machine-learning/image79.png)
 
 1.  Vyberte **Klíče**.
 
-    ![Volba Klíče](media\azure-stack-solution-machine-learning\image80.png)
+    ![Volba Klíče](media/azure-stack-solution-machine-learning/image80.png)
 
 1.  Zadejte popis klíče a jeho dobu platnosti. Až budete hotovi, vyberte **Uložit**.
 
-    ![Uložení klíče](media\azure-stack-solution-machine-learning\image81.png)
+    ![Uložení klíče](media/azure-stack-solution-machine-learning/image81.png)
 
 Jakmile klíč uložíte, zobrazí se jeho hodnota. Zkopírujte tuto hodnotu, protože je budete později potřebovat. **Hodnotu klíče** s aplikací ID je potřeba se přihlásit jako aplikace. Hodnota klíče, kde aplikace může načíst ji Store.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image82.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image82.png)
 
 #### <a name="get-tenant-id"></a>Získání ID Tenanta
 
@@ -1542,15 +1542,15 @@ Jako součást konfigurace koncového bodu služby VSTS vyžaduje **ID Tenanta**
 
 1.  Vyberte **Azure Active Directory**.
 
-    ![Výběr Azure Active Directory](media\azure-stack-solution-machine-learning\image83.png)
+    ![Výběr Azure Active Directory](media/azure-stack-solution-machine-learning/image83.png)
 
 1.  Pokud chcete získat ID tenanta, vyberte **vlastnosti** pro tenanta Azure AD.
 
-    ![Výběr položky Vlastnosti v Azure AD](media\azure-stack-solution-machine-learning\image84.png)
+    ![Výběr položky Vlastnosti v Azure AD](media/azure-stack-solution-machine-learning/image84.png)
 
 1.  Zkopírujte **ID adresáře**. Tato hodnota je ID tenanta.
 
-    ![ID tenanta](media\azure-stack-solution-machine-learning\image85.png)
+    ![ID tenanta](media/azure-stack-solution-machine-learning/image85.png)
 
 Udělení práv instanční objekt služby pro nasazení prostředků v rámci předplatného Azure Stack
 
@@ -1560,27 +1560,27 @@ Nastavte obor na úrovni předplatného, skupinu prostředků nebo prostředek. 
 
 1.  Přejděte na požadované úrovni oboru přiřazení aplikace. Například vyberte přiřazení role v oboru předplatného, **předplatná**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image86.jpeg)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image86.jpeg)
 
 1.  Vyberte **předplatné** (skupinu prostředků nebo prostředek), přiřazení aplikace.
 
-    ![Vyberte předplatné pro přiřazení](media\azure-stack-solution-machine-learning\image87.png)
+    ![Vyberte předplatné pro přiřazení](media/azure-stack-solution-machine-learning/image87.png)
 
 1.  Vyberte **řízení přístupu (IAM)**.
 
-    ![Vyberte přístup](media\azure-stack-solution-machine-learning\image88.png)
+    ![Vyberte přístup](media/azure-stack-solution-machine-learning/image88.png)
 
 1.  Vyberte **Přidat**.
 
-    ![Výběr možnosti Přidat](media\azure-stack-solution-machine-learning\image89.png)
+    ![Výběr možnosti Přidat](media/azure-stack-solution-machine-learning/image89.png)
 
 1.  Vyberte roli, kterou chcete přiřadit aplikace. Na následujícím obrázku **vlastníka** role.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image90.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image90.png)
 
 1.  Ve výchozím nastavení aplikace Azure Active Directory nejsou zobrazeny v dostupných možnostech. Najít aplikace, **zadejte název** do vyhledávacího pole a vyberte ji.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image91.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image91.png)
 
 1.  Vyberte **Uložit** k dokončení přiřazení role. Aplikace se zobrazí v seznamu Uživatelé přiřazení k roli pro tento obor.
 
@@ -1598,18 +1598,18 @@ Namísto samostatně spravovat každý agent, agenti jsou uspořádány do **fon
 
  -  Vyberte **spravovat zabezpečení** na stránku vytvoření tokenu přístupu.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image92.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image92.png)
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image93.jpeg)
+![Alternativní text](media/azure-stack-solution-machine-learning/image93.jpeg)
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image94.jpeg)
+![Alternativní text](media/azure-stack-solution-machine-learning/image94.jpeg)
 
 > [!Note]  
 > Získáte informace o tokenu. Nebude se zobrazovat znovu po opuštění této obrazovce.
 
 1.  Kopírovat **token**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image95.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image95.png)
 
 #### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Nainstalujte agenta sestavení VSTS ve službě Azure Stack hostování serveru pro sestavení
 
@@ -1660,7 +1660,7 @@ Namísto samostatně spravovat každý agent, agenti jsou uspořádány do **fon
 
 2.  Stáhnout a nasadit jako službu pomocí agenta sestavení **osobní přístupový token PAT** a správce virtuálního počítače účet Spustit jako.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image96.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image96.png)
 
     ```Bash  
         cd \home\<user>
@@ -1678,7 +1678,7 @@ Namísto samostatně spravovat každý agent, agenti jsou uspořádány do **fon
         ./config.sh
     ```
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image97.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image97.png)
 
 2.  Po **./config.sh**dokončené, spusťte následující kód k povolení služby při spuštění serveru a spustit službu:
 
@@ -1693,23 +1693,23 @@ Agent je nyní viditelné ve složce VSTS.
 
 Uživatelé můžou vytvářet koncové body, takže VSTO sestavení aplikace Azure Service můžete nasadit na zásobníku. VSTS se připojí k agent sestavení, který poté se připojí pomocí služby Azure Stack.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image98.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image98.png)
 
 1.  Na **nastavení** nabídce vyberte možnost **zabezpečení**.
 
 2.  V **skupiny VSTS** seznamu na levé straně vyberte **koncový bod Creators**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image99.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image99.png)
 
 3.  Na **Karta Členové** vyberte **+ přidat**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image100.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image100.png)
 
 1.  Typ **uživatelské jméno** a vyberte uživatelské jméno ze seznamu.
 
 2.  Vyberte **uložit změny**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image101.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image101.png)
 
 3.  V **skupiny VSTS** seznamu na levé straně vyberte **koncový bod správci**.
 
@@ -1719,13 +1719,13 @@ Uživatelé můžou vytvářet koncové body, takže VSTO sestavení aplikace Az
 
 6.  Vyberte **uložit změny.**
 
-    ![buchatech](media\azure-stack-solution-machine-learning\image102.jpeg)
+    ![buchatech](media/azure-stack-solution-machine-learning/image102.jpeg)
 
     Agent sestavení ve službě Azure Stack získá pokyny z VSTS, které pak přenese informace o koncovém bodu pro komunikaci pomocí služby Azure Stack.
 
     VSTS pro připojení služby Azure Stack je teď připravený.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image103.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image103.png)
 
 ### <a name="configure-build-and-release-definitions"></a>Konfigurace definice sestavení a vydaná verze
 
@@ -1735,61 +1735,61 @@ Teď, když se připojení naváže, bude ručně mapování vytvořený koncov�
 
 1.  Vyberte část sestavení v rámci sestavení a vydaná verze centra a vytvořte novou definici.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image104.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image104.png)
 
 1.  Výběr úložiště VSTS Git a vybrat úložiště vytvořili dříve.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image105.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image105.png)
 
 1.  Vyberte prázdném kanálu jako šablonu
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image106.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image106.png)
 
 1.  Název sestavení **kopírování artefaktů** a vyberte Server, Azure Stack sestavení pro frontu agenta.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image107.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image107.png)
 
 1.  Vyberte fázi 1 procesy a přejmenujte ho na **kopírování artefaktů**, pak **přidejte úkol** do fáze:
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image108.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image108.png)
 
 1.  Vyberte **publikujte artefakty sestavení** z **nástroj** seznam a vyberte **přidat**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image109.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image109.png)
 
 1.  Vyberte **cesta k publikování** a vyberte **iris_deployment.yaml** souboru.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image110.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image110.png)
 
 1.  Název artefaktu **iris_deployment** a vyberte umístění pro publikování na **Visual Studio Team Services/TFS**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image111.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image111.png)
 
 1.  Vyberte **Uložit & frontu**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image112.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image112.png)
 
 1.  Zkontrolujte stav sestavení tak, že vyberete ID sestavení.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image113.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image113.png)
 
 Úspěch bude vypadat nějak takto:
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image114.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image114.png)
 
 #### <a name="create-the-release-definition-for-the-yaml-code"></a>Vytvoření definice verze pro kód YAML
 
 1.  Vyberte odpovídající část vydané verze v rámci sestavení a vydaná verze centra, nová definice
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image115.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image115.png)
 
 1.  Vyberte prázdném kanálu jako šablonu.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image106.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image106.png)
 
 1.  Název prostředí Azure Stack.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image116.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image116.png)
 
 1.  Přidání nové artefaktu tak, že vyberete **artefakty** a **+ přidat**
 
@@ -1799,25 +1799,25 @@ Teď, když se připojení naváže, bude ručně mapování vytvořený koncov�
 
 4.  Potom vyberte **přidat**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image117.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image117.png)
 
 1.  Vyberte z prostředí Azure Stack a potom přidejte nový úkol do služby Azure Stack
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image118.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image118.png)
 
 
 1.  Fáze agenta nastavte frontu agenta k Azure Stack hostovaná sestavení serveru.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image119.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image119.png)
 
 1.  Přidat nový úkol do této fáze, vyberte nasazení Kubernetes úkolu v rámci nasazení a vyberte Přidat.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image120.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image120.png)
 
 
 1.  Pojmenujte ji **použití Kubectl** (výchozí název) a vyberte příkaz použít.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image121.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image121.png)
 
     Teď vytvořte nové připojení služby Kubernetes.
 
@@ -1846,7 +1846,7 @@ Teď, když se připojení naváže, bude ručně mapování vytvořený koncov�
 
 11. Přejděte na <https://aka.ms/devicelogin> v prohlížeči. Po zobrazení výzvy zadejte přijatý v rozhraní příkazového řádku do prohlížeče kód.
 
-    ![Koncový bod služby Kubernetes](media\azure-stack-solution-machine-learning\image122.png)
+    ![Koncový bod služby Kubernetes](media/azure-stack-solution-machine-learning/image122.png)
 
 1.  Zadejte následující příkaz na příkazovém řádku, chcete-li získat přihlašovací údaje pro přístup pro Kubernetes cluster.
 
@@ -1854,20 +1854,20 @@ Teď, když se připojení naváže, bude ručně mapování vytvořený koncov�
 
 AZ aks get-credentials skupina_prostředků <yourResourceGroup> název <yourazurecontainerservice>
 
-![Koncový bod služby Kubernetes](media\azure-stack-solution-machine-learning\image123.png)
+![Koncový bod služby Kubernetes](media/azure-stack-solution-machine-learning/image123.png)
 
 1.  Přejděte **.kube**složka v domovském adresáři (např: C:\\uživatelé\\<user>\\dokumenty\\Kube)
 
 2.  Zkopírujte obsah**config**soubor a vložte ho v okně připojení Kubernetes. Vyberte**OK**tlačítko.
 
-    ![Koncový bod služby Kubernetes](media\azure-stack-solution-machine-learning\image124.png)
+    ![Koncový bod služby Kubernetes](media/azure-stack-solution-machine-learning/image124.png)
     
 
 3.  Koncový bod Kubernetes je vytvořen a vyberete, zaškrtnutím políčka použijte konfigurační soubory přidání konfiguračního souboru. Vyhledejte soubor iris_deployment.yaml v propojených artefaktů.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image125.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image125.png)
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image126.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image126.png)
 
 4.  Uložte definici verze.
 
@@ -1883,7 +1883,7 @@ kubectl get deployments
 
 Výstup by měl vypadat nějak takto, zatímco v procesu nasazení.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image127.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image127.png)
 
 ```Bash  
 kubectl proxy
@@ -1891,7 +1891,7 @@ kubectl proxy
 
 Jakmile uživatelského rozhraní kubernetes je spuštěná, přejděte do nasazení v [ **https://localhost:8001/** ](https://localhost:8001/) přejděte na **úloh -> sady replik**.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image128.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image128.png)
 
 ### <a name="deploy-the-yaml-service"></a>Nasazení služby YAML
 
@@ -1903,7 +1903,7 @@ Jakmile uživatelského rozhraní kubernetes je spuštěná, přejděte do nasaz
     cd /mnt/c/users/<User>/source/repos/HybridMLIris/HybridMLIris/
     ```
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image75.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image75.png)
 
 1.  Kopírovat **iris_service.yaml** souboru do úložiště.
 
@@ -1919,21 +1919,21 @@ Jakmile uživatelského rozhraní kubernetes je spuštěná, přejděte do nasaz
     git push
     ```
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image129.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image129.png)
 
 #### <a name="update-the-build-definition-for-the-yaml-code"></a>Aktualizujte definici sestavení pro kód The YAML
 
 1.  Vyberte část sestavení v rámci sestavení a vydaná verze centra a vyberte dříve vytvořenou definici.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image130.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image130.png)
 
 2.  Výběr tlačítka Upravit upravte definici.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image131.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image131.png)
 
 3.  **Přidejte úkol** na fázi. Vyberte **publikujte artefakty sestavení** z **nástroj** seznam a vyberte **přidat**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image108.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image108.png)
 
 4.  Pojmenujte ji **použití Kubectl** (výchozí název) a vyberte příkaz použít.
 
@@ -1943,26 +1943,26 @@ Jakmile uživatelského rozhraní kubernetes je spuštěná, přejděte do nasaz
 
 1.  Vyberte část theReleases v centru sestavení a vydaných verzí a vyberte dříve vytvořenou definici verze. Vyberte odkaz upravit.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image132.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image132.png)
 
 1.  Vyberte prostředí **Azure Stack** pak přidejte nový úkol do služby Azure Stack.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image133.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image133.png)
 
 1.  Přidat **nový úkol** do této fáze, vyberte **nasadit do Kubernetes** úloh v rámci **nasadit** a vyberte **přidat**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image134.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image134.png)
 
 1.  Pojmenujte ji **použití Kubectl** (výchozí název) a vyberte příkaz použít.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image109.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image109.png)
 
 1.  Nastavit připojení k službě Kubernates připojení k Azure Stack vytvořili dříve a pak vyberte **pomocí konfiguračních souborů** zaškrtávací políčko a přidáním konfigurační soubor. Přejděte k souboru iris_service.yaml v propojených artefaktů.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image135.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image135.png)
 
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image136.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image136.png)
 
 1.  Uložte definici verze.
 
@@ -1978,7 +1978,7 @@ kubectl get deployments
 
 Výstup by měl vypadat nějak takto, zatímco v procesu nasazení.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image127.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image127.png)
 
 
 ```Bash  
@@ -1987,7 +1987,7 @@ kubectl proxy
 
 Jakmile uživatelského rozhraní kubernetes je spuštěná, přejděte do nasazení v [ **https://localhost:8001/** ](https://localhost:8001/) přejděte na **úloh -> sady replik**.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image137.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image137.png)
 
 
 ### <a name="kubernetes-scoring-and-validation"></a>Kubernetes, vyhodnocení a ověření
@@ -2000,15 +2000,15 @@ kubectl proxy
 
 Přejděte do uživatelského rozhraní Kubernetes, potom přejděte na stránku **nasazení** -> **Iris – nasazení** -> **nové sady replik**  ->  **Iris-nasazení xxxxxxxxx** (kde xs jsou ID nasazení).
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image138.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image138.png)
 
 Přejděte na **služby** a vyberte **externí koncový bod** služby ověření pracovat.
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image139.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image139.png)
 
 By měl zobrazit ověřovací zpráva podobná následující:
 
-![Alternativní text](media\azure-stack-solution-machine-learning\image140.png)
+![Alternativní text](media/azure-stack-solution-machine-learning/image140.png)
 
 #### <a name="create-azure-stack-scoring-function-app-in-the-azure-stack-portal"></a>Vytvoření služby Azure Stack vyhodnocování aplikace Function App na portálu Azure Stack
 
@@ -2016,37 +2016,37 @@ Aplikace function app se vyžaduje k hostování provádění jednotlivých funk
 
 1.  Na portálu Azure Stack user portal, vyberte **+ nová** nalezeno tlačítko v levém horním rohu, pak vyberte**Web + mobilní zařízení** >**aplikace Function App**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image141.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image141.png)
 
 1.  Pojmenujte funkci **funkce dat** a umístěte ho do stejné skupiny prostředků s zbývající Machine Learning obsahu. Umožňuje nástroj automaticky vytvořit nový plán app service pro využití a použijte účet úložiště předtím vytvořili pro úložiště aplikací.
 
-    ![Definovat nové nastavení aplikace function app](media\azure-stack-solution-machine-learning\image142.png)
+    ![Definovat nové nastavení aplikace function app](media/azure-stack-solution-machine-learning/image142.png)
 
 1.  Vyberte**vytvořit**zřídíte a nasadíte aplikaci function app.
 
 2.  Vyberte ikonu oznámení v pravém horním rohu portálu a podívejte se**nasazení bylo úspěšné** zprávy.
 
-    ![Určení nastavení nové aplikace Function App](media\azure-stack-solution-machine-learning\image143.png)
+    ![Určení nastavení nové aplikace Function App](media/azure-stack-solution-machine-learning/image143.png)
 
 1.  Vyberte**přejít k prostředku** Chcete-li zobrazit novou aplikaci function app.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image144.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image144.png)
 
 1.  Vytvořit novou funkci tak, že vyberete **funkce**, pak bude **+ nová funkce** tlačítko.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image145.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image145.png)
 
 1.  Výběr triggeru HTTP
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image146.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image146.png)
 
 1.  Vyberte **C\#**  jako jazyk a název funkce: **vyčistit data skóre**a nastavte úroveň autorizace **anonymní**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image147.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image147.png)
 
 1.  Obsah v příkladu kód pro vyčištění dat skóre do funkce kopírování a vkládání.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image148.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image148.png)
 
 #### <a name="use-postman-to-validate-functions"></a>Ověřit funkce pomocí nástroje Postman
 
@@ -2054,39 +2054,39 @@ K zajištění, že jste nastavili Kbernetes a funkce správně můžete tuto be
 
 1.  Přejděte do uživatelského rozhraní Kubernetes, potom přejděte na stránku **nasazení** -> **Iris – nasazení** -> **nové sady replik**  ->  **Iris-nasazení xxxxxxxxx** (kde xs jsou ID nasazení)
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image138.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image138.png)
 
 1.  Přejděte na **služby** a zkopírujte **externí koncový bod**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image149.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image149.png)
 
 1.  Stáhněte a nainstalujte aplikaci Postman [tady](https://www.getpostman.com/apps) v případě potřeby.
 
 2.  Přihlaste se k aplikaci Postman a zavřete dialogové okno Nový soubor.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image150.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image150.png)
 
 1.  V rámci aplikace postman vyberte příspěvek...
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image151.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image151.png)
 
 1.  Vložit **externí koncový bod** adresu URL do aplikace postman pod **adresy URL požadavku** přidání  **\\skóre** na konec adresy URL, jak je znázorněno níže.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image152.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image152.png)
 
 1.  Vyberte **tělo** kartu a potom data zadejte jako **nezpracovaná**, pak **JSON**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image153.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image153.png)
 
 1.  Z webového prohlížeče, přejděte na **externí koncový bod**. Přidáním následujícího do adresy URL **/swagger.json** to vede k souboru Services Swagger používá k testování instalace.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image154.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image154.png)
 
 1.  Zkopírujte uvedený v příkladu **Swagger.JSON** souboru.
 
 2.  V aplikaci Postman, vložte do text příspěvku v příkladu a vyberte **odeslat**. Měla by vrátit za podobně jako následující hodnota.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image155.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image155.png)
 
 ## <a name="step-7-create-an-azure-stack-storage-account-and-storage-queue"></a>Krok 7: Vytvoření účtu úložiště Azure Stack a fronty úložiště
 
@@ -2106,29 +2106,29 @@ Vytvoření účtu úložiště Azure Stack a fronty úložiště pro data.
 
 7.  Vyberte**vytvořit**k vytvoření účtu úložiště.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image156.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image156.png)
 
 1.  Zvolte účet úložiště, nedávno vytvořili.
 
 2.  Vyberte na**fronty**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image157.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image157.png)
 
 1.  Vyberte na **+ fronta** a název fronty a vyberte **OK.**
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image158.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image158.png)
 
 1.  Získejte **připojovací řetězec** pro frontu úložiště a zkopírujte ho.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image159.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image159.png)
 
 1.  Přejděte do aplikace Azure Function App a potom vyberte **nastavení aplikace**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image160.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image160.png)
 
 1.  Z v rámci nastavení aplikace Function App, posuňte se dolů nastavení aplikace a vyberte **+ přidat nové nastavení**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image161.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image161.png)
 
 1.  Zadejte název účtu úložiště **název** pole, přidat na konec; _úložiště
 
@@ -2136,11 +2136,11 @@ Díky tomu, aby aplikace věděla, že toto je koncový bod účtu úložiště.
 
 1.  Vložte připojovací řetězec do **hodnotu** pole.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image162.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image162.png)
 
 1.  Přejděte do horní části Nastavení aplikace a vyberte **Uložit**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image163.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image163.png)
 
 ### <a name="update-the-scoring-function-to-use-storage-queue"></a>Funkce bodování použití fronty úložiště
 
@@ -2150,15 +2150,15 @@ Díky tomu, aby aplikace věděla, že toto je koncový bod účtu úložiště.
 
 3.  Potom vyberte **+ nový výstup** z výstupů.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image164.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image164.png)
 
 1.  Potom vyberte **Azure Queue Storage** a zvolte **vyberte**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image165.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image165.png)
 
 1.  Aktualizace **název fronty** do fronty úložiště vytvořené dříve a pak nastavte **připojení k účtu úložiště** k připojení k účtu úložiště vytvořili dříve a vyberte **uložit.**
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image166.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image166.png)
 
 ## <a name="step-8-create-a-function-to-handle-clean-data"></a>Krok 8: Vytvoření funkce pro zpracování vyčištění dat
 
@@ -2166,15 +2166,15 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
 1.  Vytvořit novou funkci tak, že vyberete **funkce**, pak bude **+ nová funkce** tlačítko.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image167.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image167.png)
 
 1.  Vyberte **Trigger časovače**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image168.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image168.png)
 
 1.  Vyberte **C\#**  jako jazyk a název funkce: **nahrát do azure** a nastavte plán **0 0 \*/1 \* \* \***  který CRON zápis je jednou za hodinu.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image169.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image169.png)
 
 ### <a name="get-the-connection-string-to-the-azure-hosted-storage-account"></a>Získání připojovacího řetězce k účtu úložiště Azure hostované
 
@@ -2182,17 +2182,17 @@ Vytvoření nové funkce služby Azure Stack můžete do Azure přesunout vyči�
 
 2.  Vyberte **přístupové klíče**, zkopírujte **připojovací řetězec** pro účet úložiště.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image170.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image170.png)
 
 ### <a name="update-the-upload-to-azure-function-to-use-the-azure-hosted-storage"></a>Aktualizovat nahrání do azure funkce použít úložiště hostované v Azure
 
 1.  Přejděte do aplikace Azure Function App a potom vyberte **nastavení aplikace**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image171.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image171.png)
 
 1.  Z v rámci nastavení aplikace Function App, posuňte se dolů nastavení aplikace a vyberte **+ přidat nové nastavení**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image172.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image172.png)
 
 1.  Zadejte název účtu úložiště **název** pole, přidat na konec; _úložiště
 
@@ -2200,11 +2200,11 @@ Díky tomu, aby aplikace věděla, že toto je koncový bod účtu úložiště.
 
 1.  Vložte Azure hostované připojovací řetězec účtu úložiště do **hodnotu** pole.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image173.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image173.png)
 
 1.  Přejděte do horní části Nastavení aplikace a vyberte **Uložit**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image174.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image174.png)
 
 1.  Přejděte zpět **nahrát do azure** funkce.
 
@@ -2212,15 +2212,15 @@ Díky tomu, aby aplikace věděla, že toto je koncový bod účtu úložiště.
 
 3.  Potom vyberte **+ nový výstup** z výstupů.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image175.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image175.png)
 
 1.  Potom vyberte **Azure Blob Storage** a zvolte **vyberte**.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image176.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image176.png)
 
 1.  Aktualizace **cesta** do kontejneru úložiště vytvořili dříve v tomto formátu: **uploadeddata / {rand identifikátor guid} .txt**a pak nastavte **připojení k účtu úložiště** k Připojení k účtu úložiště do Azure vytvořili dříve a vyberte **uložit.**
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image177.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image177.png)
 
 1.  Kopírování a vkládání obsahu v příkladu kódu pro **nahrát do azure** do funkce.
 
@@ -2228,11 +2228,11 @@ Díky tomu, aby aplikace věděla, že toto je koncový bod účtu úložiště.
 
 3.  Uložte a spusťte kód.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image178.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image178.png)
 
 1.  Zkontrolujte analyzoval účet úložiště hostované v Azure, který chcete zobrazit data do cloudu v Azure: Úspěch bude vypadat podobně jako níže.
 
-    ![Alternativní text](media\azure-stack-solution-machine-learning\image179.png)
+    ![Alternativní text](media/azure-stack-solution-machine-learning/image179.png)
 
 Data byl upravený citlivých dat Azure stacku hostované Kubernetes strojové učení a odeslat do veřejného cloudu Azure z místního Azure Stack, prostřednictvím Azure Stack hostované aplikace Function App a můžete připravit data pro nahrávání do edge/odpojeném režimu scénář.
 

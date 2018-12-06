@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: Úvodní kurz k .NET Core pro rozhraní SQL API | Microsoft Docs'
-description: Kurz, v rámci kterého se vytvoří online databáze a konzolová aplikace v jazyce C# pomocí sady Azure Cosmos DB SQL API .NET Core SDK.
+title: 'Kurz: Vytvoření aplikace .NET Core pro správu dat uložených v účtu rozhraní SQL API pro službu Azure Cosmos DB'
+description: V tomto kurzu se vytvoří online databáze a C# konzolové aplikace pomocí sady SQL rozhraní API .NET Core SDK pro službu Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
@@ -8,14 +8,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: sngun
-ms.openlocfilehash: 772e52960cf76a19c78d50533fe57cbc339ca34a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+Customer intent: As a developer, I want to build a .NET Core application to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities that Azure Cosmos DB offers.
+ms.openlocfilehash: 2dbfa4264fb9d1bd1b7f976a9a067e0ab741cbe4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838569"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969274"
 ---
-# <a name="tutorial-build-a-net-core-app-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření aplikace .Net Core pro správu dat rozhraní SQL API služby Azure Cosmos DB
+# <a name="tutorial-build-a-net-core-app-to-manage-data-stored-in-a-sql-api-account"></a>Kurz: Vytvoření aplikace .NET Core pro správu dat uložených v účtu rozhraní SQL API
 
 > [!div class="op_single_selector"]
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -27,21 +28,19 @@ ms.locfileid: "52838569"
 > * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
-V tomto kurzu se dozvíte, jak vytvořit aplikaci .Net Core pro vytváření a dotazování dat rozhraní SQL API služby Azure Cosmos DB. 
+Jako vývojář můžete mít aplikace, které používají dat dokumentů typu NoSQL. Účet rozhraní SQL API ve službě Azure Cosmos DB můžete použít k ukládání a přístup k těmto datům dokumentu. V tomto kurzu se dozvíte, jak vytvořit aplikaci .NET Core k vytvoření a dotazování dat uložených v účtu rozhraní SQL API služby Azure Cosmos DB. 
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Vytvoření účtu služby Azure Cosmos DB a připojení k němu
-> * Konfigurace řešení v nástroji Visual Studio
+> * Vytvoření a připojení k účtu Azure Cosmos
+> * Konfigurace řešení sady Visual Studio
 > * Vytvoření online databáze
 > * Vytvoření kolekce
 > * Vytvoření dokumentů JSON
 > * Provádění operací CRUD s položkami, kontejnerem a databází
 
-Nemáte čas aplikaci vytvářet? Nevadí! Úplné řešení je k dispozici na [GitHubu](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started). Pro rychlé pokyny přeskočte na [oddíl Získání úplného řešení](#GetSolution).
-
-Chcete sestavit aplikaci v Xamarinu pro iOS, Android nebo Forms pomocí rozhraní SQL API a sady .NET Core SDK? Přečtěte si [vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB](mobile-apps-with-xamarin.md).
+Nemáte čas aplikaci vytvářet? Úplné řešení je k dispozici na [GitHubu](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started). 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -49,49 +48,47 @@ Chcete sestavit aplikaci v Xamarinu pro iOS, Android nebo Forms pomocí rozhran�
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít bezplatnou verzi [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Pokud vyvíjíte aplikace pro práci s univerzální platformou Windows (UPW), měli byste použít **Visual Studio 2017 s verzí 15.4** nebo vyšší. Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+* Stáhnout a použít bezplatnou [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Pokud vyvíjíte aplikace pro práci s univerzální platformou Windows (UPW), měli byste použít **Visual Studio 2017 s verzí 15.4** nebo vyšší. Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 
-    * Pokud pracujete v systému MacOS nebo Linux, můžete vyvíjet aplikace .NET Core z příkazového řádku instalací sady [.NET Core SDK](https://www.microsoft.com/net/core#macos) pro vámi zvolenou platformu. 
+    * Pro MacOS nebo Linux, můžete vyvíjet aplikace .NET Core z příkazového řádku instalací [.NET Core SDK](https://www.microsoft.com/net/core#macos) pro platformu podle vašeho výběru. 
 
-    * Pokud pracujete v systému Windows, můžete vyvíjet aplikace .NET Core z příkazového řádku instalací sady [.NET Core SDK](https://www.microsoft.com/net/core#windows). 
+    * Pro Windows, můžete vyvíjet aplikace .NET Core z příkazového řádku instalací [.NET Core SDK](https://www.microsoft.com/net/core#windows). 
 
-    * Můžete použít vlastní editor nebo si bezplatně stáhnout editor [Visual Studio Code](https://code.visualstudio.com/), který funguje na systémech Windows, Linux a MacOS. 
+## <a name="create-an-azure-cosmos-account"></a>Vytvoření účtu služby Azure Cosmos
 
-## <a name="step-1-create-an-azure-cosmos-db-account"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
-
-Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete použít, můžete přeskočit na [Nastavení řešení v nástroji Visual Studio](#SetupVS). Pokud používáte emulátor služby Azure Cosmos DB, nastavte emulátor pomocí postupu v tématu [Emulátor služby Azure Cosmos DB](local-emulator.md) a přeskočte k části [Nastavení řešení v sadě Visual Studio](#SetupVS).
+Následujícím postupem vytvoření účtu služby Azure Cosmos:
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a id="SetupVS"></a>Krok 2: Nastavení řešení v sadě Visual Studio
+## <a id="SetupVS"></a>Nastavení řešení v sadě Visual Studio
 
 1. Otevřete v počítači **Visual Studio 2017**.
 
 2. V nabídce **Soubor** vyberte **Nový** a zvolte **Projekt**.
 
-3. V dialogovém okně **Nový projekt** vyberte **Šablony** / **Visual C#** / **.NET Core**/**Konzolová aplikace (.NET Core)**, pojmenujte projekt **DocumentDBGettingStarted** a pak vyberte **OK**.
+3. V dialogovém okně **Nový projekt** vyberte **Šablony** > **Visual C#** > **.NET Core** > **Konzolová aplikace (.NET Core)**, pojmenujte projekt **DocumentDBGettingStarted** a pak vyberte **OK**.
 
    ![Snímek obrazovky s oknem Nový projekt](./media/sql-api-dotnetcore-get-started/nosql-tutorial-new-project-2.png)
 
-4. V **Průzkumníku řešení** klikněte pravým tlačítkem myši na **DocumentDBGettingStarted**.
+4. V **Průzkumníka řešení**, klikněte pravým tlačítkem na **DocumentDBGettingStarted**.
 
-5. Ve stejné nabídce vyberte **Spravovat balíčky NuGet**.
+5. Ve stejné nabídce vyberte **spravovat balíčky NuGet**.
 
    ![Snímek obrazovky místní nabídky projektu](./media/sql-api-dotnetcore-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 
-6. Na kartě **NuGet** vyberte v horní části okna **Procházet** a do vyhledávacího pole zadejte **azure documentdb**.
+6. Na **NuGet** kartu, vyberte možnost **Procházet** v horní části okna a typ **azure documentdb** do vyhledávacího pole.
 
-7. Ve výsledcích vyhledejte **Microsoft.Azure.DocumentDB.Core** a vyberte **Nainstalovat**.
+7. Ve výsledcích hledání **Microsoft.Azure.DocumentDB.Core** a vyberte **nainstalovat**.
 
-   ID balíčku knihovny je [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core). Pokud cílíte na verzi rozhraní .NET Framework (třeba net461), kterou tento balíček .NET Core NuGet nepodporuje, použijte [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB) podporující všechny verze rozhraní .NET Framework počínaje verzí .NET Framework 4.5.
+   ID balíčku knihovny je [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core). Pokud cílíte na verzi rozhraní .NET Framework (třeba net461), kterou tento balíček .NET Core NuGet nepodporuje, použijte [Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB), která podporuje všechny verze rozhraní .NET Framework počínaje .NET Framework 4.5.
 
 8. Po zobrazení výzvy přijměte instalaci balíčku NuGet a licenční smlouvu.
 
-Výborně! Teď, když je instalace dokončená, napíšeme nějaký kód. Úplný projekt s kódem pro tento kurz najdete na [GitHubu](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started).
+Teď, když je instalace dokončená, napíšeme nějaký kód. Dokončený kód v projektu v tomto kurzu lze najít na [Githubu](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started).
 
-## <a id="Connect"></a>Krok 3: Připojení k účtu služby Azure Cosmos DB
+## <a id="Connect"></a>Připojení k účtu Azure Cosmos
 
-Importujte požadované závislosti přidáním následujícího kódu na začátek aplikace jazyka C# do souboru Program.cs:
+Připojení k účtu Azure Cosmos pomocí importu požadované závislosti. Chcete-li importovat závislosti, přidejte následující kód na začátek souboru Program.cs:
 
 ```csharp
 using System;
@@ -105,7 +102,7 @@ using Microsoft.Azure.Documents.Client;
 using Newtonsoft.Json;
 ```
 
-Nyní přidejte tyto dvě konstanty a proměnnou *client* pod veřejnou třídu *Program*.
+V dalším kroku přidejte tyto dvě konstanty a *klienta* proměnné pod veřejnou třídu *Program*.
 
 ```csharp
 class Program
@@ -118,15 +115,15 @@ class Program
 
 Dále přejděte na web [Azure Portal](https://portal.azure.com) a získejte identifikátor URI a primární klíč. Identifikátor URI a primární klíč služby Azure Cosmos DB jsou potřeba k tomu, aby aplikace věděla, kam se má připojit, a aby služba Azure Cosmos DB důvěřovala připojení aplikace.
 
-Na webu Azure Portal přejděte ke svému účtu služby Azure Cosmos DB a vyberte **Klíče**.
+Na webu Azure Portal, přejděte k vašemu účtu Azure Cosmos a pak vyberte **klíče**.
 
-Zkopírujte identifikátor URI z portálu a vložte ho do `<your endpoint URI>` v souboru program.cs. Poté zkopírujte PRIMÁRNÍ KLÍČ z portálu a vložte ho do `<your key>`. Pokud používáte emulátor služby Azure Cosmos DB, použijte jako koncový bod `https://localhost:8081` a dobře definovaný autorizační klíč z tématu [Postup vývoje pomocí emulátoru služby Azure Cosmos DB](local-emulator.md). Nezapomeňte odstranit znaky < a >, ale ponechte uvozovky kolem vašeho koncového bodu a klíče.
+Zkopírujte identifikátor URI z portálu a vložte ho do `<your endpoint URI>` v souboru program.cs. Poté zkopírujte PRIMÁRNÍ KLÍČ z portálu a vložte ho do `<your key>`. Nezapomeňte odstranit znaky < a >, ale ponechte uvozovky kolem vašeho koncového bodu a klíče.
 
 ![Získání klíčů z webu Azure Portal][keys]
 
 Vytvořením nové instance **DocumentClient** spustíme počáteční aplikaci.
 
-Pod metodu **Main** přidejte tento nový asynchronní úkol **GetStartedDemo**, který vytvoří instanci nového klienta **DocumentClient**.
+Níže **hlavní** metodu, přidejte nový asynchronní úkol pojmenovaný **GetStartedDemo**, který vytvoří instanci nové **DocumentClient**.
 
 ```csharp
 static void Main(string[] args)
@@ -170,13 +167,9 @@ static void Main(string[] args)
 
 Výběrem tlačítka **DocumentDBGettingStarted** sestavte a spusťte aplikaci.
 
-Blahopřejeme! Úspěšně jste se připojili k účtu služby Azure Cosmos DB. Nyní se podívejme, jak se pracuje s prostředky Azure Cosmos DB.  
+## <a id="CreateDatabase"></a>Vytvoření databáze
 
-## <a name="step-4-create-a-database"></a>Krok 4: Vytvoření databáze
-
-Než přidáte kód pro vytvoření databáze, přidejte pomocnou metodu pro výpis do konzoly.
-
-Zkopírujte a vložte metodu **WriteToConsoleAndPromptToContinue** pod metodu **GetStartedDemo**.
+Než přidáte kód pro vytvoření databáze, přidejte pomocnou metodu pro výpis do konzoly. Zkopírujte a vložte metodu **WriteToConsoleAndPromptToContinue** pod metodu **GetStartedDemo**.
 
 ```csharp
 // ADD THIS PART TO YOUR CODE
@@ -188,9 +181,7 @@ private void WriteToConsoleAndPromptToContinue(string format, params object[] ar
 }
 ```
 
-[Databázi](databases-containers-items.md#azure-cosmos-databases) Azure Cosmos DB je možné vytvořit pomocí metody [CreateDatabaseAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdatabaseasync.aspx) třídy **DocumentClient**. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi.
-
-Zkopírujte a vložte následující kód do metody **GetStartedDemo** pod vytvoření klienta. Tím se vytvoří databáze s názvem *FamilyDB*.
+Vytvoření databáze Azure Cosmos DB s použitím `CreateDatabaseAsync` metodu **DocumentClient** třídy. Databáze je logický kontejner úložiště dokumentů JSON rozděleného mezi kolekcemi. Zkopírujte a vložte následující kód do metody **GetStartedDemo** pod vytvoření klienta. Tím se vytvoří databáze s názvem *FamilyDB*.
 
 ```csharp
 private async Task GetStartedDemo()
@@ -203,14 +194,12 @@ private async Task GetStartedDemo()
 
 Výběrem tlačítka **DocumentDBGettingStarted** spusťte aplikaci.
 
-Blahopřejeme! Úspěšně jste vytvořili databázi Azure Cosmos DB.  
+## <a id="CreateColl"></a>Vytvoření kolekce
 
-## <a id="CreateColl"></a>Krok 5: Vytvoření kolekce
+Vytvoření kolekce pomocí `CreateDocumentCollectionAsync` metodu **DocumentClient** třídy. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
 
 > [!WARNING]
-> **CreateDocumentCollectionAsync** vytvoří novou kolekci s vyhrazenou propustností, za kterou se hradí poplatky. Další podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
-
-Kolekce lze vytvořit pomocí [CreateDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentcollectionasync.aspx) metodu **DocumentClient** třídy. Kolekce je kontejner dokumentů JSON a přidružené logiky javascriptové aplikace.
+> **CreateDocumentCollectionAsync** vytvoří novou kolekci s vyhrazenou propustností, za kterou se hradí poplatky. Další podrobnosti najdete v části [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 Zkopírujte a vložte následující kód do metody **GetStartedDemo** pod vytvoření databáze. Tento kód vytvoří kolekci dokumentů s názvem *FamilyCollection_oa*.
 
@@ -225,15 +214,11 @@ Zkopírujte a vložte následující kód do metody **GetStartedDemo** pod vytvo
 
 Výběrem tlačítka **DocumentDBGettingStarted** spusťte aplikaci.
 
-Blahopřejeme! Úspěšně jste vytvořili kolekci dokumentů Azure Cosmos DB.  
+## <a id="CreateDoc"></a>Vytvoření dokumentů JSON
 
-## <a id="CreateDoc"></a>Krok 6: Vytvoření dokumentů JSON
+Vytvoření dokumentu pomocí `CreateDocumentAsync` metodu **DocumentClient** třídy. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. 
 
-Dokument lze vytvořit pomocí [CreateDocumentAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.createdocumentasync.aspx) metodu **DocumentClient** třídy. Dokumenty představují uživatelem definovaný (libovolný) obsah JSON. Nyní můžete vložit jeden nebo více dokumentů. Pokud již máte data, která chcete uložit do databáze, můžete použít [nástroj pro migraci dat](import-data.md) Azure Cosmos DB.
-
-Nejprve vytvoříte třídu **Family**, která představuje objekty uložené ve službě Azure Cosmos DB. Kromě toho vytvoříte i podtřídy **Parent**, **Child**, **Pet** a **Address**, které se použijí v rámci **Family**. Dokumenty musí mít vlastnost **Id** serializovanou jako **id** ve formátu JSON. Vytvořte tyto třídy tak, že za metodu **GetStartedDemo** přidáte následující vnitřní podtřídy.
-
-Zkopírujte a vložte třídy **Family**, **Parent**, **Child**, **Pet** a **Address** pod metodu **WriteToConsoleAndPromptToContinue**.
+Nejprve je potřeba vytvořit **řady** třídu, která představuje objekty uložené ve službě Azure Cosmos DB. Můžete také vytvořit **nadřazené**, **podřízené**, **domácí mazlíček**, a **adresu** podtřídami, které se používají v rámci **řady**. Dokumenty musí mít vlastnost **Id** serializovanou jako **id** ve formátu JSON. Vytvořte tyto třídy tak, že za metodu **GetStartedDemo** přidáte následující vnitřní podtřídy. Zkopírujte a vložte třídy **Family**, **Parent**, **Child**, **Pet** a **Address** pod metodu **WriteToConsoleAndPromptToContinue**.
 
 ```csharp
 private void WriteToConsoleAndPromptToContinue(string format, params object[] args)
@@ -313,9 +298,7 @@ private async Task CreateFamilyDocumentIfNotExists(string databaseName, string c
 }
 ```
 
-Vložte dva dokumenty, jeden pro rodinu Andersenů a druhý pro rodinu Wakefieldů.
-
-Zkopírujte a vložte kód následující za `// ADD THIS PART TO YOUR CODE` do vaší metody **GetStartedDemo** pod vytvoření kolekce dokumentů.
+Vložte dva dokumenty, jeden pro rodinu Andersenů a druhý pro rodinu Wakefieldů. Zkopírujte a vložte kód následující za `// ADD THIS PART TO YOUR CODE` do vaší metody **GetStartedDemo** pod vytvoření kolekce dokumentů.
 
 ```csharp
 await this.CreateDatabaseIfNotExistsAsync("FamilyDB_oa");
@@ -391,13 +374,11 @@ await this.CreateFamilyDocumentIfNotExists("FamilyDB_oa", "FamilyCollection_oa",
 
 Výběrem tlačítka **DocumentDBGettingStarted** spusťte aplikaci.
 
-Blahopřejeme! Úspěšně jste vytvořili dva dokumenty Azure Cosmos DB.  
-
 ![Hierarchický vztah mezi účtem, online databází a kolekcí](./media/sql-api-dotnetcore-get-started/nosql-tutorial-account-database.png)
 
-## <a id="Query"></a>Krok 7: Dotazování prostředků Azure Cosmos DB
+## <a id="Query"></a>Dotazování prostředků Azure Cosmos DB
 
-Azure Cosmos DB podporuje bohaté [dotazy](how-to-sql-query.md) na dokumenty JSON uložené v každé z kolekcí. Následující ukázkový kód ukazuje různé dotazy – používající jak syntaxi SQL služby Azure Cosmos DB, tak LINQ – které můžeme spouštět na dokumenty vložené v předchozím kroku.
+Azure Cosmos DB podporuje bohaté dotazy na dokumenty JSON uložené v každé z kolekcí. Následující ukázkový kód ukazuje různé dotazy – používající jak syntaxi SQL služby Azure Cosmos DB a LINQ –, kterou můžete spouštět oproti dokumentům, které jsme vložili v předchozím kroku.
 
 Zkopírujte a vložte metodu **ExecuteSimpleQuery** pod metodu **CreateFamilyDocumentIfNotExists**.
 
@@ -448,15 +429,13 @@ this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
 Výběrem tlačítka **DocumentDBGettingStarted** spusťte aplikaci.
 
-Blahopřejeme! Úspěšně jste provedli dotaz na kolekci Azure Cosmos DB.
-
-Následující diagram ilustruje volání syntaxe příkazu jazyka SQL služby Azure Cosmos DB na kolekci, kterou jste vytvořili. Stejná logika platí také pro dotaz LINQ.
+Následující diagram ilustruje, jak se volá syntaxe dotazu Azure Cosmos DB SQL proti kolekci, kterou jste vytvořili. Stejná logika platí pro dotaz LINQ.
 
 ![Diagram ilustrující obor a význam dotazu použitého v kurzu NoSQL k vytvoření konzolové aplikace v jazyce C#](./media/sql-api-dotnetcore-get-started/nosql-tutorial-collection-documents.png)
 
-Klíčové slovo [FROM](how-to-sql-query.md#FromClause) je v dotazu volitelné, protože dotazy Azure Cosmos DB již mají obor nastaven na jedinou kolekci. Proto je možné příkaz „FROM Families f“ vyměnit za „FROM root r“ nebo jakoukoli jinou proměnnou, kterou si zvolíte. Azure Cosmos DB standardně vyvodí, že Families, root nebo zvolený název proměnné odkazují na aktuální kolekci.
+`FROM` – Klíčové slovo je v dotazu volitelné, protože dotazy služby Azure Cosmos DB již mají obor nastaven na jedinou kolekci. Proto je možné příkaz „FROM Families f“ vyměnit za „FROM root r“ nebo jakoukoli jinou proměnnou, kterou si zvolíte. Azure Cosmos DB odvodí, že rodiny, root nebo název proměnné, kterou jste zvolili odkazuje na aktuální kolekci ve výchozím nastavení.
 
-## <a id="ReplaceDocument"></a>Krok 8: Nahrazení dokumentu JSON
+## <a id="ReplaceDocument"></a>Nahrazení dokumentu JSON
 
 Azure Cosmos DB podporuje nahrazování dokumentů JSON.  
 
@@ -489,9 +468,7 @@ this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
 
 Výběrem tlačítka **DocumentDBGettingStarted** spusťte aplikaci.
 
-Blahopřejeme! Úspěšně jste nahradili dokument Azure Cosmos DB.
-
-## <a id="DeleteDocument"></a>Krok 9: Odstranění dokumentu JSON
+## <a id="DeleteDocument"></a>Odstranění dokumentu JSON
 
 Azure Cosmos DB podporuje odstraňování dokumentů JSON.  
 
@@ -519,13 +496,9 @@ await this.DeleteFamilyDocument("FamilyDB_oa", "FamilyCollection_oa", "Andersen.
 
 Výběrem tlačítka **DocumentDBGettingStarted** spusťte aplikaci.
 
-Blahopřejeme! Úspěšně jste odstranili dokument Azure Cosmos DB.
+## <a id="DeleteDatabase"></a>Odstranění databáze
 
-## <a id="DeleteDatabase"></a>Krok 10: Odstranění databáze
-
-Odstraněním vytvořené databáze dojde k odstranění databáze a všech jejích podřízených prostředků (kolekcí, dokumentů atd.).
-
-Pokud chcete odstranit celou databázi a její podřízené prostředky, zkopírujte a vložte následující kód do metody **GetStartedDemo** pod odstranění dokumentu.
+Odstraněním vytvořené databáze dojde k odebrání databáze a všech jejích podřízených prostředků (kolekcí, dokumentů atd.). Zkopírujte a vložte následující kód do vašeho **GetStartedDemo** pod dokument, který chcete odstranit celou databázi a všechny podřízené prostředky.
 
 ```csharp
 this.ExecuteSimpleQuery("FamilyDB_oa", "FamilyCollection_oa");
@@ -539,15 +512,11 @@ await this.client.DeleteDatabaseAsync(UriFactory.CreateDatabaseUri("FamilyDB_oa"
 
 Výběrem tlačítka **DocumentDBGettingStarted** spusťte aplikaci.
 
-Blahopřejeme! Úspěšně jste odstranili databázi Azure Cosmos DB.
+## <a id="Run"></a>Spustit vaše C# konzolové aplikace
 
-## <a id="Run"></a>Krok 11: Spuštění konzolové aplikace jazyka C#
+Výběrem tlačítka **DocumentDBGettingStarted** v sadě Visual Studio sestavte aplikaci v režimu ladění. V okně konzoly by se měl zobrazit výstup spuštěné aplikace. Výstup bude zobrazovat výsledky dotazů, které jsme přidali, a měl by odpovídat ukázkovému textu níže.
 
-Výběrem tlačítka **DocumentDBGettingStarted** v sadě Visual Studio sestavte aplikaci v režimu ladění.
-
-V okně konzoly by se měl zobrazit výstup spuštěné aplikace. Výstup bude zobrazovat výsledky dotazů, které jsme přidali, a měl by odpovídat ukázkovému textu níže.
-
-```
+```bash
 Created FamilyDB_oa
 Press any key to continue ...
 Created FamilyCollection_oa
@@ -570,24 +539,18 @@ Deleted Family Andersen.1
 End of demo, press any key to exit.
 ```
 
-Blahopřejeme! Dokončili jste tento kurz a máte funkční konzolovou aplikaci jazyka C#!
+Právě jste dokončili kurz a máte funkční C# konzolové aplikace.
 
-## <a id="GetSolution"></a>Získání úplného řešení kurzu
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Abyste mohli sestavit řešení GetStarted, které obsahuje všechny ukázky tohoto článku, budete potřebovat následující:
-
-* Aktivní účet Azure. Pokud žádný nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
-* [Účet služby Azure Cosmos DB][create-sql-api-dotnet.md#create-account].
-* Řešení [GetStarted](https://github.com/Azure-Samples/documentdb-dotnet-core-getting-started) dostupné na GitHubu
-
-Pokud chcete obnovit reference na rozhraní SQL API pro sadu Azure Cosmos DB .NET Core SDK v sadě Visual Studio, klikněte v Průzkumníku řešení pravým tlačítkem na řešení **GetStarted** a vyberte **Povolit obnovení balíčků NuGet**. Dále v souboru Program.cs aktualizujte hodnoty EndpointUrl a AuthorizationKey tak, jak je popsáno v části [Připojení k účtu služby Azure Cosmos DB](#Connect).
+Pokud jste už nepotřebujete, můžete odstranit skupinu prostředků, účet Azure Cosmos a všechny související prostředky. Uděláte to tak, vyberte skupinu prostředků pro virtuální počítač, vyberte **odstranit**a potom ověřte název skupiny prostředků pro odstranění.
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste zjistili, jak vytvořit aplikaci .Net Core pro správu dat rozhraní SQL API služby Azure Cosmos DB. Teď můžete přejít k dalšímu článku:
+V tomto kurzu jste zjistili, jak můžete vytvořit aplikaci .NET Core, abyste mohli spravovat data uložená v účtu rozhraní SQL API služby Azure Cosmos DB. Teď můžete přejít k dalšímu článku:
 
 > [!div class="nextstepaction"]
-> [Vytvoření konzolové aplikace v Javě s využitím účtu rozhraní SQL API služby Azure Cosmos DB](sql-api-java-get-started.md)
+> [Sestavení aplikace konzoly v jazyce Java s účtu rozhraní SQL API služby Azure Cosmos DB](sql-api-java-get-started.md)
 
 [create-sql-api-dotnet.md#create-account]: create-sql-api-dotnet.md#create-account
 [keys]: media/sql-api-dotnetcore-get-started/nosql-tutorial-keys.png

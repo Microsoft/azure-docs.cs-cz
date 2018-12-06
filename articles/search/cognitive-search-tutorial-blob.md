@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 4694d7a580c9544e43cf0b56b192b55c02257531
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 3350f182e236cc0828040f1ee1eb73cf54cf18a8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730660"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957363"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Jak volat rozhraní API kognitivního hledání (Preview)
 
@@ -52,22 +52,25 @@ Nejdříve se do služby Azure Search přihlaste.
 
 1. Klikněte na **Vytvořit prostředek**, vyhledejte Azure Search a klikněte na **Vytvořit**. Pokud službu Search nastavujete poprvé, přečtěte si informace v článku [Vytvoření služby Azure Search na portálu](search-create-service-portal.md).
 
-  ![Portál řídicího panelu](./media/cognitive-search-tutorial-blob/create-service-full-portal.png "Vytvoření služby Azure Search na portálu")
+  ![Portál řídicího panelu](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Vytvoření služby Azure Search na portálu")
 
 1. V části Skupina prostředků vytvořte skupinu prostředků, která bude obsahovat všechny prostředky vytvořené během tohoto kurzu. To usnadní čištění prostředků, až kurz dokončíte.
 
-1. V části Lokalita zvolte buď **USA (střed) – jih**, nebo **Západní Evropa**. V tuto chvíli je verze Preview k dispozici jen v těchto oblastech.
+1. Pro umístění, zvolte jednu z [podporované oblasti](https://docs.microsoft.com/en-us/azure/search/cognitive-search-quickstart-blob#supported-regions) pro Kognitivního vyhledávání.
 
 1. V části Cenová úroveň můžete pro účely kurzů a rychlých startů vytvořit bezplatnou (**Free**) službu. Pokud chcete důkladněji zkoumat svá vlastní data, vytvořte si [placenou službu](https://azure.microsoft.com/pricing/details/search/), např. **Basic** nebo **Standard**. 
 
   Bezplatná služba je omezená na 3 indexy, 16 MB maximální velikosti objektu blob a 2 minuty indexování, což pro úplné využití funkcí kognitivního hledání nestačí. Pokud se chcete podívat na limity pro jednotlivé úrovně, najdete je v článku o [limitech služeb](search-limits-quotas-capacity.md).
+
+  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service1.png "stránku definice služby na portálu")
+  ![stránku definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service2.png "stránku definice služby v na portálu")
 
   > [!NOTE]
   > Cognitive Search je ve veřejné verzi Preview. Spouštění sad dovedností je v tuto chvíli k dispozici na všech úrovních, včetně bezplatné. Cenu této funkce oznámíme později.
 
 1. Pokud chcete mít k informacím o službě rychlý přístup, připněte si službu na řídicí panel.
 
-  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service.png "Stránka definice služby na portálu")
+  ![Stránka definice služby na portálu](./media/cognitive-search-tutorial-blob/create-search-service3.png "Stránka definice služby na portálu")
 
 1. Až se služba vytvoří, shromážděte následující informace: adresu **URL** ze stránky Přehled a **klíč rozhraní API** (ať už primární, nebo sekundární) ze stránky Klíče.
 
@@ -523,7 +526,7 @@ Pokud chcete dokumenty znovu indexovat s novými definicemi:
 2. Upravte sadu dovedností a definici indexu.
 3. Znovu ve službě vytvořte index a indexer, abyste mohli spustit kanál. 
 
-K odstranění indexů a indexerů můžete využít portál. V případě, že chcete odstranit sadu dovedností, dá se to udělat jen prostřednictvím příkazu protokolu HTTP.
+Na portálu můžete použít k odstranění indexy, indexery a dovednosti.
 
 ```http
 DELETE https://[servicename].search.windows.net/skillsets/demoskillset?api-version=2017-11-11-Preview
@@ -547,7 +550,7 @@ Nakonec jste se dozvěděli, jak testovat výsledky a resetovat systém pro dal�
 
 Nejrychlejší způsob, jak po kurzu vše vyčistit, je odstranit skupinu prostředků, která obsahuje službu Azure Search a službu Azure Blob. Za předpokladu, že jste vložili obě služby do stejné skupiny, odstraňte skupinu prostředků. Tím se trvale odstraní všechno, co v ní je, včetně služeb a veškerého uloženého obsahu, který jste v tomto kurzu vytvořili. Na portálu najdete název skupiny prostředků na stránce Přehled jednotlivých služeb.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud si chcete kanál přizpůsobit nebo rozšířit, můžete použít vlastní dovednosti. Když si vytvoříte vlastní dovednost, kterou pak přidáte do sady dovedností, budete moct používat analýzu textu a obrazu, kterou si sami napíšete. 
 

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 10/10/2018
-ms.openlocfilehash: ab869e53810f049593803d58b3df75d0c083bbd2
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
-ms.translationtype: HT
+ms.date: 12/04/2018
+ms.openlocfilehash: 030cd89bbd6407cd2e83a9b56942adbf419e069b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962890"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956699"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: Online migrace SQL Serveru do spravované instance Azure SQL Database pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance SQL Serveru do [spravované instance Azure SQL Database](../sql-database/sql-database-managed-instance.md) s minimálními výpadky. Další metody, které můžou vyžadovat určitou ruční práci, najdete v článku [Migrace instance SQL Serveru do spravované instance Azure SQL Database](../sql-database/sql-database-managed-instance-migrate.md).
@@ -32,6 +32,12 @@ V tomto kurzu se naučíte:
 > * Vytvoření projektu migrace a spuštění online migrace pomocí služby Azure Database Migration Service
 > * Monitorování migrace
 > * Spuštění přímé migrace, jakmile budete připraveni
+
+> [!NOTE]
+> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance podle cenové úrovně Premium (Preview).
+
+> [!IMPORTANT]
+> Aby migrace proběhla optimálním způsobem, doporučuje Microsoft vytvořit instanci služby Azure Database Migration Service ve stejné oblasti Azure, ve které je cílová databáze. Přenášení dat mezi oblastmi geografickými lokalitami může zpomalit proces migrace a způsobit chyby.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
@@ -58,24 +64,24 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 1. Přihlaste se k webu Azure Portal, vyberte **Všechny služby** a pak vyberte **Předplatná**.
 
-    ![Zobrazení předplatných na portálu](media\tutorial-sql-server-to-managed-instance-online\portal-select-subscriptions.png)        
+    ![Zobrazení předplatných na portálu](media/tutorial-sql-server-to-managed-instance-online/portal-select-subscriptions.png)        
 2. Vyberte předplatné, ve kterém chcete vytvořit instanci služby Azure Database Migration Service, a pak vyberte **Poskytovatelé prostředků**.
 
-    ![Zobrazení poskytovatelů prostředků](media\tutorial-sql-server-to-managed-instance-online\portal-select-resource-provider.png)
+    ![Zobrazení poskytovatelů prostředků](media/tutorial-sql-server-to-managed-instance-online/portal-select-resource-provider.png)
 
 3. Vyhledejte „migration“ a pak napravo od **Microsoft.DataMigration** vyberte **Zaregistrovat**.
 
-    ![Registrace poskytovatele prostředků](media\tutorial-sql-server-to-managed-instance-online\portal-register-resource-provider.png)   
+    ![Registrace poskytovatele prostředků](media/tutorial-sql-server-to-managed-instance-online/portal-register-resource-provider.png)   
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Vytvoření instance služby Azure Database Migration Service
 
 1. Na webu Azure Portal vyberte **+ Vytvořit prostředek**, vyhledejte **Azure Database Migration Service** a pak v rozevíracím seznamu vyberte **Azure Database Migration Service**.
 
-     ![Azure Marketplace](media\tutorial-sql-server-to-managed-instance-online\portal-marketplace.png)
+     ![Azure Marketplace](media/tutorial-sql-server-to-managed-instance-online/portal-marketplace.png)
 
 2. Na obrazovce **Azure Database Migration Service** vyberte **Vytvořit**.
 
-    ![Vytvoření instance služby Azure Database Migration Service](media\tutorial-sql-server-to-managed-instance-online\dms-create1.png)
+    ![Vytvoření instance služby Azure Database Migration Service](media/tutorial-sql-server-to-managed-instance-online/dms-create1.png)
 
 3. Na obrazovce **Vytvořit službu Migration Service** zadejte název služby, předplatné a novou nebo existující skupinu prostředků.
 
@@ -96,7 +102,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
    
     Další informace o nákladech a cenových úrovních najdete na [stránce s cenami](https://aka.ms/dms-pricing).
    
-    ![Vytvoření služby DMS](media\tutorial-sql-server-to-managed-instance-online\dms-create-service3.png)
+    ![Vytvoření služby DMS](media/tutorial-sql-server-to-managed-instance-online/dms-create-service3.png)
 
 7.  Vyberte **Vytvořit** a vytvořte službu.
 
@@ -106,7 +112,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 1. Na webu Azure Portal vyberte **Všechny služby**, vyhledejte „Azure Database Migration Service“ a pak vyberte **Služby Azure Database Migration Service**.
 
-    ![Vyhledání všech instancí služby Azure Database Migration Service](media\tutorial-sql-server-to-managed-instance-online\dms-search.png)
+    ![Vyhledání všech instancí služby Azure Database Migration Service](media/tutorial-sql-server-to-managed-instance-online/dms-search.png)
 
 2. Na obrazovce **Azure Database Migration Service** vyhledejte název instance, kterou jste vytvořili, a vyberte ji.
  
@@ -114,7 +120,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 4. Na obrazovce **Nový projekt migrace** zadejte název projektu, v textovém poli **Typ zdrojového serveru** vyberte **SQL Server**, v textovém poli **Typ cílového serveru** vyberte **Spravovaná instance Azure SQL Database** a pak v části **Zvolte typ aktivity** vyberte **Online migrace dat (Preview)**.
 
-   ![Vytvoření projektu DMS](media\tutorial-sql-server-to-managed-instance-online\dms-create-project3.png)
+   ![Vytvoření projektu DMS](media/tutorial-sql-server-to-managed-instance-online/dms-create-project3.png)
 
 5. Vyberte **Vytvořit a spustit aktivitu** a vytvořte projekt.
 
@@ -129,7 +135,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
     > [!CAUTION]
     > Připojení SSL šifrovaná pomocí certifikátu podepsaného svým držitelem neposkytují silné zabezpečení. Jsou náchylná na útoky, kdy se útočníci vydávají za prostředníky. Na připojení SSL s použitím certifikátů podepsaných svým držitelem byste neměli spoléhat v produkčním prostředí ani na serverech připojených k internetu.
 
-   ![Podrobnosti zdroje](media\tutorial-sql-server-to-managed-instance-online\dms-source-details2.png)
+   ![Podrobnosti zdroje](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
 3. Vyberte **Uložit**.
 
@@ -145,7 +151,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 3. Zadejte **uživatele SQL** a **heslo** pro připojení k cílové spravované instanci Azure SQL Database.
 
-    ![Výběr cíle](media\tutorial-sql-server-to-managed-instance-online\dms-target-details3.png)
+    ![Výběr cíle](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
 2.  Vyberte **Uložit**.
 
@@ -153,7 +159,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 1. Na obrazovce **Vybrat zdrojové databáze** vyberte zdrojovou databázi, kterou chcete migrovat.
 
-    ![Výběr zdrojových databází](media\tutorial-sql-server-to-managed-instance-online\dms-select-source-databases2.png)
+    ![Výběr zdrojových databází](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
 2. Vyberte **Uložit**.
 
@@ -169,7 +175,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
     |**Předplatné účtu úložiště Azure** | Vyberte předplatné obsahující účet úložiště Azure. |
     |**Účet úložiště Azure** | Vyberte účet úložiště Azure, do kterého může DMS nahrát soubory záloh ze sdílené síťové složky SMB a který může použít k migraci databází.  Pro zajištění optimálního výkonu nahrávání souborů doporučujeme vybrat účet úložiště ve stejné oblasti, jako je služba DMS. |
     
-    ![Konfigurace nastavení migrace](media\tutorial-sql-server-to-managed-instance-online\dms-configure-migration-settings4.png)
+    ![Konfigurace nastavení migrace](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
 2. Vyberte **Uložit**.
  
@@ -179,7 +185,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 2. Zkontrolujte a ověřte podrobnosti související s projektem migrace.
  
-    ![Shrnutí projektu migrace](media\tutorial-sql-server-to-managed-instance-online\dms-project-summary3.png)
+    ![Shrnutí projektu migrace](media/tutorial-sql-server-to-managed-instance-online/dms-project-summary3.png)
 
 ## <a name="run-and-monitor-the-migration"></a>Spuštění a monitorování migrace
 
@@ -187,11 +193,11 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
 2. Na obrazovce aktivity migrace výběrem **Aktualizovat** aktualizujte zobrazení.
  
-   ![Probíhající aktivita migrace](media\tutorial-sql-server-to-managed-instance-online\dms-monitor-migration2.png)
+   ![Probíhající aktivita migrace](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration2.png)
 
     Kategorie databází a přihlašovacích jmen můžete dále rozbalit a monitorovat stav migrace příslušných objektů serveru.
 
-   ![Probíhající aktivita migrace](media\tutorial-sql-server-to-managed-instance-online\dms-monitor-migration-extend2.png)
+   ![Probíhající aktivita migrace](media/tutorial-sql-server-to-managed-instance-online/dms-monitor-migration-extend2.png)
 
 ## <a name="performing-migration-cutover"></a>Provedení přímé migrace
 
@@ -207,13 +213,13 @@ Po obnovení úplné zálohy databáze v cílové spravované instanci Azure SQL
 
 4.  Vyberte **Potvrdit** a pak **Použít**.
 
-    ![Příprava na dokončení přímé migrace](media\tutorial-sql-server-to-managed-instance-online\dms-complete-cutover.png)
+    ![Příprava na dokončení přímé migrace](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
 
 5.  Když se stav migrace databází změní na **Dokončeno**, připojte své aplikace k nové cílové spravované instanci Azure SQL Database.
 
-    ![Dokončení přímé migrace](media\tutorial-sql-server-to-managed-instance-online\dms-cutover-complete.png)
+    ![Dokončení přímé migrace](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - V tématu [Obnovení zálohy do spravované instance pomocí příkazu restore](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md) najdete kurz ukazující migraci databáze do spravované instance pomocí příkazu T-SQL RESTORE.
 - Informace o spravované instanci najdete v tématu [Co je spravovaná instance](../sql-database/sql-database-managed-instance.md).

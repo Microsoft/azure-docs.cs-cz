@@ -10,16 +10,16 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b51067b9e854566991d49aeb1ff2b1ad13999a51
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127836"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957738"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Vyhledávání slovníku
 
-Poskytuje alternativní překlady pro slovo a malý počet idiomatickou frází. Každý překlad obsahuje část řeči a seznam back překlady. Back překlady povolit tak uživateli pochopit překlad v kontextu. [Slovníku příklad](.\v3-0-dictionary-examples.md) operace povoluje další hierarchií naleznete v příkladu se používá každá dvojice překladu.
+Poskytuje alternativní překlady pro slovo a malý počet idiomatickou frází. Každý překlad obsahuje část řeči a seznam back překlady. Back překlady povolit tak uživateli pochopit překlad v kontextu. [Slovníku příklad](./v3-0-dictionary-examples.md) operace povoluje další hierarchií naleznete v příkladu se používá každá dvojice překladu.
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   </tr>
   <tr>
     <td>od</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk, který vstupního textu. Zdrojový jazyk musí být jedna z [podporované jazyky](.\v3-0-languages.md) součástí `dictionary` oboru.</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk, který vstupního textu. Zdrojový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí `dictionary` oboru.</td>
   </tr>
   <tr>
     <td>na</td>
-    <td>*Povinný parametr*.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](.\v3-0-languages.md) součástí `dictionary` oboru.</td>
+    <td>*Povinný parametr*.<br/>Určuje jazyk text výstupu. Cílový jazyk musí být jedna z [podporované jazyky](./v3-0-languages.md) součástí `dictionary` oboru.</td>
   </tr>
 </table>
 
@@ -73,7 +73,7 @@ Hlavičky žádosti patří:
   </tr>
 </table> 
 
-## <a name="request-body"></a>Tělo požadavku
+## <a name="request-body"></a>Text požadavku
 
 Text požadavku je pole JSON. Každý prvek pole je objekt JSON s řetězcovou vlastnost s názvem `Text`, která představuje výraz k vyhledání.
 
@@ -92,13 +92,13 @@ Platí následující omezení:
 
 Úspěšná odpověď je pole JSON se jeden výsledek pro každý řetězec vstupního pole. Výsledný objekt zahrnuje následující vlastnosti:
 
-  * `normalizedSource`: Řetězec poskytující normalizovaná forma jako zdroj. Například pokud je požadavek "JOHN", normalizovaná forma bude "john". Obsah tohoto pole se stane vstupem do [vyhledávání příkladů](.\v3-0-dictionary-examples.md).
+  * `normalizedSource`: Řetězec poskytující normalizovaná forma jako zdroj. Například pokud je požadavek "JOHN", normalizovaná forma bude "john". Obsah tohoto pole se stane vstupem do [vyhledávání příkladů](./v3-0-dictionary-examples.md).
     
   * `displaySource`: Řetězec poskytující zdrojový výraz ve formě nejlépe vhodné pro zobrazení koncových uživatelů. Například pokud je vstup "JOHN", zobrazit formulář bude odrážet obvykle správnost názvu: "John". 
 
   * `translations`: Seznam překlady období zdroje. Každý prvek seznamu je objekt s následujícími vlastnostmi:
 
-    * `normalizedTarget`: Řetězec poskytující normalizovaná forma tento termín v cílovém jazyce. Tato hodnota má být použita jako vstup pro [vyhledávání příkladů](.\v3-0-dictionary-examples.md).
+    * `normalizedTarget`: Řetězec poskytující normalizovaná forma tento termín v cílovém jazyce. Tato hodnota má být použita jako vstup pro [vyhledávání příkladů](./v3-0-dictionary-examples.md).
 
     * `displayTarget`: Řetězec poskytující termín v cílovém jazyce a ve formě nejlépe vhodné pro zobrazení koncových uživatelů. Obecně platí, to bude pouze se liší od `normalizedTarget` z hlediska malá a velká písmena. Například vlastní jméno jako "Juan" bude mít `normalizedTarget = "juan"` a `displayTarget = "Juan"`.
 
@@ -125,11 +125,11 @@ Platí následující omezení:
     
     * `backTranslations`: Seznam "zpět"překlady cíle. Například zdroj slova, která cíle jsou dobře převeditelné na. V seznamu je zaručeno, že obsahují slovo zdroj, který byl vyžádán (například pokud zdroj aplikace word se hledá "plout", pak je zaručeno, že "plout" budou `backTranslations` seznamu). Však to není zaručeno, že na první pozici a často nebude. Každý prvek `backTranslations` seznamu je objekt popsal následující vlastnosti:
 
-        * `normalizedText`: Řetězec poskytující normalizovaná forma zdroj termín, který je back překlad cíle. Tato hodnota má být použita jako vstup pro [vyhledávání příkladů](.\v3-0-dictionary-examples.md).        
+        * `normalizedText`: Řetězec poskytující normalizovaná forma zdroj termín, který je back překlad cíle. Tato hodnota má být použita jako vstup pro [vyhledávání příkladů](./v3-0-dictionary-examples.md).        
 
         * `displayText`: Řetězec poskytující zdroje termín, který je back překlad cíle ve formě nejlepší vhodné pro zobrazení koncových uživatelů.
 
-        * `numExamples`: Celé číslo představující počet příklady, které jsou k dispozici pro tento překlad pár. Skutečné příklady musí být načten pomocí samostatné volání [vyhledávání příkladů](.\v3-0-dictionary-examples.md). Číslo je většinou určená pro usnadnění zobrazení v uživatelské prostředí Uživatelské rozhraní může například přidání hypertextového odkazu do back překlad, pokud řadu příkladů je větší než nula a zobrazení zpětného překladu jako prostý text, pokud nejsou žádné příklady. Všimněte si, že je skutečný počet příklady vrácený voláním [vyhledávání příkladů](.\v3-0-dictionary-examples.md) může být kratší než `numExamples`, protože další filtrování se dá v reálném čase, chcete-li odebrat "špatné" příklady.
+        * `numExamples`: Celé číslo představující počet příklady, které jsou k dispozici pro tento překlad pár. Skutečné příklady musí být načten pomocí samostatné volání [vyhledávání příkladů](./v3-0-dictionary-examples.md). Číslo je většinou určená pro usnadnění zobrazení v uživatelské prostředí Uživatelské rozhraní může například přidání hypertextového odkazu do back překlad, pokud řadu příkladů je větší než nula a zobrazení zpětného překladu jako prostý text, pokud nejsou žádné příklady. Všimněte si, že je skutečný počet příklady vrácený voláním [vyhledávání příkladů](./v3-0-dictionary-examples.md) může být kratší než `numExamples`, protože další filtrování se dá v reálném čase, chcete-li odebrat "špatné" příklady.
         
         * `frequencyCount`: Celé číslo představující frekvence tento překlad pár v datech. Hlavním účelem toto pole je poskytnout způsob řazení překlady zpět tak, aby byly první nejčastěji se vyskytujících podmínky uživatelské rozhraní.
 

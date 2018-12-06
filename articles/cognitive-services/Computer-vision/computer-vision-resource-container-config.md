@@ -1,5 +1,5 @@
 ---
-title: Konfigurace kontejnery
+title: Konfigurace kontejnerů
 titlesuffix: Computer Vision - Cognitive Services - Azure
 description: Nastavení konfigurace pro kontejnery v počítačové zpracování obrazu.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 8df293878486a9cd4ded6e899871c30498c4b68f
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 865300f74a74b9768d2d5f5fd532ce9e851b7afb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634989"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964096"
 ---
-# <a name="configure-containers"></a>Konfigurace kontejnery
+# <a name="configure-containers"></a>Konfigurace kontejnerů
 
 Pro počítačové zpracování obrazu poskytuje kontejner rozpoznat Text s společnou architekturu konfigurace, takže můžete snadno konfigurovat a spravovat úložiště, protokolování a telemetrická data a nastavení zabezpečení pro vaše kontejnery.
 
@@ -86,7 +86,7 @@ V následující tabulce jsou popsaná nastavení konfigurace podporované v rá
 
 ## <a name="billing-configuration-setting"></a>Konfigurace nastavení fakturace
 
-`Billing` Nastavení konfigurace Určuje koncový bod identifikátoru URI prostředku pro počítačové zpracování obrazu v Azure používá ke sledování fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný koncový bod identifikátoru URI pro prostředek pro počítačové zpracování obrazu v Azure.
+`Billing` Nastavení konfigurace Určuje koncový bod identifikátoru URI prostředku pro počítačové zpracování obrazu v Azure umožňuje měřit fakturačních údajů pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace a hodnota musí být platný koncový bod identifikátoru URI pro prostředek pro počítačové zpracování obrazu v Azure.
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-configuration-setting) nastavení konfigurace se používají společně a je nutné zadat platné hodnoty pro všechny tři je. jinak nebude možné spustit kontejner. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](computer-vision-how-to-install-containers.md#billing).
@@ -97,6 +97,8 @@ V následující tabulce jsou popsaná nastavení konfigurace podporované v rá
 
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-configuration-setting) nastavení konfigurace se používají společně a je nutné zadat platné hodnoty pro všechny tři je. jinak nebude možné spustit kontejner. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](computer-vision-how-to-install-containers.md#billing).
+
+Kontejnery služby cognitive Services jsou licencovaného v rámci vaší smlouvě upravující používání Azure. Pokud nemáte stávající smlouvy řídící používání Azure, vyjadřujete svůj souhlas, že vaší smlouvě upravující používání Azure se Microsoft Online Subscription Agreement (která zahrnuje podmínky Online služeb). Pro verze Preview souhlasíte také s dodatečných podmínkách použití systémů Microsoft Azure Preview. Pomocí kontejneru vyjadřujete souhlas s těmito podmínkami.
 
 ## <a name="fluentd-configuration-settings"></a>Nastavení konfigurace Fluentd
 

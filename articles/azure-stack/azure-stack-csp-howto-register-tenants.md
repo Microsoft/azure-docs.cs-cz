@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: eef1a2f82dc73a1c53b89bb3c9d145f87212ffcc
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 6f93a72acdcc249720abeec3fe871b7108e2bb29
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498568"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963738"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Přidání tenanta pro využití a fakturaci ke službě Azure Stack
 
@@ -36,7 +36,7 @@ Následující diagram znázorňuje kroky, které musí použít umožňující 
 
 **Postup přidání koncového zákazníka**
 
-![Nastavení poskytovatele cloudových služeb pro sledování využití a spravovat účty zákazníků end](media\azure-stack-csp-enable-billing-usage-tracking\process-csp-enable-billing.png)
+![Nastavení poskytovatele cloudových služeb pro sledování využití a spravovat účty zákazníků end](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
 
 ## <a name="create-a-new-customer-in-partner-center"></a>Vytvoření nového zákazníka v partnerském centru
 
@@ -50,7 +50,7 @@ Po vytvoření záznam zákazníka v partnerském centru, můžete je prodávat 
 ## <a name="create-a-guest-user-in-the-end-customer-directory"></a>Vytvořit uživatele typu Host v adresáři koncový zákazník
 
 Pokud koncového zákazníka spravovat svůj vlastní účet, vytvořte uživatele typu Host do svého adresáře a jim poslat informace. Koncový uživatel potom přidejte hostovaný a zvýšení úrovně oprávnění hostů **vlastníka** k účtu Azure Stack CSP.
- 
+ 
 ## <a name="update-the-registration-with-the-end-customer-subscription"></a>Aktualizace registrace pomocí předplatného zákazníka end
 
 Aktualizujte svou registraci předplatného nového zákazníka. Azure hlásí využití zákazníka pomocí zákaznických identit z centrální partnera. Tento krok zajistí, že využití ze strany jednotlivých zákazníků je nahlášeno za jednotlivé předplatného poskytovatele CSP. Jednodušší sledování uživatele využití a fakturace.
@@ -86,10 +86,10 @@ Konfigurace služby Azure Stack pro podporu uživatelů z více tenantů Azure A
 
 ## <a name="create-a-local-resource-in-the-end-customer-tenant-in-azure-stack"></a>Vytvoření místního prostředku v tenantovi zákazníka end ve službě Azure Stack
 
-Jakmile přidáte nového zákazníka ke službě Azure Stack nebo tenantovi zákazníka end povolila účtu hosta s oprávněními vlastníka, ověřte, že můžete vytvořit prostředek v rámci jejich tenanta. Například může [vytvoření virtuálního počítače s Windows pomocí portálu Azure Stack](user\azure-stack-quick-windows-portal.md).
+Jakmile přidáte nového zákazníka ke službě Azure Stack nebo tenantovi zákazníka end povolila účtu hosta s oprávněními vlastníka, ověřte, že můžete vytvořit prostředek v rámci jejich tenanta. Například může [vytvoření virtuálního počítače s Windows pomocí portálu Azure Stack](user/azure-stack-quick-windows-portal.md).
 
 ## <a name="next-steps"></a>Další postup
 
  - Pokud se spouštějí v procesu registrace, projděte chybové zprávy, najdete v článku [chybových zpráv registrace klienta](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes).
  - Další informace o tom, jak načíst informace o využití prostředků ze služby Azure Stack, najdete v článku [využití a fakturace ve službě Azure Stack](azure-stack-billing-and-chargeback.md).
- - Pokud chcete zkontrolovat, jak koncového zákazníka může přidat, jako zprostředkovatel kryptografických služeb, jako správce pro své služby Azure Stack, tenanta naleznete v tématu [povolit poskytovatele cloudové služby ke správě vašich předplatných Azure Stack](user\azure-stack-csp-enable-billing-usage-tracking.md).
+ - Pokud chcete zkontrolovat, jak koncového zákazníka může přidat, jako zprostředkovatel kryptografických služeb, jako správce pro své služby Azure Stack, tenanta naleznete v tématu [povolit poskytovatele cloudové služby ke správě vašich předplatných Azure Stack](user/azure-stack-csp-enable-billing-usage-tracking.md).

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: c91f92a519c91f4c0fe32ed102c5bb9fab528868
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 740a3ce36dde953cb92c52a10cbebf12544adae0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614799"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968148"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Offline aktualizace služby Azure App Service ve službě Azure Stack
 
@@ -101,7 +101,7 @@ Chcete-li upgradovat službu App Service v odpojeném prostředí, musíte nejd�
 
    1. Klikněte na tlačítko **připojit** vedle **předplatná Azure Stack** pole.
         * Pokud používáte Azure Active Directory (Azure AD), zadejte účet správce Azure AD a heslo, které jste zadali při nasazení Azure Stack. Klikněte na tlačítko **přihlášení**.
-        * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Příklad: *cloudadmin@azurestack.local*. Zadejte své heslo a klikněte na tlačítko **Sign In**.
+        * Pokud používáte služby Active Directory Federation Services (AD FS), zadejte účet správce. Například _cloudadmin@azurestack.local_. Zadejte své heslo a klikněte na tlačítko **Sign In**.
    2. V **předplatná Azure Stack** vyberte **výchozí předplatné poskytovatele**.
    3. V **lokality Azure Stack** , vyberte umístění, které odpovídá nasazujete do oblasti. Vyberte například **místní** Pokud vaše nasazení Azure Stack Development Kit.
    4. Pokud se detekuje existující nasazení služby App Service, klikněte prostředek skupiny a účet úložiště bude vyplní a šedě.

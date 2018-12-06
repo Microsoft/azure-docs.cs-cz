@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 0b65f37310b911184c05fd8fb8554eeb824814b8
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 185c4685de0c889c3b6e7b173445546ed5b7d921
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364808"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955407"
 ---
 # <a name="advanced-azure-stack-development-kit-evaluation-tasks"></a>Pokročilé úlohy hodnocení služby Azure Stack Development Kit
 Po získané znalosti s možnostmi a základními funkcemi služby Azure Stack Development Kit (ASDK) můžete lépe pochopíte, další služby Azure Stack při testování pokročilejší scénáře. Tyto pokročilé úlohy hodnocení jsou plně popsány v dokumentaci k Azure Stack – operátor.
@@ -31,17 +31,18 @@ Po získané znalosti s možnostmi a základními funkcemi služby Azure Stack D
 ## <a name="delegate-offers-in-azure-stack"></a>Delegování nabídek v Azure Stacku
 Jako operátor Azure stacku často chcete umístit jiní lidé starosti vytvoření nabídky a přihlašování uživatelů. Například pokud jste poskytovatel služeb, může být vhodné prodejci v systému k podepisování zákazníci se těmito věcmi a spravovat za vás. Nebo pokud jste součástí centrální skupina IT v organizaci, může být vhodné dceřiné společnosti k registraci uživatele bez vašeho zásahu.
 
-[Delegování nabídek v Azure stacku](.\.\azure-stack-delegated-provider.md) vám pomůže s těmito úkoly tak, že je to možné k dosažení a správě více uživatelů, než je možné přímo. 
+[Delegování nabídek v Azure stacku](../azure-stack-delegated-provider.md) vám pomůže s těmito úkoly tak, že je to možné k dosažení a správě více uživatelů, než je možné přímo.
 
 ## <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Zpřístupnění databáze SQL pro vaše uživatele Azure stacku
-Jako operátor Azure stacku, můžete vytvořit nabídek, které uživatelům (tenantů) vytvářet databáze SQL, které můžete použít s jejich nativně cloudové aplikace, weby a úlohy. Tím, že poskytuje tyto databáze vlastní, na vyžádání, založené na cloudu pro vaše uživatele, můžete je šetřit čas i prostředky. 
+Jako operátor Azure stacku, můžete vytvořit nabídek, které uživatelům (tenantů) vytvářet databáze SQL, které můžete použít s jejich nativně cloudové aplikace, weby a úlohy. Tím, že poskytuje tyto databáze vlastní, na vyžádání, založené na cloudu pro vaše uživatele, můžete je šetřit čas i prostředky.
 
-Použití adaptéru poskytovatele prostředků SQL serveru do [zpřístupnit databáze SQL pro vaše uživatele Azure stacku](.\.\azure-stack-tutorial-sql-server.md) jako službu Azure Stack. Po instalaci poskytovatele prostředků připojení k jedné nebo více instancí systému SQL Server.
+Použití adaptéru poskytovatele prostředků SQL serveru do [zpřístupnit databáze SQL pro vaše uživatele Azure stacku](../azure-stack-tutorial-sql-server.md) jako službu Azure Stack. Po instalaci poskytovatele prostředků připojení k jedné nebo více instancí systému SQL Server.
 
 ## <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Zpřístupnění webové aplikace a aplikace API pro vaše uživatele Azure stacku
 Jako operátor Azure stacku, můžete vytvořit nabídek, které uživatelé mohli vytvořit Azure Functions a rozhraní API a webové aplikace (klienty). Tím, že poskytuje přístup k těmto aplikacím na vyžádání, založené na cloudu pro vaše uživatele, můžete je šetřit čas i prostředky.
 
-Nasazení poskytovatele prostředků App Service k [zpřístupnit webových aplikací a API aplikací uživatelům Azure stacku](.\.\azure-stack-tutorial-app-service.md)
+Nasazení poskytovatele prostředků App Service k [zpřístupnit webových aplikací a API aplikací uživatelům Azure stacku](../azure-stack-tutorial-app-service.md)
 
 ## <a name="next-steps"></a>Další postup
-[Další informace o nabízení služeb pomocí integrované systémy Azure Stack](.\.\azure-stack-offer-services-overview.md)
+
+[Další informace o nabízení služeb pomocí integrované systémy Azure Stack](../azure-stack-offer-services-overview.md)

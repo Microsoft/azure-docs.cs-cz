@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ef9fe0e05343f9c99656634a075b1bd464a13c7e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: c26dcbc2fab7cff3134846234cafaa481fd5ba1a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379583"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972023"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Příprava nasazení certifikátů Azure Stack PKI
 Soubory certifikátů [získané z certifikační Autority podle výběru](azure-stack-get-pki-certs.md) musí importovat a exportovat s vlastnostmi odpovídající požadavky na certifikát služby Azure Stack.
@@ -38,15 +38,15 @@ Pomocí těchto kroků můžete připravit a ověřování certifikátů Azure S
 
 1. V **Průvodce importem certifikátu**vyberte **místního počítače** jako umístění importu. Vyberte **Další**. Na následujícím obrázku klikněte na tlačítko Další akci.
 
-    ![Umístění importu v místním počítači](.\media\prepare-pki-certs\1.png)
+    ![Umístění importu v místním počítači](./media/prepare-pki-certs/1.png)
 
 1.  Zvolte **všechny certifikáty umístit v následujícím úložišti** a pak vyberte **vztah důvěryhodnosti podnikové** jako umístění. Klikněte na tlačítko **OK** zavřete dialogové okno pro výběr úložiště certifikátů a pak **Další**.
 
-    ![Konfigurace úložiště certifikátů](.\media\prepare-pki-certs\3.png)
+    ![Konfigurace úložiště certifikátů](./media/prepare-pki-certs/3.png)
 
     a. Pokud importujete PFX, zobrazí se další dialogového okna. Na **ochrana privátního klíče** stránky, zadejte heslo pro certifikát soubory a pak povolte **označit tento klíč jako exportovatelný. To umožňuje zálohovat nebo přenést vaše klíče později** možnost. Vyberte **Další**.
 
-    ![Označit klíč jako exportovatelný](.\media\prepare-pki-certs\2.png)
+    ![Označit klíč jako exportovatelný](./media/prepare-pki-certs/2.png)
 
 1. Kliknutím na tlačítko Dokončit bylo možné import dokončit.
 
@@ -58,11 +58,11 @@ Otevřete konzolu MMC Správce certifikátů a připojení k úložišti certifi
 
 1. Klikněte na soubor, přidat nebo odebrat modul Snap-In, pak vyberte certifikáty, klikněte na tlačítko Přidat.
 
-    ![Přidat modul Snap-in Certifikáty](.\media\prepare-pki-certs\mmc-2.png)
+    ![Přidat modul Snap-in Certifikáty](./media/prepare-pki-certs/mmc-2.png)
  
 1. Zvolte účet počítače, klikněte na tlačítko Další vybrat místní počítač pak dokončit. Klikněte na tlačítko ok zavřete stránku Přidat/odebrat modul Snap-In.
 
-    ![Přidat modul Snap-in Certifikáty](.\media\prepare-pki-certs\mmc-3.png)
+    ![Přidat modul Snap-in Certifikáty](./media/prepare-pki-certs/mmc-3.png)
 
 1. Přejděte na certifikáty > důvěřovat Enterprise > umístění certifikátu. Ověřte, že se zobrazí váš certifikát na pravé straně.
 

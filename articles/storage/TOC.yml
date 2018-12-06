@@ -1,15 +1,17 @@
+items:
 - name: Dokumentace k Azure Storage
   href: index.yml
 - name: Přehled
   items:
-    - name: Úvod
-      href: ./common/storage-introduction.md
-    - name: 'Výběr objektů blob, souborů nebo disků'
-      href: ./common/storage-decide-blobs-files-disks.md
+  - name: Úvod
+    href: ./common/storage-introduction.md
+  - name: Výběr objektů blob, souborů nebo disků
+    href: ./common/storage-decide-blobs-files-disks.md
+  expanded: true
 - name: Objekty blob
-  href: ./blobs/storage-blobs-introduction.md
+  href: ./blobs/storage-blobs-overview.md
 - name: Data Lake Storage Gen2
-  href: ./data-lake-storage/introduction.md
+  href: ./blobs/data-lake-storage-introduction.md
 - name: Soubory
   href: ./files/storage-files-introduction.md
 - name: Fronty
@@ -18,7 +20,13 @@
   href: ./tables/table-storage-overview.md
 - name: Disky
   items:
-    - name: Windows
-      href: ../virtual-machines/windows/about-disks-and-vhds.md
-    - name: Linux
-      href: ../virtual-machines/linux/about-disks-and-vhds.md
+  - name: Windows
+    href: ../virtual-machines/windows/about-disks-and-vhds.md
+  - name: Linux
+    href: ../virtual-machines/linux/about-disks-and-vhds.md
+ms.openlocfilehash: 237bb82df1456ce816fd367cfa5224fcdc4b4e41
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955237"

@@ -1,17 +1,17 @@
 ---
-title: Skript Azure CLI – Vytvoření zásady převzetí služeb při selhání pro zajištění vysoké dostupnosti | Microsoft Docs
+title: Skript Azure CLI – vytvoření zásady převzetí služeb při selhání pro zajištění vysoké dostupnosti
 description: Ukázkový skript Azure CLI – Vytvoření zásady převzetí služeb při selhání pro zajištění vysoké dostupnosti
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: abfe386c438e943cbe481168daaa4c58a39ed44f
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 613177f61e9b50af7f671b3c0f20c83a97ac6133
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51014308"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969256"
 ---
 # <a name="create-a-failover-policy-for-high-availability-using-the-azure-cli"></a>Vytvoření zásady převzetí služeb při selhání pro zajištění vysoké dostupnosti pomocí Azure CLI
 
@@ -44,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az cosmosdb update](/cli/azure/cosmosdb#az-cosmosdb-update) | Aktualizuje účet služby Azure Cosmos DB. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

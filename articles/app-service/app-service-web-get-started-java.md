@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 854ae54992a1389ec7c7f7892c738d070421264d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
-ms.translationtype: HT
+ms.openlocfilehash: 4b812cfa2c551e9d2f365f74bebee96626f4dd94
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283924"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968304"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Vytvoření první webové Java aplikace ve službě Azure
 
-[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start ukazuje, jak nasadit webovou Java aplikaci do služby App Service pomocí [integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/).
+[Azure Web Apps](app-service-web-overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů. Tento kurz Rychlý start ukazuje, jak nasadit webovou Java aplikaci do služby App Service pomocí [integrovaného vývojového prostředí Eclipse pro vývojáře na platformě Java EE](https://www.eclipse.org/).
 
 > [!NOTE]
 >
@@ -41,7 +41,7 @@ Po dokončení tohoto rychlého startu bude vaše aplikace při zobrazení ve we
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba nainstalovat:
 
-* Bezplatné <a href="http://www.eclipse.org/downloads/" target="_blank">integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE</a>. Tento kurz Rychlý start používá Eclipse Neon.
+* Bezplatné <a href="https://www.eclipse.org/downloads/" target="_blank">integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE</a>. Tento kurz Rychlý start používá Eclipse Neon.
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Sadu nástrojů Azure pro Eclipse</a>.
 
 > [!NOTE]
@@ -213,7 +213,7 @@ Zobrazí se stránka **Přehled**. Tato stránka poskytuje přehled toho, jak si
 
 [!INCLUDE [clean-up-section-portal-web-app](../../includes/clean-up-section-portal-web-app.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Mapování vlastní domény](app-service-web-tutorial-custom-domain.md)

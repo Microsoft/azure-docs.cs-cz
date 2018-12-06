@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2fdd8a586c9c8dae0ab9cec1176b71a137893b17
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 8243ee2e657f42959c9f0a71c7c50fc1a2dda737
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384973"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966401"
 documentType: LandingData
 title: Dokumentace k databázi Azure Cosmos
 metadata:
@@ -13,13 +13,10 @@ metadata:
   description: Naučte se pomocí databáze Azure Cosmos vytvářet globálně distribuované databáze s více modely. V kurzech se dozvíte, jak sestavit a dotazovat databáze dokumentů, klíčů a hodnot nebo grafů.
   services: cosmos-db
   author: SnehaGunda
-  manager: kfile
+  ms.author: sngun
   ms.service: cosmos-db
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/26/2018
-  ms.author: sngun
 abstract:
   description: Azure Cosmos DB je globálně distribuovaná a databázová služba pro více modelů, která dokumentační databáze, databáze typu klíč-hodnota, databáze širokých sloupců a databáze grafů. Naučte se používat Azure Cosmos DB prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
   aside:
@@ -161,7 +158,7 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: " Vytvoření škálovatelné databáze Azure Cosmos DB"
+    - title: " Vytvoření škálovatelné databáze Azure Cosmos DB"
       href: /learn/modules/create-cosmos-db-for-scale/
       image:
         src: /learn/achievements/create-cosmos-db-for-scale.svg

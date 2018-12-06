@@ -1,18 +1,18 @@
 ---
-title: Skript Azure CLI – Vytvoření účtu, databáze a kontejneru rozhraní SQL API služby Azure Cosmos DB | Microsoft Docs
+title: Skript Azure CLI – vytvoření účtu rozhraní SQL API služby Azure Cosmos DB, databáze a kontejnerů
 description: Ukázkový skript Azure CLI – Vytvoření účtu, databáze a kontejneru rozhraní SQL API služby Azure Cosmos DB
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: b38c836efce9f0bd2e29dcfa8c88f6894cf29b38
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 0a39786d2ccc8b0b57f539b10ee12d7b55bba381
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016365"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964590"
 ---
 # <a name="azure-cosmos-db-create-a-sql-api-account-using-cli"></a>Azure Cosmos DB: Vytvoření účtu rozhraní SQL API pomocí rozhraní příkazového řádku
 
@@ -46,7 +46,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az cosmosdb collection create](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-create) | Vytvoří kontejner Azure Cosmos DB. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

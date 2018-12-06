@@ -2,18 +2,18 @@
 title: Zálohování sdílených složek Azure
 description: Tento článek podrobně popisuje, jak zálohovat a obnovovat sdílené složky Azure, a vysvětluje úlohy správy.
 services: backup
-author: markgalioto
-ms.author: markgal
+author: rayne-wiselman
+ms.author: raynew
 ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 14a6e295eebcc3a7cb3f190a09afd65b0e959d7e
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 94a3282451a0efcc9209c4aac3d316e40560495f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265334"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972118"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -52,7 +52,7 @@ Veškerá zálohovaná data se ukládají v trezorech služby Recovery Services.
 
     ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/overview-backup-page.png)
 
-2. V nabídce Cíl zálohování v rozevíracím seznamu **Co chcete zálohovat?** zvolte Sdílená složka Azure.
+2. V **cíle zálohování** nabídky, z **co chcete zálohovat?**, volba sdílené složky Azure.
 
     ![Volba sdílené složky Azure jako cíle zálohování](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
 
@@ -70,14 +70,14 @@ Veškerá zálohovaná data se ukládají v trezorech služby Recovery Services.
 
 5. V seznamu **Sdílené složky** vyberte jednu nebo několik sdílených složek, které chcete zálohovat, a klikněte na **OK**.
 
-6. Po zvolení sdílených složek se nabídka Zálohování přepne na **Zásady zálohování**. V této nabídce buď vyberte existující zásadu zálohování, nebo vytvořte novou, a pak klikněte na **Povolit zálohování**. 
+6. Po zvolení sdílených složek se nabídka Zálohování přepne na **Zásady zálohování**. V této nabídce buď vyberte existující zásadu zálohování, nebo vytvořte novou, a pak klikněte na **Povolit zálohování**.
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/apply-backup-policy.png)
 
     Po vytvoření zásady zálohování se v naplánovaném čase pořídí snímek sdílených složek a po zvolenou dobu se bude uchovávat bod obnovení.
 
 ## <a name="create-an-on-demand-backup"></a>Vytvoření zálohy na vyžádání
-Příležitostně můžete chtít vygenerovat snímek zálohy nebo bod obnovení mimo dobu naplánovanou v zásadě zálohování. Obvyklá doba pro vygenerování zálohy na vyžádání je ihned po konfiguraci zásady zálohování. V závislosti na plánu v zásadě zálohování může pořízení snímku trvat hodiny nebo dny. Pokud chcete svá data chránit před zapojením zásady zálohování, vyvolejte zálohování na vyžádání. Vytvoření zálohy na vyžádání se často vyžaduje před provedením plánovaných změn sdílených složek. 
+Příležitostně můžete chtít vygenerovat snímek zálohy nebo bod obnovení mimo dobu naplánovanou v zásadě zálohování. Obvyklá doba pro vygenerování zálohy na vyžádání je ihned po konfiguraci zásady zálohování. V závislosti na plánu v zásadě zálohování může pořízení snímku trvat hodiny nebo dny. Pokud chcete svá data chránit před zapojením zásady zálohování, vyvolejte zálohování na vyžádání. Vytvoření zálohy na vyžádání se často vyžaduje před provedením plánovaných změn sdílených složek.
 
 ### <a name="to-create-an-on-demand-backup"></a>Vytvoření zálohy na vyžádání
 
@@ -93,8 +93,8 @@ Příležitostně můžete chtít vygenerovat snímek zálohy nebo bod obnovení
 
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/backup-item-menu.png)
 
-4. V nabídce Zálohovaná položka klikněte na **Zálohovat nyní**. Protože se jedná o úlohu zálohování na vyžádání, není k bodu obnovení přidružená žádná zásada uchovávání. Otevře se dialogové okno **Zálohovat nyní**. Zadejte poslední den, ke kterému chcete uchovávat bod obnovení. 
-  
+4. V nabídce Zálohovaná položka klikněte na **Zálohovat nyní**. Protože se jedná o úlohu zálohování na vyžádání, není k bodu obnovení přidružená žádná zásada uchovávání. Otevře se dialogové okno **Zálohovat nyní**. Zadejte poslední den, ke kterému chcete uchovávat bod obnovení.
+
    ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/backup-now-menu.png)
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Obnovení sdílené složky Azure ze zálohy
@@ -162,15 +162,15 @@ Zastavení ochrany sdílené složky Azure:
 
 1. Otevřete trezor služby Recovery Services obsahující body obnovení sdílené složky a klikněte na **Zálohování položek**. Zobrazí se seznam typů zálohovaných položek.
 
-   ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/list-of-backup-items.png) 
+   ![přidružení sdílené složky Azure k trezoru kliknutím na Zálohovat](./media/backup-file-shares/list-of-backup-items.png)
 
 2. V seznamu **Typ správy záloh** vyberte **Azure Storage (Soubory Azure)**. Zobrazí se seznam zálohovaných položek pro (Azure Storage (Soubory Azure)).
 
-   ![otevření další nabídky kliknutím na položku](./media/backup-file-shares/azure-file-share-backup-items.png) 
+   ![otevření další nabídky kliknutím na položku](./media/backup-file-shares/azure-file-share-backup-items.png)
 
 3. V seznamu Zálohované položky (Azure Storage (Soubory Azure)) vyberte zálohovanou položku, kterou chcete zastavit.
 
-4. V položkách sdílené složky Azure klikněte na nabídku **Další** a vyberte **Zastavit zálohování**. 
+4. V položkách sdílené složky Azure klikněte na nabídku **Další** a vyberte **Zastavit zálohování**.
 
    ![otevření další nabídky kliknutím na položku](./media/backup-file-shares/stop-backup.png)
 
@@ -186,7 +186,7 @@ Pokud chcete obnovit ochranu sdílené složky, přejděte do části Zálohovan
 
    ![Výběr úlohy, kterou chcete monitorovat](./media/backup-file-shares/resume-backup-job.png)
 
-### <a name="delete-backup-data"></a>Odstranění zálohovaných dat 
+### <a name="delete-backup-data"></a>Odstranění zálohovaných dat
 
 Zálohu sdílené složky můžete odstranit během úlohy zastavení zálohování nebo kdykoli po zastavení ochrany. Před odstraněním bodů obnovení dokonce může být užitečné několik dnů nebo týdnů počkat. Na rozdíl od obnovování bodů obnovení nemůžete při odstraňování zálohovaných dat zvolit konkrétní body obnovení, které se mají odstranit. Pokud se rozhodnete odstranit zálohovaná data, odstraníte všechny body obnovení přidružené k příslušné položce.
 
@@ -196,5 +196,3 @@ Následující postup předpokládá, že se úloha zálohování virtuálního 
 Další informace o sdílených složkách Azure najdete tady:
 - [Nejčastější dotazy k zálohování sdílených složek Azure](backup-azure-files-faq.md)
 - [Řešení potíží se zálohováním sdílených složek Azure](troubleshoot-azure-files.md)
- 
-

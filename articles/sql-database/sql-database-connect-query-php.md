@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/28/2018
-ms.openlocfilehash: be3ac9fab6c89c65ad9673811e108cefe2c80d00
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b768b50af7ad6736e5cc3c885e6ac5016976f48a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724243"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958538"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Rychlý start: Použití PHP k dotazování databáze SQL Azure
 
@@ -32,9 +32,9 @@ K dokončení této ukázce, ujistěte se, že jsou splněné následující po�
 
 - Související s PHP nainstalován software pro váš operační systém:
 
-    - **MacOS**, nainstalujte Homebrew a PHP, ovladač ODBC a Nástroj SQLCMD, potom nainstalujte ovladač PHP pro SQL Server. Viz [kroky 1.2, 1.3 a 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/mac/).
+    - **MacOS**, nainstalujte PHP, ovladač ODBC, potom nainstalujte ovladač PHP pro SQL Server. Zobrazit [kroku 1, 2 a 3](/sql/connect/php/installation-tutorial-linux-mac).
 
-    - **Ubuntu**, nainstalujte PHP a další požadované balíčky a potom nainstalujte ovladač PHP pro SQL Server. Viz [kroky 1.2 a 2.1](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/).
+    - **Linux**, nainstalujte PHP, ovladač ODBC, potom nainstalujte ovladač PHP pro SQL Server. Zobrazit [kroku 1, 2 a 3](/sql/connect/php/installation-tutorial-linux-mac).
 
     - **Windows**, nainstalujte PHP pro službu IIS Express a Chocolatey a potom nainstalujte ovladač ODBC a Nástroj SQLCMD. Viz [kroky 1.2 a 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 

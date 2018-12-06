@@ -10,24 +10,24 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
-ms.openlocfilehash: 0025cdcfaa64a262a5ca54ab4db5a84f6a5768ba
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7e9181b6e805a768ca5dd8ed558b8feea45f22d3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49338909"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960903"
 ---
 # <a name="tagging-images"></a>Označování obrázků značkami
 
-Počítačové zpracování obrazu vrací značky na základě na více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Při značky jsou nejednoznačný nebo není, rozhraní API poskytne "pomocné parametry" pro objasnění významu značky v kontextu známé nastavení. Značky nejsou uspořádaná jako taxonomie a neexistuje žádná hierarchie dědičnosti. Kolekce obsahu značek tvoří základ pro bitovou kopii "popisu" zobrazí jako lidského čitelné jazyk, ve formátu v úplných větách. Všimněte si, že v tomto okamžiku angličtina je jediný podporovaný jazyk pro popis obrázku.
+Počítačové zpracování obrazu vrací značky na základě tisíce rozpoznatelných objektů, živých bytostí, krajin a akcí. Pokud jsou značky nejasné nebo nejsou obecně známé, nabídne API v odpovědi nápovědu, která objasní význam značky v kontextu známého prostředí. Značky nejsou uspořádané podle taxonomie a neexistují hierarchie dědění. Shromážděné značky obsahu tvoří základ „popisu“ obrázku, který se zobrazí v čitelném jazyce formátovaném do celých vět. V tuto chvíli je jediným podporovaným jazykem používaným k popisu obrázku angličtina.
 
-Po nahrání obrázku nebo zadáte adresu URL obrázku, výstupní algoritmy pro počítačové zpracování obrazu značky na základě objektů, živých bytostí a akcí identifikované v bitové kopii. Označování není omezena pouze na hlavní předmět, jako je osoba v popředí, ale také zahrnuje nastavení (vnitřních nebo venkovní), o nábytek, nástroje, zařízení, zvířata, příslušenství, miniaplikace atd.
+Po nahrání obrázku nebo zadáte adresu URL obrázku, výstupní algoritmy pro počítačové zpracování obrazu značky na základě objektů, živých bytostí a akcí identifikované v bitové kopii. Značky se neomezují na hlavní předmět, například postavu v popředí, ale zahrnují také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.
 
 ## <a name="image-tagging-example"></a>Příklad označení Image
 
 Následující odpověď JSON ukazuje, co pro počítačové zpracování obrazu vrací při označování vizuální funkce v na obrázku.
 
-![House_Yard](./Images/house_yard.png).
+![Dvůr s domem](./Images/house_yard.png).
 
 ```json
 {

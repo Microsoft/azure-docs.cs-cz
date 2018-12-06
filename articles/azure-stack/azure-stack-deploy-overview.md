@@ -16,29 +16,29 @@ ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.custom: mvc
 ms.reviewer: misainat
-ms.openlocfilehash: 8b33937a4da807578d371a95f2c06de451404036
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 44fed3311234e1a64cb46c3403f39a9e269d189b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037460"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956921"
 ---
 # <a name="quickstart-evaluate-the-azure-stack-development-kit"></a>Rychlý start: vyhodnocení Azure Stack Development Kit
 
-[Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) je vývoj a testování prostředí, které můžete nasadit k vyhodnocení a k předvedení funkcí služby Azure Stack a služeb. Abyste mohli začít s ASDK, budete muset Příprava hostitelském hardwaru počítače a pak spusťte některé skripty (instalace trvá několik hodin). Potom můžete přihlásit na portály správci nebo uživateli chcete začít používat Azure Stack.
+[Azure Stack Development Kit (ASDK)](./asdk/asdk-what-is.md) je vývoj a testování prostředí, které můžete nasadit k vyhodnocení a k předvedení funkcí služby Azure Stack a služeb. Abyste mohli začít s ASDK, budete muset Příprava hostitelském hardwaru počítače a pak spusťte některé skripty (instalace trvá několik hodin). Potom můžete přihlásit na portály správci nebo uživateli chcete začít používat Azure Stack.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="asdk-host-computer-requirements"></a>Požadavky na počítač ASDK hostitele
 
-Před instalací ASDK, budete muset připravit počítač, který bude hostitelem development kit. Development kit hostitelský počítač musí splňovat hardwaru, softwaru, a podle požadavků na síť  **[zkontrolujte aspektech plánování nasazení ASDK](.\asdk\asdk-deploy-considerations.md)**.
+Před instalací ASDK, budete muset připravit počítač, který bude hostitelem development kit. Development kit hostitelský počítač musí splňovat hardwaru, softwaru, a podle požadavků na síť  **[zkontrolujte aspektech plánování nasazení ASDK](./asdk/asdk-deploy-considerations.md)**.
 
 > [!TIP]
 > Můžete použít [Zkontrolujte požadavky na nasazení služby Azure Stack nástroj](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) po instalaci operačního systému na vývojovém počítači hostitele kit potvrďte, že váš hardware splňuje všechny požadavky.
 
 ### <a name="account-requirements"></a>Požadavky na účet
 
-Také musíte zvolit mezi použitím nástrojů Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) jako řešení identit pro vaše nasazení. Zkontrolujte požadavky na účet v  **[aspektech plánování nasazení](.\asdk\asdk-deploy-considerations.md#account-requirements)**
+Také musíte zvolit mezi použitím nástrojů Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) jako řešení identit pro vaše nasazení. Zkontrolujte požadavky na účet v  **[aspektech plánování nasazení](./asdk/asdk-deploy-considerations.md#account-requirements)**
 
 ## <a name="download-and-extract-the-deployment-package"></a>Stáhněte a rozbalte balíček pro nasazení
 
@@ -46,22 +46,22 @@ Jakmile připravíte hostitelského počítače development kit, stažení a ext
 
 Balíček pro nasazení můžete stáhnout na hostitele development kit, nebo do jiného počítače. Soubory extrahované nasazení trvat až 60 GB volného místa na disku, takže na jiném počítači může pomoct snížit požadavky na úložiště na hostiteli development kit.
 
-**[Stažení a extrakci Azure Stack Development Kit (ASDK)](.\asdk\asdk-download.md)**
+**[Stažení a extrakci Azure Stack Development Kit (ASDK)](./asdk/asdk-download.md)**
 
 ## <a name="prepare-the-host-computer"></a>Příprava hostitelském počítači
 
 Před instalací ASDK hostitelského prostředí musí být připravené a systém nakonfigurován na spuštění ze development kit virtuálního pevného disku. Po restartování hostitele se spouští z CloudBuilder.vhdx a může začít nasazovat ASDK.
 
-**[Příprava hostitelském počítači ASDK](.\asdk\asdk-prepare-host.md)**
+**[Příprava hostitelském počítači ASDK](./asdk/asdk-prepare-host.md)**
 
 ## <a name="install-the-asdk-on-the-host-computer"></a>Nainstalujte ASDK v hostitelském počítači
 
-Po spuštění počítače hostitele z virtuálního pevného disku, můžete nasadit vývojová sada Cloudbuilder virtuální prostředí. Můžete nasadit ASDK pomocí grafického uživatelského rozhraní (GUI), spuštěním skriptu prostředí PowerShell asdk installer.ps1 osobně, nebo z [příkazového řádku Powershellu](.\asdk\asdk-deploy-powershell.md)
+Po spuštění počítače hostitele z virtuálního pevného disku, můžete nasadit vývojová sada Cloudbuilder virtuální prostředí. Můžete nasadit ASDK pomocí grafického uživatelského rozhraní (GUI), spuštěním skriptu prostředí PowerShell asdk installer.ps1 osobně, nebo z [příkazového řádku Powershellu](./asdk/asdk-deploy-powershell.md)
 
 > [!NOTE]
-> Po spuštění hostitele z Cloudbuilder.vhdx image, máte možnost konfigurace [nastavení telemetrie Azure Stack](.\asdk\asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *před* instalaci ASDK.
+> Po spuštění hostitele z Cloudbuilder.vhdx image, máte možnost konfigurace [nastavení telemetrie Azure Stack](./asdk/asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *před* instalaci ASDK.
 
-**[Instalace sady Azure Stack Development Kit (ASDK)](.\asdk\asdk-install.md)**
+**[Instalace sady Azure Stack Development Kit (ASDK)](./asdk/asdk-install.md)**
 
 ## <a name="perform-post-deployment-configurations"></a>Provedení konfigurace po nasazení
 
@@ -80,15 +80,15 @@ Pro nasazení, které používá služby Azure AD je nutné aktivovat i Azure St
 Měli byste resetovat zásady vypršení platnosti hesla, abyste měli jistotu, že heslo pro hostitele development kit platnost pasu nevyprší před vám zkušební období skončí.
 
 > [!NOTE]
-> Máte také možnost konfigurace [nastavení telemetrie Azure Stack](.\asdk\asdk-telemetry.md#enable-or-disable-telemetry-after-deployment) *po* instalace ASDK.
+> Máte také možnost konfigurace [nastavení telemetrie Azure Stack](./asdk/asdk-telemetry.md#enable-or-disable-telemetry-after-deployment) *po* instalace ASDK.
 
-**[Úlohy nasazení ASDK příspěvku](.\asdk\asdk-post-deploy.md)**
+**[Úlohy nasazení ASDK příspěvku](./asdk/asdk-post-deploy.md)**
 
 ## <a name="register-with-azure"></a>Zaregistrujte v Azure
 
-Azure Stack musí registraci v Azure, abyste mohli [stažení položek z Azure marketplace](.\asdk\asdk-marketplace-item.md) do služby Azure Stack.
+Azure Stack musí registraci v Azure, abyste mohli [stažení položek z Azure marketplace](./asdk/asdk-marketplace-item.md) do služby Azure Stack.
 
-**[Registrace Azure Stack s Azure](.\asdk\asdk-register.md)**
+**[Registrace Azure Stack s Azure](./asdk/asdk-register.md)**
 
 ## <a name="next-steps"></a>Další postup
 

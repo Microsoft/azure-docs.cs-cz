@@ -16,15 +16,15 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 62eccba1b876ca8272dacbbd97a1d28c8b796081
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 345d62f4045e7b9279d52acf70cc340d088f5db0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138306"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961327"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Co je Azure Stack Development Kit?
-[Microsoft Azure Stack integrované systémy](.\.\azure-stack-poc.md) rozsah od 4 až 16 uzlů a společně podporuje hardwarových partnerů a Microsoft. Použijte integrované systémy Azure Stack umožňuje nové scénáře pro vaše produkční úlohy. Pokud je pro vás, operátorovi služby Azure Stack, který spravuje integrovaných systémů infrastruktury a nabízí služby, přečtěte si naše [dokumentace operátora k](https://docs.microsoft.com/azure/azure-stack).
+[Microsoft Azure Stack integrované systémy](../azure-stack-poc.md) rozsah od 4 až 16 uzlů a společně podporuje hardwarových partnerů a Microsoft. Použijte integrované systémy Azure Stack umožňuje nové scénáře pro vaše produkční úlohy. Pokud je pro vás, operátorovi služby Azure Stack, který spravuje integrovaných systémů infrastruktury a nabízí služby, přečtěte si naše [dokumentace operátora k](https://docs.microsoft.com/azure/azure-stack).
 
 Azure Stack Development Kit (ASDK) je jedním uzlem nasazení služby Azure Stack, který můžete stáhnout a použít **zdarma**. Ve virtuálních počítačích spuštěn v počítači serveru jednoho hostitele, které musí splňovat nebo překračovat jsou nainstalovány všechny součásti ASDK [minimální požadavky na hardware](asdk-deploy-considerations.md#hardware). Je určená ASDK a poskytuje prostředí, ve kterém můžete vyhodnotit Azure Stack a vývoj moderních aplikací pomocí rozhraní API a nástrojů konzistentní s Azure v *-li se o neprodukční* prostředí. 
 
@@ -48,9 +48,9 @@ Jednouzlový ASDK nasazení se liší od nasazení Azure Stack na víc uzlů v n
 |Popis|ASDK|Azure Stack s několika uzly|
 |-----|-----|-----|
 |**Škálování**|Na počítači jedním uzlem serveru jsou nainstalovány všechny součásti.|Může být v rozsahu od 4 až 16 uzlů.|
-|**Odolnost**|Konfigurace s jedním uzlem nebude poskytovat vysokou dostupnost|[Zajistit vysokou dostupnost](.\.\azure-stack-key-features.md#high-availability-for-azure-stack) funkce jsou podporovány.|
-|**Sítě**|ASDK používá virtuální počítač s názvem AzS-BGPNAT01 směrovat veškerý přenos v síti ASDK. Neexistují žádné požadavky na další přepínače.|Virtuální počítač AzS-BGPNAT01 neexistuje v nasazení na víc uzlů. Složitější [síťová infrastruktura směrování](.\.\azure-stack-network.md#network-infrastructure) je nezbytné včetně Top-Of-Rack (TOR), řadiče pro správu základní desky (BMC) a přepínače ohraničení (síti datového centra).|
-|**Proces opravy a aktualizace**|Pokud chcete přesunout na novou verzi ASDK, je nutné znovu nasadit ASDK na hostitelském počítači development kit.|[Opravy a aktualizace](.\.\azure-stack-updates.md) proces používá k aktualizaci nainstalované verze služby Azure Stack.|
+|**Odolnost**|Konfigurace s jedním uzlem nebude poskytovat vysokou dostupnost|[Zajistit vysokou dostupnost](../azure-stack-key-features.md#high-availability-for-azure-stack) funkce jsou podporovány.|
+|**Sítě**|ASDK používá virtuální počítač s názvem AzS-BGPNAT01 směrovat veškerý přenos v síti ASDK. Neexistují žádné požadavky na další přepínače.|Virtuální počítač AzS-BGPNAT01 neexistuje v nasazení na víc uzlů. Složitější [síťová infrastruktura směrování](../azure-stack-network.md#network-infrastructure) je nezbytné včetně Top-Of-Rack (TOR), řadiče pro správu základní desky (BMC) a přepínače ohraničení (síti datového centra).|
+|**Proces opravy a aktualizace**|Pokud chcete přesunout na novou verzi ASDK, je nutné znovu nasadit ASDK na hostitelském počítači development kit.|[Opravy a aktualizace](../azure-stack-updates.md) proces používá k aktualizaci nainstalované verze služby Azure Stack.|
 |**Podpora**|Fóra MSDN Azure Stack. Podpora Microsoft zákaznický servis a podporu šablon stylů CSS je *není* k dispozici pro neprodukční prostředí.|[Fóra MSDN Azure Stack](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) a podporu celé šablon stylů CSS.|
 | | |
 

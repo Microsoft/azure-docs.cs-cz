@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
-ms.openlocfilehash: 8f18b01409680c07b942087b75b1618c75973391
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c5340599bc4ed400ce11ea8ba997d03c4df7cc05
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634324"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963211"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -35,14 +35,16 @@ Počítačové zpracování obrazu při analýze obrázku může provádět nás
 
 | Akce | Popis |
 | ------ | ----------- |
-|**[Označování vizuálních vlastností](concept-tagging-images.md)**|Identifikuje a označuje vizuální vlastnosti obrázku na základě více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. V případě, kdy jsou značky nejednoznačné nebo nejsou všeobecně známé, poskytne odpověď „nápovědu“ pro objasnění významu značky v kontextu známého prostředí. Označování se neomezuje na hlavní předmět, například postavu v popředí, ale zahrnuje také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.|
+|**[Označování vizuálních vlastností](concept-tagging-images.md)**|Identifikovat a označit vizuální funkce do image ze sady tisíce rozpoznatelných objektů, živých věcí, krajin a akcí. Když jsou značky nejednoznačný nebo není odpovědi rozhraní API poskytuje "pomocné parametry pro objasnění významu značky v kontextu známé nastavení. Označování se neomezuje na hlavní předmět, například postavu v popředí, ale zahrnuje také prostředí (interiér nebo exteriér), nábytek, nástroje, rostliny, zvířata, příslušenství, pomůcky atd.|
+|**[Zjišťování objektů](concept-object-detection.md)**| Detekce objektů je podobný označování, ale rozhraní API vrací ohraničující pole souřadnic pro jednotlivé značky použít. Například pokud image obsahuje pes, cat a osoby, rozpoznat operace se zobrazí seznam těchto objektů spolu s jejich souřadnice na obrázku. Tato funkce slouží ke zpracování další vztahy mezi objekty v obrázku. Umožňuje taky vědět, že existuje více instancí stejné značky v obraze.|
 |**[Kategorizace obrázku](concept-categorizing-images.md)**|Identifikuje a kategorizuje celý obrázek s využitím [taxonomie kategorií](Category-Taxonomy.md) s dědičnými hierarchiemi nadřízený/podřízený objekt. Kategorie je možné používat samostatně nebo s našimi novými modely označování.<br/>V současné době je jediným podporovaným jazykem pro označování a kategorizaci obrázků angličtina.|
 |**[Popis obrázku](concept-describing-images.md)**|Vygeneruje popis celého obrázku v celých větách v čitelném jazyce. Algoritmy Počítačového zpracování obrazu generují různé popisy v závislosti na objektech identifikovaných na obrázku. Jednotlivé popisy se vyhodnotí a vygeneruje se pro ně skóre spolehlivosti. Pak se vrátí seznam seřazený od nejvyššího skóre spolehlivosti po nejnižší.|
 |**[Rozpoznávání tváří](concept-detecting-faces.md)** |Rozpoznává tváře na obrázku a poskytuje informace o jednotlivých rozpoznaných tvářích. Počítačové zpracování obrazu pro každou rozpoznanou tvář vrátí souřadnice, obdélník, pohlaví a věk.<br/>Počítačové zpracování obrazu poskytuje podmnožinu funkcí, které najdete ve službě [Rozpoznávání tváře](/azure/cognitive-services/face/), kterou můžete využít k podrobnější analýze, například identifikaci tváří a rozpoznávání pózy.|
 |**[Rozpoznávání typů obrázků](concept-detecting-image-types.md)**|Rozpoznává charakteristiky obrázku, například jestli jde o perokresbu nebo s jakou pravděpodobností je obrázek klipart.|
 |**[Rozpoznávání obsahu specifického doménu](concept-detecting-domain-content.md)**|S využitím doménových modelů rozpoznává a identifikuje obsah obrázku specifický pro doménu, například celebrity a památky. Pokud jsou na obrázku například lidé, může Počítačové zpracování obrazu využít doménový model pro celebrity, který je součástí služby, a určit, jestli se lidé rozpoznaní na obrázku shodují se známými celebritami.|
 |**[Rozpoznávání barevného schématu](concept-detecting-color-schemes.md)**|Analyzuje použité barvy na obrázku. Počítačové zpracování obrazu dokáže určit, jestli je obrázek černobílý nebo barevný, a u barevných obrázků identifikovat dominantní a doplňkové barvy.|
-|**[Vytvoření miniatury](concept-generating-thumbnails.md)**|Analyzuje obsah obrázku a vytvoří pro obrázek odpovídající miniaturu. Počítačové zpracování obrazu nejprve vygeneruje miniaturu ve vysokém rozlišení a pak analýzou objektů na obrázku určí *oblasti zájmu* (ROI). Počítačové zpracování obrazu pak obrázek ořízne, aby odpovídal požadavkům oblasti zájmu. Vytvořená miniatura může mít podle vašich potřeb jiný poměr stran než původní obrázek.|
+|**[Vytvoření miniatury](concept-generating-thumbnails.md)**|Analyzuje obsah obrázku a vytvoří pro obrázek odpovídající miniaturu. Počítačové zpracování obrazu nejprve vygeneruje vysoce kvalitní miniaturu a poté analyzuje objekty v obrázku určit *oblast zájmu*. Počítačové zpracování obrazu potom obrázek ořízne tak, aby odpovídal požadavkům oblasti zájmu. Vytvořená miniatura může mít podle vašich potřeb jiný poměr stran než původní obrázek.|
+|**[Získat oblasti zájmu](concept-generating-thumbnails.md#area-of-interest)**|Analyzovat obsah tohoto obrázku, který má vrátit souřadnice *oblast zájmu*. To je stejné funkce, která se používá k vytvoření miniatury, ale místo oříznutí obrázku, pro počítačové zpracování obrazu Vrátí souřadnice ohraničujícího pole oblasti, takže původní obrázek podle potřeby můžete upravit volající aplikace.|
 
 ## <a name="extracting-text-from-images"></a>Extrakce textu z obrázků
 
