@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: a9248e2310e509bbc4f527608246b47543a03fc4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: aee8492c73ace608abaeca9d833494e041d2b9dd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502173"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969000"
 ---
 # <a name="check-the-health-of-an-azure-ad-domain-services-managed-domain"></a>Kontrola stavu spravované domény služby Azure AD Domain Services
 
@@ -32,7 +32,7 @@ Na stránce stavu na webu Azure portal budete moct aktualizovat na co se děje v
 2. Klikněte na doménu, kterou chcete zobrazit stav.
 3. V levém navigačním podokně klikněte na tlačítko **stavu**.
 
-Následující obrázek znázorňuje ukázkovou stránku Stav: ![příkladu stavu stránky](.\media\active-directory-domain-services-alerts\health-page.png)
+Následující obrázek znázorňuje ukázkovou stránku Stav: ![příkladu stavu stránky](./media/active-directory-domain-services-alerts/health-page.png)
 
 >[!NOTE]
 > Stav vaší spravované domény se vyhodnocuje každou hodinu. Po provedení změn do spravované domény, počkejte do dalšího cyklu hodnocení a zobrazit aktualizovaný stav vaší spravované domény. Časové razítko "Naposledy vyhodnoceno" v pravém horním rohu se zobrazí, kdy bylo naposled vyhodnoceno stav vaší spravované domény.
@@ -43,10 +43,10 @@ Stav v horní části právo na stavu vašeho stránka indikuje celkový stav va
 
 | Status | Ikona | Vysvětlení |
 | --- | :----: | --- |
-| Spuštěno | <img src= ".\media\active-directory-domain-services-alerts\running-icon.png" width = "15"> | Spravované domény běží hladce a nemá žádné výstrahy o kritickém nebo varovném. Tato doména může mít informativní výstrahy. |
-| Vyžaduje pozornost (upozornění) | <img src= ".\media\active-directory-domain-services-alerts\warning-icon.png" width = "15"> | Neexistují žádné kritické výstrahy ve vaší spravované doméně, ale jeden nebo více upozornění výstrahy, které je potřeba řešit. |
-| Vyžaduje pozornost (kritická) | <img src= ".\media\active-directory-domain-services-alerts\critical-icon.png" width = "15"> | Existuje jeden nebo více kritické výstrahy ve vaší spravované doméně. Můžete mít rovněž upozornění nebo informační výstrahy. |
-| Nasazování | <img src= ".\media\active-directory-domain-services-alerts\deploying-icon.png" width = "15"> | Vaše doména je právě probíhá nasazení. |
+| Spuštěno | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15"> | Spravované domény běží hladce a nemá žádné výstrahy o kritickém nebo varovném. Tato doména může mít informativní výstrahy. |
+| Vyžaduje pozornost (upozornění) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15"> | Neexistují žádné kritické výstrahy ve vaší spravované doméně, ale jeden nebo více upozornění výstrahy, které je potřeba řešit. |
+| Vyžaduje pozornost (kritická) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15"> | Existuje jeden nebo více kritické výstrahy ve vaší spravované doméně. Můžete mít rovněž upozornění nebo informační výstrahy. |
+| Nasazování | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15"> | Vaše doména je právě probíhá nasazení. |
 
 ## <a name="monitors"></a>Monitory
 Monitorování jsou aspektů vaší spravované domény, který monitoruje služba Azure AD Domain Services v pravidelných intervalech. Nejlepší způsob, jak zachovat v dobrém stavu monitorů je vyřešit všechny aktivní výstrahy pro spravované domény.

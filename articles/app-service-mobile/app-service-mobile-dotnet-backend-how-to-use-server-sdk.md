@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bbba7898329af9d9bca9d35883e3cb4097ca3de4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38473709"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968608"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Práce se serverovou sadou .NET back-end SDK v prostředí Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -66,7 +66,7 @@ Nainstalujte [Azure SDK for .NET][4] (verze 2.9.0 nebo novější) k vytvoření
 
 1. Otevřít **nový projekt** dialogového okna (z **souboru** > **nový** > **projekt...** ).
 2. Rozbalte **šablony** > **Visual C#** a vyberte **webové**.
-3. Vyberte **webové aplikace ASP.NET**.
+3. Vyberte **Webová aplikace ASP.NET**.
 4. Zadejte název projektu. Pak klikněte na **OK**.
 5. V části *ASP.NET 4.5.2 šablony*vyberte **mobilní aplikace Azure**. Zkontrolujte **hostovat v cloudu** vytvoření mobilního back-endu v cloudu, do které můžete publikovat tento projekt.
 6. Klikněte na **OK**.
@@ -131,12 +131,12 @@ Rozšiřující metody používané jsou:
 Následující balíčky rozšíření založená na Nugetu poskytují různé mobilní funkce, které můžete použít v aplikaci. Povolit rozšíření při inicializaci pomocí **MobileAppConfiguration** objektu.
 
 * [Microsoft.Azure.Mobile.Server.Quickstart] podporuje základní nastavení mobilní aplikace. V konfiguraci přidaný voláním **UseDefaultConfiguration** rozšiřující metoda během inicializace. Toto rozšíření obsahuje následující rozšíření: oznámení, ověřování, Entity, tabulek, mezi doménami a domovské balíčky. Tento balíček je používán rychlý start Mobile Apps k dispozici na na webu Azure portal.
-* [Microsoft.Azure.Mobile.Server.Home](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) implementuje výchozí *této mobilní aplikace je vytvořená a spuštěná stránky* kořenového webu. Přidejte do konfigurace voláním **AddMobileAppHomeController** – metoda rozšíření.
-* [Microsoft.Azure.Mobile.Server.Tables](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) obsahuje třídy pro práci s daty a sad up datového kanálu. Přidejte do konfigurace voláním **AddTables** – metoda rozšíření.
-* [Microsoft.Azure.Mobile.Server.Entity](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) umožňuje rozhraní Entity Framework pro přístup k datům ve službě SQL Database. Přidejte do konfigurace voláním **AddTablesWithEntityFramework** – metoda rozšíření.
+* [Microsoft.Azure.Mobile.Server.Home](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Home/) implementuje výchozí *této mobilní aplikace je vytvořená a spuštěná stránky* kořenového webu. Přidejte do konfigurace voláním **AddMobileAppHomeController** – metoda rozšíření.
+* [Microsoft.Azure.Mobile.Server.Tables](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Tables/) obsahuje třídy pro práci s daty a sad up datového kanálu. Přidejte do konfigurace voláním **AddTables** – metoda rozšíření.
+* [Microsoft.Azure.Mobile.Server.Entity](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Entity/) umožňuje rozhraní Entity Framework pro přístup k datům ve službě SQL Database. Přidejte do konfigurace voláním **AddTablesWithEntityFramework** – metoda rozšíření.
 * [Microsoft.Azure.Mobile.Server.Authentication] umožňuje ověřování a sad up middlewaru OWIN, který slouží k ověření tokenů. Přidejte do konfigurace voláním **AddAppServiceAuthentication** a **objekt IAppBuilder**. **UseAppServiceAuthentication** metody rozšíření.
 * [Microsoft.Azure.Mobile.Server.Notifications] povoluje nabízená oznámení a definuje koncový bod registrace nabízených oznámení. Přidejte do konfigurace voláním **AddPushNotifications** – metoda rozšíření.
-* [Microsoft.Azure.Mobile.Server.CrossDomain](http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) vytvoří kontroler, který pracuje s daty z mobilní aplikace do starší verze webových prohlížečů. Přidejte do konfigurace voláním **MapLegacyCrossDomainController** – metoda rozšíření.
+* [Microsoft.Azure.Mobile.Server.CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) vytvoří kontroler, který pracuje s daty z mobilní aplikace do starší verze webových prohlížečů. Přidejte do konfigurace voláním **MapLegacyCrossDomainController** – metoda rozšíření.
 * [Microsoft.Azure.Mobile.Server.Login] poskytuje AppServiceLoginHandler.CreateToken() metodu, která je statická metoda, používají při ověřování vlastní scénáře.
 
 ## <a name="publish-server-project"></a>Postupy: publikování projektu serveru
@@ -483,10 +483,10 @@ Podpisový klíč pro použití *authSigningKey* parametr v konfiguraci vaší m
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
 [Azure Portal]: https://portal.azure.com
-[NuGet.org]: http://www.nuget.org/
-[Microsoft.Azure.Mobile.Server]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
-[Microsoft.Azure.Mobile.Server.Quickstart]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
-[Microsoft.Azure.Mobile.Server.Authentication]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
-[Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
-[Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
+[NuGet.org]: https://www.nuget.org/
+[Microsoft.Azure.Mobile.Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
+[Microsoft.Azure.Mobile.Server.Quickstart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/
+[Microsoft.Azure.Mobile.Server.Authentication]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Authentication/
+[Microsoft.Azure.Mobile.Server.Login]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
+[Microsoft.Azure.Mobile.Server.Notifications]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: cephalin;dariagrigoriu
-ms.openlocfilehash: 5f52dfb4547cfac991387d333c3f5684544d691f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9fd25e8730bf98c8fccf1e77436b8f2f480c7cca
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877506"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966547"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Průběžné nasazování do služby Azure App Service
 V tomto článku se dozvíte, jak nakonfigurovat průběžné nasazování pro [služby Azure App Service](app-service-web-overview.md). App Service umožňuje průběžné nasazování z Bitbucketu, Githubu, a [Azure DevOps služby](https://www.visualstudio.com/team-services/) stažením nejnovější aktualizace z existující úložiště v některé z těchto služeb.
@@ -147,9 +147,9 @@ V nabídce vlevo klikněte na tlačítko **Deployment Center** > **Githubu** neb
 
 [Azure portal]: https://portal.azure.com
 [Azure DevOps portal]: https://azure.microsoft.com/services/devops/
-[Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
+[Installing Git]: https://git-scm.com/book/en/Getting-Started-Installing-Git
 [Způsob používání prostředí PowerShell pro Azure]: /powershell/azureps-cmdlets-docs
-[Dokumentace pro Git]: http://git-scm.com/documentation
+[Dokumentace pro Git]: https://git-scm.com/documentation
 
 [Vytvoření úložiště (GitHub)]: https://help.github.com/articles/create-a-repo
 [Vytvoření úložiště (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html

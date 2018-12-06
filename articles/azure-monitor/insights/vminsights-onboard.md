@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 93cbb9a891f83eed623f095f208319c9071e287e
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: d38c93f1e6e390117ff5d9e8772119ed1c26fd10
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635539"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965526"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak připojit Azure monitorovat pro virtuální počítače (Preview)
 Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače s monitorováním stavu operačního systému virtuálních počítačů Azure a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí, včetně zjišťování a mapování závislostí aplikace který může hostovat na ně.  
@@ -48,7 +48,7 @@ Momentálně se podporuje pracovní prostor Log Analytics v těchto oblastech:
 >Virtuální počítače Azure mohou být zprovozněná z libovolné oblasti a neomezují jenom na podporovaných oblastí pro pracovní prostor Log Analytics.
 >
 
-Pokud nemáte pracovní prostor, můžete vytvořit pomocí [rozhraní příkazového řádku Azure](../../log-analytics/log-analytics-quick-create-workspace-cli.md), pomocí [PowerShell](../../log-analytics/log-analytics-quick-create-workspace-posh.md)v [webu Azure portal](../../log-analytics/log-analytics-quick-create-workspace.md), nebo s [Azure Resource Manageru](../../log-analytics/log-analytics-template-workspace-configuration.md).  Chcete-li povolit monitorování pro jeden virtuální počítač Azure na webu Azure Portal, máte možnost vytvořit pracovní prostor během tohoto procesu.  
+Pokud nemáte pracovní prostor, můžete vytvořit pomocí [rozhraní příkazového řádku Azure](../../azure-monitor/learn/quick-create-workspace-cli.md), pomocí [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)v [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md), nebo s [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md).  Chcete-li povolit monitorování pro jeden virtuální počítač Azure na webu Azure Portal, máte možnost vytvořit pracovní prostor během tohoto procesu.  
 
 Povolení řešení pro ve velkém měřítku scénář nejprve vyžaduje následující konfigurace ve vašem pracovním prostoru Log Analytics:
 
@@ -185,7 +185,7 @@ Pokud chcete povolit monitorování virtuálního počítače Azure na webu Azur
 5. Na **připojování Přehled monitorování Azure** stránky, pokud máte existující Log Analytics vyberte pracovní prostor v rámci stejného předplatného, v rozevíracím seznamu.  V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, který se nasazuje virtuální počítač v rámci předplatného. 
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro ukládání dat monitorování z virtuálního počítače, postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics](../../log-analytics/log-analytics-quick-create-workspace.md) v jednom z podporovaných oblastech uvedených výše.   
+    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro ukládání dat monitorování z virtuálního počítače, postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) v jednom z podporovaných oblastech uvedených výše.   
 
 Po povolení sledování, může trvat přibližně 10 minut, než můžete zobrazit stav metriky pro virtuální počítač. 
 

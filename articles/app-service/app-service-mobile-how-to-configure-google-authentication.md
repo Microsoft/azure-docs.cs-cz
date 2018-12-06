@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 6af0dfb00ff791b8a73ebf1ad14b35d99f67a483
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 35e02defb8b28c60c70c8b50c28bba8499392377
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227412"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961533"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Konfigurace aplikace App Service pro použití přihlášení k Google
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -68,7 +68,7 @@ Nyní jste připraveni používat Google pro ověřování ve vaší aplikaci.
 
 <!-- URLs. -->
 
-[Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
+[Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
 [Azure Portal]: https://portal.azure.com/
 

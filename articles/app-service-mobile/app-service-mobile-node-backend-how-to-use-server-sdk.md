@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: cbedb17bb7563620d0d9db81333d9a79301b4ee0
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 926712d8d38f144c583dcf61c3cd0f078566296a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42817504"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963994"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat Mobile Apps Node.js SDK
 
@@ -36,7 +36,7 @@ Mobile Apps poskytuje možnosti přidávat data optimalizovaných pro mobilní z
 
 Operace zajištění ověřování ve všech zprostředkovatelů identity, které umožňuje službě Azure App Service. Tito poskytovatelé zahrnují zprostředkovatele sociální identity jako je Facebook, Twitter, Google a Microsoft, jakož i Azure Active Directory pro podnikové identitě.
 
-Můžete najít ukázky pro každý případ použití v [adresáře ukázky na Githubu].
+Můžete najít ukázky pro každý případ použití v [adresář ukázky na Githubu].
 
 ## <a name="supported-platforms"></a>Podporované platformy
 
@@ -101,7 +101,7 @@ Můžete najít kód pro tuto základní aplikaci v [basicapp ukázka na Githubu
 
 ### <a name="howto-vs2015-basicapp"></a>Vytvoření back-end Node.js pomocí sady Visual Studio 2015
 
-Visual Studio 2015 vyžaduje rozšíření pro vývoj aplikací Node.js v prostředí IDE. Pokud chcete začít, nainstalujte [Node.js Tools 1.1 pro sadu Visual Studio]. Po dokončení instalace, vytvořte aplikaci 4.x Express:
+Visual Studio 2015 vyžaduje rozšíření pro vývoj aplikací Node.js v prostředí IDE. Pokud chcete začít, nainstalujte [Nástroje Node.js Tools 1.1 pro sadu Visual Studio]. Po dokončení instalace, vytvořte aplikaci 4.x Express:
 
 1. Otevřít **nový projekt** dialogové okno (z **souboru** > **nový** > **projektu**).
 1. Rozbalte **šablony** > **JavaScript** > **Node.js**.
@@ -152,7 +152,7 @@ Když vytvoříte back-end Node.js Mobile Apps s použitím portálu společnost
 
 Následující postup používá úložiště Git pro stažení projektu kódu tohoto rychlého startu:
 
-1. Nainstalujte Git, pokud jste tak již neučinili. Kroky potřebné k instalaci Gitu se liší mezi operačními systémy. Distribuce specifické pro operační systém a instalační pokyny najdete v tématu [instalace Git](http://git-scm.com/book/en/Getting-Started-Installing-Git).
+1. Nainstalujte Git, pokud jste tak již neučinili. Kroky potřebné k instalaci Gitu se liší mezi operačními systémy. Distribuce specifické pro operační systém a instalační pokyny najdete v tématu [instalace Git](https://git-scm.com/book/en/Getting-Started-Installing-Git).
 1. Zobrazit [Příprava vašeho úložiště](../app-service/app-service-deploy-local-git.md#prepare-your-repository) povolit úložiště Git pro váš back-end serveru. Poznamenejte si uživatelské jméno pro nasazení a heslo.
 1. V podokně pro back-endu Mobile Apps, poznamenejte si, **adresa URL klonu Git** nastavení.
 1. Spustit `git clone` příkaz s použitím adresy URL pro klon Git. Zadejte svoje heslo, pokud jsou povinné, jako v následujícím příkladu:
@@ -382,7 +382,7 @@ Většinu nastavení v souboru azureMobile.js mají v nastavení odpovídající
 
 Chcete-li nastavit nastavení aplikace:
 
-1. Přihlaste se k [Azure Portal].
+1. Přihlaste se k webu [Azure Portal].
 1. Vyberte **všechny prostředky** nebo **App Services**a potom vyberte název vaší mobilní aplikace.
 1. **Nastavení** ve výchozím nastavení se otevře podokno. Pokud tomu tak není, vyberte **nastavení**.
 1. Na **Obecné** nabídce vyberte možnost **nastavení aplikace**.
@@ -399,7 +399,7 @@ Změna nastavení většina aplikací vyžaduje restartování služby.
 
 Pomocí Azure SQL Database jako úložiště dat je identické napříč všemi typy aplikací Azure App Service. Pokud jste to ještě neudělali, postupujte podle těchto pokynů vytvořte back-end Mobile Apps:
 
-1. Přihlaste se k [Azure Portal].
+1. Přihlaste se k webu [Azure Portal].
 1. V levém horním rohu okna, vyberte **+ nová** tlačítko > **Web + mobilní zařízení** > **mobilní aplikace**a potom zadejte název pro back-endu Mobile Apps.
 1. V **skupiny prostředků** zadejte stejný název jako vaše aplikace.
 1. Je vybraný výchozí plán služby App Service. Pokud chcete změnit plán služby App Service:
@@ -910,7 +910,7 @@ Jednoduché tabulky můžete použít k vytváření a práci s tabulkami přím
 * createdAt
 * updatedAt
 * odstraněna
-* verze
+* version
 
 Operace s tabulkou i můžete upravit pomocí editoru služby App Service. Když vyberete **jednoduché tabulky** v nastavení back-end serveru, můžete přidat, upravit nebo odstranit tabulku. Můžete také zobrazit data v tabulce.
 
@@ -976,19 +976,19 @@ Pomocí webu Azure portal, můžete upravit soubory skriptu back-end Node.js v a
 [použijte moduly Node]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
-[Express]: http://expressjs.com/
-[Swagger]: http://swagger.io/
+[Express]: https://expressjs.com/
+[Swagger]: https://swagger.io/
 
 [Azure Portal]: https://portal.azure.com/
-[OData]: http://www.odata.org
+[OData]: https://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [basicapp ukázka na Githubu]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
 [TODO ukázka na Githubu]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/todo
-[adresáře ukázky na Githubu]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
+[adresář ukázky na Githubu]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples
 [static-schema sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/static-schema
 [QueryJS]: https://github.com/Azure/queryjs
-[Node.js Tools 1.1 pro sadu Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
+[Nástroje Node.js Tools 1.1 pro sadu Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [balíček Node.js MSSQL]: https://www.npmjs.com/package/mssql
-[Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[ExpressJS middlewaru]: http://expressjs.com/guide/using-middleware.html
+[Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
+[ExpressJS middlewaru]: https://expressjs.com/guide/using-middleware.html
 [Winstona]: https://github.com/winstonjs/winston

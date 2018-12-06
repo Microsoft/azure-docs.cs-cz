@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 2d346739cd2e80546aee921317e278c1cff32b34
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 4fd896e3b26ae66621ba49d1bb8a5d86c0dd63ee
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873134"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963262"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Upgrade existující mobilní služby Azure .NET do služby App Service
 Mobile App Service je nový způsob vytváření mobilních aplikací pomocí Microsoft Azure. Další informace najdete v tématu [co jsou Mobile Apps?].
@@ -204,7 +204,7 @@ public class TodoItem : ITableData
 Poznámka: Pokud dojde k chybám `NotMapped`, přidejte odkaz na sestavení `System.ComponentModel.DataAnnotations`.
 
 ### <a name="cors"></a>CORS
-Mobile Services zahrnuty některé podporu CORS obtékání řešení ASP.NET CORS. Tato vrstva zabalení se odebrala poskytnout větší kontrolu, vývojář tak může využít přímo [podporu ASP.NET CORS](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api).
+Mobile Services zahrnuty některé podporu CORS obtékání řešení ASP.NET CORS. Tato vrstva zabalení se odebrala poskytnout větší kontrolu, vývojář tak může využít přímo [podporu ASP.NET CORS](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api).
 
 Hlavní oblasti zájmu pomocí CORS, která jsou `eTag` a `Location` záhlaví musí být povoleno v pořadí pro klientské sady SDK pracovat správně.
 
@@ -282,7 +282,7 @@ Až budete mít novou verzi klienta, která je připravená, vyzkoušejte si to 
 [Azure Portal]: https://portal.azure.com/
 [Portál Azure Classic]: https://manage.windowsazure.com/
 [Co jsou Mobile Apps?]: app-service-mobile-value-prop.md
-[Mobilní aplikace Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
+[Mobilní aplikace Server SDK]: https://www.nuget.org/packages/microsoft.azure.mobile.server
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /azure/scheduler/
 [Webovou úlohu]: https://github.com/Azure/azure-webjobs-sdk/wiki

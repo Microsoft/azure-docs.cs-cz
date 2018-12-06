@@ -106,6 +106,8 @@ items:
   items:
   - name: Označování obrázků značkami
     href: concept-tagging-images.md
+  - name: Detekování objektů
+    href: concept-object-detection.md
   - name: Kategorizace obrázků
     href: concept-categorizing-images.md
   - name: Popisování obrázků
@@ -192,9 +194,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 1dfca8cfb4a43f65c9999a02afdf670cb99032ad
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: d6a64f9de500493b7d0539fff362abb98471a0b7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276087"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971041"

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 11/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 2f0c552c29021400e901e94c643c8f20171638b8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 03c561001999245b55e6e76b02f8916d0b2d619f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52875056"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963228"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Vlastní protokolů v Log Analytics
-Zdroj dat vlastních protokolů v Log Analytics umožňuje shromažďovat události z textových souborů v počítačích se systémy Windows a Linux. Mnoho aplikací protokolovat informace k textovým souborům místo standardní protokolování služby, jako je protokol událostí Windows nebo protokolu Syslog.  Po shromáždění, můžete analyzovat každý záznam v přihlášení u jednotlivých polí pomocí [vlastní pole](../../azure-monitor/platform/custom-fields.md) funkce Log Analytics.
+Zdroj dat vlastních protokolů v Log Analytics umožňuje shromažďovat události z textových souborů v počítačích se systémy Windows a Linux. Mnoho aplikací protokolovat informace k textovým souborům místo standardní protokolování služby, jako je protokol událostí Windows nebo protokolu Syslog. Po shromáždění, můžete analyzovat data do jednotlivých polí v dotazech nebo extrahovat data během shromažďování u jednotlivých polí.
 
 ![Kolekce vlastních protokolů](media/data-sources-custom-logs/overview.png)
 
@@ -105,13 +105,10 @@ Po spuštění shromažďování z vlastního protokolu Log Analytics bude k dis
 
 > [!NOTE]
 > Pokud chybí vlastnost RawData hledání, budete muset zavřít a znovu otevřít prohlížeč.
->
->
+
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>Krok 6. Analyzovat položky vlastního protokolu
-Celý záznam se uloží v jedné vlastnosti **RawData**.  Budete pravděpodobně chtít oddělit různé druhy údajů v každé položky do jednotlivých vlastností uložených v záznamu.  Můžete to udělat [vlastní pole](../../azure-monitor/platform/custom-fields.md) funkce Log Analytics.
-
-Podrobné kroky postupu k analýze položka vlastního protokolu nejsou uvedeny zde.  Najdete [vlastní pole](../../azure-monitor/platform/custom-fields.md) dokumentaci pro tyto informace.
+Celý záznam se uloží v jedné vlastnosti **RawData**.  Budete pravděpodobně chtít oddělit různé druhy údajů v každé položky do jednotlivých vlastností pro každý záznam. Odkazovat na [textových dat v Log Analytics analyzovat](../log-query/parse-text.md) možnosti při analýze **RawData** do více vlastností.
 
 ## <a name="removing-a-custom-log"></a>Odebírá vlastní protokol
 Pomocí následujícího postupu na webu Azure Portal odeberete vlastní protokol, který jste dříve definovali.
@@ -123,7 +120,7 @@ Pomocí následujícího postupu na webu Azure Portal odeberete vlastní protoko
 ## <a name="data-collection"></a>Shromažďování dat
 Log Analytics bude shromažďovat nové položky z každého vlastního protokolu přibližně každých 5 minut.  Agent zaznamená příslušné místo v jednotlivých souborů protokolu, který shromažďuje z.  Pokud agenta přejde do režimu offline pro určitou dobu, bude položky od posledního místa, shromažďovat Log Analytics i v případě, že tyto položky byly vytvořeny v době, kdy agent offline.
 
-Celý obsah položky protokolu se zapisují do jedné vlastnosti **RawData**.  Je možné analyzovat do více vlastností, které je možné analyzovat a prohledávat samostatně tak, že definujete [vlastních polí](../../azure-monitor/platform/custom-fields.md) po vytvoření vlastního protokolu.
+Celý obsah položky protokolu se zapisují do jedné vlastnosti **RawData**.  Zobrazit [textových dat v Log Analytics analyzovat](../log-query/parse-text.md) metody pro parsování každý importovat položky protokolu do více vlastností.
 
 ## <a name="custom-log-record-properties"></a>Vlastnosti záznamu vlastního protokolu
 Vlastní protokol záznamy mají typ, který je zadat název protokolu a vlastnosti v následující tabulce.
@@ -132,18 +129,8 @@ Vlastní protokol záznamy mají typ, který je zadat název protokolu a vlastno
 |:--- |:--- |
 | TimeGenerated |Datum a čas, který záznam se shromážděná službou Log Analytics.  Pokud v protokolu používá oddělovač podle času to je čas odebrané položky. |
 | SourceSystem |Typ agenta, který záznam se shromažďovala ze. <br> OpsManager – Windows agent, buď přímé připojení nebo System Center Operations Manager <br> Linux – všichni agenti systému Linux |
-| RawData |Shromážděné vstupu textu v plném znění. |
+| RawData |Shromážděné vstupu textu v plném znění. Budete pravděpodobně chtít [analyzovat tato data do jednotlivých vlastností](../log-query/parse-text.md). |
 | ManagementGroupName |Název skupiny pro správu pro agenty System Center Operations Manageru.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
-
-## <a name="log-searches-with-custom-log-records"></a>Prohledávání protokolů se záznamy vlastního protokolu
-V pracovním prostoru Log Analytics, stejně jako záznamy z jakéhokoli jiného zdroje dat jsou uloženy záznamy z vlastní protokoly.  Mají typ odpovídající název, který zadáte při definování protokolu, takže vlastnost typu můžete použít při hledání načíst záznamy shromážděné z konkrétní protokolu.
-
-Následující tabulka obsahuje příklady různých prohledávání protokolů, které načítají záznamy ze vlastní protokoly.
-
-| Dotaz | Popis |
-|:--- |:--- |
-| MyApp_CL |Všechny události z vlastního protokolu pojmenovaných MyApp_CL. |
-| MyApp_CL &#124; kde Severity_CF == "Chyba" |Všechny události z vlastního protokolu pojmenovaných MyApp_CL s hodnotou *chyba* ve vlastní pole s názvem *Severity_CF*. |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Ukázkový názorný postup přidání vlastního protokolu
@@ -181,5 +168,5 @@ Používáme vlastní pole k definování *čas události*, *kód*, *stav*, a *z
 ![Dotaz protokol o vlastní pole](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="next-steps"></a>Další postup
-* Použití [vlastních polí](../../azure-monitor/platform/custom-fields.md) k analýze položek ve vlastní přihlášení u jednotlivých polí.
-* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
+* Zobrazit [textových dat v Log Analytics analyzovat](../log-query/parse-text.md) metody pro parsování každý importovat položky protokolu do více vlastností.
+* Další informace o [prohledávání protokolů](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.

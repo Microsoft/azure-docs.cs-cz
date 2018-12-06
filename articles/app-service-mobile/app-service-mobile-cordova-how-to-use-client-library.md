@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 358e8cd92fe250741adbbb9208b5e149a5f60216
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38467882"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959729"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Jak používat klientskou knihovnu pro Apache Cordova pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -167,7 +167,7 @@ Použijte sadu SDK služby Notification Hubs k odesílání nabízených oznáme
 
 ## <a name="more-information"></a>Další informace
 
-Můžete najít podrobné podrobnosti o rozhraní API v naší [dokumentace k rozhraní API](http://azure.github.io/azure-mobile-apps-js-client/).
+Můžete najít podrobné podrobnosti o rozhraní API v naší [dokumentace k rozhraní API](https://azure.github.io/azure-mobile-apps-js-client/).
 
 <!-- URLs. -->
 [Azure Portal]: https://portal.azure.com
@@ -176,7 +176,7 @@ Můžete najít podrobné podrobnosti o rozhraní API v naší [dokumentace k ro
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
 [Modul plug-in Apache Cordova pro Azure Mobile Apps]: https://www.npmjs.com/package/cordova-plugin-ms-azure-mobile-apps
-[vaše první aplikace Apache Cordova]: http://cordova.apache.org/#getstarted
+[vaše první aplikace Apache Cordova]: https://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
 [nabízené oznámení phonegap plugin]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device

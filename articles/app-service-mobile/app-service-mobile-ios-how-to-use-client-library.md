@@ -13,18 +13,18 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 0de561b177a1474b0ce4f0f203803e8265db5e7a
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 8eef75a6e1f4f05aa6d7ce8f9e6fdda52162d0bc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818342"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960715"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Jak iOS použijte klientskou knihovnu pro Azure Mobile Apps
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-Tento průvodce vás naučí, provádět běžné scénáře pomocí nejnovější [Azure Mobile Apps iOS SDK][1]. Pokud jste ještě na službu Azure Mobile Apps, nejprve dokončit [Azure Mobile Apps rychlý Start] Pokud chcete vytvořit back-endu, vytvoření tabulky a stáhnete projekt Xcode předem sestavených s Iosem. V této příručce se zaměříme na sadu SDK pro iOS na straně klienta. Další informace o sadě SDK na straně serveru pro back-endu, najdete v článku HOWTOs SDK serveru.
+Tento průvodce vás naučí, provádět běžné scénáře pomocí nejnovější [Azure Mobile Apps iOS SDK][1]. Pokud jste ještě na službu Azure Mobile Apps, nejprve dokončit [Azure Mobile Apps rychlým startem] Pokud chcete vytvořit back-endu, vytvoření tabulky a stáhnete projekt Xcode předem sestavených s Iosem. V této příručce se zaměříme na sadu SDK pro iOS na straně klienta. Další informace o sadě SDK na straně serveru pro back-endu, najdete v článku HOWTOs SDK serveru.
 
 ## <a name="reference-documentation"></a>Referenční dokumentace
 
@@ -562,7 +562,7 @@ Můžete používat Active Directory Authentication Library (ADAL) pro přihlá�
 3. Pomocí terminálu spusťte `pod install` z adresáře obsahující váš projekt a potom otevřete vygenerovaný pracovní prostor Xcode (nikoli projekt).
 4. Přidejte následující kód do vaší aplikace, podle jazyka, který používáte. V každém proveďte tyto náhrady odkazuje:
 
-   * Nahraďte **INSERT-AUTORITY-KORENOVA** s názvem tenanta, ve kterém jste zřídili vaší aplikace. Formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com. Tuto hodnotu je možné zkopírovat ze záložky domény ve službě Azure Active Directory v webu [Azure Portal].
+   * Nahraďte **INSERT-AUTORITY-KORENOVA** s názvem tenanta, ve kterém jste zřídili vaší aplikace. Formát by měl být https://login.microsoftonline.com/contoso.onmicrosoft.com. Tuto hodnotu je možné zkopírovat ze záložky domény ve službě Azure Active Directory v [Azure Portal].
    * Nahraďte **INSERT-RESOURCE-ID – TADY** s ID klienta pro back-endu mobilní aplikace. Můžete získat ID klienta z **Upřesnit** kartu **nastavení služby Azure Active Directory** na portálu.
    * Nahraďte **vložit klienta ID TADY** s ID klienta, který jste zkopírovali z nativní klientskou aplikaci.
    * Nahraďte **vložení – PŘESMĚROVÁNÍ-URI-TADY** s vaší lokality */.auth/login/done* koncový bod, používat schéma HTTPS. Tato hodnota by měl být podobný *https://contoso.azurewebsites.net/.auth/login/done*.
@@ -715,10 +715,10 @@ Sady SDK Facebooku pro iOS můžete použít pro přihlášení uživatelů do v
 Prostředky infrastruktury pro iOS můžete použít pro přihlášení uživatelů do vaší aplikace pomocí služby Twitter. Tok ověřování klientů je vhodnější než použít `loginWithProvider:completion:` metody, protože obsahuje více přirozený chování uživatelského prostředí a umožňuje další přizpůsobení.
 
 1. Konfigurace back-endu mobilní aplikace pro Twitter přihlásit pomocí následujících [konfigurace služby App Service pro přihlášení k Twitteru](../app-service/app-service-mobile-how-to-configure-twitter-authentication.md) kurzu.
-2. Přidejte do projektu prostředků infrastruktury pomocí následujících [prostředků infrastruktury pro iOS – Začínáme] dokumentace ke službě a nastavení TwitterKit.
+2. Přidejte do projektu prostředků infrastruktury pomocí následujících [Prostředky infrastruktury pro iOS – Začínáme] dokumentace ke službě a nastavení TwitterKit.
 
    > [!NOTE]
-   > Ve výchozím nastavení Fabric vytvoří aplikaci Twitter. Vytvoření aplikace, když si zaregistrujete uživatelským klíčem a uživatelský tajný klíč, které jste předtím vytvořili pomocí následující fragmenty kódu se můžete vyhnout.    Alternativně můžete nahradit uživatelským klíčem a uživatelským utajením hodnoty, které zadáte do služby App Service hodnotami, které se zobrazí v [řídicí panel infrastruktury]. Pokud zvolíte tuto možnost, nezapomeňte nastavit adresu URL zpětného volání na hodnotu zástupného symbolu, jako například `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.
+   > Ve výchozím nastavení Fabric vytvoří aplikaci Twitter. Vytvoření aplikace, když si zaregistrujete uživatelským klíčem a uživatelský tajný klíč, které jste předtím vytvořili pomocí následující fragmenty kódu se můžete vyhnout.    Alternativně můžete nahradit uživatelským klíčem a uživatelským utajením hodnoty, které zadáte do služby App Service hodnotami, které se zobrazí v [Řídicí panel prostředků infrastruktury]. Pokud zvolíte tuto možnost, nezapomeňte nastavit adresu URL zpětného volání na hodnotu zástupného symbolu, jako například `https://<yoursitename>.azurewebsites.net/.auth/login/twitter/callback`.
 
     Pokud se rozhodnete pro použití tajných kódů, které jste vytvořili dříve, přidejte následující kód do vaší aplikace delegáta:
 
@@ -890,7 +890,7 @@ Google přihlášení SDK pro iOS můžete použít pro přihlášení uživatel
 <!-- Images. -->
 
 <!-- URLs. -->
-[Azure Mobile Apps rychlý Start]: app-service-mobile-ios-get-started.md
+[Azure Mobile Apps rychlým startem]: app-service-mobile-ios-get-started.md
 
 [Add Mobile Services to Existing App]: /develop/mobile/tutorials/get-started-data
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
@@ -899,26 +899,26 @@ Google přihlášení SDK pro iOS můžete použít pro přihlášení uživatel
 [Authentication]: /develop/mobile/tutorials/get-started-with-users-ios
 [iOS SDK]: https://developer.apple.com/xcode
 [Azure Portal]: https://portal.azure.com/
-[Handling Expired Tokens]: http://go.microsoft.com/fwlink/p/?LinkId=301955
-[Live Connect SDK]: http://go.microsoft.com/fwlink/p/?LinkId=301960
-[Permissions]: http://msdn.microsoft.com/library/windowsazure/jj193161.aspx
+[Handling Expired Tokens]: https://go.microsoft.com/fwlink/p/?LinkId=301955
+[Live Connect SDK]: https://go.microsoft.com/fwlink/p/?LinkId=301960
+[Permissions]: https://msdn.microsoft.com/library/windowsazure/jj193161.aspx
 [Service-side Authorization]: mobile-services-javascript-backend-service-side-authorization.md
 [Use scripts to authorize users]: /develop/mobile/tutorials/authorize-users-in-scripts-ios
-[Dynamické schéma]: http://go.microsoft.com/fwlink/p/?LinkId=296271
+[Dynamické schéma]: https://go.microsoft.com/fwlink/p/?LinkId=296271
 [How to: access custom parameters]: /develop/mobile/how-to-guides/work-with-server-scripts#access-headers
-[Create a table]: http://msdn.microsoft.com/library/windowsazure/jj193162.aspx
-[NSDictionary object]: http://go.microsoft.com/fwlink/p/?LinkId=301965
-[ASCII control codes C0 and C1]: http://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
+[Create a table]: https://msdn.microsoft.com/library/windowsazure/jj193162.aspx
+[NSDictionary object]: https://go.microsoft.com/fwlink/p/?LinkId=301965
+[ASCII control codes C0 and C1]: https://en.wikipedia.org/wiki/Data_link_escape_character#C1_set
 [CLI to manage Mobile Services tables]: /cli/azure/get-started-with-az-cli2
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
-[řídicí panel infrastruktury]: https://www.fabric.io/home
-[prostředků infrastruktury pro iOS – Začínáme]: https://docs.fabric.io/ios/fabric/getting-started.html
+[Řídicí panel prostředků infrastruktury]: https://www.fabric.io/home
+[Prostředky infrastruktury pro iOS – Začínáme]: https://docs.fabric.io/ios/fabric/getting-started.html
 [1]: https://github.com/Azure/azure-mobile-apps-ios-client/blob/master/README.md#ios-client-sdk
-[2]: http://azure.github.io/azure-mobile-apps-ios-client/
+[2]: https://azure.github.io/azure-mobile-apps-ios-client/
 [3]: https://msdn.microsoft.com/library/azure/dn495101.aspx
 [4]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags
-[5]: http://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
+[5]: https://azure.github.io/azure-mobile-services/iOS/v3/Classes/MSClient.html#//api/name/invokeAPI:data:HTTPMethod:parameters:headers:completion:
 [6]: https://github.com/Azure/azure-mobile-services/blob/master/sdk/iOS/src/MSError.h
 [7]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 [8]:../active-directory/develop/quickstart-v1-ios.md

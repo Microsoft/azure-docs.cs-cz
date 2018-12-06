@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 1e5f7ed2fb4c77e0a738cbe6ee6c84b46bc59bb8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f9e863146b78fa510ea6f5b6eb9b3aa0fc4ce926
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230831"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965782"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurace PHP ve službě Azure App Service Web Apps
 
@@ -148,7 +148,7 @@ Zend rozšíření jsou také podporovány pomocí **PHP_ZENDEXTENSIONS** klíč
 
 Namísto výchozího PHP runtime App Service Web Apps můžete použít modul runtime PHP, který zadáte pro spouštění skriptů PHP. Modul runtime, které poskytujete se dá nakonfigurovat pomocí `php.ini` soubor, který je rovněž poskytnout. Použití vlastního modulu runtime PHP s Web Apps, následujícím postupem.
 
-1. Získáte vláknově bezpečné, VC9 nebo VC11 kompatibilní verzi PHP pro Windows. Nejnovější verze PHP pro Windows najdete tady: [ http://windows.php.net/download/ ]. Starší verze najdete v archivu tady: [ http://windows.php.net/downloads/releases/archives/ ].
+1. Získáte vláknově bezpečné, VC9 nebo VC11 kompatibilní verzi PHP pro Windows. Nejnovější verze PHP pro Windows najdete tady: [ https://windows.php.net/download/ ]. Starší verze najdete v archivu tady: [ https://windows.php.net/downloads/releases/archives/ ].
 1. Upravit `php.ini` soubor pro prostředí runtime. Nastavení konfigurace, která jsou systémové úrovni – jen direktivy jsou ignorovány ve webových aplikacích. (Informace o systému úroveň jen direktivy najdete v tématu [Seznam php.ini direktivy]).
 1. Volitelně přidejte rozšíření do vašeho prostředí PHP runtime a povolit je `php.ini` souboru.
 1. Přidat `bin` do kořenového adresáře a put adresáře, který obsahuje prostředí PHP runtime v něm adresáře (například `bin\php`).
@@ -196,7 +196,7 @@ Další informace najdete v tématu [středisko pro vývojáře PHP](https://azu
 >
 
 [bezplatnou zkušební verzi]: https://www.windowsazure.com/pricing/free-trial/
-[phpinfo()]: http://php.net/manual/en/function.phpinfo.php
+[phpinfo()]: https://php.net/manual/en/function.phpinfo.php
 [select-php-version]: ./media/web-sites-php-configure/select-php-version.png
 [Seznam php.ini direktivy]: http://www.php.net/manual/en/ini.list.php
 [. user.ini]: http://www.php.net/manual/en/configuration.file.per-user.php
@@ -206,8 +206,8 @@ Další informace najdete v tématu [středisko pro vývojáře PHP](https://azu
 [save-button]: ./media/web-sites-php-configure/save-button.png
 [php-extensions]: ./media/web-sites-php-configure/php-extensions.png
 [handler-mappings]: ./media/web-sites-php-configure/handler-mappings.png
-[http://windows.php.net/download/]: http://windows.php.net/download/
-[http://windows.php.net/downloads/releases/archives/]: http://windows.php.net/downloads/releases/archives/
+[https://windows.php.net/download/]: https://windows.php.net/download/
+[https://windows.php.net/downloads/releases/archives/]: https://windows.php.net/downloads/releases/archives/
 [SETPHPVERCLI]: ./media/web-sites-php-configure/ChangePHPVersion-XPlatCLI.png
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png

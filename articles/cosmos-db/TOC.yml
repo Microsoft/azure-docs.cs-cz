@@ -114,6 +114,10 @@ items:
     items:
     - name: Práce s databázemi, kontejnery a položkami
       href: databases-containers-items.md
+    - name: Referenční informace k jazyku SQL
+      href: sql-api-sql-query-reference.md
+    - name: Příklady dotazů jazyka SQL
+      href: how-to-sql-query.md
     - name: Indexování
       items:
       - name: Přehled
@@ -262,8 +266,6 @@ items:
         href: /rest/api/cosmos-db/
       - name: Poskytovatel prostředků REST
         href: /rest/api/cosmos-db-resource-provider/
-      - name: Syntaxe jazyka SQL
-        href: sql-api-sql-query-reference.md
   - name: Dokumentace k rozhraní MongoDB API
     items:
     - name: Úvod
@@ -445,8 +447,6 @@ items:
       href: how-to-create-container.md
     - name: Dotazování na kontejner
       href: how-to-query-container.md
-    - name: Dotazování na data pomocí dotazů SQL
-      href: how-to-sql-query.md
   - name: Indexování
     items:
     - name: Konfigurace indexování
@@ -583,9 +583,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: b3094d99c13b228a4a4165a1a1a49a97a7517cb0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 413ec7cc09f748948cab92dd10495b667be06f40
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833716"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961225"

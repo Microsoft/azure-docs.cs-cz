@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 0f48d65d1b3e6d1f608d85cff3a24ef379caa9cf
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: f0040f7e84fefd745b3ca097a4808dc685dd5b72
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284825"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969477"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místní prostředí integration runtime
 Prostředí integration runtime (IR) je výpočetní infrastruktura, která Azure Data Factory používá pro poskytují funkce integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu runtime integrace](concepts-integration-runtime.md).
@@ -49,7 +49,7 @@ Při přesouvání dat mezi místní a cloudové aktivity místní prostředí i
 
 Tady je podrobný datový tok pro přehled kroků pro kopírování s místní prostředí IR:
 
-![Podrobný přehled](media\create-self-hosted-integration-runtime\high-level-overview.png)
+![Podrobný přehled](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. Vývojáři dat místní prostředí integration runtime v rámci služby Azure data factory vytvoří pomocí rutiny prostředí PowerShell. Na webu Azure portal v současné době nepodporuje tuto funkci.
 2. Vývojáři dat vytvoří propojené služby pro do místního úložiště dat tak, že zadáte instancí modulu runtime integrace v místním prostředí, který se má používat pro připojení k úložišti dat. Jako součást nastavení propojené služby vývojář dat používá aplikace Správce přihlašovacích údajů (aktuálně není podporováno) pro nastavení typů ověřování a přihlašovací údaje. Aplikace Správce přihlašovacích údajů komunikuje s úložišti dat k testování připojení a místní prostředí integration runtime k uložení přihlašovacích údajů.
@@ -131,7 +131,7 @@ Když je málo dostupné paměti na místní prostředí IR a využití CPU je v
 
 Pokud nejsou dostupné paměti a procesoru využívá dobře, ale spuštění souběžných úloh se blíží limitu, by měla vertikálně navýšit kapacitu zvýšením počtu souběžných úloh, které můžou běžet na uzlu. Můžete také vertikálně navýšit kapacitu, když aktivity jsou vypršení časového limitu, protože místní prostředí IR je přetížena. Jak je znázorněno na následujícím obrázku, můžete zvýšit maximální kapacita pro uzel:  
 
-![Zvýšení souběžných úloh, které můžou běžet na uzlu](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+![Zvýšení souběžných úloh, které můžou běžet na uzlu](media/create-self-hosted-integration-runtime/scale-up-self-hosted-IR.png)
 
 ### <a name="tlsssl-certificate-requirements"></a>Požadavky na certifikát TLS/SSL
 
@@ -162,33 +162,33 @@ Pro zavedení dvanácti minutu a ukázku této funkce z následujícího videa:
 
 1. Místní prostředí IR ke sdílení udělte oprávnění do služby data factory, ve kterém chcete vytvořit propojené IR. 
 
-   ![Tlačítko pro udělování oprávnění na kartě Sdílení](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+   ![Tlačítko pro udělování oprávnění na kartě Sdílení](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
 
-   ![Výběry pro přiřazení oprávnění](media\create-self-hosted-integration-runtime\3_rbac_permissions.png)
+   ![Výběry pro přiřazení oprávnění](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)
 
 2. Poznamenejte si ID prostředku v místním prostředí IR umožňuje sdílení.
 
-   ![Umístění ID prostředku](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+   ![Umístění ID prostředku](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
 
 3. Ve službě data factory, ke kterému byla udělena oprávnění vytvořit nový místní prostředí IR (odkaz) a zadejte ID prostředku.
 
-   ![Tlačítko pro vytvoření propojené místní prostředí integration runtime](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+   ![Tlačítko pro vytvoření propojené místní prostředí integration runtime](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
 
-   ![Pole pro název a ID prostředku](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+   ![Pole pro název a ID prostředku](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
 ### <a name="monitoring"></a>Monitorování 
 
 - **Sdílené reakcí na Incidenty**
 
-  ![Výběry pro vyhledání sdílené prostředí IR](media\create-self-hosted-integration-runtime\Contoso-shared-IR.png)
+  ![Výběry pro vyhledání sdílené prostředí IR](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
 
-  ![Karta pro monitorování](media\create-self-hosted-integration-runtime\contoso-shared-ir-monitoring.png)
+  ![Karta pro monitorování](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
 
 - **Propojené prostředí IR**
 
-  ![Výběry pro vyhledání propojených integration runtime](media\create-self-hosted-integration-runtime\Contoso-linked-ir.png)
+  ![Výběry pro vyhledání propojených integration runtime](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
 
-  ![Karta pro monitorování](media\create-self-hosted-integration-runtime\Contoso-linked-ir-monitoring.png)
+  ![Karta pro monitorování](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Známá omezení sdílení v místním prostředí IR
 
@@ -211,12 +211,12 @@ Pro zavedení dvanácti minutu a ukázku této funkce z následujícího videa:
 
 Pokud přesunete ukazatel myši nad ikonu a zprávy v oznamovací oblasti, můžete najít podrobnosti o stavu z místního prostředí integration runtime.
 
-![Oznámení v oznamovací oblasti](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
+![Oznámení v oznamovací oblasti](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
 
 ## <a name="ports-and-firewall"></a>Porty a brány firewall
 Existují dvě brány firewall, které byste měli zvážit: *podnikovou bránu firewall* běžící na střed směrovače organizace a *brány Windows firewall* nakonfigurovaný jako démon na místním počítači kde místní prostředí integration runtime se nainstaluje.
 
-![Brána firewall](media\create-self-hosted-integration-runtime\firewall.png)
+![Brána firewall](media/create-self-hosted-integration-runtime/firewall.png)
 
 Na *podnikovou bránu firewall* úroveň, budete muset nakonfigurovat následující domény a odchozích portech:
 
@@ -249,11 +249,11 @@ Například kopírování z do místního úložiště dat jímky Azure SQL Data
 ## <a name="proxy-server-considerations"></a>Důležité informace o proxy serveru
 Pokud vaše podnikové síťové prostředí používá proxy server pro přístup k Internetu, nakonfigurujte místní prostředí integration runtime používat příslušná nastavení proxy serveru. Během fáze počáteční registraci můžete nastavit proxy server.
 
-![Zadejte proxy server](media\create-self-hosted-integration-runtime\specify-proxy.png)
+![Zadejte proxy server](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
 Místní prostředí integration runtime používá proxy server pro připojení ke cloudové službě. Vyberte **odkaz Změnit** při počátečním nastavení. Zobrazí dialogové okno nastavení proxy serveru.
 
-![Nastavení proxy serveru](media\create-self-hosted-integration-runtime\set-http-proxy.png)
+![Nastavení proxy serveru](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 
 Existují tři možnosti konfigurace:
 
@@ -272,7 +272,7 @@ Po místní prostředí integration runtime byl úspěšně zaregistrován, poku
 
 Můžete zobrazit a aktualizovat proxy server HTTP s použitím nástroje Configuration Manager.
 
-![Zobrazení proxy](media\create-self-hosted-integration-runtime\view-proxy.png)
+![Zobrazení proxy](media/create-self-hosted-integration-runtime/view-proxy.png)
 
 > [!NOTE]
 > Pokud nastavení proxy serveru pomocí ověřování NTLM hostitelská služba modulu integration runtime běží pod účtem domény. Pokud změníte heslo pro účet domény, později, nezapomeňte aktualizovat nastavení konfigurace pro službu a restartujte ji odpovídajícím způsobem. Kvůli tomuto požadavku, doporučujeme použít vyhrazený doménový účet pro přístup k proxy serveru, který nevyžaduje často aktualizujte heslo.

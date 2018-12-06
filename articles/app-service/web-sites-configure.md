@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 73d2da542c4f7da0933187d800f562de76bfb3e6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 60675d7d40dbab863677ea120c25986cff61a308
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443504"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960137"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurace webových aplikací v prostředí Azure App Service
 
@@ -179,14 +179,14 @@ Další informace najdete v tématu [postupy: sledování stavu koncových bodů
 
 <!-- URL List -->
 
-[Funkce SignalR technologie ASP.NET]: http://www.asp.net/signalr
+[Funkce SignalR technologie ASP.NET]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Konfigurace vlastní domény ve službě Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Nasazení do přípravných prostředí pro Web Apps ve službě Azure App Service]: ./web-sites-staged-publishing.md
 [Povolení HTTPS pro aplikaci ve službě Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
-[Postupy: sledování stavu koncových bodů webové]: http://go.microsoft.com/fwLink/?LinkID=279906
+[Postupy: sledování stavu koncových bodů webové]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Základy monitorování pro webové aplikace ve službě Azure App Service]: ./web-sites-monitor.md
-[režim kanálů]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
+[režim kanálů]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Škálování webové aplikace ve službě Azure App Service]: ./web-sites-scale.md
 [Vyzkoušet službu App Service]: https://azure.microsoft.com/try/app-service/
 
