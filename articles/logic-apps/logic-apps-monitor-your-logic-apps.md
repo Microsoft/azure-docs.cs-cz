@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: c2e487f421d2dfc875efde82c078f557f7bd03d2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4e1a8bd60c71bfc46b3c57cff6a87c5b2477146e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405731"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956444"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorování stavu, nastavit protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
@@ -74,7 +74,7 @@ Pokud chcete dostávat oznámení o selhání nebo jiné možné problémy, nast
 
 Pro širší ladění pomocí podrobnosti modulu CLR a události, můžete nastavit protokolování pomocí diagnostiky [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Log Analytics je služba v Azure, která monitoruje cloudové a místní prostředí můžete zachovat jejich dostupnost a výkon. 
 
-Než začnete, musíte mít pracovní prostor Log Analytics. Přečtěte si [jak vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Než začnete, musíte mít pracovní prostor Log Analytics. Přečtěte si [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 1. V [webu Azure portal](https://portal.azure.com)vyhledejte a vyberte svou aplikaci logiky. 
 
@@ -92,7 +92,7 @@ Než začnete, musíte mít pracovní prostor Log Analytics. Přečtěte si [jak
    2. V části **Log Analytics**, zvolte **konfigurovat**. 
    3. V části **pracovních prostorů OMS**, vyberte pracovní prostor pro protokolování.
    > [!NOTE]
-   > Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
+   > Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
    4. V části **protokolu**, vyberte **WorkflowRuntime** kategorie.
    5. Zvolte metriky interval.
    6. Jakmile budete hotoví, vyberte **Uložit**.
@@ -137,7 +137,7 @@ Chcete-li upřesněte svůj dotaz tak, že přidáte filtr, zvolte **+ přidat**
    V tomto příkladu je slovo "stavu" najít neúspěšné události v rámci **AzureDiagnostics**.
    Tady filtr pro **status_s** je už vybraná.
 
-   ![Vyberte filtr](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
+   ![Vyberte filtr.](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
 7. V levém panelu, vyberte hodnotu filtru, který chcete použít a zvolte **použít**.
 

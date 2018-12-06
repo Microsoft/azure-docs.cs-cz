@@ -9,12 +9,12 @@ ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: fa77e117b8045be4ef0566e388c4e8df08c95fe2
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4016471be05c1062eb389ab4851330f3a80dbcb2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42059077"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969022"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Začínáme s IoT Hub identit a modul dvojče zařízení pomocí Node.js zařízení a back-end Node.js
 
@@ -35,18 +35,17 @@ Pro absolvování tohoto kurzu potřebujete:
 * Služby IoT Hub.
 * Nainstalujte nejnovější [sady Node.js SDK](https://github.com/Azure/azure-iot-sdk-node).
 
-
 Nyní jste vytvořili službu IoT Hub a máte název hostitele a připojovací řetězec služby IoT Hub, které potřebujete k dokončení kurzu.
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Vytvoření identity zařízení a modul identity ve službě IoT Hub
 
 V této části vytvoříte aplikaci Node.js, která v registru identit ve službě IoT hub vytvoří identitu zařízení a modul identity. Zařízení nebo modul je možné připojit k centru IoT, pouze pokud má záznam v registru identit. Další informace najdete v části Registr identit v [Příručce pro vývojáře pro službu IoT Hub][lnk-devguide-identity]. Když spustíte tuto konzolovou aplikaci, vygeneruje jedinečné ID a klíč zařízení i modulu. Vaše zařízení a modul použijí tyto hodnoty k vlastní identifikaci při odesílání zpráv typu zařízení-cloud do služby IoT Hub. V ID se rozlišují malá a velká písmena.
 
-1.  Vytvořte adresář k uložení kódu.
-2. V tomto adresáři při prvním spuštění **npm init -y** vytvořte prázdný soubor package.json pomocí výchozích hodnot. Toto je soubor projektu pro svůj kód.
-3. Spustit **npm nainstalujte -S azure-iothub@modules-preview**  instalace sady SDK služby uvnitř **node_modules** podadresáře. 
+1. Vytvořte adresář k uložení kódu.
+2. V tomto adresáři při prvním spuštění **npm init -y** vytvořte prázdný soubor package.json pomocí výchozích hodnot. Toto je soubor projektu pro svůj kód.
+3. Spustit **npm nainstalujte -S azure-iothub@modules-preview ** instalace sady SDK služby uvnitř **node_modules** podadresáře.
 
-    > [!NOTE] 
+    > [!NOTE]
     > Node_modules název podadresáře používá modul slovo znamená "knihovna uzel". Termín zde nemá nic společného s moduly služby IoT Hub.
 
 4. Ve vašem adresáři vytvořte následující soubor .js. Pojmenujte ji **add.js**. Zkopírujte a vložte připojovací řetězec centra a název centra.
@@ -126,7 +125,7 @@ V této části vytvoříte Node.js aplikace na zařízení s Simulovaná, kter�
     > [!NOTE]
     > Mohou mít pocit instalačního příkazu npm pomalé. Buďte prosím trpěliví. to je potažením dolů velké množství kódu z úložiště balíčků.
 
-    > [!NOTE] 
+    > [!NOTE]
     > Pokud se zobrazí chybová zpráva npm ERR! Chyba parsování json registru, toto je bezpečně ignorovat. Pokud se zobrazí chybová zpráva npm ERR! Chyba parsování json registru, toto je bezpečně ignorovat.
 
 3. Vytvořte soubor s názvem twin.js. Zkopírujte a vložte řetězec identity vašeho modulu.
@@ -180,7 +179,7 @@ V této části vytvoříte Node.js aplikace na zařízení s Simulovaná, kter�
     });
     ```
 
-2. Nyní, spustit pomocí příkazu **uzel twin.js**.
+2. Nyní, spustit pomocí příkazu **uzel twin.js**.
 
     ```
     F:\temp\module_twin>node twin.js
@@ -200,9 +199,8 @@ Chcete-li pokračovat v seznamování se službou IoT Hub a prozkoumat další s
 * [Začínáme se správou zařízení][lnk-device-management]
 * [Začínáme se službou IoT Edge][lnk-iot-edge]
 
-
 <!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
+[15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

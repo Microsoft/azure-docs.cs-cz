@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 01a02296354ebe3d60f0e1fda6a6da8554a265fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4c5a4dfcdde91d1bd0c2728ff9d071d4c2f73f0e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239062"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969766"
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Zpráva k vydání verze Azure SDK pro .NET 2.7 a .NET 2.7.1
 ## <a name="overview"></a>Přehled
@@ -40,7 +40,7 @@ Vylepšení přihlašování součástí Azure SDK 2.7 jsou dostupné jenom v sa
 Aktualizovat **Mobile Apps** šablony tak, aby odrážely nejnovější [balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) a nastavení.
 
 ### <a name="service-bus"></a>Service Bus
-Obecné opravy chyb a vylepšení. Podrobnosti o aktualizace a funkce, najdete v poznámkách k verzi z nejnovější [NuGet služby Service Bus](http://www.nuget.org/packages/WindowsAzure.ServiceBus/).
+Obecné opravy chyb a vylepšení. Podrobnosti o aktualizace a funkce, najdete v poznámkách k verzi z nejnovější [NuGet služby Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/).
 
 ### <a name="hdinsight-tools"></a>Nástroje HDInsight
 V této verzi byly provedeny následující aktualizace. Tyto aktualizace jsou ve verzi preview. Další informace najdete v tématu [tento blog](https://go.microsoft.com/fwlink/?LinkId=619108).

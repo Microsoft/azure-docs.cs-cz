@@ -17,12 +17,12 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 878c2596a1d884e26a4b4a4ed4764cfd9ce6b39b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: e9de2c9b7f79dd6cba3050d84ccfa0795bc2d09a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424096"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962575"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>verze 2.0 protokolů – SPA pomocí implicitní tok
 
@@ -36,7 +36,7 @@ S koncovým bodem v2.0 se můžete přihlásit uživatele své jednostránkové 
 
 V případě těchto aplikací (AngularJS, Ember.js, React.js atd.) podporuje Azure Active Directory (Azure AD) tok implicitní Grant OAuth 2.0. Implicitní tok je popsána v [specifikaci OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.2). Jeho primární výhodou je, že umožňuje aplikaci získat tokeny ze služby Azure AD bez provedení back-end serveru výměnou přihlašovacích údajů. To umožňuje aplikaci pro uživatele, Udržovat relaci a získat tokeny do dalších webových rozhraní API vše v rámci klienta kódu jazyka JavaScript. Existuje několik důležité informace o zabezpečení vzít v úvahu při použití implicitní tok konkrétně přibližně [klienta](https://tools.ietf.org/html/rfc6749#section-10.3) a [zosobnění uživatele](https://tools.ietf.org/html/rfc6749#section-10.3).
 
-Pokud chcete použít implicitní tok a Azure AD k přidání ověřování do aplikace jazyka JavaScript, doporučujeme, abyste použili open source knihovna jazyka JavaScript, [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js). 
+Pokud chcete použít implicitní tok a Azure AD k přidání ověřování do aplikace jazyka JavaScript, doporučujeme, abyste použili open source knihovna jazyka JavaScript, [msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js).
 
 Ale pokud nechcete použít knihovnu v jednostránkové aplikaci a pošlete sami sobě zprávy protokolu, postupujte podle obecných kroků.
 
@@ -71,7 +71,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Pokud chcete otestovat, přihlášení pomocí implicitního toku, klikněte na tlačítko <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank"> https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a> Po přihlášení by měl prohlížeč přesměrován na `https://localhost/myapp/` s `id_token` do adresního řádku.
-> 
+>
 
 | Parametr |  | Popis |
 | --- | --- | --- |

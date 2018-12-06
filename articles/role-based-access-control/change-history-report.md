@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62389edabb6d510fa1294affeb8e874efd18fc06
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c1ba7798fd8c1a18bc84aeb9ab8c4c2e0ff718cc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678419"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967891"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Zobrazení protokolů aktivit pro RBAC změny
 
@@ -117,7 +117,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 Tady jsou základní kroky, abyste mohli začít:
 
-1. [Vytvoření pracovního prostoru Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+1. [Vytvoření pracovního prostoru Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 1. [Konfigurovat řešení Activity Log Analytics](../azure-monitor/platform/collect-activity-logs.md#configuration) pro váš pracovní prostor.
 
@@ -125,7 +125,7 @@ Tady jsou základní kroky, abyste mohli začít:
 
    ![Možnost log Analytics na portálu](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Volitelně můžete použít [prohledávání protokolů](../log-analytics/log-analytics-log-search.md) stránky nebo [portálu pro pokročilou analýzu](../log-analytics/query-language/get-started-analytics-portal.md) pro dotazování a zobrazení protokolů. Další informace o těchto dvou možnostech naleznete v tématu [stránku prohledávání protokolů nebo portálu pro pokročilou analýzu](../log-analytics/log-analytics-log-search-portals.md).
+1. Volitelně můžete použít [prohledávání protokolů](../log-analytics/log-analytics-log-search.md) stránky nebo [portálu pro pokročilou analýzu](../azure-monitor/log-query/get-started-portal.md) pro dotazování a zobrazení protokolů. Další informace o těchto dvou možnostech naleznete v tématu [stránku prohledávání protokolů nebo portálu pro pokročilou analýzu](../azure-monitor/log-query/portals.md).
 
 Tady je dotaz, který vrátí uspořádané podle poskytovatele prostředků cílového nové přiřazení rolí:
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c7e9c841e7a1d73fcdedd99e210eefb1e52bbf3e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9819b2bf3c5e5a07d788dc7f51b674a07e6c41ef
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498747"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972333"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Rozhodování, jestli použít Azure Blobs, soubory Azure nebo Azure Disks
 
@@ -26,7 +26,7 @@ Následující tabulka porovnává souborů, objektů BLOB a disků a ukazuje uk
 | Funkce | Popis | Kdy je použít |
 |--------------|-------------|-------------|
 | **Služba soubory Azure** | Poskytuje rozhraní SMB, klientských knihoven a [rozhraní REST](/rest/api/storageservices/file-service-rest-api) , která umožňuje přístup odkudkoli k uložených souborů. | Chcete metodou "lift and shift" aplikace do cloudu, která již používá rozhraní API systému nativní soubor pro sdílení dat mezi ním a dalších aplikací běžících v Azure.<br/><br/>Chcete uložit vývoje a ladicí nástroje, které je potřeba přistupovat z velký počet virtuálních počítačů. |
-| **Objekty BLOB Azure** | Nabízí klientské knihovny a [rozhraní REST](/rest/api/storageservices/blob-service-rest-api) , který umožňuje nestrukturovaných dat ukládají a získávají ve velkém měřítku v objektech BLOB bloku. | Chcete, aby vaše aplikace podporovat datový proud a scénáře náhodný přístup.<br/><br/>Chcete mít možnost získat přístup k datům aplikace odkudkoli. |
+| **Objekty BLOB Azure** | Nabízí klientské knihovny a [rozhraní REST](/rest/api/storageservices/blob-service-rest-api) , který umožňuje nestrukturovaných dat ukládají a získávají ve velkém měřítku v objektech BLOB bloku.<br/><br/>Podporuje také [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) pro řešení pro analýzu velkých objemů dat organizace. | Chcete, aby vaše aplikace podporovat datový proud a scénáře náhodný přístup.<br/><br/>Chcete mít možnost získat přístup k datům aplikace odkudkoli.<br/><br/>Chcete vytvářet data lake enterprise v Azure a provádět analýzy velkých objemů dat. |
 | **Disky Azure** | Nabízí klientské knihovny a [rozhraní REST](/rest/api/compute/manageddisks/disks/disks-rest-api) , který umožňuje dat trvale uložena a k němu přistupovat z připojeného virtuálního pevného disku. | Má schopnost přenést aplikace, které používají rozhraní API systému nativní soubor pro čtení a zápis dat do trvalé disky.<br/><br/>Chcete uložit data, která nevyžaduje přístup mimo virtuální počítač, ke kterému je připojený disk. |
 
 ## <a name="comparison-files-and-blobs"></a>Porovnání: Soubory a objekty BLOB

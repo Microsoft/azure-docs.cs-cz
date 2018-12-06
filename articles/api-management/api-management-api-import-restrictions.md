@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: a9f4a4ed4a8771f32a4d66aed2457a43abb92a63
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 34e6fb195ae64823336684e9ad2e9382316822b0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285710"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961064"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Omezení pro import rozhraní API a známé problémy
 ## <a name="about-this-list"></a>Informace o tomto seznamu
 Při importu rozhraní API, může setkat určitá omezení nebo identifikovat problémy, které je potřeba opravit, bylo možné úspěšně naimportovat. Tento článek dokumenty, uspořádány podle formát importu rozhraní API.
 
 ## <a name="open-api"> </a>OpenAPI/Swagger
-Pokud se vám zobrazuje chyby, Import dokumentu OpenAPI, ujistěte se, jste ověřili jeho – buď pomocí návrháře na webu Azure Portal (návrh - front-endu – Editor specifikace OpenAPI), nebo s třetími stranami nástroj, jako <a href="http://editor.swagger.io">editoru Swagger</a>.
+Pokud se vám zobrazuje chyby, Import dokumentu OpenAPI, ujistěte se, jste ověřili jeho – buď pomocí návrháře na webu Azure Portal (návrh - front-endu – Editor specifikace OpenAPI), nebo s třetími stranami nástroj, jako <a href="https://editor.swagger.io">editoru Swagger</a>.
 
 * Je podporován jen formát JSON OpenAPI.
 * Požadované parametry napříč cestu a dotaz musí mít jedinečné názvy. (V OpenAPI název parametru pouze musí být jedinečný v rámci umístění, třeba cestu, dotaz, záhlaví.  Ale ve službě API Management umožňujeme operace rozlišované cestu a dotaz parametry (které OpenAPI nepodporuje). Proto požadujeme, aby názvy parametrů být jedinečný v rámci celou adresu URL šablony.)

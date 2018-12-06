@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4bfb7dc2b65dc479189ac7920509e1fd8a23ce4f
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: a641b5bb754c265a4fa5fb7e2fe85989d4813354
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50961343"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955169"
 ---
 # <a name="administer-your-iot-central-application"></a>Spravovat aplikace IoT Central
 
@@ -35,12 +35,12 @@ Pro přístup k a použít **správu** oddíl, musí být v **správce** role pr
 ### <a name="change-application-name-and-url"></a>Změna názvu aplikace a adresu URL
 V **nastavení aplikace** stránky, můžete změnit název a adresu URL vaší aplikace a pak vyberte **Uložit**.
 
-![Stránka nastavení aplikace](media\howto-administer\image0-a.png)
+![Stránka nastavení aplikace](media/howto-administer/image0-a.png)
 
 > [!Note]
 > Pokud změníte adresu URL, můžete původní adresu URL provedenou jiný zákazník Azure IoT Central. Pokud k tomu dojde, není již k dispozici pro použití. Když změníte adresu URL, původní adresa URL již není funkční a budete muset informovat uživatele o nové adrese URL použít.
 
-### <a name="prepare-and-upload-image"></a>Přípravě a nahrávání obrázků
+### <a name="prepare-and-upload-image"></a>Příprava a nahrávání image
 Chcete-li změnit image aplikace, [Prepare a nahrávání imagí do aplikace Azure IoT Central](howto-prepare-images.md).
 
 ### <a name="copy-an-application"></a>Kopírovat aplikaci
@@ -48,11 +48,11 @@ Můžete vytvořit kopii jakékoli aplikace, bez jakékoli instance zařízení,
 
 Klikněte na tlačítko **kopírování** tlačítko. V dialogovém okně zadejte podrobnosti pro novou aplikaci s průběžnými platbami. Klikněte **kopírování** potvrďte, že chcete pokračovat. Další informace o polích v tomto formuláři v [vytvořit aplikaci](quick-deploy-iot-central.md) rychlý start.
 
-![Stránka nastavení aplikace](media\howto-administer\appCopy2.png)
+![Stránka nastavení aplikace](media/howto-administer/appCopy2.png)
 
 Po úspěšném provedení operace kopie aplikace, můžete přejít na novou aplikaci, která byla vytvořena tak, že zkopírujete svoji aplikaci pomocí odkazu, který se zobrazí.
 
-![Stránka nastavení aplikace](media\howto-administer\appCopy3.png)
+![Stránka nastavení aplikace](media/howto-administer/appCopy3.png)
 
 > [!Note]
 > Kopírování aplikace také zkopíruje definice pravidla a akce. Ale vzhledem k tomu, že uživatelé, kteří mají přístup k původní aplikace nejsou zkopírovány do zkopírovaný aplikace, budete muset ručně přidat uživatele do akce, jako je e-mailu, pro které uživatelé jsou požadovány. Obecně je vhodné zkontrolovat pravidla a akce, abyste měli jistotu, že jsou aktuální v nové aplikaci.
@@ -71,13 +71,13 @@ Další informace najdete v tématu [nápovědy účtu společnosti Microsoft](h
 
 1. Chcete-li přidat uživatele k IoT Central aplikaci, přejděte na **uživatelé** stránku **správu** oddílu.
 
-    ![Seznam uživatelů](media\howto-administer\image1.png)
+    ![Seznam uživatelů](media/howto-administer/image1.png)
 
 1. Pokud chcete přidat uživatele, na **uživatelé** zvolte **+ přidat uživatele**.
 
 1. Vyberte roli pro uživatele **Role** rozevírací nabídky. Další informace o rolích v [spravovat role](#manage-roles) části tohoto článku.
 
-    ![Výběr role](media\howto-administer\image3.png)
+    ![Výběr role](media/howto-administer/image3.png)
 
     > [!NOTE]
     >  Hromadné přidání uživatelů, zadejte ID všech uživatelů, které chcete přidat uživatele oddělených středníky. Zvolte roli z **Role** rozevírací nabídky. Potom vyberte **Uložit**.
@@ -117,10 +117,10 @@ Chcete-li zobrazit váš účet, přejděte na **fakturace** stránku **správy*
 
 Můžete převést zkušební verzi aplikace do aplikace s průběžnými platbami. Zde jsou rozdíly mezi těmito typy aplikací.
 
-- **Zkušební verze** aplikací jsou zdarma po dobu 7 dní před vypršením jejich platnosti. Je lze převést na průběžné platby v každém okamžiku před vypršením jejich platnosti.
-- **Průběžné platby** aplikace účtují podle zařízení, a to zdarma prvních 5 zařízení.
+- **Trial** – Zkušební verze aplikací jsou bezplatné a jejich platnost vyprší po 7 dnech. Před vypršením platnosti je možné je kdykoli převést na průběžné platby.
+- **Pay-As-You-Go** – Aplikace s průběžnými platbami se účtují podle počtu zařízení a prvních 5 zařízení je zdarma.
 
-Další informace o cenách najdete na [Azure IoT Central stránce s cenami](https://azure.microsoft.com/pricing/details/iot-central/).
+Další informace o cenách najdete na [stránce s cenami za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/).
     
 K dokončení tohoto procesu samoobslužné služby, postupujte podle těchto kroků:
 

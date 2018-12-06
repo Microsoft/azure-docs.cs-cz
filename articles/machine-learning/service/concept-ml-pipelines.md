@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 11/07/2018
-ms.openlocfilehash: 099b59cde4ee438f16b9d7e77bd81c004006cb71
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 3b5afd2a39c14d71e123f93d503692356a655a87
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684854"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965833"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Kanály a Azure Machine Learning
 
@@ -69,8 +69,10 @@ Podívejte se [Python SDK referenční dokumenty pro kanály](https://docs.micro
 
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
  
-Následující Poznámkový blok ukazuje kanálů pomocí služby Azure Machine Learning: [kanál nebo kanál batch-scoring.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/pipeline-batch-scoring.ipynb).
- 
-Získáte tento poznámkový blok:
+Tyto poznámkové bloky ukazují kanálů pomocí služby Azure Machine Learning: [how-to-use-azureml/machine-learning-pipelines](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines).
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+
+## <a name="next-steps"></a>Další postup
+
+Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md).

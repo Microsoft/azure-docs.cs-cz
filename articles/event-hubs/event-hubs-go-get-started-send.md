@@ -9,31 +9,32 @@ ms.workload: core
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: f5e30a103b09613caee8e9912a89a5bc2d390f65
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 2cc7c19d623427f7c98bbb66089b764bb067136b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458084"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52954906"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>Odesílání událostí do služby Event Hubs pomocí jazyka Go
 
-Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-about.md) a [funkcích služby Event Hubs](event-hubs-features.md).
+Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
 Tento kurz popisuje, jak odesílat události do centra událostí z aplikace napsané v Go. 
 
 > [!NOTE]
-> V tomto rychlém startu si můžete stáhnout jako ukázku z [Githubu](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs), nahraďte `EventHubConnectionString` a `EventHubName` řetězce hodnotami vašeho event hub, a potom ho spusťte. Alternativně můžete provedením kroků v tomto kurzu vytvoříte vlastní.
+> Tento rychlý start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs), nahradit řetězce `EventHubConnectionString` a `EventHubName`, hodnotami pro vaše centrum událostí a spustit. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 * Přejděte nainstalovaný místně. Postupujte podle [tyto pokyny](https://golang.org/doc/install) v případě potřeby.
-* Stávající služby Event Hubs oboru názvů a Centrum událostí. Tyto entity můžete vytvořit podle pokynů v [v tomto článku](event-hubs-create.md).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
-Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md), potom proveďte následující kroky v tomto kurzu.
+Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md).
+
+Nyní postupujte podle následující kroků v tomto kurzu.
 
 ## <a name="install-go-package"></a>Nainstalujte balíček Go
 

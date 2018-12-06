@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e10c6580c29784f8d56a31e267c47ec08894113b
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 5c5bdb8fad60a2e4196c2c9f74764e27cec5ba62
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418360"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970769"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure web apps
 
@@ -145,7 +145,7 @@ Jako alternativu můžete použít metodu webové stránce HTML ručně ověřit
 3.  Odešlete tento soubor v kořenové složce webového serveru, který je hostitelem vaší domény.
 4.  Vyberte **aktualizovat** zkontrolovat stav certifikátu. Může trvat několik minut na dokončení ověření.
 
-Například, pokud si kupujete standardní certifikát pro azure.com s token 1234abcd ověření domény, webové žádosti na http://azure.com/1234abcd.html by měla vrátit 1234abcd. 
+Například, pokud si kupujete standardní certifikát pro azure.com s token 1234abcd ověření domény, webové žádosti na https://azure.com/1234abcd.html by měla vrátit 1234abcd. 
 
 > [!IMPORTANT]
 > Pořadí certifikátů má pouze 15 dnů, dokončit operace ověření domény. Po 15 dnech certifikační autorita zamítne certifikát a se vám neúčtují poplatky pro certifikát. V takovém případě odstranit tento certifikát a zkuste to znovu.

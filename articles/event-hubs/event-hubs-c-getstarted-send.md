@@ -14,17 +14,17 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 32345b0f064aa78dbf1cbb84cb2309138e7bf4f7
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 95a689b00d67a9f2c24b4deaf5575464923a1e60
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49455381"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961769"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Odesílání událostí do služby Azure Event Hubs pomocí jazyka C
 
 ## <a name="introduction"></a>Úvod
-Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-about.md) a [funkcích služby Event Hubs](event-hubs-features.md).
+Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
 
 Tento kurz popisuje, jak odesílat události do centra událostí pomocí konzolové aplikace v jazyce C. 
 
@@ -33,6 +33,13 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * Vývojové prostředí jazyka C. Tento kurz předpokládá gcc zásobníku na virtuálním počítači Azure s Linuxem s Ubuntu 14.04.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
+
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
+Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md).
+
+Získání hodnoty přístupový klíč pro Centrum událostí podle pokynů v článku: [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). V kódu, který napíšete později v tomto kurzu použijete přístupový klíč. Je výchozí název klíče: **RootManageSharedAccessKey**.
+
+Nyní postupujte podle následující kroků v tomto kurzu.
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Napsání kódu pro odesílání zpráv do služby Event Hubs
 V této části ukazuje, jak psát aplikace v jazyce C k odesílání událostí do vašeho centra událostí. Kód používá knihovnu kanálem AMQP od [projektu Apache Qpid](http://qpid.apache.org/). To je obdobou pomocí front a témat Service Bus pomocí protokolu AMQP from C, jak je znázorněno [v této ukázce](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Další informace najdete v tématu [Qpid kanálem dokumentaci](http://qpid.apache.org/proton/index.html).

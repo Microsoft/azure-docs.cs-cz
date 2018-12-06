@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: ryanwi
-ms.openlocfilehash: e4c3bf627c4a5e01c4d9001fcbb0feed0b92209f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e41e5d48141b120ec1f80b0faa899bda07a2934e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008038"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962059"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otevřete porty pro cluster Service Fabric
 
 Nástroje pro vyrovnávání zatížení, který je nasazený pomocí clusteru Azure Service Fabric směruje provoz do vaší aplikace spuštěný v uzlu. Pokud změníte vaše aplikace bude moct používat jiný port, musí zveřejnit tento port (nebo směrovat jiný port) ve službě Azure Load Balancer.
 
-Po nasazení clusteru Service Fabric do Azure pro vás byl automaticky vytvořen nástroj pro vyrovnávání zatížení. Pokud nemáte nástroj pro vyrovnávání zatížení, přečtěte si téma [konfigurace nástroje pro vyrovnávání zatížení přístupem k Internetu](..\load-balancer\load-balancer-get-started-internet-portal.md).
+Po nasazení clusteru Service Fabric do Azure pro vás byl automaticky vytvořen nástroj pro vyrovnávání zatížení. Pokud nemáte nástroj pro vyrovnávání zatížení, přečtěte si téma [konfigurace nástroje pro vyrovnávání zatížení přístupem k Internetu](../load-balancer/load-balancer-get-started-internet-portal.md).
 
 ## <a name="configure-service-fabric"></a>Konfigurace service fabric
 
@@ -33,7 +33,7 @@ Aplikace Service Fabric **ServiceManifest.xml** konfigurační soubor definuje k
 
 ## <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení otevře port přístupem k Internetu a předává provoz na portu vnitřní uzlu používaný vaší aplikací. Pokud nemáte nástroj pro vyrovnávání zatížení, přečtěte si téma [konfigurace nástroje pro vyrovnávání zatížení přístupem k Internetu](..\load-balancer\load-balancer-get-started-internet-portal.md).
+Pravidlo nástroje pro vyrovnávání zatížení otevře port přístupem k Internetu a předává provoz na portu vnitřní uzlu používaný vaší aplikací. Pokud nemáte nástroj pro vyrovnávání zatížení, přečtěte si téma [konfigurace nástroje pro vyrovnávání zatížení přístupem k Internetu](../load-balancer/load-balancer-get-started-internet-portal.md).
 
 Vytvořte pravidlo nástroje pro vyrovnávání zatížení, je třeba shromažďovat následující informace:
 
@@ -68,7 +68,7 @@ Pomocí příkazu Azure CLI má několik parametrů, které jsou popsány v nás
 
 
 >[!NOTE]
->Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI najdete v tématu [vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI](..\load-balancer\load-balancer-get-started-internet-arm-cli.md).
+>Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI najdete v tématu [vytvořit nástroj pro vyrovnávání zatížení pomocí Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -104,7 +104,7 @@ $lb | Set-AzureRmLoadBalancer
 Ohledně `New-AzureRmLoadBalancerRuleConfig` příkazu `-FrontendPort` představuje port, který poskytuje nástroje pro vyrovnávání zatížení pro externí připojení, a `-BackendPort` představuje aplikace service fabric naslouchá na portu.
 
 >[!NOTE]
->Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí prostředí PowerShell najdete v tématu [vytvoření nástroje pro vyrovnávání zatížení pomocí prostředí PowerShell](..\load-balancer\load-balancer-get-started-internet-arm-ps.md).
+>Další informace o tom, jak vytvořit nástroj pro vyrovnávání zatížení pomocí prostředí PowerShell najdete v tématu [vytvoření nástroje pro vyrovnávání zatížení pomocí prostředí PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -9,11 +9,11 @@ ms.date: 11/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4cd1d143151e61c7c767ffdc4acb172b06dd0e43
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52585658"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52974875"
 ---
 |**SKU**   | **Tunely<br> S2S/VNet-to-VNet** | **Připojení P2S<br> SSTP** | **Připojení P2S<br> IKEv2** | **Srovnávací test<br>agregované propustnosti** |
 |---       | ---        | ---       | ---            | ---       |

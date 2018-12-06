@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: eb97e709e18daba3722dc43a869ef034dbe573cf
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c13a4606219ebdb1d23a83a0bd3bdf14f1a3882e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50157424"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970905"
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Důležité informace o sítích pro Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Jak vybrat virtuální síť Azure
@@ -102,7 +102,7 @@ Následující tabulka uvádí ukázku skupiny zabezpečení sítě můžete nak
 
 Kromě toho NSG také ukazuje, jak uzamknout protokolu Secure LDAP přes internet. Toto pravidlo přeskočte, pokud jste ještě nepovolili přístup protokolu secure LDAP k vaší spravované doméně přes internet. Skupiny zabezpečení sítě obsahuje sadu pravidel, které umožňují přístup protokolu LDAPS pro příchozí připojení přes port TCP 636 pouze ze zadaných IP adres. Pravidla NSG pro povolení protokolu LDAPS přístup přes internet ze zadaných IP adres má vyšší prioritu než pravidla DenyAll NSG.
 
-![Ukázka skupiny NSG k zabezpečení přístupu k protokolu LDAPS přes internet](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![Ukázka skupiny NSG k zabezpečení přístupu k protokolu LDAPS přes internet](./media/active-directory-domain-services-alerts/default-nsg.png)
 
 **Další informace o** - [vytvořte skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md).
 

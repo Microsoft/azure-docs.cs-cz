@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 7b2dd4e97d23f37c8261e51f3f65e78436493ddc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7e90fb6bcfa1bfab59177cbc6c717fefc163a67a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238724"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960090"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Připojení zařízení v Azure IoT Central
 
@@ -44,12 +44,12 @@ Pomocí SAS připojení jedno zařízení k IoT Central je jednoduché a zabere 
 1. Přidat **skutečné zařízení** z Device Explorer, klikněte na **+ nový > skutečné** skutečné zařízení přidat.
     * Zadejte Id zařízení **<span style="color:Red">(by měl být malými písmeny)</span>** nebo použijte navrhovaný ID zařízení.
     * Zadejte název zařízení nebo použijte navrhovaný název   
-    ![Přidání zařízení](media\concepts-connectivity\add-device.png)
+    ![Přidání zařízení](media/concepts-connectivity/add-device.png)
 1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení a primární klíč** pro přidání zařízení kliknutím **připojit** na stránce zařízení.
     * **[ID rozsahu](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope)**  za aplikace IoT Central je a generuje distribučních bodů, zajišťuje jedinečné ID zařízení v rámci aplikace.
     * **Id zařízení** je jedinečné ID na aplikaci, zařízení je potřeba poslat Id zařízení jako součást volání registrace zařízení.   
     * **Primární klíč** je SAS token vygenerovaný IoT Central pro toto konkrétní zařízení. 
-    ![Podrobné informace o připojení](media\concepts-connectivity\device-connect.PNG)
+    ![Podrobné informace o připojení](media/concepts-connectivity/device-connect.PNG)
 1. Tyto podrobnosti připojení **Identity zařízení, název zařízení a primární klíč zařízení** ve svém kódu zařízení pro zřízení a připojení zařízení a začnou zobrazovat data protékají okamžitě. Pokud používáte zařízení použijte MxChip, [podrobných pokynů](howto-connect-devkit.md#add-a-real-device), spusťte z části **připravit zařízení DevKit**.   
 
     V následující tabulce jsou odkazy na další jazyky, které chcete použít.
@@ -137,13 +137,13 @@ Připojení zařízení k IoT Central X509 pomocí certifikátů, existuje se vy
 
     *   **Přidat X509 kořenový nebo zprostředkující certifikát** použijete k vytvoření certifikátů zařízení typu list. Přejděte na Správa > připojení zařízení > certifikáty. 
     
-        ![Nastavení připojení](media\concepts-connectivity\connection-settings.PNG)
+        ![Nastavení připojení](media/concepts-connectivity/connection-settings.PNG)
     *   **Ověření certifikátu:** ověření vlastnictví certifikátu se zajistí, že uživatele nahrávajícího certifikátu ve vlastnictví privátní klíč certifikátu. Chcete-li ověřit certifikát
         *  Vygenerovat ověřovací kód, klikněte na tlačítko vedle pole ověřovací kód a vygenerovat ověřovací kód. 
         *  Vytvořte certifikát pro ověření X.509 s ověřovacím kódem, uložte certifikát jako soubor .cer. 
         *  Nahrát podepsaný ověřovacího certifikátu a klikněte na tlačítko ověřit.
 
-        ![Nastavení připojení](media\concepts-connectivity\verify-cert.png)
+        ![Nastavení připojení](media/concepts-connectivity/verify-cert.png)
     *   **Sekundární certifikát:** během cyklu řešení IoT, budete muset vrátit certifikáty. Dva hlavní důvody pro certifikáty se zajištěním provozu by bezpečnosti a vypršení platnosti certifikátů. Sekundární certifikáty se používají k zkrátit výpadky pro zařízení s pokusem o zřízení, když aktualizujete primární certifikát.
 
     **TESTOVÁNÍ POUZE PRO ÚČELY** 
@@ -180,7 +180,7 @@ Jeden z klíčových scénářů, které umožňuje IoT Central je pro výrobce 
 
 Níže se tok připojil zařízení s touto funkcí
 
-![Nastavení připojení](media\concepts-connectivity\device-connection-flow.PNG)
+![Nastavení připojení](media/concepts-connectivity/device-connection-flow.PNG)
 
 
 Postupujte podle pokynů na základě vaší volby schéma ověřování zařízení (X509/SAS)
@@ -188,7 +188,7 @@ Postupujte podle pokynů na základě vaší volby schéma ověřování zaříz
 1. **nastavení připojení** 
     * **X509 certifikáty:** [přidat a ověřit kořenový nebo zprostředkující certifikát](#connect-devices-using-x509-certificates) a použít ho ke generování certifikátů zařízení v dalším kroku.
     * **SAS:** zkopírujte primární klíč (klíč SAS pro skupinu pro tuto aplikaci IoT Central je tento klíč) a použít ho ke generování klíče SAS zařízení v dalším kroku. 
-![Nastavení připojení SAS](media\concepts-connectivity\connection-settings-sas.png)
+![Nastavení připojení SAS](media/concepts-connectivity/connection-settings-sas.png)
 
 1. **Vytvoření přihlašovacích údajů pro zařízení** 
     *   **Certifikáty X509:** generovat listové certifikáty pro zařízení s použitím kořenové nebo zprostředkující certifikát jste přidali do této aplikace. Ujistěte se, že používáte **ID zařízení** jako záznam cname v listu certifikáty a  **<span style="color:Red">(by měl být malými písmeny)</span>**. Tady je [nástroj příkazového řádku](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md ) ke generování certifikátů listu nebo zařízení pro testování.
@@ -232,7 +232,7 @@ Zařízení je Registeretd při
 Můžete získat připojovací řetězec zařízení Iot hub pro službu Azure IoT Hub pomocí následujících kroků 
 1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení, zařízení primární klíč** ze stránky zařízení (je teď na stránce zařízení > klikněte na tlačítko Připojit) 
 
-    ![Podrobnosti připojení](media\concepts-connectivity\device-connect.PNG)
+    ![Podrobnosti připojení](media/concepts-connectivity/device-connect.PNG)
 
 1. Získá připojovací řetězec zařízení pomocí nástroje GPupdate řádku níže.
     Použití následujících pokynů k získání připojovacího řetězce zařízení  

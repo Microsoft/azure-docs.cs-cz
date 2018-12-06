@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 8d15aeb92911a26a9a42a0449a24e8c0fee4467b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: cf3e5bf6752311881e1266d2fb49aa5b7108e68a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497335"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965560"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Příručka pro vývojáře Java pro službu App Service v Linuxu
 
@@ -151,36 +151,47 @@ Postupujte podle pokynů [vytvoření vazby existujícího vlastního certifiká
 >[!NOTE]
 > Pokud vaše aplikace používá Spring Framework nebo Spring Boot, můžete nastavit informace o připojení databáze pro Spring Data JPA jako proměnné prostředí [ve vlastnosti souboru aplikace]. Pak pomocí [nastavení aplikace](/azure/app-service/web-sites-configure#app-settings) definovat tyto hodnoty pro vaši aplikaci v portálu Azure portal nebo rozhraní příkazového řádku.
 
-Příklady fragmentů konfigurace v této části použijte databázi MySQL. Další informace najdete v tématu Konfigurace dokumentace pro [MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html) , [JDBC pro SQL Server](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017), a [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html).
+Tyto pokyny platí pro všechna připojení k databázi. Je potřeba vyplnit zástupné symboly s názvem třídy ovladač vybrané databáze a soubor JAR. K dispozici je také tabulka s názvy tříd a soubory ke stažení ovladače pro běžné databáze.
 
-Pokud chcete nakonfigurovat Tomcat spravovaného připojení k databázím pomocí aplikace Java databáze připojení (JDBC) nebo rozhraní API trvalost Java (JPA), nejprve přizpůsobte proměnnou prostředí CATALINA_OPTS Tomcat během spouštění číst v. Nastavte tyto hodnoty pomocí nastavení aplikace v modulu plug-in App Service Maven:
+| Databáze   | Název třídy ovladače                             | Ovladač JDBC                                                                      |
+|------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
+| PostgreSQL | `org.postgresql.Drvier`                        | [Stáhnout](https://jdbc.postgresql.org/download.html)                                    |
+| MySQL      | `com.mysql.jdbc.Driver`                        | [Stáhněte si](https://dev.mysql.com/downloads/connector/j/) (vyberte "Nezávislé na platformě") |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Stáhnout](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+
+Pokud chcete nakonfigurovat Tomcat používat připojení k databázi Java (JDBC) nebo rozhraní API trvalost Java (JPA), nejprve přizpůsobit `CATALINA_OPTS` proměnné prostředí, který je určen pro čtení pomocí Tomcat na začátku si. Nastavte tyto hodnoty pomocí nastavení aplikace v [modulu plug-in App Service Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
 ```xml
 <appSettings> 
     <property> 
         <name>CATALINA_OPTS</name> 
-        <value>"$CATALINA_OPTS -Dmysqluser=${mysqluser} -Dmysqlpass=${mysqlpass} -DmysqlURL=${mysqlURL}"</value> 
+        <value>"$CATALINA_OPTS -Ddbuser=${DBUSER} -Ddbpassword=${DBPASSWORD} -DconnURL=${CONNURL}"</value> 
     </property> 
 </appSettings> 
 ```
 
-Nebo nastavení ekvivalentní služby App Service na webu Azure Portal.
+Nebo nastavte proměnné prostředí v okně "Nastavení aplikace" na webu Azure Portal.
 
-Dále určete, pokud zdroj dat musí být k dispozici pouze pro jednu aplikaci nebo pro všechny aplikace spuštěné na plán služby App Service.
+>[!NOTE]
+> Pokud používáte databáze Azure pro Postgres, nahraďte `ssl=true` s `sslmode=require` připojovací řetězec JDBC.
 
-U zdrojů dat na úrovni aplikace: 
+Dále určete, pokud zdroj dat by měla být k dispozici pro jednu aplikaci nebo pro všechny aplikace spuštěné na Tomcat servlet.
 
-1. Přidat `context.xml` souboru, pokud není k dispozici pro webové aplikace a přidejte ho `META-INF` adresáři svůj soubor WAR při sestavení projektu.
+#### <a name="for-application-level-data-sources"></a>U zdrojů dat na úrovni aplikace: 
 
-2. V tomto souboru, přidejte `Context` položka cesty zdroje dat odkaz na adresu JNDI.
+1. Vytvoření `context.xml` soubor `META-INF/` adresáře vašeho projektu. Vytvořte `META-INF/` adresáře, pokud neexistuje.
+
+2. V `context.xml`, přidejte `Context` prvek, který chcete propojit zdroje dat na adresu JNDI. Nahradit `driverClassName` zástupný symbol s názvem třídy ve vašem ovladači z výše uvedené tabulky.
 
     ```xml
     <Context>
         <Resource
-            name="jdbc/mysqldb" type="javax.sql.DataSource"
-            url="${mysqlURL}"
-            driverClassName="com.mysql.jdbc.Driver"
-            username="${mysqluser}" password="${mysqlpass}"
+            name="jdbc/dbconnection" 
+            type="javax.sql.DataSource"
+            url="${dbuser}"
+            driverClassName="<insert your driver class name>"
+            username="${dbpassword}" 
+            password="${connURL}"
         />
     </Context>
     ```
@@ -189,38 +200,50 @@ U zdrojů dat na úrovni aplikace:
 
     ```xml
     <resource-env-ref>
-        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
 
-Sdílené prostředky na úrovni serveru:
+#### <a name="for-shared-server-level-resources"></a>Sdílené prostředky na úrovni serveru:
 
 1. Zkopírujte obsah `/usr/local/tomcat/conf` do `/home/tomcat/conf` ve vaší App Service pro Linux instance pomocí protokolu SSH, pokud konfigurace existuje ještě nemáte.
+    ```
+    mkdir -p /home/tomcat
+    cp -a /usr/local/tomcat/conf /home/tomcat/conf
+    ```
 
-2. Přidat kontext, který má vaše `server.xml`
+2. Přidat element kontextu v vaše `server.xml` v rámci `<Server>` elementu.
 
     ```xml
+    <Server>
+    ...
     <Context>
         <Resource
-            name="jdbc/mysqldb" type="javax.sql.DataSource"
-            url="${mysqlURL}"
-            driverClassName="com.mysql.jdbc.Driver"
-            username="${mysqluser}" password="${mysqlpass}"
+            name="jdbc/dbconnection" 
+            type="javax.sql.DataSource"
+            url="${dbuser}"
+            driverClassName="<insert your driver class name>"
+            username="${dbpassword}" 
+            password="${connURL}"
         />
     </Context>
+    ...
+    </Server>
     ```
 
 3. Aktualizace vaší aplikace `web.xml` budou používat zdroj dat ve vaší aplikaci.
 
     ```xml
     <resource-env-ref>
-        <resource-env-ref-name>jdbc/mysqldb</resource-env-ref-name>
+        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
 
-4. Zajistěte, aby byly soubory ovladačů JDBC k dispozici pro Tomcat classloader tak, že je `/home/tomcat/lib` adresáře. Pokud chcete nahrát tyto soubory k vaší instanci služby App Service, postupujte následovně:  
+#### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>Nakonec umístit JAR ovladač v cestě Tomcat a potom restartujte službu App Service: 
+
+1. Zajistěte, aby byly soubory ovladačů JDBC k dispozici pro Tomcat classloader tak, že je `/home/tomcat/lib` adresáře. (Pokud ještě neexistuje, vytvořte tento adresář.) Pokud chcete nahrát tyto soubory k vaší instanci služby App Service, postupujte následovně:  
     1. Instalace rozšíření webpp služby Azure App Service:
 
       ```azurecli-interactive
@@ -235,7 +258,9 @@ Sdílené prostředky na úrovni serveru:
 
     3. Připojení na místní port tunelového propojení s vašeho klienta protokolu SFTP a odesílání souborů do `/home/tomcat/lib` složky.
 
-5. Restartování aplikace App Service pro Linux. Tomcat resetuje `CATALINA_HOME` k `/home/tomcat/conf` a použít aktualizovanou konfiguraci a třídy.
+    Alternativně můžete klienta FTP k nahrání ovladač JDBC. Postupujte podle těchto [pokyny k získání údajů FTP](https://docs.microsoft.com/azure/app-service/app-service-deployment-credentials).
+
+2. Pokud jste nevytvořili zdroj dat na úrovni serveru, restartujte aplikaci App Service pro Linux. Tomcat resetuje `CATALINA_HOME` k `/home/tomcat/conf` a použít aktualizovanou konfiguraci.
 
 ## <a name="docker-containers"></a>Kontejnery Dockeru
 
@@ -245,7 +270,7 @@ Pokud chcete použít sadu JDK Zulu podporovaných systémem Azure v kontejnerec
 
 App Service pro Linux podporuje dva moduly runtime pro spravované hostování webových aplikací v Javě:
 
-- [Servletový kontejner Tomcat](http://tomcat.apache.org/) ke spuštění zabalené aplikace jako webové souborech archivu (WAR). Podporované verze jsou 8.5 a 9.0.
+- [Servletový kontejner Tomcat](https://tomcat.apache.org/) ke spuštění zabalené aplikace jako webové souborech archivu (WAR). Podporované verze jsou 8.5 a 9.0.
 - Běhové prostředí Java SE pro provoz aplikací s podobu Java archivní soubory (JAR). Jedinou podporovanou hlavní verzí je Java 8.
 
 ## <a name="java-runtime-statement-of-support"></a>Java runtime prohlášení k podpoře 

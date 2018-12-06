@@ -1,6 +1,6 @@
 ---
-title: 'Nastavit filtry směrování pro partnerský vztah Azure ExpressRoute Microsoft: portál | Microsoft Docs'
-description: Tento článek popisuje, jak nastavit filtry tras pro aplikaci Microsoft Peering pomocí portálu Azure
+title: 'Konfigurace filtrů směrování pro partnerský vztah Microsoftu Azure ExpressRoute: portál | Dokumentace Microsoftu'
+description: Tento článek popisuje postup konfigurace filtrů směrování pro Microsoft Peering pomocí webu Azure portal
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,145 +15,145 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: ab0cd45334581f6f5c6dd6e86939e018df5de074
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1b9a0698125de165e003aaed727e7b4aed6d866a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29387723"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955577"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Nastavit filtry směrování pro partnerský vztah Microsoftu: portál Azure
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: Azure portal
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
 
-Filtry tras představují způsob, jak využívat podmnožinu podporované služby prostřednictvím partnerského vztahu Microsoftu. Kroky v tomto článku vám pomůžou nakonfigurovat a spravovat filtry tras pro okruhy ExpressRoute.
+Filtry tras představují způsob, jak spotřebovat dílčí sadu podporovaných služeb přes partnerský vztah Microsoftu. Kroky v tomto článku vám pomůžou nakonfigurovat a spravovat filtrů směrování pro okruhy ExpressRoute.
 
-Dynamics 365 služby a služby Office 365 například Exchange Online, SharePoint Online a Skype pro firmy a službám Azure, jako je například úložiště a databáze SQL jsou přístupné prostřednictvím partnerského vztahu Microsoftu. Pokud partnerský vztah Microsoftu je nakonfigurován v okruhu ExpressRoute, jsou všechny předpony související s těmito službami inzerované prostřednictvím relace protokolu BGP, které jsou vytvořeny. Hodnota komunity protokolu BGP je připojený k každých předpona k identifikaci služby, které nabízí prostřednictvím předponu. Seznam hodnot komunity protokolu BGP a služeb, jsou mapovány najdete v tématu [komunit protokolu BGP](expressroute-routing.md#bgp).
+Služby Dynamics 365 a službám Office 365 Exchange Online, SharePoint Online a Skype pro firmy a služeb Azure, jako jsou úložiště a SQL DB jsou přístupné prostřednictvím partnerského vztahu Microsoftu. Po vytvoření partnerského vztahu Microsoftu je nakonfigurované v okruhu ExpressRoute, jsou související s těmito službami všechny předpony inzerované prostřednictvím relace protokolu BGP, které jsou vytvořeny. Ke každé předponě je připojená hodnota komunity protokolu BGP, která identifikuje službu nabízenou prostřednictvím dané předpony. Tyto hodnoty komunity protokolu BGP a služeb, které jsou mapovány seznam najdete v tématu [komunit protokolu BGP](expressroute-routing.md#bgp).
 
-Pokud budete potřebovat připojení ke všem službám, jsou velký počet předpon inzerovaných prostřednictvím protokolu BGP. Tím se výrazně zvyšuje velikost směrovací tabulky udržuje pomocí směrovačů v rámci vaší sítě. Pokud budete chtít využívat jenom podmnožinu službám nabízeným přes partnerský vztah Microsoftu, můžete snížit velikost vašeho směrovací tabulky dvěma způsoby. Můžete:
+Pokud budete vyžadovat připojení ke všem službám, jsou velké množství předpony inzerované prostřednictvím protokolu BGP. To výrazně zvyšuje velikost tabulky směrování udržována směrovače v rámci vaší sítě. Pokud budete chtít využívat pouze podmnožinu službám nabízeným prostřednictvím partnerského vztahu Microsoftu, můžete snížit velikost tabulek směrování dvěma způsoby. Můžete:
 
-- Filtrovat nežádoucí předpony použitím filtry tras na komunit protokolu BGP. Tento postup standardní sítě a běžně používá v rámci mnoho sítí.
+- Filtrování nežádoucí předpony použitím filtry tras na komunit protokolu BGP. Je standardní postup sítě a se běžně používá v rámci více sítí.
 
-- Zadejte filtry tras a použít je pro váš okruh ExpressRoute. Filtr trasy je nový prostředek, který umožňuje vybrat seznam služeb, které budete chtít využívat prostřednictvím partnerského vztahu Microsoftu. ExpressRoute směrovače odeslat pouze seznam předpon, které patří na služby určené ve filtru trasy.
+- Definujte filtry tras a použít je pro váš okruh ExpressRoute. Filtr tras se nový prostředek, který vám umožní vybrat seznam služeb, které budete chtít využívat prostřednictvím partnerského vztahu Microsoftu. ExpressRoute směrovače pouze odeslat seznam předpon, které patří do služby určené ve filtru tras.
 
-### <a name="about"></a>O filtrech směrování
+### <a name="about"></a>O filtry tras
 
-Pokud partnerský vztah Microsoftu je nakonfigurován na váš okruh ExpressRoute, Microsoft hraniční směrovače vytvořte dvojici relací protokolu BGP s hraniční směrovače (váš nebo váš poskytovatel připojení). Žádné trasy inzerovány vaší sítě. Pokud chcete povolit inzerování trasy k síti, je nutné přidružit filtr trasy.
+Po vytvoření partnerského vztahu Microsoftu je nakonfigurovaná na váš okruh ExpressRoute, hraničním směrovačům Microsoft vytvořit dvojici relací protokolu BGP s hraniční směrovače (té vaší nebo váš poskytovatel připojení). Do vaší sítě se žádné trasy neinzerují. Pokud chcete povolit inzerování tras do vaší sítě, je potřeba k ní přidružit filtr tras.
 
-Filtr trasy umožňuje identifikoval služby, které chcete využívat prostřednictvím partnerského vztahu Microsoftu okruhu ExpressRoute. Je v podstatě prázdný seznam všech hodnot komunity protokolu BGP. Po filtru prostředek trasy definované a připojené k okruhu ExpressRoute, jsou všechny předpony, které jsou mapovány na hodnoty komunity protokolu BGP inzerovaný do vaší sítě.
+Filtr tras umožňuje identifikovat služby, které chcete využívat prostřednictvím partnerského vztahu Microsoftu s vaším okruhem ExpressRoute. V podstatě se jedná o seznam všech povolených hodnot komunity protokolu BGP. Po definování prostředku filtru tras a jeho připojení k okruhu ExpressRoute se do vaší sítě budou inzerovat všechny předpony, které se mapují na hodnoty komunity protokolu BGP.
 
-Abyste mohli připojit filtry tras se službami Office 365 na ně, musí mít oprávnění pro využívání služeb Office 365 prostřednictvím ExpressRoute. Pokud nemáte oprávnění k využívání služeb Office 365 prostřednictvím ExpressRoute, operace připojit filtry tras se nezdaří. Další informace o procesu autorizačního najdete v tématu [Azure ExpressRoute pro Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Připojení ke službám Dynamics 365 nevyžaduje žádné předchozí autorizace.
+Aby bylo možné připojit filtry tras se službami Office 365 s nimi, musíte mít oprávnění k využívání služeb Office 365 přes ExpressRoute. Pokud nemáte oprávnění k využívání služeb Office 365 přes ExpressRoute, operace připojit filtry tras se nezdaří. Další informace o procesu ověřování najdete v tématu [Azure ExpressRoute pro Office 365](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Připojení ke službám Dynamics 365 nevyžaduje žádné předchozí autorizace.
 
 > [!IMPORTANT]
-> Okruhy ExpressRoute, které byly nakonfigurovány před 1. srpna 2017 partnerského vztahu Microsoftu bude mít všechny služby předpony inzerované prostřednictvím Microsoft partnerský vztah, i když nejsou definovány filtry tras. Okruhy ExpressRoute, které jsou nakonfigurované na nebo po 1 srpen 2017 partnerského vztahu Microsoftu nebude mít všechny předpony inzerované dokud trasy filtr je připojen k okruhu.
+> Partnerský vztah Microsoftu okruhů ExpressRoute, které byly nakonfigurovány před 1. srpna 2017 budou mít všechny služby předpony inzerované prostřednictvím Microsoft partnerský vztah, i když nejsou definovány filtry tras. Partnerský vztah Microsoftu okruhů ExpressRoute, které jsou nakonfigurované 1. srpna 2017 nebo později nebude mít všechny předpony inzerované, dokud se filtr tras je připojen k okruhu.
 > 
 > 
 
-### <a name="workflow"></a>pracovní postup
+### <a name="workflow"></a>Pracovní postup
 
-Abyste mohli úspěšně připojit ke službám prostřednictvím partnerského vztahu Microsoftu, musíte provést následující kroky konfigurace:
+Abyste mohli úspěšně připojit ke službám prostřednictvím partnerského vztahu Microsoftu, třeba provést následující kroky konfigurace:
 
-- Musí mít aktivní okruh ExpressRoute, který má Microsoft partnerský vztah zřízené. K těmto úkolům můžete použít následující pokyny:
-  - [Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a mějte ho povolený vaším poskytovatelem připojení, než budete pokračovat. Okruh ExpressRoute musí být ve stavu zřízený a povolený.
-  - [Vytvoření partnerského vztahu Microsoftu](expressroute-howto-routing-portal-resource-manager.md) Pokud budete spravovat přímo relaci protokolu BGP. Nebo váš poskytovatel připojení zřídit partnerský vztah Microsoftu pro váš okruh.
+- Musíte mít aktivní okruh ExpressRoute, který má Microsoft partnerský vztah zřízené. Postupujte podle následujících pokynů můžete použít k provedení následujících úkolů:
+  - [Vytvoření okruhu ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a mějte ho povolený podle svého poskytovatele připojení, než budete pokračovat. Okruh ExpressRoute musí být ve stavu zřízený a povolený.
+  - [Vytvoření partnerského vztahu Microsoftu](expressroute-howto-routing-portal-resource-manager.md) při správě přímo relace protokolu BGP. Nebo váš poskytovatel připojení zřízení partnerského vztahu Microsoftu pro váš okruh.
 
--  Musíte vytvořit a konfigurovat filtr trasy.
-    - Identifikovat služby vám využívat prostřednictvím partnerského vztahu Microsoftu
-    - Určení seznamu hodnot komunity protokolu BGP přidruženého ke službám
-    - Vytvořit pravidlo, které umožňují seznamu předponu odpovídající hodnoty komunity protokolu BGP
+-  Musíte vytvořit a konfigurovat filtr tras.
+    - Určete služby vám využívat prostřednictvím partnerského vztahu Microsoftu
+    - Určení seznamu přidruženého ke službám hodnotami komunity protokolu BGP
+    - Vytvořit pravidlo povolující seznam předpon odpovídající tyto hodnoty komunity protokolu BGP
 
--  Filtr trasy musí připojit k okruhu ExpressRoute.
+-  Je nutné připojit filtr tras k okruhu ExpressRoute.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Před zahájením konfigurace, ujistěte se, že splňují následující kritéria:
+Než začnete s konfigurací, ujistěte se, že splňujete následující kritéria:
 
- - Zkontrolujte [požadavky](expressroute-prerequisites.md) a [pracovních](expressroute-workflows.md) před zahájením konfigurace.
+ - Zkontrolujte [požadavky](expressroute-prerequisites.md) a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 
  - Musí mít aktivní okruh ExpressRoute. Než budete pokračovat, podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-portal-resource-manager.md) a mějte ho povolený vaším poskytovatelem připojení. Okruh ExpressRoute musí být ve stavu zřízený a povolený.
 
- - Musíte mít active partnerský vztah Microsoftu. Postupujte podle pokynů v [vytvoření a úprava konfigurace partnerského vztahu](expressroute-howto-routing-portal-resource-manager.md)
+ - Musíte mít active partnerský vztah Microsoftu. Postupujte podle pokynů na adrese [vytvoření a změny konfigurace partnerského vztahu](expressroute-howto-routing-portal-resource-manager.md)
 
 
 ## <a name="prefixes"></a>Krok 1: Získání seznamu předpon a hodnotami komunity protokolu BGP
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. Získat seznam hodnot komunity protokolu BGP
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. Získání seznamu sad hodnotami komunity protokolu BGP
 
-Je k dispozici v souvisejících se službou přístupné prostřednictvím partnerského vztahu Microsoftu hodnotami komunity protokolu BGP [požadavky na směrování služby ExpressRoute](expressroute-routing.md) stránky.
+Je k dispozici v související se službami, které jsou přístupné prostřednictvím partnerského vztahu Microsoftu hodnotami komunity protokolu BGP [požadavky na směrování služby ExpressRoute](expressroute-routing.md) stránky.
 
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Zkontrolujte seznam hodnot, které chcete použít
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Vytvořte seznam hodnot, které chcete použít
 
-Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete použít ve filtru trasy. Jako příklad je hodnota komunity protokolu BGP pro služby Dynamics 365 12076:5040.
+Zkontrolujte seznam hodnotami komunity protokolu BGP, které chcete použít ve filtru tras. Jako příklad je hodnota komunity protokolu BGP pro služby Dynamics 365 12076:5040.
 
-## <a name="filter"></a>Krok 2: Vytvoření filtr trasy a pravidlo filtru
+## <a name="filter"></a>Krok 2: Vytvoření filtru tras a pravidlo filtru
 
-Filtr trasy může mít pouze jedno pravidlo a pravidlo musí být typu 'Povolit'. Toto pravidlo může mít seznam hodnot komunity protokolu BGP s ním spojená.
+Filtr tras může mít jenom jedno pravidlo a pravidlo musí být typu "Povolit". Toto pravidlo může mít seznam hodnot komunity protokolu BGP s ním spojená.
 
-### <a name="1-create-a-route-filter"></a>1. Vytvoření filtru trasy
-Pokud vyberete možnost vytvořit nový prostředek, můžete vytvořit filtr trasy. Klikněte na tlačítko **vytvořit prostředek** > **sítě** > **RouteFilter**, jak je znázorněno na následujícím obrázku:
+### <a name="1-create-a-route-filter"></a>1. Vytvořit filtr tras
+Můžete vytvořit filtr tras tak, že vyberete možnost vytvořit nový prostředek. Klikněte na tlačítko **vytvořit prostředek** > **sítě** > **RouteFilter**, jak je znázorněno na následujícím obrázku:
 
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\CreateRouteFilter1.png)
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/CreateRouteFilter1.png)
 
-Je nutné umístit filtru tras ve skupině prostředků. 
+Filtr tras musíte umístit do skupiny prostředků. 
 
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\CreateRouteFilter.png)
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/CreateRouteFilter.png)
 
 ### <a name="2-create-a-filter-rule"></a>2. Vytvořit pravidlo filtru
 
-Můžete přidat a aktualizovat pravidla vyberte na kartě Správa pravidlo filtru trasy.
+Můžete přidat a aktualizovat pravidla tak, že vyberete kartu spravovat pravidla pro váš filtr tras.
 
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\ManageRouteFilter.png)
-
-
-Můžete vybrat služby, které chcete připojit se z rozevíracího seznamu a uložíte pravidlo po dokončení.
-
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\AddRouteFilterRule.png)
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
 
-## <a name="attach"></a>Krok 3: Připojení filtr trasy k okruhu ExpressRoute
+Můžete zvolit služby, které chcete připojit z rozevíracího seznamu a uložíte pravidlo, až budete hotovi.
 
-Filtr trasy můžete připojit k okruhu vyberte tlačítko "Přidat okruh" a tlačítko okruh ExpressRoute z rozevíracího seznamu.
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\AddCktToRouteFilter.png)
 
-Pokud poskytovatel připojení nakonfiguruje partnerský vztah pro vaše aktualizace okruh ExpressRoute okruh v okně okruh ExpressRoute dřív, než vyberete tlačítko "Přidat okruh".
+## <a name="attach"></a>Krok 3: Připojení filtr tras k okruhu ExpressRoute
 
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\RefreshExpressRouteCircuit.png)
+Filtr tras k okruhu můžete připojit tak, že vyberete tlačítko "Přidat okruh" a výběrem z rozevíracího seznamu okruh ExpressRoute.
+
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/AddCktToRouteFilter.png)
+
+Pokud poskytovatel připojení nakonfiguruje partnerský vztah pro aktualizaci okruh ExpressRoute okruh z okna okruh ExpressRoute než vyberete tlačítko "Přidat okruh".
+
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
 ## <a name="tasks"></a>Běžné úlohy
 
-### <a name="getproperties"></a>Chcete-li získat vlastnosti filtru trasy
+### <a name="getproperties"></a>Chcete-li získat vlastnosti filtr tras
 
-Při otevření prostředku na portálu, můžete zobrazit vlastnosti filtr trasy.
+Při otevření prostředku na portálu můžete zobrazit vlastnosti filtr tras.
 
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\ViewRouteFilter.png)
-
-
-### <a name="updateproperties"></a>Aktualizovat vlastnosti filtr trasy
-
-Můžete aktualizovat seznam hodnot komunity protokolu BGP připojit k okruhu výběrem tlačítko "Správa pravidlo".
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\ManageRouteFilter.png)
+### <a name="updateproperties"></a>Aktualizovat vlastnosti filtr tras
 
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\AddRouteFilterRule.png) 
-
-
-### <a name="detach"></a>Odpojit filtr trasy z okruhu ExpressRoute
-
-Odpojit okruh z filtru tras, klikněte pravým tlačítkem na okruh a klikněte na "zrušit přidružení".
-
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\DetachRouteFilter.png) 
+Můžete aktualizovat seznam hodnotami komunity protokolu BGP připojit k okruhu tak, že vyberete tlačítko "Spravovat pravidla".
 
 
-### <a name="delete"></a>Odstranění filtru trasy
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/ManageRouteFilter.png)
 
-Výběrem tlačítko Odstranit odstraníte filtr trasy. 
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
-![Vytvoření filtru trasy](.\media\how-to-routefilter-portal\DeleteRouteFilter.png) 
+
+### <a name="detach"></a>Chcete-li odpojit filtr tras z okruhu ExpressRoute
+
+Chcete-li odpojit okruh z filtru tras, klikněte pravým tlačítkem na okruh a klikněte na "zrušit".
+
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
+
+
+### <a name="delete"></a>Odstranit filtr tras
+
+Můžete odstranit filtr tras tak, že vyberete tlačítko Odstranit. 
+
+![Vytvořit filtr tras](./media/how-to-routefilter-portal/DeleteRouteFilter.png) 
 
 ## <a name="next-steps"></a>Další kroky
 

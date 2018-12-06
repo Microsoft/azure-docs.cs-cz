@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/26/2018
+ms.date: 12/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 58bec272733d0ad83665f4e06f37ae528eb2f8b9
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: d082ba8550925d12d3a60d71111c72d561c083c5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499661"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969056"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -114,6 +114,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel účtů úložiště](#storage-account-contributor) | Umožňuje správu účtů úložiště, ale ne přístup k nim. |
 | [Role služby operátor klíčů účtů úložiště](#storage-account-key-operator-service-role) | Operátoři klíčů účtů úložiště můžou vypisovat a znovu generovat klíče pro účty úložiště. |
 | [Přispěvatel dat objektu Blob služby Storage (Preview)](#storage-blob-data-contributor-preview) | Umožňuje číst, zapisovat a odstraňovat kontejnery a data objektů blob služby Azure Storage. |
+| [Vlastník dat úložiště objektů Blob (Preview)](#storage-blob-data-owner-preview) | Umožňuje čtení, zápis, odstranění a přístupu POSIX superuživatele kontejnery objektů blob v Azure Storage a data |
 | [Čtenář dat objektu Blob služby Storage (Preview)](#storage-blob-data-reader-preview) | Umožňuje číst kontejnery a data objektů blob služby Azure Storage. |
 | [Přispěvatel dat fronty služby Storage (Preview)](#storage-queue-data-contributor-preview) | Umožňuje číst, zapisovat a odstraňovat fronty služby Azure Storage a jejich zprávy. |
 | [Čtenář dat fronty služby Storage (Preview)](#storage-queue-data-reader-preview) | Umožňuje číst fronty služby Azure Storage a jejich zprávy. |
@@ -1687,6 +1688,21 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | --- | --- |
 > | **Popis** | Umožňuje číst, zapisovat a odstraňovat kontejnery a data objektů blob služby Azure Storage. |
 > | **ID** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **Akce** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Vrátí výsledek odstraňování kontejneru. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | Vrátí kontejner nebo seznam kontejnerů. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | Vrátí výsledek vložení nebo vypůjčení kontejneru objektů blob. |
+> | **DataActions** |  |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Vrátí výsledek odstraňování objektu blob. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Vrátí objekt blob nebo seznam objektů blob. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Vrátí výsledek zápisu objektu blob. |
+
+## <a name="storage-blob-data-owner-preview"></a>Vlastník dat úložiště objektů Blob (Preview)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje čtení, zápis, odstranění a přístupu POSIX superuživatele kontejnery objektů blob v Azure Storage a data |
+> | **ID** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Akce** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Vrátí výsledek odstraňování kontejneru. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Vrátí kontejner nebo seznam kontejnerů. |

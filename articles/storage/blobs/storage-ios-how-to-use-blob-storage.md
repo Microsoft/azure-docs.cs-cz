@@ -6,23 +6,21 @@ author: michaelhauss
 ms.service: storage
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.component: blobs
-ms.openlocfilehash: 43e9acb79b363e8f2cb00f6a4676d450c097bf3e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be9254686eeb285fb4f0a5e29ba60023abee84ab
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261991"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961922"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Používání úložiště Blob z iOS
 
 Tento článek ukazuje, jak provádět běžné scénáře pomocí Microsoft Azure Blob storage. Ukázky jsou napsané v jazyce Objective-C a použití [Klientská knihovna pro úložiště Azure pro iOS](https://github.com/Azure/azure-storage-ios). Popsané scénáře patří odesílání, výpis, stahování a odstraňování objektů BLOB. Další informace o objektech BLOB najdete v článku [další kroky](#next-steps) oddílu. Můžete také stáhnout [ukázkovou aplikaci](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) rychle zobrazíte pomocí služby Azure Storage v aplikace pro iOS.
 
-## <a name="what-is-blob-storage"></a>Co je služba Blob storage?
-
-[!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
+Další informace o službě Blob storage najdete v tématu [seznámení se službou Azure Blob storage](storage-blobs-introduction.md).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 8e30b1ba093e38f81c9a09a0b9107e5a3b2eb768
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5cd28ec685842f6782699a7538e2f582c3226271
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847367"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955936"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Propojení Configuration Manageru k Log Analytics
 Můžete svoje prostředí System Center Configuration Manager připojit ke službě Azure Log Analytics k synchronizaci zařízení shromažďování dat a odkazují na tyto kolekce v Log Analytics a Azure Automation.  
@@ -42,7 +42,7 @@ Následující kroky shrnují postup konfigurace integrace nástroje Configurati
 Další informace o připojení nástroje Configuration Manager ke službě Log Analytics na [synchronizovat data z nástroje Configuration Manager ke službě Microsoft Log Analytics](https://technet.microsoft.com/library/mt757374.aspx).
 
 ## <a name="grant-configuration-manager-with-permissions-to-log-analytics"></a>Udělení oprávnění ke službě Log Analytics verze Configuration Manager
-V následujícím postupu udělíte *Přispěvatel* role ve vašem pracovním prostoru Log Analytics do aplikace AD a instanční objekt služby, které jste vytvořili dříve pro nástroj Configuration Manager.  Pokud již nemáte pracovní prostor, přečtěte si téma [vytvořit pracovní prostor v Azure Log Analytics](log-analytics-quick-create-workspace.md) než budete pokračovat.  To umožňuje nástroji Configuration Manager k ověření a připojení k pracovnímu prostoru Log Analytics.  
+V následujícím postupu udělíte *Přispěvatel* role ve vašem pracovním prostoru Log Analytics do aplikace AD a instanční objekt služby, které jste vytvořili dříve pro nástroj Configuration Manager.  Pokud již nemáte pracovní prostor, přečtěte si téma [vytvořit pracovní prostor v Azure Log Analytics](../azure-monitor/learn/quick-create-workspace.md) než budete pokračovat.  To umožňuje nástroji Configuration Manager k ověření a připojení k pracovnímu prostoru Log Analytics.  
 
 > [!NOTE]
 > Je třeba zadat oprávnění ve službě Log Analytics pro nástroj Configuration Manager. Jinak obdržíte chybovou zprávu při použití Průvodce konfigurací v nástroji Configuration Manager.

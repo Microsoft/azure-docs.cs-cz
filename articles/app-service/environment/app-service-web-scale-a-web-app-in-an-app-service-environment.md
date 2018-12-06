@@ -1,5 +1,5 @@
 ---
-title: Postup škálování aplikace ve službě App Service Environment
+title: Jak škálovat aplikaci ve službě App Service Environment
 description: Škálování aplikace ve službě App Service Environment
 services: app-service
 documentationcenter: ''
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-ms.openlocfilehash: d04a5fce920dae25507cdf2f64832574e24c51dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b2f93c9763805377ed534d59b1025a5aa1a32e8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836550"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955526"
 ---
 # <a name="scaling-apps-in-an-app-service-environment"></a>Škálování aplikací ve službě App Service Environment
 Ve službě Azure App Service jsou obvykle tři věci, které je možné škálovat:
 
-* ceny plán
+* Cenový plán
 * velikost pracovního procesu 
 * počet instancí.
 
-V App Service Environment není potřeba vyberte nebo změňte cenový plán.  Z hlediska funkce je již v cenová úroveň schopnosti Premium.  
+Ve službě ASE není nutné vybrat nebo změna cenového plánu.  Co se týče možnosti je již v cenové úrovni funkce úrovně Premium.  
 
-Vzhledem k velikosti pracovního procesu můžete přiřadit správce App Service Environment velikost nachází výpočetní prostředek, který se má použít pro každý fond pracovních procesů.  To znamená pracovní skupina 1 může mít s P4 výpočetní prostředky a pracovní fond 2 s P1 výpočetní prostředky, v případě potřeby.  Nemají být v pořadí velikost.  Podrobnosti ohledně velikosti a jejich cenovou najdete v tématu dokumentu zde [Azure App Service – ceny][AppServicePricing].  Zůstane škálování možnosti pro webové aplikace a plány služby App Service ve službě App Service Environment jako:
+S ohledem na velikosti pracovního procesu můžete přiřadit správce služby ASE velikost výpočetních prostředků pro každý fond pracovních procesů.  To znamená, může mít 1 fondu pracovních procesů s P4 výpočetní prostředky a 2 fondu pracovních procesů s P1 výpočetní prostředky, v případě potřeby.  Nemají být podle velikosti.  Podrobnosti o velikostech a cenách najdete v dokumentu zde [Azure App Service – ceny][AppServicePricing].  Kvůli tomu škálování možností pro webové aplikace a plány služby App Service ve službě App Service Environment bude:
 
-* Výběr fondu pracovního procesu
+* Výběr fondu pracovních procesů
 * počet instancí
 
-Změna buď položky se provádí prostřednictvím uživatelského rozhraní odpovídající zobrazená pro vaše App Service Environment hostované plány služby App Service.  
+Změna buď položku se provádí prostřednictvím odpovídající uživatelské rozhraní zobrazí pro hostované služby ASE plány služby App Service.  
 
 ![][1]
 
-Nelze škálovat vaše ASP překračuje počet dostupných výpočetních prostředků ve fondu pracovních procesů, který vaše ASP je v.  Pokud třeba výpočetní prostředky v tomto fondu pracovních procesů, které je potřeba získat správce App Service Environment je přidat.  Pro informace ohledně opětovná konfigurace vaší App Service Environment, přečtěte si informace v tomto poli: [postup konfigurace služby App Service environment][HowtoConfigureASE].  Můžete také využít výhod funkce škálování App Service Environment, které chcete přidat kapacitu podle plánu nebo metriky.  Chcete-li získat další informace o konfiguraci najdete v části Automatické škálování pro prostředí App Service Environment, samotné [postup konfigurace automatického škálování App Service Environment][ASEAutoscale].
+Nejde škálovat vaše ASP nad rámec počet dostupných výpočetních prostředků ve fondu pracovních procesů, které je vaše prostředí ASP v.  Pokud třeba výpočetní prostředky v tomto fondu pracovních procesů, budete muset požádat správce vaší služby ASE je přidat.  Informace kolem opětovná konfigurace vaší služby ASE najdete tyto informace tady: [konfigurace služby App Service environment][HowtoConfigureASE].  Můžete také využít výhod funkce automatického škálování služby ASE, které chcete přidat kapacitu podle plánu nebo metriky.  Další podrobnosti o konfiguraci najdete v článku automatického škálování pro prostředí ASE samotné [postup konfigurace automatického škálování služby App Service Environment][ASEAutoscale].
 
-Můžete vytvořit více aplikaci pomocí výpočetní prostředky z fondů jiný pracovní plány služby, nebo můžete použít stejný fond pracovních procesů.  Například pokud máte (10) k dispozici výpočetní prostředky ve fondu 1 pracovního procesu, můžete vytvořit jeden plán služby app service pomocí (6) výpočetní prostředky a plánování druhý služby app service používající (4) výpočetní prostředky.
+Více aplikací můžete vytvořit pomocí výpočetních prostředků z fondy pracovních procesů různé plány služby, nebo můžete použít stejný fond pracovních procesů.  Například pokud máte v 1 fondu pracovních procesů (10) k dispozici výpočetní prostředky, můžete také vytvořit jeden plán služby app service pomocí (6) výpočetní prostředky a plánu služby app service druhý, který používá (4) výpočetní prostředky.
 
 ### <a name="scaling-the-number-of-instances"></a>Škálování počtu instancí
-Při prvním vytvoření webové aplikace ve službě App Service Environment začíná 1 instance.  Pak si můžete škálovat pro další instance zajistit další výpočetní prostředky pro vaši aplikaci.   
+Při prvním vytvoření webové aplikace ve službě App Service Environment začíná 1 instance.  Horizontální navýšení kapacity můžete klikněte na další instance k poskytnutí dalších výpočetních prostředků pro vaši aplikaci.   
 
-Pokud vaše App Service Environment má dostatečnou kapacitu, a to je poměrně jednoduché.  Přejdete do vašeho plánu služby App Service, kde webů, které chcete vertikálně navýšit kapacitu a vyberte škálování.  Otevře se uživatelské rozhraní, kde můžete ručně nastavit stupnici pro vaše prostředí ASP nebo konfigurace pravidel automatického škálování pro vaši ASP.  Chcete-li ručně škálování aplikace jednoduše nastavte ***škálovat podle*** k ***počet instancí, který nastavím ručně***.  Odsud přesuňte jezdec požadované množství nebo zadejte do pole vedle jezdce.  
+Pokud vaše služba ASE má dostatečnou kapacitu, je to poměrně jednoduché.  Přejít na plán služby App Service, která obsahuje servery, které chcete vertikálně navýšit kapacitu a vyberte horizontální snížení kapacity.  Otevře se uživatelské rozhraní, kde můžete ručně nastavit stupnici pro vaše prostředí ASP nebo nakonfigurovat pravidla automatického škálování pro vaše prostředí ASP.  Chcete-li ručně škálovat aplikaci jednoduše nastavte ***škálovat*** k ***počet instancí, který nastavím ručně***.  Odsud posuňte posuvník na požadované množství nebo zadejte do pole vedle posuvníku.  
 
 ![][2] 
 
-Pravidla automatického škálování pro webovou stránku ASP.NET v App Service Environment fungovat stejně jako obvykle.  Můžete vybrat ***procento využití procesoru*** pod ***škálovat podle*** a vytvořte pravidla automatického škálování pro vaši ASP na základě procento využití procesoru nebo je můžete vytvořit složitější pravidla pomocí ***pravidla plánu a výkonu*** .  Podrobnější informace o konfiguraci zobrazíte škálování použijte příručku zde [škálování aplikace v Azure App Service][AppScale]. 
+Pravidla automatického škálování pro ASP ve službě ASE fungují stejně jako obvykle.  Můžete vybrat ***procento využití procesoru*** pod ***škálovat*** a vytvoření pravidla automatického škálování pro vaši ASP na základě procento využití procesoru nebo je můžete vytvořit složitější pravidla pomocí ***pravidla výkonu a plánování*** .  Zobrazíte kompletní podrobnosti o konfiguraci automatického škálování použít Průvodce zde [škálování aplikace ve službě Azure App Service][AppScale]. 
 
-### <a name="worker-pool-selection"></a>Výběr fondu pracovního procesu
-Jak již bylo uvedeno dříve, výběr fondu pracovního procesu se získají z uživatelského rozhraní ASP.  Otevře se okno pro ASP, který chcete škálovat a vyberte fond pracovních procesů.  Zobrazí se všechny fondy pracovních procesů, které jste nakonfigurovali ve službě App Service Environment.  Pokud máte jenom jeden pracovní proces fondu pak uvidíte pouze jeden fond uvedené.  Chcete-li změnit co fond pracovních procesů je vaše prostředí ASP v, jednoduše vybrat fond pracovních procesů, který chcete, aby váš plán služby App Service pro přesun do.  
+### <a name="worker-pool-selection"></a>Výběr fondu pracovních procesů
+Jak bylo uvedeno dříve, výběru fondu pracovních procesů se přistupuje z uživatelského rozhraní ASP.  Otevře se okno pro ASP, kterou chcete škálovat a vyberte fond pracovních procesů.  Zobrazí se všechny fondy pracovních procesů, které jste nakonfigurovali ve službě App Service Environment.  Pokud máte jen jeden pracovní proces fondu pak uvidíte pouze jeden fond uvedený.  Chcete-li změnit co fond pracovních procesů, je vaše prostředí ASP v stačí vybrat fond pracovních procesů, který chcete, aby váš plán služby App Service pro přesun do.  
 
 ![][3]
 
-Než přejdete vaší ASP z jeden pracovní proces fondu je důležité se ujistit, že máte dostatečnou kapacitu pro vaše prostředí ASP.  V seznamu fondy pracovních procesů nejen je uveden název fondu pracovního procesu, ale můžete také zjistit, kolik pracovníci jsou k dispozici v tomto fondu pracovních procesů.  Ujistěte se, že nejsou k dispozici dostatek instancí, které jsou k dispozici tak, aby obsahovala plán aplikační služby.  Pokud třeba více výpočetní prostředky ve fondu pracovních procesů, které chcete přesunout do, pak získáte správce App Service Environment je přidat.  
+Před přechodem vaší ASP z jeden pracovní proces fondu je důležité se ujistit, že máte dostatečnou kapacitu pro vaše prostředí ASP.  V seznamu fondy pracovních procesů nejen je uveden název fondu pracovních procesů, ale můžete také zjistit, kolik pracovní procesy jsou dostupné v tomto fondu pracovních procesů.  Ujistěte se, že jsou tak, aby obsahovala plán služby App Service k dispozici dostatek instancí.  Pokud potřebujete víc výpočetních prostředků ve fondu pracovních procesů, který chcete přesunout, potom získá správce služby ASE je přidat.  
 
 > [!NOTE]
-> Přesun Klientova že studený způsobí, že ASP z fondu jeden pracovní proces se spustí aplikace v tomto prostředí ASP.  To může způsobit požadavky na spuštění pomalu, jako je vaše aplikace cold zahájeno nové výpočetní prostředky.  Studený start se vyhnout pomocí [aplikace horké až schopností] [ AppWarmup] ve službě Azure App Service.  Inicializace aplikace modul popsané v článku funguje i pro studenou spustí vzhledem k tomu, že proces inicializace je také volána, když aplikace jsou cold zahájeno nové výpočetní prostředky. 
+> Přesun že ASP z jeden pracovní proces fondu způsobí, že studeného spustí aplikaci v prostředí ASP.  To může způsobit, zařazování žádostí běží pomalu, jak vaše aplikace je úplné spuštění na nové výpočetní prostředky.  Studený start můžete vyhnout použitím [zahřívání schopnost aplikace] [ AppWarmup] ve službě Azure App Service.  Inicializace aplikace modulu je popsáno v článku souvisejícím s úplným spuštěním také vyhovuje, protože proces inicializace je také voláno, když aplikace jsou úplné spuštění na nové výpočetní prostředky. 
 > 
 > 
 
 ## <a name="getting-started"></a>Začínáme
-Chcete-li začít pracovat s prostředí App Service, přečtěte si téma [jak k vytvoření služby App Service Environment][HowtoCreateASE]
+Začínáme s App Service Environment najdete v článku [jak k vytvoření služby App Service Environment][HowtoCreateASE]
 
 <!--Image references-->
 [1]: ./media/app-service-web-scale-a-web-app-in-an-app-service-environment/aseappscale-aspblade.png
@@ -79,7 +79,7 @@ Chcete-li začít pracovat s prostředí App Service, přečtěte si téma [jak 
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [CreateWebappinASE]: app-service-web-how-to-create-a-web-app-in-an-ase.md
 [Appserviceplans]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/ 
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 [ASEAutoscale]: app-service-environment-auto-scale.md
 [AppScale]: ../web-sites-scale.md
-[AppWarmup]: http://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/
+[AppWarmup]: https://ruslany.net/2015/09/how-to-warm-up-azure-web-app-during-deployment-slots-swap/

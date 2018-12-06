@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c775798591a3063fdfe6d399c8337aac2e2f207e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 67d27587e8a5f85eb339efb83e661c061b621ed1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351350"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959831"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -114,7 +114,7 @@ Pomocí následující tabulky můžete nakonfigurovat vazby v **vazby SSL** dia
 |-|-|
 | Název hostitele | Chcete-li přidat vazbu SSL pro název domény. |
 | Kryptografický otisk privátního certifikátu | Certifikát pro vazbu. |
-| Typ SSL | <ul><li>**SNI SSL** -lze přidat více SSL typu sni vazby. Tato možnost umožňuje zabezpečení několika domén na stejné IP adrese pomocí několika certifikátů SSL. Většina moderních prohlížečů (včetně prohlížečů Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (ucelenější informace o podpoře prohlížečů najdete v článku o [Indikaci názvu serveru](http://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**SSL na základě IP adresy** – Můžete přidat pouze jednu vazbu SSL na základě IP adresy. Tato možnost umožňuje zabezpečení vyhrazené veřejné IP adresy pouze jedním certifikátem SSL. Po konfiguraci vazby, postupujte podle kroků v [přemapování záznamu A pro IP SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
+| Typ SSL | <ul><li>**SNI SSL** -lze přidat více SSL typu sni vazby. Tato možnost umožňuje zabezpečení několika domén na stejné IP adrese pomocí několika certifikátů SSL. Většina moderních prohlížečů (včetně prohlížečů Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (ucelenější informace o podpoře prohlížečů najdete v článku o [Indikaci názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**SSL na základě IP adresy** – Můžete přidat pouze jednu vazbu SSL na základě IP adresy. Tato možnost umožňuje zabezpečení vyhrazené veřejné IP adresy pouze jedním certifikátem SSL. Po konfiguraci vazby, postupujte podle kroků v [přemapování záznamu A pro IP SSL](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl). </li></ul> |
 
 ## <a name="verify-https-access"></a>Ověření přístupu pro protokol HTTPS
 
@@ -147,11 +147,11 @@ Jako ručně obnovit certifikát, klikněte na tlačítko **ruční obnovení**.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Další zdroje informací
 

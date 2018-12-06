@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 9c58e5c64ea3689634d7afb4c5fef08c9b21798c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6334b4cc50bfa6dca709fdc9d65938f0fec3ad1c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244368"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956741"
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Postupy: sledování aplikací ve službě Azure App Service
 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování v [webu Azure portal](https://portal.azure.com).
@@ -159,8 +159,8 @@ Aplikace služby App Service, které jsou hostované v basic, standard nebo prem
 > 
 > 
 
-[fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
-[vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169
+[fzilla]:https://go.microsoft.com/fwlink/?LinkId=247914
+[vmsizes]:https://go.microsoft.com/fwlink/?LinkID=309169
 
 
 

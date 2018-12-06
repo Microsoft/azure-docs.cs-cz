@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 537c94976dbb4f7753b7fafb3b6c94e97cc2cc17
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126322"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966258"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Správa prostředků Azure Data Lake Storage Gen1 pomocí Průzkumníka služby Storage
 
@@ -136,7 +136,7 @@ Následující položky ukazují, jak spravovat prostředky v rámci účtu Data
 
    ![Dialogové okno s probíhajícím nahráváním](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-upload-folder-drag.png) 
 
-> [!NOTE] 
+> [!NOTE]
 > Nahrávání můžete spustit přímým přetažením složek a souborů na místním počítači. 
        
 ### <a name="download-folders-or-files-to-your-local-computer"></a>Stažení složek nebo souborů na místní počítač
@@ -164,7 +164,7 @@ Soubor se stáhne a otevře v aplikaci, která je přidružená k základnímu t
 
 ![Výběry pro kopírování složky](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-copy-paste.png)
 
-> [!NOTE] 
+> [!NOTE]
 > Operace kopírování a vložení mezi různými typy úložiště se nepodporují. Můžete zkopírovat soubory nebo složky Data Lake Storage Gen1 a vložte je do jiného účtu Data Lake Storage Gen1. Ale *nelze* kopírovat soubory nebo složky Data Lake Storage Gen1 a vkládat je do úložiště objektů Blob v Azure ani naopak.
 > 
 > Operace kopírování a vkládání fungují tak, že se složky nebo soubory stáhnou do místního počítače a pak se nahrají do cíle. Nástroj *neprovádí* tuto akci na pozadí. Operace kopírování a vkládání velkých souborů jsou pomalé. V současné době probíhá optimalizace vysoce výkonného kopírování a přesouvání souborů.

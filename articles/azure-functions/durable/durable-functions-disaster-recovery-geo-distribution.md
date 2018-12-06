@@ -10,18 +10,19 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d999350f309dbd2bf74bbb3d10e74feddf6ee602
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 34583d8052dfd29a3f08187b88c15e3847a4dbb9
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642379"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966275"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Zotavení po havárii a geografická distribuce
 
 ## <a name="overview"></a>Přehled
 Ve službě Azure Functions trvalý všechny stavy se ukládají ve službě Azure Storage. A [centra úloh](durable-functions-task-hubs.md) je logický kontejner prostředků služby Azure Storage, které se používají pro Orchestrace. Funkce nástroje Orchestrator a aktivity pouze komunikovat mezi sebou když patří do stejné centra úloh.
 Popsané scénáře navrhnout možnosti nasazení pro zvýšení dostupnosti a minimalizovat prostoje během aktivity pro zotavení po havárii.
+
 Je důležité si všimněte, že tyto scénáře jsou založeny na konfigurace aktivní – pasivní, protože se řídit využití služby Azure Storage. Tento model spočívá v nasazení aplikace funkcí zálohování (pasivní) do jiné oblasti. Traffic Manager monitorovat aplikace primární (aktivní) funkce dostupnosti. To převezme do aplikace funkci zálohování Pokud selže primární. Další informace najdete v tématu [Traffic Manageru](https://azure.microsoft.com/services/traffic-manager/)společnosti [metody směrování provozu Priority.](../../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method)
 
 

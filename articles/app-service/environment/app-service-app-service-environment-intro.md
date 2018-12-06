@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: a2efb3177a97aa362a269ab3a00239a0d391f026
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 0433e6dc557ee5a935fa666b3c325fe03d08e29d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574687"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962263"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Úvod do služby App Service Environment v1
 
@@ -85,22 +85,22 @@ Podrobnosti o používání služby App Service Environment se službou ExpressR
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
-[PremiumTier]: http://azure.microsoft.com/pricing/details/app-service/
+[PremiumTier]: https://azure.microsoft.com/pricing/details/app-service/
 [MoreInfoOnVirtualNetworks]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
 [AppServicePlan]: ../azure-web-sites-web-hosting-plans-in-depth-overview.md
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[LogicApps]: http://azure.microsoft.com/documentation/articles/app-service-logic-what-are-logic-apps/
+[LogicApps]: https://azure.microsoft.com/documentation/articles/app-service-logic-what-are-logic-apps/
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
-[ExpressRoute]: http://azure.microsoft.com/services/expressroute/
+[ExpressRoute]: https://azure.microsoft.com/services/expressroute/
 [HowToConfigureanAppServiceEnvironment]:  app-service-web-configure-an-app-service-environment.md
 [ControllingInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md
 [SecurelyConnectingToBackends]:  app-service-app-service-environment-securely-connecting-to-backend-resources.md
 [NetworkArchitectureOverview]:  app-service-app-service-environment-network-architecture-overview.md
 [NetworkConfigDetailsForExpressRoute]:  app-service-app-service-environment-network-configuration-expressroute.md
-[AppServicePricing]: http://azure.microsoft.com/pricing/details/app-service/ 
+[AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 
 <!-- IMAGES -->
 

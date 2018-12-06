@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: 0801e3a0e9217ab0855d09df8a054926b488d759
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 04588d0af0f85a9e69f44e82d01294c2a4440abc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51821544"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961140"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>V Azure Service Bus a Event Hubs Průvodce protokolem AMQP 1.0
 
@@ -94,7 +94,7 @@ Inicializace odkazu kontejneru zeptá opačné kontejneru tak, aby přijímal od
 
 Odkazy jsou s názvem a související s uzly. Jak je uvedeno na začátku, uzly jsou komunikující entity uvnitř kontejneru.
 
-Ve službě Service Bus je uzel přímo ekvivalentní frontu, téma, předplatné nebo dílčí nedoručených zpráv z fronty nebo odběru. Název uzlu použitý v AMQP je proto relativní název sady entit v rámci oboru názvů služby Service Bus. Pokud je název fronty `myqueue`, který je také název uzlu jeho AMQP. Odběru tématu následuje konvenci rozhraní HTTP API jsou rozděleny na kolekci prostředků "předplatné" a proto předplatné **sub** nebo jedním tématem **mytopic** má název uzlu AMQP  **mytopic/předplatná/sub**.
+Ve službě Service Bus je uzel přímo ekvivalentní frontu, téma, předplatné nebo dílčí nedoručených zpráv z fronty nebo odběru. Název uzlu použitý v AMQP je proto relativní název sady entit v rámci oboru názvů služby Service Bus. Pokud je název fronty `myqueue`, který je také název uzlu jeho AMQP. Odběru tématu následuje konvenci rozhraní HTTP API jsou rozděleny na kolekci prostředků "předplatné" a proto předplatné **sub** na téma **mytopic** má název uzlu AMQP  **mytopic/předplatná/sub**.
 
 Připojujícího se klienta je také potřeba použít název místního uzlu služby pro vytváření odkazů. Service Bus není doporučené o tyto názvy wwnn a neinterpretuje je. Zásobníky klienta protokolu AMQP 1.0 obecně používají schéma, aby zajistil, které tyto názvy dočasných uzlů jsou jedinečné v rámci klienta.
 
@@ -218,13 +218,13 @@ Jakákoli vlastnost, která aplikace potřebuje definuje musí být mapováno na
 | první nabyvatel |- |- |
 | Počet doručení |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
-#### <a name="properties"></a>vlastnosti
+#### <a name="properties"></a>properties
 
 | Název pole | Využití | Název rozhraní API |
 | --- | --- | --- |
 | id zprávy |Definované aplikací, volného tvaru identifikátor pro tuto zprávu. Používá se pro zjišťování duplicit. |[ID zprávy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId) |
 | id uživatele |Identifikátor uživatele definované aplikací, není Interpretovaná ve službě Service Bus. |Není přístupný prostřednictvím rozhraní API služby Service Bus. |
-| do |Identifikátor cíle definované aplikací, není Interpretovaná ve službě Service Bus. |[Komu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
+| na |Identifikátor cíle definované aplikací, není Interpretovaná ve službě Service Bus. |[Komu](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_To) |
 | předmět |Identifikátor účelu zpráv definované aplikací není Interpretovaná ve službě Service Bus. |[Popisek](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label) |
 | odpovědi |Indikátor definovaného aplikací odpověď path není Interpretovaná ve službě Service Bus. |[replyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyTo) |
 | id korelace |Identifikátor korelace definované aplikací, není Interpretovaná ve službě Service Bus. |[ID korelace](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CorrelationId) |
@@ -359,11 +359,11 @@ Gesto protokol je požadavek/odpověď exchange, jak je definováno ve specifika
 
 Zpráva požadavku má následující vlastnosti aplikace:
 
-| Klíč | Volitelná | Typ hodnoty | Hodnota obsahu |
+| Klíč | Nepovinné | Typ hodnoty | Hodnota obsahu |
 | --- | --- | --- | --- |
 | operace |Ne |řetězec |**PUT-token** |
-| Typ |Ne |řetězec |Typ tokenu uložením. |
-| name |Ne |řetězec |"Cílová skupina" na kterou se vztahuje token. |
+| type |Ne |řetězec |Typ tokenu uložením. |
+| jméno |Ne |řetězec |"Cílová skupina" na kterou se vztahuje token. |
 | konec platnosti |Ano |časové razítko |Čas vypršení platnosti tokenu. |
 
 *Název* vlastnost identifikují entitu, se kterým token musí být přidružené. Ve službě Service Bus je cesta k frontě nebo tématu nebo odběru. *Typ* vlastnost identifikuje typ tokenu:
@@ -378,7 +378,7 @@ Tokeny udělit práva. Service Bus ví o tři základní práva: "Odeslat" umož
 
 Zprávy s odpovědí obsahuje následující *vlastnosti aplikace* hodnoty
 
-| Klíč | Volitelná | Typ hodnoty | Hodnota obsahu |
+| Klíč | Nepovinné | Typ hodnoty | Hodnota obsahu |
 | --- | --- | --- | --- |
 | Stavový kód |Ne |int |Kód odpovědi HTTP **[RFC2616]**. |
 | Popis stavu |Ano |řetězec |Popis stavu. |

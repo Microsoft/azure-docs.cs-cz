@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 11/16/2018
 ms.author: shvija
-ms.openlocfilehash: adf223d1cd775aac2a73bade5d09eac503ac8249
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 41d0c8daedeb73ceffc9f4890d1e805e199bc2a3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52741837"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956887"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>Odesílání událostí do služby Event Hubs pomocí Pythonu
 
@@ -34,7 +34,11 @@ Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
-Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md) a pak pokračujte podle následujících pokynů v tomto kurzu.
+Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md).
+
+Získání hodnoty přístupový klíč pro Centrum událostí podle pokynů v článku: [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). V kódu, který napíšete později v tomto kurzu použijete přístupový klíč. Je výchozí název klíče: **RootManageSharedAccessKey**.
+
+Nyní postupujte podle následující kroků v tomto kurzu.
 
 ## <a name="install-python-package"></a>Instalovat balíček Pythonu
 

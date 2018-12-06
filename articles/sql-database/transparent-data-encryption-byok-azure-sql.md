@@ -11,19 +11,19 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 32d1956741f739234a3fdea7034f2f1e33a4c082
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 12/04/2018
+ms.openlocfilehash: 0c819e4efb158baa2150b00368c618c5467a01e0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408221"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966768"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Azure transparentní šifrování dat SQL: Podpora Your Own Key přeneste
 
-Podpoře Your Own Key (BYOK) pro [transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) umožňuje šifrovat databáze šifrovací klíč (DEK) s názvem ochrana TDE asymetrického klíče.  Ochrana TDE je uložen pod vaší kontrolou v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), systém Azure založené na cloudu externí správu klíčů. Azure Key Vault je první služba správy klíčů, se kterým má TDE integrovaná podpora pro funkci BYOK. Klíč DEK transparentní šifrování dat, který je uložený na spouštěcí stránku databáze je šifrovaný a dešifrovat ochrana TDE. Ochrana TDE je uložená ve službě Azure Key Vault a nikdy neopustí trezoru klíčů. Pokud je odvolat přístup k trezoru klíčů serveru, databázi nelze dešifrovat a načíst do paměti.  Ochrana TDE je nastavená na úrovni logický server a zdědí všechny databáze, které jsou spojené s tímto serverem.
+Podpoře Your Own Key (BYOK) pro [transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) umožňuje šifrovat databáze šifrovací klíč (DEK) s názvem ochrana TDE asymetrického klíče.  Ochrana TDE je uložen pod vaší kontrolou v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), systém Azure založené na cloudu externí správu klíčů. Azure Key Vault je první služba správy klíčů, se kterým má TDE integrovaná podpora pro funkci BYOK. Klíč DEK transparentní šifrování dat, který je uložený na spouštěcí stránku databáze je šifrovaný a dešifrovat ochrana TDE. Ochrana TDE je uložená ve službě Azure Key Vault a nikdy neopustí trezoru klíčů. Pokud je odvolat přístup k trezoru klíčů serveru, databázi nelze dešifrovat a načíst do paměti. Ochrana TDE pro službu Azure SQL Database je nastavená na úrovni logický server a zdědí všechny databáze, které jsou spojené s tímto serverem. Spravované Instance Azure SQL, ochrana TDE je nastavený na úrovni instance a jeho zdědí všechny *šifrované* databází u dané instance. Termín *server* odkazuje současně na serveru a instance v tomto dokumentu, pokud není uvedeno jinak.
 
-S podporou modelu BYOK uživatelé mají nyní kontrolu nad klíčových úloh správy včetně rotace klíčů, klíče trezoru klíčů oprávnění, odstranění a povolit auditování a generování sestav na všechny ochrany transparentní šifrování dat pomocí funkce Azure Key Vault. Key Vault poskytuje centrální správu klíčů, využívá modulů úzce monitorovaných hardwarového zabezpečení (HSM) a umožňuje oddělení povinností mezi správou klíčů a dat, které vám pomohou splnit dodržování legislativních předpisů.  
+S podporou modelu BYOK uživatelé můžou řídit úlohy správy klíčů, včetně rotace klíčů, klíče trezoru klíčů oprávnění, odstranění a povolit auditování a generování sestav na všechny ochrany transparentní šifrování dat pomocí funkce Azure Key Vault. Key Vault poskytuje centrální správu klíčů, využívá modulů úzce monitorovaných hardwarového zabezpečení (HSM) a umožňuje oddělení povinností mezi správou klíčů a dat, které vám pomohou splnit dodržování legislativních předpisů.  
 
 Transparentní šifrování dat s BYOK poskytuje následující výhody:
 
@@ -43,34 +43,33 @@ Transparentní šifrování dat s BYOK poskytuje následující výhody:
 Transparentní šifrování dat, je nejprve konfigurován pro použití ochrana TDE ze služby Key Vault, server odešle klíč DEK každou databázi povoleno TDE do služby Key Vault pro žádost o klíčových zalamování řádků. Key Vault vrátí šifrovací klíč šifrovaného databáze, která je uložena v uživatelské databázi.  
 
 > [!IMPORTANT]
-> Je důležité si uvědomit, že **Jakmile ochrana TDE je uložená ve službě Azure Key Vault, nikdy neopustí Azure Key Vault**. Logický server může odeslat pouze operace klíče požadavky materiál klíče ochrana TDE, v rámci služby Key Vault a **nikdy přistupuje k nebo ukládá do mezipaměti ochrana TDE**. Správce služby Key Vault má oprávnění k odvolání oprávnění služby Key Vault serveru kdykoli, v takovém případě všechna připojení k serveru se oříznou.
+> Je důležité si uvědomit, že **Jakmile ochrana TDE je uložená ve službě Azure Key Vault, nikdy neopustí Azure Key Vault**. Server můžete odeslat pouze operace klíče požadavky materiál klíče ochrana TDE, v rámci služby Key Vault a **nikdy přistupuje k nebo ukládá do mezipaměti ochrana TDE**. Správce služby Key Vault má oprávnění k odvolání oprávnění služby Key Vault serveru kdykoli, v takovém případě všechna připojení k serveru se oříznou.
 
 ## <a name="guidelines-for-configuring-tde-with-byok"></a>Pokyny ke konfiguraci transparentní šifrování dat s BYOK
 
 ### <a name="general-guidelines"></a>Obecné pokyny
 
-- Ujistěte se služby Azure Key Vault a Azure SQL Database budou ve stejném tenantovi.  Klíče trezoru a server interakce mezi tenanty **nepodporují**.
+- Ujistěte se služby Azure Key Vault a Azure SQL Database/spravované Instance budou představovat ve stejném tenantovi.  Klíče trezoru a server interakce mezi tenanty **nepodporují**.
 - Rozhodněte, které odběry se bude používat pro požadované prostředky – přesun serveru mezi předplatnými později vyžaduje nové nastavení transparentní šifrování dat s BYOKs. Další informace o [přesouvání prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
 - Při konfiguraci transparentní šifrování dat s BYOK, je důležité vzít v úvahu zatížení, které vyvíjejí pro trezor klíčů pomocí opakovaných zabalit nebo rozbalit operací. Například protože všechny databáze, které jsou přidružené k logickému serveru použít stejný ochrana TDE, převzetí služeb při selhání ze serveru se spustit, protože mnoho klíčové operace proti trezor existuje jako jsou databáze na serveru. Podle našich zkušeností a uvádí [klíče omezení služby úložiště](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits), doporučujeme přidružení maximálně 500 Standard / obecné účely nebo 200 úrovně Premium / databáze pro důležité obchodní informace s jeden Azure Key Vault v rámci jednoho předplatného k zajištění konzistentně vysokou dostupnost, když přistupoval k ochrana TDE v trezoru.
 - Doporučeno: Ponechte si kopii ochrana TDE v místním prostředí.  To vyžaduje k modulu hardwarového zabezpečení zařízení a vytvořit ochrana TDE místně a klíčů v úschově systému umožňuje ukládat místní kopii ochrana TDE.  Přečtěte si [jak pro přenos klíče z místního modulu HSM do služby Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Pokyny ke konfiguraci služby Azure Key Vault
 
-- Vytvoření služby key vault pomocí [obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) chránit před ztrátou v případě náhodného klíče – nebo služby key vault – odstranění dat povolené.  Je nutné použít [Powershellu povolit vlastnost "obnovitelného odstranění"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) pro trezor klíčů (Tato možnost není dostupná z portálu, službou AZURE ještě – ale vyžadují SQL):  
+- Vytvoření služby key vault pomocí [obnovitelného odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) chránit před ztrátou v případě náhodného klíče – nebo služby key vault – odstranění dat povolené.  Je nutné použít [Powershellu povolit vlastnost "obnovitelného odstranění"](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) pro trezor klíčů (Tato možnost není dostupná z portálu, službou AZURE ještě – ale vyžadují Azure SQL):  
   - Obnovitelně odstraněný prostředky se uchovávají nastavte časový úsek, 90 dnů Pokud jsou obnovit nebo odstraněna.
   - **Obnovit** a **vyprázdnit** akce mají své vlastní oprávnění přidružené zásady přístupu trezoru klíčů.
 - Nastavte zámek prostředku pro trezor klíčů pro ovládací prvek, který může odstranit tento prostředek kritické a pomoci zabránit neoprávněné nebo nechtěné odstranění.  [Další informace o zámky prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)
 
-- Udělte přístup k trezoru klíčů pomocí Azure Active Directory (Azure AD) Identity logického serveru.  Při použití uživatelského rozhraní portálu, se automaticky vytvoří identity Azure AD a serveru jsou udělena oprávnění k přístupu trezoru klíčů.  Pomocí Powershellu nakonfigurovat transparentní šifrování dat s BYOK, je nutné vytvořit identitu služby Azure AD a dokončení by se měly ověřit. Zobrazit [nakonfigurovat transparentní šifrování dat s BYOK](transparent-data-encryption-byok-azure-sql-configure.md) podrobné pokyny krok za krokem při používání prostředí PowerShell.
+- Udělte přístup k trezoru klíčů pomocí Azure Active Directory (Azure AD) Identity logického serveru.  Při použití uživatelského rozhraní portálu, se automaticky vytvoří identity Azure AD a serveru jsou udělena oprávnění k přístupu trezoru klíčů.  Pomocí Powershellu nakonfigurovat transparentní šifrování dat s BYOK, je nutné vytvořit identitu služby Azure AD a dokončení by se měly ověřit. Zobrazit [nakonfigurovat transparentní šifrování dat s BYOK](transparent-data-encryption-byok-azure-sql-configure.md) a [nakonfigurovat transparentní šifrování dat s BYOK pro Managed Instance](http://aka.ms/sqlmibyoktdepowershell) podrobné pokyny krok za krokem při používání prostředí PowerShell.
 
   > [!NOTE]
   > Pokud Azure AD Identity **je omylem odstraněn nebo byly odvolány, serveru oprávnění** pomocí zásady přístupu trezoru klíčů, server ztratí přístup k trezoru klíčů a transparentní šifrování dat šifrované databáze zařazují do 24 hodin.
 
-- Při použití brány firewall a virtuální sítě se službou Azure Key Vault, je nutné nakonfigurovat následující: 
-  - Povolit důvěryhodným službám Microsoftu obejít tuto bránu firewall – zvolili Ano 
-         
-    > [!NOTE] 
-    > Pokud je šifrovaný transparentní šifrování dat databází SQL ztratí přístup k trezoru klíčů, protože se nedá obejít bránu firewall, databáze zařazují do 24 hodin.
+- Při použití brány firewall a virtuální sítě se službou Azure Key Vault, je nutné nakonfigurovat následující: - Povolit důvěryhodným službám Microsoftu obejít tuto bránu firewall – zvolili Ano
+
+ > [!NOTE]
+ > Pokud je šifrovaný transparentní šifrování dat databáze SQL ztratí přístup k trezoru klíčů, protože se nedá obejít bránu firewall, databáze zařazují do 24 hodin.
 
 - Povolit auditování a vytváření sestav na všechny šifrovací klíče: Key Vault poskytuje protokoly, které se dají snadno vkládat do jiné nástroje pro správu (SIEM) událostí zabezpečení. Operations Management Suite (OMS) [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) je příkladem služby, která je již integrovaná.
 - K zajištění vysoké dostupnosti šifrovaným databázím, nakonfigurujte každý logický server s dvěma Azure Key Vault, které se nacházejí v různých oblastech.

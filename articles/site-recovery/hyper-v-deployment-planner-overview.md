@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: nisoneji
-ms.openlocfilehash: 7c65dceadf8afb6a0eacf268dd953feb8477a8df
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7c5a5cddca2aa8e459bde711465425bdd32c669e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842709"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964012"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informace o Azure Site Recovery Deployment Planner pro zotavení po havárii Hyper-V do Azure
 
@@ -115,9 +115,9 @@ Doporučená konfigurace virtuálního počítače: 8 virtuálních CPU, 16 GB p
 1.  Rozbalte složku .zip.
 Složka obsahuje několik souborů a podsložek. Spustitelný soubor je ASRDeploymentPlanner.exe v nadřazené složce.
 
-Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. E:\ASR Deployment Planner_v2.2.zip
+Příklad: Zkopírujte soubor .zip na jednotku E:\ a rozbalte jej. Planner_v2.3.zip E:\ASR nasazení
 
-E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
+Planner_v2.3\ASRDeploymentPlanner.exe E:\ASR nasazení
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Aktualizace na nejnovější verzi plánovače nasazení
 Pokud máte předchozí verzi plánovače nasazení, proveďte jednu z následujících akcí:
@@ -132,7 +132,7 @@ Pokud máte předchozí verzi plánovače nasazení, proveďte jednu z následuj
   >Každý nový Deployment Planner je kumulativní aktualizací souboru .zip. Nemusíte kopírovat nejnovější soubory do předchozí složky. Můžete vytvořit a použít novou složku.
 
 ## <a name="version-history"></a>Historie verzí
-Nejnovější verze nástroje plánovače nasazení ASR je 2.2.
+Nejnovější verze nástroje plánovače nasazení ASR je 2.3.
 Opravy přidané v jednotlivých aktualizacích najdete na stránce [historie verzí Plánovače nasazení ASR](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx).
 
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 061811705b0572059f99300f2a658c5c5b4406c5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 275dd48e08aa74d84b0e1b91d5df9599ce524489
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839836"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957687"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
 
@@ -66,11 +66,11 @@ Když povolíte replikaci pro virtuální počítač buď počáteční [ze zobr
 
 1. Pokud pro službou Mobility nainstalovanou na virtuální počítače Azure k dispozici jsou nové aktualizace, zobrazí se oznámení, který čte "je k dispozici nová aktualizace agenta replikace Site recovery. Klikněte na tlačítko nainstalovat."
 
-     ![Okno replikované položky](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![Okno replikované položky](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 3. Vyberte oznámení a otevřete stránku výběru virtuálního počítače.
 4. Vyberte virtuální počítače, kterou chcete upgradovat službu mobility na a vyberte **OK**.
 
-     ![Replikované položky seznamu virtuálních počítačů](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![Replikované položky seznamu virtuálních počítačů](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 Úloha aktualizace služby Mobility se spustí pro každou z vybraných virtuálních počítačů.
 

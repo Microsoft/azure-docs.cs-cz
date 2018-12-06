@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ff85f2c9ef708c7cbac9be4933541f063a6c95b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: b1b8c660dfd6ea6890a940a97f5ff1ec1617c28d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568586"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963381"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Podrobnosti o použití certifikátu Azure IoT Edge
 
@@ -51,7 +51,7 @@ Výrobce v každém případě používá k podepisování certifikátu certifik
 
 ### <a name="device-ca-certificate"></a>Certifikát certifikační Autority zařízení
 
-Certifikát certifikační Autority zařízení je generují z a podepíše konečné certifikát zprostředkující certifikační Autority v procesu. Tento certifikát nainstalován na hraniční zařízení samostatně, pokud možno v zabezpečeném úložišti, jako je například modulu hardwarového zabezpečení (HSM). Kromě toho certifikátu certifikační Autority zařízení jednoznačně identifikuje zařízení IoT Edge. IoT Edge je schopen vystavování dalších certifikátů zařízení certifikát certifikační Autority. Například certifikát zařízení certifikační Autority vydá listové certifikáty zařízení, které se používají k ověřování zařízení a [Azure IoT Device Provisioning Service](..\iot-dps\about-iot-dps.md).
+Certifikát certifikační Autority zařízení je generují z a podepíše konečné certifikát zprostředkující certifikační Autority v procesu. Tento certifikát nainstalován na hraniční zařízení samostatně, pokud možno v zabezpečeném úložišti, jako je například modulu hardwarového zabezpečení (HSM). Kromě toho certifikátu certifikační Autority zařízení jednoznačně identifikuje zařízení IoT Edge. IoT Edge je schopen vystavování dalších certifikátů zařízení certifikát certifikační Autority. Například certifikát zařízení certifikační Autority vydá listové certifikáty zařízení, které se používají k ověřování zařízení a [Azure IoT Device Provisioning Service](../iot-dps/about-iot-dps.md).
 
 ### <a name="iot-edge-workload-ca"></a>Úlohy IoT Edge certifikační Autority
 

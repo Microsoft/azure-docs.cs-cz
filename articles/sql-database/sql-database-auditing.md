@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: ronitr
-ms.author: ronitr
+author: vainolo
+ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/25/2018
-ms.openlocfilehash: fc82fa592a513d735d4adc602bedaf8e492af13b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e947c284843074cf36c2d85dd240df23a1958cd5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092947"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971517"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 
@@ -39,8 +39,6 @@ Můžete použít auditování služby SQL database do:
 - **Zachovat** záznam auditovaných vybrané události. Můžete definovat kategorie akce databáze, které se budou auditovat.
 - **Sestava** na databázové aktivity. Abyste mohli rychle začít s aktivitou a generování sestav událostí můžete použít předem nakonfigurované sestavy a řídicí panel.
 - **Analýza** sestavy. Můžete najít podezřelých událostí, neobvyklé aktivity a trendů.
-
-Můžete nakonfigurovat auditování pro různé typy kategorie událostí, jak je vysvětleno v [nastavení auditování databáze](#subheading-2) oddílu.
 
 > [!IMPORTANT]
 > Protokoly auditu se zapisují do **doplňovací objekty BLOB** ve službě Azure Blob storage v rámci předplatného Azure.

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 12/03/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6d58a62ef70cb5bacb44a3a9832516a30fc91ffa
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: fcc81c8eb3a34b0bda5d91a1a67dd2e04e052967
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248055"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967755"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Povolení možnosti zůstat přihlášeni v (políčko zůstat Přihlášeni) v Azure Active Directory B2C
 
@@ -152,7 +152,9 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
 
     Políčko zůstat Přihlášeni je nakonfigurovaný nástrojem **UserJourneyBehaviors** elementu. **KeepAliveInDays** atribut určuje, jak dlouho zůstane přihlášený uživatel. V následujícím příkladu, políčko zůstat Přihlášeni relace automaticky vyprší po `7` dnů bez ohledu na to, kolikrát uživatel provádí bezobslužné ověření. Nastavení **KeepAliveInDays** hodnota, která se `0` vypne funkce políčko zůstat Přihlášeni. Ve výchozím nastavení, tato hodnota je `0`. Pokud hodnota **sessionexpirytype pro** je `Rolling`, je políčko zůstat Přihlášeni relace prodloužena `7` dnů pokaždé, když uživatel provádí bezobslužné ověření.  Pokud `Rolling` je vybrána, byste měli mít počet dní, minimální. 
 
-    Hodnota **SessionExpiryInSeconds** představuje čas vypršení platnosti relace jednotného přihlašování. To se používá interně službou Azure AD B2C ke kontrole, jestli je platnost relace pro políčko zůstat Přihlášeni, nebo ne. Hodnota **KeepAliveInDays** určuje platnost vyprší, Max-Age hodnotu souboru cookie jednotného přihlašování ve webovém prohlížeči. Na rozdíl od **SessionExpiryInSeconds**, **KeepAliveInDays** umožňuje zabránit uzavřený vymazání souboru cookie prohlížeče. Uživatel může bez upozornění přihlásit jenom v případě, že existuje soubor cookie relace jednotného přihlašování, které řídí **KeepAliveInDays**a je nevypršela, která řídí **SessionExpiryInSeconds**. Doporučuje se, že nastavíte hodnotu **SessionExpiryInSeconds** být ekvivalentní doba **KeepAliveInDays** během několika sekund, jak je znázorněno v následujícím příkladu.
+    Hodnota **SessionExpiryInSeconds** představuje čas vypršení platnosti relace jednotného přihlašování. To se používá interně službou Azure AD B2C ke kontrole, jestli je platnost relace pro políčko zůstat Přihlášeni, nebo ne. Hodnota **KeepAliveInDays** určuje platnost vyprší, Max-Age hodnotu souboru cookie jednotného přihlašování ve webovém prohlížeči. Na rozdíl od **SessionExpiryInSeconds**, **KeepAliveInDays** umožňuje zabránit uzavřený vymazání souboru cookie prohlížeče. Uživatel může bez upozornění přihlásit jenom v případě, že existuje soubor cookie relace jednotného přihlašování, které řídí **KeepAliveInDays**a ne vypršela platnost, která řídí **SessionExpiryInSeconds**. 
+    
+    Pokud uživatel nemá povolení **neodhlašovat** na stránce registrace a přihlášení relace vyprší po času indikován **SessionExpiryInSeconds** uplynutí nebo prohlížeč je zavřený. Pokud uživatel povolí **neodhlašovat**, hodnota **KeepAliveInDays** přepíše hodnotu **SessionExpiryInSeconds** a určí čas vypršení platnosti relace. Dokonce i uživatelé zavřete prohlížeč a znovu otevřete, se můžete stále tiše přihlásit, dokud je v době **KeepAliveInDays**. Doporučuje se, že nastavíte hodnotu **SessionExpiryInSeconds** krátká období (1 200 sekund), při hodnotu **KeepAliveInDays** lze nastavit relativně dlouhou dobu (7 dní), jak je znázorněno Následující příklad:
 
     ```XML
     <RelyingParty>
@@ -160,7 +162,7 @@ Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, kt
       <UserJourneyBehaviors>
         <SingleSignOn Scope="Tenant" KeepAliveInDays="7" />
         <SessionExpiryType>Absolute</SessionExpiryType>
-        <SessionExpiryInSeconds>604800</SessionExpiryInSeconds>
+        <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
       </UserJourneyBehaviors>
       <TechnicalProfile Id="PolicyProfile">
         <DisplayName>PolicyProfile</DisplayName>

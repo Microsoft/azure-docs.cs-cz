@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.component: common
-ms.openlocfilehash: a1b183e5b0929a2149502aa340e2e69c725dba6d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 2ab933506ea03ae72198113d70888460e5001a6d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49168258"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958405"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Přenos dat pomocí AzCopy v10 (Preview)
 
@@ -84,6 +84,16 @@ Pokud chcete zobrazit stránku nápovědy a příklady pro konkrétní příkaz 
 .\azcopy cp -h
 ```
 
+## <a name="create-a-file-system-azure-data-lake-storage-gen2-only"></a>Vytvořit systém souborů (pouze u sady Azure Data Lake Storage Gen2)
+
+Pokud jste povolili hierarchické obory názvů na vašem účtu úložiště objektů blob, můžete vytvořit nový systém souborů tak, aby stahovat soubory můžete nahrát do něj následující příkaz.
+
+```azcopy
+.\azcopy make "https://account.dfs.core.windows.net/top-level-resource-name" --recursive=true
+```
+
+``account`` Část tento řetězec je název vašeho účtu úložiště. ``top-level-resource-name`` Část tento řetězec je název, který chcete vytvořit systém souborů.
+
 ## <a name="copy-data-to-azure-storage"></a>Kopírování dat do služby Azure Storage
 
 Pomocí příkazu kopírování přenos dat ze zdroje do cíle. Zdroj a cíl mohou být a:
@@ -107,10 +117,22 @@ Následující příkaz nahraje všechny soubory ve složce C:\local\path rekurz
 .\azcopy cp "C:\local\path" "https://account.blob.core.windows.net/mycontainer1<sastoken>" --recursive=true
 ```
 
+Pokud jste povolili hierarchické obory názvů na vašem účtu úložiště objektů blob, můžete použít následující příkaz k nahrání souborů do systému souborů:
+
+```azcopy
+.\azcopy cp "C:\local\path" "https://myaccount.dfs.core.windows.net/myfolder<sastoken>" --recursive=true
+```
+
 Následující příkaz nahraje všechny soubory ve složce C:\local\path (bez recursing do podadresáře) do kontejneru "mycontainer1":
 
 ```azcopy
 .\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/mycontainer1<sastoken>"
+```
+
+Pokud jste povolili hierarchické obory názvů na vašem účtu úložiště objektů blob, můžete použít následující příkaz:
+
+```azcopy
+.\azcopy cp "C:\local\path\*" "https://account.blob.core.windows.net/myfolder<sastoken>"
 ```
 
 Pokud chcete získat další příklady, použijte následující příkaz:
@@ -127,6 +149,8 @@ Chcete-li kopírovat data mezi dva účty úložiště, použijte následující
 ```azcopy
 .\azcopy cp "https://myaccount.blob.core.windows.net/<sastoken>" "https://myotheraccount.blob.core.windows.net/<sastoken>" --recursive=true
 ```
+
+Chcete-li pracovat s účty úložiště blob, které mají povolené hierarchické obory názvů, nahraďte řetězec ``blob.core.windows.net`` s ``dfs.core.windows.net`` v těchto příkladech.
 
 > [!NOTE]
 > Příkaz se vytvořit výčet všech kontejnerů objektů blob a zkopírujte je do cílového účtu. V současné době podporuje AzCopy v10 kopírování jenom objekty BLOB bloku mezi dva účty. Všechny ostatní objekty účtu úložiště (doplňovací objekty BLOB, objekty BLOB stránky, soubory, tabulky a fronty), se přeskočí.
@@ -154,6 +178,8 @@ Stejným způsobem můžete synchronizovat kontejner objektů Blob až místníh
 ```
 
 Tento příkaz umožňuje přírůstkové synchronizace zdroje do cíle, na základě časových razítek poslední změny. Pokud přidáte nebo odstraníte soubor ve zdroji, AzCopy v10 bude totéž v cílovém umístění.
+
+[!NOTE] Chcete-li pracovat s účty úložiště blob, které mají povolené hierarchické obory názvů, nahraďte řetězec ``blob.core.windows.net`` s ``dfs.core.windows.net`` v těchto příkladech.
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 535f70658593ff5a9ae1642ae7a97646e3fefb63
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: b39ff01fec9fa51f6e208728b5c8f78c68654484
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51288250"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964879"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
 
@@ -48,7 +48,7 @@ Pokud máte službu ASE, je adresa ILB koncových bodů HTTP/S, FTP/S, nasazení
 
 Běžná aplikace přístupové porty jsou:
 
-| Použití | Od | až |
+| Použití | Od | Akce |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | Konfigurovatelná uživatelem |  80, 443 |
 |  FTP/FTPS    | Konfigurovatelná uživatelem |  21, 990, 10001-10020 |
@@ -71,7 +71,7 @@ Když škálujete směrem nahoru nebo dolů, se přidají nové role odpovídaj�
 
 Služba ASE příchozí přístup, který se závislosti:
 
-| Použití | Od | až |
+| Použití | Od | Akce |
 |-----|------|----|
 | Správa | Adresy pro správu aplikace app Service | Podsíti služby ASE: 454, 455 |
 |  Interní komunikace služby ASE | Podsíti služby ASE: všechny porty | Podsíti služby ASE: všechny porty
@@ -116,7 +116,7 @@ Kromě funkční závislostí služby ASE se několik další položky týkajíc
 -   Kudu
 -   Rozšíření
 -   Průzkumník procesů
--   Console
+-   Konzola
 
 Pokud používáte službu ASE, není web SCM Internetu dostupné z oblasti mimo virtuální síť. Když je vaše aplikace hostovaná ve službě ASE s ILB, nebudou fungovat některé funkce z portálu.  
 
@@ -154,7 +154,7 @@ S externí služby ASE můžete přiřadit IP adresy pro jednotlivé aplikace. N
 
 Pokud aplikace má vlastní SSL založené na protokolu IP adresu, službu ASE rezervuje dva porty pro mapování na tuto IP adresu. Jeden port je pro provoz protokolu HTTP a je jiný port pro protokol HTTPS. Tyto porty jsou uvedené v uživatelském rozhraní služby ASE v části IP adresy. Provoz musí být schopen kontaktovat tyto porty z virtuální IP adresy nebo aplikace nejsou dostupné. Tento požadavek je důležité si pamatovat, když konfigurujete skupiny zabezpečení sítě (Nsg).
 
-## <a name="network-security-groups"></a>Skupiny zabezpečení sítě ##
+## <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě) ##
 
 [Skupiny zabezpečení sítě] [ NSGs] poskytnout možnost řídit přístup k síti v rámci virtuální sítě. Při použití na portálu se s nejnižší prioritou na Zamítnout vše, co pravidlo odepřít implicitní. Co je vytvořit jsou vaše pravidla povolit.
 
@@ -234,10 +234,10 @@ Pokud jsou koncové body služby povolené v podsíti s instancí SQL Azure, mus
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
-[Pricing]: http://azure.microsoft.com/pricing/details/app-service/
+[Pricing]: https://azure.microsoft.com/pricing/details/app-service/
 [ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
 [ConfigureSSL]: ../web-sites-purchase-ssl-web-site.md
-[Kudu]: http://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
+[Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md

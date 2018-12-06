@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: fd54d3425e342de688c5b573a4c329ab32af0c98
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2b9aee39942562ec7f17c08c0fcf46143a7a25d3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681989"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961803"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Sledování skupiny prostředků pomocí Azure monitoru (preview)
 
@@ -28,19 +28,19 @@ Moderní aplikace jsou často složité a vysoce distribuované mnoho samostatn�
 2. Vyberte si jednu ze svých skupin prostředků, které chcete prozkoumat. (Pokud máte velký počet skupin prostředků filtrování podle předplatného může v některých případech být užitečné.)
 3. Přehledy pro skupinu prostředků, klikněte na tlačítko **Insights** v levé nabídce libovolná skupina prostředků.
 
-![Snímek obrazovky stránky s přehledem insights skupiny prostředků](.\media\resource-group-insights\0001-overview.png)
+![Snímek obrazovky stránky s přehledem insights skupiny prostředků](./media/resource-group-insights/0001-overview.png)
 
 ## <a name="resources-with-active-alerts-and-health-issues"></a>Prostředky s aktivní výstrahy a problémy se stavem
 
 Na stránce s přehledem ukazuje, kolik upozornění mají aktivován a jsou stále aktivní, spolu s aktuálním Azure Resource Health každého prostředku. Společně tyto informace vám umožňují rychle odhalovat případné problémy všechny prostředky, ke které dochází k problémům s. Výstrahy umožňují zjistit problémy v kódu a jak jste nakonfigurovali vaší infrastruktury. Azure Resource Health povrchy problém s platformě Azure jako takové, které nejsou specifické pro jednotlivé aplikace.
 
-![Snímek obrazovky s Azure Resource Health podokno](.\media\resource-group-insights\0002-overview.png)
+![Snímek obrazovky s Azure Resource Health podokno](./media/resource-group-insights/0002-overview.png)
 
 ### <a name="azure-resource-health"></a>Azure Resource Health
 
 Chcete-li zobrazit stav prostředku Azure, zkontrolujte **zobrazit Azure Resource Health** pole výše v tabulce. Ve výchozím nastavení stránka rychle načíst nápovědy je tento sloupec skrytý.
 
-![Snímek obrazovky s grafem stavu prostředků přidán](.\media\resource-group-insights\0003-overview.png)
+![Snímek obrazovky s grafem stavu prostředků přidán](./media/resource-group-insights/0003-overview.png)
 
 Ve výchozím nastavení prostředky jsou seskupené podle vrstvy aplikace a typ prostředku. **Vrstva aplikací** je jednoduché kategorizace typů prostředků, která existuje pouze v rámci kontextu stránka s přehledem insights skupiny prostředků. Existují typy prostředků související s kódem aplikace, výpočetní infrastruktura, sítě, úložiště a databáze. Nástroje pro správu získat své vlastní aplikace vrstvy a každý prostředek je zařazený do kategorie jako patřící do **jiných** vrstvy aplikace. Toto seskupení můžete zjistit na přehledem jaké subsystémy aplikace jsou v pořádku a není v pořádku.
 
@@ -69,33 +69,33 @@ K otestování na výběr karty selhání **selhání** pod **prošetření** v 
 
 Na panelu nabídky na levé straně se změní po provedení výběru nabízí nové možnosti.
 
-![Snímek obrazovky selhání podokně s přehledem](.\media\resource-group-insights\00004-failures.png)
+![Snímek obrazovky selhání podokně s přehledem](./media/resource-group-insights/00004-failures.png)
 
 Při výběru služby App Service, zobrazí se šablony Galerie Azure Monitor sešitu.
 
-![Snímek obrazovky Galerie aplikací sešitu](.\media\resource-group-insights\0005-failure-insights-workbook.png)
+![Snímek obrazovky Galerie aplikací sešitu](./media/resource-group-insights/0005-failure-insights-workbook.png)
 
 Výběr šablony pro Insights selhání otevře sešit.
 
-![Snímek obrazovky se sestava selhání](.\media\resource-group-insights\0006-failure-visual.png)
+![Snímek obrazovky se sestava selhání](./media/resource-group-insights/0006-failure-visual.png)
 
 Můžete vybrat všechny řádky. Výběr se pak zobrazí v zobrazení grafické podrobnosti.
 
-![Snímek obrazovky se podrobnosti o chybě](.\media\resource-group-insights\0007-failure-details.png)
+![Snímek obrazovky se podrobnosti o chybě](./media/resource-group-insights/0007-failure-details.png)
 
 Sešity abstrakci obtížné práci při vytváření vlastní sestavy a vizualizace do formátu snadné použití. Když někteří uživatelé mohou pouze chcete upravit předem připravených parametry, sešity jsou plně přizpůsobitelné.
 
 Chcete-li získat přehled o tom interně funkci tento sešit, vyberte **upravit** v horním panelu.
 
-![Snímek obrazovky s možností další úpravy](.\media\resource-group-insights\0008-failure-edit.png)
+![Snímek obrazovky s možností další úpravy](./media/resource-group-insights/0008-failure-edit.png)
 
 Řadu **upravit** téměř různé prvky sešitu se zobrazí pole. Vyberte **upravit** pole pod tabulkou operací.
 
-![Snímek obrazovky textových polí](.\media\resource-group-insights\0009-failure-edit-graph.png)
+![Snímek obrazovky textových polí](./media/resource-group-insights/0009-failure-edit-graph.png)
 
 Zobrazí se dotaz Log Analytics, která řídí vizualizaci s tabulkou.
 
- ![Snímek obrazovky okna dotazu log analytics](.\media\resource-group-insights\0010-failure-edit-query.png)
+ ![Snímek obrazovky okna dotazu log analytics](./media/resource-group-insights/0010-failure-edit-query.png)
 
 Můžete upravit dotaz přímo. Nebo můžete použít jako referenci a vypůjčit z něj při návrhu vlastní parametry sešitu.
 
@@ -103,11 +103,11 @@ Můžete upravit dotaz přímo. Nebo můžete použít jako referenci a vypůjč
 
 Výkon nabízí svůj vlastní galerie sešity. Pro službu App Service nabízí předem připravených sešitu výkonu aplikace následujícím způsobem:
 
- ![Snímek obrazovky zobrazení výkonu](.\media\resource-group-insights\0011-performance.png)
+ ![Snímek obrazovky zobrazení výkonu](./media/resource-group-insights/0011-performance.png)
 
 V takovém případě Pokud zvolíte možnost úpravy uvidíte, že tuto sadu vizualizace používá technologii Azure monitorování metrik.
 
- ![Snímek obrazovky zobrazení výkonu s metrikami Azure](.\media\resource-group-insights\0012-performance-metrics.png)
+ ![Snímek obrazovky zobrazení výkonu s metrikami Azure](./media/resource-group-insights/0012-performance-metrics.png)
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

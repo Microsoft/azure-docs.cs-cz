@@ -3,7 +3,7 @@ title: Ochrana služby Azure SQL a dat ve službě Azure Security Center | Dokum
 description: Tato dokument řeší doporučení ve službě Azure Security Center, které vám pomohou chránit data a služby Azure SQL a zůstaňte souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: terrylan
-ms.openlocfilehash: ea014aae49ec322e9a1f1222c881885b84e87584
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.author: rkarlin
+ms.openlocfilehash: 4c58984e512556b73281cca1154b4879c9db79d5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311768"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956757"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrana služby Azure SQL a dat ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol.  Doporučení platí pro typy prostředků Azure: virtuální počítače (VM), sítě, SQL a datům a aplikacím.

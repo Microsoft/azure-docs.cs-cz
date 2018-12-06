@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 12/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fbb09d41535bf811a42b204f4e3d38b87c2846c
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: cf05c59bceab2294f5675944d3aea022b4f4312c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287944"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968471"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Použití Azure k hostování a spuštění scénáře úloh řešení SAP
 
@@ -62,7 +62,7 @@ Dokumentace ke službě kolem SAP HANA škálovat do M128s virtuálního počít
 - [Vysoká dostupnost a zotavení po havárii SAP Hana v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
 - [Řešení potíží a monitorování systému SAP HANA v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 
-Další postup:
+Další kroky:
 
 - Čtení [přehled a architektura SAP Hana v Azure (velké instance)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 

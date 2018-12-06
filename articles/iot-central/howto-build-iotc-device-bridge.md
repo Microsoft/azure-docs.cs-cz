@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 11/8/2018
+ms.date: 12/4/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 83f053a8815f31803f536920497fdc42e72d2a2d
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 74ea923ccfc88847ae6d2513b3ef592cc8899b8d
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51628951"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966870"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Vytvoření IoT Central most zařízení pro připojení jiných cloudech IoT k IoT Central
 
@@ -25,7 +25,7 @@ Most zařízení IoT Central je řešení typu open source, který se připojuje
 Most zařízení IoT Central je řešení typu open source na Githubu. Je připravené s tlačítkem "Nasazení do Azure", která nasadí vlastní šablony Azure Resource Manageru s několika prostředků Azure do vašeho předplatného Azure. Prostředky patří:
 -   Aplikace Azure Function app
 -   Účet služby Azure Storage
--   Plán služby App Service (úroveň S1)
+-   Plán Consumption
 -   Azure Key Vault do aplikace function app je důležitých most zařízení. Začne přijímat požadavky HTTP POST z jiné platformy IoT nebo všechny vlastní platformy prostřednictvím integrace jednoduché webhooku. Uvádíme příklady, které ukazují, jak se připojit k Sigfox, částice a TTN cloudy. Můžete jednoduše rozšířit toto řešení pro připojení k vaší vlastní cloudu IoT, pokud vaši platformu zasílat požadavky HTTP POST na aplikaci function App.
 Aplikace Function app transformuje data do formátu přijal IoT Central a předá jej podél prostřednictvím rozhraní API a distribučních bodů.
 
@@ -37,10 +37,9 @@ Pokud vaše aplikace IoT Central rozpoznává ID zařízení v přesměrovaná z
 Podle pokynů uvedených v podrobně v souboru README v úložišti na Githubu. 
 
 ## <a name="pricing"></a>Ceny
-To je vše hostované ve vašem předplatném Azure. Většina odhadované náklady zřízené prostředky pocházejí z [cena standardní plán služby App Service]( https://azure.microsoft.com/en-us/pricing/details/app-service/windows/). Další informace o tomto a potenciální způsobů, jak to snížit v souboru README.
+Prostředky Azure se hostovat ve vašem předplatném Azure. Další informace o cenách v [souboru README](https://aka.ms/iotcentralgithubdevicebridge).
 
 ## <a name="next-steps"></a>Další postup
-
 Teď, když jste zjistili, jak vytvářet most zařízení IoT Central, tady je navrhované další krok:
 
 > [!div class="nextstepaction"]

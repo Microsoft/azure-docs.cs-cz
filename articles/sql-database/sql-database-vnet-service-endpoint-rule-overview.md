@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: 0fc5ca73dec79942e05c7dfd410bc0a13e5ffb44
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.date: 12/04/2018
+ms.openlocfilehash: 3469b03cae88a5bdf7c9ccd51b54af92ea8d7b23
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648713"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958384"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL Database a SQL Data Warehouse
 
@@ -145,7 +145,7 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 ## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Dopady odebrání "Povolit Azure services pro přístup k serveru.
 
 Mnoho uživatelů chcete odebrat **služby Azure umožňují přístup k serveru** ze svých serverů SQL Azure a nahraďte ji metodou pravidlo brány Firewall virtuální sítě.
-Ale odebrání to ovlivní následující funkce Azure SQL Database:
+Ale odebrání to ovlivní následující funkce:
 
 ### <a name="import-export-service"></a>Služba import exportu
 
@@ -166,12 +166,64 @@ Azure SQL Database má funkce synchronizace dat, která se připojuje k vaší d
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Dopad koncové body služby virtuální sítě pomocí služby Azure storage
 
-Azure Storage implementoval stejné funkce, která vám umožní omezit připojení k vašemu účtu úložiště.
-Pokud se rozhodnete tuto funkci používat s účtem úložiště, který se používá server SQL Azure, můžete spustit do problémy. Následuje seznam a diskuzi o Azure SQL Database funkce, které jsou ovlivněné tímto objektem.
+Azure Storage implementoval stejné funkce, která vám umožní omezit připojení k vašemu účtu Azure Storage. Pokud se rozhodnete tuto funkci používat s účtem Azure Storage, který používá Azure SQL Server, můžete spustit do problémy. Následuje seznam a diskuzi o Azure SQL Database a Azure SQL Data Warehouse funkce, které jsou ovlivněné tímto objektem.
 
 ### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse PolyBase
 
-PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z účtů úložiště. Pokud účet úložiště, které se načítají data z omezuje přístup jenom na sadu podsítí virtuální sítě, dojde k přerušení připojení technologie PolyBase k účtu. Existuje omezení rizik pro tento, a můžete kontaktovat podporu Microsoftu pro další informace.
+PolyBase se běžně používá k načtení dat do Azure SQL Data Warehouse z účtů služby Azure Storage. Pokud účet služby Azure Storage, která se načítají data z omezuje přístup jenom na sadu podsítí virtuální sítě, dojde k přerušení připojení z PolyBase k účtu. Umožňující použití obou PolyBase importovat a exportovat scénáře s Azure SQL Data Warehouse připojení k Azure Storage, která je zabezpečena k virtuální síti, postupujte podle kroků uvedených dole:
+
+#### <a name="prerequisites"></a>Požadavky
+1.  Instalace Azure Powershellu pomocí tohoto [průvodce](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+2.  Pokud máte účet pro obecné účely v1 a blob storage, je nutné nejprve upgradovat na v2 pro obecné účely použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+3.  Musíte mít **Povolit důvěryhodné služby Microsoftu pro přístup k tomuto účtu úložiště** zapnuté pod účtem služby Azure Storage **brány firewall a virtuální sítě** nabídky nastavení. Projít tento [průvodce](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) Další informace.
+ 
+#### <a name="steps"></a>Kroky
+1.  V prostředí PowerShell **zaregistrovat logického SQL serveru** s Azure Active Directory (AAD):
+
+    ```powershell
+    Add-AzureRmAccount
+    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
+    Set-AzureRmSqlServer -ResourceGroupName your-logical-server-resourceGroup -ServerName your-logical-servername -AssignIdentity
+    ```
+    
+ 1. Vytvoření **pro obecné účely v2 účtu úložiště** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+
+    > [!NOTE]
+    > - Pokud máte účet pro obecné účely v1 a blob storage, je nutné **nejprve upgradovat na v2** použití této funkce [průvodce](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+    > - Známé problémy s Azure Data Lake Storage Gen2 najdete to [průvodce](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
+    
+1.  V rámci účtu úložiště, přejděte do **řízení přístupu (IAM)** a klikněte na tlačítko **přidat přiřazení role**. Přiřadit **Přispěvatel dat objektu Blob služby Storage (Preview)** role RBAC ke svému logickému SQL serveru.
+
+    > [!NOTE] 
+    > Tento krok lze provést pouze členové s oprávněními vlastníka. Různé předdefinované role pro prostředky Azure, najdete to [průvodce](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+  
+1.  **Polybase připojením k účtu Azure Storage:**
+
+    1. Vytvoření databáze **[hlavní klíč](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)** Pokud jste ještě nevytvořili dříve:
+        ```SQL
+        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+        ```
+    
+    1. Vytvoření přihlašovacích údajů s rozsahem databáze s **IDENTITY = "Identita spravované služby"**:
+
+        ```SQL
+        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+        ```
+        > [!NOTE] 
+        > - Není nutné zadat tajný kód se přístupový klíč k úložišti Azure, protože tento mechanismus využívá [Identity spravované](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) pod pokličkou.
+        > - Název IDENTITY by měl být **Managed Service Identity** PolyBase připojení k práci s účtem úložiště Azure pro zabezpečené virtuální síti.    
+    
+    1. Vytvoření externího zdroje dat s abfss: / / schéma pro připojení k účtu úložiště pro obecné účely v2 používáním funkce PolyBase:
+
+        ```SQL
+        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+        ```
+        > [!NOTE] 
+        > - Pokud už máte externí tabulky přidružené k účtu pro obecné účely v1 nebo blob storage, by měly nejprve vyřadit tyto externí tabulky a pak vyřadit odpovídající externí zdroj dat. Pak vytvoříte externí zdroj dat se abfss: / / schéma připojení k účtu úložiště pro obecné účely v2, jak je uvedeno výše a znovu vytvořit všechny externí tabulky, které pomocí tohoto nového zdroje externí data. Můžete použít [generovat a Průvodce publikováním skripty](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017) vygenerovat vytvořit skript pro externí tabulky pro snadné.
+        > - Další informace o abfss: / / schéma, přečtěte si toto [průvodce](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
+        > - Další informace o CREATE EXTERNAL DATA SOURCE, najdete to [průvodce](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
+        
+    1. Dotaz jako normální použití [externí tabulky](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql).
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL Database auditování objektů Blob
 
@@ -179,11 +231,11 @@ Auditování objektů BLOB nahraje protokoly auditu do účtu úložiště. Poku
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Přidání pravidla brány Firewall virtuální sítě k vašemu serveru neaktivuje na koncové body služby virtuální sítě
 
-Dávno předtím, než tuto funkci došlo k rozšíření, jste byli vyzváni k zapnutí koncové body služby virtuální sítě předtím, než je možné implementovat živé pravidlo virtuální sítě v bráně Firewall. Koncové body související dané podsíti virtuální sítě ke službě Azure SQL Database. Od ledna 2018, můžou teď obejít tento požadavek, tak, že nastavíte, ale **IgnoreMissingServiceEndpoint** příznak.
+Dávno předtím, než tuto funkci došlo k rozšíření, jste byli vyzváni k zapnutí koncové body služby virtuální sítě předtím, než je možné implementovat živé pravidlo virtuální sítě v bráně Firewall. Koncové body související dané podsíti virtuální sítě ke službě Azure SQL Database. Od ledna 2018, můžou teď obejít tento požadavek, tak, že nastavíte, ale **IgnoreMissingVNetServiceEndpoint** příznak.
 
-Pouze nastavení pravidla brány Firewall nepomůže zabezpečení serveru. Musíte také zapnout koncové body služby virtuální sítě pro zabezpečení, než se projeví. Když zapnete koncové body služby, prostředí VNet subnet až do dokončení přechodu z vypnout na výpadky. To platí zejména v souvislosti s velké virtuální sítě. Můžete použít **IgnoreMissingServiceEndpoint** příznak ke snížení nebo eliminaci výpadek během přechodu.
+Pouze nastavení pravidla brány Firewall nepomůže zabezpečení serveru. Musíte také zapnout koncové body služby virtuální sítě pro zabezpečení, než se projeví. Když zapnete koncové body služby, prostředí VNet subnet až do dokončení přechodu z vypnout na výpadky. To platí zejména v souvislosti s velké virtuální sítě. Můžete použít **IgnoreMissingVNetServiceEndpoint** příznak ke snížení nebo eliminaci výpadek během přechodu.
 
-Můžete nastavit **IgnoreMissingServiceEndpoint** příznak pomocí prostředí PowerShell. Podrobnosti najdete v tématu [prostředí PowerShell k vytvoření koncového bodu služby virtuální sítě a pravidlo pro službu Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+Můžete nastavit **IgnoreMissingVNetServiceEndpoint** příznak pomocí prostředí PowerShell. Podrobnosti najdete v tématu [prostředí PowerShell k vytvoření koncového bodu služby virtuální sítě a pravidlo pro službu Azure SQL Database][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="errors-40914-and-40615"></a>Chyby 40914 a 40615
 

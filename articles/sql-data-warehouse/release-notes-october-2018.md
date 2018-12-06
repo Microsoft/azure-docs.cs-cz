@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 11/14/2018
+ms.date: 12/04/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 1edac9f7eac1f47974f4c94f3cae5bb3451f92fd
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e67edf382a49839d890d2c1dec50c44bbb19705a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705374"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966819"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-october-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Říjen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v října 2018.
@@ -62,6 +62,7 @@ Azure SQL Data Warehouse (SQL data Warehouse) teď má nativní integraci s Azur
 | **CETAS Parquet chybám malých prostředků třídy datových skladů DW2000 a provádění dalších akcí** | Tato oprava správně identifikuje nulový odkaz na vytvoření externí tabulky lze případně na cestu kódu Parquet. |
 |**Hodnota sloupce identity můžou přijít o některé operace CTAS** | Hodnota sloupce identifikovat nemusí být zachována při CTASed do jiné tabulky. V blogu: [ https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/ ](https://blog.westmonroepartners.com/azure-sql-dw-identity-column-bugs/). |
 | **V některých případech, kdy relace se ukončí při běhu dotazu došlo k vnitřní chybě.** | Tato oprava aktivuje InvalidOperationException, pokud relace se ukončí, když dotaz stále běží. |
+| **(Nasazené v listopadu 2018) Zákazníci zaznamenávali neoptimální výkon při pokusu o načtení více malých souborů ze služby ADLS (Gen1) při použití technologie Polybase.** | Výkon systému byla bottlenecked během ověřování tokenů zabezpečení AAD. Problémy s výkonem byly zmírnit tím, že umožňuje ukládání do mezipaměti tokenů zabezpečení. |
 
 
 ## <a name="next-steps"></a>Další postup

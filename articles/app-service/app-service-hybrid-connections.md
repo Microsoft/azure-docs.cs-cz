@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: 69897e288a90a731d95db82d0ff978d776c12580
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: cdfe1a35dbbf8fa048e0b0ca24f06bb0e73bde61
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42058034"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968305"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybrid Connections #
 
@@ -249,8 +249,8 @@ Počáteční formulář této funkce jmenovala BizTalk Hybrid Connections. Tato
 [12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
-[HCService]: http://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
-[portal]: http://portal.azure.com/
-[oldhc]: http://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
-[sbpricing]: http://azure.microsoft.com/pricing/details/service-bus/
+[HCService]: https://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
+[portal]: https://portal.azure.com/
+[oldhc]: https://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
+[sbpricing]: https://azure.microsoft.com/pricing/details/service-bus/
 [armclient]: https://github.com/projectkudu/ARMClient/

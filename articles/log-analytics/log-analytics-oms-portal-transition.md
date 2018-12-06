@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 5010426db97a9cd404d265d1ea9b319877eda1de
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4dde0663c6db4187cd4728dd88b808fc22b66708
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723954"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964164"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Portál OMS do Azure
 
@@ -71,7 +71,7 @@ V obou těchto případech musí správce ručně přiřadit vám příslušné 
  
 
 ## <a name="new-workspaces"></a>Nové pracovní prostory
-Jsou už nebude možné vytvořit nové pracovní prostory na portálu OMS. Postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics na portálu Azure portal](log-analytics-quick-create-workspace.md) vytvořte nový pracovní prostor na webu Azure Portal.
+Jsou už nebude možné vytvořit nové pracovní prostory na portálu OMS. Postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../azure-monitor/learn/quick-create-workspace.md) vytvořte nový pracovní prostor na webu Azure Portal.
 
 ## <a name="changes-to-alerts"></a>Změny výstrah
 
@@ -93,7 +93,7 @@ Mobilní aplikaci OMS bude sunsetted spolu se na portálu OMS. Místo mobilní a
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector a řešení
 [Application Insights Connector](../azure-monitor/platform/app-insights-connector.md) poskytuje způsob, jak přenést data Application Insights do pracovního prostoru Log Analytics. Tato duplikace dat nebyla nutná k zajištění viditelnost napříč dat infrastruktury a aplikací.
 
-Díky podpoře [dotazy napříč prostředky](log-analytics-cross-workspace-search.md), už není potřebě duplicitní data. V důsledku toho se přestanou existující řešení Application Insights. Od října se nebudou moct propojit nové prostředky Application Insights do pracovních prostorů Log Analytics. Existující odkazy a řídicí panely, budou nadále fungovat až do 15. ledna 2019.
+Díky podpoře [dotazy napříč prostředky](../azure-monitor/log-query/cross-workspace-query.md), už není potřebě duplicitní data. V důsledku toho se přestanou existující řešení Application Insights. Od října se nebudou moct propojit nové prostředky Application Insights do pracovních prostorů Log Analytics. Existující odkazy a řídicí panely, budou nadále fungovat až do 15. ledna 2019.
 
 
 ## <a name="azure-network-security-group-analytics"></a>Analýzy skupin zabezpečení sítě Azure
@@ -111,7 +111,7 @@ Toto řešení analyzuje protokoly toků NSG a poskytuje přehledy o následují
 Můžete nadále závisí na nastavení diagnostiky pro odesílání protokolů skupiny zabezpečení sítě ke službě Log Analytics, takže stávající uložit hledání, upozornění, řídicí panely se budou nadále fungovat. Zákazníci, kteří už jste nainstalovali řešení můžete ho nadále používat až do dalšího upozornění. Od 5. září se řešení analýzy skupin zabezpečení sítě budou odebrány z webu marketplace a k dispozici prostřednictvím komunity jako [šablonu pro rychlý start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-Pokud jste [připojené skupině pro správu Operations Manageru k Log Analytics](log-analytics-om-agents.md), bude dál fungovat beze změny. Pro nová připojení, je nutné postupovat podle pokynů v [Microsoft System Center Operations Manager Management Pack nakonfigurovat Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
+Pokud jste [připojené skupině pro správu Operations Manageru k Log Analytics](../azure-monitor/platform/om-agents.md), bude dál fungovat beze změny. Pro nová připojení, je nutné postupovat podle pokynů v [Microsoft System Center Operations Manager Management Pack nakonfigurovat Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/).
 
 ## <a name="next-steps"></a>Další postup
 - Zobrazit [běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics](log-analytics-oms-portal-faq.md) pro doprovodné materiály k přesunutí z portálu OMS na webu Azure portal.

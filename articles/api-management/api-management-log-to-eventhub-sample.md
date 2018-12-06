@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 4c58be8f501e72027e1692ceb73552a3f252f92a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 48dfa3180f040af3e8298d418cf71c537477ba5a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38603174"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956944"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Sledování vašich rozhraní API pomocí Azure API Management, Event Hubs a Runscope
 [Služby API Management](api-management-key-concepts.md) poskytuje mnoho funkcí pro zvýšení zpracování požadavků HTTP odeslané do vašeho rozhraní API protokolu HTTP. Je však přechodné existenci požadavky a odpovědi. Požadavku a prochází přes službu API Management k rozhraní API back-endu. Vaše rozhraní API zpracuje požadavek a odpověď prochází zpět do rozhraní API příjemců. Služba API Management zajišťuje několik důležitých statistik o rozhraní API pro zobrazení v řídicím panelu portálu Azure, ale dalších fázích můžete využít, že podrobnosti jsou pryč.
@@ -45,7 +45,7 @@ Služba Event Hubs má schopnost datový proud událostí do více skupin konzum
 ## <a name="a-policy-to-send-applicationhttp-messages"></a>Zásady pro odesílání zpráv application/http
 Centrum událostí přijme data událostí jako jednoduchým řetězcem. Obsah tohoto řetězce, záleží na vás. Aby bylo možné vytvořit požadavek HTTP balíček a odeslat ji do služby Event Hubs, musíme formátovací řetězec s informacemi o požadavku nebo odpovědi. V situacích, jako je to pokud je existující formát můžeme opakovaně, pak nemusí musíme napsat vlastní analýza kódu. Zpočátku jsem považovat za použití [HAR](http://www.softwareishard.com/blog/har-12-spec/) pro odesílání požadavků a odpovědí HTTP. Ale tento formát je optimalizovaná pro ukládání posloupnost požadavky HTTP ve formátu JSON. Obsahuje řadu povinné prvky, které přidá zbytečné složitosti pro scénář předání zprávy HTTP při přenosu.  
 
-Alternativní možnost bylo použít `application/http` typ média, jak je popsáno ve specifikaci protokolu HTTP [RFC 7230](http://tools.ietf.org/html/rfc7230). Tento typ média používá naprosto stejný formát, který se používá k přenosu ve skutečnosti odesílání zprávy protokolu HTTP, ale celá zpráva může být v těle další požadavek HTTP put. V našem případě stačí budeme používat text jako naše zprávy k odeslání do Event Hubs. Pohodlné, je analyzátor, který existuje v [Microsoft ASP.NET Web API 2.2 klienta](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) knihovny, které můžete tento formát analyzovat a převádět je do nativního `HttpRequestMessage` a `HttpResponseMessage` objekty.
+Alternativní možnost bylo použít `application/http` typ média, jak je popsáno ve specifikaci protokolu HTTP [RFC 7230](https://tools.ietf.org/html/rfc7230). Tento typ média používá naprosto stejný formát, který se používá k přenosu ve skutečnosti odesílání zprávy protokolu HTTP, ale celá zpráva může být v těle další požadavek HTTP put. V našem případě stačí budeme používat text jako naše zprávy k odeslání do Event Hubs. Pohodlné, je analyzátor, který existuje v [Microsoft ASP.NET Web API 2.2 klienta](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) knihovny, které můžete tento formát analyzovat a převádět je do nativního `HttpRequestMessage` a `HttpResponseMessage` objekty.
 
 Aby bylo možné vytvořit tuto zprávu, musíme využít výhod jazyka C# založeny [výrazy zásad](https://msdn.microsoft.com/library/azure/dn910913.aspx) ve službě Azure API Management. Tady je zásada, která odešle zprávu požadavku HTTP do služby Azure Event Hubs.
 
@@ -159,7 +159,7 @@ Vypadá podobně jako na žádost o zásadu odeslat zprávu odpovědi HTTP a tak
 `set-variable` Zásady vytvoří hodnotu, která je přístupné pro oba `log-to-eventhub` zásad v `<inbound>` oddílu a `<outbound>` oddílu.  
 
 ## <a name="receiving-events-from-event-hubs"></a>Příjem událostí ze služby Event Hubs
-Přijetí události ze služby Azure Event Hub pomocí [protokolu AMQP](http://www.amqp.org/). Tým Microsoft Service Bus provedli klientských knihoven, které jsou k dispozici pro usnadnění používání událostí. Existují dva různé přístupy, které jsou podporovány, je právě jeden *přímé příjemce* a druhý je použití `EventProcessorHost` třídy. Mezi příklady těchto dvou přístupů najdete v [Průvodce programováním pro Event Hubs](../event-hubs/event-hubs-programming-guide.md). Je zkrácený rozdíly `Direct Consumer` poskytuje úplnou kontrolu a `EventProcessorHost` provádí určitou část práce vložení pro ale znamená určité předpoklady o tom, jak zpracovat tyto události.  
+Přijetí události ze služby Azure Event Hub pomocí [protokolu AMQP](https://www.amqp.org/). Tým Microsoft Service Bus provedli klientských knihoven, které jsou k dispozici pro usnadnění používání událostí. Existují dva různé přístupy, které jsou podporovány, je právě jeden *přímé příjemce* a druhý je použití `EventProcessorHost` třídy. Mezi příklady těchto dvou přístupů najdete v [Průvodce programováním pro Event Hubs](../event-hubs/event-hubs-programming-guide.md). Je zkrácený rozdíly `Direct Consumer` poskytuje úplnou kontrolu a `EventProcessorHost` provádí určitou část práce vložení pro ale znamená určité předpoklady o tom, jak zpracovat tyto události.  
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 V této ukázce používáme `EventProcessorHost` pro zjednodušení, ale nemusí být není nejlepší volbou pro tento konkrétní scénář. `EventProcessorHost` provede práci a ujistěte se, že se že nemusíte starat o dělení na vlákna problémy v rámci třídy procesoru určité události. V tomto scénáři, jsme se však jednoduše převod zprávu do jiného formátu a předáním podél do jiné služby pomocí asynchronní metody. Není nutné pro aktualizaci sdílený stav a proto riziko potíže s vlákny. Pro většinu scénářů `EventProcessorHost` je pravděpodobně nejlepší volbou a určitě je jednodušší možnosti.     
@@ -213,7 +213,7 @@ public class HttpMessage
 `HttpMessage` Provádění potom předány instanci `IHttpMessageProcessor`, což je rozhraní jsem vytvořil oddělit přijímají a interpretaci událostí z Azure Event Hubs a skutečné zpracování.
 
 ## <a name="forwarding-the-http-message"></a>Předávání zpráv protokolu HTTP
-V tomto příkladu jsem se rozhodla by být zajímavé vložit požadavku HTTP přes [Runscope](http://www.runscope.com). Runscope je Cloudová služba, která se specializuje na HTTP, ladění, protokolování a monitorování. Úroveň free mají tak snadno vyzkoušet a umožňuje nám to naleznete v tématu požadavky HTTP v reálném čase prostřednictvím naší službě API Management.
+V tomto příkladu jsem se rozhodla by být zajímavé vložit požadavku HTTP přes [Runscope](https://www.runscope.com). Runscope je Cloudová služba, která se specializuje na HTTP, ladění, protokolování a monitorování. Úroveň free mají tak snadno vyzkoušet a umožňuje nám to naleznete v tématu požadavky HTTP v reálném čase prostřednictvím naší službě API Management.
 
 `IHttpMessageProcessor` Implementace vypadá takto,
 
@@ -260,7 +260,7 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-Povedlo se využít [existující klientské knihovny pro Runscope](http://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha) umožňující snadno o nasdílení změn `HttpRequestMessage` a `HttpResponseMessage` instancí až do své služby. Pokud chcete získat přístup k rozhraní API Runscope, musíte účtu a klíč rozhraní API. Pokyny k získání klíče rozhraní API najdete v [vytváření aplikací na používání rozhraní API Runscope](http://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) záznam dění na monitoru.
+Povedlo se využít [existující klientské knihovny pro Runscope](https://www.nuget.org/packages/Runscope.net.hapikit/0.9.0-alpha) umožňující snadno o nasdílení změn `HttpRequestMessage` a `HttpResponseMessage` instancí až do své služby. Pokud chcete získat přístup k rozhraní API Runscope, musíte účtu a klíč rozhraní API. Pokyny k získání klíče rozhraní API najdete v [vytváření aplikací na používání rozhraní API Runscope](https://blog.runscope.com/posts/creating-applications-to-access-the-runscope-api) záznam dění na monitoru.
 
 ## <a name="complete-sample"></a>Úplnou ukázku
 [Zdrojový kód](https://github.com/darrelmiller/ApimEventProcessor) a jsou testy pro ukázku na Githubu. Budete potřebovat [služby API Management](get-started-create-service-instance.md), [připojeného centra událostí](api-management-howto-log-event-hubs.md)a [účtu úložiště](../storage/common/storage-create-storage-account.md) ke spuštění ukázky sami.   

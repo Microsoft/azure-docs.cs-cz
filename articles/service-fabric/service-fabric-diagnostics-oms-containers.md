@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: aabdae370c28f8fa633372be4505c00c25254408
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d5fd55ec93ce07e30e4c6f123f9be8492581053c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403246"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972248"
 ---
 # <a name="monitor-containers-with-log-analytics"></a>Monitorování kontejnerů pomocí Log Analytics
  
@@ -53,7 +53,7 @@ Agenta umožňuje výběr několika protokoly týkající se kontejnerů, které
 
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [řešení Log Analytics kontejnerů](../log-analytics/log-analytics-containers.md).
+* Další informace o [řešení Log Analytics kontejnerů](../azure-monitor/insights/containers.md).
 * Další informace o orchestraci kontejnerů v Service Fabric – [Service Fabric a kontejnery](service-fabric-containers-overview.md)
 * Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízená v rámci služby Log Analytics
 * Nakonfigurujte Log Analytics a nastavit [automatické upozorňování](../log-analytics/log-analytics-alerts.md) pravidla, která vám pomůže se zjišťováním a diagnostikou

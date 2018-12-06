@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/06/2018
+ms.date: 12/04/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 45b6de7693325b5ccfcb01ad9babc61dd2f6e003
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: d716a27cc2b4879451a8d5edbca46ca1bbfeaf40
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289134"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968983"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operací v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a operační systémy SAP HANA, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA Škálováním pro skladovou Položku virtuálního počítače M128s. Tento dokument není určena k nahrazení standardní dokumentaci k SAPU, který obsahuje následující obsah:
@@ -190,7 +190,11 @@ Zkontrolujte, jestli bude vyhovovat propustnost úložiště pro různé svazky 
 Pokud máte připojení site-to-site do Azure přes VPN nebo ExpressRoute, musíte mít aspoň jednu virtuální síť Azure, který je připojený prostřednictvím virtuální brány k okruhu ExpressRoute nebo VPN. V jednoduchých nasazení je možné nasadit virtuální brány v podsítě virtuální sítě Azure (VNet), který je hostitelem instance systému SAP HANA i. Instalace SAP HANA, vytvořte dva další podsítě v rámci virtuální sítě Azure. Jednu podsíť hostuje virtuální počítače ke spuštění instance systému SAP HANA. Další podsítě spustí Jumpbox nebo virtuální počítače pro správu, k hostování SAP HANA Studio, další software pro správu nebo aplikační software.
 
 > [!IMPORTANT]
-> Mimo funkce, ale další důležité z důvodů výkonu, není možné konfigurovat [Azure síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/) v komunikační trasa mezi aplikací SAP a HANA databáze instance SAP NetWeaver, Hybris nebo S/4HANA na systému SAP. Další scénáře, ve kterém nejsou podporovány síťová virtuální zařízení jsou v komunikační trasy mezi virtuálními počítači Azure, které představují uzly clusteru Linux Pacemaker SBD zařízení a jak je popsáno v [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Nebo v komunikaci se trasy mezi virtuálními počítači Azure a Windows Server SOFS nastavit až, jak je popsáno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s využitím sdílené složky v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Síťová virtuální zařízení v komunikaci cesty může snadno dvakrát latence sítě mezi dva partneři komunikaci, můžete omezit propustnost v kritické cesty mezi aplikační vrstvě SAP a databázi instance HANA. V některých scénářích zjištěnými se zákazníky může způsobit síťová virtuální zařízení Pacemaker Linuxové clustery selhání v případech, kdy je potřeba komunikace mezi uzly clusteru Linux Pacemaker sdělit své zařízení SBD přes síťové virtuální zařízení.   
+> Mimo funkce, ale další důležité z důvodů výkonu, není možné konfigurovat [Azure síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/) v komunikační trasa mezi aplikací SAP a úroveň databázového systému SAP NetWeaver Hybris nebo S/4HANA na systému SAP. Komunikace mezi aplikační vrstvě SAP a vrstvu DBMS musí být s přímým přístupem. Omezení nezahrnuje [Azure ASG a skupiny zabezpečení sítě pravidla](https://docs.microsoft.com/azure/virtual-network/security-overview) tak dlouho, dokud tato pravidla ASG a skupiny zabezpečení sítě umožní přímé komunikaci. Další scénáře, ve kterém nejsou podporovány síťová virtuální zařízení jsou v komunikační trasy mezi virtuálními počítači Azure, které představují uzly clusteru Linux Pacemaker SBD zařízení a jak je popsáno v [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Nebo v komunikaci se trasy mezi virtuálními počítači Azure a Windows Server SOFS nastavit až, jak je popsáno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s využitím sdílené složky v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Síťová virtuální zařízení v komunikaci cesty může snadno dvakrát latence sítě mezi dva partneři komunikaci, můžete omezit propustnost v kritické cesty mezi aplikační vrstvě SAP a vrstvu DBMS. V některých scénářích zjištěnými se zákazníky může způsobit síťová virtuální zařízení Pacemaker Linuxové clustery selhání v případech, kdy je potřeba komunikace mezi uzly clusteru Linux Pacemaker sdělit své zařízení SBD přes síťové virtuální zařízení.  
+> 
+
+> [!IMPORTANT]
+> Další návrh, který je **není** zodpovědnosti aplikační vrstvě SAP a vrstvu DBMS do různých virtuálních sítí Azure, které nejsou podporovány je [v partnerském vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi sebou. Doporučujeme oddělit aplikační vrstvě SAP a DBMS vrstvy pomocí podsítí v rámci virtuální sítě Azure, namísto použití různých virtuálních sítích Azure. Pokud se rozhodnete postupujte podle doporučení a místo toho oddělit dvě vrstvy do jiné virtuální sítě, dvě virtuální sítě musí být [v partnerském vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Mějte na paměti, které síťový provoz mezi dvěma [v partnerském vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálním sítím Azure jsou předmětem náklady na přenos. S velkou datový svazek v po mnoho terabajtů, které se vyměňují mezi aplikační vrstvě SAP a DBMS vrstvu můžete sbírají značné náklady, pokud aplikační vrstvě SAP a DBMS vrstvy je rozdělen mezi dvěma partnerskými virtuálními sítěmi Azure. 
 
 Při instalaci virtuálních počítačů pro spuštění SAP HANA, třeba virtuální počítače:
 

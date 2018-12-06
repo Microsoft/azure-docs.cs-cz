@@ -1,6 +1,6 @@
 ---
 title: Přehled síťové architektury ve službě App Service Environment
-description: Přehled architektury ofApp topologie sítě služby prostředí.
+description: Přehled architektury sítě topologie ofApp prostředí Service.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
-ms.openlocfilehash: 3362a55524da42914681db06b8d2c0da8df773d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b6e251e4fd1b5786af0adc0f9477c08374266f2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23836823"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957721"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Přehled síťové architektury ve službě App Service Environment
 ## <a name="introduction"></a>Úvod
-Prostředí App Service se vytváří vždy v rámci podsítí [virtuální sítě] [ virtualnetwork] -aplikace běžící ve službě App Service Environment může komunikovat s privátní koncové body umístěné v rámci stejné virtuální topologie sítě.  Vzhledem k tomu, že zákazníci můžou zamknout součástí infrastruktury svojí virtuální sítě, je důležité si uvědomit, typy síťovými toky komunikace, které se služby App Service Environment.
+App Service Environment se vždy vytvoří v určité podsíti [virtuální sítě] [ virtualnetwork] – aplikace, které běží ve službě App Service Environment může komunikovat s privátní koncové body umístěné ve stejném virtuálním topologie sítě.  Vzhledem k tomu, že zákazníci můžou uzamknout částmi infrastruktury virtuální sítě, je důležité porozumět typům sítě komunikačních toků, které mohou u služby App Service Environment.
 
-## <a name="general-network-flow"></a>Tok obecné sítě
-Používá-li aplikaci služby prostředí řízení, veřejné virtuální adresy IP (VIP) pro aplikace, všechny příchozí přenos dorazí na tuto veřejnou virtuální IP.  To zahrnuje přenosů dat HTTP a HTTPS pro aplikace, a také ostatní přenosy FTP, funkce vzdáleného ladění a operace správy Azure.  Úplný seznam určité porty (požadované a volitelné), které jsou k dispozici na veřejných virtuálních IP adres najdete v článku na [řízení příchozí provoz] [ controllinginboundtraffic] do služby App Service Environment. 
+## <a name="general-network-flow"></a>Tok sítě obecné
+Pokud App Service Environment (ASE) používá veřejnou virtuální IP adresu (VIP) pro aplikace, všechny příchozí přenos dorazí na veřejných virtuálních IP adres.  To zahrnuje přenosy HTTP i HTTPS pro aplikace, stejně jako ostatní přenosy FTP, funkce vzdáleného ladění a operace správy Azure.  Úplný seznam určité porty (požadované a volitelné), které jsou k dispozici na veřejných virtuálních IP adres najdete v článku na [řízení příchozího provozu] [ controllinginboundtraffic] do služby App Service Environment. 
 
-Služby App Service Environment také podporují spuštěné aplikace, které jsou vázány jenom na interní adresu virtuální sítě, také označuje jako adresu ILB (nástroj pro vyrovnávání zatížení pro vnitřní).  Na ILB povoleno App Service Environment, HTTP a HTTPS provozy pro aplikace a také vzdáleného ladění volání dorazí na adrese ILB.  U většiny běžných konfigurací s ILB App Service Environment přenosy FTP/FTPS také dorazí na adrese ILB.  Operace správy Azure bude stále procházet na porty 454/455 veřejná virtuální IP adresu z ILB, ale povoleno App Service Environment.
+Prostředí App Service také podporují spuštěné aplikace, které jsou vázány pouze na interní adresu virtuální sítě, také označuje jako adresu ILB (interního nástroje load balancer).  Na ILB povolený provoz služby ASE, HTTP a HTTPS pro aplikace, stejně jako volání vzdálené ladění, přicházejí na adrese ILB.  Pro nejběžnější konfigurace služba ASE s ILB také FTP/FTPS provoz dorazí na adrese ILB.  Operace správy Azure budou stále směrovat na portech 454 a 455 na veřejných virtuálních IP adres ILB ale povolit služby ASE.
 
-Následující diagram ukazuje přehled různých příchozí a odchozí síťovými toky pro služby App Service Environment, kde aplikace je vázána na veřejné virtuální IP adresy:
+Následující diagram znázorňuje přehled různých příchozí a odchozí síťovou toků pro službu App Service Environment, ve kterém je aplikace vázána na veřejnou virtuální IP adresu:
 
 ![Obecné síťovými toky][GeneralNetworkFlows]
 
-Služby App Service Environment může komunikovat s celou řadu koncové body privátní zákazníka.  Aplikace běžící v App Service Environment může například připojení k databázi servery spuštěné v virtuální počítače IaaS ve stejné virtuální síťové topologie.
+Služby App Service Environment může komunikovat s širokou škálu koncové body privátní zákazníka.  Aplikace spuštěné ve službě App Service Environment můžete například připojení k databázi, server (servery) běžící na virtuálních počítačích IaaS ve stejné virtuální síťové topologie.
 
 > [!IMPORTANT]
-> Vyhledávání v diagramu sítě, jsou v jiné podsíti ze služby App Service Environment nasazené "Ostatní výpočetní prostředky". Nasazení prostředků ve stejné podsíti s App Service Environment bude blokovat připojení z App Service Environment na tyto prostředky (s výjimkou směrování konkrétní intra-App Service Environment). Nasaďte do jiné podsítě místo toho (ve stejné virtuální síti). Služba App Service Environment pak bude moct připojit. Není potřeba žádná další konfigurace.
+> Síťový diagram podíváme, "Další výpočetní prostředky" jsou nasazené v jiné podsíti, ze služby App Service Environment. Nasazení prostředků ve stejné podsíti službou ASE bude blokovat připojení ze služby ASE k těmto prostředkům (s výjimkou služby ASE zvláštní uvnitř směrování). Nasazení do jiné podsítě místo toho (ve stejné virtuální síti). Služba App Service Environment pak bude moct připojit. Není potřeba žádná další konfigurace.
 > 
 > 
 
-Služby App Service Environment také komunikovat s databáze Sql a Azure Storage prostředky potřebné pro správu a provozování služby App Service Environment.  Některé prostředky Sql a úložiště, které služby App Service Environment komunikuje se nacházejí ve stejné oblasti jako služba App Service Environment, zatímco jiné jsou umístěny v vzdálené oblastech Azure.  Odchozí připojení k Internetu je proto vždy vyžaduje pro správné fungování služby App Service Environment. 
+Služby App Service Environment také komunikovat s Sql DB a Azure Storage prostředky potřebné pro správu a provozování služby App Service Environment.  Některé z prostředků Sql a službu Storage, které komunikuje se službou App Service Environment jsou umístěné ve stejné oblasti jako služba App Service Environment, zatímco jiné jsou umístěny ve vzdálené oblasti Azure.  Odchozí připojení k Internetu je proto vždy požadované pro službu App Service Environment fungovala správně. 
 
-Vzhledem k tomu, že služby App Service Environment je nasazený na podsíť, skupiny zabezpečení sítě můžete použít k řízení příchozí provoz do podsítě.  Podrobnosti o tom, jak řídit příchozí přenosy do služby App Service Environment, naleznete v následujících [článku][controllinginboundtraffic].
+Od služby App Service Environment se nasazuje do podsítě, skupiny zabezpečení sítě je možné řídit příchozí provoz do podsítě.  Podrobné informace o tom, jak řízení příchozího provozu do služby App Service Environment najdete na následující [článku][controllinginboundtraffic].
 
-Podrobné informace o tom, jak povolit odchozí připojení k Internetu z služby App Service Environment, najdete v následujícím článku o práci s [Express Route][ExpressRoute].  Ve stejný přístup popsané v článku platí při práci s připojení Site-to-Site a použití vynuceného tunelování.
+Podrobnosti o tom, jak povolit odchozí připojení k Internetu ze služby App Service Environment najdete v následujícím článku o práci s [Express Route][ExpressRoute].  Stejným způsobem popsaným v článku platí při práci s připojením Site-to-Site a použití vynuceného tunelování.
 
 ## <a name="outbound-network-addresses"></a>Odchozí síťové adresy
-Pokud služby App Service Environment provede odchozí volání, je vždy přidružen odchozí volání IP adresu.  Konkrétní IP adresu, která se používá závisí na tom, jestli se nachází v rámci virtuální síťové topologie, nebo mimo virtuální síťové topologie volané koncový bod.
+Služby App Service Environment provádí odchozích volání, IP adresa je vždy přidružený odchozích volání.  Konkrétní IP adresu, která se používá závisí na tom, jestli se nachází v rámci topologie virtuální sítě nebo mimo virtuální síťové topologie koncový bod volaný.
 
-Pokud je koncovým bodem volané **mimo** topologie virtuální sítě, je odchozí adresu (neboli odchozí adres NAT), která se používá veřejné VIP App Service Environment.  Tato adresa naleznete v portálu uživatelské rozhraní App Service Environment v okně Vlastnosti.
+Pokud je koncový bod volaný **mimo** topologie virtuální sítě je odchozí adresy (označuje se také jako odchozí adres NAT), který se používá veřejných virtuálních IP adres služby App Service Environment.  Tuto adresu najdete v portálu uživatelského rozhraní pro App Service Environment v okně vlastností.
 
-![Odchozí IP adresu][OutboundIPAddress]
+![Odchozí IP adresa][OutboundIPAddress]
 
-Tuto adresu můžete také určit pro ASEs, které mají pouze veřejné VIP vytváření aplikace v App Service Environment, a pak provedením *nslookup* na adrese aplikace. Výsledná IP adresa je veřejná virtuální IP adresu, jak odchozí adres NAT App Service Environment.
+Pro služby ase, které mají pouze veřejných virtuálních IP adres tak, že vytvoříte aplikaci v App Service Environment a následnému provedením můžete také určit tuto adresu *nslookup* na adresu aplikace. Výsledná adresa IP je veřejných virtuálních IP adres, i odchozí adresy NAT App Service Environment.
 
-Pokud je koncovým bodem volané **uvnitř** o virtuální síťové topologie, adresu odchozí volání aplikace bude na interní IP adresu jednotlivých výpočetních prostředků, ve kterém aplikace běží.  Ale není trvalé mapování virtuální sítě interní IP adresy pro aplikace.  Aplikace lze pohybovat mezi různé výpočetní prostředky a fondu k dispozici výpočetních prostředků ve službě App Service Environment, můžete změnit z důvodu operace škálování.
+Pokud je koncový bod volaný **uvnitř** topologie virtuální sítě, odchozí adresy volající aplikace bude interní IP adresa jednotlivé výpočetních prostředků, ve kterém aplikace běží.  Ale není trvalé mapování z interních IP adres virtuální sítě do aplikací.  Aplikace se můžu pohybovat mezi různými výpočetními prostředky a fond k dispozici výpočetní prostředky ve službě App Service Environment může změnit v důsledku operace škálování.
 
-Ale vzhledem k tomu, že služby App Service Environment se vždy nachází v rámci jedné podsítě, že je zaručeno, že na interní IP adresu výpočtový prostředek spuštění aplikace bude vždy ležet v rozsahu CIDR podsítě.  V důsledku toho-když podrobných seznamů řízení přístupu nebo skupiny zabezpečení sítě se používají k zabezpečení přístupu k další koncové body v rámci virtuální sítě, rozsahu podsítě obsahující App Service Environment musí mít udělen přístup.
+Ale protože služby App Service Environment je vždy umístěny v podsíti, zaručuje, že interní IP adresa výpočetní prostředek, je aplikace spuštěná bude vždy ležet v rozsahu CIDR podsítě.  V důsledku toho při podrobných seznamů ACL nebo skupiny zabezpečení sítě se používají k zabezpečení přístupu k jiné koncové body v rámci virtuální sítě, rozsahu podsítě obsahující služby App Service Environment je potřeba udělit přístup.
 
 Následující diagram znázorňuje tyto koncepty podrobněji:
 
@@ -66,27 +66,27 @@ Následující diagram znázorňuje tyto koncepty podrobněji:
 
 V diagramu:
 
-* Vzhledem k tomu, že veřejný VIP App Service Environment je 192.23.1.2, který je odchozí adresa IP použitá při volání koncové body "Internet".
-* Rozsah CIDR obsahující podsítě pro App Service Environment je 10.0.1.0/26.  Další koncové body v rámci stejné infrastruktury virtuální sítě se zobrazí volání z aplikace jako pocházející z někde v tomto rozsahu adres.
+* Protože veřejných virtuálních IP adres služby App Service Environment je 192.23.1.2, který je odchozí IP adresa používá při volání do koncových bodů "Internet".
+* Rozsah CIDR obsahující podsítě pro App Service Environment je 10.0.1.0/26.  Další koncové body v rámci stejné virtuální síti infrastruktury uvidí volání z aplikace jako pocházející z někde v rámci tohoto rozsahu adres.
 
 ## <a name="calls-between-app-service-environments"></a>Volání mezi služby App Service Environment
-Složitější situace může nastat, pokud nasadíte více prostředí App Service ve stejné virtuální síti a odchozí volání z jednoho App Service Environment do jiné App Service Environment.  Tyto typy křížová volání bude také považována za "Internet" volání služby App Service Environment.
+Složitější scénáře může dojít, pokud nasadíte více App Service Environment ve stejné virtuální síti a odchozích volání z jedné služby App Service Environment do jiného prostředí App Service.  Tyto typy pro různé služby App Service Environment volání, budou také považovány za volání "Internet".
 
-Následující diagram ukazuje příklad Vrstvená architektura aplikace na jeden App Service Environment (např.) "Přední dveře" webové aplikace) na (třeba interní aplikace API back-end není by měla být přístupný z Internetu) druhý App Service Environment volání aplikace. 
+Následující diagram ukazuje příklad vícevrstvé architektury s aplikacemi na jeden App Service Environment (např.) "Předních dveří" webové aplikace) volání aplikace (třeba interní aplikace back endové rozhraní API nejsou určeny byla přístupná z Internetu) druhý App Service Environment. 
 
 ![Volání mezi služby App Service Environment][CallsBetweenAppServiceEnvironments] 
 
-V předchozím příkladu má služba App Service Environment "App Service Environment jeden" 192.23.1.2 odchozí IP adresu.  Pokud aplikace spuštěná na tomto App Service Environment budou díky odchozí volání do aplikace druhý App Service Environment ("App Service Environment dvě") a systémem umístěný ve stejné virtuální síti, odchozí volání se považuje za volání "Internet".  V důsledku síťový provoz přicházejících na druhé stránce App Service Environment zobrazí jako pocházející z 192.23.1.2 (tj. není podsítě rozsah adres první App Service Environment).
+Ve výše uvedeném příkladu má služba App Service Environment "ASE jeden" odchozí IP adresu 192.23.1.2.  Pokud aplikace spuštěná na tomto App Service Environment, využívá odchozí volání na aplikaci spuštěnou v prostředí druhý služby App Service Environment ("služby ASE obou") umístěn ve stejné virtuální síti, odchozích volání budou považovány za volání rozhraní "Internet".  V důsledku síťový provoz přicházející v druhém služby App Service Environment se zobrazí jako pocházející z 192.23.1.2 (tedy ne rozsahu adres podsítě první App Service Environment).
 
-I když volání mezi různé prostředí App Service jsou považovány za "Internet" volání, pokud obě prostředí App Service jsou umístěny ve stejné oblasti Azure, síťový provoz zůstanou v místní síti Azure a není fyzicky toku přes veřejného Internetu.  V důsledku použít skupinu zabezpečení sítě v podsíti, druhý App Service Environment a Povolit jenom příchozí volání z první App Service Environment (jehož odchozí IP adresa je 192.23.1.2), čímž zajišťuje zabezpečenou komunikaci mezi aplikace Prostředí služby.
+I když volání mezi různé App Service Environment jsou považovány za volání "Internet", pokud obě služby App Service Environment jsou umístěny ve stejné oblasti Azure, síťový provoz zůstanou v místní síti Azure a nebudou fyzicky flow přes veřejný Internet.  Díky tomu můžete použít skupinu zabezpečení sítě v podsíti druhý App Service Environment a Povolit jenom příchozích volání od první služby App Service Environment (jehož odchozí IP adresa je 192.23.1.2), tedy zajistit zabezpečenou komunikaci mezi aplikací Služba prostředí.
 
 ## <a name="additional-links-and-information"></a>Další odkazy a informace
-Podrobnosti o příchozí porty používané prostředí App Service a použití skupin zabezpečení sítě k řízení příchozího provozu je k dispozici [sem][controllinginboundtraffic].
+Podrobnosti o příchozí porty, které používá služba App Service Environment, a k řízení příchozího provozu pomocí skupin zabezpečení sítě je k dispozici [tady][controllinginboundtraffic].
 
-Podrobnosti o použití uživatele definované trasy udělit přístup k prostředí App Service Internetu je k dispozici v tomto [článku][ExpressRoute]. 
+Podrobnosti o použití uživatele definované trasy a udělit odchozí internetový přístup k App Service Environment je k dispozici v tomto [článku][ExpressRoute]. 
 
 <!-- LINKS -->
-[virtualnetwork]: http://azure.microsoft.com/services/virtual-network/
+[virtualnetwork]: https://azure.microsoft.com/services/virtual-network/
 [controllinginboundtraffic]:  app-service-app-service-environment-control-inbound-traffic.md
 [ExpressRoute]:  app-service-app-service-environment-network-configuration-expressroute.md
 

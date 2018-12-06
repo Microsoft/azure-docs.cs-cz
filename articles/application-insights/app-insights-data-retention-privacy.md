@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 075358ad559806c375d44b6a125e8d2839b6632f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2814ecb0ff9fc49e4763dbe604fef353394f9aac
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726300"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965236"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -101,7 +101,6 @@ Společnost Microsoft používá data jenom k poskytování služeb.
 
 ## <a name="where-is-the-data-held"></a>Kde se data uchovávají?
 * V USA, Evropa nebo jihovýchodní Asie. Když vytvoříte nový prostředek Application Insights, můžete vybrat umístění. 
-
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>To znamená, že aplikace má zajistit také jejich hostování v USA, Evropa nebo jihovýchodní Asie?
 * Ne. Vaše aplikace mohla spustit kdekoli, v místních hostitelů nebo v cloudu.
@@ -280,6 +279,9 @@ Pro [sady SDK pro jiné platformy][platforms], najdete v článku své dokumenty
 | Diagnostika sady SDK |Zprávy trasování a výjimky |
 
 Můžete si [vypnout některá data pomocí úpravy souboru ApplicationInsights.config][config]
+
+> [!NOTE]
+> Klient IP je použít k odvození vlastníka, zeměpisného umístění, ale ve výchozím nastavení IP data jsou již uložena a obsahuje samé nuly jsou zapsány do přidružené pole. Bližší informace o zpracování osobních údajů toto doporučení uvádíme [článku](../log-analytics/log-analytics-personal-data-mgmt.md#application-data). Pokud potřebujete ukládat IP adresu můžete tak učinit pomocí [inicializátor telemetrie](./app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="credits"></a>Závěrečné titulky
 Tento produkt obsahuje GeoLite2 data vytvořená systémem MaxMind, k dispozici z [ http://www.maxmind.com ](http://www.maxmind.com).

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: a162d0c19bef28e6e4566d39c2dc3b82a87a4aa9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6fef56d780fe664e79f66fa23be526aec71d7e7b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242088"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971160"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí spravovaných identit pro prostředky Azure
 
@@ -37,7 +37,7 @@ Tady jsou kroky k vytvoření instance virtuálního počítače Terraform s Lin
 
 3. Na kartě podrobností Terraformu vyberte v pravém dolním rohu tlačítko **Vytvořit**.
 
-    ![Vytvoření virtuálního počítače Terraform](media\terraformmsi.png)
+    ![Vytvoření virtuálního počítače Terraform](media/terraformmsi.png)
 
 4. Následující oddíly obsahují vstupy ke každému z kroků v průvodci vytvořením virtuálního počítače Terraform s Linuxem. Následující část uvádí vstupy potřebné ke konfiguraci každého kroku.
 
@@ -93,7 +93,7 @@ Předchozí skript používá k ověření v Azure a přiřazení oprávnění p
 
  Další informace o vzdálené správě stavu najdete na [této stránce týkající se vzdáleného stavu Terraformu](https://www.terraform.io/docs/state/remote.html). Přístupový klíč úložiště je v tomto souboru zveřejněný a před zápisem konfiguračních souborů Terraformu do správy zdrojového kódu je potřeba ho vyloučit.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak v Azure nastavit virtuální počítač Terraform s Linuxem. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky: 
 
  [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)  

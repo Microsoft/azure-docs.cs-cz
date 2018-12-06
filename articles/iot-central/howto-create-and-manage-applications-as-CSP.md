@@ -8,12 +8,12 @@ ms.author: tanmayb
 ms.date: 10/29/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: dbc72e040f3d68ca77c036c41612f57616d1e74e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b72b2183cb796602f05a0a6858d4de108d3cc2c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51016824"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964794"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Jako zprostředkovatel kryptografických služeb vytvářet a spravovat Azure IoT Central aplikace jménem vašich zákazníků 
 
@@ -23,21 +23,21 @@ Jako zprostředkovatel kryptografických služeb, můžete vytvářet a spravova
 
 Abyste mohli začít, přihlásit se ke svému účtu na portálu pro partnery společnosti Microsoft a vyberte zákazníka, pro kterého chcete vytvořit aplikaci Azure IoT Central. V levém navigačním podokně přejděte na Správa služeb pro odběratele
 
-![Microsoft Partner Center, názorů zákazníků](media\howto-create-application-asCSP\image1.png)
+![Microsoft Partner Center, názorů zákazníků](media/howto-create-application-asCSP/image1.png)
 
 Azure IoT Central je uveden jako služba pro správu k dispozici. Klikněte na Azure IoT Central odkaz na stránku k vytvoření nové aplikace nebo spravovat existující aplikace pro tohoto zákazníka.
 
-![K dispozici pro správu Azure IoT Central](media\howto-create-application-asCSP\image2.png)
+![K dispozici pro správu Azure IoT Central](media/howto-create-application-asCSP/image2.png)
 
 Budete přesměrováni na stránku Azure IoT Central aplikace správce. Azure IoT Central udržuje kontext, pochází z webu Microsoft Partner Center a že jste ke správě daného zákazníka. Uvidíte toto potvrzení v záhlaví stránky Správce aplikací. Z tohoto místa můžete buď přejít do stávající aplikace, kterou jste vytvořili dříve pro tohoto zákazníka ke správě nebo vytvořte novou aplikaci pro zákazníka.
 
-![Vytvoření správce pro poskytovatele CSP](media\howto-create-application-asCSP\image3.png)
+![Vytvoření správce pro poskytovatele CSP](media/howto-create-application-asCSP/image3.png)
 
 Chcete-li vytvořit aplikaci Azure IoT Central, klikněte na tlačítko **novou aplikaci** dlaždici. Tím se načtou na stránku pro vytvoření aplikace. Musíte vyplnit všechna pole na této stránce a pak zvolte **vytvořit**. Můžete najít další informace o každé z níže uvedených polí.
 
-![Vytvoření stránky aplikace pro zprostředkovatele kryptografických služeb](media\howto-create-application-asCSP\image4.png)
+![Vytvoření stránky aplikace pro zprostředkovatele kryptografických služeb](media/howto-create-application-asCSP/image4.png)
 
-![Vytvoření stránky aplikace pro zprostředkovatele kryptografických služeb](media\howto-create-application-asCSP\image4-1.png)
+![Vytvoření stránky aplikace pro zprostředkovatele kryptografických služeb](media/howto-create-application-asCSP/image4-1.png)
 
 ## <a name="payment-plan"></a>Plán plateb
 
@@ -65,7 +65,7 @@ Další informace najdete v tématu [Azure Active Directory](https://docs.micros
 
 Předplatné Azure umožňuje vytvářet instance služby Azure. Azure IoT Central automaticky zjistí Všechna předplatná Azure zákazníka, ke kterému máte přístup a zobrazí je v rozevírací seznam na **vytvořit aplikaci** stránky. Zvolte předplatné Azure a vytvořte novou aplikaci Centrální IoT Azure.
 
-Pokud nemáte předplatné Azure, které můžete vytvořit na webu Microsoft Partner Center. Po vytvoření předplatného Azure, přejděte zpět **vytvořit aplikaci** stránky. Nové předplatné se zobrazí v **předplatné Azure** rozevíracího seznamu.
+Pokud nemáte předplatné Azure, které můžete vytvořit na webu Microsoft Partner Center. Po vytvoření předplatného Azure se vraťte na stránku **Create Application** (Vytvořit aplikaci). Vaše nové předplatné se zobrazí v rozevírací nabídce **Azure Subscription** (Předplatné Azure).
 
 Další informace najdete v tématu [předplatná Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
@@ -78,17 +78,17 @@ Další informace najdete v tématu [oblastí Azure](https://docs.microsoft.com/
 Zobrazí se oblasti Azure IoT Central je k dispozici na [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/) stránky.
 
 > [!Note]
-> Po zvolení oblast později se nedá přesunout vaše aplikace v jiné oblasti.
+> Po zvolení oblasti už později nebude možné přesunout aplikaci do jiné oblasti.
 
 ## <a name="application-template"></a>Šablona aplikace
 
-Můžete vybrat některou ze šablon dostupné aplikace pro novou aplikaci Azure IoT Central. Šablony aplikace může obsahovat předdefinované položky, jako jsou šablony zařízení a řídicí panely vám pomůžou začít.
+Můžete vybrat některou ze šablon dostupné aplikace pro novou aplikaci Azure IoT Central. Šablona aplikace může obsahovat předdefinované položky, jako jsou šablony zařízení a řídicí panely, které vám pomůžou začít.
 
 | Šablona aplikace | Popis |
 | -------------------- | ----------- |
-| Vlastní aplikace   | Vytvoří prázdnou aplikaci pro vás bude vyplněn vlastní šablony zařízení a zařízení. |
-| Ukázka Contoso       | Vytvoří aplikaci, která obsahuje zařízení šablony pro jednoduchou připojené zařízení. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
-| Ukázka Devkits       | Vytvoří aplikaci s využitím šablon zařízení připraven pro připojení MXChip nebo Raspberry Pi zařízení. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s kódem na jedno z těchto zařízení. |
+| Custom application (Vlastní aplikace)   | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními. |
+| Sample Contoso (Ukázka Contoso)       | Vytvoří aplikaci, která obsahuje zařízení šablony pro jednoduchou připojené zařízení. Pomocí této šablony můžete začít zkoumat Azure IoT Central. |
+| Sample Devkits (Ukázka Devkits)       | Vytvoří aplikaci s připravenými šablonami zařízení pro připojení zařízení MXChip nebo Raspberry Pi. Tuto šablonu použijte, pokud jste vývojář zařízení experimentovat s kódem na jedno z těchto zařízení. |
 
 ## <a name="next-steps"></a>Další postup
 

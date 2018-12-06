@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: c8a100577ba4bc67d12c7376b5897f397d010d4d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1512098c29c8916a0486ed66b438654ba29f0601
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844919"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968224"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled limity prostředků Azure SQL Database Managed Instance
 
@@ -52,8 +52,12 @@ Managed Instance má dvě úrovně služeb - obecné účely a pro důležité o
 | Maximální velikost úložiště | 8 TB | Gen 4: 1 TB <br/> Generace 5: <br/>-1 TB pro 8, 16 virtuálních jader<br/>-2 TB pro 24 virtuálních jader<br/>-4 TB pro 32, 40, 64, 80 virtuálních jader |
 | Max. úložiště na databázi | Určuje maximální velikost úložiště na instanci | Určuje maximální velikost úložiště na instanci |
 | Maximální počet databází na instanci | 100 | 100 |
-| Maximální počet databází na instanci | Až 280 | Unlimited |
-| Vstupně-výstupní propustnost (přibližné) | 5000 IOPS na jádro s 200 000 maximální IOPS |
+| Maximální počet databází na instanci | Až 280 | 32 767 počet souborů v databázi |
+| Vstupně-výstupních operací (přibližné) | 500-7500 na soubor<br/>\*[Závisí na velikosti souboru](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 11 110 tis. (1375 vCore) |
+| Vstupně-výstupní latence (přibližné) | 5 až 10 ms | 1 až 2 ms |
+| Maximální velikost tempDB | 192 1920 GB (24 GB na vCore) | Určuje maximální velikost úložiště na instanci |
+
+- Velikost úložiště instance, která je ve srovnání s maximální limit velikosti úložiště jsou součástí uživatele a systémové databáze. Použití <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> zobrazení systému k určení součet využitého místa databáze. Protokoly chyb není trvalý a není součástí velikost. Velikost úložiště nejsou součástí zálohy.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 

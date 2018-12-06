@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: ergreenl
-ms.openlocfilehash: 31e7307e427b175eb7424ecaee380bd90ce8150e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 161a9f1ac517d372884e7606dbd2ef30c910bf6b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443399"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968096"
 ---
 # <a name="suspended-domains"></a>Pozastavené domén
 Když Azure Active Directory Domain Services (Azure AD DS) není schopen služby spravované domény pro dlouhou dobu, uloží je do pozastaveného stavu spravované domény. Tento článek vysvětluje, proč jsou pozastavené spravovaných domén a způsobu řešení pozastavené domény.
@@ -28,7 +28,7 @@ Když Azure Active Directory Domain Services (Azure AD DS) není schopen služby
 
 ## <a name="states-your-managed-domain-can-be-in"></a>Stavy vaše spravovaná doména může být v
 
-![Časová osa pozastavené domény](media\active-directory-domain-services-suspension\suspension-timeline.PNG)
+![Časová osa pozastavené domény](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
 Předchozí obrázek znázorňuje všechny možné stavy spravované domény služby Azure AD DS můžou být v.
 

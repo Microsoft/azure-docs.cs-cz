@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: 904e9c22f23255f1bee7f532d7f577c7cd457778
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: d5f6934385d616390baf336404ddd79d4bc2a490
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443742"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965432"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Šablony řešení Cortana Intelligence pro účely prediktivní údržby v leteckém průmyslu a další provozovny – technický průvodce
 
@@ -218,7 +218,7 @@ Následující kroky vás provedou, jak vizualizovat výstup dat z úloh Stream 
    * Ujistěte se, ***vizualizace*** podokně je otevřený a je zobrazena na pravé straně obrazovky.
 3. Jakmile se data přenášejí do Power BI, můžete začít vizualizace streamovaná data. Níže je příklad řídicího panelu s vizualizacemi některé kritickou cestu k němu připnuté. Můžete vytvořit další řídicí panel dlaždice založené na příslušné datové sady. V závislosti na tom, jak dlouho spuštění vaší generátor dat se může lišit čísla na vizualizace.
 
-    ![Zobrazení řídicího panelu](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)
+    ![Zobrazení řídicího panelu](media/cortana-analytics-technical-guide-predictive-maintenance/dashboard-view.png)
 
 1. Tady je několik kroků k vytvoření jedné z výše uvedených – dlaždic "vozového parku zobrazení senzor 11 vs. Prahová hodnota šířka 48,26" dlaždice:
    

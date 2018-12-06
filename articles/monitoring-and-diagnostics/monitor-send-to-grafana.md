@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: aa511e98fefaf25a08f55f2aa47c43c9ed10a10f
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 726e0f335a1586dc35aa1f254ea2b1fae729f01a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261041"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956978"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Monitorování služeb Azure v Grafana
 Teď můžete monitorovat služby a aplikace z Azure [Grafana](https://grafana.com/) pomocí [zdroje dat monitorování Azure plugin](https://grafana.com/plugins/grafana-azure-monitor-datasource). Modul plug-in shromažďuje data o výkonu aplikace shromážděná službou Azure Monitor, včetně různé protokoly a metriky. Tato data pak můžete zobrazit na řídicím panelu Grafana.
@@ -50,7 +50,7 @@ Nastavit místní server Grafana [stáhněte a nainstalujte v místním prostře
 
 1. Pomocí IP adresy serveru, otevřete přihlašovací stránku na *http://\<IP adresu\>: 3000* nebo  *\<DNSName >\:3000* v prohlížeči. Zatímco 3000 je výchozím portem, mějte na paměti, že je možná zvolen jiný port během instalace. Měli byste vidět přihlašovací stránku pro server Grafana, kterou jste vytvořili.
 
-    ![Grafana přihlašovací obrazovky](.\media\monitor-how-to-grafana\grafana-login-screen.png)
+    ![Grafana přihlašovací obrazovky](./media/monitor-how-to-grafana/grafana-login-screen.png)
 
 2. Přihlaste se pomocí uživatelského jména *správce* a heslo správce serveru Grafana jste vytvořili dříve. Pokud používáte místní nastavení, bude výchozí heslo *správce*, a by být odeslán požadavek na změnit při prvním přihlášení.
 
@@ -58,7 +58,7 @@ Nastavit místní server Grafana [stáhněte a nainstalujte v místním prostře
 
 Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Monitor datový zdroj je již součástí.
 
-![Grafana zahrnuje modul plug-in Azure Monitor](.\media\monitor-how-to-grafana\grafana-includes-azure-monitor-plugin-dark.png)
+![Grafana zahrnuje modul plug-in Azure Monitor](./media/monitor-how-to-grafana/grafana-includes-azure-monitor-plugin-dark.png)
 
 1. Vyberte **přidat zdroj dat** přidání a konfigurace zdroje dat monitorování Azure.
 
@@ -83,7 +83,7 @@ Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Moni
 5. Pokud používáte Application Insights, můžete použít také rozhraní API Application Insights a ID aplikace shromažďovat metriky na základě služby Application Insights. Další informace najdete v tématu [získání klíče rozhraní API a ID aplikace](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
 6. Vyberte **Uložit**, a Grafany testovat přihlašovací údaje pro každé rozhraní API. Zobrazí se zpráva podobná následující.  
-    ![Konfigurace schválení zdroje dat služby Grafana](.\media\monitor-how-to-grafana\grafana-data-source-config-approved-dark.png)
+    ![Konfigurace schválení zdroje dat služby Grafana](./media/monitor-how-to-grafana/grafana-data-source-config-approved-dark.png)
 
 ## <a name="build-a-grafana-dashboard"></a>Vytvoření řídicího panelu služby Grafana
 
@@ -92,11 +92,11 @@ Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Moni
 2. Na nový řídicí panel, vyberte **grafu**. Můžete vyzkoušet další možnosti vytváření grafů, ale tento článek používá *grafu* jako příklad.
 
 3. Prázdný graf se zobrazí na řídicím panelu. Klikněte na název panelu a vyberte **upravit** a zadejte podrobnosti data chcete zobrazit v tomto grafu grafu.
-    ![Nový graf Grafana](.\media\monitor-how-to-grafana\grafana-new-graph-dark.png)
+    ![Nový graf Grafana](./media/monitor-how-to-grafana/grafana-new-graph-dark.png)
 
 4. Vyberte zdroj dat monitorování Azure, který jste nakonfigurovali.
     * Shromažďování monitorování Azure vyberte metriky – **Azure Monitor** v rozevírací nabídce služby. Seznam zobrazuje selektory, kde můžete vybrat prostředky a metriku k monitorování v tomto grafu. Chcete-li shromažďovat metriky z virtuálního počítače, použijte obor názvů **Microsoft.Compute/VirtualMachines**. Jakmile vyberete virtuální počítače a metrik, můžete začít zobrazení jejich dat na řídicím panelu.
-    ![Grafana grafu konfigurace pro monitorování Azure](.\media\monitor-how-to-grafana\grafana-graph-config-for-azure-monitor-dark.png)
+    ![Grafana grafu konfigurace pro monitorování Azure](./media/monitor-how-to-grafana/grafana-graph-config-for-azure-monitor-dark.png)
     * Azure Log Analytics pro shromažďování dat – vyberte **Azure Log Analytics** v rozevírací nabídce služby. Vyberte pracovní prostor, který chcete vyhledat a nastavit text dotazu. Můžete zkopírovat sem jakýkoli dotaz Log Analytics, už máte nebo vytvořte novou. Při zadávání dotazu, technologie IntelliSense se zobrazí a navrhují možnosti automatického dokončování. Vyberte typ vizualizace **časové řady** **tabulky**, a spusťte dotaz.
     
     > [!NOTE]
@@ -104,7 +104,7 @@ Po úspěšném přihlášení, měli byste vidět, že modul plug-in Azure Moni
     > Výchozí dotaz, opatřeného modul plug-in používá dvě makra: "__interval $__timeFilter() a $. 
     > Tato makra umožňují Grafana dynamicky vypočítat časový rozsah a časový interval, při přiblížení na část grafu. Můžete odebrat tato makra a použití filtru (běžný čas), jako například *TimeGenerated > ago(1h)*, ale je, že prostředky grafu by podporuje přiblížení ve funkci.
     
-    ![Grafana config grafů pro Azure Log Analytics](.\media\monitor-how-to-grafana\grafana-graph-config-for-azure-log-analytics-dark.png)
+    ![Grafana config grafů pro Azure Log Analytics](./media/monitor-how-to-grafana/grafana-graph-config-for-azure-log-analytics-dark.png)
 
 5. Tady je jednoduchý řídicí panel se dva grafy. Na levé straně znázorňuje procentuální využití procesoru dva virtuální počítače. Graf na pravé straně zobrazuje transakce v účtu služby Azure Storage rozdělené podle typu transakcí API.
     ![Příklad Grafana dva grafy](media/monitor-send-to-grafana/grafana6.png)
@@ -140,7 +140,7 @@ Usage
 Můžete nakonfigurovat proměnnou, která se zobrazí seznam všech dostupných **řešení** hodnoty a pak aktualizujte dotaz a použijte ji.
 Chcete-li vytvořit nové proměnné, klikněte na tlačítko Nastavení řídicího panelu v horní pravé části, vyberte **proměnné**a potom **nový**.
 Na stránce proměnné definujte zdroje dat a dotazu ke spuštění, pokud chcete získat seznam hodnot.
-![Proměnné konfigurace Grafana](.\media\monitor-how-to-grafana\grafana-configure-variable-dark.png)
+![Proměnné konfigurace Grafana](./media/monitor-how-to-grafana/grafana-configure-variable-dark.png)
 
 Po vytvoření upravit dotaz, který bude použit vybrané hodnoty a bude odpovídajícím způsobem reagovat grafy:
 ```
@@ -150,13 +150,13 @@ Usage
 | sort by TimeGenerated
 ```
     
-![Proměnné pro použití Grafana](.\media\monitor-how-to-grafana\grafana-use-variables-dark.png)
+![Proměnné pro použití Grafana](./media/monitor-how-to-grafana/grafana-use-variables-dark.png)
 
 ### <a name="create-dashboard-playlists"></a>Vytvoření řídicího panelu seznamy stop
 
 Jednou z mnoho užitečných funkcí Grafana je řídicí panel seznamu testů. Můžete vytvořit více řídicích panelů a přidat je do seznamu stop Konfigurace intervalu pro každý řídicí panel k zobrazení. Vyberte **Přehrát** zobrazíte řídicí panely cyklicky procházet. Můžete zobrazit na velké wall monitorování, které poskytují panelu stavu pro vaši skupinu.
 
-![Příklad seznamu stop Grafana](.\media\monitor-how-to-grafana\grafana7.png)
+![Příklad seznamu stop Grafana](./media/monitor-how-to-grafana/grafana7.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

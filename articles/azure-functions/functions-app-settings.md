@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 2eb736891b12c07441bc8828ca07dd0b9fa13d98
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e346aed2efaab6afcd24e622f577708221b47cb1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458118"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965850"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -82,7 +82,7 @@ Cesta ke kořenovému adresáři kde *host.json* složky souboru a funkce jsou u
 
 ## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
 
-Určuje úložiště nebo zprostředkovatele má být použit pro úložiště klíčů. V současné době jsou podporované úložiště úložiště objektů blob ("Blob") a místního systému souborů ("Files"). Výchozí hodnota je objekt blob ve verzi 1 a systém souborů ve verzi 2. Všimněte si, že ve verzi 1 souboru systému bude fungovat jenom pro funkce běžící v plánu služby app service.
+Určuje úložiště nebo zprostředkovatele má být použit pro úložiště klíčů. V současné době jsou podporované úložiště úložiště objektů blob ("Blob") a místního systému souborů ("Files"). Výchozí hodnota je objekt blob ve verzi 2 a systému souborů verze 1.
 
 |Klíč|Ukázková hodnota|
 |---|------------|
@@ -122,7 +122,7 @@ Verze modulu runtime Functions pro použití v této aplikace function app. Tild
 
 ## <a name="functionsworkerruntime"></a>FUNKCE\_PRACOVNÍHO PROCESU\_MODULU RUNTIME
 
-Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpovídat jazyku používán ve vaší aplikaci (například "dotnet"). Pro funkce v několika jazycích, je potřeba publikovat je do více aplikacemi, každý s odpovídající hodnotou modulu runtime pracovního procesu.  Platné hodnoty jsou `dotnet` (C# /F #), `node` (JavaScript), a `java` (Java).
+Pracovního procesu CLR pro načtení do aplikace function App.  To bude odpovídat jazyku používán ve vaší aplikaci (například "dotnet"). Pro funkce v několika jazycích, je potřeba publikovat je do více aplikacemi, každý s odpovídající hodnotou modulu runtime pracovního procesu.  Platné hodnoty jsou `dotnet` (C#/F#), `node` (JavaScript), a `java` (Java).
 
 |Klíč|Ukázková hodnota|
 |---|------------|

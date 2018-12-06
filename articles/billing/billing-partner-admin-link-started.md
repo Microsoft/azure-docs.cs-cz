@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 1e2492d978073f63c1c9494d652ec35a7d6565b7
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a0dad228f23b055d68009eb737e0347ade49e94b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274175"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968044"
 ---
 # <a name="link-partner-id-to-your-azure-accounts"></a>Propojení ID partnera k účtům Azure
 
@@ -30,7 +30,7 @@ Předtím, než je propojit ID partnera, musí vaše zákazníky poskytují př�
 
 - **Uživatel typu Host:** vašich zákazníků můžete vás přidal jako uživatele typu Host a přiřazení rolí RBAC. Další informace najdete v tématu [přidat uživatele typu Host z jiného adresáře](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Adresář účtu:** vašich zákazníků můžete vytvořit nového uživatele z vaší organizace v jejich adresáře a přiřadit libovolnou roli RBAC.
+- **Adresář účtu:** vašich zákazníků můžete vytvořit uživatelský účet pro vás v jejich vlastní adresáře a přiřadit libovolnou roli RBAC.
 
 - **Instanční objekt:** vašich zákazníků můžete přidat aplikace nebo skriptu z vaší organizace v jejich directory a přiřadit libovolnou roli RBAC. Identita aplikace nebo skriptu, se označuje jako instanční objekt služby.
 

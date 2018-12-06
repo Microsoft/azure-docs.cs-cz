@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: dafbfb959e70563f8619f7aea877a3aa1c380453
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7f8eacf11f2333abc348efaa82c92ecbe05136ef
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997399"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966173"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
@@ -46,7 +46,7 @@ Azure-SSIS | Spouštění balíčků služby SSIS | Spouštění balíčků slu�
 
 Následující diagram znázorňuje, jak se dají různá prostředí Integration Runtime používat v kombinaci, aby nabízela bohaté funkce integrace dat a podporu sítí:
 
-![Různé typy prostředí Integration Runtime](media\concepts-integration-runtime\different-integration-runtimes.png)
+![Různé typy prostředí Integration Runtime](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Prostředí Azure Integration Runtime
 Prostředí Azure Integration Runtime nabízí tyto funkce:

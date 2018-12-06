@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: dd7f76e20e43e24c31f5afd8c8d9eb97db04255f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 68c838481120dea7635ac5ea76859a8088d732fb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843219"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957346"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Pomocí mapy služeb, můžete zobrazit vaše servery tak, aby přirozeným způsobem: jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy, příchozí a odchozí připojení čekací doba a požadované porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta.
@@ -38,7 +38,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 2. Na panelu hledání zadejte **Service Map** a stiskněte klávesu **Enter**.
 3. Na stránce výsledků hledání marketplace vyberte **Service Map** ze seznamu.<br><br> ![Vyberte řešení Service Map z Azure Marketplace výsledků hledání](./media/service-map/marketplace-search-results.png)<br>
 4. Na **Service Map** podokně s přehledem, projděte si podrobnosti o řešení a potom klikněte na **vytvořit** k zahájení procesu registrace do pracovního prostoru Log Analytics.<br><br> ![Začlenění řešení Service Map](./media/service-map/service-map-onboard.png).
-5. V **konfigurace řešení** podokně, vyberte existující nebo vytvořte nový pracovní prostor Log Analytics.  Další informace o tom, jak vytvořit nový pracovní prostor, najdete v části [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../../log-analytics/log-analytics-quick-create-workspace.md). Po zadání požadovaných informací, klikněte na tlačítko **vytvořit**.  
+5. V **konfigurace řešení** podokně, vyberte existující nebo vytvořte nový pracovní prostor Log Analytics.  Další informace o tom, jak vytvořit nový pracovní prostor, najdete v části [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../../azure-monitor/learn/quick-create-workspace.md). Po zadání požadovaných informací, klikněte na tlačítko **vytvořit**.  
 
 Během ověřování informací a řešení nasadit, můžete sledovat jeho průběh **oznámení** z nabídky. 
 
