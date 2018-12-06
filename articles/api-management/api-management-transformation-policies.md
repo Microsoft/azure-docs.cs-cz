@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 6796ecd272c7a1ed1d29c89fbe06c87dc2d4601b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87d2ebcf6a12f51775b15e906ea7813962e3630f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242802"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965372"
 ---
 # <a name="api-management-transformation-policies"></a>Transformace zásady služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -709,7 +709,7 @@ OriginalUrl.
 |----------|-----------------|--------------|
 |transformace XSL|Kořenový element.|Ano|
 |parametr|Slouží k definování proměnné, používat v transformaci|Ne|
-|: stylesheet|Kořenovém prvku šablony stylů. Všechny elementy a atributy definované v rámci dodržovat standardní [specifikaci XSLT](http://www.w3.org/TR/xslt)|Ano|
+|: stylesheet|Kořenovém prvku šablony stylů. Všechny elementy a atributy definované v rámci dodržovat standardní [specifikaci XSLT](https://www.w3.org/TR/xslt)|Ano|
 
 ### <a name="usage"></a>Využití
  Tyto zásady můžete použít v následujících zásad [oddíly](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [obory](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).

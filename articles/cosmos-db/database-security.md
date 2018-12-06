@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rafats
-ms.openlocfilehash: 6fb9ebe2b0afc645bbdfb6de6a8551440644fe59
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d88a82921e5baee06aacc09fafe274a8c56780c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836079"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972401"
 ---
 # <a name="azure-cosmos-db-database-security"></a>Zabezpečení databáze Azure Cosmos DB
 
@@ -75,7 +75,7 @@ Pojďme se podívat do každé z nich podrobněji.
 |Geograficky monitorování geografických zón|Azure Cosmos DB zajišťuje řízení dat pro suverénní oblasti (například Germany, Čína, státní správy USA).|
 |Chráněné zařízení|Data ve službě Azure Cosmos DB se ukládají na jednotkách SSD v chráněných datových centrech Azure.<br><br>Další informace najdete v [globální síti datových center Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)|
 |Šifrování protokolu HTTPS a SSL/TLS|Všechny interakce klienta služby Azure Cosmos DB jsou schopné SSL/TLS 1.2. Navíc všechny uvnitř datového centra a různé replikace datového centra je vynucuje SSL/TLS 1.2.|
-|Šifrování v klidovém stavu|Všechna data ukládají do služby Azure Cosmos DB se šifrují při nečinnosti. Další informace najdete v [služby Azure Cosmos DB šifrování v klidovém stavu](.\database-encryption-at-rest.md)|
+|Šifrování v klidovém stavu|Všechna data ukládají do služby Azure Cosmos DB se šifrují při nečinnosti. Další informace najdete v [služby Azure Cosmos DB šifrování v klidovém stavu](./database-encryption-at-rest.md)|
 |Patched servery|Jako spravovanou databázovou službu Azure Cosmos DB eliminuje potřebu správu a servery, oprava, která má automaticky provede za vás.|
 |Účty pro správu s silná hesla|Je těžké si myslíte, že musíme ještě zmiňovat tento požadavek, ale na rozdíl od některých z našich konkurentů, není možné mít účet správce bez hesla ve službě Azure Cosmos DB.<br><br> Ve výchozím nastavení je těšte zabezpečení prostřednictvím protokolu SSL a HMAC tajného kódu na základě ověřování.|
 |Zabezpečení a data protection certifikace|Většina až do data seznam certifikací, naleznete v části celkové [dodržování předpisů Azure web](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) a také je [dokumentu dodržování předpisů Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) s všechny certifikace (vyhledejte Cosmos). Přesněji zaměřené najdete podívejte se na příspěvek k 25. dubna 2018 [Azure #CosmosDB: zabezpečené, privátní, který vyhovuje](https://azure.microsoft.com/blog/azure-cosmosdb-secure-private-compliant/) obsahující Soc 1/2 typ 2, HITRUST, PCI DSS úrovně 1, ISO 27001, HIPAA, FedRAMP High a mnoha dalších.

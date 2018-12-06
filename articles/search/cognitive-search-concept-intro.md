@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 68d546fc4c853f1a19230b8aee7e86519aaa7e4c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5d7f275be1f04658f9901aba9faca83375a9bbf5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729030"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956189"
 ---
 # <a name="what-is-cognitive-search"></a>Co je kognitivního vyhledávání?
 
@@ -31,7 +31,7 @@ Kognitivní dovednosti v Azure Search jsou založeny na stejné algoritmy uměl�
 Přirozený jazyk a zpracování obrázků se použije během fáze příjem dat s výsledky se stávají součástí kompozice dokumentu v prohledávatelný index ve službě Azure Search. Data Source jako Azure datové sady a poté vloženo přes kanál indexování pomocí podle toho, co [integrované znalosti](cognitive-search-predefined-skills.md) potřebujete. Tato architektura je rozšiřitelný, takže pokud předdefinované dovednosti nestačí, můžete vytvořit a připojit [vlastních dovedností](cognitive-search-create-custom-skill-example.md) integrovat vlastní zpracování. Příklady může být vlastní entitu modulu nebo dokumentu třídění, cílení na konkrétní domény, jako jsou finance, vědecké publikace nebo lékařství.
 
 > [!NOTE]
-> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
+> Cognitive Search je ve veřejné verzi Preview. Funkce spuštění sady dovedností, extrakce a normalizace image jsou v současnosti nabízené zdarma. Ceny těchto funkcí oznámíme později. 
 
 ## <a name="components-of-cognitive-search"></a>Součástí kognitivního vyhledávání
 
@@ -90,8 +90,19 @@ Indexy jsou generovány z schématu indexu, který definuje pole, atributy, a ji
 
 **Krok 1: Vytvoření vyhledávací službě v oblasti poskytuje rozhraní API** 
 
++ Západní střed USA
 + Střed USA – jih
++ USA – východ
++ Východní USA 2
++ USA – západ 2
++ Kanada – střed
 + Západní Evropa
++ Velká Británie – jih
++ Severní Evropa
++ Brazílie – jih
++ Jihovýchodní Asie
++ Střed Indie
++ Austrálie – východ
 
 **Krok 2: Praktické zkušenosti na hlavní server pracovního postupu**
 

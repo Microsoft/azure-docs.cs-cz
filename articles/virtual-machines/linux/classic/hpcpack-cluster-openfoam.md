@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 07/22/2016
 ms.author: danlep
-ms.openlocfilehash: 9032a0b68c4c8789010b0304b64a63d4924521fb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a8744afe3ec3e83e4a543942441118356730347c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057484"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957237"
 ---
 # <a name="run-openfoam-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Spuštění OpenFoam se sadou Microsoft HPC Pack v clusteru Linux RDMA v Azure
 Tento článek ukazuje jeden ze způsobů spuštění OpenFoam ve službě Azure virtual machines. Tady, nasazení clusteru sady Microsoft HPC Pack s výpočetními uzly Linuxu v Azure a spustit [OpenFoam](http://openfoam.com/) úlohu s technologií Intel MPI. Pro výpočetní uzly, můžete použít virtuální počítače Azure s podporou RDMA, tak, aby výpočetní uzly komunikovat přes síť Azure RDMA. Další možnosti pro spuštění OpenFoam v Azure zahrnují plně nakonfigurované komerční Image, které jsou k dispozici na webu Marketplace, jako je například společnosti UberCloud [OpenFoam 2.3 na CentOS 6](https://azuremarketplace.microsoft.com/marketplace/apps/cfd-direct.cfd-direct-from-the-cloud)a to spuštěním na [Azure Batch](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/). 
@@ -46,7 +46,7 @@ Microsoft HPC Pack obsahuje funkce, které chcete spouštět ve velkém měřít
   * Po nasazení uzly s Linuxem, připojte pomocí SSH k provádět žádné další úlohy správy. Podrobnosti připojení SSH pro každý virtuální počítač s Linuxem najdete na webu Azure Portal.  
 * **Intel MPI** – Pokud chcete spuštění OpenFOAM na výpočetních uzlech SLES 12 HPC v Azure, musíte nainstalovat modul runtime Intel MPI knihovny 5 z [Intel.com lokality](https://software.intel.com/en-us/intel-mpi-library/). (Intel MPI 5 je předinstalován v bitové kopie založené na CentOS HPC).  V pozdějším kroku v případě potřeby nainstalujte Intel MPI ve výpočetních uzlech Linuxu. Příprava pro tento krok po registraci pomocí Intel, použijte odkaz v e-mailové potvrzení na související webové stránky. Zkopírujte odkaz ke stažení pro soubor .tgz pro příslušnou verzi Intel MPI. Tento článek je založen na verzi 5.0.3.048 Intel MPI.
 * **OpenFOAM zdroje balíčku** -OpenFOAM zdroje balíčku softwaru stáhnout pro Linux z [webu OpenFOAM Foundation](http://openfoam.org/download/2-3-1-source/). Tento článek je založen na verzi zdroje balíčku 2.3.1, k dispozici ke stažení OpenFOAM 2.3.1.tgz. Postupujte podle pokynů dále v tomto článku můžete rozbalit a kompilovat OpenFOAM na Linuxových výpočetních uzlech.
-* **EnSight** (volitelné) – Pokud chcete zobrazit výsledky simulace OpenFOAM, stáhněte a nainstalujte [EnSight](https://ensighttransfe.wpengine.com/direct-access-downloads/) vizualizace a analýzy programu. Informace o licencování a stažení se v lokalitě EnSight.
+* **EnSight** (volitelné) – Pokud chcete zobrazit výsledky simulace OpenFOAM, stáhněte a nainstalujte [EnSight](https://www.ansys.com/products/platform/ansys-ensight/data-interfaces) vizualizace a analýzy programu. Informace o licencování a stažení se v lokalitě EnSight.
 
 ## <a name="set-up-mutual-trust-between-compute-nodes"></a>Nastavte si vzájemné důvěry mezi jednotlivými výpočetními uzly
 Spuštění úlohy mezi uzly na několika uzlech Linuxu vyžaduje, aby uzly důvěřovat navzájem (podle **rsh** nebo **ssh**). Při vytváření clusteru HPC Pack se skriptem nasazení IaaS sady Microsoft HPC Pack skriptu automaticky nastaví trvalé vzájemné důvěry pro účet správce, který zadáte. Pro uživatele bez oprávnění správce, který vytvoříte v doméně clusteru máte k nastavení dočasného vzájemné důvěry mezi uzly při přidělení úlohy k nim a zničit relace po dokončení úlohy. K navázání vztahu důvěryhodnosti pro jednotlivé uživatele, poskytnout dvojici klíčů RSA do clusteru HPC Pack se používá pro vztah důvěryhodnosti.
@@ -362,7 +362,7 @@ Nyní můžete odeslat úlohu v modulu Správce clusteru HPC. Je potřeba předa
 10. Až se úloha dokončí, najdete ve složkách v rámci C:\OpenFoam\sloshingTank3D a soubory protokolu na C:\OpenFoam výsledky úlohy.
 
 ## <a name="view-results-in-ensight"></a>Zobrazení výsledků v EnSight
-Volitelně použít [EnSight](http://www.ensight.com/) umožňuje vizualizovat a analyzovat výsledky OpenFOAM úlohy. Další informace o vizualizaci a animace v EnSight, najdete v tomto [videa průvodce](http://www.ensight.com/ensight.com/envideo/).
+Volitelně použít [EnSight](http://www.ensight.com/) umožňuje vizualizovat a analyzovat výsledky OpenFOAM úlohy. 
 
 1. Po instalaci EnSight hlavního uzlu, spusťte ji.
 2. Open C:\OpenFoam\sloshingTank3D\EnSight\sloshingTank3D.case.

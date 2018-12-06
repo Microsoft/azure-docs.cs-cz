@@ -8,12 +8,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: msangapu
-ms.openlocfilehash: 8d4444aac7f84753f55c434d0a3f5ef0edcfb1c4
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: f28a07d775071a92e6183587add1ceabc48ef416
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979694"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968899"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Poskytování obsahu z Azure Storage ve službě App Service v Linuxu
 
@@ -67,7 +67,7 @@ Byste měli udělat pro jiné adresáře, který chcete propojit na účet úlo�
 Jakmile se kontejner úložiště je propojená do webové aplikace, můžete to ověřit spuštěním následujícího příkazu:
 
 ```azurecli
-az webapp conf storage-account list --resource-group <group_name> --name <app_name>
+az webapp config storage-account list --resource-group <group_name> --name <app_name>
 ```
 
 ## <a name="next-steps"></a>Další postup

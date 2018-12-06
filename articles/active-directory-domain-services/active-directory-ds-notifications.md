@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: f5049d6092bfc6b3f70ebafdc501e02ad9fe7936
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: c6d827629850de88940f41febeeca61b812d692e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430766"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958521"
 ---
 # <a name="notification-settings-in-azure-ad-domain-services"></a>Nastavení oznámení ve službě Azure AD Domain Services
 
@@ -41,7 +41,7 @@ Na stránce zobrazí všechny e-mailové příjemce pro e-mailová oznámení pr
 
 Na následujícím obrázku je příklad e-mailové oznámení:
 
-![Příklad e-mailové oznámení](.\media\active-directory-domain-services-alerts\email-alert.png)
+![Příklad e-mailové oznámení](./media/active-directory-domain-services-alerts/email-alert.png)
 
 E-mailu určuje spravované domény, který je k dispozici na upozornění, aby čas detekce a odkaz na stránku stavu Azure AD Domain Services na webu Azure Portal.
 

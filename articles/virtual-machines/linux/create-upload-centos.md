@@ -15,20 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 171180eb373553dfa0c971b22e3cf62e450829ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a46f2b4ed1bb3fc5fff65a627bd3d808ed85ffce
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233594"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967278"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Příprava virtuálního počítače založeného na CentOS pro Azure
+
 * [Příprava virtuálního počítače CentOS 6.x pro Azure](#centos-6x)
 * [Příprava virtuálního počítače CentOS 7.0 + pro Azure](#centos-70)
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Požadavky
+
 Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné odvozených děl na základě) operačního systému Linux na virtuální pevný disk. Existují více nástroje k vytvoření souborů .vhd, třeba řešení virtualizace jako je Hyper-V. Pokyny najdete v tématu [instalace Role Hyper-V a konfigurace virtuálního počítače](https://technet.microsoft.com/library/hh846766.aspx).
 
 **Poznámky k instalaci centOS**
@@ -48,16 +50,16 @@ Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné 
 2. Klikněte na tlačítko **připojit** otevřete okno konzoly pro virtuální počítač.
 
 3. CentOS 6 NetworkManager může vést k potížím s agentem Azure Linux. Odinstaluje tento balíček spuštěním následujícího příkazu:
-   
+
         # sudo rpm -e --nodeps NetworkManager
 
 4. Vytvoření nebo úpravě souboru `/etc/sysconfig/network` a přidejte následující text:
-   
+
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
 5. Vytvoření nebo úpravě souboru `/etc/sysconfig/network-scripts/ifcfg-eth0` a přidejte následující text:
-   
+
         DEVICE=eth0
         ONBOOT=yes
         BOOTPROTO=dhcp
@@ -67,12 +69,12 @@ Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné 
         IPV6INIT=no
 
 6. Upravte proces udev pravidla pro zabránění generování statická pravidla pro rozhraní sítě Ethernet. Tato pravidla mohou způsobit problémy při klonování virtuálního počítače v Microsoft Azure nebo technologie Hyper-V:
-   
+
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
 7. Zajistěte, aby že síťové služby se spustí při spuštění spuštěním následujícího příkazu:
-   
+
         # sudo chkconfig network on
 
 8. Pokud chcete použít OpenLogic zrcadlení, které jsou hostovány v rámci datovými centry Azure a potom nahraďte `/etc/yum.repos.d/CentOS-Base.repo` soubor s následujícím úložišti.  Taky se přidá **[openlogic]** úložiště, které obsahuje další balíčky, jako je například agenta Azure Linux:
@@ -82,14 +84,14 @@ Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné 
         baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
         enabled=1
         gpgcheck=0
-        
+
         [base]
         name=CentOS-$releasever - Base
         #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-        
+
         #released updates
         [updates]
         name=CentOS-$releasever - Updates
@@ -97,7 +99,7 @@ Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné 
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-        
+
         #additional packages that may be useful
         [extras]
         name=CentOS-$releasever - Extras
@@ -114,7 +116,7 @@ Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné 
         gpgcheck=1
         enabled=0
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-        
+
         #contrib - packages by Centos Users
         [contrib]
         name=CentOS-$releasever - Contrib
@@ -124,16 +126,15 @@ Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné 
         enabled=0
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
-    >[!Note]
-    Zbývající části této příručky bude předpokládat, že používáte alespoň `[openlogic]` úložiště, který se použije k instalaci agenta Azure Linux níže.
-
+    > [!Note]
+    > Zbývající části této příručky bude předpokládat, že používáte alespoň `[openlogic]` úložiště, který se použije k instalaci agenta Azure Linux níže.
 
 9. Přidejte následující řádek /etc/yum.conf:
-    
+
         http_caching=packages
 
 10. Spuštěním následujícího příkazu Vymazat aktuální yumu metadat a aktualizace systému pomocí nejnovější balíčky:
-    
+
         # yum clean all
 
     Pokud vytvoříte image pro starší verze CentOS, doporučujeme aktualizovat všechny balíčky na nejnovější verzi:
@@ -143,43 +144,42 @@ Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné 
     Po spuštění tohoto příkazu může být nutný restart počítače.
 
 11. (Volitelné) Instalace ovladačů pro Linux Integration Services (LIS).
-   
-    >[!IMPORTANT]
-    V kroku **požadované** pro CentOS 6.3 a dříve a volitelné pro novější verze.
+
+    > [!IMPORTANT]
+    > V kroku **požadované** pro CentOS 6.3 a dříve a volitelné pro novější verze.
 
         # sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
         # sudo yum install microsoft-hyper-v
 
     Alternativně můžete postupovat podle pokynů pro ruční instalaci [stránce pro stažení LIS](https://go.microsoft.com/fwlink/?linkid=403033) pro instalaci RPM na váš virtuální počítač.
- 
+
 12. Instalace agenta Azure Linux a závislostí:
-    
+
         # sudo yum install python-pyasn1 WALinuxAgent
-    
+
     Balíček WALinuxAgent odebere NetworkManager a balíčky NetworkManager gnome Pokud nebyly již odebrána jak je popsáno v kroku 3.
 
-
 13. Upravte řádek pro spuštění jádra v konfiguraci grub tak, aby zahrnout další jádra parametry pro Azure. Chcete-li to provést, otevřete `/boot/grub/menu.lst` v textovém editoru a ujistěte se, že výchozí jádra zahrnuje následující parametry:
-    
+
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
-    
+
     To také zajistí, všechny zprávy konzoly se odesílají do první sériového portu, který vám může pomoct Azure odborné pomoci s laděním problémů.
-    
+
     Kromě výše uvedeného, doporučuje se *odebrat* následující parametry:
-    
+
         rhgb quiet crashkernel=auto
-    
+
     Grafické a quiet spouštěcí nejsou užitečné v cloudovém prostředí, ve kterém chceme, všech protokolů k odeslání do sériového portu.  `crashkernel` Možnost může být levé straně nakonfigurované v případě potřeby, ale Všimněte si, že tento parametr se sníží množství dostupné paměti ve virtuálním počítači 128 MB nebo víc, což může být problematické u menší velikosti virtuálních počítačů.
 
-    >[!Important]
-    CentOS 6.5 a starší, musíte taky nastavit parametr jádra `numa=off`. Zobrazit Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
+    > [!Important]
+    > CentOS 6.5 a starší, musíte taky nastavit parametr jádra `numa=off`. Zobrazit Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 
 14. Zajistěte, aby SSH server je nainstalován a nakonfigurován na spuštění při spuštění.  Obvykle se jedná o výchozí nastavení.
 
 15. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
-    
+
     Azure Linux Agent mohou automaticky konfigurovat odkládacího prostoru pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že je místní prostředek disku *dočasné* disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux (viz předchozí krok), upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
-    
+
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
@@ -187,16 +187,17 @@ Tento článek předpokládá, že jste už nainstalovali CentOS (nebo podobné 
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
 16. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
-    
+
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
 17. Klikněte na tlačítko **akce -> vypnout dolů** ve Správci technologie Hyper-V. Vašeho linuxového virtuálního pevného disku je teď připravený k nahrání do Azure.
 
-
 - - -
+
 ## <a name="centos-70"></a>CentOS 7.0 +
+
 **Změny v CentOS 7 (a podobné odvozené konfigurace)**
 
 Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS 6, ale existují poznamenat několik důležitých rozdílů:
@@ -212,12 +213,12 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
 2. Klikněte na tlačítko **připojit** otevřete okno konzoly pro virtuální počítač.
 
 3. Vytvoření nebo úpravě souboru `/etc/sysconfig/network` a přidejte následující text:
-   
+
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
 
 4. Vytvoření nebo úpravě souboru `/etc/sysconfig/network-scripts/ifcfg-eth0` a přidejte následující text:
-   
+
         DEVICE=eth0
         ONBOOT=yes
         BOOTPROTO=dhcp
@@ -228,24 +229,24 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
         NM_CONTROLLED=no
 
 5. Upravte proces udev pravidla pro zabránění generování statická pravidla pro rozhraní sítě Ethernet. Tato pravidla mohou způsobit problémy při klonování virtuálního počítače v Microsoft Azure nebo technologie Hyper-V:
-   
+
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
 6. Pokud chcete použít OpenLogic zrcadlení, které jsou hostovány v rámci datovými centry Azure a potom nahraďte `/etc/yum.repos.d/CentOS-Base.repo` soubor s následujícím úložišti.  Taky se přidá **[openlogic]** úložiště, které obsahuje balíčky pro agenta Azure Linux:
-   
+
         [openlogic]
         name=CentOS-$releasever - openlogic packages for $basearch
         baseurl=http://olcentgbl.trafficmanager.net/openlogic/$releasever/openlogic/$basearch/
         enabled=1
         gpgcheck=0
-        
+
         [base]
         name=CentOS-$releasever - Base
         #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/os/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-        
+
         #released updates
         [updates]
         name=CentOS-$releasever - Updates
@@ -253,7 +254,7 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/updates/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-        
+
         #additional packages that may be useful
         [extras]
         name=CentOS-$releasever - Extras
@@ -261,7 +262,7 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
         baseurl=http://olcentgbl.trafficmanager.net/centos/$releasever/extras/$basearch/
         gpgcheck=1
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
-        
+
         #additional packages that extend functionality of existing packages
         [centosplus]
         name=CentOS-$releasever - Plus
@@ -271,11 +272,11 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
         enabled=0
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
-    >[!Note]
-    Zbývající části této příručky bude předpokládat, že používáte alespoň `[openlogic]` úložiště, který se použije k instalaci agenta Azure Linux níže.
+    > [!Note]
+    > Zbývající části této příručky bude předpokládat, že používáte alespoň `[openlogic]` úložiště, který se použije k instalaci agenta Azure Linux níže.
 
 7. Spuštěním následujícího příkazu Vymazat aktuální yumu metadat a nainstalujte všechny aktualizace:
-   
+
         # sudo yum clean all
 
     Pokud vytvoříte image pro starší verze CentOS, doporučujeme aktualizovat všechny balíčky na nejnovější verzi:
@@ -285,27 +286,27 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
     Restartování možná opakovaným načtením vyžadovaným po spuštění tohoto příkazu.
 
 8. Upravte řádek pro spuštění jádra v konfiguraci grub tak, aby zahrnout další jádra parametry pro Azure. Chcete-li to provést, otevřete `/etc/default/grub` v textovém editoru a úpravy `GRUB_CMDLINE_LINUX` parametru, například:
-   
+
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
-   
+
    To také zajistí, všechny zprávy konzoly se odesílají do první sériového portu, který vám může pomoct Azure odborné pomoci s laděním problémů. Také vypne nové CentOS 7 zásady vytváření názvů pro síťové adaptéry. Kromě výše uvedeného, doporučuje se *odebrat* následující parametry:
-   
+
         rhgb quiet crashkernel=auto
-   
+
     Grafické a quiet spouštěcí nejsou užitečné v cloudovém prostředí, ve kterém chceme, všech protokolů k odeslání do sériového portu. `crashkernel` Možnost může být levé straně nakonfigurované v případě potřeby, ale Všimněte si, že tento parametr se sníží množství dostupné paměti ve virtuálním počítači 128 MB nebo víc, což může být problematické u menší velikosti virtuálních počítačů.
 
 9. Po dokončení úprav `/etc/default/grub` za výše, spusťte následující příkaz k opětovnému sestavení konfigurace grub:
-   
+
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 10. Pokud sestavení image ze **VMware, VirtualBox nebo KVM:** ovladače Ujistěte se, že technologie Hyper-V jsou součástí initramfs:
-   
+
    Upravit `/etc/dracut.conf`, přidat obsah:
-   
+
         add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
-   
+
    Znovu sestavte initramfs:
-   
+
         # sudo dracut -f -v
 
 11. Instalace agenta Azure Linux a závislostí:
@@ -314,9 +315,9 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
         # sudo systemctl enable waagent
 
 12. Nevytvářejte odkládacího prostoru na disku s operačním systémem.
-   
+
    Azure Linux Agent mohou automaticky konfigurovat odkládacího prostoru pomocí disku místního prostředku, který je připojen k virtuálnímu počítači po zřízení v Azure. Všimněte si, že je místní prostředek disku *dočasné* disk a může být vyprázdněna při zřízení virtuálního počítače. Po instalaci agenta Azure Linux (viz předchozí krok), upravte následující parametry v `/etc/waagent.conf` odpovídajícím způsobem:
-   
+
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
@@ -324,7 +325,7 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
 13. Spusťte následující příkaz pro zrušení zřízení virtuálního počítače a připravte je ke zřizování v Azure:
-   
+
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
@@ -332,5 +333,5 @@ Příprava virtuálního počítače CentOS 7 pro Azure je velmi podobný CentOS
 14. Klikněte na tlačítko **akce -> vypnout dolů** ve Správci technologie Hyper-V. Vašeho linuxového virtuálního pevného disku je teď připravený k nahrání do Azure.
 
 ## <a name="next-steps"></a>Další postup
-Teď jste připraveni používat CentOS Linux virtuální pevný disk k vytvoření nových virtuálních počítačů v Azure. Pokud je to poprvé, že jste nahrání souboru VHD do Azure, najdete v článku [vytvoření virtuálního počítače s Linuxem z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).
 
+Teď jste připraveni používat CentOS Linux virtuální pevný disk k vytvoření nových virtuálních počítačů v Azure. Pokud je to poprvé, že jste nahrání souboru VHD do Azure, najdete v článku [vytvoření virtuálního počítače s Linuxem z vlastního disku](upload-vhd.md#option-1-upload-a-vhd).

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 631933647e27428349fc1efeb17f62f4614f7f64
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 4fa5e40b75be933ee62c8ba59449a78ac071dc43
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423302"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958165"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v Linuxu
 
@@ -66,7 +66,7 @@ Tyto kroky jsou uvedeny v úložišti Azure App Service jako [příklad](https:/
         && echo "root:Docker!" | chpasswd
     ```
 
-1. Přidat [ `COPY` instrukce](https://docs.docker.com/engine/reference/builder/#copy) k souboru Dockerfile ke kopírování [sshd_config](http://man.openbsd.org/sshd_config) do souboru */etc/ssh/* adresáře. Konfigurační soubor by měl vycházet souboru sshd_config v úložišti GitHub Azure App Service [tady](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
+1. Přidat [ `COPY` instrukce](https://docs.docker.com/engine/reference/builder/#copy) k souboru Dockerfile ke kopírování [sshd_config](https://man.openbsd.org/sshd_config) do souboru */etc/ssh/* adresáře. Konfigurační soubor by měl vycházet souboru sshd_config v úložišti GitHub Azure App Service [tady](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config).
 
     > [!NOTE]
     > *Sshd_config* soubor musí obsahovat následující jinak připojení selže: 

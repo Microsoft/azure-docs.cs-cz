@@ -1,20 +1,18 @@
 ---
-title: Práce s daty ve službě Azure Cosmos DB | Dokumentace Microsoftu
+title: Práce s daty ve službě Azure Cosmos DB
 description: Další informace o tom, jak pracovat s daty ve službě Azure Cosmos DB.
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
+author: SnehaGunda
+ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: sngun
-ms.openlocfilehash: d7188270ff5b1edd3b5e396be0cd5fd22e6123c4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 49196df580aec4975a74849e8f2b36c03f6750ad
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855502"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956104"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Práce s daty ve službě Azure Cosmos DB
 Azure Cosmos DB nabízí flexibilitu schémat a bohaté indexování prostřednictvím nativní [JSON](http://www.json.org) datového modelu. Všechny prostředky Azure Cosmos DB, včetně databází, kontejnerů, dokumenty a uložené procedury jsou modelovány a ukládány jako dokumenty JSON. Jako požadavek pro vrácení přenosné JSON (a Azure Cosmos DB) podporuje pouze malou sadu základních typů: řetězec, číslo, logickou hodnotu, pole, objekt a hodnotu Null. Ale JSON je flexibilní a umožňují vývojářům a architektur představují složitější typy, pomocí těchto primitivních hodnot a skládání jako objekty nebo pole. 
@@ -68,7 +66,7 @@ Dotazy na rozsah jsou společné s hodnotami data a času. Například pokud je 
     collection.IndexingPolicy = new IndexingPolicy(new RangeIndex(DataType.String) { Precision = -1 });
     await client.CreateDocumentCollectionAsync("/dbs/orderdb", collection);
 
-Další informace o tom, jak nakonfigurovat zásady indexování na [zásady indexování Azure Cosmos DB](indexing-policies.md).
+Další informace o tom, jak nakonfigurovat zásady indexování na [zásady indexování Azure Cosmos DB](index-policy.md).
 
 ## <a name="querying-datetimes-in-linq"></a>Dotazování na data a času v jazyce LINQ
 SQL SDK pro .NET podporuje automaticky dotazování na data uložená ve službě Azure Cosmos DB pomocí LINQ. Například následující fragment kódu ukazuje dotaz LINQ odeslaných za posledních tří dnů objednávek tohoto filtry.
@@ -79,11 +77,11 @@ SQL SDK pro .NET podporuje automaticky dotazování na data uložená ve služb�
     // Translated to the following SQL statement and executed on Azure Cosmos DB
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 
-Další informace o dotazovací jazyk SQL služby Azure Cosmos DB a zprostředkovatele LINQ na [dotazování Cosmos DB](sql-api-sql-query.md).
+Další informace o dotazovací jazyk SQL služby Azure Cosmos DB a zprostředkovatele LINQ na [dotazování Cosmos DB](how-to-sql-query.md).
 
 V tomto článku jsme se podívali na tom, jak ukládání, indexování a dotazovat data a času ve službě Azure Cosmos DB.
 
 ## <a name="next-steps"></a>Další kroky
 * Stáhněte a spusťte [ukázky kódu na Githubu](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* Další informace o [dotazy SQL](sql-api-sql-query.md)
-* Další informace o [zásady indexování Azure Cosmos DB](indexing-policies.md)
+* Další informace o [dotazy SQL](how-to-sql-query.md)
+* Další informace o [zásady indexování Azure Cosmos DB](index-policy.md)

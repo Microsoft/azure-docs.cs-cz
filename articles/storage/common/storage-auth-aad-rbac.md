@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 5f558ea851d63b08885293efcff3fef600f2cc17
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: ac62800e81cece61e9f51c496ace2868629a49a1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726385"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960239"
 ---
 # <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>Spravovat přístupová práva k Azure Blob a fronty dat pomocí RBAC (Preview)
 
@@ -40,14 +40,14 @@ Můžete také definovat vlastní role pro použití s kontejnery a fronty. Dal�
 
 ## <a name="assign-a-role-to-a-security-principal"></a>Přiřadit roli instančnímu objektu zabezpečení
 
-Přiřazení RBAC role pro Azure identity k udělení oprávnění pro kontejnery nebo fronty ve vašem účtu úložiště. Můžete omezit rozsah přiřazení rolí k účtu úložiště nebo konkrétní kontejner nebo fronty. Následující tabulka shrnuje přístupová práva udělují předdefinované role, v závislosti na rozsahu: 
+Přiřazení RBAC role pro Azure identity k udělení oprávnění pro kontejnery nebo fronty ve vašem účtu úložiště. Můžete omezit rozsah přiřazení rolí k účtu úložiště nebo konkrétní kontejner nebo fronty. Následující tabulka shrnuje přístupová práva udělují předdefinované role, v závislosti na rozsahu:
 
-|                                 |     Přispěvatel dat objektu BLOB                                                 |     Čtenář dat objektu BLOB                                                |     Přispěvatel dat fronty služby                                  |     Čtenář dat fronty služby                                 |
-|---------------------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------|----------------------------------------------------------|
-|    Omezená na předplatné       |    Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného       |    Přístup pro čtení pro všechny kontejnery a objekty BLOB v rámci předplatného       |    Přístup pro čtení a zápis pro všechny fronty v rámci předplatného       |    Přístup pro čtení pro všechny fronty v rámci předplatného         |
-|    Obor do skupiny prostředků     |    Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB ve skupině prostředků     |    Přístup pro čtení pro všechny kontejnery a objekty BLOB ve skupině prostředků     |    Přístup pro čtení a zápis pro všechny fronty ve skupině prostředků     |    Přístup pro čtení pro všechny fronty ve skupině prostředků     |
-|    Obor do účtu úložiště    |    Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v účtu úložiště    |    Přístup pro čtení pro všechny kontejnery a objekty BLOB v účtu úložiště    |    Přístup pro čtení a zápis do všech front v účtu úložiště    |    Přístup pro čtení pro všechny fronty v účtu úložiště    |
-|    Rozsah kontejneru či fronty    |    Přístup pro čtení a zápis do zadaného kontejneru a jeho objektům BLOB              |    Přístup pro čtení zadaného kontejneru a jeho objektům BLOB              |    Přístup pro čtení a zápis do zadané fronty                  |    Přístup pro čtení do zadané fronty                    |
+|Rozsah|Vlastník dat objektů BLOB|Přispěvatel dat objektu BLOB|Čtenář dat objektu BLOB|Přispěvatel dat fronty služby|Čtenář dat fronty služby|
+|---|---|---|---|---|---|
+|Úroveň Subscrition|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v rámci předplatného| Přístup pro čtení pro všechny kontejnery a objekty BLOB v rámci předplatného|Přístup pro čtení a zápis pro všechny fronty v rámci předplatného|Přístup pro čtení pro všechny fronty v rámci předplatného|
+|Úrovni skupiny prostředků|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení pro všechny kontejnery a objekty BLOB ve skupině prostředků|Přístup pro čtení a zápis pro všechny fronty ve skupině prostředků|Přístup pro čtení pro všechny fronty ve skupině prostředků|
+|Úroveň účtu úložiště|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení a zápis pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení pro všechny kontejnery a objekty BLOB v účtu úložiště|Přístup pro čtení a zápis do všech front v účtu úložiště|Přístup pro čtení pro všechny fronty v účtu úložiště|
+|Úroveň kontejneru či fronty|Přístup pro čtení a zápis do zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení a zápis do zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení zadaného kontejneru a jeho objektům BLOB|Přístup pro čtení a zápis do zadané fronty|Přístup pro čtení do zadané fronty|
 
 > [!NOTE]
 > Jako vlastník účtu služby Azure Storage nejsou automaticky přiřadit oprávnění pro přístup k datům. Je nutné explicitně přiřadit sami roli RBAC pro Azure Storage. Ji můžete přiřadit na úrovni předplatného, skupinu prostředků, účet úložiště, kontejner nebo fronty.
@@ -76,6 +76,9 @@ Přiřazení předdefinované role uděluje přístup pro všechny kontejnery ne
 
 ### <a name="assign-a-role-scoped-to-a-container-or-queue-in-the-azure-portal"></a>Přiřazení role omezená na kontejneru nebo fronty na webu Azure Portal
 
+> [!IMPORTANT]
+> Nelze provést, pokud se pomocí účtu s hierarchického oboru názvů ještě nepovolila.
+
 Postup pro přiřazení předdefinované role obor do kontejneru, nebo do fronty jsou podobné. Zde zobrazená procedura přiřadí role omezená na kontejner, ale můžete použít stejný postup přiřazení role obor pro frontu: 
 
 1. V [webu Azure portal](https://portal.azure.com), přejděte do svého účtu úložiště a zobrazit **přehled** pro účet.
@@ -90,7 +93,7 @@ Postup pro přiřazení předdefinované role obor do kontejneru, nebo do fronty
 
     ![Snímek obrazovky zobrazující seznam uživatelů, které jsou přiřazeny k roli](media/storage-auth-aad-rbac/container-scoped-role.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o RBAC najdete v tématu [co je řízení přístupu na základě rolí (RBAC)?](../../role-based-access-control/overview.md).
 - Naučte se přiřazovat a spravovat přiřazení rolí pro RBAC pomocí Azure Powershellu, rozhraní příkazového řádku Azure nebo rozhraní REST API, najdete v těchto článcích:
@@ -99,4 +102,3 @@ Postup pro přiřazení předdefinované role obor do kontejneru, nebo do fronty
     - [Správa řízení přístupu na základě rolí (RBAC) pomocí rozhraní REST API](../../role-based-access-control/role-assignments-rest.md)
 - Zjistěte, jak autorizovat přístup ke kontejnerům a front z v rámci aplikace úložiště, najdete v článku [pomocí služby Azure AD s aplikacemi Azure Storage](storage-auth-aad-app.md).
 - Další informace o integraci služby Azure AD pro kontejnery služby Azure a fronty, najdete v článku na blogu týmu Azure Storage účtovat, [oznamujeme vydání verze Preview služby Azure AD Authentication pro službu Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
-- 

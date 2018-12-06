@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/06/2018
+ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bed053f812cc5c14e6cfe76b8a08b1ffe0cadcb3
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 05e0ae8f19e9609bd1ddd05082ead025058f92c1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289117"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966003"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -74,7 +74,7 @@ V celém dokumentu se používají následující termíny:
 
 Některé dokumentaci Microsoftu popisuje scénáře, mezi různými místy trochu jinak, především pro DBMS HA konfigurace. V případě SAP související dokumenty, scénáře mezi různými místy boils s tím, že site-to-site nebo privátní [ExpressRoute](https://azure.microsoft.com/services/expressroute/) připojení a na skutečnost, že se prostředí SAP distribuuje mezi místními a Azure.
 
-## <a name="resources"></a>Materiály
+## <a name="resources"></a>Zdroje a prostředky
 Jsou různé články týkající se úloh SAP v Azure všeobecně dostupné.  Doporučuje se spuštění v [úloh SAP v Azure – Začínáme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) a potom si vyberte oblasti zájmu
 
 Následující poznámky SAP jsou související s řešením SAP v Azure týkající se oblasti zahrnuté v tomto dokumentu:
@@ -179,7 +179,7 @@ Pokud se chcete vyhnout administrativy pro plánování a nasazení virtuálníc
 
 Převod z nespravovaných do spravovaných disků, naleznete v článcích:
 
-- [Převod virtuálního počítače s Windows z nespravovaných disků na managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)
+- [Převod virtuálního počítače s Windows z nespravovaných disků na spravované disky](https://docs.microsoft.com/azure/virtual-machines/windows/convert-unmanaged-to-managed-disks)
 - [Převod virtuálního počítače s Linuxem z nespravovaných disků na managed disks](https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks)
 
 
@@ -196,7 +196,7 @@ Následující doporučení jsou za předpokladu, že tyto charakteristiky vstup
 
 Pro službu Azure Standard Storage jsou tyto typy možných mezipaměti:
 
-* Žádné
+* Žádný
 * Čtení
 * Čtení/zápis
 
@@ -204,7 +204,7 @@ Aby bylo možné získat konzistentní vzhledem k aplikacím a deterministický 
 
 Azure Premium Storage existují tyto možnosti ukládání do mezipaměti:
 
-* Žádné
+* Žádný
 * Čtení 
 * Čtení/zápisu 
 * Žádné a akcelerátor zápisu (pouze pro virtuální počítače Azure řady M-Series)
@@ -279,7 +279,11 @@ Existuje několik osvědčených postupů, které je mimo stovky zákaznická na
 
 
 > [!IMPORTANT]
-> Mimo funkce, ale další důležité z důvodů výkonu, není možné konfigurovat [Azure síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/) v komunikační trasa mezi aplikací SAP a úroveň databázového systému SAP NetWeaver Hybris nebo S/4HANA na systému SAP. Další scénáře, ve kterém nejsou podporovány síťová virtuální zařízení jsou v komunikační trasy mezi virtuálními počítači Azure, které představují uzly clusteru Linux Pacemaker SBD zařízení a jak je popsáno v [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Nebo v komunikaci se trasy mezi virtuálními počítači Azure a Windows Server SOFS nastavit až, jak je popsáno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s využitím sdílené složky v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Síťová virtuální zařízení v komunikaci cesty může snadno dvakrát latence sítě mezi dva partneři komunikaci, můžete omezit propustnost v kritické cesty mezi aplikační vrstvě SAP a vrstvu DBMS. V některých scénářích zjištěnými se zákazníky může způsobit síťová virtuální zařízení Pacemaker Linuxové clustery selhání v případech, kdy je potřeba komunikace mezi uzly clusteru Linux Pacemaker sdělit své zařízení SBD přes síťové virtuální zařízení.   
+> Mimo funkce, ale další důležité z důvodů výkonu, není možné konfigurovat [Azure síťových virtuálních zařízení](https://azure.microsoft.com/solutions/network-appliances/) v komunikační trasa mezi aplikací SAP a úroveň databázového systému SAP NetWeaver Hybris nebo S/4HANA na systému SAP. Komunikace mezi aplikační vrstvě SAP a vrstvu DBMS musí být s přímým přístupem. Omezení nezahrnuje [Azure ASG a skupiny zabezpečení sítě pravidla](https://docs.microsoft.com/azure/virtual-network/security-overview) tak dlouho, dokud tato pravidla ASG a skupiny zabezpečení sítě umožní přímé komunikaci. Další scénáře, ve kterém nejsou podporovány síťová virtuální zařízení jsou v komunikační trasy mezi virtuálními počítači Azure, které představují uzly clusteru Linux Pacemaker SBD zařízení a jak je popsáno v [vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse). Nebo v komunikaci se trasy mezi virtuálními počítači Azure a Windows Server SOFS nastavit až, jak je popsáno v [instanci SAP ASCS/SCS clusteru v clusteru převzetí služeb při selhání Windows s využitím sdílené složky v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share). Síťová virtuální zařízení v komunikaci cesty může snadno dvakrát latence sítě mezi dva partneři komunikaci, můžete omezit propustnost v kritické cesty mezi aplikační vrstvě SAP a vrstvu DBMS. V některých scénářích zjištěnými se zákazníky může způsobit síťová virtuální zařízení Pacemaker Linuxové clustery selhání v případech, kdy je potřeba komunikace mezi uzly clusteru Linux Pacemaker sdělit své zařízení SBD přes síťové virtuální zařízení.  
+> 
+
+> [!IMPORTANT]
+> Další návrh, který je **není** zodpovědnosti aplikační vrstvě SAP a vrstvu DBMS do různých virtuálních sítí Azure, které nejsou podporovány je [v partnerském vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi sebou. Doporučujeme oddělit aplikační vrstvě SAP a DBMS vrstvy pomocí podsítí v rámci virtuální sítě Azure, namísto použití různých virtuálních sítích Azure. Pokud se rozhodnete postupujte podle doporučení a místo toho oddělit dvě vrstvy do jiné virtuální sítě, dvě virtuální sítě musí být [v partnerském vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview). Mějte na paměti, které síťový provoz mezi dvěma [v partnerském vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálním sítím Azure jsou předmětem náklady na přenos. S velkou datový svazek v po mnoho terabajtů, které se vyměňují mezi aplikační vrstvě SAP a DBMS vrstvu můžete sbírají značné náklady, pokud aplikační vrstvě SAP a DBMS vrstvy je rozdělen mezi dvěma partnerskými virtuálními sítěmi Azure.  
 
 Pro nasazení DBMS ve skupině dostupnosti Azure a navíc samostatné směrování pro aplikační vrstvě SAP a operace a správy provozu na dva virtuální počítače DBMS v produkčním prostředí pomocí dvou virtuálních počítačů, přibližnou diagram vypadat nějak takto:
 

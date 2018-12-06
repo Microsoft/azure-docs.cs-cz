@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: ccompy
-ms.openlocfilehash: 590679daff20f9c469fb8fcfcc0fbbad77f91b5b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b54d5abed3e0d29103f5a15ea7fb6dc37dba240e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162846"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967806"
 ---
 # <a name="app-service-environment-management-addresses"></a>Adresy pro správu aplikace app Service Environment
 
@@ -46,7 +46,7 @@ Můžete vytvořit seznam adresy pro správu, které odpovídají vaší služby
 
 Rozhraní API vrátí dokument JSON, který zahrnuje všechny příchozí adresy pro vaši službu ASE. Seznam adres zahrnuje virtuální IP adresy používané vaší služby ASE a rozsah adres podsítě služby ASE, samotný adresy pro správu.  
 
-Pro volání rozhraní API se [armclient](http://github.com/projectkudu/ARMClient) použijte následující příkazy, ale nahraďte ID předplatného, skupiny prostředků a název služby ASE.  
+Pro volání rozhraní API se [armclient](https://github.com/projectkudu/ARMClient) použijte následující příkazy, ale nahraďte ID předplatného, skupiny prostředků a název služby ASE.  
 
     armclient login
     armclient get /subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.Web/hostingEnvironments/<ASE Name>/inboundnetworkdependenciesendpoints?api-version=2016-09-01

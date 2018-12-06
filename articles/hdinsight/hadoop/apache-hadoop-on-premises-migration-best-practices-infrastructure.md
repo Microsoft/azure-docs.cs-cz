@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 614fdae1865f008bdbc2cb8d5e8b96c0addcc112
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 08238732c9e2d4e09e1f956c18768a15c95828c2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036917"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958168"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy infrastruktury
 
@@ -186,7 +186,7 @@ Pomocí Azure Virtual Network s HDInsight umožňuje následující scénáře:
 - Připojování k datům HDInsight ukládají ve službě Azure Virtual network.
 - Přímý přístup k služby Hadoop, které nejsou k dispozici veřejně přes internet. Například rozhraní API systému Kafka nebo HBase Java API.
 
-HDInsight je buď přidat do nové nebo existující virtuální sítě Azure. Pokud HDInsight se přidává do existující virtuální síť, existující skupiny zabezpečení sítě a trasy definované uživatelem musí aktualizovat, chcete-li povolit neomezený přístup k [několik IP adres](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip-1) v datovém centru Azure. Také zajistěte, aby blokovat provoz [porty](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) který se právě využívají služby HDInsight.
+HDInsight je buď přidat do nové nebo existující virtuální sítě Azure. Pokud HDInsight se přidává do existující virtuální síť, existující skupiny zabezpečení sítě a trasy definované uživatelem musí aktualizovat, chcete-li povolit neomezený přístup k [několik IP adres](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip) v datovém centru Azure. Také zajistěte, aby blokovat provoz [porty](../hdinsight-extend-hadoop-virtual-network.md#hdinsight-ports) který se právě využívají služby HDInsight.
 
 > [!Note]
 > HDInsight aktuálně nepodporují vynucené tunelování. Vynucené tunelování znamená nastavení podsítě, která vynutí odchozí internetový provoz do zařízení pro kontrolu a protokolování. Buď odeberte vynucené tunelování před instalací HDInsight do podsítě, nebo vytvořte novou podsíť pro HDInsight. HDInsight také nepodporuje omezení odchozího síťového připojení.

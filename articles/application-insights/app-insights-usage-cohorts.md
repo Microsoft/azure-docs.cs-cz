@@ -13,18 +13,18 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fb04a3410291e52f4ea0d02e625bdbf02f64f8c7
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a7b5cd925bd4b66e25754c30de5cbaf866dab0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721038"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970616"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
 Kohorta je sada uživatelů, relací, událostí nebo operací, které mají něco společné. Ve službě Azure Application Insights jsou definovány kohorty analytický dotaz. V případech, kdy máte k analýze konkrétní sadu uživatelů nebo událostí opakovaně, kohorty vám může poskytnout větší flexibilitu při express přesně sady, které vás zajímají.
 
-![Podokno kohorty](.\media\app-insights-usage-cohorts\001.png)
+![Podokno kohorty](./media/app-insights-usage-cohorts/001.png)
 
 ## <a name="cohorts-versus-basic-filters"></a>Kohorta oproti základní filtry
 
@@ -52,14 +52,14 @@ Váš tým definuje Angažované uživatele jako každý, kdo používá vaše a
 
 4. Změna **UsedAtLeastCustom** k **víc než 5 dnů**a nechat **období** na výchozí hodnotu 28 dnů.
 
-    ![Znamenají angažovaní uživatelé](.\media\app-insights-usage-cohorts\003.png)
+    ![Znamenají angažovaní uživatelé](./media/app-insights-usage-cohorts/003.png)
 
     Nyní tato kohorta představuje všechna ID uživatelů odesílat všechny vlastní události nebo zobrazení stránky na 5 dnů v minulosti oddělení 28.
 
 5. Vyberte **Uložit**.
 
    > [!TIP]
-   >  Pojmenujte vaši kohortu, jako je třeba "Engaged uživatelé (víc než 5 dnů)." Uložte ho do "Zprávy" nebo "Sdílené sestavy," v závislosti na tom, zda chcete, aby ostatní uživatele, kteří mají přístup k tomuto prostředku Application Insights, chcete-li zobrazit tato kohorta.
+   > Pojmenujte vaši kohortu, jako je třeba "Engaged uživatelé (víc než 5 dnů)." Uložte ho do "Zprávy" nebo "Sdílené sestavy," v závislosti na tom, zda chcete, aby ostatní uživatele, kteří mají přístup k tomuto prostředku Application Insights, chcete-li zobrazit tato kohorta.
 
 6. Vyberte **zpět do Galerie**.
 
@@ -69,9 +69,10 @@ Otevřete nástroj Uživatelé. V **zobrazit** rozevíracího seznamu vyberte ko
 
 Nástroj Uživatelé je vyfiltruje a tato kohorta uživatelů:
 
-![Uživatelé podokně filtrovat na konkrétní kohorty](.\media\app-insights-usage-cohorts\004.png)
+![Uživatelé podokně filtrovat na konkrétní kohorty](./media/app-insights-usage-cohorts/004.png)
 
 Několik důležitých věcí a Všimněte si:
+
 * Tuto sadu nelze vytvořit běžné filtry. Logika datum je složitější.
 * Tato kohorta můžete dále filtrovat pomocí běžné filtry v nástroj Uživatelé. Takže i když se kohorta je definován v systému windows 28 dní, můžete upravit časový rozsah v nástroj Uživatelé 30, 60 nebo 90 dny.
 
@@ -87,7 +88,7 @@ Můžete provést také kohorta událostí. V tomto oddílu definujete kohortu u
 
 3. Vyberte **výběr události**.
 
-    ![Snímek obrazovky výběru události](.\media\app-insights-usage-cohorts\006.png)
+    ![Snímek obrazovky výběru události](./media/app-insights-usage-cohorts/006.png)
 
 4. V **aktivity** rozevíracího seznamu vyberte události, které mají být v kohortě.
 
@@ -97,11 +98,11 @@ Můžete provést také kohorta událostí. V tomto oddílu definujete kohortu u
 
 Předchozí dva kohorty byly definovány pomocí rozevíracího seznamu polí. Ale můžete také definovat kohorty pomocí analytických dotazů pro celkovou flexibilitu. Pokud chcete zobrazit, jak vytvořit kohorta uživatelů z Spojeném království.
 
-![Animovaný obrázek provede užívání nástroji kohorty](.\media\app-insights-usage-cohorts\cohorts0001.gif)
+![Animovaný obrázek provede užívání nástroji kohorty](./media/app-insights-usage-cohorts/cohorts0001.gif)
 
 1. Otevřete nástroji kohorty, vyberte **Galerie šablon** kartu a vyberte **kohorta uživatelů prázdnou**.
 
-    ![Kohorta uživatelů prázdné](.\media\app-insights-usage-cohorts\001.png)
+    ![Kohorta uživatelů prázdné](./media/app-insights-usage-cohorts/001.png)
 
     Existují tři části:
     * Markdownu text oddílu, ve kterém popíšete kohorta podrobněji pro ostatní uživatele ve vašem týmu.
@@ -136,7 +137,8 @@ Kohorta a filtry se liší. Předpokládejme, že máte kohorta uživatelů z Sp
 * Verze filtry zobrazuje jenom události z Spojeném království. Ale pokud je rozdělte podle země nebo oblasti, se zobrazí pouze Spojeném království.
 
 ## <a name="learn-more"></a>Další informace
-- [Dotazovací jazyk Analytics](https://go.microsoft.com/fwlink/?linkid=856587)
-- [Uživatelé, relace, události](app-insights-usage-segmentation.md)
-- [Toky uživatelů](app-insights-usage-flows.md)
-- [Přehled využití](app-insights-usage-overview.md)
+
+* [Dotazovací jazyk Analytics](https://go.microsoft.com/fwlink/?linkid=856587)
+* [Uživatelé, relace, události](app-insights-usage-segmentation.md)
+* [Toky uživatelů](app-insights-usage-flows.md)
+* [Přehled využití](app-insights-usage-overview.md)

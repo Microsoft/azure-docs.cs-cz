@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4020d754bd8c7728b43ef583aa7e7d8dbddcebec
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e6f85d327fff1ee32dca6dfb2231b28e6dc96c61
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50633833"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965629"
 ---
 # <a name="what-is-the-adconnectivitytool-powershell-module"></a>Co je modul Powershellu ADConnectivityTool?
 
@@ -40,7 +40,7 @@ Na **připojení k adresářům** stránky, v Azure AD Connect průvodce, dojde 
 Pokaždé, když najde některý z těchto problémů, zobrazí se v Průvodci AADConnect související chybová zpráva:
 
 
-![Chyba](media\how-to-connect-adconnectivitytools\error1.png)
+![Chyba](media/how-to-connect-adconnectivitytools/error1.png)
 
 Například když jsme se pokoušíte přidat adresář na **připojení k adresářům** obrazovky, Azure AD Connect je potřeba to ověřit a očekává, že budete moci komunikovat s řadičem domény prostřednictvím portu 389.  V případě nedostupnosti jsme se zobrazí chyba, ke které je zobrazena ve výše uvedeném snímku obrazovky.  
 

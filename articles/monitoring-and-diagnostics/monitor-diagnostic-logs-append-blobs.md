@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: b83c67e5c2ca47e73c1743d8eeaea03a8d92ea1f
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 48295a48700ee8b7331ae9811b7dd43a0ec8fa69
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247848"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959873"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Příprava pro změnu formátu pro diagnostické protokoly Azure monitoru archivovat do účtu úložiště
 
@@ -47,11 +47,11 @@ Můžete se pouze by to vliv na tato změna vás:
  
 A zjistěte, jestli máte nastavení diagnostiky prostředků, které odesílají data do účtu služby Azure storage, můžete přejít na **monitorování** části portálu klikněte na **nastavení diagnostiky**a identifikovat všechny prostředky, které mají **stavu diagnostiky** nastavena na **povoleno**:
 
-![Okno Azure Monitor nastavení diagnostiky](./media/monitor-diagnostic-logs-append-blobs\portal-diag-settings.png)
+![Okno Azure Monitor nastavení diagnostiky](./media/monitor-diagnostic-logs-append-blobs/portal-diag-settings.png)
 
 Diagnostický stav nastaven na povoleno, máte aktivní nastavení diagnostiky pro tento prostředek. Klikněte na prostředek, který chcete zobrazit, pokud žádné nastavení diagnostiky se odesílání dat do účtu úložiště:
 
-![Účet úložiště povolená](./media/monitor-diagnostic-logs-append-blobs\portal-storage-enabled.png)
+![Účet úložiště povolená](./media/monitor-diagnostic-logs-append-blobs/portal-storage-enabled.png)
 
 Pokud máte prostředky odesílání dat do účtu úložiště pomocí těchto nastavení diagnostiky prostředků, bude tato změna vliv formát dat v tomto účtu úložiště. Pokud nemáte vlastních nástrojů, kterou z těchto účtů úložiště, neovlivní můžete změnit formát.
 

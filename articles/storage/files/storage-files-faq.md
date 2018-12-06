@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 29f09034988acde3643eebe368445caab035fabd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 761637a9c44cc490d6633aeb1a9b8d81f8885583
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387499"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972078"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>O službě soubory Azure – nejčastější dotazy (FAQ)
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné prostřednictvím standardních průmyslových [zprávy bloku SMB (Server) protokol](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure je možné připojit současně v cloudových i místních nasazení systémů Windows, Linux a macOS. Také můžete ukládat do mezipaměti sdílených složek Azure v počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány.
@@ -45,7 +45,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
     Služba soubory Azure je konkrétně systém souborů. Služba soubory Azure má všechny souboru přehledů, které znáte a máte rádi ze mnohaleté práce s místním operačních systémů. Jako úložiště objektů Blob v Azure Azure Files nabízí rozhraní REST a ostatní klientské knihovny založené na REST. Na rozdíl od úložiště objektů Blob v Azure soubory Azure nabízí SMB přístup ke sdílené složky Azure. Pomocí protokolu SMB, můžete připojit sdílené složky Azure přímo na Windows, Linux nebo macOS, ať už místní nebo v cloudu virtuálních počítačů, bez psaní kódu nebo všechny speciální ovladače se připojuje k systému souborů. Také můžete ukládat do mezipaměti sdílených složek Azure na místní souborové servery s využitím Azure File Sync pro rychlý přístup blízko, ve kterém jsou využívány. 
    
-    Podrobnější popis o rozdílech mezi Azure Files a úložiště objektů Blob v Azure najdete v tématu [rozhodování, jestli použít úložiště objektů Blob v Azure, soubory Azure nebo Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Další informace o službě Azure Blob storage najdete v tématu [seznámení se službou Blob storage](../blobs/storage-blobs-introduction.md).
+    Podrobnější popis o rozdílech mezi Azure Files a úložiště objektů Blob v Azure najdete v tématu [rozhodování, jestli použít úložiště objektů Blob v Azure, soubory Azure nebo Azure Disks](../common/storage-decide-blobs-files-disks.md). Další informace o službě Azure Blob storage najdete v tématu [seznámení se službou Blob storage](../blobs/storage-blobs-introduction.md).
 
 * <a id="files-versus-disks"></a>**Proč používat sdílené složky Azure místo Azure Disks?**  
     Disk v Azure Disks je jednoduše disk. K získání hodnoty z Azure Disks, musí připojení disku k virtuálnímu počítači, na kterém běží v Azure. Disky Azure je možné pro všechno, co by použít disk pro na místním serveru. Můžete ho použít jako disk s operačním systémem systémem, jako odkládací prostor pro operační systém nebo jako vyhrazeného úložiště pro aplikaci. K vytvoření souborového serveru v cloudu a použít ve stejných míst, kde můžete použít sdílené složky Azure je zajímavé použití pro disky Azure. Nasazení souborového serveru ve službě Azure Virtual Machines je vysoce výkonné způsob, jak získat úložiště souborů v Azure, když budete vyžadovat, aby možnostech nasazení, které nejsou v současnosti podporované ve službě soubory Azure (jako je například systém souborů NFS protokol podpory úrovně premium storage nebo). 
@@ -54,7 +54,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
 
     Jedním z přístupů k získání to nejlepší z Azure Files a souborový server, která je hostována ve službě Azure Virtual Machines (navíc k použití jako back endové úložné disky Azure) je instalace Azure File Sync na souborovém serveru, který je hostovaný v cloudu virtuálního počítače. Pokud sdílená složka Azure je ve stejné oblasti jako váš souborový server, můžete povolit cloudu ovládání datových vrstev a nastavte objemu procento volného místa na maximum (99 %). Tím se zajistí minimální duplicitní data. Také můžete použít všechny aplikace, které chcete s souborovými servery, jako jsou aplikace, které vyžadují protokol NFS podporují.
 
-    Informace o možnost pro vytvoření výkonné a vysoce dostupný souborový server v Azure najdete v tématu [clusterů hostů nasazení virtuálních počítačů IaaS v Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Podrobnější popis rozdílů mezi soubory Azure a Azure Disks najdete v tématu [rozhodování, jestli použít úložiště objektů Blob v Azure, soubory Azure nebo Azure Disks](../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Další informace o Azure Disks najdete v tématu [Přehled služby Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+    Informace o možnost pro vytvoření výkonné a vysoce dostupný souborový server v Azure najdete v tématu [clusterů hostů nasazení virtuálních počítačů IaaS v Microsoft Azure](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/). Podrobnější popis rozdílů mezi soubory Azure a Azure Disks najdete v tématu [rozhodování, jestli použít úložiště objektů Blob v Azure, soubory Azure nebo Azure Disks](../common/storage-decide-blobs-files-disks.md). Další informace o Azure Disks najdete v tématu [Přehled služby Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
 
 * <a id="get-started"></a>
 **Jak můžu začít používat soubory Azure?**  
@@ -205,7 +205,7 @@ Tento článek obsahuje odpovědi na běžné otázky o Azure Files funkce a fun
     Pokud předplatné, ve kterém je nasazená sdílené složky je spojen se stejným tenantem Azure AD jako nasazení služby Azure AD Domain Services, ke které je virtuální počítač připojený k doméně a pak budete moct soubory Azure pomocí stejných přihlašovacích údajů Azure AD. Omezení je nastaveno z důvodu není v předplatném, ale na související služby Azure AD tenanta.    
     
 * <a id="ad-support-subscription"></a>
-**Můžu povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure s tenantem Azure AD, která se liší od primární tenant se kterým je sdílená složka file assoicated?**
+**Můžu povolit ověřování Azure AD prostřednictvím protokolu SMB pro soubory Azure s tenantem Azure AD, která se liší od primární tenant se kterým je přidružené sdílené složky?**
 
     Ne, soubory Azure podporuje pouze integraci Azure AD s tenantem Azure AD, který se nachází ve stejném předplatném jako sdílené. Jenom jedno předplatné, může být přidružen k tenantovi Azure AD.
 

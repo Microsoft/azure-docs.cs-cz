@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 7c67cac7a5579386921b2b949e9312cb4e5da172
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2aa59bcf0d56358601b81730abe330a56ca35d02
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984668"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966904"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace vaší databáze PostgreSQL pomocí výpisu a obnovení.
 Můžete použít [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) extrahovat databázi PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) obnovit ze souboru archivu vytvořené pg_dump databázi PostgreSQL.
@@ -71,7 +71,7 @@ Jeden způsob, jak migrovat existující databázi PostgreSQL do služby Azure D
     ```
 
 ### <a name="for-the-restore"></a>Pro obnovení
-- Doporučujeme přesunout záložní soubor do virtuálního počítače Azure ve stejné oblasti jako serveru Azure Database for PostgreSQL migrují na a proveďte pg_restore z tohoto virtuálního počítače chcete snížit latenci sítě. Doporučujeme také, že virtuální počítač se vytvoří s [akcelerovanými síťovými službami](..\virtual-network\create-vm-accelerated-networking-powershell.md) povolena.
+- Doporučujeme přesunout záložní soubor do virtuálního počítače Azure ve stejné oblasti jako serveru Azure Database for PostgreSQL migrují na a proveďte pg_restore z tohoto virtuálního počítače chcete snížit latenci sítě. Doporučujeme také, že virtuální počítač se vytvoří s [akcelerovanými síťovými službami](../virtual-network/create-vm-accelerated-networking-powershell.md) povolena.
 - By mělo být provedeno již ve výchozím nastavení, ale otevřete soubor s výpisem paměti a ověřte, že příkazy create index se po vložení dat. Pokud není tento případ, přesuňte po vložení dat příkazy create index.
 - Obnovit pomocí přepínače -Fc a -j *#* pro paralelní zpracování obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit s *#* nastavte zobrazení dopadů na dvojnásobný počet jader na cílový server. Příklad:
 

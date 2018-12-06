@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
-ms.openlocfilehash: 5ab54dcd94ebf0a1bad71613a8d749cef0de64f4
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: ebb95093d96a3c1fd36565831215355b18ac5d1a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678674"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968421"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkce operačního systému ve službě Azure App Service
 Tento článek popisuje běžné funkce operačního systému směrný plán, který je k dispozici pro všechny aplikace Windows běží na [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tato funkce zahrnuje soubor, sítě a přístup k registru a diagnostické protokoly a události. 
@@ -85,7 +85,7 @@ Na místní diskové jednotky připojené k virtuálnímu počítači, na které
 
 Adresář pro dočasné soubory ASP.NET jsou dva příklady jak služba App Service používá místní dočasné úložiště a komprimované soubory v adresáři služby IIS. Systém kompilace technologie ASP.NET používá jako umístění mezipaměti dočasné kompilace adresáře "Temporary ASP.NET Files". Služba IIS používá "IIS dočasné komprimované soubory" adresář k uložení výstupu zkomprimovanou odpověď. Oba tyto typy souborů využití (stejně jako ostatní) budou přemapovány na dočasný místní úložiště pro aplikaci ve službě App Service. Přemapování se zajistí, že funkce pokračuje podle očekávání.
 
-Každou aplikaci ve službě App Service běží jako identitu náhodné jedinečný s nízkým oprávněním pracovního procesu nazývá "identita fondu aplikací", zde popsané dál: [ http://www.iis.net/learn/manage/configuring-security/application-pool-identities ](http://www.iis.net/learn/manage/configuring-security/application-pool-identities). Kód aplikace tuto identitu použije pro základní přístup jen pro čtení na jednotce operačního systému (jednotku D:\). To znamená, že kód aplikace může seznam běžných struktur adresářů a čtení běžných souborů na jednotce operačního systému. I když to může zdát poněkud obecné úrovni přístupu stejné adresářů a souborů jsou dostupné při zřizování role pracovního procesu v Azure hostovaná služba a číst obsah jednotky. 
+Každou aplikaci ve službě App Service běží jako identitu náhodné jedinečný s nízkým oprávněním pracovního procesu nazývá "identita fondu aplikací", zde popsané dál: [ https://www.iis.net/learn/manage/configuring-security/application-pool-identities ](https://www.iis.net/learn/manage/configuring-security/application-pool-identities). Kód aplikace tuto identitu použije pro základní přístup jen pro čtení na jednotce operačního systému (jednotku D:\). To znamená, že kód aplikace může seznam běžných struktur adresářů a čtení běžných souborů na jednotce operačního systému. I když to může zdát poněkud obecné úrovni přístupu stejné adresářů a souborů jsou dostupné při zřizování role pracovního procesu v Azure hostovaná služba a číst obsah jednotky. 
 
 <a name="multipleinstances"></a>
 

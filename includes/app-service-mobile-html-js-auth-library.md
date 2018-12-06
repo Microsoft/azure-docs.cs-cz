@@ -4,12 +4,12 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
-ms.openlocfilehash: 5f7cbdd98d25855e9b8bb102413bd71148193318
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 488fbb2acbf43ac092a7834fc25f433ef09d2b00
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50133871"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52973234"
 ---
 ### <a name="server-auth"></a>Postup: Ověřování pomocí zprostředkovatele (tok na straně serveru)
 Pokud chcete, aby funkce Mobile Apps spravovala proces ověřování ve vaší aplikaci, je třeba aplikaci zaregistrovat u vašeho zprostředkovatele identity. Potom je nutné ve službě Azure App Service nakonfigurovat ID aplikace a tajný klíč, který vám poskytne zprostředkovatel.
@@ -52,27 +52,6 @@ client.login(
 
 ```
 Tento příklad předpokládá, že token poskytnutý příslušnou sadou SDK zprostředkovatele je uložený v proměnné token.
-
-#### <a name="microsoft-account-example"></a>Příklad s účtem Microsoft
-
-Následující příklad používá sadu Live SDK, která podporuje jednotné přihlašování v aplikacích pro Windows Store pomocí účtu Microsoft:
-
-```
-WL.login({ scope: "wl.basic"}).then(function (result) {
-      client.login(
-            "microsoftaccount",
-            {"authenticationToken": result.session.authentication_token})
-      .done(function(results){
-            alert("You are now signed in as: " + results.userId);
-      },
-      function(error){
-            alert("Error: " + err);
-      });
-});
-
-```
-
-Tento příklad získá token ze služby Live Connect a zavoláním funkce login jej předá vaší službě App Service.
 
 ### <a name="auth-getinfo"></a>Postup: Získání informací o ověřeném uživateli
 

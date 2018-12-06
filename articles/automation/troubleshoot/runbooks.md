@@ -4,16 +4,16 @@ description: Zjistěte, jak řešit problémy pomocí runbooků Azure Automation
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/17/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 532d3d73c939a44678091734f2bbff22267ab6b7
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 9a60d8c17ba091da7c5eaf0e28160573d5faafa8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50094860"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963126"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -337,6 +337,27 @@ Rutiny Powershellu, které umožňují scénáře podřízené sady runbook jsou
 [Start-AzureRMAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) – Tato rutina umožňuje spuštění sady runbook a předání parametrů do runbooku
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) – Tato rutina umožňuje kontrole stavu úlohy pro každý podřízený prvek, pokud operace, které je třeba provést po dokončení podřízeného runbooku.
+
+### <a name="429"></a>Scénář: 429: frekvence požadavků je momentálně moc velká. Opakujte akci.
+
+#### <a name="issue"></a>Problém
+
+Vaše zobrazí následující chybová zpráva při spuštění `Get-AzureRmAutomationJobOutput` rutiny:
+
+```
+429: The request rate is currently too large. Please try again
+```
+
+#### <a name="cause"></a>Příčina
+
+K této chybě může dojít při získávání výstupu úlohy ze sady runbook, který má mnoho [streamy verbose](../automation-runbook-output-and-messages.md#verbose-stream).
+
+#### <a name="resolution"></a>Řešení
+
+Existují dva způsoby, jak vyřešit tuto chybu:
+
+* Upravit sadu runbook a snížení počtu datové proudy úlohy, které vydává.
+* Snižte počet datových proudů, která se má načíst při spuštění rutiny. K tomu můžete určit `-Stream Output` parametr `Get-AzureRmAutomationJobOutput` rutina pro načtení pouze výstupním datovým proudům. 
 
 ## <a name="common-errors-when-importing-modules"></a>Běžné chyby při importu modulů
 

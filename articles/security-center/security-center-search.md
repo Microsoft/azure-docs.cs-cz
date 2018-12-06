@@ -3,7 +3,7 @@ title: Hledání v Centru zabezpečení Azure | Dokumentace Microsoftu
 description: Zjistěte, jak Azure Security Center používá hledání Log Analytics k načtení a analyzovat data zabezpečení.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
-ms.author: terrylan
-ms.openlocfilehash: ec8c11dcea825dfaab19643e7aefc68a82542fa9
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: rkarlin
+ms.openlocfilehash: 19aed3d3da1250e6ad47bf9266f2e57aa255156a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301527"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963772"
 ---
 # <a name="azure-security-center-search"></a>Hledání v Centru zabezpečení Azure
 Azure Security Center používá [hledání Log Analytics](../log-analytics/log-analytics-log-searches.md) načíst a analyzovat data zabezpečení. Log Analytics obsahuje dotazovací jazyk pro rychlé načítání a slučování dat. Ze služby Security Center můžete využít hledání Log Analytics vytvářet dotazy a analyzovat shromážděná data.

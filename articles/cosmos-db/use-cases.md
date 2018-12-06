@@ -1,20 +1,18 @@
 ---
-title: Běžné případy použití a scénáře pro službu Azure Cosmos DB | Dokumentace Microsoftu
+title: Běžné případy použití a scénáře pro službu Azure Cosmos DB
 description: 'Další informace o nejvyšší pět případy použití pro službu Azure Cosmos DB: uživatel vygeneroval obsah, protokolování událostí, data katalogu, data předvolby uživatele a Internetu věcí (IoT).'
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
+author: SnehaGunda
+ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: sngun
-ms.openlocfilehash: 50bc70fa18bc8fb04e4f8117340c66665204282c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 400ce3ddb2a01db32faa7d3303c89a76c2c4649a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50251069"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52960026"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Běžné případy použití služby Azure Cosmos DB
 Tento článek poskytuje přehled o několik běžných případů použití pro službu Azure Cosmos DB.  Doporučení v tomto článku slouží jako výchozí bod při vývoji aplikace pomocí služby Cosmos DB.   

@@ -8,20 +8,25 @@ manager: jwhit
 editor: tysonn
 ms.assetid: 31572b51-6b57-4945-8208-ecfc3b5304fc
 ms.service: log-analytics
+ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2018
+ms.date: 12/04/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8493014856fcd8cbe316edc66a5fb934674f5f35
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 63423f8eca6515ebb6467e296f5336ee349c82f4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882288"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963043"
 ---
-# <a name="custom-fields-in-log-analytics"></a>Vlastní pole v Log Analytics
+# <a name="create-custom-fields-in-log-analytics"></a>Vytvoření vlastních polí v Log Analytics
+
+> [!NOTE]
+> Tento článek popisuje, jak analyzovat textových dat v Log Analytics, jako jsou shromažďovány. Existují výhody analýzy datain text dotazu, jakmile se shromáždí, jak je popsáno v [textových dat v Log Analytics analyzovat](../log-query/parse-text.md).
+
 **Vlastní pole** funkce Log Analytics můžete rozšířit existující záznamy ve službě Log Analytics tak, že přidáte vlastní prohledávatelná pole.  Vlastní pole se vyplní automaticky z dat extrahují z dalších vlastností ve stejném záznamu.
 
 ![Vlastní pole – přehled](media/custom-fields/overview.png)
@@ -45,9 +50,9 @@ Postup pro vytvoření vlastní pole v následujících částech.  V dolní č�
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Krok 1 – identifikace záznamy, které budou mít vlastní pole
-Prvním krokem je identifikace záznamy, které vám pomůžou vlastní pole.  Začínáte [prohledávání protokolů standardní](../../azure-monitor/log-query/log-query-overview.md) a pak vyberte záznam tak, aby fungoval jako model, který Log Analytics se dozvíte z.  Pokud určíte, že budete extrahovat data do vlastního pole **Průvodce extrakce pole** se otevře, kde můžete ověřit a zpřesnit kritéria.
+Prvním krokem je identifikace záznamy, které vám pomůžou vlastní pole.  Začínáte [standardním protokolu dotazu](../log-query/log-query-overview.md) a pak vyberte záznam tak, aby fungoval jako model, který Log Analytics se dozvíte z.  Pokud určíte, že budete extrahovat data do vlastního pole **Průvodce extrakce pole** se otevře, kde můžete ověřit a zpřesnit kritéria.
 
-1. Přejděte na **prohledávání protokolů** a použít [dotaz pro načtení záznamů](../../azure-monitor/log-query/log-query-overview.md) , která bude mít vlastní pole.
+1. Přejděte na **prohledávání protokolů** a použít [dotaz pro načtení záznamů](../log-query/log-query-overview.md) , která bude mít vlastní pole.
 2. Vyberte záznam, který bude používat Log Analytics tak, aby fungoval jako model pro extrahování dat k vyplnění pole vlastní.  Bude identifikovat data, která mají být extrahovány z tohoto záznamu a Log Analytics bude tyto informace slouží k určení logiku k naplnění vlastní pole pro všechny podobné záznamy.
 3. Klikněte na tlačítko vlevo od nějaká vlastnost text záznam a vyberte **extrahovat pole z**.
 4. **Se otevře Průvodce extrakce pole**, a zobrazí se v záznamu, který jste vybrali **hlavním příkladem** sloupce.  Vlastní pole bude potřeba definovat pro ty záznamy pomocí stejných hodnot ve vlastnostech, které jsou vybrány.  
@@ -80,7 +85,7 @@ Můžete zobrazit seznam všech vlastních polí ve skupině pro správu z **Up�
 Existují dva způsoby, jak odstranit vlastní pole.  První je **odebrat** možnost pro každé pole při prohlížení seznamu dokončení, jak je popsáno výše.  Další metodou je načíst záznam a klikněte na tlačítko vlevo od pole.  V nabídce bude mít možnost odstranit vlastní pole.
 
 ## <a name="sample-walkthrough"></a>Ukázkový názorný postup
-Následující části vás provede úplný příklad vytvoření vlastního pole.  V tomto příkladu získává název služby v události Windows, které označují mění se stav služby.  To závisí na události vytvořené v systémovém protokolu v počítačích s Windows pomocí Správce řízení služeb.  Pokud chcete postupovat podle tohoto příkladu, musí být [shromažďování událostí informace v systémovém protokolu](../../azure-monitor/platform/data-sources-windows-events.md).
+Následující části vás provede úplný příklad vytvoření vlastního pole.  V tomto příkladu získává název služby v události Windows, které označují mění se stav služby.  To závisí na události vytvořené v systémovém protokolu v počítačích s Windows pomocí Správce řízení služeb.  Pokud chcete postupovat podle tohoto příkladu, musí být [shromažďování událostí informace v systémovém protokolu](data-sources-windows-events.md).
 
 Jsme zadejte následující dotaz, který vrátí všechny události ze Správce řízení služeb, které mají ID události z 7036, což je událost, která znamená spouštění nebo zastavování služby.
 
@@ -139,6 +144,6 @@ Teď můžeme použít vlastní pole, stejně jako jakoukoli jinou vlastnosti z�
 ![Seskupit podle dotazu](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) sestavování dotazů pomocí vlastních polí pro kritéria.
-* Monitorování [vlastního protokolu souborů](../../azure-monitor/platform/data-sources-custom-logs.md) , která můžete analyzovat pomocí vlastní pole.
+* Další informace o [prohledávání protokolů](../log-query/log-query-overview.md) sestavování dotazů pomocí vlastních polí pro kritéria.
+* Monitorování [vlastního protokolu souborů](data-sources-custom-logs.md) , která můžete analyzovat pomocí vlastní pole.
 

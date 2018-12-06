@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/28/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c6202ff6f00412a779fb62b7a3bcc3f30ecbb25a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 504bb56a7cb3b9582d5c8d2ab1e770d55b8ca9e5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682313"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961616"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -120,7 +120,7 @@ Pokud vaší skupině pro správu System Center Operations Manageru je připojen
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Aktualizace sady pro správu nasazení
 
-Další informace o způsobu aktualizace sad management Pack řešení najdete v tématu [připojení Operations Manageru k Log Analytics](../log-analytics/log-analytics-om-agents.md).
+Další informace o způsobu aktualizace sad management Pack řešení najdete v tématu [připojení Operations Manageru k Log Analytics](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
 > Pro systémy s agentem Operations Manageru abyste mohli plně spravovat pomocí správy aktualizací, je zapotřebí agenta aktualizovat tak, aby Microsoft Monitoring Agent. Zjistěte, jak aktualizovat agenta, najdete v článku [postup upgradu agenta nástroje Operations Manager](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
@@ -158,7 +158,7 @@ Pokud agent nemůže komunikovat s Log Analytics a agent je nakonfigurován pro 
 
 Zobrazit stav nově přidaných agentů systému Linux **aktualizované** po provedení vyhodnocení. Tento proces může trvat až 6 hodin.
 
-Pokud chcete potvrdit, že skupiny pro správu Operations Manageru komunikuje s Log Analytics, najdete v článku [integrace Operations Manageru ověřit pomocí služby Log Analytics](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-log-analytics).
+Pokud chcete potvrdit, že skupiny pro správu Operations Manageru komunikuje s Log Analytics, najdete v článku [integrace Operations Manageru ověřit pomocí služby Log Analytics](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics).
 
 ## <a name="data-collection"></a>Shromažďování dat
 
@@ -583,6 +583,6 @@ Pokračujte ke kurzu se naučíte spravovat aktualizace pro virtuální počíta
 > [Správa aktualizací a oprav pro virtuální počítače Azure s Windows](automation-tutorial-update-management.md)
 
 * Použijte hledání v protokolu [Log Analytics](../log-analytics/log-analytics-log-searches.md) k zobrazení podrobných údajů o aktualizaci.
-* [Vytvořit upozornění](../monitoring-and-diagnostics/monitoring-overview-alerts.md) při důležité aktualizace jsou rozpoznány jako chybějící z počítačů nebo pokud má počítač zakázané automatické aktualizace.
+* [Vytvořit upozornění](automation-tutorial-update-management.md#configure-alerts) stav nasazení aktualizace.
 
 * Zjistěte, jak pracovat s Update managementem přes rozhraní REST API, najdete v článku [konfigurace aktualizace softwaru](/rest/api/automation/softwareupdateconfigurations)

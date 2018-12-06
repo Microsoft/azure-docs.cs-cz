@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: cca15447587fcec7253b449d93fc2f644fe6c249
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c2f018915d5e27d4cf16447e403fcb2e1b3f55a6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851039"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969511"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa upozornění protokolů pomocí Azure monitoru  
 
@@ -23,10 +23,10 @@ V tomto článku se dozvíte, jak nastavit upozornění protokolů pomocí rozhr
 - Kritérií: Konkrétní podmínky nebo logiku, která při vidět v signál, by měly aktivovat akce
 - Akce: Konkrétní volání odesílat příjemce oznámení – e-mail, SMS, webhooku atd.
 
-Termín **upozornění protokolů** k popisu výstrahy, pokud je signál vlastní dotaz na základě [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Další informace o funkci, terminologie a typy z [upozornění - Přehled protokolů](monitor-alerts-unified-log.md).
+Termín **upozornění protokolů** k popisu výstrahy, pokud je signál vlastní dotaz na základě [Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Další informace o funkci, terminologie a typy z [upozornění - Přehled protokolů](monitor-alerts-unified-log.md).
 
 > [!NOTE]
-> Data z oblíbených protokolů [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) je teď taky dostupná na platformě metriky ve službě Azure Monitor. Pro zobrazení podrobností o [upozornění metriky pro protokoly](monitoring-metric-alerts-logs.md)
+> Data z oblíbených protokolů [Azure Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) je teď taky dostupná na platformě metriky ve službě Azure Monitor. Pro zobrazení podrobností o [upozornění metriky pro protokoly](monitoring-metric-alerts-logs.md)
 
 ## <a name="managing-log-alerts-from-the-azure-portal"></a>Správa upozornění protokolů z portálu Azure portal
 
@@ -107,7 +107,7 @@ Pro **upozornění protokolů** výstrahy může být založené na:
 
     Během několika minut upozornění je aktivní a aktivuje jak bylo popsáno dříve.
 
-Uživatelé můžou také finalizován jejich analytického dotazu v [protokoly analýzy stránky na webu Azure portal](../log-analytics/log-analytics-log-search-portals.md#log-analytics-page
+Uživatelé můžou také finalizován jejich analytického dotazu v [protokoly analýzy stránky na webu Azure portal](../azure-monitor/log-query/portals.md#log-analytics-page
 ) a poslat ho chcete vytvořit upozornění přes tlačítko "nastavit upozornění - pak postupujte podle pokynů v kroku 6 a vyšší v tomto kurzu výše.
 
  ![Log Analytics – nastavení upozornění](media/alert-log/AlertsAnalyticsCreate.png)

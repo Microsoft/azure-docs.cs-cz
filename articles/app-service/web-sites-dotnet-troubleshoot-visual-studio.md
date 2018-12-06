@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 2028de68b3c50f24c46bfafd804b00e84301a9d7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: eafb4e82a319a0fdbe954757158a09aba83e9be0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256591"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972282"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s webovou aplikací ve službě Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -90,7 +90,7 @@ Obvykle nasazení webového projektu s `customErrors` příznak v souboru Web.co
 
 ![Neužitečné chybovou stránku](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png)
 
-Nejjednodušší způsob, jak najít příčinu chyby je často povolit podrobné chybové zprávy, které první na předchozích snímcích obrazovky vysvětluje, jak provést. Který vyžaduje změny v nasazeném souboru Web.config. Může upravit *Web.config* souboru v projektu a znovu nasaďte projekt nebo vytvořte [transformaci Web.config](http://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) a nasadit sestavení pro ladění, ale není tak rychlejší: v **Průzkumníka řešení** , můžete přímo zobrazit a upravovat soubory ve vzdálené webové aplikace s použitím *vzdálené zobrazení* funkce.
+Nejjednodušší způsob, jak najít příčinu chyby je často povolit podrobné chybové zprávy, které první na předchozích snímcích obrazovky vysvětluje, jak provést. Který vyžaduje změny v nasazeném souboru Web.config. Může upravit *Web.config* souboru v projektu a znovu nasaďte projekt nebo vytvořte [transformaci Web.config](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) a nasadit sestavení pro ladění, ale není tak rychlejší: v **Průzkumníka řešení** , můžete přímo zobrazit a upravovat soubory ve vzdálené webové aplikace s použitím *vzdálené zobrazení* funkce.
 
 1. V **Průzkumníka serveru**, rozbalte **Azure**, rozbalte **služby App Service**, rozbalte skupinu prostředků, webové aplikace se nachází v a potom rozbalte uzel pro vaši webovou aplikaci.
 
@@ -491,7 +491,7 @@ You can send logs to any or all of three destinations:
 
 You can specify a different severity level for each destination.
 
-Tables make it easy to view details of logs online, and they support streaming; you can query logs in tables and see new logs as they are being created. Blobs make it easy to download logs in files and to analyze them using HDInsight, because HDInsight knows how to work with blob storage. For more information, see **Hadoop and MapReduce** in [Data Storage Options (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options).
+Tables make it easy to view details of logs online, and they support streaming; you can query logs in tables and see new logs as they are being created. Blobs make it easy to download logs in files and to analyze them using HDInsight, because HDInsight knows how to work with blob storage. For more information, see **Hadoop and MapReduce** in [Data Storage Options (Building Real-World Cloud Apps with Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/data-storage-options).
 
 You currently have file system logs set to verbose level; the following steps walk you through setting up information level logs to go to storage account tables. Information level means all logs created by calling `Trace.TraceInformation`, `Trace.TraceWarning`, and `Trace.TraceError` will be displayed, but not logs created by calling `Trace.WriteLine`.
 
@@ -629,12 +629,12 @@ Další informace o řešení potíží s webovými aplikacemi ve službě Azure
 
 Nápovědu k řešení problémů s konkrétní dotaz otevřete vlákno ve jednu z následujících fór služby:
 
-* [Fórum Azure na webu ASP.NET](http://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
+* [Fórum Azure na webu ASP.NET](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
 * [Fórum Azure na webu MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
-* [StackOverflow.com](http://www.stackoverflow.com).
+* [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Ladění v sadě Visual Studio
-Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) a [tipy k ladění pomocí Visual Studio 2010](http://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
+Další informace o tom, jak použít režim ladění v sadě Visual Studio najdete v tématu [ladění v sadě Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) a [tipy k ladění pomocí Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Vzdálené ladění v Azure
 Další informace o vzdáleném ladění pro Azure web apps a WebJobs najdete v následujících zdrojích:
@@ -649,7 +649,7 @@ Pokud vaše webová aplikace používá back endové webové rozhraní API Azure
 ### <a name="tracing-in-aspnet-applications"></a>Trasování v aplikacích ASP.NET
 Na Internetu nejsou k dispozici žádné důkladné a aktuální přehled trasování rozhraní ASP.NET. Nejlepší, co můžete dělat je začít s původní úvodní materiály, které jsou napsané pro webové formuláře protože MVC nebyla ještě neexistuje a doplněk, který se novější blogu příspěvky, které se zaměřují na konkrétní problémy. Některé dobré místa, kde začít jsou následující prostředky:
 
-* [Monitorování a Telemetrie (vytváření skutečných cloudových aplikací s Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
+* [Monitorování a Telemetrie (vytváření skutečných cloudových aplikací s Azure)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   Elektronická kniha kapitoly s doporučeními pro trasování v Azure cloudové aplikace.
 * [Trasování rozhraní ASP.NET](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
   Starý, ale stále vhodným místem k zadání základní informace o subjektu.
@@ -672,12 +672,12 @@ catch (Exception ex)
 }
 ```
 
-* [Protokolování z rozhraní příkazového řádku Azure (plus balíčku Glimpse!) streamování trasování diagnostiky](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
-  Použití příkazového řádku provést co tento kurz ukazuje, jak provést v sadě Visual Studio. [Balíčku glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) je nástroj pro ladění aplikací ASP.NET.
+* [Protokolování z rozhraní příkazového řádku Azure (plus balíčku Glimpse!) streamování trasování diagnostiky](https://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
+  Použití příkazového řádku provést co tento kurz ukazuje, jak provést v sadě Visual Studio. [Balíčku glimpse](https://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) je nástroj pro ladění aplikací ASP.NET.
 * [Použití webových aplikací, protokolování a Diagnostika – s David Ebbo](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/) a [protokoly z webové aplikace – David Ebbo streamování](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   Videa Scott Hanselman a David Ebbo.
 
-Pro protokolování chyb, je použití rozšiřovatelnou platformu pro protokolování open source, jako alternativu k psaní kódu trasování [ELMAH](http://nuget.org/packages/elmah/). Další informace najdete v tématu [Scott Hanselman příspěvky o ELMAH](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
+Pro protokolování chyb, je použití rozšiřovatelnou platformu pro protokolování open source, jako alternativu k psaní kódu trasování [ELMAH](https://nuget.org/packages/elmah/). Další informace najdete v tématu [Scott Hanselman příspěvky o ELMAH](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
 
 Navíc není nutné používat technologie ASP.NET nebo `System.Diagnostics` trasování streamování získat protokoly z Azure. Streamování protokolů služby Azure webové aplikace streamuje žádné *.txt*, *.html*, nebo *.log* soubor, který najde v *LogFiles* složky. Proto můžete vytvořit vlastní protokolování systému, která zapisuje do systému souborů webové aplikace a soubor automaticky streamování a stáhnout. Vše, co musíte udělat je napsat kód aplikace, která vytvoří soubory v *d:\home\logfiles* složky.
 
@@ -686,13 +686,13 @@ Další informace o analýze protokolů webového serveru najdete v následujíc
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Nástroj pro zobrazení dat v protokolů webového serveru (*.log* soubory).
-* [Řešení potíží s problémy s výkonem služby IIS nebo chyby aplikace pomocí LogParser ](http://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [Řešení potíží s problémy s výkonem služby IIS nebo chyby aplikace pomocí LogParser ](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Úvod do nástroje analyzátoru protokolů, který můžete použít k analýze protokolů webového serveru.
 * [Příspěvky do blogu podle Robert McMurray pomocí LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [Stavový kód HTTP ve službě IIS 7.0, IIS 7.5 a IIS 8.0](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Analýza protokolů trasování chybných požadavků
-Zahrnuje webu Microsoft TechNet [pomocí trasování neúspěšných žádostí](http://www.iis.net/learn/troubleshoot/using-failed-request-tracing) oddíl, což může být užitečné pro pochopení způsobu, jak používat tyto protokoly. Nicméně tato dokumentace je zaměřen především na Konfigurace trasování chybných požadavků ve službě IIS, které nelze použít ve službě Azure Web Apps.
+Zahrnuje webu Microsoft TechNet [pomocí trasování neúspěšných žádostí](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing) oddíl, což může být užitečné pro pochopení způsobu, jak používat tyto protokoly. Nicméně tato dokumentace je zaměřen především na Konfigurace trasování chybných požadavků ve službě IIS, které nelze použít ve službě Azure Web Apps.
 
 [GetStarted]: app-service-web-get-started-dotnet.md
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: anwestg
-ms.openlocfilehash: 54ceadc8173526e8638e70c8c859109eea157fa7
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 79d78faa53962ea72178281d75cef3c2f61320b1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614034"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971500"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Přidání poskytovatele prostředků App Service pro odpojené prostředí Azure Stack zabezpečené službou AD FS
 
@@ -200,7 +200,7 @@ Chcete-li nasadit službu App Service v odpojeném prostředí, musíte nejdří
 2. V přehledu, v oblasti stav, zkontrolujte, **stav** zobrazí **připravené jsou všechny role**.
 
     ![Správa služby App Service](media/azure-stack-app-service-deploy/image12.png)
-    
+
 > [!NOTE]
 > Pokud jste se rozhodli nasadit do existující virtuální sítě a interní IP adresu pro připojení k souborového serveru, je nutné přidat odchozí pravidlo zabezpečení, povolení provozu SMB mezi podsítě pracovního procesu a souborového serveru.  Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
 > * Zdroj: žádné
@@ -221,9 +221,9 @@ Po nasazení a zaregistrujte poskytovatele prostředků App Service, otestujte a
 > [!NOTE]
 > Je potřeba vytvořit nabídku, která má obor názvů Microsoft.Web v rámci plánu. Pak musíte mít předplatné tenanta, která si předplatí v rámci této nabídky. Další informace najdete v tématu [vytvořit nabídku](azure-stack-create-offer.md) a [vytvořit plán](azure-stack-create-plan.md).
 >
-Můžete *musí* předplatného tenanta k vytvoření aplikace, které používají služby App Service ve službě Azure Stack. Jedinou možností, které správce služby můžete dokončit v rámci portálu pro správu se vztahují k správy poskytovatele prostředků App Service. Mezi tyto možnosti patří zvýšení kapacity, konfigurace zdrojů nasazení a přidání vrstvy pracovních procesů a skladové položky.
+> Můžete *musí* předplatného tenanta k vytvoření aplikace, které používají služby App Service ve službě Azure Stack. Jedinou možností, které správce služby můžete dokončit v rámci portálu pro správu se vztahují k správy poskytovatele prostředků App Service. Mezi tyto možnosti patří zvýšení kapacity, konfigurace zdrojů nasazení a přidání vrstvy pracovních procesů a skladové položky.
 >
-Od třetí technical preview k vytvoření webového rozhraní API a Azure funkce aplikace, musíte použít portál pro klienty a mít předplatné tenanta.
+> Od třetí technical preview k vytvoření webového rozhraní API a Azure funkce aplikace, musíte použít portál pro klienty a mít předplatné tenanta.
 
 1. Na portálu Azure Stack tenanta, klikněte na tlačítko **+ vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
 

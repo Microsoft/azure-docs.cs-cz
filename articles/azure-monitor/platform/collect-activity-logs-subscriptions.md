@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e4ec1ecbde04cbf843f99bdcdf36977a856c3b03
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: eccd81d50c93c2fdeb67e2536a0afa879c08a1b4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684653"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970267"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Shromažďování protokolů aktivit Azure do Log Analytics napříč předplatnými
 
@@ -344,4 +344,4 @@ Posledním krokem je kontrola pracovního prostoru Log Analytics a ověření, �
 V tomto článku jste vytvořili aplikaci logiky, která načítá protokoly aktivit Azure z centra událostí a odesílá je k analýze do Log Analytics. Další informace o vizualizaci dat v Log Analytics, včetně vytváření řídicích panelů, najdete v kurzu vizualizace dat.
 
 > [!div class="nextstepaction"]
-> [Kurz vizualizace dat prohledávání protokolů](./../../log-analytics/log-analytics-tutorial-dashboards.md)
+> [Kurz vizualizace dat prohledávání protokolů](./../../azure-monitor/learn/tutorial-logs-dashboards.md)

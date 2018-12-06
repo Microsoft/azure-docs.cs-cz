@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: a421527de275d38650c314d3722a7d2f93e8331d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 10de179c6055feb46439792ea74a0a3131f39646
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285012"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970641"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Rychlý start: Přidání účtem Microsoft do webové aplikace ASP.NET
 
@@ -56,7 +56,7 @@ Tento rychlý start používá následující balíčky:
 | [Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/) | Middleware, který aplikaci umožňuje použít OpenIdConnect pro ověřování |
 | [Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies) |Middleware, který aplikaci umožňuje udržovat relaci uživatele pomocí souborů cookie |
 | [Microsoft.Owin.Host.SystemWeb](https://www.nuget.org/packages/Microsoft.Owin.Host.SystemWeb) | Aplikacím založeným na specifikaci OWIN umožňuje spouštět se ve službě IIS pomocí kanálu požadavků ASP.NET |
-|  |  | 
+|  |  |
 
 ## <a name="step-1-set-up-your-project"></a>Krok 1: Nastavení projektu
 
@@ -104,11 +104,11 @@ Postup vytvoření *počáteční třídy* middlewaru OWIN:
 
 1. Přidejte obor názvů *OWIN* a *Microsoft.IdentityModel* do souboru `Startup.cs`:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Startup.cs?name=AddedNameSpaces "Startup.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Startup.cs?name=AddedNameSpaces "Startup.cs")]
 
 2. Nahraďte počáteční třídu následujícím kódem:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Startup.cs?name=Startup "Startup.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Startup.cs?name=Startup "Startup.cs")]
 
 <!--start-collapse-->
 > [!NOTE]
@@ -129,11 +129,11 @@ Vytvořte nový kontroler, který zpřístupní metody přihlášení a odhláš
 4.  Pojmenujte ho `HomeController` a vyberte **Přidat**.
 5.  Přidejte obory názvů **OWIN** do této třídy:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\HomeController.cs?name=AddedNameSpaces "HomeController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=AddedNameSpaces "HomeController.cs")]
 
 6. Do kontroleru přidejte následující metody, které budou zajišťovat přihlášení a odhlášení. Uděláte to tak, že prostřednictvím kódu spustíte výzvu ověřování:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\HomeController.cs?name=SigInAndSignOut "HomeController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/HomeController.cs?name=SigInAndSignOut "HomeController.cs")]
 
 ## <a name="step-6-create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Krok 6: Vytvoření domovské stránky aplikace, na které se budou uživatelé přihlašovat pomocí tlačítka pro přihlášení
 
@@ -158,11 +158,11 @@ Tento kontroler demonstruje použití atributu `[Authorize]` k ochraně kontrole
 1. Pojmenujte ho **ClaimsController**.
 1. Nahraďte kód třídy kontroleru následujícím kódem – tím se do třídy přidá atribut `[Authorize]`:
 
-    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet\Controllers\ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
+    [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
 
 <!--start-collapse-->
 > [!NOTE]
-> Protože je použit atribut `[Authorize]`, všechny metody tohoto kontroleru lze spustit pouze v případě, že je uživatel ověřen. Pokud se uživatel neověří a pokusí se o přístup ke kontroleru, OWIN spustí výzvu ověřování a přinutí uživatele, aby se ověřil. Výše uvedený kód vyhledá v kolekci deklarací identity uživatele konkrétní atributy, které jsou součástí tokenu uživatele. Tyto atributy zahrnují celé jméno uživatele a jeho uživatelské jméno, ale také subjekt globálního identifikátoru uživatele. Obsahuje také *ID tenanta*, které představuje ID organizace uživatele. 
+> Protože je použit atribut `[Authorize]`, všechny metody tohoto kontroleru lze spustit pouze v případě, že je uživatel ověřen. Pokud se uživatel neověří a pokusí se o přístup ke kontroleru, OWIN spustí výzvu ověřování a přinutí uživatele, aby se ověřil. Výše uvedený kód vyhledá v kolekci deklarací identity uživatele konkrétní atributy, které jsou součástí tokenu uživatele. Tyto atributy zahrnují celé jméno uživatele a jeho uživatelské jméno, ale také subjekt globálního identifikátoru uživatele. Obsahuje také *ID tenanta*, které představuje ID organizace uživatele.
 <!--end-collapse-->
 
 ## <a name="step-8-create-a-view-to-display-the-users-claims"></a>Krok 8: Vytvoření zobrazení pro deklarace identity uživatele
@@ -187,7 +187,7 @@ V sadě Visual Studio vytvořte nové zobrazení, ve kterém se budou zobrazovat
     <add key="ClientId" value="Enter_the_Application_Id_here" />
     <add key="RedirectUrl" value="Enter_the_Redirect_Url_here" />
     <add key="Tenant" value="common" />
-    <add key="Authority" value="https://login.microsoftonline.com/{0}" /> 
+    <add key="Authority" value="https://login.microsoftonline.com/{0}" />
     ```
 2. V Průzkumníku řešení vyberte projekt a přejděte do okna <i>Vlastnosti</i> (pokud toto okno není zobrazené, stiskněte F4).
 3. Možnost Protokol SSL je povolený změňte na <code>True</code>.
@@ -227,10 +227,12 @@ Další informace o tomto nastavení a konceptu aplikací s více tenanty najdet
 Tato možnost představuje společný scénář pro obchodní aplikace.
 
 Pokud chcete, aby aplikace povolovala přihlášení pouze z účtů, které patří do konkrétní instance Azure AD (včetně *účtů hostů* dané instance), postupujte takto:
+
 1. V parametru `Tenant` v souboru *web.config* zadejte místo hodnoty `Common` název tenanta organizace, například *contoso.onmicrosoft.com*.
 1. Změňte argument `ValidateIssuer` v [*počáteční třídě OWIN*](#configure-the-authentication-pipeline) na `true`.
 
 Pokud chcete povolit přihlášení pouze uživatelů, kteří jsou uvedeni v seznamu konkrétních organizací, postupujte takto:
+
 1. Nastavte `ValidateIssuer` na true.
 1. K zadání seznamu organizací použijte parametr `ValidIssuers`.
 

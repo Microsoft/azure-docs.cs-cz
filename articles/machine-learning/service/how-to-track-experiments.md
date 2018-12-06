@@ -8,66 +8,55 @@ ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/24/2018
-ms.openlocfilehash: 9af7e57db0e465f59f43c93d0b5f6ec220836ff7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/04/2018
+ms.openlocfilehash: 44c5cce103996f1774fb87b46760c23dc9ab575c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308184"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957704"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
 Ve službě Azure Machine Learning může sledovat vaše experimenty a monitorovat metriky vylepšit proces vytváření modelu. V tomto článku se dozvíte o různých způsobech přidání protokolování do skriptu školení, jak odeslání experimentu s **start_logging** a **ScriptRunConfig**, jak zkontrolovat průběh spuštěné úlohy a postup zobrazení výsledků spuštění. 
 
->[!NOTE]
-> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.1.74 
 
 ## <a name="list-of-training-metrics"></a>Seznam metrik školení 
 
-Pro spuštění při školení experiment lze přidat následující metriky. Chcete-li zobrazit podrobnější seznam co lze sledovat na běh, najdete v článku [referenční dokumentaci k sadě SDK](https://aka.ms/aml-sdk).
+Pro spuštění při školení experiment lze přidat následující metriky. Chcete-li zobrazit podrobnější seznam co lze sledovat na běh, najdete v článku [spuštění třídy referenční dokumentaci](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
-|Typ| Funkce jazyka Python | Příklad: | Poznámky|
-|----|:----|:----|:----|
-|Skalární hodnoty | `run.log(name, value, description='')`| `run.log("accuracy", 0.95) ` |Protokol a číselné nebo řetězcová hodnota pro spouštění s daným názvem. Protokolování metriky o spuštění způsobí, že tuto metriku, který bude uložen do běhu záznam v experimentu.  Stejné metriky můžete přihlásit více než jednou v rámci spuštěný proces, výsledek se považuje za vektor tuto metriku.|
-|Seznamy| `run.log_list(name, value, description='')`| `run.log_list("accuracies", [0.6, 0.7, 0.87])` | Přihlaste se seznam hodnot pro spouštění s daným názvem.|
-|Řádek| `run.log_row(name, description=None, **kwargs)`| `run.log_row("Y over X", x=1, y=0.4)` | Pomocí *log_row* vytvoří metriku s více sloupců, jak je popsáno v kwargs. Každý pojmenovaný parametr generuje sloupec s hodnotou.  *log_row* může být volána jednou pro přihlášení libovolné řazené kolekce členů nebo více než jednou ve smyčce pro generování celou tabulku.|
-|Table| `run.log_table(name, value, description='')`| `run.log_table("Y over X", {"x":[1, 2, 3], "y":[0.6, 0.7, 0.89]})` | Přihlaste se na objekt slovníku běh s daným názvem. |
-|Image| `run.log_image(name, path=None, plot=None)`| `run.log_image("ROC", plt)` | Přihlaste se image spusťte záznam. Použití k protokolování soubor obrázku nebo matplotlib log_image vykreslení spustit.  Tyto Image budou viditelné a srovnatelné v běhu záznamu.|
-|Označení spuštění| `run.tag(key, value=None)`| `run.tag("selected", "yes")` | Označte běh s klíčem řetězce a volitelný řetězec.|
-|Nahrát soubor nebo adresář|`run.upload_file(name, path_or_stream)`| Run.upload_file ("best_model.pkl", ". / model.pkl") | Nahrání souboru do běhu záznamu. Spuštění automaticky zachytávací soubor v zadané výstupní adresář, kde je použit výchozí ". / výstupy" pro většinu spuštění typy.  Není zadána upload_file použijte jenom v případě, že budete muset nahrát další soubory nebo výstupní adresář. Doporučujeme přidat `outputs` název tak, že nahrán do adresáře výstupy. Můžete vytvořit seznam všech souborů, které jsou spojeny s tímto spustit záznam podle volá `run.get_file_names()`|
+|Typ| Funkce jazyka Python | Poznámky|
+|----|:----|:----|
+|Skalární hodnoty |Funkce:<br>`run.log(name, value, description='')`<br><br>Příklad:<br>Run.log ("přesnost", 0,95) |Protokol a číselné nebo řetězcová hodnota pro spouštění s daným názvem. Protokolování metriky o spuštění způsobí, že tuto metriku, který bude uložen do běhu záznam v experimentu.  Stejné metriky můžete přihlásit více než jednou v rámci spuštěný proces, výsledek se považuje za vektor tuto metriku.|
+|Seznamy|Funkce:<br>`run.log_list(name, value, description='')`<br><br>Příklad:<br>Run.log_list ("přesností" [0.6, 0,7, 0.87]) | Přihlaste se seznam hodnot pro spouštění s daným názvem.|
+|Řádek|Funkce:<br>"run.log_row (název, popis = None, ** kwargs)<br>Příklad:<br>Run.log_row ("Y nad X", x = 1, y = 0.4) | Pomocí *log_row* vytvoří metriku s více sloupců, jak je popsáno v kwargs. Každý pojmenovaný parametr generuje sloupec s hodnotou.  *log_row* může být volána jednou pro přihlášení libovolné řazené kolekce členů nebo více než jednou ve smyčce pro generování celou tabulku.|
+|Table|Funkce:<br>`run.log_table(name, value, description='')`<br><br>Příklad:<br>Run.log_table ("Y nad X", {"x": [1, 2, 3], "y": [0.6, 0,7, 0.89]}) | Přihlaste se na objekt slovníku běh s daným názvem. |
+|Image|Funkce:<br>`run.log_image(name, path=None, plot=None)`<br><br>Příklad:<br>Run.log_image ("ROC", čas načtení stránky) | Přihlaste se image spusťte záznam. Použití k protokolování soubor obrázku nebo matplotlib log_image vykreslení spustit.  Tyto Image budou viditelné a srovnatelné v běhu záznamu.|
+|Označení spuštění|Funkce:<br>`run.tag(key, value=None)`<br><br>Příklad:<br>Run.tag ("vybrat", "Ano") | Označte běh s klíčem řetězce a volitelný řetězec.|
+|Nahrát soubor nebo adresář|Funkce:<br>`run.upload_file(name, path_or_stream)`<br> <br> Příklad:<br>Run.upload_file ("best_model.pkl", ". / model.pkl") | Nahrání souboru do běhu záznamu. Spuštění automaticky zachytávací soubor v zadané výstupní adresář, kde je použit výchozí ". / výstupy" pro většinu spuštění typy.  Není zadána upload_file použijte jenom v případě, že budete muset nahrát další soubory nebo výstupní adresář. Doporučujeme přidat `outputs` název tak, že nahrán do adresáře výstupy. Můžete vytvořit seznam všech souborů, které jsou spojeny s tímto spustit záznam podle volá `run.get_file_names()`|
 
 > [!NOTE]
 > Metriky pro skaláry, seznamy, řádků a tabulky může mít typ: float, celé číslo nebo řetězec.
 
-## <a name="log-metrics-for-experiments"></a>Protokolujte metriky pro experimentů
+## <a name="start-logging-metrics"></a>Spustit protokolování metrik
 
 Pokud chcete sledovat nebo sledovat experimentu, musíte přidat kód pro spuštění protokolování při odesílání příkazu run. Následují způsoby, jak aktivovat spuštění odeslání:
 * __Run.start_logging__ – přidání funkce protokolování do trénovací skript a spustit relaci interactive protokolování v zadané experimentu. **start_logging** vytvoří interaktivní spuštění pro použití ve scénářích, jako je například poznámkových bloků. Všechny metriky, které jsou zaznamenány během relace jsou přidány do běhu záznam v experimentu.
 * __ScriptRunConfig__ – přidání funkce protokolování do trénovací skript a načíst složku celý skript s spuštění.  **ScriptRunConfig** je třída pro nastavení konfigurace pro skript spustí. Pomocí této možnosti přidáte kód monitorování, abyste dostávali oznámení o dokončení nebo chcete-li získat vizuální pomůcky pro monitorování.
 
-## <a name="set-up-the-workspace-and-experiment"></a>Nastavení pracovního prostoru a experimentu
-Před přidáním protokolování a odeslání experimentu, musíte vytvořit pracovní prostor a experimentu.
+## <a name="set-up-the-workspace"></a>Nastavit pracovní prostor
+Před přidáním protokolování a odeslání experimentu, musíte nastavit pracovní prostor.
 
 1. Načtení pracovního prostoru. Další informace o nastavení konfigurace pracovního prostoru, postupujte [rychlý Start](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started).
 
   ```python
-  from azureml.core import Workspace, Run
+  from azureml.core import Experiment, Run, Workspace
   import azureml.core
   
   ws = Workspace(workspace_name = <<workspace_name>>,
                subscription_id = <<subscription_id>>,
                resource_group = <<resource_group>>)
    ```
-
-2. Vytvoření experimentu.
-
-  ```python
-  from azureml.core import Experiment
-
-  # make up an arbitrary name
-  experiment_name = 'train-in-notebook'
-  ```
   
 ## <a name="option-1-use-startlogging"></a>Možnost 1: Použití start_logging
 
@@ -102,22 +91,34 @@ Následující příklad trénovat jednoduchý model skriptu sklearn Ridge míst
 2. Přidat sledování experimentu pomocí sady SDK služby Azure Machine Learning a nahrajte trvalý modelu do experimentu, spusťte záznam. Následující kód přidá značky, protokoly a nahraje soubor modelu pro běh experimentu.
 
   ```python
-  experiment = Experiment(workspace = ws, name = experiment_name)
-  run = experiment.start_logging()
-  run.tag("Description","My first run!")
+  # Get an experiment object from Azure Machine Learning
+  experiment = Experiment(workspace = ws, name = "train-within-notebook")
+  
+  # Create a run object in the experiment
+  run = experiment.start_logging()# Log the algorithm parameter alpha to the run
   run.log('alpha', 0.03)
-  reg = Ridge(alpha = 0.03)
-  reg.fit(data['train']['X'], data['train']['y'])
-  preds = reg.predict(data['test']['X'])
-  run.log('mse', mean_squared_error(preds, data['test']['y']))
-  joblib.dump(value = reg, filename = 'model.pkl')
-  # Upload file directly to the outputs folder
-  run.upload_file(name = 'outputs/model.pkl', path_or_stream = './model.pkl')
 
+  # Create, fit, and test the scikit-learn Ridge regression model
+  regression_model = Ridge(alpha=0.03)
+  regression_model.fit(data['train']['X'], data['train']['y'])
+  preds = regression_model.predict(data['test']['X'])
+
+  # Output the Mean Squared Error to the notebook and to the run
+  print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
+  run.log('mse', mean_squared_error(data['test']['y'], preds))
+
+  # Save the model to the outputs directory for capture
+  joblib.dump(value=regression_model, filename='outputs/model.pkl')
+
+  # Take a snapshot of the directory containing this notebook
+  run.take_snapshot('./')
+
+  # Complete the run
   run.complete()
+  
   ```
 
-Skript končí ```run.complete()```, spustit označí jako dokončenou.  To se obvykle používá ve scénářích interaktivní poznámkového bloku.
+Skript končí ```run.complete()```, spustit označí jako dokončenou.  Tato funkce se obvykle používá ve scénářích interaktivní poznámkového bloku.
 
 ## <a name="option-2-use-scriptrunconfig"></a>Možnost 2: Použití ScriptRunConfig
 
@@ -125,7 +126,7 @@ Skript končí ```run.complete()```, spustit označí jako dokončenou.  To se o
 
 Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Provádí jednoduché parametr parametrů k vyčištění přes alfa hodnoty modelu, který má zachytávat metriky a trénované modely ve spuštění v rámci testu. V příkladu spustí místně prostředí spravované uživatele. 
 
-1. Vytvoření trénovací skript. Tento mechanismus využívá ```%%writefile%%``` vypsat školení kódu do složky skriptu jako ```train.py```.
+1. Vytvoření trénovací skript. Tento kód používá ```%%writefile%%``` vypsat školení kódu do složky skriptu jako ```train.py```.
 
   ```python
   %%writefile $project_folder/train.py
@@ -208,7 +209,8 @@ Tento příklad rozšiřuje základní model skriptu sklearn Ridge výše. Prov�
 
   ```python
   from azureml.core import ScriptRunConfig
-
+  
+  experiment = Experiment(workspace=ws, name="train-on-local")
   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
   run = experiment.submit(src)
   ```
@@ -221,11 +223,28 @@ Při použití **ScriptRunConfig** spuštěním metody k odeslání, můžete sl
 1. Při čekání na dokončení běhu zobrazte widgetu Jupyter.
 
   ```python
-  from azureml.train.widgets import RunDetails
+  from azureml.widgets import RunDetails
   RunDetails(run).show()
   ```
 
   ![Snímek obrazovky aplikace Jupyter notebook widgetu](./media/how-to-track-experiments/widgets.PNG)
+
+2. **[Pro automatizované strojového učení spuštění]**  Pro přístup k grafy z předchozích spuštění. Nahraďte prosím `<<experiment_name>>` s názvem odpovídající experiment:
+
+   ``` 
+   from azureml.train.widgets import RunDetails
+   from azureml.core.run import Run
+
+   experiment = Experiment (workspace, <<experiment_name>>)
+   run_id = 'autoML_my_runID' #replace with run_ID
+   run = Run(experiment, run_id)
+   RunDetails(run).show()
+   ```
+
+  ![Snímek obrazovky aplikace Jupyter notebook widgetu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+
+
+Chcete-li zobrazit další podrobnosti klikněte na kanál ke kanálu chcete data prozkoumat v tabulce a grafy se vykreslují v místní nabídce na webu Azure Portal.
 
 ### <a name="get-log-results-upon-completion"></a>Získání protokolu výsledků při dokončení
 
@@ -235,19 +254,20 @@ Model školení a monitorování probíhá na pozadí tak, aby můžete spoušt�
 
 Metriky trénovaný model použití lze zobrazit ```run.get_metrics()```. Teď můžete získat všechny metriky, které byly zaznamenány v příkladu výše k určení nejvhodnějšího modelu.
 
-<a name='view-the-experiment-in-the-web-portal'/>
+<a name="view-the-experiment-in-the-web-portal"></a>
 ## <a name="view-the-experiment-in-the-azure-portal"></a>Zobrazení experimentu na webu Azure Portal
 
-Po dokončení spuštění experimentu můžete přejít na zaznamenané experiment spustit záznam. Můžete to provést dvěma způsoby:
+Po dokončení spuštění experimentu můžete přejít na zaznamenané experiment spustit záznam. Máte přístup k historii dvěma způsoby:
 
 * Získat adresu URL pro spuštění přímo ```print(run.get_portal_url())```
-* Zobrazit podrobnosti o spuštění, odešlete název běhu (v tomto případě ```run```). Toto odkazuje na název experimentu, ID, typ, stav, stránka s podrobnostmi o, odkaz na webu Azure portal a odkaz na dokumentaci.
+* Zobrazit podrobnosti o spuštění, odešlete název běhu (v tomto případě ```run```). Tímto způsobem můžete odkazuje na název experimentu, ID, typ, stav, stránka s podrobnostmi o, odkaz na webu Azure portal a odkaz na dokumentaci.
 
 Odkaz pro spuštění disponuje přímo na stránku Podrobnosti o spuštění na webu Azure Portal. Zde můžete zobrazit vlastnosti, sledované metriky, obrázky a grafy, které se protokolují v experimentu. V tomto případě jsme do protokolu zapíše MSE a hodnoty alfa.
 
   ![Snímek obrazovky se podrobnosti o spuštění na webu Azure Portal](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 Můžete také zobrazit všechny výstupy a protokoly pro spuštění nebo stáhnout snímek experiment, který jste odeslali, složce experimentu můžete sdílet s ostatními.
+
 ### <a name="viewing-charts-in-run-details"></a>Zobrazení grafů v podrobnosti o spuštění
 
 Existují různé způsoby, jak používat protokolování rozhraní API pro různé typy záznamů metrik během spuštění a zobrazit jako grafy na webu Azure Portal. 
@@ -259,13 +279,146 @@ Existují různé způsoby, jak používat protokolování rozhraní API pro rů
 |Opakovaným odesláním řádek 2 číselné sloupce|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|Dvě proměnné spojnicový graf|
 |Tabulku protokolu s 2 číselné sloupce|`run.log_table(name='Sine Wave', value=sines)`|Dvě proměnné spojnicový graf|
 
+<a name="auto"></a>
+## <a name="understanding-automated-ml-charts"></a>Principy automatického ML grafy
+
+Po odeslání automatizované úlohy ML v poznámkovém bloku, historie tyto spouštění najdete v vaší služby pracovního prostoru machine learning. 
+
+Další informace:
++ [Grafy a křivky pro modelů klasifikace](#classification)
++ [Tabulky a grafy pro regresní modely](#regression)
++ [Model popisují možnosti](#model-explain-ability-and-feature-importance)
+
+
+### <a name="how-to-see-run-charts"></a>Jak zobrazit grafy spuštění:
+
+1. Přejděte do svého pracovního prostoru. 
+
+1. Vyberte **experimenty** úplně vlevo panelu pracovního prostoru.
+
+  ![Snímek obrazovky nabídky experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
+
+1. Vyberte experiment, které vás zajímají.
+
+  ![Snímek obrazovky nabídky experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+
+1. V tabulce vyberte číslo spustit.
+
+   ![Snímek obrazovky nabídky experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
+
+1.  V tabulce vyberte počet opakování pro model, který byste chtěli dále zkoumat.
+
+   ![Snímek obrazovky nabídky experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
+
+
+
+### <a name="classification"></a>Klasifikace
+
+Pro každý model klasifikace, který vytvoříte pomocí automatizovaných strojového učení služby Azure Machine Learning zobrazí se následující grafy: 
++ [Chybová matice](#confusion-matrix)
++ [Graf přesnosti a úplnosti](#precision-recall-chart)
++ [Příjemce provozní vlastnosti (nebo roc s více TŘÍDAMI)](#ROC)
++ [Výtah křivky](#lift-curve)
++ [Zvýšení křivky](#gains-curve)
++ [Diagram kalibrací](#calibration-plot)
+
+#### <a name="confusion-matrix"></a>Chybová matice
+
+Chybová matice se používá k popisu výkonu model klasifikace. Každý řádek zobrazí instancí třídy true a každý sloupec představuje instance předpokládaná třída. Chybová matice zobrazí správně klasifikované popisky a nesprávně klasifikované popisky pro daný model.
+
+Azure Machine Learning pro klasifikaci problémy automaticky poskytuje chybová matice pro každý model, který je sestaven. Pro každý chybovou matici automatizované ML zobrazí správně klasifikované popisky jako popisky zelené a nesprávně klasifikovaný jako červený. Velikost kruhu představuje počet vzorků v této přihrádky. Kromě toho frekvence počet každý předpokládané popisek a každému popisku true je součástí sousední pruhové grafy. 
+
+Příklad 1: Model klasifikace se špatná přesnost ![model klasifikace s nízký přesností](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix1.PNG)
+
+Příklad 2: Model klasifikace s vysokou přesností (ideální) ![model klasifikace s vysokou přesností](./media/how-to-track-experiments/azure-machine-learning-auto-ml-confusion_matrix2.PNG)
+
+
+#### <a name="precision-recall-chart"></a>Graf přesnosti a úplnosti
+
+Pomocí tohoto grafu lze porovnávat přesnosti a úplnosti křivky pro každý model k určení, které model má přijatelné vztah mezi přesnosti a odvolání pro vaše konkrétní obchodní problém. Tento graf ukazuje průměrnou přesnosti a úplnosti – makro, Micro průměrné přesnosti a úplnosti a přesnosti a úplnosti přidružené všechny třídy modelu.
+
+Termín přesnosti představuje tuto možnost pro třídění k označení všech instancí správně. Odvolání představuje možnost pro třídění a vyhledat všechny instance konkrétní popisek. Přesnosti a úplnosti křivky znázorňuje vztah mezi tyto dva pojmy. V ideálním případě by modelu mají 100 % přesností a 100 % přesností.
+
+Příklad 1: Klasifikace model s nízkou přesnost a nízkou spojené s vracením ![model klasifikace s nízkou přesnost a nízkou odvolání](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall1.PNG)
+
+Příklad 2: Model klasifikace s přibližně 100 % přesností a ~ 100 % odvolání (ideální) ![spojené s vracením a vysokou přesnost modelu klasifikace](./media/how-to-track-experiments/azure-machine-learning-auto-ml-precision_recall2.PNG)
+
+#### <a name="roc"></a>ROC S VÍCE TŘÍDAMI
+
+Příjemce provozních charakteristik (nebo roc s více TŘÍDAMI) je vykreslení správně klasifikované popisků vs. nesprávně klasifikované popisky konkrétním modelu. Při trénování modelů na datové sady s vysokou posun, protože se nezobrazí falešně pozitivní popisky, může být méně informativní křivka roc s více TŘÍDAMI.
+
+Příklad 1: Klasifikace model s nízkou hodnotu true popisky a vysokou hodnotu false popisky ![klasifikační model s nízkou hodnotu true popisky a vysokou hodnotu false popisky](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc1.PNG)
+
+Příklad 2: Model klasifikace s vysokou hodnotu true popisky a nízkou hodnotu false popisky ![model klasifikace s vysokým true popisky a popisky s nízkou hodnotu false](./media/how-to-track-experiments/azure-machine-learning-auto-ml-roc2.PNG)
+
+#### <a name="lift-curve"></a>Výtah křivky
+
+Můžete porovnat výtah modelu u automaticky vytvořených službou Azure Machine Learning do směrného plánu chcete-li zobrazit takto získané místo hodnoty tohoto konkrétního modelu.
+
+Výtah grafy se používají k vyhodnocení výkonu modelu klasifikace. Ukazuje, jak mnohem lépe můžete očekávat s modelem porovnání bez modelu. 
+
+Příklad 1: Model provádí horší, než náhodný výběr modelu ![model klasifikace, který horší, než náhodný výběr modelu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve1.PNG)
+
+Příklad 2: Model vrací lepší výsledky než model náhodný výběr ![model klasifikace, který vrací lepší výsledky](./media/how-to-track-experiments/azure-machine-learning-auto-ml-lift_curve2.PNG)
+
+#### <a name="gains-curve"></a>Zvýšení křivky
+
+Graf zvýšení nastavení vyhodnocuje výkon model klasifikace podle každá část data. Ukazuje pro každý percentilu sady dat, kolik lépe můžete očekávat k provádění porovnání proti náhodný výběr modelu.
+
+Použijte graf kumulativní zisky si můžete vybrat klasifikace odříznutí pomocí procenta, který odpovídá požadované zisk z modelu. Tyto informace obsahuje jiný způsob řešení prohlížení výsledků v související tabulce.
+
+Příklad 1: Model klasifikace s minimální zisk ![model klasifikace s minimálními zisk](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve1.PNG)
+
+Příklad 2: Model klasifikace se významné zvýšení ![model klasifikace s významné zvýšení](./media/how-to-track-experiments/azure-machine-learning-auto-ml-gains_curve2.PNG)
+
+#### <a name="calibration-plot"></a>Diagram kalibrací
+
+Všechny klasifikace problémy můžete zkontrolovat řádku kalibrací micro průměr, – makro průměr a každá třída v daném prediktivního modelu. 
+
+Vykreslení kalibrací slouží k zobrazení spolehlivosti prediktivního modelu. Dělá to tak, že znázorňující vztah mezi pravděpodobnost předpovězené a skutečný pravděpodobnosti, kde "pravděpodobnost" představuje pravděpodobnost, že konkrétní instanci patří pod některé popiskem. Dobře kalibrované modelu v souladu s y = x řádku, kde je přiměřeně jisti jeho předpovědi. Model typu over-pass-the důvěrné v souladu s y = 0 řádku, kde pravděpodobnost předpovězené existuje, ale neexistuje žádný skutečný pravděpodobnosti.
+
+Příklad 1: Dobře kalibrované modelu ![ dobře kalibrované modelu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve1.PNG)
+
+Příklad 2: Model typu over-pass-the důvěrné ![model typu over-pass-the důvěrné](./media/how-to-track-experiments/azure-machine-learning-auto-ml-calib_curve2.PNG)
+
+### <a name="regression"></a>Regrese
+Pro každý regresní model programujte automatizované strojového učení služby Azure Machine Learning, zobrazí se následující grafy: 
++ [Předpokládaná vs. Hodnota TRUE](#pvt)
++ [Histogram zbytků](#histo)
+
+<a name="pvt"></a>
+
+#### <a name="predicted-vs-true"></a>Předpokládaná vs. True
+
+Předpokládaná vs. Hodnota TRUE označuje vztah mezi předpovězené hodnoty a její usnadňuje korelování hodnotu true pro regresní problém. Tento graf lze použít k měření výkonu modelu jako blíže k y = x řádku predikované hodnoty jsou, tím lepší přesnost prediktivního modelu.
+
+Po každém spuštění zobrazí se předpokládané vs. true grafu pro každou regresní model. K ochraně dat o ochraně osobních údajů, hodnoty jsou rozdělený na intervaly společně a velikost každé z nich se zobrazuje jako pruhový graf v dolní části oblasti grafu. Prediktivní model, můžete porovnat s označením vystínovat oblast s okraji chyba proti ideální hodnotě, kde by mělo být modelu.
+
+Příklad 1: Regresní model s nízkou přesnost předpovědi ![regresní model s nízkou přesnost předpovědi](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression1.PNG)
+
+Příklad 2: Regresní model s vysokou přesností v jeho predikcí ![regresní model s vysokou přesností v jeho predikcí](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression2.PNG)
+
+<a name="histo"></a>
+
+#### <a name="histogram-of-residuals"></a>Histogram zbytků
+
+Zbývající představuje zjištěnou y – předpokládaná y. Zobrazíte okraj chyby s nízkou posun by měl mít tvar histogram zbytky křivku zvonku zaměřená na 0. 
+
+Příklad 1: Regresní model podle jeho chybám ![SA regresní model s posun v svoje chyby.](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression3.PNG)
+
+Příklad 2: Regresní model s více rovnoměrnou distribuci přenosu chyb ![regresní model s více rovnoměrnou distribuci přenosu chyb](./media/how-to-track-experiments/azure-machine-learning-auto-ml-regression4.PNG)
+
+### <a name="model-explain-ability-and-feature-importance"></a>Model význam popisují možnosti a funkce
+
+Funkce význam poskytuje skóre, která určuje, jak se jednotlivé funkce v procesu vytváření modelu. Můžete zkontrolovat skóre význam funkce pro model celkové stejně jako na třídu v prediktivním modelem. Zobrazí se na funkci jak si vede význam pro každou třídu a celková.
+
+![Možnost vysvětlit funkce](./media/how-to-track-experiments/azure-machine-learning-auto-ml-feature_explain1.PNG)
+
 ## <a name="example-notebooks"></a>Příklad poznámkové bloky
 Tyto poznámkové bloky předvedení konceptů v tomto článku:
-* [01.Getting-Started/01.Train-within-notebook/01.Train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
-* [01.Getting-Started/02.Train-on-local/02.Train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
-* [01.Getting-Started/06.Logging-API/06.Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/06.logging-api/06.logging-api.ipynb)
-
-Získejte tyto poznámkové bloky:
+* [How-to-use-azureml/Training/Train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training\train-within-notebook)
+* [How-to-use-azureml/Training/Train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+* [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

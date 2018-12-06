@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Amazon Redshift pomocí Azure Data Factory | Microsoft Docs
-description: Další informace o tom, jak zkopírovat data z Amazon Redshift do úložiště podporované jímku dat pomocí Azure Data Factory.
+title: Kopírování dat z Amazon Redshift pomocí Azure Data Factory | Dokumentace Microsoftu
+description: Další informace o tom, jak kopírovat data z Amazon Redshift úložišť dat podporovaných jímky pomocí služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6d36733b63645fd86580ccdc5af756739f77338c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 686b602828856e75300152c41bfe4c35cd6a8219
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048141"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970157"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -26,41 +26,41 @@ ms.locfileid: "37048141"
 > * [Aktuální verze](connector-amazon-redshift.md)
 
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Redshift Amazon. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z Amazon Redshift. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 
-## <a name="supported-capabilities"></a>Podporované možnosti
+## <a name="supported-capabilities"></a>Podporované funkce
 
-Data můžete zkopírovat z Amazon Redshift do úložiště dat žádné podporované jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitě kopírování najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
+Kopírování dat z Amazon Redshift do jakékoli podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných aktivitou kopírování jako zdroje a jímky, najdete v článku [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats) tabulky.
 
-Konkrétně tento konektor Amazon Redshift podporuje načítání dat z Redshift pomocí dotazu nebo integrovanou podporu Redshift uvolnění.
+Konkrétně tento konektor Amazon Redshift podporuje načítání dat z dotazu nebo integrovaná podpora uvolnění Redshift Redshift.
 
 > [!TIP]
-> K dosažení nejlepšího výkonu dosáhnete při kopírování velkých objemů dat z Redshift, zvažte použití předdefinované uvolnění Redshift prostřednictvím Amazon S3. V tématu [uvolnění použít ke zkopírování dat z Amazon Redshift](#use-unload-to-copy-data-from-amazon-redshift) podrobnosti.
+> K dosažení nejlepšího výkonu při kopírování velkých objemů dat z Redshift, zvažte použití předdefinovaných uvolnění Redshift prostřednictvím Amazon S3. Zobrazit [uvolnění použít ke zkopírování dat z Amazon Redshift](#use-unload-to-copy-data-from-amazon-redshift) podrobné informace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud kopírujete úložiště dat k místním datům pomocí [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md), zajistit přístup do clusteru Amazon Redshift integrace Runtime (použijte IP adresu počítače). V tématu [autorizovat přístup ke clusteru](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) pokyny.
-* Pokud data kopírujete k úložišti dat Azure, najdete v části [rozsahy IP Center dat Azure](https://www.microsoft.com/download/details.aspx?id=41653) pro výpočetní IP adresy a rozsahy SQL používaných dat Azure centra.
+* Pokud kopírujete úložiště dat k místním datům pomocí [modul Integration Runtime](create-self-hosted-integration-runtime.md), udělte přístup ke clusteru Amazon Redshift prostředí Integration Runtime (použijte IP adresu počítače). Zobrazit [povolit přístup ke clusteru](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) pokyny.
+* Pokud se kopírování dat do úložiště dat Azure, přečtěte si téma [rozsahy IP datového centra Azure](https://www.microsoft.com/download/details.aspx?id=41653) Compute IP adres a rozsahů SQL využívají Azure data centra.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Následující části obsahují podrobnosti o vlastnosti, které slouží k určení konkrétní entity služby Data Factory ke konektoru Amazon Redshift.
+Následující části obsahují podrobnosti o vlastnostech, které se používají k definování entit služby Data Factory konkrétní konektor Amazon Redshift.
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro službu Amazon Redshift propojené služby jsou podporovány následující vlastnosti:
+Amazon Redshift propojené služby jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu musí být nastavena na: **AmazonRedshift** | Ano |
+| type | Vlastnost type musí být nastavená na: **AmazonRedshift** | Ano |
 | server |IP adresa nebo název hostitele serveru Amazon Redshift. |Ano |
-| port |Číslo portu TCP, který používá server Amazon Redshift naslouchat pro připojení klientů. |Ne, výchozí hodnota je 5439 |
+| port |Číslo portu TCP, které server Amazon Redshift používá k naslouchání pro připojení klientů. |Ne, výchozí hodnota je 5439 |
 | databáze |Název databáze Amazon Redshift. |Ano |
 | uživatelské jméno |Jméno uživatele, který má přístup k databázi. |Ano |
-| heslo |Heslo pro uživatelský účet. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+| heslo |Heslo pro uživatelský účet. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít prostředí Azure Integration Runtime nebo modul Integration Runtime. Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 **Příklad:**
 
@@ -90,13 +90,13 @@ Pro službu Amazon Redshift propojené služby jsou podporovány následující 
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností nepodporuje Amazon Redshift datovou sadu.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady najdete v článku datové sady. Tato část obsahuje seznam vlastností, které podporuje datová sada Amazon Redshift.
 
-Ke zkopírování dat z Amazon Redshift, nastavte vlastnost typu datové sady, která **RelationalTable**. Podporovány jsou následující vlastnosti:
+Ke zkopírování dat z Amazon Redshift, nastavte vlastnost typ datové sady na **RelationalTable**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typu datové sady musí být nastavena na: **RelationalTable** | Ano |
+| type | Vlastnost typ datové sady, musí být nastavena na: **RelationalTable** | Ano |
 | tableName | Název tabulky v Amazon Redshift. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
@@ -118,21 +118,21 @@ Ke zkopírování dat z Amazon Redshift, nastavte vlastnost typu datové sady, k
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivity, najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností nepodporuje Amazon Redshift zdroje.
+Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností zdroje Amazon Redshift podporována.
 
-### <a name="amazon-redshift-as-source"></a>Amazon Redshift jako zdroj
+### <a name="amazon-redshift-as-source"></a>Jako zdroj Amazon Redshift
 
 Ke zkopírování dat z Amazon Redshift, nastavte typ zdroje v aktivitě kopírování do **AmazonRedshiftSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **AmazonRedshiftSource** | Ano |
-| query |Čtení dat pomocí vlastního dotazu. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ne (když je určena "tableName" v datové sadě) |
-| redshiftUnloadSettings | Skupina vlastností při použití Amazon Redshift uvolnění. | Ne |
-| s3LinkedServiceName | Odkazuje Amazon S3 k-be používané jako dočasné úložiště tak, že zadáte název propojené služby typu "AmazonS3". | Ano, pokud používáte uvolnění |
-| bucketName | Uveďte sady S3 k uložení dat o dočasné. Pokud není zadaná, služba Data Factory ho generuje automaticky.  | Ano, pokud používáte uvolnění |
+| type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **AmazonRedshiftSource** | Ano |
+| query |Použijte vlastní dotaz číst data. |Řetězec dotazu SQL. Příklad: vybrat * z MyTable. |Ne (když je "tableName" v datové sadě zadán) |
+| redshiftunloadsettings, taková služba | Při použití uvolnění Amazon Redshift vlastnosti skupiny. | Ne |
+| s3LinkedServiceName | Pokud zadáte název propojené služby typu "AmazonS3" odkazuje na Amazon S3 k-be používané jako dočasné úložiště. | Ano, pokud používáte uvolnění z paměti |
+| bucketName | Označuje sadu S3 k uložení dat o dočasné. Pokud se nezadá, služby Data Factory vytvoří jej automaticky.  | Ano, pokud používáte uvolnění z paměti |
 
-**Příklad: Amazon Redshift zdroj v aktivitou kopírování pomocí uvolnění**
+**Příklad: Zdroje Amazon Redshift v aktivitou kopírování pomocí uvolnění z paměti**
 
 ```json
 "source": {
@@ -148,17 +148,17 @@ Ke zkopírování dat z Amazon Redshift, nastavte typ zdroje v aktivitě kopíro
 }
 ```
 
-Další informace o tom, jak používat uvolnění ke zkopírování dat z Amazon Redshift efektivně z další části.
+Další informace o tom, jak používat uvolnění pro kopírování dat z Amazon Redshift efektivně v další části.
 
-## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>UVOLNĚNÍ použít ke zkopírování dat z Amazon Redshift
+## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Použití uvolnění pro kopírování dat z Amazon Redshift
 
-[UVOLNĚNÍ](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) mechanismus poskytované Redshift Amazon, což může mít za následek uvolnění výsledky dotazu na jeden nebo více souborů na služby úložiště jednoduché Amazon (Amazon S3). Je způsob, jak doporučení Amazon kopírování velké datové sady z Redshift.
+[UVOLNIT](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) virtuálních sítí je mechanismus poskytované Amazon Redshift, které můžete uvolnit výsledky dotazu na jeden nebo více souborů na Amazon Simple Storage Service (Amazon S3). Je to způsob doporučení pro kopírování velkých sadách dat z Redshift Amazon.
 
-**Příklad: kopírování dat z Amazon Redshift do Azure SQL Data Warehouse pomocí uvolnění, dvoufázové instalace kopírování a PolyBase**
+**Příklad: kopírování dat do Azure SQL Data Warehouse pomocí UVOLNIT, dvoufázové instalace kopírování a PolyBase z Amazon Redshift**
 
-Pro tuto ukázku případy použití, zkopírujte data aktivity uvolní z Amazon Redshift do Amazon S3 jako nakonfigurovaný v "redshiftUnloadSettings" a kopírování dat z Amazon S3 do objektu Blob Azure zadané v "stagingSettings", nakonec použijte PolyBase k načtení dat do SQL Data Skladu. Všechny dočasné formát se zpracovává souborem aktivity kopírování správně.
+Pro tuto ukázku případ použití, dat na uvolní aktivity kopírování z Amazon Redshift do Amazon S3 podle konfigurace v redshiftunloadsettings, taková "služba" a zkopírujte data z Amazonu S3 do objektu Blob Azure jako zadané v poli "stagingSettings", a konečně použijte PolyBase k načtení dat do SQL Data Sklad. Všechny dočasné formát se zpracovává souborem aktivitu kopírování, která správně.
 
-![Redshift postup kopírování datového skladu SQL](media\copy-data-from-amazon-redshift\redshift-to-sql-dw-copy-workflow.png)
+![Redshift do SQL data Warehouse Kopírovat pracovní postup](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 "activities":[
@@ -206,22 +206,22 @@ Pro tuto ukázku případy použití, zkopírujte data aktivity uvolní z Amazon
 
 ## <a name="data-type-mapping-for-amazon-redshift"></a>Mapování datového typu pro Amazon Redshift
 
-Při kopírování dat z Amazon Redshift, se používají následující mapování Amazon Redshift datových typů k Azure Data Factory dočasné datové typy. V tématu [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) a zjistěte, jak aktivity kopírování mapuje zdroje schéma a data typ jímky.
+Při kopírování dat z Amazon Redshift, se používají následující mapování z Amazon Redshift datových typů na Azure Data Factory dočasné datové typy. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
 
-| Amazon Redshift datový typ | Typ průběžných dat objektu pro vytváření dat |
+| Datový typ Amazon Redshift | Data factory dočasné datový typ |
 |:--- |:--- |
 | BIGINT |Int64 |
-| LOGICKÁ HODNOTA |Řetězec |
-| CHAR – |Řetězec |
+| DATOVÝ TYP BOOLEAN |Řetězec |
+| CHAR |Řetězec |
 | DATE (Datum) |DateTime |
 | DECIMAL |Decimal |
-| DVOJITÁ PŘESNOST |Double |
-| CELÉ ČÍSLO |Int32 |
-| SKUTEČNÉ |Jednoduchá |
+| DVOJITOU PŘESNOSTÍ |Double |
+| CELÉ ČÍSLO |Datový typ Int32 |
+| REAL |Jednoduchá |
 | SMALLINT |Int16 |
 | TEXT |Řetězec |
 | ČASOVÉ RAZÍTKO |DateTime |
 | VARCHAR |Řetězec |
 
 ## <a name="next-steps"></a>Další postup
-Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: ae8739a65efbe7662a8f72e961d772fecaf4b527
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a4c96ea75bae69fa5a1af13e4e8b908759817e95
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303689"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959321"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -30,7 +30,7 @@ Tato příručka ukazuje, jak nasadíte tak svůj kód do [služby Azure App Ser
 
 Postupovat podle kroků v této příručce s postupy:
 
-* [Nainstalovat Git](http://www.git-scm.com/downloads).
+* [Nainstalovat Git](https://www.git-scm.com/downloads).
 * Spravovat místní úložiště Git s kódem, který chcete nasadit.
 
 Použití ukázkové úložiště Pokud chcete postupovat s námi, spusťte následující příkaz v okně místního terminálu:

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 687feec668e628e36f9c23cec9943220524cc6e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e3967319cd41399209bd50886bce88efc8ba6ba6
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841927"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956512"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informace o službě Mobility pro virtuální počítače VMware a fyzické servery
 
@@ -56,11 +56,11 @@ Pokud chcete replikovat počítače aktivní antivirový software spuštěný, u
 2. Na portálu otevřete trezor > **replikované položky**.
 3. Pokud je konfigurační server na nejnovější verzi, se zobrazí oznámení, který čte "je k dispozici nová aktualizace agenta replikace Site recovery. Klikněte na tlačítko nainstalovat."
 
-     ![Okno replikované položky](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+     ![Okno replikované položky](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
 4. Klikněte na oznámení a v **aktualizace agenta**, vyberte počítače, na kterých chcete provést upgrade služby Mobility. Pak klikněte na **OK**.
 
-     ![Replikované položky seznamu virtuálních počítačů](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+     ![Replikované položky seznamu virtuálních počítačů](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
 5. Úloha aktualizace služby Mobility se spustí pro všechny vybrané počítače.
 

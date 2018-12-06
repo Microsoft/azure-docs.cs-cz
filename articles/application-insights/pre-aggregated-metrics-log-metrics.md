@@ -10,12 +10,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 136279a94d64b846247c436eb7a5fb487e05b41a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d095be8c5d921001ab4a492d2385938020fa8ce0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946897"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967210"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Na základě protokolů a předem agregovaných metrik ve službě Application Insights
 
@@ -55,7 +55,7 @@ Existuje několik [způsoby, jak odeslat vlastní metriky v Application Insights
 
 Všechny metriky, které jste odeslali pomocí [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) nebo [GetMetric a TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) volání rozhraní API se automaticky uložená v úložištích protokoly a metriky. Zatímco verze založené na protokolech vlastní metrika vždy uchovává všechny dimenze, předem agregovat verzi metriku uložené ve výchozím nastavení se žádné dimenze. Můžete zapnout v kolekci dimenzí vlastní metriky [využití a odhadované náklady](https://docs.microsoft.com/azure/application-insights/app-insights-pricing) kartu tak, že zkontrolujete "Povolit výstrahy na vlastní metriky dimenze": 
 
-![Využití a odhadované náklady](.\media\pre-aggregated-metrics-log-metrics\001-cost.png)
+![Využití a odhadované náklady](./media/pre-aggregated-metrics-log-metrics/001-cost.png)
 
 ## <a name="why-is-collection-of-custom-metrics-dimensions-turned-off-by-default"></a>Proč je kolekce vlastních metrik dimenzí vypnuto ve výchozím nastavení?
 
@@ -65,7 +65,7 @@ Kolekce vlastních metrik dimenze je ve výchozím nastavení vypnuta vzhledem k
 
 Pomocí Průzkumníka metrik služby Azure Monitor k vykreslení grafy z předem agregovat a založené na protokolech metriky a vytvořit řídicí panely s grafy. Po vybrání požadovaného prostředku Application Insights, pomocí nástroje pro výběr oboru názvů můžete přepínat mezi úrovněmi standard (preview) a metrikami založenými na protokolu, nebo vybrat vlastní metriky oboru názvů:
 
-![Metriky oboru názvů](.\media\pre-aggregated-metrics-log-metrics\002-metric-namespace.png)
+![Metriky oboru názvů](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>Další postup
 

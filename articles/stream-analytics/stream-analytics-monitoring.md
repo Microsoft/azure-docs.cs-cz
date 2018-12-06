@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.openlocfilehash: 200df7602f94f70f3fb9c62ad81a0710923184c7
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 81c5eabcfcca6818293ff9dbbfb1515d5729dd79
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291398"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963280"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Porozumění sledování úlohu Stream Analytics a monitorování dotazů
 
@@ -29,7 +29,7 @@ Jak je znázorněno, objeví se okno:
 ## <a name="metrics-available-for-stream-analytics"></a>Metriky, které jsou k dispozici pro Stream Analytics
 | Metrika                 | Definice                               |
 | ---------------------- | ---------------------------------------- |
-| Vstupní události v backlogu       | Počet vstupních událostí, které jsou "v backlogu. |
+| Vstupní události v backlogu       | Počet vstupních událostí, které jsou v backlogu. |
 | Chyby převodu dat | Počet výstupních událostech, které nebylo možné převést na očekávaný výstup schématu. |
 | Události předčasného vstupu       | Počet událostí přijatých již v rané fázi. |
 | Nezdařené požadavky na funkce | Počet neúspěšných volání funkce Azure Machine Learning (pokud existuje). |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 1877acbd39f4e312e3a567e092bb0bcf7531b96b
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 967404fbbff3616d3faf9e315123bccbf3ac9276
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276325"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969055"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Připojení účtu Google Cloud Platform
 
@@ -31,7 +31,7 @@ Začnete tím, že shromažďování informací o projektu.
 1. Přihlaste se ke konzole Google Cloud Platform na [ https://console.cloud.google.com ](https://console.cloud.google.com).
 2. Projděte si informace o projektu, který chcete, aby se zapojit do Cloudyn a Všimněte si, **název projektu** a **ID projektu**. Zachovejte informace po ruce pro pozdější kroky.  
     ![Konzoly Google Cloud Platform](./media/connect-google-account/gcp-console01.png)
-3. V případě fakturace není povolen a propojeny s projektem, vytvořte fakturační účet. Další informace najdete v tématu [vytvořit nové fakturační účet](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account).
+3. V případě fakturace není povolen a propojeny s projektem, vytvořte fakturační účet. Další informace najdete v tématu [vytvořit nové fakturační účet](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account).
 
 ## <a name="enable-storage-bucket-billing-export"></a>Povolit export fakturační kontejneru úložiště
 

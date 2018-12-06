@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6f93d7c4b76d635a221c2711ce9d4ef0de2286f6
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 236a9dac64fa98b9db68a610de097c1deba3e7ee
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687397"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970416"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory bezproblémové jednotné přihlašování: podrobné technické informace
 
@@ -29,6 +29,7 @@ Tento článek obsahuje podrobné technické informace do fungování funkce Azu
 ## <a name="how-does-seamless-sso-work"></a>Jak funguje bezproblémového jednotného přihlašování?
 
 Tato část obsahuje tři části:
+
 1. Nastavení funkce bezproblémového jednotného přihlašování.
 2. Jak funguje jednotné uživatelské přihlášení transakce ve webovém prohlížeči pomocí bezproblémového jednotného přihlašování.
 3. Jak funguje jednoho uživatele přihlásit transakce v nativním klientovi pomocí bezproblémového jednotného přihlašování.
@@ -36,6 +37,7 @@ Tato část obsahuje tři části:
 ### <a name="how-does-set-up-work"></a>Jak nastavit práce?
 
 Bezproblémového jednotného přihlašování se aktivuje pomocí služby Azure AD Connect, jak je znázorněno [tady](how-to-connect-sso-quick-start.md). Při povolení funkce, dojde k následujícím krokům:
+
 - Účet počítače s názvem `AZUREADSSOACC` (která představuje Azure AD) se vytvoří v místní službě Active Directory (AD) v každé doménové struktuře AD.
 - Účet počítače Kerberos dešifrovací klíč je bezpečně sdílet s Azure AD. Pokud existuje více doménových struktur AD, každý z nich bude mít svůj vlastní protokol Kerberos dešifrovací klíč.
 - Kromě toho jsou vytvořeny dva Kerberos hlavních názvů služby (SPN) představující dvě adresy URL, které se používají při přihlášení k Azure AD.

@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: change, tracking, automation
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e4ea8f92a562ea4bc90df98d6e459377b9886777
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 95ab686961687829526bb00ed87d43d08aeb7db8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844902"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972265"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
@@ -177,12 +177,11 @@ Zobrazení změn na webu Azure Portal může být užitečné, ale užitečněj�
 
 Pokud chcete přidat upozornění na zastavení služby, přejděte na webu Azure Portal do části **Monitorování**. Pak v části **Sdílené služby** vyberte **Upozornění** a klikněte na **+ Nové pravidlo upozornění**.
 
-V části **1. Definujte podmínku upozornění** a klikněte na **+ Vybrat cíl**. V části **Filtrovat podle typu prostředku** vyberte **Log Analytics**. Vyberte váš pracovní prostor Log Analytics a pak vyberte **Hotovo**.
+Klikněte na tlačítko **vyberte** k výběru prostředku. Na **vyberte prostředek** stránce **Log Analytics** z **filtrovat podle typu prostředku** rozevíracího seznamu. Vyberte váš pracovní prostor Log Analytics a pak vyberte **Hotovo**.
 
 ![Výběr prostředku](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-Vyberte **+ Přidat kritéria**.
-V části **Konfigurovat logiku signálů** vyberte v tabulce **Vlastní prohledávání protokolu**. Do textového pole Vyhledávací dotaz zadejte následující dotaz:
+Klikněte na tlačítko **přidat podmínku**na **konfigurovat logiku signálů** v tabulce, vyberte na stránce **prohledávání protokolů vlastní**. Do textového pole Vyhledávací dotaz zadejte následující dotaz:
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -194,11 +193,9 @@ V části **Logika upozornění** jako **Prahová hodnota** zadejte **0**. Jakmi
 
 ![Konfigurace logiky signálů](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
 
-V části **2. Definujte podrobnosti upozornění** zadejte název a popis upozornění. Nastavte **Závažnost** na **Informativní (záv. 2)**, **Upozornění (záv. 1)** nebo **Kritické (záv. 0)**.
+V části **skupiny akcí**vyberte **vytvořit nový**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).
 
-![Definice podrobností o upozornění](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
-
-V části **3. Definujte skupinu akcí** vyberte **Nová skupina akcí**. Skupina akcí se skládá z akcí, které můžete použít ve více upozorněních. Mezi akce můžou patřit mimo jiné e-mailová oznámení, runbooky, webhooky a řada dalších. Další informace o skupinách akcí najdete v tématu [Vytváření a správa skupin akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).
+V části **podrobnosti výstrahy**, zadejte název a popis pro výstrahu. Nastavte **Závažnost** na **Informativní (záv. 2)**, **Upozornění (záv. 1)** nebo **Kritické (záv. 0)**.
 
 Do pole **Název skupiny akcí** zadejte název a krátký název upozornění. Krátký název se použije místo úplného názvu skupiny akcí při odesílání oznámení pomocí této skupiny.
 

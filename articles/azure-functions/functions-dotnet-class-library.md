@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: bdae72f5ed4ebed87842ade05ec7a6bc21d349dc
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 4711c766c2a074c25f019ce5b523e0ba8b599c17
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086637"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971313"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
 
@@ -81,7 +81,7 @@ Aktivační atribut určuje typ aktivační události a sváže vstupní data pr
 Podpis metody mohou obsahovat jiné parametry, než jaký se používá s atributem aktivační události. Tady jsou některé další parametry, které můžete zahrnout:
 
 * [Vstupní a výstupní vazby](functions-triggers-bindings.md) jako takové označeny upravení s atributy.  
-* `ILogger` Nebo `TraceWriter` parametr pro [protokolování](#logging).
+* `ILogger` Nebo `TraceWriter` ([verzi 1.x – jen](functions-versions.md#creating-1x-apps)) pro parametr [protokolování](#logging).
 * A `CancellationToken` parametr pro [řádné vypnutí](#cancellation-tokens).
 * [Výrazy vazeb](functions-triggers-bindings.md#binding-expressions-and-patterns) aktivovat parametry se mají získat metadata.
 
@@ -233,7 +233,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Protokolování
 
-Do protokolu výstupní datový proud protokolů v C#, zahrnují argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme vám, že si vzpomenete `log`. Vyhněte se použití `Console.Write` ve službě Azure Functions.
+Do protokolu výstupní datový proud protokolů v C#, zahrnují argument typu [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). Doporučujeme vám, že si vzpomenete `log`, jako v následujícím příkladu:  
 
 ```csharp
 public static class SimpleExample
@@ -248,8 +248,7 @@ public static class SimpleExample
 } 
 ```
 
-> [!NOTE]
-> Informace o novější protokolovacího rozhraní, které můžete použít namísto `TraceWriter`, naleznete v tématu [zápisu přihlásí funkcí jazyka C#](functions-monitoring.md#write-logs-in-c-functions) v **monitorování Azure Functions** článku.
+Vyhněte se použití `Console.Write` ve službě Azure Functions. Další informace najdete v tématu [zápisu přihlásí C# funkce](functions-monitoring.md#write-logs-in-c-functions) v **monitorování Azure Functions** článku.
 
 ## <a name="async"></a>asynchronní
 

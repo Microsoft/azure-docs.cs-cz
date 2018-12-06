@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: d228fbde230f89848d895bd1c004724b88de4431
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a8d91c0410d2a59e4b22866aa48d36c026f3ee8e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883818"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956291"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Známé problémy a migrace omezení online migrace do Azure SQL DB
 
@@ -30,7 +30,7 @@ Pokud zdrojová databáze obsahuje jeden nebo více dočasných tabulek, migrace
 
 {"ID prostředku": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Chyba migrace databáze", "errorEvents": "[" funkce zachytávání nelze nastavit. RetCode: SqlState SQL_ERROR: 42000 NativeError: 13570 zprávy: [Microsoft] [SQL Server Native Client 11.0] [SQL Server] použití replikace není podporována se systémovou správou dočasná tabulka "[aplikace. Měst]' řádek: 1 sloupec: hodnota -1 "]"}
  
- ![Příklad chyby dočasnou tabulku](media\known-issues-azure-sql-online\dms-temporal-tables-errors.png)
+ ![Příklad chyby dočasnou tabulku](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
 **Alternativní řešení**
 
@@ -52,7 +52,7 @@ Další informace najdete v článku [dočasných tabulek se](https://docs.micro
 
 Může zobrazit výjimka SQL navrhuje "ntext není kompatibilní s hierarchyid" během operace "úplné načtení dat":
      
-![Příklad hierarchyid chyby](media\known-issues-azure-sql-online\dms-hierarchyid-errors.png)
+![Příklad hierarchyid chyby](media/known-issues-azure-sql-online/dms-hierarchyid-errors.png)
 
 **Alternativní řešení**
 
@@ -107,7 +107,7 @@ Pokud potřebujete DMS k migraci přesné časové razítko hodnoty uložené ve
 
 Když dojde k selhání migrace v zobrazení stavu podrobnosti databáze, vyberete **chyby při migraci dat** odkaz na horním pásu karet nemusí poskytnout další podrobnosti, které jsou specifické pro selhání migrace.
 
-![chyby při migraci dat žádné podrobnosti o příklad](media\known-issues-azure-sql-online\dms-data-migration-errors-no-details.png)
+![chyby při migraci dat žádné podrobnosti o příklad](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 
 **Alternativní řešení**
 
@@ -115,6 +115,6 @@ Získat podrobnosti o konkrétní chybě, postupujte podle následujících krok
 
 1. Zavřete okno podrobný stav databáze zobrazte obrazovku aktivitu migrace.
 
-     ![obrazovka aktivita migrace](media\known-issues-azure-sql-online\dms-migration-activity-screen.png)
+     ![obrazovka aktivita migrace](media/known-issues-azure-sql-online/dms-migration-activity-screen.png)
 
 2. Vyberte **viz podrobnosti o chybě** zobrazíte specifické chybové zprávy, které vám umožní řešit chyby při migraci.

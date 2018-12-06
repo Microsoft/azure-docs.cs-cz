@@ -1,20 +1,20 @@
 ---
 title: IoT DevKit do cloudu – IoT DevKit AZ3166 se připojit ke službě Azure IoT Hub | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak nastavit a připojte IoT DevKit AZ3166 se do služby Azure IoT Hub, kterou může odesílat data do cloudové platformy Azure.
-author: rangv
-manager: jeffya
+author: wesmc7777
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
-ms.author: rangv
-ms.openlocfilehash: 2ece10c43f25ac637a29324f46a88e50d9655431
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.author: wesmc
+ms.openlocfilehash: e6412ce36110f2e9a800262c968039112f2e4b1c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620434"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955679"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 se připojit ke službě Azure IoT Hub
 
@@ -133,27 +133,34 @@ Použijte následující postup Příprava vývojového prostředí pro DevKit:
 3. Vyhledejte **Azure IoT Workbench** v marketplace pro rozšíření a nainstalujte ho.
     ![Instalace aplikace Azure IoT Workbench](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png) spolu s IoT aplikace Workbench, se nainstaluje další závislé rozšíření.
 
-4. Konfigurace Arduino
-    * **Windows**: na **Windows** otevřít **soubor > Předvolby > Nastavení** klikněte na tlačítko **...**  a otevřete settings.json. pak přidejte následující řádky do konfigurace Arduino. 
+4. Konfigurace Visual Studio Code s rozhraním Arduino nastavení. 
+
+    Ve Visual Studio Code, klikněte na tlačítko **soubor > Předvolby > Nastavení**. Klikněte **...**  a **otevřete settings.json**. 
+    
+    Přidejte následující řádky do konfigurace Arduino v závislosti na vaší platformě: 
+
+    * **Windows:**
       
-    ```json
-    "arduino.path": "C:\\Program Files (x86)\\Arduino",
-    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-    ```
+        ```json
+        "arduino.path": "C:\\Program Files (x86)\\Arduino",
+        "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+        ```
 
-    * **macOS**: na **macOS** otevřít **kód > Předvolby > Nastavení** klikněte na tlačítko **...**  a otevřete settings.json. pak přidejte následující řádky do konfigurace Arduino
+    * **macOS**:
 
-    ```json
-    "arduino.path": "/Applications",
-    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-    ```
+        ```json
+        "arduino.path": "/Applications",
+        "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+        ```
 
     * **Ubuntu**:
+    
+        Nahradit **{username}** zástupný symbol níže se svým uživatelským jménem.
 
-    ```json
-    "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
-    "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-    ```
+        ```json
+        "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
+        "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
+        ```
 
 5. Klikněte na tlačítko `F1` otevřete paletu příkazů, typ a vyberte **Arduino: panel Správce**. Vyhledejte **AZ3166** a nainstalujte nejnovější verzi.
     ![Nainstalujte sadu SDK DevKit](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-sdk.png)

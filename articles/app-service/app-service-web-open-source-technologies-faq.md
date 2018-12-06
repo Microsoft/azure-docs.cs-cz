@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: b34597c604160cc5c0880561a6c3afb70816f9b3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 19168f965f2a98a1dc3f94ae0b029449865a9582
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417323"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971341"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Technologie Open source nejčastější dotazy k Web Apps v Azure
 
@@ -181,7 +181,7 @@ Pro nasazení portálu nastavení aplikace soubor protokolu je v D:\home\LogFile
 
 ## <a name="can-i-send-email-from-my-azure-web-app"></a>Může odesílat e-maily z Moje webové aplikace Azure?
 
-Služba App Service nemá integrované e-mailové funkce. Pro některé dobré alternativy k odesílání e-mailu z vaší aplikace, najdete v tomto [Stack Overflow diskuse](http://stackoverflow.com/questions/17666161/sending-email-from-azure).
+Služba App Service nemá integrované e-mailové funkce. Pro některé dobré alternativy k odesílání e-mailu z vaší aplikace, najdete v tomto [Stack Overflow diskuse](https://stackoverflow.com/questions/17666161/sending-email-from-azure).
 
 ## <a name="why-does-my-wordpress-site-redirect-to-another-url"></a>Proč můj web WordPress přesměrovat na jinou adresu URL?
 

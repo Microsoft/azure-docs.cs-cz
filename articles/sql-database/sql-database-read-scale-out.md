@@ -11,19 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 6b694794da5eabaddf4d6f29203b7d6553ef4940
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/05/2018
+ms.openlocfilehash: 16737ed525147968c97ca20a9f4e674a0dee34fc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844392"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955050"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít repliky jen pro čtení k načtení vyrovnávat zatížení dotazu jen pro čtení (preview)
 
 **Horizontální navýšení kapacity pro čtení** vám umožní načíst jen pro čtení úlohy serveru zůstatek Azure SQL Database pomocí kapacita jednu repliku pouze pro čtení.
-
-## <a name="overview-of-read-scale-out"></a>Přehled horizontální navýšení kapacity pro čtení
 
 Každá databáze na úrovni Premium ([nákupní model založený na DTU](sql-database-service-tiers-dtu.md)) nebo na úrovni pro důležité obchodní informace ([nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md)) je automaticky zřízena několik replik AlwaysON Podpora smlouva SLA o dostupnosti.
 
@@ -47,7 +45,7 @@ Jednou z výhod repliky je, že tyto repliky jsou vždy transakčně konzistentn
 > [!NOTE]
 > Jsou nízké latence replikace v rámci oblasti a tato situace není obvyklé.
 
-## <a name="connecting-to-a-read-only-replica"></a>Připojení k replice jen pro čtení
+## <a name="connect-to-a-read-only-replica"></a>Připojíte k replice jen pro čtení
 
 Když povolíte horizontální navýšení kapacity pro čtení pro databázi, `ApplicationIntent` možnost připojovacího řetězce, který klient poskytl Určuje, zda je připojení směrovat zápisu repliku nebo repliku pouze pro čtení. Konkrétně Pokud `ApplicationIntent` hodnotu `ReadWrite` (výchozí hodnota), připojení, budete přesměrováni na repliky pro čtení a zápis databáze. To je stejný jako stávající chování. Pokud `ApplicationIntent` hodnotu `ReadOnly`, připojení se směruje do repliky jen pro čtení.
 
@@ -65,6 +63,8 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
+## <a name="verify-that-a-connection-is-to-a-read-only-replica"></a>Ověřte, zda je připojení k replice jen pro čtení
+
 Můžete ověřit, zda jste připojeni k repliky jen pro čtení spuštěním následujícího dotazu. Vrátí READ_ONLY při připojení k replice jen pro čtení.
 
 ```SQL
@@ -78,7 +78,7 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 
 Ve výchozím nastavení v je povolené horizontální navýšení kapacity pro čtení [Managed Instance](sql-database-managed-instance.md) úroveň pro důležité obchodní informace. By měla být explicitně povolená v [databáze umístěna na logickém serveru](sql-database-logical-servers.md) úrovně Premium a pro důležité obchodní informace. Metody pro povolení a zakázání horizontální navýšení kapacity pro čtení je zde popsáno.
 
-### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Povolení a zákaz čtení horizontální navýšení kapacity pomocí Azure Powershellu
+### <a name="powershell-enable-and-disable-read-scale-out"></a>Prostředí PowerShell: Povolení a zákaz horizontální navýšení kapacity pro čtení
 
 Správa Škálováním pro čtení v prostředí Azure PowerShell vyžaduje prosince 2016 prostředí Azure PowerShell verze nebo novější. Nejnovější verze prostředí PowerShell najdete v části [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
@@ -102,7 +102,7 @@ Chcete-li vytvořit novou databázi s čtení horizontální navýšení kapacit
 New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
-### <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Povolení a zakázání čtení horizontální navýšení kapacity pomocí REST API služby Azure SQL Database
+### <a name="rest-api-enable-and-disable-read-scale-out"></a>Rozhraní REST API: Povolení a zákaz horizontální navýšení kapacity pro čtení
 
 K vytvoření databáze s čtení horizontální navýšení kapacity povolena, nebo k povolení nebo zakázání čtení horizontální navýšení kapacity pro existující databázi, vytvořit nebo aktualizovat odpovídající entita databáze s `readScale` nastavenou na `Enabled` nebo `Disabled` stejně jako v následující ukázky požadavek.
 

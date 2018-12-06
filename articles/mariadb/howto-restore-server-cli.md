@@ -10,32 +10,33 @@ ms.service: mariadb
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 11/10/2018
-ms.openlocfilehash: 9e8edb2aaeaa116ac71889f7007e435a1a869b7f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 1f17ab167c6487d59ce31106f1bbcffd86a29fd8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516146"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955186"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Jak zálohovat a obnovovat server ve službě Azure Database pro MariaDB pomocí Azure CLI
 
 ## <a name="backup-happens-automatically"></a>Zálohování se automaticky stane
+
 MariaDB servery Azure Database for se pravidelně zálohují k povolení funkce obnovení. Pomocí této funkce může obnovení serveru a jeho databázím do starší v daném okamžiku, na novém serveru.
 
 ## <a name="prerequisites"></a>Požadavky
+
 K dokončení této příručce s postupy, potřebujete:
+
 - [– Azure Database pro MariaDB serveru a databáze](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
- 
 
 > [!IMPORTANT]
 > Tato příručka vyžaduje použití Azure CLI verze 2.0 nebo novější. K potvrzení verze příkazového řádku Azure CLI, zadejte `az --version`. Pro instalaci nebo upgrade, naleznete v tématu [instalace Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="set-backup-configuration"></a>Nastavit konfiguraci zálohování
 
-Provedete výběr mezi konfigurací serveru pro místně redundantní zálohy nebo geograficky redundantní zálohy při vytváření serveru. 
+Provedete výběr mezi konfigurací serveru pro místně redundantní zálohy nebo geograficky redundantní zálohy při vytváření serveru.
 
 > [!NOTE]
 > Po vytvoření serveru, typ redundance, které obsahuje, není možné přepnout místně redundantní, geograficky redundantní vs.
@@ -58,7 +59,8 @@ V předchozím příkladu změní období uchovávání záloh mydemoserver na 1
 Období uchování zálohy se řídí jak daleko zpět v čase, které mohou být načteny obnovení bodu v čase, protože je založen na dostupné zálohy. Obnovení k určitému bodu v čase je popsána dále v další části.
 
 ## <a name="server-point-in-time-restore"></a>Obnovení bodu v čase serveru
-Server můžete obnovit k dřívějšímu bodu v čase. Obnovená data se zkopíruje na nový server a existující server je ponechán beze změny. Například pokud tabulku omylem, bude vynechána. v poledne ještě dnes můžete obnovit do doby před polednem. Potom můžete načíst chybějící tabulku a data z obnovené kopie serveru. 
+
+Server můžete obnovit k dřívějšímu bodu v čase. Obnovená data se zkopíruje na nový server a existující server je ponechán beze změny. Například pokud tabulku omylem, bude vynechána. v poledne ještě dnes můžete obnovit do doby před polednem. Potom můžete načíst chybějící tabulku a data z obnovené kopie serveru.
 
 K obnovení serveru, použijte rozhraní příkazového řádku Azure [obnovení serveru mariadb az](/cli/azure/mariadb/server#az-mariadb-server-restore) příkazu.
 
@@ -85,6 +87,7 @@ Umístění a cenová úroveň obnoveného serveru budou stejné jako původní 
 Po dokončení procesu obnovení, vyhledejte na nový server a ověřte, že budou data obnovena podle očekávání.
 
 ## <a name="geo-restore"></a>Geografické obnovení
+
 Pokud jste nakonfigurovali server pro geograficky redundantní zálohy, lze vytvořit nový server ze zálohy existujícího serveru. Tento nový server lze vytvořit v libovolné oblasti Azure Database pro MariaDB je k dispozici.  
 
 K vytvoření serveru pomocí geograficky redundantní zálohy, použijte rozhraní příkazového řádku Azure `az mariadb server georestore` příkazu.
@@ -96,8 +99,9 @@ K vytvoření serveru pomocí geograficky redundantní zálohy, použijte rozhra
 Geografické obnovení serveru příkazového řádku Azure CLI zadejte následující příkaz:
 
 ```azurecli-interactive
-az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8 
+az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
+
 Tento příkaz vytvoří nový server volá *mydemoserver georestored* v oblasti východní USA, který bude patřit *myresourcegroup*. Je pro obecné účely, generace 5 server s 8 jádry VCORE. Na serveru je vytvořený z geograficky redundantní zálohy *mydemoserver*, což je také ve skupině prostředků *myresourcegroup*
 
 Pokud chcete vytvořit nový server v jiné skupině prostředků z existujícího serveru, pak v `--source-server` parametr by kvalifikovat název serveru, jako v následujícím příkladu:
@@ -116,12 +120,12 @@ az mariadb server georestore --resource-group newresourcegroup --name mydemoserv
 |location | eastus | Umístění nového serveru. |
 |sku-name| GP_Gen5_8 | Tento parametr nastavuje cenové úrovně, generace výpočetních a počet virtuálních jader pro nový server. GP_Gen5_8 mapuje pro obecné účely Gen 5 server s 8 jádry VCORE.|
 
-
 >[!Important]
 >Při vytváření nového serveru geografické obnovení, dědí jako zdrojový server stejnou velikostí úložiště a cenovou úroveň. Tyto hodnoty nelze změnit během vytváření. Po vytvoření nového serveru je možné škálovat jeho velikost.
 
 Po dokončení procesu obnovení, vyhledejte na nový server a ověřte, že budou data obnovena podle očekávání.
 
 ## <a name="next-steps"></a>Další postup
+
 - Další informace týkající se služby [zálohy](concepts-backup.md).
 - Další informace o [kontinuita podnikových procesů](concepts-business-continuity.md) možnosti.

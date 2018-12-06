@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: cb9058d4f68b2dc202edeeaa6cafb2eefa82470b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c32612c411f275220f549eea79276fa5a7232fd0
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284723"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52954608"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>Nelze vzdáleně připojit k virtuálnímu počítači protože RDP port není povolené v NSG
 
@@ -51,7 +51,7 @@ Pokud chcete povolit port RDP v skupinu zabezpečení sítě, postupujte podle t
     **Cíle**: žádné </br>
     **Akce**: Povolit </br>
 
-V určíte zdrojovou IP adresu, toto nastavení umožní provoz pouze z konkrétní IP adresu nebo rozsah IP adres pro připojení k virtuálnímu počítači. Ujistěte se, že počítač, který používáte ke spuštění relace protokolu RDP je v rozsahu.
+Pokud určíte zdrojovou IP adresu, toto nastavení umožní provoz pouze z konkrétní IP adresu nebo rozsah IP adres pro připojení k virtuálnímu počítači. Ujistěte se, že počítač, který používáte ke spuštění relace protokolu RDP je v rozsahu.
 
 Další informace o skupinách Nsg najdete v tématu [skupinu zabezpečení sítě](../../virtual-network/security-overview.md).
 

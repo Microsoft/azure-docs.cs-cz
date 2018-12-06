@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: ee6e4397345b4cb169e7e22d951d4c4fdff5b7b7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 632cf506477bdc6f35c66a473963168f81e22351
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078711"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971891"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service v Azure stacku update 1 poznámky
 
@@ -145,7 +145,7 @@ Prohození slotů webu je v této verzi fungovat. Pokud chcete obnovit funkce, p
 
       # Commit the changes back to NSG
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
-      ```
+    ```
 
 2. Procházet **CN0 virtuálního počítače** v části virtuální počítače na portálu Správce služby Azure Stack a **kliknete na připojit** otevřít relaci vzdálené plochy se instance kontroleru. Použijte pověření zadaná při nasazení služby App Service.
 3. Spustit **prostředí PowerShell jako správce** a spusťte následující skript
@@ -197,18 +197,20 @@ Prohození slotů webu je v této verzi fungovat. Pokud chcete obnovit funkce, p
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-- Pracovní procesy se nám kontaktovat souborového serveru při nasazení služby App Service v existující virtuální sítě a souborový server je k dispozici v privátní síti.
- 
+
+6. Pracovní procesy se nám kontaktovat souborového serveru při nasazení služby App Service v existující virtuální sítě a souborový server je k dispozici v privátní síti.
+
 Pokud jste se rozhodli nasadit do existující virtuální sítě a interní IP adresu pro připojení k souborovému serveru, je nutné přidat odchozí pravidlo zabezpečení, povolení provozu SMB mezi podsítě pracovního procesu a souborový server. Chcete-li to provést, přejděte na WorkersNsg v portálu pro správu a přidat odchozí pravidlo zabezpečení s následujícími vlastnostmi:
- * Zdroj: žádné
- * Zdrojový rozsah portů: *
- * Cíl: IP adresy
- * Rozsah cílových IP adres: rozsah IP adres pro souborový server
- * Rozsah cílových portů: 445
- * Protocol: TCP
- * Akce: Povolit
- * Priorita: 700
- * Název: Outbound_Allow_SMB445
+
+- Zdroj: žádné
+- Zdrojový rozsah portů: *
+- Cíl: IP adresy
+- Rozsah cílových IP adres: rozsah IP adres pro souborový server
+- Rozsah cílových portů: 445
+- Protocol: TCP
+- Akce: Povolit
+- Priorita: 700
+- Název: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Známé problémy pro správce cloudu provoz služby Azure App Service ve službě Azure Stack
 

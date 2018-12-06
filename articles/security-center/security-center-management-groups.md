@@ -3,7 +3,7 @@ title: Získejte potřebný Přehled celého tenanta pro Azure Security Center |
 description: Přečtěte si o získat přehled o celého tenanta v Azure Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2018
-ms.author: terrylan
-ms.openlocfilehash: 6175ca26412dccf7ff6dfbce02df738ea8b6eb1a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: rkarlin
+ms.openlocfilehash: cb70c99d56cb1d09e561a44a90fd6c007ea9b59f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721540"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964113"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Získejte potřebný Přehled celého tenanta pro Azure Security Center
 Tento článek vám pomůže začít pracovat způsobem několik akcí, které Maximalizace výhod, které poskytuje Azure Security Center. Provedení těchto akcí umožňuje získat přehled o ve všech předplatných Azure, které jsou propojeny do svého tenanta Azure Active Directory a efektivně spravovat stavu zabezpečení vaší organizace ve velkém měřítku pomocí zásad zabezpečení napříč více předplatná aggregative způsobem.

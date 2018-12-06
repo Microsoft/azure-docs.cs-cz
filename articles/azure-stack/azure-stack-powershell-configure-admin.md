@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 530b2a1909ec198ddff5abfe4fd5bb7c645f7582
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: b961fac00ba43eb1b44acc46c6f60fa0f3a10877
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261578"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957074"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Připojení ke službě Azure Stack pomocí prostředí PowerShell jako operátor
 
@@ -29,7 +29,7 @@ Můžete nakonfigurovat služby Azure Stack pomocí Powershellu ke správě pros
 
 ## <a name="prerequisites"></a>Požadavky
 
-Spuštění následujících požadovaných součástí, buď z [vývojová sada](.\asdk\asdk-connect.md#connect-with-rdp) nebo z Windows na základě externí klienta po [připojené k ASDK prostřednictvím sítě VPN](.\asdk\asdk-connect.md#connect-with-vpn). 
+Spuštění následujících požadovaných součástí, buď z [vývojová sada](./asdk/asdk-connect.md#connect-with-rdp) nebo z Windows na základě externí klienta po [připojené k ASDK prostřednictvím sítě VPN](./asdk/asdk-connect.md#connect-with-vpn). 
 
  - Nainstalujte [moduly Azure Powershellu kompatibilní s Azure Stack](azure-stack-powershell-install.md).  
  - Ve službě [Azure Stack development Kit by měl být blobEndpoint](azure-stack-powershell-download.md) .  

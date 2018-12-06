@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 2c862dcaf5f9267265879faa8ac927ddf7515419
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 6251a0c7fd43a12dbe02a0013f1530557d142d25
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277269"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969953"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI ve službě Azure Stack
 
@@ -36,7 +36,7 @@ Měli byste vidět verzi rozhraní příkazového řádku Azure a dalších záv
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Důvěřovat certifikátu kořenové certifikační Autority Azure stacku
 
-1. Získání certifikátu kořenové certifikační Autority Azure stacku z [operátor Azure stacku](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) a důvěřujete mu. Důvěřovat certifikátu kořenové certifikační Autority Azure stacku, přidejte je do existujícího certifikátu Python.
+1. Získání certifikátu kořenové certifikační Autority Azure stacku z [operátor Azure stacku](../azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) a důvěřujete mu. Důvěřovat certifikátu kořenové certifikační Autority Azure stacku, přidejte je do existujícího certifikátu Python.
 
 1. Najdete umístění certifikátu na svém počítači. Umístění se může lišit v závislosti na tom, kam jste nainstalovali Python. Budete muset mít [pip](https://pip.pypa.io) a [osobní](https://pypi.org/project/certifi/) nainstalovaným modulem. Můžete použít následující příkaz Pythonu na příkazovém řádku bash:
 
@@ -242,6 +242,6 @@ Existují některé známé problémy, které je třeba vědět, když použív�
 
 [Nasazení šablon pomocí Azure CLI](azure-stack-deploy-template-command-line.md)
 
-[Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku (operátor)](..\azure-stack-cli-admin.md)
+[Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku (operátor)](../azure-stack-cli-admin.md)
 
 [Správa uživatelských oprávnění](azure-stack-manage-permissions.md)

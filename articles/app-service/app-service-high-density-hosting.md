@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
-ms.openlocfilehash: f2cf472ef3c2c9950dd9f9382009e21fbf62771b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: e07653db70c5baff038cacf8628351c682e20f7f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856781"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971976"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hostování s vysokou hustotou ve službě Azure App Service pomocí škálování pro aplikaci
 Ve výchozím nastavení, škálování aplikací služby App Service díky škálování [plán služby App Service](azure-web-sites-web-hosting-plans-in-depth-overview.md) jsou spuštěné na. Při spuštění více aplikací v rámci stejného plánu služby App Service, každá instance s horizontálním navýšením kapacity spustí všechny aplikace v plánu.
@@ -78,7 +78,7 @@ Nastavení plánu služby App Service **PerSiteScaling** vlastnost na hodnotu tr
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters":{
         "appServicePlanName": { "type": "string" },

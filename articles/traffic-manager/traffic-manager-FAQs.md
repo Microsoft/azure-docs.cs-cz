@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: d784bf3637c83c724c3616a1a42b66c4914b4ff7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: f4c687ff0d02c78b88b24834f6c3acfc563ecbfc
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987235"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963568"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
 
@@ -134,7 +134,7 @@ Ano, geografické směrování zadejte pouze verze rozhraní API 2017-03-01 a no
 ## <a name="traffic-manager-subnet-traffic-routing-method"></a>Metody směrování provozu Traffic Manageru podsítě
 
 ### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Jaké jsou některé případy použití, ve kterém směrování podsítě je užitečné?
-Podsíť směrování vám umožní rozlišovat prostředí, které poskytujete pro konkrétní skupiny uživatelů identifikovaný Zdrojová IP adresa z jejich IP adresa žádosti DNS. Příkladem může být zobrazení jiný obsah, pokud se uživatelé připojují k webu z podnikové Sídel. Jiné by omezení uživatelů z určitých poskytovatelů internetových služeb jenom přístup k koncové body, které podporují jenom IPv4 připojení, pokud tyto poskytovatelů internetových služeb budou mít dílčí par výkon při použití protokolu IPv6.
+Podsíť směrování vám umožní rozlišovat prostředí, které poskytujete pro konkrétní skupiny uživatelů identifikovaný Zdrojová IP adresa z jejich IP adresa žádosti DNS. Příkladem může být zobrazení jiný obsah, pokud se uživatelé připojují k webu z vaší podnikové Sídel. Jiné by omezení uživatelů z určitých poskytovatelů internetových služeb jenom přístup k koncové body, které podporují jenom IPv4 připojení, pokud tyto poskytovatelů internetových služeb budou mít dílčí par výkon při použití protokolu IPv6.
 Dalším důvodem pro použití metody směrování pro podsíť ve spojení s další profily v profilu vnořené nastavena. Například pokud chcete použít metody geografického směrování pro geograficky monitorování geografických zón uživatele, ale pro konkrétního poskytovatele internetových služeb, kterou chcete provést jinou metodu směrování, můžete mít profil withy podsítě metody směrování jako nadřazený profil a přepsání tohoto poskytovatele použít konkrétní podřízené pro soubor a mají pro všechny ostatní standardní zeměpisného profilu.
 
 ### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Jak Traffic Manager znát IP adresu koncového uživatele?

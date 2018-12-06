@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: cd4fe69ad42c384bcd8494bd314737ef47905a53
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b781c4657306beb92e730e22e56e6a75359f4401
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868034"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964130"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky týkající se přechodu z portálu OMS na webu Azure portal pro uživatele Log Analytics
 Vlastní portál, volá se na portálu OMS log Analytics původně použitý ke správě své konfiguraci a analýzy shromážděných dat.  Všechny funkce z tohoto portálu byl přesunut na webu Azure portal ve kterém bude pokračovat na vývoj.
@@ -37,7 +37,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 Pokud nemáte přístup k pracovnímu prostoru Log Analytics na portálu Azure portal, budete muset nakonfigurovat oprávnění pomocí [přístupu na základě rolí Azure](../role-based-access-control/role-assignments-portal.md). Podrobnosti o správě oprávnění pracovního prostoru najdete v tématu [Správa pracovních prostorů](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users). Informace o správě oprávnění pro výstrahy, najdete v tématu [role, oprávnění a zabezpečení prostřednictvím služby Azure Monitor vám začít](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md).
 
 ## <a name="how-do-i-create-a-new-workspace"></a>Jak vytvořit nový pracovní prostor? 
-Ze seznamu pracovních prostorů na webu Azure Portal, klikněte na tlačítko **přidat** v seznamu pracovních prostorů.  Úplné podrobnosti najdete v tématu [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
+Ze seznamu pracovních prostorů na webu Azure Portal, klikněte na tlačítko **přidat** v seznamu pracovních prostorů.  Úplné podrobnosti najdete v tématu [vytvořit pracovní prostor Log Analytics na portálu Azure portal](../log-analytics/../azure-monitor/learn/quick-create-workspace.md).
 
 ![Stránka s přehledem](media/log-analytics-oms-portal-faq/new-workspace.png)
 
@@ -112,7 +112,7 @@ Na portálu OMS z Galerie řešení nainstalovat řešení pro správu a odebrá
 Pravidla upozornění na základě dotazů Log Analytics se teď spravují v [sjednocené prostředí pro upozorňování](../monitoring-and-diagnostics/alert-metric.md). Zobrazit [jak rozšíření upozornění z Log Analytics do upozornění Azure](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md) podrobné informace o konfiguraci a použití upozornění na webu Azure Portal.
 
 ## <a name="how-do-i-access-my-dashboards"></a>Jak získám přístup do své řídicí panely?
-[Můj řídicí panel](../log-analytics/../azure-monitor/platform/dashboards.md) funkce v Log Analytics je zastaralá. Tato funkce umožňují mít privátní kolekci částí Návrhář zobrazení a nahrazována integrované funkce řídicího panelu systému Azure. Můžete pokračovat k vizualizaci dat v Log Analytics pomocí [Návrhář zobrazení](../log-analytics/../azure-monitor/platform/view-designer.md) pro sdílená zobrazení. Můžete také připnout vizualizace z těchto zobrazení nebo [jednotlivé dotazy](../log-analytics/log-analytics-tutorial-dashboards.md) do řídicích panelů Azure.
+[Můj řídicí panel](../log-analytics/../azure-monitor/platform/dashboards.md) funkce v Log Analytics je zastaralá. Tato funkce umožňují mít privátní kolekci částí Návrhář zobrazení a nahrazována integrované funkce řídicího panelu systému Azure. Můžete pokračovat k vizualizaci dat v Log Analytics pomocí [Návrhář zobrazení](../log-analytics/../azure-monitor/platform/view-designer.md) pro sdílená zobrazení. Můžete také připnout vizualizace z těchto zobrazení nebo [jednotlivé dotazy](../log-analytics/../azure-monitor/learn/tutorial-logs-dashboards.md) do řídicích panelů Azure.
 
 ## <a name="how-do-i-check-my-usage"></a>Jak můžu zkontrolovat využití?
 Teď můžete snadno zobrazit a spravovat vaše využití a náklady na služby Log Analytics tak, že vyberete **využití a odhadované náklady** ve vašem pracovním prostoru.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d085777e347e1e892c3a49f4f37aa1d8130ef18c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a5475ad2f487bca90f600406ca9bb8f0925a4988
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005729"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964811"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvořit pravidlo telemetrická data a nastavení oznámení v aplikaci Azure IoT Central
 
@@ -36,19 +36,19 @@ K vytvoření pravidla telemetrie, šablona zařízení musí mít definován al
 
 1. Pokud jste dosud nevytvořili žádná pravidla, zobrazí se na následující obrazovce:
 
-    ![Zatím žádná pravidla](media\howto-create-telemetry-rules\Rules_Landing_Page.png)
+    ![Zatím žádná pravidla](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
 1. Na **pravidla** klikněte na tlačítko **upravit šablonu** a potom **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
 
 1. Klikněte na tlačítko **Telemetrie** k vytvoření pravidla monitorování telemetrie zařízení.
 
-    ![Typy pravidel](media\howto-create-telemetry-rules\Rule_Types.png)
+    ![Typy pravidel](media/howto-create-telemetry-rules/Rule_Types.png)
 
 1. Zadejte název, který pomáhá identifikovat pravidla v této šabloně zařízení.
 
 1. Umožňuje okamžitě pravidla pro všechna zařízení, které jsou vytvořené pro tuto šablonu, přepnout **Povolit pravidlo pro všechna zařízení pro tuto šablonu**.
 
-   ![Podrobnosti pravidla](media\howto-create-telemetry-rules\Rule_Detail.png)
+   ![Podrobnosti pravidla](media/howto-create-telemetry-rules/Rule_Detail.png)
     
     Toto pravidlo automaticky platí pro všechna zařízení v šabloně zařízení.
     
@@ -61,7 +61,7 @@ Podmínka definuje kritéria, která je sledována tímto pravidlem.
 
 1. Vyberte telemetrie, kterou chcete monitorovat z **měření** rozevíracího seznamu.
 
-   ![Podmínka](media\howto-create-telemetry-rules\Aggregate_Condition_Filled_Out.png)
+   ![Podmínka](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
 
 1. Dále zvolte **agregace**, **operátor**a poskytují **prahová hodnota** hodnotu.
     - Agregace je volitelný. Bez agregace, aktivační události pravidlo pro každý datový bod telemetrických dat, který splňuje podmínky. Například, pokud je konfigurováno pravidlo aktivuje, když teplota je víc než 80, pak toto pravidlo aktivuje téměř okamžitě, když zařízení ohlásí teploty > 80.
@@ -78,14 +78,14 @@ V této části se dozvíte, jak vytvořit akce má provést, když se aktivuje 
 
 1. Zvolte **+** vedle **akce**. Zde můžete zobrazit seznam dostupných akcí.  
 
-    ![Přidání akce](media\howto-create-telemetry-rules\Add_Action.png)
+    ![Přidání akce](media/howto-create-telemetry-rules/Add_Action.png)
 
 1. Zvolte **e-mailu** akce, zadejte platnou e-mailovou adresu **k** pole a zadejte poznámku vložit do těla e-mailu, když se pravidlo aktivuje.
 
     > [!NOTE]
     > E-mailů se odesílají pouze pro uživatele, které byly přidány do aplikace a nejméně jednou přihlásili. Další informace o [Správa uživatelů](howto-administer.md) v Azure IoT Central.
 
-   ![Konfigurace akce](media\howto-create-telemetry-rules\Configure_Action.png)
+   ![Konfigurace akce](media/howto-create-telemetry-rules/Configure_Action.png)
 
 1. Chcete-li uložit pravidlo, zvolte **Uložit**. Pravidlo uvedete během několika minut a zahájí monitorování telemetrických dat odesílaných do vaší aplikace. Když je splněna podmínka uvedená v pravidle, pravidlo aktivuje nakonfigurovaná e-mailovou akci.
 

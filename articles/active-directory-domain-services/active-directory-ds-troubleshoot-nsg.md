@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: bca92e933b1f75c330999f0d55723eb9f26a7382
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6e7d025e9e83f5511fce25d0c24e4da3b04d7e54
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426071"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957534"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Řešení potíží s neplatnou konfiguraci sítě pro vaši spravovanou doménu
 Tento článek pomáhá odstraňovat potíže a řešit chyby související se sítí konfigurace, které za následek následující upozornění:
@@ -41,7 +41,7 @@ Neplatná konfigurace skupiny zabezpečení sítě jsou nejčastější příči
 ## <a name="sample-nsg"></a>Ukázková skupina zabezpečení sítě
 Následující tabulka znázorňuje ukázku NSG, která by zabezpečení vaší spravované domény zároveň umožní Microsoftu monitorovat, spravovat a aktualizovat informace.
 
-![Ukázková skupina zabezpečení sítě](.\media\active-directory-domain-services-alerts\default-nsg.png)
+![Ukázková skupina zabezpečení sítě](./media/active-directory-domain-services-alerts/default-nsg.png)
 
 >[!NOTE]
 > Azure AD Domain Services vyžaduje neomezený odchozího přístupu z virtuální sítě. Doporučujeme nevytvářet jakékoli další pravidlo NSG, která omezuje přístup pro odchozí připojení pro virtuální síť.

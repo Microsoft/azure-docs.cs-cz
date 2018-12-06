@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: c0e502c1627ebe9d63ca43cb46b982bb0639f3d7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 87e5b6098ff9ee74ef8a4314362c30c436d5ad20
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444718"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967925"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí OAuth 2.0 ve službě Azure API Management
 
-Mnoho rozhraní API podporují [OAuth 2.0](http://oauth.net/2/) k zabezpečení rozhraní API a zajistěte, aby pouze oprávnění uživatelé mají přístup, a bude pouze přístup k prostředkům, ke kterým máte nárok. Aby bylo možné používat interaktivní konzole pro vývojáře Azure API Management pomocí těchto rozhraní API, služby umožňuje nakonfigurovat instanci služby pro práci s vaší OAuth 2.0 povolené rozhraní API.
+Mnoho rozhraní API podporují [OAuth 2.0](https://oauth.net/2/) k zabezpečení rozhraní API a zajistěte, aby pouze oprávnění uživatelé mají přístup, a bude pouze přístup k prostředkům, ke kterým máte nárok. Aby bylo možné používat interaktivní konzole pro vývojáře Azure API Management pomocí těchto rozhraní API, služby umožňuje nakonfigurovat instanci služby pro práci s vaší OAuth 2.0 povolené rozhraní API.
 
 ## <a name="prerequisites"> </a>Požadované součásti
 
@@ -143,7 +143,7 @@ Další informace o použití OAuth 2.0 a API Management, najdete v následujíc
 [Caching policies]: api-management-policy-reference.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
-[http://oauth.net/2/]: http://oauth.net/2/
+[https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 
 [Prerequisites]: #prerequisites

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 753818526ad637db0baa13c92e92d2725b19dbf8
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 748345bf89e7f746b8ef388ad5cabc987a07d1f8
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158314"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957661"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače Windows Server ke spravované doméně
 Tento článek popisuje postup nasazení virtuálního počítače s Windows serverem pomocí webu Azure portal. Následně ukazuje, jak připojit virtuální počítač k spravované doméně služby Azure Active Directory Domain Services (Azure AD DS).
@@ -30,7 +30,7 @@ Tento článek popisuje postup nasazení virtuálního počítače s Windows ser
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>Krok 1: Vytvoření virtuálního počítače s Windows serverem
 K vytvoření virtuálního počítače s Windows, který je připojený k virtuální síti, ve kterém jste povolili službu Azure AD DS, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V horní části v levém podokně vyberte **nový**.
 3. Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**.
 

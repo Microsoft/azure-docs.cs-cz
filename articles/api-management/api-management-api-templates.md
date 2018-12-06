@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 700fc4b6211155c44d87e5982480551f9fa25ba7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: ba56804431048005914a79c4cd957a8365de067a
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443470"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970888"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Šablony rozhraní API ve službě Azure API Management
 
@@ -1001,7 +1001,7 @@ public class JavaSample
 <html>  
 <head>  
     <title>JSSample</title>  
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>  
 </head>  
 <body>  
   

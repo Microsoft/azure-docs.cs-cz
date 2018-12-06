@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 92474bdead021429792f5d51a28ffb7bafc5be2b
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 7fd3ace1acf8442b7df2af90f458e69daf0c270c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334240"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966700"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Vytvářet upozornění metrik, protokolů ve službě Azure Monitor  
 
@@ -45,7 +45,7 @@ Data metriky z oblíbených protokolů je přesměrovaná před zpracováním v 
 
 ## <a name="prerequisites-for-metric-alert-for-logs"></a>Předpoklady pro upozornění metriky pro protokoly
 Před metriky pro protokoly se shromažďují v Log Analytics data funguje, následující musí být nastavena spuštěné a dostupné:
-1. **Aktivní pracovní prostor Log Analytics**: musí být platné a aktivní pracovní prostor Log Analytics. Další informace najdete v tématu [vytvořit pracovní prostor Log Analytics na webu Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
+1. **Aktivní pracovní prostor Log Analytics**: musí být platné a aktivní pracovní prostor Log Analytics. Další informace najdete v tématu [vytvořit pracovní prostor Log Analytics na webu Azure portal](../azure-monitor/learn/quick-create-workspace.md).
 2. **Agent je nakonfigurován pro pracovní prostor Log Analytics**: Agent musí být nakonfigurovaná pro virtuální počítače Azure (a/nebo) na místním virtuálním počítačům k odesílání dat do pracovního prostoru Log Analytics používá v dřívějším kroku. Další informace najdete v tématu [Log Analytics – přehled agenta](../azure-monitor/platform/agents-overview.md).
 3. **Je nainstalovaná podporovaných řešení Log Analytics**: řešení Log Analytics by měla být nakonfigurovaná a odesílání dat do pracovního prostoru Log Analytics – podporované řešení jsou [čítače výkonu pro Windows a Linuxu](../azure-monitor/platform/data-sources-performance-counters.md), [Záznamy prezenčního signálu služby Agent Health](../azure-monitor/insights/solution-agenthealth.md), [Update management, a [data události](../azure-monitor/platform/data-sources-windows-events.md).
 4. **Protokolu analytická řešení, které jsou nakonfigurované k odeslání protokolů**: řešení Log Analytics by měly mít odpovídající požadované protokoly a data na [metriky podporovat pro pracovní prostory Log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces) povolena. Například pro *% dostupné paměti* čítač ho musí být nakonfigurovány v [čítače výkonu](../azure-monitor/platform/data-sources-performance-counters.md) řešení první.

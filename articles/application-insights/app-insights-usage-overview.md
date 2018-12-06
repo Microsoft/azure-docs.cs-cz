@@ -13,12 +13,12 @@ ms.date: 10/10/2017
 ms.pm_owner: daviste;NumberByColors
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: bc80bfacf6896161fae03b9ed93f5fe22e13ada2
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2ccb4d2ff7beeeac53bafe726122c3b47682db03
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725280"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955425"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
@@ -60,26 +60,6 @@ Přehledy na pravé straně bodu zajímavých vzorců v sadě dat.
 * **Relace** sestava vrátí počet uživatelských relací, které přistupují k webu. Relace je období aktivity podle uživatele, ukončeny určité době nečinnosti více než půl hodiny.
 
 [Informace o nástrojích uživatelé, relace a události](app-insights-usage-segmentation.md)  
-
-## <a name="page-views"></a>Zobrazení stránek
-
-V okně využití proklikejte dlaždici zobrazení stránek a získat rozpis nejoblíbenějších stránek:
-
-![V okně Přehled klikněte na graf zobrazení stránky](./media/app-insights-usage-overview/05-games.png)
-
-Výše uvedený příklad je z webu hry. Z grafů okamžitě vidět:
-
-* V minulém týdnu ještě lepší využití. Možná by přistupujeme k optimalizace pro vyhledávací weby?
-* Tenis je nejoblíbenější her. Zaměřme se na další vylepšení na tuto stránku.
-* Uživatelé v průměru, najdete na stránce tenis přibližně tři časy za týden. (Existují další informace o třikrát relace než uživatelé).
-* Většina uživatelů přejděte na web v průběhu pracovního týdne USA a v pracovní době. Možná by měl poskytujeme "rychlé skrýt" tlačítko na webové stránce.
-* [Poznámky](app-insights-annotations.md) v grafu zobrazit, když se nasadily nových verzí na webu. Žádná z poslední nasazení měli znatelný vliv na využití.
-
-Co když chcete prozkoumat podrobněji, jako je rozdělení vlastní vlastnost, která odešle svůj web v jeho telemetrie zobrazení stránky provoz?
-
-1. Otevřít **události** nástroj v nabídce prostředků Application Insights. Tento nástroj umožňuje analyzovat počet zobrazení stránek a vlastní události, které byly odeslány z vaší aplikace založené na širokou škálu možností filtrování, cohorting a segmentace.
-2. V rozevíracím seznamu "Kdo used" Vyberte "Any zobrazení stránky".
-3. V rozevíracím seznamu "Rozděleno podle" Vyberte vlastnost, podle kterého chcete rozdělit vaší telemetrie zobrazení stránky.
 
 ## <a name="retention---how-many-users-come-back"></a>Uchování – kolik uživatelů se vrátit?
 

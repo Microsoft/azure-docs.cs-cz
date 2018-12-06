@@ -3,7 +3,7 @@ title: Správa připojených partnerských řešení ve službě Azure Security 
 description: V tomto dokumentu se dozvíte, jak vám Azure Security Center umožňuje přehledně sledovat stav partnerských řešení integrovaných ve vašem předplatném Azure.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
-ms.author: terrylan
-ms.openlocfilehash: 103e0e353efeaf493fb1d72f03eb6ce6469cd683
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: rkarlin
+ms.openlocfilehash: 27a8abe0008c0b9c3854ea663e1c0fb3b55cfc30
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235662"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964539"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Správa připojených partnerských řešení pomocí Azure Security Center
 Tento článek vás provede postupy při správě a monitorování řešení připojená zabezpečení ve službě Azure Security Center.

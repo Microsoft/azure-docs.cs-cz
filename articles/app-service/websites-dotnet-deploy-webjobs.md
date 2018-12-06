@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 08cbff7bc58f5925dee9b77ff195d362af4379d8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aa1d5a4fc29b6fa5fc751edfd40e61d8762f6bd7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245718"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965338"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Vývoj a nasazení WebJobs pomocí sady Visual Studio – služby Azure App Service
 
@@ -35,7 +35,7 @@ Když Visual Studio nasadí projekt aplikace s povolenými WebJobs konzoly, prov
 
 Projekt povoleno WebJobs má přidat do něj následující položky:
 
-* [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) balíček NuGet.
+* [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) balíček NuGet.
 * A [webové úlohy publikovat settings.json](#publishsettings) soubor, který obsahuje nastavení nasazení a Plánovač. 
 
 ![Diagram znázorňující, co je přidán do konzolové aplikace má povolit nasazení jako webové úlohy](./media/websites-dotnet-deploy-webjobs/convert.png)
@@ -97,7 +97,7 @@ Chcete-li vytvořit nový projekt povoleno WebJobs, použijte šablonu projektu 
     Vytvoření projektu, který je nakonfigurován automaticky jako webová úloha nasazení při nasazení webového projektu ve stejném řešení. Tuto možnost použijte, pokud chcete spustit své webové úlohy ve stejné webové aplikaci, ve kterém budete spouštět související webové aplikace.
 
 > [!NOTE]
-> Nový projekt šablony WebJobs automaticky nainstaluje balíčky NuGet a obsahuje kód v *Program.cs* pro [sada WebJobs SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Pokud nechcete, aby k použití sady WebJobs SDK, odeberte nebo změňte `host.RunAndBlock` výroky *Program.cs*.
+> Nový projekt šablony WebJobs automaticky nainstaluje balíčky NuGet a obsahuje kód v *Program.cs* pro [sada WebJobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Pokud nechcete, aby k použití sady WebJobs SDK, odeberte nebo změňte `host.RunAndBlock` výroky *Program.cs*.
 > 
 > 
 
@@ -130,7 +130,7 @@ Pole v tomto dialogovém okně odpovídají polím na **přidat WebJob** dialogo
 > 
 
 ## <a id="publishsettings"></a>webjob-publish-settings.json
-Při konfiguraci konzolovou aplikaci WebJobs nasazení Visual Studio nainstaluje [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet balíčku a plánování informací v úložišti *webové úlohy publikovat settings.json*  soubor v projektu *vlastnosti* složky projektu WebJobs. Tady je příklad tohoto souboru:
+Při konfiguraci konzolovou aplikaci WebJobs nasazení Visual Studio nainstaluje [Microsoft.Web.WebJobs.Publish](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet balíčku a plánování informací v úložišti *webové úlohy publikovat settings.json*  soubor v projektu *vlastnosti* složky projektu WebJobs. Tady je příklad tohoto souboru:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",

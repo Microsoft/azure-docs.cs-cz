@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: aa65cace316c68d46e1547b30a4b2c4f4932f450
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cdd01953e4053eec6e8b0cb57c7a68bb2ae01673
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882350"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957470"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
 Účelem tohoto dokumentu je poskytnout konkrétní informace ke službě Log Analytics, což je funkce služby Azure Monitor k doplnění informací na [Centrum zabezpečení Azure](../../security/security-microsoft-trust-center.md).  
@@ -183,5 +183,5 @@ Pro přístup k pracovním prostoru Log Analytics, přihlášení k webu Azure p
 ## <a name="next-steps"></a>Další postup
 * Zjistěte, jak shromažďovat data s využitím Log Analytics pro vaše virtuální počítače Azure následující [virtuálního počítače Azure quickstart](../../log-analytics/log-analytics-quick-collect-azurevm.md).  
 
-*  Pokud chcete shromažďovat data z fyzických nebo virtuálních počítačů Windows nebo Linux ve vašem prostředí, najdete v článku [rychlý start pro počítače s Linuxem](../../log-analytics/log-analytics-quick-collect-linux-computer.md) nebo [počítače rychlý start pro Windows](../../log-analytics/log-analytics-quick-collect-windows-computer.md)
+*  Pokud chcete shromažďovat data z fyzických nebo virtuálních počítačů Windows nebo Linux ve vašem prostředí, najdete v článku [rychlý start pro počítače s Linuxem](../../log-analytics/log-analytics-quick-collect-linux-computer.md) nebo [počítače rychlý start pro Windows](../../azure-monitor/learn/quick-collect-windows-computer.md)
 

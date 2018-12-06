@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 36b64912eb3393ad496d04ff656bed5b0c41566c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 790d05201550461b095cfefd32f0330f37697e0b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444763"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970327"
 ---
 # <a name="azure-api-management-template-resources"></a>Šablony prostředků Azure API Management
 Azure API Management nabízí následující typy prostředků pro použití v vývojář šablon portálu.  
@@ -176,7 +176,7 @@ Azure API Management nabízí následující typy prostředků pro použití v v
 |WebDocumentationTemplatesDeveloperKey|Zadejte klíč předplatného.|  
 |WebDocumentationTemplatesJavaApache|Tato ukázka používá klient Apache HTTP ze součástí HTTP)http://hc.apache.org/httpcomponents-client-ga/)|  
 |WebDocumentationTemplatesOptionalParams|Podle potřeby zadejte hodnoty nepovinných parametrů.|  
-|WebDocumentationTemplatesPhpPackage|Tato ukázka používá balíček HTTP_Request2. (Další informace: http://pear.php.net/package/HTTP_Request2)|  
+|WebDocumentationTemplatesPhpPackage|Tato ukázka používá balíček HTTP_Request2. (Další informace: https://pear.php.net/package/HTTP_Request2)|  
 |WebDocumentationTemplatesPythonValuesForPath|Podle potřeby zadejte hodnoty parametrů cesty (zobrazené jako {...}) a text žádosti.|  
 |WebDocumentationTemplatesRequestBody|Zadejte text žádosti.|  
 |WebDocumentationTemplatesRequiredParams|Zadejte hodnoty následujících povinných parametrů.|  
@@ -571,13 +571,13 @@ Azure API Management nabízí následující typy prostředků pro použití v v
 |ApiManagementUserLimitReached|Tato služba dosáhla maximálního počtu povolených uživatelů. Upgradujte na vyšší cenovou úroveň.|  
   
 ##  <a name="glyphs"></a> Piktogram prostředky  
- Šablon portálu pro vývojáře API Management můžete použít glyfy z [Glyphicons z Bootstrap](http://getbootstrap.com/components/#glyphicons). Tato sada glyfy obsahuje více než 250 glyfů ve formátu písmo z [Glyphicon](http://glyphicons.com/) Halflings nastavit. Použití piktogram z této sady, použijte následující syntaxi.  
+ Šablon portálu pro vývojáře API Management můžete použít glyfy z [Glyphicons z Bootstrap](https://getbootstrap.com/components/#glyphicons). Tato sada glyfy obsahuje více než 250 glyfů ve formátu písmo z [Glyphicon](https://glyphicons.com/) Halflings nastavit. Použití piktogram z této sady, použijte následující syntaxi.  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- Úplný seznam glyfy, naleznete v tématu [Glyphicons z Bootstrap](http://getbootstrap.com/components/#glyphicons).
+ Úplný seznam glyfy, naleznete v tématu [Glyphicons z Bootstrap](https://getbootstrap.com/components/#glyphicons).
 
 ## <a name="next-steps"></a>Další postup
 Další informace o práci se šablonami najdete v tématu [přizpůsobení portálu pro správu rozhraní API pro vývojáře pomocí šablon](api-management-developer-portal-templates.md).

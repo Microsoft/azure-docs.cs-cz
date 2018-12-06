@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: e5011dbaad5e5935f3aa792bd3a3ed2b271f23bc
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 726159f7450c29385a331b29191c38085a820876
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632429"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957619"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Osvědčené postupy pro vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "52632429"
 Tento článek obsahuje osvědčené postupy pro [vytváření souboru řešení správy](solutions-solution-file.md) v Azure.  Tyto informace se aktualizují jako další doporučené postupy jsou označeny.
 
 ## <a name="data-sources"></a>Zdroje dat
-- Zdroje dat mohou být [nakonfigurované pomocí šablony Resource Manageru](../../log-analytics/log-analytics-template-workspace-configuration.md), ale by neměly být obsažené v souboru řešení.  Důvodem je, že konfigurace zdroje dat není aktuálně idempotentní, což znamená, že vaše řešení může přepsat existující konfigurace v pracovním prostoru uživatele.<br><br>Vaše řešení například může vyžadovat upozornění a chybové události z protokolu událostí aplikace.  Pokud toto určíte jako zdroj dat ve vašem řešení, riskujete odebrání – informační události, pokud má uživatel nakonfigurovaný v jejich pracovním prostoru.  Pokud jste zahrnuli všechny události, pak vám může pokračovat ve shromažďování nadměrné – informační události v pracovním prostoru uživatele.
+- Zdroje dat mohou být [nakonfigurované pomocí šablony Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), ale by neměly být obsažené v souboru řešení.  Důvodem je, že konfigurace zdroje dat není aktuálně idempotentní, což znamená, že vaše řešení může přepsat existující konfigurace v pracovním prostoru uživatele.<br><br>Vaše řešení například může vyžadovat upozornění a chybové události z protokolu událostí aplikace.  Pokud toto určíte jako zdroj dat ve vašem řešení, riskujete odebrání – informační události, pokud má uživatel nakonfigurovaný v jejich pracovním prostoru.  Pokud jste zahrnuli všechny události, pak vám může pokračovat ve shromažďování nadměrné – informační události v pracovním prostoru uživatele.
 
 - Pokud vaše řešení vyžaduje data z jedné z standardních datových zdrojů, pak byste měli definovat to jako předpoklad.  V dokumentaci k stavu, že zákazník musí zdroj dat nakonfigurovat pro svoje vlastní.  
 - Přidat [ověření toku dat](../../azure-monitor/platform/view-designer-tiles.md) zprávy k zobrazením v rámci vašeho řešení pro pokyn uživateli na zdroje dat, které je potřeba nakonfigurovat pro požadovaná data se mají shromažďovat.  Tato zpráva se zobrazí na dlaždici zobrazení, když nebyla nalezena požadovaná data.

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: ec942d97e7671c0477d8d723afacb06b73565c1c
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: ad199f71fda020d86bb08706d346fa847e5c4d9f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414553"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966887"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Java využívající databázi MySQL v Azure
 
@@ -143,7 +143,7 @@ Ve službě Cloud Shell pomocí příkazu [`az mysql server create`](/cli/azure/
 V následujícím příkazu nahraďte zástupnou hodnotu *\<mysql_server_name>* jedinečným názvem serveru, zástupnou hodnotu *\<admin_user>* uživatelským jménem a zástupnou hodnotu *\<admin_password>* heslem. Název serveru se používá jako součást koncového bodu PostgreSQL (`https://<mysql_server_name>.mysql.database.azure.com`), takže musí být jedinečný v rámci všech serverů v Azure.
 
 ```azurecli-interactive
-az mysql server create --resource-group myResourceGroup --name <mysql_server_name>--location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
+az mysql server create --resource-group myResourceGroup --name <mysql_server_name> --location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
 
 > [!NOTE]
@@ -272,7 +272,7 @@ Jakmile bude definice webové aplikace připravená, v Azure CLI se zobrazí pod
 
 Ve službě Cloud Shell pomocí příkazu [`az webapp config set`](/cli/azure/webapp/config#az-webapp-config-set) nastavte konfiguraci modulu runtime Java podle potřeb vaší aplikace.
 
-Následující příkaz nakonfiguruje spouštění webové aplikace na nejnovější sadě [Java 8 JDK](https://aka.ms/azure-jdks) a [Apache Tomcat](http://tomcat.apache.org/) 8.0.
+Následující příkaz nakonfiguruje spouštění webové aplikace na nejnovější sadě [Java 8 JDK](https://aka.ms/azure-jdks) a [Apache Tomcat](https://tomcat.apache.org/) 8.0.
 
 ```azurecli-interactive
 az webapp config set --name <app_name> --resource-group myResourceGroup --java-version 1.8 --java-container Tomcat --java-container-version 8.0

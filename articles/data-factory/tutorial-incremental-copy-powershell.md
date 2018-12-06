@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 08bce244dc4eafcd423123b1230fe4aa8b4ed04e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: 09ba81e4d895afeccf41617039732ae3e72147d7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092035"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972418"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Přírůstkové načtení dat ze služby Azure SQL Database do úložiště Azure Blob Storage
 V tomto kurzu vytvoříte službu Azure Data Factory s kanálem, který načítá rozdílová data z tabulky ve službě Azure SQL Database do úložiště Azure Blob Storage. 
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující kroky:
 ## <a name="overview"></a>Přehled
 Tady je souhrnný diagram tohoto řešení: 
 
-![Přírůstkové načtení dat](media\tutorial-Incrementally-copy-powershell\incrementally-load.png)
+![Přírůstkové načtení dat](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
 
 Tady jsou důležité kroky pro vytvoření tohoto řešení: 
 
@@ -722,7 +722,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     data_source_table | 2017-09-07 09:01:00.000
 
      
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste provedli následující kroky: 
 
 > [!div class="checklist"]

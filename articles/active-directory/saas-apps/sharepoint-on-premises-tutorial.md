@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 954eec8566173dd4707926d5f713a5cd509bdd9b
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 9c63808af8d883badd379cf8bc3372a1d65d6624
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620060"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Integrace Azure Active Directory s místní SharePoint
 
@@ -76,7 +76,7 @@ Pokud chcete nakonfigurovat integraci služby SharePoint v místním do služby 
 
 4. Do vyhledávacího pole zadejte **místní SharePoint**vyberte **místní SharePoint** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
-    ![Místní SharePoint v seznamu výsledků](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
+    ![Místní SharePoint v seznamu výsledků](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
@@ -104,11 +104,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
 
-    ![Jednotné přihlašování – dialogové okno](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
+    ![Jednotné přihlašování – dialogové okno](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_samlbase.png)
 
 3. Na **SharePoint místní domény a adresy URL** části, proveďte následující kroky:
 
-    ![Místní SharePoint domény a adresy URL jednotné přihlašování – informace](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
+    ![Místní SharePoint domény a adresy URL jednotné přihlašování – informace](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_url1.png)
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
@@ -118,21 +118,21 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 4. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
-    ![Odkaz ke stažení certifikátu](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
+    ![Odkaz ke stažení certifikátu](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_certificate.png)
 
     > [!Note]
     > Mějte prosím na paměti dolů cesta k souboru, do které jste stáhli soubor certifikátu je potřeba pro použití v pozdější části skriptu prostředí PowerShell pro konfiguraci.
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media\sharepoint-on-premises-tutorial/tutorial_general_400.png)
+    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/sharepoint-on-premises-tutorial/tutorial_general_400.png)
 
 6. Na **místní SharePoint konfigurace** klikněte na tlačítko **konfigurovat službu SharePoint v místním** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID** z **Stručná referenční příručka oddílu.** Pro **jednotné přihlašování – adresa URL služby**, použijte hodnotu následujícímu vzoru: `https://login.microsoftonline.com/_my_directory_id_/wsfed` 
 
     > [!Note]
     > _my_directory_id_ je id tenanta předplatného služby Azure Ad.
 
-    ![Konfigurace místní služby SharePoint](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
+    ![Konfigurace místní služby SharePoint](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_configure.png)
 
     > [!NOTE]
     > Aplikace služby SharePoint v místním používá SAML 1.1 tokenu, aby Azure AD očekává žádost WS Fed ze serveru SharePoint server a po ověření, vystavuje SAML 1.1. token.
@@ -171,7 +171,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     e. Klikněte na **OK**.
 
-    ![Konfigurace poskytovatele ověřování](./media\sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
+    ![Konfigurace poskytovatele ověřování](./media/sharepoint-on-premises-tutorial/fig10-configauthprovider.png)
 
     > [!NOTE]
     > Někteří uživatelé externí není schopna použít tuto integraci jednotné přihlašování, protože jejich hlavní název uživatele bude mít pozměnění něco jako hodnota `MYEMAIL_outlook.com#ext#@TENANT.onmicrosoft.com`. Brzy budeme zákazníkům umožní konfigurace aplikace o tom, jak zpracovat hlavní název uživatele v závislosti na typu uživatele. Po, který by měl být všichni uživatelé typu Host moct používat jednotné přihlašování bez problémů jako zaměstnance organizace.
@@ -186,19 +186,19 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
 
-    ![Tlačítko Azure Active Directory](./media\sharepoint-on-premises-tutorial/create_aaduser_01.png)
+    ![Tlačítko Azure Active Directory](./media/sharepoint-on-premises-tutorial/create_aaduser_01.png)
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media\sharepoint-on-premises-tutorial/create_aaduser_02.png)
+    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/sharepoint-on-premises-tutorial/create_aaduser_02.png)
 
 3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
 
-    ![Tlačítko Přidat](./media\sharepoint-on-premises-tutorial/create_aaduser_03.png)
+    ![Tlačítko Přidat](./media/sharepoint-on-premises-tutorial/create_aaduser_03.png)
 
 4. V **uživatele** dialogové okno pole, proveďte následující kroky:
 
-    ![Dialogové okno uživatele](./media\sharepoint-on-premises-tutorial/create_aaduser_04.png)
+    ![Dialogové okno uživatele](./media/sharepoint-on-premises-tutorial/create_aaduser_04.png)
 
     a. V **název** zadejte **BrittaSimon**.
 
@@ -220,7 +220,7 @@ Uživatelé, kteří budou protokolovat do služby Azure AD a přístup k Sharep
 
 4. V zásadách pro webovou aplikaci, klikněte na tlačítko **Add Users**.
 
-    ![Hledání pro uživatele podle své deklarace názvu](./media\sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
+    ![Hledání pro uživatele podle své deklarace názvu](./media/sharepoint-on-premises-tutorial/fig11-searchbynameclaim.png)
 
 5. V **Add Users** dialogového okna klikněte na příslušnou zónu v **zóny**a potom klikněte na tlačítko **Další**.
 
@@ -232,7 +232,7 @@ Uživatelé, kteří budou protokolovat do služby Azure AD a přístup k Sharep
 
 9. V části oprávnění **úplné řízení**.
 
-    ![Udělení úplného řízení uživateli deklarací identity](./media\sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
+    ![Udělení úplného řízení uživateli deklarací identity](./media/sharepoint-on-premises-tutorial/fig12-grantfullcontrol.png)
 
 10. Klikněte na tlačítko **Dokončit**a potom klikněte na tlačítko **OK**.
 
@@ -263,7 +263,7 @@ Konfigurace se dá použít pro jednu webovou aplikaci, ale vyžaduje další ko
 
 Uživatelé nyní se můžete přihlásit do služby SharePoint 2016 pomocí identit z Azure AD, ale stále existují příležitosti pro zlepšení uživatelského prostředí. Například hledání uživatele představuje více výsledky hledání v výběr osob. Neexistuje výsledek hledání pro jednotlivé typy 3 deklarace identity, které byly vytvořeny v mapování deklarací identity. Vybrat uživatele s využitím výběr osob, musí přesně zadejte své uživatelské jméno a zvolte **název** deklarace identity výsledek.
 
-![Výsledky hledání deklarací identity](./media\sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
+![Výsledky hledání deklarací identity](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
 
 Neexistuje žádné ověřování na tyto hodnoty vyhledat, což může vést k překlepy nebo typ přiřazení jako deklarace identity uživatele nechtěně výběru chybného **příjmení** deklarací identity. To může zabránit uživatelům v úspěšně přístup k prostředkům.
 
@@ -283,7 +283,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 2. V seznamu aplikací vyberte **místní SharePoint**.
 
-    ![Propojení služby SharePoint v seznamu aplikací](./media\sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
+    ![Propojení služby SharePoint v seznamu aplikací](./media/sharepoint-on-premises-tutorial/tutorial_sharepointonpremises_app.png)
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 

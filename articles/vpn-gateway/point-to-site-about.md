@@ -2,25 +2,17 @@
 title: Informace o připojení Azure Point-to-Site VPN | Dokumentace Microsoftu
 description: Tento článek vám pomůže pochopit připojení Point-to-Site a vám pomůže rozhodnout, typu ověřování P2S VPN gateway používat.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/06/2018
+ms.topic: conceptual
+ms.date: 12/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8cdc80e8e4f8d3feb36ca82740d5610e60716ec6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: fe25858f185cf4ddfd17f956b66846a22ddb0e6c
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003355"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971367"
 ---
 # <a name="about-point-to-site-vpn"></a>Informace o VPN typu Point-to-Site
 
@@ -30,14 +22,15 @@ Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečen
 
 Point-to-site VPN můžete použít jednu z následujících protokolů:
 
+* OpenVPN, SSL/TLS na základě protokol VPN. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. OpenVPN je možné se připojit z Androidu, iOS, zařízení se systémy Linux a Mac (OSX verze 10.11 a novější).
+
 * Zabezpečte SSTP Socket Tunneling Protocol (), speciální protokol VPN založený na protokolu SSL. Řešení typu VPN protokolu SSL umožňuje pronikat branami firewall, protože většina bran firewall otevírá port TCP 443, který používá protokol SSL. SSTP je podporována pouze na zařízeních s Windows. Azure podporuje všechny verze Windows, které mají SSTP (Windows 7 a novější).
 
 * IKEv2 VPN, řešení IPsec VPN založené na standardech. IKEv2 VPN je možné použít k připojení ze zařízení se systémem Mac (OSX verze 10.11 a vyšší).
 
-Pokud máte smíšené klientské prostředí obsahující zařízení s Windows a Mac konfigurace SSTP a IKEv2.
 
 >[!NOTE]
->IKEv2 pro P2S je k dispozici pouze modelu nasazení Resource Manager. Není k dispozici pro model nasazení classic.
+>IKEv2 a OpenVPN pro P2S jsou k dispozici pro pouze modelu nasazení Resource Manager. Nejsou k dispozici pro model nasazení classic.
 >
 
 ## <a name="authentication"></a>Jak se ověřuje klienty P2S VPN?
@@ -52,11 +45,17 @@ Ověření certifikátu klienta se provádí pomocí VPN gateway a probíhá př
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Ověřování pomocí serveru domény Active Directory (AD)
 
-Doménové ověřování AD umožňuje uživatelům připojit se k Azure pomocí svých firemních přihlašovacích údajů domény. Vyžaduje server RADIUS, která se integruje se serverem AD. Organizace také můžete využít své stávající nasazení pomocí protokolu RADIUS.   
-  RADIUS server může být nasazená místně nebo ve vaší virtuální síti Azure. Při ověřování Azure VPN Gateway slouží jako předávání a předávání ověřovacích zpráv vpřed a zpět mezi serverem RADIUS a připojení zařízení. Proto je důležité brány připojení k serveru RADIUS. Pokud RADIUS server je k dispozici místně, je připojení VPN S2S z Azure do místní lokality vyžaduje pro připojení.  
-  Server protokolu RADIUS můžete integrovat také s AD CS. To vám umožní používat RADIUS server a vaše podnikové nasazení certifikátů pro ověřování P2S certifikátu jako alternativu k ověřování certifikátů Azure. Výhodou je, že není nutné k odesílání kořenových certifikátů a odvolané certifikáty do Azure.
+Doménové ověřování AD umožňuje uživatelům připojit se k Azure pomocí svých firemních přihlašovacích údajů domény. Vyžaduje server RADIUS, která se integruje se serverem AD. Organizace také můžete využít své stávající nasazení pomocí protokolu RADIUS.   
+  
+RADIUS server může být nasazená místně nebo ve vaší virtuální síti Azure. Při ověřování Azure VPN Gateway slouží jako předávání a předávání ověřovacích zpráv vpřed a zpět mezi serverem RADIUS a připojení zařízení. Proto je důležité brány připojení k serveru RADIUS. Pokud RADIUS server je k dispozici místně, je připojení VPN S2S z Azure do místní lokality vyžaduje pro připojení.  
+  
+Server protokolu RADIUS můžete integrovat také s AD CS. To vám umožní používat RADIUS server a vaše podnikové nasazení certifikátů pro ověřování P2S certifikátu jako alternativu k ověřování certifikátů Azure. Výhodou je, že není nutné k odesílání kořenových certifikátů a odvolané certifikáty do Azure.
 
 Server protokolu RADIUS můžete také integrovat s jinými systémy pro externí identity. Otevře spoustu možnosti ověřování pro P2S VPN, včetně možnosti služby Multi-Factor Authentication.
+
+>[!NOTE]
+>OpenVPN protokol není podporován ověřováním pomocí protokolu RADIUS.
+>
 
 ![Point-to-site](./media/point-to-site-about/p2s.png "Point-to-Site")
 
@@ -77,13 +76,11 @@ Soubor zip obsahuje také hodnoty některých důležitých nastavení na stran�
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="gwsku"></a>Které P2S podporu skladové položky brány sítě VPN?
+## <a name="gwsku"></a>Které skladové položky brány podporuje P2S VPN?
 
-[!INCLUDE [p2s-skus](../../includes/vpn-gateway-table-point-to-site-skus-include.md)]
+[!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-* Srovnávací test agregované propustnosti je založen na měření více tunelů agregovaných prostřednictvím jedné brány. Nejedná se o zaručenou propustnost kvůli podmínkám v Internetu a chování aplikace.
-* Informace o cenách najdete na stránce s cenami 
-* Informace o smlouvě SLA (Service Level Agreement) najdete na stránce smlouvy SLA.
+* Doporučení SKU brány najdete v tématu [nastavení služby VPN Gateway](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 >[!NOTE]
 >Skladová položka Basic nepodporuje ověřování IKEv2 ani RADIUS.

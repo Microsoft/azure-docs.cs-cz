@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: ergreenl
-ms.openlocfilehash: 12611c9a4016b634cb865bbf609b1c7a6961abb7
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: b73739ca6d392af191d1a51eca2d646a8a5cd4c4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155061"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955068"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Řešení chyb adresáře pro existující spravované domény služby Azure AD Domain Services
 Máte existující spravovanou doménu služby Azure AD Domain Services. Přejděte na web Azure Portal a zobrazení spravované domény, zobrazí se následující chybová zpráva:
 
-![Chyba adresáře](.\media\getting-started\mismatched-tenant-error.png)
+![Chyba adresáře](./media/getting-started/mismatched-tenant-error.png)
 
 Dokud se problém nevyřeší, budete moct spravovat tuto spravovanou doménu.
 

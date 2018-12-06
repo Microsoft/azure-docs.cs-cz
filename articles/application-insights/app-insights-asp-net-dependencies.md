@@ -10,19 +10,17 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 12/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 767497a6ced0eb54559b9bdd10761b659e32a33f
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 034e611f6ea95675dc3169feefe1916a81c50943
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681020"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52972367"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Nastavení Application Insights: sledování závislostí
 A *závislost* je externí komponenta, která volá vaši aplikaci. Obvykle se jedná o službu volána pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](app-insights-overview.md) měří jak dlouho aplikaci čeká závislosti a jak často závislosti volání selže. Můžete prozkoumat konkrétní volání a spojit je žádosti a výjimky.
-
-![ukázkové grafy](./media/app-insights-asp-net-dependencies/10-intro.png)
 
 Toto monitorování závislostí out-of-the-box aktuálně hlásí volání pro tyto typy závislostí:
 
@@ -30,13 +28,16 @@ Toto monitorování závislostí out-of-the-box aktuálně hlásí volání pro 
   * Databáze SQL
   * Rozhraní ASP.NET web a služby WCF, které používají vazby založené na protokolu HTTP
   * Místní nebo vzdálené volání HTTP
-  * Azure Cosmos DB, table, úložiště objektů blob a fronty
+  * Azure Cosmos DB, table, úložiště objektů blob a fronty 
 * Webové stránky
   * Volání AJAX
 
 Monitorování funguje pomocí [bajtů kód instrumentace](https://msdn.microsoft.com/library/z9z62c29.aspx) kolem vybrané metody. Je minimální nároky na výkon.
 
 Můžete je zapsat také vlastních volání sady SDK a monitorujte Další závislosti, v kódu klienta a serveru pomocí [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
+
+> [!NOTE]
+> Azure Cosmos DB se automaticky sleduje pouze v případě [HTTP/HTTPS](../cosmos-db/performance-tips.md#networking) se používá. Režim TCP nebude zachycena Application Insights.
 
 ## <a name="set-up-dependency-monitoring"></a>Nastavení monitorování závislostí
 Závislost částečné informace jsou shromažďovány automaticky [Application Insights SDK](app-insights-asp-net.md). Pokud chcete získat kompletní data, nainstalujte příslušného agenta pro hostitelský server.

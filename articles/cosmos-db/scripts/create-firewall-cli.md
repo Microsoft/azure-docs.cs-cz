@@ -1,17 +1,17 @@
 ---
-title: Skript Azure CLI – Vytvoření brány firewall pro službu Azure Cosmos DB | Microsoft Docs
+title: Skript Azure CLI – vytvoření brány firewall pro službu Azure Cosmos DB
 description: Ukázkový skript Azure CLI – Vytvoření brány firewall pro službu Azure Cosmos DB
 author: markjbrown
+ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/26/2018
-ms.author: mjbrown
-ms.openlocfilehash: b43fff02f247e557d018a74772ca115543d904bf
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 793fc68bfcd2d7afdc7a5a4b1916737889d27ba5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013033"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52955362"
 ---
 # <a name="azure-cosmos-db-create-a-firewall-using-azure-cli"></a>Azure Cosmos DB: Vytvoření brány firewall pomocí Azure CLI
 
@@ -44,7 +44,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [az cosmosdb update](/cli/azure/cosmosdb#az-cosmosdb-update) | Aktualizuje účet služby Azure Cosmos DB. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: fdcc230171006c6388e75b947e10a73fb953001a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bfb08cb3bb81917414e4d34afe47964b738980e7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294672"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970174"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Použití externích služeb ze služby Azure API Management
 Zásady, které jsou k dispozici ve službě Azure API Management můžete provádět řadu užitečnou práci čistě na základě příchozího požadavku, odchozí odpovědi a informace o základní konfiguraci. Ale nebudou moct komunikovat s externími službami ze služby API Management otevře zásad a mnoho více příležitostí.
@@ -68,13 +68,13 @@ Při použití stylu ohně a zapomenout požadavku se určitých kompromisů. Po
 `send-request` Zásada umožňuje pomocí externí služby a provádět komplexní zpracování funkce vrátí data do API managementu služby, který lze použít pro další zpracování zásad.
 
 ### <a name="authorizing-reference-tokens"></a>Autorizace tokeny odkazů
-Hlavní funkce služby API Management chrání back-endovým prostředkům. Pokud vytvoří autorizační server používá vaše rozhraní API [tokeny JWT](http://jwt.io/) jako součást tok OAuth2, jako [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) nemá, pak můžete použít `validate-jwt` zásady k ověření platnosti tokenu. Některé autorizace servery vytvořit, co se nazývají [odkazovat na tokeny](http://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) , který nelze ověřit bez provedení zpětné volání k autorizačnímu serveru.
+Hlavní funkce služby API Management chrání back-endovým prostředkům. Pokud vytvoří autorizační server používá vaše rozhraní API [tokeny JWT](https://jwt.io/) jako součást tok OAuth2, jako [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) nemá, pak můžete použít `validate-jwt` zásady k ověření platnosti tokenu. Některé autorizace servery vytvořit, co se nazývají [odkazovat na tokeny](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) , který nelze ověřit bez provedení zpětné volání k autorizačnímu serveru.
 
 ### <a name="standardized-introspection"></a>Standardizované introspekce
 V minulosti bylo standardizované nijak ověřit token odkazu pomocí autorizačního serveru. Ale nedávno navrhovaný standard [RFC 7662](https://tools.ietf.org/html/rfc7662) zveřejnila společnost IETF, který definuje, jak můžete zdrojový server ověřit platnost tokenu.
 
 ### <a name="extracting-the-token"></a>Extrahuje token
-Prvním krokem je extrahovat token z autorizační hlavičky. Hodnota záhlaví musí být naformátovaná za použití `Bearer` schéma autorizace, jedna mezera a ověřovací token, který podle [RFC 6750](http://tools.ietf.org/html/rfc6750#section-2.1). Bohužel se případech, kdy je vynechán schéma autorizace. Aby se zohlednily to při analýze, API Management rozdělí hodnotu hlavičky v prostoru a vybere poslední řetězec z vráceného pole řetězců. To poskytuje řešení pro chybně formátovaná autorizační hlavičky.
+Prvním krokem je extrahovat token z autorizační hlavičky. Hodnota záhlaví musí být naformátovaná za použití `Bearer` schéma autorizace, jedna mezera a ověřovací token, který podle [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Bohužel se případech, kdy je vynechán schéma autorizace. Aby se zohlednily to při analýze, API Management rozdělí hodnotu hlavičky v prostoru a vybere poslední řetězec z vráceného pole řetězců. To poskytuje řešení pro chybně formátovaná autorizační hlavičky.
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
@@ -118,7 +118,7 @@ Můžete použít `<choose>` zásad zjistit, jestli je token platný a pokud ano
 </choose>
 ```
 
-Jak je uvedeno [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) vystihuje jak `bearer` tokeny by měla sloužit, správu rozhraní API také vrátí hodnotu `WWW-Authenticate` hlavičku odpovědi 401. WWW-Authenticate určena dáte pokyn, aby klient o tom, jak vytvořit žádost o správně autorizované. Z důvodu celou řadu postupů s OAuth2 framework je obtížné komunikovat všechny potřebné informace. Naštěstí existují úsilí probíhá na pomoc [klienti zjistíte, jak správně autorizaci požadavků na server prostředků](http://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+Jak je uvedeno [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) vystihuje jak `bearer` tokeny by měla sloužit, správu rozhraní API také vrátí hodnotu `WWW-Authenticate` hlavičku odpovědi 401. WWW-Authenticate určena dáte pokyn, aby klient o tom, jak vytvořit žádost o správně autorizované. Z důvodu celou řadu postupů s OAuth2 framework je obtížné komunikovat všechny potřebné informace. Naštěstí existují úsilí probíhá na pomoc [klienti zjistíte, jak správně autorizaci požadavků na server prostředků](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Konečné řešení
 Na konci získáte následující zásady:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 53e3a298dd8a3eebca1943d9bade51187f14d722
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 17bcc7ada244484c2c2df5bd81c82f695a8b5342
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054003"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969903"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -125,7 +125,7 @@ options timeout:1 attempts:5
 Soubor resolv.conf se obvykle generuje automaticky a by neměla být upravována. Konkrétní kroky pro přidání *možnosti* řádku se liší podle distribuce:
 
 * **Ubuntu** (používá resolvconf):
-  1. Přidat *možnosti* řádek a **/etc/resolveconf/resolv.conf.d/head**.
+  1. Přidat *možnosti* řádek a **/etc/resolvconf/resolv.conf.d/tail**.
   2. Spustit `resolvconf -u` aktualizovat.
 * **SUSE** (používá netconf):
   1. Přidat *timeout:1 pokusy: 5* k **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametr **/etc/sysconfig/network/config**. 

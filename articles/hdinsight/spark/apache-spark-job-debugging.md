@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6afb54caca572988c566ab7c6325d511e77fbd3e
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 5e00c52c17eac92edc3273e2d765d6c5fd76f59b
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582084"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970672"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Ladění Apache Spark úloh spuštěných v Azure HDInsight
 
@@ -28,12 +28,12 @@ Musíte mít následující:
 * Měli jste spustili spuštění poznámkového bloku,  **[Machine learning: prediktivní analýzy na data kontroly potravin pomocí MLLib](apache-spark-machine-learning-mllib-ipython.md)**. Pokyny, jak spustit tento poznámkový blok postupujte podle odkazu.  
 
 ## <a name="track-an-application-in-the-yarn-ui"></a>Sledování aplikace v Uživatelském rozhraní YARN
-1. Spuštění uživatelského rozhraní YARN. Klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **YARN**.
+1. Spuštění uživatelského rozhraní YARN. Klikněte na tlačítko **Yarn** pod **řídicí panely clusteru**.
    
     ![Spuštění uživatelského rozhraní YARN](./media/apache-spark-job-debugging/launch-yarn-ui.png)
    
    > [!TIP]
-   > Alternativně můžete také spustit z uživatelského rozhraní Ambari Uživatelském rozhraní YARN. Chcete-li spustit uživatelské rozhraní Ambari, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **řídicí panel clusteru HDInsight**. Z uživatelského rozhraní Ambari, klikněte na tlačítko **YARN**, klikněte na tlačítko **rychlé odkazy**, klikněte na aktivní Resource Manageru a pak klikněte na **uživatelského rozhraní správce prostředků**.    
+   > Alternativně můžete také spustit z uživatelského rozhraní Ambari Uživatelském rozhraní YARN. Chcete-li spustit uživatelské rozhraní Ambari, klikněte na tlačítko **Ambari domácí** pod **řídicí panely clusteru**. Z uživatelského rozhraní Ambari, klikněte na tlačítko **YARN**, klikněte na tlačítko **rychlé odkazy**, klikněte na aktivní Resource Manageru a pak klikněte na **uživatelského rozhraní správce prostředků**.    
    > 
    > 
 2. Protože jste spustili úlohu Spark pomocí poznámkových bloků Jupyter, aplikace má název **remotesparkmagics** (jde o název pro všechny aplikace, které jsou spuštěny z poznámkových bloků). Klikněte na ID aplikace proti název aplikace, chcete-li získat další informace o úloze. Otevře se zobrazení aplikace.
@@ -88,12 +88,12 @@ V uživatelském rozhraní Spark můžete přejít ke Sparkových úloh, které 
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>Najít informace o dokončené úlohy pomocí Server historie Sparku
 Po dokončení úlohy se ukládají informace o úloze v Server historie Sparku.
 
-1. Spusťte Server historie Sparku, v okně clusteru klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **Server historie Sparku**.
+1. Chcete-li spustit Server historie Sparku, v okně Přehled klikněte na tlačítko **server historie Sparku** pod **řídicí panely clusteru**.
    
     ![Spusťte Server historie Sparku](./media/apache-spark-job-debugging/launch-spark-history-server.png)
    
    > [!TIP]
-   > Alternativně můžete také spustit uživatelské rozhraní konektoru Spark historie serveru z uživatelského rozhraní Ambari. Chcete-li spustit uživatelské rozhraní Ambari, v okně clusteru klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **řídicí panel clusteru HDInsight**. Z uživatelského rozhraní Ambari, klikněte na tlačítko **Spark**, klikněte na tlačítko **rychlé odkazy**a potom klikněte na tlačítko **rozhraní Server historie Sparku**.
+   > Alternativně můžete také spustit uživatelské rozhraní konektoru Spark historie serveru z uživatelského rozhraní Ambari. Chcete-li spustit uživatelské rozhraní Ambari, v okně Přehled klikněte na tlačítko **Ambari domácí** pod **řídicí panely clusteru**. Z uživatelského rozhraní Ambari, klikněte na tlačítko **Spark**, klikněte na tlačítko **rychlé odkazy**a potom klikněte na tlačítko **rozhraní Server historie Sparku**.
    > 
    > 
 2. Zobrazí všechny dokončené aplikace uvedené. Klikněte na ID aplikace a přejít k podrobnostem do aplikace pro další informace.
@@ -122,5 +122,3 @@ Po dokončení úlohy se ukládají informace o úloze v Server historie Sparku.
 * [Jádra dostupná pro poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Použití externích balíčků s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Instalace Jupyteru do počítače a připojení ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
-
-

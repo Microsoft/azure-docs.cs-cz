@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d4c9e974f92f26b93900318c01dc8a659d8edbe
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: b7ae066bd8dc2de3227f441fd05b6c7a412b6074
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276206"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965355"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 1.x
 
@@ -24,7 +24,7 @@ ms.locfileid: "52276206"
 > * [Verze 1](functions-bindings-cosmosdb.md)
 > * [Verze 2](functions-bindings-cosmosdb-v2.md)
 
-Tento článek vysvětluje, jak pracovat s [služby Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) vazby ve službě Azure Functions. Azure Functions podporuje aktivaci, vstupní a výstupní vazby pro službu Azure Cosmos DB.
+Tento článek vysvětluje, jak pracovat s [služby Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) vazby ve službě Azure Functions. Azure Functions podporuje aktivaci, vstupní a výstupní vazby pro službu Azure Cosmos DB.
 
 > [!NOTE]
 > Tento článek je určený pro Azure Functions 1.x.  Informace o tom, jak používat tyto vazby ve funkcích 2.x, naleznete v tématu [vazby Azure Cosmos DB pro službu Azure Functions 2.x](functions-bindings-cosmosdb-v2.md).
@@ -1606,7 +1606,7 @@ Ve výchozím nastavení při zápisu do výstupního parametru ve funkci, je do
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o databáze bez serveru, výpočetního prostředí pomocí služby Cosmos DB](..\cosmos-db\serverless-computing-database.md)
+* [Další informace o databáze bez serveru, výpočetního prostředí pomocí služby Cosmos DB](../cosmos-db/serverless-computing-database.md)
 * [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
 
 <!---

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 3c2b44455b417d1bc764337d91a5535d7ffa34a5
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ad6fe023c4e93328331140dc3552ae1afd7c83ef
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783368"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970624"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Informace o zabezpečení pro přesouvání dat ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -167,7 +167,7 @@ Následující tabulka uvádí požadavky na příchozí port pro bránu Windows
 | ------------- | ---------------------------------------- |
 | 8050 (TCP)    | Vyžaduje šifrování rutina prostředí PowerShell, jak je popsáno v [šifrovat přihlašovací údaje pro místní úložiště dat ve službě Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)a pomocí aplikace Správce pověření bezpečně nastavíte přihlašovací údaje pro místní úložiště dat v místním prostředí integration runtime. |
 
-![Požadavky na porty brány](media\data-movement-security-considerations/gateway-port-requirements.png) 
+![Požadavky na porty brány](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
 #### <a name="ip-configurations-and-whitelisting-in-data-stores"></a>Konfigurace protokolu IP a přidávání na seznam povolených v úložištích dat.
 Některá úložiště dat v cloudu vyžadovat také IP adresu počítače přístup k úložišti povolených. Ujistěte se, že IP adresa počítače místní prostředí integration runtime je povolený nebo správně nakonfigurována v bráně firewall.

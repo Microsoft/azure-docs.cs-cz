@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1bfa52d07ddc4eaf86bce17c0ad7c63493a8b5fd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dccbd2d87b5a5616c25caed070a337eff9fa753e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255723"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52956648"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak jako vývojář zařízení pro připojení MXChip 
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v tématu [vytvořit aplikaci rychlý Start](quick-deploy-iot-central.md).
+1. Azure IoT Central aplikace vytvořené z **ukázka Devkits** šablony aplikace. Další informace najdete v [rychlém startu k vytvoření aplikace](quick-deploy-iot-central.md).
 1. DevKit zařízení. Koupit DevKit zařízení, najdete v tématu [MXChip IoT DevKit](http://mxchip.com/az3166).
 
 
@@ -49,12 +49,12 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablon
     * Zadejte Id zařízení **<span style="color:Red">(by měl být malými písmeny)</span>** nebo použijte navrhovaný ID zařízení.
     * Zadejte název zařízení nebo použijte navrhovaný název
     
-    ![Přidání zařízení](media\concepts-connectivity\add-device.png)
+    ![Přidání zařízení](media/concepts-connectivity/add-device.png)
 
 
 1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení a primární klíč** pro přidání zařízení kliknutím **připojit** na stránce zařízení.
  
-    ![Podrobnosti připojení](media\concepts-connectivity\device-connect.PNG)
+    ![Podrobnosti připojení](media/concepts-connectivity/device-connect.PNG)
 
 3. Ujistěte se, že chcete uložit tyto podrobnosti, jako je bude temporaritly získat odpojení od Internetu během přípravy zařízení DevKit. 
 

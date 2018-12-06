@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 9f4ee3bdba87747a04dd4a5af9391c9dba6e1b51
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ac0e004039465171c615bbd3c79f361ceb764166
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834209"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962246"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Shromažďování dat v Log Analytics runbooku Azure Automation
-Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) na agentech a také [shromažďovat data z Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
+Významné množství dat v Log Analytics může shromažďovat z nejrůznějších zdrojů, včetně [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) na agentech a také [shromažďovat data z Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md).  Potřebujete-li shromažďovat data, která není přístupná prostřednictvím těchto zdrojů na standardní existují scénáře.  V těchto případech můžete použít [rozhraní API kolekce dat HTTP](../../azure-monitor/platform/data-collector-api.md) zapsat data do Log Analytics z jakéhokoli klienta REST API.  Běžnou metodou k provedení této kolekce dat používá sady runbook ve službě Azure Automation.   
 
 Tento kurz vás provede procesem vytvoření a plánování runbooku ve službě Azure Automation k zápisu dat do Log Analytics.
 
@@ -30,7 +30,7 @@ Tento kurz vás provede procesem vytvoření a plánování runbooku ve službě
 ## <a name="prerequisites"></a>Požadavky
 Tento scénář vyžaduje následující prostředcích nakonfigurovaných ve vašem předplatném Azure.  Může být bezplatný účet.
 
-- [Pracovní prostor log Analytics](../../log-analytics/log-analytics-quick-create-workspace.md).
+- [Pracovní prostor log Analytics](../../azure-monitor/learn/quick-create-workspace.md).
 - [Účet Azure automation](../..//automation/automation-quickstart-create-account.md).
 
 ## <a name="overview-of-scenario"></a>Přehled scénáře
@@ -41,7 +41,7 @@ Pro účely tohoto kurzu budete psát sadu runbook, která shromažďuje informa
 
 
 ## <a name="1-install-data-collector-api-module"></a>1. Instalace modulu rozhraní API kolekce dat
-Každý [žádosti z rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md#create-a-request) musí být správně naformátován a zahrnují také hlavičku ověřování.  Můžete to provést v sadě runbook, ale můžete snížit množství kódu vyžadovaného pomocí modulu, který zjednodušuje tento proces.  Jeden modul, který vám pomůže se [OMSIngestionAPI modulu](https://www.powershellgallery.com/packages/OMSIngestionAPI) v galerii prostředí PowerShell.
+Každý [žádosti z rozhraní API kolekce dat HTTP](../../azure-monitor/platform/data-collector-api.md#create-a-request) musí být správně naformátován a zahrnují také hlavičku ověřování.  Můžete to provést v sadě runbook, ale můžete snížit množství kódu vyžadovaného pomocí modulu, který zjednodušuje tento proces.  Jeden modul, který vám pomůže se [OMSIngestionAPI modulu](https://www.powershellgallery.com/packages/OMSIngestionAPI) v galerii prostředí PowerShell.
 
 Použití [modulu](../../automation/automation-integration-modules.md) v sadě runbook, je třeba nainstalovat ve vašem účtu Automation.  Každý runbook v rámci stejného účtu pak můžete použít funkce v modulu.  Nový modul můžete nainstalovat tak, že vyberete **prostředky** > **moduly** > **přidat modul** ve vašem účtu Automation.  
 
@@ -216,4 +216,4 @@ Při každém spuštění sady runbook [se vytvoří úloha](../../automation/au
 - Vaše sada runbook v balíčku [řešení pro správu](../../azure-monitor/insights/solutions-creating.md) distribuovat zákazníkům.
 - Další informace o [Log Analytics](https://docs.microsoft.com/azure/log-analytics/).
 - Další informace o [Azure Automation](https://docs.microsoft.com/azure/automation/).
-- Další informace o [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md).
+- Další informace o [rozhraní API kolekce dat HTTP](../../azure-monitor/platform/data-collector-api.md).

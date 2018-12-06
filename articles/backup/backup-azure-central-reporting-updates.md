@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: adigan
-ms.openlocfilehash: 575b994fb34d673578b1a40ae4bdd9f6716b6687
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 65ab497b2467846a324d10f8487ab384a01441ee
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720027"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968881"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualizace Azure Backup centrálního generování sestav balíčku obsahu 
 
@@ -41,30 +41,30 @@ Předem nakonfigurované sestavy, které jsou součástí balíčku obsahu Azure
 
 ### <a name="summary"></a>Souhrn
    
-![Souhrn](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Summary.png)
+![Souhrn](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Summary.png)
 
 ### <a name="billing"></a>Fakturace
 
-![Fakturace](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Billing.png)
+![Fakturace](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Billing.png)
 
 ### <a name="compliance"></a>Dodržování předpisů
 
-![Dodržování předpisů](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Compliance.png)
+![Dodržování předpisů](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Compliance.png)
 
 ### <a name="storage"></a>Úložiště
 
-![Úložiště](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Storage.png)
+![Úložiště](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>Zálohované položky
-![Zálohované položky](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
+![Zálohované položky](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-BackupItem.png)
 
 ### <a name="alerts"></a>Výstrahy
 
-![Výstrahy](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Alerts.png)
+![Výstrahy](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Alerts.png)
 
 ### <a name="jobs"></a>Úlohy
 
-![Úlohy](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Jobs.png)
+![Úlohy](./media/backup-azure-central-reporting/AzBackup-Central-Reporting-Jobs.png)
     
 
 ## <a name="next-steps"></a>Další postup

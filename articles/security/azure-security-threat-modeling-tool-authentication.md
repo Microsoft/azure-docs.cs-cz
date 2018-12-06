@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b4b6e91f9b20166f63a4710f42726bf1d4090022
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e502004db62713585d68cdda6f80b4e4024dde28
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251555"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971211"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Zabezpečení Frame: Ověřování | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -322,7 +322,7 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecná rozhraní .NET Framework 3 |
 | **Atributy**              | Typ přihlašovacích údajů klienta - žádný |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
 | **Kroky** | Neexistence ověřování znamená, že všem uživatelům přístup k této službě. Služba, která neověřuje svým klientům umožňuje všem uživatelům přístup k jeho funkce. Konfigurace aplikace k ověřování na základě přihlašovacích údajů klienta. To můžete udělat nastavením přenosu nebyl typ clientCredentialType na Windows nebo certifikát. |
 
 ### <a name="example"></a>Příklad:

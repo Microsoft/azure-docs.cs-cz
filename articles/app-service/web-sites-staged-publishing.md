@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 32f3dd0543e841c4aae87cf48654c95a4609e51a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: c6e28554f86a6a7de5d50027ceb552e15856bc96
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682839"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970854"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -58,7 +58,7 @@ Aplikace musí být spuštěn v **standardní**, **Premium**, nebo **izolované*
 4. V okně prostředků vaší aplikace, klikněte na tlačítko **sloty nasazení**, klikněte na slot nasazení otevřete okno prostředků tohoto slotu, sadu metriky a konfigurace stejně jako jakoukoli jinou aplikaci. Název slotu zobrazuje v horní části okna vás upozorní, že si prohlížíte slotu nasazení.
    
     ![Název slotu nasazení][StagingTitle]
-5. Klikněte na adresu URL aplikace v okně slot. Všimněte si, že slot nasazení má svůj vlastní název hostitele a je také živé aplikace. Omezit veřejný přístup k slot pro nasazení, naleznete v tématu [webové aplikaci App Service – web blokovat přístup k nasazení o neprodukční sloty](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
+5. Klikněte na adresu URL aplikace v okně slot. Všimněte si, že slot nasazení má svůj vlastní název hostitele a je také živé aplikace. Omezit veřejný přístup k slot pro nasazení, naleznete v tématu [webové aplikaci App Service – web blokovat přístup k nasazení o neprodukční sloty](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
 
 Po vytvoření slotu nasazení není žádný obsah. Můžete nasadit na pozici v jiném úložišti větev nebo úplně jiném úložišti. Můžete také změnit konfiguraci slotu. Použijte Publikovat profil nebo nasazení přihlašovací údaje související s slot nasazení pro aktualizace obsahu.  Například můžete [publikovat tento slot s gitem](app-service-deploy-local-git.md).
 
@@ -258,7 +258,7 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 Pro [rozhraní příkazového řádku Azure](https://github.com/Azure/azure-cli) příkazy pro sloty nasazení, najdete v článku [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
 
 ## <a name="next-steps"></a>Další postup
-[Azure App Service Web aplikace – webové blokovat přístup k nasazení o neprodukční sloty](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
+[Azure App Service Web aplikace – webové blokovat přístup k nasazení o neprodukční sloty](https://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)  
 [Úvod do služby App Service v Linuxu](../app-service/containers/app-service-linux-intro.md)  
 [Bezplatná zkušební verze Microsoft Azure](https://azure.microsoft.com/pricing/free-trial/)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: db02df7ed27e011e51b4af470e80ac00054bf0dc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 52fe5ac108e2788e481d89901dd24098cdb3c9b4
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727932"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965202"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 Zjistěte informace o výkonu a využití webové stránky nebo aplikace. Když přidáte [Application Insights](app-insights-overview.md) do skriptu stránky, získáte časování načtení stránky a volání AJAX, počty a podrobnosti výjimek prohlížeče a selhání AJAX, a také počty uživatelů a relací. Všechny tyto hodnoty mohou být segmentovány podle stránky, klientského operačního systému a verze prohlížeče, zeměpisné polohy a ostatních dimenzí. Můžete nastavit výstrahy na počet selhání nebo pomalé načítání stránky. A vložíte-li do kódu JavaScript trasování volání, můžete sledovat využití různých funkcí aplikace webové stránky.
@@ -75,8 +75,6 @@ Vložte skript těsně před značku `</head>` každé stránky, kterou chcete s
 Skript obsahuje klíč instrumentace, který nasměruje data pro daný prostředek Application Insights. 
 
 ([Hlubší vysvětlení skriptu.](http://apmtips.com/blog/2015/03/18/javascript-snippet-explained/))
-
-*(Pokud používáte framework dobře známé webové stránky, vyhledejte adaptéry Application Insights. Například je k dispozici [modul AngularJS](http://ngmodules.org/modules/angular-appinsights).)*
 
 ## <a name="detailed-configuration"></a>Podrobná konfigurace
 Nastavit můžete několik [Parametrů](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config), i když ve většině případů to není třeba. Například můžete zakázat nebo omezit počet volání Ajax hlášených na zobrazení stránky (chcete-li snížit zatížení). Nebo můžete nastavit režim ladění tak, aby rychle přesouval telemetrická data prostřednictvím kanálu bez provedení dávkou.

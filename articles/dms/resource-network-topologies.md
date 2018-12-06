@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/8/2018
-ms.openlocfilehash: 9b036b74141ce2091d2e68b68d10c44a56a8696d
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: cd62b60718a35aed9129db61413086266bb9f2c7
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300688"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971075"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Síťové topologie pro migrace Azure SQL DB Managed Instance pomocí Azure Database Migration Service
 Tento článek popisuje různé topologie sítě, které Azure Database Migration Service můžete pracovat na poskytovat komplexní migrace z místních SQL serverů do Azure SQL Database Managed Instance.
@@ -24,7 +24,7 @@ Tento článek popisuje různé topologie sítě, které Azure Database Migratio
 ## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>Azure SQL Database Managed Instance nakonfigurované pro hybridní úlohy 
 Tuto topologii použijte, pokud Azure SQL Database Managed Instance je připojený k vaší místní síti. Tento přístup poskytuje nejvíce zjednodušené směrování sítě a vrací data maximální propustnost během migrace.
 
-![Topologie sítě pro hybridní úlohy](media\resource-network-topologies\hybrid-workloads.png)
+![Topologie sítě pro hybridní úlohy](media/resource-network-topologies/hybrid-workloads.png)
 
 **Požadavky**
 - V tomto scénáři Azure SQL Database Managed Instance a instance služby Azure Database Migration Service se vytvoří ve stejné virtuální síti Azure, ale použít různé podsítě.  
@@ -36,7 +36,7 @@ Tato topologie sítě použijte, pokud vaše prostředí vyžaduje nejméně jed
 - Pokud jsou zásady na základě řízení přístupu Role (RBAC) v místě a je potřeba omezit uživatele při přístupu ke stejnému předplatnému, který je hostitelem Azure SQL Database Managed Instance.
 - Virtuální sítě používá pro Azure SQL Database Managed Instance a Azure Database Migration Service jsou v různých předplatných.
 
-![Topologie sítě pro Managed Instance, izolovaná z místní sítě](media\resource-network-topologies\mi-isolated-workload.png)
+![Topologie sítě pro Managed Instance, izolovaná z místní sítě](media/resource-network-topologies/mi-isolated-workload.png)
 
 **Požadavky**
 - Virtuální síť, která používá Azure Database Migration Service pro tento scénář musí být také připojený k místní síti pomocí (https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
@@ -47,7 +47,7 @@ Tato topologie sítě použijte, pokud vaše prostředí vyžaduje nejméně jed
 
 Tuto topologii použijte, pokud zdrojového systému SQL Server je hostovaný na Virtuálním počítači Azure a sdílí stejné virtuální síti s Azure SQL Database Managed Instance a Azure Database Migration Service.
 
-![Síťové topologie pro migrace do cloudu do cloudu pomocí sdílené virtuální sítě](media\resource-network-topologies\cloud-to-cloud.png)
+![Síťové topologie pro migrace do cloudu do cloudu pomocí sdílené virtuální sítě](media/resource-network-topologies/cloud-to-cloud.png)
 
 **Požadavky**
 - Žádné další požadavky.
@@ -59,7 +59,7 @@ Tato topologie sítě použijte, pokud vaše prostředí vyžaduje nejméně jed
 - Pokud jsou zásady na základě řízení přístupu Role (RBAC) v místě a je potřeba omezit uživatele při přístupu ke stejnému předplatnému, který je hostitelem Azure SQL Database Managed Instance.
 - Virtuální sítě pro Azure SQL Database Managed Instance a Azure Database Migration Service jsou v různých předplatných.
 
-![Síťové topologie pro migrace do cloudu do cloudu pomocí izolované virtuální sítě](media\resource-network-topologies\cloud-to-cloud-isolated.png)
+![Síťové topologie pro migrace do cloudu do cloudu pomocí izolované virtuální sítě](media/resource-network-topologies/cloud-to-cloud-isolated.png)
 
 **Požadavky**
 - Nastavit [sítě VNET peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi virtuální sítí používanou pro Azure SQL Database Managed Instance a Azure Database Migration Service.

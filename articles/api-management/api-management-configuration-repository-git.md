@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: e8d0522dc4cc218792569498c149b32b3de652cb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: e2f0fb6333f3786b29c2a7516e46a4599d6e89ed
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443572"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961005"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
@@ -81,7 +81,7 @@ Vytvořit heslo, nejprve zkontrolujte, zda **vypršení platnosti** je nastavena
 > Toto heslo si poznamenejte. Po opuštění této stránky heslo znovu nezobrazí.
 > 
 
-Následující příklady používají nástroje Git Bash [Git pro Windows](http://www.git-scm.com/downloads) ale můžete použít libovolný nástroj Gitu, který jste obeznámeni s.
+Následující příklady používají nástroje Git Bash [Git pro Windows](https://www.git-scm.com/downloads) ale můžete použít libovolný nástroj Gitu, který jste obeznámeni s.
 
 Otevřete nástroj Gitu do požadované složky a spusťte následující příkaz a naklonujte úložiště git do svého místního počítače pomocí příkazu poskytované na webu Azure portal.
 

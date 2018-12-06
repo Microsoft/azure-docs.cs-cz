@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: aacdaf4ec55b1223ce993a7246ed9f0405a5054e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233548"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52957177"
 ---
 # <a name="track-b2b-messages-with-azure-log-analytics"></a>Sledování zpráv B2B s Azure Log Analytics
 
@@ -37,11 +37,11 @@ Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těcht
 
 * Pokud jste tak dosud neučinili, [publikovat diagnostická data do Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
-* Po předchozí požadavky splňujete, budete potřebovat pracovní prostor Log Analytics, který používáte pro sledování B2B komunikace prostřednictvím Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si [jak vytvořit pracovní prostor Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+* Po předchozí požadavky splňujete, budete potřebovat pracovní prostor Log Analytics, který používáte pro sledování B2B komunikace prostřednictvím Log Analytics. Pokud nemáte pracovní prostor Log Analytics, přečtěte si [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="install-logic-apps-b2b-solution"></a>Nainstalujte řešení Logic Apps B2B
 
-Předtím, než máte Log Analytics sledování zpráv B2B pro vaši aplikaci logiky, přidejte **Logic Apps B2B** řešení do služby Log Analytics. Další informace o [přidání řešení do Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
+Předtím, než máte Log Analytics sledování zpráv B2B pro vaši aplikaci logiky, přidejte **Logic Apps B2B** řešení do služby Log Analytics. Další informace o [přidání řešení do Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Na webu [Azure Portal](https://portal.azure.com) vyberte **Všechny služby**. Do vyhledávacího pole vyhledejte "log analytics" a vyberte **Log Analytics**.
 
@@ -154,7 +154,7 @@ Tady jsou popisy vlastností pro každou zprávu AS2.
 | Směr | Směr zprávy AS2 |
 | ID korelace | ID, které souvisí všechny aktivační události a akce v aplikaci logiky |
 | ID zprávy | ID zprávy AS2 ze záhlaví zpráv AS2 |
-| Časové razítko | Čas, kdy akce AS2 zpracována zprávy |
+| Timestamp | Čas, kdy akce AS2 zpracována zprávy |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
@@ -187,7 +187,7 @@ Tady jsou popisy vlastností pro každou X12 zprávy.
 | Typ zprávy | Typ zprávy 12 EDI X |
 | ICN | Kontrolní číslo výměny. pro X12 zprávy |
 | TSCN | Transakce nastavit kontrolní číslo pro X12 zprávy |
-| Časové razítko | Čas při X12 akci zpracovat zprávu |
+| Timestamp | Čas při X12 akci zpracovat zprávu |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
@@ -220,7 +220,7 @@ Tady jsou popisy vlastností pro každou zprávu EDIFACT.
 | Typ zprávy | Typ zprávy EDIFACT |
 | ICN | Kontrolní číslo výměny. pro zprávy EDIFACT |
 | TSCN | Transakce nastavit kontrolní číslo pro zprávy EDIFACT |
-| Časové razítko | Čas, kdy akce EDIFACT zpracována zprávy |
+| Timestamp | Čas, kdy akce EDIFACT zpracována zprávy |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>

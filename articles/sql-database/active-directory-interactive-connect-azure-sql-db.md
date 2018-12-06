@@ -12,12 +12,12 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 04/06/2018
 manager: craigg
-ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 0b8b83651fb5466f5d9a2f703667d7645b498e89
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055522"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52958813"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Režim ActiveDirectoryInteractive slouží k připojení ke službě Azure SQL Database
 
@@ -66,23 +66,23 @@ Pokud chcete používat ověřování Azure AD, váš klientský program C#, mus
 
 1. Azure portal &gt; **Azure Active Directory** &gt; **registrace aplikace**
 
-    ![Registrace aplikace](media\active-directory-interactive-connect-azure-sql-db\sshot-create-app-registration-b20.png)
+    ![Registrace aplikace](media/active-directory-interactive-connect-azure-sql-db/sshot-create-app-registration-b20.png)
 
 2. **ID aplikace** vygeneruje a zobrazí hodnotu.
 
-    ![Zobrazí ID aplikace](media\active-directory-interactive-connect-azure-sql-db\sshot-application-id-app-regis-mk49.png)
+    ![Zobrazí ID aplikace](media/active-directory-interactive-connect-azure-sql-db/sshot-application-id-app-regis-mk49.png)
 
 3. **Registrovaná aplikace** &gt; **nastavení** &gt; **požadovaná oprávnění** &gt; **přidat**
 
-    ![Nastavení oprávnění pro registrovaná aplikace](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
+    ![Nastavení oprávnění pro registrovaná aplikace](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
 4. **Požadovaná oprávnění** &gt; **přístup přes rozhraní API přidat** &gt; **vyberte rozhraní API** &gt; **Azure SQL Database**
 
-    ![Přidat přístup k rozhraní API pro službu Azure SQL Database](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
+    ![Přidat přístup k rozhraní API pro službu Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
 5. **Přístup přes rozhraní API** &gt; **vyberte oprávnění** &gt; **delegovaná oprávnění**
 
-    ![Delegování oprávnění k rozhraní API pro službu Azure SQL Database](media\active-directory-interactive-connect-azure-sql-db\sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
+    ![Delegování oprávnění k rozhraní API pro službu Azure SQL Database](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 
 ### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. Nastavit správce Azure AD na serveru služby SQL Database
@@ -124,13 +124,13 @@ Program jazyka C# spoléhá na obor názvů **Microsoft.IdentityModel.Clients.Ac
 
 Je jeden obory názvů, příklad jazyka C# využívající **System.Data.SqlClient**. Výčet je speciální zájmová **SqlAuthenticationMethod**. Tento výčet má následující hodnoty:
 
-- **SqlAuthenticationMethod.ActiveDirectory \*interaktivní**\*:&nbsp; použijte tento fragment se uživatelské jméno Azure AD k dosažení vícefaktorové ověřování služby Multi-Factor authentication.
+- **SqlAuthenticationMethod.ActiveDirectory * interaktivní ***:&nbsp; použijte tento fragment se uživatelské jméno Azure AD k dosažení vícefaktorové ověřování služby Multi-Factor authentication.
     - Tato hodnota je hlavním cílem tohoto článku. Vytvoří interaktivní zobrazením dialogová okna pro heslo uživatele a pro ověřování MFA, pokud vícefaktorové ověřování se vynucují na tohoto uživatele.
     - Tato hodnota je k dispozici od verze rozhraní .NET Framework verze 4.7.2.
 
-- **SqlAuthenticationMethod.ActiveDirectory \*integrované**\*:&nbsp; se používá *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
+- **SqlAuthenticationMethod.ActiveDirectory * integrované ***:&nbsp; se používá *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
 
-- **SqlAuthenticationMethod.ActiveDirectory \*heslo**\*:&nbsp; používá se pro ověřování, které vyžaduje uživatele služby Azure AD a heslo uživatele. Azure SQL Database provádí ověřování. Tato metoda nepodporuje vícefaktorové ověřování.
+- **SqlAuthenticationMethod.ActiveDirectory * heslo ***:&nbsp; používá se pro ověřování, které vyžaduje uživatele služby Azure AD a heslo uživatele. Azure SQL Database provádí ověřování. Tato metoda nepodporuje vícefaktorové ověřování.
 
 
 

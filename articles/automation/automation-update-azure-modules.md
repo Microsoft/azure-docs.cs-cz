@@ -6,21 +6,21 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 11/20/2018
+ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fc605ab45241280d9331ad7d515ba007a015daa
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f461bc1fd17ee957be5f223de731608011d021f5
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583649"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959355"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualizace modulů Azure Powershellu ve službě Azure Automation
 
 Ve výchozím nastavení v jednotlivých účtů Automation jsou k dispozici většiny běžných modulů Azure Powershellu. Tým Azure pravidelně aktualizuje moduly Azure. Ve vašem účtu Automation se poskytuje způsob, jak aktualizovat moduly v účtu, když je nová verze dostupná z portálu.
 
-Protože moduly jsou pravidelně aktualizovány produktovou skupinou, změny můžou nastat pomocí rutiny zahrnuté. Tato akce může mít negativní vliv na vaše sady runbook v závislosti na typ změny, jako například přejmenování parametru nebo zcela vyřazení rutiny. Aby se zabránilo dopadu na vaše sady runbook a procesy, automatizovat, testování a ověřování než budete pokračovat. Pokud nemáte určené pro tento účel vyhrazený účet služby Automation, zvažte vytvoření jednoho tak, aby můžete vyzkoušet řadu různých scénářů při vývoji vašich sadách runbook. Tento test by měl obsahovat iterativní změny, jako je aktualizace modulů prostředí PowerShell. Po výsledky se ověří a použili potřebné změny, můžete přesunout změny do produkčního prostředí.
+Protože moduly jsou pravidelně aktualizovány produktovou skupinou, změny můžou nastat pomocí rutiny zahrnuté. Tato akce může mít negativní vliv na vaše sady runbook v závislosti na typ změny, jako například přejmenování parametru nebo zcela vyřazení rutiny. Aby se zabránilo dopadu na vaše sady runbook a procesy, automatizovat, testování a ověřování než budete pokračovat. Pokud nemáte určené pro tento účel vyhrazený účet služby Automation, zvažte vytvoření jednoho tak, aby můžete vyzkoušet řadu různých scénářů při vývoji vašich sadách runbook. Tento test by měl obsahovat iterativní změny, jako je aktualizace modulů prostředí PowerShell. Pokud vyvíjíte skripty místně, se doporučuje mít stejnou verzí modulů místně, které máte ve svém účtu Automation při testování pro zajištění vám zobrazí stejné výsledky. Po výsledky se ověří a použili potřebné změny, můžete přesunout změny do produkčního prostředí.
 
 > [!NOTE]
 > Nový účet Automation nemusí obsahovat nejnovější moduly.
@@ -33,7 +33,6 @@ Protože moduly jsou pravidelně aktualizovány produktovou skupinou, změny mů
   > Před aktualizací moduly Azure, se doporučuje je aktualizovat v rámci testu účtu Automation a zkontrolujte, že vaše stávající skripty fungovat podle očekávání před aktualizací moduly Azure.
   >
   > **Aktualizace modulů Azure** tlačítko je k dispozici pouze ve veřejném cloudu. není k dispozici v [suverénních oblastech](https://azure.microsoft.com/global-infrastructure/). Podrobnosti najdete na [alternativní způsoby, jak aktualizovat moduly](#alternative-ways-to-update-your-modules) naleznete další informace.
-
 
 2. Klikněte na tlačítko **aktualizace modulů Azure**, zobrazí potvrzení oznámení, která požádá, pokud chcete pokračovat.<br><br> ![Aktualizace modulů Azure oznámení](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
@@ -61,7 +60,7 @@ Pokud používáte rutiny z těchto modulů Azure Powershellu ve vašich sadách
 
 Jak je uvedeno, **aktualizace modulů Azure** tlačítko není dostupné v suverénních cloudech, je dostupná jenom v globální cloud Azure. Toto je skutečnost, že nejnovější verze modulů Azure Powershellu z Galerie prostředí PowerShell nemusí fungovat pomocí prostředků Resource Manageru, které jsou aktuálně nasazené v tyto cloudy.
 
-Můžete importovat a spustit [aktualizace AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) sady runbook se pokuste aktualizovat moduly Azure ve vašem účtu Automation. Tento proces může selhat, pokud je verze, které se pokoušíte importovat z Galerie nejsou kompatibilní se službami Azure, které jsou aktuálně nasazené do cílového prostředí Azure. To může vyžadovat Ujistěte se, že kompatibilní verze moduly jsou uvedeny v parametry runbooku.
+Můžete importovat a spustit [aktualizace AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) sady runbook se pokuste aktualizovat moduly Azure ve vašem účtu Automation. Obecně je vhodné aktualizovat všechny moduly Azure ve stejnou dobu. Ale tento proces může selhat, pokud verze, které se pokoušíte importovat z galerie, nebudou kompatibilní se službami Azure, které jsou aktuálně nasazené do cílového prostředí Azure. To může vyžadovat ověření, že kompatibilní verze moduly jsou uvedeny v parametry runbooku.
 
 Použití `AzureRmEnvironment` parametr předat správné prostředí do runbooku.  Přípustné hodnoty jsou **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**, a **AzureUSGovernment**. Tyto hodnoty lze získat pomocí `Get-AzureRmEnvironment | select Name`. Pokud nemáte předat hodnotu tomuto parametru, sada runbook bude ve výchozím nastavení veřejného cloudu Azure **AzureCloud**
 

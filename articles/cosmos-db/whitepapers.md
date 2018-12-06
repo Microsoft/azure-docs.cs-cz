@@ -1,20 +1,18 @@
 ---
 title: Azure Cosmos DB dokumenty White Paper
-description: Dokumenty White Paper umožňují Seznamte se s koncepty služby Azure Cosmos DB na podrobnější úrovni.
+description: Tyto dokumenty White Paper popisují koncepty služby Azure Cosmos DB do hloubky.
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
+author: SnehaGunda
+ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: sngun
-ms.openlocfilehash: 23445e2243a2824be95ef6d94eb13342d884e0c8
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 3a73c5450ff305ea9f4e168dbfcf4b2b373e13aa
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072244"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966088"
 ---
 # <a name="azure-cosmos-db-whitepapers"></a>Azure Cosmos DB dokumenty White Paper 
 

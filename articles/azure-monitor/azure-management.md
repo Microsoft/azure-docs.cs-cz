@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: abb57fbfbe883686709335ed80f7fe90f11c0cef
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 29daa447be051af3df86ba9211bc2e4871d8c71e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728357"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52965101"
 ---
 # <a name="azure-management---monitoring"></a>Správa Azure – monitorování
 
@@ -37,7 +37,7 @@ Následující části stručně popisují různé oblasti správy a poskytují 
 Monitorování je shromažďování a analýza dat s cílem určit výkon, stav a dostupnost vaší obchodní aplikace a prostředků, na kterých závisí. Efektivní strategie monitorování vám pomůže porozumět provozu jednotlivých komponent vaší aplikace a prodloužit dobu provozu díky proaktivnímu upozorňování na zásadní potíže, abyste je mohli vyřešit předtím, než začnou způsobovat problémy. Monitorování v Azure provádí primárně služba [Azure Monitor](../azure-monitor/overview.md), která poskytuje běžná úložiště pro ukládání dat monitorování, více zdrojů dat pro shromažďování dat z různých vrstev podporujících vaši aplikaci a funkce pro analýzy a odpovědi na shromážděná data.
 
 ## <a name="configure"></a>Konfigurace
-Konfigurace označuje počáteční nasazení a konfiguraci aplikací a prostředků a jejich průběžnou údržbu pomocí oprav a aktualizací.  Automatizace těchto úloh pomocí skriptů a zásad umožňuje eliminovat redundance, minimalizovat čas a úsilí a zvýšit přesnost a efektivitu.  [Azure Automation](..\automation\automation-intro.md) poskytuje převážnou část služeb pro automatizaci úloh konfigurace.  Kromě runbooků pro automatizaci procesů poskytuje správu aktualizací a konfigurací, která pomáhá při správě konfigurací prostřednictvím zásad a při identifikaci a nasazování aktualizací.
+Konfigurace označuje počáteční nasazení a konfiguraci aplikací a prostředků a jejich průběžnou údržbu pomocí oprav a aktualizací.  Automatizace těchto úloh pomocí skriptů a zásad umožňuje eliminovat redundance, minimalizovat čas a úsilí a zvýšit přesnost a efektivitu.  [Azure Automation](../automation/automation-intro.md) poskytuje převážnou část služeb pro automatizaci úloh konfigurace.  Kromě runbooků pro automatizaci procesů poskytuje správu aktualizací a konfigurací, která pomáhá při správě konfigurací prostřednictvím zásad a při identifikaci a nasazování aktualizací.
 
 ## <a name="govern"></a>Řízení
 Zásady správného řízení poskytují mechanismy a postupy pro zajištění kontroly nad vašimi aplikacemi a prostředky v Azure.  Zahrnují plánování iniciativ a nastavení strategických priorit.  Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb.  [Azure Policy](../governance/policy/overview.md) pomáhá vytvářet, přiřazovat a spravovat definice zásad, které u vašich prostředků vynucují různá pravidla a akce, aby tyto prostředky i nadále odpovídaly vašim firemním standardům a smlouvám o úrovni služeb. [Azure Cost Management by Cloudyn](../cost-management/overview.md) umožňuje sledovat využití cloudu a výdaje za prostředky Azure a dalších poskytovatelů cloudu, včetně AWS a Googlu.

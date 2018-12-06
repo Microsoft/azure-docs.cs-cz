@@ -11,19 +11,19 @@ ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: c6314b4f53969b32040713df4834e5706d31be3a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 20867b6bfecb981a9bc47180cb39a1c489b19d2f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865348"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52959746"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Zřídit Windows virtuální počítač pro datové vědy v Azure
 Microsoft Data virtuálního počítače VĚDY je image virtuálního počítače (VM) Windows Azure. Má předinstalované a nakonfigurovanou řadu nástrojů, které se používají pro analýzu dat a strojové učení. Tyto nástroje jsou zahrnuty:
 
-* [Azure Machine Learning](../service/index.yml) aplikace Workbench.
+* [Služba Azure Machine Learning](../service/index.yml) SDK pro Python.
 * [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer edition.
 * Anaconda distribuci jazyka Python.
 * Poznámkový blok Jupyter s R, Python nebo PySpark jádrech.
@@ -193,13 +193,13 @@ Několik nástrojů pro Azure jsou nainstalované na virtuálním počítači:
 > 
 > 
 
-### <a name="azure-machine-learning-workbench"></a>Aplikace Azure Machine Learning Workbench
+### <a name="azure-machine-learning-service-python-sdk"></a>Služba Azure Machine Learning Python SDK
 
-Azure Machine Learning Workbench je desktopová aplikace a rozhraní příkazového řádku. Aplikace workbench má integrovanou přípravu dat, která se učí jednotlivé kroky přípravy dat, jak je využít. Také poskytuje řízení projektů, historie spouštění a integrace poznámkových bloků a zvýšit tak svou produktivitu. 
+Sady Azure Machine Learning SDK pro Python slouží odborníci přes data a vývojářům AI k vytváření a spouštění pracovních postupů machine learning s [služby Azure Machine Learning](../service/overview-what-is-azure-ml.md). Můžete pracovat se službou v jakémkoli prostředí Python, včetně poznámkové bloky Jupyter a vaše oblíbené integrované vývojové prostředí Pythonu, pomocí opensourcových architektur, jako je TensorFlow a scikit-informace.
 
-Můžete použít open source architektur, včetně TensorFlow, Cognitive Toolkit, Spark ML a scikit-informace k vývoji vašich modelů. Na datové VĚDY, poskytujeme ikony na ploše nainstalovat aplikaci Azure Machine Learning Workbench na jednotlivé uživatele **% LOCALAPPDATA %** adresáře. 
+Chcete-li začít používat sadu Python SDK, přečtěte si téma [použití Pythonu k seznámení s Azure Machine Learning](../service/quickstart-create-workspace-with-python.md).
 
-Každý uživatel v aplikaci workbench musí provést jednorázovou akci. Dvakrát klikněte ```AzureML Workbench Setup``` ikon na ploše nainstalujte instanci aplikace workbench. Také vytváří a používá Azure Machine Learning za uživatelského prostředí Pythonu, které je extrahován do **%LOCALAPPDATA%\amlworkbench\python** adresáře.
+Python SDK je předinstalován v Microsoftu virtuální počítač pro datové vědy.
 
 ## <a name="more-microsoft-development-tools"></a>Další nástroje pro vývoj Microsoft
 [Instalačního programu webové platformy Microsoft](https://www.microsoft.com/web/downloads/platform.aspx) slouží k vyhledání a stažení jiných vývojových nástrojů společnosti Microsoft. Je také zástupce nástroje k dispozici na ploše virtuálního počítače Microsoft datové vědy.  
@@ -215,7 +215,6 @@ Každý uživatel v aplikaci workbench musí provést jednorázovou akci. Dvakr�
 | Python (samostatně) Server Microsoft Machine Learning | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | Výchozí instance R, Server Machine Learning (samostatně) | C:\Program Files\Microsoft\ML Server\R_SERVER |
 | Adresář databáze v instanci SQL služby Machine Learning | C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
-| Azure Machine Learning Workbench, za uživatele | %localappdata%\amlworkbench | 
 | Různé nástroje | c:\dsvm\tools |
 
 > [!NOTE]
@@ -226,7 +225,7 @@ Každý uživatel v aplikaci workbench musí provést jednorázovou akci. Dvakr�
 ## <a name="next-steps"></a>Další postup
 
 * Prozkoumejte nástroje pro datové vědy virtuálního počítače tak, že vyberete **Start** nabídky.
-* Další informace o službách Azure Machine Learning a Workbench návštěvou produktu [stránku rychlý start a kurzy](../service/index.yml). 
+* Další informace o službě Azure Machine Learning najdete [co je služba Azure Machine Learning?](../service/overview-what-is-azure-ml.md) a vyzkoušejte si [rychlých startů a kurzů](../service/index.yml) , které jsou k dispozici.
 * Přejděte do **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** pro ukázky, které používají RevoScaleR knihovny v jazyce R, který podporuje analýzy dat v podnikovém měřítku.  
 * Přečtěte si článek [deset věcí, které můžete provést na virtuální počítač pro datovou vědu](https://aka.ms/dsvmtenthings).
 * Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](../team-data-science-process/index.yml).

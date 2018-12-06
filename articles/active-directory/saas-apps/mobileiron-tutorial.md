@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 1b6527207793558c132be4cf004b7d6fdde14a90
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 8bdf49f4cea7c6f0ff30e37bcf1cf2fed3abc2bb
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584107"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Kurz: Integrace Azure Active Directory se službou MobileIron
 
@@ -50,24 +50,27 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 - Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání MobileIron z Galerie
 1. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-mobileiron-from-the-gallery"></a>Přidání MobileIron z Galerie
+
 Konfigurace integrace MobileIron do služby Azure AD, budete muset přidat MobileIron z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat MobileIron z galerie, postupujte následovně:**
 
-1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory][1]
 
 1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
+
 1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
@@ -103,7 +106,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
 1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
+
     ![Jednotné přihlašování – dialogové okno](./media/mobileiron-tutorial/tutorial_mobileiron_samlbase.png)
 
 1. Na **MobileIron domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
@@ -119,12 +122,13 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![MobileIron domény a adresy URL jednotného přihlašování](./media/mobileiron-tutorial/tutorial_mobileiron_url1.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<host>.mobileiron.com/user/login.html`
-    
-    > [!NOTE]  Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Zobrazí se hodnoty klíče a hostitele z portálu pro správu v MobileIron, který je vysvětlen později v tomto kurzu.
+
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Zobrazí se hodnoty klíče a hostitele z portálu pro správu v MobileIron, který je vysvětlen později v tomto kurzu.
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/mobileiron-tutorial/tutorial_mobileiron_certificate.png)
 
 1. Klikněte na tlačítko **Uložit** tlačítko.
 
@@ -134,7 +138,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
 1. Přejděte na **správce** > **Identity**.
 
-   * Vyberte **AAD** možnost **informace o instalaci zprostředkovatele identity cloudu** pole.
+   - Vyberte **AAD** možnost **informace o instalaci zprostředkovatele identity cloudu** pole.
 
     ![Konfigurace správce jednotné přihlašování – tlačítko](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
@@ -143,7 +147,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Konfigurace správce jednotné přihlašování – tlačítko](./media/mobileiron-tutorial/key.png)
 
 1. V **souboru exportu metadat z AAD a import MobileIron cloudové pole** klikněte na tlačítko **zvolit soubor** nahrát stažené metadat z webu Azure portal. Klikněte na tlačítko **provádí** nahrávaných.
- 
+
     ![Konfigurovat Single Sign-On správce metadata tlačítko](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
 
 > [!TIP]
@@ -203,20 +207,20 @@ V případě MobileIron zřizování se ruční úlohy.
     1. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je Britta.
 
     1. V **příjmení** textové pole, zadejte příjmení uživatele, jako je Simon.
-    
-    1. Klikněte na **Done** (Hotovo).  
+
+    1. Klikněte na **Done** (Hotovo).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
 V této části je povolit Britta Simon k udělení přístupu k MobileIron použití Azure jednotného přihlašování.
 
-![Přiřazení role uživatele][200] 
+![Přiřazení role uživatele][200]
 
 **Přiřadit MobileIron Britta Simon, proveďte následující kroky:**
 
 1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
-    ![Přiřadit uživatele][201] 
+    ![Přiřadit uživatele][201]
 
 1. V seznamu aplikací vyberte **MobileIron**.
 
@@ -235,19 +239,18 @@ V této části je povolit Britta Simon k udělení přístupu k MobileIron pou�
 1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
+
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici MobileIron na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci MobileIron.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
+- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -262,4 +265,3 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 [201]: ./media/mobileiron-tutorial/tutorial_general_201.png
 [202]: ./media/mobileiron-tutorial/tutorial_general_202.png
 [203]: ./media/mobileiron-tutorial/tutorial_general_203.png
-

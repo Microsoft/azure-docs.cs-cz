@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: f82b4dff20e2b26e62889c41b3ff3c27bc86066a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d1cfaadd06d20a0f57d75cd43d00040c9e44c429
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901409"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966020"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Průzkumník metrik Azure monitoru
 
@@ -100,6 +100,21 @@ Můžete rozdělit metriku dimenze k vizualizaci různých segmentů metriky por
    > [!NOTE]
    > Skrýt segmenty, které jsou relevantní pro váš scénář a usnadňují grafy pomocí filtrování a seskupování na stejné dimenzi.
 
+## <a name="how-do-i-lock-lower-and-upper-boundaries-of-the-chart-y-axis"></a>Jak se zamknout horní a dolní hranice grafu osy y?
+
+Uzamčení rozsah osy y je důležitá, pokud graf znázorňuje menší kolísání vyšší hodnoty. 
+
+Například když objem úspěšných požadavků z 99,99 % se rozevře 99,5 %, může představovat k výraznému snížení kvality služeb. Řadí malé číselnou hodnotu kolísání by však bylo obtížné či nemožné i z výchozího nastavení grafu. V tomto případě může zamknout nejnižší hranice grafu tak, aby 99 %, což by mohlo způsobit nepoužitelnost tohoto malý dolní zřetelnější. 
+
+Dalším příkladem je kolísání dostupné paměti, kde hodnota technicky nikdy nenaplní 0. Stanovení rozsahu na hodnotu vyšší může usnadnit drops v paměti k dispozici přímé. 
+
+Pokud chcete nastavit rozsah osy y, použijte "..." Graf nabídku a vyberte **upravit graf** pro přístup k rozšířené nastavení grafu. Upravte hodnoty v oddílu rozsah osy y, nebo použijte **automaticky** tlačítko Obnovit výchozí hodnoty.
+
+![metriky image](./media/monitoring-metric-charts/0013.png)
+
+> [!WARNING]
+> Uzamčení hranice osy y pro grafy, které sledují různé počty nebo sečte po určitou dobu (a tedy počet používaných, sum, minimální nebo maximální agregace) obvykle vyžaduje zadání pevné časové intervaly, spíše než spoléhání na automatické výchozí hodnoty. To je nezbytné, protože změny hodnot u grafů, když uživatel změně velikosti okna prohlížeče nebo bude z jedné obrazovky řešení je automaticky upravit časové intervaly. Výsledná změnit čas členitosti účinky vzhled grafu, zrušení platnosti aktuálního výběru rozsah osy y.
+
 ## <a name="how-do-i-pin-charts-to-dashboards"></a>Jak se připnout graf na řídicí panely?
 
 Po dokončení konfigurace grafy, můžete přidat řídicí panely, takže lze znovu zobrazit, pravděpodobně v kontextu jiných monitorování telemetrických dat, nebo sdílet se svým týmem. 
@@ -108,7 +123,7 @@ Pokud chcete připnout nakonfigurované graf na řídicí panel:
 
 Po dokončení konfigurace diagramu, klikněte na **grafu akce** nabídky v pravém horním rohu grafu top a klikněte na **připnout na řídicí panel**.
 
-   ![metriky image](./media/monitoring-metric-charts/0013.png)
+![metriky image](./media/monitoring-metric-charts/0013.png)
 
 ## <a name="next-steps"></a>Další postup
 

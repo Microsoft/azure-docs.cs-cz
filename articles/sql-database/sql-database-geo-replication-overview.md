@@ -3,7 +3,7 @@ title: Převzetí služeb při selhání skupiny a aktivní geografická replika
 description: Použití skupin – automatické převzetí služeb při selhání pomocí aktivní geografické replikace a povolení automatického převzetí služeb při selhání v případě výpadku.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: de439683082909e65d285a7946a71eb781287937
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c951791031b6304a26aadd434fa7336a9c7c474f
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843474"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963143"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Přehled: Aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny
 
@@ -25,7 +25,7 @@ Aktivní geografická replikace je funkce Azure SQL Database, která vám umožn
 
 ![Geografická replikace](./media/sql-database-geo-replication-failover-portal/geo-replication.png )
 
-Aktivní geografická replikace je navržená jako řešení obchodní kontinuity podnikových procesů, které umožňuje aplikaci provést zotavení po havárii rychle jednotlivé databáze v případě regionálních disastor nebo výpadek velkého rozsahu. Pokud je povolené geografickou replikaci, aplikaci můžete spustit převzetí služeb při selhání do sekundární databáze v jiné oblasti Azure. V jedné nebo několika oblastech se podporují až čtyři sekundární databáze a sekundárních replik lze také pro dotazy přístup jen pro čtení. Převzetí služeb při selhání musí ručně zahájit uživatel nebo aplikace. Po převzetí služeb při selhání má nový primární koncový bod jiné připojení.
+Aktivní geografická replikace je navržená jako řešení obchodní kontinuity podnikových procesů, které umožňuje aplikaci provést zotavení po havárii rychle jednotlivé databáze v případě regionálních havárie nebo odstávky velkého rozsahu. Pokud je povolené geografickou replikaci, aplikaci můžete spustit převzetí služeb při selhání do sekundární databáze v jiné oblasti Azure. V jedné nebo několika oblastech se podporují až čtyři sekundární databáze a sekundárních replik lze také pro dotazy přístup jen pro čtení. Převzetí služeb při selhání musí ručně zahájit uživatel nebo aplikace. Po převzetí služeb při selhání má nový primární koncový bod jiné připojení.
 
 > [!NOTE]
 > Aktivní geografická replikace je k dispozici pro všechny databáze ve všech úrovních služby ve všech oblastech.
@@ -206,11 +206,11 @@ Pokud vaše aplikace používá spravované instance jako datovou vrstvu, postup
 
 - **Vytvořit sekundární instance ve stejné zóně DNS jako primární instance**
 
-  Když je vytvořena nová instance, jedinečné id je automaticky generována jako zóna DNS a název DNS instance součástí. Vícedoménové (SAN) certifikátu pro tuto instanci zřizován s polem SAN v podobě &lt;zone_id&gt;. database.windows.net. Tento certifikát slouží k ověření připojení klienta do instance ve stejné zóně DNS. K zajištění bez přerušení připojení k primární instance po převzetí služeb při selhání primární i sekundární instancí musí být ve stejné zóně DNS. Když je aplikace připravená pro produkční nasazení, vytvoření sekundární instance v různých oblastech a ujistěte se, že zóna DNS, která sdílí s primární instance. To se provádí tak, že zadáte `DNS Zone Partner` nepovinný parametr `create instance` příkaz prostředí PowerShell.
+  Když je vytvořena nová instance, jedinečné id je automaticky generována jako zóna DNS a název DNS instance součástí. Vícedoménové (SAN) certifikátu pro tuto instanci zřizován s polem SAN v podobě &lt;zone_id&gt;. database.windows.net. Tento certifikát slouží k ověření připojení klienta do instance ve stejné zóně DNS. K zajištění bez přerušení připojení k primární instance po převzetí služeb při selhání primární i sekundární instancí musí být ve stejné zóně DNS. Když je aplikace připravená pro produkční nasazení, vytvoření sekundární instance v různých oblastech a ujistěte se, že zóna DNS, která sdílí s primární instance. To se provádí tak, že zadáte `DNS Zone Partner` volitelný parametr pomocí webu Azure portal, Powershellu nebo rozhraní REST API.
 
 - **Povolit replikaci mezi dvěma instancemi**
 
-  Vzhledem k tomu, že každá instance je izolovaný v své vlastní virtuální sítě, musí být povoleno dvě obousměrné přenosy mezi těmito virtuálními sítěmi. Zobrazit [replikaci s využitím SQL Database Managed Instance](replication-with-sql-database-managed-instance.md).
+  Vzhledem k tomu, že každá instance je izolovaný v své vlastní virtuální sítě, musí být povoleno dvě obousměrné přenosy mezi těmito virtuálními sítěmi. Zobrazit [brána Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
 - **Konfigurace převzetí služeb při selhání skupiny pro správu převzetí služeb při selhání celé instance**
 
@@ -229,8 +229,8 @@ Pokud vaše aplikace používá spravované instance jako datovou vrstvu, postup
 
   > [!NOTE]
   > V některých úrovně služby Azure SQL Database podporuje použití [repliky jen pro čtení](sql-database-read-scale-out.md) načíst vyrovnávat zatížení dotazu jen pro čtení použitím kapacita jednu repliku pouze pro čtení a `ApplicationIntent=ReadOnly` parametr v připojení řetězec. Když nakonfigurujete geograficky replikované sekundární můžete tuto funkci pro připojení k buď jen pro čtení repliky v primárním umístění nebo v geograficky replikovaného umístění.
-  > - Pro připojení k repliky jen pro čtení v primárním umístění, pomocí &lt;název skupiny převzetí služeb při selhání&gt;.&lt; zone_id&gt;. database.windows.net.
-  > - Pro připojení k repliky jen pro čtení v primárním umístění, pomocí &lt;název skupiny převzetí služeb při selhání&gt;.secondary.&lt; zone_id&gt;. database.windows.net.
+  > - Pro připojení k repliky jen pro čtení v primárním umístění, použijte &lt;název skupiny převzetí služeb při selhání&gt;.&lt; zone_id&gt;. database.windows.net.
+  > - Pro připojení k repliky jen pro čtení v primárním umístění, použijte &lt;název skupiny převzetí služeb při selhání&gt;.secondary.&lt; zone_id&gt;. database.windows.net.
 - **Připravit pro snížení výkonu**
 
   Rozhodnutí převzetí služeb při selhání SQL je nezávislá na zbývající části aplikace nebo jiných služeb, které využívají. Aplikace může být "směšovat" s některými komponentami, v jedné oblasti a některé v jiném. Abyste se vyhnuli zjištěním snížení výkonnosti, zkontrolujte nasazení redundantního aplikace v oblasti zotavení po Havárii a postupujte podle pokynů zabezpečení sítě v tomto článku <link>.
@@ -380,6 +380,7 @@ Jak je popsáno výše, skupiny automatické převzetí služeb při selhání a
 | Set-AzureRmSqlDatabaseInstanceFailoverGroup |Upraví konfiguraci skupiny převzetí služeb při selhání|
 | Get-AzureRmSqlDatabaseInstanceFailoverGroup |Načte konfiguraci skupiny převzetí služeb při selhání|
 | Přepínač AzureRmSqlDatabaseInstanceFailoverGroup |Aktivační události převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server|
+| Odebrat AzureRmSqlDatabaseInstanceFailoverGroup | Odebere skupinu převzetí služeb při selhání|
 
 ### <a name="manage-sql-database-failover-using-the-rest-api"></a>Správa SQL database převzetí služeb při selhání pomocí rozhraní REST API
 

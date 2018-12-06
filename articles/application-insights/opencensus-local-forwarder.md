@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: 39d6b586158ce292f3697af0f7241a3858842374
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722220"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52970582"
 ---
 # <a name="local-forwarder"></a>Místní předávání
 
@@ -39,7 +39,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
 
 1. Stáhněte si LF. Soubor WindowsServiceHost.zip z [stránce verzí místní předávání](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) na Githubu.
 
-    ![Snímek obrazovky stránky pro stažení verze místní server pro předávání](.\media\opencensus-local-forwarder\001-local-forwarder-windows-service-host-zip.png)
+    ![Snímek obrazovky stránky pro stažení verze místní server pro předávání](./media/opencensus-local-forwarder/001-local-forwarder-windows-service-host-zip.png)
 
 2. V tomto příkladu pro snadné ukázku jsme právě extrahuje soubor ZIP do cesty `C:\LF-WindowsServiceHost`.
 
@@ -55,7 +55,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
     Prozkoumat nové služby pomocí grafického uživatelského rozhraní služby typu ``services.msc``
         
-     ![Snímek obrazovky služby předávání místní](.\media\opencensus-local-forwarder\002-services.png)
+     ![Snímek obrazovky služby předávání místní](./media/opencensus-local-forwarder/002-services.png)
 
 3. **Klikněte pravým tlačítkem na** nové místní server pro předávání a vyberte **Start**. Vaše služba nyní zadáte do spuštěného stavu.
 
@@ -73,7 +73,7 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
 6. Pokud chcete potvrdit, že požadovaná nastavení jsou na místě a, že místní služba předávání dat trasování jako očekávané kontrolu naslouchá ``LocalForwarder.log`` souboru. Měli byste vidět výsledky, podobně jako na obrázku níže v dolní části souboru:
 
-    ![Snímek obrazovky LocalForwarder.log souboru](.\media\opencensus-local-forwarder\003-log-file.png)
+    ![Snímek obrazovky LocalForwarder.log souboru](./media/opencensus-local-forwarder/003-log-file.png)
 
 #### <a name="console-application"></a>Konzolová aplikace
 

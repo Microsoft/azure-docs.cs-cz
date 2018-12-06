@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 8cc47fc7ec60027851525b98cdf95e7d534ea556
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: b98b0ea68e91bad2a62f40d3dc611308f1bed2de
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241850"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52967738"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurace a správa nejčastější dotazy ke službě Web Apps v Azure
 
@@ -106,7 +106,7 @@ Další informace najdete v tématu [nejčastější dotazy k certifikátům slu
 
 ## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Proč se při pokusu o zálohování webové aplikace zobrazí zpráva, "Bylo částečně dokončeno"?
 
-Obvyklou příčinou selhání zálohování je, že některé soubory jsou právě používány aplikace. Soubory, které se používají jsou zamknuté při současném provádění zálohování. To zabraňuje zálohovaných tyto soubory a může vést k stavem "Částečně úspěšné". To může potenciálně zabránit výskytu že vyloučíte soubory z procesu zálohování. Můžete k zálohování jenom toho, co je potřeba. Další informace najdete v tématu [zálohovat jenom důležité části vašeho webu pomocí služby Azure web apps](http://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
+Obvyklou příčinou selhání zálohování je, že některé soubory jsou právě používány aplikace. Soubory, které se používají jsou zamknuté při současném provádění zálohování. To zabraňuje zálohovaných tyto soubory a může vést k stavem "Částečně úspěšné". To může potenciálně zabránit výskytu že vyloučíte soubory z procesu zálohování. Můžete k zálohování jenom toho, co je potřeba. Další informace najdete v tématu [zálohovat jenom důležité části vašeho webu pomocí služby Azure web apps](https://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/).
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Jak odebrat hlavičku HTTP odpovědi
 
@@ -288,7 +288,7 @@ Podrobnou dokumentaci pro ověřování a autorizace ve službě App Service naj
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Jak přesměrovat výchozí *. azurewebsites.net domény k vlastní doméně Moje webové aplikace Azure?
 
-Při vytváření nového webu pomocí Web Apps v Azure, výchozí *sitename*. doménu azurewebsites.net je přiřazen k webu. Pokud přidáte do webu vlastním názvem hostitele a nechcete, aby uživatelé měli přístup k výchozí *. doméně azurewebsites.net, můžete přesměrovat výchozí adresy URL. Zjistěte, jak přesměrovat veškerý provoz z vašeho webu výchozí doménu k vaší vlastní doméně, najdete v článku [výchozí doménu pro přesměrování do vaší vlastní domény ve službě Azure web apps](http://zainrizvi.io/blog/block-default-azure-websites-domain/).
+Při vytváření nového webu pomocí Web Apps v Azure, výchozí *sitename*. doménu azurewebsites.net je přiřazen k webu. Pokud přidáte do webu vlastním názvem hostitele a nechcete, aby uživatelé měli přístup k výchozí *. doméně azurewebsites.net, můžete přesměrovat výchozí adresy URL. Zjistěte, jak přesměrovat veškerý provoz z vašeho webu výchozí doménu k vaší vlastní doméně, najdete v článku [výchozí doménu pro přesměrování do vaší vlastní domény ve službě Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Jak zjistím, která verze rozhraní .NET verze nainstalovaná ve službě App Service?
 

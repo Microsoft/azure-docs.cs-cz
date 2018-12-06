@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 4a2ea188a35b5157950f0d61f35a5f2a4a0e83d3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3015db350b8011ccd328369732c5af3fa028a438
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855695"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52963551"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analýza dat Log Analytics ve službě Azure Monitor
 
@@ -31,7 +31,7 @@ Protokol data shromážděná službou Azure Monitor se ukládají v pracovním 
 
 ## <a name="log-queries"></a>Protokol dotazů
 
-Budete potřebovat protokolu dotaz pro načtení všech dat ze služby Log Analytics.  Ať už se [analýza dat na portálu](../../log-analytics/log-analytics-log-search-portals.md), [konfigurace pravidla upozornění](../../monitoring-and-diagnostics/alert-metric.md) upozornit určitou podmínku, nebo při načítání dat pomocí [rozhraní API služby Log Analytics](https://dev.loganalytics.io/), můžete pomocí dotazu určit data, která chcete.  Tento článek popisuje, jak se používají dotazy protokolu v Log Analytics a poskytuje koncepty, které je třeba porozumět před vytvořením jedné.
+Budete potřebovat protokolu dotaz pro načtení všech dat ze služby Log Analytics.  Ať už se [analýza dat na portálu](../../azure-monitor/log-query/portals.md), [konfigurace pravidla upozornění](../../monitoring-and-diagnostics/alert-metric.md) upozornit určitou podmínku, nebo při načítání dat pomocí [rozhraní API služby Log Analytics](https://dev.loganalytics.io/), můžete pomocí dotazu určit data, která chcete.  Tento článek popisuje, jak se používají dotazy protokolu v Log Analytics a poskytuje koncepty, které je třeba porozumět před vytvořením jedné.
 
 
 
@@ -39,7 +39,7 @@ Budete potřebovat protokolu dotaz pro načtení všech dat ze služby Log Analy
 
 Různé způsoby, že budete používat dotazy v Log Analytics patří následující:
 
-- **Portály.** Můžete provádět interaktivní analýzu dat protokolu v [webu Azure portal](../../log-analytics/log-analytics-log-search-portals.md).  To umožňuje upravit dotaz a analyzujte výsledky v různých formátech a vizualizace.  
+- **Portály.** Můžete provádět interaktivní analýzu dat protokolu v [webu Azure portal](../../azure-monitor/log-query/portals.md).  To umožňuje upravit dotaz a analyzujte výsledky v různých formátech a vizualizace.  
 - **Pravidla upozornění.** [Pravidla výstrah](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) proaktivně identifikovat problémy z dat ve vašem pracovním prostoru.  Každé pravidlo výstrahy je založen na prohledávání protokolu, který se spouští automaticky v pravidelných intervalech.  Výsledky jsou kontrolovány k určení Pokud by měla být vytvořena výstraha.
 - **Řídicí panely.** Můžete připnout výsledky jakéhokoli dotazu do [řídicí panel Azure](../../azure-monitor/platform/dashboards.md) který vám umožní vizualizovat data protokolů a metrik společně a volitelně sdílet s ostatními uživateli Azure. 
 - **Zobrazení.**  Možnost tvorby vizualizací dat mají být zahrnuty v řídicích panelech uživatele s [Návrhář zobrazení](../../azure-monitor/platform/view-designer.md).  Protokol dotazů, které poskytují data používá [dlaždice](../../azure-monitor/platform/view-designer-tiles.md) a [části vizualizace](../../azure-monitor/platform/view-designer-parts.md) v každém zobrazení.  
@@ -50,7 +50,7 @@ Různé způsoby, že budete používat dotazy v Log Analytics patří následuj
 ![Prohledávání protokolů](media/log-query-overview/queries-overview.png)
 
 ## <a name="write-a-query"></a>Napsat dotaz
-Protokolovat Analytics používá [verze dotazovacího jazyka Průzkumník dat](../../log-analytics/query-language/get-started-queries.md) načíst a analyzovat data protokolů v mnoha různými způsoby.  Budete obvykle začínat základní dotazy a potom pokroku používat pokročilejší funkce rostoucí vašim požadavkům.
+Protokolovat Analytics používá [verze dotazovacího jazyka Průzkumník dat](../../azure-monitor/log-query/get-started-queries.md) načíst a analyzovat data protokolů v mnoha různými způsoby.  Budete obvykle začínat základní dotazy a potom pokroku používat pokročilejší funkce rostoucí vašim požadavkům.
 
 Základní struktura dotazu je zdrojová tabulka, za nímž následuje řadu operátory, které jsou oddělené znakem přesměrování `|`.  Můžete zřetězit dohromady víc operátorů Upřesnit tak data a provádět pokročilé funkce.
 
@@ -94,9 +94,9 @@ union Update, workspace("contoso-workspace").Update
 ```
 
 ## <a name="how-log-analytics-data-is-organized"></a>Uspořádání dat Log Analytics
-Když vytvoříte dotaz, spustíte tak, že určíte, které tabulky obsahují data, která hledáte. Různé druhy dat jsou rozdělené do vyhrazené tabulek v každé [pracovní prostor Log Analytics](../../log-analytics/log-analytics-quick-create-workspace.md).  Dokumentaci k různým zdrojům dat obsahuje název datového typu, který vytvoří a popis každého z její vlastnosti.  Mnoho dotazů budete potřebovat jenom data z jedné tabulky, ale ostatní může používat širokou škálu možností zahrnout data z více tabulek.
+Když vytvoříte dotaz, spustíte tak, že určíte, které tabulky obsahují data, která hledáte. Různé druhy dat jsou rozdělené do vyhrazené tabulek v každé [pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md).  Dokumentaci k různým zdrojům dat obsahuje název datového typu, který vytvoří a popis každého z její vlastnosti.  Mnoho dotazů budete potřebovat jenom data z jedné tabulky, ale ostatní může používat širokou škálu možností zahrnout data z více tabulek.
 
-Zatímco [Application Insights](../../application-insights/app-insights-overview.md) ukládá data aplikací, například požadavky, výjimky, trasování a využití v Log Analytics, tato data uložená v jiného oddílu než ostatní data protokolu. Přístup k těmto datům pomocí stejné dotazovací jazyk, ale musí používat [konzoly Application Insights](../../application-insights/app-insights-analytics.md) nebo [REST API pro Application Insights](https://dev.applicationinsights.io/) k němu přistupovat. Můžete použít [dotazy napříč prostředky](../../log-analytics/log-analytics-cross-workspace-search.md) kombinovat data Application Insights s ostatními daty v Log Analytics.
+Zatímco [Application Insights](../../application-insights/app-insights-overview.md) ukládá data aplikací, například požadavky, výjimky, trasování a využití v Log Analytics, tato data uložená v jiného oddílu než ostatní data protokolu. Přístup k těmto datům pomocí stejné dotazovací jazyk, ale musí používat [konzoly Application Insights](../../application-insights/app-insights-analytics.md) nebo [REST API pro Application Insights](https://dev.applicationinsights.io/) k němu přistupovat. Můžete použít [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md) kombinovat data Application Insights s ostatními daty v Log Analytics.
 
 
 ![Tabulky](media/log-query-overview/queries-tables.png)
@@ -109,5 +109,5 @@ Zatímco [Application Insights](../../application-insights/app-insights-overview
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [prohledávání protokolů portály, které použijete k vytvoření a úprava](../../log-analytics/log-analytics-log-search-portals.md).
-- Podívejte se [kurz o psaní dotazů](../../log-analytics/query-language/get-started-queries.md) pomocí nového dotazovacího jazyka.
+- Další informace o [prohledávání protokolů portály, které použijete k vytvoření a úprava](../../azure-monitor/log-query/portals.md).
+- Podívejte se [kurz o psaní dotazů](../../azure-monitor/log-query/get-started-queries.md) pomocí nového dotazovacího jazyka.

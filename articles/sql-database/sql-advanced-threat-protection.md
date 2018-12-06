@@ -10,13 +10,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 05/17/2018
-ms.openlocfilehash: cb3d8629d5d72644e647da14e7c3b31a4914814d
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/05/2018
+ms.openlocfilehash: 6523828b522379dd1cd70f1c548caf7af15b5d90
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159549"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964760"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection pro Azure SQL Database
 
@@ -32,7 +32,7 @@ SQL pokročilé Threat Protection (ATP) poskytuje sadu pokročilé funkce zabezp
 
 Povolení ochrany ATP v programu SQL po povolte všechny z nich zahrnuty funkce. Jedním kliknutím můžete povolit ATP na celém databázovém serveru a použít pro všechny databáze na tomto serveru. 
 
-Ceny ochrany ATP v programu v souladu s Azure Security Center úrovně standard za 15 USD/uzel/měsíc, kde každý chráněný server SQL Database se počítá jako jeden uzel. Prvních 60 dní po povolení považují za období bezplatné zkušební verze a žádné poplatky neúčtujeme. Další informace najdete v tématu [stránce s cenami za Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+Ceny ochrany ATP v programu v souladu s Azure Security Center úrovně standard, kde každý chráněný server SQL Database se počítá jako jeden uzel. Nově chráněných prostředků nárok na bezplatnou zkušební verzi služby Security Center úrovně standard. Další informace najdete v tématu [stránce s cenami za Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 
 ## <a name="getting-started-with-atp"></a>Začínáme se službou ochrana ATP v programu 
@@ -45,7 +45,7 @@ Povolení ochrany ATP v programu tak, že přejdete do **Advanced Threat Protect
 ![Povolení ochrany ATP v programu](./media/sql-advanced-protection/enable_atp.png) 
 
 > [!NOTE]
-> Náklady ochrany ATP v programu je 15 USD/uzel/měsíc, pokud uzel je celý logický server SQL. Takže platíte jenom jednou pro ochranu všech databází na serveru se službou ochrana ATP v programu. Prvních 60 dní se považují za bezplatnou zkušební verzi.
+> Náklady na ochrany ATP v programu je v souladu s Azure Security Center úrovně standard ceny podle počtu uzlů, kde je uzel celý logický server SQL. Takže platíte jenom jednou pro ochranu všech databází na serveru se službou ochrana ATP v programu. Můžete vyzkoušet ochrany ATP v programu zpočátku s bezplatnou zkušební verzi.
 
 ## <a name="2-configure-vulnerability-assessment"></a>2. Konfigurovat posouzení ohrožení zabezpečení
 

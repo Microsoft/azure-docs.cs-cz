@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
-ms.openlocfilehash: 7873192e4a66cd2faed5a1a1255377139d33d750
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 6c9dcf5812d1d8efe7adbadc3647085664093bb1
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616057"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52969188"
 ---
 # <a name="network-configuration-details-for-app-service-environments-with-expressroute"></a>Podrobnosti o konfiguraci sítě pro službu App Service Environment používající ExpressRoute
 ## <a name="overview"></a>Přehled
@@ -121,15 +121,15 @@ Potom pokračujte ve vytváření služby App Service Environment!
 Začínáme s App Service Environment najdete v článku [Úvod do služby App Service Environment][IntroToAppServiceEnvironment]
 
 <!-- LINKS -->
-[virtualnetwork]: http://azure.microsoft.com/services/virtual-network/
-[ExpressRoute]: http://azure.microsoft.com/services/expressroute/
+[virtualnetwork]: https://azure.microsoft.com/services/virtual-network/
+[ExpressRoute]: https://azure.microsoft.com/services/expressroute/
 [requiredports]: app-service-app-service-environment-control-inbound-traffic.md
-[NetworkSecurityGroups]: http://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[UDROverview]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
-[UDRHowTo]: http://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
+[UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/
 [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
-[AzureDownloads]: http://azure.microsoft.com/downloads/ 
-[DownloadCenterAddressRanges]: http://www.microsoft.com/download/details.aspx?id=41653  
+[AzureDownloads]: https://azure.microsoft.com/downloads/ 
+[DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
 [NewPortal]:  https://portal.azure.com

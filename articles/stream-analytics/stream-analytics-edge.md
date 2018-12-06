@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics na hraničních zařízeních IoT (preview)
+title: Azure Stream Analytics na hraničních zařízeních IoT
 description: Vytvořte hraniční úlohy ve službě Azure Stream Analytics a nasazovat je do zařízení s Azure IoT Edge.
 services: stream-analytics
 author: mamccrea
@@ -7,18 +7,15 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/30/2018
-ms.openlocfilehash: 6d3060545946f1f003058932f1ffc50c2a64586f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/04/2018
+ms.openlocfilehash: 920395593509223a63a195ad53eeaf7e6aca108e
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846228"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52961402"
 ---
-# <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics na hraničních zařízeních IoT (preview)
-
-> [!IMPORTANT]
-> Tato funkce je ve verzi preview a nedoporučujeme používat v produkčním prostředí.
+# <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
  
 Azure Stream Analytics (ASA) v prostředí IoT Edge umožňuje vývojářům nasadit téměř v reálném čase inteligentní funkce analýzy blíže zařízením IoT tak, aby bylo možné odemknout plný potenciál dat generovaných zařízením. Azure Stream Analytics je určená pro nízkou latenci, odolnost a efektivní využití šířky pásma a dodržování předpisů. Podniky nyní můžete nasadit logiky ovládacího prvku blízko průmyslové operací a doplňují analýzy velkých objemů dat v cloudu.  
 
@@ -220,6 +217,7 @@ Potřebujete další pomoc, zkuste [fóru Azure Stream Analytics](https://social
 * [Azure Stream Analytics na hraničních zařízeních IoT kurz](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [Odeslat zpětnou vazbu týmu pomocí tohoto průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
 * [Vývoj úloh Stream Analytics Edge pomocí nástrojů sady Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [Implementujte CI/CD pro Stream Analytics pomocí rozhraní API](stream-analytics-cicd-api.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

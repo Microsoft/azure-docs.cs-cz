@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7d76827a4e4ba4ccb7a146c5f8282000d143eb35
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4de4a5a659f38577c1261b169a43df560bf05495
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51624433"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52971262"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurace klientů OpenVPN pro Azure VPN Gateway (Preview)
 
@@ -67,11 +67,11 @@ Ověřte, že jste dokončili postup pro konfiguraci OpenVPN pro bránu VPN. Pod
 2. Stáhněte si profil sítě VPN pro bránu. To můžete udělat na kartě Konfigurace point-to-site na webu Azure Portal nebo pomocí "New-AzureRmVpnClientConfiguration" v prostředí PowerShell.
 3. Rozbalte profil. Otevřete konfigurační soubor vpnconfig.ovpn ze složky OpenVPN v poznámkovém bloku.
 4. V části klientského certifikátu P2S vyplňte veřejný klíč klientského certifikátu P2S v kódování Base-64. V případě certifikátu s formátem PEM stačí otevřít soubor .cer a zkopírovat klíč Base-64 uvedený mezi hlavičkami certifikátu. Zobrazit [Export veřejného klíče](vpn-gateway-certificates-point-to-site.md#cer) informace o exportování certifikátu se získat kódované veřejný klíč.
-5. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Zobrazit [exportovat soukromý klíč](https://www.geotrust.eu/en/support/manuals/microsoft/all+windows+servers/export+private+key+or+certificate/) informace o tom, jak extrahovat privátní klíč.
+5. V části privátního klíče vyplňte privátní klíč klientského certifikátu P2S v kódování Base-64. Zobrazit [exportovat soukromý klíč](https://openvpn.net/community-resources/how-to/#pki) informace o tom, jak extrahovat privátní klíč.
 6. Ostatní pole ponechte beze změny. S použitím vyplněné konfigurace ve vstupu klienta se připojte k síti VPN.
 7. Poklikejte na soubor profilu a vytvořte profil v tunnelblik.
 8. Spusťte Tunnelblik ze složky aplikace.
-9. Klikněte na ikonu Tunneblik na hlavním panelu systému a připojit výběru.
+9. Klikněte na ikonu Tunnelblik na hlavním panelu systému a připojit výběru.
 
 ## <a name="linux"></a>Klienti Linux
 

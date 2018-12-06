@@ -3,21 +3,21 @@ title: Konfigurace zabezpečení dělení a slučování | Dokumentace Microsoft
 description: Nastavit x409 certifikáty pro šifrování s služby dělení a slučování pro elastické škálování.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 6967805044bb11e9aed3fe66d580df059f7a461a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 12/04/2018
+ms.openlocfilehash: 06e9b443c5b0dc1c23b325c7127511f8542a1a11
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231389"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52964828"
 ---
 # <a name="split-merge-security-configuration"></a>Konfigurace zabezpečení dělení a slučování
 Použití služby dělení a slučování, musíte správně nakonfigurovat zabezpečení. Tato služba je součástí funkce elastické škálování služby Microsoft Azure SQL Database. Další informace najdete v tématu [elastické škálování rozdělení a sloučení kurz Service](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -178,7 +178,7 @@ Spusťte:
       -n "CN=myservice.cloudapp.net" ^
       -e MM/DD/YYYY ^
       -r -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.1" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -sv MySSL.pvk MySSL.cer
 
 Chcete-li přizpůsobit:
@@ -223,7 +223,7 @@ Postupujte podle těchto kroků ve všech účtu nebo počítač, který bude ko
 ## <a name="turn-off-client-certificate-based-authentication"></a>Vypnout ověřování pomocí certifikátu klienta
 Je podporován pouze na základě certifikátů ověření klienta a jeho zakázání proto umožní veřejný přístup ke koncovým bodům služby, pokud ostatní mechanismy jsou na místě (například Microsoft Azure Virtual Network).
 
-Změna těchto nastavení na hodnotu false v konfiguračním souboru služby, chcete-li tuto funkci vypnout:
+Změna těchto nastavení na hodnotu false v konfiguračním souboru služby, chcete-li vypnout funkci:
 
     <Setting name="SetupWebAppForClientCertificates" value="false" />
     <Setting name="SetupWebserverForClientCertificates" value="false" />
@@ -239,7 +239,7 @@ Proveďte následující kroky k vytvoření certifikátu podepsaného svým dr�
     -n "CN=MyCA" ^
     -e MM/DD/YYYY ^
      -r -cy authority -h 1 ^
-     -a sha1 -len 2048 ^
+     -a sha256 -len 2048 ^
       -sr localmachine -ss my ^
       MyCA.cer
 
@@ -280,7 +280,7 @@ Aktualizujte hodnotu toto nastavení se stejným kryptografickým otiskem:
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
 
 ## <a name="issue-client-certificates"></a>Vystavování certifikátů klienta
-Jednotlivých oprávnění pro přístup ke službě musí mít klientský certifikát vydaný pro his/hers výhradní použití a zvolit, že his/hers vlastní silné heslo k ochraně jeho privátní klíč. 
+Jednotlivých oprávnění pro přístup ke službě musí mít klientský certifikát vydaný pro svoje výhradní použití a zvolit silné heslo k ochraně jeho privátní klíč. 
 
 Ve stejném počítači, kde byl certifikát podepsaný svým držitelem certifikační Autority generovány a ukládají je třeba spustit následující kroky:
 
@@ -288,7 +288,7 @@ Ve stejném počítači, kde byl certifikát podepsaný svým držitelem certifi
       -n "CN=My ID" ^
       -e MM/DD/YYYY ^
       -cy end -sky exchange -eku "1.3.6.1.5.5.7.3.2" ^
-      -a sha1 -len 2048 ^
+      -a sha256 -len 2048 ^
       -in "MyCA" -ir localmachine -is my ^
       -sv MyID.pvk MyID.cer
 
@@ -316,14 +316,14 @@ Zadejte heslo a potom export certifikátu s těmito možnostmi:
 * Osoba, na koho se vydává tento certifikát by měl vybrat heslo pro export
 
 ## <a name="import-client-certificate"></a>Import certifikátu klienta
-Jednotlivé uživatele, pro kterého se klientský certifikát vystavil importujte páru klíčů v počítačích, do kterých učitelského bude používat pro komunikaci se službou:
+Jednotlivé uživatele, pro kterého se klientský certifikát vystavil importujte pár klíčů na počítačích, které se používají ke komunikaci se službou:
 
 * Dvakrát klikněte. Soubor PFX v Průzkumníku Windows
 * Importovat certifikát do osobního úložiště s alespoň tuto možnost:
   * Zahrnout všechny rozšířené vlastnosti checked
 
 ## <a name="copy-client-certificate-thumbprints"></a>Zkopírujte kryptografické otisky certifikátu klienta
-Jednotlivé uživatele, pro kterého se klientský certifikát vystavil musí následujícím postupem, aby bylo možné získat kryptografický otisk his/hers certifikát, který se přidá do konfiguračního souboru služby:
+Jednotlivé uživatele, pro kterého se klientský certifikát vystavil musí následujícím postupem, aby bylo možné získat kryptografický otisk jejich certifikát, který se přidá do konfiguračního souboru služby:
 
 * Spustit certmgr.exe
 * Vyberte kartu Osobní

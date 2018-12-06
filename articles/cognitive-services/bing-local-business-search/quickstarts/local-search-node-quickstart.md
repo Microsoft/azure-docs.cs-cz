@@ -10,17 +10,17 @@ ms.component: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: d60f2aca912f279f84710863e5f6ce507de64cb0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 409e4d2e71766ddba2b1d7bcf7e10afdbe298104
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309170"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52968534"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-nodejs"></a>Rychlý start: Odeslání dotaz Bingu místní firmy hledání rozhraní API pomocí Node.js
 
 V tomto rychlém startu můžete zahájit odesílání požadavků na místní firmy hledání rozhraní API Bingu, což je kognitivní služby Azure. Když je tato jednoduchá aplikace napsané v Node.js, je rozhraní API RESTful webová služba, která je kompatibilní s libovolný programovací jazyk umožňuje zasílat požadavky HTTP a parsování formátu JSON.
- 
+
 Tato ukázková aplikace získá data místní odpověď z rozhraní API pro vyhledávací dotaz `hotel in Bellevue`.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -31,14 +31,15 @@ Tato ukázková aplikace získá data místní odpověď z rozhraní API pro vyh
 
 Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s rozhraními API pro Bing. Pro účely tohoto rychlého startu stačí [bezplatná zkušební verze](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). Použijte přístupový klíč poskytuje bezplatná zkušební verze.  Viz také [služeb Cognitive Services ceny – rozhraní API Bingu pro vyhledávání](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-##<a name="code-scenario"></a>Scénář kódu
+## <a name="code-scenario"></a>Scénář kódu
+
 Následující kód získá definuje a odešle žádost. Implementuje se v následujících krocích:
 
 1. Deklarujte proměnné, které za použití hostitele a cesty určují koncový bod.
-2. Zadejte dotaz a přidat parametr dotazu. 
+2. Zadejte dotaz a přidat parametr dotazu.
 3. Vytvořte pro odpověď funkci obslužné rutiny.
 4. Definujte funkci vyhledávání, který vytvoří žádost a přidá záhlaví Ocp-Apim-Subscription-Key.
-5. Spusťte funkci vyhledávání. 
+5. Spusťte funkci vyhledávání.
 
 Následuje celý kód pro tuto ukázku:
 
@@ -92,6 +93,7 @@ Search();
 ````
 
 ## <a name="next-steps"></a>Další postup
-- [Rychlý start místní firmy vyhledávání](local-quickstart.md)
-- [Rychlý start místní firmy hledání Java](local-search-java-quickstart.md)
-- [Rychlý start místní firmy hledání Pythonu](local-search-python-quickstart.md)
+
+* [Rychlý start místní firmy vyhledávání](local-quickstart.md)
+* [Rychlý start místní firmy hledání Java](local-search-java-quickstart.md)
+* [Rychlý start místní firmy hledání Pythonu](local-search-python-quickstart.md)

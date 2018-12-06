@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/12/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: b2483d93fdc83970ca1568326f4bc728de16f77c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3df4be80e1a979590a05ff10601485e950de54bd
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038863"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962213"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Přihlášení pomocí telefonu, ne pomocí hesla
 Aplikace Microsoft Authenticator, nejen pomáhá vám zabezpečit vaše účty pomocí provádí dvoustupňové ověřování za vás zadejte svoje heslo, ale teď ji může nahradit hesla k vašemu účtu Microsoft zcela.
@@ -43,13 +43,13 @@ Pokud vaše organizace má zapnuté toto nové prostředí, budete mít k zapnut
 
     Po zadání vašeho uživatelského jména, uvidíte na stránce s dvoumístné číslo s výzvou k schválení přihlášení v aplikaci Microsoft Authenticator. Pokud už nechcete používat toto přihlášení v metodě, můžete vybrat **použít raději heslo**a přihlaste se pomocí hesla.
 
-    ![Schválit přihlášení pole](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
+    ![Schválit přihlášení pole](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in.png)
 
 2. V aplikaci Microsoft Authentication, dostanete oznámení s výzvou k **schválit přihlášení**. Zvolte **schválit** Pokud pokus o přihlášení. Jinak klikněte na tlačítko **Odepřít**. 
 
 3. Klepněte na stejné číslo se zobrazí na **schválit přihlášení** obrazovky. K dokončení ověření použijte váš telefon PIN kód nebo biometrické klíč.
 
-    ![Schválit přihlášení pole s číslem k výběru](media\microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
+    ![Schválit přihlášení pole s číslem k výběru](media/microsoft-authenticator-app-phone-signin-faq/microsoft-auth-app-sign-in-numbers.png)
 
 ## <a name="turn-on-phone-sign-in-for-your-personal-account"></a>Zapněte telefon přihlášení pro váš osobní účet 
 Můžete zapnout přihlašování telefonem pro osobní účet Microsoft, jako je například účet, který používáte pro přihlášení k Outlook.com, Xbox nebo Skype.

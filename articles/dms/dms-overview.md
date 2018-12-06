@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 10/19/2018
-ms.openlocfilehash: 2003b90f95c8c139bf5b3526ed8d3994ee08efd9
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.date: 12/04/2018
+ms.openlocfilehash: d255894b7b9673f3a7d27414b4fb0c114d821747
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444473"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962134"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Co je Azure Database Migration Service?
 Azure Database Migration Service je plně spravovaná služba, která umožňují bezproblémovou migraci z několika databázových zdrojů na platformu Azure dat s minimálními prostoji (online migrace).
@@ -24,10 +24,9 @@ Azure Database Migration Service je plně spravovaná služba, která umožňuj�
 Azure Database Migration Service integrována některé funkce naší existujících nástrojů a služeb. Zákazníkům přináší díky komplexní, vysoce dostupné řešení. Služba používá [Data Migration Assistant](https://aka.ms/dma) k vygenerování sestavy vyhodnocení, které poskytuje doporučení, která vás provede změny nezbytné před zahájením migrace. To je, abyste mohli provést nápravu, jakékoli požadované. Až budete připraveni zahájit proces migrace, služba Azure Database Migration Service provede všechny požadované kroky. Můžete aktivovat a zapomenout vaše projekty migrace klid, vědomím, že proces využívá osvědčené postupy, počítáno od Microsoftu.
 
 > [!NOTE]
-> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance podle důležité obchodní informace (Preview) cenovou úroveň.
+> Použití Azure Database Migration Service online migrace vyžaduje vytvoření instance podle cenové úrovně Premium (Preview).
 
 ## <a name="regional-availability"></a>Regionální dostupnost
-
 Aktuální informace o dostupnosti služby Azure Database Migration Service v jednotlivých oblastech najdete v tématu [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration).
 
 ## <a name="pricing"></a>Ceny

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 91cbebecc227d24337b2d1b421dd1611bf0fac46
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 357257d38c444eae8077568993d49816e3c090a3
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390792"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52966071"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Přístup k protokolům diagnostiky pro Azure Data Lake Storage Gen1
 Zjistěte, jak povolit diagnostické protokolování pro váš účet Azure Data Lake Storage Gen1 a o tom, k zobrazení protokolů shromažďovaných pro váš účet.
@@ -46,7 +46,7 @@ Organizace může povolit protokolování diagnostiky ke svému účtu Azure Dat
         
         * Vyberte možnost **Stream do centra událostí** data protokolu Streamovat do centra událostí Azure. Pravděpodobně bude používat tuto možnost, pokud máte kanál zpracování příjmu dat k analýze příchozí protokolů v reálném čase. Pokud vyberete tuto možnost, musíte zadat podrobnosti pro Azure Event Hubs, kterou chcete použít.
 
-        * Vyberte možnost **odesílat do Log Analytics** k používání služby Azure Log Analytics k analýze dat generovaných protokolu. Pokud vyberete tuto možnost, musíte zadat podrobnosti pracovního prostoru Log Analytics můžete využít provést analýzu protokolu. Zobrazit [zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolu log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) podrobnosti o použití Log Analytics.
+        * Vyberte možnost **odesílat do Log Analytics** k používání služby Azure Log Analytics k analýze dat generovaných protokolu. Pokud vyberete tuto možnost, musíte zadat podrobnosti pracovního prostoru Log Analytics můžete využít provést analýzu protokolu. Zobrazit [zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolu log Analytics](../azure-monitor/learn/tutorial-viewdata.md) podrobnosti o použití Log Analytics.
      
    * Určete, jestli chcete získat protokoly auditu nebo žádost o protokoly nebo obojí.
    * Zadejte počet dnů, u kterých musí uchovávat data. Uchovávání platí pouze pokud používáte účet úložiště Azure pro archivaci dat protokolu.
@@ -178,7 +178,7 @@ Tady je vstup vzorového v protokolu auditu ve formátu JSON. Každý objekt blo
 | StreamName |Řetězec |Cesta operaci byla provedena |
 
 ## <a name="samples-to-process-the-log-data"></a>Ukázky ke zpracování dat protokolu
-Při odesílání protokolů z Azure Data Lake Storage Gen1 ke službě Azure Log Analytics (viz [zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolu log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) podrobnosti o použití Log Analytics), následující dotaz vrátí tabulku se seznamem uživatele, zobrazte názvy, čas události a počet událostí čas události společně s vizuálním grafu. Můžete ho snadno upravit tak, aby zobrazit GUID uživatele, nebo dalšími atributy:
+Při odesílání protokolů z Azure Data Lake Storage Gen1 ke službě Azure Log Analytics (viz [zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolu log Analytics](../azure-monitor/learn/tutorial-viewdata.md) podrobnosti o použití Log Analytics), následující dotaz vrátí tabulku se seznamem uživatele, zobrazte názvy, čas události a počet událostí čas události společně s vizuálním grafu. Můžete ho snadno upravit tak, aby zobrazit GUID uživatele, nebo dalšími atributy:
 
 ```
 search *
