@@ -15,7 +15,7 @@ ms.reviewer: olegan
 ms.author: mbullwin
 ms.openlocfilehash: cae0edb8576722e7c3e51df14cb8d29d09ff571c
 ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/01/2018
 ms.locfileid: "52722339"
