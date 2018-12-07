@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34161251ac52323bc3eff66cfe30f3de34bdf60c
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 998c3f1fcfbf53f6f0dfb5ddf34d420f2b31a0b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715184"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001881"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytváření souboru řešení správy v Azure (Preview)
 > [!NOTE]
@@ -169,7 +169,7 @@ V tomto případě odkazujete na hodnoty proměnných v řešení se syntaxí **
 **DependsOn** určuje element [závislost](../../azure-resource-manager/resource-group-define-dependencies.md) na jiný prostředek.  Při instalaci řešení není vytvořen prostředek, dokud všechny jeho závislosti vytvořili.  Například může být vaše řešení [spuštění sady runbook](solutions-resources-automation.md#runbooks) po instalaci pomocí [úlohy prostředků](solutions-resources-automation.md#automation-jobs).  Zdroj úlohy by být závislý na prostředku sady runbook, abyste měli jistotu, že sada runbook je vytvořená před vytvořením úlohy.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Pracovní prostor log Analytics a účet služby Automation
-Vyžadovat řešení pro správu [pracovní prostor Log Analytics](../../log-analytics/log-analytics-manage-access.md) tak, aby obsahovala zobrazení a [účtu Automation](../../automation/automation-security-overview.md#automation-account-overview) tak, aby obsahovala sady runbook a související prostředky.  Toto musí být k dispozici prostředky v řešení jsou vytvořeny a neměl by být definován ve vlastním řešením.  Uživatel uvidí [určit pracovní prostor a účet](solutions.md#log-analytics-workspace-and-automation-account) po jejich nasazení vašeho řešení, ale jako autor, měli byste zvážit následující body.
+Vyžadovat řešení pro správu [pracovní prostor Log Analytics](../../azure-monitor/platform/manage-access.md) tak, aby obsahovala zobrazení a [účtu Automation](../../automation/automation-security-overview.md#automation-account-overview) tak, aby obsahovala sady runbook a související prostředky.  Toto musí být k dispozici prostředky v řešení jsou vytvořeny a neměl by být definován ve vlastním řešením.  Uživatel uvidí [určit pracovní prostor a účet](solutions.md#log-analytics-workspace-and-automation-account) po jejich nasazení vašeho řešení, ale jako autor, měli byste zvážit následující body.
 
 
 ## <a name="solution-resource"></a>Řešení prostředků

@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 492087f7eeca8628ac6ac9a9e42f355a9356f1ce
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 54741bd2d76a7ba414613a40e07c47be703aa033
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584702"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994412"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do Azure HDInsight – osvědčené postupy migrace dat
 
 Tento článek obsahuje doporučení pro migraci dat do Azure HDInsight. To je součástí série, která poskytuje osvědčené postupy pro pomoc s migrací místních systémů Apache Hadoop do Azure HDInsight.
 
-## <a name="migrate-data-from-on-premises-to-azure"></a>Migrace místních dat do Azure
+## <a name="migrate-on-premises-data-to-azure"></a>Migrace místních dat do Azure
 
 Existují dvě hlavní možnosti, jak migrovat data z místního prostředí Azure:
 
@@ -49,7 +49,7 @@ Následující tabulka má dobu přenosu přibližné dat na základě dat svazk
 
 Nástroje pro nativní pro Azure, jako jsou DistCp, Azure Data Factory a AzureCp, je možné posílat data přes síť. Nástroj třetí strany WANDisco lze použít také ke stejnému účelu. Nástroje Mirrormaker Kafka a Sqoop slouží pro přenosy probíhající dat z místního systémů služby Azure storage.
 
-## <a name="performance-considerations-when-using-apache-distcp"></a>Požadavky na výkon při použití Apache DistCp
+## <a name="performance-considerations-with-apache-distcp"></a>Důležité informace o výkonu s Apache DistCp
 
 DistCp je projekt Apache, který používá k přenosu dat, zpracování chyb a zotavení z těchto chyb úlohu MapReduce mapy. Každý úkol mapy přiřazuje seznam zdrojových souborů. Úloha mapy všechny své přiřazené soubory pak zkopíruje do cíle. Existuje několik postupů může zlepšit výkon DistCp.
 
@@ -92,14 +92,14 @@ Hive metastore je možné migrovat pomocí skriptů nebo pomocí replikace datab
 
 #### <a name="hive-metastore-migration-using-scripts"></a>Migrace metastore Hive pomocí skriptů
 
-1. Generovat Hive DDLs z metastore Hive v místním prostředí. Tento krok lze provést pomocí [bash skript obálky]. (https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md)
-1. Upravte vygenerovaný DDL nahraďte adresu url HDFS WASB nebo ADLS/ABFS adresy URL
-1. Aktualizované DDL spouštět metastore z clusteru HDInsight
-1. Ujistěte se, že verze metastore Hive je kompatibilní mezi místním prostředím a cloudem
+1. Generovat Hive DDLs z metastore Hive v místním prostředí. Tento krok lze provést pomocí [skriptu bash obálky](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
+1. Upravte vygenerovaný DDL nahraďte adresu url HDFS WASB nebo ADLS/ABFS adresy URL.
+1. Aktualizované DDL spouštět metastore z clusteru HDInsight.
+1. Ujistěte se, že verze metastore Hive je kompatibilní mezi místním prostředím a cloudem.
 
 #### <a name="hive-metastore-migration-using-db-replication"></a>Migrace metastore Hive pomocí replikace databáze
 
-- Nastavení replikace databáze mezi metastore Hive místní databáze a HDInsight metastore DB
+- Nastavení replikace databáze mezi metastore Hive místní databáze a HDInsight metastore DB.
 - Nahraďte adresu url HDFS WASB nebo ADLS/ABFS adresy URL, třeba pomocí "Hive MetaTool":
 
 ```bash

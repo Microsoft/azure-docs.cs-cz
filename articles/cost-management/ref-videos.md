@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: fab9d8639a81a4d5e7fbcddb36b975109ba636a7
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9c1df577dec5fe271d19be0d01d5b68ace8aaac1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276631"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993599"
 ---
 # <a name="cloudyn-training-videos"></a>Cloudyn Školicí videa
 

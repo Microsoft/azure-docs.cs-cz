@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 270227204af9cf50f0244b8aa11ebf9aa8cdc3ce
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: ed735b8344c301be413dfe998ccf7f44bd686115
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51631995"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011217"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Úvod do Apache Hadoop zabezpečení s balíčkem Enterprise Security Package
 
@@ -22,7 +22,7 @@ V minulosti, Azure HDInsight podporován pouze u jednoho uživatele: místní sp
 
 Můžete vytvořit cluster služby HDInsight s Enterprise Security Package (ESP), který je připojený k doméně služby Active Directory. Potom můžete nakonfigurovat seznam zaměstnanců podniku, kteří mohou ověřovat prostřednictvím služby Azure Active Directory pro přihlášení ke clusteru HDInsight. Nikdo z mimo organizaci můžete přihlásit nebo přístup ke clusteru HDInsight. 
 
-Podnikový správce můžete konfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Apache Hive pomocí [Apache Ranger](http://hortonworks.com/apache/ranger/). Konfigurace RBAC omezí přístup k datům jenom to, co je potřeba. Nakonec správce můžete auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu. Správce pak může dosáhnout vysokého stupně dohledu nad firemními prostředky.
+Podnikový správce můžete konfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Apache Hive pomocí [Apache Ranger](https://hortonworks.com/apache/ranger/). Konfigurace RBAC omezí přístup k datům jenom to, co je potřeba. Nakonec správce můžete auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu. Správce pak může dosáhnout vysokého stupně dohledu nad firemními prostředky.
 
 > [!NOTE]
 > Oozie je nyní zapnuta ESP clustery. Pro přístup k webovým Uživatelským rozhraním Oozie, musí uživatelé povolit [tunelování](../hdinsight-linux-ambari-ssh-tunnel.md).
@@ -44,14 +44,14 @@ S tímto nastavením zaměstnanci podniku může přihlásit k uzlům clusteru s
 ## <a name="authorization"></a>Autorizace
 Osvědčeným postupem, které následují většina podniků, je zajistit, že ne každý zaměstnanec má přístup ke všem podnikovým prostředkům. Správce, můžete definovat zásady řízení přístupu na základě rolí pro prostředky clusteru. 
 
-Správce může například nakonfigurovat [Apache Ranger](http://hortonworks.com/apache/ranger/), aby nastavil zásady řízení přístupu pro Hive. Tato funkce zajišťuje, aby zaměstnanci měli přístup ke pouze tolik dat, jako je třeba je úspěšné práci. Přístup přes SSH ke clusteru je také omezen na pouze správce.
+Správce může například nakonfigurovat [Apache Ranger](https://hortonworks.com/apache/ranger/), aby nastavil zásady řízení přístupu pro Hive. Tato funkce zajišťuje, aby zaměstnanci měli přístup ke pouze tolik dat, jako je třeba je úspěšné práci. Přístup přes SSH ke clusteru je také omezen na pouze správce.
 
 ## <a name="auditing"></a>Auditování
 Auditu veškerých přístupů k prostředkům clusteru a data, je nezbytné ke sledování neautorizovaného nebo nechtěného přístupu k prostředkům. Je důležité jako Ochrana prostředků clusteru HDInsight před neoprávněnými uživateli a zabezpečení dat. 
 
 Správce můžete zobrazit a sestavy o všech přístupech k prostředkům clusteru HDInsight a data. Správce můžete také zobrazit a sestavy o všech změnách v zásadách řízení přístupu, který je vytvořen v Apache Ranger podporované koncové body. 
 
-Cluster HDInsight s ESP používá k prohledávání protokolů auditu známé uživatelské rozhraní Apache Ranger. V rámci back-endu používá Ranger [Apache Solr](http://hortonworks.com/apache/solr/) pro ukládání a prohledávání protokolů.
+Cluster HDInsight s ESP používá k prohledávání protokolů auditu známé uživatelské rozhraní Apache Ranger. V rámci back-endu používá Ranger [Apache Solr](https://hortonworks.com/apache/solr/) pro ukládání a prohledávání protokolů.
 
 ## <a name="encryption"></a>Šifrování
 Ochrana dat je důležitá pro organizační požadavky zabezpečení a dodržování předpisů na schůzku. Kromě omezení přístupu k datům neautorizovanými, by ho zašifrovat. 

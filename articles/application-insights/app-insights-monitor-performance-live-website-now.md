@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3be368f128e4436cd58812937aaaf82a909b2645
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 0618a580c6bdcef8f28a439cd79e67d863e58b9e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720758"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995236"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentace webových aplikací za běhu pomocí nástrojů Application Insights
 
-Azure Application Insights vám umožňuje instrumentovat živou webovou aplikaci, aniž byste museli upravovat nebo znovu nasazovat kód. Pokud vaše aplikace hostuje místní server služby IIS, nainstalujte Monitorování stavu. Pokud se jedná o webové aplikace Azure nebo pokud běží ve virtuálním počítači Azure, můžete monitorování pomocí Application Insights zapnout z ovládacího panelu Azure. (Existují i samostatné články o instrumentaci [živých webových aplikací J2EE](app-insights-java-live.md) a [Azure Cloud Services](app-insights-cloudservices.md).) Budete potřebovat předplatné [Microsoft Azure](http://azure.com).
+Azure Application Insights vám umožňuje instrumentovat živou webovou aplikaci, aniž byste museli upravovat nebo znovu nasazovat kód. Pokud vaše aplikace hostuje místní server služby IIS, nainstalujte Monitorování stavu. Pokud se jedná o webové aplikace Azure nebo pokud běží ve virtuálním počítači Azure, můžete monitorování pomocí Application Insights zapnout z ovládacího panelu Azure. (Existují i samostatné články o instrumentaci [živých webových aplikací J2EE](app-insights-java-live.md) a [Azure Cloud Services](app-insights-cloudservices.md).) Budete potřebovat předplatné [Microsoft Azure](https://azure.com).
 
 ![Snímek obrazovky s App Insights přehled grafy obsahující informace o neúspěšných požadavků, doba odezvy serveru a požadavky na server](./media/app-insights-monitor-performance-live-website-now/overview-graphs.png)
 
@@ -242,7 +242,7 @@ Pro aplikace již instrumentované v době kompilace:
  * Volání závislostí (.NET 4.5); návratové hodnoty ve voláních závislostí (.NET 4.6)
  * Hodnoty trasování zásobníku výjimek
 
-[Další informace](http://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
+[Další informace](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/)
 
 ## <a name="video"></a>Video
 

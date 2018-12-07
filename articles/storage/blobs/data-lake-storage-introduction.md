@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 3b0a2e4f39b3b523743768e96bfe9a63b1795f60
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a273d0bd4d064cb1c6ac4d3951af8a493e303f51
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975316"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015887"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Úvod do služby Azure Data Lake Storage Gen2 ve verzi Preview
 
@@ -41,7 +41,7 @@ V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a 
 
 -   **Nadmnožina POSIX oprávnění**: model zabezpečení pro Data Lake Gen2 podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován pomocí Průzkumníka služby Storage nebo prostřednictvím architektury, jako je Hive a Spark.
 
--   **Nákladově efektivní**: nabízí kapacitu úložiště s nízkými náklady a transakce s Data Lake Storage Gen2. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](../common/storage-lifecycle-management-concepts.md).
+-   **Nákladově efektivní**: nabízí kapacitu úložiště s nízkými náklady a transakce s Data Lake Storage Gen2. Jako přechody data prostřednictvím jejich kompletní životní cyklus, fakturační sazby změnit uchování nákladů na minimum prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](storage-lifecycle-management-concepts.md).
 
 -   **Optimalizované ovladač**: ovladač abfs [speciálně optimalizovaná](data-lake-storage-abfs-driver.md) pro analýzy velkých objemů dat. Zobrazují se prostřednictvím koncového bodu systému souborů dfs, odpovídající rozhraní REST API dfs.core.windows.net.
 

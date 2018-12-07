@@ -1,5 +1,5 @@
 ---
-title: CI/CD s Azure Container Service a Swarm
+title: (NEPOUŽÍVANÉ) CI/CD s Azure Container Service a Swarm
 description: Průběžné nasazení aplikace .NET Core pomocí Azure Container Service s Docker Swarm, Azure Container Registry a Azure DevOps
 services: container-service
 author: jcorioland
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 3b91c269104e740add1d3a5b8ecaee93ca269188
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db0a16fa44dd23cbc32159889fe8b8ec28c77a5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302822"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992548"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service pomocí nástroje Docker Swarm pomocí služby Azure DevOps
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(NEPOUŽÍVANÉ) Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service pomocí nástroje Docker Swarm pomocí služby Azure DevOps
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Jedním z největších problémů při vývoji moderních aplikací pro cloud je schopnost průběžné nasazení těchto aplikací. V tomto článku se dozvíte, jak k provádění úplné průběžné integrace a nasazování (CI/CD) kanálů pomocí služby Azure Container Service pomocí Docker Swarm, Azure Container Registry a Azure kanály správy.
 

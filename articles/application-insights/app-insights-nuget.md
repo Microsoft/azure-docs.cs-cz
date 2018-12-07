@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: reference
 ms.date: 10/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a0aeca0996231415a78e1ac8dfed13cfd7e772d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 76cdd4bd4d95c7c11906f9c02a0f5cfa2326390e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723393"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000780"
 ---
 # <a name="application-insights-nuget-packages"></a>Balíčky Insights NuGet aplikací
 
@@ -70,7 +70,7 @@ Níže je uvedený aktuální seznam stabilní verzi balíčků NuGet pro Applic
 | Microsoft.ApplicationInsights.Agent_x64 | 2.2.1 |  Umožňuje shromažďovat data modulu runtime pro x64 aplikací | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x64/) |
 | Microsoft.ApplicationInsights.Agent_x86 | 2.2.1 |  Umožňuje shromažďovat data modulu runtime pro x86 aplikací. | [Stáhněte si balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Agent_x86/) |
 
-Tyto balíčky, které tvoří součást základní funkce monitorování runtime v [monitorování stavu](app-insights-monitor-performance-live-website-now.md). Není potřeba přímo stahovat tyto balíčky, použijte instalační program monitorování stavu. Pokud chcete se dozvědět více o tom, jak tyto balíčky pracovat pod pokličkou [blogový příspěvek](http://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/) z jednoho z našich vývojářů je dobrý začátek.
+Tyto balíčky, které tvoří součást základní funkce monitorování runtime v [monitorování stavu](app-insights-monitor-performance-live-website-now.md). Není potřeba přímo stahovat tyto balíčky, použijte instalační program monitorování stavu. Pokud chcete se dozvědět více o tom, jak tyto balíčky pracovat pod pokličkou [blogový příspěvek](https://apmtips.com/blog/2016/11/18/how-application-insights-status-monitor-not-monitors-dependencies/) z jednoho z našich vývojářů je dobrý začátek.
 
 ## <a name="additional-packages"></a>Další balíčky
 

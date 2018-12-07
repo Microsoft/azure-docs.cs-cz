@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33b95f117908fc0d7028a85defd148fdd821c391
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ca0eaf9e47b88bc0df8e7f050d8558c23d884f78
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963602"
+ms.locfileid: "52999305"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>Povolení offline synchronizace pro mobilní aplikace Xamarin.Android
 
@@ -93,7 +93,7 @@ Projekt Xamarin klienta, který jste stáhli, když jste dokončili kurz [vytvo�
 
             // Uses the default conflict handler, which fails on conflict
             // To use a different conflict handler, pass a parameter to InitializeAsync.
-            // For more details, see http://go.microsoft.com/fwlink/?LinkId=521416.
+            // For more details, see https://go.microsoft.com/fwlink/?LinkId=521416.
             await client.SyncContext.InitializeAsync(store);
         }
 * `toDoTable` Členem `ToDoActivity` je `IMobileServiceSyncTable` zadejte místo `IMobileServiceTable`. IMobileServiceSyncTable bude směrovat všechny vytvoření, čtení, aktualizace a odstranění (CRUD) operací tabulky k databázi místního úložiště.

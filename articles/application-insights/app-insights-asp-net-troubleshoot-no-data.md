@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: cc255d69a9a8b63ee65fb5dfcfe3879e68844a01
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 234cba3a3c58f1cff45925fcfcf23019dfa8d90e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679558"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998461"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé telemetrie
@@ -68,7 +68,7 @@ V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a zvolt
 ## <a name="NuGetBuild"></a> "Balíčky NuGet, které nebyly nalezeny" na serveru sestavení
 *Všechno sestavuje OK, je-li můžu mě na mém počítači vývoje ladění, ale získat chybu NuGet na server sestavení.*
 
-Podrobnosti najdete na [obnovení balíčků NuGet](http://docs.nuget.org/Consume/Package-Restore) a [automatické obnovení balíčku](http://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
+Podrobnosti najdete na [obnovení balíčků NuGet](https://docs.nuget.org/Consume/Package-Restore) a [automatické obnovení balíčku](https://docs.nuget.org/Consume/package-restore/migrating-to-automatic-package-restore).
 
 ## <a name="missing-menu-command-to-open-application-insights-from-visual-studio"></a>Chybí příkaz nabídky a otevře Application Insights v sadě Visual Studio
 *Když mám klikněte pravým tlačítkem na projekt Průzkumníka řešení, se mi nezobrazují všechny příkazy Application Insights nebo nevidím v příkazu Otevřít Application Insights.*
@@ -140,7 +140,7 @@ Oprava:
     
     ![](./media/app-insights-asp-net-troubleshoot-no-data/ikey-check.png)
 * V [domácí řídicím panelu Microsoft Azure](https://portal.azure.com), podívejte se na stav služby mapy. Pokud jsou některé upozornění údaje, počkejte, dokud se změnil na OK a pak zavřete a znovu otevřete okno aplikace Application Insights.
-* Zkontrolujte také [náš blog o stavu](https://blogs.msdn.com/b/applicationinsights-status/).
+* Zkontrolujte také [náš blog o stavu](https://blogs.msdn.microsoft.com/servicemap-status/).
 * Napsali jste kód [SDK na straně serveru](app-insights-api-custom-events-metrics.md) , který může změnit instrumentačního klíče v `TelemetryClient` instancí nebo v `TelemetryContext`? Nebo napsali jste [konfigurace filtru nebo vzorkování](app-insights-api-filtering-sampling.md) , který může být filtrování si příliš mnoho?
 * Pokud jste upravili soubor ApplicationInsights.config, pečlivě zkontrolujte konfiguraci [TelemetryInitializers a TelemetryProcessors](app-insights-api-filtering-sampling.md). Nesprávně pojmenované typ nebo parametr může způsobit sadu SDK k odesílání žádná data.
 

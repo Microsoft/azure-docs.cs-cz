@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
-ms.openlocfilehash: ce539da92b9d58282ab44a3729f4bf4fb8eaedf5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 48f8bb2e8251191fac456549cfca7a37e75d7f8c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840329"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997685"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů jazyka Transact-SQL během migrace do služby SQL Database
 
@@ -45,25 +45,37 @@ Základní příkazy DDL (data definition language) jsou k dispozici, ale někte
 
 Kromě příkazů jazyka Transact-SQL příkazy související s nepodporovanými funkcemi popsanými v [porovnání funkcí Azure SQL Database](sql-database-features.md), následující příkazy a skupiny příkazů, nejsou podporované. Proto pokud vaše databáze k migraci používá některou z následujících funkcí, znovu zpětnou analýzu T-SQL k odstranění těchto funkcí T-SQL a příkazy.
 
--Kolaci systému objekty - související připojení: příkazy Endpoint. Služba SQL Database nepodporuje ověřování Windows, ale podporuje podobné ověřování Azure Active Directory. Některé typy ověřování vyžadují nejnovější verzi SQL Server Management Studia (SSMS). Další informace najdete v tématu [připojení k SQL Database nebo SQL Data Warehouse pomocí Active Directory ověřování služby Azure](sql-database-aad-authentication.md).
--Různé dotazy, které používají tři nebo čtyři názvy částí. (Mezidatabázové dotazy jen pro čtení jsou podporované prostřednictvím [dotaz na elastickou databázi](sql-database-elastic-query-overview.md).) – pro různé řetězení vlastnictví, `TRUSTWORTHY` nastavení - `EXECUTE AS LOGIN` pomocí 'Spustit jako uživatel' místo toho.
--Šifrování je podporované s výjimkou služby ekm – zpracování událostí: dotazování událostí, oznámení událostí a oznámení – umístění souboru: syntaxe spojená s umístěním databázových souborů, velikost a databázové soubory, které jsou automaticky spravuje Microsoft Azure.
+- Kolace systémových objektů
+- Související s připojením: příkazy Endpoint. Služba SQL Database nepodporuje ověřování Windows, ale podporuje podobné ověřování Azure Active Directory. Některé typy ověřování vyžadují nejnovější verzi SQL Server Management Studia (SSMS). Další informace najdete v tématu [Připojení k SQL Database nebo SQL Data Warehouse pomocí ověřování služby Azure Active Directory](sql-database-aad-authentication.md).
+- Mezidatabázové dotazy, které používají tři nebo čtyři názvy částí (mezidatabázové dotazy jen pro čtení jsou podporované prostřednictvím [dotazů do Elastic Database](sql-database-elastic-query-overview.md)).
+- Mezidatabázové řetězení vlastnictví, nastavení `TRUSTWORTHY`
+- `EXECUTE AS LOGIN` Místo toho použijte EXECUTE AS USER.
+- Šifrování je podporované s výjimkou služby EKM (extensible key management).
+- Stavy: Událostí, oznámení událostí a oznámení dotazů
+- Umístění souboru: syntaxe spojená s umístěním databázových souborů, velikost a databázové soubory, které jsou automaticky spravuje Microsoft Azure.
 - Vysoká dostupnost: syntaxe týkající se vysoké dostupnosti, která je spravovaná prostřednictvím účtu Microsoft Azure. Patří sem syntaxe zálohování, obnovení, Always On, zrcadlení databáze, přesouvání protokolu a režimů obnovení.
--Protokolů Čtenář: syntaxe, která závisí na protokolů Čtenář, která není k dispozici v SQL Database: nabízená replikace, Change Data Capture. SQL Database může být odběratelem článku nabízené replikace.
--Funkce: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes` -hardwaru: syntaxe spojená s nastavením serverového hardwaru: například paměť, pracovní vlákna, spřažení procesorů, příznaků trasování. Použijte úrovně služby a místo toho výpočetní velikosti.
-- `KILL STATS JOB`
-- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`a názvy složené ze čtyř částí - rozhraní .NET Framework: integrace modulu CLR s přihlašovacími údaji serveru SQL Server – sémantické vyhledávání -: použití [přihlašovací údaje v oboru databáze](https://msdn.microsoft.com/library/mt270260.aspx) místo.
--Položky server-level: role serveru, `sys.login_token`. K dispozici nejsou příkazy `GRANT`, `REVOKE` a `DENY` serverových oprávnění, i když některé z nich jsou nahrazené oprávněními na úrovni databáze. Některá praktická serverová zobrazení dynamických zpráv (DMV) mají odpovídající databázová zobrazení dynamických zpráv.
-- `SET REMOTE_PROC_TRANSACTIONS`
-- `SHUTDOWN`
-- `sp_addmessage`
-- `sp_configure` Možnosti a `RECONFIGURE`. Některé možnosti jsou dostupné prostřednictvím [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
-- `sp_helpuser`
-- `sp_migrate_user_to_contained`
+- Protokolů Čtenář: syntaxe, která závisí na protokolů Čtenář, která není k dispozici v SQL Database: nabízená replikace, Change Data Capture. SQL Database může být odběratelem článku nabízené replikace.
+- Funkce: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
+- Hardware: Syntaxe spojená s nastavením serverového hardwaru: například paměť, pracovní vlákna, spřažení procesorů, příznaků trasování. Použijte úrovně služby a místo toho výpočetní velikosti.
+- `KILL STATS JOB`
+- `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE`a názvy složené ze čtyř částí
+- Rozhraní .NET framework: Integrace modulu CLR s SQL serverem
+- Sémantické vyhledávání
+- Přihlašovací údaje serveru: použití [přihlašovací údaje v oboru databáze](https://msdn.microsoft.com/library/mt270260.aspx) místo.
+- Serverové položky: role serveru, `sys.login_token`. K dispozici nejsou příkazy `GRANT`, `REVOKE` a `DENY` serverových oprávnění, i když některé z nich jsou nahrazené oprávněními na úrovni databáze. Některá praktická serverová zobrazení dynamických zpráv (DMV) mají odpovídající databázová zobrazení dynamických zpráv.
+- `SET REMOTE_PROC_TRANSACTIONS`
+- `SHUTDOWN`
+- `sp_addmessage`
+- Možnosti `sp_configure` a `RECONFIGURE`. Některé možnosti jsou dostupné prostřednictvím příkazu [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
+- `sp_helpuser`
+- `sp_migrate_user_to_contained`
 - Agent systému SQL Server: Syntaxi, která závisí na službě Agent serveru SQL Server nebo databázi MSDB: výstrahy, operátory a servery centrální správy. Použijte raději skriptování, například v Azure PowerShellu.
-– SQL Server audit: místo toho auditování služby SQL Database pomocí.
-– Příznaky trasování SQL serveru – trasování: některé položky příznak trasování byly přesunuty do kompatibilních režimů.
--Transact-SQL ladění – aktivační události: serverové nebo přihlašovací aktivační události – `USE` – příkaz: Pokud chcete změnit kontext databáze na jinou databázi, musíte vytvořit nové připojení k nové databázi.
+- SQL Server audit: místo toho auditování služby SQL Database pomocí.
+- Trasování SQL Serveru
+- Příznaky trasování: některé položky příznak trasování byly přesunuty do kompatibilních režimů.
+- Ladění Transact-SQL
+- Aktivační události: serverové nebo přihlašovací aktivační události
+- Příkaz `USE`: Pokud chcete změnit kontext databáze na jinou databázi, musíte k nové databázi vytvořit nové připojení.
 
 ## <a name="full-transact-sql-reference"></a>Kompletní reference k jazyku Transact-SQL
 

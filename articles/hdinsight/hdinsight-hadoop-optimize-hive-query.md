@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ebbb12a6454a093ad0ac3b3cc30eb489eeef21ec
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e9e92254db37edbd978b5799b13e63652e227f86
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687210"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014510"
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Hive v Azure HDInsight
 
@@ -40,7 +40,7 @@ Další informace o škálování HDInsight najdete v tématu [HDInsight škálo
 
 ## <a name="use-tez-instead-of-map-reduce"></a>Používat Tez místo Map Reduce
 
-[Apache Tez](http://hortonworks.com/hadoop/tez/) je alternativní spouštěcí modul pro modul MapReduce. Clustery se systémem Linux HDInsight mají Tez ve výchozím nastavení povolená.
+[Apache Tez](https://hortonworks.com/hadoop/tez/) je alternativní spouštěcí modul pro modul MapReduce. Clustery se systémem Linux HDInsight mají Tez ve výchozím nastavení povolená.
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
@@ -52,7 +52,7 @@ Tez je rychlejší, protože:
 * **Opětovně používá kontejnery**. Vždy, když je možné Tez mohli znovu použít kontejnerů a ujistěte se, že se snižuje latenci kvůli spouštění kontejnerů.
 * **Techniky průběžné optimalizace**. Optimalizace tradičně bylo provedeno během fáze kompilace. Ale je k dispozici další informace o vstupy, které umožňují lepší optimalizace za běhu. Tez využívá i metody průběžné optimalizaci umožňujících optimalizaci plán dále do fáze modulu runtime.
 
-Další informace o těchto konceptech najdete v tématu [Apache TEZ](http://hortonworks.com/hadoop/tez/).
+Další informace o těchto konceptech najdete v tématu [Apache TEZ](https://hortonworks.com/hadoop/tez/).
 
 Můžete vytvořit jakýkoli dotaz Hive Tez povolené vložením prefixu dotazu pomocí následujícího příkazu set:
 

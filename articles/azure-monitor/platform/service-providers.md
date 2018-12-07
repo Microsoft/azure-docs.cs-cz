@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: ''
-ms.openlocfilehash: c1af9cc9bc558fc610cdeeb81cda92082769b8cc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c43b2e265903b119812d16ef4ef329393c725e71
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975386"
+ms.locfileid: "52992995"
 ---
 # <a name="log-analytics-for-service-providers"></a>Log Analytics pro poskytovatele služeb
 Log Analytics může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
@@ -75,12 +75,12 @@ Existují dvě možnosti, jak implementovat centrální umístění ve službě 
 
 1. Centrální pracovního prostoru: poskytovatel služeb můžete vytvořit pracovní prostor v jeho tenantovi a použít skript, který využívá [rozhraní API pro dotazy](https://dev.loganalytics.io/) s [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md) k načítání dat z různých pracovních prostorů k této centrální umístění. Další možností, než skript, je použití [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
-2. Power BI jako centrální umístění: Power BI může fungovat jako centrální umístění, pokud různé pracovní prostory export dat pomocí integraci mezi službou Log Analytics a [Power BI](../../log-analytics/log-analytics-powerbi.md). 
+2. Power BI jako centrální umístění: Power BI může fungovat jako centrální umístění, pokud různé pracovní prostory export dat pomocí integraci mezi službou Log Analytics a [Power BI](../../azure-monitor/platform/powerbi.md). 
 
 
 ## <a name="next-steps"></a>Další kroky
 * Automatizace vytváření a konfiguraci mezi pracovními prostory pomocí [šablon Resource Manageru](template-workspace-configuration.md)
 * Automatizace vytváření pracovních prostorů pomocí [prostředí PowerShell](../../log-analytics/log-analytics-powershell-workspace-configuration.md) 
 * Použití [výstrahy](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) integrovat se stávajícími systémy
-* Pomocí souhrnné sestavy [Power BI](../../log-analytics/log-analytics-powerbi.md)
+* Pomocí souhrnné sestavy [Power BI](../../azure-monitor/platform/powerbi.md)
 * Zkontrolujte proces [konfigurace Log Analytics a Power BI k monitorování více zákazníků CSP](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

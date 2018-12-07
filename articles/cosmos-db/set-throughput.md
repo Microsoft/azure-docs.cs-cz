@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: a97032344b904442ed3606c6297251578c3b4ff7
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 15b7dce5af984e4eb719024368479df1b5c8320a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52263889"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010956"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Zřizování propustnosti na kontejnery Azure Cosmos a databází
 
@@ -19,7 +19,7 @@ Databáze Azure Cosmos je jednotka správy pro skupinu kontejnerů. Databáze ob
 
 Azure Cosmos DB umožňuje nakonfigurovat propustnost v přírůstcích po dvou – **kontejnery Azure Cosmos** a **databáze Azure Cosmos**.
 
-# <a name="setting-throughput-on-a-azure-cosmos-container"></a>Nastavení propustnosti kontejneru Azure Cosmos  
+## <a name="setting-throughput-on-a-container"></a>Nastavení propustnosti kontejneru  
 
 Propustnost zřízený v kontejneru Azure Cosmos je rezervovaných exkluzivně pro kontejner. Kontejner obdrží zřízená propustnost celou dobu. Zřízenou propustnosti kontejneru finančně podložená smlouvami SLA. Ke konfiguraci propustnosti na kontejner, naleznete v tématu [jak zřídit propustnosti kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
 
@@ -31,7 +31,7 @@ V kontejneru Azure Cosmos zřízenou propustnost je rovnoměrně mezi všechny l
 
 ![Oddíl prostředků](./media/set-throughput/resource-partition.png)
 
-# <a name="setting-throughput-on-a-azure-cosmos-database"></a>Nastavení propustnosti na databázi Azure Cosmos
+## <a name="setting-throughput-on-a-database"></a>Nastavení propustnosti na databázi
 
 Když si zřídíte propustnost v databázi Azure Cosmos, propustnost je sdílen mezi všechny kontejnery v databázi, pokud jste zadali zřízenou propustnost na konkrétní kontejnery. Sdílení propustnosti databáze mezi jejím kontejnerům je obdobou hostující databázi na clusteru počítačů. Protože všechny kontejnery v rámci databáze sdílet prostředky, které jsou k dispozici na na počítači, přirozeně nelze získat předvídatelný výkon na žádný konkrétní kontejner. Ke konfiguraci propustnosti na databázi, naleznete v tématu [konfigurace zřízenou propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
 
@@ -53,7 +53,7 @@ Více logické oddíly sdílení propustnosti zřízené databáze je možné ho
 
 ![Oddíl prostředků](./media/set-throughput/resource-partition2.png)
 
-## <a name="setting-throughput-on-a-azure-cosmos-database-and-a-container"></a>Nastavení propustnosti na kontejner a databáze Azure Cosmos
+## <a name="setting-throughput-on-a-database-and-a-container"></a>Nastavení propustnosti na databázi a kontejner
 
 Můžete kombinovat dva modely, zřizování propustnosti na databázi a kontejner je povolen. Následující příklad ukazuje, jak zřídit propustnost v databázi Azure Cosmos a kontejneru:
 

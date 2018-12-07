@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: d9bf3618b32ce7c5ba7a300a929428dd0614743d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9e845d005af9481919472d8baba0aea17a877a5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276240"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992351"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Spravovat uživatelská data v Azure Security Center šetření
 Tento článek obsahuje informace o tom, jak spravovat uživatelská data v Azure Security Center funkci šetření. Šetření data jsou uložena v [Azure Log Analytics](../log-analytics/log-analytics-overview.md) a vystavené ve službě Security Center. Správa uživatelských dat zahrnuje možnost odstranit nebo exportovat data.
@@ -58,4 +58,4 @@ Security Center uživatel přiřazenou roli vlastník, Přispěvatel, nebo úče
 
 ## <a name="next-steps"></a>Další postup
 Další informace o správě uživatelských dat, naleznete v tématu [správu dat uživatele ve službě Azure Security Center](security-center-privacy.md).
-Další informace o odstraňování privátních dat v Log Analytics najdete v tématu [jak exportovat a odstranění dat soukromých](../log-analytics/log-analytics-personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Další informace o odstraňování privátních dat v Log Analytics najdete v tématu [jak exportovat a odstranění dat soukromých](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).

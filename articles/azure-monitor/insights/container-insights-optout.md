@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 6865fac08b8c607f7053b334c648766cc1e7c291
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 1df4e345645fb216f1656b2bbe87396cf0719d1c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715173"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994983"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers-preview"></a>Jak zastavit monitorování Azure Kubernetes Service (AKS) pomocí Azure monitoru pro kontejnery (Preview)
 
@@ -149,5 +149,5 @@ Změna konfigurace může trvat několik minut. Když se dokončí, je vrácena 
 ProvisioningState       : Succeeded
 ```
 
-Pokud pracovní prostor byl vytvořen pouze k podpoře monitorování clusteru a už je nepotřebujete, budete muset odstranit ručně. Pokud nejste obeznámeni s postup odstranění pracovního prostoru, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics pomocí webu Azure portal](../../log-analytics/log-analytics-manage-del-workspace.md). Nezapomeňte **ID prostředku pracovního prostoru** jsme si zkopírovali dříve v kroku 4, budete potřebovat, který. 
+Pokud pracovní prostor byl vytvořen pouze k podpoře monitorování clusteru a už je nepotřebujete, budete muset odstranit ručně. Pokud nejste obeznámeni s postup odstranění pracovního prostoru, přečtěte si téma [odstranění pracovního prostoru Azure Log Analytics pomocí webu Azure portal](../../azure-monitor/platform/delete-workspace.md). Nezapomeňte **ID prostředku pracovního prostoru** jsme si zkopírovali dříve v kroku 4, budete potřebovat, který. 
 

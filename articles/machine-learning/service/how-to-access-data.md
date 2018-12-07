@@ -1,6 +1,6 @@
 ---
-title: Použití úložiště ve službě Azure Machine Learning pro přístup k datům
-description: Jak používat úložiště na úložiště dat během cvičení
+title: Přístup k datům v úložišť ze služby Azure Machine Learning
+description: Jak používat úložiště na úložiště dat během cvičení se službou Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +9,13 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: ef183397cf7ca3f1f561f6951290b722df31e5ed
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.custom: seodec18
+ms.openlocfilehash: 50df0647372832647712d514dd9d4651d8d9cc2d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620196"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014050"
 ---
 # <a name="how-to-access-data-during-training"></a>Jak získat přístup k datům během cvičení
 Úložiště dat se používají pro přístup a interagování s daty v pracovních postupech Azure Machine Learning.

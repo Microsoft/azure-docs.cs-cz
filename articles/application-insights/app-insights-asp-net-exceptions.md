@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2d378c537d4e20698863c789101e4ad3167b7f10
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: f36d0ec4446ee6591798c0d8926f41a4e177d81d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680816"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997054"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostika výjimky ve vašich webových aplikací pomocí Application Insights
 Výjimky ve vaší živé webové aplikace jsou hlášeny sadou [Application Insights](app-insights-overview.md). Neúspěšné požadavky můžete korelovat s výjimky a dalších událostí na klienta a serveru, tak, že můžete rychle Diagnostikujte příčiny.
@@ -168,7 +168,7 @@ Vlastnosti a měření parametry jsou volitelné, ale jsou užitečné pro [filt
 ## <a name="browser-exceptions"></a>Výjimky prohlížečů
 Většina výjimek prohlížeče jsou hlášeny.
 
-Pokud vaše webová stránka obsahuje soubory skriptů ze sítí pro doručování obsahu nebo v jiných doménách, ujistěte se, vaši značku skriptu má atribut ```crossorigin="anonymous"```, a že server odešle [hlavičky CORS](http://enable-cors.org/). To vám umožní získat trasování zásobníku a podrobnosti pro neošetřených výjimek jazyka JavaScript z těchto prostředků.
+Pokud vaše webová stránka obsahuje soubory skriptů ze sítí pro doručování obsahu nebo v jiných doménách, ujistěte se, vaši značku skriptu má atribut ```crossorigin="anonymous"```, a že server odešle [hlavičky CORS](https://enable-cors.org/). To vám umožní získat trasování zásobníku a podrobnosti pro neošetřených výjimek jazyka JavaScript z těchto prostředků.
 
 ## <a name="web-forms"></a>Webové formuláře
 Pro webové formuláře bude moci shromažďovat výjimky, když nejsou žádná přesměrování nakonfigurovanou CustomErrors modulu protokolu HTTP.

@@ -5,18 +5,18 @@ services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
 ms.service: event-hubs
+ms.custom: seodec18
 ms.topic: article
-ms.date: 08/12/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bfb2db8a4a0091e26cc2b893e615ba831da30ac7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: cd97aed36e9fd82df0d37913d5ea9e57c875a673
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746320"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011449"
 ---
-# <a name="event-hubs-programming-guide"></a>Průvodce programováním pro službu Event Hubs
-
+# <a name="programming-guide-for-azure-event-hubs"></a>Průvodce programováním pro službu Azure Event Hubs
 Tento článek popisuje některé běžné situace při psaní kódu s využitím služby Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md).
 
 ## <a name="event-publishers"></a>Zdroje událostí
@@ -55,7 +55,7 @@ eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuild
 
 ## <a name="send-events-to-an-event-hub"></a>Odesílání událostí do centra událostí
 
-Odesílání událostí do centra událostí tak, že vytvoříte [EventHubClient][] instance a odesláním asynchronně prostřednictvím [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) metody. Tato metoda přebírá jediný [EventData][] parametru instance a synchronně ho odesílá do centra událostí.
+Odesílání událostí do centra událostí tak, že vytvoříte [EventHubClient][] instance a odesláním asynchronně prostřednictvím [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) metody. Tato metoda přebírá jediný [EventData][] parametru instance a asynchronně odešle do centra událostí.
 
 ## <a name="event-serialization"></a>Serializace událostí
 

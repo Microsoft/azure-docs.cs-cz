@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 3d15e747c129d2591f4cc70030d1cf858bcee49e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8e4245de5d6a025fa87c8644678896596b07c49e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237650"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001126"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-gdpr"></a>Zabezpečení Azure a dodržování předpisů: Analytics gdpr
 
@@ -75,8 +75,8 @@ Následující část podrobně popisuje nasazení a implementaci prvky.
 **Služba Azure Functions**
 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) je a bez serveru výpočetní služba, která umožňuje uživatelům spouštět kód na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Azure Functions můžete použít ke spuštění skriptu nebo kusu kódu jako reakci na různé události.
 
-**Azure Machine Learning**
-[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/) je technika datové vědy, která umožňuje počítačům s využitím existujících dat předpovídá budoucí chování, výsledky a trendy.
+**Služba Azure Machine Learning**
+[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) je technika datové vědy, která umožňuje počítačům s využitím existujících dat předpovídá budoucí chování, výsledky a trendy.
 
 **Azure Data Catalog**: [katalogu Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) činí zdroje dat snadno objevitelné a srozumitelné uživatelé, kteří spravují data. Běžné zdroje dat můžete zaregistrovaný, příznakem a vyhledávat osobní údaje. Data zůstávají uložena ve stávajícím umístění, ale kopie metadat spolu s odkazem na umístění zdroje dat přidá do katalogu Data Catalog. Tato metadata jsou také indexována, aby byl každý zdroj dat snadno objevitelný prostřednictvím vyhledávání a aby byl srozumitelný uživatelům, kteří ho objevili.
 

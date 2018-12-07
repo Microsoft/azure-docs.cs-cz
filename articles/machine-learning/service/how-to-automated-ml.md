@@ -1,30 +1,34 @@
 ---
-title: Co je automatické strojové učení – Azure Machine Learning
-description: V tomto článku můžete informace o automatické strojového učení. Služby Azure Machine Learning můžete automaticky vybrat algoritmus pro vás a z něj generovat model. Automatizovat pomocí parametrů a kritéria vybrat nejlepší algoritmus pro váš model strojového učení pomáhá vám šetří čas.
+title: Co je automatické Machine Learning – služba Azure Machine Learning
+description: Přečtěte si o jak služby Azure Machine Learning můžete automaticky vybrat algoritmus pro vás a generovat model z ní uložit že čas pomocí parametrů a kritéria vybrat nejlepší algoritmus pro model.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: krishnan
-author: krishnaanumalasetty
-ms.date: 9/24/2018
-ms.openlocfilehash: 2a9c05b68d05102fab80b2aa8fb1c1dad8a367ea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+author: nacharya1
+ms.author: nilesha
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 4b9356c7cba14cf5bd112c7d7ae1aab2842fb9d1
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960035"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010888"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
-V tomto článku můžete informace o automatické strojového učení. Služby Azure Machine Learning můžete automaticky vybrat algoritmus pro vás a z něj generovat model. Automatizovat pomocí parametrů a kritéria vybrat nejlepší algoritmus pro váš model strojového učení pomáhá vám šetří čas.
+V tomto článku můžete informace o automatické strojového učení. Služby Azure Machine Learning můžete automaticky vybrat algoritmus pro vás a z něj generovat model. Automatizované strojového učení šetří čas vygenerováním modelů, která je vyladěná z cíle a omezení, které jste definovali pro experiment, jako je čas potřebný pro experiment ke spuštění nebo které modelů blokovaných.
 
 ## <a name="how-it-works"></a>Jak to funguje
 
-1. Nakonfigurujete typ problému machine learning, který se snažíte vyřešit. Podporují se dvě kategorie učení:
+1. Nakonfigurujete typ problému machine learning, který se snažíte vyřešit. Kategorie učení se podporují:
    + Klasifikace
    + Regrese
+   + Prognózování 
+
+   Při automatizované machine learning je obecně dostupná, **prognóz funkce je stále ve verzi public preview.**
 
    Zobrazit [seznamu modelů](how-to-configure-auto-train.md#select-your-experiment-type) Azure Machine Learning můžete zkusit při cvičení.
 

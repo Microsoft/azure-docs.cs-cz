@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: f440e92f62c7c61966145a1e74d3d3be9f6b7825
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: bacb2cfffe567808f95e42e5ee6e2070815eace6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250550"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996728"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -27,13 +27,13 @@ Tento článek vysvětluje, jak pracovat s Azure Service Bus vazby ve službě A
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíčku NuGet, verze 2.x. 
+Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíčku NuGet, verze 2.x. 
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.Extensions.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/) úložiště GitHub.
+Vazby služby Service Bus jsou součástí [Microsoft.Azure.WebJobs.Extensions.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -118,9 +118,9 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Aktivační události – příklad F #
+### <a name="trigger---f-example"></a>Aktivační události – F# příklad
 
-Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [funkce jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce zaznamená zprávu fronty služby Service Bus. 
+Následující příklad ukazuje vazby v aktivační události služby Service Bus *function.json* souboru a [ F# funkce](functions-reference-fsharp.md) , který používá vazba. Funkce zaznamená zprávu fronty služby Service Bus. 
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -139,7 +139,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-Tady je kód skriptu F #:
+Tady je F# kód skriptu:
 
 ```fsharp
 let Run(myQueueItem: string, log: ILogger) =
@@ -419,9 +419,9 @@ public static void Run(TimerInfo myTimer, ILogger log, ICollector<string> output
 }
 ```
 
-### <a name="output---f-example"></a>Výstup – příklad F #
+### <a name="output---f-example"></a>Výstup – F# příklad
 
-Následující příklad ukazuje, Service Bus výstupní vazby ve *function.json* souboru a [funkce skriptu jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
+Následující příklad ukazuje, Service Bus výstupní vazby ve *function.json* souboru a [ F# skriptu funkce](functions-reference-fsharp.md) , který používá vazba. Funkce používá aktivaci časovačem odeslat zprávu fronty každých 15 sekund.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -447,7 +447,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-Tady je F # kód skriptu, který vytvoří jedna zpráva:
+Tady je F# kód, který vytvoří jedna zpráva skriptu:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
@@ -617,6 +617,7 @@ Tato část popisuje globální konfiguraci nastavení k dispozici pro tuto vazb
                 "autoComplete": false,
                 "maxConcurrentCalls": 32,
                 "maxAutoRenewDuration": "00:55:00"
+            }
         }
     }
 }

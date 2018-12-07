@@ -4,7 +4,7 @@ description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 3e5b49d2-7096-46bc-a9ce-90e09177ba28
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 12/06/2018
 ms.author: jeedes
-ms.openlocfilehash: b8ffd732221604d55c65d4623de89f716bba49eb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5ab193d908063230946ebb2bb6320ab50bf14971
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427454"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014884"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Kurz: Integrace Azure Active Directory se službou TextMagic
 
@@ -32,13 +32,13 @@ TextMagic integraci se službou Azure AD poskytuje následující výhody:
 - Můžete povolit uživatelům, aby automaticky získat přihlášení k TextMagic (Single Sign-On) s jejich účty Azure AD.
 - Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
-Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s TextMagic, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - TextMagic jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -50,49 +50,49 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 - Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
+
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání TextMagic z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-textmagic-from-the-gallery"></a>Přidání TextMagic z Galerie
+
 Konfigurace integrace TextMagic do služby Azure AD, budete muset přidat TextMagic z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat TextMagic z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
     
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Tlačítko nové aplikace][3]
 
-1. Do vyhledávacího pole zadejte **TextMagic**vyberte **TextMagic** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **TextMagic**vyberte **TextMagic** z panelu výsledků klikněte **přidat** tlačítko pro přidání aplikace.
 
     ![TextMagic v seznamu výsledků](./media/textmagic-tutorial/tutorial_textmagic_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
 
-V této části Konfigurace a testování Azure AD jednotné přihlašování s TextMagic podle testovacího uživatele nazývá "Britta Simon."
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí TextMagic podle testovacího uživatele nazývá "Britta Simon".
 
 Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v TextMagic je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v TextMagic potřeba navázat.
 
-V TextMagic, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
-
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s TextMagic, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele TextMagic](#create-a-textmagic-test-user)**  – Pokud chcete mít protějšek Britta Simon TextMagic, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele TextMagic](#creating-a-textmagic-test-user)**  – Pokud chcete mít protějšek Britta Simon TextMagic, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování jednotného přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
 V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci TextMagic.
 
@@ -102,150 +102,162 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování – odkaz][4]
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
-    ![Jednotné přihlašování – dialogové okno](./media/textmagic-tutorial/tutorial_textmagic_samlbase.png)
+2. Na **vybrat jedinou metodu přihlašování** dialogového okna, klikněte na tlačítko **vyberte** pro **SAML** chcete povolit jednotné přihlašování.
 
-1. Na **TextMagic domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+    ![Konfigurace jednotného přihlašování](common/tutorial_general_301.png)
+
+3. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** ikony otevřete **základní konfiguraci SAML** dialogového okna.
+
+    ![Konfigurace jednotného přihlašování](common/editconfigure.png)
+
+4. Na **základní konfiguraci SAML** části, proveďte následující kroky:
 
     ![TextMagic domény a adresy URL jednotného přihlašování – informace](./media/textmagic-tutorial/tutorial_textmagic_url.png)
 
     V **identifikátor** textového pole zadejte adresu URL: `https://my.textmagic.com/saml/metadata`
 
-1. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. TextMagic aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele a deklarace identity** části na stránce aplikací pro integraci. Na **nastavte si jednotné přihlašování pomocí SAML** klikněte na **upravit** tlačítko Otevřít **atributy uživatele a deklarace identity** dialogového okna.
 
-    ![TextMagic domény a adresy URL jednotného přihlašování – informace](./media/textmagic-tutorial/url1.png)
+    ![image](./media/textmagic-tutorial/i4-attribute.png)
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://my.textmagic.com/login/sso`
+6. V **deklarace identity uživatelů** části na **atributy uživatele a deklarace identity** dialogového okna, nakonfigurovat atribut tokenu SAML, jak je znázorněno na obrázku výše a proveďte následující kroky:
 
+    | Název  | Zdrojový atribut  | Obor názvů |
+    | --------------- | --------------- | --------------- |
+    | Společnosti | User.CompanyName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Jméno               | user.givenname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | Příjmení            | user.surname |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | telefon               | User.telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    
+    a. Klikněte na **ikonu pro úpravu** upravit **název hodnota identifikátoru** z **user.userprinicipalname** k **user.mail**.
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
+    ![Atribut TextMagic](./media/textmagic-tutorial/tutorial_textmagic_email.png)
+
+    b. Klikněte na **přidat novou deklaraci** otevřít **spravovat deklarace identity uživatelů** dialogového okna.
+
+    ![image](./common/new_save_attribute.png)
+
+    ![image](./common/new_attribute_details.png)
+
+    c. V **název**textového pole zadejte název atributu, který je zobrazený pro tento řádek.
+
+    d. Zadejte **Namespace** hodnotu.
+
+    e. Vyberte zdroj jako **atribut**.
+
+    f. Z **zdrojový atribut** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
+
+    g. Klikněte na tlačítko **OK**.
+
+    h. Klikněte na **Uložit**. 
+
+7. Na **podpisový certifikát SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko **Stáhnout** Stáhnout **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
     ![Odkaz ke stažení certifikátu](./media/textmagic-tutorial/tutorial_textmagic_certificate.png) 
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+8. Na **nastavení TextMagic** tématu, zkopírujte adresu URL odpovídající podle vašich požadavků.
 
-    ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/textmagic-tutorial/tutorial_general_400.png)
-    
-1. Na **TextMagic konfigurace** klikněte na tlačítko **nakonfigurovat TextMagic** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+    a. Přihlašovací adresa URL
 
-    ![Konfigurace TextMagic](./media/textmagic-tutorial/tutorial_textmagic_configure.png) 
+    b. Identifikátor Azure AD
 
-1. V okně jiné webové prohlížeče Přihlaste se k webu společnosti TextMagic jako správce.
+    c. Adresa URL – odhlášení
 
-1. Vyberte **nastavení účtu** podle uživatelského jména.
+    ![Konfigurace TextMagic](common/configuresection.png)
 
-    ![Konfigurace TextMagic](./media/textmagic-tutorial/config1.png) 
-1. Klikněte na kartu **"jednotné přihlašování (SSO)"** a vyplňte následující pole:  
+9. V okně jiné webové prohlížeče Přihlaste se k webu společnosti TextMagic jako správce.
+
+10. Vyberte **nastavení účtu** podle uživatelského jména.
+
+    ![Konfigurace TextMagic](./media/textmagic-tutorial/config1.png)
+
+11. Klikněte na kartu **jednotné přihlašování (SSO)** a vyplňte následující pole:  
     
     ![Konfigurace TextMagic](./media/textmagic-tutorial/config2.png)
 
-    a. V **zprostředkovatele Identity Entity ID:** textového pole vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure portal.
+    a. V **zprostředkovatele Identity Entity ID:** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
 
-    b. V **zprostředkovatele Identity adresu URL jednotného přihlašování:** textového pole vložte hodnotu **jednotné přihlašování – adresa URL služby**, který jste zkopírovali z portálu Azure portal.
+    b. V **zprostředkovatele Identity adresu URL jednotného přihlašování:** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
-    c. V **zprostředkovatele Identity adresa URL cíle na úrovni služby:** textového pole vložte hodnotu **odhlašování URL**, který jste zkopírovali z portálu Azure portal.
+    c. V **zprostředkovatele Identity adresa URL cíle na úrovni služby:** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
 
-    d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **x509 veřejný certifikát:** textového pole.
+    d. Otevřete váš **certifikáty s kódováním base-64** v poznámkovém bloku stáhnout z webu Azure portal, zkopírujte obsah ho do schránky a vložte ho do **x509 veřejný certifikát:** textového pole.
 
-    e. Klikněte na **Uložit**.
-
-
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-   ![Vytvořit testovacího uživatele Azure AD][100]
+1. Na webu Azure Portal, v levém podokně vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
 
-**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
+    ![Vytvoření uživatele Azure AD][100]
 
-1. Na webu Azure Portal, v levém podokně klikněte na tlačítko **Azure Active Directory** tlačítko.
+2. Vyberte **nového uživatele** v horní části obrazovky.
 
-    ![Tlačítko Azure Active Directory](./media/textmagic-tutorial/create_aaduser_01.png)
+    ![Vytváří se testovací uživatele služby Azure AD](common/create_aaduser_01.png) 
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin**a potom klikněte na tlačítko **všichni uživatelé**.
+3. Ve vlastnosti uživatele proveďte následující kroky.
 
-    !["Uživatele a skupiny" a "Všechny uživatele" odkazy](./media/textmagic-tutorial/create_aaduser_02.png)
-
-1. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** v horní části **všichni uživatelé** dialogové okno.
-
-    ![Tlačítko Přidat](./media/textmagic-tutorial/create_aaduser_03.png)
-
-1. V **uživatele** dialogové okno pole, proveďte následující kroky:
-
-    ![Dialogové okno uživatele](./media/textmagic-tutorial/create_aaduser_04.png)
+    ![Vytváří se testovací uživatele služby Azure AD](common/create_aaduser_02.png)
 
     a. V **název** zadejte **BrittaSimon**.
+  
+    b. V **uživatelské jméno** zadejte **brittasimon@yourcompanydomain.extension**  
+    Například BrittaSimon@contoso.com.
 
-    b. V **uživatelské jméno** zadejte e-mailovou adresu uživatele Britta Simon.
+    c. Vyberte **vlastnosti**, vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí v poli heslo.
 
-    c. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
+    d. Vyberte **Vytvořit**.
+  
+### <a name="creating-a-textmagic-test-user"></a>Vytvoření zkušebního uživatele TextMagic
 
-    d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-a-textmagic-test-user"></a>Vytvoření zkušebního uživatele TextMagic
-
-Aplikace podporuje pouze v době zřizování uživatelů a po ověření uživatele budou vytvořeny v aplikaci automaticky. Je potřeba vyplnit informace jednou při prvním přihlášení k aktivaci dílčí účet do systému.
+Aplikace podporuje **čas zřizování uživatelů podle potřeby** a po ověření uživatele budou vytvořeny v aplikaci automaticky. Je potřeba vyplnit informace jednou při prvním přihlášení k aktivaci dílčí účet do systému.
 Neexistuje žádná položka akce pro vás v této části.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části je povolit Britta Simon k udělení přístupu k TextMagic použití Azure jednotného přihlašování.
 
-![Přiřazení role uživatele][200] 
+1. Na webu Azure Portal, vyberte **podnikové aplikace**vyberte **všechny aplikace**.
 
-**Přiřadit TextMagic Britta Simon, proveďte následující kroky:**
+    ![Přiřadit uživatele][201]
 
-1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
+2. V seznamu aplikací vyberte **TextMagic**.
 
-    ![Přiřadit uživatele][201] 
+    ![Konfigurace jednotného přihlašování](./media/textmagic-tutorial/tutorial_textmagic_app.png) 
 
-1. V seznamu aplikací vyberte **TextMagic**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Odkaz TextMagic v seznamu aplikací](./media/textmagic-tutorial/tutorial_textmagic_app.png)  
+    ![Přiřadit uživatele][202]
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
-    ![Odkaz "Uživatele a skupiny"][202]
+    ![Přiřadit uživatele][203]
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+5. V **uživatelů a skupin** dialogové okno Vybrat **Britta Simon** v seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
 
-    ![Podokno Přidat přiřazení][203]
+6. V **přidat přiřazení** dialogové okno Vybrat **přiřadit** tlačítko.
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
-
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
-
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici TextMagic na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci TextMagic.
-Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
-[1]: ./media/textmagic-tutorial/tutorial_general_01.png
-[2]: ./media/textmagic-tutorial/tutorial_general_02.png
-[3]: ./media/textmagic-tutorial/tutorial_general_03.png
-[4]: ./media/textmagic-tutorial/tutorial_general_04.png
+[1]: common/tutorial_general_01.png
+[2]: common/tutorial_general_02.png
+[3]: common/tutorial_general_03.png
+[4]: common/tutorial_general_04.png
 
-[100]: ./media/textmagic-tutorial/tutorial_general_100.png
+[100]: common/tutorial_general_100.png
 
-[200]: ./media/textmagic-tutorial/tutorial_general_200.png
-[201]: ./media/textmagic-tutorial/tutorial_general_201.png
-[202]: ./media/textmagic-tutorial/tutorial_general_202.png
-[203]: ./media/textmagic-tutorial/tutorial_general_203.png
-
+[201]: common/tutorial_general_201.png
+[202]: common/tutorial_general_202.png
+[203]: common/tutorial_general_203.png

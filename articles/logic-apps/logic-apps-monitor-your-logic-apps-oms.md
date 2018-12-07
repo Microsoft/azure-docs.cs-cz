@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: adc97da12d1a55dd3dcf435fc8051a8eb9b537a9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 70242de62e976b05e2708dfd4991915c854d4bb4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968182"
+ms.locfileid: "52995648"
 ---
 # <a name="monitor-logic-apps-with-azure-log-analytics"></a>Monitorování logic apps s využitím Azure Log Analytics
 
@@ -23,7 +23,7 @@ Chcete-li sledovat a získat bohatší ladění podrobné informace o logic apps
 Chcete-li na Azure Log Analytics pro existující logic apps, postupujte podle těchto kroků [zapněte protokolování diagnostiky a odesílání dat získaných za běhu aplikace logiky do Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 > [!NOTE]
-> Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../log-analytics/log-analytics-oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
+> Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
 
 ## <a name="prerequisites"></a>Požadavky
 

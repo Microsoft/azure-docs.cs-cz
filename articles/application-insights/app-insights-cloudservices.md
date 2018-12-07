@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: c39cb01f1477e51623b02941bae03a51a389e197
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: b52604fa19a5598e8aff5b8a1ea25e7361add553
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682862"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997018"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 U [aplikací cloudových služeb Microsoft Azure](https://azure.microsoft.com/services/cloud-services/) je možné pomocí služby [Application Insights][start] monitorovat dostupnost, výkon, chyby a využití díky kombinování dat ze sad SDK služby Application Insights a dat [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -28,7 +28,7 @@ U [aplikací cloudových služeb Microsoft Azure](https://azure.microsoft.com/se
 ## <a name="before-you-start"></a>Než začnete
 Budete potřebovat:
 
-* Předplatné [Microsoft Azure](http://azure.com). Přihlaste se pomocí účtu Microsoft, který můžete mít zřízen pro Windows, XBox Live nebo jiné cloudové služby Microsoftu. 
+* Předplatné [Microsoft Azure](https://azure.com). Přihlaste se pomocí účtu Microsoft, který můžete mít zřízen pro Windows, XBox Live nebo jiné cloudové služby Microsoftu. 
 * Nástroje Microsoft Azure 2.9 nebo novější
 * Developer Analytics Tools 7.10 nebo novější
 
@@ -150,7 +150,7 @@ Chcete-li zobrazit čítače výkonu a počty událostí, otevřete [Průzkumní
 
 ![Diagnostická data Azure](./media/app-insights-cloudservices/23-wad.png)
 
-V části [Vyhledávání](app-insights-diagnostic-search.md) nebo [Dotaz Analytics](../log-analytics/query-language/get-started-analytics-portal.md) můžete hledat v různých protokolech trasování odeslaných diagnostikou Azure. Předpokládejme například, že se vyskytla neošetřená výjimka, která způsobila zhroucení a recyklaci role. Tyto informace se zobrazují v kanálu Aplikace protokolu událostí systému Windows. Prostřednictvím hledání můžete najít chybu v protokolu událostí systému Windows a získat úplné trasování zásobníku pro příslušnou výjimku. To vám umožní najít původní příčinu problému.
+V části [Vyhledávání](app-insights-diagnostic-search.md) nebo [Dotaz Analytics](../azure-monitor/log-query/get-started-portal.md) můžete hledat v různých protokolech trasování odeslaných diagnostikou Azure. Předpokládejme například, že se vyskytla neošetřená výjimka, která způsobila zhroucení a recyklaci role. Tyto informace se zobrazují v kanálu Aplikace protokolu událostí systému Windows. Prostřednictvím hledání můžete najít chybu v protokolu událostí systému Windows a získat úplné trasování zásobníku pro příslušnou výjimku. To vám umožní najít původní příčinu problému.
 
 ![Hledání v diagnostice Azure](./media/app-insights-cloudservices/25-wad.png)
 
@@ -241,7 +241,7 @@ Vytvořili jste sestavení pro .NET 4.6? Verze 4.6 není v rolích Azure Cloud S
 [client]: app-insights-javascript.md
 [diagnostic]: app-insights-diagnostic-search.md
 [netlogs]: app-insights-asp-net-trace-logs.md
-[portal]: http://portal.azure.com/
+[portal]: https://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md 

@@ -1,5 +1,5 @@
 ---
-title: Monitorování clusteru Azure DC/OS – řízení provozu
+title: (NEPOUŽÍVANÉ) Monitorování clusteru Azure DC/OS – řízení provozu
 description: Monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics.
 services: container-service
 author: keikhara
@@ -9,20 +9,22 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 4576d9decc6ba1e01ef39abdb8a3ef89461196e8
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: b5c1596066b02d5ad4f59ed553408d263acc825c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407788"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993576"
 ---
-# <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service DC/OS pomocí Log Analytics
 
-Log Analytics je od Microsoftu cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Řešení kontejnerů je řešení ve službě Log Analytics, který umožňuje zobrazit inventář kontejneru, výkonu a protokolů na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokolů v centrálním umístění a najít hlučného využívání nadbytečné kontejneru na hostiteli.
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
+
+Log Analytics je od Microsoftu cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Řešení kontejnerů je řešení ve službě Log Analytics, který umožňuje zobrazit inventář kontejneru, výkonu a protokolů na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokolů v centrálním umístění a najít hlučného využívání nadbytečné kontejneru na hostiteli.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Další informace o řešení kontejnerů najdete v článku [kontejneru řešení Log Analytics](../../log-analytics/log-analytics-containers.md).
+Další informace o řešení kontejnerů najdete v článku [kontejneru řešení Log Analytics](../../azure-monitor/insights/containers.md).
 
 ## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>Nastavení Log Analytics z DC/OS universe
 
@@ -74,7 +76,7 @@ Po výběru pracovního prostoru, klikněte na tlačítko **vytvořit**.
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-Další informace o řešení kontejnerů Log Analytics najdete [kontejneru řešení Log Analytics](../../log-analytics/log-analytics-containers.md).
+Další informace o řešení kontejnerů Log Analytics najdete [kontejneru řešení Log Analytics](../../azure-monitor/insights/containers.md).
 
 ### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>Jak škálovat agenta Log Analytics s ACS DC/OS 
 
@@ -99,4 +101,4 @@ Co funguje? Co chybí? Co je potřeba pro to pro vás užitečné? Dejte nám v�
 
 ## <a name="next-steps"></a>Další postup
 
- Teď, když jste nastavili Log Analytics pro monitorování kontejnerů,[zobrazit řídicí panel kontejneru](../../log-analytics/log-analytics-containers.md).
+ Teď, když jste nastavili Log Analytics pro monitorování kontejnerů,[zobrazit řídicí panel kontejneru](../../azure-monitor/insights/containers.md).

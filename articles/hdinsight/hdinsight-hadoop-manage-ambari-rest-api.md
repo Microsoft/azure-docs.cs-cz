@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: cd999a5bfd9f5691c1e624f7a8226eefee5709eb
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 08b8d980b46ccbbce47c4f165a621daa14a95fa2
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015805"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012908"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Správa clusterů HDInsight pomocí rozhraní Ambari REST API
 
@@ -39,7 +39,7 @@ V příkladech v tomto dokumentu jsou k dispozici pro prostředí Bourne (bash) 
 
 Pokud se používá __Bourne prostředí__ (Bash), musíte mít nainstalované tyto položky:
 
-* [cURL](http://curl.haxx.se/): cURL je nástroj, který slouží k práci s rozhraními REST API z příkazového řádku. V tomto dokumentu se používá ke komunikaci s rozhraní Ambari REST API.
+* [cURL](https://curl.haxx.se/): cURL je nástroj, který slouží k práci s rozhraními REST API z příkazového řádku. V tomto dokumentu se používá ke komunikaci s rozhraní Ambari REST API.
 
 Ať už pomocí Bashe nebo Powershellu, musíte mít také [jq](https://stedolan.github.io/jq/) nainstalované. Jq je nástroj pro práci s dokumenty JSON. Používá se v **všechny** příklady Bash a **jeden** příklady prostředí PowerShell.
 

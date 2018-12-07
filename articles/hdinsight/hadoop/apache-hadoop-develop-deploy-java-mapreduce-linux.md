@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c16d85479399d7988be18f9b852563617bb824b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 42fc92b0cee20679ab72a389cc11522c0ca4e0fd
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632643"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013747"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Vývoj programů Java MapReduce pro Apache Hadoop v HDInsight
 
@@ -25,12 +25,12 @@ Zjistěte, jak vytvářet aplikace založené na jazyce Java MapReduce a pak ho 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 nebo novější (nebo ekvivalentní, například OpenJDK).
+* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 nebo novější (nebo ekvivalentní, například OpenJDK).
     
     > [!NOTE]
     > HDInsight verze 3.4 a starší pomocí Java 7. HDInsight 3.5 a vyšší používá Java 8.
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 ## <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
 
@@ -63,7 +63,7 @@ Následující proměnné prostředí může být nastaven při instalaci Javy a
 
     Tento příkaz vytvoří adresář s názvem zadaným `artifactID` parametr (**wordcountjava** v tomto příkladu.) Tento adresář obsahuje následující položky:
 
-   * `pom.xml` – [Model objektu projektu (POM)](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , který obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
+   * `pom.xml` – [Model objektu projektu (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , který obsahuje podrobnosti o informace a konfigurace použít k sestavení projektu.
 
    * `src` – Adresář obsahující aplikaci.
 
@@ -94,7 +94,7 @@ Následující proměnné prostředí může být nastaven při instalaci Javy a
     </dependency>
    ```
 
-    Definuje požadované knihovny (uvedené v rámci &lt;artifactId\>) s určitou verzí (uvedené v rámci &lt;verze\>). V době kompilace jsou tyto závislosti stáhnout z úložiště Maven výchozí. Můžete použít [Maven úložiště search](http://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) zobrazíte informace.
+    Definuje požadované knihovny (uvedené v rámci &lt;artifactId\>) s určitou verzí (uvedené v rámci &lt;verze\>). V době kompilace jsou tyto závislosti stáhnout z úložiště Maven výchozí. Můžete použít [Maven úložiště search](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) zobrazíte informace.
    
     `<scope>provided</scope>` Říká Maven, že tyto závislosti by neměl se dá zabalit s aplikací, uvedené v clusteru HDInsight v době běhu.
 
@@ -138,7 +138,7 @@ Následující proměnné prostředí může být nastaven při instalaci Javy a
     </build>
    ```
 
-    První modul plug-in nakonfiguruje [modulu plug-in Maven odstín](http://maven.apache.org/plugins/maven-shade-plugin/), sloužící k sestavení uberjar (říká se jim fatjar), která obsahuje závislosti vyžadované aplikací. Zabrání také duplikace licencí v rámci balíček jar, což může způsobit problémy v některých systémech.
+    První modul plug-in nakonfiguruje [modulu plug-in Maven odstín](https://maven.apache.org/plugins/maven-shade-plugin/), sloužící k sestavení uberjar (říká se jim fatjar), která obsahuje závislosti vyžadované aplikací. Zabrání také duplikace licencí v rámci balíček jar, což může způsobit problémy v některých systémech.
 
     Druhý modul plug-in konfiguruje cílovou verzi jazyka Java.
 
@@ -291,9 +291,9 @@ V tomto dokumentu jste zjistili, jak vývoj úloh MapReduce v Javě. Najdete v n
 
 Další informace najdete v tématu taky [středisko pro vývojáře Java](https://azure.microsoft.com/develop/java/).
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-use-sqoop]:hdinsight-use-sqoop.md
 [hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
@@ -303,5 +303,5 @@ Další informace najdete v tématu taky [středisko pro vývojáře Java](https
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-power-query]:apache-hadoop-connect-excel-power-query.md
 
-[powershell-PSCredential]: http://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
+[powershell-PSCredential]: https://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
 

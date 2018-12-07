@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 56616ff01ff70230a591285014ed291a2fdc7b34
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3fc31306af1c85a67a1afca8a34be82a711f2527
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250984"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999535"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby služby Azure storage tabulky pro službu Azure Functions
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak pracovat s Azure Table storage vazby ve službě
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby tabulek úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) úložiště GitHub.
+Vazby tabulek úložiště jsou součástí [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -325,9 +325,9 @@ Další informace o tom, jak používat CloudTable najdete v tématu [Začínám
 
 Pokud se pokusíte vytvořit vazbu na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby Storage](#azure-storage-sdk-version-in-functions-1x).
 
-### <a name="input---f-example"></a>(Vstup) – příklad F #
+### <a name="input---f-example"></a>Vstup - F# příklad
 
-Následující příklad ukazuje vstupní Vazba tabulky v *function.json* souboru a [skriptu F #](functions-reference-fsharp.md) kód, který používá vazba. Funkce používá aktivační událost fronty přečíst řádek jedné tabulky. 
+Následující příklad ukazuje vstupní Vazba tabulky v *function.json* souboru a [ F# skript](functions-reference-fsharp.md) kód, který používá vazba. Funkce používá aktivační událost fronty přečíst řádek jedné tabulky. 
 
 *Function.json* Určuje soubor `partitionKey` a `rowKey`. `rowKey` Hodnota "{queueTrigger}" znamená, že klíč řádku pochází z řetězec zprávy fronty.
 
@@ -357,7 +357,7 @@ Následující příklad ukazuje vstupní Vazba tabulky v *function.json* soubor
 
 [Konfigurace](#input---configuration) bodu vysvětluje tyto vlastnosti.
 
-Tady je kód F #:
+Tady je F# kódu:
 
 ```fsharp
 [<CLIMutable>]
@@ -627,9 +627,9 @@ public class Person
 
 ```
 
-### <a name="output---f-example"></a>Výstup – příklad F #
+### <a name="output---f-example"></a>Výstup – F# příklad
 
-Následující příklad ukazuje tabulkového výstupu vazby ve *function.json* souboru a [skriptu F #](functions-reference-fsharp.md) kód, který používá vazba. Tato funkce zapíše více tabulkové entity.
+Následující příklad ukazuje tabulkového výstupu vazby ve *function.json* souboru a [ F# skript](functions-reference-fsharp.md) kód, který používá vazba. Tato funkce zapíše více tabulkové entity.
 
 Tady je *function.json* souboru:
 
@@ -655,7 +655,7 @@ Tady je *function.json* souboru:
 
 [Konfigurace](#output---configuration) bodu vysvětluje tyto vlastnosti.
 
-Tady je kód F #:
+Tady je F# kódu:
 
 ```fsharp
 [<CLIMutable>]

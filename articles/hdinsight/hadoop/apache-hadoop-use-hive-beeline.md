@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1516c1a2802046b526688de703b565513789851b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 5b4798b183b44ef33b24a61c4f995b3ae7b3b9d0
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633259"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014103"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití Apache Beeline klienta s Apache Hive
 
@@ -276,21 +276,21 @@ Pokud používáte pomocí Hive Tez, najdete v následujících dokumentech:
 * [Použití uživatelského rozhraní Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
 * [Použití zobrazení Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 [hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 
-[putty]: http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
+[putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 
 
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
@@ -298,4 +298,4 @@ Pokud používáte pomocí Hive Tez, najdete v následujících dokumentech:
 [hdinsight-upload-data]: hdinsight-upload-data.md
 
 
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx

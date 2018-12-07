@@ -12,15 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a30e562b04a3414a1305604a521e0d659753142
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 83dfd77c311e1b3324540d352432ec7a6b706d78
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720401"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993363"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Informační kanál Power BI ze služby Application Insights
-[Power BI](http://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](app-insights-overview.md).
+[Power BI](https://www.powerbi.com/) je sada nástrojů pro obchodní, která pomáhá analyzovat data a sdílet přehledy. Bohaté řídicí panely jsou k dispozici na všech zařízeních. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](app-insights-overview.md).
 
 Export dat Application Insights do Power BI třemi způsoby:
 
@@ -40,7 +40,7 @@ Chcete-li importovat dotaz Application Insights, použijete desktopovou verzi Po
 Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Export dotazu Analytics
-1. [Otevřít analýzu a napsat dotaz](../log-analytics/query-language/get-started-analytics-portal.md).
+1. [Otevřít analýzu a napsat dotaz](../azure-monitor/log-query/get-started-portal.md).
 2. Testování a až budete spokojení s výsledky upřesněte dotaz. Ujistěte se, že dotaz běží správně v Analytics předtím, než ho exportovat.
 3. Na **exportovat** nabídce zvolte **Power BI (M)**. Uložte tento textový soubor.
    
@@ -152,6 +152,6 @@ Tato metoda vytvoří kompletní řídicí panel telemetrických dat za vás. Po
 Po počátečním importu se pokračovat řídicí panel a sestavy denně aktualizovat. Můžete nastavit plán aktualizace datové sady.
 
 ## <a name="next-steps"></a>Další postup
-* [Power BI – Další informace](http://www.powerbi.com/learning/)
-* [Kurz analýzy](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Power BI – Další informace](https://www.powerbi.com/learning/)
+* [Kurz analýzy](../azure-monitor/log-query/get-started-portal.md)
 

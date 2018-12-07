@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 398472df7caf0f702f43bc9d025d1e6ad7dcdd7e
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: f7092a08e501ae61ef93be383290db575b5ad1f1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275075"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995564"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurace účtů úložiště pro Cloudyn
 

@@ -1,5 +1,5 @@
 ---
-title: Správa clusteru Azure DC/OS pomocí uživatelského rozhraní Marathon
+title: (NEPOUŽÍVANÉ) Správa clusteru Azure DC/OS pomocí uživatelského rozhraní Marathon
 description: Využijte webového uživatelského rozhraní Marathon k nasazení kontejnerů do clusteru Azure Container Service.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a22bddf48f97d961d481e2aedb42f7d645f3e678
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 41b6ce24e7c2e8565d7c2f17c32b8b6e1f38ea4f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903077"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992481"
 ---
-# <a name="manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>Správa clusteru Azure Container Service DC/OS přes webové uživatelské rozhraní Marathon
+# <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(NEPOUŽÍVANÉ) Správa clusteru Azure Container Service DC/OS prostřednictvím webového uživatelského rozhraní Marathon
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS poskytuje prostředí pro nasazování a škálování clusterových úloh a zároveň poskytuje abstrakci používaného hardwaru. Nad DC/OS je rozhraní, které spravuje plánování a provádění výpočetních úloh.
 

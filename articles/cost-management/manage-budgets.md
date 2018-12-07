@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 9/18/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 92236547e2100ab57f4ec6b4953f6c61ec87892d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: ef2ccd1d1fb5583d1356969ca759e5fb58a81936
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275500"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997558"
 ---
 # <a name="manage-budgets"></a>Správa rozpočtů
 

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9832281b586bf4377096ff28362b4fc180480aea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: cc6ca29af1866c5d26d3b73b26121451440c4dac
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246140"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993066"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Vazba Twilio pro službu Azure Functions
 
@@ -27,13 +27,13 @@ Tento článek vysvětluje, jak posílat textové zprávy s použitím [Twilio](
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Twilio vazeb jsou k dispozici v [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) úložiště GitHub.
+Twilio vazeb jsou k dispozici v [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Twilio vazeb jsou k dispozici v [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) úložiště GitHub.
+Twilio vazeb jsou k dispozici v [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -404,8 +404,8 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**type**|**type**| Musí být nastaveno na `twilioSms`.|
 |**direction**|**direction**| Musí být nastaveno na `out`.|
 |**Jméno**|**Jméno**| Název proměnné používá v kódu funkce pro textovou zprávu Twilio SMS. |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje identifikátor Sid účtu Twilio, např TwilioAccountSid. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsTwilioAccountSid". |
-|**ověřovacího tokenu**|**authTokenSetting**|**AuthTokenSetting**| Tato hodnota musí být nastavena název nastavení aplikace, která obsahuje váš ověřovací token pro Twilio například TwilioAccountAuthToken. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsTwilioAuthToken". |
+|**accountSid**|**accountSidSetting**| **accountSidSetting**| Tato hodnota musí být nastavena na název nastavení aplikace, která obsahuje identifikátor Sid účtu Twilio, např TwilioAccountSid. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsTwilioAccountSid". |
+|**ověřovacího tokenu**|**authTokenSetting**|**authTokenSetting**| Tato hodnota musí být nastavena název nastavení aplikace, která obsahuje váš ověřovací token pro Twilio například TwilioAccountAuthToken. Pokud není nastaven, nastavení aplikace výchozí název je "AzureWebJobsTwilioAuthToken". |
 |**k**| Není k dispozici – zadání v kódu | **Komu**| Tato hodnota nastavena na telefonní číslo, která bude zaslána textová zpráva.|
 |**z**|**z** | **z**| Tato hodnota nastavena na telefonní číslo, která je odeslána textová zpráva z.|
 |**Text**|**Text** | **Text**| Tato hodnota slouží k intenzivně kód textovou zprávu SMS, když není nutné nastavit dynamicky v kódu funkce. |  

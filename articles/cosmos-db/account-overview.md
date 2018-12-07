@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: e73c295c214728bf07b65ae4402c3b5abe21932f
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9f237d9eed5b8500f0f80b8b73d638f374bf5ca9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165284"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999514"
 ---
 # <a name="working-with-azure-cosmos-account"></a>Práce s účtem Azure Cosmos
 
@@ -38,7 +38,7 @@ Teď můžete přejít k zjistěte, jak spravovat váš účet Azure Cosmos nebo
 * [Globální distribuce](distribute-data-globally.md)
 * [Úrovně konzistence](consistency-levels.md)
 * [Práce s kontejnery Azure Cosmos a položek](databases-containers-items.md)
-* [Koncový bod služby virtuální sítě pro váš účet Azure Cosmos](firewall-support.md)
-* [Brány firewall protokolu IP pro váš účet Azure Cosmos](vnet-service-endpoint.md)
+* [Koncový bod služby virtuální sítě pro váš účet Azure Cosmos](vnet-service-endpoint.md)
+* [Brány firewall protokolu IP pro váš účet Azure Cosmos](firewall-support.md)
 * [Postup přidání nebo odebrání oblastí Azure na účtu Azure Cosmos](how-to-manage-database-account.md)
 * [Smlouvy o úrovni služeb Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: a5f6f09ee6c8504b64cad7ef5313501a65907a90
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 9c1b0d52a83d707df3a01212f2ab23c625987da0
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632582"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013215"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Použití C# s MapReduce datových proudů na Apache Hadoop v HDInsight
 
@@ -29,7 +29,7 @@ Streamování Apache Hadoop je nástroj, který umožňuje spouštět úlohy map
 
 __HDInsight se systémem Linux__ clusterů použijte [Mono (https://mono-project.com) ](https://mono-project.com) ke spouštění aplikací .NET. Mono verze 4.2.1 je součástí HDInsight verze 3.6. Další informace o verzi Mono součástí HDInsight najdete v tématu [verzí komponenty HDInsight](../hdinsight-component-versioning.md). Pokud chcete použít konkrétní verzi nástroje Mono, najdete v článku [instalace nebo aktualizace Mono](../hdinsight-hadoop-install-mono.md) dokumentu.
 
-Další informace o Mono kompatibilitu s verzí rozhraní .NET Framework najdete v tématu [Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/).
+Další informace o Mono kompatibilitu s verzí rozhraní .NET Framework najdete v tématu [Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/).
 
 ## <a name="how-hadoop-streaming-works"></a>Jak funguje streamování Hadoop
 

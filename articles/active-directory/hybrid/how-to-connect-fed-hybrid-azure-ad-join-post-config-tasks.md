@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2306c03480956a63859355428cbffe0706f43cbc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 16fc7f1bb69efe94ce87f213627b78a4afa0fcc2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312477"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999235"
 ---
-# <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Úlohy po konfiguraci pro připojení k hybridní službě Azure AD
+# <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
 
 Po spuštění služby Azure AD Connect ke konfiguraci vaší organizaci pro připojení k hybridní službě Azure AD existuje několik dalších kroků, které je třeba provést pro dokončení této instalace.  Proveďte pouze kroky, které platí pro vaše zařízení.
 
@@ -77,7 +77,7 @@ K registraci zařízení s Windows nižší úrovně, budete muset Ujistěte se,
 
 Koncový bod ověřování zařízení Azure AD přidejte do zóny místního intranetu v zařízeních Windows nižší úrovně se vyhnout výzev ohledně certifikátů při ověřování zařízení: https://device.login.microsoftonline.com 
 
-Pokud používáte [bezproblémového jednotného přihlašování](https://aka.ms/hybrid/sso), také povolit "Povolit aktualizace stavového řádku prostřednictvím skriptu" v této zóně a přidejte následující koncový bod: https://autologon.microsoftazuread-sso.com 
+Pokud používáte [bezproblémového jednotného přihlašování](how-to-connect-sso.md), také povolit "Povolit aktualizace stavového řádku prostřednictvím skriptu" v této zóně a přidejte následující koncový bod: https://autologon.microsoftazuread-sso.com 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Nainstalujte Microsoft síti na pracovišti na zařízeních s Windows nižší úrovně
 

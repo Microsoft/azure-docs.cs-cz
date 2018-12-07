@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Azure Kubernetes cluster pro Windows
+title: (NEPOUŽÍVANÉ) Rychlý start – Azure Kubernetes cluster pro Windows
 description: Rychle se naučíte, jak pomocí rozhraní příkazového řádku Azure vytvářet cluster Kubernetes pro kontejnery Windows ve službě Azure Container Service.
 services: container-service
 author: dlepow
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 24659f60e44dc306451528cc7bfb823ad14268a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dfc1d2128e1cf3b4d6b4d9e5141116a2b2ff9c0d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946149"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000604"
 ---
-# <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Nasazení clusteru Kubernetes pro kontejnery Windows
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Kubernetes pro kontejnery Windows
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure CLI slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Tato příručka podrobně popisuje použití rozhraní příkazového řádku Azure k nasazení clusteru [Kubernetes](https://kubernetes.io/docs/home/) ve službě [Azure Container Service](../container-service-intro.md). Po nasazení clusteru se k němu připojíte pomocí nástroje pro příkazový řádek Kubernetes `kubectl` a nasadíte svůj první kontejner Windows.
 

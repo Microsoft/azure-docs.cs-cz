@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/05/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 967404fbbff3616d3faf9e315123bccbf3ac9276
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f0a119bb7a2e18b04caa52319e4908fa5f6241dc
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969055"
+ms.locfileid: "53000335"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Připojení účtu Google Cloud Platform
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: e0a47da168ae9371979290b3febc9d767e8755d7
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 164ec0898e2f7ad461ab63ce0fcaf47a87998797
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428007"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997832"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Zálohování a obnovení pro SQL Server v Azure Virtual Machines
 
@@ -40,7 +40,7 @@ Následující tabulka obsahuje informace o různých možnostech zálohování 
 
 Následující části popisují jednotlivé možnosti podrobněji. Koncová část tohoto článku poskytuje souhrn ve formě přehled funkcí.
 
-## <a id="autoamted"></a> Automatizované zálohování
+## <a id="automated"></a> Automatizované zálohování
 
 Automatizované zálohování poskytuje automatické zálohování služby pro edice SQL Server Standard a Enterprise spuštěná ve virtuálním počítači s Windows v Azure. Tato služba je poskytovaná [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md), které se automaticky instaluje do Image virtuálních počítačů Windows serveru SQL na webu Azure Portal.
 

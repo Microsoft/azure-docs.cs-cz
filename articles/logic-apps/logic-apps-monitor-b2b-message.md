@@ -9,19 +9,19 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 5dccfe61eaf97f27b211aa6812145f21f2098738
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 2c1bac07d5086cffb99082520b05c7e42982c6f7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961259"
+ms.locfileid: "52996613"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Monitorování zpráv B2B s Azure Log Analytics v Azure Logic Apps
 
 Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těchto partnerů si mohou vyměňovat zprávy mezi sebou. Chcete-li zkontrolovat, že tato komunikace funguje očekávaným způsobem, AS2, X12, můžete monitorovat a zprávy EDIFACT a nastavit Diagnostika protokolování pro váš účet integrace s [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Tato služba monitoruje cloudové a místní prostředí, umožňují zachovat jejich dostupnost a výkon a shromažďuje podrobnosti modulu CLR a události pro rozsáhlejší ladění. Můžete také [pomocí těchto dat s jinými službami](#extend-diagnostic-data) jako je například Azure Storage a Azure Event Hubs.
 
 > [!NOTE]
-> Tato stránka pravděpodobně stále odkazy k Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../log-analytics/log-analytics-oms-portal-transition.md), ale nahradí tyto kroky pomocí Azure Log Analytics, kde je to možné. 
+> Tato stránka pravděpodobně stále odkazy k Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), ale nahradí tyto kroky pomocí Azure Log Analytics, kde je to možné. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -124,7 +124,7 @@ Spolu s Azure Log Analytics můžete rozšířit použití diagnostických dat v
 * [Archiv, který protokoly diagnostiky Azure ve službě Azure Storage](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Stream protokoly diagnostiky Azure do služby Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-Můžete získat v reálném čase sledování pomocí telemetrie a analýz z jiných služeb, jako jsou [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../log-analytics/log-analytics-powerbi.md). Příklad:
+Můžete získat v reálném čase sledování pomocí telemetrie a analýz z jiných služeb, jako jsou [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Příklad:
 
 * [Stream dat ze služby Event Hubs do služby Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analyzujte data streamovaná službou Stream Analytics a vytvořit řídicí panel analýzy v reálném čase v Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

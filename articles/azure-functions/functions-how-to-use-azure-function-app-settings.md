@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d9fa5d70a633f423c82457759d7ed18047167e3e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228976"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999893"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Správa aplikace function app na webu Azure Portal 
 
 Aplikace function app ve službě Azure Functions poskytuje kontext spuštění pro jednotlivé funkce. Chování funkce aplikací platí pro všechny funkce, které jsou hostované aplikace pro danou funkci. Toto téma popisuje, jak konfigurovat a spravovat vaše aplikace function App na webu Azure Portal.
 
-Pokud chcete začít, přejděte [webu Azure portal](http://portal.azure.com) a přihlaste se ke svému účtu Azure. Na panelu hledání v horní části portálu zadejte název vaší aplikace Function App a vyberte ji ze seznamu. Po výběru aplikace function app, naleznete na následující stránce:
+Pokud chcete začít, přejděte [webu Azure portal](https://portal.azure.com) a přihlaste se ke svému účtu Azure. Na panelu hledání v horní části portálu zadejte název vaší aplikace Function App a vyberte ji ze seznamu. Po výběru aplikace function app, naleznete na následující stránce:
 
 ![Přehled funkcí aplikace na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 

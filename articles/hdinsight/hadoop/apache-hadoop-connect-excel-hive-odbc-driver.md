@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 09642aba1cd0daa05e56e418330f21361d9263a2
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 622ebbd902b0a87d891432e14398d40eb4004e92
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632505"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010973"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení Excelu k systému Apache Hadoop v Azure HDInsight pomocí ovladače Microsoft Hive ODBC
 
@@ -107,6 +107,6 @@ V tomto článku jste zjistili, jak načíst data ze služby HDInsight do Excelu
 [hdinsight-use-hive]:hdinsight-use-hive.md
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hdinsight-power-query]: ../hdinsight-connect-excel-power-query.md
-[hive-odbc-driver-download]: http://go.microsoft.com/fwlink/?LinkID=286698
+[hive-odbc-driver-download]: https://go.microsoft.com/fwlink/?LinkID=286698
 
 

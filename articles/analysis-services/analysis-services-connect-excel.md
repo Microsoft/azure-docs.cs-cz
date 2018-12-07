@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2a9646ad2daed5ebc224d6d0b97f1f42c7da101e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 14453a1603eb414441008ef1381800009f4268e4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49425848"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994430"
 ---
 # <a name="connect-with-excel"></a>Propojit s Excelem
 
@@ -33,7 +33,7 @@ Připojení k serveru v aplikaci Excel pomocí získat Data v Excelu 2016 podpor
 2. V průvodci připojení dat v **název serveru**, zadejte název serveru, včetně protokolu a identifikátor URI. Například asazure://westcentralus.asazure.windows.net/advworks. Potom v **přihlašovací údaje**vyberte **použít následující uživatelské jméno a heslo**a pak zadejte název uživatele v organizaci, například nancy@adventureworks.coma heslo.
 
     > [!IMPORTANT]
-    > Pokud se přihlásíte Account Microsoft Live ID, Yahoo, Gmail, atd., nebo musíte se přihlásit pomocí služby Multi-Factor authentication, ponechejte pole pro heslo prázdné. Zobrazí se výzva k zadání hesla po kliknutí na tlačítko Další. 
+    > Pokud se přihlaste se pomocí Microsoft Account, Live ID, Yahoo, Gmail, atd., nebo musíte se přihlásit pomocí služby Multi-Factor authentication, ponechejte pole pro heslo prázdné. Zobrazí se výzva k zadání hesla po kliknutí na tlačítko Další. 
 
     ![Připojení z aplikace Excel přihlášení](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 

@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 6589a90f6eea2bfd7188e89b701233b37c162d54
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 10cfaab44343a494dd654d0e930e12fa268ea2e3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978754"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992888"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 
@@ -28,13 +28,13 @@ Tento článek vysvětluje, jak pracovat s aktivačními událostmi časovače v
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Trigger časovače je k dispozici v [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
+Trigger časovače je k dispozici v [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Trigger časovače je k dispozici v [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
+Trigger časovače je k dispozici v [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -50,7 +50,7 @@ Podívejte se na příklad specifické pro jazyk:
 
 ### <a name="c-example"></a>Příklad jazyka C#
 
-Následující příklad ukazuje [funkce jazyka C#](functions-dotnet-class-library.md) , který spouští každých pět minut:
+Následující příklad ukazuje [ C# funkce](functions-dotnet-class-library.md) , který je proveden při každém spuštění minuty mají hodnotu dělitelné podle pět (třeba Pokud funkci začne v 18:57:00, se další výkon v 19:00:00):
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -92,9 +92,9 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-### <a name="f-example"></a>Příklad F #
+### <a name="f-example"></a>F#Příklad
 
-Následující příklad ukazuje časovacího triggeru vazby ve *function.json* souboru a [funkce skriptu jazyka F #](functions-reference-fsharp.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt.
+Následující příklad ukazuje časovacího triggeru vazby ve *function.json* souboru a [ F# skriptu funkce](functions-reference-fsharp.md) , který používá vazba. Funkce zapíše do protokolu určující, zda je toto volání funkce z důvodu chybějící plán výskyt.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -107,7 +107,7 @@ Zde je vazba dat v *function.json* souboru:
 }
 ```
 
-Tady je kód skriptu F #:
+Tady je F# kód skriptu:
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: ILogger ) =
@@ -150,7 +150,7 @@ module.exports = function (context, myTimer) {
 
 ### <a name="java-example"></a>Příklad pro jazyk Java
 
-Následující příklad funkci aktivuje a spustí každých pět minut. `@TimerTrigger` Poznámka k funkci definuje plán stejný řetězec formátu jako [výrazů CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression).
+Následující příklad funkci aktivuje a spustí každých pět minut. `@TimerTrigger` Poznámka k funkci definuje plán stejný řetězec formátu jako [výrazů CRON](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
 ```java
 @FunctionName("keepAlive")

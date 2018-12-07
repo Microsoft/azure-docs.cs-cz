@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: ae728cd1cfc27a17badcce319a8cd047b54ddb1e
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 9727a990548977e0b07710d879881669161c7a4c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634001"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015258"
 ---
 # <a name="serialize-data-in-apache-hadoop-with-the-microsoft-avro-library"></a>Serializace dat v systému Apache Hadoop pomocí Microsoft Avro Library
 
@@ -27,7 +27,7 @@ Toto téma ukazuje, jak používat [Microsoft Avro Library](https://github.com/A
 [!INCLUDE [windows-only](../../../includes/hdinsight-windows-only.md)]
 
 ## <a name="apache-avro"></a>Apache Avro
-<a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library</a> implementuje Apache Avro systém serializace dat pro prostředí Microsoft.NET. Apache Avro poskytuje formát pro výměnu kompaktní binární data pro serializaci. Používá <a href="http://www.json.org" target="_blank">JSON</a> pro definování jazykově nezávislého schématu, které poskytuje vzájemnou funkční spolupráci jazyka. Data sériovaná v jednom jazyce lze číst v jiném. Aktuálně jsou podporovány C, C++, C#, Java, PHP, Python a Ruby. Podrobné informace o formátu najdete v <a href="http://avro.apache.org/docs/current/spec.html" target="_blank">Apache Avro Specification</a>. 
+<a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" target="_blank">Microsoft Avro Library</a> implementuje Apache Avro systém serializace dat pro prostředí Microsoft.NET. Apache Avro poskytuje formát pro výměnu kompaktní binární data pro serializaci. Používá <a href="http://www.json.org" target="_blank">JSON</a> pro definování jazykově nezávislého schématu, které poskytuje vzájemnou funkční spolupráci jazyka. Data sériovaná v jednom jazyce lze číst v jiném. Aktuálně jsou podporovány C, C++, C#, Java, PHP, Python a Ruby. Podrobné informace o formátu najdete v <a href="https://avro.apache.org/docs/current/spec.html" target="_blank">Apache Avro Specification</a>. 
 
 >[!NOTE]
 >Microsoft Avro Library nepodporuje vzdálené procedury volání (RPC) součástí téhle specifikaci.
@@ -58,7 +58,7 @@ Vyžadují splnění následujících předpokladů před instalací knihovny:
 ## <a name="compile-schemas-using-avro-library"></a>Kompilace schémat pomocí knihovny Avro
 Microsoft Avro Library obsahuje nástroj generování kódu, který umožňuje vytváření typů jazyka C# automaticky v závislosti na předem definované schéma JSON. Nástroj pro generování kódu není distribuován jako binárního spustitelného souboru, ale je možné snadno sestavovat pomocí následujícího postupu:
 
-1. Stáhněte si soubor .zip s nejnovější verzi sady SDK HDInsight zdrojový kód z <a href="http://hadoopsdk.codeplex.com/SourceControl/latest#" target="_blank">Microsoft .NET SDK pro Hadoop</a>. (Klikněte na tlačítko **Stáhnout** ikonu, ne **soubory ke stažení** kartu.)
+1. Stáhněte si soubor .zip s nejnovější verzi sady SDK HDInsight zdrojový kód z <a href="https://hadoopsdk.codeplex.com/SourceControl/latest#" target="_blank">Microsoft .NET SDK pro Hadoop</a>. (Klikněte na tlačítko **Stáhnout** ikonu, ne **soubory ke stažení** kartu.)
 2. Extrahujte sady HDInsight SDK do adresáře na počítači pomocí rozhraní .NET Framework 4 nainstalován a připojen k Internetu pro stahování potřebné závislosti balíčků NuGet. Níže předpokládáme, že zdrojový kód je extrahován do C:\SDK.
 3. Přejděte do složky C:\SDK\src\Microsoft.Hadoop.Avro.Tools a spusťte build.bat. (Soubor volá MSBuild z distribuce 32bitová verze rozhraní .NET Framework. Pokud chcete použít 64bitovou verzi, upravte build.bat sledovat komentáře v souboru.) Ujistěte se, že je sestavení úspěšné. (U některých systémů, nástroj MSBuild může vytvořit upozornění. Tato upozornění nemají vliv na nástroji tak dlouho, dokud nejsou žádné chyby buildu.)
 4. Nástroj pro kompilované je umístěn v C:\SDK\Bin\Unsigned\Release\Microsoft.Hadoop.Avro.Tools.
@@ -852,7 +852,7 @@ Data se potom čtení ze souboru a deserializovat do kolekce objektů. Tato kole
 ## <a name="sample-5-serialization-using-object-container-files-with-a-custom-compression-codec"></a>Ukázka 5: Serializace objektu kontejneru soubory pomocí vlastní kompresní kodek
 Pátý příklad ukazuje, jak používat vlastní kompresní kodek souborů Avro objektu kontejneru. Ukázka obsahující kód pro tento příklad je možné stáhnout z [ukázky kódu Azure](https://code.msdn.microsoft.com/Serialize-data-with-the-67159111) lokality.
 
-[Avro Specification](http://avro.apache.org/docs/current/spec.html#Required+Codecs) umožňuje využití volitelné kompresní kodek (kromě **Null** a **Deflate** výchozí nastavení). V tomto příkladu není implementace nové kodeku, například Snappy (uvedené jako podporované volitelné kodek v [Avro Specification](http://avro.apache.org/docs/current/spec.html#snappy)). Ukazuje, jak použít implementaci rozhraní .NET Framework 4.5 [ **Deflate** ] [ deflate-110] kodek, který poskytuje lepší algoritmus komprese na základě [zlib ](http://zlib.net/) knihovna komprese než výchozí verze rozhraní .NET Framework 4.
+[Avro Specification](https://avro.apache.org/docs/current/spec.html#Required+Codecs) umožňuje využití volitelné kompresní kodek (kromě **Null** a **Deflate** výchozí nastavení). V tomto příkladu není implementace nové kodeku, například Snappy (uvedené jako podporované volitelné kodek v [Avro Specification](https://avro.apache.org/docs/current/spec.html#snappy)). Ukazuje, jak použít implementaci rozhraní .NET Framework 4.5 [ **Deflate** ] [ deflate-110] kodek, který poskytuje lepší algoritmus komprese na základě [zlib ](https://zlib.net/) knihovna komprese než výchozí verze rozhraní .NET Framework 4.
 
     //
     // This code needs to be compiled with the parameter Target Framework set as ".NET Framework 4.5"
@@ -1351,7 +1351,7 @@ Pátý příklad ukazuje, jak používat vlastní kompresní kodek souborů Avro
 Ukázka provede následující úlohy:
 
 * Připojí se do existujícího clusteru služby HDInsight.
-* Serializuje několika souborů CSV a nahraje výsledek do úložiště objektů Blob v Azure. (Soubory CSV se distribuují spolu s vzorku a představují extrakci z historických dat AMEX akcie distribuuje společnost [Infochimps](http://www.infochimps.com/) dobu 1970 2010. Ukázka načte data souborů CSV, převede záznamy k instancím typu **akcie** třídy a serializuje je pomocí reflexe. Definice základní typ je vytvořen z schématu JSON přes nástroj pro generování kódu Microsoft Avro Library.
+* Serializuje několika souborů CSV a nahraje výsledek do úložiště objektů Blob v Azure. (Soubory CSV se distribuují spolu s vzorku a představují extrakci z historických dat AMEX akcie distribuuje společnost [Infochimps](https://www.infochimps.com/) dobu 1970 2010. Ukázka načte data souborů CSV, převede záznamy k instancím typu **akcie** třídy a serializuje je pomocí reflexe. Definice základní typ je vytvořen z schématu JSON přes nástroj pro generování kódu Microsoft Avro Library.
 * Vytvoří nový externí tabulky nazvané **akcie** v Hive a odkazy, nahrát ho k datům v předchozím kroku.
 * Provede dotaz s použitím Hive nad **akcie** tabulky.
 
@@ -1378,5 +1378,5 @@ Vyčistit clusteru, spusťte následující příkaz:
 
     AvroHDISample clean
 
-[deflate-100]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.100).aspx
-[deflate-110]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.110).aspx
+[deflate-100]: https://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.100).aspx
+[deflate-110]: https://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.110).aspx

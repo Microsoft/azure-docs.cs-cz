@@ -1,6 +1,6 @@
 ---
 title: Známé problémy a řešení potíží pro službu Azure Machine Learning
-description: Získat seznam známých problémů, řešení a řešení potíží
+description: Získat seznam známých problémů, řešení a řešení potíží pro službu Azure Machine Learning.
 services: machine-learning
 author: j-martens
 ms.author: jmartens
@@ -8,13 +8,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.component: core
 ms.topic: article
-ms.date: 10/01/2018
-ms.openlocfilehash: 02cee5a3e088c919ec94aee6f46ef6f428b9bb48
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 471a7494cefd008e8b32855ff232468701505ce7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249413"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013385"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
  
@@ -24,17 +25,17 @@ Tento článek vám pomůže najít a opravit chyby nebo při použití služby 
 
 **Chybová zpráva: "PyYAML" nelze odinstalovat.** 
 
-PyYAML je projektem organizace nainstalovaná distutils. Proto jsme nelze určit přesné soubory, které patří k němu v případě částečné odinstalovat. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
+Azure Machine Learning SDK pro Python: PyYAML je projekt distutils nainstalované. Proto jsme nelze určit přesné soubory, které patří k němu v případě částečné odinstalovat. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
 ```Python 
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
 
+## <a name="azure-machine-learning-compute-usage-issue"></a>Problém používání Azure Machine Learning Compute
+Je vzácné pravděpodobné, že někteří uživatelé, kteří si vytvořili jejich pracovního prostoru Azure Machine Learning z portálu Azure portal před verze GA nemusí být možné vytvořit Azure Machine Learning Compute v daném pracovním prostoru. Můžete zvýšit žádost o podporu na službu nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo pomocí sady SDK pro odblokování sami okamžitě. 
+
 ## <a name="image-building-failure"></a>Chyba vytváření bitové kopie
 
 Obrázek po nasazení webové služby vytvářet selhání. Alternativním řešením je přidat "pynacl == 1.2.1" jako pip závislosti systému Conda v souboru konfigurace image.  
-
-## <a name="pipelines"></a>Kanály
-Dochází k chybě při volání metody PythonScriptStep několikrát za sebou beze změny skriptu nebo parametry. Alternativním řešením je znovu sestavit PipelineData objektu.
 
 ## <a name="fpgas"></a>FPGA
 Nebude moct nasazovat modely na FPGA, dokud si vyžádáte a byla schválena pro FPGA kvótu. Chcete-li požádat o přístup, vyplňte formulář žádosti o kvóty: https://aka.ms/aml-real-time-ai
@@ -47,12 +48,20 @@ Problémy s Databricks a Azure Machine Learning.
    
    Vytvoření clusteru Azure Databricks jako v4.x Python 3. Doporučujeme, abyste clusteru vysokou souběžnosti.
  
-1. Při instalaci dalších balíčků AML SDK nainstalovat selhání v Databricks.
+2. Při instalaci dalších balíčků AML SDK nainstalovat selhání v Databricks.
 
-   Některé balíčky, jako například `psutil upgrade libs`, může způsobit konflikty. Aby nedocházelo k chybám instalace, instalace balíčků zmrazení lib verzí. Tento problém je související s Databricks a nesouvisí s AML SDK. Příklad:
+   Některé balíčky, jako například `psutil`, může způsobit konflikty. Aby nedocházelo k chybám instalace, instalace balíčků zmrazení lib verzí. Tento problém je související s Databricks a Azure ML SDK nesouvisí – které mohou nastat ho pomocí jiných knihoven příliš. Příklad:
    ```python
-   pstuil cryptography==1.5 pyopenssl==16.0.0 ipython=2.2.0
+   pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
    ```
+   Alternativně můžete použít skripty init, pokud je zachovat otočena směrem problémů s instalací s knihoven Pythonu. Tento přístup není oficiálně podporovaných přístup. Můžete se podívat do [tohoto dokumentu](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+
+3. Při použití automatického Machine Learning v Databricks, pokud se zobrazí `Import error: numpy.core.multiarray failed to import`
+
+   Alternativní řešení: import knihovny Python `numpy==1.14.5` k vaší Databricks pomocí clusteru vytvořte knihovnu pro [nainstalujte a připojte](https://docs.databricks.com/user-guide/libraries.html#create-a-library).
+
+## <a name="azure-portal"></a>portál Azure
+Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK nebo na portálu zobrazit, nebudete moct zobrazit stránka s přehledem normální s informace o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiného pracovního prostoru, alternativním řešením je přejít přímo na [webu Azure portal](https://portal.azure.com) a vyhledejte název pracovního prostoru.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Zde je, kde live soubory protokolu:

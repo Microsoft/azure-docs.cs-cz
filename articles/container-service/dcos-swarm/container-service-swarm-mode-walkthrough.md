@@ -1,5 +1,5 @@
 ---
-title: Rychlý start – Cluster Azure Docker CE pro Linux
+title: (NEPOUŽÍVANÉ) Rychlý start – cluster Azure Docker CE pro Linux
 description: Rychle se naučíte, jak pomocí Azure CLI vytvořit cluster Docker CE pro kontejnery Linuxu ve službě Azure Container Service.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: c8f9db2674976d2c1efa7686b8b224b48a19a534
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964441"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994296"
 ---
-# <a name="deploy-docker-ce-cluster"></a>Nasazení clusteru Docker CE
+# <a name="deprecated-deploy-docker-ce-cluster"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Docker CE
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 V tomto rychlém startu se nasadí cluster Docker CE pomocí Azure CLI. Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webu front-end a instance Redis. Po dokončení bude aplikace přístupná přes internet.
 

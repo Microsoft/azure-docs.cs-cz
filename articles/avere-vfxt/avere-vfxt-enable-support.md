@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 0f5eee20b0487fb5fce82047f40d137effb87ead
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: b975f84106507da6adff11dc62441526773f5cab
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164418"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998136"
 ---
 # <a name="enable-support-uploads"></a>Povolení nahrávání podpory
 
@@ -42,6 +42,6 @@ Následujícím postupem z ovládacího panelu Avere k aktivaci podpory. (Čten�
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud je potřeba přidat místnímu systému úložiště do clusteru, postupujte podle pokynů v [konfigurace úložiště](avere-vfxt-add-storage.md). 
+Pokud je potřeba místnímu systému úložiště do clusteru přidat nebo aktualizovat výchozí šifrovací klíč v nově vytvořený kontejner objektů Blob, postupujte podle pokynů v [konfigurace úložiště](avere-vfxt-add-storage.md). 
 
 Pokud jste připravení začít s připojení klientů ke clusteru, přečtěte si [připojení clusteru vFXT Avere](avere-vfxt-mount-clients.md).

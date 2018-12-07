@@ -6,32 +6,32 @@ manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
-ms.assetid: d72848e2-4b65-4c84-94bc-e2a90a6e7f47
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: 1f37dcd14c1b3e85c3fae3bbf7aa67c16b8a898d
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3eea59eba9fc1fc79a6f72a61860ee7e66a7df5b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249004"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994285"
 ---
 # <a name="input-metadata"></a>Vstupní Metadata
+
 Kódovací úlohy jsou přiřazeny k vstupní prostředek (nebo prostředky) na kterém chcete provést některé úlohy kódování.  Po dokončení úlohy je vytvořen výstupního prostředku.  Výstupní asset obsahuje video, zvuk, miniatury, manifest atd. Výstupní asset obsahuje také soubor s metadaty o vstupní asset. Název souboru XML metadat má následující formát: &lt;asset_id&gt;_metadata.xml (například d 57 8 41114ad3 eb5e - 4c 92-5354e2b7d4a4_metadata.xml), kde &lt;asset_id&gt; je hodnota AssetId vstupní asset.  
+
+Služba Media Services nekontroluje preventivně vstupní prostředky ke generování metadat. Vstupní metadata se vygeneruje pouze jako artefakt při vstupní Asset se zpracovává v rámci úlohy. Proto tento artefakt se zapisují do výstupu Asset. Jiné nástroje se používají pro generování metadat pro prostředky vstupní a výstupní Assety. Vstupní metadata proto má mírně odlišné schéma než výstup metadat.
 
 Pokud chcete zkontrolovat soubor metadat, můžete vytvořit **SAS** Lokátor a stahování souborů do místního počítače. Příklad najdete na tom, jak vytvořit lokátor SAS a stáhněte si soubor [pomocí rozšíření Media Services .NET SDK](media-services-dotnet-get-started.md).  
 
 Tento článek popisuje elementů a typů schématu XML, na kterém vstupní metada (&lt;asset_id&gt;_metadata.xml) je založena.  Informace o souboru, který obsahuje metadata o prostředku výstupu najdete v tématu [výstup metadat](media-services-output-metadata-schema.md).  
 
-> [!NOTE]
-> Můžete najít [kód schématu](media-services-input-metadata-schema.md#code) [ukázkový kód XML](media-services-input-metadata-schema.md#xml) na konci tohoto článku.  
-> 
-> 
+Můžete najít [kód schématu](media-services-input-metadata-schema.md#code) [ukázkový kód XML](media-services-input-metadata-schema.md#xml) na konci tohoto článku.  
+ 
 
 ## <a name="AssetFiles"></a> Element AssetFiles (kořenový element)
 Obsahuje kolekci [AssetFile element](media-services-input-metadata-schema.md#AssetFile)s pro úlohy kódování.  

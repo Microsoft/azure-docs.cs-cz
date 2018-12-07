@@ -10,20 +10,20 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 93e6b8c606c0a6d7abebeb515b938a45001757c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 763e1d20f707a1db1f559661089b55093f93a632
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950365"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999924"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Podpora metadat OpenAPI 2.0 ve službě Azure Functions (preview)
 OpenAPI 2.0 (dříve Swagger) podpora metadat ve službě Azure Functions je funkce ve verzi preview, můžete použít k zápisu definici rozhraní OpenAPI 2.0 v aplikaci function app. Tento soubor pak můžete hostovat pomocí aplikace function app.
 
 > [!IMPORTANT]
-> OpenAPI funkce ve verzi preview nabízíme jenom dnes v modul runtime verze 1.x. Informace o tom, jak vytvořit aplikaci function app 1.x [najdete tady](./functions-versions.md#creating-1x-apps).
+> Funkce OpenAPI ve verzi Preview je v současné době k dispozici pouze v modulu runtime verze 1.x. Informace o tom, jak vytvořit aplikaci funkcí 1.x [najdete tady](./functions-versions.md#creating-1x-apps).
 
-[OpenAPI metadata](http://swagger.io/) umožňuje funkci, která je hostitelem rozhraní REST API pro širokou škálu dalšího softwaru. Tento software obsahuje nabídkami Microsoftu jako PowerApps a [funkce API Apps služby Azure App Service](../app-service/app-service-web-overview.md), nástroje pro vývojáře třetích stran, jako je [Postman](https://www.getpostman.com/docs/importing_swagger), a [řada dalších balíčků](http://swagger.io/tools/).
+[OpenAPI metadata](https://swagger.io/) umožňuje funkci, která je hostitelem rozhraní REST API pro širokou škálu dalšího softwaru. Tento software obsahuje nabídkami Microsoftu jako PowerApps a [funkce API Apps služby Azure App Service](../app-service/app-service-web-overview.md), nástroje pro vývojáře třetích stran, jako je [Postman](https://www.getpostman.com/docs/importing_swagger), a [řada dalších balíčků](https://swagger.io/tools/).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -39,7 +39,7 @@ Můžete nakonfigurovat všechna nastavení OpenAPI na **definice rozhraní API*
 Chcete-li povolit generování definování rychlý start a hostovanou definici OpenAPI, nastavte **zdroj definice rozhraní API** k **– funkce (Preview)**. **Externí adresa URL** umožňuje funkce pomocí definice OpenAPI, který má hostovanou jinde.
 
 ## <a name="generate-definition"></a>Generovat kostru Swagger z metadat funkce
-Šablonu můžete začít psát první definici OpenAPI. Definice funkce šablony vytvoří stručnou definici OpenAPI pomocí všechna metadata v souboru function.json pro jednotlivé funkce triggeru HTTP. Je potřeba vyplnit Další informace o rozhraní API z [specifikace OpenAPI](http://swagger.io/specification/), jako je například šablony žádostí a odpovědí.
+Šablonu můžete začít psát první definici OpenAPI. Definice funkce šablony vytvoří stručnou definici OpenAPI pomocí všechna metadata v souboru function.json pro jednotlivé funkce triggeru HTTP. Je potřeba vyplnit Další informace o rozhraní API z [specifikace OpenAPI](https://swagger.io/specification/), jako je například šablony žádostí a odpovědí.
 
 Podrobné pokyny najdete v tématu [úvodní kurz](./functions-api-definition-getting-started.md).
 
@@ -55,10 +55,10 @@ Následující tabulka představuje nastavení portálu Azure portal a odpovída
 
 |Swagger.json|Uživatelské rozhraní portálu|Function.json|
 |:----|:-----|:-----|
-|[Hostitel](http://swagger.io/specification/#fixed-fields-15)|**Funkční aplikace nastavení** > **nastavení služby App Service** > **přehled** > **adresy URL**|*Není k dispozici.*
-|[Cesty](http://swagger.io/specification/#paths-object-29)|**Integrace** > **vybrané metody HTTP**|Vazby: trasy
-|[Cesta položky](http://swagger.io/specification/#path-item-object-32)|**Integrace** > **šablonu trasy**|Vazby: metody
-|[Zabezpečení](http://swagger.io/specification/#security-scheme-object-112)|**klíče**|*Není k dispozici.*|
+|[Hostitel](https://swagger.io/specification/#fixed-fields-15)|**Funkční aplikace nastavení** > **nastavení služby App Service** > **přehled** > **adresy URL**|*Není k dispozici.*
+|[Cesty](https://swagger.io/specification/#paths-object-29)|**Integrace** > **vybrané metody HTTP**|Vazby: trasy
+|[Cesta položky](https://swagger.io/specification/#path-item-object-32)|**Integrace** > **šablonu trasy**|Vazby: metody
+|[Zabezpečení](https://swagger.io/specification/#security-scheme-object-112)|**klíče**|*Není k dispozici.*|
 |ID operace *|**Trasa + povolené akce**|Trasa + povolených příkazů|
 
 \*ID operace se vyžaduje jenom pro integraci s PowerApps a Flow.

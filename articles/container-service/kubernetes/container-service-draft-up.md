@@ -1,5 +1,5 @@
 ---
-title: Použití konceptu s Azure Container Service a Azure Container Registry
+title: (NEPOUŽÍVANÉ) Použití konceptu s Azure Container Service a Azure Container Registry
 description: Vytvořte cluster ACS Kubernetes a službu Azure Container Registry, abyste mohli vytvořit první aplikaci v Azure pomocí nástroje Draft.
 services: container-service
 author: squillace
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: c635a869506918ab7ee032df349eb307987c1284
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 42bd12b9479cd1b4f57a7f3ae73f3c32061fed65
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432275"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996511"
 ---
-# <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Použití nástroje Draft se službami Azure Container Service a Azure Container Registry k sestavení a nasazení aplikace do Kubernetes
+# <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(NEPOUŽÍVANÉ) Použití konceptu s Azure Container Service a Azure Container Registry k sestavení a nasazení aplikace do Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Pro aktualizovanou verzi, tento článek, který používá Azure Kubernetes Service, najdete v článku [použít koncept Azure Kubernetes Service (AKS)](../../aks/kubernetes-draft.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 [Draft](https://aka.ms/draft) je nový opensourcový nástroj usnadňující vývoj kontejnerových aplikací a jejich nasazení do clusterů Kubernetes, který nevyžaduje téměř žádné znalosti Dockeru ani Kubernetes – dokonce je nemusíte ani instalovat. Používání nástrojů, jako je Draft, umožňuje vám a vašim týmům zaměřit se na vytváření aplikací pomocí Kubernetes, aniž byste se museli tolik zabývat infrastrukturou.
 

@@ -3,17 +3,17 @@ title: Zvolte cenovou úroveň pro službu Azure Maps právo | Dokumentace Micro
 description: Další informace o cenových úrovních, které nabízí Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/03/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 20c59f95dcdb47ef3e457f177d7ad1a300981907
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ee277867f449afddeb89c3fd73b5b577a68a4497
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855711"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998386"
 ---
 # <a name="choosing-the-right-pricing-tier-in-azure-maps"></a>Volba správného cenové úrovně ve službě Azure Maps
 
@@ -34,14 +34,16 @@ S0 a cenových úrovní S1 může zpracovávat různé množství dat propustnos
 | Vykreslování                                  |        ✓           |     ✓    |
 | Provoz                                 |        ✓           |     ✓    |
 | Časová pásma                              |        ✓           |     ✓    |
-| Obrázek + hybridní snímky (preview)      |                    |     ✓    |
-| Trasa rozsahu (Preview)                   |                    |     ✓    |
-| Poloha IP adresy 2 (preview)                 |                    |     ✓    |
-| Mnohoúhelníky z vyhledávání (Preview)          |                    |     ✓    |
-| Geografické kódování služby Batch (preview)               |                    |     ✓    |
-| Směrování služby Batch (preview)                 |                    |     ✓    |
-| Přehled směrování (preview)                |                    |     ✓    |
+| * Trénováním + hybridní snímky (preview)     |        ✓           |     ✓    |
+| * Trasy rozsahu (Preview)                  |        ✓           |     ✓    |
+| * Poloha IP adresy 2 (preview)                |        ✓           |     ✓    |
+| * Mnohoúhelníky z vyhledávání (Preview)         |        ✓           |     ✓    |
+| * Batch Geokódování (preview)              |        ✓           |     ✓    |
+| * Batch směrování (preview)                |        ✓           |     ✓    |
+| * Směrování matice (preview)               |        ✓           |     ✓    |
 
+> [!Note]
+> Přístup k těmto funkcím z S0 cenová úroveň se přestanou používat po 4. února 2019.
 
 Jsou některé další datové body, které stojí za to, vzhledem k tomu, jaký druh enterprise máte nebo jak kritické je aplikace vytváří?
 

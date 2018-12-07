@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: e6a3fab0e6b3b092ddb55043882c4d284268abfc
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c2fd32ad15366c76c061ba42fa0a59d43a317b43
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51006843"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012755"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Použití nástrojů Azure Data Lake pro Visual Studio s Hortonworks Sandbox
 
-Azure Data Lake obsahuje nástroje pro práci s obecný clusterů Hadoop. Tento dokument obsahuje kroky potřebné k použití nástrojů Data Lake s Hortonworks Sandbox běží na místním virtuálním počítači.
+Azure Data Lake obsahuje nástroje pro práci s obecný clustery systému Apache Hadoop. Tento dokument obsahuje kroky potřebné k použití nástrojů Data Lake s Hortonworks Sandbox běží na místním virtuálním počítači.
 
 Použití Hortonworks Sandbox umožňuje pracovat s Hadoopem místně na vašem vývojovém prostředí. Poté, co jste vyvinuli řešení a chcete ji nasadit ve velkém měřítku, můžete pak přesunout do clusteru HDInsight.
 
@@ -34,7 +34,7 @@ Použití Hortonworks Sandbox umožňuje pracovat s Hadoopem místně na vašem 
 
 ## <a name="configure-passwords-for-the-sandbox"></a>Nakonfigurujte hesla pro izolovaný prostor
 
-Ujistěte se, že Hortonworks Sandbox běží. Postupujte podle pokynů v [zahájení práce během Hortonworks Sandbox](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentu. Tyto kroky nastavit heslo pro SSH `root` účet a Ambari `admin` účtu. Tato hesla se používají, když se připojíte k izolovanému prostoru ze sady Visual Studio.
+Ujistěte se, že Hortonworks Sandbox běží. Postupujte podle pokynů v [zahájení práce během Hortonworks Sandbox](hadoop/apache-hadoop-emulator-get-started.md#set-sandbox-passwords) dokumentu. Tyto kroky nastavit heslo pro SSH `root` účet a Apache Ambari `admin` účtu. Tato hesla se používají, když se připojíte k izolovanému prostoru ze sady Visual Studio.
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>Připojte se k izolovanému prostoru nástroje
 
@@ -71,7 +71,7 @@ Ujistěte se, že Hortonworks Sandbox běží. Postupujte podle pokynů v [zahá
 
 Po provedení těchto kroků, teď máte **místní cluster HDInsight** položku v Průzkumníku serveru pod **HDInsight** oddílu.
 
-## <a name="write-a-hive-query"></a>Napsat dotaz Hive
+## <a name="write-an-apache-hive-query"></a>Napsat dotaz Apache Hive
 
 Hive poskytuje SQL jako dotazovací jazyk (HiveQL) pro práci se strukturovanými daty. Pomocí následujících kroků zjistěte, jak spouštět dotazy na vyžádání k místnímu clusteru.
 
@@ -100,7 +100,7 @@ Hive poskytuje SQL jako dotazovací jazyk (HiveQL) pro práci se strukturovaným
     Po **stav úlohy** změní na **dokončeno**, zobrazí se orientovaného Acyklického grafu (DAG). Tento diagram znázorňuje cesta spuštění, která byla určena podle Tez při zpracování dotazu Hive. Tez je výchozí prováděcí modul pro Hive na místním clusteru.
 
     > [!NOTE]
-    > Tez je také výchozí, když používáte clusterech HDInsight založených na Linuxu. Není výchozí v HDInsight se systémem Windows. Jeho použití, je nutné přidat řádek `set hive.execution.engine = tez;` na začátek dotazu Hive.
+    > Apache Tez je také výchozí, když používáte clusterech HDInsight založených na Linuxu. Není výchozí v HDInsight se systémem Windows. Jeho použití, je nutné přidat řádek `set hive.execution.engine = tez;` na začátek dotazu Hive.
 
     Použití **výstup úlohy** odkaz k zobrazení výstupu. V takovém případě je 823, počet řádků v tabulce sample_08. Diagnostické informace o úloze můžete zobrazit pomocí **protokol úloh** a **stáhnout protokol YARN** odkazy.
 
@@ -127,7 +127,7 @@ Můžete také vytvořit projekt, který obsahuje několik skriptů Hive. Projek
 
 **Hive ukázka** projekt obsahuje dva skripty **WebLogAnalysis.hql** a **SensorDataAnalysis.hql**. Tyto skripty můžete odeslat pomocí stejného **odeslat** tlačítko v horní části okna.
 
-## <a name="create-a-pig-project"></a>Vytvořte projekt Pig
+## <a name="create-an-apache-pig-project"></a>Vytvoření projektu Apache Pig
 
 Zatímco Hive poskytuje jazyk typu SQL pro práci se strukturovanými daty, Pig funguje tak, že provádění transformací na datech. Pig poskytuje jazyk (Pig Latin), který umožňuje vývoj kanál transformace. Použití Pigu se službou místního clusteru, postupujte podle těchto kroků:
 
@@ -200,5 +200,5 @@ Potom můžete vytvořit v tabulce pomocí formuláře. V dolní části na nás
 
 ## <a name="next-steps"></a>Další postup
 
-* [Učení LAN Hortonworks Sandbox](http://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Kurz Hadoopu – Začínáme s HDP](http://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
+* [Učení LAN Hortonworks Sandbox](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+* [Kurz Apache Hadoop – Začínáme s HDP](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

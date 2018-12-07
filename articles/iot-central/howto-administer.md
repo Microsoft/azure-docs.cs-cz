@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a641b5bb754c265a4fa5fb7e2fe85989d4813354
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4dba6aff2002c1f17055cd647be94c4d8f644ad7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955169"
+ms.locfileid: "52992208"
 ---
 # <a name="administer-your-iot-central-application"></a>Spravovat aplikace IoT Central
 
@@ -59,7 +59,10 @@ Po úspěšném provedení operace kopie aplikace, můžete přejít na novou ap
 
 ### <a name="delete-an-application"></a>Odstranění aplikace
 
-Použití **odstranit** tlačítko pro trvalé odstranění aplikace IoT Central. Tím se trvale odstraní všechna data, která má přidruženou k této aplikaci. Aplikaci odstranit, musíte také mít oprávnění k odstranění prostředků v předplatném Azure jste zvolili při vytváření aplikace. Další informace najdete v tématu [použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+> [!Note]
+> Aplikaci odstranit, musíte také mít oprávnění k odstranění prostředků v předplatném Azure jste zvolili při vytváření aplikace. Další informace najdete v tématu [použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
+
+Použití **odstranit** tlačítko pro trvalé odstranění aplikace IoT Central. Tím se trvale odstraní všechna data, která má přidruženou k této aplikaci.
 
 ## <a name="manage-users"></a>Správa uživatelů
 

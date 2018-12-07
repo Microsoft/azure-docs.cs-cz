@@ -1,5 +1,5 @@
 ---
-title: Aplikace nebo služby Marathon specifické pro uživatele
+title: (NEPOUŽÍVANÉ) Aplikace nebo služby Marathon specifické pro uživatele
 description: Vytvoření služby Marathon specifické pro aplikaci nebo uživatele
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 4ff263fe0ca4f435199127ed64faadee1c2527f9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164536"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996123"
 ---
-# <a name="create-an-application-or-user-specific-marathon-service"></a>Vytvoření služby Marathon specifické pro aplikaci nebo uživatele
+# <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>(NEPOUŽÍVANÉ) Vytvoření aplikace nebo služby Marathon specifické pro uživatele
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Azure Container Service poskytuje sadu hlavních serverů, na kterých předem konfigurujeme Apache Mesos a Marathon. Ty je možné použít k orchestrování aplikací v clusteru, ale vhodnější je hlavní servery k tomuto účelu nepoužívat. Například při úpravách konfigurace Marathonu je nutné se k přihlásit k samotným hlavním serverům a provést změny přímo na nich – to může vést ke vzniku jedinečných hlavních serverů, které se jen málo liší od těch standardních a je třeba o ně nezávisle pečovat a spravovat je. Navíc konfigurace, kterou vyžaduje jeden tým, nemusí být optimální pro jiný tým.
 

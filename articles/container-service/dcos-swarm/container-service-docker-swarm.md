@@ -1,6 +1,6 @@
 ---
-title: Správě clusteru Swarm v Azure s rozhraním API Docker
-description: Nasazení kontejnerů do clusteru s podporou Docker Swarm v Azure Container Service
+title: (NEPOUŽÍVANÉ) Správa clusteru Swarm v Azure pomocí rozhraní API Dockeru
+description: Nasazení kontejnerů do clusteru Docker Swarm ve službě Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 3f8d18bc053bc303ab124ba38c8621d4ee2e8cb8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26331541"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997951"
 ---
-# <a name="container-management-with-docker-swarm"></a>Správa kontejnerů pomocí nástroje Docker Swarm
+# <a name="deprecated-container-management-with-docker-swarm"></a>(NEPOUŽÍVANÉ) Správa kontejnerů pomocí nástroje Docker Swarm
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Docker Swarm poskytuje prostředí pro nasazování kontejnerizovaných úloh v celé sadě hostitelů Docker uspořádaných do fondu. Docker Swarm využívá nativní rozhraní Docker API. Workflow správy kontejnerů v nástroji Docker Swarm je téměř identický s workflow pro hostitele s jedním kontejnerem. Tento dokument poskytuje jednoduché příklady, jak nasadit kontejnerizované úlohy do instance Docker Swarm v Azure Container Service. Podrobnější dokumentaci k nástroji Docker Swarm najdete v tématu [Docker Swarm na Docker.com](https://docs.docker.com/swarm/).
 
@@ -110,6 +112,6 @@ caf185d221b7        adtd/web:0.1        "apache2-foreground"   2 minutes ago    
 
 Přirozeně, můžete použít `docker-compose ps` k prozkoumání samotných kontejnerů definovaných ve vašem souboru `compose.yml`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Další informace o Docker Swarmu](https://docs.docker.com/swarm/)
 

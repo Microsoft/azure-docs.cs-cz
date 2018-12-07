@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4e5befa1598edb50de0ecd31ba6f30bf00196031
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2906f6dff84cdd6a09c05734988ee005a3d65aac
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864486"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994639"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -40,7 +40,7 @@ Tento článek shrnuje podporované konfigurace a komponent, pokud nasazení zot
 **Migrace virtuálních počítačů napříč oblastmi v rámci podporovaných geografických clusterů (v rámci a napříč předplatnými)** | Podporováno ve stejném tenantovi Azure Active Directory.
 **Migrace virtuálních počítačů ve stejné oblasti** | Nepodporuje se.
 
-# <a name="region-support"></a>Oblasti podpory
+## <a name="region-support"></a>Oblasti podpory
 
 Můžete replikovat a obnovovat virtuální počítače mezi všechny dvou oblastí ve stejné zeměpisné clusteru.
 
@@ -62,8 +62,8 @@ Německo | Německo – střed, Německo – severovýchod
 
 Tato tabulka shrnuje podporu pro účet úložiště mezipaměti, který se používá služba Site Recovery během replikace.
 
-**Nastavení** | **Podrobnosti**
---- | ---
+**Nastavení** | **Podpora** | **Podrobnosti**
+--- | --- | ---
 Obecné účely V2 účty úložiště (horká a studená vrstva přístupu) | Nepodporuje se. | Omezení existuje pro úložiště mezipaměti, protože náklady na transakce pro V2 jsou výrazně vyšší než účtů storage V1.
 Pro virtuální sítě brány firewall služby Azure Storage  | Podporováno | Pokud používáte účet úložiště mezipaměti povolena brána firewall nebo cílový účet úložiště, zajistěte, aby ["Povolit důvěryhodné služby Microsoftu"](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 

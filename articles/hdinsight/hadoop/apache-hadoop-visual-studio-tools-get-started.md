@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 670de3f61047bcc8b168863f5981e41084225ec4
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: e25a43f4589b7266edccd7f8c14a0937515d13a3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634664"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015173"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Pomocí nástrojů Data Lake pro Visual Studio pro připojení k Azure HDInsight a spouštět dotazy Apache Hive
 
@@ -107,7 +107,7 @@ Po otevření kontejneru můžete k nahrání, odstranění a stažení objektů
 ![Snímek obrazovky s operacemi s objekty blob pro nástroje Data Lake pro Visual Studio v Průzkumníku serveru](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.blob.operations.png "Nahrání, odstranění a stažení objektů blob v Průzkumníku serveru")
 
 ## <a name="run-interactive-hive-queries"></a>Spouštění interaktivních dotazů Hive
-[Apache Hive](http://hive.apache.org) je infrastruktura datového skladu postavená na Hadoop. Hive se používá k souhrnům dat, dotazům a analýzám. Pomocí nástrojů Data Lake pro Visual Studio můžete spouštět dotazy Hive ze sady Visual Studio. Další informace o Hivu najdete v tématu [Použití Hivu se službou HDInsight](hdinsight-use-hive.md).
+[Apache Hive](https://hive.apache.org) je infrastruktura datového skladu postavená na Hadoop. Hive se používá k souhrnům dat, dotazům a analýzám. Pomocí nástrojů Data Lake pro Visual Studio můžete spouštět dotazy Hive ze sady Visual Studio. Další informace o Hivu najdete v tématu [Použití Hivu se službou HDInsight](hdinsight-use-hive.md).
 
 [Interactive Query](../interactive-query/apache-interactive-query-get-started.md) využívá [Hive s funkcí LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) v Apache Hive 2.1. Interactive Query přináší interaktivitu do složitých dotazů ve stylu datového skladu nad rozsáhlými uloženými datovými sadami. Spouštění dotazů Hive v Interactive Query je v porovnání s tradičními dávkovými úlohami Hive mnohem rychlejší. Další informace najdete v části [Spouštění dávkových úloh Hive](#run-hive-batch-jobs).
 

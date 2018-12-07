@@ -1,5 +1,5 @@
 ---
-title: Trénování modelů strojového učení pomocí Azure Machine Learning třídu odhad
+title: Trénování modelů ML třídu Estimator pomocí služby Azure Machine Learning
 description: Zjistěte, jak provést jeden uzel nebo pro distribuované trénování tradiční strojové učení a obsáhlý learning modely s využitím Azure Machine Learning services Estimator třídy
 ms.author: minxia
 author: mx-iao
@@ -8,15 +8,16 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: c47761c184d0e6c091ff49b3eca2fdf89574b49d
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec12
+ms.openlocfilehash: 53462fc0aecbb8f5aeef0bb9208264c714ce8394
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114855"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011416"
 ---
-# <a name="how-to-train-models-with-azure-machine-learning"></a>Trénování modelů Azure Machine Learning
+# <a name="train-models-with-azure-machine-learning"></a>Trénování modelů Azure Machine Learning
 
 Trénování modelů strojového učení, zejména hluboké neuronové sítě, je často náročné na čas a výpočetní úlohy. Po dokončení zápisu cvičný skript a běží na malou podmnožinu dat na místním počítači, bude pravděpodobně chcete vertikálně navýšit kapacitu úloh.
 
@@ -35,7 +36,7 @@ Tento článek se zaměřuje na kroky 4 až 5. Kroky 1 až 3, najdete [trénová
 
 ### <a name="single-node-training"></a>Trénování jedním uzlem
 
-Použití `Estimator` pro trénování jedním uzlem, spouštět vzdálený výpočetní prostředky v Azure pro scikit-informace modelu. Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-up-training-targets.md#batch) objekt `compute_target` a [úložiště dat](how-to-access-data.md) objekt `ds`.
+Použití `Estimator` pro trénování jedním uzlem, spouštět vzdálený výpočetní prostředky v Azure pro scikit-informace modelu. Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-up-training-targets.md#amlcompute) objekt `compute_target` a [úložiště dat](how-to-access-data.md) objekt `ds`.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -58,7 +59,7 @@ Parametr | Popis
 --|--
 `source_directory`| Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní 
 `script_params`| Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > páry
-`compute_target`| Vzdálené výpočetní prostředky, které cvičný skript se spustí, v tomto případě [služby Batch AI](how-to-set-up-training-targets.md#batch) clusteru
+`compute_target`| Cílové vzdálené výpočetní prostředí, který cvičný skript se spustí, v tomto případě Azure Machine Learning Compute ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) clusteru
 `entry_script`| Cesta k souboru (vzhledem k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a další soubory, na kterých závisí, se musí nacházet v této složce
 `conda_packages`| Seznam balíčků Python nainstalovat přes conda vyžadované cvičný skript.  
 Konstruktor má jiný parametr s názvem `pip_packages` , který používáte pro všechny balíčky pip potřeby
@@ -87,7 +88,7 @@ Existují dva další školicí scénáře, které se provádějí pomocí `Esti
 
 Následující kód ukazuje, jak provádět distribuované trénování CNTK modelu. Kromě toho místo použití výchozí Image Azure Machine Learning, předpokládá se, že používáte vlastní image dockeru vlastní pro vzdělávání.
 
-Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-up-training-targets.md#batch) objekt `compute_target`. Vytvoření odhadu následujícím způsobem:
+Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-up-training-targets.md#amlcompute) objekt `compute_target`. Vytvoření odhadu následujícím způsobem:
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -117,13 +118,11 @@ run = experiment.submit(cntk_est)
 ```
 
 ## <a name="examples"></a>Příklady
-Kurz předvádějící trénujete model pro skriptu sklearn najdete v tématu:
-* [tutorials/01.Train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
+Poznámkový blok skriptu sklearn model trénovat naleznete v tématu:
+* [kurzy/img – klasifikace – část 1 – training.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb)
 
-Kurz týkající se distribuované CNTK pomocí vlastní dockeru naleznete v tématu:
-* [školení/06.distributed – cntk s custom dockeru](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/06.distributed-cntk-with-custom-docker)
-
-Získejte tyto poznámkové bloky:
+Poznámkové bloky v distribuované obsáhlého learningu naleznete v tématu:
+* [How-to-use-azureml/Training-with-Deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

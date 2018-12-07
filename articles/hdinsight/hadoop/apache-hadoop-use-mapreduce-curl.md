@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: afa9b57d9c0e2acf81b5307273ac038e92073655
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 75f615f63b0741899995c2728f93231d8e46734a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632290"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016176"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Spuštění úlohy mapreduce je možné s Apache Hadoop v HDInsight pomocí rozhraní REST
 
@@ -27,14 +27,14 @@ Zjistěte, jak spouštět úlohy MapReduce systému Apache Hadoop v clusteru HDI
 ## <a id="prereq"></a>Požadavky
 
 * V clusteru HDInsight Hadoop
-* Prostředí Windows PowerShell nebo [Curl](http://curl.haxx.se/) a [jq](http://stedolan.github.io/jq/)
+* Prostředí Windows PowerShell nebo [Curl](https://curl.haxx.se/) a [jq](https://stedolan.github.io/jq/)
 
 ## <a id="curl"></a>Spustit úlohu MapReduce
 
 > [!NOTE]
 > Pokud používáte Curl nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti zadáním uživatelského jména správce clusteru HDInsight a heslo. Název clusteru musí používat jako součást identifikátoru URI, který se používá k odesílání požadavků na server.
 >
-> Rozhraní REST API se šifrují pomocí [ověřování přístupu basic](http://en.wikipedia.org/wiki/Basic_access_authentication). Vždy doporučujeme provádět požadavky pomocí protokolu HTTPS k zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server.
+> Rozhraní REST API se šifrují pomocí [ověřování přístupu basic](https://en.wikipedia.org/wiki/Basic_access_authentication). Vždy doporučujeme provádět požadavky pomocí protokolu HTTPS k zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server.
 
 1. Nastavení přihlášení ke clusteru, který se používá ve skriptech v tomto dokumentu, použijte jeden z příkazů followig:
 

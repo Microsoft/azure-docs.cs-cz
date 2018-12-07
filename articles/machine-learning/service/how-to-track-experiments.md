@@ -9,12 +9,13 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 44c5cce103996f1774fb87b46760c23dc9ab575c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ae61f6fe24486eb1d4d5deecf5fb005a4d71b5fc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957704"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016159"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
@@ -241,7 +242,7 @@ Při použití **ScriptRunConfig** spuštěním metody k odeslání, můžete sl
    RunDetails(run).show()
    ```
 
-  ![Snímek obrazovky aplikace Jupyter notebook widgetu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+  ![Widget poznámkového bloku Jupyter pro automatizované Machine Learning](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
 Chcete-li zobrazit další podrobnosti klikněte na kanál ke kanálu chcete data prozkoumat v tabulce a grafy se vykreslují v místní nabídce na webu Azure Portal.
@@ -264,7 +265,7 @@ Po dokončení spuštění experimentu můžete přejít na zaznamenané experim
 
 Odkaz pro spuštění disponuje přímo na stránku Podrobnosti o spuštění na webu Azure Portal. Zde můžete zobrazit vlastnosti, sledované metriky, obrázky a grafy, které se protokolují v experimentu. V tomto případě jsme do protokolu zapíše MSE a hodnoty alfa.
 
-  ![Snímek obrazovky se podrobnosti o spuštění na webu Azure Portal](./media/how-to-track-experiments/run-details-page-web.PNG)
+  ![Podrobnosti o spuštění na webu Azure Portal](./media/how-to-track-experiments/run-details-page-web.PNG)
 
 Můžete také zobrazit všechny výstupy a protokoly pro spuštění nebo stáhnout snímek experiment, který jste odeslali, složce experimentu můžete sdílet s ostatními.
 
@@ -300,15 +301,15 @@ Další informace:
 
 1. Vyberte experiment, které vás zajímají.
 
-  ![Snímek obrazovky nabídky experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+  ![Seznam experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
 
 1. V tabulce vyberte číslo spustit.
 
-   ![Snímek obrazovky nabídky experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
+   ![Běh experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
 
 1.  V tabulce vyberte počet opakování pro model, který byste chtěli dále zkoumat.
 
-   ![Snímek obrazovky nabídky experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
+   ![Model experimentu](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
 
 
 

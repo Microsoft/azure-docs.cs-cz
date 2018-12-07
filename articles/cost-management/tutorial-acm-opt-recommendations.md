@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4d9e47d6da45eaba19cbe089de3fdf053c36046a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bb18a7338eb688ab427725933b9fc3f73b44b502
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030673"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992052"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: Optimalizace nákladů od doporučení.
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Ověření akce a ujistěte se, že virtuální počítač byl úspěšně se změněnou velikostí
 
 ## <a name="prerequisites"></a>Požadavky
-Doporučení jsou k dispozici všem [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) zákazníků. Můžete musí mít alespoň přístup pro čtení k nejméně jeden z následujících oborů zobrazení datům služby cost.
+Doporučení jsou dostupná pro všechny zákazníky se [smlouvou Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Abyste mohli zobrazit data nákladů, musíte mít alespoň přístup pro čtení k nejméně jednomu z následujících oborů.
 
 - Předplatné
 - Skupina prostředků

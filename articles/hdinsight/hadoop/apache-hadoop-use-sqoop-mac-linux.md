@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.openlocfilehash: bb6ad52f008ddeec5d3ecd3b0fdbc80dbf627101
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 1b6a77e78d3385c9dfd4e43e0e4242c870eb8c57
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685918"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012551"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Použití Apache Sqoop k importu a exportu dat mezi Apache Hadoop v HDInsight a databází SQL
 
@@ -171,8 +171,8 @@ Nyní jste se naučili, jak použít Sqoop. Další informace naleznete v témat
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [sqldatabase-get-started]: ../sql-database-get-started.md
 
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

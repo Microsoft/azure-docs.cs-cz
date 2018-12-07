@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f1bb400650a223a9f0b4249c33f7c480a1bc009
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262365"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002050"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Zabezpečení Frame: Citlivá Data | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -429,7 +429,7 @@ Typ clientCredentialType nastaven na certifikátu nebo Windows.
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecná rozhraní .NET Framework 3 |
 | **Atributy**              | Zpráva o režim – přenosu, režimu zabezpečení – zabezpečení |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_security_not_enabled), [Magazine kódu Základy zabezpečení WCF](http://www.codemag.com/article/0611051) |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference), [Magazine kódu Základy zabezpečení WCF](http://www.codemag.com/article/0611051) |
 | **Kroky** | Nebyla definována žádná zabezpečení transport nebo zprávy. Aplikace, které odesílání zpráv bez přenosu nebo zprávy, že zabezpečení zaručit integritu a důvěrnost zpráv. Pokud vazby zabezpečení WCF je nastaven na hodnotu None, přenosu a zprávu zabezpečení jsou zakázané. |
 
 ### <a name="example"></a>Příklad:

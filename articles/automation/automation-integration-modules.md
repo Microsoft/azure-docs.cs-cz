@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e4bd6a3e39fbb5d1eea4d7770d8940f801aecd43
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 7b7bd66d90ad01479965c928eb69bfb1dfccce5b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276479"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000203"
 ---
 # <a name="azure-automation-integration-modules"></a>Moduly integrace pro Azure Automation
 PowerShell je základní technologií, která stojí za službou Azure Automation. Vzhledem k tomu, že Azure Automation je postavená na PowerShellu, jsou moduly PowerShellu klíčem k rozšiřitelnosti služby Azure Automation. V tomto článku vás provedeme specifiky používání služby Azure Automation modulů Powershellu, jsou označovány jako "Moduly integrace" a osvědčené postupy pro vytváření vlastních modulů Powershellu, abyste měli jistotu, že fungují jako moduly integrace v rámci Azure Automatizace. 
@@ -74,7 +74,7 @@ Ačkoli jsou moduly integrace v zásadě moduly PowerShellu, stále existuje řa
     #>
     function Get-TwilioPhoneNumbers {
     [CmdletBinding(DefaultParameterSetName='SpecifyConnectionFields', `
-    HelpUri='http://www.twilio.com/docs/api/rest/outgoing-caller-ids')]
+    HelpUri='https://www.twilio.com/docs/api/rest/outgoing-caller-ids')]
     param(
        [Parameter(ParameterSetName='SpecifyConnectionFields', Mandatory=$true)]
        [ValidateNotNullOrEmpty()]
@@ -136,7 +136,7 @@ Ačkoli jsou moduly integrace v zásadě moduly PowerShellu, stále existuje řa
     ```powershell
     function Send-TwilioSMS {
       [CmdletBinding(DefaultParameterSetName='SpecifyConnectionFields', `
-      HelpUri='http://www.twilio.com/docs/api/rest/sending-sms')]
+      HelpUri='https://www.twilio.com/docs/api/rest/sending-sms')]
       param(
          [Parameter(ParameterSetName='SpecifyConnectionFields', Mandatory=$true)]
          [ValidateNotNullOrEmpty()]

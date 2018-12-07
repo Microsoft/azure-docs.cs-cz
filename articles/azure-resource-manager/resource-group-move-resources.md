@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15ec028046b7c2b21f1892c460d53c73499680fe
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 27b41655d9a6c9000d9bc3cf98bf3246bb108104
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312533"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015547"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -215,7 +215,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Portálu řídicích panelů
 * Power BI – jak Power BI Embedded a Power BI pracovního prostoru kolekce
 * Veřejná IP adresa – viz [omezení veřejné IP adresy](#pip-limitations)
-* Redis Cache – Pokud instance služby Redis Cache je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [omezení virtuální sítě](#virtual-networks-limitations).
+* Mezipaměť Azure pro Redis - li ukládání do mezipaměti Azure pro instanci Redis je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [omezení virtuální sítě](#virtual-networks-limitations).
 * Scheduler
 * Search
 * Service Bus
@@ -330,7 +330,7 @@ Při přesunu virtuální síť, musíte také přesunout její závislé prost�
 
 Pokud chcete přesunout partnerské virtuální síti, musíte nejprve zakázat, partnerský vztah virtuální sítě. Jakmile zakázaná, můžete přesunout virtuální sítě. Po přesunutí znovu povolte partnerský vztah virtuální sítě.
 
-Virtuální síť nelze přesunout do jiného předplatného, pokud virtuální síť obsahuje podsítě pomocí navigačních odkazů. Například pokud prostředek služby Redis Cache se nasazuje do podsítě, má této podsíti navigační odkaz prostředku.
+Virtuální síť nelze přesunout do jiného předplatného, pokud virtuální síť obsahuje podsítě pomocí navigačních odkazů. Například pokud Azure pro prostředek Redis Cache se nasazuje do podsítě, má této podsíti navigační odkaz prostředku.
 
 ## <a name="app-service-limitations"></a>Omezení služby App Service
 

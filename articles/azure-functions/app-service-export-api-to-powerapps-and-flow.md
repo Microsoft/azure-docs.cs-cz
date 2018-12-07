@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: ceb0b1ce0d04c15a5b949519caad65d2c33b40ed
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c91508cbd98f18c875411cc7a36f9d71d817fb31
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092442"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997874"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Export rozhraní API hostovaných v Azure do PowerApps a Microsoft Flow
 
@@ -25,7 +25,7 @@ ms.locfileid: "44092442"
 Podobně vývojáře, které chcete je zveřejnit své rozhraní API šířeji v rámci organizace můžete zpřístupnit svoje rozhraní API na tvůrce aplikací a toků. V tomto tématu se dozvíte, jak exportovat rozhraní API vytvořené pomocí [Azure Functions](../azure-functions/functions-overview.md) nebo [služby Azure App Service](../app-service/app-service-web-overview.md). Exportovaná rozhraní API se stane *vlastního konektoru*, který se používá v PowerApps a Microsoft Flow, stejně jako integrovaného konektoru.
 
 ## <a name="create-and-export-an-api-definition"></a>Vytvoření a export definice rozhraní API
-Před exportem rozhraní API, musíte popsat rozhraní API pomocí definice OpenAPI (dříve označované jako [Swagger](http://swagger.io/) souboru). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API. PowerApps a Microsoft Flow můžete vytvořit vlastní konektory pro všechny definice OpenAPI 2.0. Azure Functions a Azure App Service mají integrovanou podporu pro vytváření, hostování a správu definice OpenAPI. Další informace najdete v tématu [hostovat rozhraní RESTful API s CORS v Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
+Před exportem rozhraní API, musíte popsat rozhraní API pomocí definice OpenAPI (dříve označované jako [Swagger](https://swagger.io/) souboru). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API. PowerApps a Microsoft Flow můžete vytvořit vlastní konektory pro všechny definice OpenAPI 2.0. Azure Functions a Azure App Service mají integrovanou podporu pro vytváření, hostování a správu definice OpenAPI. Další informace najdete v tématu [hostovat rozhraní RESTful API s CORS v Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
 > Můžete také vytvořit vlastní konektory v PowerApps a Microsoft Flow uživatelského rozhraní, bez použití definice OpenAPI. Další informace najdete v tématu [registrace a použití vlastního konektoru (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) a [registrace a použití vlastního konektoru (Microsoft Flow)](https://flow.microsoft.com/documentation/register-custom-api/).
@@ -113,7 +113,7 @@ Chcete-li importovat definice rozhraní API do PowerApps a Microsoft Flow, postu
 
 4. Na **Obecné** kartu, projděte si informace, které pocházejí z definice OpenAPI.
 
-5. Na **zabezpečení** kartu, pokud se zobrazí výzva k zadání podrobností o ověřování, zadejte hodnoty, které jsou vhodné pro typ ověřování. Klikněte na tlačítko **pokračovat**.
+5. Na **zabezpečení** kartu, pokud se zobrazí výzva k zadání podrobností o ověřování, zadejte hodnoty, které jsou vhodné pro typ ověřování. Klikněte na **Pokračovat**.
 
     ![Karta zabezpečení](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 

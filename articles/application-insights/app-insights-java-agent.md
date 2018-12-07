@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: c5a98b9182e3a644a808b363df2fd44b115828f0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: a62c6cbb6594aaf7c2c57d7efee1832d7b1430b7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727694"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000731"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycené výjimky a časy spuštění metody do webové aplikace v Javě
 
@@ -27,7 +27,7 @@ Pokud máte [instrumentována webové aplikace Java pomocí Application Insights
 * **Závislosti:** Data o volání, které aplikace provádí na dalších komponentách, včetně:
   * **Volání REST** provádí přes HttpClient, OkHttp a RestTemplate (Spring) jsou zachyceny.
   * **Redis** volání provedená prostřednictvím klienta Jedis jsou zachyceny.
-  * **[Volání JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL a SQL Server, Oracle DB příkazy ukládány automaticky. Pro MySQL Pokud volání trvá déle než 10s, bude agent podřízen plán dotazu.
+  * **[Volání JDBC](https://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL a SQL Server, Oracle DB příkazy ukládány automaticky. Pro MySQL Pokud volání trvá déle než 10s, bude agent podřízen plán dotazu.
 * **Zachytit výjimky:** informace o výjimkách, které váš kód zpracovává.
 * **Metoda doba provádění:** informace o čas potřebný k provedení specifických metod.
 

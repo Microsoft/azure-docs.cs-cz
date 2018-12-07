@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: c96e195d425cff640a4961e34305c1af447f6f28
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 1e529b2276d2e68c67696ba9d142760f5881a25e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499429"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012806"
 ---
 # <a name="use-the-apache-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Použití uživatelského rozhraní Apache Tez k ladění úloh Tez na HDInsight se systémem Windows
 [Apache TEZ](https://tez.apache.org/) uživatelského rozhraní lze použít k ladění [Apache Hive](https://hive.apache.org/) úlohy, které používají jako prováděcí modul Tez. Uživatelského rozhraní Tez vizualizuje úlohy graf připojené položky, můžete přejít k podrobnostem jednotlivých položek a získání statistik a informace o protokolování.
@@ -136,4 +136,4 @@ Použijte následující postup ke spuštění dotazu Hive, který používá Te
 ## <a name="next-steps"></a>Další kroky
 Teď, když jste se naučili, jak používat [Apache TEZ](https://tez.apache.org/) zobrazení, další informace o [pomocí Apache Hive s HDInsight](hadoop/hdinsight-use-hive.md).
 
-Podrobné technické informace na Tez, najdete v článku [Apache Tez stránku na Hortonworks](http://hortonworks.com/hadoop/tez/).
+Podrobné technické informace na Tez, najdete v článku [Apache Tez stránku na Hortonworks](https://hortonworks.com/hadoop/tez/).

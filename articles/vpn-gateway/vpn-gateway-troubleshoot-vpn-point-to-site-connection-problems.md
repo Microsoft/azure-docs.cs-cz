@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 12/05/2018
 ms.author: genli
-ms.openlocfilehash: 937d0be2e86adf00ac2707d5fd57eb905dcea3fb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f600dbf27fec036b9a80a5a6fb11c5bc50cc915
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238312"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994180"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Poradce při potížích: Problémy s připojením Azure point-to-site
 
@@ -300,7 +300,7 @@ Tomuto problému může dojít, pokud klient VPN nezíská trasy ze služby Azur
 
 ### <a name="solution"></a>Řešení
 
-Chcete-li vyřešit tento problém [resetování brány Azure VPN](vpn-gateway-resetgw-classic.md).
+Chcete-li vyřešit tento problém [resetování brány Azure VPN](vpn-gateway-resetgw-classic.md). Pokud chcete mít jistotu, že se používají nové postupy, klienti VPN Point-to-Site musí znova stáhnout po vytvoření partnerského vztahu virtuální sítě se úspěšně nakonfigurovalo.
 
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Chyba: "funkce zrušení se nepodařilo zkontrolovat zrušení, protože server ověřování řetězu je offline. (Chyba 0x80092013)"
 

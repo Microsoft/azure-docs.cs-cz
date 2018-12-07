@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 08/13/2018
 ms.reviewer: mbullwin
 ms.author: nimolnar
-ms.openlocfilehash: f38c4a03a0d9b67b6ec8b20e489a6e4926d511c4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c6c895bda0818197e715a7d1f7aa2d96b959cb59
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720217"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999265"
 ---
 # <a name="dependency-auto-collection"></a>Automatické shromažďování závislostí
 
@@ -49,7 +49,7 @@ Níže je seznam aktuálně podporovaných volání závislostí, které jsou au
 |-------------|----------|
 | [Tomcat](https://tomcat.apache.org/) | 7, 8 | 
 | [JBoss EAP](https://developers.redhat.com/products/eap/download/) | 6, 7 |
-| [Jetty](http://www.eclipse.org/jetty/) | 9 |
+| [Jetty](https://www.eclipse.org/jetty/) | 9 |
 | <b>Aplikační architektury </b> |  |
 | [Spring](https://spring.io/) | 3.0 |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 1.5.9+<sup>*</sup> |
@@ -58,7 +58,7 @@ Níže je seznam aktuálně podporovaných volání závislostí, které jsou au
 | [Klient Apache Http](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) | 4.3 +<sup>†</sup> |
 | <b>Klienti úložiště</b> | |
 | [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1 +<sup>†</sup> |
-| [Oracle]( http://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 +<sup>†</sup> |
+| [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 +<sup>†</sup> |
 | [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1 +<sup>†</sup> |
 | <b>Protokolování knihovny</b> | |
 | [Logback](https://logback.qos.ch/) | 1 + |

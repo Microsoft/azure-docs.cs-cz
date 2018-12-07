@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 03eb5958e1c447ec1239289538906a0cb3e4b30d
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 86c1d9adc3b4ff66e2f02617df551e496a5482c8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634205"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014612"
 ---
 # <a name="use-apache-hive-with-apache-hadoop-on-hdinsight-with-remote-desktop"></a>Použití Apache Hivu s Apache Hadoop v HDInsight pomocí vzdálené plochy
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -110,15 +110,15 @@ Pokud používáte pomocí Hive Tez, naleznete v následujících dokumentech pr
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -134,4 +134,4 @@ Pokud používáte pomocí Hive Tez, naleznete v následujících dokumentech pr
 
 
 [Powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx

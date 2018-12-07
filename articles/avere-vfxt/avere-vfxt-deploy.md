@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: d7c207f89b9cb50f940f071fbbf6ee81b4d44976
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 8e265f2bed480f7b40476e09ab8f442aedcc9dd4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164316"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999454"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Nasazení clusteru vFXT
 
@@ -182,7 +182,7 @@ Informace potřebné pro připojení ke kontroleru:
 Informace potřebné pro cluster: 
 
 * Název skupiny prostředků
-* Umístění Azure 
+* Lokalita Azure 
 * Název virtuální sítě
 * Název podsítě
 * Název role uzlu clusteru – tento název je nastavena, když vytvoříte roli, je popsáno [níže](#create-the-cluster-node-access-role)
@@ -281,7 +281,7 @@ RESOURCE_GROUP=
 #STORAGE_RESOURCE_GROUP=
 ```
 
-* Název umístění
+* Název místa
 * Název virtuální sítě
 * Název podsítě
 * Azure AD název modulu runtime role – Pokud jste postupovali podle příkladu v [vytvořit role clusteru uzel přístupu](#create-the-cluster-node-access-role), použijte ``avere-cluster``. 
@@ -306,6 +306,15 @@ Po dokončení skriptu zkopírujte IP adresu správy, která je potřebná pro s
 
 ![Výstup příkazového řádku souboru, který zobrazuje IP adresa pro správu poblíž konce](media/avere-vfxt-mgmt-ip.png)
 
+> [!IMPORTANT] 
+> Pokud jste vytvořili nový kontejner objektů Blob, může být zašifrovaný pomocí klíče výchozí, který není uložili mimo cluster. Než ukládat data v kontejneru, musí buď stáhnout soubor obnovení klíčů nebo vytvořit vlastní šifrovací klíč a uložit jeho obnovení souboru do trvalého umístění. 
+> 
+> Pokud používáte výchozí klíč bez stažení souboru pro obnovení, je možné byste ztratili přístup k šifrovaných dat v filer základní objekt Blob, pokud vFXT cluster je zničen nebo ztráty.
+>
+> Pokud se zobrazí váš skript `WARNING` zpráv podobné těm v kruhu na snímku obrazovky níže, postupujte podle pokynů v [konfigurace úložiště](avere-vfxt-add-storage.md) stáhnout soubor klíče nebo vytvořte nový klíč pro váš kontejner objektů Blob. Pomocí nástroje Konfigurace clusteru, Avere ovládacích panelech.
+
+![Výstup příkazového řádku skriptu zobrazení zprávy s upozorněním vytváření nového šifrovacího klíče](media/avere-vfxt-key-warning.png)
+
 ## <a name="next-step"></a>Další krok
 
-Teď, když cluster běží a znáte jeho IP adresa pro správu, můžete [připojit k nástroji Konfigurace clusteru](avere-vfxt-cluster-gui.md) povolit podporu a v případě potřeby přidejte úložiště.
+Teď, když cluster běží a znáte jeho IP adresa pro správu, můžete [připojit k nástroji Konfigurace clusteru](avere-vfxt-cluster-gui.md) povolení podpory, přidejte úložiště, pokud potřeby, nebo IP adresa výchozího šifrovacího klíče na nové úložiště objektů Blob.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4c58984e512556b73281cca1154b4879c9db79d5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d9f632485d1ebf263efb78bfbf6de40496ebb75c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956757"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016250"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrana služby Azure SQL a dat ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol.  Doporučení platí pro typy prostředků Azure: virtuální počítače (VM), sítě, SQL a datům a aplikacím.
@@ -54,7 +54,7 @@ Pokud chcete povolit auditování, vyberte **Zapnuto** pod možností **Auditov�
 |Typ prostředku|Bezpečnostní skóre|Doporučení|Popis|
 |----|----|----|----|
 |Účet úložiště|20|Vyžádání bezpečného přenosu do účtu úložiště|Zabezpečený přenos je možnost, která vynutí účtu úložiště tak, aby přijímal požadavky jenom ze zabezpečeného připojení (HTTPS). Použití protokolu HTTPS zajišťuje ověřování mezi serverem a služby a chrání přenášená data ze sítě vrstvy útoky man-in-the-middle, odposlouchávání a napadení relace.|
-|Redis|20|Povolit pouze zabezpečená připojení k mezipaměti Redis|Povolte pouze připojení přes protokol SSL pro Redis Cache. Použití zabezpečeného připojení zajišťuje ověřování mezi serverem a služby a chrání přenášená data ze sítě vrstvy útoky man-in-the-middle, odposlouchávání a napadení relace.|
+|Redis|20|Povolit pouze zabezpečená připojení k mezipaměti Azure pro Redis|Povolte pouze připojení přes protokol SSL pro mezipaměť Azure Redis. Použití zabezpečeného připojení zajišťuje ověřování mezi serverem a služby a chrání přenášená data ze sítě vrstvy útoky man-in-the-middle, odposlouchávání a napadení relace.|
 |SQL|15|Povolit transparentní šifrování dat v databázích SQL|Povolte transparentní šifrování dat, aby se dala chránit neaktivní uložená data a splnit požadavky na dodržování předpisů.|
 |SQL|15|Povolení auditování pro servery SQL|Povolte auditování pro servery Azure SQL. (Pouze služby azure SQL. Nezahrnuje běžící na virtuálních počítačích SQL.)|
 |SQL|15|Povolení auditování pro databáze SQL|Povolte auditování pro databáze Azure SQL. (Pouze služby azure SQL. Nezahrnuje běžící na virtuálních počítačích SQL.)|

@@ -4,13 +4,15 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 15f582e80c486a1d12f98e34063af7af84ed6f0a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 2ed74a4ba19af3a441bcf26a48890f033e6c365f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571939"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002250"
 ---
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
+
 Po [nasazení clusteru Azure Container Service](../articles/container-service/dcos-swarm/container-service-deployment.md) možná budete potřebovat změnit počet uzlů agentů. Například můžete potřebovat přidat více agentů, abyste mohli spouštět více instancí nebo aplikací typu kontejner. 
 
 Počet uzlů agentů v clusteru DC/OS, Docker Swarm nebo Kubernetes můžete změnit pomocí webu Azure portal nebo rozhraní příkazového řádku Azure. 

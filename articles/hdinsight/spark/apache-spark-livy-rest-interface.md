@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 6a0a2dec6beeecca3779f4b047d3b5fe6295a1e6
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 999b5ca1f229677b9e11068f4beaa6e2704afd3d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495301"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012568"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Pomocí rozhraní Apache Spark REST API můžete odesílat vzdálené úlohy ke clusteru HDInsight Spark
 
@@ -26,7 +26,7 @@ Livy můžete použít ke spuštění interaktivních Spark prostředí nebo ode
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* [cURL](http://curl.haxx.se/). Tento článek používá cURL k předvedení jak provádět volání rozhraní REST API pro cluster HDInsight Spark.
+* [cURL](https://curl.haxx.se/). Tento článek používá cURL k předvedení jak provádět volání rozhraní REST API pro cluster HDInsight Spark.
 
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>Odeslat úlohu služby batch Apache Livy Spark
 Před odesláním úlohy služby batch, musíte nahrát soubor jar aplikace v úložišti clusteru přidružené ke clusteru. Můžete k tomu použít nástroj příkazového řádku [**AzCopy**](../../storage/common/storage-use-azcopy.md). Existují různé klienty, které vám umožní nahrát data. Můžete najít další informace o nich v [nahrávání dat pro úlohy Apache Hadoop v HDInsight](../hdinsight-upload-data.md).

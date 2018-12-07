@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/06/2018
 ms.author: jeedes
-ms.openlocfilehash: a8816451b45171e0ba8cbd7acc937201c587c481
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 24353f89f7c833a16675841f741a4a81ac34597c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627946"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>Kurz: Integrace Azure Active Directory Qlik Sense Enterprise
 
@@ -60,7 +60,7 @@ Ke konfiguraci integrace Qlik Sense organizace do služby Azure AD, budete muset
 
 **Chcete-li přidat Qlik Sense organizace z galerie, postupujte následovně:**
 
-1. V ** [webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -86,11 +86,11 @@ V sadě Qlik Sense Enterprise, přiřaďte hodnotu **uživatelské jméno** ve s
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Qlik Sense organizace, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on) ** – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user) ** – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Qlik Sense Enterprise](#create-a-qlik-sense-enterprise-test-user) ** – Pokud chcete mít protějšek Britta Simon v sadě Qlik Sense Enterprise, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user) ** – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on) ** – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Qlik Sense Enterprise](#create-a-qlik-sense-enterprise-test-user)**  – Pokud chcete mít protějšek Britta Simon v sadě Qlik Sense Enterprise, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -113,6 +113,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub`
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru:
+    
     | |
     |--|
     | `https://<Qlik Sense Fully Qualifed Hostname>.qlikpoc.com`|
@@ -283,7 +284,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="create-a-qlik-sense-enterprise-test-user"></a>Vytvoření zkušebního uživatele Qlik Sense Enterprise
 
-V této části vytvořte uživatele Britta Simon v Qlik Sense Enterprise. Práce s [tým podpory Qlik Sense Enterprise Client](https://www.qlik.com/us/services/support) přidat uživatele na platformě Qlik Sense Enterprise. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon v Qlik Sense Enterprise. Práce s [tým podpory Qlik Sense Enterprise Client](https://www.qlik.com/us/services/support) přidat uživatele na platformě Qlik Sense Enterprise. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -315,7 +316,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

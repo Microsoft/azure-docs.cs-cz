@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: e5835454b4a0c0f1f2748f44037a162416b87549
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 14acffbaf56cd77cc7ed22875e72fe9f26f28c0a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405799"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998687"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-ffiec-financial-services"></a>Dodržování předpisů a zabezpečení Azure: Analýza pro FFIEC z oboru finančních služeb
 
@@ -72,7 +72,7 @@ Následující část podrobně popisuje nasazení a implementaci prvky.
 
 **Služba Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) je a bez serveru výpočetní služba, která umožňuje uživatelům spouštět kód na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Azure Functions můžete použít ke spuštění skriptu nebo kusu kódu jako reakci na různé události.
 
-**Azure Machine Learning**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/) je technika datové vědy, která umožňuje počítačům s využitím existujících dat předpovídá budoucí chování, výsledky a trendy.
+**Služba Azure Machine Learning**: [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) je technika datové vědy, která umožňuje počítačům s využitím existujících dat předpovídá budoucí chování, výsledky a trendy.
 
 **Azure Data Catalog**: [katalogu Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) činí zdroje dat snadno objevitelné a srozumitelné uživatelé, kteří spravují data. Běžné zdroje dat můžete zaregistrovaný, příznakem a hledá finanční data. Data zůstávají uložena ve stávajícím umístění, ale kopie metadat spolu s odkazem na umístění zdroje dat přidá do katalogu Data Catalog. Tato metadata jsou také indexována, aby byl každý zdroj dat snadno objevitelný prostřednictvím vyhledávání a aby byl srozumitelný uživatelům, kteří ho objevili.
 

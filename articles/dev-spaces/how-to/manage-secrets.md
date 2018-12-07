@@ -11,12 +11,12 @@ ms.topic: article
 ms.technology: azds-kubernetes
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, kontejnery
-ms.openlocfilehash: 49e9a974dc01548c250f0b0a8b9b5afac5f286ff
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e155b4151a3b974e9ccc56a88028a89c35896522
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705493"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013997"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Správa tajných kódů při práci s prostorem vývoj Azure
 
@@ -112,5 +112,5 @@ Azure Dev prostory poskytují dvě možnosti pro ukládání tajných kódů dop
 
 ## <a name="next-steps"></a>Další postup
 
-S těmito metodami můžete teď bezpečně připojit k databázi, Redis cache nebo přístup k zabezpečení služby Azure.
+S těmito metodami teď můžete bezpečně připojit k databázi, Azure pro Redis Cache nebo přístup k zabezpečení služby Azure.
  

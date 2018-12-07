@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c704639ce696672a87485a36d43a282d04a47a7e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5183e626ac990e265e9f4794220f24d43d865ed7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845163"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999993"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy Application Insights Connector (Preview)
 
 ![Application Insights symbol](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Díky podpoře [dotazy napříč prostředky](../../log-analytics/log-analytics-cross-workspace-search.md), řešení pro správu konektoru služby Application Insights se už nevyžaduje a přestanou používat. Od července se nebudou moct propojit nové prostředky Application Insights do pracovních prostorů Log Analytics. Existující odkazy a řídicí panely, budou nadále fungovat až do listopadu 2018. Další informace najdete v tématu [portálu OMS do Azure](../../log-analytics/log-analytics-oms-portal-transition.md).
+> Díky podpoře [dotazy napříč prostředky](../../azure-monitor/log-query/cross-workspace-query.md), řešení pro správu konektoru služby Application Insights se už nevyžaduje a přestanou používat. Od července se nebudou moct propojit nové prostředky Application Insights do pracovních prostorů Log Analytics. Existující odkazy a řídicí panely, budou nadále fungovat až do listopadu 2018. Další informace najdete v tématu [portálu OMS do Azure](../../azure-monitor/platform/oms-portal-transition.md).
 
 Aplikace Insights Connector řešení vám pomůže diagnostikovat problémy s výkonem a pochopit, co uživatelé dělají s vaší aplikací při se monitoruje s [Application Insights](../../application-insights/app-insights-overview.md). Zobrazení stejné aplikace telemetrická data, která vývojářům zobrazit ve službě Application Insights jsou k dispozici ve službě Log Analytics. Však při integraci vašich aplikací služby Application Insights s Log Analytics se zvýší viditelnost vaší aplikace tím, že data o operacích a aplikacích na jednom místě. S stejného zobrazení vám umožňuje spolupracovat s vývojáři vaší aplikace. Obecná zobrazení může pomoct snížit čas a vyřešte aplikace od problémů platformy.
 
@@ -46,7 +46,7 @@ Na rozdíl od většina jiných řešení Log Analytics data nejsou shromažďov
 | --- | --- | --- |
 | [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ne | Řešení neshromažďuje informace z agentů Windows. |
 | [Agenti systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace z agentů Linuxu. |
-| [Skupiny pro správu SCOM](../../log-analytics/log-analytics-om-agents.md) | Ne | Řešení neshromažďuje informace z agentů v připojené skupině pro správu nástroje SCOM. |
+| [Skupiny pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Ne | Řešení neshromažďuje informace z agentů v připojené skupině pro správu nástroje SCOM. |
 | [Účet služby Azure Storage](collect-azure-metrics-logs.md) | Ne | Toto řešení dělá není shromažďování informací ze služby Azure storage. |
 
 ## <a name="prerequisites"></a>Požadavky

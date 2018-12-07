@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 562320b49f92d9ebb0c74c06e27fab63681955be
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: f027b4c827fd7afe1a9cd2f8f31839b092345728
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634069"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012483"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Použijte Java UDF Apache Hive v HDInsight
 
@@ -29,9 +29,9 @@ Zjistěte, jak vytvořit založené na jazyce Java uživatelem definované funkc
 
     Většinu kroků v tomto dokumentu fungovat na obou clusterech založených na Windows a Linuxu. Nicméně jsou specifické pro linuxových clusterech postupem nahrání kompilované UDF do clusteru a spustíme ji. Jsou uvedeny odkazy na informace, které lze použít s clustery se systémem Windows.
 
-* [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 nebo novější (nebo ekvivalentní, například OpenJDK)
+* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 nebo novější (nebo ekvivalentní, například OpenJDK)
 
-* [Apache Maven](http://maven.apache.org/)
+* [Apache Maven](https://maven.apache.org/)
 
 * Textový editor a integrované vývojové prostředí Java
 

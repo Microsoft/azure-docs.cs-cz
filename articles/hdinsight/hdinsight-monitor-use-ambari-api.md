@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4be14cd1804c27eedc49cc17e33298c6134f6a37
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: f9ae9b374e97c0f4be32d6c6a7d47fd803a1a0e5
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008738"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011517"
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Sledování clusterů Hadoop ve službě HDInsight pomocí rozhraní API Ambari
 Další informace o monitorování clusterů HDInsight pomocí rozhraní Ambari API.
@@ -150,12 +150,12 @@ Nyní jste se naučili, jak použít monitorování volání rozhraní API Ambar
 [ambari-api-reference]: https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md
 
 [curl]: http://curl.haxx.se
-[curl-download]: http://curl.haxx.se/download.html
+[curl-download]: https://curl.haxx.se/download.html
 
 [microsoft-hadoop-SDK]: http://hadoopsdk.codeplex.com/wikipage?title=Ambari%20Monitoring%20Client
 
 [powershell-install]: /powershell/azureps-cmdlets-docs
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
 [hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md

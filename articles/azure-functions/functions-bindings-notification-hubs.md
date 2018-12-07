@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: e51a74783f7d7f080d1caa237bb7aabab0100e72
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 72c0db44e1f56cab190f343a87c6b453625a7f70
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248578"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996035"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazby pro službu Azure Functions
 
@@ -28,7 +28,7 @@ Azure Notification Hubs, musí být nakonfigurovaný pro službu platformy ozná
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby centra oznámení jsou k dispozici v [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) úložiště GitHub.
+Vazby centra oznámení jsou k dispozici v [Microsoft.Azure.WebJobs.Extensions.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.NotificationHubs) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
@@ -136,7 +136,7 @@ private static TemplateNotification GetTemplateNotification(string message)
 }
 ```
 
-### <a name="f-template-example"></a>Příklad šablony F #
+### <a name="f-template-example"></a>F#Příklad šablony
 
 Tento příklad odešle oznámení [šablona registrace](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) obsahující `location` a `message`.
 

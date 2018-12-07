@@ -12,27 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: e92bcd412071d1a991a0bd3ec7b28df9f509c54c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 35b728793b81c41f0a81c5c7621b9e17edf1f22a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250882"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994677"
 ---
 # <a name="output-metadata"></a>Výstupní Metadata
 ## <a name="overview"></a>Přehled
 Kódovací úlohy jsou přiřazeny k vstupní prostředek (nebo prostředky) na kterém chcete provést některé úlohy kódování. Například kódování souboru MP4 do sad H.264 MP4 s adaptivní přenosovou rychlostí; vytvořit miniaturu. Vytvořte překrytí. Po dokončení úlohy je vytvořen výstupního prostředku.  Výstupní asset obsahuje video, zvuk, miniatury, atd. Výstupní asset obsahuje také soubor s metadaty o výstupního prostředku. Název souboru XML metadat má následující formát: &lt;source_file_name&gt;_manifest.xml (například BigBuckBunny_manifest.xml).  
 
+Služba Media Services nekontroluje preventivně vstupní prostředky ke generování metadat. Vstupní metadata se vygeneruje pouze jako artefakt při vstupní Asset se zpracovává v rámci úlohy. Proto tento artefakt se zapisují do výstupu Asset. Jiné nástroje se používají pro generování metadat pro prostředky vstupní a výstupní Assety. Vstupní metadata proto má mírně odlišné schéma než výstup metadat.
+
 Pokud chcete zkontrolovat soubor metadat, můžete vytvořit **SAS** Lokátor a stahování souborů do místního počítače.  
 
 Tento článek popisuje elementů a typů schématu XML, na kterém metada výstup (&lt;source_file_name&gt;_manifest.xml) je založena. Informace o souboru, který obsahuje metadata o vstupní asset najdete v tématu [vstupní Metadata](media-services-input-metadata-schema.md).  
 
-> [!NOTE]
-> Můžete najít kód úplné schéma a ukázkový kód XML na konci tohoto článku.  
->
->
+Můžete najít kód úplné schéma a ukázkový kód XML na konci tohoto článku.  
 
 ## <a name="AssetFiles "></a> AssetFiles kořenový element
 Kolekce položek AssetFile pro úlohy kódování.  

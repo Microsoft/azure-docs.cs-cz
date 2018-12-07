@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: e47233f075482b9ad00336ce1aaeae78465be2d5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 565b4c66c98d62fdcbd23f6446f522b810db1430
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248557"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999471"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue storage vazby pro službu Azure Functions
 
@@ -27,7 +27,7 @@ Tento článek vysvětluje, jak pracovat s Azure Queue storage vazby ve službě
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby front úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) úložiště GitHub.
+Vazby front úložiště jsou součástí [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) úložiště GitHub.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 

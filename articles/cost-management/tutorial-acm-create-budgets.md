@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: bb8eb4eae192cf0dd3a3555a3b1209705dd83aaf
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f64a82cc3096c3c4d2a47568f4d6d516c685ee04
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583687"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52991754"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 

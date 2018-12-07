@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: a3e0125a66c4b8bbda6e0b7087fe5e0e387d43e4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ccdee1963d3d37966f6784e7a7421c500d6a8a51
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847384"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994219"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -39,9 +39,9 @@ Pro řadu prostředků Azure uvidíte data shromážděná službou Azure Monito
 
 ![Metriky](media/overview/metrics.png)
 
-Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která zahrnuje [Bohatý dotazovací jazyk](../azure-monitor/log-query/log-query-overview.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [stránce Log Analytics](../log-analytics/log-analytics-log-search-portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [ pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
+Protokol data shromážděná službou Azure Monitor se ukládají ve službě Log Analytics, která zahrnuje [Bohatý dotazovací jazyk](../azure-monitor/log-query/log-query-overview.md) rychle načíst, konsolidovat a analyzovat shromážděná data.  Můžete vytvářet a testovat pomocí [stránce Log Analytics](../azure-monitor/log-query/portals.md) webu Azure portal a pak buď přímo analyzovat data s využitím těchto nástrojů nebo ukládat dotazy pro použití s [vizualizace](visualizations.md) nebo [ pravidla výstrah](../monitoring-and-diagnostics/monitoring-overview-alerts.md).
 
-Dotazovací jazyk Log Analytics je vhodný pro jednoduchá protokolu dotazy, ale zahrnuje také pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Můžete rychle naučit jazyk dotazu pomocí [více lekce](../log-analytics/query-language/get-started-queries.md) , které jsou k dispozici.  Pro uživatele, kteří již znají [SQL](../log-analytics/query-language/sql-cheatsheet.md) a [Splunk](../log-analytics/query-language/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
+Dotazovací jazyk Log Analytics je vhodný pro jednoduchá protokolu dotazy, ale zahrnuje také pokročilé funkce, jako jsou agregace, spojení a inteligentní analýzy. Můžete rychle naučit jazyk dotazu pomocí [více lekce](../azure-monitor/log-query/get-started-queries.md) , které jsou k dispozici.  Pro uživatele, kteří již znají [SQL](../azure-monitor/log-query/sql-cheatsheet.md) a [Splunk](../azure-monitor/log-query/splunk-cheatsheet.md), jsou k dispozici konkrétní pokyny.
 
 ![Logs](media/overview/logs.png)
 
@@ -61,7 +61,7 @@ Roztáhnout svá data ukládáte do aktuální operace prostředky podle [povole
 [Přidat Instrumentační balíček do vaší aplikace](../application-insights/app-insights-azure-web-apps.md)povolte Application Insights shromažďovat podrobné informace o vaší aplikaci, včetně zobrazení stránek, žádosti o aplikace a výjimky. Dále ověřte dostupnost vaší aplikace tím, že nakonfigurujete [test dostupnosti](../application-insights/app-insights-monitor-web-app-availability.md) můžete simulovat provoz uživatelů.
 
 ### <a name="custom-sources"></a>Vlastní zdroje
-Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST pomocí [rozhraní API kolekce dat](../log-analytics/log-analytics-data-collector-api.md). To umožňuje vytvářet vlastní scénáře monitorování a rozšiřování monitorování na prostředky, které Nezveřejňují telemetrická data prostřednictvím dalších zdrojů.
+Azure Monitor může shromažďovat data protokolu z jakéhokoli klienta REST pomocí [rozhraní API kolekce dat](../azure-monitor/platform/data-collector-api.md). To umožňuje vytvářet vlastní scénáře monitorování a rozšiřování monitorování na prostředky, které Nezveřejňují telemetrická data prostřednictvím dalších zdrojů.
 
 
 
@@ -119,7 +119,7 @@ Automatické škálování umožňuje mít správného množství prostředků s
 ![Zobrazení v Log Analytics](media/overview/view.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com) je služba pro obchodní analýzy, která poskytuje interaktivní vizualizace na různých zdrojů dat a efektivní způsob zpřístupnění dat pro ostatní uvnitř a vně organizace. Power BI, můžete nakonfigurovat [automaticky importovat data protokolů ze služby Azure Monitor](../log-analytics/log-analytics-powerbi.md) využívat tyto další vizualizace.
+[Power BI](https://powerbi.microsoft.com) je služba pro obchodní analýzy, která poskytuje interaktivní vizualizace na různých zdrojů dat a efektivní způsob zpřístupnění dat pro ostatní uvnitř a vně organizace. Power BI, můžete nakonfigurovat [automaticky importovat data protokolů ze služby Azure Monitor](../azure-monitor/platform/powerbi.md) využívat tyto další vizualizace.
 
 
 ![Power BI](media/overview/power-bi.png)

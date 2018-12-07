@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eec628a5084dc663978e16e617192802d3ecfcfa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307652"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994762"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Zabezpečení Frame: Povolení | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -349,7 +349,7 @@ Pomocí plně kvalifikované názvy (silnou) jednoznačně identifikuje typ a je
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecná rozhraní NET Framework 3 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.hpefod.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_unauthorized_access) |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference) |
 | **Kroky** | <p>Tato služba nepoužívá ovládacím prvku autorizace. Když klient volá konkrétní službu WCF, poskytuje WCF různých režimů ověřování, které ověřují, že volající nemá oprávnění k provedení metody služby na serveru. Pokud prvků pro ověřování nejsou povoleny pro služby WCF, ověřený uživatel může dosáhnout zvýšení úrovně oprávnění.</p>|
 
 ### <a name="example"></a>Příklad:

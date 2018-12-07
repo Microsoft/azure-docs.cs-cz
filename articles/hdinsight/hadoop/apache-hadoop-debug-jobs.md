@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 1589a5c1cab5a37322249762c840620d9ba4fc7e
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c997b2644be3798629afce6d826c53b1d9492597
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634630"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017010"
 ---
 # <a name="analyze-hadoop-logs"></a>Analýza protokolů Hadoop
 
@@ -103,7 +103,7 @@ Teď můžete aplikaci Excel k filtrování a řazení podle potřeby. Můžete 
 
 Pokud chcete zobrazit protokoly, naleznete v tématu [protokolům aplikací YARN přístupu na základě Linux HDInsight](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
-Další informace o aplikačních protokolů najdete v tématu [zjednodušuje správu přihlášení uživatele a přístup v YARNU](http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
+Další informace o aplikačních protokolů najdete v tématu [zjednodušuje správu přihlášení uživatele a přístup v YARNU](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/).
 
 ## <a name="view-cluster-health-and-job-logs"></a>Zobrazit protokoly stavu a úlohy clusteru
 ### <a name="access-the-ambari-ui"></a>Přístup k rozhraní Ambari

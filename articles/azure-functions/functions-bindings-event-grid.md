@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: d9eaaf7da938c259d328840970ee6f844d54ff9d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e5c5c7f667959426f015e207cd32d716c493e31e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836606"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995036"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -448,7 +448,7 @@ Pro zjednodušení zachycené zprávy o událostech, můžete nasadit [předem v
 
 Vyberte **Nasadit do Azure** a nasaďte řešení do svého předplatného. Na webu Azure Portal zadejte hodnoty pro parametry.
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 Dokončení nasazení může trvat několik minut. Po úspěšném nasazení si webovou aplikaci prohlédněte, abyste se ujistili, že funguje. Ve webovém prohlížeči přejděte na: `https://<your-site-name>.azurewebsites.net`
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 94c03c9aa6e361167b396af5218b308e6cacfafe
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e11833feba9466fed6ea6b4f698ba2184ad129e2
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879804"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52962194"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Řešení potíží s upozorněními protokolu ve službě Azure Monitor  
 ## <a name="overview"></a>Přehled
 Tento článek ukazuje, jak řešit běžné problémy, kterým dochází při nastavování upozornění protokolů ve službě Azure monitor. Poskytuje také řešení, která často kladené dotazy týkající se konfigurace upozornění protokolů nebo funkce. 
 
-Termín **upozornění protokolů** popisuje výstrahy, fire podle vlastního dotazu v [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Další informace o funkci, terminologie a typy v [upozornění - Přehled protokolů](monitor-alerts-unified-log.md).
+Termín **upozornění protokolů** popisuje výstrahy, fire podle vlastního dotazu v [Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Další informace o funkci, terminologie a typy v [upozornění - Přehled protokolů](monitor-alerts-unified-log.md).
 
 > [!NOTE]
 > Tento článek nebere v úvahu případech, kdy se zobrazí na webu Azure portal a výstraha spuštěná pravidla a provádí přidružené skupiny akcí oznámení. Pro tyto případy, najdete informace v článku na [skupiny akcí](monitoring-action-groups.md).
@@ -30,7 +30,7 @@ Termín **upozornění protokolů** popisuje výstrahy, fire podle vlastního do
 Tady je několik běžných příčin, proč nakonfigurovaného [pravidel upozornění protokolů ve službě Azure Monitor](alert-log.md) nezobrazí stav [jako *aktivuje* očekával](monitoring-alerts-managing-alert-states.md). 
 
 ### <a name="data-ingestion-time-for-logs"></a>Doba příjem dat protokolů
-Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Protože Log Analytics zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [doba příjem dat v Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
+Upozornění protokolu pravidelně spouští dotaz na základě [Log Analytics](../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../application-insights/app-insights-analytics.md). Protože Log Analytics zpracovává mnoho terabajtů dat z tisíce zákazníků z různých zdrojů po celém světě, tato služba je náchylný k různým časovou prodlevu. Další informace najdete v tématu [doba příjem dat v Log Analytics](../azure-monitor/platform/data-ingestion-time.md).
 
 Ke zmírnění zpoždění příjmu dat, systému vyčká a pokusí znovu výstraha dotazu více než jednou pokud zjistí, že zatím není přijatých potřebná data. Systém má exponenciálně rostoucím čekací doba nastavena. Protokol výstrah pouze aktivační události po dat je k dispozici, takže jejich zpoždění může být způsobeno ingestování protokol pomalých operací. 
 

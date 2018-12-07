@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 1571480540baedd5910c4153caf23e0687d48922
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e448b367e574b044762fb1ee7eaa30e1bb3e1f8b
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684973"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011729"
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Použití nástroje Sqoop se systémem Hadoop v HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -638,8 +638,8 @@ Get-AzureRmHDInsightJobOutput `
 [sqldatabase-get-started]: ../../sql-database/sql-database-get-started.md
 [sqldatabase-create-configure]: ../../sql-database/sql-database-get-started.md
 
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
 [powershell-install]: /powershell/azureps-cmdlets-docs
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

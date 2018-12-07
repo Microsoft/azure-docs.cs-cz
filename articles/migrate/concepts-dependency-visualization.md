@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: raynew
-ms.openlocfilehash: 9baf6ea70a8e9fa0dcd8ceefc9f58d7fa972767a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9cbb1f080b9a5a98984ad48854bccc4fb2044c16
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841961"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998338"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 
@@ -68,7 +68,7 @@ Další informace o cenách služby Azure Migrate najdete [zde](https://azure.mi
 
 ## <a name="how-do-i-manage-the-workspace"></a>Jak můžu spravovat pracovní prostor?
 
-Můžete použít pracovní prostor Log Analytics mimo službu Azure Migrate. Není odstraněn, je-li odstranit projekt migrace, ve kterém byla vytvořena. Pokud už nepotřebujete pracovního prostoru, [odstranit](../log-analytics/log-analytics-manage-access.md) ručně.
+Můžete použít pracovní prostor Log Analytics mimo službu Azure Migrate. Není odstraněn, je-li odstranit projekt migrace, ve kterém byla vytvořena. Pokud už nepotřebujete pracovního prostoru, [odstranit](../azure-monitor/platform/manage-access.md) ručně.
 
 Neodstraňovat pracovní prostor vytvořený službou Azure Migrate, není-li odstranit projekt migrace. Pokud tak učiníte, funkce vizualizace závislostí nebude fungovat podle očekávání.
 

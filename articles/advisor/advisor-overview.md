@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: d1b91d62eaafa60426c837cd0e40faaf7b60600b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 747ce8dc4a4e4c8ac1e26e5b051a431176096d71
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844579"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015972"
 ---
 # <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisoru
 
@@ -63,7 +63,7 @@ Můžete přistupovat doporučení Advisoru jako *vlastníka*, *Přispěvatel*, 
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Jaké prostředky služby Advisor poskytuje doporučení pro?
 
-Advisor poskytuje doporučení pro virtuální počítače, skupiny dostupnosti, služby application Gateway, App Services, SQL servery a Redis Cache.
+Advisor poskytuje doporučení pro virtuální počítače, skupiny dostupnosti, služby application Gateway, App Services, SQL servery a mezipaměti Azure Redis.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Můžete posunout nebo zavřít doporučení?
 

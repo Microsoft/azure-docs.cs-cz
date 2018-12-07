@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 4491be6df8716585e5e2095db5656e16a029bbed
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: f3e590ec5dded03ce9c6ab2f7a21d51048020622
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499283"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012585"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Použití sady Microsoft Cognitive Toolkit hloubkového učení modelu s clusterem Azure HDInsight Spark
 
@@ -116,7 +116,7 @@ Microsoft Cognitive Toolkit pomocí clusteru Azure HDInsight Spark, je nutné na
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [azure-create-storageaccount]:../../storage/common/storage-create-storage-account.md

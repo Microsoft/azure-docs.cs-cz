@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 1b0b3d0db2067a492905d8f828934f0b63fb8f54
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155979"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998097"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Můžete sestavit a spustit moderních přenosné mikroslužbových aplikací, k
 
 Jako otevřenou platformu Kubernetes umožňuje sestavovat aplikace s Upřednostňovaný programovací jazyk, operační systém, knihovny nebo zasílání zpráv Service bus. Existující průběžnou integraci a nástroje pro průběžné doručování (CI/CD) můžete integrovat s využitím Kubernetes k plánování a nasazení vydání.
 
-Azure Kubernetes Service (AKS) nabízí spravované služby Kubernetes, která snižuje složitost pro nasazení a základní úlohy správy, včetně koordinace upgrady. Hlavní servery clusteru AKS spravuje platformy Azure a budete platit jenom za uzlů AKS, na kterých běží vaše aplikace. AKS je postavený na modul open source Azure Container Service (acs-engine).
+Azure Kubernetes Service (AKS) nabízí spravované služby Kubernetes, která snižuje složitost pro nasazení a základní úlohy správy, včetně koordinace upgrady. Hlavní servery clusteru AKS spravuje platformy Azure a budete platit jenom za uzlů AKS, na kterých běží vaše aplikace. AKS je postavený na modul open source Azure Kubernetes Service (aks-engine).
 
 ## <a name="kubernetes-cluster-architecture"></a>Architektura clusteru Kubernetes
 
@@ -54,7 +54,7 @@ Poskytuje předlohu jednoho tenanta clusteru AKS pomocí vyhrazeného serveru ro
 
 Tento hlavní spravovaný cluster znamená, že není potřeba konfigurovat součásti, jako jsou s vysokou dostupností *etcd* úložiště, ale také znamená, že hlavní clusteru nelze přímý přístup. Upgrade na Kubernetes jsou orchestrované prostřednictvím rozhraní příkazového řádku Azure nebo webu Azure portal, který provede upgrade hlavní clusteru a pak uzly. Řešení potíží s informace o možných problémech, můžete zkontrolovat hlavní protokoly clusteru pomocí Azure Log Analytics.
 
-Pokud je potřeba nakonfigurovat hlavní clusteru specifickým způsobem nebo potřebujete přímý přístup k nim, můžete nasadit vlastní cluster Kubernetes pomocí [acs-engine][acs-engine].
+Pokud je potřeba nakonfigurovat hlavní clusteru specifickým způsobem nebo potřebujete přímý přístup k nim, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine].
 
 ## <a name="nodes-and-node-pools"></a>Uzly a fondy uzlů
 
@@ -70,7 +70,7 @@ Velikost virtuálního počítače Azure pro uzly definuje počet procesorů, ko
 
 Ve službě AKS image virtuálního počítače pro uzly ve vašem clusteru momentálně založené na Ubuntu Linuxu. Při vytváření clusteru AKS nebo vertikálně navýšit kapacitu počtu uzlů, Platforma Azure vytvoří požadovaný počet virtuálních počítačů a nakonfiguruje je. Neexistuje žádná ruční konfigurace do mezipaměti.
 
-Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [acs-engine][acs-engine]. Nadřazeného `acs-engine` uvolní funkce a poskytnout informace o možnostech konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete používat kontejnery Windows nebo modul runtime kontejneru než Dockeru, můžete použít `acs-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
+Pokud je potřeba pomocí jiného hostitele operačního systému, modul runtime kontejneru, nebo použít vlastní balíčky, můžete nasadit vlastní cluster Kubernetes pomocí [aks-engine][aks-engine]. Nadřazeného `aks-engine` uvolní funkce a poskytnout informace o možnostech konfigurace předtím, než se oficiálně podporuje v clusteru AKS. Například pokud chcete používat kontejnery Windows nebo modul runtime kontejneru než Dockeru, můžete použít `aks-engine` můžete nakonfigurovat a nasadit cluster Kubernetes, který bude vyhovovat vašim aktuálním potřebám.
 
 ### <a name="resource-reservations"></a>Rezervace prostředků
 
@@ -218,7 +218,7 @@ Tento článek popisuje některé základní součásti Kubernetes a jak se vzta
 - [Kubernetes snížit nebo navýšit AKS][aks-concepts-scale]
 
 <!-- EXTERNAL LINKS -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [kubernetes-pods]: https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/
 [kubernetes-pod-lifecycle]: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
 [kubernetes-deployments]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/

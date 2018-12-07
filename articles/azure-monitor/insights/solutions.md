@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: a498c9251c305b4845cc911fc9a21fbdafda72fe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 2bf82c19498087e21bc66bf3c813b8f23d50d621
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832254"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996497"
 ---
 # <a name="management-solutions-in-azure"></a>Řešení pro správu v Azure
 Využijte řešení pro správu služby v Azure a poskytuje další informace o provozu určitá aplikace nebo služby. Tento článek poskytuje stručný přehled o řešení pro správu v Azure a podrobnosti o používání a jejich instalace.
@@ -77,7 +77,7 @@ Klikněte na název řešení, otevřete její souhrnnou stránku. Tato stránka
 
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Pracovní prostor log Analytics a účet služby Automation
-Vyžadovat všechna řešení pro správu [pracovní prostor Log Analytics](../../log-analytics/log-analytics-manage-access.md) ukládat data shromážděná tímto řešením a k hostování jeho prohledávání protokolů a zobrazení. Některá řešení také vyžadovat [účtu Automation](../../automation/automation-security-overview.md#automation-account-overview) tak, aby obsahovala sady runbook a související prostředky. Pracovní prostor a účet, musí splňovat následující požadavky.
+Vyžadovat všechna řešení pro správu [pracovní prostor Log Analytics](../../azure-monitor/platform/manage-access.md) ukládat data shromážděná tímto řešením a k hostování jeho prohledávání protokolů a zobrazení. Některá řešení také vyžadovat [účtu Automation](../../automation/automation-security-overview.md#automation-account-overview) tak, aby obsahovala sady runbook a související prostředky. Pracovní prostor a účet, musí splňovat následující požadavky.
 
 * Každou instalaci řešení lze použít pouze jeden pracovní prostor Log Analytics a jeden účet služby Automation. Řešení můžete nainstalovat samostatně do několika pracovních prostorů.
 * Pokud řešení vyžaduje účet Automation, pak pracovní prostor Log Analytics a účet Automation musí být vzájemně propojený. Pracovní prostor Log Analytics může propojit jen do jednoho účtu Automation a účet Automation, které můžou být propojené jenom k jednomu pracovnímu prostoru Log Analytics.

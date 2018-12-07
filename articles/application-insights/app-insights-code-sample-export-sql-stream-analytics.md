@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: daeb2a08e29c71465581e3c51a92cb238a77417e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 140e9699f19986c929aaa58872b420dd97568c5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681836"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995452"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Názorný postup: Export do SQL z Application Insights s použitím Stream Analytics
 Tento článek popisuje, jak přesunout vaše telemetrická data z [Azure Application Insights] [ start] do služby Azure SQL database s použitím [průběžný Export] [ export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -259,6 +259,6 @@ Za pár minut vraťte se do nástroje pro správu SQL serveru a podívejte se na
 [diagnostic]: app-insights-diagnostic-search.md
 [export]: app-insights-export-telemetry.md
 [metrics]: app-insights-metrics-explorer.md
-[portal]: http://portal.azure.com/
+[portal]: https://portal.azure.com/
 [start]: app-insights-overview.md
 

@@ -1,5 +1,5 @@
 ---
-title: Monitorování clusteru Kubernetes v Azure – služby Sysdig
+title: (NEPOUŽÍVANÉ) Monitorování clusteru Kubernetes v Azure – služby Sysdig
 description: Monitorování clusteru Kubernetes ve službě Azure Container Service pomocí služby Sysdig
 services: container-service
 author: bburns
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: bbf59a35f420b5bbf292fbdaa5a8bbc173e4ee24
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 4aef241e2c86e4016c3c468fcdcfdfc620fc7aa9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091303"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998731"
 ---
-# <a name="monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>Monitorování clusteru služby Azure Container Service Kubernetes pomocí služby Sysdig
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-using-sysdig"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service Kubernetes pomocí služby Sysdig
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 Tento názorný průvodce předpokládá, že máte [vytvořit cluster Kubernetes pomocí služby Azure Container Service](container-service-kubernetes-walkthrough.md).

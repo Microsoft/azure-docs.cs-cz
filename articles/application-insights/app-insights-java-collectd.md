@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6cc817b86170ddab3152a041924ae99ff52a23ec
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 528b344063dd9f84720ee55c4b3663c20127e5fe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723920"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995054"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>shromážděná: metriky výkonu systému Linux ve službě Application Insights
 
 
-Prozkoumat metriky výkonu systému Linux v [Application Insights](app-insights-overview.md), nainstalujte [shromážděná](http://collectd.org/)společně s jeho modul plug-in Application Insights. Toto řešení open source shromáždí různé systémové a síťové statistiky.
+Prozkoumat metriky výkonu systému Linux v [Application Insights](app-insights-overview.md), nainstalujte [shromážděná](https://collectd.org/)společně s jeho modul plug-in Application Insights. Toto řešení open source shromáždí různé systémové a síťové statistiky.
 
 Obvykle použijete shromážděná, pokud už máte [instrumentována webová služba jazyka Java pomocí Application Insights][java]. Poskytuje víc dat, která umožňují zvýšit výkon vaší aplikace nebo diagnostiky problémů. 
 
@@ -38,7 +38,7 @@ Pořiďte si klíč instrumentace, který identifikuje prostředek.
 ## <a name="install-collectd-and-the-plug-in"></a>Nainstalujte shromážděná a modulu plug-in
 Na počítačích serveru Linux:
 
-1. Nainstalujte [shromážděná](http://collectd.org/) verze 5.4.0 nebo vyšší.
+1. Nainstalujte [shromážděná](https://collectd.org/) verze 5.4.0 nebo vyšší.
 2. Stáhněte si [modul plug-in zapisovače shromážděná Application Insights](https://aka.ms/aijavasdk). Poznamenejte si číslo verze.
 3. Modul plug-in JAR do kopie `/usr/share/collectd/java`.
 4. Upravit `/etc/collectd/collectd.conf`:

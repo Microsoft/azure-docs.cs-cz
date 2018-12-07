@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: cff24991263ece54c143e5da8a3eb2a9e5b4af18
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 637ce81f2e2ef4c7271e26bd4e9dfe36da524e27
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634494"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012738"
 ---
 # <a name="run-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Spouštění dotazů Hive pomocí Apache Hadoop v HDInsight pomocí rozhraní REST
 
@@ -29,19 +29,19 @@ Další informace o použití rozhraní REST API WebHCat ke spouštění dotazů
   > [!IMPORTANT]
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* Klient REST. Tento dokument používá prostředí Windows PowerShell a [Curl](http://curl.haxx.se/) příklady.
+* Klient REST. Tento dokument používá prostředí Windows PowerShell a [Curl](https://curl.haxx.se/) příklady.
 
     > [!NOTE]
     > Prostředí Azure PowerShell obsahuje jednoúčelové rutiny určené pro práci s Hive v HDInsight. Další informace najdete v tématu [použití Hivu se službou Azure Powershellu](apache-hadoop-use-hive-powershell.md) dokumentu.
 
-Tento dokument taky využívá prostředí Windows PowerShell a [Jq](http://stedolan.github.io/jq/) ke zpracování dat JSON vrácených z požadavky REST.
+Tento dokument taky využívá prostředí Windows PowerShell a [Jq](https://stedolan.github.io/jq/) ke zpracování dat JSON vrácených z požadavky REST.
 
 ## <a id="curl"></a>Spuštění dotazu Hive
 
 > [!NOTE]
 > Pokud používáte cURL nebo jinou komunikaci REST s WebHCat, je třeba ověřit žádosti zadáním uživatelského jména a hesla pro správce clusteru HDInsight.
 >
-> Rozhraní API REST je zabezpečeno pomocí [základního ověřování](http://en.wikipedia.org/wiki/Basic_access_authentication). K zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server, vždy proveďte požadavky pomocí Secure HTTP (HTTPS).
+> Rozhraní API REST je zabezpečeno pomocí [základního ověřování](https://en.wikipedia.org/wiki/Basic_access_authentication). K zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server, vždy proveďte požadavky pomocí Secure HTTP (HTTPS).
 
 1. Nastavení přihlášení ke clusteru, který se používá ve skriptech v tomto dokumentu, použijte jednu z následujících příkazů:
 
@@ -190,15 +190,15 @@ Pokud používáte pomocí Hive Tez, naleznete v následujících dokumentech pr
 
 Další informace o rozhraní REST API v tomto dokumentu najdete v tématu [WebHCat odkaz](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference) dokumentu.
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -211,6 +211,6 @@ Další informace o rozhraní REST API v tomto dokumentu najdete v tématu [WebH
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
 
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 

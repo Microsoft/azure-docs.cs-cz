@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 23ec5cd6eee3333922b5371a0ece631ebbc20939
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 5bdd0efc61554fe29ef97c8be24ecb2f9bcf88b5
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248027"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997583"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure vazby služby SendGrid funkce
 
@@ -25,13 +25,13 @@ Tento článek vysvětluje, jak odesílat e-mailu pomocí [SendGrid](https://sen
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby služby SendGrid jsou součástí [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) úložiště GitHub.
+Vazby služby SendGrid jsou součástí [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) balíčku NuGet, verze 2.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.SendGrid/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Vazby služby SendGrid jsou součástí [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) úložiště GitHub.
+Vazby služby SendGrid jsou součástí [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 

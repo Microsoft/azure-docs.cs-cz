@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: f30114797c7ba62fde555487d3202de5edf48ecb
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 6122c1ef14d8ed1d93f682fdb3dbaaaaf30efabc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182344"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015020"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Správa služby Log Analytics pomocí PowerShellu
 Můžete použít [rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) k provádění různých funkcí ve službě Log Analytics z příkazového řádku nebo v rámci skriptu.  Příklady úloh, které můžete provést pomocí prostředí PowerShell:
@@ -205,7 +205,7 @@ Prostředky pro monitorování bez agentů prostředků Azure, musí mít diagno
 | Nástroje pro vyrovnávání zatížení          | Ano | |
 | Logic Apps              | Ano | Ano |
 | Network Security Groups (Skupiny zabezpečení sítě) | Ano | |
-| Redis Cache             |     | Ano |
+| Azure Cache for Redis             |     | Ano |
 | Služby hledání         | Ano | Ano |
 | Obor názvů služby Service Bus   |     | Ano |
 | SQL (v12)               |     | Ano |
@@ -221,7 +221,7 @@ $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegrou
 
 $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO" 
 
-Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Enabled $true
 ```
 
 Můžete také použít rutinu předchozí shromažďování protokolů z prostředků, které jsou v různých předplatných. Rutina je moct pracovat napříč předplatnými, protože tím id prostředku vytváření protokoly a protokoly jsou odeslána do pracovního prostoru.

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 12/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8068c4a8f38cd33a1a0547f5db5079bc75c76ec1
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: fcebada4ef10c3e0bb298e9308d66ecb37247832
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51013407"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999254"
 ---
 # <a name="register-an-application-in-azure-active-directory-b2c"></a>Registrace aplikace v Azure Active Directory B2C
 
@@ -82,7 +82,4 @@ Pokud vaše aplikace volá webové rozhraní API zabezpečené pomocí Azure AD 
 
 ## <a name="next-steps"></a>Další postup
 
-Jakmile budete mít aplikaci registrovanou pomocí Azure AD B2C, můžete absolvovat jeden z [našich kurzů pro rychlý start](active-directory-b2c-overview.md), který vám pomůže uvést ji do provozu.
-
-> [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET s registrací, přihlášením a resetováním hesla](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+Další informace o použití přístupových tokenů aplikace udělit oprávnění k rozhraním API v [dotazuje přístupové tokeny](active-directory-b2c-access-tokens.md)

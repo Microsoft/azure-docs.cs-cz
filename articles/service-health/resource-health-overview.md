@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/16/2018
 ms.author: stbaron
-ms.openlocfilehash: f5e059c4ce375edb50321afb772cce400cb19b92
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 918ff674e57a14f685c7f9ef2aaaca5ca064976e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309425"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012840"
 ---
 # <a name="azure-resource-health-overview"></a>Přehled Azure Resource Health
  
@@ -53,7 +53,7 @@ Služba Resource Health poskytuje další podrobnosti o události a proces obnov
 ![Stav služby "Není k dispozici" pro virtuální počítač z důvodu události platformy](./media/resource-health-overview/Unavailable.png)
 
 #### <a name="non-platform-events"></a>Události jiné platformy
-Události mimo platformy jsou aktivovány akce uživatelů. Příklady jsou zastavení virtuálního počítače nebo dosažení maximálního počtu připojení k mezipaměti Redis.
+Události mimo platformy jsou aktivovány akce uživatelů. Příklady jsou zastavení virtuálního počítače nebo dosažení maximálního počtu připojení k Azure Cache pro Redis.
 
 ![Stav služby "Není k dispozici" pro virtuální počítač kvůli jiné platformy](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
@@ -66,7 +66,7 @@ Pokud máte problémy s prostředkem, **neznámý** stav může naznačovat, že
 
 ![Stav "Neznámá" pro virtuální počítač](./media/resource-health-overview/Unknown.png)
 
-### <a name="degraded"></a>Sníženo
+### <a name="degraded"></a>Snížený výkon
 Stav **snížený** znamená, že váš prostředek byl nalezen ke ztrátě výkonu, i když je stále k dispozici pro použití.
 Různé prostředky mají své vlastní kritéria pro kdy určí, že má snížený výkon prostředku.
 

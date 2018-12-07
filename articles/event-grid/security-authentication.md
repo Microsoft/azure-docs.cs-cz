@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/01/2018
+ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: fe13c424a3da91e92a04cceb807b98fd1ffe4db0
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 427eb8abdede8c821d214d9f6a64fc6a122699de
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50914035"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002014"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpečení a ověřování 
 
@@ -25,21 +25,23 @@ Azure Event Grid má tři typy ověřování:
 
 ## <a name="webhook-event-delivery"></a>Doručování událostí Webhooku
 
-Webhooky jsou jedním z mnoha způsoby příjem událostí ze služby Azure Event Grid. Při vytvoření nové události je připraven, EventGrid service odešle požadavek HTTP na konfigurovaný koncový bod s událostí v textu požadavku.
+Webhooky jsou jedním z mnoha způsoby příjem událostí ze služby Azure Event Grid. Při vytvoření nové události je připraven, služby Event Grid odešle požadavek HTTP na konfigurovaný koncový bod s událostí v textu požadavku.
 
-Stejně jako mnoho dalších služeb, které podporují webhooky EventGrid vyžaduje, abyste prokázali "vlastnictví" váš koncový bod Webhooku, než začne doručování událostí do tohoto koncového bodu. Tento požadavek je zabránit stávají cílový koncový bod pro doručování událostí z EventGrid nic netušící koncový bod. Ale když použijete některou z níže uvedených tří služby Azure, infrastrukturu Azure automaticky zpracovává toto ověření:
+Stejně jako mnoho dalších služeb, které podporují webhooky služby Event Grid vyžaduje, abyste prokázali vlastnictví váš koncový bod Webhooku před spuštěním doručování událostí do tohoto koncového bodu. Tento požadavek uživatel se zlými úmysly zabraňuje zahlcení váš koncový bod s událostmi. Když použijete některou z níže uvedených tří služby Azure, infrastruktura Azure automaticky zpracovává toto ověření:
 
 * Azure Logic Apps
 * Azure Automation
-* Funkce Azure EventGrid událost. aktivační událost.
+* Azure Functions pro Trigger služby Event Grid.
 
-Pokud používáte jiný typ koncového bodu, jako například aktivační událost HTTP na základě funkcí Azure, musí koncový bod kódu se účastnit ověřování handshake s EventGrid. EventGrid podporuje dva různé ověření metody handshake modely:
+Pokud používáte jiný typ koncového bodu, jako například aktivační událost HTTP na základě funkcí Azure, musí koncový bod kódu účastnit handshake ověření pomocí služby Event Grid. Event Grid podporuje dva způsoby ověření předplatného.
 
-1. **Metoda handshake ValidationCode**: V době vytvoření odběru událostí, EventGrid účtuje "ověření událost odběru" do vašeho koncového bodu. Schéma této události je podobně jako ostatní EventGridEvent a obsahuje datovou část této události `validationCode` vlastnost. Jakmile vaše aplikace ověřila, zda je žádost o ověření pro předplatné Očekávaná událost, je potřeba reagovat pomocí přečtou zpět kód pro ověření do EventGrid kódu aplikace. Tento mechanismus handshake je podporováno ve všech verzích EventGrid.
+1. **Metoda handshake ValidationCode (prostřednictvím kódu programu)**: Pokud zdrojový kód pro vaše koncové body, tato metoda se doporučuje. V době vytvoření odběru událostí služby Event Grid odešle událost ověření předplatného do vašeho koncového bodu. Schéma této události je podobně jako ostatní události Event gridu. Obsahuje datovou část této události `validationCode` vlastnost. Vaše aplikace ověřuje, že žádost o ověření pro předplatné Očekávaná událost a vrátí kód pro ověření do služby Event Grid. Tento mechanismus handshake je podporováno ve všech verzích služby Event Grid.
 
-2. **Metoda handshake ValidationURL (Ruční ověření typu handshake)**: V některých případech nemusí mít kontrolu nad zdrojový kód pro implementaci metody handshake ValidationCode na základě koncového bodu. Například, pokud používáte službu třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nemůže reagovat na programově zpět pomocí ověřovacího kódu. Počínaje verzí 2018-05-01-preview, EventGrid teď podporuje handshake ruční ověření. Pokud vytváříte odběr událostí pomocí sady SDK nebo nástroj, který používá rozhraní API verze 2018-05-01-preview nebo novější, EventGrid odesílá `validationUrl` vlastnost jako součást datovou část události ověření předplatného. Dokončete signalizace stačí GET požadavku na tuto adresu URL, buď pomocí klienta REST nebo pomocí webového prohlížeče. Adresa URL zadaná ověřování je platná pouze pro asi 10 minut. Během této doby je stav zřizování odběr události `AwaitingManualAction`. Pokud neprovedete ruční ověření během 10 minut, Stav zřizování nastavená na `Failed`. Budete muset vytvořit odběr události znovu před zahájením ruční ověření.
+2. **Metoda handshake ValidationURL (ručně)**: V některých případech, systém nelze přístup ke zdrojovému kódu pro implementaci metody handshake ValidationCode koncového bodu. Například, pokud používáte službu třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nemůže reagovat na prostřednictvím kódu programu pomocí ověřovacího kódu.
 
-Tento mechanismus ruční ověření je ve verzi preview. Pokud ji chcete používat, je nutné nainstalovat [rozšíření Event Grid ](/cli/azure/azure-cli-extensions-list) pro [Azure CLI](/cli/azure/install-azure-cli). Můžete si je nainstalovat pomocí příkazu `az extension add --name eventgrid`. Pokud používáte rozhraní REST API, ujistěte se, že používáte `api-version=2018-05-01-preview`.
+   Počínaje verzí 2018-05-01-preview, podporuje Služba Event Grid handshake ruční ověření. Pokud vytváříte odběr událostí pomocí sady SDK nebo nástroj, který používá rozhraní API verze 2018-05-01-preview nebo později, odešle služby Event Grid `validationUrl` vlastnost v datové části události ověření předplatného. Dokončete signalizace najít tuto adresu URL v datech událostí a ručně odeslat požadavek GET. Můžete použít klienta REST nebo ve webovém prohlížeči.
+
+   Zadaná adresa URL je platný 10 minut. Během této doby je stav zřizování odběr události `AwaitingManualAction`. Pokud neprovedete ruční ověření během 10 minut, Stav zřizování nastavená na `Failed`. Budete muset vytvořit odběr události znovu před zahájením ruční ověření.
 
 ### <a name="validation-details"></a>Podrobnosti ověřování
 
@@ -80,7 +82,7 @@ Pro koncový bod vlastnictví prokázat způsobem, vracení kód pro ověření 
 
 Nebo můžete ručně ověřit předplatné z odesláním požadavku GET na adresu URL pro ověření. Odběr událostí zůstane ve stavu čekající na vyřízení, dokud nebude ověření.
 
-Můžete najít ukázka C#, který ukazuje, jak zpracovat handshake ověření předplatného na https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs.
+Příklad zpracování handshake ověření předplatného, najdete v článku [ C# ukázka](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
 ### <a name="checklist"></a>Kontrolní seznam
 

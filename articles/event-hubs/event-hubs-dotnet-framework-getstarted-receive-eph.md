@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cb1d26082fe4fbbd14b2b77f54d1bc7697b3538d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: c7b211202013050c826ef8a530a831b8f02673f6
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227956"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015088"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-the-net-framework"></a>Příjem událostí z Azure Event Hubs pomocí rozhraní .NET Framework
 
@@ -44,14 +45,14 @@ Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytv
 
 Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studio nový projekt desktopové aplikace Visual C#. Projekt nazvěte **Receiver** (Příjemce).
    
-![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
+![Vytvoření konzolové aplikace](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp1.png)
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **Receiver** a potom klikněte na **Spravovat balíčky NuGet pro řešení**.
 2. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus Event Hub - EventProcessorHost`. Klikněte na **Instalovat** a přijměte podmínky použití.
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
+    ![Vyhledejte balíček NuGet hostitel procesoru událostí](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-eph-csharp1.png)
    
     Visual Studio stáhne, nainstaluje a přidá odkaz na [balíček NuGet třídy EventProcessorHost služby Event Hub ve službě Azure Service Bus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost) se všemi jeho závislostmi.
 
@@ -59,7 +60,7 @@ Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studi
 
 1. Klikněte pravým tlačítkem na projekt **Receiver**, **Přidat** a potom na **Třída**. Pojmenujte novou třídu **SimpleEventProcessor** a potom kliknutím na **Přidat** třídu vytvořte.
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
+    ![Přidání třídy simpleeventprocessor přijímá](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-receiver-csharp2.png)
 2. Na začátek souboru SimpleEventProcessor.cs přidejte následující příkazy:
     
       ```csharp

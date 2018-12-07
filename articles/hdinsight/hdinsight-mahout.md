@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c8e3b1186192d0d7c3fabb4e5a02cc4fcdf494d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 5c12a84610d09b7557f0beb177273deba4468cc0
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51009789"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014816"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generování filmových doporučení pomocí Apache Mahout Hadoop v HDInsight (PowerShell)
 
@@ -218,8 +218,8 @@ Teď, když jste se naučili, jak pomocí Mahoutu, popisující další způsoby
 [100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
 [getstarted]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [upload]: hdinsight-upload-data.md
-[ml]: http://en.wikipedia.org/wiki/Machine_learning
-[forest]: http://en.wikipedia.org/wiki/Random_forest
+[ml]: https://en.wikipedia.org/wiki/Machine_learning
+[forest]: https://en.wikipedia.org/wiki/Random_forest
 [enableremote]: ./media/hdinsight-mahout/enableremote.png
 [connect]: ./media/hdinsight-mahout/connect.png
 [hadoopcli]: ./media/hdinsight-mahout/hadoopcli.png

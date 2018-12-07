@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 194f84d2ce5360aa9ad9f3d771bf24f153ac6f5c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: a75514013a1945d9ca5718be115184f6ba9950d9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496301"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015751"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště pro HDInsight
 
@@ -95,7 +95,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 > [!NOTE]
 > Nastavte `$PASSWORD` heslo účtu (správce) clusteru. Nastavte `$CLUSTERNAME` na název clusteru HDInsight. Nastavte `$STORAGEACCOUNTNAME` k názvu účtu úložiště.
 >
-> Tento příklad používá [curl (http://curl.haxx.se/) ](http://curl.haxx.se/) a [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) načíst a analyzovat JSON data.
+> Tento příklad používá [curl (https://curl.haxx.se/) ](https://curl.haxx.se/) a [jq (https://stedolan.github.io/jq/) ](https://stedolan.github.io/jq/) načíst a analyzovat JSON data.
 
 Při použití tohoto příkazu nahraďte __CLUSTERNAME__ s názvem clusteru HDInsight. Nahraďte __heslo__ s HTTP přihlašovací heslo clusteru. Nahraďte __STORAGEACCOUNT__ s názvem účtu úložiště, které jsou přidány pomocí skriptových akcí. Podobně jako tento text se zobrazí informace vrácené z tohoto příkazu:
 

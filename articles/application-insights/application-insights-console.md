@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: c8f2677e91eb1c3d2ac670a51793f319e82d61fe
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f2f237d250a6b6e2a0f6ed2e62540968d9fcc7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52719925"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997976"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro .NET konzolové aplikace
 [Application Insights](app-insights-overview.md) umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.
 
-Musíte mít předplatné s [Microsoft Azure](http://azure.com). Přihlaste se pomocí účtu Microsoft, které můžete mít zřízen pro Windows, Xbox Live a dalším cloudovým službám Microsoftu. Váš tým může mít předplatné pro společnosti do Azure: Požádejte vlastníka, aby vás přidal k ní pomocí svého účtu Microsoft.
+Musíte mít předplatné s [Microsoft Azure](https://azure.com). Přihlaste se pomocí účtu Microsoft, které můžete mít zřízen pro Windows, Xbox Live a dalším cloudovým službám Microsoftu. Váš tým může mít předplatné pro společnosti do Azure: Požádejte vlastníka, aby vás přidal k ní pomocí svého účtu Microsoft.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -124,7 +124,7 @@ TelemetryConfiguration.Active.TelemetryInitializers.Add(new OperationCorrelation
 TelemetryConfiguration.Active.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-* Pro aplikace Windows .NET Framework, můžete také nainstalovat a inicializovat modul čítače výkonu kolekcí, jak je popsáno [zde](http://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+* Pro aplikace Windows .NET Framework, můžete také nainstalovat a inicializovat modul čítače výkonu kolekcí, jak je popsáno [zde](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
 
 #### <a name="full-example"></a>Úplný příklad
 

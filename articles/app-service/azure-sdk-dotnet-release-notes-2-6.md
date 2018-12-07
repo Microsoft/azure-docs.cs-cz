@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 040eea1efd3abdbbfa65c24b2950ebece9d4acbc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: dfc1fe223dbff178c35a969e0273ed80fb4c8be9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258387"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016416"
 ---
 # <a name="azure-sdk-for-net-26-release-notes"></a>Zpráva k vydání verze Azure SDK pro .NET 2.6
 Tento dokument obsahuje poznámky k verzi pro Windows Azure SDK for .NET 2.6 vydání. 
@@ -59,7 +59,7 @@ Azure SDK 2.6 vám umožní vytvářet cloudové aplikace služby (PaaS) cílí 
     V tuto chvíli je Azure Storage verze 2011-08-18 naplánovat odebrání 1. srpna 2016. Žádné migrace v instanci Role z Azure SDK 2.5 nebo verzi uvedenou níže na 2.6 musí být úplné té doby. Další informace o vyřazení služby Azure Storage verze 2011-08-18 najdete v tématu [odebrání aktualizace služby verzi Microsoft Azure Storage: rozšíření na 2016](https://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx).
 
 > [!IMPORTANT]
-> Oznamujeme vyřazení z provozu 30. listopadu 2016, pro službu Azure Managed Cache Service a mezipaměť In-Role Azure. Doporučujeme migrovat na Azure Redis Cache během přípravy na toto vyřazení z provozu. Další informace o data a pokyny k migraci, najdete v části [z variant mezipaměti Azure který je pro mě nejlepší?](../redis-cache/cache-faq.md#which-azure-cache-offering-is-right-for-me)
+> Oznamujeme vyřazení z provozu 30. listopadu 2016, pro službu Azure Managed Cache Service a mezipaměť In-Role Azure. Doporučujeme migrovat do služby Azure Cache pro Redis při přípravě na toto vyřazení z provozu. Další informace o data a pokyny k migraci, najdete v části [z variant mezipaměti Azure který je pro mě nejlepší?](../azure-cache-for-redis/cache-faq.md#which-azure-cache-offering-is-right-for-me)
 > 
 > 
 

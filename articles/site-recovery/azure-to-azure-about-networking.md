@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 76b3d23a042fae452b25b0a707e3c7ff9bbda613
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f48283222f5c5d3b18d3dba17c2856801856fb94
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838188"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992117"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O možnostech sítě v replikaci z Azure do Azure
 
@@ -114,7 +114,10 @@ Tento příklad ukazuje postup při konfiguraci pravidla skupiny zabezpečení s
 
       ![úložiště – značka](./media/azure-to-azure-about-networking/storage-tag.png)
 
-2. Vytvářet odchozí pravidla HTTPS (443) pro všechny rozsahy IP adres, které odpovídají Office 365 [ověřování a identita koncovými body IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+2. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "AzureActiveDirectory" na skupiny zabezpečení sítě, jak je znázorněno v následujícím snímku obrazovky.
+
+      ![aad – značka](./media/azure-to-azure-about-networking/aad-tag.png)
+
 3. Vytvořte odchozí pravidla HTTPS (443) pro obnovení lokality IP adres, odpovídající cílové umístění:
 
    **Umístění** | **Site Recovery IP adresa** |  **Site Recovery monitorování IP adresa**
@@ -127,7 +130,7 @@ Tato pravidla jsou vyžadována proto, že je možné povolit replikaci z cílov
 
 1. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "Storage.CentralUS" na skupiny zabezpečení sítě.
 
-2. Vytvářet odchozí pravidla HTTPS (443) pro všechny rozsahy IP adres, které odpovídají Office 365 [ověřování a identita koncovými body IP V4](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity).
+2. Vytvořte odchozí pravidlo zabezpečení HTTPS (443) pro "AzureActiveDirectory" na skupiny zabezpečení sítě.
 
 3. Vytvořte odchozí pravidla HTTPS (443) pro obnovení lokality IP adresy, které odpovídají umístění zdroje:
 

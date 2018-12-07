@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: b4bc632b4951781b85847699d38fd10df14c1a87
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3106e523e3f8edd17cc27991181267acfab4308b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720741"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002142"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Názorný postup: Zapnutí Telemetrie pro Microsoft Dynamics CRM Online pomocí Application Insights
 V tomto článku se dozvíte, jak získat telemetrická data z [Microsoft Dynamics CRM Online](https://www.dynamics.com/) pomocí [Azure Application Insights](https://azure.microsoft.com/services/application-insights/). Provedeme procesem kompletní proces přidávání skript Application Insights do vaší aplikace, zachycení dat a vizualizace dat.
@@ -32,7 +32,7 @@ V tomto článku se dozvíte, jak získat telemetrická data z [Microsoft Dynami
 Pro monitorování vaší aplikace, přidejte sadu Application Insights SDK do vaší aplikace. Sada SDK odesílá telemetrická data [portál Application Insights](https://portal.azure.com), kde můžete použít naši výkonné analýzy a diagnostické nástroje, nebo exportovat data do úložiště.
 
 ### <a name="create-an-application-insights-resource-in-azure"></a>Vytvořte prostředek Application Insights v Azure
-1. Získat [účet v Microsoft Azure](http://azure.com/pricing). 
+1. Získat [účet v Microsoft Azure](https://azure.com/pricing). 
 2. Přihlaste se [webu Azure portal](https://portal.azure.com) a přidat nový prostředek Application Insights. Toto je, kde zpracovat a zobrazit vaše data.
 
     ![Klikněte na +, služby pro vývojáře, Application Insights.](./media/app-insights-sample-mscrm/01.png)

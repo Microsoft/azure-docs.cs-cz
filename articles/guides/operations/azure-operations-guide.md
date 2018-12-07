@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 07faf5efd1c7eec3e209a5d971185655cc949bb9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4ced3aa9b7d37543b4942bbfa9a5605058a614d8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250777"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014731"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -107,7 +107,7 @@ Služby pro ukládání a správu dat:
 
 - Microsoft Azure StorSimple
 
-- Azure Redis Cache
+- Azure Cache for Redis
 
 ### <a name="application-services"></a>Aplikační služby
 

@@ -8,12 +8,12 @@ ms.date: 12/04/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 9a60d8c17ba091da7c5eaf0e28160573d5faafa8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 41eb31ecabb20ec9eec3db13d5eda9f9cfbe6c69
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963126"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015462"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -123,7 +123,7 @@ Pokud máte služby Multi-Factor authentication na vašem účtu Azure, nemůže
 
 #### <a name="resolution"></a>Řešení
 
-Pomocí rutin modelu nasazení Azure classic pomocí certifikátu, najdete v tématu [vytváření a přidání certifikátu pro správu služeb Azure.](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Použití instančního objektu s rutiny Azure Resource Manageru, najdete v tématu [vytváří se instanční objekt pomocí webu Azure portal](../../active-directory/develop/howto-create-service-principal-portal.md) a [ověřování instančního objektu pomocí Azure Resource Manageru.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+Pomocí rutin modelu nasazení Azure classic pomocí certifikátu, najdete v tématu [vytváření a přidání certifikátu pro správu služeb Azure.](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) Použití instančního objektu s rutiny Azure Resource Manageru, najdete v tématu [vytváří se instanční objekt pomocí webu Azure portal](../../active-directory/develop/howto-create-service-principal-portal.md) a [ověřování instančního objektu pomocí Azure Resource Manageru.](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Běžné chyby při práci s runbooky
 
@@ -337,6 +337,24 @@ Rutiny Powershellu, které umožňují scénáře podřízené sady runbook jsou
 [Start-AzureRMAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) – Tato rutina umožňuje spuštění sady runbook a předání parametrů do runbooku
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) – Tato rutina umožňuje kontrole stavu úlohy pro každý podřízený prvek, pokud operace, které je třeba provést po dokončení podřízeného runbooku.
+
+### <a name="expired webhook"></a>Scénář: Status: 400 – Chybný požadavek při vyvolání webhooku
+
+#### <a name="issue"></a>Problém
+
+Při pokusu o vyvolání webhook pro runbook Azure Automation se zobrazí následující chyba.
+
+```error
+400 Bad Request : This webhook has expired or is disabled
+```
+
+#### <a name="cause"></a>Příčina
+
+Webhook, který se snažíte volat je zakázáno nebo vypršela platnost.
+
+#### <a name="resolution"></a>Řešení
+
+Pokud je webhook zakázaný, můžete znovu povolit webhook prostřednictvím webu Azure portal. Pokud webhooku vypršela, musí se webhook odstranit a znovu vytvořit. Je možné pouze [obnovit webhooku](../automation-webhooks.md#renew-webhook) pokud ho ještě nevypršela.
 
 ### <a name="429"></a>Scénář: 429: frekvence požadavků je momentálně moc velká. Opakujte akci.
 

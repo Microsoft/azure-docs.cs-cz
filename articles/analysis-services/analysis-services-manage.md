@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 536ae926ad8f401f952a41e17074536cc2b3c5f1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0bae06d46c2c96ba9dd058e9c2d380379523811c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832033"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993929"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
 Po vytvoření serveru služby Analysis Services v Azure, může být administrace a správa úlohy, které je potřeba provést hned nebo nějakou dobu mimo provoz cestách. Například spusťte zpracování pro aktualizaci dat, řízení, kdo může přistupovat modely na serveru nebo monitorování stavu vašeho serveru. Některé úlohy správy lze provést pouze webu Azure Portal, ostatní v SQL Server Management Studio (SSMS) a některé úkoly lze provést v jednom.
@@ -35,7 +35,7 @@ Pokud chcete získat všechny nejnovější funkce a možnosti nejhladší při 
 
 
 ### <a name="to-connect-with-ssms"></a>Připojit pomocí SSMS
- Při použití aplikace SSMS, před připojením k serveru poprvé, ujistěte se, že vaše uživatelské jméno je součástí skupiny Správci Analysis Services. Další informace najdete v tématu [správcům serverů](#server-administrators) dále v tomto článku.
+ Při použití aplikace SSMS, před připojením k serveru poprvé, ujistěte se, že vaše uživatelské jméno je součástí skupiny Správci Analysis Services. Další informace najdete v tématu [správci serveru a databáze uživatelů](#server-administrators-and-database-users) dále v tomto článku.
 
 1. Než připojíte, musíte získat název serveru. Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopírujte název serveru.
    

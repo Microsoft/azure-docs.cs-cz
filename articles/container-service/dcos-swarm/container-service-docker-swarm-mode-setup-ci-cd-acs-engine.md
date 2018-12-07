@@ -1,5 +1,5 @@
 ---
-title: CI/CD s modul Azure Container Service a režim Swarm
+title: (NEPOUŽÍVANÉ) CI/CD s modul Azure Container Service a režim Swarm
 description: Použít modul Azure Container Service pomocí režimu Docker Swarm, Azure Container Registry a Azure DevOps nepřetržitě dodávat vícekontejnerová aplikace .NET Core
 services: container-service
 author: diegomrtnzg
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 296c097ee3302eaa39210274b16c6352866eac8a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 52d20004f43b5c553a17c44f3f35d30fd5693286
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299572"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995058"
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service s modulem ACS a režimu Docker Swarm pomocí Azure DevOps
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(NEPOUŽÍVANÉ) Úplný kanál CI/CD pro nasazení aplikace ve službě Azure Container Service s modulem ACS a režimu Docker Swarm pomocí Azure DevOps
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 *Tento článek je založen na [úplné kanály CI/CD pro nasazení aplikace ve službě Azure Container Service pomocí nástroje Docker Swarm pomocí Azure DevOps](container-service-docker-swarm-setup-ci-cd.md) dokumentace*
 

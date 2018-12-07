@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: f37bfc59e402e87afcffa469d4d2014ed6877db6
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e535d1c2c581e20667a1ccf10fc97fcf988bc91a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955696"
+ms.locfileid: "53001812"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
 Komunita Kubernetes vydává dílčí verze přibližně každé tři měsíce. Tato vydání obsahují nové funkce a vylepšení. Opravná vydání jsou častější (někdy i každý týden) a slouží jen k opravám kritických chyb v dílčí verzi. Tyto opravy verze zahrnují opravy pro chyby zabezpečení nebo hlavní chyby vliv na velký počet zákazníků a produktů, které běží v produkčním prostředí založené na Kubernetes.
 
-Dílčí verze je k dispozici v nové Kubernetes [acs-engine] [ acs-engine] na jeden den. AKS Service Level Objective (SLO) má za cíl vydat dílčí verzi pro clustery AKS během 30 dní, v závislosti na stabilitě vydané verze.
+Dílčí verze je k dispozici v nové Kubernetes [aks-engine] [ aks-engine] na jeden den. AKS Service Level Objective (SLO) má za cíl vydat dílčí verzi pro clustery AKS během 30 dní, v závislosti na stabilitě vydané verze.
 
 ## <a name="kubernetes-version-support-policy"></a>Zásady podpory verzí Kubernetes
 
@@ -84,7 +84,7 @@ Hlavní server se automaticky aktualizují na nejnovější verzi.
 Informace o tom, jak upgradovat váš cluster najdete v tématu [Upgrade clusteru Azure Kubernetes Service (AKS)][aks-upgrade].
 
 <!-- LINKS - External -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [azure-update-channel]: https://azure.microsoft.com/updates/?product=kubernetes-service
 
 <!-- LINKS - Internal -->

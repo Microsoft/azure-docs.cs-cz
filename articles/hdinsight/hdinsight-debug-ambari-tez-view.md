@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0d2f55538517881ce6cc237885f3bcadfa084520
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 312b476f8809d1d6375cc20035901d8d11c32173
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494956"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012347"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Použití zobrazení Apache Ambari k ladění úloh Tez Apache v HDInsight
 
@@ -103,6 +103,6 @@ Ke spuštění dotazu Hive, který používá Tez, postupujte následovně:
 
 Teď, když jste se naučili, jak používat zobrazení Apache Tez, další informace o [pomocí Apache Hive s HDInsight](hadoop/hdinsight-use-hive.md).
 
-Podrobné technické informace o Apache Tez, najdete v článku [Apache Tez stránku na Hortonworks](http://hortonworks.com/hadoop/tez/).
+Podrobné technické informace o Apache Tez, najdete v článku [Apache Tez stránku na Hortonworks](https://hortonworks.com/hadoop/tez/).
 
 Další informace o používání Apache Ambari se službou HDInsight najdete v tématu [HDInsight Správa clusterů pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)

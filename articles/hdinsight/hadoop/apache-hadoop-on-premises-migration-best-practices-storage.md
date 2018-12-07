@@ -9,18 +9,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4f4aedd1d85a83e6f55d5729b82b88e2e9e8c00d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: ec67cb6b4bc1dd29dbbac4056d3365a74b31a24c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415929"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013695"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrace s místními clustery systému Apache Hadoop do HDInsight Azure - storage osvědčené postupy
 
 Tento článek obsahuje doporučení pro ukládání dat v Azure HDInsight systémy. To je součástí série, která poskytuje osvědčené postupy pro pomoc s migrací místních systémů Apache Hadoop do Azure HDInsight.
 
-## <a name="choose-the-right-storage-system-for-hdinsight-clusters"></a>Zvolte systém úložiště pro clustery HDInsight
+## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>Zvolte systém úložiště pro clustery HDInsight
 
 Místní adresářovou strukturu Apache Hadoop File System (HDFS) je znovu vytvořit v Azure Storage nebo Azure Data Lake Storage. Pak můžete bezpečně odstranit clusterů HDInsight, které jsou používány pro výpočty, aniž by se ztratila uživatelská data. Obě služby může sloužit jako výchozí systém souborů a systém další souborů pro HDInsight cluster. HDInsight cluster a účet úložiště musí být hostovaný ve stejné oblasti.
 
@@ -34,9 +34,12 @@ Clustery HDInsight můžete použít kontejner objektů blob ve službě Azure S
 
 Pro přístup k datům uloženým ve službě Azure Storage se dá jednu z následujících formátů:
 
-- `wasb:///`: Výchozí úložiště s přístupem pomocí nešifrovaná komunikace.
-- `wasbs:///`: Výchozí úložiště s přístupem pomocí šifrovanou komunikaci.
-- `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Používá se při komunikaci s účtem služby storage jiné než výchozí. 
+|Formát dat aplikace Access |Popis |
+|---|---|
+|`wasb:///`|Výchozí úložiště s přístupem pomocí nešifrovaná komunikace.|
+|`wasbs:///`|Výchozí úložiště s přístupem pomocí šifrovanou komunikaci.|
+|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Použít při komunikaci s účtem služby storage jiné než výchozí. |
+
 
 [Azure Storage škálovatelnost a cíle výkonnosti](../../storage/common/storage-scalability-targets.md) uvádí aktuální omezení pro účty úložiště Azure. Potřebám vaší aplikace překročení cíle škálovatelnosti z jednoho účtu úložiště, můžete aplikace sestavena pro použití více účtů úložiště a pak rozdělit na oddíly datové objekty mezi těmito účty úložiště.
 
@@ -96,11 +99,11 @@ Základní funkcí služby Data Lake Storage Gen2 je přidání [hierarchickéh
 
 V minulosti cloudové analýzy došlo k ohrožení v oblasti výkonu, správy a zabezpečení. Klíč funkce Gen2 Azure Data Lake Storage (ADLS) jsou následující:
 
-- **Hadoop kompatibilní přístup**: Azure Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nové [ABFS ovladač](../../storage/data-lake-storage/abfs-driver.md) je k dispozici ve všech prostředích Apache Hadoop, které jsou součástí [Azure HDInsight](../index.yml). Tento ovladač umožňuje přístup k datům uloženým v Data Lake Storage Gen2.
+- **Hadoop kompatibilní přístup**: Azure Data Lake Storage Gen2 umožňuje spravovat a přistupovat k datům, stejně jako při použití [souboru systému HDFS (Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nové [ABFS ovladač](../../storage/data-lake-storage/abfs-driver.md) je k dispozici ve všech prostředích Apache Hadoop, které jsou součástí [Azure HDInsight](../index.yml). Tento ovladač umožňuje přístup k datům uloženým v Data Lake Storage Gen2.
 
 - **Nadmnožina POSIX oprávnění**: model zabezpečení pro Data Lake Gen2 plně podporuje oprávnění řízení přístupu a POSIX spolu s nějaké další specifické pro Data Lake Storage Gen2 členitosti. Nastavení může být nakonfigurován prostřednictvím správce nástroje nebo architektury, jako je Hive a Spark.
 
-- **Nákladově efektivní**: Gen2 úložiště Data Lake nabízí kapacitu úložiště s nízkými náklady a transakce. Jako přechody data prostřednictvím jejich kompletní životní cyklus, změnit fakturační sazby minimalizovat náklady prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](../../storage/common/storage-lifecycle-managment-concepts.md).
+- **Nákladově efektivní**: Gen2 úložiště Data Lake nabízí kapacitu úložiště s nízkými náklady a transakce. Jako přechody data prostřednictvím jejich kompletní životní cyklus, změnit fakturační sazby minimalizovat náklady prostřednictvím integrované funkce, jako [životní cyklus úložiště objektů Blob v Azure](../../storage/common/storage-lifecycle-management-concepts.md).
 
 - **Funguje s Blob storage nástroje, platformy a aplikace**: Data Lake Storage Gen2 nadále využívat širokou škálu nástroje, platformy a aplikace, které existují ještě dnes pro úložiště objektů Blob.
 
@@ -115,7 +118,7 @@ Další informace najdete v následujících článcích:
 - [Úvod do služby Azure Data Lake Storage Gen2 ve verzi Preview](../../storage/data-lake-storage/introduction.md)
 - [Ovladač systému souborů Azure Blob (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
 
-## <a name="protect-azure-storage-key-visibility-within-the-on-premises-hadoop-cluster-configuration"></a>Ochrana klíčů viditelnost služby Azure Storage v rámci konfigurace v místním clusteru Hadoop
+## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Zabezpečovací klíče Azure Storage v rámci místní konfigurace clusteru Hadoop
 
 Klíče Azure storage, které jsou přidány do konfiguračních souborů Hadoop, spojení mezi na místní HDFS a Azure Blob storage. Tyto klíče se dají chránit pomocí šifrování pomocí rozhraní poskytovatele přihlašovacích údajů systému Hadoop. Jakmile zašifrovaný, může být ukládají a získávají bezpečně.
 
@@ -144,18 +147,21 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
 ```
 
-## <a name="restrict-access-to-azure-storage-data-using-sas-signatures"></a>Omezení přístupu k datům služby Azure storage pomocí SAS podpisy
+## <a name="restrict-azure-storage-data-access-using-sas"></a>Omezit přístup k datům služby Azure storage pomocí SAS
 
 HDInsight ve výchozím nastavení má úplný přístup k datům v Azure Storage účty přidružené ke clusteru. Sdílených přístupových podpisů (SAS) na kontejner objektů blob můžete použít k omezení přístupu k datům, jako například poskytnout uživatelům s přístupem jen pro čtení k datům.
 
 ### <a name="using-the-sas-token-created-with-python"></a>Pomocí tokenu SAS, které jsou vytvořené pomocí pythonu
 
 1. Otevřít [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) soubor a změňte následující hodnoty:
-    - název_zásad: název, který má použít pro uložené zásady k vytvoření.
-    - název_účtu_úložiště: název účtu úložiště.
-    - klíč_účtu_úložiště: klíč pro účet úložiště.
-    - storage_container_name: kontejneru v účtu úložiště, který chcete omezit přístup k datům.
-    - example_file_path: cesta k souboru, který se nahraje do kontejneru
+
+    |Token – vlastnost|Popis|
+    |---|---|
+    |název_zásad|Název, který se má použít pro uložené zásady k vytvoření.|
+    |název_účtu_úložiště|Název účtu úložiště.|
+    |klíč_účtu_úložiště|Klíč pro účet úložiště.|
+    |storage_container_name|Kontejner v účtu úložiště, který chcete omezit přístup k datům.|
+    |example_file_path|Cesta k souboru, který se nahraje do kontejneru.|
 
 2. Součástí souboru SASToken.py `ContainerPermissions.READ + ContainerPermissions.LIST` oprávnění a je možné upravit podle případu použití.
 
@@ -183,7 +189,7 @@ Existují tři hlavně třeba si zapamatovat týkající se použití tokenů SA
 
 3. Bohužel poskytovatele přihlašovacích údajů systému hadoop a dešifrovací klíče zprostředkovatele (ShellDecryptionKeyProvider) aktuálně nefungují s použitím tokenů SAS, a proto nyní nemůže být chráněn z viditelnost.
 
-Další informace najdete v tématu [použití Azure Storage sdílené přístupové podpisy pro omezení přístupu k datům v HDInsight](../hdinsight-storage-sharedaccesssignature-permissions.md)
+Další informace najdete v tématu [použití Azure Storage sdílené přístupové podpisy pro omezení přístupu k datům v HDInsight](../hdinsight-storage-sharedaccesssignature-permissions.md).
 
 ## <a name="use-data-encryption-and-replication"></a>Šifrování dat a replikace
 
@@ -201,7 +207,7 @@ Další informace najdete v následujících článcích:
 - [Replikace Azure storage](../../storage/common/storage-redundancy.md)
 - [Pokyny po havárii pro Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="attach-additional-azure-storage-accounts-to-the-cluster"></a>Připojit další služby Azure storage účty do clusteru
+## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Připojit další služby Azure storage účty do clusteru
 
 Během procesu vytváření HDInsight k účtu služby Azure Storage nebo účet úložiště Azure Data Lake je vybrán jako výchozí systém souborů. Během procesu vytváření clusteru nebo po vytvoření clusteru, je kromě této výchozí účet úložiště, přidat další účty úložiště ze stejného předplatného Azure nebo různých předplatných Azure.
 

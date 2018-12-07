@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 634563a2010562e20691abae132dc7540ef8faf2
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: b51f2850a925fcd9daf3a07d8db66193555df0fa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632693"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000243"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování pomocí služby Azure Media Services v3
 
@@ -34,7 +34,7 @@ Tento článek poskytuje podrobný přehled najdete pokyny a zahrnuje diagramy h
 
 Pokud chcete doručovat na vyžádání a živé datové proudy pomocí služby Media Services, musíte mít aspoň jeden [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints). Při vytvoření účtu Media Services **výchozí** StreamingEndpoint se přidá k němu **Zastaveno** stavu. Je nutné začít StreamingEndpoint, ze kterého chcete Streamovat obsah do vašeho prohlížeče. Můžete použít výchozí **StreamingEndpoint**, nebo vytvořte další přizpůsobené **StreamingEndpoint** požadované konfigurace a nastavení CDN. Můžete se rozhodnout povolit více koncové body streamování, každý z nich cílení na různé sítě CDN a poskytuje jedinečný název hostitele pro doručování obsahu. 
 
-Ve službě Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za příjem a zpracování živého videa informačních kanálů. Při vytváření Livestream se vytvoří, můžete použít k odesílání živě signál z vzdálený kodér vstupní koncový bod. Vzdáleném kodér služby live Encoding odešle informační kanál k příspěvek vstupní koncový bod buď pomocí [RTMP](https://en.wikipedia.org/wiki/Real-Time_Messaging_Protocol) nebo [technologie Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming#Microsoft_Smooth_Streaming) protocol (fragmentovaný soubor MP4).  
+Ve službě Media Services [LiveEvents](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za příjem a zpracování živého videa informačních kanálů. Při vytváření Livestream se vytvoří, můžete použít k odesílání živě signál z vzdálený kodér vstupní koncový bod. Vzdáleném kodér služby live Encoding odešle informační kanál k příspěvek vstupní koncový bod buď pomocí [RTMP](https://www.adobe.com/devnet/rtmp.html) nebo [technologie Smooth Streaming](https://msdn.microsoft.com/library/ff469518.aspx) protocol (fragmentovaný soubor MP4).  
 
 Jakmile **Livestream** spustí příjem příspěvků datového kanálu, můžete použít svůj koncový bod ve verzi preview (Náhled adresy URL pro zobrazení náhledu a ověření, že vám posíláme živého datového proudu před dalším publikování. Po kontrole, že datový proud ve verzi preview je dobré, vám pomůže Livestream uvolněte živého datového proudu pro doručení prostřednictvím jednoho nebo více (předem vytvořené) **koncové body streamování**. Chcete-li to provést, vytvořte nový [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) na **Livestream**. 
 

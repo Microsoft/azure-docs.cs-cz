@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 57e201403374ac72ef79bb4335294e1e937c8757
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bf096032d0ab429a5c6c06d5ada568c4bfb56d9f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720300"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994422"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Hloubková diagnostika webových aplikací a služeb pomocí Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Proč potřebuji Application Insights?
@@ -79,7 +79,7 @@ Hlavní kategorie dat jsou:
 * Trasování protokolů použít pro ladění.
 
 ## <a name="case-study-real-madrid-fc"></a>Případová studie: Real Madrid F.C.
-Webové služby, kterou [Real Madrid Football Club](http://www.realmadrid.com/) slouží asi 450 milionům fanoušků z celého světa. K němu přes webových prohlížečů a mobilních aplikací Club fanoušky přístup. Fanoušky lze pouze rezervuje lístky, ale také přístup k klipy informace a video na výsledky, hráče a nadcházející hry. Vyhledávání můžete s filtry, jako je počet cílů skóre. Existují také odkazy na sociálních sítích. Činnost koncového uživatele je vysoce přizpůsobené a je navržena jako obousměrná komunikace provozovat fanoušků.
+Webové služby, kterou [Real Madrid Football Club](https://www.realmadrid.com/) slouží asi 450 milionům fanoušků z celého světa. K němu přes webových prohlížečů a mobilních aplikací Club fanoušky přístup. Fanoušky lze pouze rezervuje lístky, ale také přístup k klipy informace a video na výsledky, hráče a nadcházející hry. Vyhledávání můžete s filtry, jako je počet cílů skóre. Existují také odkazy na sociálních sítích. Činnost koncového uživatele je vysoce přizpůsobené a je navržena jako obousměrná komunikace provozovat fanoušků.
 
 Řešení [je systém služeb a aplikací v Microsoft Azure](https://www.microsoft.com/inculture/sports/real-madrid/). Škálovatelnost je klíčovým požadavkem: provoz je proměnná a mohou dosáhnout velmi velké objemy během a po shody.
 

@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c59cb8277bee13a83d0bf17c26deef1b8fc8d3e6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: e01262d67b6d08cd1cb05a6375344a5087fffce3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822839"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012517"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Metriky Azure Event Hubs ve službě Azure Monitor (preview)
 
@@ -37,13 +38,13 @@ Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat může
 
 Metriky můžete sledovat v čase [webu Azure portal](https://portal.azure.com). Následující příklad ukazuje, jak zobrazit úspěšné požadavky a příchozí žádosti na úrovni účtu:
 
-![][1]
+![Zobrazit úspěšné metriky][1]
 
 Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Uděláte to tak, zvolte svůj obor názvů a pak klikněte na tlačítko **metriky (Peview)**. Pokud chcete zobrazit metriky vyfiltrovaný tak, aby oboru centra událostí, vyberte Centrum událostí a klikněte na **metriky (preview)**.
 
 Pro metrika podporuje dimenze musí filtr s hodnotou požadované dimenze, jak je znázorněno v následujícím příkladu:
 
-![][2]
+![Filtr s hodnotu dimenze][2]
 
 ## <a name="billing"></a>Fakturace
 

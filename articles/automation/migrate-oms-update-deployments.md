@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2e99abfbc89d96f1dc5ca3c59789e13dd157a10
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5380372cc1f2928b79b0d20f4dd46e429a93dc5e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678946"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992259"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Proveďte migraci vašich nasazení aktualizace OMS do Azure
 
-Na portálu Operations Management Suite (OMS), která má být [zastaralé](../log-analytics/log-analytics-oms-portal-transition.md). Všechny funkce, která byla dostupná na portálu OMS Update Management je k dispozici na webu Azure Portal. Tento článek obsahuje informace, které potřebujete k migraci na webu Azure portal.
+Na portálu Operations Management Suite (OMS), která má být [zastaralé](../azure-monitor/platform/oms-portal-transition.md). Všechny funkce, která byla dostupná na portálu OMS Update Management je k dispozici na webu Azure Portal. Tento článek obsahuje informace, které potřebujete k migraci na webu Azure portal.
 
 ## <a name="key-information"></a>Informace o klíči
 

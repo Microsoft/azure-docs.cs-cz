@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/01/2016
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: cae0edb8576722e7c3e51df14cb8d29d09ff571c
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: HT
+ms.openlocfilehash: 9f7f7731490467ff32a72507239bfeedc794f2f2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722339"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000540"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Developer Analytics: jazyky, platformy a integrace
 Tyto položky jsou implementace [Application Insights](app-insights-overview.md), o kterých jsme se dozvěděli. Zahrnují také některé, které dodávají třetí strany.
@@ -56,7 +56,7 @@ Tyto položky jsou implementace [Application Insights](app-insights-overview.md)
 * [Node.js](https://www.npmjs.com/package/applicationinsights)
 * [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 * [Stack SAFE](https://safe-stack.github.io/docs/template-azure-ai/)
-* [Spring](http://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
+* [Spring](https://joe.blog.freemansoft.com/2015/12/enabling-microsoft-application-insight.html)
 * [Univerzální aplikace pro Windows](app-insights-mobile-center-quickstart.md) (App Center)
 * [WCF](https://github.com/Microsoft/ApplicationInsights-SDK-Labs/blob/master/WCF/readme.md)
 * [Aplikace pracovní plochy Windows, služby a pracovní role](app-insights-windows-desktop.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: be0dd7147e3864befa90434ade86b4032cd45cc3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247377"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013181"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Zabezpečení Frame: Zabezpečení komunikace | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -34,7 +34,7 @@ ms.locfileid: "51247377"
 | **Mobilního klienta** | <ul><li>[Implementace Připnutí certifikátu](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[Povolení HTTPS – Zabezpečte přenosový kanál](#https-transport)</li><li>[WCF: Zabezpečení zpráv sada úroveň ochrany EncryptAndSign](#message-protection)</li><li>[WCF: Nejméně privilegovaný účet použijte ke spuštění služby WCF](#least-account-wcf)</li></ul> |
 | **Webové rozhraní API** | <ul><li>[Vynutit veškerý provoz přes připojení HTTPS k webovým rozhraním API](#webapi-https)</li></ul> |
-| **Azure Redis Cache** | <ul><li>[Ujistěte se, že komunikace s Azure Redis Cache pomocí protokolu SSL](#redis-ssl)</li></ul> |
+| **Azure mezipaměti Redis** | <ul><li>[Ujistěte se, že komunikaci do mezipaměti Azure Redis pomocí protokolu SSL](#redis-ssl)</li></ul> |
 | **Brána IoT pole** | <ul><li>[Hraniční brána komunikaci zabezpečit zařízení](#device-field)</li></ul> |
 | **Brána IoT cloudu** | <ul><li>[Zabezpečení zařízení pro Cloudová brána komunikaci pomocí protokolu SSL/TLS](#device-cloud)</li></ul> |
 
@@ -372,16 +372,16 @@ public class ValuesController : ApiController
 }
 ```
  
-## <a id="redis-ssl"></a>Ujistěte se, že komunikace s Azure Redis Cache pomocí protokolu SSL
+## <a id="redis-ssl"></a>Ujistěte se, že komunikaci do mezipaměti Azure Redis pomocí protokolu SSL
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Azure Redis Cache | 
+| **Komponenta**               | Azure Cache for Redis | 
 | **SDL fáze**               | Sestavení |  
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Podpora Azure redis Cache SSL](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
-| **Kroky** | Redis server nepodporuje SSL úprav, ale nemá Azure Redis Cache. Pokud se připojujete k Azure Redis Cache a váš klient podporuje protokol SSL, jako je StackExchange.Redis, měli byste použít protokol SSL. Ve výchozím nastavení port bez SSL je zakázaná pro nové instance Azure Redis Cache. Ujistěte se, že zabezpečené výchozí hodnoty se nezmění, pokud neexistuje závislost na podporu protokolu SSL pro klientů redis. |
+| **Kroky** | Redis server nepodporuje SSL úprav, ale nemá mezipaměti Azure Redis. Pokud se připojujete k mezipaměti Azure pro Redis a váš klient podporuje protokol SSL, jako je StackExchange.Redis, měli byste použít protokol SSL. Ve výchozím nastavení port bez SSL je zakázaná pro nové mezipaměti Azure pro instance Redis. Ujistěte se, že zabezpečené výchozí hodnoty se nezmění, pokud neexistuje závislost na podporu protokolu SSL pro klientů redis. |
 
 Všimněte si, že Redis je určený ke přístupná pomocí důvěryhodné klienty uvnitř důvěryhodného prostředí. To znamená, že obvykle není vhodné zpřístupnit instance Redis přímo k Internetu, nebo obecně platí, prostředí, ve kterém nedůvěryhodní klienti mohou přímý přístup k portu Redis TCP nebo UNIXOVÉMU soketu. 
 

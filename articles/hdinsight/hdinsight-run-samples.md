@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1324980e173d31803026f9ec93565d4aabd30c85
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 96c51bb30f76ffe4d5efb3bb616c00554b7aab62
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687244"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011500"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ukázky spouštění Hadoop MapReduce v HDInsight se systémem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -993,6 +993,6 @@ public class TeraSort extends Configured implements Tool {
 [hdinsight-use-hive]: hadoop/hdinsight-use-hive.md
 [hdinsight-use-pig]: hadoop/hdinsight-use-pig.md
 
-[streamreader]: http://msdn.microsoft.com/library/system.io.streamreader.aspx
-[console-writeline]: http://msdn.microsoft.com/library/system.console.writeline
+[streamreader]: https://msdn.microsoft.com/library/system.io.streamreader.aspx
+[console-writeline]: https://msdn.microsoft.com/library/system.console.writeline
 [stdin-stdout-stderr]: https://msdn.microsoft.com/library/3x292kth.aspx

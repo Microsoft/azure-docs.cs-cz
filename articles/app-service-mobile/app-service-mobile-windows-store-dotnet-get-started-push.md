@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: c137f6cfdff9d043a656783f38ec9b894e644338
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.openlocfilehash: 7efd853e7b66933cac811625d7510139864f41f3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913015"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001850"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Přidání nabízených oznámení do aplikace pro Windows
 
@@ -127,7 +127,7 @@ Pomocí níže uvedeného postupu, který odpovídá typu vašeho back-endový p
 
     table.insert(function (context) {
     // For more information about the Notification Hubs JavaScript SDK,
-    // see http://aka.ms/nodejshubs
+    // see https://aka.ms/nodejshubs
     logger.info('Running TodoItem.insert');
 
     // Define the WNS payload that contains the new item Text.

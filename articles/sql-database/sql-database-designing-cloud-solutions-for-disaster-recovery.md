@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 07/26/2018
-ms.openlocfilehash: 8522fea10a4ec8f85d20e5a9ec04712c77bb6b94
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 3c5c4d24d68fffc86a654e0dee5e2d3f36f15aea
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064264"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000460"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Navrhování globálně dostupné služby využívající Azure SQL Database
 
@@ -34,7 +34,7 @@ V tomto scénáři aplikace mají následující vlastnosti:
 *   Webová vrstva a datová vrstva musí být společně umístěná, abyste snížili náklady na latenci a provoz 
 *   V podstatě výpadku je vyšší riziko obchodní pro tyto aplikace než ztráty dat
 
-V takovém případě topologie nasazení aplikace je optimalizovaná pro zpracování regionální jiného problému ovlivňujícího při převzetí služeb při selhání společně potřebovat všechny součásti aplikace. Následující diagram znázorňuje tuto topologii. Geografická redundance jsou nasazené prostředky vaší aplikace do oblasti A a B. Prostředky v oblasti B nejsou ale využít, dokud neselže oblast odpověď. Skupiny převzetí služeb při selhání je nakonfigurovaná mezi dvěma oblastmi ke správě připojení k databázi, replikace a převzetí služeb při selhání. Webová služba v obou oblastech je nakonfigurovaná pro přístup k databázi pomocí naslouchacího procesu pro čtení i zápis  **&lt;název skupiny převzetí služeb při selhání&gt;. database.windows.net** (1). Traffic manager nastaven na použití [metody prioritního směrování](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
+V takovém případě topologie nasazení aplikace je optimalizovaná pro zpracování regionální jiného problému ovlivňujícího při převzetí služeb při selhání společně potřebovat všechny součásti aplikace. Následující diagram znázorňuje tuto topologii. Geografická redundance jsou nasazené prostředky vaší aplikace do oblasti A a B. Prostředky v oblasti B nejsou ale využít, dokud neselže oblast odpověď. Skupiny převzetí služeb při selhání je nakonfigurovaná mezi dvěma oblastmi ke správě připojení k databázi, replikace a převzetí služeb při selhání. Webová služba v obou oblastech je nakonfigurovaná pro přístup k databázi pomocí naslouchacího procesu pro čtení i zápis  **&lt;název skupiny převzetí služeb při selhání&gt;. database.windows.net** (1). Traffic manager nastaven na použití [metody prioritního směrování](../traffic-manager/traffic-manager-configure-priority-routing-method.md) (2).  
 
 > [!NOTE]
 > [Azure traffic Manageru](../traffic-manager/traffic-manager-overview.md) slouží jen jako ukázka v tomto článku. Můžete použít řešení vyrovnávání zatížení, který podporuje metody prioritního směrování.    
@@ -47,7 +47,7 @@ Následující diagram znázorňuje tuto konfiguraci před výpadku:
 Po výpadku v primární oblasti služba SQL Database zjistí, že primární databáze není dostupný a aktivuje převzetí služeb při selhání sekundární oblastí na základě parametrů zásad automatické převzetí služeb při selhání (1). V závislosti na vaší smlouvě SLA aplikace můžete nakonfigurovat období odkladu, které řídí dobu mezi detekce výpadek a převzetí služeb při selhání, samotného. Je možné, že Traffic manager inicializuje převzetí služeb při selhání koncového bodu předtím, než se aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání databáze. V takovém případě webová aplikace nemůže se připojit znovu okamžitě do databáze. Ale opětovná připojení automaticky úspěšné co nejdříve po dokončení převzetí služeb při selhání databáze. Při selhání oblasti je obnovena a znovu online, původního primárního automaticky znovu připojí jako nové sekundární. Následující diagram znázorňuje konfiguraci po převzetí služeb při selhání.
  
 > [!NOTE]
-> Všechny transakce potvrzena po převzetí služeb se ztratí během obnovení připojení. Po dokončení převzetí služeb aplikace v oblasti B je možné znovu připojit a znovu spusťte zpracování požadavků uživatele. Webová aplikace i primární databáze jsou teď v oblasti B a zůstat společně umístěné. n>
+> Všechny transakce potvrzena po převzetí služeb se ztratí během obnovení připojení. Po dokončení převzetí služeb aplikace v oblasti B je možné znovu připojit a znovu spusťte zpracování požadavků uživatele. Webová aplikace i primární databáze jsou teď v oblasti B a zůstat společně umístěné. 
 
 ![Scénář 1. Konfigurace po převzetí služeb při selhání](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario1-b.png)
 
@@ -135,7 +135,7 @@ Pokud kvůli výpadku dojde například v oblasti Severní Evropa, převzetí sl
 ![Scénář 3. Výpadek v oblasti Severní Evropa.](./media/sql-database-designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 
 > [!NOTE]
-> Můžete zkrátit dobu, kdy má snížený výkon činnost koncového uživatele v Evropě tak dlouho latence. K tomu je by měl proaktivně nasadit jako kopie aplikace a vytvořte sekundární databáze v jiné místní oblasti (západní Evropa) jako náhrada za instanci offline aplikace v oblasti Severní Evropa. Při návrhu je zpátky do online režimu, můžete se rozhodnout, zda chcete pokračovat v používání západní Evropa nebo odebrat kopii tam a přejít zpět na Severní Evropa
+> Můžete zkrátit dobu, kdy má snížený výkon činnost koncového uživatele v Evropě tak dlouho latence. K tomu je by měl proaktivně nasadit jako kopie aplikace a vytvořte sekundární databáze v jiné místní oblasti (západní Evropa) jako náhrada za instanci offline aplikace v oblasti Severní Evropa. Když je zpátky do online režimu můžete rozhodnout, zda chcete pokračovat v používání západní Evropa nebo chcete odebrat kopii tam a přejít zpět na Severní Evropa.
 >
 
 Klíč **výhody** tohoto návrhu jsou:

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f9a77c1f3fbce295a40db366619d7485d44efc4f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4cd88490118343a9a00dbd919d7820f0334df92e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162712"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016142"
 ---
 # <a name="manage-your-security-info-preview"></a>Spravovat svoje bezpečnostní údaje (preview)
 
@@ -67,7 +67,7 @@ Pokud dojde ke ztrátě zařízení nebo zařízení ohroženo, budete mít ke s
 
 3. V **spravovat účet** vyberte **zapomenout MFA na zapamatovaných zařízeních**.
     
-    Když zvolíte tuto možnost, budete muset projít procesem ověřování služby Multi-Factor Authentication znovu po přihlášení.
+    Když zvolíte tuto možnost, budete muset projít procesem ověřování služby Multi-Factor Authentication (MFA) znovu po přihlášení.
 
     ![Profil obrazovky se zvýrazněným odkazem zapomenout](media/security-info/security-info-forget.png)
 
@@ -77,7 +77,7 @@ Tento článek pomůže vyřešit vaše bezpečnostní údaje, včetně dvoustup
 
 |Problém|Řešení|
 |-------|--------|
-|Nemám mi na telefon se se mnou|To je to možné, že nemáte telefon u sebe kdykoli, ale, že budete stále chcete Přihlaste se k vaší pracovní nebo školní účet. Chcete-li vyřešit tento problém, můžete přihlásit pomocí různých ověřovacích metody, která nevyžaduje, aby váš telefon, jako je například e-mailovou adresu nebo váš telefon do kanceláře. Chcete-li přidat další metody ke svým bezpečnostním údajům, provedením kroků v [změnit své údaje](#change-your-info) oddílu.|
+|Nemám mi na telefon se se mnou|To je to možné, že nemáte telefon u sebe kdykoli, ale, že budete stále chcete Přihlaste se k vaší pracovní nebo školní účet. Chcete-li vyřešit tento problém, můžete přihlásit pomocí různých ověřovacích metody, která nevyžaduje, aby váš telefon, jako je váš telefon do kanceláře. Chcete-li přidat další metody ke svým bezpečnostním údajům, provedením kroků v [změnit své údaje](#change-your-info) oddílu.|
 |Můžu dojde ke ztrátě mi na telefon nebo byla ukradena|Bohužel může dojít ztráty telefonu nebo jeho krádeže. V takovém případě důrazně doporučujeme nechat vaše organizace měla vědět tak, aby vaši pracovníci IT můžou resetovat hesla aplikací a zrušte všechny zapamatovaných zařízení ze seznamu důvěryhodných zařízení. Zapomenete důvěryhodných zařízeních můžete také pomocí následujících kroků v [spravovat vaše bezpečnostní údaje na ztracené nebo potenciálně napadeného zařízení](#manage-your-security-info-for-a-lost-or-potentially-compromised-device) oddílu.|
 |Zobrazilo se mi nové telefonní číslo|Existují dva způsoby, jak tento problém vyřešit. Můžete se přihlásit pomocí metody alternativní ověření, který nevyžaduje, aby vaše telefonní číslo, například e-mailu, nebo pokud to není možné, můžete kontaktovat vaše organizace IT oddělení společnosti a potom kliknul zrušte nastavení. Chcete-li přidat další metody ke svým bezpečnostním údajům, provedením kroků v [změnit své údaje](#change-your-info) oddílu.|
 |Výchozí metodu je nesprávný|V možnosti zabezpečení můžete aktualizovat vaše výchozí metoda. Pro konkrétní podrobnosti, můžete přejít na [změnit své údaje](#change-your-info) oddílu.|

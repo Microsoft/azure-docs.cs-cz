@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 2c5e99c16ed6ae0df9af4783fb6431edcbb6f100
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 11e9099ba9008ead6583eaf30292cdec63475f02
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725399"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994261"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 
-Když dojde k výjimce, můžete automaticky shromažďovat snímky ladění z vaší živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnné v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger (preview) v [Azure Application Insights](app-insights-overview.md) monitoruje telemetrie výjimek z vaší webové aplikace. Shromažďuje snímky na vaše horní vyvolání výjimky, abyste měli informace, které potřebujete k diagnostice problémů v produkčním prostředí. Zahrnout [balíček NuGet Snapshot collector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ve vaší aplikaci a volitelně nakonfigurovat kolekci parametrů v [soubor ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimky](app-insights-asp-net-exceptions.md) na portálu Application Insights.
+Když dojde k výjimce, můžete automaticky shromažďovat snímky ladění z vaší živé webové aplikace. Snímek zobrazuje stav zdrojového kódu a proměnné v okamžiku, kdy byla vyvolána výjimka. Snapshot Debugger (preview) v [Azure Application Insights](app-insights-overview.md) monitoruje telemetrie výjimek z vaší webové aplikace. Shromažďuje snímky na vaše horní vyvolání výjimky, abyste měli informace, které potřebujete k diagnostice problémů v produkčním prostředí. Zahrnout [balíček NuGet Snapshot collector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) ve vaší aplikaci a volitelně nakonfigurovat kolekci parametrů v [soubor ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Snímky se zobrazí na [výjimky](app-insights-asp-net-exceptions.md) na portálu Application Insights.
 
 Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Chcete-li získat více výkonné možnosti ladění se zdrojovým kódem, otevřete snímky pomocí sady Visual Studio 2017 Enterprise. V sadě Visual Studio, můžete také [nastavit snímkovací body interaktivně pořizovat snímky](https://aka.ms/snappoint) bez čekání na výjimku.
 
@@ -45,7 +45,7 @@ Podporují se následující prostředí:
 
 1. [Povolit Application Insights ve webové aplikaci](app-insights-asp-net.md), pokud jste to ještě neudělali.
 
-2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
+2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
 
 3. Zkontrolujte výchozí možnosti, které balíček přidány do [soubor ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md):
 
@@ -91,7 +91,7 @@ Podporují se následující prostředí:
     > [!NOTE]
     > Být jisti, že vaše aplikace odkazuje na verzi 2.1.1 nebo novější, Microsoft.ApplicationInsights.AspNetCore balíčku.
 
-2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
+2. Zahrnout [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
 
 3. Upravit svou aplikaci `Startup` třídy přidání a konfigurace procesoru telemetrie Snapshot Collector.
 
@@ -168,7 +168,7 @@ Podporují se následující prostředí:
 
 1. Pokud vaše aplikace není již instrumentována pomocí nástroje Application Insights, začněte tím, že [povolením Application Insights a že Instrumentační klíč nastavíte](app-insights-windows-desktop.md).
 
-2. Přidat [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
+2. Přidat [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) balíčku NuGet ve vaší aplikaci.
 
 3. Snímky se shromažďují pouze na výjimky, které se hlásí do Application Insights. Budete muset změnit váš kód pro nahlášení je. Kód zpracování výjimek závisí na struktuře aplikace, ale příkladem je nižší než:
     ```csharp
@@ -225,7 +225,7 @@ Snímky mohou obsahovat citlivé informace a ve výchozím nastavení nejsou mo�
 ## <a name="debug-snapshots-with-visual-studio-2017-enterprise"></a>Ladění snímků sady Visual Studio 2017 Enterprise
 1. Klikněte na tlačítko **Stáhnout snímek** tlačítko a stáhněte si `.diagsession` soubor, který lze otevřít v sadě Visual Studio 2017 Enterprise.
 
-2. Chcete-li otevřít `.diagsession` souboru, musíte mít nainstalována součást VS ladicí program snímků. Komponenty ladicího programu snímků je požadovaná součást sady funkcí technologie ASP.net v sadě Visual Studio a můžete vybrat ze seznamu jednotlivých komponent v instalačním programu sady VS. Pokud používáte verzi sady Visual Studio před 15.5 je potřeba nainstalovat rozšíření z [VS marketplace](http://aka.ms/snapshotdebugger).
+2. Chcete-li otevřít `.diagsession` souboru, musíte mít nainstalována součást VS ladicí program snímků. Komponenty ladicího programu snímků je požadovaná součást sady funkcí technologie ASP.net v sadě Visual Studio a můžete vybrat ze seznamu jednotlivých komponent v instalačním programu sady VS. Pokud používáte verzi sady Visual Studio před 15.5 je potřeba nainstalovat rozšíření z [VS marketplace](https://aka.ms/snapshotdebugger).
 
 3. Po otevření souboru snímku, zobrazí se stránka s minimálním výpisem ladění v sadě Visual Studio. Klikněte na tlačítko **ladění spravovaného kódu** pro spuštění ladění snímku. Snímek se otevře na řádek kódu, kde byla vyvolána výjimka, takže můžete ladit aktuální stav procesu.
 

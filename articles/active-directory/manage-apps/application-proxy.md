@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 212628c0ec97524e91ab8eaeb766c3e405023aaf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: aabbcb45edf087b4a7d6268dcca90b21afa16f7c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846160"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998110"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím
 
@@ -59,16 +59,16 @@ S Azure AD Application Proxy můžete dostat různé druhy interních aplikací:
 * Bohaté klientských aplikací, které jsou integrovány s Active Directory Authentication Library (ADAL)
 
 ## <a name="how-does-application-proxy-work"></a>Jak funguje Proxy aplikací?
-Existují dvě součásti, které je nutné nakonfigurovat, aby se Proxy aplikací fungovat: konektor a externí koncový bod. 
+Existují dvě součásti, které je nutné nakonfigurovat, aby se Proxy aplikací fungovat: konektor a koncový bod. 
 
 Konektor je zjednodušené agent, který je umístěný na serveru systému Windows ve vaší síti. Tento konektor usnadňuje tok přenosů z službu Proxy aplikací v cloudu pro vaše aplikace místní. Využívá jenom odchozí připojení, tak nemusíte otevírat žádné příchozí porty ani umisťovat cokoliv hraniční sítě. Konektory jsou bezstavové a aktivního získávání informací z cloudu podle potřeby. Další informace o konektorech, jako je způsob jejich – nástroj pro vyrovnávání zatížení a ověření naleznete v tématu [pochopit Azure AD Application Proxy konektory](application-proxy-connectors.md). 
 
-Externí koncový bod je, jak vaši uživatelé kontaktovat vaše aplikace během mimo síť. Buď můžete přejít přímo na externí adresu URL, která určíte, nebo jejich přístup k aplikaci prostřednictvím portálu MyApps. Uživatelé přejít na jednu z těchto koncových bodů, ověřování ve službě Azure AD a pak se směrují prostřednictvím konektoru pro místní aplikace.
+Koncový bod může být adresa URL nebo [portálu pro koncové uživatele](end-user-experiences.md). Uživatelé mohli spojit aplikace během mimo vaši síť díky přístupu do externí adresu URL. Uživatelé ve vaší síti přístup k aplikaci pomocí adresy URL nebo portálu pro koncové uživatele. Uživatelé přejít na jednu z těchto koncových bodů, ověřování ve službě Azure AD a pak se směrují prostřednictvím konektoru pro místní aplikace.
 
  ![Diagram Proxy aplikací Azure AD](./media/application-proxy/azureappproxxy.png)
 
-1. Uživatel má přístup k aplikaci prostřednictvím Proxy aplikací služby a je přesměruje na přihlašovací stránku Azure AD k ověření.
-2. Token po úspěšně přihlášení, je generována a odeslání do klientského zařízení.
+1. Poté, co uživatel má získat přístup k aplikaci přes koncový bod, je uživatel přesměrován na přihlašovací stránku Azure AD. 
+2. Po úspěšně přihlášení je token generovány a odeslány na klientském zařízení uživatele.
 3. Klient odešle token do služby Proxy aplikace, která načte hlavní název uživatele (UPN) a název objektu zabezpečení (SPN) z tokenu, pak přesměruje požadavek na konektor Proxy aplikací.
 4. Pokud jste nakonfigurovali jednotného přihlašování, konektor provádí další ověřování vyžaduje jménem uživatele.
 5. Konektor odešle požadavek na místní aplikace.  

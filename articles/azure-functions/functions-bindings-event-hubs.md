@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: 94716f428a7f3135a5b784ab82cfd9e89ee715e3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: bc7ed9051f95877760bccec65ff2fa7f49e44993
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838459"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002146"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs vazby pro službu Azure Functions
 
@@ -27,7 +27,7 @@ Tento článek vysvětluje, jak pracovat s [Azure Event Hubs](../event-hubs/even
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Pro Azure Functions verzi 1.x, vazby služby Event Hubs jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíčku NuGet, verze 2.x.
+Pro Azure Functions verzi 1.x, vazby služby Event Hubs jsou součástí [Microsoft.Azure.WebJobs.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) balíčku NuGet, verze 2.x.
 Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) úložiště GitHub.
 
 
@@ -35,7 +35,7 @@ Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Pro funkce 2.x, použijte [Microsoft.Azure.WebJobs.Extensions.EventHubs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) balíčku, verzi 3.x.
+Pro funkce 2.x, použijte [Microsoft.Azure.WebJobs.Extensions.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) balíčku, verzi 3.x.
 Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]

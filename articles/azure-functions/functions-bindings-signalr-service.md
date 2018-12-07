@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 40cad9eec87c07a205a86f1009074cdbeaf58d15
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 74092f57b3531a037aee71d433c33dddf8c2b694
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249955"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001801"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Vazby služby SignalR pro Azure Functions
 
@@ -30,7 +30,7 @@ Tento článek vysvětluje, jak ověřovat a odesílání zpráv v reálném ča
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Jsou součástí služby SignalR vazby [Microsoft.Azure.WebJobs.Extensions.SignalRService](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) balíčku NuGet, 1.0.0-preview1-* verze. Zdrojový kód pro tento balíček je v [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) úložiště GitHub.
+Jsou součástí služby SignalR vazby [Microsoft.Azure.WebJobs.Extensions.SignalRService](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService) balíčku NuGet, 1.0.0-preview1-* verze. Zdrojový kód pro tento balíček je v [azure-functions-signalrservice-extension](https://github.com/Azure/azure-functions-signalrservice-extension) úložiště GitHub.
 
 > [!NOTE]
 > Službě Azure SignalR je obecně dostupná. Ale vazby služeb SignalR pro službu Azure Functions jsou momentálně ve verzi preview.

@@ -1,5 +1,5 @@
 ---
-title: Přehled služby Azure Event Hubs Capture | Dokumentace Microsoftu
+title: Zachycení událostí pomocí Azure Event Hubs | Dokumentace Microsoftu
 description: Zachytávat data telemetrie s Event Hubs Capture
 services: event-hubs
 documentationcenter: ''
@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: e53cdeea-8a6a-474e-9f96-59d43c0e8562
 ms.service: event-hubs
 ms.workload: na
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 91263d7f6e8c0c2774df560a45eeff9efc672343
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fe096c0ee1747b3162f80ba4230ebf470ad50343
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408420"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011483"
 ---
-# <a name="azure-event-hubs-capture"></a>Azure Event Hubs Capture
-
-Azure Event Hubs Capture umožňuje automatické doručování streamovaných dat ve službě Event Hubs do [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) účet podle vašeho výběru s flexibilnější určení časový nebo velikostní interval. Nastavení zachytávání je rychlý, neexistují žádné administrativní náklady na spuštění a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-features.md#capacity). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
+# <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí pomocí Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
+Azure Event Hubs umožňuje automaticky zachytit streamovaná data ve službě Event Hubs do [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [úložiště Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) účet podle vašeho výběru s flexibilnější určení časový nebo velikostní interval. Nastavení zachytávání je rychlý, neexistují žádné administrativní náklady na spuštění a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-features.md#capacity). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
 
 Funkce Event Hubs Capture umožňuje zpracovávat v reálném čase a dávkově kanály pro stejný datový proud. To znamená, že můžete vytvářet řešení, které podle vašich potřeb v čase. Ať už vytváříte systémy batch ještě dnes s přehled směrem k budoucímu zpracování v reálném čase, nebo chcete přidat do existujícího řešení v reálném čase efektivní studené cesty, Event Hubs Capture usnadňuje práci se streamovanými daty jednodušší.
 
@@ -68,7 +68,7 @@ Funkce Event Hubs Capture vytvoří soubory ve formátu Avro, jak je uvedeno na 
 
 Soubory vytvořené metodou Event Hubs Capture mají následující schématu Avro:
 
-![][3]
+![Acro schématu][3]
 
 Snadný způsob, jak prozkoumat souborů Avro je použít [nástroje Avro] [ Avro Tools] jar z Apache. Po stažení tento soubor jar, zobrazí se schéma konkrétní soubor Avro spuštěním následujícího příkazu:
 

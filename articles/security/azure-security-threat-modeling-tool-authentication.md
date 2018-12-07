@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: e502004db62713585d68cdda6f80b4e4024dde28
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1170266ed0b59c53adce4e44fe3e7a0bc62f394e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971211"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014852"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Zabezpečení Frame: Ověřování | Zmírnění rizik 
 | Produkt nebo službu | Článek |
@@ -245,7 +245,7 @@ ms.locfileid: "52971211"
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Identita nasazení serveru – ukládání do mezipaměti](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
-| **Kroky** | <p>IdentityServer má jednoduché integrovanou mezipaměť v paměti. Když je vhodná pro malé škálování nativní aplikace, není vhodné pro aplikace střední vrstvy a back-end z následujících důvodů:</p><ul><li>Tyto aplikace přistupuje mnoho uživatelů současně. Ukládají se všechny přístupové tokeny ve stejném úložišti vytvoří izolace problémů a představuje výzev při fungování ve velkém měřítku: mnoho uživatelů, každý s tolika tokeny jako prostředky má aplikace přístup jménem, může znamenat velký a operace velmi nákladné vyhledávání</li><li>Tyto aplikace jsou obvykle implementovány na distribuované topologie, ve kterém musí mít přístup ke stejné mezipaměti více uzlů</li><li>Tokeny v mezipaměti musí překonat proces recykluje a deaktivací</li><li>Pro všechny výše uvedené důvody při implementaci webových aplikací, se doporučuje přepsat výchozí Server Identity tokenu mezipaměti se škálovatelnou alternativu, jako je Azure Redis cache</li></ul>|
+| **Kroky** | <p>IdentityServer má jednoduché integrovanou mezipaměť v paměti. Když je vhodná pro malé škálování nativní aplikace, není vhodné pro aplikace střední vrstvy a back-end z následujících důvodů:</p><ul><li>Tyto aplikace přistupuje mnoho uživatelů současně. Ukládají se všechny přístupové tokeny ve stejném úložišti vytvoří izolace problémů a představuje výzev při fungování ve velkém měřítku: mnoho uživatelů, každý s tolika tokeny jako prostředky má aplikace přístup jménem, může znamenat velký a operace velmi nákladné vyhledávání</li><li>Tyto aplikace jsou obvykle implementovány na distribuované topologie, ve kterém musí mít přístup ke stejné mezipaměti více uzlů</li><li>Tokeny v mezipaměti musí překonat proces recykluje a deaktivací</li><li>Pro všechny výše uvedené důvody při implementaci webových aplikací, se doporučuje pro Redis přepsat výchozí Server Identity tokenu mezipaměti se škálovatelnou alternativu jako je Azure Cache</li></ul>|
 
 ## <a id="binaries-signed"></a>Ujistěte se, že binární soubory nasazené aplikace jsou digitálně podepsané
 
@@ -361,7 +361,7 @@ Konfigurace služby MSMQ tak, aby vyžadovala domény Windows nebo ověřování
 | **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Moderní ověřování pomocí Azure Active Directory pro webové aplikace](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/), [použití Redisu jako mezipaměti tokenů ADAL](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
-| **Kroky** | <p>Výchozí mezipaměti, která používá knihovnu ADAL (Active Directory Authentication Library) je mezipaměti v paměti, která závisí na statické úložiště k dispozici celého procesu. Přestože tento postup funguje pro nativní aplikace, není vhodné pro aplikace střední vrstvy a back-end z následujících důvodů:</p><ul><li>Tyto aplikace přistupuje mnoho uživatelů současně. Ukládají se všechny přístupové tokeny ve stejném úložišti vytvoří izolace problémů a představuje výzev při fungování ve velkém měřítku: mnoho uživatelů, každý s tolika tokeny jako prostředky má aplikace přístup jménem, může znamenat velký a operace velmi nákladné vyhledávání</li><li>Tyto aplikace jsou obvykle implementovány na distribuované topologie, ve kterém musí mít přístup ke stejné mezipaměti více uzlů</li><li>Tokeny v mezipaměti musí překonat proces recykluje a deaktivací</li></ul><p>Pro všechny výše uvedené důvody při implementaci webových aplikací, se doporučuje přepsat výchozí mezipaměť tokenů ADAL s škálovatelnou alternativu, jako je Azure Redis cache.</p>|
+| **Kroky** | <p>Výchozí mezipaměti, která používá knihovnu ADAL (Active Directory Authentication Library) je mezipaměti v paměti, která závisí na statické úložiště k dispozici celého procesu. Přestože tento postup funguje pro nativní aplikace, není vhodné pro aplikace střední vrstvy a back-end z následujících důvodů:</p><ul><li>Tyto aplikace přistupuje mnoho uživatelů současně. Ukládají se všechny přístupové tokeny ve stejném úložišti vytvoří izolace problémů a představuje výzev při fungování ve velkém měřítku: mnoho uživatelů, každý s tolika tokeny jako prostředky má aplikace přístup jménem, může znamenat velký a operace velmi nákladné vyhledávání</li><li>Tyto aplikace jsou obvykle implementovány na distribuované topologie, ve kterém musí mít přístup ke stejné mezipaměti více uzlů</li><li>Tokeny v mezipaměti musí překonat proces recykluje a deaktivací</li></ul><p>Pro všechny výše uvedené důvody při implementaci webových aplikací, se doporučuje přepsat výchozí mezipaměť tokenů ADAL s škálovatelnou alternativu jako je Azure Cache pro Redis.</p>|
 
 ## <a id="tokenreplaycache-adal"></a>Ujistěte se, že TokenReplayCache se používá při prevenci opakování tokenů ověřování ADAL
 

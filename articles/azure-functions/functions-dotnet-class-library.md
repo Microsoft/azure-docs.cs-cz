@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 4711c766c2a074c25f019ce5b523e0ba8b599c17
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971313"
+ms.locfileid: "52994542"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
 
@@ -154,7 +154,7 @@ Vygenerovaný *function.json* obsahuje soubor `configurationSource` vlastnost, k
 
 ## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
-*Function.json* generování souboru provádí balíček NuGet [Microsoft\.NET\.Sdk\.funkce](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+*Function.json* generování souboru provádí balíček NuGet [Microsoft\.NET\.Sdk\.funkce](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
 Stejného balíčku se používá pro verzi 1.x a 2.x modul runtime služby Functions. Cílová architektura, která je, co rozlišuje 1.x projekt z projektu 2.x. Tady jsou v příslušných částech *.csproj* soubory zobrazují různé cílové platformy a stejný `Sdk` balíčku:
 
@@ -183,7 +183,7 @@ Stejného balíčku se používá pro verzi 1.x a 2.x modul runtime služby Func
 
 Mezi `Sdk` závislosti balíčků jsou triggery a vazby. 1.x projekt odkazuje na 1.x triggery a vazby, protože jsou cíleny na rozhraní.NET Framework, zatímco 2.x triggerů a vazeb cílit na .NET Core.
 
-`Sdk` Balíček závisí také na [Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json), nepřímo v [WindowsAzure.Storage](http://www.nuget.org/packages/WindowsAzure.Storage). Tyto závislosti Ujistěte se, že váš projekt používá verze tyto balíčky, které pracují s modulem runtime verze funkce, která projekt cílí. Například `Newtonsoft.Json` má verze 11 pro rozhraní .NET Framework 4.6.1, ale modul runtime služby Functions, který cílí na .NET Framework 4.6.1 je kompatibilní jenom s `Newtonsoft.Json` 9.0.1. Takže kódu funkce v daném projektu má také použít `Newtonsoft.Json` 9.0.1.
+`Sdk` Balíček závisí také na [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json), nepřímo v [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Tyto závislosti Ujistěte se, že váš projekt používá verze tyto balíčky, které pracují s modulem runtime verze funkce, která projekt cílí. Například `Newtonsoft.Json` má verze 11 pro rozhraní .NET Framework 4.6.1, ale modul runtime služby Functions, který cílí na .NET Framework 4.6.1 je kompatibilní jenom s `Newtonsoft.Json` 9.0.1. Takže kódu funkce v daném projektu má také použít `Newtonsoft.Json` 9.0.1.
 
 Zdrojový kód pro `Microsoft.NET.Sdk.Functions` je k dispozici v úložišti Githubu [azure\-funkce\-vs\-sestavení\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 

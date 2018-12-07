@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 7c92b2a060e73484b73a60f9215425cba40ea3f1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e503a394eed7d5c4bdd4c93037dc86442097f72e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966717"
+ms.locfileid: "53002175"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření edge řešení strojového učení s využitím Azure a Azure Stack
 
@@ -81,9 +81,8 @@ Předchozí znalosti Azure a Azure Stack je povinný. Další informace než bud
 
  -  Nasazení [Azure Container Services (ACS) Kubernetes v Azure](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
 
- -  Nasazení služby Azure Machine Learning (preview) [4 části kurzu](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/tutorial-classifying-iris-part-1)
+ -  Nasazení služby Azure Machine Learning [kurzu část 2](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
 
- -  Experimenty Azure Machine Learning [účtu](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/experimentation-service-template)
 
 **Azure Stack**
 
@@ -358,7 +357,7 @@ Aplikace Azure Machine Learning Workbench je dostupná pro Windows nebo macOS. V
     | Název projektu | myIris | Zadejte jedinečný název, který identifikuje tento účet. Použít oddělení nebo projektu název, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). |
     | Adresář projektu | c:\Temp\ | Zadejte adresář, ve kterém se projekt vytvoří. |
     | Popis projektu | Ponechte prázdné | Volitelné pole, které je užitečné pro popis projektů. |
-    | Adresa URL úložiště GIT Visualstudio.com | Ponechte prázdné | Volitelné pole. Projekt přidružte k úložišti Git ve Visual Studio Team Services pro správu zdrojového kódu a spolupráci. [Zjistěte, jak nastavení úložiště](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project). |
+    | Adresa URL úložiště GIT Visualstudio.com | Ponechte prázdné | Volitelné pole. Projekt přidružte k úložišti Git ve Visual Studio Team Services pro správu zdrojového kódu a spolupráci. |
     | Vybraný pracovní prostor | IrisGarden (pokud existuje) | Vyberte pracovní prostor vytvořený pro účet experimentování na webu Azure Portal. <br>V rámci rychlého startu, je uvedena pracovního prostoru s názvem IrisGarden. V opačném případě pomocí pracovního prostoru s názvem účtu služby experimentování ve službě nebo názvem preferovaného účtu. |
     | Šablona projektu | Klasifikace Iris | Šablony obsahují skripty a data použitá k produkt zkoumat. Tato šablona obsahuje skripty a data potřebná pro tento rychlý start a další kurzy na tomto webu dokumentace. |
 

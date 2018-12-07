@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 6308710a12e983ba35d9bd20d9926cba4ae27c5c
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dc78c8794923a180264058fc984a58aa29171c58
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400236"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978721"
 ---
 Paměťově optimalizované velikosti nabídky virtuálních počítačů vysoký poměr paměti procesoru, které jsou velmi vhodné pro servery relačních databází, střední a velké mezipaměti a analýzu v paměti. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro jednotlivé velikosti v této skupině. 
 
@@ -45,7 +45,7 @@ Instance ESv3-series jsou založené na procesorech 2,3 GHz Intel XEON® E5-267
 | Standard_E4s_v3&nbsp;<sup>2</sup> | 4      | 32          | 64             | 8              | 8 000 / 64 (100)                                                      | 6 400 / 96                                | 2 / 2,000                                   |
 | Standard_E8s_v3&nbsp;<sup>2</sup> | 8      | 64          | 128            | 16             | 16 000 / 128 (200)                                                    | 12 800 / 192                              | 4 / 4,000                                       |
 | Standard_E16s_v3&nbsp;<sup>2</sup> | 16     | 128         | 256            | 32             | 32 000 / 256 (400)                                                    | 25 600 / 384                              | 8 / 8,000                                       |
-| Standard_E20s_v3&nbsp;<sup>2</sup> | 20     | 160         | 320            | 32             | 40 000 / 320 (400)                                                    | 32 000 / 480                              | 8 / 10 000                                       |
+| Standard_E20s_v3                   | 20     | 160         | 320            | 32             | 40 000 / 320 (400)                                                    | 32 000 / 480                              | 8 / 10 000                                       |
 | Standard_E32s_v3&nbsp;<sup>2</sup> | 32     | 256         | 512            | 32             | 64 000 / 512 (800)                                                    | 51 200 / 768                              | 8 / 16,000                             |
 | Standard_E64s_v3&nbsp;<sup>2</sup> | 64     | 432         | 864            | 32             | 128 000 / 1 024 (1 600)                                                   | 80 000 / 1 200                             | 8 / 30,000                             |
 | Standard_E64is_v3&nbsp;<sup>3</sup> | 64     | 432         | 864            | 32             | 128 000 / 1 024 (1 600)                                                   | 80 000 / 1 200                             | 8 / 30,000                             |
@@ -161,7 +161,7 @@ Premium Storage ukládání do mezipaměti: Není podporováno
 
 | Velikost         | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet / očekávaný šířka pásma (MB/s) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 8 / 8 × 500                       | 2 / 2 000                     |
+| Standard_G1  | 2         | 28          | 384            | 6000 / 93 / 46                                           | 8 / 8 × 500                       | 2 / 2 000                     |
 | Standard_G2  | 4         | 56          | 768            | 12000 / 187 / 93                                         | 16 / 16 × 500                       | 2 / 4 000                     |
 | Standard_G3  | 8         | 112         | 1 536          | 24000 / 375 / 187                                        | 32 / 32 × 500                     | 4 / 8 000                |
 | Standard_G4  | 16        | 224         | 3 072          | 48000 / 750 / 375                                        | 64 / 64 × 500                     | 8 / 16 000          |

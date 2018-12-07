@@ -9,37 +9,37 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: fa72765e02592b72efb09320958a0aa244ae8b08
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 548992ac221b1b6f9a29082eb986aa42c6a2807e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52265283"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993999"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – zabezpečení a osvědčené postupy DevOps
 
 Tento článek obsahuje doporučení pro zabezpečení a DevOps v Azure HDInsight systémy. To je součástí série, která poskytuje osvědčené postupy pro pomoc s migrací místních systémů Apache Hadoop do Azure HDInsight.
 
-## <a name="use-the-enterprise-security-package-to-secure-and-govern-the-cluster"></a>Použijte k zabezpečení a řízení clusteru Enterprise Security Package
+## <a name="secure-and-govern-cluster-with-enterprise-security-package"></a>Zabezpečení a řízení clusteru s balíčkem Enterprise Security Package
 
-Balíček zabezpečení podniku (ESP) podporuje ověřování na základě služby Active Directory, podpora více uživatelů a řízení přístupu na základě rolí. S parametrem ESP zvolili je HDInsight cluster připojený k doméně služby Active Directory a správce rozlehlé sítě můžete nakonfigurovat řízení přístupu na základě role (RBAC) pro zabezpečení Hivu pomocí Apache Ranger. Správce může také auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu.
+Balíček zabezpečení podniku (ESP) podporuje ověřování na základě služby Active Directory, podpora více uživatelů a řízení přístupu na základě rolí. S parametrem ESP zvolili je HDInsight cluster připojený k doméně služby Active Directory a podnikový správce můžete konfigurovat řízení přístupu na základě rolí (RBAC) pro zabezpečení Apache Hive pomocí Apache Ranger. Správce může také auditovat přístup k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu.
 
 ESP je k dispozici pro následující typy clusteru: Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka a interaktivní dotazy (Hive LLAP). 
 
 Použijte následující postup k nasazení clusteru HDInsight připojené k doméně:
 
-- Nasazení služby Azure Active Directory (AAD) předáním názvu domény
-- Nasazení služby Azure Active Directory Domain Services (AAD DS)
-- Vytvoření požadované virtuální sítě a podsítě
-- Nasazení virtuálního počítače ve virtuální síti pro správu adresářové služby AAD
-- Virtuální počítač připojit k doméně
-- Instalace služby AD a nástroje pro DNS
-- Požádejte správce adresářové služby AAD vytvořte organizační jednotce (OU)
-- Povolení protokolu LDAPS pro službu AAD DS
+- Nasazení služby Azure Active Directory (AAD) předáním názvu domény.
+- Nasazení služby Azure Active Directory Domain Services (AAD DS).
+- Vytvoření vyžaduje virtuální síť a podsíť.
+- Nasazení virtuálního počítače ve virtuální síti pro správu adresářové služby AAD.
+- Virtuální počítač připojte k doméně.
+- Instalace služby AD a DNS nástroje.
+- Požádejte správce adresářové služby AAD vytvořte organizační jednotce (OU).
+- Povolení protokolu LDAPS pro adresářové služby AAD.
 - Vytvořte účet služby v Azure Active Directory s delegovaná oprávnění číst a správu oprávnění k zápisu do organizační jednotky, tak, aby to možné. Tento účet služby lze připojit počítače k doméně a umístit objekty zabezpečení počítačů v rámci organizační jednotky. Můžete také vytvořit instanční objekty v rámci organizační jednotky, které zadáte během vytváření clusteru.
 
     > [!Note]
-    > Účet služby nemusí být účet správce domény AD
+    > Účet služby nemusí být účet správce domény AD.
 
 - Nasazení clusteru HDInsight ESP tak, že nastavíte následující parametry:
     - **Název domény**: název domény, který je spojen s Azure AD DS.
@@ -51,33 +51,33 @@ Použijte následující postup k nasazení clusteru HDInsight připojené k dom
 
 Další informace najdete v následujících článcích:
 
-- [Úvod do zabezpečení Hadoop s clustery HDInsight připojené k doméně](../domain-joined/apache-domain-joined-introduction.md)
+- [Úvod do zabezpečení Apache Hadoop s clustery HDInsight připojené k doméně](../domain-joined/apache-domain-joined-introduction.md)
 - [Plánování Azure clusterů Hadoop připojených k doméně v HDInsight](../domain-joined/apache-domain-joined-architecture.md)
 - [Konfigurace clusteru HDInsight připojené k doméně pomocí Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 - [Synchronizace uživatelů Azure Active Directory pro HDInsight cluster](../hdinsight-sync-aad-users-to-cluster.md)
-- [Konfigurace zásad Hivu ve HDInsight připojených k doméně](../domain-joined/apache-domain-joined-run-hive.md)
+- [Nakonfigurovat zásady Apache Hive v HDInsight připojených k doméně](../domain-joined/apache-domain-joined-run-hive.md)
 - [Spustit Apache Oozie v doméně HDInsight Hadoop clusterů](../domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)
 
-## <a name="implement-end-to-end-enterprise-security-management"></a>Implementace správy komplexní podnikové zabezpečení
+## <a name="implement-end-to-end-enterprise-security"></a>Implementovat komplexní podnikové zabezpečení
 
 Konec koncové podnikového zabezpečení lze dosáhnout pomocí následujících ovládacích prvků:
 
 - **Soukromým a chráněným datovým kanálem (úrovně zabezpečení perimetru)**
-    - Hraniční úroveň zabezpečení je možné zajistit pomocí Azure Virtual Network, skupiny zabezpečení sítě a služby brány
+    - Hraniční úroveň zabezpečení je možné zajistit pomocí Azure Virtual Network, skupiny zabezpečení sítě a služby brány.
 
 - **Ověřování a autorizaci pro přístup k datům**
-    - Vytvoření clusteru HDInsight připojené k doméně pomocí Azure Active Directory Domain Services. (Enterprise Security Package)
-    - Ambari použijte k poskytnutí přístupu na základě rolí k prostředkům clusteru pro uživatele AD
+    - Vytvoření clusteru HDInsight připojené k doméně pomocí Azure Active Directory Domain Services. (Enterprise Security Package).
+    - Použijte Ambari k poskytnutí přístupu na základě rolí k prostředkům clusteru uživatelů AD.
     - Pomocí Apache Ranger nastavil zásady řízení přístupu pro Hive na tabulce / sloupce / úrovně řádků.
     - Přístup přes SSH ke clusteru může být omezena pouze na správce.
 
 - **Auditování**
     - Zobrazení a sestavy o všech přístupech k prostředkům clusteru HDInsight a data.
-    - Zobrazení a sestavy o všech změnách v zásadách řízení přístupu
+    - Zobrazení a sestavy o všech změnách v zásadách řízení přístupu.
 
 - **Šifrování**
     - Transparentní šifrování na straně serveru pomocí klíčů spravovaných microsoftem nebo klíče spravované zákazníkem.
-    - Při šifrování přenosu pomocí šifrování na straně klienta, https a TLS
+    - Při šifrování přenosu pomocí šifrování na straně klienta, https a protokolu TLS.
 
 Další informace najdete v následujících článcích:
 
@@ -106,13 +106,13 @@ Pravidelně upgradujte na nejnovější verzi HDInsight, abyste mohli využívat
 1. Importujte všechny přechodné data, která byla zálohována.
 1. Spuštění úlohy nebo pokračovat ve zpracování pomocí nového clusteru.
 
-Další informace najdete v článku: [clusteru HDInsight Upgrade na novou verzi.](../hdinsight-upgrade-cluster.md)
+Další informace najdete v článku: [clusteru HDInsight Upgrade na novou verzi](../hdinsight-upgrade-cluster.md).
 
 ## <a name="patch-cluster-operating-systems"></a>Opravy clusteru operačních systémů
 
 Spravovaná služba, Hadoop HDInsight postará o opravy operačního systému virtuálních počítačů používané clustery HDInsight.
 
-Další informace najdete v článku: [opravy operačního systému pro HDInsight](../hdinsight-os-patching.md)
+Další informace najdete v článku: [opravy operačního systému pro HDInsight](../hdinsight-os-patching.md).
 
 ## <a name="post-migration"></a>Po migraci
 
@@ -122,4 +122,4 @@ Další informace najdete v článku: [opravy operačního systému pro HDInsigh
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction)
+- Další informace o [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction).

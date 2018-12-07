@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74987d09a9b8979d3c3596c87764f8f3bd4b5795
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d2f1035427815facf501c1349619a73e0f134eff
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846661"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995596"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložené hledání a výstrahy do řešení pro správu (Preview)
 
@@ -37,7 +37,7 @@ Tento článek předpokládá, že jste již obeznámeni s postupy [vytvořte ř
 
 
 ## <a name="log-analytics-workspace"></a>Pracovní prostor Log Analytics
-Všechny prostředky ve službě Log Analytics jsou obsaženy v [pracovní prostor](../../log-analytics/log-analytics-manage-access.md).  Jak je popsáno v [pracovní prostor Log Analytics a účet Automation](solutions.md#log-analytics-workspace-and-automation-account), pracovní prostor není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, řešení instalace se nezdaří.
+Všechny prostředky ve službě Log Analytics jsou obsaženy v [pracovní prostor](../../azure-monitor/platform/manage-access.md).  Jak je popsáno v [pracovní prostor Log Analytics a účet Automation](solutions.md#log-analytics-workspace-and-automation-account), pracovní prostor není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, řešení instalace se nezdaří.
 
 Název pracovního prostoru je název každého prostředku Log Analytics.  To se provádí v řešení se **pracovní prostor** parametr jako v následujícím příkladu elementu SavedSearch prostředku.
 

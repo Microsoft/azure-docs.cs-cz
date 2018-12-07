@@ -5,14 +5,15 @@ services: hdinsight
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 9/21/2018
+ms.date: 09/21/2018
 ms.author: tyfox
-ms.openlocfilehash: f018130ca94c7efb7a9c6c873c150dcc382dbc4c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: 13bca67a48d1b9e73dc2f092979e455c72711316
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498294"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011331"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK ve verzi Preview
 

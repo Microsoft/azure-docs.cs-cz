@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 12/06/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: a2c08c541c3726579d57d99141a147d98bf45849
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.openlocfilehash: 1800ab19e2d99eb639ef4064e64d7bc475aa0c36
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996718"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014857"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack – integrace datových center – publikování koncových bodů
 
@@ -86,7 +86,7 @@ Azure Stack podporuje pouze transparentní proxy servery. V nasazení tam, kde t
 > Odchozí adresy URL jsou vyrovnávání zatížení pomocí Azure traffic Manageru k zajištění nejlepší možné připojení zeměpisné umístění. Pomocí adresy URL s vyrovnáváním zatížení, Microsoft můžete aktualizovat a změnit koncových bodů back-end bez dopadu na zákazníky. Společnost Microsoft neposkytuje seznam IP adres pro adresy URL na skupinu s vyrovnáváním zatížení. Měli byste použít zařízení, která podporuje filtrování podle adresy URL, nikoli podle IP.
 
 > [!Note]  
-> V 1809 infrastruktura zálohování služba komunikuje s externí souborový server z veřejné sítě VIP. Před 1809 služba komunikuje přes síť infrastruktury veřejného. Pokud vaše prostředí, neumožňuje přístup k prostředkům infrastruktury z veřejné sítě VIP, použijte nejnovější opravu hotfix 1809 pro službu Azure Stack. Tato oprava hotfix se přesune zálohovací služby infrastruktury zpět k síti infrastruktury veřejných. V 1811 Pokud se použije opravu hotfix 1809 zálohovací služby infrastruktury zůstanou v síti infrastruktura veřejných. Pokud nepoužili jste opravy hotfix, aktualizace se přesune služby zpět k síti infrastruktury veřejných.
+> V 1809 infrastruktura zálohování služba komunikuje s externí souborový server z veřejné sítě VIP. Před 1809 služba přenášená přes síť infrastruktury veřejného. Pokud vaše prostředí neumožňuje přístup k prostředkům infrastruktury z veřejné sítě VIP, použít nejnovější [opravu hotfix 1809](azure-stack-update-1809.md#post-update-steps) pro službu Azure Stack. Tato oprava hotfix se přesune zálohovací služby infrastruktury zpět k síti infrastruktury veřejných. V 1811 Jestliže nenainstalujete opravu 1809 hotfix zůstává zálohovací služby infrastruktury v síti infrastruktura veřejných. Pokud se nevztahují opravu hotfix, aktualizace se přesune služby zpět k síti infrastruktury veřejných.
 
 ## <a name="next-steps"></a>Další postup
 

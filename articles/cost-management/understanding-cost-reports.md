@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: b4e1ffa0b7bd524fc9029b21e77b09ea07e1f202
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 50a46b37be3115b92a3f8bc7cf426c8c7df78ce9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276648"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994136"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Principy Cloudyn sestav správy nákladů
 

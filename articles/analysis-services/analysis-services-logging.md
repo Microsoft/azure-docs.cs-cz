@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8d6080b573cbad1004166f28a3e6596560241be
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ba2d42f0f0908273065be268646a0fb7eb8b96e5
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426511"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001093"
 ---
 # <a name="setup-diagnostic-logging"></a>Nastavení protokolování diagnostiky
 
@@ -82,7 +82,7 @@ Kategorie metriky protokoly stejné [metrik serveru](analysis-services-monitor.m
 
     * **Archivovat do účtu úložiště**. Pokud chcete použít tuto možnost, musíte se připojit k existující účet úložiště. Zobrazit [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md). Postupujte podle pokynů k vytvoření správce prostředků, účet pro obecné účely, pak vyberte svůj účet úložiště tak, že vrací na tuto stránku na portálu. Může trvat několik minut, než se nově vytvořené účty se zobrazí v rozevírací nabídce.
     * **Stream do centra událostí**. Pokud chcete použít tuto možnost, budete potřebovat existující centrum událostí oboru názvů a Centrum událostí pro připojení k. Další informace najdete v tématu [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](../event-hubs/event-hubs-create.md). Pak se vraťte na tuto stránku na portálu vyberte název oboru názvů a zásad centra událostí.
-    * **Odeslání do Log Analytics**. Pokud chcete použít tuto možnost, použít stávající pracovní prostor nebo vytvořit nový pracovní prostor Log Analytics pomocí následujících kroků na [vytvořit nový pracovní prostor](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace) na portálu. Další informace o prohlížení protokolů v Log Analytics najdete v tématu [zobrazení protokolů v Log Analytics](#view-in-loganalytics).
+    * **Odeslání do Log Analytics**. Pokud chcete použít tuto možnost, použít stávající pracovní prostor nebo vytvořit nový pracovní prostor Log Analytics pomocí následujících kroků na [vytvořit nový pracovní prostor](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace) na portálu. Další informace o prohlížení protokolů v Log Analytics najdete v tématu [zobrazení protokolů v Log Analytics](#view-logs-in-log-analytics) v tomto článku.
 
     * **Modul**. Tato možnost protokolování xEvents. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou autodeleted po vypršení platnosti doby uchování.
     * **Služba**. Tuto možnost, do protokolu událostí na úrovni služby. Pokud jsou archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou autodeleted po vypršení platnosti doby uchování.
@@ -136,7 +136,7 @@ Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
 ### <a name="rest-api"></a>REST API
 
-Zjistěte, jak [změnit nastavení diagnostiky pomocí REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx). 
+Zjistěte, jak [změnit nastavení diagnostiky pomocí REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/). 
 
 ### <a name="resource-manager-template"></a>Šablona Resource Manageru
 

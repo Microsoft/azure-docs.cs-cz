@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kasparks
-ms.openlocfilehash: ba79d2d5ed4350960af1b92ee863595e3540a1d2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 349632c751c3116244bc8ef7708708f3aa45754c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843923"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013232"
 ---
 # <a name="advisor-performance-recommendations"></a>Poradce doporučení k výkonu
 
@@ -39,9 +39,9 @@ Advisor vám poskytuje konzistentní vzhledem k aplikacím, konsolidované zobra
 
 Další informace o službě SQL Database Advisor najdete v tématu [služby SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
 
-## <a name="improve-redis-cache-performance-and-reliability"></a>Zlepšení výkonu služby Redis Cache a spolehlivosti
+## <a name="improve-azure-cache-for-redis-performance-and-reliability"></a>Vylepšení mezipaměti Azure Redis výkonu a spolehlivosti
 
-Advisor identifikuje instance služby Redis Cache kde výkon může negativně ovlivněn vysoké využití paměti, zatížení serveru, šířky pásma sítě nebo velký počet připojení klientů. Osvědčené postupy Advisor také poskytuje doporučení, abyste se vyhnuli potenciální problémy. Další informace o doporučení Redis Cache najdete v tématu [Redis Cache Advisoru](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
+Advisor identifikuje mezipaměti Azure Redis instance, kde výkon může negativně ovlivněn vysoké využití paměti, zatížení serveru, šířky pásma sítě nebo velký počet připojení klientů. Osvědčené postupy Advisor také poskytuje doporučení, abyste se vyhnuli potenciální problémy. Další informace o mezipaměti Azure Redis doporučení, najdete v části [mezipaměti Azure redis Cache Advisoru](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor).
 
 
 ## <a name="improve-app-service-performance-and-reliability"></a>Zlepšení výkonu služby App Service a spolehlivosti

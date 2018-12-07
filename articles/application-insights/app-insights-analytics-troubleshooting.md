@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 9df44ec59e9384ac047b5c67abae334d51ff4dd3
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: b883ccc475a221c8aee135c5d14da32f7598b90c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679269"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999047"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Řešení potíží s analýzami v nástroji Application Insights
 Problémy s [Application Insights Analytics](app-insights-analytics.md)? Začněte tady. Analytics je nástroj výkonné hledání služby Azure Application Insights.
@@ -104,7 +104,7 @@ Adresa URL je neplatná.
 * Otevřete prostředek aplikace [portál Application Insights](https://portal.azure.com). Potom použijte tlačítko Analytics.
 
 ## <a name="cookies"></a>Povolit soubory cookie třetích stran
-  V tématu [zakázání soubory cookie třetích stran](http://www.digitalcitizen.life/how-disable-third-party-cookies-all-major-browsers), ale Všimněte si, že musíme **povolit** je.
+  V tématu [zakázání soubory cookie třetích stran](https://www.digitalcitizen.life/how-disable-third-party-cookies-all-major-browsers), ale Všimněte si, že musíme **povolit** je.
 
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]

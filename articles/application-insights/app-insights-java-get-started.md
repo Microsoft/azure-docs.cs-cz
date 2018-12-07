@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: lagayhar
-ms.openlocfilehash: 46ba2aa42f6669443354ceb7661684612e26f45f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 9f58c8c99fa48c0ffb4c76dd9752993b5e7d092e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728034"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994390"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
@@ -74,7 +74,7 @@ Pak obnovte závislosti projektu k získání stažených binárních souborů.
     </dependencies>
 ```
 
-* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `<version>2.0.n</version>`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `<version>2.0.n</version>`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * *Je nutné přejít na novou sadu SDK?* Obnovte závislosti svého projektu.
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Pokud používáte Gradle... <a name="gradle-setup" />
@@ -97,7 +97,7 @@ Pak obnovte závislosti projektu k získání stažených binárních souborů.
 #### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Pokud k vytvoření dynamického webového projektu používáte Eclipse...
 Použijte [Modul Application Insights SDK pro jazyk Java][eclipse]. Poznámka: I když se použitím tohoto modulu plug-in zrychlí zprovoznění Application Insights (za předpokladu, že nepoužíváte Maven nebo Gradle), nejedná se o systém správy závislostí. Při aktualizaci modulu plug-in proto nedojde k automatické aktualizaci knihoven Application Insights ve vašem projektu.
 
-* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `version:'2.0.n'`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
+* *Chyby ověření sestavení nebo kontrolního součtu?* Zkuste použít konkrétní verzi, například: `version:'2.0.n'`. Nejnovější verzi najdete v [poznámkách k verzi sady SDK](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) nebo v [artefaktech Maven](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
 * *Aktualizace na novou sadu SDK* Aktualizujte závislosti svého projektu.
 
 #### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>Jinak, pokud spravujete závislosti ručně...

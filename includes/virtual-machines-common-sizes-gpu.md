@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/14/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: b6df4ada1aa13e20c7ad52d2b58cdf9c783f9e24
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: bc311ca5c49584ae3715fa4507e1fd678bcc93bb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716155"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53007917"
 ---
 GPU optimalizované virtuálních počítačů velikosti jsou specializované virtuální počítače s jedním nebo několika grafickými procesory NVIDIA. Tyto velikosti jsou navržené pro úlohy náročné na výpočetní prostředky, náročné na grafiku a vizualizace. Tento článek obsahuje informace o počtu a typu GPU, virtuálních procesorů, datové disky a síťové adaptéry. Úložiště propustnost a šířku pásma sítě jsou také zahrnuté pro jednotlivé velikosti v této skupině. 
 
@@ -27,7 +27,7 @@ Storage úrovně Premium: Není podporováno.
 
 Premium Storage ukládání do mezipaměti: Není podporováno
 
-Virtuální počítače řady NC-series využívají [NVIDIA Tesla K80](http://images.nvidia.com/content/pdf/kepler/Tesla-K80-BoardSpec-07317-001-v05.pdf) karty. Uživatel může zpracovávejte prostřednictvím dat rychleji s využitím CUDA pro zkoumání aplikace energie, simulace selhání, ray trasovaných vykreslování, obsáhlý learning a další. Konfiguraci NC24r poskytuje nízkou latenci a vysokou propustnost síťového rozhraní optimalizovaná pro paralelní výpočetní úlohy s provázaností.
+Virtuální počítače řady NC-series využívají [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) karty. Uživatel může zpracovávejte prostřednictvím dat rychleji s využitím CUDA pro zkoumání aplikace energie, simulace selhání, ray trasovaných vykreslování, obsáhlý learning a další. Konfiguraci NC24r poskytuje nízkou latenci a vysokou propustnost síťového rozhraní optimalizovaná pro paralelní výpočetní úlohy s provázaností.
 
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |

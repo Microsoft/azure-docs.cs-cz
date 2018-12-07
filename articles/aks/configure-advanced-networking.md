@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: a46989ea197166065b4ca482200a0d30e1def7c9
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 943c0d4eb25fad1282b3329b945ded45581aeba3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723087"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994558"
 ---
 # <a name="configure-advanced-networking-in-azure-kubernetes-service-aks"></a>Konfigurace rozšířeného sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -162,18 +162,18 @@ Další informace o možnostech sítě v AKS v následujících článcích:
 - [Vytvoření řadič příchozího přenosu dat s dynamické veřejné IP adresy a konfigurace umožňuje šifrovat automaticky generovat certifikáty TLS][aks-ingress-tls]
 - [Vytvoření kontroler příchozího přenosu dat se statickou veřejnou IP Adresou a konfigurace umožňuje šifrovat automaticky generovat certifikáty TLS][aks-ingress-static-tls]
 
-### <a name="acs-engine"></a>Modul ACS
+### <a name="aks-engine"></a>Modul AKS
 
-[Modul Azure Container Service (jádro ACS)] [ acs-engine] je opensourcový projekt, který generuje šablon Azure Resource Manageru můžete použít pro nasazení clusterů s podporou Dockeru v Azure. Kubernetes, DC/OS, Swarm režimu a Swarm orchestrátorů je možné nasadit s modulem ACS.
+[Modul Azure Kubernetes Service (AKS stroj)] [ aks-engine] je opensourcový projekt, který generuje šablon Azure Resource Manageru můžete použít pro nasazení clusterů s podporou Dockeru v Azure. S modulem AKS je možné nasadit Kubernetes, DC/OS, Swarm režimu a Swarm orchestrátorů.
 
-Clustery Kubernetes jsou vytvořené pomocí modul ACS podporovat [kubenet] [ kubenet] a [Azure CNI] [ cni-networking] moduly plug-in. V důsledku toho základních a pokročilých síťové scénáře jsou podporované modulem ACS.
+Clustery Kubernetes vytvořili pomocí modulu AKS podporovat [kubenet] [ kubenet] a [Azure CNI] [ cni-networking] moduly plug-in. V důsledku toho základních a pokročilých síťové scénáře jsou podporovány modulem AKS.
 
 <!-- IMAGES -->
 [advanced-networking-diagram-01]: ./media/networking-overview/advanced-networking-diagram-01.png
 [portal-01-networking-advanced]: ./media/networking-overview/portal-01-networking-advanced.png
 
 <!-- LINKS - External -->
-[acs-engine]: https://github.com/Azure/acs-engine
+[aks-engine]: https://github.com/Azure/aks-engine
 [services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [portal]: https://portal.azure.com
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md

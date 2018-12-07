@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: da35f88550bb7bd1a4543f03936dcd52ddd926d9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: f5b08efda80eefad736386cd74ec1d40f05a6f3a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52308355"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994828"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers-preview"></a>Řešení potíží s Azure Monitor pro kontejnery (Preview)
 
@@ -99,7 +99,7 @@ Následující tabulka shrnuje známých chyb, které můžete narazit při pou�
 | Chybové zprávy  | Akce |  
 | ---- | --- |  
 | Chybová zpráva `No data for selected filters`  | Může trvat nějakou dobu vytvoření monitorování toku dat pro nově vytvořený clustery. Povolte prosím alespoň 10 až 15 minut, než se data zobrazí pro váš cluster. |   
-| Chybová zpráva `Error retrieving data` | Když je cluster Azure Kubenetes Service nastavení pro monitorování stavu a výkonu, se vytvoří připojení mezi clusterem a pracovního prostoru Azure Log Analytics. Pracovní prostor Log Analytics se používá k ukládání všech dat monitorování pro váš cluster. K této chybě může dojít, pokud byla odstraněna nebo ztráty pracovního prostoru Log Analytics. Zkontrolujte, zda je váš pracovní prostor dostupných kontrolou [spravovat přístup](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information). Pokud pracovní prostor chybí, je potřeba znovu připojit clusteru pomocí Azure monitoru pro kontejnery. Opětovné připojení, budete muset [zakázat](container-insights-optout.md) monitorování pro cluster a [povolit](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) monitorování Azure pro kontejnery znovu. |  
+| Chybová zpráva `Error retrieving data` | Když je cluster Azure Kubenetes Service nastavení pro monitorování stavu a výkonu, se vytvoří připojení mezi clusterem a pracovního prostoru Azure Log Analytics. Pracovní prostor Log Analytics se používá k ukládání všech dat monitorování pro váš cluster. K této chybě může dojít, pokud byla odstraněna nebo ztráty pracovního prostoru Log Analytics. Zkontrolujte, zda je váš pracovní prostor dostupných kontrolou [spravovat přístup](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information). Pokud pracovní prostor chybí, je potřeba znovu připojit clusteru pomocí Azure monitoru pro kontejnery. Opětovné připojení, budete muset [zakázat](container-insights-optout.md) monitorování pro cluster a [povolit](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster) monitorování Azure pro kontejnery znovu. |  
 | `Error retrieving data` Po přidání monitorování Azure pro kontejnery pomocí rozhraní cli az aks | Při připojování pomocí `az aks cli`, velmi zřídka monitorování Azure pro kontejnery nemusí být správně připojili. Zkontrolujte, zda je řešení připojili. Chcete-li to provést, přejděte do pracovního prostoru Log Analytics a jestli řešení jsou dostupné tak, že vyberete **řešení** z podokna na levé straně. Chcete-li vyřešit tento problém, budete muset znovu nasadit řešení podle pokynů v [jak nasadit Azure Monitor pro kontejnery](container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json) |  
 
 Abychom mohli problém diagnostikovat, poskytujeme vám řešení potíží k dispozici skript [tady](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script).  

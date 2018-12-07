@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 36516030741678ec66b4211f49ede35cfdb98605
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 531b431a0753e34592e88211d8a58328fe8a4e45
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706445"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014544"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -236,7 +236,7 @@ Obvykle restartování agentské uzly v clusteru vyřeší tento problém.
 ### <a name="reason"></a>Důvod
 Když povolíte prostory vývoj oboru názvů v clusteru AKS, volá se kontejnerem Další _mindaro proxy_ je nainstalován ve všech pody spuštěné v tomto oboru názvů. Tento kontejner zachycuje volání služeb v podu, která je nedílnou součástí vývoje prostorů týmu vývojářských funkcí.
 
-Bohužel by mohl narušovat určité služby spuštěné v tyto pody. Konkrétně to naruší to podů spuštění Redis cache, příčinou chyb připojení a chyby v komunikaci typu hlavní/podřízený.
+Bohužel by mohl narušovat určité služby spuštěné v tyto pody. Konkrétně to naruší to podů běží mezipaměti Azure Redis, příčinou chyb připojení a chyby v komunikaci typu hlavní/podřízený.
 
 ### <a name="try"></a>Zkuste:
 Ovlivněné pod(s) můžete přesunout do oboru názvů v clusteru, který nemá _není_ Dev prostory povolené při pokračování v používání zbytek aplikace uvnitř oboru názvů s povoleným Dev mezery. Vývoj prostory nelze nainstalovat _mindaro proxy_ kontejneru uvnitř Dev prostory povolených oborů názvů.

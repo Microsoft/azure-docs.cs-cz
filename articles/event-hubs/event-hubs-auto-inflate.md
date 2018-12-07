@@ -10,16 +10,17 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 19525086b1bd41afcc730fb3860d7a01875e4832
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 1bbbbbada07dc898a4c1424a315d472cf910926f
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986997"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53010820"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automaticky vertikálně navýšit kapacitu jednotek propustnosti centra událostí Azure
 
@@ -49,13 +50,13 @@ Můžete povolit nebo zakázat automatické rozšiřování na obor názvů slu�
 
 Při vytváření oboru názvů Event Hubs můžete povolit funkci automatické rozšiřování:
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
+![Povolit automatické rozšiřování v době vytvoření centra událostí](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
 Tato možnost povolená můžete začít v malém s kapacitu jednotek propustnosti a vertikálně navyšujte kapacitu podle využití musí zvýšení. Horní mez pro inflaci nemá vliv na okamžitě ceny, které závisí na počtu použitých jednotek propustnosti za hodinu.
 
 Můžete také povolit automatické rozšiřování pomocí **škálování** možnost v podokně nastavení na portálu:
  
-![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+![Povolit automatické rozšiřování pomocí možnosti měřítko](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
 
 
 > [!NOTE]

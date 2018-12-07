@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8ee351973dbedab4664d08e9e7a5a7ac67c8416b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fac720940c2f8d3eb38e2231ce89284147d56b6a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958474"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011214"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Odeslání událostí do Azure Event Hubs pomocí rozhraní .NET Framework
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -40,14 +41,14 @@ Získání připojovacího řetězce pro obor názvů centra událostí podle po
 
 Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studio nový projekt desktopové aplikace Visual C#. Projekt pojmenujte **Odesílatel**.
    
-![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
+![Vytvoření konzolové aplikace](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp1.png)
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt **Sender** a potom klikněte na **Spravovat balíčky NuGet pro řešení**. 
 2. Klikněte na kartu **Procházet** a potom najděte `WindowsAzure.ServiceBus`. Klikněte na **Instalovat** a přijměte podmínky použití. 
    
-    ![](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
+    ![Nainstalujte balíček NuGet služby Service Bus](./media/event-hubs-dotnet-framework-getstarted-send/create-sender-csharp2.png)
    
     Visual Studio stáhne a nainstaluje [balíček NuGet knihovny Azure Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) a přidá se na něj odkaz.
 

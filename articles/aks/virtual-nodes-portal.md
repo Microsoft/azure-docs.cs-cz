@@ -6,12 +6,12 @@ author: iainfoulds
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 24b35f3cd0c1dc7d78832c42c3cc4f1608f73bfb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3b99afe82f77b6bd89b5afa458179abee4c98e4f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855691"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999133"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vytvoření a konfigurace clusteru služby Azure Kubernetes služby (AKS) používat virtuální uzly na webu Azure Portal
 
@@ -22,7 +22,7 @@ Rychlé nasazení úloh v clusteru služby Azure Kubernetes Service (AKS), můž
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-an-aks-cluster"></a>Vytvoření clusteru AKS
 

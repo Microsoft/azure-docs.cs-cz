@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 885482d8baa305695e2b5a6d4247783c5a89b278
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d18ea661dda0caa33ca5aff34505ce308f7eaec7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680867"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997108"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
-Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](http://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
+Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
 
 Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml`, v závislosti na typu aplikace. Je automaticky přidán do projektu při vám [nainstalovat většině verzí sady SDK][start]. Je taky přidaný do webové aplikace pomocí [monitorování stavu na serveru služby IIS][redfield], nebo když vyberete Application Insights [rozšíření webu Azure nebo na virtuálním počítači](app-insights-azure-web-apps.md).
 
@@ -43,58 +43,58 @@ V konfiguračním souboru pro každý modul je uzel. Zakázat modul, odstranit u
 Můžete také napsat vlastní sledování kódu pomocí závislostí [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.DependencyCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) balíček NuGet.
+* [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) balíček NuGet.
 
 ### <a name="performance-collector"></a>Výkon kolektoru
 [Shromažďuje čítače výkonu systému](app-insights-performance-counters.md) , jako například procesoru, paměti a sítě z instalace služby IIS. Můžete zadat které čítače, které chcete shromažďovat, včetně čítačů výkonu, které jste vytvořili sami.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
-* [Microsoft.ApplicationInsights.PerfCounterCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) balíček NuGet.
+* [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) balíček NuGet.
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Diagnostika Telemetrie Application Insights
 `DiagnosticsTelemetryModule` Hlásí chyby v samotný kód instrumentace Application Insights. Například kód nemůže získat přístup k čítače výkonu, nebo pokud `ITelemetryInitializer` vyvolá výjimku. Telemetrie trasování sledován pomocí funkce tento modul se zobrazí ve [diagnostické vyhledávání][diagnostic]. Odešle dc.services.vsallin.net diagnostická data.
 
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud nainstalujete jenom tento balíček, soubor ApplicationInsights.config se nevytvoří automaticky.
+* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud nainstalujete jenom tento balíček, soubor ApplicationInsights.config se nevytvoří automaticky.
 
 ### <a name="developer-mode"></a>Vývojářský režim
 `DeveloperModeWithDebuggerAttachedTelemetryModule` Vynutí Application Insights `TelemetryChannel` k odesílání dat okamžitě, jeden telemetrie položky v době, když je připojen ladicí program k procesu aplikace. To snižuje množství času mezi okamžikem, když vaše aplikace sleduje telemetrická data, a když se objeví na portálu služby Application Insights. To způsobí, že významné režijní náklady v procesoru a šířku pásma sítě.
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
-* [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet
+* [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet
 
 ### <a name="web-request-tracking"></a>Sledování webové žádosti
 Sestavy [čas a výsledek kód odpovědi](app-insights-asp-net.md) požadavků protokolu HTTP.
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) balíček NuGet
+* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) balíček NuGet
 
 ### <a name="exception-tracking"></a>Sledování výjimek
 `ExceptionTrackingTelemetryModule` sleduje neošetřených výjimek ve vaší webové aplikace. Zobrazit [chyby a výjimky][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) balíček NuGet
+* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) balíček NuGet
 * `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` -sleduje [nepozorované výjimky úkolu](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` -sleduje neošetřené výjimky pro pracovní role, služby systému windows a konzolových aplikací.
-* [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet.
+* [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet.
 
 ### <a name="eventsource-tracking"></a>Sledování EventSource
 `EventSourceTelemetryModule` Umožňuje nakonfigurovat událostí EventSource k odeslání do Application Insights jako trasování. Informace o sledování událostí EventSource, naleznete v tématu [pomocí událostí EventSource](app-insights-asp-net-trace-logs.md#using-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
-* [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
+* [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>Sledování událostí trasování událostí pro Windows
 `EtwCollectorTelemetryModule` Umožňuje nakonfigurovat událostí ze zprostředkovatele trasování událostí pro Windows k odeslání do Application Insights jako trasování. Informace o sledování událostí trasování událostí pro Windows najdete v tématu [události trasování událostí pro Windows pomocí](app-insights-asp-net-trace-logs.md#using-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
-* [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
+* [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
 Balíček Microsoft.ApplicationInsights poskytuje [základní rozhraní API](https://msdn.microsoft.com/library/mt420197.aspx) sady SDK. Další telemetrická data moduly se řídí tím, a můžete je také [použijte k definování vlastní telemetrii](app-insights-api-custom-events-metrics.md).
 
 * Žádné položky v souboru ApplicationInsights.config.
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud právě instalaci tohoto balíčku NuGet, vygeneruje se žádný soubor .config.
+* [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud právě instalaci tohoto balíčku NuGet, vygeneruje se žádný soubor .config.
 
 ## <a name="telemetry-channel"></a>Kanál telemetrie
 Kanál telemetrie slouží ke správě ukládání do vyrovnávací paměti a přenos telemetrických dat do služby Application Insights.

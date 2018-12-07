@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: e053f2387df5d9a2855ce3242d4d7121452a73d8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a058757c3b4ae5087d89cdbdc1ede5fe780606ea
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275934"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997069"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Klíč zobrazení nákladů metrik pomocí řídicích panelů
 

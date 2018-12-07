@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/31/2018
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 2f10db6eddcfc7d398072a3c0aa709798c72c72e
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: da9ec327edc27e2f37f76704d6b5481869621049
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721030"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997482"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -104,7 +104,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>Otevřít trasování a Application Insights
 
-[Otevřít trasování datového modelu specifikace](http://opentracing.io/) a Application Insights datové modely mapování následujícím způsobem:
+[Otevřít trasování datového modelu specifikace](https://opentracing.io/) a Application Insights datové modely mapování následujícím způsobem:
 
 | Application Insights                  | Otevřít trasování                                      |
 |------------------------------------   |-------------------------------------------------  |

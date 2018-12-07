@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 41376448095a5dd760fae594fdfe2d2b57e4440a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ae2697c96435ec18ae7645520d438c41837f036f
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231647"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016857"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích verzí a známých problémů.
@@ -39,13 +39,13 @@ Tyto poznámky k verzi pro Azure Media Services shrnují změny z předchozích 
 | Media Services omezování mechanismus omezí využití prostředků pro aplikace, které usnadňují nadměrné požadavky na službu. Služba může vrátit – služba není dostupná"503 stavový kód HTTP. |Další informace naleznete v popisu 503 stavového kódu protokolu HTTP v [kódy chyb služby Media Services](media-services-encoding-error-codes.md). |
 | Při dotazování entity stanovený limit 1 000 entity se vrátí najednou, protože ostatní veřejné verze 2 omezuje výsledky dotazu do 1 000 výsledky. |Použití přeskočit a převzít (.NET) a hlavních (REST), jak je popsáno v [v tomto příkladu .NET](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) a [v tomto příkladu rozhraní REST API](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities). |
 | Někteří klienti můžou pocházet napříč problém při opakovaném značky v manifestu technologie Smooth Streaming. |Další informace najdete v tématu [v této části](media-services-deliver-content-overview.md#known-issues). |
-| Objekty Media Services .NET SDK nelze serializovat a díky tomu nebudou fungovat s Azure Redis Cache. |Pokud se pokusíte k serializaci objektu SDK AssetCollection se přidá do Azure Redis Cache, je vyvolána výjimka. |
+| Objekty Media Services .NET SDK nelze serializovat a díky tomu nebudou fungovat s mezipamětí Azure pro Redis. |Pokud se pokusíte k serializaci objektu SDK AssetCollection se přidá do mezipaměti Azure pro Redis, je vyvolána výjimka. |
 
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>Historie verzí rozhraní REST API
 Informace o historii verzí rozhraní API REST služby Media Services, najdete v článku [Referenční informace k Azure Media Services REST API].
 
-## <a name="october-2018"></a>. Října 2018
+## <a name="october-2018"></a>Říjen 2018
 
 ### <a name="cmaf-support"></a>Podpora CMAF
 

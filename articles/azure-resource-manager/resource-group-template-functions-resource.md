@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2018
+ms.date: 12/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6da2f7792df564ea3a41df37ab9b00574a205e5b
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 776a0e79a1098f46a04c846a8814d48c9fead5e3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219541"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999612"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -290,6 +290,8 @@ Každý typ prostředku vrátí různé vlastnosti pro odkaz na funkci. Funkce n
 
 ### <a name="remarks"></a>Poznámky
 
+Odkaz na funkci můžete načíst běhový stav již nasazený prostředek nebo prostředek nasazený v aktuální šablony. Tento článek ukazuje příklady pro oba scénáře. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Při odkazování na prostředek už nasazenou, zadejte ID prostředku a verze rozhraní API pro prostředek. Můžete určit platná verze rozhraní API pro prostředek v [referenčními informacemi k šablonám](/azure/templates/).
+
 Funkce odkaz odvozuje svou hodnotu z běhový stav a proto jej nelze použít v sekci proměnných. Je možné v části výstupů šablony nebo [propojené šablony](resource-group-linked-templates.md#link-or-nest-a-template). Nelze ji použít v části výstupů [vnořené šablony](resource-group-linked-templates.md#link-or-nest-a-template). Na návratové hodnoty pro nasazený prostředek ve vnořené šablony, převeďte vnořené šablony na propojenou šablonu. 
 
 Pomocí funkce odkaz na implicitně deklarujete, jeden prostředek závisí na jiný prostředek, pokud je oba odkazované prostředky poskytnutém v rámci stejné šablony a reference na prostředek má název (není ID prostředku). Není nutné použít také vlastnost dependsOn. Funkce není vyhodnocen, dokud odkazované prostředky dokončení nasazení.
@@ -445,13 +447,16 @@ Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, po
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json -storageAccountName <your-storage-account>
 ```
 
-Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) odkazuje na účet úložiště, který není nasazený v této šabloně. Účet úložiště ve stejné skupině prostředků už existuje.
+Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) odkazuje na účet úložiště, který není nasazený v této šabloně. Účet úložiště už existuje v rámci stejného předplatného.
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "storageResourceGroup": {
+            "type": "string"
+        },
         "storageAccountName": {
             "type": "string"
         }
@@ -459,8 +464,8 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
     "resources": [],
     "outputs": {
         "ExistingStorage": {
-            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
-            "type" : "object"
+            "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]",
+            "type": "object"
         }
     }
 }
@@ -469,13 +474,13 @@ Následující [Ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 Pokud chcete nasadit šablonu tento příklad pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json --parameters storageAccountName=<your-storage-account>
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json --parameters storageResourceGroup=<rg-for-storage> storageAccountName=<your-storage-account>
 ```
 
 Pokud chcete nasadit tento příklad šablony pomocí prostředí PowerShell, použijte:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json -storageAccountName <your-storage-account>
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json -storageResourceGroup <rg-for-storage> -storageAccountName <your-storage-account>
 ```
 
 <a id="resourcegroup" />

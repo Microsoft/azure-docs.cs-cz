@@ -9,12 +9,13 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 9e0f07e744aaf5f1c35666b40285937dce6dd4de
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.custom: seodec18
+ms.openlocfilehash: ef26bd433d311e63e122f48871654c9fbc26216a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275050"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013164"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning s využitím Application Insights
 
@@ -24,9 +25,6 @@ V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši 
 * Výjimky.
 
 [Další informace o Application Insights](../../application-insights/app-insights-overview.md). 
-
->[!NOTE]
-> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.1.74
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -100,7 +98,7 @@ Můžete povolit nebo zakázat Application Insights na webu Azure Portal.
 1. V [webu Azure portal](https://portal.azure.com), otevřete pracovní prostor.
 1. Vyberte **nasazení**, vyberte službu a vyberte **upravit**.
 
-   [![Tlačítko Upravit](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![Použijte tlačítko pro úpravy](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. V **Upřesnit nastavení**, zrušte zaškrtnutí políčka **diagnostiku AppInsights povolit** zaškrtávací políčko. 
 
@@ -130,7 +128,7 @@ Další informace o tom, jak pomocí Application Insights najdete v tématu [co 
 
 ## <a name="example-notebook"></a>Příklad poznámkového bloku
 
-[00. Začínáme Started/13.enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/13.enable-app-insights) Poznámkový blok ukazuje koncepty v tomto článku.  Získáte tento poznámkový blok:
+[How-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/enable-app-insights-in-production-service/enable-app-insights-in-production-service.ipynb) Poznámkový blok ukazuje koncepty v tomto článku. 
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

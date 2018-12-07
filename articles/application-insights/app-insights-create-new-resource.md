@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: mbullwin
-ms.openlocfilehash: 5b6afe4856e7e2c643a636f070937e81a2add2dd
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 3c3ff606958503efcf2df5fd99b6e52e4687de4a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724226"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996257"
 ---
 # <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 Azure Application Insights zobrazí data o vaší aplikaci v Microsoft Azure *prostředků*. Vytváří se nový prostředek je proto součástí [nastavení Application Insights pro monitorování nové aplikace][start]. V mnoha případech vytvoření prostředku můžete udělat automaticky integrovaným vývojovým prostředím. Ale v některých případech můžete vytvořit prostředek ručně – například mít samostatné prostředky pro vývoj a produkčním prostředí sestavení vaší aplikace.
@@ -25,11 +25,11 @@ Azure Application Insights zobrazí data o vaší aplikaci v Microsoft Azure *pr
 Po vytvoření prostředku, získejte svůj Instrumentační klíč a použít ke konfiguraci sady SDK v aplikaci. Klíč prostředku propojí telemetrická data do prostředku.
 
 ## <a name="sign-up-to-microsoft-azure"></a>Zaregistrovat do služby Microsoft Azure
-Pokud jste ještě se dostali [Microsoft account, získejte ji nyní](http://live.com). (Pokud používáte služby jako Outlook.com, OneDrive, Windows Phone nebo XBox Live, již máte účet Microsoft.)
+Pokud jste ještě se dostali [Microsoft account, získejte ji nyní](https://live.com). (Pokud používáte služby jako Outlook.com, OneDrive, Windows Phone nebo XBox Live, již máte účet Microsoft.)
 
-Budete potřebovat předplatné [Microsoft Azure](http://azure.com). Pokud váš tým nebo organizace má předplatné Azure, vlastník vás může přidat do něj pomocí účtu Windows Live ID. Je jenom za využité. Výchozí základní plán umožňuje určitou dobu bezplatně experimentální použití.
+Budete potřebovat předplatné [Microsoft Azure](https://azure.com). Pokud váš tým nebo organizace má předplatné Azure, vlastník vás může přidat do něj pomocí účtu Windows Live ID. Je jenom za využité. Výchozí základní plán umožňuje určitou dobu bezplatně experimentální použití.
 
-Když máte přístup k předplatnému, přihlaste se k Application Insights na [ http://portal.azure.com ](https://portal.azure.com)a použijte účet Live ID se můžete přihlásit.
+Když máte přístup k předplatnému, přihlaste se k Application Insights na [ https://portal.azure.com ](https://portal.azure.com)a použijte účet Live ID se můžete přihlásit.
 
 ## <a name="create-an-application-insights-resource"></a>Vytvořte prostředek Application Insights
 V [portal.azure.com](https://portal.azure.com), přidejte prostředek Application Insights:

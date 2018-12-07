@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: cd868996066110c8d0457b177e60523886912dd8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: d38fe1cab27cfade3e6e4d2f6764f455896ac470
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52163167"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001968"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
@@ -19,6 +19,12 @@ Tento krok vytvoří back-end systém úložiště pro váš cluster vFXT.
 
 > [!TIP]
 > Pokud jste použili `create-cloudbacked-cluster` prototypu skript k vytvoření nového kontejneru objektů Blob společně s clusterem vFXT Avere, že kontejner již nastaven pro použití a není nutné přidávat úložiště.
+>
+> Ale pokud nový kontejner objektů Blob byl zašifrován pomocí výchozího šifrovacího klíče, musíte buď stáhnout soubor obnovení klíčů z clusteru nebo nahradit výchozí klíč s novým klíčem před uložením dat. Výchozí klíč se uloží pouze do clusteru a nelze načíst, pokud cluster ztratí nebo je nedostupný.
+>
+> Po připojení v Ovládacích panelech Avere, klikněte na tlačítko **nastavení** kartu a pak zvolte **Core Filer** > **nastavení šifrování cloudu**. V **místní klíč Store** zvolte jednu z těchto možností: 
+> * Použití **stáhnout obnovení souboru** tlačítko Zobrazit soubor obnovení pro existující klíč. Soubor obnovení je šifrován pomocí hesla pro správu clusteru. Ujistěte se, že k uložení souboru na místě, spolehlivé. 
+> * Postupujte podle pokynů **generovat nový hlavní klíč** části stránky a vytvořte nový šifrovací klíč, který určujete vy. Tato možnost umožňuje určit jedinečné heslo a vyžaduje, abyste nahrát a znovu stáhne soubor obnovení pro ověření pár souboru s heslem.
 
 Postupujte podle těchto pokynů, pokud jste použili `create-minimal-cluster` skript prototypu pro váš cluster, nebo pokud chcete přidat další hardware nebo systém úložiště založené na cloudu.
 
@@ -91,7 +97,7 @@ Chcete-li přidat úložiště objektů Blob po vytvoření clusteru, postupujte
    * **Skupina prostředků** – stejná jako skupina clusteru vFXT (volitelné)
    * **Umístění** – stejný jako vFXT cluster
    * **Výkon** – standardní (Premium storage se nepodporuje)
-   * **Druh účtu** – obecné účely V2 (StorageV2)
+   * **Druh účtu** -General-purpose V2 (StorageV2)
    * **Replikace** – místně redundantní úložiště (LRS)
    * **Úroveň přístupu** – aktivní
    * **Vyžádání bezpečného přenosu** -vypnout tuto volbu (jiné než výchozí hodnota)

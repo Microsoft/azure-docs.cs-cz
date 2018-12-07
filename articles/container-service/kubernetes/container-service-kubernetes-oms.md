@@ -1,5 +1,5 @@
 ---
-title: Monitorování clusteru Kubernetes v Azure – řízení provozu
+title: (NEPOUŽÍVANÉ) Monitorování clusteru Kubernetes v Azure – řízení provozu
 description: Monitorování clusteru Kubernetes ve službě Azure Container Service pomocí Log Analytics
 services: container-service
 author: bburns
@@ -9,16 +9,19 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: a353fe3803b2d93c151559076960df06eb260bfe
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 8010d7cbf960c3e2f6528687be97a47d31270696
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426409"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997203"
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>Monitorování clusteru služby Azure Container Service pomocí služby Log Analytics
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service pomocí služby Log Analytics
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Pro aktualizovanou verzi, tento článek, který používá Azure Kubernetes Service, najdete v článku [monitorování Azure pro kontejnery](../../azure-monitor/insights/container-insights-overview.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 Tento názorný průvodce předpokládá, že máte [vytvořit cluster Kubernetes pomocí služby Azure Container Service](container-service-kubernetes-walkthrough.md).
@@ -59,11 +62,11 @@ az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUST
 
 ## <a name="monitoring-containers-with-log-analytics"></a>Monitorování kontejnerů pomocí Log Analytics
 
-Log Analytics je od Microsoftu cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Řešení kontejnerů je řešení ve službě Log Analytics, který umožňuje zobrazit inventář kontejneru, výkonu a protokolů na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokolů v centrálním umístění a najít hlučného využívání nadbytečné kontejneru na hostiteli.
+Log Analytics je od Microsoftu cloudové řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudovou infrastrukturu. Řešení kontejnerů je řešení ve službě Log Analytics, který umožňuje zobrazit inventář kontejneru, výkonu a protokolů na jednom místě. Můžete auditovat, řešení potíží s kontejnery zobrazením protokolů v centrálním umístění a najít hlučného využívání nadbytečné kontejneru na hostiteli.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Další informace o řešení kontejnerů najdete [kontejneru řešení Log Analytics](../../log-analytics/log-analytics-containers.md).
+Další informace o řešení kontejnerů najdete [kontejneru řešení Log Analytics](../../azure-monitor/insights/containers.md).
 
 ## <a name="installing-log-analytics-on-kubernetes"></a>Instalace Log Analytics v Kubernetes
 

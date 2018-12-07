@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 5aeefe82255d40938eff09d7920e2fd5aca94c95
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9cfd3f32f6293d5760c4a4ddcf40428a2b9b70f8
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46313639"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999087"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definování strategie přijetí hybridní identity
 V této úloze definujete strategie přijetí hybridních identit pro hybridní řešení identit plnění obchodních požadavků, které byly zmíněny v:
@@ -92,7 +92,7 @@ Musíte taky vědět, jaké funkce nebudou k dispozici:
 * Přechod z Office pasivní režim ověřování umožňuje jejich podporují čistě zprostředkovatelů identity SAML 2.0, ale každý klient klient stále bude podpora
 
 > [!NOTE]
-> Nejaktuálnější seznam najdete v článku https://aka.ms/ssoproviders.
+> Nejaktuálnější seznam najdete v článku [seznam kompatibilit pro federaci Azure AD](how-to-connect-fed-compatibility.md).
 > 
 > 
 

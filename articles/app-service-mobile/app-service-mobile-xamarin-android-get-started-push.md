@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: 71cb39465bd6c180861325ab451aa11be14a80e0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f2c58d64a662a6e2be355c1f672c01e5a679b3f8
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231665"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993221"
 ---
 # <a name="add-push-notifications-to-your-xamarinandroid-app"></a>Přidání nabízených oznámení do aplikace Xamarin.Android
 
@@ -36,7 +36,7 @@ Pokud použijete stažený projekt rychlého spuštění serveru, budete potřeb
 Tento kurz vyžaduje nastavení:
 
 * Aktivní účet Google. Můžete se zaregistrovat pro účet Google na [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302).
-* [Komponenta klienta zasílání zpráv cloudu Google](http://components.xamarin.com/view/GCMClient/).
+* [Komponenta klienta zasílání zpráv cloudu Google](https://components.xamarin.com/view/GCMClient/).
 
 ## <a name="configure-hub"></a>Konfigurace centra oznámení
 
@@ -80,5 +80,5 @@ Aplikaci můžete otestovat pomocí virtuálního zařízení se spustila v emul
 
 <!-- URLs. -->
 [Xamarin.Android quick start]: app-service-mobile-xamarin-android-get-started.md
-[Google Cloud Messaging Client Component]: http://components.xamarin.com/view/GCMClient/
-[Azure Mobile Services Component]: http://components.xamarin.com/view/azure-mobile-services/
+[Google Cloud Messaging Client Component]: https://components.xamarin.com/view/GCMClient/
+[Azure Mobile Services Component]: https://components.xamarin.com/view/azure-mobile-services/

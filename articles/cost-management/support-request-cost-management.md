@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/24/2018
+ms.date: 12/05/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 8add92c5a65e4ddbd83dbe0836820fae1e88f557
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: ce6847accef6290497ff0833901a1c07ee59b7b6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274683"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998030"
 ---
 # <a name="create-a-support-request-for-cloudyn"></a>Vytvořit žádost o podporu pro Cloudyn
 

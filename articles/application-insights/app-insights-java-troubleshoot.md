@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: e39fb82796c8e6b09f624b2030ff6266bd4189f1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 95eb5475f5584830eac5bd9c690be4a6a85de5c8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720418"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016721"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde jsou některé tipy.
@@ -56,7 +56,7 @@ Dotazy nebo problémy s [Azure Application Insights v jazyce Java][java]? Zde js
 ### <a name="java-agent-cannot-capture-dependency-data"></a>Agenta Java nelze zachytit data závislostí
 * Nakonfigurovali jste agenta Java pomocí následujících [konfigurace agenta Java](app-insights-java-agent.md) ?
 * Ujistěte se, že že soubor jar pro Javu agenta a soubor AI Agent.xml jsou umístěny ve stejné složce.
-* Ujistěte se, že závislost, kterou se pokoušíte automatické shromažďování je podporováno pro automatické shromažďování. Aktuálně podporujeme jenom MySQL, MsSQL, Oracle DB a kolekci závislostí služby Redis Cache.
+* Ujistěte se, že závislost, kterou se pokoušíte automatické shromažďování je podporováno pro automatické shromažďování. Aktuálně podporujeme jenom MySQL, MsSQL, Oracle DB a Azure mezipaměti Redis závislostí kolekce.
 * Používáte sadu JDK 1.7 nebo 1.8? Aktuálně nepodporujeme kolekce závislost na sadu JDK 9.
 
 ## <a name="no-usage-data"></a>Žádná data o využití
@@ -156,7 +156,7 @@ Application Insights využívá `org.apache.http`. To je přemístěn do Applica
 * [Zaznamenání diagnostických protokolů][javalogs]
 
 ## <a name="get-help"></a>Podpora
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Založte problém na Githubu](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->

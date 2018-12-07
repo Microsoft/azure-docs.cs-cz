@@ -8,13 +8,13 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: 71ff435accc2c9c50533a31e3196905816cc3600
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/06/2018
+ms.openlocfilehash: a9078d2f8a738700a30d265d9cfa3cd77ad72f08
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868238"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015445"
 ---
 # <a name="how-to-diagnose-and-troubleshoot"></a>Tom, jak Diagnostika a řešení potíží
 

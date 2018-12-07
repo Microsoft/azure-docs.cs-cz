@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/28/2017
 ms.author: victorh
-ms.openlocfilehash: 8f2e2500c39f42ebd7fefb3cec941088edf126f2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: fc418f58b299dcba08fda65000c5356c51f471e6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39045015"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993316"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Vytvoření a konfigurace aplikační brány pro hostování více webů pomocí webu Azure portal
 
@@ -37,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k portálu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com)
+Přihlaste se k portálu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com)
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 

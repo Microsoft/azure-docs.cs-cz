@@ -1,18 +1,19 @@
 ---
 title: Automatizace úloh služby Azure Analysis Services pomocí instančních objektů | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit zásady služby pro automatizaci úloh služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b9a91b478ea9012a1d041fc102765890954c2fbb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 2acf39a7537d25b05999b7b2813fa66d7f778724
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956183"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995799"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace pomocí instančních objektů
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/6/2018
 ms.author: tylerfox
-ms.openlocfilehash: 936e53ca328b0f54bfd75e7b3d4f6747b0037669
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 4177320285f62397a2f512a5ecaf0dc333065545
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495171"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011585"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Spravovat clustery systému Apache Hadoop v HDInsight pomocí Azure Powershellu
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -239,9 +239,9 @@ Viz [Nahrání dat do služby HDInsight][hdinsight-upload-data].
 * [Odeslání úloh systému Apache Hadoop prostřednictvím kódu programu][hdinsight-submit-jobs]
 * [Začínáme se službou Azure HDInsight][hdinsight-get-started]
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md

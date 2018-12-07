@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 10/30/2018
+ms.date: 12/05/2018
 ms.author: juliako
-ms.openlocfilehash: 8124b399b859f812ec3bf9f7ea64b6643446a1b5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 9de0d8bc389218d3102633b09073b3af323d2ceb
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249291"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011990"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémata událostí služby Media Services
 
@@ -112,9 +112,12 @@ Datový objekt má následující vlastnosti:
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | previousState | řetězec | Stav úlohy před událostí. |
-| state | řetězec | Nový stav úlohy se oznámení na tuto událost. Například "ve frontě: Úloha čeká na prostředky" nebo "naplánované: Úloha je připraven ke spuštění".|
+| state | řetězec | Nový stav úlohy se oznámení na tuto událost. Například "naplánované: Úloha je začít" nebo "dokončeno: Úloha je dokončena".|
 
 Stav úlohy kde může být jedna z hodnot: *ve frontě*, *naplánované*, *zpracování*, *dokončeno*, *chyba*, *Zrušena*, *zrušení*
+
+> [!NOTE]
+> *Ve frontě* bude jenom zobrazovat nacházet v **previousState** vlastností, ale ne v **stavu** vlastnost.
 
 ### <a name="jobscheduled-jobprocessing-jobcanceling"></a>JobCanceling JobScheduled JobProcessing,
 
@@ -410,7 +413,7 @@ Datový objekt má následující vlastnosti:
 | TrackType | řetězec | Typ stopě (zvuk / Video). |
 | TrackName | řetězec | Jeden směr určený název. |
 | S přenosovou rychlostí | integer | S přenosovou rychlostí dráhy. |
-| Časové razítko | řetězec | Časové razítko datové dávky vyřazen. |
+| Timestamp | řetězec | Časové razítko datové dávky vyřazen. |
 | Timescale | řetězec | Časové razítko. |
 | Kód výsledku | řetězec | Z důvodu rozevírací bloku dat data. **FragmentDrop_OverlapTimestamp** nebo **FragmentDrop_NonIncreasingTimestamp**. |
 
@@ -453,7 +456,7 @@ Datový objekt má následující vlastnosti:
 | IngestUrl | řetězec | Ingestování adresy URL poskytnuté živé události. |
 | EncoderIp | řetězec  | IP adresa z kodéru. |
 | EncoderPort | řetězec | Port kodér, ve kterém je tento datový proud zapnout. |
-| Časové razítko | řetězec | První časové razítko přijetí datové dávky. |
+| Timestamp | řetězec | První časové razítko přijetí datové dávky. |
 | Timescale | řetězec | Časový rámec, ve kterém je reprezentován časové razítko. |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 83820440a6304886785a175b27614b45fdb98b13
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a0e0000c4baa22ccc1c26c0e40ec62bb277104af
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51252220"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993903"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Windows Hybrid Runbook Worker
 
@@ -85,7 +85,7 @@ První dva kroky pro automatizovaného prostředí provést jednou a potom zopak
 
 #### <a name="1-create-a-log-analytics-workspace"></a>1. Vytvoření pracovního prostoru Log Analytics
 
-Pokud ještě nemáte pracovní prostor Log Analytics, vytvořte ho podle pokynů v [Správa pracovního prostoru](../log-analytics/log-analytics-manage-access.md). Pokud ještě nemáte, můžete použít existující pracovní prostor.
+Pokud ještě nemáte pracovní prostor Log Analytics, vytvořte ho podle pokynů v [Správa pracovního prostoru](../azure-monitor/platform/manage-access.md). Pokud ještě nemáte, můžete použít existující pracovní prostor.
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2. Přidejte řešení služby Automation k pracovnímu prostoru Log Analytics
 

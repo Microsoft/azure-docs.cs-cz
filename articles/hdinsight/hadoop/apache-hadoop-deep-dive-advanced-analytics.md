@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 40536aae15f2ae9fa5e186cdbea1f75f7d264437
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7253a31057d8e7af5c0273ef112b1155cf15a014
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047136"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011653"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Podrobné informace – pokročilé analýzy
 
@@ -63,7 +63,7 @@ HDInsight obsahuje několik strojového učení možnosti pro pokročilou analý
 
 ### <a name="machine-learning-and-spark"></a>Strojové učení a Sparku
 
-[HDInsight Spark](../spark/apache-spark-overview.md) je nabídka hostovaných v Azure z [Spark](http://spark.apache.org/), sjednoceném open source, rozhraní framework paralelní zpracování dat, která používá zpracování v paměti pro zvýšení analýzy velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. 
+[HDInsight Spark](../spark/apache-spark-overview.md) je nabídka hostovaných v Azure z [Spark](https://spark.apache.org/), sjednoceném open source, rozhraní framework paralelní zpracování dat, která používá zpracování v paměti pro zvýšení analýzy velkých objemů dat. Modul zpracování Spark je postaven pro rychlost, snadné použití a sofistikované analýzy. Spark v paměti distribuovanou výpočetní možnosti usnadňují dobrou volbou pro iterativní algoritmy používané ve výpočtech machine learning a grafů. 
 
 Existují tři škálovatelné machine learning knihovny, které přinášejí možnosti vylepšením modelování do této distribuované prostředí:
 

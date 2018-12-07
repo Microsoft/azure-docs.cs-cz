@@ -1,5 +1,5 @@
 ---
-title: Filtry IP služby Azure Event Hubs | Dokumentace Microsoftu
+title: Omezení přístupu k Azure Event Hubs pomocí filtrů IP adres | Dokumentace Microsoftu
 description: Použijte IP adresu filtrování se můžete blokovat připojení z konkrétní IP adresy do služby Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
@@ -7,18 +7,18 @@ author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
+ms.custom: seodec18
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: d0114821b5239146f64dde0b01652dc320994585
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 5ed952421186210e55d6065cee51f4d54b4c0d46
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408145"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014391"
 ---
-# <a name="use-ip-filters"></a>Pomocí filtrů IP adres
-
+# <a name="restrict-access-to-azure-event-hubs-using-ip-filters"></a>Omezení přístupu k Azure Event Hubs pomocí filtrů IP adres
 Pro scénáře, ve kterých Azure Event Hubs by měly být pouze přístupné z některé známé servery *filtr IP* funkce umožňuje konfigurovat pravidla pro odmítnutí nebo přijímá přenos dat pocházejících z konkrétní adresy IPv4. Tyto adresy může být například těch, které podnikové bráně překladu adres.
 
 ## <a name="when-to-use"></a>Kdy je použít

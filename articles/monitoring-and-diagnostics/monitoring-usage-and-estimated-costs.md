@@ -9,18 +9,18 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: 35e7d36043defd236252f86facf4b9e2ed945d67
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 3a21b2521cc16b97519f2f84b40a3f51536757e2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055249"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999678"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Monitorování využití a odhadované náklady
 
 > [!NOTE]
 > Tento článek popisuje, jak zobrazit využití a odhadované náklady napříč více monitorovacích funkcí Azure pro různé cenové modely.  Přečtěte si následující články související informace.
-> - [Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](../log-analytics/log-analytics-manage-cost-storage.md) popisuje, jak řídit své náklady tak, že změníte vaše data uchovávají.
+> - [Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics](../azure-monitor/platform/manage-cost-storage.md) popisuje, jak řídit své náklady tak, že změníte vaše data uchovávají.
 > - [Analýza využití dat v Log Analytics](../log-analytics/log-analytics-usage.md) popisuje, jak analyzovat a upozornění na data využití.
 > - [Správa cen a objemů dat ve službě Application Insights](../application-insights/app-insights-pricing.md) popisuje, jak analyzovat využití dat v Application Insights.
 

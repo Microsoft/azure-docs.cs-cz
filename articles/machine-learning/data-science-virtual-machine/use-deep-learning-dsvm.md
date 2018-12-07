@@ -1,6 +1,6 @@
 ---
-title: Vědecké zpracování dat s hloubkové Learning Data vědecké účely virtuální počítač na platformě Azure | Microsoft Docs
-description: Jak provést několik běžné úkoly dat vědecké účely s virtuálním Počítačem hloubkové Learning Data vědecké účely.
+title: Pro datové vědy s obsáhlý Learning virtuální počítač pro datové vědy v Azure | Dokumentace Microsoftu
+description: Jak provádět několik běžných úloh vědeckého zpracování Data Science počítače pro obsáhlý Learning.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -14,34 +14,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 2053ed8cc420183d493097eeb2cd2ad93c82c70c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 91c1727907c9a134a257e8f7d7c1efb6721c1906
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167241"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993768"
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>Pomocí hloubkového učení virtuálního počítače
 
-Po zřízení vaší hloubkové Learning virtuálního počítače (DLVM), můžete začít vytváření modelů hluboké neuronové sítě k vytváření aplikací AI v doménách jako počítač vize a znalosti jazyka. 
+Po zřízení vašeho obsáhlý Learning virtuálního počítače (DLVM) můžete začít vytvářet modely hluboké neuronové sítě a sestavovat aplikace AI v doménách, jako je pro počítačové zpracování obrazu a language understanding. 
 
-Existuje řada nástroje poskytované ve virtuálním počítači hloubkové Learning pro AI. [Stránka rozhraní hloubkové učení a AI](dsvm-deep-learning-ai-frameworks.md) obsahuje podrobnosti o tom, jak pomocí těchto nástrojů. 
+Existují různé nástroje, které jsou k dispozici na počítače pro obsáhlý Learning pro AI. [Stránky architektur obsáhlého learningu a umělé Inteligence](dsvm-deep-learning-ai-frameworks.md) obsahuje podrobnosti o tom, jak pomocí těchto nástrojů. 
 
-## <a name="deep-learning-tutorials-and-walkthroughs"></a>Hluboké učení kurzy a návody
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Podrobné výukové kurzy a názorné postupy
 
-Kromě ukázky na základě framework sadu komplexní návody také zadat, který byl ověřen na DLVM. Tyto postupy umožňují rychle začít s prací váš vývojový hloubkové learning aplikací v doménách, jako jsou bitové kopie a pochopení text/jazyk. Další kurzy začátku do konce v různých doménách a technologie budou nadále přidat.   
+Kromě ukázky založené na platformě sadu kompletní návody poskytuje se také, který byl ověřen na DLVM. Tyto kurzy vám nastartování vývoje aplikací obsáhlého learningu v doménách, jako je obrázek a text/language understanding. Další kurzy začátku do konce v různých doménách a technologie se nadále přidat.   
 
 
-- [Spuštění neuronové sítě pro různé architektury](https://github.com/ilkarman/DeepLearningFrameworks): komplexní návod, který ukazuje, jak migrovat kód z jednoho rozhraní. Také ukazuje, jak porovnat modelu a spustit doba mezi architektury. 
+- [Spuštěných neuronových sítí v různých rozhraní](https://github.com/ilkarman/DeepLearningFrameworks): komplexní návod, který ukazuje, jak migrace kódu z jednoho rozhraní. Také ukazuje, jak porovnat modelu a výkonu v rozhraní. 
 
-- [Postupy: Průvodce k vytvoření řešení začátku do konce ke zjištění produkty v rámci bitové kopie](https://github.com/Azure/cortana-intelligence-product-detection-from-images): detekce bitové kopie je technika, můžete vyhledat a klasifikovat objekty v rámci bitové kopie. Tato technologie se může mají být předány obrovské výnosu mnoho reálného života obchodní domény. Například prodejců slouží tento postup k určení, který produkt a zákazník má převzata z police. Tyto informace pomáhají zase úložiště spravovat inventář produktů. 
+- [Příručka k vytvoření-ucelené řešení pro detekci produkty v rámci bitové kopie](https://github.com/Azure/cortana-intelligence-product-detection-from-images): detekce Image je technika, která můžete vyhledat a klasifikovat objekty v rámci bitové kopie. Tato technologie má potenciál přenést velké odměny v mnoha obchodních doménách reálném životě. Například prodejci, můžete použít tuto techniku k určení, který produkt a zákazníka má neexistoval z police. Tyto informace pomáhají zase úložiště spravovat inventář produktů. 
 
-- [S názvem extrakce entity z PubMed přehledů](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition) tento kurz ukazuje, jak extrahovat pojmenované entity, jako je nedovolenému názvů nebo nákazy, z nestrukturovaných textu. Nastaví vlastní slovo vložení na svátek text z 18 milionů PubMed přehledů, používá tento model k sestavení modelu opakující neuronové sítě dlouho krátkodobé paměti (LSTM) pro extrakci entity a ukazuje, že lze překonat specifické pro doménu slovo vložení modelu Obecná aplikace word vložení pro extrakci entity.
+- [Hloubkové učení pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) tento kurz ukazuje, jak pro trénování modelu obsáhlého learningu pro zjištění zvuku události na [datovou sadu urban zvuky](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) a poskytovat přehled o tom, jak pracovat s zvuková data.
 
-- [Přímý učení pro zvuk](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) tento kurz ukazuje, jak ke cvičení hloubkové learning model pro zjištění zvuk události na [datovou sadu urbanistické zvuků](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) a poskytují přehled o tom, jak pracovat s daty zvuk.
-
-- [Klasifikaci dokumentů text](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak vytvářet a cvičení architektury dva různé neuronové sítě: hierarchická pozornost sítě a dlouho paměti krátké termín (LSTM) sítě. Tyto neuronové sítě použít rozhraní API Keras hloubkové kurzů klasifikovat dokumenty text. Keras je front-end na tři nejoblíbenější hloubkového učení architektury: Microsoft kognitivní Toolkit, TensorFlow a Theano.
+- [Klasifikace textové dokumenty](https://github.com/anargyri/lstm_han): Tento návod ukazuje, jak sestavit a trénování dvě různé neuronové sítě architektury: sítě hierarchické pozornost sítě a dlouhá paměti krátká období (LSTM). Tyto neuronové sítě pomocí rozhraní Keras API pro obsáhlý learning zařazoval dokumenty do textu. Je front-endu na tři nejoblíbenější hloubkového učení rozhraní Keras: Microsoft Cognitive Toolkit, TensorFlow a Theano.
 
 ## <a name="next-steps"></a>Další postup
 
-[Ukázky stránky](dsvm-samples-and-walkthroughs.md) poskytuje odkazy na příklady kódu, který je předem zavedené ve virtuálním počítači pro každou z rozhraní vám pomohou rychle začít. 
+[Stránku s ukázkami](dsvm-samples-and-walkthroughs.md) poskytuje odkazy na příklady kódu už načtené na virtuálním počítači pro každou z rozhraní vám pomůžou rychle začít. 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: b1a4354db23cdfdc6201decbb793a3f9a3ad8206
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: c35082d7aa1e9d669bc9c5b89948f190d3edd2f3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496159"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014527"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Použití Apache strukturovaného streamování Sparku s využitím Apache Kafka a Azure Cosmos DB
 
@@ -45,7 +45,7 @@ I když můžete vytvořit virtuální síť Azure, Kafka, a clustery Spark ruč
 1. Pomocí následujícího tlačítka se přihlaste do Azure a otevřete šablonu na webu Azure Portal.
     
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png"/>
     </a>
 
     Šablony Azure Resource Manageru se nachází v úložišti GitHub pro tento projekt ([https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka-cosmosdb)).

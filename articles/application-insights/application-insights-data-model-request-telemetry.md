@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d3a2fe9b51e0e6e9de653abb1bfa56a2529218cb
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2092816946dae20f5b3ae5b0a09179197dda00eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722459"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992815"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: datový model Application Insights
 
@@ -29,7 +29,7 @@ Položky telemetrie požadavku (v [Application Insights](app-insights-overview.m
 
 Název žádosti představuje cestu kódu potřebný ke zpracování požadavku. Kardinalita s nízkou hodnotu umožňující lepší seskupení požadavků. Pro požadavky HTTP, to představuje metodu HTTP a šablonu cesty URL jako `GET /values/{id}` bez skutečného `id` hodnotu.
 
-Application Insights web SDK odešle žádost o název "tak jak jsou" s ohledem na písmen. Seskupení podle uživatelského rozhraní je velká a malá písmena, `GET /Home/Index` se počítá samostatně z `GET /home/INDEX` i v případě, že jsou často výsledkem stejné provádění kontroleru a akce. Důvod, která je obecně jsou adresy URL [malá a velká písmena](http://www.w3.org/TR/WD-html40-970708/htmlweb.html). Můžete chtít zobrazit, když všechny `404` se naplnilo pro adresy URL zadané na velká písmena. Můžete si přečíst další na žádost o název kolekce pomocí sady SDK webové technologie ASP.Net v [blogový příspěvek](http://apmtips.com/blog/2015/02/23/request-name-and-url/).
+Application Insights web SDK odešle žádost o název "tak jak jsou" s ohledem na písmen. Seskupení podle uživatelského rozhraní je velká a malá písmena, `GET /Home/Index` se počítá samostatně z `GET /home/INDEX` i v případě, že jsou často výsledkem stejné provádění kontroleru a akce. Důvod, která je obecně jsou adresy URL [malá a velká písmena](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Můžete chtít zobrazit, když všechny `404` se naplnilo pro adresy URL zadané na velká písmena. Můžete si přečíst další na žádost o název kolekce pomocí sady SDK webové technologie ASP.Net v [blogový příspěvek](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
 Maximální délka: 1024 znaků.
 
@@ -69,7 +69,7 @@ Application Insights pro webové aplikace, definovat požadavek, jako neúspěš
 
 Částečně přijmout obsah `206` může znamenat selhání celkový požadavek. Koncový bod služby Application Insights pro instanci přijímá dávky položky telemetrie jako jeden požadavek. Vrátí `206` kdy některé položky v dávce nebyly úspěšně zpracována. Rostoucí počet `206` indikuje problém, který je nutné prozkoumat. Podobná logika platí pro `207` více stav, kdy úspěch může být nejhorší ze samostatných kódů odpovědí.
 
-Si můžete přečíst další výsledek na žádost kód a stavovým kódem [blogový příspěvek](http://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
+Si můžete přečíst další výsledek na žádost kód a stavovým kódem [blogový příspěvek](https://apmtips.com/blog/2016/12/03/request-success-and-response-code/).
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 

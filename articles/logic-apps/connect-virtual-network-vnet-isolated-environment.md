@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 12/03/2018
-ms.openlocfilehash: 61255add37d4bc4224278e089879823b1a2f9981
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/06/2018
+ms.openlocfilehash: b0fd2466d72b1aae65a54b9e9813a5af51bf1672
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863546"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997502"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps prostřednictvím integrace služby prostředí (ISE)
 
@@ -141,14 +141,17 @@ V seznamu výsledků vyberte **prostředí integrační služby (preview)** a kl
 
    ![Po úspěšném ověření zvolte možnost "Vytvořit"](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
-   Azure spustí nasazení prostředí, ale tento proces může trvat *až dvě hodiny* před dokončením. 
+   Azure spouští vaše prostředí, ale tento proces nasazení *může* trvat až dvě hodiny před dokončením. 
    Chcete-li zkontrolovat stav nasazení, na panelu nástrojů Azure, vyberte ikonu oznámení, které se otevře podokno oznámení.
 
    ![Zkontrolujte stav nasazení](./media/connect-virtual-network-vnet-isolated-environment/environment-deployment-status.png)
 
-   Po úspěšném dokončení nasazení Azure zobrazí toto oznámení:
+   Pokud se nasazení dokončí úspěšně, zobrazí toto upozornění Azure:
 
    ![Nasazení bylo úspěšné.](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
+
+   > [!NOTE]
+   > Pokud nasazení selže nebo je odstranit ISE, Azure *může* trvat až jednu hodinu před uvolněním podsítě. Ano budete muset počkat před opětovným použitím těchto podsítí v jiném prostředí ISE.
 
 1. Chcete-li zobrazit své prostředí, zvolte **přejít k prostředku** Pokud Azure nemá automaticky přejít do svého prostředí po dokončení nasazení.  
 

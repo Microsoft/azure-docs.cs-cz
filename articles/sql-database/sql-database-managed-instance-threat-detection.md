@@ -11,25 +11,21 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 7f05bd6c96a8e22b1e039c3edcec491b7c079d54
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 12/06/2018
+ms.openlocfilehash: a456a214143f39ed9504af40129f9199b2535e46
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162405"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997139"
 ---
-# <a name="azure-sql-database-managed-instance-threat-detection"></a>Azure SQL Database Managed Instance detekce hrozeb
+# <a name="azure-sql-database-managed-instance-threat-detection-preview"></a>Azure SQL Database Managed Instance detekce hrozeb (Preview)
 
-Detekce hrozeb detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití v Azure SQL Database Managed Instance.
+Azure SQL [detekce hrozeb](sql-database-threat-detection-overview.md) pro [SQL Database Managed Instance](sql-database-managed-instance-index.yml) detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití. Detekce hrozeb můžete identifikovat **útok prostřednictvím injektáže SQL potenciální**, **přístup z neobvyklého umístění nebo datového centra**, **přístup z neznámého objektu zabezpečení nebo potenciálně škodlivé aplikace**, a **hrubou silou přihlašovací údaje SQL** – další podrobnosti najdete v [výstrahy detekce hrozeb](sql-database-threat-detection-overview.md#azure-sql-database-threat-detection-alerts).
 
-## <a name="overview"></a>Přehled
+Budete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailová oznámení](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) nebo [webu Azure portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
 
-Detekce hrozeb detekuje neobvyklé databázové aktivity značící potenciální ohrožení zabezpečení do Managed Instance. Detekce hrozeb je teď ve verzi preview pro Managed Instance.
-
-Detekce hrozeb poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje detekovat a reagovat na potenciální hrozby, jak se objeví díky poskytování výstrah zabezpečení na neobvyklé databázové aktivity. Detekce hrozeb usnadňuje řešení potenciálních ohrožení k Managed Instance bez nutnosti odborné zabezpečení nebo se musí spravovat pokročilé systémy monitorování zabezpečení. Zajišťuje úplné šetření se doporučuje povolit Azure Managed Instance auditování, která zapisuje události auditu databáze protokolu ve vašem účtu úložiště Azure. 
-
-Detekce hrozeb SQL integruje výstrahy se službou [Azure Security Center](https://azure.microsoft.com/services/security-center/), a každé chráněné Managed Instance se účtuje stejná cena jako za Azure Security Center úrovně Standard, na 15 USD/uzel/měsíc, ve kterém každý chráněný Managed Instance se počítá jako jeden uzel.  
+[Detekce hrozeb](sql-database-threat-detection-overview.md) je součástí [rozšířené ochrany před internetovými útoky SQL](sql-advanced-threat-protection.md) nabídky (ATP), která je jednotný balíček pro pokročilé funkce zabezpečení SQL. Detekce hrozeb je možné získat přístup a spravovat prostřednictvím portálu pro centrální ochrany ATP v programu SQL. Služba detekce hrozeb účtuje se 15$ / měsíc za Managed Instance pomocí prvních 30 dnů zdarma.
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Nastavení detekce hrozeb pro Managed Instance na webu Azure Portal
 1. Spuštění webu Azure portal na [ https://portal.azure.com ](https://portal.azure.com).
@@ -42,39 +38,10 @@ Detekce hrozeb SQL integruje výstrahy se službou [Azure Security Center](https
 
    ![Detekce hrozeb](./media/sql-database-managed-instance-threat-detection/threat-detection.png)
 
-## <a name="explore-anomalous-managed-instance-activities-upon-detection-of-a-suspicious-event"></a>Prozkoumejte neobvyklé aktivity Managed Instance při zjištění podezřelé události
-
-1. Obdržíte e-mailové oznámení po detekci neobvyklých databázových aktivit. 
-
-   E-mailu obsahuje informace o podezřelé události zabezpečení včetně povahy neobvyklých aktivit, název databáze, název serveru a čas události. Kromě toho poskytuje informace o možných příčinách a doporučených akcích pro šetření a zmírnění potenciálního ohrožení Managed Instance.
-
-   ![e-mail detekce hrozeb](./media/sql-database-managed-instance-threat-detection/threat-detection-email.png)
-
-2. Klikněte na tlačítko **zobrazené poslední výstrahy SQL** odkaz v e-mailu můžete spustit na portálu Azure portal a zobrazení stránky s upozorněními Azure Security Center, která obsahuje základní informace o aktivní zjištěných hrozeb SQL na spravované instanci databáze.
-
-   ![aktivní hrozby](./media/sql-database-managed-instance-threat-detection/active-threats.png)
-
-3. Kliknutím na konkrétní výstrahu zobrazíte další podrobnosti a akce pro zkoumání této hrozby a oprava budoucími hrozbami.
-
-   Například útok prostřednictvím injektáže SQL je jedním z běžných problémů zabezpečení webových aplikací na Internetu. Útok prostřednictvím injektáže SQL se používá k útoku na aplikace řízené daty. Útočníci využívají ohrožení zabezpečení aplikací k vložit škodlivé příkazy SQL do vstupních polí aplikace, porušení nebo úpravy dat v databázi. Podrobnosti výstrahy pro výstrahy útok prostřednictvím injektáže SQL, zahrnují zranitelné příkaz jazyka SQL, který byl zneužít.
-
-   ![Útok prostřednictvím injektáže SQL](./media/sql-database-managed-instance-threat-detection/sql-injection.png)
-
-## <a name="managed-instance-threat-detection-alerts"></a>Spravované výstrahy detekce hrozeb Instance 
-
-Detekce hrozeb pro spravovanou instanci detekuje neobvyklé aktivity a potenciálně nebezpečné pokusy o přístup k databázím nebo jejich zneužití a ji můžete spustit následující upozornění:
-- **Zranitelnost vůči útoku prostřednictvím injektáže SQL:** Tato výstraha se aktivuje, pokud aplikace v databázi vygeneruje chybný příkaz SQL. Může to znamenat možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody vygenerování chybného příkazu:
- - Chyba v kódu aplikace, která způsobí sestavení chybného příkazu jazyka SQL
- - Kód aplikace ani uložené procedury neupravují uživatelský vstup při sestavování chybného příkazu SQL, který může být zneužit pro injektáž SQL.
-- **Potenciální útok prostřednictvím injektáže SQL:** Tato výstraha se aktivuje v případě výskytu aktivního zneužití zranitelnosti identifikované aplikace v důsledku injektáže SQL. To znamená, že se útočník pokouší vložit škodlivé příkazy SQL s použitím zranitelného kódu aplikace nebo uložených procedur.
-- **Přístup z neobvyklého umístění**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k Managed Instance, když někdo přihlásil k Managed Instance z neobvyklé geografické lokality. V některých případech výstraha detekuje legitimní akci (nová aplikace nebo operace údržby pro vývojáře). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník a tak dále).
-- **Přístup z neobvyklého datového centra Azure**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k Managed Instance, když někdo přihlásil k Managed Instance z datového centra Azure, která nebyla přístup k této spravované Instance v nedávné době. V některých případech výstraha detekuje legitimní akci (nová aplikace v Azure, Power BI, Editor dotazů SQL Azure a tak dále). V jiných případech výstraha detekuje škodlivou akci prováděnou z prostředku/služby Azure (bývalý zaměstnanec, externí útočník).
-- **Přístup z neznámého objektu zabezpečení**: Tato výstraha se aktivuje, když dojde ke změně vzoru přístupu k Managed Instance serveru, když někdo přihlásil k Managed Instance pomocí neobvyklého objektu zabezpečení (uživatel SQL). V některých případech výstraha detekuje legitimní akci (operace údržby nový vývojář aplikace). V jiných případech výstraha detekuje škodlivou akci (bývalý zaměstnanec, externí útočník).
-- **Přístup z potenciálně škodlivé aplikace:** Tato výstraha se aktivuje, pokud je pro přístup k databázi použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok pomocí běžných nástrojů útoku.
-- **Útok hrubou silou na přihlašovací údaje SQL:** Tato výstraha se aktivuje, pokud byly zaznamenán neobvykle vysoký počet neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.
-
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o Managed Instance, přečtěte si téma [co je Managed Instance](sql-database-managed-instance.md)
-- Další informace o [auditování spravované Instance](https://go.microsoft.com/fwlink/?linkid=869430) 
-- Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Další informace o [detekce hrozeb](sql-database-threat-detection-overview.md). 
+- Další informace o Managed Instance, přečtěte si téma [co je Managed Instance](sql-database-managed-instance.md). 
+- Další informace o [detekce hrozeb pro izolované databáze](sql-database-threat-detection.md). 
+- Další informace o [Managed Instance auditování](https://go.microsoft.com/fwlink/?linkid=869430). 
+- Další informace o [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).

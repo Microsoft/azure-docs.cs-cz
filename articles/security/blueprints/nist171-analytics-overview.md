@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: f4d8f4a927415426248860b07a40e7294c84de59
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a4f84d6e61d3a100f952908883e6eb70d81f66b2
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406952"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998805"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Zabezpečení Azure a dodržování předpisů – analýza dat pro SP NIST 800-171
 
@@ -69,7 +69,7 @@ Následující část podrobně popisuje nasazení a implementaci prvky.
 
 **Služba Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) je výpočetní služba bez serveru, na kterém běží kód na vyžádání. Není nutné explicitně zřizovat nebo spravovat infrastrukturu. Azure Functions můžete použít ke spuštění skriptu nebo kusu kódu jako reakci na různé události.
 
-**Azure Machine Learning**: [Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/) je technika datové vědy, která umožňuje počítačům s využitím existujících dat předpovídá budoucí chování, výsledky a trendy.
+**Služba Azure Machine Learning**: [Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/) je technika datové vědy, která umožňuje počítačům s využitím existujících dat předpovídá budoucí chování, výsledky a trendy.
 
 **Azure Data Catalog**: [katalogu Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) činí zdroje dat byly snadno vyhledatelné a pochopitelné uživatelé, kteří spravují data. Běžné zdroje dat můžete zaregistrovaný, příznakem a vyhledávat data. Data zůstávají uložena ve stávajícím umístění, ale kopie metadat se přidá do katalogu Data Catalog. Odkaz na umístění zdroje dat je v ceně. Metadata je indexována, aby byl každý zdroj dat snadno vyhledat přes vyhledávání. Indexování také umožňuje srozumitelné pro uživatele, kteří je zjistili.
 

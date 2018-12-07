@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: juliako
-ms.openlocfilehash: 7ff48962d01a83e8c9fce380d92fbc196ff96533
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 2dbc2b4e316155e880d3baa900196d5cdd31be72
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52585514"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011772"
 ---
 # <a name="liveevent-types-comparison"></a>Porovnání typů Livestream
 
@@ -42,6 +42,7 @@ Následující tabulka obsahuje porovnání funkcí těchto dvou typů Livestrea
 | Podporované videa bitová hloubka, vstupu a výstupu|Až 10-bit včetně HDR 10/HLG|8 bitů|
 | Podporované kodeky vstupního zvuku|AAC-LC, HE-AAC v1, v2 HE-AAC|AAC-LC, HE-AAC v1, v2 HE-AAC|
 | Podporované výstup zvukových kodeků|Stejné jako vstup|AAC-LC|
+| Maximální rozlišení výstup videa|Stejné jako vstup|720p (na 30 snímků za sekundu)|
 | Vstupní protokoly|RTMP, fragmentovaný soubor MP4 (technologie Smooth Streaming)|RTMP, fragmentovaný soubor MP4 (technologie Smooth Streaming)|
 | Cena|Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu "Živé Video"|Zobrazit [stránce s cenami](https://azure.microsoft.com/pricing/details/media-services/) a klikněte na kartu "Živé Video"|
 | Maximální doba běhu|živé lineární 24 × 365|Nepřetržitě|

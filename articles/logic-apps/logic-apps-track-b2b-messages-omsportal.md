@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: aacdaf4ec55b1223ce993a7246ed9f0405a5054e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957177"
+ms.locfileid: "52996544"
 ---
 # <a name="track-b2b-messages-with-azure-log-analytics"></a>Sledování zpráv B2B s Azure Log Analytics
 
@@ -27,7 +27,7 @@ Po nastavení komunikace B2B mezi obchodními partnery v účtu integrace těcht
 * Možnosti vyhledávání
 
 > [!NOTE]
-> Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../log-analytics/log-analytics-oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
+> Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
 
 ## <a name="prerequisites"></a>Požadavky
 

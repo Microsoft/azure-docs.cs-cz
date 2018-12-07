@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: b9110222d52a6b4e14faf28d55ae9d10fa067949
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 79921a3adc043dd84317b7613286ec5cdc460bde
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725773"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993760"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Vytváření prostředků Application Insights v prostředí PowerShell
 Tento článek ukazuje, jak automatizovat vytváření a aktualizaci [Application Insights](app-insights-overview.md) prostředky automaticky pomocí Azure Resource Manageru. Například provádět jako součást procesu sestavení. Spolu s základní prostředek Application Insights, můžete vytvořit [testy dostupnosti webu](app-insights-monitor-web-app-availability.md), nastavit [výstrahy](app-insights-alerts.md), nastavte [cenové schéma](app-insights-pricing.md)a vytvořit další prostředky Azure .
@@ -37,7 +37,7 @@ Vytvořte nový soubor .json – ho budeme nazývat `template1.json` v tomto př
 
 ```JSON
     {
-        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
             "appName": {

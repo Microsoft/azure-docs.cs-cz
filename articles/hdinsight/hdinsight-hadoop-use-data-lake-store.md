@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 0d76aa5091e77d8713290e6da8908e15ad3ef995
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 8fe1c9b2749f805cc0c546ed3355e457551f24f9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684563"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011092"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Použití služby Data Lake Store s clustery Azure HDInsight
 
@@ -205,7 +205,7 @@ Další informace naleznete v tématu:
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
 
-[blob-storage-restAPI]: http://msdn.microsoft.com/library/windowsazure/dd135733.aspx
+[blob-storage-restAPI]: https://msdn.microsoft.com/library/windowsazure/dd135733.aspx
 [azure-storage-create]:../storage/common/storage-create-storage-account.md
 
 [img-hdi-powershell-blobcommands]: ./media/hdinsight-hadoop-use-blob-storage/HDI.PowerShell.BlobCommands.png

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 5566ea8b21682c5023afc4af357e1a80e1d37384
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 62924488b776a1a89e1abf492db1881a44585b1a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248467"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997815"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Vazba externí tabulky pro službu Azure Functions (experimentální)
 
@@ -49,7 +49,7 @@ Při přiřazování vazby můžete vytvořit nové připojení rozhraní API ne
 |[Salesforce](https://docs.microsoft.com/azure/connectors/connectors-create-api-salesforce)||x|x
 |[SharePoint](https://docs.microsoft.com/azure/connectors/connectors-create-api-sharepointonline)||x|x
 |[SQL Server](https://docs.microsoft.com/azure/connectors/connectors-create-api-sqlazure)||x|x
-|[Teradata](http://www.teradata.com/products-and-services/azure/products/)||x|x
+|[Teradata](https://www.teradata.com/products-and-services/azure/products/)||x|x
 |UserVoice||x|x
 |Zendesk||x|x
 

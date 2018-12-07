@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2814ecb0ff9fc49e4763dbe604fef353394f9aac
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 613e0f51ae7bbb0b295f13d50fc95683085d7da9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965236"
+ms.locfileid: "52995788"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -28,14 +28,14 @@ První, Stručná odpověď:
 * Moduly standardní telemetrická data, na kterých běží "mimo pole" by problém nahlásili odesílat citlivá data do služby. Telemetrická data se týká zatížení, metriky výkonu a využití, sestavy výjimek a jiné diagnostické údaje. Adresy URL; jsou viditelné v diagnostických zprávách hlavní uživatelské údaje ale aplikace by neměl v každém případě citlivá data ve formátu prostého textu v adrese URL.
 * Můžete napsat kód, který odešle další vlastní telemetrická data, vám pomůže při monitorování využití a Diagnostika. (Toto rozšíření je skvělou funkcí služby Application Insights.) Je to možné, omylem, psaní tohoto kódu tak, že obsahují osobní a další citlivá data. Pokud vaše aplikace funguje se takové údaje, byste měli použít důkladný přehled procesů pro veškerý kód, který píšete.
 * Při vývoji a testování vaší aplikace, je snadné ke kontrole, co se právě odesílá prostřednictvím sady SDK. Data se zobrazí v ladění okna výstup integrované vývojové prostředí a prohlížeče. 
-* Data se uchovávají v [Microsoft Azure](http://azure.com) serverů v USA nebo Evropa. (Ale vaše aplikace můžou běžet kdekoli.) Azure má [silné zabezpečení zpracuje a splňuje širokou škálu standardy pro dodržování předpisů](https://azure.microsoft.com/support/trust-center/). Pouze vám a vašemu týmu určené mít přístup k vašim datům. Zaměstnanci Microsoftu můžou mít omezený přístup k němu konkrétní ojedinělých případech s vaším vědomím. Zašifrovaná při přenosu, i když nejsou v serverech.
+* Data se uchovávají v [Microsoft Azure](https://azure.com) serverů v USA nebo Evropa. (Ale vaše aplikace můžou běžet kdekoli.) Azure má [silné zabezpečení zpracuje a splňuje širokou škálu standardy pro dodržování předpisů](https://azure.microsoft.com/support/trust-center/). Pouze vám a vašemu týmu určené mít přístup k vašim datům. Zaměstnanci Microsoftu můžou mít omezený přístup k němu konkrétní ojedinělých případech s vaším vědomím. Zašifrovaná při přenosu, i když nejsou v serverech.
 
 Zbývající část tohoto článku popisuje podrobněji na těchto otázek. Je navržena jako samostatná, tak, aby je bylo možné zobrazit kolegům, kteří nejsou součástí vašeho týmu.
 
 ## <a name="what-is-application-insights"></a>Co je Application Insights?
 [Azure Application Insights] [ start] je služba od Microsoftu, která vám pomůže zvýšit výkon a možnosti využití vaší živé aplikace. Monitoruje vaše aplikace neustále, na kterých je spuštěný při testování a po publikování nebo ho nasadil. Application Insights vytvoří grafů a tabulek, které ukazují, například, kterou denní dobu můžete získat většina uživatelů, jak responzivní aplikace je a jak dobře je poskytovaný všech externích služeb, na kterých závisí. Pokud existují, chyb, chyby nebo problémy s výkonem, můžete prohledat data telemetrie podrobně určování příčin problémů. A služba vám pošle e-mailů, pokud existují změny v dostupnosti a výkonu vaší aplikace.
 
-Pokud chcete získat tuto funkci, nainstalujte sadu SDK Application Insights ve vaší aplikaci, která se stane součástí jeho kód. Když vaše aplikace běží, sada SDK sleduje jeho operace a odesílá telemetrická data do služby Application Insights. Toto je Cloudová služba hostovaná společností [Microsoft Azure](http://azure.com). (Ale Application Insights se dá použít pro všechny aplikace, nejen ty, které jsou hostované v Azure.)
+Pokud chcete získat tuto funkci, nainstalujte sadu SDK Application Insights ve vaší aplikaci, která se stane součástí jeho kód. Když vaše aplikace běží, sada SDK sleduje jeho operace a odesílá telemetrická data do služby Application Insights. Toto je Cloudová služba hostovaná společností [Microsoft Azure](https://azure.com). (Ale Application Insights se dá použít pro všechny aplikace, nejen ty, které jsou hostované v Azure.)
 
 ![Sada SDK ve vaší aplikaci odesílá telemetrii služby Application Insights.](./media/app-insights-data-retention-privacy/01-scheme.png)
 
@@ -204,7 +204,7 @@ Nedoporučujeme explicitním nastavením nezbytně nutné, protože toto může 
 |.NET | Podporované, konfigurace se liší podle verze. | Podrobnou konfiguraci informace o .NET 4.7 a předchozími verzemi najdete [tyto pokyny](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
 |Monitorování stavu | Podporované, vyžaduje se konfigurace | Monitorování stavu spoléhá na [konfigurace operačního systému](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [konfigurace .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) pro podporu protokolu TLS 1.2.
 |Node.js |  Podporované v v10.5.0, konfigurace mohou být vyžadovány. | Použití [oficiální dokumentaci k Node.js TLS/SSL](https://nodejs.org/api/tls.html) pro jakékoli konkrétní konfigurace aplikace. |
-|Java | Podporované, JDK podpora protokolu TLS 1.2 bylo přidáno v [JDK 6 aktualizace 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Používá sadu JDK 8 [TLS 1.2 ve výchozím nastavení](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
+|Java | Podporované, JDK podpora protokolu TLS 1.2 bylo přidáno v [JDK 6 aktualizace 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Používá sadu JDK 8 [TLS 1.2 ve výchozím nastavení](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Linuxové distribuce mají tendenci přináší setrvávání u [OpenSSL](https://www.openssl.org) pro podporu protokolu TLS 1.2.  | Zkontrolujte [protokolu změn OpenSSL](https://www.openssl.org/news/changelog.html) pro potvrzení, vaše verze OpenSSL není podporovaná.|
 | Windows 8.0 10 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
 | Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
@@ -230,7 +230,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 
 ## <a name="personal-data-stored-in-application-insights"></a>Osobní údaje uložené ve službě Application Insights
 
-Naše [článku osobních údajů služby Application Insights](../log-analytics/log-analytics-personal-data-mgmt.md) podrobné tento problém.
+Naše [článku osobních údajů služby Application Insights](../azure-monitor/platform/personal-data-mgmt.md) podrobné tento problém.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Můžete svým uživatelům vypnout Application Insights?
 Ne přímo. Neposkytujeme přepínač, který chcete-li vypnout Application Insights můžete provozovat vaši uživatelé.
@@ -281,10 +281,10 @@ Pro [sady SDK pro jiné platformy][platforms], najdete v článku své dokumenty
 Můžete si [vypnout některá data pomocí úpravy souboru ApplicationInsights.config][config]
 
 > [!NOTE]
-> Klient IP je použít k odvození vlastníka, zeměpisného umístění, ale ve výchozím nastavení IP data jsou již uložena a obsahuje samé nuly jsou zapsány do přidružené pole. Bližší informace o zpracování osobních údajů toto doporučení uvádíme [článku](../log-analytics/log-analytics-personal-data-mgmt.md#application-data). Pokud potřebujete ukládat IP adresu můžete tak učinit pomocí [inicializátor telemetrie](./app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
+> Klient IP je použít k odvození vlastníka, zeměpisného umístění, ale ve výchozím nastavení IP data jsou již uložena a obsahuje samé nuly jsou zapsány do přidružené pole. Bližší informace o zpracování osobních údajů toto doporučení uvádíme [článku](../azure-monitor/platform/personal-data-mgmt.md#application-data). Pokud potřebujete ukládat IP adresu můžete tak učinit pomocí [inicializátor telemetrie](./app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).
 
 ## <a name="credits"></a>Závěrečné titulky
-Tento produkt obsahuje GeoLite2 data vytvořená systémem MaxMind, k dispozici z [ http://www.maxmind.com ](http://www.maxmind.com).
+Tento produkt obsahuje GeoLite2 data vytvořená systémem MaxMind, k dispozici z [ https://www.maxmind.com ](https://www.maxmind.com).
 
 
 
@@ -297,7 +297,7 @@ Tento produkt obsahuje GeoLite2 data vytvořená systémem MaxMind, k dispozici 
 [greenbrown]: app-insights-asp-net.md
 [java]: app-insights-java-get-started.md
 [platforms]: app-insights-platforms.md
-[pricing]: http://azure.microsoft.com/pricing/details/application-insights/
+[pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: app-insights-monitor-performance-live-website-now.md
 [start]: app-insights-overview.md
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 48b1e47befa647a9d221e5cdf5bf0485c3b66028
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 588e56c9ae22578c08dbca07c7c576fe8b577b58
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423823"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012330"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Kurz: Integrace Azure Active Directory se službou menších vylepšení
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s menších vylepšení, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Menších vylepšení jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace menších vylepšení do služby Azure AD, budete muset p�
 
 **Přidání menších vylepšení z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -216,7 +216,7 @@ Pokud chcete povolit Azure AD uživatelům přihlášení do menších vylepšen
 
     b. Zadejte **příjmení** uživatele, jako je **Simon**.
 
-    c. Zadejte **e-mailu** uživatele, jako je **brittasimon@contoso.com**. 
+    c. Zadejte **e-mailu** uživatele, jako je <strong>brittasimon@contoso.com</strong>. 
 
     d. Můžete také zadat osobní zprávu v **odeslat e-mail s oznámením** pole. Pokud nechcete, aby se odeslat oznámení, poté zrušte zaškrtnutí tohoto políčka.
 

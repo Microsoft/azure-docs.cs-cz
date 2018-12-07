@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 810c32d715acebb65613085114340bc7b35380c4
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ef914318174ee3ce738769fcae910c82b35b21b4
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841332"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998552"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: Časté otázky (FAQ)
 Tento článek obsahuje nejčastější dotazy týkající se Azure Site Recovery. Pokud po přečtení tohoto článku máte dotazy, zveřejněte na [fóru Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -91,7 +91,7 @@ Pro virtuální počítače a fyzické servery se podporuje replikaci mezi míst
 Azure Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Replikace není přes síť site-to-site VPN. Site-to-site VPN, můžete vytvořit pomocí služby Azure virtual network. To není v konfliktu se replikace Site Recovery.
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Můžete použít ExpressRoute pro replikaci virtuálních počítačů do Azure?
-Ano, [ExpressRoute je možné](concepts-expressroute-with-site-recovery.md) pro replikaci místních virtuálních počítačů do Azure. Azure Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Budete muset nastavit [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) nebo [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoft-peering) pro účely replikace Site Recovery ExpressRoute. Partnerský vztah Microsoftu je doporučené směrování domény pro replikaci. Po virtuální počítače mají převzalo služby Azure virtual network k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) instalační program s Azure virtual network. Replikace není podporována přes privátní partnerský vztah.
+Ano, [ExpressRoute je možné](concepts-expressroute-with-site-recovery.md) pro replikaci místních virtuálních počítačů do Azure. Azure Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod. Budete muset nastavit [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#publicpeering) nebo [partnerský vztah Microsoftu](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) pro účely replikace Site Recovery ExpressRoute. Partnerský vztah Microsoftu je doporučené směrování domény pro replikaci. Po virtuální počítače mají převzalo služby Azure virtual network k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering) instalační program s Azure virtual network. Replikace není podporována přes privátní partnerský vztah.
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>Vztahují se na replikaci virtuálních počítačů do Azure nějaké požadavky?
 [Virtuální počítače VMware](vmware-physical-azure-support-matrix.md#replicated-machines) a [virtuálních počítačů Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) chcete replikovat do Azure by měly splňovat požadavky na Azure.
@@ -116,7 +116,7 @@ Budete potřebovat účet úložiště LRS nebo GRS. Doporučujeme účet úlož
 
 ### <a name="how-often-can-i-replicate-data"></a>Jak často je možné replikovat data?
 * **Technologie Hyper-V:** virtuálních počítačů Hyper-V je možné replikovat každých 30 sekund (s výjimkou storage úrovně premium), 5 minut nebo 15 minut. Pokud jste nastavili replikaci sítě SAN je replikace synchronní.
-* **VMware a fyzické servery:** Četnost replikací zde není relevantní. Replikace je souvislý.
+* **Virtuální počítače Azure, VMware a fyzické servery:** četnost replikací zde není relevantní. Replikace je souvislý.
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Je možné rozšířit replikaci z existující lokality pro obnovení do jiné lokality terciární?
 Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto funkci v [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959-support-for-exisiting-extended-replication).

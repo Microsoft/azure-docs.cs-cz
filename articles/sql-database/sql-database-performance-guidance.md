@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 95e09532616b4aff05dad7440dcda6872fd27484
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 2fe78efc8d85da2a8cd38a217c25f89ca7aefd22
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49645520"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012993"
 ---
 # <a name="manual-tune-query-performance-in-azure-sql-database"></a>Ruční ladění výkonu dotazů ve službě Azure SQL Database
 
@@ -258,7 +258,7 @@ Některé aplikace jsou náročné na zápis. Někdy můžete snížit celkové 
 
 ### <a name="application-tier-caching"></a>Ukládání do mezipaměti aplikační vrstvy
 
-Některé databáze aplikace mají úlohy náročné na čtení. Ukládání do mezipaměti vrstvy můžou snížit zatížení na databázi a může potenciálně snížili množství výpočetních velikost požadovanou pro podporu databázi s využitím Azure SQL Database. S [Azure Redis Cache](https://azure.microsoft.com/services/cache/), pokud máte nějaké úlohy náročné na čtení, můžete tato data čtete jednou (nebo třeba jednou za počítač aplikační vrstvy, v závislosti na tom, jak je nakonfigurovaný), pak tato data a ukládat mimo vaši službu SQL database. Toto je způsob, jak snížit zatížení databáze (CPU a čtení vstupně-výstupní operace), ale není vliv na konzistenci transakcí, protože se data načtou z mezipaměti může být synchronizována s daty v databázi. V mnoha aplikacích je přijatelné určitou úroveň nekonzistence, to není true pro všechny úlohy. Všechny požadavky aplikace byste měli plně rozumět před implementací strategie ukládání do mezipaměti aplikační vrstvy.
+Některé databáze aplikace mají úlohy náročné na čtení. Ukládání do mezipaměti vrstvy můžou snížit zatížení na databázi a může potenciálně snížili množství výpočetních velikost požadovanou pro podporu databázi s využitím Azure SQL Database. S [mezipaměti Azure Redis](https://azure.microsoft.com/services/cache/), pokud máte nějaké úlohy náročné na čtení, můžete tato data čtete jednou (nebo třeba jednou za počítač aplikační vrstvy, v závislosti na tom, jak je nakonfigurovaný), pak tato data a ukládat mimo vaši službu SQL database. Toto je způsob, jak snížit zatížení databáze (CPU a čtení vstupně-výstupní operace), ale není vliv na konzistenci transakcí, protože se data načtou z mezipaměti může být synchronizována s daty v databázi. V mnoha aplikacích je přijatelné určitou úroveň nekonzistence, to není true pro všechny úlohy. Všechny požadavky aplikace byste měli plně rozumět před implementací strategie ukládání do mezipaměti aplikační vrstvy.
 
 ## <a name="next-steps"></a>Další postup
 

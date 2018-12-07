@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/20/2017
 ms.reviewer: aruna
 ms.author: mbullwin
-ms.openlocfilehash: 358d17f29960983af1834e87f502331141fcff46
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: e9a8c6345ca45234ffcec1588a98bf1b8d634e06
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726113"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000688"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Poznámky k verzi pro Developer Analytics Tools
 
@@ -180,7 +180,7 @@ Můžete spravovat aplikace v několika různými způsoby v portálu pro Hockey
 
 ![Portál HockeyApp](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
 
-Zobrazit [HockeyApp znalostní báze](http://support.hockeyapp.net/kb/app-management-2) podrobné informace o správě aplikací.
+Zobrazit [HockeyApp znalostní báze](https://support.hockeyapp.net/kb/app-management-2) podrobné informace o správě aplikací.
 
 ### <a name="windows-forms-apps"></a>Aplikace modelu Windows Forms
 Místní nabídku pro uzel projektu formuláře Windows teď obsahuje možnost nahrát sestavení s HockeyApp.
@@ -228,7 +228,7 @@ Pokud už máte jedno z těchto rozhraní protokolování nakonfigurované, nás
 
 Pokud máte nainstalován adaptér protokolování, spusťte aplikaci a ujistěte se, že se zobrazí data v kartě diagnostické nástroje, například takto:
 
-![trasování](./media/app-insights-release-notes-vsix/Traces.png)
+![Trasování](./media/app-insights-release-notes-vsix/Traces.png)
 
 ### <a name="jump-to-or-find-the-code-where-the-telemetry-event-property-is-emitted"></a>Přejít na nebo kódu najít, kde je vygenerován vlastnost události telemetrie
 V nové verzi může uživatel kliknout na libovolnou hodnotu v události podrobností a tím bude hledat odpovídající řetězce v aktuálním řešení otevřené. Výsledky se zobrazí v sadě Visual Studio "Výsledky hledání" seznamu, jak je znázorněno níže:

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 49956234c00129508254b96d7d63a4b30af3ad55
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 5c590b8df2eeb8859a6b78f4d719661c8b542ebe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037579"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000267"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Pro datovou vědu Data Science virtuálním počítačem s Linuxem v Azure
 Tento návod ukazuje, jak provádět několik běžných úloh vědeckého zpracování virtuálního počítače s Linuxem datové vědy. Systému Linux dat virtuálního počítače VĚDY je image virtuálního počítače k dispozici v Azure, který může být předinstalovaný s kolekcí nástrojů používaných pro analýzu dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřídit virtuální počítač Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače umožňuje snadno a rychle začít, datových věd v řádech minut, aniž byste museli instalovat a konfigurovat každý z nástrojů jednotlivě. Můžete snadno vertikálně navýšit kapacitu virtuálních počítačů, v případě potřeby a zastavte ji není při použití. Proto tento prostředek je elastická a nákladově efektivní.
@@ -357,7 +357,7 @@ Instalace a spuštění Rattle pomocí následujících příkazů:
 >
 >
 
-Rattle používá rozhraní založené na kartě. Většina karty odpovídají kroky v [vědecké zpracování dat](https://azure.microsoft.com/documentation/learning-paths/data-science-process/), jako je načítání dat nebo zkoumáte ho. Vědecké zpracování dat toky zleva doprava jednotlivé karty. Ale poslední karta obsahuje protokol R příkazy se spouští podle Rattle.
+Rattle používá rozhraní založené na kartě. Většina karty odpovídají kroky v [vědecké zpracování dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), jako je načítání dat nebo zkoumáte ho. Vědecké zpracování dat toky zleva doprava jednotlivé karty. Ale poslední karta obsahuje protokol R příkazy se spouští podle Rattle.
 
 Načíst a nakonfigurovat datové sady:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 894c3e42378ddcbe9cba7b6f33d8500988695754
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 0e934a629edc41ce09cad810b0d3b9b88e36c6d6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721013"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996521"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Nejčastější dotazy
 
@@ -140,7 +140,7 @@ Podíváme se IP adresa (IPv4 nebo IPv6) webového klienta pomocí [GeoLite2](ht
 * Telemetrická data prohlížeče: můžeme shromažďovat IP adresu odesílatele.
 * Server telemetrie: modul The Application Insights shromažďuje IP adresu klienta. Nejsou shromažďovány Pokud `X-Forwarded-For` nastavena.
 
-Můžete nakonfigurovat `ClientIpHeaderTelemetryInitializer` mají získat IP adresu z jiné záhlaví. U některých systémů, například se přesune na proxy serveru, načtěte nástroj pro vyrovnávání nebo sítěmi CDN, aby `X-Originating-IP`. [Další informace](http://apmtips.com/blog/2016/07/05/client-ip-address/).
+Můžete nakonfigurovat `ClientIpHeaderTelemetryInitializer` mají získat IP adresu z jiné záhlaví. U některých systémů, například se přesune na proxy serveru, načtěte nástroj pro vyrovnávání nebo sítěmi CDN, aby `X-Originating-IP`. [Další informace](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 Je možné [pomocí Power BI](app-insights-export-power-bi.md) zobrazíte telemetrických dat požadavek na mapě.
 
@@ -184,7 +184,7 @@ Použijte jeden prostředek pro všechny součásti nebo role v jedné organiza�
 ## <a name="what-are-the-user-and-session-counts"></a>Co jsou uživatelů a relací se počítá?
 
 * JavaScript SDK nastaví soubor cookie uživatele na webového klienta, k identifikaci vracející uživatelů a souboru cookie relace k seskupování aktivit.
-* Pokud neexistuje žádný skript na straně klienta, můžete si [nastavení souborů cookie na serveru](http://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
+* Pokud neexistuje žádný skript na straně klienta, můžete si [nastavení souborů cookie na serveru](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Pokud jeden uživatelů používá váš web v různých prohlížečích nebo pomocí procházení v private nebo incognito nebo různých počítačů a potom se bude počítat více než jednou.
 * Chcete-li identifikuje přihlášeného uživatele na počítače a prohlížeče, přidejte volání do [setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users).
 

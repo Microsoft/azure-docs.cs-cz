@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: bfb53ddf666426253cce08e6f09a5297f5d2f4d3
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 2b059c9a8808db3b2426db0d997df15196be604d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634103"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012075"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Spouštějte dotazy Apache Hive pomocí nástrojů Data Lake pro Visual Studio
 
@@ -124,15 +124,15 @@ Další informace o nástrojích HDInsight pro Visual Studio:
 
 * [Začínáme s nástroji HDInsight pro Visual Studio](apache-hadoop-visual-studio-tools-get-started.md)
 
-[azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
+[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
+[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 
-[apache-tez]: http://tez.apache.org
-[apache-hive]: http://hive.apache.org/
-[apache-log4j]: http://en.wikipedia.org/wiki/Log4j
+[apache-tez]: https://tez.apache.org
+[apache-hive]: https://hive.apache.org/
+[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
 [hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: http://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
+[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
 
 
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
@@ -147,7 +147,7 @@ Další informace o nástrojích HDInsight pro Visual Studio:
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 
-[powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
+[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx
 
 [image-hdi-hive-powershell]: ./media/hdinsight-use-hive/HDI.HIVE.PowerShell.png
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png

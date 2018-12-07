@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/28/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 3096a79737c816747f36956958f9a16f86b9715d
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 55d0d029e8b22833b61ec3232e0027644296ced7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582594"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001715"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 

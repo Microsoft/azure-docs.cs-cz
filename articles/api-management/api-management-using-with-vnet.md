@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: dd876462559ac10fc0463c64413bf11eabbc88a1
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: d0af6c098f68c23bf9ef6161bd307afec518ead7
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443521"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011675"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak používat Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure (Vnet) umožňuje umístit některé z vašich prostředků Azure, které řídí přístup k síti možnosti směrování Internetu jiných. Potom se dá propojit tyto sítí k místním sítím pomocí různých technologií VPN. Další informace o Azure Virtual Networks začínat tyto informace tady: [Přehled služby Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -120,7 +120,7 @@ Když jsou instance služby API Management je hostované ve virtuální síti, s
 | * / 25                       | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |
 | * / 587                      | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |
 | * / 25028                    | Odchozí           | TCP                | VIRTUAL_NETWORK / INTERNET            | Připojení k serveru SMTP pro odeslání e-mailů                    | Externí a interní  |
-| * / 6381 - 6383              | Příchozí a odchozí | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Instance služby Redis Cache přístupu mezi RoleInstances          | Externí a interní  |
+| * / 6381 - 6383              | Příchozí a odchozí | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Pro instance Redis mezi RoleInstances přístup k Azure Cache          | Externí a interní  |
 | * / *                        | Příchozí            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Nástroj pro vyrovnávání zatížení infrastruktury Azure                          | Externí a interní  |
 
 >[!IMPORTANT]

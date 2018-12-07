@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 89b412a58291dd542b38cd0cbfa1288795024151
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 02412f2ac4ff6ce0394ad46e03ae4c89f924624f
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613710"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016397"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Podporované zdroje pro upozornění metrik ve službě Azure Monitor
 
@@ -35,7 +35,7 @@ Tady je úplný seznam podporovaných novější upozornění metriky zdrojů Az
 |Microsoft.ApiManagement/service     | Ano        | [API Management](monitoring-supported-metrics.md#microsoftapimanagementservice)|
 |Microsoft.Automation/automationAccounts     |     Ano   | [Účty služby Automation](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
 |Microsoft.Batch/batchAccounts | neuvedeno| [Účty batch](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
-|Microsoft.Cache/Redis     |    neuvedeno     |[Redis Cache](monitoring-supported-metrics.md#microsoftcacheredis)|
+|Microsoft.Cache/Redis     |    neuvedeno     |[Azure mezipaměti Redis](monitoring-supported-metrics.md#microsoftcacheredis)|
 |Microsoft.CognitiveServices/accounts     |    neuvedeno     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
 |Microsoft.Compute/virtualMachines     |    neuvedeno     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
 |Microsoft.Compute/virtualMachineScaleSets     |   neuvedeno      |[Škálovací sady virtuálních počítačů](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|

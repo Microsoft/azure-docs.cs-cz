@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 853bf9cfce458e6f112101b1382dd5bfd5df202d
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: b8b562e1f783a9da7621b29fbf6d5bd1ff6ca5ef
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499124"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013505"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -97,7 +97,7 @@ Bude vám účtována životnosti clusteru. Pokud jsou pouze konkrétní časy, 
 
 Někdy chyby lze kvůli paralelní provádění více mapy a snížit komponenty v clusteru s více uzly. Pomáhají izolovat problém, zkuste distribuované otestovat spuštěním souběžné víc úloh na jeden uzel clusteru, pak rozbalte tento přístup jak souběžně spustit více úloh v clusterech obsahující více než jeden uzel. Chcete-li vytvořit cluster HDInsight jeden uzel v Azure, použijte *pokročilé* možnost.
 
-Můžete také nainstalovat prostředí s jedním uzlem vývoj v místním počítači a testovat řešení existuje. Hortonworks poskytuje jedním uzlem místní vývojové prostředí pro řešení založená na systému Hadoop, který je užitečný pro počáteční vývoj, testování konceptu, služby a testování. Další informace najdete v tématu [Hortonworks Sandbox](http://hortonworks.com/products/hortonworks-sandbox/).
+Můžete také nainstalovat prostředí s jedním uzlem vývoj v místním počítači a testovat řešení existuje. Hortonworks poskytuje jedním uzlem místní vývojové prostředí pro řešení založená na systému Hadoop, který je užitečný pro počáteční vývoj, testování konceptu, služby a testování. Další informace najdete v tématu [Hortonworks Sandbox](https://hortonworks.com/products/hortonworks-sandbox/).
 
 K jeho identifikaci v místním clusteru jedním uzlem opětovné spuštění neúspěšné úlohy a upravit vstupní data nebo použijte menší datové sady. Jak spouštět úlohy závisí na platformu a typ aplikace.
 

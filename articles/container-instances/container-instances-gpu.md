@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: d0278a58bfad6f2a4a964ef29fbff8a111b475b5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d02ae48bab6a17cbf5568996b30ccb39ccb81c59
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855749"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994015"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Nasazení instance kontejnerů, které používají prostředky GPU
 
@@ -105,7 +105,7 @@ properties:
           gpu:
             count: 1
             sku: K80
-    osType: Linux
+  osType: Linux
   restartPolicy: OnFailure
 ```
 

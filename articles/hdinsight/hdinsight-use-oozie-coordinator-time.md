@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: f6b362b260c913faaad57d19c92fe6d6583093f0
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 154003f1addea9753234dbe2392ce932177d2d3a
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685867"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012058"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Použití koordinátoru Oozie časovou synchronizací s Hadoop v HDInsight k definování pracovních postupů a koordinace úloh
 V tomto článku se dozvíte, jak definovat pracovní postupy a koordinátory a jak aktivovat koordinátor úlohy, na základě času. Je užitečné projít [použití Oozie s HDInsight] [ hdinsight-use-oozie] předtím, než v tomto článku. Kromě Oozie toho můžete také plánovat úlohy pomocí služby Azure Data Factory. Další služby Azure Data Factory najdete v tématu [použití Pigu a Hivu s Data Factory](../data-factory/transform-data.md).
@@ -744,13 +744,13 @@ V tomto kurzu jste zjistili, jak definovat pracovní postup Oozie a Oozie coordi
 [apache-oozie-400]: http://oozie.apache.org/docs/4.0.0/
 [apache-oozie-332]: http://oozie.apache.org/docs/3.3.2/
 
-[powershell-download]: http://azure.microsoft.com/downloads/
+[powershell-download]: https://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [powershell-start]: https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6
-[powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
+[powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
-[cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
+[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
 [img-workflow-diagram]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Workflow.Diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.Preparation.Output1.png

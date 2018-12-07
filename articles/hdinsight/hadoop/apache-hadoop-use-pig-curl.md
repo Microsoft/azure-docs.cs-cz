@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: cb96933569c18b8c70d8991c9ba19f9f3e1243e6
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 65d94c4df3111e1ffe5a5340bba1db454681bb5e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633695"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016006"
 ---
 # <a name="run-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Spuštění úlohy Pig s Apache Hadoop v HDInsight pomocí REST
 
@@ -32,14 +32,14 @@ Zjistěte, jak spouštět úlohy Apache Pig Latin tím, že požadavky REST do c
   > [!IMPORTANT]
   > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* [Curl](http://curl.haxx.se/)
+* [Curl](https://curl.haxx.se/)
 
-* [jq](http://stedolan.github.io/jq/)
+* [jq](https://stedolan.github.io/jq/)
 
 ## <a id="curl"></a>Spuštění úlohy Pig pomocí Curl
 
 > [!NOTE]
-> Rozhraní REST API je zabezpečeno pomocí [ověřování přístupu basic](http://en.wikipedia.org/wiki/Basic_access_authentication). Vždy proveďte požadavky pomocí Secure HTTP (HTTPS) k zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server.
+> Rozhraní REST API je zabezpečeno pomocí [ověřování přístupu basic](https://en.wikipedia.org/wiki/Basic_access_authentication). Vždy proveďte požadavky pomocí Secure HTTP (HTTPS) k zajištění, že vaše přihlašovací údaje se bezpečně odesílají na server.
 >
 > Pokud používáte příkazy v této části, nahraďte `USERNAME` uživatelem pro ověření clusteru a nahraďte `PASSWORD` heslem pro uživatelský účet. Nahraďte `CLUSTERNAME` názvem svého clusteru.
 >

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: d38c93f1e6e390117ff5d9e8772119ed1c26fd10
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4e374528a0fa757458e7e4881714370937b56f9c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965526"
+ms.locfileid: "52998298"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak připojit Azure monitorovat pro virtuální počítače (Preview)
 Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače s monitorováním stavu operačního systému virtuálních počítačů Azure a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí, včetně zjišťování a mapování závislostí aplikace který může hostovat na ně.  
@@ -169,7 +169,7 @@ Tento přístup je potřeba udělit uživatelům, aby bylo možné povolit a př
 
 - Zobrazení výkonu, stavu, a mapování dat, musíte přidat jako člen role Čtenář monitorování pro virtuální počítač Azure a pracovní prostor Log Analytics nakonfigurované pro virtuální počítače pomocí Azure monitoru.   
 
-Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../log-analytics/log-analytics-manage-access.md).
+Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
 
 ## <a name="enable-from-the-azure-portal"></a>Povolit z portálu Azure portal
 Pokud chcete povolit monitorování virtuálního počítače Azure na webu Azure Portal, postupujte takto:
@@ -197,7 +197,7 @@ V této části pokyny, jak k provádění při škálování nasazení služby 
 
 Shrnuto jsou kroky, které je potřeba provést předem nakonfigurovat váš pracovní prostor Log Analytics, abyste mohli pokračovat s připojováním vašich virtuálních počítačů.
 
-1. Vytvořte nový pracovní prostor, pokud již neexistuje, který slouží k podpoře monitorování Azure pro virtuální počítače. Kontrola [Správa pracovních prostorů](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) před vytvořením nového pracovního prostoru zvážení všech faktorů náklady, správy a dodržování předpisů než budete pokračovat.       
+1. Vytvořte nový pracovní prostor, pokud již neexistuje, který slouží k podpoře monitorování Azure pro virtuální počítače. Kontrola [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json) před vytvořením nového pracovního prostoru zvážení všech faktorů náklady, správy a dodržování předpisů než budete pokračovat.       
 2. Povolte čítače výkonu v pracovním prostoru pro kolekci na virtuální počítače s Windows a Linux.
 3. Instalace a povolení **ServiceMap** a **InfrastructureInsights** řešení ve vašem pracovním prostoru.  
 

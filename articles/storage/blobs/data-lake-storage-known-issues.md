@@ -6,14 +6,14 @@ author: normesta
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: 83e9dfbe18dd79e8547e6b48daef39a5aed2cced
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 29fe100821e5ad2d9d5d340a1178c19c60c6d821
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975281"
+ms.locfileid: "52995430"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Známé problémy s Azure Data Lake Storage Gen2
 
@@ -35,7 +35,9 @@ Nespravované disky virtuálních počítačů (VM) závisí na těchto rozhran�
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
-S Azure Data Lake Storage Gen2 souborové systémy zatím nefungují některé funkce v Průzkumníku služby Storage. Tato omezení platí pro [samostatnou verzi](https://azure.microsoft.com/features/storage-explorer/) Průzkumníka služby Azure Storage, jakož i verzi, která se zobrazí na webu Azure Portal.
+K zobrazení nebo Správa účtů Data Lake Storage Gen2 pomocí Průzkumníka služby Azure Storage, potřebujete alespoň verzi `1.6.0` nástroje, která je k dispozici jako [zdarma ke stažení](https://azure.microsoft.com/features/storage-explorer/).
+
+Všimněte si, že verze Průzkumníka služby Storage, který je vložen do portálu Azure Portal se aktuálně podporují zobrazení a Správa účtů Data Lake Storage Gen2 s povolenými hierarchické obory názvů.
 
 ## <a name="blob-viewing-tool"></a>Nástroj pro zobrazení objektů BLOB
 
@@ -57,21 +59,9 @@ Místo toho použijte nejnovější verzi AzCopy ve verzi preview ( [AzCopy v10]
 
 Služby, jako je Azure Databricks, HDInsight a Azure Data Factory není dosud integrovat ověřování tokenu nosiče OAuth Azure Active Directory (Azure AD).
 
-## <a name="access-control-lists-acl"></a>Seznamy řízení přístupu (ACL)
-
-Adresář a seznamy řízení přístupu na úrovni souboru (ACL) jsou těžko spravuje. Neexistuje žádný nástroj uživatelského rozhraní, můžete použít k získání a nastavení tyto seznamy řízení přístupu.
-
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
 [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) neobdrží události z účtů Azure Data Lake Gen2, protože tyto účty nejsou zatím je vygenerovat.  
-
-## <a name="role-based-access-control"></a>Řízení přístupu na základě role
-
-Řízení přístupu na základě rolí nejde použít na objekty systému souborů v účtu služby Azure Data Lake Storage Gen2.
-
-## <a name="sql-data-warehouse-polybase"></a>SQL Data Warehouse PolyBase
-
-Když je povoleno úložiště brány firewall na účtu služby Azure Storage, SQL Data Warehouse [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017) nemá přístup k těmto účtům.
 
 ## <a name="soft-delete-and-snapshots"></a>Obnovitelného odstranění a snímky
 

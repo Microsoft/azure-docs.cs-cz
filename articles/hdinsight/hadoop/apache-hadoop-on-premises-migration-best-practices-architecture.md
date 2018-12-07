@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 62e15b5845ed9faa605f978f0d2fd427c9c3ee9b
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 7558a853657e3e3764cd8e3faf6dd466e9ead35e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51008177"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994152"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrace místních Apache Hadoop clusterů Azure HDInsight – osvědčené postupy architektury
 
@@ -49,7 +49,7 @@ V následující tabulce jsou uvedeny různé metody, které lze použít k vytv
 |[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Šablony Azure Resource Manageru](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
-Další informace najdete v článku [clusteru typy v HDInsight](../hadoop/apache-hadoop-introduction.md)
+Další informace najdete v článku [typy v HDInsight clusterů](../hadoop/apache-hadoop-introduction.md).
 
 ## <a name="use-transient-on-demand-clusters"></a>Použití přechodné clusterů na vyžádání
 
@@ -57,7 +57,7 @@ Clustery HDInsight můžou získat nevyužité dlouhou dobu. Pomáhá šetřit n
 
 Při odstranění clusteru se neodeberou přidružený účet úložiště a externí metadat. Clusteru lze později znovu vytvořit pomocí stejné účty úložiště a meta úložišť.
 
-Azure Data Factory je možné naplánovat vytváření clusterů HDInsight na vyžádání. Další informace najdete v článku [vytvářet clustery na vyžádání Hadoop v HDInsight pomocí Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
+Azure Data Factory je možné naplánovat vytváření clusterů HDInsight na vyžádání. Další informace najdete v článku [vytváření clusterů na vyžádání Apache Hadoop v HDInsight pomocí Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
 
 ## <a name="decouple-storage-from-compute"></a>Oddělit úložiště od výpočetních prostředků
 
@@ -65,33 +65,33 @@ Typické místních Hadoop nasazení používá stejnou sadu počítačů pro uk
 
 Na clusterech HDInsight úložiště nemusí být umístěna společně s výpočetními prostředky a může být v Azure storage, Azure Data Lake Storage nebo obojí. Oddělení úložiště od výpočetních prostředků má následující výhody:
 
-- Sdílení dat mezi clustery
-- Použití přechodné clusterů, protože data nejsou závislé na clusteru
-- Nižší náklady na úložiště
-- Škálování úložiště a výpočetní samostatně
-- Replikace dat mezi oblastmi
+- Sdílení dat mezi clustery.
+- Použití přechodné clustery, protože data nejsou závislé na clusteru.
+- Snížit náklady na úložiště.
+- Škálování úložiště a výpočetní samostatně.
+- Replikace dat mezi oblastmi.
 
 Výpočetní clustery jsou vytvořeny blízko prostředků účtu úložiště v oblasti Azure ke zmírnění snížení výkonu oddělení výpočetního výkonu a úložiště. Vysokorychlostní sítí usnadňují efektivní pro výpočetní uzly pro přístup k datům ve službě Azure storage.
 
 ## <a name="use-external-metadata-stores"></a>Použití externích úložišť metadat
 
-Existují dva hlavní metaúložiště, které fungují s clustery HDInsight: Hive a Oozie. Hive metastore je centrální schéma úložiště, které můžete používat moduly pro zpracování dat včetně Hadoopu, Sparku, LLAP, Presto a Pig. Úložiště metadat Oozie ukládá informace o plánování a stavu v průběhu a dokončení úlohy systému Hadoop.
+Existují dva hlavní metaúložiště, které fungují s clustery HDInsight: [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/). Hive metastore je centrální schéma úložiště, které můžete používat moduly pro zpracování dat včetně Hadoopu, Sparku, LLAP, Presto a Apache Pig. Úložiště metadat Oozie ukládá informace o plánování a stavu v průběhu a dokončení úlohy systému Hadoop.
 
 HDInsight používá Azure SQL Database u metaúložiště Hive a Oozie. Existují dva způsoby, jak nastavit metastore v clusterech HDInsight:
 
 1. Výchozí metastore
 
-    - Bez dalších poplatků
-    - Metastore se odstraní při odstranění clusteru
-    - Úložiště metadat se nedají sdílet mezi různými clustery
+    - Bez dalších poplatků.
+    - Metastore se odstraní při odstranění clusteru.
+    - Úložiště metadat se nedají sdílet mezi různých clusterech.
     - Používá základní databáze Azure SQL, který má limit 5 DTU.
 
 1. Vlastní externí metastore
 
     - Zadejte externí databázi SQL Azure jako metastore.
     - Clustery můžete vytvořit a odstranit bez ztráty metadata, včetně podrobností o úloze Hive schématu Oozie.
-    - Jeden metastore db je sdílet s různými typy clusterů
-    - Metastore se dá škálovat podle potřeby
+    - Jeden metastore db je sdílet s různými typy clusterů.
+    - Metastore se dá škálovat podle potřeby.
     - Další informace najdete v tématu [použití externích úložišť metadat v Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
 
 ## <a name="best-practices-for-hive-metastore"></a>Osvědčené postupy pro Hive Metastore
@@ -106,7 +106,7 @@ Některé osvědčené postupy metastore Hive v HDInsight jsou následující:
 - Monitorování metastore výkonu a dostupnosti s využitím Azure SQL Database monitorování nástrojů, jako je Azure portal nebo Azure Log Analytics.
 - Spustit **analyzovat tabulky** příkaz jako vyžadovaných ke generování statistik pro tabulky a sloupce. Například, `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
-## <a name="best-practices-for-different-types-of-workloads"></a>Osvědčené postupy pro různé typy úloh
+## <a name="best-practices-for-different-workloads"></a>Osvědčené postupy pro různé úlohy
 
 - Zvažte použití clusteru LLAP pro interaktivní dotazy Hive s lepší odezvu [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) je nová funkce ve verzi 2.0 Hive, umožňující ukládání v mezipaměti dotazů. LLAP díky dotazů Hive mnohem rychlejší, až [26 x rychlejší než Hive 1.x v některých případech](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 - Zvažte použití Sparkových úloh místo úloh Hive.

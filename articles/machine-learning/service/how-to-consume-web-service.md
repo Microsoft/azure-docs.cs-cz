@@ -1,6 +1,6 @@
 ---
-title: Zacházení s nasazením webových služeb - Azure Machine Learning
-description: Informace o využívání webové služby vytvořit a nasadit model ve službě Azure Machine Learning. Model ve službě Azure Machine Learning nasazení vytvoří webové služby, který zpřístupňuje rozhraní REST API. Můžete vytvořit klienty pro toto rozhraní API pomocí programovacím jazyce podle vašeho výběru. V tomto dokumentu se dozvíte, jak pro přístup k rozhraní API pomocí Pythonu a C#.
+title: Zacházení s nasazením webových služeb - služby Azure Machine Learning
+description: Informace o využívání webové služby, který se vygeneroval při modelu byla nasazena s model Azure Machine Learning. Webové služby, který zpřístupňuje rozhraní REST API. Vytvoření klientů pro toto rozhraní API pomocí programovacím jazyce podle vašeho výběru.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +9,13 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 12/03/2018
-ms.openlocfilehash: 9b3daca572140229bf2d38cd56f65ce44683f0f7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: d964eef08557ddd95ff86bc9e7de806cd4a8ca18
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864396"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016636"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 

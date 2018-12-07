@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 4747c06ddb56a86c2efc7340043efdd019b86049
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 03fea6cf1276172893f18f1b09c8e3fdeec4ac4f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962905"
+ms.locfileid: "53001157"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Monitorování připojení Azure pro kontejnery (Preview) 
 Tento článek popisuje, jak nastavit službu Azure Monitor k monitorování výkonu úlohy, které se nasazují do prostředí Kubernetes a hostitelem pro kontejnery [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
@@ -35,7 +35,7 @@ Můžete také povolit monitorování pro jednu nebo více existujících AKS cl
 Než začnete, ujistěte se, že máte následující:
 
 - Pracovní prostor Log Analytics. Můžete jej vytvořit při povolení monitorování nový cluster AKS, nebo nechte prostředí registrace vytvoření výchozího pracovního prostoru do výchozí skupiny prostředků předplatného clusteru AKS. Pokud jste se rozhodli vytvořit sami, můžete vytvořit pomocí [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md), pomocí [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), nebo [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
-- Jste členem role Přispěvatel Log Analytics povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../log-analytics/log-analytics-manage-access.md).
+- Jste členem role Přispěvatel Log Analytics povolit monitorování kontejnerů. Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: b7ae066bd8dc2de3227f441fd05b6c7a412b6074
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 43020784e57f1555de1ddedab8fe7a657ecf09f3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965355"
+ms.locfileid: "53001694"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Vazby Azure Cosmos DB pro službu Azure Functions 1.x
 
@@ -38,7 +38,7 @@ Tento článek vysvětluje, jak pracovat s [služby Azure Cosmos DB](../cosmos-d
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby Azure Cosmos DB pro verzi Functions jsou součástí 1.x [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) balíčku NuGet, verzi 1.x. Zdrojový kód pro vazbu se [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB) úložiště GitHub.
+Vazby Azure Cosmos DB pro verzi Functions jsou součástí 1.x [Microsoft.Azure.WebJobs.Extensions.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) balíčku NuGet, verzi 1.x. Zdrojový kód pro vazbu se [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/v2.x/src/WebJobs.Extensions.DocumentDB) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 

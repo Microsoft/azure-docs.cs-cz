@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 11/30/2018
-ms.openlocfilehash: d38cb244eeaf64fa0adfa78547d6d9dd4a8ad366
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.date: 12/07/2018
+ms.openlocfilehash: a3580c2939f03e6ede6341e7afb293e7f7c5f885
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684723"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016125"
 ---
 # <a name="service-and-tools-for-data-migration"></a>Služby a nástroje pro migraci dat
 
@@ -41,8 +41,8 @@ Následující tabulky Identifikujte služby a nástroje, které se můžete ús
 | Oracle | Azure DB for PostgreSQL |  |  |  |
 | MongoDB | Databáze Cosmos | [Cloudamize *](https://www.cloudamize.com/) | [Cloudamize *](https://www.cloudamize.com/) |  |
 | Cassandra | Databáze Cosmos |  |  |  |
-| Vzdálené plochy/programu Aurora/místního MySQL | Azure DB for MySQL |  |  | [Kalkulačka TCO](https://azure.microsoft.com/pricing/tco/calculator/) |
-| PostgreSQL vzdálené plochy/programu Aurora nebo v místním prostředí | Azure DB for PostgreSQL |  |  | [Kalkulačka TCO](https://azure.microsoft.com/pricing/tco/calculator/) |
+| Vzdálené plochy/místního MySQL | Azure DB for MySQL |  |  | [Kalkulačka TCO](https://azure.microsoft.com/pricing/tco/calculator/) |
+| PostgreSQL vzdálené plochy nebo v místním prostředí | Azure DB for PostgreSQL |  |  | [Kalkulačka TCO](https://azure.microsoft.com/pricing/tco/calculator/) |
 | MySQL | Virtuální počítač Azure SQL DB, USA, | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) | [Cloud Atlas *](https://www.unifycloud.com/cloud-migration-tool/) | [Kalkulačka TCO](https://azure.microsoft.com/pricing/tco/calculator/) |
 | DB2 | Virtuální počítač Azure SQL DB, USA, |  |  |  |
 | Access | Virtuální počítač Azure SQL DB, USA, |  |  |  |
@@ -63,8 +63,8 @@ Následující tabulky Identifikujte služby a nástroje, které se můžete ús
 | Oracle | Azure DB for PostgreSQL |  |  |  |
 | MongoDB | Databáze Cosmos |  | [Cloudamize *](https://www.cloudamize.com/) | [Cloudamize *](https://www.cloudamize.com/) |
 | Cassandra | Databáze Cosmos |  |  |  |
-| Vzdálené plochy/programu Aurora/místního MySQL | Azure DB for MySQL |  |  |  |
-| PostgreSQL vzdálené plochy/programu Aurora nebo v místním prostředí | Azure DB for PostgreSQL |  |  |  |
+| Vzdálené plochy/místního MySQL | Azure DB for MySQL |  |  |  |
+| PostgreSQL vzdálené plochy nebo v místním prostředí | Azure DB for PostgreSQL |  |  |  |
 | MySQL | Virtuální počítač Azure SQL DB, USA, |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017)<br/>[Cloud Atlas *](https://www.unifycloud.com/cloud-migration-tool/) |  |
 | DB2 | Virtuální počítač Azure SQL DB, USA, |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Access | Virtuální počítač Azure SQL DB, USA, |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
@@ -85,8 +85,8 @@ Následující tabulky Identifikujte služby a nástroje, které se můžete ús
 | Oracle | Azure DB for PostgreSQL |  |  |  |
 | MongoDB | Databáze Cosmos | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize *](https://www.cloudamize.com/)<br/>[Imanis Data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize *](https://www.cloudamize.com/)<br/>[Imanis Data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Cloudamize *](https://www.cloudamize.com/)<br/>[Imanis Data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Cassandra | Databáze Cosmos | [Imanis Data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Imanis Data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) | [Imanis Data *](https://www.imanisdata.com/wp-content/uploads/2018/02/Imanis_DS_MongoDB_Azure_FINAL.pdf) |
-| Vzdálené plochy/programu Aurora/místního MySQL | Azure DB for MySQL | [MySQL s výpisem paměti *](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) | [DMS](https://azure.microsoft.com/services/database-migration/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Řešení Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
-| PostgreSQL vzdálené plochy/programu Aurora nebo v místním prostředí | Azure DB for PostgreSQL | [PG výpisu stavu systému *](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [DMS](https://azure.microsoft.com/services/database-migration/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Řešení Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| Vzdálené plochy/místního MySQL | Azure DB for MySQL | [MySQL s výpisem paměti *](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) | [DMS](https://azure.microsoft.com/services/database-migration/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Řešení Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
+| PostgreSQL vzdálené plochy nebo v místním prostředí | Azure DB for PostgreSQL | [PG výpisu stavu systému *](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [DMS](https://azure.microsoft.com/services/database-migration/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Řešení Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | MySQL | Virtuální počítač Azure SQL DB, USA, | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Řešení Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | DB2 | Virtuální počítač Azure SQL DB, USA, | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Řešení Attunity *](https://www.attunity.com/products/replicate/)<br/>[Striim *](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | Access | Virtuální počítač Azure SQL DB, USA, | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
@@ -107,8 +107,8 @@ Následující tabulky Identifikujte služby a nástroje, které se můžete ús
 | Oracle | Azure DB for PostgreSQL |  |
 | MongoDB | Databáze Cosmos | [Cloudamize *](https://www.cloudamize.com/) |
 | Cassandra | Databáze Cosmos |  |
-| Vzdálené plochy/programu Aurora/místního MySQL | Azure DB for MySQL |  |
-| PostgreSQL vzdálené plochy/programu Aurora nebo v místním prostředí | Azure DB for PostgreSQL |  |
+| Vzdálené plochy/místního MySQL | Azure DB for MySQL |  |
+| PostgreSQL vzdálené plochy nebo v místním prostředí | Azure DB for PostgreSQL |  |
 | MySQL | Virtuální počítač Azure SQL DB, USA, |  |
 | DB2 | Virtuální počítač Azure SQL DB, USA, |  |
 | Access | Virtuální počítač Azure SQL DB, USA, |  |

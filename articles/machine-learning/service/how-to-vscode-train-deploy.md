@@ -1,5 +1,5 @@
 ---
-title: Trénování a nasazovat modely strojového učení pomocí Azure Machine Learning pro Visual Studio Code
+title: Použití Visual Studio Code pro trénování a nasazujte modely pomocí služby Azure Machine Learning
 description: Přečtěte si o Azure Machine Learning pro Visual Studio Code a jak spustit trénovací a nasazení strojového učení a hloubkového učení modelů ve službě Azure Machine Learning pomocí nástroje Visual Studio Code.
 services: machine-learning
 ms.service: machine-learning
@@ -8,14 +8,15 @@ ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
-ms.openlocfilehash: 2b4b2eb2377d9a90d14eec0d32a77436381c2c6f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec12
+ms.openlocfilehash: e1ea0b867738f72d9ff4baff25b630887b9232c9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868306"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016422"
 ---
-# <a name="train-and-deploy-machine-learning-models-using-azure-machine-learning-for-visual-studio-code"></a>Trénování a nasazovat modely strojového učení pomocí Azure Machine Learning pro Visual Studio Code
+# <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Použití Visual Studio Code pro trénování a nasazovat modely machine learningu
 
 V tomto článku se dozvíte, jak používat **Azure Machine Learning pro Visual Studio Code** rozšíření trénovat a nasazovat strojového učení a hloubkového učení modely se službou Azure Machine Learning v aplikaci Visual Studio Code (VS Code).
 
