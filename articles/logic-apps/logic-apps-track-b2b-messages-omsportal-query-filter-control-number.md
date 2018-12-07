@@ -9,19 +9,19 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: af1d00e49819f1d69e08c0fa99891690e07b489f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 5cfab07e19e543b7a46fcce8f449a46395c144d6
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233748"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995321"
 ---
 # <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>Vytváření dotazů sledování zpráv B2B v Azure Log Analytics pro Azure Logic Apps
 
 Chcete-li najít AS2, X12 nebo EDIFACT zprávy, že sledujete s [Azure Log Analytics](../log-analytics/log-analytics-overview.md), můžete vytvořit dotazy, které akce na základě určitých kritérií filtru. Například můžete vyhledat zprávy založené na kontrolní číslo výměny konkrétní.
 
 > [!NOTE]
-> Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../log-analytics/log-analytics-oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
+> Tato stránka výše popsaný postup, jak k provádění těchto úkolů se Microsoft Operations Management Suite (OMS), což je [vyřazení z provozu v lednu 2019](../azure-monitor/platform/oms-portal-transition.md), nahradí tyto kroky místo toho pomocí služby Azure Log Analytics. 
 
 ## <a name="prerequisites"></a>Požadavky
 

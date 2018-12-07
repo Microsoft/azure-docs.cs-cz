@@ -1,5 +1,5 @@
 ---
-title: Správa clusteru Azure DC/OS pomocí API REST systému Marathon
+title: (NEPOUŽÍVANÉ) Správa clusteru Azure DC/OS pomocí API REST systému Marathon
 description: Nasazení kontejnerů do clusteru Azure Container Service DC/OS pomocí rozhraní API REST systému Marathon.
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 34fc6f946d172f1431367e84f9d4d8a6855003ed
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901753"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52991708"
 ---
-# <a name="dcos-container-management-through-the-marathon-rest-api"></a>Správa kontejnerů DC/OS prostřednictvím rozhraní REST API Marathonu
+# <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(NEPOUŽÍVANÉ) Správa kontejnerů DC/OS prostřednictvím rozhraní REST API Marathonu
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS poskytuje prostředí pro nasazování a škálování clusterových úloh a zároveň poskytuje abstrakci používaného hardwaru. Nad DC/OS je rozhraní, které spravuje plánování a provádění výpočetních úloh. I když jsou k dispozici pro mnoho populárních úloh rozhraní, tento dokument vám pomůže začít vytváření a škálování kontejnerových nasazení pomocí rozhraní API REST systému Marathon. 
 

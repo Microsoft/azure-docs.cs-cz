@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 6c62e2e559749ae8dc29e86d9c2414c28b487995
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 97c02726c7e359195c6bf4ea793404562f2acccf
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965615"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001940"
 ---
 # <a name="caching-with-azure-front-door-service"></a>Ukládání do mezipaměti službou Azure přední dveře
 Následující dokument pro branou určuje chování pomocí pravidel směrování, které mají povolené ukládání do mezipaměti.
@@ -26,7 +26,7 @@ Služba Azure branou přináší velké soubory bez limitu velikosti souboru. P�
 
 </br>Po bloku dat dorazí prostředí branou, je uložit do mezipaměti a okamžitě obsluhovat uživateli. Přední dveře pak předem načte další blok paralelně. Tento před načtením zajistí, že obsah zůstane jeden blok před časem uživatele, což snižuje latence. Tento proces pokračuje, dokud se celý soubor se stáhne (je-li požadovány), všechny rozsahů bajtů jsou k dispozici (je-li požadovány), nebo klient ukončí připojení.
 
-</br>Další informace o žádosti o rozsah bajtů, najdete v článku [RFC 7233](http://www.rfc-base.org/rfc-7233.html).
+</br>Další informace o žádosti o rozsah bajtů, najdete v článku [RFC 7233](https://web.archive.org/web/20171009165003/ http://www.rfc-base.org/rfc-7233.html).
 Přední dveře ukládá do mezipaměti všechny bloky dat po přijetí, a proto není nutné uložit do mezipaměti, základem je mezipaměť branou celý soubor. Odeslání dalších žádostí o souboru nebo bajt rozsahy se obsluhují z mezipaměti. Není-li všechny bloky dat jsou uložené v mezipaměti, předběžného načítání slouží k vyžádání bloků dat z back-endu. Tato optimalizace se spoléhá na schopnost back-endu podporovat požadavky na zjištění rozsahu bajtů; Pokud back-endu nepodporuje požadavky na zjištění rozsahu bajtů, optimalizací není platná.
 
 ## <a name="file-compression"></a>Komprese souborů
@@ -116,5 +116,5 @@ Následující hlavičky požadavku do back-end se nepředají při použití uk
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [vytvořit přední dveře](quickstart-create-front-door.md).
-- Přečtěte si [fungování branou](front-door-routing-architecture.md).
+- Přečtěte si, jak [vytvořit službu Front Door](quickstart-create-front-door.md).
+- Přečtěte si, [jak služba Front Door funguje](front-door-routing-architecture.md).

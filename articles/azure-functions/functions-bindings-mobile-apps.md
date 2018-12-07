@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: eb77046c6e673012209f0db452b20bf25046cd67
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f61a00e3ea243dfdf777af88b5f211580f35d8a0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250967"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001664"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Vazby Mobile Apps pro službu Azure Functions 
 
@@ -31,13 +31,13 @@ Vazby Mobile Apps vám umožní číst a aktualizovat tabulky dat v mobilních a
 
 ## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
 
-Vazby Mobile Apps jsou součástí [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) úložiště GitHub.
+Vazby Mobile Apps jsou součástí [Microsoft.Azure.WebJobs.Extensions.MobileApps](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) balíčku NuGet, verzi 1.x. Zdrojový kód pro tento balíček je v [azure webjobs sdk rozšíření](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) úložiště GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="input"></a>Vstup
 
-Vstupní vazby Mobile Apps načte záznam z koncového bodu mobilní tabulky a předává je do vaší funkce. V jazyce C# a F # funkce jsou všechny změny provedené v záznamu automaticky odeslány zpět k tabulce při ukončení funkce úspěšně.
+Vstupní vazby Mobile Apps načte záznam z koncového bodu mobilní tabulky a předává je do vaší funkce. V C# a F# funkce, všechny změny provedené v záznamu jsou automaticky odeslány zpět k tabulce při ukončení funkce úspěšně.
 
 ## <a name="input---example"></a>Input – příklad
 
@@ -157,11 +157,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="input---usage"></a>(Vstup) – využití
 
-V funkcí jazyka C#, když se najde záznam se zadaným ID, je jí předán do pojmenované [JObject](http://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) parametru. Pokud záznam není nalezen, je hodnota parametru `null`. 
+V funkcí jazyka C#, když se najde záznam se zadaným ID, je jí předán do pojmenované [JObject](https://www.newtonsoft.com/json/help/html/t_newtonsoft_json_linq_jobject.htm) parametru. Pokud záznam není nalezen, je hodnota parametru `null`. 
 
 Do funkce jazyka JavaScript, je předán záznam `context.bindings.<name>` objektu. Pokud záznam není nalezen, je hodnota parametru `null`. 
 
-Funkcí jazyka C# a F #, provedené změny se vstupem záznamu (vstupní parametr) jsou automaticky odeslány zpět k tabulce při ukončení funkce úspěšně. Nelze upravit záznam v funkce jazyka JavaScript.
+V C# a F# funkce a změny provedené na vstup záznamu (vstupní parametr) jsou automaticky odeslány zpět k tabulce při ukončení funkce úspěšně. Nelze upravit záznam v funkce jazyka JavaScript.
 
 ## <a name="output"></a>Výstup
 

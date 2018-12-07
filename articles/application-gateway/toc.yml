@@ -187,12 +187,12 @@ items:
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-application-gateway
+    href: https://stackoverflow.com/questions/tagged/azure-application-gateway
   - name: Nejčastější dotazy
     href: application-gateway-faq.md
-ms.openlocfilehash: 3c1dafb0dd665a55daef276d210a5064cdfffd81
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f5102fa1e020b8c089fa64b293da2b9a1270ac98
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964726"
+ms.locfileid: "52997551"

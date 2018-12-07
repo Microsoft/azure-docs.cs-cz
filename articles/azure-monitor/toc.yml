@@ -85,7 +85,7 @@ items:
       - name: Protokolování dat
         href: platform/data-security.md
       - name: Zpracování osobních protokolovaných dat
-        href: ../log-analytics/log-analytics-personal-data-mgmt.md?toc=/azure/azure-monitor/toc.json
+        href: platform/personal-data-mgmt.md
       - name: Shromažďování, uchovávání a ukládání dat aplikací
         href: ../application-insights/app-insights-data-retention-privacy.md?toc=/azure/azure-monitor/toc.json
   - name: Insights
@@ -115,9 +115,9 @@ items:
     - name: Přechod na portál OMS
       items:
       - name: Přehled
-        href: ../log-analytics/log-analytics-oms-portal-transition.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-transition.md
       - name: Časté dotazy
-        href: ../log-analytics/log-analytics-oms-portal-faq.md?toc=/azure/azure-monitor/toc.json
+        href: platform/oms-portal-faq.md
   - name: Reakce na incidenty
     items:
     - name: Výstrahy
@@ -153,7 +153,7 @@ items:
       - name: Zabezpečení a oprávnění rolí
         href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
       - name: Pracovní prostory
-        href: ../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json
+        href: platform/manage-access.md
       - name: Aplikace
         href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
       - name: IP adresy
@@ -166,8 +166,6 @@ items:
         href: ../application-insights/app-insights-web-monitor-performance.md?toc=/azure/azure-monitor/toc.json
       - name: Samostatný vývoj, testování a provoz
         href: ../application-insights/app-insights-separate-resources.md?toc=/azure/azure-monitor/toc.json
-      - name: Monitorování aplikací s více komponentami
-        href: ../application-insights/app-insights-monitor-multi-role-apps.md?toc=/azure/azure-monitor/toc.json
       - name: Jak mám udělat ... pomocí Application Insights?
         href: ../application-insights/app-insights-how-do-i.md?toc=/azure/azure-monitor/toc.json
     - name: Správa pracovních prostorů
@@ -181,7 +179,7 @@ items:
         - name: Použití Azure Powershell
           href: learn/quick-create-workspace-posh.md
       - name: Odstranění pracovního prostoru
-        href: ../log-analytics/log-analytics-manage-del-workspace.md?toc=/azure/azure-monitor/toc.json
+        href: platform/delete-workspace.md
       - name: Návrh pro poskytovatele služeb
         href: platform/service-providers.md
   - name: Shromažďování dat
@@ -562,7 +560,7 @@ items:
         - name: Ceny
           href: insights/network-performance-monitor-pricing-faq.md
         - name: Nejčastější dotazy
-          href: ../log-analytics/log-analytics-network-performance-monitor-faq.md?toc=/azure/azure-monitor/toc.json
+          href: insights/network-performance-monitor-faq.md
     - name: Monitorování virtuálních počítačů
       items:
       - name: Azure Monitor pro virtuální počítače
@@ -647,7 +645,7 @@ items:
     - name: Power BI
       items:
       - name: Export dat protokolů
-        href: ../log-analytics/log-analytics-powerbi.md?toc=/azure/azure-monitor/toc.json
+        href: platform/powerbi.md
       - name: Export dat aplikací
         href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
     - name: Odeslání dat do Grafany
@@ -838,7 +836,7 @@ items:
     - name: Podrobnosti plánu Enterprise pro aplikace
       href: ../application-insights/app-insights-pricing-enterprise-details.md?toc=/azure/azure-monitor/toc.json
     - name: Protokolování objemu a uchování dat
-      href: ../log-analytics/log-analytics-manage-cost-storage.md?toc=/azure/azure-monitor/toc.json
+      href: platform/manage-cost-storage.md
     - name: Využití monitorování dat protokolu
       href: ../log-analytics/log-analytics-usage.md?toc=/azure/azure-monitor/toc.json
   - name: Automatizace
@@ -1010,9 +1008,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: ee2702e834ce782f5b690cbfc78d300efa1ee602
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: dc89f1634040b7002e58206aaf6d1ade6965b2a8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968165"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017898"

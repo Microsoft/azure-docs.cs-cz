@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
-ms.openlocfilehash: a4f9fc31f411d36e63775a3665b6dfe27eec7710
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e76464e294a3378bf3a275ec4fe7ccbd87c09475
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319376"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011626"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Zásady zabezpečení Azure monitorovaný pomocí Azure Security Center
 Tento článek obsahuje seznam definic zásad Azure, které můžete sledovat v Security Center.
@@ -43,7 +43,7 @@ Informace o tom předdefinovaných zásadách, které jsou monitorovány pomocí
 |Auditovat nastavení vlastnosti ClusterProtectionLevel v Service Fabricu na EncryptAndSign|Service Fabric nabízí tři úrovně ochrany (None, přihlašování a EncryptAndSign) pro komunikaci mezi uzly pomocí certifikátu primární clusteru. Nastavte úroveň ochrany, k zajištění, že všechny zprávy – uzly jsou zašifrované a digitálně podepsané.| 
 |Auditovat používání Azure Active Directory k ověřování klientů v Service Fabricu|Umožňuje auditovat v Service Fabricu používání ověřování klientů jen přes Azure Active Directory.| 
 |Auditovat povolení protokolů diagnostiky pro službu Search|Povolení protokolů auditu a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.| 
-|Auditovat povolení výhradně zabezpečených připojení k Redis Cache|Auditovat povoluje pouze připojení přes protokol SSL pro Redis Cache. Použití zabezpečeného připojení zajišťuje ověřování mezi serverem a služby a chrání data přenášená z síťové vrstvy útoky man-in-the-middle, odposlouchávání a zneužití relace| 
+|Auditovat povolení pouze zabezpečené připojení k mezipaměti Azure Redis|Auditovat povoluje pouze připojení přes protokol SSL pro mezipaměť Azure Redis. Použití zabezpečeného připojení zajišťuje ověřování mezi serverem a služby a chrání data přenášená z síťové vrstvy útoky man-in-the-middle, odposlouchávání a zneužití relace| 
 |Auditovat povolení protokolů diagnostiky v Logic Apps|Povolení protokolů auditu a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.| 
 |Auditovat povolení protokolů diagnostiky v Key Vaultu|Povolení protokolů auditu a uchovávat až po roce. To umožňuje znovu vytvořit záznamy aktivit za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.|
 |Auditovat povolení protokolů diagnostiky v centru událostí|Povolení protokolů auditu a uchovávat až po roce. To umožňuje opětovnému vytvoření aktivit záznamy za účelem šetření, když dojde k incidentu zabezpečení nebo dojde k ohrožení vaší sítě.| 

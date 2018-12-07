@@ -1,5 +1,5 @@
 ---
-title: Monitorování clusteru služby Azure Kubernetes pomocí služby CoScale
+title: (NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Kubernetes pomocí služby CoScale
 description: Monitorování clusteru Kubernetes ve službě Azure Container Service pomocí služby CoScale
 services: container-service
 author: fryckbos
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: e9896a34e835646e17328482c07d8031c624e858
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544026"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000221"
 ---
-# <a name="monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>Monitorování clusteru služby Azure Container Service Kubernetes pomocí služby CoScale
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(NEPOUŽÍVANÉ) Monitorování clusteru služby Azure Container Service Kubernetes pomocí služby CoScale
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-V tomto článku ukážeme, jak nasadit [služby CoScale](https://www.coscale.com/) agenta monitorování všechny uzly tak kontejnery v clusteru Kubernetes ve službě Azure Container Service. Pro tuto konfiguraci potřebujete účet pomocí služby CoScale. 
+V tomto článku ukážeme, jak nasadit [služby CoScale](https://web.archive.org/web/20180317071550/ https://www.coscale.com/) agenta monitorování všechny uzly tak kontejnery v clusteru Kubernetes ve službě Azure Container Service. Pro tuto konfiguraci potřebujete účet pomocí služby CoScale. 
 
 
 ## <a name="about-coscale"></a>O služby CoScale 
@@ -34,7 +34,7 @@ Jak je znázorněno v tomto článku, můžete nainstalovat agenty na cluster Ku
 
 ## <a name="prerequisites"></a>Požadavky
 
-Je nutné nejprve [vytvořit účet služby CoScale](https://www.coscale.com/free-trial).
+Je nutné nejprve [vytvořit účet služby CoScale](https://web.archive.org/web/20170507123133/ https://www.coscale.com/free-trial).
 
 Tento názorný průvodce předpokládá, že máte [vytvořit cluster Kubernetes pomocí služby Azure Container Service](container-service-kubernetes-walkthrough.md).
 
@@ -81,5 +81,5 @@ Agent služby CoScale se automaticky nasadí na nové počítače v clusteru. Ak
 
 ## <a name="next-steps"></a>Další postup
 
-Najdete v článku [služby CoScale dokumentaci](http://docs.coscale.com/) a [blogu](https://www.coscale.com/blog) Další informace o služby CoScale řešení monitorování. 
+Najdete v článku [služby CoScale dokumentaci](https://web.archive.org/web/20180415164304/ http://docs.coscale.com:80/) a [blogu](https://web.archive.org/web/20170501021344/ http://www.coscale.com:80/blog) Další informace o služby CoScale řešení monitorování. 
 

@@ -96,7 +96,7 @@
 ### [Konfigurace](../app-service/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### Vlastní domény
 #### [Zakoupení a konfigurace vlastních domén](../app-service/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Mapování vašich vlastních domén](../app-service/app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Mapování vlastních domén](../app-service/app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Vlastní domény s Traffic Managerem](../app-service/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### [Klonování existující aplikace](../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -173,7 +173,7 @@
 ## [Ceny](https://azure.microsoft.com/pricing/details/app-service/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=mobile-services)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-mobile-services)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-mobile-services)
 ## [Videa](https://azure.microsoft.com/documentation/videos/index/?services=mobile-services)
 ## Ukázky
 ### [Field Engineer](https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/)

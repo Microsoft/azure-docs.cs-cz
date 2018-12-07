@@ -37,6 +37,8 @@ items:
         href: tutorial-net-windows-virtual-machine.md
       - name: Python
         href: tutorial-python-windows-virtual-machine.md
+  - name: Azure Containers
+    href: ../container-instances/container-instances-managed-identity.md
   - name: Čtení tajného kódu ze služby Key Vault
     href: tutorial-web-application-keyvault.md
   - name: Nastavení obměny klíčů a auditování
@@ -158,9 +160,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: Zpětná vazba k produktu
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 31f4ed86656bbf95527e18603c5b951d31b6e0ec
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: dab2cd8f8974e61f25b6047b4cade3d54697fccc
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620026"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995510"
