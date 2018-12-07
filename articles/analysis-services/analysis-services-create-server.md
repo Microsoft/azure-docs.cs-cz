@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b5aa300d51deef408b8dd2b410db319449360329
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: ef4099130878813378fb277c45b5d352cbe822a7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428823"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000167"
 ---
 # <a name="quickstart-create-a-server---portal"></a>Rychlý start: Vytvoření serveru – portál
 
@@ -24,9 +24,9 @@ Tento rychlý start popisuje, jak pomocí portálu vytvořit prostředek serveru
 * **Předplatné Azure:** Pokud si chcete vytvořit účet, přejděte na stránku [Bezplatný zkušební verze Azure](https://azure.microsoft.com/offers/ms-azr-0044p/).
 * **Azure Active Directory:** Vaše předplatné musí být přidružené k tenantovi Azure Active Directory. Zároveň musíte být přihlášeni k Azure pod účtem v této službě Azure Active Directory. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal 
+## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal 
 
-[Přihlášení k portálu](https://portal.azure.com)
+[Přihlaste se k portálu](https://portal.azure.com)
 
 
 ## <a name="create-a-server"></a>Vytvoření serveru
@@ -55,7 +55,7 @@ Pokud už server nepotřebujete, odstraňte ho. Na stránce **Přehled** vašeho
  ![Vyčištění](./media/analysis-services-create-server/aas-create-server-cleanup.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste zjistili, jak vytvořit server v předplatném Azure. Když teď máte server, můžete ho zabezpečit nakonfigurováním (volitelné) brány firewall serveru. Na server také můžete přímo z portálu přidat základní ukázkový datový model. Na ukázkovém modelu se naučíte konfigurovat role modelové databáze a testovat připojení klientů. Ve výuce pokračujte kurzem, ve kterém přidáte ukázkový model.
 
 > [!div class="nextstepaction"]

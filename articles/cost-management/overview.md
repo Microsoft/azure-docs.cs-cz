@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/05/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 2125863f212b9e79b88e9f46ed0eb0def71d79b4
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 4979304cd13aa6f61c22d68d8df5ee4cf545a3c0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276189"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995391"
 ---
 # <a name="what-is-cloudyn"></a>Co je Cloudyn?
 

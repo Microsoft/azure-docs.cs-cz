@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 83c437d45170cfcf23aa12b376e512a7d82d9761
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4123f66c12898f8f8828494d59590992ac109e27
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975614"
+ms.locfileid: "52997657"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Kurz: Zabezpečení artefaktů v nasazení šablon Azure Resource Manageru
 
@@ -209,7 +209,7 @@ New-AzureRmResourceGroupDeployment -Name $deploymentName `
     -_artifactsLocation $artifactsLocation `
     -_artifactsLocationSasToken $artifactsLocationSasToken `
     -bacpacFileName $bacpacFileName `
-    -TemplateFile originalbacpac.json
+    -TemplateFile azuredeploy.json
 ```
 
 Použijte vygenerované heslo. Viz [Požadavky](#prerequisites).

@@ -10,12 +10,12 @@ ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: e6f7d255fbfbcd740d9f3a7c2743f57cecea1abf
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: MT
+ms.openlocfilehash: a2c08c541c3726579d57d99141a147d98bf45849
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298740"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996718"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack – integrace datových center – publikování koncových bodů
 
@@ -79,10 +79,14 @@ Azure Stack podporuje pouze transparentní proxy servery. V nasazení tam, kde t
 |NTP|(K dispozici pro nasazení serveru IP NTP)|UDP|123|
 |DNS|(K dispozici pro nasazení IP adresy DNS serveru)|TCP<br>UDP|53|
 |SEZNAM CRL|(Adresa URL v rámci distribučních bodů seznamu CRL na váš certifikát)|HTTP|80|
+|Infrastruktura zálohování|(IP nebo plně kvalifikovaný název domény externího cílový souborový server)|SMB|445|
 |     |     |     |     |
 
 > [!Note]  
 > Odchozí adresy URL jsou vyrovnávání zatížení pomocí Azure traffic Manageru k zajištění nejlepší možné připojení zeměpisné umístění. Pomocí adresy URL s vyrovnáváním zatížení, Microsoft můžete aktualizovat a změnit koncových bodů back-end bez dopadu na zákazníky. Společnost Microsoft neposkytuje seznam IP adres pro adresy URL na skupinu s vyrovnáváním zatížení. Měli byste použít zařízení, která podporuje filtrování podle adresy URL, nikoli podle IP.
+
+> [!Note]  
+> V 1809 infrastruktura zálohování služba komunikuje s externí souborový server z veřejné sítě VIP. Před 1809 služba komunikuje přes síť infrastruktury veřejného. Pokud vaše prostředí, neumožňuje přístup k prostředkům infrastruktury z veřejné sítě VIP, použijte nejnovější opravu hotfix 1809 pro službu Azure Stack. Tato oprava hotfix se přesune zálohovací služby infrastruktury zpět k síti infrastruktury veřejných. V 1811 Pokud se použije opravu hotfix 1809 zálohovací služby infrastruktury zůstanou v síti infrastruktura veřejných. Pokud nepoužili jste opravy hotfix, aktualizace se přesune služby zpět k síti infrastruktury veřejných.
 
 ## <a name="next-steps"></a>Další postup
 

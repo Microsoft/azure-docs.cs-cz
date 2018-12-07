@@ -1,23 +1,26 @@
 ---
-title: Rychlý start pro jazyk Go – předpověď záměru – LUIS
-titleSuffix: Azure Cognitive Services
+title: 'Rychlý start: get záměr – Go'
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí Go odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f19c46fcc7dcff2e02786bb3a03082f831e880a2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 7edaf384e7255708845a0112b0bd5ab27b9c3ed4
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032729"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013829"
 ---
 # <a name="quickstart-get-intent-using-go"></a>Rychlý start: Získání záměru pomocí jazyka Go
+
+V tomto rychlém startu budete do koncového bodu služby LUIS předávat promluvy a získávat zpět záměr a entity.
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -88,6 +91,6 @@ Pomocí jazyka Go můžete získat přístup ke stejným výsledkům, jako jste 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Zavřete soubor Go a odeberte ho ze systému souborů. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Přidání projevů](luis-get-started-go-add-utterance.md)

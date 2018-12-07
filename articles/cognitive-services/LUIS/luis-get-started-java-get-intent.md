@@ -1,22 +1,25 @@
 ---
-title: Rychlý start pro Javu – předpověď záměru – LUIS
-titleSuffix: Azure Cognitive Services
+title: 'QuickStart: Získejte záměr – Java'
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí Javy odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c492a0d0a9d90a79b0e05d4e7de6f5ef0796184a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 417b1138d581a54a3a0a992cebf18ea20fa8dbee
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50417527"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013590"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Rychlý start: Získání záměru pomocí Javy
+
+V tomto rychlém startu budete do koncového bodu služby LUIS předávat promluvy a získávat zpět záměr a entity.
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -63,6 +66,6 @@ Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste vidě
 
 Odstraňte soubor Javy. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Přidání projevů](luis-get-started-java-add-utterance.md)

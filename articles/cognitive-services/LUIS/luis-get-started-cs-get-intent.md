@@ -1,21 +1,22 @@
 ---
-title: Rychlý start pro C# – předpověď záměru – LUIS
-titleSuffix: Azure Cognitive Services
+title: 'QuickStart: Získejte záměr –C#'
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí C# odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 51c23029cc771db5351575ce329944a9f06dd286
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: c498554bea0722f81d5dd52d77c0bc88d16e2332
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035840"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015047"
 ---
 # <a name="quickstart-get-intent-using-c"></a>Rychlý start: Získání záměru pomocí C#
 
@@ -70,7 +71,7 @@ K získání stejných výsledků, jaké jste viděli v okně prohlížeče v p�
 
 Jakmile tento rychlý start dokončíte, zavřete projekt sady Visual Studio a odeberte adresář projektů ze systému souborů. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Přidání promluv a trénování s C#](luis-get-started-cs-add-utterance.md)

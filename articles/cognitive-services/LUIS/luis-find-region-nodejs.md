@@ -1,21 +1,22 @@
 ---
-title: Najít oblast koncový bod s využitím Node.js v LUIS
-titleSuffix: Azure Cognitive Services
+title: Koncový bod oblasti a Node.js
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Prostřednictvím kódu programu publikovat najít oblast s klíče koncového bodu a aplikace ID LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 193872d03dde1d5c620acca1b7aba99b60db238d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3785608da690da4cd1c10fb9305df7f7a79dd4dd
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034072"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017487"
 ---
 # <a name="find-endpoint-region-with-nodejs"></a>Najít oblast koncový bod s využitím Node.js
 Pokud máte LUIS ID aplikace a služby LUIS ID předplatného, můžete najít jaké oblasti se má použít pro koncový bod dotazy.

@@ -1,6 +1,6 @@
 ---
-title: Co se děje s aplikací Azure Machine Learning Workbench? | Microsoft Docs
-description: Přečtěte si, co se právě děje s aplikací Workbench, co se změnilo ve službě Azure Machine Learning a jaký je časový plán podpory.
+title: Co se stalo s aplikací Azure Machine Learning Workbench?
+description: Další informace o co se stalo se aplikace Workbench aplikace, co se změnilo ve službě Azure Machine Learning a co je časové osy podpory.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,19 +8,20 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: b8263c399f287be79590860cce7036207ef2e3f7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: b6df86d63e897d5cde34fb697ad2364c107a8fbe
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243739"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011129"
 ---
-# <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Co se děje s aplikací Workbench ve službě Azure Machine Learning (Preview)?
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning-service"></a>Co se děje do aplikace Workbench ve službě Azure Machine Learning?
 
-Ve verzi vydané v září 2018 došlo k vyřazení aplikace Workbench a některých dalších dřívějších funkcí, které uvolní místo vylepšené [architektuře](concept-azure-machine-learning-architecture.md). Tato verze obsahuje řadu významných aktualizací, které reagují na připomínky zákazníků, kteří požadovali lepší prostředí. Základní funkce zkušebně spuštěného nasazeného modelu se nezměnily, ale teď můžete k plnění úkolů a kanálů spojených se strojovým učením použít robustní sadu <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> a nástroj [CLI](reference-azure-machine-learning-cli.md).  
+Aplikace Workbench a některé počáteční funkce byly zastaralé a ve verzi. září 2018 aby způsob, jak zdokonalené [architektura](concept-azure-machine-learning-architecture.md). Tato verze obsahuje řadu významných aktualizací, které reagují na připomínky zákazníků, kteří požadovali lepší prostředí. Základní funkce zkušebně spuštěného nasazeného modelu se nezměnily, ale teď můžete k plnění úkolů a kanálů spojených se strojovým učením použít robustní sadu <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a> a nástroj [CLI](reference-azure-machine-learning-cli.md).  
 
-V tomto článku se dozvíte o změnách a jejich vlivu na vaši předchozí práci se službou Azure Machine Learning.
+V tomto článku se dozvíte o co se změnilo, a o jejím dopadu na vaše existující dílo aplikaci Azure Machine Learning Workbench a jeho rozhraní API.
 
 ## <a name="what-changed"></a>Co se změnilo?
 
@@ -44,10 +45,10 @@ Většina artefaktů vytvořených v předchozí verzi služby Azure Machine Lea
 
 Své účty pro experimentování a správu modelů můžete i s aplikací Workbench používat i po září 2018. Podpora těchto prostředků bude postupně končit 3–4 měsíce po tomto vydání. Dokumentaci ke starým funkcím stále najdete v [části Prostředky](../desktop-workbench/tutorial-classifying-iris-part-1.md) na konci obsahu.
 
-|Fáze|Podrobnosti o podpoře dřívějších funkcí|
+|Vyřazení&nbsp;fáze|Podrobnosti o podpoře dřívějších funkcí|
 |:---:|----------------|
-|1|Končí možnost vytvořit _účet Experimentování ve službě Azure Machine Learning_ a _účet Správy modelů_ na webu Azure Portal a v rozhraní příkazového řádku. Končí i možnost vytvářet výpočetní prostředí služby Machine Learning z CLI. Pokud máte účet, bude rozhraní příkazového řádku i desktopová aplikace Workbench v této fázi dále fungovat.|
-|2|V této fázi skončí podpora všeho ostatního, včetně zbývajících rozhraní API a desktopové aplikace Workbench.|
+|4. prosince 2018|Schopnost vytvářet _účet experimentování ve službě Azure Machine Learning_ a _účet služby Správa modelů_ na webu Azure Portal a rozhraní příkazového řádku byla ukončena. Skončila také možnost vytvářet prostředí Compute ML z rozhraní příkazového řádku. Pokud máte účet, bude rozhraní příkazového řádku i desktopová aplikace Workbench v této fázi dále fungovat.|
+|9. ledna 2019|Podpora pro všechno ostatní, včetně zbývající rozhraní API a desktopové aplikace Workbench skončí k tomuto datu.|
 
 [Začněte s migrací](how-to-migrate.md) ještě dnes. Všechny nejnovější funkce jsou k dispozici v nové sadě <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>, v [rozhraní příkazového řádku](reference-azure-machine-learning-cli.md) a na [portálu](quickstart-get-started.md).
 
@@ -80,7 +81,7 @@ Přečtěte si, jak začít [v Pythonu používat hlavní sadu SDK](quickstart-g
 
 ## <a name="what-about-my-registers-models-and-images"></a>Co se stane s mými zaregistrovanými modely a imagemi?
  
-Modely, které jste zaregistrovali ve starém registru modelů, musíte migrovat do nového pracovního prostoru, pokud je chcete dál používat. Uděláte to tak, že si [modely stáhnete a znovu zaregistrujete](how-to-migrate.md) v novém pracovním prostoru. 
+Modely, které jste zaregistrovali v registru starý model se musí migrovat na nový pracovní prostor, pokud chcete dál používat. Uděláte to tak, že si [modely stáhnete a znovu zaregistrujete](how-to-migrate.md) v novém pracovním prostoru. 
 
 Image vytvořené ve starém registru imagí je potřeba znovu vytvořit v novém pracovním prostoru, abyste je mohli dál používat. Postup najdete v části o [vytvoření image dockeru](how-to-deploy-to-aci.md#configure-an-image). 
 
@@ -92,21 +93,21 @@ V novější verzi jsou modely nasazené jako webové služby v clusterech [Azur
 
 ## <a name="what-about-the-old-sdk--cli"></a>Co se stane se starou sadou SDK a rozhraním příkazového řádku?
 
-Budou ještě chvíli fungovat (viz předchozí [časový plán](#timeline)). K vytváření nových experimentů a modelů doporučujeme použít nejnovější sadu SDK a/nebo rozhraní příkazového řádku.
+Ano, budou i nadále fungovat až do ledna (viz [časová osa](#timeline) výše). K vytváření nových experimentů a modelů doporučujeme použít nejnovější sadu SDK a/nebo rozhraní příkazového řádku.
 
 Nová sada Python SDK, která je v nejnovější verzi, umožňuje pracovat se službou Azure Machine Learning v jakémkoli prostředí Pythonu. Přečtěte si, jak nainstalovat nejnovější sadu <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>.  V [aktualizovaném rozšíření Azure CLI pro strojové učení](reference-azure-machine-learning-cli.md) také můžete používat bohatou sadu příkazů `az ml`, které umožňují pracovat se službou v libovolném prostředí příkazového řádku, včetně cloudového prostředí webu Azure Portal.
 
-## <a name="what-about-vs-code-tools-for-ai"></a>Co se stane s nástroji VS Code pro AI?
+## <a name="what-about-azure-machine-learning-for-visual-studio-code"></a>Jak Azure Machine Learning pro Visual Studio Code?
 
-Nástroje Visual Studio (VS) Code pro AI byly rozšířeny a vylepšeny, aby spolupracovaly se zmiňovanými novými funkcemi.
+V této nejnovější verzi byly Azure Machine Learning pro Visual Studio (VS) kód rozbalen a vylepšení pro práci s výše uvedené nové funkce.
 
-[ ![Visual Studio Code Tools for AI](./media/overview-what-happened-to-workbench/vscode.png) ] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+[ ![Azure Machine Learning pro Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png) ] (. / media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>Co se stane s doménovými balíčky?
 
 Doménové balíčky pro [počítačové zpracování obrazu, analýzu textu a prognózování](../desktop-workbench/reference-python-package-overview.md) nemůžete používat s nejnovější verzí služby Azure Machine Learning. K vytváření a trénování modelů pro počítačové zpracování obrazu, analýzu textu a prognózování můžete používat nejnovější verzi sady Azure Machine Learning Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>. Pokud potřebujete další informace o migraci předchozích modelů vytvořených pomocí balíčků pro počítačové zpracování obrazu, analýzu textu a prognózování, kontaktujte nás na [AML-Packages@microsoft.com](mailto:AML-Packages@microsoft.com).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si o [nejnovější architektuře služby Azure Machine Learning](concept-azure-machine-learning-architecture.md) a vyzkoušejte některý z našich rychlých startů nebo kurzů:
 

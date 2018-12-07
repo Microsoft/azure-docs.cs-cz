@@ -1,24 +1,27 @@
 ---
-title: Kurz Azure Container Service – Aktualizace aplikace
+title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – aktualizace aplikace
 description: Kurz Azure Container Service – Aktualizace aplikace
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9cb5769d7f54a1036bf14199c87961c95ed2e7ce
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 99e282b720bb29ed5fb94ad2c9779ae56a019836
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432402"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993520"
 ---
-# <a name="update-an-application-in-kubernetes"></a>Aktualizace aplikace v Kubernetes
+# <a name="deprecated-update-an-application-in-kubernetes"></a>(NEPOUŽÍVANÉ) Aktualizace aplikace v Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurz: aktualizace aplikace ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Aplikaci je možné po nasazení v Kubernetes aktualizovat zadáním nové image kontejneru nebo verze image. Aktualizace je přitom fázovaná, takže se současně aktualizuje jenom část nasazení. Tato fázovaná aktualizace umožňuje, aby aplikace během aktualizace běžela. Poskytuje také mechanismus vrácení zpět pro případ, že dojde k selhání nasazení. 
 
@@ -157,7 +160,7 @@ Přejděte na tuto IP adresu a prohlédněte si aktualizovanou aplikaci.
 
 ![Obrázek clusteru Kubernetes v Azure](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste aktualizovali aplikaci a zavedli tuto aktualizaci do clusteru Kubernetes. Dokončili jste následující úlohy:
 

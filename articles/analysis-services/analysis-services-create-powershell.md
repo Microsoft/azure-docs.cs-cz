@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ce9606c6b59175e03da5382f76fb320080db86e
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 3971311bff90d0b005acd516336e13766028cccf
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427022"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001564"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>Rychlý start: Vytvoření serveru – PowerShell
 
@@ -33,15 +33,15 @@ K vytvoření serveru ve vašem předplatném můžete použít modul komponenty
 Import-Module AzureRM.AnalysisServices
 ```
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se ke svému předplatnému Azure pomocí příkazu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount). Postupujte podle pokynů na obrazovce.
+Přihlaste se ke svému předplatnému Azure pomocí [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) příkazu. Postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzureRmAccount
 ```
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 [Skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) je logický kontejner, ve kterém se nasazují a spravují prostředky Azure jako skupina. Při vytváření serveru je potřeba zadat skupinu prostředků ve vašem předplatném. Pokud skupinu prostředků ještě nemáte, můžete vytvořit novou pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Následující příklad vytvoří skupinu prostředků `myResourceGroup` v oblasti USA – západ.
 
@@ -66,7 +66,7 @@ Server můžete z předplatného odebrat pomocí příkazu [Remove-AzureRmAnalys
 Remove-AzureRmAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste zjistili, jak pomocí PowerShellu vytvořit server v předplatném Azure. Když teď máte server, můžete ho zabezpečit nakonfigurováním (volitelné) brány firewall serveru. Na server také můžete přímo z portálu přidat základní ukázkový datový model. Na ukázkovém modelu se naučíte konfigurovat role modelové databáze a testovat připojení klientů. Ve výuce pokračujte kurzem, ve kterém přidáte ukázkový model.
 

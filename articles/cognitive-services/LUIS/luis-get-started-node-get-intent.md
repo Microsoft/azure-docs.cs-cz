@@ -1,23 +1,26 @@
 ---
-title: Rychlý start pro Node.js – předpověď záměru – LUIS
-titleSuffix: Azure Cognitive Services
+title: 'QuickStart: Získejte záměr – Node.js'
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí Node.js odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 37a94b217e2b9c0d417ad0bdd7678b13e333305d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 8a355b59a7674e21eddddbc311d90a9798931f89
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038914"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53012704"
 ---
 # <a name="quickstart-get-intent-using-nodejs"></a>Rychlý start: Získání záměru pomocí Node.js
+
+V tomto rychlém startu budete do koncového bodu služby LUIS předávat promluvy a získávat zpět záměr a entity.
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -70,6 +73,6 @@ Pomocí Node.js můžete získat přístup ke stejným výsledkům, jako jste vi
 
 Odstraňte soubor Node.js.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Přidání projevů](luis-get-started-node-add-utterance.md)

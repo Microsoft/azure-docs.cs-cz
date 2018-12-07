@@ -1,5 +1,5 @@
 ---
-title: Kontejnery pro vyrovnávání zatížení v clusteru Azure DC/OS
+title: (NEPOUŽÍVANÉ) Vyrovnání zatížení kontejnerů v clusteru Azure DC/OS
 description: Článek popisuje, jak se vyrovnává zatížení více kontejnerů v clusteru Azure Container Service DC/OS.
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 8e8ad913c6e5b8e947b17ed8920285de3fcfd8ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 5a1883412a5285c4916c43a5c6ad81168096dd7f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964356"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993552"
 ---
-# <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Vyrovnávání zatížení kontejnerů v clusteru Azure Container Service DC/OS
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(NEPOUŽÍVANÉ) Vyrovnání zatížení kontejnerů v clusteru služby Azure Container Service DC/OS
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 V tomto článku se podíváme, jak se pomocí nástroje Marathon-LB vytváří vnitřní nástroj pro vyrovnávání zatížení v prostředí Azure Container Service spravovaném systémem DC/OS. Tato konfigurace vám umožní horizontálně škálovat aplikace. Také vám umožní využít veřejný i soukromý cluster v tom smyslu, že na veřejný umístíte nástroje pro vyrovnávání zatížení, zatímco na soukromý kontejnery aplikací. V tomto kurzu se naučíte:
 
@@ -27,7 +29,7 @@ V tomto článku se podíváme, jak se pomocí nástroje Marathon-LB vytváří 
 
 K provedení kroků v tomto kurzu potřebujete cluster DC/OS ACS. V případě potřeby si ho můžete nechat vytvořit pomocí [tohoto ukázkového skriptu](./../kubernetes/scripts/container-service-cli-deploy-dcos.md).
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -111,7 +113,7 @@ Služba Azure Load Balancer ve výchozím nastavení zpřístupňuje porty 80, 8
 
 Pokud používáte jiný port, bude potřeba přidat pravidlo kruhového dotazování a otestovat v nástroji pro vyrovnávání zatížení port, který jste použili. To lze udělat z [rozhraní příkazového řádku Azure](../../azure-resource-manager/xplat-cli-azure-resource-manager.md) pomocí příkazů `azure network lb rule create` a `azure network lb probe create`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se dozvěděli o vyrovnávání zatížení ve službě ACS pomocí nástrojů na vyrovnávání zatížení Marathon a Azure, včetně následujících akcí:
 

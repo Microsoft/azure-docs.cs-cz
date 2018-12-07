@@ -12,12 +12,12 @@ ms.author: jovanpop-msft
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: e2075f8a8e54a091dbb82f9ed6d1c8ddaa9da4d0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 3c91323e0fcf03b5ae05702ea473536739d37e26
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869836"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998782"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-an-azure-sql-database-managed-instance"></a>Použití Powershellu k vytvoření Azure SQL Database Managed Instance pomocí šablony Azure Resource Manageru
 
@@ -36,6 +36,15 @@ Nasazení pomocí předdefinované šablony Azure Resource Manageru můžete spu
 - Serverové kolace instance (Preview).
 
 Název instance, uživatelské jméno správce SQL, virtuální sítě nebo podsítě a kolace není možné později změnit. Další instanci vlastnosti lze změnit.
+
+## <a name="prerequisites"></a>Požadavky
+
+Tento příklad předpokládá, že máte [vytvoření prostředí s platnou sítí](../sql-database-managed-instance-vnet-configuration.md#create-a-new-virtual-network-for-a-managed-instance) pro Managed Instance. Ukázka používá rutiny [New-AzureRmResourceGroupDeployment](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) a [Get-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetwork) proto se ujistěte, zda je nainstalována následující moduly prostředí PowerShell:
+
+```
+Install-Module AzureRM.Network
+Install-Module AzureRM.Resources
+```
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
 

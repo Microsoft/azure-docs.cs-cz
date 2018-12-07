@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/09/2018
+ms.date: 12/05/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: f8f7d43d4b42f5236c6c8d25c88314043053b0cc
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 41ee462fb071309a5a41eabb37646f353bf4a085
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445701"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995666"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -39,9 +39,9 @@ Analýza nákladů je dostupná pro všechny zákazníky se [smlouvou Enterprise
 - Registrační účet
 - Skupina pro správu
 - Předplatné
-- Skupina prostředků
+- Skupina zdrojů
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 - Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 

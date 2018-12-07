@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: adde29b0719f777bc6cf3ab86adbdeec4befddf0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e4f15da8464c2103b5f6540d342cb7c741a67c5f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842411"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994847"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -88,7 +88,6 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![Kontejner Linux podle CoreOS](media/azure-stack-marketplace-azure-items/coreos.png) | [Kontejner Linux podle CoreOS](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Kontejner Linuxu je moderní minimální distribuce Linuxu, nabízí snadný způsob, jak spouštět kontejnery, Správa clusterů a bezproblémovou aktualizaci serverů – výpočetní všechny součásti, které umožňují datového skladu. | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server je nejoblíbenější Linux na světě pro cloudové prostředí. | Canonical |
 | ![Debian 8 "Jessie"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux je jedním z nejoblíbenějších Linuxových distribucí. | credativ |
-| ![Debian 9 "Stretch"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 9 "Stretch"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian9) | Debian GNU/Linux je jedním z nejoblíbenějších Linuxových distribucí. | credativ |
 | ![Založené na centOS 6.9](media/azure-stack-marketplace-azure-items/roguewave.png) | [Založené na centOS 6.9](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased69) | Této distribuce Linuxu založené na CentOS a pochází od neautorizovaných serverů Wave softwaru. | Škodlivý Software Wave (dříve OpenLogic)  |
 | ![6.10 založené na centOS](media/azure-stack-marketplace-azure-items/roguewave.png) | [6.10 založené na centOS](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased610) | Této distribuce Linuxu založené na CentOS a pochází od neautorizovaných serverů Wave softwaru. | Škodlivý Software Wave (dříve OpenLogic)  |
 | ![Distribuce založené na CentOS 7.3](media/azure-stack-marketplace-azure-items/roguewave.png) | [Založené na centOS 7.3](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73) | Této distribuce Linuxu založené na CentOS a pochází od neautorizovaných serverů Wave softwaru. | Škodlivý Software Wave (dříve OpenLogic) |

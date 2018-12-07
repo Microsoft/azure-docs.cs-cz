@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: a1a593dc037901f6661bc8c7268d835bc5a48c94
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
-ms.translationtype: HT
+ms.openlocfilehash: 1b7efd4f36d5587667010d25f30a3e7945faee4f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900608"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997794"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Vytvoření první funkce na webu Azure Portal
 
@@ -32,7 +32,7 @@ Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru]
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese <http://portal.azure.com> pomocí svého účtu Azure.
+Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com> pomocí svého účtu Azure.
 
 ## <a name="create-a-function-app"></a>Vytvoření Function App
 
@@ -78,7 +78,7 @@ Novou funkci můžete spustit odesláním požadavku HTTP.
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvořili jste aplikaci Function App s jednoduchou funkcí aktivovanou protokolem HTTP.  
 

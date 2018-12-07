@@ -7,24 +7,24 @@ author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: overview
-ms.custom: mvc
-ms.date: 08/01/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 01b999498b9131cc5304ac3ff4c374b85c46ec94
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d7f2bd5487a5eab248f08b408341470dcaf04a93
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969852"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017283"
 ---
-# <a name="what-is-azure-event-hubs"></a>Co je služba Azure Event Hubs?
+# <a name="azure-event-hubs---a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – velké objemy dat, platformy a události služba pro ingestování datových proudů
 
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. 
 
 Služba Event Hubs se používá v některých následujících běžných situacích:
 
 - Detekce anomálií (podvody/odlehlé hodnoty)
-- Protokolování aplikací
+- Protokolování aplikace
 - Analytické kanály, jako například navštívené stránky
 - Živé řídicí panely
 - Archivace dat

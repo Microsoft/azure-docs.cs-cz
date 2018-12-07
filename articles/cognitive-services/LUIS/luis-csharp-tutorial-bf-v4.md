@@ -1,21 +1,22 @@
 ---
-title: Robot LUIS pomocí C# – Kurz – Web App Bot – Bot Framework SDK 4.0
-titleSuffix: Azure Cognitive Services
+title: Robot sC#
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources. K vytvoření robota se používá Bot Framework ve verzi 4 a Web App Bot Azure.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/25/2018
 ms.author: diberry
-ms.openlocfilehash: 3ccec4fbd0fd69539e29e2f15f71115444bf0a48
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 993e5c7c1975af0c8fe3e55fd59a2f90b39ff642
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389288"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011681"
 ---
 # <a name="tutorial-luis-bot-in-c"></a>Kurz: Robot LUIS v jazyce C#
 Pomocí jazyka C# můžete vytvořit chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento robot používá k implementaci řešení robota aplikaci HomeAutomation. K vytvoření robota se používá [Web App Bot](https://docs.microsoft.com/azure/bot-service/) Azure a [Bot Framework ve verzi](https://github.com/Microsoft/botbuilder-js) v4.
@@ -48,8 +49,8 @@ Pomocí jazyka C# můžete vytvořit chatovacího robota integrovaného se služ
     |--|--|--|
     |Bot name (Název robota)|Název prostředku|`luis-csharp-bot-` + `<your-name>`, například `luis-csharp-bot-johnsmith`|
     |Předplatné|Předplatné, pod kterým se má robot vytvořit|Vaše primární předplatné
-    |Skupina prostředků|Logická skupina prostředků Azure|Vytvořte novou skupinu k uložení všech prostředků používaných s tímto robotem a skupinu pojmenujte `luis-csharp-bot-resource-group`.|
-    |Umístění|Oblast Azure – nemusí být stejná jako oblast LUIS pro vytváření nebo publikování.|`westus`|
+    |Skupina zdrojů|Logická skupina prostředků Azure|Vytvořte novou skupinu k uložení všech prostředků používaných s tímto robotem a skupinu pojmenujte `luis-csharp-bot-resource-group`.|
+    |Poloha|Oblast Azure – nemusí být stejná jako oblast LUIS pro vytváření nebo publikování.|`westus`|
     |Cenová úroveň|Slouží pro limity žádostí o služby a fakturaci.|`F0` je bezplatná úroveň.
     |App name (Název aplikace)|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, například `luis-csharp-bot-johnsmith`|
     |Bot template (Šablona robota)|Nastavení Bot Frameworku – viz následující tabulka|
@@ -74,10 +75,10 @@ Pomocí jazyka C# můžete vytvořit chatovacího robota integrovaného se služ
 
 |Záměry základního robota LUIS|Příklad promluvy|
 |--|--|
-|Zrušit|`stop`|
+|Storno|`stop`|
 |Pozdrav|`hello`|
 |Nápověda|`help`|
-|Žádný|Cokoli mimo doménu aplikace|
+|Žádná|Cokoli mimo doménu aplikace|
 
 Přidejte do modelu předem připravenou aplikaci HomeAutomation, která má zpracovávat promluvy jako: `Turn off the living room lights`
 
@@ -296,7 +297,7 @@ Azure Bot Service využívá sadu SDK Bot Frameworku. Přečtěte si další inf
 * [Sada SK Bot Builderu](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
 * [Nástroje Bot Builderu](https://github.com/Microsoft/botbuilder-tools):
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvořili jste službu Azure Bot Service, zkopírovali jste tajný klíč robota a cestu k souboru `.bot` a stáhli jste soubor ZIP kódu. Přidali jste předem připravenou doménu HomeAutomation do aplikace LUIS vytvořené v rámci nové služby Azure Bot Service a pak aplikaci vyškolili a znovu publikovali. Extrahovali jste projekt kódu, vytvořili soubor prostředí (`.env`) a nastavili tajný kód robota a cestu k souboru `.bot`. Do souboru bot.js jste přidali kód pro zpracování dvou nových záměrů. Pak jste robota otestovali v emulátoru robota, abyste viděli odpověď služby LUIS pro promluvu jednoho z nových záměrů. 
 

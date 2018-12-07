@@ -1,23 +1,24 @@
 ---
-title: Instalace a spouštění kontejnerů
+title: Instalace a spuštění kontejnerů
 titleSuffix: Text Analytics - Cognitive Services - Azure
 description: Postup stažení, instalaci a spouštění kontejnerů v tomto kurzu návod pro analýzu textu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 99bdb42d9a0d86d0d2acc4a6272e0c802042e6b5
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: dc5e34f1a9a63b5b3ce30cdd547b900a32eba42c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634981"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017205"
 ---
-# <a name="install-and-run-containers"></a>Instalace a spouštění kontejnerů
+# <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
 
 Kontejnerizace je přístup k distribuci softwaru, ve kterém je zabalená aplikace nebo služby, jako image kontejneru. Konfigurace a závislosti pro aplikaci nebo službě jsou součástí image kontejneru. Image kontejneru je potom nasadit na hostiteli s téměř nebo vůbec žádné změny. Kontejnery jsou izolované od sebe navzájem a základní operační systém s menší nároky na místo než virtuální počítač. Kontejnery můžete vytvořené z imagí kontejneru pro krátkodobé úlohy a odebrat, pokud už je nepotřebujete.
 
@@ -27,7 +28,7 @@ Rozhraní text Analytics poskytuje následující sadu kontejnerů Dockeru, z ni
 |----------|-------------|
 |Extrakce klíčových frází | Extrahuje klíčových frází pro identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
 |Rozpoznávání jazyka | Až 120 jazyků, zjišťuje a vykazuje v jakém jazyce je zapsána vstupního textu. Kontejner sestavy jeden jazyk kódu pro každý dokument, který je součástí požadavku. Kód jazyka spárovaný se skóre označuje sílu skóre. |
-|Analýza mínění | Analyzuje nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení. Modely analýzu jsou předem trénuje pomocí rozsáhlé tělo technologií text a přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. |
+|Analýza mínění | Analyzuje nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení. Modely analýzu jsou předem trénuje pomocí rozsáhlé tělo technologií text a přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](../language-support.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. |
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -43,7 +44,7 @@ Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakt
 
 Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).
 
-### <a name="server-requirements-and-recommendations"></a>Server – požadavky a doporučení
+### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
 Následující tabulka popisuje minimální a doporučené Procesorových jader a aspoň 2.6 gigahertz (GHz) nebo rychlejší a paměti v gigabajtech (GB), přidělit pro každý kontejner pro analýzu textu.
 
@@ -51,7 +52,7 @@ Následující tabulka popisuje minimální a doporučené Procesorových jader 
 |-----------|---------|-------------|
 |Extrakce klíčových frází | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |
 |Rozpoznávání jazyka | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |
-|Analýza mínění | 1 jádro, 8 GB paměti | 1 jádro, 8 GB paměti |
+|Analýza mínění | 1 jádro, 2 GB paměti | 1 jádro, 4 GB paměti |
 
 ## <a name="download-container-images-from-microsoft-container-registry"></a>Stáhněte si Image kontejneru z registru kontejneru Microsoft
 
@@ -144,16 +145,18 @@ Kontejnery pro analýzu textu odeslání fakturační údaje do Azure, použijte
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](../text-analytics-resource-container-config.md).
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů pro analýzu textu. Souhrn:
 
 * Rozhraní text Analytics poskytuje tři kontejnery Linuxu pro Docker, zapouzdření extrakce klíčových frází, rozpoznávání jazyka a analýzy subjektivního hodnocení.
-* Image kontejneru se stahují ze soukromého registru kontejnerů v Azure.
+* Image kontejneru se stáhnou z kontejneru registru Microsoft (MCR) v Azure.
 * Spuštění imagí kontejnerů v Dockeru.
 * Rozhraní REST API nebo sady SDK můžete použít k volání operací v kontejnerech rozhraní Text Analytics tak, že zadáte identifikátor URI kontejneru hostitele.
 * Při vytváření instance kontejneru, je nutné zadat fakturační informace.
-* ** Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft.  
+
+> [!IMPORTANT]
+> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další postup
 

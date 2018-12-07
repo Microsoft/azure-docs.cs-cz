@@ -1,18 +1,19 @@
 ---
-title: Kurz – Konfigurace správce serveru a uživatelských rolí služby Azure Analysis Services | Microsoft Docs
+title: Kurz – konfigurace role správce a uživatele služby Azure Analysis Services | Dokumentace Microsoftu
+description: Zjistěte, jak nakonfigurovat role Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 07/09/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 1c1dd5316eead5e91dd77d3e6b21a7a14d39afeb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
-ms.translationtype: HT
+ms.openlocfilehash: a1e6e04c4019086d56cc0eb25176a507e514c477
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929225"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000633"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Kurz: Konfigurace správce serveru a uživatelských rolí
 
@@ -35,7 +36,7 @@ Další informace o zabezpečení uživatelů ve službě Azure Analysis Service
 - Na server je [přidaný ukázkový model adventureworks](../analysis-services-create-sample-model.md).
 - [Máte nainstalovanou nejnovější verzi SQL Server Management Studia](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k [portálu](https://portal.azure.com/).
 
@@ -139,7 +140,7 @@ V rámci tohoto úkolu použijete příkaz [Create](https://docs.microsoft.com/s
 Pokud už uživatelské nebo skupinové účty a role nepotřebujete, můžete je odstranit. Pomocí možností **Vlastnosti role** > **Členství** odeberte uživatelské účty, nebo klikněte pravým tlačítkem na roli a pak klikněte na **Odstranit**.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste zjistili, jak se připojit k serveru Azure AD a prozkoumat ukázkové modelové databáze adventureworks a vlastnosti v SQL Server Management Studiu. Zároveň jste se naučili přidat uživatele nebo skupiny do existujících a nových rolí pomocí SQL Server Management Studia a skriptů TMSL. Teď, když máte pro server a ukázkovou modelovou databázi nakonfigurovaná uživatelská oprávnění, můžete se k nim spolu s dalšími uživateli připojit pomocí klientských aplikací, jako je Power BI. Pokud chcete vědět víc, pokračujte dalším kurzem. 
 
 > [!div class="nextstepaction"]

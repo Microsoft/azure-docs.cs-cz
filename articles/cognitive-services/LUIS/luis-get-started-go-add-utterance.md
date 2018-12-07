@@ -1,22 +1,25 @@
 ---
 title: Rychlý start pro jazyk Go – změna modelu a trénování aplikace LUIS
 description: V tomto rychlém startu pro jazyk Go přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat. Ukázkové promluvy jsou konverzačním textem uživatele namapovaným na záměr. Tím, že poskytnete ukázkové promluvy pro záměry, naučíte službu LUIS, které typy uživatelem zadaného textu patří do kterého záměru.
-titleSuffix: Microsoft Cognitive Services
+titleSuffix: Language Understanding - Azure Cognitive Services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 2cd8c1aa2deb2af97d4f720efa0e40146b15b888
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: HT
+ms.openlocfilehash: 092771ed4ce2ebbe134ea5c39e23294555124c19
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031862"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013658"
 ---
 # <a name="quickstart-change-model-using-go"></a>Rychlý start: Změna modelu pomocí Go
+
+V tomto rychlém startu budete do koncového bodu služby LUIS předávat promluvy a získávat zpět záměr a entity.
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -185,6 +188,6 @@ ms.locfileid: "47031862"
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Jakmile tento rychlý start dokončíte, odeberte všechny soubory, které jste v něm vytvořili. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
 > [Vytvoření aplikace s vlastní doménou](luis-quickstart-intents-only.md) 

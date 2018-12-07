@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6ad839b9cf1179e282b9163df5a38e13417408e2
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 7e11affece7e7eb133aa22e159ec07d4f15e96f7
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706224"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999601"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Rychlý start: Směrování webového provozu pomocí služby Azure Application Gateway – Azure Portal
 
@@ -23,9 +23,9 @@ V tomto rychlém startu se dozvíte, jak pomocí portálu Azure Portal rychle vy
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
-Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
@@ -34,7 +34,7 @@ Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvořít
 1. Klikněte na **Vytvořit prostředek** v levém horním rohu portálu Azure Portal.
 2. Klikněte na tlačítko **sítě** a potom klikněte na tlačítko **Application Gateway** v seznamu vybrané.
 
-### <a name="basics"></a>Základy
+### <a name="basics"></a>Základní informace
 
 1. Pro aplikační bránu zadejte tyto hodnoty:
 
@@ -54,12 +54,12 @@ Virtuální sítě je potřeba ke komunikaci mezi prostředky, které vytvořít
     - *myBackendSubnet* – tuto hodnotu zadejte jako název podsítě.
     - *10.0.0.0/24* – rozsah adres podsítě.
 
-    ![Vytvoření virtuální sítě](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
+    ![Vytvořit virtuální síť](./media/application-gateway-create-gateway-portal/application-gateway-vnet.png)
 
 6. Klikněte na tlačítko **OK** přejděte zpět na stránku nastavení.
 7. V části **konfigurace protokolu IP front-endu** zajistit **IP adres jako typu** je nastavena na **veřejné**a v části **veřejnou IP adresu**, zkontrolujte **Vytvořit nový** zaškrtnuto. Typ *myAGPublicIPAddress* pro název veřejné IP adresy. U ostatních nastavení ponechejte výchozí hodnoty a potom klikněte na **OK**.
 
-### <a name="summary"></a>Souhrn
+### <a name="summary"></a>Shrnutí
 
 Projděte si nastavení na stránce souhrnu a potom kliknutím na **OK** vytvořte virtuální síť, veřejnou IP adresu a aplikační bránu. Vytvoření aplikační brány může trvat několik minut. Počkejte na úspěšné dokončení nasazení přejde k další části.
 
@@ -76,7 +76,7 @@ Projděte si nastavení na stránce souhrnu a potom kliknutím na **OK** vytvoř
 
 V tomto příkladu vytvoříte dva virtuální počítače, které se používají jako servery back-end pro službu application gateway. Na virtuální počítače také nainstalujete službu IIS, abyste ověřili, že se aplikační brána úspěšně vytvořila.
 
-### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 1. Na webu Azure Portal klikněte na **Vytvořit prostředek**.
 2. Klikněte na tlačítko **Compute** a pak vyberte **systému Windows Server 2016 Datacenter** v seznamu vybrané.
@@ -85,7 +85,7 @@ V tomto příkladu vytvoříte dva virtuální počítače, které se používaj
     - *myResourceGroupAG* pro skupinu prostředků.
     - *myVM1* – název virtuálního počítače.
     - *azureuser* – uživatelské jméno správce.
-    - *Azure123456!* – jako heslo.
+    - *Azure123456!* jako heslo.
 
    Přijměte ostatní výchozí hodnoty a klikněte na tlačítko **Další: disky**.
 4. Přijměte výchozí nastavení disku a klikněte na tlačítko **Další: sítě**.

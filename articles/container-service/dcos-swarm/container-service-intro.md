@@ -1,5 +1,5 @@
 ---
-title: Hostování kontejnerů Docker v cloudu Azure
+title: (NEPOUŽÍVANÉ) Hostování kontejnerů docker v cloudu Azure
 description: Služba Azure Container Service umožňuje zjednodušení vytváření, konfigurace a správy clusteru virtuálních počítačů, které jsou předem nakonfigurovány pro spouštění kontejnerizovaných aplikací.
 services: container-service
 author: rgardler
@@ -9,14 +9,16 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 6bb13ad19f9b0b6137cdb2b4a9afbb2f325b9d36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 348bde94bc01e00777603af8ac078d5e319d732c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975050"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001983"
 ---
-# <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Úvod k řešením hostování kontejnerů Docker pomocí Azure Container Service 
+# <a name="deprecated-introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>(NEPOUŽÍVANÉ) Úvod do řešení pomocí služby Azure Container Service pro hostování kontejnerů Docker 
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Služba Azure Container Service vám zjednoduší vytváření, konfiguraci a správu clusteru virtuálních počítačů, které jsou předem nakonfigurovány pro spouštění kontejnerizovaných aplikací. Používá optimalizovanou konfiguraci oblíbených nástrojů open source pro plánování a orchestraci. Díky tomu můžete při nasazování a správě kontejnerových aplikací v Microsoft Azure využívat své stávající dovednosti nebo stavět na rozsáhlých a stále se rozšiřujících odborných znalostech komunity.
 
@@ -101,6 +103,6 @@ Sestavování aplikací s použitím služby Azure Container Service (sestavení
 >
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Nasaďte cluster služby Container Service pomocí [portálu](container-service-deployment.md) nebo [Azure CLI](container-service-create-acs-cluster-cli.md).

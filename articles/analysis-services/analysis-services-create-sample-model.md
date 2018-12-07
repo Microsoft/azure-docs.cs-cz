@@ -1,19 +1,19 @@
 ---
-title: Kurz – Přidání základního ukázkového modelu na server Azure Analysis Services pomocí portálu | Microsoft Docs
+title: Kurz – přidání ukázkového modelu k serveru Azure Analysis Services | Dokumentace Microsoftu
 description: V této lekci kurzu zjistíte, jak přidat ukázkový model do služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: def7ee54390a716027fcacb433b99826d3650f6f
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 6a492085984eba165bc7cfc5839fa4e1705e823c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428688"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001643"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Kurz: Přidání ukázkového modelu z portálu
 
@@ -69,7 +69,7 @@ Tento postup popisuje odstranění modelu ze serveru pomocí SQL Server Manageme
 
     ![Odstranění ukázkové databáze](./media/analysis-services-create-sample-model/aas-create-sample-cleanup-delete.png)
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 
 V tomto kurzu jste se naučili, jak na server přidat základní ukázkový model. Teď, když máte modelovou databázi, se k ní můžete připojit z SQL Server Management Studia a přidat uživatelské role. Pokud chcete vědět víc, pokračujte dalším kurzem.
 

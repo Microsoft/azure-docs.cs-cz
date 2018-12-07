@@ -10,16 +10,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.openlocfilehash: cc726156273591215e5a311065ae2fe6dd87402c
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 7068dd62b8c445950fdfd18197e3f01e730506a3
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634431"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014799"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Začínáme s Apache Hadoop a Apache Hive v Azure HDInsight pomocí šablony Resource Manageru
 
-V tomto článku se dozvíte, jak vytvořit [Apache Hadoop](http://hadoop.apache.org/) clusterů v HDInsight pomocí šablony Resource Manageru a potom spouštět úlohy Hive v HDInsight. Většina úloh Hadoop jsou dávkové úlohy. Vytvoříte cluster, spustíte některé úlohy a pak cluster odstraníte. V tomto článku provedete všechny tři úlohy.
+V tomto článku se dozvíte, jak vytvořit [Apache Hadoop](https://hadoop.apache.org/) clusterů v HDInsight pomocí šablony Resource Manageru a potom spouštět úlohy Hive v HDInsight. Většina úloh Hadoop jsou dávkové úlohy. Vytvoříte cluster, spustíte některé úlohy a pak cluster odstraníte. V tomto článku provedete všechny tři úlohy.
 
 V tomto rychlém startu pomocí šablony Resource Manageru vytvoříte cluster HDInsight Hadoop. K vytvoření clusteru můžete použít také [Azure Portal](apache-hadoop-linux-create-cluster-get-started-portal.md).
 

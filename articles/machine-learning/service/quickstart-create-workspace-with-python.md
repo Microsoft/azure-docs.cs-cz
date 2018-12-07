@@ -1,6 +1,6 @@
 ---
-title: 'Rychlé zprovoznění: Použití sady Python SDK k vytvoření pracovního prostoru služby strojového učení – Azure Machine Learning'
-description: Začněte se službou Azure Machine Learning. Nainstalujte sadu Python SDK a použijte ji k vytvoření pracovního prostoru. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Azure Machine Learning.
+title: 'Rychlý start: Začínáme se službou Azure Machine Learning v Pythonu'
+description: Začínáme se službou Azure Machine Learning v Pythonu. Pomocí sady Python SDK k vytvoření pracovního prostoru, což je základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely machine learningu.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,14 +9,15 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 12/04/2018
-ms.openlocfilehash: 55a62888023c330aef8706bdf9e53187355721ac
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec12
+ms.openlocfilehash: 1a6bb648de251d8764eec52491a918e7cb1de653
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955849"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015377"
 ---
-# <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>Rychlé zprovoznění: Použití Pythonu při začátcích se službou Azure Machine Learning
+# <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Rychlý start: Použití Python SDK pro seznámení s Azure Machine Learning
 
 V tomto rychlém startu použijete sadu SDK služby Azure Machine Learning pro Python, abyste vytvořili a potom používali [pracovní prostor](concept-azure-machine-learning-architecture.md) služby Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Machine Learning. V tomto rychlém startu začnete nakonfigurováním vlastního prostředí Pythonu a serveru poznámkového bloku Jupyter. Pokud chcete pokračovat bez jakékoli instalace, přečtěte si téma [Rychlý start: Začínáme se službou Azure Machine Learning s využitím webu Azure Portal](quickstart-get-started.md).
 

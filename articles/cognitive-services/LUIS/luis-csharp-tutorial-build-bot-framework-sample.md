@@ -1,25 +1,26 @@
 ---
-title: Služba LUIS robotů s C# – Web app Bot - Bot Framework SDK 3.0
-titleSuffix: Azure Cognitive Services
-description: Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota.
+title: Robot sC#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 0ad95d5683ea10803c2f3986be97617051f191cf
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 59d98b46827a5e60dcdcbd109dc484891cef9ba8
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032270"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011789"
 ---
 # <a name="luis-bot-in-c"></a>Služba LUIS robotů v jazyce C#
 
-Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
+Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -27,7 +28,7 @@ Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tu
 
 ## <a name="luis-homeautomation-intents"></a>Služba LUIS HomeAutomation záměrů
 
-| Záměr | Příklad utterance | Funkce robota |
+| Záměr | Ukázková promluva | Funkce robota |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Vypnul světla. | Když záměr LUIS `HomeAutomation.TurnOn` zjistí, vyvolá robota `OnIntent` obslužná rutina dialogové okno. Toto dialogové okno je, kde by volat služby IoT můžete zapnout v zařízení a informace pro uživatele, že zařízení je zapnutý. |
 | HomeAutomation.TurnOff | Vypněte ložnici světla. | Když záměr LUIS `HomeAutomation.TurnOff` zjistí, vyvolá robota `OffIntent` obslužná rutina dialogové okno. Toto dialogové okno je, kde by volat služby IoT, vypněte zařízení a řekněte mu, že zařízení jsou vypnuté. |
@@ -54,7 +55,7 @@ Pomocí jazyka C#, sestavení je chatovací robot integrovaná jazyka (LUIS). Tu
     * Vyberte **umístění aplikace LUIS**. Toto je vytváření [oblasti](luis-reference-regions.md) vytvoření aplikace v.
     * Zaškrtněte políčko potvrzení právních upozornění. Podmínky právních upozornění jsou níže na zaškrtávací políčko.
 
-    ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
+    ![Služba Bot](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
 
 
 5. Potvrďte, že byla nasazena bot service.
@@ -154,7 +155,7 @@ Na webu Azure Portal, klikněte na **testování ve Web Chat** otestovat robota.
 ## <a name="download-the-bot-to-debug"></a>Stáhněte si robota, aby ladění
 Pokud váš robot nefunguje, stáhněte si projekt do svého místního počítače a pokračovat [ladění](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot). 
 
-## <a name="learn-more-about-bot-framework"></a>Další informace o rozhraní Bot Framework
+## <a name="learn-more-about-bot-framework"></a>Další informace o Bot Frameworku
 Další informace o [Bot Framework](https://dev.botframework.com/) a [3.x](https://github.com/Microsoft/BotBuilder) a [4.x](https://github.com/Microsoft/botbuilder-dotnet) sady SDK.
 
 ## <a name="next-steps"></a>Další postup

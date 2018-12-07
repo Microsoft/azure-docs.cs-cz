@@ -10,16 +10,17 @@ ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/16/2018
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 5cb3fee975e99af3d86affcbc18d89277dde2dc1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.openlocfilehash: 01c7d9c848465177d5ff1ed7264743437e57d663
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409114"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014714"
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Povolení funkce Event Hubs Capture prostřednictvím webu Azure Portal
 
@@ -35,7 +36,7 @@ Při vytváření centra událostí můžete povolit funkci Capture kliknutím n
 
 Výchozí časový interval je 5 minut. Minimální hodnota je 1, maximální hodnota je 15. Okno **Velikost** má rozsah 10 až 500 MB.
 
-![][1]
+![Časový interval pro zaznamenání][1]
 
 ## <a name="capture-data-to-an-azure-data-lake-store-account"></a>Zachytávání dat do účtu Azure Data Lake Store
 
@@ -52,7 +53,7 @@ Pro zachytávání dat do služby Azure Data Lake Store vytvoříte účet Data 
 2. Na stránce portálu **Vytvořit centrum událostí** v poli **Zprostředkovatel zachytávání** vyberte **Azure Data Lake Store**.
 3. V části **Vybrat službu Data Lake Store** zadejte účet Data Lake Store, který jste vytvořili dříve, a do pole **Cesta Data Lake** zadejte cestu ke složce s daty, kterou jste vytvořili.
 
-    ![][3]
+    ![Vyberte účet Data Lake Storage][3]
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>Přidání nebo konfigurace funkce Capture v existujícím centru událostí
 
@@ -60,18 +61,18 @@ Funkci Capture můžete nakonfigurovat v existujících centrech událostí, kte
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-![][2]
+![Konfigurace úložiště objektů Blob v Azure][2]
 
 ### <a name="azure-data-lake-store"></a>Azure Data Lake Store
 
-![][4]
+![Konfigurace úložiště Azure Data Lake][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
 [2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o funkci Event Hubs Capture najdete v tématu [Přehled funkce Event Hubs Capture][capture-overview].
 - Ke konfiguraci funkce Event Hubs Capture můžete také použít šablony Azure Resource Manageru. Další informace najdete v tématu věnovaném [povolení funkce Capture pomocí šablony Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub-enable-capture.md).

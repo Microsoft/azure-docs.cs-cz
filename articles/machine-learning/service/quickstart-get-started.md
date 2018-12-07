@@ -1,20 +1,21 @@
 ---
-title: 'Rychlý start: Vytvoření pracovního prostoru služby Machine Learning na webu Azure Portal – Azure Machine Learning'
-description: Použijte portál Azure Portal k vytvoření pracovního prostoru Azure Machine Learning. Tento pracovní prostor je základním blokem v cloudu, který můžete využít k experimentování, trénování a nasazování modelů strojového učení pomocí služby Azure Machine Learning.
+title: 'Rychlý start: Použití služby Azure portal začít s Azure Machine Learning'
+description: Začínáme se službou Azure Machine Learning. Vytvoření pracovního prostoru, což je základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí webu Azure portal.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: quickstart
 ms.reviewer: sgilley
-author: rastala
-ms.author: roastala
-ms.date: 09/24/2018
-ms.openlocfilehash: 7ed45b5e8a8c3cab26c0998260055ffd7a0f0c5d
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+author: hning86
+ms.author: haining
+ms.date: 12/04/2018
+ms.custom: seodec12
+ms.openlocfilehash: 3b874abc3896b9e6520500370d09e685d49ff82c
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710252"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015701"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme se službou Azure Machine Learning s využitím webu Azure Portal
 
@@ -35,7 +36,7 @@ Do vašeho pracovního prostoru se automaticky přidají následující prostře
   - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
   - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
-Prostředky, které vytvoříte, je možné použít i ke splnění požadavků v dalších kurzech a článcích s návody pro službu Machine Learning. Stejně jako u ostatních služeb Azure platí pro službu Machine Learning omezení určitých prostředků. Příkladem je velikost clusteru Azure Batch AI. Informace o výchozích omezeních a postup navýšení kvóty najdete v [tomto článku](how-to-manage-quotas.md).
+Prostředky, které vytvoříte, je možné použít i ke splnění požadavků v dalších kurzech a článcích s návody pro službu Machine Learning. S ostatními službami Azure, jsou výpočetní omezení určitých prostředků pomocí služby Machine Learning, například velikost clusteru. Další informace o [výchozí omezení a o tom, aby vám zvýšila kvótu](how-to-manage-quotas.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
@@ -69,7 +70,7 @@ Vyberte `Open Azure Notebooks` a vyzkoušejte první experiment.
 
 Vaše organizace může před přihlášením vyžadovat [souhlas správce](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent).
 
-Po přihlášení se otevře nová karta a zobrazí se výzva `Clone Library`. Vyberte `Clone`
+Po přihlášení se otevře nová karta a zobrazí se výzva `Clone Library`. Vyberte `Clone`.
 
 
 ### <a name="run-the-notebook"></a>Spuštění poznámkového bloku

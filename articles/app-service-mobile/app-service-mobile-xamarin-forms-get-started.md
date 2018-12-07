@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: ef371447e851fece207d77fe656283abe3dc4164
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.openlocfilehash: 68ae5628d8b6aeeec6c1549e3d29d48bc8906a2d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063859"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994204"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Vytvoření aplikace na platformě Xamarin.Forms s využitím Azure
 
@@ -183,9 +183,9 @@ Touto akcí se odešle požadavek POST na nový back-end Mobile Apps, jehož hos
 
 Pokud máte se sestavením řešení problémy, spusťte správce balíčků NuGet a proveďte aktualizaci na nejnovější verz i`Xamarin.Forms`. V projektu pro Android aktualizujte balíčky pro podporu `Xamarin.Android`. Projekty Rychlý start nezahrnují vždycky nejnovější verze.
 
-Upozorňujeme, že všechny balíčky podporu odkazované ve vašem projektu Android musí mít stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) má závislost `Xamarin.Android.Support.CustomTabs` pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
+Upozorňujeme, že všechny balíčky podporu odkazované ve vašem projektu Android musí mít stejnou verzi. [Balíček NuGet pro mobilní aplikace Azure](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)má`Xamarin.Android.Support.CustomTabs`závislost pro platformu Android, takže pokud váš projekt používá novější balíčky podpory, je nutné nainstalovat přímo tento balíček s požadovanou verzi, aby nedocházelo ke konfliktům.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Přidání ověřování do vaší aplikace](app-service-mobile-xamarin-forms-get-started-users.md) Zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
 
@@ -212,5 +212,5 @@ Upozorňujeme, že všechny balíčky podporu odkazované ve vašem projektu And
 
 <!-- URLs. -->
 [Install Xamarin]: https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/
-[Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Mobile app SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
 [Azure Portal]: https://portal.azure.com/

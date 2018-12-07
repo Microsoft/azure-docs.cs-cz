@@ -1,21 +1,22 @@
 ---
-title: Rychlý start pro Python – předpověď záměru – LUIS
-titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu zjistíte, jak volat aplikaci LUIS pomocí Pythonu.
+title: 'QuickStart: Získejte záměr – Python'
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: V tomto rychlém startu budete do koncového bodu služby LUIS předávat promluvy a získávat zpět záměr a entity.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bec438933e83bfc0abf4930935f74a1af731565c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 6121448906960ee3da41a16eac974f15ebdb46b5
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422333"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015513"
 ---
 # <a name="quickstart-get-intent-using-python"></a>Rychlý start: Získání záměru pomocí Pythonu
 V tomto rychlém startu budete do koncového bodu služby LUIS předávat promluvy a získávat zpět záměr a entity.

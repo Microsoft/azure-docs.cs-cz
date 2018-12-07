@@ -10,17 +10,17 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: ae5601cf35540b6f506521a851b4d90dfaf0a20a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.openlocfilehash: d9b4777067ed1ee9f253714bc82c2a20aaa0d127
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156455"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997032"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady SDK pro zařízení jazyka C# pro službu IoT Hub Device Provisioning
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Windows pomocí sady [Azure IoT Hub SDK pro jazyk C#](https://github.com/Azure/azure-iot-sdk-csharp) sestavit ukázku simulovaného zařízení X.509 a jak toto simulované zařízení propojit se službou Device Provisioning a centrem IoT.
+Tyto kroky ukazují, jak používat [ukázek Azure IoT pro C# ](https://github.com/Azure-Samples/azure-iot-samples-csharp) simulovat zařízení X.509 na vývojovém počítači s operačním systémem Windows. Ukázka se také připojuje simulovaného zařízení k IoT Hubu pomocí služby Device Provisioning.
 
 Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
@@ -35,14 +35,14 @@ V tomto článku si předvedeme jednotlivé registrace.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí 
 
-1. Ujistěte se, že na svém počítači máte nainstalovanou sadu [.NET Core SDK](https://www.microsoft.com/net/download/windows). 
+1. Ujistěte se, že máte [.Net Core 2.1 SDK nebo novější](https://www.microsoft.com/net/download/windows) na vašem počítači nainstalovaný. 
 
 1. Ujistěte se, že je na vašem počítači nainstalovaný `git` a že je přidaný do proměnných prostředí, ke kterým má příkazové okno přístup. Na stránce [klientských nástrojů Git organizace Software Freedom Conservancy](https://git-scm.com/download/) najdete nejnovější verzi nástrojů `git` k instalaci. Jejich součástí je i **Git Bash**, aplikace příkazového řádku, pomocí které můžete pracovat se svým místním úložištěm Git. 
 
-4. Otevřete příkazový řádek nebo Git Bash. Naklonujte úložiště GitHub se sadou [Azure IoT SDK pro jazyk C#](https://github.com/Azure/azure-iot-sdk-csharp):
+1. Otevřete příkazový řádek nebo Git Bash. Klonovat ukázek Azure IoT pro C# úložiště GitHub:
     
     ```cmd
-    git clone --recursive https://github.com/Azure/azure-iot-sdk-csharp.git
+    git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
 ## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>Vytvoření certifikátu zařízení X.509 podepsaného svým držitelem a položky jednotlivé registrace
@@ -52,13 +52,13 @@ V této části budete používat certifikát X.509 podepsaný svým držitelem.
 * Certifikáty podepsané svým držitelem jsou určené jenom pro testování a neměly by se používat v produkčním prostředí.
 * Výchozí datum vypršení platnosti certifikátu podepsaného svým držitelem je jeden rok.
 
-Pomocí vzorového kódu ze sady [Azure IoT SDK pro .NET](https://github.com/Azure/azure-iot-sdk-csharp.git) vytvoříte certifikát, který použije položka registrace pro simulované zařízení.
+Použijete ukázkový kód z [zřizování ukázkou klienta zařízení – ověření X.509](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/X509Sample) k vytvoření certifikátu pro použití s položku jednotlivé registrace pro simulované zařízení.
 
 
 1. V příkazovém řádku přejděte do adresáře projektu s ukázkou zřizování zařízení X.509.
 
     ```cmd
-    cd .\azure-iot-sdk-csharp\provisioning\device\samples\ProvisioningDeviceClientX509
+    cd .\azure-iot-samples-csharp\provisioning\Samples\device\X509Sample
     ```
 
 2. Vzorový kód je nastavený tak, aby používal certifikáty X.509 uložené v souboru ve formátu PKCS12 chráněném heslem (certificate.pfx). Kromě toho potřebujete soubor certifikátu veřejného klíče (certificate.cer) pro vytvoření jednotlivé registrace v pozdější části tohoto rychlého startu. Pokud chcete vygenerovat certifikát podepsaný svým držitelem a přidružené soubory .cer a .pfx, spusťte následující příkaz:
@@ -122,7 +122,7 @@ Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím 
 1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte svou službu Device Provisioning. V horní části okna **Všechny prostředky** klikněte na **Odstranit**.  
 1. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyberte své centrum IoT. V horní části okna **Všechny prostředky** klikněte na **Odstranit**.  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V rámci tohoto rychlého startu jste na svém počítači s Windows vytvořili simulované zařízení X.509 a pomocí služby Azure IoT Hub Device Provisioning na portálu jste ho zřídili pro své centrum IoT. Pokud chcete zjistit, jak zaregistrovat zařízení X.509 prostřednictvím kódu programu, pokračujte k rychlému startu pro registraci zařízení X.509 prostřednictvím kódu programu. 
 

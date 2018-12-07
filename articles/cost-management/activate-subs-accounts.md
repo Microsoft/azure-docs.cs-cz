@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/27/2018
+ms.date: 12/05/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: f2cb5d33b8d7a7442da16a38e268c56de363a9c6
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 5dee0286f5e8f43527062f6bd9255a5d735651f3
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274064"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994103"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktivace účtů a předplatných Azure pomocí služby Cloudyn
 

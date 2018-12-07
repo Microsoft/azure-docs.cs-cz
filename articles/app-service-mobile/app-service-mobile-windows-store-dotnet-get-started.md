@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 28a741393fd4b7b4076449c90575f8a4ab30e0fc
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: c8bd6430b362fde81c3133c2c16cf369aa050103
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41917673"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999374"
 ---
 # <a name="create-a-windows-app"></a>Vytvoření aplikace pro Windows
 
@@ -37,7 +37,7 @@ Ve všech dalších kurzech Mobile App pro aplikace UPW se předpokládá dokon�
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * [Visual Studio Community 2017].
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Vytvoření nového back-endu mobilní aplikace Azure
@@ -70,7 +70,7 @@ Až nakonfigurujete svůj back-end mobilní aplikace, je možné buď vytvořit 
 > [!TIP]
 > Pokud používáte back-end .NET, můžete projekt aplikace UPW přidat do stejného řešení, ve kterém se nachází serverový projekt. Ve stejném řešení sady Visual Studio bude snazší ladit a testovat jak aplikaci, tak back-end. Pokud chcete přidat projekt aplikace UPW do řešení back-endu, musíte použít sadu Visual Studio 2017.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Přidání ověřování do aplikace](app-service-mobile-windows-store-dotnet-get-started-users.md)  
   Zjistěte, jak ověřovat uživatele vaší aplikace pomocí zprostředkovatele identity.
@@ -82,6 +82,6 @@ Až nakonfigurujete svůj back-end mobilní aplikace, je možné buď vytvořit 
 <!-- Anchors. -->
 <!-- Images. -->
 <!-- URLs. -->
-[Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
+[Mobile App SDK]: https://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2017]: https://go.microsoft.com/fwLink/p/?LinkID=534203

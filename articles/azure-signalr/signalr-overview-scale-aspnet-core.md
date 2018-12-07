@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: af100c015845d095f39ee4245f71689a4d2a43c0
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 1492b2145187f7334d1e7d9df91adc109ca826ee
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384986"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016925"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Škálování aplikací ASP.NET Core SignalR pomocí služby Azure SignalR
 
@@ -44,9 +44,9 @@ Dalším důvodem může být, že webovou aplikaci vlastně vůbec nepotřebuje
 
 ## <a name="how-does-it-scale"></a>Jak se škáluje?
 
-SignalR se běžně škáluje s využitím SQL Serveru, služby Azure Service Bus nebo Redis Cache. Služba Azure SignalR se stará o postup škálování za vás. Výkon a náklady jsou srovnatelné s těmito postupy, ale bez složité správy těchto dalších služeb. Stačí pouze aktualizovat počet jednotek pro vaši službu. Každá jednotka podporuje až 1000 klientských připojení.
+Je běžné škálování SignalR s SQL serverem, Azure Service Bus nebo mezipaměti Azure Redis. Služba Azure SignalR se stará o postup škálování za vás. Výkon a náklady jsou srovnatelné s těmito postupy, ale bez složité správy těchto dalších služeb. Stačí pouze aktualizovat počet jednotek pro vaši službu. Každá jednotka podporuje až 1000 klientských připojení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Rychlý start: Vytvoření chatovací místnosti s využitím služby Azure SignalR](signalr-quickstart-dotnet-core.md)  
   
 

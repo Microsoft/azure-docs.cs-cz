@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2018
+ms.date: 12/05/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 36f53203a7d75fc06f872e9cc9ef9379944df108
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 1f4bd280b58ea11331300320c71c968e7273659a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273548"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993689"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Registrace smlouvy Azure Enterprise a zobrazení informací o nákladech
 
@@ -23,7 +23,7 @@ Použijte svoji smlouvu Azure Enterprise k registraci u Cloudyn. Registrací zí
 
 Azure Cost Management nabízí podobné funkce jako Cloudyn. Azure Cost Management je nativní řešení Azure pro správu nákladů. Umožní vám analyzovat náklady, vytvářet a spravovat rozpočty, exportovat data, kontrolovat optimalizační doporučení k úspoře peněz a reagovat na ně. Další informace najdete v tématu [Azure Cost Management](overview-cost-mgt.md).
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 - Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 

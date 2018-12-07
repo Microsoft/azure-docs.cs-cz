@@ -9,12 +9,12 @@ ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: f753d7273c685a7ec3e4e0877e171df04e69e5b4
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: da5370e274aa1904f803227d8c85912a7d26c533
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978311"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000662"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Co je Service Fabric Mesh?
 
@@ -50,6 +50,7 @@ Služba Service Fabric Mesh umožňuje:
 - Nasazení a správu prostředků pomocí [webu Azure Portal](https://portal.azure.com), šablon Správce prostředků nebo knihoven Azure CLI/PowerShell.
 - Nastavení sledování provozu a upozorňování pomocí služby [Application Insights](/azure/application-insights/) (nebo jiného nástroje podle vašeho výběru) a zachycování provozních a diagnostických dat z platformy.
 - Přístup k informacím o diagnostice získaným z aplikačního modelu pomocí [Application Insights](/azure/application-insights/) nebo jiného nástroje podle vašeho výběru.
+- Optimalizujte využití prostředků tak, že zadáte pravidel automatického škálování pro služby v definici aplikace.
 
 ## <a name="mission-critical-platform-capabilities"></a>Možnosti platformy pro kritické aplikace
 
@@ -63,7 +64,7 @@ Služba Service Fabric Mesh umožňuje:
 - Nasazení aplikací napříč [zónami dostupnosti](/azure/availability-zones/az-overview) a různými oblastmi pro geografickou spolehlivost.
 - Využít všechny možnosti zabezpečení a dodržování předpisů, které Azure nabízí.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 K nasazení ukázkového projektu ze sady Visual Studio stačí jen pár jednoduchých kroků. Další informace najdete v článku [Vytvoření webu ASP.NET Core](service-fabric-mesh-quickstart-dotnet-core.md). 
 

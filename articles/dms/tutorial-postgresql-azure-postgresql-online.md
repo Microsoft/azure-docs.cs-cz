@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 12b3cee9e1aeeda1017d7fa2baebf5769039c185
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8780e145845d820ef0c6ff2c43891287c1902e2c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956227"
+ms.locfileid: "53000916"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Kurz: Online migrace PostgreSQL do služby Azure Database for PostgreSQL pomocí DMS
 Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance PostgreSQL do služby [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) s minimálními výpadky. Jinými slovy, můžete dosáhnout migrace s minimálními výpadky aplikace. V tomto kurzu provedete migraci ukázkové databáze **DVD Rental** z místní instance PostgreSQL verze 9.6 do služby Azure Database for PostgreSQL pomocí aktivity online migrace ve službě Azure Database Migration Service.
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu je potřeba provést následující:
 
-- Stáhněte a nainstalujte [PostgreSQL Community Edition](https://www.postgresql.org/download/) verze 9.5, 9.6 nebo 10.3. Zdrojový PostgreSQL Server musí mít verzi 9.5.11, 9.6.7, 10.3 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
+- Stáhněte a nainstalujte [PostgreSQL community edition](https://www.postgresql.org/download/) 9.5, 9.6 nebo 10. Zdrojový PostgreSQL Server verze musí být 9.5.11, 9.6.7, 10 nebo novější. Další informace najdete v článku [podporované verze databáze PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions).
 
     Kromě toho místní verze PostgreSQL musí odpovídat Azure Database for PostgreSQL. Například PostgreSQL verze 9.5.11.5 je možné migrovat pouze do služby Azure Database for PostgreSQL verze 9.5.11 a ne verze 9.6.7.
 

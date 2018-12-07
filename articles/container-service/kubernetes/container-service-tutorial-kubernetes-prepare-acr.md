@@ -1,24 +1,27 @@
 ---
-title: Kurz Azure Container Service – Příprava ACR
+title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – Příprava služby ACR
 description: Kurz Azure Container Service – Příprava ACR
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 735aca5509373f840c56e28887088f7a696ca137
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.openlocfilehash: c3e5e7c4fb46b3f68013ac857dcad2e5434a978d
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024082"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52998317"
 ---
-# <a name="deploy-and-use-azure-container-registry"></a>Nasazení a použití služby Azure Container Registry
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(NEPOUŽÍVANÉ) Nasazení a použití služby Azure Container Registry
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurz: nasazení a použití služby Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure Container Registry (ACR) je privátní registr prostředí Azure pro image kontejneru Dockeru. Tento kurz je druhou částí sedmidílné série. Provede vás nasazením instance služby Azure Container Registry a nahráním image kontejneru do ní. Mezi dokončené kroky patří:
 
@@ -154,7 +157,7 @@ v1
 
 Na konci kurzu byla image kontejneru uložena v privátní instanci služby Azure Container Registry. Tato image bude nasazena ze služby ACR do clusteru Kubernetes v následných kurzech.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu byla služba Azure Container Registry připravena pro použití v clusteru Kubernetes ACS. Dokončili jste následující kroky:
 

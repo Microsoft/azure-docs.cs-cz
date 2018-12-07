@@ -12,16 +12,16 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 2d50e4c2352444d29bdb090bc9a2a7947ecc6a50
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6daa29b4e8f09a4f8a40c3b92d2e2e86a5dea6aa
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496035"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993181"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Vytvoření definice OpenAPI pro funkci
 
-Rozhraní REST API se často popisují pomocí definice OpenAPI (dříve označované jako soubor [Swagger](http://swagger.io/)). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API.
+Rozhraní REST API se často popisují pomocí definice OpenAPI (dříve označované jako soubor [Swagger](https://swagger.io/)). Tato definice obsahuje informace o tom, jaké operace jsou v rozhraní API dostupné a jakou strukturu by měla mít data požadavku a odpovědi pro toto rozhraní API.
 
 V tomto kurzu vytvoříte funkci, která určí, jestli je nouzová oprava větrné turbíny nákladově efektivní. Pak vytvoříte definici OpenAPI pro aplikaci funkcí, aby bylo možné funkci volat i z jiných aplikací a služeb.
 
@@ -123,7 +123,7 @@ Nyní máte funkci, která určuje nákladovou efektivitu nouzových oprav. Dál
 
 ## <a name="generate-the-openapi-definition"></a>Generování definice OpenAPI
 
-Nyní jste připraveni vygenerovat definici OpenAPI. Tuto definici můžou používat jiné technologie Microsoftu, jako jsou API Apps, [PowerApps](functions-powerapps-scenario.md) a [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md), i vývojářské nástroje třetích stran, jako je [Postman](https://www.getpostman.com/docs/importing_swagger) a [řada dalších balíčků](http://swagger.io/tools/).
+Nyní jste připraveni vygenerovat definici OpenAPI. Tuto definici můžou používat jiné technologie Microsoftu, jako jsou API Apps, [PowerApps](functions-powerapps-scenario.md) a [Microsoft Flow](../azure-functions/app-service-export-api-to-powerapps-and-flow.md), i vývojářské nástroje třetích stran, jako je [Postman](https://www.getpostman.com/docs/importing_swagger) a [řada dalších balíčků](https://swagger.io/tools/).
 
 1. Vyberte pouze *operace*, které vaše rozhraní API podporuje (v tomto případě POST). Díky tomu bude vygenerovaná definice rozhraní API přehlednější.
 
@@ -141,7 +141,7 @@ Nyní jste připraveni vygenerovat definici OpenAPI. Tuto definici můžou použ
 
     ![Zdroj definice rozhraní API](media/functions-openapi-definition/api-definition-source.png)
 
-    Tento krok pro vaši aplikaci funkcí povolí sadu možností OpenAPI, včetně koncového bodu pro hostování souboru OpenAPI z domény vaší aplikace funkcí, vložené kopie [editoru OpenAPI](http://editor.swagger.io) a generátoru šablon definic rozhraní API.
+    Tento krok pro vaši aplikaci funkcí povolí sadu možností OpenAPI, včetně koncového bodu pro hostování souboru OpenAPI z domény vaší aplikace funkcí, vložené kopie [editoru OpenAPI](https://editor.swagger.io) a generátoru šablon definic rozhraní API.
 
 1. Klikněte na **Vygenerovat šablonu definic rozhraní API** > **Uložit**.
 
@@ -168,7 +168,7 @@ Nyní jste připraveni vygenerovat definici OpenAPI. Tuto definici můžou použ
         parameters: []
         description: >-
             Replace with Operation Object
-            #http://swagger.io/specification/#operationObject
+            #https://swagger.io/specification/#operationObject
         responses:
             '200':
             description: Success operation

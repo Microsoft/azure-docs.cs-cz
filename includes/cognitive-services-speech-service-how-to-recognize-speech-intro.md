@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 3394fc2f6395799a252b645635d982b4573296c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 31482cc7850c574b952c454021af729da324ba15
+ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47000707"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52978764"
 ---
 <!-- N.B. no header, no intents here, language-agnostic -->
 
@@ -21,7 +21,7 @@ Cognitive Services [sadou SDK pro řeč](~/articles/cognitive-services/speech-se
 
 1. V případě potřeby vytížit události pro asynchronní operaci. Nástroj pro rozpoznávání pak zavolá obslužné rutiny události je dočasný a finální výsledky. V opačném případě aplikace přijímá pouze určené k transkripci konečný výsledek.
 
-1. Začněte rozpoznávání. Rozpoznávání jednorázová, jako je například rozpoznávání příkaz nebo dotaz, použijte `RecognizeOnceAsync()` metody. Tato metoda vrátí první rozpoznaný utterance. Pro dlouho běžící rozpoznávání jako určené k transkripci, použijte `StartContinuousRecognitionAsync()` metody. Spojit události pro asynchronní rozpoznávání výsledky.
+1. Začněte rozpoznávání. Rozpoznávání jednorázová, jako je například rozpoznávání příkaz nebo dotaz, použijte `RecognizeOnceAsync()` (nebo ekvivalentní language) metody. Tato metoda vrátí první rozpoznaný utterance. Pro dlouho běžící rozpoznávání jako určené k transkripci, použijte `StartContinuousRecognitionAsync()` (nebo ekvivalentní language) metody. Spojit události pro asynchronní rozpoznávání výsledky.
 
 Viz následující fragmenty kódu pro scénáře rozpoznávání řeči, používající sadou SDK pro řeč.
 

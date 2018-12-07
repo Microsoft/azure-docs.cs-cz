@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/07/2018
+ms.date: 12/05/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 4b0c0a6fdf8d84b6519d1228f148342b8486c282
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 57f2a43f22832775b250c032ce8a35b082f011e1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276393"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993283"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Registrace samostatného předplatného Azure a zobrazení informací o nákladech
 
 Pomocí svého předplatného Azure se zaregistrujete u Cloudyn. Registrací získáte přístup k portálu Cloudyn. Tento rychlý start podrobně popisuje proces registrace nezbytný k vytvoření zkušebního předplatného a přihlášení k portálu Cloudyn. Ukazuje také, jak rovnou začít zobrazovat informace o nákladech.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 - Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 

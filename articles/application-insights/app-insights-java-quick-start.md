@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 4ed5363cc927c3e36e6efa7554511d78e1e96d24
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 45d1275ac3b78836cbb77c4e1508d0689c215d69
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970922"
+ms.locfileid: "52998608"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Zahájení monitorování webové aplikace v Javě
 
@@ -29,7 +29,7 @@ Tento rychlý start vás provede přidáním sady Application Insights SDK do ex
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 - Instalace JRE 1.7 nebo 1.8
-- Nainstalujte si [integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/downloads/). Tento kurz Rychlý start používá Eclipse Oxygen (4.7).
+- Nainstalujte si [integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE](https://www.eclipse.org/downloads/). Tento kurz Rychlý start používá Eclipse Oxygen (4.7).
 - Budete potřebovat předplatné Azure a dynamický webový projekt v Javě.
  
 Pokud dynamický webový projekt v Javě nemáte, můžete si ho vytvořit pomocí [rychlého startu pro vytvoření webové aplikace v Javě](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java).
@@ -67,7 +67,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Formulář Nový prostředek App Insights](./media/app-insights-java-quick-start/000-j.png)
 
-2. Zkopírujte ```http://dl.microsoft.com/eclipse``` do pole Práce s. Zaškrtněte **Azure Toolkit for Java**, vyberte **Application Insights Plugin for Java** > **a zrušte zaškrtnutí**Contact all update sites during install to find required software (Během instalace kontaktovat všechny weby aktualizace a zjistit požadovaný software).
+2. Zkopírujte ```https://dl.microsoft.com/eclipse``` do pole Práce s. Zaškrtněte **Azure Toolkit for Java**, vyberte **Application Insights Plugin for Java** > **a zrušte zaškrtnutí**Contact all update sites during install to find required software (Během instalace kontaktovat všechny weby aktualizace a zjistit požadovaný software).
 
 3. Po dokončení instalace se zobrazí výzva k **restartování prostředí Eclipse**.
 

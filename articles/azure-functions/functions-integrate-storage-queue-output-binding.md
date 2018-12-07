@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e48eac4cdc1e98e21a122850b1dc7d3e8f4efe07
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
-ms.translationtype: HT
+ms.openlocfilehash: 0cd3d3044623e2265a4ef5f817ed41258e63ae1c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854520"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52995523"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Přidání zpráv do fronty Azure Storage pomocí funkcí
 
@@ -31,7 +31,7 @@ K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * Postupujte podle pokynů v části [Vytvoření první funkce na webu Azure Portal](functions-create-first-azure-function.md) a neprovádějte krok **Vyčištění prostředků**. Tento rychlý start vytvoří aplikaci funkcí a funkci, kterou tady použijete.
 
-* Nainstalujte [Průzkumníka služby Microsoft Azure Storage](http://storageexplorer.com/). Tento nástroj použijete k prozkoumání zpráv fronty, které vytvoří vaše výstupní vazba.
+* Nainstalujte [Průzkumníka služby Microsoft Azure Storage](https://storageexplorer.com/). Tento nástroj použijete k prozkoumání zpráv fronty, které vytvoří vaše výstupní vazba.
 
 ## <a name="add-binding"></a>Přidání výstupní vazby
 
@@ -122,7 +122,7 @@ Při prvním použití výstupní vazby vytvoří modul runtime Functions v úč
 
 Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste ho k účtu úložiště, který v tomto rychlém startu používáte, přeskočte tuto část.
 
-2. Spusťte [Microsoft Azure Storage Explorer](http://storageexplorer.com/), vlevo vyberte ikonu připojení, zvolte **Použít název a klíč účtu úložiště** a vyberte **Další**.
+2. Spusťte [Microsoft Azure Storage Explorer](https://storageexplorer.com/), vlevo vyberte ikonu připojení, zvolte **Použít název a klíč účtu úložiště** a vyberte **Další**.
 
     ![Spusťte nástroj Průzkumník účtu úložiště.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
@@ -160,7 +160,7 @@ Pokud jste si už nainstalovali Průzkumníka služby Storage a propojili jste h
 
 [!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste přidali k existující funkci výstupní vazbu. Další informace o vazbách do úložiště front najdete v tématu [Vazby front úložiště služby Azure Functions](functions-bindings-storage-queue.md). 
 

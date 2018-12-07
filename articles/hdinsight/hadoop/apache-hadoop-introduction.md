@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.openlocfilehash: 190d6203c4a00ed3f448bdbb7366db5bc22c45f8
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 259cef465f39f027c6db81d5d7de137b6a089581
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634511"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017701"
 ---
 # <a name="what-is-azure-hdinsight-and-the-apache-hadoop-technology-stack"></a>Co je Azure HDInsight a technologie Apache hadoop
 
@@ -24,7 +24,7 @@ Tento článek obsahuje úvod k Apache Hadoop ve službě Azure HDInsight. Azure
 
 ## <a name="what-is-hdinsight-and-the-hadoop-technology-stack"></a>Co je HDInsight a technologie Hadoop?
 
-[Apache Hadoop](http://hadoop.apache.org/) byl původní open source architekturou pro distribuované zpracování a analýzy velkých datových sad v clusterech. Součástí technologie Hadoop je potřebný software a nástroje, jako je Apache Hive, HBase, Spark, Kafka a řada dalších.
+[Apache Hadoop](https://hadoop.apache.org/) byl původní open source architekturou pro distribuované zpracování a analýzy velkých datových sad v clusterech. Součástí technologie Hadoop je potřebný software a nástroje, jako je Apache Hive, HBase, Spark, Kafka a řada dalších.
 
 Azure HDInsight je cloudová distribuce komponent Hadoop z platformy [Hortonworks Data Platform (HDP)](https://hortonworks.com/products/data-center/hdp/). Azure HDInsight umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. Můžete využít nejoblíbenější opensourcové architektury, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm, R a další. Tyto architektury podporují širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.
 
@@ -86,9 +86,9 @@ HDInsight zahrnuje specifické typy clusterů a možnosti přizpůsobení cluste
 
 * **[Apache Hadoop:](https://wiki.apache.org/hadoop)** Architektura, která používá HDFS, správu prostředků YARN a jednoduchý programovací model MapReduce pro paralelní zpracování a analýzu dat dávek.
 
-* **[Apache Spark](http://spark.apache.org/):** Open source architektura pro paralelní zpracování, která podporuje zpracování v paměti pro zvýšení výkonu analytických aplikací s velkým objemem dat. Přečtěte si téma [Co je Apache Spark v prostředí HDInsight?](../spark/apache-spark-overview.md)
+* **[Apache Spark](https://spark.apache.org/):** Open source architektura pro paralelní zpracování, která podporuje zpracování v paměti pro zvýšení výkonu analytických aplikací s velkým objemem dat. Přečtěte si téma [Co je Apache Spark v prostředí HDInsight?](../spark/apache-spark-overview.md)
 
-* **[Apache HBase:](http://hbase.apache.org/)** Databáze NoSQL postavená na systému Hadoop, která umožňuje náhodný přístup a zajišťuje velkou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat (potenciálně až miliardy řádků krát miliony sloupců). Přečtěte si téma [Co je HBase v HDInsight?](../hbase/apache-hbase-overview.md)
+* **[Apache HBase:](https://hbase.apache.org/)** Databáze NoSQL postavená na systému Hadoop, která umožňuje náhodný přístup a zajišťuje velkou konzistenci pro velké objemy nestrukturovaných a částečně strukturovaných dat (potenciálně až miliardy řádků krát miliony sloupců). Přečtěte si téma [Co je HBase v HDInsight?](../hbase/apache-hbase-overview.md)
 
 * **[ML Services](https://msdn.microsoft.com/microsoft-r/rserver)**: Server pro hostování a správu paralelních, distribuovaných procesů R. Poskytuje datovým vědcům, statistikům a programátorům v R přístup ke škálovatelným, distribuovaným analytickým metodám služby HDInsight na vyžádání. Viz [Přehled ML Services ve službě HDInsight](../r-server/r-server-overview.md).
 
@@ -100,7 +100,7 @@ HDInsight zahrnuje specifické typy clusterů a možnosti přizpůsobení cluste
 
 ## <a name="open-source-components-in-hdinsight"></a>Opensourcové komponenty ve službě HDInsight
 
-Azure HDInsight umožňuje vytvářet clustery pomocí opensourcových architektur, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm, HBase a R. Tyto clustery ve výchozím nastavení zahrnují další opensourcové komponenty, jako jsou například [Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md), [Avro](http://avro.apache.org/docs/current/spec.html), [Hive](http://hive.apache.org), [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/), [Mahout](https://mahout.apache.org/), [MapReduce](http://wiki.apache.org/hadoop/MapReduce), [YARN](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Phoenix](http://phoenix.apache.org/), [Pig](http://pig.apache.org/), [Sqoop](http://sqoop.apache.org/), [Tez](http://tez.apache.org/), [Oozie](http://oozie.apache.org/) a [ZooKeeper](http://zookeeper.apache.org/).  
+Azure HDInsight umožňuje vytvářet clustery pomocí opensourcových architektur, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm, HBase a R. Tyto clustery ve výchozím nastavení zahrnují další opensourcové komponenty, jako jsou například [Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md), [Avro](https://avro.apache.org/docs/current/spec.html), [Hive](https://hive.apache.org), [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/), [Mahout](https://mahout.apache.org/), [MapReduce](https://wiki.apache.org/hadoop/MapReduce), [YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), [Phoenix](https://phoenix.apache.org/), [Pig](https://pig.apache.org/), [Sqoop](https://sqoop.apache.org/), [Tez](https://tez.apache.org/), [Oozie](https://oozie.apache.org/) a [ZooKeeper](https://zookeeper.apache.org/).  
 
 
 ## <a name="programming-languages-in-hdinsight"></a>Programovací jazyky v prostředí HDInsight
@@ -152,4 +152,4 @@ V tomto článku jste zjistili, co je Azure HDInisght a jakým způsobem poskytu
 
 
 [component-versioning]: ../hdinsight-component-versioning.md
-[zookeeper]: http://zookeeper.apache.org/
+[zookeeper]: https://zookeeper.apache.org/

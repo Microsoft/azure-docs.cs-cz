@@ -1,24 +1,27 @@
 ---
-title: Instanční objekt pro cluster Azure Kubernetes
+title: (NEPOUŽÍVANÉ) Instanční objekt pro cluster Kubernetes v Azure
 description: Vytvoření a správa instančního objektu služby Azure Active Directory pro cluster Kubernetes v Azure Container Service
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: get-started-article
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c370d25ed5d70887c8beecae8fea3528a259a0ea
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 53bb09824a88980a171fa4067a9efd2fc067a898
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954568"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992163"
 ---
-# <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
+# <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(NEPOUŽÍVANÉ) Nastavení instančního objektu služby Azure AD pro cluster Kubernetes ve službě Container Service
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Pro aktualizovanou verzi, tento článek, který používá Azure Kubernetes Service, najdete v článku [instanční Azure Kubernetes Service (AKS)](../../aks/kubernetes-service-principal.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Cluster Kubernetes vyžaduje v Azure Container Service [instanční objekt služby Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md) pro interakci s rozhraními API Azure. Instanční objekt je potřeba k dynamické správě prostředků, jako jsou například [uživatelem definované trasy](../../virtual-network/virtual-networks-udr-overview.md) a [vrstva 4 služby Azure Load Balancer](../../load-balancer/load-balancer-overview.md).
 
@@ -165,7 +168,7 @@ Výstup:
 
 Potom aktualizujte soubor `/etc/kubernetes/azure.json` novými přihlašovacími údaji na všech uzlech clusteru a uzly restartujte.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Začněte používat Kubernetes](container-service-kubernetes-walkthrough.md) v clusteru služby kontejneru.
 

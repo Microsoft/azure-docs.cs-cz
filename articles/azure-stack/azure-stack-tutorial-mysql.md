@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: bee684409b2ef3fffeb9f175c2b469d3736b6484
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986443"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993846"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Kurz: Nabízí vysoce dostupné databáze MySQL
 
@@ -46,7 +46,7 @@ Před zahájením těchto kroků v tomto kurzu, ujistěte se, že [poskytovatele
 > Všechny tyto vyžadovaných pro vytvoření clusteru MySQL.
 
 - [MySQL s replikací](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). Toto je šablona Bitnami řešení, který se použije pro nasazení clusterů MySQL.
-- [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview). Debian 8 "Jessie" s zpětné jádra pro Microsoft Azure poskytnuté credativ. Debian GNU/Linux je jedním z nejoblíbenějších Linuxových distribucí.
+- [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian). Debian 8 "Jessie" s zpětné jádra pro Microsoft Azure poskytnuté credativ. Debian GNU/Linux je jedním z nejoblíbenějších Linuxových distribucí.
 - [Vlastní skript pro linux 2.0](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft.custom-script-linux?tab=Overview). Rozšíření vlastních skriptů je nástroj pro spuštění vašeho virtuálního počítače přizpůsobení úloh příspěvek virtuálního počítače zřizování. Když toto rozšíření se přidá do virtuálního počítače, ho můžete stáhnout skripty z úložiště Azure a spustit na virtuálním počítači. Vlastní rozšíření skriptů úlohy je také možné automatizovat pomocí rutin prostředí Azure PowerShell a rozhraní příkazového řádku Azure víc platforem (xPlat CLI).
 - Přístup k virtuálním počítačům pro Linuxové rozšíření 1.4.7. Rozšíření přístupu virtuálních počítačů umožňuje resetovat heslo, klíč SSH nebo konfigurace SSH, takže jste znovu získali přístup k vašemu virtuálnímu počítači. Můžete také přidat nového uživatele pomocí hesla nebo klíče SSH nebo odstranění uživatele pomocí tohoto rozšíření. Toto rozšíření cílí na virtuální počítače s Linuxem.
 

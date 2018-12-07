@@ -1,24 +1,27 @@
 ---
-title: Kurz Azure Container Service – Monitorování Kubernetes
+title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – monitorování Kubernetes
 description: Kurz Azure Container Service – Monitorování Kubernetes pomocí služby Log Analytics
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2e118715ea5ff31319f92c70b6dcd2b8045dd026
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6f95aa701228730682c0122dc1fd46d8a2537ce1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840822"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001619"
 ---
-# <a name="monitor-a-kubernetes-cluster-with-log-analytics"></a>Monitorování clusteru Kubernetes pomocí služby Log Analytics
+# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(NEPOUŽÍVANÉ) Monitorování clusteru Kubernetes pomocí Log Analytics
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [monitorování Azure pro kontejnery (Preview) – přehled](../../azure-monitor/insights/container-insights-overview.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Monitorování clusteru a kontejnerů Kubernetes je důležité, zejména pokud spravujete produkční cluster ve velkém měřítku a s několika aplikacemi.
 
@@ -143,7 +146,7 @@ Po spuštění agentů trvá službě Log Analytics ingestování a zpracování
 
 ## <a name="access-monitoring-data"></a>Přístup k datům monitorování
 
-Data monitorování kontejnerů můžete zobrazit a analyzovat pomocí [Řešení kontejnerů](../../log-analytics/log-analytics-containers.md) na portálu Log Analytics nebo webu Azure Portal.
+Data monitorování kontejnerů můžete zobrazit a analyzovat pomocí [Řešení kontejnerů](../../azure-monitor/insights/containers.md) na portálu Log Analytics nebo webu Azure Portal.
 
 Pokud chcete řešení kontejnerů nainstalovat s použitím [portálu Log Analytics](https://mms.microsoft.com), přejděte do **Galerie řešení**. Pak přidejte **Řešení kontejnerů**. Případně můžete řešení kontejnerů přidat z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
 

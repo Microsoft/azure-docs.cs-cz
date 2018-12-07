@@ -4,14 +4,16 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: c5200e7e4d5550f26343fab1561c214ee19d6741
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.openlocfilehash: b385c3e3e5f39e812545143df4a3adcc08ebfce5
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571986"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53002207"
 ---
-# <a name="container-service-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure Container Service
+# <a name="deprecated-container-service-frequently-asked-questions"></a>(NEPOUŽÍVANÉ) Container Service – nejčastější dotazy
+
+[!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
 ## <a name="orchestrators"></a>Orchestrátory
 
@@ -115,7 +117,7 @@ Ve Windows existuje několik známých problémů s DNS, které se postupně st�
 | Přístup k virtuální IP adrese služby nefunguje. | Nakonfigurujte kontroler [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) tak, aby vždy udržoval spuštěný jeden normální (neprivilegovaný) pod. |
 |Když se uzel, na kterém je kontejner spuštěný, stane nedostupným, dotazy DNS můžou selhat a vytvářet negativní položky mezipaměti. | Uvnitř ovlivněných kontejnerů spusťte následující: <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> Pokud se tím problém nevyřeší, zkuste zakázat ukládání do mezipaměti DNS úplně: <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Další informace](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) o službě Azure Container Service.
 * Nasazení clusteru služby kontejneru pomocí [portálu](../articles/container-service/dcos-swarm/container-service-deployment.md) nebo [Azure CLI](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)

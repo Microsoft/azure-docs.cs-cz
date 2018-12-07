@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 13894bc6601b6e371d4d907651c00de6aecfe825
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 5614832863fa801f931fc5cf08ca7ebf7c317488
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724753"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997668"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights je rozšiřitelná služba pro správu výkonu aplikací (APM). Je určena webovým vývojářům na více platformách. Slouží k monitorování živé webové aplikace. Automaticky zjišťuje anomálie ve výkonu. Obsahuje výkonné analytické nástroje pro diagnostiku problémů a pomáhá porozumět, jak vlastně uživatelé vaši aplikaci používají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje u aplikací na široké škále platforem, jako jsou .NET, Node.js a J2EE, a to hostovaných lokálně i v cloudu. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -73,12 +73,12 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 | [**Visual Studio**](app-insights-visual-studio.md)<br/>Viz údaje o výkonu v kódu. Ke kódu je možné přejít z trasování zásobníku.|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
 | [**Ladicí program snímků**](app-insights-snapshot-debugger.md)<br/>Laďte vzorky snímků z operací za provozu s hodnotami parametrů.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](app-insights-export-power-bi.md)<br/>Integrujte metriky využití s ostatními funkcemi business intelligence.| ![Power BI](./media/app-insights-overview/power-bi.png)|
-| [**REST API**](https://dev.applicationinsights.io/)<br/>Napište kód pro spouštění dotazů nad daty metrik a nezpracovanými daty.| ![REST API](./media/app-insights-overview/rest-tn.png) |
+| [**REST API**](https://dev.applicationinsights.io/)<br/>Napište kód pro spouštění dotazů nad daty metrik a nezpracovanými daty.| ![Rest API](./media/app-insights-overview/rest-tn.png) |
 | [**Průběžný export**](app-insights-export-telemetry.md)<br/>Nezpracovaná data se dají hromadně exportovat do úložiště, jakmile dorazí. |![Export](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Jak se Application Insights dá využít?
 
-### <a name="monitor"></a>Monitorování
+### <a name="monitor"></a>Sledovat
 Nainstalujte Application Insights ve vaší aplikaci, nastavte [webové testy dostupnosti](app-insights-monitor-web-app-availability.md) a:
 
 * Vytvořte [řídicí panel](app-insights-dashboards.md) pro vaši týmovou místnost a sledujte zatížení, rychlost odezvy a výkon vašich závislostí, načtení stránek a volání AJAX.
@@ -100,7 +100,7 @@ Když dostanete výstrahu nebo zjistíte problém:
 * Další vývojový cyklus založte na faktických důkazech z vaší telemetrie.
 
 ## <a name="get-started"></a>Začínáme
-Application Insights je jedna z mnoha služeb hostovaných v Microsoft Azure. Odesílá se do ní telemetrie pro účely analýzy a prezentace. Proto ještě než se pustíte do práce, budete potřebovat předplatné [Microsoft Azure](http://azure.com). Registrace je zdarma. Pokud zvolíte základní [cenový plán](https://azure.microsoft.com/pricing/details/application-insights/) služby Application Insights, nebudou se vám účtovat žádné poplatky, dokud se vaše aplikace nezačne významněji využívat. Pokud vaše organizace už předplatné má, je možné do něj přidat účet Microsoft.
+Application Insights je jedna z mnoha služeb hostovaných v Microsoft Azure. Odesílá se do ní telemetrie pro účely analýzy a prezentace. Proto ještě než se pustíte do práce, budete potřebovat předplatné [Microsoft Azure](https://azure.com). Registrace je zdarma. Pokud zvolíte základní [cenový plán](https://azure.microsoft.com/pricing/details/application-insights/) služby Application Insights, nebudou se vám účtovat žádné poplatky, dokud se vaše aplikace nezačne významněji využívat. Pokud vaše organizace už předplatné má, je možné do něj přidat účet Microsoft.
 
 Existuje několik způsobů, jak začít. Použijte ten, který vám nejvíce vyhovuje. K ostatním se můžete vrátit později.
 
@@ -134,13 +134,13 @@ Začínáme při vývoji:
 * Otázky a problémy:
   * [Řešení potíží][qna]
   * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
-  * [StackOverflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+  * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Vaše návrhy:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * Blog:
   * [Blog Application Insights](https://azure.microsoft.com/blog/tag/application-insights)
 
-## <a name="videos"></a>Videa
+## <a name="videos"></a>Video
 
 [![Animovaný úvod](./media/app-insights-overview/video-front-1.png)](https://www.youtube.com/watch?v=fX2NtGrh-Y0)
 
@@ -158,6 +158,6 @@ Začínáme při vývoji:
 [java]: app-insights-java-get-started.md
 [knowUsers]: app-insights-web-track-usage.md
 [platforms]: app-insights-platforms.md
-[portal]: http://portal.azure.com/
+[portal]: https://portal.azure.com/
 [qna]: app-insights-troubleshoot-faq.md
 [redfield]: app-insights-monitor-performance-live-website-now.md

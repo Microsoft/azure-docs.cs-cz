@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/31/2018
+ms.date: 12/05/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: benshy
-ms.openlocfilehash: 7b9c9a600d105d4b7fbbeb4f52ee42b5eb2bcaaa
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: a7212f64a550b3567affb1f6369ab5655dabafb1
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275866"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001656"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->

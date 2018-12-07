@@ -3,7 +3,7 @@ title: Ukázkový skript Azure CLI – Škálování clusteru ACS | Microsoft Do
 description: Ukázkový skript Azure CLI – Škálování clusteru ACS
 services: container-service
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: ''
 tags: acs, azure-container-service
@@ -15,15 +15,17 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: nepeters
-ms.openlocfilehash: 1e5ca9fb44ea3ad15206f36a16e61f2865d79f5f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.author: iainfou
+ms.openlocfilehash: 199a2f09df57878d6523cfed6873001f190e14f5
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427767"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52992240"
 ---
-# <a name="scale-an-azure-container-service-cluster"></a>Škálování clusteru Azure Container Service
+# <a name="deprecated-scale-an-azure-container-service-cluster"></a>(NEPOUŽÍVANÉ) Škálování clusteru Azure Container Service
+
+[!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 
 Tato ukázka škáluje Azure Container Service. 
 
@@ -53,7 +55,7 @@ Tento skript pomocí následujících příkazů vytvoří nasazení. Každá po
 |---|---|
 | [az acs scale](/cli/azure/acs#az-acs-scale) | Škáluje cluster ACS. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 

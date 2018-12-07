@@ -5,16 +5,17 @@ description: Zjistěte, jak získat Cognitive Services blíž ke svým datům ko
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: c71d7de2ac036fe47253be08bb0b1e01e9e76701
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 681120db66b1e8e79d3c16fe654939450b509a01
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957210"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011602"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -47,7 +48,7 @@ Kontejnery služby Azure Cognitive Services nabízejí následující sadu konte
 |[LUIS](LUIS/luis-container-howto.md) |**Služba LUIS** ([image](https://go.microsoft.com/fwlink/?linkid=2043204))|Načte trénovaného nebo publikované Language Understanding modelu, označované také jako aplikace LUIS, do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z koncových bodů rozhraní API kontejneru. Můžete shromažďovat protokoly dotazů z kontejneru a nahrání tyto zpět a [LUIS portál](https://www.luis.ai) zvyšte přesnost předpovědi aplikace.|
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |**Extrakce frází klíč** ([image](https://go.microsoft.com/fwlink/?linkid=2018757)) |Extrahuje klíčových frází pro identifikaci hlavních bodů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný),vrací rozhraní API hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál). |
 |[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|**Rozpoznávání jazyka** ([image](https://go.microsoft.com/fwlink/?linkid=2018759)) |Až 120 jazyků zjišťuje, jaké vstupní text je napsaný v jazyce a sestavy jeden jazyk kódu pro každý dokument podání žádosti. Kód jazyka spárovaný se skóre označuje sílu skóre. |
-|[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|**Analýza subjektivního hodnocení** ([image](https://go.microsoft.com/fwlink/?linkid=2018654)) |Analyzuje nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení. Modely analýzu jsou předem trénuje pomocí rozsáhlé tělo technologií text a přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. |
+|[Analýza textu](text-analytics/how-tos/text-analytics-how-to-install-containers.md)|**Analýza subjektivního hodnocení** ([image](https://go.microsoft.com/fwlink/?linkid=2018654)) |Analyzuje nezpracovaný text pro příčiny o pozitivní nebo negativní zabarvení. Toto rozhraní API vrátí pro každý dokument skóre mínění mezi 0 a 1, přičemž 1 je mez pro nejvíce kladné hodnocení. Modely analýzu jsou předem trénuje pomocí rozsáhlé tělo technologií text a přirozeného jazyka od Microsoftu. Pro [vybrané jazyky](./text-analytics/language-support.md) může rozhraní API analyzovat a stanovit skóre jakéhokoliv nezpracovaného textu, který zadáte, přičemž vrátí výsledky přímo do volající aplikace. |
 
 ## <a name="container-availability-in-azure-cognitive-services"></a>Dostupnost kontejneru ve službě Azure Cognitive Services
 
@@ -70,7 +71,7 @@ Základy Dockeru a kontejnerech základní informace o najdete v článku [přeh
 
 Jednotlivých kontejnerů může mít vlastní požadavky, včetně serveru a požadavky na přidělení paměti.
 
-## <a name="developer-samples"></a>Ukázky pro vývojáře
+## <a name="developer-samples"></a>Příklady pro vývojáře
 
 Ukázky pro vývojáře najdete na adrese naše [úložiště Github](https://github.com/Azure-Samples/cognitive-services-containers-samples). 
 

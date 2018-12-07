@@ -1,5 +1,5 @@
 ---
-title: Sdílená složka pro cluster Azure DC/OS
+title: (NEPOUŽÍVANÉ) Sdílení souborů pro cluster Azure DC/OS
 description: Vytvoření sdílené složky a její připojení ke clusteru DC/OS ve službě Azure Container Service
 services: container-service
 author: julienstroheker
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 728f8ddbda35f27c0f89e1d72e98fd2d7669320e
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973492"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999866"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Vytvoření sdílené složky a její připojení ke clusteru DC/OS
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(NEPOUŽÍVANÉ) Vytvořit a připojit sdílenou složku na clusteru DC/OS
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 Tento kurz podrobně popisuje vytvoření sdílené složky v Azure a její připojení ke všem agentům a hlavnímu uzlu clusteru DC/OS. Nastavení sdílené složky usnadňuje sdílení souborů, jako jsou konfigurační a přístupové soubory, protokoly a další, v rámci clusteru. V tomto kurzu provedete následující úlohy:
 
@@ -27,7 +29,7 @@ Tento kurz podrobně popisuje vytvoření sdílené složky v Azure a její při
 
 K provedení kroků v tomto kurzu potřebujete cluster DC/OS ACS. V případě potřeby si ho můžete nechat vytvořit pomocí [tohoto ukázkového skriptu](./../kubernetes/scripts/container-service-cli-deploy-dcos.md).
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -140,7 +142,7 @@ sh ./getNodesRunScript.sh
 
 Sdílená složka je teď na každém uzlu clusteru dostupná na adrese `/mnt/share/dcosshare`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu se pomocí následujících kroků zpřístupnila sdílená složka Azure pro cluster DC/OS:
 

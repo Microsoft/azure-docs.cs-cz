@@ -1,5 +1,5 @@
 ---
-title: Seznámení se službou Azure Container Service pro Kubernetes
+title: (NEPOUŽÍVANÉ) Úvod do služby Azure Container Service pro Kubernetes
 description: Azure Container Service pro Kubernetes zjednodušuje nasazování a správu aplikací založených na kontejnerech v Azure.
 services: container-service
 author: gabrtv
@@ -9,16 +9,19 @@ ms.topic: overview
 ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 3e019f02d13ade6a42f4739eacae55f5bf6ac2af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: e00ac57cc36b3331cfb847ecedc6c75132cdeb6b
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973588"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999178"
 ---
-# <a name="introduction-to-azure-container-service-for-kubernetes"></a>Seznámení se službou Azure Container Service pro Kubernetes
+# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>(NEPOUŽÍVANÉ) Úvod do služby Azure Container Service pro Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Pro aktualizovanou verzi, tento článek, který používá Azure Kubernetes Service, najdete v článku [přehled Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Azure Container Service pro Kubernetes zjednodušuje vytvoření, konfiguraci a správu clusteru virtuálních počítačů, ve kterých je předem nakonfigurované spouštění kontejnerizovaných aplikací. Díky tomu můžete při nasazování a správě kontejnerových aplikací v Microsoft Azure využívat své stávající dovednosti nebo stavět na rozsáhlých a stále se rozšiřujících odborných znalostech komunity.
 
@@ -45,7 +48,7 @@ Diagram architektury systému Kubernetes nasazeného prostřednictvím služby A
 
 ![Služba Azure Container Service nakonfigurovaná pro používání Kubernetes.](media/acs-intro/kubernetes.png)
 
-## <a name="videos"></a>Videa
+## <a name="videos"></a>Video
 
 Podpora pro Kubernetes ve službě Azure Container Service (Azure Friday, leden 2017):
 
@@ -59,6 +62,6 @@ Nástroje pro vývoj a nasazování aplikací v Kubernetes (Azure OpenDev, červ
 >
 >
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Přečtěte si [Rychlý start s Kubernetes](container-service-kubernetes-walkthrough.md) a začněte prozkoumávat službu Azure Container Service ještě dnes.

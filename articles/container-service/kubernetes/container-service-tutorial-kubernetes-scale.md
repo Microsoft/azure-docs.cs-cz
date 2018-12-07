@@ -1,5 +1,5 @@
 ---
-title: Kurz Azure Container Service – Škálování aplikace
+title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – škálování aplikace
 description: Kurz Azure Container Service – Škálování aplikace
 services: container-service
 author: dlepow
@@ -9,16 +9,19 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 792d9b1409b9571474f47da4940724df7a764d82
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: b16682535e7311648e832286e1e876ee0e694712
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429878"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993077"
 ---
-# <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Škálování podů a infrastruktury Kubernetes
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(NEPOUŽÍVANÉ) Škálování podů a infrastruktury Kubernetes
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurz: škálování aplikací ve službě Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Pokud jste postupovali podle kurzů, máte funkční cluster Kubernetes ve službě Azure Container Service a nasadili jste aplikaci Azure Vote. 
 
@@ -140,7 +143,7 @@ Výstup tohoto příkazu ukazuje počet uzlů agentů v hodnotě `agentPoolProfi
 
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste v clusteru Kubernetes využili různé funkce škálování. Mezi probírané úlohy patří:
 

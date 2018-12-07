@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/05/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: benshy
-ms.openlocfilehash: 25fa099bcd6fa3843deadb3dc39d4250624ead06
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 37a2515aee2609f0119475a0865fc62b61b113cc
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274581"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53001750"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Kurz: Odhad budoucí útraty
 

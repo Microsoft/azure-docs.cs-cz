@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 12/05/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: benshy
-ms.openlocfilehash: 7d89446869815e5fb33ed0f95739054552268fae
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 531b69540466f8ab53b4db08983e613a784c3392
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274751"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52991731"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrace do partnerského programu CSP a zobrazení informací o nákladech
 
@@ -31,7 +31,7 @@ Další informace najdete v tématu [Připojení k rozhraní API partnerského c
 >
 >Nepřímým prodejcům CSP je možné Cloudyn zpřístupnit poté, co se jejich nepřímý poskytovatel CSP zaregistruje u Cloudyn. Nepřímí prodejci CSP pak můžou poskytovat přístup do Cloudyn předplatným a zákazníkům Azure.
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlásit se k Azure
 
 - Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 

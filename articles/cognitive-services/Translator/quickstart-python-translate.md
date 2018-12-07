@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 10/17/2018
 ms.author: erhopf
-ms.openlocfilehash: 3ba8064a6d13cfe9d2a2ae2ac496cfa8302989cd
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: HT
+ms.openlocfilehash: db2328d09f9e06ccabdc2408327a342fe94fefe0
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085973"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999583"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Rychlý start: Překlad řetězce pomocí služby Translator Text API a Pythonu
 
@@ -154,14 +154,14 @@ Pokud chcete porovnat svůj kód s naším, kompletní ukázka je k dispozici na
 
 Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapomeňte po dokončení tohoto rychlého startu tento klíč předplatného odebrat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte příklady Pythonu na GitHubu](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
-Kromě překladu textu můžete pomocí služby Translator Text API provádět také následující úlohy:
+Další informace o použití rozhraní Translator Text API na:
 
 * [Transliterace textu](quickstart-python-transliterate.md)
 * [Identifikace jazyka podle vstupu](quickstart-python-detect.md)

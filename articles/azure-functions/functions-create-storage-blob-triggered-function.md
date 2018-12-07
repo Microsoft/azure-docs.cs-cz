@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f71db50678ad0f1b37e30a4120b90d47d9090942
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: HT
+ms.openlocfilehash: fcc5052d73d921a8181ad068453111e5ead4361a
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113848"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52999877"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Vytvoření funkce aktivované službou Azure Blob Storage
 
@@ -27,7 +27,7 @@ Dozvíte se, jak vytvořit funkci, která se aktivuje při odesílání souborů
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Stáhnout a nainstalovat [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
++ Stáhnout a nainstalovat [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 + Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-an-azure-function-app"></a>Vytvoření aplikace Azure Function App
@@ -76,7 +76,7 @@ Teď se připojíte ke svému účtu služby Azure Storage a vytvoříte kontejn
 
     ![Získejte přihlašovací údaje účtu úložiště.](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
 
-1. Spusťte nástroj [Microsoft Azure Storage Explorer](http://storageexplorer.com/), vlevo klikněte na ikonu připojení, zvolte **Use a storage account name and key** (Použít název a klíč účtu úložiště) a klikněte na **Next** (Další).
+1. Spusťte nástroj [Microsoft Azure Storage Explorer](https://storageexplorer.com/), vlevo klikněte na ikonu připojení, zvolte **Use a storage account name and key** (Použít název a klíč účtu úložiště) a klikněte na **Next** (Další).
 
     ![Spusťte nástroj Průzkumník účtu úložiště.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
 
@@ -111,7 +111,7 @@ Teď když máte kontejner objektů blob a můžete funkci otestovat tím, že d
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvořili jste funkci, která se spustí při přidání nebo aktualizaci objektu blob ve službě Blob Storage. 
 

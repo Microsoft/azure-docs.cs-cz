@@ -1,24 +1,27 @@
 ---
-title: Kurz Azure Container Service – Nasazení clusteru
+title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – nasazení clusteru
 description: Kurz Azure Container Service – Nasazení clusteru
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8403e5d8dd3bad07e412b08709dcb8c28201bcdf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: d77396cdcaa3f2f291aff52dfd1e6793aee4039c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434420"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52997844"
 ---
-# <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Nasazení clusteru Kubernetes ve službě Azure Container Service
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Kubernetes ve službě Azure Container Service
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aktualizovaná verze tohoto kurzu, který používá Azure Kubernetes Service, najdete v článku [kurz: nasazení clusteru Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-cluster.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. Se službou Azure Container Service je zřízení clusteru Kubernetes připraveného pro produkční prostředí snadné a rychlé. V tomto kurzu, který je třetí částí sedmidílné série, se nasadí cluster Kubernetes ve službě Azure Container Service. Mezi dokončené kroky patří:
 
@@ -87,7 +90,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 
 Po dokončení tohoto kurzu máte cluster ACS Kubernetes připravený pro úlohy. V následujících kurzech se do tohoto clusteru nasadí vícekontejnerová aplikace, horizontálně se navýší její kapacita, aktualizuje se a sleduje.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu se nasadil cluster Kubernetes ve službě Azure Container Service. Dokončili jste následující kroky:
 

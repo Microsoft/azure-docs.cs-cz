@@ -1,28 +1,29 @@
 ---
-title: 'Kurz: Nasazení modelu klasifikace obrázků v Azure Container Instance (ACI) pomocí služby Azure Machine Learning'
+title: 'Kurz klasifikace obrázků: nasazujte modely pomocí služby Azure Machine Learning'
 description: Tento kurz ukazuje, jak pomocí služby Azure Machine Learning nasadit model klasifikace obrázků s využitím scikit-learn v poznámkovém bloku Python Jupyter.  Tento kurz je druhou částí z dvoudílné série.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: tutorial
+ms.custom: seodec12
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 841448f477accb8a73d543447cd317bb9b427408
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6e56fe88eec70af313d0b0dd8cf0aaf27b054121
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52497604"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53011534"
 ---
-# <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Kurz 2: Nasazení modelu klasifikace obrázků v Azure Container Instance (ACI)
+# <a name="tutorial-part-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Kurz (část 2): nasazení modelu klasifikace image v Azure Container Instance (ACI)
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V [předchozím kurzu](tutorial-train-models-with-aml.md) jste trénovali modely strojového učení a pak jste zaregistrovali model ve vašem pracovním prostoru v cloudu.  
 
 Teď jste připravení k tomu, abyste tento model nasadili jako webovou službu v [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) (ACI). Webová služba je image, v tomto případě image Dockeru, která obsahuje logiku hodnocení a samotný model. 
 
-V této části kurzu provedete pomocí služby Azure Machine Learning (Preview) následující úlohy:
+V této části kurzu provedete pomocí služby Azure Machine Learning následující úlohy:
 
 > [!div class="checklist"]
 > * Nastavení vašeho testovacího prostředí
@@ -35,10 +36,12 @@ Služba ACI není pro produkční nasazení ideální, ale hodí se pro účely 
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://aka.ms/aml-notebook-tut-02). Spusťte poznámkový blok `02.deploy-models.ipynb` ve službě Azure Notebooks nebo na vlastním serveru poznámkového bloku Jupyter.
+V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb). Spusťte poznámkový blok `tutorials/img-classification-part2-deploy.ipynb` ve službě Azure Notebooks nebo na vlastním serveru poznámkového bloku Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
+>[!NOTE]
+> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 1.0.2
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -1,5 +1,5 @@
 ---
-title: Kurz Azure Container Service – Správa DC/OS
+title: (NEPOUŽÍVANÉ) Kurz Azure Container Service – Správa DC/OS
 description: Kurz Azure Container Service – Správa DC/OS
 services: container-service
 author: iainfoulds
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8f4b1c1c66243c06d46ef3fddec8ea495163fa07
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: fe943ae5ac7894cdd8d8e104615cea670513b7eb
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999609"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000421"
 ---
-# <a name="azure-container-service-tutorial---manage-dcos"></a>Kurz Azure Container Service – Správa DC/OS
+# <a name="deprecated-azure-container-service-tutorial---manage-dcos"></a>(NEPOUŽÍVANÉ) Kurz Azure Container Service – Správa DC/OS
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 DC/OS poskytuje distribuovanou platformu pro spouštění moderních a kontejnerizovaných aplikací. Se službou Azure Container Service je zřízení clusteru DC/OS připraveného pro produkční prostředí snadné a rychlé. Tento rychlý start podrobně popisuje základní kroky nezbytné k nasazení clusteru DC/OS a spuštění základní úlohy.
 
@@ -260,7 +262,7 @@ Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, cluster
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se seznámili se základními úlohami správy DC/OS, včetně následujících. 
 

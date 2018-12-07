@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.openlocfilehash: 9a8486a5022a58dd9d4b94ddbe71f3a4e66f18cf
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d4f69533a68e11b3e171963429b141cf0736472d
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969494"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53014629"
 ---
 # <a name="azure-time-series-insights-preview-tutorial"></a>Kurz služby Azure Time Series Insights (Preview)
 
@@ -36,11 +36,11 @@ Tato část popisuje, jak vytvořit prostředí Azure TSI (Preview) pomocí [web
 
    ![kurz: 1][1]
 
-1. Na stránce prostředí Time Series Insights, vyplňte požadované parametry a klikněte na **Další: Zdroj události**
+1. Na stránce prostředí Time Series Insights, vyplňte požadované parametry a klikněte na **Další: zdroj událostí**. Pro účely tohoto kurzu nastavte **ID řady času** jako `Id`. Další informace o **čas řady ID**, najdete v tématu [čas řady ID](./time-series-insights-update-how-to-id.md).
 
    ![kurz 2][2]
 
-1. Na **zdroj události** stránce, vyplňte požadované parametry a klikněte na **revize + vytvořit**.
+1. Na **zdroj události** stránce, vyplňte požadované parametry a klikněte na **revize + vytvořit**. Pro účely tohoto kurzu nastavte **časové razítko** vlastnost pole jako `Timestamp`.
 
    ![kurz 3][3]
 

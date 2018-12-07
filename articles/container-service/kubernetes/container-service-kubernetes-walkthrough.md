@@ -1,24 +1,27 @@
 ---
-title: Rychlý start – Azure Kubernetes cluster pro Linux
+title: (NEPOUŽÍVANÉ) Rychlý start – Azure Kubernetes cluster pro Linux
 description: Rychle se naučíte, jak pomocí rozhraní příkazového řádku Azure vytvářet cluster Kubernetes pro linuxové kontejnery ve službě Azure Container Service.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 2186bd8c28851552bdbd80a74ba7cefd9f7a82d7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 5c5320a541e189043fc27f5c4bcd29afd5d7c70f
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950348"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52994166"
 ---
-# <a name="deploy-kubernetes-cluster-for-linux-containers"></a>Nasazení clusteru Kubernetes pro linuxové kontejnery
+# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(NEPOUŽÍVANÉ) Nasazení clusteru Kubernetes pro kontejnery Linuxu
 
-[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+> [!TIP]
+> Aktualizovaná verze v tomto rychlém startu, která používá Azure Kubernetes Service, najdete v článku [rychlý start: nasazení clusteru Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough.md).
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 V tomto rychlém startu se nasadí cluster Kubernetes pomocí Azure CLI. Následně se na tomto clusteru nasadí a spustí vícekontejnerová aplikace skládající se z webu front-end a instance Redis. Po dokončení bude aplikace přístupná přes internet. 
 
@@ -34,7 +37,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. 
 
@@ -202,7 +205,7 @@ Teď můžete přejít na externí IP adresu a zobrazit aplikaci Azure Vote.
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)  
 
-## <a name="delete-cluster"></a>Odstranění clusteru
+## <a name="delete-cluster"></a>Odstranit cluster
 Pokud už cluster nepotřebujete, můžete k odebrání skupiny prostředků, služby kontejneru a všech souvisejících prostředků použít příkaz [az group delete](/cli/azure/group#az-group-delete).
 
 ```azurecli-interactive 
@@ -215,7 +218,7 @@ V tomto rychlém startu se k vytvoření nasazení Kubernetes použily předem v
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste nasadili cluster Kubernetes a do něj jste nasadili vícekontejnerovou aplikaci. 
 

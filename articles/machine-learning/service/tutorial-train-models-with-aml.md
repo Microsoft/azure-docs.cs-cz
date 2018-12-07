@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning'
+title: 'Kurz klasifikace obrázků: trénování modelů pomocí služby Azure Machine Learning'
 description: Tento kurz ukazuje, jak pomocí služby Azure Machine Learning trénovat model klasifikace obrázků s využitím knihovny scikit-learn v poznámkovém bloku Python Jupyter. Tento kurz je první částí z dvoudílné série.
 services: machine-learning
 ms.service: machine-learning
@@ -8,19 +8,20 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 11/21/2018
-ms.openlocfilehash: 53de4715a458c5713a31541da64a4a671bf8c132
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/04/2018
+ms.custom: seodec12
+ms.openlocfilehash: 14ecc492ba7ce4b97af147e79c0a4e3f9a7aaba0
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496227"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017667"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz 1: Trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
+# <a name="tutorial-part-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz (část 1): trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 
-V tomto kurzu budete trénovat model strojového učení místně i pomocí vzdálených výpočetních prostředků. Budete používat pracovní postup pro trénování a nasazení pro službu Azure Machine Learning (Preview) v poznámkovém bloku Python Jupyter.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
+V tomto kurzu budete trénovat model strojového učení místně i pomocí vzdálených výpočetních prostředků. Školení a pracovní postup nasazení budete používat pro službu Azure Machine Learning v poznámkovém bloku Jupyter pro Python.  Poznámkový blok poté můžete použít jako šablonu k trénování vlastního modelu strojového učení s vlastními daty. Tento kurz je **první částí z dvoudílné série kurzů**.  
 
-Tento kurz je zaměřený na trénování jednoduché logistické regrese pomocí datové sady [MNIST](http://yann.lecun.com/exdb/mnist/) a knihovny [scikit-learn](http://scikit-learn.org) pomocí služby Azure Machine Learning.  MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každý obrázek je ručně psaná číslice o velikosti 28x28 pixelů představující číslo od 0 do 9. Cílem je vytvoření klasifikátoru s více třídami pro identifikaci číslice, kterou představuje daný obrázek. 
+Tento kurz je zaměřený na trénování jednoduché logistické regrese pomocí datové sady [MNIST](https://yann.lecun.com/exdb/mnist/) a knihovny [scikit-learn](https://scikit-learn.org) pomocí služby Azure Machine Learning.  MNIST je oblíbená datová sada obsahující 70 000 obrázků ve stupních šedi. Každý obrázek je ručně psaná číslice o velikosti 28x28 pixelů představující číslo od 0 do 9. Cílem je vytvoření klasifikátoru s více třídami pro identifikaci číslice, kterou představuje daný obrázek. 
 
 Naučte se:
 
@@ -36,16 +37,14 @@ Postup pro výběr modelu a jeho nasazení se dozvíte v [druhé části tohoto 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
 
 >[!NOTE]
-> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 0.1.79
+> V tomto článku kódu byl testován s Azure Machine Learning SDK verze 1.0.2
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 
-V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://aka.ms/aml-notebook-tut-01). Spusťte poznámkový blok `01.train-models.ipynb` ve službě Azure Notebooks nebo na vlastním serveru poznámkového bloku Jupyter.
+V zájmu usnadnění práce je tento kurz dostupný jako [poznámkový blok Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part1-training.ipynb). Spusťte poznámkový blok `tutorials/img-classification-part1-training.ipynb` ve službě Azure Notebooks nebo na vlastním serveru poznámkového bloku Jupyter.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
->[!NOTE]
-> V tomto kurzu byl testován s využitím Azure Machine Learning SDK verze 0.1.74 
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 
@@ -94,11 +93,11 @@ from azureml.core import Experiment
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-remote-compute-target"></a>Vytvoření cílového výpočetního prostředí
+### <a name="create-or-attach-existing-amlcompute"></a>Vytvořit nebo připojit existující AMlCompute
 
-Azure ML spravované Compute je spravovaná služba, která umožňuje datovým vědcům k trénování modelů strojového učení na clusterech virtuálních počítačů Azure, včetně virtuálních počítačů s podporou GPU.  V tomto kurzu vytvoříte clusteru služby spravované Azure Compute jako prostředí pro školení. Tento kód pro vás vytvoří cluster, pokud ještě ve vašem pracovním prostoru neexistuje. 
+Azure Machine Learning spravovat Compute(AmlCompute) je spravovaná služba, která umožňuje datovým vědcům k trénování modelů strojového učení na clusterech virtuálních počítačů Azure, včetně virtuálních počítačů s podporou GPU.  V tomto kurzu vytvoříte AmlCompute jako prostředí pro školení. Tento kód vytvoří výpočetní clustery pro vás, pokud již neexistuje ve vašem pracovním prostoru.
 
- **Vytvoření clusteru trvá přibližně 5 minut.** Pokud cluster v pracovním prostoru již existuje, tento kód ho použije a přeskočí proces vytváření.
+ **Vytváření výpočtů trvá přibližně 5 minut.** Pokud tak výpočetní prostředky se už v pracovním prostoru tento kód použije a přeskočí v procesu vytváření.
 
 
 ```python
@@ -107,12 +106,17 @@ from azureml.core.compute import ComputeTarget
 import os
 
 # choose a name for your cluster
-compute_name = os.environ.get("BATCHAI_CLUSTER_NAME", "cpucluster")
-compute_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 0)
-compute_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 4)
+from azureml.core.compute import AmlCompute
+from azureml.core.compute import ComputeTarget
+import os
+
+# choose a name for your cluster
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
+compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
+compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
 # This example uses CPU VM. For using GPU VM, set SKU to STANDARD_NC6
-vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_D2_V2")
+vm_size = os.environ.get("AML_COMPUTE_CLUSTER_SKU", "STANDARD_D2_V2")
 
 
 if compute_name in ws.compute_targets:
@@ -132,7 +136,7 @@ else:
     # if no min node count is provided it will use the scale settings for the cluster
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
     
-     # For a more detailed view of current BatchAI cluster status, use the 'status' property    
+     # For a more detailed view of current AmlCompute status, use the 'status' property    
     print(compute_target.status.serialize())
 ```
 
@@ -320,11 +324,10 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 Všimněte si, jak skript získává data a ukládá modely:
 
 + Trénovací skript načte argument pro nalezení adresáře, který obsahuje data.  Když později odešlete úlohu, bude odkázána na úložiště dat pro tento argument: `parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')`
-    
+
 + Trénovací skript uloží model do adresáře s názvem outputs. <br/>
 `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`<br/>
 Vše, co je v tomto adresáři zapsáno, se automaticky nahraje do vašeho pracovního prostoru. Později v tomto kurzu budete z tohoto adresáře přistupovat k vašemu modelu.
-
 Soubor `utils.py` je odkazován z trénovacího skriptu pro správné načtení datové sady.  Zkopírujte tento skript do složky skriptu, aby byl přístupný spolu s trénovacím skriptem na vzdáleném prostředku.
 
 
@@ -340,12 +343,12 @@ Objekt estimátoru se používá k odeslání spuštění.  Vytvořte objekt est
 
 * Název objektu estimátoru: `est`
 * Adresář, který obsahuje vaše skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění. 
-* Cílové výpočetní prostředí.  V tomto případě použijete cluster služby Batch AI, který jste vytvořili.
+* Cílové výpočetní prostředí.  V tomto případě budete používat Azure Machine Learning výpočetní cluster, který jste vytvořili
 * Název trénovacího skriptu: train.py
 * Parametry požadované z trénovacího skriptu. 
 * Balíčky Pythonu potřebné pro trénování.
 
-V tomto kurzu je cíl cluster služby Batch AI. Všechny soubory ve složce script nahrají do uzlů clusteru pro spuštění. Parametr data_folder je nastavený pro použití úložiště dat (`ds.as_mount()`).
+V tomto kurzu je tento cíl AmlCompute. Všechny soubory ve složce script nahrají do uzlů clusteru pro spuštění. Parametr data_folder je nastavený pro použití úložiště dat (`ds.as_mount()`).
 
 ```python
 from azureml.train.estimator import Estimator

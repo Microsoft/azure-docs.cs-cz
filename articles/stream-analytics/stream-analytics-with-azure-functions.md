@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: b4f234099cb39e524beb2d2e5a5d138355d5cb80
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50977990"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013696"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spouštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -35,34 +35,34 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="configure-a-stream-analytics-job-to-run-a-function"></a>Konfigurace úlohy Stream Analytics tak, aby spouštěla funkci 
 
-Tato část ukazuje, jak nakonfigurovat úlohu Stream Analytics tak, aby spouštěla funkci, která zapisuje data do Azure Redis Cache. Úloha Stream Analytics načítá události z Azure Event Hubs a spouští dotaz, který volá funkci. Tato funkce načítá data z úlohy Stream Analytics a zapisuje je do Azure Redis Cache.
+Tato část ukazuje, jak nakonfigurovat úlohu Stream Analytics ke spuštění funkce, která zapíše data do mezipaměti Azure Redis. Úloha Stream Analytics načítá události z Azure Event Hubs a spouští dotaz, který volá funkci. Tato funkce čte data z úlohy Stream Analytics a zapisuje je do mezipaměti Azure pro Redis.
 
 ![Diagram znázorňující vztahy mezi službami Azure](./media/stream-analytics-with-azure-functions/image1.png)
 
 K provedení této úlohy jsou nezbytné následující kroky:
 * [Vytvoření úlohy Stream Analytics, ve které jako vstup bude Event Hubs](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* [Vytvoření instance Azure Redis Cache](#create-an-azure-redis-cache-instance)  
-* [Vytvoření funkce v Azure Functions, která umožňuje zápis dat do Azure Redis Cache](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* [Vytvoření Azure Cache pro instanci Redis](#create-an-azure-redis-cache-instance)  
+* [Vytvoření funkce Azure Functions, která umožňuje zápis dat do mezipaměti Azure Redis](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
 * [Aktualizace úlohy Stream Analytics, ve které jako výstup bude daná funkce](#update-the-stream-analytics-job-with-the-function-as-output)  
-* [Kontrola výsledků v Azure Redis Cache](#check-azure-redis-cache-for-results)  
+* [Kontrola mezipaměti Azure Redis pro výsledky](#check-azure-redis-cache-for-results)  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Vytvoření úlohy Stream Analytics, ve které jako vstup bude Event Hubs
 
 Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase](stream-analytics-real-time-fraud-detection.md) vytvořte centrum událostí, spusťte aplikaci generátoru událostí a vytvořte úlohu Stream Analytics. (Přeskočte kroky pro vytvoření dotazu a výstupu. Místo toho nastavte výstup Functions pomocí následujících částí.)
 
-## <a name="create-an-azure-redis-cache-instance"></a>Vytvoření instance Azure Redis Cache
+## <a name="create-an-azure-cache-for-redis-instance"></a>Vytvoření Azure Cache pro instanci Redis
 
-1. Vytvořte mezipaměť v Azure Redis Cache postupem uvedeným v části [Vytvoření mezipaměti](../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).  
+1. Vytvoření mezipaměti ve službě Azure Cache pro Redis pomocí kroků popsaných v [vytvoření mezipaměti](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).  
 
 2. Po vytvoření mezipaměti v části **Nastavení** vyberte **Přístupové klíče**. Poznamenejte si **primární připojovací řetězec**.
 
-   ![Snímek obrazovky s připojovacím řetězcem pro Azure Redis Cache](./media/stream-analytics-with-azure-functions/image2.png)
+   ![Snímek obrazovky Azure mezipaměti Redis připojovací řetězec](./media/stream-analytics-with-azure-functions/image2.png)
 
-## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache"></a>Vytvoření funkce v Azure Functions, která umožňuje zápis dat do Azure Redis Cache
+## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Vytvoření funkce Azure Functions, která umožňuje zápis dat do mezipaměti Azure Redis
 
 1. Podívejte se v dokumentaci k Functions na část věnovanou [vytváření aplikací funkcí](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Provede vás postupem vytvoření aplikace funkcí a [funkce aktivované přes HTTP v Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function) pomocí jazyka CSharp.  
 
-2. Vyhledejte funkci **run.csx**. Aktualizujte ji následujícím kódem. (Nezapomeňte nahradit text „\<your redis cache connection string goes here\>“ primárním připojovacím řetězcem pro Azure Redis Cache, který jste získali v předchozí části.)  
+2. Vyhledejte funkci **run.csx**. Aktualizujte ji následujícím kódem. (Nezapomeňte nahradit "\<místo pro mezipaměť Azure Redis připojovací řetězec\>" s mezipamětí Azure Redis primární připojovací řetězec, který jste získali v předchozí části.)  
 
    ```csharp
    using System;
@@ -85,7 +85,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
       {        
          return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);
       }
-      var connection = ConnectionMultiplexer.Connect("<your redis cache connection string goes here>");
+      var connection = ConnectionMultiplexer.Connect("<your Azure Cache for Redis connection string goes here>");
       log.Info($"Connection string.. {connection}");
     
       // Connection refers to a property that returns a ConnectionMultiplexer
@@ -185,17 +185,17 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
     
 6.  Spusťte úlohu Stream Analytics.
 
-## <a name="check-azure-redis-cache-for-results"></a>Kontrola výsledků v Azure Redis Cache
+## <a name="check-azure-cache-for-redis-for-results"></a>Kontrola mezipaměti Azure Redis pro výsledky
 
-1. Přejděte na Azure Portal a vyhledejte Azure Redis Cache. Vyberte **Konzola**.  
+1. Přejděte na web Azure Portal a najděte Azure Cache pro Redis. Vyberte **Konzola**.  
 
-2. Pomocí [příkazů mezipaměti Redis](https://redis.io/commands) ověřte, že vaše data jsou v mezipaměti Redis. (Příkaz má formát Get {klíč}.) Příklad:
+2. Použití [mezipaměti Azure Redis příkazy](https://redis.io/commands) můžete ověřit, že vaše data v mezipaměti Azure Redis. (Příkaz má formát Get {klíč}.) Příklad:
 
    **Get "12/19/2017 21:32:24 - 123414732"**
 
    Tento příkaz by měl vytisknout hodnotu pro zadaný klíč:
 
-   ![Snímek obrazovky s výstupem Azure Redis Cache](./media/stream-analytics-with-azure-functions/image5.png)
+   ![Snímek obrazovky Azure mezipaměti Redis výstupu](./media/stream-analytics-with-azure-functions/image5.png)
    
 ## <a name="error-handling-and-retries"></a>Zpracování chyb a opakování
 V případě chyby při odesílání událostí do služby Azure Functions se Stream Analytics pokusí operaci znovu úspěšně dokončit. Existuje však několik chyb, u kterých se pokus o opakování neprovede. Jedná se o následující chyby:
@@ -215,7 +215,7 @@ Odstraňte skupinu prostředků, úlohu streamování a všechny související p
 1. V nabídce vlevo na portálu Azure Portal klikněte na **Skupiny prostředků** a pak klikněte na název vytvořeného prostředku.  
 2. Na stránce skupiny prostředků klikněte na **Odstranit**, do textového pole zadejte prostředek, který chcete odstranit, a pak klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili jednoduchou úlohu Stream Analytics, která spouští funkci Azure. Pokud chcete získat další informace o úlohách Stream Analytics, pokračujte dalším kurzem:
 

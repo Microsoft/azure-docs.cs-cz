@@ -1,5 +1,5 @@
 ---
-title: Použití služby ACR s clusterem Azure DC/OS
+title: (NEPOUŽÍVANÉ) Použití služby ACR s clusterem Azure DC/OS
 description: Použití služby Azure Container Registry s clusterem DC/OS ve službě Azure Container Service
 services: container-service
 author: julienstroheker
@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: 81b5bd18ea367b68adfc41ee97768b3b28967a42
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: a27f6c017d9d648414637f900e0cf7c4be147bfe
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986623"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52996331"
 ---
-# <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Použití služby ACR s clusterem DC/OS k nasazení aplikace
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(NEPOUŽÍVANÉ) Použití služby ACR s clusterem DC/OS k nasazení aplikace
+
+[!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 V tomto článku se podíváme na to, jak používat službu Azure Container Registry s clusterem DC/OS. ACR umožňuje privátní ukládání a správu imagí kontejneru. Tento kurz se zabývá následujícími úkony:
 
@@ -28,7 +30,7 @@ V tomto článku se podíváme na to, jak používat službu Azure Container Reg
 
 K provedení kroků v tomto kurzu potřebujete cluster DC/OS ACS. V případě potřeby si ho můžete nechat vytvořit pomocí [tohoto ukázkového skriptu](./../kubernetes/scripts/container-service-cli-deploy-dcos.md).
 
-Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
+Tento kurz vyžaduje Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete upgradovat, přečtěte si článek [Instalace Azure CLI]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -191,7 +193,7 @@ Nasaďte aplikaci pomocí rozhraní CLI DC/OS.
 dcos marathon app add acrDemo.json
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nakonfigurovali DC/OS pro použití služby Azure Container Registry a provedli následující kroky:
 

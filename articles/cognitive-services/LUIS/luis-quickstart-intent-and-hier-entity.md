@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: d3b8d0597f0732a4a3cfab79125a885b2d141c9f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 36751f533b59e0ff140f5ad03e7f1fc0fa9cad41
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424696"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53000569"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>Kurz 5: Extrakce dat souvisejících s kontextem
 V tomto kurzu vyhledáte související části dat na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné. Pro vygenerování pracovního zařazení se mohou vyžadovat obě části dat, které spolu vzájemně souvisí.  
@@ -55,7 +55,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `hier`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL. 
 
 ## <a name="remove-prebuilt-number-entity-from-app"></a>Odebrání předem připravené entity čísla z aplikace
-Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchické entity, odeberte dočasně předem připravenou entitu čísla.
+Pokud chcete zobrazit celý utterance a označit hierarchické podřízené objekty, [dočasnému odstranění předem připravených entit číslo](luis-prebuilt-entities.md#marking-entities-containing-a-prebuilt-entity-token). 
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 

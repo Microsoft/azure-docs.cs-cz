@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 96141ddeeb73c7483935d5da49b9341436c10c18
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
-ms.translationtype: HT
+ms.openlocfilehash: 0351ab3213ac75559cc025f2ef71e2f098a7504c
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49429685"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "52993189"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rychlý start: Konfigurace brány firewall serveru – portál
 
@@ -24,9 +24,9 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat firewall pro server slu�
 - Server služby Analysis Services v předplatném. Další informace najdete v článku [Rychlý start: Vytvoření serveru – portál](analysis-services-create-server.md) nebo v článku [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md).
 - Jeden nebo více rozsahů IP adres pro klientské počítače (pokud jsou potřeba).
 
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal 
+## <a name="sign-in-to-the-azure-portal"></a>Přihlásit se na Azure Portal 
 
-[Přihlášení k portálu](https://portal.azure.com)
+[Přihlaste se k portálu](https://portal.azure.com)
 
 ## <a name="configure-a-firewall"></a>Konfigurace brány firewall
 
@@ -42,7 +42,7 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat firewall pro server slu�
 
 Až nebudete nastavení potřebovat, odstraňte rozsahy IP adres nebo vypněte bránu firewall.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste se naučili konfigurovat serverovou bránu firewall. Teď, když máte server, který je zabezpečený branou firewall, na něj můžete z portálu přidat ukázkový základní datový model. Na ukázkovém modelu se naučíte konfigurovat databázové role modelu a testovat připojení klientů. Ve výuce pokračujte kurzem, ve kterém přidáte ukázkový model.
 
 > [!div class="nextstepaction"]

@@ -2,19 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: machine-learning
-author: j-martens
 ms.service: machine-learning
-ms.author: jmartens
-manager: cgronlund
 ms.custom: include file
 ms.topic: include
-ms.date: 07/27/2018
-ms.openlocfilehash: 300b4a3e5c6c52f1c09f8e70a72f08406861a5d1
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
-ms.translationtype: HT
+author: j-martens
+ms.author: jmartens
+ms.date: 12/04/2018
+ms.openlocfilehash: de24478a39b656c1326bc53825aab317e652d672
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400396"
+ms.lasthandoff: 12/06/2018
+ms.locfileid: "53007920"
 ---
 >[!IMPORTANT]
 >Prostředky, které jste vytvořili, je možné použít i ke splnění požadavků v dalších kurzech a článcích s návody pro službu Azure Machine Learning. 
@@ -31,5 +30,3 @@ Pokud už zde vytvořené prostředky nebudete chtít dál používat, odstraňt
 1. Vyberte **Odstranit skupinu prostředků**.
 
 1. Zadejte název skupiny prostředků a pak vyberte **Odstranit**.
-
-   Pokud se zobrazí chybová zpráva „Prostředek budete moct odstranit po odstranění vnořených prostředků,“ musíte nejprve odstranit všechny vnořené prostředky. Informace o tom, jak odstranit vnořené prostředky, najdete v [této části Řešení potíží](../articles/machine-learning/desktop-workbench/known-issues-and-troubleshooting-guide.md#cant-delete-experimentation-account). 

@@ -1,21 +1,22 @@
 ---
-title: Instalace a spouštění kontejnerů dockeru – Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
+title: Kontejnery Dockeru
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Kontejner LUIS načte trénovaného nebo publikované aplikace do kontejneru dockeru a poskytuje přístup k předpovědi dotazu z koncových bodů rozhraní API kontejneru.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 085273bbf16ba7cb3557763dd392a7a7207d30db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a6170d51e1a8756020b4f2caa733c388b2ce4060
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965577"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53013812"
 ---
 # <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
  
@@ -31,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Chcete-li spustit kontejner LUIS, musíte mít následující: 
 
-|Požaduje se|Účel|
+|Vyžadováno|Účel|
 |--|--|
 |Modul docker| K dokončení této verze preview, je potřeba na nainstalovaný modul Docker [hostitelský počítač](#the-host-computer). Docker nabízí balíčky, které nakonfigurují prostředí Dockeru na [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/), a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **Na Windows**, Docker musí být taky nakonfigurovaný pro podporu kontejnerů Linuxu.<br><br>|
 |Znalost Dockeru | Byste měli mít základní znalost konceptů Dockeru, jako je registrů, úložiště, kontejnery a Image kontejneru, jakož i znalost basic `docker` příkazy.| 
@@ -52,7 +53,7 @@ Tento kontejner podporuje minimální a doporučené hodnoty pro nastavení:
 |Nastavení| Minimální | Doporučené |
 |-----------|---------|-------------|
 |Jádra<BR>`--cpus`|1 jádro<BR>alespoň 2.6 gigahertz (GHz) nebo rychlejší|1 jádro|
-|Memory (Paměť)<BR>`--memory`|2 GB|4 GB|
+|Paměť<BR>`--memory`|2 GB|4 GB|
 |Transakce za sekundu<BR>(TPS)|20 TPS|40 TPS|
 
 `--cpus` a `--memory` nastavení jsou použita jako součást `docker run` příkazu.
@@ -110,7 +111,7 @@ Může obsahovat vstupní přípojného adresáře **produkční**, **pracovní*
 |--|--|--|--|
 |Školení|GET, Post|Pouze kontejner|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
 |Fázování|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_STAGING.gz`|
-|Výroba|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
+|Provozní|GET, Post|Azure a kontejnerů|`{APPLICATION_ID}_PRODUCTION.gz`|
 
 >**Důležité:** přejmenovat, změnit nebo dekomprimovat soubory balíčku LUIS.
 
@@ -118,7 +119,7 @@ Může obsahovat vstupní přípojného adresáře **produkční**, **pracovní*
 
 Než připravíte balíček aplikace LUIS, musíte mít následující:
 
-|Požadavky na balení|Podrobnosti|
+|Požadavky na balení|Detaily|
 |--|--|
 |Azure _Language Understanding_ instance prostředku|Podporované oblasti patří<br><br>USA – západ (```westus```)<br>Západní Evropa (```westeurope```)<br>Austrálie – východ (```australiaeast```)|
 |Trénované nebo publikované aplikace LUIS|Bez [nepodporované závislosti](#unsupported-dependencies). |
@@ -270,9 +271,9 @@ Konfigurovat parametry dotazu jak a co je vrácená v odpovědi na dotaz:
 |--|--|--|
 |`q`|řetězec|Utterance uživatele.|
 |`timezoneOffset`|číslo|TimezoneOffset umožňuje [změnit časové pásmo](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) používané datetimeV2 předem připravených entit.|
-|`verbose`|Boolean|Vrátí všechny příkazy a jejich výsledky, pokud je nastavena na hodnotu true. Výchozí hodnota je false, která vrací pouze hlavní záměr.|
-|`staging`|Boolean|Vrátí dotaz z pracovní prostředí výsledky, pokud je nastavena na hodnotu true. |
-|`log`|Boolean|Zaznamenává dotazy, které je možné použít později pro [aktivně učit](luis-how-to-review-endoint-utt.md). Výchozí hodnota je true.|
+|`verbose`|boolean|Vrátí všechny příkazy a jejich výsledky, pokud je nastavena na hodnotu true. Výchozí hodnota je false, která vrací pouze hlavní záměr.|
+|`staging`|boolean|Vrátí dotaz z pracovní prostředí výsledky, pokud je nastavena na hodnotu true. |
+|`log`|boolean|Zaznamenává dotazy, které je možné použít později pro [aktivně učit](luis-how-to-review-endoint-utt.md). Výchozí hodnota je true.|
 
 ### <a name="query-published-app"></a>Dotaz publikované aplikace
 
@@ -355,7 +356,7 @@ Další informace o těchto možnostech najdete v tématu [konfigurace kontejner
 
 Aplikace LUIS můžete použít, pokud ho **neobsahuje** některý z následujících podmínek:
 
-Konfigurace nepodporované aplikací.|Podrobnosti|
+Konfigurace nepodporované aplikací.|Detaily|
 |--|--|
 |Nepodporovaná kontejneru jazykových verzí| Němčina (de-DE)<br>Holandština (nl-NL)<br>Japonština (ja-JP)<br>|
 |Nepodporovaná domén|Předem připravených domén, včetně předem připravených domény záměry a entity|
@@ -365,7 +366,7 @@ Konfigurace nepodporované aplikací.|Podrobnosti|
 |Analýza mínění|Vnější závislosti nejsou podporovány v kontejneru.|
 |Pro kontrolu pravopisu Bingu|Vnější závislosti nejsou podporovány v kontejneru.|
 
-## <a name="summary"></a>Souhrn
+## <a name="summary"></a>Shrnutí
 
 V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů Language Understanding (LUIS). Souhrn:
 
