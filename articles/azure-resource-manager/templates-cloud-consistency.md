@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2018
 ms.author: mavane
-ms.openlocfilehash: f1ff151c0b8d89910949d961b732c10901f19293
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fc1ca468545dc3a715fb11dbec459e14e60ade5b
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38590531"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017769"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Vývoj šablon Azure Resource Manageru pro zajištění konzistence cloudu
 
@@ -434,7 +434,7 @@ Prostředky mohou mít odkazy na další služby na platformě. Veřejnou IP adr
 Následující dva příklady jsou běžné obory názvů koncový bod, který je potřeba explicitně zadat při vytváření prostředku:
 
 * Účty Storage (blob, queue, table a file)
-* Připojovací řetězce pro databáze a Redis Cache
+* Připojovací řetězce pro databáze a mezipaměti Azure Redis
 
 Koncový bod obory názvů lze také ve výstupu šablony jako informace pro uživatele po dokončení nasazení. Následují běžné příklady:
 

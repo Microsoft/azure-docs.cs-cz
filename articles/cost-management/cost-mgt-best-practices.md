@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/09/2018
+ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: ''
-ms.openlocfilehash: 0adc821f7a3d5b059d549509b7ed18cda95b86bc
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 99e42f404fe103f406c4b3835f8c455bc2b91e07
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273795"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017684"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat vaše cloudové investice ve službě Azure Cost Management
 
@@ -140,7 +140,7 @@ Další informace najdete v tématu [analýza nákladů](quick-acm-cost-analysis
 
 ### <a name="export-billing-data-on-a-schedule"></a>Export fakturačních dat podle plánu
 
-Je potřeba pro import vašich fakturačních dat do externího systému, jako je řídicí panel nebo finanční systému? Můžete naplánovat automatické sestavy, každý den, aby se zabránilo ručního stahování souborů každý měsíc. A můžete exportovat fakturačních dat do účtu služby Azure storage a dostanete oznámení pomocí [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md). Pak můžete použít Azure data zkombinovat s vlastními daty, které můžete použít ve vlastním systémům.
+Je potřeba pro import vašich fakturačních dat do externího systému, jako je řídicí panel nebo finanční systému? Nastavit automatizované exporty do služby Azure Storage a vyhněte se každý měsíc ručního stahování souborů. Můžete pak snadno nastavit automatické integrace s jinými systémy pro synchronizaci vašich fakturačních dat.
 
 Další informace o exportu fakturačních dat najdete v tématu [vytvořit a spravovat exportovaná data](tutorial-export-acm-data.md).
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 45a5e4c895a0c7a8f76bb34aa5aaf22fa31f4333
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 07ea61ffe3ffc17cd255b826e3506ffe2b1ce9cd
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864855"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017718"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Vyberte a použijte cílové výpočetní prostředí k natrénování modelu
 
@@ -139,7 +139,8 @@ Azure Machine Learning Compute podle potřeby můžete vytvořit při spuštěn�
 
 Azure Machine Learning Compute můžete vytvořit jako cílové výpočetní prostředí v době běhu. V tomto případě tak výpočetní prostředky se automaticky vytvoří pro spuštění, škálování až na max_nodes, který zadáte v konfiguraci spuštění a pak je __automaticky odstraní__ po dokončení spuštění.
 
-Tato funkce je aktuálně ve verzi Preview a nebude fungovat s úlohami Hyperparametrů nebo automatizované Machine Learning.
+> [!IMPORTANT]
+> Na základě spuštění vytvoření výpočetní prostředky Azure Machine Learning je aktuálně ve verzi Preview. Nepoužívejte tvorby založené na spuštění, pokud používáte Hyperparametrů nebo automatizované Machine Learning. Pokud je potřeba použít Hyperparametrů nebo automatizované Machine Learning, vytvořte tak výpočetní prostředky Azure Machine Learning před odesláním spuštění.
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -505,7 +506,7 @@ Postupujte podle výše uvedené kroky, chcete-li zobrazit seznam cílových vý
 
 1. Klikněte na tlačítko __+__ přihlášení k přidání cílového výpočetního prostředí.
 
-    ![Přidat compute ](./media/how-to-set-up-training-targets/add-compute-target.png)
+    ![Přidat Compute ](./media/how-to-set-up-training-targets/add-compute-target.png)
 
 1. Zadejte název cílové výpočetní prostředí
 1. Vyberte **Machine Learning Compute** jako typ výpočetních prostředků a použít pro __školení__

@@ -4,15 +4,15 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: wesmc
-ms.openlocfilehash: 1ddb81de479317a098f9de8aa5756cbaae59cb72
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 3252a6454bf3f70250d2d792ca1f36a819ab22bf
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330877"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53019412"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
-Cenová úroveň na nový Azure Redis Cache.
+Cenová úroveň nové Azure mezipaměti Azure Redis.
 
     "cacheSKUName": {
       "type": "string",
@@ -22,7 +22,7 @@ Cenová úroveň na nový Azure Redis Cache.
       ],
       "defaultValue": "Basic",
       "metadata": {
-        "description": "The pricing tier of the new Azure Redis Cache."
+        "description": "The pricing tier of the new Azure Azure Cache for Redis."
       }
     },
 
@@ -45,7 +45,7 @@ Standard poskytuje dva uzly primární/replika s více velikostí až do 53 GB a
 
 
 ### <a name="cacheskucapacity"></a>cacheSKUCapacity
-Velikost nové instance Azure Redis Cache. 
+Velikost novou mezipaměť Azure Azure pro Redis instance. 
 
     "cacheSKUCapacity": {
       "type": "int",
@@ -60,7 +60,7 @@ Velikost nové instance Azure Redis Cache.
       ],
       "defaultValue": 0,
       "metadata": {
-        "description": "The size of the new Azure Redis Cache instance. "
+        "description": "The size of the new Azure Azure Cache for Redis instance. "
       }
     }
 

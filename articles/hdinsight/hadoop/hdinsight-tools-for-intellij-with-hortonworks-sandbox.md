@@ -10,16 +10,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2f09bd7055b987a8647a24d4ebb6ea5a27888a53
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 56747179c69e6495e9a764f81e0827e29cb077e6
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51015583"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017402"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Použití nástrojů HDInsight pro IntelliJ s Hortonworks Sandbox
 
-Naučte se používat nástroje HDInsight pro IntelliJ k vývoji aplikací Apache Scala a potom otestujte aplikace na [Hortonworks Sandbox](http://hortonworks.com/products/sandbox/) spuštěné v počítači. 
+Naučte se používat nástroje HDInsight pro IntelliJ k vývoji aplikací Apache Scala a potom otestujte aplikace na [Hortonworks Sandbox](https://hortonworks.com/products/sandbox/) spuštěné v počítači. 
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) je Java integrované vývojové prostředí (IDE) pro vývoj softwaru pro počítače. Po vývoj a testování aplikací na Hortonworks Sandbox, můžete aplikace, které chcete přesunout [Azure HDInsight](apache-hadoop-introduction.md).
 
@@ -29,7 +29,7 @@ Před zahájením tohoto kurzu musíte mít tyto položky:
 
 - Hortonworks Data Platform (HDP) 2.4 na Hortonworks Sandbox běží na místním počítači. Pokud chcete nastavit HDP, přečtěte si [začít pracovat v ekosystému Hadoop s Hadoop sandbox na virtuálním počítači](apache-hadoop-emulator-get-started.md). 
     > [!NOTE]
-    > Nástroje HDInsight pro IntelliJ prošel testováním pouze s HDP 2.4. Chcete-li získat HDP 2.4, rozbalte **Hortonworks Sandbox archivu** na [Hortonworks Sandbox soubory ke stažení webu](http://hortonworks.com/downloads/#sandbox).
+    > Nástroje HDInsight pro IntelliJ prošel testováním pouze s HDP 2.4. Chcete-li získat HDP 2.4, rozbalte **Hortonworks Sandbox archivu** na [Hortonworks Sandbox soubory ke stažení webu](https://hortonworks.com/downloads/#sandbox).
 
 - [Java Developer Kit (JDK) verze 1.8 nebo vyšší](https://aka.ms/azure-jdks). Sada Azure Toolkit pro IntelliJ vyžaduje sadu JDK.
 

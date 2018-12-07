@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 35c401ed59f859e741c62aa801f6a0c75a8d9194
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 1c76e25c29d79213fbdf36d563b4bd316b832b06
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720486"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017027"
 ---
 # <a name="how-do-i--in-application-insights"></a>Jak mám udělat ... pomocí Application Insights?
 ## <a name="get-an-email-when-"></a>Získejte e-mailu při...
@@ -82,7 +82,7 @@ Některé body ke zvážení:
 
 ## <a name="separate-telemetry-from-different-versions"></a>Samostatné telemetrická data z různých verzí
 
-* Několik rolí v aplikaci: použít jeden prostředek Application Insights a vyfiltrujte cloud_Rolename. [Další informace](app-insights-monitor-multi-role-apps.md)
+* Několik rolí v aplikaci: použít jeden prostředek Application Insights a vyfiltrujte [cloud_Rolename](app-insights-app-map.md).
 * Oddělení vývoje, testování a vydání verze: použít různé prostředky Application Insights. Sbírání instrumentačních klíčů ze souboru web.config. [Další informace](app-insights-separate-resources.md)
 * Vytváření sestav sestavení verze: Přidání vlastnosti pomocí inicializátoru telemetrie. [Další informace](app-insights-separate-resources.md)
 

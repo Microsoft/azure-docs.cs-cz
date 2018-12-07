@@ -8,22 +8,23 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: 27d4ad03e4a7f911fe3c9981618337a2fff51317
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: dcd7b58e2c1f4d6e556515ad7db778f2989588b9
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114613"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017419"
 ---
-# <a name="how-to-train-pytorch-models"></a>Trénování modelů PyTorch
+# <a name="pytorch-models-with-azure-machine-learning-service"></a>Modely PyTorch pomocí služby Azure Machine Learning
 
 Pro výuku hluboké neuronové sítě (DNN) s využitím PyTorch, Azure Machine Learning nabízí vlastní `PyTorch` třídu `Estimator`. Azure SDK `PyTorch` estimator vám umožní snadno odesílat úlohy trénování PyTorch pro spuštění jedním uzlem a distribuované na výpočetní prostředky Azure.
 
 ## <a name="single-node-training"></a>Trénování jedním uzlem
 Školení s `PyTorch` odhad je podobný používání [základní `Estimator` ](how-to-train-ml-models.md), proto nejdřív přečíst článek s postupy a ujistěte se, že rozumíte konceptům uvedeným existuje.
   
-Ke spuštění úlohy PyTorch, vytvořit instanci `PyTorch` objektu. Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-up-training-targets.md#batch) objekt `compute_target` a [úložiště dat](how-to-access-data.md) objekt `ds`.
+Ke spuštění úlohy PyTorch, vytvořit instanci `PyTorch` objektu. Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-up-training-targets.md#amlcompute) objekt `compute_target` a [úložiště dat](how-to-access-data.md) objekt `ds`.
 
 ```Python
 from azureml.train.dnn import PyTorch
@@ -44,7 +45,7 @@ Parametr | Popis
 --|--
 `source_directory` |  Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní
 `script_params` |  Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > páry
-`compute_target` |  Vzdálené výpočetní prostředky, které cvičný skript se spustí, v tomto případě [služby Batch AI](how-to-set-up-training-targets.md#batch) clusteru
+`compute_target` |  Cílové vzdálené výpočetní prostředí, který cvičný skript se spustí, v tomto případě Azure Machine Learning Compute ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) clusteru
 `entry_script` |  Cesta k souboru (vzhledem k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a další soubory, na kterých závisí, se musí nacházet v této složce
 `conda_packages` |  Seznam balíčků Python nainstalovat přes conda vyžadované cvičný skript. Konstruktor má jiný parametr s názvem `pip_packages` , můžete použít pro všechny balíčky pip potřeby
 `use_gpu` |  Tento příznak nastavit `True` využití GPU pro vzdělávání. Výchozí hodnota je `False`
@@ -100,13 +101,9 @@ run = exp.submit(pt_est)
 ```
 
 ## <a name="examples"></a>Příklady
-Kurz týkající se školení PyTorch jedním uzlem naleznete v tématu:
-* [Training/01.Train-hyperparameter-Tune-Deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/01.train-hyperparameter-tune-deploy-with-pytorch)
 
-Kurz týkající se distribuované PyTorch s Horovod naleznete v tématu:
-* [školení/02.distributed-pytorch s horovod](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/02.distributed-pytorch-with-horovod)
-
-Získejte tyto poznámkové bloky:
+Poznámkové bloky v distribuované obsáhlého learningu naleznete v tématu:
+* [How-to-use-azureml/Training-with-Deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

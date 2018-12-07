@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 13bb128836590fb43e0c6a2f7131f83a99a23eaf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 871abffc07ee29df388205395110e89a85dd7344
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506679"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017650"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Kurz: Integrace Azure Active Directory se službou ProMaster (podle Inlogik)
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s ProMaster (podle Inlogik), potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - ProMaster (podle Inlogik) jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -62,7 +62,7 @@ Konfigurace integrace ProMaster (podle Inlogik) do služby Azure AD, musíte př
 
 **Chcete-li přidat ProMaster (podle Inlogik) z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -111,6 +111,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![ProMaster (podle Inlogik) domény a adresy URL jednotného přihlašování – informace](./media/promaster-tutorial/tutorial_promaster_url1.png)
 
     a. V **identifikátor** textové pole, použijte některou z následujících vzor adresy URL:
+
     | |
     | - |-|
     |  `https://secure.inlogik.com/<COMPANYNAME>`|
@@ -118,6 +119,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | |
 
     b. V **adresy URL odpovědi** textové pole, použijte některou z následujících vzor adresy URL:
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs`|
@@ -129,6 +131,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![ProMaster (podle Inlogik) domény a adresy URL jednotného přihlašování – informace](./media/promaster-tutorial/tutorial_promaster_url2.png)
 
     V **přihlašovací adresa URL** textové pole, použijte některou z následujících vzor adresy URL:
+
     | |
     | - |-|
     | `https://secure.inlogik.com/<COMPANYNAME>/saml/acs `|
@@ -182,7 +185,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="create-a-promaster-by-inlogik-test-user"></a>Vytvoření zkušebního uživatele ProMaster (podle Inlogik)
 
-V této části vytvoříte uživatele volány Britta Simon v ProMaster (Inlogik). Práce s [tým podpory ProMaster (podle Inlogik)](mailto:michael.boldiston@inlogik.com) přidat uživatele na platformě ProMaster (podle Inlogik). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele volány Britta Simon v ProMaster (Inlogik). Práce s [tým podpory ProMaster (podle Inlogik)](mailto:michael.boldiston@inlogik.com) přidat uživatele na platformě ProMaster (podle Inlogik). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -214,7 +217,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

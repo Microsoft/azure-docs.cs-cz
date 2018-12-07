@@ -5,25 +5,25 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/17/2017
+ms.date: 12/05/2018
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: d1cfaadd06d20a0f57d75cd43d00040c9e44c429
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ff487fef9400803de0dba78352a1d29c5a71e6d2
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966020"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017915"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Průzkumník metrik Azure monitoru
 
 Průzkumník metrik služby Azure Monitor je součástí portálu Microsoft Azure, která umožňuje vykreslení grafy, vizuálně korelace trendy a prošetřování provozní špičky a poklesy hodnot metrik. Průzkumník metrik je nezbytné výchozí bod pro zkoumání různých výkon a dostupnost problémy s vaší aplikací a infrastruktury hostované v Azure nebo monitorovat pomocí služby Azure Monitor. 
 
-## <a name="what-are-metrics-in-azure"></a>Co jsou metriky v Azure?
+## <a name="metrics-in-azure"></a>Metriky v Azure
 
 Metriky ve službě Microsoft Azure jsou řady měřené hodnoty a výčty, které jsou shromážděná a uložená v čase. Existují metriky standard (nebo "platformy") a vlastní metriky. Standardní metriky jsou které jste získali od platformě Azure jako takové. Standardní metriky odrážejí statistické údaje o stavu a využití vašich prostředků Azure. Vzhledem k tomu, vlastní metriky se odesílají do Azure ve svých aplikacích pomocí [API pro Application Insights pro vlastní události](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Vlastní metriky jsou uloženy v prostředky Application Insights spolu s dalšími metrikami konkrétní aplikace.
 
-## <a name="how-do-i-create-a-new-chart"></a>Jak vytvořit nový graf?
+## <a name="create-a-new-chart"></a>Vytvořit nový graf
 
 1. Otevřete na webu Azure portal
 2. Přejděte k novému **monitorování** kartu a potom vyberte **metriky**.
@@ -54,11 +54,11 @@ Metriky ve službě Microsoft Azure jsou řady měřené hodnoty a výčty, kter
    > [!NOTE]
    > Obvykle nechcete mít metriky s různými jednotkami měření (například "MS" a "kilobajtů") nebo se výrazně liší škálovací na jednom grafu. Místo toho zvažte použití více grafů. Klikněte na tlačítko přidat graf vytvořit několik grafů v Průzkumníku metrik.
 
-## <a name="how-do-i-apply-filters-to-the-charts"></a>Jak můžu použít filtry grafy?
+## <a name="apply-filters-to-charts"></a>Nastavte filtry pro grafy
 
 Nastavte filtry pro grafy, které ukazují metriky s dimenzemi. Pokud metrika "Počet transakcí" dimenzi, například by "Typ odpovědi", který označuje, zda odezvu transakce úspěšné nebo neúspěšné následného filtrování v této dimenzi vykreslení čára grafu pro pouze úspěšné (nebo jenom se nezdařilo) transakce. 
 
-### <a name="to-add-a-filter"></a>Chcete-li přidat filtr:
+### <a name="to-add-a-filter"></a>Přidání filtru
 
 1. Klikněte na ikonu Přidat filtr ![ikona filtru](./media/monitoring-metric-charts/icon002.png) nad grafem
 
@@ -76,11 +76,11 @@ Nastavte filtry pro grafy, které ukazují metriky s dimenzemi. Pokud metrika "P
 
 5. Kroky 1 až 4 aplikovat více filtrů stejného grafy můžete opakovat.
 
-## <a name="how-do-i-segment-a-chart"></a>Jak můžu graf segmentovat?
+## <a name="segment-a-chart"></a>Segment grafu
 
 Můžete rozdělit metriku dimenze k vizualizaci různých segmentů metriky porovnání proti sobě navzájem a identifikovat odlehlé segmenty dimenze. 
 
-### <a name="to-segment-a-chart"></a>Segmentu grafu:
+### <a name="to-segment-a-chart"></a>Segmentu grafu
 
 1. Klikněte na ikonu Přidat seskupení  ![metriky image](./media/monitoring-metric-charts/icon003.png) nad grafem.
  
@@ -100,7 +100,7 @@ Můžete rozdělit metriku dimenze k vizualizaci různých segmentů metriky por
    > [!NOTE]
    > Skrýt segmenty, které jsou relevantní pro váš scénář a usnadňují grafy pomocí filtrování a seskupování na stejné dimenzi.
 
-## <a name="how-do-i-lock-lower-and-upper-boundaries-of-the-chart-y-axis"></a>Jak se zamknout horní a dolní hranice grafu osy y?
+## <a name="lock-boundaries-of-chart-y-axis"></a>Zámek hranice osa y grafu
 
 Uzamčení rozsah osy y je důležitá, pokud graf znázorňuje menší kolísání vyšší hodnoty. 
 
@@ -110,12 +110,12 @@ Dalším příkladem je kolísání dostupné paměti, kde hodnota technicky nik
 
 Pokud chcete nastavit rozsah osy y, použijte "..." Graf nabídku a vyberte **upravit graf** pro přístup k rozšířené nastavení grafu. Upravte hodnoty v oddílu rozsah osy y, nebo použijte **automaticky** tlačítko Obnovit výchozí hodnoty.
 
-![metriky image](./media/monitoring-metric-charts/0013.png)
+![metriky image](./media/monitoring-metric-charts/0014-manually-set-granularity.png)
 
 > [!WARNING]
 > Uzamčení hranice osy y pro grafy, které sledují různé počty nebo sečte po určitou dobu (a tedy počet používaných, sum, minimální nebo maximální agregace) obvykle vyžaduje zadání pevné časové intervaly, spíše než spoléhání na automatické výchozí hodnoty. To je nezbytné, protože změny hodnot u grafů, když uživatel změně velikosti okna prohlížeče nebo bude z jedné obrazovky řešení je automaticky upravit časové intervaly. Výsledná změnit čas členitosti účinky vzhled grafu, zrušení platnosti aktuálního výběru rozsah osy y.
 
-## <a name="how-do-i-pin-charts-to-dashboards"></a>Jak se připnout graf na řídicí panely?
+## <a name="pin-charts-to-dashboards"></a>Grafy připnout na řídicí panely
 
 Po dokončení konfigurace grafy, můžete přidat řídicí panely, takže lze znovu zobrazit, pravděpodobně v kontextu jiných monitorování telemetrických dat, nebo sdílet se svým týmem. 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 55d4f53a23c92bb96934e84c0400bc182bc3d87e
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 80a32335b8b9b89bdc5bf53cbed994d78a6ca81e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976804"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017599"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -245,7 +245,7 @@ Služby, jako [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-h
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Vaše aplikace běžela na Azure pravděpodobně zahrnuje práci s více službami Azure, které použijte stejný životní cyklus a můžete představit jako logickou jednotku. Webové aplikace může například použít Web Apps, SQL Database, Storage, Azure Redis Cache a služby Azure Content Delivery Network. [Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md) vám umožňuje pracovat s prostředky v aplikaci jako se skupinou. Můžete nasadit, aktualizovat nebo odstranit všechny prostředky v rámci jediné koordinované operace.
+Vaše aplikace běžela na Azure pravděpodobně zahrnuje práci s více službami Azure, které použijte stejný životní cyklus a můžete představit jako logickou jednotku. Například může být webové aplikace pomocí Web Apps, SQL Database, Storage, Azure Cache pro Redis a služby Azure Content Delivery Network. [Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md) vám umožňuje pracovat s prostředky v aplikaci jako se skupinou. Můžete nasadit, aktualizovat nebo odstranit všechny prostředky v rámci jediné koordinované operace.
 
 Kromě logicky seskupování a správu souvisejících prostředků, Azure Resource Manageru obsahuje možnosti nasazení, které umožňují přizpůsobit nasazení a konfigurace související prostředky. Například pomocí Resource Manageru můžete nasadit a nakonfigurovat aplikaci, která se skládá z několika virtuálních počítačů, nástroj pro vyrovnávání zatížení a Azure SQL database jako jeden celek.
 

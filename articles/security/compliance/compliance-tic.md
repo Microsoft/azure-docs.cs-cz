@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388303"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017095"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Pokyny k důvěryhodné připojení k Internetu
 
@@ -157,7 +157,7 @@ Služby, které podporují nasazení vyhrazených instancích do virtuální sí
 |Azure Active Directory                | GA               |
 |Azure Batch                           | GA               |
 |App Service Environment               | GA               |
-|Azure Redis Cache                     | GA               |
+|Azure Cache for Redis                     | GA               |
 |Azure HDInsight                       | GA               |
 |Škálovací sada virtuálních počítačů             | GA               |
 |Azure Cloud Services                  | GA               |
@@ -263,7 +263,7 @@ Můžete snadno nakonfigurovat přístup pro Microsoft Azure, Office 365 a Dynam
 | Databáze | Azure Database for PostgreSQL | | | Ano |
 | Databáze | Azure SQL Data Warehouse | | | Ano |
 | Databáze | Azure Cosmos DB | | | Ano |
-| Databáze | Azure Redis Cache | | Ano | |
+| Databáze | Azure Cache for Redis | | Ano | |
 | Úložiště | Azure Blob Storage | Ano | | |
 | Úložiště | Soubory Azure | Ano | | |
 | Úložiště | Azure Queue storage | Ano | | |

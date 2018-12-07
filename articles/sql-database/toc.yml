@@ -125,8 +125,6 @@ items:
         href: sql-database-connectivity-architecture.md
       - name: Rozdíly v jazyce T-SQL
         href: sql-database-transact-sql-information.md
-      - name: Replikace transakcí – jednoúčelové databáze a elastické fondy
-        href: replication-to-sql-database.md
     - name: Elastické fondy
       items:
       - name: Elastické fondy
@@ -171,8 +169,6 @@ items:
         href: sql-database-managed-instance-connect-app.md
     - name: Rozdíly v jazyce T-SQL
       href: sql-database-managed-instance-transact-sql-information.md
-    - name: Transakční replikace
-      href: replication-with-sql-database-managed-instance.md
   - name: Platforma jako služba
     items:
     - name: Platforma jako služba
@@ -231,10 +227,8 @@ items:
         href: sql-database-data-discovery-and-classification.md
       - name: Posouzení ohrožení zabezpečení
         href: sql-vulnerability-assessment.md
-      - name: Detekce hrozeb – SQL Database
-        href: sql-database-threat-detection.md
-      - name: Detekce hrozeb – MI
-        href: sql-database-managed-instance-threat-detection.md
+      - name: Detekce hrozeb
+        href: sql-database-threat-detection-overview.md
     - name: Pravidla brány firewall
       items:
       - name: Vytvoření a správa
@@ -473,16 +467,30 @@ items:
       href: sql-database-in-memory-oltp-migration.md
 - name: Návody
   items:
-  - name: Migrace do služby SQL Database
+  - name: Izolovaná databáze
     items:
     - name: Migrace do služby SQL Database
       href: sql-database-cloud-migrate.md
+    - name: Správa SQL Database po migraci
+      href: sql-database-manage-after-migration.md
+    - name: Konfigurace transakční replikace
+      href: replication-to-sql-database.md
+    - name: Konfigurace zjišťování hrozeb
+      href: sql-database-threat-detection.md
+    - name: Správa prostoru souborů
+      href: sql-database-file-space-management.md
+    - name: Použití funkce Resource Health pro potíže s připojením
+      href: sql-database-resource-health.md
+  - name: MI
+    items:
     - name: Migrace do MI
       href: sql-database-managed-instance-migrate.md
     - name: Migrace certifikace TDE do Managed Instance
       href: sql-database-managed-instance-migrate-tde-certificate.md
-    - name: Správa SQL Database po migraci
-      href: sql-database-manage-after-migration.md
+    - name: Transakční replikace
+      href: replication-with-sql-database-managed-instance.md
+    - name: Konfigurace zjišťování hrozeb
+      href: sql-database-managed-instance-threat-detection.md
   - name: Načtení a přesun dat
     items:
     - name: Kopírování databáze v rámci Azure
@@ -509,10 +517,6 @@ items:
       href: sql-database-load-from-csv-with-bcp.md
     - name: Načítání dat pomocí ADF
       href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
-  - name: Správa prostoru souborů
-    href: sql-database-file-space-management.md
-  - name: Použití funkce Resource Health pro potíže s připojením
-    href: sql-database-resource-health.md
   - name: Vývoj aplikací
     items:
     - name: Připojení
@@ -662,9 +666,9 @@ items:
     href: /azure/architecture/
   - name: Příběhy zákazníků
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 8c32468bf7b21cd2545f85226758879cc5b657e8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 6ae879edcd2b835cb52e20f070d6d8c0998ba610
+ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961973"
+ms.locfileid: "52994571"

@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: a6d50e6f405294bf8e91018dd4d7b6008cd49ada
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: b632ef49f49768c86b7a7ce2efc601f036532a29
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52161869"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017582"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java podniková Příručka pro službu App Service v Linuxu
 
@@ -103,7 +103,7 @@ App Service v Linuxu ve výchozím nastavení bude používat soubory cookie sp�
 - Pokud instance aplikace je restartován nebo kapacitu vertikálně snížit, stav relace uživatele na serveru aplikace se ztratí.
 - Pokud aplikace nastavení časového limitu relace dlouhé nebo pevný počet uživatelů, může trvat nějakou dobu došlo ke ztrátě schopnosti nové instance pro příjem zatížení, protože pouze nové relace se budou směrovat na nově spuštěná instance.
 
-Můžete nakonfigurovat Wildfly použít jako úložiště externí relace [Redis Cache](/azure/redis-cache/). Budete muset [zakázat existující Instance spřažení směrování žádostí na aplikace](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurace vypnout relace na základě souboru cookie směrování a povolit nakonfigurované úložiště relace Wildfly pracovat i bez rušení.
+Můžete nakonfigurovat Wildfly použít jako úložiště externí relace [mezipaměti Azure Redis](/azure/azure-cache-for-redis/). Budete muset [zakázat existující Instance spřažení směrování žádostí na aplikace](https://azure.microsoft.com/blog/disabling-arrs-instance-affinity-in-windows-azure-web-sites/) konfigurace vypnout relace na základě souboru cookie směrování a povolit nakonfigurované úložiště relace Wildfly pracovat i bez rušení.
 
 ## <a name="enable-web-sockets"></a>Povolit webové sokety
 

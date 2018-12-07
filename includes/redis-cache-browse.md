@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: a9d0f4c8de26d3c501c3b04e42864efaa880ee62
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fd337d6eb9711bbd82e9e8ba8e4e7caeeac35255
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32297599"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53019318"
 ---
 Pokud jste mezipaměť na řídicí panel nepřipnuli, najdete ji na webu [Azure Portal](https://portal.azure.com) po kliknutí na **Všechny služby**.
 
-![Okno procházení Azure Redis Cache](media/redis-cache-browse/redis-cache-browse.png)
+![Pro Redis okno procházení Azure Azure Cache](media/redis-cache-browse/redis-cache-browse.png)
 
-Chcete-li zobrazit mezipaměti, klikněte na **Všechny služby** a vyhledejte **Mezipaměti Redis**. 
+Chcete-li zobrazit mezipaměti, klikněte na tlačítko **všechny služby** a vyhledejte **mezipaměti Azure pro Rediss**. 
 
 Pokud chcete zobrazit a nakonfigurovat nastavení určité mezipaměti, vyberte ji.
 
-![Seznam mezipamětí Azure Redis v okně Procházet](media/redis-cache-browse/redis-caches.png)
+![Pro seznam mezipamětí Redis procházení Azure Azure Cache](media/redis-cache-browse/redis-caches.png)
 
-Mezipaměť můžete zobrazit a nakonfigurovat z okna **Mezipaměť Redis**.
+Můžete zobrazit a konfigurovat vaše mezipaměť **mezipaměti Azure Redis** okno.
 
-![Všechna nastavení mezipaměti Redis](media/redis-cache-browse/redis-cache-blade.png)
+![Mezipaměť Azure redis Cache všechna nastavení](media/redis-cache-browse/redis-cache-blade.png)
 
 

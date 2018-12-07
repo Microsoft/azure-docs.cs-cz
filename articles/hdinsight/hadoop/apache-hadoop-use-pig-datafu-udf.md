@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0c7e8b7ab10771c611f80d36fb1c9ed0cf3e6f1b
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 7422e7d91edc9c190bee4300717b3d4c6fe8186b
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632352"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017847"
 ---
 # <a name="use-apache-datafu-pig-with-apache-pig-on-hdinsight"></a>Použití Apache DataFu Pig s Pig Apache v HDInsight
 
@@ -66,7 +66,7 @@ DataFu je možné stáhnout a nainstalovat z úložiště Maven. Použijte násl
     > Odkaz v příkazu nahraďte adresu URL, které jste si zkopírovali dříve.
 
     ```
-    wget http://central.maven.org/maven2/org/apache/datafu/datafu-pig/1.4.0/datafu-pig-1.4.0.jar
+    wget https://central.maven.org/maven2/org/apache/datafu/datafu-pig/1.4.0/datafu-pig-1.4.0.jar
     ```
 
 3. V dalším kroku soubor nahrajte do výchozího úložiště pro váš cluster HDInsight. Ve výchozím umístění souboru úložiště je dostupné pro všechny uzly v clusteru.

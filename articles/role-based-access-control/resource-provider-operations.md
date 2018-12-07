@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/26/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 396dbfcfd13f508c33d8a1bb7370d9170b8f8a56
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: b09f64e2183453b3656efa340d53682a241dd00e
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499685"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53017949"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -695,31 +695,31 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
-> | Akce | Microsoft.Cache/checknameavailability/action | Zkontroluje, jestli je název k dispozici, aby se dal použít spolu s novou mezipamětí Redis Cache. |
+> | Akce | Microsoft.Cache/checknameavailability/action | Kontroluje, jestli je název k dispozici pro použití s novou mezipamětí Azure pro Redis |
 > | Akce | Microsoft.Cache/locations/operationresults/read | Získá výsledek dlouho spuštěné operace, pro kterou se klientovi dříve vrátila hlavička Location. |
 > | Akce | Microsoft.Cache/operations/read | Vypíše operace, které podporuje poskytovatel Microsoft.Cache. |
-> | Akce | Microsoft.Cache/redis/delete | Odstranit celou službu Redis Cache |
+> | Akce | Microsoft.Cache/redis/delete | Odstranit celou mezipaměť Azure Redis |
 > | Akce | Microsoft.Cache/redis/export/action | Export dat Redis v určeném formátu do objektů blob úložiště označených prefixem |
-> | Akce | Microsoft.Cache/redis/firewallRules/delete | Odstraní pravidla firewallu protokolu IP mezipaměti Redis Cache. |
-> | Akce | Microsoft.Cache/redis/firewallRules/read | Získá pravidla firewallu protokolu IP mezipaměti Redis Cache. |
-> | Akce | Microsoft.Cache/redis/firewallRules/write | Upraví pravidla firewallu protokolu IP mezipaměti Redis Cache. |
+> | Akce | Microsoft.Cache/redis/firewallRules/delete | Odstranit pravidla firewallu protokolu IP mezipaměti Azure Redis |
+> | Akce | Microsoft.Cache/redis/firewallRules/read | Získat pravidla firewallu protokolu IP mezipaměti Azure Redis |
+> | Akce | Microsoft.Cache/redis/firewallRules/write | Upravit pravidla firewallu protokolu IP mezipaměti Azure Redis |
 > | Akce | Microsoft.Cache/redis/forceReboot/action | Vynuťte restartování instance mezipaměti, což ale může mít za následek ztrátu dat. |
 > | Akce | Microsoft.Cache/redis/import/action | Import dat určeného formátu z víc objektů blob do Redis |
-> | Akce | Microsoft.Cache/redis/linkedservers/delete | Odstranit propojený server z mezipaměti Redis Cache |
-> | Akce | Microsoft.Cache/redis/linkedservers/read | Získat propojené servery přidružené k mezipaměti Redis Cache |
-> | Akce | Microsoft.Cache/redis/linkedservers/write | Přidat propojený server do mezipaměti Redis Cache |
-> | Akce | Microsoft.Cache/redis/listKeys/action | Zobrazit hodnotu přístupových klíčů služby Redis Cache na portálu pro správu |
+> | Akce | Microsoft.Cache/redis/linkedservers/delete | Odstranit propojený Server z Azure mezipaměti pro Redis |
+> | Akce | Microsoft.Cache/redis/linkedservers/read | Získáte propojené servery přidružené mezipaměti Azure pro Redis. |
+> | Akce | Microsoft.Cache/redis/linkedservers/write | Přidat propojený Server do Azure Cache pro Redis |
+> | Akce | Microsoft.Cache/redis/listKeys/action | Zobrazení hodnoty mezipaměti Azure pro přístupové klíče služby Redis na portálu management portal |
 > | Akce | Microsoft.Cache/redis/listUpgradeNotifications/read | Vypíše seznam nejnovějších upozornění na upgrady pro klienta mezipaměti. |
-> | Akce | Microsoft.Cache/redis/metricDefinitions/read | Načte dostupné metriky pro Redis Cache. |
-> | Akce | Microsoft.Cache/redis/patchSchedules/delete | Odstraní plán oprav mezipaměti Redis Cache. |
-> | Akce | Microsoft.Cache/redis/patchSchedules/read | Získá plán oprav mezipaměti Redis Cache. |
-> | Akce | Microsoft.Cache/redis/patchSchedules/write | Upraví plán oprav mezipaměti Redis Cache. |
-> | Akce | Microsoft.Cache/redis/read | Zobrazit nastavení a konfiguraci Redis Cache na portálu pro správu |
-> | Akce | Microsoft.Cache/redis/recommendations/read | Přečíst doporučení služby Azure Redis Cache |
-> | Akce | Microsoft.Cache/redis/regenerateKey/action | Změnit hodnotu přístupových klíčů služby Redis Cache na portálu pro správu |
+> | Akce | Microsoft.Cache/redis/metricDefinitions/read | Získá dostupné metriky pro Redis pro Azure Cache |
+> | Akce | Microsoft.Cache/redis/patchSchedules/delete | Odstranit plán oprav mezipaměti Azure Redis |
+> | Akce | Microsoft.Cache/redis/patchSchedules/read | Získá plán oprav mezipaměti Azure pro Redis |
+> | Akce | Microsoft.Cache/redis/patchSchedules/write | Upraví plán oprav mezipaměti Azure pro Redis |
+> | Akce | Microsoft.Cache/redis/read | Zobrazení mezipaměti Azure pro nastavení a konfiguraci Redis na portálu pro správu |
+> | Akce | Microsoft.Cache/redis/recommendations/read | Čtení z mezipaměti Azure Redis doporučení |
+> | Akce | Microsoft.Cache/redis/regenerateKey/action | Změňte hodnotu z mezipaměti Azure přístupové klíče služby Redis na portálu management portal |
 > | Akce | Microsoft.Cache/redis/start/action | Spuštění instance mezipaměti |
 > | Akce | Microsoft.Cache/redis/stop/action | Zastavení instance mezipaměti |
-> | Akce | Microsoft.Cache/redis/write | Upravit nastavení a konfiguraci služby Redis Cache na portálu pro správu |
+> | Akce | Microsoft.Cache/redis/write | Upravit ukládání do mezipaměti Azure Redis pro nastavení a konfigurace v portálu pro správu |
 > | Akce | Microsoft.Cache/register/action | Zaregistruje poskytovatele prostředků Microsoft.Cache u předplatného. |
 > | Akce | Microsoft.Cache/unregister/action | Zruší registraci poskytovatele prostředků Microsoft.Cache u předplatného. |
 
@@ -4658,8 +4658,8 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Sql/servers/databases/operations/cancel/action | Azure SQL Database Zruší probíhající asynchronní operaci, která ještě není dokončená. |
 > | Akce | Microsoft.Sql/servers/databases/operations/read | Vrátí seznam operací provedených v databázi |
 > | Akce | Microsoft.Sql/servers/databases/pause/action | Pozastavení databáze datového skladu Azure SQL |
-> | Akce | Microsoft.Sql/servers/databases/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky pro prostředek |
-> | Akce | Microsoft.Sql/servers/databases/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek |
+> | Akce | Microsoft.Sql/servers/databases/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky pro tento prostředek. |
+> | Akce | Microsoft.Sql/servers/databases/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek. |
 > | Akce | Microsoft.Sql/servers/databases/providers/Microsoft.Insights/logDefinitions/read | Získá dostupné protokoly pro databáze |
 > | Akce | Microsoft.Sql/servers/databases/providers/Microsoft.Insights/metricDefinitions/read | Návratové typy metriky, které jsou k dispozici pro databáze |
 > | Akce | Microsoft.Sql/servers/databases/queryStore/queryTexts/read | Vrátí kolekci texty dotazu, které odpovídají zadaným parametrům. |
@@ -4748,8 +4748,8 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Sql/servers/elasticPools/metrics/read | Vrátit metriky pro fondy elastických databází |
 > | Akce | Microsoft.Sql/servers/elasticPools/operations/cancel/action | Zruší elastický fond Azure SQL čekající na asynchronní operaci, která ještě není dokončená. |
 > | Akce | Microsoft.Sql/servers/elasticPools/operations/read | Vrátí seznam operací provedených v elastickém fondu |
-> | Akce | Microsoft.Sql/servers/elasticPools/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky pro prostředek |
-> | Akce | Microsoft.Sql/servers/elasticPools/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro prostředek |
+> | Akce | Microsoft.Sql/servers/elasticPools/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky pro tento prostředek. |
+> | Akce | Microsoft.Sql/servers/elasticPools/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro tento prostředek. |
 > | Akce | Microsoft.Sql/servers/elasticPools/providers/Microsoft.Insights/metricDefinitions/read | Návratové typy metriky, které jsou k dispozici pro fondy elastických databází |
 > | Akce | Microsoft.Sql/servers/elasticPools/read | Načíst podrobnosti o elastického fondu na daném serveru |
 > | Akce | Microsoft.Sql/servers/elasticPools/skus/read | Načte kolekci dostupných skladových položek pro elastický fond |

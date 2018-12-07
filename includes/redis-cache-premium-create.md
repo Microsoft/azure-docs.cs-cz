@@ -4,19 +4,19 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
-ms.openlocfilehash: 2c96604093542c2697c691ad8fb8bf11e77e2d0b
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 0e0d0586a253b3e0a73637fda2150a9b6d1351b6
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571952"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53019536"
 ---
-Pokud chcete vytvořit mezipaměť premium, přihlaste se k [webu Azure portal](https://portal.azure.com) a klikněte na tlačítko **vytvořit prostředek** > **databází** > **Redis Cache** .
+Pokud chcete vytvořit mezipaměť premium, přihlaste se k [webu Azure portal](https://portal.azure.com) a klikněte na tlačítko **vytvořit prostředek** > **databází** > **Azure Cache pro Redis**.
 
 ![Vytvoření mezipaměti](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 
 > [!NOTE]
-> Mezipaměti můžete vytvářet na portálu Azure Portal, ale také pomocí šablon Resource Manageru, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace o vytvoření Azure Redis Cache najdete v tématu věnovaném [vytvoření mezipaměti](../articles/redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+> Mezipaměti můžete vytvářet na portálu Azure Portal, ale také pomocí šablon Resource Manageru, PowerShellu nebo rozhraní příkazového řádku Azure. Další informace o vytvoření Azure Azure Cache pro Redis najdete v tématu [vytvoření mezipaměti](../articles/azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 > 
 > 
 

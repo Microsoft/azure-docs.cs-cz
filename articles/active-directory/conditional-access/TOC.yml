@@ -34,16 +34,18 @@ items:
   items:
   - name: Osvědčené postupy
     href: best-practices.md
-  - name: Vyžadování MFA pro pokusy o přístup z nedůvěryhodných sítí
-    href: untrusted-networks.md
-  - name: Vyžadování spravovaných zařízení
-    href: require-managed-devices.md
-  - name: Vyžadování klientem schválených aplikací
-    href: app-based-conditional-access.md
+  - name: Blokování starší verze ověřování
+    href: block-legacy-authentication.md
   - name: Řízení přístupu k Exchangi Online a SharePointu Online
     href: conditional-access-for-exo-and-spo.md
   - name: Migrace klasických zásad
     href: policy-migration.md
+  - name: Vyžadování klientem schválených aplikací
+    href: app-based-conditional-access.md
+  - name: Vyžadování spravovaných zařízení
+    href: require-managed-devices.md
+  - name: Vyžadování MFA pro pokusy o přístup z nedůvěryhodných sítí
+    href: untrusted-networks.md
   expanded: true
 - name: Referenční informace
   items:
@@ -63,9 +65,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: c5bf350b2959571cc2d96eeacf8c4774dbb6b421
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: cbba6bd7e49f4866a83e8b37945a5066c33d0b35
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427229"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53015190"

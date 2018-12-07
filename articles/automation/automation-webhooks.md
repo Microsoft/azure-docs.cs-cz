@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3da4ecb1193959fcc8782f8aa5fdf32c130ee238
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 381f8c5fb59379c0494dabcd22f4675be9535837
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840142"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53016687"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění runbooku Azure Automation s webhooku
 
@@ -31,7 +31,7 @@ Následující tabulka popisuje vlastnosti, které je nutné nakonfigurovat pro 
 |:--- |:--- |
 | Název |Můžete zadat libovolný název, který chcete pro webhook, protože to není vystavený klienta. Používá se pouze pro vás k identifikaci sady runbook ve službě Azure Automation. <br> Jako osvědčený postup musíte by měl pojmenovat webhook související klientovi, který ji používá. |
 | zprostředkovatele identity |Adresa URL webhooku je jedinečná adresa, která volá klienta pomocí metody POST protokolu HTTP pro spuštění sady runbook propojena k webhooku. Je generována automaticky při vytvoření webhooku. Nelze zadat vlastní adresu URL. <br> <br> Adresa URL obsahuje token zabezpečení, která umožňuje sady runbook, který má být volána systémem třetí strany se nevyžaduje další ověřování. Z tohoto důvodu by zpracovávat jako heslo. Z bezpečnostních důvodů můžete jenom zobrazit adresu URL na webu Azure Portal v době, kdy se webhook vytvoří. Poznačte si adresu URL na bezpečném místě pro budoucí použití. |
-| Datum konce platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží. Po vytvoření webhooku, je možné upravit toto datum vypršení platnosti. |
+| Datum konce platnosti |Stejně jako certifikát má každý webhooku datum vypršení platnosti, po kterém již slouží. Po vytvoření webhooku tak dlouho, dokud nevyprší platnost webhooku, je možné upravit toto datum vypršení platnosti. |
 | Povoleno |Webhook se ve výchozím nastavení povoleno, při jeho vytvoření. Pokud je nastavena na hodnotu zakázáno, pak žádný klient je moct používat. Můžete nastavit **povoleno** vlastnost při vytváření webhooku nebo kdykoli po jeho vytvoření. |
 
 ### <a name="parameters"></a>Parametry
@@ -121,6 +121,12 @@ Za předpokladu, že je žádost úspěšná, odpověď webhooku obsahuje úlohu
 ```
 
 Klient nemůže určit po dokončení úlohy runbooku nebo její stav dokončení od webhooku. Může zjistit tyto informace, ID úlohy pomocí jiné metody, jako [prostředí Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) nebo [rozhraní API služby Azure Automation](/rest/api/automation/job).
+
+## <a name="renew-webhook"></a>Obnovit webhooku
+
+Když se vytvoří webhook má platnost jeden rok. Platnost vyprší po daný rok webhook automaticky. Jakmile platnost webhooku nemůže být znovu aktivovaná, musí být odebrány a znovu vytvořit. Pokud webhooku nedosáhla jeho čas vypršení platnosti je možné rozšířit.
+
+K rozšíření webhooku, přejděte do sady runbook, který obsahuje webhooku. Vyberte **Webhooky** pod **prostředky**. Klikněte na tlačítko webhooku, která chcete rozšířit, tím se otevře **Webhooku** stránky.  Zvolte nové datum vypršení platnosti a dobu a klikněte na tlačítko **Uložit**.
 
 ## <a name="sample-runbook"></a>Ukázkové sady runbook
 
