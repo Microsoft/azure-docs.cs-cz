@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 10/29/2018
-ms.openlocfilehash: c6bf3c50958085f45c52ec2fa3cbdfba8adbe35f
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: e46b2c0de1b65d2355e7258e9940ee1fee6be071
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711714"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872131"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Nasazení modelu jako webové služby na FPGA službou Azure Machine Learning
 
@@ -165,14 +165,6 @@ registered_model.delete()
 
 Modely Azure Machine Learning, běží na FPGA poskytovat podpora protokolu SSL a ověřování na základě klíče. To umožňuje omezit přístup k vaší služby a zabezpečit data odeslaná klienty. [Zjistěte, jak zabezpečit webovou službu](how-to-secure-web-service.md).
 
-
-## <a name="sample-notebook"></a>Ukázka poznámkového bloku
-
-Koncepty v tomto článku je ukázán v [project brainwave/project-brainwave-quickstart.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/project-brainwave/project-brainwave-quickstart.ipynb) poznámkového bloku.
-
-Získáte tento poznámkový blok:
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Další postup
 
