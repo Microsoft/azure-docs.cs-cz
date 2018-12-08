@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 28c943b2588270af823c0712d4e510a4f018da3e
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: efca5c4155372456100126671e7d5cd1ccf0cbbc
+ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50981400"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53027901"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Použití nástrojů automatizace infrastruktury s virtuálními počítači v Azure
 Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způsobem v měřítku, uvítáte nějakou formu automatizace. Existuje mnoho nástrojů a řešení, která umožňují automatizovat nasazení kompletní infrastrukturu Azure a životního cyklu správy. Tento článek představuje některé z infrastruktury automatizační nástroje, které můžete použít v Azure. Tyto nástroje běžně nevešla do jedné z následujících postupů:
@@ -23,7 +23,7 @@ Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způs
     - [Azure Automation](#azure-automation) může provádět akce v Azure a místní infrastruktuře.
 
 - Automatizace nasazení aplikací a doručování
-    - Mezi příklady patří [Azure DevOps služby](#visual-studio-team-services) a [Jenkins](#jenkins).
+    - Mezi příklady patří [Azure DevOps služby](#azure-devops-services) a [Jenkins](#jenkins).
 
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) je modul služby automation pro správu konfigurace, vytvoření virtuálního počítače nebo nasazení aplikace. Ansible používá model bez agentů, obvykle s klíči SSH k ověřování a správě cílového počítače. Úlohy konfigurace jsou definovány v playbooky, s celou řadou Ansible modulů dostupných provádět konkrétní úlohy. Další informace najdete v tématu [funguje jak Ansible](https://www.ansible.com/how-ansible-works).
