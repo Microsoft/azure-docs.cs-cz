@@ -2,19 +2,19 @@
 title: Datové proudy IoT v reálném čase se službou Azure Stream Analytics
 description: Zařízení SensorTag pro IoT, proudy dat, analytické funkce pro analýzu proudů dat a zpracování dat v reálném čase
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 56243be40a4d47f315ff6599ff2d50c83e44afbc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: b008fe128aa760197c34d8c14c4d3b92cbed2bd2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849543"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103162"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Začínáme se zpracováním dat ze zařízení IoT pomocí služby Azure Stream Analytics
 V tomto kurzu se naučíte vytvořit logiku zpracování datového proudu ke shromáždění dat ze zařízení s platformou IoT (Internet věcí). Na skutečném případu použití platformy IoT si budete moci prohlédnout postup rychlého a ekonomického sestavení potřebného řešení.
@@ -56,35 +56,35 @@ Pro snadnější použití tato příručka Začínáme poskytuje soubor ukázko
    > 
 4. Zaškrtněte políčko pro umístění úlohy do řídicího panelu a klikněte na **VYTVOŘIT**.
    
-    ![průběh vytváření úlohy](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
+    ![Probíhá vytváření úlohy Stream analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03a.png)
 5. V pravém horním rohu okna prohlížeče by se měla zobrazit zpráva Nasazení začalo... Brzy se změní na okno s informací o dokončení, jak je vidět dále.
    
-    ![průběh vytváření úlohy](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
+    ![Stream analytics nasazení bylo úspěšné.](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>Vytvoření dotazu služby Stream Analytics
 Po vytvoření úlohy nastal čas ji otevřít a vytvořit dotaz. K úloze můžete jednoduše přejít tak, že kliknete na její dlaždici.
 
-![Dlaždice úlohy](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
+![Dlaždice úlohy Stream Analytics na webu Azure portal](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 
 V podokně **Topologie úlohy** klikněte do pole **DOTAZ**. Tím přejdete do Editoru dotazů. Editor **DOTAZŮ** umožňuje zadání dotazu T-SQL, který provádí transformaci příchozích dat událostí.
 
-![Pole Dotaz](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Dlaždice dotazu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 ### <a name="query-archive-your-raw-data"></a>Dotaz: Archivace nezpracovaných dat
 Nejjednodušším typem dotazu je průchozí dotaz, který archivuje veškerá vstupní data do definovaného výstupního umístění. Teď si z webu [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot) stáhněte soubor ukázkových dat do umístění ve svém počítači. 
 
 1. Vložte dotaz ze souboru PassThrough.txt. 
    
-    ![Vstupní datový proud testu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
+    ![Vložte dotaz do editoru dotazů Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06.png)
 2. Klikněte na tlačítko se třemi tečkami vedle vstupního datového proudu a zaškrtněte políčko **Odeslat ukázková data ze souboru**.
    
-    ![Vstupní datový proud testu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
+    ![Zvolte nahrát ukázková data ze souboru](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06a.png)
 3. Vpravo se otevře podokno. V něm vyberte datový soubor HelloWorldASA-InputStream.json ze staženého umístění a v dolní části podokna klikněte na **OK**.
    
-    ![Vstupní datový proud testu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
+    ![Nahrajte ukázkový soubor dat json](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-06b.png)
 4. Potom klikněte na ikonu ozubeného kola **Test** vlevo nahoře a zpracujte zkušební dotaz s ukázkovou datovou sadou. Po dokončení zpracování se pod dotazem otevře okno s výsledky.
    
-    ![Výsledky testu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+    ![Výsledky dotazu Stream Analytics](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Dotaz: Filtrování dat na základě podmínky
 Nyní si vyzkoušíte filtrování výsledků na základě podmínky. Rádi bychom se zobrazit výsledky pouze pro události, které pocházejí z "sensorA." Dotaz je umístěný v souboru Filtering.txt.

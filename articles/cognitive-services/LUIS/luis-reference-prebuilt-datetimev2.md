@@ -1,21 +1,22 @@
 ---
-title: Předem připravené služby LUIS datetimeV2 referenční informace k entitám – Azure | Dokumentace Microsoftu
+title: DatetimeV2 předem připravených entit
 titleSuffix: Azure
 description: Tento článek obsahuje datetimeV2 informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: bd28981ae0c5b4d6ccff3168f92f0f99be768b10
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: f59c429906d6cee2b9f4aff6e16ba23e8d28c97b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335772"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105848"
 ---
 # <a name="datetimev2-entity"></a>Entita DatetimeV2
 
@@ -27,7 +28,7 @@ Spravuje se z DatetimeV2 [rozpoznávání textu](https://github.com/Microsoft/Re
 ## <a name="example-json"></a>Ukázkový soubor JSON 
 Následující příklad odpověď JSON má `datetimeV2` entita s podtypem typu `datetime`. Příklady dalších typů entit datetimeV2 najdete v tématu [podtypy datetimeV2](#subtypes-of-datetimev2)</a>.
 
-```JSON
+```json
 "entities": [
   {
     "entity": "8am on may 2nd 2017",
@@ -103,7 +104,7 @@ Mějme například utterance "Května 2":
 Následující příklad ukazuje rozlišení entity "května 2". Toto řešení předpokládá, že je dnešní datum mezi 2. května 2017 a 1. května 2018.
 Pole s `X` v `timex` pole jsou částí data, které nejsou explicitně zadané v utterance.
 
-```JSON
+```json
   "entities": [
     {
       "entity": "may 2nd",
@@ -132,7 +133,7 @@ Pole s `X` v `timex` pole jsou částí data, které nejsou explicitně zadané 
 
 `datetimeV2` Entity extrahuje data a času rozsahy. `start` a `end` pole ukazují na začátek a konec rozsahu. Pro utterance "Května 2. na 5. května", LUIS poskytuje **daterange** hodnoty do aktuálního roku a příští rok. V `timex` pole, `XXXX` hodnoty označují nejednoznačnosti v roce. `P3D` Určuje časové období je tři dny dlouho.
 
-```JSON
+```json
 "entities": [
     {
       "entity": "may 2nd to may 5th",
@@ -163,7 +164,7 @@ Pole s `X` v `timex` pole jsou částí data, které nejsou explicitně zadané 
 
 Následující příklad ukazuje, jak se využívá LUIS **datetimeV2** vyřešit utterance "Úterý na čtvrtek". V tomto příkladu je aktuální datum 19. června. Služba LUIS zahrnuje **daterange** hodnoty pro oba rozsahy kalendářních dat, které jí předcházejí a postupujte podle aktuálního data.
 
-```JSON
+```json
   "entities": [
     {
       "entity": "tuesday to thursday",
@@ -196,7 +197,7 @@ Pole hodnot má dva prvky času, pokud čas nebo časový rozsah je nejednoznač
 
 Následující příklad ukazuje, jak se využívá LUIS **datetimeV2** vyřešit utterance, který má časový rozsah.
 
-```
+```json
   "entities": [
     {
       "entity": "6pm to 7pm",

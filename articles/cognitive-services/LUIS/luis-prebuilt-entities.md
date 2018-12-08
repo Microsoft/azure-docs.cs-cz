@@ -1,21 +1,22 @@
 ---
-title: Předem připravených entit pro Language Understanding (LUIS)
+title: Předem připravených entit
 titleSuffix: Azure Cognitive Services
 description: Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání běžných typů informací, jako jsou data, časy, čísla, měření a měny. Podpora předem připravených entit se liší podle jazykové verze vaší aplikace LUIS.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 8371e99224b511a87b2061708f00822a70c024b0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 9e0d1ae39431ca75b43680981802b82f16703d4d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999069"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103927"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>Předem připravených entit rozpoznat běžné typy dat
 
@@ -43,7 +44,7 @@ Nejjednodušší způsob, jak zobrazit hodnotu z předem připravených entit je
 
 1. Vyberte koncový bod. Do tohoto koncového bodu se otevře na nové kartě prohlížeče. Ponechat otevřenou kartu prohlížeče a i nadále **Test** oddílu.
 
-## <a name="test"></a>Testovat
+## <a name="test"></a>Test
 Po přidání entity není potřeba trénování aplikace. 
 
 Test nové záměr na koncovém bodu podle přidán hodnotu **q** parametru. Následující tabulku můžete použít pro navrhované projevy pro **q**:

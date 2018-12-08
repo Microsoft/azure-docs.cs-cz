@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f63dcc73532426b07f792f631f934587fca08605
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 80389be735d337f72426f0745fee5717b96fa78a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128991"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100867"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-preview"></a>Kopírování dat z čtverec pomocí Azure Data Factory (Preview)
 
@@ -78,7 +78,12 @@ Následující části obsahují podrobnosti o vlastnostech, které se používa
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje Čtvereček datové sady.
 
-Ke zkopírování dat z čtverec, nastavte vlastnost typ datové sady na **SquareObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Ke zkopírování dat z čtverec, nastavte vlastnost typ datové sady na **SquareObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **SquareObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -90,7 +95,8 @@ Ke zkopírování dat z čtverec, nastavte vlastnost typ datové sady na **Squar
         "linkedServiceName": {
             "referenceName": "<Square linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -99,14 +105,14 @@ Ke zkopírování dat z čtverec, nastavte vlastnost typ datové sady na **Squar
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem čtvereček.
 
-### <a name="squaresource-as-source"></a>SquareSource jako zdroj
+### <a name="square-as-source"></a>Čtvercové jako zdroj
 
 Ke zkopírování dat z čtverec, nastavte typ zdroje v aktivitě kopírování do **SquareSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **SquareSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Business"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Business"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

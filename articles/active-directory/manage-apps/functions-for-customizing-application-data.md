@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: barbkess
-ms.openlocfilehash: e5db47cabddb2898667ff9d6cdac41cf3b953099
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 058cadec0776e05daf9fddbf715020953478ff58
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52843576"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105151"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -79,7 +79,7 @@ Pokud jedna z hodnot zdroje je vícehodnotový atribut, pak každá hodnota v at
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Oddělovač** |Požaduje se |Řetězec |Řetězec použitý k oddělení zdrojové hodnoty, když jsou zřetězeny do jednoho řetězce. Může být "" Pokud žádný oddělovač je povinný. |
-| ** zdroj1... zdrojN ** |Povinné, proměnná počet pokusů |Řetězec |Hodnoty, který se má spojit dohromady řetězce. |
+| **zdroj1... zdrojN** |Povinné, proměnná počet pokusů |Řetězec |Hodnoty, který se má spojit dohromady řetězce. |
 
 - - -
 ### <a name="mid"></a>Mid
@@ -141,6 +141,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
   * Pokud **zdroj** má hodnotu, použije **regexPattern** a **regexGroupName** k extrakci nahrazení hodnoty z vlastnosti s **replacementPropertyName** . Nahrazující hodnota se vrátí jako výsledek
 
 **Parametry:**<br> 
+
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu ze zdrojového objektu. |
@@ -166,7 +167,7 @@ Nahradí hodnoty v řetězci. V závislosti na parametry, které poskytnou fungu
 
 | Název | Požadovaný / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
-| ** uniqueValueRule1... uniqueValueRuleN ** |Minimálně 2 jsou povinné, ne horní mez |Řetězec | Seznam pravidel pro vytvoření jedinečnou hodnotu pro vyhodnocení |
+| **uniqueValueRule1... uniqueValueRuleN** |Minimálně 2 jsou povinné, ne horní mez |Řetězec | Seznam pravidel pro vytvoření jedinečnou hodnotu pro vyhodnocení |
 
 
 - - -

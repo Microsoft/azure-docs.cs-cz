@@ -1,21 +1,22 @@
 ---
-title: 'Tutoriál 2: Dávkové testovací sadu 1000 projevy '
+title: Testovací služby batch
 titleSuffix: Azure Cognitive Services
 description: Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: e5155caa26669cd98b679eec611334ee5c048fca
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 06981972dbdb95b8597bab5028c2d86e0594caf3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162533"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106035"
 ---
 # <a name="tutorial-2-batch-test-data-sets"></a>Tutoriál 2: Dávkové testovací datové sady
 
@@ -31,11 +32,11 @@ Požadavky pro testování služby batch:
 
 Při používání aplikace než v tomto kurzu, proveďte *není* pomocí příkladu projevy již byla přidána do záměru. 
 
-**V tomto kurzu se dozvíte, jak:**
+**V tomto kurzu se naučíte:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Použít existující ukázková aplikace
+> * Používat existující ukázkovou aplikaci
 > * Vytvořte dávkový soubor testu 
 > * Spuštění testu služby batch
 > * Kontrola výsledků testu
@@ -46,17 +47,17 @@ Při používání aplikace než v tomto kurzu, proveďte *není* pomocí přík
 
 ## <a name="use-existing-app"></a>Použití existující aplikace
 
-Pokračovat s aplikací vytvořili v posledním kurzu s názvem **Lidskézdroje**. 
+Pokračujte s aplikací **HumanResources**, kterou jste vytvořili v posledním kurzu. 
 
-Pokud nemáte aplikaci lidských zdrojů z předchozí kurz o službě, použijte následující kroky:
+Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
-1.  Stáhněte a uložte [souboru JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
+1.  Stáhněte si [soubor JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json) a uložte si ho.
 
-2. Importujte ve formátu JSON do nové aplikace.
+2. Naimportujte soubor JSON do nové aplikace.
 
-3. Z **spravovat** části na **verze** kartu, naklonujte na verzi a pojmenujte ho `batchtest`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze, protože se používají jako součást trasu adresy URL název nesmí obsahovat žádné znaky, které nejsou platné v adrese URL. 
+3. V části **Manage** (Správa) na kartě **Versions** (Verze) naklonujte verzi a pojmenujte ji `batchtest`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze je součástí cesty URL, a proto smí obsahovat jenom znaky, které jsou platné v adresách URL. 
 
-4. Trénování aplikace.
+4. Trénujte aplikaci.
 
 ## <a name="batch-file"></a>Dávkový soubor
 

@@ -1,23 +1,24 @@
 ---
-title: Data Application Insights pomocí jazyka C# služby luis
+title: Application Insights s použitímC#
 titleSuffix: Azure Cognitive Services
 description: Vytvořte robota, integruje se službou LUIS aplikace a služby Application Insights pomocí jazyka C#.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: c7f12352355b12cf1a7363a2a82fa786248cdc6f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: fb7ce154985db97dba2a36b4b0d834cada1605d9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965287"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101054"
 ---
-# <a name="add-luis-results-to-application-insights"></a>Přidání LUIS výsledky do Application Insights
+# <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>Přidání LUIS výsledky do Application Insights s využitím Botu vC#
 
 V tomto kurzu přidá informace o odpovědi LUIS k [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
 
@@ -174,7 +175,7 @@ Na webu Azure Portal najít použijete web app bot a otevřete jej. Následujíc
 
 3. V okně konzoly zadejte následující příkaz:
 
-    ```
+    ```console
     cd site\wwwroot && build.cmd
     ```
 
@@ -190,11 +191,12 @@ Na webu Azure Portal najít použijete web app bot a otevřete jej. Následujíc
 
 3. Měli byste vidět žádné rozdíly v odpovědi chatovací robot. Změna odesílá data do Application Insights, není v robota odpovědi. Zadejte několik další projevů je trochu více dat ve službě Application Insights:
 
-```
-Please deliver a pizza
-Turn off all the lights
-Turn on the hall light
-```
+|Projevy|
+|--|
+|Prosím doručování pizza|
+|Vypnout všechny indikátory|
+|Zapnout hall světla|
+
 
 ## <a name="view-luis-entries-in-application-insights"></a>Zobrazení LUIS položky ve službě Application Insights
 
@@ -231,7 +233,7 @@ Služba Application Insights poskytuje výkonné nástroje pro dotazování dat 
 
 3. Vyžádá si hlavní záměr, skóre a utterance, přidejte následující přímo nad poslední řádek v okně dotazu:
 
-    ```SQL
+    ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_topScoringIntent)
     | extend score = todouble(customDimensions.LUIS_topScoringIntentScore)
     | extend utterance = tostring(customDimensions.LUIS_query)

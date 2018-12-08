@@ -4,11 +4,7 @@ description: V tomto kurzu se dozvíte, jak vytvořit interní load balanceru ú
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internal traffic to virtual machines within a specific zone in a region.
-ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: tutorial
@@ -17,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9ccbbb107dfd8fde237cdfdd4b0c3fcc080fd70e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 404b667de32e16dc43fa1359a297078ac07b5cfe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839241"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106375"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Kurz: Zůstatek interní zatížení s load balanceru úrovně Basic na webu Azure Portal
 
@@ -62,9 +58,6 @@ Nejprve vytvořte virtuální síť (VNet). Ve virtuální síti vytvořte dva v
    - **Podrobnosti o instanci** > **možností dostupnosti**: 
      1. Rozevírací seznam a vyberte **dostupnosti**. 
      2. Vyberte **vytvořit nový**, typ *MyAvailabilitySet*a vyberte **OK**.
-   - **Účet správce** > **uživatelské jméno**: typ *azureuser*.
-   - **Účet správce** > **heslo**: typ *Azure1234567*. 
-     Potvrďte heslo v **potvrzení hesla** pole.
    
 1. Vyberte **sítě** kartě nebo vyberte **Další: disky**, pak **Další: sítě**. 
    
@@ -212,7 +205,7 @@ Připojte se nejprve pro všechny tři virtuální počítače pomocí vzdálen�
    
 1. V dialogovém okně zabezpečení Windows vyberte **víc možností** a potom **použít jiný účet**. 
    
-   Zadejte uživatelské jméno *azureuser* a heslo *Azure1234567*a vyberte **OK**.
+   Zadejte uživatelské jméno a heslo a pak vyberte **OK**.
    
 1. Reakce **Ano** do libovolného řádku pro certifikát. 
    

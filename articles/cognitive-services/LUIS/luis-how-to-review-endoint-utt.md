@@ -1,23 +1,24 @@
 ---
-title: Zkontrolujte projevy koncový bod pro Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
+title: Projděte si uživatel projevy
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Převratné funkce ze služby LUIS je koncept aktivně učit. Jakmile vaše LUIS dotazy koncový bod, active learning kvality výsledků zlepšuje vybere projevy, které je jistí, jaké. Pokud označíte popiskem těchto projevů, trénování a publikování, pak LUIS identifikuje projevy přesněji.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: a5e0dabe251d14389923df3efe41f6ba80f41bdd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7175463001eac118d2939d3479e61a01b80ba86b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030791"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106545"
 ---
-# <a name="review-endpoint-utterances"></a>Kontrola promluv koncového bodu
+# <a name="how-to-review-endpoint-utterances-in-luis-portal"></a>Kontrola projevy koncový bod portálu služby LUIS
 
 Převratné funkce ze služby LUIS je [koncept](luis-concept-review-endpoint-utterances.md) aktivní učení. Jakmile vaše LUIS dotazy koncový bod, LUIS používá active learning a zlepšovat tak kvalitu výsledků. V procesu aktivně učit LUIS prozkoumá všechny projevy koncového bodu a vybere projevy, které je jistí, jaké. Pokud označíte popiskem těchto projevů, trénování a publikování, pak LUIS identifikuje projevy přesněji. 
 

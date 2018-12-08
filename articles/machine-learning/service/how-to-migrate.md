@@ -1,5 +1,6 @@
 ---
-title: Migrace do služby Azure Machine Learning
+title: Migrace z aplikace Workbench
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak upgradovat nebo migrovat ze starší verze pozdní verze služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: e2b3545c020f41f25f19843eab158cfb1b419164
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cc60fd6a9d5f154d26fc9c495f190296453a0db0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253444"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106647"
 ---
-# <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Migrace na nejnovější verzi služby Azure Machine Learning 
+# <a name="migrate-from-workbench-to-the-latest-version-of-azure-machine-learning-service"></a>Migrace z aplikace Workbench na nejnovější verzi služby Azure Machine Learning 
 
-**Pokud jste nainstalovali aplikaci Workbench (preview) a/nebo mají experimentování a správa modelů ve verzi preview účty, pomocí tohoto článku můžete migrovat na nejnovější verzi.**  Pokud nemáte k dispozici ve verzi preview Workbench nainstalovaná, nebo experimentování a/nebo účet služby Správa modelů, není potřeba cokoli migrovat.
+**Pokud jste nainstalovali aplikaci Workbench nebo mít experimentování a správa modelů ve verzi preview účty, pomocí tohoto článku můžete migrovat na nejnovější verzi.**  Pokud nemáte k dispozici ve verzi preview Workbench nainstalovaná, nebo experimentování a/nebo účet služby Správa modelů, není potřeba cokoli migrovat.
 
 ## <a name="what-can-i-migrate"></a>Co mohu migrovat?
 Většiny artefaktů, které jsou vytvořené v první verze preview služby Azure Machine Learning se ukládají do vlastní místní nebo cloudové úložiště. Tyto artefakty nebude zmizí. Pokud chcete migrovat, znovu zaregistrujte artefakty, které se aktualizace služby Azure Machine Learning. 
@@ -75,11 +76,10 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 Migrace webových služeb, znovu nasadíte modely do nového cíle nasazení pomocí nové sady SDK nebo rozhraní příkazového řádku. Není nutné změny původní soubor vyhodnocení, model závislosti souborů, souboru prostředí a soubory schémat. 
 
-V nejnovější verzi, jsou nasazené modely jako webové služby do [Azure Container Instances](how-to-deploy-to-aci.md) (ACI) nebo [Azure Kubernetes Service](how-to-deploy-to-aks.md) clusterů (AKS). 
+V nejnovější verzi jsou nasazení modelů jako webové služby do clusteru Azure Container Instances (ACI) nebo Azure Kubernetes Service (AKS). 
 
 Další informace najdete v těchto článcích:
-+ [Nasazení do služby ACI](how-to-deploy-to-aci.md)
-+ [Nasazení do AKS](how-to-deploy-to-aks.md)
++ [Jak nasadit a kde](how-to-deploy-and-where.md)
 + [Kurz: Nasazení modelů pomocí služby Azure Machine Learning](tutorial-deploy-models-with-aml.md)
 
 Když [odborné pomoci pro předchozí konců rozhraní příkazového řádku](overview-what-happened-to-workbench.md#timeline), nebudete moci spravovat webové služby původně nasazené pomocí svého účtu správy modelů. Tyto webové služby však bude i nadále fungovat tak dlouho, dokud je Azure Container Service (ACS) stále podporovány.

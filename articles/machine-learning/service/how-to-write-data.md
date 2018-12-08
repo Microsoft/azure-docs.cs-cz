@@ -1,5 +1,6 @@
 ---
-title: Zápis dat pomocí Azure Machine Learning Prep sady SDK pro Data – Python
+title: Zápis a pro přípravu dat s využitím Python SDK Příprava dat
+titleSuffix: Azure Machine Learning service
 description: Další informace o vytváření dat pomocí sady SDK služby Azure Machine Learning Data Prep. Můžete napsat data v libovolném bodě v toku dat a soubory v libovolné z našich podporovaných umístění (místního systému souborů Azure Blob Storage a Azure Data Lake Storage).
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,13 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
-ms.openlocfilehash: 5e6cc45503a6c35d1b65ed10b792b7e307271e80
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 1278d0c448b041849f477b55d8311f516c3bccf3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866136"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104437"
 ---
 # <a name="write-data-using-the-azure-machine-learning-data-prep-sdk"></a>Zápis dat pomocí sady SDK pro Azure Machine Learning Data Prep
 

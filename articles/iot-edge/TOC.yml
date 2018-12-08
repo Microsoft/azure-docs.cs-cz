@@ -56,8 +56,6 @@ items:
       href: module-composition.md
     - name: Automatická nasazení
       href: module-deployment-monitoring.md
-  - name: Certifikáty IoT Edge
-    href: iot-edge-certs.md
   - name: Offline možnosti
     href: offline-capabilities.md
   - name: Zařízení IoT Edge jako brána
@@ -68,6 +66,8 @@ items:
       href: security.md
     - name: Správce zabezpečení IoT Edge
       href: iot-edge-security-manager.md
+    - name: Certifikáty IoT Edge
+      href: iot-edge-certs.md
   - name: Podpora platformy
     href: support.md
   - name: Kontrolní seznam pro produkční nasazení
@@ -226,9 +226,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 507f50a3d7df4e1bc08b52668543b8fe2e3b0dd1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 36f90f4ff43b16a7f9127d5efbabd02f15e14b2c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867269"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101700"

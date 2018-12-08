@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7b9bc52e07bccf931593cd2dbddd68e973d1b26c
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
-ms.translationtype: HT
+ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394353"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106443"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>Rychlý start: Dotazování na data v Azure Data Exploreru
 
@@ -134,7 +134,7 @@ Už víte, jak fungují základní dotazy. Teď se pojďme podívat na to, jak s
 
 1. Spusťte následující dotaz.
 
-    ```Kutso
+    ```Kusto
     StormEvents
     | sort by StartTime desc
     | where DamageProperty > 5000
@@ -186,7 +186,7 @@ Data Explorer je aktuálně ve verzi Preview a uvítáme jakékoli názory a př
 
 V tomto rychlém startu jste nevytvořili žádné prostředky, ale pokud byste chtěli z aplikace odebrat jeden nebo oba clustery, klikněte na cluster pravým tlačítkem myši a vyberte **Odebrat připojení**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Psaní dotazů pro Azure Data Explorer](write-queries.md)

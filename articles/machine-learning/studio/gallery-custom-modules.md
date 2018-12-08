@@ -1,10 +1,10 @@
 ---
 title: Galerie AI vlastní moduly Azure – Azure Machine Learning Studio | Dokumentace Microsoftu
-description: Zjištění modulů služby vlastní machine learning v galerii Azure AI.
+description: Zjištění modulů služby vlastní machine learning v galerii Azure AI. Vlastní moduly rozšířili schopnosti nástroje Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
-ms.openlocfilehash: a504bcfbbcd70c1d6fc8402d4c232e7e8a5476b0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b51af78625d869fb168dce7c7bd7ed57e159cbda
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313737"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104762"
 ---
 # <a name="machine-learning-studio-discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Machine Learning Studio: Zjištění modulů služby vlastní machine learning v galerii Azure AI
 

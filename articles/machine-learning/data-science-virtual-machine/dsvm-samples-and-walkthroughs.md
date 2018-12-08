@@ -1,11 +1,12 @@
 ---
 title: Ukázky a návody pro virtuální počítače pro datové vědy – Azure | Dokumentace Microsoftu
-description: Ukázky a návody pro virtuální počítače pro datové vědy.
+description: Další informace o ukázky a návody, které vás naučí, jak provádět běžné úlohy a scénáře s virtuální počítač pro datové vědy.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 74d5893a377fb67dbec7b185525e74ac248deede
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 64be6af340aa02c6c0b094013d2cbd286286aca7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902752"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101980"
 ---
 # <a name="samples-on-data-science-virtual-machines"></a>Ukázky na virtuální počítače pro datové vědy
 

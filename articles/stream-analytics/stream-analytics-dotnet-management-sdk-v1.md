@@ -4,19 +4,19 @@ description: Začínáme se Stream Analytics Management .NET SDK. Zjistěte, jak
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/06/2017
-ms.openlocfilehash: f47b2192ab7eead79267b2ae2364ffa7087143ee
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 0f9e889a15933953af275460ba12906db6f3adec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987099"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106528"
 ---
-# <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Správa sady .NET SDK v1.x: nastavte nahoru a spouštění úloh analytics pomocí rozhraní API služby Azure Stream Analytics pro .NET
+# <a name="set-up-and-run-analytics-jobs-using-azure-stream-analytics-api-for-net"></a>Nastavení a spuštění úlohy analytics pomocí rozhraní API služby Azure Stream Analytics pro .NET
 Zjistěte, jak nastavit a spustit úlohy analytics pomocí rozhraní API pro Stream Analytics pro .NET pomocí sady .NET SDK správy. Nastavení projektu, vytvoření vstupní a výstupní zdroje, transformace a spuštění a zastavení úloh. Pro úlohy analýzy můžete Streamovat data z úložiště objektů Blob nebo z centra událostí.
 
 Zobrazit [správu referenční dokumentace pro rozhraní API pro Stream Analytics pro .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).
@@ -33,18 +33,16 @@ Je nutné, abyste před zahájením tohoto článku měli tyto položky:
 * Stáhněte a nainstalujte [sady Azure .NET SDK](https://azure.microsoft.com/downloads/).
 * Vytvořte skupinu prostředků Azure v rámci vašeho předplatného. Následuje ukázkový skript Azure Powershellu. Informace o Azure Powershellu najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview);  
 
-        # Log in to your Azure account
-        Add-AzureAccount
-
-        # Select the Azure subscription you want to use to create the resource group
-        Select-AzureSubscription -SubscriptionName <subscription name>
-
-            # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
-            #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
-
-        # Create an Azure resource group
-        New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
-
+   ```powershell
+   # Log in to your Azure account
+   Add-AzureAccount
+   # Select the Azure subscription you want to use to create the resource group
+   Select-AzureSubscription -SubscriptionName <subscription name>
+       # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the    Register-AzureRMProvider cmdlet to register the provider namespace
+       #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
+   # Create an Azure resource group
+   New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
+   ```
 
 * Nastavení vstupní zdroj a cíl výstupu úlohy pro připojení k.
 
@@ -53,21 +51,26 @@ Vytvoření úlohy služby analytics pomocí rozhraní API pro Stream Analytics 
 
 1. Vytvořte konzolovou aplikaci Visual Studio C# .NET.
 2. V konzole Správce balíčků pomocí následujících příkazů nainstalujte balíčky NuGet. První z nich je Azure Stream Analytics Management .NET SDK. Druhá je klient služby Azure Active Directory, který se použije pro ověřování.
-   
-        Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 1.8.3
-        Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
+
+```powershell
+Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 1.8.3
+Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.4
+```
+
 3. Přidejte následující **appSettings** část do souboru App.config:
-   
-        <appSettings>
-          <!--CSM Prod related values-->
-          <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
-          <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
-          <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
-          <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
-          <add key="RedirectUri" value="urn:ietf:wg:oauth:2.0:oob" />
-          <add key="SubscriptionId" value="YOUR AZURE SUBSCRIPTION" />
-          <add key="ActiveDirectoryTenantId" value="YOU TENANT ID" />
-        </appSettings>
+
+   ```csharp
+   <appSettings>
+     <!--CSM Prod related values-->
+     <add key="ActiveDirectoryEndpoint" value="https://login.microsoftonline.com/" />
+     <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
+     <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
+     <add key="AsaClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
+     <add key="RedirectUri" value="urn:ietf:wg:oauth:2.0:oob" />
+     <add key="SubscriptionId" value="YOUR AZURE SUBSCRIPTION" />
+     <add key="ActiveDirectoryTenantId" value="YOU TENANT ID" />
+   </appSettings>
+   ```
 
     Nahraďte hodnoty **SubscriptionId** a **ActiveDirectoryTenantId** s Azure ID předplatného a tenanta. Tyto hodnoty můžete získat spuštěním následující rutiny Azure Powershellu:
 
@@ -75,21 +78,26 @@ Vytvoření úlohy služby analytics pomocí rozhraní API pro Stream Analytics 
 
 4. V souboru .csproj přidejte následující odkaz:
 
-        <Reference Include="System.Configuration" />
+   ```csharp
+   <Reference Include="System.Configuration" />
+   ```
 
 1. Přidejte následující **pomocí** příkazy ke zdrojovému souboru (Program.cs) v projektu:
-   
-        using System;
-        using System.Configuration;
-        using System.Threading.Tasks;
-        
-        using Microsoft.Azure;
-        using Microsoft.Azure.Management.StreamAnalytics;
-        using Microsoft.Azure.Management.StreamAnalytics.Models;
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
+
+```csharp
+using System;
+using System.Configuration;
+using System.Threading.Tasks;
+
+using Microsoft.Azure;
+using Microsoft.Azure.Management.StreamAnalytics;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+```
+
 2. Přidejte metodu helper ověřování:
 
-   ```   
+   ```csharp
    private static async Task<string> GetAuthorizationHeader()
    {
        var context = new AuthenticationContext(
@@ -114,19 +122,19 @@ A **StreamAnalyticsManagementClient** objekt vám umožní spravovat úlohy a ú
 
 Přidejte následující kód do začátku **hlavní** metody:
 
-    string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
-    string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
-    string streamAnalyticsInputName = "<YOUR JOB INPUT NAME>";
-    string streamAnalyticsOutputName = "<YOUR JOB OUTPUT NAME>";
-    string streamAnalyticsTransformationName = "<YOUR JOB TRANSFORMATION NAME>";
-
-    // Get authentication token
-    TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
-        ConfigurationManager.AppSettings["SubscriptionId"],
-        GetAuthorizationHeader().Result);
-
-    // Create Stream Analytics management client
-    StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
+   ```csharp
+   string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
+   string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
+   string streamAnalyticsInputName = "<YOUR JOB INPUT NAME>";
+   string streamAnalyticsOutputName = "<YOUR JOB OUTPUT NAME>";
+   string streamAnalyticsTransformationName = "<YOUR JOB TRANSFORMATION NAME>";
+   // Get authentication token
+   TokenCloudCredentials aadTokenCredentials = new TokenCloudCredentials(
+       ConfigurationManager.AppSettings["SubscriptionId"],
+       GetAuthorizationHeader().Result);
+   // Create Stream Analytics management client
+   StreamAnalyticsManagementClient client = new StreamAnalyticsManagementClient(aadTokenCredentials);
+   ```
 
 **ResourceGroupName** hodnota proměnné by měl být stejný jako název skupiny prostředků vytvořené nebo vydat v požadované kroky.
 
@@ -137,135 +145,142 @@ Zbývající části tohoto článku se předpokládá, že tento kód je na za�
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 Následující kód vytvoří úlohu Stream Analytics ve skupině prostředků, které jste definovali. Do úlohy budou později přidat vstup, výstup a transformace.
 
-    // Create a Stream Analytics job
-    JobCreateOrUpdateParameters jobCreateParameters = new JobCreateOrUpdateParameters()
-    {
-        Job = new Job()
-        {
-            Name = streamAnalyticsJobName,
-            Location = "<LOCATION>",
-            Properties = new JobProperties()
-            {
-                EventsOutOfOrderPolicy = EventsOutOfOrderPolicy.Adjust,
-                Sku = new Sku()
-                {
-                    Name = "Standard"
-                }
-            }
-        }
-    };
-
-    JobCreateOrUpdateResponse jobCreateResponse = client.StreamingJobs.CreateOrUpdate(resourceGroupName, jobCreateParameters);
-
+   ```csharp
+   // Create a Stream Analytics job
+   JobCreateOrUpdateParameters jobCreateParameters = new JobCreateOrUpdateParameters()
+   {
+       Job = new Job()
+       {
+           Name = streamAnalyticsJobName,
+           Location = "<LOCATION>",
+           Properties = new JobProperties()
+           {
+               EventsOutOfOrderPolicy = EventsOutOfOrderPolicy.Adjust,
+               Sku = new Sku()
+               {
+                   Name = "Standard"
+               }
+           }
+       }
+   };
+   JobCreateOrUpdateResponse jobCreateResponse = client.StreamingJobs.CreateOrUpdate(resourceGroupName, jobCreateParameters);
+   ```
 
 ## <a name="create-a-stream-analytics-input-source"></a>Vytvoření vstupní zdroj Stream Analytics
 Následující kód vytvoří Stream Analytics vstupní zdroj s typem vstupní zdroj blob a serializace sdíleného svazku clusteru. Chcete-li vytvořit vstupní zdroj centra událostí, použijte **EventHubStreamInputDataSource** místo **BlobStreamInputDataSource**. Podobně můžete přizpůsobit typ serializace vstupních zdrojů.
 
-    // Create a Stream Analytics input source
-    InputCreateOrUpdateParameters jobInputCreateParameters = new InputCreateOrUpdateParameters()
-    {
-        Input = new Input()
-        {
-            Name = streamAnalyticsInputName,
-            Properties = new StreamInputProperties()
-            {
-                Serialization = new CsvSerialization
-                {
-                    Properties = new CsvSerializationProperties
-                    {
-                        Encoding = "UTF8",
-                        FieldDelimiter = ","
-                    }
-                },
-                DataSource = new BlobStreamInputDataSource
-                {
-                    Properties = new BlobStreamInputDataSourceProperties
-                    {
-                        StorageAccounts = new StorageAccount[]
-                        {
-                            new StorageAccount()
-                            {
-                                AccountName = "<YOUR STORAGE ACCOUNT NAME>",
-                                AccountKey = "<YOUR STORAGE ACCOUNT KEY>"
-                            }
-                        },
-                        Container = "samples",
-                        PathPattern = ""
-                    }
-                }
-            }
-        }
-    };
-
-    InputCreateOrUpdateResponse inputCreateResponse =
-        client.Inputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobInputCreateParameters);
+   ```csharp
+   // Create a Stream Analytics input source
+   InputCreateOrUpdateParameters jobInputCreateParameters = new InputCreateOrUpdateParameters()
+   {
+       Input = new Input()
+       {
+           Name = streamAnalyticsInputName,
+           Properties = new StreamInputProperties()
+           {
+               Serialization = new CsvSerialization
+               {
+                   Properties = new CsvSerializationProperties
+                   {
+                       Encoding = "UTF8",
+                       FieldDelimiter = ","
+                   }
+               },
+               DataSource = new BlobStreamInputDataSource
+               {
+                   Properties = new BlobStreamInputDataSourceProperties
+                   {
+                       StorageAccounts = new StorageAccount[]
+                       {
+                           new StorageAccount()
+                           {
+                               AccountName = "<YOUR STORAGE ACCOUNT NAME>",
+                               AccountKey = "<YOUR STORAGE ACCOUNT KEY>"
+                           }
+                       },
+                       Container = "samples",
+                       PathPattern = ""
+                   }
+               }
+           }
+       }
+   };
+   InputCreateOrUpdateResponse inputCreateResponse =
+   client.Inputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobInputCreateParameters);
+   ```
 
 Vstupní zdroje z úložiště objektů Blob nebo centra událostí jsou vázané na konkrétní úlohy. Použití stejného vstupního zdroje pro různé úlohy, musí volat metodu znovu a zadejte jiný název úlohy.
 
 ## <a name="test-a-stream-analytics-input-source"></a>Testovat vstupní zdroj Stream Analytics
 **TestConnection** Metoda testuje, jestli úloha Stream Analytics se bude moct připojit ke zdroji vstupních také další aspekty, které jsou specifické pro daný typ vstupního zdroje. Například v objektu blob vstupní zdroj, který jste vytvořili v předchozím kroku, metoda zkontroluje, že název účtu úložiště a pár klíčů slouží k připojení k účtu úložiště také zkontrolujte, jestli existuje zadaný kontejner.
 
-    // Test input source connection
-    DataSourceTestConnectionResponse inputTestResponse =
-        client.Inputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsInputName);
+   ```csharp
+   // Test input source connection
+   DataSourceTestConnectionResponse inputTestResponse =
+       client.Inputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsInputName);
+   ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Vytvořit cíl výstupu Stream Analytics
 Vytvoření cíl výstupu je velmi podobné jako vytvoření vstupní zdroj Stream Analytics. Jako vstupní zdroje jsou výstup cíle vázané na konkrétní úlohy. Použití stejného cíle výstup pro různé úlohy, musí volat metodu znovu a zadejte jiný název úlohy.
 
 Následující kód vytvoří cíl výstupu (Azure SQL database). Můžete upravit cíl výstupu datový typ nebo typ serializace.
 
-    // Create a Stream Analytics output target
-    OutputCreateOrUpdateParameters jobOutputCreateParameters = new OutputCreateOrUpdateParameters()
-    {
-        Output = new Output()
-        {
-            Name = streamAnalyticsOutputName,
-            Properties = new OutputProperties()
-            {
-                DataSource = new SqlAzureOutputDataSource()
-                {
-                    Properties = new SqlAzureOutputDataSourceProperties()
-                    {
-                        Server = "<YOUR DATABASE SERVER NAME>",
-                        Database = "<YOUR DATABASE NAME>",
-                        User = "<YOUR DATABASE LOGIN>",
-                        Password = "<YOUR DATABASE LOGIN PASSWORD>",
-                        Table = "<YOUR DATABASE TABLE NAME>"
-                    }
-                }
-            }
-        }
-    };
-
-    OutputCreateOrUpdateResponse outputCreateResponse =
-        client.Outputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobOutputCreateParameters);
+   ```csharp
+   // Create a Stream Analytics output target
+   OutputCreateOrUpdateParameters jobOutputCreateParameters = new OutputCreateOrUpdateParameters()
+   {
+       Output = new Output()
+       {
+           Name = streamAnalyticsOutputName,
+           Properties = new OutputProperties()
+           {
+               DataSource = new SqlAzureOutputDataSource()
+               {
+                   Properties = new SqlAzureOutputDataSourceProperties()
+                   {
+                       Server = "<YOUR DATABASE SERVER NAME>",
+                       Database = "<YOUR DATABASE NAME>",
+                       User = "<YOUR DATABASE LOGIN>",
+                       Password = "<YOUR DATABASE LOGIN PASSWORD>",
+                       Table = "<YOUR DATABASE TABLE NAME>"
+                   }
+               }
+           }
+       }
+   };
+   OutputCreateOrUpdateResponse outputCreateResponse =
+       client.Outputs.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, jobOutputCreateParameters);
+   ```
 
 ## <a name="test-a-stream-analytics-output-target"></a>Testování cíl výstupu Stream Analytics
 Cíl výstupu Stream Analytics má také **TestConnection** metoda pro testování připojení.
 
-    // Test output target connection
-    DataSourceTestConnectionResponse outputTestResponse =
-        client.Outputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsOutputName);
+   ```csharp
+   // Test output target connection
+   DataSourceTestConnectionResponse outputTestResponse =
+       client.Outputs.TestConnection(resourceGroupName, streamAnalyticsJobName, streamAnalyticsOutputName);
+   ```
 
 ## <a name="create-a-stream-analytics-transformation"></a>Vytvoření transformace Stream Analytics
 Následující kód vytvoří transformaci Stream Analytics s dotazem "vybrat * z zadání" a určuje se přidělit jednu jednotku streamování pro úlohy Stream Analytics. Další informace o úpravě jednotek streamování najdete v tématu [úlohy škálování Azure Stream Analytics](stream-analytics-scale-jobs.md).
 
-    // Create a Stream Analytics transformation
-    TransformationCreateOrUpdateParameters transformationCreateParameters = new TransformationCreateOrUpdateParameters()
-    {
-        Transformation = new Transformation()
-        {
-            Name = streamAnalyticsTransformationName,
-            Properties = new TransformationProperties()
-            {
-                StreamingUnits = 1,
-                Query = "select * from Input"
-            }
-        }
-    };
-
-    var transformationCreateResp =
-        client.Transformations.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, transformationCreateParameters);
+   ```csharp
+   // Create a Stream Analytics transformation
+   TransformationCreateOrUpdateParameters transformationCreateParameters = new TransformationCreateOrUpdateParameters()
+   {
+       Transformation = new Transformation()
+       {
+           Name = streamAnalyticsTransformationName,
+           Properties = new TransformationProperties()
+           {
+               StreamingUnits = 1,
+               Query = "select * from Input"
+           }
+       }
+   };
+   var transformationCreateResp =
+       client.Transformations.CreateOrUpdate(resourceGroupName, streamAnalyticsJobName, transformationCreateParameters);
+   ```
 
 Jako vstup a výstup se váže na konkrétní úlohy Stream Analytics, který byl vytvořený v rámci také transformace.
 
@@ -274,26 +289,32 @@ Po vytvoření úlohy Stream Analytics a jeho nahráním, výstupy a transformac
 
 Následující ukázkový kód spustí úlohu Stream Analytics s časem zahájení vlastního výstupu nastavena na 12. prosince 2012, 12:12:12 UTC:
 
-    // Start a Stream Analytics job
-    JobStartParameters jobStartParameters = new JobStartParameters
-    {
-        OutputStartMode = OutputStartMode.CustomTime,
-        OutputStartTime = new DateTime(2012, 12, 12, 0, 0, 0, DateTimeKind.Utc)
-    };
-
-    LongRunningOperationResponse jobStartResponse = client.StreamingJobs.Start(resourceGroupName, streamAnalyticsJobName, jobStartParameters);
+   ```csharp
+   // Start a Stream Analytics job
+   JobStartParameters jobStartParameters = new JobStartParameters
+   {
+       OutputStartMode = OutputStartMode.CustomTime,
+       OutputStartTime = new DateTime(2012, 12, 12, 0, 0, 0, DateTimeKind.Utc)
+   };
+   
+   LongRunningOperationResponse jobStartResponse = client.StreamingJobs.Start(resourceGroupName, streamAnalyticsJobName,    jobStartParameters);
+   ```
 
 ## <a name="stop-a-stream-analytics-job"></a>Zastavení úlohy Stream Analytics
 Spuštěná úloha Stream Analytics můžete zastavit pomocí volání **Zastavit** metody.
 
-    // Stop a Stream Analytics job
-    LongRunningOperationResponse jobStopResponse = client.StreamingJobs.Stop(resourceGroupName, streamAnalyticsJobName);
+   ```csharp
+   // Stop a Stream Analytics job
+   LongRunningOperationResponse jobStopResponse = client.StreamingJobs.Stop(resourceGroupName, streamAnalyticsJobName);
+   ```
 
 ## <a name="delete-a-stream-analytics-job"></a>Odstranění úlohy Stream Analytics
 **Odstranit** metoda dojde k odstranění úlohy, jakož i základní dílčí prostředky, včetně nahráním, výstupy a transformace úlohy.
 
-    // Delete a Stream Analytics job
-    LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
+   ```csharp
+   // Delete a Stream Analytics job
+   LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
+   ```
 
 ## <a name="get-support"></a>Získat podporu
 Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).

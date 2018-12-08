@@ -1,5 +1,6 @@
 ---
-title: 'Rychlý start: Použití služby Azure portal začít s Azure Machine Learning'
+title: 'Rychlý start: Použití webu Azure portal spustíte'
+titleSuffix: Azure Machine Learning service
 description: Začínáme se službou Azure Machine Learning. Vytvoření pracovního prostoru, což je základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely strojového učení pomocí webu Azure portal.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,13 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 3b874abc3896b9e6520500370d09e685d49ff82c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.custom: seodec18
+ms.openlocfilehash: 00ad774caa0fe0dcfb7f41614ec25e6cc802da10
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015701"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103094"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Rychlý start: Začínáme se službou Azure Machine Learning s využitím webu Azure Portal
 

@@ -1,21 +1,22 @@
 ---
-title: Předem připravené služby LUIS měny referenční informace k entitám – Azure | Dokumentace Microsoftu
+title: CurrentY předem připravených entit
 titleSuffix: Azure
 description: Tento článek obsahuje měny informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 6346ce4e3c9e51852a9a98904b797b6eb64970e4
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 432ee8a7dda75b01015795034ee7f55fe0840775
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334002"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102706"
 ---
 # <a name="currency-entity"></a>Entita Currency
 Měny předem připravených entit rozpozná měny v mnoha označení a zemí, bez ohledu na jazykovou verzi aplikace LUIS. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující Měna, která se záměry aplikace. Entita měny se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
@@ -26,7 +27,7 @@ Spravuje se z měny [rozpoznávání textu](https://github.com/Microsoft/Recogni
 ## <a name="resolution-for-currency-entity"></a>Řešení pro entitu měny
 Následující příklad ukazuje rozlišení **builtin.currency** entity.
 
-```JSON
+```json
 {
   "query": "search for items under $10.99",
   "topScoringIntent": {

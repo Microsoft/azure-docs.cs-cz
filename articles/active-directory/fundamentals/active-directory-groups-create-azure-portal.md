@@ -1,6 +1,6 @@
 ---
-title: Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory | Microsoft Docs
-description: Naučte se vytvořit základní skupinu pomocí Azure Active Directory.
+title: Vytvoření základní skupiny a přidání členů – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak vytvořit základní skupiny pomocí služby Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,16 +11,15 @@ ms.topic: quickstart
 ms.date: 08/22/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 36bd0ca06859c1952a75b1aa8397fba88dc22d40
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: HT
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: be3271a1105e8222ae04e17140c6e925a1c612f9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574908"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105443"
 ---
-# <a name="how-to-create-a-basic-group-and-add-members-using-azure-active-directory"></a>Postup: Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory
-
+# <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Vytvoření základní skupiny a přidání členů pomocí Azure Active Directory
 Základní skupinu můžete vytvořit na portálu Azure Active Directory (Azure AD). Pro účely tohoto článku přidá základní skupinu do jednoho prostředku vlastník prostředku (správce) a skupina zahrnuje konkrétní členy (zaměstnance), kteří k danému prostředku potřebují přístup. Složitější scénáře, které zahrnují dynamická členství a vytváření pravidel, najdete v [dokumentaci ke správě uživatelů ve službě Azure Active Directory](../users-groups-roles/index.yml).
 
 ## <a name="create-a-basic-group-and-add-members"></a>Vytvoření základní skupiny a přidání členů
@@ -72,7 +71,7 @@ Vytvořit základní skupinu a přidat do ní členy můžete současně.
 
     ![Stránka Přehled skupiny se zvýrazněným počtem členů](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Teď, když máte přidanou skupinu a alespoň jednoho uživatele, můžete provést tyto akce:
 
 - [Zobrazení skupin a členů](active-directory-groups-view-azure-portal.md)

@@ -1,21 +1,22 @@
 ---
-title: Principy klíčů LUIS
-titleSuffix: Azure Cognitive Services
-description: Služba LUIS používá dva klíče, pro tvorbu a koncový bod. Vytváření klíč je vytvořen automaticky při vytvoření účtu služby LUIS. Až budete připravení k publikování aplikace LUIS, můžete k vytvoření klíče koncového bodu přiřadit aplikace LUIS a použít je s dotazem koncový bod.
+title: Klíčů předplatného
+titleSuffix: Language Understadning - Azure Cognitive Services
+description: Služba LUIS používá dva klíče, zdarma pro tvorbu klíč pro vytvoření modelu a klíče koncového bodu Účtovaná podle objemu dat pro dotazování na koncový bod předpovědi s projevy uživatele.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f7c1753e71025d3ce39b1b6e3fb7362f2df212f5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 9b660743f335e1aa9ef7e7b569738d9ee3ca139d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637827"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104522"
 ---
 # <a name="keys-in-luis"></a>Klíče v LUIS
 Služba LUIS používá dva klíče: [vytváření](#programmatic-key) a [koncový bod](#endpoint-key). Vytváření klíč je vytvořen automaticky při vytvoření účtu služby LUIS. Až budete připraveni k publikování aplikace LUIS, budete muset [vytvořit klíče koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ji přiřadit](luis-how-to-manage-keys.md#assign-endpoint-key) do vaší aplikace LUIS a [pomocí dotazu koncový bod](#use-endpoint-key-in-query). 

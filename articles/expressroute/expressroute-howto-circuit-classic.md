@@ -5,14 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 6e8eac885303531abc7014f2fadc7b6056bde510
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 0d6d8af9456f5f943eb70b5a63b69e2f7f16a4cb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251691"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104233"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Úprava okruhu ExpressRoute pomocí prostředí PowerShell (classic)
 
@@ -24,15 +25,15 @@ ms.locfileid: "51251691"
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
-Tento článek také ukazuje, jak zkontrolovat stav, update nebo delete a zrušit zřízení okruhu ExpressRoute.
+Tento článek vás provede kroky ke kontrole stavu, aktualizace nebo odstranění a zrušení zřízení modelu okruhů ExpressRoute modelu nasazení classic. Tento článek se týká modelu nasazení Classic.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
 **O modelech nasazení Azure**
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Nainstalujte nejnovější verze modulů Azure Service Management Powershellu a modul ExpressRoute.  Při použití v následujícím příkladu, mějte na paměti, že číslo verze (v tomto příkladu 5.1.1) se změní vydané novější verze rutin.
 

@@ -1,23 +1,24 @@
 ---
-title: Data Application Insights služby luis pomocí Node.js
+title: Application Insights Node.js
 titleSuffix: Azure Cognitive Services
 description: Vytvořte robota, integruje se službou LUIS aplikace a Application Insights s využitím Node.js.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6199e4a681f7f58ea0cf57b575afb2a63d160eee
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 4461ac71ba5f9ab5901c5d7b72c15c0c165621e3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321950"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103961"
 ---
-# <a name="add-luis-results-to-application-insights"></a>Přidání LUIS výsledky do Application Insights
+# <a name="add-luis-results-to-application-insights-and-azure-functions"></a>Přidání služby LUIS výsledky do Application Insights a Azure functions
 V tomto kurzu přidá LUIS požadavku a odpovědi informace, které [Application Insights](https://azure.microsoft.com/services/application-insights/) úložiště dat telemetrie. Až budete mít data, můžete ji dotazovat s Kusto jazyk nebo Power BI k analýze, agregovat a vytváření sestav o záměry a entity utterance v reálném čase. Tato analýza pomůže zároveň pomáhá určit, pokud by měl přidat nebo upravit záměry a entity aplikace LUIS.
 
 Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
@@ -58,7 +59,7 @@ K zachycení LUIS žádost a odpověď, použijete web app bot potřebuje **[App
 
 3. V konzole zadejte následující příkaz k instalaci služby Application Insights a podtržítka balíčky:
 
-    ```
+    ```console
     cd site\wwwroot && npm install applicationinsights && npm install underscore
     ```
 
@@ -66,7 +67,7 @@ K zachycení LUIS žádost a odpověď, použijete web app bot potřebuje **[App
 
     Vyčkat, než instalace balíčků:
 
-    ```
+    ```console
     luisbot@1.0.0 D:\home\site\wwwroot
     `-- applicationinsights@1.0.1 
       +-- diagnostic-channel@0.2.0 
@@ -142,7 +143,7 @@ Služba Application Insights poskytuje výkonné nástroje pro dotazování dat 
 
 3. Vyžádá si hlavní záměr, skóre a utterance, přidejte následující přímo nad poslední řádek v okně dotazu:
 
-    ```SQL
+    ```kusto
     | extend topIntent = tostring(customDimensions.LUIS_intent_intent)
     | extend score = todouble(customDimensions.LUIS_intent_score)
     | extend utterance = tostring(customDimensions.LUIS_text)

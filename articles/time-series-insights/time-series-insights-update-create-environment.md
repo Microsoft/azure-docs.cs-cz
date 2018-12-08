@@ -1,6 +1,6 @@
 ---
-title: Kurz služby Azure Time Series Insights (Preview) | Dokumentace Microsoftu
-description: Seznamte se s Azure Time Series Insights (Preview)
+title: Nastavte si prostředí kurz Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit prostředí v Azure čas Series Insights ve verzi Preview.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -9,161 +9,164 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
 ms.date: 11/26/2018
-ms.openlocfilehash: d4f69533a68e11b3e171963429b141cf0736472d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 20cec1305f84bd1ff7e01f2e1d38f374aa17bc6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014629"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106668"
 ---
-# <a name="azure-time-series-insights-preview-tutorial"></a>Kurz služby Azure Time Series Insights (Preview)
+# <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview
 
-Tento kurz vás provede procesem vytvoření prostředí Azure Time Series Insights (TSI) ve verzi Preview, naplněný daty ze simulovaných zařízení. V tomto kurzu se naučíte:
+Tento kurz vás provede procesem vytvoření prostředí Azure čas Series Insights ve verzi Preview, který je vyplněný daty ze simulovaných zařízení. V tomto kurzu se naučíte:
 
-* Vytvoření prostředí služby TSI (Preview).
-* Připojení prostředí TSI (Preview) v Centru událostí.
-* Spuštění simulace větrné farmy pro streamování dat do prostředí TSI Preview.
+* Vytvoření prostředí čas Series Insights ve verzi Preview.
+* Připojení prostředí čas Series Insights ve verzi Preview do centra událostí ve službě Azure Event Hubs.
+* Spuštění simulace větrné farmy pro streamování dat do prostředí čas Series Insights ve verzi Preview.
 * Proveďte základní analýzy na data.
 * Definujte typ modelu časové řady a hierarchie a přidružte jej k instancím.
 
-## <a name="create-a-time-series-insights-preview-environment"></a>Vytvoření prostředí Time Series Insights (Preview)
+## <a name="create-a-time-series-insights-preview-environment"></a>Vytvoření prostředí čas Series Insights ve verzi Preview
 
-Tato část popisuje, jak vytvořit prostředí Azure TSI (Preview) pomocí [webu Azure Portal](https://portal.azure.com/).
+Tato část popisuje, jak vytvořit čas Series Insights ve verzi Preview prostředí pomocí [webu Azure portal](https://portal.azure.com/).
 
-1. Přihlaste se pomocí svého účtu předplatného webu Azure Portal
-1. Vlevo nahoře vyberte **+ Vytvořit prostředek**.
-1. Vyberte kategorii **Internet věcí** a potom zvolte **Time Series Insights**.
+1. Přihlaste se k webu Azure portal pomocí svého účtu předplatného.
 
-   ![kurz: 1][1]
+1. Vyberte **vytvořit prostředek**.
 
-1. Na stránce prostředí Time Series Insights, vyplňte požadované parametry a klikněte na **Další: zdroj událostí**. Pro účely tohoto kurzu nastavte **ID řady času** jako `Id`. Další informace o **čas řady ID**, najdete v tématu [čas řady ID](./time-series-insights-update-how-to-id.md).
+1. Vyberte **Internet of Things** kategorie a pak vyberte **Time Series Insights**.
 
-   ![kurz 2][2]
+  ![Vyberte možnost vytvořit prostředek, pak vyberte Internet of Things a pak vyberte Time Series Insights][1]
 
-1. Na **zdroj události** stránce, vyplňte požadované parametry a klikněte na **revize + vytvořit**. Pro účely tohoto kurzu nastavte **časové razítko** vlastnost pole jako `Timestamp`.
+1. Na **Základy** kartu, zadejte požadované parametry a pak vyberte **Další: Zdroj události**
 
-   ![kurz 3][3]
+  ![Na kartě Základy prostředí Time Series Insights a další: tlačítko Zdroj události][2]
 
-1. Zkontrolujte všechny informace a klikněte na **vytvořit** zahájíte zřizování prostředí.
+1. Na **zdroj události** kartu, zadejte požadované parametry a pak vyberte **revize + vytvořit**.
 
-   ![kurz 4][4]
+  ![Na kartě Zdroj události a kontrola + tlačítko vytvořit.][3]
 
-1. Až se nasazení dokončí úspěšně, dostanete oznámení.
+1. Na **Souhrn** kartu, projděte si všechny informace a vyberte **vytvořit** zahájíte zřizování prostředí.
 
-   ![kurz – pět][5]
+  ![Karta Souhrn a tlačítka pro vytvoření][4]
 
-## <a name="send-events-to-your-tsi-environment"></a>Odesílání událostí do prostředí TSI
+1. Po úspěšné nasazení se zobrazí oznámení.
 
-V této části použijete windmill simulátor zařízení k odesílání událostí do prostředí TSI prostřednictvím centra událostí.
+  ![Oznámení nasazení bylo úspěšné.][5]
 
-  1. Na webu Azure Portal přejděte k prostředku centra událostí a připojení k prostředí TSI. Přečtěte si [jak se připojit k existující centrum událostí váš prostředek](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+## <a name="send-events-to-your-time-series-insights-environment"></a>Odesílání událostí do prostředí Time Series Insights
 
-  1. Na stránce prostředků centra událostí, přejděte na **sdílené zásady přístupu** a potom **RootManageSharedAccessKey**. Kopírovat **připojovací řetězec – primární klíč** tady zobrazí.
+V této části použijete windmill simulátor zařízení k odesílání událostí do prostředí Time Series Insights prostřednictvím centra událostí.
 
-      ![kurz – 6][6]
+  1. Na webu Azure Portal přejděte na váš prostředek centra událostí a připojení k prostředí Time Series Insights. Další postup najdete v tématu [připojit prostředek k existujícím Centru událostí](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
-  1. Přejděte do [ (Nastavení)https://tsiclientsample.azurewebsites.net/windFarmGen.html]( https://tsiclientsample.azurewebsites.net/windFarmGen.html) (Integrace a služby). Tato webová aplikace simuluje windmill zařízení.
-  1. Vložit připojovací řetězec zkopíruje z kroku 3 v **připojovací řetězec centra událostí**
+  1. Na stránce prostředků centra událostí, přejděte na **sdílené zásady přístupu** > **RootManageSharedAccessKey**. Zkopírujte hodnotu **připojovací řetězec – primární klíč**.
 
-      ![kurz – sedm][7]
+      ![Zkopírujte hodnotu primárního klíče připojovací řetězec][6]
 
-  1. Klikněte na **klikněte na tlačítko Start** odesílání událostí do vašeho centra událostí. V této fázi se soubor s názvem `instances.json` bude stažena do vašeho počítače. Tento soubor uložte, protože jsme budete potřebovat později.
+  1. Přejděte do [ (Nastavení)https://tsiclientsample.azurewebsites.net/windFarmGen.html]( https://tsiclientsample.azurewebsites.net/windFarmGen.html) (Integrace a služby). Tato webová aplikace na adrese URL simuluje windmill zařízení.
 
-  1. Vraťte se do vašeho centra událostí. Teď byste měli vidět nové události přijímá hub.d
+  1. V **připojovací řetězec centra událostí** pole na webové stránce, vložte připojovací řetězec, který jste zkopírovali v předchozím kroku.
 
-      ![kurz – 8][8]
+      ![Vložte primární klíč připojovacího řetězce v poli připojovací řetězec centra událostí][7]
+
+  1. Vyberte **klikněte na tlačítko Spustit** pro odesílání událostí do vašeho centra událostí. Soubor s názvem *instances.json* se stáhne do vašeho počítače. Uložte tento soubor pro pozdější použití.
+
+  1. Vraťte se do vašeho centra událostí na webu Azure Portal. V Centru událostí **přehled** stránce se zobrazí nové události, které jsou přijímány v Centru událostí.
+
+     ![Stránka Přehled centra událostí, který zobrazuje metriky pro Centrum událostí][8]
 
 ## <a name="analyze-data-in-your-environment"></a>Analýza dat ve vašem prostředí
 
-V této části provedete základní analýzy na dobu aktualizace řady dat Time Series Insights pomocí Průzkumníka.
+V této části provedete základní analýzy na váš čas řady dat pomocí služby Time Series Insights aktualizovat Průzkumníka.
 
-  1. Kliknutím na adresu URL na stránce prostředků na webu Azure Portal přejděte do vaší aktualizace Průzkumníka Time Series Insights.
+  1. Kliknutím na adresu URL na stránce prostředků na webu Azure Portal přejděte na vaše aktualizace Průzkumníka Time Series Insights.
 
-      ![kurz devět][9]
+      ![Adresa URL Průzkumníka Time Series Insights][9]
 
-  1. V Průzkumníkovi, klikněte na **bez nadřazených položek instance** uzlů, čímž zobrazíte všechny časové řady instance v prostředí.
+  1. V Průzkumníku pod **fyzická hierarchie**, vyberte **bez nadřazených položek instance** uzlů, čímž zobrazíte všechny instance řady času v prostředí.
 
-      ![kurz – deset][10]
+     ![Seznam instancí bez nadřazených položek v podokně fyzická hierarchie][10]
 
-  1. V tomto kurzu vytvoříme analýza dat odeslaných za poslední den. Pokud chcete udělat, klikněte na **rychlé časy** a vyberte **posledních 24 hodin** možnost.
+  1. V tomto kurzu budeme analyzovat data, která byla odeslána za poslední den. Vyberte **rychlé časy**a pak vyberte **posledních 24 hodin**.
 
-      ![kurz jedenáct][11]
+     ![V rozevíracím seznamu Rychlé časy vyberte posledních 24 hodin][11]
 
-  1. Vyberte **Sensor_0** a zvolte **zobrazit průměrné hodnoty** k vizualizaci dat odesílaných z této instance řady čas.
+  1. Vyberte **Sensor_0**a pak vyberte **zobrazit průměrné hodnoty** k vizualizaci dat odesílaných z této instance služby Time Series Insights.
 
-      ![kurz – 12][12]
+     ![Vyberte Zobrazit průměrné hodnoty pro Sensor_0][12]
 
-  1. Podobně můžete zobrazit data přicházející z jiné instance řady času provádět základní analýzy.
+  1. Podobně můžete zobrazit data, která pochází z jiné instance služby Time Series Insights provádět základní analýzy.
 
-      ![kurz třináct][13]
+     ![Vykreslení dat služby Time Series Insights][13]
 
-## <a name="define-a-type-and-hierarchy"></a>Definujte typ a hierarchie
+## <a name="define-a-type-and-hierarchy"></a>Definujte typ a hierarchie 
 
-V této části se vytvořit typ, hierarchie a přidružit k vaší instance řady času. Další informace o [čas řady modely](./time-series-insights-update-tsm.md).
+V této části vytváření typu a hierarchie a pak přidružit typ a hierarchie s vaší instancí služby Time Series Insights. Další informace o [čas řady modely](./time-series-insights-update-tsm.md).
 
-  1. V Průzkumníkovi, klikněte na **modelu** kartu na panelu aplikací.
+  1. V Průzkumníkovi, vyberte **modelu** kartu.
 
-      ![kurz čtrnáct][14]
+     ![Na kartě modelu v nabídce Průzkumníka][14]
 
-  1. V oddílu typy, klikněte na **+ přidat**. To vám umožní vytvořit nový typ modelu řady čas.
+  1. V **typy** vyberte **přidat** a vytvořte nový typ modelu časové řady.
 
-      ![kurz patnáct][15]
+     ![Tlačítko Přidat na stránku typy][15]
 
-  1. V Editoru typů, zadejte **název**, **popis**, vytvářet proměnné pro **průměrné**, **Min**, a **maximální** hodnoty, jak je znázorněno níže. Klikněte na **vytvořit** uložte typ.
+  1. V Editoru typů, zadejte hodnoty pro **název** a **popis**. Vytváření proměnných pro **průměrné**, **Min**, a **maximální** hodnoty, jak je znázorněno na následujících obrázcích. Vyberte **vytvořit** uložte typ.
 
-      ![kurz – šestnáct][16]
+     ![Přidat typ podokno a tlačítka pro vytvoření][16]
 
-      ![kurz sedmnáct][17]
+     ![Typy Windmill vzorku][17]
 
-  1. V **hierarchie** části, klikněte na **+ přidat**. To vám umožní vytvořit nový Model řady časovou hierarchii.
+  1. V **hierarchie** vyberte **přidat** vytvořit novou hierarchii modelu časové řady.
 
-     ![kurz osmnáct][18]
+     ![Tlačítko Přidat na stránku hierarchie][18]
 
-  1. V editoru hierarchie, zadejte **název** a přidat hierarchie úrovní, jak je znázorněno níže. Klikněte na **vytvořit** uložit hierarchii.
+  1. V editoru hierarchie, zadejte hodnotu pro **název** a přidejte úrovní hierarchie. Vyberte **vytvořit** uložit hierarchii.
 
-     ![kurz devatenáct][19]
+     ![Přidat hierarchii podokno a tlačítka pro vytvoření][19]
 
-     ![dvacet kurz][20]
+     ![Do pole fyzická hierarchie][20]
 
-  1. V **instance** , vyberte výchozí instanci a klikněte na **upravit**. To vám umožní přidružit tuto instanci typu a hierarchie.
+  1. V **instance** , vyberte výchozí instanci a pak vyberte **upravit** pro přidružení k této instanci typu a hierarchie.
 
-     ![kurz: dvacet 1][21]
+     ![Seznam instancí][21]
 
-  1. V editoru instance zvolte typ a hierarchii definovaný v krocích 3, 5 výše, jak je znázorněno.
+  1. V editoru instance vyberte typ a hierarchie, která jste definovali v kroku 3 a 5.
 
-     ![kurz dvacet dvě][22]
+     ![Upravit instanci podokno][22]
 
-  1. Provedete to pro všechny instance najednou, případně můžete upravit `instances.json` soubor, který byl předtím stáhli. V tomto souboru Nahradit vše **typeId** a **hierarchyId** pole s ID získané z kroky 3, 5 výše.
+  1. Můžete také vybrat typ a hierarchie v rámci všech instancí současně, můžete upravit *instances.json* soubor, který byl předtím stáhli. V tomto souboru Nahradit vše **typeId** a **hierarchyId** pole s ID, kterou jste získali v kroku 3 a 5.
 
-  1. V **instance** části, klikněte na **nahrát JSON** a nahrát upravený `instances.json` sdílené, jak je znázorněno níže.
+  1. V **instance** vyberte **nahrát JSON** a nahrát upravený *instances.json* souboru.
 
-     ![kurz dvacet tři][23]
+     ![Tlačítko Nahrát JSON][23]
 
-  1. Přejděte **Analytics** kartu a aktualizujte svůj prohlížeč. Teď byste měli vidět všechny instance přidružené k typu a hierarchii výše.
+  1. Vyberte **Analytics** kartu a aktualizujte svůj prohlížeč. Zobrazit všechny instance přidružené k typu a hierarchie, která jste definovali.
 
-     ![kurz – 24][24]
+     ![Vykreslení dat služby Time Series Insights][24]
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:  
 
-* Vytvoření prostředí služby TSI (Preview).
-* Připojení prostředí TSI (Preview) v Centru událostí.
-* Spuštění simulace větrné farmy pro streamování dat do prostředí TSI (Preview).
-* Proveďte základní analýzy na data.
-* Definování typu modelu časové řady, hierarchie a přidružte jej k instancím.
+* Vytvoření prostředí čas Series Insights ve verzi Preview.
+* Připojení prostředí čas Series Insights ve verzi Preview do centra událostí.
+* Spuštění simulace větrné farmy pro streamování dat do prostředí čas Series Insights ve verzi Preview.
+* Proveďte analýzu základní data.
+* Definujte typ modelu časové řady a hierarchie a přidružit vaše instance.
 
-Teď už víte, jak vytvořit vlastní prostředí TSI aktualizace, přečtěte si informace o klíčových konceptech ve službě TSI.
+Teď, když víte, jak vytvořit vlastní prostředí Time Series Insights aktualizace, přečtěte si informace o klíčových konceptech v Time Series Insights.
 
-Přečtěte si informace o konfiguraci úložiště TSI:
+Přečtěte si informace o konfiguraci úložiště Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Úložiště Azure TSI (Preview) a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
+> [Azure storage čas Series Insights ve verzi Preview a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
 
 Další informace o modelech řady čas:
 
 > [!div class="nextstepaction"]
-> [Azure modelování dat TSI (Preview)](./time-series-insights-update-tsm.md)
+> [Modelování dat Azure čas Series Insights ve verzi Preview](./time-series-insights-update-tsm.md)
 
 <!-- Images -->
 [1]: media/v2-update-provision/tutorial-one.png

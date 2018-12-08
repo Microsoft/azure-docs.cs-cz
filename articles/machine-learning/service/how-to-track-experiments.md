@@ -1,5 +1,6 @@
 ---
-title: Sledování experimenty a vzdělávání metrik - Azure Machine Learning | Dokumentace Microsoftu
+title: Sledování experimenty a vzdělávání metriky
+titleSuffix: Azure Machine Learning service
 description: Ve službě Azure Machine Learning můžete sledovat své experimenty a monitorovat metriky vylepšit proces vytváření modelu. Zjistěte, jak přidat protokolování do trénovací skript, jak odeslání experimentu, jak zkontrolovat průběh spuštěné úlohy a postup zobrazení výsledků spuštění.
 services: machine-learning
 author: heatherbshapiro
@@ -10,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ae61f6fe24486eb1d4d5deecf5fb005a4d71b5fc
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7137d43805065a8f29aa8fcf5307dd5b8947b345
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016159"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101343"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Sledujte experimenty a vzdělávání metriky ve službě Azure Machine Learning
 
@@ -291,7 +292,7 @@ Další informace:
 + [Model popisují možnosti](#model-explain-ability-and-feature-importance)
 
 
-### <a name="how-to-see-run-charts"></a>Jak zobrazit grafy spuštění:
+### <a name="view-the-run-charts"></a>Zobrazení spuštění grafů
 
 1. Přejděte do svého pracovního prostoru. 
 

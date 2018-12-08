@@ -10,12 +10,12 @@ ms.date: 09/11/2018
 ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: 531b431a0753e34592e88211d8a58328fe8a4e45
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d3fbc8e5b6595b52fe5ab9e766a108d271f2f448
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014544"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104590"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -75,6 +75,7 @@ V sadě Visual Studio:
 
     ![Možnosti nástrojů – snímek obrazovky dialogového okna](media/common/VerbositySetting.PNG)
     
+### <a name="multi-stage-dockerfiles"></a>Vícefázové soubory Dockerfile:
 Při pokusu o použití souboru Dockerfile vícefázové, může se zobrazit tato chyba. Podrobný výstup bude vypadat například takto:
 
 ```cmd
@@ -91,6 +92,21 @@ Service cannot be started.
 ```
 
 Je to proto uzlů AKS používají starší verzi dockeru, který nepodporuje vícefázových sestavení. Je potřeba přepsat vašem souboru Dockerfile, aby se zabránilo vícefázových sestavení.
+
+### <a name="re-running-a-service-after-controller-re-creation"></a>Opětovné spuštění služby po opětovné vytvoření kontroleru
+Při pokusu o opětovné spuštění služby po odebrat a pak znovu vytvářejí řadičem Azure Dev prostory přidružené k tomuto clusteru, může se zobrazit tato chyba. Podrobný výstup bude vypadat například takto:
+
+```cmd
+Installing Helm chart...
+Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+Helm install failed with exit code '1': Release "azds-33d46b-default-webapp1" does not exist. Installing it now.
+Error: release azds-33d46b-default-webapp1 failed: services "webapp1" already exists
+```
+
+Je to proto, že odebrání řadiče Dev prostory neodebere služby dříve nainstalovala služba kontroleru. Opětovné vytvoření kontroleru a pak zkusíte ke spouštění služeb pomocí nového řadiče se nezdaří, protože staré služby jsou stále na místě.
+
+Chcete-li to vyřešit, použijte `kubectl delete` příkazu ručně odebrat starý služby z vašeho clusteru, a poté znovu spusťte prostory Dev k instalaci nových služeb.
 
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Překlad názvů DNS pro veřejnou adresu URL související se službou Dev prostory nezdaří
 
@@ -195,6 +211,15 @@ Rozšíření VS Codu pro Azure Dev prostory nainstalována na vývojovém poč�
 
 ### <a name="try"></a>Zkuste:
 Nainstalujte [rozšíření VS Codu pro Azure Dev prostory](get-started-netcore.md).
+
+## <a name="debugging-error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>Chyba ladění "neplatný"cwd"hodnota" / src ". Systém nemůže najít zadaný soubor." nebo "spuštění: program '/ src / [cesta k projektu binární]' neexistuje."
+Spuštění ladicího programu VS Code zaznamená chybu `Invalid 'cwd' value '/src'. The system cannot find the file specified.` a/nebo `launch: program '/src/[path to project executable]' does not exist`
+
+### <a name="reason"></a>Důvod
+Ve výchozím nastavení, používá rozšíření VS Codu `src` jako pracovní adresář pro projekt v kontejneru. Pokud jste aktualizovali vaši `Dockerfile` Pokud chcete zadat jinou pracovní adresář, může se zobrazit tato chyba.
+
+### <a name="try"></a>Zkuste:
+Aktualizace `launch.json` soubor `.vscode` podadresář složky projektu. Změnit `configurations->cwd` směrnice tak, aby odkazoval do stejného adresáře jako `WORKDIR` definované ve vašem projektu `Dockerfile`. Budete muset taky aktualizovat `configurations->program` také směrnice.
 
 ## <a name="the-type-or-namespace-name-mylibrary-could-not-be-found"></a>Název typu nebo oboru názvů 'Moje knihovna' nebyl nalezen
 

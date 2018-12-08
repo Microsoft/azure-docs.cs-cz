@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/25/2018
 ms.author: diberry
-ms.openlocfilehash: 993e5c7c1975af0c8fe3e55fd59a2f90b39ff642
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 740dae77bd60a0d38370b0678d57d3479eafceb1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011681"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106256"
 ---
-# <a name="tutorial-luis-bot-in-c"></a>Kurz: Robot LUIS v jazyce C#
+# <a name="tutorial-luis-bot-in-c-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Kurz: Bot LUIS v C# pomocí rozhraní Bot Framework 4.x a použijete Azure Web app bot
 Pomocí jazyka C# můžete vytvořit chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento robot používá k implementaci řešení robota aplikaci HomeAutomation. K vytvoření robota se používá [Web App Bot](https://docs.microsoft.com/azure/bot-service/) Azure a [Bot Framework ve verzi](https://github.com/Microsoft/botbuilder-js) v4.
 
 **V tomto kurzu se naučíte:**
@@ -49,8 +49,8 @@ Pomocí jazyka C# můžete vytvořit chatovacího robota integrovaného se služ
     |--|--|--|
     |Bot name (Název robota)|Název prostředku|`luis-csharp-bot-` + `<your-name>`, například `luis-csharp-bot-johnsmith`|
     |Předplatné|Předplatné, pod kterým se má robot vytvořit|Vaše primární předplatné
-    |Skupina zdrojů|Logická skupina prostředků Azure|Vytvořte novou skupinu k uložení všech prostředků používaných s tímto robotem a skupinu pojmenujte `luis-csharp-bot-resource-group`.|
-    |Poloha|Oblast Azure – nemusí být stejná jako oblast LUIS pro vytváření nebo publikování.|`westus`|
+    |Skupina prostředků|Logická skupina prostředků Azure|Vytvořte novou skupinu k uložení všech prostředků používaných s tímto robotem a skupinu pojmenujte `luis-csharp-bot-resource-group`.|
+    |Umístění|Oblast Azure – nemusí být stejná jako oblast LUIS pro vytváření nebo publikování.|`westus`|
     |Cenová úroveň|Slouží pro limity žádostí o služby a fakturaci.|`F0` je bezplatná úroveň.
     |App name (Název aplikace)|Název se používá jako subdoména, když je váš robot nasazený do cloudu (například humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, například `luis-csharp-bot-johnsmith`|
     |Bot template (Šablona robota)|Nastavení Bot Frameworku – viz následující tabulka|
@@ -75,10 +75,10 @@ Pomocí jazyka C# můžete vytvořit chatovacího robota integrovaného se služ
 
 |Záměry základního robota LUIS|Příklad promluvy|
 |--|--|
-|Storno|`stop`|
+|Zrušit|`stop`|
 |Pozdrav|`hello`|
 |Nápověda|`help`|
-|Žádná|Cokoli mimo doménu aplikace|
+|Žádný|Cokoli mimo doménu aplikace|
 
 Přidejte do modelu předem připravenou aplikaci HomeAutomation, která má zpracovávat promluvy jako: `Turn off the living room lights`
 

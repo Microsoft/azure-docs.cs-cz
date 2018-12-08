@@ -1,21 +1,22 @@
 ---
 title: Konfigurace kontejnerů
-titlesuffix: Face - Cognitive Services - Azure
+titlesuffix: Face - Azure Cognitive Services
 description: Nastavení konfigurace pro kontejnery.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 1009660df94eb145bbc37c27662411032bd87110
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 30546d31e96d7d7fa1009f16a50fe8fda12ead67
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970939"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105100"
 ---
 # <a name="configure-containers"></a>Konfigurace kontejnerů
 
@@ -144,7 +145,7 @@ Scénář úložiště je zpracovávat odděleně od připojení vstupní a výs
 > [!IMPORTANT]
 > [ `ApiKey` ](#apikey-configuration-setting), [ `Billing` ](#billing-configuration-setting), A [ `Eula` ](#eula-configuration-setting) nastavení konfigurace se používají společně a je nutné zadat platné hodnoty pro všechny tři je. jinak nebude možné spustit kontejner. Další informace o používání těchto nastavení konfigurace pro vytvoření instance kontejneru najdete v tématu [fakturace](face-how-to-install-containers.md#billing).
 
-Kontejnery služby cognitive Services jsou licencovaného v rámci vaší smlouvě upravující používání Azure. Pokud nemáte stávající smlouvy řídící používání Azure, vyjadřujete svůj souhlas, že vaší smlouvě upravující používání Azure se Microsoft Online Subscription Agreement (která zahrnuje podmínky Online služeb). Pro verze Preview souhlasíte také s dodatečných podmínkách použití systémů Microsoft Azure Preview. Pomocí kontejneru vyjadřujete souhlas s těmito podmínkami.
+Kontejnery služby cognitive Services se licencují pod [vaší smlouvě](https://go.microsoft.com/fwlink/?linkid=2018657) řídící používání Azure. Pokud nemáte stávající smlouvy řídící používání Azure, souhlasíte s tím, že je vaší smlouvě upravující používání Azure [Microsoft Online Subscription Agreement](https://go.microsoft.com/fwlink/?linkid=2018755) (která zahrnuje [podmínky Online služeb ](https://go.microsoft.com/fwlink/?linkid=2018760)). Pro verze Preview, souhlasíte také s [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://go.microsoft.com/fwlink/?linkid=2018815). Pomocí kontejneru vyjadřujete souhlas s těmito podmínkami.
 
 ## <a name="fluentd-configuration-settings"></a>Nastavení konfigurace Fluentd
 

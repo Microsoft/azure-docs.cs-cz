@@ -1,5 +1,5 @@
 ---
-title: Klonovat poznámkového bloku Jupyter z Githubu s poznámkovými bloky Azure | Dokumentace Microsoftu
+title: Klonovat poznámkového bloku Jupyter z Githubu s poznámkovými bloky Azure
 description: Rychle klonovat poznámkového bloku Jupyter z úložiště GitHub a spusťte jej ve svém účtu poznámkových bloků Azure.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ace53fcb2c24e26aa6f33dbc0300915a45dc6a91
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e30057f773afe6ec625b811c6ca1447c519ceda7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855870"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106324"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Rychlý start: Klonování poznámkového bloku
 
@@ -26,7 +26,7 @@ Mnoho datových vědců a vývojářů ukládat v jejich poznámkové bloky [úl
 
 Klonování vytvoří kopii Poznámkový blok Githubu ve vašem účtu poznámkových bloků Azure místo. Tenhle klon je nezávislá z jeho původní úložiště; změny se ukládají v účtu Azure poznámkových bloků a nemají vliv na původní. Protože vaše klonování je v cloudu, můžete sdílet projekt s další spolupracovníci, kteří nemusí provést žádné místní kopie nebo dokonce mít Jupyter ve svých počítačích nainstalován. Jednoduše jako výchozí bod pro projekt vlastní nebo k získání datových souborů může také klonovat poznámkového bloku.
 
-## <a name="clone-the-azure-cognitive-services-notebooks"></a>Klonovat poznámkových bloků Azure Cognitive Services
+## <a name="clone-azure-cognitive-services-notebooks"></a>Klonovat poznámkových bloků Azure Cognitive Services
 
 1. Přejděte na [poznámkových bloků Azure](https://notebooks.azure.com) a přihlaste se. (Podrobnosti najdete v tématu [rychlý start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 

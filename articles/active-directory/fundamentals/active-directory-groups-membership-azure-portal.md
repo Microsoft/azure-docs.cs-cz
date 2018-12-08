@@ -1,6 +1,6 @@
 ---
-title: Jak přidat nebo odebrat skupiny z jiné skupiny ve službě Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak přidat nebo odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory.
+title: Přidat nebo odebrat skupiny z jiné skupiny – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak přidat nebo odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,16 +10,16 @@ ms.component: fundamentals
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 2d05a31c56cfe8ea92a933696ca3c9b0fadbd4d3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 12f557e9453db0d8bff2ab91fe8453e026e0320c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000309"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104267"
 ---
-# <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Postupy: Přidat nebo odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory
+# <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Přidat nebo odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory
 Tento článek vám umožní přidat a odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory.
 
 >[!Note]

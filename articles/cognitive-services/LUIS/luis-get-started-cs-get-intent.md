@@ -1,7 +1,7 @@
 ---
-title: 'QuickStart: Získejte záměr –C#'
+title: Získání záměru,C#
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí C# odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
+description: V tomto C# rychlý start, použít k dispozici veřejné aplikace LUIS k určení záměru uživatele z konverzační textu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c498554bea0722f81d5dd52d77c0bc88d16e2332
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 22b2faa91be9b4a2504bff542deb559d33b9fa4f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015047"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101008"
 ---
 # <a name="quickstart-get-intent-using-c"></a>Rychlý start: Získání záměru pomocí C#
 

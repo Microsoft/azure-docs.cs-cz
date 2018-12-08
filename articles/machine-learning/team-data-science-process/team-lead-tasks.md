@@ -1,6 +1,6 @@
 ---
-title: Týmu Data Science procesu týmu způsobit úlohy – Azure | Dokumentace Microsoftu
-description: Přehled úloh pro vedoucí týmu v týmovém projektu datové vědy.
+title: Úlohy pro tým vést v vědy procesu týmu datovému týmu – Azure
+description: Přehled úloh, které tým vést na týmovém projektu datové vědy se očekává k dokončení pro jejich tým datové vědy.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 2004396266d4bde9f3be540408524b668bbb863d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 68fd0abf314eb4fde5ff335acc161d82ad78cd0c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443845"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106630"
 ---
-# <a name="team-lead-tasks"></a>Úkoly vedoucí týmu
+# <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Úlohy pro tým vést v týmu Data Science procesu týmu
 
 K dokončení pro jejich data science tým byl očekáván tohoto tématu jsou podrobněji popsány dále úlohy, které je vedoucí týmu. Cílem je vytvořit prostředí pro spolupráci týmu, který standardizuje na [vědecké zpracování týmových dat](overview.md) (TDSP). TDSP je metodologie pro efektivně dodávat prediktivní analytická řešení a inteligentní aplikace agile, iterativní datové vědy. Je určená jí pomohou zlepšit spolupráci a učení týmu. Proces je destilace osvědčených postupů a struktur od společnosti Microsoft, a také v odvětví, potřebné pro úspěšnou implementaci iniciativ datových věd umožnit společnostem plně využít výhod jejich analýzy aplikací. Přehled role pracovníky a jejich přidružených úloh, které jsou zpracovávány týmem datové vědy standardizovat o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
 

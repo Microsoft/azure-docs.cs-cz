@@ -1,21 +1,22 @@
 ---
-title: Průvodce migrací rozhraní API z v1 a v2
+title: V1 na v2 migrace rozhraní API
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak migrace na nejnovější rozhraní API nastavit.
+description: Zjistěte, jak migrovat na nejnovější sadu rozhraní API.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 57742d72c8be0dcd999bc8b73f6d598263429c12
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 7514390593b4afca4793923089516f3393db0428
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646571"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105831"
 ---
 # <a name="api-v2-migration-guide"></a>Pokyny k migraci v2 rozhraní API
 Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) rozhraní API se přestanou používat. Tento průvodce vám pochopit, jak migrovat na verzi 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
@@ -43,7 +44,7 @@ Koncový bod rozhraní API má nové parametry řetězce dotazu, stejně jako ji
 
 
 Úspěšná odpověď byla V1 koncový bod:
-```JSON
+```json
 {
   "odata.metadata":"https://dialogice.cloudapp.net/odata/$metadata#domain","value":[
     {
@@ -54,7 +55,7 @@ Koncový bod rozhraní API má nové parametry řetězce dotazu, stejně jako ji
 ```
 
 Úspěšná odpověď byla v2 koncový bod:
-```JSON
+```json
 {
   "query": "forward to frank 30 dollars through HSBC",
   "topScoringIntent": {

@@ -1,29 +1,23 @@
 ---
-title: Konfigurace Network Performance Monitor pro okruhy Azure ExpressRoute | Dokumentace Microsoftu
+title: Konfigurace Network Performance Monitor pro okruhy ExpressRoute – Azure | Dokumentace Microsoftu
 description: Konfigurace monitorování (NPM) pro okruhy Azure ExpressRoute sítě založené na cloudu. Toto téma zahrnuje monitorování privátního partnerského vztahu ExpressRoute a partnerský vztah Microsoftu.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 93bafb739c35b81796186dc845f7933a82e1675b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: e72c2ceaedd23f4e3ee2006930302321498eb736
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968114"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104726"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurace Network Performance Monitoru pro ExpressRoute
 
-Network Performance Monitor (NPM) je řešení, která monitoruje připojení mezi nasazeními v cloudu Azure a místními umístěními (firemní pobočky, atd.) pro monitorování sítě založené na cloudu. NPM je součástí služby Log Analytics. NPM nabízí rozšíření pro ExpressRoute, který vám umožní monitorovat výkon sítě přes okruhy ExpressRoute, které jsou nakonfigurovány pro použití soukromého partnerského vztahu a partnerského vztahu Microsoftu. Když konfigurujete NPM pro ExpressRoute, můžete zjistit, identifikovat a eliminovat problémy se sítí. Tato služba je také k dispozici pro Azure Government Cloud.
+Tento článek vám pomůže nakonfigurovat rozšíření Network Performance Monitor k monitorování ExpressRoute. Network Performance Monitor (NPM) je řešení, která monitoruje připojení mezi nasazeními v cloudu Azure a místními umístěními (firemní pobočky, atd.) pro monitorování sítě založené na cloudu. NPM je součástí služby Log Analytics. NPM nabízí rozšíření pro ExpressRoute, který vám umožní monitorovat výkon sítě přes okruhy ExpressRoute, které jsou nakonfigurovány pro použití soukromého partnerského vztahu a partnerského vztahu Microsoftu. Když konfigurujete NPM pro ExpressRoute, můžete zjistit, identifikovat a eliminovat problémy se sítí. Tato služba je také k dispozici pro Azure Government Cloud.
 
 Můžete:
 

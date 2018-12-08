@@ -1,5 +1,6 @@
 ---
-title: Zabezpečení webových služeb Azure Machine Learning s protokolem SSL
+title: Zabezpečení webových služeb pomocí protokolu SSL
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak zabezpečit webovou službu nasazenou ve službě Azure Machine Learning. Můžete omezit přístup k webovým službám a zabezpečit data odeslaná klienty, kteří používají zabezpečené soketu vrstvy (SSL) a ověřování na základě klíče.
 services: machine-learning
 ms.service: machine-learning
@@ -9,14 +10,15 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: a9dee2d88c986ed292567a18c29cd325833b5e6f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 14350a04326ba22dcc5c8608b6ac6b9180666832
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52832866"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101172"
 ---
-# <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Zabezpečení webových služeb Azure Machine Learning s protokolem SSL
+# <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Použití protokolu SSL pro zabezpečení webové služby pomocí služby Azure Machine Learning
 
 V tomto článku se dozvíte, jak zabezpečit webovou službu nasazenou ve službě Azure Machine Learning. Můžete omezit přístup k webovým službám a zabezpečit data odeslaná klienty, kteří používají zabezpečené soketu vrstvy (SSL) a ověřování na základě klíče.
 

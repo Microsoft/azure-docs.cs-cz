@@ -1,21 +1,22 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči v jazyce C# v aplikaci pro UPW s využitím sady Speech SDK'
+title: 'Rychlý start: Rozpoznávání řeči, C# (UPW) – hlasové služby'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak rozpoznávat řeč v aplikaci pro UPW s využitím sady Speech SDK.
+description: V tomto článku vytvoříte C# aplikace univerzální platformy Windows (UPW) s využitím Cognitive Services SDK řeči. V reálném čase přepíšete řeč z mikrofonu zařízení na text. Aplikace je sestavená pomocí balíčku NuGet sady SDK pro řeč a Microsoft Visual Studio 2017.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 7b132ea9fea7591d32b693ef9c95acf7626c8fff
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 55988ef65e223c76a485c3cbec13626abf68d3b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218884"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104625"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v aplikaci pro UPW s využitím sady Speech SDK
 
@@ -34,7 +35,7 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
 1. Spusťte Visual Studio 2017.
 
-1. Ověřte, že je k dispozici sada funkcí **Vývoj pro Univerzální platformu Windows**. Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, zavřete dialogové okno. 
+1. Ověřte, že je k dispozici sada funkcí **Vývoj pro Univerzální platformu Windows**. Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, zavřete dialogové okno.
 
     ![Snímek obrazovky instalačního programu sady Visual Studio se zvýrazněnou kartou Sady funkcí](media/sdk/vs-enable-uwp-workload.png)
 
@@ -115,12 +116,12 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 [!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Vyhledejte tuto ukázku ve složce `quickstart/csharp-uwp`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C#](how-to-recognize-intents-from-speech-csharp.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)

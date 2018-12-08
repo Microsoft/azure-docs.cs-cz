@@ -1,18 +1,19 @@
 ---
-title: Azure Disk Encryption pro virtuální počítače s Linuxem v režimu IaaS | Dokumentace Microsoftu
+title: Aktivace Azure Disk Encryption pro virtuální počítače s Linuxem v režimu IaaS
 description: Tento článek obsahuje pokyny týkající se povolení Microsoft Azure Disk Encryption pro virtuální počítače IaaS s Linuxem.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/19/2018
-ms.openlocfilehash: 8806d2b1848064c48615aed653c69c2df9b1949f
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 7c8833f2c6d9a4ae8fdd9eba8ca6bb4f850b5ca7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685459"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100782"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Aktivace Azure Disk Encryption pro virtuální počítače s Linuxem v režimu IaaS 
 
@@ -147,13 +148,13 @@ Příklad souboru služby batch pro Linux škálovací sady dat šifrování dis
 
 ### <a name="register-for-disk-encryption-preview-using-azure-cli"></a>Zaregistrujte se ve verzi preview šifrování disku pomocí rozhraní příkazového řádku Azure
 
-Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi preview je potřeba registrovat předplatné s [az funkce register](/cli/azure/feature#az_feature_register). Stačí provést následující kroky při prvním použití funkce ve verzi preview šifrování disku:
+Azure disk encryption pro škálovací sady virtuálních počítačů ve verzi preview je potřeba registrovat předplatné s [az funkce register](/cli/azure/feature#az-feature-register). Stačí provést následující kroky při prvním použití funkce ve verzi preview šifrování disku:
 
 ```azurecli-interactive
 az feature register --name UnifiedDiskEncryption --namespace Microsoft.Compute
 ```
 
-Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [az funkce Zobrazit](/cli/azure/feature#az_feature_show). Když `State` sestavy *registrované*, přeregistrovat *Microsoft.Compute* zprostředkovatele s [az provider register](/cli/azure/provider#az_provider_register):
+Může trvat až 10 minut žádost o registraci rozšíření. Vy můžete zkontrolovat stav registrace s [az funkce Zobrazit](/cli/azure/feature#az-feature-show). Když `State` sestavy *registrované*, přeregistrovat *Microsoft.Compute* zprostředkovatele s [az provider register](/cli/azure/provider#az-provider-register):
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute

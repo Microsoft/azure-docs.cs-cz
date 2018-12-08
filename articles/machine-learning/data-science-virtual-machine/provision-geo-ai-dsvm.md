@@ -1,11 +1,12 @@
 ---
 title: Zřízení virtuálního počítače geografickou umělou inteligenci v Azure – Azure | Dokumentace Microsoftu
-description: Jak zřídit počítač virtuální Geo AI v Azure.
+description: Zjistěte, jak vytvořit a nakonfigurovat virtuální počítač geograficky AI datové vědy. Počítač pro virtuální Geo AI datové vědy poskytuje nástroje pro vytváření řešení AI a ML pomocí zeměpisné údaje.
 keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: bdcf2662f2a81b145868cff92ecb7a2cb4d53046
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 395604da3465e66214f89b4f74ddf9d6bcdc48f8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239793"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103944"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Zřízení virtuálního počítače geografickou umělou inteligenci v Azure 
 

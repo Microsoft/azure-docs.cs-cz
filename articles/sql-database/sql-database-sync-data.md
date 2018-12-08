@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: 78984cf9f73fd0cdd6e28e20e1d54d5b1198b7be
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 6963bb44e6377bcfbb2cb647f1508f075b4268be
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687482"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101824"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizace dat napříč několika cloudu a místními databázemi pomocí synchronizace dat SQL
 
@@ -69,7 +69,7 @@ Synchronizace dat není preferovaným řešením v následujících scénáříc
 
 ## <a name="how-does-data-sync-work"></a>Jak funguje synchronizace dat? 
 
--   **Sledování změn dat:** synchronizace dat sleduje změny pomocí vložení, aktualizace a odstranění aktivační události. Změny se zaznamenávají v postranní tabulky v databázi uživatelů.
+-   **Sledování změn dat:** synchronizace dat sleduje změny pomocí vložení, aktualizace a odstranění aktivační události. Změny se zaznamenávají v postranní tabulky v databázi uživatelů. Všimněte si, že BULK INSERT se neaktivuje aktivačních událostí ve výchozím nastavení. Pokud není zadán požadováno, spustit žádné aktivační události insert. Přidáte možnost požadováno tak synchronizaci dat můžete sledovat tyto operace vložení. 
 
 -   **Synchronizace dat:** synchronizace dat je určen v hvězdicové modelu. Centrum synchronizuje s každý člen jednotlivě. Změny z centra se stáhnou do člena a pak se nahrají změny od člena k rozbočovači.
 

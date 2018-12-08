@@ -1,5 +1,5 @@
 ---
-title: Nasazení Azure Machine Learning s Azure IoT Edge | Microsoft Docs
+title: Kurz Azure Machine Learning nasadit do zařízení – Azure IoT Edge | Dokumentace Microsoftu
 description: V tomto kurzu nasadíte Azure Machine Learning jako modul na hraniční zařízení.
 author: kgremban
 manager: philmea
@@ -8,13 +8,13 @@ ms.date: 11/15/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: c98dc9019421133b83ab9aec29f725852315f6ba
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.custom: mvc, seodec18
+ms.openlocfilehash: e301e7da36e7ca549609da942f6e6d6dd3a3e791
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977199"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103339"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
@@ -115,7 +115,7 @@ Zkontrolujte, že se image kontejneru úspěšně vytvořila a uložila v regist
 
 1. V části **Registry Settings** (Nastavení registru) přidejte přihlašovací údaje, které jste zkopírovali z registru kontejneru Azure. 
 
-   ![Přidání přihlašovacích údajů registru](./media/tutorial-deploy-machine-learning/registry-settings.png)
+   ![Přidání přihlašovacích údajů registru do manifestu](./media/tutorial-deploy-machine-learning/registry-settings.png)
 
 1. Pokud máte na zařízení IoT Edge nasazený modul tempSensor, může se automaticky doplnit. Pokud v seznamu modulů není, přidejte ho.
 
@@ -182,7 +182,7 @@ Následující kroky ukazují, jak nastavit Visual Studio Code k monitorování 
 
 2. Vyberte **...** a potom v nabídce vyberte **Set IoT Hub Connection String** (Nastavení připojovacího řetězce IoT Hubu).
 
-   ![Nabídka dalších možností zařízení IoT Hubu](./media/tutorial-deploy-machine-learning/set-connection.png)
+   ![Nastavit připojovací řetězec služby IoT Hub](./media/tutorial-deploy-machine-learning/set-connection.png)
 
 3. Do textového pole, které se otevře nahoře na stránce, zadejte připojovací řetězec iothubowner svého IoT Hubu. Vaše zařízení IoT Edge by se mělo zobrazit v seznamu zařízení IoT Hubu.
 

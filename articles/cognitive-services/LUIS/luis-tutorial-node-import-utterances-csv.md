@@ -1,21 +1,22 @@
 ---
-title: Sestavení aplikace LUIS programově pomocí Node.js | Dokumentace Microsoftu
+title: Importovat projevy pomocí Node.js
 titleSuffix: Azure
 description: Informace o sestavení aplikace LUIS prostřednictvím kódu programu z dříve existující data ve formátu CSV pomocí rozhraní API pro vytváření LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 729e19deb5efc91fb874214299f34fbb46d9bbdc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: da638064b2ead1cd860f3b4f96ffa88026aab4ff
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034038"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101166"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Sestavení aplikace LUIS programově pomocí Node.js
 
@@ -34,7 +35,7 @@ I když máte systému, který nebyl vytvořen pomocí služby LUIS v úvahu, po
 
 Otevřete soubor `IoT.csv`. Obsahuje protokol dotazy uživatelů hypotetické domácí automatizace služby, včetně jak byly do kategorií, co říká uživatele a některé sloupce s užitečnými informacemi získaných z nich. 
 
-![Soubor CSV](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![Soubor CSV z již existujících dat](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
 
 Uvidíte, že **RequestType** sloupce může být záměrů a **žádosti** sloupci se zobrazuje příkladu utterance. Ostatní pole může být entity, když se vyskytují v utterance. Protože záměrů, entit a příklad projevy, máte požadavky na jednoduchý, ukázkovou aplikaci.
 
@@ -106,9 +107,9 @@ Po entity a záměry byly definovány v aplikaci LUIS, můžete přidat projevy.
 ### <a name="install-nodejs-dependencies"></a>Nainstalujte Node.js závislosti
 Instalace Node.js závislosti z NPM, v terminálu nebo příkazového řádku.
 
-````
+```console
 > npm install
-````
+```
 
 ### <a name="change-configuration-settings"></a>Změna nastavení konfigurace
 Pokud chcete používat tuto aplikaci, budete muset změnit hodnoty v souboru index.js na vlastní klíče koncového bodu a zadejte název, který chcete aplikaci. Můžete také nastavit jazykovou verzi aplikace nebo změňte číslo verze.
@@ -116,28 +117,31 @@ Pokud chcete používat tuto aplikaci, budete muset změnit hodnoty v souboru in
 Otevřete soubor index.js a změnit tyto hodnoty v horní části souboru.
 
 
-````JavaScript
+```nodejs
 // Change these values
 const LUIS_programmaticKey = "YOUR_PROGRAMMATIC_KEY";
 const LUIS_appName = "Sample App";
 const LUIS_appCulture = "en-us"; 
 const LUIS_versionId = "0.1";
-````
-### <a name="run-the-script"></a>Spusťte skript
+```
+
+### <a name="run-the-script"></a>Spuštění skriptu
 Spusťte skript z terminálu nebo příkazového řádku s využitím Node.js.
 
-````
+```console
 > node index.js
-````
+```
+
 nebo
-````
+
+```console
 > npm start
-````
+```
 
 ### <a name="application-progress"></a>Průběh aplikace
 Když je spuštěná aplikace příkazového řádku zobrazuje průběh. Výstup příkazového řádku obsahuje formátu odpovědi ze služby LUIS.
 
-````
+```console
 > node index.js
 intents: ["TurnOn","TurnOff","Dim","Other"]
 entities: ["Operation","Device","Room"]
@@ -157,7 +161,7 @@ retrying add examples...
 
 Results of add utterances = [{"response":[{"value":{"UtteranceText":"turn on the lights","ExampleId":-67649},"hasError":false},{"value":{"UtteranceText":"turn the heat on","ExampleId":-69067},"hasError":false},{"value":{"UtteranceText":"switch on the kitchen fan","ExampleId":-3395901},"hasError":false},{"value":{"UtteranceText":"turn off bedroom lights","ExampleId":-85402},"hasError":false},{"value":{"UtteranceText":"turn off air conditioning","ExampleId":-8991572},"hasError":false},{"value":{"UtteranceText":"kill the lights","ExampleId":-70124},"hasError":false},{"value":{"UtteranceText":"dim the lights","ExampleId":-174358},"hasError":false},{"value":{"UtteranceText":"hi how are you","ExampleId":-143722},"hasError":false},{"value":{"UtteranceText":"answer the phone","ExampleId":-69939},"hasError":false},{"value":{"UtteranceText":"are you there","ExampleId":-149588},"hasError":false},{"value":{"UtteranceText":"help","ExampleId":-81949},"hasError":false},{"value":{"UtteranceText":"testing the circuit","ExampleId":-11548708},"hasError":false}]}]
 upload done
-````
+```
 
 
 

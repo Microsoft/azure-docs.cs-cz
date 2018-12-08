@@ -9,14 +9,14 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 11/30/2017
-ms.openlocfilehash: a6adf97a11821ff58c01d2450f06d07e7327fdfb
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.openlocfilehash: 06fa9b9191104db3b141b6268a90a7c8f206280e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957918"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106069"
 ---
-# <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Monitorování změn virtuálních počítačů pomocí Azure Event Gridu a Logic Apps
+# <a name="tutorial-monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Kurz: Monitorování změn virtuálního počítače pomocí Azure Event Grid a Logic Apps
 
 Při určitých událostech, ke kterým dochází v prostředcích Azure nebo v prostředcích třetích stran, můžete spustit automatický [pracovní postup aplikace logiky](../logic-apps/logic-apps-overview.md). Tyto prostředky mohou tyto události publikovat do [Azure Event Gridu](../event-grid/overview.md). Event Grid tyto události pošle odběratelům, kteří jako své koncové body používají fronty, webhooky nebo [centra událostí](../event-hubs/event-hubs-what-is-event-hubs.md). Vy jako odběratel čekáte se svou aplikací logiky na události z Event Gridu, aby spustily automatické pracovní postupy, které provádějí úlohy – všechno bez psaní kódu.
 
@@ -244,6 +244,6 @@ Tento kurz využívá prostředky a provádí akce, za které mohou být ve vaš
 
 * Pokud chcete aplikaci logiky trvale odstranit, vyberte v její nabídce **Přehled**. Na panelu nástrojů zvolte **Odstranit**. Potvrďte, že chcete odstranit aplikaci logiky, a pak zvolte **Odstranit**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Vytvoření a směrování vlastních událostí pomocí Event Gridu](../event-grid/custom-event-quickstart.md)

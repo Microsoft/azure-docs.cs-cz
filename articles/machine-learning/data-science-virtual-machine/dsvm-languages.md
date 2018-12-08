@@ -1,11 +1,13 @@
 ---
-title: Jazyky pro virtuální počítač vědecké účely dat v Azure | Microsoft Docs
-description: Jazyky pro datové vědy virtuálního počítače na Azure
-keywords: datové vědy nástroje, datové vědy virtuálního počítače, nástroje pro vědecké zpracování dat, vědecké zpracování dat linux
+title: Podporované jazyky pro virtuální počítač pro datové vědy
+titleSuffix: Azure
+description: Další informace o programu jazyků a související nástroje, které jsou předem nainstalované na virtuální počítač pro datové vědy.
+keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,35 +17,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 411729155f5135c7e45588b69995274c9cac1315
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8cc5d1a2d78179624ee1ba17482e9d1892625d6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418311"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104284"
 ---
-# <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované v dat virtuálního počítače vědecké účely 
+# <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované na virtuální počítač pro datové vědy 
 
-Virtuální počítač vědecké účely dat (DSVM) obsahuje několik předdefinovaných jazyky a nástroje pro vývoj pro vytváření aplikací AI. Zde jsou některé z nejdůležitějšími ty, které jsou. 
+Na Data virtuálního počítače VĚDY obsahuje několik předdefinovaných jazyky a vývojářské nástroje pro sestavování aplikací AI. Tady jsou některé důležité z nich. 
 
-## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 Edition)
+## <a name="python-windows-server-2016-edition"></a>Python (edice systému Windows Server 2016)
 
 |    |           |
 | ------------- | ------------- |
-| Podporované jazykové verze | 2.7 a 3.6 |
+| Podporované jazykové verze | 2.7 i 3.6 |
 | Podporované DSVM edice      | Windows Server 2016     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Dva globální `conda` prostředí jsou vytvořeny. <br /> * `root` prostředí nacházející se v `/anaconda/` je Python 3.6. <br/> * `python2` prostředí nacházející se v `/anaconda/envs/python2`je Python 2.7       |
-| Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter pro jazyk Python jsou zahrnuty     |
-| Na DSVM souvisejících nástrojích      | Dita PySpark, R,      |
+| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Dvě globální `conda` prostředí vytváří. <br /> * `root` umístění prostředí `/anaconda/` je Python 3.6. <br/> * `python2` umístění prostředí `/anaconda/envs/python2`se Python 2.7       |
+| Odkazy na ukázky      | Jsou zahrnuty ukázkové poznámkové bloky Jupyter pro Python     |
+| Související nástroje na datové VĚDY      | PySpark, R, Julia      |
 
 > [!NOTE]
-> Windows Server 2016 vytvořil před březnem 2018 obsahuje Python 3.5 a Python 2.7. Python 2.7 je také conda **kořenové** prostředí a **py35** prostředí Python 3.5. 
+> Windows Server 2016 vytvořené před březnem 2018 obsahuje Python 3.5 a použije se Python 2.7. Python 2.7 je také conda **kořenové** prostředí a **py35** je prostředí Python 3.5. 
 
-### <a name="how-to-use--run-it"></a>Jak se použít nebo ji spustit?    
+### <a name="how-to-use--run-it"></a>Jak používat nebo ji spustit?    
 
-* Spouštění v příkazovém řádku
+* Spuštění v příkazovém řádku
 
-Otevřete příkazový řádek a udělejte v závislosti na verzi jazyka Python, kterou chcete spustit. 
+Otevřete příkazový řádek a proveďte kroky v závislosti na verzi jazyka Python, kterou chcete spustit. 
 
 ```
 # To run Python 2.7
@@ -55,20 +57,20 @@ activate
 python --version
 
 ```
-* Použití v IDE
+* Použití v rozhraní IDE
 
-Použití nástrojů Python pro Visual Studio (PTVS) nainstalované v edici Visual Studio Community. Instalační program pouze prostředí automaticky v PTVS ve výchozím nastavení je Python 3.6. 
+Použití nástrojů Python pro Visual Studio (PTVS) nainstalované v aplikaci Visual Studio Community edition. Nastavení prostředí privonly automaticky v PTVS ve výchozím nastavení je Python 3.6. 
 
 > [!NOTE]
-> Chcete-li bodu PTVS Python 2.7, vytvořte vlastní prostředí v PTVS. Chcete-li nastavit této cesty prostředí Visual Studio Community Edition, přejděte na **nástroje** -> **Python Tools** -> **prostředí Python** a pak klikněte na **+ vlastní**. Potom nastavte jeho umístění na `c:\anaconda\envs\python2` a pak klikněte na _automatické rozpoznání_. 
+> Tak, aby odkazoval na Python 2.7 PTVS, je potřeba vytvořit vlastní prostředí v PTVS. Nastavení tohoto prostředí cestách ve Visual Studio Community Edition, přejděte na **nástroje** -> **nástroje Python Tools** -> **prostředí Pythonu** a pak klikněte na tlačítko **+ vlastní**. Potom nastavte umístění `c:\anaconda\envs\python2` a potom klikněte na tlačítko _automaticky rozpoznat_. 
 
 * Použití v Jupyter
 
-Otevřete Jupyter a klikněte na `New` tlačítko vytvořte nový poznámkový blok. V tomto okamžiku můžete si zvolit typ jádra jako _Python [Conda kořenové]_ pro Python 3.6 a _Python [Conda env:python2]_ pro Python 2.7 prostředí. 
+Otevřete Jupyter a klikněte `New` pro vytvoření nového poznámkového bloku. V tomto okamžiku můžete zvolit typ jádra jako _Python [Conda kořenové]_ pro Python 3.6 a _Python [Conda env:python2]_ prostředí Python 2.7. 
 
-* Instalaci balíčků Python
+* Instalace balíčků Pythonu
 
-Prostředí Python výchozí na DSVM jsou globální prostředí čitelný všichni uživatelé. Ale pouze správci mohou zápisu / globální balíčky nainstalovat. Chcete-li nainstalovat balíček do globální prostředí, aktivovat do kořenového adresáře nebo python2 prostředí pomocí `activate` příkaz jako správce. Pak můžete použít Správce balíčků jako `conda` nebo `pip` instalaci nebo aktualizaci balíčků. 
+Výchozí prostředí Pythonu na datové VĚDY jsou globální prostředí číst všichni uživatelé. Ale můžete napsat / install globálních balíčků jenom správci. Pokud chcete balíček nainstalovat do globálního prostředí, aktivujte na kořenový server WSUS nebo pomocí prostředí python2 `activate` příkaz jako správce. Můžete použít Správce balíčků, jako je `conda` nebo `pip` pro instalaci nebo aktualizaci balíčků. 
 
 ## <a name="python-linux-and-windows-server-2012-edition"></a>Python (Linux a Windows Server 2012 Edition)
 
@@ -76,15 +78,15 @@ Prostředí Python výchozí na DSVM jsou globální prostředí čitelný všic
 | ------------- | ------------- |
 | Podporované jazykové verze | 2.7 a 3.5 |
 | Podporované DSVM edice      | Linux, Windows Server 2012    |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Dva globální `conda` prostředí jsou vytvořeny. <br /> * `root` prostředí nacházející se v `/anaconda/` je Python 2.7. <br/> * `py35` prostředí nacházející se v `/anaconda/envs/py35`je Python 3.5       |
-| Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter pro jazyk Python jsou zahrnuty     |
-| Na DSVM souvisejících nástrojích      | Dita PySpark, R,      |
-### <a name="how-to-use--run-it"></a>Jak se použít nebo ji spustit?    
+| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Dvě globální `conda` prostředí vytváří. <br /> * `root` umístění prostředí `/anaconda/` se Python 2.7. <br/> * `py35` umístění prostředí `/anaconda/envs/py35`je Python 3.5       |
+| Odkazy na ukázky      | Jsou zahrnuty ukázkové poznámkové bloky Jupyter pro Python     |
+| Související nástroje na datové VĚDY      | PySpark, R, Julia      |
+### <a name="how-to-use--run-it"></a>Jak používat nebo ji spustit?    
 
 **Linux**
-* Spouštění v terminálu
+* Spuštění v terminálu
 
-Otevřete terminál a udělejte v závislosti na verzi jazyka Python, kterou chcete spustit. 
+Otevřete terminál a proveďte kroky v závislosti na verzi jazyka Python, kterou chcete spustit. 
 
 ```
 # To run Python 2.7
@@ -96,22 +98,22 @@ source activate py35
 python --version
 
 ```
-* Použití v IDE
+* Použití v rozhraní IDE
 
-Použijte PyCharm nainstalovaný ve Visual Studio Community edition. 
+Použití PyCharm nainstalované v aplikaci Visual Studio Community edition. 
 
 * Použití v Jupyter
 
-Otevřete Jupyter a klikněte na `New` tlačítko vytvořte nový poznámkový blok. V tomto okamžiku můžete si zvolit typ jádra jako _Python [Conda kořenové]_ pro Python 2.7 a _Python [Conda env:py35]_ pro prostředí Python 3.5. 
+Otevřete Jupyter a klikněte `New` pro vytvoření nového poznámkového bloku. V tomto okamžiku můžete zvolit typ jádra jako _Python [Conda kořenové]_ for Python 2.7 a _Python [Conda env:py35]_ prostředí Python 3.5. 
 
-* Instalaci balíčků Python
+* Instalace balíčků Pythonu
 
-Prostředí Python výchozí na DSVM jsou globální prostředí čitelný všichni uživatelé. Ale pouze správci mohou zápisu / globální balíčky nainstalovat. Chcete-li nainstalovat balíček do globální prostředí, aktivovat do kořenového adresáře nebo py35 prostředí pomocí `source activate` příkaz jako správce nebo uživatel s oprávněními sudo. Pak můžete použít Správce balíčků jako `conda` nebo `pip` instalaci nebo aktualizaci balíčků. 
+Výchozí prostředí Pythonu na datové VĚDY jsou globální prostředí číst všichni uživatelé. Ale můžete napsat / install globálních balíčků jenom správci. Pokud chcete balíček nainstalovat do globálního prostředí, aktivovat do kořenového adresáře nebo pomocí prostředí py35 `source activate` příkaz jako správce nebo uživatel s oprávněními sudo. Můžete použít Správce balíčků, jako je `conda` nebo `pip` pro instalaci nebo aktualizaci balíčků. 
 
 **Windows 2012**
-* Spouštění v příkazovém řádku
+* Spuštění v příkazovém řádku
 
-Otevřete příkazový řádek a udělejte v závislosti na verzi jazyka Python, kterou chcete spustit. 
+Otevřete příkazový řádek a proveďte kroky v závislosti na verzi jazyka Python, kterou chcete spustit. 
 
 ```
 # To run Python 2.7
@@ -123,121 +125,121 @@ activate py35
 python --version
 
 ```
-* Použití v IDE
+* Použití v rozhraní IDE
 
-Použití nástrojů Python pro Visual Studio (PTVS) nainstalované v edici Visual Studio Community. Instalace pouze prostředí automaticky v PTVS v Python 2.7. 
+Použití nástrojů Python pro Visual Studio (PTVS) nainstalované v aplikaci Visual Studio Community edition. Nastavení prostředí privonly automaticky v PTVS v případě Pythonu 2.7. 
 > [!NOTE]
-> Chcete-li bodu PTVS Python 3.5, vytvořte vlastní prostředí v PTVS. Chcete-li nastavit této cesty prostředí Visual Studio Community Edition, přejděte na **nástroje** -> **Python Tools** -> **prostředí Python** a pak klikněte na **+ vlastní**. Potom nastavte jeho umístění na `c:\anaconda\envs\py35` a pak klikněte na _automatické rozpoznání_. 
+> Tak, aby odkazoval PTVS na Python 3.5, je potřeba vytvořit vlastní prostředí v PTVS. Nastavení tohoto prostředí cestách ve Visual Studio Community Edition, přejděte na **nástroje** -> **nástroje Python Tools** -> **prostředí Pythonu** a pak klikněte na tlačítko **+ vlastní**. Potom nastavte umístění `c:\anaconda\envs\py35` a potom klikněte na tlačítko _automaticky rozpoznat_. 
 
 * Použití v Jupyter
 
-Otevřete Jupyter a klikněte na `New` tlačítko vytvořte nový poznámkový blok. V tomto okamžiku můžete si zvolit typ jádra jako _Python [Conda kořenové]_ pro Python 2.7 a _Python [Conda env:py35]_ pro prostředí Python 3.5. 
+Otevřete Jupyter a klikněte `New` pro vytvoření nového poznámkového bloku. V tomto okamžiku můžete zvolit typ jádra jako _Python [Conda kořenové]_ for Python 2.7 a _Python [Conda env:py35]_ prostředí Python 3.5. 
 
-* Instalaci balíčků Python
+* Instalace balíčků Pythonu
 
-Prostředí Python výchozí na DSVM jsou globální prostředí čitelný všichni uživatelé. Ale pouze správci mohou zápisu / globální balíčky nainstalovat. Chcete-li nainstalovat balíček do globální prostředí, aktivovat do kořenového adresáře nebo py35 prostředí pomocí `activate` příkaz jako správce. Pak můžete použít Správce balíčků jako `conda` nebo `pip` instalaci nebo aktualizaci balíčků. 
+Výchozí prostředí Pythonu na datové VĚDY jsou globální prostředí číst všichni uživatelé. Ale můžete napsat / install globálních balíčků jenom správci. Pokud chcete balíček nainstalovat do globálního prostředí, aktivovat do kořenového adresáře nebo pomocí prostředí py35 `activate` příkaz jako správce. Můžete použít Správce balíčků, jako je `conda` nebo `pip` pro instalaci nebo aktualizaci balíčků. 
 
 ## <a name="r"></a>R
 
 |    |           |
 | ------------- | ------------- |
-| Podporované jazykové verze | Microsoft R otevřete 3.x (100 % kompatibilní s CRAN r.<br /> Microsoft R Server 9.x Developer edition (Enterprise škálovatelné A připravena platforma R)|
+| Podporované jazykové verze | Microsoft R Open 3.x (100 % kompatibilní s CRAN r.<br /> Microsoft R Server 9.x Developer edition (A škálovatelné podnikové platformy pro připravený R)|
 | Podporované DSVM edice      | Linux, Windows     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: ` /usr/lib64/microsoft-r/3.3/lib64/R`    |
-| Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter pro R jsou zahrnuty     |
-| Na DSVM souvisejících nástrojích      | Dita SparkR, Python,      |
-### <a name="how-to-use--run-it"></a>Jak se použít nebo ji spustit?    
+| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: ` /usr/lib64/microsoft-r/3.3/lib64/R`    |
+| Odkazy na ukázky      | Jsou zahrnuty ukázkové poznámkové bloky Jupyter pro R     |
+| Související nástroje na datové VĚDY      | SparkR, Python, Julia      |
+### <a name="how-to-use--run-it"></a>Jak používat nebo ji spustit?    
 
-**Windows**:
+**Windows:**
 
-* Spouštění v příkazovém řádku
+* Spuštění v příkazovém řádku
 
-Otevřete příkazový řádek a zadejte právě `R`.
+Otevřete příkazový řádek a zadejte `R`.
 
-* Použití v IDE
+* Použití v rozhraní IDE
 
-Použití RTools pro Visual Studio (RTVS) nainstalovaný ve Visual Studio Community edition nebo Rstudia. Tyto jsou k dispozici v nabídce start nebo jako ikony na ploše. 
-
-* Použití v Jupyter
-
-Otevřete Jupyter a klikněte na `New` tlačítko vytvořte nový poznámkový blok. V tomto okamžiku můžete si zvolit typ jádra jako _R_ použít Jupyter R jádra (IRKernel). 
-
-* Instalace balíčků R
-
-R je nainstalováno na DSVM v prostředí globální čitelný všichni uživatelé. Ale pouze správci mohou zápisu / globální balíčky nainstalovat. Chcete-li nainstalovat balíček do globální prostředí, spusťte R pomocí jedné z výše uvedených metod. Potom můžete spustit Správce balíčků R `install.packages()` instalaci nebo aktualizaci balíčků. 
-
-**Linux**:
-
-* Spouštění v terminálu
-
-Otevřete terminálu a právě spustit `R`.  
-
-* Použití v IDE
-
-Použijte Rstudia nainstalovaná na Linux DSVM.  
+Použití RTools pro Visual Studio (RTVS) nainstalované v aplikaci Visual Studio Community edition nebo RStudio. Toto jsou k dispozici v nabídce start nebo jako ikony na ploše. 
 
 * Použití v Jupyter
 
-Otevřete Jupyter a klikněte na `New` tlačítko vytvořte nový poznámkový blok. V tomto okamžiku můžete si zvolit typ jádra jako _R_ použít Jupyter R jádra (IRKernel). 
+Otevřete Jupyter a klikněte `New` pro vytvoření nového poznámkového bloku. V tomto okamžiku můžete zvolit typ jádra jako _R_ použití jádra Jupyter R (IRKernel). 
 
 * Instalace balíčků R
 
-R je nainstalováno na DSVM v prostředí globální čitelný všichni uživatelé. Ale pouze správci mohou zápisu / globální balíčky nainstalovat. Chcete-li nainstalovat balíček do globální prostředí, spusťte R pomocí jedné z výše uvedených metod. Potom můžete spustit Správce balíčků R `install.packages()` instalaci nebo aktualizaci balíčků. 
+R je nainstalována na datové VĚDY v globálním prostředí čitelné všichni uživatelé. Ale můžete napsat / install globálních balíčků jenom správci. Pokud chcete balíček nainstalovat do globálního prostředí, spusťte R pomocí jedné z metod uvedených výše. Potom spustíte Správce balíčků R `install.packages()` pro instalaci nebo aktualizaci balíčků. 
+
+**Linux:**
+
+* Spuštění v terminálu
+
+Otevřete terminál a právě spuštění `R`.  
+
+* Použití v rozhraní IDE
+
+Použijte RStudio nainstalovaná na datové VĚDY pro Linux.  
+
+* Použití v Jupyter
+
+Otevřete Jupyter a klikněte `New` pro vytvoření nového poznámkového bloku. V tomto okamžiku můžete zvolit typ jádra jako _R_ použití jádra Jupyter R (IRKernel). 
+
+* Instalace balíčků R
+
+R je nainstalována na datové VĚDY v globálním prostředí čitelné všichni uživatelé. Ale můžete napsat / install globálních balíčků jenom správci. Pokud chcete balíček nainstalovat do globálního prostředí, spusťte R pomocí jedné z metod uvedených výše. Potom spustíte Správce balíčků R `install.packages()` pro instalaci nebo aktualizaci balíčků. 
 
 
-## <a name="julia"></a>Dita
+## <a name="julia"></a>Helena
 
 |    |           |
 | ------------- | ------------- |
-| Podporované jazykové verze | 0,6 |
+| Podporované jazykové verze | 0.6 |
 | Podporované DSVM edice      | Linux, Windows     |
-| Jak je ho nakonfigurovaná a nainstalovaná na DSVM?  | Systém Windows: V nainstalován `C:\JuliaPro-VERSION`<br /> Linux: Nainstalovaným v `/opt/JuliaPro-VERSION`    |
-| Odkazy na ukázky      | Ukázka poznámkové bloky Jupyter pro Dita jsou zahrnuty     |
-| Na DSVM souvisejících nástrojích      | Python, R      |
-### <a name="how-to-use--run-it"></a>Jak se použít nebo ji spustit?    
+| Jak ho nakonfigurovat či nainstalovaná na datové VĚDY?  | Windows: Při instalaci `C:\JuliaPro-VERSION`<br /> Linux: Nainstalovaným v `/opt/JuliaPro-VERSION`    |
+| Odkazy na ukázky      | Ukázkové poznámkové bloky Jupyter pro Julie jsou zahrnuté     |
+| Související nástroje na datové VĚDY      | Python, R      |
+### <a name="how-to-use--run-it"></a>Jak používat nebo ji spustit?    
 
-**Windows**:
+**Windows:**
 
-* Spouštění v příkazovém řádku
+* Spuštění v příkazovém řádku
 
 Otevřete příkazový řádek a stačí spustit `julia`. 
-* Použití v IDE
+* Použití v rozhraní IDE
 
-Použití `Juno` Dita IDE nainstalovaná na DSVM a k dispozici jako zástupce na ploše.
-
-* Použití v Jupyter
-
-Otevřete Jupyter a klikněte na `New` tlačítko vytvořte nový poznámkový blok. V tomto okamžiku můžete si zvolit typ jádra jako `Julia VERSION` 
-
-* Instalace balíčků Dita
-
-Výchozí umístění Dita je globální prostředí čitelný všichni uživatelé. Ale pouze správci mohou zápisu / globální balíčky nainstalovat. Chcete-li nainstalovat balíček do globální prostředí, spusťte Dita pomocí jedné z výše uvedených metod. Potom můžete spustit balíček Dita manager příkazy, jako je `Pkg.add()` instalaci nebo aktualizaci balíčků. 
-
-
-**Linux**:
-* Je spuštěna v terminálu.
-
-Otevřete terminálu a právě spustit `julia`. 
-* Použití v IDE
-
-Použití `Juno` Dita IDE nainstalovaná na DSVM a k dispozici jako zástupce nabídce aplikace.
+Použití `Juno` Julie IDE nainstalované na datové VĚDY a k dispozici jako zástupce na ploše.
 
 * Použití v Jupyter
 
-Otevřete Jupyter a klikněte na `New` tlačítko vytvořte nový poznámkový blok. V tomto okamžiku můžete si zvolit typ jádra jako `Julia VERSION` 
+Otevřete Jupyter a klikněte `New` pro vytvoření nového poznámkového bloku. V tomto okamžiku můžete zvolit typ jádra jako `Julia VERSION` 
 
-* Instalace balíčků Dita
+* Instalace balíčků Julia
 
-Výchozí umístění Dita je globální prostředí čitelný všichni uživatelé. Ale pouze správci mohou zápisu / globální balíčky nainstalovat. Chcete-li nainstalovat balíček do globální prostředí, spusťte Dita pomocí jedné z výše uvedených metod. Potom můžete spustit balíček Dita manager příkazy, jako je `Pkg.add()` instalaci nebo aktualizaci balíčků. 
+Helena umístění výchozí hodnota je globální prostředí číst všichni uživatelé. Ale můžete napsat / install globálních balíčků jenom správci. Pokud chcete balíček nainstalovat do globálního prostředí, spusťte Julie pomocí jedné z metod uvedených výše. Potom spustíte Julie balíček správce příkazů, jako jsou `Pkg.add()` pro instalaci nebo aktualizaci balíčků. 
 
-## <a name="other-languages"></a>Ostatní jazyky
 
-**C#**: k dispozici v systému Windows a přístupné prostřednictvím Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde můžete jenom spouštět `csc` příkaz. 
+**Linux:**
+* Spuštění v terminálu.
 
-**Java**: OpenJDK je k dispozici v systému Linux a Windows edice DSVM a sady v cestě. Můžete zadat `javac` nebo `java` příkazu na příkazovém řádku v systému Windows nebo na prostředí bash v systému Linux používat Java. 
+Otevřete terminál a právě spuštění `julia`. 
+* Použití v rozhraní IDE
 
-**Node.js**: node.js je k dispozici v systému Linux a Windows edice DSVM a sady v cestě. Můžete zadat `node` nebo `npm` příkazu na příkazovém řádku v systému Windows nebo na prostředí bash v systému Linux pro přístup k node.js. V systému Windows je nainstalován nástroje Node.js pro rozšíření sady Visual Studio, který umožní grafického rozhraní IDE pro vývoj aplikace node.js. 
+Použití `Juno` Julie IDE nainstalované na datové VĚDY a k dispozici jako místní nabídku aplikace.
 
-**F #**: k dispozici v systému Windows a přístupné prostřednictvím Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde můžete jenom spouštět `fsc` příkaz. 
+* Použití v Jupyter
+
+Otevřete Jupyter a klikněte `New` pro vytvoření nového poznámkového bloku. V tomto okamžiku můžete zvolit typ jádra jako `Julia VERSION` 
+
+* Instalace balíčků Julia
+
+Helena umístění výchozí hodnota je globální prostředí číst všichni uživatelé. Ale můžete napsat / install globálních balíčků jenom správci. Pokud chcete balíček nainstalovat do globálního prostředí, spusťte Julie pomocí jedné z metod uvedených výše. Potom spustíte Julie balíček správce příkazů, jako jsou `Pkg.add()` pro instalaci nebo aktualizaci balíčků. 
+
+## <a name="other-languages"></a>Jiné jazyky
+
+**C#**: K dispozici na Windows a přístupné přes Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde lze pouze spustit `csc` příkazu. 
+
+**Java**: OpenJDK je k dispozici v Linuxu i Windows edice DSVM a nastavte na cestě. Můžete zadat `javac` nebo `java` příkazu na příkazovém řádku ve Windows nebo prostředí bash v Linuxu pomocí Javy. 
+
+**Node.js**: platforma node.js je k dispozici v Linuxu i Windows edition DSVM a sada na cestě. Můžete zadat `node` nebo `npm` příkazu na příkazovém řádku ve Windows nebo prostředí bash v systému Linux pro přístup k node.js. Na Windows je nainstalován Node.js tools pro rozšíření sady Visual Studio k poskytování grafické integrovaného vývojového prostředí pro vývoj aplikace node.js. 
+
+**F#**: K dispozici na Windows a přístupné přes Visual Studio Community edition nebo na `Developer Command Prompt for Visual Studio` kde lze pouze spustit `fsc` příkazu. 
 
 

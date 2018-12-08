@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 56160b8db3bad5ebd04fc30442833d36f1633ed1
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a8bb5e7ca71a24f36b102938668d57bdccd0b0b8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123517"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101802"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopírování dat z Oracle Eloqua pomocí Azure Data Factory (Preview)
 
@@ -76,7 +76,12 @@ Oracle Eloqua propojené služby jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje Oracle Eloqua datové sady.
 
-Ke zkopírování dat z Oracle Eloqua, nastavte vlastnost typ datové sady na **EloquaObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Ke zkopírování dat z Oracle Eloqua, nastavte vlastnost typ datové sady na **EloquaObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **EloquaObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -88,7 +93,8 @@ Ke zkopírování dat z Oracle Eloqua, nastavte vlastnost typ datové sady na **
         "linkedServiceName": {
             "referenceName": "<Eloqua linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -97,14 +103,14 @@ Ke zkopírování dat z Oracle Eloqua, nastavte vlastnost typ datové sady na **
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností, které podporuje Oracle Eloqua zdroje.
 
-### <a name="eloquasource-as-source"></a>EloquaSource jako zdroj
+### <a name="eloqua-as-source"></a>Eloqua jako zdroj
 
 Ke zkopírování dat z Oracle Eloqua, nastavte typ zdroje v aktivitě kopírování do **EloquaSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **EloquaSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Accounts"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Accounts"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

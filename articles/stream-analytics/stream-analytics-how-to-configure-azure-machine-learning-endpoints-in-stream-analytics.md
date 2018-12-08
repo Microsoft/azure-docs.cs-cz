@@ -4,17 +4,16 @@ description: Tento článek popisuje, jak pomocí uživatelem definované funkce
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: 024d7094a9baa90eebd57b4c76db367f81bd0400
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 12/07/2018
+ms.openlocfilehash: cea810a5e57f4b10c170038108226c4e0f1320bc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700863"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104916"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Machine Learning integrace ve službě Stream Analytics
 Stream Analytics podporuje uživatelem definované funkce, které vyžadují ke koncovým bodům Azure Machine Learning. Podpora rozhraní REST API pro tuto funkci je podrobně popsaná v [knihovny rozhraní REST API pro Stream Analytics](https://msdn.microsoft.com/library/azure/dn835031.aspx). Tento článek obsahuje doplňující informace potřebné pro úspěšné implementaci této funkce ve Stream Analytics. Kurz také se zveřejní a je k dispozici [tady](stream-analytics-machine-learning-integration-tutorial.md).
@@ -51,7 +50,7 @@ Například následující ukázkový kód vytvoří skalární UDF s názvem *n
 
 Text požadavku příkladu:  
 
-````
+```json
     {
         "name": "newudf",
         "properties": {
@@ -67,7 +66,7 @@ Text požadavku příkladu:
             }
         }
     }
-````
+```
 
 ## <a name="call-retrievedefaultdefinition-endpoint-for-default-udf"></a>Volání koncového bodu RetrieveDefaultDefinition pro výchozí hodnotu UDF
 Jakmile se vytvoří kostru UDF je potřeba dokončení definice UDF. Koncový bod RetreiveDefaultDefinition vám pomůže využít vaše výchozí definici pro skalární funkci, která je vázána na koncový bod Azure Machine Learning. Datová část níže vyžaduje, abyste k získání výchozí definice UDF pro skalární funkci, která je vázána na koncový bod Azure Machine Learning. Ji neurčuje skutečný koncový bod, protože již byl poskytnut během požadavek PUT. Stream Analytics volá zadaný v požadavku, pokud ji explicitně poskytuje koncový bod. V opačném případě použije předplatné původně odkazuje. Tady UDF přebírá jediný řetězec, parametr (věta) a vrátí výstup jednoho typu řetězec, což znamená "mínění" popisku pro tuto větu:.
@@ -78,7 +77,7 @@ POST : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/
 
 Text požadavku příkladu:  
 
-````
+```json
     {
         "bindingType": "Microsoft.MachineLearning/WebService",
         "bindingRetrievalProperties": {
@@ -86,11 +85,11 @@ Text požadavku příkladu:
             "udfType": "Scalar"
         }
     }
-````
+```
 
 Ukázku výstup tohoto by hledejte něco jako níže.  
 
-````
+```json
     {
         "name": "newudf",
         "properties": {
@@ -126,7 +125,7 @@ Ukázku výstup tohoto by hledejte něco jako níže.
             }
         }
     }
-````
+```
 
 ## <a name="patch-udf-with-the-response"></a>Oprava UDF s odpovědí
 Nyní UDF musí opravit s předchozí odpověď, jak je znázorněno níže.
@@ -137,7 +136,7 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 
 Text požadavku (výstup z RetrieveDefaultDefinition):
 
-````
+```json
     {
         "name": "newudf",
         "properties": {
@@ -173,12 +172,12 @@ Text požadavku (výstup z RetrieveDefaultDefinition):
             }
         }
     }
-````
+```
 
 ## <a name="implement-stream-analytics-transformation-to-call-the-udf"></a>Implementace transformace Stream Analytics k volání UDF
 Nyní dotazování UDF (tady s názvem scoreTweet) pro každý vstupní události a zápisu odpovědi pro tuto událost do výstupu.  
 
-````
+```json
     {
         "name": "transformation",
         "properties": {
@@ -186,7 +185,7 @@ Nyní dotazování UDF (tady s názvem scoreTweet) pro každý vstupní událost
             "query": "select *,scoreTweet(Tweet) TweetSentiment into blobOutput from blobInput"
         }
     }
-````
+```
 
 
 ## <a name="get-help"></a>Podpora

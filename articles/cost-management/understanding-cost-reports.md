@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: 50a46b37be3115b92a3f8bc7cf426c8c7df78ce9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994136"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103417"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Principy Cloudyn sestav správy nákladů
 
@@ -25,7 +25,7 @@ Tento článek vám pomůže pochopit základní struktura Cloudyn náklady na s
 
 Tady se můžete podívat na příklad sestavy Cost Over Time. Většina sestav Cloudyn mají podobné rozložení.
 
-![Ukázková sestava](./media/understanding-cost-reports/sample-report.png)
+![Příklad sestavy Cost Over Time s odpovídající popisy očíslovaných oblasti](./media/understanding-cost-reports/sample-report.png)
 
 Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný v následující informace:
 
@@ -47,11 +47,11 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
 
     Použijte oblast značky do skupiny podle kategorií značky. Klíčová slova uvedená v nabídce jsou Azure oddělení nebo cost center značky nebo se jedná značky entity a předplatné náklady od Cloudyn. Vyberte tagy, které chcete filtrovat výsledky. Můžete také zadat název značky (klíčové slovo) pro filtrování výsledků.
 
-    ![Vyberte možnosti](./media/understanding-cost-reports/select-options.png)
+    ![Příklad: seznam filtrovat výsledky podle značek](./media/understanding-cost-reports/select-options.png)
 
     Klikněte na tlačítko **přidat** přidat nový filtr.
 
-    ![Přidat filtr](./media/understanding-cost-reports/add-filter.png)
+    ![Přidat pole filtr zobrazující možnosti a ujednání můžete filtrovat podle](./media/understanding-cost-reports/add-filter.png)
 
     Značka seskupování a filtrování se nevztahuje na prostředky Azure nebo značky skupiny prostředků.
 
@@ -61,9 +61,9 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
 
     Používání skupin v Cost Analysis sestavy, které ukazují na úrovni standard rozpis kategorie z fakturační data v sestavě.  Nicméně podle klíčových slov kategorií zobrazení skupin v zobrazení sestavy přidělování nákladů. Podle klíčových slov kategorie jsou definovány v modelu přidělování nákladů a standardní rozepsané kategorie z fakturačních údajů.
 
-    ![značky skupin](./media/understanding-cost-reports/groups-tags01.png)
+    ![První příklad seznam značek, které můžete seskupit podle](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![značky skupin](./media/understanding-cost-reports/groups-tags02.png)
+    ![Druhý příklad seznam značek, které můžete seskupit podle](./media/understanding-cost-reports/groups-tags02.png)
 
     V sestavách přidělování nákladů mohou zahrnovat skupiny do kategorií podle klíčových slov skupiny:
       - Značky
@@ -166,7 +166,7 @@ Jednotlivé očíslované oblasti v předchozím obrázku je podrobně popsaný 
 
     Pomocí formátů zobrazení vyberte různá zobrazení grafu nebo tabulce.
 
-    ![Formáty zobrazení](./media/understanding-cost-reports/display-formats.png)
+    ![Symboly formátů zobrazení, které můžete vybrat](./media/understanding-cost-reports/display-formats.png)
 
 13. **Více barva**
 

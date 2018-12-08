@@ -1,5 +1,5 @@
 ---
-title: Nasadit moduly Azure IoT Edge (VS Code) | Dokumentace Microsoftu
+title: Nasadit moduly z Visual Studio Code – Azure IoT Edge | Dokumentace Microsoftu
 description: Můžete nasadit moduly do zařízení IoT Edge pomocí Visual Studio Code
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a7f0fc0c3169aadac78609830dda55ae1ec7ea46
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 212f103a356dc3663795a5e5453869c99da3fff9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567839"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100816"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Nasadit moduly Azure IoT Edge z Visual Studio Code
 
@@ -109,7 +110,7 @@ Rozšíření Azure IoT pro Visual Studio Code můžete použít k provádění 
 
 2. V dolní části Průzkumníku, rozbalte **zařízení Azure IoT Hub** oddílu. 
 
-   ![Rozbalte zařízení Azure IoT Hub](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
+   ![Rozbalte část zařízení Azure IoT Hub](./media/how-to-deploy-modules-vscode/azure-iot-hub-devices.png)
 
 3. Klikněte na **...**  v **zařízení Azure IoT Hub** hlavičku oddílu. Pokud nevidíte tři tečky, najeďte myší na záhlaví. 
 

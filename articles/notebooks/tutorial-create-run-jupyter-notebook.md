@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření a spuštění poznámkového bloku Jupyter v Azure | Dokumentace Microsoftu
+title: Kurz – vytvoření a spuštění poznámkového bloku Jupyter v Azure
 description: Postup vytvoření spustit Poznámkový blok Jupyter v poznámkových bloků Azure, který znázorňuje proces lineární regrese v datové vědy.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a73a3e89c2f1c2b852193ae916d73675b5b0fbcd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 123365f1aa149c0df158eedcc156280a3fe771d2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855748"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106667"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Kurz: vytvoření a spuštění poznámkového bloku Jupyter s využitím Pythonu
 
@@ -54,7 +54,12 @@ Trénování modelu lineární regrese v poznámkovém bloku vytvoříte načít
 ### <a name="upload-the-data-file"></a>Odeslat datový soubor
 
 1. Na řídicím panelu projektu v poznámkových bloků Azure, vyberte **nahrát** > **z adresy URL**
-1. V místní nabídce zadejte adresu URL `https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv` v **adresa URL souboru** a *cricket_chirps.csv* v **název_souboru**a pak vyberte **provádí**.
+1. V místní nabídce zadejte následující adresu URL v **adresa URL souboru** a *cricket_chirps.csv* v **název_souboru**a pak vyberte **provádí**.
+
+    ```url
+    https://raw.githubusercontent.com/Microsoft/AzureNotebooks/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps/cricket_chirps.csv
+    ```
+
 1. *Cricket_chirps.csv* souboru by se měla objevit v seznamu souboru projektu:
 
     ![Nově vytvořený soubor CSV zobrazující v seznamu souboru projektu](media/tutorial/csv-file-in-project.png)
@@ -87,7 +92,7 @@ Trénování modelu lineární regrese v poznámkovém bloku vytvoříte načít
 
 1. Vyberte **uložit soubor** uložte soubor a vraťte se do řídicího panelu Projekt.
 
-## <a name="install-python-packages-at-the-project-level"></a>Nainstalovat balíčky Pythonu na úrovni projektu
+## <a name="install-project-level-packages"></a>Instalace balíčků na úrovni projektu
 
 V rámci Poznámkový blok, můžete kdykoli použít příkazů, jako jsou `!pip install` do buňky kódu k instalaci požadované balíčky. Tyto příkazy jsou však spustit pokaždé, když spustíte buňky poznámkovém bloku kódu a může být časově náročné. Z tohoto důvodu můžete místo toho nainstalovat balíčky na úrovni projektu pomocí `requirements.txt` souboru.
 
@@ -113,7 +118,7 @@ V rámci Poznámkový blok, můžete kdykoli použít příkazů, jako jsou `!pi
 
 Tento krok instalace na místě se všechny Poznámkový blok, který spustíte v projektu běžet v prostředí kde tyto balíčky nainstalují.
 
-## <a name="create-the-notebook-file-and-start-jupyter"></a>Vytvořte soubor poznámkového bloku a spusťte Jupyter
+## <a name="create-and-run-a-notebook"></a>Vytvoření a spuštění poznámkového bloku
 
 Připraveno datový soubor a nastavení prostředí projektu můžete teď vytvořit a otevřete Poznámkový blok.
 
@@ -125,7 +130,7 @@ Připraveno datový soubor a nastavení prostředí projektu můžete teď vytvo
 
     [![](media/tutorial/tutorial-new-notebook.png "Počáteční zobrazení nového poznámkového bloku v poznámkových bloků Azure")](media/tutorial/tutorial-new-notebook.png#lightbox)
 
-## <a name="a-brief-tour-of-the-notebook-interface"></a>Stručný přehled rozhraní Poznámkový blok používání
+## <a name="tour-the-notebook-interface"></a>Přehled rozhraní poznámkového bloku
 
 Pomocí poznámkového bloku spuštěna můžete přidat kód a buňky Markdownu, spusťte tyto buňky a můžete spravovat činnost poznámkového bloku. Nejprve je však vhodné trvá několik minut se seznámit s rozhraním. Úplnou dokumentaci, vyberte **pomáhají** > **Poznámkový blok pomáhají** příkazu nabídky.
 
@@ -404,7 +409,7 @@ Můžete také použít **souboru** > **vytvořit kopii** příkaz kdykoli vytvo
 
 Jakmile budete hotovi s poznámkového bloku, použijte **souboru** > **zavřít a zastavení** příkaz, který zavření poznámkového bloku a jádra, který byl spuštěný ji vypne. Poznámkových bloků Azure klikněte na kartu prohlížeče se automaticky zavře.
 
-## <a name="debugging-code-in-a-notebook-using-visual-studio-code"></a>Ladění kódu v poznámkovém bloku pomocí nástroje Visual Studio Code
+## <a name="debug-notebooks-using-visual-studio-code"></a>Ladění pomocí Visual Studio Code poznámkové bloky
 
 Pokud kód buňky v poznámkovém bloku není chovají způsobem, jakým jste očekávali, můžete mít kód chyby nebo jiné chyby. Ale jiné než pomocí `print` příkazy k zobrazení hodnot proměnných, poznámkového bloku Jupyter nenabízí žádné ladění zařízení.
 

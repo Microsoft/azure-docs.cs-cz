@@ -1,6 +1,6 @@
 ---
-title: Ukázkový skript Azure CLI – Export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště v jiné oblasti | Microsoft Docs
-description: Ukázkový skript Azure CLI – Export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejném nebo jiném předplatném
+title: Ukázkový Azure CLI – kopírování snímku do úložiště účtu v jiné oblasti | Dokumentace Microsoftu
+description: Ukázkový skript Azure CLI – Export nebo kopírování snímku jako virtuálního pevného disku do účtu úložiště ve stejné nebo jiné oblasti.
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
-ms.custom: mvc
-ms.openlocfilehash: cd555cfea6a84a0bdf0d0c4c9b9b68ae079fbc7b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: HT
+ms.custom: mvc,seodec18
+ms.openlocfilehash: bdc9da206e938c0c7fd3d027ee02b11d01a1b4d0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852599"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106715"
 ---
-# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-cli"></a>Export nebo kopírování spravovaných snímků jako virtuálních pevných disků do účtu úložiště v jiné oblasti pomocí rozhraní příkazového řádku
+# <a name="exportcopy-a-snapshot-to-a-storage-account-in-different-region-with-cli"></a>Export nebo kopírování snímku do účtu úložiště v jiné oblasti pomocí rozhraní příkazového řádku
 
 Tento skript exportuje spravovaný snímek do účtu úložiště v jiné oblasti. Nejprve vygeneruje identifikátor URI SAS snímku a pak pomocí něj zkopíruje snímek do účtu úložiště v jiné oblasti. Tento skript můžete použít k udržování zálohy spravovaných disků v jiné oblasti pro účely zotavení po havárii. 
 
@@ -46,7 +46,7 @@ Tento skript k vygenerování identifikátoru URI SAS pro spravovaný snímek a 
 | [az snapshot grant-access](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_grant_access) | Vygeneruje sdílený přístupový podpis jen pro čtení, který se použije ke zkopírování základního souboru VHD do účtu úložiště nebo jeho stažení do místního prostředí.  |
 | [az storage blob copy start](https://docs.microsoft.com/cli/azure/storage/blob/copy#az_storage_blob_copy_start) | Asynchronně zkopíruje objekt blob z jednoho účtu úložiště do jiného. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Vytvoření spravovaného disku z virtuálního pevného disku](virtual-machines-linux-cli-sample-create-managed-disk-from-vhd.md?toc=%2fcli%2fmodule%2ftoc.json)
 

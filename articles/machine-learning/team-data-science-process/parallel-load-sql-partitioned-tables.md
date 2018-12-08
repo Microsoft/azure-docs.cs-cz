@@ -1,6 +1,6 @@
 ---
-title: Vytváření a optimalizaci tabulky pro rychlé paralelní import dat do systému SQL Server na Virtuálním počítači Azure | Dokumentace Microsoftu
-description: Paralelní hromadný import dat pomocí tabulek oddílů SQL
+title: Paralelní hromadný import dat pomocí tabulek oddílů SQL na Virtuálním počítači Azure
+description: Dělené tabulky pro rychlé paralelní hromadný import dat do databáze SQL serveru sestavení.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: f437de3043cbd3d689f85dc3524b419b1633553f
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 5645799b0f1be1c2c6117a314920ee996880cb37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446462"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101173"
 ---
-# <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Paralelní hromadný import dat pomocí tabulek oddílů SQL
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Vytváření a optimalizaci tabulky pro rychlé paralelní import dat do systému SQL Server na Virtuálním počítači Azure
 
 Tento článek popisuje, jak vytvářet dělené tabulky pro rychlé paralelní hromadný import dat do databáze SQL serveru. Pro načítání velkých objemů dat nebo přenos do služby SQL database, import dat do SQL DB a dalších dotazů lze zvýšit pomocí *dělené tabulky a zobrazení*. 
 

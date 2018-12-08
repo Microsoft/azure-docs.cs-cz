@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
-ms.custom: ''
-ms.openlocfilehash: f7092a08e501ae61ef93be383290db575b5ad1f1
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: secdec18
+ms.openlocfilehash: 25a8057a1c547e29b209d87d9124a3e019957dd8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995564"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100850"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurace účtů úložiště pro Cloudyn
 
@@ -35,18 +35,18 @@ Pokud nemáte k dispozici AWS kbelíku simple storage service (S3), musíte ji v
 
 Konfigurace je úložiště Azure pro použití u Cloudyn je jednoduché. Shromážděte informace o účtu úložiště a zkopírujte je na portálu Cloudyn.
 
-1. Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 2. Klikněte na tlačítko **všechny služby**vyberte **účty úložiště**, přejděte do účtu úložiště, který chcete použít a potom vyberte účet.
 3. Na stránce svého účtu úložiště v rámci **nastavení**, klikněte na tlačítko **přístupové klíče**.
 4. Kopii vaší **název účtu úložiště** a **připojovací řetězec** pod klíč1.  
-![Přístupové klíče k úložišti Azure](./media/storage-accounts/azure-storage-access-keys.png)  
+![Zkopírujte název a připojovací řetězec účtu úložiště](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Portál Cloudyn můžete otevřít z webu Azure Portal nebo můžete přejít na adresu https://azure.cloudyn.com a přihlásit se.
 6. Kliknutím na symbol ozubeného kola a pak vyberte **Správa sestav úložišť**.
 7. Klikněte na tlačítko **přidat nový +** a zkontrolujte, že je vybraná možnost Microsoft Azure. Vložte název účtu úložiště Azure v **název** oblasti. Vložit vaše **připojovací řetězec** v příslušné oblasti. Zadejte název kontejneru a pak klikněte na tlačítko **Uložit**.  
-![Cloudyn úložiště nakonfigurovaný pro Azure](./media/storage-accounts/azure-cloudyn-storage.png)
+![Vložte účet úložiště Azure, název a připojovací řetězec v okně Přidat nová pole úložiště sestavy](./media/storage-accounts/azure-cloudyn-storage.png)
 
   Vaše nové úložiště položka Azure sestavy se zobrazí v seznamu účtů úložiště.  
-    ![Nové úložiště Azure sestavy v seznamu](./media/storage-accounts/azure-storage-entry.png)
+    ![Nová položka úložiště Azure sestavy v seznamu](./media/storage-accounts/azure-storage-entry.png)
 
 
 Sestavy můžete uložit do služby Azure storage. V sestavách, klikněte na tlačítko **akce** a pak vyberte **Naplánování sestavy**. Název sestavy a pak přidejte vlastní adresu URL nebo použít automaticky vytvořený adresu URL. Vyberte **uložit do úložiště** a pak vyberte účet úložiště. Zadejte předponu, která získá připojeným k názvu souboru sestavy. Vyberte formát souboru CSV nebo JSON a uložte sestavu.
@@ -67,7 +67,7 @@ Když vytvoříte novou zásadu, je třeba zadat přesné oprávnění potřebn�
 4. Klikněte na tlačítko **JSON** kartu.
 5. Tyto zásady můžete uložit sestavu do sady S3. Zkopírujte a vložte následující příklad zásady pro **JSON** kartu. Nahraďte &lt;bucketname&gt; názvem vašeho kontejneru.
 
-  ```
+  ```json
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -86,7 +86,7 @@ Když vytvoříte novou zásadu, je třeba zadat přesné oprávnění potřebn�
 ```
 
 6. Klikněte na tlačítko **zkontrolujte zásady**.  
-    ![Zkontrolujte zásady](./media/storage-accounts/aws-policy.png)  
+    ![Zobrazuje informace o příklad zásad AWS JSON](./media/storage-accounts/aws-policy.png)  
 7. Na stránce zkontrolovat zásady zadejte název zásady. Například _CloudynSaveReport2S3_.
 8. Klikněte na tlačítko **vytvořit zásadu**.
 
@@ -102,7 +102,7 @@ Pro připojení nové zásady, otevřete konzoly AWS a upravte Cloudyn role nebo
   1. Klikněte na název role Cloudyn.
   2. Na **oprávnění** klikněte na tlačítko **připojit zásady**.
   3. Vyhledejte zásadu, kterou jste vytvořili a vyberte ji a pak klikněte na **připojit zásady**.
-    ![AWS – připojit zásady pro roli](./media/storage-accounts/aws-attach-policy-role.png)
+    ![Příklad zásady připojené k vaší role Cloudyn](./media/storage-accounts/aws-attach-policy-role.png)
 
 **Pro uživatele:**
 
@@ -111,7 +111,7 @@ Pro připojení nové zásady, otevřete konzoly AWS a upravte Cloudyn role nebo
 3. V **udělit oprávnění** vyberte **připojit existující zásady přímo**.
 4. Vyhledejte zásadu, kterou jste vytvořili a vyberte ji a pak klikněte na **Další: Revize**.
 5. Na oprávnění přidat na stránku název role, klikněte na tlačítko **přidat oprávnění**.  
-    ![AWS – připojit zásady uživatele](./media/storage-accounts/aws-attach-policy-user.png)
+    ![Příklad zásady připojené k vaší uživatelské Cloudyn](./media/storage-accounts/aws-attach-policy-user.png)
 
 
 ### <a name="optional-set-permission-with-bucket-policy"></a>Volitelné: Nastavte oprávnění pomocí sady zásad
@@ -152,11 +152,11 @@ Můžete také nastavit oprávnění k vytváření sestav s vaší sady S3 pomo
 2. Kliknutím na symbol ozubeného kola a pak vyberte **Správa sestav úložišť**.
 3. Klikněte na tlačítko **přidat nový +** a zkontrolujte, že je vybraná AWS.
 4. Vyberte účet a úložiště kontejneru. Název kontejneru úložiště AWS je automaticky vyplněné.  
-    ![Přidat sestavu úložiště AWS sady](./media/storage-accounts/aws-cloudyn-storage.png)  
+    ![Informace z příkladu v přidat nová pole úložiště sestavy](./media/storage-accounts/aws-cloudyn-storage.png)  
 5. Klikněte na tlačítko **Uložit** a potom klikněte na tlačítko **Ok**.
 
     Vaše nová položka sestavy úložiště AWS se zobrazí v seznamu účtů úložiště.  
-    ![Nové úložiště AWS sestavy v seznamu](./media/storage-accounts/aws-storage-entry.png)
+    ![Nové AWS sestavě úložiště položky zobrazit v seznamu účtů úložiště](./media/storage-accounts/aws-storage-entry.png)
 
 
 Sestavy můžete uložit do služby Azure storage. V sestavách, klikněte na tlačítko **akce** a pak vyberte **Naplánování sestavy**. Název sestavy a pak přidejte vlastní adresu URL nebo použít automaticky vytvořený adresu URL. Vyberte **uložit do úložiště** a pak vyberte účet úložiště. Zadejte předponu, která získá připojeným k názvu souboru sestavy. Vyberte formát souboru CSV nebo JSON a uložte sestavu.

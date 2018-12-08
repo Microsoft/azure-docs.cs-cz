@@ -1,21 +1,22 @@
 ---
-title: Vysvětlení, používání rolí v založené na modelu entity
+title: Role pro entity
 titleSuffix: Azure Cognitive Services
-description: Role jsou pojmenované, kontextové podtypy entity použít jenom ve vzorcích. Například v utterance nákup lístků z New Yorku do Londýna Praha i Brno měst jsou ale každý má jiný význam ve větě. New York city původu a Londýn je město cílové.
+description: Role jsou pojmenované, kontextové podtypy entity použít jenom ve vzorcích. Například v utterance `buy a ticket from New York to London`, jsou města New York i Londýn, ale každý má jiný význam ve větě. New York city původu a Londýn je město cílové.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: f5f790d4cdba8b6ebc1ed2694cb4552cb565f676
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: dd11c2c7062d09c522c46770e8dba6d6eb0ac1e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427212"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105560"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entita role ve vzorech jsou kontextové subtypes
 Role jsou pojmenované, kontextové podtypy entity používá pouze v [vzory](luis-concept-patterns.md).
@@ -29,7 +30,7 @@ Role zadejte název těchto rozdílů:
 |Umístění|počátek|kde opustí rovině z|
 |Umístění|cíl|kde jsou rovina|
 |Předem připravené datetimeV2|na|Koncové datum|
-|Předem připravené datetimeV2|Od|Počáteční datum|
+|Předem připravené datetimeV2|od|Počáteční datum|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Jak se používají role ve vzorech?
 Role v utterance vzor šablony, se používají v rámci utterance: 

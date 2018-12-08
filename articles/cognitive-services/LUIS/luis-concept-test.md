@@ -1,21 +1,21 @@
 ---
 title: Testování aplikace LUIS
-titleSuffix: Azure Cognitive Services
-description: Testování je proces poskytování ukázka projevy LUIS a získat odpověď ze služby LUIS rozpoznán záměry a entity. Služba LUIS můžete otestovat interaktivně, jeden utterance najednou, nebo zadejte dávku projevy. Při testování, porovnávat aktuální aktivní modelu do publikovaného modelu.
-services: cognitive-services
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Testování je proces poskytování ukázka projevy LUIS a získat odpověď ze služby LUIS rozpoznán záměry a entity.
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 58bcf45d1a45d448f2f5845ffe43ad07f886a6fc
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 5aeb955b579a15f29429c585720dbef1b9560efa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637007"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105525"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testování projevy příklad v LUIS
 

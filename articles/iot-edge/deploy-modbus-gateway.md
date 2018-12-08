@@ -1,5 +1,5 @@
 ---
-title: Nasazení zařízení Modbus se službou Azure IoT Edge | Dokumentace Microsoftu
+title: Přeložit modbus protokoly s bránami – Azure IoT Edge | Dokumentace Microsoftu
 description: Jak umožnit zařízením s protokolem Modbus TCP komunikaci s Azure IoT Hub vytvořením zařízení s bránou IoT Edge
 author: kgremban
 manager: philmea
@@ -8,12 +8,13 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: d8675042874ffaa824ccd1bf3b0017f0219268b8
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 51c1a9a6fe997249f543348c95c0c02dfa47ceaf
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566393"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101615"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Připojení zařízení Modbus TCP přes zařízení brány IoT Edge
 

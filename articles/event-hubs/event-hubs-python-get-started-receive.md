@@ -1,6 +1,6 @@
 ---
-title: Příjem událostí ze služby Azure Event Hubs pomocí Pythonu | Dokumentace Microsoftu
-description: Začínáme s příjmem události ze služby Event Hubs pomocí Pythonu
+title: Příjem událostí pomocí Pythonu – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek poskytuje návod pro vytvoření aplikace v Pythonu, která bude přijímat události z Azure Event Hubs.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: femila
@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 8009a2ef3f89a359bc645485dd75b80cc5d0b868
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: bc1cf07c5a74bc4d7182eea5281e75525fd04247
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722832"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103180"
 ---
 # <a name="receive-events-from-event-hubs-using-python"></a>Příjem událostí ze služby Event Hubs pomocí Pythonu
 

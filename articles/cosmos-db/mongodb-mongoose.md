@@ -1,25 +1,24 @@
 ---
-title: Používání rozhraní Mongoose se službou Azure Cosmos DB | Microsoft Docs
+title: Používání rozhraní Mongoose pomocí služby Azure Cosmos DB
 description: Zjistěte, jak připojit aplikaci Node.js využívající Mongoose ke službě Azure Cosmos DB.
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: sclyon
-ms.openlocfilehash: 8cfa53a1792d8e01c05aad8e4a1a0b5239a092c1
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 6f84dfac7b556e59ec3ad76ff7d2c6e5f5105293
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857381"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101428"
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: Používání rozhraní Mongoose se službou Azure Cosmos DB
 
-Tento kurz ukazuje, jak použít [rozhraní Mongoose](http://mongoosejs.com/) při ukládání dat ve službě Azure Cosmos DB. V tomto návodu používáme rozhraní MongoDB API pro službu Azure Cosmos DB. Pokud Mongoose ještě neznáte, jedná se o rozhraní pro modelování objektů pro MongoDB v Node.js, které poskytuje jednoduché řešení modelování dat aplikací založené na schématu.
+Tento kurz ukazuje, jak použít [rozhraní Mongoose](https://mongoosejs.com/) při ukládání dat ve službě Azure Cosmos DB. V tomto návodu používáme rozhraní MongoDB API pro službu Azure Cosmos DB. Pokud Mongoose ještě neznáte, jedná se o rozhraní pro modelování objektů pro MongoDB v Node.js, které poskytuje jednoduché řešení modelování dat aplikací založené na schématu.
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
 
@@ -96,7 +95,7 @@ Pro každý model, který vytvoříte, vytvoří Mongoose na pozadí novou kolek
 
 Tento návod popisuje oba modely. Nejprve se zaměříme na návod na ukládání jednoho typu dat na kolekci. Takto se Mongoose chová standardně.
 
-V Mongoose existuje také koncept označovaný jako [Diskriminátory](http://mongoosejs.com/docs/discriminators.html). Diskriminátory představují mechanismus dědičnosti schématu. Umožňují existenci více modelů s překrývajícími se schématy nad stejnou základní kolekcí MongoDB.
+V Mongoose existuje také koncept označovaný jako [Diskriminátory](https://mongoosejs.com/docs/discriminators.html). Diskriminátory představují mechanismus dědičnosti schématu. Umožňují existenci více modelů s překrývajícími se schématy nad stejnou základní kolekcí MongoDB.
 
 Ve stejné kolekci můžete ukládat různé datové modely a následně v době zpracování dotazu můžete pomocí klauzule filtru stáhnout pouze data, která potřebujete.
 
@@ -196,7 +195,7 @@ Výchozím chováním Mongoose je vytvořit kolekci MongoDB při každém vytvo�
 
 ### <a name="using-mongoose-discriminators-to-store-data-in-a-single-collection"></a>Použití diskriminátorů Mongoose k ukládání dat v jedné kolekci
 
-V této metodě použijeme [Diskriminátory Mongoose](http://mongoosejs.com/docs/discriminators.html) k optimalizaci nákladů na jednotlivé kolekce služby Azure Cosmos DB. Diskriminátory umožňují definovat odlišující klíč, pomocí kterého můžete ukládat, odlišovat a filtrovat různé objektové modely.
+V této metodě použijeme [Diskriminátory Mongoose](https://mongoosejs.com/docs/discriminators.html) k optimalizaci nákladů na jednotlivé kolekce služby Azure Cosmos DB. Diskriminátory umožňují definovat odlišující klíč, pomocí kterého můžete ukládat, odlišovat a filtrovat různé objektové modely.
 
 Tady vytvoříme základní objektový model, nadefinujeme odlišující klíč a do základního modelu přidáme jako rozšíření modely Family a VacationDestinations.
 

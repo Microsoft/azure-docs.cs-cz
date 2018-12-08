@@ -5,7 +5,7 @@ keywords: Importujte dat, formát dat, datové typy, zdroje dat, trénovacích d
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -17,14 +17,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.openlocfilehash: 89e2414b32dfb3cc6773d09dcdc3e711e56492ef
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 26d232567d9689ff8400726427d6dc582343a35f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52315016"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103306"
 ---
-# <a name="import-data-into-azure-machine-learning-studio-from-various-online-data-sources-with-the-import-data-module"></a>Import dat do nástroje Azure Machine Learning Studio z různých online zdrojů dat pomocí modulu Import Dat
+# <a name="import-data-into-azure-machine-learning-studio-from-online-data-sources"></a>Import dat do Azure Machine Learning Studio z online zdrojů dat 
 Tento článek popisuje podporu pro import online data z různých zdrojů a informace potřebné k přesunu dat z těchto zdrojů do Azure Machine Learning Studio experimentovat.
 
 > [!NOTE]

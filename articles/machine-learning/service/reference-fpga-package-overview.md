@@ -1,5 +1,6 @@
 ---
-title: Balíček FPGA pro hardwarovou akceleraci pro Azure Machine Learning
+title: Balíček hardwarová akcelerace FPGA
+titleSuffix: Azure Machine Learning service
 description: Tento článek je zastaralý.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +12,12 @@ author: tedway
 ms.date: 05/07/2018
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 002f521343d96ee50944428b1df9af2ce96bf88b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 87826ad00d52f4d5a2167d4beaec882af096c3ac
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013488"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103333"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Azure Machine Learning hardwarovou akceleraci balíčku
 

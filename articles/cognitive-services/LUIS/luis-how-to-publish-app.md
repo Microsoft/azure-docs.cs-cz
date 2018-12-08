@@ -1,21 +1,22 @@
 ---
-title: Publikování aplikace LUIS ke koncovému bodu predikcí
+title: Publikování aplikace
 titleSuffix: Azure Cognitive Services
 description: Po dokončení vytváření a testování aplikace LUIS aktivní, zpřístupní ji pro klientské aplikace ji publikujete do koncového bodu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6eb48fd0f3290fbc3a249bc3880c809ace9f9ddb
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: fe8806b4cc84bb9a15ce5620366fee23bba328c4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886469"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106426"
 ---
 # <a name="publish-your-trained-app"></a>Publikování trénovaného aplikace
 

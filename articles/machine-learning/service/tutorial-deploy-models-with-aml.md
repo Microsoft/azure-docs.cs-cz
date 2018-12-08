@@ -1,21 +1,22 @@
 ---
-title: 'Kurz klasifikace obrázků: nasazujte modely pomocí služby Azure Machine Learning'
+title: 'Obrázek klasifikace kurz: nasazení modelů'
+titleSuffix: Azure Machine Learning service
 description: Tento kurz ukazuje, jak pomocí služby Azure Machine Learning nasadit model klasifikace obrázků s využitím scikit-learn v poznámkovém bloku Python Jupyter.  Tento kurz je druhou částí z dvoudílné série.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
 ms.topic: tutorial
-ms.custom: seodec12
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 6e56fe88eec70af313d0b0dd8cf0aaf27b054121
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.custom: seodec18
+ms.openlocfilehash: fe8fed71711e10af94ff41d1bb4ca4b0c1952374
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011534"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101156"
 ---
 # <a name="tutorial-part-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>Kurz (část 2): nasazení modelu klasifikace image v Azure Container Instance (ACI)
 
@@ -32,7 +33,7 @@ V této části kurzu provedete pomocí služby Azure Machine Learning následuj
 > * Nasazení modelu do služby ACI
 > * Testování nasazeného modelu
 
-Služba ACI není pro produkční nasazení ideální, ale hodí se pro účely testování a porozumění pracovnímu postupu. Pro škálovatelná produkční nasazení zvažte použití [Azure Kubernetes Service](how-to-deploy-to-aks.md).
+Služba ACI není pro produkční nasazení ideální, ale hodí se pro účely testování a porozumění pracovnímu postupu. Pro nasazení v produkčním prostředí škálovatelné zvažte použití služby Azure Kubernetes Service. Další informace najdete v tématu [nasazení a kde](how-to-deploy-and-where.md) dokumentu.
 
 ## <a name="get-the-notebook"></a>Získání poznámkového bloku
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 608dd6067e5c9d31f720b97453615a3e8ead0a85
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 956482a30d383df558eee775b9d89c211bc53e61
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51038616"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101411"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
@@ -165,9 +165,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
@@ -221,9 +221,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
@@ -276,9 +276,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
@@ -336,9 +336,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
@@ -393,9 +393,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
    * Obnovitelné odstranění
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
@@ -450,9 +450,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
@@ -504,9 +504,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
@@ -570,9 +570,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
@@ -607,9 +607,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
@@ -656,9 +656,9 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
 
-```
-./StorageExplorer.exe --disable-gpu
-```
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
 
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
@@ -702,9 +702,11 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```
@@ -764,9 +766,11 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```
@@ -818,9 +822,11 @@ Podpora pro použití nástroje AzCopy s využitím sdílených složek a koneč
 * Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
 * I když Azure Stack v současné době nepodporuje sdílené složky, se zobrazí stále uzlu sdílených složek v účtu služby storage připojené služby Azure Stack.
 * Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
-```
-./StorageExplorer --disable-gpu
-```
+
+    ```
+    ./StorageExplorer --disable-gpu
+    ```
+
 * Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
 
     ```

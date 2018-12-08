@@ -1,6 +1,6 @@
 ---
-title: Postup přidání nebo odstranění uživatelů ve službě Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak přidat nové uživatele nebo odstranit existující uživatele pomocí služby Azure Active Directory.
+title: Přidání nebo odstranění uživatelů – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak přidat nové uživatele nebo odstranit stávající uživatele pomocí služby Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 782363144a6b1dd87aff515c38588b6ce70b61bd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: dd4a9132d5f04870239be3127f723afb60b3ecef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295100"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104675"
 ---
-# <a name="how-to-add-or-delete-users-using-azure-active-directory"></a>Postupy: Přidání nebo odstranění uživatelů pomocí služby Azure Active Directory
-Přidání nových uživatelů nebo odstranit existující uživatele z vašeho tenanta Azure Active Directory (Azure AD) pomocí služby Azure AD.
+# <a name="add-or-delete-users-using-azure-active-directory"></a>Přidání nebo odstranění uživatelů pomocí služby Azure Active Directory
+Přidání nových uživatelů nebo odstranit existující uživatele z vašeho tenanta Azure Active Directory (Azure AD).
 
 ## <a name="add-a-new-user"></a>Přidání nového uživatele
-Můžete vytvořit nového uživatele pomocí služby Azure Active Directory.
+Můžete vytvořit nového uživatele pomocí portálu Azure Active Directory.
 
 ### <a name="to-add-a-new-user"></a>Chcete-li přidat nového uživatele
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce nebo Správce uživatelů adresáře.
@@ -58,10 +58,10 @@ Můžete vytvořit nového uživatele pomocí služby Azure Active Directory.
 Pokud máte prostředí s Azure Active Directory (cloud) a Windows Server Active Directory (v místním prostředí), můžete přidat nové uživatele synchronizovat existujících dat účtu uživatele. Další informace o hybridních prostředí a uživatelům, naleznete v tématu [integrace místních adresářů se službou Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 ## <a name="delete-a-user"></a>Odstranění uživatele
-Můžete odstranit stávajícího uživatele pomocí služby Azure Active Directory.
+Můžete odstranit stávajícího uživatele pomocí portálu Azure Active Directory.
 
 ### <a name="to-delete-a-user"></a>K odstranění uživatele
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**a poté vyhledejte a vyberte uživatele, kterou chcete odstranit z vašeho tenanta Azure AD. Například _Mary Parker_.
 

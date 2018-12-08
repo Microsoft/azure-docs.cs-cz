@@ -4,18 +4,18 @@ description: zahrnout soubor
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: include file
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
-ms.custom: include file
 ms.date: 10/08/2018
 ms.author: diberry
-ms.openlocfilehash: c38f00941f035937afe53d43e01150da062c252d
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
-ms.translationtype: HT
+ms.openlocfilehash: 11d0461e8d7c2711445856ecd255619a92dd6cb5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904497"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53107262"
 ---
 V části **Manage** (Spravovat) (nabídka vpravo nahoře) na stránce **Keys and endpoints** (Klíče a koncové body) (nabídka vlevo) vyberte v dolní části stránky adresu URL **koncového bodu**. Tato akce otevře další kartu prohlížeče s adresou URL koncového bodu v adresním řádku. 
 

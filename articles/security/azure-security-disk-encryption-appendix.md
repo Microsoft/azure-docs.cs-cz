@@ -1,20 +1,22 @@
 ---
-title: Azure Disk Encryption pro Windows a virtuální počítače s Linuxem v režimu IaaS | Dokumentace Microsoftu
+title: Příloha - Azure Disk Encryption pro virtuální počítače IaaS | Dokumentace Microsoftu
 description: Tento článek je dodatek pro Microsoft Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 11/12/2018
-ms.openlocfilehash: e5c7d51428c66bf9e6c245f28fb13b8d4a316d18
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: d6e186f25cc69791d939d93d24a37cadb1113353
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614664"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105038"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
+
 Tento článek je dodatek k [Azure Disk Encryption pro virtuální počítače IaaS](azure-security-disk-encryption-overview.md). Nezapomeňte že si přečíst Azure Disk Encryption pro virtuální počítače IaaS články nejprve k pochopení kontextu. Tento článek popisuje, jak připravit předem šifrované virtuální pevné disky a další úlohy.
 
 ## <a name="connect-to-your-subscription"></a>Připojení k vašemu předplatnému
@@ -57,7 +59,7 @@ Než začnete, projděte si [požadavky](azure-security-disk-encryption-prerequi
 
 ### <a name="bkmk_ConnectCLI"></a> Připojení k vašemu předplatnému pomocí Azure CLI
 
-1. Přihlaste se k Azure s využitím [az login](/cli/azure/authenticate-azure-cli#interactive-log-in). 
+1. Přihlaste se k Azure s využitím [az login](/cli/azure/authenticate-azure-cli#sign-in-interactively). 
      
      ```azurecli
      az login
@@ -189,7 +191,7 @@ Windows Server 2008 R2 použijte následující příkaz:
 
     ServerManagerCmd -install BitLockers
 ### <a name="prepare-the-os-volume-for-bitlocker-by-using-bdehdcfg"></a>Příprava svazek s operačním systémem pomocí Bitlockeru `bdehdcfg`
-Pokud chcete komprimovat oddílu operačního systému a příprava nástroje BitLocker na počítači, spusťte [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment#using-bitlocker-to-encrypt-volumescommand) v případě potřeby:
+Pokud chcete komprimovat oddílu operačního systému a příprava nástroje BitLocker na počítači, spusťte [bdehdcfg](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-basic-deployment) v případě potřeby:
 
     bdehdcfg -target c: shrink -quiet 
 
@@ -295,23 +297,23 @@ Konfigurace šifrování během instalace distribučního provedením následuj�
 
 1. Vyberte **konfigurace šifrovaných svazcích** při rozdělit disky.
 
- ![Instalační program Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
+ ![Ubuntu 16.04 nastavení – konfigurace šifrované svazky](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig1.png)
 
 2. Vytvoření samostatné spouštěcí jednotka, která nesmí být zašifrovaná. Šifrování kořenové jednotce.
 
- ![Instalační program Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
+ ![Instalační program Ubuntu 16.04 – vyberte zařízení k šifrování](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig2.png)
 
 3. Zadejte heslo. Toto je heslo, které jste nahráli do služby key vault.
 
- ![Instalační program Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
+ ![Ubuntu 16.04 instalace – zadejte přístupové heslo](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig3.png)
 
 4. Dokončení vytváření oddílů.
 
- ![Instalační program Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
+ ![Ubuntu 16.04 instalace – dokončení rozdělení do oddílů](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig4.png)
 
 5. Při spuštění virtuálního počítače a vyzváni k zadání přístupového hesla použijte heslo, které jste zadali v kroku 3.
 
- ![Instalační program Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
+ ![Ubuntu 16.04 instalace – zadejte přístupové heslo při spuštění](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
 6. Příprava virtuálního počítače pro jeho odeslání do Azure s využitím [tyto pokyny](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/). Při spuštění poslední krok (zrušení zřízení virtuálního počítače) ještě.
 
@@ -377,7 +379,7 @@ Konfigurace šifrování pro práci s Azure provedením následujících kroků:
 
 7. Nyní můžete zrušit zřízení virtuálního počítače.
 
- ![Instalační program Ubuntu 16.04](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
+ ![Instalační program Ubuntu 16.04 - aktualizace initramfs](./media/azure-security-disk-encryption/ubuntu-1604-preencrypted-fig6.png)
 
 8. Pokračovat k dalšímu kroku a nahrajte virtuální pevný disk do Azure.
 
@@ -385,11 +387,11 @@ Konfigurace šifrování pro práci s Azure provedením následujících kroků:
 Pokud chcete nakonfigurovat šifrování během instalace distribučního, proveďte následující kroky:
 1. Když je rozdělit disky, vyberte **šifrování svazku skupiny**a pak zadejte heslo. Jedná se o heslo, který nahrajete do trezoru klíčů.
 
- ![Instalace v openSUSE 13.2](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
+ ![openSUSE 13.2 Instalační program – šifrování skupiny svazků](./media/azure-security-disk-encryption/opensuse-encrypt-fig1.png)
 
 2. Spuštění virtuálního počítače pomocí hesla.
 
- ![Instalace v openSUSE 13.2](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
+ ![openSUSE 13.2 instalace – zadejte přístupové heslo při spuštění](./media/azure-security-disk-encryption/opensuse-encrypt-fig2.png)
 
 3. Příprava virtuálního počítače pro jeho odeslání do Azure podle pokynů v [Příprava virtuálního počítače se SLES nebo openSUSE pro Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131). Při spuštění poslední krok (zrušení zřízení virtuálního počítače) ještě.
 
@@ -453,19 +455,19 @@ na:
 Pokud chcete nakonfigurovat šifrování během instalace distribučního, proveďte následující kroky:
 1. Vyberte **šifrovat data** při rozdělit disky.
 
- ![Instalační program centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
+ ![Instalační program centOS 7 – cíl instalace](./media/azure-security-disk-encryption/centos-encrypt-fig1.png)
 
 2. Ujistěte se, že **šifrovat** je vybrán pro kořenový oddíl.
 
- ![Instalační program centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
+ ![Instalační program centOS 7 – výběr šifrování pro kořenový oddíl.](./media/azure-security-disk-encryption/centos-encrypt-fig2.png)
 
 3. Zadejte heslo. Toto je heslo, které nahrajete do trezoru klíčů.
 
- ![Instalační program centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
+ ![Instalační program centOS 7 – zadejte přístupové heslo](./media/azure-security-disk-encryption/centos-encrypt-fig3.png)
 
 4. Při spuštění virtuálního počítače a vyzváni k zadání přístupového hesla použijte heslo, které jste zadali v kroku 3.
 
- ![Instalační program centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
+ ![CentOS 7 nastavení – zadejte přístupové heslo na spuštění](./media/azure-security-disk-encryption/centos-encrypt-fig4.png)
 
 5. Příprava virtuálního počítače pro jeho odeslání do Azure s využitím pokynů "CentOS 7.0 +" [Příprava virtuálního počítače založeného na CentOS pro Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70). Při spuštění poslední krok (zrušení zřízení virtuálního počítače) ještě.
 
@@ -526,7 +528,7 @@ na
     ```    
 5. Spustit "/ usr/sbin/dracut - f - v" aktualizovat initrd.
 
-![Instalační program centOS 7](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
+![CentOS 7 - /usr/sbin/dracut -f - v průběhu instalace](./media/azure-security-disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="bkmk_UploadVHD"></a> Nahrání šifrovaného virtuálního pevného disku do účtu služby Azure storage
 Po povolení šifrování nástrojem BitLocker nebo šifrování DM-Crypt místní šifrované virtuální pevný disk je potřeba nahrát do účtu úložiště.

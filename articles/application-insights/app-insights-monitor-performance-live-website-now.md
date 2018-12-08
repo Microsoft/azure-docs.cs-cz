@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0618a580c6bdcef8f28a439cd79e67d863e58b9e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: abc3d5832cd85cb3297077f2d661ec8fe32fde9e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995236"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105287"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights"></a>Instrumentace webových aplikací za běhu pomocí nástrojů Application Insights
 
@@ -119,6 +119,7 @@ Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu
   * Ve Správci služby IIS vyberte fond aplikací, otevřete položku **Upřesnit nastavení**, a v části **Model procesu** si povšimněte identity.
   * V ovládacích panelech správy počítače přidejte tuto identitu do skupiny uživatelů Sledování výkonu.
 * Pokud máte na serveru nainstalovaný MMA/SCOM (System Center Operations Manager), může u některých verzí dojít ke konfliktu. Odinstalujte SCOM a sledování stavu a znovu nainstalujte nejnovější verze.
+* Stav monitorování protokolů najdete na tomto místě ve výchozím nastavení: "C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log"
 * Další informace najdete v tématu [Poradce při potížích][qna].
 
 ## <a name="system-requirements"></a>Systémové požadavky
@@ -217,9 +218,12 @@ Sama o sobě telemetrii neshromažďuje. Pouze nakonfiguruje webové aplikace a 
 
 Když vyberete webovou aplikaci pro instrumentaci pomocí Monitorování stavu:
 
-* Stáhne a umístí sestavení Application Insights a soubor .config do složky binárních souborů webové aplikace.
-* Upraví soubor `web.config` přidáním modulu sledování HTTP pro Application Insights.
+* Stáhne a umístí sestavení Application Insights a soubor ApplicationInsights.config složku binárních souborů webové aplikace.
 * Povolí profilaci CLR shromažďovat volání závislostí.
+
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Jakou verzi Application Insights SDK monitorování stavu instalace?
+
+V současné době můžete monitorování stavu nainstalovat pouze sadu SDK Application Insights verze 2.3 nebo 2.4.
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>Je potřeba spustit Monitorování stavu při každé aktualizaci aplikace?
 

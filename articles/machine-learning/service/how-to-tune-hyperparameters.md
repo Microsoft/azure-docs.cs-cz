@@ -1,5 +1,6 @@
 ---
-title: Vyladění hyperparameters pro model pomocí Azure Machine Learning
+title: Optimalizovat pro váš model hyperparameters
+titleSuffix: Azure Machine Learning service
 description: Efektivně vylaďte hyperparameters pro obsáhlý learning / machine learning modelu pomocí služby Azure Machine Learning. Se dozvíte, jak definovat parametr prostoru pro hledání, zadejte primární metriku pro optimalizaci a již v rané fázi ukončit nedostatečný výkon spuštění.
 ms.author: swatig
 author: swatig007
@@ -9,14 +10,15 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: b722af6fd5dd29a5b7cef8581d27d421825fb323
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: da809aaaa1dd46c1232d0b032136833caaf0d2d0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868153"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100731"
 ---
-# <a name="tune-hyperparameters-for-your-model"></a>Optimalizovat pro váš model hyperparameters
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Vyladění hyperparameters pro modelu pomocí služby Azure Machine Learning
 
 Efektivně vylaďte hyperparameters pro model pomocí služby Azure Machine Learning.  Hyperparametrů zahrnuje následující kroky:
 

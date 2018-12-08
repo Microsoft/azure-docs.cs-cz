@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Cloud Foundry v Azure
-description: Zjistěte, jak nastavit parametry potřebné ke zřízení clusteru Cloud Foundry (PCF) v Azure.
+title: Vytvoření clusteru Pivotal Cloud Foundry v Azure
+description: Zjistěte, jak nastavit parametry potřebné ke zřízení clusteru Pivotal Cloud Foundry (PCF) v Azure
 services: Cloud Foundry
 documentationcenter: CloudFoundry
 author: ruyakubu
@@ -14,76 +14,77 @@ ms.service: Cloud Foundry
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: a0a3379a8a2579080d9b686917395feec9cf8f3d
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: HT
+ms.openlocfilehash: 9514118e1f29faab937ed01899b5947789ca9735
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250578"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101394"
 ---
-# <a name="create-cloud-foundry-on-azure"></a>Vytvoření Cloud Foundry v Azure
+# <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Vytvoření clusteru Pivotal Cloud Foundry v Azure
 
-Tento kurz poskytuje rychlé kroky k vytvoření a vygenerování parametrů potřebných ke zřízení clusteru Pivotal Cloud Foundry (PCF) v Azure.  Řešení Pivotal Cloud Foundry můžete vyhledat na webu Azure [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
+Tento kurz obsahuje rychlé kroky pro vytvoření a generování parametrů, budete muset zřídit cluster Pivotal Cloud Foundry (PCF) v Azure. Najít řešení Pivotal Cloud Foundry, provádět vyhledávání ve službě Azure [Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
 
-![Alternativní text k obrázku](media/deploy/pcf-marketplace.png "Vyhledání Pivotal Cloud Foundry v Azure")
+![Hledání Pivotal Cloud Foundry v Azure](media/deploy/pcf-marketplace.png)
 
 
 ## <a name="generate-an-ssh-public-key"></a>Vygenerování veřejného klíče SSH
 
-V systémech Windows, Mac a Linux můžete veřejný klíč SSH vygenerovat několika způsoby.
+Existuje několik způsobů, jak vygenerovat klíč veřejné (SSH secure shell) pomocí Windows, Mac nebo Linux.
 
 ```Bash
 ssh-keygen -t rsa -b 2048
 ```
-- Kliknutím sem zobrazíte [pokyny]( https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows) pro vaše prostředí.
+
+Další informace najdete v tématu [používat klíče SSH s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
 > [!NOTE]
 >
-> K vytvoření instančního objektu se vyžaduje oprávnění vlastníka účtu.  Navíc můžete napsat skript, který vytvoření instančního objektu automatizuje. Například pomocí příkazu [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) v Azure CLI.
+> Pokud chcete vytvořit instanční objekt služby, budete potřebovat oprávnění vlastníka účtu. Také můžete napsat skript k automatizaci vytváření instančního objektu služby. Například můžete použít rozhraní příkazového řádku Azure [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest).
 
 1. Přihlaste se ke svému účtu Azure.
 
     `az login`
 
-    ![Alternativní text k obrázku](media/deploy/az-login-output.png "Přihlášení k Azure CLI")
+    ![Přihlášení k Azure CLI](media/deploy/az-login-output.png )
  
-    Zkopírujte hodnotu id jako vaše **ID předplatného** a hodnotu **ID tenanta** pro pozdější použití.
+    Zkopírujte hodnotu "id" jako vaše **ID předplatného**a zkopírujte hodnotu "tenantId" pro pozdější použití.
 
 2. Nastavte své výchozí předplatné pro tuto konfiguraci.
 
     `az account set -s {id}`
 
-3. Vytvořte pro svůj cluster PCF aplikaci AAD a zadejte jedinečné alfanumerické heslo.  Uložte heslo jako váš **tajný klíč klienta** pro pozdější použití.
+3. Vytvoření aplikace Azure Active Directory pro vaše PCF. Zadejte jedinečný alfanumerické heslo. Store heslo jako vaše **clientSecret** pro pozdější použití.
 
-    `az ad app create --display-name "Svc Prinicipal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
 
-    Zkopírujte hodnotu appId ve výstupu jako vaše **ID klienta** pro pozdější použití.
+    Zkopírujte hodnotu "appId" ve výstupu jako vaše **clientID** pro pozdější použití.
 
     > [!NOTE]
     >
-    > Zvolte vlastní identifikátor URI a domovskou stránku aplikace.  Například http://www.contoso.com.
+    > Zvolte vlastní domovskou stránku aplikace a identifikátor URI, například http://www.contoso.com.
 
-4. Vytvořte instanční objekt s vaším novým ID aplikace.
+4. Vytvoření instančního objektu s ID aplikace.
 
     `az ad sp create --id {appId}`
 
-5. Nastavte oprávnění vašeho instančního objektu na roli **Přispěvatel**.
+5. Nastavte jako přispěvatele roli oprávnění instančního objektu vaší služby.
 
     `az role assignment create --assignee “{enter-your-homepage}” --role “Contributor” `
 
-    Můžete použít také tento příkaz:
+    Nebo můžete použít také
 
     `az role assignment create --assignee {service-princ-name} --role “Contributor” `
 
-    ![Alternativní text k obrázku](media/deploy/svc-princ.png "Přiřazení role instančního objektu")
+    ![Přiřazení rolí instančního objektu služby](media/deploy/svc-princ.png )
 
-6. Ověřte, že se můžete úspěšně přihlásit ke svému instančnímu objektu pomocí ID aplikace, hesla a ID tenanta.
+6. Ověřte, že se můžete úspěšně přihlásit instančního objektu služby s použitím ID aplikace, heslo a ID tenanta.
 
-    `az login --service-principal -u {appId} -p {your-passward}  --tenant {tenantId}`
+    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
 
-7. Vytvořte soubor .json v následujícím formátu s použitím hodnot **ID předplatného**, **ID tenanta**, **ID klienta** a **tajného klíče klienta**, které jste si zkopírovali výše.  Uložte soubor.
+7. Vytvořte soubor .json v následujícím formátu. Použití **ID předplatného**, **tenantID**, **clientID**, a **clientSecret** hodnoty, které jste zkopírovali dříve. Uložte soubor.
 
     ```json
     {
@@ -94,37 +95,37 @@ ssh-keygen -t rsa -b 2048
     }
     ```
 
-## <a name="get-the-pivotal-network-token"></a>Získání tokenu Pivotal Network
+## <a name="get-the-pivotal-network-token"></a>Získání tokenu Pivotal sítě
 
-1. Zaregistrujte se nebo se přihlaste ke svému účtu [Pivotal Network](https://network.pivotal.io).
-2. V pravém horním rohu stránky klikněte na název vašeho profilu a pak vyberte Edit Profile (Upravit profil).
-3. Přejděte do dolní části stránky a zkopírujte hodnotu **LEGACY API TOKEN** (STARŠÍ VERZE TOKENU API).  Toto je hodnota vašeho **tokenu Pivotal Network**, kterou použijete později.
+1. Registrace nebo přihlášení k vaší [Pivotal sítě](https://network.pivotal.io) účtu.
+2. Vyberte název svého profilu v pravém horním rohu stránky. Vyberte **upravit profil**.
+3. Přejděte do dolní části stránky a zkopírujte **starší verze rozhraní API TOKENŮ** hodnotu. Tato hodnota je váš **Pivotal sítě Token** hodnotu, kterou použijete později.
 
-## <a name="provision-your-cloud-foundry-on-azure"></a>Zřízení Cloud Foundry v Azure
+## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Zřízení clusteru Cloud Foundry v Azure
 
-1. Teď máte všechny parametry, které potřebujete ke zřízení clusteru [Pivotal Cloud Foundry v Azure](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
-2. Zadejte parametry a vytvořte cluster PCF.
+Nyní máte všechny parametry, které potřebujete ke zřízení vašich [clusteru Pivotal Cloud Foundry v Azure](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
+Zadejte parametry a vytvořte PCF cluster.
 
-## <a name="verify-the-deployment-and-log-into-the-pivotal-ops-manager"></a>Ověření nasazení a přihlášení k Pivotal Ops Manageru
+## <a name="verify-the-deployment-and-sign-in-to-the-pivotal-ops-manager"></a>Ověření nasazení a přihlášení do správce Pivotal Ops
 
-1. U vašeho clusteru PCF by se měl zobrazovat stav nasazení.
+1. Váš cluster PCF zobrazí stav nasazení.
 
-    ![Alternativní text k obrázku](media/deploy/deployment.png "Stav nasazení Azure")
+    ![Stav nasazení v Azure](media/deploy/deployment.png )
 
-2. V levém navigačním panelu klikněte na odkaz **Nasazení** a získejte přihlašovací údaje k PCF Ops Manageru. Na další stránce pak klikněte na **Název nasazení**.
-3. Kliknutím na odkaz **Výstupy** v levém navigačním panelu zobrazte adresu URL, uživatelské jméno a heslo pro PCF Ops Managera.  Adresou URL je hodnota OPSMAN-FQDN.
+2. Vyberte **nasazení** odkaz v navigačním panelu na levé straně, chcete-li získat přihlašovací údaje pro správce PCF Ops. Vyberte **název nasazení** na další stránku.
+3. V navigačním panelu na levé straně, vyberte **výstupy** odkaz na adresu URL, uživatelské jméno a heslo pro správce PCF Ops. Hodnota "OPSMAN – plně kvalifikovaný název domény" je adresa URL.
  
-    ![Alternativní text k obrázku](media/deploy/deploy-outputs.png "Výstup nasazení Cloud Foundry")
+    ![Cloud Foundry nasazení výstupu](media/deploy/deploy-outputs.png )
  
-4. Otevřete adresu URL ve webovém prohlížeči a přihlaste se zadáním přihlašovacích údajů z předchozího kroku.
+4. Spusťte adresu URL ve webovém prohlížeči. Zadejte přihlašovací údaje z předchozího kroku k přihlášení.
 
-    ![Alternativní text k obrázku](media/deploy/pivotal-login.png "Přihlašovací stránka Pivotal")
+    ![Pivotal přihlašovací stránky](media/deploy/pivotal-login.png )
          
     > [!NOTE]
     >
-    > Pokud prohlížeč Internet Explorer selže kvůli zprávě upozornění Tento web není zabezpečený, klikněte na Další informace a pak na Pokračovat na web.  V případě prohlížeče Firefox klikněte na Rozšířené a přidejte certifikaci, abyste mohli pokračovat.
+    > Pokud prohlížeč Internet Explorer se nepovedlo kvůli upozornění "Web nezabezpečenou", vyberte **informace** a přejděte na webovou stránku. Pro Firefox, vyberte **zálohy** a přidejte na certifikaci, aby bylo možné pokračovat.
 
-5. V PCF Ops Manageru by se měly zobrazit nasazené instance Azure. Teď odsud můžete začít nasazovat a spravovat své aplikace.
+5. Správce Ops PCF zobrazí nasazené instance Azure. Teď můžete nasadit a spravovat vaše aplikace zde.
                
-    ![Alternativní text k obrázku](media/deploy/ops-mgr.png "Nasazené instance Azure v Pivotal")
+    ![Nasazená instance Azure ve společnosti Pivotal](media/deploy/ops-mgr.png )
  

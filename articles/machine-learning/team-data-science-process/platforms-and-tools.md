@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 5df2cbabeb704453d71a0ac1db14c618dae352d2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
+ms.openlocfilehash: 96548b5db1051c751f6468cb330cb5049182ce95
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446445"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104250"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty datových věd
 
@@ -129,17 +129,17 @@ Pokud používáte počítače s Linuxem (CentOS) ke spuštění příkazů git,
         ssh-keygen
         cat .ssh/id_rsa.pub
 
-![](./media/platforms-and-tools/resources-1-generate_ssh.png)
+![Příkazy ke generování klíče SSH](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - Zkopírujte celý ssh včetně klíče *ssh-rsa*. 
 - Přihlaste se k vašim službám Azure DevOps. 
 - Klikněte na tlačítko **< jméno\>**  v pravém horním rohu stránky a klikněte na tlačítko **zabezpečení**. 
     
-    ![](./media/platforms-and-tools/resources-2-user-setting.png)
+    ![Klikněte na své jméno a potom klikněte na tlačítko zabezpečení](./media/platforms-and-tools/resources-2-user-setting.png)
 
 - Klikněte na tlačítko **veřejné klíče SSH**a klikněte na tlačítko **+ přidat**. 
 
-    ![](./media/platforms-and-tools/resources-3-add-ssh.png)
+    ![Klikněte na veřejné klíče SSH a pak klikněte na + Přidat](./media/platforms-and-tools/resources-3-add-ssh.png)
 
 - Vložit ssh klíč zkopírovali do textového pole a uložení.
 

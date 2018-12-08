@@ -1,21 +1,22 @@
 ---
-title: Předem připravené služby LUIS procento referenční informace k entitám – Azure | Dokumentace Microsoftu
+title: Procento předem připravených entit
 titleSuffix: Azure
 description: Tento článek obsahuje procento informace předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 876ee710491213f17c12d3b6ddd0339bb2043657
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 457de95fb4a16a3a43a0cad902b7fb1469d9db8b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334903"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086993"
 ---
 # <a name="percentage-entity"></a>Entita Percentage
 Procento čísla můžete uvádět ve zlomcích, `3 1/2`, nebo jako procento, `2%`. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující procento záměry aplikace. Procento entity se podporuje v [mnoha jazykových verzí](luis-reference-prebuilt-entities.md). 
@@ -26,7 +27,7 @@ Procento vedete z [rozpoznávání textu](https://github.com/Microsoft/Recognize
 ## <a name="resolution-for-prebuilt-percentage-entity"></a>Řešení pro procento předem připravených entit
 Následující příklad ukazuje rozlišení **builtin.percentage** entity.
 
-```JSON
+```json
 {
   "query": "set a trigger when my stock goes up 2%",
   "topScoringIntent": {

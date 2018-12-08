@@ -5,15 +5,15 @@ services: iot-edge
 author: kgremban
 ms.service: iot-edge
 ms.topic: include
-ms.date: 10/14/2018
+ms.date: 12/7/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 92fb568bb1044df5be8c80372973743e2c0e3dcd
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 1a750a97cdc940c0f0a3d7e33d6be0d33f811425
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52900996"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53108018"
 ---
 Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Modul IoT Edge je spustitelný balíček implementovaný jako kontejner. V této části jsme vám nasazení předem sestavených modulu z [moduly IoT Edge části webu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Tento modul generuje telemetrická data pro vaše simulované zařízení.
 
@@ -34,8 +34,7 @@ Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat m
    ```json
     {
     "routes": {
-        "route": "FROM /messages/* INTO $upstream",
-        "upstream": "FROM /messages/* INTO $upstream"
+        "route": "FROM /messages/* INTO $upstream"
         }
     }
    ```

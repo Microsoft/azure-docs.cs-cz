@@ -1,6 +1,7 @@
 ---
-title: Povolení Application Insights pro službu Azure Machine Learning
-description: Informace o nastavení Application Insights pro služby nasazené prostřednictvím služby Azure Machine Learning
+title: Modely monitorování pomocí Application Insights
+titleSuffix: Azure Machine Learning service
+description: Použití Application Insights a monitorujte webové služby nasazené prostřednictvím služby Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -10,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
 ms.custom: seodec18
-ms.openlocfilehash: ef26bd433d311e63e122f48871654c9fbc26216a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 2b97ee8853ba49a3b12d98aeb2b494aa890c8e8f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013164"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102279"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Monitorování vašich modelů Azure Machine Learning s využitím Application Insights
 
@@ -49,7 +50,7 @@ V tomto článku se dozvíte, jak nastavit Azure Application Insights pro vaši 
     ```
 
 ### <a name="log-custom-traces-in-your-service"></a>Vlastní trasování protokolu ve službě
-Pokud chcete vlastní trasování protokolů, postupujte podle procesu standardní nasazení pro [AKS](how-to-deploy-to-aks.md) nebo [ACI](how-to-deploy-to-aci.md) . Potom:
+Pokud chcete vlastní trasování protokolů, postupujte podle procesu standardní nasazení pro AKS nebo ACI v [nasazení a kde](how-to-deploy-and-where.md) dokumentu. Pak pomocí následujících kroků:
 
 1. Aktualizujte soubor vyhodnocení přidáním tisku příkazy.
     

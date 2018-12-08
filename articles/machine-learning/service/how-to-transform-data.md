@@ -1,5 +1,6 @@
 ---
-title: Transformace dat pomocí Azure Machine Learning Data Prep SDK – Python
+title: Transformace a přípravu dat s využitím Python SDK Příprava dat
+titleSuffix: Azure Machine Learning service
 description: Další informace o transformaci a čištění dat pomocí sady SDK služby Azure Machine Learning Data Prep. Pomocí metody transformace přidat sloupce odfiltrovat nežádoucí řádků nebo sloupců a dává chybějící hodnoty.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,14 @@ ms.author: cforbe
 author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 09/24/2018
-ms.openlocfilehash: 988301f24f710a3e29fad1254d405501166e8a4e
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: c734605cd67fcd2490aef0ddc6732dad112424b7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52309789"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101785"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Transformace dat pomocí sady SDK pro Azure Machine Learning Data Prep
 
@@ -216,16 +218,16 @@ builder.preview(skip=30)
 
 ||DATE (Datum)|date_timerange|
 |-----|-----|-----|
-|30|11/1/2015 22:54|1. ledna 2015 22: 00 - 00: 00|
-|31|11/1/2015 23:54|1. ledna 2015 22: 00 - 00: 00|
-|32|11/1/2015 23:59|1. ledna 2015 22: 00 - 00: 00|
-|33|11/2/2015 0:54|1. února 2015 12 AM - 2 AM|
-|34|11/2/2015 1:00|1. února 2015 12 AM - 2 AM|
-|35|11/2/2015 1:54|1. února 2015 12 AM - 2 AM|
-|36|11/2/2015 2:54|1. února 2015 2 AM - 4 AM|
-|37|11/2/2015 3:54|1. února 2015 2 AM - 4 AM|
-|38|11/2/2015 4:00|1. února 2015 4: 00 - 6: 00|
-|39|11/2/2015 4:54|1. února 2015 4: 00 - 6: 00|
+|30|1/1/2015 22:54|1. ledna 2015 22: 00 - 00: 00|
+|31|1/1/2015 23:54|1. ledna 2015 22: 00 - 00: 00|
+|32|1/1/2015 23:59|1. ledna 2015 22: 00 - 00: 00|
+|33|1/2/2015 0:54|1. února 2015 12 AM - 2 AM|
+|34|1/2/2015 1:00|1. února 2015 12 AM - 2 AM|
+|35|1/2/2015 1:54|1. února 2015 12 AM - 2 AM|
+|36|1/2/2015 2:54|1. února 2015 2 AM - 4 AM|
+|37|1/2/2015 3:54|1. února 2015 2 AM - 4 AM|
+|38|1/2/2015 4:00|1. února 2015 4: 00 - 6: 00|
+|39|1/2/2015 4:54|1. února 2015 4: 00 - 6: 00|
 
 Tady najdete v článku o problém s generovaného programu. Založené výhradně na jeden příklad, který jste zadali výše, program odvodit zvolili analyzovat datum jako "Den/měsíc/rok", což je nechcete v tomto případě. Chcete tento problém vyřešit, zadejte jiný příklad použití `add_example()` na fungovat `builder` proměnné.
 

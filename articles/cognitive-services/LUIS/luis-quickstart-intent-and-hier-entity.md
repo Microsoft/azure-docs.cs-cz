@@ -1,21 +1,22 @@
 ---
-title: 'Kurz 5: Vztahy nadřazenosti a podřízenosti – hierarchická entita LUIS pro kontextově naučená data'
+title: Hierarchická entita
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vyhledáte související části dat na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: diberry
-ms.openlocfilehash: 36751f533b59e0ff140f5ad03e7f1fc0fa9cad41
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a79c0091220e2980101471abaaa0aaf4c0a898ca
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000569"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104403"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>Kurz 5: Extrakce dat souvisejících s kontextem
 V tomto kurzu vyhledáte související části dat na základě kontextu. Spolu například souvisí počáteční a cílová umístění pro fyzický přesun z jedné budovy a kanceláře do jiné. Pro vygenerování pracovního zařazení se mohou vyžadovat obě části dat, které spolu vzájemně souvisí.  
@@ -32,7 +33,6 @@ Hierarchická entita je vhodná pro tento typ dat, protože obě části dat:
 
 **V tomto kurzu se naučíte:**
 
-<!-- green checkmark -->
 > [!div class="checklist"]
 > * Použít existující ukázkovou aplikaci
 > * Přidat záměr 
@@ -90,7 +90,7 @@ Služba LUIS potřebuje porozumět tomu, co je místo, tím, že v promluvách o
 
 Představte si následující promluvu:
 
-```JSON
+```json
 mv Jill Jones from a-2349 to b-1298
 ```
 
@@ -100,19 +100,19 @@ Pokud je k dispozici pouze jeden podřízený prvek (počátek nebo cíl) hierar
 
 1. V promluvě `Displace 425-555-0000 away from g-2323 toward hh-2345` vyberte slovo `g-2323`. Zobrazí se rozevírací nabídka s textovým polem v horní části. Zadejte do textového pole název entity `Locations` a pak v rozevírací nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Snímek obrazovky s vytvářením nové entity na stránce záměru")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
+    [![Snímek obrazovky vytváření nové entity na stránce záměru](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "snímek obrazovky vytváření nové entity na stránce záměru")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
 2. V automaticky otevíraném okně vyberte typ entity **Hierarchical** (Hierarchická) s podřízenými entitami `Origin` a `Destination`. Vyberte **Done** (Hotovo).
 
-    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Snímek obrazovky s automaticky otevíraným dialogovým oknem pro novou entitu místa")
+    ![Snímek obrazovky zobrazení dialogu Vytvoření entity pro novou entitu umístění](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "snímek obrazovky zobrazení dialogu Vytvoření entity pro nové entity v umístění")
 
 3. Popisek pro `g-2323` je označený jako `Locations`, protože služba LUIS neví, jestli je toto slovo počátkem, cílem, nebo ani jedním. Vyberte `g-2323`, pak vyberte **Locations** (Místa) a pak přejděte do nabídky vpravo a vyberte `Origin`.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Snímek obrazovky s automaticky otevíraným dialogovým oknem označování entit pro změnu podřízeného prvku entity místa")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
+    [![Snímek obrazovky entity označování zobrazení dialogu změnit umístění podřízené entity](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "snímek entity označování zobrazení dialogu změnit umístění podřízené entity")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
 5. Označte ostatní místa ve všech dalších promluvách tím, že v promluvě vyberete budovu a kancelář, pak vyberete Locations (Místa) a pak v nabídce vpravo vyberete `Origin` (Počátek) nebo `Destination` (Cíl). Až označíte všechna místa, začnou promluvy v zobrazení **Tokens View** (Zobrazení tokenů) vypadat jako vzor. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Snímek obrazovky s entitami míst označených v promluvách")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
+    [![Snímek obrazovky umístění entity označené v projevy](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "entity umístění snímek obrazovky s popisem projevy")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
 ## <a name="add-prebuilt-number-entity-to-app"></a>Přidání předem připravené entity čísla do aplikace
 Přidejte předem připravenou entitu čísla zpět do aplikace.
@@ -140,7 +140,7 @@ Přidejte předem připravenou entitu čísla zpět do aplikace.
 
 2. Přejděte na konec adresy URL v panelu adresy a zadejte `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `MoveEmployee` s extrahovanou hierarchickou entitou.
 
-    ```JSON
+    ```json
     {
       "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
       "topScoringIntent": {

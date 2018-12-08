@@ -1,19 +1,19 @@
 ---
-title: 'Nakonfigurujte připojení ExpressRoute a VPN typu Site-to-Site, která mohou existovat vedle sebe: prostředí PowerShell: Azure | Dokumentace Microsoftu'
-description: Tento článek vás provede konfigurací ExpressRoute a připojení VPN typu Site-to-Site, která mohou existovat vedle sebe pro model Resource Manageru pomocí Powershellu
+title: 'Konfigurace připojení VPN Site-to-Site a ExpressRoute – existovat vedle sebe: prostředí PowerShell: Azure | Dokumentace Microsoftu'
+description: Konfigurace ExpressRoute a připojení VPN typu Site-to-Site, která mohou existovat vedle sebe pro model Resource Manageru pomocí prostředí PowerShell.
 services: expressroute
 author: charwen
-manager: rossort
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: 96e2eb85bc96075e0673359910522f8e35bf5a5c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: 1aeb5ca447a3058962483b640f742e4a7ec4a414
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243807"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104029"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurace ExpressRoute a Site-to-Site současně existujících připojení pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -21,6 +21,9 @@ ms.locfileid: "51243807"
 > * [PowerShell – Classic](expressroute-howto-coexist-classic.md)
 > 
 > 
+
+
+Tento článek vám pomůže nakonfigurovat připojení ExpressRoute a VPN typu Site-to-Site, která existovat vedle sebe. Možnost konfigurace VPN typu site-to-site a ExpressRoute má několik výhod. Můžete nakonfigurovat VPN typu Site-to-Site jako cestu zabezpečené převzetí služeb při selhání pro ExpressRoute, nebo použít VPN typu Site-to-Site pro připojení k webům, které nejsou připojené prostřednictvím ExpressRoute. V tomto článku vám nabídneme postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Resource Manager.
 
 Konfigurace ExpressRoute a současně existujících připojení VPN typu Site-to-Site má několik výhod.
 

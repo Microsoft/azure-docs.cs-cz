@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: cshoe
-ms.openlocfilehash: c91254b3a4a7037e24b22ba226c66141707d0c10
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 44d2960d9cf5828af588f9392667553c18dedb0f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016568"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53103451"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
 
@@ -29,7 +29,7 @@ Obsah, který následuje je rozdělený do dvou různých oddílů určená k c�
 - [C#v sadě Visual Studio s použitím xUnit](#c-in-visual-studio)
 - [JavaScript v nástroji VS Code s Jest](#javascript-in-vs-code)
 
-Úložišti ukázek je k dispozici na [Githubu](https://github.com/craigshoemaker/azure-functions-tests).
+Úložišti ukázek je k dispozici na [Githubu](https://github.com/Azure-Samples/azure-functions-tests).
 
 ## <a name="c-in-visual-studio"></a>C#v sadě Visual Studio
 Následující příklad popisuje, jak vytvořit C# aplikace v sadě Visual Studio funkce a spustit testy pomocí služby [xUnit](https://xunit.github.io).
@@ -235,7 +235,7 @@ namespace Functions.Tests
 
 - **Timer_should_log_message**: Tento test vytvoří instanci `ListLogger` a předá ji do funkcí časovače. Po spuštění funkce protokolu se kontroluje k zajištění, že je k dispozici očekávaná zpráva.
 
-### <a name="run-tests"></a>Spuštění testů
+### <a name="run-tests"></a>Spouštění testů
 
 Chcete-li spustit testy, přejděte na **Průzkumník testů** a klikněte na tlačítko **spustit všechny**.
 
@@ -326,7 +326,7 @@ test('Timer trigger should log message', () => {
 ```
 Funkce časovačem ze šablony zaznamená zprávu na konci těla funkce. Tento test zajistí *protokolu* funkce se volá jednou.
 
-### <a name="run-tests"></a>Spuštění testů
+### <a name="run-tests"></a>Spouštění testů
 Chcete-li spustit testy, stiskněte **CTRL + ~** otevřete okno příkazového řádku a spuštění `npm test`:
 
 ```bash

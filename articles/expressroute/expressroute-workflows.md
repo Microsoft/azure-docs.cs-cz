@@ -1,23 +1,24 @@
 ---
-title: Pracovní postupy pro konfiguraci okruh Azure ExpressRoute | Dokumentace Microsoftu
-description: Tato stránka vás provede pracovní postupy pro konfiguraci okruh ExpressRoute a partnerské vztahy
+title: 'Konfigurace – pracovní postupy ExpressRoute okruhů: Azure | Dokumentace Microsoftu'
+description: Tato stránka zobrazuje pracovní postupy pro konfiguraci okruh ExpressRoute a partnerské vztahy
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 765050c9c21c7ba752535fc391cc9bb7d8ac4083
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.custom: seodec18
+ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301034"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101683"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Pracovní postupy ExpressRoute pro zřizování a stavy okruhů
 Tato stránka vás provede službu zřizování a pracovní postupy konfigurace směrování na vysoké úrovni.
 
-![](./media/expressroute-workflows/expressroute-circuit-workflow.png)
+![pracovní postup okruh](./media/expressroute-workflows/expressroute-circuit-workflow.png)
 
 Následující obrázek a příslušné postupy ukazují úlohy, které je třeba dodržovat, aby měla okruhu ExpressRoute zřízeného začátku do konce. 
 
@@ -35,7 +36,7 @@ Následující obrázek a příslušné postupy ukazují úlohy, které je třeb
      > 
      > 
      
-     ![](./media/expressroute-workflows/routing-workflow.png)
+     ![směrování pracovních postupů](./media/expressroute-workflows/routing-workflow.png)
 5. Propojení virtuálních sítí s okruhy ExpressRoute – můžete propojit virtuální sítě pro váš okruh ExpressRoute. Postupujte podle pokynů [k propojení virtuálních sítí](expressroute-howto-linkvnet-arm.md) pro váš okruh. Tyto virtuální sítě může být ve stejném předplatném Azure jako okruh ExpressRoute, nebo může být v jiném předplatném.
 
 ## <a name="expressroute-circuit-provisioning-states"></a>Stavy zřizování okruhu ExpressRoute

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 292def9303cf74142a55e1101fe6371476f9f09d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c5fe310e4ba491180b9905ee7e4c80cf814eb9ef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845208"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106290"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Zdroje dat protokolu Syslog v Log Analytics
 Syslog je protokol protokolování událostí, které jsou společné pro Linux.  Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog.  Při instalaci agenta OMS pro Linux, konfiguruje místní démona Syslog na předávání zpráv k agentovi.  Agent pak odešle zprávu do Log Analytics, ve kterém se vytvoří odpovídající záznam v úložišti OMS.  
@@ -45,7 +45,7 @@ Můžete přidat nové zařízení tak, že zadáte jeho název a kliknete **+**
 Standardně jsou všechny změny konfigurace automaticky nahrány do všech agentů.  Pokud chcete ručně konfigurovat Syslog na každého agenta pro Linux, poté zrušte zaškrtnutí políčka *použít uvedenou konfiguraci u mých Linuxových počítačů*.
 
 ### <a name="configure-syslog-on-linux-agent"></a>Konfigurace Syslog na agenta pro Linux
-Když [instalaci agenta OMS v klientském počítači Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md), nainstaluje výchozí konfigurační soubor procesu syslog, který definuje zařízení a závažnost zpráv, které byly shromážděny.  Můžete upravit tento soubor a změňte konfiguraci.  Konfigurační soubor se liší v závislosti na démon procesu Syslog, který se klient nainstaloval.
+Když [instalaci agenta OMS v klientském počítači Linux](../../azure-monitor/learn/quick-collect-linux-computer.md), nainstaluje výchozí konfigurační soubor procesu syslog, který definuje zařízení a závažnost zpráv, které byly shromážděny.  Můžete upravit tento soubor a změňte konfiguraci.  Konfigurační soubor se liší v závislosti na démon procesu Syslog, který se klient nainstaloval.
 
 > [!NOTE]
 > Pokud upravíte konfiguraci syslogu, je nutné restartovat démon procesu syslog, aby se změny projevily.
@@ -208,5 +208,5 @@ Následující tabulka obsahuje příklady různých dotazů na protokoly, kter�
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
-* Použití [vlastní pole](../../log-analytics/log-analytics-custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.
-* [Konfigurace agentů systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) ke shromažďování dalších typů dat.
+* Použití [vlastní pole](../../azure-monitor/platform/custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.
+* [Konfigurace agentů systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) ke shromažďování dalších typů dat.

@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: a93d6d939f1ccdaa7cbbe16de1e380227489ac45
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.custom: seodec18
+ms.openlocfilehash: f304bff7d9f26357c802c2530a5881038a916eb7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211481"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101001"
 ---
-# <a name="qna-maker-rest-api-with-c"></a>Rozhraní REST API služby QnA Maker pomocí jazyka C# 
+# <a name="how-to-use-the-qna-maker-rest-api-with-c"></a>Jak používat rozhraní REST API pomocí nástroje QnA MakerC# 
 <a name="HOLTop"></a>
 
 V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft](../Overview/overview.md) s C# provádět následující akce.

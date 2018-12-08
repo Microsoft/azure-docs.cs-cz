@@ -1,18 +1,19 @@
 ---
-title: 'Vytvoření a úprava okruhu ExpressRoute: prostředí PowerShell: Azure Resource Manageru | Dokumentace Microsoftu'
-description: Tento článek popisuje, jak vytvořit, zřízení, ověřte, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
+title: 'Vytvoření a úprava okruhu ExpressRoute – prostředí PowerShell: Azure | Dokumentace Microsoftu'
+description: Vytvoření, zřízení, ověřte, aktualizovat, odstranit a zrušit zřízení okruhu ExpressRoute.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: f95bdfe9a61a271825ff9bbe5ca7f84330c98df5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: ff86c87690f5dd4a919929f0deef4af739cbe4d3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257448"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104998"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Vytvoření a úprava okruhu ExpressRoute pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -23,9 +24,9 @@ ms.locfileid: "51257448"
 > * [PowerShell (Classic)](expressroute-howto-circuit-classic.md)
 >
 
-Tento článek popisuje, jak vytvořit okruh Azure ExpressRoute pomocí modelu nasazení Azure Resource Manageru a rutin prostředí PowerShell. Tento článek také ukazuje, jak zkontrolovat stav okruhu, aktualizujte ji, nebo odstranit a zrušit jeho zřízení.
+Tento článek vám pomůže vytvořit okruh ExpressRoute pomocí modelu nasazení Azure Resource Manageru a rutin prostředí PowerShell. Můžete také zkontrolovat stav, aktualizovat, odstranit nebo zrušit zřízení okruhu.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Než začnete, projděte si [požadavky](expressroute-prerequisites.md) a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 

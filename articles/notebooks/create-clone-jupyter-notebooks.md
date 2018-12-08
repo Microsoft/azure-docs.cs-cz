@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a klonování poznámkové bloky Jupyter v Azure | Dokumentace Microsoftu
+title: Vytvoření a klonování poznámkové bloky Jupyter v Azure
 description: Projekty Azure poznámkových bloků spravovat kolekci poznámkových bloků a související soubory, které můžete vytvořit nový nebo naklonovat z jiného zdroje.
 services: app-service
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 36de7ce0cbbc1c3a2c12682b6882dc4d5491eb10
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: c4325f0c9de0d945d1612a3ab4171a2bfe1be25b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855692"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106511"
 ---
-# <a name="create-and-clone-projects"></a>Vytvoření a klonování projekty
+# <a name="create-and-clone-projects"></a>Vytváření a klonování projektů
 
 Poznámkových bloků Azure slouží k uspořádání vašich poznámkových bloků Jupyter a související soubory do logických skupin, které volá *projekty*. Jako kontejner, nejprve vytvořte projekt pak vytvořit nebo klonovat jeden nebo více poznámkových bloků v rámci složky společně s další soubory projektu. (Tento proces je patrné [kurzu](tutorial-create-run-jupyter-notebook.md).)
 
@@ -38,7 +38,7 @@ Co můžete dělat na řídicím panelu, závisí na tom, jestli jste přihláš
 | --- | --- | --- |
 | **Spuštění** | Vlastník | Spustí server project server a otevře složku projektu v Jupyter. (Častěji, můžete nejprve přejděte do složky projektu a pak spustit Poznámkový blok z něj.) |
 | **Stáhnout** | Všem uživatelům | Stáhne kopii vybraného projektu jako soubor ZIP. |
-| **sdílené složky** | Všem uživatelům | Zobrazí sdílení překryvné okno, pomocí kterého můžete získat adresu URL do vybraného projektu, sdílení na sociálních médií, odeslat e-mail s adresou URL a získat kód HTML a Markdown pro s odznáčkem "spuštění poznámkového bloku" (Zobrazit [získat Odznáček spuštění](#obtain-a-launch-badge)) s adresou URL. |
+| **Sdílet** | Všem uživatelům | Zobrazí sdílení překryvné okno, pomocí kterého můžete získat adresu URL do vybraného projektu, sdílení na sociálních médií, odeslat e-mail s adresou URL a získat kód HTML a Markdown pro s odznáčkem "spuštění poznámkového bloku" (Zobrazit [získat Odznáček spuštění](#obtain-a-launch-badge)) s adresou URL. |
 | **Odstranění** | Vlastník | Odstraní vybraný projekt. Tato operace se nedá vrátit zpět. |
 | **Terminálu** | Vlastník | Spustí server project server a pak otevře nové okno prohlížeče pomocí prostředí bash, terminálu pro tento server. |
 | **+ Nový projekt** | Vlastník | Vytvoří nový projekt. Zobrazit [vytvořte nový projekt](#create-a-new-project). |
@@ -49,7 +49,7 @@ Co můžete dělat na řídicím panelu, závisí na tom, jestli jste přihláš
 
 Při použití **sdílenou složku** příkazů a vyberte **vložení** kartu, můžete zkopírovat kód HTML a Markdown, který vytvoří Odznáček "spuštění poznámkového bloku":
 
-    ![Launch notebook badge ](https://notebooks.azure.com/launch.png)
+![Spusťte Poznámkový blok oznámení "BADGE" ](https://notebooks.azure.com/launch.png)
 
 Pokud projekt poznámkových bloků Azure nemáte, můžete vytvořit odkaz, který duplicity z Githubu přímo pomocí následující šablony, kde nahradíte odpovídající uživatelského jména a názvy úložišť:
 

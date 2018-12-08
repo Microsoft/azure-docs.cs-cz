@@ -1,6 +1,7 @@
 ---
-title: Co je nového ve službě Azure Machine Learning
-description: Tento dokument podrobně popisuje aktualizace pro Azure Machine Learning.
+title: Co je nového
+titleSuffix: Azure Machine Learning service
+description: Přečtěte si o nejnovějších aktualizacích služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,17 +9,84 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 10/24/2018
-ms.openlocfilehash: 6007a7e32e168ada529feb6aa24b8d572671d835
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: ea9f8e07b627b7f3554e390063d61ef984f30dad
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291336"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53105134"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Zpráva k vydání verze služby Azure Machine Learning
 
 V tomto článku najdete další informace o vydaných verzích služby Azure Machine Learning. 
+
+## <a name="2018-12-04-general-availability"></a>2018-12-04: Obecná dostupnost
+
+Služba Azure Machine Learning je teď obecně dostupná.
+
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
+V této verzi nové spravované výpočetní prostředí pomocí oznamujeme [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute). Tato výpočetní prostředky je možné pro trénování a Batch odvozování, je výpočetní single - do více - node a zajišťuje správu clusteru a úlohy plánování pro daného uživatele. To bude automaticky škálovat ve výchozím nastavení, má podporu pro prostředky procesoru a GPU a také umožňuje používat virtuální počítače s nízkou prioritou pro snížení nákladů. Nahradí výpočetní služby Batch AI pro službu Azure Machine Learning.
+  
+Azure Machine Learning Compute je možné vytvořit v Pythonu pomocí webu Azure portal nebo rozhraní příkazového řádku. Musí být vytvořené v oblasti vašeho pracovního prostoru a nemůže být připojen k jinému pracovnímu prostoru. Tato výpočetní používá kontejner Dockeru pro spuštění a balíčky závislostí replikovat stejné prostředí napříč všemi uzly.
+
+> [!Warning]
+> Doporučujeme vytvořit nový pracovní prostor používat Azure Machine Learning Compute. Může se vzdálená stát, které uživatelům pokusu o vytvoření aplikace Azure Machine Learning Compute z existujícího pracovního prostoru může zobrazit chyba. By měla fungovat to neovlivní existující výpočetních prostředků ve vašem pracovním prostoru.
+
+### <a name="azure-machine-learning-sdk-for-python-v102"></a>Azure Machine Learning sady SDK pro Python v1.0.2
+
++ **Rozbíjející změny v**
+  + V této verzi jsme se odebrání podpory pro vytvoření virtuálního počítače ze služby Azure Machine Learning. Stále můžete připojit existující cloud virtuálního počítače nebo na vzdáleném místním serverem. 
+  + Podpora pro BatchAI, které by měl být podporovány prostřednictvím Azure Machine Learning Compute nyní také odebíráme.
+
++ **Nový**
+  + Pro strojové učení kanály:
+    + [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimator_step.estimatorstep?view=azure-ml-py)
+    + [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyper_drive_step.hyperdrivestep?view=azure-ml-py)
+    + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
+
+
++ **Aktualizovat**
+  + Pro strojové učení kanály:
+    + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) nyní přijímá runconfig
+    + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) nyní zkopíruje do a ze zdroje dat SQL
+    + Naplánovat funkce v sadě SDK vytvářet a aktualizovat plány pro spouštění publikovaných kanály
+
+<!--+ **Bugs fixed**-->
+
+### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Sada SDK v0.5.2 pro přípravu dat Azure Machine Learning
+
++ **Rozbíjející změny v** 
+  * `SummaryFunction.N` byla přejmenována na `SummaryFunction.Count`.
+  
++ **Opravy chyb**
+  * Použijte nejnovější AML spustit Token při čtení a zápisu do úložiště o vzdálené spuštění. Dříve Pokud AML spustit Token se aktualizuje v Pythonu, modul runtime přípravy dat nebude aktualizována aktualizované AML spustit Token.
+  * Další jasnější chybové zprávy
+  * to_spark_dataframe() už havaruje při Spark využívá Kryo serializace
+  * Počet hodnot inspektoru teď můžete zobrazit více než 1 000 jedinečných hodnot
+  * Náhodné rozdělení už selže, pokud původní tok dat nemá název  
+
+### <a name="docs-and-notebooks"></a>Dokumentace a poznámkové bloky
++ Kanály ML
+  + Nové a aktualizované poznámkových bloků pro zahájení práce s kanály, rozsahu služby batch a styl přenos příklady: https://aka.ms/aml-pipeline-notebooks
+  + Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md)
+  + Zjistěte, jak [spouštění predikcí služby batch pomocí kanálů](how-to-run-batch-predictions.md)
++ Azure Machine Learning compute
+  + [Ukázkové poznámkové bloky] (https://aka.ms/aml-notebooks) jsou nyní aktualizované na používání této nové spravované výpočetní prostředky.
+  + [Další informace o tomto výpočetní](how-to-set-up-training-targets.md#amlcompute)
+
+### <a name="azure-portal-new-features"></a>Azure portal: nové funkce
++ Vytvoření a správa [Azure Machine Learning Compute](how-to-set-up-training-targets.md#amlcompute) typy na portálu.
++ Monitorování využití kvóty a [žádost o kvótu](how-to-manage-quotas.md) pro Azure Machine Learning Compute.
++ Zobrazit stav clusteru Azure Machine Learning Compute v reálném čase.
++ Vytvoření Azure Machine Learning Compute a službě Azure Kubernetes Service byla přidána podpora virtuální sítě.
++ Znovu spusťte publikované kanálů s existující parametry.
++ Nové [automatizované machine learning grafy](how-to-track-experiments.md#auto) modelů klasifikace (výtah, zisky, kalibrací, funkce význam graf s modelem explainability) a regresních modelů (zbytky a funkce význam grafu s modelem explainability). 
++ Kanály lze zobrazit na webu Azure portal
+
+
+
 
 ## <a name="2018-11-20"></a>2018-11-20
 

@@ -1,26 +1,19 @@
 ---
-title: 'Konfigurace filtrů směrování pro partnerský vztah Microsoftu Azure ExpressRoute: portál | Dokumentace Microsoftu'
-description: Tento článek popisuje postup konfigurace filtrů směrování pro Microsoft Peering pomocí webu Azure portal
-documentationcenter: na
+title: 'Konfigurace filtrů směrování pro partnerský vztah Microsoftu: Azure ExpressRoute – portál | Dokumentace Microsoftu'
+description: Tento článek popisuje postup konfigurace filtrů směrování pro partnerský vztah Microsoftu pomocí webu Azure portal.
 services: expressroute
 author: ganesr
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 09/26/2018
 ms.author: ganesr
-ms.openlocfilehash: 1b9a0698125de165e003aaed727e7b4aed6d866a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 0515b5e85c3bcf56f1f238620d6036d1be0bec7e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955577"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104199"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: Azure portal
 > [!div class="op_single_selector"]
@@ -67,7 +60,7 @@ Abyste mohli úspěšně připojit ke službám prostřednictvím partnerského 
 
 -  Je nutné připojit filtr tras k okruhu ExpressRoute.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Než začnete s konfigurací, ujistěte se, že splňujete následující kritéria:
 

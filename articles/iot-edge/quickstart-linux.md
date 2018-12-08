@@ -1,6 +1,6 @@
 ---
-title: Rychlý start pro Azure IoT Edge + Linux | Microsoft Docs
-description: V tomto rychlém startu se naučíte na zařízení IoT Edge vzdáleně nasadit předem připravený kód.
+title: Rychlý start vytvoření zařízení Azure IoT Edge v Linuxu | Dokumentace Microsoftu
+description: V tomto rychlém startu zjistěte, jak vytvořit zařízení IoT Edge a pak nasazení předem připravených kódu vzdáleně z webu Azure portal.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,13 +8,13 @@ ms.date: 10/14/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 4e53d0d492213373794821e14d4c08ec9db2ad5c
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 84db7284f96dda6e2b9ebd698f9da2c822c2539a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495462"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100901"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>Rychlý start: Nasazení prvního modulu IoT Edge na zařízení Linux x64
 
@@ -27,7 +27,7 @@ V tomto rychlém startu se naučíte:
 3. Nainstalovat na zařízení modul runtime Azure IoT Edge a spustit ho.
 4. Vzdáleně nasadit modul na zařízení IoT Edge.
 
-![Architektura rychlého startu](./media/quickstart-linux/install-edge-full.png)
+![Diagram – rychlý start architektury pro zařízení a cloud](./media/quickstart-linux/install-edge-full.png)
 
 V tomto rychlém startu změníte svůj linuxový nebo virtuální počítač na zařízení IoT Edge. Potom můžete modul nasadit z webu Azure Portal do svého zařízení. Modul, který v tomto rychlém kurzu nasadíte, je simulovaný snímač, který generuje údaje o teplotě, vlhkosti a atmosferickém tlaku. Další kurzy o Azure IoT Edge vycházejí z tohoto kurzu. V něm nasadíte moduly, které analyzují simulovaná data kvůli získání obchodních informací.
 
@@ -67,7 +67,7 @@ Zařízení IoT Edge:
 
 V tomto rychlém startu nejprve pomocí Azure CLI vytvoříte centrum IoT.
 
-![Vytvoření IoT Hubu](./media/quickstart-linux/create-iot-hub.png)
+![Diagram – vytvoření centra IoT v cloudu](./media/quickstart-linux/create-iot-hub.png)
 
 Pro tento rychlý start můžete použít bezplatnou úroveň IoT Hubu. Pokud jste službu IoT Hub někdy používali a máte vytvořené bezplatné centrum IoT, můžete ho použít. V každém předplatném může být jenom jeden bezplatný IoT Hub. 
 
@@ -82,7 +82,7 @@ Následující kód vytvoří bezplatné centrum **F1** ve skupině prostředků
 ## <a name="register-an-iot-edge-device"></a>Registrace zařízení IoT Edge
 
 Zaregistrujte zařízení IoT Edge do nově vytvořeného centra IoT.
-![Registrace zařízení](./media/quickstart-linux/register-device.png)
+![Diagram – registrace zařízení s identitou služby IoT Hub](./media/quickstart-linux/register-device.png)
 
 Vytvořte identitu simulovaného zařízení, aby mohla komunikovat s centrem IoT. Identita zařízení se uchovává v cloudu a k přidružení fyzického zařízení k identitě zařízení se používá jedinečný připojovací řetězec zařízení. 
 
@@ -107,7 +107,7 @@ Protože zařízení IoT Edge se chovají a lze je spravovat jinak než typické
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Instalace a spuštění modulu runtime IoT Edge
 
 Nainstalujte na zařízení IoT Edge modul runtime Azure IoT Edge a spusťte ho. 
-![Registrace zařízení](./media/quickstart-linux/start-runtime.png)
+![Diagram - Start modul runtime na zařízení](./media/quickstart-linux/start-runtime.png)
 
 Modul runtime IoT Edge se nasadí na všechna zařízení IoT Edge. Skládá se ze tří částí. **Proces démon zabezpečení IoT Edge**, který se spustí při každém restartování a spuštění zařízení Edge tím, že se spustí agent IoT Edge. **Agent IoT Edge** umožňuje nasadit a monitorovat moduly na zařízení IoT Edge, včetně centra služby IoT Edge. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem. 
 
@@ -228,7 +228,7 @@ Vaše zařízení IoT Edge je teď nakonfigurované. Je připravené na spoušt�
 ## <a name="deploy-a-module"></a>Nasazení modulu
 
 Pokud budete zařízení Azure IoT Edge spravovat v cloudu, můžete nasadit modul, který bude odesílat telemetrická data do služby IoT Hub.
-![Registrace zařízení](./media/quickstart-linux/deploy-module.png)
+![Diagram – nasazení modulu z cloudu do zařízení](./media/quickstart-linux/deploy-module.png)
 
 [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
 

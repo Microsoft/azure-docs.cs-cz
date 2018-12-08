@@ -1,21 +1,22 @@
 ---
-title: Informace o předem připravených domény – Azure | Dokumentace Microsoftu
+title: Referenční informace k předem připraveným doménám
 titleSuffix: Azure
 description: Referenční informace pro předem připravených domén, které jsou předem sestavené kolekce záměry a entity z Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 287a0986d921798bc7735e5a75d279f010712b16
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a47fb82b1e6d42bdebff8cc4f3cb4c3c87025831
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335619"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106239"
 ---
 # <a name="prebuilt-domain-reference"></a>Referenční informace k předem připraveným doménám
 V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
@@ -266,11 +267,12 @@ When is Captain Omar showing?
 Doména Hudba poskytuje záměry a entity související přehrávání hudby v hudební přehrávač.
 
 ### <a name="examples"></a>Příklady
-```
-play Beethoven
-Increase track volume
-Skip to the next song
-```
+
+|Příklady|
+|--|
+|Přehrát Beethoven|
+|zesílení hlasitosti sledování|
+|Přeskočit na další skladbu|
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -297,11 +299,12 @@ Skip to the next song
 Poznámka: domény poskytuje záměry a entity týkající se vytváření, úpravám a hledání poznámky.
 
 ### <a name="examples"></a>Příklady
-```
-Add to my groceries note lettuce tomato bread coffee
-Check off bananas from my grocery list
-Remove all items from my vacation list
-```
+
+|Příklady|
+|--|
+|Přidat do mé nákup Poznámka salát rajčete bread kávy|
+|Zaškrtávat bananas ze seznamu blízkým|
+|Odebrat všechny položky ze seznamu o dovolenou|
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -330,11 +333,13 @@ Remove all items from my vacation list
 Doména OnDevice poskytuje záměry a entity související řízení zařízení.
 
 ### <a name="examples"></a>Příklady
-```
-Close video player
-Cancel playback
-Can you make the screen brighter?
-```
+
+|Příklady|
+|--|
+|Zavřete přehrávače videa|
+|Zrušit přehrávání|
+|Můžete vytvořit obrazovky světlejší?|
+
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -381,11 +386,13 @@ Can you make the screen brighter?
 Doména míst poskytuje příkazy pro zpracování dotazů souvisejících s jako firmám, instituce, restaurace, veřejné mezery a adresy.
 
 ### <a name="examples"></a>Příklady
-```
-Save this location to my favorites
-How far away is Holiday Inn?
-At what time does Safeway close?
-```
+
+|Příklady|
+|--|
+|Toto umístění pro uložení k oblíbeným|
+|Jak daleko je sváteční DIČ?|
+|Zároveň Safeway zavřít?|
+
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -450,11 +457,13 @@ restart|
 Doména připomenutí poskytuje záměry a entity pro vytváření, úprav a vyhledání připomenutí.
 
 ### <a name="examples"></a>Příklady
-```
-Change my interview to 9 am tomorrow
-Remind me to buy milk on my way back home
-Can you check if I have a reminder about Christine's birthday?
-```
+
+|Příklady|
+|--|
+|Změnit Moje rozhovor 9: 00 zítra|
+|Připomenout si chcete koupit mléka na můj způsob zpět domů|
+|Můžete je zkontrolovat, pokud mám připomenutí týkající se vaší Jana datum narození?|
+
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -473,11 +482,12 @@ Can you check if I have a reminder about Christine's birthday?
 Doména RestaurantReservation poskytuje záměry a entity související se správou restaurace rezervace.
 
 ### <a name="examples"></a>Příklady
-```
-Reserve at Zucca for two for tonight
-Book a table at BJ's for tomorrow
-Table for 3 in Palo Alto at 7
-```
+
+|Příklady|
+|--|
+|Rezervovat na Zucca pro dvě pro tonight|
+|Kniha tabulku BJ společnosti na zítřejší den|
+|Tabulka 3 v Palo Alto na 7|
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -502,11 +512,12 @@ Table for 3 in Palo Alto at 7
 Doména taxislužby poskytuje záměry a entity pro vytváření a Správa rezervací taxislužby.
 
 ### <a name="examples"></a>Příklady
-```
-Get me a cab at 3 pm
-How much longer do I have to wait for my taxi?
-Cancel my Uber
-```
+
+|Příklady|
+|--|
+|Získání souboru cab v 15: 00|
+|Jak dlouho je nutné čekat Moje taxislužby?|
+|Zrušit Moje Uber|
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -531,11 +542,13 @@ Cancel my Uber
 Doména přeložit poskytuje záměry a entity související překlad textu do cílového jazyka.
 
 ### <a name="examples"></a>Příklady
-```
-Translate to French
-Translate hello to German
-Translate this sentence to English
-```
+
+|Příklady|
+|--|
+|Převést na Francouzština|
+|Přeložit hello na němčinu|
+|Převede tuto větu na angličtinu|
+
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -554,11 +567,12 @@ Translate this sentence to English
 TV domény poskytuje pro řízení televizorů záměry a entity.
 
 ### <a name="examples"></a>Příklady
-```
-Switch channel to BBC
-Show TV guide
-Watch National Geographic
-```
+
+|Příklady|
+|--|
+|Přepínač kanálu BBC|
+|Zobrazit televize|
+|Podívejte se na geografické národní|
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -576,11 +590,13 @@ Watch National Geographic
 Domény nástroje zajišťující úlohy, které jsou společné pro mnoho úloh, jako je například greetings, zrušení, potvrzení, Nápověda, opakování, navigace, spouštění a zastavování záměry.
 
 ### <a name="examples"></a>Příklady
-```
-Go back to Twitter
-Please help
-Repeat last question please
-```
+
+|Příklady|
+|--|
+|Přejděte zpět na Twitteru|
+|Pomozte|
+|Opakujte prosím poslední dotaz|
+
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -600,11 +616,13 @@ Repeat last question please
 Doména počasí poskytuje záměry a entity pro zprávy o počasí a předpovědi.
 
 ### <a name="examples"></a>Příklady
-```
-weather in London in september
-What?s the 10 day forecast?
-What's the average temperature in India in september?
-```
+
+|Příklady|
+|--|
+|o počasí v Londýně v září|
+|Co? s 10 dní prognózy?|
+|Co je průměrná teplota v Indii v září?|
+
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |
@@ -621,11 +639,12 @@ What's the average temperature in India in september?
 Doména webové poskytuje záměru pro přechod na web.
 
 ### <a name="examples"></a>Příklady
-```
-Navigate to facebook.com
-Go to www.twitter.com
-Navigate to www.bing.com
-```
+
+|Příklady|
+|--|
+|Přejděte na facebook.com|
+|Přejít na www.twitter.com|
+|Přejděte na www.bing.com|
 
 ### <a name="intents"></a>Záměry
 | Název záměru | Popis | Příklady |

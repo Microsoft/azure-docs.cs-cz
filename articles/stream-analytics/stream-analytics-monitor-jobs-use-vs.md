@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak pomocí sady Visual Studio ke sledová
 services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 07/10/2018
-ms.openlocfilehash: 9cc65fc5119bedc816f825b7aae6120f4bca3b12
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: e673d4f1c2d58a61c541cca4f8448dffc003f9fa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061318"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100991"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Monitorování a správa úlohy Stream Analytics pomocí sady Visual Studio
 
@@ -31,14 +31,14 @@ Tento článek ukazuje, jak monitorovat úlohu Stream Analytics v sadě Visual S
 
 Můžete sbalit **Souhrn úlohy** a klikněte na tlačítko **metriky úlohy** kartu pro zobrazení grafu s důležité metriky. Kontrola a zrušte zaškrtnutí políčka metriky typy přidávat a odebírat z grafu.
 
-![Stream Analytics metriky](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
+![Stream Analytics metriky v sadě Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 
 
 ## <a name="error-monitoring"></a>Monitorování chyb
 
 Můžete také sledovat chyby kliknutím na **chyby** kartu.
 
-![Stream Analytics chyby](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+![Stream Analytics chyby v sadě Visual Studio](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
 ## <a name="get-support"></a>Získat podporu

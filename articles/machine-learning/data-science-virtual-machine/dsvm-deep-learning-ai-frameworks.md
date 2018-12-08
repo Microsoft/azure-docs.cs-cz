@@ -1,11 +1,12 @@
 ---
 title: Architektura AI a hloubkového učení – Azure | Dokumentace Microsoftu
-description: Architektura AI a hloubkového učení
+description: Další informace o hloubkového učení, architekturami a nástroji, které jsou podporovány na virtuální počítač pro datové vědy.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: fbe3aeac3918142388edfa8cd053badd362d7fd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b5bf9a0e9cbbcf2a4144255ac0bfbd4bd48e956c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241918"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53104461"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
 [Virtuální počítač pro datové vědy](https://aka.ms/dsvm) (DSVM) a [hloubkového učení VM](https://aka.ms/dsvm/deeplearning) podporuje řadu architektury hloubkového učení, které vám pomůžou vytvářet aplikace umělou inteligenci (AI) k prediktivním analýzám a kognitivní možnosti, jako jsou bitové kopie a umožňující porozumět jazyku. 

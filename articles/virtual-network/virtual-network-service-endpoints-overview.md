@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 3fa90b14428babf40b740b439f4ed0117fca2bd8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7fa22e6e3eacd3647a426938aa0c3c7862dd0111
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959899"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53102890"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby virtuální sítě
 
@@ -137,6 +137,9 @@ Pro prostředky služeb Azure (například účet služby Azure Storage) můžou
 
 Zásady koncových bodů služeb virtuální sítě umožňují filtrovat provoz do služeb Azure, umožňuje prostředky pouze konkrétních služeb Azure prostřednictvím koncových bodů služby virtuální sítě. Zásady koncového bodu služby poskytují podrobné řízení přístupu pro přenosy virtuální sítě do služeb Azure. Další informace: [zásadami koncových bodů služeb virtuální sítě](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
+## <a name="faqs"></a>Nejčastější dotazy
+
+Pro nejčastější dotazy, podívejte se na [nejčastější dotazy koncových bodů služby virtuální sítě](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints)
 
 ## <a name="next-steps"></a>Další postup
 

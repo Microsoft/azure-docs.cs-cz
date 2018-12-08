@@ -1,6 +1,6 @@
 ---
-title: Jak se zaregistrovat do služby Azure Active Directory jako organizace | Dokumentace Microsoftu
-description: Zjistěte, jak zaregistrovat vaše organizace používat Azure a Azure Active Directory.
+title: Zaregistrujte vaší organizaci a používat službu Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak se zaregistrovat vaše organizace používat Azure a Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: ccff64b88787291832b9d2ed84eb81919152d887
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 53536604ed2f371d1ae7e63b286b17501b260c8c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364767"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100714"
 ---
-# <a name="how-to-sign-up-for-azure-active-directory-as-an-organization"></a>Postupy: registrace pro Azure Active Directory jako organizace
+# <a name="sign-up-your-organization-to-use-azure-active-directory"></a>Zaregistrujte vaší organizaci a používat službu Azure Active Directory
 Zaregistrujte do služby Azure Active Directory (Azure AD) pomocí nového předplatného Microsoft Azure:
 
 - **Účet Microsoft.** Použijte váš osobní účet Microsoft Pokud chcete získat přístup k Azure a všechny spotřebitelské produkty Microsoftu a cloudovým službám, jako je například Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE nebo Office 365. Zaregistrovat se poštovní schránce Outlook.com automaticky vytvoří účet Microsoft. Další informace najdete v tématu [přehled účtu Microsoft](https://account.microsoft.com/account).
