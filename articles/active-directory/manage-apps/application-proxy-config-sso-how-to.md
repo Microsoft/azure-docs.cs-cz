@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 91bbbf6cced8dc3ade4906961d68a99f810d9fd9
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: c27649bc92b9874c6a669911d2b86273cf7adf0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956982"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136321"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Jak nakonfigurovat jednotné přihlašování k aplikaci Proxy aplikací
 
@@ -29,7 +29,7 @@ Jednotné přihlašování (SSO) umožňuje vašim uživatelům přístup k apli
 ## <a name="how-to-configure-single-sign-on"></a>Postup konfigurace jednotného přihlašování na
 Pokud chcete nakonfigurovat jednotné přihlašování, nejprve ujistěte se, že vaše aplikace je nakonfigurovaná pro předběžné ověření přes Azure Active Directory. Chcete-li provést tuto konfiguraci, přejděte na **Azure Active Directory**  - &gt; **podnikové aplikace**  - &gt; **všechny aplikace**   - &gt; Aplikace  **- &gt; Proxy aplikací**. Na této stránce najdete v poli "Předběžné ověření" a ujistěte se, že je nastavena na "Azure Active Directory. 
 
-Další informace o metodách předběžné ověření, najdete v kroku 4 [publikování dokumentu aplikace](application-proxy-publish-azure-portal.md).
+Další informace o metodách předběžné ověření, najdete v kroku 4 [publikování dokumentu aplikace](application-proxy-add-on-premises-application.md).
 
    ![Metoda předběžného ověřování služby na webu Azure portal](./media/application-proxy-config-sso-how-to/app-proxy.png)
 
