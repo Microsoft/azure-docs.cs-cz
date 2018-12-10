@@ -1,6 +1,6 @@
 ---
-title: Připojení Azure Monitor pro virtuální počítače (Preview) | Dokumentace Microsoftu
-description: Tento článek popisuje, jak můžete připojit a nakonfigurovat monitorování Azure pro virtuální počítače, abyste je mohli začít, pochopení, jaký je výkon distribuované aplikace a jaké problémy se stavem se zjistily.
+title: Nasazení pro virtuální počítače ve verzi Preview Azure Monitor | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nasadit a nakonfigurovat monitorování Azure pro virtuální počítače, abyste je mohli začít, pochopení, jaký je výkon distribuované aplikace a problémy se stavem, které byly identifikovány.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -14,52 +14,60 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 4e374528a0fa757458e7e4881714370937b56f9c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e0013d8239346085c06d41dada00012f4c39cf96
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998298"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095838"
 ---
-# <a name="how-to-onboard-the-azure-monitor-for-vms-preview"></a>Jak připojit Azure monitorovat pro virtuální počítače (Preview)
-Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače s monitorováním stavu operačního systému virtuálních počítačů Azure a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí, včetně zjišťování a mapování závislostí aplikace který může hostovat na ně.  
+# <a name="deploy-azure-monitor-for-vms-preview"></a>Nasazení Azure Monitor pro virtuální počítače ve verzi Preview
+Tento článek popisuje, jak nastavit monitorování Azure pro virtuální počítače. Služba monitoruje stav operačního systému Azure virtuální počítače (VM) a škálovací sady virtuálních počítačů a virtuálních počítačů ve vašem prostředí. Toto monitorování zahrnuje zjišťování a mapování závislostí aplikace, které mohou být hostovány na nich. 
 
-Povolení monitorování Azure pro virtuální počítače se provádí pomocí jedné z následujících metod a podrobnosti o použití každé metody jsou k dispozici později v tomto článku.  
+Azure Monitor povolíte pro virtuální počítače pomocí jedné z následujících metod:  
 
-* Jeden virtuální počítač Azure tak, že vyberete **Insights (preview)** přímo z virtuálního počítače.
-* Více virtuálních počítačů Azure prostřednictvím Azure Policy, které zajistí stávající a nové virtuální počítače, vyhodnotí mít nainstalované požadované závislosti a jsou správně nakonfigurované.  Nekompatibilní virtuální počítače označené, abyste se mohli rozhodnout na co nedodržuje předpisy, jak chcete opravit závislosti.  
-* Více virtuálních počítačů Azure nebo virtuálního počítače škálovací sady v zadané předplatné nebo skupinu prostředků pomocí Powershellu.
+* Povolit jednoho virtuálního počítače Azure tak, že vyberete **Insights (preview)** přímo z virtuálního počítače.
+* Povolení dva nebo více virtuálních počítačů Azure pomocí služby Azure Policy. Prostřednictvím této metody jsou požadované závislosti stávající i nové virtuální počítače nainstalované a správně nakonfigurovaný. Nekompatibilní virtuální počítače označené, abyste se mohli rozhodnout, jestli je chcete povolit, a způsob jejich řešení. 
+* Povolit dvě nebo více virtuálních počítačů Azure nebo virtuální počítač škálovací sady v zadané předplatné nebo skupinu prostředků pomocí prostředí PowerShell.
+
+Další informace o jednotlivých metod najdete dále v tomto článku.
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, ujistěte se, že chápete, jak je popsáno v následující podčásti následující.
+Než začnete, ujistěte se, že rozumíte informace v následujících částech.
 
 ### <a name="log-analytics"></a>Log Analytics 
 
-Momentálně se podporuje pracovní prostor Log Analytics v těchto oblastech:
+Pracovní prostor Log Analytics je aktuálně podporované v těchto oblastech:
 
   - Západní střed USA  
   - USA – východ  
   - Západní Evropa  
   - Jihovýchodní Asie<sup>1</sup>  
 
-<sup>1</sup> této oblasti pro virtuální počítače aktuálně nepodporuje funkci stavu služby Azure Monitor   
+<sup>1</sup> této oblasti nepodporuje aktuálně funkci stavu služby Azure Monitor pro virtuální počítače.   
 
 >[!NOTE]
->Virtuální počítače Azure mohou být zprovozněná z libovolné oblasti a neomezují jenom na podporovaných oblastí pro pracovní prostor Log Analytics.
+>Azure virtual machines se dají nasadit z libovolné oblasti a nejsou omezené na podporovaných oblastí pro pracovní prostor Log Analytics.
 >
 
-Pokud nemáte pracovní prostor, můžete vytvořit pomocí [rozhraní příkazového řádku Azure](../../azure-monitor/learn/quick-create-workspace-cli.md), pomocí [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)v [webu Azure portal](../../azure-monitor/learn/quick-create-workspace.md), nebo s [Azure Resource Manageru](../../azure-monitor/platform/template-workspace-configuration.md).  Chcete-li povolit monitorování pro jeden virtuální počítač Azure na webu Azure Portal, máte možnost vytvořit pracovní prostor během tohoto procesu.  
+Pokud nemáte pracovní prostor, můžete vytvořit jednu s jedním z následujících metod:
+* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md) 
 
-Povolení řešení pro ve velkém měřítku scénář nejprve vyžaduje následující konfigurace ve vašem pracovním prostoru Log Analytics:
+Pokud aktivujete monitorování pro jeden virtuální počítač Azure na webu Azure Portal, můžete vytvořit pracovní prostor během tohoto procesu. 
 
-* Nainstalujte **ServiceMap** a **InfrastructureInsights** řešení. To lze provést pouze s použitím šablony Azure Resource Manageru uvedené v tomto článku.   
+Pokud chcete povolit řešení pro scénář ve velkém měřítku, nejprve nakonfigurujte následující ve vašem pracovním prostoru Log Analytics:
+
+* Nainstalujte řešení ServiceMap a InfrastructureInsights. Dokončení této instalace pouze s použitím šablony Azure Resource Manageru, která je k dispozici v tomto článku.  
 * Konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu.
 
-Proveďte konfiguraci pracovního prostoru pro scénáře škálování, naleznete v [pracovní prostor Log Analytics instalační program pro při škálování nasazení](#setup-log-analytics-workspace).
+Proveďte konfiguraci pracovního prostoru pro scénář ve velkém měřítku, naleznete v tématu [nastavení pracovního prostoru Log Analytics pro nasazení ve velkém měřítku](#setup-log-analytics-workspace).
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Následující tabulka uvádí operační systémy Windows a Linuxem, které jsou podporovány službou Azure Monitor pro virtuální počítače.  Úplný seznam podrobnostmi vydání hlavní a podverze operačního systému Linux a podporované verze jádra kousek dál v této části.
+Následující tabulka uvádí operační systémy Windows a Linuxem, které jsou podporovány službou Azure Monitor pro virtuální počítače. Úplný seznam, který podrobně popisuje verze operačního systému Linux hlavní a dílčí a podporované verze jádra je v této části dozvíte později.
 
 |Verze operačního systému |Výkon |Maps |Stav |  
 |-----------|------------|-----|-------|  
@@ -68,22 +76,22 @@ Následující tabulka uvádí operační systémy Windows a Linuxem, které jso
 |Windows Server 2012 R2 | X | X | |  
 |Windows Server 2012 | X | X | |  
 |Windows Server 2008 R2 | X | X| |  
-|RHEL 7, 6| X | X| X |  
+|Red Hat Enterprise Linux (RHEL) 7, 6| X | X| X |  
 |Ubuntu 18.04, 16.04, 14.04 | X | X | X |  
-|Cent operačního systému Linux 7, 6 | X | X | X |  
-|SLES 12 | X | X | X |  
+|Linux centOS 7, 6 | X | X | X |  
+|SUSE Linux Enterprise Server (SLES) 12 | X | X | X |  
 |Oracle Linux 7 | X<sup>1</sup> | | X |  
 |Oracle Linux 6 | X | X | X |  
 |Debian 9.4, 8 | X<sup>1</sup> | | X | 
 
-<sup>1</sup> the výkonu funkce služby Azure Monitor pro virtuální počítače dostupná pouze ze služby Azure Monitor, není k dispozici při přístupu z podokna vlevo virtuálního počítače Azure přímo.  
+<sup>1</sup> the výkonu funkce služby Azure Monitor pro virtuální počítače je k dispozici pouze ze služby Azure Monitor. Není k dispozici, když se dostanete přímo z levého podokna virtuálního počítače Azure. 
 
 >[!NOTE]
 >Následující informace platí pro podporu operačního systému Linux:  
-> - Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.  
-> - Verze s nestandardním jádrem, jako jsou PAE a Xen, nejsou podporované v žádné distribuci Linuxu. Například systém s vydání řetězec "2.6.16.21-0.8-xen" není podporován.  
-> - Vlastní jádra, včetně opětovně zkompilovaných standardních jader, nejsou podporovaná.  
-> - Jádro CentOSPlus není podporované.  
+> - Jsou podporované jen verze s výchozím a SMP jádrem Linuxu. 
+> - Používá se nestandardní jádra vyjde nová verze, jako například rozšíření fyzické adresy (PAE) a Xen, nejsou podporovány pro libovolnou distribuci Linuxu. Například systém s řetězec verze *2.6.16.21-0.8-xen* se nepodporuje. 
+> - Vlastní jádrech, včetně překompilování standardní jádra, nejsou podporovány. 
+> - CentOSPlus jádra není podporován. 
 
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
@@ -144,18 +152,22 @@ Následující tabulka uvádí operační systémy Windows a Linuxem, které jso
 |12 SP2 | 4.4. * |
 |12 SP3 | 4.4. * |
 
-### <a name="microsoft-dependency-agent"></a>Agent služby Microsoft Dependency
-Azure Monitor pro mapování virtuálních počítačů získává data od agenta Microsoft Dependency. Agent závislostí závisí na Log Analytics, agent pro připojení k Log Analytics a proto systém musí mít agenta Log Analytics, instalaci a konfiguraci agenta závislostí. Když povolíte monitorování Azure pro virtuální počítače pro jeden virtuální počítač Azure nebo při použití metody při škálování nasazení rozšíření agenta závislostí virtuálního počítače Azure se používá k instalaci agenta jako součást registrace zkušenosti. S hybridním prostředí agenta závislostí je možné stáhnout a nainstalovat ručně nebo pomocí metody automatizované nasazení těchto virtuálních počítačů hostovaných mimo Azure.  
+### <a name="the-microsoft-dependency-agent"></a>Agent Microsoft Dependency
+Azure Monitor pro funkci mapování virtuálních počítačů získává data od agenta Microsoft Dependency. Agent závislostí závisí na agenta Log Analytics pro připojení k Log Analytics. Proto musí mít váš systém agenta Log Analytics, instalaci a konfiguraci agenta závislostí. 
+
+Povolit monitorování Azure pro virtuální počítače pro jeden virtuální počítač Azure nebo používat metodu nasazení ve velkém měřítku, budete muset použít rozšíření agenta závislosti virtuálních počítačů Azure jako součást možností instalace agenta. 
+
+V hybridním prostředí, můžete stáhnout a nainstalovat agenta závislostí v některém ze dvou způsobů: ručně nebo pomocí metody automatizované nasazení pro virtuální počítače, které jsou hostované mimo Azure. 
 
 Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy v hybridním prostředí.
 
 | Připojený zdroj | Podporováno | Popis |
 |:--|:--|:--|
-| Agenti systému Windows | Ano | Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
-| Agenti systému Linux | Ano | Kromě [agenta Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
+| Agenti systému Windows | Ano | Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačního systému najdete v tématu [podporované operační systémy](#supported-operating-systems). |
+| Agenti systému Linux | Ano | Kromě [agenta Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačního systému najdete v tématu [podporované operační systémy](#supported-operating-systems). |
 | Skupina pro správu nástroje System Center Operations Manager | Ne | |  
 
-Agent závislostí lze stáhnout z následujícího umístění.
+Agent závislostí si můžete stáhnout z následujícího umístění:
 
 | File | Operační systém | Verze | SHA-256 |
 |:--|:--|:--|:--|
@@ -163,54 +175,62 @@ Agent závislostí lze stáhnout z následujícího umístění.
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
-Tento přístup je potřeba udělit uživatelům, aby bylo možné povolit a přístup k funkcím ve službě Azure Monitor pro virtuální počítače.  
+Pokud chcete povolit a přístup k funkcím ve službě Azure Monitor pro virtuální počítače, je potřeba přiřadit přístup následující role: 
   
-- Pokud chcete řešení povolit, musíte přidat jako člen role Přispěvatel Log Analytics.  
+- Pokud chcete řešení povolit, musíte mít *Přispěvatel Log Analytics* role. 
 
-- Zobrazení výkonu, stavu, a mapování dat, musíte přidat jako člen role Čtenář monitorování pro virtuální počítač Azure a pracovní prostor Log Analytics nakonfigurované pro virtuální počítače pomocí Azure monitoru.   
+- Zobrazení výkonu, stavu, a mapování dat, musíte mít *Čtenář monitorování* role virtuálního počítače Azure. Pracovní prostor Log Analytics musí být nakonfigurovaný pro monitorování Azure pro virtuální počítače.  
 
 Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
 
-## <a name="enable-from-the-azure-portal"></a>Povolit z portálu Azure portal
+## <a name="enable-monitoring-in-the-azure-portal"></a>Povolit monitorování na webu Azure Portal
 Pokud chcete povolit monitorování virtuálního počítače Azure na webu Azure Portal, postupujte takto:
 
-1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
-2. Na webu Azure Portal, vyberte **virtuálních počítačů**. 
-3. V seznamu vyberte virtuální počítač. 
-4. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)**.
-5. Na **Insights (preview)** stránce **vyzkoušet**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
+1. Vyberte **virtuálních počítačů**. 
+1. V seznamu vyberte virtuální počítač. 
+1. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)**.
+1. Na **Insights (preview)** stránce **vyzkoušet**.
 
     ![Povolit monitorování Azure pro virtuální počítače pro virtuální počítač](./media/vminsights-onboard/enable-vminsights-vm-portal-01.png)
 
-5. Na **připojování Přehled monitorování Azure** stránky, pokud máte existující Log Analytics vyberte pracovní prostor v rámci stejného předplatného, v rozevíracím seznamu.  V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, který se nasazuje virtuální počítač v rámci předplatného. 
+1. Na **připojování Přehled monitorování Azure** stránky, pokud máte existující Log Analytics vyberte pracovní prostor v rámci stejného předplatného, v rozevíracím seznamu.  
+    V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, který se nasazuje virtuální počítač v rámci předplatného. 
 
     >[!NOTE]
-    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro ukládání dat monitorování z virtuálního počítače, postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) v jednom z podporovaných oblastech uvedených výše.   
+    >Pokud chcete vytvořit nový pracovní prostor Log Analytics pro ukládání dat monitorování z virtuálního počítače, postupujte podle pokynů v [vytvořit pracovní prostor Log Analytics](../../azure-monitor/learn/quick-create-workspace.md) v jednom z podporovaných oblastech uvedených výše.  
 
 Po povolení sledování, může trvat přibližně 10 minut, než můžete zobrazit stav metriky pro virtuální počítač. 
 
 ![Povolit Azure Monitor pro monitorování zpracování nasazení virtuálních počítačů](./media/vminsights-onboard/onboard-vminsights-vm-portal-status.png)
 
 
-## <a name="on-boarding-at-scale"></a>Zavádění ve velkém měřítku
-V této části pokyny, jak k provádění při škálování nasazení služby Azure Monitor pro virtuální počítače pomocí buď zásady Azure nebo pomocí Azure Powershellu.  
+## <a name="deploy-at-scale"></a>Nasazení ve velkém měřítku
+V této části nasadíte Azure Monitor pro virtuální počítače ve velkém měřítku s využitím zásad Azure nebo Azure Powershellu. 
 
-Shrnuto jsou kroky, které je potřeba provést předem nakonfigurovat váš pracovní prostor Log Analytics, abyste mohli pokračovat s připojováním vašich virtuálních počítačů.
+Před nasazením virtuálních počítačů předem nakonfigurujte váš pracovní prostor Log Analytics následujícím způsobem:
+
+1. Pokud ještě nemáte pracovní prostor, vytvořte, který může podporovat monitorování Azure pro virtuální počítače.  
+    Než budete pokračovat, naleznete v tématu [Správa pracovních prostorů](../../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json) zvážení všech faktorů náklady, správy a dodržování předpisů.      
 
 1. Vytvořte nový pracovní prostor, pokud již neexistuje, který slouží k podpoře monitorování Azure pro virtuální počítače. Kontrola [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json) před vytvořením nového pracovního prostoru zvážení všech faktorů náklady, správy a dodržování předpisů než budete pokračovat.       
-2. Povolte čítače výkonu v pracovním prostoru pro kolekci na virtuální počítače s Windows a Linux.
-3. Instalace a povolení **ServiceMap** a **InfrastructureInsights** řešení ve vašem pracovním prostoru.  
 
-### <a name="setup-log-analytics-workspace"></a>Nastavení pracovního prostoru Log Analytics
-Pokud nemáte pracovní prostor Log Analytics, projděte si dostupné metody navrhované pod [požadavky](#log-analytics) části k jejímu vytvoření.  
+1. Povolte čítače výkonu v pracovním prostoru pro kolekci na virtuální počítače s Windows a Linux.
+
+1. Instalace a povolení ServiceMap a InfrastructureInsights řešení ve vašem pracovním prostoru. 
+
+### <a name="set-up-a-log-analytics-workspace"></a>Nastavte pracovní prostor Log Analytics
+Pokud nemáte pracovní prostor Log Analytics, vytvořte ho revize metody, které jsou navržené v ["Požadavky"](#log-analytics) oddílu. 
 
 #### <a name="enable-performance-counters"></a>Povolit čítače výkonu
-Pokud již získat čítače výkonu požadováno řešením není nakonfigurovaný pracovní prostor Log Analytics odkazuje řešení, se musí být povolené. Můžete to provést ručně, jak je popsáno [tady](../../azure-monitor/platform/data-sources-performance-counters.md), nebo tak, že stažení a spuštění skriptu PowerShell, který je k dispozici z [Galerie prostředí Powershell Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
+Pokud pracovní prostor Log Analytics, který je odkazován řešení ještě nenakonfigurovala získat čítače výkonu, vyžadují řešení, musíte je povolit. Můžete tak učinit v některém ze dvou způsobů:
+* Ručně, jak je popsáno v [Windows a Linuxem zdroje dat výkonu do Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
+* Stažením a instalací, který je k dispozici skript prostředí PowerShell [Galerie prostředí PowerShell pro Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
  
 #### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>Nainstalujte řešení ServiceMap a InfrastructureInsights
-Tato metoda zahrnuje šablony JSON, který určuje konfiguraci, aby zajistilo komponenty řešení do pracovního prostoru Log Analytics.  
+Tato metoda zahrnuje šablony JSON, který určuje konfiguraci pro povolení součásti řešení ve vašem pracovním prostoru Log Analytics. 
 
-Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
+Pokud nejste obeznámeni s nasazováním prostředků pomocí šablony, naleznete v tématu:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) 
 
@@ -280,110 +300,113 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     ]
     ```
 
-2. Uložte soubor jako **installsolutionsforvminsights.json** do místní složky.
-3. Upravte hodnoty **WorkspaceName**, **ResourceGroupName**, a **WorkspaceLocation**.  Hodnota pro **WorkspaceName** je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru a hodnotu **WorkspaceLocation** je pracovní prostor je definována v oblasti.
-4. Jste připraveni nasadit tuto šablonu pomocí následujícího příkazu Powershellu:
+1. Uložte soubor jako *installsolutionsforvminsights.json* do místní složky.
+1. Upravte hodnoty *WorkspaceName*, *ResourceGroupName*, a *WorkspaceLocation*. Hodnota pro *WorkspaceName* je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru. Hodnota pro *WorkspaceLocation* je pracovní prostor je definována v oblasti.
+1. Jste připraveni nasadit tuto šablonu pomocí následujícího příkazu Powershellu:
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
     ```
 
-    Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+    Změna konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
     ```powershell
     provisioningState       : Succeeded
     ```
 
-### <a name="enable-using-azure-policy"></a>Povolení s využitím Azure Policy
-Povolit monitorování Azure pro virtuální počítače ve velkém měřítku, která zajišťuje konzistentní dodržování předpisů a automatické podpory pro nové virtuální počítače zřízené, [Azure Policy](../../azure-policy/azure-policy-introduction.md) se doporučuje. Tyto zásady:
+### <a name="enable-by-using-azure-policy"></a>Povolení s využitím zásad Azure
+Pokud chcete povolit monitorování Azure pro virtuální počítače ve velkém měřítku tak, že pomáhá tak zajistit konzistentní dodržování předpisů a automatické povolení nově zřízených virtuálních počítačů, doporučujeme [Azure Policy](../../azure-policy/azure-policy-introduction.md). Tyto zásady:
 
-* Nasadit agenta Log Analytics a agenta závislostí 
-* Sestav o výsledcích dodržování předpisů 
-* Oprava pro nekompatibilní virtuální počítače
+* Nasaďte agenta Log Analytics a agenta závislostí. 
+* Sestav o výsledcích dodržování předpisů. 
+* Opravte nevyhovující virtuálních počítačů.
 
-Povolit monitorování Azure pro virtuální počítače prostřednictvím zásad do svého tenanta vyžaduje: 
+Povolení monitorování Azure pro virtuální počítače s využitím zásad Azure ve vašem tenantovi: 
 
-- Přiřazení iniciativy do oboru – skupina pro správu, předplatné nebo skupinu prostředků 
-- Kontroly a nápravy výsledků kontroly kompatibility  
+- Přiřadit iniciativu obor: skupina pro správu, předplatné nebo skupinu prostředků 
+- Zkontrolujte a opravte výsledků kontroly kompatibility  
 
-Další informace o přiřazení zásady Azure Policy najdete v tématu [Přehled služby Azure Policy](../../governance/policy/overview.md#policy-assignment) a zkontrolujte [přehled skupin pro správu](../../governance/management-groups/index.md) než budete pokračovat.  
+Další informace o přiřazování zásad Azure najdete v tématu [Přehled služby Azure Policy](../../governance/policy/overview.md#policy-assignment) a zkontrolujte [přehled skupin pro správu](../../governance/management-groups/index.md) předtím, než budete pokračovat. 
 
-V následující tabulce jsou uvedeny definice zásad, které jsou k dispozici.  
-
-|Název |Popis |Typ |  
-|-----|------------|-----|  
-|[Preview]: Povolit monitorování Azure pro virtuální počítače |Povolte monitorování Azure pro virtuální počítače (VM) v zadaném oboru (skupiny pro správu, předplatné nebo skupinu prostředků). Pracovní prostor Log Analytics přijímá jako parametr. |Iniciativa |  
-|[Preview]: nasazení agenta závislostí auditu – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu |Ohlásí, že virtuální počítače nedodržují předpisy, pokud image virtuálního počítače (operační systém) není uvedená na definovaném seznamu a není nainstalovaný agent. |Zásada |  
-|[Preview]: nasazení agenta auditu Log Analytics – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu |Ohlásí, že virtuální počítače nedodržují předpisy, pokud image virtuálního počítače (operační systém) není uvedená na definovaném seznamu a není nainstalovaný agent. |Zásada |  
-|[Preview]: nasazení agenta závislosti pro virtuální počítače s Linuxem |Umožňuje nasadit agenta Dependency Agent pro linuxové virtuální počítače, pokud je image virtuálního počítače (operační systém) uvedená na definovaném seznamu a agent není nainstalovaný. |Zásada |  
-|[Preview]: nasazení agenta závislosti pro virtuální počítače s Windows |Umožňuje nasadit agenta Dependency Agent pro virtuální počítače s Windows, pokud je image virtuálního počítače (operační systém) uvedená na definovaném seznamu a agent není nainstalovaný. |Zásada |  
-|[Preview]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem |Umožňuje nasadit agenta Log Analytics Agent pro linuxové virtuální počítače, pokud je image virtuálního počítače (operační systém) uvedená na definovaném seznamu a agent není nainstalovaný. |Zásada |  
-|[Preview]: nasadit agenta Log Analytics pro virtuální počítače s Windows |Umožňuje nasadit agenta Log Analytics Agent pro virtuální počítače s Windows, pokud je image virtuálního počítače (operační systém) uvedená na definovaném seznamu a agent není nainstalovaný. |Zásada |  
-
-Samostatné zásady (není zahrnutá v iniciativě) 
+Definice zásad jsou uvedeny v následující tabulce: 
 
 |Název |Popis |Typ |  
 |-----|------------|-----|  
-|[Preview]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu |Sestavy virtuálních počítačů jako nedodržující předpisy, pokud nejsou protokolování do pracovního prostoru LA zadaná v přiřazení zásady nebo iniciativa. |Zásada |
+|[Preview]: Povolit monitorování Azure pro virtuální počítače |Povolte monitorování Azure pro virtuální počítače (VM) v zadaném oboru (skupiny pro správu, předplatné nebo skupinu prostředků). Jako parametr používá pracovní prostor Log Analytics. |Iniciativa |  
+|[Preview]: nasazení agenta závislostí auditu – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu |Virtuální počítače ohlásí jako nedodržující předpisy, pokud Image virtuálního počítače (OS) není definována v seznamu a agent není nainstalovaný. |Zásada |  
+|[Preview]: nasazení agenta auditu Log Analytics – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu |Virtuální počítače ohlásí jako nedodržující předpisy, pokud Image virtuálního počítače (OS) není definována v seznamu a agent není nainstalovaný. |Zásada |  
+|[Preview]: nasazení agenta závislosti pro virtuální počítače s Linuxem |Nasazení agenta závislostí pro virtuální počítače s Linuxem, pokud Image virtuálního počítače (OS) je definován v seznamu a agent není nainstalovaný. |Zásada |  
+|[Preview]: nasazení agenta závislosti pro virtuální počítače s Windows |Nasazení agenta závislosti pro Windows VMs Pokud Image virtuálního počítače (OS) je definován v seznamu a agent není nainstalovaný. |Zásada |  
+|[Preview]: nasadit agenta Log Analytics pro virtuální počítače s Linuxem |Nasaďte agenta Log Analytics pro virtuální počítače s Linuxem, když v seznamu je definována Image virtuálního počítače (OS) a agent není nainstalovaný. |Zásada |  
+|[Preview]: nasadit agenta Log Analytics pro virtuální počítače s Windows |Nasaďte agenta Log Analytics pro Windows VMs, když v seznamu je definována Image virtuálního počítače (OS) a agent není nainstalovaný. |Zásada |  
 
-#### <a name="assign-azure-monitor-initiative"></a>Přiřadit iniciativu Azure Monitor
-Tato počáteční verze můžete vytvořit pouze přiřazení zásady z portálu Azure portal. Jak provést tyto kroky najdete v tématu [vytvoření přiřazení zásady z portálu Azure portal](../../governance/policy/assign-policy-portal.md). 
+Samostatné zásady (není zahrnutá v iniciativě) je popsaný tady: 
 
-1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**. 
-2. Na levé straně stránky služby Azure Policy vyberte **Přiřazení**. Přiřazení je zásada, která byla přiřazena, aby proběhla v rámci zadaného oboru.
-3. Vyberte **přiřazení iniciativy** od horního okraje **zásady – přiřazení** stránky.
-4. Na **přiřazení iniciativy** stránky, vyberte **oboru** tím, že kliknete na tři tečky a vyberte buď skupinu pro správu, nebo předplatné a volitelně skupinu prostředků. Omezení oboru přiřazení zásady v našem případě do seskupení virtuálních počítačů pro vynucení. Klikněte na tlačítko **vyberte** v dolní části **oboru** stránky uložte provedené změny.
-5. **Vyloučení** umožňuje vynechat jeden nebo více prostředků z oboru, který je volitelný. 
-6. Vyberte **definice iniciativy** tlačítko se třemi tečkami vyberte a otevřete seznam dostupných definic  **[Preview] povolit monitorování Azure pro virtuální počítače** ze seznamu a pak klikněte na tlačítko **Vyberte**.
-7. **Název přiřazení** se automaticky vyplní názvem iniciativy jste vybrali, ale můžete ho změnit. Volitelně můžete přidat také **Popis**. **Přiřazené podle** se vyplní automaticky na základě kdo je přihlášený a toto pole je volitelné.
-8. Vyberte **pracovní prostor Log Analytics** z rozevíracího seznamu, který je k dispozici v podporované oblasti.
+|Název |Popis |Typ |  
+|-----|------------|-----|  
+|[Preview]: Auditovat pracovní prostor Log Analytics pro virtuální počítač –, nahlásit neshodu |Sestavy virtuálních počítačů jako nedodržující předpisy, pokud nejsou protokolování do pracovního prostoru Log Analytics zadaná v přiřazení zásady nebo iniciativa. |Zásada |
+
+#### <a name="assign-the-azure-monitor-initiative"></a>Přiřadit iniciativu Azure Monitor
+Tato počáteční verze můžete vytvořit přiřazení zásady jenom na webu Azure portal. Jak provést tyto kroky najdete v tématu [vytvoření přiřazení zásady z portálu Azure portal](../../governance/policy/assign-policy-portal.md). 
+
+1. Chcete-li spustit službu Azure Policy na webu Azure Portal, vyberte **všechny služby**a poté vyhledejte a vyberte **zásady**. 
+1. V levém podokně na stránku služby Azure Policy vyberte **přiřazení**.  
+    Přiřazení je zásada, která byla přiřazena, aby proběhla v rámci zadaného oboru.
+1. V horní části **zásady – přiřazení** stránce **přiřazení iniciativy**.
+1. Na **přiřazení iniciativy** stránky, vyberte **oboru** tím, že kliknete na tři tečky (...) a vyberte skupinu pro správu nebo předplatného.  
+    V našem příkladu omezuje obor přiřazení zásady pro seskupení virtuálních počítačů pro vynucení.
+1. V dolní části **oboru** stránky uložte provedené změny tak, že vyberete **vyberte**.
+1. (Volitelné) Chcete-li odebrat jednu nebo více prostředků z oboru, vyberte **vyloučení**. 
+1. Vyberte **definice iniciativy** vyberte tři tečky (...) zobrazte seznam dostupných definic  **[Preview] povolit monitorování Azure pro virtuální počítače**a pak vyberte  **Vyberte**.  
+    **Název přiřazení** pole se automaticky vyplní název iniciativy jste vybrali, ale můžete ho změnit. Můžete také přidat volitelný popis. **Přiřadil** pole se vyplní automaticky, podle který je přihlášen, a tato hodnota je volitelná.
+1. V **pracovní prostor Log Analytics** rozevírací seznam pro podporované oblasti, vyberte pracovní prostor.
 
     >[!NOTE]
-    >Pokud pracovní prostor je mimo rozsah přiřazení, je nutné udělit **Přispěvatel Log Analytics** oprávnění ID přiřazení zásady instanční objekt. Pokud to neuděláte může se zobrazit selhání nasazení, jako: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... ` revize [jak ručně nakonfigurovat spravovanou identitu](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity) udělit přístup.
-    >
-
-9. Všimněte si, že **Identity spravované** zaškrtnutá možnost. To je zaškrtnuté políčko, pokud obsahuje přiřazení iniciativy zásad s účinností deployIfNotExists. Z **spravovat Identity umístění** rozevíracího seznamu vyberte příslušnou oblast.  
-10. Klikněte na **Přiřadit**.
+    >Pokud pracovní prostor je mimo rozsah přiřazení, udělit *Přispěvatel Log Analytics* oprávnění ID přiřazení zásady instanční objekt. Pokud to neuděláte, může se zobrazit selhání nasazení jako například: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... ` Pokud chcete udělit přístup, zkontrolujte [jak ručně nakonfigurovat spravovanou identitu](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+    >  
+    **Identity spravované** zaškrtávací políčko je zaškrtnuto, protože obsahuje přiřazení iniciativy zásad s *deployIfNotExists* vliv. 
+1. V **spravovat Identity umístění** rozevíracího seznamu vyberte příslušnou oblast. 
+1. Vyberte **Přiřadit**.
 
 #### <a name="review-and-remediate-the-compliance-results"></a>Zkontrolujte a opravte výsledků kontroly kompatibility 
 
-Můžete zjistěte, jak zkontrolovat výsledky kontroly dodržování předpisů načtením [identifikovat nedodržení předpisů výsledky](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). Vyberte **dodržování předpisů** v levé části stránky a vyhledejte  **[Preview] povolit monitorování Azure pro virtuální počítače** iniciativě, která je nedodržují jednotlivé přiřazení, které jste vytvořili.
+Můžete zjistěte, jak zkontrolovat výsledky kontroly dodržování předpisů načtením [identifikovat nedodržení předpisů výsledky](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). V levém podokně vyberte **dodržování předpisů**a potom  **[Preview] povolit monitorování Azure pro virtuální počítače** iniciativy pro virtuální počítače, které nedodržují předpisy, podle přiřazení jste vytvořili.
 
 ![Zásady dodržování předpisů pro virtuální počítače Azure](./media/vminsights-onboard/policy-view-compliance-01.png)
 
 Na základě výsledků Zásady iniciativy je součástí virtuálních počítačů označené jako nedodržující předpisy v následujících scénářích:  
   
-1. Log Analytics nebo agenta závislostí není nasazený.  
-   Toto je typický pro obor s existující virtuální počítače. Chcete zmírnit, [vytvářet úkoly nápravy](../../governance/policy/how-to/remediate-resources.md) nekompatibilní zásady k nasazení požadovaných agentů.    
+* Log Analytics nebo agenta závislostí není nasazený. 
+   Tento scénář je typický pro obor s existující virtuální počítače. Jak ji zmírnit, nasazení požadovaných agentů podle [vytváření úloh nápravy](../../governance/policy/how-to/remediate-resources.md) nekompatibilní zásady.   
  
     - [Preview]: Deploy Dependency Agent for Linux VMs   
     - [Preview]: Deploy Dependency Agent for Windows VMs  
     - [Preview]: Deploy Log Analytics Agent for Linux VMs  
     - [Preview]: Deploy Log Analytics Agent for Windows VMs  
 
-2. Image virtuálního počítače (OS) není v seznamu identifikované v definici zásad.  
-   Kritéria zásady nasazení obsahuje jenom virtuální počítače, které jsou nasazeny z dobře známé imagí virtuálních počítačů Azure. Pokud se operační systém virtuálního počítače podporuje nebo Ne, najdete v dokumentaci. Pokud není, budete muset duplicitní zásady nasazení a aktualizace/upravit ho tak, aby image kompatibilní. 
+* Virtuální počítač Image operačního systému není identifikované v definici zásad. 
+   Kritéria zásad nasazení zahrnovat jenom virtuální počítače, které jsou nasazeny z dobře známé imagí virtuálních počítačů Azure. Vyhledejte v dokumentaci najdete v článku, zda je podporován operační systém virtuálního počítače. Pokud není podporován, duplicitní zásady nasazení a aktualizace nebo upravte ho tak, aby image kompatibilní. 
   
     - [Preview]: nasazení agenta závislostí auditu – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu  
     - [Preview]: nasazení agenta auditu Log Analytics – obrázku (operačního systému virtuálního počítače) neuvedené v seznamu
 
-3. Virtuální počítače nejsou k zadanému pracovnímu prostoru LA protokolování.  
-Je možné, že se liší od jedné do pracovního prostoru LA protokolování několik virtuálních počítačů v rámci iniciativy zadaná v přiřazení zásady. Tato zásada je nástroj, který určíte, které virtuální počítače se hlásí nekompatibilní pracovního prostoru.  
+* Virtuální počítače nejsou přihlášení k zadanému pracovnímu prostoru Log Analytics.  
+    Je možné, že některé virtuální počítače v rámci iniciativy jsou přihlášení k pracovnímu prostoru Log Analytics, než je ten, který je zadaná v přiřazení zásady. Tato zásada je nástroj, který určíte, které virtuální počítače se hlásí nekompatibilní pracovního prostoru. 
  
     - [Preview]: Audit Log Analytics Workspace for VM - Report Mismatch  
 
 ### <a name="enable-with-powershell"></a>Povolit pomocí Powershellu
-Chcete-li povolit monitorování Azure pro virtuální počítače pro více virtuálních počítačů nebo škálovacích sad virtuálních počítačů, můžete použít dodaný skript Powershellu – [instalace VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) k dispozici z Galerie prostředí PowerShell Azure a dokončete tuto úlohu.  Tento skript se iterovat přes každých virtuální počítače a virtuálního počítače škálovací sady v rámci vašeho předplatného, ve skupině prostředků s vymezeným oborem určené *ResourceGroup*, nebo do jednoho virtuálního počítače nebo virtuálního počítače škálovací sady určená *Název*.  Pro každý virtuální počítač nebo virtuální počítač ve škálovací sadě skript ověřuje, jestli už je nainstalovaná rozšíření virtuálního počítače a pokud není došlo k pokusu o ho znovu nainstalujte.  V opačném případě pokračuje k instalaci rozšíření Log Analytics a virtuálních počítačů agenta závislostí.   
+Povolit monitorování Azure pro virtuální počítače pro více virtuálních počítačů nebo škálovacích sad virtuálních počítačů, můžete použít skript prostředí PowerShell [instalace VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), která je dostupná v galerii Azure Powershellu. Tento skript projde všechny virtuální počítače a virtuální počítač škálovací sady v rámci vašeho předplatného, ve skupině prostředků s vymezeným oborem, která je zadána *ResourceGroup*, nebo do jednoho virtuálního počítače nebo virtuálního počítače škálovací sady, která je zadána *Název*. Pro každý virtuální počítač nebo virtuální počítač ve škálovací sadě skript ověří, zda je rozšíření virtuálního počítače již nainstalován. Pokud není nainstalované rozšíření virtuálního počítače, skript se pokusí znovu nainstalovat. Pokud je nainstalované rozšíření virtuálního počítače, skript nainstaluje rozšíření virtuálních počítačů agenta Log Analytics a závislostí.  
 
-Tento skript vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
+Tento skript vyžaduje modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, musíte také spustit `Connect-AzureRmAccount` vytvořit připojení k Azure.
 
-O tomto skriptu potřebujete pomoc, můžete spustit `Get-Help` k získání seznamu argumentů podrobnosti a příklady použití.   
+Pokud chcete získat seznam argumentů podrobnosti a příklady použití skriptu, spusťte `Get-Help`.  
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed
 
 SYNOPSIS
-    This script installs VM extensions for Log Analytics and Dependency Agent as needed for VM Insights.
+    This script installs VM extensions for Log Analytics and the Dependency agent as needed for VM Insights.
 
 
 SYNTAX
@@ -393,7 +416,7 @@ SYNTAX
 
 
 DESCRIPTION
-    This script installs or re-configures following on VM's and VM Scale Sets:
+    This script installs or re-configures following on VMs and VM Scale Sets:
     - Log Analytics VM Extension configured to supplied Log Analytics Workspace
     - Dependency Agent VM Extension
 
@@ -403,7 +426,7 @@ DESCRIPTION
     - Specific VM/VM Scale Set
     - Compliance results of a policy for a VM or VM Extension
 
-    Script will show you list of VM's/VM Scale Sets that will apply to and let you confirm to continue.
+    Script will show you list of VMs/VM Scale Sets that will apply to and let you confirm to continue.
     Use -Approve switch to run without prompting, if all required parameters are provided.
 
     If the extensions are already installed will not install again.
@@ -421,16 +444,16 @@ PARAMETERS
 
     -SubscriptionId <String>
         SubscriptionId for the VMs/VM Scale Sets
-        If using PolicyAssignmentName parameter, subscription that VM's are in
+        If using PolicyAssignmentName parameter, subscription that VMs are in
 
     -ResourceGroup <String>
-        <Optional> Resource Group to which the VMs or VM Scale Sets belong to
+        <Optional> Resource Group to which the VMs or VM Scale Sets belong
 
     -Name <String>
         <Optional> To install to a single VM/VM Scale Set
 
     -PolicyAssignmentName <String>
-        <Optional> Take the input VM's to operate on as the Compliance results from this Assignment
+        <Optional> Take the input VMs to operate on as the Compliance results from this Assignment
         If specified will only take from this source.
 
     -ReInstall [<SwitchParameter>]
@@ -440,11 +463,11 @@ PARAMETERS
         <Optional> Set this flag to trigger update of VM instances in a scale set whose upgrade policy is set to Manual
 
     -Approve [<SwitchParameter>]
-        <Optional> Gives the approval for the installation to start with no confirmation prompt for the listed VM's/VM Scale Sets
+        <Optional> Gives the approval for the installation to start with no confirmation prompt for the listed VMs/VM Scale Sets
 
     -WorkspaceRegion <String>
         Region the Log Analytics Workspace is in
-        Suported values: "East US","eastus","Southeast Asia","southeastasia","West Central US","westcentralus","West Europe","westeurope"
+        Supported values: "East US","eastus","Southeast Asia","southeastasia","West Central US","westcentralus","West Europe","westeurope"
         For Health supported is: "East US","eastus","West Central US","westcentralus"
 
     -WhatIf [<SwitchParameter>]
@@ -464,19 +487,19 @@ PARAMETERS
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup>
 
-    Install for all VM's in a Resource Group in a subscription
+    Install for all VMs in a Resource Group in a subscription
 
     -------------------------- EXAMPLE 2 --------------------------
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -ResourceGroup <ResourceGroup> -ReInstall
 
-    Specify to ReInstall extensions even if already installed, for example to update to a different workspace
+    Specify to reinstall extensions even if already installed, for example to update to a different workspace
 
     -------------------------- EXAMPLE 3 --------------------------
     .\Install-VMInsights.ps1 -WorkspaceRegion eastus -WorkspaceId <WorkspaceId>-WorkspaceKey <WorkspaceKey> -SubscriptionId <SubscriptionId>
     -PolicyAssignmentName a4f79f8ce891455198c08736 -ReInstall
 
-    Specify to use a PolicyAssignmentName for source, and to ReInstall (move to a new workspace)
+    Specify to use a PolicyAssignmentName for source, and to reinstall (move to a new workspace)
 ```
 
 Následující příklad ukazuje pomocí příkazů Powershellu ve složce povolit monitorování Azure pro virtuální počítače a pochopení očekávaný výstup:
@@ -487,16 +510,16 @@ $WorkspaceKey = "<Key>"
 $SubscriptionId = "<GUID>"
 .\Install-VMInsights.ps1 -WorkspaceId $WorkspaceId -WorkspaceKey $WorkspaceKey -SubscriptionId $SubscriptionId -WorkspaceRegion eastus
 
-Getting list of VM's or VM ScaleSets matching criteria specified
+Getting list of VMs or VM ScaleSets matching criteria specified
 
-VM's or VM ScaleSets matching criteria:
+VMs or VM ScaleSets matching criteria:
 
 db-ws-1 VM running
 db-ws2012 VM running
 
-This operation will install the Log Analytics and Dependency Agent extensions on above 2 VM's or VM Scale Sets.
-VM's in a non-running state will be skipped.
-Extension will not be re-installed if already installed. Use -ReInstall if desired, for example to update workspace
+This operation will install the Log Analytics and Dependency agent extensions on above 2 VMs or VM Scale Sets.
+VMs in a non-running state will be skipped.
+Extension will not be reinstalled if already installed. Use -ReInstall if desired, for example to update workspace
 
 Confirm
 Continue?
@@ -528,41 +551,41 @@ Not running - start VM to configure: (0)
 Failed: (0)
 ```
 
-## <a name="enable-for-hybrid-environment"></a>Povolit pro hybridní prostředí
-Tato část vysvětluje, jak připojit virtuální počítače nebo fyzického počítače, které se hostované ve vašem datovém centru nebo jiné cloudové prostředí pro monitorování, tak monitorování Azure pro virtuální počítače.  
+## <a name="enable-for-a-hybrid-environment"></a>Povolit pro hybridní prostředí
+Tato část vysvětluje, jak nasadit virtuální počítače nebo fyzické počítače, které jsou hostované ve vašem datovém centru nebo jiných cloudových prostředích pro monitorování Azure Monitor pro virtuální počítače. 
 
-Azure Monitor pro virtuální počítače mapu závislostí agenta nepřenáší vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Mapy dat je vždy přenášených v rámci agenta Log Analytics ve službě Azure Monitor, buď přímo nebo prostřednictvím [bránu OMS](../../azure-monitor/platform/gateway.md) Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu.
+Azure Monitor pro agenta závislostí mapování virtuálních počítačů nebude přenášet vlastní data a nevyžaduje žádné změny brány firewall nebo porty. Mapy dat je vždy přenášených v rámci agenta Log Analytics ve službě Azure Monitor, buď přímo nebo prostřednictvím [bránu OMS](../../azure-monitor/platform/gateway.md) Pokud zásady zabezpečení IT neumožňují počítače v síti pro připojení k Internetu.
 
-Seznamte se s požadavky a metody nasazení pro [agenta Log Analytics Linux a Windows](../../azure-monitor/platform/log-analytics-agent.md).  
+Seznamte se s požadavky a metody nasazení pro [agenta Log Analytics Linux a Windows](../../log-analytics/log-analytics-agent-overview.md). 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Souhrnná kroky:
+Kroky jsou v souhrnu následující:
 
-1. Instalace agenta Log Analytics pro Windows nebo Linux
-2. Stáhněte a nainstalujte Azure Monitor pro agenta závislostí mapování virtuálních počítačů pro [Windows](https://aka.ms/dependencyagentwindows) nebo [Linux](https://aka.ms/dependencyagentlinux).
-3. Povolte shromažďování čítačů výkonu
-4. Připojení Azure Monitor pro virtuální počítače
+1. Instalace agenta Log Analytics pro Windows nebo Linux.
+1. Stáhněte a nainstalujte Azure Monitor pro virtuální počítače mapu závislostí agenta pro [Windows](https://aka.ms/dependencyagentwindows) nebo [Linux](https://aka.ms/dependencyagentlinux).
+1. Povolte shromažďování čítačů výkonu.
+1. Nasazení pro virtuální počítače Azure Monitor.
 
 ### <a name="install-the-dependency-agent-on-windows"></a>Instalace agenta závislostí na Windows 
-Agent závislostí můžete nainstalovat ručně počítačích s Windows spuštěním `InstallDependencyAgent-Windows.exe`. Pokud spustíte tento spustitelný soubor bez jakýchkoli možností, spustí Průvodce instalací, který může sledovat instalace interaktivně.  
+Můžete nainstalovat agenta závislostí ručně počítačích s Windows spuštěním `InstallDependencyAgent-Windows.exe`. Pokud spustíte tento spustitelný soubor bez jakýchkoli možností, spustí Průvodce instalací, zvoleném pro instalaci agenta interaktivně. 
 
 >[!NOTE]
->K instalaci a odinstalaci tohoto agenta se vyžadují oprávnění správce.
+>*Správce* instalace nebo odinstalace agenta jsou nutná oprávnění.
 
-Následující tabulka obsahuje konkrétní parametry nepodporuje instalační program pro agenta z příkazového řádku.  
+Následující tabulka obsahuje parametry, které podporují instalaci agenta z příkazového řádku. 
 
 | Parametr | Popis |
 |:--|:--|
 | /? | Vrátí seznam možností příkazového řádku. |
-| /S | Proveďte bezobslužnou instalaci bez zásahu uživatele. |
+| /S | Provádí tichou instalaci bez zásahu uživatele. |
 
-Například spusťte instalační program se `/?` parametr, typ `InstallDependencyAgent-Windows.exe /?`
+Například spusťte instalační program se `/?` parametr, typ **InstallDependencyAgent Windows.exe /?**.
 
-Soubory agenta závislostí Windows jsou nainstalované v `C:\Program Files\Microsoft Dependency Agent` ve výchozím nastavení.  Pokud se nepodaří spustit po dokončení instalace agenta závislostí, zkontrolujte protokoly podrobné informace o chybě. Adresář protokolu je `%Programfiles%\Microsoft Dependency Agent\logs`. 
+Soubory agenta závislostí Windows jsou nainstalované v *agenta závislostí C:\Program Files\Microsoft* ve výchozím nastavení. Pokud se nepodaří spustit po dokončení instalace agenta závislostí, zkontrolujte protokoly podrobné informace o chybě. Adresář protokolu je *%Programfiles%\Microsoft závislost Agent\logs*. 
 
 ### <a name="install-the-dependency-agent-on-linux"></a>Instalace agenta závislostí v Linuxu
-Agent závislostí je nainstalovaný na servery s Linuxem z `InstallDependencyAgent-Linux64.bin`, skript prostředí samorozbalovací binárním souborem. Soubor můžete spustit pomocí `sh` nebo přidejte oprávnění k souboru, samotné.
+Agent závislostí je nainstalovaný na servery s Linuxem z *InstallDependencyAgent Linux64.bin*, skript prostředí samorozbalovací binárním souborem. Soubor můžete spustit pomocí `sh` nebo přidejte oprávnění k souboru, samotné.
 
 >[!NOTE]
 > K instalaci nebo konfiguraci tohoto agenta se vyžaduje přístup uživatele root.
@@ -572,13 +595,13 @@ Agent závislostí je nainstalovaný na servery s Linuxem z `InstallDependencyAg
 |:--|:--|
 | – Nápověda | Získá seznam parametrů příkazového řádku. |
 | -s | Provede tichou instalaci bez zobrazení výzev uživateli. |
-| – Zkontrolujte | Zkontroluje oprávnění a operační systém bez instalace agenta. |
+| – Zkontrolujte | Kontrola oprávnění a operačního systému, ale nechcete nainstalovat agenta. |
 
-Například spusťte instalační program se `-help` parametr, typ `InstallDependencyAgent-Linux64.bin -help`.
+Například ke spuštění instalačního programu s `-help` parametr, typ **InstallDependencyAgent Linux64.bin – Nápověda**.
 
-Instalace agenta závislostí Linux jako uživatel root spuštěním následujícího příkazu `sh InstallDependencyAgent-Linux64.bin`
+Instalace agenta závislostí Linux jako uživatel root spuštěním následujícího příkazu `sh InstallDependencyAgent-Linux64.bin`.
     
-Pokud agenta závislostí nespustí, zkontrolujte protokoly podrobné informace o chybě. U agentů Linuxu adresáři protokolu není `/var/opt/microsoft/dependency-agent/log`.
+Pokud agenta závislostí nespustí, zkontrolujte protokoly podrobné informace o chybě. U agentů Linuxu adresáři protokolu není */var/opt/microsoft/dependency-agent/log*.
 
 Soubory pro agenta závislostí jsou umístěny v následujících adresářích:
 
@@ -591,12 +614,14 @@ Soubory pro agenta závislostí jsou umístěny v následujících adresářích
 | Binární soubory úložiště | /var/opt/microsoft/dependency-agent/storage |
 
 ### <a name="enable-performance-counters"></a>Povolit čítače výkonu
-Pokud již získat čítače výkonu požadováno řešením není nakonfigurovaný pracovní prostor Log Analytics odkazuje řešení, se musí být povolené. Můžete to provést ručně, jak je popsáno [tady](../../azure-monitor/platform/data-sources-performance-counters.md), nebo tak, že stažení a spuštění skriptu PowerShell, který je k dispozici z [Galerie prostředí Powershell Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
+Pokud pracovní prostor Log Analytics, který je odkazován řešení ještě nenakonfigurovala získat čítače výkonu, vyžadují řešení, musíte je povolit. Můžete tak učinit v některém ze dvou způsobů: 
+* Ručně, jak je popsáno v [Windows a Linuxem zdroje dat výkonu do Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
+* Stažením a instalací, který je k dispozici skript prostředí PowerShell [Galerie prostředí PowerShell pro Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
  
-### <a name="onboard-azure-monitor-for-vms"></a>Připojení Azure Monitor pro virtuální počítače
-Tato metoda zahrnuje šablony JSON, který určuje konfiguraci, aby zajistilo komponenty řešení do pracovního prostoru Log Analytics.  
+### <a name="deploy-azure-monitor-for-vms"></a>Nasazení pro virtuální počítače Azure Monitor
+Tato metoda zahrnuje šablony JSON, který určuje konfiguraci pro povolení součásti řešení ve vašem pracovním prostoru Log Analytics. 
 
-Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, naleznete v tématu:
+Pokud nejste obeznámeni s nasazováním prostředků pomocí šablony, naleznete v tématu:
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure PowerShellu](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Nasazení prostředků pomocí šablon Resource Manageru a Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) 
 
@@ -668,15 +693,15 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
     ]
     ```
 
-2. Uložte soubor jako **installsolutionsforvminsights.json** do místní složky.
-3. Upravte hodnoty **WorkspaceName**, **ResourceGroupName**, a **WorkspaceLocation**.  Hodnota pro **WorkspaceName** je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru a hodnotu **WorkspaceLocation** je pracovní prostor je definována v oblasti.
-4. Jste připraveni nasadit tuto šablonu pomocí následujícího příkazu Powershellu:
+1. Uložte soubor jako *installsolutionsforvminsights.json* do místní složky.
+1. Upravte hodnoty *WorkspaceName*, *ResourceGroupName*, a *WorkspaceLocation*. Hodnota pro *WorkspaceName* je úplné ID prostředku pracovního prostoru Log Analytics, která zahrnuje název pracovního prostoru. Hodnota pro *WorkspaceLocation* je pracovní prostor je definována v oblasti.
+1. Jste připraveni nasadit tuto šablonu pomocí následujícího příkazu Powershellu:
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
     ```
 
-    Změna konfigurace může trvat několik minut. Když se dokončí, zobrazí se zpráva, která je podobný následujícímu a zahrnuje výsledek:
+    Změna konfigurace může trvat několik minut. Po dokončení se zobrazí zpráva, která je podobný následujícímu a zahrnuje výsledek:
 
     ```powershell
     provisioningState       : Succeeded
@@ -684,7 +709,7 @@ Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte n
 Po povolení sledování, může trvat přibližně 10 minut, než můžete zobrazit stav a metriky pro počítač hybridní. 
 
 ## <a name="performance-counters-enabled"></a>Čítače výkonu povolena
-Azure Monitor pro virtuální počítače lze konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu, které jsou používané řešení.  V následující tabulce jsou uvedeny objekty a čítače nakonfigurované řešení, které byly shromážděny každých 60 sekund.
+Azure Monitor pro virtuální počítače lze konfigurovat pracovní prostor Log Analytics ke shromažďování čítačů výkonu, které jsou používány řešení. V následující tabulce jsou uvedeny objekty a čítače nakonfigurované řešení, které byly shromážděny každých 60 sekund.
 
 ### <a name="windows-performance-counters"></a>Čítače výkonu Windows
 
@@ -724,11 +749,11 @@ Azure Monitor pro virtuální počítače lze konfigurovat pracovní prostor Log
 |Procesor |% Času procesoru |  
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
-Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím používání služby Azure Monitor. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby. Poskytnout přesné a efektivní možnosti pro odstraňování potíží, data z mapování funkce obsahuje informace o konfiguraci vašeho softwaru, jako je operační systém a verze, IP adresu, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
+Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím používání služby Azure Monitor. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby. Poskytnout přesné a efektivní možnosti pro odstraňování potíží, data z mapování funkce obsahuje informace o konfiguraci vašeho softwaru, jako je operační systém a verze, IP adresu, název DNS a název pracovní stanice. Společnost Microsoft nebude shromažďovat jména, adresy ani jiné kontaktní údaje.
 
 Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 ## <a name="next-steps"></a>Další postup
 
-Pomocí monitorování povoleno pro váš virtuální počítač, tyto informace jsou dostupné pro analýzy a monitorování Azure pro virtuální počítače.  Zjistěte, jak použít funkci stavu, najdete v článku [zobrazení monitorování Azure pro virtuální počítače stavu](vminsights-health.md), nebo chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).  
+Teď, když pro váš virtuální počítač je zapnuté monitorování, tyto informace jsou dostupné pro analýzy a monitorování Azure pro virtuální počítače. Další informace o použití funkce stavu, najdete v článku [zobrazení monitorování Azure pro virtuální počítače stav](vminsights-health.md). Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md). 

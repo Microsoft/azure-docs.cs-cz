@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: e503a394eed7d5c4bdd4c93037dc86442097f72e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 057df4260da267254cb764e58fdac749bee3b842
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002175"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53106749"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Kurz: Vytvoření edge řešení strojového učení s využitím Azure a Azure Stack
 
@@ -357,7 +357,7 @@ Aplikace Azure Machine Learning Workbench je dostupná pro Windows nebo macOS. V
     | Název projektu | myIris | Zadejte jedinečný název, který identifikuje tento účet. Použít oddělení nebo projektu název, který experiment nejlépe identifikuje. Název musí mít délku od 2 do 32 znaků. Může obsahovat jenom alfanumerické znaky a znak spojovníku (-). |
     | Adresář projektu | c:\Temp\ | Zadejte adresář, ve kterém se projekt vytvoří. |
     | Popis projektu | Ponechte prázdné | Volitelné pole, které je užitečné pro popis projektů. |
-    | Adresa URL úložiště GIT Visualstudio.com | Ponechte prázdné | Volitelné pole. Projekt přidružte k úložišti Git ve Visual Studio Team Services pro správu zdrojového kódu a spolupráci. |
+    | Adresa URL úložiště GIT Visualstudio.com | Ponechte prázdné | Volitelné pole. Přidružte projekt úložiště Git na úložiště Azure pro správu zdrojového kódu a spolupráci. |
     | Vybraný pracovní prostor | IrisGarden (pokud existuje) | Vyberte pracovní prostor vytvořený pro účet experimentování na webu Azure Portal. <br>V rámci rychlého startu, je uvedena pracovního prostoru s názvem IrisGarden. V opačném případě pomocí pracovního prostoru s názvem účtu služby experimentování ve službě nebo názvem preferovaného účtu. |
     | Šablona projektu | Klasifikace Iris | Šablony obsahují skripty a data použitá k produkt zkoumat. Tato šablona obsahuje skripty a data potřebná pro tento rychlý start a další kurzy na tomto webu dokumentace. |
 
@@ -1420,7 +1420,7 @@ Kubectl get deployments
 
 Nasazení může nějakou dobu trvat.
 
-### <a name="configure-visual-studio-team-services-to-deploy-automatically"></a>Konfigurace Visual Studio Team Services a automatické nasazení
+### <a name="configure-azure-devops-to-deploy-automatically"></a>Konfigurace Azure DevOps pro automatické nasazení
 
 #### <a name="create-a-team-project"></a>Vytvoření týmového projektu
 
@@ -1760,7 +1760,7 @@ Teď, když se připojení naváže, bude ručně mapování vytvořený koncov�
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image110.png)
 
-1.  Název artefaktu **iris_deployment** a vyberte umístění pro publikování na **Visual Studio Team Services/TFS**.
+1.  Název artefaktu **iris_deployment** a vyberte umístění pro publikování na **kanály Azure**.
 
     ![Alternativní text](media/azure-stack-solution-machine-learning/image111.png)
 

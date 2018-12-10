@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: a273d0bd4d064cb1c6ac4d3951af8a493e303f51
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 0b3c4a4c21bc9b124a98b1f204f85e6e78ff233e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015887"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099558"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Úvod do služby Azure Data Lake Storage Gen2 ve verzi Preview
 
@@ -57,7 +57,7 @@ Kromě toho funkce, jako [hierarchického oboru názvů](data-lake-storage-names
 
 ### <a name="one-service-multiple-concepts"></a>Jedna služba více koncepty
 
-Data Lake Storage Gen2 je další schopností pro analýzy velkých objemů dat, postavené na Azure Blob Storage. I když existují mnoho výhod v existující komponenty platformy přes Bloby až po vytvoření a provoz datová jezera pro analýzy využití, vést k několika koncepty popisující stejné, sdílené kroky.
+Data Lake Storage Gen2 je další schopností pro analýzy velkých objemů dat, postavené na Azure Blob storage. I když existují mnoho výhod v existující komponenty platformy přes Bloby až po vytvoření a provoz datová jezera pro analýzy využití, vést k několika koncepty popisující stejné, sdílené kroky.
 
 Níže jsou ekvivalentní entity, jak je popsáno v různých koncepty. Pokud není určeno jinak, tyto entity jsou přímo shodné:
 
@@ -66,7 +66,7 @@ Níže jsou ekvivalentní entity, jak je popsáno v různých koncepty. Pokud ne
 | Objekty BLOB – storage pro obecné účely objektu | Kontejner              | Virtuální adresář (sada SDK pouze – neposkytuje atomic manipulaci s) | Objekt blob           |
 | ADLS Gen2 – analýzy úložiště          | systém souborů             | Adresář                                                           | File           |
 
-## <a name="open-source-platforms-that-work-with-data-lake-storage-gen2"></a>Open source platforem, které využívají službu Data Lake Storage Gen2
+## <a name="supported-open-source-platforms"></a>Podporované opensourcové platformy
 
 Několik opensourcové platformy podporují Data Lake Storage Gen2. V následující tabulce se zobrazí tyto platformy.
 
@@ -77,9 +77,9 @@ Několik opensourcové platformy podporují Data Lake Storage Gen2. V následuj�
 | --- | --- | --- |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 + | [Co je Apache Hadoop komponenty a verze, které jsou k dispozici s HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 | [Hadoop](https://hadoop.apache.org/) | 2.7+ | [Apache Hadoop verze archivu](https://hadoop.apache.org/release.html) |
-| [Cloudera](https://www.cloudera.com/) | 6.1 + | [Zpráva k vydání verze 6.x Claudera Enterprise](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
+| [Cloudera](https://www.cloudera.com/) | 6.1 + | [Zpráva k vydání verze 6.x Cloudera Enterprise](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
 | [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 4.2 + | [Modul Databricks Runtime verze](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
-|[HortenWorks](https://hortonworks.com/)| 2.6 + | [Dokumentace ke službě HortenWorks](https://docs.hortonworks.com/) |
+|[Hortonworks](https://hortonworks.com/)| 2.6 + | [Dokumentace ke službě Hortonworks](https://docs.hortonworks.com/) |
 
 ## <a name="next-steps"></a>Další postup
 
@@ -87,5 +87,5 @@ Následující články popisují některé hlavní koncepty nástroje Data Lake
 
 -   [Hierarchického oboru názvů](data-lake-storage-namespace.md)
 -   [Vytvoření účtu úložiště](data-lake-storage-quickstart-create-account.md)
--   [Vytvoření clusteru HDInsight s Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
--   [Použít účet Azure Data Lake Storage Gen2 v Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md)
+-   [Vytvoření clusteru HDInsight s Data Lake Storage Gen2](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
+-   [Použití účtu Data Lake Storage Gen2 v Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md)

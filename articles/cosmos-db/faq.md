@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: sngun
-ms.openlocfilehash: e4ed9ee34260dfffc0034fb7524a037e957fab3f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0b20db33f9eeac7c3ca6b2bccee2e796d717f88e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851175"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098782"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 
@@ -78,7 +78,7 @@ Můžete také použít [emulátor služby Azure Cosmos DB](local-emulator.md) v
 Položit technický dotaz, příspěvek na jednu z těchto dvou otázku a odpověď fóra:
 
 * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejvhodnější pro otázek týkajících se programování. Ujistěte se, že váš dotaz je [tematické](https://stackoverflow.com/help/on-topic) a [zadejte co nejvíce podrobností jako možné, že na otázku, zrušte zaškrtnutí a zodpovědět](https://stackoverflow.com/help/how-to-ask).
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejvhodnější pro otázek týkajících se programování. Ujistěte se, že váš dotaz je [tematické](https://stackoverflow.com/help/on-topic) a [zadejte co nejvíce podrobností jako možné, že na otázku, zrušte zaškrtnutí a zodpovědět](https://stackoverflow.com/help/how-to-ask).
 
 Požádat o nové funkce, vytvořte novou žádost o [User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
@@ -125,10 +125,6 @@ Když nastavíte oblast, mějte na paměti, že služby Azure Cosmos DB respektu
 ### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Je možné přejít z úrovně propustnosti kontejneru zřizování zřizování úrovně propustnosti databáze? Nebo naopak
 
 Kontejner a zřizování úrovně propustnosti databáze jsou samostatné nabídky a přepínání mezi některý z těchto vyžadují migraci dat ze zdroje do cíle. Což znamená, že budete muset vytvořit novou databázi nebo nové kolekce a potom migrovat data s využitím [hromadné prováděcí modul knihovny](bulk-executor-overview.md) nebo [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
-
-### <a name="how-do-i-create-fixed-collection-with-partition-key"></a>Jak vytvořit pevné kolekce s klíčem oddílu
-
-Nyní můžete vytvořit kolekce s propustností klíče oddílu pomocí [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metoda sady .net SDK nebo pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). Vytvoření pevné kolekce pomocí webu Azure portal se momentálně nepodporuje.
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Služby Azure cosmos DB podporuje řadu analýza?
 
@@ -304,7 +300,7 @@ Váš názor můžete sdílet v některém z následujících způsobů:
 
 * [Hlas uživatelů](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
-* [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejvhodnější pro otázek týkajících se programování. Ujistěte se, že váš dotaz je [tematické](https://stackoverflow.com/help/on-topic) a [zadejte co nejvíce podrobností jako možné, že na otázku, zrušte zaškrtnutí a zodpovědět](https://stackoverflow.com/help/how-to-ask).
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Přetečení zásobníku je nejvhodnější pro otázek týkajících se programování. Ujistěte se, že váš dotaz je [tematické](https://stackoverflow.com/help/on-topic) a [zadejte co nejvíce podrobností jako možné, že na otázku, zrušte zaškrtnutí a zodpovědět](https://stackoverflow.com/help/how-to-ask).
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Co je připojovací řetězec, který je potřeba použít pro připojení k rozhraní API tabulky?
 
@@ -525,7 +521,7 @@ Azure Cosmos DB je systém, který poskytuje latence, propustnosti, dostupnosti 
 
 ### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>Pro jazyk C# / .NET development použití Gremlin.NET i balíček Microsoft.Azure.Graphs?
 
-Gremlin API služby Azure Cosmos DB využívá open source ovladače jako hlavní konektory pro službu. Proto doporučujeme použít [ovladače, které jsou podporovány Apache Tinkerpop](http://tinkerpop.apache.org/).
+Gremlin API služby Azure Cosmos DB využívá open source ovladače jako hlavní konektory pro službu. Proto doporučujeme použít [ovladače, které jsou podporovány Apache Tinkerpop](https://tinkerpop.apache.org/).
 
 ### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Jak RU/s se účtují při spouštění dotazů v databázi grafu?
 
@@ -539,7 +535,7 @@ Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automati
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak můžete chránit před útoky prostřednictvím injektáže pomocí Gremlin ovladače?
 
-Nejvíce nativní ovladače Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Nejvíce nativní ovladače Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se zobrazuje "chybě kompilace dotazu Gremlin: nepovedlo se najít žádné metody" Chyba?
 

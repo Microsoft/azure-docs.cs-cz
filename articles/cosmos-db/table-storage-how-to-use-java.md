@@ -9,12 +9,12 @@ ms.devlang: Java
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: d7be0ed8d59063f75b3d4fadbf69237bdb2d0d13
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e6bae31f0e3558f274ee638c380e69c15b7c3889
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863682"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079309"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Javy
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -455,7 +455,7 @@ catch (Exception e)
 ```
 
 ## <a name="query-a-subset-of-entity-properties"></a>Dotaz na podmnožinu vlastností entity
-Dotaz na tabulku dokáže z entity načíst pouze několik vlastností. Tato technika, které se říká projekce, snižuje šířku pásma a může zlepšit výkon dotazů, zejména u velkých entit. Dotaz v následujícím kódu pomocí metody **select** vrátí pouze e-mailové adresy entit v tabulce. Výsledky se projektují do kolekce **String** pomocí dotazu **EntityResolver**, který provádí konverzi typů entit vrácených ze serveru. Další informace o projekcích najdete v tématu [Tabulky Azure: Představení funkcí Upsert a projekce dotazu][Azure Tables: Introducing Upsert and Query Projection]. Poznámka: Místní emulátor úložiště projekci nepodporuje, takže tento kód bude možné spustit pouze v případě, že používáte účet služby Table Storage.
+Dotaz na tabulku dokáže z entity načíst pouze několik vlastností. Tato technika, které se říká projekce, snižuje šířku pásma a může zlepšit výkon dotazů, zejména u velkých entit. Dotaz v následujícím kódu pomocí metody **select** vrátí pouze e-mailové adresy entit v tabulce. Výsledky se projektují do kolekce **String** pomocí dotazu **EntityResolver**, který provádí konverzi typů entit vrácených ze serveru. Další informace o projekcích najdete v [tabulek Azure: Představení funkcí Upsert a projekce dotazu] [Azure Tables: Představení funkcí Upsert a projekce dotazu]. Poznámka: Místní emulátor úložiště projekci nepodporuje, takže tento kód bude možné spustit pouze v případě, že používáte účet služby Table Storage.
 
 ```java
 try
@@ -497,7 +497,7 @@ catch (Exception e)
 ```
 
 ## <a name="insert-or-replace-an-entity"></a>Vložení nebo nahrazení entity
-Často chcete do tabulky přidat entitu, aniž byste věděli, jestli v ní již neexistuje. Operace vložení nebo nahrazení umožňuje provést jeden požadavek, který entitu vloží, pokud ještě neexistuje, nebo nahradí stávající entitu, pokud již existuje. Následující kód staví na předchozích příkladech a vloží nebo nahradí entitu Walter Harp. Po vytvoření nové entity tento kód zavolá metodu **TableOperation.insertOrReplace**. Tento kód pak zavolá metodu **execute** pro objekt **CloudTable** s tabulkou a operací vložení nebo nahrazení jako parametry. Pokud chcete aktualizovat pouze část entity, můžete místo toho použít metodu **TableOperation.insertOrMerge**. Poznámka: Místní emulátor úložiště operaci vložení nebo nahrazení nepodporuje, takže tento kód bude možné spustit pouze v případě, že používáte účet služby Table Storage. Další informace o operacích vložení nebo nahrazení a vložení nebo sloučení najdete v tomto tématu [Tabulky Azure: Představení funkcí Upsert a projekce dotazu][Azure Tables: Introducing Upsert and Query Projection].
+Často chcete do tabulky přidat entitu, aniž byste věděli, jestli v ní již neexistuje. Operace vložení nebo nahrazení umožňuje provést jeden požadavek, který entitu vloží, pokud ještě neexistuje, nebo nahradí stávající entitu, pokud již existuje. Následující kód staví na předchozích příkladech a vloží nebo nahradí entitu Walter Harp. Po vytvoření nové entity tento kód zavolá metodu **TableOperation.insertOrReplace**. Tento kód pak zavolá metodu **execute** pro objekt **CloudTable** s tabulkou a operací vložení nebo nahrazení jako parametry. Pokud chcete aktualizovat pouze část entity, můžete místo toho použít metodu **TableOperation.insertOrMerge**. Poznámka: Místní emulátor úložiště operaci vložení nebo nahrazení nepodporuje, takže tento kód bude možné spustit pouze v případě, že používáte účet služby Table Storage. Další informace o vložení nebo nahrazení a vložit nebo merge v tomto [tabulek Azure: Představení funkcí Upsert a projekce dotazu] [Azure Tables: Představení funkcí Upsert a projekce dotazu].
 
 ```java
 try
@@ -598,14 +598,12 @@ catch (Exception e)
 * [Sada SDK služby Azure Storage pro Javu][Azure Storage SDK for Java]
 * [Referenční informace ke klientské sadě SDK služby Azure Storage][Referenční informace ke klientské sadě SDK služby Azure Storage]
 * [Rozhraní REST API pro službu Azure Storage][Azure Storage REST API]
-* [Blog týmu Azure Storage][Azure Storage Team Blog]
+* [Blog týmu azure Storage] [Blog týmu azure Storage]
 
 Další informace najdete na webu [Azure pro vývojáře v Javě](/java/azure).
 
-[Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
+[Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-[Referenční informace ke klientské sadě SDK služby Azure Storage]: http://azure.github.io/azure-storage-java/
+[Referenční informace ke klientské sadě SDK služby Azure Storage]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
-[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
-[Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx
