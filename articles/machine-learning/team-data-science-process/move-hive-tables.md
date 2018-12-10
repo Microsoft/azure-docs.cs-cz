@@ -1,6 +1,6 @@
 ---
-title: Vytváření tabulek Hive a načtení dat z úložiště objektů Blob v Azure | Dokumentace Microsoftu
-description: Vytváření tabulek Hive a načtení dat do objektu blob do tabulky hive
+title: Vytváření tabulek Hive a načtení dat z úložiště objektů Blob – vědecké zpracování týmových dat
+description: Použití dotazů Hive k vytváření tabulek Hive a načtení dat z Azure blob storage. Rozdělení tabulek Hive a používat optimalizované řádek úložiště se sloupcovou strukturou (ORC) formátování pro zlepšení výkonu dotazů.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 42911c347cd055f37f7fe8f31b6d22cc18a78662
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5d88974fd1fb3d8784416ad3895fe139a3275e01
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442876"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134943"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Vytváření tabulek Hive a načtení dat z úložiště objektů Blob v Azure
 
@@ -65,14 +65,14 @@ Budete mít tři způsoby, jak odesílání dotazů Hive v příkazovém řádku
 #### <a name="submit-hive-queries-directly-in-hadoop-command-line"></a>Odesílání dotazů Hive přímo v systému Hadoop příkazového řádku.
 Můžete spustit příkaz jako `hive -e "<your hive query>;` odeslat jednoduchých dotazů Hive přímo v systému Hadoop příkazového řádku. Tady je příklad, ve kterém červeným rámečkem popisuje příkaz, který odešle dotaz Hive a zeleného pole obsahuje výstup dotazu Hive.
 
-![Vytvoření pracovního prostoru](./media/move-hive-tables/run-hive-queries-1.png)
+![Příkaz Odeslat dotaz Hive s výstupem z dotazu Hive](./media/move-hive-tables/run-hive-queries-1.png)
 
 #### <a name="submit-hive-queries-in-hql-files"></a>Odesílání dotazů Hive v souborech .hql
 Pokud dotaz Hive je složitější a obsahuje více řádků, není praktické úpravy dotazů v příkazovém řádku nebo Hive příkazové konzole. Alternativou je uložit do souboru .hql do místního adresáře hlavního uzlu dotazů Hive pomocí textového editoru v k hlavnímu uzlu clusteru Hadoop. Pak můžete odeslat dotaz Hive v souboru .hql pomocí `-f` argument následujícím způsobem:
 
     hive -f "<path to the .hql file>"
 
-![Vytvoření pracovního prostoru](./media/move-hive-tables/run-hive-queries-3.png)
+![Dotaz Hive v souboru .hql](./media/move-hive-tables/run-hive-queries-3.png)
 
 **Potlačit obrazovka průběhu stavové dotazů Hive**
 
@@ -84,7 +84,7 @@ Ve výchozím nastavení Jakmile dotaz Hive se odešle do příkazového řádku
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Odesílání dotazů Hive v příkazové konzole Hive.
 Příkaz konzolu Hive můžete zadat také nejprve spuštěním příkazu `hive` v systému Hadoop příkazového řádku a potom odesílání dotazů Hive v příkazové konzole Hive. Tady je příklad. V tomto příkladu zvýrazněte dva červená pole použité ke vstupu Hive příkazové konzole příkazy a dotaz Hive v příkazové konzole Hive, respektive odeslán. Zeleného pole zvýrazní výstup dotazu Hive.
 
-![Vytvoření pracovního prostoru](./media/move-hive-tables/run-hive-queries-2.png)
+![Otevřete konzolu Hive příkaz a zadejte příkaz, zobrazit výstup dotazu Hive](./media/move-hive-tables/run-hive-queries-2.png)
 
 V předchozích příkladech přímo výstup výsledků dotazu Hive na obrazovce. Můžete také napsat výstup do místního souboru hlavního uzlu, nebo do objektu blob Azure. Potom můžete použít jiné nástroje Pokud chcete hlouběji analyzovat výstup dotazů Hive.
 
@@ -95,7 +95,7 @@ K vypsání výsledků dotazu Hive do místního adresáře hlavního uzlu, bude
 
 V následujícím příkladu je výstup dotazu Hive zapsán do souboru `hivequeryoutput.txt` v adresáři `C:\apps\temp`.
 
-![Vytvoření pracovního prostoru](./media/move-hive-tables/output-hive-results-1.png)
+![Výstup dotazu Hive](./media/move-hive-tables/output-hive-results-1.png)
 
 **Výstup výsledků dotazu Hive do objektu blob Azure**
 
@@ -105,11 +105,11 @@ Můžete také výstup výsledků dotazu Hive do objektu blob Azure, v rámci v�
 
 V následujícím příkladu je výstup dotazu Hive zapsán do adresáře objektů blob `queryoutputdir` v rámci výchozího kontejneru Hadoop cluster. Tady stačí zadat název adresáře, bez názvu objektu blob. Pokud zadáte názvy adresáře a objektů blob, jako například, je vržena chyba `wasb:///queryoutputdir/queryoutput.txt`.
 
-![Vytvoření pracovního prostoru](./media/move-hive-tables/output-hive-results-2.png)
+![Výstup dotazu Hive](./media/move-hive-tables/output-hive-results-2.png)
 
 Pokud otevřete výchozí kontejner clusteru Hadoop pomocí Průzkumníka služby Azure Storage, zobrazí se výstup dotazu Hive, jak je znázorněno na následujícím obrázku. Filter (zvýrazněná červeným rámečkem) můžete použít k načtení pouze objekt blob se zadaným písmena v názvech.
 
-![Vytvoření pracovního prostoru](./media/move-hive-tables/output-hive-results-3.png)
+![Průzkumník služby Azure Storage výstup dotazu Hive](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2. Odesílání dotazů Hive pomocí editoru Hive
 Můžete také použít konzolu dotazu (Hive Editor) tak, že zadáte adresu URL ve formátu *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* do webového prohlížeče. Musíte být přihlášeni se tato konzola, takže je nutné pověření clusteru Hadoop tady.

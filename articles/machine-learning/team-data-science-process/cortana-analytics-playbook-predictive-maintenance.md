@@ -1,5 +1,5 @@
 ---
-title: Průvodce Azure AI pro řešení prediktivní údržby | Dokumentace Microsoftu
+title: Průvodce Azure AI pro řešení prediktivní údržby – vědecké zpracování týmových dat
 description: Úplný popis pro datové vědy, která je základem řešení prediktivní údržby v několika vertikální obory.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
-ms.custom: (previous author=fboylu, ms.author=fboylu)
-ms.openlocfilehash: 1538357a744e4a2c885b6552ca94efc6642d2880
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
+ms.openlocfilehash: 8d2a16047a741daf484d6ccdc48453d49355d443
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444915"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135677"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro řešení prediktivní údržby
 
@@ -289,11 +289,11 @@ Roc klasifikačních technik lze použít v řešeních PdM pro dva scénáře:
 #### <a name="label-construction-for-multi-class-classification"></a>Konstrukce popisek klasifikace víc tříd
 Je tady na otázku: "co je pravděpodobnost, že prostředek se nezdaří v dalším _nZ_ časových jednotkách kde _n_ je počet období?" Na tuto otázku odpovědět, popisek nZ záznamů před selháním prostředku pomocí intervalů doby (3Z 2Z Z). Popisek všechny ostatní zaznamenává "normální" (label = 0). V této metodě Cílová proměnná drží _zařazené do kategorií_ hodnoty. (Viz obrázek 5).
 
-![Obrázek 5. Vytváření popisků pro klasifikace víc tříd pro předpověď časové selhání](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) obr. 5. Popisky pro klasifikaci roc pro předpověď časové selhání
+![Obrázek 5. Chyba času predikcí popisky klasifikace víc tříd](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) obr. 5. Popisky pro klasifikaci roc pro předpověď časové selhání
 
 Otázky zde: "co je pravděpodobnost, že prostředek se nezdaří v příštích X jednotkami času z důvodu hlavní příčinu/problém _P<sub>můžu</sub>_?" kde _můžu_ je počet možné hlavní příčiny. Na tuto otázku, popisek X záznamů před selháním prostředek jako "o selhat z důvodu hlavní příčinu _P<sub>můžu</sub>_" (popisek = _P<sub>můžu</sub>_). Označte všechny záznamy, jako je "normální" (label = 0). V této metodě také popisky jsou zařazené do kategorií (viz obrázek 6).
 
-![Obrázek 6. Vytváření popisků pro klasifikace víc tříd pro kořenové příčiny předpovědi](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) obrázek 6. Popisky pro klasifikaci roc pro kořenové příčiny predikcí
+![Obrázek 6. Hlavní příčina predikcí popisky klasifikace víc tříd](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) obrázek 6. Popisky pro klasifikaci roc pro kořenové příčiny predikcí
 
 Model přiřadí pravděpodobnost selhání kvůli každý _P<sub>můžu</sub>_  a také pravděpodobnost bez chyby. Tyto pravděpodobnosti lze provést řazení podle velikosti umožňuje předpovědi problémy, které bývají nejčastějším dojít v budoucnosti.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: ad659cfcf1bfdad440968da5568b993724a5f351
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: cd45220326221490b461c5706620df2aab55a5d6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319544"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137833"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Brána firewall operačního systému hosta virtuálního počítače Azure je špatně nakonfigurovaný.
 
@@ -33,7 +33,7 @@ V tomto článku představují k vyřešení nesprávně nakonfigurované hostov
 
 ## <a name="cause"></a>Příčina
 
-Chybná konfigurace brány firewall systému hosta můžete blokovat některé nebo všechny druhy síťový provoz do virtuálního počítače. 
+Chybná konfigurace brány firewall systému hosta můžete blokovat některé nebo všechny druhy síťový provoz do virtuálního počítače.
 
 ## <a name="solution"></a>Řešení
 
@@ -43,11 +43,11 @@ Chcete-li tento problém vyřešit, použijte konzole sériového portu nebo [op
 
 ## <a name="online-mitigations"></a>Online migrace
 
-Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](serial-console-windows.md#open-cmd-or-powershell-in-serial-console). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte do části "Opravy virtuální počítač do režimu Offline" v následujícím článku na Azure:
+Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte do části "Opravy virtuální počítač do režimu Offline" v následujícím článku na Azure:
 
  [Dojde k interní chybě při pokusu o připojení k virtuálnímu počítači Azure přes vzdálenou plochu](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
 
-Následující pravidla lze upravovat, buď umožňuje přístup k virtuálnímu počítači (prostřednictvím protokolu RDP) nebo poskytnout prostředí pro snazší řešení problémů: 
+Následující pravidla lze upravovat, buď umožňuje přístup k virtuálnímu počítači (prostřednictvím protokolu RDP) nebo poskytnout prostředí pro snazší řešení problémů:
 
 *   Vzdálená plocha (TCP-In): Toto je standardní pravidlo, které poskytuje primární přístup do virtuálního počítače tím, že protokol RDP v Azure.
 
@@ -55,7 +55,7 @@ Následující pravidla lze upravovat, buď umožňuje přístup k virtuálnímu
 
 *   Sdílení souborů a tiskáren (SMB-In): Toto pravidlo umožňuje přístup ke sdílené složce sítě jako možnost řešení potíží.
 
-*   Sdílení souborů a tiskáren (žádost o odezvu – ICMPv4-In): Toto pravidlo umožňuje příkaz ping virtuálnímu počítači. 
+*   Sdílení souborů a tiskáren (žádost o odezvu – ICMPv4-In): Toto pravidlo umožňuje příkaz ping virtuálnímu počítači.
 
 V případě sériový přístup ke konzole může dotazovat aktuální stav pravidla brány firewall.
 
@@ -83,7 +83,7 @@ V případě sériový přístup ke konzole může dotazovat aktuální stav pra
     netsh advfirewall firewall set rule name="<RULE NAME>" new enable=yes
     ```
 
-*   S řešením problémů, můžete vypnout profilů brány firewall: 
+*   S řešením problémů, můžete vypnout profilů brány firewall:
 
     ```cmd
     netsh advfirewall set allprofiles state off

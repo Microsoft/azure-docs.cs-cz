@@ -5,33 +5,33 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 201f6f463736674cee3f94cc0d0177a8ddb181a1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6238d3d7a64816df01be69458d784114368d9e17
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109725"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141335"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Osvědčené postupy pro zabezpečení a Správa úloh migrovat do Azure
 
-Jako je plánování a návrh pro migraci, kromě přemýšlení o migraci, musíte naplánovat pro váš model zabezpečení a správy v Azure po migraci. Tento článek popisuje plánování a osvědčené postupy pro zabezpečení vašeho nasazení Azure po migraci a pro probíhající úlohy, aby vaše nasazení, které běží na libovolné úrovni optimální. 
+Jako je plánování a návrh pro migraci, kromě přemýšlení o migraci, je potřeba zvážit zabezpečení a správu modelu ve službě Azure po migraci. Tento článek popisuje plánování a osvědčené postupy pro zabezpečení vašeho nasazení Azure po migraci a pro probíhající úlohy, aby vaše nasazení, spuštění na optimální úrovni. 
 
 > [!IMPORTANT]
 > Osvědčené postupy a názory, které jsou popsané v tomto článku jsou založené na platformě Azure a služby funkce dostupné v době zápisu. Funkce a možnosti v průběhu času měnit.
 
 ## <a name="secure-migrated-workloads"></a>Zabezpečit přenášená zatížení
 
-Po dokončení migrace nejdůležitějších úloh je zabezpečit přenášená zatížení z interních a externích hrozeb. Osvědčené postupy patří:
+Po dokončení migrace nejdůležitějších úloh je zabezpečit přenášená zatížení z interních a externích hrozeb. Tyto osvědčené postupy dozvíte, jak to udělat:
 
-- Práce s Azure Security Center: Zjistěte, jak pracovat s nemonitoruje, neposuzuje a doporučení poskytovaných službou Azure Security Center
-- **Šifrování dat**: získání osvědčené postupy pro šifrování dat v Azure.
-- **Nastavení antimalwaru**: ochrana virtuálních počítačů před malwarem a útoky se zlými úmysly.
-- **Zabezpečení webové aplikace**: Keep citlivých informací v zabezpečené migrovat webové aplikace.
-- **Zkontrolujte předplatná**: ověření, kdo má přístup k prostředkům a předplatná Azure po migraci.
-- **Práce s protokoly**: Zkontrolujte Azure auditování a zabezpečení protokoly v pravidelných intervalech.
-- **Rozšířené funkce zabezpečení**: pochopit a vyhodnotit jiných funkcích zabezpečení, které Azure nabízí.
+- [Práce s Azure Security Center](#best-practice-follow-azure-security-center-recommendations): Zjistěte, jak pracovat s nemonitoruje, neposuzuje a doporučení poskytovaných službou Azure Security Center
+- [Šifrování dat](#best-practice-encrypt-data): získání osvědčené postupy pro šifrování dat v Azure.
+- [Nastavení antimalwaru](#best-practice-protect-vms-with-antimalware): ochrana virtuálních počítačů před malwarem a útoky se zlými úmysly.
+- [Zabezpečení webové aplikace](#best-practice-secure-web-apps): Keep citlivých informací v zabezpečené migrovat webové aplikace.
+- [Zkontrolujte předplatná](#best-practice-review-subscriptions-and-resource-permissions): ověření, kdo má přístup k prostředkům a předplatná Azure po migraci.
+- [Práce s protokoly](#best-practice-review-audit-and-security-logs): Zkontrolujte Azure auditování a zabezpečení protokoly v pravidelných intervalech.
+- [Přečtěte si další funkce zabezpečení](#best-practice-evaluate-other-security-features): pochopit a vyhodnotit rozšířené funkce zabezpečení, které Azure nabízí.
 
 ## <a name="best-practice-follow-azure-security-center-recommendations"></a>Osvědčený postup: doporučení služby Security Center postupujte podle Azure
 
@@ -47,15 +47,14 @@ Kromě posouzení a doporučení Security Center poskytuje řadu jiných funkcí
 - **Přístup právě In Time (JIT)**: snížit vaše plochu vystavenou síťovým útokům s pouze v době řízený přístup k portům pro správu na virtuálních počítačích Azure.
     - S RDP k virtuálnímu počítači otevřený port 3389 na Internetu zpřístupňuje virtuálních počítačů pro kontinuální objektu actor chybný aktivity. Azure IP adresy jsou dobře známé a hackerům průběžně sběru dat je pro útoky na otevřené porty 3389. 
     - Pouze v zabezpečení sítě používá čas skupiny (Nsg) a příchozí pravidla tohoto limitu množství času, které konkrétní port je otevřený.
-    - S právě včas povolena. Security Center kontroluje, zda uživatel má přístup na základě role (RBAC) zápisu oprávnění k přístupu pro virtuální počítač. Kromě toho určete pravidla, jak můžou uživatelé připojit k virtuálním počítačům. Pokud jsou oprávnění OK, žádosti o přístup se schválí a Security Center je nakonfiguruje skupiny Nsg umožňuje příchozí provoz do vybrané porty množství času, který je zadat. Skupiny Nsg se vraťte se do jejich předchozího stavu, při vypršení časového limitu.
-- **Adaptivní řízení aplikací**: kvůli aktualizaci verzí softwaru a malware vypnout virtuální počítače řídit, které aplikace spouštět na nich.
-    - pomocí dynamických aplikací na seznam povolených.
+    - S za běhu povoleno, Security Center kontroluje, zda uživatel má přístup na základě role (RBAC) zápisu oprávnění k přístupu pro virtuální počítač. Kromě toho určete pravidla, jak můžou uživatelé připojit k virtuálním počítačům. Pokud jsou oprávnění OK, žádosti o přístup se schválí a Security Center je nakonfiguruje skupiny Nsg umožňuje příchozí provoz do vybrané porty množství času, který je zadat. Skupiny Nsg se vraťte se do jejich předchozího stavu, při vypršení časového limitu.
+- **Adaptivní řízení aplikací**: software a malware vypnutí virtuálních počítačů pomocí řízení aplikace, které běží na těchto používat dynamické aplikací na seznam povolených.
     - Adaptivní řízení aplikací vám umožní do seznamu povolených aplikací a zabránit instalaci softwaru neschválené nebo prověřování aplikací na virtuálních počítačích podvodný uživatelé nebo správci.
     - Můžete blokovat nebo oznámení pokusí o spuštění škodlivých aplikací, vyhněte se nechtěné nebo škodlivé aplikace a zajištění dodržování předpisů se zásadami zabezpečení vaší organizace aplikace.
 - **Monitorování Integrity souborů**: zajištění integrity souborů běžící na virtuálních počítačích.
     - Nemusíte instalovat software způsobuje problémy virtuálního počítače.  Změna souboru systému může také způsobit snížení selhání nebo výkonu virtuálních počítačů.  Soubor integrity monitorování zkontroluje systémové soubory a nastavení registru pro změny a upozorní, pokud něco se aktualizuje.
     - Security Center doporučuje, které soubory, které jste měli byste sledovat.
-Další informace o osvědčený postup: • spravovat virtuální počítač přístup pomocí metody just-in čas • adaptivního řízení aplikací ovládací prvky v Azure Security Center • monitorování Integrity souborů ve službě Azure Security Center
+
 
 **Víc se uč:**
 
@@ -173,7 +172,7 @@ Migrujte své úlohy a běží v Azure, pracovníci s přístupem k úloze pohyb
 
 Azure Active Directory (AD) poskytuje protokoly aktivit, které se zobrazí ve službě Azure Monitor. Protokoly zachycení operací provedených v Azure tenantů, když k nim došlo a který je provedl. 
 
-- Protokoly auditu zobrazit historii úloh v tenantovi. Protokoly aktivit přihlášení zobrazit, který provedl úlohy. 
+- Protokoly auditu zobrazit historii úloh v tenantovi. Zobrazit, který provedl úlohy protokoly aktivit přihlašování. 
 - Přístup k sestavám zabezpečení závisí na vaší licenci Azure AD. V Free a Basic získáte seznam rizikových uživatelů a přihlášení. V edicích Premium 1 a Premium 2 získáte základní informace o události.
 - Počet koncových bodů pro dlouhodobé uchovávání dat a přehledy dat můžete směrovat protokoly aktivit.
 - Nastavte ji běžnou praxí prohlížet protokoly nebo integrovat svoje zabezpečení informací a událostí (SIEM) nástroje pro správu automaticky zkontrolovat anomálie.  Pokud nepoužíváte Premium 1 nebo 2, musíte udělat spoustu sami, nebo pomocí vašeho systému SIEM.  Analýza zahrnuje hledá rizikových přihlášení a události a vzory útoků jiné uživatele.
@@ -202,15 +201,15 @@ Azure nabízí celou řadu jiných funkcích zabezpečení, které zajišťují 
 
 V této části vám doporučujeme některé osvědčené postupy pro správu Azure, včetně:
 
-- **Správa prostředků**: osvědčené postupy pro skupiny prostředků Azure a prostředky, včetně inteligentní pojmenování, zabraňuje nechtěnému odstranění, Správa oprávnění k prostředkům a označování efektivní prostředků.
-- **Použití podrobné plány**: Získejte rychlý přehled o používání plány pro vytváření a správu prostředí nasazení.
-- **Kontrola architektury**: revize ukázkové architektury Azure k poslechněte si, jak sestavit vaše nasazení po migraci.
-- **Nastavení skupin pro správu**: Pokud máte více předplatných, můžete shromáždit do skupin pro správu a použít nastavení zásad správného řízení do těchto skupin.
-- **Nastavení zásad přístupu**: použití zásad dodržování předpisů vašich prostředků Azure.
-- **Implementovat strategii BCDR**: dohromady kontinuity podnikových procesů a po havárii (BCDR) strategii zotavení aby byla data v bezpečí, vaše prostředí, které jsou odolné a prostředky a spuštění když dojde k výpadku.
-- **Správa virtuálních počítačů**: seskupení virtuálních počítačů do skupiny dostupnosti pro odolnost a vysoká dostupnost. Použití spravovaných disků pro snadnou správu diskem a úložištěm virtuálních počítačů.
-- **Monitorovat využití prostředků**: povolení protokolování diagnostiky pro prostředky Azure, vytvářet výstrahy a playbooky proaktivní při řešení potíží a použít řídicí panel Azure jednotný přehled o stavu nasazení a stav.
-- **Správa podporu a aktualizace**: pochopení vašeho plánu podpory Azure a jak ho implementovat, získat osvědčené postupy pro udržování aktuálnosti virtuální počítače a vložení procesy pro správu změn.
+- [Správa prostředků](#best-practice-name-resource-groups): osvědčené postupy pro skupiny prostředků Azure a prostředky, včetně inteligentní pojmenování, zabraňuje nechtěnému odstranění, Správa oprávnění k prostředkům a označování efektivní prostředků.
+- [Použití podrobné plány](#best-practice-implement-blueprints): Získejte rychlý přehled o používání plány pro vytváření a správu prostředí nasazení.
+- [Kontrola architektury](#best-practice-review-azure-reference-architectures): revize ukázkové architektury Azure k poslechněte si, jak sestavit vaše nasazení po migraci.
+- [Nastavení skupin pro správu](#best-practice-manage-resources-with-management-groups): Pokud máte více předplatných, můžete shromáždit do skupin pro správu a použít nastavení zásad správného řízení do těchto skupin.
+- [Nastavení zásad přístupu](#best-practice-deploy-azure-policy): použití zásad dodržování předpisů vašich prostředků Azure.
+- [Implementovat strategii BCDR](#best-practice-implement-a-bcdr-strategy): dohromady kontinuity podnikových procesů a po havárii (BCDR) strategii zotavení aby byla data v bezpečí, vaše prostředí, které jsou odolné a prostředky a spuštění když dojde k výpadku.
+- [Správa virtuálních počítačů](#best-practice-use-managed-disks-and-availability-sets): seskupení virtuálních počítačů do skupiny dostupnosti pro odolnost a vysoká dostupnost. Použití spravovaných disků pro snadnou správu diskem a úložištěm virtuálních počítačů.
+- [Monitorovat využití prostředků](#best-practice-monitor-resource-usage-and-performance): povolení protokolování diagnostiky pro prostředky Azure, vytvářet výstrahy a playbooky proaktivní při řešení potíží a použít řídicí panel Azure jednotný přehled o stavu nasazení a stav.
+- [Správa podporu a aktualizace](#best-practice-manage-updates): pochopení vašeho plánu podpory Azure a jak ho implementovat, získat osvědčené postupy pro udržování aktuálnosti virtuální počítače a vložení procesy pro správu změn.
 
 
 ## <a name="best-practice-name-resource-groups"></a>Osvědčený postup: název skupiny prostředků
@@ -225,7 +224,7 @@ Zajištění, že vaší skupiny prostředků tohoto Správci mají smysluplné 
 
 **Víc se uč:**
 
-[Další informace o](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) zásady vytváření názvů
+- [Další informace o](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) zásady vytváření názvů
 
 ## <a name="best-practice-implement-delete-locks-for-resource-groups"></a>Osvědčený postup: implementace odstranit zámky pro skupiny prostředků
 
@@ -283,16 +282,16 @@ Stejně jako podrobný plán umožňuje technikům a architektům náčrt parame
 - [Čtení](https://docs.microsoft.com/azure/governance/blueprints/overview) o podrobné plány.
 - [Kontrola](https://azure.microsoft.com/blog/customizing-azure-blueprints-to-accelerate-ai-in-healthcare/) podrobného plánu příklad použitý ke zrychlení AI ve zdravotnictví.
 
-## <a name="best-practice---review-azure-reference-architectures"></a>Osvědčeným postupem – referenční architektury Azure revize
+## <a name="best-practice-review-azure-reference-architectures"></a>Osvědčený postup: revize referenční architektury Azure
 
 Vytváření zabezpečené, škálovatelné a spravovatelné úloh v Azure může být složitý.  Průběžné změny může být obtížné udržovat tempo s různými funkcemi pro optimální prostředí. S odkazem na Učte se od může být užitečné při navrhování a migraci vašich úloh.  Azure a Azure partneři vytvořili několik ukázkové referenční architektury pro různé typy prostředí. Tyto ukázky jsou navržené tak poskytovat návrhy, které mohou být zdrojem cenných a sestavení. 
 
 Referenční architektury jsou uspořádané podle scénáře. Obsahují doporučujeme postupy a Rady, správy, dostupnost, škálovatelnost a zabezpečení.
-
+Azure App Service Environment poskytuje plně izolované a vyhrazené prostředí, ve kterém se spustí služby App Service, aplikace, včetně Windows a Linuxové webové aplikace, kontejnery Docker, mobilní aplikace a funkce. App Service přidá výkon Azure pro vaši aplikaci, se zabezpečení, Vyrovnávání zatížení, automatické škálování a automatizovanou správu. Můžete taky využít výhod její možnosti DevOps, jako jsou průběžné nasazování z Githubu, Správa balíčků, přípravná prostředí, vlastní domény a certifikáty SSL a Azure DevOps. App Service je užitečné pro aplikace, které potřebují izolace a bezpečný přístup k síti a ty, které používají vysoké množství paměti a dalších prostředků, které je potřeba škálovat.
 **Víc se uč:**
 
-[Další informace o](https://docs.microsoft.com/azure/architecture/reference-architectures/) referenční architektury Azure.
-[Kontrola](https://docs.microsoft.com/azure/architecture/example-scenario/) Azure ukázkové scénáře.
+- [Další informace o](https://docs.microsoft.com/azure/architecture/reference-architectures/) referenční architektury Azure.
+- [Kontrola](https://docs.microsoft.com/azure/architecture/example-scenario/) Azure ukázkové scénáře.
 
 ## <a name="best-practice-manage-resources-with-management-groups"></a>Osvědčený postup: Správa prostředků pomocí skupin pro správu
 
@@ -332,62 +331,50 @@ Azure Policy je služba v Azure, která slouží k vytváření, přiřazování
 
 ## <a name="best-practice-implement-a-bcdr-strategy"></a>Osvědčený postup: implementovat strategii BCDR
 
-Plánování pro provozní kontinuitu a zotavení po havárii (BCDR), je důležité cvičení, která se musí dokončit během plánování migrace do Azure. V právní podmínky vaše smlouva obsahuje klauzuli zásahem vyšší moci, která excuse povinnosti větší platnost, jako je například hurikány nebo zemětřesení. Ale máte také povinnosti kolem možnosti k zajištění, že služby budou dál spouštět a obnovení v případě potřeby po strike po havárii. Možnost k tomu může vylepšit nebo zničit vaše společnost budoucnost.
+Plánování pro provozní kontinuitu a zotavení po havárii (BCDR), je důležité cvičení, která by se měla dokončit během plánování migrace do Azure. V právní podmínky vaše smlouva obsahuje klauzuli zásahem vyšší moci, která excuse povinnosti větší platnost, jako je například hurikány nebo zemětřesení. Ale máte také povinnosti kolem možnosti k zajištění, že služby budou dál spouštět a obnovení v případě potřeby po strike po havárii. Možnost k tomu může vylepšit nebo zničit vaše společnost budoucnost.
 
+Veřejně musíte zvážit strategii BCDR:
+- **Zálohování dat**: jak zabezpečit dat tak, že pokud dojde k výpadku ji můžete obnovit snadno.
+- **Zotavení po havárii**: jak k udržování propojení vašich aplikací, odolnost a dostupnost, pokud dojde k výpadku. 
 
-Platforma Azure poskytuje celou řadu funkcí odolnosti:
+### <a name="azure-resiliency-features"></a>Funkce odolnosti Azure
+Platforma Azure poskytuje celou řadu funkcí odolnost proti chybám.
 
 - **Párování oblastí**: páry oblastí poskytuje místní ochranu v rámci mezí rezidence dat Azure. Azure zajišťuje fyzickou izolaci mezi párování oblastí, upřednostňuje obnovení jedné oblasti v páru v případě rozsáhlého výpadku, nasadí aktualizace systému samostatně v jednotlivých oblastech a umožňuje funkce, jako je geograficky redundantní úložiště Azure k replikaci mezi páry oblastí.
 - **Zóny dostupnosti**: zóny dostupnosti ochranu proti selhání celého datového centra Azure tím, že fyzické samostatných zón s oblasti Azure. Každou zónu má zdroj rozlišovací napájení, síťovou infrastrukturu a chladicí mechanismus.
 - **Skupiny dostupnosti**: dostupnosti ochranu proti selhání v rámci datacentra. Můžete seskupit virtuální počítače ve skupinách dostupnosti Novoroční s vysokou dostupností. V každé skupině dostupnosti Azure implementuje víc domén selhání najednou, hardware s společný zdroj napájení a síťový přepínač a aktualizačních doménách, které seskupují hardwarových komponent, které můžete provést údržbu nebo restart, základní skupiny ve stejnou dobu. Jako příklad Pokud úloha se pak rozdělí mezi virtuální počítače Azure, můžete umístit dva nebo více virtuálních počítačů pro každou vrstvu aplikace do sady. Můžete například umístit front-endový virtuální počítače v jedné sadě a datovou vrstvu virtuálních počítačů v jiném. Protože je jenom jedna aktualizační doména každý restartuje v sadě a Azure tak zajišťuje jistotu, že virtuální počítače v sadě jsou rozděleny mezi doménami selhání, zajistíte tím, že ne všechny virtuální počítače v sadě se nepodaří ve stejnou dobu.
 
+### <a name="set-up-bcdr"></a>Nastavit BCDR
 
-Při migraci do Azure, je důležité pochopit, i když Platforma Azure poskytuje tyto integrovaných možností a dalším službám BCDR, je potřeba navrhnout Azure nasazení tak, aby mohli využívat Azure odolnost, dostupnost, po havárii obnovení a zálohování služby a funkce.
-- Řešení BCDR závisí vaše cíle společnosti a bude mít vliv nasazení vašeho řešení Azure. Infrastruktura jako služba (IaaS) a platforma jako služba (PaaS) nasazení k dispozici různé problémy pro zajištění BCDR.
+Při migraci do Azure, je důležité pochopit, i když Platforma Azure poskytuje tyto možnosti integrované odolnost proti chybám, je potřeba navrhnout nasazení vašeho řešení Azure využívat funkce a služby, které zajišťují vysokou dostupnost, Azure zotavení po havárii a zálohování.
+
+- Řešení BCDR závisí vaše cíle společnosti a ovlivněny strategii nasazení v Azure. Infrastruktura jako služba (IaaS) a platforma jako služba (PaaS) nasazení k dispozici různé problémy pro zajištění BCDR.
 - Jednou v místě, řešení BCDR by měl být testován pravidelně ke kontrole, zůstane strategie přijatelné.
 
 
-## <a name="best-practice-back-up-your-deployment"></a>Osvědčený postup: zálohování vašeho nasazení
+## <a name="best-practice-back-up-your-data"></a>Osvědčený postup: zálohování vašich dat
 
-Ve většině případů místní úlohy byl vyřazen z provozu po migraci, a vaše místní strategie pro zálohování dat musí být rozšířit nebo nahradit. Pokud migrujete celé datové centrum do Azure, je potřeba navrhovat a implementovat řešení úplného zálohování, které využívá technologie Azure nebo integrovaná řešení třetích stran. Vaše vybrané řešení zálohování se bude lišit v závislosti na nasazení vašeho řešení Azure. 
+Ve většině případů místní úlohy byl vyřazen z provozu po migraci, a vaše místní strategie pro zálohování dat musí být rozšířit nebo nahradit. Pokud migrujete celé datové centrum do Azure, je potřeba navrhovat a implementovat řešení úplného zálohování, které využívá technologie Azure nebo integrovaná řešení třetích stran. 
 
 
 ### <a name="back-up-an-iaas-deployment"></a>Zálohování IaaS nasazení
 
-
-Pro úlohy běžící na virtuálních počítačích Azure IaaS byste zvážit použití následující řešení zálohování:
+Pro úlohy běžící na virtuálních počítačích Azure IaaS vezměte v úvahu tyto řešení pro zálohování:
 
 - **Azure Backup**: poskytuje zálohy konzistentní s aplikací pro Windows Azure a virtuální počítače s Linuxem.
 - **Snímky úložiště**: pořizovat snímky objektů blob úložiště.
 
 #### <a name="azure-backup"></a>Azure Backup
 
-
 Zálohuje Azure Backup vytváří body obnovení dat, které jsou uložené ve službě Azure storage. Azure Backup můžete zálohovat na disky virtuálních počítačů Azure a službou soubory Azure (preview). Služba soubory Azure poskytují sdílené složky v cloudu, přístupné přes protokol SMB.
    
 Azure Backup můžete použít k zálohování virtuálních počítačů v několika způsoby.
 
-- **Přímé zálohování z nastavení virtuálního počítače**:
-    - Azure Backup je integrovaná do možností virtuálního počítače na webu Azure Portal.
-    - Můžete zálohovat tento virtuální počítač jednou denně a obnovení disku virtuálního počítače. 
-    - Azure Backup pořídí snímky dat s ohledem na aplikace (VSS).
-    - Na virtuálním počítači se neinstaluje žádný agent.
-- **Přímé zálohování v trezoru služby Recovery Services**:
-    - Nasazení služby Azure Backup Recovery Services vault a vyberte virtuální počítače pro zálohování.
-    - Tato metoda poskytuje jedno centrální umístění pro sledování a správa záloh a další zálohy a možnosti obnovení. 
-    - Azure Backup nainstaluje agenta Microsoft Azure Recovery Services (MARS) ve virtuálním počítači.
-    - Zálohování se až třikrát za den.
-    - Zálohování je na úrovni souboru nebo složky které není s ohledem na aplikace. Linux není podporována.
-- **Azure Backup serveru: Ochrana virtuálních počítačů do Azure Backup Server**:
-   - Azure Backup serveru se službou Azure Backup poskytuje zdarma.
-   - Virtuální počítač zálohovaný do místního úložiště záloh Azure.
-   - Můžete pak zálohování Azure Backup serveru do Azure na trezor služby Recovery Services.
-   - Zálohování je aplikace používající, s plnou členitosti přes často zálohování a uchovávání
-   - Můžete zálohovat na úrovni aplikace. Například tím, že zálohování serveru SQL Server nebo SharePoint.
+- **Přímé zálohování z nastavení virtuálního počítače**: virtuální počítače pomocí služby Azure Backup můžete zálohovat přímo z možností virtuálního počítače na webu Azure Portal. Můžete zálohovat jednou virtuálního počítače a den a obnovení disku virtuálního počítače podle potřeby. Azure Backup pořídí snímky dat s ohledem na aplikace (VSS), na virtuálním počítači se neinstaluje žádný agent.
+- **Přímé zálohování v trezoru služby Recovery Services**: můžete zálohovat virtuální počítače IaaS nasazením trezor služby Recovery Services zálohování Azure. To poskytuje jedno centrální umístění pro sledování a správa záloh a poskytuje podrobné možnosti zálohování a obnovení. Zálohování je až třikrát za den, na úrovni souboru nebo složky. Není s ohledem na aplikace a Linux není podporována. Je třeba isntall agenta Microsoft Azure Recovery Services (MARS) na každém virtuálním počítači, které chcete zálohovat.
+- **Azure Backup serveru: Ochrana virtuálních počítačů do Azure Backup serveru**: Azure Backup serveru se službou Azure Backup poskytuje zdarma. Virtuální počítač zálohovaný do místního úložiště Azure Backup serveru. Můžete pak zálohování Azure Backup serveru do Azure v trezoru. Zálohování je aplikace používající, s plnou členitosti přes často zálohování a uchovávání. Můžete zálohovat na úrovni aplikace. Například tím, že zálohování serveru SQL Server nebo SharePoint.
 
-Azure Backup automaticky přiděluje a spravuje úložiště pomocí modelu s průběžnými platbami za úložiště, které skutečně využijete.
-- Úložiště může být přiřazen jako sazbou za LRS nebo GRS.
-- Azure Backup šifruje data vydávaných za pochodu pomocí AES 256 a odesílá je do Azure přes protokol HTTPS. Zálohovaná data v klidovém stavu v Azure je zašifrovaná pomocí [šifrování služby Storage (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)a data pro přenos a ukládání.
+Pro zabezpečení, Azure Backup šifruje data vydávaných za pochodu pomocí AES 256 a odesílá je do Azure přes protokol HTTPS. Zálohovaná data v klidovém stavu v Azure je zašifrovaná pomocí [šifrování služby Storage (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)a data pro přenos a ukládání.
 
 
 ![Azure Backup](./media/migrate-best-practices-security-management/iaas-backup.png)
@@ -409,9 +396,9 @@ Virtuální počítače Azure jsou uložené jako objekty BLOB stránky ve služ
 
 **Víc se uč:**
 
-- [Další informace o] (https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction Úložiště objektů blob v azure.
+- [Další informace o](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) úložiště objektů blob v Azure.
 - [Zjistěte, jak](https://docs.microsoft.com/azure/storage/blobs/storage-blob-snapshots) vytvořit snímek objektu blob.
-- Projděte si ukázkový scénář] (https://azure.microsoft.com/blog/microsoft-azure-block-blob-storage-backup/) pro zálohování úložiště objektů blob.
+- [Projděte si ukázkový scénář](https://azure.microsoft.com/blog/microsoft-azure-block-blob-storage-backup) pro zálohování úložiště objektů blob.
 - [Přečtěte si informace o](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) obnovitelné odstranění.
 - [Kontrola](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) co dělat, když dojde k výpadku služby Azure Storage?
 
@@ -453,7 +440,7 @@ Protože Azure Functions funguje jako kód více nebo méně, měli byste záloh
 
 - [Ochrana dat](https://docs.microsoft.com/azure/devops/articles/team-services-security-whitepaper?view=vsts) pro Azure DevOps.
 
-## <a name="best-practice-set-up-a-disaster-recovery-strategy"></a>Osvědčený postup: nastavení strategii zotavení po havárii
+## <a name="best-practice-set-up-disaster-recovery"></a>Osvědčený postup: nastavení zotavení po havárii 
 
 Kromě ochrany dat, plánování BCDR musíte zvážit, jakým způsobem aplikace a úlohy zůstaly dostupné v případě havárie. 
 
@@ -553,7 +540,7 @@ Pokud výpočetní infrastruktura v Azure selže, může být k dispozici aplika
 - [Další informace o](https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-disaster-recovery-geo-distribution) zotavení po havárii a geografická rozptýlenost odolná služba Azure functions.
 
 
-### <a name="best-practice-use-managed-disks-and-availability-sets"></a>Osvědčený postup: použít spravované disky a skupiny dostupnosti
+## <a name="best-practice-use-managed-disks-and-availability-sets"></a>Osvědčený postup: použít spravované disky a skupiny dostupnosti
 
 Azure používá skupiny dostupnosti chcete logicky seskupit virtuální počítače a k izolaci virtuálních počítačů z jiných prostředků v sadě. Virtuální počítače ve skupině dostupnosti jsou rozděleny mezi více domén selhání pomocí oddělené subsystémy, k ochraně před místním selháním a jsou také rozložit do více doména aktualizace tak, aby všechny virtuální počítače v sadě restartovat ve stejnou dobu.
 
@@ -662,7 +649,7 @@ V určitém okamžiku bude nutné spolupracovat s pracovníky podpory nebo praco
 - [Získejte přehled](https://azure.microsoft.com/support/options/) plány podpory Azure.
 - [Další informace o](https://azure.microsoft.com/support/legal/sla/) smlouvami o úrovni (SLA).
 
-## <a name="best-practice---manage-updates"></a>Osvědčené postupy – Správa aktualizací
+## <a name="best-practice-manage-updates"></a>Osvědčený postup: Správa aktualizací
 
 Zachovat virtuální počítače Azure aktualizován s nejnovějším operačním systémem a aktualizací softwaru je obrovská případě. Možnost prezentovat všechny virtuální počítače k tomu, které aktualizace, které potřebují a o automaticky nasdílení změn je velmi důležité tyto aktualizace.
 

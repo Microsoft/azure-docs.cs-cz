@@ -1,5 +1,5 @@
 ---
-title: Týmu úlohy vědeckého zpracování dat pro jednotlivý Přispěvatel – Azure | Dokumentace Microsoftu
+title: Úlohy pro jednotlivý Přispěvatel v vědecké zpracování týmových dat
 description: Přehled úloh pro jednotlivé přispěvatelů v týmovém projektu datové vědy.
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: d8e51dcf8434508664801f53391592aab34d7e4a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 6684cc9a0166df9c6d230f6b2a8c05acec5f91b3
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447057"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136757"
 ---
-# <a name="individual-contributor-tasks"></a>Jednotlivé úlohy přispěvatele
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Úlohy pro jednotlivý Přispěvatel v vědecké zpracování týmových dat
 
 Tohoto tématu jsou podrobněji popsány dále úlohy, které je jednotlivý Přispěvatel očekává pro jejich tým datové vědy. Cílem je vytvořit prostředí pro spolupráci týmu, který standardizuje na [vědecké zpracování týmových dat](overview.md) (TDSP). Přehled role pracovníky a jejich přidružených úloh, které jsou zpracovávány týmem datové vědy standardizovat o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
 

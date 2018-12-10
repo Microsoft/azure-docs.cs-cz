@@ -1,5 +1,5 @@
 ---
-title: Omezení žádostí o Azure Resource Manageru | Dokumentace Microsoftu
+title: Omezení počtu požadavků a omezení – Azure Resource Manageru
 description: Popisuje způsob použití omezení požadavků Azure Resource Manageru a pokud bylo dosaženo omezení předplatného.
 services: azure-resource-manager
 documentationcenter: na
@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/17/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: fdc98c6d88b18f770d1869acbea5998ad4571287
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: seodec18
+ms.openlocfilehash: 0ba4a1a4119db515e10c0b704b0a10501fe79682
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981809"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136885"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezování požadavků Resource Manageru
 Pro každé předplatné Azure a tenanta Resource Manager umožňuje až 12 000 požadavků za hodinu na čtení a zápis 1 200 žádosti za hodinu. Tato omezení jsou omezená požadavků ID objektu zabezpečení a ID předplatného nebo tenanta ID. Pokud vaše požadavky pocházejí z více než jeden ID instančního objektu, je větší než 12 000 a 1 200 za hodinu limitu vašeho předplatného nebo tenanta.

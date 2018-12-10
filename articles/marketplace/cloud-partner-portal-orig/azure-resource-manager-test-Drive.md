@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 85e6dc8d72588ff64c0119a6c1944755ce5686f4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 87e57a1ee417a4cc69308e8af80dd9b781d60aaf
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720928"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139261"
 ---
 <a name="azure-resource-manager-test-drive"></a>Vyzkoušejte Azure Resource Manageru
 =================================
@@ -177,7 +177,7 @@ Tento parametr slouží k jednoznačné identifikaci Test Drive relace, pokud je
 
 Některé prostředky Azure, jako jsou účty úložiště nebo názvy DNS, vyžaduje globálně jedinečné názvy.
 
-To znamená, že pokaždé, když se Test Drive nasadí šablony Resource Manageru, vytváří **novou skupinu prostředků s jedinečným názvem** pro všechny jeho\' prostředky **.** Proto je potřeba použít [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) funkce, které jsou spojeny s názvy proměnných ve skupině prostředků. ID pro generování náhodných jedinečné hodnoty:
+To znamená, že pokaždé, když se Test Drive nasadí šablony Resource Manageru, vytváří **novou skupinu prostředků s jedinečným názvem** pro všechny jeho\' prostředky. Proto je potřeba použít [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) funkce, které jsou spojeny s názvy proměnných ve skupině prostředků. ID pro generování náhodných jedinečné hodnoty:
 
       "variables": {
       ...

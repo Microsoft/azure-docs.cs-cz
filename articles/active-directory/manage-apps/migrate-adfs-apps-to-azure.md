@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 647ff43d0b1e0dc52ccecd2dad709af969c61c15
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7657ac2e2d5a169607c73b8934328ce41ecea78e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840657"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141930"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Přesunout aplikace ze služby AD FS do Azure AD 
 
@@ -82,7 +82,7 @@ Mezi federované aplikace patří aplikace, které spadají do těchto kategori�
 
 ### <a name="non-federated-apps"></a>Jiné než federované aplikace
 Jiné než federované aplikace můžete integrovat se službou Azure AD s využitím Proxy aplikací služby Azure AD a souvisejících možností. Mezi jiné než federované aplikace patří:
-- Aplikace používající integrované ověřování Windows přímo se službou Active Directory. Tyto aplikace můžete integrovat se službou Azure AD prostřednictvím [Proxy aplikací služby Azure AD](application-proxy-publish-azure-portal.md).
+- Aplikace používající integrované ověřování Windows přímo se službou Active Directory. Tyto aplikace můžete integrovat se službou Azure AD prostřednictvím [Proxy aplikací služby Azure AD](application-proxy-add-on-premises-application.md).
 - Aplikace, které se prostřednictvím agenta integrují s vaším zprostředkovatelem jednotného přihlašování a k ověřování používají hlavičky. Místní aplikace, které k přihlašování používají nainstalovaného agenta a ověřování založené na hlavičkách, je možné nakonfigurovat pro přihlašování založené na službě Azure AD prostřednictvím Proxy aplikací služby Azure AD pomocí [PingAccessu pro Azure AD](https://blogs.technet.microsoft.com/enterprisemobility/2017/06/15/ping-access-for-azure-ad-is-now-generally-available-ga/).
 
 ## <a name="translating-on-premises-federated-apps-to-azure-ad"></a>Převod místních federovaných aplikací do služby Azure AD 

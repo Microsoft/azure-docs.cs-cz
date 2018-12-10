@@ -1,23 +1,22 @@
 ---
-title: Nejčastější dotazy k Azure Cosmos DB
+title: Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 description: Získejte odpovědi na nejčastější dotazy ohledně služby Azure Cosmos DB, globálně distribuovaná a vícemodelová databázová služba. Další informace o kapacitě a úrovně výkonu a škálování.
 keywords: Otázky k databázi, a nejčastější dotazy, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2018
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 0b20db33f9eeac7c3ca6b2bccee2e796d717f88e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18
+ms.openlocfilehash: fc5b397f64bead38e630cb994d1d325a85b11cda
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098782"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139652"
 ---
-# <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
-
-## <a name="azure-cosmos-db-fundamentals"></a>Základy služby Azure Cosmos DB
+# <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Nejčastější dotazy ohledně různých rozhraní API ve službě Azure Cosmos DB
 
 ### <a name="what-happened-to-the-documentdb-api"></a>Co se stalo s rozhraním API DocumentDB?
 

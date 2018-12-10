@@ -1,6 +1,6 @@
 ---
-title: Zkoumání dat v tabulkách Hivu pomocí dotazů Hive | Dokumentace Microsoftu
-description: Zkoumání dat v tabulkách Hivu pomocí dotazů Hive.
+title: Zkoumání dat v tabulkách Hivu pomocí dotazů Hive - vědecké zpracování týmových dat
+description: Pomocí ukázky skriptů Hive, které slouží ke zkoumání dat v tabulkách Hivu v clusteru HDInsight Hadoop.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: c50c6de28c60bbe6a6c0d510e62f35cd037d6e95
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: c4d731ad2b94ca662e23e7e48442e396900d68ec
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443308"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132283"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Zkoumání dat v tabulkách Hivu pomocí dotazů Hivu
 

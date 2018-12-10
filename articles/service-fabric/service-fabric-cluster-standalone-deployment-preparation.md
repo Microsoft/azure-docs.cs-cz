@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: c505feb20321d785a86cad0422470aa5c9a4311b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9918c4b022fc2aca4bfc1ddba5649d7f0efe1256
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259084"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138785"
 ---
 <a id="preparemachines"></a>
 
@@ -83,6 +83,7 @@ K vytvoření samostatného clusteru je nutné vytvořit samostatný cluster kon
 Podrobnosti v části v tomto souboru najdete v tématu [nastavení konfigurace pro samostatný cluster Windows](service-fabric-cluster-manifest.md).
 
 Otevřete jednu z ClusterConfig.json soubory z balíčku, který jste stáhli a upravte následující nastavení:
+
 | **Nastavení konfigurace** | **Popis** |
 | --- | --- |
 | **NodeTypes** |Typy uzlů umožňují rozdělit uzly clusteru do různých skupin. Cluster musí mít aspoň jeden typ NodeType. Všechny uzly ve skupině mají následující běžné vlastnosti: <br> **Název** – Toto je název typu uzlu. <br>**Porty koncových bodů** – tyto pojmenovány různé koncové body (porty), které jsou spojeny s tímto typem uzlu. Můžete použít libovolné číslo portu, který chcete, za předpokladu, že nejsou v konfliktu se nic jiného v manifestu a nejsou již používá jiná aplikace, na počítači nebo virtuálním počítači běží. <br> **Vlastnosti umístění** -popisují tyto vlastnosti pro tento typ uzlu, který používáte jako omezení umístění pro služby systému nebo služby. Tyto vlastnosti jsou páry klíč/hodnota definovaný uživatelem, které poskytují další metadata pro daný uzel. Příkladem vlastnosti uzlu by se určuje, zda má uzel pevný disk nebo grafickou kartu, počet diskových jednotek v jeho pevného disku, počet jader a další fyzické vlastnosti. <br> **Kapacity** -kapacity uzlů zadat název a množství určitý prostředek, že konkrétní uzel k dispozici pro použití. Uzlem může například definovat, že má kapacitu pro metriku s názvem "MemoryInMb" a že má 2 048 MB k dispozici ve výchozím nastavení. Tyto kapacity se používají v době běhu k zajištění, že služby, které vyžadují určité množství prostředků umísťují na uzly, které byly jejich prostředky, které jsou k dispozici požadované množství.<br>**IsPrimary** – Pokud máte více než jeden NodeType definované Ujistěte se, že pouze jeden je nastaven na primární hodnotou *true*, což je, kde systém služeb spustit. Všechny ostatní typy uzlů musí být nastaveno na hodnotu *false* |
@@ -97,20 +98,20 @@ Po konfiguraci clusteru byla všechna nastavení nakonfigurovaná tak, aby prost
 Při konfiguraci Správce clusteru samostatného clusteru Service Fabric, prostředí, musí být nastavení s následujícími kritérii: <br>
 1. Uživatel vytvářející cluster by měl mít oprávnění zabezpečení na úrovni správce na všech počítačích, které jsou uvedeny jako uzly v clusteru konfigurační soubor.
 2. Počítač, ze kterého se cluster vytvoří, jakož i každého počítače uzlu clusteru musí:
-* Jste odinstalovali sadu Service Fabric SDK
-* Mají odinstalovat modul runtime Service Fabric 
-* Jste povolili službu Windows Firewall (mpssvc)
-* Povolíte služby Remote Registry (vzdálený registr)
-* Soubor, který povoleno sdílení (SMB)
-* Mají potřebné porty otevřít, založené na portech konfigurace clusteru
-* Mít nezbytné porty otevřené pro Windows, SMB a Remote Registry service: 135, 137, 138, 139 a 445
-* Mít síťové připojení mezi sebou
+   * Jste odinstalovali sadu Service Fabric SDK
+   * Mají odinstalovat modul runtime Service Fabric 
+   * Jste povolili službu Windows Firewall (mpssvc)
+   * Povolíte služby Remote Registry (vzdálený registr)
+   * Soubor, který povoleno sdílení (SMB)
+   * Mají potřebné porty otevřít, založené na portech konfigurace clusteru
+   * Mít nezbytné porty otevřené pro Windows, SMB a Remote Registry service: 135, 137, 138, 139 a 445
+   * Mít síťové připojení mezi sebou
 3. Žádná z počítače uzlu clusteru by měl být řadičem domény.
 4. Pokud je cluster k nasazení zabezpečeného clusteru, ověřte nezbytné požadavky jsou v umístění a správně nakonfigurované pro konfiguraci zabezpečení.
 5. Pokud cluster počítače nejsou přístupné z Internetu, nastavte v konfiguraci clusteru následující:
-* Zakázat telemetrická data: v části *vlastnosti* nastavit *"enableTelemetry": false*
-* Zakázat automatické stahování verze prostředků infrastruktury a oznámení, že aktuální verze clusteru se blíží konec podpory: v části *vlastnosti* nastavit *"fabricClusterAutoupgradeEnabled": false*
-* Případně, pokud přístup k síti internet, je omezený na uvedené prázdné domény, domény níže jsou požadovány pro automatický upgrade: go.microsoft.com download.microsoft.com
+   * Zakázat telemetrická data: v části *vlastnosti* nastavit *"enableTelemetry": false*
+   * Zakázat automatické stahování verze prostředků infrastruktury a oznámení, že aktuální verze clusteru se blíží konec podpory: v části *vlastnosti* nastavit *"fabricClusterAutoupgradeEnabled": false*
+   * Případně, pokud přístup k síti internet, je omezený na uvedené prázdné domény, domény níže jsou požadovány pro automatický upgrade: go.microsoft.com download.microsoft.com
 
 6. Nastavit příslušné výjimky antivirové ochrany v Service Fabric:
 

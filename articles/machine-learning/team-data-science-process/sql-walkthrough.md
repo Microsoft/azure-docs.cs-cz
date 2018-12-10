@@ -1,6 +1,6 @@
 ---
-title: Sestavit a nasadit model strojového učení pomocí SQL serveru na Virtuálním počítači Azure | Dokumentace Microsoftu
-description: Proces pokročilých analýz a technologie v akci
+title: Sestavit a nasadit model v SQL Server VM - vědecké zpracování týmových dat
+description: Sestavujte a nasazujte pomocí systému SQL Server na Virtuálním počítači Azure s veřejně dostupnou datovou sadou model strojového učení.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: cad56d2e8de071feb9a02e0cfc6bcc884eebe91a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 97ef7b02690110f571e87960add34b45f683b615
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445459"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141403"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití serveru SQL Server
 V tomto kurzu vás provede procesem sestavování a nasazování modelu strojového učení pomocí SQL serveru a veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Postup následující pracovní postup standardních datových věd: ingestování a zkoumání dat, navrhování funkcí usnadnění vzdělávání, pak sestavit a nasadit model.

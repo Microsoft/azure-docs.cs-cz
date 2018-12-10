@@ -1,5 +1,5 @@
 ---
-title: Konstrukce funkcí v datové vědy | Dokumentace Microsoftu
+title: Konstrukce funkcí v datové vědy – vědecké zpracování týmových dat
 description: Popisuje účely vytváření funkcí a poskytuje příklady jejich rolí v procesu rozšíření dat služby machine learning.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 80e925fddf1aebd9f699ee8e22b96cc496faeba6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 5767399189e4ed5168fbcc083ef9b4830cac1421
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446671"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138951"
 ---
 # <a name="feature-engineering-in-data-science"></a>Konstrukce funkcí v datové vědy
 Tento článek vysvětluje účely vytváření funkcí a poskytuje příklady jejich rolí v procesu rozšíření dat služby machine learning. Příklady slouží ke znázornění tohoto procesu jsou vykreslovány vedle z Azure Machine Learning Studio. 

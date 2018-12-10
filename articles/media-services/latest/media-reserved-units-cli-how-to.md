@@ -1,6 +1,6 @@
 ---
-title: Škálování média rezervované jednotky – Azure | Dokumentace Microsoftu
-description: V tomto tématu je uveden přehled škálování zpracování médií pomocí Azure Media Services.
+title: Pomocí rozhraní příkazového řádku můžete škálovat rezervovaných jednotek médií – Azure | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak pomocí rozhraní příkazového řádku škálování zpracování médií pomocí Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/11/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: dd587e5fc2082d1e496fbc05d5b25cf6692413bc
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: 2b10de83e00b3668f70461f76634c560bcbea1a4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713057"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133787"
 ---
 # <a name="scaling-media-processing"></a>Škálování zpracování médií
 

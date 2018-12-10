@@ -1,5 +1,5 @@
 ---
-title: Konfigurovat režim přenosu protokolu IPsec pro hostitele Windows - privátního partnerského vztahu Azure ExpressRoute | Dokumentace Microsoftu
+title: 'Konfigurovat režim přenosu protokolu IPsec pro partnerský vztah privátní hostitele Windows: ExpressRoute: Azure | Dokumentace Microsoftu'
 description: Jak povolit režim přenosu protokolu IPsec mezi virtuálními počítači Windows Azure a místní hostitele Windows prostřednictvím ExpressRoute soukromého partnerského vztahu pomocí objektů zásad skupiny a organizační jednotky.
 services: expressroute
 author: fabferri
@@ -7,12 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
-ms.openlocfilehash: 1b228f0238c678c0cea4a6be2a6c3e0b929ed4d6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.custom: seodec18
+ms.openlocfilehash: 39bbe8a0ec11b90d506ce0d1c0bad37ddba46a5d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394321"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139109"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurovat režim přenosu protokolu IPsec pro soukromý partnerský vztah ExpressRoute
 
@@ -60,7 +61,7 @@ Při konfiguraci zásad protokolu IPsec, je důležité, abyste rozuměli techno
 
 [![5]][5]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Ujistěte se, že splňujete následující požadavky:
 

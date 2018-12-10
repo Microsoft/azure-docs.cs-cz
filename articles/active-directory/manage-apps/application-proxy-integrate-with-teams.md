@@ -15,12 +15,12 @@ ms.date: 09/05/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1269dfb3aec33e781601a1d885004ddf80127160
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 83f32cc18f1237d5d28e8340177fd6e2fae4e173
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367194"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133634"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Přístup k místním aplikacím přes Microsoft Teams
 
@@ -31,7 +31,7 @@ Uživatelé mohou přidat cloudové aplikace na svých kanálů Teams [pomocí k
 
 ## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Nainstalujte konektor Proxy aplikací a publikování aplikace
 
-Pokud jste tak dosud neučinili, [nakonfigurujte Proxy aplikací pro vašeho tenanta a nainstalujte konektor](application-proxy-enable.md). Potom [publikování aplikace v místním](application-proxy-publish-azure-portal.md) pro vzdálený přístup. Když publikujete aplikaci, poznamenejte si externí adresu URL vzhledem k tomu, že se používá k přidání aplikace do Teams.
+Pokud jste tak dosud neučinili, [nakonfigurujte Proxy aplikací pro vašeho tenanta a nainstalujte konektor](application-proxy-add-on-premises-application.md). Potom [publikování aplikace v místním](application-proxy-add-on-premises-application.md) pro vzdálený přístup. Když publikujete aplikaci, poznamenejte si externí adresu URL vzhledem k tomu, že se používá k přidání aplikace do Teams.
 
 Pokud už máte aplikace publikována, ale nepamatujete jejich externí adresy URL, vyhledejte je [webu Azure portal](https://portal.azure.com). Přihlaste se a přejděte na adresu **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** > vyberte svou aplikaci >  **Proxy aplikací**.
 

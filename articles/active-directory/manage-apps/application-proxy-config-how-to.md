@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cf3e367dad528017a98e103962c57cb758da55cb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: a7a5c097f0400d89398cef66eeb7bd0ce8d5e97b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356366"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132427"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>Jak nakonfigurovat aplikaci Proxy aplikací
 
@@ -28,15 +28,15 @@ Tento článek pomůže pochopit, jak nakonfigurovat aplikaci Proxy aplikací v 
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty 
 
-Další informace o tvorby aplikace Proxy aplikací prostřednictvím portálu pro správu a počáteční konfiguraci, postupujte [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md).
+Další informace o tvorby aplikace Proxy aplikací prostřednictvím portálu pro správu a počáteční konfiguraci, postupujte [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md).
 
-Podrobnosti o konfiguraci konektorů najdete v tématu [povolení Proxy aplikace na webu Azure Portal](application-proxy-enable.md).
+Podrobnosti o konfiguraci konektorů najdete v tématu [povolení Proxy aplikace na webu Azure Portal](application-proxy-add-on-premises-application.md).
 
 Informace o nahrávání certifikátů a používání vlastních domén najdete v tématu [práce s vlastními doménami v Proxy aplikací Azure AD](application-proxy-configure-custom-domain.md).
 
 ## <a name="create-the-applicationsetting-the-urls"></a>Vytvoření nastavení aplikace nebo adresy URL
 
-Pokud postupujete kroky v [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md) dokumentaci a jsou zobrazuje chyba vytváření aplikace, najdete v podrobnostech o chybě informace a návrhy k vyřešení aplikace. Většina chybové zprávy zahrnují navrhované opravy. Aby se zabránilo běžné chyby, zkontrolujte:
+Pokud postupujete kroky v [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md) dokumentaci a jsou zobrazuje chyba vytváření aplikace, najdete v podrobnostech o chybě informace a návrhy k vyřešení aplikace. Většina chybové zprávy zahrnují navrhované opravy. Aby se zabránilo běžné chyby, zkontrolujte:
 
 -   Jste správce s oprávněním k vytvoření aplikace Proxy aplikací
 
@@ -75,4 +75,4 @@ Při pokusu o odeslání certifikátu, zobrazí chybová zpráva v pravém horn�
    ![Oznámení řádku](./media/application-proxy-config-how-to/error-message2.png)
 
 ## <a name="next-steps"></a>Další postup
-[Publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md)
+[Publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md)

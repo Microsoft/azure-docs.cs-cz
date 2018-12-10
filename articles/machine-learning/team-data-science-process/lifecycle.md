@@ -1,5 +1,5 @@
 ---
-title: Životní cyklus vědeckého zpracování týmových dat – Azure | Dokumentace Microsoftu
+title: Životní cyklus vědeckého zpracování týmových dat
 description: Kroky potřebné ke spuštění vašich projektů datové vědy
 services: machine-learning
 author: marktab
@@ -10,19 +10,21 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 24807d00170ed46a95d2726e1172b15775e0376d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a2a4a8c895bddb03271014c50f57b666faa0c2cc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443385"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135936"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Životní cyklus vědeckého zpracování týmových dat
 
 Zpracování vědy dat (TDSP) týmu poskytuje doporučené životní cyklus, který vám pomůže strukturovat vaše projekty pro datové vědy. Životní cyklus popisuje kroky, od začátku do konce, projekty obvykle postupujte při jejich spuštění. Pokud používáte jiné životního cyklu datové vědy, jako je například standardní oboru pro různé proces pro dolování dat [(OSTRÉ-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), Knowledge Discovery v databázích [(KDD)](https://wikipedia.org/wiki/Data_mining#Process), nebo vaše vlastní proces, který vlastní organizace , můžete dál používat TDSP založené na úlohách. 
 
 Tento životní cyklus je určená pro projekty pro datové vědy, které mají za cíl dodávají jako součást inteligentní aplikace. Tyto aplikace nasadit modely strojového učení a umělé inteligence pro prediktivní analýzy. Projekty průzkumné datové vědy a ad hoc analytics projekty mohou také těžit z používání tohoto procesu. Ale pro projekty, některé z kroků, je zde popsáno, nemusí být potřeba. 
+
+## <a name="five-lifecycle-stages"></a>Pět fází životního cyklu
 
 TDSP životní cyklus se skládá z pěti hlavních fází, které jsou spouštěny zavádět postupně. K těmto fázím patří:
 

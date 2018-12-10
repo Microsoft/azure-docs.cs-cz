@@ -1,5 +1,5 @@
 ---
-title: Přesun dat z místních SQL serveru do SQL Azure s Azure Data Factory | Dokumentace Microsoftu
+title: Data SQL serveru do SQL Azure s Azure Data Factory - vědecké zpracování týmových dat
 description: Nastavte kanál ADF, která vytvoří dvě aktivity migrace dat, které každý den společně přesun dat mezi databází v místním prostředí i v cloudu.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: bddb54d9a00c5ec88fcebe498d7f959c0f8e3dbf
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 87aa1c30bb567c6820e2d9ecacfc3f8cd2338339
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447032"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137765"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místních SQL serveru do SQL Azure s Azure Data Factory
 
@@ -43,7 +43,7 @@ Nastavíme kanál ADF, který lze kombinovat dvěma aktivitami data migrace. Spo
 * kopírování dat z účtu služby Azure Blob Storage do služby Azure SQL Database.
 
 > [!NOTE]
-> Postup je znázorněno zde byly upraveny z podrobnější kurzu poskytované týmem ADF: [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](../../data-factory/tutorial-hybrid-copy-portal.md) jsou odkazy na relevantní části tohoto tématu k dispozici v případě potřeby.
+> Postup je znázorněno zde byly upraveny z podrobnější kurzu poskytované týmem ADF: [kopírování dat z místní databáze systému SQL Server do Azure Blob storage](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal/) odkazy na relevantní části tohoto tématu jsou k dispozici při je to vhodné.
 >
 >
 
@@ -68,15 +68,10 @@ Můžete přizpůsobit postup uvedený tady na sadu vlastních dat nebo postupuj
 ## <a name="create-adf"></a> Vytvoření služby Azure Data Factory
 Pokyny pro vytvoření nové datové továrny Azure a skupiny prostředků [webu Azure portal](https://portal.azure.com/) jsou k dispozici [vytvořte datovou továrnu Azure](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Pojmenujte novou instanci ADF *adfdsp* a název skupiny prostředků, vytvoří *adfdsprg*.
 
-## <a name="install-and-configure-up-the-data-management-gateway"></a>Nainstalujte a nakonfigurujte bránu správy dat
-Chcete-li vaše kanály ve službě Azure data factory pro práci s SQL serverem v místním, budete muset přidat jako propojenou službu s datovou továrnou. Vytvoření propojené služby pro místní SQL Server, musíte mít:
+## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Instalace a konfigurace modulu Runtime integrace pro Azure Data Factory 
+Prostředí Integration Runtime je infrastruktura integrace spravovaných dat zákazníka službou Azure Data Factory používá k poskytování možnosti integrace dat napříč různými síťovými prostředími. Tento modul runtime byl dříve se označovaly jako "Brána správy dat". 
 
-* Stáhněte a nainstalujte Microsoft Brána pro správu dat na místním počítači.
-* Konfigurace propojené služby pro místní zdroje dat pro použití brány.
-
-Brána správy dat serializuje a deserializuje data zdroje a jímky na počítači, kde se hostuje.
-
-Pokyny k instalaci a informace o bráně pro správu dat, naleznete v tématu [přesun dat mezi místním zdrojům a cloudem pomocí brány správy dat](../../data-factory/tutorial-hybrid-copy-portal.md)
+Chcete-li nastavit, [postupujte podle instrutions pro vytvoření kanálu](https://docs.microsoft.com/en-us/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
 ## <a name="adflinkedservices"></a>Vytvoření propojené služby pro připojení k datovým prostředkům
 Propojená služba definuje informace potřebné pro připojení ke zdroji dat služby Azure Data Factory. Máme tři prostředky v tomto scénáři, které jsou v případě propojené služby:

@@ -1,6 +1,6 @@
 ---
-title: Použít kodér úrovně Standard ve službě Azure Media Services ke kódování videa pomocí automaticky generované adaptivní žebříček přenosových rychlostí | Dokumentace Microsoftu
-description: Toto téma ukazuje, jak použít kodér úrovně Standard ve službě Media Services ke kódování vstupní video automaticky generovaný adaptivní žebříček přenosových rychlostí, na základě vstupního rozlišení a s přenosovou rychlostí. Se nikdy překročí vstupního rozlišení a s přenosovou rychlostí. Například pokud je vstup 720p na 3 MB/s, výstup se nejlépe zůstanou 720p a začne sazby nižší než 3 MB/s.
+title: Kódování videa s využitím kodér úrovně Standard ve službě Media Services – Azure | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak použít kodér úrovně Standard ve službě Media Services ke kódování vstupní video automaticky generovaný adaptivní žebříček přenosových rychlostí, na základě vstupního rozlišení a s přenosovou rychlostí.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: ec1b4b88e5b9639c3ee9debbd8ac7d48544344dc
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.custom: seodec18
+ms.openlocfilehash: 976e1ea013c6a30615bdc742ed79e76ec35258a1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378954"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132802"
 ---
 #  <a name="encode-with-an-auto-generated-bitrate-ladder"></a>Kódování pomocí automaticky generovaný adaptivní žebříček přenosových rychlostí
 

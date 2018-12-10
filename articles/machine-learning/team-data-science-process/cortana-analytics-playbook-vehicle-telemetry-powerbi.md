@@ -1,6 +1,6 @@
 ---
-title: Řídicí panel Power BI pro stavu vozidel a jízdních návycích – Azure | Dokumentace Microsoftu
-description: Pomocí možností Cortana Intelligence získat v reálném čase a prediktivní přehledy o stavu vozidel a jízdních návycích.
+title: Řídicí panel Power BI pro stavu vozidel a jízdních návycích - vědecké zpracování týmových dat
+description: Vývoj řídicí panel Power BI a získejte v reálném čase, prediktivní, batch přehledů stavu vozidel a jízdních návycích.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b4d36b7d68bad658200024a2fe31a876d411536c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a964820979f24af1fee2be65461302be73b9e77b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444645"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135113"
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>Pokyny k instalaci vozidla telemetrická data Analytics řešení šablony Power BI řídicí panel
 
@@ -26,8 +26,8 @@ Souhrnný popis tohoto řešení najdete v tématu [řešení analýzy Telemetri
 Prozkoumejte ještě dál toto řešení, najdete v článku [playbook řešení analýzy Telemetrie vozidla: Podívejte se na řešení](cortana-analytics-playbook-vehicle-telemetry-deep-dive.md).
 
 ## <a name="prerequisites"></a>Požadavky
-* Nasazení [analýza Telemetrie vozidel](https://gallery.cortanaintelligence.com/Solution/5bdb23f3abb448268b7402ab8907cc90) řešení. 
-* [Instalace Power BI Desktopu](https://www.microsoft.com/download/details.aspx?id=45331).
+* Nasazení [analýza Telemetrie vozidel](https://gallery.cortanaintelligence.com/Solutions/5bdb23f3abb448268b7402ab8907cc90) řešení. 
+* [Instalace Power BI Desktopu](https://aka.ms/pbidesktopstore).
 * Získat [předplatného Azure](https://azure.microsoft.com/pricing/free-trial/). Pokud nemáte předplatné Azure, začněte s bezplatným předplatným Azure.
 * Otevřete si účet Power BI.
 
@@ -345,7 +345,7 @@ Můžete nakonfigurovat všechny tři sestav, nebo můžete zastavit po jakékol
 
 ### <a name="configure-power-bi-reports"></a>Konfigurace sestav Power BI
 
-1. Otevřete soubor návrháře **ConnectedCarsPbiReport.pbix** pomocí Power BI Desktopu. Pokud ho nemáte, nainstalujte Power BI Desktopu z [instalace Power BI Desktopu](https://www.microsoft.com/download/details.aspx?id=45331) webu.
+1. Otevřete soubor návrháře **ConnectedCarsPbiReport.pbix** pomocí Power BI Desktopu. Pokud ho nemáte, nainstalujte Power BI Desktopu z [instalace Power BI Desktopu](https://aka.ms/pbidesktopstore) webu.
 
 1. Vyberte **upravit dotazy**.
 

@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: dbb7fca08e8d5c59842f7ddfb02b463a42efadb7
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 565e7379ad12222e459bd61ed50fa38f9f9b12fc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422279"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136236"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování do aplikací pomocí Proxy aplikace
 
@@ -75,7 +75,7 @@ Konfigurace služby Active Directory se liší v závislosti na tom, zda váš k
 Sharepointserviceaccount může být účet počítače aktualizace Service PACKU nebo účet služby, pod kterým běží fond aplikací aktualizace Service PACKU.
 
 ## <a name="configure-single-sign-on"></a>Konfigurace jednotného přihlašování 
-1. Publikování aplikace podle pokynů v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-publish-azure-portal.md). Je nutné vybrat **Azure Active Directory** jako **metoda předběžného ověření**.
+1. Publikování aplikace podle pokynů v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md). Je nutné vybrat **Azure Active Directory** jako **metoda předběžného ověření**.
 2. Poté, co vaše aplikace se zobrazí v seznamu podnikových aplikací, vyberte ho a klikněte na tlačítko **jednotného přihlašování**.
 3. Nastavit režim jednotného přihlašování **integrované ověřování Windows**.  
 4. Zadejte **vnitřní hlavní název služby aplikace** aplikačního serveru. V tomto příkladu je název SPN pro naše publikované aplikace http/www.contoso.com. Tento hlavní název služby musí být v seznamu služeb, ke kterým může tento konektor předložit delegovaná pověření. 

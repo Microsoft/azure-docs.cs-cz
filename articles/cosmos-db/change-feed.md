@@ -2,16 +2,17 @@
 title: Práce s změnu podpora kanálu ve službě Azure Cosmos DB
 description: Pomocí podpory informačního kanálu změn služby Azure Cosmos DB sledovat změny v dokumentech a provádět zpracování jako aktivační události na základě událostí a průběžná mezipaměti a analytické systémy.
 author: rafats
+ms.author: rafats
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.author: rafats
-ms.openlocfilehash: dfb0048b29c5d63a2eee4c239e17ef222aad331e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 0519bb78b01cd7cab6abaf453efd7a4595101ef4
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837456"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133743"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Změna informačního kanálu ve službě Azure Cosmos DB
 
@@ -82,7 +83,7 @@ Například díky kanálu změn můžete provádět následující úlohy efekti
 
 Tady jsou některé scénáře, které je možné snadno implementovat pomocí kanálu změn:
 
-* V rámci vaší [bez serveru](http://azure.com/serverless) webových nebo mobilních aplikací, můžete sledovat události, například všechny změny do profilu vašich zákazníků, předvolby nebo jejich umístění a aktivovat určité akce, například odesílání nabízených oznámení do zařízení pomocí [Azure Functions](#azure-functions). 
+* V rámci vaší [bez serveru](https://azure.microsoft.com/en-us/solutions/serverless/) webových nebo mobilních aplikací, můžete sledovat události, například všechny změny do profilu vašich zákazníků, předvolby nebo jejich umístění a aktivovat určité akce, například odesílání nabízených oznámení do zařízení pomocí [Azure Functions](change-feed-functions.md).
 
 * Pokud používáte službu Azure Cosmos DB k vytvoření hry, je možné, například použití změnit informační kanál k implementaci v reálném čase žebříčky podle skóre, které se od dokončených hry.
 

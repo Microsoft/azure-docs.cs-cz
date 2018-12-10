@@ -1,21 +1,20 @@
 ---
-title: Protokolování diagnostiky služby Azure Cosmos DB
-description: Pomocí tohoto kurzu můžete začít pracovat s Azure Cosmos DB protokolování.
-services: cosmos-db
+title: Protokolování diagnostiky ve službě Azure Cosmos DB
+description: Další informace o různých způsobech protokolování a monitorování dat uložených ve službě Azure Cosmos DB.
 author: SnehaGunda
-tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/07/2018
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: e8548497666e7dc49a8ada6bdf686647e427d0d0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: c8d40587ec6feee9b1ae16e383341fc0f2d1ffb6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850461"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137890"
 ---
-# <a name="azure-cosmos-db-diagnostic-logging"></a>Protokolování diagnostiky služby Azure Cosmos DB
+# <a name="diagnostic-logging-in-azure-cosmos-db"></a>Protokolování diagnostiky ve službě Azure Cosmos DB 
 
 Jakmile začnete používat jednu nebo více databází Azure Cosmos DB, můžete chtít sledovat jak a kdy jsou vaše databáze přístupné. Tento článek poskytuje přehled o protokoly, které jsou k dispozici na platformě Azure. Informace o povolení protokolování diagnostiky pro účely odeslat protokoly do monitorování [služby Azure Storage](https://azure.microsoft.com/services/storage/), jak streamování protokolů do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)a jak exportovat protokoly [Azure Log Analytics ](https://azure.microsoft.com/services/log-analytics/).
 
@@ -80,7 +79,7 @@ Pokud chcete povolit protokolování diagnostiky na portálu Azure portal, prove
 
     * **Archivovat do účtu úložiště**: Pokud chcete použít tuto možnost, budete potřebovat pro připojení k existující účet úložiště. Chcete-li vytvořit nový účet úložiště na portálu, najdete v článku [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md) a postupujte podle pokynů a vytvořte Azure Resource Manageru, účet pro obecné účely. Pak se vraťte k této stránce na portálu a vyberte svůj účet úložiště. Může trvat několik minut, než se nově vytvořené účty se zobrazí v rozevírací nabídce.
     * **Stream do centra událostí**: Pokud chcete použít tuto možnost, budete potřebovat existující služby Event Hubs oboru názvů a Centrum událostí se připojit k. Pokud chcete vytvořit obor názvů služby Event Hubs, najdete v článku [vytvořit obor názvů služby Event Hubs a centra událostí pomocí webu Azure portal](../event-hubs/event-hubs-create.md). Pak se vraťte k této stránce portálu vyberte název služby Event Hubs oboru názvů a zásad.
-    * **Odeslání do Log Analytics**: Tato možnost dala použít, použijte existující pracovní prostor nebo vytvořit nový pracovní prostor Log Analytics pomocí následujících kroků na [vytvořit nový pracovní prostor](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace) na portálu. Další informace o prohlížení protokolů v Log Analytics najdete v tématu [zobrazení protokolů v Log Analytics](#view-in-loganalytics).
+    * **Odeslání do Log Analytics**: Tato možnost dala použít, použijte existující pracovní prostor nebo vytvořit nový pracovní prostor Log Analytics pomocí následujících kroků na [vytvořit nový pracovní prostor](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) na portálu. Další informace o prohlížení protokolů v Log Analytics najdete v tématu [zobrazení protokolů v Log Analytics](#view-in-loganalytics).
     * **Protokolovat DataPlaneRequests**: tuto možnost můžete protokolovat požadavky na back-end z podkladové služby Azure Cosmos DB distribuovanou platformu pro účty SQL, graf, MongoDB, Cassandra a Table API. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
     * **Protokolovat MongoRequests**: tuto možnost můžete protokolovat požadavky zahájená uživatelem z front-endu služby Azure Cosmos DB pro poskytování účty rozhraní API MongoDB. Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.
     * **Metrika žádosti**: tuto možnost použijte k ukládání podrobné údaje v [metriky Azure](../monitoring-and-diagnostics/monitoring-supported-metrics.md). Pokud jste archivovat do účtu úložiště, můžete vybrat dobu uchování diagnostických protokolů. Protokoly jsou automaticky odstraněna po vypršení platnosti doby uchování.

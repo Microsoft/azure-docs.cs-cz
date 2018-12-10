@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: bb04f1965764413c474c2e0d057d77d5d30edd07
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: b8c69ebec2258581954e26dc6181d5f4b57f461c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623097"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137697"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Práce s deklaracemi identity aplikace v Proxy aplikací
 [S deklaracemi identity aplikace](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) provést přesměrování do tokenů zabezpečení služby (STS). Služba tokenů zabezpečení přihlašovacích údajů požádá uživatele výměnou za token a pak přesměruje uživatele k aplikaci. Existuje několik způsobů, jak povolit Proxy aplikace pro práci s těmito přesměrování. Tento článek slouží ke konfiguraci svého nasazení s deklaracemi identity aplikace. 
@@ -29,7 +29,7 @@ Ujistěte se, že je služba tokenů zabezpečení, které s deklaracemi identit
 
 ## <a name="publish-your-application"></a>Publikování aplikace
 
-1. Publikování aplikace podle pokynů v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-publish-azure-portal.md).
+1. Publikování aplikace podle pokynů v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md).
 2. Přejděte na stránku aplikace v portálu a vyberte **jednotného přihlašování**.
 3. Pokud jste zvolili **Azure Active Directory** jako vaše **metoda předběžného ověření**vyberte **Azure AD jednotné přihlašování zakázáno** jako vaše **interní Metoda ověřování**. Pokud jste zvolili **průchozí** jako vaše **metoda předběžného ověření**, nemusíte nic měnit.
 

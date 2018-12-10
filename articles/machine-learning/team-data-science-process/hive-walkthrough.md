@@ -1,5 +1,5 @@
 ---
-title: Zkoumání dat v clusteru Hadoop a vytváření modelů ve službě Azure Machine Learning | Dokumentace Microsoftu
+title: Zkoumání dat v clusteru Hadoop – vědecké zpracování týmových dat
 description: Vědecké zpracování týmových dat pomocí začátku do konce scénář, když cluster systému HDInsight Hadoop k vytvoření a nasazení modelu.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 1b494f78998a03d39b18d4f9bba80642c04c483e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: e6adbe5a0e5ce88db12637889e201b5a15a0556f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444201"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139618"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Vědecké zpracování týmových dat v akci: použití Azure HDInsight Hadoop clusterů
 V tomto názorném postupu používáme [vědecké zpracování týmových dat (TDSP)](overview.md) ve scénáři začátku do konce. Používáme [clusteru Azure HDInsight Hadoop](https://azure.microsoft.com/services/hdinsight/) k ukládání, prozkoumat a funkce analýzu dat z veřejně dostupných [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datovou sadu a na nižší data. Pro zpracování víc tříd a binární klasifikace a úlohy prediktivní regrese, jsme integrovali modely dat pomocí Azure Machine Learning. 
@@ -416,7 +416,7 @@ Z adresáře řádku Hive spusťte následující příkaz:
 > 
 > 
 
-Při prohlížení datové sady, často chcete zkontrolovat počet výskytů co skupin hodnot. Tato část poskytuje příklad toho, jak to provést u souborů CAB a ovladače.
+Při prohlížení datové sady, často chcete zkontrolovat počet společné výskytů skupiny hodnot. Tato část poskytuje příklad toho, jak to provést u souborů CAB a ovladače.
 
 **Ukázka\_hive\_o jízdách\_počet\_podle\_Medailon\_license.hql** skupin souborů na datovou sadu tarif **Medailon** a **hack_license**a vrátí počet každá kombinace. Zde jsou jeho obsah:
 
@@ -765,7 +765,7 @@ Teď můžete přejít k vytváření modelů a nasazení modelů v [Machine Lea
 
   Následující diagram znázorňuje naše experiment předpovědět, jestli byla zaplacena tip pro danou cestu:
 
-  ![Diagram experimentu](./media/hive-walkthrough/QGxRz5A.png)
+  ![Diagram experimentu předpovědět, pokud byla zaplacena tip](./media/hive-walkthrough/QGxRz5A.png)
 
   b. Pro tento experiment distribuce popisek náš cíl byly přibližně 1:1.
 
@@ -785,7 +785,7 @@ Teď můžete přejít k vytváření modelů a nasazení modelů v [Machine Lea
 
   Následující diagram znázorňuje experiment předpovědět, ve které bin je pravděpodobné, aby tip. Jsou přihrádek: Třída 0: tip = 0 USD, třídy 1: tip > 0 USD a tip < = 5 USD, třídy 2: tip > 5 USD a tip < = 10 USD, třídy 3: tip > 10 USD a tip < = 20 USD a třída 4: tip > $20.
 
-  ![Diagram experimentu](./media/hive-walkthrough/5ztv0n0.png)
+  ![Diagram experimentu předpovědět bin pro tip](./media/hive-walkthrough/5ztv0n0.png)
 
   Zobrazujeme vypadá skutečné testovací třídy rozdělení. Třída 0 a 1 třídy jsou běžně se vyskytujícím a jiné třídy se vyskytují jen vzácně.
 
@@ -805,7 +805,7 @@ Teď můžete přejít k vytváření modelů a nasazení modelů v [Machine Lea
 
   Následující diagram znázorňuje experiment odhadnout množství dané tip:
 
-  ![Diagram experimentu](./media/hive-walkthrough/11TZWgV.png)
+  ![Diagram experimentu odhadnout množství tip](./media/hive-walkthrough/11TZWgV.png)
 
   b. Regrese problémů měříme přesností do predikce. prohlédněte kvadratické chyby v předpovědi a koeficient spolehlivosti:
 

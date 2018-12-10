@@ -15,12 +15,12 @@ ms.date: 10/19/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 89852e90daa548dc82455cb6317d367b7423ba65
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0f1b46176ba440a11d1584846019859c63d2f263
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425203"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135776"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Povolit vzdálený přístup k Sharepointu pomocí Azure AD Application Proxy
 
@@ -163,7 +163,7 @@ Pokud chcete nakonfigurovat KCD, opakujte následující kroky pro každý poč�
 
 Teď, když jste povolili Sharepointu pro protokol Kerberos a nakonfigurované KCD, jste připraveni publikovat farmy služby SharePoint pro vzdálený přístup prostřednictvím Proxy aplikací Azure AD.
 
-1. Publikování webu služby SharePoint s následujícím nastavením. Podrobné pokyny najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md). 
+1. Publikování webu služby SharePoint s následujícím nastavením. Podrobné pokyny najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md). 
    - **Interní adresa URL**: adresa URL Sharepointového webu interně, jako například **https://SharePoint/**. V tomto příkladu je nutné použít **https**
    - **Metoda předběžného ověření**: Azure Active Directory
    - **Přeložit adresy URL v hlavičkách**: Ne

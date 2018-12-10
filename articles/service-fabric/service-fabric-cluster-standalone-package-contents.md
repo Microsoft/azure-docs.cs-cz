@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: afb6c8345cd71e7d39b7f3a0b2307c99cf31b449
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a34ad340463faf0cdccdb7fa8b87283de60b4cc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253328"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141607"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Obsah balíčku Service Fabric Standalone pro systém Windows Server
 V [stáhli](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samostatného balíčku, najdete následující soubory:
@@ -40,6 +40,7 @@ V [stáhli](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samos
 | Tools\ServiceFabricUpdateService.zip |Nástroj, který se používá k povolení automatického upgradu kódu pro clustery, které nemají přístup k Internetu. Další podrobnosti najdete [zde](service-fabric-cluster-upgrade-windows-server.md)|
 
 **Šablony** 
+
 | **Název souboru** | **Krátký popis** |
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.json |Soubor ukázky konfigurace clusteru, který obsahuje nastavení nezabezpečenou se třemi uzly, jednoho počítače (nebo virtuálním počítači) vývojový cluster, včetně informací pro každý uzel v clusteru. |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: fe564e9809a3621ca04e4dad75488fb255f7dc0e
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5e18a4690eacaaeaa4422379fc8a4e3d2a02e717
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682941"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134161"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Shromažďování a zpracování dat protokolu z vašich prostředků Azure
 
@@ -40,7 +40,7 @@ Tady jsou některé věci, které vám pomůžou s využitím diagnostických pr
 
 * Uložte je do [ **účtu úložiště** ](monitoring-archive-diagnostic-logs.md) pro auditování nebo ruční kontrolu. Můžete určit pomocí uchování (ve dnech) **nastavení diagnostiky prostředků**.
 * [Stream je **Event Hubs** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) za účelem ingestování datových vlastní analýzy řešení, jako je například Power BI nebo služby třetích stran.
-* Analyzovat pomocí [Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md)
+* Analyzovat pomocí [Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md), ve kterém budou data zapsána okamžitě ke službě Log Analytics bez nutnosti nejprve zapíše data do úložiště.  
 
 Můžete použít účet úložiště nebo oboru názvů Event Hubs, která není ve stejném předplatném jako ta, které vysílá protokoly. Uživatel, který konfiguruje nastavení, musí mít správný přístup RBAC k oběma předplatným.
 
@@ -63,7 +63,7 @@ Protokolů diagnostiky prostředků je konfigurovat pomocí nastavení diagnosti
     - Pokud nejsou nastavené zásady uchovávání informací, ale ukládání protokolů v účtu úložiště je zakázaný (například pokud pouze jsou vybrané možnosti služby Event Hubs nebo Log Analytics), zásady uchovávání informací nemají žádný vliv.
     - Zásady uchovávání informací jsou použitých za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště.
 
-Tato nastavení se snadno konfigurovat přes nastavení diagnostiky na portálu, prostřednictvím Azure Powershellu a příkazy rozhraní příkazového řádku nebo prostřednictvím [REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/).
+Tato nastavení se konfigurují snadno v portálu s příkazy prostředí Azure PowerShell a rozhraní příkazového řádku nebo pomocí nastavení diagnostiky [REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/).
 
 > [!NOTE]
 > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.

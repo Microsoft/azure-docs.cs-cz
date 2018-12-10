@@ -1,5 +1,5 @@
 ---
-title: Přesun dat do a z úložiště objektů Blob v Azure | Dokumentace Microsoftu
+title: Přesun dat do a z úložiště objektů Blob v Azure – vědecké zpracování týmových dat
 description: Přesun dat do a z úložiště objektů Blob v Azure
 services: machine-learning
 author: marktab
@@ -10,17 +10,20 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: fa3fd5dfdd0fbdb8200b0c5c8df512caedbe735c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a37c19ac0d3c053644b2f1f970ef9f84eac2f1df
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441838"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139843"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Přesun dat do a z úložiště objektů Blob v Azure
 
 Vědecké zpracování týmových dat vyžaduje, aby se data ingestují nebo načtena do celé řady různých úložiště prostředí ji zpracovat nebo analyzovat nejvhodnějším způsobem v každé fázi procesu.
+
+## <a name="different-technologies-for-moving-data"></a>Různé technologie pro přesun dat
+
 Následující články popisují, jak přesunout data do a z Azure Blob storage pomocí různých technologií.
 
 * [Azure Storage Exploreru](move-data-to-azure-blob-using-azure-storage-explorer.md)
@@ -35,6 +38,8 @@ Metoda je pro vás nejvhodnější, závisí na váš scénář. [Scénáře pro
 > 
 > 
 
+## <a name="using-azure-data-factory"></a>Pomocí služby Azure Data Factory
+
 Jako alternativu můžete použít [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) na: 
 
 * Vytvoření a naplánování kanálu, který se stáhne data z úložiště objektů blob v Azure 
@@ -45,7 +50,7 @@ Jako alternativu můžete použít [Azure Data Factory](https://azure.microsoft.
 Další informace najdete v tématu [vytváření prediktivních kanálů pomocí služby Azure Data Factory a Azure Machine Learning](../../data-factory/transform-data-using-machine-learning.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Tento dokument předpokládá, že máte předplatné Azure, účet úložiště a odpovídající klíč úložiště pro tento účet. Před nahrávání a stahování dat, musíte znát vaše služby Azure storage účtu název a klíč účtu.
+Tento článek předpokládá, že máte předplatné Azure, účet úložiště a odpovídající klíč úložiště pro tento účet. Před nahrávání a stahování dat, musíte znát vaše služby Azure storage účtu název a klíč účtu.
 
 * Nastavení předplatného služby Azure, najdete v článku [zkušební verze na měsíc zdarma](https://azure.microsoft.com/pricing/free-trial/).
 * Pokyny k vytvoření účtu úložiště a účet a informace o klíči najdete v tématu [účty Azure storage](../../storage/common/storage-create-storage-account.md).

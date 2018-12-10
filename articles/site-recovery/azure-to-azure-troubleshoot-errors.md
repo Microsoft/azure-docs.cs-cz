@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: dc89eadfc0038d74ced431693c321944a7ee3a12
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a524c773b0f4f6d3dc14830d4c3200512f8b287c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834362"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140910"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Řešení potíží s replikací virtuálních počítačů Azure do Azure
 
@@ -184,15 +184,15 @@ U replikace Site Recovery pro práci, odchozí připojení ke konkrétní adresy
 
 
  - **Řešení**
-  1.    Agent služby mobility zjišťuje nastavení proxy serveru z aplikace Internet Explorer ve Windows a /etc/environment v Linuxu.
-  2.  Pokud chcete nastavit proxy server pouze pro služby Mobility Azure Site Recovery, můžete zadat podrobnosti o serveru proxy v ProxyInfo.conf umístění:</br>
-      - ``/usr/local/InMage/config/`` na ***Linux***
-      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` na ***Windows***
-  3.    ProxyInfo.conf by měl mít nastavení proxy serveru v následujícím formátu INI. </br>
+   1.   Agent služby mobility zjišťuje nastavení proxy serveru z aplikace Internet Explorer ve Windows a /etc/environment v Linuxu.
+   2.  Pokud chcete nastavit proxy server pouze pro služby Mobility Azure Site Recovery, můžete zadat podrobnosti o serveru proxy v ProxyInfo.conf umístění:</br>
+       - ``/usr/local/InMage/config/`` na ***Linux***
+       - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` na ***Windows***
+   3.   ProxyInfo.conf by měl mít nastavení proxy serveru v následujícím formátu INI. </br>
                    *proxy [Server]*</br>
                    *Adresa =http://1.2.3.4*</br>
                    *Port = 567*</br>
-  4. Agenta služby Mobility Azure Site Recovery podporuje pouze ***neověřené proxy servery***.
+   4. Agenta služby Mobility Azure Site Recovery podporuje pouze ***neověřené proxy servery***.
 
 ### <a name="fix-the-problem"></a>Tento problém vyřešit
 Na seznam povolených [požadované adresy URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) nebo [požadované rozsahy IP adres](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges), postupujte podle kroků v [sítě dokument s pokyny](site-recovery-azure-to-azure-networking-guidance.md).

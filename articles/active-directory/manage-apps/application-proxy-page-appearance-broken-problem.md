@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2ebcf225fb0959b5c72c3cea50f2f1386beb1457
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 6354b4b0224effb1eef063779dba736cb6263286
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356385"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141624"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Stránka aplikace se nezobrazuje správně pro aplikaci Proxy aplikací
 
@@ -39,4 +39,4 @@ Pokud není možné publikovat všechny prostředky v rámci stejné aplikaci, m
 Proto doporučujeme použít [vlastních domén](application-proxy-configure-custom-domain.md) řešení. Toto řešení vyžaduje však, že vlastní certifikát pro vaši doménu a vaše aplikace používat plně kvalifikované názvy domény (FQDN). Další možnosti najdete v článku [Poradce při potížích s nefunkční odkazy dokumentaci](application-proxy-page-links-broken-problem.md).
 
 ## <a name="next-steps"></a>Další postup
-[Publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md)
+[Publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md)

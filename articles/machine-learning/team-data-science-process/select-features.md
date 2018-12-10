@@ -1,5 +1,5 @@
 ---
-title: Výběr v vědecké zpracování týmových dat funkcí | Dokumentace Microsoftu
+title: Výběr funkcí v vědecké zpracování týmových dat
 description: Vysvětluje účel výběr součástí a poskytuje příklady jejich role v procesu rozšíření dat služby machine learning.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: b439f7245dd09a2f8a7ffe5f3b3c5396786220af
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: de8070906f7b2470378fb631f2e94a96b4a2960d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442368"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138649"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Výběr funkcí ve vědeckém zpracování týmových dat (TDSP)
 Tento článek vysvětluje účely výběr součástí a poskytuje příklady jejich rolí v procesu rozšíření dat služby machine learning. Tyto příklady jsou vykreslovány vedle z Azure Machine Learning Studio. 
@@ -42,21 +42,21 @@ Mimo jiné široce použité druh metody výběru funkcí v rámci pod dohledem 
 
 V Azure Machine Learning Studio jsou moduly, které jsou k dispozici pro výběr funkcí. Jak je znázorněno na následujícím obrázku, patří tyto moduly [výběr součástí na základě filtru] [ filter-based-feature-selection] a [lineární analýza Discriminant Fisher] [ fisher-linear-discriminant-analysis].
 
-![Příklad výběru funkce](./media/select-features/feature-Selection.png)
+![Funkce výběru modulů](./media/select-features/feature-Selection.png)
 
 Zvažte například použití [výběr součástí na základě filtru] [ filter-based-feature-selection] modulu. Pro usnadnění práce pokračujte v používání příklad dolování textu. Předpokládejme, že chcete sestavit regresní model vytvořený sadou funkcí 256 prostřednictvím [Hashování] [ feature-hashing] modulu a že je proměnná odpovědi "Sloupec1", který obsahuje knihy zkontrolujte hodnocení od 1 do 5. Nastavením "Funkce bodování metoda" na "Pearson korelace", "cílový sloupec" "Sloupec1" a "Počet požadovaných funkcí" na 50. Potom modulu [výběr součástí na základě filtru] [ filter-based-feature-selection] vytvoří datovou sadu obsahující 50 funkce společně s cílový atribut "Sloupec1". Následující obrázek znázorňuje tok tento experiment a vstupní parametry:
 
-![Příklad výběru funkce](./media/select-features/feature-Selection1.png)
+![Vlastnosti modulu výběr součástí na základě filtru](./media/select-features/feature-Selection1.png)
 
 Následující obrázek znázorňuje výsledné datové sady:
 
-![Příklad výběru funkce](./media/select-features/feature-Selection2.png)
+![Výslednou sadu dat pro modul filtrovat na základě výběru funkce](./media/select-features/feature-Selection2.png)
 
 Jednotlivé funkce vypočítává se skóre na základě na Pearson korelace mezi samostatně a atribut target "Sloupec1". Funkce s nejvyšší skóre, které jsou udržovány.
 
 Odpovídající skóre vybrané funkce jsou vidět na následujícím obrázku:
 
-![Příklad výběru funkce](./media/select-features/feature-Selection3.png)
+![Skóre pro modul filtrovat na základě výběru funkce](./media/select-features/feature-Selection3.png)
 
 Použitím to [výběr součástí na základě filtru] [ filter-based-feature-selection] modulu, 50 z celkového počtu 256 funkce jsou vybrané, protože mají největší korelační funkcí Cílová proměnná "Sloupec1" podle hodnocení – metoda "Pearson korelace".
 

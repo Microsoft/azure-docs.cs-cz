@@ -13,12 +13,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 55e262e1855eb6ab50c2d32e7e8cd4bb9175a593
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: d382a71de34e6c1527d810b0576e518b9101cf7d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50962550"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132750"
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Proxy aplikací a Qlik Sense 
 Azure Active Directory Application Proxy a Qlik Sense uzavřeli partnerství s společně k zajištění, že budete moct snadno použít k poskytnutí vzdáleného přístupu pro vaše nasazení Qlik Sense Proxy aplikací.  
@@ -27,13 +27,13 @@ Azure Active Directory Application Proxy a Qlik Sense uzavřeli partnerství s s
 Zbývající část tento scénář předpokládá, že provedli následující:
  
 - Nakonfigurované [Qlik Sense](https://community.qlik.com/docs/DOC-19822). 
-- [Nainstalovat konektor Proxy aplikací](application-proxy-enable.md#install-and-register-a-connector) 
+- [Nainstalovat konektor Proxy aplikací](application-proxy-add-on-premises-application.md#install-and-register-a-connector) 
  
 ## <a name="publish-your-applications-in-azure"></a>Publikování aplikací v Azure 
 Chcete-li publikovat QlikSense, je potřeba publikovat dvě aplikace v Azure.  
 
 ### <a name="application-1"></a>Aplikace #1: 
-Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější návod k kroky 1-8, viz [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md). 
+Postupujte podle těchto kroků a publikujte svou aplikaci. Pro podrobnější návod k kroky 1-8, viz [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md). 
 
 
 1. Přihlaste se k webu Azure portal jako globální správce. 
@@ -63,6 +63,6 @@ Další informace o publikování Qlik Sense přes Proxy aplikací, najdete v č
 
 ## <a name="next-steps"></a>Další postup
 
-- [Publikování aplikací pomocí Proxy aplikace](application-proxy-publish-azure-portal.md)
+- [Publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md)
 - [Práce s konektory Proxy aplikací](application-proxy-connector-groups.md)
 

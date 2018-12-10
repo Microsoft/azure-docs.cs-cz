@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 00e5a77bdf8554d473194b2e84947d7adb10df90
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 5e24ec6124b6a5f7dea66e33018dffc753966075
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955249"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141964"
 ---
 # <a name="dtu-based-service-tiers"></a>Úrovně služeb na základě DTU
 
@@ -31,6 +31,7 @@ Na základě jednotek DTU úrovně jsou rozlišené pomocí celou řadu velikost
 ## <a name="compare-the-dtu-based-service-tiers"></a>Porovnání úrovní služeb na základě DTU
 
 Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikových procesů, úložiště a požadavky na výkon.
+
 ||Basic|Standard|Premium|
 | :-- | --: |--:| --:| --:|
 |Cílové úlohy|Vývoj a provoz|Vývoj a provoz|Vývoj a provoz||

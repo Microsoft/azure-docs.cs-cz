@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: cc60fd6a9d5f154d26fc9c495f190296453a0db0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 22e7e513c7ec015b070ae37c1dbdd168404ee768
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106647"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140741"
 ---
 # <a name="migrate-from-workbench-to-the-latest-version-of-azure-machine-learning-service"></a>Migrace z aplikace Workbench na nejnovější verzi služby Azure Machine Learning 
 
@@ -108,7 +108,7 @@ az ml history download
 <a name="dataprep"></a>
 
 ## <a name="data-preparation-files"></a>Příprava souborů dat
-Příprava souborů dat nepřenosných bez aplikace Workbench. Ale můžete pořád Příprava modelování, pomocí nové Azure Machine Learning Prep sady SDK pro Data libovolné velikosti datové sady nebo pomocí Azure Databricks pro velkých datových sad.  [Další informace o získání přípravy dat SDK](how-to-data-prep.md). 
+Příprava souborů dat nepřenosných bez aplikace Workbench. Ale můžete pořád Příprava modelování, pomocí nové Azure Machine Learning Prep sady SDK pro Data libovolné velikosti datové sady nebo pomocí Azure Databricks pro velkých datových sad. [Další informace o získání přípravy dat SDK](https://aka.ms/data-prep-sdk).
 
 ## <a name="next-steps"></a>Další postup
 

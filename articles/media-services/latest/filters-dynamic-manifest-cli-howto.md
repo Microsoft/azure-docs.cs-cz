@@ -1,6 +1,6 @@
 ---
-title: Škálování média rezervované jednotky – Azure | Dokumentace Microsoftu
-description: V tomto tématu je uveden přehled škálování zpracování médií pomocí Azure Media Services.
+title: Vytváření filtrů pomocí Azure Media Services pomocí rozhraní příkazového řádku | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak vytváření filtrů pomocí Media Services pomocí rozhraní příkazového řádku.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: juliako
-ms.openlocfilehash: 9099429097efb17629e88318430f004f0f763cc5
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.custom: seodec18
+ms.openlocfilehash: a16024ad5d8b9d2355b579b9b508ef0de91f2ccd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52336785"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133855"
 ---
 # <a name="creating-filters-with-cli"></a>Vytváření filtrů pomocí rozhraní příkazového řádku 
 

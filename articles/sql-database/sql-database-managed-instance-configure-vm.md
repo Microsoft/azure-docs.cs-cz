@@ -11,21 +11,21 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 97362cb91c16f91d637283df7a583f685124a21b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/07/2018
+ms.openlocfilehash: ecaf0f0d490decae0fc6298415b15d4d5ddbb4fd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913666"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139091"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Rychlý start: Konfigurace virtuálního počítače Azure pro připojení k Azure SQL Database Managed Instance
 
-Této šablony rychlý start ukazuje, jak nakonfigurovat virtuální počítač Azure pro připojení k Azure SQL Database Managed Instance pomocí SQL Server Management Studio (SSMS). Rychlý start ukazuje, jak připojit z místních klientských počítačů pomocí připojení point-to-site, najdete v článku [konfigurace připojení typu point-to-site](sql-database-managed-instance-configure-p2s.md) 
+Tento rychlý start ukazuje, jak nakonfigurovat virtuální počítač Azure pro připojení k Azure SQL Database Managed Instance pomocí SQL Server Management Studio (SSMS). Rychlý start ukazuje, jak připojit z místních klientských počítačů pomocí připojení point-to-site, najdete v článku [konfigurace připojení typu point-to-site](sql-database-managed-instance-configure-p2s.md) 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento rychlý start využívá jako výchozí bod prostředky vytvořené v rámci tohoto rychlého startu: [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md).
+Tento rychlý start používá prostředky vytvořené v rámci [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md) jako výchozí bod.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -33,17 +33,17 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>Vytvořit novou podsíť ve virtuální síti spravované Instance
 
-Následujícím postupem se vytvoří novou podsíť ve virtuální síti Instance spravované pro virtuální počítač Azure se připojit k Managed Instance. Podsíť Managed Instance je vyhrazená pro Managed instance a všechny další prostředky (například Azure Virtual Machines) nelze vytvořit v této podsíti. 
+Následujícím postupem se vytvoří novou podsíť ve virtuální síti spravované Instance tak, že virtuální počítač Azure se můžete připojit k Managed Instance. Podsíť Managed Instance je vyhrazen pro Managed instance. Všechny další prostředky, jako jsou virtuální počítače Azure, nemůžete vytvořit v této podsíti. 
 
-1. Otevřete skupinu prostředků pro Managed Instance, které jste vytvořili [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md) rychlý start a klikněte na virtuální síť pro Managed Instance a potom klikněte na tlačítko **podsítě**.
+1. Otevřete skupinu prostředků pro Managed Instance, které jste vytvořili [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md) rychlý start. Výběr virtuální sítě pro Managed Instance.
 
    ![Prostředky spravované instance](./media/sql-database-managed-instance-configure-vm/resources.png)
 
-2. Klikněte na tlačítko **+** podepsat vedle **podsítě** k vytvoření nové podsítě.
+2. Vyberte **podsítě** a pak vyberte **+ podsíť** k vytvoření nové podsítě.
 
    ![Spravovaná Instance podsítě](./media/sql-database-managed-instance-configure-vm/subnets.png)
 
-3. Vyplňte formulář pomocí požadované informace s použitím informací v následující tabulce:
+3. Vyplňte formulář, použijte informace uvedené v této tabulce:
 
    | Nastavení| Navrhovaná hodnota | Popis |
    | ---------------- | ----------------- | ----------- | 
@@ -51,12 +51,12 @@ Následujícím postupem se vytvoří novou podsíť ve virtuální síti Instan
    | **Rozsah adres (blok CIDR)** | Platný rozsah | Výchozí hodnota je vhodný pro tento rychlý start.|
    | **Skupina zabezpečení sítě** | Žádný | Výchozí hodnota je vhodný pro tento rychlý start.|
    | **Směrovací tabulka** | Žádný | Výchozí hodnota je vhodný pro tento rychlý start.|
-   | ** Koncové body služby ** | Vybraná 0 | Výchozí hodnota je vhodný pro tento rychlý start.|
+   | **Koncové body služby** | Vybraná 0 | Výchozí hodnota je vhodný pro tento rychlý start.|
    | **Delegování podsítě** | Žádný | Výchozí hodnota je vhodný pro tento rychlý start.|
  
    ![Nová podsíť Managed Instance pro klienta virtuálního počítače](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
-4. Klikněte na tlačítko **OK** vytvořte tato další podsíť ve virtuální síti spravované Instance.
+4. Vyberte **OK** vytvořte tato další podsíť ve virtuální síti spravované Instance.
 
 ## <a name="create-a-virtual-machine-in-the-new-subnet-in-the-vnet"></a>Vytvoření virtuálního počítače v nové podsíti ve virtuální síti
 
@@ -64,40 +64,40 @@ Následující kroky ukazují, jak vytvořit virtuální počítač v nové pods
 
 ## <a name="prepare-the-azure-virtual-machine"></a>Příprava virtuálních počítačů Azure
 
-Protože spravované Instance SQL je umístěn v privátní virtuální síť, musíte vytvořit virtuální počítač Azure s některé nainstalovaný klientský nástroj SQL jako SQL Server Management Studio nebo Azure Data Studio pro připojení k Managed Instance a provádění dotazů. Tento rychlý start využívá SQL Server Management Studio.
+Protože spravované Instance SQL je umístěn v privátní virtuální síť, musíte vytvořit virtuální počítač Azure nainstalovaný nástroj klienta SQL, jako je SQL Server Management Studio nebo Azure Data Studio. Tento nástroj umožňuje připojit k Managed Instance a spouštění dotazů. Tento rychlý start využívá SQL Server Management Studio.
 
 Nejjednodušší způsob, jak vytvořit virtuální počítač klienta se všechny potřebné nástroje, je použití šablon Azure Resource Manageru.
 
-1. Klikněte na následující tlačítko a vytvoření virtuálního počítače klienta a nainstalujte SQL Server Management Studio (ujistěte se, že jste jsou přihlášeni k webu Azure portal na nové kartě prohlížeče):
+1. Ujistěte se, že jste přihlášení k webu Azure portal na nové kartě prohlížeče. Přejděte na následující tlačítko a vytvoření virtuálního počítače klienta a nainstalujte SQL Server Management Studio:
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-2. Vyplňte formulář pomocí požadované informace s použitím informací v následující tabulce:
+2. Vyplňte formulář pomocí informací v následující tabulce:
 
    | Nastavení| Navrhovaná hodnota | Popis |
    | ---------------- | ----------------- | ----------- |
-   | **Předplatné** | Platné předplatné | Musí být předplatné, ve kterém máte oprávnění k vytvoření nových prostředků |
-   | **Skupina prostředků** |Skupiny prostředků, kterou jste zadali v [vytvoření Managed Instance](sql-database-managed-instance-get-started.md) rychlý start.|Musí se jednat o skupinu prostředků, ve kterém virtuální síť existuje.|
-   | **Umístění** | Umístění pro skupinu prostředků | Tato hodnota se vyplní na základě vybrané skupiny prostředků | 
+   | **Předplatné** | Platné předplatné | Musí být předplatné, ve kterém máte oprávnění k vytvoření nových prostředků. |
+   | **Skupina prostředků** |Skupiny prostředků, kterou jste zadali v [vytvoření Managed Instance](sql-database-managed-instance-get-started.md) rychlý start.|Tato skupina prostředků musí být ten, ve kterém virtuální síť existuje.|
+   | **Umístění** | Umístění pro skupinu prostředků | Tato hodnota se vyplní na základě vybrané skupiny prostředků. | 
    | **Název virtuálního počítače**  | Libovolné platné jméno | Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Uživatelské jméno správce**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte „serveradmin“, protože tento název je vyhrazená role na úrovni serveru.| 
-   |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
-   | **Velikost virtuálního počítače** | Libovolné platné velikosti | Výchozí v této šabloně aplikace ** Standard_B2s stačí pro účely tohoto rychlého startu. |
-   | **Umístění**|[resourceGroup () .location].| Tuto hodnotu nemůžete změnit |
+   |**Uživatelské jméno správce**|Libovolné platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte "serveradmin", protože to je vyhrazené serverové role.<br>Použít toto uživatelské jméno je vždycky [připojit k virtuálnímu počítači](#connect-to-virtual-machine).| 
+   |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Toto heslo se používá pokaždé, když jste [připojit k virtuálnímu počítači](#connect-to-virtual-machine).|
+   | **Velikost virtuálního počítače** | Libovolné platné velikosti | Výchozí hodnota v této šabloně z **Standard_B2s** stačí pro účely tohoto rychlého startu. |
+   | **Umístění**|[resourceGroup () .location].| Tato hodnota se nezmění. |
    | **Název virtuální sítě**|Umístění, které jste vybrali dříve|Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/).|
-   | **Název podsítě**|Název podsítě, kterou jste vytvořili v předchozím postupu| Nevybírejte podsíť, ve které jste vytvořili spravovanou instanci|
-   | **artefakty umístění** | [.properties.templateLink.uri nasazení ()]  Tuto hodnotu nemůžete změnit |
-   | **token Sas umístění artefaktů** | Ponechte prázdné | Tuto hodnotu nemůžete změnit |
+   | **Název podsítě**|Název podsítě, kterou jste vytvořili v předchozím postupu| Neklikejte podsíť, ve které jste vytvořili spravovanou instanci.|
+   | **artefakty umístění** | [.properties.templateLink.uri nasazení ()] | Tato hodnota se nezmění. |
+   | **token Sas umístění artefaktů** | Ponechte prázdné | Tato hodnota se nezmění. |
 
    ![vytvoření klientského virtuálního počítače](./media/sql-database-managed-instance-configure-vm/create-client-sql-vm.png)
 
    Pokud jste použili navrhované název virtuální sítě a podsítě výchozí v [vytvoření Managed Instance](sql-database-managed-instance-get-started.md), nemusíte změnit poslední dva parametry. V opačném případě byste měli změnit tyto hodnoty na hodnoty, které jste zadali při nastavování síťového prostředí.
 
 3. Vyberte **vyjadřuji souhlas s podmínkami a ujednáními uvedenými nahoře** zaškrtávací políčko.
-4. Klikněte na tlačítko **nákupní** k nasazení virtuálních počítačů Azure ve vaší síti.
-5. Kliknutím na ikonu **Oznámení** zobrazte stav nasazení.
-   
-   Nepokračujte, dokud se vytvoří virtuální počítač Azure. 
+4. Vyberte **nákupní** k nasazení virtuálních počítačů Azure ve vaší síti.
+5. Vyberte **oznámení** ikonu k zobrazení stavu nasazení.
+
+Nechcete pokračovat, dokud se vytvoří virtuální počítač Azure. 
 
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 
@@ -107,33 +107,33 @@ Následující kroky ukazují, jak se k nově vytvořenému virtuálnímu počí
 
     ![Virtuální počítač](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. Klikněte na **Připojit**. 
+2. Vyberte **Connect** (Připojit). 
    
    S veřejnou IP adresu a port pro virtuální počítač se zobrazí formulář Remote Desktop Protocol soubor (RDP). 
 
    ![Formulář protokolu RDP](./media/sql-database-managed-instance-configure-vm/rdp.png)  
 
-3. Klikněte na tlačítko **stáhnout soubor RDP**.
+3. Vyberte **stáhnout soubor RDP**.
  
    > [!NOTE]
    > SSH můžete také použít pro připojení k vašemu virtuálnímu počítači.
 
 4. Zavřít **připojit k virtuálnímu počítači** formuláře.
 5. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. 
-6. Po zobrazení výzvy klikněte na **Připojit**. Na počítači Mac budete potřebovat klienta protokolu RDP, jako je například tento [Klient vzdálené plochy](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) na Mac App Storu.
+6. Po zobrazení výzvy vyberte **připojit**. Na počítači Mac budete potřebovat klienta protokolu RDP, jako je například tento [Klient vzdálené plochy](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) na Mac App Storu.
 
-6. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače, a potom klikněte na **Ok**.
+6. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače a pak zvolte **OK**.
 
-7. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na **Ano** nebo **Pokračovat** a pokračujte v připojení.
+7. Při přihlášení se může zobrazit upozornění na certifikát. Zvolte **Ano** nebo **pokračovat** pokračujte s připojením.
 
-Na řídicím panelu Správce serveru jste připojeni ke svému virtuálnímu počítači.
+Jste připojeni k virtuálnímu počítači v řídicím panelu Správce serveru.
 
 ## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Použití SSMS k připojení k Managed Instance
 
 1. Ve virtuálním počítači otevřete SQL Server Management Studio (SSMS).
  
-   Bude trvat několik minut, chcete-li otevřít, protože je potřeba k dokončení její konfigurace je to při prvním spuštění aplikace SSMS.
-2. V **připojit k serveru** dialogového okna zadejte plně kvalifikovaný **název hostitele** pro Managed Instance v **název serveru** vyberte **systému SQL Server Ověřování**, zadejte přihlašovací jméno a heslo a potom klikněte na tlačítko **připojit**.
+   Trvá několik okamžiků otevřít, protože je potřeba dokončit konfiguraci, protože se jedná o první čas spuštění aplikace SSMS.
+2. V **připojit k serveru** dialogového okna zadejte plně kvalifikovaný **název hostitele** pro Managed Instance v **název serveru** pole. Vyberte **ověřování systému SQL Server**, zadejte své uživatelské jméno a heslo a pak vyberte **připojit**.
 
     ![Připojení přes SSMS](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
@@ -143,4 +143,4 @@ Po připojení můžete zobrazit systémové a uživatelské databáze v uzlu Da
 
 - Rychlý start ukazuje, jak připojit z místních klientských počítačů pomocí připojení point-to-site, najdete v části [konfigurace připojení typu point-to-site](sql-database-managed-instance-configure-p2s.md).
 - Přehled možností připojení aplikací najdete v článku o [připojení aplikací ke spravované instanci](sql-database-managed-instance-connect-app.md).
-- Pokud chcete obnovit stávající databázi SQL Serveru z místní do spravované instance, můžete k migraci použít [službu Azure Database Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) a obnovit zálohu databáze nebo můžete k obnovení zálohy databáze použít [příkaz T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md).
+- Obnovit existující databáze SQL serveru v místním do Managed instance, můžete použít [Azure Database Migration Service (DMS) pro migraci](../dms/tutorial-sql-server-to-managed-instance.md) nebo [příkaz T-SQL RESTORE](sql-database-managed-instance-get-started-restore.md) obnovit z záložní soubor databáze.

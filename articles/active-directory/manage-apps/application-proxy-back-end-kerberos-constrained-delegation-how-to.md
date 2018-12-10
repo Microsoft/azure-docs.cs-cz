@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 52157797bb01fc73c551ca9654b2360d161b653d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2a55e39414cd691c48b015b3aae73f93cbb95aab
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356451"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134654"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s vynuceným použitím protokolu Kerberos konfigurace delegování pro Proxy aplikací
 
@@ -32,7 +32,7 @@ Tento článek obsahuje jediný bod odkaz, který pomáhá při řešení potí�
 
 Tento článek neposkytuje následující předpoklady:
 
--   Nasazení Proxy aplikací Azure AD za [začít pracovat s Proxy aplikací](application-proxy-enable.md) a obecného přístupu k aplikacím bez KCD fungovat podle očekávání.
+-   Nasazení Proxy aplikací Azure AD za [začít pracovat s Proxy aplikací](application-proxy-add-on-premises-application.md) a obecného přístupu k aplikacím bez KCD fungovat podle očekávání.
 
 -   Publikované cílové aplikace je založena na Internetové informační služby (IIS) a Microsoft implementace protokolu Kerberos.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 0d809f9a1b3abbb284c3f7e0c27eb9c236692a3f
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 85a1e874ad80d0a3251c93c9c1199f56ab045527
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386461"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140549"
 ---
 # <a name="read-before-you-scale"></a>Si přečtěte, než převedete
 Škálování výpočetních prostředků ke zdroji pracovní zatížení aplikace vyžaduje úmyslné plánování, bude téměř vždy trvat déle než hodinu k dokončení pro produkční prostředí a vyžaduje, abyste úlohy a obchodní kontext; ve skutečnosti Pokud tato aktivita před nikdy uděláte, se doporučuje začnete tím, že čtení a pochopení [informace o plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity), než budete pokračovat zbytek tohoto dokumentu. Toto doporučení je aby se zabránilo neúmyslnému LiveSite problémům a doporučuje se také, že je úspěšně otestovat operace, které se rozhodnete provést proti mimo produkční prostředí. Kdykoli můžete [oznámit problémy v produkčním prostředí nebo požádat o placené podpory pro Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure). Pro techniky přidělené k provedení těchto operací, které mají odpovídající kontext Tento článek popisuje, operace škálování, ale je nutné rozhodnout a pochopit operace, které jsou vhodné pro případy použití; například prostředky škálování (CPU, úložiště, paměť) směr škálování (vertikálně nebo horizontálně) a jaké operace k provedení (nasazení prostředku šablony, portálu, Powershellu nebo rozhraní příkazového řádku).
@@ -103,10 +103,10 @@ Uzly uvedené v Service Fabric Exploreru se odraz jaké systémové služby Serv
 
 Pokud chcete mít jistotu, že je uzel odebrán při odebrání virtuálního počítače, máte dvě možnosti:
 
-1) Zvolte úroveň odolnosti Gold a Silver pro typy uzlů v clusteru, který poskytuje integraci infrastruktury. Které pak automaticky odebere uzly z našich stavu služby (převzetí služeb při selhání) systému při vertikálně snížit kapacitu.
+1. Zvolte úroveň odolnosti Gold a Silver pro typy uzlů v clusteru, který poskytuje integraci infrastruktury. Které pak automaticky odebere uzly z našich stavu služby (převzetí služeb při selhání) systému při vertikálně snížit kapacitu.
 Odkazovat na [podrobnosti o sem úrovně odolnosti](service-fabric-cluster-capacity.md)
 
-2) Jakmile zmenšování instance virtuálního počítače je potřeba volat [rutiny Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate).
+2. Jakmile zmenšování instance virtuálního počítače je potřeba volat [rutiny Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate).
 
 > [!NOTE]
 > Clustery Service Fabric vyžadují určitý počet uzlů dá zvládnout za celou dobu, aby bylo možné zachovat dostupnost a zachovat stav – označuje jako "Správa kvora." Proto je obvykle bezpečné vypnout všechny počítače v clusteru, pokud jste nejdřív provedli [úplného zálohování vašeho státu](service-fabric-reliable-services-backup-restore.md).

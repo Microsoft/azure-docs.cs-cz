@@ -1,6 +1,6 @@
 ---
-title: 'Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse | Dokumentace Microsoftu'
-description: Proces pokročilých analýz a technologie v akci
+title: Sestavit a nasadit model pomocí SQL Data Warehouse – vědecké zpracování týmových dat
+description: Sestavujte a nasazujte pomocí SQL Data Warehouse s veřejně dostupnou datovou sadou model strojového učení.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 87c3b0b597a401041b8bf1b6f3997431d8816e92
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: ed3731db88d7f829634a03c55e5ec033c03e4b0f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445700"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139116"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Vědecké zpracování týmových dat v akci: použití služby SQL Data Warehouse
 V tomto kurzu jsme vás provede procesem vytvoření a nasazení modelu strojového učení pomocí SQL Data Warehouse (SQL data Warehouse) veřejně dostupné datové sady – [cesty taxíkem NYC](http://www.andresmh.com/nyctaxitrips/) datové sady. Binární klasifikační model vytvořený předpovídá, zda tip platí pro cesty a které předpovědět distribuce pro tip částky zaplacené jsou popsány také pro víc tříd klasifikačních a regresních modelů.
@@ -117,7 +117,7 @@ Otevřete konzolu příkazového prostředí Windows PowerShell. Spusťte násle
 
 Po úspěšném spuštění, změní aktuální pracovní adresář na *- DestDir*. Byste měli vidět obrazovka podobná níže uvedenému příkladu:
 
-![][19]
+![Změny v aktuálním pracovním adresáři][19]
 
 Ve vaší *- DestDir*, spusťte následující skript prostředí PowerShell v režimu správce:
 
@@ -321,7 +321,7 @@ Budete muset rozhodnout, které máte duplicitní zdrojové a cílové soubory.
 > 
 > 
 
-![Vykreslení #21][21]
+![Výstup nástroje AzCopy][21]
 
 Můžete použít vlastní data. Pokud jsou vaše data ve vašem místním počítači v reálné aplikaci, můžete stále použít AzCopy k nahrání místních dat do úložiště objektů blob v Azure privátní. Je potřeba jenom změnit **zdroj** umístění, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, v příkazu AzCopy soubor skriptu Powershellu k místnímu adresáři, který obsahuje vaše data.
 
@@ -334,7 +334,7 @@ Tento skript prostředí Powershell také zpřístupní v informacích o Azure S
 
 Po úspěšném spuštění, zobrazí se obrazovka podobná níže uvedenému příkladu:
 
-![][20]
+![Výstup skriptu úspěšná spuštění][20]
 
 ## <a name="dbexplore"></a>Zkoumání dat a vytváření funkcí ve službě Azure SQL Data Warehouse
 V této části provádíme zkoumání a funkce generování dat prostřednictvím spouštění dotazů SQL pro Azure SQL data Warehouse přímo pomocí **Visual Studio Data Tools**. Všechny dotazy SQL, které jsou použity v tomto scénáři najdete v ukázkový skript s názvem *SQLDW_Explorations.sql*. Tento soubor již byl stažen do místního adresáře skript prostředí PowerShell. Můžete také získat z [Githubu](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql). Ale souboru na Githubu, nemá žádné informace o Azure SQL data Warehouse zapojené do elektrické zásuvky.
@@ -571,16 +571,16 @@ Pokud již jste vytvořili pracovní prostor služby Azure ml, můžete přímo 
 
 1. Přihlaste se k vašemu pracovnímu prostoru Azure ml, klikněte na tlačítko "Studio" v horní části a klikněte na "Notebooky" na levé straně webové stránky.
    
-    ![Vykreslení #22][22]
+    ![Klikněte na tlačítko Studio pak poznámkové BLOKY][22]
 2. V levém dolním rohu webové stránky klikněte na tlačítko "NEW" a vyberte "Python 2". Potom zadejte název do poznámkového bloku a klikněte na značku zaškrtnutí k vytvoření nové prázdné IPython Notebook.
    
-    ![Vykreslení #23][23]
+    ![Klikněte na nový, pak vyberte Python 2][23]
 3. Kliknutím na symbol "Jupyter" v levém horním rohu nový IPython Notebook.
    
-    ![Vykreslení #24][24]
+    ![Klikněte na Jupyter symbol][24]
 4. Přetáhnout myší ukázka IPython Notebook pro **stromu** stránku služby Azure ml IPython Notebook, a klikněte na **nahrát**. Potom ukázka IPython Notebook nahraje do služby Azure ml IPython Notebook.
    
-    ![Vykreslení #25][25]
+    ![Klikněte na tlačítko Odeslat][25]
 
 Chcete-li spustit ukázku soubor Pythonu následující balíčky jsou nutné skriptu IPython Notebook nebo Python. Pokud používáte službu Azure ml IPython Notebook, tyto balíčky se předem nainstalované.
 
@@ -684,7 +684,7 @@ Dále podíváme na diagramu pole pro cestu vzdálenost k vizualizaci quantiles.
 
     df1.boxplot(column='trip_distance',return_type='dict')
 
-![Vykreslení #1][1]
+![Pole vykreslení výstupu][1]
 
 ### <a name="visualization-distribution-plot-example"></a>Vizualizace: Příklad diagram distribuce
 Vykreslení, které vizualizují distribuce a histogram vzdálenosti vzorky o jízdách.
@@ -695,7 +695,7 @@ Vykreslení, které vizualizují distribuce a histogram vzdálenosti vzorky o j�
     df1['trip_distance'].plot(ax=ax1,kind='kde', style='b-')
     df1['trip_distance'].hist(ax=ax2, bins=100, color='k')
 
-![Vykreslení #2][2]
+![Distribuce vykreslení výstupu][2]
 
 ### <a name="visualization-bar-and-line-plots"></a>Vizualizace: Pruhové a spojnicové grafy
 V tomto příkladu jsme bin vzdálenost výlet do pěti přihrádek a vizualizaci výsledků binningu.
@@ -709,26 +709,26 @@ Jsme můžete vykreslení výše uvedené přihrádky distribuce v pruhu nebo č
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='bar')
 
-![Vykreslení #3][3]
+![Panel výstupu vykreslení][3]
 
 a
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
-![Vykreslení #4][4]
+![Výstup vykreslení čáry][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Vizualizace: Příklady diagnostického
 Ukážeme korelačního diagramu mezi **o jízdách\_čas\_v\_sekundy** a **o jízdách\_vzdálenost** zobrazíte, pokud se jakákoli korelace
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
-![Vykreslení #6][6]
+![Diagnostického výstupu vztah mezi časem a vzdálenost][6]
 
 Podobně lze kontrolujeme vztah mezi **míra\_kód** a **o jízdách\_vzdálenost**.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
-![Vykreslení #8][8]
+![Diagnostického výstupu vztah mezi kódem a vzdálenost][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>Zkoumání dat na vzorku dat. použití příkazů jazyka SQL v IPython notebook
 V této části se podíváme na distribuce dat pomocí vzorky data, která se ukládají do nové tabulky, kterou jsme vytvořili výše. Všimněte si, že podobné průzkumy je možné provádět pomocí původní tabulky.

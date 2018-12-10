@@ -17,8 +17,56 @@ items:
   expanded: true
 - name: Koncepty
   items:
+  - name: Azure AD Connect a Connect Health
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
+    items:
+    - name: Co je Azure AD Connect a Connect Health?
+      href: whatis-azure-ad-connect.md
+    - name: Volba vhodného ověřování
+      href: https://docs.microsoft.com/azure/security/azure-ad-choose-authn
+    - name: Synchronizace identit a odolnost duplicitních atributů
+  - name: Synchronizace hodnot hash hesel
+    items:
+    - name: Co je synchronizace hodnot hash hesel?
+      href: whatis-phs.md
+    - name: Jak funguje synchronizace hodnot hash hesel
+      href: how-to-connect-password-hash-synchronization.md
+  - name: Předávací ověřování
+    items:
+    - name: Co je předávací ověřování?
+      href: how-to-connect-pta.md
+    - name: Jak předávací ověřování funguje
+      href: how-to-connect-pta-how-it-works.md
+    - name: Aktuální omezení předávacího ověřování
+      href: how-to-connect-pta-current-limitations.md
+    - name: Podrobné informace o zabezpečení pro předávací ověřování
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: Předávací ověřování a ochrana osobních údajů uživatelů
+      href: how-to-connect-pta-user-privacy.md
+  - name: metadata
+    items:
+    - name: Co je federace?
+      href: whatis-fed.md
+    - name: Jak funguje federace
+      href: how-to-connect-fed-whatis.md
+    - name: Seznam kompatibilit pro federaci Azure AD
+      href: how-to-connect-fed-compatibility.md
+  - name: Jednotné přihlašování
+    items:
+    - name: Co je jednotné přihlašování?
+      href: how-to-connect-sso.md
+    - name: Jak jednotné přihlašování funguje
+      href: how-to-connect-sso-how-it-works.md
+    - name: Jednotné ověřování a ochrana osobních údajů uživatelů
+      href: how-to-connect-sso-user-privacy.md
   - name: Synchronizace služby Azure AD Connect
     items:
+    - name: Co je Azure AD Connect Sync?
+      href: how-to-connect-sync-whatis.md
+    - name: Funkce služby Azure AD Connect Sync
+      href: how-to-connect-syncservice-features.md
+    - name: Co je správce služeb synchronizace Azure AD Connect?
+      href: how-to-connect-sync-service-manager-ui.md
     - name: Technické koncepty synchronizace služby Azure AD Connect
       href: how-to-connect-sync-technical-concepts.md
     - name: Principy architektury synchronizace služby Azure AD Connect
@@ -33,8 +81,6 @@ items:
       href: concept-azure-ad-connect-sync-user-and-contacts.md
     - name: Principy stínových atributů
       href: how-to-connect-syncservice-shadow-attributes.md
-  - name: Synchronizace identit a odolnost duplicitních atributů
-    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
 - name: Návody
   items:
   - name: Instalace a upgrade
@@ -119,8 +165,6 @@ items:
         href: plan-hybrid-identity-design-considerations-tools-comparison.md
   - name: Správa služby Azure AD Connect
     items:
-    - name: Co je synchronizace hodnot hash hesel?
-      href: how-to-connect-password-hash-synchronization.md
     - name: Povolení zpětného zápisu zařízení
       href: how-to-connect-device-writeback.md
     - name: Možnosti zařízení
@@ -141,10 +185,14 @@ items:
       href: how-to-connect-sync-change-addsacct-pass.md
     - name: Co je powershellový modul ADConnectivityTools?
       href: how-to-connect-adconnectivitytools.md
+  - name: Správa předávacího ověřování
+    items:
+    - name: Začínáme s předávacím ověřováním
+      href: how-to-connect-pta-quick-start.md
+    - name: Nejčastější dotazy k předávacímu ověřování
+      href: how-to-connect-pta-faq.md
   - name: Správa federačních služeb
     items:
-    - name: Co je federace s využitím služby Azure AD Connect?
-      href: how-to-connect-fed-whatis.md
     - name: Správa federace s využitím služby Azure AD Connect
       href: how-to-connect-fed-management.md
     - name: Podpora více domén pro federaci
@@ -159,40 +207,14 @@ items:
       href: how-to-connect-azure-ad-trust.md
     - name: Změna algoritmu hash pro O365 RP
       href: how-to-connect-fed-sha256-guidance.md
-    - name: Seznam kompatibilit pro federaci Azure AD
-      href: how-to-connect-fed-compatibility.md
     - name: Použití serveru SAML 2.0 jako vašeho bodu IDP
       href: how-to-connect-fed-saml-idp.md
     - name: Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
       href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
-  - name: Správa předávacího ověřování
-    items:
-    - name: Co je předávací ověřování?
-      href: how-to-connect-pta.md
-    - name: Začínáme s předávacím ověřováním
-      href: how-to-connect-pta-quick-start.md
-    - name: Jak předávací ověřování funguje
-      href: how-to-connect-pta-how-it-works.md
-    - name: Aktuální omezení předávacího ověřování
-      href: how-to-connect-pta-current-limitations.md
-    - name: Podrobné informace o zabezpečení pro předávací ověřování
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: Předávací ověřování a ochrana osobních údajů uživatelů
-      href: how-to-connect-pta-user-privacy.md
-    - name: Aktuální omezení předávacího ověřování
-      href: how-to-connect-pta-security-deep-dive.md
-    - name: Nejčastější dotazy k předávacímu ověřování
-      href: how-to-connect-pta-faq.md
   - name: Správa jednotného přihlašování
     items:
-    - name: Co je jednotné přihlašování?
-      href: how-to-connect-sso.md
     - name: Začínáme s jednotným přihlašováním
       href: how-to-connect-sso-quick-start.md
-    - name: Jak jednotné přihlašování funguje
-      href: how-to-connect-sso-how-it-works.md
-    - name: Jednotné ověřování a ochrana osobních údajů uživatelů
-      href: how-to-connect-sso-user-privacy.md
     - name: Nejčastější dotazy k jednotnému přihlašování
       href: how-to-connect-sso-faq.md
   - name: Správa služby Azure AD Connect Health
@@ -213,10 +235,6 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: Správa synchronizace Azure AD Connect
     items:
-    - name: Co je Azure AD Connect Sync?
-      href: how-to-connect-sync-whatis.md
-    - name: Funkce služby Azure AD Connect Sync
-      href: how-to-connect-syncservice-features.md
     - name: Správa provozních úloh
       href: how-to-connect-sync-operations.md
     - name: Osvědčené postupy pro změnu výchozí konfigurace
@@ -233,8 +251,6 @@ items:
       href: how-to-connect-sync-feature-scheduler.md
     - name: Správce služeb synchronizace Azure AD Connect
       items:
-      - name: Co je správce služeb synchronizace Azure AD Connect?
-        href: how-to-connect-sync-service-manager-ui.md
       - name: Správa pomocí karty operací správce služeb
         href: how-to-connect-sync-service-manager-ui-operations.md
       - name: Použití konektorů se správcem služeb
@@ -303,9 +319,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Referenční informace k ADConnectivityTools
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 07a3bfd816cd57ecbe77bf7e7435be99a0321fd2
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: b3488ec5aec1c5bd1d3f38a2bf87ab1d8d3a87f1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335442"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080142"

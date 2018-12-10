@@ -1,5 +1,5 @@
 ---
-title: Vědecké zpracování týmových dat v akci – pomocí clusteru Azure HDInsight Hadoop na datové sadě 1 TB | Dokumentace Microsoftu
+title: Použití Azure HDInsight Hadoop Cluster na 1 TB datová sada – vědecké zpracování týmových dat
 description: Použití vědeckého zpracování týmových dat začátku do konce scénář použití clusteru HDInsight Hadoop pro sestavování a nasazování modelů pomocí velkou veřejně dostupnou datovou sadu (1 TB)
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 3aef1b85a462eea74fbe977e9a48054f11acf47a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 777d976133f5b9bb1c97ea678e058f2dc398922d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447023"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135810"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Vědecké zpracování týmových dat v akci – pomocí clusteru Azure HDInsight Hadoop na 1 TB datové sady
 
@@ -478,7 +478,7 @@ Mohou existovat miliony jedinečné hodnoty pro některé funkce zařazené do k
 ##### <a name="building-counting-transforms"></a>Vytváření, počítací transformace
 Chcete-li vytvářet funkce count, použijte **sestavení počítání transformace** modul, který je k dispozici ve službě Azure Machine Learning. V modulu vypadá takto:
 
-![Vytvořit modul počítání transformace](./media/hive-criteo-walkthrough/e0eqKtZ.png)
+![Vlastnosti modulu počítání transformace sestavení](./media/hive-criteo-walkthrough/e0eqKtZ.png)
 ![modul sestavení počítání transformace](./media/hive-criteo-walkthrough/OdDN0vw.png)
 
 > [!IMPORTANT] 

@@ -1,6 +1,6 @@
 ---
-title: Šablony Azure Resource Manageru pro zajištění konzistence cloud | Dokumentace Microsoftu
-description: Vývoj šablon Azure Resource Manageru pro zajištění konzistence cloudu. Vytvořit nový nebo aktualizace existujících šablon pro Azure Stack.
+title: Opakované použití šablony v cloudu – Azure Resource Manageru
+description: Vývoj šablon Azure Resource Manageru, které pracují konzistentně pro různé cloudové prostředí. Vytvořit nový nebo aktualizace existujících šablon pro Azure Stack.
 services: azure-resource-manager
 documentationcenter: na
 author: marcvaneijk
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2018
+ms.date: 12/09/2018
 ms.author: mavane
-ms.openlocfilehash: fc1ca468545dc3a715fb11dbec459e14e60ade5b
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.custom: seodec18
+ms.openlocfilehash: 28542bb66fe1e523201967a9dd67fd7e41fed7a0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017769"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135623"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Vývoj šablon Azure Resource Manageru pro zajištění konzistence cloudu
 

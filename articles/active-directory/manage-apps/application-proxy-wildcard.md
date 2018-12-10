@@ -15,12 +15,12 @@ ms.date: 09/06/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 638ae4c779af3bebb68622ccee6932618d42e4f0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8c876f220cde99bbeb3b5d9f8f8878acb5584802
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057037"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140043"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Aplikace se zástupnými znaky v proxy aplikací Azure Active Directory 
 
@@ -49,7 +49,7 @@ Například: `http(s)://*.adventure-works.com`. Během interní a externí adres
 
 Pokud máte další aplikace s různá nastavení konfigurace, je nutné tyto výjimky publikovat jako samostatné aplikace přepsat výchozí nastavení pro zástupný znak. Aplikace bez zástupný znak vždy přednost aplikace se zástupnými znaky. Z hlediska konfigurace jsou "pouze" běžné aplikace.
 
-Vytváření aplikací se zástupnými znaky je založena na stejném [publikování toku aplikace](application-proxy-publish-azure-portal.md) , který je k dispozici pro všechny ostatní aplikace. Jediným rozdílem je, že složku zahrnujete zástupné znaky adresy URL a potenciálně Konfigurace jednotného přihlašování.
+Vytváření aplikací se zástupnými znaky je založena na stejném [publikování toku aplikace](application-proxy-add-on-premises-application.md) , který je k dispozici pro všechny ostatní aplikace. Jediným rozdílem je, že složku zahrnujete zástupné znaky adresy URL a potenciálně Konfigurace jednotného přihlašování.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -137,7 +137,7 @@ Všechny tři aplikace:
 - Mají stejné vlastnosti
 
 
-Můžete publikovat pomocí postupu uvedeného v aplikací se zástupnými znaky [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md). Tento scénář předpokládá:
+Můžete publikovat pomocí postupu uvedeného v aplikací se zástupnými znaky [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md). Tento scénář předpokládá:
 
 - Tenant s následujícím ID: `000aa000-11b1-2ccc-d333-4444eee4444e` 
 
@@ -145,7 +145,7 @@ Můžete publikovat pomocí postupu uvedeného v aplikací se zástupnými znaky
 
 - A **CNAME** položku, která odkazuje `*.adventure-works.com` k `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` se vytvořil.
 
-Následující [popsané kroky](application-proxy-publish-azure-portal.md), vytvořte novou aplikaci proxy aplikací ve vašem tenantovi. V tomto příkladu je zástupný znak do následujících polí:
+Následující [popsané kroky](application-proxy-add-on-premises-application.md), vytvořte novou aplikaci proxy aplikací ve vašem tenantovi. V tomto příkladu je zástupný znak do následujících polí:
 
 - Interní adresa URL:
 
@@ -184,7 +184,7 @@ V tomto scénáři musíte kromě toho tři hlavní aplikace jiná aplikace `fin
 
 Budete potřebovat, abyste měli jistotu, že existují záznamy CNAME, na kterou odkazuje `finance.adventure-works.com` do aplikace konkrétní zadaného koncového bodu, na stránce Proxy aplikací pro aplikaci. V tomto scénáři `finance.adventure-works.com` odkazuje na `https://finance-awcycles.msappproxy.net/`. 
 
-Následující [popsané kroky](application-proxy-publish-azure-portal.md), tento scénář vyžaduje následující nastavení:
+Následující [popsané kroky](application-proxy-add-on-premises-application.md), tento scénář vyžaduje následující nastavení:
 
 
 - V **interní adresa URL**, nastavíte **finance** místo zástupné znaky. 
@@ -215,6 +215,6 @@ Další informace o:
 
 - **Vlastní domény**, naleznete v tématu [práce s vlastními doménami v Proxy aplikací Azure AD](application-proxy-configure-custom-domain.md).
 
-- **Publikování aplikací**, naleznete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md)
+- **Publikování aplikací**, naleznete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md)
 
 

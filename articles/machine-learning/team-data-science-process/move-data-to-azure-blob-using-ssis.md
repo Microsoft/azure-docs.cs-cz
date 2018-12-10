@@ -1,5 +1,5 @@
 ---
-title: Přesun dat do nebo z Azure Blob Storage pomocí konektorů SSIS | Dokumentace Microsoftu
+title: Přesun dat úložiště objektů Blob pomocí konektorů SSIS - vědecké zpracování týmových dat
 description: Přesun dat do nebo z Azure Blob Storage pomocí konektorů SSIS.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 2eda0490392e26d386faa4c1e379b50738a56cbb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 8cd7fc5b69fd3ef124a96f00466a0d9a8c4e2240
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443351"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134348"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Přesun dat do nebo z Azure Blob Storage pomocí konektorů SSIS
 [SQL Server Integration Services Feature Pack for Azure](https://msdn.microsoft.com/library/mt146770.aspx) obsahuje součásti pro připojení k Azure, přenos dat mezi Azure a místních zdrojů dat a zpracování dat uložených v Azure.

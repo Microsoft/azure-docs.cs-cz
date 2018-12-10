@@ -1,5 +1,6 @@
 ---
-title: Konfigurovat vaše automatizované experimentu strojového učení – Azure Machine Learning
+title: Konfigurace automatizovaného se strojovým učením
+titleSuffix: Azure Machine Learning service
 description: Automatizované machine learning vybere algoritmus pro vás a generuje modelu připravené na nasazení. Další možnosti, které můžete použít ke konfiguraci automatické se strojovým učením.
 author: nacharya1
 ms.author: nilesha
@@ -9,14 +10,15 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: b2be09d69013cc8361f92cb0b6e3aa5fef3bcc02
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: e1dd0cf995d7d9c263e49735decc5573107b1add
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000304"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140162"
 ---
-# <a name="configure-your-automated-machine-learning-experiment"></a>Konfigurovat vaše automatizované experimentu strojového učení
+# <a name="configure-automated-machine-learning-experiments"></a>Konfigurace automatizovaného se strojovým učením
 
 Automatizované machine learning za vás vybere algoritmus a hyperparameters a generuje modelu připravené na nasazení. Existuje několik možností, které můžete použít ke konfiguraci automatické se strojovým učením. V této příručce se dozvíte, jak definovat různá nastavení konfigurace.
 
@@ -214,7 +216,7 @@ Vlastnost |  Popis | Výchozí hodnota
 `iterations` |Maximální počet průchodu cyklem. Každá iterace je rovna trénovací úlohu, která vede kanálu. Kanál je předzpracování dat a modelu. Chcete-li získat model vysoce kvalitní, použijte 250 nebo více    | 100
 `max_concurrent_iterations`|    Maximální počet opakování při paralelním spuštění. Toto nastavení funguje jenom pro vzdálené výpočetní prostředky.|   1
 `max_cores_per_iteration`   | Určuje, kolik jader na cílové výpočetní prostředí se použije k natrénování jeden kanál. Pokud tento algoritmus mohou využívat více jader, to zvyšuje výkon na počítači s více jádry. Můžete ho nastavit na hodnotu -1 použití všech dostupných jader v počítači.|  1
-`Iteration_timeout_minutes` |   Omezuje množství času (v minutách), trvá konkrétní iteraci. Pokud iterace překročí zadanou hodnotu, bude zrušen danou iteraci. Pokud není nastavena, pak iterace běží nepřetržitě až do dokončení. |   Žádný
+`iteration_timeout_minutes` |   Omezuje množství času (v minutách), trvá konkrétní iteraci. Pokud iterace překročí zadanou hodnotu, bude zrušen danou iteraci. Pokud není nastavena, pak iterace běží nepřetržitě až do dokončení. |   Žádný
 `n_cross_validations`   |Počet rozdělení křížových ověření| Žádný
 `validation_size`   |Velikost ověření nastavit jako procento všech ukázka školení.|  Žádný
 `preprocess` | True nebo False <br/>Hodnota TRUE povolí experimentovat provádět předběžného zpracování na vstupu. Tady je podmnožinou předběžného zpracování<li>Chybějící Data: Uplatňuje číselných dat s průměrem, Text se většina výskyt chybí </li><li>Hodnoty zařazené do kategorií: Pokud datový typ je číselné a počet jedinečných hodnot je méně než 5 procentech, převede do jedné hot kódování </li><li>Atd. pro úplný seznam kontrolu [úložiště GitHub](https://aka.ms/aml-notebooks)</li><br/>Poznámka: Pokud je zhuštěný dat nelze použít předzpracování = true |  False | 

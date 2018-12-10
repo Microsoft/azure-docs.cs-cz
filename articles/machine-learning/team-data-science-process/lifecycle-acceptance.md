@@ -1,5 +1,5 @@
 ---
-title: Fáze přijetí zákazníka životní cyklus vědeckého zpracování týmových dat – Azure | Dokumentace Microsoftu
+title: Fáze přijetí zákazníky životního cyklu vědecké zpracování týmových dat
 description: Cíle, úkoly a úkoly pro zákazníka fáze přijetí vašich projektů datové vědy
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: a60594123346b599270f2a7763e98fc863f85067
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 7a00f18a8ae51d5118275e904e2ca76fc167d987
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441481"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132614"
 ---
-# <a name="customer-acceptance"></a>Přijetí zákazníky
+# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Fáze přijetí zákazníky životního cyklu vědecké zpracování týmových dat
 
 Tento článek popisuje cíle, úkoly a úkoly spojené s fáze přijetí zákazníka z týmu Data Science procesu (TDSP). Tento proces zajišťuje doporučené životní cyklus, který vám pomůže strukturovat vaše projekty pro datové vědy. Životní cyklus popisuje hlavní fáze, které jsou projekty obvykle spouštěny, často opakované:
 

@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: aabbcb45edf087b4a7d6268dcca90b21afa16f7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec5c75b5de912988efeb5167107f6d0dfe07da2e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998110"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139946"
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím
 
@@ -88,8 +88,8 @@ Než začnete konfigurovat Proxy aplikací, ujistěte se, že máte podporovanou
 
 Začínáme s Proxy aplikace ve dvou krocích:
 
-1. [Proxy aplikací zapnout a nakonfigurovat konektor](application-proxy-enable.md).    
-2. [Publikování aplikací](application-proxy-publish-azure-portal.md) – pomocí průvodce rychle a snadno získat vaše místní aplikace publikované a přístupné vzdáleně.
+1. [Proxy aplikací zapnout a nakonfigurovat konektor](application-proxy-add-on-premises-application.md).    
+2. [Publikování aplikací](application-proxy-add-on-premises-application.md) – pomocí průvodce rychle a snadno získat vaše místní aplikace publikované a přístupné vzdáleně.
 
 ## <a name="whats-next"></a>Co dále?
 Když publikujete svoji první aplikaci, existuje mnoho dalších úkonů, které vám pomůžou s Proxy aplikace:

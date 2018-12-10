@@ -1,6 +1,6 @@
 ---
-title: Vytvoření funkcí pro data v SQL serveru pomocí SQL a Python | Dokumentace Microsoftu
-description: Zpracování dat z SQL Azure
+title: Vytvoření funkcí v SQL serveru pomocí SQL a Python - vědecké zpracování týmových dat
+description: Generovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure pomocí jazyka SQL a Pythonu – část vědecké zpracování týmových dat.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7178f368f7ede8918f316caa46234f63db6414ee
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: bf6f27b7720cf4a30aa08ca02f9150aebe564244
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445442"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135929"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Vytvoření funkcí pro data v SQL Serveru pomocí jazyka SQL a Pythonu
 Tento dokument ukazuje, jak generovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure, který pomůže algoritmy, Učte se od data efektivněji. K provedení této úlohy můžete použít SQL nebo programovací jazyk, jako je Python. Oba přístupy jsou zde popsané.

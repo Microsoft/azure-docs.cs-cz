@@ -1,18 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 452032e21a649fe4d34616225bd168d441ac0267
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 6fa6a0f5a46d8e9a47a0750a66e9ca007864d40a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218626"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092610"
 documentType: LandingData
-title: Dokumentace ke službě Speech
+title: Dokumentace ke službám Speech
 metadata:
-  title: Dokumentace ke službě Speech – kurzy, rychlá zprovoznění, reference k rozhraní API – Cognitive Services | Microsoft Docs
-  meta.description: >
-    The Speech service gives developers an easy way to add powerful speech-enabled features to their applications.
-
-    Examples include voice command control and dialogue, natural speech conversation, speech transcription and dictation, and speech translation.
+  title: Dokumentace ke službám Speech – kurzy, rychlá zprovoznění, reference k rozhraní API
+  titleSuffix: Azure Cognitive Services
+  description: Služby Speech Services poskytují vývojářům snadný způsob, jak do aplikací přidat výkonné funkce s podporou řeči. Příkladem mohou být dialogy a řízení pomocí hlasových příkazů, konverzace v přirozeném jazyce, diktování a přepis a překlad řeči.
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -22,10 +20,11 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
-  ms.author: nitinme
+  ms.date: 12/06/2018
+  ms.author: erhopf
+  ms.custom: seodec18
 abstract:
-  description: Přečtěte si, jak můžete pomocí služby Speech a sady Speech SDK přidat do vašich aplikací funkce s podporou řeči. Pomocí sady Speech SDK můžete do vašich aplikací přidat funkce <i>převod řeči na text</i> (rozpoznávání řeči), <i>záměr</i>, <i>překlad</i> a <i>převod textu na řeč</i>. Služba Speech nabízí také rozhraní REST API, které funguje s jakýmkoli programovacím jazykem, který dokáže provádět požadavky HTTP.
+  description: Přečtěte si, jak pomocí služeb Speech a sady Speech SDK můžete do vašich aplikací přidat funkce s podporou řeči. Pomocí sady Speech SDK můžete do vašich aplikací přidat funkce <i>převod řeči na text</i> (rozpoznávání řeči), <i>záměr</i>, <i>překlad</i> a <i>převod textu na řeč</i>. Služba Speech nabízí také rozhraní REST API, které funguje s jakýmkoli programovacím jazykem, který dokáže provádět požadavky HTTP.
 sections:
 - items:
   - type: list
@@ -34,15 +33,15 @@ sections:
     columns: 3
     items:
     - href: /azure/cognitive-services/speech-service/overview
-      html: <p>Přečtěte si informace o službě Azure Speech.</p>
+      html: <p>Přečtěte si víc o službách Azure Speech.</p>
       image:
         src: ../media/index/i_overview.svg
       title: Co je služba Speech?
     - href: /azure/cognitive-services/speech-service/get-started
-      html: <p>Přečtěte si, jak si službu Speech zdarma zaregistrovat.</p>
+      html: <p>Zaregistrujte se zdarma.</p>
       image:
         src: ../media/index/i_get-started.svg
-      title: Registrace služby Speech
+      title: Registrace do služeb Speech
     - href: /azure/cognitive-services/speech-service/speech-devices-sdk
       html: <p>Přečtěte si referenční informace o hardwaru s podporou řeči.</p>
       image:

@@ -1,5 +1,5 @@
 ---
-title: Přesun dat do a z úložiště objektů Blob pomocí Průzkumníka služby Azure Storage | Dokumentace Microsoftu
+title: Přesun dat úložiště objektů Blob pomocí Průzkumníka služby Azure Storage – vědecké zpracování týmových dat
 description: Přesun dat z a do služby Azure Blob Storage pomocí nástroje Azure Storage Explorer
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7d4fc17c466f9f7187ca28c847631254d6600ead
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 99c9a86d130989e8c62a948e440b35c928b42299
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446992"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134088"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Přesun dat do a z Azure Blob Storage pomocí Průzkumníka služby Azure Storage
 Průzkumník služby Azure Storage je bezplatný nástroj od Microsoftu, která umožňuje pracovat s daty Azure Storage ve Windows, macOS a Linuxu. Toto téma popisuje, jak ji používat k nahrávání a stahování dat z Azure blob storage. Nástroj si můžete stáhnout z [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
@@ -45,8 +45,8 @@ Následující kroky dokumentu jak nahrávání a stahování dat pomocí Průzk
 
 1. Spusťte Průzkumníka služby Microsoft Azure Storage.
 2. Zobrazí se **přihlásit ke svému účtu...**  průvodce, vyberte **nastavení účtu Azure** ikonu, pak **přidat účet** a zadejte přihlašovací údaje. ![Přidání účtu služby Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
-3. Zobrazí se **připojit ke službě Azure Storage** průvodce, vyberte **připojit ke službě Azure storage** ikonu. ![Připojení k Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
-4. Zadejte přístupový klíč z vašeho účtu úložiště Azure **připojit ke službě Azure Storage** průvodce a pak **Další**. ![Připojení k Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
+3. Zobrazí se **připojit ke službě Azure Storage** průvodce, vyberte **připojit ke službě Azure storage** ikonu. ![Klikněte na tlačítko "Připojit ke službě Azure storage"](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
+4. Zadejte přístupový klíč z vašeho účtu úložiště Azure **připojit ke službě Azure Storage** průvodce a pak **Další**. ![Zadejte přístupový klíč účtu úložiště Azure](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
 5. Zadejte název účtu úložiště **název účtu** a potom vyberte **Další**. ![Připojit externí úložiště](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
 6. Přidání účtu úložiště by měl nyní uveden. Vytvořte kontejner objektů blob v účtu úložiště, klikněte pravým tlačítkem myši **kontejnery objektů Blob** uzlu v příslušném účtu, vyberte **vytvořit kontejner objektů Blob**a zadejte název.
 7. Jak nahrát data do kontejneru, vyberte cílový kontejner a klikněte na tlačítko **nahrát** tlačítko.![ Účty úložiště](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)

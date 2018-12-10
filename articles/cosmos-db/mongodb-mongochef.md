@@ -1,24 +1,24 @@
 ---
-title: Použití studia 3T (MongoChef) pomocí služby Azure Cosmos DB | Dokumentace Microsoftu
-description: Další informace o použití studia 3T pomocí účtu rozhraní MongoDB API služby Azure Cosmos DB
+title: Připojení k účtu MongoDB použití studia 3T (MongoChef)
+titleSuffix: Azure Cosmos DB
+description: Zjistěte, jak se připojit k rozhraní MongoDB API ve službě Azure Cosmos DB s použitím sady Studio 3T a vytvoření databáze, kolekce a dokumenty po připojení.
 keywords: mongochef studia 3T
 services: cosmos-db
 author: slyons
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/18/2018
+ms.date: 12/06/2018
 ms.author: sclyon
-ms.openlocfilehash: af66f413055c01d9a4c3e94c7d3b9c5f1d5917b0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.custom: seodec18
+ms.openlocfilehash: 5bdcf035f892f1cbdb8bb43579dba547f0ec8bfd
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055429"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135644"
 ---
-# <a name="azure-cosmos-db-use-studio-3t-with-a-mongodb-api-account"></a>Azure Cosmos DB: Použití studia 3T pomocí účtu rozhraní MongoDB API
+# <a name="connect-to-mongodb-account-using-studio-3t-mongochef"></a>Připojení k účtu MongoDB použití studia 3T (MongoChef)
 
 Pro připojení k účtu MongoDB API služby Azure Cosmos DB, musíte mít:
 

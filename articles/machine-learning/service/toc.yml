@@ -83,13 +83,12 @@ items:
       href: how-to-set-up-training-targets.md
     - name: Přístup k datům při trénování
       href: how-to-access-data.md
-    - name: Vytváření kalkulátorů
+    - name: Vytváření odhadů při trénování
       href: how-to-train-ml-models.md
-      items:
-      - name: PyTorch
-        href: how-to-train-pytorch.md
-      - name: TensorFlow
-        href: how-to-train-tensorflow.md
+    - name: Použití PyTorchu
+      href: how-to-train-pytorch.md
+    - name: Použití TensorFlow
+      href: how-to-train-tensorflow.md
     - name: Ladění hyperparametrů
       displayName: parameter
       href: how-to-tune-hyperparameters.md
@@ -110,18 +109,10 @@ items:
   - name: Modely nasazení
     items:
     - name: Kam se mají modely nasadit
-      displayName: publish
+      displayName: publish, azure kubernetes, azure container instances
       href: how-to-deploy-and-where.md
-    - name: Nasazení do ACI
-      displayName: Azure Container Instances
-      href: how-to-deploy-to-aci.md
-    - name: Nasazení do AKS
-      displayName: Azure Kubernetes
-      href: how-to-deploy-to-aks.md
     - name: Nasazení do FPGA
       href: how-to-deploy-fpga-web-service.md
-    - name: Nasazení do IoT Edge
-      href: how-to-deploy-to-iot.md
     - name: Řešení potíží
       href: how-to-troubleshoot-deployment.md
     - name: Zabezpečení pomocí protokolu SSL
@@ -175,7 +166,7 @@ items:
     href: how-to-export-delete-data.md
   - name: Zastaralé dokumenty
     items:
-    - name: Jak migrovat
+    - name: Migrace z aplikace Workbench
       displayName: Workbench, upgrade, update, transfer
       href: how-to-migrate.md
     - name: Export nebo odstranění dat účtu (zastaralé)
@@ -374,9 +365,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Starší problémy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 087d101a655d87bdb4c8f7de2b39a5358c21e00e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a5c26bd2ef020ca737907c8a66776a3769bfeefd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962541"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53101241"

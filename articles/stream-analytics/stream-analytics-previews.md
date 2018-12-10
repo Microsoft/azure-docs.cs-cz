@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/05/2018
-ms.openlocfilehash: 77c761ce72449f91cf91c66219ebc815d1620e94
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 12/04/2018
+ms.openlocfilehash: 637afab45e04c68777f8d1b42817c912cdc09941
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343670"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133736"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkce Azure Stream Analytics ve verzi preview
 
@@ -22,10 +22,6 @@ Tento článek shrnuje všechny funkce aktuálně ve verzi preview pro Azure Str
 ## <a name="public-previews"></a>Verze Public Preview
 
 Následující funkce jsou ve verzi public preview. Můžete využít výhod těchto funkcích ještě dnes, ale nemusíte používat v produkčním prostředí.
-
-### <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
-
-Azure Stream Analytics na hraničních zařízeních IoT umožňuje vývojářům nasadit téměř v reálném čase analýzy na hraniční zařízení IoT. Další informace najdete v tématu [Azure Stream Analytics na hraničních zařízeních IoT](stream-analytics-edge.md) dokumentaci.
 
 ### <a name="integration-with-azure-machine-learning"></a>Integrace s Azure Machine Learning
 

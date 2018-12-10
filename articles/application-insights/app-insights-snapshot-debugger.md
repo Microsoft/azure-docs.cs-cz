@@ -9,15 +9,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 12/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 11e9099ba9008ead6583eaf30292cdec63475f02
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a92b54a80de645dda8ea0cc0259bd07f72330204
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994261"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136711"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Ladicí snímky pro výjimky v aplikacích .NET
 
@@ -68,7 +68,7 @@ Podporují se následující prostředí:
         <!-- How often to reset problem counters. -->
         <ProblemCounterResetInterval>1.00:00:00</ProblemCounterResetInterval>
         <!-- The maximum number of snapshots allowed in ten minutes.The default value is 1. -->
-        <SnapshotsPerTenMinutesLimit>1</SnapshotsPerTenMinutesLimit>
+        <SnapshotsPerTenMinutesLimit>3</SnapshotsPerTenMinutesLimit>
         <!-- The maximum number of snapshots allowed per day. -->
         <SnapshotsPerDayLimit>30</SnapshotsPerDayLimit>
         <!-- Whether or not to collect snapshot in low IO priority thread. The default value is true. -->
@@ -455,7 +455,7 @@ Nebo, pokud používáte aplikaci .NET Core appsettings.json:
 Při vytváření snímku aktivační výjimky označené pomocí ID snímku. Toto ID snímku je dostupná jako vlastní vlastnost při telemetrie výjimek se hlásí do Application Insights. Pomocí **hledání** ve službě Application Insights, můžete najít všechny telemetrie s `ai.snapshot.id` vlastní vlastnosti.
 
 1. Přejděte do prostředku Application Insights na webu Azure Portal.
-2. Klikněte na tlačítko **hledání**.
+2. Klikněte na **Hledat**.
 3. Typ `ai.snapshot.id` textového pole pro vyhledávání a stiskněte Enter.
 
 ![Hledat telemetrii s ID snímku na portálu](./media/app-insights-snapshot-debugger/search-snapshot-portal.png)

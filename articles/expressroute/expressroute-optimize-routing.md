@@ -1,25 +1,19 @@
 ---
-title: 'Optimalizace směrování ExpressRoute: Azure | Dokumentace Microsoftu'
+title: 'Optimalizace směrování - okruhy ExpressRoute: Azure | Dokumentace Microsoftu'
 description: Tato stránka obsahuje podrobné informace o tom, jak optimalizovat směrování, pokud máte více než jeden okruh ExpressRoute, který poskytuje připojení mezi Microsoftem a vaší podnikovou sítí.
-documentationcenter: na
 services: expressroute
 author: charwen
-manager: carmonm
-editor: ''
-ms.assetid: fca53249-d9c3-4cff-8916-f8749386a4dd
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/06/2017
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: charwen
-ms.openlocfilehash: c3a85b9445d69330c3f6c7d298169efddb6ecca0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 65c23b05cfcb623f8e2870df813f5516b3039d5c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22709993"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140927"
 ---
 # <a name="optimize-expressroute-routing"></a>Optimalizace směrování ExpressRoute
 Pokud máte víc okruhů ExpressRoute, máte více než jednu cestu, jak se připojit k Microsoftu. V důsledku toho může dojít k neoptimálnímu směrování, to znamená, že přenosy dat mezi vaší sítí a Microsoftem mohou použít delší cestu. Čím delší je síťová cesta, tím větší je latence. Latence má přímý vliv na výkon aplikací a činnost koncového uživatele. Tento článek popíše tento problém a vysvětlí možnosti optimalizace směrování pomocí standardních technologií směrování.

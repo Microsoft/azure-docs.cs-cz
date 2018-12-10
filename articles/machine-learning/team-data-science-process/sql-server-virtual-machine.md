@@ -1,5 +1,5 @@
 ---
-title: Zkoumání dat ve virtuální počítač s SQL serverem v Azure | Dokumentace Microsoftu
+title: Zkoumání dat ve virtuální počítač s SQL serverem - vědecké zpracování týmových dat
 description: Zkoumání dat a vytvoření funkce v virtuálního počítače s SQL serverem v Azure
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 73e56497834344e0e41d89313086c051683b4fbb
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d14f03be3f6d62c201218f5073ba9af61765f55c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442553"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136439"
 ---
 # <a name="heading"></a>Zpracování dat v SQL serveru na virtuálním počítači Azure
 Tento dokument popisuje, jak zkoumat data a vygenerovat funkcí pro data uložená v virtuálního počítače s SQL serverem v Azure. To můžete udělat tahání dat pomocí SQL nebo pomocí programovacího jazyka, jako je Python.

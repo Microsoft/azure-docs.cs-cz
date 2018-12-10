@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 40af55e48e0097f1ad6cb52a76b78fab40c2074c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 1bba25d0b7fd6bbe4efeb9c2164fc663b22bed11
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447176"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139363"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure virtual machine scale sets s nejčastější dotazy
 
@@ -31,7 +31,7 @@ Získejte odpovědi na nejčastější dotazy ohledně škálovacích sad virtu�
 
 **Otázka:** Kolik virtuálních počítačů může obsahovat škálovací sada?
 
-**Odpověď:** Škálovací sada může obsahovat 0 až 1 000 virtuálních počítačů založených na imagích platformy nebo 0 až 300 virtuálních počítačů založených na vlastních imagích.
+**Odpověď:** Škálovací sada může obsahovat 0 až 1 000 virtuálních počítačů založených na imagích platformy nebo 0 až 600 virtuálních počítačů založených na vlastních imagích.
 
 **Otázka:** Podporují se ve škálovacích sadách datové disky?
 

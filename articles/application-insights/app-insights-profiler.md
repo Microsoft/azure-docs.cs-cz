@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2f726c9c70e6e46ad2e82e9d6f15dae2c9d3d008
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4d957c26bd4e4ae278c0909c9df1476b02954b86
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724685"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138003"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilování živých webových aplikací Azure pomocí Application Insights
 
-Profiler v současné době používá pro webové aplikace ASP.NET a ASP.NET Core, které běží ve službě Web Apps. Základní úroveň služby nebo vyšší je potřeba použít Profiler.
+Profiler v současné době používá pro webové aplikace ASP.NET a ASP.NET Core, které běží ve službě Web Apps. Základní úroveň služby nebo vyšší je potřeba použít Profiler. Povolení Profiler v Linuxu je aktuálně možné jenom přes [tato metoda](app-insights-profiler-aspnetcore-linux.md).
 
 ## <a id="installation"></a> Povolit Profiler pro svoje webové aplikace
 Pokud chcete povolit Profiler pro webovou aplikaci, postupujte podle pokynů níže. Pokud používáte jiný typ služby Azure, tady jsou pokyny pro povolení Profiler na jiné podporované platformy:
@@ -29,11 +29,10 @@ Pokud chcete povolit Profiler pro webovou aplikaci, postupujte podle pokynů ní
 * [Aplikace Service Fabric](app-insights-profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](app-insights-profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
-
 Application Insights Profiler je předinstalovaná jako součást modulu runtime služeb App Services, ale musíte vypnout k získání profily pro Azure Web Apps. Jakmile nasadíte webovou aplikaci, i v případě, že jste zahrnuli App Insights SDK do zdrojového kódu, postupujte podle následujících kroků, abyste povolení profileru.
 
 1. Přejděte **App Services** podokně webu Azure Portal.
-1. Přejděte do **Nastavení > monitorování** podokně.
+1. Přejděte do **Nastavení > Application Insights** podokně.
 
    ![Povolit App Insights na portálu služby App Services](./media/app-insights-profiler/AppInsights-AppServices.png)
 

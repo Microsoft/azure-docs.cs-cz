@@ -1,6 +1,6 @@
 ---
-title: Azure Deployment Manager – Přehled | Dokumentace Microsoftu
-description: Popisuje, jak nasadit službu v mnoha oblastech pomocí Správce nasazení Azure
+title: Postupy bezpečného nasazení napříč oblastmi - Azure Deployment Manager
+description: Popisuje postup nasazení služby v mnoha oblastech Azure Deployment Manager. Zobrazuje postupy bezpečného nasazení, aby se ověřilo nasazení před zavedením do všech oblastí.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: eea981800147f24025e01826f7550a95041c107f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.custom: seodec18
+ms.openlocfilehash: a615ab26e4ea046ced70ce2c154a0c304b741986
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427297"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138343"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-private-preview"></a>Povolit postupy bezpečného nasazení s Azure Deployment Manager (privátní verze Preview)
 

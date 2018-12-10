@@ -1,5 +1,5 @@
 ---
-title: Nasazení modelů v produkčním prostředí – Azure Machine Learning | Dokumentace Microsoftu
+title: Nasazení modelů v produkčním prostředí – vědecké zpracování týmových dat
 description: Jak nasadit modely do produkčního prostředí, což jim umožňuje přehrát aktivní roli při rozhodování o obchodní.
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 5b1614f92f7633e008f4f7176723002dc7730b15
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 35f9f369e752fa7c86a6bd295a79b79b23104d23
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495989"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137867"
 ---
-# <a name="deploy-models-in-production"></a>Nasazení modelů v produkčním prostředí
+# <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Nasadit modely do produkčního prostředí aktivní roli při obchodním rozhodování
 
 Produkční nasazení umožňuje modelu k přehrání aktivní roli v podniku. Předpovědi z nasazeného modelu lze použít pro obchodní rozhodnutí.
 

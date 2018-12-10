@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 6cc4c0b01511309766e48c3d671ee897e5d6f326
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e0e41714f6979a9cd699df70498b9c89a44d5ee1
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669109"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138919"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Kodér Wirecast můžete odesílat živý datový proud s jednou přenosovou rychlostí
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure 
 ## <a name="create-a-channel"></a>Vytvoření kanálu
 1. Nástroj AMSE, přejděte na **Live** kartu a klikněte pravým tlačítkem v rámci oblasti kanálu. Vyberte **vytvořit kanál...** v nabídce.
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
 2. Zadejte název kanálu, do pole Popis je volitelný. V části nastavení kanálu, vyberte **standardní** pro možnost Live Encoding s protokolem vstupu, nastavte na **RTMP**. Všechna ostatní nastavení je můžete nechat.
 
@@ -55,7 +55,7 @@ Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure 
 
 3. Klikněte na tlačítko **vytvořit kanál**.
 
-   ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
+   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
 > [!NOTE]
 > Kanál může trvat až 20 minut.
@@ -69,7 +69,7 @@ Při spuštění kanálu můžete [nakonfigurovat kodér](media-services-configu
 >
 >
 
-## <a name="a-idconfigurewirecastrtmp-aconfigure-the-telestream-wirecast-encoder"></a>< id = "configure_wirecast_rtmp" /a > Konfigurovat kodér Telestream Wirecast
+## <a name="a-idconfigurewirecastrtmp-configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />Konfigurovat kodér Telestream Wirecast
 V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto oddílu popisuje jednotlivé kroky konfigurace v podrobněji.
 
 **Video**:
@@ -96,7 +96,7 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 
     Profil kódování je předem vybraná pro **Azure H.264 720 p 16:9 (1280 x 720)**. Chcete-li nastavení upravit, vyberte ikonu ozubeného kola vedle rozevíracího seznamu a klikněte na tlačítko **nové přednastavení**.
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Konfigurovat kodér předvolby.
 
     Pojmenujte přednastavený kontext a zkontrolujte následující doporučené nastavení:
@@ -114,7 +114,7 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
    * Cíl přenosová rychlost: 192 kbits za sekundu
    * Vzorkovací frekvence: 44 100 kHz
 
-     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
+     ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. Stiskněte **Uložit**.
 
     Kódování pole má teď k dispozici pro výběr nově vytvořený profil.
@@ -126,15 +126,15 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 
     Při spuštění kanálu, klikněte pravým tlačítkem na název kanálu, přejděte dolů při najetí myší nad **adresa URL vstupu kopírování do schránky** a pak vyberte **primární adresy URL vstupu**.  
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
 8. V Wirecast **nastavení výstupní** okně vložte tyto informace **adresu** pole z výstupní sekce a přiřaďte název datového proudu.
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
 1. Vyberte **OK**.
 2. V hlavním **Wirecast** zkontrolujte vstupní zdroje pro připraveni videa a zvuku a pak klikněte na tlačítko **Stream** v levém horním rohu.
 
-   ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
+   ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
 > Před kliknutím na **Stream**, můžete **musí** Ujistěte se, že kanál je připravený.
@@ -155,7 +155,7 @@ Pokud k chybě, kanál je potřeba resetovat a upravit nastavení kodéru. Najde
 ## <a name="create-a-program"></a>Vytvoření programu
 1. Jakmile přehrávání kanálu je potvrzen, vytvořte program. V části **Live** kartu nástroj AMSE klikněte pravým tlačítkem v rámci oblasti program a vyberte **vytvořit nový Program**.  
 
-    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
+    ![Wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
 2. Název programu a v případě potřeby upravit **délka okna archivu** (která má výchozí hodnotu čtyři hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.  
 3. Zkontrolujte **spustit Program nyní** pole.
 4. Klikněte na tlačítko **vytvořit Program**.  

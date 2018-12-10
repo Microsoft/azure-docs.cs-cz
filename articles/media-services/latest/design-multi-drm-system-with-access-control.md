@@ -1,6 +1,6 @@
 ---
-title: Návrh systému ochranu obsahu s více variantami DRM s ovládacím prvkem cccess pomocí Azure Media Services | Dokumentace Microsoftu
-description: Další informace o tom, jak licencovat Microsoft Smooth Streaming klienta portování Kit.
+title: Návrh systému ochranu obsahu s více variantami DRM s řízením přístupu – Azure Media Services | Dokumentace Microsoftu
+description: Informace o možnostech licencování Microsoft Smooth Streaming klienta portování Kit.
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: willzhan
-ms.openlocfilehash: d65007ed2a0ce5a827eadca31dd9df8704e2c905
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.custom: seodec18
+ms.openlocfilehash: ec354cc91b22905c399d7bb19107db1b94e9925f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49958189"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136269"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Návrh systému s více variantami DRM ochrany obsahu pomocí řízení přístupu 
 
@@ -401,15 +402,15 @@ Na následujících snímcích obrazovky zobrazit různé přihlašovací strán
 
 **Vlastní služby Azure AD tenant účet domény**: přizpůsobené přihlašovací stránky z vlastní služby Azure AD tenanta domény.
 
-![Účtu tenanta domény vlastní služby Azure AD](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
+![Účtu tenanta domény vlastní služby Azure AD, jeden](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain1.png)
 
 **Microsoft doménový účet s čipovou kartu**: přihlašovací stránky přizpůsobený microsoftem podnikové IT s dvoufaktorovým ověřováním.
 
-![Účtu tenanta domény vlastní služby Azure AD](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
+![Účet domény vlastní služby Azure AD tenanta dvě](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain2.png)
 
 **Účet Microsoft**: přihlašovací stránku účtu Microsoft pro zákazníky.
 
-![Účtu tenanta domény vlastní služby Azure AD](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
+![Účet domény vlastní služby Azure AD tenanta tři](./media/design-multi-drm-system-with-access-control/media-services-ad-tenant-domain3.png)
 
 ### <a name="use-encrypted-media-extensions-for-playready"></a>Použití rozšíření šifrované média pro PlayReady
 Plán PlayReady je v moderním prohlížeči s Media rozšíření eme (Encrypted Extensions) pro podporu PlayReady, jako je například Internet Explorer 11 na Windows 8.1 nebo novější a prohlížeč Microsoft Edge ve Windows 10 v podkladové DRM pro rozšíření EME.

@@ -1,5 +1,5 @@
 ---
-title: 'Škálovatelné vědecké zkoumání dat s Azure Data Lake: návod začátku do konce | Dokumentace Microsoftu'
+title: Škálovatelné datových věd s využitím Azure Data Lake - vědecké zpracování týmových dat
 description: Jak provádět data průzkumu a binární klasifikace na datové sadě pomocí Azure Data Lake.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 52518f8c9295f00b93dee0ea356513605450aed7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 8549a35eed0c1f61c087b9056e4564577170f5f6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443555"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141811"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Škálovatelné vědecké zkoumání dat s Azure Data Lake: návod začátku do konce
 Tento návod ukazuje, jak pomocí Azure Data Lake a zkoumání dat a úlohy binární klasifikace na vzorek cesty taxíkem NYC jízdenky datovou sadu, která předpovědět, jestli je tip zaplaceno tarif. Provede vás provede postupem [vědecké zpracování týmových dat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), začátku do konce, od získání dat pro trénování modelu a nasazení webové služby, který publikuje modelu.

@@ -1,5 +1,5 @@
 ---
-title: Přesun dat do a z Azure Blob Storage pomocí AzCopy | Dokumentace Microsoftu
+title: Přesun dat objektů Blob úložiště pomocí AzCopy - vědecké zpracování týmových dat
 description: Přesun dat z a do služby Azure Blob Storage pomocí AzCopy
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 9e8b852b9f13e8f41daff27e305bc9c0cda78cb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 6a204c68a05cec827fa8e432889cc60296132d4e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442994"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140562"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>Přesun dat do a z Azure Blob Storage pomocí AzCopy
 AzCopy je nástroj příkazového řádku určený pro nahrávání, stahování a kopírování dat do a z objektů blob, file a table storage Microsoft Azure.

@@ -1,5 +1,5 @@
 ---
-title: Přístup k datovým sadám pomocí klientské knihovny pro Python pro Machine Learning | Dokumentace Microsoftu
+title: Přístup k datovým sadám pomocí Pythonu klientské knihovny - vědecké zpracování týmových dat
 description: Instalace a použití klientské knihovny pro Python k přístupu a bezpečně spravovat Azure Machine Learning data z místního prostředí Pythonu.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: e81efb0a7977bbd50c63834f676b7cc75201dc68
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 630961954a235efd5f0cef92dd6a2525ae316838
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680681"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140026"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Klientská knihovna Python pro Microsoft Azure Machine Learning ve verzi preview můžete povolit zabezpečený přístup k vaší datové sady Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a Správa datových sad v pracovním prostoru.
@@ -92,10 +92,10 @@ Tokeny ověřování se spravují na **AUTORIZAČNÍCH TOKENECH** stránky **nas
     ![Datové sady][datasets]
 4. Vyberte fragment kódu z okna, který se zobrazí a zkopírujte do schránky.
    
-    ![Přístup ke kódu][dataset-access-code]
+    ![Data přístupový kód tlačítko Generovat][dataset-access-code]
 5. Vložte kód do poznámkového bloku vaše místní aplikace v Pythonu.
    
-    ![Poznámkový blok][ipython-dataset]
+    ![Kód vložte do poznámkového bloku][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>Přístup k zprostředkující datovým sadám z experimenty Machine Learning
 Po spuštění experimentu v nástroji Machine Learning Studio je možné pracovat s zprostředkující datové sady z uzlů výstupní moduly. Zprostředkující datové sady jsou data, která byla vytvořena a používá se pro zprostředkující kroky při byl spuštěn nástroj modelu.
@@ -133,10 +133,10 @@ Následující postup ukazuje příklad, který vytvoří experiment, spustí je
     ![Kontextová nabídka][experiment]
 8. Vyberte fragment kódu a zkopírujte do schránky z okna, která se zobrazí.
    
-    ![Přístup ke kódu][intermediate-dataset-access-code]
+    ![Generovat kód pro přístup k místní nabídce][intermediate-dataset-access-code]
 9. Vložte kód v poznámkovém bloku.
    
-    ![Poznámkový blok][ipython-intermediate-dataset]
+    ![Kód vložte do poznámkového bloku][ipython-intermediate-dataset]
 10. Můžete vizualizovat data pomocí matplotlib. Zobrazí se v histogramu, věk sloupce:
     
     ![Histogram][ipython-histogram]

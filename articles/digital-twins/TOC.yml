@@ -97,8 +97,8 @@ items:
     href: https://docs.westcentralus.azuresmartspaces.net/management/swagger
   - name: Ceny
     href: https://azure.microsoft.com/pricing/details/digital-twins/
-  - name: Cenová kalkulačka
-    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Prohlížeč grafů služby Azure Digital Twins
+    href: https://github.com/Azure/azure-digital-twins-graph-viewer
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-digital-twins
   - name: Příběhy zákazníků
@@ -109,9 +109,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: Videa
     href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
-ms.openlocfilehash: 06d77fa31fc33bca8d0c078c9d186a67e2a09874
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: c8e66a50ba4fbad8caabbcaf96875f3712b6e2c6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706666"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076487"

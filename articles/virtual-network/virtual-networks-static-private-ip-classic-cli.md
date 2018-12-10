@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f340b9843ed5763a20d2035e3add86123a1298e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: abc551f796cb2d8921b6b1f67fb6a6714655ffde
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971140"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134671"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>Konfigurace privátních IP adres pro virtuální počítač (Classic) pomocí Azure classic CLI
 
@@ -75,7 +75,7 @@ Chcete-li vytvořit nový virtuální počítač s názvem *DNS01* v novou cloud
    * **TestService**. Název cloudové služby, kde se vytvoří virtuální počítač.
    * **bd507d3a70934695bc2128e3e5a255ba__RightImage-Windows-2012 R2-x64-v14.2**. Bitová kopie používaná k vytvoření virtuálního počítače.
    * **AdminUser**. Místní správce pro virtuální počítač Windows.
-   * **AdminP@ssw0rd**. Heslo místního správce pro virtuální počítač Windows.
+   * <strong>AdminP@ssw0rd</strong>. Heslo místního správce pro virtuální počítač Windows.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Jak načíst statické privátní informace o IP adrese virtuálního počítače
 Chcete-li zobrazit statické privátní informace o IP adresu pro virtuální počítač vytvořen pomocí výše uvedeného skriptu, spusťte následující příkaz rozhraní příkazového řádku Azure a podívejte se hodnota *sítě StaticIP*:

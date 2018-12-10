@@ -1,5 +1,5 @@
 ---
-title: Platformy a nástroje pro datové vědy týmové projekty – Azure | Dokumentace Microsoftu
+title: Platformy a nástroje pro projekty datových věd - vědecké zpracování týmových dat
 description: Najdete výčet a popisuje prostředky dat a analýz, které jsou dostupné pro podniky standardizují používáním vědecké zpracování týmových dat.
 author: marktab
 manager: cgronlun
@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
-ms.openlocfilehash: 96548b5db1051c751f6468cb330cb5049182ce95
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 8a37c200e52e1d2786690a8a0e669af57312294d
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104250"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139164"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty datových věd
 

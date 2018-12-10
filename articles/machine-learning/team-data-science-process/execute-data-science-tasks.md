@@ -1,5 +1,5 @@
 ---
-title: Spuštění úloh datových věd - Azure Machine Learning | Dokumentace Microsoftu
+title: Spuštění úloh datových věd - vědecké zpracování týmových dat
 description: Jak můžete spustit projekt vědeckého zpracování dat v organizovaným, odborník přes data správy verzí a spolupráce.
 author: marktab
 manager: cgronlun
@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7e25e2c95f377b1ad40cba24b29ababd0561e32a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: e8167361f3b541b613d453ade473880ec97a56dc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495689"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134807"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Spuštění úloh datových věd: zkoumání, modelování a nasazení
 

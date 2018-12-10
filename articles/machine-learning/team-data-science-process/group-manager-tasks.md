@@ -1,5 +1,5 @@
 ---
-title: Správce skupiny týmu Data Science procesů úloh – Azure | Dokumentace Microsoftu
+title: Úlohy správce skupiny týmu vědecké zpracování dat
 description: Přehled úloh pro správce skupiny v týmovém projektu datové vědy.
 author: marktab
 manager: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: ee10f17f76f7c3745cb32223c58b0d2d12f7d6b6
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d44b13bb087f171c3f0474cde73167481221274f
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446343"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136576"
 ---
-# <a name="group-manager-tasks"></a>Správce skupiny úloh
+# <a name="tasks-for-a-group-manager-on-a-data-science-team-project"></a>Úlohy pro skupiny správce na týmovém projektu datové vědy
 
 Tohoto tématu jsou podrobněji popsány dále úlohy, které má správce skupiny pro provést hist / jeho organizace vědy data. Cílem je vytvořit prostředí pro spolupráci skupiny, který standardizuje na [vědecké zpracování týmových dat](overview.md) (TDSP). Přehled role pracovníky a jejich přidružených úloh, které jsou zpracovávány týmem datové vědy standardizovat o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
 

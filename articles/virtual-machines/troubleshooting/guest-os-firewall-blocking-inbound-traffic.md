@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 3ddd2f122de832654be295c5978a88bec702558c
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 19ba7013b461917c4aea8ae96f689d7e39859652
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319432"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134433"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Blokuje příchozí provoz Azure brána firewall hostovaného operačního systému virtuálního počítače
 
@@ -31,17 +31,17 @@ Připojení ke vzdálené ploše nelze použít pro připojení k Azure virtuál
 
 ## <a name="cause"></a>Příčina
 
-### <a name="cause-1"></a>Příčiny 1 
+### <a name="cause-1"></a>Příčiny 1
 
 Chcete-li povolit provoz protokolu RDP není nastavené pravidlo protokolu RDP.
 
-### <a name="cause-2"></a>Příčiny 2 
+### <a name="cause-2"></a>Příčiny 2
 
 Profily brány firewall systému hosta jsou nastavení blokovat všechna příchozí připojení včetně provozu protokolu RDP.
 
 ![Nastavení brány firewall](./media/guest-os-firewall-blocking-inbound-traffic/firewall-advanced-setting.png)
 
-## <a name="solution"></a>Řešení 
+## <a name="solution"></a>Řešení
 
 Než budete postupovat podle těchto kroků, pořiďte snímek systémový disk ovlivněných virtuálních počítačů jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
 
@@ -49,7 +49,7 @@ Pokud chcete problém vyřešit, použijte jednu z metod v [použití nástrojů
 
 ### <a name="online-troubleshooting"></a>Řešení potíží s online
 
-Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](serial-console-windows.md#open-cmd-or-powershell-in-serial-console). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte na "[opravit virtuální počítač Offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
+Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte na "[opravit virtuální počítač Offline](troubleshoot-rdp-internal-error.md#repair-the-vm-offline).
 
 #### <a name="mitigation-1"></a>Zmírnění dopadů 1
 
@@ -80,7 +80,7 @@ Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](s
     ```cmd
     netsh advfirewall firewall set rule group="Remote Desktop" new enable=yes
     ```
-    
+
     V opačném případě otevřete příslušné vzdálené plochy (TCP-In) pravidlo, spusťte následující příkaz:
 
     ```cmd
@@ -94,7 +94,7 @@ Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](s
     ```
 
     Po dokončení odstraňování potíží a nastavení brány firewall správně, povolte bránu firewall.
-    
+
     > [!Note]
     > Není nutné restartovat počítač změny se projeví.
 
@@ -128,11 +128,11 @@ Připojte se k [konzoly sériového portu a pak otevřete PowerShell instance](s
     ```
 
     > [!Note]
-    > Není nutné restartovat počítač změny se projeví. 
+    > Není nutné restartovat počítač změny se projeví.
 
 4.  Přístup k vašemu virtuálnímu počítači přes SSH, zkuste to znovu.
 
-### <a name="offline-mitigations"></a>Offline migrace 
+### <a name="offline-mitigations"></a>Offline migrace
 
 1.  [Připojení disku systému pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
 
@@ -159,7 +159,7 @@ Zobrazit [jak do brány Firewall povolte nebo zakažte pravidlo v dokumentu ope
     robocopy f:\windows\system32\config f:\windows\system32\config.BACK /MT
 
     REM Mount the hive
-    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM 
+    reg load HKLM\BROKENSYSTEM f:\windows\system32\config\SYSTEM
 
     REM Delete the keys to block all inbound connection scenario
     REG DELETE "HKLM\BROKENSYSTEM\ControlSet001\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile" /v DoNotAllowExceptions

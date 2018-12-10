@@ -1,19 +1,18 @@
 ---
-title: Azure Cosmos DB jako hodnotu klíče úložiště – přehled nákladů
-description: Další informace o nízké náklady pomocí služby Azure Cosmos DB jako hodnotu klíče úložiště.
-keywords: Hodnota klíče úložiště
-services: cosmos-db
+title: Poplatky za jednotky žádosti pro službu Azure Cosmos DB jako hodnotu klíče úložiště
+description: Další informace o za jednotky žádosti o služby Azure Cosmos DB pro jednoduché zápisu a operace čtení, když se používá jako úložiště dvojic klíč/hodnota.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/15/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 7331db23757ab4eaae054c7fe640952fe22a7917
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18
+ms.openlocfilehash: 3ab066cc3d2b06dc12c2399d718aeec6aac03b25
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840862"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134178"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB jako hodnotu klíče úložiště – přehled nákladů
 
@@ -36,9 +35,9 @@ Následující tabulka uvádí, že počet ru požadované k provedení pro čte
 
 ## <a name="cost-of-reads-and-writes"></a>Náklady na operace čtení a zápisy
 
-Pokud zřídíte 1 000 RU/s, toto množství 3.6 m RU za hodinu a se náklady 0,08 USD za hodinu (v USA a Evropa). Velikost 1 KB dokumentu, to znamená, že můžete využívat čtení 3.6-m nebo m 0,72 zapíše (3,6 m RU / 5) pomocí zřízené propustnosti. Normalizovány na milion operací čtení a zápisu, náklady by byly $0,022 /m čtení (0,08 USD / 3.6) a bude je tam 0.111 $/ m (0,08 USD / 0,72). Náklady za milionů stane minimální, jak je znázorněno v následující tabulce.
+Pokud zřídíte 1 000 RU/s, toto množství RU za hodinu a se 3.6-m náklady 0,08 USD za hodinu (v USA a Evropa). Velikost 1 KB dokumentu, to znamená, že můžete využívat čtení 3.6-m nebo m 0,72 zapíše (3.6 až milion RU / 5) pomocí zřízené propustnosti. Normalizovány na milion operací čtení a zápisu, náklady by byly $0,022 /m čtení (0,08 USD / 3.6) a bude je tam 0.111 $/ m (0,08 USD / 0,72). Náklady za milionů stane minimální, jak je znázorněno v následující tabulce.
 
-|Velikost položky|Čtení 1-m|Zápis 1-m|
+|Velikost položky|Čtení 1-m|1 milion zápisu|
 |-------------|-------|--------|
 |1 KB|$0.022|$0.111|
 |100 KB|$0.222|$1.111|

@@ -1,6 +1,6 @@
 ---
-title: Týmu vědecké zpracování dat pro DevOps | Dokumentace Microsoftu
-description: Obsahuje pokyny k pochopení zatížení analytics pomocí Azure Machine Learning a vědecké zpracování týmových dat.
+title: Vědecké zpracování týmových dat pro vývoj a provoz
+description: Operace (DevOps) funkce pro vývojáře, které jsou specifické pro implementaci řešení pokročilé analýzy a Cognitive Services.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 1eb651997f8b0c2c6a98daa1be4618e36e482dc7
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 3fc6f72571f110b0dbcb25ccbfadd400dfa787ef
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869041"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135844"
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Vědecké zpracování týmových dat pro operace pro vývojáře
 

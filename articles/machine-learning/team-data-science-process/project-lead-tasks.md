@@ -1,6 +1,6 @@
 ---
-title: Týmu vedoucí projektu proces vědy Data úlohy – Azure | Dokumentace Microsoftu
-description: Přehled úloh pro vedoucí projektu v týmovém projektu datové vědy.
+title: Úvodní úlohy pro projekt vědeckého zpracování týmových dat
+description: Přehled úloh, vedoucí projektu by měl dokončit v týmovém projektu datové vědy.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 0b5129c4642a0c4381591f751bc4d5a51990b256
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 39e8c5b8dab33ba95b34c4edb9d0a994bc8ec6dc
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442893"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135160"
 ---
-# <a name="project-lead-tasks"></a>Úkoly vedoucí projektu
+# <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Úvodní úlohy pro projekt vědeckého zpracování týmových dat
 
 Tento kurz ukazuje úlohy, které je vedoucí projektu očekává pro jeho tým projektu. Cílem je vytvořit prostředí pro spolupráci týmu, který standardizuje na [vědecké zpracování týmových dat](overview.md) (TDSP). TDSP je architektura vyvinutý microsoftem, která poskytuje strukturovaných posloupnost aktivit k úspěšnému provedení cloudové prediktivní analytická řešení. Přehled role pracovníky a jejich přidružených úloh, které jsou zpracovávány týmem datové vědy standardizovat o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
 
@@ -27,7 +27,8 @@ A **vedoucí projektu** spravuje každodenní činnosti jednotlivé datové věd
 
 Toto téma popisuje aktuálně úlohy 1,2 a 6 tento pracovní postup pro zájemci o projekt.
 
->[AZURE.NOTE] Uvádíme kroky potřebné k nastavení prostředí TDSP týmu projektu pomocí Azure DevOps v následujících pokynech. Můžeme určit způsob k provedení těchto úloh s Azure DevOps, protože to je, jak můžeme implementovat TDSP v Microsoftu. Pokud je pro vaši skupinu pro jinou platformu pro hosting kódu, úlohy, které musíte provést vedoucí týmu obecně se nezmění. Ale způsob k provedení těchto úloh se bude lišit.
+> [!NOTE]
+> Uvádíme kroky potřebné k nastavení prostředí TDSP týmu projektu pomocí Azure DevOps v následujících pokynech. Můžeme určit způsob k provedení těchto úloh s Azure DevOps, protože to je, jak můžeme implementovat TDSP v Microsoftu. Pokud je pro vaši skupinu pro jinou platformu pro hosting kódu, úlohy, které musíte provést vedoucí týmu obecně se nezmění. Ale způsob k provedení těchto úloh se bude lišit.
 
 
 ## <a name="repositories-and-directories"></a>Úložiště a adresáře
@@ -195,7 +196,8 @@ Teď musíte vložit obsah **_DSProject1_** k _R5_ úložiště v projektu na va
     
 - Potvrzení změn a nabízených oznámení. 
 
->[AZURE.NOTE] Pokud to je poprvé, kdy jste se zavázali k úložišti Git, musíte nakonfigurovat globální parametry *user.name* a *user.email* předtím, než spustíte `git commit` příkazu. Spusťte následující dva příkazy:
+> [!NOTE]
+> Pokud to je poprvé, kdy jste se zavázali k úložišti Git, musíte nakonfigurovat globální parametry *user.name* a *user.email* předtím, než spustíte `git commit` příkazu. Spusťte následující dva příkazy:
         
     git config --global user.name <your name>
     git config --global user.email <your email address>

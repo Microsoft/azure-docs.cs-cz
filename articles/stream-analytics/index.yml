@@ -1,22 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 439ac4e49941e425601124f2209eb67faa74cd43
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: f004aa82b7fb5cd85ca0054622010f956d056baf
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687160"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084222"
 documentType: LandingData
 title: Dokumentace ke službě Stream Analytics
 metadata:
   title: Dokumentace ke službě Azure Stream Analytics – kurzy, reference k rozhraní API
   meta.description: Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.
   services: stream-analytics
-  author: jasonwhowell
+  author: mamccrea
   ms.author: mamccrea
-  manager: kfile
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 04/25/2018
+  ms.date: 12/06/2018
+  ms.custom: seodec18
 abstract:
   description: Naučte se spouštět analýzy Internetu věcí (IoT) v cloudu pomocí služby Stream Analytics, plně spravovaného modulu pro zpracování událostí. Kurzy a další dokumentace ukazují, jak v reálném čase analyzovat data z aplikací, senzorů, zařízení, sociálních médií a dalších zdrojů.
   aside:
@@ -25,7 +25,7 @@ abstract:
       height: 110
       src: ./media/index/streaming-analytics-thumbnail.png
       width: 250
-    title: Povolte analýzy v reálném čase a modely ML v cloudu a ve službě IoT Edge s využitím Azure Stream Analytics. (1:15:05)
+    title: Strojové učení a analýzy v reálném čase s využitím Azure Stream Analytics (1:15:05)
     href: https://myignite.techcommunity.microsoft.com/sessions/65358?source=sessions#ignite-html-anchor
     width: 250
 sections:

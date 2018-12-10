@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs Capture návod | Dokumentace Microsoftu
+title: Čtení zachycená data z aplikace v Pythonu – Azure Event Hubs | Dokumentace Microsoftu
 description: Ukázka demonstruje použití funkce Event Hubs Capture využívá sady Azure Python SDK.
 services: event-hubs
 documentationcenter: ''
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 0733d26839cbb2dc40f4dd99b60d6a5628cc1f1a
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 72efe156920bb78631ea71a0f47f7f5fe19c7e23
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727082"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133651"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture návod: Python
 

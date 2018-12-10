@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning rozhraní API pro detekci anomálií | Dokumentace Microsoftu
+title: Azure Machine Learning API – vědecké zpracování týmových dat pro detekci anomálií
 description: Rozhraní API pro detekci anomálií je příkladem vytvořených pomocí Microsoft Azure Machine Learning, který detekuje anomálie v datech časové řady s číselné hodnoty, které jsou rovnoměrně rozloženy v čase.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
-ms.custom: (previous author=alokkirpal, ms.author=alok)
-ms.openlocfilehash: 485cf6af9f019bc43ee862627db8549240690247
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
+ms.openlocfilehash: de625e7cc394d1b292f9876a1b4cdd3fb0daeaa8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443921"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134790"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Ve službě Machine Learning rozhraní API pro detekci anomálií
 ## <a name="overview"></a>Přehled
@@ -37,9 +37,9 @@ Detekce anomálií nabídka obsahuje užitečných nástrojů, které vám pomů
 > [!NOTE]
 > Zkuste **řešení přehledů anomálií IT** technologii [toto rozhraní API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
 > 
-> Chcete-li získat tento ucelené řešení nasadí do vašeho předplatného Azure <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank"> **Začněte zde >**</a>
-> 
->
+<!-- This Solution is no longer available
+> To get this end to end solution deployed to your Azure subscription <a href="https://gallery.cortanaintelligence.com/Solution/Anomaly-Detection-Pre-Configured-Solution-1" target="_blank">**Start here >**</a>
+--> 
 
 ## <a name="api-deployment"></a>Nasazení rozhraní API
 Pokud chcete používat rozhraní API, musíte nasadit na vaše předplatné Azure, kde bude hostovaný jako webové služby Azure Machine Learning.  Udělat z [galerii Azure AI](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2).  To nasadí dvě webové služby Azure ml (a jejich související prostředky) se svým předplatným Azure – jeden pro detekce anomálií pomocí detekce sezónnosti a jednu s vypnutým sezónnosti detekce.  Až se nasazení dokončí, budete moct spravovat vaše rozhraní API z [webové služby Azure ml](https://services.azureml.net/webservices/) stránky.  Z této stránky budete moct najít vaše umístění koncových bodů, klíče rozhraní API, stejně jako ukázkový kód pro volání rozhraní API.  Podrobné pokyny jsou k dispozici [tady](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).

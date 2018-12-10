@@ -1,23 +1,21 @@
 ---
-title: Správa služby Azure Cosmos DB v Průzkumníku služby Azure Storage
-description: Zjistěte, jak spravovat službu Azure Cosmos DB v Průzkumníku služby Azure Storage.
-Keywords: Azure Cosmos DB, Azure Storage Explorer, MongoDB
-services: cosmos-db
+title: Správa prostředků Azure Cosmos DB pomocí Průzkumníka služby Azure Storage
+description: Zjistěte, jak se připojit ke službě Azure Cosmos DB a spravovat její prostředky pomocí Průzkumníka služby Azure Storage.
 author: Jejiang
 tags: Azure Cosmos DB
 ms.service: cosmos-db
-ms.custom: Azure Cosmos DB active
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 12/07/2018
 ms.author: jejiang
-ms.openlocfilehash: be06c50c5fd1be3332c7db3b6b7eae761f5b5bf1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: 1ce483a88c1f57912dfe30efa98f46335e97c01c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865535"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138122"
 ---
-# <a name="manage-azure-cosmos-db-in-azure-storage-explorer"></a>Správa služby Azure Cosmos DB v Průzkumníku služby Azure Storage
+# <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Správa prostředků Azure Cosmos DB pomocí Průzkumníka služby Azure Storage
 
 Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage umožňuje uživatelům spravovat entity Azure Cosmos DB, manipulovat s daty, aktualizovat uložené procedury a triggery, stejně jako další entity Azure, jako jsou objekty blob a fronty služby Storage. Nyní můžete pomocí jednoho nástroje spravovat různé entity Azure na jednom místě. V současné době podporuje Průzkumník služby Azure Storage účty SQL, MongoDB, Graph a Table.
 
@@ -239,8 +237,8 @@ Pokud se vám podle výše uvedeného postupu nepodaří najít žádné certifi
 
 Pokud se vám po úspěšném přihlášení nedaří načíst vaše předplatná:
 
-- Přihlaste se k webu [Azure Portal](http://portal.azure.com/) a ověřte, že má váš účet přístup k předplatným.
-- Ujistěte se, že jste se přihlásili s použitím správného prostředí ([Azure](http://portal.azure.com/), [Azure (Čína)](https://portal.azure.cn/), [Azure (Německo)](https://portal.microsoftazure.de/), [Azure pro vládu USA](http://portal.azure.us/) nebo vlastní prostředí nebo Azure Stack).
+- Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a ověřte, že má váš účet přístup k předplatným.
+- Ujistěte se, že jste se přihlásili s použitím správného prostředí ([Azure](https://portal.azure.com/), [Azure (Čína)](https://portal.azure.cn/), [Azure (Německo)](https://portal.microsoftazure.de/), [Azure pro vládu USA](https://portal.azure.us/) nebo vlastní prostředí nebo Azure Stack).
 - Pokud se nacházíte za proxy serverem, ujistěte se, že jste správně nakonfigurovali proxy Průzkumníka služby Storage.
 - Zkuste účet odebrat a znovu přidat.
 - Zkuste z domovského adresáře (např. C:\Users\ContosoUser) odstranit následující soubory a pak znovu přidat účet:

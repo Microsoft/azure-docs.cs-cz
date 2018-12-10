@@ -1,6 +1,6 @@
 ---
-title: Data science kód testování v Azure pomocí UCI dospělé příjem předpovědi datové sady – vědecké zpracování týmových dat a služeb Azure DevOps
-description: Data science kód testování s daty předpovědi pro dospělé příjem UCI
+title: Testování kódu vědy data se službami Azure DevOps – vědecké zpracování týmových dat
+description: Data science kód testování na Azure s využitím dospělé příjem UCI předpovědi datovou sadu s vědecké zpracování týmových dat a služeb Azure DevOps
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: tdsp
-ms.custom: (previous author=weig, ms.author=weig)
-ms.openlocfilehash: d04f50bc3de34c28c10be7ba429f85a99096de47
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
+ms.openlocfilehash: d8c3bafaa42e68eb7f6b5212c055793a1f2b1137
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443946"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134535"
 ---
-# <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Data science kód testování s datovou sadou UCI dospělé příjem predikcí
+# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Data science kód testování na Azure s využitím vědecké zpracování týmových dat a služeb Azure DevOps
 Tento článek obsahuje pokyny pro předběžné pro testování kódu v pracovní postup datových věd. Testování poskytuje datovým vědcům systematicky a efektivní způsob, jak zkontrolovat kvality a očekávaný výsledek svůj kód. Používáme zpracování týmových dat vědy (TDSP) [projekt, který používá datovou sadu pro dospělé příjem UCI](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , kterou jsme publikovali dříve ukazují, jak kód testování lze provést. 
 
 ## <a name="introduction-on-code-testing"></a>Úvod k testování kódu

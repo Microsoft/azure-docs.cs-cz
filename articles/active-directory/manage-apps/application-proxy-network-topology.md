@@ -15,12 +15,12 @@ ms.date: 07/28/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2321ccf115e3b517bdc593c0c428c61d5dd90968
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 976118514dbcb4cee9675ae357d857e7b90e8c0c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367085"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140468"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekty topologie sítě při použití Azure Active Directory Application Proxy
 
@@ -40,7 +40,7 @@ Při publikování aplikace prostřednictvím Proxy aplikací Azure AD se proch�
 
 Při registraci tenanta Azure AD, oblast vašeho tenanta se určuje podle země, kterou zadáte. Když povolíte Proxy aplikací, jsou instance služby Proxy aplikace vašeho tenanta zvolili nebo vytvoří ve stejné oblasti jako váš tenant Azure AD, nebo k němu nejbližší oblasti.
 
-Například pokud oblast vašeho tenanta Azure AD je Evropské unie (EU), všechny konektory Proxy aplikací pomocí instance služby v datových centrech Azure v EU. Pokud vaši uživatelé přístup k publikovaným aplikací, jejich přenos prochází instance služby Proxy aplikace v tomto umístění.
+Pokud zemi nebo oblast vašeho tenanta Azure AD je Spojené království, všechny konektory Proxy aplikací pomocí instance služby v EU datových centrech. Pokud vaši uživatelé přístup k publikovaným aplikací, jejich přenos prochází instance služby Proxy aplikace v tomto umístění.
 
 ## <a name="considerations-for-reducing-latency"></a>Důležité informace pro snížení latence
 
@@ -85,9 +85,9 @@ Umístění konektoru blízko cílové aplikace v síti zákazníka. Tato konfig
 
 Pokud váš konektor dohled k řadiči domény, pak tento vzor je výhodné. Většina našich zákazníků tento model použijte, protože je vhodný pro většinu scénářů. Tento model také zkombinovat se vzorem 2 pro optimalizaci provozu mezi službou a konektor.
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-public-peering"></a>Způsob 2: Využijte výhod ExpressRoute u veřejného partnerského vztahu
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>Způsob 2: Využijte výhod ExpressRoute s využitím partnerského vztahu Microsoftu
 
-Pokud je nutné nastavit veřejné partnerské vztahy ExpressRoute, můžete použít rychlejší připojení ExpressRoute pro přenos dat mezi Proxy aplikací a konektor. Konektor je stále v síti, blízko ní.
+Pokud máte ExpressRoute s partnerský vztah Microsoftu, můžete použít rychlejší připojení ExpressRoute pro přenos dat mezi Proxy aplikací a konektor. Konektor je stále v síti, blízko ní.
 
 ### <a name="pattern-3-take-advantage-of-expressroute-with-private-peering"></a>Způsob 3: Využijte výhod ExpressRoute s privátní partnerské vztahy
 
@@ -137,13 +137,13 @@ Běžný vzor je opět optimalizovat směrování 3, se vkládá konektoru v apl
 
 ### <a name="use-case-3"></a>Případ 3
 
-**Scénář:** aplikace je v síti vaší organizace v USA. U veřejného partnerského vztahu ExpressRoute existuje mezi Azure a v podnikové síti.
+**Scénář:** aplikace je v síti vaší organizace v USA. ExpressRoute s využitím partnerského vztahu Microsoftu existuje mezi Azure a v podnikové síti.
 
 **Doporučení:** postupujte podle vzorů 1 a 2, je popsáno v předchozí části.
 
 Nejprve umístíte konektoru co nejblíže k aplikaci. Pak systém automaticky používá ExpressRoute pro směrování 2. 
 
-Používáte-li spojení ExpressRoute je veřejný partnerský vztah, provoz mezi proxy a konektor probíhá přes tento odkaz. Směrování 2 má optimalizovanou latence.
+Pokud partnerský vztah Microsoftu používá spojení ExpressRoute, provoz mezi proxy a konektor probíhá přes tento odkaz. Směrování 2 má optimalizovanou latence.
 
 ![Diagram znázorňující ExpressRoute mezi proxy a konektoru](./media/application-proxy-network-topology/application-proxy-pattern3.png)
 
@@ -173,7 +173,7 @@ Můžete také zvážit použití jeden další typ variant v této situaci. Pok
 
 ## <a name="next-steps"></a>Další postup
 
-- [Povolení Proxy aplikace](application-proxy-enable.md)
+- [Povolení Proxy aplikace](application-proxy-add-on-premises-application.md)
 - [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Povolení podmíněného přístupu](application-proxy-integrate-with-sharepoint-server.md)
 - [Řešení potíží s problémy, se kterými máte potíže s Proxy aplikací](application-proxy-troubleshoot.md)

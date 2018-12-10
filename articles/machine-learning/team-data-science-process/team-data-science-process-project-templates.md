@@ -1,5 +1,5 @@
 ---
-title: Tým vědecké zpracování dat projektu plánování – Azure | Dokumentace Microsoftu
+title: Týmové plánování projektu vědecké zpracování dat
 description: Aplikace Microsoft Project a Excel šablony, které vám pomůžou plánovat a spravovat projekty datových věd.
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 702ea6152ce5bf90d1d1f61b566e91d1859e672b
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 3675d3cd8959d78270a491aeb443cb8e458d2472
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443096"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53137907"
 ---
 # <a name="team-data-science-process-project-planning"></a>Týmové plánování projektu vědecké zpracování dat
 

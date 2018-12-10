@@ -1,6 +1,6 @@
 ---
-title: Průvodce programováním pro Azure Event Hubs | Dokumentace Microsoftu
-description: Psaní kódu pro Azure Event Hubs pomocí sady Azure .NET SDK.
+title: Pokyny k programování – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek obsahuje informace o tom, jak napsat kód, a to pro Azure Event Hubs, z nichž pomocí sady Azure .NET SDK.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cd97aed36e9fd82df0d37913d5ea9e57c875a673
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011449"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138071"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Průvodce programováním pro službu Azure Event Hubs
 Tento článek popisuje některé běžné situace při psaní kódu s využitím služby Azure Event Hubs. Předpokládá se předběžná znalost služby Event Hubs. Koncepční přehled služby Event Hubs naleznete v tématu [Přehled služby Event Hubs](event-hubs-what-is-event-hubs.md).
@@ -76,7 +76,7 @@ Při odesílání dat události, můžete zadat hodnotu, která se po zahašová
 
 ### <a name="availability-considerations"></a>Aspekty dostupnosti
 
-Použití klíče oddílu je volitelný a měli byste pečlivě zvážit, jestli chcete použít jeden. V mnoha případech použití klíče oddílu je dobrou volbou, pokud řazení událostí je důležité. Pokud použijete klíč oddílu, tyto oddíly vyžadují dostupnost v jednom uzlu a můžete v čase, dojde k výpadku například se při výpočetní uzly restartování a opravy. V důsledku toho pokud nastavujete ID oddílu a daného oddílu z nějakého důvodu nedostupný, se nezdaří pokus o přístup k datům v tomto oddílu. Pokud je vysoká dostupnost vašich nejdůležitějších, nezadávejte klíč oddílu; v takovém případě se události posílají do oddílů pomocí modelu kruhového je popsáno výše. V tomto scénáři vytvoříte explicitní volbu mezi dostupností (žádné ID oddílu) a konzistenci (Připnutí události pro ID oddílu).
+Použití klíče oddílu je volitelný a měli byste pečlivě zvážit, jestli chcete použít jeden. Pokud při publikování události nezadáte klíč oddílu, použije se přiřazení metodou kruhového dotazování. V mnoha případech použití klíče oddílu je dobrou volbou, pokud řazení událostí je důležité. Pokud použijete klíč oddílu, tyto oddíly vyžadují dostupnost v jednom uzlu a můžete v čase, dojde k výpadku například se při výpočetní uzly restartování a opravy. V důsledku toho pokud nastavujete ID oddílu a daného oddílu z nějakého důvodu nedostupný, se nezdaří pokus o přístup k datům v tomto oddílu. Pokud je vysoká dostupnost vašich nejdůležitějších, nezadávejte klíč oddílu; v takovém případě se události posílají do oddílů pomocí modelu kruhového je popsáno výše. V tomto scénáři vytvoříte explicitní volbu mezi dostupností (žádné ID oddílu) a konzistenci (Připnutí události pro ID oddílu).
 
 Zpoždění při zpracování události je zpracování potřeba vzít v úvahu. V některých případech může být lepší vyřazení dat a zkuste to znovu, než se pokoušet držet krok s zpracování, což může způsobit další zpracování příjmu dat zpoždění. Například s běžícími je vhodnější počkat na dokončení aktuální data, ale v živý chat nebo scénář VOIP byste raději chtěli data rychle, i v případě, že není kompletní.
 

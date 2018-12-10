@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: ac25fa1bcca9a49054f37d8799511fbc7d95645b
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 247c12fb15fe8aa82c3a29c4c2d1e704db40e424
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584094"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141495"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Informace o cenách služby Azure IoT Hub
 
@@ -35,6 +35,7 @@ ms.locfileid: "47584094"
 | Dotazů na dvojčata zařízení a modul | Dotazy se účtují jako zprávy v závislosti na velikosti výsledek v blocích o velikosti 512 bajtů. |
 | Operace úloh <br/> (vytvoření, aktualizace, výpis, odstranění) | Není placený. |
 | Operace úloh podle zařízení | Operace úloh (jako například aktualizace dvojčat a metody) se účtuje jako obvykle. Úlohy, což vede k volání metody 1000 žádostí 1 KB a prázdné tělo odpovědi je třeba za 1 000 zpráv. |
+| Zprávy keep-alive | Při použití přes protokol AMQP nebo protokol MQTT, neúčtují se vyměňují k navázání připojení a při vyjednávání, které si vyměňují zprávy. |
 
 > [!NOTE]
 > Všechny velikosti se vypočítávají vzhledem k tomu, velikost datové části v bajtech (protokol rámce se ignoruje). Pro zprávy, které mají vlastnosti a text, velikost je vypočítán způsobem bez ohledu na protokol. Další informace najdete v tématu [formát zprávy služby IoT Hub](iot-hub-devguide-messages-construct.md).

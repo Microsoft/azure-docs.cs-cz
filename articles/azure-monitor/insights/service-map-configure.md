@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2018
+ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: cead67bf18dcd0ea7b5c1479588083884dab475f
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 68ca8593dea93faf076ffb5d99ec7bcad210a810
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632955"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141828"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace řešení Service Map v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ho zobrazit servery přirozeným způsobem – propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP žádnou konfiguraci kromě instalace agenta vyžaduje.
@@ -125,8 +125,8 @@ Následující část obsahuje seznam podporovaných operačních systémech pro
 
 | File | Operační systém | Verze | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.1 | 55030ABF553693D8B5112569FB2F97D7C54B66E9990014FC8CC43EFB70DE56C6 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 ## <a name="connected-sources"></a>Připojené zdroje
 Řešení Service Map získává data od agenta Microsoft Dependency. Agent závislostí závisí na agenta Log Analytics pro připojení ke službě Log Analytics. To znamená, že server musí mít nainstalovaný a nakonfigurovaný pomocí agenta závislostí agenta Log Analytics.  Následující tabulka popisuje připojené zdroje, které podporuje řešení Service Map.
@@ -135,7 +135,7 @@ Následující část obsahuje seznam podporovaných operačních systémech pro
 |:--|:--|:--|
 | Agenti systému Windows | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Windows. <br><br>Kromě [agenta Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md), agenti Windows vyžadují agent služby Microsoft Dependency. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
 | Agenti systému Linux | Ano | Řešení Service Map analyzuje a shromažďuje data z počítačů s Linuxem. <br><br>Kromě [agenta Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md), vyžadují agent služby Microsoft Dependency agenti systému Linux. Úplný seznam verzí operačních systémů najdete v [podporovaných operačních systémech](#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Service Map analyzuje a shromažďuje data z agentů Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md). <br><br>Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
+| Skupina pro správu nástroje System Center Operations Manager | Ano | Řešení Service Map analyzuje a shromažďuje data z agentů Windows a Linux v připojeného [skupiny pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md). <br><br>Vyžaduje se přímé připojení z počítače s agentem nástroje System Center Operations Manager ke službě Log Analytics. |
 | Účet služby Azure Storage | Ne | Řešení Service Map shromažďuje data z počítačů s agenty, takže není žádná data z něj získat ze služby Azure Storage. |
 
 Na Windows, Microsoft Monitoring Agent (MMA) používá System Center Operations Manager a Log Analytics ke shromažďování a odesílání dat monitorování. (Tomuto agentovi, se nazývá agenta System Center Operations Manageru, agenta Log Analytics, MMA nebo přímý Agent, v závislosti na kontextu.) System Center Operations Manager a Log Analytics poskytují různé out v poli verze agenta MMA. Tyto verze dokážou podávat hlášení nástroji System Center Operations Manager, službě Log Analytics nebo oběma.  
@@ -156,7 +156,7 @@ Pokud jste zákazníkem System Center Operations Manageru se skupiny pro správu
 Pokud počítače Windows nebo Linuxem nemůžete připojit přímo ke službě, budete muset nakonfigurovat agenta Log Analytics pro připojení k pracovnímu prostoru Log Analytics pomocí brány. Další informace o tom, jak nasadit a nakonfigurovat bránu Log Analytics najdete v tématu [připojit počítače bez připojení k Internetu pomocí brány Log Analytics](../../azure-monitor/platform/gateway.md).  
 
 ### <a name="management-packs"></a>Sady Management Pack
-Při řešení Service Map se aktivuje v pracovním prostoru Log Analytics, 300 KB management pack je předán do všech serverů Windows v daném pracovním prostoru. Pokud používáte agenty System Center Operations Manager v [připojené skupiny pro správu](../../log-analytics/log-analytics-om-agents.md), sada management pack Service Map bude nasazena ze System Center Operations Manager. 
+Při řešení Service Map se aktivuje v pracovním prostoru Log Analytics, 300 KB management pack je předán do všech serverů Windows v daném pracovním prostoru. Pokud používáte agenty System Center Operations Manager v [připojené skupiny pro správu](../../azure-monitor/platform/om-agents.md), sada management pack Service Map bude nasazena ze System Center Operations Manager. 
 
 Tato sada Management Pack má název Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Je zapsán do %Programfiles%\Microsoft Monitoring Agent\Agent\Health služby State\Management Packs\. Zdroj dat, která používá sadu management pack je % Program files%\Microsoft monitorování Agent\Agent\Health služby State\Resources\<AutoGeneratedID > \ Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 

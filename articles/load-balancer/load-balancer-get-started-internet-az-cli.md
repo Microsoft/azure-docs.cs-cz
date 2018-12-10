@@ -1,5 +1,6 @@
 ---
-title: Vytvoření veřejné služby Load Balancer Standard s zónově redundantní veřejné IP adresy front-endu pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+title: Vytvoření Load Balanceru úrovně Standard se zónově redundantních front-endovou IP Adresou pomocí rozhraní příkazového řádku Azure
+titlesuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit veřejné služby Load Balancer Standard s zónově redundantní veřejné IP adresy front-endu pomocí Azure CLI
 services: load-balancer
 documentationcenter: na
@@ -7,18 +8,19 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 169c440c8fb64923da537f391d2b5f64746162ce
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 8c396e72a8c8471be4214bf1b461210e2e61a805
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739120"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138906"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-frontend-using-azure-cli"></a>Vytvoření veřejné služby Load Balancer Standard s zónově redundantních front-endu pomocí Azure CLI
+#  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-cli"></a>Vytvoření Load Balanceru úrovně Standard s zónově redundantních front-endu pomocí Azure CLI
 
 Tento článek popisuje postup vytvořením veřejné [Load balancer úrovně Standard](https://aka.ms/azureloadbalancerstandard) s zónově redundantních front-endu pomocí standardní veřejné IP adresy.
 

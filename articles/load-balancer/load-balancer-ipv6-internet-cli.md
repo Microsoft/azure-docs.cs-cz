@@ -1,5 +1,6 @@
 ---
-title: Vytvořte veřejný load balancer s IPv6 – rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+title: Vytvořte veřejný load balancer s IPv6 – rozhraní příkazového řádku Azure
+titlesuffix: Azure Load Balancer
 description: Informace o vytvoření veřejného load balanceru s protokolem IPv6 pomocí rozhraní příkazového řádku Azure.
 services: load-balancer
 documentationcenter: na
@@ -8,16 +9,17 @@ keywords: protokol IPv6, nástroje pro vyrovnávání zatížení azure, duáln�
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: kumud
-ms.openlocfilehash: e3d6611c8a5c6faf3d1e070d1bafa2027adfc0cb
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 1caa8e7554024c3b2e3d86436d3d494d7995169a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50739834"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53142015"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Vytvoření veřejného load balanceru s protokolem IPv6 pomocí rozhraní příkazového řádku Azure
 

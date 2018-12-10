@@ -1,6 +1,6 @@
 ---
-title: Provádění projekty datových věd - Azure Machine Learning | Dokumentace Microsoftu
-description: Jak mezi odborníky přes data, můžete sledovat průběh projektu datové vědy.
+title: Sledování průběhu projekty datových věd - vědecké zpracování týmových dat
+description: Jak správci skupiny datové vědy, týmových zapůjčení a zájemci projektu můžete sledovat průběh projektu datové vědy.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -9,15 +9,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 202ac89b8a281012dbcf5f4c4df11e97ba2c8c65
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a9616a4f80a3105118b82ce3f4106a65fdd9ddfe
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441464"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134297"
 ---
-# <a name="track-progress-of-data-science-projects"></a>Sledování průběhu projekty datových věd
+# <a name="tracking-the-progress-of-data-science-projects"></a>Sledování průběhu projekty datových věd
 
 Data science skupiny správců, týmů a nutnost zájemci projektu sledovat průběh své projekty, jaká práce bylo provedeno na nich a kým a zůstává na seznamy úkolů. 
 

@@ -1,22 +1,22 @@
 ---
-title: Sledování žádosti o služby Azure Cosmos DB a úložiště | Dokumentace Microsoftu
+title: Monitorujte metriky výkonu a úložiště ve službě Azure Cosmos DB
 description: Další informace o monitorování účtu služby Azure Cosmos DB pro metriky výkonu, jako jsou požadavky a chyby serveru a metriky využití, jako je využití úložiště.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2017
+ms.date: 12/06/2018
 ms.author: sngun
-ms.openlocfilehash: 1f4bf4ba660e83be9879c56d04b27c932d563e17
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.custom: seodec18
+ms.openlocfilehash: fe527e6e9933d25d7f1a16561ce4822d7b9a33ab
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354055"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135878"
 ---
-# <a name="monitor-azure-cosmos-db"></a>Monitorování služby Azure Cosmos DB
+# <a name="monitor-performance-and-storage-metrics-in-azure-cosmos-db"></a>Monitorujte metriky výkonu a úložiště ve službě Azure Cosmos DB
+
 Můžete monitorovat své účty služby Azure Cosmos DB [webu Azure portal](https://portal.azure.com/). Pro každý účet služby Azure Cosmos DB je možné monitorovat výkon, úložiště, dostupnosti, latence a konzistence kompletní sadu metriky.
 
 Metriky lze zobrazit na stránce účtu, nové metriky stránky, nebo ve službě Azure Monitor.

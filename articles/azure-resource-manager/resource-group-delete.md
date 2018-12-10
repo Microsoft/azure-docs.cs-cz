@@ -1,6 +1,6 @@
 ---
-title: Odstranit skupinu prostředků Azure Resource Manageru
-description: Popisuje, jak Azure Resource Manageru orders odstranění prostředků při odstranění skupiny prostředků.
+title: Odstranit skupinu prostředků a prostředky – Azure Resource Manageru
+description: Popisuje, jak Azure Resource Manageru orders odstranění prostředků při odstranění skupiny prostředků. Popisuje kódy odpovědí a jak je určit, pokud bylo odstranění úspěšné zpracovává Resource Manageru.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -9,14 +9,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2018
+ms.date: 12/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8b0711cab07584aa84ab437a2a4efb5aab92f3d1
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec18
+ms.openlocfilehash: b8c4fdc942af291e912a4c1e74d1292279cf9f8c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319355"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53132325"
 ---
 # <a name="azure-resource-manager-resource-group-deletion"></a>Odstranění skupiny prostředků služby Azure Resource Manageru
 
@@ -68,4 +69,4 @@ Pro další kódy chyb nezdaří správce prostředků odstranění prostředku.
 ## <a name="next-steps"></a>Další postup
 
 * Koncepce Resource Manageru, najdete v článku [přehled Azure Resource Manageru](resource-group-overview.md).
-* Operace pro poskytovatele prostředků najdete v tématu [rozhraní Azure REST API](/rest/api/).
+* Odstranění příkazy naleznete v tématu [PowerShell](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup), [rozhraní příkazového řádku Azure](/cli/azure/group?view=azure-cli-latest#az-group-delete), a [rozhraní REST API](/rest/api/resources/resourcegroups/delete).

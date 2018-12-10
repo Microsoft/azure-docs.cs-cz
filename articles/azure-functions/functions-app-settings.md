@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: e346aed2efaab6afcd24e622f577708221b47cb1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e8d880534a39651024b60ef10a9fbadb9e109a4e
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965850"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138241"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -172,6 +172,48 @@ Umožňuje aplikaci function app pro spuštění ze souboru balíčku připojen�
 |WEB\_SPUSTIT\_FROM\_BALÍČKU|1|
 
 Platné hodnoty jsou buď adresu URL, který se přeloží do umístění souboru balíčku nasazení, nebo `1`. Pokud je nastavena na `1`, velikost balíčku musí být v `d:\home\data\SitePackages` složky. Při použití s tímto nastavením zip nasazení, balíček je automaticky odeslána do tohoto umístění. Ve verzi preview, se toto nastavení s názvem `WEBSITE_RUN_FROM_ZIP`. Další informace najdete v tématu [spouštět funkce ze souboru balíčku](run-functions-from-deployment-package.md).
+
+## <a name="azurefunctionproxydisablelocalcall"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+Ve výchozím nastavení proxy služby Functions bude využívat zástupce k odesílání volání rozhraní API z proxy přímo do funkce ve stejné aplikaci funkce a nevytvářejte nový požadavek HTTP. Toto nastavení umožňuje zakázat toto chování.
+
+|Klíč|Hodnota|Popis|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true (pravda)|Volání s back-end adresy url odkazující na funkci v lokální funkce se již nebude zasíláno přímo do funkce a místo toho přesměrováni zpět na front-endu HTTP pro danou aplikaci funkcí|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false (nepravda)|Toto je výchozí hodnota. Volání s back-end adresy url odkazující na funkci v místní aplikaci Function App se předají přímo do této funkce|
+
+
+## <a name="azurefunctionproxybackendurldecodeslashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+Toto nastavení určuje, zda je % 2F dekódovat jako ve parametry trasy vloženým do adresy URL back-endu. 
+
+|Klíč|Hodnota|Popis|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true (pravda)|Parametry trasy s kódováním lomítka kliknul dekódovat. `example.com/api%2ftest` se stane `example.com/api/test`|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false (nepravda)|Toto je výchozí chování. Všechny trasy, které se předají parametry beze změny|
+
+### <a name="example"></a>Příklad:
+
+Zde je příkladu proxies.json v aplikaci function app na myfunction.com adresy URL
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+|Dekódování adres URL|Vstup|Výstup|
+|-|-|-|
+|true (pravda)|myFunction.com/test%2fapi|example.com/test/API
+|false (nepravda)|myFunction.com/test%2fapi|example.com/test%2fapi|
+
 
 ## <a name="next-steps"></a>Další postup
 

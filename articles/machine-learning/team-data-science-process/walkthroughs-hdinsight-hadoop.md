@@ -1,5 +1,5 @@
 ---
-title: Pomocí Hivu v Azure HDInsight Hadoop data science návody | Dokumentace Microsoftu
+title: Analýzy v Azure HDInsight Hadoop pomocí Hivu - vědecké zpracování týmových dat
 description: Příklady vědecké zpracování týmových dat, které se provedou pomocí Hivu v Azure HDInsight Hadoop pro prediktivní analýzy.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: eae56eda72d775205a231e2c6482a1c0686d9251
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 91604e0ed18e8c78e5678eb9c8b85da3f8cbb500
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445920"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135045"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Pomocí Hivu v Azure HDInsight Hadoop data science návody 
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: fbfe7255f2b848187c74fd832f349186eef5eaef
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: 724b1a2562e4723bd02c97cdecb0ef7dbd8ed177
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51287568"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139057"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure.
 
@@ -169,7 +169,9 @@ Můžete také použít [deployment()](resource-group-template-functions-deploym
 
 ## <a name="get-values-from-linked-template"></a>Získání hodnot z propojené šablony
 
-Výstupní hodnota z propojené šablony získáte načtení hodnoty vlastností se syntaxí, jako jsou: `"[reference('<name-of-deployment>').outputs.<property-name>.value]"`.
+Výstupní hodnota z propojené šablony získáte načtení hodnoty vlastností se syntaxí, jako jsou: `"[reference('deploymentName').outputs.propertyName.value]"`.
+
+Při získávání výstupu vlastnost z propojené šablony, název vlastnosti nemůže obsahovat čárku.
 
 Následující příklady ukazují, jak odkazovat na propojenou šablonu a načíst výstupní hodnoty. Propojené šablony vrátí zprávu jednoduché.
 

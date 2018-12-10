@@ -15,12 +15,12 @@ ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: b4476579665b0e6b574827d1bec06233560038a8
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: a73e652c74f9d88f1e066de190834fc033c13cf0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621084"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135522"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Jak povolit nativní klientské aplikace pro interakci s proxy aplikací
 
@@ -35,7 +35,7 @@ Pomocí knihovny ověřování AD Azure, která se postará o ověřování a po
 Tento článek vás provede čtyři kroky k publikování nativní aplikace s Proxy aplikace a knihovny pro ověřování Azure AD. 
 
 ## <a name="step-1-publish-your-application"></a>Krok 1: Publikování aplikace
-Publikování aplikace proxy serveru, stejně jako jakékoli jiné aplikace a přiřadit uživatele pro přístup k aplikaci. Další informace najdete v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-publish-azure-portal.md).
+Publikování aplikace proxy serveru, stejně jako jakékoli jiné aplikace a přiřadit uživatele pro přístup k aplikaci. Další informace najdete v tématu [publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md).
 
 ## <a name="step-2-configure-your-application"></a>Krok 2: Konfigurace aplikace
 Nakonfigurujte vaše nativní aplikace následujícím způsobem:
@@ -55,8 +55,8 @@ Podrobné informace o vytváření registrace nové aplikace, najdete v článku
 Povolte nativní aplikace zpřístupní k ostatním aplikacím ve vašem adresáři:
 
 1. Pořád ještě v **registrace aplikací**, vyberte nové nativní aplikaci, kterou jste právě vytvořili.
-2. Vyberte **požadovaná oprávnění**.
-3. Vyberte **Přidat**.
+2. Vyberte **oprávnění k rozhraní API**.
+3. Vyberte **přidat oprávnění**.
 4. Prvním krokem otevřete **vyberte rozhraní API**.
 5. Pomocí panelu hledání vyhledejte aplikaci Proxy aplikací, kterou jste publikovali v první části. Zvolte tuto aplikaci a potom klikněte na tlačítko **vyberte**. 
 

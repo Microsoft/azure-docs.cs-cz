@@ -1,26 +1,19 @@
 ---
-title: 'Propojení virtuální sítě k okruhu ExpressRoute: Azure portal | Dokumentace Microsoftu'
+title: 'Propojení virtuální sítě k okruhu – ExpressRoute: Azure portal | Dokumentace Microsoftu'
 description: 'Připojení virtuální sítě k okruhu Azure ExpressRoute. Postupy: kroky.'
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/08/2018
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 47c0db66889dae5d74e2fcf46a27ec1397930e53
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.custom: seodec18
+ms.openlocfilehash: f2b22eb779a8ebe1d1fd804443663abc9a4245ec
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256778"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141641"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Připojení virtuální sítě k okruhu ExpressRoute pomocí portálu
 > [!div class="op_single_selector"]
@@ -33,7 +26,7 @@ ms.locfileid: "51256778"
 
 Tento článek vám pomůže vytvořit připojení k propojení virtuální sítě k okruhu Azure ExpressRoute pomocí webu Azure portal. Virtuální sítě, které se připojují k váš okruh Azure ExpressRoute může být ve stejném předplatném nebo můžou být součástí jiné předplatné.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Zkontrolujte [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
 

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hive | Dokumentace Microsoftu
+title: Vytvoření funkcí pro data v clusteru Hadoop – vědecké zpracování týmových dat
 description: Příklady dotazů Hive, které generují funkce v data uložená v clusteru Azure HDInsight Hadoop.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: f63e1aeaca6e19eacb10ed7dc68d311234a31666
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 0ade4ac054f345084cf0bc0a6dc7885329eb8b9c
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444542"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141879"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Vytvoření funkcí pro data v clusteru Hadoop pomocí dotazů Hive
 Tento dokument ukazuje, jak vytvoření funkcí pro data uložená v clusteru Azure HDInsight Hadoop pomocí dotazů Hive. Tyto dotazy Hive pomocí vložených Hive User-Defined funkcí (UDF), skriptů, pro které jsou k dispozici.

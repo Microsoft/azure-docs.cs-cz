@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: dce9c26d9f836a2238642521be4d88ba089058d7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 8b410cc85584f45d4a3e9d7bce180a2c6aa46114
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445954"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134961"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Principy konektorů Proxy aplikací Azure AD
 
@@ -47,7 +47,7 @@ Windows server musí mít TLS 1.2 zapnutý předtím, než nainstalujete konekto
 2. Restartujte server
 
 
-Další informace o požadavcích na síť pro konektor serveru najdete v tématu [začít pracovat s Proxy aplikací a nainstalovat konektor](application-proxy-enable.md).
+Další informace o požadavcích na síť pro konektor serveru najdete v tématu [začít pracovat s Proxy aplikací a nainstalovat konektor](application-proxy-add-on-premises-application.md).
 
 ## <a name="maintenance"></a>Údržba
 Konektory a služba postará o jednotlivých úlohách vysokou dostupnost. Můžete třeba přidat či odebrat dynamicky. Pokaždé, když přijde nový požadavek přesměruje ho na některý konektory, které je aktuálně k dispozici. Pokud konektor není dočasně k dispozici, nebude reagovat na tento provoz.
@@ -64,7 +64,7 @@ Není nutné ručně odstranit konektory, které nejsou používány. Konektor j
 
 ## <a name="automatic-updates"></a>Automatické aktualizace
 
-Azure AD poskytuje automatické aktualizace pro všechny konektory, které nasadíte. Za předpokladu, službou Application Proxy Connector Updater k automatické aktualizaci konektoru. Pokud nevidíte konektor aktualizační službu na serveru, budete muset [znovu nainstalovat konektor](application-proxy-enable.md) zobrazíte všechny aktualizace. 
+Azure AD poskytuje automatické aktualizace pro všechny konektory, které nasadíte. Za předpokladu, službou Application Proxy Connector Updater k automatické aktualizaci konektoru. Pokud nevidíte konektor aktualizační službu na serveru, budete muset [znovu nainstalovat konektor](application-proxy-add-on-premises-application.md) zobrazíte všechny aktualizace. 
 
 Pokud nechcete čekat automatických aktualizací na váš konektor, můžete provést ruční upgrade. Přejděte [stránku pro stažení konektoru](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) na serveru, kde je svůj konektor vyhledat a vybrat **Stáhnout**. Tento proces zahajuje upgrade pro místní konektor. 
 
@@ -136,7 +136,7 @@ Konektory lze také připojit do domény nebo doménové struktury, které mají
 
 Nasazení konektoru obvykle je jednoduché a nepotřebuje žádnou zvláštní konfiguraci. Existují však některé jedinečné stavy, měli byste zvážit:
 
-* Organizace, které omezuje odchozí provoz musí [požadované porty otevřete](application-proxy-enable.md#open-your-ports).
+* Organizace, které omezuje odchozí provoz musí [požadované porty otevřete](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 * Kompatibilní se standardem FIPS počítače může být potřeba změní vlastní konfiguraci a povolení konektoru procesy, které chcete generovat a ukládat certifikát.
 * Organizace, které zamknout své prostředí na základě procesů, které vydávat síťové požadavky nutné ujistěte, že jsou povoleny obě služby konektoru pro přístup k všechny požadované porty a IP adresy.
 * V některých případech může odchozí dopředné proxy přerušit obousměrný certifikát ověřování a způsobí selhání komunikace.

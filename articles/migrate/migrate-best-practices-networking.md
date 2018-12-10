@@ -7,19 +7,19 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
-ms.openlocfilehash: 3142cabf28dd60fa49bed4cc153eaba096a2782e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1493eb6978b00771aa8ed4d8cfc28c37a9dde5b6
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109629"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139737"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>Osvědčené postupy pro nastavení sítě pro úlohy migrovat do Azure
 
-Jako je plánování a návrh pro migraci, kromě přemýšlení o migraci, jedním z nejdůležitějších kroků je návrh a implementaci sítí Azure. Tento článek popisuje informace o plánování a osvědčené postupy pro sítě při migraci do implementace IaaS a PaaS v Azure.
+Jako je plánování a návrh pro migraci, kromě migrace, jedním z nejdůležitějších kroků je návrh a implementaci sítí Azure. Tento článek popisuje osvědčené postupy pro sítě při migraci do implementace IaaS a PaaS v Azure.
 
 > [!IMPORTANT]
-> Osvědčené postupy a názory, které jsou popsané v tomto článku jsou založené na platformě Azure a služby funkce dostupné v době zápisu. Funkce a možnosti v průběhu času měnit. Ne všechna doporučení může být pro vaše nasazení, takže vyberte ty, které fungují pro vaše prostředí.
+> Osvědčené postupy a názory, které jsou popsané v tomto článku jsou založené na platformě Azure a služby funkce dostupné v době zápisu. Funkce a možnosti v průběhu času měnit. Ne všechna doporučení může být pro vaše nasazení, takže vyberte ty, které vám vyhovují.
 
 
 ## <a name="design-virtual-networks"></a>Návrh virtuální sítě

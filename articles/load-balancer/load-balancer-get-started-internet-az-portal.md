@@ -1,24 +1,26 @@
 ---
-title: Vytvoření veřejné služby Load Balancer Standard s zónově redundantní veřejné IP adresy front-endu pomocí webu Azure portal | Dokumentace Microsoftu
-description: Zjistěte, jak vytvořit veřejné služby Load Balancer Standard s zónově redundantní veřejné IP adresy front-endu pomocí webu Azure portal
+title: Vytvoření Load Balanceru úrovně Standard s zónově redundantních front-endu pomocí webu Azure portal
+titlesuffix: Azure Load Balancer
+description: Zjistěte, jak vytvořit veřejný Load Balancer Standard s zónově redundantní veřejné IP adresy front-endu pomocí webu Azure portal
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 70514433d11bbe7606d75a3e2c1f6dffc251621f
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: fc5dcd76ca8ecfb820a8d157fee9cc0a92bd2d5b
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740939"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135678"
 ---
-#  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Vytvoření veřejné služby Load Balancer Standard s zónově redundantní veřejné IP adresy front-endu pomocí webu Azure portal
+#  <a name="create-a-public-standard-load-balancer-with-zone-redundant-frontend-using-azure-portal"></a>Vytvořte veřejný Load Balancer Standard s zónově redundantních front-endu pomocí webu Azure portal
 
 Tento článek popisuje postup vytvořením veřejné [Load balancer úrovně Standard](https://aka.ms/azureloadbalancerstandard) s zónově redundantních front-endu pomocí standardní veřejné IP adresy. Zónově redundantní ve výchozím nastavení je na jeden front-endu IP adresu Load balanceru úrovně Standard.
 

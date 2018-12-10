@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services a Apple FairPlay licenční podpory | Dokumentace Microsoftu
+title: Služba Media Services a Apple FairPlay licenční podpora – Azure | Dokumentace Microsoftu
 description: Toto téma s přehledem Apple FairPlay licenční požadavky a konfigurace.
 author: juliako
 manager: femila
@@ -11,14 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 12/08/2018
 ms.author: juliako
-ms.openlocfilehash: 19f382de3ffe11253005f5fa2874ee817abaeed3
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.custom: seodec18
+ms.openlocfilehash: 66d816795ec06891aafce73036d7aea9bb52b2c8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376750"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53140522"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay licenční požadavky a konfigurace 
 

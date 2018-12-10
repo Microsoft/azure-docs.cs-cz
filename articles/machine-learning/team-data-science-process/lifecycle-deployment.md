@@ -1,5 +1,5 @@
 ---
-title: Fáze nasazení životní cyklus vědeckého zpracování týmových dat – Azure | Dokumentace Microsoftu
+title: Fáze nasazení životní cyklus vědeckého zpracování týmových dat
 description: Cíle, úkoly a úkoly pro fázi nasazení vašich projektů datové vědy
 services: machine-learning
 author: marktab
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 30d54b1475188fa886a811b22460d88e53aa564e
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: d05f831aa1ae1f9b0912dce66bf7f5e15c109d49
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446581"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53138564"
 ---
-# <a name="deployment"></a>Nasazení
+# <a name="deployment-stage-of-the-team-data-science-process-lifecycle"></a>Fáze nasazení životní cyklus vědeckého zpracování týmových dat
 
 Tento článek popisuje cíle, úkoly a úkoly spojené s nasazením nástroje zpracování týmových dat vědy (TDSP). Tento proces zajišťuje doporučené životní cyklus, který vám pomůže strukturovat vaše projekty pro datové vědy. Životní cyklus popisuje hlavní fáze, které jsou projekty obvykle spouštěny, často opakované:
 

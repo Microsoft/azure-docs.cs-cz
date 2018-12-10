@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 45df284d29ea2d5eb799697b22deeab03cb66622
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ece07d2be605f51e08274649f3ea15e3bbba472
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956646"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134882"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Vytvoření a správě Azure Database for MySQL pravidla brány firewall pomocí Azure CLI
 Pravidla brány firewall na úrovni serveru umožňuje správcům spravovat přístup ke službě Azure Database for MySQL Server z konkrétní IP adresu nebo rozsah IP adres. Použití vhodné příkazy rozhraní příkazového řádku Azure, můžete vytvořit, aktualizovat, odstranit, seznam a zobrazit pravidla brány firewall pro správu serveru. Přehled služby Azure Database pro MySQL brány firewall, naleznete v tématu [– Azure Database for pravidla firewallu serveru MySQL](./concepts-firewall-rules.md)
@@ -38,9 +38,9 @@ Příkazy:
 Bezpečně připojit pomocí rozhraní příkazového řádku Azure pomocí svého účtu Azure **az login** příkazu.
 
 1. Z příkazového řádku spusťte následující příkaz:
-```azurecli
-az login
-```
+    ```azurecli
+    az login
+    ```
 Tento příkaz vypíše kód, který použijete v dalším kroku.
 
 2. Použít webový prohlížeč a otevřete tak stránku [ https://aka.ms/devicelogin ](https://aka.ms/devicelogin)a pak zadejte kód.
@@ -48,21 +48,21 @@ Tento příkaz vypíše kód, který použijete v dalším kroku.
 3. V příkazovém řádku se přihlaste pomocí vašich přihlašovacích údajů Azure.
 
 4. Po přihlášení je ověřen, seznam předplatných je vytištěna v konzole. Zkopírujte ID z požadovaného předplatného nastavit aktuální předplatné použít. Použití [az účet sady](/cli/azure/account#az-account-set) příkazu.
-   ```azurecli-interactive
-   az account set --subscription <your subscription id>
-   ```
+    ```azurecli-interactive
+    az account set --subscription <your subscription id>
+    ```
 
 5. Seznam databází Azure Database for MySQL serverů pro vaše předplatné a skupinu prostředků, pokud si nejste jistí názvy. Použití [az mysql server list](/cli/azure/mysql/server#az-mysql-server-list) příkazu.
 
-   ```azurecli-interactive
-   az mysql server list --resource-group myresourcegroup
-   ```
+    ```azurecli-interactive
+    az mysql server list --resource-group myresourcegroup
+    ```
 
    Poznámka: atribut name v seznamu, které budete muset zadat pro práci na serveru MySQL. V případě potřeby potvrďte podrobnosti pro tento server a použití atribut name, abyste zajistili, že je správný. Použití [az mysql server show](/cli/azure/mysql/server#az-mysql-server-show) příkazu.
 
-   ```azurecli-interactive
-   az mysql server show --resource-group myresourcegroup --name mydemoserver
-   ```
+    ```azurecli-interactive
+    az mysql server show --resource-group myresourcegroup --name mydemoserver
+    ```
 
 ## <a name="list-firewall-rules-on-azure-database-for-mysql-server"></a>Výpis pravidel brány firewall na – Azure Database for MySQL serveru 
 Použijte název serveru a název skupiny prostředků a seznamu existující pravidla brány firewall serveru na serveru. Použití [az mysql server firewall seznamu](/cli/azure/mysql/server/firewall-rule#az-mysql-server-firewall-rule-list) příkazu.  Všimněte si, že je zadán atribut název serveru v **– server** přepnutí a nikoli v **– název** přepnout. 

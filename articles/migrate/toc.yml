@@ -21,6 +21,14 @@ items:
     href: concepts-dependency-visualization.md
 - name: Návody
   items:
+  - name: Osvědčené postupy migrace
+    items:
+    - name: Osvědčené postupy pro zabezpečení a správu po migraci
+      href: migrate-best-practices-security-management.md
+    - name: Osvědčené postupy pro síťové služby po migraci
+      href: migrate-best-practices-networking.md
+    - name: Osvědčené postupy pro určování nákladů a velikostí po migraci
+      href: migrate-best-practices-costs.md
   - name: Seriál o migraci Contoso
     items:
     - name: 1. Contoso – Přehled migrace
@@ -83,9 +91,9 @@ items:
     href: https://azure.microsoft.com/migrate
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: c841391db203f8fb6f1ad5eaf9dc9cfc46329fda
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: fb184cad3dc639912260d760ed9d2e44a076822a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873513"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074821"

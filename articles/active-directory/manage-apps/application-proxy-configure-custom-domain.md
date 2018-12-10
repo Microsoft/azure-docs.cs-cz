@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 090df19861e00a99f0bb63bf20eb2f26dc6761fd
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: b0ad4aa63dbeefce6b55e099fd51d3608ae3abb8
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369034"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133345"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Práce s vlastními doménami v Proxy aplikací Azure AD
 
@@ -40,7 +40,7 @@ Doporučujeme, abyste nastavili vlastní domény pro vaše aplikace, kdykoli je 
 Než začnete konfigurovat vlastní doménu, ujistěte se, že máte připravené následující požadavky: 
 - A [ověřené domény do Azure Active Directory](../fundamentals/add-custom-domain.md).
 - Vlastní certifikát pro doménu, ve formě souboru PFX. 
-- Aplikace v místním [publikované prostřednictvím Proxy aplikací](application-proxy-publish-azure-portal.md).
+- Aplikace v místním [publikované prostřednictvím Proxy aplikací](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Konfigurace vlastní domény
 

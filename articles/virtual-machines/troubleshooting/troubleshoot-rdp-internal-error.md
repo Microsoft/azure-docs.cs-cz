@@ -13,24 +13,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 7d0d4a34a31f15c23638eba1f14794838780f2b0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: dd75d5a3186bbb6ba82e2deb83a7e8429e32a3f2
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307156"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134518"
 ---
-#  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Dojde k interní chybě při pokusu o připojení k virtuálnímu počítači Azure přes vzdálenou plochu 
+#  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Dojde k interní chybě při pokusu o připojení k virtuálnímu počítači Azure přes vzdálenou plochu
 
 Tento článek popisuje chybu, která může dojít při pokusu o připojení k virtuálnímu počítači (VM) v Microsoft Azure.
-> [!NOTE] 
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic. 
+> [!NOTE]
+> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/resource-manager-deployment-model.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
-## <a name="symptoms"></a>Příznaky 
+## <a name="symptoms"></a>Příznaky
 
 Nelze se připojit k virtuálnímu počítači Azure s použitím remote desktop protocol (RDP). Připojení zablokuje v části "Konfigurace vzdálené", nebo se zobrazí následující chybová zpráva:
 
-- Vnitřní chyba protokolu RDP 
+- Vnitřní chyba protokolu RDP
 - Došlo k vnitřní chybě
 - Tento počítač nelze připojení ke vzdálenému počítači. Zkuste se znovu připojit. Pokud potíže potrvají, obraťte se na vlastníka vzdáleném počítači nebo správce sítě
 
@@ -43,7 +43,7 @@ Tomuto problému může dojít z následujících důvodů:
 - Protokol TLS je zakázaný.
 - Certifikát je poškozený nebo vypršela platnost.
 
-## <a name="solution"></a>Řešení 
+## <a name="solution"></a>Řešení
 
 Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
 
@@ -52,7 +52,7 @@ Chcete-li tento problém vyřešit, použijte konzole sériového portu nebo [op
 
 ### <a name="use-serial-control"></a>Použití sériového portu ovládacího prvku
 
-Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](./serial-console-windows.md#open-cmd-or-powershell-in-serial-console
+Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) části.
 
 #### <a name="step-1-check-the-rdp-port"></a>Krok: Kontrola 1 RDP port
@@ -63,35 +63,35 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
         Netstat -anob |more
 2. Pokud Termservice.exe používá 8080 port, přejděte ke kroku 2. Pokud jiná služba nebo aplikace než Termservice.exe používá 8080 port, postupujte podle těchto kroků:
 
-    A. Zastavte službu pro aplikaci, která používá službu 3389: 
+    1. Zastavte službu pro aplikaci, která používá službu 3389:
 
-        Stop-Service -Name <ServiceName>
+        Stop-Service - Name <ServiceName>
 
-    B. Spuštění Terminálové služby: 
+    2. Spuštění Terminálové služby:
 
-        Start-Service -Name Termservice
+        Start-Service - Name inicializace
 
 2. Pokud aplikace nelze zastavit, nebo pokud tato metoda na vás nemusí vztahovat, změňte port pro protokol RDP:
 
-    A. Změna portu:
+    1. Změna portu:
 
-        Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name PortNumber -value <Hexportnumber>
+        Set-ItemProperty-cesta "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Tcp Server\WinStations\RDP"-název číslo_portu – hodnota <Hexportnumber>
 
-        Stop-Service -Name Termservice Start-Service -Name Termservice
- 
-    B. Nastavení brány firewall pro nový port:
+        Stop-Service - Name inicializace Start-Service-Name inicializace
 
-        Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
+    2. Nastavení brány firewall pro nový port:
 
-    C. [Aktualizovat skupinu zabezpečení sítě pro nový port](../../virtual-network/security-overview.md) v Azure portal RDP port.
+        Set-NetFirewallRule-"Name Vzdálená plocha-přesměrovač-v-TCP" - LocalPort < nový PORT (decimální) >
+
+    3. [Aktualizovat skupinu zabezpečení sítě pro nový port](../../virtual-network/security-overview.md) v Azure portal RDP port.
 
 #### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Nastavení správná oprávnění u certifikátu podepsaného svým držitelem protokolu RDP
 
 1.  V instanci prostředí PowerShell spusťte následující příkazy jeden po druhém prodloužit platnost certifikátu podepsaného svým držitelem protokol RDP:
 
-        Import-Module PKI Set-Location Cert:\LocalMachine $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) Remove-Item -Path $RdpCertThumbprint 
+        Import-Module PKI Set-Location Cert:\LocalMachine $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) Remove-Item -Path $RdpCertThumbprint
 
-        Stop-Service -Name "SessionEnv" 
+        Stop-Service -Name "SessionEnv"
 
         Start-Service -Name "SessionEnv"
 
@@ -101,24 +101,24 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
     2. Na **souboru** nabídce vyberte možnost **Přidat/odebrat modul Snap-in**vyberte **certifikáty**a pak vyberte **přidat**.
     3. Vyberte **účty počítačů**vyberte **jiného počítače**a pak přidat IP adresu problémový virtuální počítač.
     4. Přejděte na **vzdálené Desktop\Certificates** složky, klikněte pravým tlačítkem na certifikát a poté vyberte **odstranit**.
-    5. V prostředí PowerShell instanci z konzoly sériového portu restartujte službu Konfigurace vzdálené plochy: 
+    5. V prostředí PowerShell instanci z konzoly sériového portu restartujte službu Konfigurace vzdálené plochy:
 
-            Stop-Service -Name "SessionEnv" 
+            Stop-Service -Name "SessionEnv"
 
             Start-Service -Name "SessionEnv"
 3. Resetování oprávnění ke složce MachineKeys.
-    
-        remove-module psreadline icacls 
+
+        remove-module psreadline icacls
 
         md c:\temp
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)" 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)" 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\NETWORK SERVICE:(R)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)" 
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
 
         icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt Restart-Service TermService -Force
 
@@ -129,9 +129,9 @@ Krok 3: Povolení všechny podporované verze TLS
 Klienta protokolu RDP používá jako výchozí protokol TLS 1.0. To však můžete změnit na protokoly TLS 1.1, který se stal novým standardem. Pokud je zakázané protokolu TLS 1.1 na virtuálním počítači, připojení se nezdaří.
 1.  V instanci CMD povolte protokol TLS:
 
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f 
+        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
 
-        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f 
+        reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
 
         reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
 2.  Chcete-li zabránit přepsání změny zásad AD, zastavte dočasně aktualizace zásad skupiny:
@@ -201,23 +201,23 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt
 
-#### <a name="enable-all-supported-tls-versions"></a>Povolit všechny podporované verze TLS 
+#### <a name="enable-all-supported-tls-versions"></a>Povolit všechny podporované verze TLS
 
 1.  Otevřete relaci příkazového řádku se zvýšenými oprávněními (**spustit jako správce**) a spustit následující příkazy. Následující skript předpokládá, že je přiřazeno písmeno ovladač připojeném disku s operačním systémem je F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
 2.  Kontrola, který je povolený protokol TLS:
 
         reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f 
-        
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Server" /v Enabled /t REG_DWORD /d 1 /f
+
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
 
 3.  Pokud klíč neexistuje, nebo je jeho hodnota **0**, povolte protokol spuštěním následujících skriptů:
@@ -238,22 +238,22 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 
 4.  Povolte NLA:
 
-        REM Enable NLA 
+        REM Enable NLA
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f 
-    
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f 
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
 
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f 
-        
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f 
-        
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v SecurityLayer /t REG_DWORD /d 1 /f
+
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
+
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
 5.  [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md)a potom zkontrolujte, zda byl problém vyřešen.
 
 
 
-    
- 
+
+

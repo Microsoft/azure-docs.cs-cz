@@ -1,25 +1,19 @@
 ---
-title: Požadavky technologie QoS pro ExpressRoute | Dokumentace Microsoftu
-description: Tato stránka obsahuje podrobné požadavky pro konfiguraci a správu technologie QoS pro okruhy ExpressRoute.
-documentationcenter: na
+title: 'Požadavky technologie QoS – ExpressRoute: Azure | Dokumentace Microsoftu'
+description: Tato stránka obsahuje podrobné požadavky pro konfiguraci a správu technologie QoS. Skype pro firmy/hlasové služby jsou popsány.
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: db1c1447-0283-4a09-907b-ae481adc40c7
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/25/2017
+ms.topic: conceptual
+ms.date: 12/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: c097a9ccba91f59b323215d42d37e6d85e0981ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: cb9acb5434fad6cd7898be14404c5ed4125ab96a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22709908"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141165"
 ---
 # <a name="expressroute-qos-requirements"></a>Požadavky na technologii QoS služby ExpressRoute
 Skype pro firmy má úlohy, které vyžadují odlišné zacházení podle QoS. Pokud budete chtít využívat hlasové služby prostřednictvím ExpressRoute, měli byste dodržovat požadavky popsané dál.
@@ -45,7 +39,7 @@ V následující tabulce je seznam označení DSCP používaných Skypem pro fir
 * Měli byste ve vaší síti nakonfigurovat a podporovat více front QoS. Hlas musí být samostatná třída a přijímat zpracování EF uvedené v dokumentu RFC 3246. 
 * Můžete rozhodnout o mechanismu řízení front, zásadách detekce zahlcení a přidělení šířky pásma pro jednotlivé třídy provozu. Označení DSCP pro Skype pro firmy ale musí být zachováno. Pokud používáte označení DSCP, které není uvedené výš, například AF31 (26), musíte před odesláním paketu Microsoftu tuto hodnotu DSCP přepsat na 0. Microsoft odesílá jenom pakety označené hodnotami DSCP uvedenými v tabulce výš. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Přečtěte si požadavky pro [směrování](expressroute-routing.md) a [překlad adres (NAT)](expressroute-nat.md).
 * Následující odkazy popisují konfiguraci připojení ExpressRoute.
   

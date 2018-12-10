@@ -1,6 +1,6 @@
 ---
-title: Obchodní vysvětlení fázi životní cyklus vědeckého zpracování týmových dat – Azure | Dokumentace Microsoftu
-description: Cíle, úkoly a úkoly pro fázi obchodní vysvětlení vašich projektů datové vědy
+title: Principy podniku v vědecké zpracování týmových dat
+description: Cíle, úkoly a úkoly pro fázi obchodní vysvětlení vašich projektů datové vědy v vědecké zpracování týmových dat.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 3d2a6bf5a7e4766ca6205c413dd27fa9a69c16b7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: f45d8a83c323689272313314d0f9ac9b79edecd7
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446717"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53141658"
 ---
-# <a name="business-understanding"></a>Principy podniku
+# <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Obchodní vysvětlení fáze životní cyklus vědeckého zpracování týmových dat
 
 Tento článek popisuje cíle, úkoly a úkoly spojené s fázi Principy obchodní aplikace zpracování týmových dat vědy (TDSP). Tento proces zajišťuje doporučené životní cyklus, který vám pomůže strukturovat vaše projekty pro datové vědy. Životní cyklus popisuje hlavní fáze, které jsou projekty obvykle spouštěny, často opakované:
 
@@ -92,5 +92,3 @@ Tady jsou odkazy na každý krok v životním cyklu TDSP:
    5. [Schválení zákazníkem](lifecycle-acceptance.md)
 
 Poskytujeme úplného začátku do konce návody, které ukazují všechny kroky v procesu pro konkrétní scénáře. [Příklad návody](walkthroughs.md) článek obsahuje seznam scénářů s odkazy a popisy miniatur. Názorné postupy ukazují, jak zkombinovat cloudové, místní nástroje a služby do pracovního postupu nebo kanálu pro vytváření inteligentních aplikací. 
-
-Příklady toho, jak provést kroky v TDSPs, které používají Azure Machine Learning Studio najdete v tématu [TDSP pomocí služby Azure Machine Learning](https://aka.ms/datascienceprocess).

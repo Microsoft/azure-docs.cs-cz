@@ -1,6 +1,6 @@
 ---
-title: Ukázková data v Azure blob storage | Dokumentace Microsoftu
-description: Ukázková data ve službě Azure Blob Storage
+title: Ukázková data v Azure blob storage – vědecké zpracování týmových dat
+description: Vzorkování dat uložených ve službě Azure blob storage tak, že stahování prostřednictvím kódu programu a pak ho pomocí procedury napsané v Pythonu vzorkování.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 7dbd5f932f2d090a3f9fa8f917d12869a94dc553
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 0f9795e6a9a451ab1492e62fd54faea5894d99ae
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847078"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136490"
 ---
 # <a name="heading"></a>Ukázková data v Azure blob storage
 

@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 8be0e909ea391ed1b66fc78349cc2283d009e8cb
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 2904de3243e37d7ee575a504934d5975789c00ef
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240371"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135062"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:
@@ -49,7 +49,7 @@ Po nalezení konektor chyby z protokolu událostí použijte tuto tabulku běžn
 
 | Chyba | Doporučené kroky |
 | ----- | ----------------- |
-| Konektor se nepovedlo zaregistrovat: Ujistěte se, že jste povolili službu Proxy aplikací na portálu pro správu Azure a správně zadané služby Active Directory uživatelské jméno a heslo. : "Jeden nebo více chybám došlo k chybě." | Pokud se zavře okno registrace bez přihlášení ke službě Azure AD, znovu spusťte Průvodce pro konektor nástroje a registrace konektoru. <br><br> Pokud se otevře okno registrace a pak hned zavře bez povolení k přihlášení, zobrazí se pravděpodobně k této chybě. K této chybě dochází, když dojde k chybě sítě ve vašem systému. Ujistěte se, že je možné se připojit z prohlížeče na veřejném webu a porty jsou otevřené, jak je uvedeno v [požadavky na Proxy aplikace](application-proxy-enable.md). |
+| Konektor se nepovedlo zaregistrovat: Ujistěte se, že jste povolili službu Proxy aplikací na portálu pro správu Azure a správně zadané služby Active Directory uživatelské jméno a heslo. : "Jeden nebo více chybám došlo k chybě." | Pokud se zavře okno registrace bez přihlášení ke službě Azure AD, znovu spusťte Průvodce pro konektor nástroje a registrace konektoru. <br><br> Pokud se otevře okno registrace a pak hned zavře bez povolení k přihlášení, zobrazí se pravděpodobně k této chybě. K této chybě dochází, když dojde k chybě sítě ve vašem systému. Ujistěte se, že je možné se připojit z prohlížeče na veřejném webu a porty jsou otevřené, jak je uvedeno v [požadavky na Proxy aplikace](application-proxy-add-on-premises-application.md). |
 | Vymazat chyby se zobrazí v okně registrace. Nelze pokračovat | Pokud se zobrazí tato chyba a pak okno zavřete, zadali jste nesprávné uživatelské jméno nebo heslo. Zkuste to znova. |
 | Konektor se nepovedlo zaregistrovat: Ujistěte se, že jste povolili službu Proxy aplikací na portálu pro správu Azure a správně zadané služby Active Directory uživatelské jméno a heslo. Chyba: "AADSTS50059: žádné informace o identifikaci tenanta najít v jednom požadavku nebo implikována v žádném zadané přihlašovací údaje a vyhledávání podle služby se nezdařilo instančního objektu URI. | Pokoušíte se přihlásit pomocí Account Microsoft a nikoli domény, který je součástí organizace ID adresáře, který se pokoušíte získat přístup. Ujistěte se, že správce součástí se stejným názvem domény jako doména tenanta, například pokud Azure AD doména je contoso.com, Správce by měl být admin@contoso.com. |
 | Nepovedlo se načíst aktuální zásady spouštění pro spuštěné skripty prostředí PowerShell. | Pokud instalace konektoru selže, zkontrolujte, že nejsou zakázané zásady spouštění prostředí PowerShell. <br><br>1. Otevřete Editor zásad skupiny.<br>2. Přejděte na **konfigurace počítače** > **šablony pro správu** > **součásti Windows**  >   **Prostředí Windows PowerShell** a dvakrát klikněte na panel **zapnutí provádění skriptů**.<br>3. Zásady spouštění může být nastaven na hodnotu **Nenakonfigurováno** nebo **povoleno**. Pokud hodnotu **povoleno**, ujistěte se, že v možnostech, zásady spouštění je nastaven na hodnotu **Povolit místní a vzdálené podepsaných skriptů** nebo **povolit všechny skripty**. |
@@ -86,8 +86,8 @@ Tento seznam obsahuje chyby, které vaši koncoví uživatelé setkat při pokus
 Pokud narazíte na chybu nebo problém s Proxy aplikací Azure AD, která není uvedená v této příručce pro řešení potíží, chtěli bychom slyšet o něm. Odešlete e-mail na naše [zpětnou vazbu týmu](mailto:aadapfeedback@microsoft.com) s podrobnostmi vás došlo k chybě.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Povolení Proxy aplikace služby Azure Active Directory](application-proxy-enable.md)
-* [Publikování aplikací pomocí Proxy aplikace](application-proxy-publish-azure-portal.md)
+* [Povolení Proxy aplikace služby Azure Active Directory](application-proxy-add-on-premises-application.md)
+* [Publikování aplikací pomocí Proxy aplikace](application-proxy-add-on-premises-application.md)
 * [Povolit jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md)
 * [Povolení podmíněného přístupu](application-proxy-integrate-with-sharepoint-server.md)
 

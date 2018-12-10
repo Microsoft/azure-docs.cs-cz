@@ -1,22 +1,22 @@
 ---
-title: Používání rozhraní Mongoose pomocí služby Azure Cosmos DB
-description: Zjistěte, jak připojit aplikaci Node.js využívající Mongoose ke službě Azure Cosmos DB.
-services: cosmos-db
-author: slyons
+title: Připojit aplikaci Node.js využívající Mongoose ke službě Azure Cosmos DB
+description: Informace o používání rozhraní Mongoose k ukládání a správě dat ve službě Azure Cosmos DB.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 01/08/2018
-ms.author: sclyon
-ms.openlocfilehash: 6f84dfac7b556e59ec3ad76ff7d2c6e5f5105293
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.date: 12/06/2018
+ms.author: sngun
+ms.custom: seodec18
+ms.openlocfilehash: ec47c265c3d6f826bc1b7e7d8038e284c6981b7a
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53101428"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53134926"
 ---
-# <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: Používání rozhraní Mongoose se službou Azure Cosmos DB
+# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Připojit aplikaci Node.js využívající Mongoose ke službě Azure Cosmos DB
 
 Tento kurz ukazuje, jak použít [rozhraní Mongoose](https://mongoosejs.com/) při ukládání dat ve službě Azure Cosmos DB. V tomto návodu používáme rozhraní MongoDB API pro službu Azure Cosmos DB. Pokud Mongoose ještě neznáte, jedná se o rozhraní pro modelování objektů pro MongoDB v Node.js, které poskytuje jednoduché řešení modelování dat aplikací založené na schématu.
 

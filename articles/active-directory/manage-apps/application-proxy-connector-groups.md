@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: aebb042c065652bef568f6bc1be2ee8bfde43988
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: e2e78eae924cf079ccc03d3f907cd64194b98921
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622629"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139020"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací na samostatných sítí a umístění s využitím skupiny konektorů
 
@@ -32,7 +32,7 @@ Všechny aplikace jsou přiřazeny skupině konektorů. Pokud nevytvoříte skup
 >Pokud máte velké nasazení Proxy aplikací, nepřiřazovat všechny aplikace do výchozí skupiny konektoru. Tímto způsobem nové konektory nepřijímají žádné živé přenosy, dokud je nezařadíte do skupiny konektor služby active. Tato konfigurace umožňuje také můžete umístit konektory v režimu nečinnosti jejich přesunutím zpět do výchozí skupiny, takže můžete provést údržbu, aniž to ovlivní vaše uživatele.
 
 ## <a name="prerequisites"></a>Požadavky
-K seskupení konektoru, máte jistotu, že budete [nainstalovat více konektorů](application-proxy-enable.md). Když instalujete nový konektor, automaticky připojí **výchozí** skupina konektorů.
+K seskupení konektoru, máte jistotu, že budete [nainstalovat více konektorů](application-proxy-add-on-premises-application.md). Když instalujete nový konektor, automaticky připojí **výchozí** skupina konektorů.
 
 ## <a name="create-connector-groups"></a>Vytvoření skupiny konektorů
 Pomocí těchto kroků můžete vytvořit libovolný počet skupin konektoru. 

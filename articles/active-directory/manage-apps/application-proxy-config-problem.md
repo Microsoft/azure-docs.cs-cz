@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2344d35827cf541f0230f74917be3ae0ea39e074
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e75b04b3220347bdaa90dbc2f21d92475df3aa47
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356364"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53136242"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>Problém s vytvořením aplikace Proxy aplikací 
 
@@ -28,7 +28,7 @@ Níže jsou uvedeny některé běžné problémy, rozpoznávání tváře lidí 
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty 
 
-Další informace o vytváření aplikace Proxy aplikací prostřednictvím portálu pro správu najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-publish-azure-portal.md).
+Další informace o vytváření aplikace Proxy aplikací prostřednictvím portálu pro správu najdete v tématu [publikování aplikací pomocí Proxy aplikací Azure AD](application-proxy-add-on-premises-application.md).
 
 Pokud jsou následující kroky v tomto dokumentu a se zobrazuje chyba vytváření aplikace, podívejte se na informace v podrobnostech o chybě a návrhy k vyřešení aplikace. Většina chybové zprávy zahrnují navrhované opravy. 
 
@@ -51,4 +51,4 @@ Když vytvoříte aplikaci, by měl v pravém horním rohu zobrazí chybová zpr
    ![Oznámení řádku](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>Další postup
-[Povolení Proxy aplikace na webu Azure Portal](application-proxy-enable.md)
+[Povolení Proxy aplikace na webu Azure Portal](application-proxy-add-on-premises-application.md)

@@ -15,12 +15,12 @@ ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 388fd812185bc8bd2ef68a1dbcea6303d30dcdf3
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2afe75045444fbc0ca36ee1cfca3d96f5b218ab0
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230785"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135487"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s Azure AD Application Proxy
 
@@ -49,7 +49,7 @@ V nasazení vzdálené plochy VP webové role a role Brána vzdálené plochy sp
 
 - Koncové body webu a brány VP musí být umístěn ve stejném počítači a s společný kořen. Webu a brány VP jsou publikovány jako jednu aplikaci pomocí Proxy aplikace tak, že máte jednotné přihlašování mezi těmito dvěma aplikacemi.
 
-- Byste už měli mít [nasazení vzdálené plochy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), a [povolenou Proxy aplikaci](application-proxy-enable.md).
+- Byste už měli mít [nasazení vzdálené plochy](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure), a [povolenou Proxy aplikaci](application-proxy-add-on-premises-application.md).
 
 - Tento scénář předpokládá, že koncoví uživatelé procházejí aplikace Internet Explorer ve Windows 7 nebo Windows 10 stolních počítačů, které se připojují prostřednictvím vzdálené plochy webové stránky. Pokud budete potřebovat pro podporu jiných operačních systémech, přečtěte si téma [podporu pro další konfigurace klienta](#support-for-other-client-configurations).
 
@@ -63,7 +63,7 @@ Po nastavení vzdálené plochy a Azure AD Application Proxy pro vaše prostřed
 
 ### <a name="publish-the-rd-host-endpoint"></a>Publikování koncových bodů hostitele vzdálené plochy
 
-1. [Publikujte novou aplikaci Proxy aplikací](application-proxy-publish-azure-portal.md) s použitím následujících hodnot:
+1. [Publikujte novou aplikaci Proxy aplikací](application-proxy-add-on-premises-application.md) s použitím následujících hodnot:
    - Interní adresa URL: `https://\<rdhost\>.com/`, kde `\<rdhost\>` je společný kořen, webu a brány VP sdílet.
    - Externí adresa URL: Toto pole se vyplní automaticky na základě názvu aplikace, ale můžete ho upravit. Vaši uživatelé budou moct tuto adresu URL, když přistupují k vzdálené plochy
    - Metoda předběžného ověření: Azure Active Directory

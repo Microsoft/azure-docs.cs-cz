@@ -1,25 +1,19 @@
 ---
-title: Požadavky pro přijetí Azure ExpressRoute | Dokumentace Microsoftu
-description: Tato stránka obsahuje seznam požadavků, které musí být splněné, než můžete objednat okruh Azure ExpressRoute.
-documentationcenter: na
+title: 'Požadavky – ExpressRoute: Azure | Dokumentace Microsoftu'
+description: Tato stránka obsahuje seznam požadavků, které musí být splněné, než můžete objednat okruh Azure ExpressRoute. Zahrnuje kontrolní seznam.
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: f872d25e-acfd-405d-9d1b-dcb9f323a2ff
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mialdrid
-ms.openlocfilehash: 3e597e4f8be0af6e42f8ccc09c058cda619764a7
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: c44eb4bbf4945973e075ff88bccde19053b812be
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51713431"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53133470"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Požadavky ExpressRoute a kontrolní seznam
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, musíte ověřit, že jsou splněné požadavky uvedené v následujících oddílech.

@@ -5,18 +5,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: f4e067bc1d9a6d738a1289216acc0571661959ea
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 03a60940b4889671149c49becb0f823da89781ff
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53109710"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135555"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Osvědčené postupy pro úlohy ocenění a změny velikosti migrovat do Azure
 
-Jako je plánování a návrh pro migraci zajišťuje, zaměřuje se na náklady na dlouhodobý úspěch vaší migrace do Azure. Během migrace projektu, je velmi důležité, že všechny týmy (finance, správa, aplikační týmy atd) porozumět související náklady. Před migrací odhadování migrace náklady, Směrný plán pro měsíčně, čtvrtletně, a je zásadní pro úspěch roční cíle rozpočtu. Po dokončení migrace by měla optimalizovat náklady, průběžně monitorovat úlohy a plánovat budoucí využití vzorů. Migrované prostředky může začíná jako jeden typ úlohy, ale na jiný typ v průběhu času vyvíjejí, na základě využití, náklady a posunutí obchodní požadavky.
+Jako je plánování a návrh pro migraci zajišťuje, zaměřuje se na náklady na dlouhodobý úspěch vaší migrace do Azure. Během migrace projektu, je velmi důležité, že všechny týmy (finance, správa, aplikační týmy atd) porozumět související náklady.
+- Před migrací odhadování migrace náklady, Směrný plán pro měsíčně, čtvrtletně, a je zásadní pro úspěch roční cíle rozpočtu.
+- Po dokončení migrace by měla optimalizovat náklady, průběžně monitorovat úlohy a plánovat budoucí využití vzorů. Migrované prostředky může začíná jako jeden typ úlohy, ale na jiný typ v průběhu času vyvíjejí, na základě využití, náklady a posunutí obchodní požadavky.
 
 Tento článek popisuje osvědčené postupy pro výpočet nákladů a nastavování velikosti před a po migraci.  
 

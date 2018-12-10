@@ -1,5 +1,5 @@
 ---
-title: Zprovoznění modelů strojového učení předdefinovaných Spark | Dokumentace Microsoftu
+title: Zprovoznění modelů předdefinovaných ve Spark machine learning – vědecké zpracování týmových dat
 description: Jak načíst a stanovíte jeho skóre modelů učení uložená v Azure Blob Storage (WASB) s využitím Pythonu.
 services: machine-learning
 author: marktab
@@ -10,13 +10,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
-ms.custom: (previous author=deguhath, ms.author=deguhath)
-ms.openlocfilehash: 6ffe1dd960b6fd09539d093d8a632efc99452c00
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 543ae7cecf9edcb5997a0bae66e0722d258a4523
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442485"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135301"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Zprovoznění modelů strojového učení předdefinovaných Spark
 

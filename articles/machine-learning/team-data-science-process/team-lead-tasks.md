@@ -1,5 +1,5 @@
 ---
-title: Úlohy pro tým vést v vědy procesu týmu datovému týmu – Azure
+title: Úlohy pro tým vést v týmu Data Science procesu týmu
 description: Přehled úloh, které tým vést na týmovém projektu datové vědy se očekává k dokončení pro jejich tým datové vědy.
 author: marktab
 manager: cgronlun
@@ -9,13 +9,13 @@ ms.component: team-data-science-process
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
-ms.custom: seodec18, "(previous author=deguhath, ms.author=deguhath)"
-ms.openlocfilehash: 68fd0abf314eb4fde5ff335acc161d82ad78cd0c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: faf0e06a0649c31cec840a5043a11af601ba5c47
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106630"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53139635"
 ---
 # <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Úlohy pro tým vést v týmu Data Science procesu týmu
 
