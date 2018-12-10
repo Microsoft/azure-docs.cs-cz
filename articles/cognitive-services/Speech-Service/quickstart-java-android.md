@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči v Javě na Androidu s využitím sady Speech SDK'
+title: 'Rychlý start: Rozpoznávání řeči, jazyka Java (Android) – hlasové služby'
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak rozpoznávat řeč v Javě na Androidu s využitím sady Speech SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 0785383d8b5a8ab282d8097d5229fa5a8aade06f
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: afe0cfe61779e95fc9a65a1f4928ddae4b7af267
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219422"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090104"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v Javě na Androidu s využitím sady Speech SDK
 
@@ -63,7 +63,7 @@ Aktuální verze sady Cognitive Services Speech SDK je `1.1.0`.
 Sada Speech SDK pro Android je zabalená jako [AAR (knihovna pro Android)](https://developer.android.com/studio/projects/android-library) a obsahuje potřebné knihovny, stejně jako požadovaná oprávnění Androidu k jejímu používání.
 Je hostovaná v úložišti Maven na adrese https://csspeechstorage.blob.core.windows.net/maven/.
 
-Nastavte projekt tak, aby používal sadu Speech SDK. Výběrem příkazu **File (Soubor)** > **Project Structure (Struktura projektu)** na řádku nabídek Android Studia otevřete okno se strukturou projektu. V okně se strukturou projektu udělejte následující změny: 
+Nastavte projekt tak, aby používal sadu Speech SDK. Výběrem příkazu **File (Soubor)** > **Project Structure (Struktura projektu)** na řádku nabídek Android Studia otevřete okno se strukturou projektu. V okně se strukturou projektu udělejte následující změny:
 
 1. V seznamu na levé straně okna vyberte **Project** (Projekt). Upravte nastavení **Default Library Repository** (Výchozí úložiště knihoven) připojením čárky a adresy URL úložiště Maven v jednoduchých uvozovkách. 'https://csspeechstorage.blob.core.windows.net/maven/'
 
@@ -118,7 +118,7 @@ Textová a grafická podoba uživatelského rozhraní by teď měla vypadat něj
    [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/quickstart/MainActivity.java#code)]
 
    * Metoda `onCreate` obsahuje kód, který požádá o oprávnění k mikrofonu a internetu a inicializuje vazby nativní platformy. Konfigurace vazeb nativní platformy se vyžaduje jen jednou. Měla by se provést v ranné fázi během inicializace aplikace.
-   
+
    * Metoda `onSpeechButtonClicked` je obslužná rutina pro kliknutí na tlačítko, jak bylo uvedeno výše. Stisknutí tlačítka aktivuje přepis řeči na text.
 
 1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
@@ -144,12 +144,12 @@ Stisknutím tlačítka v aplikaci spusťte rozpoznávání řeči. Následujíc�
 [!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Vyhledejte tuto ukázku ve složce `quickstart/java-android`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro Javu](how-to-recognize-intents-from-speech-java.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)

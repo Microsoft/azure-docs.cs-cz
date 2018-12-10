@@ -8,14 +8,14 @@ ms.author: normesta
 ms.date: 12/06/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0920e1f699ad16effe7b8b2b7e6a70e817880820
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c8ca1c54504bc827dc67251502ce53ee4e6fae80
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975358"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098538"
 ---
-# <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-gen1-to-azure-data-lake-storage-gen2-preview"></a>Upgradovat řešení analýzy velkých objemů dat z Azure Data Lake Gen1 na verzi Preview služby Azure Data Lake Storage Gen2
+# <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2-preview"></a>Upgradovat řešení analýzy velkých objemů dat z Azure Data Lake Storage Gen1 na verzi Preview služby Azure Data Lake Storage Gen2
 
 Pokud používáte Azure Data Lake Storage Gen1 ve vašich řešeních pro analýzy velkých objemů dat, tento průvodce vám pomůže při upgradu těchto řešení pomocí Azure Data Lake Storage Gen2 ve verzi Preview. Tento dokument slouží k vyhodnocení závislosti, které má vaše řešení v Data Lake Storage Gen1. Tento průvodce také se dozvíte, jak naplánovat a provést upgrade.
 
@@ -128,7 +128,7 @@ Při použití Data Lake Storage Gen1, můžete použít širokou škálu služb
 | Využití          | [Power BI Desktop  ](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-power-bi)                                                                           | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
 |                      | [Excel ](https://techcommunity.microsoft.com/t5/Excel-Blog/Announcing-the-Azure-Data-Lake-Store-Connector-in-Excel/ba-p/91677)                                                 | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
 |                      | [Analysis Services ](https://blogs.msdn.microsoft.com/analysisservices/2017/09/05/using-azure-analysis-services-on-top-of-azure-data-lake-storage/)                            | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
-| Produktivita         | [Azure Portal](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)                                                                      | *Nepodporuje se*                                                                                                                                                              | Správa účtů *– nyní k dispozici* operace s daty *–**zatím není k dispozici*                                                                    |
+| Produktivita         | [Azure Portal](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)                                                                      | *Nepodporuje se*                                                                                                                                                              | Správa účtů *– nyní k dispozici* operace s daty *–**zatím není k dispozici*                                                                   |
 |                      | [Data Lake Tools pro Visual Studio ](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-data-lake-tools-install)                                   | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
 |                      | [Azure Storage Explorer ](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-in-storage-explorer)                                                          | *Teď k dispozici*                                                                                                                                                              | *Teď k dispozici*                                                                                                                                 |
 |                      | [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=usqlextpublisher.usql-vscode-ext)                                                                     | *Zatím není k dispozici*                                                                                                                                                          | *Zatím není k dispozici*                                                                                                                             |
