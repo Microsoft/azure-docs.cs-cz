@@ -1,5 +1,6 @@
 ---
-title: ONNX a Azure Machine Learning | Vytvoření a nasazení modelů
+title: Vytvoření a nasazení interoperabilní modely ONNX
+titleSuffix: Azure Machine Learning service
 description: Další informace o ONNX a jak vytvářet a nasazovat modely ONNX pomocí Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e5c0e479d5564a48048b9fa9c67ad8870122601
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 5fc0e00d9c4404a1c6a757c354a9c7116dfeffa7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706054"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094011"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX a Azure Machine Learning: vytvoření a nasazení interoperabilní modely AI
 
@@ -32,7 +34,7 @@ Využijte modely ONNX můžete vytvořit z mnoha architektur, včetně PyTorch, 
 
 Je také ekosystém nástrojů pro vizualizaci a zrychluje modely ONNX. Počet předem vytrénovaných modely ONNX jsou také k dispozici pro běžné scénáře.
 
-[Je možné nasadit modely ONNX](#deploy) do cloudu pomocí služby Azure Machine Learning a modul Runtime ONNX. Může být také nasazený na zařízení s Windows 10 pomocí [Windows ML](https://docs.microsoft.com/windows/ai/). Dokonce je možné nasadit do jiné platformy použití převaděče, které jsou k dispozici od komunity ONNX. 
+[Je možné nasadit modely ONNX](#deploy) do cloudu pomocí služby Azure Machine Learning a modulu Runtime ONNX. Může být také nasazený na zařízení s Windows 10 pomocí [Windows ML](https://docs.microsoft.com/windows/ai/). Dokonce je možné nasadit do jiné platformy použití převaděče, které jsou k dispozici od komunity ONNX. 
 
 [ ![ONNX vývojový diagram znázorňující nasazení, školení a převaděče](media/concept-onnx/onnx.png) ] (. / media/concept-onnx/onnx.png#lightbox)
 
@@ -63,13 +65,13 @@ Můžete vyhledat nejnovější seznam podporovaných platforem a převaděče n
 
 ## <a name="deploy-onnx-models-in-azure"></a>Nasadit modely ONNX v Azure
 
-Pomocí služby Azure Machine Learning můžete nasadit, spravovat a monitorovat využijte modely ONNX. Pomocí standardní [pracovní postup nasazení](concept-model-management-and-deployment.md) a modul Runtime ONNX můžete vytvořit koncový bod REST hostované v cloudu. Podívejte se úplný příklad Poznámkový blok Jupyter na konci tohoto článku můžete vyzkoušet sami. 
+Pomocí služby Azure Machine Learning můžete nasadit, spravovat a monitorovat využijte modely ONNX. Pomocí standardní [pracovní postup nasazení](concept-model-management-and-deployment.md) a ONNX Runtime můžete vytvořit koncový bod REST hostované v cloudu. Podívejte se úplný příklad Poznámkový blok Jupyter na konci tohoto článku můžete vyzkoušet sami. 
 
-### <a name="install-and-configure-the-onnx-runtime"></a>Instalace a konfigurace modulu Runtime ONNX
+### <a name="install-and-configure-onnx-runtime"></a>Instalace a konfigurace modulu Runtime ONNX
 
-Modul Runtime ONNX je modul pro vysoce výkonné odvození pro modely ONNX. Součástí rozhraní Python API a poskytuje hardwarovou akceleraci CPU a GPU. Aktuálně podporuje modely ONNX 1.2 a běží na systému Linux Ubuntu 16.04. Obě [procesoru](https://pypi.org/project/onnxruntime) a [GPU](https://pypi.org/project/onnxruntime-gpu) balíčky jsou k dispozici na [PyPi.org](https://pypi.org).
+Modul Runtime ONNX je open source modul výkonné odvození pro modely ONNX. Poskytuje hardwarovou akceleraci o CPU a GPU, s rozhraními API pro Python, k dispozici C#, a podporuje C. ONNX Runtime ONNX 1.2 + modelů a běží na Linuxu, Windows a Mac. Jsou k dispozici na balíčky Pythonu [PyPi.org](https://pypi.org) ([procesoru](https://pypi.org/project/onnxruntime), [GPU](https://pypi.org/project/onnxruntime-gpu)), a [ C# balíčku](https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime/) na [Nuget.org](https://www.nuget.org). Další informace o projektu naleznete na [Githubu](https://github.com/Microsoft/onnxruntime). 
 
-Pokud chcete nainstalovat modul Runtime ONNX, použijte:
+Chcete-li nainstalovat modul Runtime ONNX pro Python, použijte:
 ```python
 pip install onnxruntime
 ```
@@ -94,7 +96,7 @@ results = session.run(["output1", "output2"], {"input1": indata1, "input2": inda
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-Úplné referenční rozhraní API najdete v článku [ONNX Runtime referenční dokumenty](https://aka.ms/onnxruntime-python).
+Úplné referenční rozhraní Python API najdete v článku [ONNX Runtime referenční dokumenty](https://aka.ms/onnxruntime-python).
 
 ### <a name="example-deployment-steps"></a>Příklady kroků nasazení
 
@@ -183,24 +185,12 @@ Tady je příklad pro nasazení modelu ONNX:
     f.write(myenv.serialize_to_string())
    ```
 
-4. Nasazení modelu ONNX pomocí Azure Machine Learning provádět:
-   + Azure Container Instances (ACI): [zjistěte, jak...](how-to-deploy-to-aci.md)
-
-   + Azure Kubernetes Service (AKS): [zjistěte, jak...](how-to-deploy-to-aks.md)
+4. Nasazení modelu najdete v tématu [nasazení a kde](how-to-deploy-and-where.md) dokumentu.
 
 
 ## <a name="examples"></a>Příklady
  
-Tyto poznámkové bloky ukazují, jak vytvořit modely ONNX a nasadit je pomocí služby Azure Machine Learning: 
-+ [onnx/onnx-modelzoo-aml nasazení resnet50.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb)
-+ [onnx/onnx-convert-aml nasazení tinyyolo.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb)
-+ [onnx/onnx-Train-pytorch-AML-Deploy-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb)
-
-Tyto poznámkové bloky ukazují, jak nasazovat existující modely ONNX službou Azure Machine Learning: 
-+ [onnx/onnx odvození-mnist ručně deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist-deploy.ipynb) 
-+ [onnx/onnx-inference-facial-Expression-Recognition-Deploy.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-facial-expression-recognition-deploy.ipynb)
- 
-Získejte tyto poznámkové bloky:
+Zobrazit [postupy-k-použití azureml/nasazení/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) například poznámkových bloků, které vytvářet a nasazovat modely ONNX.
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
@@ -210,3 +200,8 @@ Další informace o ONNX nebo přispět k projektu:
 + [ONNX projekt webu](https://onnx.ai)
 
 + [ONNX kódu na Githubu](https://github.com/onnx/onnx)
+
+Další informace o modulu Runtime ONNX nebo přispět k projektu:
++ [Úložiště Github se vzorovými ONNX modulu Runtime](https://github.com/Microsoft/onnxruntime)
+
+
