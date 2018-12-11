@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f56e15e12bc176e6b6837e144494599ea4fb5403
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: a6c8a8aa954379036ce566a205b8cb4e97952727
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282528"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887830"
 ---
 # <a name="add-a-popup-to-the-map"></a>Přidání vyskakovacího okna mapy
 
@@ -37,20 +37,32 @@ A [symbol vrstvy](https://docs.microsoft.com/javascript/api/azure-maps-control/a
 
 Poslední blok kódu vytvoří funkci, která se aktivuje `mouseover` naslouchací proces událostí. Nastaví obsah a vlastnosti automaticky otevíraného okna a přidá objekt automaticky otevírané okno do mapy.
 
+## <a name="reusing-a-popup-with-multiple-points"></a>Opětovné použití automaticky otevíraného okna s více bodů
+
+Pokud máte spoustu body a pouze chcete zobrazit překryvné okno jeden po druhém, nejlepším řešením je vytvořit jeden místní a opakovaně používat ho místo vytvoření automaticky otevíraného okna pro jednotlivé součásti bodu. Tímto způsobem, počet prvků modelu DOM vytvořila aplikace, které je výrazně snižují které můžou poskytovat lepší výkon. Tato ukázka vytvoří 3 body. Pokud kliknete na některý z nich, zobrazí se automaticky otevíraného okna s obsahem pro tuto funkci bodu.
+
+<br/>
+
+<iframe height='500' scrolling='no' title='Opětovné použití automaticky otevírané okno s víc PIN kódů' src='//codepen.io/azuremaps/embed/rQbjvK/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/rQbjvK/'>opětovné použití automaticky otevírané okno s víc PIN kódů</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace o třídy a metody používané v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Automaticky otevíraného okna](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [Automaticky otevíraného okna](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+> [PopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popupoptions?view=azure-iot-typescript-latest)
 
 Naleznete v následujících článcích skvělé pro úplné ukázky:
 
 > [!div class="nextstepaction"]
-> [Přidání obrazce](./map-add-shape.md)
+> [Přidat vrstvu symbol](./map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Přidat vlastního HTML](./map-add-custom-html.md)
+> [Přidat značku HTML](./map-add-custom-html.md)
+
+> [!div class="nextstepaction"]
+> [Přidání obrazce](./map-add-shape.md)
