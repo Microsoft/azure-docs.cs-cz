@@ -1,5 +1,5 @@
 ---
-title: Podpora kontejnerů ve službě Azure Cognitive Services
+title: Podpora kontejnerů
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak získat Cognitive Services blíž ke svým datům kontejnery Dockeru.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 681120db66b1e8e79d3c16fe654939450b509a01
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: eabdeb9aaf57db2281cb6450d9e21f1b2f098c01
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011602"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087317"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Podpora kontejnerů ve službě Azure Cognitive Services
 
@@ -71,7 +71,7 @@ Základy Dockeru a kontejnerech základní informace o najdete v článku [přeh
 
 Jednotlivých kontejnerů může mít vlastní požadavky, včetně serveru a požadavky na přidělení paměti.
 
-## <a name="developer-samples"></a>Příklady pro vývojáře
+## <a name="developer-samples"></a>Ukázky pro vývojáře
 
 Ukázky pro vývojáře najdete na adrese naše [úložiště Github](https://github.com/Azure-Samples/cognitive-services-containers-samples). 
 
