@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 8302a444f28e4fb330a1eedbac9a5da762979d6c
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 5c952370908919deb6531e0b175063dc2657ae98
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681955"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870398"
 ---
 # <a name="translator-text-api-v30"></a>Verze Translator Text API 3.0
 
@@ -51,11 +51,21 @@ Vynutit požadavek na ošetřit konkrétní datové centrum, změňte globální
 
 ## <a name="authentication"></a>Authentication
 
-Přihlaste se k rozhraní Translator Text API ve službě Microsoft Cognitive Services odběru a používat váš klíč předplatného (k dispozici na webu Azure Portal) k ověřování. 
+Přihlaste se k rozhraní Translator Text API odběru nebo [služeb Cognitive Services All-in-one](https://azure.microsoft.com/pricing/details/cognitive-services/) Microsoft Cognitive Services a použít k ověření klíče (k dispozici na webu Azure Portal) vašeho předplatného. 
 
-Nejjednodušším způsobem je předat tajný klíč Azure ke službě Translator, pomocí hlavičky žádosti `Ocp-Apim-Subscription-Key`.
+Existují tři hlavičky, které můžete použít k ověření vašeho předplatného. Tato tabulka poskytuje, popisuje, jak každý používat:
 
-Alternativou je můžete získat autorizační token od služby tokenů tajný klíč. Potom pomocí službu Translator předat ověřovací token, který `Authorization` hlavičky žádosti. Ujistěte se, pokud chcete získat autorizační token, `POST` žádost na následující adresu URL:
+|Hlavičky|Popis|
+|:----|:----|
+|OCP-Apim-Subscription-Key|*Použít s předplatným služeb Cognitive Services, Pokud předáváte tajný klíč*.<br/>Hodnota je Azure tajný klíč pro vaše předplatné Translator Text API.|
+|Autorizace|*Použít s předplatným služeb Cognitive Services, Pokud předáváte ověřovací token.*<br/>Hodnota je nosný token: `Bearer <token>`.|
+|OCP-Apim předplatné – oblasti|*Pokud předáváte tajný klíč All-in-one, pomocí služeb Cognitive Services vše v jednom předplatném.*<br/>Hodnota je oblast vše v jednom předplatném. Tato hodnota je nepovinná, pokud nepoužíváte předplatné All-in-one.|
+
+###  <a name="secret-key"></a>Tajný klíč
+První možností je provést ověření pomocí `Ocp-Apim-Subscription-Key` záhlaví. Stačí, když přidáte `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>` záhlaví na váš požadavek.
+
+### <a name="authorization-token"></a>Autorizační token
+Alternativně můžete exchange váš tajný klíč pro přístupový token. Tento token je součástí každého požadavku, jako `Authorization` záhlaví. Ujistěte se, pokud chcete získat autorizační token, `POST` žádost na následující adresu URL:
 
 | Prostředí     | Adresa URL pro ověřování služby                                |
 |-----------------|-----------------------------------------------------------|
@@ -66,6 +76,7 @@ Tady je příklad žádosti k získání tokenu Zadaný tajný klíč:
 ```
 // Pass secret key using header
 curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken'
+
 // Pass secret key using query string parameter
 curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscription-Key=<your-key>'
 ```
@@ -78,20 +89,21 @@ Authorization: Bearer <Base64-access_token>
 
 Ověřovací token je platný 10 minut. Token, který by měl být znovu použít při vytváření více volání rozhraní Translator API. Ale pokud váš program provede požadavky rozhraní Translator API po delší dobu, potom aplikace musí požádat o nový přístupový token v pravidelných intervalech (například každých 8 minut).
 
-Souhrnně řečeno, bude požadavek klienta na Translator API obsahovat jednu hlavičku autorizace na základě následující tabulky:
+### <a name="all-in-one-subscription"></a>Vše v jednom předplatném
 
-<table width="100%">
-  <th width="30%">Hlavičky</th>
-  <th>Popis</th>
-  <tr>
-    <td>OCP-Apim-Subscription-Key</td>
-    <td>*Použít s předplatným služeb Cognitive Services, Pokud předáváte tajný klíč*.<br/>Hodnota je Azure tajný klíč pro vaše předplatné Translator Text API.</td>
-  </tr>
-  <tr>
-    <td>Autorizace</td>
-    <td>*Použít s předplatným služeb Cognitive Services, Pokud předáváte ověřovací token.*<br/>Hodnota nosný token je: "nosiče <token>".</td>
-  </tr>
-</table> 
+Jako poslední možnost ověřování je použití Cognitive Service vše v jednom předplatném. To umožňuje používat jeden tajný klíč k ověření požadavků pro víc služeb. 
+
+Pokud používáte tajný klíč All-in-one, musí obsahovat dvě záhlaví ověřování při zpracování požadavku. První předá tajný klíč, druhý určuje oblastí, přidružených k vašemu předplatnému. 
+* `Ocp-Api-Subscription-Key`
+* `Ocp-Apim-Subscription-Region`
+
+Pokud předáte tajný klíč v řetězci dotazu s parametrem `Subscription-Key`, pak je nutné zadat oblast s parametrem dotazu `Subscription-Region`.
+
+Pokud používáte nosný token, je nutné získat token z koncového bodu oblasti: `https://<your-region>.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+
+Jsou dostupné oblasti `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`, a `westus2`.
+
+Oblast je povinná pro předplatné vše v jednom rozhraní Text API.
 
 ## <a name="errors"></a>Chyby
 
