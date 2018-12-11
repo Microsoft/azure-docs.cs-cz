@@ -1,5 +1,6 @@
 ---
-title: Jak funguje služba Azure Machine Learning?
+title: Jak to funguje?
+titleSuffix: Azure Machine Learning service
 description: Další informace o architektuře, terminologie a koncepty, které tvoří službu Azure Machine Learning. Dozvíte se taky o obecný pracovní postup použití služby a služby Azure, které používá služba Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -8,13 +9,14 @@ ms.topic: conceptual
 ms.author: haining
 author: hning86
 ms.reviewer: larryfr
-ms.date: 10/24/2018
-ms.openlocfilehash: 0acf41cc0a2673ba665d1815b493df928fa4507d
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
-ms.translationtype: MT
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: 4e006c3ac9684cc9e51e8b3505659864123758d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706802"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097994"
 ---
 # <a name="how-the-azure-machine-learning-service-works-architecture-and-concepts"></a>Fungování služby Azure Machine Learning: architektura a koncepty
 
@@ -33,8 +35,6 @@ Pracovní postup obvykle zahrnuje následující kroky:
 1. __Vytvoření Image__ a zaregistrujte ho __registru imagí__. 
 1. __Nasazení bitové kopie__ jako __webová služba__ v Azure.
 
-
-[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
 > [!NOTE]
 > Když tento dokument definuje podmínky a koncepty používané službou Azure Machine Learning, nedefinuje terminologie a koncepty pro platformu Azure. Další informace o terminologii platformy Azure najdete v článku [Glosář Microsoft Azure](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
@@ -65,7 +65,7 @@ Když vytvoříte nový pracovní prostor, automaticky vytvoří několik prost�
 
 Následující diagram není moc taxonomie pracovního prostoru:
 
-[![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/taxonomy.png)](./media/concept-azure-machine-learning-architecture/taxonomy.png#lightbox)
+[![Taxonomie pracovního prostoru](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="model"></a>Model
 
@@ -169,19 +169,23 @@ Cílové výpočetní prostředí je výpočetní prostředek, který používá
 | Cílové výpočetní prostředí | Školení | Nasazení |
 | ---- |:----:|:----:|
 | Místního počítače | ✓ | &nbsp; |
+| Azure Machine Learning Compute | ✓ | &nbsp; |
 | Virtuální počítač s Linuxem v Azure</br>(například virtuální počítač pro datové vědy) | ✓ | &nbsp; |
-| Cluster služby Azure Batch AI | ✓ | &nbsp; |
 | Azure Databricks | ✓ | &nbsp; | &nbsp; |
 | Azure Data Lake Analytics | ✓ | &nbsp; |
 | Apache Spark pro HDInsight | ✓ | &nbsp; |
-| Instance kontejneru Azure | ✓ | ✓ |
+| Instance kontejneru Azure | &nbsp; | ✓ |
 | Azure Kubernetes Service | &nbsp; | ✓ |
 | Azure IoT Edge | &nbsp; | ✓ |
 | Project Brainwave</br>(Field-programmable gate array) | &nbsp; | ✓ |
 
 Cílových výpočetních prostředí jsou připojeny k pracovnímu prostoru. Výpočetní cíle než v místním počítači sdílejí uživatelé pracovního prostoru.
 
-Většina výpočetní cíle je možné vytvářet přímo přes pracovní prostor pomocí webu Azure portal, Azure Machine Learning SDK nebo rozhraní příkazového řádku Azure. Pokud máte cílových výpočetních prostředí, které byly vytvořeny jiným procesem (například webu Azure portal nebo rozhraní příkazového řádku Azure), můžete přidat (připojit) je do pracovního prostoru. Některé výpočetní cíle musí být vytvořená mimo pracovní prostor a potom připojit.
+### <a name="managed-and-unmanaged-compute-targets"></a>Cílových výpočetních prostředí spravované a nespravované
+
+**Spravované** compute cíle jsou vytvořeny a spravované službou Azure Machine Learning. Tyto výpočetní cíle jsou optimalizované pro úlohy ML. __Azure Machine Learning Compute__ pouze cílové výpočetní prostředí spravované v tuto chvíli (4. prosince 2018). V budoucnu lze přidat další spravované výpočetní cíle. ML výpočetních instancí je vytvořit přímo prostřednictvím pracovního prostoru pomocí webu Azure portal, Azure Machine Learning SDK nebo rozhraní příkazového řádku Azure. Všechny ostatní cílových výpočetních prostředí musí být vytvořená mimo pracovní prostor a pak k němu připojená.
+
+**Nespravované** výpočetní cíle nejsou spravovaná služba Azure Machine Learning. Budete muset vytvořit mimo Azure Machine Learning a připojte je k vašemu pracovnímu prostoru před použitím. Tyto výpočty cíle může vyžadovat další kroky k údržbě nebo zvýšení výkonu pro úlohy ML.
 
 Další informace o výběru cílové výpočetní prostředí pro školení, najdete v článku [výběr a použití cílové výpočetní prostředí k natrénování modelu](how-to-set-up-training-targets.md) dokumentu.
 

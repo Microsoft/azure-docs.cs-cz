@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 12/4/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 33fce88e7108ee45236e20b1f20dde56bb7446b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 5f2f262d5ec4b9e8884e47c6c064927da2af4790
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616380"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876145"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasadit Azure Blockchain Workbench
 
@@ -43,6 +43,9 @@ Tady je příklad nasazení vytvořit v **myblockchain** skupinu prostředků.
 ![Příklad nasazení](media/deploy/example-deployment.png)
 
 Náklady na Blockchain Workbench není agregovaný a nákladů na podpůrné služby Azure. Informace o cenách pro Azure services je možné vypočítat pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/).
+
+> [!IMPORTANT]
+> Pokud používáte předplatné s omezení s nízkou služeb, jako je předplatné Azure na úrovni free, může nasazení selhat z důvodu Nedostatečná kvóta jader virtuálního počítače. Před nasazením, zkontrolujte pomocí pokynů od kvótu [kvóty virtuálních procesorů virtuálního počítače](../../virtual-machines/windows/quotas.md) článku. Výchozí výběr VM vyžaduje 6 jader virtuálního počítače. Změnit na menší velikost virtuálního počítače, jako *v2 Standard DS1* omezuje počet jader na 4.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -99,7 +102,7 @@ Po dokončení nezbytných kroků jste připravení nasadit Blockchain Workbench
     |---------|--------------|
     | Monitorování | Zvolte, jestli chcete povolit Azure Monitor k monitorování sítě blockchain |
     | Nastavení služby Azure Active Directory | Zvolte **později přidat**.</br>Poznámka: Pokud jste se rozhodli [předem nakonfigurovat služby Azure AD](#azure-ad-configuration) nebo opětovného nasazení, zvolit *přidat nyní*. |
-    | Výběr VM | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. |
+    | Výběr VM | Výběr upřednostňovaného velikosti virtuálního počítače pro vaši síť blockchain. Zvolte menší velikost virtuálního počítače, jako *v2 Standard DS1* na předplatné s omezení s nízkou služeb, jako je Azure – úroveň free. |
 
     Pro **použít existující**:
 
