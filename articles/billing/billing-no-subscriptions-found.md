@@ -1,5 +1,5 @@
 ---
-title: Žádné předplatné Nenalezeno Chyba při pokusu o přihlášení k webu Azure portal nebo centra účtů Azure | Dokumentace Microsoftu
+title: Žádné předplatné Nenalezeno chyba – Azure portal přihlášení | Dokumentace Microsoftu
 description: Poskytuje řešení problému, ve kterém žádné předplatné Nenalezeno, dojde k chybě při přihlášení k webu Azure portal nebo centra účtů Azure.
 services: ''
 documentationcenter: ''
@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 584342b3dd223c45495db36ad49d83dece858137
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.custom: seodec18
+ms.openlocfilehash: cef34d4e22732c2d718daf7ce10c23b25ff4649d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581778"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081298"
 ---
-# <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Žádné předplatné Nenalezeno chyby v portálu Azure portal nebo v centru účtů Azure
+# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Žádné předplatné Nenalezeno přihlašování chybu u webu Azure portal nebo centra účtů Azure
 
 Zobrazí se chybová zpráva "Nenašly se žádné odběry" při pokusu o přihlášení k [webu Azure portal](https://portal.azure.com/) nebo [centra účtů Azure](https://account.windowsazure.com/Subscriptions). Tento článek poskytuje řešení tohoto problému.
 

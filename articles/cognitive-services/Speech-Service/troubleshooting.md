@@ -1,21 +1,22 @@
 ---
-title: Řešení potíží se službou Speech SDK
+title: Řešení potíží s rozhraním Speech SDK – hlasové služby
 titleSuffix: Azure Cognitive Services
-description: Řešení potíží s Speech Service SDK.
+description: Tento článek obsahuje informace, které vám pomůžou při řešení problémů, že se můžete setkat, když použijete služby SDK řeči.
 services: cognitive-services
 author: wolfma61
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 12/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 9f0cea263262d83d9a95012f6cd09fa9acdc0141
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 04a1f3222b17d91889eb580d9d4e8206d8156d37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49464567"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095479"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>Řešení potíží se službou Speech SDK
 
@@ -23,7 +24,7 @@ Tento článek obsahuje informace, které vám pomůžou při řešení problém
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Chyba: Upgrade objektu websocket na straně se nezdařilo s chybou ověřování (403)
 
-Může být nesprávné koncový bod pro oblast nebo službu. Zkontrolujte identifikátor URI, abyste měli jistotu, že je správný. 
+Může být nesprávné koncový bod pro oblast nebo službu. Zkontrolujte identifikátor URI, abyste měli jistotu, že je správný.
 
 Také, pravděpodobně došlo k potížím s klíč předplatného nebo autorizační token. Další informace najdete v další části.
 
@@ -78,19 +79,19 @@ Pokud používáte autorizační token pro ověření, spusťte jeden z následu
     ```Powershell
     $SpeechServiceURI =
     'https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US'
-    
+
     # $OAuthToken is the authorization token returned by the token service.
     $RecoRequestHeader = @{
       'Authorization' = 'Bearer '+ $OAuthToken
       'Transfer-Encoding' = 'chunked'
       'Content-type' = 'audio/wav; codec=audio/pcm; samplerate=16000'
     }
-    
+
     # Read audio into byte array.
     $audioBytes = [System.IO.File]::ReadAllBytes("YOUR_AUDIO_FILE")
-    
+
     $RecoResponse = Invoke-RestMethod -Method POST -Uri $SpeechServiceURI -Headers $RecoRequestHeader -Body $audioBytes
-    
+
     # Show the result.
     $RecoResponse
     ```
@@ -122,4 +123,3 @@ Tento problém je obvykle způsobeno zvuková data. Tato chyba může zobrazit, 
 ## <a name="next-steps"></a>Další postup
 
 * [Přečtěte si poznámky k verzi](releasenotes.md)
-

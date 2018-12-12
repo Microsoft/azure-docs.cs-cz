@@ -11,12 +11,12 @@ ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: diberry
-ms.openlocfilehash: 0cb82cfcecbb719b357cda46bf969acf6c6cefe7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 98828589832d69ada11205e471314a153a566766
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015292"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080261"
 ---
 # <a name="configure-containers"></a>Konfigurace kontejnerů
 
@@ -28,7 +28,7 @@ Nastavení kontejneru jsou [hierarchické](#hierarchical-settings) a lze ji nast
 
 Tento kontejner má následující nastavení:
 
-|Vyžadováno|Nastavení|Účel|
+|Požaduje se|Nastavení|Účel|
 |--|--|--|
 |Ano|[ApiKey](#apikey-setting)|Lze sledovat fakturační údaje.|
 |Ne|[ApplicationInsights](#applicationinsights-setting)|Umožňuje přidat [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) podporu telemetrická data do kontejneru.|
@@ -58,7 +58,7 @@ Nepoužívejte starter klíč nebo klíč pro vytváření obsahu.
 
 V následující tabulce jsou popsaná nastavení konfigurace podporované v rámci `ApplicationInsights` oddílu.
 
-|Vyžadováno| název | Typ dat | Popis |
+|Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
 |Ne| `InstrumentationKey` | Řetězec | Instrumentační klíč Application Insights instance, do jaké telemetrická data pro kontejner se odesílají. Další informace najdete v tématu [Application Insights pro ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Příklad:<br>`InstrumentationKey=123456789`|
 
@@ -72,7 +72,7 @@ Toto nastavení můžete najít na dvou místech:
 * Azure portal: **Language Understanding** přehled s popiskem `Endpoint`
 * Služba LUIS portál: **klíče a koncových bodů nastavení** stránce jako součást identifikátor URI koncového bodu.
 
-|Vyžadováno| název | Typ dat | Popis |
+|Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
 |Ano| `Billing` | Řetězec | Identifikátor URI koncového bodu fakturace<br><br>Příklad:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
@@ -80,11 +80,11 @@ Toto nastavení můžete najít na dvou místech:
 
 `Eula` Nastavení znamená, že jste přijali licenční pro kontejner. Musíte zadat hodnotu pro toto nastavení konfigurace, a hodnota musí být nastavena na `accept`.
 
-|Vyžadováno| název | Typ dat | Popis |
+|Požaduje se| Název | Typ dat | Popis |
 |--|------|-----------|-------------|
 |Ano| `Eula` | Řetězec | Přijetí licence<br><br>Příklad:<br>`Eula=accept` |
 
-Kontejnery služby cognitive Services jsou licencovaného v rámci vaší smlouvě upravující používání Azure. Pokud nemáte stávající smlouvy řídící používání Azure, vyjadřujete svůj souhlas, že vaší smlouvě upravující používání Azure se Microsoft Online Subscription Agreement (která zahrnuje podmínky Online služeb). Pro verze Preview souhlasíte také s dodatečných podmínkách použití systémů Microsoft Azure Preview. Pomocí kontejneru vyjadřujete souhlas s těmito podmínkami.
+Kontejnery služby cognitive Services se licencují pod [vaší smlouvě](https://go.microsoft.com/fwlink/?linkid=2018657) řídící používání Azure. Pokud nemáte stávající smlouvy řídící používání Azure, souhlasíte s tím, že je vaší smlouvě upravující používání Azure [Microsoft Online Subscription Agreement](https://go.microsoft.com/fwlink/?linkid=2018755), která zahrnuje [podmínky Online služeb ](https://go.microsoft.com/fwlink/?linkid=2018760). Pro verze Preview, souhlasíte také s [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://go.microsoft.com/fwlink/?linkid=2018815). Pomocí kontejneru vyjadřujete souhlas s těmito podmínkami.
 
 ## <a name="fluentd-settings"></a>Nastavení Fluentd
 
@@ -92,13 +92,13 @@ Fluentd je open source kolekce pro jednotné přihlašování. `Fluentd` Nastave
 
 V následující tabulce jsou popsaná nastavení konfigurace podporované v rámci `Fluentd` oddílu.
 
-| název | Typ dat | Popis |
+| Název | Typ dat | Popis |
 |------|-----------|-------------|
 | `Host` | Řetězec | IP adresa nebo název hostitele DNS Fluentd serveru. |
-| `Port` | Celočíselná hodnota | Port serveru Fluentd.<br/> Výchozí hodnota je 24224. |
-| `HeartbeatMs` | Celočíselná hodnota | Interval prezenčního signálu v milisekundách. Pokud žádný provoz událostí byl odeslán před vypršením platnosti tento interval, na Fluentd server přijde prezenční signál. Výchozí hodnota je 60000 milisekund (1 minuta). |
-| `SendBufferSize` | Celočíselná hodnota | Vyrovnávací paměť sítě v bajtů přidělených pro operace odeslání. Výchozí hodnota je 32768 bajtů (32 kilobajtů). |
-| `TlsConnectionEstablishmentTimeoutMs` | Celočíselná hodnota | Časový limit v milisekundách pro navázání připojení SSL/TLS s Fluentd serveru. Výchozí hodnota je 10000 milisekund (10 sekund).<br/> Pokud `UseTLS` je nastavena na hodnotu false, tato hodnota se ignoruje. |
+| `Port` | Integer | Port serveru Fluentd.<br/> Výchozí hodnota je 24224. |
+| `HeartbeatMs` | Integer | Interval prezenčního signálu v milisekundách. Pokud žádný provoz událostí byl odeslán před vypršením platnosti tento interval, na Fluentd server přijde prezenční signál. Výchozí hodnota je 60000 milisekund (1 minuta). |
+| `SendBufferSize` | Integer | Vyrovnávací paměť sítě v bajtů přidělených pro operace odeslání. Výchozí hodnota je 32768 bajtů (32 kilobajtů). |
+| `TlsConnectionEstablishmentTimeoutMs` | Integer | Časový limit v milisekundách pro navázání připojení SSL/TLS s Fluentd serveru. Výchozí hodnota je 10000 milisekund (10 sekund).<br/> Pokud `UseTLS` je nastavena na hodnotu false, tato hodnota se ignoruje. |
 | `UseTLS` | Logická hodnota | Označuje, zda kontejner musí používat protokol SSL/TLS pro komunikaci se serverem Fluentd. Výchozí hodnota je false. |
 
 ## <a name="logging-settings"></a>Nastavení protokolování
@@ -117,10 +117,10 @@ Podporuje následující zprostředkovatele protokolování LUIS kontejneru:
   
 `Disk` Protokolování zprostředkovatel podporuje následující nastavení:  
 
-| název | Typ dat | Popis |
+| Název | Typ dat | Popis |
 |------|-----------|-------------|
 | `Format` | Řetězec | Výstupní formát souborů protokolu.<br/> **Poznámka:** tato hodnota musí být nastavená na `json` povolit zprostředkovatele. Pokud tato hodnota je spustit bez úkolu připojení výstupu při vytvoření instance kontejneru, dojde k chybě. |
-| `MaxFileSize` | Celočíselná hodnota | Maximální velikost v megabajtech (MB), soubor protokolu. Když velikost aktuálního souboru protokolu splňuje nebo překročí tuto hodnotu, nový soubor protokolu je spuštěn poskytovatel protokolování. Pokud není zadána hodnota -1, velikost souboru protokolu je omezen pouze maximální velikost souboru, pokud existuje, pro výstupní připojení. Výchozí hodnota je 1. |
+| `MaxFileSize` | Integer | Maximální velikost v megabajtech (MB), soubor protokolu. Když velikost aktuálního souboru protokolu splňuje nebo překročí tuto hodnotu, nový soubor protokolu je spuštěn poskytovatel protokolování. Pokud není zadána hodnota -1, velikost souboru protokolu je omezen pouze maximální velikost souboru, pokud existuje, pro výstupní připojení. Výchozí hodnota je 1. |
 
 Další informace o konfiguraci protokolování podpora ASP.NET Core najdete v tématu [konfigurační soubor nastavení](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#settings-file-configuration).
 
@@ -134,7 +134,7 @@ Syntaxe umístění hostitele připojení se liší v závislosti na operačním
 
 Následující tabulka popisuje nastavení podporováno.
 
-|Vyžadováno| název | Typ dat | Popis |
+|Požaduje se| Název | Typ dat | Popis |
 |-------|------|-----------|-------------|
 |Ano| `Input` | Řetězec | Cíl vstupní připojení. Výchozí hodnota je `/input`. Toto je umístění souborů balíčku LUIS. <br><br>Příklad:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Ne| `Output` | Řetězec | Cíl připojení výstupu. Výchozí hodnota je `/output`. Toto je umístění protokolů. To zahrnuje LUIS dotazu protokoly a protokoly kontejneru. <br><br>Příklad:<br>`--mount type=bind,src=c:\output,target=/output`|

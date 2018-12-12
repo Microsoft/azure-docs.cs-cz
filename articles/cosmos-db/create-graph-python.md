@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: eb7959b1a41c602ce4f34750802d962fe4ff84cf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b8a26164145360bdd46656a86817b8ec61bcb56c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839309"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081485"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření databáze grafů pomocí Pythonu a webu Azure Portal
 
@@ -42,7 +42,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 Navíc platí:
 * [Python](https://www.python.org/downloads/) verze v3.5 nebo novější
 * [Správce balíčků pip](https://pip.pypa.io/en/stable/installing/)
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Ovladač Pythonu pro Gremlin](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
@@ -101,7 +101,7 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 
 Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkopírujte je do aplikace. Tato nastavení umožní aplikaci komunikovat s hostovanou databází.
 
-1. Na [portálu Azure](http://portal.azure.com/) klikněte na **Klíče**. 
+1. Na [portálu Azure](https://portal.azure.com/) klikněte na **Klíče**. 
 
     Zkopírujte první část hodnoty identifikátoru URI.
 

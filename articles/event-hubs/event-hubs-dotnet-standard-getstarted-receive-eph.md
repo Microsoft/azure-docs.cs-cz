@@ -1,6 +1,6 @@
 ---
-title: Příjem událostí ze služby Azure Event Hubs pomocí knihovny .NET Core | Dokumentace Microsoftu
-description: Začínáme s příjmem zpráv pomocí třídy EventProcessorHost v .NET Core
+title: Příjem událostí pomocí .NET Core – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek poskytuje návod pro vytvoření aplikace .NET Core, která bude přijímat zprávy pomocí třídy EventProcessorHost.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: fb99307182ba3ce8ba49a9ae09c12af173799c87
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 18b37fd7c85fced4cc57b57320daf195f6f33e3e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963347"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082376"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>Začínáme s příjmem zpráv pomocí třídy Event Processor Host v .NET Core
 Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT). Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).

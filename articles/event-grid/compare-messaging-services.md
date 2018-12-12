@@ -1,21 +1,22 @@
 ---
-title: Porovnání služeb zasílání zpráv Azure
-description: Porovnává služby Azure Event Grid, Event Hubs a Service Bus. Doporučuje nejvhodnější služby pro různé situace.
+title: Porovnání – Event Grid, Event Hubs, služby Service Bus pro zasílání zpráv Azure
+description: Popisuje tři zasílání zpráv služby Azure – Azure Event Grid, Event Hubs a služby Service Bus. Doporučuje nejvhodnější služby pro různé situace.
 services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 07/05/2018
+ms.date: 12/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 28f80dc71afd7d4865763561682ce54de1b118ab
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 7e78dd77d5bd3d9e5aee55aaeffa933a21c3b477
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51852193"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084953"
 ---
-# <a name="choose-between-azure-services-that-deliver-messages"></a>Výběr mezi službami Azure, které doručují zprávy
+# <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Výběr mezi zasílání zpráv služby Azure - Event Grid, Event Hubs a služby Service Bus
 
 Azure nabízí tři služby, které v rámci určitého řešení pomáhají doručovat zprávy o událostech. Jsou to tyto služby:
 

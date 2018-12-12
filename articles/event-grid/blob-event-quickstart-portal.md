@@ -1,6 +1,6 @@
 ---
-title: Události úložiště objektů blob pro Azure Event Grid pomocí webu Azure Portal | Microsoft Docs
-description: Vytvořte účet úložiště objektů blob a přihlaste se k odběru jeho událostí pomocí služby Azure Event Grid a webu Azure Portal.
+title: Odesílání událostí služby Blob storage do webového koncového bodu – portál | Dokumentace Microsoftu
+description: Vytvořte účet úložiště objektů blob a přihlaste se k odběru jeho událostí pomocí služby Azure Event Grid a webu Azure Portal. Události odesíláte na Webhooku.
 services: event-grid
 keywords: ''
 author: tfitzmac
@@ -8,14 +8,15 @@ ms.author: tomfitz
 ms.date: 10/17/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 44e258069515ad6c409c193312f3a714a5096541
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 6fd48ecd6def6a4fcd56751b6a137f75b16896ef
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404218"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086959"
 ---
-# <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Vytvoření a směrování událostí úložiště objektů blob pomocí webu Azure Portal a služby Event Grid
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý start: Události úložiště Blob trasy webový koncový bod pomocí webu Azure portal
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku pomocí webu Azure Portal vytvoříte účet úložiště objektů blob, přihlásíte se k odběru událostí tohoto úložiště objektů blob a aktivujete událost pro zobrazení výsledku. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -135,7 +136,7 @@ Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředk
 
 Vyberte skupinu prostředků a pak vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Když teď víte, jak vytvářet vlastní témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 

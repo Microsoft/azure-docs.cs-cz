@@ -1,20 +1,20 @@
 ---
 title: Vyčištění vaší úlohy Azure Stream Analytics
-description: Tento článek představuje příručku pro odstranění úlohy Azure Stream Analytics.
+description: Tento článek popisuje různé metody pro odstranění vaší úlohy Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
-manager: kfile
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/22/2018
-ms.openlocfilehash: 580d05909ff3c94c982be5353b3b5e86a78fc43f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 85db38fef5e69c4de855f8cb6d54151496faebbe
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969336"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090240"
 ---
 # <a name="clean-up-your-azure-stream-analytics-job"></a>Vyčištění vaší úlohy Azure Stream Analytics
 
@@ -31,7 +31,7 @@ ms.locfileid: "38969336"
 
 3. Na stránce úlohy Stream Analytics, vyberte možnost **Zastavit** o zastavení úlohy. 
 
-   ![Zastavit úlohu](./media/stream-analytics-clean-up-your-job/stop-job.png)
+   ![Zastavit úlohu Azure Stream Analytics](./media/stream-analytics-clean-up-your-job/stop-stream-analytics-job.png)
 
 
 ## <a name="delete-a-job-in-azure-portal"></a>Odstraňování úlohy na webu Azure portal
@@ -42,7 +42,7 @@ ms.locfileid: "38969336"
 
 3. Na stránce úlohy Stream Analytics, vyberte možnost **odstranit** odstraňte úlohu. 
 
-   ![Odstranit úlohu](./media/stream-analytics-clean-up-your-job/delete-job.png)
+   ![Odstranit úlohu Azure Stream Analytics](./media/stream-analytics-clean-up-your-job/delete-stream-analytics-job.png)
 
 
 ## <a name="stop-or-delete-a-job-using-powershell"></a>Zastavení nebo odstranění úlohy pomocí Powershellu

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0d96844d9e156c702a5a6273b5181db04e5a79c5
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: a27513f9ae3d2b4cfff77f4fd410fdc77e060feb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994714"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081672"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je uveden seznam nejčastější dotazy o službě Log Analytics v Microsoft Azure. Pokud máte nějaké další dotazy o službě Log Analytics, pokračujte [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte své dotazy. Pokud je dotaz pokládán často, přidáme ji k tomuto článku tak, aby jej lze rychle a snadno najít.
@@ -218,7 +218,7 @@ Odpověď: je třeba přidat 'etag' v těle rozhraní API nebo vlastností šabl
 ### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>Otázka: Kolik dat můžu poslat přes agenta ke službě Log Analytics? Je maximální objem dat jednoho zákazníka?
 A. Plán free Nastaví denní limit 500 MB za jednotlivé pracovní prostory. Plány standard a premium nemají žádné omezení na množství dat, který se odeslal. Jako cloudová služba Log Analytics byla navržena automatické škálování až na popisovač svazku pocházející od zákazníka – i v případě, že je TB za den.
 
-Agenta Log Analytics byla navržena k zajištění, že má malou stopu. Objem dat se liší v závislosti na řešení, které povolíte. Můžete najít podrobné informace o objemu dat a zobrazit rozpis řešením v [využití](../../log-analytics/log-analytics-usage.md) stránky.
+Agenta Log Analytics byla navržena k zajištění, že má malou stopu. Objem dat se liší v závislosti na řešení, které povolíte. Můžete najít podrobné informace o objemu dat a zobrazit rozpis řešením v [využití](../../azure-monitor/platform/data-usage.md) stránky.
 
 Další informace si můžete přečíst [zákazníka blogu](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) zobrazující jejich výsledky po vyhodnocení využití prostředků (nároky na místo) agenta OMS.
 
@@ -234,7 +234,7 @@ A. Množství dat odesílaných na agenta, závisí na:
 * Počet shromažďovaných čítačů výkonu a protokolování
 * Objem dat v protokolech
 
-Cenová úroveň free je dobrým způsobem, jak připojit několik serverů a měřidla typické datový svazek. Celkové využití se zobrazí na [využití](../../log-analytics/log-analytics-usage.md) stránky.
+Cenová úroveň free je dobrým způsobem, jak připojit několik serverů a měřidla typické datový svazek. Celkové využití se zobrazí na [využití](../../azure-monitor/platform/data-usage.md) stránky.
 
 Pro počítače, které je možné spouštět WireData agenta použijte tento dotaz Pokud chcete zobrazit, kolik dat je odesíláno:
 

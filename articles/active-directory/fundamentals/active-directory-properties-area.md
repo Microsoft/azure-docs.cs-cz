@@ -1,6 +1,6 @@
 ---
-title: Přidejte informace o ochraně osobních údajů vaší organizace v Azure Active Directory | Dokumentace Microsoftu
-description: Postup přidání informací o ochraně osobních údajů vaší organizace do oblasti Vlastnosti služby Azure Active Directory (Azure AD).
+title: Přidání informací o ochraně osobních údajů vaší organizace – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak přidat informace o ochraně osobních údajů vaší organizace do oblasti Vlastnosti služby Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: lizross
 ms.reviewer: bpham
-ms.custom: it-pro
-ms.openlocfilehash: f32eeee8f02cee32eb05e14aa98387a20cb2e626
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 50fcafbdef4fc09532d03ae145183dd45c381c73
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904127"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083831"
 ---
-# <a name="how-to-add-your-privacy-info-using-azure-active-directory"></a>Postupy: Přidání údajů o ochraně osobních údajů pomocí služby Azure Active Directory
+# <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Přidání informací o ochraně osobních údajů vaší organizace pomocí služby Azure Active Directory
 Tento článek vysvětluje, jak může správce tenanta přidat informace týkající se ochrany osobních údajů v organizaci tenanta Azure Active Directory (Azure AD), na webu Azure portal.
 
 Důrazně doporučujeme že přidat kontakt globální ochrany osobních údajů a zásady ochrany osobních údajů vaší organizace, tak interní zaměstnance a externí hosté můžou, projděte si zásady. Protože prohlášení o ochraně osobních údajů jsou jednoznačně vytvořen a přizpůsobené pro každou firmu, důrazně doporučujeme, abyste že požádali advokát žádostí o pomoc.

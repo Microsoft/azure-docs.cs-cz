@@ -1,6 +1,6 @@
 ---
-title: Vizualizace dat v Průzkumníku aktualizaci | Dokumentace Microsoftu
-description: Aktualizovat Průzkumníka služby Azure Time Series Insights
+title: Vizualizace dat v Průzkumníku Azure čas Series Insights ve verzi Preview | Dokumentace Microsoftu
+description: Tento článek popisuje funkce a možnosti, které jsou k dispozici ve webové aplikaci Průzkumník Azure čas Series Insights ve verzi Preview.
 author: ashannon7
 ms.author: anshan
 ms.workload: big-data
@@ -8,74 +8,74 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/28/2018
-ms.openlocfilehash: bf091eec271e3fb27f6ab312ff5d0096efa7f90c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.date: 12/03/2018
+ms.openlocfilehash: 3a2958d838f0646ac030421b3785fc11a1466dd6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855769"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086721"
 ---
-# <a name="visualize-data-in-the-explorer-update"></a>Vizualizace dat v Průzkumníku aktualizace
+# <a name="visualize-data-in-the-explorer-preview"></a>Vizualizace dat v Průzkumníku ve verzi Preview
 
-Tento článek popisuje funkce a možnosti dostupné v rámci The Azure Time Series Insights (preview) Průzkumníka webové aplikace.
+Tento článek popisuje funkce a možnosti, které jsou k dispozici ve verzi Preview Azure čas Series Insights [explorer webové aplikace](https://insights.timeseries.azure.com/preview/samples).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než použijete Azure Time Series Insights (preview) Explorer, musíte mít:
+Než použijete Průzkumníka Azure čas Series Insights ve verzi Preview, musíte mít:
 
-* Máte zřízené prostředí Time Series Insights. Další informace o zřizování prostředí Time Series Insights.
-* Poskytuje přístup k datům prostředí Time Series Insights, který jste vytvořili pro účet. Přístup mohou být poskytnuty jiné také sami.
+* Máte nastavení prostředí Time Series Insights. Další informace najdete v tématu [kurz: Azure čas Series Insights ve verzi Preview](./time-series-insights-update-create-environment.md).
+* Poskytuje přístup k datům prostředí Time Series Insights, který jste vytvořili pro účet. Můžete poskytnout přístup k i další uživatele tak, aby sami.
 * Přidání zdroje událostí do prostředí Time Series Insights k odesílání dat do prostředí.
 
-## <a name="learn-about-the-azure-time-series-insights-preview-explorer"></a>Seznamte se s Azure Time Series Insights (preview) Explorer
+## <a name="learn-about-the-azure-time-series-insights-preview-explorer"></a>Další informace o Průzkumníku Azure čas Series Insights ve verzi Preview
 
   ![Průzkumník: 1][1]
 
-Azure Time Series Insights (preview) Explorer je rozdělený do následujících sedm prvků:
+Průzkumník Azure čas Series Insights ve verzi Preview se skládá z následujících elementů:
 
-1. Navigační panel TSI (preview) umožňuje přepínat mezi stránkami analýzy a modelu.
-1. Stromové hierarchie TSI (preview) vyberte konkrétní datové prvky, aby graf.
-1. Časové řady TSI (preview) a zobrazuje všechny aktuálně vybrané datové prvky.
-1. TSI (preview) grafu panel zobrazuje aktuální pracovní grafu.
-1. Časová osa TSI (preview) umožňuje změnit vaše pracovní časový rozsah.
-1. Panel aplikace TSI (preview) obsahuje vaše možnosti správy uživatele (například aktuálního tenanta) a umožňuje změnit motiv a jazykové nastavení.
+* **Navigační panel**: umožňuje přepínat mezi stránkami analýzy a modelu.
+* **Hierarchie stromu**: umožňuje vybrat konkrétní datové prvky, aby graf.
+* **Time series dobře**: Zobrazí aktuálně vybrané datové prvky.
+* **Panely grafu**: Zobrazí aktuální pracovní grafu.
+* **Časová osa**: umožňuje upravovat vaše pracovní časový rozsah.
+* **Panel aplikace**: obsahuje vaše možností správy uživatelů, jako je například aktuálního tenanta a můžete změnit motiv a jazykové nastavení.
 
-## <a name="tsi-preview-environment-panel"></a>Panel prostředí TSI (preview)
+## <a name="time-series-insights-preview-environment-panel"></a>Panel prostředí času Series Insights ve verzi Preview
 
-V panelu prostředí se zobrazí všechna prostředí TSI, ke kterým máte přístup k. To zahrnuje seznam s průběžnými platbami prostředí (preview) a také prostředí S1/S2 (GA). Stačí klikněte TSI prostředí, ve kterém chcete použít.
+V panelu prostředí se zobrazí všechna prostředí Time Series Insights, ke kterým máte přístup k. Seznam obsahuje s průběžnými platbami prostředí ve verzi Preview a S1/S2 prostředí (GA). Jednoduše klikněte na prostředí Time Series Insights, který chcete použít.
 
   ![dvě Explorer][2]
 
-## <a name="time-series-insights-preview-navigation-menu"></a>Time Series Insights (preview) navigační nabídku
+## <a name="time-series-insights-preview-navigation-menu"></a>Čas Series Insights ve verzi Preview navigační nabídku
 
   ![tři Explorer][3]
 
-V navigační nabídce umožňuje přepínat mezi těmito aplikacemi TSI:
+V nabídce navigace můžete přepínat mezi aplikacemi Time Series Insights:
 
-* Analýza – umožňuje grafu a provádět bohaté analýzy na dat Modelovaný nebo nemodelované časových řad.
+* **Analýza**: umožňuje grafu a provádět bohaté analýzy na dat Modelovaný nebo nemodelované časových řad.
 
-* Model - můžete nainstalovat nové aktualizace typy TSI, hierarchie a instance do modelu TSI.
+* **Model**: umožňuje vložit nové typy čas Series Insights ve verzi Preview, hierarchie a instance pro váš model Time Series Insights.
 
-## <a name="time-series-insights-update-model-authoring"></a>Time Series Insights aktualizovat Model pro vytváření
+## <a name="time-series-insights-preview-model-authoring"></a>Time Series Insights ve verzi Preview vytváření modelu
 
-Tato aplikace vám dává možnost k provádění operací CRUD u vašeho modelu časové řady.  
+V této aplikaci můžete provádět operace vytvoření, čtení, aktualizace a odstranění (CRUD) na váš Model časové řady.  
 
-* Typ TSM – TSI typy umožňují definující proměnné nebo vzorce pro provádění výpočtů, jsou přidruženy k dané instanci služby TSI. Typ může mít jednu nebo více proměnných.
-* Hierarchie TSM – hierarchie jsou systematické organizace vaše data. Hierarchie znázornění vztahy mezi různými entitami ve vašich datech TSI.
-* Instance TSM – instance jsou časové řady sami. Ve většině případů to bude **DeviceID** nebo **AssetID**, který je jedinečný identifikátor prostředku v prostředí.
+* **Časové řady Model typu**: typy umožňují definující proměnné nebo vzorce pro provádění výpočtů služby Time Series Insights. Jsou přidruženy k dané instance služby Time Series Insights. Typ může mít jednu nebo více proměnných.
+* **Časové řady modelu hierarchie**: hierarchií jsou systematické organizace vaše data. Hierarchie znázornění vztahy mezi různými entitami ve vašich datech Time Series Insights.
+* **Instance řady modelu čas**: instance jsou časové řady sami. Ve většině případů jsou DeviceID nebo AssetID, který je jedinečný identifikátor prostředku v prostředí.
 
-Další informace o TSM, [časy řady modely](./time-series-insights-update-tsm.md).
+Další informace o modelu časové řady, naleznete v tématu [časy řady modely](./time-series-insights-update-tsm.md).
 
-## <a name="time-series-insights-preview-model-search-panel"></a>Time Series Insights (preview) modelu Panel hledání
+## <a name="time-series-insights-preview-model-search-panel"></a>Panel hledání modelu času Series Insights ve verzi Preview
 
-Na panelu hledání model umožňuje snadno vyhledat a procházet hierarchii TSM najít instance řady určitou dobu, kterou chcete zobrazit v grafu. Při výběru vaše instance nejsou přidány pouze pro aktuální graf, ale také přidají k datům dobře.
+Na panelu hledání modelu vám umožní snadno vyhledat a procházet hierarchii modelu časové řady najít instance řady určitou dobu, kterou chcete zobrazit v grafu. Vyberete-li vaše instance, se přidají do aktuální graf a data dobře.
 
   ![čtyři Explorer][4]
 
-## <a name="time-series-insights-preview-well"></a>Time Series Insights (preview) a
+## <a name="time-series-insights-preview-well"></a>Dobře Time Series Insights ve verzi Preview
 
-Také zobrazí pole instancí a další metadata přidružená k vybrané časové řady instancí. Zaškrtávací políčka na pravé straně umožňují skrytí nebo zobrazení konkrétních instancí z aktuálního grafu. Můžete také odebrat konkrétní datové prvky z vašich aktuálních dat také klepnutím na ovládací prvek červený symbol x napravo od elementu.
+Také zobrazí pole instancí a další metadata přidružená k vybrané časové řady instancí. Zaškrtávací políčka na pravé straně umožňuje skrýt nebo zobrazit konkrétní instance z aktuálního grafu. Můžete také odebrat konkrétní datové prvky z vašich aktuálních dat také klepnutím na ovládací prvek červený symbol x napravo od elementu.
 
   ![pět Explorer][5]
 
@@ -83,67 +83,68 @@ Můžete také otevření panelu telemetrická data a získat lepší svislé zo
 
   ![šest Explorer][6]
 
-Poznámka: Pokud se zobrazí následující ikona, instance nemá žádná data během vybraný časový interval.  Pokud chcete vyřešit, můžete zvýšit časový rozsah vybraný nebo potvrďte, že instance je předání dat.
+> [!NOTE]
+> Pokud se zobrazí následující zpráva, instance nemá žádná data během vybrané časové období. Chcete-li vyřešit tento problém, můžete zvýšit časový rozsah nebo potvrďte, že instance je předání dat.
+>
+> ![Průzkumník sedm][7]
 
-  ![Průzkumník sedm][7]
+## <a name="time-series-insights-preview-chart"></a>Graf doby Series Insights ve verzi Preview
 
-## <a name="time-series-insights-preview-chart"></a>Time Series Insights (preview) grafu
-
-Graf umožňuje zobrazit instance řady času jako řádky. Klepnutím na ovládací prvky webového zvětšit grafu můžete sbalit panel prostředí, datový model a čas span ovládacích panelech.
+Graf můžete zobrazit instance řady času jako řádky. Klepnutím na ovládací prvky webového zvětšit grafu můžete sbalit panel prostředí, datový model a čas span ovládacích panelech.
 
   ![Průzkumník osm][8]
 
-1. Vybraný rozsah dat – aktuálně ve vybraném rozsahu dat pro panel grafu, tento ovládací prvky, datové prvky, které bude k dispozici pro vizualizaci.
+1. **Vybraný rozsah**: ovládací prvky, které datové prvky jsou k dispozici pro vizualizaci.
 
-1. Vnitřní nástroj posuvníku rozsahu datum - span pomocí dvou ovládacích prvků koncový bod kliknutím a přetažením přes který je požadovaný čas.
+1. **Vnitřní nástroj pro posuvník rozsahu datum**: pomocí dvou ovládacích prvků koncový bod jejich přetažením přes požadované časové období.
 
-1. Ovládací prvek v době span Sbalit - tento ovládací prvek sbalí a rozbalí editor span panel čas.
+1. **Časové rozpětí sbalení ovládacího prvku**: sbalení a rozbalí editor span panel čas.
 
-1. Osa y formát ovládacího prvku – klikněte na tento ovládací prvek cyklicky procházet dostupné možnosti zobrazení osy y. Jsou k dispozici možnosti osy y zobrazit:
+1. **Osa y formát ovládacího prvku**: procházení k dispozici možnosti osy y zobrazit:
 
-    * Výchozí – každý řádek obsahuje jednotlivé osy y
-    * Skládaný – to vám umožní zásobník více řádků na ose y stejné osy y data mění, založené na vybraný řádek
-    * Sdílené – společně zobrazit všechna data osy y
+    * `Default`: Každý řádek obsahuje jednotlivé osy y.
+    * `Stacked`: Umožňuje osy y data mění, na základě řádku vybrané zásobník více řádků na stejné ose y.
+    * `Shared`: Zobrazují na společném všechna data osy y.
 
-1. Aktuální dat elementu – aktuálně vybraný datový prvek a jeho přidružené podrobnosti.
+1. **Aktuální datový element**: aktuálně vybraný datový prvek a jeho přidružené podrobnosti.
 
-Konkrétní datový řez můžete projít další podle klepněte levým tlačítkem myši na datový bod v aktuální grafu při podržíte ukazatel myši a pak přetažením vybrané oblasti do koncového bodu podle vašeho výběru. Klikněte pravým tlačítkem na šedé, vybrané oblasti a jak je znázorněno níže, klikněte na tlačítko lupy. Můžete také:
+Konkrétní datový řez můžete projít další klepněte levým tlačítkem myši na datový bod v aktuální grafu a pak přetažením vybrané oblasti do koncového bodu podle vašeho výběru. Klikněte pravým tlačítkem na šedé, vybrané oblasti a klikněte na tlačítko lupy, jak je znázorněno na následujícím obrázku:
 
   ![Průzkumník devět][9]
 
-Po provedení akce přiblížení, uvidíte teď vybrané datové sady. Klikněte na formát ovládacího prvku osy y k cyklování skrze tři odlišné osy y reprezentace dat TSI.
+Po provedení akce přiblížení, zobrazí se vybrané datové sadě. Klikněte na ovládací prvek osy y formátu k cyklování skrze tři osy y reprezentace dat Time Series Insights.
 
   ![deset Explorer][10]
 
-Tady vidíte příklad sdílené osami y.
+Tady vidíte příklad sdílené osami y:
 
   ![Průzkumník jedenáct][11]
 
-## <a name="time-series-insights-preview-time-editor-panel"></a>Time Series Insights (preview) Panel čas Editor
+## <a name="time-series-insights-preview-time-editor-panel"></a>Panel editor čas času Series Insights ve verzi Preview
 
-Při práci s TSI nejprve vyberete časové období. Vybrané časové období bude řídit sady dat, která je k dispozici pro manipulaci s aktualizace widgetů TSI. Následující ovládací prvky webové jsou k dispozici v aktualizaci služby TSI pro výběr vaše pracovní časový rozsah.
+Při práci s čas Series Insights ve verzi Preview, nejprve vyberte časový rozsah. Vybraný časový interval Určuje datovou sadu, která je k dispozici pro manipulaci s pomůcky čas Series Insights ve verzi Preview. Následující ovládací prvky webové jsou k dispozici v době Series Insights ve verzi Preview pro výběr vaše pracovní časový rozsah.
 
   ![Průzkumník 12][12]
 
-1. **Vnitřní rozsah posuvníku nástroj** – pomocí dvou ovládacích prvků koncový bod kliknutím a přetažením přes který je požadovaný čas span. Tato "vnitřní" období bude ovlivněna posuvník "Vnější datum" rozsahu uvedené níže.
+1. **Vnitřní rozsah posuvníku nástroj**: pomocí dvou ovládacích prvků koncový bod jejich přetažením přes požadované časové období. Tento vnitřní rozsah je omezen v ovládacím prvku posuvník vnější rozsah.
 
-1. Zvýšení a snížení datum rozsahu tlačítka ** – zvýšení nebo snížení časové období kliknutím na tlačítko buď tlačítko pro interval, který chcete.
+1. **Zvýšit a snížit datum rozsahu tlačítka**: zvýšení nebo snížení času span tak, že vyberete buď tlačítko pro požadovaný interval.
 
-1. **Časové rozpětí sbalení ovládacího prvku** -tento webový ovládací prvek umožňuje skrýt ovládací prvky s výjimkou nástroje jezdce vnitřní datum rozsahu.
+1. **Časové rozpětí sbalení ovládacího prvku**: Tento webový ovládací prvek umožňuje skrýt ovládací prvky s výjimkou nástroje jezdce vnitřní rozsah.
 
-1. **Ovládací prvek posuvník vnější rozsah** – použití koncového bodu ovládacích prvků vyberte vnější rozsah, který bude k dispozici pro ovládací prvek rozsah "Vnitřní datum".
+1. **Ovládací prvek posuvník vnější rozsah**: vyberte vnější časové období, které bude k dispozici pro ovládací prvek datum vnitřního rozsahu pomocí ovládacích prvků koncový bod.
 
-1. **Rychlé časy rozsah rozevírací seznam** -vám dává možnost rychle přepínat mezi zadaném časovém rozpětí výběry například posledních 30 minut, posledních 12 hodin, vlastní rozsah, atd. Změna této hodnoty se změní také k dispozici interval rozsahy věnujeme se jí v nástroje jezdce velikost intervalu.
+1. **Rychlé časy datum rozsahu rozevírací**: umožňuje rychle přepínat mezi zadaném časovém rozpětí vybrané možnosti, jako je například posledních 30 minut, posledních 12 hodin nebo vlastní rozsah. Změna této hodnoty se změní také k dispozici interval rozsahy popsané v nástroje jezdce velikost intervalu.
 
-1. **Velikost intervalu posuvník nástroj** -nástroje jezdce velikost intervalu umožňuje přiblížit nebo intervaly oddálit za stejný časový rozsah. To zajišťuje přesnější kontrolu nad pohyb mezi velké časové úseky, které ukazují smooth trendy dolů řezy malá jako na milisekundy, což umožní zobrazit podrobné, s vysokým rozlišením kusy vaše data. Výchozí posuvníku počáteční bod je nastaven jako optimální zobrazení dat z výběru. Vyrovnávání rozlišení, rychlost dotazů a členitosti.
+1. **Velikost intervalu posuvník nástroj**: umožňuje můžete přiblížit nebo oddálit intervalech přes stejný časového intervalu. Tato akce zajišťuje přesnější kontrolu nad pohyb mezi velké časové úseky. Zobrazí smooth trendy dolů řezy malá jako milisekund, což umožní zobrazit podrobné, s vysokým rozlišením kusy vaše data. Výchozí posuvníku počáteční bod je nastaven jako optimální zobrazení dat z vašeho výběru, který vyrovnává rozlišení, rychlost dotazů a členitosti.
 
-1. **Z webový ovládací prvek a rozsah kalendářních dat** – se tento webový ovládací prvek, jednoduše klikněte a vyberte požadované datum a časové rozsahy. Můžete také použít ovládací prvek přepínání různých časových pásmech. Po provedení změn, které chcete použít pro aktuální pracovní prostor. klikněte na toto tlačítko.
+1. **Z webový ovládací prvek a rozsah kalendářních dat**: pro tento webový ovládací prvek můžete jednoduše klikněte a vyberte požadované datum a časové rozsahy. Můžete také použít ovládací prvek přepínání různých časových pásmech. Po provedení změn, chcete-li použít do aktuálního pracovního prostoru, vyberte **Uložit**.
 
   ![třináct Explorer][13]
 
-## <a name="time-series-insights-preview-navigation-panel"></a>Navigační panel čas Series Insights (preview)
+## <a name="time-series-insights-preview-navigation-panel"></a>Čas Series Insights ve verzi Preview navigační panel
 
-Navigační panel aktualizace TSI poskytuje následující funkce:
+Navigační panel čas Series Insights ve verzi Preview poskytuje následující funkce:
 
   ![Průzkumník čtrnáct][14]
 
@@ -151,7 +152,7 @@ Navigační panel aktualizace TSI poskytuje následující funkce:
 
   ![Průzkumník patnáct][15]
 
-Klikněte na ovládací prvek webového odkazu v kroužku ke generování adresy URL uložit nebo sdílet vaše aktuální Time Series Insights pracovní relaci, která zahrnuje:
+Vyberte web ovládací prvek odkazu (zvýrazněno) ke generování adresy URL uložit nebo sdílet aktuálního sezení Azure Time Series Insights, která zahrnuje:
 
 * Aktuálně vybraný časový rozsah
 * Velikost aktuálně vybraného intervalu
@@ -161,15 +162,15 @@ Klikněte na ovládací prvek webového odkazu v kroužku ke generování adresy
 
   ![Průzkumník šestnáct][16]
 
-* Zobrazí aktuální informace o účtu služby TSI přihlášení
-* Umožňuje že přepínat mezi dostupné motivy TSI.
+* Zobrazí aktuální informace o účtu služby Time Series Insights přihlášení.
+* Umožňuje přepínat mezi dostupné motivy Time Series Insights.
 
 ### <a name="theme-selection"></a>Výběr motivu
 
-TSI Azure (preview) podporuje dva motivy:
+Azure čas Series Insights ve verzi Preview podporuje dva motivy:
 
-* **Světlý motiv**: Toto je výchozí motiv uvedené v tomto dokumentu.
-* **Tmavý motiv**: tuto možnost vykreslí Průzkumníka do články v tmavém motivu, jak je znázorněno níže:
+* **Světlý motiv**: výchozí motiv uvedené v tomto dokumentu.
+* **Tmavý motiv**: vykreslí explorer, jak je znázorněno zde:
 
   ![Průzkumník sedmnáct][17]
 
@@ -177,44 +178,47 @@ Tady můžete také změnit mezi podporované jazyky.
 
 ## <a name="s1s2-environment-controls"></a>Ovládací prvky prostředí S1/S2
 
-### <a name="time-series-insights-preview-terms-panel"></a>Time Series Insights (preview) Panel podmínek
+### <a name="time-series-insights-preview-terms-panel"></a>Panel podmínek čas Series Insights ve verzi Preview
 
-Tato část se týká pouze do existujícího prostředí S1/S2 pokus o použití Průzkumníka v aktualizované uživatelské rozhraní. Můžete k tomu použijte produkt GA a aktualizovat (preview) ve spojení s jinými. Jsme přidali některé funkce z existující uživatelského rozhraní na aktualizované explorer, ale víte, že můžete vždy získat úplné uživatelské rozhraní pro S1/S2 prostředí v existující Průzkumníku TSI.  
+Tato část platí jenom pro stávající prostředí S1, S2, které se pokouší použít v aktualizované uživatelské rozhraní v Průzkumníku. Můžete chtít použít v kombinaci GA produkt a ve verzi Preview. Přidali jsme některé funkce z existující uživatelského rozhraní do Průzkumníka aktualizované, ale můžete získat plnou funkčnost uživatelského rozhraní pro existující Průzkumníka Time Series Insights S1/S2 prostředí.  
 
-Namísto hierarchii zobrazí se panel podmínek TSI. Toto je tady můžete definovat dotazy ve vašem prostředí. Nabízí možnost filtrovat data na základě pomocí predikátu.
+Namísto hierarchii zobrazí se panel podmínek Time Series Insights, kde definujete dotazy ve vašem prostředí. Umožňuje filtrovat data podle predikátu.
 
   ![Průzkumník osmnáct][18]
 
-TSI (preview) Panel Editor podmínek mají následující parametry
+Panel editor podmínek čas Series Insights ve verzi Preview má následující parametry:
 
-**Kde**: where klauzule umožňuje rychle filtrovat události pomocí sady operandy uvedených níže. Pokud spustíte hledání kliknutím vyberete /, predikátu se automaticky aktualizují na základě danému hledání. Operand podporované typy patří:
+**Kde**: where – klauzule vám umožní rychle filtrovat události z operandů sady uvedené v následující tabulce. Pokud spustíte hledání tak, že vyberete operand, predikát automaticky aktualizovat podle hledání. Operand podporované typy patří:
 
 | Operace | Podporované typy   | Poznámky |
 | --- | --- | --- |
-| `<`, `>`, `<=`, `>=` |    Double, DateTime, časový interval  | |
-| `=`, `!=`, `<>`   | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL    |
-| `IN` |    Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL |    Všechny operandy musí být stejného typu nebo konstanta NULL. |
-| `HAS` |   Řetězec |    Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a NULL nejsou povoleny. |
+| `<`, `>`, `<=`, `>=` | Double, DateTime, časový interval | |
+| `=`, `!=`, `<>` | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL |
+| `IN` | Řetězec, logická hodnota, Double, DateTime, časový interval, s hodnotou NULL | Všechny operandy musí být stejného typu nebo konstanta NULL. |
+| `HAS` | Řetězec | Na pravé straně jsou povoleny pouze konstantní řetězcové literály. Prázdný řetězec a NULL nejsou povoleny. |
+
+Další informace o podporovaných dotazu operace a datové typy najdete [čas řady výrazu (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx).
 
 ### <a name="examples-of-where-clauses"></a>Příklady, kde klauzule
 
   ![Průzkumník devatenáct][19]
 
-**Míra**: Tento rozevírací seznam ukazuje všechny číselné sloupce (**zdvojnásobí**), který slouží jako elementy pro aktuální graf.
+**Míra**: rozevíracího seznamu se zobrazí všechny číselné sloupce (**zdvojnásobí**), který slouží jako elementy pro aktuální graf.
 
-**Rozděleno podle**: Tento rozevírací seznam zobrazí všechny sloupce zařazené do kategorií (řetězec) v modelu k dispozici, můžete použít k seskupení vašich dat prostřednictvím. Můžete přidat až pět podmínky zobrazíte na stejnou osu x. Zadejte požadované parametry a pak použít **přidat** tlačítko Přidat novou podmínku.
+**Rozděleno podle**: rozevíracího seznamu se zobrazí všechny dostupné zařazené do kategorií sloupce (řetězce) v modelu, který můžete seskupit podle data. Můžete přidat až pět podmínky zobrazíte na stejnou osu x. Zadejte požadované parametry a potom vyberte **přidat** přidat novou podmínku.
 
   ![dvacet Explorer][20]
 
-Můžete skrýt a zobrazit prvky z panelu graf kliknutím na ikonu viditelné, jak je znázorněno níže. Dotazy můžete zcela odebrat kliknutím na červenou `X` vidíte níže.
+Můžete zobrazit a skrýt prvky v panelu graf tak, že vyberete ikonu viditelné, jak je znázorněno na následujícím obrázku. Dotazy můžete zcela odebrat kliknutím na červenou **x**.
 
   ![Průzkumník: dvacet 1][21]
 
 ## <a name="next-steps"></a>Další postup
 
-Přečtěte si [Azure TSI (preview) úložiště a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md).
-
-Přečtěte si informace o novém [čas řady modely](./time-series-insights-update-tsm.md).
+Viz následující články:
+* [Azure storage čas Series Insights ve verzi Preview a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
+* [Modelování dat](./time-series-insights-update-tsm.md)
+* [Diagnostika a řešení potíží](./time-series-insights-update-how-to-troubleshoot.md)
 
 <!-- Images -->
 [1]: media/v2-update-explorer/explorer-one.png

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 1642a9398ed9d2f0e74c03cd77990339b0a0ac03
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 02ff1822bab0abb4850541135a6ea51ea0e7119f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997705"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083559"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Kurz: Správa nákladů pomocí Cloudyn
 
@@ -53,13 +53,11 @@ Když začnete s přidělováním nákladů, první věc, kterou je potřeba ud�
 
 Pokud chcete vytvořit vlastní model přidělování nákladů, vyberte v nabídce sestavy **Costs (Náklady)** &gt; **Cost Management (Správa nákladů)** &gt; **Cost Allocation 360° (360° přidělování nákladů)**.
 
-![Výběr možnosti Cost Allocation 360° (360° přidělování nákladů)](./media/tutorial-manage-costs/cost-allocation-360.png)
+![Příklad zobrazující řídicí panel, kde vyberete Cost Allocation 360](./media/tutorial-manage-costs/cost-allocation-360.png)
 
 Na stránce **Cost Allocation 360°** (360° přidělování nákladů) vyberte **Add** (Přidat) a pak zadejte název a popis modelu nákladů. Vyberte všechny účty nebo jednotlivé účty. Pokud chcete použít jednotlivé účty, můžete vybrat několik účtů od několika poskytovatelů cloudových služeb. Dále klikněte na **Categorization** (Kategorizace) a ze zjištěných značek zvolte ty, které kategorizují vaše data nákladů. Zvolte značky (kategorie), které chcete zahrnout do svého modelu. V následujícím příkladu je vybraná značka **Unit** (Jednotka).
 
-![Příklad kategorizace modelu nákladů](./media/tutorial-manage-costs/cost-model01.png)
-
-
+![Kategorizace modelu nákladů zobrazující příklad](./media/tutorial-manage-costs/cost-model01.png)
 
 Příklad ukazuje, že 19 680 USD není zařazeno do kategorií (nemá značku).
 
@@ -97,7 +95,7 @@ Pokud chcete definovat nové pravidlo, v oblasti **Rules** (Pravidla) vytvořte 
 
 Následující obrázek ukazuje příklad pravidel vytvořených pro novou kategorii **Work-Load**:
 
-![Příklad kategorie](./media/tutorial-manage-costs/category01.png)
+![Příklad zobrazující novou kategorii pracovní zátěže](./media/tutorial-manage-costs/category01.png)
 
 ### <a name="tag-sources-and-reports"></a>Označování zdrojů a sestav
 
@@ -124,7 +122,7 @@ Metody, pomocí kterých organizace provádějí showback a chargeback, se výra
 
 Pokud chcete zobrazit výsledky přidělování nákladů, otevřete sestavu analýzy nákladů a vyberte model nákladů, který jste vytvořili. Pak přidejte seskupení podle jedné nebo několika značek vybraných v modelu nákladů.
 
-![Sestava analýzy nákladů](./media/tutorial-manage-costs/cost-analysis.png)
+![Sestava analýzy nákladů ukazuje příklad data z nového nákladů](./media/tutorial-manage-costs/cost-analysis.png)
 
 Můžete snadno vytvářet a ukládat sestavy zaměřené na konkrétní služby spotřebované konkrétními skupinami. Například můžete mít oddělení, které ve velké míře využívá virtuální počítače Azure. Můžete vytvořit sestavu s filtrem na virtuální počítače Azure, ve které se zobrazí spotřeba a náklady.
 

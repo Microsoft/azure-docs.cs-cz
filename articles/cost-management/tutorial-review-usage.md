@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: ''
+ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: a7212f64a550b3567affb1f6369ab5655dabafb1
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 928b8fd8ef076afa2c60c870fb705a9a682003d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001656"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093603"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -51,15 +51,15 @@ Pomocí průběžných sestav můžete sledovat částky utracené za využití 
 
 Toto je příklad sestavy:
 
-![Příklad sestavy](./media/tutorial-review-usage/actual-cost01.png)
+![Příklad sestavy Actual Cost Over Time](./media/tutorial-review-usage/actual-cost01.png)
 
 Sestava obsahuje veškeré výdaje za posledních 30 dnů. Pokud chcete zobrazit jenom výdaje za služby Azure, vyberte skupinu Service (Služba) a potom vyfiltrujte všechny služby Azure. Následující obrázek ukazuje vyfiltrované služby.
 
-![Vyfiltrované služby](./media/tutorial-review-usage/actual-cost02.png)
+![Příklad zobrazují se filtrované služeb Azure](./media/tutorial-review-usage/actual-cost02.png)
 
 V předchozím příkladu se od 29. 10. 2018 snížily výdaje. Příliš mnoho sloupců ale může ztížit odhalení zjevného trendu. Zobrazení sestavy můžete změnit na spojnicový nebo plošný graf, které znázorňují data jiným způsobem. Z následujícího obrázku je trend lépe patrný.
 
-![Trend v sestavě](./media/tutorial-review-usage/actual-cost03.png)
+![Příklad zobrazující klesající trend nákladů virtuálních počítačů Azure](./media/tutorial-review-usage/actual-cost03.png)
 
 Na stejném příkladu si můžete všimnout snížení nákladů na virtuální počítače Azure. Ve stejný den se začaly snižovat i náklady na ostatní služby Azure. Co tedy toto snížení výdajů způsobilo? V tomto příkladu se dokončil velký pracovní projekt, takže se snížilo i využití řady služeb Azure.
 
@@ -77,15 +77,15 @@ Sestava Cost Effective Sizing Recommendations (Doporučení nákladově efektivn
 
 V nabídce v horní části portálu klikněte na **Optimizer** > **Sizing Optimization** > **Cost Effective Sizing Recommendations** (Optimalizace > Optimalizace velikosti > Doporučení nákladově efektivního nastavení velikosti). V případě potřeby použijte filtr ke snížení počtu výsledků. Následuje příklad.
 
-![Virtuální počítače Azure](./media/tutorial-review-usage/sizing01.png)
+![Náklady na efektivní velikosti sestava doporučení pro virtuální počítače Azure](./media/tutorial-review-usage/sizing01.png)
 
 Podle tohoto příkladu je možné díky doporučením na změnu typů instancí virtuálních počítačů ušetřit 2 382 USD. První doporučení zobrazíte kliknutím na symbol plus (+) ve sloupci **Details** (Podrobnosti). Toto jsou podrobnosti prvního doporučení.
 
-![Podrobnosti doporučení](./media/tutorial-review-usage/sizing02.png)
+![Podrobnosti o doporučení zobrazující příklad](./media/tutorial-review-usage/sizing02.png)
 
 Kliknutím na symbol plus vedle položky **List of Candidates** (Seznam kandidátů) zobrazíte ID instancí virtuálních počítačů.
 
-![Seznam kandidátů](./media/tutorial-review-usage/sizing03.png)
+![Příklad zobrazující seznam kandidátů virtuálního počítače pro změnu velikosti](./media/tutorial-review-usage/sizing03.png)
 
 Pokud chcete zhlédnout výukové video o zjišťování nedostatečné efektivity využití, podívejte se na video [Optimizing VM Size in Cloudyn](https://youtu.be/1xaZBNmV704) (Optimalizace velikosti virtuálního počítače v Cloudyn).
 
@@ -99,7 +99,7 @@ Upozornění na jakékoli výdaje můžete vytvořit pomocí kterékoli sestavy 
 
 V okně Save or Schedule this report (Uložit nebo naplánovat tuto sestavu) na kartě **Scheduling** (Plánování) naplánujte, že se vám má sestava s požadovanou frekvencí zasílat e-mailem. Nezapomeňte vybrat možnost **Send via email** (Odeslat e-mailem). Součástí sestavy v e-mailu budou všechny značky, seskupení a filtry, které jste použili. Klikněte na kartu **Threshold** (Prahová hodnota) a vyberte **Actual Cost vs. Threshold** (Skutečné náklady vs. prahová hodnota). Pokud máte celkový rozpočet 20 000 USD a chcete dostat oznámení, když se náklady přiblíží polovině, vytvořte výstrahu **Red alert** (Červená výstraha) na částce 10 000 USD a výstrahu **Yellow alert** (Žlutá výstraha) na částce 9 000 USD. V zadávaných hodnotách nepoužívejte čárky. Potom vyberte počet po sobě jdoucích výstrah. Až dostanete celkový počet výstrah, který jste zadali, už vám žádné další výstrahy chodit nebudou. Uložte naplánovanou sestavu.
 
-![Příklad sestavy](./media/tutorial-review-usage/schedule-alert01.png)
+![Příklad zobrazující červené a žluté výstrahy podle útraty prahové hodnoty](./media/tutorial-review-usage/schedule-alert01.png)
 
 K vytváření výstrah můžete také vybrat metriku Cost Percentage vs. Budget (Procento nákladů z rozpočtu). Pokud použijete tuto metriku, budou se místo částek zobrazovat procenta z rozpočtu.
 

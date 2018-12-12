@@ -1,6 +1,6 @@
 ---
-title: Odesílání událostí do služby Azure Event Hubs pomocí .NET Core | Dokumentace Microsoftu
-description: Začínáme s odesíláním událostí do služby Event Hubs v .NET Core
+title: Odesílání událostí pomocí .NET Core – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek poskytuje návod pro vytvoření aplikace .NET Core, která zasílá události do služby Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9d8edaa89bf1e80f9e3d97409385161abedffae3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b645b444d62ae0f1834006a41190c417cee35963
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969239"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081689"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-core"></a>Začínáme s odesíláním zpráv do služby Azure Event Hubs v .NET Core
 Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT). Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).

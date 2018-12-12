@@ -1,21 +1,22 @@
 ---
-title: Přidání šablon vzor, a nikoli další projevy v aplikace LUIS
-titleSuffix: Azure Cognitive Services
+title: Vzory přidat přesnost
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Zjistěte, jak přidat vzor šablon v aplikacích Language Understanding (LUIS) zvyšte přesnost předpovědi.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6c15fc256a330c7de154c551c1ef4c78913f470a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: MT
+ms.openlocfilehash: 20a486a048fe6287544a9fec35a95c88f6194a66
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885882"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093178"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak přidat vzorce, a zvyšte přesnost předpovědi
 Po aplikaci LUIS obdrží koncový bod projevy, použijte [koncept](luis-concept-patterns.md) vzorů zvyšte přesnost předpovědi pro projevy, které se zjistí vzor v pořadí slov a požadované aplikace word. Vzory používání [entity](luis-concept-entity-types.md) a jejich rolí k extrakci dat pomocí specifického vzoru syntaxe. 
@@ -125,7 +126,7 @@ Vzoru můžete vytvořit ze stávající utterance buď **záměr** nebo **Entit
 
 1. Na vybraný řádek utterance, vyberte tři tečky (***...*** ) tlačítko vpravo utterance a vybrat **přidat jako vzor**.
 
-    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Snímek obrazovky projevy tabulky se vzorem přidat zvýrazní v nabídce Možnosti v")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
+    [![Snímek obrazovky projevy tabulky se zvýrazněnou možností nabídky vzorem přidat](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "projevy tabulky se zvýrazněnou možností nabídky vzorem přidat snímek obrazovky")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
 2. Upravit model podle [syntaktickými pravidly](luis-concept-patterns.md#pattern-syntax). Pokud s entitami označený utterance, kterou jste vybrali, tyto entity jsou již ve vzoru s správnou syntaxi.
 

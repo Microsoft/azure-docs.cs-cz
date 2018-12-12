@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči v C++ v Linuxu s využitím sady Speech SDK'
+title: 'Rychlý start: Rozpoznávání řeči, jazyka C++ (Linux) – hlasové služby'
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak rozpoznávat řeč v C++ v Linuxu s využitím sady Speech SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: bfb71c000eea56e705b33fb97827aead23de8cbb
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: e26190b46a79d581e5996e51bfd104f1d4beb6f6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219269"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094028"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ v Linuxu s využitím sady Speech SDK
 
@@ -132,12 +132,12 @@ Sadu SDK si stáhněte a nainstalujte následujícím způsobem:
 [!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Vyhledejte tuto ukázku ve složce `quickstart/cpp-linux`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C++](how-to-recognize-intents-from-speech-cpp.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)

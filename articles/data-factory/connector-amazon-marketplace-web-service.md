@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: bcda662790c1af72e28b8968142bab15f62e83bf
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: c58b956a0fc1899b12050daf0fbf61514ca24407
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127163"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095133"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Kopírování dat z webová služba Amazon Marketplace pomocí Azure Data Factory (Preview)
 
@@ -85,7 +85,12 @@ Webová služba Amazon Marketplace propojené služby jsou podporovány následu
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje webová služba Amazon Marketplace datové sady.
 
-Ke zkopírování dat z webová služba Amazon Marketplace, nastavte vlastnost typ datové sady na **AmazonMWSObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Ke zkopírování dat z webová služba Amazon Marketplace, nastavte vlastnost typ datové sady na **AmazonMWSObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **AmazonMWSObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -97,7 +102,8 @@ Ke zkopírování dat z webová služba Amazon Marketplace, nastavte vlastnost t
         "linkedServiceName": {
             "referenceName": "<AmazonMWS linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 
@@ -107,14 +113,14 @@ Ke zkopírování dat z webová služba Amazon Marketplace, nastavte vlastnost t
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem webová služba Amazon Marketplace.
 
-### <a name="amazonmwssource-as-source"></a>AmazonMWSSource jako zdroj
+### <a name="amazon-mws-as-source"></a>Amazon MWS jako zdroj
 
 Ke zkopírování dat z webová služba Amazon Marketplace, nastavte typ zdroje v aktivitě kopírování do **AmazonMWSSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **AmazonMWSSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

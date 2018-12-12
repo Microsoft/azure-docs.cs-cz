@@ -1,21 +1,22 @@
 ---
-title: Predikce skóre – záměrů, entity - LUIS
-titleSuffix: Azure Cognitive Services
+title: Predikce skóre
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Predikce skóre označuje do jaké míry jistoty, LUIS má pro výsledky předpovědí.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: e1582da9a8fea4137d40b3a3855ead467dbbb548
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: MT
+ms.openlocfilehash: ca920a3c46a336b66a7238eeca83e3389221033a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264382"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087639"
 ---
 # <a name="prediction-score"></a>Skóre předpovědi
 Predikce skóre označuje do jaké míry jistoty, LUIS má pro výsledky předpovědí. 

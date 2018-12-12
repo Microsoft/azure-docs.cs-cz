@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7575d55f65598d39a8ffe0c3802cf11fa7470180
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 56275a2d37c9b1dc92aad973507204295fbfe06f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837779"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087656"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Prohledávání protokolů skupiny počítačů v Log Analytics
 
@@ -82,7 +82,7 @@ Importu skupin v nabídce uvádí počet počítačů s členstvím skupiny zjis
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
 Při konfiguraci Log Analytics pro import členství v kolekcích Configuration Manageru se vytvoří skupina počítačů pro každou kolekci.  Informace o členství v kolekci se načte každé tři hodiny zachovat aktuální skupiny počítačů. 
 
-Před importem kolekcí nástroje Configuration Manager, je nutné [propojení Configuration Manageru k Log Analytics](../../log-analytics/log-analytics-sccm.md).  Potom můžete nakonfigurovat import ze služby Log Analytics **upřesňující nastavení** na webu Azure Portal.  Vyberte **skupiny počítačů**, **SCCM**a potom **členství v kolekcích Configuration Manageru Import**.  Není nutná žádná další konfigurace.
+Před importem kolekcí nástroje Configuration Manager, je nutné [propojení Configuration Manageru k Log Analytics](../../azure-monitor/platform/collect-sccm.md).  Potom můžete nakonfigurovat import ze služby Log Analytics **upřesňující nastavení** na webu Azure Portal.  Vyberte **skupiny počítačů**, **SCCM**a potom **členství v kolekcích Configuration Manageru Import**.  Není nutná žádná další konfigurace.
 
 ![Skupiny počítačů z SCCM](media/computer-groups/configure-sccm.png)
 

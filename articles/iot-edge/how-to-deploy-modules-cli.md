@@ -1,5 +1,5 @@
 ---
-title: Nasadit moduly Azure IoT Edge (CLI) | Dokumentace Microsoftu
+title: Nasadit moduly z příkazového řádku – Azure IoT Edge | Dokumentace Microsoftu
 description: Použití rozšíření IoT pro Azure CLI můžete nasadit moduly do zařízení IoT Edge
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8f39befbe1a329091da19eeba14a8dcc749fa93
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: f9aa3fff8750dc20053072c939a6db9362a2b0d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564982"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093569"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Nasadit moduly Azure IoT Edge pomocí Azure CLI
 
@@ -117,7 +118,7 @@ Chcete-li použít konfiguraci pro zařízení IoT Edge, použijte následujíc�
 
 Parametr id zařízení rozlišuje velká a malá písmena. Obsahu parametr odkazuje na nasazení manifestu soubor, který jste uložili. 
 
-   ![Sada modulů](./media/how-to-deploy-cli/set-modules.png)
+   ![AZ iot edge sada modulů výstupu](./media/how-to-deploy-cli/set-modules.png)
 
 ## <a name="view-modules-on-your-device"></a>Zobrazení modulů ve vašem zařízení
 
@@ -131,7 +132,7 @@ Zobrazení modulů v zařízení IoT Edge:
 
 Parametr id zařízení rozlišuje velká a malá písmena.
 
-   ![Seznam modulů](./media/how-to-deploy-cli/list-modules.png)
+   ![AZ iot hub modul identity výstupu](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Další postup
 

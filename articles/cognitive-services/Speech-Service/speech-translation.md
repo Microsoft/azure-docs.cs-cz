@@ -1,21 +1,22 @@
 ---
-title: O překladu řeči
+title: O překlad řeči – hlasové služby
 titlesuffix: Azure Cognitive Services
-description: Přehled možností pro překlad řeči
+description: Rozhraní Speech API služby můžete přidat začátku do konce, v reálném čase, vícejazykového překlad řeči do aplikací, nástroje a zařízení. Stejného rozhraní API můžete použít pro překlad řeči řeči a rozpoznávání řeči na text.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 9d94105377597ca8e79cc43ed0903371e185d510
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49469131"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086704"
 ---
 # <a name="about-the-speech-translation-api"></a>O rozhraní API pro překlad řeči
 

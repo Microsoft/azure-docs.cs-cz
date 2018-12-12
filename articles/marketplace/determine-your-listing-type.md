@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6d05323eb08a69ef4b76dbbf35217d80b9b2dc3c
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 0ad4fef9dd67ed0bf2bc9a3c66e26fc111526b90
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261067"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081536"
 ---
 # <a name="determine-your-publishing-option"></a>Určení publikování možnost
 Přímo na požadavky zakládající nárok i na webu marketplace výhody GTM souvisí možnost publikování, který jste vybrali pro vaši nabídku. Důležitější je výběr publikování možnost a typ nabídky na portál Cloud Partner definuje interakci uživatele v rámci vaší nabídky na webu marketplace.
 
 Možnosti publikování můžete povolit výběrem typu nabídky a následným vytvořením nabídky na webu marketplace na portálu partnerů cloudu. K tomu budete potřebovat následující klíče marketplace koncepce: Možnosti publikování nabízejí typy konfigurace a volání k akci, která budou řídit, jak a kde nabídky je uveden v marketplace prodejní místa.
 
-![](https://github.com/ellacroi/azure-docs-pr/blob/options-table/articles/marketplace/media/marketplace-publishers-guide/storefronts_options_table.png?raw=true)
+![](./media/marketplace-publishers-guide/storefronts_options_table.png)
 
 >[!Note]
 >Výše uvedené tabulce popisuje, jak vaše řešení nebo služba mapování z prodejních míst, možnost publikování a typ nabídky se vaší nabídky na webu marketplace.

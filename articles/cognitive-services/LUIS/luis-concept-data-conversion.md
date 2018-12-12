@@ -1,23 +1,24 @@
 ---
-title: Koncepce převodu dat při LUIS – Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Převod dat
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Zjistěte, jak lze změnit projevy před predikce v Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 9324f7b4f7bed844f16d17b8960878892be4b165
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: dc9040661eee4cafc655deb2436130f1abcfcfd5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638388"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094793"
 ---
-# <a name="data-conversion-concepts-in-luis"></a>Koncepce převodu dat při LUIS
+# <a name="convert-data-format-of-utterances"></a>Převést formát data projevy
 LUIS pomocí služby Cognitive Services řeči převést projevy projevy mluvené slovo na text projevy před předpovědi. 
 
 ## <a name="speech-to-intent-conversion-concepts"></a>Převod řeči na záměr převod koncepty

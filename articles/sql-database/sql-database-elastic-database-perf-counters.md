@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/31/2018
-ms.openlocfilehash: d4ecfe700c90beb94455e3607cee4ea30227bd0e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f98c09a7e51fa729ef4a940e5f3c03de55d8dfd2
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166214"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52875276"
 ---
 # <a name="performance-counters-for-shard-map-manager"></a>Čítače výkonu pro správce mapování horizontálních oddílů
 Můžete zaznamenávat výkon [správce mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md), zvláště při použití [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md). Čítače jsou vytvořeny metodami Microsoft.Azure.SqlDatabase.ElasticScale.Client třídy.  
@@ -31,7 +31,7 @@ Můžete zaznamenávat výkon [správce mapování horizontálních oddílů](sq
 * K vytvoření instance čítače výkonu a aktualizaci čítače, musí být uživatel členem **správci** nebo **Performance Monitor Users** skupiny. 
 
 ## <a name="create-performance-category-and-counters"></a>Vytvoření kategorie výkonu a čítače
-K vytvoření čítače, zavolejte metodu CreatePeformanceCategoryAndCounters [ShardMapManagmentFactory třídy](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Metodu lze spustit pouze správce: 
+K vytvoření čítače, zavolejte metodu CreatePeformanceCategoryAndCounters [ShardMapManagementFactory třídy](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Metodu lze spustit pouze správce: 
 
     ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 

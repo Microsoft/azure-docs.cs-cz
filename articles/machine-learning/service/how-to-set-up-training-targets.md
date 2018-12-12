@@ -1,5 +1,6 @@
 ---
-title: Nastavení cílových výpočetních prostředí pro trénování modelu s využitím služby Azure Machine Learning | Dokumentace Microsoftu
+title: Vytvoření a použití cílových výpočetních prostředí pro trénování modelu
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak vybrat a nakonfigurovat prostředí školení (cílových výpočetních prostředí) použít k trénování modelů strojového učení. Služba Azure Machine Learning umožňuje snadno přepněte školení prostředí. Spusťte místně školení a pokud je potřeba škálovat na více systémů, přepněte do cílové výpočetní prostředí založené na cloudu.
 services: machine-learning
 author: heatherbshapiro
@@ -10,14 +11,15 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
-ms.openlocfilehash: 07ea61ffe3ffc17cd255b826e3506ffe2b1ce9cd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 1a6533c1ec25eb8500f67cb98494463d7daf752b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017718"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080091"
 ---
-# <a name="select-and-use-a-compute-target-to-train-your-model"></a>Vyberte a použijte cílové výpočetní prostředí k natrénování modelu
+# <a name="set-up-compute-targets-for-model-training"></a>Nastavení cílových výpočetních prostředí pro trénování modelu
 
 Se službou Azure Machine Learning můžete trénování modelu v různých výpočetních prostředků. Tyto výpočetní prostředky, volá __cílových výpočetních prostředí__, může být místní nebo v cloudu. V tomto dokumentu se dozvíte o cílových podporovaných výpočetních prostředí a jejich použití.
 
@@ -249,16 +251,24 @@ Následující kroky konfigurace Data virtuálního počítače VĚDY jako cíl 
 1. Připojit existující virtuální počítač jako cílové výpočetní prostředí, musí poskytovat plně kvalifikovaný název domény, přihlašovací jméno a heslo pro virtuální počítač.  V tomto příkladu nahraďte ```<fqdn>``` s veřejný plně kvalifikovaný název domény virtuálního počítače nebo veřejnou IP adresu. Nahraďte ```<username>``` a ```<password>``` se heslo pro virtuální počítač a uživatele SSH:
 
     ```python
-    from azureml.core.compute import RemoteCompute
+    from azureml.core.compute import RemoteCompute, ComputeTarget
+    
+    # Create compute config.
+    attach_config = RemoteCompute.attach_configuration(address = "ipaddress",
+                                                       ssh_port=22,
+                                                       username='<username>',
+                                                       password="<password>")
+    # If using SSH instead of a password, use this:
+    #                                                  ssh_port=22,
+    #                                                   username='<username>',
+    #                                                   password=None,
+    #                                                   private_key_file="path-to-file",
+    #                                                   private_key_passphrase="passphrase")
 
-    dsvm_compute = RemoteCompute.attach(ws,
-                                    name="attach-dsvm",
-                                    username='<username>',
-                                    address="<fqdn>",
-                                    ssh_port=22,
-                                    password="<password>")
+    # Attach the compute
+    compute = ComputeTarget.attach(ws, "attach-dsvm", attach_config)
 
-    dsvm_compute.wait_for_completion(show_output=True)
+    compute.wait_for_completion(show_output=True)
 
 1. Create a configuration for the DSVM compute target. Docker and conda are used to create and configure the training environment on DSVM:
 
@@ -303,25 +313,15 @@ Azure Databricks je prostředí založené na Apache Spark v cloudu Azure. Můž
 Připojení Azure Databricks jako cílové výpočetní prostředí, musíte používat sadu SDK Azure Machine Learning a zadejte následující informace:
 
 * __Název COMPUTE__: název, kterou chcete přiřadit na tento výpočetní prostředek.
-* __ID prostředku__: ID prostředku pracovního prostoru Azure Databricks. Následující text je příklad formátu pro tuto hodnotu:
-
-    ```text
-    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.Databricks/workspaces/<databricks-workspace-name>
-    ```
-
-    > [!TIP]
-    > Pokud chcete získat ID prostředku, použijte následující příkaz rozhraní příkazového řádku Azure. Nahraďte `<databricks-ws>` s názvem vašeho pracovního prostoru Databricks:
-    > ```azurecli-interactive
-    > az resource list --name <databricks-ws> --query [].id
-    > ```
-
+* __Název pracovního prostoru Databricks__: název pracovního prostoru Azure Databricks.
 * __Přístupový token__: přístupový token pro ověření do Azure Databricks. K vygenerování přístupového tokenu, najdete v článku [ověřování](https://docs.azuredatabricks.net/api/latest/authentication.html) dokumentu.
 
 Následující kód ukazuje, jak se připojit jako cílové výpočetní prostředí Azure Databricks:
 
 ```python
 databricks_compute_name = os.environ.get("AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
-databricks_resource_id = os.environ.get("AML_DATABRICKS_RESOURCE_ID", "<databricks_resource_id>")
+databricks_workspace_name = os.environ.get("AML_DATABRICKS_WORKSPACE", "<databricks_workspace_name>")
+databricks_resource_group = os.environ.get("AML_DATABRICKS_RESOURCE_GROUP", "<databricks_resource_group>")
 databricks_access_token = os.environ.get("AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
 
 try:
@@ -330,13 +330,17 @@ try:
 except ComputeTargetException:
     print('compute not found')
     print('databricks_compute_name {}'.format(databricks_compute_name))
-    print('databricks_resource_id {}'.format(databricks_resource_id))
+    print('databricks_workspace_name {}'.format(databricks_workspace_name))
     print('databricks_access_token {}'.format(databricks_access_token))
-    databricks_compute = DatabricksCompute.attach(
-             workspace=ws,
-             name=databricks_compute_name,
-             resource_id=databricks_resource_id,
-             access_token=databricks_access_token
+
+    # Create attach config
+    attach_config = DatabricksCompute.attach_configuration(resource_group = databricks_resource_group,
+                                                           workspace_name = databricks_workspace_name,
+                                                           access_token = databricks_access_token)
+    databricks_compute = ComputeTarget.attach(
+             ws,
+             databricks_compute_name,
+             attach_config
          )
     
     databricks_compute.wait_for_completion(True)
@@ -354,23 +358,15 @@ Azure Data Lake Analytics je platforma analýzy velkých objemů dat v cloudu Az
 Připojit Data Lake Analytics jako cílové výpočetní prostředí, musíte používat sadu SDK Azure Machine Learning a zadejte následující informace:
 
 * __Název COMPUTE__: název, kterou chcete přiřadit na tento výpočetní prostředek.
-* __ID prostředku__: ID prostředku účtu Data Lake Analytics. Následující text je příklad formátu pro tuto hodnotu:
-
-    ```text
-    /subscriptions/<your_subscription>/resourceGroups/<resource-group-name>/providers/Microsoft.DataLakeAnalytics/accounts/<datalakeanalytics-name>
-    ```
-
-    > [!TIP]
-    > Pokud chcete získat ID prostředku, použijte následující příkaz rozhraní příkazového řádku Azure. Nahraďte `<datalakeanalytics>` s názvem název účtu Data Lake Analytics:
-    > ```azurecli-interactive
-    > az resource list --name <datalakeanalytics> --query [].id
-    > ```
+* __Skupina prostředků__: Skupina prostředků obsahující účet Data Lake Analytics.
+* __Název účtu__: název účtu Data Lake Analytics.
 
 Následující kód ukazuje, jak se připojit Data Lake Analytics jako cílové výpočetní prostředí:
 
 ```python
 adla_compute_name = os.environ.get("AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
-adla_resource_id = os.environ.get("AML_ADLA_RESOURCE_ID", "<adla_resource_id>")
+adla_resource_group = os.environ.get("AML_ADLA_RESOURCE_GROUP", "<adla_resource_group>")
+adla_account_name = os.environ.get("AML_ADLA_ACCOUNT_NAME", "<adla_account_name>")
 
 try:
     adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
@@ -378,11 +374,16 @@ try:
 except ComputeTargetException:
     print('compute not found')
     print('adla_compute_name {}'.format(adla_compute_name))
-    print('adla_resource_id {}'.format(adla_resource_id))
-    adla_compute = AdlaCompute.attach(
-             workspace=ws,
-             name=adla_compute_name,
-             resource_id=adla_resource_id
+    print('adla_resource_id {}'.format(adla_resource_group))
+    print('adla_account_name {}'.format(adla_account_name))
+    # create attach config
+    attach_config = AdlaCompute.attach_configuration(resource_group = adla_resource_group,
+                                                     account_name = adla_account_name)
+    # Attach ADLA
+    adla_compute = ComputeTarget.attach(
+             ws,
+             adla_compute_name,
+             attach_config
          )
     
     adla_compute.wait_for_completion(True)
@@ -410,14 +411,17 @@ Konfigurace HDInsight jako cílové výpočetní prostředí, musíte zadat pln�
 > ![Snímek obrazovky Přehled clusteru HDInsight s zvýrazněnou položkou adresy URL](./media/how-to-set-up-training-targets/hdinsight-overview.png)
 
 ```python
-from azureml.core.compute import HDInsightCompute
+from azureml.core.compute import HDInsightCompute, ComputeTarget
 
 try:
     # Attaches a HDInsight cluster as a compute target.
-    HDInsightCompute.attach(ws,name = "myhdi",
-                            address = "<fqdn>",
-                            username = "<username>",
-                            password = "<password>")
+    attach_config = HDInsightCompute.attach_configuration(address = "fqdn-or-ipaddress",
+                                                          ssh_port = 22,
+                                                          username = "username",
+                                                          password = None, #if using ssh key
+                                                          private_key_file = "path-to-key-file",
+                                                          private_key_phrase = "key-phrase")
+    compute = ComputeTarget.attach(ws, "myhdi", attach_config)
 except UserErrorException as e:
     print("Caught = {}".format(e.message))
     print("Compute config already attached.")

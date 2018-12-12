@@ -1,21 +1,22 @@
 ---
-title: Plánování aplikací Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
+title: Plánování aplikace
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Popisují relevantní aplikaci záměry a entity a pak vytvořte plány aplikace v Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: diberry
-ms.openlocfilehash: e8e6c32eca932803acfe0e7854de885e7ab129fc
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: e14b9f2930ed9c170f31bd654829efe3b5a99446
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267660"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091280"
 ---
 # <a name="plan-your-luis-app"></a>Naplánování aplikace LUIS
 
@@ -77,10 +78,10 @@ Seznam entit je explicitně zadaného seznamu hodnot. Každá hodnota se sklád�
 
 Zobrazit [extrakce dat](luis-concept-data-extraction.md#list-entity-data) Další informace o extrahování seznam entit z koncového bodu odpověď na dotaz JSON. Vyzkoušejte to [rychlý Start](luis-quickstart-intent-and-list-entity.md) získat další informace o tom, jak používat seznam entit.
 
-### <a name="regular-expression-entity"></a>Regulární výraz entity
+### <a name="regular-expression-entity"></a>Entiay regulárního výrazu
 Entita regulárního výrazu umožňuje LUIS se extrahovat správně formátovaná data ze utterance založené na regulární výraz.
 
-![Regulární výraz entity](./media/luis-plan-your-app/regex-entity.png)
+![Entiay regulárního výrazu](./media/luis-plan-your-app/regex-entity.png)
 
 Zobrazit [extrakce dat](luis-concept-data-extraction.md#regular-expression-entity-data) Další informace o extrahování entity regulárního výrazu z koncového bodu odpověď na dotaz JSON. Zkuste [rychlý Start](luis-quickstart-intents-regex-entity.md) získat další informace o tom, jak používat entity regulární výraz.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 860f1181a84ef87fe0e66c2746b76b800a326354
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 86fcec0321e8f1b92fdc554532cb8f949b1b1569
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496203"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081383"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Informace o službě VPN gateway pro Azure Stack
 
@@ -108,9 +108,9 @@ Následující tabulka ukazuje typy brány a odhadovanou agregovanou propustnost
 
 |   | Propustnost brány sítě VPN *(1)* | Tunelových propojení IPsec brány sítě VPN maximální *(2)* |
 |-------|-------|-------|
-|**Základní SKU** ***(3)***    | 100 Mb/s  | 10    |
-|**Standardní SKU**       | 100 Mb/s  | 10    |
-|**Skladové položky High-Performance** | 200 Mb/s    | 5 |
+|**Základní SKU** ***(3)***    | 100 Mb/s  | 20    |
+|**Standardní SKU**       | 100 Mb/s  | 20    |
+|**Skladové položky High-Performance** | 200 Mb/s    | 10    |
 
 **Poznámky k tabulce:**
 

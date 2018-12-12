@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 19d448634998f01505c0e274377e1aa8cd788728
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: caab6083bc12ffafe669c86bea4824ea0b31339a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993799"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079666"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Sledování dat shromážděných službou Azure Monitor
 [Azure Monitor](../../azure-monitor/overview.md) je služba, která vám pomůže sledovat vaše aplikace a prostředky, které spoléhají na to. Centrální pro tuto funkci je úložiště dat a další data z monitorovaných prostředků. Tento článek poskytuje úplný popis toho, jak tato data se ukládají a používat Azure Monitor.
@@ -138,7 +138,7 @@ Shromážděné službou Azure Monitor protokoly se ukládají ve službě Log A
 Log Analytics může shromažďovat data z široké škály zdrojů i v rámci Azure i z místních prostředků. Zdroje dat zapsaných do Log Analytics patří následující:
 
 - [Protokoly aktivit](../../azure-monitor/platform/collect-activity-logs.md) z prostředků Azure, které obsahují informace o své konfiguraci a stavu a [diagnostické protokoly](../../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md) , které poskytují přehled o jejich operace.
-- Agenty na [Windows](../../log-analytics/log-analytics-windows-agent.md) a [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) virtuálních počítačů, které odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) , který můžete nakonfigurovat.
+- Agenty na [Windows](../../log-analytics/log-analytics-windows-agent.md) a [Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) virtuálních počítačů, které odesílají telemetrii z hostovaného operačního systému a aplikací do Log Analytics podle [zdroje dat](../../azure-monitor/platform/agent-data-sources.md) , který můžete nakonfigurovat.
 - Aplikace data shromážděná pomocí [Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Data a poskytují přehled o konkrétní aplikaci nebo službu [řešení monitorování](../insights/solutions.md) nebo funkce, jako jsou přehledy o kontejnerech, Insights virtuálního počítače nebo Insights skupiny prostředků.
 - Shromážděná data zabezpečení [Azure Security Center](https://docs.microsoft.com/azure/security-center/).

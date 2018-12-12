@@ -4,17 +4,17 @@ description: Tento článek vás provede postupem vytvoření definice zásady p
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ee22208f9f55840b80392ef2b0a9fce0da4c4db7
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
-ms.translationtype: MT
+ms.openlocfilehash: a48a3b8df88a434b59ff200ec6d36fb32ee7122b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584685"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079258"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure
 
@@ -27,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
 
-V tomto rychlém startu vytvoříte přiřazení zásad a přiřadíte definici zásady pro *audit virtuálních počítačů bez spravovaných disků*.
+V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte *Audit virtuálních počítačů, které nepoužívají spravované disky* definice zásady.
 
 1. Spusťte službu Azure Policy na webu Azure Portal tak, že kliknete na **Všechny služby** a pak vyhledáte a vyberete **Zásady**.
 
@@ -53,7 +53,7 @@ V tomto rychlém startu vytvoříte přiřazení zásad a přiřadíte definici 
    - Použít značku a její hodnotu
    - Vyžadovat SQL Server verze 12.0
 
-   Úplný seznam všech dostupných předdefinovaných zásad najdete v tématu týkajícím se [ukázek zásad](./samples/index.md).
+   Částečný seznam dostupných předdefinovaných zásad najdete v tématu [ukázky zásad](./samples/index.md).
 
 1. Prohledejte seznam definic zásad a najděte definici *Audit virtuálních počítačů, které nepoužívají spravované disky*. Klikněte na tuto zásadu a potom na **Vybrat**.
 
@@ -61,7 +61,7 @@ V tomto rychlém startu vytvoříte přiřazení zásad a přiřadíte definici 
 
 1. Do pole **Název přiřazení** se automaticky vyplní název vybrané zásady, který však můžete změnit. Pro účely tohoto příkladu ponechte *Audit virtuálních počítačů, které nepoužívají spravované disky*. Volitelně můžete přidat také **Popis**. Popis obsahuje podrobnosti o tomto přiřazení zásady. Pole **Přiřadil** se automaticky vyplní podle toho, kdo je přihlášený. Toto pole je volitelné, takže do něj můžete zadávat vlastní hodnoty.
 
-1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. Toto políčko _musí_ být zaškrtnuté, pokud přiřazovaná zásada nebo iniciativa zahrnuje zásadu s účinkem [deployIfNotExists](./concepts/effects.md#deployifnotexists). Protože to pro zásadu použitou v tomto kurzu Rychlý start neplatí, ponechte toto políčko nezaškrtnuté. Další informace najdete v tématech věnovaných [spravovaným identitám](../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](./how-to/remediate-resources.md#how-remediation-security-works).
+1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. Toto políčko _musí_ být vráceny, pokud obsahuje zásady nebo iniciativa zásad s [deployIfNotExists](./concepts/effects.md#deployifnotexists) vliv. Jak nepodporuje zásady používané pro tento rychlý start ponechte prázdné. Další informace najdete v tématech věnovaných [spravovaným identitám](../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](./how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Klikněte na **Přiřadit**.
 
@@ -69,11 +69,11 @@ Nyní jste připraveni identifikovat prostředky, které nedodržují předpisy,
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
 
-Na levé straně stránky vyberte **Dodržování předpisů** a vyhledejte přiřazení zásady **Audit virtuálních počítačů, které nepoužívají spravované disky**, které jste vytvořili.
+Vyberte **dodržování předpisů** v levé části stránky. Vyhledejte **Audit virtuálních počítačů, které nepoužívají spravované disky** přiřazení zásady, které jste vytvořili.
 
 ![Dodržování zásad](./media/assign-policy-portal/policy-compliance.png)
 
-Pokud nějaké stávající prostředky nedodržují předpisy tohoto nového přiřazení, zobrazí se na kartě **Nekompatibilní prostředky**.
+Pokud existují nějaké stávající prostředky, které nedodržují předpisy tohoto nového přiřazení, zobrazí se pod **nekompatibilní prostředky**.
 
 Pokud se napříč stávajícími prostředky vyhodnotí nějaká podmínka a zjistí hodnotu True, takové prostředky se označí jako nekompatibilní s příslušnou zásadou. Následující tabulka ukazuje, jak různé účinky zásad pracují s vyhodnocením podmínek pro zjištění výsledného stavu dodržování předpisů. Přestože se logika vyhodnocení na webu Azure Portal nezobrazuje, výsledné stavy dodržování předpisů se zobrazují. Výsledný stav je buď kompatibilní, nebo nekompatibilní.
 
@@ -88,7 +88,7 @@ Pokud se napříč stávajícími prostředky vyhodnotí nějaká podmínka a zj
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další příručky v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími kurzy, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujících kroků odstraňte všechny prostředky vytvořené tímto rychlým startem na portálu Azure Portal.
+Odebrat přiřazení vytvořené, postupujte podle těchto kroků:
 
 1. Na levé straně stránky služby Azure Policy vyberte **Dodržování předpisů** (nebo **Přiřazení**) a vyhledejte přiřazení zásady **Audit virtuálních počítačů, které nepoužívají spravované disky**, které jste vytvořili.
 
@@ -98,9 +98,9 @@ Další příručky v této kolekci vycházejí z tohoto rychlého startu. Pokud
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto rychlém startu jste přiřadili definici zásady k oboru prostředků a vyhodnotili jste její sestavu dodržování předpisů. Definice zásady zajišťuje, že všechny prostředky v příslušném oboru jsou kompatibilní, a určuje ty, které nejsou.
+V tomto rychlém startu jste přiřadili definici zásady k oboru prostředků a vyhodnotili jste její sestavu dodržování předpisů. Definice zásad ověří, že všechny prostředky v příslušném oboru jsou kompatibilní a určuje ty, které nejsou.
 
-Další informace o přiřazování zásad pro zajištění, aby **budoucí** vytvořené prostředky dodržovaly předpisy, najdete v tomto kurzu:
+Další informace o přiřazování zásad pro ověření, že nové prostředky jsou kompatibilní, i nadále najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
 > [Vytváření a správa zásad](./tutorials/create-and-manage.md)

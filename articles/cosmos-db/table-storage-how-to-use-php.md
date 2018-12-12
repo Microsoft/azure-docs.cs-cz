@@ -1,21 +1,20 @@
 ---
-title: Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP | Microsoft Docs
+title: Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 7ca8e786a8284fd958948e313b79e34a6f502120
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
-ms.translationtype: HT
+ms.openlocfilehash: cf8cc380caec1475ad831cfd3e0e9aa5b168e8de
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918311"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095291"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -53,7 +52,7 @@ V této příručce budete používat funkce služby Table Storage nebo Azure Co
   }
 }
 ```
-2. Do kořenového adresáře stáhněte soubor [composer.phar](http://getcomposer.org/composer.phar). 
+2. Do kořenového adresáře stáhněte soubor [composer.phar](https://getcomposer.org/composer.phar). 
 3. Otevřete příkazový řádek a spusťte následující příkaz v kořenovém adresáři vašeho projektu:
 ```
 php composer.phar install
@@ -502,7 +501,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Seznámili jste se se základy služby Azure Table Storage a Azure Cosmos DB. Další informace najdete na následujících odkazech.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
@@ -510,7 +509,7 @@ Seznámili jste se se základy služby Azure Table Storage a Azure Cosmos DB. Da
 * [Centrum pro vývojáře PHP](https://azure.microsoft.com/develop/php/)
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
-[require_once]: http://php.net/require_once
+[require_once]: https://php.net/require_once
 [table-service-timeouts]: https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations
 
 [table-data-model]: https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model

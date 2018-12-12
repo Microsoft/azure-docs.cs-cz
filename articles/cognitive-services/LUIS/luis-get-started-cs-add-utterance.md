@@ -1,21 +1,22 @@
 ---
-title: Rychlý start pro C# – změna modelu a trénování aplikace LUIS
-titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu pro C# přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat. Ukázkové promluvy jsou konverzačním textem uživatele namapovaným na záměr. Tím, že poskytnete ukázkové promluvy pro záměry, naučíte službu LUIS, které typy uživatelem zadaného textu patří do kterého záměru.
+title: Změna, trénovat na základě modelu aplikaceC#
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: V tomto rychlém startu pro C# přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 82cc5d940a48cfca33a4ad9e160905df34f86454
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 807e90216d8fff8453f7fa8596926483102fd258
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960460"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087809"
 ---
 # <a name="quickstart-change-model-using-c"></a>Rychlý start: Změna modelu pomocí C#
 
@@ -56,7 +57,7 @@ Projekt sady Visual Studio potřebuje **JsonFormatterPlus** a **CommandLineParse
 ### <a name="write-the-c-code"></a>Psaní kódu jazyka C#
 Soubor **Program.cs** by měl vypadat takto:
 
-```CSharp
+```C#
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,7 +127,7 @@ Kód vytvořte v sadě Visual Studio.
 
 V adresáři /bin/Debug projektu spusťte aplikaci v příkazovém řádku. 
 
-```CMD
+```console
 ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
 ```
 

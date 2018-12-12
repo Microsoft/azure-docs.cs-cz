@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zařízení Azure IoT Edge pro proxy servery sítě | Dokumentace Microsoftu
+title: Konfigurace zařízení pro síť – proxy služby Azure IoT Edge | Dokumentace Microsoftu
 description: Postup konfigurace modulu runtime Azure IoT Edge a všech modulů IoT Edge přístupem k Internetu pro komunikaci přes proxy server.
 author: kgremban
 manager: ''
@@ -8,12 +8,13 @@ ms.date: 11/01/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 72855058c5e8294eece55f8dbcdc501025c9aabf
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.custom: seodec18
+ms.openlocfilehash: a7d32c98b77568e02fa14b70e969eeb254989062
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913219"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100445"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge pro komunikaci přes proxy server
 
@@ -173,7 +174,7 @@ Pokud chcete nakonfigurovat agenta Edge a moduly Centrum Edge, vyberte **konfigu
 
 Přidat **https_proxy** proměnnou prostředí, aby Edge agent a definice modulu Edge hub. Pokud jste zahrnuli **UpstreamProtocol** proměnnou prostředí v souboru config.yaml na zařízení IoT Edge, přidejte ho do definice modulu agenta Edge příliš. 
 
-![Nastavení proměnných prostředí](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
+![Nastavte proměnnou prostředí https_proxy](./media/how-to-configure-proxy-support/edgehub-environmentvar.png)
 
 Všechny moduly, které přidáte do manifestu nasazení postupují stejným způsobem. Na stránce kde nastavit název modulu a bitovou kopii je oddíl proměnné prostředí.
 

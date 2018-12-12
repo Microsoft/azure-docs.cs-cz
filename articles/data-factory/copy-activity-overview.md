@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: df1fbcb09310985b7ca9d9fd2e7a987fc6e2b2dc
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 1958d694ab87d635624884b43486761269e37c37
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457050"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082642"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování ve službě Azure Data Factory
 
@@ -173,6 +173,7 @@ Podrobnosti provádění aktivity kopírování a výkonové charakteristiky se 
 | DataRead | Velikost dat číst ze zdroje | Hodnota Int64 v **bajtů** |
 | DataWritten | Velikost dat zapsaných do jímky | Hodnota Int64 v **bajtů** |
 | filesRead | Počet souborů, které jsou kopírovány při kopírování dat z úložiště souborů. | Hodnota Int64 (žádná jednotka) |
+| fileScanned | Počet souborů, které se má zkontrolovat ze zdrojového souboru úložiště. | Hodnota Int64 (žádná jednotka) |
 | filesWritten | Počet souborů, které jsou kopírovány při kopírování dat do služby file storage. | Hodnota Int64 (žádná jednotka) |
 | rowsCopied | Počet řádků, které jsou kopírovány (není k dispozici pro binární kopie). | Hodnota Int64 (žádná jednotka) |
 | rowsSkipped | Počet nekompatibilních řádků se přeskakuje. Funkci můžete zapnout pomocí nastavení "enableSkipIncompatibleRow" na hodnotu true. | Hodnota Int64 (žádná jednotka) |

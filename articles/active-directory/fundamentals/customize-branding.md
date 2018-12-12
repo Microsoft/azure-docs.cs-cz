@@ -1,6 +1,6 @@
 ---
-title: Postup přidání brandingu na přihlašovací stránku služby Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak přidat branding vaší organizace na přihlašovací stránku služby Azure Active Directory.
+title: Přidat branding vaší organizace přihlašovací stránku – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak přidat branding vaší organizace na přihlašovací stránku služby Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
-custom: it-pro
-ms.openlocfilehash: cdf1c8bfb8e623956d50975f36faafe10b534d06
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 0ce0d42e37bcc5c936798947bacf0232891c24ab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367556"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090308"
 ---
-# <a name="how-to-add-branding-to-your-azure-active-directory-sign-in-page"></a>Postupy: Přidání brandingu na přihlašovací stránku služby Azure Active Directory
+# <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidat branding vaší organizace Azure Active Directory přihlašovací stránky
 Pomocí loga vaší organizace a vlastní barevná schémata poskytují konzistentní vzhled a představu o přihlašovacích stránek služby Azure Active Directory (Azure AD). Vaše přihlašovací stránky se zobrazí při přihlášení uživatele k vaší organizaci webové aplikace, jako je Office 365, který používá Azure AD jako zprostředkovatele identity.
 
 >[!Note]
->Přidání vlastní značka vyžaduje použití Azure Active Directory Premium 1, Premium 2 nebo edice Basic nebo máte licenci Office 365. Další informace o licencování a edicích, naleznete v tématu [registrace Azure AD Premium](active-directory-get-started-premium.md).<br><br>Edice Premium a Basic služby Azure AD jsou zákazníkům v Číně dostupné prostřednictvím celosvětové instance služby Azure Active Directory. Ve službě Azure provozovaný společností 21Vianet v Číně nejsou aktuálně podporovány edice Azure AD Premium a Basic. Další informace, kontaktujte nás pomocí [fóru služby Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/).
+>Přidání vlastní značka vyžaduje použití Azure Active Directory Premium 1, Premium 2 nebo edice Basic nebo máte licenci Office 365. Další informace o licencování a edicích, naleznete v tématu [registrace Azure AD Premium](active-directory-get-started-premium.md).<br><br>Edice Premium a Basic služby Azure AD jsou zákazníkům v Číně dostupné prostřednictvím celosvětové instance služby Azure Active Directory. Edice Premium a Basic služby Azure AD v současnosti nejsou podporované ve službě Azure provozované v Číně společností 21Vianet. Můžete se na nás obrátit na [fóru služby Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/), kde se dozvíte další informace.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Přizpůsobit přihlašovací stránku Azure AD
 Můžete přizpůsobit vaší služby Azure AD přihlašovacích stránek služby, které se zobrazí, když se uživatelé přihlásí do aplikace specifickým pro tenanta vaší organizace, jako například [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), nebo při předání proměnné domény, jako je například [ *https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com).
@@ -34,7 +34,7 @@ Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do
 > Všechny značky elementů jsou volitelné. Například pokud zadáte banner s logem se žádný obrázek na pozadí, přihlašovací stránka zobrazí vaše logo s výchozí obrázek na pozadí z cílové lokality (třeba Office 365).<br><br>Kromě toho branding přihlašovací stránky se nepřenáší na osobní účty Microsoft. Pokud uživatelé nebo obchodní hosté přihlásí pomocí osobního účtu Microsoft, přihlašovací stránka nebude se Branding vaší organizace.
 
 ### <a name="to-customize-your-branding"></a>Přizpůsobení brandingu
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
 2. Vyberte **Azure Active Directory**a pak vyberte **značky společnosti**a pak vyberte **konfigurovat**.
 
@@ -92,7 +92,7 @@ Vlastní značka se okamžitě nezobrazí vaši uživatelé, kteří přejdou do
 Po vytvoření vlastní značky, můžete přejít zpět a změňte všechno, co chcete.
 
 ### <a name="to-edit-your-custom-branding"></a>Chcete-li upravit vlastní značky
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
 2. Vyberte **Azure Active Directory**a pak vyberte **značky společnosti**a pak vyberte **konfigurovat**.
 
@@ -109,7 +109,7 @@ Původní konfiguraci jazyka nelze změnit z výchozí jazyk. Pokud potřebujete
 
 ### <a name="to-add-a-language-specific-branding-configuration"></a>Chcete-li přidat nastavení brandingu specifické pro jazyk
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
 2. Vyberte **Azure Active Directory**a pak vyberte **značky společnosti**a pak vyberte **nový jazyk**.
 

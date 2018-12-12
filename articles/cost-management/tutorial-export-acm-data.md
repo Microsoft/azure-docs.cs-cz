@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: 734020f2e70d09b125867faafebf1e7f7332fec4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 4614a1417213ed8b4d57c3b7ab21ac7424d75949
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995557"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087929"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
@@ -48,13 +48,13 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Správa nákladů a fakturace &gt; Cost Management &gt; vyberte předplatné nebo skupinu prostředků v předplatném &gt; Exportovat &gt; **Přidat**.
 
-Zadejte název pro export a vyberte možnost "Každý den export nákladů za měsíc k datu". Klikněte na **Další**.
+Zadejte název pro export a vyberte možnost "Každý den export nákladů za měsíc k datu". Klikněte na tlačítko **Další**.
 
-![Nový export: exportovat typ](./media/tutorial-export-acm-data/basics_exports.png)
+![Nový příklad pro export zobrazující export typu](./media/tutorial-export-acm-data/basics_exports.png)
 
-Zadejte předplatné pro svůj účet úložiště Azure a pak vyberte svůj účet úložiště.  Zadejte kontejner úložiště i Cesta k adresáři, který chcete přejít k souboru exportu.  Klikněte na **Další**.
+Zadejte předplatné pro svůj účet úložiště Azure a pak vyberte svůj účet úložiště.  Zadejte kontejner úložiště i Cesta k adresáři, který chcete přejít k souboru exportu.  Klikněte na tlačítko **Další**.
 
-![Nový export: úložiště](./media/tutorial-export-acm-data/storage_exports.png)
+![Nový příklad pro export zobrazuje podrobnosti o účtu úložiště](./media/tutorial-export-acm-data/storage_exports.png)
 
 Projděte si podrobnosti o vašem export a klikněte na tlačítko **vytvořit**.
 
@@ -68,15 +68,15 @@ Pomocí Průzkumníka služby Azure Storage můžete snadno ověřit, že se dat
 
 V seznamu exportu klikněte na název účtu úložiště. Na stránce účtu úložiště klikněte na Otevřít v Průzkumníkovi. Pokud se zobrazí potvrzovací okno, klikněte na **Ano** a otevřete soubor v Průzkumníkovi služby Azure Storage.
 
-![Stránka účtu úložiště](./media/tutorial-export-acm-data/storage-account-page.png)
+![Zobrazuje informace z příkladu a propojte ho otevřít v Průzkumníkovi stránce účtu úložiště](./media/tutorial-export-acm-data/storage-account-page.png)
 
 V Průzkumníkovi služby Storage přejděte ke kontejneru, který chcete otevřít, a vyberte složku odpovídající aktuálnímu měsíci. Zobrazí se seznam souborů CSV. Vyberte jeden soubor a pak klikněte na **Otevřít**.
 
-![Storage Explorer](./media/tutorial-export-acm-data/storage-explorer.png)
+![Příklad informace zobrazené v Průzkumníku služby Storage](./media/tutorial-export-acm-data/storage-explorer.png)
 
 Soubor se otevře v programu nebo aplikaci, která je nastavená k otevírání souborů s příponou CSV. Tady je příklad v Excelu.
 
-![Příklad exportu dat](./media/tutorial-export-acm-data/example-export-data.png)
+![Příklad exportovat data ve formátu CSV je znázorněno v aplikaci Excel](./media/tutorial-export-acm-data/example-export-data.png)
 
 ## <a name="access-exported-data-from-other-systems"></a>Přístup k exportovaným datům z jiných systémů
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: bryanla
-ms.openlocfilehash: eba4499a71efc84a142e8839861e33c7d7db5461
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f119e4a5b5c5f97848c588636a3a707428abbd5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011888"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082522"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Doprovodné materiály k omezování služby Azure Key Vault
 
@@ -42,7 +42,7 @@ Následují **osvědčené postupy** pro omezení vaší aplikace:
 
 Při implementaci vaší aplikace pro zpracování chyb, použijte k detekci potřebu omezování na straně klienta kód chyby protokolu HTTP 429. Pokud požadavek selže s kódem chyby HTTP 429 znovu, že máte stále omezení služby Azure. Dál používat doporučené straně klienta omezování metoda, opakování žádosti, dokud nebude úspěšný.
 
-Implementovat kód, který nemá exponenciálního omezení rychlosti. Třeba v tomto [kurzu](tutorial-net-create-vault-azure-web-app.md) vám ukážeme, jak provést exponenciálního omezení rychlosti
+Kód, který implementuje exponenciální regresí je uveden níže. 
 ```
      public async Task OnGetAsync()
      {
@@ -51,7 +51,6 @@ Implementovat kód, který nemá exponenciálního omezení rychlosti. Třeba v 
          bool retry = false;
          try
          {
-             /* The below 4 lines of code shows you how to use AppAuthentication library to fetch secrets from your Key Vault*/
              AzureServiceTokenProvider azureServiceTokenProvider = new AzureServiceTokenProvider();
              KeyVaultClient keyVaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
              var secret = await keyVaultClient.GetSecretAsync("https://<YourKeyVaultName>.vault.azure.net/secrets/AppSecret")

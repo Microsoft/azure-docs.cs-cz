@@ -1,6 +1,6 @@
 ---
 title: Rychlý start – Šifrování virtuálního počítače IaaS s Windows pomocí Azure PowerShellu | Microsoft Docs
-description: V tomto rychlém startu zjistíte, jak pomocí Azure PowerShellu šifrovat virtuální počítač s Windows.
+description: V tomto rychlém startu zjistěte, jak šifrování virtuálního počítače s Windows IaaS v Azure pomocí Azure Powershellu.
 services: security
 documentationcenter: na
 author: mestew
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 531da9af871595e6f8bf5d22832367bbfb301dab
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: ee2a4be97b2b56f9c659639a34e821e37c188828
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43245867"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087860"
 ---
 # <a name="quickstart-encrypt-a-windows-iaas-vm-with-azure-powershell"></a>Rychlý start: Šifrování virtuálního počítače IaaS s Windows pomocí Azure PowerShellu
 
-Azure Disk Encryption pomáhá šifrovat disky virtuálních počítačů IaaS s Windows a Linuxem. Toto řešení je integrované do služby Azure Key Vault a pomáhá řídit a spravovat klíče a tajné klíče pro šifrování disků. Pomocí služby Azure Disk Encryption můžete zajistit zabezpečení neaktivních virtuálních počítačů s využitím standardní šifrovací technologie. V tomto rychlém startu vytvoříte virtuální počítač s Windows Serverem 2016 a zašifrujete disk s operačním systémem. 
+Azure Disk Encryption pomáhá šifrovat disky virtuálních počítačů IaaS s Windows a Linuxem. Toto řešení je integrované do služby Azure Key Vault a pomáhá řídit a spravovat klíče a tajné klíče pro šifrování disků. Pomocí služby Azure Disk Encryption můžete zajistit zabezpečení neaktivních virtuálních počítačů s využitím standardní šifrovací technologie. V tomto rychlém startu vytvoříte virtuální počítač s Windows Serverem 2016 a zašifrujete disk s operačním systémem.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -152,7 +153,7 @@ Teď, když jste vytvořili a nakonfigurovali trezor klíčů a virtuální poč
       Remove-AzureRmResourceGroup -Name "MySecureRG"
       ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V dalším článku najdete další informace o požadavcích na službu Azure Disk Encryption pro virtuální počítače IaaS.
 
 > [!div class="nextstepaction"]

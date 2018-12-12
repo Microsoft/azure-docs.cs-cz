@@ -7,12 +7,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: dkshir
-ms.openlocfilehash: 4491ec4661c93570893e5fafd5524715e0773d8c
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 61b81602342b910a50c0cc6318746ec85a659a92
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582308"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080585"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Kurz: Nasazení služby Azure Digital Twins a konfigurace prostorového grafu
 
@@ -163,6 +163,9 @@ Další informace o prostorové grafy a objektové modely, najdete v článku [m
     > Ujistěte se, `dataType` a `hardwareId` klíče bylo v souladu s příkazy nad tento fragment kódu. Také se ujistěte, že váš editor nenahrazuje mezery tabulátorem. 
 
 Uložte a zavřete soubor provisionSample.yaml. V dalším kurzu budete do tohoto souboru přidejte další informace a pak zřízení budovy ukázka digitální dvojče Azure.
+
+> [!TIP]
+> Můžete zobrazit a upravit pomocí vaší prostorový graf [prohlížeč Azure digitální dvojče grafu](https://github.com/Azure/azure-digital-twins-graph-viewer).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

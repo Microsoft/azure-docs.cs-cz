@@ -1,7 +1,7 @@
 ---
 title: Migrace ve verzi preview znalostních bází – Qna Maker
 titleSuffix: Azure Cognitive Services
-description: Postup při importu znalostní báze
+description: Znalostních bází, které jsou vytvořené pomocí nástroje QnA Maker bezplatná verze Preview se musí migrovat na všeobecně dostupnou QnA Maker Nástroj QnA Maker ve verzi Preview se přestanou používat v lednu 2019.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,15 +10,16 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 6eaa4859ea6346390514325980835750d8e4b6d5
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.custom: seodec18
+ms.openlocfilehash: 261d42a6c21681ee8015edfe73ad78b4458eb0ee
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365556"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078803"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu importu
-Nástroj QnA Maker oznámila všeobecné zpřístupnění 7. května 2018 v \\\build\ místa konání konference. Nástroj QnA Maker GA má nové architektury založené na Azure. Znalostních bází, které jsou vytvořené pomocí nástroje QnA Maker bezplatná verze Preview se musí migrovat na všeobecně dostupnou QnA Maker Nástroj QnA Maker ve verzi Preview se přestanou používat v listopadu 2018. Další informace o změnách ve verzi GA QnA Maker, najdete v oznámení všeobecné dostupnosti nástroje QnA Maker [blogový příspěvek](https://aka.ms/qnamakerga-blog).
+Nástroj QnA Maker oznámila všeobecné zpřístupnění 7. května 2018 v \\\build\ místa konání konference. Nástroj QnA Maker GA má nové architektury založené na Azure. Znalostních bází, které jsou vytvořené pomocí nástroje QnA Maker bezplatná verze Preview se musí migrovat na všeobecně dostupnou QnA Maker Nástroj QnA Maker ve verzi Preview se přestanou používat v lednu 2019. Další informace o změnách ve verzi GA QnA Maker, najdete v oznámení všeobecné dostupnosti nástroje QnA Maker [blogový příspěvek](https://aka.ms/qnamakerga-blog).
 
 Nástroj QnA Maker má teď [cenový model](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/).
 

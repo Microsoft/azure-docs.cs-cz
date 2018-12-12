@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bcb135e19796bcab8a8e06e3c1896b247188a58c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5a0d7a0e96a788c3136adba70fb27a2c98674e7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970837"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088047"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizace služby Azure Stack 1809
 
@@ -70,17 +70,6 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack:
 - <!-- 2702741 -  IS, ASDK --> Oprava potíží, ve které veřejné IP adresy, které se nasadily pomocí dynamického přidělování metoda nebyly zaručit zachování po zastavte a Navraťte vydání. Nyní jsou zachovány.
 
 - <!-- 3078022 - IS, ASDK --> Pokud se virtuální počítač zastavit a uvolnit před. 1808 ho nebylo možné znovu alokovat po 1808 aktualizaci.  Tento problém je vyřešen v 1809. Instance, které byly v tomto stavu a nebylo možné spustit, může být spuštěný v 1809 s touto opravou. Tento problém vyřešit zabrání také nevyskytla.
-
-<!-- 3090289 – IS, ASDK --> 
-- Byl opraven problém, kde po instalaci aktualizace. 1808, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
-
-   1. Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
-      1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
-      2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
-   2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Chcete-li chybu vyřešit, postupujte takto:
-      1. Použít [. 1808 Azure Stack opravu Hotfix](https://support.microsoft.com/help/4481066).
-      2. Postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
-
 
 ### <a name="changes"></a>Změny
 
@@ -173,7 +162,7 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 > Příprava vašeho nasazení Azure stacku pro rozšíření hostitele, který je povolený další balíček aktualizace. Příprava systému podle následujících pokynů k [Příprava hostitele rozšíření pro službu Azure Stack](azure-stack-extension-host-prepare.md).
 
 Po instalaci této aktualizace nainstalujte všechny příslušné opravy hotfix. Další informace naleznete následující články znalostní báze, stejně jako naše [zásady obsluhy](azure-stack-servicing-policy.md).  
-- [KB 4477849 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1809.6.102](https://support.microsoft.com/help/4477849/)  
+- [KB 4481548 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/)  
 
 ## <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
 
@@ -226,7 +215,7 @@ Toto jsou známé problémy této verze sestavení po instalaci.
    
   Spustit [testovací AzureStack](azure-stack-diagnostic-test.md) rutina pro ověření stavu instance rolí infrastruktury a škálování jednotek uzlů. Pokud nejsou zjištěny žádné problémy podle [testovací AzureStack](azure-stack-diagnostic-test.md), tato upozornění můžete ignorovat. Pokud se zjistí problém, pokuste se spustit instanci role infrastruktury nebo uzlu pomocí portálu pro správu nebo prostředí PowerShell.
 
-  Tento problém je vyřešen v nejnovější verzi [vydání opravy hotfix 1809](https://support.microsoft.com/help/4477849/), takže je nutné k instalaci této opravy hotfix, pokud dojde k problému. 
+  Tento problém je vyřešen v nejnovější verzi [vydání opravy hotfix 1809](https://support.microsoft.com/help/4481548/), takže je nutné k instalaci této opravy hotfix, pokud dojde k problému. 
 
 <!-- 1264761 - IS ASDK -->  
 - Může se zobrazit upozornění **stavu řadiče** komponenta, která mají následující podrobnosti:  
@@ -292,7 +281,18 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 
    Najít data metrik, jako je například grafu procento využití procesoru pro virtuální počítač, přejděte do okna metrik a zobrazit všechny podporované metriky hosta virtuálního počítače Windows.
 
+<!-- 3507629 - IS, ASDK --> 
+- Spravované disky vytvoří dva nové [compute typy kvót](azure-stack-quota-types.md#compute-quota-types) omezit maximální kapacita spravované disky, které je možné zřídit. Ve výchozím nastavení 2048 GiB přidělených pro každý typ kvóty spravované disky. Však může dojít k následujícím problémům:
 
+   - Vytvořené před aktualizací. 1808 kvót kvóta Managed Disks se zobrazí hodnoty 0 na portálu správce, i když je přiděleno 2048 GiB. Můžete zvýšit nebo snížit hodnotu podle skutečných potřeb a nově nastavené hodnoty kvóty na přepíše výchozí hodnotu 2048 GiB.
+   - Při aktualizaci hodnoty kvóty na hodnotu 0, je ekvivalentní výchozí hodnotu 2 048 GB. Jako alternativní řešení nastavte hodnoty kvóty na 1.
+
+<!-- TBD - IS ASDK --> Po použití 1809 aktualizace, může dojít k následujícím problémům při nasazování virtuálních počítačů se spravovanými disky:
+
+   - Pokud předplatné bylo vytvořeno před aktualizací. 1808, nasazení virtuálního počítače se spravovanými disky může selhat s interní chybovou zprávu. Chcete chybu vyřešit, postupujte podle těchto kroků pro každé předplatné:
+      1. Portál pro klienty, přejděte na **předplatná** a vyhledejte předplatné. Klikněte na tlačítko **poskytovatelů prostředků**, klikněte na **Microsoft.Compute**a potom klikněte na tlačítko **přeregistrovat**.
+      2. V rámci stejného předplatného, přejděte na **řízení přístupu (IAM)** a ověřte, že **Azure Stack – spravovaný Disk** je uvedena.
+   2. Pokud jste nakonfigurovali prostředí s více tenanty, nasazování virtuálních počítačů v rámci služby předplacené asociovaná s adresářem hosta může selhat s interní chybovou zprávu. Pokud chcete chybu vyřešit, postupujte podle kroků v [v tomto článku](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) změna konfigurace všech vašich adresářů hosta.
 
 ### <a name="networking"></a>Sítě  
 

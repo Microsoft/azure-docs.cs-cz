@@ -1,6 +1,6 @@
 ---
-title: Zaregistrujte nové zařízení Azure IoT Edge (CLI) | Dokumentace Microsoftu
-description: Použití rozšíření IoT pro rozhraní příkazového řádku Azure k registraci nového zařízení IoT Edge
+title: Zaregistrujte si nové zařízení z příkazového řádku – Azure IoT Edge | Dokumentace Microsoftu
+description: Použití rozšíření IoT pro rozhraní příkazového řádku Azure k registraci nového zařízení IoT Edge a načtení připojovacího řetězce
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 737a2dfe5c3b3382db00785b3465147143b17e9e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 28f20157de603cf20cb33e9db569064f87922bf8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51569246"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081829"
 ---
 # <a name="register-a-new-azure-iot-edge-device-with-azure-cli"></a>Pomocí Azure CLI zaregistrujte nové zařízení Azure IoT Edge
 
@@ -43,7 +44,7 @@ Tento příkaz zahrnuje tři parametry:
 * **název centra**: Zadejte název služby IoT hub.
 * **povolené Edge**: Tento parametr deklaruje, že zařízení je pro použití se službou IoT Edge.
 
-   ![Vytvoření zařízení IoT Edge](./media/how-to-register-device-cli/Create-edge-device.png)
+   ![vytvořit výstup, az iot hub-identity zařízení](./media/how-to-register-device-cli/Create-edge-device.png)
 
 ## <a name="view-all-devices"></a>Zobrazit všechna zařízení
 

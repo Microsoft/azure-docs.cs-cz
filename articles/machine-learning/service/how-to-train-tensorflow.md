@@ -1,5 +1,6 @@
 ---
-title: Trénování TensorFlow modelů Azure Machine Learning
+title: Trénování modelů s TensorFlow
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak spustit jeden uzel nebo pro distribuované trénování TensorFlow modelů s TensorFlow odhad
 services: machine-learning
 ms.service: machine-learning
@@ -8,22 +9,23 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 09/24/2018
-ms.openlocfilehash: c761d0ac5d2c52241eadd18b2d8b65e00ccb34ba
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 12/04/2018
+ms.custom: seodec18
+ms.openlocfilehash: d15d3ed115009ad1395a85d36e833d85197d4d19
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114975"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094100"
 ---
-# <a name="how-to-train-tensorflow-models"></a>Trénování TensorFlow modelů
+# <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>Trénování TensorFlow modelů pomocí služby Azure Machine Learning
 
 Pro výuku hluboké neuronové sítě (DNN) s využitím TensorFlow, Azure Machine Learning nabízí vlastní `TensorFlow` třídu `Estimator`. Azure SDK `TensorFlow` estimator (nechcete conflated s [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) třídy) vám umožní snadno odesílat úlohy trénování TensorFlow pro spuštění jedním uzlem a distribuované na výpočetní prostředky Azure.
 
 ## <a name="single-node-training"></a>Trénování jedním uzlem
 Školení s `TensorFlow` odhad je podobný používání [základní `Estimator` ](how-to-train-ml-models.md), proto nejdřív přečíst článek s postupy a ujistěte se, že rozumíte konceptům uvedeným existuje.
   
-Ke spuštění úlohy TensorFlow, vytvořit instanci `TensorFlow` objektu. Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-up-training-targets.md#batch) objekt `compute_target`.
+Ke spuštění úlohy TensorFlow, vytvořit instanci `TensorFlow` objektu. Měli jste již vytvořili vaše [cílové výpočetní prostředí](how-to-set-up-training-targets.md#amlcompute) objekt `compute_target`.
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -47,7 +49,7 @@ Parametr | Popis
 --|--
 `source_directory` | Místní adresář, který obsahuje vše potřebné pro trénovací úlohu kódu. Tato složka se zkopíruje z místního počítače pro vzdálený výpočetní
 `script_params` | Slovník zadání argumentů příkazového řádku pro cvičný skript `entry_script`, ve formě < argument příkazového řádku, hodnota > páry
-`compute_target` | Vzdálené výpočetní prostředky, které cvičný skript se spustí, v tomto případě [služby Batch AI](how-to-set-up-training-targets.md#batch) clusteru
+`compute_target` | Cílové vzdálené výpočetní prostředí, který cvičný skript se spustí, v tomto případě Azure Machine Learning Compute ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) clusteru
 `entry_script` | Cesta k souboru (vzhledem k `source_directory`) z trénovací skript ke spuštění na vzdálené výpočetní prostředky. Tento soubor a další soubory, na kterých závisí, se musí nacházet v této složce
 `conda_packages` | Seznam balíčků Python nainstalovat přes conda vyžadované cvičný skript. V tomto případě cvičný skript používá `sklearn` pro načítání dat, proto zadejte tento balíček k instalaci.  Konstruktor má jiný parametr s názvem `pip_packages` , můžete použít pro všechny balíčky pip potřeby
 `use_gpu` | Tento příznak nastavit `True` využití GPU pro vzdělávání. Výchozí hodnota je `False`.
@@ -170,16 +172,9 @@ run = exp.submit(tf_est)
 ```
 
 ## <a name="examples"></a>Příklady
-Kurz týkající se trénování TensorFlow jedním uzlem naleznete v tématu:
-* [Training/03.Train-hyperparameter-Tune-Deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb)
 
-Kurz týkající se Horovod distribuované TensorFlow naleznete v tématu:
-* [školení/04.distributed-tensorflow s horovod](https://github.com/Azure/MachineLearningNotebooks/tree/master/training/04.distributed-tensorflow-with-horovod)
-
-Kurz týkající se nativní distribuované TensorFlow naleznete v tématu:
-* [školení/05.distributed-tensorflow s parametr server](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/05.distributed-tensorflow-with-parameter-server)
-
-Získejte tyto poznámkové bloky:
+Poznámkové bloky v distribuované obsáhlého learningu naleznete v tématu:
+* [How-to-use-azureml/Training-with-Deep-Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

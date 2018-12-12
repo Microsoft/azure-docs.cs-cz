@@ -1,5 +1,5 @@
 ---
-title: Konfigurace VPN typu site-to-site přes partnerský vztah Microsoftu pro Azure ExpressRoute | Dokumentace Microsoftu
+title: Konfigurace VPN typu site-to-site přes partnerský vztah Azure – ExpressRoute - Microsoftu | Dokumentace Microsoftu
 description: Konfigurace protokolu IPsec/IKE připojení k Azure přes partnerský vztah okruhu ExpressRoute Microsoft pomocí brány VPN typu site-to-site.
 services: expressroute
 author: cherylmc
@@ -7,25 +7,25 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5fb4a4034a744b8b2b769a1cfd2d9df12ea90dde
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.custom: seodec18
+ms.openlocfilehash: 3ba9d7ab9e05c3c5480e1832cc5ddd0ce91a3ae1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240901"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094198"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurace VPN typu site-to-site přes partnerský vztah ExpressRoute Microsoftu
 
-Tento článek vám pomůže nakonfigurovat zabezpečené šifrovaná připojení mezi vaší místní sítí a virtuálním sítím Azure (Vnet) přes privátní připojení ExpressRoute. Konfigurace zabezpečeného tunelového propojení prostřednictvím ExpressRoute umožňuje výměna dat s důvěrnost, zneužitím, pravosti a integrita.
+Tento článek vám pomůže nakonfigurovat zabezpečené šifrovaná připojení mezi vaší místní sítí a virtuálním sítím Azure (Vnet) přes privátní připojení ExpressRoute. Můžete vytvořit tunelové propojení site-to-site VPN IPsec/IKE mezi vybrané místní sítě a sítě Azure Vnet partnerského vztahu Microsoftu. Konfigurace zabezpečeného tunelového propojení prostřednictvím ExpressRoute umožňuje výměna dat s důvěrnost, zneužitím, pravosti a integrita.
 
-## <a name="architecture"></a>Architektura
-
-Můžete využít Microsoft partnerský vztah, abyste ustavit tunel VPN IPsec/IKE site-to-site mezi virtuálními sítěmi Azure a vybrané místní sítě.
-
-  >[!NOTE]
+>[!NOTE]
 >Při nastavování VPN typu site-to-site přes Microsoft partnerský vztah, bude vám účtována VPN gateway a výchozí přenos dat sítě VPN. Další informace najdete v tématu [ceny služby VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
+
+## <a name="architecture"></a>Architektura
+
 
   ![Přehled připojení](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
 

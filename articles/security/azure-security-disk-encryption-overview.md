@@ -1,26 +1,29 @@
 ---
-title: Azure Disk Encryption pro virtuální počítače IaaS – přehled | Dokumentace Microsoftu
+title: Přehled – Azure Disk Encryption pro virtuální počítače IaaS | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled služby Microsoft Azure Disk Encryption pro virtuální počítače IaaS.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/14/2018
-ms.openlocfilehash: 1328effbc495422e5190362c562928fbb1742e1b
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 73a00756928fd476b723e0b43accf46378ae14cc
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50913202"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093280"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption pro virtuální počítače IaaS 
+# <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption pro virtuální počítače IaaS
+
 Microsoft Azure se zaměřuje na zajištění ochrany osobních údajů a suverenity dat. Azure umožňuje řídit data hostovaných v Azure prostřednictvím celou řadu technologie šifrování, řídit a spravovat šifrovací klíče a řízení a auditování přístupu k datům. Tento ovládací prvek poskytuje zákazníkům Azure s volnost ve výběru řešení, které nejlíp vyhovují jejich potřebám firmy. Tento článek vás seznámí s technologické řešení: "Řešení Azure Disk Encryption pro Windows a Linuxem v režimu IaaS virtuální počítače (VM)." Tato technologie pomáhá zabezpečit a chránit vaše data pro splnění vaší organizace na zabezpečení a závazky dodržování předpisů. 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 
 ## <a name="overview"></a>Přehled
+
 Azure Disk Encryption je funkce, která umožňuje šifrovat disky Windows a virtuálních počítačů IaaS s Linuxem. Šifrování disku využívá standardní oborový [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) funkce Windows a [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkce Linux zajišťuje šifrování disků s operačním systémem a data. Toto řešení je integrovaná s [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) umožňují řídit a spravovat šifrování disku klíče a tajné kódy. Řešení také zajišťuje, že všechna data na discích virtuálních počítačů šifrování v klidovém stavu ve službě Azure storage.
 
 Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem jsou obecně dostupné ve všech veřejných oblastech Azure a oblastech Azure Government pro standardní virtuální počítače a virtuální počítače se službou Azure Premium Storage. Při použití řešení pro správu šifrování disku, můžete splnit následující obchodní potřeby:
@@ -37,6 +40,7 @@ Pokud používáte Azure Security Center, budete upozorněni, pokud máte virtu�
 
 
 ## <a name="encryption-scenarios"></a>Šifrovací scénáře
+
 Řešení šifrování disku podporuje následující scénáře zákazníka:
 
 * Povoluje šifrování na nové virtuální počítače IaaS Windows vytvořené z předem šifrované virtuální pevný disk, šifrovacích klíčů.
@@ -87,6 +91,7 @@ Toto řešení nepodporuje následující scénáře, funkce a technologie:
 * Windows VMs, které jsou nakonfigurované pro systémy založené na softwaru diskového pole RAID.
 
 ## <a name="encryption-features"></a>Funkce šifrování
+
 Když povolíte a nasadíte Disk Encryption pro virtuální počítače Azure IaaS, tyto funkce jsou povolené v závislosti na poskytnutá konfigurace:
 
 * Šifrování svazku operačního systému k ochraně spouštěcího svazku v klidovém stavu ve službě storage.

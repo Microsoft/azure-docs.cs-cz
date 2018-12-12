@@ -1,18 +1,19 @@
 ---
-title: Azure Disk Encryption pomocí Azure AD App požadavky (předchozí verze) | Dokumentace Microsoftu
+title: Azure Disk Encryption pomocí Azure AD App požadavky (předchozí verze)
 description: Tento článek obsahuje požadavky pro používání Microsoft Azure Disk Encryption pro virtuální počítače IaaS.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 10/12/2018
-ms.openlocfilehash: d81925589eefa0ea5851180c83db5bc3540aabda
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: ff9f06f3ff062889c9e77163f66527af97bb527d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52262682"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094488"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -259,7 +260,7 @@ K šifrování tajných kódů zápisu do zadané služby Key Vault, musí Azure
 > Azure Disk Encryption je potřeba nakonfigurovat následující zásady přístupu pro klientské aplikace Azure AD: _WrapKey_ a _nastavit_ oprávnění.
 
 ### <a name="bkmk_KVAPPSH"></a> Nastavit zásady přístupu trezoru klíčů pro aplikace Azure AD pomocí Azure Powershellu
-Vaše aplikace Azure AD potřebuje oprávnění pro přístup k klíčů nebo tajných klíčů v trezoru. Použití [Set-AzureKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) rutiny k udělení oprávnění k aplikaci pomocí ID klienta (který se vygeneroval při aplikace byl zaregistrován) jako _– ServicePrincipalName_ Hodnota parametru. Další informace najdete v blogovém příspěvku [Azure Key Vault – krok za krokem](http://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
+Vaše aplikace Azure AD potřebuje oprávnění pro přístup k klíčů nebo tajných klíčů v trezoru. Použití [Set-AzureKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) rutiny k udělení oprávnění k aplikaci pomocí ID klienta (který se vygeneroval při aplikace byl zaregistrován) jako _– ServicePrincipalName_ Hodnota parametru. Další informace najdete v blogovém příspěvku [Azure Key Vault – krok za krokem](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
 
 1. V případě potřeby [připojit ke svému předplatnému Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH).
 2. Nastavte zásady přístupu trezoru klíčů pro aplikaci AD pomocí prostředí PowerShell.

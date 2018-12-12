@@ -1,5 +1,5 @@
 ---
-title: Automaticky vertikálně navýšit kapacitu jednotek propustnosti centra událostí Azure | Dokumentace Microsoftu
+title: Automaticky vertikálně navýšit kapacitu jednotek propustnosti - Azure Event Hubs | Dokumentace Microsoftu
 description: Povolte automatické rozšiřování automaticky vertikálně navýšit kapacitu jednotek propustnosti oboru názvů.
 services: event-hubs
 documentationcenter: na
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 1bbbbbada07dc898a4c1424a315d472cf910926f
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: cf0c7a5339d2880bbed01fc95b54038d15f1c2ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010820"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083530"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automaticky vertikálně navýšit kapacitu jednotek propustnosti centra událostí Azure
-
 Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat. V důsledku toho Služba Event Hubs využití často zvětšuje po začali používat službu. Použití je potřeba zvýšit předem [jednotek propustnosti](event-hubs-features.md#throughput-units) zpracovat větší množství přenesených dat a škálovat služby Event Hubs. **Automatické rozšiřování** funkce Event Hubs se automaticky zvětší zvýšením počtu jednotek propustnosti, které bude vyhovovat požadavkům využití. Zvýšení jednotek propustnosti brání omezení scénáře, ve kterém:
 
 * Sazby za příchozí přenos dat překročí sady jednotek propustnosti.

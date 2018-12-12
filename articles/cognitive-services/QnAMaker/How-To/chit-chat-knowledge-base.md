@@ -1,7 +1,7 @@
 ---
 title: Přidání chit chat znalostní báze QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Když přidáte osobní chat chit pro svého robota budete konverzační a poutavé při vytváření znalostní bázi. Nástroj QnA Maker umožňuje snadno přidat předvyplněný sadu nejvyšší chit konverzace, do znalostní BÁZÍ. To můžete jako výchozí bod pro svého robota chit chat a vám ušetří čas a náklady na jejich vytváření od začátku.
+description: Když přidáte osobní chat chit pro svého robota budete konverzační a poutavé při vytváření znalostní bázi. Nástroj QnA Maker umožňuje snadno přidat předvyplněný sadu nejvyšší chit konverzace, do znalostní BÁZÍ.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: tulasim
-ms.openlocfilehash: ddd78cbfff2b1ee450a26306dce528cd89fea788
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.custom: seodec18
+ms.openlocfilehash: 7c54628faba4a3d7a89c1944e2f434a83035707b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228920"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081758"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Přidat Chit chat znalostní báze
 

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření transparentní brány s použitím Azure IoT Edge | Dokumentace Microsoftu
-description: Použití zařízení Azure IoT Edge jako transparentní brána, která dokáže zpracovávat informace pro různá zařízení
+title: Vytvoření transparentní brány zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: Použití zařízení Azure IoT Edge jako transparentní brána, která dokáže zpracovávat informace ze zařízení příjem dat
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 11/29/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 55968393ff64d9eed1f5b384094a77d0d169dc5d
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.custom: seodec18
+ms.openlocfilehash: 29c7fc279aec79750df48c70be7792869e89ae78
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681190"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094351"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurace zařízení tak, aby fungoval jako transparentní brána IoT Edge
 
@@ -31,7 +32,7 @@ Příjem dat zařízení může být jakékoli aplikaci nebo platforma, která m
 
 Můžete vytvořit jakékoli infrastrukturu certifikátů, která umožňuje důvěryhodnosti vyžadované pro topologii zařízení brány. V tomto článku se budeme předpokládat stejné nastavení certifikátu, který můžete použít k povolení [zabezpečení certifikační Autority X.509](../iot-hub/iot-hub-x509ca-overview.md) ve službě IoT Hub, který zahrnuje certifikátu webu X.509 přidružený ke konkrétní IoT hub (IoT hub vlastník certifikační Autority) a řadou certifikáty, Hraniční zařízení zaregistrovali pomocí této certifikační Autority a certifikační Autority.
 
-![Instalační program brány](./media/how-to-create-transparent-gateway/gateway-setup.png)
+![Instalace certifikátu brány](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 Brána svůj certifikát hraniční zařízení certifikační Autority podřízené zařízení během inicializace připojení. Příjem dat zařízení zkontroluje, ujistěte se, že hraniční zařízení certifikační Autority certifikát je podepsaný certifikátem pro certifikační Autority vlastníka. Tento proces povolí příjem dat zařízení potvrďte, že brána pochází z důvěryhodného zdroje.
 

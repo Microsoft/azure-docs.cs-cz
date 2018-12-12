@@ -1,10 +1,12 @@
 ---
-title: Pro datové vědy s obsáhlý Learning virtuální počítač pro datové vědy v Azure | Dokumentace Microsoftu
+title: Zjistěte, jak používat hloubkové učení virtuální počítač pro datové vědy
+titleSuffix: Azure
 description: Jak provádět několik běžných úloh vědeckého zpracování Data Science počítače pro obsáhlý Learning.
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -14,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 91c1727907c9a134a257e8f7d7c1efb6721c1906
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ab07d656af6f79949c51f546434c57b5d63714da
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993768"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083814"
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>Pomocí hloubkového učení virtuálního počítače
 

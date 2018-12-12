@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e1a6b453bb92ca57a1c9be9bff958ac0780ea12e
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 47a634ca1c4e904cc1054db3a834483489ade0ec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498045"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093552"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Instalace aplikací třetích stran Apache Hadoop v Azure HDInsight
 
@@ -29,7 +29,7 @@ Následující seznam uvádí publikované aplikace:
 * **DATAIKU DDS v HDInsight** umožňuje odborníkům v oblasti dat vytvářet prototypy, sestavovat a nasazovat vysoce specifické služby, které transformují nezpracovaná data na účinné obchodní předpovědi.
 * **Datameer** je samoobslužné škálovatelná platforma pro přípravu, zkoumání, a kterými se řídí vaše data pro analýzu zrychluje zapnutí komplexní s více zdroji dat do cenné informace připravené pro potřeby doručování rychlejší a chytřejší vytváření přehledů na podnikové úrovni.
 * **H2O umělé inteligence pro HDInsight (beta verze)** H2O Sparkling Water podporuje následující distribuované algoritmy: GLM, Naive Bayes, distribuované Random doménové struktury, přechod počítače zvýšení skóre, hluboké Neuronové sítě, obsáhlý learning K-means, PCA, Využívajících modely s nízkou řadit, detekce anomálií a Autoencoders.
-* **Kyligence Analytics Platform** Kyligence Analytics Platform (CAPE) je připravená pro podnikové datový sklad s využitím analytické jádro Apache Kylin a Apache Hadoop, nabízí subsecond dotazování čekací doba na datové sadě škálování ve velkém rozsahu a zjednodušuje analýzu dat pro Podnikoví uživatelé a analytiky. 
+* **Kyligence Enterprise**, analytické jádro Apache Kylin používá technologii, přináší okamžitý přehled na rozsáhlých datových sad pro obchodní analytiky, uživatelů a data. Pomocí strojového učení špičkové technologie a funkce modelování dat na inteligentní výrazně vylepšuje produktivitu firemních analýzy velkých objemů dat. 
 * **Adaptive samoobslužné přípravu dat**
 * **Server úloh Spart pro prováděcí modul Sparku KNIME** serveru úloh Spark pro prováděcí modul KNIME Spark se používá k připojení analytická platforma KNIME do clusterů HDInsight.
 * **Presto hvězdice** Presto je rychlé a škálovatelné distribuované modul dotazů SQL. Navržen k oddělení úložiště a výpočetního výkonu, je ideální pro dotazování na data v Azure Data Lake Storage, Azure Blob Storage, SQL a NoSQL databáze a další zdroje dat Presto.

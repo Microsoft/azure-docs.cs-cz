@@ -1,5 +1,5 @@
 ---
-title: K dispozici Poznámkový blok Jupyter jako prezentace v Azure | Dokumentace Microsoftu
+title: K dispozici Poznámkový blok Jupyter jako prezentace v Azure
 description: Jak nakonfigurovat buňky pro režim prezentace v poznámkovém bloku Jupyter a pak prezentujte prezentace pomocí rozšíření VZESTUPU.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 8eaa264cf679de7158a31805c406cb217e6a1fd2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d29aac52948cddf9d7e274d28735e2c12143b5ca
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855739"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081417"
 ---
 # <a name="run-a-notebook-slideshow"></a>Spusťte Poznámkový blok prezentace
 

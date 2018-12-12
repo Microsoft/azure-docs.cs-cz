@@ -11,14 +11,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 59d98b46827a5e60dcdcbd109dc484891cef9ba8
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: 919d48d73a552596c78c3be18e7628ee7700f7e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011789"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080210"
 ---
-# <a name="luis-bot-in-c"></a>Služba LUIS robotů v jazyce C#
+# <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Služba LUIS robotů v C# pomocí rozhraní Bot Framework 3.x a použijete Azure Web app bot
 
 Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tuto chatovací robot používá předem připravených HomeAutomation doménu k rychlé implementaci řešení robota. Robot využívá rozhraní Bot Framework 3.x a použijete Azure Web app bot.
 
@@ -55,7 +55,7 @@ Pomocí jazyka C# vytvořte chatovacího robota integrovaného se službou Langu
     * Vyberte **umístění aplikace LUIS**. Toto je vytváření [oblasti](luis-reference-regions.md) vytvoření aplikace v.
     * Zaškrtněte políčko potvrzení právních upozornění. Podmínky právních upozornění jsou níže na zaškrtávací políčko.
 
-    ![Služba Bot](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
+    ![Bot Service](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
 
 
 5. Potvrďte, že byla nasazena bot service.

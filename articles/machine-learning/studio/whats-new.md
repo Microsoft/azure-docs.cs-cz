@@ -1,10 +1,10 @@
 ---
-title: Co je nového v nástroji Azure Machine Learning Studio? | Dokumenty Microsoft
+title: Co je nového – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Nové funkce, které jsou k dispozici v nástroji Azure Machine Learning Studio.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2018
-ms.openlocfilehash: c93bb9a2fa7991df265b4767585d920c137a436d
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 456e95540a69b4b7b504e98296f917db2826834e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311139"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082097"
 ---
 # <a name="whats-new-in-azure-machine-learning-studio"></a>Co je nového v nástroji Azure Machine Learning Studio?
 

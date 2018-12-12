@@ -10,23 +10,24 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 6ce3fc774d23914ab150e1dc1371391fc9fc548b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 5b0dfe1753686015c88bdc1214273354dd00c958
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034381"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086300"
 ---
-# <a name="test-your-knowledge-base"></a>Testování znalostní báze
+# <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Testování znalostní báze interaktivně v nástroje QnA Maker
 
 Testování znalostní báze QnA Maker je důležitou součástí iterativní proces, aby se zlepšila přesnost odpovědi se vrací. Můžete otestovat ve znalostní bázi prostřednictvím rozhraní rozšířené chatu, který také umožňuje že provádět úpravy.
 
 ## <a name="test-answer-matching"></a>Odpovídající odpověď testu
 
-1.  Výběrem názvu na přístup ke znalostní báze **Moje znalostních bází** stránky.
-2.  Chcete-li získat přístup k panelu snímku na více instancí testu, vyberte **Test** v horním panelu vaší aplikace.
+1.  Výběrem názvu na přístup ke znalostní báze **Moje znalostních bází** stránky.
+2.  Chcete-li získat přístup k panelu snímku na více instancí testu, vyberte **testovací** v horním panelu vaší aplikace.
 
-    ![Test přístupu](../media/qnamaker-how-to-test-kb/access-test.png)
+    ![Přístup k panelu testu](../media/qnamaker-how-to-test-kb/access-test.png)
 
 3.  Zadejte dotaz do textového pole a stiskněte Enter.
 
@@ -34,17 +35,17 @@ Testování znalostní báze QnA Maker je důležitou součástí iterativní pr
 
 ## <a name="clear-test-panel"></a>Vymazat test panelu
 
-Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z testovací konzole, vyberte **začít od začátku** v levém horním rohu panelu Test.
+Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z testovací konzole, vyberte **začít od začátku** v levém horním rohu panelu Test.
 
 ## <a name="close-test-panel"></a>Test Zavřít panel
 
-Zavřít panel testu, vyberte **Test** tlačítko znovu. Při otevření panelu Test nelze upravovat obsah znalostní báze Knowledge Base.
+Zavřít panel testu, vyberte **testovací** tlačítko znovu. Při otevření panelu Test nelze upravovat obsah znalostní báze Knowledge Base.
 
 ## <a name="inspect-score"></a>Kontrola skóre
 
 Si prohlédnout podrobnosti o výsledku testu na panelu zkontrolujte, jestli se.
 
-1.  Test snímku na více instancí panelu otevřete, vyberte **zkontrolujte, jestli se** podrobné informace o této odpovědi.
+1.  Test snímku na více instancí panelu otevřete, vyberte **zkontrolujte, jestli se** podrobné informace o této odpovědi.
 
     ![Zkontrolovat odpovědi](../media/qnamaker-how-to-test-kb/inspect.png)
 
@@ -54,13 +55,13 @@ Si prohlédnout podrobnosti o výsledku testu na panelu zkontrolujte, jestli se.
 
 Pokud nejvyšší hodnocení odpověď je nesprávná, vyberte ze seznamu a vyberte správnou odpověď **uložit a jejich trénování**.
 
-![Test přístupu](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![Opravte nejvyšší hodnocení odpovědí](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ## <a name="add-alternate-questions"></a>Přidat alternativní otázky
 
 Můžete přidat alternativní formy dotaz na danou odpovědí. Zadejte alternativní odpovědi na textové pole a klikněte na enter je přidat. Vyberte **uložit a jejich trénování** pro ukládání aktualizací.
 
-![Test přístupu](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![Přidat alternativní otázky](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
 ## <a name="add-a-new-answer"></a>Přidat nové odpovědi
 
@@ -68,7 +69,7 @@ Pokud některý z existujících odpovědi, které se shoda našla, nejsou sprá
 
 Vyberte **uložit a jejich trénování** zachovat tuto odpověď. Nový pár otázka – odpověď byl přidán do znalostní báze.
 
-![Test přístupu](../media/qnamaker-how-to-test-kb/add-answer.png)
+![Přidat nový pár otázek a odpovědí](../media/qnamaker-how-to-test-kb/add-answer.png)
 
 > [!NOTE]
 > Všechny úpravy do znalostní báze získat uloží jenom po stisknutí klávesy **uložit a jejich trénování** tlačítko.

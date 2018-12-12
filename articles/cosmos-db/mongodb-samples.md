@@ -1,23 +1,21 @@
 ---
-title: Použití rozhraní MongoDB API k sestavení aplikace Azure Cosmos DB | Microsoft Docs
+title: Vytváření aplikací pro Azure Cosmos DB pomocí rozhraní MongoDB API
 description: Kurz, ve kterém se vytvoří online databáze pomocí rozhraní Azure Cosmos DB API pro MongoDB.
 keywords: mongodb examples
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: sample
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: 188b192cf9b86a2d28a578bbcec0d6b19a8cc5d0
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
-ms.translationtype: HT
+ms.openlocfilehash: e24c64f0042d65cc499e02dff7b53f3ca812f356
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084898"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864073"
 ---
 # <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Sestavení aplikace Azure Cosmos DB: API for MongoDB pomocí Node.js
 > [!div class="op_single_selector"]
@@ -173,5 +171,5 @@ Chcete-li použít tento příklad, musíte:
      
 3. Otevřete svůj oblíbený terminál, spusťte příkaz **npm install mongodb --save** a pak spusťte aplikaci se souborem **node app.js**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Zjistěte, jak [použít MongoChef](mongodb-mongochef.md) s vaším účtem Azure Cosmos DB: API for MongoDB.

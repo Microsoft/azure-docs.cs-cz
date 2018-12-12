@@ -1,5 +1,5 @@
 ---
-title: Migrovat místní aplikace Jupyter notebook poznámkových bloků Azure | Dokumentace Microsoftu
+title: Migrovat místní aplikace Jupyter notebook poznámkových bloků Azure
 description: Rychle převést Poznámkový blok Jupyter do poznámkových bloků Azure z místního počítače nebo adresu URL webu, a její následné sdílení pro spolupráci.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: bac6834a8ffb107c344086d1d3c28990f32a4760
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3bd7f895e3cc30c4c5a0496977d65d68c220931f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855772"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084498"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Rychlý start: Migrovat místní aplikace Jupyter notebook
 

@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: c9d36014bc364d8b016221e6b9ff380b0bd4b8ed
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.custom: seodec18
+ms.openlocfilehash: 059e959aec34503f31cbf87266d0633865cbff46
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854163"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098742"
 ---
-# <a name="create-a-knowledge-base"></a>Vytvoření znalostní báze
+# <a name="create-a-knowledge-base-in-qna-maker"></a>Vytvoření znalostní báze v nástroje QnA Maker
 
 Nástroj QnA Maker usnadňuje přidat stávajících zdrojů dat při vytváření znalostní báze. Můžete vytvořit nové znalostní báze QnA Maker z následujících typů dokumentu:
 

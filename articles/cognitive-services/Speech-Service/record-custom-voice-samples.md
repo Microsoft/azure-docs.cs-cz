@@ -1,5 +1,5 @@
 ---
-title: Záznam hlasu ukázky pro vytvoření vlastní hlasový vstup
+title: Zaznamenat vlastní hlasové ukázky – hlasové služby
 titleSuffix: Azure Cognitive Services
 description: Díky přípravu robustní skriptu, Náboroví talentu dobré hlasové a záznam profesionálně vlastní hlasové produkční kvality.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 07/5/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: b1b189db56eb3f70f23940a8612d310d2ba8566f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: 6aaa638504dd441240879050531952b269d02d15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471182"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081077"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Záznam hlasu ukázky vytvořte vlastní hlasové
 
@@ -50,7 +51,7 @@ Zvolte hlasové talentu, jehož přirozeného hlasu je například. Je možné v
 > [!TIP]
 > Obecně platí, vyhněte se použití rozpoznatelných hlasy k vytvoření vlastní hlasové – Pokud je ale samozřejmé, vaším cílem je vytvořit celebrit hlasový vstup. Hlasy méně známé jsou obvykle méně rušivé uživatelům.
 
-Jediným nejdůležitějším faktorem pro výběr hlasu talentu je konzistence. Vašich nahrávek všechny zvukové jako byly provedeny v jednom dni ve stejné místnosti. Může přistupovat tato ideální prostřednictvím dobré záznam postupy a technologie. 
+Jediným nejdůležitějším faktorem pro výběr hlasu talentu je konzistence. Vašich nahrávek všechny zvukové jako byly provedeny v jednom dni ve stejné místnosti. Může přistupovat tato ideální prostřednictvím dobré záznam postupy a technologie.
 
 Talentu váš hlas je ta druhá půlka rovnice. Uživatel musí být schopni číst obsah s frekvence konzistentní vzhledem k aplikacím, úroveň hlasitosti, výšku a tón. Vymazat diction je nezbytnost. Talentu také musí být striktně řídit jeho výška variace, citové vliv a zkoušky prezentace řeči.
 
@@ -71,7 +72,7 @@ Projevy ve skriptu můžou pocházet z libovolného místa: fiction, bez fiction
 
 Vaše projevy nemusí pocházet ze stejného zdroje nebo stejný druh zdroje. Ještě není potřeba nic provádět mezi sebou. Pokud ale budete pomocí nastavená fráze (například "úspěšně přihlásíte") ve vaší aplikaci řeči, nezapomeňte zahrnout je do vašeho skriptu. To vám poskytne vlastní hlasové větší šanci dobře vyslovení tyto věty. A pokud by se rozhodnete použít záznam místo řečového, budete již mít ho ve stejné hlasu.
 
-Konzistence je klíč při výběru hlasové talentu, je různých hallmark dobré skriptu. Váš skript by měl obsahovat mnoho různých slov a vět s řadou věty délky, struktury a náladu. Každý zvuk v jazyce by měl být reprezentována více doby a v mnoha kontextech (volá *zapsané ve fonetické pokrytí*). 
+Konzistence je klíč při výběru hlasové talentu, je různých hallmark dobré skriptu. Váš skript by měl obsahovat mnoho různých slov a vět s řadou věty délky, struktury a náladu. Každý zvuk v jazyce by měl být reprezentována více doby a v mnoha kontextech (volá *zapsané ve fonetické pokrytí*).
 
 Navíc text by měl obsahovat všechny způsoby, jakými mohou být zastoupeny v psaní konkrétní zvuk a umístit každý zvuk na různých místech v těchto větách. Deklarativní vět a otázek by měl zahrnuté a číst pomocí odpovídající intonací.
 
@@ -188,9 +189,9 @@ Zaznamenejte dobré pěti sekund od nečinnosti před první záznam pro zachyce
 > [!TIP]
 > Vše, co skutečně potřebujete zachytit je hlas talentu, abyste měli monophonic nahrávání (single kanál) nebo pouze jejich řádky. Pokud je záznam v stereo, ale můžete použít druhý kanál pro záznam chatter v řídicí místnosti k zachycení diskuzi o konkrétní řádky nebo trvá. Odeberte toto sledování z verze, která nahrávají na portál vlastní hlasové.
 
-Naslouchání úzce, použít sluchátka, talentů hlasové výkonu. Hledáte dobrá, ale přirozené diction, správnou výslovnost a nedostatečná nežádoucí zvuky. Neváhejte a požádejte vašeho talentu znovu zaznamenat utterance, která nesplňuje těchto standardů. 
+Naslouchání úzce, použít sluchátka, talentů hlasové výkonu. Hledáte dobrá, ale přirozené diction, správnou výslovnost a nedostatečná nežádoucí zvuky. Neváhejte a požádejte vašeho talentu znovu zaznamenat utterance, která nesplňuje těchto standardů.
 
-> [!TIP] 
+> [!TIP]
 > Pokud používáte velké množství projevy, nemusí mít jeden utterance znatelný vliv na výsledná vlastní hlasové. Může být více účelné jednoduše poznamenat jakékoli projevy problémů, vyloučit z datové sady a zobrazit, jak ukazuje vlastní hlasové. Vždy můžete přejít zpět do nástroje studio a poznamenejte chybějící ukázky později.
 
 Poznámka: převzít číslo nebo čas kód na váš skript pro každý utterance. Požádejte inženýr označit každý utterance ve tento záznam metadat nebo startovacího seznamu také.

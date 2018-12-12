@@ -10,12 +10,12 @@ ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 3708027b766ff9070831dd3677e821565e0dd4fa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 50c2362e961d882afc109a0554303d364d52384b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994951"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089419"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí .NET a Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
 
-Kromě toho potřebujete udělat toto: 
+Kromě toho je potřeba toto: 
 * Pokud ještě nemáte nainstalovanou sadu Visual Studio 2017, můžete stáhnout a použít **bezplatnou verzi** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 * Nainstalujte [Git](https://www.git-scm.com/) pro klonování příkladu.
 
@@ -96,7 +96,7 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
 * Vložte entity uživatelů pomocí objektu IMapper s novou relací, která se připojuje k prostoru klíčů uprofile.
 
     ```csharp
-    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
+    mapper.Insert<User>(new User(1, "LyubovK", "Dubai"));
     ```
     
 * Použijte dotaz pro získání informací o všech uživatelích.
@@ -118,7 +118,7 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Informace o připojovacím řetězci umožňují aplikaci komunikovat s hostovanou databází.
 
-1. Na portálu [Azure Portal](http://portal.azure.com/) vyberte **Připojovací řetězec**.
+1. Na portálu [Azure Portal](https://portal.azure.com/) vyberte **Připojovací řetězec**.
 
     Pomocí tlačítka ![Tlačítko pro kopírování](./media/create-cassandra-dotnet/copy.png) na pravé straně obrazovky zkopírujte hodnotu UŽIVATELSKÉ JMÉNO.
 
@@ -159,9 +159,9 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     ![Zobrazení a ověření výstupu](./media/create-cassandra-dotnet/output.png)
 
-    Stisknutím CTRL + C zastavte provádění programu a zavřete okno konzoly. 
+    Stisknutím kláves CTRL + C zastavte provádění programu a zavřete okno konzoly. 
     
-4. Na portálu Azure Portal otevřete **Průzkumníka dat**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi.
+4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi.
 
     ![Zobrazení dat v Průzkumníku dat](./media/create-cassandra-dotnet/data-explorer.png)
 
@@ -173,7 +173,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste se naučili vytvořit účet služby Azure Cosmos DB, vytvořit kontejner pomocí Průzkumníka dat a spustit webovou aplikaci. Teď můžete do účtu Cosmos DB importovat další data. 
 

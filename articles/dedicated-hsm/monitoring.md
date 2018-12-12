@@ -1,22 +1,23 @@
 ---
-title: Azure vyhrazené HSM monitorování | Dokumentace Microsoftu
-description: Azure vyhrazené HSM nabízí možnosti úložiště klíčů v Azure, která splňují standard FIPS 140-2 Level 3 certifikační
+title: Monitorování možnosti – vyhrazené modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
+description: Přehled vyhrazených modulu hardwarového zabezpečení Azure možnosti monitorování a sledování odpovědnosti
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 4e2089c62da5fec1e1cfe96ce27b363cfb35eadf
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: b577c2c68512c6e7e36f80b75245d9db4f839d9e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319572"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085684"
 ---
 # <a name="azure-dedicated-hsm-monitoring"></a>Monitorování Azure vyhrazené HSM
 

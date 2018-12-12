@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5d149f26ce953efef316e68fe75bc07d1e240ae2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 86ad385488d9661abd52a2bd1a2d561956f0cbb3
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970395"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082556"
 ---
-# <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Příklady dotazů SQl k dotazování dat ze služby Azure Cosmos Db
+# <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Příklady dotazů SQL k dotazování dat ze služby Azure Cosmos DB
 
 Azure Cosmos DB podporuje dotazování položek pomocí SQL (Structured Query Language) jako dotazovací jazyk typu JSON na účty rozhraní SQL API. Při navrhování dotazovací jazyk pro službu Azure Cosmos DB, jsou považovány za tyto dva cíle:
 
@@ -2253,14 +2253,14 @@ Následující příklad ukazuje způsob použití queryDocuments v rozhraní AP
 ## <a id="References"></a>Odkazy
 
 1. [Úvod do služby Azure Cosmos DB][introduction]
-2. [Azure Cosmos DB SQL specifikace](http://go.microsoft.com/fwlink/p/?LinkID=510612)
+2. [Azure Cosmos DB SQL specifikace](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 3. [Ukázky v Azure Cosmos DB .NET](https://github.com/Azure/azure-cosmosdb-dotnet)
 4. [Úrovně konzistence služby Azure Cosmos DB][consistency-levels]
-5. ANSI SQL 2011 [http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
-6. JSON [http://json.org/](http://json.org/)
-7. Specifikace jazyka JavaScript [http://www.ecma-international.org/publications/standards/Ecma-262.htm](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 
-8. LINQ [http://msdn.microsoft.com/library/bb308959.aspx](http://msdn.microsoft.com/library/bb308959.aspx) 
-9. Techniky hodnocení dotazování u velkých databází [http://dl.acm.org/citation.cfm?id=152611](http://dl.acm.org/citation.cfm?id=152611)
+5. ANSI SQL 2011 [https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
+6. JSON [https://json.org/](https://json.org/)
+7. Specifikace jazyka JavaScript [https://www.ecma-international.org/publications/standards/Ecma-262.htm](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
+8. LINQ [https://msdn.microsoft.com/library/bb308959.aspx](https://msdn.microsoft.com/library/bb308959.aspx) 
+9. Techniky hodnocení dotazování u velkých databází [https://dl.acm.org/citation.cfm?id=152611](https://dl.acm.org/citation.cfm?id=152611)
 10. Zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů
 11. Logická jednotka, Ooi, Tan, zpracování v paralelní relačními databázovými systémy. počítač IEEE Press společnosti, 1994 dotazů.
 12. Christopher Olston, Benjamin Reed, Utkarsh Srivastava, Ravi Kumar, Andrew Tomkins: Pig Latin: není tak cizího jazyka pro zpracování dat, SIGMOD 2008.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 08991829c9c3d628b5028e04dbd4836647d94826
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: eaabb29a492ec6a0ef4c85afe839a9df5f588958
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567481"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087163"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -71,15 +71,15 @@ V modelu stylu POSIX, který používá Data Lake Storage Gen1 jsou oprávnění
 
 Níže jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit, jaká oprávnění jsou nutná k provádění určitých operací s účtem Data Lake Storage Gen1.
 
-|    Operace             |    /    | Seattle / | Portland / | Data.txt     |
-|--------------------------|---------|----------|-----------|--------------|
-| Přečtěte si Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Připojit k Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Odstranit Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Vytvoření Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Seznam /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| Seznam /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
-| Seznam /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
+| Operace | Objekt              |    /      | Seattle /   | Portland /   | Data.txt       |
+|-----------|---------------------|-----------|------------|-------------|----------------|
+| Čtení      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Připojení k | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Odstranění    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Vytvořit    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Seznam      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| Seznam      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| Seznam      | /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]

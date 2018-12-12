@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: a547e52fffb981747c2a752778cbf187d37549d9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 1b6a947914b086bc0300c9ff9d7390a7bc80c2a8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841285"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079588"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Table API pomocí Node.js a Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 Navíc platí:
 
 * [Node.js](https://nodejs.org/en/) verze 0.10.29 nebo vyšší
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -82,7 +82,7 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Tím aplikaci umožníte komunikovat s hostovanou databází. 
 
-1. Na webu [Azure Portal](http://portal.azure.com/) klikněte na **Připojovací řetězec**. 
+1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Připojovací řetězec**. 
 
     ![Zobrazení a zkopírování požadovaných informací o připojovacím řetězci v podokně Připojovací řetězec](./media/create-table-nodejs/connection-string.png)
 

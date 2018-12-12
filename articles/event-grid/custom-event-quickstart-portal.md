@@ -1,21 +1,22 @@
 ---
-title: Vlastní události pro Azure Event Grid pomocí webu Azure Portal | Dokumentace Microsoftu
-description: Pomocí Azure Event Gridu a PowerShellu můžete publikovat téma a přihlásit se k odběru příslušné události.
+title: Odesílání vlastních událostí na web koncového bodu – Event Grid, Azure portal
+description: Pomocí služby Azure Event Grid a webu Azure portal můžete publikovat vlastní téma a přihlásit k odběru události týkající se daného tématu. Události jsou zpracovávány webové aplikace.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 10/02/2018
+ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 630130bde0440a8a5f51589386f42214f27af59a
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: e93ee410d1d6ac0de0646194c716d64ffb8e4316
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040622"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093441"
 ---
-# <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Vytvoření a směrování vlastních událostí pomocí webu Azure Portal a Event Gridu
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>Rychlý start: Směrování vlastních událostí do webového koncového bodu pomocí webu Azure portal a Event gridu
 
 Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku vytvoříte pomocí webu Azure Portal vlastní téma, přihlásíte se k jeho odběru a aktivujete událost, abyste viděli výsledek. Obvykle odesíláte události do koncového bodu, který data události zpracuje a provede akce. Pro zjednodušení tohoto článku však budete události odesílat do webové aplikace, která shromažďuje a zobrazuje zprávy.
 
@@ -45,7 +46,7 @@ Téma Event Gridu poskytuje uživatelsky definovaný koncový bod, do kterého o
 
    ![Počáteční kroky](./media/custom-event-quickstart-portal/select-create.png)
 
-1. Zadejte jedinečný název vlastního tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Nepoužívejte název zobrazený na obrázku. Místo toho vytvořte vlastní název. Zadejte název skupiny prostředků. Vyberte **Vytvořit**.
+1. Zadejte jedinečný název vlastního tématu. Název tématu musí být jedinečný, protože je reprezentován položkou DNS. Nepoužívejte název zobrazený na obrázku. Místo toho vytvořte vlastní název – musí být dlouhý 3 až 50 znaků a obsahovat jenom hodnoty a – z, A-Z, 0-9, a "-". Zadejte název skupiny prostředků. Vyberte **Vytvořit**.
 
    ![Zadání hodnot pro téma Event Gridu](./media/custom-event-quickstart-portal/create-custom-topic.png)
 
@@ -179,7 +180,7 @@ Pokud chcete pokračovat v práci s touto událostí, nevyčišťujte prostředk
 
 Vyberte skupinu prostředků a pak vyberte **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Když teď víte, jak vytvářet vlastní témata a odběry událostí, zjistěte, s čím vám služba Event Grid ještě může pomoct:
 

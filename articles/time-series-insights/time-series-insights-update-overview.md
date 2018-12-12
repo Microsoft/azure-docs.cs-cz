@@ -10,16 +10,22 @@ ms.reviewer: anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 12/05/2018
-ms.openlocfilehash: 01c3c580027fd682ccd7dc099def6dd6b2770d65
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: 9843a01ed3c96b362e17718e9035c378da6c3cf2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962524"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083389"
 ---
 # <a name="azure-time-series-insights-overview"></a>Přehled služby Azure Time Series Insights
 
 Azure Time Series Insights (TSI) je začátku do konce Platform-As-A-Service k ingestování a zpracování, ukládání a dotazování vysoce uvádí v kontextu, optimalizované řady čas dat IoT měřítku, která je ideální pro ad-hoc zkoumání dat, jakož i provozní analýzy. Azure TSI je služba jednoznačně rozšiřitelný a přizpůsobené nabídky, že splňuje širší potřebuje průmyslového IoT nasazení.
+
+## <a name="video"></a>Video
+
+Toto video přináší přehled služby Azure Time Series Insights (Preview), analytické platformy IoT založené na cloudu.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player]
 
 ## <a name="defining-iot-data"></a>Definování dat IoT
 
@@ -46,7 +52,7 @@ Zákazníky můžete ukládat nezpracovaných dat v úložišti bez schématu, v
 TSI také nabízí možnosti operational insights momentálně ve verzi Preview. TSI společně s interaktivní zkoumání dat a informace o provozu, umožňuje zákazníkům lépe zhodnotit data shromážděná z prostředků IoT, které jsou odvozeny. Konkrétně nabídka verze Preview podporuje následující klíčové funkce:
 
 * A škálovatelné, výkonu a úložiště dat řady optimalizovat náklady na čas, který umožňuje založené na cloudu IoT řešení za trend let dat časových řad v řádu sekund.
-* Podpora sémantického modelu k popisu domény a metadata přidružená k odvozené a neodvozený signály ze zařízení a prostředky.
+* Podpora sémantického modelu pro popis domény a metadat souvisejících s odvozenými a neodvozenými signály z prostředků a zařízení.
 * Vylepšené uživatelské prostředí, které kombinuje přehledy dat na základě asset s funkcemi nabitý analýzy dat ad hoc za zvyšování obchodní a provozní intelligence
 * Integrace s rozšířené strojové učení a analytické nástroje, jako je Azure Databricks, Apache Spark, Azure Machine Learning, poznámkové bloky Jupyter, Power BI, atd. pomáhá zákazníkům řešit čas vyzve data řady a jednotka provozní efektivitu.
 

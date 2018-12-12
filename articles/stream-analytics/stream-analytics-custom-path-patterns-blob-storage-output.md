@@ -1,19 +1,20 @@
 ---
-title: Vlastní data a času vzorů cest pro Azure Stream Analytics služby blob storage výstup (Preview)
-description: ''
+title: Datum a čas vzorů cest pro Azure Stream Analytics blob výstup (Preview)
+description: Tento článek popisuje funkce vzory cesta vlastní data a času pro výstup úložiště objektů blob z úloh Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: da29c6bd8ddc1e2f62a78fb683df5e1784141722
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: ba386539c3f3c6740b843575bbccd4b028b8a5a7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452560"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090774"
 ---
 # <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Vlastní data a času vzorů cest pro Azure Stream Analytics služby blob storage výstup (Preview)
 
@@ -61,7 +62,7 @@ Například, `year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}/hour={d
 
 Vlastní výstup pracně změny tabulek a ručně přidávat oddíly na port data mezi Azure Stream Analytics a Hive. Místo toho počet složek mohou být přidány automaticky pomocí:
 
-```
+```SQL
 MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 ```
 
@@ -75,9 +76,9 @@ Vytvoření výstupní jímky objektu blob s následující konfigurací:
 
 Úplná cesta vzor je následujícím způsobem:
 
-```
-year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}
-```
+
+`year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}`
+
 
 Při spuštění úlohy se vytvoří strukturu složek podle vzor cesty v kontejnerech objektů blob. Můžete zobrazit podrobnosti na úrovni den.
 

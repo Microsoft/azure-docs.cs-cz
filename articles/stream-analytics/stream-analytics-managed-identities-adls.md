@@ -1,20 +1,21 @@
 ---
-title: Použití spravované identity k ověření úlohy Azure Stream Analytics pro Azure Data Lake Storage Gen1 výstup (Preview)
-description: ''
+title: Ověření úlohy Azure Stream Analytics k Azure Data Lake Storage Gen1 výstupu
+description: Tento článek popisuje způsob použití spravované identity k ověření vaší úlohy Azure Stream Analytics k Azure Data Lake Storage Gen1 výstup.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/27/2018
-ms.openlocfilehash: 41b3dcc03f7cfbfee11798738a3b2daaf5e96741
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: bb25f237450a83a34645ad4dfd9a2839c5525c6f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365284"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090427"
 ---
-# <a name="use-managed-identities-to-authenticate-azure-stream-analytics-jobs-to-azure-data-lake-storage-gen1-output-preview"></a>Použití spravované identity k ověření úlohy Azure Stream Analytics pro Azure Data Lake Storage Gen1 výstup (Preview)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Ověření Stream Analytics pro Azure Data Lake Storage Gen1 pomocí spravované identity (Preview)
 
 Azure Stream Analytics podporuje spravovanou identitu ověřování pomocí Azure Data Lake Storage (ADLS) Gen1 výstup. Identita je spravovaná aplikace v Azure Active Directory, který představuje dané úlohy Stream Analytics a slouží k ověřování na cílový prostředek. Spravované identity eliminovat omezení metody ověřování založené na uživatelích, jako by bylo nutné donutit z důvodu změny hesla nebo uživatel token platnosti, ke kterým dochází vždy po 90 dnech. Kromě toho spravované identity usnadňující automatizaci nasazení úlohy Stream Analytics, která výstup do Azure Data Lake Storage Gen1.
 
@@ -32,7 +33,7 @@ Tento článek ukazuje dva způsoby, jak povolit spravovanou identitu pro úlohy
 
    Při uložení konfigurace ID objektu (OID) objektu služby, které je uvedené jako ID objektu zabezpečení, jak je znázorněno níže:
 
-   ![Stream Analytics hlavní ID](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
+   ![ID instančního objektu Stream Analytics](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
    Instanční objekt služby má stejný název jako úloha Stream Analytics. Například, pokud je název vaší úlohy **MyASAJob**, název se vytvořil objekt služby je také **MyASAJob**.
 
@@ -56,11 +57,11 @@ Tento článek ukazuje dva způsoby, jak povolit spravovanou identitu pro úlohy
  
 8. V **oprávnění** podokně zaškrtněte **zápisu** a **Execute** oprávnění a přiřadit ji ke **tuto složku a všechny podřízené objekty**. Pak klikněte na tlačítko **Ok**.
 
-   ![Vyberte oprávnění](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
+   ![Vyberte zápisu a spouštěcích oprávnění](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
 9. Instanční objekt služby je uvedený v části **přiřazena oprávnění** na **přístup** podokně, jak je znázorněno níže. Teď můžete přejít zpět a spuštění vaší úlohy Stream Analytics.
 
-   ![Přístup k seznamu](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
+   ![Stream Analytics přístup k seznamu v portálu](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
    Další informace o oprávnění systému souborů Data Lake Storage Gen1 najdete v tématu [řízení přístupu v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
 

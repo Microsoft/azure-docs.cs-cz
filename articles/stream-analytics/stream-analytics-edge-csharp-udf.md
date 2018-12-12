@@ -4,19 +4,19 @@ description: Zjistěte, jak v sadě Visual Studio psát uživatelem definované 
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
-ms.date: 09/24/2018
-ms.openlocfilehash: d593930705c7455d03e20af2affd2de3c418d4a5
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389064"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086895"
 ---
-# <a name="tutorial-write-a-c-user-defined-function-for-an-azure-stream-analytics-edge-job-in-visual-studio-preview"></a>Kurz: Zápis uživatelem definované funkce jazyka C# pro úlohu Azure Stream Analytics Edge v sadě Visual Studio (Preview)
+# <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Kurz: Zápis C# uživatelem definovanou funkci pro úlohu Azure Stream Analytics Edge (Preview)
 
 Uživatelem definované funkce jazyka C# vytvořené v sadě Visual Studio umožňují rozšířit dotazovací jazyk Azure Stream Analytics o vlastní funkce. V jazyce C# můžete opakovaně používat existující kód (včetně knihoven DLL) a využívat matematickou nebo komplexní logiku. Uživatelem definované funkce můžete implementovat třemi způsoby: jako soubory CodeBehind v projektu Stream Analytics, uživatelem definované funkce z místního projektu jazyka C# nebo uživatelem definované funkce z existujícího balíčku z účtu úložiště. V tomto kurzu se k implementaci základní funkce jazyka C# používá metoda se souborem CodeBehind. Funkce uživatelem definovaných funkcí pro úlohy Stream Analytics Edge je v současné době ve verzi a neměla by se používat v produkčních úlohách.
 
@@ -115,11 +115,11 @@ Soubor CodeBehind je soubor jazyka C# přidružený k jednomu skriptu dotazu ASA
 
 2. V **Průzkumníku řešení** rozbalte **Inputs**, klikněte pravým tlačítkem na soubor **Input.json** a vyberte **Přidat místní vstup**.
 
-   ![Přidání místního vstupu do úlohy Azure Stream Analytics v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
+   ![Přidat místní vstup do úlohy Stream Analytics v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
 3. Zadejte cestu k místnímu vstupnímu souboru s ukázkovými daty, která jste si stáhli, a vyberte **Uložit**.
 
-    ![Konfigurace místního vstupu pro úlohu Azure Stream Analytics v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
+    ![Místní konfigurace vstupu úlohy Stream Analytics v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 
 4. V editoru skriptů klikněte na **Spustit místně**. Jakmile místní spuštění úspěšně uloží výsledky výstupu, stisknutím libovolné klávesy zobrazte výsledky ve formátu tabulky. 
 
@@ -134,11 +134,11 @@ Uživatelem definovanou funkci jazyka C# můžete ladit místně stejným způso
 
 1. Přidejte do funkce jazyka C# zarážky.
 
-    ![Přidání zarážek do uživatelem definované funkce Azure Stream Analytics pro úlohu Edge v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
+    ![Přidat zarážky do Stream Analytics uživatelem definované funkce v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
 
 2. Stisknutím klávesy **F5** spusťte ladění. Program se podle očekávání bude zastavovat na zarážkách.
 
-    ![Zobrazení výsledků ladění uživatelem definované funkce Azure Stream Analytics pro úlohu Edge v sadě Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
+    ![Zobrazit Stream Analytics uživatelem definované funkce ladění výsledky](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 
 ## <a name="publish-your-job-to-azure"></a>Publikování úlohy do Azure
 Jakmile místně otestujete svůj dotaz, v editoru skriptů vyberte **Odeslat do Azure** a publikujte úlohu do Azure.
@@ -148,11 +148,11 @@ Jakmile místně otestujete svůj dotaz, v editoru skriptů vyberte **Odeslat do
 ## <a name="deploy-to-iot-edge-devices"></a>Nasazení do zařízení IoT Edge
 Vaše úloha Stream Analytics je teď připravená na nasazení jako modul IoT Edge. Postupujte podle [rychlého startu pro IoT Edge](https://docs.microsoft.com/azure/iot-edge/quickstart) a vytvořte službu IoT Hub, zaregistrujte zařízení IoT Edge a nainstalujte a spusťte na svém zařízení modul runtime IoT Edge. Pak postupujte podle kurzu [nasazení úlohy](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job) a nasaďte svou úlohu Stream Analytics jako modul IoT Edge. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste vytvořili jednoduchou uživatelem definovanou funkci jazyka C# s využitím souboru CodeBehind, publikovali jste svou úlohu do Azure a pomocí portálu IoT Hub jste úlohu nasadili do zařízení IoT Edge. 
 
 Další informace o různých způsobech používání uživatelem definovaných funkcí jazyka C# pro úlohy Stream Analytics Edge najdete v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Zápis uživatelem definovaných funkcí jazyka C# pro Azure Stream Analytics](stream-analytics-edge-csharp-udf-methods.md)
+> [Zápis C# funkce pro Azure Stream Analytics](stream-analytics-edge-csharp-udf-methods.md)

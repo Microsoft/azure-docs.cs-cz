@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 04149e12e2926888bab82495a0924df94d6e3450
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a05ca8602ad3b5ea3135ad2ce915bdc38359bfd7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836164"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089555"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal
 
@@ -63,7 +63,7 @@ Naklonujte ukázkovou aplikaci a nainstalujte požadované balíčky.
     go get gopkg.in/mgo.v2
     ```
 
-[Mgo](http://labix.org/mgo) ovladač [MongoDB](http://www.mongodb.org/) ovladač [jazyk Go](http://golang.org/) , který implementuje bohatý a dobře otestovaný výběr funkcí v rámci velmi jednoduchého rozhraní API následující standardní Go idiomy.
+[Mgo](https://labix.org/mgo) ovladač [MongoDB](https://www.mongodb.com/) ovladač [jazyk Go](https://golang.org/) , který implementuje bohatý a dobře otestovaný výběr funkcí v rámci velmi jednoduchého rozhraní API následující standardní Go idiomy.
 
 <a id="connection-string"></a>
 
@@ -95,7 +95,7 @@ Všechny následující fragmenty kódu pocházejí ze souboru main.go.
 
 ### <a name="connecting-the-go-app-to-azure-cosmos-db"></a>Připojení aplikace v jazyce Go ke službě Azure Cosmos DB
 
-Azure Cosmos DB podporuje MongoDB s povoleným protokolem SSH. Pokud se chcete připojit k MongoDB s povoleným protokolem SSH, je potřeba ve třídě [mgo.DialInfo](http://gopkg.in/mgo.v2#DialInfo) definovat funkci **DialServer** a pomocí funkce [tls.*Dial*](http://golang.org/pkg/crypto/tls#Dial) provést připojení.
+Azure Cosmos DB podporuje MongoDB s povoleným protokolem SSH. Pokud se chcete připojit k MongoDB s povoleným protokolem SSH, je potřeba ve třídě [mgo.DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo) definovat funkci **DialServer** a pomocí funkce [tls.*Dial*](https://golang.org/pkg/crypto/tls#Dial) provést připojení.
 
 Následující fragment kódu jazyka Go připojí aplikaci v jazyce Go pomocí rozhraní API MongoDB pro Azure Cosmos DB. Třída *DialInfo* obsahuje možnosti pro vytvoření relace s clusterem MongoDB.
 

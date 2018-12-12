@@ -1,7 +1,8 @@
 ---
-title: 'Kurz 4: Role vzoru pro data související s kontextem'
+title: Role modelu
 titleSuffix: Azure Cognitive Services
 description: Použijte vzor k extrakci dat z dobře formulované šablony promluvy. Šablona promluvy používá jednoduchou entitu a role k extrakci takových souvisejících dat, jako jsou umístění původu a umístění cíle.
+ms.custom: seodec18
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,12 +11,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: d13d77fdb741f7f7cf16e3d25c755f4363e56f93
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b6d800705509edc31b410d1e9cd30f8b53702010
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427484"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094402"
 ---
 # <a name="tutorial-4-extract-contextually-related-patterns"></a>Kurz 4: Extrakce vzorů souvisejících s kontextem
 
@@ -128,7 +129,7 @@ Označování entit v následujících krocích může být jednodušší, když
 
 2. Na konec adresy URL zadejte `Move Wayne Berry from Miami to Mount Vernon`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Newark to Columbus",
       "topScoringIntent": {
@@ -258,7 +259,7 @@ Názvy měst jsou, stejně jako jména lidí, nevypočitatelné. Můžou obsahov
 
 2. Na konec adresy URL zadejte `Move wayne berry from miami to mount vernon`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
-    ```JSON
+    ```json
     {
       "query": "Move Wayne Berry from Miami to Mount Vernon",
       "topScoringIntent": {

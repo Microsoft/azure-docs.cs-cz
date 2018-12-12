@@ -3,7 +3,7 @@ title: Doporučení k výkonu – Azure SQL Database | Dokumentace Microsoftu
 description: Azure SQL Database poskytuje doporučení pro vaše databáze SQL, které může zlepšit výkon aktuální dotaz.
 services: sql-database
 ms.service: sql-database
-ms.subservice: performance
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6a92e4d842734d38f79146ba2b5f112600f3dc3c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: MT
+ms.openlocfilehash: e1e6d22face70980370a5b6a19845fe0d39ed821
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064080"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863444"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Doporučení k výkonu pro SQL Database
 

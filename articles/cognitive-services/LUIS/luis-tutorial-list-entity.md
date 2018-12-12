@@ -1,5 +1,5 @@
 ---
-title: Popisek entity automaticky s entitou seznamu pomocí Node.js | Dokumentace Microsoftu
+title: Extact textu shody entity
 description: Zjistěte, jak přidat entitu seznamu umožňující LUIS popisek variace slova nebo fráze.
 services: cognitive-services
 author: diberry
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 42fde2b24f851129e24257bbfe6d65a96e235485
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: cb8f2ef4afa83b8e4d258a4227795593242e84bd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036775"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082250"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Zvyšte zjišťování entit pomocí seznamu entit 
 Tento kurz ukazuje použití [seznam entit](luis-concept-entity-types.md) zvýšit zjišťování entit. Seznam entit není nutné popisek, protože jde o přesnou shodu podmínek.  
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nejnovější [Node.js](https://nodejs.org)
-> * [Aplikace LUIS HomeAutomation](luis-get-started-create-app.md). Pokud nemáte aplikaci Domů Automation vytvořili, vytvořte novou aplikaci a přidejte předem připravených domény **HomeAutomation**. Trénování a publikování aplikace. 
+> * [Aplikace LUIS HomeAutomation](luis-get-started-create-app.md). Pokud nemáte aplikaci Domů Automation vytvořili, vytvořte novou aplikaci a přidejte předem připravených domény **HomeAutomation**. Trénujte a publikujte aplikaci. 
 > * [AuthoringKey](luis-concept-keys.md#authoring-key), [EndpointKey](luis-concept-keys.md#endpoint-key) (je-li dotazování v mnoha případech), ID aplikace, ID verze a [oblasti](luis-reference-regions.md) aplikace LUIS.
 
 > [!Tip]
@@ -81,15 +81,16 @@ Vytvořte soubor Node.js a zkopírujte do něj následující kód. Změňte hod
 
 Závislosti na NPM nainstalovat a spustit kód, který vytvoří seznam entit, použijte následující příkaz:
 
-```Javascript
+```console
 npm install && node add-entity-list.js
 ```
 
 Výstup spuštění je ID entity seznamu:
 
-```Javascript
+```console
 026e92b3-4834-484f-8608-6114a83b03a6
 ```
+
 ## <a name="train-the-model"></a>Trénování modelu
 Trénování služby LUIS v pořadí pro nový seznam ovlivnit výsledky dotazu. Školení je proces dvojdílného školení, pak kontrola stavu, pokud se provádí na školení. Aplikace s více modely může trvat několik minut pro trénování. Následující kód trénovat aplikace pak počká, dokud neproběhne školení. Tento kód použije strategie opakování a počkejte, aby 429 "příliš mnoho požadavků" Chyba. 
 
@@ -99,13 +100,13 @@ Vytvořte soubor Node.js a zkopírujte do něj následující kód. Změňte hod
 
 Použijte následující příkaz pro spuštění kódu pro trénování aplikace:
 
-```Javascript
+```console
 node train.js
 ```
 
 Výstup spuštění je stav každé iteraci trénování modelů služby LUIS. Následující spuštění vyžaduje pouze jedna kontrola školení:
 
-```Javascript
+```console
 1 trained = true
 [ { modelId: '2c549f95-867a-4189-9c35-44b95c78b70f',
     details: { statusId: 2, status: 'UpToDate', exampleCount: 45 } },
@@ -130,13 +131,13 @@ Vytvořte soubor Node.js a zkopírujte do něj následující kód. Změňte hod
 
 Použijte následující příkaz pro spuštění kódu k dotazování aplikace:
 
-```Javascript
+```console
 node publish.js
 ```
 
 Následující výstup zahrnuje adresu url koncového bodu pro všechny dotazy. Skutečné výsledky JSON by obsahovat skutečné ID aplikace. 
 
-```JSON
+```json
 { 
   versionId: null,
   isStaging: false,
@@ -157,13 +158,13 @@ Vytvořte soubor Node.js a zkopírujte do něj následující kód. Změňte hod
 
 Použijte následující příkaz pro spuštění kódu a dotazování aplikací:
 
-```Javascript
+```console
 node train.js
 ```
 
 Výstup se výsledky dotazu. Protože kód přidá **podrobné** dvojice název/hodnota řetězce dotazu, výstup zahrnuje veškeré záměry a jejich výsledky:
 
-```JSON
+```json
 {
   "query": "turn up the heat",
   "topScoringIntent": {

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: df5c52de14368896f77e48ebfd4ba7e4b4f38b67
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: bf02fb315162ffa183ed4137734ff8041ef75fe5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837675"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096584"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Používání úložiště objektů blob v Azure pro službu IIS a Azure table storage pro události s využitím Log Analytics
 
@@ -53,7 +53,7 @@ Ke službě Log Analytics pro tyto protokoly diagnostiky Azure shromažďovat pr
 >
 >
 
-Pro virtuální počítače, máte možnost instalace [agenta Log Analytics](../../log-analytics/log-analytics-quick-collect-azurevm.md) k virtuálnímu počítači povolit další statistiky. Kromě schopnost analyzovat protokoly událostí a protokoly služby IIS, můžete provádět další analýzu, včetně sledování změn konfigurace SQL posouzení a posouzení aktualizací.
+Pro virtuální počítače, máte možnost instalace [agenta Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md) k virtuálnímu počítači povolit další statistiky. Kromě schopnost analyzovat protokoly událostí a protokoly služby IIS, můžete provádět další analýzu, včetně sledování změn konfigurace SQL posouzení a posouzení aktualizací.
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Azure diagnostics na virtuálním počítači povolit protokol událostí a služby IIS protokolu kolekce
 Následujícím postupem povolte Azure diagnostics na virtuálním počítači pro shromažďování protokolů služby IIS a protokolu událostí na portálu Microsoft Azure.
@@ -148,7 +148,7 @@ Během přibližně 30 minut budete moct zobrazit data z účtu úložiště ve 
 >
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Azure diagnostics na virtuálním počítači povolit protokol událostí a služby IIS protokolu kolekce pomocí Powershellu
-Postupujte podle kroků v [konfigurace Log Analytics k indexování Azure diagnostics](../../log-analytics/log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) čtení z diagnostiky Azure, který se zapisovat do table storage pomocí Powershellu.
+Postupujte podle kroků v [konfigurace Log Analytics k indexování Azure diagnostics](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) čtení z diagnostiky Azure, který se zapisovat do table storage pomocí Powershellu.
 
 Pomocí prostředí Azure PowerShell můžete přesněji určit události, které jsou zapsány do služby Azure Storage.
 Další informace najdete v tématu [povolení diagnostiky v Azure Virtual Machines](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).

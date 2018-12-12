@@ -1,21 +1,21 @@
 ---
-title: Integrace připojení Apache Kafka se službou Azure Event Hubs | Microsoft Docs
-description: Použijte Apache Spark se službou Azure Event Hubs pro ekosystém Kafka.
+title: Integrace s Apache Kafka připojení Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek obsahuje informace o tom, jak používat Apache Spark pro Azure Event Hubs pro systém Kafka.
 services: event-hubs
 documentationcenter: .net
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: tutorial
-ms.custom: ''
-ms.date: 11/07/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 9a9972806c9691136bea380f9efd4e0d032deaf2
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: f405fe1c93ad17476ac47bc23951c65a5ea5db73
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285080"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091359"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Podpora integrace připojení Apache Kafka ve službě Azure Event Hubs (Preview)
 Se zvyšujícími se obchodními požadavky na příjem dat se zvyšuje i potřeba příjmu dat z nejrůznějších externích zdrojů a jímek. [Připojení Apache Kafka](https://kafka.apache.org/documentation/#connect) poskytuje takovou architekturu pro připojení a import nebo export dat do nebo z jakéhokoli externího systému, jako je MySQL, HDFS a systém souborů, prostřednictvím clusteru Kafka. Tento kurz vás provede používáním architektury připojení Kafka se službou Event Hubs s podporou Kafka.
@@ -155,7 +155,7 @@ Tato část vás provede aktivací konektorů FileStreamSource a FileStreamSink.
 ### <a name="cleanup"></a>Vyčištění
 Připojení Kafka vytváří témata centra událostí, do kterých se ukládají konfigurace, posuny a stav a která se zachovají i po zrušení clusteru připojení. Pokud toto zachování nevyžadujete, doporučujeme tato témata odstranit. Možná budete chtít odstranit také centrum událostí `connect-quickstart` vytvořené v rámci tohoto návodu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o službě Event Hubs a Event Hubs pro ekosystém Kafka najdete v následujícím tématu:  
 

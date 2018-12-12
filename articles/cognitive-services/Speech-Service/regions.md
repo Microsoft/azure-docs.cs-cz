@@ -1,5 +1,5 @@
 ---
-title: Oblasti služby řeči
+title: Oblastí – hlasové služby
 titlesuffix: Azure Cognitive Services
 description: Referenční informace pro oblasti Speech Service.
 services: cognitive-services
@@ -8,14 +8,15 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.author: mahilleb
-ms.openlocfilehash: 8d36036332e939075ffac8763bec9c23d8e4a3f7
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.custom: seodec18
+ms.openlocfilehash: d41213d72d40555d8dc5aeab76040fc556dae774
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712887"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091641"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service podporované oblasti
 
@@ -45,7 +46,7 @@ Sadou SDK pro řeč je k dispozici v těchto oblastech pro **rozpoznávání ře
 
 ### <a name="intent-recognition"></a>Rozpoznání záměru
 
-**Rozpoznání záměru** složek sadou SDK pro řeč oblasti podporují služba luis. Úplný seznam dostupných oblastí najdete v tématu [publikování oblasti a koncové body – LUIS](https://docs.microsoft.comazure/cognitive-services/luis/luis-reference-regions)
+**Rozpoznání záměru** složek sadou SDK pro řeč oblasti podporují služba luis. Úplný seznam dostupných oblastí najdete v tématu [publikování oblasti a koncové body – LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions)
 
 Dostupné oblasti pro **rozpoznání záměru** prostřednictvím sadou SDK pro řeč jsou uvedeny na [stránku oblasti služby Language Understanding](/azure/cognitive-services/luis/luis-reference-regions).
 

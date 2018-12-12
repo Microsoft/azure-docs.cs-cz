@@ -1,10 +1,9 @@
 ---
-title: Kurz webové aplikace Python Flask pro službu Azure Cosmos DB | Dokumentace Microsoftu
+title: Kurz vývoje webové aplikace Python Flask pro službu Azure Cosmos DB
 description: Projděte si databázový kurz na téma, jak pomocí služby Azure Cosmos DB ukládat data a přistupovat k nim z webové aplikace Python Flask hostované v Azure. Naleznete zde řešení pro vývoj aplikací.
 keywords: Vývoj aplikací, python flask, webová aplikace python, vývoj pro web python
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
@@ -12,12 +11,12 @@ ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9470df09c2724bf89a371ec62e7fb8a7e2132c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: a2c7b7c5dc68bb96e0b54dc89f2c170cdb20c792
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953918"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081900"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Sestavení webové aplikace Python Flask využívající službu Azure Cosmos DB
 
@@ -430,11 +429,11 @@ Pokud je toto první aplikace Python, kterou jste spustili na svém počítači,
 
 Pokud jste projekt pojmenovali jinak než **tutorial** a na stránce hlasování se zobrazí chyba, ujistěte se, že soubor **\_\_init\_\_.py** odkazuje na následujícím řádku na správný projekt: `import tutorial.view`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Blahopřejeme! Dokončili jste svou první webovou aplikaci Python, která využívá službu Azure Cosmos DB, a publikovali jste ji v Azure.
 
 Pokud chcete do své webové aplikace přidat další funkce, podívejte se na rozhraní API dostupná v [sadě SDK služby Azure Cosmos DB pro Python](sql-api-sdk-python.md).
 
 Další informace o Azure, nástroji Visual Studio a Pythonu najdete v [Centru pro vývojáře v Pythonu](https://azure.microsoft.com/develop/python/). 
 
-Další kurzy Pythonu Flask najdete na stránce [Velký kurz na Flask, část I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 
+Další kurzy Pythonu Flask najdete na stránce [Velký kurz na Flask, část I: Hello, World!](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 

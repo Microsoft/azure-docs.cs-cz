@@ -1,6 +1,6 @@
 ---
-title: Kurz – Azure vyhrazené HSM nasazení HSM do existující virtuální sítě pomocí rozhraní příkazového řádku | Dokumentace Microsoftu
-description: Kurz ukazuje, jak nasadit vyhrazený HSM pomocí rozhraní příkazového řádku
+title: Kurz nasazení do existující virtuální sítě pomocí Azure CLI – vyhrazené modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
+description: Kurz ukazuje, jak nasadit vyhrazený modulu HSM do existující virtuální sítě pomocí rozhraní příkazového řádku
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
@@ -8,19 +8,19 @@ manager: mbaldwin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: ca30dc9d86db8faabfdd3791b74b9f86c9480ea5
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: d8171a3c506ed53c986db6cddd959411f0a146aa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679643"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080312"
 ---
-# <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Kurz – moduly hardwarového zabezpečení nasazení do existující virtuální sítě pomocí rozhraní příkazového řádku
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Kurz: Nasazení HSM do existující virtuální sítě pomocí rozhraní příkazového řádku
 
 Azure vyhrazené HSM nabízí fyzické zařízení pro použití výhradně zákazník, s kompletní správu kontroly a odpovědnosti úplné řízení. Použití fyzického zařízení vytvoří Microsoft k řízení zařízení přidělení potřeba zajistit, že je efektivně spravovat kapacity. V důsledku toho v rámci předplatného Azure vyhrazené HSM nebude služba obvykle viditelná jenom pro zřizování prostředků. Žádné zákazníků Azure, které vyžadují přístup ke službě vyhrazené HSM nutné kontaktovat příslušného manažera účtu Microsoft k žádosti o registraci pro službu vyhrazené modulu hardwarového zabezpečení. Pouze po úspěšném dokončení tohoto procesu bude zřizování možné. 
 
@@ -130,7 +130,7 @@ Po nastavení hodnoty parametrů jsou soubory budete muset nahrát do sdílené 
 
 Příkazové okno má možnost nahrávání a stahování na panelu nástrojů a vyberte tento postup nahrání souborů šablonu a parametry do sdílené složky:
 
-![stav odběru](media/tutorial-deploy-hsm-cli/file-share.png)
+![sdílené složky](media/tutorial-deploy-hsm-cli/file-share.png)
 
 Jakmile soubory odešlete, jste připraveni k vytváření prostředků. Před vytvořením nového modulu hardwarového zabezpečení jsou prostředky, které existují některé požadovaného prostředky, by měl zajistit na místě. Musí mít virtuální síť s rozsahy adres podsítě pro výpočty, moduly hardwarového zabezpečení a brány. Následující příkazy slouží jako příklad co byste vytvořit virtuální síť.
 
@@ -191,7 +191,7 @@ az resource show \
    --ids /subscriptions/$subid/resourceGroups/myRG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSM2
 ```
 
-![Stav zřizování](media/tutorial-deploy-hsm-cli/progress-status2.png)
+![výstup zřizování](media/tutorial-deploy-hsm-cli/progress-status2.png)
 
 Nyní také moct zobrazit prostředky pomocí [Azure resource Exploreru](https://resources.azure.com/).   Jednou v Průzkumníku rozbalte "předplatné" na levé straně, rozšířit vaše konkrétní předplatné pro vyhrazené modulu hardwarového zabezpečení, rozbalte položku "skupiny prostředků", rozbalte skupinu prostředků, které jste použili a nakonec vyberte položku "resources".
 

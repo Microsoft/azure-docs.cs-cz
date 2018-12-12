@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 4fde6d203999b15f0f60d4879c2fdc595e1fb7e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ece6780803809829e69fccc320ae65a0c7b0f94b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835552"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089254"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Rychlý start: Sestavení aplikace Xamarin.Forms s rozhraním API MongoDB v prostředí .NET a na webu Azure Portal
 
@@ -156,7 +156,7 @@ Následující fragmenty kódu pocházejí ze `MongoService` třídy v následuj
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace.
 
-1. Na webu [Azure Portal](http://portal.azure.com/) klikněte v účtu databáze Azure Cosmos v levém navigačním panelu na možnost **Připojovací řetězec** a potom klikněte na **Klíče pro čtení i zápis**. V dalších krocích pomocí tlačítek pro kopírování na pravé straně obrazovky zkopírujete Primární připojovací řetězec.
+1. Na webu [Azure Portal](https://portal.azure.com/) klikněte v účtu databáze Azure Cosmos v levém navigačním panelu na možnost **Připojovací řetězec** a potom klikněte na **Klíče pro čtení i zápis**. V dalších krocích pomocí tlačítek pro kopírování na pravé straně obrazovky zkopírujete Primární připojovací řetězec.
 
 2. Otevřete soubor **APIKeys.cs** v adresáři **Helpers** projektu **TaskList.Core**.
 

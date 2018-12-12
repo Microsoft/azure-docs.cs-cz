@@ -1,21 +1,22 @@
 ---
-title: Test služby batch s 1000 příklad projevy
-titleSuffix: Azure Cognitive Services
+title: Testovací služby batch
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Pomocí služby batch Language Understanding (LUIS) testování sad vyhledejte projevy s nesprávnou záměry a entity.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 1560b8e574b0932e258353648c73f030ef19d314
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 9ad71c34bdf88023bcb0a4115fc02ddf3a8d7624
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333492"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086394"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Testování pomocí sady projevy příklad služby batch
 

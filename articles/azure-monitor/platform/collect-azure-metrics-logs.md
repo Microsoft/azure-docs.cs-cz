@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e8b8dac6d877ab8ab4a0abcdd64ceae1aa48d3ad
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 33ceece70c920bcb8bfd49fcfc8ff544af592b6b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848540"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088200"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -38,7 +38,7 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 | Application insights    |                                         | Spojovací čára   | Spojovací čára   | [Application Insights Connector](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (Preview) |
 | Účty Automation     | Microsoft.Automation/AutomationAccounts | Diagnostika |             | [Další informace](../../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Účty Batch          | Microsoft.Batch/batchAccounts           | Diagnostika | Diagnostika | |
-| Klasické cloudové služby  |                                         | Úložiště     |             | [Další informace](azure-storage-iis-table.md) |
+| Klasické cloudové služby  |                                         | Storage     |             | [Další informace](azure-storage-iis-table.md) |
 | Kognitivní služby      | Microsoft.CognitiveServices/accounts    |             | Diagnostika | |
 | Data Lake analytics     | Microsoft.DataLakeAnalytics/accounts    | Diagnostika |             | |
 | Data Lake store         | Microsoft.DataLakeStore/accounts        | Diagnostika |             | |
@@ -51,9 +51,9 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 | Trezory služby Recovery         | Microsoft.RecoveryServices/vaults       |             |             | [Analýza (Preview) služby Azure Recovery Services](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Služby hledání         | Microsoft.Search/searchServices         | Diagnostika | Diagnostika | |
 | Obor názvů služby Service Bus   | Microsoft.ServiceBus/namespaces         | Diagnostika | Diagnostika | [Služba Service Bus Analytics (Náhled)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-| Service Fabric          |                                         | Úložiště     |             | [Analýza služby Service Fabric (verze Preview)](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
-| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnostika | [Azure SQL Analytics (Náhled)](../../log-analytics/log-analytics-azure-sql.md) |
-| Úložiště                 |                                         |             | Skript      | [Analýza úložiště Azure (Preview)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
+| Service Fabric          |                                         | Storage     |             | [Analýza služby Service Fabric (verze Preview)](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
+| SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | Diagnostika | [Azure SQL Analytics (Náhled)](../../azure-monitor/insights/azure-sql.md) |
+| Storage                 |                                         |             | Skript      | [Analýza úložiště Azure (Preview)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtuální počítače        | Microsoft.Compute/virtualMachines       | Linka   | Linka <br> Diagnostika  | |
 | Škálovací sady virtuálních počítačů | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnostika | |
 | Farmy webových serverů        | Microsoft.Web/serverfarms               |             | Diagnostika | |
@@ -61,7 +61,7 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 
 
 > [!NOTE]
-> Monitorování virtuálních počítačů Azure (Linux i Windows), doporučujeme nejprve nainstalovat [rozšíření virtuálního počítače Log Analytics](../../log-analytics/log-analytics-quick-collect-azurevm.md). Agent poskytuje přehled shromážděných z v rámci vašich virtuálních počítačů. Můžete také použít rozšíření pro škálovací sady virtuálních počítačů.
+> Monitorování virtuálních počítačů Azure (Linux i Windows), doporučujeme nejprve nainstalovat [rozšíření virtuálního počítače Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md). Agent poskytuje přehled shromážděných z v rámci vašich virtuálních počítačů. Můžete také použít rozšíření pro škálovací sady virtuálních počítačů.
 >
 >
 
@@ -151,7 +151,7 @@ Další informace o [Application Insights connector](https://blogs.technet.micro
 
 ## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>Skripty ke shromažďování a odesílání dat do služby Log Analytics
 
-Pro služby Azure, které neposkytují přímý způsob, jak odesílat protokoly a metriky do Log Analytics můžete použít skriptu Azure Automation ke shromažďování protokolů a metrik. Skript potom může data odeslat na pomocí Log Analytics [rozhraní API kolekce dat](../../log-analytics/log-analytics-data-collector-api.md)
+Pro služby Azure, které neposkytují přímý způsob, jak odesílat protokoly a metriky do Log Analytics můžete použít skriptu Azure Automation ke shromažďování protokolů a metrik. Skript potom může data odeslat na pomocí Log Analytics [rozhraní API kolekce dat](../../azure-monitor/platform/data-collector-api.md)
 
 Galerie Azure šablony má [příklady použití Azure Automation](https://azure.microsoft.com/resources/templates/?term=OMS) ke shromažďování dat ze služby a odesílá je do Log Analytics.
 

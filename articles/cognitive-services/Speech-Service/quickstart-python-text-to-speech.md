@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Převod převod textu na řeč, Python - Speech Service'
+title: 'Rychlý start: Převod převod textu na řeč, Python – hlasové služby'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí Pythonu a rozhraní REST API pro převod textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči. Rozhraní REST API také však podporuje prostý text (ASCII nebo UTF-8), není-li zadána ve formátu prostého textu, že odpověď se vrátí ve výchozí hlasu Speech Service a language.
+description: V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí Pythonu a rozhraní REST API pro převod textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -10,12 +10,13 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 38bcd67dfb6d9b1a1955658872fee7b8b7a14a0c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.custom: seodec18
+ms.openlocfilehash: 7512c443c49f1518d6a6f7ace7e981d3508b1d7a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52447478"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090053"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Rychlý start: Převod převod textu na řeč pomocí Pythonu
 

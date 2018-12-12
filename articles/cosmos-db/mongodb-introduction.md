@@ -1,26 +1,24 @@
 ---
-title: 'Úvod do Azure Cosmos DB: rozhraní MongoDB API | Microsoft Docs'
+title: 'Úvod do Azure Cosmos DB: rozhraní MongoDB API'
 description: Zjistěte, jak můžete používat Azure Cosmos DB k ukládání a dotazování velkých objemů dokumentů JSON s nízkou latencí pomocí oblíbených rozhraní OSS MongoDB API.
 keywords: Co je MongoDB
 services: cosmos-db
 author: SnehaGunda
-manager: slyons
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: 1f21065414fec6bbe943014e954ecb45af2bb6b9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 0471dd481dccf1312d1d30e619e69533258b34c5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227871"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083151"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Úvod do Azure Cosmos DB: rozhraní MongoDB API
 
-[Azure Cosmos DB](../cosmos-db/introduction.md) je globálně distribuovaná databázová služba Microsoftu s více modely pro klíčové aplikace. Azure Cosmos DB poskytuje [globální distribuci na klíč](distribute-data-globally.md), [elastické škálování propustnosti a úložiště](partition-data.md) po celém světě, latence v řádu milisekund na 99. percentilu, zaručenou vysokou dostupnost. To vše je zajištěno [nejlepšími smlouvami SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Azure Cosmos DB [automaticky indexuje data](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), aniž by vyžadovala zapojení správy schémat a indexů. Zahrnuje více modelů a podporuje modely dokumentů, klíčových hodnot, grafů a sloupcových dat. 
+[Azure Cosmos DB](../cosmos-db/introduction.md) je globálně distribuovaná databázová služba Microsoftu s více modely pro klíčové aplikace. Azure Cosmos DB poskytuje [globální distribuci na klíč](distribute-data-globally.md), [elastické škálování propustnosti a úložiště](partition-data.md) po celém světě, latence v řádu milisekund na 99. percentilu, zaručenou vysokou dostupnost. To vše je zajištěno [nejlepšími smlouvami SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Azure Cosmos DB [automaticky indexuje data](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), aniž by vyžadovala zapojení správy schémat a indexů. Zahrnuje více modelů a podporuje modely dokumentů, klíčových hodnot, grafů a sloupcových dat. 
 
 ![Azure Cosmos DB: rozhraní MongoDB API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
@@ -58,7 +56,7 @@ Pomocí rychlých startů MongoDB vytvořte účet Azure Cosmos DB a migrujte sv
 * [Vytvoření webové aplikace rozhraní MongoDB API pomocí jazyka .NET a Azure Portalu](create-mongodb-dotnet.md)
 * [Vytvoření konzolové aplikace rozhraní MongoDB API pomocí jazyka Java a Azure Portalu](create-mongodb-java.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Informace o rozhraní MongoDB API služby Azure Cosmos DB jsou integrované do souhrnné dokumentace k Azure Cosmos DB, ale tady je několik připomínek, které vám pomůžou začít:
 

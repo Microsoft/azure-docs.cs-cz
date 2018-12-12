@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: d834b7f43d961400e2d5080a46cf921d719f3393
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 9f2ed9c9059fa76a55ebd26fa3175605e89a4cdd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684847"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090260"
 ---
 # <a name="working-with-azure-cosmos-databases-containers-and-items"></a>Práce s databází Azure Cosmos, kontejnery a položek
 
@@ -53,7 +53,7 @@ Při vytváření kontejneru Azure Cosmos, nakonfigurujete propustnost v jednom 
 
 * **Sdílené zřízená propustnost** režimu: Tyto kontejnery sdílejí zřízená propustnost s dalších kontejnerů ve stejné databázi (s výjimkou těchto kontejnerů, které jsou nakonfigurované s vyhrazenou zřízená propustnost). Jinými slovy zřízená propustnost v databázi se sdílí mezi "sdílené" kontejnery. Další informace najdete v tématu [konfigurace zřízenou propustnost v databázi Azure Cosmos](how-to-provision-database-throughput.md).
 
-Azure Cosmos kontejneru můžete škálovat Elasticky, zda vytvořit kontejnery s oběma "sdílené" nebo "dedicated" zřízené propustnosti režimy, to znamená, že mají neomezené úložiště a zřízenou propustnost.  
+Kontejner služby Azure Cosmos můžete Elasticky škálovat, zda vytvořit kontejnery s oběma "sdílené" nebo "vyhrazených" zřízené propustnosti režimy.
 
 Kontejner služby Azure Cosmos je nezávislý na schématu kontejner položek. Položky v rámci kontejneru může mít libovolný schémata. Například položky představující osobu, položku představující automobilu mohou být umístěny ve stejném kontejneru. Ve výchozím nastavení získat všechny položky, které přidáte do kontejneru automaticky indexován bez vyžadování jakéhokoli explicitní index nebo Správa schématu. Indexování chování můžete přizpůsobit tím, že nakonfigurujete zásady indexování v kontejneru. 
 

@@ -8,12 +8,12 @@ ms.component: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 7f23ddc5b8f58403e5d2e69f11bd39b859f8d548
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b3077920f08688d2cc84997ef8712183e8d7a09a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844447"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098062"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Služba Azure Cosmos DB: Vytváření, zadávání dotazů a procházení grafu v konzole Gremlin
 
@@ -28,11 +28,11 @@ ms.locfileid: "52844447"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
-Tento rychlý start popisuje způsob vytvoření účtu rozhraní [Gremlin API](graph-introduction.md) služby Azure Cosmos DB, databáze a grafu (kontejneru) pomocí webu Azure Portal a následné použití [konzoly Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z webu [Apache TinkerPop](http://tinkerpop.apache.org) pro práci s daty rozhraní Gremlin API. V tomto kurzu se naučíte vytvářet vrcholy a okraje a zadávat k nim dotazy, a to aktualizací vlastnosti vrcholu, a dále zadávat dotazy pro vrcholy, procházet graf a vyřadit konkrétní vrchol.
+Tento rychlý start popisuje způsob vytvoření účtu rozhraní [Gremlin API](graph-introduction.md) služby Azure Cosmos DB, databáze a grafu (kontejneru) pomocí webu Azure Portal a následné použití [konzoly Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z webu [Apache TinkerPop](https://tinkerpop.apache.org) pro práci s daty rozhraní Gremlin API. V tomto kurzu se naučíte vytvářet vrcholy a okraje a zadávat k nim dotazy, a to aktualizací vlastnosti vrcholu, a dále zadávat dotazy pro vrcholy, procházet graf a vyřadit konkrétní vrchol.
 
 ![Služba Azure Cosmos DB z konzoly Apache Gremlin](./media/create-graph-gremlin-console/gremlin-console.png)
 
-Konzola Gremlin je založena na technologii Groovy nebo Java a běží v systémech Linux, Mac a Windows. Můžete si ji stáhnout z [webu Apache TinkerPop](http://tinkerpop.apache.org/downloads.html).
+Konzola Gremlin je založena na technologii Groovy nebo Java a běží v systémech Linux, Mac a Windows. Můžete si ji stáhnout z [webu Apache TinkerPop](https://tinkerpop.apache.org/downloads.html).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -40,7 +40,7 @@ Abyste si mohli vytvořit účet služby Azure Cosmos DB pro tento rychlý start
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Musíte si také nainstalovat [konzolu Gremlin](http://tinkerpop.apache.org/). Použijte verzi 3.2.5 nebo vyšší. (Pomocí konzoly Gremlin na Windows, je potřeba nainstalovat [modul Runtime Java](https://www.oracle.com/technetwork/java/javase/overview/index.html).)
+Musíte si také nainstalovat [konzolu Gremlin](https://tinkerpop.apache.org/). Použijte verzi 3.2.5 nebo vyšší. (Pomocí konzoly Gremlin na Windows, je potřeba nainstalovat [modul Runtime Java](https://www.oracle.com/technetwork/java/javase/overview/index.html).)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -80,7 +80,7 @@ connectionPool: {
 serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
 ```
 
-3. V terminálu spuštěním příkazu `bin/gremlin.bat` nebo `bin/gremlin.sh` spusťte [konzolu Gremlin](http://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
+3. V terminálu spuštěním příkazu `bin/gremlin.bat` nebo `bin/gremlin.sh` spusťte [konzolu Gremlin](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/).
 4. V terminálu se spuštěním příkazu `:remote connect tinkerpop.server conf/remote-secure.yaml` připojte k aplikační službě.
 
     > [!TIP]

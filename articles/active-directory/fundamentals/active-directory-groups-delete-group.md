@@ -1,6 +1,6 @@
 ---
-title: Odstranění skupiny pomocí služby Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak odstranit skupinu pomocí Azure Active Directory.
+title: Odstranění skupiny – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak odstranit skupinu pomocí Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: lizross
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 014fe487d23a6c75e94ca2708ed15044bd6cf53b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 6c08022b47fb1a118e95a54eedf9b5239496ebf7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574322"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092226"
 ---
-# <a name="how-to-delete-a-group-using-azure-active-directory"></a>Postupy: odstranění skupiny pomocí služby Azure Active Directory
-Můžete odstranit skupinu pro libovolný počet důvody, ale obvykle bude možné, protože jste:
+# <a name="delete-a-group-using-azure-active-directory"></a>Odstranění skupiny pomocí služby Azure Active Directory
+Můžete odstranit skupinu Azure Active Directory (Azure AD) pro z nejrůznějších důvodů, ale obvykle bude možné, protože jste:
 
 - Nesprávně nastavena **typ skupiny** nesprávné možnosti
 
@@ -29,7 +29,7 @@ Můžete odstranit skupinu pro libovolný počet důvody, ale obvykle bude možn
 - Už nepotřebujete skupiny
 
 ## <a name="to-delete-a-group"></a>Chcete odstranit skupinu
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
 2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
 

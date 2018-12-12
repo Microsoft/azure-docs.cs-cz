@@ -1,6 +1,6 @@
 ---
-title: Jak obnovit nebo trvale odebrat nedávno odstraněného uživatele v Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit obnovitelné uživatele, obnovení odstraněného uživatele nebo trvale odstranit uživatele v Azure Active Directory.
+title: Obnovit nebo trvale odebrat nedávno odstraněného uživatele – Azure Active Directory | Dokumentace Microsoftu
+description: Postup zobrazení obnovitelné uživatelů, obnovení odstraněného uživatele nebo trvale odstranit uživatele v Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: 88d3c672cd072cd4b252f7ce4ede3a4c7b13a7db
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 5f747d90368b636cb2ab8cf0e20ef5e676f99af6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736168"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080499"
 ---
-# <a name="how-to-restore-or-permanently-remove-a-recently-deleted-user-with-azure-active-directory"></a>Postupy: obnovení nebo trvale odebrat nedávno odstraněného uživatele pomocí služby Azure Active Directory
+# <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Obnovení nebo odeberte nedávno odstraněného uživatele pomocí služby Azure Active Directory
 Po odstranění uživatele účet zůstane v pozastaveném stavu po dobu 30 dnů. Během tohoto časového období 30 dnů uživatelský účet můžete obnovit, spolu se všemi vlastnostmi. Po uplynutí 30 dnů okno uživatele je automaticky a chcete trvale odstranit.
 
 Můžete zobrazit obnovitelné uživatelům, obnovení odstraněného uživatele nebo trvale odstranit uživatele pomocí Azure Active Directory (Azure AD) na webu Azure Portal.
@@ -42,7 +42,7 @@ Musí mít jeden z následujících rolí pro obnovení a trvale odstranit uživ
 Zobrazí se všichni uživatelé, které byly odstraněny před méně než 30 dny. Tito uživatelé můžou obnovit.
 
 ### <a name="to-view-your-restorable-users"></a>Chcete-li zobrazit obnovitelné uživatele
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
 2. Vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **odstraněných uživatelů**.
 

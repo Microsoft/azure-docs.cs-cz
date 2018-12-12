@@ -1,21 +1,20 @@
 ---
-title: Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí C++ | Microsoft Docs
+title: Jak používat Azure Table Storage a Azure Cosmos DB Table API s C++
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: cpp
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 520c0868e51f1212ee1beca8967d3c08f1d6e869
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
-ms.translationtype: HT
+ms.openlocfilehash: 9bfc6ed2c781ddc54815665c492e7f2413033ca0
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797909"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087112"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Jak používat službu Azure Table Storage a rozhraní Table API služby Azure Cosmos DB pomocí C++
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -25,7 +24,7 @@ ms.locfileid: "34797909"
 Tato příručka ukazuje, jak provádět běžné scénáře pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB. Ukázky jsou napsané v C++ a využívají [klientskou knihovnu služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md). Popsané scénáře zahrnují **vytvoření a odstranění tabulky** a **práci s entitami tabulky**.
 
 > [!NOTE]
-> Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Doporučená verze klientské knihovny služby Storage je 2.2.0, která je k dispozici přes [NuGet](http://www.nuget.org/packages/wastorage) nebo [GitHub](https://github.com/Azure/azure-storage-cpp/).
+> Tato příručka je určená pro klientskou knihovnu služby Azure Storage pro C++ verze 1.0.0 nebo novější. Doporučená verze klientské knihovny služby Storage je 2.2.0, která je k dispozici přes [NuGet](https://www.nuget.org/packages/wastorage) nebo [GitHub](https://github.com/Azure/azure-storage-cpp/).
 > 
 
 ## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
@@ -43,7 +42,7 @@ V této příručce budete používat funkce úložiště, které je možné spu
 Klientskou knihovnu služby Azure Storage pro C++ můžete nainstalovat následujícími způsoby:
 
 * **Linux:** Postupujte podle pokynů uvedených na stránce [souboru README klientské knihovny služby Azure Storage pro C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).  
-* **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Do [konzoly Správce balíčků NuGet](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) zadejte následující příkaz a stiskněte Enter.  
+* **Windows:** V sadě Visual Studio klikněte na **Nástroje > Správce balíčků NuGet > Konzola Správce balíčků**. Do [konzoly Správce balíčků NuGet](/nuget/tools/package-manager-console) zadejte následující příkaz a stiskněte Enter.  
   
      Install-Package wastorage
 
@@ -473,11 +472,11 @@ if (table.delete_table_if_exists())
   - V dialogovém okně **Stránky vlastností** rozbalte **Vlastnosti konfigurace**, pak rozbalte **C/C++** a vyberte **Jazyk**.
   - Nastavte **Režim přizpůsobení** na hodnotu **Ne**.
    
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o službě Azure Storage a rozhraní Table API ve službě Azure Cosmos DB najdete na následujících odkazech: 
 
 * [Úvod do rozhraní Table API](table-introduction.md)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 * [Výpis prostředků Azure Storage v C++](../storage/common/storage-c-plus-plus-enumeration.md)
-* [Klientská knihovna služby Storage pro C++ – referenční informace](http://azure.github.io/azure-storage-cpp)
+* [Klientská knihovna služby Storage pro C++ – referenční informace](https://azure.github.io/azure-storage-cpp)
 * [Dokumentace ke službě Azure Storage](https://azure.microsoft.com/documentation/services/storage/)

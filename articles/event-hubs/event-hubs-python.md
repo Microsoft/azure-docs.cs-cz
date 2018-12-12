@@ -1,5 +1,5 @@
 ---
-title: Použití Pythonu k odesílání a příjem zpráv ze služby Azure Event Hubs | Dokumentace Microsoftu
+title: Použití Pythonu k odesílání a příjem zpráv – Azure Event Hubs | Dokumentace Microsoftu
 description: Zjistěte, jak odesílat události pro příjem událostí z a zachycení událostí streamování pomocí Event Hubs pomocí Pythonu.
 keywords: ''
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 9c9c1bd909222ebb3fed57fb31c4f19404382cd4
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 4a0e2cd7e0c768512e1aafc042fe55338fdc206e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52730128"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084970"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Jak z aplikace v Pythonu pomocí služby Azure Event Hubs
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Další informace najdete v tématu [Úvod do služby Event Hubs](event-hubs-what-is-event-hubs.md). 

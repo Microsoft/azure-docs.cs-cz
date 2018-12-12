@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží se službou Azure IoT Edge | Microsoft Docs
-description: Řešení běžných potíží a seznámení s dovednostmi souvisejícími s řešením potíží se službou Azure IoT Edge
+title: Řešení potíží – Azure IoT Edge | Dokumentace Microsoftu
+description: Další standardní diagnostiky dovednosti pro Azure IoT Edge, třeba načítání protokoly a stavu komponenty použijte tento článek a při řešení běžných problémů
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a553798a3ac15340805984a0e87312875f82c46c
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 448fe3e7d6f3129ce6a40494abcf993f6dc4e4f7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567651"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081398"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -243,7 +244,7 @@ Když se zobrazí tato chyba, ho mohli vyřešit tak, že konfigurace názvu DNS
 1. Na webu Azure Portal přejděte na stránku přehled vašeho virtuálního počítače. 
 2. Vyberte **konfigurace** pod názvem DNS. Pokud je váš virtuální počítač už nakonfigurovaný název DNS, není nutné konfigurovat nové. 
 
-   ![Konfigurace názvu DNS](./media/troubleshoot/configure-dns.png)
+   ![Nakonfigurujte název DNS virtuálního počítače](./media/troubleshoot/configure-dns.png)
 
 3. Zadejte hodnotu pro **popisku názvu DNS** a vyberte **Uložit**.
 4. Zkopírujte nový název DNS, které by měly být ve formátu  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
@@ -274,7 +275,7 @@ V uživatelském rozhraní:
 
 Na portálu ze *podrobnosti o zařízení*->*nastavit moduly*->*konfigurovat rozšířená nastavení modulu Runtime Edge*, vytvořte proměnnou prostředí volá se, *OptimizeForPerformance* , která je nastavena na *false* pro *Centrum Edge*.
 
-![optimizeforperformance](./media/troubleshoot/OptimizeForPerformanceFalse.png)
+![OptimizeForPerformance nastavena na hodnotu false](./media/troubleshoot/optimizeforperformance-false.png)
 
 **OR**
 

@@ -1,7 +1,7 @@
 ---
 title: Omezení a hranice – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Úplný seznam omezení napříč QnA Maker.
+description: Nástroj QnA Maker má meta omezení pro části znalostní báze knowledge base a služby. Je důležité udržovat znalostní báze v rámci tyto limity, aby bylo možné testovat a publikovat.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 53fadc0e3ea21b94ca656774baf077192c0394b4
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.custom: seodec18
+ms.openlocfilehash: 772153040ac76f4b7bbee55c48527a841fc69037
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50137289"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084778"
 ---
-# <a name="qna-maker-limits"></a>Omezení nástroje QnA Maker
+# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Omezení nástroje QnA Maker znalostní báze knowledge base a hranice
 Úplný seznam omezení napříč QnA Maker.
 
 ## <a name="knowledge-bases"></a>Znalostních bází

@@ -1,21 +1,22 @@
 ---
-title: Osvědčené postupy pro vytváření aplikací pomocí služby LUIS – Language Understanding
-titleSuffix: Azure Cognitive Services
-description: Podívejte se na LUIS osvědčené postupy pro dosažení nejlepších výsledků.
+title: Osvědčené postupy
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Podívejte se na LUIS osvědčené postupy k dosažení nejlepších výsledků z modelu aplikace LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6b7b9c8a2a3e7da1628ef3e6f93a4b632ce38615
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: e63d6ed584c0e8afc823bbcdc6e70ceabbf43db6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637776"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085276"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Osvědčené postupy pro vytváření aplikace language understanding pomocí služeb Cognitive Services
 Proces tvorby aplikace používejte k sestavení aplikace LUIS. 
@@ -50,10 +51,10 @@ Pokud je slovník mezi dvěma záměry stejná, kombinovat záměr a používán
 
 Vezměte v úvahu následující příklad projevy:
 
-```
-Book a flight
-Book a hotel
-```
+|Ukázkové promluvy|
+|--|
+|Kniha let|
+|Kniha hotelu|
 
 "Rezervovat let" a "Rezervovat hotel" použít stejné slovník "knihy". To je překrývající se proto musí být stejná záměr s jiná slova letů a hotelů extrahovat entity. 
 

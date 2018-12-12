@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 70fa8c5af4f00500c39ce3832e182a5532721799
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 1f28bf71805fbdc86fd0733757c7f2587fc15b12
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419703"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087696"
 ---
-# <a name="qna-maker-rest-api-with-java"></a>Nástroj QnA Maker REST API s využitím Javy 
+# <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>Jak používat rozhraní REST API nástroje QnA Maker s Javou 
 <a name="HOLTop"></a>
 
 V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft](../Overview/overview.md) s Javou postupujte takto.

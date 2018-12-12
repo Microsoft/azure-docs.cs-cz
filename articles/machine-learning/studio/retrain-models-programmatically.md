@@ -1,10 +1,10 @@
 ---
 title: Programové přeučování modelů Machine Learning Studio – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak programově přeučit modelu a aktualizovat webovou službu, která používá nově trénovaného modelu ve službě Azure Machine Learning.
+description: Zjistěte, jak prostřednictvím kódu programu programovém přeučení modelů pomocí C# a provedení dávky služby Machine Learning service.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=yahajiza, author=YasinMSFT)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: b38143fe6f1f1cf3e65a2989e1b0a71c28530b2a
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: da3edf7bc17240dabcb5519317f38bdb468be9f2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52313381"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099983"
 ---
 # <a name="retrain-machine-learning-studio-models-programmatically"></a>Programová obnova modelů Machine Learning Studio
 V tomto návodu se dozvíte, jak prostřednictvím kódu programu přeučování webové služby Azure Machine Learning Studio pomocí C# a provedení dávky služby Machine Learning service.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 9cffbeae3e73682f5e76523de7ee607285c9fc75
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 10ae943711fcd7516b0fdbe982fd5d9e09227bdc
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238622"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864974"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Co zvážit při plánování nasazení Azure Stack
 Než nasadíte Azure Stack Development Kit (ASDK), zkontrolujte, zda že splňuje požadavky popsané v tomto článku hostitelského počítače development kit.
@@ -121,7 +121,7 @@ Podporovaný je jenom protokol IPv4. Nemůžete vytvořit sítě IPv6.
 Ověřte si dostupnost serveru DHCP v síti, do které se síťová karta připojuje. Pokud server DHCP není dostupný, připravte další statickou síť IPv4 (kromě té, kterou používá hostitel). Tuto IP adresu a bránu zadejte jako parametr nasazení.
 
 ### <a name="internet-access"></a>Přístup k internetu
-Azure Stack vyžaduje přístup k Internetu, buď přímo nebo prostřednictvím transparentní proxy server. Azure Stack nepodporuje konfigurace webového proxy serveru na povolení přístupu k Internetu. IP adresa hostitele i nová IP adresa přiřazená MAS-BGPNAT01 (pomocí DHCP nebo statická IP adresa), musí mít přístup k Internetu. V rámci domén graph.windows.net a login.microsoftonline.com se používají porty 80 a 443.
+Azure Stack vyžaduje přístup k Internetu, buď přímo nebo prostřednictvím transparentní proxy server. Azure Stack nepodporuje konfigurace webového proxy serveru na povolení přístupu k Internetu. IP adresa hostitele i nová IP adresa přiřazená AzS-BGPNAT01 (pomocí DHCP nebo statická IP adresa), musí mít přístup k Internetu. V rámci domén graph.windows.net a login.microsoftonline.com se používají porty 80 a 443.
 
 
 ## <a name="next-steps"></a>Další postup

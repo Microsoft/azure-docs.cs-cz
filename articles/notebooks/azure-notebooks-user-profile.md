@@ -1,6 +1,6 @@
 ---
-title: Profil uživatele a ID pro použití s poznámkovými bloky Azure | Dokumentace Microsoftu
-description: Jak vytvořit a spravovat vaše ID profilu a uživatele s poznámkovými bloky Azure
+title: Profil uživatele a ID pro použití s poznámkovými bloky Azure
+description: Jak vytvořit a spravovat váš profil uživatele a ID uživatele s poznámkovými bloky Azure.
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: e41b75eb361d8b693895ea9889ee8fc90a39d4bf
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b1010b5376a26a4d33c026be27ce363959954ca2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855911"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078867"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Váš profil a ID uživatele pro poznámkové bloky Azure
 
@@ -26,15 +26,13 @@ Profil uživatele v prostoru výkonné a spolupráci poznámkových bloků Azure
 
 [![](media/accounts/profile-page.png "Na stránce profilu poznámkových bloků Azure")](media/accounts/profile-page.png#lightbox)
 
-Vaše ID uživatele je součástí adresy URL můžete použít ke sdílení projektů a poznámkové bloky:
+Vaše ID uživatele je součástí adresy URL můžete použít ke sdílení projektů a poznámkové bloky. Následující seznam popisuje různé vzory adres URL:
 
-| zprostředkovatele identity | Cíl odkazu |
-| --- | --- |
-| `https://notebooks.azure.com/<user_id>` | Stránce svého profilu. |
-| `https://notebooks.azure.com/<user_id>/projects` | Vaše projekty. Zobrazí všechny projekty; ostatní uživatelé uvidí jenom veřejné projekty. |
-| `https://notebooks.azure.com/<user_id>/projects/<project_id>` | Soubory projektu. |
-| `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones` | Duplicity konkrétních projektů. |
-| `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb` | Náhled HTML konkrétní Poznámkový blok nebo souboru. |
+- `https://notebooks.azure.com/<user_id>`: Stránka vašeho profilu.
+- `https://notebooks.azure.com/<user_id>/projects`: Vaše projekty. Zobrazí všechny projekty; ostatní uživatelé uvidí jenom veřejné projekty.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>`: Soubory projektu.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`: Klony konkrétních projektů.
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`: Náhled HTML konkrétní Poznámkový blok nebo souboru.
 
 ## <a name="your-user-id"></a>Vaše ID uživatele
 

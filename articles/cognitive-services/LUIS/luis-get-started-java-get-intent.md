@@ -1,7 +1,7 @@
 ---
-title: 'QuickStart: Získejte záměr – Java'
+title: Získání záměru, Java
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí Javy odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
+description: V tomto rychlém startu Java použijte k určení záměru uživatele z textu lze aplikaci dostupnou LUIS veřejné.
 author: diberry
 manager: cgronlun
 ms.custom: seodec18
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 417b1138d581a54a3a0a992cebf18ea20fa8dbee
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: c55721e803b85c536067a90019f75dd5aa0f7845
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013590"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085344"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Rychlý start: Získání záměru pomocí Javy
 

@@ -1,24 +1,24 @@
 ---
-title: Vyhrazené nejčastější dotazy k modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
-description: Azure vyhrazené HSM nabízí možnosti úložiště klíčů v Azure, která splňují standard FIPS 140-2 Level 3 certifikační
+title: Časté otázky – vyhrazené modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
+description: Nejčastější dotazy mezi probíraná témata různých na vyhrazené modulu hardwarového zabezpečení Azure
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
+ms.custom: mvc
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: concepts
-ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 3179fd3cf7a595b4491aec77e221aca3960c8ecb
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 949281b1415e2098fb7bf0d3e9e9fbe0a5f5c835
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319446"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080992"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -28,7 +28,7 @@ Najděte odpovědi na běžné dotazy týkající se Microsoft Azure vyhrazené 
 
 ### <a name="q-what-is-a-hardware-security-module-hsm"></a>Otázka: co je modulu hardwarového zabezpečení (HSM)?
 
-Modul hardwarového zabezpečení (HSM) je fyzické výpočetní zařízení použít k ochraně kryptografických klíčů. Klíčů uložených v modulech hardwarového zabezpečení je možné pro kryptografické operace. Materiál klíče zůstanou bezpečně v modulech hardwarového odolné proti zfalšování, zapečetěných. Modul hardwarového zabezpečení umožňuje pouze ověří a autorizuje aplikací pro použití klíče. Materiál klíče neopustí hranice modulu hardwarového zabezpečení ochrany.
+Modul hardwarového zabezpečení (HSM) je fyzické výpočetní zařízení použít k ochraně kryptografických klíčů. Klíčů uložených v modulech hardwarového zabezpečení je možné pro kryptografické operace. Materiál klíče zůstanou bezpečně v modulech hardwarového odolné proti zfalšování, zapečetěných. Modul hardwarového zabezpečení umožňuje pouze ověří a autorizuje aplikací pro použití klíče. Obsah klíčů nikdy neopustí hranici ochrany HSM.
 
 ### <a name="q-what-is-azure-dedicated-hsm-offering"></a>Otázka: co je nabídka vyhrazené modulu hardwarového zabezpečení Azure?
 
@@ -40,7 +40,7 @@ Microsoft uzavřel partnerství s Gemalto k zajištění služeb vyhrazené modu
 
 ### <a name="q-what-is-an-hsm-used-for"></a>Otázka: co se nepoužívá modul HSM?
 
-Moduly hardwarového zabezpečení se používají pro ukládání kryptografických klíčů, které se používají pro kryptografické funkce, jako je například SSL (zabezpečené socket layer), šifrování dat, PKI (infrastruktura veřejných klíčů), DRM (Správa digitálních práv) a podepisování dokumentů.
+HSM slouží k ukládání kryptografických klíčů, které se používají pro kryptografické funkce, jako je SSL (Secure Sockets Layer), šifrování dat, PKI (infrastruktura veřejných klíčů), DRM (Správa digitálních práv) a podepisování dokumentů.
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>Otázka: Jak funguje vyhrazené HSM?
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: a058757c3b4ae5087d89cdbdc1ede5fe780606ea
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: f232ee89993998eb25ecce73e9c2ac8e08f3198b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997069"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094099"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Klíč zobrazení nákladů metrik pomocí řídicích panelů
 
@@ -43,7 +43,7 @@ Pokud chcete rychle začít s vlastní řídicí panel, můžete duplikovat něk
 Pokud chcete vytvořit vlastní řídicí panel:
 
 1. Na domovské stránce, klikněte na tlačítko **přidat nový +**. Zobrazí se stránka Můj řídicí panel.  
-    ![Můj řídicí panel](./media/dashboards/my-dashboard.png)
+    ![Stránku řídicího panelu, kde můžete přidávat nové sestavy](./media/dashboards/my-dashboard.png)
 2. Klikněte na tlačítko **přidat novou sestavu**. Zobrazí se okno Přidat sestavu.
 3. Vyberte sestavu, kterou chcete přidat pomůcky řídicího panelu. Ve widgetu se přidá na řídicí panel.
 4. Zopakujte předchozí kroky, dokud se nedokončí řídicího panelu.
@@ -63,7 +63,7 @@ Vlastní řídicí panel můžete sdílet s ostatními _veřejné_ nebo _Moje En
 Chcete-li sdílet vlastní řídicí panel na veřejnou:
 
 1. Na řídicím panelu, klikněte na tlačítko **nastavení řídicího panelu**. Zobrazí se okno Nastavení řídicího panelu.  
-    ![řídicí panel možností](./media/dashboards/dashboard-options.png)
+    ![Nastavení řídicího panelu pro vlastní řídicí panel](./media/dashboards/dashboard-options.png)
 2. V dialogovém okně Nastavení řídicího panelu klikněte na symbol šipku a potom klikněte na tlačítko **veřejné**. Zobrazí se dialogové okno potvrzení veřejné řídicího panelu.
 3. Klikněte na tlačítko **Ano**. Řídicí panel je teď dostupná ostatním uživatelům.
 
@@ -116,13 +116,13 @@ Kterýkoli řídicí panel můžete nastavit jako výchozí. Nastavení pro výc
 - nebo -
 
 1. Klikněte na tlačítko **nastavení řídicího panelu** zobrazte seznam dostupných řídicích panelů a vyberte řídicí panel, který chcete nastavit jako výchozí.  
-    ![řídicí panel možností](./media/dashboards/dashboard-options.png)
+    ![řídicí panel Možnosti pro výchozí řídicí panel](./media/dashboards/dashboard-options.png)
 2. Klikněte na tlačítko **výchozí** v řádku řídicího panelu. Zobrazí se okno potvrzení výchozí řídicí panel.
 3. Klikněte na **Ano**. Řídicí panel je nastavena na výchozí.
 
 ## <a name="management-dashboard"></a>Řídicí panel správy
 Rozhraní pro správu (nebo řídicí panel MSP pro uživatele MSP) řídicí panel obsahuje stručný přehled typů hlavní sestav.  
-![Řídicí panel správy](./media/dashboards/management-dash.png)
+![Zobrazuje různé sestavy řídicího panelu pro správu](./media/dashboards/management-dash.png)
 
 ### <a name="cost-entity-summary-enterprise-only"></a>Souhrn entit nákladů (pouze v Enterprise)
 Tato pomůcka shrnuje náklady na spravované entity, včetně počet entit a počtu účtů.
@@ -158,7 +158,7 @@ Tato pomůcka zobrazí služby úložiště používá po odděleních. Najeďte
 
 ## <a name="cost-controller-dashboard"></a>Řídicí panel kontroler nákladů
 Na řídicím panelu kontroler nákladů zobrazuje zvýraznění přidělení přednastaveným náklady.  
-![Řídicí panel kontroler nákladů](./media/dashboards/cost-controller-dashboard.png)
+![Řídicí panel řadiče zobrazení různých sestav nákladů](./media/dashboards/cost-controller-dashboard.png)
 
 ### <a name="cost-over-time"></a>Náklady za časové období
 Tato pomůcka pomáhá odhalit trendy nákladů. Zvýrazní náklady za poslední den, založené na trend v posledních 30 dnech.
@@ -198,7 +198,7 @@ Tato pomůcka vybraná vystoupení výdajů za posledních šest měsíců.
 ## <a name="asset-controller-dashboard"></a>Řídicí panel kontroler prostředků
 
 Tento řídicí panel zobrazuje počet spuštěných instancí, k dispozici a používané disky, distribuce typů instancí a informace o úložiště.  
-![Řídicí panel kontroler prostředků](./media/dashboards/asset-controller-dashboard.png)
+![Řídicí panel řadiče Asset zobrazující různé sestavy](./media/dashboards/asset-controller-dashboard.png)
 
 ### <a name="compute-instances"></a>Výpočetní instance
 Tato pomůcka zobrazuje počet spuštěných instancí podle trend využití za posledních 30 dní.
@@ -227,7 +227,7 @@ Tato pomůcka označuje počet spuštěných instancí Amazon RDS podle trend v 
 
 ## <a name="optimizer-dashboard"></a>Optimalizace řídicího panelu
 Tento řídicí panel zobrazuje downsizing doporučení, nevyužité prostředky a potenciální úspory.  
-![Optimalizace řídicího panelu](./media/dashboards/optimizer-dashboard.png)
+![Optimalizace řídicího panelu zobrazuje různé sestavy](./media/dashboards/optimizer-dashboard.png)
 
 ### <a name="ri-calculator"></a>Rezervované instance kalkulačky
 Zobrazí počet doporučení k nákupu rezervovaných Instancí a tohoto widgetu nejlepší potenciální roční úspory.
@@ -257,7 +257,7 @@ Optimalizace doporučení jsou založená na data o využití a výkonu monitoro
 
 ## <a name="s3-tracker-dashboard"></a>Řídicí panel sledování S3
 Řídicí panel sledování S3 pomáhá najít, analyzovat a zobrazit aktuální využití úložiště a trendy.  
-![Řídicí panel sledování S3](./media/dashboards/s3-tracker-dashboard.png)
+![Sledování S3 řídicí panel zobrazuje různé sestavy](./media/dashboards/s3-tracker-dashboard.png)
 
 ### <a name="all-buckets"></a>Všechny kontejnery
 Tato pomůcka zvýrazní celková velikost všech kbelíků, v GB a celkový počet objektů v vaše kontejnery.
@@ -281,7 +281,7 @@ Tato pomůcka označuje počet objektů na kbelík v skutečný počet a procent
 
 ## <a name="cloud-comparison-dashboard"></a>Řídicí panel cloud porovnání
 Porovnání Cloud řídicí panel vám pomůže porovnat náklady ze různí poskytovatelé cloudových na základě ceny, typu procesoru a velikost paměti RAM.  
-![Řídicí panel cloud porovnání](./media/dashboards/cloud-comparison-dashboard.png)
+![Řídicí panel cloud porovnání zobrazující různé sestavy](./media/dashboards/cloud-comparison-dashboard.png)
 
 ### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2 Náklady v Azure, typu Instance
 Tato pomůcka zvýrazní za posledních 30 dní používání kurzy na vyžádání. Porovná nákladů s aktuální vs Amazon EC2 náklady potenciální finanční v Azure.

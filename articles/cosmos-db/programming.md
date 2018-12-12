@@ -1,25 +1,23 @@
 ---
-title: Programování v jazyce JavaScript na straně serveru pro službu Azure Cosmos DB | Dokumentace Microsoftu
+title: Programování v jazyce JavaScript na straně serveru pro službu Azure Cosmos DB
 description: Další informace o použití služby Azure Cosmos DB k zápisu uložené procedury, aktivační události databáze a uživatelem definované funkce (UDF) v jazyce JavaScript. Získejte tipy k programování na databázi a mnoho dalšího.
 keywords: Databáze aktivačních událostí, uložené procedury, uložené procedury, databázi, sproc, azure, Microsoft azure
 services: cosmos-db
 author: aliuy
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: dd1fff79d6f611ae29307d666860d3740f4372f1
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 9f36d6761e61f0de610cb3f612cd069092cdc242
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52162122"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083695"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programování na straně serveru služby Azure Cosmos DB: uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi
 
-Zjistěte, jak služby Azure Cosmos DB integrovaný jazyk, transakční provádění jazyka JavaScript a umožňuje vývojářům psát **uložených procedur komponentami TableAdapter**, **triggery**, a **uživatelem definované funkce (UDF)**  nativně v [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) jazyka JavaScript. Integrace JavaScriptu umožňuje psát logiku programu, který může být dodána a spustit přímo v databázi oddílů pro úložiště. 
+Zjistěte, jak služby Azure Cosmos DB integrovaný jazyk, transakční provádění jazyka JavaScript a umožňuje vývojářům psát **uložených procedur komponentami TableAdapter**, **triggery**, a **uživatelem definované funkce (UDF)**  nativně v [ECMAScript 2015](https://www.ecma-international.org/ecma-262/6.0/) jazyka JavaScript. Integrace JavaScriptu umožňuje psát logiku programu, který může být dodána a spustit přímo v databázi oddílů pro úložiště. 
 
 V tomto článku se dozvíte odpovědi na následující otázky:  
 
@@ -46,7 +44,7 @@ Tento přístup z *"JavaScript zde slouží jako moderní den T-SQL"* uvolní v�
 
 Vytvoření a spuštění aktivační procedury databáze, uložených procedur a vlastní operátory dotazů je podporované prostřednictvím [webu Azure portal](https://portal.azure.com), [rozhraní REST API](/rest/api/cosmos-db/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases), a [klientské sady SDK](sql-api-sdk-dotnet.md) na spoustě platforem, včetně .NET, Node.js a JavaScript.
 
-Tento kurz používá [sady Node.js SDK s Q příslibů](http://azure.github.io/azure-documentdb-node-q/) pro ilustraci syntaxi a použití uložené procedury, triggery a uživatelem definovanými funkcemi.   
+Tento kurz používá [sady Node.js SDK s Q příslibů](https://azure.github.io/azure-documentdb-node-q/) pro ilustraci syntaxi a použití uložené procedury, triggery a uživatelem definovanými funkcemi.   
 
 ## <a name="stored-procedures"></a>Uložené procedury
 ### <a name="example-write-a-stored-procedure"></a>Příklad: Zápis uložené procedury
@@ -668,7 +666,7 @@ V následujících popisech popisují každý dotaz v tabulce výše.
 
 
 ## <a name="runtime-support"></a>Podpora modulu CLR
-Azure Cosmos DB [JavaScript API na straně serveru](https://azure.github.io/azure-cosmosdb-js-server/) poskytuje podporu pro většinu hlavní fáze technické funkce jazyka JavaScript jako standardizované podle [ECMA 262](http://www.ecma-international.org/publications/standards/Ecma-262.htm).
+Azure Cosmos DB [JavaScript API na straně serveru](https://azure.github.io/azure-cosmosdb-js-server/) poskytuje podporu pro většinu hlavní fáze technické funkce jazyka JavaScript jako standardizované podle [ECMA 262](https://www.ecma-international.org/publications/standards/Ecma-262.htm).
 
 ### <a name="security"></a>Zabezpečení
 JavaScript uložené procedury a triggery jsou v izolovaném prostoru tak, aby účinky jeden skript není pronikly na druhou bez nutnosti kontaktovat transakci izolace snímku na úrovni databáze. Běhová prostředí jsou ve fondu, ale vyčistit kontextu po každém spuštění. Proto je zaručeno bezpečné z jakékoli nezamýšlenými vedlejšími účinky od sebe navzájem.
@@ -833,7 +831,7 @@ Můžete také zjistit následující odkazy a prostředky užitečné ve své c
 
 * [Azure Cosmos DB na straně serveru rozhraní API reference na JavaScript na](https://azure.github.io/azure-cosmosdb-js-server/)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
-* [JavaScript ECMA 262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
-* [Rozšiřitelnost zabezpečení a přenosné databáze](http://dl.acm.org/citation.cfm?id=276339) 
-* [Služba orientované architektuře databáze](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
-* [Hostování modulu Runtime .NET v systému Microsoft SQL server](http://dl.acm.org/citation.cfm?id=1007669)
+* [JavaScript ECMA 262](https://www.ecma-international.org/publications/standards/Ecma-262.htm)
+* [Rozšiřitelnost zabezpečení a přenosné databáze](https://dl.acm.org/citation.cfm?id=276339) 
+* [Služba orientované architektuře databáze](https://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 
+* [Hostování modulu Runtime .NET v systému Microsoft SQL server](https://dl.acm.org/citation.cfm?id=1007669)

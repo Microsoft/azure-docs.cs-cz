@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4123f66c12898f8f8828494d59590992ac109e27
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: c17d4d51327862872d240e07cb69d4ddf1f8672b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997657"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082137"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Kurz: Zabezpečení artefaktů v nasazení šablon Azure Resource Manageru
 
 Zjistěte, jak zabezpečit artefakty, které používají v šablonách Azure Resource Manageru pomocí sdílených přístupových podpisů (SAS) účtu služby Azure Storage. Artefakty nasazení jsou všechny soubory kromě souborů hlavní šablony, které jsou potřebné k dokončení nasazení. Například v [kurz: soubory SQL Import souboru BACPAC s šablonami Azure Resource Manageru](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), hlavní šablony vytvoří službu Azure SQL Database; volá také pro vytváření tabulek a vkládání dat souboru BACPAC. Soubor BACPAC je artefakt. Artefakt je uložená v účtu služby Azure storage s veřejný přístup. V tomto kurzu použijete SAS udělit omezený přístup do souboru BACPAC v účtu úložiště Azure. Další informace o SAS najdete v tématu [použití sdílených přístupových podpisů (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+
+Zjistěte, jak zabezpečit propojené šablony, najdete v článku [kurz: vytvoření propojenými šablonami Azure Resource Manageru](./resource-manager-tutorial-create-linked-templates.md).
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -57,6 +59,8 @@ V této části Příprava souboru BACPAC, že soubor je bezpečně při nasazen
 * Vytvořte kontejner objektů Blob v účtu úložiště.
 * Nahrání souboru BACPAC do kontejneru.
 * Získat token SAS souboru BACPAC.
+
+Automatizace kroků pomocí skriptu prostředí PowerShell, Zobrazit skript z [odešlete propojenou šablonu](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template).
 
 ### <a name="download-the-bacpac-file"></a>Stažení souboru BACPAC
 

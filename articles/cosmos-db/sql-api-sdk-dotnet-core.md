@@ -1,10 +1,8 @@
 ---
-title: 'Azure Cosmos DB: SQL API pro .NET Core, sady SDK a prostředky | Dokumentace Microsoftu'
+title: 'Azure Cosmos DB: SQL API pro .NET Core, sady SDK a prostředky'
 description: Další informace o SQL API pro .NET Core a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB .NET Core SDK.
 services: cosmos-db
 author: rnagpal
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
@@ -12,12 +10,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a0fb429c36005edca579cbdb7b379e6b04be60b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: bcd8fe040cb4d36bc98700816d6a7ebe711f13f5
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840839"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093434"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -213,7 +211,7 @@ Azure Cosmos DB .NET Core ve verzi Preview SDK má paritu funkcí s nejnovějš�
 * [Dělené kolekce](partition-data.md). 
 * [Účty databáze ve více oblastech a geografická replikace](distribute-data-globally.md).
 
-Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOverflow](http://stackoverflow.com/questions/tagged/azure-documentdb), nebo přidejte problém v [úložiště github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
+Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb), nebo přidejte problém v [úložiště github](https://github.com/Azure/azure-documentdb-dotnet/issues). 
 
 ## <a name="release--retirement-dates"></a>Verze & data vyřazení z provozu
 

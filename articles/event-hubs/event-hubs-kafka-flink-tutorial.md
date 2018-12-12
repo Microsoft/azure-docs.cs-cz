@@ -1,21 +1,21 @@
 ---
-title: Použití Apache Flink s Azure Event Hubs pro Apache Kafka | Dokumentace Microsoftu
-description: Připojování Flink Apache pro Kafka povolené centra událostí
+title: Použití Apache Flink pro Apache Kafka – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek obsahuje informace o tom, jak se připojit k Apache Kafka Apache Flink povolené Centrum událostí Azure
 services: event-hubs
 documentationcenter: ''
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
-ms.custom: mvc
-ms.date: 08/06/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 28ebcd0fe10492b730d73e19f9206545084b4030
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: cb964451d25bb381ee9cca84628852a61e4be9b6
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277337"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090903"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Použití Apache Flink s Azure Event Hubs pro Apache Kafka
 V tomto kurzu se dozvíte, jak připojit Apache Flink Kafka povolené event hubs, aniž by změna vašim klientům protokolu nebo spuštění vlastní clustery. Podporuje Azure Event Hubs [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html).
@@ -25,7 +25,7 @@ Jednou z klíčových výhod používání Apache Kafka je v ekosystému rozhran
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření oboru názvů služby Event Hubs
-> * Klonování projektu z příkladu
+> * Naklonování ukázkového projektu
 > * Spustit Flink výrobce 
 > * Spusťte Flink příjemce
 
@@ -50,7 +50,7 @@ K dokončení tohoto kurzu, nezapomeňte, že jsou splněné následující pož
 
 Obor názvů služby Event Hubs je potřeba odeslat nebo přijmout z jakékoli služby Event Hubs. Zobrazit [vytvořit Kafka povolena Služba Event Hubs](event-hubs-create-kafka-enabled.md) informace o tom, jak koncový bod Event Hubs Kafka. Ujistěte se, že zkopírujte připojovací řetězec služby Event Hubs pro pozdější použití.
 
-## <a name="clone-the-example-project"></a>Klonování projektu z příkladu
+## <a name="clone-the-example-project"></a>Naklonování ukázkového projektu
 
 Teď, když máte připojovací řetězec systému Kafka s podporou služby Event Hubs, Azure Event Hubs, Kafka úložiště klonování a přejděte do `flink` podsložky:
 
@@ -128,18 +128,18 @@ V tomto kurzu se vaše zkušenosti jak připojit Apache Flink Kafka povolené ev
 
 > [!div class="checklist"]
 > * Vytvoření oboru názvů služby Event Hubs
-> * Klonování projektu z příkladu
+> * Naklonování ukázkového projektu
 > * Spustit Flink výrobce 
 > * Spusťte Flink příjemce
 
-Další informace o Event Hubs a centra událostí pro systém Kafka, naleznete v následujícím tématu:  
+Další informace o službě Event Hubs a Event Hubs pro ekosystém Kafka najdete v následujícím tématu:  
 
 - [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
 - [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
-- [Jak vytvořit Kafka povolena Služba Event Hubs](event-hubs-create-kafka-enabled.md)
-- [Stream do služby Event Hubs ze svých aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Zrcadlení zprostředkovatele Kafka v Centru událostí podporující Kafka](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Připojení k rozbočovači Kafka povolená událost Apache Sparku](event-hubs-kafka-spark-tutorial.md)
-- [Integrovat připojení Kafka s podporou Kafka eventhub](event-hubs-kafka-connect-tutorial.md)
-- [Připojit Akka datové proudy Kafka povolené eventhubu](event-hubs-kafka-akka-streams-tutorial.md)
-- [Prozkoumejte ukázky na náš GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Vytvoření služby Event Hubs s podporou Kafka](event-hubs-create-kafka-enabled.md)
+- [Streamování do služby Event Hubs z aplikací Kafka](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+- [Zrcadlení zprostředkovatele Kafka v centru událostí s podporou Kafka](event-hubs-kafka-mirror-maker-tutorial.md)
+- [Připojení Apache Sparku k centru událostí s podporou Kafka](event-hubs-kafka-spark-tutorial.md)
+- [Integrace připojení Kafka s centrem událostí s podporou Kafka](event-hubs-kafka-connect-tutorial.md)
+- [Připojení Akka Streams k centru událostí s podporou Kafka](event-hubs-kafka-akka-streams-tutorial.md)
+- [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)

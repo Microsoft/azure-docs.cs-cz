@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5e19c7c1ed15183fdb796a6fa4e537da946b40b9
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: MT
+ms.openlocfilehash: 5294d5919b6d4d80c61e183866409123a9edbb60
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642533"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082659"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Připojit počítače bez připojení k Internetu pomocí brány Log Analytics
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a Log Analytics pomocí Log Analytics gateway při přímé připojení nebo Operations Manager monitoruje počítače nemají přístup k Internetu.  Bránu Log Analytics, která je dopředné proxy server HTTP, který podporuje tunelování pomocí příkazu HTTP připojení HTTP, můžete shromažďovat data a odeslat do služby Azure Automation a Log Analytics jejich jménem.  
@@ -82,7 +82,7 @@ Brána Log Analytics je dostupná v následujících jazycích:
 - Španělština (mezinárodní)
 
 ### <a name="supported-encryption-protocols"></a>Šifrování podporovaných protokolů
-Log Analytics brána podporuje pouze zabezpečení TLS (Transport Layer) 1.0, 1.1 a 1.2.  Nepodporuje vrstvy SSL (Secure Sockets).  – Pomáhat zajistit zabezpečení dat při přenosu do služby Log Analytics, důrazně doporučujeme, abyste ke konfiguraci k bráně pro použití alespoň zabezpečení TLS (Transport Layer) 1.2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**.  Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](../../log-analytics/log-analytics-data-security.md#sending-data-securely-using-tls-12). 
+Log Analytics brána podporuje pouze zabezpečení TLS (Transport Layer) 1.0, 1.1 a 1.2.  Nepodporuje vrstvy SSL (Secure Sockets).  – Pomáhat zajistit zabezpečení dat při přenosu do služby Log Analytics, důrazně doporučujeme, abyste ke konfiguraci k bráně pro použití alespoň zabezpečení TLS (Transport Layer) 1.2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**.  Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ### <a name="supported-number-of-agent-connections"></a>Podporovaný počet připojení agenta
 V následující tabulce najdete podporovaný počet agentů komunikaci se serverem brány.  Tato podpora je založen na agentech nahrávání přibližně 200KB dat každých 6 sekund. Objem dat podle agenta testování je přibližně 2.7GB za den.
@@ -122,7 +122,7 @@ Pokud chcete nainstalovat bránu, postupujte následovně.  Pokud jste nainstalo
    1. Zadejte číslo portu TCP pro použití brány. Instalační program nakonfiguruje příchozí pravidlo s tímto číslem portu v bráně Windows firewall.  Výchozí hodnota je 8080.
       Platný rozsah číslo portu je 1-65535. Pokud vstup do tohoto rozsahu nespadá, zobrazí se chybová zpráva.
    1. Pokud server, kde je nainstalovaná brána potřebuje komunikovat prostřednictvím proxy serveru, volitelně zadejte adresu proxy serveru, kde je potřeba brána připojení. Například, `http://myorgname.corp.contoso.com:80`.  Pokud je pole prázdné, brány se pokusí připojit přímo k Internetu.  Pokud váš proxy server vyžaduje ověření, zadejte uživatelské jméno a heslo.<br><br> ![Konfigurace proxy serveru brány Průvodce](./media/gateway/gateway-wizard02.png)<br>   
-   1. Klikněte na **Další**.
+   1. Klikněte na tlačítko **Další**.
 1. Pokud nemáte povolenu službu Microsoft Update, zobrazí se stránka Microsoft Update, kde můžete vybrat, aby je. Proveďte výběr a potom klikněte na tlačítko **Další**. V opačném případě pokračujte k dalšímu kroku.
 1. Na **cílovou složku** stránky, ponechte výchozí složky C:\Program Files\OMS brány nebo zadejte umístění, kam chcete nainstalovat bránu a potom klikněte na tlačítko **Další**.
 1. Na **připraveno k instalaci** klikněte na **nainstalovat**. Řízení uživatelských účtů se může zobrazit žádost o oprávnění k instalaci. Pokud ano, klikněte na tlačítko **Ano**.
@@ -142,7 +142,7 @@ Zjistěte, jak navrhnout a nasadit cluster programu pro vyrovnávání zatížen
 Následující část obsahuje pokyny ke konfiguraci přímo připojených agentů Log Analytics, skupiny pro správu Operations Manageru nebo Azure Automation Hybrid Runbook Worker ve službě Log Analytics gateway ke komunikaci s Azure Automation nebo protokolu Analytics.  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>Konfigurace samostatného agenta Log Analytics
-Požadavky a pokyny k instalaci agenta Log Analytics na počítačích Windows přímého připojení k Log Analytics najdete v tématu [počítače Windows se připojit ke službě Log Analytics](agent-windows.md) nebo Linux počítačů najdete v tématu [ Připojení počítačů s Linuxem k Log Analytics](../../log-analytics/log-analytics-quick-collect-linux-computer.md). Místo zadání proxy serveru při konfiguraci agenta, nahraďte tuto hodnotu IP adresu serveru brány Log Analytics a jeho číslo portu.  Pokud jste nasadili více serverů brány za nástroj pro vyrovnávání zatížení sítě, je konfigurace proxy serveru agenta Log Analytics virtuální IP adresy služby NLB.  
+Požadavky a pokyny k instalaci agenta Log Analytics na počítačích Windows přímého připojení k Log Analytics najdete v tématu [počítače Windows se připojit ke službě Log Analytics](agent-windows.md) nebo Linux počítačů najdete v tématu [ Připojení počítačů s Linuxem k Log Analytics](../../azure-monitor/learn/quick-collect-linux-computer.md). Místo zadání proxy serveru při konfiguraci agenta, nahraďte tuto hodnotu IP adresu serveru brány Log Analytics a jeho číslo portu.  Pokud jste nasadili více serverů brány za nástroj pro vyrovnávání zatížení sítě, je konfigurace proxy serveru agenta Log Analytics virtuální IP adresy služby NLB.  
 
 Informace týkající se služby Automation Hybrid Runbook Worker, naleznete v tématu [nasazení funkce Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).
 

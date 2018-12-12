@@ -1,21 +1,22 @@
 ---
-title: Správa verzí v aplikace LUIS
-titleSuffix: Azure Cognitive Services
+title: Správa verzí
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Verze umožňují sestavovat a publikovat různých modelů. Dobrým postupem je klonovat aktuální active vzor na jinou verzi aplikace před prováděním změn do modelu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: db461191b70aabc322e570ecc814a076c21206f2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
-ms.translationtype: MT
+ms.openlocfilehash: 454f45b692a87dbd47ca1ca70880323912693839
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033783"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082692"
 ---
 # <a name="manage-versions"></a>Správa verzí
 
@@ -25,7 +26,7 @@ Pro práci s verzí, otevřete aplikaci tak, že vyberete jeho název na **Moje 
 
 Seznam verzí zobrazit, jaké verze jsou publikovány, kde jsou publikovány, a kterou verzi je aktuálně aktivní. 
 
-[![](./media/luis-how-to-manage-versions/versions-import.png "Správa části, stránka verze")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+[![Části Správa, verze stránky](./media/luis-how-to-manage-versions/versions-import.png "části Správa, verze stránky")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>Klonovat verze
 
@@ -44,7 +45,7 @@ Seznam verzí zobrazit, jaké verze jsou publikovány, kde jsou publikovány, a 
 
 Ze seznamu vyberte verzi a potom vyberte **zkontrolujte aktivní** z panelu nástrojů. 
 
-[![](./media/luis-how-to-manage-versions/versions-other.png "Správa části, stránka verze")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![Části Správa, verze stránky](./media/luis-how-to-manage-versions/versions-other.png "části Správa, verze stránky")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Import verze
 

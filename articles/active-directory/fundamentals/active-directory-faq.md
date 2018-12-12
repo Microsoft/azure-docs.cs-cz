@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory – nejčastější dotazy | Dokumentace Microsoftu
-description: Další běžné otázky a odpovědi týkající se Azure a Azure Active Directory, správy hesel a přístupu k aplikacím.
+title: Nejčastější dotazy (FAQ) – Azure Active Directory | Dokumentace Microsoftu
+description: Běžné otázky a odpovědi týkající se Azure a Azure Active Directory, správy hesel a přístupu k aplikacím.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: lizross
-ms.openlocfilehash: b004968fc53e368497632cb18d6bb7a254d347e6
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: a3571ff24c36b7f2129f60348414d4d178ef30d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621747"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084086"
 ---
-# <a name="azure-active-directory-faq"></a>Nejčastější dotazy ke službě Azure Active Directory
+# <a name="frequently-asked-questions-about-azure-active-directory"></a>Nejčastější dotazy k Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
 
 Další informace najdete v tématu [Co je Azure Active Directory?](active-directory-whatis.md).

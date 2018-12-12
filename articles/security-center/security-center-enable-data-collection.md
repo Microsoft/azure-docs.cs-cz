@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 27d27f582c1306d8a8370567fd9c6858ad439ca8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 40f3275b2f16a80f1199afdc0d7965cbd4433f50
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851141"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082442"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -261,7 +261,7 @@ Microsoft Monitoring Agent, můžete nainstalovat ručně, můžete shromažďov
     a.  [Instalace rozšíření virtuálního počítače OMS pro Windows](../virtual-machines/extensions/oms-windows.md)
     
     b.  [Instalace rozšíření virtuálního počítače OMS pro Linux](../virtual-machines/extensions/oms-linux.md)
-5.  Chcete-li nasadit rozšíření na existující virtuální počítače, postupujte podle pokynů v [shromažďování dat o virtuálních počítačích Azure](../log-analytics/log-analytics-quick-collect-azurevm.md).
+5.  Chcete-li nasadit rozšíření na existující virtuální počítače, postupujte podle pokynů v [shromažďování dat o virtuálních počítačích Azure](../azure-monitor/learn/quick-collect-azurevm.md).
 
   > [!NOTE]
   > V části **shromažďování dat o událostech a výkonu** je volitelný.

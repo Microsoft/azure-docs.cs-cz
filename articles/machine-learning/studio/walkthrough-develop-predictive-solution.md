@@ -5,7 +5,7 @@ keywords: úvěrové riziko,řešení prediktivní analýzy,posouzení rizika
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: a5dd8432ca79cca8de37f5d64027e0b9c498f3b9
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: edbcd1ae128969bb10436afb1dc800c42e69f8c9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52311938"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089815"
 ---
-# <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>Názorný postup: Vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v nástroji Azure Machine Learning Studio
+# <a name="walkthrough-develop-predictive-solution-for-credit-risk-assessment-in-azure-machine-learning-studio"></a>Názorný postup: Vývoj prediktivního řešení pro posuzování úvěrového rizika v nástroji Azure Machine Learning Studio
 
 V tomto názorném průvodci se zaměříme na proces vývoje řešení prediktivní analýzy v nástroji Machine Learning Studio. Vytvoříme si jednoduchý model v nástroji Machine Learning Studio a pak ho nasadíme jako webovou službu Azure Machine Learning, ve které může model vytvářet predikce na základě nových dat. 
 

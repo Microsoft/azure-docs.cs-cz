@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Nasazení úloh ASA na zařízení Azure IoT Edge | Microsoft Docs'
+title: Kurz nasazení úlohy Azure Stream Analytics na zařízení – Azure IoT Edge | Dokumentace Microsoftu
 description: V tomto kurzu nasadíte Azure Stream Analytics jako modul na zařízení IoT Edge.
 author: kgremban
 manager: philmea
@@ -7,14 +7,13 @@ ms.author: kgremban
 ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
-services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 2188e21cfd29ac8ac2d44878819ee62a3e2d555e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: MT
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 926609e261c318f22e5c5d2091ea8fbf8f7315d7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51566937"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081332"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Stream Analytics jako modulu IoT Edge (Preview)
 
@@ -34,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Nasadit úlohu Azure Stream Analytics na zařízení IoT Edge z portálu Azure Portal
 
 <center>
-![Diagram architektury v tomto kurzu](./media/tutorial-deploy-stream-analytics/ASATutorialDiagram.png)
+![Diagram – kurz architektury, Příprava a nasazení úlohy Azure Stream Analytics](./media/tutorial-deploy-stream-analytics/asa-architecture.png)
 </center>
 
 >[!NOTE]
@@ -100,7 +99,7 @@ V této části se s využitím těchto tří prvků (vstup, výstup a dotaz) vy
 
 1. V části **Topologie úlohy** vyberte **Vstupy** a pak **Přidat vstup streamu**.
 
-   ![Vstup Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_input.png)
+   ![Azure Stream Analytics přidat vstup](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
 1. V rozevíracím seznamu zvolte **Edge Hub**.
 
@@ -110,7 +109,7 @@ V této části se s využitím těchto tří prvků (vstup, výstup a dotaz) vy
 
 1. V části **Topologie úlohy** otevřete **Výstupy** a pak vyberte **Přidat**.
 
-   ![Výstup Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_output.png)
+   ![Přidání výstupu Azure Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
 1. V rozevíracím seznamu zvolte **Edge Hub**.
 
@@ -207,7 +206,7 @@ Pro účely tohoto kurzu nasadíte dva moduly. Prvním je modul **tempSensor**, 
 
     Měl by se zobrazit spuštěný nový modul Stream Analytics společně s modulem agenta IoT Edge a centrem služby IoT Edge.
 
-    ![Výstup modulu](./media/tutorial-deploy-stream-analytics/module_output2.png)
+    ![modul Azure Stream Analytics hlášená tímto zařízením a tempSensor](./media/tutorial-deploy-stream-analytics/module_output2.png)
 
 ## <a name="view-data"></a>Zobrazení dat
 
@@ -229,7 +228,7 @@ Nyní můžete přejít do zařízení IoT Edge a zkontrolovat interakci mezi mo
 
 Měli byste mít možnost sledovat, jak teplota přístroje pomalu stoupá, dokud nedosáhne 70 stupňů po dobu 30 sekund. Potom modul Stream Analytics aktivuje resetování a teplota přístroje klesne na 21. 
 
-   ![Protokol Dockeru](./media/tutorial-deploy-stream-analytics/docker_log.png)
+   ![Obnovit výstup příkazu do protokolů modulu](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 

@@ -1,21 +1,22 @@
 ---
-title: Spolupracovat s ostatními přispěvateli na aplikace LUIS
-titleSuffix: Azure Cognitive Services
+title: Spolupráce s ostatními
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Vlastník aplikace můžete přidat spolupracovníky do aplikace. Tyto spolupracovníky můžete měnit model, natrénujete ho a publikovat aplikace.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b7d108bfc0c4283e7856b93daba3f4f92af4cc5b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d1db8974ce134b50340db500c9ea1b00126fe10a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042189"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086415"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Jak spravovat autorů a spolupracovníci 
 
@@ -31,7 +32,7 @@ Aplikace má jeden Autor, vlastník, ale může mít mnoho spolupracovníky. Pov
 
 2. Vyberte **přidat spolupracovníka** z panelu nástrojů.
 
-    [![](./media/luis-how-to-collaborate/add-collaborator.png "Přidání spolupracovníků")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
+    [![Přidat spolupracovníka](./media/luis-how-to-collaborate/add-collaborator.png "přidat spolupracovníka")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
 
 3. Zadejte e-mailovou adresu, kterou spolupracovníka používá k přihlášení k portálu služby LUIS.
 

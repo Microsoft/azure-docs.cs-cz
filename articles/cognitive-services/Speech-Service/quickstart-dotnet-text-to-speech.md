@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Převod převod textu na řeč, .NET Core – Speech Service'
+title: 'Rychlý start: Převod převod textu na řeč, .NET Core – hlasové služby'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu zjistíte jak převést převod textu na řeč pomocí rozhraní REST API pro převod textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: erhopf
-ms.openlocfilehash: 4f424e73fbe1f05155e7f051d90dd72d57405adf
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 3a0304a69cdff15cddf325be8abe336a42ea4fc1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52641583"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089866"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Rychlý start: Převod převod textu na řeč pomocí .NET Core
 
@@ -193,7 +193,6 @@ using (var client = new HttpClient())
         // Update your resource name
         request.Headers.Add("User-Agent", "YOUR_RESOURCE_NAME");
         request.Headers.Add("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm");
-        request.Headers.Add("Connection", "Keep-Alive");
         // Create a request
         Console.WriteLine("Calling the TTS service. Please wait... \n");
         using (var response = await client.SendAsync(request).ConfigureAwait(false))
@@ -237,4 +236,5 @@ Pokud jste do svého programu pevně zakódovali klíč předplatného, nezapome
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Kurz: Rozpoznávání řeči záměrů](how-to-recognize-intents-from-speech-csharp.md)
+* [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md)
+* [Záznam hlasu ukázky vytvořte vlastní hlasové](record-custom-voice-samples.md)

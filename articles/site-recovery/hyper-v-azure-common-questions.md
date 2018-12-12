@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 5df508cfc30f5f3aa59519f7e29f2ad2747ea4cb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 3e71c4e31c6d57cb54a654e0e1c28dcb0fa82cda
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844800"
+ms.locfileid: "52875327"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Časté otázky – Hyper-V do Azure zotavení po havárii
 
@@ -124,7 +124,7 @@ Site Recovery replikuje data z místních do úložiště Azure přes veřejný 
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Můžete replikovat do Azure pomocí ExpressRoute?
 
-Ano, je možné replikovat virtuální počítače Azure ExpressRoute. Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod a je potřeba nastavit [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) replikace Site Recovery. Po převzetí služeb virtuálních počítačů do služby Azure virtual network, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
+Ano, je možné replikovat virtuální počítače Azure ExpressRoute. Site Recovery replikuje data do účtu úložiště Azure přes veřejný koncový bod a je potřeba nastavit [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#publicpeering) replikace Site Recovery. Po převzetí služeb virtuálních počítačů do služby Azure virtual network, k nim můžete přistupovat pomocí [soukromého partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Proč se můžu replikovat přes síť VPN?

@@ -1,10 +1,8 @@
 ---
-title: Kurz k MongoDB, Angular a Node pro Azure – Část 5 | Dokumentace Microsoftu
+title: Kurz k MongoDB, Angular a Node pro Azure – část 5
 description: Pátá část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 services: cosmos-db
 author: johnpapa
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: e9a1b7951d111606d84e235864e3649a742e874e
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 303c3553f3f1209aba99f28cb27308bd96347e42
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741500"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087826"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – Část 5: Připojení ke službě Azure Cosmos DB pomocí Mongoose
 
@@ -72,7 +70,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     const mongoose = require('mongoose');
     /**
      * Set to Node.js native promises
-     * Per http://mongoosejs.com/docs/promises.html
+     * Per https://mongoosejs.com/docs/promises.html
      */
     mongoose.Promise = global.Promise;
 
@@ -234,7 +232,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
    V aplikaci ještě nejsou uložení žádní hrdinové, ale v dalším kroku kurzu přidáme funkce put, push a delete, abychom moli přidávat, aktualizovat a odstraňovat hrdiny z uživatelského prostředí pomocí připojení Mongoose k naší databázi Azure Cosmos DB. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste provedli následující úlohy:
 

@@ -1,22 +1,23 @@
 ---
-title: Fyzické zabezpečení v Azure vyhrazená HSM | Dokumentace Microsoftu
-description: Azure vyhrazené HSM nabízí možnosti úložiště klíčů v Azure, která splňují standard FIPS 140-2 Level 3 certifikační
+title: Fyzické zabezpečení HSM – vyhrazené modulu hardwarového zabezpečení Azure | Dokumentace Microsoftu
+description: Informace o vyhrazených modulu hardwarového zabezpečení Azure zařízení fyzického zabezpečení v datových centrech
 services: dedicated-hsm
 author: barclayn
 manager: mbaldwin
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/21/2018
+ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: a0f85c755b269d95720137368a4ff438031a9fae
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: 662800d2b9db7d7a19861431354e55b3897e020a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319362"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080040"
 ---
 # <a name="azure-dedicated-hsm-physical-security"></a>Fyzické zabezpečení v Azure vyhrazená HSM
 

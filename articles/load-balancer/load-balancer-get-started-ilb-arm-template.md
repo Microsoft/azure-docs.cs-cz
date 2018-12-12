@@ -1,5 +1,6 @@
 ---
-title: Vytvoření interního nástroje pro vyrovnávání zatížení – šablona Azure | Dokumentace Microsoftu
+title: Vytvoření interního Vyrovnávání zatížení – šablona Azure
+titlesuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí šablony v Resource Manageru
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: KumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: a65c43ac70bd4e423c28149a122d346519e73c9a
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 72101b8b6c945e58e06cea371ce4222cd87bcec7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412529"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079470"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Vytvoření interního nástroje pro vyrovnávání zatížení pomocí šablony
 

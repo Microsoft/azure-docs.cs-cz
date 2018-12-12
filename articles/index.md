@@ -6,12 +6,12 @@ description: Naučte se vytvářet a spravovat výkonné aplikace pomocí cloudo
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: c7babd4a6f5a62bb3d284bc37086e908613eb429
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 78f9fa6c3d15d43c1505b5a84a2e269992290afa
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017796"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082216"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -582,12 +582,6 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                 <p>Event Grid</p>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="/azure/biztalk-services/">
-                                                <img src="media/index/BizTalkServices.svg" alt="" />
-                                                <p>Biztalk Services</p>
-                                            </a>
-                                        </li>
                                     </ul>
                                     <h3>Média</h3>
                                     <ul>
@@ -1045,12 +1039,12 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                             </li>
                             <li>
                                 <div class="group">
-                                    <h3>Úložiště</h3>
+                                    <h3>Storage</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/storage/">
                                                 <img src="media/index/Storage.svg" alt="" />
-                                                <p>Úložiště</p>
+                                                <p>Storage</p>
                                             </a>
                                         </li>
                                         <li>
@@ -4388,25 +4382,6 @@ Automatizace úloh Azure pomocí skriptů s využitím PowerShellu </a>
                                                 <div class="cardText">
                                                     <h3>Event Grid</h3>
                                                     <p>Spolehlivé doručování událostí ve velkém měřítku</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/biztalk-services/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/BizTalkServices.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Biztalk Services</h3>
-                                                    <p>Snadná integrace vašeho podniku do cloudu</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -6,17 +6,18 @@ author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.author: mialdrid
-ms.openlocfilehash: e9acf05562d5fb443e0340e18bc6bc259d3e8f52
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.author: mialdridm
+ms.custom: seodec18
+ms.openlocfilehash: 095d637eac5478c65ca3f15cc845518a94aa5149
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868646"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080329"
 ---
 # <a name="expressroute-circuits-and-peering"></a>Okruhy ExpressRoute a partnerský vztah
 
-Okruhy ExpressRoute umožňují připojení vaší místní infrastruktury společnosti Microsoft prostřednictvím poskytovatele připojení. Tento článek vám pomůže pochopit okruhy ExpressRoute a směrování domén/vytvoření partnerského vztahu. Následující obrázek znázorňuje logickou reprezentaci připojení mezi vaší sítě WAN a Microsoftem.
+Okruhy ExpressRoute připojit místní infrastrukturu k Microsoftu prostřednictvím poskytovatele připojení. Tento článek vám pomůže pochopit okruhy ExpressRoute a směrování domén/vytvoření partnerského vztahu. Následující obrázek znázorňuje logickou reprezentaci připojení mezi vaší sítě WAN a Microsoftem.
 
 ![](./media/expressroute-circuit-peerings/expressroute-basic.png)
 

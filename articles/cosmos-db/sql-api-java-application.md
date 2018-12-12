@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 01b1a770959b29969fbfd0b4575a45b9c53318b6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: bdfe390314f2d2174a26e9b321022a3589a06467
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867966"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086535"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Sestavení webové aplikace Java využívající službu Azure Cosmos DB a rozhraní SQL API
 
@@ -49,10 +49,10 @@ Než zahájíte tento kurz vývoje aplikace, musíte mít následující:
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)
-* [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](http://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
+* [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Web Azure se zapnutou platformou Java Runtime Environment (např. Tomcat nebo Jetty)](../app-service/app-service-web-get-started-java.md)
 
-Pokud tyto nástroje instalujete poprvé, coreservlets.com poskytuje k procesu instalace návod v části Quick Start článku [Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Kurz: Instalace TomCat7 a jeho použití s Eclipse).
+Pokud tyto nástroje instalujete poprvé, coreservlets.com poskytuje k procesu instalace návod v části Quick Start článku [Tutorial: Installing TomCat7 and Using it with Eclipse](https://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Kurz: Instalace TomCat7 a jeho použití s Eclipse).
 
 ## <a id="CreateDB"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
 Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte nebo pokud používáte pro účely tohoto kurzu emulátor služby Azure Cosmos DB, můžete přeskočit na [Krok 2: Vytvoření aplikace Java JSP](#CreateJSP).
@@ -84,7 +84,7 @@ Vytvoření aplikace JSP:
     ![Hello World – kurz aplikace Java](./media/sql-api-java-application/image12.png)
 
 ## <a id="InstallSDK"></a>Krok 3: Instalace sady SQL Java SDK
-Nejjednodušším způsobem, jak stáhnout sadu SQL Java SDK a její závislosti, je použít [Apache Maven](http://maven.apache.org/).
+Nejjednodušším způsobem, jak stáhnout sadu SQL Java SDK a její závislosti, je použít [Apache Maven](https://maven.apache.org/).
 
 K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následující kroky:
 
@@ -118,7 +118,7 @@ K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následuj
             private String name;
         }
    
-    V tomto projektu používáte [Project Lombok](http://projectlombok.org/), pomocí kterého generujeme konstruktor, metody getter a setter a tvůrce (builder). Alternativně můžete tento kód napsat ručně nebo jej vygenerovat pomocí rozhraní IDE.
+    V tomto projektu používáte [Project Lombok](https://projectlombok.org/), pomocí kterého generujeme konstruktor, metody getter a setter a tvůrce (builder). Alternativně můžete tento kód napsat ručně nebo jej vygenerovat pomocí rozhraní IDE.
 2. Abyste mohli vyvolat službu Azure Cosmos DB, musíte vytvořit novou instanci **DocumentClient**. Obecně je lépe opakovaně používat **DocumentClient** než pro každý další požadavek vytvářet nového klienta. Klienta můžeme opakovaně používat tak, že jej zabalíme do **DocumentClientFactory**. Do souboru DocumentClientFactory.java je zapotřebí vložit hodnotu URI a PRIMARY KEY, kterou jste uložili do schránky v [kroku 1](#CreateDB). Nahraďte [YOUR\_ENDPOINT\_HERE] hodnotou URI a [YOUR\_KEY\_HERE] hodnotou PRIMARY KEY.
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
@@ -729,7 +729,7 @@ Díky Azure Websites je nasazování aplikací Java stejně snadné jako export 
 ## <a id="GetProject"></a>Získání projektu z Githubu
 Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) na GitHubu. Pokud chcete importovat projekt todo do prostředí Eclipse, ujistěte se, že máte software a prostředky uvedené v části [Předpoklady](#Prerequisites), a udělejte následující:
 
-1. Nainstalujte [Project Lombok](http://projectlombok.org/). Lombok slouží ke generování konstruktorů a metod getter a setter v projektu. Jakmile budete mít stažen soubor lombok.jar, dvakrát na něj klikněte, aby se nainstaloval, nebo jej nainstalujte z příkazového řádku.
+1. Nainstalujte [Project Lombok](https://projectlombok.org/). Lombok slouží ke generování konstruktorů a metod getter a setter v projektu. Jakmile budete mít stažen soubor lombok.jar, dvakrát na něj klikněte, aby se nainstaloval, nebo jej nainstalujte z příkazového řádku.
 2. Pokud je prostředí Eclipse otevřené, zavřete ho a znovu ho spusťte, aby se načetl Lombok.
 3. V prostředí Eclipse v nabídce **File** (Soubor) klikněte na **Import**.
 4. V okně **Import** klikněte na **Git**, pak na **Projects from Git** (Projekty z Gitu) a nakonec na **Next** (Další).

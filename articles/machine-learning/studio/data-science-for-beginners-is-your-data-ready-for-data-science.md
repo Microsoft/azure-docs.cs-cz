@@ -1,11 +1,11 @@
 ---
-title: Jsou data připravená pro vědecké zkoumání? Vyhodnocení dat – Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Vyhodnocení dat – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Čtyři kritéria, vaše data se musí splnit, aby vyhovovalo připravené pro datové vědy. Toto video obsahuje konkrétní příklady, které pomohou s vyhodnocením základní data.
 keywords: relevantní data, vyhodnocení dat, připravit se na data, data kritéria, data připravená
 services: machine-learning
 documentationcenter: na
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cjgronlund
@@ -17,12 +17,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.openlocfilehash: 5e7949edb13bfec72fa7d80d86d2e77214ceaa37
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: 3408130e97b6b38de58300244f884257c179230c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316204"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092876"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Jsou data připravená pro vědecké zkoumání?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Datová věda pro začátečníky řady

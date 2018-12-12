@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs geo-zotavení po havárii | Dokumentace Microsoftu
+title: Zotavení po havárii GEO - Azure Event Hubs | Dokumentace Microsoftu
 description: Použití geografických oblastí na převzetí služeb při selhání a provádět zotavení po havárii ve službě Azure Event Hubs
 services: event-hubs
 documentationcenter: ''
@@ -11,18 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 89ecfd93c22fe72fee3befd8d4a722eb41d816af
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 59eebc8389238af7180b94cb094f9528a21d26d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747167"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091342"
 ---
-# <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure Event Hubs Geo-zotavení po havárii
+# <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – Geo-zotavení po havárii 
 
-Po celé oblasti Azure nebo datových centrech (Pokud ne [zóny dostupnosti](../availability-zones/az-overview.md) se používají) dojít k výpadku, je velmi důležité pro zpracování dat i nadále fungovat v jiné oblasti nebo datového centra. V důsledku toho *zotavení po havárii geograficky* a *geografickou replikaci* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje geo-zotavení po havárii a geografická replikace, na úrovni oboru názvů. 
+Po celé oblasti Azure nebo datových centrech (Pokud ne [zóny dostupnosti](../availability-zones/az-overview.md) se používají) dojít k výpadku, je velmi důležité pro zpracování dat i nadále fungovat v jiné oblasti nebo datového centra. V důsledku toho *zotavení po havárii geograficky* a *geografickou replikaci* jsou důležité funkce pro všechny podniky. Azure Event Hubs podporuje geo-zotavení po havárii a geografická replikace, na úrovni oboru názvů. 
 
 Funkce zotavení po havárii geograficky je globálně dostupná pro standardní SKU Event Hubs.
 

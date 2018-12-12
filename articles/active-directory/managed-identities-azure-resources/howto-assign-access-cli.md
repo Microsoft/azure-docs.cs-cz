@@ -1,6 +1,6 @@
 ---
-title: Přiřazení přístupu MSI k prostředku Azure, pomocí rozhraní příkazového řádku Azure
-description: Podrobné pokyny pro přiřazování MSI na jeden prostředek, přístup k jiný zdroj, pomocí rozhraní příkazového řádku Azure.
+title: Přiřazení spravovanou identitu přístup k prostředku Azure pomocí Azure CLI
+description: Podrobné pokyny pro přiřazování spravovanou identitu na jeden prostředek, přístup k jiný zdroj, pomocí rozhraní příkazového řádku Azure.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -12,36 +12,35 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2017
+ms.date: 12/06/2017
 ms.author: daveba
-ms.openlocfilehash: 2e3b85251b9dabd6efd23e5b41372703a237d227
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 25d92c6c8c03f277b4219cd7d2a83afbb81e2b10
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949073"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081366"
 ---
-# <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Přiřadit Identity spravované služby (MSI) přístup k prostředku pomocí rozhraní příkazového řádku Azure
+# <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Přiřazení přístupu spravovanou identitu prostředku pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Po dokončení konfigurace k prostředku Azure pomocí MSI, můžete poskytnout přístup MSI do jiného prostředku, stejně jako libovolný objekt zabezpečení. Tento příklad ukazuje, jak poskytnout přístup MSI sadu škálování virtuálního počítače nebo virtuálního počítače Azure do účtu služby Azure storage pomocí Azure CLI.
+Po dokončení konfigurace k prostředku Azure s využitím spravované identity, můžete poskytnout přístup spravovaná identita na jiný prostředek, stejně jako jakýkoli zaregistrovaný objekt zabezpečení. Tento příklad ukazuje, jak poskytnout přístup spravovanou identitu sadu škálování virtuálního počítače nebo virtuálního počítače Azure do účtu služby Azure storage pomocí Azure CLI.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
-
-Spuštění ukázkové skripty rozhraní příkazového řádku, máte tři možnosti:
-
-- Použití [Azure Cloud Shell](../../cloud-shell/overview.md) z portálu Azure portal (viz další část).
-- Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu.
-- [Nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) Pokud byste radši chtěli použít místní konzoly příkazového řádku. 
+- Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a uživatelsky přiřazené identity spravované](overview.md#how-does-it-work)**.
+- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+- Spuštění ukázkové skripty rozhraní příkazového řádku, máte tři možnosti:
+    - Použití [Azure Cloud Shell](../../cloud-shell/overview.md) z portálu Azure portal (viz další část).
+    - Použijte vložené Azure Cloud Shell pomocí "Vyzkoušet" tlačítka, nachází v pravém horním rohu každý blok kódu.
+    - [Nainstalujte nejnovější verzi Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) Pokud byste radši chtěli použít místní konzoly příkazového řádku. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="use-rbac-to-assign-the-msi-access-to-another-resource"></a>Využijte RBAC pro přiřazení přístupu MSI k jinému prostředku
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Využijte RBAC pro přiřazení přístupu spravovanou identitu do jiného prostředku
 
-Po povolení MSI v prostředku Azure, jako například [virtuálních počítačů Azure](qs-configure-cli-windows-vm.md) nebo [škálovací sady virtuálních počítačů Azure](qs-configure-cli-windows-vmss.md): 
+Po povolení identity spravované v prostředku Azure, jako například [virtuálních počítačů Azure](qs-configure-cli-windows-vm.md) nebo [škálovací sady virtuálních počítačů Azure](qs-configure-cli-windows-vmss.md): 
 
 1. Pokud používáte Azure CLI v místní konzole, nejprve se přihlaste k Azure pomocí příkazu [az login](/cli/azure/reference-index#az-login). Použijte účet, který je přidružený k předplatnému Azure, ve které chcete nasadit škálovací sadu virtuálního počítače nebo virtuálního počítače:
 
@@ -49,7 +48,7 @@ Po povolení MSI v prostředku Azure, jako například [virtuálních počítač
    az login
    ```
 
-2. V tomto příkladu nabízíme přístupu virtuálních počítačů Azure do účtu úložiště. Nejprve používáme [az resource list](/cli/azure/resource/#az-resource-list) získat instanční objekt služby pro virtuální počítač s názvem "myVM":
+2. V tomto příkladu nabízíme přístupu virtuálních počítačů Azure do účtu úložiště. Nejprve používáme [az resource list](/cli/azure/resource/#az-resource-list) zobrazíte instanční objekt služby pro virtuální počítač s názvem můjvp přesměrovat:
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
@@ -66,20 +65,8 @@ Po povolení MSI v prostředku Azure, jako například [virtuálních počítač
    az role assignment create --assignee $spID --role 'Reader' --scope /subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/myStorageAcct
    ```
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="next-steps"></a>Další postup
 
-Pokud soubor MSI pro prostředek není uveden v seznamu dostupných identit, ověřte správně povolené MSI. V našem případě můžeme přejít zpět na virtuálním počítači Azure nebo škálovací sady virtuálních počítačů [webu Azure portal](https://portal.azure.com) a:
-
-- Podívejte se na stránce "Konfigurace" a zajistit MSI, povoleno = "Yes".
-- Podívejte se na stránce "Rozšíření" a zajistit úspěšné nasazení rozšíření MSI (**rozšíření** stránka není dostupná pro škálovací sady virtuálních počítačů Azure).
-
-Pokud je buď nesprávný, budete muset znovu znovu provádět nasazení MSI pro váš prostředek ani řešení potíží s nasazení se nezdařilo.
-
-## <a name="related-content"></a>Související obsah
-
-- Přehled MSI najdete v tématu [identita spravované služby přehled](overview.md).
-- Pokud chcete povolit MSI ve virtuálním počítači Azure, najdete v článku [konfigurace Azure VM Identity spravované služby (MSI) pomocí Azure CLI](qs-configure-cli-windows-vm.md).
-- Povolení MSI na škálovací sadu virtuálních počítačů Azure, najdete v článku [konfigurace Azure virtuální počítač Škálovací nastavení Identity spravované služby (MSI) pomocí webu Azure portal](qs-configure-portal-windows-vmss.md)
-
-Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah.
-
+- [Spravované identity pro prostředky Azure – přehled](overview.md)
+- Povolit spravované identity na virtuálním počítači Azure, najdete v článku [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí Azure CLI](qs-configure-cli-windows-vm.md).
+- Povolit spravované identity na škálovací sadu virtuálních počítačů Azure, najdete v článku [konfigurace spravovaných identit pro prostředky Azure na virtuální počítač škálovací sady pomocí Azure CLI](qs-configure-cli-windows-vmss.md).

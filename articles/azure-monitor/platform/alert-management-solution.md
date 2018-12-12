@@ -15,25 +15,25 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 76c2c7c7e99f10f48464d85030fea64bb7925cd7
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 50dea9451205e565b954a35b3611a3e0302222d1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845701"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088285"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Řešení alert managementu ve službě Azure Log Analytics
 
 ![Ikona upozornění správy](media/alert-management-solution/icon.png)
 
-Správa výstrah řešení pomáhá analyzovat všechny výstrahy v úložišti Log Analytics.  Tyto výstrahy mohou pocházet z nejrůznějších zdrojů, včetně těchto zdrojů [vytvořené službou Log Analytics](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) nebo [naimportované z Nagios a Zabbix](../../log-analytics/log-analytics-quick-collect-linux-computer.md). Řešení také importuje výstrahy z libovolného [připojené skupiny pro správu System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md).
+Správa výstrah řešení pomáhá analyzovat všechny výstrahy v úložišti Log Analytics.  Tyto výstrahy mohou pocházet z nejrůznějších zdrojů, včetně těchto zdrojů [vytvořené službou Log Analytics](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) nebo [naimportované z Nagios a Zabbix](../../azure-monitor/learn/quick-collect-linux-computer.md). Řešení také importuje výstrahy z libovolného [připojené skupiny pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Toto řešení funguje se všechny záznamy v úložišti Log Analytics s typem **výstrah**, takže je nutné provést jakékoli konfigurace je nutná pro shromažďování těchto záznamů.
 
 - Pro upozornění Log Analytics [vytvořit pravidla výstrah](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) vytvořit záznamy upozornění přímo v úložišti.
-- Výstrahy Nagios a Zabbix [konfiguraci těchto serverů](../../log-analytics/log-analytics-quick-collect-linux-computer.md) k odesílání upozornění Log Analytics.
-- Pro System Center Operations Manageru výstrahy [připojení skupiny pro správu nástroje Operations Manager do vašeho pracovního prostoru Log Analytics](../../log-analytics/log-analytics-om-agents.md).  Všechny výstrahy vytvořené v nástroji System Center Operations Manager jsou importovány do Log Analytics.  
+- Výstrahy Nagios a Zabbix [konfiguraci těchto serverů](../../azure-monitor/learn/quick-collect-linux-computer.md) k odesílání upozornění Log Analytics.
+- Pro System Center Operations Manageru výstrahy [připojení skupiny pro správu nástroje Operations Manager do vašeho pracovního prostoru Log Analytics](../../azure-monitor/platform/om-agents.md).  Všechny výstrahy vytvořené v nástroji System Center Operations Manager jsou importovány do Log Analytics.  
 
 ## <a name="configuration"></a>Konfigurace
 Přidejte řešení pro správu výstrah do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení](../../azure-monitor/insights/solutions.md). Není nutná žádná další konfigurace.
@@ -43,7 +43,7 @@ Pokud vaší skupině pro správu System Center Operations Manageru je připojen
 
 * Microsoft System Center Advisor Správa výstrah (Microsoft.IntelligencePacks.AlertManagement)
 
-Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../log-analytics/log-analytics-om-agents.md).
+Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 ## <a name="data-collection"></a>Shromažďování dat
 ### <a name="agents"></a>Agenti
@@ -52,8 +52,8 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 | Připojený zdroj | Podpora | Popis |
 |:--- |:--- |:--- |
 | [Agenti systému Windows](agent-windows.md) | Ne |Přímí agenti Windows nejsou generovány výstrahy.  Upozornění log Analytics je možné vytvořit z události a data o výkonu shromáždí z Windows agentů. |
-| [Agenti systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Ne |Přímí agenti systému Linux negenerují výstrahy.  Upozornění log Analytics můžete vytvořit z události a údaje o výkonu shromážděná z agentů Linuxu.  Výstrahy Nagios a Zabbix se shromažďují z těchto serverů, které vyžadují agenta pro Linux. |
-| [Skupina pro správu System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md) |Ano |Výstrahy, které jsou vytvořeny na agenty nástroje Operations Manager se doručí do skupiny pro správu a pak se předávají do Log Analytics.<br><br>Přímé připojení z agentů nástroje Operations Manager ke službě Log Analytics se nevyžaduje. Upozornění data se přesměrovávají ze skupiny pro správu do úložiště Log Analytics. |
+| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne |Přímí agenti systému Linux negenerují výstrahy.  Upozornění log Analytics můžete vytvořit z události a údaje o výkonu shromážděná z agentů Linuxu.  Výstrahy Nagios a Zabbix se shromažďují z těchto serverů, které vyžadují agenta pro Linux. |
+| [Skupina pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md) |Ano |Výstrahy, které jsou vytvořeny na agenty nástroje Operations Manager se doručí do skupiny pro správu a pak se předávají do Log Analytics.<br><br>Přímé připojení z agentů nástroje Operations Manager ke službě Log Analytics se nevyžaduje. Upozornění data se přesměrovávají ze skupiny pro správu do úložiště Log Analytics. |
 
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat

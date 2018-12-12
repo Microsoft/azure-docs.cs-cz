@@ -8,13 +8,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 11/2/2017
-ms.openlocfilehash: b2f80b2d66de9e5f270c7b062c57d0efc3ab0f36
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 8b0f1cfe56923cbd8a5b1c517cfdc3b174088715
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52499344"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086135"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Řešení potíží s Apache Storm pomocí Azure HDInsight
 

@@ -1,21 +1,22 @@
 ---
-title: 'Kurz 6: Extrahování složených dat s entitou složené LUIS'
+title: Složený entity"
 titleSuffix: Azure Cognitive Services
 description: Přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 8f7edecf1abd1f01a2f40f1420a6a85224271239
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b5923d5cd4a704dda76e33ee6a2b76cfd903219d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423497"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079207"
 ---
 # <a name="tutorial-6-group-and-extract-related-data"></a>Kurz 6: Seskupovat a extrahovat souvisejících dat
 V tomto kurzu přidáte složené entitu seskupit do jedné entity obsahující extrahované data různých typů. Seskupí dat, klientská aplikace snadno extrahovat souvisejících dat v různých datových typů.
@@ -70,7 +71,7 @@ Příklad projevy v **MoveEmployee** záměr patří:
 
 Extrahovaných dat z koncového bodu by měl obsahovat tyto informace a vrátit ho `RequestEmployeeMove` složený entity:
 
-```JSON
+```json
 "compositeEntities": [
   {
     "parentType": "RequestEmployeeMove",
@@ -103,22 +104,22 @@ Extrahovaných dat z koncového bodu by měl obsahovat tyto informace a vrátit 
 
 3. Vyberte ikonu lupy na panelu nástrojů pro filtrování seznamu projevy. 
 
-    [![](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "Snímek obrazovky služby LUIS na záměr \"MoveEmployee\" se zvýrazněným tlačítkem s ikonou lupy")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
+    [![Snímek obrazovky služby LUIS na záměr "MoveEmployee" se zvýrazněným tlačítkem s ikonou lupy](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png "snímek obrazovky služby LUIS na záměr \"MoveEmployee\" se zvýrazněným tlačítkem s ikonou lupy")](media/luis-tutorial-composite-entity/hr-moveemployee-magglass.png#lightbox)
 
 4. Zadejte `tomorrow` do textového pole filtru k vyhledání utterance `shift x12345 to h-1234 tomorrow`.
 
-    [![](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "Zvýrazněný snímek obrazovky služby LUIS na záměr \"MoveEmployee\" s filtrem \"zítra.")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
+    [![Snímek obrazovky služby LUIS na záměr "MoveEmployee" s filtrem "zítřka" zvýrazněný](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png "zvýrazněnou snímek obrazovky služby LUIS na záměr \"MoveEmployee\" s filtrem \"zítra.")](media/luis-tutorial-composite-entity/hr-filter-by-tomorrow.png#lightbox)
 
     Jinou metodou je vyfiltrovat entity datetimeV2, tak, že vyberete **Entity filtry** vyberte **datetimeV2** ze seznamu. 
 
 5. Vyberte první entitu `Employee`a pak vyberte **zabalit do složeného entity** v rozbalovacím seznamu. 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "Snímek obrazovky služby LUIS na záměr \"MoveEmployee\" vyberete první entitu v složeného zvýrazněnou")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
+    [![Snímek obrazovky služby LUIS na záměr "MoveEmployee" vyberete první entitu v složeného zvýrazněnou](media/luis-tutorial-composite-entity/hr-create-entity-1.png "snímek obrazovky služby LUIS na záměr \"MoveEmployee\" vyberete první entitu v složeného zvýrazněnou")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
 
 6. Vyberte poslední entita okamžitě `datetimeV2` v utterance. Panel zelené vykreslením v rámci vybrané slova označující složený entity. V rozbalovací nabídce, zadejte název složený `RequestEmployeeMove` vyberte ENTER. 
 
-    [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "Snímek obrazovky služby LUIS na záměr \"MoveEmployee\" Výběr poslední entity v entity složené a vytváření zvýrazněnou")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
+    [![Snímek obrazovky služby LUIS na záměr "MoveEmployee" výběrem poslední entita v složeného a vytváří se entita zvýrazněnou](media/luis-tutorial-composite-entity/hr-create-entity-2.png "snímek obrazovky služby LUIS na záměr \"MoveEmployee\" výběrem poslední entita v složeného a vytváří se entita zvýrazněnou")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
 7. V **jaký typ entity chcete vytvořit?**, téměř všechna pole, vyžaduje se v seznamu. Chybí pouze původní umístění. Vyberte **přidat podřízené entity**vyberte **Locations::Origin** ze seznamu existující entity, pak vyberte **provádí**. 
 
@@ -135,15 +136,15 @@ Extrahovaných dat z koncového bodu by měl obsahovat tyto informace a vrátit 
 
 1. V každé utterance příklad vyberte entitu úplně vlevo, by měla být v složeného. Potom vyberte **zabalit do složeného entity**.
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "Snímek obrazovky služby LUIS na záměr \"MoveEmployee\" vyberete první entitu v složeného zvýrazněnou")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
+    [![Snímek obrazovky služby LUIS na záměr "MoveEmployee" vyberete první entitu v složeného zvýrazněnou](media/luis-tutorial-composite-entity/hr-label-entity-1.png "snímek obrazovky služby LUIS na záměr \"MoveEmployee\" vyberete první entitu v složeného zvýrazněnou")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
 
 2. Vyberte poslední entita složený potom **RequestEmployeeMove** v místní nabídce. 
 
-    [![](media/luis-tutorial-composite-entity/hr-label-entity-2.png "Snímek obrazovky služby LUIS na záměr \"MoveEmployee\" Výběr poslední entita v složeného zvýrazněnou")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
+    [![Snímek obrazovky služby LUIS na záměr "MoveEmployee" Výběr poslední entita v složeného zvýrazněnou](media/luis-tutorial-composite-entity/hr-label-entity-2.png "snímek obrazovky služby LUIS na záměr \"MoveEmployee\" Výběr poslední entita v složeného zvýrazněnou")](media/luis-tutorial-composite-entity/hr-label-entity-2.png#lightbox)
 
 3. Ověřte, že všechny projevy v záměr jsou označeny složený entity. 
 
-    [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "Snímek obrazovky služby LUIS na \"MoveEmployee\" s všechny projevy s popiskem")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
+    [![Snímek obrazovky služby LUIS na "MoveEmployee" s všechny projevy, které jsou označené jako](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "snímek obrazovky služby LUIS na \"MoveEmployee\" s všechny projevy s popiskem")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
 ## <a name="train"></a>Trénování
 
@@ -161,7 +162,7 @@ Extrahovaných dat z koncového bodu by měl obsahovat tyto informace a vrátit 
 
     Ověřte, zda že je správně extrahován složeného je tento test, test může obsahovat buď existující utterance ukázka nebo nové utterance. Dobrá se zahrnou všechny podřízené entity složený entity.
 
-    ```JSON
+    ```json
     {
       "query": "Move Jill Jones from a-1234 to z-2345 on March 3  2 p.m",
       "topScoringIntent": {

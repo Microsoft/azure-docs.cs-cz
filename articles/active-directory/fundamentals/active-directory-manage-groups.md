@@ -1,6 +1,6 @@
 ---
-title: Další informace o správu přístupu k aplikacím a prostředkům pomocí skupin Azure Active Directory | Dokumentace Microsoftu
-description: Další informace o správě přístupu k prostředkům pomocí skupin Azure Active Directory, místních aplikací a cloudových aplikací vaší organizace.
+title: Správa aplikací a přístup k prostředkům pomocí skupin – Azure Active Directory | Dokumentace Microsoftu
+description: Další informace o tom, jak spravovat přístup k prostředkům pomocí skupin Azure Active Directory, místních aplikací a cloudových aplikací vaší organizace.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,15 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 69be2cb8b57b34502d5a5688ac163d7451abe48e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 5a706a2a879ae3b4c4adb2690faa77846474ce49
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223968"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087282"
 ---
-# <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Další informace o správě přístupu pomocí skupin Azure Active Directory
+# <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Správa aplikací a přístup k prostředkům pomocí skupin Azure Active Directory
 Azure Active Directory (Azure AD) umožňuje spravovat vaše cloudové aplikace, místním aplikacím a prostředkům pomocí skupin vaší organizace. Vaše prostředky můžou být součástí adresáře, jako je například oprávnění ke správě objektů pomocí rolí v adresáři, nebo externí vzhledem k adresáři, jako jsou pro Software jako služba (SaaS) aplikací Azure services, Sharepointové weby a místním prostředkům.
 
 >[!NOTE]

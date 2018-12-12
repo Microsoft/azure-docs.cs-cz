@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 12e2f96e66305370499fbacf9ae6a834a22eb504
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: fec5ef3ef190270d22e9a7d0306eb9477b39a8c8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50412495"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095225"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Integrace ověření služby RADIUS brány Azure VPN se serverem NPS pro ověřování službou Multi-Factor Authentication 
 
@@ -58,7 +58,7 @@ Jak zapnout MFA, uživatelé musí být v Azure Active Directory (Azure AD), kte
     - **Adresa (IP nebo DNS)**: Zadejte podsíť brány, kterou jste vytvořili v kroku 1.
     - **Sdílený tajný klíč**: Zadejte jakékoli tajný klíč a nezapomeňte ho pro pozdější použití.
 
-    ![Obrázek nastavení RADUIS klientů](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![Obrázek nastavení RADUIS klientů](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Na **Upřesnit** kartu, nastavte název dodavatele **RADIUS Standard** a ujistěte se, že **další možnosti** není zaškrtnuté políčko.
@@ -77,7 +77,7 @@ Jak zapnout MFA, uživatelé musí být v Azure Active Directory (Azure AD), kte
     - **Typ ověřování**: vyberte **ověřování pomocí protokolu RADIUS**.
     - **IP adresa serveru**: Zadejte IP adresu serveru NPS.
 
-    ![Obrázek o, přejděte na nastavení lokality](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
+      ![Obrázek o, přejděte na nastavení lokality](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: cced9a313664eaeaed4dd1298488670960b76413
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 0d57e251b241297c461b117edec8fee6316b337b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195766"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098028"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurace průchodu bránou VPN pro partnerský vztah virtuální sítě
 
@@ -79,7 +79,7 @@ Podle pokynů vytvořte nebo aktualizujte partnerské vztahy virtuálních sít�
     - Nastavte možnost **Používat vzdálené brány**.
     - Klikněte na OK.
 
-    ![Ze spokerm do hubrm](./media/vpn-gateway-peering-gateway-transit/spokerm-hubrm-peering.png)
+      ![Ze spokerm do hubrm](./media/vpn-gateway-peering-gateway-transit/spokerm-hubrm-peering.png)
 
 2. Pokud jste partnerský vztah už vytvořili, přejděte na jeho prostředek a povolte možnost **Používat vzdálené brány** podobně jako na obrázku v kroku (1).
 
@@ -90,7 +90,7 @@ Podle pokynů vytvořte nebo aktualizujte partnerské vztahy virtuálních sít�
     - Nastavte možnost **Povolit průchod bránou**.
     - Klikněte na OK.
 
-    ![Z hubrm do spokerm](./media/vpn-gateway-peering-gateway-transit/hubrm-spokerm-peering.png)
+      ![Z hubrm do spokerm](./media/vpn-gateway-peering-gateway-transit/hubrm-spokerm-peering.png)
 
 4. Pokud jste partnerský vztah už vytvořili, přejděte na jeho prostředek a povolte možnost **Povolit průchod bránou** podobně jako na obrázku v kroku (3).
 
@@ -160,7 +160,7 @@ Add-AzureRmVirtualNetworkPeering `
   -AllowGatewayTransit
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Než se pustíte do vytváření partnerského vztahu virtuální sítě pro použití v produkčním prostředí, přečtěte si další informace o [omezeních a chování partnerského uzlu virtuální sítě](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) a [nastavení partnerského vztahu virtuální sítě](../virtual-network/virtual-network-manage-peering.md#create-a-peering).
 * Přečtěte si, jak [vytvořit topologii centrální a koncové sítě](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) s partnerským vztahem virtuální sítě a průchodem bránou.

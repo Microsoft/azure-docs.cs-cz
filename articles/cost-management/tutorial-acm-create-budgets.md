@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.custom: ''
-ms.openlocfilehash: f64a82cc3096c3c4d2a47568f4d6d516c685ee04
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: fc38c6278590e213674a2522169f988eaeea9cc4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52991754"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081349"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytvoření a Správa rozpočtů Azure
 
@@ -45,7 +45,7 @@ Další informace o přiřazování oprávnění k datům služby Cost Managemen
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-- Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
+- Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Vytvořit rozpočet na webu Azure Portal
 
@@ -57,23 +57,23 @@ Po vytvoření rozpočty, zobrazí se vaše aktuální útratu proti nim jednodu
 
 Klikněte na tlačítko **Add** (Přidat).
 
-![Správa rozpočtů nákladů](./media/tutorial-acm-create-budgets/budgets01.png)
+![Cost Management rozpočty uvedené na webu Azure Portal](./media/tutorial-acm-create-budgets/budgets01.png)
 
 V **vytvořit rozpočtu** okno, zadejte název rozpočtu a částka rozpočtu. Zvolte buď měsíčně, čtvrtletně, nebo roční dobu trvání období. V dalším kroku vyberte koncové datum. Rozpočty vyžadují aspoň jednu cenu prahové hodnoty (% rozpočtu) a odpovídající e-mailovou adresu. Může volitelně zahrnovat až pět prahové hodnoty a pět e-mailových adres v jedné rozpočtu. Pokud je dodržena prahová hodnota rozpočtu, e-mailová oznámení dostávají obvykle za méně než osm hodin.
 
 Tady je příklad vytvoření měsíční rozpočet pro $4500. Když je dosaženo 90 % z rozpočtu získá vygenerována výstraha e-mailu.
 
-![Příklad měsíční rozpočtu](./media/tutorial-acm-create-budgets/monthly-budget01.png)
+![Příklad informace zobrazené v seznamu vytvořit rozpočtu](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
 Při vytváření čtvrtletní rozpočtu funguje stejným způsobem jako měsíční rozpočtu. Rozdíl je, že je rozpočtu částka za čtvrtletí rovnoměrně rozdělené mezi tři měsíce ve čtvrtletí. Jak byste asi očekávali, roční částka rozpočtu rovnoměrně mezi všechny 12 měsíců kalendářního roku.
 
 Aktuální útratu s rozpočty se aktualizuje pokaždé, když přijme aktualizovaná data fakturační náklady na správu. Obvykle, každý den.
 
-![Aktuální útratu s rozpočty](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
+![Informace z příkladu zobrazuje aktuální útratu s rozpočty](./media/tutorial-acm-create-budgets/budgets-current-spending.png)
 
 Po vytvoření rozpočtu, se zobrazí v analýze nákladů. Zobrazení vašemu rozpočtu ve vztahu k vaší útraty trend je jedním z prvních kroků při spuštění [analyzovat vaše náklady a výdaje](quick-acm-cost-analysis.md).
 
-![Rozpočtu ukazuje analýzy nákladů](./media/tutorial-acm-create-budgets/cost-analysis.png)
+![Příklad snazší plánování rozpočtu a výdaje podle analýzy nákladů](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
 V předchozím příkladu jste vytvořili rozpočet pro předplatné. Můžete však také vytvořit rozpočet pro skupinu prostředků. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **Správa nákladů a fakturace** &gt; **předplatná** &gt; Vybrat předplatné > **prostředků skupiny** > vyberte skupinu prostředků > **rozpočty** > a pak **přidat** rozpočtu.
 
@@ -81,7 +81,7 @@ V předchozím příkladu jste vytvořili rozpočet pro předplatné. Můžete v
 
 V závislosti na úrovni přístupu, kterou máte můžete upravit rozpočtu, chcete-li změnit jeho vlastnosti. V následujícím příkladu některé vlastnosti jsou jen pro čtení vzhledem k tomu, že má uživatel jenom oprávnění přispěvatele k předplatnému. V současné době **datum vypršení platnosti** zakázána a nemůže modifikovat po nastavení.
 
-![Upravit rozpočtu – oprávnění Přispěvatel](./media/tutorial-acm-create-budgets/edit-budget.png)
+![Příklad úpravy rozpočtu, chcete-li změnit různé vlastnosti](./media/tutorial-acm-create-budgets/edit-budget.png)
 
 
 ## <a name="next-steps"></a>Další postup

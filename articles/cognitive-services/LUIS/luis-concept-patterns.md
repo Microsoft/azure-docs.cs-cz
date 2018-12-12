@@ -1,21 +1,22 @@
 ---
-title: Zjistěte, jak zvýšit přesnost předpovědi vzory
-titleSuffix: Azure Cognitive Services
-description: Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné. Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více.
+title: Vzory pomáhají predikcí
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 09c869bf28b804d8fabe331c4a9c2d222accc1e5
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: MT
+ms.openlocfilehash: 3c33612ef76a572bd4bf63a5e7d6f05e36c7847b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300366"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081995"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
@@ -50,7 +51,7 @@ Pokud souvisí kontextově dva nebo více entit ve vzorku, použijte vzory entit
 Zadaný dostatek příklad projevy, LUIS bylo by možné zvýšit důvěru předpovědi vzorů. Vzory zvýšení skóre spolehlivosti aniž by musel zadávat tolik projevy.  
 
 ## <a name="pattern-matching"></a>Porovnávání vzorů
-Vzor je nalezena shoda podle nejprve zjišťování entit v modelu a ověření zbytek slova a pořadí slov, vzoru. Entity jsou nutné ve vzoru pro odpovídající vzor. 
+Vzor je nalezena shoda podle nejprve zjišťování entit v modelu a ověření zbytek slova a pořadí slov, vzoru. Entity jsou nutné ve vzoru pro odpovídající vzor. Vzor se použije na úrovni tokenu není úroveň znak. 
 
 ## <a name="pattern-syntax"></a>Vzor syntaxe
 Vzor syntaxe je šablona pro utterance. Šablona by měl obsahovat slova a entity, které chcete porovnat a také slova a interpunkční znaménka, které má být ignorována. Je **není** regulární výraz. 

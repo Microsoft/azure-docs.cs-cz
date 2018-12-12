@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: ab09eb939d760a0f06be758fdf83591565aaf7d0
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: MT
+ms.openlocfilehash: 34a80a180d4c08027e4c975d4f7955966eec7307
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219371"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086364"
 ---
 # <a name="load-balancer-outbound-rules"></a>Odchozí pravidla nástroje pro vyrovnávání zatížení
 
@@ -67,9 +67,9 @@ Rozhraní API ve verzi "2018-07-01" povoluje definici odchozí pravidlo struktur
 
 Zatímco odchozí pravidlo lze použít s právě jednu veřejnou IP adresu, odchozí pravidla usnadnění konfigurace zatížení pro škálování odchozí NAT. Několik IP adres můžete použít k plánování pro scénáře, ve velkém měřítku a odchozích pravidel můžete použít ke zmírnění [SNAT vyčerpání](load-balancer-outbound-connections.md#snatexhaust) vzory náchylné k chybám.  
 
-Každý další IP adresu poskytované front-end poskytuje dosahovat 64 000 dočasné porty pro nástroj pro vyrovnávání zatížení pro použití jako porty SNAT. Vyrovnávání zatížení nebo pravidla příchozího překladu adres mají jeden front-endu, odchozí pravidlo rozšiřuje pojem front-endu a umožňuje několik front-endů v jednotlivém pravidle.  Několik front-endů pro každé pravidlo počet dostupných portů SNAT se násobí s každou veřejnou IP adresu a velké scénářích může být podporovaný.
+Každý další IP adresu poskytované front-end obsahuje 51 200 dočasné porty pro nástroj pro vyrovnávání zatížení pro použití jako porty SNAT. Vyrovnávání zatížení nebo pravidla příchozího překladu adres mají jeden front-endu, odchozí pravidlo rozšiřuje pojem front-endu a umožňuje několik front-endů v jednotlivém pravidle.  Několik front-endů pro každé pravidlo počet dostupných portů SNAT se násobí s každou veřejnou IP adresu a velké scénářích může být podporovaný.
 
-Kromě toho můžete použít [předponu veřejné IP](https://aka.ms/lbpublicipprefix) přímo s pravidlem odchozí.  Pomocí veřejné IP adresy umožňuje snazší škálování a zjednodušené seznamu povolených toků pocházející z nasazení vašeho řešení Azure předponu. Můžete nakonfigurovat IP konfigurace front-endu v rámci prostředek nástroje pro vyrovnávání zatížení, který chcete odkazovat přímo předponu veřejné IP adresy.  Díky tomu nástroje pro vyrovnávání zatížení výhradní kontrolu nad veřejných předpon adres IP a odchozí pravidla budou automaticky používat všechny veřejné IP adresy obsažené v rozsahu předpony veřejných IP pro odchozí připojení.  Každá z IP adresy v rozsahu veřejných předpon adres IP poskytují dosahovat 64 000 dočasné porty na IP adresu nástroje pro vyrovnávání zatížení pro použití jako porty SNAT.   
+Kromě toho můžete použít [předponu veřejné IP](https://aka.ms/lbpublicipprefix) přímo s pravidlem odchozí.  Pomocí veřejné IP adresy umožňuje snazší škálování a zjednodušené seznamu povolených toků pocházející z nasazení vašeho řešení Azure předponu. Můžete nakonfigurovat IP konfigurace front-endu v rámci prostředek nástroje pro vyrovnávání zatížení, který chcete odkazovat přímo předponu veřejné IP adresy.  Díky tomu nástroje pro vyrovnávání zatížení výhradní kontrolu nad veřejných předpon adres IP a odchozí pravidla budou automaticky používat všechny veřejné IP adresy obsažené v rozsahu předpony veřejných IP pro odchozí připojení.  Každá z IP adresy v rozsahu veřejných předpon adres IP poskytují 51 200 dočasné porty na IP adresu nástroje pro vyrovnávání zatížení pro použití jako porty SNAT.   
 
 Nemůžete mít jednotlivé prostředky pro adres veřejné IP adresy vytvořené z veřejných předpon adres IP při použití této možnosti jako odchozí pravidlo musí mít úplnou kontrolu nad veřejných předpon adres IP.  Pokud potřebujete více jemné kontrolu, můžete vytvořit jednotlivé prostředek veřejné IP adresy z veřejných předpon adres IP a jednotlivě přiřadit několik veřejných IP adres frontendu odchozí pravidlo.
 
@@ -82,7 +82,7 @@ Použijte tento parametr k přidělení 10 000 SNAT porty na virtuálním počí
 
           "allocatedOutboundPorts": 10000
 
-Každá veřejná IP adresa ze všech front-endů odchozí pravidla přispívá až 64 000 dočasné porty pro použití jako porty SNAT.  Nástroj pro vyrovnávání zatížení přiděluje SNAT porty v násobcích po 8. Pokud zadáte hodnotu není dělitelná 8, operace konfigurace byl odmítnut.  Při pokusu o přidělení více SNAT porty, než je k dispozici na základě počtu veřejných IP adres, operace konfigurace byl odmítnut.  Pokud přidělíte 10 000 porty na virtuálním počítači a 7 virtuálních počítačů v back-end fondu by sdílet jednu veřejnou IP adresu, je konfigurace odmítnuté (7 x 10,0000 SNAT porty > 64 000 SNAT porty).  Můžete přidat více veřejné IP adresy pro front-endu odchozí pravidla povolit tento scénář.
+Každá veřejná IP adresa ze všech front-endů odchozí pravidla přispívá 51 až 200 dočasné porty pro použití jako porty SNAT.  Nástroj pro vyrovnávání zatížení přiděluje SNAT porty v násobcích po 8. Pokud zadáte hodnotu není dělitelná 8, operace konfigurace byl odmítnut.  Při pokusu o přidělení více SNAT porty, než je k dispozici na základě počtu veřejných IP adres, operace konfigurace byl odmítnut.  Pokud přidělíte 10 000 porty na virtuálním počítači a 7 virtuálních počítačů v back-end fondu by sdílet jednu veřejnou IP adresu, je konfigurace odmítnuté (7 x 10,0000 SNAT porty > 51,200 SNAT porty).  Můžete přidat více veřejné IP adresy pro front-endu odchozí pravidla povolit tento scénář.
 
 Můžete se vrátit zpět k [automatické přidělování port SNAT podle velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports) zadáním 0 pro čísla portů.
 
@@ -160,7 +160,7 @@ Pokud nechcete, aby pro pravidlo Vyrovnávání zatížení má být použit pro
 
 Odchozí pravidla můžete použít k ladění [automatické přidělování port SNAT podle velikosti fondu back-endu](load-balancer-outbound-connections.md#preallocatedports).
 
-Pokud budete mít dva virtuální počítače sdílení jednu veřejnou IP adresu pro odchozí NAT, můžete chtít zvýšit počet portů SNAT přiděluje z výchozí porty 1024, pokud dochází k vyčerpání SNAT. Každá veřejná IP adresa může přispívat do 64 000 dočasné porty.  Pokud nakonfigurujete odchozí pravidlo s jedné veřejné IP adresy front-endu, můžete distribuovat celkem dosahovat 64 000 portů SNAT na virtuální počítače v back-endový fond.  Pro dva virtuální počítače je možné přidělit maximálně 32 000 portů SNAT s pravidlem odchozí (2 × 32 000 = 64 000).
+Pokud budete mít dva virtuální počítače sdílení jednu veřejnou IP adresu pro odchozí NAT, můžete chtít zvýšit počet portů SNAT přiděluje z výchozí porty 1024, pokud dochází k vyčerpání SNAT. Každá veřejná IP adresa může přispívat 51 až 200 dočasné porty.  Pokud nakonfigurujete odchozí pravidlo s jedné veřejné IP adresy front-endu, můžete distribuovat celkem 51 200 SNAT portů pro virtuální počítače v back-endový fond.  Pro dva virtuální počítače je možné přidělit maximálně 25 600 SNAT porty s pravidlem odchozí (2 x 25,600 = 51,200).
 
 Kontrola [odchozí připojení](load-balancer-outbound-connections.md) a podrobnosti o [SNAT](load-balancer-outbound-connections.md#snat) porty jsou přidělovány a využívány.
 
@@ -202,7 +202,7 @@ Při použití interní Load balanceru úrovně Standard, odchozí NAT není k d
 
 ## <a name="limitations"></a>Omezení
 
-- Maximální počet použitelné dočasné porty na front-endové IP adresy je 64 000.
+- Maximální počet použitelné dočasné porty na front-endové IP adresy je 51,200.
 - Rozsah konfigurovatelné odchozí časový limit nečinnosti je 66 do 4 minut (240 až 4000 sekund).
 - Nástroj pro vyrovnávání zatížení nepodporuje protokol ICMP pro odchozí NAT.
 - Portál nelze použít ke konfiguraci nebo zobrazení odchozí pravidla.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.

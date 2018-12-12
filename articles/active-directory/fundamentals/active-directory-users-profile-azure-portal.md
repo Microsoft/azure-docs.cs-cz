@@ -1,6 +1,6 @@
 ---
-title: Jak přidat nebo aktualizovat informace o profilu uživatele v Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak přidat informace do profilu uživatele, včetně profilový obrázek, informace specifické pro úlohy a některá nastavení v Azure Active Directory.
+title: Přidat nebo aktualizovat informace o profilu uživatele – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak přidat informace do profilu uživatele v Azure Active Directory, včetně obrázků a úlohy podrobnosti.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: d4e2ebd88430cab1fe0734e342b1c9ba4a29af1b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 0e03d882df61755faf283aa67427beeec17c8c05
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728942"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094725"
 ---
-# <a name="how-to-add-or-update-a-users-profile-information-using-azure-active-directory"></a>Postupy: Přidat nebo aktualizovat informace o profilu uživatele pomocí služby Azure Active Directory
+# <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Přidat nebo aktualizovat informace o profilu uživatele pomocí služby Azure Active Directory
 Přidejte informace o profilu uživatele, včetně profilový obrázek, informace specifické pro úlohy a některá nastavení pomocí Azure Active Directory (Azure AD). Další informace o přidávání nových uživatelů najdete v tématu [postup přidání nebo odstranění uživatelů ve službě Azure Active Directory](add-users-azure-active-directory.md).
 
 ## <a name="add-or-change-profile-information"></a>Přidání nebo změně informací profilu

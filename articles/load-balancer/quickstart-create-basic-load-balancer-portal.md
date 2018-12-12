@@ -4,11 +4,7 @@ description: Tento rychlý start ukazuje, jak vytvořit veřejné Load Balancer 
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
-ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: hero-article
@@ -17,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2e4e4e7cb1ae49a856bbfed0716936b7b5b13d19
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: MT
+ms.openlocfilehash: 9cf1fcda8651cccb82b2de58487becf25541a6e2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635097"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098674"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Rychlý start: Vytvoření veřejného Load Balanceru úrovně Basic pomocí webu Azure Portal
 
@@ -80,10 +76,7 @@ Dále vytvořte virtuální síť a dva virtuální počítače pro back endový
    - **Podrobnosti o instanci** > **možností dostupnosti**: 
      1. Rozevírací seznam a vyberte **dostupnosti**. 
      2. Vyberte **vytvořit nový**, typ *MyAvailabilitySet*a vyberte **OK**.
-   - **Účet správce** > **uživatelské jméno**: typ *azureuser*.
-   - **Účet správce** > **heslo**: typ *Azure1234567*. 
-     Potvrďte heslo v **potvrzení hesla** pole.
-   
+  
 1. Vyberte **sítě** kartě nebo vyberte **Další: disky**, pak **Další: sítě**. 
    
    Ujistěte se, že jsou vybrány následující:
@@ -136,7 +129,7 @@ V této části vytvoříte zabezpečení sítě (pravidla skupiny NSG) pro virt
 
 V této části nakonfigurujete nastavení nástroje pro vyrovnávání zatížení back endový fond adres, sondu stavu a pravidlo služby load balancer.
 
-### <a name="create-a-back-end-address-pool"></a>Vytvoření fondu back-endových adres
+### <a name="create-a-backend-address-pool"></a>Vytvoření fondu back-endových adres
 
 Účelem distribuce provozu do virtuálních počítačů, nástroje pro vyrovnávání zatížení používá fond back endových adres. Fond back endových adres obsahuje IP adresy virtuálních síťových rozhraní (NIC), které jsou připojené k nástroji pro vyrovnávání zatížení. 
 
@@ -158,7 +151,7 @@ V této části nakonfigurujete nastavení nástroje pro vyrovnávání zatíže
    
 1. Vyberte **OK**.
    
-   ![Přidejte fond back endových adres](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
+   ![Přidání fondu adres back-endu](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
    
 1. Na **back-endové fondy** stránce, rozbalte **MyBackendPool** a ujistěte se, že **VM1** a **VM2** jsou uvedeny.
 
@@ -232,7 +225,7 @@ Instalace Internetové informační služby (IIS) u virtuálních počítačů, 
    
 1. V dialogovém okně zabezpečení Windows vyberte **víc možností** a potom **použít jiný účet**. 
    
-   Zadejte uživatelské jméno *azureuser* a heslo *Azure1234567*a vyberte **OK**.
+   Zadejte uživatelské jméno a heslo a vyberte **OK**.
    
 1. Reakce **Ano** do libovolného řádku pro certifikát. 
    
@@ -258,9 +251,7 @@ Instalace Internetové informační služby (IIS) u virtuálních počítačů, 
 
 ### <a name="test-the-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
 
-Na každém virtuálním počítači, otevřete prohlížeč a reakce **OK** vyzve k žádnou konfiguraci. 
-
-Služby Vyrovnávání zatížení veřejnou IP adresu vložte do panelu Adresa prohlížeče. V prohlížeči by se zobrazit výchozí stránka serveru webové služby IIS.
+Otevřete prohlížeč a vyrovnávání zatížení veřejnou IP adresu vložte do panelu Adresa prohlížeče. V prohlížeči by se zobrazit výchozí stránka serveru webové služby IIS.
 
 ![Webový server služby IIS](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory? | Dokumenty Microsoft
+title: Výchozí uživatelská oprávnění – Azure Active Directory | Dokumentace Microsoftu
 description: Další informace o různých uživatelských oprávnění k dispozici v Azure Active Directory.
 services: active-directory
 author: eross-msft
@@ -11,16 +11,15 @@ ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-custom: it-pro
-ms.openlocfilehash: 9a9bd33dce4b2be9e15df2745dd25338cdb42702
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 496f751c263d17d3c5d8e10321bef8330c2f1a24
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730475"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096566"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?
-
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typu uživatele, jeho [členství v rolích](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) a vlastnictví jednotlivých objektů. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host.
 
 ## <a name="member-and-guest-users"></a>Členové a uživatelé typu host

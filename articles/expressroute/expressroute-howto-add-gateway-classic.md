@@ -1,19 +1,19 @@
 ---
-title: 'Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell: classic: Azure | Dokumentace Microsoftu'
+title: 'Konfigurace brány virtuální sítě pro ExpressRoute - classic: Azure Powershellu | Dokumentace Microsoftu'
 description: Konfigurace brány virtuální sítě pro nasazení classic model virtuální sítě pomocí prostředí PowerShell pro konfiguraci služby ExpressRoute.
-documentationcenter: na
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/05/2018
 ms.author: charwen
-ms.openlocfilehash: d0425b68f1b241bde4b2100d13d60165e5a1f1fe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 101e03d07a15e9058ef236a575251b052017db32
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255164"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083259"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Konfigurace brány virtuální sítě pro ExpressRoute přes PowerShell (classic)
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Tento článek vás provede kroky k přidání, změna velikosti a odebrání br
 
 **O modelech nasazení Azure**
 
-[!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-beginning"></a>Před zahájením
 Ověřte, že máte nainstalovanou rutin Azure Powershellu, které jsou potřebné pro tuto konfiguraci (verze 1.0.2 nebo novější). Pokud jste nenainstalovali rutiny, budete muset udělat před zahájením kroků konfigurace. Další informace o instalaci Azure Powershellu najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).

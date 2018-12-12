@@ -4,17 +4,17 @@ description: Pomocí služby Azure Policy můžete vynucovat standardy, plnit le
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 6ee7a4190248c8c18f747ee579aadc04a136696b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 7cfcb71567931b1581618cf8f2239fb004befff8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52583076"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087027"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Vytváření a správa zásad pro vynucování dodržování předpisů
 
@@ -52,27 +52,27 @@ Prvním krokem při vynucování dodržování předpisů pomocí služby Azure 
 
 1. Výběrem tří teček **Definice zásady** otevřete seznam dostupných definic. Můžete nastavit filtr pro **Typ** definic zásad na *Předdefinované* a zobrazit všechny definice zásad a přečíst si jejich popisy.
 
-1. Vyberte zásadu **Vyžadovat SQL Server verze 12.0**. Pokud se tato zásada nezobrazí rovnou, zadejte do vyhledávacího pole **vyžadovat SQL Server** a stiskněte ENTER nebo klikněte mimo vyhledávací pole. Jakmile najdete a vyberete definici zásady, v dolní části stránky **Dostupné definice** klikněte na **Vybrat**.
+1. Vyberte zásadu **Vyžadovat SQL Server verze 12.0**. Pokud nemůžete najít to okamžitě, zadejte **vyžaduje systém sql server** do vyhledávacího pole a potom stiskněte klávesu ENTER nebo klikněte na z vyhledávacího pole. Jakmile najdete a vyberete definici zásady, v dolní části stránky **Dostupné definice** klikněte na **Vybrat**.
 
    ![Vyhledání zásady](../media/create-and-manage/select-available-definition.png)
 
-1. Do pole **Název přiřazení** se automaticky vyplní název vybrané zásady, který však můžete změnit. Pro účely tohoto příkladu ponechte název *Vyžadovat SQL Server verze 12.0*. Volitelně můžete přidat také **Popis**. Popis obsahuje podrobnosti o tomto přiřazení zásady.  Pole **Přiřadil** se automaticky vyplní podle toho, kdo je přihlášený. Toto pole je volitelné, takže do něj můžete zadat vlastní hodnoty.
+1. Do pole **Název přiřazení** se automaticky vyplní název vybrané zásady, který však můžete změnit. Pro účely tohoto příkladu ponechte název *Vyžadovat SQL Server verze 12.0*. Volitelně můžete přidat také **Popis**. Popis obsahuje podrobnosti o tomto přiřazení zásady.  **Přiřazené podle** se automaticky vyplní podle toho, který je přihlášen. Toto pole je volitelné, takže do něj můžete zadávat vlastní hodnoty.
 
-1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. Toto políčko _musí_ být zaškrtnuté, pokud přiřazovaná zásada nebo iniciativa zahrnuje zásadu s účinkem [deployIfNotExists](../concepts/effects.md#deployifnotexists). Protože to pro zásadu použitou v tomto kurzu neplatí, ponechte toto políčko nezaškrtnuté. Další informace najdete v tématech věnovaných [spravovaným identitám](../../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. Toto políčko _musí_ být vráceny, pokud obsahuje zásady nebo iniciativa přiřazení zásad s [deployIfNotExists](../concepts/effects.md#deployifnotexists) vliv. Jak zásady používané pro účely tohoto kurzu není, ponechte prázdné. Další informace najdete v tématech věnovaných [spravovaným identitám](../../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](../how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Klikněte na **Přiřadit**.
 
 ## <a name="implement-a-new-custom-policy"></a>Implementace nové vlastní zásady
 
-Teď, když jste přiřadili předdefinovanou definici zásady, můžete se službou Azure Policy provádět další akce. Dále vytvořte novou vlastní zásadu pro úsporu nákladů díky zajištění, že virtuální počítače vytvořené ve vašem prostředí nemůžou být v řadě G Series. Díky tomu se zamítnou všechny žádosti uživatelů ve vaší organizaci o vytvoření virtuálního počítače v řadě G Series.
+Teď, když jste přiřadili předdefinovanou definici zásady, můžete se službou Azure Policy provádět další akce. Dále vytvořte novou vlastní zásadu pro úsporu nákladů tak, že virtuální počítače vytvořené ve vašem prostředí nemůže být v řadě G series. Díky tomu se zamítnou všechny žádosti uživatelů ve vaší organizaci o vytvoření virtuálního počítače v řadě G Series.
 
 1. Na levé straně stránky služby Azure Policy v části **Vytváření obsahu** vyberte **Definice**.
 
    ![Definice v části Vytváření obsahu](../media/create-and-manage/definition-under-authoring.png)
 
-1. V horní části stránky vyberte **+ Definice zásady**. Tím se otevře stránka **Definice zásady**.
+1. V horní části stránky vyberte **+ Definice zásady**. Toto tlačítko otevře **definice zásady** stránky.
 
-1. Zadejte následující:
+1. Zadejte následující informace:
 
    - Skupina pro správu nebo předplatné, ve kterém je definice zásady uložená. Výběr proveďte pomocí tří teček v části **Umístění definice**.
 
@@ -110,7 +110,7 @@ Teď, když jste přiřadili předdefinovanou definici zásady, můžete se slu�
     }
     ```
 
-    Vlastnost *field* v pravidle zásady musí obsahovat některou z následujících hodnot: název, typ, umístění, značky nebo alias. Příkladem aliasu může být `"Microsoft.Compute/VirtualMachines/Size"`.
+    *Pole* vlastnost v pravidlu zásad musí být jedna z následujících hodnot: název, typ, umístění, značky nebo alias. Příkladem aliasu může být `"Microsoft.Compute/VirtualMachines/Size"`.
 
     Další ukázky zásad Azure najdete v [ukázkách pro Azure Policy](../samples/index.md).
 
@@ -158,7 +158,7 @@ Přiložte podobný text žádosti jako v následujícím příkladu:
 
 ## <a name="create-a-policy-definition-with-powershell"></a>Vytvoření definice zásady pomocí PowerShellu
 
-Než budete pokračovat k příkladu PowerShellu, ujistěte se, že máte nainstalovanou nejnovější verzi Azure PowerShellu. Parametry zásady byly přidány ve verzi 3.6.0. Pokud máte starší verzi, uvedené příklady vrátí chybu, která značí, že se parametr nenašel.
+Než budete pokračovat k příkladu Powershellu, ujistěte se, že jste nainstalovali nejnovější verzi Azure Powershellu. Parametry zásady byly přidány ve verzi 3.6.0. Pokud máte starší verzi, uvedené příklady vrátí chybu s informacemi, že parametr nebyl nalezen.
 
 Definici zásady můžete vytvořit pomocí rutiny `New-AzureRmPolicyDefinition`.
 
@@ -322,7 +322,7 @@ Příkaz vrátí všechny dostupné definice zásad, včetně předdefinovaných
 
 ## <a name="create-and-assign-an-initiative-definition"></a>Vytvoření a přiřazení definice iniciativy
 
-Pomocí definice iniciativy můžete seskupit několik definic zásad za účelem dosažení jednoho zastřešujícího cíle. Vytvoříte definici iniciativy zajišťující soulad prostředků v rozsahu této definice s definicemi zásad, ze kterých se definice iniciativy skládá. Další informace o definicích iniciativ najdete v tématu [Přehled služby Azure Policy](../overview.md).
+Pomocí definice iniciativy můžete seskupit několik definic zásad za účelem dosažení jednoho zastřešujícího cíle. Vytvoříte definici iniciativy pro ověření této prostředky v rámci oboru pobytu definice kompatibilní s definicemi zásad, které tvoří definici iniciativy. Další informace o definicích iniciativ najdete v tématu [Přehled služby Azure Policy](../overview.md).
 
 ### <a name="create-an-initiative-definition"></a>Vytvoření definice iniciativy
 
@@ -338,7 +338,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Zadejte **Název** a **Popis** iniciativy.
 
-   Tento příklad zajistí soulad prostředků s definicemi zásad souvisejících se zajištěním zabezpečení. Pojmenujte iniciativu **Zajištění zabezpečení** a nastavte popis na: **Tato iniciativa byla vytvořená za účelem zpracování všech definic zásad souvisejících se zabezpečením prostředků**.
+   V tomto příkladu ověřuje, zda jsou prostředky v souladu s definicemi zásad zajištěním zabezpečení. Pojmenujte iniciativu **Zajištění zabezpečení** a nastavte popis na: **Tato iniciativa byla vytvořená za účelem zpracování všech definic zásad souvisejících se zabezpečením prostředků**.
 
 1. V části **Kategorie** zvolte některou z existujících možností nebo vytvořte novou kategorii.
 
@@ -350,11 +350,11 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
    - [Preview]: Monitor possible app Whitelisting in Security Center.
    - [Preview]: Monitor unencrypted VM Disks in Security Center.
 
-   Po výběru ze seznamu se definice zásady přidá do části **Zásady a parametry**.
+   Po výběru definici zásady ze seznamu, přidá se v rámci **zásady a parametry**.
 
    ![Definice iniciativ](../media/create-and-manage/initiative-definition-2.png)
 
-1. Pokud definice zásady přidávaná do iniciativy obsahuje parametry, zobrazí se pod názvem zásady v oblasti **Zásady a parametry**. _Hodnotu_ je možné nastavit na možnost Nastavit hodnotu (pevně zakódovaná pro všechna přiřazení této iniciativy) nebo Použít parametr iniciativy (nastaví se při každém přiřazení iniciativy). Pokud vyberete možnost Nastavit hodnotu, v rozevíracím seznamu napravo od pole _Hodnoty_ můžete zadat nebo vybrat požadované hodnoty. Pokud vyberete možnost Použít parametr iniciativy, zobrazí se část **Parametry iniciativy**, kde můžete definovat parametr, který se nastaví během přiřazení iniciativy. Povolené hodnoty pro tento parametr iniciativy můžou dále omezit možnosti nastavení během přiřazení iniciativy.
+1. Pokud se přidávají do iniciativy definice zásady obsahuje parametry, jsou uvedené v části název zásady v **zásady a parametry** oblasti. _Hodnotu_ je možné nastavit na možnost Nastavit hodnotu (pevně zakódovaná pro všechna přiřazení této iniciativy) nebo Použít parametr iniciativy (nastaví se při každém přiřazení iniciativy). Pokud je zaškrtnuto políčko "Hodnotu" útokem drown dolů napravo od _hodnoty_ umožňuje zadáním nebo výběrem hodnoty. Pokud vyberete možnost Použít parametr iniciativy, zobrazí se část **Parametry iniciativy**, kde můžete definovat parametr, který se nastaví během přiřazení iniciativy. Povolené hodnoty pro tento parametr iniciativy můžou dále omezit možnosti nastavení během přiřazení iniciativy.
 
    ![Parametry definice iniciativy](../media/create-and-manage/initiative-definition-3.png)
 
@@ -371,7 +371,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
    ![Přiřazení definice](../media/create-and-manage/assign-definition.png)
 
-   Případně můžete zobrazit místní nabídku kliknutím pravým tlačítkem na vybraný řádek nebo kliknutím levým tlačítkem na tři tečky na konci řádku.  Pak vyberte **Přiřadit**.
+   Můžete také kliknout pravým tlačítkem na vybraný řádek nebo levým tlačítkem myši na tři tečky na konci řádku kontextové nabídky.  Pak vyberte **Přiřadit**.
 
    ![Kliknutí pravým tlačítkem na řádek](../media/create-and-manage/select-right-click.png)
 
@@ -383,7 +383,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
    - Popis: Toto přiřazení iniciativy je přizpůsobené k vynucování této skupiny definic zásad.
    - Přiřadil: Automaticky se vyplní podle toho, kdo je přihlášený. Toto pole je volitelné, takže do něj můžete zadat vlastní hodnoty.
 
-1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. Toto políčko _musí_ být zaškrtnuté, pokud přiřazovaná zásada nebo iniciativa zahrnuje zásadu s účinkem [deployIfNotExists](../concepts/effects.md#deployifnotexists). Protože to pro zásadu použitou v tomto kurzu neplatí, ponechte toto políčko nezaškrtnuté. Další informace najdete v tématech věnovaných [spravovaným identitám](../../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](../how-to/remediate-resources.md#how-remediation-security-works).
+1. Políčko **Vytvořit spravovanou identitu** ponechte nezaškrtnuté. Toto políčko _musí_ být vráceny, pokud obsahuje zásady nebo iniciativa přiřazení zásad s [deployIfNotExists](../concepts/effects.md#deployifnotexists) vliv. Jak zásady používané pro účely tohoto kurzu není, ponechte prázdné. Další informace najdete v tématech věnovaných [spravovaným identitám](../../../active-directory/managed-identities-azure-resources/overview.md) a [principu fungování zabezpečení náprav](../how-to/remediate-resources.md#how-remediation-security-works).
 
 1. Klikněte na **Přiřadit**.
 
@@ -391,7 +391,7 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 1. Na levé straně stránky služby Azure Policy vyberte **Dodržování předpisů**.
 
-1. Vyhledejte iniciativu **Zajištění zabezpečení**. Její _Stav dodržování předpisů_ bude pravděpodobně stále **Nezahájeno**. Kliknutím na iniciativu zobrazte úplné podrobnosti o průběhu přiřazení.
+1. Vyhledejte iniciativu **Zajištění zabezpečení**. Bude pravděpodobně stále v _stavu dodržování předpisů_ z **Nezahájeno**. Kliknutím na iniciativu zobrazte úplné podrobnosti o průběhu přiřazení.
 
    ![Dodržování předpisů – Nezahájeno](../media/create-and-manage/compliance-status-not-started.png)
 
@@ -403,20 +403,20 @@ Pomocí definice iniciativy můžete seskupit několik definic zásad za účele
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Vyloučení prostředku nedodržujícího předpisy nebo zamítnutého prostředku s využitím vyloučení
 
-Ve výše uvedeném příkladu se po přiřazení definice zásady vyžadující SQL Server verze 12.0 zamítne vytvoření SQL Serveru s jinou verzí než 12.0. V této části si projdete řešení zamítnutého pokusu o vytvoření SQL Serveru prostřednictvím vytvoření vyloučení pro jednu skupinu prostředků. Vyloučení zabrání vynucování zásady (nebo iniciativy) pro příslušný prostředek.
+Ve výše uvedeném příkladu se po přiřazení definice zásady vyžadující SQL Server verze 12.0 zamítne vytvoření SQL Serveru s jinou verzí než 12.0. V této části si projdete řešení zamítnutého žádost o vytvoření SQL serveru tak, že vytvoříte vyloučení na jedinou skupinu prostředků. Vyloučení zabrání vynucování zásady (nebo iniciativy) pro příslušný prostředek.
 V následujícím příkladu je v jedné skupině prostředků povolená jakákoli verze SQL Serveru. Vyloučení se může vztahovat na předplatné nebo skupinu prostředků nebo ho můžete zúžit na jednotlivé prostředky.
 
-Nasazení, kterému se zabránilo kvůli přiřazené zásadě nebo iniciativě, můžete zobrazit na dvou místech:
+Nasazení brání přiřazené zásady nebo iniciativa si můžou prohlédnout ve dvou umístěních:
 
-- Ve skupině prostředků, která byla cílem nasazení: Na levé straně stránky vyberte **Nasazení** a klikněte na **Název nasazení**, které selhalo. U zamítnutého prostředku je uvedený stav _Zakázáno_. Pokud chcete určit zásadu nebo iniciativu a přiřazení, které prostředek zamítlo, klikněte na **Selhání. Podrobnosti zobrazíte kliknutím sem ->** na stránce Přehled nasazení. Na pravé straně stránky se otevře okno s informacemi o chybě. V části **Podrobnosti o chybě** se zobrazí identifikátory GUID souvisejících objektů zásad.
+- Ve skupině prostředků. cílem nasazení: vyberte **nasazení** v levé části stránky klikněte a klikněte na kartu **název nasazení** selhání nasazení. U zamítnutého prostředku je uvedený stav _Zakázáno_. Pokud chcete určit zásadu nebo iniciativu a přiřazení, které prostředek zamítlo, klikněte na **Selhání. Podrobnosti zobrazíte kliknutím sem ->** na stránce Přehled nasazení. Na pravé straně stránky se otevře okno s informacemi o chybě. V části **podrobnosti o chybě** jsou identifikátory GUID objektů souvisejících zásad.
 
   ![Nasazení zamítnuté přiřazením zásady](../media/create-and-manage/rg-deployment-denied.png)
 
-- Na stránce služby Azure Policy. Na levé straně stránky vyberte **Dodržování předpisů** a klikněte na zásadu **Vyžadovat SQL Server verze 12.0**. Na stránce, která se otevře, se zobrazí zvýšení počtu **Zamítnutí**. Na kartě **Události** se také zobrazí, kdo se pokusil o nasazení, které zásada zamítla.
+- Na stránce služby Azure Policy. Na levé straně stránky vyberte **Dodržování předpisů** a klikněte na zásadu **Vyžadovat SQL Server verze 12.0**. Na stránce, která se otevře, se zobrazí zvýšení počtu **Zamítnutí**. V části **události** kartu, také uvidíte, kteří se pokusili nasazení, který byl odepřen v zásadách.
 
   ![Přehled dodržování předpisů přiřazené zásady](../media/create-and-manage/compliance-overview.png)
 
-V tomto příkladu požadovanou práci prováděl Trent Baker, jeden z hlavních odborníků na virtualizaci ve společnosti Contoso. Musíme mu udělit výjimku, ale nechceme povolit SQL Servery jiné verze než 12.0 v jakékoli skupině prostředků. Vytvořili jsme novou skupinu prostředků **SQLServers_Excluded** a teď jí udělíme výjimku pro toto přiřazení zásady.
+V tomto příkladu požadovanou práci prováděl Trent Baker, jeden z hlavních odborníků na virtualizaci ve společnosti Contoso. Budeme muset udělit Trent výjimku, ale nechceme systémy SQL Server verze 12.0 v právě libovolné skupině prostředků. Vytvořili jsme novou skupinu prostředků **SQLServers_Excluded** a teď jí udělíme výjimku pro toto přiřazení zásady.
 
 ### <a name="update-assignment-with-exclusion"></a>Aktualizace přiřazení o vyloučení
 
@@ -433,13 +433,13 @@ V tomto příkladu požadovanou práci prováděl Trent Baker, jeden z hlavních
 
 1. Klikněte na **Vybrat** a potom klikněte na **Uložit**.
 
-V této části jste vyřešili zamítnutí pokusu o vytvoření zakázané verze SQL Serveru prostřednictvím vytvoření vyloučení pro jednu skupinu prostředků.
+V této části jste vyřešili odepření požadavku tak, že vytvoříte vyloučení na jedinou skupinu prostředků.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud jste skončili s prací s prostředky z tohoto kurzu, pomocí následujícího postupu odstraňte všechna přiřazení a definice, které jste vytvořili výše:
+Pokud to uděláte práci s prostředky z tohoto kurzu, pomocí následujícího postupu odstraňte všechna přiřazení a definice vytvořili výše:
 
-1. Na levé straně stránky služby Azure Policy v části **Vytváření obsahu** vyberte **Definice** (nebo **Přiřazení**, pokud se pokoušíte odstranit přiřazení).
+1. Vyberte **definice** (nebo **přiřazení** Pokud se pokoušíte odstranit přiřazení) v části **Authoring** v levé části na stránku služby Azure Policy.
 
 1. Vyhledejte novou definici iniciativy nebo zásady (nebo přiřazení), kterou chcete odebrat.
 
@@ -447,7 +447,7 @@ Pokud jste skončili s prací s prostředky z tohoto kurzu, pomocí následujíc
 
 ## <a name="next-steps"></a>Další postup
 
-V tomto kurzu jste úspěšně provedli následující:
+V tomto kurzu jste úspěšně provedli následující úlohy:
 
 > [!div class="checklist"]
 > - Přiřadili jste zásadu vynucující podmínku u prostředků, které vytvoříte v budoucnu.

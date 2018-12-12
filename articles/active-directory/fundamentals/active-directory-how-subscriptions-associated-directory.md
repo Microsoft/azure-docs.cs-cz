@@ -1,6 +1,6 @@
 ---
-title: Postup přidání existujícího předplatného Azure do vašeho tenanta Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak přidat existující předplatné Azure k tenantovi Azure Active Directory.
+title: Přidání existujícího předplatného Azure do svého tenanta – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny k přidání existujícího předplatného Azure do svého tenanta Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro
-ms.openlocfilehash: dd62b22eca40a214c5b08a9bc48815e40fe90e47
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 4e4d4d9f34c8220ba70c64f073557f0293881c3e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984072"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083865"
 ---
-# <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Postupy: spojení nebo přidání předplatného Azure ke službě Azure Active Directory
+# <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do svého tenanta Azure Active Directory
 Předplatné Azure má vztah důvěryhodnosti s Azure Active Directory (Azure AD), což znamená, že předplatné vztahy důvěryhodnosti služby Azure AD k ověřování uživatelů, služeb a zařízení. Několik předplatných může důvěřovat stejnému adresáři Azure AD, ale každé předplatné může důvěřovat pouze jeden adresář.
 
 Pokud vaše předplatné vyprší, ztratíte přístup k všechny další prostředky spojené s předplatným. Adresář Azure AD ale zůstává v Azure, umožňuje přiřadit a spravovat adresář pomocí jiného předplatného Azure.
@@ -30,7 +30,7 @@ Všichni uživatelé mají jeden "domovskou" adresář pro ověřování. Uživa
 >Všechny [řízení přístupu na základě Role (RBAC)](../../role-based-access-control/role-assignments-portal.md) uživatelé s přiřazeného přístupu, spolu s všichni správci předplatného ztratí přístup po předplatné změny v adresáři. Kromě toho pokud máte jakékoli trezorů klíčů, budete také neplatila přesun předplatného. Který chcete vyřešit, je nutné [Změna ID tenanta trezoru klíčů](../../key-vault/key-vault-subscription-move-fix.md) před obnovení operací.
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Předtím, než můžete přiřadit nebo přidejte svoje předplatné, je třeba provést následující úkoly:
 
 - Přihlaste se pomocí účtu, který:

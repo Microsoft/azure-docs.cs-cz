@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
-ms.openlocfilehash: ee88c8dca1521f4cdc2e3ea141d5c1d497061bb4
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 71b0739bacd8df586267b61a9135f448aa76479d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422350"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082233"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Zdroje dat pro nástroj QnA Maker obsahu
 
@@ -44,7 +44,7 @@ Toto je nejběžnější typ stránku s nejčastějšími dotazy, ve kterém odp
 
 Níže je příklad prostý stránku s nejčastějšími dotazy:
 
-![Prostý stránku s nejčastějšími dotazy](../media/qnamaker-concepts-datasources/plain-faq.png) 
+![Prostý příklad stránky – nejčastější dotazy pro znalostní báze](../media/qnamaker-concepts-datasources/plain-faq.png) 
 
  
 ### <a name="faq-pages-with-links"></a>Nejčastější dotazy týkající se stránky s odkazy 
@@ -53,7 +53,7 @@ V tomto typu stránku s nejčastějšími dotazy otázky jsou agregovány dohrom
 
 Níže je příklad stránky – nejčastější dotazy s odkazy v části, které jsou na stejné stránce:
 
- ![Stránku s nejčastějšími dotazy odkazu oddílu](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
+ ![Příklad stránky nejčastější dotazy týkající se propojení části pro znalostní báze](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
 
 
 ### <a name="faq-pages-with-a-topics-homepage"></a>Nejčastější dotazy týkající se stránky s domovskou stránku témata
@@ -62,7 +62,7 @@ Tento typ nejčastější dotazy k má Domovská stránka s tématy, kde každé
 
 Níže je příklad stránky nejčastější dotazy k domovské stránce témata kde obsahuje odkazy na části Nejčastější dotazy týkající se různých stránkách. 
 
- ![Stránka přímý odkaz na nejčastější dotazy](../media/qnamaker-concepts-datasources/topics-faq.png) 
+ ![Příklad stránky přímý odkaz na nejčastější dotazy pro znalostní báze](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
 ## <a name="pdf-doc-files"></a>Soubor PDF / DOC soubory
@@ -77,7 +77,7 @@ Ruční je obvykle pokyny materiál, který doprovází produktu. Umožňuje už
 
 Tady je příklad příručky s indexovou stránku a hierarchické obsahu
 
- ![Příklad ruční produktu](../media/qnamaker-concepts-datasources/product-manual.png) 
+ ![Ruční příklad znalostní bázi produktu](../media/qnamaker-concepts-datasources/product-manual.png) 
 
 > [!NOTE]
 > Extrakce funguje nejlépe na příručky, které mají tabulku obsah a/nebo indexovou stránku a Vymazat strukturu s hierarchické záhlaví.
@@ -106,7 +106,7 @@ Answer2
 
 Níže je příklad strukturovaných QnA wordový dokument:
 
- ![Strukturovaný dokument QnA](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
+ ![Strukturované příklad QnA dokument znalostní báze](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
 
 ## <a name="structured-txt-tsv-and-xls-files"></a>Strukturované *TXT*, *TSV* a *XLS* soubory
 
@@ -121,7 +121,7 @@ Strukturované maximálně ve formě *.txt*, *TSV* nebo *.xls* soubory se také 
 
 Níže je příklad strukturovaných QnA *.xls* soubor s obsahem HTML:
 
- ![Strukturované QnA aplikace excel](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![Strukturované QnA excel příklad znalostní báze](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
 ## <a name="structured-data-format-through-import"></a>Formát strukturovaných dat pomocí importu
 

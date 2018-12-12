@@ -3,7 +3,7 @@ title: Monitorování stavu SQL Database pomocí Azure Resource Health | Dokumen
 description: Pomocí Azure Resource Health umožňuje monitorovat stav SQL Database, pomáhá diagnostikovat a získáním podpory v případě, že problém Azure ovlivňuje vaše prostředky SQL.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: monitor
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 11/14/2018
-ms.openlocfilehash: 9cbe88a44ba598a22fab628ae01605ac9d63bece
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.date: 12/06/2018
+ms.openlocfilehash: dc20ffb0ce8add08a396a4c0ba5b496e80d04aa1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51632624"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083882"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Řešení potíží s připojením pro službu Azure SQL Database pomocí Resource Health
 
@@ -41,7 +41,7 @@ Stav **dostupné** znamená, že Resource Health nezjistila selhání přihláš
 
 ### <a name="degraded"></a>Sníženo
 
-Stav **snížený** znamená, že Resource Health zjistila většinou přihlášení úspěšné, ale také některé chyby. Toto jsou pravděpodobně přechodné přihlášení chyby. Pokud chcete snížit dopad problémům způsobeným přihlášení přechodné chyby, implementujte [Logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) ve vašem kódu.
+Stav **Degradovaný** znamená, že služba Resource Health zjistila většinu úspěšných přihlášení, ale také několik selhání. Toto jsou pravděpodobně přechodné přihlášení chyby. Pokud chcete snížit dopad problémům způsobeným přihlášení přechodné chyby, implementujte [Logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) ve vašem kódu.
 
 ![Sníženo](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 
@@ -63,20 +63,20 @@ Dostanete až 14 dní historie stavu v části historie stavu Resource Health. V
 
 ### <a name="downtime-reasons"></a>Z důvodů výpadek
 
-Když vaši službu SQL Database dojde k výpadku, provedení analýzy určit důvod. Pokud je k dispozici, v části historie stavu Resource Health hlásí z důvodu výpadek. Výpadek důvody jsou obvykle publikované 30 minut po události.
+Když vaši službu SQL Database dojde k výpadku, provedení analýzy určit důvod. Pokud je k dispozici, v části historie stavu Resource Health hlásí z důvodu výpadek. Důvody výpadků se obvykle publikují 30 minut po události.
 
 #### <a name="planned-maintenance"></a>Plánovaná údržba
 
-Infrastruktura Azure pravidelně provede plánovanou údržbu – upgrade hardwarové nebo softwarové komponenty v datovém centru. Zatímco databáze při údržbě, SQL může ukončit některé existující připojení a odmítnout nové značky. Přihlášení jsou nejčastěji přechodné selhání během plánované údržby a logika opakování pomáhá snižovat dopad. Pokud budete nadále dochází k chybám přihlášení, kontaktujte prosím podporu.
+Infrastruktura Azure pravidelně provede plánovanou údržbu – upgrade hardwarové nebo softwarové komponenty v datovém centru. Zatímco databáze při údržbě, SQL může ukončit některé existující připojení a odmítnout nové značky. Neúspěšná přihlášení během plánované údržby jsou nejčastěji přechodné a [Logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors) pomáhá snižovat dopad. Pokud budete nadále dochází k chybám přihlášení, kontaktujte prosím podporu.
 
 #### <a name="reconfiguration"></a>Rekonfigurace
 
-Rekonfigurací se považují za přechodné podmínky. proto se očekává, že čas od času. Tyto události mohou být spouštěny zavádění vyrovnávání nebo softwaru a hardwaru. Všechny klientské produkční aplikace, která se připojuje k Cloudová databázová služba by měly implementovat logiku pro opakování robustní připojení, spolu s logikou omezení rychlosti, protože by zmírnit tyto situace a by měly obecně průhledného chyby pro koncového uživatele.
+Rekonfigurací se považují za přechodné podmínky. proto se očekává, že čas od času. Tyto události mohou být spouštěny zavádění vyrovnávání nebo softwaru a hardwaru. Všechny klientské produkční aplikace, která se připojuje k databázi cloudu by měly implementovat robustní připojení [Logika opakování](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors), protože by zmírnit tyto situace a by měly obecně průhledného chyby pro koncového uživatele.
 
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o [Logika opakování pro přechodné chyby](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)
-- [Řešení potíží, Diagnostika a prevence chyb připojení SQL](./sql-database-connectivity-issues.md)
+- [Oprava, diagnostika a prevence chyb připojení SQL](./sql-database-connectivity-issues.md)
 - Další informace o [konfigurace výstrah Resource Health](/articles/service-health/resource-health-alert-arm-template-guide.md)
 - Získejte přehled o [Resource Health](/articles/service-health/resource-health-overview.md)
 - [Služba Resource Health – nejčastější dotazy](/articles/service-health/resource-health-faq.md)

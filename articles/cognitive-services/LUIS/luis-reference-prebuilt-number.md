@@ -1,21 +1,22 @@
 ---
-title: Služba LUIS předem připravených entit číslo reference – Azure | Dokumentace Microsoftu
+title: Číslo předem připravených entit
 titleSuffix: Azure
 description: Tento článek obsahuje informace o čísle předem připravených entit v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: b3ac42f5ecd1dc14055b0767e057a1da093042f9
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: ead544400f97f9a49296cc43552bea3a6f3def98
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334563"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095299"
 ---
 # <a name="number-entity"></a>Entita Number
 Existuje mnoho způsobů, ve kterých se používají číselných hodnot umožňuje vyčíslit, express a popisují informace. Tento článek se týká jenom některé z možných příkladů. Služba LUIS interpretuje kolísání uživatele projevy a vrátí konzistentní číselné hodnoty. Protože tato entita je už vytrénovaný, není potřeba přidat příklad projevy obsahující číslo k záměry aplikace. 
@@ -42,7 +43,7 @@ Služba LUIS zahrnuje rozpoznaná hodnota **`builtin.number`** entity v `resolut
 ## <a name="resolution-for-prebuilt-number"></a>Řešení pro předem připravených číslo
 Následující příklad ukazuje služby luis, odpověď ve formátu JSON, který obsahuje řešení hodnota 24, utterance "z dvou tuctů".
 
-```JSON
+```json
 {
   "query": "order two dozen eggs",
   "topScoringIntent": {

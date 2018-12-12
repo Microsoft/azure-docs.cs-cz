@@ -1,6 +1,6 @@
 ---
-title: Nasazení a monitorování modulů pro Azure IoT Edge (CLI) | Dokumentace Microsoftu
-description: Správa modulů, které běží na hraničních zařízeních
+title: Vytvořit automatické nasazení z příkazového řádku – Azure IoT Edge | Dokumentace Microsoftu
+description: Použití rozšíření IoT pro Azure CLI k vytvoření automatického nasazení pro skupiny služby IoT Edge zařízení
 keywords: ''
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f2e7de6b32b4cca6320933050775f843e2cdf39
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 64c4b82208b2f8a20f7fd00fb574d5e017030e81
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567929"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094147"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Nasazení a monitorování modulů IoT Edge ve velkém měřítku pomocí Azure CLI
 

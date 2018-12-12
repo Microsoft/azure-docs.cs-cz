@@ -4,20 +4,21 @@ description: Popisuje, jak je používat prostředku definice zásady Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/30/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: b5c7d0c6d54272518b19ffec0d8f02ebbcfe55d9
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 456ac392d74db0dc596c24a47d176e19d267bc85
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51283286"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079513"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
-Definice zásad prostředků používá Azure Policy umožňuje vytvořit vytváření názvů pro prostředky ve vaší organizaci zadáním popisu vašeho nového, když je tato zásada vynucená a jaký vliv má provést. Definuje konvence, můžete řídit náklady a snadněji spravovat vaše prostředky. Například můžete určit, zda jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měly konkrétní značku. Všechny podřízené prostředky dědí zásady. Takže pokud zásady se použijí pro skupinu prostředků, se vztahuje na všechny prostředky v příslušné skupině prostředků.
+Definice zásad prostředků používají k navázání vytváření názvů pro prostředky Azure Policy. Každá definice popisuje dodržování předpisů prostředkem a co projeví má provést, když prostředek se jako nevyhovující.
+Definuje konvence, můžete řídit náklady a snadněji spravovat vaše prostředky. Například můžete určit, zda jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měly konkrétní značku. Všechny podřízené prostředky dědí zásady. Pokud zásady se použijí pro skupinu prostředků, se vztahuje na všechny prostředky v příslušné skupině prostředků.
 
 Schéma používané službou Azure Policy najdete tady: [https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json](https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json)
 
@@ -73,9 +74,9 @@ Všechny ukázky zásady Azure jsou v [ukázky zásad](../samples/index.md).
 - `all`: vyhodnocení skupiny prostředků a všechny typy prostředků
 - `indexed`: jenom vyhodnotit typy prostředků, které podporují značky a umístění
 
-Doporučujeme vám, že jste nastavili **režimu** k `all` ve většině případů. Všechny definice zásad, které jsou vytvořené pomocí portálu `all` režimu. Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure, můžete zadat **režimu** parametr ručně. Pokud neobsahuje definici zásady **režimu** hodnota je výchozí hodnota je `all` v prostředí Azure PowerShell a o `null` v rozhraní příkazového řádku Azure, což je totéž jako `indexed`, pro zpětné kompatibility.
+Doporučujeme vám, že jste nastavili **režimu** k `all` ve většině případů. Všechny definice zásad, které jsou vytvořené pomocí portálu `all` režimu. Pokud používáte PowerShell nebo rozhraní příkazového řádku Azure, můžete zadat **režimu** parametr ručně. Pokud neobsahuje definici zásady **režimu** hodnota, použije se výchozí `all` v prostředí Azure PowerShell a o `null` v Azure CLI. A `null` režim je stejný jako při použití `indexed` pro podporu zpětné kompatibility.
 
-`indexed` má být použit při vytváření zásad, která bude vynucovat značky nebo umístění. Tato akce není povinná, ale zabrání prostředky, které nepodporují značky a umístěním objeví jako nedodržující předpisy ve výsledcích dodržování předpisů. Jedinou výjimkou je **skupiny prostředků**. Zásady, které se pokoušíte vynutit místa nebo značky na skupinu prostředků, nastavte **režimu** k `all` a konkrétně cíl `Microsoft.Resources/subscriptions/resourceGroup` typu. Příklad najdete v tématu [vynutit značky skupiny prostředků](../samples/enforce-tag-rg.md).
+`indexed` by měla sloužit při vytváření zásad, které vynucují značky nebo umístění. Zatímco Poznámka vyžaduje, zabraňuje prostředky, které nepodporují značky a umístěním objeví jako nedodržující předpisy ve výsledcích dodržování předpisů. Výjimkou je **skupiny prostředků**. Zásady, které vynucují místa nebo značky na skupinu prostředků, nastavte **režimu** k `all` a konkrétně cíl `Microsoft.Resources/subscriptions/resourceGroup` typu. Příklad najdete v tématu [vynutit značky skupiny prostředků](../samples/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Parametry
 
@@ -86,7 +87,8 @@ Parametry fungovat stejným způsobem jako při vytváření zásad. Včetně pa
 > Definice parametry pro zásadu nebo definice iniciativy můžete nakonfigurovat jenom během počátečního vytváření zásady nebo iniciativa. Parametry definici není možné později změnit.
 > To zabrání existující přiřazení zásady nebo iniciativa nepřímo prováděné neplatný.
 
-Můžete třeba definovat zásady pro vlastnost prostředku možné omezit místa, kde můžete nasadit prostředky. Při vytváření zásady, v takovém případě by deklarovat následující parametry:
+Například můžete definovat zásady pro omezení umístění, kde můžete nasadit prostředky.
+Při vytváření zásady, by deklarovat následující parametry:
 
 ```json
 "parameters": {
@@ -123,16 +125,16 @@ V pravidlu zásad můžete odkazovat na parametry u následujících `parameters
 
 ## <a name="definition-location"></a>Umístění definice
 
-Při vytváření iniciativy nebo zásady, je nutné zadat umístění definice. Umístění definice musí být skupinu pro správu nebo předplatného a určuje obor, ke které je možné přiřadit iniciativy nebo zásady. Prostředky musí být přímými členy nebo podřízené prvky v rámci hierarchie umístění definice cílit na přiřazení.
+Při vytváření iniciativy nebo zásady, je nutné zadat umístění definice. Umístění definice musí být skupinu pro správu nebo předplatného. Toto umístění Určuje obor, ke které je možné přiřadit iniciativy nebo zásady. Prostředky musí být přímými členy nebo podřízené prvky v rámci hierarchie umístění definice cílit na přiřazení.
 
 Pokud je umístění definice:
 
 - **Předplatné** – pouze pro prostředky v rámci tohoto předplatného je možné přiřadit zásady.
-- **Skupina pro správu** – pouze pro prostředky v rámci podřízené skupiny pro správu a podřízené předplatná je možné přiřadit zásady. Pokud budete chtít použít definici zásady pro více předplatných, musí být umístění skupiny pro správu, který obsahuje těchto předplatných.
+- **Skupina pro správu** – pouze pro prostředky v rámci podřízené skupiny pro správu a podřízené předplatná je možné přiřadit zásady. Pokud budete chtít použít definici zásady pro několik předplatných, musí být umístění skupiny pro správu, který obsahuje těchto předplatných.
 
 ## <a name="display-name-and-description"></a>Zobrazovaný název a popis
 
-Můžete použít **displayName** a **popis** identifikovat definice zásad a zadání při použití kontextu.
+Použijete **displayName** a **popis** identifikovat definice zásad a zadání při použití kontextu.
 
 ## <a name="policy-rule"></a>Pravidlo zásad
 
@@ -197,14 +199,14 @@ Podmínka vyhodnotí, zda **pole** splňuje určitá kritéria. Jsou podporovan�
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-Při použití **jako** a **notLike** podmínky, můžete zadat zástupný znak `*` v hodnotě.
-Hodnota nesmí obsahovat více než jeden zástupný znak `*`.
+Při použití **jako** a **notLike** podmínky, zadat zástupný znak `*` v hodnotě.
+Hodnota by neměla mít více než jeden zástupný znak `*`.
 
-Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` představující číslici, `?` pro písmeno, `.` tak, aby odpovídaly všechny znaky a jakýkoli jiný znak na představují skutečné znaku. Příklady najdete v tématu [povolit více vzory názvů](../samples/allow-multiple-name-patterns.md).
+Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` tak, aby odpovídaly číslici, `?` pro písmeno, `.` tak, aby odpovídaly všechny znaky a jakýkoli jiný znak tak, aby odpovídaly skutečné znaku. Příklady najdete v tématu [povolit několik vzory názvů](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Fields (Pole)
 
-Podmínky jsou vytvářena pomocí polí. Představuje pole vlastnosti datové části požadavku prostředku, který se používá k popisu stavu prostředku.
+Podmínky jsou vytvářena pomocí polí. Pole odpovídá vlastnosti datové části požadavku prostředků a popisuje stav prostředku.
 
 Podporovány jsou následující pole:
 
@@ -219,7 +221,7 @@ Podporovány jsou následující pole:
   - Kde **\<tagName\>** je název značky ověřit podmínku.
   - Příklad: `tags.CostCenter` kde **nákladové středisko** je název značky.
 - `tags[<tagName>]`
-  - Tato syntaxe závorky podporuje názvy značek, které obsahují období.
+  - Tato syntaxe závorky podporuje názvy značek, které mají tečku.
   - Kde **\<tagName\>** je název značky ověřit podmínku.
   - Příklad: `tags[Acct.CostCenter]` kde **Acct.CostCenter** je název značky.
 - Vlastnost aliasy – seznam najdete v tématu [aliasy](#aliases).
@@ -229,11 +231,11 @@ Podporovány jsou následující pole:
 Zásady podporuje následující typy dopadu:
 
 - **Odepřít**: vygeneruje událost v protokolu aktivit a požadavek selže
-- **Audit**: vygeneruje událost upozornění v protokolu aktivit, ale ne nesplní žádost
+- **Audit**: vygeneruje událost upozornění v protokolu aktivit, ale neselže, je požadavek
 - **Připojit**: Přidá definovanou sadu polí k této žádosti
 - **AuditIfNotExists**: povolí auditování Pokud prostředek neexistuje.
-- **DeployIfNotExists**: nasadí prostředek, pokud ještě neexistuje
-- **Zakázané**: Nelze vyhodnotit prostředky pro pravidlo zásad dodržování předpisů
+- **DeployIfNotExists**: nasadí prostředek, pokud už neexistuje.
+- **Zakázané**: nevyhodnocuje prostředky pro pravidlo zásad dodržování předpisů
 
 Pro **připojit**, je nutné zadat následující údaje:
 
@@ -247,7 +249,7 @@ Pro **připojit**, je nutné zadat následující údaje:
 
 Hodnota může být řetězec nebo objekt formátu JSON.
 
-S **AuditIfNotExists** a **DeployIfNotExists** můžete vyhodnotit existenci souvisejících prostředků a použít pravidla a odpovídající efekt, pokud daný prostředek neexistuje. Můžete třeba vyžadovat, že sledovací proces sítě se nasazuje pro všechny virtuální sítě. Příklad audit, když rozšíření virtuálního počítače není nasazený, naleznete v tématu [auditovat, jestli rozšíření neexistuje](../samples/audit-ext-not-exist.md).
+**AuditIfNotExists** a **DeployIfNotExists** vyhodnotit existenci souvisejících prostředků a použít pravidlo. Pokud prostředek neodpovídá pravidlo, je implementováno efekt. Můžete třeba vyžadovat, že sledovací proces sítě se nasazuje pro všechny virtuální sítě. Další informace najdete v tématu [auditovat, jestli rozšíření neexistuje](../samples/audit-ext-not-exist.md) příklad.
 
 **DeployIfNotExists** vyžaduje vliv **roledefinitionid, které je** vlastnost **podrobnosti** část pravidla zásad. Další informace najdete v tématu [nápravy - nakonfigurovat definici zásady](../how-to/remediate-resources.md#configure-policy-definition).
 
@@ -265,14 +267,14 @@ Kompletní informace o jednotlivých vliv pořadí vyhodnocení, vlastností a p
 
 ### <a name="policy-functions"></a>Funkce zásad
 
-Podmnožinu [funkce šablon Resource Manageru](../../../azure-resource-manager/resource-group-template-functions.md) jsou k dispozici pro použití v rámci pravidla zásad. Jsou aktuálně podporované funkce:
+Několik [funkce šablon Resource Manageru](../../../azure-resource-manager/resource-group-template-functions.md) jsou k dispozici pro použití v rámci pravidla zásad. Jsou aktuálně podporované funkce:
 
 - [parameters](../../../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
 - [concat](../../../azure-resource-manager/resource-group-template-functions-array.md#concat)
 - [resourceGroup](../../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
 - [předplatné](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
 
-Kromě toho `field` funkce je k dispozici pro pravidla zásad. Tato funkce je primárně určen pro použití s **AuditIfNotExists** a **DeployIfNotExists** polí odkaz na prostředek, který je právě vyhodnocována. Například můžete zobrazit na [DeployIfNotExists příklad](effects.md#deployifnotexists-example).
+Kromě toho `field` funkce je k dispozici pro pravidla zásad. `field` se používá především s **AuditIfNotExists** a **DeployIfNotExists** na odkaz na pole v prostředku, které jsou právě vyhodnocována. Příklad použití si můžete prohlédnout ve [DeployIfNotExists příklad](effects.md#deployifnotexists-example).
 
 #### <a name="policy-function-examples"></a>Příklady zásad – funkce
 
@@ -312,7 +314,7 @@ Používá tento příklad pravidla zásad `resourceGroup` prostředků funkce z
 
 ## <a name="aliases"></a>Aliasy
 
-Vlastnost aliasy používáte pro přístup k určité vlastnosti pro typ prostředku. Aliasy umožňují omezit, jaké hodnoty nebo podmínky jsou povolené pro vlastnost prostředku. Každý alias namapuje cesty v různých verzích rozhraní API pro typ daný prostředek. Modul zásad během hodnocení zásad, získá vlastnost cesty pro tuto verzi rozhraní API.
+Vlastnost aliasy používáte pro přístup k určité vlastnosti pro typ prostředku. Aliasy umožňují omezit, jaké hodnoty nebo podmínky jsou povolena pro vlastnost prostředku. Každý alias namapuje cesty v různých verzích rozhraní API pro typ daný prostředek. Modul zásad během hodnocení zásad, získá vlastnost cesty pro tuto verzi rozhraní API.
 
 Seznam aliasů se pořád rozrůstá. Pokud chcete zjistit, jaké aliasy jsou aktuálně podporovány službou Azure Policy, použijte jednu z následujících metod:
 
@@ -355,7 +357,7 @@ Některé aliasy, které jsou k dispozici máte verzi, která se zobrazí jako '
 
 V prvním příkladu se používá k vyhodnocení celého pole, ve kterém **[\*]** alias vyhodnocuje každý prvek pole.
 
-Podívejme se na pravidlo zásad jako příklad. Tato zásada **Odepřít** účet úložiště, který má ipRules nakonfigurovaný a pokud **žádný** ipRules mít hodnotu "127.0.0.1".
+Podívejme se na pravidlo zásad jako příklad. Tato zásada **Odepřít** účtu úložiště, která má nakonfigurované ipRules a pokud **žádný** ipRules má hodnotu "127.0.0.1".
 
 ```json
 "policyRule": {
@@ -420,7 +422,7 @@ Jako podmínka vyhodnocena jako false **Odepřít** efekt neaktivuje.
 
 ## <a name="initiatives"></a>Iniciativy
 
-Iniciativy umožňují seskupit několik definic zásad souvisejících ke zjednodušení přiřazení a správy, protože pracujete s skupinu jako jednu položku. Můžete například seskupit všech souvisejících označení definic zásad v jednoho initiative. Místo toho každé zásady zvlášť, můžete použít iniciativy.
+Iniciativy umožňují seskupit několik definic zásad souvisejících ke zjednodušení přiřazení a správy, protože pracujete s skupinu jako jednu položku. Například můžete seskupovat související označení definice zásad do jednoho initiative. Místo toho každé zásady zvlášť, můžete použít iniciativy.
 
 Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvěma značkami: `costCenter` a `productName`. Využívá dvě předdefinované zásady použít výchozí hodnotu značky.
 
@@ -502,5 +504,5 @@ Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvě
 - Kontrola [Principy účinky zásad](effects.md)
 - Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md)
 - Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md)
-- Objevte jak [opravit nekompatibilní prostředky](../how-to/remediate-resources.md)
+- Zjistěte, jak [opravit nekompatibilní prostředky](../how-to/remediate-resources.md)
 - Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../../management-groups/overview.md)

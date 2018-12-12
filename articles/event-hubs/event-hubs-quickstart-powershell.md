@@ -1,5 +1,5 @@
 ---
-title: Rychlý start Azure – Vytvoření centra událostí pomocí PowerShellu | Microsoft Docs
+title: Vytvoření centra událostí pomocí prostředí PowerShell – Azure Event Hubs | Dokumentace Microsoftu
 description: Tento rychlý start popisuje, jak pomocí Azure PowerShellu vytvořit centrum událostí a pak odesílat a přijímat události pomocí sady .NET Standard SDK.
 services: event-hubs
 author: ShubhaVijayasarathy
@@ -8,15 +8,15 @@ editor: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 08/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 204106b5b4b906e9671571d492463b7e1dd976d8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d91f98f4f54c1b7c46b3390427c6c389ec01d3c9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958473"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088166"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rychlý start: Vytvoření centra událostí pomocí Azure PowerShellu
 

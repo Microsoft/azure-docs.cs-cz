@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: c9445793061b84a1bd1632d00b64ea99800bc2d1
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: MT
+ms.openlocfilehash: 8da42ee6db4b9ec76fa97e94a77076ed347e2952
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52643002"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080670"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Řešení potíží pomocí agenta Log Analytics pro Linux 
 
@@ -62,7 +62,7 @@ Pokud žádný z těchto kroků pro vás nejvhodnější, jsou také k dispozici
 | NOT_DEFINED | Protože nejsou nainstalované potřebné závislosti, nenainstalují se modul plug-in auoms démona auditd | Instalace se nezdařila, auoms nainstalovat balíček auditd. |
 | 2 | Neplatná možnost sadě prostředí k dispozici. Spustit `sudo sh ./omsagent-*.universal*.sh --help` za využití |
 | 3 | Žádná možnost není k dispozici pro prostředí sady. Spustit `sudo sh ./omsagent-*.universal*.sh --help` za využití. |
-| 4 | Neplatný balíček typu nebo neplatné nastavení proxy serveru; omsagent -*ot. / min*.sh balíčky lze nainstalovat pouze na systémy založené na ot. / min a omsagent -*deb*.sh balíčky můžete nainstalovat jenom v systémech založených na Debian. To se doporučuje použít univerzální instalačního programu z [nejnovější vydaná verze](../../log-analytics/log-analytics-quick-collect-linux-computer.md#install-the-agent-for-linux). Také [zkontrolujte](#issue:-unable-to-connect-through-proxy-to-log-analytics) ověřit vaše nastavení proxy serveru. |
+| 4 | Neplatný balíček typu nebo neplatné nastavení proxy serveru; omsagent -*ot. / min*.sh balíčky lze nainstalovat pouze na systémy založené na ot. / min a omsagent -*deb*.sh balíčky můžete nainstalovat jenom v systémech založených na Debian. To se doporučuje použít univerzální instalačního programu z [nejnovější vydaná verze](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Také [zkontrolujte](#issue:-unable-to-connect-through-proxy-to-log-analytics) ověřit vaše nastavení proxy serveru. |
 | 5 | Prostředí sady je nutné provést jako uživatel root nebo se Chyba 403 vrátil během registrace. Spuštění příkazu s `sudo`. |
 | 6 | Neplatný balíček architektury nebo Chyba 200 chyba vrátil během připojování; omsagent -*x64.sh balíčky lze nainstalovat pouze v 64bitových systémech složku a omsagent*x86.sh balíčky můžete nainstalovat jenom na 32bitových systémech. Stáhněte si správný balíček architektury z [nejnovější vydaná verze](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | Instalace balíčku OMS se nezdařila. Prohlédněte si výstup příkazu kořenové selhání. |
@@ -410,7 +410,7 @@ Můžete dál reonboard po použití `--purge` možnost
 ### <a name="resolution"></a>Řešení 
 Proveďte následující kroky, chcete-li opravit tento problém.
 1. Odeberte rozšíření z webu Azure portal.
-2. Nainstalujte agenta po [pokyny](../../log-analytics/log-analytics-quick-collect-linux-computer.md).
+2. Nainstalujte agenta po [pokyny](../../azure-monitor/learn/quick-collect-linux-computer.md).
 3. Restartujte agenta spuštěním následujícího příkazu: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 * Počkejte pár minut a změní stav zřizování **Zřizování proběhlo úspěšně**.
 

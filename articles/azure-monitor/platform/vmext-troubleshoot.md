@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9907983a901062e5adf622fc6620f5f8432f6a87
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: MT
+ms.openlocfilehash: 107e8c340412e0b90e367331c15fa550dac1e858
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642344"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078663"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Řešení potíží s rozšíření virtuálního počítače Log Analytics
 Tento článek poskytuje nápovědu řešení potíží s chybami setkat s rozšířením Log Analytics VM pro virtuální počítače Windows a Linuxu spuštěné na Microsoft Azure a navrhne řešení k jejich řešení.
@@ -46,7 +46,7 @@ Pokud *agenta Microsoft Monitoring Agent* není instalace rozšíření virtuál
 1. Zkontrolujte, jestli je nainstalovaný agent virtuálního počítače Azure a funguje správně pomocí kroků v [KB 2965986](https://support.microsoft.com/kb/2965986#mt1).
    * Můžete také zkontrolovat soubor protokolu agenta virtuálního počítače `C:\WindowsAzure\logs\WaAppAgent.log`
    * Pokud v protokolu neexistuje, není nainstalován agent virtuálního počítače.
-   * [Nainstalujte agenta virtuálního počítače Azure](../../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+   * [Nainstalujte agenta virtuálního počítače Azure](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 2. Potvrďte, že je spuštěn úkol prezenčního signálu rozšíření Microsoft Monitoring Agent pomocí následujících kroků:
    * Přihlaste se k virtuálnímu počítači
    * Otevřít okno služby Plánovač úloh a najděte `update_azureoperationalinsight_agent_heartbeat` úkolu
@@ -66,7 +66,7 @@ Pokud *agenta Log Analytics pro Linux* není instalace rozšíření virtuální
 
 1. Pokud je stav rozšíření *neznámý* zkontrolujte, jestli je nainstalovaný agent virtuálního počítače Azure a správně funguje, zobrazením souboru protokolu agenta virtuálního počítače `/var/log/waagent.log`
    * Pokud v protokolu neexistuje, není nainstalován agent virtuálního počítače.
-   * [Nainstalujte agenta virtuálního počítače Azure na virtuálních počítačích s Linuxem](../../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+   * [Nainstalujte agenta virtuálního počítače Azure na virtuálních počítačích s Linuxem](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 2. Ostatní stavy není v pořádku, najdete v tématu agenta Log Analytics pro rozšíření virtuálního počítače s Linuxem soubory protokolů `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` a `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
 3. Pokud se stav extension byl v pořádku, ale není v průběhu nahrávání dat zkontrolujte agenta pro Linux soubory protokolu v Log Analytics `/var/opt/microsoft/omsagent/log/omsagent.log`
 

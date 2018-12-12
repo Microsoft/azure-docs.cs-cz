@@ -1,21 +1,22 @@
 ---
-title: Rychlý start pro Javu – změna modelu a trénování aplikace LUIS
-titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu pro Javu přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat. Ukázkové promluvy jsou konverzačním textem uživatele namapovaným na záměr. Tím, že poskytnete ukázkové promluvy pro záměry, naučíte službu LUIS, které typy uživatelem zadaného textu patří do kterého záměru.
+title: Změna, trénovat na základě modelu aplikace Java
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: V tomto rychlém startu pro Javu přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bfe4aae25a34799370e52c8677871a62935ab5c2
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 206b345fedb033a6b98e350fec8c66a3496f5236
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419737"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080822"
 ---
 # <a name="quickstart-change-model-using-java"></a>Rychlý start: Změna modelu pomocí Javy 
 
@@ -71,14 +72,14 @@ ms.locfileid: "50419737"
 
 Zkompilujte AddUtterance se závislostmi.
 
-```CMD
+```console
 > javac -classpath gson-2.8.2.jar AddUtterances.java
 ```
 
 ## <a name="run-code"></a>Spuštění kódu
 Zavoláním `AddUtterance` bez argumentů se do aplikace přidají promluvy LUIS, ale nepoužijí se k trénování.
 
-```CMD
+```console
 > java -classpath .;gson-2.8.2.jar AddUtterances
 ```
 
@@ -89,6 +90,6 @@ Tento příkazový řádek ukazuje výsledky volání rozhraní API pro přidáv
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Jakmile tento rychlý start dokončíte, odeberte všechny soubory, které jste v něm vytvořili. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"] 
 > [Sestavení aplikace LUIS prostřednictvím kódu programu](luis-tutorial-node-import-utterances-csv.md) 

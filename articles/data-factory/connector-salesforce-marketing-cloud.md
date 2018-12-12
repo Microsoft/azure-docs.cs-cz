@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 07c58ea964d6af1ffe1a447d8b52879753f1951c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a9916a412341d0b345bfc7a0e0f28d8e0add1846
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123347"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53081451"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-preview"></a>Kopírování dat z cloudu marketingových Salesforce pomocí Azure Data Factory (Preview)
 
@@ -78,7 +78,12 @@ Pro Marketing Cloud Salesforce propojené služby jsou podporovány následujíc
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada Salesforce Marketing Cloud.
 
-Pro kopírování dat z cloudu marketingových Salesforce, nastavte vlastnost typ datové sady na **SalesforceMarketingCloudObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Pro kopírování dat z cloudu marketingových Salesforce, nastavte vlastnost typ datové sady na **SalesforceMarketingCloudObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **SalesforceMarketingCloudObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -90,7 +95,8 @@ Pro kopírování dat z cloudu marketingových Salesforce, nastavte vlastnost ty
         "linkedServiceName": {
             "referenceName": "<SalesforceMarketingCloud linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -106,7 +112,7 @@ Pro kopírování dat z cloudu marketingových Salesforce, nastavte typ zdroje v
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **SalesforceMarketingCloudSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM MyTable"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

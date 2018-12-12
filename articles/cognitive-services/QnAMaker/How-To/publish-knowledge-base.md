@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: eceb0554d35935f1aee77c4c054cb7e65b327845
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.custom: seodec18
+ms.openlocfilehash: 9c3d1009742f9ca0df6dc2f2d1a2d1904397275a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033409"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53087843"
 ---
-# <a name="publish-a-knowledge-base"></a>Publikování znalostní báze
+# <a name="publish-a-knowledge-base-in-qna-maker"></a>Publikování znalostní báze v nástroje QnA Maker
 
 Publikování znalostní báze je posledním krokem při zpřístupnění znalostní bázi jako koncový bod odpovídání na otázku. 
 
@@ -33,7 +34,7 @@ Při publikování znalostní báze QnA obsah znalostní báze přesune z indexu
 
 2. Vyberte **publikovat** znovu zobrazíte podrobnosti o koncovém bodu, které lze použít v aplikaci nebo robotovi kódu.
 
-    ![Publikování znalostní báze](../media/qnamaker-how-to-publish-kb/publish-success.png)
+    ![Publikování proběhlo úspěšně znalostní báze](../media/qnamaker-how-to-publish-kb/publish-success.png)
     
 ## <a name="next-steps"></a>Další postup
 

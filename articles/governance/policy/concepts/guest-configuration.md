@@ -4,17 +4,17 @@ description: Zjistěte, jak Azure Policy používá hostovaný konfigurace audit
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/24/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ca96aea8f359f1df7da48f84a3317a2d8c7b52e4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 19bc8a58c1ad2115afdfd1d7e59b714ba19cadec
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167870"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078884"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Porozumět konfiguraci hosta Azure Policy
 
@@ -29,7 +29,7 @@ Auditování nastavení uvnitř virtuálního počítače, [rozšíření virtu�
 
 ### <a name="register-guest-configuration-resource-provider"></a>Registrace poskytovatele prostředků konfigurace hosta
 
-Před použitím konfigurace hosta, zaregistrujte poskytovatele prostředků. Lze provést prostřednictvím portálu nebo pomocí Powershellu.
+Před použitím konfigurace hosta, zaregistrujte poskytovatele prostředků. Můžete zaregistrovat prostřednictvím portálu nebo pomocí Powershellu.
 
 #### <a name="registration---portal"></a>Registrace – portál
 
@@ -54,7 +54,7 @@ Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguratio
 
 ### <a name="validation-tools"></a>Nástroje pro ověření
 
-Ve virtuálním počítači hosta konfigurace klienta používá místní nástroje k provedení auditu.
+Ve virtuálním počítači hosta konfigurace klienta použije místní nástroje pro spuštění auditu.
 
 V následující tabulce je seznam nástrojů pro místní použít na všech podporovaných operačních systémech:
 
@@ -90,23 +90,23 @@ Následující tabulka uvádí operační systémy, které nejsou podporovány:
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na konfiguraci hosta definice
 
-Každý audit prováděné hosta konfigurace vyžaduje dvě definice zásad **DeployIfNotExists** a **AuditIfNotExists**. **DeployIfNotExists** slouží k přípravě virtuálního počítače s agentem hosta konfigurace a další komponenty pro podporu [ověřovacích nástrojů](#validation-tools).
+Každý audit spuštění hosta konfigurace vyžaduje dvě definice zásad **DeployIfNotExists** a **AuditIfNotExists**. **DeployIfNotExists** slouží k přípravě virtuálního počítače s agentem hosta konfigurace a další komponenty pro podporu [ověřovacích nástrojů](#validation-tools).
 
-**DeployIfNotExists** definici zásad ověří a řeší následující:
+**DeployIfNotExists** definici zásad ověří a řeší následující položky:
 
-- Zajistěte, aby že virtuální počítač má přiřazenou konfiguraci, kterou chcete vyhodnotit. Pokud aktuálně neexistuje žádná přiřazení, získejte přiřazení a příprava virtuálního počítače podle:
+- Ověření virtuální počítač má přiřazenou konfiguraci, kterou chcete vyhodnotit. Pokud aktuálně neexistuje žádná přiřazení, získejte přiřazení a příprava virtuálního počítače podle:
   - Ověřování pomocí virtuálního počítače [spravované identity](../../../active-directory/managed-identities-azure-resources/overview.md)
   - Instalace nejnovější verze **Microsoft.GuestConfiguration** rozšíření
   - Instalace [ověřovacích nástrojů](#validation-tools) a závislostí, v případě potřeby
 
-Jednou **DeployIfNotExists** vyhovující předpisům, je **AuditIfNotExists** definice zásady používá nástroje pro místní ověřování k určení, zda je přiřazení přiřazených konfigurací dodržujících předpisy nebo Nevyhovující předpisům. Nástroj ověření poskytuje výsledky do hostovaného konfigurace klienta, který předá do rozšíření hosta a zpřístupnit ji prostřednictvím poskytovatele prostředků hosta konfigurace.
+Jednou **DeployIfNotExists** vyhovující předpisům, je **AuditIfNotExists** definice zásady používá nástroje pro místní ověřování k určení, zda je přiřazení přiřazených konfigurací dodržujících předpisy nebo Nevyhovující předpisům. Nástroj ověření poskytuje výsledky klientovi Configuration hosta. Klient předává výsledky hosta rozšíření, které zpřístupní je prostřednictvím poskytovatele prostředků konfigurace hosta.
 
 Služba Azure Policy používá poskytovatele prostředků hosta konfigurace **complianceStatus** vlastností na sestavu dodržování předpisů v **dodržování předpisů** uzlu. Další informace najdete v tématu [získávají data dodržování předpisů](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
 > Pro každou definici typu Host konfigurace i **DeployIfNotExists** a **AuditIfNotExists** definice zásad musí existovat.
 
-Všechny integrované zásady pro konfiguraci hosta jsou součástí iniciativy do definice pro použití v přiřazení skupiny. Integrované iniciativu s názvem *[Preview]: nastavení hesla auditu zabezpečení uvnitř virtuálního počítače s Linuxem a Windows* obsahuje 18 zásady. Obsahuje šest **DeployIfNotExists** a **AuditIfNotExists** dvojice pro Windows a tři páry pro Linux. V každém případě logika uvnitř definice zajistí, cílový operační systém se vyhodnocuje na základě [pravidlo zásad](definition-structure.md#policy-rule) definice.
+Všechny integrované zásady pro konfiguraci hosta jsou součástí iniciativy do definice pro použití v přiřazení skupiny. Integrované iniciativu s názvem *[Preview]: nastavení hesla auditu zabezpečení uvnitř virtuálního počítače s Linuxem a Windows* obsahuje 18 zásady. Obsahuje šest **DeployIfNotExists** a **AuditIfNotExists** dvojice pro Windows a tři páry pro Linux. V každém případě logika uvnitř definice ověří pouze cílový operační systém se vyhodnocuje na základě [pravidlo zásad](definition-structure.md#policy-rule) definice.
 
 ## <a name="next-steps"></a>Další postup
 
@@ -115,5 +115,5 @@ Všechny integrované zásady pro konfiguraci hosta jsou součástí iniciativy 
 - Kontrola [Principy účinky zásad](effects.md)
 - Pochopit postup [programové vytváření zásad](../how-to/programmatically-create.md)
 - Zjistěte, jak [získat data o dodržování předpisů](../how-to/getting-compliance-data.md)
-- Objevte jak [opravit nekompatibilní prostředky](../how-to/remediate-resources.md)
+- Zjistěte, jak [opravit nekompatibilní prostředky](../how-to/remediate-resources.md)
 - Připomenutí skupin pro správu v článku [Uspořádání prostředků pomocí skupin pro správu Azure](../../management-groups/index.md)

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 393543bbb1891e14ed67487aff26a7bda1eebcd5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ffa619351ca4a4bfd3a812775ee7ff6cd71ddea4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304233"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53089697"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Vytvoření šablony Azure Resource Manageru pro nasazení aplikací logiky
 
@@ -173,7 +173,7 @@ Pokud máte stávající projekt skupiny prostředků, můžete přidat aplikace
 
 ## <a name="deploy-a-logic-app-template"></a>Nasazení šablony aplikace logiky
 
-Šablony můžete nasadit pomocí všechny nástroje, jako je PowerShell, rozhraní REST API [Azure DevOps Release Management](#team-services)a šablony nasazení na webu Azure portal.
+Šablony můžete nasadit pomocí všechny nástroje, jako je PowerShell, rozhraní REST API [kanály Azure DevOps Azure](#team-services)a šablony nasazení na webu Azure portal.
 K ukládání hodnot pro parametry, doporučujeme také, že vytvoříte [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
 Zjistěte, jak [nasazení prostředků pomocí šablon Azure Resource Manageru a Powershellu](../azure-resource-manager/resource-group-template-deploy.md) nebo [nasazení prostředků pomocí šablon Azure Resource Manageru a webu Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
@@ -185,11 +185,11 @@ Připojení OAuth, otevřete aplikaci logiky v návrháři pro Logic Apps, a tat
 Na Githubu v části je ukázkový skript [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) projektu.
 
 <a name="team-services"></a>
-## <a name="azure-devops-release-management"></a>Azure DevOps Release Management
+## <a name="azure-devops-azure-pipelines"></a>Kanály Azure DevOps Azure
 
-Běžný scénář pro nasazení a správu prostředí je použití nástroje, jako je Release Management v Azure DevOps s šablony nasazení aplikace logiky. Zahrnuje Azure DevOps [nasazení skupiny prostředků Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) úloh, můžete přidat do jakékoli sestavení nebo kanál verze. Je potřeba mít [instanční objekt služby](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) pro autorizaci k nasazení a pak můžete vygenerovat kanál pro vydávání verzí.
+Je běžným scénářem, nasazení a správě prostředí pomocí některého nástroje, například kanály Azure v Azure DevOps, šablony nasazení aplikace logiky. Zahrnuje Azure DevOps [nasazení skupiny prostředků Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) úloh, můžete přidat do jakékoli sestavení nebo kanál verze. Je potřeba mít [instanční objekt služby](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) pro autorizaci k nasazení a pak můžete vygenerovat kanál pro vydávání verzí.
 
-1. V produktu Release Management, vyberte **prázdný** tak, že vytvoříte kanál prázdný.
+1. V kanálech Azure vyberte **prázdný** tak, že vytvoříte kanál prázdný.
 
     ![Vytvoření prázdné kanálu][1]
 

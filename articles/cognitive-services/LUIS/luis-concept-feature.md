@@ -1,21 +1,22 @@
 ---
-title: Funkce v aplikacích Azure Cognitive Services LUIS
-titleSuffix: Azure Cognitive Services
-description: Přidání funkcí do jazykového modelu poskytnout nápovědu, jak rozpoznat vstup, který chcete klasifikovat a označovat. Funkce pomáhají LUIS rozpoznat záměry a entity.
+title: Funkce
+titleSuffix: Language Understanding - Azure Cognitive Services
+description: Přidání funkcí do jazykového modelu poskytnout nápovědu, jak rozpoznat vstup, který chcete klasifikovat a označovat.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 43b2b1485e6a33162f7fc08631094f3e975f8cdb
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.openlocfilehash: 57ad7d680d83e13d9aff1d55a52ab982c585df76
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638251"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080193"
 ---
 # <a name="phrase-list-features-in-luis"></a>Seznam funkcí frázi v LUIS
 

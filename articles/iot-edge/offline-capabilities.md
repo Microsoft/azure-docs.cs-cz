@@ -1,6 +1,6 @@
 ---
-title: Offline možnosti služby Azure IoT Edge | Dokumentace Microsoftu
-description: Zjistěte, jak zařízení IoT Edge a moduly můžete pracovat offline dlouhou dobu, a jak IoT Edge můžete povolit běžná zařízení IoT příliš pracovat offline.
+title: PROVOZUJTE zařízení offline – Azure IoT Edge | Dokumentace Microsoftu
+description: Zjistěte, jak moduly a zařízení IoT Edge může fungovat i bez připojení k Internetu pro dlouhou dobu a jak IoT Edge můžete povolit běžná zařízení IoT příliš pracovat offline.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3ab775d57ba188930cc66b0fa1655307e9a78179
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.custom: seodec18
+ms.openlocfilehash: 4c4713bade487ba46f1abdc6d0a76db3e81e38b1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284638"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096940"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Seznamte se s rozšířenou offline funkcí pro zařízení IoT Edge, moduly a podřízená zařízení (preview)
 

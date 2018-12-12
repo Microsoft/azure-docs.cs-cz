@@ -1,32 +1,36 @@
 ---
-title: Použití služby Azure Batch přepis rozhraní API
+title: Jak používat jiné služby Batch – hlasové služby
 titlesuffix: Azure Cognitive Services
-description: Ukázky pro přepisování velké objemy zvukový obsah.
+description: Přepis batch je ideální, pokud chcete přepisy velké množství zvuk v úložišti, jako jsou objekty BLOB Azure. Pomocí vyhrazené rozhraní REST API můžete odkazovat na zvukové soubory pomocí sdíleného přístupového podpisu (SAS) identifikátor URI a asynchronně přijímat přepisů.
 services: cognitive-services
 author: PanosPeriorellis
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/26/2018
+ms.date: 12/06/2018
 ms.author: panosper
-ms.openlocfilehash: 8a180dfada9da92e0b8ed69373a20602b3b0a177
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.custom: seodec18
+ms.openlocfilehash: b4e7c11a6077104e874d67b75f5d00e8f481f739
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52495595"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53086925"
 ---
 # <a name="why-use-batch-transcription"></a>Proč používat službu Batch určené k transkripci?
 
-Přepis batch je ideální, pokud máte velké množství zvuku ve službě storage. Pomocí vyhrazené rozhraní REST API, můžete pomocí sdíleného přístupového podpisu (SAS) identifikátor URI přejděte na příkaz zvukové soubory a asynchronně přijímat přepisů.
+Přepis batch je ideální, pokud chcete přepisy velké množství zvuk v úložišti, jako jsou objekty BLOB Azure. Pomocí vyhrazené rozhraní REST API můžete odkazovat na zvukové soubory pomocí sdíleného přístupového podpisu (SAS) identifikátor URI a asynchronně přijímat přepisů.
+
+>[!NOTE]
+> Standardní předplatné (S0) pro hlasové služby je potřeba pomocí služby batch určené k transkripci. Bezplatné předplatné klíče (F0) nebudou fungovat. Další informace najdete v tématu [ceny a omezení](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/).
 
 ## <a name="the-batch-transcription-api"></a>Přepis rozhraní API služby Batch
 
 Rozhraní API služby Batch určené k transkripci nabízí asynchronní přepis řeči na text, společně s další funkce. Je rozhraní REST API, který poskytuje metody pro:
 
 1. Vytváření žádostí o zpracování služby batch
-1. Stav dotazu 
+1. Stav dotazu
 1. Přepisy stahování
 
 > [!NOTE]
@@ -75,7 +79,7 @@ Tyto parametry mohou být zahrnuty v řetězci dotazu požadavku REST.
 
 ## <a name="authorization-token"></a>Autorizační token
 
-Se všemi funkcemi služby řeči, při vytváření odběru klíč z [webu Azure portal](https://portal.azure.com) podle našich [Příručka Začínáme](get-started.md). Pokud budete chtít získat přepisů z našich základní modely, vytváří se klíč je všechno, co musíte udělat. 
+Se všemi funkcemi služby řeči, při vytváření odběru klíč z [webu Azure portal](https://portal.azure.com) podle našich [Příručka Začínáme](get-started.md). Pokud budete chtít získat přepisů z našich základní modely, vytváří se klíč je všechno, co musíte udělat.
 
 Pokud budete chtít přizpůsobit a použití vlastního modelu, přidáte klíč předplatného portál custom speech následujícím způsobem:
 
@@ -106,19 +110,19 @@ Upravte následující vzorový kód s klíč předplatného a klíč rozhraní 
             client.Timeout = TimeSpan.FromMinutes(25);
             client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
             client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-         
+
             return new CrisClient(client);
         }
 ```
 
-Po získání tokenu, zadejte identifikátor URI SAS, který odkazuje na zvukový soubor, který vyžaduje přepis. Zbytek kódu prochází stav a zobrazí výsledky. Zpočátku je nastavit klíč, oblast, modely a SA, jak je znázorněno v následujícím fragmentu kódu. V dalším kroku vytvoříte instanci klienta a požadavek POST. 
+Po získání tokenu, zadejte identifikátor URI SAS, který odkazuje na zvukový soubor, který vyžaduje přepis. Zbytek kódu prochází stav a zobrazí výsledky. Zpočátku je nastavit klíč, oblast, modely a SA, jak je znázorněno v následujícím fragmentu kódu. V dalším kroku vytvoříte instanci klienta a požadavek POST.
 
 ```cs
             private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
-    
-            // SAS URI 
+
+            // SAS URI
             private const string RecordingsBlobUri = "SAS URI pointing to the file in Azure Blob Storage";
 
             // adapted model Ids
@@ -127,14 +131,14 @@ Po získání tokenu, zadejte identifikátor URI SAS, který odkazuje na zvukov�
 
             // Creating a Batch Transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
-            
+
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
 ```
 
 Teď, když jste provedli požadavek, můžete vyhledat a stáhnout výsledky určené k transkripci, jak je znázorněno v následujícím fragmentu kódu:
 
 ```cs
-  
+
             // get all transcriptions for the user
             transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
 
@@ -152,9 +156,9 @@ Teď, když jste provedli požadavek, můžete vyhledat a stáhnout výsledky ur
                             // not created from here, continue
                             continue;
                         }
-                            
+
                         completed++;
-                            
+
                         // if the transcription was successful, check the results
                         if (transcription.Status == "Succeeded")
                         {
@@ -166,7 +170,7 @@ Teď, když jste provedli požadavek, můžete vyhledat a stáhnout výsledky ur
                             Console.WriteLine("Transcription succeeded. Results: ");
                             Console.WriteLine(results);
                         }
-                    
+
                     break;
                     case "Running":
                     running++;
@@ -174,7 +178,7 @@ Teď, když jste provedli požadavek, můžete vyhledat a stáhnout výsledky ur
                     case "NotStarted":
                     notStarted++;
                     break;
-                    
+
                     }
                 }
             }
@@ -188,7 +192,7 @@ Teď, když jste provedli požadavek, můžete vyhledat a stáhnout výsledky ur
 
 Poznamenejte si nastavení asynchronní pro zvuk odesílání a příjem určené k transkripci stav. Klient, který vytvoříte je klienta .NET protokolu HTTP. Je `PostTranscriptions` metodu pro odesílání podrobnosti zvukový soubor a `GetTranscriptions` metodu pro příjem výsledků. `PostTranscriptions` Vrátí popisovač, a `GetTranscriptions` používá k vytvoření popisovače se získat stav určené k transkripci.
 
-Aktuální vzorový kód neurčuje vlastního modelu. Služba používá základní modely pro přepisování na soubor nebo soubory. K určení vzorů, můžete předat na stejné metodě jako ID modelu akustických a jazykový model. 
+Aktuální vzorový kód neurčuje vlastního modelu. Služba používá základní modely pro přepisování na soubor nebo soubory. K určení vzorů, můžete předat na stejné metodě jako ID modelu akustických a jazykový model.
 
 Pokud nechcete použít směrný plán, předejte ID modelu akustických a jazykových modelů.
 
