@@ -7,12 +7,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.openlocfilehash: 400ce3ddb2a01db32faa7d3303c89a76c2c4649a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f49f56d57de6cdcb7c5e9b557ed897d17a6bf7fb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960026"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079173"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Běžné případy použití služby Azure Cosmos DB
 Tento článek poskytuje přehled o několik běžných případů použití pro službu Azure Cosmos DB.  Doporučení v tomto článku slouží jako výchozí bod při vývoji aplikace pomocí služby Cosmos DB.   
@@ -27,7 +27,7 @@ Po přečtení tohoto článku, budete moci odpovědět na následující otázk
 ## <a name="introduction"></a>Úvod
 [Azure Cosmos DB](../cosmos-db/introduction.md) je globálně distribuovaná databázová služba od Microsoftu. Služba je navržena k umožnění zákazníkům Elasticky (a nezávisle na sobě) škálovat propustnost a úložiště napříč libovolným počtem geografických oblastí. Azure Cosmos DB je první globálně distribuovaná databázová služba na trhu Dnes nabízí komplexní [smlouvy o úrovni služeb](https://azure.microsoft.com/support/legal/sla/cosmos-db/) zahrnující propustnosti, latence, dostupnosti a konzistence. 
 
-Azure Cosmos DB je globální distribuovaná a vícemodelová databáze, která se používá v široké škály aplikací a případy použití. Je to Dobrá volba pro všechny [bez serveru](http://azure.com/serverless) aplikaci, která potřebuje nízkou pořadí milisekund dobou odezvy a je potřeba rychle a globálně škálovat. Podporuje více datových modelů (klíč hodnota, dokumentů, grafů a sloupcových) a přístup k mnoha rozhraní API pro data, včetně [rozhraní MongoDB API](mongodb-introduction.md), [rozhraní SQL API](documentdb-introduction.md), [rozhraní Gremlin API](graph-introduction.md)a [ Rozhraní API tabulky](table-introduction.md) nativně a postupně přibývají. 
+Azure Cosmos DB je globální distribuovaná a vícemodelová databáze, která se používá v široké škály aplikací a případy použití. Je to Dobrá volba pro všechny [bez serveru](https://azure.com/serverless) aplikaci, která potřebuje nízkou pořadí milisekund dobou odezvy a je potřeba rychle a globálně škálovat. Podporuje více datových modelů (klíč hodnota, dokumentů, grafů a sloupcových) a přístup k mnoha rozhraní API pro data, včetně [rozhraní MongoDB API](mongodb-introduction.md), [rozhraní SQL API](documentdb-introduction.md), [rozhraní Gremlin API](graph-introduction.md)a [ Rozhraní API tabulky](table-introduction.md) nativně a postupně přibývají. 
 
 Tady jsou některé atributy služby Azure Cosmos DB, kterým jsou vhodné pro vysoce výkonných aplikací s globální dále.
 
@@ -60,7 +60,7 @@ Vezměte v úvahu příklad katalog produktů pro dodavatele průmyslu částí.
 
 ![Azure Cosmos DB prodejní katalog referenční architektury](./media/use-cases/product-catalog.png)
 
-Azure Cosmos DB se často používá pro model event sourcing power architektury řízené událostmi pomocí jeho [kanálu změn](change-feed.md) funkce. Kanál změn umožňuje příjem mikroslužeb spolehlivě a postupně čtení vkládání a aktualizace (například pořadí události) ke službě Azure Cosmos DB. Tuto funkci můžete využít k poskytování úložiště trvalých událostí jako zprostředkovatel zpráv událostí změny stavu a pracovního postupu zpracování objednávky disku mezi mnoha mikroslužeb (které je možné implementovat jako [Azure Functions bez serveru](http://azure.com/serverless)).
+Azure Cosmos DB se často používá pro model event sourcing power architektury řízené událostmi pomocí jeho [kanálu změn](change-feed.md) funkce. Kanál změn umožňuje příjem mikroslužeb spolehlivě a postupně čtení vkládání a aktualizace (například pořadí události) ke službě Azure Cosmos DB. Tuto funkci můžete využít k poskytování úložiště trvalých událostí jako zprostředkovatel zpráv událostí změny stavu a pracovního postupu zpracování objednávky disku mezi mnoha mikroslužeb (které je možné implementovat jako [Azure Functions bez serveru](https://azure.com/serverless)).
 
 ![Řazení kanálu referenční architektura Azure Cosmos DB](./media/use-cases/event-sourcing.png)
 
@@ -69,7 +69,7 @@ Kromě toho data uložená ve službě Azure Cosmos DB je možné integrovat s H
 ## <a name="gaming"></a>Hraní her
 Databázová vrstva je zásadní součástí herní aplikace. Moderní hry provádění grafické zpracování na klientech mobilních/konzoly, ale závisí na cloudu a zprostředkovávat přizpůsobené a přizpůsobený obsah, jako jsou statistiky ve hře, integraci sociálních médií a vysoce skóre žebříčky. Hry často vyžadují latenci na úrovni jednotlivých milisekund pro čtení a zápis k poskytování zapojení ve hře prostředí. Herní databáze musí být rychlé a být schopen zpracovat uvedení v požadavků v průběhu nové spuštění her a aktualizace funkcí.
 
-Azure Cosmos DB používá hry jako [The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) podle [Next Games](http://www.nextgames.com/), a [Halo 5: strážce](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Azure Cosmos DB poskytuje následující výhody pro vývojáře her:
+Azure Cosmos DB používá hry jako [The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) podle [Next Games](https://www.nextgames.com/), a [Halo 5: strážce](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Azure Cosmos DB poskytuje následující výhody pro vývojáře her:
 
 * Azure Cosmos DB umožňuje výkonu škálovat nahoru nebo dolů Elasticky. To umožňuje hry pro zpracování aktualizací profilu a statistiky z desítek na miliony současně hráčům prostřednictvím jediného volání rozhraní API.
 * Azure Cosmos DB podporuje milisekund čtení a zápisu zabránit tomu, aby všechny zjevně demonstruje výskyt pomalé během hry.
@@ -104,12 +104,12 @@ Začínáme se službou Azure Cosmos DB, postupujte podle našich [rychlých sta
 Nebo, pokud chcete další informace o zákaznících pomocí služby Cosmos DB, jsou k dispozici následující příběhy zákazníků:
 
 * [Jet.com](https://jet.com). Elektronický obchodník špici, spouští v cloudu Microsoftu, využívá služby Cosmos DB v globálním měřítku.
-* [Asos.com](http://www.asos.com/). Asos.com je British online způsobem a krásy úložiště. Primárně zaměřených na mladé dospělé, Asos prodává více než 850 značky, stejně jako vlastní rozsah oblečení a příslušenství.
+* [Asos.com](https://www.asos.com/). Asos.com je British online způsobem a krásy úložiště. Primárně zaměřených na mladé dospělé, Asos prodává více než 850 značky, stejně jako vlastní rozsah oblečení a příslušenství.
 * [Toyota](https://www.toyota.com/). Toyota Motor Corporation je japonský automobilový průmysl výrobce. Toyota využít Cosmos DB pro globální aplikace IoT.
 * [Citrix](https://customers.microsoft.com/story/citrix). Citrix vyvíjí řešení jednotného přihlašování pomocí Azure Service Fabric a Azure Cosmos DB
 * [TEXA](https://customers.microsoft.com/story/texaspa) společnosti TEXA revoluční řešení IoT pro vlastníky vozidla pomáhá šetřit čas, peníze, plynu – a případně se nachází.
 * [Společnosti Domino Pizza](https://www.dominos.com). Společnosti Domino Pizza A.s. je řetěz American pizza restauraci.
-* [Ovládací prvky Johnsonem](http://www.johnsoncontrols.com). Ovládací prvky Johnsonem je globální smíšené technologie a více průmyslové vedoucí instance obsluhuje celou řadu zákazníků ve víc než 150 zemích.
+* [Ovládací prvky Johnsonem](https://www.johnsoncontrols.com). Ovládací prvky Johnsonem je globální smíšené technologie a více průmyslové vedoucí instance obsluhuje celou řadu zákazníků ve víc než 150 zemích.
 * [Microsoft Windows Universal Store, Azure IoT Hub, Xbox Live a další služby v internetovém měřítku](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). Postupy: sestavení Microsoft masivně škálovatelné služby pomocí služby Azure Cosmos DB.
 * [Microsoft Data a analytický tým](https://customers.microsoft.com/story/microsoftdataandanalytics). Společnosti Microsoft Data a analytický tým dosahuje globálním měřítku kolekcí velkých objemů dat pomocí služby Azure Cosmos DB
 * [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha využívá Azure Cosmos DB k propojení zákazníky a firmy v Indii.

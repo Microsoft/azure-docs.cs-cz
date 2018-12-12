@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs integrovat do průběžné integrace a doručování kanálu VSTS | Dokumentace Microsoftu
-description: Zjistěte, jak Azure DevTest Labs integrovat do VSTS průběžné integrace a doručování kanálu
+title: Azure DevTest Labs integrovat do Azure kanály průběžné integrace a doručování kanálu | Dokumentace Microsoftu
+description: Zjistěte, jak Azure DevTest Labs integrovat do Azure kanály průběžné integrace a doručování kanálu
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b7ce07547eccd52a8b10d4cffecaf1456778da4a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 459b06df954d9cc913b6d1503c9f876f93b494e9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301204"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53082947"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Azure DevTest Labs integrovat do Azure DevOps, průběžná integrace a doručování kanálu
 Můžete použít *úloh Azure DevTest Labs* rozšíření, které je nainstalovaný Azure DevOps na snadno integrovat vaše sestavení a vydání kanálu CI/CD s Azure DevTest Labs. Rozšíření nainstaluje tři úkoly: 
@@ -31,7 +31,7 @@ Proces zjednodušuje, například rychle nasadit "zlaté image" pro konkrétní 
 
 Tento článek ukazuje, jak vytvořit a nasadit virtuální počítač, vytvořit vlastní image a odstraňte virtuální počítač, všechny jako jeden kompletní kanál. Každý úkol by obvykle provádět jednotlivě ve vašem vlastním vlastní sestavení, testování a nasazení kanálu.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 Než svůj kanál CI/CD můžete integrovat s Azure DevTest Labs, musíte nainstalovat rozšíření z Visual Studio Marketplace.
 1. Přejděte na [úloh Azure DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
 1. Vyberte **Install** (Nainstalovat).
@@ -138,7 +138,7 @@ Další fáze nasazení je vytvoření virtuálního počítače, který chcete 
 1. Kanál pro vydávání verzí, vyberte **přidat úkoly** a pak klikněte na **nasadit** kartu, přidejte *prostředí Azure PowerShell* úloh. Úkol nakonfigurujte následujícím způsobem:
 
    > [!NOTE]
-   > Shromažďování podrobností virtuálního počítače DevTest Labs, najdete v článku [nasazení: Azure PowerShell](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/AzurePowerShell) a spusťte tento skript.
+   > Shromažďování podrobností virtuálního počítače DevTest Labs, najdete v článku [nasazení: Azure PowerShell](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzurePowerShellV3) a spusťte tento skript.
 
    a. Pro **typ připojení Azure**vyberte **Azure Resource Manageru**.
 

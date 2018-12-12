@@ -4,16 +4,16 @@ description: Použijte Azure CLI k vytvoření přiřazení zásady Azure Policy
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 4954ca42af1755ea62e7142048d48805397b6a0a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 343dee2e23567c2552fc5e7c0c0323227deb21de
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968477"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078629"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure pomocí Azure CLI
 
@@ -32,7 +32,7 @@ Tento rychlý start vyžaduje, abyste pro místní používání a instalaci roz
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pomocí Azure CLI zaregistrujte poskytovatele prostředků Policy Insights. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Když chcete registrovat poskytovatele prostředků, musíte mít oprávnění k provedení operace akce registrace pro poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
+Pomocí Azure CLI zaregistrujte poskytovatele prostředků Policy Insights. Registrace poskytovatele prostředků zajistí, že s ním vaše předplatné bude fungovat. Zaregistrovat poskytovatele prostředků, musíte mít oprávnění pro operace registrace poskytovatele prostředků. Tato operace je součástí rolí Přispěvatel a Vlastník. Spuštěním následujícího příkazu zaregistrujte poskytovatele prostředků:
 
 ```azurecli-interactive
 az provider register --namespace 'Microsoft.PolicyInsights'
@@ -44,19 +44,19 @@ Pokud jste to ještě neudělali, nainstalujte si nástroj [ARMClient](https://g
 
 ## <a name="create-a-policy-assignment"></a>Vytvoření přiřazení zásady
 
-V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte definici **Auditovat virtuální počítače, které nepoužívají spravované disky**. Tato definice zásady identifikuje prostředky, které nesplňují podmínky nastavené v definici zásady.
+V tomto rychlém startu vytvoříte přiřazení zásady a přiřadíte definici **Auditovat virtuální počítače, které nepoužívají spravované disky**. Tato definice zásady identifikuje prostředky, které nedodržují předpisy podmínky nastavené v definici zásad.
 
 Spuštěním následujícího příkazu vytvořte přiřazení zásady:
 
 ```azurecli-interactive
-az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit Virtual Machines without Managed Disks Assignment' --scope '<scope>' --policy '<policy definition ID>'
+az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit VMs without managed disks Assignment' --scope '<scope>' --policy '<policy definition ID>'
 ```
 
 Předchozí příkaz používá následující informace:
 
 - **Name** – skutečný název přiřazení.  V tomto příkladu je použitý název *audit-vm-manageddisks*.
-- **DisplayName** – zobrazovaný název přiřazení zásady. V tomto případě používáte přiřazení *Audit virtuálních počítačů bez spravovaných disků*.
-- **Policy** – ID definice zásady, kterou používáte k vytvoření tohoto přiřazení. V tomto případě je to ID definice zásady *Auditovat virtuální počítače, které nepoužívají spravované disky*. ID definice zásady získáte spuštěním příkazu `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`.
+- **DisplayName** – zobrazovaný název přiřazení zásady. V tomto případě používáte *Audit virtuálních počítačů bez spravovaných disků přiřazení*.
+- **Policy** – ID definice zásady, kterou používáte k vytvoření tohoto přiřazení. V takovém případě je ID definice zásady *Audit virtuálních počítačů, které nepoužívají spravované disky*. ID definice zásady získáte spuštěním příkazu `az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`.
 - **Scope** – Obor určuje, pro které prostředky nebo skupiny prostředků se toto přiřazení zásady bude vynucovat. Může sahat od předplatného až po skupinu prostředků. Nezapomeňte nahradit &lt;scope&gt; názvem vaší skupiny prostředků.
 
 ## <a name="identify-non-compliant-resources"></a>Identifikace prostředků, které nedodržují předpisy
@@ -64,7 +64,7 @@ Předchozí příkaz používá následující informace:
 Pokud chcete zobrazit prostředky, které nedodržují předpisy v rámci tohoto nového přiřazení, získejte ID přiřazení zásady spuštěním následujících příkazů:
 
 ```azurepowershell-interactive
-$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks Assignment' }
+$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
 $policyAssignment.PolicyAssignmentId
 ```
 
@@ -106,17 +106,17 @@ Tyto výsledky jsou srovnatelné s tím, co se obvykle zobrazuje v části **Nek
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další příručky v této kolekci vycházejí z tohoto rychlého startu. Pokud chcete pokračovat v práci s dalšími kurzy, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, spuštěním následujícího příkazu odstraňte přiřazení, které jste vytvořili:
+Odebrat přiřazení vytvořené, použijte následující příkaz:
 
 ```azurecli-interactive
 az policy assignment delete --name 'audit-vm-manageddisks' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste přiřadili definici zásady pro identifikaci prostředků, které nedodržují předpisy, ve vašem prostředí Azure.
 
-Další informace o přiřazování zásad a zajištění, aby prostředky vytvořené **v budoucnu** dodržovaly předpisy, najdete v tomto kurzu:
+Další informace o přiřazování zásad pro ověření, že nové prostředky jsou kompatibilní, i nadále najdete v tomto kurzu:
 
 > [!div class="nextstepaction"]
 > [Vytváření a správa zásad](./tutorials/create-and-manage.md)

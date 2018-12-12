@@ -1,18 +1,19 @@
 ---
-title: Azure Disk Encryption pomocí Azure AD App Linuxem v režimu IaaS virtuálních počítačů (předchozí verze) | Dokumentace Microsoftu
+title: Azure Disk Encryption pomocí Azure AD App Linuxem v režimu IaaS virtuálních počítačů (předchozí verze)
 description: Tento článek obsahuje pokyny týkající se povolení Microsoft Azure Disk Encryption pro virtuální počítače IaaS s Linuxem.
 author: mestew
 ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/19/2018
-ms.openlocfilehash: ffabd1169076ac5f887375c585c8880b587c86a8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 79b7fdd5ba6bd39058a5b892771f550bb872fa70
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636998"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53083355"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Povolit Azure Disk Encryption pro virtuální počítače s Linuxem IaaS (předchozí verze)
 

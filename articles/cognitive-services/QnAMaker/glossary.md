@@ -1,7 +1,7 @@
 ---
 title: Glosář – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Glosář
+description: Služba QnA Maker má mnoho nové podmínky ze služby machine learning a zpracování i specifickou pro službu podmínky přirozeného jazyka. Tento seznam vám pomůže pochopit tyto podmínky.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
@@ -10,14 +10,15 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: b22ec27b2999d322945e37c5a38d2b1d1532e7e3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.custom: seodec18
+ms.openlocfilehash: 832bf85087b706451a6ee58c538d7a163ef18203
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166040"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079938"
 ---
-# <a name="glossary"></a>Glosář
+# <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>Glosář pro nástroj QnA Maker znalostní báze a služby
 
 ## <a name="qna-maker-service"></a>Služba QnA Maker
 Služba QnA Maker je jako nezbytné komponenty k použití nástroje QnA Maker. Zakoupení vrstvu QnA Maker nastaví prostředky ve vašem předplatném Azure pro vytváření a správu znalostní báze. Všechny uživatelské účty nástroje QnA Maker můžete vytvořit víc služeb nástroje QnA Maker v rámci svého předplatného Azure.

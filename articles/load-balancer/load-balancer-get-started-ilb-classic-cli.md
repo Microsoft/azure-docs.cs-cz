@@ -1,5 +1,6 @@
 ---
-title: Vytvoření interního nástroje pro vyrovnávání zatížení – Azure Classic CLI | Microsoft Docs
+title: Vytvoření interního Vyrovnávání zatížení – Azure classic rozhraní příkazového řádku
+titlesuffix: Azure Load Balancer
 description: Zjistěte, jak vytvořit interní nástroj pro vyrovnávání zatížení pomocí Azure Classic CLI v modelu nasazení Classic.
 services: load-balancer
 documentationcenter: na
@@ -7,16 +8,17 @@ author: genlin
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
+ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c7659937599d778d9dc945254fcfff52840622dc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 991e6554df62591dea5c126f8ea82704373d6ffd
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415062"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084919"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>Začínáme vytvářet interní nástroj pro vyrovnávání zatížení pomocí Azure Classic CLI
 

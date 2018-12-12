@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: d34671d4197735ea2c30aafc8fd01a5893427ff3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9e27df857d560abdf5b6a54272bb022b6ed466ee
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226838"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53079360"
 ---
 # <a name="how-to-assign-users-to-applications"></a>Přiřazení uživatelů k aplikacím
 
@@ -33,15 +33,15 @@ Pro uživatele pro přístup k aplikaci je třeba nejprve je přiřadit k ní n�
 
 2.  Správce [přiřadí skupinu](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) , že uživatel je členem skupiny k aplikaci, včetně:
 
-  * Skupiny, které se synchronizovaly z místní
+    * Skupiny, které se synchronizovaly z místní
 
-  * Skupiny zabezpečení statické se vytvářejí v cloudu
+    * Skupiny zabezpečení statické se vytvářejí v cloudu
 
-  * A [dynamické zabezpečení skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) se vytvářejí v cloudu
+    * A [dynamické zabezpečení skupiny](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal) se vytvářejí v cloudu
 
-  * Skupiny Office 365 se vytvářejí v cloudu
+    * Skupiny Office 365 se vytvářejí v cloudu
 
-  * [Všichni uživatelé](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) skupiny
+    * [Všichni uživatelé](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups) skupiny
 
 3.  Správce povolí [samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) umožňující uživateli přidat aplikace pomocí [přístupového panelu aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **přidat aplikaci** funkce **bez schválení**
 
