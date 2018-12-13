@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 12/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: d16f05c208e737f7c0095fc95c4272fe216f7a34
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 36cdb8a84c7ec7e05917be1144ae008f90cad03a
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094929"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321131"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -35,7 +35,7 @@ Nelze změnit umístění prostředku. Přesunutí prostředku pouze přesune do
 
 ## <a name="checklist-before-moving-resources"></a>Kontrolní seznam před přesunutím prostředků
 
-Před přesunutím prostředku je nutné provést několik důležitých kroků. Ověřením těchto podmínek se můžete vyhnout chybám.
+Existuje několik důležitých kroků provedete před přesunutím prostředku je. Ověřením těchto podmínek se můžete vyhnout chybám.
 
 1. Zdrojové a cílové předplatné musí existovat v rámci stejného [tenanta Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md). Pokud chcete zkontrolovat, že oba odběry obsahují stejné ID tenanta, pomocí Azure Powershellu nebo rozhraní příkazového řádku Azure.
 
@@ -58,7 +58,7 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../billing/billing-subscription-transfer.md)
   * [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-1. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, zobrazí chybová zpráva oznamující, že **předplatné není zaregistrované pro typ prostředku**. K problému může dojít, pokud přesouváte prostředek do nového předplatného, ale toto předplatné nebylo pro příslušný typ prostředku nikdy použito.
+1. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, zobrazí chybová zpráva oznamující, že **předplatné není zaregistrované pro typ prostředku**. Tato chyba může zobrazit při přesunutí prostředku do nového předplatného, ale, že předplatné nikdy použito příslušný typ prostředku.
 
   Pokud používáte PowerShell, použijte následující příkazy získat stav registrace:
 
@@ -93,7 +93,7 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
 
 1. Před přesunutím prostředků, zkontrolujte kvóty předplatného pro předplatné, které přesouváte prostředky, které. Přesunutí prostředků znamená, že předplatné překročí maximum, budete muset zkontrolovat, jestli můžete požádat o zvýšení kvóty. Seznam omezení a tom, jak požádat o zvýšení najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).
 
-1. Pokud je to možné, přerušení velké přesune do operací přesunu samostatných. Resource Manager okamžitě nezdaří pokusy o přesunutí více než 800 prostředků v rámci jedné operace. Ale přesun prostředků menší než 800 selhat také podle vypršení časového limitu.
+1. Pokud je to možné, přerušení velké přesune do operací přesunu samostatných. Resource Manager okamžitě vrátí chybu, pokud existuje více než 800 prostředky v rámci jedné operace. Ale přesun prostředků menší než 800 selhat také podle vypršení časového limitu.
 
 1. Služba musí umožňovat operaci přesouvání prostředků. Chcete-li zjistit, zda bude přesunutí úspěšné, [ověřit vaši žádost o přesunutí](#validate-move). Viz níže uvedené části v tomto článku [služby umožňují přesunutí prostředků](#services-that-can-be-moved) a které [není služby umožňují přesunutí prostředků](#services-that-cannot-be-moved).
 
@@ -130,7 +130,7 @@ S hlavní část žádosti:
 
 ```json
 {
- "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "resources": ["<resource-id-1>", "<resource-id-2>"],
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
@@ -169,7 +169,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Analysis Services
 * API Management
 * Aplikace služby App Service (webové aplikace) – viz [omezení App Service](#app-service-limitations)
-* Certifikáty App Service
+* Certifikáty služby App Service – viz [omezení služby App Service Certificate](#app-service-certificate-limitations)
 * Application Insights
 * Automation
 * Azure Active Directory B2C
@@ -226,7 +226,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Úložiště – účty úložiště v různých oblastech se nedají přesouvat v rámci jedné operace. Místo toho použijte samostatné operace pro každou oblast.
 * Úložiště (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Stream Analytics – Stream Analytics úlohy nelze přesunout, při spuštění ve stavu.
-* Server služby SQL Database – databáze a serveru se musí nacházet ve stejné skupině prostředků. Přesunete-li SQL server, přesunou také všechny jeho databáze. Toto chování platí pro databáze Azure SQL Database a Azure SQL Data Warehouse.
+* Server služby SQL Database – databáze a serveru musí být ve stejné skupině prostředků. Přesunete-li SQL server, přesunou také všechny jeho databáze. Toto chování platí pro databáze Azure SQL Database a Azure SQL Data Warehouse.
 * Time Series Insights
 * Traffic Manager
 * Virtual Machines – pro virtuální počítače pomocí spravované disky, najdete v článku [omezení virtuálních počítačů](#virtual-machines-limitations)
@@ -312,15 +312,7 @@ Tato podpora znamená, že můžete také přesunout:
 Tady jsou omezení, které se zatím nepodporují:
 
 * Virtuální počítače pomocí certifikátu uloženého ve službě Key Vault můžete přesunout do nové skupiny prostředků ve stejném předplatném, ale ne napříč předplatnými.
-* Virtuální počítače nakonfigurované s Azure Backup. Používá následující alternativní řešení Chcete-li přesunout tyto virtuální počítače
-  * Vyhledejte umístění virtuálního počítače.
-  * Vyhledejte skupinu prostředků pomocí následující vzor pro pojmenování: `AzureBackupRG_<location of your VM>_1` například AzureBackupRG_westus2_1
-  * Pokud na webu Azure portal, pak zaškrtněte "Zobrazit skryté typy"
-  * Pokud v prostředí PowerShell, použijte `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` rutiny
-  * Pokud v rozhraní příkazového řádku, použijte `az resource list -g AzureBackupRG_<location of your VM>_1`
-  * Nyní s typem najděte prostředek `Microsoft.Compute/restorePointCollections` , který má vzor pro pojmenování `AzureBackup_<name of your VM that you're trying to move>_###########`
-  * Odstranit tento prostředek
-  * Po odstranění je dokončeno, bude se moct přesunout virtuální počítač
+* Pokud virtuální počítač je nakonfigurovaný pro zálohování, přečtěte si téma [omezení Recovery Services](#recovery-services-limitations).
 * Škálovací sady virtuálních počítačů pomocí nástroje pro vyrovnávání zatížení standardní SKU nebo standardní veřejnou IP Adresou skladové položky nelze přesunout.
 * Virtuální počítače vytvořené z Marketplace prostředky s plány připojené se nedají přesouvat mezi skupinami prostředků nebo předplatných. Zrušení zřízení virtuálního počítače v rámci aktuálního předplatného a znovu nasadit v rámci nového předplatného.
 
@@ -334,19 +326,17 @@ Virtuální síť nelze přesunout do jiného předplatného, pokud virtuální 
 
 ## <a name="app-service-limitations"></a>Omezení služby App Service
 
-Omezení pro přesun prostředků App Service se liší v závislosti na tom, jestli přesouváte prostředky v rámci předplatného nebo do nového předplatného.
-
-Omezení popsaná v této části platí pro odeslané certifikáty, ne certifikáty App Service. Certifikáty App Service můžete přesunout do nové skupiny prostředků nebo předplatné bez omezení. Pokud máte více webových aplikací, které používají stejný certifikát App Service, nejprve přesunout všechny webové aplikace, přesuňte tento certifikát.
+Omezení pro přesun prostředků App Service se liší v závislosti na tom, jestli přesouváte prostředky v rámci předplatného nebo do nového předplatného. Pokud vaše webová aplikace používá certifikát App Service, přečtěte si téma [omezení služby App Service Certificate](#app-service-certificate-limitations)
 
 ### <a name="moving-within-the-same-subscription"></a>Přesouvat v rámci stejného předplatného
 
-Při přesunu webovou aplikaci _v rámci stejného předplatného_, nelze přesunout odeslané certifikáty SSL. Ale webové aplikace můžete přesunout do nové skupiny prostředků bez přesouvání jeho nahraného certifikátu SSL a funkce vaší aplikace SSL stále funguje.
+Při přesunu webovou aplikaci _v rámci stejného předplatného_, certifikátů SSL třetí strany se nedá přesunout. Však webové aplikace můžete přesunout do nové skupiny prostředků bez přesouvání svůj certifikát třetí strany a funkce vaší aplikace SSL stále funguje.
 
 Pokud chcete přesunout certifikát SSL s webovou aplikací, postupujte podle těchto kroků:
 
-1. Odstranění se nahraný certifikát z webové aplikace.
+1. Odstranit certifikát třetí strany z webové aplikace, ale ponechat si kopii certifikátu
 2. Přesun webové aplikace.
-3. Nahrajte certifikát do přesunutý webové aplikace.
+3. Nahrajte certifikát třetí strany do přesunutý webové aplikace.
 
 ### <a name="moving-across-subscriptions"></a>Přesun mezi předplatnými
 
@@ -359,6 +349,10 @@ Při přesunu webovou aplikaci _napříč předplatnými_, platí následující
     - Prostředí App Service
 - Všechny prostředky App Service ve skupině prostředků daly přesunout najednou.
 - Prostředky App Service lze pouze přesunout ze skupiny prostředků, ve kterém byly původně vytvořeny. Pokud prostředek služby App Service je už v jeho původní skupiny prostředků, je nutné je přesunout zpět do této skupiny původní prostředek nejprve a pak ji lze přesunout mezi předplatnými.
+
+## <a name="app-service-certificate-limitations"></a>App Service Certificate omezení
+
+Certifikát App Service můžete přesunout do nové skupiny prostředků nebo předplatného. Pokud certifikát App Service je svázaný s webovou aplikací, je nutné provést některé kroky před přesunutím prostředků do nového předplatného. Odstraňte vazbu SSL a privátní certifikát z webové aplikace před přesunutím prostředků. App Service Certificate se nemusí odstranit, stačí privátního certifikátu ve webové aplikaci.
 
 ## <a name="classic-deployment-limitations"></a>Omezeními klasického nasazení
 
@@ -382,7 +376,7 @@ Přesouvání klasických prostředků do nové skupiny prostředků v rámci st
 Při přesouvání prostředků do nového předplatného, platí následující omezení:
 
 * V rámci jedné operace musí přesunout všechny klasické prostředky v předplatném.
-* Cílové předplatné nesmí obsahovat žádné klasické prostředky.
+* Cílové předplatné nesmí mít ostatní klasické prostředky.
 * Přesunutí je možné jenom požádat prostřednictvím samostatných rozhraní REST API pro klasické přesuny. Standardní příkazy Resource Manager přesunout nefungují při přesouvání klasických prostředků do nového předplatného.
 
 Klasické prostředky přesunout do nového předplatného, pomocí operace REST, které jsou specifické pro klasické prostředky. Použití REST, proveďte následující kroky:
@@ -448,18 +442,21 @@ Operace může běžet několik minut.
 
 Chcete-li přesunout trezor služby Recovery Services, musíte se zaregistrovat ve verzi private preview. Vyzkoušejte si to, zapisovat do AskAzureBackupTeam@microsoft.com.
 
-Přesunutí není povolená pro úložiště, sítě nebo výpočetní prostředky, použít ke konfiguraci zotavení po havárii pomocí Azure Site Recovery.
+V současné době můžete přesunout jeden trezor služby Recovery Services na oblast, najednou. Nelze přesunout trezorů, které se zálohování souborů Azure, Azure File Sync nebo SQL na virtuálních počítačích IaaS. 
 
-Předpokládejme například, jste nastavili replikaci vašich místních počítačů do účtu úložiště (Storage1) a chcete chráněný počítač aktivován po převzetí služeb při selhání do Azure jako virtuální počítač (VM1) připojené k virtuální síti (Network1). Některé z těchto prostředků Azure - Storage1 VM1 a Network1 - nelze přesunout, mezi skupinami prostředků v rámci stejného předplatného nebo napříč předplatnými.
+Pokud virtuální počítač čárka nepohybuje v trezoru, aktuálním bodům obnovení virtuálního počítače zůstat v trezoru, dokud nevyprší jejich platnost. Jestli se virtuální počítač přesunul v trezoru, nebo Ne, můžete obnovit virtuální počítač z historie zálohování v trezoru.
 
-Přesunutí virtuálního počítače zaregistrované v **Azure backup** mezi skupinami prostředků:
- 1. Dočasně zastavit zálohování a uchování zálohovaných dat
- 2. Přesuňte virtuální počítač na cílovou skupinu prostředků
- 3. Znovu nastavit ochranu v rámci stejné/nový trezor
+Trezor služby Recovery Services nepodporuje záloh mezi předplatnými. Pokud přesunete trezor pomocí zálohování dat virtuálních počítačů mezi předplatnými, musíte přesunout virtuální počítače do stejného předplatného a pokračovat v zálohování pomocí stejné cílová skupina prostředků.
 
-Uživatelé mohou obnovit z bodů obnovení k dispozici vytvořené před přesunutím.
+Zásady zálohování, které jsou definovány pro trezor uchovávají po přesunutí trezoru. Monitorování a vytváření sestav musí být nastavit znovu trezoru po přesunutí.
 
-Pokud se uživatel přesune zálohovaných virtuálních počítačů mezi předplatnými, kroky 1 a 2 zůstávají stejné. V kroku 3 uživatel musí pro ochranu virtuálního počítače v rámci nové úložiště k dispozici / vytvořený v cílovém předplatném. Trezor služby Recovery Services nepodporuje záloh mezi předplatnými.
+K přesunutí virtuálního počítače do nového předplatného bez přesouvání do trezoru služby Recovery Services:
+
+ 1. Dočasně zastavit zálohování
+ 2. Přesunout virtuální počítače do nového předplatného
+ 3. Znovu nastavit ochranu v části v tomto předplatném nový trezor
+
+Přesunutí není povolená pro úložiště, sítě nebo výpočetní prostředky, použít ke konfiguraci zotavení po havárii pomocí Azure Site Recovery. Předpokládejme například, jste nastavili replikaci vašich místních počítačů do účtu úložiště (Storage1) a chcete chráněný počítač aktivován po převzetí služeb při selhání do Azure jako virtuální počítač (VM1) připojené k virtuální síti (Network1). Některé z těchto prostředků Azure - Storage1 VM1 a Network1 - nelze přesunout, mezi skupinami prostředků v rámci stejného předplatného nebo napříč předplatnými.
 
 ## <a name="hdinsight-limitations"></a>Omezení HDInsight
 
@@ -469,7 +466,7 @@ Při přesunu do nového předplatného clusteru služby HDInsight, nejprve pře
 
 ## <a name="search-limitations"></a>Omezení vyhledávání
 
-Nelze přesunout více hledat prostředky, které jsou umístěny v různých oblastech všechny najednou.
+Několik hledat prostředky nejde přesunout všechno najednou v různých oblastech.
 V takovém případě budete muset přesunout samostatně.
 
 ## <a name="lb-limitations"></a> Omezení nástroje pro vyrovnávání zatížení
@@ -484,7 +481,7 @@ Standardní veřejné IP adresy skladové položky nelze přesunout.
 
 ## <a name="use-portal"></a>Použít portál
 
-Přesunout prostředky, vyberte skupinu prostředků obsahující prostředky a pak vyberte **přesunout** tlačítko.
+Přesunout prostředky, vyberte skupinu prostředků pomocí těchto prostředků a pak vyberte **přesunout** tlačítko.
 
 ![přesunutí prostředků](./media/resource-group-move-resources/select-move.png)
 
@@ -504,7 +501,7 @@ Po jeho dokončení budete informováni o výsledek.
 
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
 
-Chcete-li stávající prostředky přesunout do jiné skupiny prostředků nebo předplatného, použijte [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) příkazu. Následující příklad ukazuje, jak přesunout více prostředků do nové skupiny prostředků.
+Chcete-li stávající prostředky přesunout do jiné skupiny prostředků nebo předplatného, použijte [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) příkazu. Následující příklad ukazuje, jak několika prostředky přesunout do nové skupiny prostředků.
 
 ```azurepowershell-interactive
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
@@ -516,7 +513,7 @@ Chcete-li přesunout do nového předplatného, zahrnout hodnotu pro `Destinatio
 
 ## <a name="use-azure-cli"></a>Použití Azure CLI
 
-Chcete-li stávající prostředky přesunout do jiné skupiny prostředků nebo předplatného, použijte [přesunutí prostředku az](/cli/azure/resource?view=azure-cli-latest#az-resource-move) příkaz. Zadejte ID prostředků pro přesun prostředků. Následující příklad ukazuje, jak přesunout více prostředků do nové skupiny prostředků. V `--ids` parametr, zadejte místo oddělený seznam ID pro přesun prostředků.
+Chcete-li stávající prostředky přesunout do jiné skupiny prostředků nebo předplatného, použijte [přesunutí prostředku az](/cli/azure/resource?view=azure-cli-latest#az-resource-move) příkaz. Zadejte ID prostředků pro přesun prostředků. Následující příklad ukazuje, jak několika prostředky přesunout do nové skupiny prostředků. V `--ids` parametr, zadejte místo oddělený seznam ID pro přesun prostředků.
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)

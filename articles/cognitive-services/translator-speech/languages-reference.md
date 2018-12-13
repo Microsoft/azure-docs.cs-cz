@@ -10,20 +10,20 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: b7005811898df9132be6bc199e26f6c6dc358618
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: aa0af6f0c075dc555757a9c716a1d0569197287d
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345199"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256386"
 ---
-# <a name="translator-speech-api-languages"></a>Translator Speech API: jazyků
+# <a name="translator-speech-api-languages"></a>Translator Speech API: Jazyky
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 Translator Speech neustále rozšiřuje seznam jazyků podporovaných jeho služeb. Zjistit skupinu jazyků, které jsou aktuálně k dispozici pro použití ve službě Translator Speech pomocí tohoto rozhraní API.
 
-Ukázky kódu pro demonstraci použití rozhraní API za účelem získání dostupné jazyky jsou k dispozici [webu Microsoft Translator Github](https://github.com/MicrosoftTranslator).
+Ukázky kódu pro demonstraci použití rozhraní API za účelem získání dostupné jazyky jsou k dispozici [webu Microsoft Translator GitHub](https://github.com/MicrosoftTranslator).
 
 ## <a name="implementation-notes"></a>Poznámky k implementaci
 
@@ -33,9 +33,9 @@ ZÍSKAT /languages
 
 Klient použije `scope` parametr k definování, který nastaví jazyky ho zajímají dotazu.
 
-* **Převod řeči na text:** použít parametr dotazu `scope=speech` načíst skupinu jazyků, které jsou k dispozici pro přepisy řeči na text.
-* **Překlad textu:** použít parametr dotazu `scope=text` načíst sadu jazyků můžete přeložit text přepisu.
-* **Převod textu na řeč:** použít parametr dotazu `scope=tts` načíst sadu jazyků a hlasy tak, aby odpovídaly přeloženého textu zpátky na řeč k dispozici.
+* **Převod řeči na text:** Použijte parametr dotazu `scope=speech` načíst skupinu jazyků, které jsou k dispozici pro přepisy řeči na text.
+* **Překlad textu:** Použijte parametr dotazu `scope=text` načíst sadu jazyků můžete přeložit text přepisu.
+* **Převod textu na řeč:**  Použijte parametr dotazu `scope=tts` načíst sadu jazyků a hlasy tak, aby odpovídaly přeloženého textu zpátky na řeč k dispozici.
 
 Klienta můžete současně načíst více sad zadáním čárkou oddělený seznam voleb. Například, `scope=speech,text,tts`.
 
@@ -63,7 +63,7 @@ Zadaná hodnota s každou vlastnost je následujícím způsobem.
 
 Hodnota přidružená vlastnost speech to text `speech`, je slovník (klíče, hodnota) dvojice. Každý klíč identifikuje podporován pro převod řeči na text. Klíč je identifikátor tohoto klienta předá do rozhraní API. Hodnotu přiřazenou klíči je objekt s následujícími vlastnostmi:
 
-* `name`: Zobrazí název jazyka.
+* `name`: Zobrazovaný název jazyka.
 * `language`: Značka jazyka přidruženého napsané jazyka. Níže naleznete v tématu "Transakce Text".
 Příkladem je:
 
@@ -79,7 +79,7 @@ Příkladem je:
 
 Hodnota přidružená k `text` vlastnost je také slovníku, kde každý klíč identifikuje jazyk pro překlad textu podporovány. Hodnotu přiřazenou klíči popisuje jazyk:
 
-* `name`: Zobrazí název jazyka.
+* `name`: Zobrazovaný název jazyka.
 * `dir`: Text, který je `rtl` pro jazyky zprava doleva nebo `ltr` jazyků zleva doprava.
 
 Příkladem je:
@@ -96,12 +96,12 @@ Příkladem je:
 
 Hodnota přidružená vlastnost převod textu na řeč, převodu textu na řeč, je také slovník, ve kterém každý klíč identifikuje podporované hlasový vstup. Atributy objektu hlasové jsou:
 
-* `displayName`: Zobrazí název hlasu.
-* `gender`: Pohlaví hlasové (kolík nebo Ženský).
+* `displayName`: Zobrazovaný název hlasu.
+* `gender`: Pohlaví hlasu (kolík nebo Ženský).
 * `locale`: Značka jazyka hlasu podznačku primárního jazyka a oblasti podznačku.
 * `language`: Značka jazyka přidruženého napsané jazyka.
-* `languageName`: Zobrazí název jazyka.
-* `regionName`: Zobrazí název oblasti pro tento jazyk.
+* `languageName`: Zobrazovaný název jazyka.
+* `regionName`: Zobrazovaný název oblasti pro tento jazyk.
 
 Příkladem je:
 

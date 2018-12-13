@@ -1,7 +1,7 @@
 ---
 title: Koncový bod oblasti a Node.js
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Prostřednictvím kódu programu publikovat najít oblast s klíče koncového bodu a aplikace ID LUIS.
+description: S využitím Node.js, publikovat najít oblast s klíče koncového bodu a aplikace ID LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 3785608da690da4cd1c10fb9305df7f7a79dd4dd
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 6bcea43fb21cae6f000f3522b498dfc6c0f6d9a7
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017487"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166213"
 ---
 # <a name="find-endpoint-region-with-nodejs"></a>Najít oblast koncový bod s využitím Node.js
 Pokud máte LUIS ID aplikace a služby LUIS ID předplatného, můžete najít jaké oblasti se má použít pro koncový bod dotazy.
 
 > [!NOTE] 
-> Kompletní řešení Node.js je dostupné v [úložišti **LUIS-Samples** na GitHubu](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/nodejs/).
+> Kompletní řešení Node.js je k dispozici [ **LUIS-Samples** úložiště GitHub](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/nodejs/).
 
 ## <a name="luis-endpoint-query-strategy"></a>Strategie dotazu koncový bod služby LUIS
 Každý dotaz LUIS koncového bodu vyžaduje:

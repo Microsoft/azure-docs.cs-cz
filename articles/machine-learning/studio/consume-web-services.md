@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: 804f8211-9437-4982-98e9-ca841b7edf56
 ms.service: machine-learning
@@ -16,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
-ms.openlocfilehash: 7f1950afc8e84f0bfeba7d51aa68ee126db38e2e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: d7a48dcb56d2bed0e84714087bb9fda3fae65fc1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075127"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273778"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Způsob využívání webové služby Azure Machine Learning Studio
 
@@ -33,7 +32,7 @@ Můžete najít další informace o tom, jak vytvořit a nasadit služby Machine
 * Podrobnosti o tom, jak nasadit webovou službu, najdete v článku [nasazení služby Machine Learning Web](publish-a-machine-learning-web-service.md).
 * Další informace o službě Machine Learning, přejděte [centru dokumentace Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="overview"></a>Přehled
 Se službou Azure Machine Learning Web externí aplikace komunikuje s hodnoticí modelem Machine Learning pracovních postupů v reálném čase. Volání služby Web Microsoft Machine Learning vrací do externí aplikace predikované výsledky. Volání služby Machine Learning Web, předáním klíče rozhraní API, který je vytvořen při nasazování predikcí. Služba Web Microsoft Machine Learning je založená na REST, možnost Oblíbené architektuře programátorských projektů na webu.
@@ -102,13 +101,13 @@ Připojení ke službě Machine Learning Web, **Microsoft.AspNet.WebApi.Client**
 
 **Nainstalovat Microsoft.AspNet.WebApi.Client NuGet v sadě Visual Studio**
 
-1. Publikování datové sady ke stažení z UCI: Třída dataset dospělé 2 webové služby.
+1. Publikování datové sady ke stažení z UCI: Třída dataset adult 2 webové služby.
 2. Klikněte na **Nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
 3. Zvolte **Install-Package Microsoft.AspNet.WebApi.Client**.
 
 **Ke spuštění ukázky kódu**
 
-1. Publikování "Příklad 1: stáhnout datovou sadu z UCI: Třída dataset Adult 2" experiment, součástí kolekce ukázky Machine learningu.
+1. Publikování "Ukázkový 1: Stáhněte si datové sady z UCI: Třída dataset adult 2"experiment, součástí kolekce ukázky Machine learningu.
 2. Přiřaďte apiKey klíčem z webové služby. Zobrazit **získání autorizačního klíče Azure Machine Learning** výše.
 3. Přiřaďte identifikátorem URI služby s identifikátorem URI žádosti.
 
@@ -204,7 +203,7 @@ Pro připojení ke službě Machine Learning Web, použijte **urllib2** knihovny
 
 **Ke spuštění ukázky kódu**
 
-1. Nasazení "Příklad 1: stáhnout datovou sadu z UCI: Třída dataset Adult 2" experiment, součástí kolekce ukázky Machine learningu.
+1. Nasazení "Ukázkový 1: Stáhněte si datové sady z UCI: Třída dataset adult 2"experiment, součástí kolekce ukázky Machine learningu.
 2. Přiřaďte apiKey klíčem z webové služby. Zobrazit **získání autorizačního klíče Azure Machine Learning** v začátku části tohoto článku.
 3. Přiřaďte identifikátorem URI služby s identifikátorem URI žádosti.
 

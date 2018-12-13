@@ -1,25 +1,18 @@
 ---
-title: Rychlý start – rozhraní REST API služby Azure SignalR | Microsoft Docs
+title: Rychlý start – rozhraní REST API služby Azure SignalR
 description: Rychlý start pro použití rozhraní REST API služby Azure SignalR.
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
-ms.assetid: ''
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET
-ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 36fb87d3255149c041c4288d13c54eaff8425e06
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.openlocfilehash: fdbdbe77c6541d62acef0d23d599d9687f5301b1
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024335"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251857"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Rychlý start: Vysílání zpráv v reálném čase z konzoly aplikace
 
@@ -30,17 +23,15 @@ V tomto rychlém startu se dozvíte, jak odesílat zprávy z aplikace příkazov
 ## <a name="prerequisites"></a>Požadavky
 
 Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
+
 * [Sada .NET Core SDK](https://www.microsoft.com/net/download/core)
 * Textový editor nebo editor kódu podle vašeho výběru.
 
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí svého účtu Azure.
-
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
@@ -68,6 +59,7 @@ Můžete také zjistit, jak vygenerovat přístupový token k ověření pomocí
 ### <a name="build-the-executable-file"></a>Vytvoření spustitelného souboru
 
 Jako příklad použijeme macOS osx.10.13-x64. K dispozici jsou [reference](https://docs.microsoft.com/dotnet/core/rid-catalog) k vytváření na jiných platformách.
+
 ```bash
 cd AzureSignalR-samples/samples/Serverless/
 
@@ -108,7 +100,7 @@ V kořenovém adresáři vzorku můžete spustit `dotnet user-secrets set Azure:
 
 ## <a name="usage"></a>Využití
 
-Po spuštění serveru pošlete zprávu s použitím příkazu
+Po spuštění serveru, použijte příkaz k odeslání zprávy:
 
 ```
 send user <User Id>
@@ -121,8 +113,11 @@ broadcast
 Můžete spustit více klientů s různými názvy.
 
 ## <a name="usage"> </a>Integrace se službami třetích stran
+
 Služba Azure SignalR umožňuje v systému integraci služeb třetích stran.
-### <a name="usage"> </a>Definice technických specifikací
+
+### <a name="definition-of-technical-specifications"></a>Definice technických specifikací
+
 Následující tabulka uvádí všechny podporované verze rozhraní REST API k datu vydání tohoto článku. U každé verze také najdete definiční soubor.
 
 Verze | Stav rozhraní API | Dveře | Specifikace
@@ -144,6 +139,7 @@ Odesílání některým uživatelům | :heavy_check_mark: (Zastaralé) | `N / A`
 
 <a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Všesměrové vysílání pro všechny
+
 Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
@@ -151,6 +147,7 @@ Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 
 <a name="broadcast-group"> </a>
 ### <a name="broadcast-to-a-group"></a>Všesměrové vysílání do skupiny
+
 Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
@@ -158,6 +155,7 @@ Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 
 <a name="send-user"> </a>
 ### <a name="sending-to-specific-users"></a>Odesílání konkrétním uživatelům
+
 Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 --- | --- | --- | ---
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
@@ -165,12 +163,14 @@ Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku | Text požadavku
 
 <a name="add-user-to-group"> </a>
 ### <a name="adding-a-user-to-a-group"></a>Přidání uživatele do skupiny
+
 Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku
 --- | --- | ---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
 <a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>Odebrání uživatele ze skupiny
+
 Verze | Metoda HTTP v rozhraní API | Adresa URL požadavku
 --- | --- | ---
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`

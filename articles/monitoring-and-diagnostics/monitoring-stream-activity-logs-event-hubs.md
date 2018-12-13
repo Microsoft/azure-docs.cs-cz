@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 41965c4a498cfa4c1f0dfefaf7615e43083eb94c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: c8a932ac06b58a8e683e326f082a3a2c038dba66
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51011829"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273698"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream protokolů aktivit Azure do služby Event Hubs
 Můžete Streamovat [protokolu aktivit Azure](monitoring-overview-activity-logs.md) téměř v reálném čase pro libovolné aplikace buď:
@@ -24,8 +24,8 @@ Můžete Streamovat [protokolu aktivit Azure](monitoring-overview-activity-logs.
 ## <a name="what-you-can-do-with-the-activity-log-and-event-hubs"></a>Co můžete dělat s protokolu aktivit a Event Hubs
 Tady jsou dva způsoby, jak můžete použít funkci streamování pro protokol aktivit:
 
-* **Stream protokolování a telemetrie systémům třetích stran**: v průběhu času streamování služby Azure Event Hubs se stanou mechanismus kanálem váš protokol aktivit do sady Siem třetích stran a protokolu analytická řešení.
-* **Vytvořit vlastní telemetrii a protokolování platformy**: Pokud už máte platformu vlastními silami sestavených telemetrická data nebo přemýšlí o vytvoříte, vysoce škálovatelné publikování a odběru povaha služby Event Hubs umožňuje flexibilně ingestování protokolu aktivit. Další informace najdete v tématu [Dan Rosanova video o používání služby Event Hubs v globálním měřítku telemetrie platformě](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+* **Stream protokolování a telemetrie systémům třetích stran**: V průběhu času streamování služby Azure Event Hubs se stanou mechanismus kanálem váš protokol aktivit do sady Siem třetích stran a protokolu analytická řešení.
+* **Vytvářejte vlastní telemetrii a protokolování platformy**: Pokud už máte platformu vlastními silami sestavených telemetrická data nebo přemýšlí o vytvoříte, vysoce škálovatelné publikování a odběru povaha služby Event Hubs umožňuje flexibilně ingestování protokolu aktivit. Další informace najdete v tématu [Dan Rosanova video o používání služby Event Hubs v globálním měřítku telemetrie platformě](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
 ## <a name="enable-streaming-of-the-activity-log"></a>Povolení streamování protokolu aktivit
 Můžete povolit streamování protokolu aktivit programově nebo prostřednictvím portálu. V obou případech můžete vybrat obor názvů služby Event Hubs a zásadu sdíleného přístup pro tento obor názvů. Centrum událostí s názvem insights protokoly operationallogs se vytvoří v tomto oboru názvů při výskytu první nové události protokolu aktivit. 
@@ -101,5 +101,5 @@ Schéma pro protokol aktivit je k dispozici v [monitorovat aktivitu předplatné
 ## <a name="next-steps"></a>Další postup
 * [Archivace protokolu aktivit do účtu úložiště](monitoring-archive-activity-log.md)
 * [Přečtěte si přehled protokolu aktivit Azure](monitoring-overview-activity-logs.md)
-* [Nastavte si výstrahy na základě události protokolu aktivit](monitor-alerts-unified-log-webhook.md)
+* [Nastavte si výstrahy na základě události protokolu aktivit](../azure-monitor/platform/alerts-log-webhook.md)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 208e021dd9025ffff92ed46749346cfb53d0b080
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8e152bc96293d5e6e801fd23657d0de303093eb6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002459"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166604"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor řešení – nejčastější dotazy
 
@@ -147,7 +147,7 @@ Směrování nemusí odpovídat traceroute v jedné nebo více následující sc
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>Toto řešení ukazuje 100 % dojít ke ztrátě, ale jsou dostupné možnosti připojení mezi zdrojem a cílem
 K tomu může dojít, pokud zprostředkující brány (síťová brána firewall nebo Azure NSG) nebo bránu firewall hostitele blokuje komunikaci mezi agentem zdroj a cíl přes port monitorování nástroj NPM (ve výchozím nastavení port je 8084, není-li Zákazník byl změněn to).
 
-* Pokud chcete ověřit, že hostitelské brány firewall neblokuje komunikaci na požadovaný port, zobrazit stav zdrojových a cílových uzlů z následující zobrazení: Network Performance Monitor -> Konfigurace -> uzlů. 
+* Pokud chcete ověřit, že hostitelské brány firewall neblokuje komunikaci na požadovaný port, zobrazte stav zdrojových a cílových uzlů z následující zobrazení: Network Performance Monitor -> Konfigurace -> uzlů. 
   Pokud jsou v pořádku, zobrazení pokynů a provést opravné akce. Pokud jsou uzly v dobrém stavu, přejděte k kroku b. níže.
 * Ověřte, že k zprostředkující síťová brána firewall nebo Azure NSG neblokuje komunikaci na požadovaný port, můžete pomocí nástroje třetích stran PsPing následujících pokynů:
   * psping nástroj je k dispozici ke stažení [zde](https://technet.microsoft.com/sysinternals/psping.aspx) 
@@ -161,17 +161,8 @@ K tomu může dojít, pokud zprostředkující brány (síťová brána firewall
 Jak síťových cest mezi od A do B se může lišit od síťových cest mezi B do A, může být dodržen různé hodnoty ztrát a latence.
 
 ### <a name="why-are-all-my-expressroute-circuits-and-peering-connections-not-being-discovered"></a>Proč nejsou všechny okruhy ExpressRoute a připojení s partnerským vztahem nemožnost zjistit?
-To může nastat, pokud váš okruh a partnerské vztahy virtuálních sítí se distribuují napříč několika předplatnými. NPM zjišťuje pouze ty ExpressRoute privátní připojení s partnerským vztahem ve kterých se virtuální sítě připojené k ExpressRoute jsou ve stejném předplatném, jako je propojený s pracovním prostorem NPM. Kromě toho NPM zjistí tyto partnerské vztahy Microsoftu v tedy připojených okruh ExpressRoute v rámci stejného předplatného, jako je propojený s pracovním prostorem NPM. To může být vyjasněno z následujícím příkladu:
+NPM teď zjistí okruhy ExpressRoute a partnerské vztahy virtuálních sítí ve všech předplatných, ke kterým má uživatel přístup. Vyberte všechny odběry, kde prostředky Expressroute jsou propojeny a povolte monitorování pro každý zjištěný prostředek. Vyhledá NPM pro objekty připojení při zjištění privátní partnerský vztah, proto Zkontrolujte prosím, jestli je spojené s vaší partnerský vztah virtuální sítě.
 
- Pokud máte 2 virtuálními SÍTĚMI - virtuální síť A v předplatném A a B virtuální sítě v předplatném B, připojené k ExpressRoute v rámci předplatného C. Kromě toho je v předplatném C. Další virtuálními SÍTĚMI C ER má také MS partnerského vztahu v rámci předplatného C. 
-
-Potom
-
-* Pokud NPM pracovní prostor je propojený s předplatným A, pak budete moct monitorovat připojení prostřednictvím ER do virtuální sítě A pouze.
-* Pokud NPM pracovní prostor je propojený s předplatným B, pak budete moct sledovat připojením přes virtuální síť b ER pouze.
-* Pokud NPM pracovní prostor je propojený s předplatným C, pak budete moct monitorovat připojení prostřednictvím ER virtuální sítí C, jakož i MS partnerský vztah.
-
-Mezi předplatnými podpora bude brzy k dispozici. Potom bude možné monitorovat všechny privátní ExpressRoute a připojení s partnerským vztahem Microsoft v různých předplatných, z jednoho pracovního prostoru.
 ### <a name="the-er-monitor-capability-has-a-diagnostic-message-traffic-is-not-passing-through-any-circuit-what-does-that-mean"></a>Funkce monitorování ER má diagnostickou zprávu "Přenos neprochází přes všechny okruh". Co to znamená?
 
 Může být scénář, kde není v pořádku připojení mezi místní a uzlů Azure, ale provoz, nepůjde přes okruh ExpressRoute, byla konfigurována pro sledování nástroj NPM. 

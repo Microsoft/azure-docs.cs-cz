@@ -9,16 +9,15 @@ editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 1e819f819561c5fac722ca6954a10d80a482b5cd
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: cc2fe3c71a3da58a00a3b3c65e709f2e371872e8
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889357"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185201"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -51,15 +50,15 @@ Před zahájením tohoto postupu, shromážděte následující informace.
 
 Z pracovního prostoru Log Analytics:
 
-- Název pracovního prostoru: pracovní prostor, kde budou shromažďovány dat Office 365.
-- Název skupiny prostředků: skupinu prostředků, který obsahuje tento pracovní prostor.
-- ID předplatného Azure: předplatné, které obsahuje tento pracovní prostor.
+- Název pracovního prostoru: Pracovní prostor, kde budou shromažďovány dat Office 365.
+- Název skupiny prostředků: Skupina prostředků, který obsahuje tento pracovní prostor.
+- ID předplatného Azure: Předplatné, které obsahuje tento pracovní prostor.
 
 Z vašeho předplatného Office 365:
 
 - Uživatelské jméno: E-mailovou adresu účtu správce.
-- ID tenanta: Jedinečné ID pro předplatné služeb Office 365.
-- ID klienta: řetězec o 16 znacích, který představuje klienta Office 365.
+- ID klienta: Jedinečné ID pro předplatné služeb Office 365.
+- ID klienta: řetězec o 16 znacích představující klienta Office 365.
 - Tajný kód klienta: Zašifrovaný řetězec potřebné pro ověřování.
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Vytvoření aplikace Office 365 ve službě Azure Active Directory
@@ -519,7 +518,7 @@ Následující vlastnosti jsou společné pro všechny záznamy Office 365.
 | Typ záznamu | Typ operace provést. |
 | ResultStatus | Určuje, zda byla akce (zadaná ve vlastnosti Operation) úspěšná. Možné hodnoty jsou Succeeded, PartiallySucceded nebo Failed. Pro aktivitu správy serveru Exchange, hodnotu buď True nebo False. |
 | UserId | Hlavní název uživatele (hlavní název uživatele) uživatele, který provedl akci, jejímž výsledkem bylo zaprotokolování záznamu například my_name@my_domain_name. Všimněte si, že záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM) jsou zahrnuté také. | 
-| Vlastnosti userkey jedná | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
+| UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti ID uživatele.  Například tato vlastnost naplní jedinečné ID účtu služby passport (PUID) pro události prováděné uživateli na Sharepointu, Onedrivu pro firmy a serveru Exchange. Tato vlastnost může také zadejte stejnou hodnotu jako vlastnost ID uživatele pro události, ke kterým dochází v jiných službách a akcích prováděné systémovými účty|
 | UserType | Typ uživatele, který provedl operaci.<br><br>Správa<br>Aplikace<br>DcAdmin<br>Pravidelné<br>Rezervováno<br>ServicePrincipal<br>Systémový |
 
 

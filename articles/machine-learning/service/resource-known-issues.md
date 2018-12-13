@@ -11,12 +11,12 @@ ms.component: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 45eb24bb8a49fb59ae44533e59b2760940ee5c1a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 4a4f1691162ab9c9fbd5bc8802ecf7ebc4894d74
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097696"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193667"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Známé problémy a řešení problémů služby Azure Machine Learning
  
@@ -24,9 +24,9 @@ Tento článek vám pomůže najít a opravit chyby nebo při použití služby 
 
 ## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
 
-**Chybová zpráva: "PyYAML" nelze odinstalovat.** 
+**Chybová zpráva: Nelze odinstalovat 'PyYAML.** 
 
-Azure Machine Learning SDK pro Python: PyYAML je projekt distutils nainstalované. Proto jsme nelze určit přesné soubory, které patří k němu v případě částečné odinstalovat. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
+Azure Machine Learning pro Python SDK: PyYAML je projektem organizace nainstalovaná distutils. Proto jsme nelze určit přesné soubory, které patří k němu v případě částečné odinstalovat. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
 ```Python 
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```

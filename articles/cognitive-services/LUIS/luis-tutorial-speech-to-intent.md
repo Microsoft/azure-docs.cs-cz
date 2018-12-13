@@ -1,7 +1,7 @@
 ---
 title: Umožňuje využít řeč C# SDK
 titleSuffix: Azure Cognitive Services
-description: Služba Speech umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček NuGet služby Speech, který je již zahrnutý jako odkaz.
+description: Služba Speech umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS.
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 09/10/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 92db504ebfd0f8ad0bef9282bafd62fa9780d5e2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1bc3b9e016bed59f6453c26371cce7bd089568aa
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099303"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53162627"
 ---
 # <a name="integrate-speech-service"></a>Integrace služby Speech
 [Služba Speech](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje pomocí jednoho požadavku přijímat zvuk a vracet objekty JSON s předpověďmi služby LUIS. V tomto článku stáhnete projekt jazyka C# v sadě Visual Studio a použijete ho k vyslovení promluvy do mikrofonu a přijetí informací o předpovědi služby LUIS. V tomto projektu se používá balíček [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) služby Speech, který je již zahrnutý jako odkaz. 
@@ -27,7 +27,7 @@ Pro účely tohoto článku potřebujete bezplatný webový účet [LUIS][LUIS],
 Na webu Azure Portal [vytvořte](luis-how-to-azure-subscription.md#create-luis-endpoint-key) klíč služby **Language Understanding** (LUIS). 
 
 ## <a name="import-human-resources-luis-app"></a>Import aplikace LUIS pro lidské zdroje
-Záměry a promluvy v tomto článku pocházejí z aplikace LUIS pro lidské zdroje, která je k dispozici v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) na GitHubu. Stáhněte soubor [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json), uložte ho s příponou `.json` a [importujte](luis-how-to-start-new-app.md#import-new-app) ho do služby LUIS. 
+Záměry a projevy pro účely tohoto článku pocházejí z aplikace LUIS lidské zdroje, k dispozici [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) úložiště GitHub. Stáhněte soubor [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json), uložte ho s příponou `.json` a [importujte](luis-how-to-start-new-app.md#import-new-app) ho do služby LUIS. 
 
 Tato aplikace obsahuje záměry, entity a promluvy související s doménou lidských zdrojů. Mezi ukázkové promluvy patří:
 

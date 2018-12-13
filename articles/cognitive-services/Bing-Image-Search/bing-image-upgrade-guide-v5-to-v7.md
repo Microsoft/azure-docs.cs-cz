@@ -1,7 +1,7 @@
 ---
-title: Upgrade z Bingu v5 rozhraní API pro vyhledávání na v7 – rozhraní API pro vyhledávání obrázků Bingu obrázků
+title: Upgrade z Bingu v5 rozhraní API pro vyhledávání na v7 obrázku
 titleSuffix: Azure Cognitive Services
-description: Tento průvodce upgradem identifikuje změny mezi verzí 5 a verze 7 rozhraní API Bingu pro vyhledávání obrázků. Tento průvodce vám pomůže identifikovat části aplikace, které je potřeba aktualizovat na použití verze 7.
+description: Tento průvodce upgradem popisuje změny mezi verzí 5 a verze 7 rozhraní API Bingu pro vyhledávání obrázků. Tento průvodce vám pomůže identifikovat části aplikace, které je potřeba aktualizovat na použití verze 7.
 services: cognitive-services
 author: swhite-msft
 manager: cgronlun
@@ -11,14 +11,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 53713a629dbe2682ef393a3a5dbf7845b5075591
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2192e3d2a344a31717c59c813123ed0c807a2841
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296358"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256549"
 ---
-# <a name="image-search-api-upgrade-guide"></a>Průvodce upgradem rozhraní API pro vyhledávání obrázků
+# <a name="bing-image-search-api-upgrade-guide"></a>Průvodce upgradem API pro vyhledávání obrázků Bingu
 
 Tento průvodce upgradem identifikuje změny mezi verzí 5 a verze 7 rozhraní API Bingu pro vyhledávání obrázků. Tento průvodce vám pomůže identifikovat části aplikace, které je potřeba aktualizovat na použití verze 7.
 

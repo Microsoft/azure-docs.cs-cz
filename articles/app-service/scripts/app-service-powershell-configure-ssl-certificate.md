@@ -3,8 +3,8 @@ title: Ukázkový skript Azure PowerShellu – Vazba vlastního certifikátu SSL
 description: Ukázkový skript Azure PowerShellu – Vazba vlastního certifikátu SSL na webovou aplikaci
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: erikre
+author: msangapu
+manager: jeconnoc
 editor: ''
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: 4ab6ad5e8a022c577e9382cde7bdcb3059a18a14
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: e55d22d8a61f6830f09262445fe008a0e8ec5b9d
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39323802"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194092"
 ---
-# <a name="bind-a-custom-ssl-certificate-to-a-web-app"></a>Vazba vlastního certifikátu SSL na webovou aplikaci
+# <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Vazba vlastního certifikátu SSL do webové aplikace pomocí Powershellu
 
 Tento ukázkový skript vytvoří ve službě App Service webovou aplikaci se souvisejícími prostředky a pak k ní vytvoří vazbu certifikátu SSL vlastního názvu domény. 
 
@@ -57,7 +57,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Set-AzureRmWebApp](/powershell/module/azurerm.websites/set-azurermwebapp) | Upraví konfiguraci webové aplikace. |
 | [New-AzureRmWebAppSSLBinding](/powershell/module/azurerm.websites/new-azurermwebappsslbinding) | Vytvoří vazbu certifikátu SSL na webovou aplikaci. |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 

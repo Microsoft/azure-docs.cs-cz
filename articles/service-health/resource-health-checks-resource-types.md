@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/15/2018
 ms.author: stbaron
-ms.openlocfilehash: 73e58653c249639d2c2317badcd9995658009b64
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 3abf0268a7a6f84e5c26efc5643d048216fc2215
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51710983"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53163034"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a kontroly stavu ve službě Azure resource health
 Níže je úplný seznam všech kontrol provést prostřednictvím služby resource health podle typu prostředku.
@@ -144,4 +144,4 @@ Níže je úplný seznam všech kontrol provést prostřednictvím služby resou
 # <a name="next-steps"></a>Další kroky
 -  Zobrazit [Úvod do řídicího panelu služby Azure Service Health](service-health-overview.md) a [Úvod do Azure Resource Health](resource-health-overview.md) bližší informace o nich. 
 -  [Nejčastější dotazy k Azure Resource Health](resource-health-faq.md)
-- Nastavení výstrah, takže se zobrazí oznámení problémů se stavem. Další informace najdete v tématu [konfigurovat výstrahy pro události služby service health](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md). 
+- Nastavení výstrah, takže se zobrazí oznámení problémů se stavem. Další informace najdete v tématu [konfigurovat výstrahy pro události služby service health](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 

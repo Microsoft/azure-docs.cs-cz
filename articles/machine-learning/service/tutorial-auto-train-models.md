@@ -1,5 +1,5 @@
 ---
-title: 'Regresní model kurz: automaticky trénování modelů'
+title: 'Regresní model kurzu: Automaticky trénování modelů'
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak generovat modelu ML pomocí automatizovaných machine learningu.  Azure Machine Learning může automatizovaně za vás provádět předzpracování dat, výběr algoritmů a výběr hyperparameterů. Finální model se potom nasadí pomocí služby Azure Machine Learning.
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 593274cf66e93051b860ed75d77f13537188f345
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 6bbc2d44ab128aec032ead29bf247cd834f932b6
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076028"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53315192"
 ---
-# <a name="tutorial-part-2-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz (část 2): použijte automatické machine learningu vytváří regresní model
+# <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz: Automatizované machine learningu k vytváření regresní model
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [přípravy dat taxislužby NYC pro modelování regrese](tutorial-data-prep.md).
 
@@ -36,11 +36,10 @@ V tomto kurzu se naučíte:
 > * Kontrola výsledků
 > * Registrace nejlepšího modelu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLfree) před tím, než začnete.
+Pokud nemáte předplatné Azure, vytvořte si bezplatný účet, před zahájením. Zkuste [bezplatné nebo placené verzi aplikace služby Azure Machine Learning](http://aka.ms/AMLFree) ještě dnes.
 
 >[!NOTE]
 > Kód v tomto článku byl testován s využitím Azure Machine Learning SDK verze 1.0.0
-
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -599,7 +598,7 @@ from sklearn.model_selection import train_test_split
 x_df = dflow_X.to_pandas_dataframe()
 y_df = dflow_y.to_pandas_dataframe()
 
-x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=123)
+x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=223)
 # flatten y_train to 1d array
 y_train.values.flatten()
 ```
@@ -708,7 +707,7 @@ local_run = experiment.submit(automated_ml_config, show_output=True)
 
 Prozkoumejte výsledky automatického školení s pomůckou Jupyter nebo prozkoumáním historie experimentu.
 
-### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Možnost 1: Přidáte pomůcku Jupyter zobrazíte výsledky
+### <a name="option-1-add-a-jupyter-widget-to-see-results"></a>Možnost 1: Přidat pomůcku Jupyter zobrazíte výsledky
 
 Pokud používáte Poznámkový blok Juypter, pomocí tohoto widgetu Poznámkový blok Jupyter zobrazíte graf a tabulku všechny výsledky.
 
@@ -1101,18 +1100,42 @@ y_predict = fitted_model.predict(x_test.values)
 print(y_predict[:10])
 ```
 
-Porovnání hodnoty předpokládaných nákladů s hodnotami skutečné náklady. Použití `y_test` datového rámce a převést ji do seznamu k porovnání předpovězeným hodnotám. Funkce `mean_squared_error` má dvě pole hodnot a vypočítá průměrné kvadratická chyba mezi nimi. Druhou odmocninu výsledku vrátí chybu v stejné jednotky jako proměnnou y (náklady) a přibližně označuje, jak daleko se vaše predikcí od skutečné hodnoty.
+Vytvoření korelačního diagramu k vizualizaci hodnoty předpokládaných nákladů ve srovnání s hodnotami skutečné náklady. Následující kód používá `distance` funkcí jako osu x a dojít `cost` jako osy y. Prvních 100 předpovídat a skutečné náklady jsou vytvořeny jako samostatné řady, aby bylo možné porovnat odchylku předpokládaných nákladů na jednotlivé hodnoty vzdálenost o jízdách. Zkoumání vykreslení ukazuje, že je téměř lineárním relace vzdálenosti a náklady a náklady na předpokládané hodnoty jsou ve většině případů velmi blízko skutečné náklady hodnoty pro stejnou o jízdách vzdálenost.
+
+```python
+import matplotlib.pyplot as plt
+
+fig = plt.figure(figsize=(14, 10))
+ax1 = fig.add_subplot(111)
+
+distance_vals = [x[4] for x in x_test.values]
+y_actual = y_test.values.flatten().tolist()
+
+ax1.scatter(distance_vals[:100], y_predict[:100], s=18, c='b', marker="s", label='Predicted')
+ax1.scatter(distance_vals[:100], y_actual[:100], s=18, c='r', marker="o", label='Actual')
+
+ax1.set_xlabel('distance (mi)')
+ax1.set_title('Predicted and Actual Cost/Distance')
+ax1.set_ylabel('Cost ($)')
+
+plt.legend(loc='upper left', prop={'size': 12})
+plt.rcParams.update({'font.size': 14})
+plt.show()
+```
+
+![Predikce korelačního diagramu](./media/tutorial-auto-train-models/automl-scatter-plot.png)
+
+Vypočítat `root mean squared error` výsledků. Použití `y_test` datového rámce a převést ji do seznamu k porovnání předpovězeným hodnotám. Funkce `mean_squared_error` má dvě pole hodnot a vypočítá průměrné kvadratická chyba mezi nimi. Druhou odmocninu výsledku vrátí chybu v stejné jednotky jako proměnnou y (náklady) a přibližně označuje, jak daleko se vaše predikcí od skutečné hodnoty.
 
 ```python
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-y_actual = y_test.values.flatten().tolist()
 rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-    4.0317375193408544
+    3.2204936862688798
 
 Spusťte následující kód k výpočtu MAPE (střední absolutní procenta chyb) pomocí úplného `y_actual` a `y_predict` datových sad. Tato metrika vypočítá absolutnímu rozdílu mezi každou předpokládané a skutečnou hodnotou, sečte všechny rozdíly a pak vyjadřuje tento součet jako procentuální podíl celkového počtu skutečnými hodnotami.
 
@@ -1136,10 +1159,10 @@ print(1 - mean_abs_percent_error)
 ```
 
     Model MAPE:
-    0.11334441225861108
-    
+    0.10545153869569586
+
     Model Accuracy:
-    0.8866555877413889
+    0.8945484613043041
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

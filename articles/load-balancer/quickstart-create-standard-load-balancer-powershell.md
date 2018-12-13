@@ -1,5 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření Load Balanceru úrovně Standard – Azure PowerShell | Microsoft Docs'
+title: 'Rychlý start: Vytvoření Load balanceru úrovně Standard – Azure PowerShell'
+titlesuffix: Azure Load Balancer
 description: Tento rychlý start ukazuje, jak pomocí PowerShellu vytvořit Load Balancer úrovně Standard.
 services: load-balancer
 documentationcenter: na
@@ -13,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
-ms:custom: mvc
-ms.openlocfilehash: e4e66d18f9dcb7f020cdb881226f6e47118e5186
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms:custom: seodec18
+ms.openlocfilehash: 0db575ee6c04c0fb4639ea2e9e095200da781fe8
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578548"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256311"
 ---
-# <a name="get-started"></a>Rychlý start: Vytvoření Load Balanceru úrovně Standard pomocí Azure PowerShellu
+# <a name="get-started"></a>Rychlý start: Vytvořit Standard pro vyrovnávání zatížení pomocí Azure Powershellu
 Tento rychlý start ukazuje, jak pomocí Azure PowerShellu vytvořit Load Balancer úrovně Standard. K otestování nástroje pro vyrovnávání zatížení nasadíte dva virtuální počítače s Windows Serverem, které mezi sebou budou vyrovnávat zatížení webové aplikace. Další informace o Load Balanceru úrovně Standard najdete v tématu [Co je Load Balancer úrovně Standard](load-balancer-standard-overview.md).
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]

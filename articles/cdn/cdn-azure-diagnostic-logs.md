@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: d0b804c48f3de4d4ba29ebe0785f6dd991329a53
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2beb5aa7218df25a1af87411d9481d30b259c353
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409250"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256722"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
@@ -98,7 +98,7 @@ Použití Log Analytics k ukládání protokolů, postupujte podle těchto krok�
    **Pracovních prostorů Log Analytics** se zobrazí stránka.
 
     >[!NOTE] 
-    >Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
+    >Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 
     ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
@@ -107,7 +107,7 @@ Použití Log Analytics k ukládání protokolů, postupujte podle těchto krok�
     **Pracovní prostor Log Analytics** se zobrazí stránka.
 
     >[!NOTE] 
-    >Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics.
+    >Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics.
 
     ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/07_Create-new.png)
 
@@ -189,7 +189,7 @@ Základní protokoly analýzy se generují každou hodinu a data se shromažďuj
 |-------|---------|
 |ID předplatného    |ID předplatného Azure ve formátu Guid.|
 |Název skupiny prostředků |Název skupiny prostředků, do které patří prostředků CDN.|
-|Název profilu |Název profilu CDN|
+|Profile Name (Název profilu) |Název profilu CDN|
 |Název koncového bodu |Název koncového bodu CDN|
 |Rok|  Reprezentace čtyřmístný rok, například 2017|
 |Měsíc| Dvěma číslicemi reprezentuje číslo měsíce. 01. ledna =... 12. prosince =|
@@ -202,7 +202,7 @@ Abyste usnadnili snadnou pro přístup k základní analýzy, je k dispozici uk�
 
 Zde je, jak můžete pomocí nástroje:
 
-1.  Po kliknutí odkaz githubu: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  Po kliknutí odkaz Githubu: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Stáhněte si kód.
 3.  Postupujte podle pokynů ke kompilaci a konfigurace.
 4.  Spusťte nástroj.

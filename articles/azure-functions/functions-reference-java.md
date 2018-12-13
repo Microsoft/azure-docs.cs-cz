@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 5f74ee390ac327a9e697d3dc67da4ea604b64d69
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: e4d96fa558e1122ef9e0fe0b265166757c45e678
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686888"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53321046"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 
@@ -105,7 +105,9 @@ Tady je vygenerovaný odpovídající `function.json` podle [azure-functions-mav
 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK běhovou dostupnost a podpora 
 
-Stáhnout a použít [Azul Zulu pro Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK od [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) pro místní vývoj aplikací v Javě funkce. JDK jsou k dispozici pro Windows, Linux a macOS. [Podpora Azure](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) je k dispozici [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
+Stáhnout a použít [Azul Zulu Enterprise pro Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java JDK 8 z [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) pro místní vývoj aplikací v Javě funkce. Služba Azure Functions využívá modul runtime Azul Java 8 JDK při nasazení vaší aplikace function App do cloudu.
+
+[Podpora Azure](https://azure.microsoft.com/en-us/support/) pro problémy s JDK a funkce je k dispozici s aplikací [plán podpory kvalifikovaný](https://azure.microsoft.com/support/plans/).
 
 ## <a name="third-party-libraries"></a>Knihovny třetích stran 
 
@@ -361,11 +363,11 @@ Musí mít povolené systému souborů přihlášení na webu Azure Portal nebo 
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
-Ve službě Functions [nastavení aplikace](https://docs.microsoft.com/en-us/azure/azure-functions/functions-app-settings), jako je například připojení služby jsou řetězce, zveřejní jako proměnné prostředí během provádění. Tato nastavení použijete, můžete přístup `System.getenv("AzureWebJobsStorage")`
+Ve službě Functions [nastavení aplikace](https://docs.microsoft.com/azure/azure-functions/functions-app-settings), jako je například připojení služby jsou řetězce, zveřejní jako proměnné prostředí během provádění. Tato nastavení použijete, můžete přístup `System.getenv("AzureWebJobsStorage")`
 
 Příklad:
 
-Přidat [AppSetting](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings) s testAppSettingValue testAppSetting a hodnota názvu
+Přidat [AppSetting](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) s testAppSettingValue testAppSetting a hodnota názvu
 
 ```java
 

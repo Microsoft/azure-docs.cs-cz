@@ -1,22 +1,24 @@
 ---
-title: Odchozích připojení v Azure | Dokumentace Microsoftu
+title: Odchozích připojení v Azure
+titlesuffix: Azure Load Balancer
 description: Tento článek vysvětluje, jak Azure umožňuje virtuálním počítačům komunikovat s veřejné internetové služby.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 ms.service: load-balancer
+ms.custom: seodec18
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: fdcc039eb71eaeea03aaae856a6d031d4c528669
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 09de0a3aa0303e169d0b90690016909b29dc4a9b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687567"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190964"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -54,7 +56,7 @@ Veřejné IP adresy přiřazené k virtuálnímu počítači je to vztah 1:1 (na
 
 Pokud aplikace zahájí mnoho odchozích toků a dochází k vyčerpání portů SNAT, vezměte v úvahu přiřazení [ILPIP ke zmírnění SNAT omezení](#assignilpip). Kontrola [Správa SNAT vyčerpání](#snatexhaust) v celém rozsahu.
 
-### <a name="lb"></a>Scénář 2: S vyrovnáváním zatížení VM bez Instance úroveň veřejné IP adresy
+### <a name="lb"></a>Scénář 2: Vyrovnávání zatížení virtuálních počítačů bez Instance úroveň veřejné IP adresy
 
 V tomto scénáři je virtuální počítač součástí veřejného back-endového fondu nástroje pro vyrovnávání zatížení. Virtuální počítač nemá přiřazenou veřejnou IP adresu. Prostředku nástroje pro vyrovnávání zatížení musí mít nakonfigurovanou pravidlo služby load balancer můžete vytvořit propojení mezi veřejnou IP front-endu s back-endový fond.
 

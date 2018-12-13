@@ -1,5 +1,5 @@
 ---
-title: Konfigurace vývojového prostředí
+title: Nastavení vývojového prostředí Pythonu
 titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak nakonfigurovat prostředí pro vývoj, při práci se službou Azure Machine Learning. V tomto dokumentu se dozvíte, jak používat prostředí Conda, vytvoření konfiguračních souborů a konfigurace poznámkové bloky Jupyter, poznámkových bloků Azure, Integrovaná vývojová prostředí, editory kódu a virtuální počítač pro datové vědy.
 services: machine-learning
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6e2222d56ea37983b1efafedaac8e01058cb44fa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 59f847dc38cddfd9185cfd169cf1ef34c744f8f7
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098045"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53192630"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurace prostředí pro vývoj pro Azure Machine Learning
 
@@ -25,11 +25,11 @@ V tomto dokumentu zjistěte, jak nakonfigurovat vývojové prostředí pro prác
 
 Tento dokument se zaměřuje na tyto konkrétní prostředí a nástroje:
 
-* [Azure Notebooks](#aznotebooks): poznámkové bloky Jupyter A služby hostované v cloudu Azure. Je __nejsnadněji__ způsob, jak začít, jak sada SDK Azure Machine Learning je již nainstalována.
-* [Virtuální počítač pro datové vědy](#dsvm): A __předem nakonfigurované vývoj/experimentování prostředí__ v cloudu Azure, který je __navržené pro datové vědy pracovní__ a je možné nasadit buď Instance založené na pouze instance virtuálních počítačů CPU nebo GPU. Python 3, Conda, poznámkové bloky Jupyter a sady SDK Azure Machine Learning jsou již nainstalovány. Virtuální počítač se dodává s oblíbenými ML / obsáhlý learning architektur, nástrojů a editory pro vývoj řešení pro ML. To je pravděpodobně __nejúplnější__ vývojové prostředí pro ML na platformě Azure.
+* [Azure Notebooks](#aznotebooks): Poznámkové bloky Jupyter služby hostované v cloudu Azure. Je __nejsnadněji__ způsob, jak začít, jak sada SDK Azure Machine Learning je již nainstalována.
+* [Virtuální počítač pro datové vědy](#dsvm): A __předem nakonfigurované vývoj/experimentování prostředí__ v cloudu Azure, který je __navržené pro datové vědy pracovní__ a je možné nasadit buď procesoru pouze instance založené na instance virtuálních počítačů nebo GPU. Python 3, Conda, poznámkové bloky Jupyter a sady SDK Azure Machine Learning jsou již nainstalovány. Virtuální počítač se dodává s oblíbenými ML / obsáhlý learning architektur, nástrojů a editory pro vývoj řešení pro ML. To je pravděpodobně __nejúplnější__ vývojové prostředí pro ML na platformě Azure.
 * [Poznámkové bloky Jupyter](#jupyter): Pokud už používáte poznámkové bloky Jupyter, sady SDK má některé funkce, které byste měli nainstalovat.
-* [Visual Studio Code](#vscode): Pokud používáte Visual Studio Code, jsou některá užitečná rozšíření, které můžete nainstalovat.
-* [Azure Databricks](#aml-databricks): oblíbenými datovými analytická platforma založená na Apache Sparku. Zjistěte, jak získat Azure Machine Learning SDK do vašeho clusteru, abyste mohli nasadit modely.
+* [Visual Studio Code](#vscode): Pokud používáte Visual Studio Code, existují některá užitečná rozšíření, které můžete nainstalovat.
+* [Azure Databricks](#aml-databricks): Oblíbenými datovými analytická platforma založená na Apache Sparku. Zjistěte, jak získat Azure Machine Learning SDK do vašeho clusteru, abyste mohli nasadit modely.
 
 Pokud už máte prostředí Python 3, nebo chcete jenom základní kroky pro instalaci sady SDK, přečtěte si článek [místního počítače](#local) oddílu.
 
@@ -212,7 +212,7 @@ Pokud chcete použít Visual Studio Code pro vývoj, použijte následující kr
 
 1. Zjistěte, jak používat Visual Studio Code pro vývoj v jazyce Python, najdete v článku [Začínáme s Pythonem v VSCode](https://code.visualstudio.com/docs/python/python-tutorial) dokumentu.
 
-1. Chcete-li vybrat prostředí Conda, spusťte VS Code a pak použijte __Ctrl-Shift-P__ (Linux a Windows) nebo __příkazu-Shift-P__ (Mac), chcete-li získat __příkaz palety__. Zadejte __Python: Select Interpreter__ a pak vyberte prostředí conda.
+1. Chcete-li vybrat prostředí Conda, spusťte VS Code a pak použijte __Ctrl-Shift-P__ (Linux a Windows) nebo __příkazu-Shift-P__ (Mac), chcete-li získat __příkaz palety__. Zadejte __Pythonu: Vyberte interpret__ a pak vyberte prostředí conda.
 
 1. Pokud chcete ověřit, které můžete použít sady SDK, vytvořte nový soubor Pythonu (.py), který obsahuje následující kód. Potom spusťte soubor:
 

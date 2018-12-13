@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 45ddf1c75dd22f5074c2017185bc0ed3be0b2a80
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.date: 12/04/2018
+ms.openlocfilehash: fc04422f5e32a77fff42dc07e2441e84c9b15866
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872692"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53271874"
 ---
 # <a name="discover-azure-sql-database-managed-instance-management-endpoint"></a>Zjistit koncový bod pro správu Azure SQL Database Managed Instance
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 12/10/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7819ed3e18092e8b7bdf52225e7025b4b6d8146a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: c0f384dafc4ba30eb3e735ee17ae051245378135
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981877"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53254985"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Uplatnění pozvání spolupráce služby Azure Active Directory s B2B
 
@@ -26,7 +26,7 @@ Spolupracovat s uživatelů z partnerských organizací prostřednictvím spolup
 
 ## <a name="redemption-through-a-direct-link"></a>Uplatnění prostřednictvím přímého odkazu
 
-Odesílatel pozvánky hostů můžete pozvat uživatele typu Host odesláním na přímý odkaz na sdílenou aplikací. Pro uživatele typu Host prostředí uplatnění je jednoduché. stačí aplikaci, která se sdílí s nimi. Můžete kliknutím na odkaz na aplikaci, zkontrolujte a přijměte zásady ochrany osobních údajů a pak bezproblémově přistupovat k aplikaci. Ve většině případů uživatelé typu Host už nemusí klikněte na adresu URL uplatnění v e-mailová pozvánka.
+Odesílatel pozvánky hostů můžete pozvat uživatele typu Host odesláním navýšení kapacity [přímý odkaz na sdílené aplikace](../manage-apps/end-user-experiences.md#direct-sign-on-links). Pro uživatele typu Host prostředí uplatnění je jednoduché. stačí aplikaci, která se sdílí s nimi. Můžete kliknutím na odkaz na aplikaci, zkontrolujte a přijměte zásady ochrany osobních údajů a pak bezproblémově přistupovat k aplikaci. Ve většině případů uživatelé typu Host už nemusí klikněte na adresu URL uplatnění v e-mailová pozvánka.
 
 Pokud pozvat uživatele typu Host přes uživatelské rozhraní nebo jste zvolili k odesílání e-mailová pozvánka jako součást pozvánku prostředí PowerShell, pozvaný uživatel stále obdrží e-mailová pozvánka. Tento e-mail je vhodný pro následující zvláštní případy:
 
@@ -51,7 +51,7 @@ Po každý uživatel typu Host přihlášení pro přístup k prostředkům v or
 
 ![Snímek obrazovky zobrazující nastavení uživatele v přístupovém panelu](media/redemption-experience/ConsentScreen.png) 
 
-Informace o tom, jak jako správce tenanta můžete propojit prohlášení o ochraně osobních údajů vaší organizace, najdete v části [postupy: Přidání informací o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement).
+Informace o tom, jak jako správce tenanta můžete propojit prohlášení o ochraně osobních údajů vaší organizace, najdete v části [s návody: Přidejte informace o ochraně osobních údajů vaší organizace v Azure Active Directory](https://aka.ms/adprivacystatement).
 
 ## <a name="next-steps"></a>Další postup
 

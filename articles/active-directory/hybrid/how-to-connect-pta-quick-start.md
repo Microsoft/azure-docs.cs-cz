@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95083ec1d909333596fd36ad998022778a4f9ec9
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 831e5bff412f80f2140f6fd1b935a57bd412ccba
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582732"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188125"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
+# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Předávací ověřování služby Azure Active Directory: Rychlý start
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Nasazení Azure AD předávací ověřování
 
@@ -58,18 +58,18 @@ Ujistěte se, že jsou splněné následující požadavky.
 4. Pokud je brána firewall mezi servery a službou Azure AD, nakonfigurujte následující položky:
    - Ujistěte se, že můžete provést agentů ověřování *odchozí* žádostí do služby Azure AD prostřednictvím následující porty:
 
-    | Číslo portu | Jak se používá |
-    | --- | --- |
-    | **80** | Soubory ke stažení seznamů odvolaných certifikátů (CRL) při ověřování certifikátu SSL |
-    | **443** | Zpracovává všechny odchozí komunikaci se službou |
-    | **8080** (volitelné) | Agentů ověřování oznamují svůj stav každých deset minut přes port 8080, pokud je port 443 není k dispozici. Tento stav se zobrazí na portálu Azure AD. Port 8080 je _není_ používá pro přihlašování uživatelů. |
-
-    Pokud brána firewall vynucuje pravidla podle původního uživatele, otevřete tyto porty pro provoz služby Windows, na kterých běží jako síťové služby.
+     | Číslo portu | Jak se používá |
+     | --- | --- |
+     | **80** | Soubory ke stažení seznamů odvolaných certifikátů (CRL) při ověřování certifikátu SSL |
+     | **443** | Zpracovává všechny odchozí komunikaci se službou |
+     | **8080** (volitelné) | Agentů ověřování oznamují svůj stav každých deset minut přes port 8080, pokud je port 443 není k dispozici. Tento stav se zobrazí na portálu Azure AD. Port 8080 je _není_ používá pro přihlašování uživatelů. |
+     
+     Pokud brána firewall vynucuje pravidla podle původního uživatele, otevřete tyto porty pro provoz služby Windows, na kterých běží jako síťové služby.
    - Pokud je vaše brána firewall nebo proxy server umožňuje DNS na seznam povolených, seznam povolených připojení k  **\*. msappproxy.net** a  **\*. servicebus.windows.net**. Pokud ne, povolit přístup k [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653), který se každý týden aktualizuje.
    - Agentů ověřování potřebovat přístup k **login.windows.net** a **login.microsoftonline.com** pro počáteční registraci. Otevřete firewall pro tyto adresy URL také.
    - Pro ověření certifikátu, odblokovat následující adresy URL: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, a  **www.microsoft.com:80**. Protože tyto adresy URL se používají k ověření certifikátu s dalšími produkty Microsoftu, které už můžete mít tyto adresy URL odblokováno.
 
-## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení funkce
+## <a name="step-2-enable-the-feature"></a>Krok 2: Povolení této funkce
 
 Povolit předávací ověřování prostřednictvím [služby Azure AD Connect](whatis-hybrid-identity.md).
 
@@ -82,12 +82,12 @@ Pokud Azure AD Connect instalujete poprvé, zvolte [vlastní instalační cesta]
 
 Pokud jste již nainstalovali Azure AD Connect s použitím [Expresní instalace](how-to-connect-install-express.md) nebo [vlastní instalaci](how-to-connect-install-custom.md) cestu, vyberte **změnit přihlášení uživatele** úloh v Azure AD Připojení a pak vyberte **Další**. Potom vyberte **předávací ověřování** jako metodu přihlašování. Při úspěšném dokončení předávací ověřovací Agent je nainstalovaný na stejném serveru jako Azure AD Connect a aby byla povolená funkce ve svém tenantovi.
 
-![Azure AD Connect: Změna uživatele přihlášení](./media/how-to-connect-pta-quick-start/changeusersignin.png)
+![Azure AD Connect: Změna přihlašovacích údajů uživatele](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
 >[!IMPORTANT]
 >Předávací ověřování je funkce úrovni tenanta. Zapnutí ovlivňuje přihlášení pro uživatele napříč _všechny_ spravovaných domén ve vašem tenantovi. Pokud přecházíte z Active Directory Federation Services (AD FS) na předávací ověřování, byste měli počkat alespoň 12 hodin před ukončením infrastruktury služby AD FS. Tato čekací doba je zajistit, že uživatelé můžete zachovat přihlášení k Exchange ActiveSync během přechodu. Další nápovědu o migraci ze služby AD FS na předávací ověřování, podívejte se na náš podrobný nasazení plán publikování [tady](https://aka.ms/adfstoptadpdownload).
 
-## <a name="step-3-test-the-feature"></a>Krok 3: Testování funkce
+## <a name="step-3-test-the-feature"></a>Krok 3: Otestovat funkci
 
 Postupujte podle těchto pokynů a ověřte, že je povoleno předávací ověřování správně:
 
@@ -97,9 +97,9 @@ Postupujte podle těchto pokynů a ověřte, že je povoleno předávací ověř
 4. Ověřte, že **předávací ověřování** funkce se zobrazí jako **povoleno**.
 5. Vyberte **předávací ověřování**. **Předávací ověřování** podokno obsahuje seznam serverů, kde jsou nainstalovaní agenti vaše ověření.
 
-![Centrum pro správu Azure Active Directory: podokně služby Azure AD Connect](./media/how-to-connect-pta-quick-start/pta7.png)
+![Centrum správce Azure Active Directory: Podokno Azure AD Connect](./media/how-to-connect-pta-quick-start/pta7.png)
 
-![Centrum pro správu Azure Active Directory: podokně předávací ověřování](./media/how-to-connect-pta-quick-start/pta8.png)
+![Centrum správce Azure Active Directory: Podokno předávací ověřování](./media/how-to-connect-pta-quick-start/pta8.png)
 
 V této fázi uživatelů ze všech spravovaných domén v tenantovi můžete přihlásit pomocí předávacího ověřování. Uživatele z federovaných domén se však nadále přihlašovat pomocí služby AD FS nebo jiného zprostředkovatele federace, kterou jste dříve nakonfigurovali. Při převodu domény z Federovaná do služby managed, všichni uživatelé z této domény, automaticky spustí, přihlášení pomocí předávacího ověřování. Předávací ověřování funkce neovlivňuje uživatelů pouze cloudu.
 
@@ -117,9 +117,9 @@ Postupujte podle těchto pokynů ke stahování softwaru ověřovací Agent:
 3. Vyberte **Azure AD Connect**vyberte **předávací ověřování**a pak vyberte **stáhnout agenta**.
 4. Vyberte **přijmout podmínky a stáhnout** tlačítko.
 
-![Centrum pro správu Azure Active Directory: tlačítko Stáhnout ověřování agenta](./media/how-to-connect-pta-quick-start/pta9.png)
+![Centrum správce Azure Active Directory: Ověřovací Agent nebyl tlačítko pro stažení](./media/how-to-connect-pta-quick-start/pta9.png)
 
-![Centrum pro správu Azure Active Directory: podokně stáhnout agenta](./media/how-to-connect-pta-quick-start/pta10.png)
+![Centrum správce Azure Active Directory: Stáhnout agenta podokno](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
 >Můžete také přímo [stáhnout software ověřovací Agent nebyl](https://aka.ms/getauthagent). Přečtěte si a přijměte ověřovací Agent [podmínkami služby](https://aka.ms/authagenteula) _před_ její instalaci.
@@ -145,9 +145,9 @@ Za druhé můžete vytvořit a spustit skript bezobslužné nasazení. To je už
 - [Migrace ze služby AD FS na předávací ověřování](https://aka.ms/adfstoptadp) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení ve svém tenantovi k ochraně uživatelské účty.
 - [Aktuální omezení](how-to-connect-pta-current-limitations.md): Zjistěte, jaké postupy se podporují pomocí předávacího ověřování a ty, které nejsou.
-- [Podrobné technické informace](how-to-connect-pta-how-it-works.md): pochopit, jak funguje funkce předávací ověřování.
+- [Podrobné technické informace](how-to-connect-pta-how-it-works.md): Vysvětlení fungování funkce předávací ověřování.
 - [Nejčastější dotazy k](how-to-connect-pta-faq.md): Najděte odpovědi na nejčastější dotazy.
 - [Řešení potíží s](tshoot-connect-pass-through-authentication.md): Zjistěte, jak řešit běžné problémy s funkcí předávací ověřování.
-- [Podrobné informace o zabezpečení](how-to-connect-pta-security-deep-dive.md): získat technické informace o funkci předávací ověřování.
-- [Azure AD bezproblémového jednotného přihlašování k](how-to-connect-sso.md): Další informace o této doplňkové funkce.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): použijte fórum Azure Active Directory do souboru žádostí o nové funkce.
+- [Podrobné informace o zabezpečení](how-to-connect-pta-security-deep-dive.md): Získáte technické informace o funkci předávací ověřování.
+- [Bezproblémové jednotné přihlašování Azure AD](how-to-connect-sso.md): Další informace o této doplňkové funkce.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fórum Azure Active Directory pomocí do souboru žádostí o nové funkce.

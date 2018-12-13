@@ -1,6 +1,6 @@
 ---
-title: Přehled služby Azure Container Instances
-description: Vysvětlení služby Azure Container Instances
+title: Co je Azure Container Instances?
+description: Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob spouštění izolovaných kontejnerech v Azure, aniž byste museli spravovat virtuální počítače a bez nutnosti přijmout vyšší úrovně nástroje orchestrator.
 services: container-instances
 author: seanmck
 manager: jeconnoc
@@ -8,15 +8,15 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 11/30/2018
 ms.author: seanmck
-ms.custom: mvc
-ms.openlocfilehash: b5f97dac202edd5405c51b75581275166042ac38
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.custom: seodec18, mvc
+ms.openlocfilehash: ba454965ff2bb78ebe526e71d9280200b1f4b08b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841451"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187190"
 ---
-# <a name="azure-container-instances"></a>Azure Container Instances
+# <a name="what-is-azure-container-instances"></a>Co je Azure Container Instances?
 
 Kontejnery se stávají upřednostňovaným způsobem balení, nasazování a správy cloudových aplikací. Služba Azure Container Instances nabízí nejrychlejší a nejjednodušší způsob spouštění kontejneru v Azure. Není přitom nutné spravovat žádné virtuální počítače nebo využívat služby vyšší úrovně.
 

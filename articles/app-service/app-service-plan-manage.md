@@ -1,5 +1,5 @@
 ---
-title: Správa plánu služby App Service v Azure | Dokumentace Microsoftu
+title: Správa plánu služby App Service – Azure | Dokumentace Microsoftu
 description: Zjistěte, jak k provádění různých úloh ke správě plánu služby App Service.
 keywords: služby App service, služby azure app service, škálování, plán služby app service, změnit, vytvoření, správa, Správa
 services: app-service
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.custom: seodec18
+ms.openlocfilehash: 8f8e5f3d184073a73ca30764542dc56e45974120
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166062"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262125"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Správa plánu služby App Service v Azure
 
@@ -35,7 +36,7 @@ Můžete vytvořit prázdnou plán služby App Service, nebo jako součást vytv
 
 1. V [webu Azure portal](https://portal.azure.com)vyberte **nový** > **Web + mobilní zařízení**a pak vyberte **webovou aplikaci** nebo jiný typ aplikace služby App Service.
 
-1. Vyberte existující plán služby App Service nebo vytvořit plán pro novou aplikaci.
+2. Vyberte existující plán služby App Service nebo vytvořit plán pro novou aplikaci.
 
    ![Vytvoření aplikace na webu Azure Portal.][createWebApp]
 

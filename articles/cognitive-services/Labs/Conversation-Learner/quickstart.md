@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bc0cf0900ec9f87c75091b3bf219d92e0859aa1f
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b98b528d2d78d2285977dec49da18081df47e9d6
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282135"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53166128"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Vytvoření modelu konverzace Learner pomocí Node.js
 
@@ -61,7 +61,7 @@ Konverzace Learner projekt se skládá ze sady SDK je přidat do vašeho robota 
     > [!NOTE]
     > Během `npm install`, tuto chybu můžete ignorovat, pokud k němu dojde: `gyp ERR! stack Error: Can't find Python executable`
 
-2. Konfigurace:
+2. Konfigurovat:
 
    Vytvořte soubor s názvem `.env` v adresáři `cl-bot-01`.  Obsah souboru by měl vypadat:
 
@@ -164,11 +164,11 @@ Tato funkce využívá standardní konfiguraci, která vám umožní místní sp
 
 - Označte své otázky [Stack Overflow](https://stackoverflow.com) s "microsoft cognitive".
 - Žádost o funkci na naše [User Voice stránky](https://aka.ms/conversation-learner-uservoice)
-- Otevřete problém na našem [úložiště github](https://github.com/Microsoft/ConversationLearner-Samples)
+- Otevřete problém na našem [úložiště GitHub](https://github.com/Microsoft/ConversationLearner-Samples)
 
 ## <a name="contributing"></a>Přispívání
 
-Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v článku [kódu k pravidlům chování](https://opensource.microsoft.com/codeofconduct/faq/) nebo se obraťte na [ opencode@microsoft.com ](mailto:opencode@microsoft.com) s případnými dotazy nebo připomínky.
+Tento projekt přijal [pravidla chování pro Microsoft Open Source](https://opensource.microsoft.com/codeofconduct/). Další informace najdete v [nejčastějších dotazech k pravidlům chování](https://opensource.microsoft.com/codeofconduct/faq/). S případnými dalšími dotazy nebo připomínkami se obraťte na adresu [opencode@microsoft.com](mailto:opencode@microsoft.com).
 
 ## <a name="source-repositories"></a>Zdrojové úložiště
 

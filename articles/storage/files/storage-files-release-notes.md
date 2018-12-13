@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 12/4/2018
+ms.date: 12/10/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 4f4d30b483d0740261d85921d5dc66e053b5bcf0
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 5bea4c655e9a8970d8d0d946827cc3e46e7efa7a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890955"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255155"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -25,7 +25,8 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 
 | Milník | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| Kumulativní – aktualizace z prosince [KB4459988](https://support.microsoft.com/help/4459988)| 4.1.0.0 | 4. prosince 2018 | Podporované (doporučená verze) |
+| Kumulativní – aktualizace z prosince [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. prosince 2018 | Podporované (doporučená verze) |
+| Kumulativní aktualizace z prosince | 4.1.0.0 | 4. prosince 2018 | Podporováno |
 | Verzi V4 | 4.0.1.0 | 13. listopadu 2018 | Podporováno |
 | Kumulativní aktualizace. září | 3.3.0.0 | 24. září 2018 | Podporováno |
 | Kumulativní aktualizace ze srpna | 3.2.0.0 | 15. srpna 2018 | Podporováno |
@@ -44,13 +45,19 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
+## <a name="agent-version-4200"></a>Verze agenta 4.2.0.0
+Následující poznámky k verzi platí pro verze 4.2.0.0 agenta Azure File Sync vydáno 10. prosince 2018. Tyto poznámky doplňují uvedené verze 4.0.1.0 poznámky.
+
+Seznam opravených chybách v této verzi:  
+- Chyba zastavení 0x3B nebo chyba Stop 0x1E může dojít, když se vytvoří snímek služby VSS.  
+- Nevracení paměti může dojít, když cloud ovládání datových vrstev je povoleno  
+
 ## <a name="agent-version-4100"></a>Verze agenta 4.1.0.0
 Následující poznámky k verzi platí pro verze 4.1.0.0 agenta Azure File Sync vydáno 4. prosince 2018. Tyto poznámky doplňují uvedené verze 4.0.1.0 poznámky.
 
 Seznam opravených chybách v této verzi:  
-- Chyba zastavení 0x3B nebo chyba Stop 0x1E může dojít, když se vytvoří snímek služby VSS.  
 - Server může přestat reagovat z důvodu nevrácené paměti vrstvení cloudu.  
-- Instalace agenta se nezdaří s následující chybou: Chyba. 1921. Službu 'agenta synchronizace úložiště"(FileSyncSvc) se nepovedlo zastavit.  Ověřte, že máte dostatečná oprávnění k zastavení systémových služeb.  
+- Instalace agenta se nezdaří s následující chybou: Došlo k chybě. 1921. Službu 'agenta synchronizace úložiště"(FileSyncSvc) se nepovedlo zastavit.  Ověřte, že máte dostatečná oprávnění k zastavení systémových služeb.  
 - Služba agenta synchronizace úložiště (FileSyncSvc) dojít k chybě při vysoké využití paměti.  
 - Vylepšení spolehlivosti různé cloudové ovládání datových vrstev a synchronizace.
 
@@ -121,7 +128,7 @@ Následující poznámky k verzi platí pro verze 3.3.0.0 agenta Azure File Sync
 Seznam opravených chybách v této verzi:
 - Registrovaný server stav je "Se zobrazí v režimu offline" za Azure File Sync, agent se upgraduje na verzi 3.1 nebo 3.2.
 - Úložiště služby agenta synchronizace (FileSyncSvc) dojde k chybě z důvodu soubory, které mají dlouhé cesty.
-- Registrace serveru nezdaří s chybou: nepovedlo se načíst soubor nebo sestavení Kailani.Afs.StorageSyncProtocol.V3.
+- Registrace serveru nezdaří s chybou: Nepovedlo se načíst soubor nebo sestavení Kailani.Afs.StorageSyncProtocol.V3.
 
 ## <a name="agent-version-3200"></a>Agent verze 3.2.0.0
 Následující poznámky k verzi platí pro verze 3.2.0.0 agenta Azure File Sync vydaného 15. srpna 2018. Tyto poznámky doplňují uvedené verze 3.1.0.0 poznámky.

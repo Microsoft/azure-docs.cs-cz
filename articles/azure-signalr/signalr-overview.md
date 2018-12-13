@@ -1,23 +1,17 @@
 ---
-title: Co je Azure SignalR | Microsoft Docs
+title: Co je Azure SignalR
 description: Přehled služby Azure SignalR
-services: signalr
-documentationcenter: ''
 author: sffamily
-manager: cfowler
-editor: ''
 ms.service: signalr
-ms.devlang: na
 ms.topic: overview
-ms.workload: tbd
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: a159833936ec4762213f063e235fa4f9237af95b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: e66326c6c4d93a92c579255cb00b6614ecc03b8c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951096"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255172"
 ---
 # <a name="what-is-azure-signalr-service"></a>Co je služba Azure SignalR
 
@@ -25,7 +19,7 @@ Služba Azure SignalR zjednodušuje proces přidávání webových funkcí pracu
 
 Tento článek obsahuje přehled služby Azure SignalR.
 
-## <a name="what-is-azure-signalr-service-used-for"></a>K čemu slouží služba Azure SignalR? 
+## <a name="what-is-azure-signalr-service-used-for"></a>K čemu slouží služba Azure SignalR?
 
 Existuje řada typů aplikací, které vyžadují aktualizace obsahu v reálném čase. Použití služby Azure SignalR je vhodné v následujících příkladech:
 
@@ -45,4 +39,3 @@ Aktuálně existují tři způsoby použití služby Azure SignalR:
 - **[Škálování aplikace ASP.NET Core SignalR](signalr-overview-scale-aspnet-core.md)** – integrace služby Azure SignalR s aplikací ASP.NET Core SignalR pro horizontální navýšení kapacity na stovky tisíc připojení.
 - **[Vytváření aplikací bez serveru pracujících v reálném čase](signalr-overview-azure-functions.md)** – integrace funkcí Azure se službou Azure SignalR pro účely vytváření aplikací bez serveru pracujících v reálném čase v jazycích, jako je JavaScript, C# nebo Java.
 - **[Odesílání zpráv ze serveru do klientů přes rozhraní REST API](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)** – ve službě Azure SignalR je k dispozici rozhraní REST API, které umožňuje posílat z aplikací zprávy do klientů spojených se službou SignalR v kterémkoli programovacím jazyce podporujícím rozhraní REST.
-

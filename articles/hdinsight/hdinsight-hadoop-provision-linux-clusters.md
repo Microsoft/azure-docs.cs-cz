@@ -1,5 +1,5 @@
 ---
-title: Nastavení clusteru pro Hadoop, Spark, Kafka, HBase nebo R Server – Azure HDInsight
+title: Nastavení clusteru pro Apache Hadoop, Apache Spark, Apache Kafka, Apache HBase nebo R Server – Azure HDInsight
 description: Nastavení clusterů Hadoop, Kafka, Spark, HBase, R Server nebo Storm pro HDInsight z prohlížeče, klasické rozhraní příkazového řádku Azure, Azure PowerShell, REST nebo sady SDK.
 keywords: nastavení clusteru hadoop, cluster kafka nastavení, nastavení clusteru spark, co je cluster hadoop
 services: hdinsight
@@ -7,17 +7,17 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: ca3a4b4ffc8639b2636b917e656255c2c1b10d33
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 4efbf3ec13820892b2abf88919b6ea9ed9df0e45
+ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005474"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53164326"
 ---
-# <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další
+# <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů v HDInsight se Apache Hadoop, Apache Spark, Apache Kafka a další
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
@@ -42,7 +42,7 @@ V následující tabulce jsou uvedeny různé metody, které slouží k nastaven
 | [.NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |&nbsp; |&nbsp; |&nbsp; |✔ |
 | [Šablony Azure Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
-## <a name="quick-create-basic-cluster-setup"></a>Rychlé vytvoření: nastavení základní clusteru
+## <a name="quick-create-basic-cluster-setup"></a>Rychlé vytvoření: Nastavení základní clusteru
 Tento článek vás provede instalací v [webu Azure portal](https://portal.azure.com), kde můžete vytvořit cluster HDInsight pomocí *rychlé vytvoření* nebo *vlastní*. 
 
 ![hdinsight vytvořit možnosti Vlastní rychlé vytvoření](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-options.png)
@@ -96,14 +96,14 @@ Další informace o vytváření HDInsight připojených k doméně clusteru, na
 ## <a name="cluster-login-and-ssh-user-name"></a>Přihlášení ke clusteru a uživatelské jméno SSH
 S clustery HDInsight můžete nakonfigurovat dva uživatelské účty při vytváření clusteru:
 
-* Uživatel HTTP: výchozí uživatelské jméno je *správce*. Využívá základní konfigurace na portálu Azure portal. Někdy se označuje jako "Clusteru uživatele."
-* Uživatele SSH (Linuxové clustery): umožňuje připojení ke clusteru přes SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Uživatel HTTP: Výchozí uživatelské jméno je *správce*. Využívá základní konfigurace na portálu Azure portal. Někdy se označuje jako "Clusteru uživatele."
+* Uživatele SSH (Linuxové clustery): Umožňuje připojení ke clusteru přes SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Enterprise security package umožňuje integraci HDInsight s Active Directory a Apache Ranger. Můžete vytvořit více uživatelů pomocí balíčkem Enterprise security package.
 
 ## <a name="location"></a>Umístění (oblastí) pro clustery a úložiště
 
-Není nutné explicitně zadat umístění v clusteru: cluster je ve stejném umístění jako výchozí úložiště. Seznam podporovaných oblastí, klikněte na tlačítko **oblasti** rozevíracího seznamu na [ceny HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
+Není nutné explicitně zadat umístění v clusteru: Cluster je ve stejném umístění jako výchozí úložiště. Seznam podporovaných oblastí, klikněte na tlačítko **oblasti** rozevíracího seznamu na [ceny HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
 ## <a name="storage-endpoints-for-clusters"></a>Koncové body úložiště pro clustery
 
@@ -114,7 +114,7 @@ I když instalace v místním systému Hadoop používá souboru systému HDFS (
 
 Během konfigurace pro výchozí koncový bod úložiště zadáte kontejner objektů blob z účtu služby Azure Storage nebo Data Lake Store. Výchozí úložiště obsahuje aplikaci a systémové protokoly. Volitelně můžete zadat další propojené účty Azure Storage a účty Data Lake Store, které můžete přístup ke clusteru. HDInsight cluster a závislé úložiště účty musí být ve stejném umístění Azure.
 
-![Nastavení funkce úložiště: koncové body HDFS kompatibilního úložiště](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
+![Nastavení úložiště clusteru: Koncové body HDFS kompatibilního úložiště](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-cluster-creation-storage.png)
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
@@ -193,8 +193,8 @@ Když použijete na webu Azure portal ke konfiguraci clusteru, velikost uzlu je 
 
 ### <a name="virtual-machine-sizes"></a>Velikosti virtuálních počítačů 
 Při nasazování clusterů, zvolte výpočetní prostředky, které jsou založené na řešení, které chcete nasadit. Následující virtuální počítače se používají pro clustery HDInsight:
-* A a virtuálních počítačů řady D1-4: [velikosti virtuálního počítače s Linuxem General-purpose](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
-* Řady virtuálních počítačů D11-14: [velikostí optimalizovaných pro paměť virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
+* A a virtuálních počítačů řady D1-4: [Pro obecné účely velikosti virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general)
+* Řada D11-14 virtuálních počítačů: [Paměťově optimalizované velikosti virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
 A zjistěte, co hodnotou, kterou jste používali k určení velikosti virtuálního počítače při vytváření clusteru pomocí různých sad SDK nebo při použití prostředí Azure PowerShell, najdete v článku [velikosti virtuálních počítačů pro clustery HDInsight](../cloud-services/cloud-services-sizes-specs.md#size-tables). V tomto článku propojené použije hodnotu v **velikost** sloupec tabulky.
 
@@ -205,7 +205,7 @@ A zjistěte, co hodnotou, kterou jste používali k určení velikosti virtuáln
 
 Další informace najdete v tématu [velikosti virtuálních počítačů](../virtual-machines/windows/sizes.md). Informace o různých velikostí cenách najdete v tématu [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).   
 
-## <a name="advanced-settings-script-actions"></a>Upřesňující nastavení: akcí skriptů
+## <a name="advanced-settings-script-actions"></a>Upřesňující nastavení: Akce skriptů
 
 Můžete nainstalovat další komponenty nebo přizpůsobení konfigurace clusteru pomocí skriptů během vytváření. Tyto skripty jsou volány prostřednictvím **akce skriptu**, což je možnost konfigurace, které můžete používat z webu Azure portal, rutin Windows Powershellu HDInsight nebo sady HDInsight .NET SDK. Další informace najdete v tématu [clusteru HDInsight přizpůsobení pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
 
@@ -238,7 +238,7 @@ V některých případech budete chtít nakonfigurovat následující konfigura�
 
 Další informace najdete v tématu [HDInsight přizpůsobení clusterů pomocí Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
 
-## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Upřesňující nastavení: rozšíření clusterů s virtuální sítí
+## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Upřesňující nastavení: Rozšíření clusterů s virtuální sítí
 Pokud vaše řešení nevyžaduje technologie, které jsou rozděleny mezi několika typy clusterů HDInsight, [virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network) typy požadovaných clusterových se můžete připojit. Tato konfigurace umožňuje clusterů a jakýkoli kód, který nasazujete na ně přímo komunikovat mezi sebou.
 
 Další informace o používání služby Azure virtual network se službou HDInsight najdete v tématu [rozšířit HDInsight s Azure virtual networks](hdinsight-extend-hadoop-virtual-network.md).

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: d579a9b628ac515877c1977f700940547e96f0c0
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 378516066e3b4a3436a2952616ea877d9a49d5d4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726606"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255308"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Jak používat Micrometer pomocí Azure Application Insights Java SDK
 Micrometer monitorování míry metriky aplikací pro aplikace založené na JVM kódu a umožňuje exportovat data do své oblíbené systémy pro monitorování. V tomto článku se dozvíte, jak používat Micrometer pro Spring Boot a aplikace Spring Boot s využitím Application Insights.
@@ -228,7 +228,7 @@ Kroky:
 
 Další informace o metrikách, najdete v tématu [Micrometer dokumentaci](https://micrometer.io/docs/).
 
-Další ukázkový kód pro vytvoření různých typů metrik najdete v[oficiální úložiště Micrometer Github](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
+Další ukázkový kód pro vytvoření různých typů metrik najdete v[oficiální úložiště Micrometer GitHub](https://github.com/micrometer-metrics/micrometer/tree/master/samples/micrometer-samples-core/src/main/java/io/micrometer/core/samples).
 
 ## <a name="how-to-bind-additional-metrics-collection"></a>Jak vytvořit vazbu kolekce další metriky
 
@@ -242,7 +242,7 @@ Vytvořte položku bean příslušné kategorie metriky. Předpokládejme např�
         Return new GuavaCacheMetrics();
     }
 ```
-Existuje několik metrik, které nejsou ve výchozím nastavení povolené, ale může být vázaný nad způsobem. Úplný seznam najdete v tématu [oficiální úložiště Micrometer Github](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
+Existuje několik metrik, které nejsou ve výchozím nastavení povolené, ale může být vázaný nad způsobem. Úplný seznam najdete v tématu [oficiální úložiště Micrometer GitHub](https://github.com/micrometer-metrics/micrometer/tree/master/micrometer-core/src/main/java/io/micrometer/core/instrument/binder ).
 
 ### <a name="non-spring-apps"></a>Aplikace bez Spring
 Přidejte následující kód vazby do konfiguračního souboru:

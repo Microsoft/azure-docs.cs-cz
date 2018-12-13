@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cf8c82f597cd659911cd66b0b7db8139e8d9d1a5
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 6f1cd08e3c786a1d163a22b5da5150fde5f45b95
+ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416881"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53135334"
 ---
-# <a name="tutorial-configure-message-routing-with-iot-hub"></a>Kurz: Konfigurace směrování zpráv s Azure IoT Hub
+# <a name="tutorial-configure-message-routing-with-iot-hub"></a>Kurz: Konfigurace směrování zpráv pomocí služby IoT Hub
 
 [Směrování zpráv](iot-hub-devguide-messages-d2c.md) umožňuje odesílání telemetrických dat ze zařízení IoT do předdefinovaných koncových bodů kompatibilních s centrem událostí nebo do vlastních koncových bodů, jako je například úložiště objektů blob, fronta služby Service Bus, téma služby Service Bus a Event Hubs. Při konfiguraci směrování zpráv můžete vytvořit [dotazy směrování](iot-hub-devguide-routing-query-syntax.md) pro přizpůsobení trasy, která odpovídá určité podmínce. Po nastavení se příchozí data automaticky přesměrují na koncové body pomocí služby IoT Hub. 
 
@@ -56,6 +56,10 @@ V následujících částech najdete podrobnější popis požadovaných kroků.
 1. Vytvořte [skupinu prostředků](../azure-resource-manager/resource-group-overview.md). 
 
 2. Vytvořte centrum IoT ve vrstvě S1. Přidejte do centra IoT skupinu uživatelů. Skupinu uživatelů používá služba Azure Stream Analytics při získávání dat.
+
+   > [!NOTE]
+   > K dokončení tohoto kurzu, je nutné použít v placené úrovně služby Iot hub. Úroveň free umožňuje nastavit jeden koncový bod, a tento kurz vyžaduje více koncových bodů.
+   > 
 
 3. Vytvořte standardní účet úložiště V1 s replikací Standard_LRS.
 
@@ -302,15 +306,15 @@ Data se do úložiště objektů blob zapisují ve formátu Avro.
 
 9. Teď vyplňte zbývající informace o dotazu směrování. Tento dotaz určuje kritéria pro odesílání zpráv do kontejneru úložiště, který jste právě přidali jako koncový bod. Vyplňte pole na obrazovce. 
 
-   **Název:** Zadejte název dotazu směrování. Tento kurz používá **StorageRoute**.
+   **Název**: Zadejte název pro směrování dotazů. Tento kurz používá **StorageRoute**.
 
-   **Koncový bod:** Zobrazí se koncový bod, který jste právě nastavili. 
+   **Koncový bod**: To ukazuje na koncový bod, který jste právě nainstalovali. 
    
-   **Zdroj dat:** Vyberte z rozevíracího seznamu **Telemetrické zprávy zařízení**.
+   **Zdroj dat**: Vyberte **zařízení Telemetrických zpráv** z rozevíracího seznamu.
 
-   **Povolit trasu:** Ujistěte se, že je tato možnost povolená.
+   **Povolit trasy**: Ujistěte se, že je tato možnost povolena.
    
-   **Dotaz směrování:** Jako řetězec dotazu zadejte `level="storage"`. 
+   **Směrování dotazů**: Zadejte `level="storage"` jako řetězec dotazu. 
 
    ![Snímek obrazovky ukazující vytváření dotazu směrování pro účet úložiště](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
    
@@ -330,23 +334,23 @@ Nyní nastavte směrování pro frontu Service Bus. Přejděte do podokna Směro
 
 4. Vyplňte jednotlivá pole:
 
-   **Název koncového bodu:** Zadejte název koncového bodu. Tento kurz používá **CriticalQueue**.
+   **Název koncového bodu**: Zadejte název koncového bodu. Tento kurz používá **CriticalQueue**.
    
-   **Obor názvů služby Service Bus:** Kliknutím na toto pole zobrazíte rozevírací seznam. Vyberte obor názvů služby Service Bus, který jste nastavili v rámci přípravy. Tento kurz používá **ContosoSBNamespace**.
+   **Služba Service Bus Namespace**: Klikněte na toto pole zobrazí v rozevíracím seznamu; Vyberte obor názvů služby Service bus, které jste vytvořili v postupu přípravy. Tento kurz používá **ContosoSBNamespace**.
 
-   **Fronta služby Service Bus:** Kliknutím na toto pole zobrazíte rozevírací seznam. V rozevíracím seznamu vyberte frontu služby Service Bus. Tento kurz používá **contososbqueue**.
+   **Fronty služby Service Bus**: Klikněte na toto pole zobrazí v rozevíracím seznamu; z rozevíracího seznamu vyberte frontu služby Service Bus. Tento kurz používá **contososbqueue**.
 
 5. Kliknutím na **Vytvořit** přidejte koncový bod fronty služby Service Bus. Vrátíte se do podokna **Přidat trasu**. 
 
 6.  Teď vyplníte zbývající informace o dotazu směrování. Tento dotaz určuje kritéria pro odesílání zpráv do fronty služby Service Bus, kterou jste právě přidali jako koncový bod. Vyplňte pole na obrazovce. 
 
-   **Název:** Zadejte název dotazu směrování. Tento kurz používá **SBQueueRoute**. 
+   **Název**: Zadejte název pro směrování dotazů. Tento kurz používá **SBQueueRoute**. 
 
-   **Koncový bod:** Zobrazí se koncový bod, který jste právě nastavili.
+   **Koncový bod**: To ukazuje na koncový bod, který jste právě nainstalovali.
 
-   **Zdroj dat:** Vyberte z rozevíracího seznamu **Telemetrické zprávy zařízení**.
+   **Zdroj dat**: Vyberte **zařízení Telemetrických zpráv** z rozevíracího seznamu.
 
-   **Dotaz směrování:** Jako řetězec dotazu zadejte `level="critical"`. 
+   **Směrování dotazů**: Zadejte `level="critical"` jako řetězec dotazu. 
 
    ![Snímek obrazovky ukazující vytváření dotazu směrování pro frontu služby Service Bus](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
 
@@ -366,15 +370,15 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
 1. Na webu [Azure Portal](https://portal.azure.com) klikněte na **+ Vytvořit prostředek**. Do vyhledávacího pole zadejte **aplikace logiky** a stiskněte Enter. Ve výsledcích hledání vyberte Aplikaci logiky a pokračujte kliknutím na **Vytvořit** do podokna **Vytvořit aplikaci logiky**. Vyplňte jednotlivá pole. 
 
-   **Název:** V tomto poli je název aplikace logiky. Tento kurz používá **ContosoLogicApp**. 
+   **Název**: Toto pole je název aplikace logiky. Tento kurz používá **ContosoLogicApp**. 
 
    **Předplatné**: Vyberte své předplatné Azure.
 
-   **Skupina prostředků:** Klikněte na **Použít existující** a vyberte vaši skupinu prostředků. Tento kurz používá **ContosoResources**. 
+   **Skupina prostředků**: Klikněte na tlačítko **použít existující** a vyberte skupinu prostředků. Tento kurz používá **ContosoResources**. 
 
-   **Umístění:** Použijte vaše umístění. Tento kurz používá **Západ USA**. 
+   **Umístění**: Použijte vaši polohu. Tento kurz používá **Západ USA**. 
 
-   **Log Analytics:** Tento přepínač by měl být vypnutý. 
+   **Log Analytics**: Toto přepínací tlačítko by měla být vypnuta. 
 
    ![Snímek obrazovky znázorňující vytvoření aplikace logiky.](./media/tutorial-routing/create-logic-app.png)
 
@@ -424,11 +428,11 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 2. Zadejte o úloze následující informace.
 
-   **Název úlohy:** Název, který chcete úloze dát. Název musí být globálně jedinečný. Tento kurz používá **contosoJob**.
+   **Název úlohy**: Název úlohy. Název musí být globálně jedinečný. Tento kurz používá **contosoJob**.
 
-   **Skupina prostředků:** Použijte stejnou skupinu prostředků jako pro centrum IoT. Tento kurz používá **ContosoResources**. 
+   **Skupina prostředků**: Použijte stejnou skupinu prostředků, které jsou používané služby IoT hub. Tento kurz používá **ContosoResources**. 
 
-   **Umístění:** Použijte stejné umístění, které používáte v instalačním skriptu. Tento kurz používá **Západ USA**. 
+   **Umístění**: Použijte stejné umístění, které jsou používané ve skriptu instalace. Tento kurz používá **Západ USA**. 
 
    ![Snímek obrazovky předvádějící vytvoření úlohy Stream Analytics.](./media/tutorial-routing/stream-analytics-create-job.png)
 
@@ -440,17 +444,17 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 5. V podokně **Vstupy** klikněte na **Přidat vstup streamu** a vyberte IoT Hub. Na další obrazovce vyplňte následující pole:
 
-   **Alias pro vstup:** Tento kurz používá **contosoinputs**.
+   **Vstupní alias**: Tento kurz používá **contosoinputs**.
 
-   **Předplatné:** Vyberte vaše předplatné.
+   **Předplatné**: Vyberte své předplatné.
 
-   **IoT Hub:** Vyberte IoT Hub. Tento kurz používá **ContosoTestHub**.
+   **IoT Hub**: Vyberte službu IoT Hub. Tento kurz používá **ContosoTestHub**.
 
-   **Koncový bod:** vyberte **Zasílání zpráv**. (Pokud vyberete monitorování operací, získáte namísto procházejících dat telemetrická data o centru IoT.) 
+   **Koncový bod**: Vyberte **zasílání zpráv**. (Pokud vyberete monitorování operací, získáte namísto procházejících dat telemetrická data o centru IoT.) 
 
-   **Název zásad sdíleného přístupu:** Vyberte **iothubowner**. Portál vyplní Klíč zásad sdíleného přístupu za vás.
+   **Název zásad sdíleného přístupu**: Vyberte **iothubowner**. Portál vyplní Klíč zásad sdíleného přístupu za vás.
 
-   **Skupina prostředků:** Vyberte skupinu prostředků, kterou jste vytvořili dříve. Tento kurz používá **contosoconsumers**.
+   **Skupina uživatelů**: Vyberte skupinu příjemců, který jste vytvořili dříve. Tento kurz používá **contosoconsumers**.
    
    Pro zbývající pole můžete použít výchozí hodnoty. 
 
@@ -464,11 +468,11 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 2. V podokně **Výstupy** klikněte na **Přidat** a potom vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
 
-   **Alias pro výstup:** Jedinečný alias pro výstup. Tento kurz používá **contosooutputs**. 
+   **Alias pro výstup**: Jedinečný alias pro výstup. Tento kurz používá **contosooutputs**. 
 
-   **Název datové sady:** Název datové sady, kterou chcete v Power BI použít. Tento kurz používá **contosodataset**. 
+   **Název datové sady**: Název datové sady, který se má použít v Power BI. Tento kurz používá **contosodataset**. 
 
-   **Název tabulky:** Název tabulky, kterou chcete v Power BI použít. Tento kurz používá **contosotable**.
+   **Název tabulky**: Název tabulky, který se má použít v Power BI. Tento kurz používá **contosotable**.
 
    Pro zbývající pole můžete použít výchozí hodnoty.
 
@@ -607,7 +611,7 @@ K odebrání skupiny prostředků použijte příkaz [Remove-AzureRmResourceGrou
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili, jak používat směrování zpráv služby IoT Hub na různé cíle provedením následujících úloh.  
 

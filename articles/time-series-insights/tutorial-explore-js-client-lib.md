@@ -1,5 +1,5 @@
 ---
-title: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
+title: Prozkoumejte Azure čas Series Insights Javascriptovou klientskou knihovnu | Dokumentace Microsoftu
 description: Seznamte se s javascriptovou klientskou knihovnou pro službu Azure Time Series Insights a se souvisejícím programovacím modelem.
 author: ashannon7
 manager: cshankar
@@ -8,12 +8,13 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 5f31dce98cd873a0bf4b750934384e1bf6d2564a
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.custom: seodec18
+ms.openlocfilehash: 33dcf6f69d1287b4e040b3cccf4164667db2b75f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706989"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269970"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Kurz: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
 
@@ -82,7 +83,7 @@ Nejprve se podívejme na zdrojový kód v HTML a JavaScriptu, který zajišťuje
 
 3. Když rozbalíte element `<div class="chartsWrapper">`, najdete další podřízené elementy `<div>`. Tyto prvky se používají k umístění jednotlivých ovládacích prvků ukázkových grafů. Všimněte si několika párů elementů `<div>`, jednoho pro každý příklad grafu:
 
-   - První element (`class="rowOfCardsTitle"`) obsahuje popisný název, který shrnuje, co graf znázorňuje. Například Static Line Charts With Full-Size Legends (Statické spojnicové grafy s legendami v plné velikosti).
+   - První element (`class="rowOfCardsTitle"`) obsahuje popisný název, který shrnuje, co graf znázorňuje. Příklad: "Statické spojnicové grafy s reklamy legendy."
    - Druhý element (`class="rowOfCards"`) je nadřazený prvek obsahující další podřízené elementy `<div>`, které určují pozici vlastních ovládacích prvků grafů na řádku.
 
    ![Prvky div v oddílu body](media/tutorial-explore-js-client-lib/tcs-devtools-callouts-body-divs.png)
@@ -95,8 +96,8 @@ Nejprve se podívejme na zdrojový kód v HTML a JavaScriptu, který zajišťuje
 
 Klientskou knihovnu pro TSI (**tsclient.js**) nebudeme podrobně popisovat, ale v zásadě poskytuje abstrakci pro dvě důležité kategorie:
 
-- **Obálkové metody pro volání dotazovacích rozhraní API pro TSI:** Rozhraní REST API umožňující dotazovat data TSI pomocí agregačních výrazů. Tyto metody jsou uspořádané v rámci oboru názvů `TsiClient.Server` knihovny.
-- **Metody pro vytváření a naplňování různých typů ovládacích prvků grafů:** Metody používané k vykreslování agregovaných dat TSI na webové stránce. Tyto metody jsou uspořádané v rámci oboru názvů `TsiClient.UX` knihovny.
+- **Metody obálky volání API pro dotazy služby TSI**: Rozhraní REST API, která umožňuje zadat dotaz pro TSI data pomocí agregační výrazy. Tyto metody jsou uspořádané v rámci oboru názvů `TsiClient.Server` knihovny.
+- **Metody vytvoření a naplnění několik typů grafů ovládací prvky**: Metody, které jsou používané k vykreslování TSI agregovaná data na webové stránce. Tyto metody jsou uspořádané v rámci oboru názvů `TsiClient.UX` knihovny.
 
 Následující koncepty jsou univerzální a vztahují se obecně na všechna rozhraní API klientské knihovny pro TSI.
 
@@ -235,15 +236,15 @@ Prohlédněte si kód části HTML pod komentářem `// Example 13/14/15`. Tento
 
 1. Nejprve se definuje řada vlastních akcí. Každá akce obsahuje pole s jedním nebo více elementy. Každý element definuje jednu položku místní nabídky:
 
-   - `barChartActions`: Tato akce definuje místní nabídku pro výsečový graf, která obsahuje jeden element definující jednu položku:
-     - `name`: Text, který se použije pro položku nabídky: Print parameters to console (Vytisknout parametry do konzoly)
-     - `action`: Akce přiřazená k položce nabídky. Akce je vždy anonymní funkce, která přebírá tři argumenty založené na agregačním výrazu použitém k vytvoření grafu. V tomto případě se argumenty zapisují do okna konzoly v prohlížeči:
-       - `ae`: Pole agregačního výrazu
-       - `splitBy`: Hodnota, podle které se provede rozdělení
-       - `timestamp`: Časové razítko
+   - `barChartActions`: Tato akce definuje kontextovou nabídku pro výsečový graf, který obsahuje jeden prvek. Chcete-li definovat jednu položku:
+     - `name`: Text, který se používá pro položku nabídky: "Print parametry do konzoly."
+     - `action`: Akce přidružené položky nabídky. Akce je vždy anonymní funkce, která přebírá tři argumenty založené na agregačním výrazu použitém k vytvoření grafu. V tomto případě se argumenty zapisují do okna konzoly v prohlížeči:
+       - `ae`: Agregační výraz pole.
+       - `splitBy`: Hodnota splitBy.
+       - `timestamp`: Časové razítko.
 
-   - `pieChartActions`: Tato akce definuje místní nabídku pro pruhový graf, která obsahuje jeden element definující jednu položku: Tvar a schéma jsou stejné jako u předchozího elementu `barChartActions`, ale všimněte si výrazného rozdílu ve funkci `action`, která vytvoří instanci pruhového grafu a vykreslí ho. Také si všimněte, že se pomocí argumentu `ae` určuje pole agregačních výrazů, které se předává za běhu při otevření položky nabídky. Funkce také nastaví vlastnost `ae.contextMenu` s místní nabídkou `barChartActions`.
-   - `contextMenuActions`: Tato akce definuje místní nabídku pro spojnicový graf, která obsahuje tři elementy definující tři položky nabídky. Tvar a schéma jednotlivých elementů jsou stejné jako u předchozích elementů. První položka stejně jako v případě elementu `barChartActions` zapíše tři argumenty funkce do okna konzoly v prohlížeči. Další dvě položky podobně jako v případě elementu `pieChartActions` vytvoří instance výsečového a pruhového grafu (v uvedeném pořadí) a vykreslí je. Další dvě položky také nastaví ve svých vlastnostech `ae.contextMenu` místní nabídky `pieChartActions` a `barChartActions` (v uvedeném pořadí).
+   - `pieChartActions`: Tato akce definuje kontextovou nabídku pro pruhový graf, který obsahuje jeden prvek. Chcete-li definovat jednu položku. Tvar a schéma jsou stejné jako u předchozího elementu `barChartActions`, ale všimněte si výrazného rozdílu ve funkci `action`, která vytvoří instanci pruhového grafu a vykreslí ho. Také si všimněte, že se pomocí argumentu `ae` určuje pole agregačních výrazů, které se předává za běhu při otevření položky nabídky. Funkce také nastaví vlastnost `ae.contextMenu` s místní nabídkou `barChartActions`.
+   - `contextMenuActions`: Tato akce definuje kontextovou nabídku pro spojnicový graf, který obsahuje tři prvky k definování tři položky nabídky. Tvar a schéma jednotlivých elementů jsou stejné jako u předchozích elementů. První položka stejně jako v případě elementu `barChartActions` zapíše tři argumenty funkce do okna konzoly v prohlížeči. Další dvě položky podobně jako v případě elementu `pieChartActions` vytvoří instance výsečového a pruhového grafu (v uvedeném pořadí) a vykreslí je. Další dvě položky také nastaví ve svých vlastnostech `ae.contextMenu` místní nabídky `pieChartActions` a `barChartActions` (v uvedeném pořadí).
 
 2. Pak se do pole agregačních výrazů `aes` odešlou dva agregační výrazy, které pro obě položky určí pole `contextMenuActions`. Tyto výrazy se používají v ovládacím prvku spojnicového grafu.
 
@@ -262,10 +263,10 @@ Pomocí štětců můžete omezit časový rozsah a definovat akce, jako jsou p�
 Kód sloužící k ilustraci štětců je zobrazený také v předchozím příkladu spojnicového grafu s místní nabídkou pro vytvoření výsečového nebo pruhového grafu, který popisoval [automaticky otevírané místní nabídky](#popup-context-menus-section).
 
 1. Akce štětců jsou podobné místní nabídce v tom, že pro štětec definují řadu vlastních akcí. Každá akce obsahuje pole s jedním nebo více elementy. Každý element definuje jednu položku místní nabídky:
-   - `name`: Text, který se použije pro položku nabídky: Print parameters to console (Vytisknout parametry do konzoly)
-   - `action`: Akce přidružená k položce nabídky, která je vždy anonymní funkcí, která přebírá dva argumenty. V tomto případě se argumenty zapisují do okna konzoly v prohlížeči:
-      - `fromTime`: Časové razítko „od“ pro výběr štětcem
-      - `toTime`: Časové razítko „do“ pro výběr štětcem
+   - `name`: Text, který se používá pro položku nabídky: "Print parametry do konzoly."
+   - `action`: Akce, která je přidružená položka nabídky, který je vždycky anonymní funkce, která přebírá dva argumenty. V tomto případě se argumenty zapisují do okna konzoly v prohlížeči:
+      - `fromTime`: "Z" časové razítko výběr stopy.
+      - `toTime`: "Do" časové razítko výběr stopy.
 
 2. Akce štětců se přidávají jako další vlastnost možnosti grafu. Všimněte si vlastnosti `brushContextMenuActions: brushActions` předávané do volání `linechart.Render`.
 

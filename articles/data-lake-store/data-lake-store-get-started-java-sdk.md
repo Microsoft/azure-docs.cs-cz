@@ -1,5 +1,5 @@
 ---
-title: 'Java SDK: operace systému souborů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
+title: 'Java SDK: Operace systému souborů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
 description: Použití Azure Data Lake Storage Gen1 Java SDK k provádění operací systému souborů v Data Lake Storage Gen1, jako je vytváření složek atd.
 services: data-lake-store
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: a91593c1bae3002be8b7e423b627f1baf19e86e2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: edbaa8fe42c0e6bfda8558e7d9e5cd0ce42bfcc4
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129182"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53260697"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí sady Java SDK
 > [!div class="op_single_selector"]
@@ -206,7 +206,7 @@ Následující fragment kódu odstraní zadané soubory a složky v účtu Data 
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 1. Pokud chcete aplikaci spustit z rozhraní IDE, stiskněte tlačítko **Spustit**. Pokud ji chcete spustit z Mavenu, použijte příkaz [exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html).
-2. Jestliže chcete vytvořit samostatný soubor jar, který budete moct spustit z příkazového řádku, vytvořte ho se všemi závislostmi s použitím [modulu plug-in sestavení Maven](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Soubor pom.xml v [ukázkovém zdrojovém kódu na GitHubu](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) obsahuje příklad.
+2. Jestliže chcete vytvořit samostatný soubor jar, který budete moct spustit z příkazového řádku, vytvořte ho se všemi závislostmi s použitím [modulu plug-in sestavení Maven](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Soubor pom.xml v [ukázkovém zdrojovém kódu na Githubu](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) obsahuje příklad.
 
 ## <a name="next-steps"></a>Další postup
 * [Prozkoumání JavaDoc k sadě Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)

@@ -1,5 +1,5 @@
 ---
-title: Přehled Web Apps | Dokumentace Microsoftu
+title: Přehled služby App Service – Azure | Dokumentace Microsoftu
 description: Zjistěte, jak služba Azure App Service pomáhá nasazovat, hostovat a používat webové aplikace
 services: app-service\web
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: d8940a305a672f032f2e4e170f99a2cd70ca2b12
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 17f90d54b31fbc46fc831fca0650417c50937fe6
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318091"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253341"
 ---
-# <a name="web-apps-overview"></a>Přehled Web Apps
+# <a name="app-service-overview"></a>Přehled App Service
 
-*Azure App Service Web Apps* (nebo jenom Web Apps) je služba pro hostování webových aplikací, rozhraní REST API a mobilních back-endů. Můžete vyvíjet ve svém oblíbeném jazyce, ať už jde o .NET, .NET Core, Javu, Ruby, Node.js, PHP nebo Python. Aplikace se snadno spouštějí a škálují v prostředích založených na Windows. Informace o prostředích založených na Linuxu najdete v tématu [App Service v Linuxu](containers/app-service-linux-intro.md). 
+*Azure App Service* je služba pro hostování webových aplikací, rozhraní REST API a mobilní back-EndY. Můžete vyvíjet ve svém oblíbeném jazyce, ať už jde o .NET, .NET Core, Javu, Ruby, Node.js, PHP nebo Python. Aplikace se snadno spouštějí a škálují v prostředích založených na Windows. Informace o prostředích založených na Linuxu najdete v tématu [App Service v Linuxu](containers/app-service-linux-intro.md). 
 
 Služba Web Apps nejen že do vaší aplikace přináší výkon Microsoft Azure v podobě zabezpečení, vyrovnávání zatížení, automatického škálování nebo automatizované správy. Můžete také využívat její možnosti DevOps, jako jsou průběžné nasazování z Azure DevOps, GitHubu, Docker Hubu a dalších zdrojů, správa balíčků, přípravná prostředí, vlastní doména a certifikáty SSL. 
 
@@ -46,7 +46,7 @@ Toto jsou některé klíčové funkce služby App Service Web Apps:
 
 Kromě Web Apps ve službě App Service nabízí Azure další služby, které lze použít k hostování webů a webových aplikací. Pro většinu scénářů je nejlepší volbou služba Web Apps.  Pro architekturu mikroslužeb zvažte [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric). Pokud potřebujete větší kontrolu nad virtuálními počítači, na kterých se kód spouští, zvažte službu [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). Příklady typických aplikačních scénářů, k nimž můžete použít službu Web Apps, naleznete v tématu [Srovnání Azure App Service, Virtual Machines, Service Fabric a Cloud Services](choose-web-site-cloud-service-vm.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvořte svou první aplikaci.
 

@@ -1,19 +1,18 @@
 ---
 title: zahrnout soubor
 description: zahrnout soubor
-services: signalr
 author: anthonychu
 ms.service: signalr
 ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 133fa1063a08303bfe4b4a973801b6bc22766ac3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 73d40bfb5a7e691cead5a84be70398e9cbf6656a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47006229"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262749"
 ---
 ## <a name="run-the-web-application"></a>Spuštění webové aplikace
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 6905db3c042693fabea368bfd57547914fa01206
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 535c65f58ac9a3f39faa347ca853bfa410b7f182
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141131"
+ms.locfileid: "53185323"
 ---
 # <a name="virtual-machine-serial-console-for-windows"></a>Konzola sériového portu virtuálního počítače pro Windows
 
@@ -124,15 +124,15 @@ Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignoro
 
 Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azure s využitím klávesnice ikonu na panelu příkazů. Jakmile se doručí NMI, konfigurace virtuálního počítače bude řídit, jak systém reaguje při. Windows by šlo o chybách a vytvořte soubor s výpisem paměti při příjmu NMI.
 
+![Odeslat NMI](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+
+Informace o konfiguraci Windows vytvořte soubor s výpisem paměti při selhání při přijetí NMI najdete v tématu [jak vygenerovat soubor s výpisem paměti při selhání s použitím NMI](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
+
 ### <a name="use-function-keys-in-serial-console"></a>Použít funkční klávesy v konzole sériového portu
 Funkční klávesy jsou povolené pro využití konzoly sériového portu ve virtuálních počítačích Windows. F8 v rozevírací nabídce konzoly sériového portu zvyšuje pohodlí snadné zadávání nabídky Rozšířené nastavení spouštění, ale je kompatibilní se všemi klíči jiné funkce konzoly sériového portu. Budete muset stiskněte **Fn** + **F1** (nebo F2 a F3 atd) kláves v závislosti na počítači konzoly sériového portu z používáte.
 
 ### <a name="use-wsl-in-serial-console"></a>Použití WSL v konzole sériového portu
 Subsystém Windows pro Linux (WSL) bylo povoleno pro Windows Server 2019 nebo novější, takže je také možné povolit WSL pro použití v rámci konzoly sériového portu, pokud používáte systém Windows Server 2019 nebo novější. To může být výhodné pro uživatele, kteří mají také znalost Linuxové příkazy. Pokyny k povolení WSL pro systém Windows Server najdete v tématu [Průvodce instalací](https://docs.microsoft.com/windows/wsl/install-on-server).
-
-![Odeslat NMI](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
-
-Informace o konfiguraci Windows vytvořte soubor s výpisem paměti při selhání při přijetí NMI najdete v tématu [jak vygenerovat soubor s výpisem paměti při selhání s použitím NMI](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file).
 
 ## <a name="disable-serial-console"></a>Zakázat konzoly sériového portu
 Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Můžete zakázat konzole sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače.
@@ -210,7 +210,7 @@ Scénář          | Akce v konzole sériového portu
 Pravidla brány firewall na nesprávný | Přístup k sériové konzoly a opravte Windows pravidla brány firewall.
 Poškození systému souborů a vrácení | Přístup ke konzole sériového portu a proveďte obnovení ze systému souborů.
 Problémy s konfigurací protokolu RDP | Přístup ke konzole sériového portu a změnit nastavení. Další informace najdete v tématu [RDP dokumentaci](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
-Uzamknutí sítě v systému | Na webu Azure Portal ke správě systému přístup ke konzole sériového portu. Některé příkazy sítě jsou uvedeny v [příkazy Windows: CMD a prostředí PowerShell](serial-console-cmd-ps-commands.md).
+Uzamknutí sítě v systému | Na webu Azure Portal ke správě systému přístup ke konzole sériového portu. Některé příkazy sítě jsou uvedeny v [příkazy Windows: Příkaz CMD a prostředí PowerShell](serial-console-cmd-ps-commands.md).
 Interakce s zaváděcího programu pro spouštění | Přístup k BCD prostřednictvím konzoly sériového portu. Informace najdete v tématu [povolit Windows spouštěcí nabídky v konzole sériového portu](#enable-the-windows-boot-menu-in-the-serial-console).
 
 
@@ -266,6 +266,6 @@ A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke 
 A. V současné době se nepodporuje přístup ke konzole sériového portu pro instance škálovací sady virtuálních počítačů.
 
 ## <a name="next-steps"></a>Další postup
-* Podrobné pokyny k příkazy CMD a prostředí PowerShell můžete použít v Windows SAC, naleznete v tématu [příkazy Windows: CMD a prostředí PowerShell](serial-console-cmd-ps-commands.md).
+* Podrobné pokyny k příkazy CMD a prostředí PowerShell můžete použít v Windows SAC, naleznete v tématu [příkazy Windows: Příkaz CMD a prostředí PowerShell](serial-console-cmd-ps-commands.md).
 * Je taky dostupná ke konzole sériového portu [Linux](serial-console-linux.md) virtuálních počítačů.
 * Další informace o [Diagnostika spouštění](boot-diagnostics.md).

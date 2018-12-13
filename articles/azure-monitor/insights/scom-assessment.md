@@ -8,19 +8,17 @@ manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
 ms.service: log-analytics
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: ddf749dd033771ae9bad09f4548c277c279c2bb5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839360"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186119"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizujete si prostředí díky řešení System Center Operations Manager kontroly stavu (Preview)
 
@@ -99,7 +97,7 @@ Teď, když se vytvoří účet Spustit jako, musí cílové servery pro správu
 2. Na **distribuce** klikněte na tlačítko **přidat** pro **vybrané počítače** a přidejte k distribuci účtu na serveru pro správu.  Klikněte na tlačítko **OK** dvakrát tím uložíte provedené změny.
 3. V části **konfigurace spustit jako**, klikněte na tlačítko **profily**.
 4. Hledat *profilu posouzení SCOM*.
-5. By měl být název profilu: *Microsoft System Center Advisor SCOM posouzení profilu spustit jako*.
+5. By měl být název profilu: *Posouzení SCOM Microsoft System Center Advisor profil spustit jako*.
 6. Klikněte pravým tlačítkem myši a aktualizovat jeho vlastnosti a přidat naposledy vytvořený účet Spustit jako jste vytvořili dříve.
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Skript SQL pro udělovat různě odstupňovaná oprávnění k účtu spustit jako
@@ -161,7 +159,7 @@ Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo je v
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Povolení pravidla pro konkrétní server pro správu
 
 1. V **Authoring** pracovního prostoru na konzole Operations Manageru, vyhledejte pravidlo *Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo* v **pravidla** podokně.
-2. Ve výsledcích hledání vyberte ten, který obsahuje text *typ: Server pro správu*.
+2. Ve výsledcích hledání vyberte ten, který obsahuje text *typu: Server pro správu*.
 3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na tlačítko **přepíše** > **pro konkrétní objekt třídy: Server pro správu**.
 4.  V seznamu serverů pro správu k dispozici vyberte ve kterém se má pravidlo spustit server pro správu.  To by měl být stejný server pro správu, který jste nakonfigurovali dříve přidružit účet Spustit jako s.
 5.  Ujistěte se, že změníte hodnotu pro přepisování na **True** pro **povoleno** hodnotu parametru.<br><br> ![Přepište parametr](./media/scom-assessment/rule.png)
@@ -173,7 +171,7 @@ Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo je v
 Hodnocení je ve výchozím nastavení nakonfigurované ke spuštění každých 10 080 minut (nebo sedm dní). Můžete přepsat hodnotu na minimální hodnotu 1 440 minut (nebo jeden den). Hodnota představuje minimální časové prodlevy mezi po sobě jdoucích posouzení spuštění vyžaduje. K přepsání intervalu, použijte následující postup.
 
 1. V **Authoring** pracovního prostoru na konzole nástroje Operations Manager, vyhledejte pravidlo *Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo* v **pravidla** oddíl.
-2. Ve výsledcích hledání vyberte ten, který obsahuje text *typ: Server pro správu*.
+2. Ve výsledcích hledání vyberte ten, který obsahuje text *typu: Server pro správu*.
 3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na tlačítko **přepsat pravidlo** > **pro všechny objekty třídy: Server pro správu**.
 4. Změnit **Interval** hodnota parametru hodnotě požadované intervalu. V následujícím příkladu je hodnota nastavena na 1 440 minut (jeden den).<br><br> ![Parametr interval](./media/scom-assessment/interval.png)<br>  
 

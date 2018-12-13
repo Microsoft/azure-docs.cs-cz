@@ -1,5 +1,5 @@
 ---
-title: Přehled diagnostiky služby Azure App Service | Dokumentace Microsoftu
+title: Přehled diagnostiky – Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak je řešit problémy s vaší webovou aplikací pomocí diagnostiky služby App Service.
 keywords: služby App service, služby azure app service, Diagnostika, podpora, webové aplikace s řešením problémů, samoobslužné podpory
 services: app-service
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: 7ad205c75a02b496abe2cb910c7eb459cdb16c97
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.custom: seodec18
+ms.openlocfilehash: a8b256f43d8e4103404ab4276431ceb06d9ed36a
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969234"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255138"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Přehled diagnostiky služby Azure App Service 
 
@@ -66,5 +67,5 @@ Protože mnoho problémů s aplikací se vztahují na problémy v kódu aplikace
 
 Chcete-li zobrazit výjimek Application Insights a závislosti, vyberte **vypnutí webové aplikace** nebo **webové aplikace pomalé** dlaždici klávesové zkratky. 
 
-![Application Insights](./media/app-service-diagnostics/AppInsights6.png)
+![Application insights](./media/app-service-diagnostics/AppInsights6.png)
 

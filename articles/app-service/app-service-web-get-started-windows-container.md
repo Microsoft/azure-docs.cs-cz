@@ -1,5 +1,5 @@
 ---
-title: Spuštění vlastního kontejneru s Windows v Azure (Preview) | Microsoft Docs
+title: Spuštění vlastní kontejner Windows (Preview) – služby Azure App Service | Dokumentace Microsoftu
 description: Zjistěte, jak do služby Azure App Service nasadit vlastní kontejner s Windows.
 services: app-service\web
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 09/17/2018
 ms.author: cephalin
-ms.custom: mvc
-ms.openlocfilehash: e2d058cfe6d6a31f557708277902063e51f54bc5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 9c77bbbf3d2149e905d77355579021d10094496c
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971361"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53250854"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Spuštění vlastního kontejneru s Windows v Azure (Preview)
 
@@ -32,11 +32,11 @@ ms.locfileid: "46971361"
 Pro absolvování tohoto kurzu potřebujete:
 
 - <a href="https://hub.docker.com/" target="_blank">Zaregistrovat si účet Centra Dockeru</a>
-- <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalujte Docker for Windows</a>.
-- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10#2-switch-to-windows-containers" target="_blank">Přepněte Docker na spouštění kontejnerů Windows</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalujte Visual Studio 2017</a> se sadami funkcí **Vývoj pro ASP.NET a web** a **Vývoj pro Azure**. Pokud už máte sadu Visual Studio 2017 nainstalovanou:
-    - Nainstalujte nejnovější aktualizace v sadě Visual Studio tak, že kliknete na **Nápověda** > **Vyhledat aktualizace**.
-    - Přidejte příslušné sady funkcí do sady Visual Studio tak, že kliknete na **Nástroje** > **Získat nástroje a funkce**.
+- <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Nainstalovat Docker for Windows</a>.
+- <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10#2-switch-to-windows-containers" target="_blank">Přepnout Docker na spouštění kontejnerů Windows</a>.
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Nainstalovat Visual Studio 2017</a> se sadami funkcí **Vývoj pro ASP.NET a web** a **Vývoj pro Azure**. Pokud už máte sadu Visual Studio 2017 nainstalovanou:
+    - Nainstalujte nejnovější aktualizace sady Visual Studio kliknutím na **Nápověda** > **Vyhledat aktualizace**.
+    - Kliknutím na **Nástroje** > **Získat nástroje a funkce** přidejte do sady Visual Studio tyto sady funkcí.
 
 ## <a name="create-an-aspnet-web-app"></a>Vytvoření webové aplikace ASP.NET
 
@@ -189,7 +189,7 @@ Stažení nadřazené image při spuštění aplikace nějakou dobu trvá. Čas 
 - [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/):2.1-aspnetcore-runtime
 - [microsoft/dotnet](https://hub.docker.com/r/microsoft/dotnet/):2.1-sdk
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Migrace na kontejner Windows v Azure](app-service-web-tutorial-windows-containers-custom-fonts.md)

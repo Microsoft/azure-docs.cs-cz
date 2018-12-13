@@ -8,22 +8,21 @@ manager: jwhit
 editor: tysonn
 ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
 ms.service: monitoring
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: b590a6ce6d92c78f2020d5ef7cffe6d7f277433c
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51828194"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53187207"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Řešení Service Map integrace s nástrojem System Center Operations Manager
   > [!NOTE]
-  > Tato funkce je ve verzi public preview.
+  > Tato funkce je ve verzi Public Preview.
   > 
   
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Řešení Service Map umožňuje zobrazit vaše servery tak, jak přirozeným způsobem, jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta vyžaduje. Další informace najdete v tématu [dokumentace ke službě Service Map]( service-map.md).
@@ -77,7 +76,7 @@ Pokud chcete nakonfigurovat integraci řešení Service Map, postupujte takto:
 
     ![Skupina konfigurace Operations Manageru](media/service-map-scom/scom-config-group.png)
 
-6. Volitelné: Vyberte fond zdrojů serveru pro správu komunikovat s Log Analytics a potom klikněte na tlačítko **přidat pracovní prostor**.
+6. Volitelné: Vyberte fond zdrojů serveru pro správu komunikovat s Log Analytics, a potom klikněte na **přidat pracovní prostor**.
 
     ![Fond zdrojů Configuration Manager Operations](media/service-map-scom/scom-config-pool.png)
 
@@ -92,17 +91,17 @@ Po připojení pracovního prostoru Log Analytics novou složku Service Map se z
 ![V podokně monitorování nástroje Operations Manager](media/service-map-scom/scom-monitoring.png)
 
 Složka řešení Service Map má čtyři uzly:
-* **Aktivní výstrahy**: Zobrazuje seznam všech aktivních výstrah o komunikaci mezi nástrojem Operations Manager a Service Map.  Všimněte si, že se tato upozornění Log Analytics výstrahy, synchronizuje do nástroje Operations Manager. 
+* **Aktivní výstrahy**: Zobrazí seznam všech aktivních výstrah o komunikaci mezi nástrojem Operations Manager a Service Map.  Všimněte si, že se tato upozornění Log Analytics výstrahy, synchronizuje do nástroje Operations Manager. 
 
-* **Servery**: jsou monitorované servery, které jsou nakonfigurovány k synchronizaci ze služeb Service Map.
+* **Servery**: Jsou monitorované servery, které jsou nakonfigurovány k synchronizaci ze služeb Service Map.
 
     ![V podokně monitorování servery nástroje Operations Manager](media/service-map-scom/scom-monitoring-servers.png)
 
-* **Zobrazení závislostí skupin počítačů**: jsou uvedeny všechny skupiny počítačů, které jsou synchronizované z řešení Service Map. Klikněte na možnost žádné skupiny k zobrazení jeho diagramu distribuované aplikace.
+* **Zobrazení závislostí skupin počítačů**: Uvádí všechny skupiny počítačů, které jsou synchronizované z řešení Service Map. Klikněte na možnost žádné skupiny k zobrazení jeho diagramu distribuované aplikace.
 
     ![Diagramu distribuované aplikace Operations Manageru](media/service-map-scom/scom-group-dad.png)
 
-* **Zobrazení závislostí serveru**: Vypíše všechny servery, které jsou synchronizované z řešení Service Map. Můžete kliknout na libovolný server zobrazíte jeho diagramu distribuované aplikace.
+* **Zobrazení závislostí serveru**: Obsahuje seznam všech serverů, které jsou synchronizované z řešení Service Map. Můžete kliknout na libovolný server zobrazíte jeho diagramu distribuované aplikace.
 
     ![Diagramu distribuované aplikace Operations Manageru](media/service-map-scom/scom-dad.png)
 
@@ -122,9 +121,9 @@ Pravidlo, _Microsoft.SystemCenter.ServiceMapImport.Rule_, vytvoření pravideln�
 ![V okně Vlastnosti přepsání Operations Manageru](media/service-map-scom/scom-overrides.png)
 
 * **Povolené**: Povolí nebo zakáže automatické aktualizace. 
-* **IntervalMinutes**: resetování času mezi aktualizacemi. Výchozí interval je jedna hodina. Pokud chcete synchronizovat server mapy častěji, můžete změnit hodnotu.
-* **TimeoutSeconds**: resetování dobu, než vyprší časový limit žádosti. 
-* **TimeWindowMinutes**: časový interval pro dotazování na data obnovit. Výchozí hodnota je 60 minut okna. Maximální hodnotu povolenou Service Map je 60 minut.
+* **IntervalMinutes**: Resetování času mezi aktualizacemi. Výchozí interval je jedna hodina. Pokud chcete synchronizovat server mapy častěji, můžete změnit hodnotu.
+* **TimeoutSeconds**: Resetujte dobu, než vyprší časový limit žádosti. 
+* **TimeWindowMinutes**: Obnoví časový interval pro dotazování na data. Výchozí hodnota je 60 minut okna. Maximální hodnotu povolenou Service Map je 60 minut.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 

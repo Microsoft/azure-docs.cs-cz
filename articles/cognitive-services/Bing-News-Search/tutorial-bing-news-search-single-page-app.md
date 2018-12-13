@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Jednostránková aplikace vyhledávání zpráv Bingu'
+title: 'Kurz: Vytvoření webové jednostránkové aplikace – rozhraní API pro vyhledávání zpráv Bingu'
 titlesuffix: Azure Cognitive Services
-description: Vysvětluje, jak používat rozhraní API Bingu pro vyhledávání zpráv v jednostránkové webové aplikaci.
+description: Pomocí tohoto kurzu můžete vytvářet jednostránkovou webovou aplikaci, která může posílat vyhledávací dotazy do rozhraní API Bingu zpráv a zobrazení výsledků v rámci webové stránky.
 services: cognitive-services
 author: mikedodaro
 manager: cgronlun
@@ -10,14 +10,16 @@ ms.component: bing-news-search
 ms.topic: tutorial
 ms.date: 10/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: 1d27751d12c82736ca519bb3a0e9bcd49bef4a47
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.custom: seodec2018
+ms.openlocfilehash: 311abe4583d29098ebd26dfcf2214553aa1fe1c9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803643"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262040"
 ---
-# <a name="tutorial-single-page-news-search-app"></a>Kurz: Jednostránková aplikace s vyhledáváním zpráv
+# <a name="tutorial-create-a-single-page-web-app"></a>Kurz: Vytvoření webové jednostránkové aplikace
+
 Rozhraní API Bingu pro vyhledávání zpráv umožňuje hledat na webu a získávat výsledky v podobě zpráv relevantních pro vyhledávací dotaz. V tomto kurzu sestavíme jednostránkovou webovou aplikaci, která používá rozhraní API Bingu pro vyhledávání zpráv k zobrazení výsledků hledání na stránce. Aplikace zahrnuje komponenty HTML, CSS a JavaScriptu.
 
 <!-- Remove until we can replace it with sanitized copy
@@ -88,7 +90,7 @@ function getSubscriptionKey() {
     return key;
 }
 ```
-Značka HTML `<form>` `onsubmit` volá funkci `bingWebSearch` k vrácení výsledků hledání. `bingWebSearch` používá `getSubscriptionKey()` k ověření každého dotazu. Jak je vidět v předchozí definici, `getSubscriptionKey` vyzve uživatele k zadání klíč, pokud klíč nebyl zadán. Klíč se pak uloží pro další používání ze strany aplikace.
+Značka HTML `<form>` `onsubmit` volá funkci `bingWebSearch` k vrácení výsledků hledání. `bingWebSearch` používá `getSubscriptionKey()` k ověření každého dotazu. Jak je vidět v předchozí definici, `getSubscriptionKey` vyzve uživatele k zadání klíče, pokud klíč nebyl zadán. Klíč se pak uloží pro další používání ze strany aplikace.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
@@ -101,14 +103,14 @@ Následující obrázek znázorňuje textové pole dotazu a možnosti, které de
 
 Formulář HTML obsahuje prvky s těmito názvy:
 
-|Prvek|Popis|
+|Element|Popis|
 |-|-|
 | `where` | Rozevírací nabídka pro výběr trhu (polohy a jazyka) pro vyhledávání. |
 | `query` | Textového pole k zadání hledaných termínů. |
 | `category` | Zaškrtávací políčka pro podporu určitých typů výsledků. Podpora typu Health (zdraví) například zvyšuje hodnocení zpráv o zdraví. |
 | `when` | Rozevírací nabídka pro volitelné omezení vyhledávání na poslední den, týden nebo měsíc. |
 | `safe` | Zaškrtávací políčko označující, jestli se má používat funkce Bingu Bezpečné hledání k filtrování výsledků „pro dospělé“. |
-| `count` | Skryté pole. Počet výsledků hledání, který má být na každý požadavek vrácen. Můžete změnit, aby se na stránce zobrazovalo méně nebo více výsledků. |
+| `count` | Skryté pole. Počet výsledků vyhledávání, které se mají vrátit pro jednotlivé požadavky. Můžete změnit, aby se na stránce zobrazovalo méně nebo více výsledků. |
 | `offset`|  Skryté pole. Posun prvního výsledku hledání v požadavku, sloužící ke stránkování. Při novém požadavku se resetuje na `0`. |
 
 > [!NOTE]
@@ -269,12 +271,12 @@ function handleBingResponse() {
 > [!IMPORTANT]
 > Úspěšný požadavek HTTP *nemusí* nutně znamenat, že bylo úspěšné samotné vyhledávání. Pokud v operaci vyhledávání dojde k chybě, rozhraní API Bingu pro vyhledávání zpráv vrátí stavový kód HTTP jiný než 200 zahrnující informace o chybě v odpovědi JSON. Kromě toho, pokud byl požadavek omezený rychlostí, vrátí rozhraní API prázdnou odpověď.
 
-Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. K chybám může dojít v těchto fázích:
+Velká část kódu v obou předchozích funkcích je vyhrazená zpracování chyb. V následujících fázích můžou nastat chyby:
 
 |Krok|Potenciální chyby|Čím se zpracuje|
 |-|-|-|
 |Vytváření javascriptového objektu požadavku|Neplatná adresa URL|Blok `try`/`catch`|
-|Provedení požadavku|Chyby sítě, přerušená připojení|Obslužné rutiny událostí `error` a `abort`|
+|Provedení žádosti|Chyby sítě, přerušená připojení|Obslužné rutiny událostí `error` a `abort`|
 |Provedení vyhledávání|Neplatný požadavek, neplatný JSON, omezení rychlosti|Testy v obslužné rutině události `load`|
 
 Chyby se zpracovávají voláním `renderErrorMessage()` se všemi známými podrobnostmi o chybě. Pokud odpověď úspěšné projde kompletní řadou testů chyb, voláme `renderSearchResults()` k zobrazení výsledků hledání na stránce.
@@ -399,7 +401,7 @@ Zásady zabezpečení prohlížeče (CORS) můžou bránit tomu, aby byla hlavi�
 
 Pro účely vývoje můžete požadavek na rozhraní API Bingu pro vyhledávání na webu provést prostřednictvím proxy serveru CORS. Odpověď z takového proxy serveru má hlavičku `Access-Control-Expose-Headers`, která přidává hlavičky odpovědí na seznam povolených a zpřístupňuje je pro JavaScript.
 
-Proxy server CORS nainstalovat a povolit naší ukázkové aplikaci přístup k ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
+Nainstalovat proxy server CORS a povolit naší ukázkové aplikaci přístup k hlavičce ID klienta je snadné. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak zadejte v příkazovém okně tento příkaz:
 
     npm install -g cors-proxy-server
 
@@ -413,6 +415,6 @@ Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
 Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné sekci hlaviček HTTP pod výsledky hledání teď uvidíte hlavičku `X-MSEdge-ClientID` (mimo jiné) a můžete zkontrolovat, jestli je stejná pro každý požadavek.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
 > [Referenční informace k rozhraní API Bingu pro vyhledávání zpráv](//docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)

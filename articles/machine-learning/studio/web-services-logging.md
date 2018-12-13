@@ -6,7 +6,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
@@ -16,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 6da5a3c278c237b6139508ba49652deb3166eb1a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 8e9d6d006589e443329059c3f153e7925a88cd1f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091454"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53249773"
 ---
-# <a name="enable-logging-for-machine-learning-studio-web-services"></a>Povolení protokolování pro webové služby Machine Learning Studio
+# <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Povolení protokolování pro webové služby Azure Machine Learning Studio
 Tento dokument obsahuje informace o možnosti protokolování webových služeb Machine Learning. Protokolování poskytuje další informace, jenom číslo chyby a zprávy, které vám můžou pomoct vyřešit vaše volání rozhraní API pro Machine Learning.  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Jak povolit protokolování pro webové služby

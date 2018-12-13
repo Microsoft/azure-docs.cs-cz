@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý start: Hledání pomocí Go – rozhraní API Bingu pro vyhledávání na webu'
+title: 'Rychlý start: Provádět vyhledávání na webu s využitím Go – rozhraní API REST webové vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu v jazyce Go a dostanete odpověď ve formátu JSON.
+description: Použít tento rychlý start k odesílání požadavků na rozhraní Web API vyhledávání Bingu REST pomocí jazyka Go a přijetí odpovědi JSON
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -11,14 +11,15 @@ ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 4191232e45d012d3aec5d056c28e765332073ede
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.custom: seodec2018
+ms.openlocfilehash: 97b9a75802441a9360291d334b9920366a1c9450
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52310425"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255631"
 ---
-# <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>Rychlý start: Použití jazyka Go k volání rozhraní API Bingu pro vyhledávání na webu  
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Rychlý start: Vyhledávání na webu pomocí API REST vyhledávání na webu Bingu a Go
 
 V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu a dostanete odpověď JSON, a nezabere vám to ani 10 minut.  
 

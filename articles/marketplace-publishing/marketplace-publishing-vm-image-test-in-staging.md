@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: hascipio
-ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: bf41953300c3042853118c815dbf64e4474106fa
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715868"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194109"
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Testování vaší nabídky virtuálních počítačů pro Azure Marketplace v testovacím prostředí
 Příprava znamená nasazení skladové jednotky do privátního "izolovaném prostoru" kde můžete otestovat a ověřit funkčnost před jeho nasazení na webu Marketplace. SKU se zobrazí v pracovním stejně, jako by tomu bylo pro zákazníky, kteří ho nasadil. Image virtuálního počítače musí hardware obsahovat certifikaci pro doručit bez vyžádání do přípravného prostředí.
@@ -35,12 +35,12 @@ Příprava znamená nasazení skladové jednotky do privátního "izolovaném pr
    > V případě virtuálních počítačů a šablon řešení prosím **nejsou** předplatné seznamu povolených IP adres na základě typu CSP, DreamSpark nebo Azure v programu Open.
    > 
    > 
+   >
+   > V případě virtuálních počítačů, když kliknete na tlačítko **NEPŘEJDE k PŘÍPRAVĚ**, následující kroky se provádějí za scénu. Bude moct zobrazit průběh každého kroku na kartě publikovat publikování portálu. Je třeba zkontrolovat tuto stránku v pravidelných intervalech (dokud je ve stavu PŘIPRAVENÝ) pro všechny informace o selhání, které potřebují opravu z-endu vašeho.
 
-    > V případě virtuálních počítačů, když kliknete na tlačítko **NEPŘEJDE k PŘÍPRAVĚ**, následující kroky se provádějí za scénu. Bude moct zobrazit průběh každého kroku na kartě publikovat publikování portálu. Je třeba zkontrolovat tuto stránku v pravidelných intervalech (dokud je ve stavu PŘIPRAVENÝ) pro všechny informace o selhání, které potřebují opravu z-endu vašeho.
-
-    > - Zpočátku pracovní požadavek přejde na certifikaci týmu, který ověřit virtuální pevný disk. Ale pokud požadavek má obor pouze marketingové změnu, pak certifikace přeskočen.
-    > - Po dokončení certifikace replikace z nabídky start v Azure datových centrech. Obvykle trvá 24-48hours na dokončení replikace, ale může trvat až týden v závislosti na velikosti virtuálního pevného disku. Pokud požadavek má obor pouze marketingové změnu, pak replikace je ale rychlejší.
-    > - Po dokončení replikace poté nabídky bude k dispozici v [webu Azure portal](http:/portal.azure.com). V této době stav budou umístěné v publikování portálu. Fázované nabídka je viditelná v [webu Azure portal](http:/portal.azure.com) pouze pomocí e-mailu ID spojený s předplatným, které je vynášené nabídky.
+   > - Zpočátku pracovní požadavek přejde na certifikaci týmu, který ověřit virtuální pevný disk. Ale pokud požadavek má obor pouze marketingové změnu, pak certifikace přeskočen.
+   > - Po dokončení certifikace replikace z nabídky start v Azure datových centrech. Obvykle trvá 24-48hours na dokončení replikace, ale může trvat až týden v závislosti na velikosti virtuálního pevného disku. Pokud požadavek má obor pouze marketingové změnu, pak replikace je ale rychlejší.
+   > - Po dokončení replikace poté nabídky bude k dispozici v [webu Azure portal](http:/portal.azure.com). V této době stav budou umístěné v publikování portálu. Fázované nabídka je viditelná v [webu Azure portal](http:/portal.azure.com) pouze pomocí e-mailu ID spojený s předplatným, které je vynášené nabídky.
 
 1. Přihlaste se k [portálu Azure preview](https://portal.azure.com) pomocí jedné z předplatných Azure uvedených v předchozím kroku.
 2. Najděte nabídky a ověření vašich bodů image virtuálního počítače:
@@ -58,8 +58,8 @@ Příprava znamená nasazení skladové jednotky do privátního "izolovaném pr
 > 
 
 ## <a name="next-steps"></a>Další postup
-Teď, když vaše nabídka je "připravené" a testování její funkčnosti a marketing content, můžete přejít do konečné fáze publikování **kroku 4**: [nasazení vaší nabídky na webu Marketplace](marketplace-publishing-push-to-production.md).
+Teď, když vaše nabídka je "připravené" a testování její funkčnosti a marketing content, můžete přejít do konečné fáze publikování **kroku 4**: [Nasazení vaší nabídky na webu Marketplace](marketplace-publishing-push-to-production.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Začínáme: publikování nabídky na webu Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Začínáme: Publikování nabídky na webu Azure Marketplace](marketplace-publishing-getting-started.md)
 

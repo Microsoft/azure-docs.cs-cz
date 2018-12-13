@@ -10,25 +10,23 @@ ms.assetid: 5718d620-b96e-4d33-8616-e127ee9379c4
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 8f2bf9707d28744707c39a507108120e948dde7f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 61118520e84b53a7669e482694f48d60fd8e67ad
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866674"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193871"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenční příručka k části vizualizace návrháře zobrazení v Log Analytics
 Pomocí návrháře zobrazení v Azure Log Analytics můžete vytvořit vlastní zobrazení na webu Azure Portal, který k dispozici různé vizualizace dat z pracovního prostoru Log Analytics. Tento článek je referenční příručka k nastavení části vizualizace, které jsou k dispozici do vlastních zobrazení.
 
 Další informace o návrháři zobrazení najdete v tématu:
 
-* [Zobrazit návrháře](view-designer.md): poskytuje přehled o Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
-* [Dlaždice odkaz](view-designer-tiles.md): poskytuje odkaz na nastavení pro každou dlaždici k dispozici do vlastních zobrazení.
+* [Zobrazit návrháře](view-designer.md): Poskytuje přehled o Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
+* [Dlaždice odkaz](view-designer-tiles.md): Poskytuje odkaz na nastavení pro každou dlaždici k dispozici do vlastních zobrazení.
 
 
 Dostupné typy dlaždici Návrhář zobrazení jsou popsány v následující tabulce:
@@ -143,7 +141,7 @@ Záhlaví zobrazí jedno číslo, které shrnuje hodnotu sloupce v dotazu protok
 | Navigace pomocí kliknutí | Akce provedená v případě, že kliknete na záhlaví.  Další informace najdete v tématu [obecná nastavení](#click-through-navigation). |
 | **Prstencový** |**> System center** |
 | Text |Text, který se zobrazí v části v prstencovém hodnotu. |
-| Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jedinou hodnotu.<ul><li>Součet: Přidá hodnoty všechny záznamy.</li><li>Procento: Poměr záznamů vrácených hodnot v **způsobit hodnot použitých v operaci center** celkový počet záznamů v dotazu.</li></ul> |
+| Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jedinou hodnotu.<ul><li>Součet: Přidá hodnoty všechny záznamy.</li><li>Procento: Podíl záznamů vrácených hodnot v **způsobit hodnot použitých v operaci center** celkový počet záznamů v dotazu.</li></ul> |
 | Hodnoty výsledku, které se zobrazí ve středu |Volitelně vyberte znaménko plus (+) přidejte jednu nebo více hodnot. Výsledky dotazu jsou omezené na záznamy s hodnotami vlastností, které zadáte. Pokud jsou přidány žádné hodnoty, jsou zahrnuty všechny záznamy v dotazu. |
 | **Další možnosti** |**> Barvy** |
 | Barva 1<br>Barva 2<br>Barva 3 |Vyberte barvu pro všechny hodnoty, které jsou zobrazeny v prstencovém. |
@@ -182,7 +180,7 @@ Záhlaví zobrazí výsledků dvou dotazů na protokoly časem jako sloupcové g
 | Legenda |Text, který se zobrazí pod popisek pro první řady. |
 | Barva |Barvy pro použití pro sloupce v řadě. |
 | Dotaz |Dotaz, který se má spustit pro první řady. Počet záznamů v každém časovém intervalu je reprezentován sloupců v grafu. |
-| Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Součet: Součet hodnot ze všech záznamů.</li><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Poslední vzorek: hodnota od posledního intervalu, který je součástí grafu.</li><li>Nejprve ukázkový: hodnota z první interval, který je součástí grafu.</li><li>Počet: Počet všechny záznamy, které jsou vrácené dotazem.</li></ul> |
+| Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Součet: Součet hodnot ze všech záznamů.</li><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Poslední vzorek: Hodnota od posledního intervalu, který je součástí grafu.</li><li>První příklad: Hodnota z první interval, který je součástí grafu.</li><li>Počet: Počet všech záznamů, které jsou vrácené dotazem.</li></ul> |
 | **Seznam** | |
 | Dotaz |Dotaz pro spuštění v seznamu. Zobrazí se počet záznamů, které jsou vrácené dotazem. |
 | Skrýt graf |Vyberte tento odkaz pro zakázání grafu v pravém rohu číselný sloupec. |
@@ -238,7 +236,7 @@ Záhlaví zobrazuje spojnicový graf s několika řadami z dotazu protokolu za �
 | **Spojnicový graf** |**> Popis obrázku** |
 | Název popisku |Text, který se zobrazí nad hodnotou popisku. |
 | Název řady |Hodnota vlastnosti řady, použít pro hodnotu popisku. Pokud je k dispozici žádné řady, použijí se všechny záznamy z dotazu. |
-| Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všechny záznamy, které jsou vrácené dotazem.</li><li>Poslední vzorek: hodnota od posledního intervalu, který je součástí grafu.</li><li>Maximální počet: Maximální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Min: Minimální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Součet: Součet hodnot ze všech záznamů.</li></ul> |
+| Operace |Operace, který se má provést na hodnotu vlastnosti slouží ke shrnutí jako jednu hodnotu pro popisek.<ul><li>Průměr: Průměr hodnot ze všech záznamů.</li><li>Počet: Počet všech záznamů, které jsou vrácené dotazem.</li><li>Poslední vzorek: Hodnota od posledního intervalu, který je součástí grafu.</li><li>Max: Maximální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Min: Minimální hodnota z intervaly, které jsou zahrnuty v grafu.</li><li>Součet: Součet hodnot ze všech záznamů.</li></ul> |
 | **Spojnicový graf** |**> Osa y** |
 | Použít logaritmické měřítko |Vyberte tento odkaz použít logaritmické měřítko osy y. |
 | Jednotky |Zadejte jednotky pro hodnoty vrácené dotazem. Tyto informace slouží zobrazení popisků, které označují typy hodnot a volitelně pro převedení hodnot. *Jednotky* typ Určuje kategorii jednotky a definuje dostupných *aktuální jednotky* typ hodnoty. Pokud vyberete hodnotu v *převést na*, číselné hodnoty jsou převedeny z *aktuální jednotky* typ, který *převést na* typu. |
@@ -344,7 +342,7 @@ Následující tabulka popisuje nastavení pro minigrafy:
 | Nastavení | Popis |
 |:--- |:--- |
 | Povolit minigrafy |Vyberte tento odkaz zobrazíte minigrafu místo vodorovný pruh. |
-| Operace |Pokud jsou povolené minigrafy, právě tato operace provádět na každou vlastnost v seznamu k výpočtu hodnoty minigraf.<ul><li>Poslední vzorek: poslední hodnotu pro sérii během časového intervalu.</li><li>Maximální počet: Maximální hodnota pro řadu během časového intervalu.</li><li>Min: Minimální hodnota pro řadu během časového intervalu.</li><li>Součet: Součet hodnoty pro řadu během časového intervalu.</li><li>Shrnutí: Používá stejná `measure` příkaz jako dotaz v záhlaví.</li></ul> |
+| Operace |Pokud jsou povolené minigrafy, právě tato operace provádět na každou vlastnost v seznamu k výpočtu hodnoty minigraf.<ul><li>Poslední vzorek: Poslední hodnotu pro sérii během časového intervalu.</li><li>Max: Maximální hodnota pro řadu během časového intervalu.</li><li>Min: Minimální hodnota pro řadu během časového intervalu.</li><li>Součet: Součet hodnot pro řadu během časového intervalu.</li><li>Souhrn: Používá stejný `measure` příkaz jako dotaz v záhlaví.</li></ul> |
 
 ### <a name="thresholds"></a>Prahové hodnoty
 Pomocí prahové hodnoty, můžete zobrazit barevné ikonu vedle každé položky v seznamu. Prahové hodnoty poskytnout rychlé vizuální indikátor položek, které překročí určitou hodnotu nebo spadá do určitého rozsahu. Například můžete zobrazit zelená ikona pro položky s přijatelnou hodnotu, žlutou, pokud je hodnota v rozsahu, který zobrazuje varování a červeně při překročení chybovou hodnotu.

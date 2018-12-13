@@ -2,19 +2,19 @@
 title: V Azure HDInsight plánování kapacity clusteru
 description: Jak určit clusteru služby HDInsight pro kapacitu a výkon.
 services: hdinsight
-author: maxluk
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/22/2017
-ms.author: maxluk
-ms.openlocfilehash: b8b562e1f783a9da7621b29fbf6d5bd1ff6ca5ef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.date: 12/04/2018
+ms.author: hrasheed
+ms.openlocfilehash: c8ca936220bf1f4d7f38858c0e09e332cd474077
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013505"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193854"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -32,7 +32,7 @@ Jsou klíčové otázky týkající se plánování kapacity:
 
 Oblasti Azure Určuje, kde je váš cluster fyzicky zřízený. Abyste minimalizovali latenci čtení a zápisy, cluster by téměř vaše data.
 
-HDInsight je k dispozici v mnoha oblastech Azure. Nejbližší oblast, najdete v tématu *HDInsight Linux* položku *Data a analýzy* v [Azure produkty k dispozici podle oblasti](https://azure.microsoft.com/regions/services/).
+HDInsight je k dispozici v mnoha oblastech Azure. Nejbližší oblast, najdete v tématu *HDInsight* položku *Analytics* v [dostupné produkty podle oblasti](https://azure.microsoft.com/regions/services/).
 
 ## <a name="choose-storage-location-and-size"></a>Vyberte umístění úložiště a jeho velikost
 
@@ -71,11 +71,11 @@ K určení velikosti clusteru optimální pro vaši aplikaci, můžete srovnáva
 
 Velikost virtuálního počítače a typ se určuje podle procesoru, výkon, velikost paměti RAM a latence sítě:
 
-* Využití procesoru: Velikost virtuálního počítače určuje počet jader. Více jader, vyšší stupeň paralelní zpracování každého uzlu dosáhnout. Některé typy virtuálních počítačů navíc mají rychlejší jader.
+* Procesor: Velikost virtuálního počítače určuje počet jader. Více jader, vyšší stupeň paralelní zpracování každého uzlu dosáhnout. Některé typy virtuálních počítačů navíc mají rychlejší jader.
 
-* Paměť RAM: Velikost virtuálního počítače také určuje množství paměti RAM ve virtuálním počítači k dispozici. Pro úlohy, které ukládat data v paměti pro zpracování, místo čtení z disku, zkontrolujte navyšte kapacitu pracovních uzlů k dispozici dostatek paměti k datům.
+* PAMĚŤ RAM: Velikost virtuálního počítače také určuje množství paměti RAM ve virtuálním počítači k dispozici. Pro úlohy, které ukládat data v paměti pro zpracování, místo čtení z disku, zkontrolujte navyšte kapacitu pracovních uzlů k dispozici dostatek paměti k datům.
 
-* Síť: Pro většinu typů clusteru dat zpracovaných branami clusteru není na místním disku, ale v služby externí úložiště, jako je Data Lake Store nebo Azure Storage. Vezměte v úvahu šířka pásma sítě a propustnosti mezi uzlu virtuálního počítače a služby úložiště. Šířku pásma sítě dostupnou pro virtuální počítač se obvykle zvyšuje s větší velikosti. Podrobnosti najdete v tématu [velikosti virtuálních počítačů přehled](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+* Síť: Pro většinu typů clusteru je dat zpracovaných branami clusteru není na místním disku, ale v služby externí úložiště, jako je Data Lake Store nebo Azure Storage. Vezměte v úvahu šířka pásma sítě a propustnosti mezi uzlu virtuálního počítače a služby úložiště. Šířku pásma sítě dostupnou pro virtuální počítač se obvykle zvyšuje s větší velikosti. Podrobnosti najdete v tématu [velikosti virtuálních počítačů přehled](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
 
 ## <a name="choose-the-cluster-scale"></a>Zvolte možnost škálování clusteru
 
@@ -99,11 +99,31 @@ Někdy chyby lze kvůli paralelní provádění více mapy a snížit komponenty
 
 Můžete také nainstalovat prostředí s jedním uzlem vývoj v místním počítači a testovat řešení existuje. Hortonworks poskytuje jedním uzlem místní vývojové prostředí pro řešení založená na systému Hadoop, který je užitečný pro počáteční vývoj, testování konceptu, služby a testování. Další informace najdete v tématu [Hortonworks Sandbox](https://hortonworks.com/products/hortonworks-sandbox/).
 
-K jeho identifikaci v místním clusteru jedním uzlem opětovné spuštění neúspěšné úlohy a upravit vstupní data nebo použijte menší datové sady. Jak spouštět úlohy závisí na platformu a typ aplikace.
+K jeho identifikaci v místním clusteru jedním uzlem můžete znovu spustit úlohy a upravit vstupní data nebo použít menší datové sady. Jak spouštět úlohy závisí na platformu a typ aplikace.
 
 ## <a name="quotas"></a>Kvóty
 
-Po určení cílovou velikost virtuálního počítače clusteru, škálování a typ, zkontrolujte aktuální kapacitní omezení kvóty předplatného. Při dosažení limitu kvóty, nebudete moci nasadit nových clusterů nebo horizontální navýšení kapacity stávajících clusterů přidáním dalších uzlů pracovního procesu. Bylo dosaženo limitu kvóty nejběžnější je kvótu jader procesoru, která existuje v předplatném, oblasti a úrovně řady virtuálních počítačů. Například vaše předplatné může mít celkový limit 200 jader, limit 30 jader ve vaší oblasti a limit 30 jader v instancích virtuálních počítačů. Je možné [obraťte se na podporu požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+Po určení cílovou velikost virtuálního počítače clusteru, škálování a typ, zkontrolujte aktuální kapacitní omezení kvóty předplatného. Při dosažení limitu kvóty, nebudete moci nasadit nových clusterů nebo horizontální navýšení kapacity stávajících clusterů přidáním dalších uzlů pracovního procesu. Pouze kvótu je kvótu jader procesoru, která existuje na úrovni oblasti pro každé předplatné. Například může mít vaše předplatné limit 30 jader v oblasti USA – východ. Pokud potřebujete požádat o zvýšení kvóty, proveďte následující kroky:
+
+1. Přejít na web Azure Portal
+1. Klikněte na **Nápověda a podpora** v levé dolní části stránky.
+1. Klikněte na **nová žádost o podporu**.
+1. Na **nová žádost o podporu** stránce v části **Základy** kartu, vyberte následující možnosti:
+    - **Typ problému**: **Omezení služby a předplatného (kvóty)**
+    - **Předplatné**: předplatné, které chcete upravit
+    - **Typ kvóty**: **HDInsight**
+    
+    ![Vytvořit žádost o podporu o navýšení kvóty pro jádra HDInsight](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+
+1. Klikněte na tlačítko **Další**.
+1. Na **podrobnosti** stránky, zadejte popis problému, vyberte závažnost problému a vyberte upřednostňovaný způsob kontaktu.
+1. Klikněte na tlačítko **Další: Zkontrolovat a vytvořit**.
+1. Na **revize + vytvořit** klikněte na tlačítko **vytvořit**.
+
+> [!Note]
+> Pokud je potřeba zvýšit kvótu jader HDInsight do privátní oblasti [odeslat žádost o seznam povolených](https://aka.ms/canaryintwhitelist).
+
+Je možné [obraťte se na podporu požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 Ale existují některá omezení pevné kvóty, například v rámci jednoho předplatného Azure může mít maximálně 10 000 jader. Podrobnosti o těchto omezeních najdete v tématu [předplatného Azure a limity, kvóty a omezení](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager).
 

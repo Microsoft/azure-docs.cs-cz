@@ -1,5 +1,5 @@
 ---
-title: Poradce při potížích pro kognitivního vyhledávání ve službě Azure Search | Dokumentace Microsoftu
+title: Tipy pro řešení potíží pro kognitivního vyhledávání – Azure Search
 description: Tipy a řešení potíží s nastavením cognitive hledání kanálů ve službě Azure Search.
 services: search
 manager: pablocas
@@ -10,18 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3d0d468674a2284e9925c1410f2bb8bcbde8f73f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.custom: seodec2018
+ms.openlocfilehash: 5f21fe3c65e37d3fee4043526762a7fafdea5cc4
+ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575291"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53316290"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipy pro řešení potíží pro kognitivního vyhledávání
 
 Tento článek obsahuje seznam tipy a triky pro vás přechod jak asi začít pracovat s funkce kognitivního vyhledávání ve službě Azure Search. 
 
-Pokud jste tak ještě neučinili, krokovat [kurz: Zjistěte, jak volat rozhraní API pro kognitivní vyhledávání](cognitive-search-quickstart-blob.md) pro přístup k použití obohacení kognitivního vyhledávání pro zdroj dat objektu blob.
+Pokud jste tak ještě neučinili, krokovat [kurzu: Zjistěte, jak volat rozhraní API pro kognitivní vyhledávání](cognitive-search-quickstart-blob.md) pro přístup k použití obohacení kognitivního vyhledávání pro zdroj dat objektu blob.
 
 ## <a name="tip-1-start-with-a-small-dataset"></a>Tip 1: Začněte s malou datovou sadu
 Nejlepší způsob, jak rychle najít problémy je zvýšit rychlost, jakou můžou opravit problémy. Nejlepší způsob, jak zkrátit čas, který indexování se snížením počtu indexovaných dokumentů. 
@@ -83,7 +84,7 @@ Přidat ```enriched``` pole jako součást definice indexu pro účely ladění:
 
 Chybějící obsah může být způsobeno získávání vyřadit během indexování dokumentů. Úrovně Free a Basic mají nízké omezení velikosti dokumentu. Všechny soubory při překročení tohoto limitu je vyřazeno během indexování. Můžete vyhledat vyřazené dokumenty na webu Azure Portal. V řídicím panelu služby search service dvakrát klikněte na dlaždici indexery. Projděte si poměr úspěšné dokumenty indexované. Pokud není 100 %, můžete kliknout na poměr, abyste získali více podrobností. 
 
-Pokud problém souvisí s velikost souboru, může se zobrazit chyba takto: "Blob < název_souboru >" má velikost < velikost souboru > bajtů, což překračuje maximální velikost pro extrakci dokument pro vaši aktuální úroveň služby. " Další informace o limitech indexer, naleznete v tématu [omezení služby](search-limits-quotas-capacity.md).
+Pokud problém souvisí s velikost souboru, může se zobrazit chyba takto: Velikost < velikost souboru > bajtů, která překračuje maximální velikost pro extrakci dokument pro vaši aktuální úroveň služby má "Blob < název_souboru >"." Další informace o limitech indexer, naleznete v tématu [omezení služby](search-limits-quotas-capacity.md).
 
 Druhý důvod selhání se zobrazí obsah může dojít k chybám související vstupní a výstupní mapování. Například cílový název výstupního je "Lidé", ale název pole indexu je malá "osob". Systém může vrátit 201 zpráv o úspěchu operací pro celý kanál, takže si myslíte, že indexování úspěšné, když ve skutečnosti je pole prázdné. 
 
@@ -93,7 +94,7 @@ Analýza obrázku je výpočetně náročné i jednoduché v případech, tak p�
 
 Maximální doba spuštění se liší podle úrovně: několik minut na Free vrstvy, 24 hodin indexování fakturovatelné vrstev. Pokud se zpracování nepodaří dokončit během 24 hodin pro zpracování na vyžádání, přepněte na plán, který chcete nechat pokračovat zpracování tam, kde skončila. 
 
-Pro plánované indexery indexování obnoví podle plánu na poslední známé dobré dokumentu. Pomocí opakovaně indexeru můžete fungují jeho prostřednictvím nevyřízených položek image několik hodin nebo dnů, dokud se zpracovávají všechny bitové kopie zrušení zpracování. Další informace o plánu syntaxe, naleznete v tématu [krok 3: vytvoření indexeru](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
+Pro plánované indexery indexování obnoví podle plánu na poslední známé dobré dokumentu. Pomocí opakovaně indexeru můžete fungují jeho prostřednictvím nevyřízených položek image několik hodin nebo dnů, dokud se zpracovávají všechny bitové kopie zrušení zpracování. Další informace o plánu syntaxe, naleznete v tématu [krok 3: Vytvoření indexeru](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
 
 Založené na portálu indexování (jak je popsáno v tomto rychlém startu), výběr indexer "Spustit jednou" možnost omezení zpracování na 1 hodinu (`"maxRunTime": "PT1H"`). Můžete chtít rozšířit okno zpracování na něco delší dobu.
 

@@ -1,5 +1,5 @@
 ---
-title: Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
+title: Spouštění úloh na pozadí pomocí WebJobs – Azure App Service
 description: Zjistěte, jak pomocí WebJobs můžete spouštět úlohy na pozadí ve službě Azure App Service web apps, API apps nebo mobilní aplikace.
 services: app-service
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
-ms.openlocfilehash: 901cf32557e0a437e938ceb50ecd500c69c8c3be
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.custom: seodec18
+ms.openlocfilehash: 1a43c6061c497c92123865e530208f2cbef09359
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364026"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269583"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spouštění úloh na pozadí pomocí WebJobs v Azure App Service
 
@@ -75,15 +76,15 @@ when making changes in one don't forget the other two.
 
     ![Stránka webové úlohy](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Použití **přidat WebJob** nastavení uvedená v tabulce.
+3. Použití **přidat webovou úlohu** nastavení uvedená v tabulce.
 
    ![Přidejte stránku webové úlohy](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | Nastavení      | Ukázková hodnota   | Popis  |
+   | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
-   | **Název** | myContinuousWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
-   | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
-   | **Typ** | Průběžný | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
+   | **Název** | myContinuousWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
+   | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
+   | **Typ** | Průběžný | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
    | **Škálování** | Více instancí | K dispozici pouze pro průběžné WebJobs. Určuje, jestli se program nebo skript spouští na všech instancích nebo jenom jednu instanci. Možnost spouštět na více instancí se nevztahuje na Free nebo Shared [cenové úrovně](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). | 
 
 4. Klikněte na **OK**.
@@ -113,16 +114,16 @@ when making changes in one don't forget the other two.
 
     ![Stránka webové úlohy](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Použití **přidat WebJob** nastavení uvedená v tabulce.
+3. Použití **přidat webovou úlohu** nastavení uvedená v tabulce.
 
    ![Přidejte stránku webové úlohy](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | Nastavení      | Ukázková hodnota   | Popis  |
+   | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
-   | **Název** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
-   | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
-   | **Typ** | Aktivované | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
-   | **Triggery** | Ručně | |
+   | **Název** | myTriggeredWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_".|
+   | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
+   | **Typ** | Aktivované | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
+   | **Aktivační události** | Ručně | |
 
 4. Klikněte na **OK**.
 
@@ -151,17 +152,17 @@ when making changes in one don't forget the other two.
 
    ![Stránka webové úlohy](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Použití **přidat WebJob** nastavení uvedená v tabulce.
+3. Použití **přidat webovou úlohu** nastavení uvedená v tabulce.
 
    ![Přidejte stránku webové úlohy](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | Nastavení      | Ukázková hodnota   | Popis  |
+   | Nastavení      | Ukázková hodnota   | Popis  |
    | ------------ | ----------------- | ------------ |
-   | **Název** | myScheduledWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
-   | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
-   | **Typ** | Aktivované | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
-   | **Triggery** | Naplánované | Pro plánování spolehlivé fungování povolte funkci Always On. Always On je k dispozici pouze na Basic, Standard a cenových úrovní Premium.|
-   | **Výraz CRON** | 0 0/20 * * * * | [Výrazů CRON](#cron-expressions) jsou popsány v následující části. |
+   | **Název** | myScheduledWebJob | Název, který je jedinečný v rámci aplikace služby App Service. Musí začínat písmenem nebo číslicí a nesmí obsahovat speciální znaky jiné než "-" a "_". |
+   | **Nahrání souboru** | ConsoleApp.zip | A *ZIP* soubor, který obsahuje váš soubor spustitelný soubor nebo skript, stejně jako všechny podpůrné soubory potřebné ke spuštění programu nebo skriptu. Podporované typy souborů spustitelný soubor nebo skript jsou uvedeny v [podporované typy souborů](#acceptablefiles) oddílu. |
+   | **Typ** | Aktivované | [WebJob typy](#webjob-types) jsou popsány dříve v tomto článku. |
+   | **Aktivační události** | Naplánované | Pro plánování spolehlivé fungování povolte funkci Always On. Always On je k dispozici pouze na Basic, Standard a cenových úrovní Premium.|
+   | **Výraz CRON** | 0 0/20 * * * * | [Výrazů CRON](#cron-expressions) jsou popsány v následující části. |
 
 4. Klikněte na **OK**.
 

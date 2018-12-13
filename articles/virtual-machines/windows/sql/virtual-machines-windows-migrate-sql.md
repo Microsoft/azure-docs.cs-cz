@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: jroth
-ms.openlocfilehash: 0677faa90c73ffe4c0c1c48600c2f1ef2d05eb50
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 298a8597ae111550dfbd44d1e7bd9efb212f08af
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628779"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323213"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrovat databázi SQL Serveru na SQL Server na virtuálním počítači Azure
 
@@ -36,7 +36,7 @@ Primární migrací metody jsou následující:
 * Odpojení a zkopírujte soubory protokolu a data do Azure blob storage a potom připojit k serveru SQL Server na virtuálním počítači Azure z adresy URL
 * Převést fyzický počítač v místním virtuálního pevného disku Hyper-V, nahrajte do Azure Blob storage a pak nasaďte nový virtuální počítač pomocí nahrávaných virtuálního pevného disku
 * Dodávejte pevný disk pomocí služby Import/Export pro Windows
-* Pokud máte nasazení služby AlwaysOn v místním, použijte [Průvodce přidáním repliky Azure](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) vytvoření repliky v Azure a pak převzetí služeb při selhání, odkazující uživatele na instanci databáze Azure
+* Pokud máte nasazení služby skupiny dostupnosti AlwaysOn v místním, použijte [Průvodce přidáním repliky Azure](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) vytvoření repliky v Azure a pak převzetí služeb při selhání, odkazující uživatele na instanci databáze Azure
 * Použít systém SQL Server [transakční replikace](https://msdn.microsoft.com/library/ms151176.aspx) konfigurovat instanci serveru SQL Azure jako odběratele a potom zakázat replikaci, odkazující uživatele na instanci Azure database
 
 > [!TIP]

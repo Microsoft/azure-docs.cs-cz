@@ -1,5 +1,5 @@
 ---
-title: Integrace aplikace s Azure Virtual Network
+title: Integrace aplikace s Azure Virtual Network – služba Azure App Service
 description: Ukazuje, jak připojit aplikaci ve službě Azure App Service pro novou nebo existující virtuální síť Azure
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
-ms.openlocfilehash: e086c187129799e499c7ac057b1755a35f1f2327
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 265dcccf9202d7b0116bba05b016e8967b68c67a
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971143"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273343"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrujte svou aplikaci s Azure Virtual Network
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi v [služby Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure Virtual Networks] [ VNETOverview] (Vnet) umožňuje umístit řadu prostředků Azure v síti bez Internetu možnosti směrování. Tyto sítě můžou potom připojené k vaší místní sítí pomocí technologie VPN. 
@@ -30,7 +31,7 @@ Azure App Service má dvě formy.
 
 Tento dokument prochází funkci integrace virtuální sítě, která je určena pro použití ve službě App Service pro více tenantů.  Pokud je vaše aplikace v [služby App Service Environment][ASEintro], pak se už ve virtuální síti a nevyžaduje, použijte funkci integrace virtuální sítě k přístupu k prostředkům ve stejné virtuální síti.
 
-Integrace virtuální sítě poskytuje vaší webové aplikaci přístup k prostředkům ve vaší virtuální síti, ale nebude udělit soukromý přístup do vaší webové aplikace z virtuální sítě. Přístup k webům privátní odkazuje na zpřístupnění aplikace jen z privátní sítě, jako z v rámci virtuální sítě Azure. Přístup k privátním serveru je k dispozici pouze s ASE nakonfigurovaný s interní zatížení nástroje pro vyrovnávání (ILB). Podrobnosti o použití prostředí ILB ASE začínat článku: [vytváření a používání prostředí ILB ASE][ILBASE]. 
+Integrace virtuální sítě poskytuje vaší webové aplikaci přístup k prostředkům ve vaší virtuální síti, ale nebude udělit soukromý přístup do vaší webové aplikace z virtuální sítě. Přístup k webům privátní odkazuje na zpřístupnění aplikace jen z privátní sítě, jako z v rámci virtuální sítě Azure. Přístup k privátním serveru je k dispozici pouze s ASE nakonfigurovaný s interní zatížení nástroje pro vyrovnávání (ILB). Podrobnosti o použití prostředí ILB ASE začněte článku: [Vytváření a používání prostředí ILB ASE][ILBASE]. 
 
 Integrace virtuální sítě se často používá k povolení přístupu z aplikace do databáze a webových služeb spuštěných ve virtuální síti. Integrace virtuální sítě není nutné vystavit veřejný koncový bod pro aplikace na virtuální počítač ale může používání privátních adres směrovatelný bez internet místo. 
 
@@ -161,7 +162,7 @@ Existují tři související poplatky za využívání funkci integrace virtuál
 * Náklady na přenos dat
 * Náklady na brány sítě VPN.
 
-Vaše aplikace musí být v Standard, Premium nebo plán služby PremiumV2 App Service. Můžete zobrazit další podrobnosti o těchto náklady na: [App Service – ceny][ASPricing]. 
+Vaše aplikace musí být v Standard, Premium nebo plán služby PremiumV2 App Service. Můžete zobrazit další podrobnosti o těchto náklady na: [Ceny služeb App Service][ASPricing]. 
 
 Existuje poplatky za odchozí přenos dat i v případě, že virtuální sítě je ve stejném datovém centru. Tyto poplatky jsou popsány v [Data Transfer podrobnosti o cenách][DataPricing]. 
 

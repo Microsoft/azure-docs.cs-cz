@@ -12,23 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d3682d18fb849b2d851bae0986f9e61f216aaf2c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: d51fffad897ba2658c7bee51c26e7e3be9f10e88
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639628"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53188754"
 ---
 # <a name="virtual-machine-offer"></a>Nabídky virtuálních počítačů
 
-Tato část popisuje elementy publikování virtuálního počítače (VM) a slouží jako vodítko pro vydavatele, který [Azure Marketplace](https://azuremarketplace.microsoft.com).  Z tohoto hlediska je rozdělen do následujících hlavních částí:
+|    |    |
+|-----------------------------------------------------------------|------------------------------------------|
+| Tato část vysvětluje, jak publikovat novou nabídku virtuálního počítače [Azure Marketplace](https://azuremarketplace.microsoft.com). Podpora se poskytuje pro virtuální počítače s založené na Windows i linuxem, obsahující operační systém virtuálního pevného disku (VHD) a nula nebo více datových virtuálních pevných disků. | ![Ikona virtuálního počítače](./media/virtual-machine-icon.png)  |
 
-- [Požadavky](./cpp-prerequisites.md) – je uveden seznam technických a obchodních požadavků před vytvořením nebo publikování nabídky virtuálních počítačů
-- [Vytvoření nabídky virtuálních počítačů](./cpp-create-offer.md) -pomocí položky nabídky seznamy kroky potřebné k vytvoření nového virtuálního počítače [portál Cloud Partner](https://cloudpartner.azure.com)
-- [Vytvoření virtuálního počítače technických prostředků](./cpp-create-technical-assets.md) – způsob, jakým k vytvoření technických nabízí prostředky pro řešení virtuálních počítačů a konfiguraci tohoto balíčku jako virtuální počítač na webu Azure Marketplace
-- [Publikování nabídky virtuálních počítačů](./cpp-publish-offer.md) – jak odeslat nabídku k publikování na webu Azure Marketplace
+
+## <a name="publishing-overview"></a>Přehled publikování
+
+V následujícím videu [optimalizovat si Azure Marketplace nabízí](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), představuje komplexní přehled na webu Azure Marketplace, včetně publikování na tomto webu marketplace (pomocí řešení virtuálního počítače), jak optimalizovat uživatelské prostředí stránka produktu a volitelný testovací verzi prostředí jak uživatel vede jsou generovány a jak můžete využívat a optimalizovat zákaznické.
+
+> [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026]
 
 
 ## <a name="vm-publishing-process-flow"></a>Proces publikování virtuálního počítače

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 10/30/2018
+ms.date: 12/11/2018
 ms.author: alkohli
-ms.openlocfilehash: 5e4461a910f13c5047c4a2aadd7326c4e12c533f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f437f1fd61cfdaa4d2ff908f6e294fa0c679b9a5
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238127"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273048"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
 
@@ -59,7 +59,7 @@ A.  Disky Data Box Disk jsou během období Preview dostupné v USA, Kanadě, Au
 A. Data Box Disk ve verzi Preview se podporuje ve všech oblastech USA, v Kanadě, Austrálii a v oblastech Západní Evropa a Severní Evropa. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Otázka: Na koho se mám obrátit, když narazím na nějaké problémy s disky Data Box Disk?
-A. Pokud narazíte na nějaké problémy s disky Data Box Disk, obraťte se prosím na [podporu pro disky Data Box Disk](mailto:expresspodsupport@microsoft.com).
+A. Pokud narazíte na případné problémy s disků Data Box, [obraťte se na Microsoft Support](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support).
 
 ## <a name="configure-and-connect"></a>Konfigurace a připojení
  
@@ -108,7 +108,7 @@ A.  Ke kopírování dat na disky použijte nástroj pro kopírování SMB, nap�
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>Otázka: Máte nějaké tipy pro zrychlení kopírování dat?
 A.  Pokud chcete zrychlit proces kopírování:
 
-- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Přesnější informace o používaných příkazech získáte v [kurzu, který se týká kopírování dat na disk Azure Data Box Disk a ověření](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
+- Použijte pro kopírování dat více streamů. Například v Robocopy použijte možnost více vláken. Další informace o přesný příkaz použitý, přejděte na [kurzu: Kopírování dat do Azure Data Box Disk a ověřte](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
 - Použijte více relací.
 - Místo kopírování přes sdílenou síťovou složku (při kterém vás můžou omezovat rychlosti sítí) zajistěte, aby se data nacházela přímo na počítači, ke kterému jsou příslušné disky připojené.
 - Zkontrolujte, že během procesu kopírování používáte USB 3.0 nebo novější. K identifikaci řadičů USB a zařízení USB připojených k počítači si stáhněte a používejte [nástroj USBView](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview).
@@ -153,7 +153,7 @@ A. Můžete svoji předchozí objednávku naklonovat. Naklonováním se vytvoř�
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přečtěte si [systémové požadavky služby Data Box](data-box-disk-system-requirements.md).
 - Seznamte se s [omezeními služby Data Box](data-box-disk-limits.md).

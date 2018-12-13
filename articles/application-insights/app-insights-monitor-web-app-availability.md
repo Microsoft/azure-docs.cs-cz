@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: a5177293b24ec400714d8f87be4198a76d59214a
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 11a421a30508774d976def8d5836451743ecb6ea
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52878716"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270378"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -49,11 +49,11 @@ Otevřete okno Dostupnost a přidejte test.
 ![Vyplňte alespoň adresu URL webu](./media/app-insights-monitor-web-app-availability/001-create-test.png)
 
 * **Adresa URL** může být libovolná webová stránka, kterou chcete otestovat, ale musí být viditelná z veřejného internetu. Adresa URL může obsahovat řetězec dotazu. To znamená, že můžete také trochu vyzkoušet svou databázi. Pokud se adresa URL přeloží na přesměrování, budeme ji sledovat až po 10 přesměrování.
-* **Analyzovat závislé požadavky:** Pokud zaškrtnete tuto možnost, test si vyžádá obrázky, skripty, soubory stylu a další soubory, které jsou součástí testované webové stránky. Zaznamenaná doba odezvy zahrnuje i čas potřebný k získání těchto souborů. Pokud tyto prostředky nelze úspěšně stáhnout v časovém limitu pro celý test, test se nezdaří. Pokud tato možnost není zaškrtnutá, test si vyžádá pouze soubor na zadané adrese URL.
+* **Analyzovat závislé požadavky**: Pokud tato možnost zaškrtnutá, test si vyžádá obrázky, skripty, soubory stylu a další soubory, které jsou součástí testované webové stránky. Zaznamenaná doba odezvy zahrnuje i čas potřebný k získání těchto souborů. Pokud tyto prostředky nelze úspěšně stáhnout v časovém limitu pro celý test, test se nezdaří. Pokud tato možnost není zaškrtnutá, test si vyžádá pouze soubor na zadané adrese URL.
 
-* **Povolit opakování:** Je-li tato možnost zaškrtnutá a test se nezdaří, za krátkou dobu se zopakuje. Selhání je nahlášeno pouze v případě tří po sobě jdoucích neúspěšných pokusů. Následné testy jsou pak provedeny s obvyklou frekvencí testu. Opakování je dočasně pozastaveno do dalšího úspěchu. Toto pravidlo platí nezávisle na každém umístění testu. Doporučujeme tuto možnost. V průměru přibližně 80 % selhání při opakování zmizí.
+* **Povolit opakované pokusy**:  Pokud tato možnost zaškrtnutá, test se nezdaří, zopakuje se za krátkou dobu. Selhání je nahlášeno pouze v případě tří po sobě jdoucích neúspěšných pokusů. Následné testy jsou pak provedeny s obvyklou frekvencí testu. Opakování je dočasně pozastaveno do dalšího úspěchu. Toto pravidlo platí nezávisle na každém umístění testu. Doporučujeme tuto možnost. V průměru přibližně 80 % selhání při opakování zmizí.
 
-* **Frekvence testů**: Nastaví, jak často se test spustí z umístění každého testu. S výchozí pětiminutovou frekvencí a pěti testovanými místy bude váš web testován v průměru každou minutu.
+* **Frekvence testů**: Nastaví, jak často test spustí z umístění každého testu. S výchozí pětiminutovou frekvencí a pěti testovanými místy bude váš web testován v průměru každou minutu.
 
 * **Testovací umístění** jsou místa, ze kterých naše servery odesílají webové požadavky na adresu URL. Naše minimální počet umístění doporučené testu je pět aby bylo možné zajistit, že možné rozlišit problémy ve vašem webu od problémů se sítí. Můžete vybrat až 16 umístění.
 
@@ -63,13 +63,13 @@ Otevřete okno Dostupnost a přidejte test.
 
 * **Kritéria úspěchu**:
 
-    **Časový limit testu**: Pokud chcete dostávat upozornění na pomalé odezvy, zmenšete tuto hodnotu. Test se počítá jako selhání, pokud během tohoto období nebyly přijaty odpovědí z webu. Pokud jste vybrali možnost **Analyzovat závislé požadavky**, potom všechny image, soubory stylů, skripty a další závislé prostředky musejí být přijaty během tohoto období.
+    **Časový limit testu**: Zmenšete tuto hodnotu pro upozornění pomalé odezvy. Test se počítá jako selhání, pokud během tohoto období nebyly přijaty odpovědí z webu. Pokud jste vybrali možnost **Analyzovat závislé požadavky**, potom všechny image, soubory stylů, skripty a další závislé prostředky musejí být přijaty během tohoto období.
 
-    **Odpověď HTTP**: vrácený kód stavu, který se počítá jako úspěšný. 200 je kód, který označuje, že byla vrácena normální webová stránka.
+    **Odpověď HTTP**: Vrácený kód stavu, který se počítá jako úspěšný. 200 je kód, který označuje, že byla vrácena normální webová stránka.
 
     **Shoda obsahu**: řetězec, například „Vítejte!“ U každé odpovědi testujeme výskyt přesné shody (s rozlišováním velkých a malých písmen). Musí být prostý řetězec bez zástupných znaků. Nezapomeňte, že pokud se obsah vaší stránka změní, bude pravděpodobně nutné jej aktualizovat.
 
-* **Mezní hodnota umístění upozornění**: Doporučujeme minimálně 3 nebo 5 umístění. Optimální vztah mezi mezní hodnota umístění upozornění a počet umístění testu je **mezní hodnota umístění upozornění** = **počet umístění testu** - 2, s minimálně pět testování umístění.
+* **Mezní hodnota umístění upozornění**: Doporučujeme aspoň 3 nebo 5 umístění. Optimální vztah mezi mezní hodnota umístění upozornění a počet umístění testu je **mezní hodnota umístění upozornění** = **počet umístění testu** - 2, s minimálně pět testování umístění.
 
 ## <a name="multi-step-web-tests"></a>Vícekrokové webové testy
 Je možné sledovat scénář, který zahrnuje posloupnost adres URL. Například pokud sledujete prodejní web, můžete otestovat, zda správně funguje přidávání položek do nákupního košíku.
@@ -160,8 +160,8 @@ Výběrem určitého testu nebo umístění nebo zkrácením časového období 
 
 Vedle nezpracovaných výsledků jsou v Průzkumníku metrik dostupné dvě metriky dostupnosti: 
 
-1. Dostupnost: procento testů, které proběhly úspěšně, vzhledem k celkovému počtu provedení testu. 
-2. Doba trvání testu: průměrná doba trvání u všech provedení testu.
+1. Dostupnost: Procento testů, které proběhly úspěšně, všechny provádění testů. 
+2. Doba trvání testu: Průměrná doba trvání u všech provedení testu.
 
 Můžete použít filtry podle názvu a umístění testu a analyzovat trendy určitého testu nebo umístění.
 
@@ -202,7 +202,7 @@ X z Y umístění, pravidlo upozornění je povolená ve výchozím nastavení [
 
 ![Vytvoření prostředí](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
 
-**Důležité**: S [oznámení pro nové sjednocené](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), pravidlo upozornění předvolby závažnosti a oznámení s [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **musí být** gurovaný prostředí upozornění. Bez následujících kroků budou dostávat jen oznámení na portálu. 
+**Důležité**: S [oznámení pro nové sjednocené](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), pravidlo upozornění předvolby závažnosti a oznámení s [skupiny akcí](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **musí být** nakonfigurované v prostředí upozornění. Bez následujících kroků budou dostávat jen oznámení na portálu. 
 
 1. Po uložení test dostupnosti, klikněte na nový název testu přejděte do jeho podrobnosti. Klikněte na "Upravit upozornění" ![upravit po uložení](./media/app-insights-monitor-web-app-availability/editaftersave.png)
 
@@ -217,7 +217,7 @@ X z Y umístění, pravidlo upozornění je povolená ve výchozím nastavení [
 ### <a name="alert-on-availability-metrics"></a>Upozornění na metriky dostupnosti
 Použití [oznámení pro nové sjednocené](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), můžete upozornění na segmentovaným agregační dostupnosti a otestovat také doba trvání metriky:
 
-1. Vyberte prostředek Application Insights v prostředí metrik a vyberte metriku dostupnosti: ![výběr metriky dostupnosti](./media/app-insights-monitor-web-app-availability/selectmetric.png)
+1. Vyberte prostředek Application Insights v prostředí metrik a vyberte metriku dostupnosti:  ![Výběr metriky dostupnosti](./media/app-insights-monitor-web-app-availability/selectmetric.png)
 
 2. Konfigurace výstrah, které možnosti z nabídky se dostanete na nové prostředí kde můžete vybrat konkrétní testy nebo nastavit pravidlo upozornění na umístění. Můžete také nakonfigurovat akce skupiny pro toto pravidlo upozornění tady.
     ![Konfigurace výstrah dostupnosti](./media/app-insights-monitor-web-app-availability/availabilitymetricalert.png)
@@ -281,7 +281,7 @@ Po dokončení testu se zobrazí časy odezvy a míra úspěšnosti.
 
 ## <a name="automation"></a>Automation
 * [Automatické nastavení testu dostupnosti pomocí skriptů PowerShell](app-insights-powershell.md#add-an-availability-test).
-* Nastavení [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md), který je volán při vydání výstrahy.
+* Nastavení [webhook](../azure-monitor/platform/alerts-webhooks.md), který je volán při vydání výstrahy.
 
 ## <a name="qna"></a> NEJČASTĚJŠÍ DOTAZY
 
@@ -309,7 +309,7 @@ Po dokončení testu se zobrazí časy odezvy a míra úspěšnosti.
 
     Chyba („Porušení protokolu... Znak CR musí být následován znakem LF.“) značí problémy se serverem (nebo závislostmi). To se stává, když jsou v odpovědi nastavena chybně vytvořená záhlaví. Příčinou mohou být nástroje pro vyrovnávání zatížení nebo CDN. Konkrétně se jedná o to, že některá záhlaví možná nepoužívají znaky CRLF k označení konce řádku. Tím porušují specifikaci protokolu HTTP, což má za následek neúspěšné ověření na úrovni třídy .NET WebRequest. Zkontrolujte odpovědi, zda obsahují chybná záhlaví.
     
-    Poznámka: Adresa URL nemusí selhat v prohlížečích, které mají rozvolněné ověřování záhlaví HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+    Poznámka: Adresa URL nemusí selhat v prohlížečích, které mají rozvolněné ověřování hlaviček protokolu HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
     
 * *Nevidím žádnou telemetrii na straně serveru, která by diagnostikovala neúspěšné testy*
     

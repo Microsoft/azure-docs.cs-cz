@@ -1,5 +1,5 @@
 ---
-title: 'Aplikace saas: sledování výkonu mnoho databází Azure SQL | Dokumentace Microsoftu'
+title: 'Aplikace saas: Sledování výkonu mnoho databází Azure SQL | Dokumentace Microsoftu'
 description: Monitorování a správa výkonu databáze Azure SQL a fondů v aplikaci SaaS s více tenanty
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 86fdd7b0bd8ac76ddb2ac30ff324b80101c177e8
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 1ba98598a88973c5d5ae09cffda931a54d521b74
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353896"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53259133"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Monitorování a správa výkonu databáze Azure SQL a fondů v aplikaci SaaS s více tenanty
 
@@ -75,7 +75,7 @@ Pokud už jste v předchozím kurzu zřídili dávku tenantů, pokračujte [simu
 
 Skript nasadí 17 tenantů za méně než pět minut.
 
-*New-TenantBatch* skript používá vnořenou nebo propojenou sadu [Resource Manageru](../azure-resource-manager/index.md) šablony, které vytvářejí dávku tenantů, která ve výchozím nastavení zkopíruje databázi **basetenantdb**na katalogový server k vytvoření nového tenanta databází, následně je zaregistruje v katalogu a nakonec s typem název a místní příslušností tenanta. To je konzistentní se způsobem, jakým aplikace zřizuje nového tenanta. Všechny změny provedené *basetenantdb* se použijí u všech nově zřízených tenantů. Najdete v článku [kurzu Správa schématu](saas-tenancy-schema-management.md) zobrazíte pokyny pro provedení změn schématu *existující* databázích tenantů (včetně *basetenantdb* databáze).
+*New-TenantBatch* skript používá vnořenou nebo propojenou sadu [Resource Manageru](../azure-resource-manager/index.yml) šablony, které vytvářejí dávku tenantů, která ve výchozím nastavení zkopíruje databázi **basetenantdb**na katalogový server k vytvoření nového tenanta databází, následně je zaregistruje v katalogu a nakonec s typem název a místní příslušností tenanta. To je konzistentní se způsobem, jakým aplikace zřizuje nového tenanta. Všechny změny provedené *basetenantdb* se použijí u všech nově zřízených tenantů. Najdete v článku [kurzu Správa schématu](saas-tenancy-schema-management.md) zobrazíte pokyny pro provedení změn schématu *existující* databázích tenantů (včetně *basetenantdb* databáze).
 
 ## <a name="simulate-usage-on-all-tenant-databases"></a>Simulace využití ve všech databázích tenantů
 

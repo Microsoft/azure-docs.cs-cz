@@ -10,16 +10,15 @@ ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 1eac238c2379abf0b46d0975889a71ac7aa6a9ab
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 574391fd64d0525d3d77b80bb488bea8109729af
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141556"
+ms.locfileid: "53187326"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Řešení pro správu ve službě Azure Monitor
 Využijte řešení pro správu služby v Azure a poskytuje další informace o provozu určitá aplikace nebo služby. Tento článek poskytuje stručný přehled o řešení pro správu v Azure a podrobnosti o používání a jejich instalace.

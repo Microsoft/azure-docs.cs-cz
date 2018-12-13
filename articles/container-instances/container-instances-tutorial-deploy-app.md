@@ -1,21 +1,21 @@
 ---
-title: Kurz služby Azure Container Instances – Nasazení aplikace
-description: Kurz služby Azure Container Instances, část 3 ze 3 – Nasazení aplikace
+title: Kurz – nasazení aplikace v kontejneru do služby Azure Container Instances
+description: Kurz služby Azure Container Instances část 3 ze 3 – nasazení aplikace typu kontejner do Azure Container Instances
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
-ms.custom: mvc
-ms.openlocfilehash: 9e8a72564151bea9194ef5180589fa8eae001df5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.custom: seodec18, mvc
+ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863716"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53191086"
 ---
-# <a name="tutorial-deploy-a-container-to-azure-container-instances"></a>Kurz: Nasazení kontejneru do služby Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Kurz: Nasazení aplikace typu kontejner do služby Azure Container Instances
 
 Toto je poslední kurz třídílné série. V předchozích částech série se [vytvářela image kontejneru](container-instances-tutorial-prepare-app.md) a [odesílala se do služby Azure Container Registry](container-instances-tutorial-prepare-acr.md). Tento článek sérii uzavírá nasazením kontejneru do služby Azure Container Instances.
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Zobrazit spuštěnou aplikaci v prohlížeči
 > * Zobrazit protokoly kontejneru
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 [!INCLUDE [container-instances-tutorial-prerequisites](../../includes/container-instances-tutorial-prerequisites.md)]
 

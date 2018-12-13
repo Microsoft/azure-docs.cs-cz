@@ -1,5 +1,5 @@
 ---
-title: Integrace ILB App Service Environment ve službě Azure Application Gateway
+title: Integrace prostředí ILB ase pomocí služby Application Gateway – Azure
 description: Návod, jak integrovat aplikace ve vašem prostředí ILB App Service pomocí služby Application Gateway
 services: app-service
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: f1e527918086fb003696c09828969e371ff9ca96
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968813"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273812"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrace ILB App Service Environment ve službě Azure Application Gateway #
 
@@ -64,7 +65,7 @@ Brána také nelze vložit do podsítě, která používá služby ILB App Servi
 
 1. Na webu Azure Portal, přejděte na **nový** > **sítě** > **Application Gateway**.
 
-1. V **Základy** oblasti:
+2. V **Základy** oblasti:
 
    a. Pro **název**, zadejte název služby Application Gateway.
 
@@ -78,7 +79,7 @@ Brána také nelze vložit do podsítě, která používá služby ILB App Servi
 
    ![Základní informace o vytvoření nové službě Application Gateway][2]
 
-1. V **nastavení** oblasti:
+3. V **nastavení** oblasti:
 
    a. Pro **virtuální síť**, výběr virtuální sítě služby App Service Environment.
 
@@ -94,25 +95,25 @@ Brána také nelze vložit do podsítě, která používá služby ILB App Servi
 
    ![Nová nastavení pro vytvoření aplikační brány][3]
     
-1. V **Souhrn** , zkontrolujte nastavení a vyberte **OK**. Vaše brána Application Gateway může trvat o něco více než 30 minut na dokončení instalace.  
+4. V **Souhrn** , zkontrolujte nastavení a vyberte **OK**. Vaše brána Application Gateway může trvat o něco více než 30 minut na dokončení instalace.  
 
-1. Po dokončení instalace vaše brána Application Gateway, přejděte na portálu služby Application Gateway. Vyberte **back-endový fond**. Přidání ILB adresy pro ILB App Service Environment.
+5. Po dokončení instalace vaše brána Application Gateway, přejděte na portálu služby Application Gateway. Vyberte **back-endový fond**. Přidání ILB adresy pro ILB App Service Environment.
 
    ![Konfigurace back-endový fond][4]
 
-1. Po dokončení procesu konfigurace back endového fondu, vyberte **sondy stavu**. Vytvořte sondu stavu pro název domény, který chcete použít pro vaši aplikaci. 
+6. Po dokončení procesu konfigurace back endového fondu, vyberte **sondy stavu**. Vytvořte sondu stavu pro název domény, který chcete použít pro vaši aplikaci. 
 
    ![Konfigurace sond stavu][5]
     
-1. Po dokončení procesu konfigurace vašeho sond stavu, vyberte **nastavení HTTP**. Upravit stávající nastavení, vyberte **použít vlastní sondy**a vyberte test, který jste nakonfigurovali.
+7. Po dokončení procesu konfigurace vašeho sond stavu, vyberte **nastavení HTTP**. Upravit stávající nastavení, vyberte **použít vlastní sondy**a vyberte test, který jste nakonfigurovali.
 
    ![Konfigurace nastavení protokolu HTTP][6]
     
-1. Přejděte ke službě Application Gateway **přehled** části a zkopírujte veřejnou IP adresu, která používá vaše brána Application Gateway. Nastavit tuto IP adresu jako záznam A pro název domény vaší aplikace, nebo použijte název DNS pro tuto adresu v záznamu CNAME. Je snazší vyberte veřejnou IP adresu a zkopírujte z uživatelského rozhraní pro veřejnou IP adresu spíše než zkopírovat z odkazu ve službě Application Gateway **přehled** oddílu. 
+8. Přejděte ke službě Application Gateway **přehled** části a zkopírujte veřejnou IP adresu, která používá vaše brána Application Gateway. Nastavit tuto IP adresu jako záznam A pro název domény vaší aplikace, nebo použijte název DNS pro tuto adresu v záznamu CNAME. Je snazší vyberte veřejnou IP adresu a zkopírujte z uživatelského rozhraní pro veřejnou IP adresu spíše než zkopírovat z odkazu ve službě Application Gateway **přehled** oddílu. 
 
    ![Portál Application Gateway][7]
 
-1. Nastavte vlastní název domény pro vaši aplikaci do služby ILB App Service Environment. Přejděte do vaší aplikace na portálu a v části **nastavení**vyberte **vlastní domény**.
+9. Nastavte vlastní název domény pro vaši aplikaci do služby ILB App Service Environment. Přejděte do vaší aplikace na portálu a v části **nastavení**vyberte **vlastní domény**.
 
    ![Nastavit vlastní název domény na aplikaci][8]
 

@@ -12,13 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.component: ''
-ms.openlocfilehash: 2c1949fe991b599e9b002caf4c98c305a3791977
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 26030764544189ae7b075711f0405bf5c0b4ab8f
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000861"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53193820"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Analýza dat Log Analytics ve službě Azure Monitor
 
@@ -31,7 +30,7 @@ Protokol data shromážděná službou Azure Monitor se ukládají v pracovním 
 
 ## <a name="log-queries"></a>Protokol dotazů
 
-Budete potřebovat protokolu dotaz pro načtení všech dat ze služby Log Analytics.  Ať už se [analýza dat na portálu](../../azure-monitor/log-query/portals.md), [konfigurace pravidla upozornění](../../monitoring-and-diagnostics/alert-metric.md) upozornit určitou podmínku, nebo při načítání dat pomocí [rozhraní API služby Log Analytics](https://dev.loganalytics.io/), můžete pomocí dotazu určit data, která chcete.  Tento článek popisuje, jak se používají dotazy protokolu v Log Analytics a poskytuje koncepty, které je třeba porozumět před vytvořením jedné.
+Budete potřebovat protokolu dotaz pro načtení všech dat ze služby Log Analytics.  Ať už se [analýza dat na portálu](../../azure-monitor/log-query/portals.md), [konfigurace pravidla upozornění](../../azure-monitor/platform/alerts-metric.md) upozornit určitou podmínku, nebo při načítání dat pomocí [rozhraní API služby Log Analytics](https://dev.loganalytics.io/), můžete pomocí dotazu určit data, která chcete.  Tento článek popisuje, jak se používají dotazy protokolu v Log Analytics a poskytuje koncepty, které je třeba porozumět před vytvořením jedné.
 
 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 9340c5a70ac652f1cf0a8b0cddce8488e0a62eee
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: d86e543da5c7000f0140c1b6e53674a0fd22b0e4
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978865"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53194126"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
@@ -52,7 +52,7 @@ Jsou klíčové atributy pravidlo výstrahy:
 
 **Závažnost** – závažnost výstrahy, když je splněna kritéria zadaná v pravidle výstrahy. Závažnost může být v rozsahu od 0 do 4.
 
-**Akce** – určité akce provede, když se aktivuje upozornění. Další informace najdete v tématu [skupiny akcí](monitoring-action-groups.md).
+**Akce** – určité akce provede, když se aktivuje upozornění. Další informace najdete v tématu [skupiny akcí](../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>Může upozornit na
 
@@ -122,7 +122,7 @@ Vytvořit nové pravidlo upozornění s následující tři kroky:
  
 Tato zjednodušený proces vytváření už vyžaduje, abyste znali monitorování zdroje nebo signály, které jsou podporovány před výběrem prostředku Azure. Seznam dostupné signály se automaticky filtruje podle cílový prostředek, který jste vybrali. Také v závislosti na, které cílí, projdete automaticky definování logiky pravidla výstrahy.  
 
-Další informace o tom, jak vytvořit pravidla výstrah ve službě [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](alert-metric.md).
+Další informace o tom, jak vytvořit pravidla výstrah ve službě [vytvoření, zobrazení a Správa výstrah pomocí Azure monitoru](../azure-monitor/platform/alerts-metric.md).
 
 Výstrahy jsou dostupné v rámci několika služeb monitorování v Azure. Informace, jak a kdy se má používat každý z těchto služeb najdete v tématu [aplikací a prostředků Monitoring Azure](../azure-monitor/overview.md). Následující tabulka obsahuje seznam typů pravidel upozornění, které jsou dostupné v rámci Azure. Také uvádí, co je aktuálně podporován ve které výstrahy prostředí.
 
@@ -130,7 +130,7 @@ Azure Monitor, Application Insights, Log Analytics a stavy služeb dříve musel
 
 | **Zdroj monitorování** | **Typ signálu**  | **Popis** | 
 |-------------|----------------|-------------|
-| Stav služby | Protokol aktivit  | Nepodporuje se. Zobrazit [vytvoření upozornění protokolu aktivit pro oznámení služby](monitoring-activity-log-alerts-on-service-notifications.md).  |
+| Stav služby | Protokol aktivit  | Nepodporuje se. Zobrazit [vytvoření upozornění protokolu aktivit pro oznámení služby](../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
 | Application Insights | Testy dostupnosti webu | Nepodporuje se. Zobrazit [upozornění webových testů](../application-insights/app-insights-monitor-web-app-availability.md). K dispozici pro všechny weby, které je instrumentováno pro odesílání dat do Application Insights. Když dostupnosti nebo rychlost odezvy webu je nižší než očekávání, dostanete oznámení. |
 
 
@@ -174,13 +174,13 @@ Na stránce podrobností výstrahy obsahuje následující části.
 
 Azure Monitor metrik a aktivit protokolu výstrahy funkce před. června 2018 se nazývá "Upozornění (klasická)". 
 
-Další informace najdete v tématu [upozornění classic](./monitoring-overview-alerts-classic.md)
+Další informace najdete v tématu [upozornění classic](./../azure-monitor/platform/alerts-classic.overview.md)
 
 
 ## <a name="next-steps"></a>Další postup
 
 - [Další informace o inteligentních skupiny](https://aka.ms/smart-groups)
-- [Další informace o skupinách akcí](monitoring-action-groups.md)
+- [Další informace o skupinách akcí](../azure-monitor/platform/action-groups.md)
 - [Správa vašich instancí upozornění v Azure](https://aka.ms/managing-alert-instances)
 - [Správa inteligentní skupin](https://aka.ms/managing-smart-groups)
 

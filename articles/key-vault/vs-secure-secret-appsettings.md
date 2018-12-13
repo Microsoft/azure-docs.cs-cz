@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 7578950af2dafdade3c97650dfd212240053dd3b
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 4c54fe7c9ae5555ad1b8ba6919c70c8f7fa49125
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625449"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53252088"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bezpečně uložte nastavení tajných kódů aplikace pro webovou aplikaci
 
 ## <a name="overview"></a>Přehled
 Tento článek popisuje, jak bezpečně uložit nastavení konfigurace tajných kódů aplikace pro aplikace Azure.
 
-Tradičně všechny webové konfigurace aplikace, které nastavení se ukládají v konfiguračních souborech, jako je například Web.config. Tento postup vede k vrácení se změnami nastavení tajných kódů, jako je například přihlašovací údaje ke cloudu pro systémy správy veřejné zdrojového kódu jako Github. Mezitím může být obtížné sledovat z hlediska zabezpečení z důvodu režie nutné změnit zdrojový kód a znovu nakonfigurovat nastavení pro vývoj.
+Tradičně všechny webové konfigurace aplikace, které nastavení se ukládají v konfiguračních souborech, jako je například Web.config. Tento postup vede k vrácení se změnami nastavení tajných kódů, jako je například přihlašovací údaje ke cloudu pro systémy správy veřejné zdrojového kódu jako GitHub. Mezitím může být obtížné sledovat z hlediska zabezpečení z důvodu režie nutné změnit zdrojový kód a znovu nakonfigurovat nastavení pro vývoj.
 
 Pokud chcete mít jistotu, že proces vývoje je zabezpečené, nástroje a rozhraní knihovny vytvářejí se uložit nastavení tajných kódů aplikace bezpečně s minimální nebo žádné změny zdrojového kódu.
 

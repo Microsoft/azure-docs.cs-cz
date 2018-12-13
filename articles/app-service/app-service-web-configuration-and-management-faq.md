@@ -1,5 +1,5 @@
 ---
-title: Konfigurace nejčastější dotazy k Azure web apps | Dokumentace Microsoftu
+title: Konfigurace – nejčastější dotazy služby Azure App Service | Dokumentace Microsoftu
 description: Získejte odpovědi na časté otázky ke správě konfigurace a správa problémy pro funkci Web Apps služby Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: b98b0ea68e91bad2a62f40d3dc611308f1bed2de
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c2758084331a487d65235b70bed803a74d0a34b5
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967738"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322529"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurace a správa nejčastější dotazy ke službě Web Apps v Azure
 
@@ -138,7 +138,7 @@ Zkontrolujte protokoly:
 6. Vyberte **přepnout výstup** tlačítko.
 7. Vyberte odkaz ke stažení.
 
-## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Chci používat hybridní připojení se serverem SQL Server. Proč se zobrazí zpráva "System.OverflowException: aritmetická operace skončila přetečením"?
+## <a name="im-trying-to-use-hybrid-connections-with-sql-server-why-do-i-see-the-message-systemoverflowexception-arithmetic-operation-resulted-in-an-overflow"></a>Chci používat hybridní připojení se serverem SQL Server. Proč se zobrazí zpráva "System.OverflowException: Aritmetická operace skončila přetečením"?
 
 Pokud používáte Hybrid Connections pro přístup k systému SQL Server, Microsoft .NET aktualizace 10. května 2016, může dojít k selhání připojení. Může se zobrazit tato zpráva:
 
@@ -296,7 +296,7 @@ Nejrychlejší způsob, jak najít verzi rozhraní Microsoft .NET, který je nai
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Proč automatické škálování nefunguje podle očekávání?
 
-Případně Azure Autoscale nebyl horizontálně škálovat instance webové aplikace podle očekávání, může běžet na scénář, ve kterém záměrně zvolíme nechcete škálovat, aby nekonečnou smyčku kvůli "netřepotá." Obvykle se to stane, když není k dispozici odpovídající okraje mezi prahovými hodnotami horizontální navýšení kapacity a škálování na méně instancí. Naučte se, abyste se vyhnuli "netřepotá" a informace o dalších osvědčené postupy automatického škálování, najdete v článku [osvědčené postupy automatického škálování](../monitoring-and-diagnostics/insights-autoscale-best-practices.md#autoscale-best-practices).
+Případně Azure Autoscale nebyl horizontálně škálovat instance webové aplikace podle očekávání, může běžet na scénář, ve kterém záměrně zvolíme nechcete škálovat, aby nekonečnou smyčku kvůli "netřepotá." Obvykle se to stane, když není k dispozici odpovídající okraje mezi prahovými hodnotami horizontální navýšení kapacity a škálování na méně instancí. Naučte se, abyste se vyhnuli "netřepotá" a informace o dalších osvědčené postupy automatického škálování, najdete v článku [osvědčené postupy automatického škálování](../azure-monitor/platform/autoscale-best-practices.md#autoscale-best-practices).
 
 ## <a name="why-does-autoscale-sometimes-scale-only-partially"></a>Proč automatické škálování někdy škálovat jenom částečně?
 

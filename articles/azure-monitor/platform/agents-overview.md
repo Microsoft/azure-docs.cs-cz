@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 4255b70746eb1d307617a66714301fa7f8609a77
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 5726444033d8da14c213918f409ddf5875e026b9
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634264"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322751"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Přehled služby Azure agentů monitorování 
 Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy dat z virtuálních počítačů se systémem Microsoft Windows a Linux hostované v Azure, vaše datové centrum nebo jiných poskytovatelů cloudových služeb. Jsou tři typy agenty, které jsou k dispozici pro monitorování virtuálního počítače:
@@ -31,7 +30,7 @@ Microsoft Azure poskytuje několik způsobů, jak shromažďovat různé typy da
 Tento článek popisuje rozdíly mezi nimi a jejich funkce v pořadí, abyste mohli určit, která bude podporovat správy služeb IT nebo obecné požadavků na monitorování.  
 
 ## <a name="azure-diagnostic-extension"></a>Diagnostické rozšíření Azure
-[Rozšíření Azure Diagnostics](../../monitoring-and-diagnostics/azure-diagnostics.md) (označované jako rozšíření Windows Azure diagnostiky (WAD) nebo Linux Azure Diagnostic (LAD)), který byl poskytnut pro Azure Cloud Services od stala všeobecně dostupná v 2010 je agent, který dodává simple shromažďování diagnostických dat z výpočetním prostředkem Azure jako virtuální počítač a zachována do služby Azure storage. Jakmile se v úložišti, jste se rozhodli zobrazení s jedním z několika dostupných nástrojů, jako například [Průzkumníku serveru v sadě Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) a [Průzkumníka služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
+[Rozšíření Azure Diagnostics](../../azure-monitor/platform/diagnostics-extension-overview.md) (označované jako rozšíření Windows Azure diagnostiky (WAD) nebo Linux Azure Diagnostic (LAD)), který byl poskytnut pro Azure Cloud Services od stala všeobecně dostupná v 2010 je agent, který dodává simple shromažďování diagnostických dat z výpočetním prostředkem Azure jako virtuální počítač a zachována do služby Azure storage. Jakmile se v úložišti, jste se rozhodli zobrazení s jedním z několika dostupných nástrojů, jako například [Průzkumníku serveru v sadě Visual Studio](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) a [Průzkumníka služby Azure Storage](../../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Můžete shromažďovat:
 
@@ -46,7 +45,7 @@ Agenta diagnostiky Azure byste měli použít, když chcete:
 
 * Archivovat protokoly a metriky do služby Azure storage
 * Data monitorování integraci s nástroji třetích stran. Tyto nástroje používat různými metodami, včetně dotazování na účet úložiště předá [Event Hubs](../../event-hubs/event-hubs-about.md), nebo dotazování pomocí [rozhraním API REST pro monitorování Azure](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md)
-* Nahrání dat do služby Azure Monitor k vytvoření grafů metrik na webu Azure Portal nebo vytvořit téměř v reálném čase [upozornění na metriku](../../monitoring-and-diagnostics/alert-metric-overview.md). 
+* Nahrání dat do služby Azure Monitor k vytvoření grafů metrik na webu Azure Portal nebo vytvořit téměř v reálném čase [upozornění na metriku](../../azure-monitor/platform/alerts-metric-overview.md). 
 * Škálovací sady virtuálních počítačů automatického škálování a cloudové služby Classic podle metrik operačního systému hosta.
 * Prozkoumat problémy spouštění virtuálních počítačů s [Diagnostika spouštění](../../virtual-machines/troubleshooting/boot-diagnostics.md).
 * Porozumět, jaký výkon vašich aplikací a proaktivně identifikuje problémy neovlivňují pomocí [Application Insights](../../azure-monitor/overview.md).

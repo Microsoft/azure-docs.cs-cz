@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c0729fd4c6d5e387b38c310a708505c3395ea41f
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284876"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53185065"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování podrobné informace o zabezpečení
 
@@ -41,7 +41,7 @@ Jde o aspektech zabezpečení klíče této funkce:
 - Pro odchozí komunikaci z agentů ověřování do služby Azure AD se používají pouze standardní porty (80 a 443). Není nutné otevřít příchozí porty na bráně firewall. 
   - Pro všechny ověřené odchozí komunikace se používá port 443.
   - Port 80 slouží pouze pro stahování seznamy odvolaných certifikátů (CRL) k zajištění, že žádný z certifikátů používaných touto funkcí byl odvolán.
-  - Úplný seznam požadavků na síť, naleznete v tématu [předávacího ověřování Azure Active Directory: rychlý start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
+  - Úplný seznam požadavků na síť, naleznete v tématu [předávacího ověřování Azure Active Directory: Rychlý start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
 - Hesla, které uživatelé poskytnout během přihlášení jsou šifrované v cloudu, předtím, než je agentů ověřování místní přijmout pro ověření na základě služby Active Directory.
 - Kanál protokolu HTTPS mezi službami Azure AD a místní ověřovací Agent se šifrují pomocí vzájemného ověřování.
 - Chrání vaše uživatelské účty tím, že funguje bez problémů s [zásady podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně služby Multi-Factor Authentication (MFA), [blokování starší verze ověřování](../conditional-access/conditions.md) a [ filtrování útoky na hesla hrubou silou](../authentication/howto-password-smart-lockout.md).
@@ -49,11 +49,11 @@ Jde o aspektech zabezpečení klíče této funkce:
 ## <a name="components-involved"></a>Součástí
 
 Obecné podrobnosti o zabezpečení dat a provozní, služba Azure AD, najdete v článku [centrum](https://azure.microsoft.com/support/trust-center/). Při používání předávacího ověřování pro přihlášení uživatele se podílejí následující komponenty:
-- **Služby tokenů zabezpečení Azure AD**: bezstavové služby tokenů zabezpečení (STS), která zpracovává požadavky na přihlášení a vydává tokeny zabezpečení pro prohlížeče, klienty nebo služby podle potřeby uživatelů.
-- **Azure Service Bus**: poskytuje cloudovou komunikaci s podnikovým zasíláním zpráv a propojení komunikace, která pomáhá propojit místní řešení s cloudem.
-- **Agent Azure AD Connect ověřování**: komponentu v místním, která přijímá a reaguje na požadavky ověřování hesla.
-- **Azure SQL Database**: obsahuje informace o vašem tenantovi agentů ověřování, včetně jejich metadata, šifrovacích klíčů.
-- **Služby Active Directory**: místní služby Active Directory, kde jsou uloženy vaše uživatelské účty a hesla.
+- **Služba tokenů zabezpečení Azure AD**: Bezstavové služby tokenů zabezpečení (STS), která zpracovává požadavky na přihlášení a vydává tokeny zabezpečení pro prohlížeče, klienty nebo služby podle potřeby uživatelů.
+- **Azure Service Bus**: Poskytuje cloudovou komunikaci s podnikovým zasíláním zpráv a propojení komunikace, která pomáhá propojit místní řešení s cloudem.
+- **Azure AD Connect ověřovací Agent nebyl**: Součást v místním, která přijímá a reaguje na požadavky ověřování hesla.
+- **Azure SQL Database**: Obsahuje informace o vašem tenantovi agentů ověřování, včetně jejich metadata, šifrovacích klíčů.
+- **Služby Active Directory**: Místní služby Active Directory, kde jsou uloženy vaše uživatelské účty a hesla.
 
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>Instalace a registrace agentů ověřování
 
@@ -97,8 +97,8 @@ Agentů ověřování použijte následující postup zaregistrovat se službou 
 5. Azure AD pak přihlásí a odešle certifikát digitální identity ověřovacího agenta.
     - Kořenové certifikační Autority ve službě Azure AD se používá k podepsání certifikátu. 
 
-     >[!NOTE]
-     > Tato certifikační Autorita je _není_ Windows důvěryhodné kořenové certifikační autority úložiště.
+      > [!NOTE]
+      > Tato certifikační Autorita je _není_ Windows důvěryhodné kořenové certifikační autority úložiště.
     - Certifikační Autorita používá pouze funkce předávací ověřování. Certifikační Autority slouží pouze k přihlášení během registrace ověřovacího agenta služby zákazníkům.
     -  Žádné další služby Azure AD pomocí této certifikační Autority.
     - Subjekt certifikátu (rozlišující název nebo název domény) je nastavena na ID vašeho tenanta. Tento název domény je identifikátor GUID, který jednoznačně identifikuje vašeho tenanta. Tento název domény obory certifikátu pro použití pouze v tenantu.
@@ -208,10 +208,10 @@ K automatické aktualizaci ověřovací Agent:
 
 ## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](how-to-connect-pta-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
-- [Rychlý start](how-to-connect-pta-quick-start.md): uvedení do provozu na předávacího ověřování Azure AD.
+- [Rychlý start](how-to-connect-pta-quick-start.md): Uvedení do provozu na předávacího ověřování Azure AD.
 - [Migrace ze služby AD FS na předávací ověřování](https://aka.ms/adfstoptadpdownload) – podrobné pokyny k migraci ze služby AD FS (nebo jiné technologie federation) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Nakonfigurujte schopnosti inteligentním uzamčením ve svém tenantovi k ochraně uživatelské účty.
-- [Jak to funguje](how-to-connect-pta-how-it-works.md): Seznamte se se základy toho, jak funguje předávacího ověřování Azure AD.
+- [Jak to funguje](how-to-connect-pta-how-it-works.md): Naučte se základy toho, jak funguje předávacího ověřování Azure AD.
 - [Nejčastější dotazy k](how-to-connect-pta-faq.md): Najděte odpovědi na nejčastější dotazy.
 - [Řešení potíží s](tshoot-connect-pass-through-authentication.md): Zjistěte, jak řešit běžné problémy s funkcí předávací ověřování.
-- [Azure AD bezproblémového jednotného přihlašování k](how-to-connect-sso.md): Další informace o této doplňkové funkce.
+- [Bezproblémové jednotné přihlašování Azure AD](how-to-connect-sso.md): Další informace o této doplňkové funkce.

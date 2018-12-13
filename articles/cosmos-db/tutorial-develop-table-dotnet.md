@@ -1,23 +1,23 @@
 ---
-title: 'Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API'
-description: Naučte se vyvíjet v .NET s využitím rozhraní Table API služby Azure Cosmos DB
-services: cosmos-db
+title: Vývoj s využitím rozhraní Table API pomocí sady .NET SDK
+titleSuffix: Azure Cosmos DB
+description: Další informace jak vyvíjet s rozhraním Table API ve službě Azure Cosmos DB s použitím sady .NET SDK
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 12/18/2017
+ms.date: 12/07/2018
 ms.author: sngun
-ms.custom: mvc
-ms.openlocfilehash: c3749657ae432d8a6c85522b7dac31e31e39ea77
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: f10cb17f0300b6bd21d17b1e2ff204d57e4a7988
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075911"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251177"
 ---
-# <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API
+# <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>Vývoj s využitím služby Azure Cosmos DB Table API pomocí sady .NET SDK
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
 

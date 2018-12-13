@@ -1,5 +1,5 @@
 ---
-title: Používání webové služby s využitím šablony webové aplikace – Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Používání Studio webové služby s využitím šablony webové aplikace – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Použití šablony webové aplikace v Azure Marketplace k využívání prediktivní webové služby ve službě Azure Machine Learning.
 keywords: Webová služba, operacionalizace, rozhraní REST API, strojové učení
 services: machine-learning
@@ -7,7 +7,6 @@ documentationcenter: ''
 author: ericlicoding
 ms.custom: seodec18
 ms.author: amlstudiodocs
-manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -17,14 +16,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.openlocfilehash: 3eaf881ea1b8831891588310bfcec5e8fb146978
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 6a6da1af937338637cd875abe4e9d539b2e2b6e2
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53078578"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273880"
 ---
-# <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Využívání webové služby Azure Machine Learning pomocí šablony webové aplikace
+# <a name="consume-an-azure-machine-learning-studio-web-service-by-using-a-web-app-template"></a>Využívání webové služby Azure Machine Learning Studio pomocí šablony webové aplikace
 
 Můžete vyvíjet prediktivní model a nasadit ho jako webová služba Azure s použitím:
 - Azure Machine Learning Studio.
@@ -36,7 +35,7 @@ Existuje mnoho způsobů, jak používat rozhraní REST API a přístup k webov�
 
 Nejrychlejší a nejjednodušší způsob pro přístup k webové službě je k dispozici v šablonami webových aplikací, ale [Azure Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
 
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
+
 
 ## <a name="azure-machine-learning-web-app-templates"></a>Šablony aplikace webové služby Azure Machine Learning
 Webové aplikace šablony dostupné na webu Azure Marketplace můžete vytvářet vlastní webové aplikace, který zná vstupních dat webové služby a očekávané výsledky. Všechno, co je třeba provést je poskytnout přístup k webové aplikaci pro webové služby a data a udělá zbytek šablony.

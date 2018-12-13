@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: f7d1b5774e41761c7c332b0b38371979ca9d30cd
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 1283f84b4a45f5eedc98e6b16e5277e5347be1a4
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679677"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270242"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard s využitím webu Azure portal
 
@@ -114,7 +114,7 @@ Můžete vybrat libovolný dostupných metrik DDoS protection vás upozorní, kd
 
 Pro simulaci s útoky DDoS pro ověření upozornění, najdete v článku [ověření před útoky DDoS detekce](#validate-ddos-detection).
 
-Můžete také další informace o [konfiguraci webhooků](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [logic apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytvoření výstrahy.
+Můžete také další informace o [konfiguraci webhooků](../azure-monitor/platform/alerts-webhooks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a [logic apps](../logic-apps/logic-apps-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytvoření výstrahy.
 
 ## <a name="use-ddos-protection-telemetry"></a>Použití před útoky DDoS protection telemetrie
 
@@ -129,9 +129,9 @@ Telemetrie na útok je zajišťováno prostřednictvím Azure monitorování v r
 
 Názvy metrik prezentují paketů různých typů a bajtů vs. pakety, základní konstrukce názvy značek na každou metriku následujícím způsobem:
 
-- **Název značky zahozené** (například **příchozí pakety vyřadit DDoS**): počet paketů vyřadit/odstranil v systému ochrany před útoky DDoS.
-- **Název značky předané** (například **příchozí pakety předané DDoS**): počet pakety předané v systému před útoky DDoS na cílové virtuální IP adresy – přenos, který nebyl filtrovat.
-- **Žádný název značky** (například **příchozí pakety DDoS**): Celkový počet paketů, které vstoupily v systému scrubbingu – představuje součet pakety vyřazen a předávat.
+- **Název značky zahozené** (například **příchozí pakety vyřadit DDoS**): Počet paketů vyřadit/odstranil v systému ochrany před útoky DDoS.
+- **Název značky předané** (například **příchozí pakety předané DDoS**): Počet pakety předané v systému před útoky DDoS na cílové virtuální IP adresy – přenos, který nebyl filtrovat.
+- **Žádný název značky** (například **příchozí pakety DDoS**): Celkový počet paketů, které přišel do scrubbingu systému – představuje součet pakety zahozena a předaných dál.
 
 Pro simulaci s útoky DDoS pro ověření telemetrická data, najdete v článku [ověření před útoky DDoS detekce](#validate-ddos-detection).
 
@@ -158,7 +158,7 @@ Sestavy omezení rizik útoků používá Netflow data protokolu, který je agre
 
     - **Archivovat do účtu úložiště**: Data se zapisují do účtu služby Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Stream do centra událostí**: Povolí protokol příjemce pro sbírání protokolů pomocí Azure Event Hubs. Služba Event hubs povolení integrace se službou Splunk nebo jiných systémů SIEM. Další informace o této možnosti najdete v tématu [Stream diagnostických protokolů do služby event hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Odeslání do Log Analytics**: zapisuje protokoly do služby Azure Log Analytics. Další informace o této možnosti najdete v tématu [shromáždí protokoly pro použití v Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Odeslání do Log Analytics**: Zapisuje protokoly do služby Azure Log Analytics. Další informace o této možnosti najdete v tématu [shromáždí protokoly pro použití v Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Přírůstkové & po útoku zmírnění sestavy obsahovat následující pole
 - Vektory útoku
@@ -180,7 +180,7 @@ Protokoly toku omezení rizik útoků umožní zkontrolovat zhoršení provozu p
 
     - **Archivovat do účtu úložiště**: Data se zapisují do účtu služby Azure Storage. Další informace o této možnosti najdete v tématu [archivace diagnostických protokolů](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Stream do centra událostí**: Povolí protokol příjemce pro sbírání protokolů pomocí Azure Event Hubs. Služba Event hubs povolení integrace se službou Splunk nebo jiných systémů SIEM. Další informace o této možnosti najdete v tématu [Stream diagnostických protokolů do služby event hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Odeslání do Log Analytics**: zapisuje protokoly do služby Azure Log Analytics. Další informace o této možnosti najdete v tématu [shromáždí protokoly pro použití v Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Odeslání do Log Analytics**: Zapisuje protokoly do služby Azure Log Analytics. Další informace o této možnosti najdete v tématu [shromáždí protokoly pro použití v Log Analytics](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 1. Chcete-li zobrazit data protokolů toku v řídicím panelu Azure analytics, můžete importovat ukázkový řídicí panel z https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Protokoly toku bude mít tahle pole: 

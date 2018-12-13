@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: magoedte
-ms.component: ''
-ms.openlocfilehash: 72c87684e0b3fd40477c468c5cd0988651925fb0
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: dc68f00779d7b06b0498ffddbbee75a8396e952b
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094674"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53186289"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Vytvoření pracovního prostoru Log Analytics na portálu Azure portal
 Na webu Azure Portal, které můžete nastavit pracovní prostor Log Analytics, které je jedinečné prostředí Log Analytics s vlastním úložištěm dat, zdroje dat a řešení.  Podle kroků popsaných v tomto článku jsou požadovány, pokud máte v úmyslu na shromažďování dat z těchto zdrojů:

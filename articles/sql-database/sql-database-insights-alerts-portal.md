@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 56beb9779b0dde7074a2f49fab156c8b6e6577b3
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: a48bd66c335981a76a67206f840f4be69aaa8af1
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870176"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53273337"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Vytvoření výstrah pro Azure SQL Database a Data Warehouse pomocí webu Azure portal
 
@@ -38,8 +38,8 @@ Můžete nakonfigurovat výstrahu při aktivaci provést následující:
 Můžete nakonfigurovat a získat informace o použití pravidel upozornění
 
 * [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [Rozhraní příkazového řádku (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [Rozhraní příkazového řádku (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvoření pravidla upozornění na metriku pomocí webu Azure portal
@@ -48,7 +48,7 @@ Můžete nakonfigurovat a získat informace o použití pravidel upozornění
    
      ![Monitorování](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertsClassicButton.JPG)
   
-   - **SQL data Warehouse pouze**: klikněte na tlačítko **využití DWU** grafu. Vyberte **zobrazit upozornění classic**
+   - **SQL DATA WAREHOUSE POUZE**: Klikněte na tlačítko **využití DWU** grafu. Vyberte **zobrazit upozornění classic**
 
 3. Vyberte **přidat upozornění metriky (klasické)** tlačítko a přejít k vyplnění polí.
    
@@ -80,7 +80,7 @@ Po vytvoření výstrahy, můžete ho vybrat a:
 | Databáze SQL | dtu_consumption_percent | Procento DTU | Průměr | 5 minut |
 | Databáze SQL | úložiště | Celkovou velikost databáze | Maximum | 30 minut |
 | Databáze SQL | connection_successful | Úspěšná připojení | Celkem | 10 minut |
-| Databáze SQL | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
+| Databáze SQL | connection_failed | Chyba připojení | Celkem | 10 minut |
 | Databáze SQL | blocked_by_firewall | Blokovaná bránou Firewall | Celkem | 10 minut |
 | Databáze SQL | Zablokování | Zablokování | Celkem | 10 minut |
 | Databáze SQL | storage_percent | Procento velikosti databáze | Maximum | 30 minut |
@@ -105,7 +105,7 @@ Po vytvoření výstrahy, můžete ho vybrat a:
 | SQL Data Warehouse | physical_data_read_percent | Procento datových V/V | Průměr | 10 minut |
 | SQL Data Warehouse | úložiště | Celkovou velikost databáze | Maximum | 10 minut |
 | SQL Data Warehouse | connection_successful | Úspěšná připojení | Celkem | 10 minut |
-| SQL Data Warehouse | connection_failed | Neúspěšná připojení | Celkem | 10 minut |
+| SQL Data Warehouse | connection_failed | Chyba připojení | Celkem | 10 minut |
 | SQL Data Warehouse | blocked_by_firewall | Blokovaná bránou Firewall | Celkem | 10 minut |
 | SQL Data Warehouse | service_level_objective | Úrovně služby databáze | Celkem | 10 minut |
 | SQL Data Warehouse | dwu_limit | limit jednotky | Maximum | 10 minut |
@@ -116,6 +116,6 @@ Po vytvoření výstrahy, můžete ho vybrat a:
 
 ## <a name="next-steps"></a>Další postup
 * [Získejte přehled o Azure monitoring](../monitoring-and-diagnostics/monitoring-overview.md) včetně typů informací můžete shromažďovat a sledovat.
-* Další informace o [konfiguraci webhooků ve výstrahách](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+* Další informace o [konfiguraci webhooků ve výstrahách](../azure-monitor/platform/alerts-webhooks.md).
 * Získat [přehled diagnostických protokolů](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) a shromažďovat podrobné vysokou frekvencí metriky pro vaši službu.
 * Získat [přehled shromažďování metrik](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) k Ujistěte se, že vaše služba není k dispozici a reagují.

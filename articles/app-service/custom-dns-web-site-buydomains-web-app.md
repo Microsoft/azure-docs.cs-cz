@@ -1,5 +1,5 @@
 ---
-title: Nákup vlastního názvu domény pro Azure Web Apps
+title: Nákup vlastního názvu domény v Azure – službu App Service
 description: Informace o možnostech nákupu názvu vlastní domény s webovou aplikací ve službě Azure App Service.
 services: app-service\web
 documentationcenter: ''
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 48e0e68794e83739835d97aa8a2b26516c660357
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.custom: seodec18
+ms.openlocfilehash: 3f587b7e1b051b28d11ad84fcb2d02bd01315de5
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345187"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256430"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Nákup vlastního názvu domény pro Azure Web Apps
 
@@ -153,8 +154,8 @@ Pokud se rozhodnete přiřadit výchozí hostitelské názvy do vaší webové a
 
 Můžete také přiřadit názvy hostitelů v doména App Service do libovolné webové aplikace. Postup závisí na tom, jestli se doména App Service a webovou aplikaci patřily do stejného předplatného.
 
-- Jiné předplatné: mapování vlastních záznamů DNS z doména App Service do webové aplikace, jako jsou externě zakoupené domény. Informace o přidání vlastní názvy DNS doména služby App Service najdete v tématu [spravovat vlastní záznamy DNS](#custom). Mapování externí domény zakoupené webovou aplikaci, najdete v článku [mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md). 
-- Stejného předplatného: použijte následující postup.
+- Jiné předplatné: Mapování vlastních záznamů DNS z doména App Service do webové aplikace, jako jsou externě zakoupené domény. Informace o přidání vlastní názvy DNS doména služby App Service najdete v tématu [spravovat vlastní záznamy DNS](#custom). Mapování externí domény zakoupené webovou aplikaci, najdete v článku [mapování existujícího vlastního názvu DNS na Azure Web Apps](app-service-web-tutorial-custom-domain.md). 
+- Stejného předplatného: Pomocí následujícího postupu.
 
 ### <a name="launch-add-hostname"></a>Spuštění přidat název hostitele
 V **App Services** stránky, vyberte název vaší webové aplikace, kterou chcete přiřadit názvů hostitelů, vyberte **nastavení**a pak vyberte **vlastní domény**.
@@ -280,4 +281,4 @@ Ve výchozím nastavení služba App Service směruje webové požadavky do koř
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-[Nejčastější dotazy: Doména App Service (preview) a vlastní domény](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)
+[NEJČASTĚJŠÍ DOTAZY: Doména App Service (preview) a vlastní domény](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/)

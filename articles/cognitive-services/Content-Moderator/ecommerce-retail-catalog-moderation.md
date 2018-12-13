@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 0bd61c3f1a4f660076be4e87bb5443302e5dc013
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
-ms.translationtype: HT
+ms.openlocfilehash: 285590435a7e3c31d45d5d154d4e430ed3252838
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363990"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256226"
 ---
 # <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>Kurz: Moderování katalogu elektronického obchodování pomocí strojového učení
 
@@ -247,6 +247,6 @@ Všechny sady SDK služeb Microsoft Cognitive Services a ukázky jsou licencová
 
 Vývojáři, kteří používají Cognitive Services, včetně této klientské knihovny a ukázky, by měli postupovat podle pravidel chování vývojářů pro Microsoft Cognitive Services, která se nacházejí na adrese http://go.microsoft.com/fwlink/?LinkId=698895.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Sestavte a rozšiřte kurz pomocí [zdrojových souborů projektu](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) na Githubu.
+Vytvářet a rozšiřovat výukový program s použitím [zdrojové soubory projektu](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) na Githubu.

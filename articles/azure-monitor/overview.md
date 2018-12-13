@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: ccdee1963d3d37966f6784e7a7421c500d6a8a51
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2d1f96359512a3c2135909ebf69ec9ec3b801d61
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994219"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190556"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -48,11 +48,11 @@ Dotazovací jazyk Log Analytics je vhodný pro jednoduchá protokolu dotazy, ale
 ## <a name="what-data-does-azure-monitor-collect"></a>Jaká data shromažďuje nástroj Azure Monitor?
 Azure Monitor může shromažďovat data z různých zdrojů. Můžete si představit sledování dat pro vaše aplikace na úrovních, od aplikace, libovolný operační systém a služeb, které spoléhá na, na platformě, jako takové. Azure Monitor provádí sběr dat ze všech následujících úrovních:
 
-- **Monitorování dat aplikací**: Data o výkonu a funkce kódu jste napsali, bez ohledu na jeho platformu.
+- **Monitorování dat aplikací**: Data o výkonu a funkce kódu, který jste napsali, bez ohledu na jeho platformu.
 - **Data monitorování hostovaného operačního systému**: Data o operačním systému, na kterém je aplikace spuštěna. To může být spuštěn v Azure, jiného cloudu nebo místně. 
 - **Data monitorování prostředků Azure**: Data o provozu prostředku Azure.
 - **Předplatné Azure, data monitorování**: Data o provozu a správy předplatného Azure, jakož i informace o stavu a provoz Azure samotný. 
-- **Data monitorování klienta Azure**: Data o provozu Azure služby na úrovni tenanta, jako je Azure Active Directory.
+- **Data monitorování klienta Azure**: Data o provozu služeb Azure úrovni klienta, jako je Azure Active Directory.
 
 Jakmile vytvoříte předplatné Azure a začněte přidávat prostředky, jako jsou virtuální počítače a webové aplikace, spustí monitorování Azure, shromažďování dat.  [Protokoly aktivit](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) zaznamenat při vytvoření nebo úpravě prostředky. [Metriky](../monitoring-and-diagnostics/monitoring-overview-metrics.md) zjistíte, jaký je výkon prostředku a prostředky, které je spotřebovává. 
 
@@ -96,7 +96,7 @@ Mimo možnosti k interaktivní analýze dat monitorování, musí být schopné 
 ### <a name="alerts"></a>Výstrahy
 [Výstrahy ve službě Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-alerts.md) zajistit aktivní upozorňování kritického stavu a potenciálně se pokusí provést opravné akce. Pravidla upozornění na základě metrik poskytuje téměř reálném čase výstrahy podle číselných hodnot, zatímco pravidla založená na protokolech umožňují komplexní logiku napříč daty z více zdrojů.
 
-Pravidla, která používá Azure Monitor výstrah [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md), které obsahují jedinečné sady příjemců a akce, které mohou být sdíleny napříč více pravidel. V závislosti na vašich požadavcích, skupiny akcí lze provádět činnosti, jako mají výstrahy spustit externí akce nebo integrují s vašimi nástroji ITSM pomocí webhooků.
+Pravidla, která používá Azure Monitor výstrah [skupiny akcí](../azure-monitor/platform/action-groups.md), které obsahují jedinečné sady příjemců a akce, které mohou být sdíleny napříč více pravidel. V závislosti na vašich požadavcích, skupiny akcí lze provádět činnosti, jako mají výstrahy spustit externí akce nebo integrují s vašimi nástroji ITSM pomocí webhooků.
 
 ![Výstrahy](media/overview/alerts.png)
 

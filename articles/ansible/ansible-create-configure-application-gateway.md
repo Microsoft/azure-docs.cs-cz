@@ -1,21 +1,21 @@
 ---
-title: Správa webového provozu pomocí služby Azure Application Gateway za použití Ansible (Preview)
+title: Správa webového provozu s využitím Azure Application Gateway pomocí Ansible
 description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat službu Azure Application Gateway pro správu webového provozu.
 ms.service: ansible
-keywords: ansible, azure, devops, bash, playbook, azure application gateway, nástroj pro vyrovnávání zatížení, webový provoz
+keywords: ansible, azure, devops, bash, playbooku, aplikační bránu, nástroj pro vyrovnávání zatížení, webového provozu
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: e3c165c87d6c179141f2ddd44f00f0f62a84b285
-ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
-ms.translationtype: HT
+ms.openlocfilehash: af7f22ae5c289a01e6876d8ce586cb32383c8d3b
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50912862"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53253346"
 ---
-# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible-preview"></a>Správa webového provozu pomocí služby Azure Application Gateway za použití Ansible (Preview)
+# <a name="manage-web-traffic-with-azure-application-gateway-by-using-ansible"></a>Správa webového provozu s využitím Azure Application Gateway pomocí Ansible
 
 [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/) je nástroj pro vyrovnávání zatížení webových přenosů, který vám umožní spravovat provoz do webových aplikací.
 
@@ -34,7 +34,7 @@ V tomto kurzu získáte informace o následujících postupech:
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. Ansible 2.7 RC můžete nainstalovat spuštěním příkazu `sudo pip install ansible[azure]==2.7.0rc2`. Po vydání Ansible 2.7 už nebudete muset zadávat verzi.
+> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.7. 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -287,7 +287,7 @@ Uložte tento playbook jako *rg_delete.yml*. Playbook spustíte pomocí příkaz
 ansible-playbook rg_delete.yml
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Ansible v Azure](https://docs.microsoft.com/azure/ansible/)

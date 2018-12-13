@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: b52604fa19a5598e8aff5b8a1ea25e7361add553
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 22dab5ecaba71093056e9bb2f6843c19896f845d
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997018"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53323384"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 U [aplikací cloudových služeb Microsoft Azure](https://azure.microsoft.com/services/cloud-services/) je možné pomocí služby [Application Insights][start] monitorovat dostupnost, výkon, chyby a využití díky kombinování dat ze sad SDK služby Application Insights a dat [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -95,14 +95,14 @@ Pokud jste se rozhodli použít samostatný prostředek Application Insights pro
 
 Tento postup má za následek vložení instrumentačních klíčů Application Insights do souborů s názvy `ServiceConfiguration.*.cscfg`. ([Vzorový kód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).)
 
-Pokud chcete měnit úroveň diagnostických informací odesílaných do Application Insights, můžete tak učinit [přímou úpravou souborů `.cscfg`](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md).
+Pokud chcete měnit úroveň diagnostických informací odesílaných do Application Insights, můžete tak učinit [přímou úpravou souborů `.cscfg`](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
 
 ## <a name="sdk"></a>Instalace sady SDK v každém projektu
 Tato možnost umožňuje přidat vlastní obchodní telemetrická data do kterékoli role kvůli podrobnější analýze způsobu použití aplikace a její výkonnosti.
 
 V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý projekt cloudové aplikace.
 
-1. **Webové role:** Klikněte na projekt pravým tlačítkem myši a zvolte možnost **Nakonfigurovat Application Insights** nebo **Přidat &gt; Telemetrie Application Insights**.
+1. **Webové role**: Klikněte pravým tlačítkem na projekt a zvolte **konfigurovat Application Insights** nebo **Přidat > Application Insights telemetrie**.
 
 2. **Role pracovních procesů**: 
  * Klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet**.
@@ -162,7 +162,7 @@ Ve webových rolí modul požadavků automaticky shromažďuje data týkající 
 
 Můžete zaznamenávat výkon volání rolí pracovních procesů, pokud je budete sledovat stejným způsobem jako požadavky HTTP. V Application Insights typ telemetrických dat Požadavek měří uvedenou jednotku práce serveru, kterou lze časovat a která může nezávisle být úspěšná nebo neúspěšná. Zatímco požadavky HTTP automaticky zachycuje sada SDK, můžete vložit vlastní kód pro sledování požadavků na role pracovních procesů.
 
-Prohlédněte si dvě ukázkové role pracovních procesů, které mají zaznamenávat požadavky: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) a [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+Zobrazit dvěma rolemi pracovních procesů ukázkové požadavky: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) a [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Výjimky
 V tématu [Monitorování výjimek v Application Insights](app-insights-asp-net-exceptions.md) najdete informace o tom, jak shromažďovat neošetřené výjimky z různých typů webových aplikací.
@@ -203,7 +203,7 @@ Díky informačně bohaté diagnostice můžete zjistit, co vedlo k neúspěšn�
 Zde je uveden postup:
 
 * Nastavte ID korelace v CallContext tak, jak je uvedeno [zde](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). V tomto případě používáme jako ID korelace ID požadavku.
-* Přidejte vlastní implementaci TelemetryInitializer a nastavte Operation.Id na ID korelace uvedené výše. Příklad je zde: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
+* Přidejte vlastní implementaci TelemetryInitializer a nastavte Operation.Id na ID korelace uvedené výše. Zde je příklad je zde: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13)
 * Přidejte inicializátor vlastní telemetrie. Můžete to udělat v souboru ApplicationInsights.config nebo v kódu jak je znázorněno [tady](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Telemetrická data klienta
@@ -230,7 +230,7 @@ Vytvořili jste sestavení pro .NET 4.6? Verze 4.6 není v rolích Azure Cloud S
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Další postup
-* [Konfigurace odesílání diagnostiky Azure do Application Insights](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
+* [Konfigurace odesílání diagnostiky Azure do Application Insights](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Automatizace vytváření prostředků Application Insights](app-insights-powershell.md)
 * [Automatizace diagnostiky Azure](app-insights-powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)

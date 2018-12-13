@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Příprava na zálohování virtuálních počítačů'
+title: 'Azure Backup: Příprava zálohování virtuálních počítačů'
 description: Ujistěte se, že je vaše prostředí připravené pro zálohování virtuálních počítačů v Azure.
 services: backup
 author: rayne-wiselman
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 1092f5e21eab1e037c360408f17548b544a9e922
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d24b2773aa056b33a4067d5d84677d186d25b195
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422792"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53255070"
 ---
 # <a name="prepare-to-back-up-azure-vms"></a>Příprava na zálohování virtuálních počítačů Azure
 
@@ -34,12 +34,12 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
 
 ## <a name="supported-operating-systems-for-backup"></a>Podporované operační systémy pro zálohování
 
- * **Linux**: Azure Backup podporuje [seznam distribucí, které Azure schvaluje](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), s výjimkou CoreOS Linux a 32bitový operační systém. Seznam operačních systémů Linux, které podporují obnovování souborů najdete v tématu [obnovení souborů ze záloh virtuálních počítačů](backup-azure-restore-files-from-vm.md#for-linux-os).
+ * **Linux:** Azure Backup podporuje [seznam distribucí, které Azure schvaluje](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), s výjimkou CoreOS Linux a 32bitový operační systém. Seznam operačních systémů Linux, které podporují obnovování souborů najdete v tématu [obnovení souborů ze záloh virtuálních počítačů](backup-azure-restore-files-from-vm.md#for-linux-os).
 
     > [!NOTE]
     > Další používání your vlastní distribuce Linuxu mohou práce, za předpokladu, že agent virtuálního počítače je k dispozici na virtuálním počítači a podporovaný Python. Tyto distribuce ale podporované nejsou.
     >
- * **Windows Server**, **klienta Windows**: verze starší než Windows Server 2008 R2 nebo Windows 7, nejsou podporovány.
+ * **Windows Server**, **klienta Windows**:  Verze starší než Windows Server 2008 R2 nebo Windows 7, nejsou podporovány.
 
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Omezení při zálohování a obnovení virtuálního počítače
@@ -177,14 +177,14 @@ Pro fungování, Azure Backup rozšíření [agenta virtuálního počítače](.
 
 Následující informace jsou poskytovány pro situace, ve kterém jsou *není* pomocí virtuálního počítače vytvořena z Azure Marketplace. **Například jste migrovali virtuální počítač z místního datacentra. V takovém případě se agent virtuálního počítače potřeba nainstalovat z důvodu ochrany virtuálního počítače.**
 
-**Poznámka:**: Po instalaci agenta virtuálního počítače, musíte také pomocí Azure Powershellu k aktualizaci vlastností ProvisionGuestAgent tak zná Azure je nainstalovaný agent virtuálního počítače.
+**Poznámka:**: Po instalaci agenta virtuálního počítače, musíte také aktualizovat vlastnost ProvisionGuestAgent tak Azure ví, že je nainstalovaný agent virtuálního počítače pomocí Azure Powershellu.
 
 Pokud máte problémy se zálohováním virtuálních počítačů Azure, zkontrolujte, že je na virtuálním počítači správně nainstalovaný agent virtuálního počítače Azure pomocí následující tabulky. Tabulka poskytuje další informace o virtuální počítač agenta pro Windows a virtuální počítače s Linuxem.
 
 | **Operace** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Instalace agenta virtuálního počítače |Stáhněte si a nainstalujte [MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace budete potřebovat oprávnění správce. |<li> Nainstalujte nejnovější [agenta pro Linux](../virtual-machines/extensions/agent-linux.md). K dokončení instalace budete potřebovat oprávnění správce. Doporučujeme vám však nainstalovat agenta z úložiště distribuce. Jsme **není vhodné řešit podobné** instalace agenta virtuálního počítače s Linuxem přímo z githubu.  |
-| Aktualizace agenta virtuálního počítače |Aktualizace agenta virtuálního počítače je stejně jednoduchá, jako přeinstalace [binárních souborů agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |Postupujte podle pokynů v tématu [Aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Doporučujeme aktualizovat agenta ze svého úložiště distribuce. Jsme **není vhodné řešit podobné** aktualizace agenta virtuálního počítače s Linuxem přímo z githubu.<br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |
+| Instalace agenta virtuálního počítače |Stáhněte si a nainstalujte [MSI agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). K dokončení instalace budete potřebovat oprávnění správce. |<li> Nainstalujte nejnovější [agenta pro Linux](../virtual-machines/extensions/agent-linux.md). K dokončení instalace budete potřebovat oprávnění správce. Doporučujeme vám však nainstalovat agenta z úložiště distribuce. Jsme **není vhodné řešit podobné** instalace agenta virtuálního počítače s Linuxem přímo z Githubu.  |
+| Aktualizace agenta virtuálního počítače |Aktualizace agenta virtuálního počítače je stejně jednoduchá, jako přeinstalace [binárních souborů agenta virtuálního počítače](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |Postupujte podle pokynů v tématu [Aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Doporučujeme aktualizovat agenta ze svého úložiště distribuce. Jsme **není vhodné řešit podobné** aktualizace agenta virtuálního počítače s Linuxem přímo z Githubu.<br>Ujistěte se, že během aktualizace agenta virtuálního počítače neběží žádná operace zálohování. |
 | Ověření instalace agenta virtuálního počítače |<li>Ve virtuálním počítači Azure přejděte do složky *C:\WindowsAzure\Packages*. <li>Měl by být přítomný soubor WaAppAgent.exe.<li> Pravým tlačítkem myši klikněte na soubor, přejděte na **Vlastnosti** a poté vyberte kartu **Podrobnosti**. Pole Verze produktu by mělo být 2.6.1198.718 nebo vyšší. |neuvedeno |
 
 ### <a name="backup-extension"></a>Rozšíření zálohování
@@ -238,7 +238,7 @@ Chcete-li použít proxy server HTTP pro komunikaci s veřejným Internetem, pro
 > [!NOTE]
 > Tyto kroky používají konkrétní názvy a hodnoty v tomto příkladu. Už při zadání (nebo vkládání) podrobnosti do kódu, použijte názvy a hodnoty pro vaše nasazení.
 
-#### <a name="step-1-configure-outgoing-network-connections"></a>Krok 1: Konfigurace odchozí síťová připojení
+#### <a name="step-1-configure-outgoing-network-connections"></a>Krok 1: Nakonfigurujte odchozí síťová připojení
 ###### <a name="for-windows-machines"></a>U počítačů s Windows
 Tento postup nastaví konfiguraci proxy serveru pro místní systémový účet.
 
@@ -283,7 +283,7 @@ HttpProxy.Host=<proxy IP>
 HttpProxy.Port=<proxy port>
 ```
 
-#### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>Krok 2: Povolte příchozí připojení na proxy serveru
+#### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>Krok 2: Povolí příchozí připojení na proxy serveru
 1. Na proxy serveru otevřete bránu Windows Firewall. Nejjednodušší způsob, jak přistupovat k bráně firewall je vyhledání **brány Windows Firewall s pokročilým zabezpečením**.
 1. V **brány Windows Firewall s pokročilým zabezpečením** dialogové okno, klikněte pravým tlačítkem na **příchozí pravidla** a vyberte **nové pravidlo**.
 1. V nové příchozí pravidlo průvodci na **typ pravidla** stránky, vyberte **vlastní** možnost a vyberte **Další**.

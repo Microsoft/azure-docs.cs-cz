@@ -1,6 +1,6 @@
 ---
 title: Nejčastější dotazy k Azure Backup
-description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
+description: 'Odpovědi na běžné dotazy týkající se: Včetně služby Recovery Services trezory, co může zálohovat, jak to funguje, šifrování a omezení funkce Azure Backup. '
 services: backup
 author: rayne-wiselman
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 61e8a7732b7e6dc7fd521819a135fb1a7a6a13b3
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 647ed64d405424431419da1e693abea2bdf07ace
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52261662"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53262261"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – nejčastější dotazy
 Tento článek obsahuje odpovědi na běžné dotazy týkající se služby Azure Backup.
@@ -148,7 +148,7 @@ Následující tabulka vysvětluje, jak je určená velikost jednotlivých zdroj
 **Zdroj dat** | **Podrobnosti**
 --- | ---
 Svazek |Množství dat, která zazálohovali z jednoho svazku zálohovaného virtuálního počítače.
-Databáze systému SQL Server |Velikost zálohovaných jeden velikosti databáze SQL.
+Databáze systému SQL Server |Velikost zálohovaných jeden velikosti databáze SQL.
 SharePoint | Součet databází obsahu a konfigurace v rámci zálohované farmy služby SharePoint.
 Výměna |Součet všech databází systému Exchange v zálohování serveru Exchange server.
 BMR/stav systému |Každá jednotlivá kopie BMR nebo stav systému zálohovaného počítače.
@@ -235,8 +235,8 @@ Ano. Data se šifrují na místním počítači pomocí AES256. Data se odesíla
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Jsou šifrovaná i zálohovaná data v Azure?
 
 Ano. Data v Azure je zašifrovaná at-rest.
-- Pro zálohování místních šifrování v resetování poskytuje heslem, které poskytnete při zálohování do Azure.
-- Pro virtuální počítače Azure data jsou zašifrovaná na reset pomocí šifrování služby Storage (SSE).
+- Pro zálohování místních šifrování v klidovém stavu poskytuje heslem, které poskytnete při zálohování do Azure.
+- Pro virtuální počítače Azure data jsou zašifrovaná – v klidovém stavu pomocí šifrování služby Storage (SSE).
 
 Microsoft nikdy nedešifruje zálohovaná data.
 

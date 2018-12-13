@@ -1,5 +1,5 @@
 ---
-title: IP adresy ve službě Azure App Service | Dokumentace Microsoftu
+title: Příchozí/odchozí IP adresy – Azure App Service | Dokumentace Microsoftu
 description: Popisuje, jakým způsobem příchozí a odchozí IP adresy se používají ve službě App Service a tom, jak najít informace o je pro vaši aplikaci.
 services: app-service
 documentationcenter: ''
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: cephalin
-ms.openlocfilehash: 752f9d82afafaf7324c0c63c0d7377b952fe0716
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.custom: seodec18
+ms.openlocfilehash: cd7f8afabc6df208a187e80ac505ef52141cd62f
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003142"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53256787"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Příchozí a odchozí IP adresy ve službě Azure App Service
 

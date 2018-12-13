@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Spuštění úlohy Spark v Azure Databricks pomocí šablony Resource Manageru '
+title: 'Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí šablony Resource Manageru '
 description: Tento rychlý start ukazuje, jak pomocí šablony Azure Resource Manageru vytvořit pracovní prostor Azure Databricks a cluster Apache Spark a spustit úlohu Spark.
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/12/2018
-ms.openlocfilehash: 87aaf7108fabe0e4d96c4a2edd15db8531f1a828
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 793aa52c0eb49d122f520ead3ee80a869e7b62d9
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578325"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53251320"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rychlý start: Spuštění úlohy Spark v Azure Databricks pomocí šablony Azure Resource Manageru
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí šablony Azure Resource Manageru
 
 V tomto rychlém startu se dozvíte, jak vytvořit pracovní prostor Azure Databricks pomocí šablony Azure Resource Manageru. Pracovní prostor použijete k vytvoření clusteru Apache Spark a spuštění úlohy Spark na clusteru Databricks. Další informace o službě Azure Databricks najdete v tématu [Co je Azure Databricks?](what-is-azure-databricks.md)
 
@@ -69,7 +69,7 @@ V této části pomocí šablony Azure Resource Manageru vytvoříte pracovní p
 
    * Zadejte název clusteru.
    * Pro účely tohoto článku vytvořte cluster s modulem runtime verze **4.0**.
-   * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po \_\_ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
+   * Nezapomeňte zaškrtnout políčko **Terminate after \_\_ minutes of inactivity** (Ukončit po __ minutách neaktivity). Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
 
    Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
@@ -80,7 +80,7 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 Než se pustíte do této části, je potřeba nejprve splnit následující požadavky:
 
 * [Vytvořte účet úložiště objektů blob v Azure](../storage/common/storage-quickstart-create-account.md).
-* Stáhněte si [z GitHubu](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) ukázkový soubor JSON.
+* Stáhněte si ukázkový soubor JSON [z Githubu](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
 * Nahrajte ukázkový soubor JSON do účtu úložiště objektů blob v Azure, který jste vytvořili. Soubory můžete nahrát pomocí [Průzkumníka služby Microsoft Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md).
 
 Provedením následujících úloh vytvořte ve službě Databricks poznámkový blok, nakonfigurujte ho na čtení dat z účtu služby Azure Blob Storage a potom na těchto datech spusťte úlohu Spark SQL.

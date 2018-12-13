@@ -1,5 +1,5 @@
 ---
-title: 'Synchronizace Azure AD Connect: proveďte změny ve službě Azure AD Connect sync konfigurace | Dokumentace Microsoftu'
+title: 'Synchronizace Azure AD Connect: Ujistěte se, změny ve službě Azure AD Connect sync konfigurace | Dokumentace Microsoftu'
 description: Provede vás k provedení změny v konfiguraci ve službě Azure AD Connect sync.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c8aa337be2dd3c4209a3095d8733893d78f6cb74
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6579e2ced3742eb1a70ccca96b9608fc6da628ee
+ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314864"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53190625"
 ---
-# <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizace Azure AD Connect: proveďte změnu výchozí konfigurace
+# <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Synchronizace Azure AD Connect: Proveďte změnu výchozí konfigurace
 Cílem tohoto článku je pro vás provedou postupem provést změny ve výchozí konfiguraci ve službě Azure Active Directory (Azure AD) Connect sync. Obsahuje postup pro některé běžné scénáře. Se znalostí by měl být schopen provést jednoduché změny do vaší vlastní konfigurace na základě vlastních obchodních pravidel.
 
 > [!WARNING]
@@ -60,12 +60,12 @@ Výčet nejběžnějších změn se toky atributů. Data ve zdrojovém adresář
 2. Na **popis** stránky, zadejte následující:  
    ![Příchozí pravidlo filtrování](./media/how-to-connect-sync-change-the-configuration/description2.png)  
    * **Název**: Zadejte popisný název pravidla.
-   * **Popis**: dejte některé další informace, aby někdo jiný pochopit, co je pravidlo pro.
+   * **Popis**: Dejte některé další informace, aby někdo jiný pochopit, co je pravidlo pro.
    * **Připojený systém**: Toto je systém, ve kterém můžete najít objekt. V tomto případě vyberte **konektor služby Active Directory**.
-   * **Typ objektu systému/Metaverse připojené**: vyberte **uživatele** a **osoba**v uvedeném pořadí.
+   * **Typ objektu systému/Metaverse připojené**: Vyberte **uživatele** a **osoba**v uvedeném pořadí.
    * **Typ odkazu**: Změňte tuto hodnotu na **připojit**.
    * **Priorita**: Zadejte hodnotu, která je v systému jedinečný. Nižší číselná hodnota znamená vyšší prioritu.
-   * **Značka**: nechte pole prázdné. Toto pole vyplní hodnotou by měl mít pouze out-of-box pravidla společnosti Microsoft.
+   * **Značka**: Ponechte toto prázdné. Toto pole vyplní hodnotou by měl mít pouze out-of-box pravidla společnosti Microsoft.
 3. Na **Scoping filtr** zadejte **givenName ISNOTNULL**.  
    ![Příchozí pravidlo filtr oborů](./media/how-to-connect-sync-change-the-configuration/scopingfilter.png)  
    V této části se používá k definování, pro které objekty má pravidlo platit. Pokud je ponecháno prázdné, pravidlo platit pro všechny objekty uživatelů. Nicméně, který bude zahrnovat konferenčních místnostech dojde, účty služeb a dalších objektů jiných osob uživatele.
@@ -201,7 +201,7 @@ Azure AD Connect podporuje synchronizaci **UserType** atribut pro **uživatele**
 
 Ve výchozím nastavení není atribut UserType nastavený na povolena synchronizace, protože neexistuje žádný odpovídající atribut UserType v místní službě Active Directory. Musíte ručně povolit synchronizaci. Před provedením tohoto kroku je nutné provést Všimněte si následujícího chování vynucuje Azure AD:
 
-- Azure AD přijímá jenom dvě hodnoty pro atribut UserType: **člen** a **hosta**.
+- Azure AD přijímá jenom dvě hodnoty pro atribut UserType nastavený na: **Člen** a **hosta**.
 - Pokud atribut UserType není povolen pro synchronizaci ve službě Azure AD Connect, uživatelů Azure AD prostřednictvím synchronizace adresářů vytvořili by mají atribut UserType nastavený na **člen**.
 - Azure AD nepovoluje atribut UserType na stávající služby Azure AD uživatelům změnit pomocí služby Azure AD Connect. Můžete nastavit pouze během vytváření uživatelů Azure AD.
 
@@ -211,7 +211,7 @@ Než povolíte synchronizaci atribut UserType, musí nejprve rozhodněte, jak at
 
     Pokud zvolíte tuto metodu, musíte zajistit, že atribut určené se vyplní správné hodnoty pro všechny existující uživatelské objekty v místní službě Active Directory, které jsou synchronizovány do Azure AD, než povolíte synchronizaci atribut UserType nastavený na .
 
-- Alternativně lze odvodit hodnotu pro atribut UserType z dalších vlastností. Například chcete synchronizovat všechny uživatele jako **hosta** pokud jejich místní atribut userPrincipalName AD končí část domény *@partners.fabrikam123.org*. 
+- Alternativně lze odvodit hodnotu pro atribut UserType z dalších vlastností. Například chcete synchronizovat všechny uživatele jako **hosta** pokud jejich místní atribut userPrincipalName AD končí část domény <em>@partners.fabrikam123.org</em>. 
 
     Jak už bylo zmíněno dříve, Azure AD Connect není povoleno atribut UserType na stávající služby Azure AD uživatelům změnit pomocí služby Azure AD Connect. Proto musíte zajistit, aby logika, kterou jste se rozhodli je konzistentní s jak atribut UserType nastavený na už je nakonfigurovaný pro všichni stávající uživatelé ve vašem tenantovi Azure AD.
 
@@ -236,7 +236,7 @@ Chcete-li zabránit nežádoucí změny export do služby Azure AD, ujistěte se
  3. Otevřete Synchronization Service Manager tak, že přejdete do **Start** > **synchronizační služba**.
  4. Přejděte **operace** kartu a potvrdit, neexistuje žádná operace se stavem *probíhá*.
 
-### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Krok 2: Přidání zdrojového atributu do místní schéma AD Connector.
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Krok 2: Přidejte zdrojový atribut pro místní schéma AD Connector.
 Ne všechny atributy služby Azure AD jsou importovány do místní AD prostoru konektoru. Přidání zdrojového atributu na seznam importovaných atributy:
 
  1. Přejděte **konektory** kartu v Synchronization Service Manager.
@@ -246,7 +246,7 @@ Ne všechny atributy služby Azure AD jsou importovány do místní AD prostoru 
  5. Klikněte na tlačítko **OK** uložte.
 ![Přidejte zdrojový atribut k místnímu schéma AD Connector.](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>Krok 3: Přidání UserType schématu konektor služby Azure AD
+### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>Krok 3: Přidat UserType schématu konektor služby Azure AD
 Ve výchozím nastavení atribut UserType není importován do Azure AD Connect prostoru. Chcete-li přidat atribut UserType nastavený na seznam importovaných atributy:
 
  1. Přejděte **konektory** kartu v Synchronization Service Manager.
@@ -289,7 +289,7 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu tok z zdrojový atr
     | --- | --- | --- | --- | --- |
     | Přímé | UserType | extensionAttribute1 | Není zaškrtnuto | Aktualizace |
 
-    Například budete chtít odvodit hodnotu pro atribut UserType z dalších vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut userPrincipalName AD končí část domény *@partners.fabrikam123.org*. Můžete implementovat výrazu takto:
+    Například budete chtít odvodit hodnotu pro atribut UserType z dalších vlastností. Například chcete synchronizovat všechny uživatele jako hosta, pokud jejich místní atribut userPrincipalName AD končí část domény <em>@partners.fabrikam123.org</em>. Můžete implementovat výrazu takto:
 
     | Typ toku | Cílový atribut | Zdroj | Použít jednou | Sloučit typu |
     | --- | --- | --- | --- | --- |
@@ -299,7 +299,7 @@ Pravidlo příchozí synchronizace povoluje hodnotu atributu tok z zdrojový atr
 
 ![Vytvoření pravidla synchronizace příchozích dat](./media/how-to-connect-sync-change-the-configuration/usertype3.png)
 
-### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>Krok 5: Vytvoření pravidla odchozí synchronizace tok hodnota atributu do služby Azure AD
+### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>Krok 5: Vytvořit pravidlo odchozí synchronizace, které jsou předávány hodnotou atributu do služby Azure AD
 Pravidlo odchozí synchronizace povoluje hodnotu atributu, které jsou předávány z úložiště metaverse na atribut UserType ve službě Azure AD:
 
 1. Přejdete na Editor pravidel synchronizace.
@@ -336,7 +336,7 @@ Pravidlo odchozí synchronizace povoluje hodnotu atributu, které jsou předáv�
 
 ![Vytvořit pravidlo odchozí synchronizace](./media/how-to-connect-sync-change-the-configuration/usertype4.png)
 
-### <a name="step-6-run-a-full-synchronization-cycle"></a>Krok 6: Spuštění cyklu úplné synchronizace
+### <a name="step-6-run-a-full-synchronization-cycle"></a>Krok 6: Spustit úplnou synchronizaci cyklus
 Obecně platí úplné synchronizační cyklus se totiž jsme přidali nové atributy služby Active Directory i Azure AD Connector schémata a zavedl vlastní synchronizační pravidla. Chcete-li ověřit změny před exportem do služby Azure AD. 
 
 Následující kroky můžete ověřit změny při spuštění ruční kroky, které tvoří úplnou synchronizační cyklus.
@@ -349,7 +349,7 @@ Následující kroky můžete ověřit změny při spuštění ruční kroky, kt
    4. Počkejte na dokončení operace.
 
     > [!NOTE]
-    > Úplný import, můžete přeskočit na místní AD Connector. Pokud zdrojový atribut je již zahrnut v seznamu importu atributy. Jinými slovy nemáte žádné změny během [krok 2: Přidání zdrojového atributu do místní AD Connector. schéma](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
+    > Úplný import, můžete přeskočit na místní AD Connector. Pokud zdrojový atribut je již zahrnut v seznamu importu atributy. Jinými slovy nemáte žádné změny během [krok 2: Přidejte zdrojový atribut pro místní AD Connector. schéma](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema).
 
 2. Spuštění **úplný import** na **konektor služby Azure AD**:
 
@@ -375,7 +375,7 @@ Následující kroky můžete ověřit změny při spuštění ruční kroky, kt
    2. V **Search Connector Space** vyskakovací dialogové okno:
 
       - Nastavte **oboru** k **čekající na Export**.
-      - Zaškrtněte všechna tři políčka: **přidat**, **změnit**, a **odstranit**.
+      - Zaškrtněte všechna tři políčka: **Přidat**, **upravit**, a **odstranit**.
       - Klikněte na tlačítko **hledání** tlačítko Zobrazit seznam objektů se změnami nelze exportovat. Přezkoumat změny pro daný objekt, dvakrát klikněte na objekt.
       - Ověřte, že jsou očekávané změny.
 
@@ -388,7 +388,7 @@ Následující kroky můžete ověřit změny při spuštění ruční kroky, kt
 > [!NOTE]
 > Tyto kroky nejsou zahrnout úplnou synchronizaci a exportovat kroky v konektoru služby Azure AD. Tyto kroky nejsou nutné, protože hodnoty atributů jsou vyplývající z místní služby Active Directory do služby Azure AD pouze.
 
-### <a name="step-7-re-enable-the-sync-scheduler"></a>Krok 7: Opětovné povolení Plánovač synchronizace
+### <a name="step-7-re-enable-the-sync-scheduler"></a>Krok 7: Povolte Plánovač synchronizace
 Povolte Plánovač integrované synchronizace:
 
 1. Spusťte relaci Powershellu.
@@ -401,5 +401,5 @@ Povolte Plánovač integrované synchronizace:
 
 **Témata s přehledem**
 
-* [Synchronizace Azure AD Connect: Principy a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
+* [Synchronizace Azure AD Connect: Pochopení a přizpůsobení synchronizace](how-to-connect-sync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md)
