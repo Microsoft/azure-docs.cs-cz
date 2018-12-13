@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: aa940e238601f06a53247c0da4d1a92f16b6f56c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: fec1b81ab879865bd690048b992075d45621da27
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840601"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890360"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Plánování kapacity virtuálních počítačů Hyper-V s řešením kapacitu a výkon (Preview)
 
@@ -52,7 +52,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 |---|---|---|
 | [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace o datech kapacitu a výkon z agentů Windows. |
 | [Agenti systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Ne    | Řešení neshromažďuje informace o datech kapacitu a výkon z přímí agenti systému Linux.|
-| [Skupiny pro správu SCOM](../../log-analytics/log-analytics-om-agents.md) | Ano |Řešení shromažďuje data kapacity a výkonu z agentů v připojené skupině pro správu nástroje SCOM. Přímé připojení z agenta nástroje SCOM k Log Analytics se nevyžaduje.|
+| [Skupiny pro správu SCOM](../../azure-monitor/platform/om-agents.md) | Ano |Řešení shromažďuje data kapacity a výkonu z agentů v připojené skupině pro správu nástroje SCOM. Přímé připojení z agenta nástroje SCOM k Log Analytics se nevyžaduje.|
 | [Účet služby Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Úložiště Azure neobsahuje data kapacitu a výkon.|
 
 ## <a name="prerequisites"></a>Požadavky
@@ -81,7 +81,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Při aktualizaci řešení kapacitu a výkon, číslo verze se změní.
 
-Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../log-analytics/log-analytics-om-agents.md).
+Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 ## <a name="using-the-solution"></a>Použití řešení
 

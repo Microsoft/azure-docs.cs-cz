@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 9f7659dadb4c710169ec1e700d31e60cbc957ac1
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: eddeb251bac3cc0d02573c4c0b3047a2eafd8237
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52855723"
+ms.locfileid: "52865111"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Rychlý start: Vytvoření a sdílení poznámkového bloku
 
@@ -97,11 +97,11 @@ ms.locfileid: "52855723"
 
 ## <a name="share-the-notebook"></a>Sdílet poznámkového bloku
 
-1. Pokud chcete sdílet v poznámkovém bloku, v případě potřeby přepněte zpět na stránku projektu, klikněte pravým tlačítkem na soubor poznámkového bloku, vyberte **Kopírovat odkaz** (Klávesová zkratka: y) a vložte odkaz do odpovídající zprávu (e-mailu, zasílání rychlých zpráv atd.).
+Pokud chcete sdílet v poznámkovém bloku, v případě potřeby přepněte zpět na stránku projektu, klikněte pravým tlačítkem na soubor poznámkového bloku, vyberte **Kopírovat odkaz** (Klávesová zkratka: y) a vložte odkaz do odpovídající zprávu (e-mailu, zasílání rychlých zpráv atd.).
 
-    Na stránce projektu, můžete použít také **sdílené složky** kód pro vložení nabídky získat odkaz, vytvořte e-mailovou zprávu s odkazem nebo získat HTML a Markdown:
+Na stránce projektu, můžete použít také **sdílené složky** kód pro vložení nabídky získat odkaz, vytvořte e-mailovou zprávu s odkazem nebo získat HTML a Markdown:
 
-    ![Sdílet projekt – příkaz](media/quickstarts/share-project-command.png)
+![Sdílet projekt – příkaz](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>Další postup
 

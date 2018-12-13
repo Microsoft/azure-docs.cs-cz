@@ -1,22 +1,20 @@
 ---
-title: 'Azure Cosmos DB: prováděcí modul hromadného rozhraní Java API, SDK & zdroje | Dokumentace Microsoftu'
+title: 'Azure Cosmos DB: hromadně prováděcí modul rozhraní Java API, SDK a zdroje informací'
 description: Vše o. prováděcí modul hromadného rozhraní Java API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Java SDK pro hromadné prováděcí modul služby Azure Cosmos DB.
 services: cosmos-db
 author: tknandu
-manager: kfile
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 3483a2cf30421e96bc408516bab5c3c304fdce0d
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: fbfbe6e5df74e5ad24b0a5fe69b370f64be1758b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632501"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867354"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Knihovna Java hromadné prováděcí modul: Stažení informací
 

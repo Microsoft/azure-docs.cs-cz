@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozpoznávání řeči v C++ ve Windows s využitím sady Speech SDK'
+title: 'Rychlý start: Rozpoznávání řeči, jazyka C++ (Windows) – hlasové služby'
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak rozpoznávat řeč v C++ na ploše Windows s využitím sady Speech SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 11/06/2018
 ms.author: wolfma
-ms.openlocfilehash: 8947ba3f39cebf51e956db0d841e393963832bc4
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
-ms.translationtype: HT
+ms.openlocfilehash: 454b84f4ba5e492f61daf67c980b204c82a2090d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51218728"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075183"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rychlý start: Rozpoznávání řeči v C++ ve Windows s využitím sady Speech SDK
 
@@ -31,11 +31,11 @@ K dokončení tohoto rychlého startu potřebujete klíč předplatného služby
 
 1. Spusťte Visual Studio 2017.
 
-1. Ověřte, že je k dispozici sada funkcí **Vývoj desktopových aplikací pomocí C++**. Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, přeskočte na další krok. 
+1. Ověřte, že je k dispozici sada funkcí **Vývoj desktopových aplikací pomocí C++**. Volbou příkazu **Nástroje** > **Získat nástroje a funkce** na řádku nabídek sady Visual Studio otevřete instalační program sady Visual Studio. Pokud je tato sada funkcí už povolená, přeskočte na další krok.
 
     ![Snímek obrazovky s kartou Sady funkcí pro Visual Studio](media/sdk/vs-enable-cpp-workload.png)
 
-    V opačném případě zaškrtněte políčko **Vývoj desktopových aplikací pomocí C++**. 
+    V opačném případě zaškrtněte políčko **Vývoj desktopových aplikací pomocí C++**.
 
 1. Ověřte, že je dostupná komponenta **Správce balíčků NuGet**. Přepněte na kartu **Jednotlivé komponenty** dialogového okna instalačního programu sady Visual Studio a vyberte **Správce balíčků NuGet**, pokud ještě není povolený.
 
@@ -97,12 +97,12 @@ Po instalaci balíčku se v konzole Správce balíčků zobrazí potvrzení.
 [!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Vyhledejte tuto ukázku ve složce `quickstart/cpp-windows`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Rozpoznávání záměrů z řeči pomocí sady Speech SDK pro C++](how-to-recognize-intents-from-speech-cpp.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 - [Překlad řeči](how-to-translate-speech-csharp.md)
 - [Přizpůsobení akustických modelů](how-to-customize-acoustic-models.md)

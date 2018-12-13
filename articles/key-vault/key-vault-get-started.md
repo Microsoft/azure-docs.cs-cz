@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: barclayn
-ms.openlocfilehash: a28bf1dc23d678c710d7bd6b13f067427e76ef41
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb4ef826ed29187209b28c349445ca0eb5ffe9bb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238395"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864892"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Začínáme s Azure Key Vault
 Tento článek vám pomůže začít s Azure Key Vault pomocí PowerShellu a provede vás těmito aktivitami:
@@ -222,14 +222,14 @@ Chcete-li zaregistrovat aplikaci v Azure Active Directory:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Nalevo klikněte na **registrace aplikací**. Pokud se registrace aplikací nezobrazí, klikněte na **další služby**.  
->[!NOTE]
-Musíte vybrat adresář obsahující předplatné Azure, které jste použili pro vytvoření trezoru klíčů. 
+    > [!NOTE]
+    > Musíte vybrat adresář obsahující předplatné Azure, které jste použili pro vytvoření trezoru klíčů. 
 3. Klikněte na **Registrace nové aplikace**.
 4. V okně **Vytvořit** zadejte název vaší aplikace a poté vyberte **WEBOVÁ APLIKACE NEBO WEBOVÉ ROZHRANÍ API** (výchozí možnost) a zadejte **PŘIHLAŠOVACÍ ADRESU URL** pro vaši webovou aplikaci. Pokud tyto informace v tuto chvíli nemáte, můžete si je pro tento krok vymyslet (můžete například zadat http://test1.contoso.com). Nezáleží na tom, zda tyto weby existují. 
 
     ![Registrace nové aplikace](./media/key-vault-get-started/new-application-registration.png)
-    >[!WARNING]
-    Ověřte, že pokud se v nastavení nezobrazila položka **klíče**, zvolili jste **WEBOVÁ APLIKACE NEBO WEBOVÉ ROZHRANÍ API**.
+    > [!WARNING]
+    > Ověřte, že pokud se v nastavení nezobrazila položka **klíče**, zvolili jste **WEBOVÁ APLIKACE NEBO WEBOVÉ ROZHRANÍ API**.
 
 5. Klikněte na tlačítko **Vytvořit**.
 6. Po dokončení registrace aplikace, zobrazí se seznam registrovaných aplikací. Najděte aplikaci, registrované a klikněte na něj.

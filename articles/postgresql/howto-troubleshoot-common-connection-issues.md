@@ -3,19 +3,19 @@ title: Řešení problémů s připojením ke službě Azure Database for Postgr
 description: Zjistěte, jak řešit potíže s připojením ke službě Azure Database for PostgreSQL.
 keywords: připojení k postgresql, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
 services: postgresql
-author: janeng
+author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: fea4c376f73afe2ef36948c59e95a2b679dbd7e8
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: MT
+ms.openlocfilehash: 9dd2c5d619920e1205d9d3c64e463c15cf708b31
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284909"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887831"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>Řešení problémů s připojením ke službě Azure Database for PostgreSQL
 

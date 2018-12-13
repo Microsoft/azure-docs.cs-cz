@@ -1,0 +1,134 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: e5943dde86b96dc0f95df0620212daf9a972fccf
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52882295"
+documentType: LandingData
+title: Azure SQL Database – izolované databáze
+metadata:
+  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
+  title: Dokumentace ke službě Azure SQL Database – kurzy, reference k rozhraní API
+  meta.description: Learn how to use Azure SQL databases.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: 
+  ms.topic: overview
+  ms.date: 12/01/2018
+  ms.author: jovanpop-msft
+abstract:
+  description: Azure SQL Database je relační databáze jako služba (DBaaS), která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png
+      width: 250
+    title: Vytvořte jeden SQL database v Azure. (3:12)
+    href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
+    width: 250
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - title: Elastické fondy
+      href: /azure/sql-database/sql-database-elastic-pool
+      html: <p>Elastické fondy SQL Database je jednoduché a cenově výhodné řešení pro správu a škálování více databází s proměnlivými a nepředvídatelnými požadavky na využití.</p>
+      image:
+        src: media/index/i_elasticpool.svg
+    - title: Logický Server
+      href: /azure/sql-database/sql-database-logical-servers
+      html: <p>Logický server je centrální bod správy pro konfiguraci zabezpečení, tunning, zásady zálohování a další vlastnosti konfigurace na sadu databázím na serveru.</p>
+      image:
+        src: media/index/i_mi.svg
+    - title: Úrovně cen/služeb
+      href: /azure/sql-database/sql-database-service-tiers
+      html: <p>Flexibilní úrovně služeb, od dostupných 5 USD za měsíc až po databáze s 80 jádry, umožňují přizpůsobit poměr cena/výkon vašim potřebám.</p>
+      image:
+        src: media/index/i_perftier.svg
+    - title: Škálovatelnost
+      href: /azure/sql-database/sql-database-scale-resources
+      html: <p>Snadno vertikálně navýšit kapacitu databáze podle potřeby pro zvýšení výkonu vaší aplikace.</p>
+      image:
+        src: media/index/i_scale.svg
+    - title: Platforma jako služba
+      href: /azure/sql-database/sql-database-paas
+      html: <p>Integrovaná vysoká dostupnost, automatizované zálohování a geografická replikace zabraňují tomu, aby operace údržby nebo selhání hardwaru a infrastruktury negativně ovlivnily vaše podnikání.</p>
+      image:
+        src: media/index/gear.svg
+    - title: Pokročilé zabezpečení
+      href: /azure/sql-database/sql-database-security-index
+      html: <p>K zabezpečení vašich databází můžete využít ověřování Azure AD, virtuální sítě, brány firewall a připojení Always Encrypted. Integrované zabezpečení pomáhá odhalit hrozby a ohrožení zabezpečení.</p>
+      image:
+        src: media/index/i_security.svg
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Azure SQL Database umožňuje snadno provádět základní úlohy správy pomocí webu Azure Portal, rozhraní příkazového řádku Azure a prostředí Azure PowerShell. Naučte se provádět základní úlohy správy pomocí následujících ukázek rychlého zprovoznění:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/portal.svg
+      title: Azure Portal
+    - image:
+        src: media/index/cli.svg
+      title: Azure CLI
+    - image:
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    - image:
+        src: media/index/logo_arm.svg
+      title: Šablona Azure Resource Manageru
+    rows:
+    - title: Vytvořit databázi
+      values:
+      - href: /azure/sql-database/sql-database-get-started-portal
+      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
+      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
+      - href: 
+    - title: Vytvoření elastického fondu
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
+    - title: Škálování databáze
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
+      - href: 
+    - title: Škálování elastického fondu
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Jak vytvářet, spravovat a migrovat databáze s využitím SQL DB
+  - type: list
+    style: ordered
+    items:
+    - html: Vytvoření a návrh schématu pro novou službu SQL Database s využitím <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> nebo <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
+    - html: Migrace existující databáze do Azure s využitím <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">pomocníka s migrací databáze</a> nebo <a href="/azure/sql-database/sql-database-import">Import souboru BACPAC</a>
+    - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpečení SQL Database</a>
+    - html: Globální distribuce dat s využitím <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geograficky distribuované databáze</a>
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Vyhledání skriptů pro správu běžných úkolů
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
+    - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>

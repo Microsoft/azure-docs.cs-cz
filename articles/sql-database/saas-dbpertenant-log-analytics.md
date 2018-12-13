@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: b207af3bed40f6287f60b25638f3091fa187aa6f
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 58a354950e303eda8158ca072870bfecbf33a89f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405068"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890207"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Nastavit a používat službu Log Analytics s víceklientské aplikace SaaS databáze SQL
 
@@ -42,7 +42,7 @@ Pro službu Azure SQL Database monitorování a upozorňování k dispozici v da
 
 Log Analytics můžete použít pro monitorování a upozorňování pro velkoobjemových scénářů. Log Analytics je samostatná služba Azure, která umožňuje analytics přes diagnostické protokoly a telemetrii, která jsou shromážděna v pracovním prostoru z potenciálně mnoha služeb. Log Analytics poskytuje integrovaný dotazovací jazyk a nástroje vizualizace dat umožňující analýzy provozních dat. Řešení SQL Analytics nabízí několik předdefinovaných elastických fondů a databázi sledování a výstrah zobrazení a dotazů. Log Analytics poskytuje také vlastní Návrhář zobrazení.
 
-Pracovní prostory OMS jsou dnes označovány jako pracovní prostory Log Analytics. Na webu Azure Portal otevřete log Analytics pracovní prostory a analytická řešení. Na webu Azure portal je novější přístupový bod, ale může být, co je za portálu Operations Management Suite v některých oblastech.
+Pracovní prostory OMS se teď označují jako pracovní prostory Log Analytics. Na webu Azure Portal otevřete log Analytics pracovní prostory a analytická řešení. Na webu Azure portal je novější přístupový bod, ale může být, co je za portálu Operations Management Suite v některých oblastech.
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Vytvoření diagnostické údaje o výkonu pomocí simulace úloh na klienty 
 
@@ -151,4 +151,4 @@ Zkuste [kurz analýza Tenanta](saas-dbpertenant-log-analytics.md).
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Další kurzy, které vycházejí z počátečního nasazení databáze na tenanta aplikace SaaS aplikace Wingtip Tickets](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
+* [Azure Log Analytics](../azure-monitor/insights/azure-sql.md)

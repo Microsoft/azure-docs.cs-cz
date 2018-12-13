@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: 27bac5265a5e884b808c4ccb58fda0b2fffeb774
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3dda3bb5fd39b844f50044c1262008e3610e301
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975646"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871400"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>O branách zónově redundantní virtuálních sítí v zónách dostupnosti Azure
 
@@ -86,7 +86,7 @@ Ano, můžete na webu Azure portal k nasazení nové SKU. Nicméně zobrazí se 
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>Které oblasti jsou k dispozici pro mě nejlepší používat na nové SKU?
 
-Nové SKU jsou k dispozici v oblasti Azure, které mají zóny dostupnosti Azure – USA (střed), Francie – střed a západní Evropa. Od této chvíle jsme zpřístupníte zónově redundantní brány je v jiných veřejných oblastech Azure.
+Nové SKU jsou k dispozici v oblasti Azure, které mají zóny dostupnosti Azure – USA (střed), Francie – střed, Severní Evropa, západní Evropa a oblasti západní USA 2. Od této chvíle jsme zpřístupníte zónově redundantní brány je v jiných veřejných oblastech Azure.
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>Je možné změnit/migrace a upgrade mé existující brány virtuální sítě k bránám zónové a zónově redundantní?
 

@@ -1,21 +1,20 @@
 ---
-title: Rozhraní API .NET SDK & zdroje tabulky Azure Cosmos DB | Dokumentace Microsoftu
+title: Azure Cosmos DB Table API .NET SDK a zdroje informací
 description: Další informace o Azure Cosmos DB Table API včetně data vydání, vyřazení dat a změny provedené mezi jednotlivými verzemi.
 services: cosmos-db
 author: rnagpal
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.author: rnagpal
-ms.openlocfilehash: 6d2ede88e9e218ddbdfed0add48e7df8bfae0b60
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7092daa7cf3a1cfcbeac06db308fa53e18d27131
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466456"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878580"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]

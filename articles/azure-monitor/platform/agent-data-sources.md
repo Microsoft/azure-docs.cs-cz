@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 022dd52e05b9227e3ce0920a083f75413a2eebc8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 29306fa508a2c0702e69f6b6ebcb7571041d57d6
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836912"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890258"
 ---
 # <a name="data-sources-in-log-analytics"></a>Zdroje dat v Log Analytics
 Log Analytics shromažďuje data z vašeho připojené zdroje a ukládá ho do pracovního prostoru Log Analytics.  Je definována data, která se shromažďují ze všech zdrojů dat, který nakonfigurujete.  Data ve službě Log Analytics se ukládají jako sady záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s jednotlivými typu s vlastní sadu vlastností.
@@ -59,7 +59,7 @@ Konfigurace zdroje dat z **Data** nabídky ve službě Log Analytics **Upřesnit
 ## <a name="data-collection"></a>Shromažďování dat
 Konfigurace zdroje dat jsou doručeny agentům, které jsou přímo připojené ke službě Log Analytics během několika minut.  Je zadaná data shromážděná z agenta a doručované přímo do Log Analytics v intervalech, které jsou specifické pro každý zdroj dat.  Naleznete v dokumentaci pro jednotlivé zdroje dat pro tyto konkrétní.
 
-Pro agenty System Center Operations Manager v připojené skupině pro správu konfigurace zdroje dat jsou přeloženy do sady management Pack a doručit do skupiny pro správu každých 5 minut, ve výchozím nastavení.  Agent soubory ke stažení sady management pack jako u všech ostatních a shromažďuje zadaná data. V závislosti na zdroji dat data budou že buď odeslány na server pro správu, který předává data do Log Analytics nebo bude agent posílat data do Log Analytics bez nutnosti kontaktovat server pro správu. Zobrazit [podrobnosti shromažďování dat pro řešení pro správu v Azure](../../azure-monitor/insights/solutions-inventory.md) podrobnosti.  Informace o najdete podrobnosti o připojení nástroje Operations Manager a Log Analytics a úprava frekvence tuto konfiguraci se doručí na [konfiguraci integrace se sadou System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md).
+Pro agenty System Center Operations Manager v připojené skupině pro správu konfigurace zdroje dat jsou přeloženy do sady management Pack a doručit do skupiny pro správu každých 5 minut, ve výchozím nastavení.  Agent soubory ke stažení sady management pack jako u všech ostatních a shromažďuje zadaná data. V závislosti na zdroji dat data budou že buď odeslány na server pro správu, který předává data do Log Analytics nebo bude agent posílat data do Log Analytics bez nutnosti kontaktovat server pro správu. Zobrazit [podrobnosti shromažďování dat pro řešení pro správu v Azure](../../azure-monitor/insights/solutions-inventory.md) podrobnosti.  Informace o najdete podrobnosti o připojení nástroje Operations Manager a Log Analytics a úprava frekvence tuto konfiguraci se doručí na [konfiguraci integrace se sadou System Center Operations Manager](../../azure-monitor/platform/om-agents.md).
 
 Pokud je agent nemůže připojit k Log Analytics nebo Operations Manager, bude nadále shromažďovat data, která bude poskytovat navazuje připojení.  Data mohou být ztraceny, pokud objem dat dosáhne maximální velikost mezipaměti klienta, nebo pokud agent není schopen navázat připojení do 24 hodin.
 

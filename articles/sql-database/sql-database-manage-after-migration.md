@@ -3,7 +3,7 @@ title: Správa po migraci – Azure SQL Database | Dokumentace Microsoftu
 description: Další informace o správě databáze po migraci do Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: migration
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: fd32a00fe83e731321cb5e365f64d0f6acf8732d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e4f70521fbd081f7e26f56f4175656cca61887d1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870974"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890700"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -209,7 +209,7 @@ Z tohoto grafu můžete také nastavit upozornění podle prostředků. Tyto vý
 
    ![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-- **Azure SQL Analytics (Preview) ve službě Log Analytics**: [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) umožňuje shromažďovat a vizualizace klíčových metrik výkonu Azure SQL Azure podporují až 150 000 databází SQL a 5 000 SQL elastické fondy na pracovní prostor. Slouží ke sledování a přijímat oznámení. Můžete monitorovat metriky elastického fondu SQL Database a napříč několika předplatných Azure a elastické fondy a je možné identifikovat problémy v každé vrstvě zásobníku aplikací.
+- **Azure SQL Analytics (Preview) ve službě Log Analytics**: [Azure Log Analytics](../azure-monitor/insights/azure-sql.md) umožňuje shromažďovat a vizualizace klíčových metrik výkonu Azure SQL Azure podporují až 150 000 databází SQL a 5 000 SQL elastické fondy na pracovní prostor. Slouží ke sledování a přijímat oznámení. Můžete monitorovat metriky elastického fondu SQL Database a napříč několika předplatných Azure a elastické fondy a je možné identifikovat problémy v každé vrstvě zásobníku aplikací.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Můžu jsem řadí problémy s výkonem: jak Moje databáze SQL metodologie řešení potíží se liší od SQL serveru?
 Hlavní část postupy řešení potíží, můžete využít pro diagnostiku dotazů a problémů s výkonem databáze zůstávají stejné. Po všech stejný Server SQL využívá modul cloudu. Však má integrované platformy – Azure SQL DB "intelligence". Může pomoct při řešení potíží a ještě snadněji diagnostikovat problémy s výkonem. Můžete ho také některé z těchto nápravná opatření proveďte vaším jménem a v některých případech, proaktivně opravit - automaticky. 

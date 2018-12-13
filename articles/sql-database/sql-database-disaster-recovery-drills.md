@@ -3,7 +3,7 @@ title: SQL Database zotavení po havárii | Dokumentace Microsoftu
 description: Přečtěte si pokyny a osvědčené postupy při používání Azure SQL Database provést zotavení po havárii.
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: c861163670b05b01c9c6d64b81f6e83c979a2af8
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: MT
+ms.openlocfilehash: 4ed98d80f54ba781e7230a7081b85a4437d20242
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163031"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877009"
 ---
 # <a name="performing-disaster-recovery-drill"></a>Provedení postupu zotavení po havárii
 Doporučuje se, že se pravidelně provádí ověření připravenosti aplikace pro pracovní postup obnovení. Ověřuje se chování aplikace a důsledky ztrátě dat a/nebo narušení zahrnuje tohoto převzetí služeb při selhání je osvědčené technické praxe. Je také požadavek většina oborových standardů jako součást Certifikační obchodní kontinuity podnikových procesů.

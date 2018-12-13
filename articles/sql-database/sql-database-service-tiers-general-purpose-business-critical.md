@@ -11,15 +11,20 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 15fd86a88c3025f81741d614b03d5c4c7c60262c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 11/30/2018
+ms.openlocfilehash: 7de4415dd332254c595b6687dfb9d8db01c42362
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351738"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871704"
 ---
-# <a name="general-purpose-and-business-critical-service-tiers"></a>Obecné účely a pro důležité obchodní informace úrovně služeb
+# <a name="azure-sql-database-service-tiers"></a>Úrovně služby Azure SQL Database
+
+Azure SQL Database je založené na architektuře databázový stroj SQL serveru, která je upravená pro cloudové prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují tři modely architektury, které se používají ve službě Azure SQL Database:
+- [Obecné účely](sql-database-service-tier-general-purpose.md) navržené pro většinu obecných úloh.
+- [Důležité obchodní informace](sql-database-service-tier-business-critical.md) navržené pro úlohy s nízkou latencí pomocí jednoho čitelných replik.
+- [Velkokapacitní](sql-database-service-tier-hyperscale.md) je určená pro velké databáze (až 100 TB) s více čitelné repliky.
 
 Tento článek popisuje aspekty úložiště a zálohování pro úrovně služeb pro obecné účely a pro důležité obchodní informace v nákupní model založený na virtuálních jádrech.
 

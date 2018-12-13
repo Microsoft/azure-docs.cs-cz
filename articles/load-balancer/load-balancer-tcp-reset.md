@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/08/2018
+ms.date: 12/03/2018
 ms.author: kumud
-ms.openlocfilehash: 9aa3811eb03d38a4c6ab8203512f3e6699098122
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
-ms.translationtype: MT
+ms.openlocfilehash: 3cc4db387c33388d5692fa25ac26f2b6399cd185
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883631"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879829"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Nástroj pro vyrovnávání zatížení s TCP Nulováním nečinnosti (Public Preview)
 
@@ -76,7 +76,17 @@ Tento parametr je aktuálně efektivní v následujících oblastech.  V oblasti
 | Oblast |
 |---|
 | Jihovýchodní Asie |
+| Brazílie – jih |
+| Kanada – střed |
 | Evropa – západ |
+| Indie – střed |
+| Indie – západ |
+| Japonsko – západ |
+| Jižní Korea – střed |
+| Jižní Korea – jih |
+| Velká Británie – sever |
+| Velká Británie – jih 2 |
+| USA – východ |
 | USA – východ 2 |
 | USA – sever |
 | USA – západ |

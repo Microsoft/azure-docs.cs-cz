@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: quickstart
 ms.date: 11/5/2018
 ms.author: areddish
-ms.openlocfilehash: 35548284302dead41df1a4b9bf6218d842214e11
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.openlocfilehash: 1b301f2197b16d8cd74c3cf3616de70f28ac64df
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51278748"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874936"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-python-sdk"></a>Rychlý start: Vytvoření projektu detekce objektů pomocí sady Custom Vision Python SDK
 
@@ -49,14 +49,16 @@ V upřednostňovaném adresáři projektu vytvořte nový soubor *sample.py*.
 Přidáním následujícího kódu do svého skriptu vytvořte nový projekt služby Custom Vision. Do odpovídajících definic vložte své klíče předplatného. Všimněte si, že rozdíl mezi vytvářením projektu detekce objektů a klasifikace obrázků je doména, která se zadává při volání metody **create_project**.
 
 ```Python
-from azure.cognitiveservices.vision.customvision.training import training_api
+from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry, Region
+
+ENDPOINT = "https://southcentralus.api.cognitive.microsoft.com"
 
 # Replace with a valid key
 training_key = "<your training key>"
 prediction_key = "<your prediction key>"
 
-trainer = training_api.TrainingApi(training_key)
+trainer = CustomVisionTrainingClient(training_key, endpoint=ENDPOINT)
 
 # Find the object detection domain
 obj_detection_domain = next(domain for domain in trainer.get_domains() if domain.type == "ObjectDetection")
@@ -178,12 +180,11 @@ print ("Done!")
 Pokud chcete odeslat obrázek do koncového bodu předpovědi a načíst předpověď, přidejte na konec souboru následující kód:
 
 ```Python
-from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
-from azure.cognitiveservices.vision.customvision.prediction.prediction_endpoint import models
+from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
 
 # Now there is a trained endpoint that can be used to make a prediction
 
-predictor = prediction_endpoint.PredictionEndpoint(prediction_key)
+predictor = CustomVisionPredictionClient(prediction_key, endpoint=ENDPOINT)
 
 # Open the sample image and get back the prediction results.
 with open("images/Test/test_od_image.jpg", mode="rb") as test_data:
@@ -206,7 +207,7 @@ V konzole by se měl zobrazit výstup aplikace. Pak můžete ověřit správné 
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Právě jste viděli, jak se dají jednotlivé kroky procesu detekce objektů provádět v kódu. Tato ukázka provede jednu iteraci trénování, ale často je potřeba model trénovat a testovat vícekrát, aby byl přesnější. Následující příručka se zabývá klasifikací obrázků, ale její principy jsou podobné jako u detekce objektů.
 

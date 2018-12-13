@@ -29,7 +29,7 @@ Nová brána VPN skladové jednotky zjednodušují sady funkcí nabízen brány:
 
 | **SKU**| **Funkce**|
 | ---    | ---         |
-|**Základní** (*)   | **Síť VPN založená na směrování**: 10 tunelů S2S nebo připojení; bez ověřování RADIUS pro P2S; bez IKEv2 pro P2S<br>**Síť VPN založená na zásadách**: (IKEv1): 1 tunel S2S nebo připojení, bez P2S|
+|**Základní** (\*\*)   | **Síť VPN založená na směrování**: 10 tunelů S2S nebo připojení; bez ověřování RADIUS pro P2S; bez IKEv2 pro P2S<br>**Síť VPN založená na zásadách**: (IKEv1): 1 tunel S2S nebo připojení, bez P2S|
 | **VpnGw1, VpnGw2 a VpnGw3** | **Síť VPN založená na směrování**: až 30 tunelů (*), P2S, BGP, aktivní aktivní, vlastní protokolu IPsec/IKE zásad, koexistence ExpressRoute/VPN |
 |        |             |
 
@@ -44,7 +44,7 @@ Vzhledem k rozdílům ve SLA a sadách funkcí doporučujeme pro produkční pro
 | **Úloha**                       | **SKU**               |
 | ---                                | ---                    |
 | **Produkce, kritické úlohy** | VpnGw1, VpnGw2, VpnGw3 |
-| **Vývoj a testování nebo testování konceptu**   | Basic (*)                 |
+| **Vývoj a testování nebo testování konceptu**   | Basic (\*\*)                 |
 |                                    |                        |
 
 (\*\*) Základní SKU je považován za starší verze SKU a má omezení funkcí. Ověřte, že je funkce, které potřebujete podporovat před použít základní SKU.

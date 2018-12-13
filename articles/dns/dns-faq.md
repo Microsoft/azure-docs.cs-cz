@@ -1,24 +1,18 @@
 ---
-title: Nejčastější dotazy k Azure DNS | Dokumentace Microsoftu
+title: Nejčastější dotazy k Azure DNS
 description: Nejčastější dotazy k Azure DNS
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 9/25/2018
+ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: daf65b00ffa753568ab99e64365cc0625792f593
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 663ba97ce96244aa890bef45d1229c12ca170802
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092674"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52880144"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -26,7 +20,7 @@ ms.locfileid: "50092674"
 
 ### <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
-V systému DNS (Domain Name) překládá nebo přeloží, název webu nebo služby k její IP adrese. Azure DNS je hostitelská služba určená pro domény DNS. Poskytuje překlad názvů s využitím infrastruktury Microsoft Azure. Hostovat v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API, nástrojů a fakturačních podmínek jako u ostatních služeb Azure.
+V systému DNS (Domain Name) překládá nebo přeloží, název webu nebo služby k její IP adrese. Azure DNS je hostitelská služba určená pro domény DNS. Poskytuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud své domény hostujete v Azure, můžete spravovat záznamy DNS pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
 DNS domény v Azure DNS jsou hostované na Azure globální síť názvových serverů DNS. Tento systém využívá Anycast sítě tak, aby každý dotaz DNS je zodpoví co nejblíže k dispozici server DNS. Azure DNS poskytuje rychlý výkon a vysokou dostupnost vaší domény.
 
@@ -46,7 +40,7 @@ Další informace najdete v tématu [stránku smlouvy SLA pro Azure DNS](https:/
 
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Co je zóna DNS? Je to to samé jako doména DNS? 
 
-Doména je jedinečný název v domain name system. Příkladem je contoso.com.
+Doména je jedinečný název v domain name system. Příklad: contoso.com.
 
 K hostování záznamů DNS v určité doméně se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS. Záznamy může obsahovat mail.contoso.com pro poštovní server a www.contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
 
@@ -102,9 +96,9 @@ Ano. Azure DNS podporuje rozšířené ASCII kódování sady pro sady záznamů
 
 Například lze uživatele zadejte řetězec jako hodnotu pro záznam TXT, který má rozšířené \128 znak ASCII. Příkladem je "abcd\128efgh." Azure DNS používá hodnotu bajtu tohoto znaku, který je 128, v interní reprezentace. V době překlad názvů DNS je vrácena tato hodnota bajtu v odpovědi. Všimněte si také, že "abc" a "\097\098\099" jsou zaměnitelné jde řešení. 
 
-Budeme postupovat podle [definicí RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zóna pravidla řídicí hlavní formát souboru pro záznamy TXT. Například "\" nyní skutečně řídicí sekvence všechno za specifikaci RFC. Pokud zadáte jako hodnotu záznamu TXT "A\B.", to reprezentované a vyřešeny stejně "AB." Pokud chcete záznam TXT mít "A\B" rozlišením, budete muset řídicí "\" znovu. Například zadejte "A\\B". 
+Budeme postupovat podle [definicí RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) zóna pravidla řídicí hlavní formát souboru pro záznamy TXT. Například `\` nyní skutečně řídicí sekvence všechno za specifikaci RFC. Pokud zadáte `A\B` jako hodnotu záznamu TXT, má reprezentované a vyřešeno jako sdílení `AB`. Pokud chcete záznam TXT, který chcete mít `A\B` rozlišením, budete muset escape `\` znovu. Například zadejte `A\\B`.
 
-Tato podpora aktuálně není k dispozici pro záznamy TXT vytvořené na webu Azure Portal. 
+Tato podpora aktuálně není k dispozici pro záznamy TXT vytvořené na webu Azure Portal.
 
 ## <a name="alias-records"></a>Záznamy aliasů
 
@@ -119,6 +113,7 @@ Sady záznamů aliasů jsou podporovány pro následující typy záznamů v zó
 - CNAME 
 
 ### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Které prostředky jsou podporovány jako cíle pro sady záznamů alias?
+
 - **Odkazovat na prostředek veřejné IP adresy ze serveru DNS A/AAAA sadu záznamů.** Můžete vytvořit sadu záznamů A/AAAA a nastavte ji alias záznamu sady tak, aby odkazoval na prostředek veřejné IP adresy.
 - **Přejděte na profil Traffic Manageru ze sady záznamů DNS A/AAAA/CNAME.** Ze sady záznamů DNS CNAME může odkazovat na CNAME profil služby Traffic Manager. Příkladem je contoso.trafficmanager.net. Teď budete také může odkazovat na profil Traffic Manageru, který má externí koncové body z záznam A nebo AAAA, nastavte ve vaší zóně DNS.
 - **Přejděte na jinou sadu záznamů DNS v rámci stejné zóny.** Záznamů aliasů můžete odkazovat na jiné sady záznamů stejného typu. Můžete mít například sadu záznamů DNS CNAME nastavenou jako alias pro jinou sadu záznamů CNAME stejného typu. Toto uspořádání je užitečné, pokud chcete, aby některé sady záznamů bude aliasy a některé jiné aliasy.
@@ -197,49 +192,63 @@ Ke konfiguraci IDN ve službě Azure DNS, převeďte na kódování punycode ná
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 ### <a name="does-azure-dns-support-private-domains"></a>Azure DNS podporuje privátní domény?
+
 Podpora pro privátní domény je implementována pomocí funkce privátní zóny. Tato funkce je aktuálně dostupná ve verzi public preview. Privátní zóny se spravují pomocí stejných nástrojů jako zóny Azure DNS směřujících k Internetu. Jsou Přeložitelné pouze z v rámci zadaného virtuálních sítích. Další informace najdete v tématu [přehled](private-dns-overview.md).
 
 V tuto chvíli nepodporuje privátní zóny na portálu Azure portal. 
 
 Informace o dalších interní možnosti služby DNS v Azure najdete v tématu [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-### <a name="whats-the-difference-between-registration-virtual-network-and-resolution-virtual-network-in-the-context-of-private-zones"></a>Jaký je rozdíl mezi registrační virtuální síť a virtuální síť pro překlad v rámci privátních zón? 
+### <a name="whats-the-difference-between-registration-virtual-network-and-resolution-virtual-network-in-the-context-of-private-zones"></a>Jaký je rozdíl mezi registrační virtuální síť a virtuální síť pro překlad v rámci privátních zón?
+
 Privátní zónu DNS můžete propojit virtuální sítě, jako registrační virtuální síť nebo virtuální síť pro překlad. V obou případech se virtuální počítače ve virtuální síti úspěšně přeložil záznamy v privátní zónu. S registrační virtuální síť se záznamy DNS automaticky zaregistrovat do zóny pro virtuální počítače ve virtuální síti. Když virtuální počítač v registraci odstranění virtuální sítě, se automaticky odebere odpovídající DNS záznam z propojené privátní zónu. 
 
 ### <a name="will-azure-dns-private-zones-work-across-azure-regions"></a>Bude Azure DNS Private Zones fungovat v různých oblastech Azure?
+
 Ano. Privátní zóny se podporuje pro překlad názvů DNS mezi virtuálními sítěmi v různých oblastech Azure. Privátní zóny funguje i bez explicitně partnerský vztah virtuálních sítí. Všechny virtuální sítě musí být zadán jako virtuální sítě pro překlad pro privátní zóny. Zákazníci můžou musí virtuální sítě vytvořit partnerský vztah pro provoz TCP/HTTP mají být předány z jedné oblasti.
 
 ### <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Je připojení k Internetu z virtuální sítě požadované pro privátní zóny?
+
 Ne. Privátní zóny fungovat společně s virtuálními sítěmi. Zákazníci používají ke správě domén pro virtuální počítače nebo jiné prostředky ve virtuálních sítích i mezi. Připojení k Internetu není vyžadováno pro překlad názvů. 
 
-### <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Je možné stejnou privátní zóny pro několik virtuálních sítí pro překlad? 
+### <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Je možné stejnou privátní zóny pro několik virtuálních sítí pro překlad?
+
 Ano. Zákazníky můžete přidružit až 10 virtuální sítě pro překlad jednu privátní zónu.
 
-### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Můžete virtuální síť, která patří do jiného předplatného přidat jako virtuální síť pro překlad do privátní zóny? 
+### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Můžete virtuální síť, která patří do jiného předplatného přidat jako virtuální síť pro překlad do privátní zóny?
+
 Ano. Uživatel musí mít oprávnění k zápisu operace na virtuální sítě a privátní zóny DNS. Některé role RBAC můžete udělit oprávnění k zápisu. Například role RBAC Přispěvatel klasické sítě má oprávnění k zápisu do virtuální sítě. Další informace o rolích RBAC najdete v tématu [řízení přístupu na základě rolí](../role-based-access-control/overview.md).
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Záznamy DNS automaticky registrované virtuální počítač v privátní zóny se automaticky odstraní při odstranění virtuální počítače zákazníka?
+
 Ano. Pokud odstraníte virtuální počítač v rámci registrační virtuální síť, se automaticky odstraní záznamy DNS, které jste zaregistrovali do zóny. 
 
-### <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-registration-virtual-network-be-deleted-manually"></a>Můžete být záznam automaticky registrované virtuální počítač v privátní zóny z registrační virtuální síť ručně odstranit? 
+### <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-registration-virtual-network-be-deleted-manually"></a>Můžete být záznam automaticky registrované virtuální počítač v privátní zóny z registrační virtuální síť ručně odstranit?
+
 Ne. Záznamy DNS virtuálního počítače, které jsou automaticky registruje v privátní zóny z registrační virtuální síť nejsou viditelné nebo upravovat zákazníky. Automaticky registrované záznamy DNS můžete přepsat ručně vytvořený záznam DNS v zóně. Následující otázky a odpovědi adresy v tomto tématu.
 
-### <a name="what-happens-when-we-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>Co se stane, když se pokusíme ručně vytvořit nový záznam DNS do privátní zóny, který má stejný název hostitele jako automaticky registrované existujícího virtuálního počítače v registrační virtuální síť? 
+### <a name="what-happens-when-we-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>Co se stane, když se pokusíme ručně vytvořit nový záznam DNS do privátní zóny, který má stejný název hostitele jako automaticky registrované existujícího virtuálního počítače v registrační virtuální síť?
+
 Pokusíte ručně vytvořit nový záznam DNS do privátní zóny, který má stejný název hostitele jako virtuální počítač existující, automaticky registrované v registrační virtuální síť. Pokud ano, přepíše nový záznam DNS záznam automaticky registrované virtuálního počítače. Pokud se pokusíte znovu odstranit tento ručně vytvořený záznam DNS v zóně, proběhne úspěšně odstranit. Automatická registrace dojde znovu jako virtuální počítač stále existuje a má k němu připojená privátní IP adresa. Záznam DNS nebude znovu vytvořena automaticky v zóně.
 
 ### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone-will-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-too"></a>Co se stane, když jsme odpojit registrační virtuální síť z privátní zóny? Záznamy automaticky registrované virtuálního počítače z virtuální sítě se odebere ze zóny příliš?
+
 Ano. Zrušení propojení registrační virtuální síť z privátní zónu, aktualizujete zónu DNS k odebrání přidružené registrační virtuální síť. V tomto procesu virtuální počítač záznamy, které jste zaregistrovali automaticky odeberou ze zóny. 
 
 ### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>Co se stane, když jsme odstranit rozlišení nebo registrační virtuální síť, která je propojené s privátní zóny? Budeme muset ručně aktualizovat privátní zóny se zrušit propojení virtuální sítě jako registrace nebo virtuální síť pro překlad ze zóny?
+
 Ano. Když odstraníte virtuální síť registraci nebo řešení bez odpojení od privátní zónu, vaší operace odstranění úspěšná. Ale virtuální sítě není automaticky odpojit z vaší privátní zónu, pokud existuje. Musíte ručně zrušit propojení virtuální sítě z privátní zónu. Z tohoto důvodu odpojit před odstraněním virtuální sítě z vaší privátní zónu.
 
-### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>Budou překlad názvů DNS s využitím výchozí plně kvalifikovaný název domény (internal.cloudapp.net) i nadále fungovat i v případě, že privátní zóny (např. contoso.local) je propojený s virtuální sítí? 
+### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>Budou překlad názvů DNS s využitím výchozí plně kvalifikovaný název domény (internal.cloudapp.net) i nadále fungovat i v případě, že privátní zóny (např. contoso.local) je propojený s virtuální sítí?
+
 Ano. Privátní zóny nenahrazuje rozlišení výchozí DNS pomocí Azure internal.cloudapp.net zóny. Je k dispozici další funkce nebo vylepšení. Ať už se spoléháte na internal.cloudapp.net poskytuje Azure nebo na vlastní privátní zónu, použijte plně kvalifikovaný název domény, které chcete, aby se přeložil zóny. 
 
-### <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Příponu DNS na virtuální počítače v rámci virtuální sítě propojené se změní na tento privátní zóny? 
+### <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Příponu DNS na virtuální počítače v rámci virtuální sítě propojené se změní na tento privátní zóny?
+
 Ne. Příponu DNS na virtuální počítače ve vaší virtuální sítě propojené zůstane jako výchozí příponou poskytuje Azure ("*. internal.cloudapp.net"). Tato přípona DNS můžete ručně změnit na virtuálních počítačích na, privátní zónu. 
 
 ### <a name="are-there-any-limitations-for-private-zones-during-this-preview"></a>Existují nějaká omezení pro privátní zóny během tohoto období preview?
+
 Ano. Ve verzi public preview existují následující omezení.
 * Jeden registrační virtuální síť jednu privátní zónu.
 * Až 10 řešení virtuálních sítí na jednu privátní zónu.
@@ -252,9 +261,11 @@ Ano. Ve verzi public preview existují následující omezení.
 * Podmíněné předávání se nepodporuje – třeba, aby bylo možné rozlišení mezi Azure a místní sítí. Zjistěte, jak umožňuje zákazníkům realizovat tento scénář prostřednictvím jiné mechanismy. Zobrazit [překlad názvů pro virtuální počítače a instance rolí](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Existují všechny kvóty nebo limity na zóny a záznamy pro privátní zóny?
+
 Neplatí žádné limity počtu zón povolené na předplatné pro privátní zóny. Neplatí žádné limity na počet sad záznamů na zóny pro privátní zóny. Veřejné a privátní zóny se počítají na celkové limity DNS. Další informace najdete v tématu [omezení služeb a předplatného Azure](../azure-subscription-service-limits.md#dns-limits)
 
 ### <a name="is-there-portal-support-for-private-zones"></a>Je k dispozici portálu podpora pro privátní zóny?
+
 Privátních zón, které budou vytvořeny již prostřednictvím rozhraní API, Powershellu, rozhraní příkazového řádku a sady SDK jsou viditelné na webu Azure portal. Ale zákazníci nelze vytvořit nový privátní zóny nebo spravovat přidružení s virtuálními sítěmi. Pro virtuální sítě přidružený jako registrační virtuální sítě nejsou viditelné z portálu automaticky registrované záznamy virtuálního počítače. 
 
 ## <a name="next-steps"></a>Další postup

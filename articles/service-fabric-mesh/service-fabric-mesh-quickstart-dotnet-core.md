@@ -1,6 +1,6 @@
 ---
-title: Rychlý start – vytvoření webové aplikace a její nasazení do služby Azure Service Fabric Mesh | Microsoft Docs
-description: V tomto rychlém startu se dozvíte, jak vytvořit web ASP.NET Core a publikovat ho do služby Azure Service Fabric Mesh.
+title: Rychlý start – nasazení webové aplikace do Azure Service Fabric mřížky | Dokumentace Microsoftu
+description: Tento rychlý start ukazuje, jak vytvořit web ASP.NET Core a její publikování do Azure Service Fabric sítě pomocí sady Visual Studio.
 services: service-fabric-mesh
 documentationcenter: .net
 author: tylermsft
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7e324b80968017e0160f41b88fa1824669050ac9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.openlocfilehash: 35ce19d796a9889d734bd5dde20a7c56485656f1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407395"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888532"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Rychlý start: Vytvoření webové aplikace a její nasazení do služby Azure Service Fabric Mesh
 
@@ -86,9 +86,9 @@ V dialogovém okně **Publikovat aplikaci Service Fabricu** vyberte v části **
 
 V dialogu pro publikování klikněte na tlačítko **Publikovat** a nasaďte aplikaci Service Fabric Mesh do Azure.
 
-Při prvním publikování do Azure se do služby ACR (Azure Container Registry) nahraje image Dockeru, což v závislosti na velikosti image může nějakou chvíli trvat. Následná publikování stejného projektu budou rychlejší. Průběh nasazení můžete monitorovat výběrem položky **Nástroje Service Fabric** v rozevíracím seznamu okna **Výstup** v sadě Visual Studio. Po dokončení nasazení se ve výstupu **Nástroje Service Fabric** zobrazí IP adresa a port aplikace v podobě adresy URL.
+Při prvním publikování do Azure se do služby ACR (Azure Container Registry) nahraje image dockeru, což v závislosti na velikosti image může nějakou chvíli trvat. Následná publikování stejného projektu budou rychlejší. Průběh nasazení můžete monitorovat výběrem položky **Nástroje Service Fabric** v rozevíracím seznamu okna **Výstup** v sadě Visual Studio. Po dokončení nasazení se ve výstupu **Nástroje Service Fabric** zobrazí IP adresa a port aplikace v podobě adresy URL.
 
-```json
+```
 Packaging Application...
 Building Images...
 Web1 -> C:\Code\ServiceFabricMesh1\Web1\bin\Any CPU\Release\netcoreapp2.0\Web1.dll
@@ -116,7 +116,7 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 
 Skupinu prostředků můžete také odstranit přes [Azure Portal](https://portal.azure.com).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud chcete získat další informace o vytváření a nasazování aplikací Service Fabric Mesh, pokračujte v tomto kurzu.
 > [!div class="nextstepaction"]

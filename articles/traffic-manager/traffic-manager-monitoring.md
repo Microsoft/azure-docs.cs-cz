@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2017
+ms.date: 12/04/2018
 ms.author: kumud
-ms.openlocfilehash: 15b609bbf4ab048722f2512371eeffece92b3245
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 27057f16d10d0859a486551091e135bfb9160813
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138136"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890343"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
@@ -41,7 +41,7 @@ Pokud chcete nakonfigurovat monitorování koncových bodů, je nutné zadat ná
 
 ## <a name="how-endpoint-monitoring-works"></a>Jak funguje monitorování koncových bodů
 
-Pokud protokol monitorování je nastavená na HTTP nebo HTTPS, agent zjišťování Traffic Manager odešle požadavek GET na koncový bod pomocí protokol, port a relativní cestě uvedené. Pokud získá zpět odpověď 200 OK nebo některý z odpovědi gurovaný **byl očekáván stavový kód \*rozsahy**, pak tento koncový bod se považuje za v pořádku. Pokud je odpověď na jinou hodnotu, nebo pokud není žádná odpověď v časovém limitu zadán, pak Traffic Manageru, testování, agent se pokusí opětovně podle nastavení Tolerovaný počet selhání (znovu pokusí se provést Pokud toto nastavení je 0). Pokud počet po sobě jdoucích selhání je vyšší než nastavení Tolerovaný počet selhání, se označí jako špatný tohoto koncového bodu. 
+Pokud protokol monitorování je nastavená na HTTP nebo HTTPS, agent zjišťování Traffic Manager odešle požadavek GET na koncový bod pomocí protokol, port a relativní cestě uvedené. Pokud získá zpět odpověď 200 OK nebo některý z odpovědi gurovaný ** byl očekáván stavový kód * rozsahy **, pak tento koncový bod se považuje za v pořádku. Pokud je odpověď na jinou hodnotu, nebo pokud není žádná odpověď v časovém limitu zadán, pak Traffic Manageru, testování, agent se pokusí opětovně podle nastavení Tolerovaný počet selhání (znovu pokusí se provést Pokud toto nastavení je 0). Pokud počet po sobě jdoucích selhání je vyšší než nastavení Tolerovaný počet selhání, se označí jako špatný tohoto koncového bodu. 
 
 Pokud je monitorovací protokol TCP, agent zjišťování Traffic Manageru zahájí žádost o připojení TCP přes port zadaný. Pokud koncový bod odpoví na požadavek odpovědí k navázání připojení, kontroly stavu je označen jako úspěšný a agent zjišťování Traffic Manager resetuje připojení TCP. Pokud je odpověď na jinou hodnotu, nebo pokud je přijata žádná odpověď v časovém limitu zadán, Traffic Manager, testování, agent se pokusí opětovně podle nastavení Tolerovaný počet selhání (znovu pokusí probíhají Pokud toto nastavení je 0). Pokud počet po sobě jdoucích selhání je vyšší než nastavení Tolerovaný počet selhání, se označí není v pořádku tohoto koncového bodu.
 

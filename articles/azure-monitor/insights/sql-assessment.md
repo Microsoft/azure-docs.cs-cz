@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5afb8e03dedbe09c2c95495fb6ff18333f4c648d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 7ca8230717860d82fdc7942641bb684b897f9312
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847588"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888949"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizujete si prostředí SQL s řešením kontroly stavu SQL serveru ve službě Log Analytics
 
@@ -55,7 +55,7 @@ Provádění kontroly stavu na serverech systému SQL Server, vyžadují agenta 
 
 1. Nainstalujte [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Pokud server není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
 2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná se službou Log Analytics, je možné serveru s více adresami pomocí Log Analytics pro shromažďování dat a předat službě a stále sledování Operations Managerem.  
-3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](../../log-analytics/log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení ve vašem pracovním prostoru.  
+3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení ve vašem pracovním prostoru.  
 
 Agent na serveru SQL Server, které sestavy pro skupinu pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené a pak se odešle přímo ze serveru pro správu služby Log Analytics.  Data není zapsána do databáze nástroje Operations Manager.  
 

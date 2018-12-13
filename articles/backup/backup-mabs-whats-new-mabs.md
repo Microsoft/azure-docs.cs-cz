@@ -2,18 +2,18 @@
 title: Co je nového v Microsoft Azure Backup serveru
 description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a další. Zjistěte, jak nainstalovat nebo upgradovat na Azure Backup Server V3.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: 21eed0e69054b2f5c5b5705aa0e3b2d81c862ff3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 01709bf7bdf4812802ab983729cc628101810f43
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727286"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869615"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Co je nového v Microsoft Azure Backup serveru
 

@@ -1,21 +1,20 @@
 ---
-title: Azure Cosmos DB tipy ke zvýšení výkonu pro Javu | Dokumentace Microsoftu
+title: Azure Cosmos DB tipy ke zvýšení výkonu pro Javu
 description: Další možnosti konfigurace klienta pro zvýšení výkonu databáze Azure Cosmos DB
 keywords: jak vylepšit výkon databáze
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: f0792e220b27ec564c124f610d0616d0873e2d68
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: afbeb8211baea6da363a5e0162e92a0588581346
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446998"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872981"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB a Javou
 

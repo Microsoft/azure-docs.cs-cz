@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 623e4392ff8ff75d09da92c54b9e4dc620146432
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 47f3e8ab14ecd50e958c57ba4c8f9f098fd5bb7b
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251008"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868357"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – Správa nákladů a vlastnictví
 Náklady a vlastnictví jsou primární obavy, když zvažte sestavení vaše vývojové a testovací prostředí. V této části najdete informace, které vám pomůže optimalizovat náklady a zarovnat vlastnictví napříč vaším prostředím.
@@ -40,7 +40,7 @@ Tento přístup vám poskytuje řadu výhod:
  
 Prostředky Azure v rámci podniku předplatného pro vývoj/testování můžou používat jenom aktivní předplatitelé sady Visual Studio (standardní předplatná, roční Cloudová předplatná a měsíční Cloudová předplatná). Ale koncoví uživatelé přístup k aplikaci poskytnout zpětnou vazbu nebo provádět předávací testy. Využívání prostředků v rámci tohoto předplatného je omezené na vývoj a testování aplikací a neexistuje žádná garance doby provozu.
 
-Pokud se rozhodnete použít nabídku DevTest, mějte na paměti, že tato výhoda je určená pro vývoj a testování aplikací. Používání v rámci předplatného není vázané žádnou finančně jištěnou smlouvu SLA, s výjimkou využití Visual Studio Team Services a HockeyApp.
+Pokud se rozhodnete použít nabídku DevTest, mějte na paměti, že tato výhoda je určená pro vývoj a testování aplikací. Používání v rámci předplatného není vázané žádnou finančně jištěnou smlouvu SLA, s výjimkou použití Azure DevOps a HockeyApp.
 
 ## <a name="define-a-role-based-access-across-your-organization"></a>Definování přístupu podle role v organizaci
 ### <a name="question"></a>Otázka
@@ -57,7 +57,7 @@ DevTest Labs prostředků musí být vlastněn vlastníky, kteří jsou blízko 
 
 Členové týmu aplikace project a měli byste přidat k roli uživatele DevTest Labs. Tito uživatelé můžou vytvářet virtuální počítače (v řádku pomocí testovacího prostředí a zásad na úrovni předplatného). Mohou také spravovat vlastní virtuální počítače. Jejich nemůže spravovat virtuální počítače, které patří jiným uživatelům.
 
-Další informace najdete v tématu [Základní kostra Azure enterprise – zásady správného řízení předplatná](/architecture/cloud-adoption/appendix/azure-scaffold) dokumentaci.
+Další informace najdete v tématu [Základní kostra Azure enterprise – zásady správného řízení předplatná](/azure/architecture/cloud-adoption/appendix/azure-scaffold) dokumentaci.
 
 
 ## <a name="next-steps"></a>Další postup

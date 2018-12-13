@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c260b32dc6f659ca4cc1b4c3f59859f75ba999d0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b02a5ec5a68743e148bcfef3c631d7777fd0a067
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447369"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>Kurz: Integrace Azure Active Directory se službou iWellnessNow
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s iWellnessNow, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - IWellnessNow jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Konfigurace integrace iWellnessNow do služby Azure AD, budete muset přidat iWe
 
 **Chcete-li přidat iWellnessNow z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Tlačítko Azure Active Directory][1]
 
@@ -179,7 +179,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-an-iwellnessnow-test-user"></a>Vytvořit testovacího uživatele iWellnessNow
 
-V této části vytvoříte uživatele v iWellnessNow jako Britta Simon. Práce s [tým podpory iWellnessNow](mailto:info@iwellnessnow.com) přidat uživatele na platformě iWellnessNow. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
+V této části vytvoříte uživatele v iWellnessNow jako Britta Simon. Práce s [tým podpory iWellnessNow](mailto:info@iwellnessnow.com) přidat uživatele na platformě iWellnessNow. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -211,7 +211,7 @@ V této části je povolit Britta Simon používat jednotné přihlašování Az
 
 1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 

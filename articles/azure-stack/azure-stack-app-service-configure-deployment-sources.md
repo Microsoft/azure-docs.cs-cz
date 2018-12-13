@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: d65c8653bc039b591f1c0fb711dfe68e3fbacd88
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 66688ae762aa646fc72045836c4ec4671bf4b7b4
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353557"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888507"
 ---
 # <a name="configure-deployment-sources"></a>Konfigurace zdrojů nasazení
 
@@ -38,7 +38,8 @@ Kromě místního Gitu jsou podporovány následující poskytovatelé řízení
 ## <a name="view-deployment-sources-in-app-service-administration"></a>Zobrazení zdroje nasazení správy služby App Service
 
 1. Přihlaste se k portálu pro správu Azure Stack (https://adminportal.local.azurestack.external) jako správce služeb.
-2. Přejděte do **poskytovatelů prostředků** a vyberte **správce poskytovatele prostředků služby App**.  ![Správce poskytovatele prostředků App Service][1]
+2. Přejděte do **všechny služby** a vyberte **služby App Service**.
+    ![Správce poskytovatele prostředků App Service][1]
 3. Klikněte na tlačítko **konfigurace správy zdrojového kódu**. Zobrazí se seznam všech zdrojů na nasazení.
     ![Konfigurace ovládacích prvků správce zdroj poskytovatele prostředků App Service][2]
 

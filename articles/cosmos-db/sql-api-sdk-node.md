@@ -1,9 +1,8 @@
 ---
-title: 'Azure Cosmos DB: SQL Node.js API, SDK & zdroje | Dokumentace Microsoftu'
+title: 'Azure Cosmos DB: SQL Node.js API, SDK & zdroje'
 description: Další informace o SQL Node.js API a sady SDK, včetně data vydání, vyřazení dat a změny provedené mezi každou verzi sady Azure Cosmos DB Node.js SDK.
 services: cosmos-db
 author: deborahc
-editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: nodejs
@@ -11,12 +10,12 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5ba00376e40b92a217bddd5b27c53dbe30c3cf3
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
-ms.translationtype: MT
+ms.openlocfilehash: 5616ee6f6b855cb366f24c79c73d12a03b69b2ac
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687499"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52865654"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]

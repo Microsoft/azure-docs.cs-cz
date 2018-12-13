@@ -1,23 +1,21 @@
 ---
-title: Kurz globální distribuce služby Azure Cosmos DB pro rozhraní MongoDB API | Microsoft Docs
+title: Kurz globální distribuci Azure Cosmos DB pro rozhraní MongoDB API
 description: Zjistěte, jak nastavit globální distribuci služby Azure Cosmos DB pomocí rozhraní MongoDB API.
 services: cosmos-db
 keywords: global distribution, MongoDB
 author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 1885c979fe2532d26b2e7b59111675bebee8ec05
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 27fa9849c13de151f6922e829514cc8838f295ea
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38668084"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874754"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní MongoDB API
 
@@ -92,7 +90,7 @@ collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode
 
 To je vše, tento kurz je u konce. Informace o správě konzistence vašeho globálně replikovaného účtu najdete v tématu [Úrovně konzistence ve službě Azure Cosmos DB](consistency-levels.md). Další informace o fungování globální replikace databází ve službě Azure Cosmos DB najdete v tématu [Globální distribuce dat pomocí služby Azure Cosmos DB](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste provedli následující:
 

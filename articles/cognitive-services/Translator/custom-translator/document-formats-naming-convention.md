@@ -9,12 +9,12 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: fef4ecd207fd32b5a92a4c072832f3ab45b58300
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 74b421691f5d3536c44af16e99dc54451dfde3f7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51627319"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872760"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Zdokumentujte formátů a pojmenování pokyny konvence
 
@@ -43,11 +43,13 @@ Translator vlastní slovníky, podporuje všechny formáty souborů, ty jsou pod
 
 Dokumenty lze seskupené do souboru zip jeden a nahráli. Podporuje vlastní Translator zip formáty souborů (ZIP, GZ a TGZ).
 
-Každý dokumente v souboru zip musí postupovat podle této zásady vytváření názvů:
+Každý dokument v souboru zip s příponou TXT, HTML, HTM, PDF, DOCX, ZAROVNAT musí následovat tyto zásady vytváření názvů:
 
 {název dokumentu} \_{kód jazyka} {název dokumentu} je název dokumentu, je {kód jazyka} LanguageID ISO (dvou znaků) označující, že dokument obsahuje věty v daném jazyce. Musí existovat podtržítko (_), než kód jazyka.
 
 Například pokud chcete nahrát dva paralelní dokumenty v rámci zip pro anglické Španělština systému, soubory by měl být s názvem "data_en" a "data_es".
+
+Soubory z paměti překladu (TMX XLF, XLIFF, LCL, XLSX) nemusí dodržovat zásady vytváření názvů konkrétní jazyk.  
 
 ## <a name="next-steps"></a>Další postup
 

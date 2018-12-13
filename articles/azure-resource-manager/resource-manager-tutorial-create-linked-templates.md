@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e72a7b967ef314dcdcfb2773627ce3d020e2fdcb
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: MT
+ms.openlocfilehash: dfdad89d628fda476ecef1c43246ce3927927555
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614221"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52863495"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Kurz: Vytvoření propojených šablon Azure Resource Manageru
 
@@ -213,7 +213,7 @@ Další informace najdete v tématu [Použití propojené a vnořené šablony p
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Informace o procesu nasazení najdete v části [Nasazení šablony](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template). Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Viz [Požadavky](#prerequisites).
+Informace o procesu nasazení najdete v části [Nasazení šablony](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Pro zlepšení zabezpečení použijte pro účet správce virtuálního počítače vygenerované heslo. Viz [Požadavky](#prerequisites).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

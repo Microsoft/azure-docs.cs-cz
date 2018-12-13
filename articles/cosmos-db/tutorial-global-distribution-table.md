@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 12/13/2017
 ms.openlocfilehash: 92ae0c3dc07c6dada80e081c65484e4f6bf4f947
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844766"
+ms.locfileid: "52874868"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Nastavení globální distribuce služby Azure Cosmos DB pomocí rozhraní Table API
 

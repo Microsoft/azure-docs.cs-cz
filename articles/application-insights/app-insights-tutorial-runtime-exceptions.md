@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 48e338a08330e0674cc4410adf135ec546a5e1c3
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9c36920d2d1d201a874abaeeaac9eb965e0e641b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230593"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084002"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -75,20 +75,20 @@ Application Insights shromažďuje informace o selháních v aplikaci a umožňu
     ![Podrobnosti výjimky](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Identifikace chyb kódu
-Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek v aplikaci, aby vám pomohl při diagnostice jejich hlavní příčiny v produkčním prostředí.  Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Zdrojový kód pak můžete ladit stažením snímku a jeho otevřením v aplikaci Visual Studio 2017.
+Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek v aplikaci, aby vám pomohl při diagnostice jejich hlavní příčiny v produkčním prostředí.  Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Později máte možnost ladit stažením snímku a otevřete ho v sadě Visual Studio 2017 Enterprise zdrojový kód.
 
 1. Ve vlastnostech výjimky klikněte na tlačítko **Otevřít snímek ladění**.
 2. Otevře se panel **Snímek Ladění** se zásobníkem volání pro daný požadavek.  Kliknutím na kteroukoli metodu můžete zobrazit hodnoty všech místních proměnných v době požadavku.  Počínaje hlavní metodou v tomto příkladu vidíte místní proměnné, které nemají žádnou hodnotu.
 
     ![Snímek ladění](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-01.png)
 
-4. První volání, která má platné hodnoty, je **ValidZipCode**, a my vidíme, že směrovací číslo bylo zadáno s písmeny, takže ho není možné převést na celé číslo.  To vypadá jako chyba v kódu, kterou je třeba opravit.
+3. První volání, která má platné hodnoty, je **ValidZipCode**, a my vidíme, že směrovací číslo bylo zadáno s písmeny, takže ho není možné převést na celé číslo.  To vypadá jako chyba v kódu, kterou je třeba opravit.
 
     ![Snímek ladění](media/app-insights-tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-5. Chcete-li stáhnout tento snímek do aplikace Visual Studio a najít tak příslušný kód, který je třeba opravit, klikněte na **Stáhnout snímek**.
-6. Snímek se načte do aplikace Visual Studio.
-7. Teď můžete spustit v aplikaci Visual Studio relaci ladění, která rychle najde řádek kódu, který výjimku způsobil.
+4. Pak máte možnost stáhnout tento snímek do sady Visual Studio a najít tak skutečný kód, který je třeba opravit. Chcete-li tak učinit, klikněte na tlačítko **Stáhnout snímek**.
+5. Snímek se načte do aplikace Visual Studio.
+6. Nyní můžete spustit relaci ladění v sadě Visual Studio Enterprise, která rychle najde řádek kódu, který způsobil výjimku.
 
     ![Výjimka v kódu](media/app-insights-tutorial-runtime-exceptions/exception-code.png)
 
@@ -111,7 +111,7 @@ Pokud propojíte Application Insights se sledovacím systémem, jako je Azure De
 
     ![Nová pracovní položka](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nyní, když jste se naučili, jak identifikovat výjimky za běhu, můžete přejít k dalšímu kurzu, ve kterém zjistíte, jak identifikovat a diagnostikovat potíže s výkonem.
 
 > [!div class="nextstepaction"]

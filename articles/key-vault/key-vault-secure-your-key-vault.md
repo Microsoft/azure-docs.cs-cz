@@ -14,18 +14,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: ambapat
-ms.openlocfilehash: 23f02f87b75cd41d1a56a388e4526be6d9a2e119
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 67f24bbccdd2dcf5cca09e09557d7ebebd0a5c2d
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682723"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891074"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 Služba Azure Key Vault je Cloudová služba, která chrání šifrovací klíče a tajné kódy (například certifikáty, připojovací řetězce a hesla). Protože tato data jsou citlivá a pro důležité obchodní informace, třeba zabezpečený přístup k vašim trezorům klíčů, umožňuje jenom autorizovaným aplikacím a uživatelům. Tento článek obsahuje přehled modelu access Key Vault. Vysvětluje ověření a autorizaci a popisuje, jak zabezpečit přístup.
 
 ## <a name="overview"></a>Přehled
-Řízení přístupu k trezoru klíčů prostřednictvím dvou oddělených rozhraní: *roviny správy* a *rovina dat*. Pro obě roviny volající (uživatel nebo aplikace) musí mít řádné ověření a autorizaci pro přístup k trezoru klíčů. Ověření určí identitu volajícího, autorizace následně určí operace můžete provádět volající.
+Přístup k trezoru klíčů je řízen prostřednictvím dvou oddělených rozhraní: rovina správy a rovina dat. 
+**Rovina správy** se zabývá Správa trezoru, například – vytvoření trezoru, aktualizuje se trezor, odstranění trezoru služby. 
+**Rovina dat** obchody s tajnými kódy v trezoru, ve kterém je vytvářet, aktualizovat, odstranit a čtení tajného klíče v trezoru. Pro obě roviny řádné ověření a autorizace jsou požadovány, než může volající (uživatel nebo aplikace) získat přístup k trezoru klíčů. Ověření určí identitu volajícího a autorizace následně určí operace, které daný volající povoleno provádět.
+
+K ověření využívají rovina správy i rovina dat službu Azure Active Directory. K autorizaci ale rovina správy používá řízení přístupu podle role (RBAC), zatímco rovina dat používá zásady přístupu trezoru klíčů.
+
+Stručný přehled tímto článkem pokrytých témat:
+
+[Ověření s použitím Azure Active Directory](#authentication-using-azure-active-directory): Tato část vysvětluje, jak se volající ověřuje ve službě Azure Active Directory za účelem přístupu k trezoru klíčů prostřednictvím roviny správy i roviny dat. 
 
 Obě roviny pro ověřování pomocí Azure Active Directory (Azure AD). K autorizaci ale rovina správy používá řízení přístupu na základě rolí (RBAC), zatímco rovina dat používá zásady přístupu trezoru klíčů.
 

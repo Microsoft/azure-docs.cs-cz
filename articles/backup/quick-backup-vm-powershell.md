@@ -2,21 +2,21 @@
 title: Rychlý start Azure – Zálohování virtuálního počítače pomocí PowerShellu
 description: Zjistěte, jak zálohovat virtuální počítače pomocí Azure PowerShellu.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 2/14/2018
-ms.author: markgal
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4161b11e88d2b3201e18e095e13db864e25d7bfc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 7971c1399cc905353e271e8774c0e7ad36ca79a9
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607532"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52869245"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Zálohování virtuálního počítače v Azure pomocí PowerShellu
 Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku nebo ve skriptech. Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak zálohovat virtuální počítač pomocí modulu Azure PowerShell. K provedení těchto kroků můžete také využít [Azure CLI](quick-backup-vm-cli.md) nebo [Azure Portal](quick-backup-vm-portal.md).
@@ -131,7 +131,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup"
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto rychlém startu jste vytvořili trezor služby Recovery Services, povolili ochranu virtuálního počítače a vytvořili prvotní bod obnovení. Pokud se chcete o službách Azure Backup a Recovery Services dozvědět více, pokračujte ke kurzům.
 
 > [!div class="nextstepaction"]

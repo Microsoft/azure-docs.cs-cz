@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: 1a0b7932d8dced086370027e1f8eecaf81841ab3
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 55f388ed15167c5bc7262e194e09e4a92ba50af4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300775"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866062"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Síťové režimy kontejneru Service Fabric
 
@@ -78,7 +78,7 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
             ],
     ```
 
-2. Nastavení části profilu sítě umožňuje víc IP adres musí nakonfigurovat na každém uzlu clusteru. Následující příklad nastaví až 5 IP adres na jeden uzel clusteru Service Fabric s Windows nebo Linuxem. Může mít pět instancí služby naslouchání na portu na každém uzlu.
+2. Nastavení části profilu sítě umožňuje víc IP adres musí nakonfigurovat na každém uzlu clusteru. Následující příklad nastaví až 5 IP adres na jeden uzel clusteru Service Fabric s Windows nebo Linuxem. Může mít pět instancí služby naslouchání na portu na každém uzlu. Jak je znázorněno níže, aby bylo možné mít pět IP adres, které jsou přístupné z nástroje pro vyrovnávání zatížení Azure, zaregistrujte pět IP adres ve fondu adres back-endu nástroje pro vyrovnávání zatížení Azure.
 
     ```json
     "variables": {
@@ -126,6 +126,11 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
                           "name": "[concat(parameters('nicName'),'-', 1)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }
@@ -135,6 +140,11 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
                           "name": "[concat(parameters('nicName'),'-', 2)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }
@@ -144,6 +154,11 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
                           "name": "[concat(parameters('nicName'),'-', 3)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }
@@ -153,6 +168,11 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
                           "name": "[concat(parameters('nicName'),'-', 4)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }
@@ -162,6 +182,11 @@ Pokud služby container service restartuje nebo přesune do jiného uzlu v clust
                           "name": "[concat(parameters('nicName'),'-', 5)]",
                           "properties": {
                             "primary": "false",
+                            "loadBalancerBackendAddressPools": [
+                              {
+                                "id": "[variables('lbPoolID0')]"
+                              }
+                            ],
                             "subnet": {
                               "id": "[variables('subnet0Ref')]"
                             }

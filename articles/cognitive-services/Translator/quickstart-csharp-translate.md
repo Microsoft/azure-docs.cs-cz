@@ -10,14 +10,14 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 20e07120b80f335397bd7e907f62e14ad8b1d2ee
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 9d9a893a1e62ae35ed3c2f1630c92d4f23cdb2dc
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52679048"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887674"
 ---
-# <a name="quickstart-translate-text-with-the-translator-text-rest-api-c"></a>Rychlý start: Překlad textu pomocí rozhraní REST API služby Translator Text (C#)
+# <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>Rychlý start: Použití rozhraní Translator Text API pro převod řetězce pomocíC#
 
 V tomto rychlém startu zjistíte jak Převede textový řetězec z angličtiny italština a němčina pomocí .NET Core a rozhraní REST Translator Text API.
 

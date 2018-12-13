@@ -1,22 +1,21 @@
 ---
-title: Použití nástrojů mongoimport a mongorestore s rozhraním API služby Azure Cosmos DB pro MongoDB | Microsoft Docs
+title: Používáte věnované a mongorestore s rozhraním API Azure Cosmos DB pro MongoDB.
 description: Zjistěte, jak pomocí nástrojů mongoimport a mongorestore importovat data do rozhraní API pro účet MongoDB.
 keywords: mongoimport, mongorestore
 services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 13422434e6392ec7681ec4478533c45a84f40c9a
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 50bb34d86780dec003c63b5ff0a3884049dd47c1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706972"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871000"
 ---
 # <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Kurz: Migrace dat do účtu rozhraní MongoDB API služby Azure Cosmos DB
 

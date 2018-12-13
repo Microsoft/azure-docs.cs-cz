@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 24fecd73876228b3665cde21ae312963ec979df6
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 5ef7ddc068fea7703dad67b80b96c292bfd26943
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279699"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870698"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů
 
@@ -111,7 +111,7 @@ Následující diagram znázorňuje při spuštění akce skriptu během procesu
 Skript se spustí, když konfigurujete HDInsight. Skript spouští paralelně na všechny zadané uzly v clusteru a spustí s kořenovými oprávněními na uzlech.
 
 > [!NOTE]
-> Můžete provádět operace, jako je zastavení a spuštění služeb, včetně služby související s Hadoop. Chcete-li zrušit služby musíte zajistit, že služba Ambari a další služby související s Hadoop spuštěné před skript dokončí. Tyto služby jsou nezbytné pro úspěšně zjistit stav a stav clusteru při jeho vytváření.
+> Můžete provádět operace, jako je zastavení a spuštění služeb, včetně služby související s Apache Hadoop. Chcete-li zrušit služby musíte zajistit, že služba Ambari a další služby související s Hadoop spuštěné před skript dokončí. Tyto služby jsou nezbytné pro úspěšně zjistit stav a stav clusteru při jeho vytváření.
 
 
 Při vytváření clusteru můžete použít různé akce skriptu najednou. Tyto skripty jsou vyvolány v pořadí, ve kterém byly zadány.
@@ -168,7 +168,7 @@ Tato část obsahuje příklady o různých způsobech skriptových akcí může
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Použití akce skriptu při vytváření clusteru z webu Azure portal
 
-1. Začněte s vytvářením clusteru, jak je popsáno v [vytváření clusterů Hadoop v HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Při vytváření clusteru, můžete přejít na __souhrn clusteru__ stránky. Z __souhrn clusteru__ stránky, vyberte __upravit__ odkaz __upřesňující nastavení__.
+1. Začněte s vytvářením clusteru, jak je popsáno v [vytvořit Apache Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Při vytváření clusteru, můžete přejít na __souhrn clusteru__ stránky. Z __souhrn clusteru__ stránky, vyberte __upravit__ odkaz __upřesňující nastavení__.
 
     ![Odkaz Upřesnit nastavení](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
@@ -402,11 +402,11 @@ Příklad použití sady .NET SDK k načtení historie skriptu z clusteru, zvý�
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Podpora pro open source softwaru používaného v clusterech HDInsight
 
-Služba Microsoft Azure HDInsight využívá ekosystém open source technologií formátovaných kolem Hadoop. Microsoft Azure poskytuje obecné úroveň podpory pro open source technologie. Další informace najdete v tématu **rozsah podpory** část [nejčastější dotazy k podpoře Azure web](https://azure.microsoft.com/support/faq/). Služba HDInsight poskytuje další úroveň podpory pro integrované komponenty.
+Služba Microsoft Azure HDInsight využívá ekosystém open source technologií formátovaných kolem Apache Hadoop. Microsoft Azure poskytuje obecné úroveň podpory pro open source technologie. Další informace najdete v tématu **rozsah podpory** část [nejčastější dotazy k podpoře Azure web](https://azure.microsoft.com/support/faq/). Služba HDInsight poskytuje další úroveň podpory pro integrované komponenty.
 
 Existují dva druhy opensourcové komponenty, které jsou k dispozici ve službě HDInsight:
 
-* **Integrované komponenty** – tyto součásti jsou předem nainstalované na clusterech HDInsight a poskytuje základní funkce clusteru. Například správce prostředků YARN, Hive dotazovacího jazyka (HiveQL) a knihovny Mahout patří do této kategorie. Úplný seznam součástí clusteru je k dispozici v [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight](hdinsight-component-versioning.md).
+* **Integrované komponenty** – tyto součásti jsou předem nainstalované na clusterech HDInsight a poskytuje základní funkce clusteru. Například [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager, Hive dotazovací jazyk ([HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)) a [Apache Mahout](https://mahout.apache.org/) knihovny patří do této kategorie. Úplný seznam součástí clusteru je k dispozici v [co je nového ve verzích clusterů Hadoop poskytovaných službou HDInsight](hdinsight-component-versioning.md).
 * **Vlastní komponenty** -, jako uživatel clusteru, můžete nainstalovat nebo použít ve vašich úloh žádné součásti k dispozici v komunitě nebo vytvořené vámi.
 
 > [!WARNING]
@@ -426,7 +426,7 @@ Služba HDInsight poskytuje několik způsobů, jak používat vlastní komponen
 
 Chcete-li zobrazit informacím protokolovaným v skriptových akcí můžete použít webové uživatelské rozhraní Ambari. Pokud skript selže při vytváření clusteru, protokoly jsou dostupné v přidružené ke clusteru výchozí účet úložiště. Tato část obsahuje informace o tom, jak načíst protokoly pomocí obou těchto možností.
 
-### <a name="using-the-ambari-web-ui"></a>Pomocí webového uživatelského rozhraní Ambari
+### <a name="using-the-apache-ambari-web-ui"></a>Použití Apache webové uživatelské rozhraní Ambari
 
 1. V prohlížeči přejděte na adresu https://CLUSTERNAME.azurehdinsight.net. CLUSTERNAME nahraďte názvem vašeho clusteru HDInsight.
 
@@ -513,8 +513,8 @@ Existují dvě výjimky:
 ## <a name="next-steps"></a>Další postup
 
 * [Vývoj akcí skriptů skript pro HDInsight](hdinsight-hadoop-script-actions-linux.md)
-* [Instalace a použití Solru na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md)
-* [Instalace a použití Giraphu na clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
+* [Instalace a použití Apache Solr na clusterech HDInsight](hdinsight-hadoop-solr-install-linux.md)
+* [Instalace a použití Giraphu Apache v clusterech HDInsight](hdinsight-hadoop-giraph-install-linux.md)
 * [Přidat další úložiště clusteru služby HDInsight](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "Fáze při vytváření clusteru"

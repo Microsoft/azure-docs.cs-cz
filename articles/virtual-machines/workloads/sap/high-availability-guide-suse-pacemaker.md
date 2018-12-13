@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 34a72bb38c87902648ad92261a70d6545f10d0fa
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c6dee6fc26f540ad93f5a4b4e6e2f9432f757a6c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723682"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076351"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure
 
@@ -436,7 +436,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    <pre><code>sudo vi /etc/corosync/corosync.conf
    </code></pre>
 
-   Pokud hodnoty nejsou zde nebo jiné, přidejte do souboru následující tučného písma obsahu. Ujistěte se, že chcete-li změnit token 30000 umožňující Údržba pro zachování paměti. Další informace najdete v tématu [tohoto článku pro Linux] [ virtual-machines-linux-maintenance] nebo [Windows][virtual-machines-windows-maintenance].
+   Pokud hodnoty nejsou zde nebo jiné, přidejte do souboru následující tučného písma obsahu. Ujistěte se, že chcete-li změnit token 30000 umožňující Údržba pro zachování paměti. Další informace najdete v tématu [tohoto článku pro Linux] [ virtual-machines-linux-maintenance] nebo [Windows][virtual-machines-windows-maintenance]. Ujistěte se také, chcete-li odebrat mcastaddr parametr.
 
    <pre><code>[...]
      <b>token:          30000
@@ -449,6 +449,8 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
         [...] 
      }
      <b>transport:      udpu</b>
+     # remove parameter mcastaddr
+     <b># mcastaddr: IP</b>
    } 
    <b>nodelist {
      node {

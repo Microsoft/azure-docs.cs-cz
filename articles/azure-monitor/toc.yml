@@ -79,7 +79,7 @@ items:
     - name: Protokolování času pro příjem dat
       href: platform/data-ingestion-time.md
     - name: Vlastní metriky do úložiště metrik
-      href: ../monitoring-and-diagnostics/metrics-custom-overview.md?toc=/azure/azure-monitor/toc.json
+      href: platform/metrics-custom-overview.md
     - name: Zabezpečení dat
       items:
       - name: Protokolování dat
@@ -123,17 +123,17 @@ items:
     - name: Výstrahy
       href: ../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=/azure/azure-monitor/toc.json
     - name: Klasická upozornění
-      href: ../monitoring-and-diagnostics/monitoring-overview-alerts-classic.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-classic.overview.md
     - name: Inteligentní skupiny
       href: ../monitoring-and-diagnostics/monitoring-overview-alerts-smartgroups.md?toc=/azure/azure-monitor/toc.json
     - name: Automatické škálování
       href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=/azure/azure-monitor/toc.json
     - name: Upozornění metrik
-      href: ../monitoring-and-diagnostics/alert-metric-overview.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-metric-overview.md
     - name: Výstrahy protokolu
-      href: ../monitoring-and-diagnostics/monitor-alerts-unified-log.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-unified-log.md
     - name: Upozornění protokolu aktivit
-      href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=/azure/azure-monitor/toc.json
+      href: platform/activity-log-alerts.md
   - name: Vizualizace dat
     href: visualizations.md?toc=/azure/azure-monitor/toc.json
   - name: Integrace partnerů
@@ -207,27 +207,27 @@ items:
       - name: Rozšíření Azure Diagnostics
         items:
         - name: Přehled
-          href: ../monitoring-and-diagnostics/azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-overview.md
         - name: Odeslání do Azure Storage
-          href: ../monitoring-and-diagnostics/azure-diagnostics-storage.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-to-storage.md
         - name: Odeslání do Application Insights
-          href: ../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-to-application-insights.md
         - name: Odeslání do Event Hubs
-          href: ../monitoring-and-diagnostics/azure-diagnostics-streaming-event-hubs.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-stream-event-hubs.md
         - name: Řešení potíží
-          href: ../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md?toc=/azure/azure-monitor/toc.json
+          href: platform/diagnostics-extension-troubleshooting.md
         - name: Povolení diagnostických nastavení s využitím šablon Resource Manageru
           href: ../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md?toc=/azure/azure-monitor/toc.json
         - name: Příprava pro formát řádkových diagnostických protokolů JSON
           href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
         - name: Host virtuálního počítače do úložiště metrik
-          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vm.md?toc=/azure/azure-monitor/toc.json
+          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
         - name: Host škálovací sady virtuálních počítačů do úložiště metrik
-          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vmss.md?toc=/azure/azure-monitor/toc.json
+          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
         - name: Host klasického virtuálního počítače do úložiště metrik
-          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-vm.md?toc=/azure/azure-monitor/toc.json
+          href: platform/collect-custom-metrics-guestos-vm-classic.md
         - name: Host cloudové služby do úložiště metrik
-          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-cloud-service.md?toc=/azure/azure-monitor/toc.json
+          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
       - name: Řešení potíží
         items:
         - name: Rozšíření Log Analytics pro virtuální počítače
@@ -431,7 +431,7 @@ items:
       - name: Rozhraní REST API úložiště metrik
         href: ../monitoring-and-diagnostics/metrics-store-custom-rest-api.md?toc=/azure/azure-monitor/toc.json
       - name: Hostovaný operační systém do linuxového virtuálního počítače úložiště metrik (Telegraf)
-        href: ../monitoring-and-diagnostics/metrics-store-custom-linux-telegraf.md?toc=/azure/azure-monitor/toc.json
+        href: platform/collect-custom-metrics-linux-telegraf.md
     - name: System Center
       items:
       - name: Configuration Manager
@@ -734,11 +734,11 @@ items:
       - name: Použití upozornění metrik
         items:
         - name: Vytvoření, zobrazení a správa upozornění metrik v Azure Monitoru
-          href: ../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-metric.md
         - name: Vytvoření, zobrazení a správa klasických upozornění metrik v Azure Monitoru
-          href: ../monitoring-and-diagnostics/alert-metric-classic.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-classic-portal.md
         - name: Upozornění s dynamickými prahovými hodnotami
-          href: ../monitoring-and-diagnostics/monitoring-alerts-dynamic-thresholds.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-dynamic-thresholds.md
         - name: Konfigurace upozornění metrik pro protokoly
           href: ../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md?toc=/azure/azure-monitor/toc.json
         - name: Vytvoření novějšího upozornění na metriku pomocí šablony Resource Manageru
@@ -746,23 +746,23 @@ items:
         - name: Vytvoření klasických upozornění na metriku pomocí šablony Resource Manageru
           href: ../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md?toc=/azure/azure-monitor/toc.json
         - name: Nastavení klasického upozornění metrik pro volání webhooku
-          href: ../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-webhooks.md
       - name: Použití upozornění protokolu
         items:
         - name: Konfigurace upozornění pro analytický dotaz
-          href: ../monitoring-and-diagnostics/alert-log.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-log.md
         - name: Akce webhooku pro výstrahy protokolu
-          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-log-webhook.md
         - name: Řešení potíží s výstrahami protokolu
           href: ../monitoring-and-diagnostics/alert-log-troubleshoot.md?toc=/azure/azure-monitor/toc.json
       - name: Použití upozornění protokolu aktivit
         items:
         - name: Konfigurace upozornění pro událost protokolu aktivit
-          href: ../monitoring-and-diagnostics/alert-activity-log.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-activity-log.md
         - name: Migrace na upozornění protokolu aktivit
           href: ../monitoring-and-diagnostics/monitoring-migrate-management-alerts.md?toc=/azure/azure-monitor/toc.json
         - name: Konfigurace upozornění pro oznámení služby
-          href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-activity-log-service-notifications.md
       - name: Použití upozornění aplikací
         items:
         - name: Dostupnost
@@ -772,9 +772,9 @@ items:
       - name: Použití skupin akcí s upozorněními
         items:
         - name: Vytvoření skupin akcí
-          href: ../monitoring-and-diagnostics/monitoring-action-groups.md?toc=/azure/azure-monitor/toc.json
+          href: platform/action-groups.md
         - name: Další informace o schématu webhooků
-          href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md?toc=/azure/azure-monitor/toc.json
+          href: platform/activity-log-alerts-webhook.md
         - name: Chování upozornění SMS
           href: ../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md?toc=/azure/azure-monitor/toc.json
         - name: Omezení četnosti upozornění
@@ -782,13 +782,13 @@ items:
         - name: Vytvoření skupiny akcí s využitím Resource Manageru
           href: ../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md?toc=/azure/azure-monitor/toc.json
         - name: Implementace akce aplikace logiky
-          href: ../monitoring-and-diagnostics/monitoring-action-groups-logic-app.md?toc=/azure/azure-monitor/toc.json
+          href: platform/action-groups-logic-app.md
       - name: Upozornění z Operations Manageru
         href: platform/alert-management-solution.md
       - name: Správa upozornění
         items:
         - name: Správa instancí upozornění
-          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-alert-instances.md?toc=/azure/azure-monitor/toc.json
+          href: platform/alerts-managing-alert-instances.md
         - name: Správa inteligentních skupin
           href: ../monitoring-and-diagnostics/monitoring-alerts-managing-smart-groups.md?toc=/azure/azure-monitor/toc.json
         - name: Správa stavů inteligentních skupin a upozornění
@@ -802,25 +802,25 @@ items:
       - name: Vysvětlení nastavení automatického škálování
         href: ../monitoring-and-diagnostics/monitoring-understanding-autoscale-settings.md?toc=/azure/azure-monitor/toc.json
       - name: Osvědčené postupy
-        href: ../monitoring-and-diagnostics/insights-autoscale-best-practices.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-best-practices.md
       - name: Běžné metriky
-        href: ../monitoring-and-diagnostics/insights-autoscale-common-metrics.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-common-metrics.md
       - name: Obvyklé scénáře
         href: ../monitoring-and-diagnostics/monitoring-autoscale-common-scale-patterns.md?toc=/azure/azure-monitor/toc.json
       - name: Automatické škálování s použitím vlastních metrik
         href: ../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md?toc=/azure/azure-monitor/toc.json
       - name: Automatické škálování služby VM Scale Sets pomocí šablon Resource Manageru
-        href: ../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-virtual-machine-scale-sets.md
       - name: Automatické škálování počítačů ve škálovací sadě virtuálních počítačů
         href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json?toc=/azure/azure-monitor/toc.json
       - name: Konfigurace webhooků a e-mailových oznámení pro automatické škálování
-        href: ../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md?toc=/azure/azure-monitor/toc.json
+        href: platform/autoscale-webhook-email.md
     - name: Oznámení služby
       items:
       - name: Zobrazení oznámení služby
         href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
       - name: Konfigurace upozornění pro oznámení služby
-        href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=/azure/azure-monitor/toc.json
+        href: platform/alerts-activity-log-service-notifications.md
     - name: Správa služeb IT
       items:
       - name: IT Service Management Connector
@@ -860,7 +860,7 @@ items:
         - name: Získání diagnostiky Azure
           href: ../application-insights/app-insights-powershell-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
     - name: Ukázky Azure CLI
-      href: ../monitoring-and-diagnostics/insights-cli-samples.md?toc=/azure/azure-monitor/toc.json
+      href: platform/cli-samples.md
     - name: Šablony Resource Manageru
       href: platform/template-workspace-configuration.md
     - name: Rozhraní API
@@ -962,14 +962,14 @@ items:
     - name: Schéma událostí protokolu aktivit
       href: ../monitoring-and-diagnostics/monitoring-activity-log-schema.md?toc=/azure/azure-monitor/toc.json
     - name: Schéma rozšíření Azure Diagnostics
-      href: ../monitoring-and-diagnostics/azure-diagnostics-schema.md?toc=/azure/azure-monitor/toc.json
+      href: platform/diagnostics-extension-schema.md
       items:
       - name: 1.3 a novější
-        href: ../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostics-extension-schema-1dot3.md
       - name: "1.2"
-        href: ../monitoring-and-diagnostics/azure-diagnostics-schema-1dot2.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostics-extension-schema-1dot2.md
       - name: "1"
-        href: ../monitoring-and-diagnostics/azure-diagnostics-schema-1dot0.md?toc=/azure/azure-monitor/toc.json
+        href: platform/diagnostics-extension-schema-1dot0.md
   - name: Vyřazení funkcí a rozhraní API z provozu
     items:
     - name: Klasické rozhraní API pro metriky a automatické škálování
@@ -977,9 +977,9 @@ items:
     - name: Klasické upozorňování a monitorování
       href: ../monitoring-and-diagnostics/monitoring-classic-retirement.md?toc=/azure/azure-monitor/toc.json
     - name: Rozšíření upozornění z Log Analytics do Azure
-      href: ../monitoring-and-diagnostics/monitoring-alerts-extend.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-extend.md
     - name: Zkopírování upozornění z portálu OMS na web Azure Portal
-      href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
+      href: platform/alerts-extend-tool.md
 - name: Zdroje a prostředky
   items:
   - name: Plány Azure do budoucna
@@ -1010,9 +1010,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Ukázky kódů
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 84203f76d998b197fca3834857881f0a347f2cca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 06ea6e43343a0cf9982a6161fbd60d5bfce6b0ba
+ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106732"
+ms.lasthandoff: 12/13/2018
+ms.locfileid: "53322546"

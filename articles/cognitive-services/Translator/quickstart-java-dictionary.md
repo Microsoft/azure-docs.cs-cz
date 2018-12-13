@@ -1,360 +1,250 @@
 ---
-title: 'Rychlý start: Vyhledání alternativních překladů, Java – Translator Text API'
+title: 'QuickStart: Získejte alternativní překlady, Javy – Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu vyhledáte alternativní překlady a příklady termínů v kontextu pomocí rozhraní Translator Text API s Javou.
+description: V tomto rychlém startu dozvíte víc o získání alternativní překlady pro podmínku a také příklady použití těchto alternativní překlady pomocí Javy a rozhraní Translator Text API.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 4d828161408a06175c917affb0eef9290b575051
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 2c5517b470e46423631f6a63a24ceccf5de0a919
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416655"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888816"
 ---
-# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-java"></a>Rychlý start: Vyhledání alternativních překladů pomocí rozhraní REST API služby Translator Text (Java)
+# <a name="quickstart-use-the-translator-text-api-to-get-alternate-translations-using-java"></a>Rychlý start: Použití rozhraní Translator Text API zobrazíte alternativní překlady pomocí Javy
 
-V tomto rychlém startu vyhledáte podrobnosti možných alternativních překladů termínu a také příklady použití těchto alternativních překladů pomocí služby Translator Text API.
+V tomto rychlém startu dozvíte víc o získání alternativní překlady pro podmínku a také příklady použití těchto alternativní překlady pomocí Javy a rozhraní Translator Text API.
+
+K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro kompilaci a spuštění tohoto kódu budete potřebovat [JDK 7 nebo 8](https://aka.ms/azure-jdks). Můžete použít prostředí Java IDE, pokud je vaše oblíbené, ale stačit bude i textový editor.
+* [JDK 7 nebo novější](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Gradle](https://gradle.org/install/)
+* Klíč předplatného Azure pro službu Translator Text
 
-Abyste mohli použít službu Translator Text API, budete potřebovat klíč předplatného. Přečtěte si [jak se zaregistrovat ve službě Translator Text API](translator-text-how-to-signup.md).
+## <a name="initialize-a-project-with-gradle"></a>Inicializovat projekt s Gradle
 
-## <a name="dictionary-lookup-request"></a>Žádost Dictionary Lookup
+Začněme vytvořením pracovní adresář pro tento projekt. Z příkazového řádku (nebo terminál) spusťte tento příkaz:
 
-Následující kód získá alternativní překlady slova pomocí metody [Dictionary Lookup](./reference/v3-0-dictionary-lookup.md).
+```console
+mkdir alt-translation-sample
+cd alt-translation-sample
+```
 
-1. Ve svém oblíbeném editoru kódu vytvořte nový projekt v Javě.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
+V dalším kroku budete inicializovat projekt Gradle. Tento příkaz vytvoří soubory nezbytné sestavení pro Gradle, nejdůležitější ale je, `build.gradle.kts`, který se používá v době běhu k vytvoření a konfigurace aplikace. Spuštěním tohoto příkazu z pracovní adresář:
+
+```console
+gradle init --type basic
+```
+
+Po zobrazení výzvy k výběru **DSL**vyberte **Kotlin**.
+
+## <a name="configure-the-build-file"></a>Konfigurace souboru sestavení
+
+Vyhledejte `build.gradle.kts` a otevřete jej pomocí vašeho oblíbeného integrovaného vývojového prostředí textového editoru nebo editoru. Zkopírujte tuto konfiguraci sestavení:
+
+```
+plugins {
+    java
+    application
+}
+application {
+    mainClassName = "AltTranslation"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile("com.squareup.okhttp:okhttp:2.5.0")
+    compile("com.google.code.gson:gson:2.8.5")
+}
+```
+
+Povšimněte si, že tato ukázka obsahuje závislosti na OkHttp pro požadavky HTTP a Gson ke zpracování a parsování formátu JSON. Pokud chcete získat další informace o konfiguracích sestavení, naleznete v tématu [vytváření nového sestavení Gradle](https://guides.gradle.org/creating-new-gradle-builds/).
+
+## <a name="create-a-java-file"></a>Vytvořte soubor Java
+
+Pojďme vytvořit složku pro ukázkovou aplikaci. Z pracovního adresáře spusťte:
+
+```console
+mkdir -p src/main/java
+```
+
+Dále v této složce vytvořte soubor s názvem `AltTranslation.java`.
+
+## <a name="import-required-libraries"></a>Importujte požadované knihovny
+
+Otevřít `AltTranslation.java` a přidat tyto příkazy import:
 
 ```java
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
+import com.google.gson.*;
+import com.squareup.okhttp.*;
+```
 
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
-/* NOTE: To compile and run this code:
-1. Save this file as DictionaryLookup.java.
-2. Run:
-    javac DictionaryLookup.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar DictionaryLookup
-*/
+## <a name="define-variables"></a>Definování proměnných
 
-public class DictionaryLookup {
+Nejprve budete muset vytvořit veřejnou třídu pro váš projekt:
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+```java
+public class AltTranslation {
+  // All project code goes here...
+}
+```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
+Přidejte tyto řádky do `AltTranslation` třídy. Uvidíte, že spolu s `api-version`, dva další parametry se připojili k `url`. Tyto parametry slouží k nastavení překladu vstupu a výstupu. V této ukázce jsou tyto Angličtina (`en`) a španělština (`es`).
 
-    static String host = "https://api.cognitive.microsofttranslator.com";
-    static String path = "/dictionary/lookup?api-version=3.0";
+```java
+String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+String url = "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es";
+```
 
-    static String params = "&from=en&to=fr";
+## <a name="create-a-client-and-build-a-request"></a>Vytvoření klienta a žádost o sestavení
 
-    static String text = "great";
+Přidejte tento řádek, který `AltTranslation` třída pro vytvoření instance `OkHttpClient`:
 
-    public static class RequestBody {
-        String Text;
+```java
+// Instantiates the OkHttpClient.
+OkHttpClient client = new OkHttpClient();
+```
 
-        public RequestBody(String text) {
-            this.Text = text;
-        }
-    }
+V dalším kroku Vytvořme požadavek POST. Nebojte se změní celý text pro překlad.
 
-    public static String Post (URL url, String content) throws Exception {
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Content-Length", content.length() + "");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setRequestProperty("X-ClientTraceId", java.util.UUID.randomUUID().toString());
-        connection.setDoOutput(true);
+```java
+// This function performs a POST request.
+public String Post() throws IOException {
+    MediaType mediaType = MediaType.parse("application/json");
+    RequestBody body = RequestBody.create(mediaType,
+            "[{\n\t\"Text\": \"Pineapples\"\n}]");
+    Request request = new Request.Builder()
+            .url(url).post(body)
+            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
+            .addHeader("Content-type", "application/json").build();
+    Response response = client.newCall(request).execute();
+    return response.body().string();
+}
+```
 
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-        byte[] encoded_content = content.getBytes("UTF-8");
-        wr.write(encoded_content, 0, encoded_content.length);
-        wr.flush();
-        wr.close();
+## <a name="create-a-function-to-parse-the-response"></a>Vytvoření funkce pro parsování odpovědi
 
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
+Tato jednoduchá funkce analyzuje a prettifies odpověď JSON od službu Translator Text.
 
-        return response.toString();
-    }
+```java
+// This function prettifies the json response.
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonElement json = parser.parse(json_text);
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
 
-    public static String DictionaryLookup () throws Exception {
-        URL url = new URL (host + path + params);
+## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-        List<RequestBody> objList = new ArrayList<RequestBody>();
-        objList.add(new RequestBody(text));
-        String content = new Gson().toJson(objList);
+Posledním krokem je vytvořit žádost a získejte odpověď. Do projektu přidejte tyto řádky:
 
-        return Post(url, content);
-    }
-
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonElement json = parser.parse(json_text);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-
-    public static void main(String[] args) {
-        try {
-            String response = DictionaryLookup ();
-            System.out.println (prettify (response));
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
+```java
+public static void main(String[] args) {
+    try {
+        AltTranslation altTranslationRequest = new AltTranslation();
+        String response = altTranslationRequest.Post();
+        System.out.println(prettify(response));
+    } catch (Exception e) {
+        System.out.println(e);
     }
 }
 ```
 
-## <a name="dictionary-lookup-response"></a>Odpověď metody Dictionary Lookup
+## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
+Je to, jste připraveni spustit ukázkovou aplikaci. Z příkazového řádku (nebo relaci Terminálové služby) přejděte do kořenového adresáře pracovního adresáře a spusťte:
+
+```console
+gradle build
+```
+
+## <a name="sample-response"></a>Ukázková odpověď
 
 ```json
 [
   {
-    "normalizedSource": "great",
-    "displaySource": "great",
+    "normalizedSource": "pineapples",
+    "displaySource": "pineapples",
     "translations": [
       {
-        "normalizedTarget": "grand",
-        "displayTarget": "grand",
-        "posTag": "ADJ",
-        "confidence": 0.2783,
+        "normalizedTarget": "piñas",
+        "displayTarget": "piñas",
+        "posTag": "NOUN",
+        "confidence": 0.7016,
         "prefixWord": "",
         "backTranslations": [
           {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 34358
+            "normalizedText": "pineapples",
+            "displayText": "pineapples",
+            "numExamples": 5,
+            "frequencyCount": 158
           },
           {
-            "normalizedText": "big",
-            "displayText": "big",
-            "numExamples": 15,
-            "frequencyCount": 21770
+            "normalizedText": "cones",
+            "displayText": "cones",
+            "numExamples": 5,
+            "frequencyCount": 13
           },
-...
+          {
+            "normalizedText": "piña",
+            "displayText": "piña",
+            "numExamples": 3,
+            "frequencyCount": 5
+          },
+          {
+            "normalizedText": "ganks",
+            "displayText": "ganks",
+            "numExamples": 2,
+            "frequencyCount": 3
+          }
         ]
       },
       {
-        "normalizedTarget": "super",
-        "displayTarget": "super",
-        "posTag": "ADJ",
-        "confidence": 0.1514,
+        "normalizedTarget": "ananás",
+        "displayTarget": "ananás",
+        "posTag": "NOUN",
+        "confidence": 0.2984,
         "prefixWord": "",
         "backTranslations": [
           {
-            "normalizedText": "super",
-            "displayText": "super",
-            "numExamples": 15,
-            "frequencyCount": 12023
-          },
-          {
-            "normalizedText": "great",
-            "displayText": "great",
-            "numExamples": 15,
-            "frequencyCount": 10931
-          },
-...
+            "normalizedText": "pineapples",
+            "displayText": "pineapples",
+            "numExamples": 2,
+            "frequencyCount": 16
+          }
         ]
-      },
-...
+      }
     ]
   }
 ]
 ```
 
-## <a name="dictionary-examples-request"></a>Žádost Dictionary Examples
-
-Následující kód získá kontextové příklady použití termínu ve slovníku pomocí metody [Dictionary Examples](./reference/v3-0-dictionary-examples.md).
-
-1. Ve svém oblíbeném editoru kódu vytvořte nový projekt v Javě.
-2. Přidejte níže uvedený kód.
-3. Hodnotu `subscriptionKey` nahraďte přístupovým klíčem platným pro vaše předplatné.
-4. Spusťte program.
-
-```java
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
-
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- */
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-/* NOTE: To compile and run this code:
-1. Save this file as DictionaryExamples.java.
-2. Run:
-    javac DictionaryExamples.java -cp .;gson-2.8.1.jar -encoding UTF-8
-3. Run:
-    java -cp .;gson-2.8.1.jar DictionaryExamples
-*/
-
-public class DictionaryExamples {
-
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "ENTER KEY HERE";
-
-    static String host = "https://api.cognitive.microsofttranslator.com";
-    static String path = "/dictionary/examples?api-version=3.0";
-
-    static String params = "&from=en&to=fr";
-
-    static String text = "great";
-    static String translation = "formidable";
-
-    public static class RequestBody {
-        String Text;
-        String Translation;
-
-        public RequestBody(String text, String translation) {
-            this.Text = text;
-            this.Translation = translation;
-        }
-    }
-
-    public static String Post (URL url, String content) throws Exception {
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("Content-Length", content.length() + "");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setRequestProperty("X-ClientTraceId", java.util.UUID.randomUUID().toString());
-        connection.setDoOutput(true);
-
-        DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
-        byte[] encoded_content = content.getBytes("UTF-8");
-        wr.write(encoded_content, 0, encoded_content.length);
-        wr.flush();
-        wr.close();
-
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
-        String line;
-        while ((line = in.readLine()) != null) {
-            response.append(line);
-        }
-        in.close();
-
-        return response.toString();
-    }
-
-    public static String DictionaryExamples () throws Exception {
-        URL url = new URL (host + path + params);
-
-        List<RequestBody> objList = new ArrayList<RequestBody>();
-        objList.add(new RequestBody(text, translation));
-        String content = new Gson().toJson(objList);
-
-        return Post(url, content);
-    }
-
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonElement json = parser.parse(json_text);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
-    }
-
-    public static void main(String[] args) {
-        try {
-            String response = DictionaryExamples ();
-            System.out.println (prettify (response));
-        }
-        catch (Exception e) {
-            System.out.println (e);
-        }
-    }
-}
-```
-
-## <a name="dictionary-examples-response"></a>Odpověď metody Dictionary Examples
-
-Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu:
-
-```json
-[
-  {
-    "normalizedSource": "great",
-    "normalizedTarget": "formidable",
-    "examples": [
-      {
-        "sourcePrefix": "You have a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " expression there.",
-        "targetPrefix": "Vous avez une expression ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-      {
-        "sourcePrefix": "You played a ",
-        "sourceTerm": "great",
-        "sourceSuffix": " game today.",
-        "targetPrefix": "Vous avez été ",
-        "targetTerm": "formidable",
-        "targetSuffix": "."
-      },
-...
-    ]
-  }
-]
-```
-
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Prozkoumejte vzorový kód pro tento rychlý start a další, včetně překladu a transkripce, a také další vzorové projekty Translator Text na GitHubu.
 
 > [!div class="nextstepaction"]
 > [Prozkoumejte příklady v Javě na GitHubu](https://aka.ms/TranslatorGitHub?type=&language=java)
+
+## <a name="see-also"></a>Další informace najdete v tématech
+
+* [Překlad textu](quickstart-java-translate.md)
+* [Transliterace textu](quickstart-java-transliterate.md)
+* [Identifikace jazyka podle vstupu](quickstart-java-detect.md)
+* [Získání seznamu podporovaných jazyků](quickstart-java-languages.md)
+* [Určení délky věty ze vstupu](quickstart-java-sentences.md)

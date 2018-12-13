@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0ded8160478fba5f2b4d5d321685451701eb102a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: ef689aec58624495a61f5fde2a8050fb7400f56e
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849067"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888829"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Získejte přehled o vaší infrastruktuře DNS s řešení DNS Analytics ve verzi Preview
 
@@ -46,7 +46,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 | --- | --- | --- |
 | [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ano | Řešení shromažďuje informace DNS z agentů Windows. |
 | [Agenti systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Ne | Řešení neshromažďuje informace DNS z přímí agenti systému Linux. |
-| [Skupina pro správu System Center Operations Manager](../../log-analytics/log-analytics-om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení z agenta Operations Manageru ke službě Log Analytics není potřeba. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
+| [Skupina pro správu System Center Operations Manager](../../azure-monitor/platform/om-agents.md) | Ano | Řešení shromažďuje informace DNS z agentů v připojené skupině pro správu nástroje Operations Manager. Přímé připojení z agenta Operations Manageru ke službě Log Analytics není potřeba. Data se přesměrovávají ze skupiny pro správu do pracovního prostoru Log Analytics. |
 | [Účet služby Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Úložiště Azure se nepoužívá tímto řešením. |
 
 ### <a name="data-collection-details"></a>Podrobné informace o shromažďování dat
@@ -57,7 +57,7 @@ Následující tabulka popisuje připojené zdroje, které podporují toto řeš
 
 Ke konfigurování řešení, použijte následující informace:
 
-- Musíte mít [Windows](../../azure-monitor/platform/agent-windows.md) nebo [nástroje Operations Manager](../../log-analytics/log-analytics-om-agents.md) agent na každém serveru DNS, který chcete monitorovat.
+- Musíte mít [Windows](../../azure-monitor/platform/agent-windows.md) nebo [nástroje Operations Manager](../../azure-monitor/platform/om-agents.md) agent na každém serveru DNS, který chcete monitorovat.
 - Řešení DNS Analytics můžete přidat do pracovního prostoru Log Analytics z [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Můžete také použít proces popsaný v [přidání řešení Log Analytics z Galerie řešení](../../azure-monitor/insights/solutions.md).
 
 Shromažďování dat bez nutnosti další konfigurace spuštění řešení. Přizpůsobení shromažďování dat lze však použijte následující konfiguraci.
@@ -85,7 +85,7 @@ Pokud vaši skupinu pro správu Operations Manageru je připojený k pracovnímu
 - Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
 - Konfigurace DNS Analytics Microsoft System Center Advisor (Microsoft.IntelligencePack.Dns.Configuration)
 
-Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../log-analytics/log-analytics-om-agents.md).
+Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 ## <a name="use-the-dns-analytics-solution"></a>Použití řešení DNS Analytics
 

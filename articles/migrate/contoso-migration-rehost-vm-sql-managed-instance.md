@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: ae719e6daa3c07ffe298cfefcc5a0a2846a49032
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 35d2234ee52516c4ebf3e354e1ab6890144cdd5d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231817"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879464"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálním počítači Azure a SQL Database Managed Instance
 
@@ -186,14 +186,14 @@ Správce společnosti Contoso ve virtuální síti wmm nastavit takto:
     - **SQLMI-DS-EUS2** (10.235.0.0.25)
     - **SQLMI. SAW EUS2** (10.235.0.128/29). Tato podsíť se používá pro připojení k Managed Instance adresáře.
 
-    ![Spravovaná Instance – vytvoření virtuální sítě](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
+      ![Spravovaná Instance – vytvoření virtuální sítě](media/contoso-migration-rehost-vm-sql-managed-instance/mi-vnet.png)
 
 4. Po nasazení virtuální sítě a podsítě, navázání partnerského vztahu mezi sítěmi následujícím způsobem:
 
     - Partnerské uzly **připojení typu VNET-SQLMI EUS2** s **připojení typu VNET-HUB-EUS2** (centrální virtuální síti v oblasti východní USA 2).
     - Partnerské uzly **připojení typu VNET-SQLMI EUS2** s **připojení typu VNET-PROD-EUS2** (produkční sítě).
 
-    ![Vnet peering](media/contoso-migration-rehost-vm-sql-managed-instance/mi-peering.png)
+      ![Vnet peering](media/contoso-migration-rehost-vm-sql-managed-instance/mi-peering.png)
 
 5. Nastavují vlastní nastavení služby DNS. DNS body nejprve k řadičům domény Azure společnosti Contoso. Azure DNS je sekundární. Řadiče domény Contoso Azure jsou umístěny následovně:
 
@@ -202,7 +202,7 @@ Správce společnosti Contoso ve virtuální síti wmm nastavit takto:
     - **CONTOSODC4** adresa: 10.245.42.5
     - Azure DNS překladač: 168.63.129.16
 
-     ![Servery DNS](media/contoso-migration-rehost-vm-sql-managed-instance/mi-dns.png)
+      ![Servery DNS](media/contoso-migration-rehost-vm-sql-managed-instance/mi-dns.png)
 
 *Potřebujete další pomoc?*
 
@@ -254,7 +254,7 @@ Správce společnosti Contoso, teď můžete zřídit SQL Database Managed Insta
     - Virtuální cluster v případě Contoso má několik spravovaných instancí.
     - SQL Server Database Managed Instance. 
 
-    ![MI](media/contoso-migration-rehost-vm-sql-managed-instance/mi-resources.png)
+      ![MI](media/contoso-migration-rehost-vm-sql-managed-instance/mi-resources.png)
 
 *Potřebujete další pomoc?*
 
@@ -615,7 +615,7 @@ Další informace o postupech zabezpečení pro virtuální počítače najdete 
 
 Společnosti Contoso pro provozní kontinuitu a zotavení po havárii (BCDR), provede následující akce:
 
-- Byla data v bezpečí: Contoso zálohuje data na virtuálních počítačích pomocí služby Azure Backup. [Další informace] https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- Byla data v bezpečí: Contoso zálohuje data na virtuálních počítačích pomocí služby Azure Backup. [Další informace](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - Udržujte aplikace rychle zprovoznit: Contoso replikuje aplikace virtuální počítače v Azure do sekundární oblasti vzdálené používání služby Site Recovery. [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
 - Contoso zjišťuje informace o správě spravované instanci SQL, včetně [záloh databází](https://docs.microsoft.com/azure/sql-database/sql-database-automated-backups).
 

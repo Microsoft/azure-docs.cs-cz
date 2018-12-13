@@ -1,6 +1,6 @@
 ---
-title: Store stavu v aplikaci Azure Service Fabric sítě pomocí připojení svazku soubory Azure na základě uvnitř kontejneru | Dokumentace Microsoftu
-description: Zjistěte, jak ukládat stavu v aplikaci Azure Service Fabric sítě tak, že připojení svazku soubory Azure na základě uvnitř kontejnerů pomocí Azure CLI.
+title: Použít svazku soubory Azure na základě aplikace Service Fabric mřížky | Dokumentace Microsoftu
+description: Zjistěte, jak ukládat stavu v aplikaci Azure Service Fabric sítě tak, že připojení svazku soubory Azure na základě uvnitř služby pomocí rozhraní příkazového řádku Azure.
 services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
@@ -12,86 +12,236 @@ ms.devlang: azure-cli
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2018
+ms.date: 11/21/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cb5b421c1bcfe888d65335f3ab7f67bed80eec34
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 9bce2d0e6d01813fd376b2505838defc9c772d70
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614255"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52891091"
 ---
-# <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>Stav Store v aplikaci Azure Service Fabric sítě pomocí připojení soubory Azure na základě objemu uvnitř kontejneru
+# <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Připojit soubory Azure na základě svazek v aplikaci Service Fabric mřížky 
 
-Tento článek popisuje, jak k uložení stavu ve službě soubory Azure tak, že připojí svazek uvnitř kontejneru aplikace Service Fabric mřížky. V tomto příkladu má aplikace čítač služby ASP.NET Core s webovou stránkou, která zobrazuje hodnota čítače v prohlížeči. 
+Tento článek popisuje, jak připojit soubory Azure na základě svazek ve službě aplikace Service Fabric mřížky.  Ovladač soubory Azure svazek je svazek ovladač Dockeru pro připojení sdílené složky služby soubory Azure do kontejneru, který použijete k uchování stavu služby. Svazky poskytují úložiště pro obecné účely souborů a umožňují čtení a zápis souborů pomocí rozhraní API normální disku vstupně-výstupní operace souboru.  Další informace o svazky a možnosti pro ukládání dat aplikací, přečtěte si téma [ukládání stavu](service-fabric-mesh-storing-state.md).
 
-`counterService` Pravidelně načítá hodnotu čítače ze souboru, zvýší jeho a zápis zpátky do souboru. Soubor je uložen ve složce, která je připojena v svazku se opírá o sdílenou složku služby soubory Azure.
+Připojit svazek ve službě, vytvoření prostředku svazku ve vaší aplikaci Service Fabric mřížky a odkázat na tomto svazku ve své službě.  Deklarování prostředku svazku a odkazování na ně v prostředku service můžete provést buď [soubory prostředků na základě YAML](#declare-a-volume-resource-and-update-the-service-resource-yaml) nebo [šablony nasazení na základě JSON](#declare-a-volume-resource-and-update-the-service-resource-json). Před připojením svazku, nejprve vytvořte účet úložiště Azure a [sdílené složky ve službě soubory Azure](/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení této úlohy můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. Pokud chcete použít rozhraní příkazového řádku Azure v tomto článku, ujistěte se, že `az --version` vrátí alespoň `azure-cli (2.0.43)`.  Nainstalovat (nebo aktualizovat) rozšiřující modul Azure mřížky příkazového řádku Service Fabric pomocí těchto [pokyny](service-fabric-mesh-howto-setup-cli.md).
+K dokončení tohoto článku můžete použít Azure Cloud Shell nebo místní instalaci Azure CLI. 
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+Pokud chcete použít rozhraní příkazového řádku Azure místně v tomto článku, ujistěte se, že `az --version` vrátí alespoň `azure-cli (2.0.43)`.  Nainstalovat (nebo aktualizovat) rozšiřující modul Azure mřížky příkazového řádku Service Fabric pomocí těchto [pokyny](service-fabric-mesh-howto-setup-cli.md).
 
-Přihlaste se k Azure a nastavte své předplatné.
+Přihlaste se k Azure a nastavení předplatného:
 
-```azurecli-interactive
+```azurecli
 az login
 az account set --subscription "<subscriptionID>"
 ```
 
-## <a name="create-a-file-share"></a>Vytvoření sdílené složky
-
-Vytvoření sdílené složky Azure pomocí těchto [pokyny](/azure/storage/files/storage-how-to-create-file-share). Název účtu úložiště a klíč účtu úložiště, název sdílené složky souborů jsou odkazovány jako `<storageAccountName>`, `<storageAccountKey>`, a `<fileShareName>` v následujících pokynech. Tyto hodnoty jsou k dispozici na portálu Azure:
-* <storageAccountName> – V části **účty úložiště**, jedná se o název účtu úložiště, který jste použili při vytváření sdílené složky.
-* <storageAccountKey> -Výběr účtu úložiště v rámci **účty úložiště** a pak vyberte **přístupové klíče** a použijte hodnoty v rámci **key1**.
-* <fileShareName> -Výběr účtu úložiště v rámci **účty úložiště** a pak vyberte **soubory**. Název, který má používat je název sdílené složky, kterou jste právě vytvořili.
-
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-
-Vytvořte skupinu prostředků pro nasazení aplikace. Následující příkaz vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění východní USA.
+## <a name="create-a-storage-account-and-file-share-optional"></a>Vytvoření úložiště souborů a sdílenou složku (volitelné)
+Připojení svazku služby soubory Azure vyžaduje úložiště souborů a sdílenou složku.  Můžete použít existující služby Azure storage souborů a sdílenou složku nebo vytvořit prostředky:
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus 
+az group create --name myResourceGroup --location eastus
+
+az storage account create --name myStorageAccount --resource-group myResourceGroup --location eastus --sku Standard_LRS --kind StorageV2
+
+$current_env_conn_string=$(az storage account show-connection-string -n myStorageAccount -g myResourceGroup --query 'connectionString' -o tsv)
+
+az storage share create --name myshare --quota 2048 --connection-string $current_env_conn_string
 ```
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+## <a name="get-the-storage-account-name-and-key-and-the-file-share-name"></a>Získání názvu účtu úložiště a klíč a název sdílené složky souborů
+Název účtu úložiště a klíč účtu úložiště, název sdílené složky souborů jsou odkazovány jako `<storageAccountName>`, `<storageAccountKey>`, a `<fileShareName>` v následujících částech. 
 
-Vytvoření aplikace a související prostředky, pomocí následujícího příkazu a zadejte hodnoty pro `storageAccountName`, `storageAccountKey` a `fileShareName` z dříve [vytvoření sdílené složky](#create-a-file-share) kroku.
-
-`storageAccountKey` Parametr v šabloně je zabezpečený řetězec. Se nebude zobrazovat ve stavu nasazení a `az mesh service show` příkazy. Ujistěte se, že je správně zadán v následujícím příkazu.
-
-Následující příkaz nasadí aplikaci Linux pomocí [counter.azurefilesvolume.linux.json šablony](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json). Chcete-li nasadit aplikaci s Windows, použijte [counter.azurefilesvolume.windows.json šablony](https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.windows.json). Mějte na paměti, že může trvat delší dobu nasazení větších imagí kontejnerů.
-
+Seznam účtů úložiště a název účtu úložiště pomocí sdílené složky, že kterou chcete použít:
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/counter/counter.azurefilesvolume.linux.json  --parameters "{\"location\": {\"value\": \"eastus\"}, \"fileShareName\": {\"value\": \"<fileShareName>\"}, \"storageAccountName\": {\"value\": \"<storageAccountName>\"}, \"storageAccountKey\": {\"value\": \"<storageAccountKey>\"}}"
+az storage account list
 ```
 
-V několika minutách se příkaz by měl vrátit s `counterApp has been deployed successfully on counterAppNetwork with public ip address <IP Address>`
-
-## <a name="open-the-application"></a>Otevření aplikace
-
-Nasazení příkazu vrátí veřejnou IP adresu koncového bodu služby. Po úspěšně nasazení aplikace, získejte veřejnou IP adresu pro koncový bod služby a otevřete ji v prohlížeči. Zobrazí se na webové stránce s hodnotou čítače aktualizuje každou sekundu.
-
-Název sítě prostředků pro tuto aplikaci je `counterAppNetwork`. Informace o aplikaci, jako je například její popis, umístění, skupinu prostředků, atd. můžete zobrazit pomocí následujícího příkazu:
-
+Získání názvu sdílené složky:
 ```azurecli-interactive
-az mesh network show --resource-group myResourceGroup --name counterAppNetwork
+az storage share list --account-name <storageAccountName>
 ```
 
-## <a name="verify-that-the-application-is-able-to-use-the-volume"></a>Ověřte, že aplikace je možné použít svazku
-
-Aplikace vytvoří soubor s názvem `counter.txt` v souboru sdílet uvnitř `counter/counterService` složky. Obsah tohoto souboru je hodnota čítače se zobrazuje na webové stránce.
-
-Soubor stáhnout využít libovolný nástroj, který umožňuje procházení sdílené složky služby soubory Azure, jako [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-
-## <a name="delete-the-resources"></a>Odstranit prostředky
-
-Často odstraníte prostředky, které už používáte v Azure. Pokud chcete odstranit prostředky související se v tomto příkladu, odstraňte skupinu prostředků ve které se nasadily (čímž odstraníte všechno, co spojený s vybranou skupinou prostředků) pomocí následujícího příkazu:
-
+Získání klíče účtu úložiště ("key1"):
 ```azurecli-interactive
-az group delete --resource-group myResourceGroup
+az storage account keys list --account-name <storageAccountName> --query "[?keyName=='key1'].value"
+```
+
+Můžete také najít tyto hodnoty [webu Azure portal](https://portal.azure.com):
+* `<storageAccountName>` – V části **účty úložiště**, název účtu úložiště použité k vytvoření sdílené složky.
+* `<storageAccountKey>` -Výběr účtu úložiště v rámci **účty úložiště** a pak vyberte **přístupové klíče** a použijte hodnoty v rámci **key1**.
+* `<fileShareName>` -Výběr účtu úložiště v rámci **účty úložiště** a pak vyberte **soubory**. Název, který má používat je název sdílené složky, kterou jste vytvořili.
+
+## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Deklarace prostředku svazku a aktualizace prostředku služby (JSON)
+
+Přidat parametry `<fileShareName>`, `<storageAccountName>`, a `<storageAccountKey>` hodnoty, které jste našli v předchozím kroku. 
+
+Vytvoření prostředku svazku jako partnerské aplikace prostředku. Zadejte název a zprostředkovatele ("SFAzureFile" používat soubory Azure na základě svazku). V `azureFileParameters`, zadejte parametry pro `<fileShareName>`, `<storageAccountName>`, a `<storageAccountKey>` hodnoty, které jste našli v předchozím kroku.
+
+K připojení svazku v rámci služby, přidejte `volumeRefs` k `codePackages` element služby.  `name` název svazku deklarované v souboru prostředků volume.yaml je ID prostředku pro svazek (nebo parametr šablony nasazení prostředku svazku).  `destinationPath` je místní adresář, který svazek bude připojen k.
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "defaultValue": "EastUS",
+      "type": "String",
+      "metadata": {
+        "description": "Location of the resources."
+      }
+    },
+    "fileShareName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Azure Files file share that provides the volume for the container."
+      }
+    },
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Azure storage account that contains the file share."
+      }
+    },
+    "storageAccountKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Access key for the Azure storage account that contains the file share."
+      }
+    },
+    "stateFolderName": {
+      "type": "string",
+      "defaultValue": "TestVolumeData",
+      "metadata": {
+        "description": "Folder in which to store the state. Provide a empty value to create a unique folder for each container to store the state. A non-empty value will retain the state across deployments, however if more than one applications are using the same folder, the counter may update more frequently."
+      }
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2018-09-01-preview",
+      "name": "VolumeTest",
+      "type": "Microsoft.ServiceFabricMesh/applications",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "Microsoft.ServiceFabricMesh/networks/VolumeTestNetwork",
+        "Microsoft.ServiceFabricMesh/volumes/testVolume"
+      ],
+      "properties": {
+        "services": [
+          {
+            "name": "VolumeTestService",
+            "properties": {
+              "description": "VolumeTestService description.",
+              "osType": "Windows",
+              "codePackages": [
+                {
+                  "name": "VolumeTestService",
+                  "image": "volumetestservice:dev",
+                  "volumeRefs": [
+                    {
+                      "name": "[resourceId('Microsoft.ServiceFabricMesh/volumes', 'testVolume')]",
+                      "destinationPath": "C:\\app\\data"
+                    }
+                  ],
+                  "environmentVariables": [
+                    {
+                      "name": "ASPNETCORE_URLS",
+                      "value": "http://+:20003"
+                    },
+                    {
+                      "name": "STATE_FOLDER_NAME",
+                      "value": "[parameters('stateFolderName')]"
+                    }
+                  ],
+                  ...
+                }
+              ],
+              ...
+            }
+          }
+        ],
+        "description": "VolumeTest description."
+      }
+    },
+    {
+      "apiVersion": "2018-09-01-preview",
+      "name": "testVolume",
+      "type": "Microsoft.ServiceFabricMesh/volumes",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "description": "Azure Files storage volume for the test application.",
+        "provider": "SFAzureFile",
+        "azureFileParameters": {
+          "shareName": "[parameters('fileShareName')]",
+          "accountName": "[parameters('storageAccountName')]",
+          "accountKey": "[parameters('storageAccountKey')]"
+        }
+      }
+    }
+    ...
+  ]
+}
+```
+
+## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Deklarace prostředku svazku a aktualizace prostředku služby (YAML)
+
+Přidat nový *volume.yaml* soubor *prostředků aplikace* adresář pro vaši aplikaci.  Zadejte název a zprostředkovatele ("SFAzureFile" používat soubory Azure na základě svazku). `<fileShareName>`, `<storageAccountName>`, a `<storageAccountKey>` jsou na hodnoty zjištěné v předchozím kroku.
+
+```yaml
+volume:
+  schemaVersion: 1.0.0-preview2
+  name: testVolume
+  properties:
+    description: Azure Files storage volume for counter App.
+    provider: SFAzureFile
+    azureFileParameters: 
+        shareName: <fileShareName>
+        accountName: <storageAccountName>
+        accountKey: <storageAccountKey>
+```
+
+Aktualizace *service.yaml* ve *prostředky služeb* directory připojit svazek ve své službě.  Přidat `volumeRefs` elementu `codePackages` elementu.  `name` název svazku deklarované v souboru prostředků volume.yaml je ID prostředku pro svazek (nebo parametr šablony nasazení prostředku svazku).  `destinationPath` je místní adresář, který svazek bude připojen k.
+
+```yaml
+## Service definition ##
+application:
+  schemaVersion: 1.0.0-preview2
+  name: VolumeTest
+  properties:
+    services:
+      - name: VolumeTestService
+        properties:
+          description: VolumeTestService description.
+          osType: Windows
+          codePackages:
+            - name: VolumeTestService
+              image: volumetestservice:dev
+              volumeRefs:
+                - name: "[resourceId('Microsoft.ServiceFabricMesh/volumes', 'testVolume')]"
+                  destinationPath: C:\app\data
+              endpoints:
+                - name: VolumeTestServiceListener
+                  port: 20003
+              environmentVariables:
+                - name: ASPNETCORE_URLS
+                  value: http://+:20003
+                - name: STATE_FOLDER_NAME
+                  value: TestVolumeData
+              resources:
+                requests:
+                  cpu: 0.5
+                  memoryInGB: 1
+          replicaCount: 1
+          networkRefs:
+            - name: VolumeTestNetwork
 ```
 
 ## <a name="next-steps"></a>Další postup

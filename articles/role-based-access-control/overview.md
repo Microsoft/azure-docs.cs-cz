@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d9a28ea43e732c53afb75e96f20cb13b9bbb27a6
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9ddad471236877977fec620565d8f110e265ff72
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632612"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867894"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Co je řízení přístupu na základě role (RBAC)?
 
@@ -57,7 +57,7 @@ A *objektu zabezpečení* je objekt, který představuje uživatele, skupiny, in
 - Uživatel – jednotlivec, který má profil ve službě Azure Active Directory. Můžete také přiřadit role uživatelům v jiných tenantech. Informace o uživatelích v jiných organizacích najdete v článku o [B2B ve službě Azure Active Directory](../active-directory/b2b/what-is-b2b.md).
 - Skupina – skupina uživatelů vytvořená ve službě Azure Active Directory. Když přiřadíte roli skupině, budou mít danou roli všichni její uživatelé. 
 - Instanční objekt – identita zabezpečení, kterou používají aplikace nebo služby pro přístup ke konkrétním prostředkům Azure. Můžete si ji představit jako *identitu uživatele* (uživatelské jméno a heslo nebo certifikát) pro aplikaci.
-- Spravované identity – identita v Azure Active Directory, který je automaticky spravuje Azure. Obvykle použijete [spravovaných identit](../active-directory/managed-identities-azure-resources/overview.md) při vývoji cloudových aplikací ke správě přihlašovacích údajů pro ověřování služby Azure.
+- Spravované identity – identita v Azure Active Directory, který automaticky spravuje Azure. Obvykle použijete [spravovaných identit](../active-directory/managed-identities-azure-resources/overview.md) při vývoji cloudových aplikací ke správě přihlašovacích údajů pro ověřování služby Azure.
 
 ### <a name="role-definition"></a>Definice role
 
