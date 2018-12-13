@@ -1,21 +1,22 @@
 ---
-title: 'Kurz 1: Vyhledání záměrů ve vlastní aplikaci LUIS'
+title: Předpověď záměry
 titleSuffix: Azure Cognitive Services
 description: Vytvořte si vlastní aplikaci, která předpovídá záměr uživatele. Tato aplikace představuje nejjednodušší typ aplikace LUIS, protože neextrahuje různé datové prvky z textu promluvy, jako jsou e-mailové adresy nebo kalendářní data.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 30c9f572d77caacbeecf5f15d74fd8517e9fa883
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: b1a9718fdf7222dae06f7fe9b3a0f14b50293c08
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426855"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097790"
 ---
 # <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>Kurz 1: Vytvoření vlastní aplikace k určení záměrů uživatele
 
@@ -43,11 +44,11 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 
 2. Vyberte **Create new app** (Vytvořit novou aplikaci).  
 
-    [![](media/luis-quickstart-intents-only/app-list.png "Snímek obrazovky se stránkou My Apps (Moje aplikace) ve službě LUIS (Language Understanding)")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+    [![Stránka Moje aplikace – snímek obrazovky z Language Understanding (LUIS)](media/luis-quickstart-intents-only/app-list.png "stránky Moje aplikace – snímek obrazovky z Language Understanding (LUIS)")](media/luis-quickstart-intents-only/app-list.png#lightbox)
 
 3. V automaticky otevíraném dialogovém okně zadejte název `HumanResources` a ponechejte nastavenou výchozí jazykovou verzi – **English**. Popis nechejte prázdný.
 
-    ![Nová aplikace LUIS](./media/luis-quickstart-intents-only/create-app.png)
+    ![Vytvořte novou aplikaci Lidskézdroje LUIS](./media/luis-quickstart-intents-only/create-app.png)
 
     Dále aplikace zobrazí stránku **Intents** (Záměry) se záměrem **None** (Žádný).
 
@@ -55,7 +56,7 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
 
 1. Vyberte **Create new intent** (Vytvořit nový záměr). Zadejte název nového záměru `GetJobInformation`. Tento záměr se předpoví pokaždé, když chce uživatel získat informace o volných pracovních pozicích ve společnosti.
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "Snímek obrazovky s dialogem New intent (Nový záměr) ve službě LUIS (Language Understanding)")
+    ![Snímek obrazovky z Language Understanding (LUIS) dialogové okno záměru nového](media/luis-quickstart-intents-only/create-intent.png "nové záměru dialogové okno snímek obrazovky z Language Understanding (LUIS)")
 
 2. Poskytnutím _ukázkových promluv_ trénujete službu LUIS na druhy výroků, které by pro tento záměr měla předvídat. Přidejte do tohoto záměru několik ukázkových promluv, které očekáváte, že uživatel zadá, například:
 
@@ -69,7 +70,7 @@ Poté, co LUIS vrátí odpověď JSON, služba LUIS s touto žádostí skončila
     |New jobs? (Nějaké nové pracovní pozice?)|
     |Are there any new positions in the Seattle office? (Nejsou na pobočce v Seattlu nějaké nové pozice?)|
 
-    [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Snímek obrazovky se zadáváním nových promluv pro záměr MyStore (Můj obchod)")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
+    [![Snímek obrazovky zadání nového projevy pro MyStore záměr](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "snímek obrazovky zadání nového projevy pro MyStore záměr")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
@@ -150,7 +151,7 @@ Vraťte se na web služby LUIS a vytvořte nový záměr pro určení, zda se pr
     |Here is my c.v. (Tady je můj životopis) for position 654234 (na pozici 654234)|
     |Job 567890 and my paperwork (Pracovní pozice 567890 a moje doklady)|
 
-    [![](media/luis-quickstart-intents-only/utterance-applyforjob.png "Snímek obrazovky se zadáváním nových promluv pro záměr ApplyForJob (Přihláška na pracovní pozici)")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+    [![Snímek obrazovky zadání nového projevy pro ApplyForJob záměr](media/luis-quickstart-intents-only/utterance-applyforjob.png "snímek obrazovky zadání nového projevy pro ApplyForJob záměr")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
 
     Označený záměr má červený rámeček, protože si služba LUIS zatím není jistá, jestli je záměr správný. Trénováním aplikace sdělíte službě LUIS, že je záměr promluv správný. 
 
@@ -168,7 +169,7 @@ Vraťte se na web služby LUIS a vytvořte nový záměr pro určení, zda se pr
 
 2. V novém okně prohlížeče zadejte na konec adresy URL `Can I submit my resume for job 235986`. 
 
-    ```JSON
+    ```json
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {

@@ -2,19 +2,19 @@
 title: Sestavení řešení IoT pomocí Azure Stream Analytics
 description: Úvodní kurz pro řešení Stream Analytics IoT tollbooth scénáře
 services: stream-analytics
-author: jasonwhowell
+author: mamccrea
 ms.author: mamccrea
-manager: kfile
-ms.reviewer: jasonh, sngun
+ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/21/2018
-ms.openlocfilehash: e70a1210d44e5bfec914006afaf18eff772cac47
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: MT
+ms.date: 12/06/2018
+ms.custom: seodec18
+ms.openlocfilehash: 230318dc8e352a3adc970b13f20fa992954e3b15
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978787"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091090"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Sestavení řešení IoT s použitím Stream Analytics
 
@@ -36,7 +36,7 @@ Potřebujete následující požadované součásti pro dokončení tohoto řeš
 ## <a name="scenario-introduction-hello-toll"></a>Úvod scénář: "Hello, linka!"
 Stanice linka je běžné jev. Kterými je mnoho rychlostních, přemostění a tunely po celém světě. Každá stanice linka má více kabin linka. Při ruční kabin zastavíte platit linka průvodcem. Na automatické kabin prohledává senzoru na každý z mýtných bran RFID karty, který je opatřit čelního skla vaše vozidla, jak předat z mýtných bran linka. Je snadno pochopitelný průchod vozidel přes tyto stanice linka jako datového proudu událostí nad tím, které zajímavé operace lze provádět.
 
-![Obrázek auta v kabin linka](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image1.jpg)
+! [Obrázek auta v linka kabin] (media/stream-analytics-build-an-iot-solution-using-stream-analytics/cars-in-toll-booth JPG)
 
 ## <a name="incoming-data"></a>Příchozí data
 Toto řešení funguje s dvěma datových proudů. Nainstalovaných ve vstupu a výstupu stanice linka vytvořit první datový proud. Druhý datový proud je datová sada statické vyhledávání, který má vozidla registrační data.
@@ -44,7 +44,7 @@ Toto řešení funguje s dvěma datových proudů. Nainstalovaných ve vstupu a 
 ### <a name="entry-data-stream"></a>Vstupní datový proud
 Vstupní datový proud obsahuje informace o automobilů při vstupu linka stanice. Data události ukončení jsou živé streamování do fronty centra událostí z webové aplikace součástí ukázkové aplikace.
 
-| TollID | EntryTime | LicensePlate | Stav | Ujistěte se | Model | VehicleType | VehicleWeight | Linka | Značka |
+| TollID | EntryTime | LicensePlate | Stav | Vytvoření | Model | VehicleType | VehicleWeight | Linka | Značka |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -61,7 +61,7 @@ Tady je stručný popis sloupce:
 | EntryTime |Datum a čas vstupu vozidla z mýtných bran linka ve standardu UTC |
 | LicensePlate |Registrační číslo vozidla |
 | Stav |Stav ve Spojených státech |
-| Ujistěte se |Výrobce daného automobilu |
+| Vytvoření |Výrobce daného automobilu |
 | Model |Číslo modelu daného automobilu |
 | VehicleType |1 pro osobní vozidel či 2 pro komerční vozidla |
 | WeightType |Váha vozidla v tunách; 0 pro osobní vozidel |
@@ -310,7 +310,7 @@ Vertikálně navýšit kapacitu na víc jednotek streamování datové proudy ú
 ## <a name="monitor-the-job"></a>Monitorování úlohy
 **Monitorování** oblasti obsahuje statistické údaje o běžící úlohu. První konfigurace je potřeba pro použití účtu úložiště ve stejné oblasti (název linka jako zbytek tohoto dokumentu).   
 
-![Snímek obrazovky monitorování](media/stream-analytics-build-an-iot-solution-using-stream-analytics/monitoring.png)
+![Monitorování úloh v Azure Stream Analytics](media/stream-analytics-build-an-iot-solution-using-stream-analytics/stream-analytics-job-monitoring.png)
 
 Můžete přistupovat **protokoly aktivit** z řídicího panelu úloha **nastavení** také oblast.
 

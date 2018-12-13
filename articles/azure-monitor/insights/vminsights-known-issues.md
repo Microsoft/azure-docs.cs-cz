@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor pro virtuální počítače (Preview) – známé problémy | Dokumentace Microsoftu
-description: Azure Monitor pro virtuální počítače je řešení v Azure, která kombinuje stavu a výkonu monitorování operačního systému virtuálního počítače Azure, stejně jako automatické zjišťování mezi součástmi aplikace a závislosti s jiným prostředkům a mapuje komunikace mezi je. Tento článek popisuje známé problémy.
+title: Azure Monitor pro virtuální počítače (preview) – známé problémy | Dokumentace Microsoftu
+description: Tento článek popisuje známé problémy s monitorováním Azure pro virtuální počítače, řešení v Azure, která kombinuje monitorování stavu a výkonu operačního systému virtuálního počítače Azure. Azure Monitor pro virtuální počítače také automaticky zjišťuje mezi součástmi aplikace a závislosti s jiným prostředkům a mapuje komunikace mezi nimi.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -14,32 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 99f84e9784c448091c0257218855c3bf32c2f8f4
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: MT
+ms.openlocfilehash: d720a7401b9ed1188a01d3cc2cc9ec7b66b640ce
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51715215"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091540"
 ---
-# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Známé problémy s monitorováním Azure pro virtuální počítače (Preview)
+# <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Známé problémy s monitorováním Azure pro virtuální počítače (preview)
 
-Následující seznam uvádí známé problémy s funkcí stavu služby Azure Monitor pro virtuální počítače:
+Tento článek popisuje známé problémy s monitorováním Azure pro virtuální počítače, řešení v Azure, která kombinuje monitorování stavu a výkonu operačního systému virtuálního počítače Azure. 
 
-- Stav funkce je povolená pro všechny virtuální počítače připojené k pracovnímu prostoru Log Analytics, i když je zahájeno a dokončit z jednoho virtuálního počítače.
-- Pokud po zakázání monitorování virtuálního počítače pomocí podporované metody, když se opakovat pokus o připojení, by mělo být provedeno do stejného pracovního prostoru.  Pokud se nový pracovní prostor používá při zobrazení stavu pro tento virtuální počítač, můžou zobrazovat neobvyklé chování.
-- Pokud virtuální počítač Azure neexistuje žádné další, protože byl odebrán nebo odstraněn, se zobrazí v zobrazení seznamu virtuálních počítačů pro tři až sedm dní. Kromě toho by spusťte kliknutím na stav virtuálního počítače odstraněny nebo odstraněné **stav diagnostiky** , zobrazení, které pak přejde do smyčky načítání. Okno s výběrem názvu odstraněného virtuálního počítače spustí a zobrazí se zpráva s informacemi o tom, že virtuální počítač se odstranil.
+Následující seznam uvádí známé problémy s funkcí stavu:
+
+- Stav funkce je povolená pro všechny virtuální počítače, které jsou připojené k pracovnímu prostoru Log Analytics. Takže i je při akci, která začíná a končí na jeden virtuální počítač.
+- Poté co zakažte monitorování u virtuálního počítače pomocí podporované metody a zkuste ho znovu nasadíte, byste měli nasadit do stejného pracovního prostoru. Pokud používáte nový pracovní prostor a zkuste k zobrazení stavu pro tento virtuální počítač, může se zobrazit neobvyklé chování.
+- Pokud virtuální počítač Azure je odebrání nebo odstranění, zobrazí se v zobrazení seznamu virtuálních počítačů pro tři až sedm dní. Kromě toho kliknutím na stav virtuálního počítače odstraněny nebo odstraněné otevře **stav diagnostiky** zobrazení a poté zahájí smyčku načítání. Výběrem názvu odstraněného virtuálního počítače se otevře podokno se zpráva, že virtuální počítač se odstranil.
 - Časové období a četnost kritéria stavu nelze změnit v této vydané verzi. 
 - Kritéria stavu nejde zakázat. 
-- Po připojení, může trvat dobu, než se data zobrazí ve službě Azure Monitor -> Virtual Machines -> Stav nebo z okna prostředků virtuálního počítače -> Přehled
-- Diagnostika stavu prostředí aktualizace rychleji než všech ostatních zobrazeních, takže informace zpoždění může dojít při přepínání mezi zobrazeními  
-- Souhrn výstrah dodává v rámci Azure Monitor pro virtuální počítač jsou určeny pouze pro upozornění aktivovaných pro problémů stavu zjištěných pomocí monitorovaných virtuálních počítačů Azure.
-- **Seznamu výstrah** zobrazení stránky v jedné virtuální počítač a Azure Monitor zobrazí upozorní, jehož stav monitorování je nastavena na "aktivace" v posledních 30 dní.  Nejsou konfigurovatelné. Ale po kliknutí na souhrn, jednou **seznam výstrah** zobrazení stránky je spuštěn, můžete změnit hodnotu filtr rozsahu obou monitorování stavu a čas.
-- Na **seznamu výstrah** zobrazení stránky, doporučujeme nebudete muset měnit **typ prostředku**, **prostředků**, a **Monitor Service** filtry, jakmile byly nakonfigurovány specifické pro řešení (Tento seznam ukazuje že některá další pole jako ve srovnání s Azure monitor -> zobrazení seznamu výstrah).    
-- Ve virtuálních počítačích s Linuxem **stav diagnostiky** zobrazení má celá doména název virtuálního počítače namísto uživatelem definovaný název virtuálního počítače.
-- Vypínání virtuálních počítačů bude aktualizovat některé jeho stav kritéria do kritického stavu a dalších do stavu v pořádku s net stav virtuálního počítače v kritickém stavu.
-- Závažnost výstrahy stavu nelze změnit, můžete pouze měly být povoleno nebo zakázáno.  Kromě toho některé závažnosti aktualizují v závislosti na stavu kritéria.
-- Úprava jakékoli nastavení stavu instance kritérium, povede k úpravy nastavení stejné napříč všemi instancemi kritéria stavu stejného typu na virtuálním počítači. Například pokud prahová hodnota disku volného místa stavu kritérium instance odpovídající logický disk se upraví C:, pak tato prahová hodnota bude platit pro všechny ostatní logické disky zjišťování a monitorování pro stejný virtuální počítač.   
-- Prahové hodnoty pro následující stav kritéria cílení virtuálního počítače s Windows nejsou upravitelné, protože jejich stavů jsou již nastaveny na **systémem** nebo **dostupné**. Při dotazu z [úlohy monitorování API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager), zobrazuje stav stavu *comparisonOperator* hodnotu **LessThan** nebo **GreaterThan**s *prahová hodnota* hodnotu **4** služby nebo entity pokud:
+- Po nasazení, může trvat dobu, než se data zobrazí v **Azure Monitor** > **virtuálních počítačů** > **stavu** podokně nebo  **Prostředek virtuálního počítače** > **Insights** podokně.
+- Diagnostika stavu docházet rychleji než ostatní zobrazení aktualizace. Tyto informace můžou být zpožděné při přepínání mezi zobrazeními. 
+- Souhrn výstrah, který je součástí Azure Monitor pro virtuální počítač se zobrazí jenom oznámení, že vzniknou problémy se stavem, které jsou zjištěny s monitorovat virtuální počítače Azure.
+- **Seznamu výstrah** podokno v jednom virtuálním počítači a Azure Monitor se zobrazí oznámení, jejichž stav monitorování je nastavena na *aktivuje* za posledních 30 dní. Výstrahy nejsou konfigurovatelné. Ale po **seznam výstrah** se otevře podokno, můžete kliknout na souhrn, chcete-li změnit hodnotu filtr rozsahu obou monitorování stavu a čas.
+- V **seznamu výstrah** podokno, doporučujeme místo abyste upravili **typ prostředku**, **prostředků**, a **Monitor Service** filtry. Jejich byl konfigurován specifické pro řešení. Tento seznam zobrazuje více polí než **Azure monitor** > **výstrahy** zobrazení seznamu nepodporuje.   
+- Ve virtuálních počítačích s Linuxem **stav diagnostiky** zobrazení Celá doména název virtuálního počítače namísto uživatelem definovaný název virtuálního počítače.
+- Vypínání virtuálních počítačů některé stavu kritérií, která aktualizuje *kritické* a ostatním uživatelům *v pořádku*. Zobrazí se jako čistý stav virtuálního počítače *kritické*.
+- Závažnost výstrahy stavu se nedá upravit. Může být pouze povolené nebo zakázané. Kromě toho některé závažnosti se aktualizují na základě stavu kritéria.
+- Při úpravě jakékoli nastavení instance kritérium stavu, jsou změněny všechny instance stejného typu na virtuálním počítači stav kritéria. Například pokud se změní prahovou hodnotu instance kritérium stavu volného místa disku, který odpovídá logický disk C:, tato prahová hodnota se vztahuje na všechny ostatní logické disky, které zjišťování a monitorování pro stejný virtuální počítač.  
+- Prahové hodnoty pro kritéria, které se zaměřují virtuálního počítače s Windows nejsou upravitelné, protože jejich stavů jsou nastaveny na *systémem* nebo *dostupné*. Při dotazování stav z [úlohy monitorování API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager), zobrazí *comparisonOperator* hodnotu **LessThan** nebo **GreaterThan** s *prahová hodnota* hodnotu **4** služby nebo entity pokud:
    - Stav služby Klient DNS – služba není spuštěná. 
    - Stav služby Klient DHCP – služba není spuštěná. 
    - Stav služby vzdáleného volání Procedur – služba není spuštěná. 
@@ -47,18 +49,18 @@ Následující seznam uvádí známé problémy s funkcí stavu služby Azure Mo
    - Stav služby protokolu událostí Windows – služba není spuštěná. 
    - Stav služby serveru – služba není spuštěná. 
    - Stav služby vzdálené správy Windows – služba není spuštěná. 
-   - Chyba systému souborů nebo poškození – je logický Disk není k dispozici
+   - Chyba systému souborů nebo poškození – je logický Disk není k dispozici.
 
-- Prahové hodnoty pro následující stav kritéria Linux nejsou upravitelné, od jejich stavu jsou již nastaveny na **true**.  Zobrazuje stav stavu *comparisonOperator* s hodnotou **LessThan** a *prahová hodnota* hodnotu **1** při dotazu z pracovního vytížení Monitorování rozhraní API pro entitu v závislosti na jeho kontextu:
+- Prahové hodnoty pro následující stav kritéria Linux nejsou upravitelné, protože jeho stav je již nastavena na *true*. Stav se zobrazí *comparisonOperator* s hodnotou **LessThan** a *prahová hodnota* hodnotu **1** při posílat dotaz z Úloha monitorování rozhraní API pro entitu, v závislosti na jeho kontextu:
    - Stav logického disku – logický disk není online / k dispozici
    - Stav disku – Disk není online / k dispozici
    - Stav síťového adaptéru – síťový adaptér je zakázána.  
 
-- **Celkové využití výkonu procesoru** kritéria stavu ve Windows zobrazí prahovou hodnotu **nerovná se 4** z portálu a posílat dotaz z rozhraní API monitorování úloh, když je větší než 95 % využití procesoru a délka fronty v systému větší než 15. V této verzi nelze upravit toto kritérium stavu.  
-- Změny konfigurace, jako je aktualizace prahové hodnoty, trvá až 30 minut, než se projeví i v případě, že na portálu nebo rozhraní API sledování pracovní vytížení může aktualizovat okamžitě.  
-- Jednotlivé procesoru a kritéria úrovně stavu logický procesor nejsou k dispozici ve Windows, pouze **celkové využití procesoru** je k dispozici pro virtuální počítače s Windows.  
-- Pravidla výstrah, které jsou definovány pro každé kritérium stavu se nezobrazí na portálu Azure portal. Je možné konfigurovat pouze z [úlohy monitorování API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager) povolit nebo zakázat pravidlo výstrahy pro kontrolu stavu.  
-- Přiřazení [skupiny akcí Azure Monitor](../../monitoring-and-diagnostics/monitoring-action-groups.md) stavu výstrah není možné z portálu Azure portal. Rozhraní API nastavení oznámení můžete použít pouze ke konfiguraci skupiny akcí až se spustí pokaždé, když se aktivuje upozornění na stav. V současné době je možné přiřadit skupin akcí na virtuálním počítači, tak, aby všechny *výstrahy týkající se stavu* aktivuje proti aktivační událost virtuální počítač stejné skupiny akcí. Neexistuje koncept skupiny samostatnou akci pro každý stav pravidlo upozornění, třeba tradiční upozornění v Azure. Kromě toho podporuje pouze akce skupiny oznamovat zasláním e-mailem nebo SMS při aktivaci upozornění na stav. 
+- *Celkové využití výkonu procesoru* kritéria stavu ve Windows zobrazí prahovou hodnotu **nerovná se 4** v portál a API sledování pracovní vytížení. Když je dosaženo prahové hodnoty *celkové využití výkonu procesoru* je větší než 95 procent a systém délka fronty je větší než 15. V této verzi nelze upravit toto kritérium stavu. 
+- Změny konfigurace, jako je aktualizace prahové hodnoty, trvat až 30 minut i v případě, že na portálu nebo rozhraní API sledování pracovní vytížení může je aktualizovat okamžitě. 
+- Jednotlivé procesoru a kritéria úrovně stavu logický procesor nejsou dostupné ve Windows. Pouze celkové využití procesoru je k dispozici pro virtuální počítače s Windows. 
+- Pravidla výstrah, které jsou definovány pro každé kritérium stavu se nezobrazují na portálu Azure portal. Můžete povolit nebo zakázat upozornění na stav pouze v pravidlo [úlohy monitorování rozhraní API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager). 
+- Nelze přiřadit [skupiny akcí Azure Monitor](../../monitoring-and-diagnostics/monitoring-action-groups.md) pro výstrahy týkající se stavu na webu Azure Portal. Pouze rozhraní API nastavení oznámení můžete použít ke konfiguraci skupiny akcí až se spustí pokaždé, když se aktivuje upozornění na stav. V současné době můžete přiřadit skupiny akcí na virtuálním počítači tak, aby všechny *výstrahy týkající se stavu* aktivuje proti aktivační událost virtuální počítač stejné skupiny akcí. Na rozdíl od tradičních upozornění v Azure neexistuje koncept skupiny samostatnou akci pro každé pravidlo výstrahy stavu. Kromě toho pouze skupiny akcí, které jsou nakonfigurované na poskytování e-mailu nebo oznámení SMS jsou podporovány, když se aktivuje upozornění na stav. 
 
 ## <a name="next-steps"></a>Další postup
-Kontrola [připojení Azure Monitor pro virtuální počítače](vminsights-onboard.md) vám pomohou pochopit požadavky a metody, pokud chcete povolit monitorování virtuálních počítačů.
+Pochopení požadavků a metody pro povolení monitorování virtuálních počítačů, najdete v tématu [nasazení Azure Monitor pro virtuální počítače](vminsights-onboard.md).

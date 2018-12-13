@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: be64d299ac61a47dd3c44ee2e422abd09785189e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 744a0f683f58aed98cea7bdef0b2a36af68ad2f1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002473"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097569"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics
 
@@ -67,7 +67,7 @@ Při vytváření pracovního prostoru Log Analytics z Azure Portalu a tam zvolt
 Po dosažení denního limitu pro zbytek dne zastaví kolekci fakturovatelné datových typů. Zobrazí se upozornění banner v horní části stránky pro vybraný pracovní prostor Log Analytics a operace událost je odeslána do *operace* tabulky v rámci **LogManagement** kategorie. Shromažďování dat bude pokračovat po resetování času definované v části *denní limit se nastaví na*. Doporučujeme definovat pravidlo výstrahy založené na této události operace nakonfigurovaný tak, aby upozornit po dosažení denního datového limitu. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identifikujte jaké denního limitu pro definování dat 
-Kontrola [využití Log Analytics a odhadované náklady](../../log-analytics/log-analytics-usage.md) pochopit trend příjem dat a k čemu slouží k definování denní limit objemu. Je nutné zvážit opatrně, protože nebude možné po dosažení limitu monitorování prostředků. 
+Kontrola [využití Log Analytics a odhadované náklady](../../azure-monitor/platform/data-usage.md) pochopit trend příjem dat a k čemu slouží k definování denní limit objemu. Je nutné zvážit opatrně, protože nebude možné po dosažení limitu monitorování prostředků. 
 
 ### <a name="manage-the-maximum-daily-data-volume"></a>Správa maximální denní objem dat 
 Následující kroky popisují, jak nakonfigurovat limit Správa objemu dat, která Log Analytics bude ingestovat za den.  
@@ -125,4 +125,4 @@ Log Analytics používá čas UTC. Doba obnovení se liší mezi pracovními pro
 
 ## <a name="next-steps"></a>Další postup  
 
-Pokud chcete zjistit, kolik dat se shromažďují, jaké zdroje jsou odesílání a různé typy dat odeslaných ke správě využití a náklady, najdete v článku [analýza využití dat v Log Analytics](../../log-analytics/log-analytics-usage.md).
+Pokud chcete zjistit, kolik dat se shromažďují, jaké zdroje jsou odesílání a různé typy dat odeslaných ke správě využití a náklady, najdete v článku [analýza využití dat v Log Analytics](../../azure-monitor/platform/data-usage.md).

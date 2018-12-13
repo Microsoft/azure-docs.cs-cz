@@ -1,5 +1,5 @@
 ---
-title: Správce zabezpečení služby Azure IoT Edge | Dokumentace Microsoftu
+title: Zjistěte, jak správce zabezpečení chrání zařízení, software – Azure IoT Edge | Dokumentace Microsoftu
 description: Spravuje postoj zabezpečení zařízení IoT Edge a integrity služby zabezpečení.
 services: iot-edge
 keywords: zabezpečení, zabezpečené element, enklávy, TEE, IoT Edge
@@ -9,12 +9,13 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6231f50134f7dcfd29e8754841847beb69570204
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: eda572c0f4abedd59c912dcf1de2cf3c6e226b5c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567685"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091920"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Správce zabezpečení služby Azure IoT Edge
 
@@ -33,7 +34,7 @@ Odpovědnosti správce zabezpečení IoT Edge patří (mimo jiné):
 * Gatekeepera, aby zařízení hardwaru důvěryhodný kořenový certifikát prostřednictvím notář služeb.
 * Monitorování integrity operací IoT Edge v době běhu.
 
-Správce zabezpečení IoT Edge se skládá ze tří hlavních součástí:
+Správce zabezpečení IoT Edge zahrnuje tři komponenty:
 
 * Démon procesu zabezpečení IoT Edge.
 * Zabezpečení modulu platformy abstrakce hardwaru vrstvy (PAL modulu hardwarového zabezpečení).
