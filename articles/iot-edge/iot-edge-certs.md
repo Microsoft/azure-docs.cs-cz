@@ -1,6 +1,6 @@
 ---
-title: Vysvětlení certifikáty Azure IoT Edge | Dokumentace Microsoftu
-description: Přečtěte si o Azure IoT Edge certifikáty a jejich použití.
+title: Certifikáty pro zabezpečení zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: Azure IoT Edge používá certifikát k ověření zařízení, moduly a zařízení typu list a navázat zabezpečené připojení mezi nimi.
 author: stevebus
 manager: philmea
 ms.author: stevebus
@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b1b8c660dfd6ea6890a940a97f5ff1ec1617c28d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1cf1411e227363e7dc9d54f04d0c630341f55a6e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963381"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099877"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Podrobnosti o použití certifikátu Azure IoT Edge
 

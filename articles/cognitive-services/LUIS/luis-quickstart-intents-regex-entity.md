@@ -1,21 +1,22 @@
 ---
-title: 'Kurz 3: Data nalezená pomocí regulárního výrazu – extrahování správně formátovaných dat'
+title: Regulární výraz entity
 titleSuffix: Azure Cognitive Services
 description: Extrahování konzistentně formátovaných dat z promluvy s využitím entity regulárního výrazu
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 5e8345deb629d293d9673819893181e652d5dbb9
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: MT
+ms.openlocfilehash: 9cc88523ee31d80292c7d0d2bf9321dbbfc2ab6b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423411"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093303"
 ---
 # <a name="tutorial-3-extract-well-formatted-data"></a>Kurz 3: Extrahování správně naformátovaných dat
 V tomto kurzu změníte aplikaci Human Resources, aby extrahovala konzistentně formátovaná data z promluvy pomocí entity **regulárního výrazu**.
@@ -129,7 +130,7 @@ Podle následujících kroků vytvořte entitu regulárního výrazu, která slu
 
 2. Na konec adresy URL zadejte `When were HRF-123456 and hrf-234567 published in the last year?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `FindForm` se dvěma čísly formuláře `HRF-123456` a `hrf-234567`.
 
-    ```JSON
+    ```json
     {
       "query": "When were HRF-123456 and hrf-234567 published in the last year?",
       "topScoringIntent": {

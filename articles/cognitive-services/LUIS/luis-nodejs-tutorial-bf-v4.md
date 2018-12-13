@@ -1,23 +1,24 @@
 ---
-title: Robot LUIS pomocí Node.js – Kurz – Web App Bot – Bot Framework SDK 4.0
+title: Služba LUIS robotů s využitím Node.js
 titleSuffix: Azure Cognitive Services
 description: Pomocí Node.js vytvořte chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento chatovací robot používá k rychlé implementaci řešení robota aplikaci Human Resources. K vytvoření robota se používá Bot Framework ve verzi 4 a Web App Bot Azure.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: ad21754b3f55a0d14bb43a2898d5bd4b8b8150ae
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d9645c1d1c5ee153a4d24ae18f253f33c6557bd1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385902"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099082"
 ---
-# <a name="tutorial-luis-bot-in-nodejs"></a>Kurz: Robot LUIS v Node.js
+# <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Kurz: Bot LUIS v Node.js s použitím rozhraní Bot Framework 4.x a použijete Azure Web app bot
 Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službou Language Understanding (LUIS). Tento robot používá k implementaci řešení robota aplikaci HomeAutomation. K vytvoření robota se používá [Web App Bot](https://docs.microsoft.com/azure/bot-service/) Azure a [Bot Framework ve verzi](https://github.com/Microsoft/botbuilder-js) v4.
 
 **V tomto kurzu se naučíte:**
@@ -32,8 +33,6 @@ Pomocí Node.js můžete vytvořit chatovacího robota integrovaného se službo
 
 ## <a name="prerequisites"></a>Požadavky
 
-<!--* Samples from 
-https://github.com/Microsoft/BotBuilder-Samples/tree/v4/javascript_nodejs/12.nlp-with-luis-->
 * [Emulátor robota](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 
@@ -115,7 +114,7 @@ Pokud chcete vyvíjet kód Web App Bota, stáhněte si kód a použijte ho ve sv
 
 6. Otevřete soubor bot.js a najděte `const results = await this.luisRecognizer.recognize(context);`. Tady se uživatelská promluva zadaná do robota odešle do služby LUIS.
 
-    ```javascript
+    ```nodejs
     /**
      * Driver code that does one of the following:
      * 1. Display a welcome card upon startup
@@ -214,7 +213,7 @@ Před změnou kódu nebo nastavení zkontrolujte, jestli robot funguje.
 
 5. Při spuštění robota se v okně terminálu zobrazí místní port, na kterém robot běží:
 
-    ```
+    ```console
     > basic-bot@0.1.0 start C:\Users\pattiowens\repos\BFv4\luis-nodejs-bot-src
     > node ./index.js NODE_ENV=development
 
@@ -248,7 +247,7 @@ Do souboru `bot.js` přidejte kód pro zpracování nových záměrů.
 
 1. V horní části souboru najděte část **Supported LUIS Intents** (Podporované záměry LUIS) a přidejte konstanty pro záměry HomeAutomation:
 
-    ```javascript
+    ```nodejs
     // Supported LUIS Intents
     const GREETING_INTENT = 'Greeting';
     const CANCEL_INTENT = 'Cancel';
@@ -262,7 +261,7 @@ Do souboru `bot.js` přidejte kód pro zpracování nových záměrů.
 
 2. Najděte parametr **isTurnInterrupted**, který přijímá předpověď LUIS promluvy a přidejte řádek, který vytiskne výsledek do konzoly.
 
-    ```node
+    ```nodejs
     /**
      * Look at the LUIS results and determine if we need to handle
      * an interruptions due to a Help or Cancel intent
@@ -277,7 +276,7 @@ Do souboru `bot.js` přidejte kód pro zpracování nových záměrů.
 
     Robot nemá přesně stejnou odpověď jako žádost rozhraní REST API služby LUIS, proto je důležité zjistit rozdíl prohlédnutím odpovědi JSON. Vlastnosti textu a záměrů jsou stejné, ale hodnoty vlastností entity jsou změněné. 
 
-    ```JSON
+    ```json
     {
         "$instance": {
             "HomeAutomation_Device": [
@@ -310,7 +309,7 @@ Do souboru `bot.js` přidejte kód pro zpracování nových záměrů.
 
 3. Přidejte záměry do příkazu switch metody onTurn pro případ `DialogTurnStatus.empty`:
 
-    ```javascript
+    ```nodejs
     switch (topIntent) {
         case GREETING_INTENT:
             await dc.begin(GREETING_DIALOG);
@@ -343,7 +342,7 @@ Do souboru `bot.js` přidejte kód pro zpracování nových záměrů.
 
 2. Robot odpoví takto:
 
-    ```JSON
+    ```json
     TurnOn intent found, entities included: {"$instance":{“HomeAutomation_Device”:[{“startIndex”:23,“endIndex”:29,“score”:0.9776345,“text”:“lights”,“type”:“HomeAutomation.Device”}],“HomeAutomation_Room”:[{“startIndex”:12,“endIndex”:22,“score”:0.9079433,“text”:“livingroom”,“type”:“HomeAutomation.Room”}]},“HomeAutomation_Device”:[“lights”],“HomeAutomation_Room”:[“livingroom”]}
     ```
 
@@ -355,7 +354,7 @@ Azure Bot Service využívá sadu SDK Bot Frameworku. Přečtěte si další inf
 * [Sada SK Bot Builderu](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
 * [Nástroje Bot Builderu](https://github.com/Microsoft/botbuilder-tools):
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Vytvořili jste Azure Bot Service, zkopírovali jste tajný klíč robota a cestu k souboru .bot a stáhli jste soubor zip kódu. Přidali jste předem připravenou doménu HomeAutomation do aplikace LUIS vytvořené v rámci nové služby Azure Bot Service a pak aplikaci vyškolili a znovu publikovali. Extrahovali jste projekt kódu, vytvořili soubor prostředí (`.env`) a nastavili tajný kód robota a cestu k souboru .bot. Do souboru bot.js jste přidali kód pro zpracování dvou nových záměrů. Pak jste robota otestovali v emulátoru robota, abyste viděli odpověď služby LUIS pro promluvu jednoho z nových záměrů. 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: cca1c8e02de84e3a1b2e265bffaaa2b608e64038
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8801954ec5ff0277614f65217b9abab6bfb67035
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959440"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098602"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 
@@ -350,7 +350,7 @@ Pokud povolíte **Povolit důvěryhodné služby Microsoftu...**  výjimky, tyto
 |Azure Backup|Microsoft.Backup|Spuštění zálohování a obnovení nespravované disky ve virtuálních počítačích IAAS. (není vyžadované pro spravované disky). [Další informace](/azure/backup/backup-introduction-to-azure-backup).|
 |Azure Site Recovery|Microsoft.SiteRecovery |Konfigurace zotavení po havárii tím, že replikace pro virtuální počítače Azure IaaS. Toto je nezbytné, pokud používáte účet úložiště povolenou bránu firewall mezipaměti nebo zdrojový účet úložiště nebo cílový účet úložiště.  [Další informace](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication).|
 |Azure DevTest Labs|Microsoft.DevTestLab|Vytváření a artefaktů instalace vlastní image. [Další informace](/azure/devtest-lab/devtest-lab-overview).|
-|Azure Event Grid|Microsoft.EventGrid|Povolte publikování událostí v úložišti objektů Blob. [Další informace](/azure/event-grid/overview).|
+|Azure Event Grid|Microsoft.EventGrid|Povolit publikování událostí v úložišti objektů Blob a umožňují Event Grid k publikování do fronty úložiště. Další informace o [události služby blob storage](/azure/event-grid/event-sources) a [publikování do front](/azure/event-grid/event-handlers).|
 |Azure Event Hubs|Microsoft.EventHub|Archivace dat s Event Hubs Capture. [Další informace](/azure/event-hubs/event-hubs-capture-overview).|
 |Sítě Azure|Microsoft.Networking|Store a analyzovat protokoly přenosů sítě. [Další informace](/azure/network-watcher/network-watcher-packet-capture-overview).|
 |Azure Monitor|Microsoft.Insights|Umožňuje zápis dat do účtu úložiště zabezpečené monitorování [Další](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|

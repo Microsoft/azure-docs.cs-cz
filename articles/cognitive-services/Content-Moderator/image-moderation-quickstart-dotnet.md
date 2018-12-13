@@ -10,12 +10,12 @@ ms.component: content-moderator
 ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: sajagtap
-ms.openlocfilehash: 8f407a42ab2e1538193206dec1955257a5f9940a
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.openlocfilehash: 7a8341d4189b90a67525fd0fba25aa0f321b21b1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005491"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53084749"
 ---
 # <a name="quickstart-analyze-image-content-for-objectionable-material-in-c"></a>Rychlý start: Analýza problematického materiálu v obsahu obrázků v jazyce C#
 
@@ -49,61 +49,23 @@ Dále zkopírováním kódu z této příručky a jeho vložením do svého proj
 
 Na začátek souboru *Program.cs* přidejte následující příkazy `using`.
 
-```csharp
-using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=1-8)]
 
 ### <a name="create-the-content-moderator-client"></a>Vytvoření klienta Content Moderatoru
 
 Do souboru *Program.cs* přidejte následující kód, který pro vaše předplatné vytvoří zprostředkovatele klienta Content Moderatoru. Přidejte kód společně s třídou **Program** do stejného oboru názvů. Budete muset aktualizovat pole **AzureRegion** a **CMSubscriptionKey** hodnotami identifikátoru oblasti a klíče předplatného.
 
-```csharp
-// Wraps the creation and configuration of a Content Moderator client.
-public static class Clients
-{
-    // The region/location for your Content Moderator account, 
-    // for example, westus.
-    private static readonly string AzureRegion = "YOUR API REGION";
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=84-107)]
 
-    // The base URL fragment for Content Moderator calls.
-    private static readonly string AzureBaseURL =
-        $"https://{AzureRegion}.api.cognitive.microsoft.com";
-
-    // Your Content Moderator subscription key.
-    private static readonly string CMSubscriptionKey = "YOUR API KEY";
-
-    // Returns a new Content Moderator client for your subscription.
-    public static ContentModeratorClient NewClient()
-    {
-        // Create and initialize an instance of the Content Moderator API wrapper.
-        ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
-
-        client.Endpoint = AzureBaseURL;
-        return client;
-    }
-}
-```
 
 ### <a name="set-up-input-and-output-targets"></a>Nastavení vstupních a výstupních cílů
 
 Do třídy **Program** v souboru _Program.cs_ přidejte následující statická pole. Tato pole určují soubory pro vstupní obsah obrázku a výstupní obsah JSON.
 
-```csharp
-//The name of the file that contains the image URLs to evaluate.
-private static string ImageUrlFile = "ImageFiles.txt";
-
-///The name of the file to contain the output from the evaluation.
-private static string OutputFile = "ModerationOutput.json";
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=49-53)]
 
 Budete muset vytvořit vstupní soubor *ImageFiles.txt* a odpovídajícím způsobem aktualizovat jeho cestu (relativní cesty jsou relativní vzhledem k adresáři provádění). Otevřete soubor _ImageFiles.txt_ a přidejte do něj adresy URL obrázků, které se mají moderovat. V tomto rychlém startu se jako ukázkový vstup používají následující adresy URL.
+
 ```
 https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
@@ -113,95 +75,20 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Do souboru *Program.cs* přidejte následující kód společně s třídou **Program** do stejného oboru názvů. Instanci této třídy použijete k zaznamenávání výsledků moderování jednotlivých kontrolovaných obrázků.
 
-```csharp
-// Contains the image moderation results for an image, 
-// including text and face detection results.
-public class EvaluationData
-{
-    // The URL of the evaluated image.
-    public string ImageUrl;
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=109-124)]
 
-    // The image moderation results.
-    public Evaluate ImageModeration;
-
-    // The text detection results.
-    public OCR TextDetection;
-
-    // The face detection results;
-    public FoundFaces FaceDetection;
-}
-```
 
 ### <a name="define-the-image-evaluation-method"></a>Definování metody pro hodnocení obrázků
 
 Do třídy **Program** přidejte následující metodu. Tato metoda ohodnotí jeden obrázek třemi různými způsoby a vrátí výsledky hodnocení. Další informace o tom, co jednotlivé operace dělají, najdete na odkazu v části [Další kroky](#next-steps).
 
-```csharp
-// Evaluates an image using the Image Moderation APIs.
-private static EvaluationData EvaluateImage(
-  ContentModeratorClient client, string imageUrl)
-{
-    var url = new BodyModel("URL", imageUrl.Trim());
-
-    var imageData = new EvaluationData();
-
-    imageData.ImageUrl = url.Value;
-
-    // Evaluate for adult and racy content.
-    imageData.ImageModeration =
-        client.ImageModeration.EvaluateUrlInput("application/json", url, true);
-    Thread.Sleep(1000);
-
-    // Detect and extract text.
-    imageData.TextDetection =
-        client.ImageModeration.OCRUrlInput("eng", "application/json", url, true);
-    Thread.Sleep(1000);
-
-    // Detect faces.
-    imageData.FaceDetection =
-        client.ImageModeration.FindFacesUrlInput("application/json", url, true);
-    Thread.Sleep(1000);
-
-    return imageData;
-}
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=55-81)]
 
 ### <a name="load-the-input-images"></a>Načtení vstupních obrázků
 
 Do metody **Main** ve třídě **Program** přidejte následující kód. Tím se program nastaví tak, aby pro všechny adresy URL obrázků ve vstupním souboru načetl data hodnocení. Tato data pak zapíše do jednoho výstupního souboru.
 
-```csharp
-// Create an object to store the image moderation results.
-List<EvaluationData> evaluationData = new List<EvaluationData>();
-
-// Create an instance of the Content Moderator API wrapper.
-using (var client = Clients.NewClient())
-{
-    // Read image URLs from the input file and evaluate each one.
-    using (StreamReader inputReader = new StreamReader(ImageUrlFile))
-    {
-        while (!inputReader.EndOfStream)
-        {
-            string line = inputReader.ReadLine().Trim();
-            if (line != String.Empty)
-            {
-                EvaluationData imageData = EvaluateImage(client, line);
-                evaluationData.Add(imageData);
-            }
-        }
-    }
-}
-
-// Save the moderation results to a file.
-using (StreamWriter outputWriter = new StreamWriter(OutputFile, false))
-{
-    outputWriter.WriteLine(JsonConvert.SerializeObject(
-        evaluationData, Formatting.Indented));
-
-    outputWriter.Flush();
-    outputWriter.Close();
-}
-```
+[!code-csharp[](~/cognitive-services-content-moderator-samples/documentation-samples/csharp/image-moderation-quickstart-dotnet.cs?range=17-46)]
 
 ## <a name="run-the-program"></a>Spuštění programu
 
@@ -389,7 +276,7 @@ Program zapíše řetězcová data JSON do souboru _ModerationOutput.json_. Pro 
 }]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto rychlém startu jste vytvořili jednoduchou aplikaci v .NET, která s využitím služby Content Moderator vrací relevantní informace o poskytnutém ukázkovém obrázku. Dále si můžete přečíst další informace o tom, co znamenají různé příznaky a klasifikace, abyste se mohli rozhodnout, jaká data potřebujete a jak by je vaše aplikace měla zpracovávat.
 

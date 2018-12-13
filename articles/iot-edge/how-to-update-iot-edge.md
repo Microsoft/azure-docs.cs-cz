@@ -1,5 +1,5 @@
 ---
-title: Aktualizujte zařízení na nejnovější verzi služby Azure IoT Edge | Dokumentace Microsoftu
+title: Aktualizace verze IoT Edge na zařízení – Azure IoT Edge | Dokumentace Microsoftu
 description: Jak aktualizovat zařízení IoT Edge spustit nejnovější verze démona zabezpečení a modul runtime IoT Edge
 keywords: ''
 author: kgremban
@@ -9,14 +9,15 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1522d9c9bc4fda178d8571fb57cb9c94ed1044ae
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 8b8638d8fa428b1b867e3f126ac8b5cc992cc273
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567787"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53095150"
 ---
-# <a name="update-the-iot-edge-runtime"></a>Aktualizace modulu runtime IoT Edge
+# <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualizace zabezpečení démon IoT Edge a modulu runtime
 
 Jak služba IoT Edge vydání nové verze, budete chtít aktualizaci vašich zařízení IoT Edge mít nejnovější funkce a vylepšení zabezpečení. Tento článek obsahuje informace o tom, jak aktualizovat zařízení IoT Edge, když je dostupná nová verze. 
 
@@ -63,7 +64,7 @@ Způsob, jak aktualizovat agenta Edge a kontejnery Centrum Edge závisí na, jes
 
 Kontrola verze agenta IoT Edge a moduly Edge hub aktuálně na vašem zařízení pomocí příkazů `iotedge logs edgeAgent` nebo `iotedge logs edgeHub`. 
 
-  ![Zobrazit verzi kontejneru](./media/how-to-update-iot-edge/container-version.png)
+  ![Kontejner verzi naleznete v protokolech](./media/how-to-update-iot-edge/container-version.png)
 
 ### <a name="understand-iot-edge-tags"></a>Vysvětlení značky IoT Edge
 

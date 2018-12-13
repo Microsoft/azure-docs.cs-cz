@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 034e611f6ea95675dc3169feefe1916a81c50943
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e94af6e50c923d975c6ce71cca94479354891e0d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972367"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53097773"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Nastavení Application Insights: sledování závislostí
 A *závislost* je externí komponenta, která volá vaši aplikaci. Obvykle se jedná o službu volána pomocí protokolu HTTP, nebo databázi nebo systému souborů. [Application Insights](app-insights-overview.md) měří jak dlouho aplikaci čeká závislosti a jak často závislosti volání selže. Můžete prozkoumat konkrétní volání a spojit je žádosti a výjimky.
@@ -32,7 +32,7 @@ Toto monitorování závislostí out-of-the-box aktuálně hlásí volání pro 
 * Webové stránky
   * Volání AJAX
 
-Monitorování funguje pomocí [bajtů kód instrumentace](https://msdn.microsoft.com/library/z9z62c29.aspx) kolem vybrané metody. Je minimální nároky na výkon.
+Monitorování funguje pomocí [bajtů kód instrumentace](https://msdn.microsoft.com/library/z9z62c29.aspx) přibližně vyberte metody, nebo podle DiagnosticSource zpětných volání (nejnovější sady .NET SDK) z rozhraní .NET Framework. Je minimální nároky na výkon.
 
 Můžete je zapsat také vlastních volání sady SDK a monitorujte Další závislosti, v kódu klienta a serveru pomocí [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 12/08/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 88041cf185aeb6ae5cb27f2405b62401cae069d9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7979bbafda6373c7f25c6e9c7d5cd997fbf5c3eb
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964249"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098086"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -275,6 +275,12 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 <!-- 3179561 - IS --> 
 - Použití spravovaných disků se ohlásí v hodinách, jako je popsáno v [nejčastější dotazy k využití Azure Stack](azure-stack-usage-related-faq.md#managed-disks). Fakturace Azure Stack však používá měsíční cena místo, které může získat nesprávně účtovány poplatky za využití Managed Disks nebo před 27. září. Jsme jste dočasně pozastavili poplatky za spravované disky po dne 27 dokud fakturační problém je vyřešen. Pokud budete mít byla účtovat nesprávně využití Managed Disks, kontaktujte prosím podporu Microsoftu fakturace.
 Sestavy využití vytvořenými využití rozhraní API služby Azure Stack zobrazit správné množství a můžou používat.
+
+<!-- 3507629 - IS, ASDK --> 
+- Spravované disky vytvoří dva nové [compute typy kvót](azure-stack-quota-types.md#compute-quota-types) omezit maximální kapacita spravované disky, které je možné zřídit. Ve výchozím nastavení 2048 GiB přidělených pro každý typ kvóty spravované disky. Však může dojít k následujícím problémům:
+
+   - Vytvořené před aktualizací. 1808 kvót kvóta Managed Disks se zobrazí hodnoty 0 na portálu správce, i když je přiděleno 2048 GiB. Můžete zvýšit nebo snížit hodnotu podle skutečných potřeb a nově nastavené hodnoty kvóty na přepíše výchozí hodnotu 2048 GiB.
+   - Při aktualizaci hodnoty kvóty na hodnotu 0, je ekvivalentní výchozí hodnotu 2 048 GB. Jako alternativní řešení nastavte hodnoty kvóty na 1.
 
 <!-- 2869209 – IS, ASDK --> 
 - Při použití [ **přidat AzsPlatformImage** rutiny](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), je nutné použít **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Pokud používáte místní cesta na disku, rutina selže s následující chybou: *dlouho běžící operace se nezdařila se stavem "Failed"*. 

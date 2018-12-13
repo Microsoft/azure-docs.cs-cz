@@ -1,19 +1,20 @@
 ---
-title: 'Konfigurace filtrů směrování pro partnerský vztah Azure ExpressRoute Microsoftu: PowerShell | Dokumentace Microsoftu'
+title: 'Konfigurace filtrů směrování pro partnerský vztah Microsoftu – ExpressRoute: prostředí PowerShell: Azure | Dokumentace Microsoftu'
 description: Tento článek popisuje postup konfigurace filtrů směrování pro Microsoft Peering pomocí Powershellu
 documentationcenter: na
 services: expressroute
 author: ganesr
 ms.service: expressroute
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: ganesr
-ms.openlocfilehash: d4ef500185675ab84485c5dd6a9af4034c57b060
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.custom: seodec18
+ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419261"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096292"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurace filtrů směrování pro partnerský vztah Microsoftu: PowerShell
 > [!div class="op_single_selector"]
@@ -62,7 +63,7 @@ Abyste mohli úspěšně připojit ke službám prostřednictvím partnerského 
 
 -  Je nutné připojit filtr tras k okruhu ExpressRoute.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Než začnete s konfigurací, ujistěte se, že splňujete následující kritéria:
 

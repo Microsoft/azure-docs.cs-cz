@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6d752eb5d638171aa510bbbf17a197eddd2b6f60
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9abd567f629cf405a5e7414a23f43ea2fc613b72
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127195"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53088068"
 ---
 # <a name="copy-data-from-paypal-using-azure-data-factory-preview"></a>Kopírování dat z PayPal pomocí Azure Data Factory (Preview)
 
@@ -76,7 +76,12 @@ PayPal propojené služby jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností, které podporuje datová sada PayPal.
 
-Ke zkopírování dat z PayPal, nastavte vlastnost typ datové sady na **PayPalObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Ke zkopírování dat z PayPal, nastavte vlastnost typ datové sady na **PayPalObject**. Podporovány jsou následující vlastnosti:
+
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **PayPalObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 
 **Příklad**
 
@@ -88,7 +93,8 @@ Ke zkopírování dat z PayPal, nastavte vlastnost typ datové sady na **PayPalO
         "linkedServiceName": {
             "referenceName": "<PayPal linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -97,14 +103,14 @@ Ke zkopírování dat z PayPal, nastavte vlastnost typ datové sady na **PayPalO
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem PayPal.
 
-### <a name="paypalsource-as-source"></a>PayPalSource jako zdroj
+### <a name="paypal-as-source"></a>PayPal jako zdroj
 
 Ke zkopírování dat z PayPal, nastavte typ zdroje v aktivitě kopírování do **PayPalSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **PayPalSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Payment_Experience"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM Payment_Experience"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

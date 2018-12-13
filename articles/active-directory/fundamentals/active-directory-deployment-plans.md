@@ -1,6 +1,6 @@
 ---
-title: Plány nasazení Azure Active Directory | Microsoft Docs
-description: Tento článek poskytuje kompletní pokyny pro nasazení funkcí Azure Active Directory.
+title: Plány nasazení – Azure Active Directory | Dokumentace Microsoftu
+description: Začátku do konce pokyny o tom, jak nasadit řadu funkcí Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,12 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
-ms.openlocfilehash: f5a148cba172b4e1e4490b52afb3b500da3a593c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: f471f1183a7d0d695b5817003fe70a018787731d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434156"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53094776"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plány nasazení Azure Active Directory
 Hledáte kompletní pokyny pro nasazení některých funkcí Azure Active Directory (Azure AD)? Následující plány nasazení popisují obchodní hodnotu, důležité informace o plánování, návrh a provozní postupy potřebné k úspěšnému zavedení několika běžnějších funkcí Azure AD. 

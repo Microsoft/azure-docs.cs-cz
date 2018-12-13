@@ -4,17 +4,17 @@ description: Tento článek popisuje, jak používat Azure Stream Analytics a Az
 services: stream-analytics
 author: dubansal
 ms.author: dubansal
-manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/09/2018
-ms.openlocfilehash: 3f6d6f700ccf232dacb512f22dd1f9fb5d870740
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: df1010be8c9f41684af806885db7587bfcf1c540
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567039"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091216"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -95,7 +95,7 @@ V průběhu času jsou trénované modely s různými daty. Dávat smysl skóre,
 
 Kroky diagramem, vypadat takto: 
 
-![Trénování modelů](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
+![Trénování modelů strojového učení](media/stream-analytics-machine-learning-anomaly-detection/machine-learning-training-model.png)
 
 |**Model** | **Čas zahájení školení** | **Pokud chcete začít používat jeho skóre čas** |
 |---------|---------|---------|
@@ -145,15 +145,15 @@ Při použití této detektor by měl úvahu tyto body:
 
    To je ukázáno v obrázcích 1 a 2 níže pomocí o změnu horní limit (stejná logika platí na nižší limit změnu). Na obou obrázcích tvarový průběh jsou neobvyklé Změna úrovně. Oranžové svislé čáry označují hranice směrování a velikost skoku je stejný jako zadaný v operátor anomalydetection, který intervalu zjišťování. Zelená čáry označují velikost okna školení. Na obrázku 1 velikost skoku je stejné jako čas, pro které má platnost anomálií. Na obrázku 2 je velikost skoku poloviční dobu, pro které anomálii trvá. Ve všech případech je detekovat stoupající změnit, protože model použít pro vyhodnocování se trénuje na normální data. Ale založené na fungování detektor obousměrné Změna úrovně, je nutné vyloučit běžných hodnot z okna školení pro model, který stanoví skóre vrátit do normálního. Na obrázku 1 cvičení vyhodnocení modelu obsahuje některé běžné události, vraťte se na normální nebyl nalezen. Ale na obrázku 2 se na školení pouze zahrnuje neobvyklé část, která zajistí, že se detekuje vrácené výsledky na normální. Nic menšího než polovinu funguje taky ze stejného důvodu, že něco větší skončí včetně hodně normální události. 
 
-   ![AD s délkou rovná anomálií velikost okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
+   ![AD s délkou rovná anomálií velikost okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-anomaly-length.png)
 
-   ![Polovinu anomálií délka se rovná AD s velikost okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
+   ![Polovinu anomálií délka se rovná AD s velikost okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize-equal-half-anomaly-length.png)
 
 2. V případech, kde nemůže být předpovězen délka anomálii tento detektor funguje nejlépe úsilí. Ale při výběru že užší časový interval omezení trénovací data, která zvýší pravděpodobnost detekce vrátit do normálního. 
 
 3. V následujícím scénáři delší anomálií nebyl rozpoznán jako okno školení již obsahuje anomálií stejnou vysokou hodnotu. 
 
-   ![Anomálie se stejnou velikostí](media/stream-analytics-machine-learning-anomaly-detection/anomalies_with_same_length.png)
+   ![Detekované anomálie se stejnou velikostí](media/stream-analytics-machine-learning-anomaly-detection/anomalies-with-same-length.png)
 
 ## <a name="example-query-to-detect-anomalies"></a>Příklad dotazu k detekci anomálií 
 
