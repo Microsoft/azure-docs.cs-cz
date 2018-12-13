@@ -1,5 +1,5 @@
 ---
-title: Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service | Dokumentace Microsoftu
+title: Zakoupení a konfigurace certifikátu SSL v Azure – službu App Service | Dokumentace Microsoftu
 description: Zjistěte, jak zakoupit certifikát App Service a jeho vazbu na vaše aplikace app Service
 services: app-service
 documentationcenter: .net
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 67d27587e8a5f85eb339efb83e661c061b621ed1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: ff2fd2c9b66cc9c80087ab5009ee65c0ba73714b
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959831"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53268712"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Zakoupení a konfigurace certifikátu SSL pro službu Azure App Service
 
@@ -80,7 +81,7 @@ Po výběru trezoru, zavřete **úložiště Key Vault** stránky. **Store** mo�
 
 ## <a name="verify-domain-ownership"></a>Ověřit vlastnictví domény
 
-Ze stejného **konfigurace certifikátu** stránky, které jste použili v předchozím kroku, klikněte na tlačítko **krok 2: ověření**.
+Ze stejného **konfigurace certifikátu** stránky, které jste použili v předchozím kroku, klikněte na tlačítko **krok 2: Ověřte**.
 
 ![](./media/app-service-web-purchase-ssl-web-site/verify-domain.png)
 
@@ -158,4 +159,4 @@ Jako ručně obnovit certifikát, klikněte na tlačítko **ruční obnovení**.
 * [Vynucení HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
 * [Vynucení protokolu TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Použití certifikátu SSL v kódu aplikace ve službě Azure App Service](app-service-web-ssl-cert-load.md)
-* [– Nejčastější dotazy: Certifikáty App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)
+* [NEJČASTĚJŠÍ DOTAZY: Certifikáty App Service](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

@@ -4,15 +4,15 @@ description: Použijte tento článek k plánování kapacity a škálování p�
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 12/11/2018
 ms.topic: conceptual
-ms.author: nisoneji
-ms.openlocfilehash: 2d418282120ee24a5b5492c18593165fba2c6c12
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: f724837e8cce733680b98a5df5690e6a8dfbf6ee
+ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839411"
+ms.lasthandoff: 12/11/2018
+ms.locfileid: "53258844"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Plánování kapacity a škálování pro zotavení po havárii VMware do Azure
 
@@ -26,7 +26,7 @@ Shromážděte informace o prostředí replikace spuštěním [Azure Site Recove
 
 **Komponenta** | **Podrobnosti** |
 --- | --- | ---
-**Replikace** | **Maximální denní frekvenci změn:** chráněného počítače lze použít pouze jeden procesový server, a jeden procesový server dokáže zpracovat denní změnu přenosové rychlosti až do velikosti 2 TB. 2 TB tedy, že že maximální frekvence každodenní změny dat, která je podporována pro chráněný počítač.<br/><br/> **Maximální propustnost:** replikovaného počítače můžou patřit do jednoho účtu úložiště v Azure. Účet standard storage dokáže zpracovat až 20 000 požadavků za sekundu. proto doporučujeme ponechat počet vstupně výstupní operace za sekundu (IOPS) ve zdrojovém počítači na 20 000. Například pokud máte zdrojový počítač s 5 disků a každý disk generuje 120 vstupně-výstupních operací (velikosti 8 kB) na zdrojovém počítači, pak bude v rámci Azure za maximální IOPS na disku 500. (Počet účtů úložiště vyžaduje je rovna celkové zdrojový počítač vstupně-výstupních operací, dělený 20 000.)
+**Replikace** | **Maximální denní frekvenci změn:** Chráněný počítač lze použít pouze jeden procesový server, a jeden procesový server dokáže zpracovat denní změnu přenosové rychlosti až do velikosti 2 TB. 2 TB tedy, že že maximální frekvence každodenní změny dat, která je podporována pro chráněný počítač.<br/><br/> **Maximální propustnost:** Replikované počítače můžou patřit do jednoho účtu úložiště v Azure. Účet standard storage dokáže zpracovat až 20 000 požadavků za sekundu. proto doporučujeme ponechat počet vstupně výstupní operace za sekundu (IOPS) ve zdrojovém počítači na 20 000. Například pokud máte zdrojový počítač s 5 disků a každý disk generuje 120 vstupně-výstupních operací (velikosti 8 kB) na zdrojovém počítači, pak bude v rámci Azure za maximální IOPS na disku 500. (Počet účtů úložiště vyžaduje je rovna celkové zdrojový počítač vstupně-výstupních operací, dělený 20 000.)
 **Konfigurační server** | Konfigurační server by měl být schopen zpracovat denní kapacitu změnit rychlost přes všechny úlohy spuštěné na chráněných počítačích a potřebuje dostatečnou šířku pásma, pokud chcete nepřetržitě replikovat data do služby Azure Storage.<br/><br/> Jako osvědčený postup vyhledejte konfigurační server na segment sítě LAN ve stejné síti jako počítače, které chcete chránit. Můžou být umístěné na jinou síť, ale počítače, které chcete chránit, by měly mít viditelnost vrstvy 3 sítě do ní.<br/><br/> V tabulce v následující části jsou shrnuté doporučené velikosti pro konfigurační server.
 **Procesový server** | První procesový server je nainstalovaný ve výchozím nastavení na konfiguračním serveru. Můžete nasadit další Procesové servery pro horizontální vašeho prostředí. <br/><br/> Procesový server přijímá data replikace z chráněného počítače a optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. Pak odešle data do Azure. Počítač serveru proces by měla mít dostatek prostředků k provedení těchto úloh.<br/><br/> Procesový server používá mezipaměť založené na disku. Použijte samostatný mezipaměti disku 600 GB nebo více ke zpracování změny dat uložených v případě kritický bod sítě nebo kvůli výpadku.
 
@@ -74,14 +74,14 @@ Způsob, ve kterém škálování serverů, závisí na vaši volbu pro vertiká
 
 Poté, co jste použili [nástroj Deployment Planner](site-recovery-deployment-planner.md) k výpočtu šířky pásma pro replikaci (počáteční replikace a pak rozdílovou) potřebujete, můžete řídit šířku pásma používanou k replikaci pomocí několika možností:
 
-* **Omezení šířky pásma**: VMware provozu, která se replikují do Azure, prochází konkrétním procesový server. Můžete omezit šířku pásma počítače spuštěné jako procesových serverů.
-* **Ovlivnění šířky pásma**: můžete ovlivnit pásma používanou k replikaci pomocí několika klíčů registru:
+* **Omezení šířky pásma**: Přenos VMware, která se replikují do Azure, prochází konkrétním procesový server. Můžete omezit šířku pásma počítače spuštěné jako procesových serverů.
+* **Ovlivnění šířky pásma**: Můžete ovlivnit pásma používanou k replikaci pomocí několika klíčů registru:
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** hodnotu registru určuje počet vláken, které se používají pro přenos dat (počáteční nebo rozdílové replikace) disku. Vyšší hodnota zvětšuje šířku pásma sítě využívané pro replikaci.
   * **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** určuje počet vláken, použitá pro přenos dat během navrácení služeb po obnovení.
 
 ### <a name="throttle-bandwidth"></a>Omezení šířky pásma
 
-1. Otevřete modul snap-in Azure Backup konzoly MMC v počítači, který funguje jako procesový server. Ve výchozím nastavení, zástupce pro zálohování je k dispozici na ploše nebo v následující složce: C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
+1. Otevřete modul snap-in Azure Backup konzoly MMC v počítači, který funguje jako procesový server. Ve výchozím nastavení zástupce pro zálohování je k dispozici na ploše nebo v následující složce: Agent\bin C:\Program Files\Microsoft Azure Recovery Services.
 2. V modulu snap-in klikněte na **Změnit vlastnosti**.
 
     ![Snímek obrazovky z Azure Backup konzoly MMC modul snap-in možnost změnit vlastnosti](./media/site-recovery-vmware-to-azure/throttle1.png)

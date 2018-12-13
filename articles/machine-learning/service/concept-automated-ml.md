@@ -1,7 +1,7 @@
 ---
-title: Co je automatické Machine Learning
+title: Automatizované výběr algoritmů ML a laděním
 titleSuffix: Azure Machine Learning service
-description: Přečtěte si o jak služby Azure Machine Learning můžete automaticky vybrat algoritmus pro vás a generovat model z ní uložit že čas pomocí parametrů a kritéria vybrat nejlepší algoritmus pro model.
+description: Zjistěte, jak služba Azure Machine Learning můžete automaticky vyberte algoritmus pro vás a generovat model z něj šetřit čas pomocí parametrů a kritéria, které poskytnete vybrat nejlepší algoritmus pro model.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8c1641c975ff235b581f784f0965caf203a9562f
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 09d4ef0b6a3455728ddab0484db4c701c6764214
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53142531"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53270922"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 

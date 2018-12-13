@@ -12,18 +12,18 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/19/2018
-ms.openlocfilehash: 6432c6b2c1c224f44b962df63e1502729f69e57f
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fb9332832f46dc5c39bf932ce91cd3d3f3d7354f
+ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470655"
+ms.lasthandoff: 12/12/2018
+ms.locfileid: "53269613"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Logické servery Azure SQL Database a jejich správa
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Co je logický server Azure SQL
 
-Logický server funguje jako centrální administrativní bod pro více jedním nebo [ve fondu](sql-database-elastic-pool.md) databází, [přihlášení](sql-database-manage-logins.md), [pravidla brány firewall](sql-database-firewall-configure.md), [auditování pravidla](sql-database-auditing.md), [zásad detekce hrozeb](sql-database-threat-detection.md), a [skupiny převzetí služeb při selhání](sql-database-geo-replication-overview.md). Logický server může být v jiné oblasti než skupinou prostředků. Logický server, musí existovat předtím, než budete moct vytvořit databázi Azure SQL. Všechny databáze na serveru se vytvoří ve stejné oblasti jako logický server.
+Logický server funguje jako centrální administrativní bod pro více jedním nebo [ve fondu](sql-database-elastic-pool.md) databází, [přihlášení](sql-database-manage-logins.md), [pravidla brány firewall](sql-database-firewall-configure.md), [auditování pravidla](sql-database-auditing.md), [zásad detekce hrozeb](sql-database-threat-detection.md), a [skupiny převzetí služeb při selhání](sql-database-auto-failover-group.md) logický server může být v jiné oblasti než skupinou prostředků. Logický server, musí existovat předtím, než budete moct vytvořit databázi Azure SQL. Všechny databáze na serveru se vytvoří ve stejné oblasti jako logický server.
 
 Logický server je logická konstrukce, která se liší od instance SQL serveru, který je pravděpodobně znáte místního prostředí. Služba SQL Database zejména neposkytuje žádnou záruku ohledně umístění databází ve vztahu k jejich logickým serverům a nezveřejňuje žádné funkce ani možnosti přístupu na úrovni instance. Naproti tomu serveru do SQL Database Managed Instance je podobný instanci SQL serveru, který je pravděpodobně znáte místního prostředí.
 
@@ -162,7 +162,7 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Nastavení brány firewall na úrovni databáze odebere z Azure SQL Database nebo SQL Data Warehouse. |
 
 > [!TIP]
-> Rychlý start pomocí SQL Server Management Studio na Microsoft Windows, naleznete v tématu [Azure SQL Database: použití SQL Server Management Studio k připojení a dotazování dat](sql-database-connect-query-ssms.md). Rychlý start v systému macOS, Linux nebo Windows pomocí Visual Studio Code, naleznete v tématu [Azure SQL Database: použití Visual Studio Code k připojení a dotazování dat](sql-database-connect-query-vscode.md).
+> Rychlý start pomocí SQL Server Management Studio na Microsoft Windows, naleznete v tématu [Azure SQL Database: Použít SQL Server Management Studio k připojení a dotazování dat](sql-database-connect-query-ssms.md). Rychlý start v systému macOS, Linux nebo Windows pomocí Visual Studio Code, naleznete v tématu [Azure SQL Database: Použití Visual Studio Code k připojení a dotazování dat](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Spravovat servery Azure SQL, databáze a brány firewall pomocí rozhraní REST API
 
