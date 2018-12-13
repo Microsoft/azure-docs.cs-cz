@@ -93,7 +93,7 @@ V případě podnikového nasazení obvykle mají úlohy rozdělit mezi více vi
 - **Virtuální síť centra**. Je virtuální síť centra **virtuální síť centra zdroje**: 10.10.10.0/24.
     - Tato virtuální síť centra funguje jako vrátný.
     - Veškerá komunikace mezi podsítěmi, projděte si toto centrum.
- - Centrum vNet podsítě **. Virtuální síť centra má dvě podsítě:
+ - ****Centrum vNet podsítě**. Virtuální síť centra má dvě podsítě:
      - **Podsíť síťových virtuálních zařízení**: 10.10.10.0/25. Tato podsíť obsahuje síťové virtuální zařízení (. 10.10.10.10).
      - **Podsíť brány**: 10.10.10.128/25. Tato podsíť obsahuje bránu ExpressRoute připojené k připojení ExpressRoute, který směruje k místní lokalitě přes privátní partnerský vztah domény směrování.
 - Místní datové centrum má připojení okruhu ExpressRoute prostřednictvím partnerů hrany v Hongkong –.
