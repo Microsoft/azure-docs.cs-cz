@@ -85,7 +85,7 @@ V této části vytvoříte virtuální síť a tři virtuální počítače pro
     1. Zkontrolujte, že je vybraná virtuální síť *myVNet* a podsíť *myBackendSubnet*.
     2. V části **Veřejná IP adresa** v podokně **Vytvořit veřejnou IP adresu** vyberte **Standard** a pak vyberte **OK**.
     3. V části **Skupina zabezpečení sítě** vyberte **Upřesnit** a pak postupujte následovně:
-        1. Vyberte Skupina zabezpečení sítě (brána firewall) a na stránce **Vyberte skupinu zabezpečení sítě** vyberte **Vytvořit novou**. 
+        1. Vyberte \*Skupina zabezpečení sítě (brána firewall) a na stránce **Vyberte skupinu zabezpečení sítě** vyberte **Vytvořit novou**. 
         2. Na stránce **Vyberte skupinu zabezpečení sítě** jako **Název** nové skupiny zabezpečení sítě zadejte *myNetworkSecurityGroup* a pak vyberte **OK**.
 5. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
 6. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
