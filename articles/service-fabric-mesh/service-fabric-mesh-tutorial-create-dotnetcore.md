@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 09112aafdbabf0cda2b3ae13af73a9223533a6e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: eb68c7aacb4c62237fc4cd75ec430997b0145454
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979189"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888745"
 ---
 # <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Kurz: Vytvoření, ladění, nasazení a upgrade aplikace Service Fabric Mesh s více službami
 
@@ -44,7 +44,7 @@ V této sérii kurzů se naučíte:
 > [!div class="checklist"]
 > * Vytvoření aplikace Service Fabric Mesh v sadě Visual Studio
 > * [Ladění aplikace Service Fabric Mesh spuštěné v místním clusteru pro vývoj](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [Nasazení aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Nasadit aplikaci Service Fabric Mesh](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
 > * [Upgrade aplikace Service Fabric Mesh](service-fabric-mesh-tutorial-upgrade.md)
 > * [Vyčištění prostředků Service Fabric Mesh](service-fabric-mesh-tutorial-cleanup-resources.md)
 
@@ -80,7 +80,7 @@ V poli **Název služby** nastavte **WebFrontEnd**. Stisknutím **OK** vytvořte
 
 ![Dialogové okno nového projektu Service Fabric Mesh v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-service-fabric-service.png)
 
-Potom se zobrazí dialogové okno **Nová webová aplikace ASP.NET Core**. V dialogovém okně **Nová webová aplikace ASP.NET Core** vyberte **Webová aplikace** a potom klikněte na **OK**.
+Dále uvidíte dialogové okno webové aplikace ASP.NET Core. Vyberte **Webová aplikace** a potom klikněte na **OK**.
 
 ![Nová aplikace ASP.NET Core v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
@@ -88,13 +88,13 @@ Právě jste vytvořili aplikaci Service Fabric Mesh. Dál vytvoříte model pro
 
 ## <a name="create-the-to-do-items-model"></a>Vytvoření modelu položek úkolů
 
-Pro větší jednoduchost se položky úkolů ukládají do paměti ve formě seznamu. Vytvořte knihovnu tříd pro položky úkolů a seznam, ve kterém budou uložené. V sadě Visual Studio, kde máte aktuálně načtený projekt **todolistapp**, zvolte **Soubor** > **Přidat** > **Nový projekt**.
+Pro větší jednoduchost se položky úkolů ukládají do paměti ve formě seznamu. Vytvořte knihovnu tříd pro položky úkolů a seznam, ve kterém budou uložené. V sadě Visual Studio, který má aktuálně **todolistapp** vyberte řešení načtení **souboru** > **přidat** > **nový projekt** .
 
-Do pole **Hledat** v dialogovém okně **Nový projekt** v horní části zadejte `C# .net core class`. Vyberte šablonu **Knihovna tříd (.NET Core)**.
+V **přidat nový projekt** dialogové okno **hledání** pole v horní části, typ `C# .net core class`. Vyberte šablonu **Knihovna tříd (.NET Core)**.
 
 Do pole **Název** zadejte `Model`. Kliknutím na tlačítko **OK** vytvořte knihovnu tříd.
 
-V Průzkumníku řešení v části **Model** klikněte pravým tlačítkem na **Class1.cs** a zvolte **Přejmenovat**. Přejmenujte třídu na **ToDoItem.cs**. Pokud se zobrazí výzva s dotazem, jestli se mají přejmenovat všechny odkazy, klikněte na **Ano**.
+V Průzkumníku řešení v části **Model** klikněte pravým tlačítkem na **Class1.cs** a zvolte **Přejmenovat**. Přejmenujte třídu na **ToDoItem.cs**. Když se zobrazí výzva s dotazem, jestli se má přejmenovat všechny odkazy, klikněte na tlačítko **Ano**.
 
 Nahraďte obsah prázdné třídy `class ToDoItem` tímto obsahem:
 
@@ -124,7 +124,7 @@ public class ToDoItem
 }
 ```
 
-Tato třída představuje jednotlivé položky úkolů.
+Tato třída reprezentuje položek úkolů.
 
 V sadě Visual Studio klikněte pravým tlačítkem na knihovnu tříd **Model** a vyberte **Přidat** > **Třída…**, aby se vytvořil seznam, ve do kterého se položky úkolů uloží. Zobrazí se dialogové okno **Přidat novou položku**. V poli **Název** nastavte `ToDoList.cs` a klikněte na **Přidat**.
 
@@ -186,9 +186,9 @@ Potom vytvořte službu Service Fabric, která bude položky úkolů sledovat.
 
 V okně **Průzkumník řešení** sady Visual Studio klikněte pravým tlačítkem na **todolistapp** a klikněte na **Přidat** > **Nová služba Service Fabricu…**
 
-Zobrazí se dialogové okno **Nová služba Service Fabricu**. Vyberte typ projektu **ASP.NET Core** a ujistěte se, že je v poli **Operační systém kontejneru** nastavená možnost **Windows**.
+Zobrazí se dialogové okno **Nová služba Service Fabricu**. Vyberte typ projektu **ASP.NET Core** a ujistěte se, že je v poli **Operační systém kontejneru** nastavená možnost **Windows**. V poli **Název služby** nastavte **ToDoService**. Kliknutím na **OK** vytvořte službu ASP.NET Core.
 
-V poli **Název služby** nastavte **ToDoService**. Kliknutím na **OK** vytvořte službu ASP.NET Core. Zobrazí se dialogové okno **Nová webová aplikace ASP.NET Core**. V tomto dialogovém okně vyberte **Rozhraní API** a klikněte na **OK**. Do řešení se přidá projekt pro tuto službu.
+Zobrazí se dialogové okno **Nová webová aplikace ASP.NET Core**. V tomto dialogovém okně vyberte **Rozhraní API** a klikněte na **OK**. Do řešení se přidá projekt pro tuto službu.
 
 ![Nová aplikace ASP.NET Core v sadě Visual Studio](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-webapi.png)
 
@@ -203,7 +203,7 @@ V okně **Správce odkazů** zaškrtněte políčko **Model** a klikněte na **O
 Teď vytvoříte kontext dat, který koordinuje poskytování dat z datového modelu.
 
 Pokud chcete přidat třídu DataContext, v Průzkumníku řešení klikněte pravým tlačítkem na službu **ToDoService** a potom klikněte na **Přidat** > **Třída**.
-Zobrazí se dialogové okno **Přidat novou položku**. Zkontrolujte, jestli je vybraná možnost **Třída**, v poli **Název** nastavte `DataContext` a klikněte na **Přidat**.
+Zobrazí se dialogové okno **Přidat novou položku**. Zkontrolujte, jestli je vybraná možnost **Třída**, v poli **Název** nastavte `DataContext.cs` a klikněte na **Přidat**.
 
 Ve třídě **DataContext.cs** nahraďte prázdný obsah `class DataContext` tímto obsahem:
 
@@ -313,7 +313,8 @@ Nahraďte obsah celého souboru následujícím kódem HTML, který definuje jed
 </div>
 ```
 
-Otevřete kód indexové stránky v okně **Průzkumník řešení** tím, že otevřete stránku **Index.cshtml** a potom **Index.cshtml.cs**.
+Klikněte na ikonu rozevírací seznam **Index.cshtml** soubor **Průzkumníka řešení** a pak otevřete **Index.cshtml.cs**.
+
 Do horní části **Index.cshtml.cs** přidejte `using System.Net.Http;`
 
 Nahraďte obsah `public class IndexModel` tímto obsahem:
@@ -352,30 +353,45 @@ private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.G
 
 Adresa URL se skládá z názvu služby a portu. Všechny tyto informace se nachází v souboru service.yaml v projektu **ToDoService**.
 
+> [!IMPORTANT]
+> V následujících krocích budou upraveny YAML soubory.
+> K odsazení proměnných v souboru service.yaml je potřeba použít mezery, ne tabulátory, jinak nebude moct proběhnout kompilace. Visual Studio může při vytváření proměnných prostředí vložit tabulátory. Všechny tabulátory nahraďte mezerami. I když se zobrazí chyby **sestavení** výstup ladění, aplikace se spustí, ale nebude dokud převést tabulátory na mezery a znovu sestavte. Pokud chcete mít jistotu, že v souboru service.yaml nezůstaly žádné tabulátory, můžete v editoru sady Visual Studio zobrazit prázdné znaky pomocí voleb **Upravit**  > **Upřesnit**  > **Zobrazit prázdné znaky**.
+> Mějte na paměti, že soubory service.yaml se zpracovávají s použitím anglického národního prostředí. Pokud budete muset použít oddělovač desetinných míst, použijte se, tečku a nikoli čárku, třeba.
+
 V okně **Průzkumník řešení** přejděte na projekt **ToDoService** a přejděte na **Prostředky služby** > **service.yaml**.
 
 ![Obrázek 1 – soubor service.yaml projektu ToDoService](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-port.png)
 
-* Název služby `ToDoService` se nachází v části `services:` za položkou `name:`, jak ukazuje položka (1) na předchozím obrázku.
-* Port `20008` se nachází v části `endpoints:` za položkou `port:`, jak ukazuje položka (2) na předchozím obrázku. Číslo portu pro váš projekt se může lišit.
+* Název služby `ToDoService`, se nachází v `services:` naleznete v tématu (1) na obrázku výše.
+* Port, `80`, se nachází v `endpoints:` naleznete v části (2) na obrázku výše. Číslo portu váš projekt bude pravděpodobně lišit.
 
-Dál je potřeba v projektu WebFrontEnd definovat proměnné prostředí, které reprezentují název služby a číslo portu, aby bylo možné volat back-endovou službu.
+Dále musíme definovat proměnné prostředí představující název služby a port číslo v projektu WebFrontEnd tak může volat back-end služby.
 
 V okně **Průzkumník řešení** přejděte na **WebFrontEnd** > **Prostředky služby** > **service.yaml**, abyste mohli definovat proměnné, které určují adresu back-endové služby.
 
-V souboru service.yaml přidejte do části `environmentVariables` následující proměnné. Určitou roli hrají i mezery, takže zarovnejte přidávané proměnné pod ostatní proměnné v části `environmentVariables:`
+V souboru service.yaml, přidejte následující proměnné v rámci `environmentVariables:` (budete nejdřív muset odebrat `#` k Odkomentujte `environmentVariables:`) mezery, je důležité tak zarovnání proměnné můžete přidat proměnné v rámci `environmentVariables:`. Je velmi důležité, že hodnota pro ApiHostPort odpovídat hodnota portu pro ToDoServiceListener, která byla dříve v souboru service.yaml ToDoService neobjevovala.
 
-> [!IMPORTANT]
-> K odsazení proměnných v souboru service.yaml je potřeba použít mezery, ne tabulátory, jinak nebude moct proběhnout kompilace. Visual Studio může při vytváření proměnných prostředí vložit tabulátory. Všechny tabulátory nahraďte mezerami. I když se ve výstupu ladění **build** zobrazí chyby, aplikace se spustí. Nebude ale fungovat, dokud nenahradíte tabulátory mezerami. Pokud chcete mít jistotu, že v souboru service.yaml nezůstaly žádné tabulátory, můžete v editoru sady Visual Studio zobrazit prázdné znaky pomocí voleb **Upravit**  > **Upřesnit**  > **Zobrazit prázdné znaky**.
-> Mějte na paměti, že soubory service.yaml se zpracovávají s použitím anglického národního prostředí.  Pokud například potřebujete použít desetinný oddělovač, použijte místo čárky tečku.
+```yaml
+- name: ApiHostPort
+  value: 
+- name: ToDoServiceName
+  value: ToDoService
+```
+
+> [!Tip]
+> Existují dva způsoby, jak zadat hodnotu pro `ToDoServiceName`: 
+> - Pouze název služby, který se vyřeší i v případě ladění na Windows 10 i při nasazení služby Azure Service Fabric mřížky.
+> - Plně kvalifikovaný jako servicename.appname. Bude to fungovat jenom při ladění na Windows 10.
+> Je vhodné použít pouze název služby pro řešení služby.
 
 Soubor **service.yaml** projektu **WebFrontEnd** by se měl podobat následujícímu příkladu, i když hodnota `ApiHostPort` bude pravděpodobně jiná:
 
 ![Soubor service.yaml projektu WebFrontEnd](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-envvars.png)
 
+
 Teď jste připravení na sestavení a nasazení image aplikace Service Fabric Mesh a back-endové služby do místního clusteru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 

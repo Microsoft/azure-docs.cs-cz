@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5bff5c5cfd022134c1d86883a267528717969c59
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: c595695f3643522d36b53091656c3655f83a9345
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52721676"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877832"
 ---
 # <a name="using-search-in-application-insights"></a>Pomocí vyhledávání ve službě Application Insights
 Hledání je funkce [Application Insights](app-insights-overview.md) , který používáte k vyhledání a prozkoumejte telemetrická data jednotlivých položek, například zobrazení stránek, výjimky nebo webové požadavky. A můžete zobrazit trasování protokolů a událostí, které jste nakódovali.
 
-(Pro složitější dotazy na data, použijte [Analytics](../log-analytics/query-language/get-started-analytics-portal.md).)
+(Pro složitější dotazy na data, použijte [Analytics](../azure-monitor/log-query/get-started-portal.md).)
 
 ## <a name="where-do-you-see-search"></a>Kde se zobrazí hledání?
 
@@ -101,7 +101,7 @@ Vyhledejte všechny položky se stejnou hodnotou vlastnosti:
 ## <a name="search-the-data"></a>Prohledávat data.
 
 > [!NOTE]
-> Pokud chcete psát složitější dotazy, otevřete [ **Analytics** ](../log-analytics/query-language/get-started-analytics-portal.md) z horní části okna hledání.
+> Pokud chcete psát složitější dotazy, otevřete [ **Analytics** ](../azure-monitor/log-query/get-started-portal.md) z horní části okna hledání.
 > 
 
 Můžete vyhledat výrazy v některém z hodnot vlastností. To je zvlášť užitečné, pokud jste napsali [vlastních událostí](app-insights-api-custom-events-metrics.md) s hodnotami vlastností. 
@@ -163,7 +163,7 @@ Automaticky jsme není protokolů následných dat ale můžete použít [TrackT
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="add"></a>Další kroky
-* [Zápis složitých dotazů v Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Zápis složitých dotazů v Analytics](../azure-monitor/log-query/get-started-portal.md)
 * [Odeslání protokolů a vlastní telemetrii do Application Insights](app-insights-asp-net-trace-logs.md)
 * [Nastavení dostupnosti a rychlosti odezvy testy](app-insights-monitor-web-app-availability.md)
 * [Řešení potíží](app-insights-troubleshoot-faq.md)

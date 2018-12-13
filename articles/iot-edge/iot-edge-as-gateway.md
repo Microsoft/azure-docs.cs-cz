@@ -1,6 +1,6 @@
 ---
-title: Použití zařízení Azure IoT Edge jako brány | Dokumentace Microsoftu
-description: Pomocí Azure IoT Edge k vytvoření transparentní, neprůhledné nebo proxy server brány zařízení, které odesílá data z více podřízených zařízení do cloudu nebo místně ji zpracuje.
+title: Brány pro příjem dat zařízení – Azure IoT Edge | Dokumentace Microsoftu
+description: Vytvoření transparentní, neprůhledné nebo proxy zařízení brány, který odesílá data z více podřízených zařízení do cloudu nebo místně procesů pomocí Azure IoT Edge.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,13 @@ ms.date: 11/01/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53f0f1e77f8879807b2fb93b86d825e3bd044f41
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567209"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53092277"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Použití zařízení IoT Edge jako brána
 
@@ -26,7 +27,7 @@ Existují tři vzory pro používání zařízení IoT Edge jako brána: transpa
 * **Protokol překladu** – taky známé jako model neprůhledné brány, zařízení, které nepodporují protokol MQTT, AMQP nebo HTTP můžete použít zařízení brány k odesílání dat do služby IoT Hub jejich jménem. Brána rozumí protokol používá podřízené zařízení; je však pouze zařízení, která má identitu ve službě IoT Hub. Informace o veškerém pravděpodobně pochází z jednoho zařízení brány. Příjem dat zařízení musíte vložit další identifikační informace ve zprávách, pokud cloudové aplikace, aby k analýze dat na každé zařízení zvlášť. Kromě toho služby IoT Hub primitiv, jako jsou dvojčata a metody jsou dostupné jenom pro zařízení brány, nejsou podřízené zařízení.
 * **Překlad identity** – zařízení, která se nemůže připojit ke službě IoT Hub můžete místo toho připojit k zařízení brány. Brána zajišťuje identity a protokolu překladu jménem podřízené zařízení služby IoT Hub. Brána je dostatečně inteligentní, aby pochopit protokol používá podřízené zařízení, je poskytovat identitu a překládat primitiv služby IoT Hub. Příjem dat zařízení objeví ve službě IoT Hub jako první kategorie zařízení pomocí dvojčat a metody. Uživatel může komunikovat se zařízeními ve službě IoT Hub a nebude vědět o zařízení zprostředkující brány.
 
-![Diagramy schémat brány](./media/iot-edge-as-gateway/edge-as-gateway.png)
+![Diagram – transparentní, protokol a vzory brány identity](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
 ## <a name="use-cases"></a>Případy použití
 Všechny vzory gateway poskytuje následující výhody:

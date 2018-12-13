@@ -11,12 +11,12 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/26/2018
 ms.author: v-daljep
-ms.openlocfilehash: ce434369ad7ede7f82f5af4395e096526759932a
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: ce84d1ba16ec75525740a2b799fd78c35474cda9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892163"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096591"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
@@ -40,7 +40,7 @@ Azure SQL Analytics je cloud určený jen pro monitorování řešení podpůrn�
 | [Diagnostika Azure](../../azure-monitor/platform/collect-azure-metrics-logs.md) | **Ano** | Azure data metrik a protokolů se odesílají do Log Analytics přímo v Azure. |
 | [Účet služby Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Ne | Log Analytics nemá číst data z účtu úložiště. |
 | [Agenti systému Windows](../../azure-monitor/platform/agent-windows.md) | Ne | Přímí agenti Windows nejsou používány nástrojem řešení. |
-| [Agenti systému Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) | Ne | Přímí agenti systému Linux nejsou používány nástrojem řešení. |
+| [Agenti systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Ne | Přímí agenti systému Linux nejsou používány nástrojem řešení. |
 | [Skupina pro správu System Center Operations Manager](../platform/om-agents.md) | Ne | Přímé připojení z agenta Operations Manageru k Log Analytics se nepoužívá tímto řešením. |
 
 ## <a name="configuration"></a>Konfigurace
@@ -109,12 +109,12 @@ Výběr zobrazení Managed Instance, obsahuje podrobnosti o využití Managed In
 
 Následující tabulka uvádí pro dvě verze řídicího panelu, jeden pro Azure SQL database a elastické fondy a druhou pro Managed Instance nepodporuje perspektivy.
 
-| Perspektivy | Popis | Podpora SQL Database a elastické fondy | Managed Instance podpory |
+| Perspektiva | Popis | Podpora SQL Database a elastické fondy | Managed Instance podpory |
 | --- | ------- | ----- | ----- |
 | Prostředek podle typu | Perspektivy, která vrátí všechny prostředky, které jsou monitorovány. | Ano | Ano |
 | Insights | Poskytuje hierarchické procházení na užitečné přehledy o výkonu. | Ano | Ano |
 | Chyby | Obsahuje hierarchické procházení na chyby SQL, k nimž došlo v databázích. | Ano | Ano |
-| Časové limity | Poskytuje hierarchické procházení do vypršení časových limitů SQL, který se stalo v databázích. | Ano | Ne |
+| Vypršení časových limitů | Poskytuje hierarchické procházení do vypršení časových limitů SQL, který se stalo v databázích. | Ano | Ne |
 | Blokování | Poskytuje hierarchické procházení do SQL blokování, který se stalo v databázích. | Ano | Ne |
 | Databáze čeká | Poskytuje hierarchické procházení do SQL statistiky čekání na úrovni databáze. Obsahuje souhrnné informace o celkový čas čekání a čekací doba čekání typu. |Ano | Ano |
 | Doba trvání dotazu | Poskytuje hierarchické procházení do statistiky provádění dotazu, jako je doba trvání dotazu, využití procesoru, využití datových v/v, využití protokolovacích v/v. | Ano | Ano |

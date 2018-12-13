@@ -1,21 +1,22 @@
 ---
-title: 'Kurz 9: Analýza mínění včetně určení pozitivních, negativních a neutrálních promluv v LUIS'
+title: Analýza mínění
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat pozitivní, negativní a neutrální mínění. Mínění se určuje z celé promluvy.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 60c4b280033e110f6b8b2a3ce720934e118c8479
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: d93c7619bb670a81372ab83359836a78b8956b09
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52424846"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53098915"
 ---
 # <a name="tutorial-9--extract-sentiment-of-overall-utterance"></a>Kurz 9: Extrahování mínění z celé promluvy
 V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat pozitivní, negativní a neutrální mínění. Mínění se určuje z celé promluvy.
@@ -94,7 +95,7 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 
 2. Přepnutím možnosti **Sentiment Analysis** (Analýza mínění) povolte toto nastavení. 
 
-    ![](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
+    ![Zapnout analýzu subjektivního hodnocení jako nastavení publikování](./media/luis-quickstart-intent-and-sentiment-analysis/turn-on-sentiment-analysis-as-publish-setting.png)
 
 ## <a name="publish"></a>Publikování
 
@@ -106,7 +107,7 @@ Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích
 
 2. Na konec adresy URL zadejte `Jill Jones work with the media team on the public portal was amazing`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `EmployeeFeedback` s extrahovanou analýzou mínění.
     
-    ```JSON
+    ```json
     {
       "query": "Jill Jones work with the media team on the public portal was amazing",
       "topScoringIntent": {

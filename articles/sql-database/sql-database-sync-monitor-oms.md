@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 0a130613d6d2086fda55ca015b1c0ca77c909e3d
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: d6a1f2829352e8589c8d132a195a425edcbe62c3
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51684609"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872933"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Monitorování synchronizace dat SQL s využitím Log Analytics 
 
@@ -97,7 +97,7 @@ Další informace o vytvoření sady runbook najdete v tématu [Můj první Powe
 
     2.  Informace o skupině synchronizace.
 
-    3.  Protokolování informací Analytics. Tyto informace najdete na webu Azure Portal | Nastavení | Připojené zdroje. Další informace o odesílání dat do služby Log Analytics najdete v tématu [odesílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (preview)](../log-analytics/log-analytics-data-collector-api.md).
+    3.  Protokolování informací Analytics. Tyto informace najdete na webu Azure Portal | Nastavení | Připojené zdroje. Další informace o odesílání dat do služby Log Analytics najdete v tématu [odesílat data do Log Analytics pomocí rozhraní API kolekce dat HTTP (preview)](../azure-monitor/platform/data-collector-api.md).
 
 11. Spustíte sadu runbook v testovací podokno. Zkontrolujte, ujistěte se, že byla úspěšná.
 

@@ -1,5 +1,6 @@
 ---
-title: 'Kurz klasifikace obrázků: trénování modelů pomocí služby Azure Machine Learning'
+title: 'Kurz klasifikace obrázků: trénování modelů'
+titleSuffix: Azure Machine Learning service
 description: Tento kurz ukazuje, jak pomocí služby Azure Machine Learning trénovat model klasifikace obrázků s využitím knihovny scikit-learn v poznámkovém bloku Python Jupyter. Tento kurz je první částí z dvoudílné série.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,13 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 14ecc492ba7ce4b97af147e79c0a4e3f9a7aaba0
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: fc61465615e35c071466c7a1350c8e9794a7f78e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017667"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53099102"
 ---
 # <a name="tutorial-part-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>Kurz (část 1): trénování modelu klasifikace obrázků pomocí služby Azure Machine Learning
 

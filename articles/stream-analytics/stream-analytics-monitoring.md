@@ -1,30 +1,31 @@
 ---
 title: Principy sledování úloh ve službě Azure Stream Analytics
-description: Tento článek popisuje, jak monitorovat úlohy ve službě Azure Stream Analytics
+description: Tento článek popisuje, jak monitorovat úlohy Azure Stream Analytics na portálu Azure portal.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 11/21/2018
-ms.openlocfilehash: 81c5eabcfcca6818293ff9dbbfb1515d5729dd79
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 12/07/2018
+ms.custom: seodec18
+ms.openlocfilehash: 656f749fd2a930c51bfd7d1a99642fae87694846
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963280"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53096578"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Porozumění sledování úlohu Stream Analytics a monitorování dotazů
 
 ## <a name="introduction-the-monitor-page"></a>Představení: Stránka sledování
 Azure portal i zařízení surface klíčové metriky výkonu, který slouží k monitorování a ladění výkonu dotazů a úlohy. Pokud chcete zobrazit tyto metriky, přejděte na úlohu Stream Analytics mají zájem o metriky pro zobrazení a zobrazení **monitorování** části na stránce Přehled.  
 
-![Monitorování odkaz](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
+![Úlohy Stream Analytics monitorování odkaz](./media/stream-analytics-monitoring/02-stream-analytics-monitoring-block.png)
 
 Jak je znázorněno, objeví se okno:
 
-![Časový limit úlohy monitorování řídicího panelu](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
+![Řídicí panel monitorování úlohy Stream Analytics](./media/stream-analytics-monitoring/01-stream-analytics-monitoring.png)  
 
 ## <a name="metrics-available-for-stream-analytics"></a>Metriky, které jsou k dispozici pro Stream Analytics
 | Metrika                 | Definice                               |
@@ -49,7 +50,7 @@ Jak je znázorněno, objeví se okno:
 ## <a name="customizing-monitoring-in-the-azure-portal"></a>Přizpůsobení sledování na webu Azure Portal
 Můžete upravit typ grafu je vidět, metriky a časový rozsah v nastavení upravit graf. Podrobnosti najdete v tématu [jak přizpůsobit monitorování](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
-  ![Graf doby monitorování dotazů](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
+  ![Graf doby monitorování dotazu Stream Analytics](./media/stream-analytics-monitoring/08-stream-analytics-monitoring.png)  
 
 
 ## <a name="latest-output"></a>Nejnovější výstup

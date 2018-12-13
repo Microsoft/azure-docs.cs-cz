@@ -1,5 +1,6 @@
 ---
-title: Co je FPGA a Project Brainwave? -Azure Machine Learning service
+title: Co je FPGA a Project Brainwave?
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak zrychlit modelů a s FPGA neuronových sítí v Azure. Tento článek obsahuje úvod do pole programmable gate Array (FPGA) a jak služba Azure Machine Learning poskytuje v reálném čase umělé inteligence (AI), při nasazení modelu do FPGA Azure.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +10,13 @@ ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
 ms.date: 10/24/2018
-ms.openlocfilehash: c40837baf66b39d98da17c244f462f356d2b1f26
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.custom: seodec18
+ms.openlocfilehash: b55d641f9a72fc2f757a7687b1b6214a98c92507
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52864345"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53093994"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Co je FPGA a Project Brainwave?
 

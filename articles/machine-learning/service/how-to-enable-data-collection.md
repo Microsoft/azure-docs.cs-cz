@@ -1,5 +1,6 @@
 ---
-title: Povolit shromažďování dat pro modely v produkčním prostředí – Azure Machine Learning
+title: Povolit shromažďování dat pro modely v produkčním prostředí
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak shromažďovat data o vstupním modelu Azure Machine Learning v Azure Blob storage.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ ms.author: marthalc
 author: marthalc
 ms.date: 11/08/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3033b049b3d4bbe49b6a30be7ec78e1c2caf49ef
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: e6b6a8e1dd1b3746977062341013b92acff132c4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011130"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100528"
 ---
 # <a name="collect-data-for-models-in-production"></a>Shromažďování dat modelů v produkčním prostředí
 
@@ -55,7 +56,7 @@ Cesta k výstupní data v objektu blob odpovídá této syntaxi:
 
 - Model trénovaného strojového učení nasadit do Azure Kubernetes Service (AKS). Pokud ho nemáte, přečtěte si článek [trénování modelů klasifikace image](tutorial-train-models-with-aml.md) kurzu.
 
-- [Clusteru AKS](how-to-deploy-to-aks.md).
+- Cluster Azure Kubernetes Service. Informace o tom, jak vytvořit a nasadit na jeden, najdete v článku [nasazení a kde](how-to-deploy-and-where.md) dokumentu.
 
 - [Nastavení prostředí](how-to-configure-environment.md) a nainstalujte [monitorování SDK](https://aka.ms/aml-monitoring-sdk).
 
@@ -103,7 +104,7 @@ Ho Pokud chcete povolit, je potřeba:
     aks_config = AksWebservice.deploy_configuration(collect_model_data=True, enable_app_insights=True)
     ``` 
 
-5. [Vytvořit novou bitovou kopii a nasazení vaší služby.](how-to-deploy-to-aks.md) 
+5. Vytvořit novou bitovou kopii a nasazení služby najdete v tématu [nasazení a kde](how-to-deploy-and-where.md) dokumentu.
 
 
 Pokud už máte služby se závislostmi nainstalovány ve vaší **souborem prostředí** a **soubor vyhodnocení**, Povolit shromažďování dat pomocí:

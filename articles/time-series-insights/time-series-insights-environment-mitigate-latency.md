@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: e301afaa2fed2b00599fbdde8178203965280c0d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: MT
+ms.openlocfilehash: e2b68982a855b56d97983460f248ef3040d03d79
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364978"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52876752"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezování snížit latenci v Azure Time Series Insights
 Pokud objem příchozích dat překročí konfiguraci vašeho prostředí, můžete setkat s latencí nebo omezení využití sítě v Azure Time Series Insights.
@@ -56,9 +56,9 @@ Odtud můžete nakonfigurovat výstrahy pomocí následující metriky:
 |**Příchozí přenos dat přijatých neplatné zprávy**     | Počet zpráv neplatná číst ze všech zdrojů událostí služby Azure Event Hubs nebo Azure IoT Hub.      |
 |**Příchozí přenos dat přijatých zpráv**   | Počet zpráv, které číst ze zdroje událostí pro všechny služby Event Hubs a centra IoT hub.        |
 |**Příchozí přenos dat uložené bajtů**     | Celková velikost událostí uložených a k dispozici pro dotaz. Velikost je vypočítán pouze na hodnotu vlastnosti.        |
-|**Příchozí přenos dat uložených událostí**     |   Počet plochá událostí uložených a k dispozici pro dotaz.      |
-|**Příchozí přenos dat přijaté zprávy časový interval**    |  Zdroj a čas, kdy se zpracovávají v příchozího přenosu dat, rozdíl v sekundách mezi časem, že je zpráva událostí zařazených do fronty.      |
-|**Prodleva počet zpráv přijatých příchozího přenosu dat**    |  Rozdíl mezi pořadové číslo poslední zprávy ve frontě událostí zdroje oddílu a pořadovým číslem zprávy jsou zpracovávány v příchozí.      |
+|**Příchozí přenos dat uložených událostí**     |   Počet plochá událostí uložených a k dispozici pro dotaz.      |
+|**Příchozí přenos dat přijaté zprávy časový interval**    |  Zdroj a čas, kdy se zpracovávají v příchozího přenosu dat, rozdíl v sekundách mezi časem, že je zpráva událostí zařazených do fronty.      |
+|**Prodleva počet zpráv přijatých příchozího přenosu dat**    |  Rozdíl mezi pořadové číslo poslední zprávy ve frontě událostí zdroje oddílu a pořadovým číslem zprávy jsou zpracovávány v příchozí.      |
 
 
 ![Latence](media/environment-mitigate-latency/latency.png)

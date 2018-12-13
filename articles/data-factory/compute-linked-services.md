@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 127438e1e65400daac75cec525197a5cfc8cd46a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 110005469d5ff42af10b29fcee97c2f130ecdc2d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390207"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873816"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 Tento článek vysvětluje různých výpočetních prostředích, které můžete použít k zpracovávat a transformovat data. Obsahuje také podrobnosti o různých konfigurací (na vyžádání vs. funkce přineste si vlastní) podporovaných službou Data Factory při konfiguraci propojené služby propojení těchto výpočetních prostředí do služby Azure data factory.
@@ -48,11 +48,7 @@ Mějte na paměti následující **důležité** propojená služba HDInsight na
 * Cluster HDInsight na vyžádání se vytvoří v rámci vašeho předplatného Azure. Máte možnost clusteru na portálu Azure zjistíte, že cluster běží a že běží. 
 * V protokolech úloh, které jsou spuštěny v clusteru HDInsight na vyžádání se zkopírují do účtu úložiště, které jsou přidružené ke clusteru HDInsight. ClusterUserName, clusterPassword, clusterSshUserName, clusterSshPassword definované v definici propojené služby slouží k přihlášení ke clusteru pro komplexní řešení potíží během životního cyklu clusteru. 
 * Se účtují jenom za čas, kdy je HDInsight cluster nahoru a spuštěné úlohy.
-* Akci skriptu nelze použít s propojená služba Azure HDInsight na vyžádání. Pokud je potřeba nainstalovat další závislosti, například zvažte použití služby Azure Automation spustit skript prostředí PowerShell, který provede následující akce:  
-  a. Vytvoření clusteru HDInsight.  
-  b. Spusťte akci skriptu pro instalaci další závislosti, například.  
-  c. Spuštění kanálu služby Data Factory.  
-  d. Odstranění clusteru.  
+* Akce skriptu se teď podporuje s propojená služba Azure HDInsight na vyžádání.  
 
 > [!IMPORTANT]
 > Obvykle trvá **20 minut** nebo více jak zřídit cluster Azure HDInsight na vyžádání.
@@ -108,7 +104,7 @@ Následující kód JSON určuje HDInsight propojené služby na vyžádání za
 | clusterResourceGroup         | HDInsight cluster vytvoří v této skupině prostředků. | Ano      |
 | TimeToLive                   | Povolené prodlevy pro cluster HDInsight na vyžádání. Určuje, jak dlouho zůstane aktivní cluster HDInsight na vyžádání po dokončení aktivity spustit, pokud v clusteru nejsou žádné aktivní úlohy. Minimální povolená hodnota je 5 minut (00: 05:00).<br/><br/>Například pokud spuštění aktivit trvá 6 minut a timetolive nastavena na 5 minut, clusteru zůstává aktivní po 5 minutách od 6 minut výpočetního aktivity spustit. Pokud se spuštění další aktivity provádí s oknem 6 minut, je zpracován programovacím modelem stejného clusteru.<br/><br/>Vytváření clusteru HDInsight na vyžádání je náročná operace (akce může trvat), takže použití tohoto nastavení jako potřebné ke zlepšení výkonu služby data factory pomocí opakovaného použití clusteru služby HDInsight na vyžádání.<br/><br/>Pokud hodnota timetolive nastavíte na 0, cluster odstraní co nejdříve po dokončení spuštění aktivity. Vzhledem k tomu, pokud nastavíte vysokou hodnotu, clusteru může zůstat nečinná pro přihlášení pro některá řešení potíží s účelem, ale může způsobit vysoké náklady. Proto je důležité, že nastavíte příslušnou hodnotu na základě vašich potřeb.<br/><br/>Pokud je hodnota vlastnosti timetolive správně nastavena, více kanálů mohou sdílet instanci clusteru HDInsight na vyžádání. | Ano      |
 | Hodnota clusterType                  | Typ vytvoření clusteru HDInsight. Povolené hodnoty jsou "hadoop" a "spark". Pokud není zadán, výchozí hodnota je hadoop. Enterprise Security Package povolené clusteru není aktuálně podporováno. | Ne       |
-| verze                      | Verze clusteru HDInsight. Pokud není zadán, používá aktuální verze definovaný výchozí HDInsight. | Ne       |
+| version                      | Verze clusteru HDInsight. Pokud není zadán, používá aktuální verze definovaný výchozí HDInsight. | Ne       |
 | hostSubscriptionId           | ID předplatného Azure používá k vytvoření clusteru HDInsight. Pokud není zadán, použije ID předplatného kontext přihlášení k Azure. | Ne       |
 | clusterNamePrefix           | Předpona názvu clusteru Hdinsight, časové razítko se automaticky připojí na konec názvu clusteru| Ne       |
 | sparkVersion                 | Verze sparku, pokud je typ clusteru "Spark" | Ne       |

@@ -1,5 +1,6 @@
 ---
-title: Zacházení s nasazením webových služeb - služby Azure Machine Learning
+title: Využívání nasazených webových služeb
+titleSuffix: Azure Machine Learning service
 description: Informace o využívání webové služby, který se vygeneroval při modelu byla nasazena s model Azure Machine Learning. Webové služby, který zpřístupňuje rozhraní REST API. Vytvoření klientů pro toto rozhraní API pomocí programovacím jazyce podle vašeho výběru.
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +11,12 @@ author: raymondlaghaeian
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: d964eef08557ddd95ff86bc9e7de806cd4a8ca18
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.openlocfilehash: 0cf585ec3eb95b71080436791fd47d96239dfa9f
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016636"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100434"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Využití Azure Machine Learning model nasadit jako webovou službu
 
@@ -124,6 +125,43 @@ Například modelu v [trénování v rámci poznámkového bloku](https://github
 ``` 
 
 Webová služba může přijmout víc kopií dat v jedné žádosti. Vrátí dokument JSON obsahující pole s odpovědí.
+
+### <a name="binary-data"></a>Binární data
+
+Pokud váš model přijímá binárních dat, jako je například image, musíte změnit `score.py` soubor se používá pro své nasazení tak, aby přijímal nezpracovaná požadavky HTTP. Tady je příklad `score.py` , který přijímá binárních dat a vrátí obrácený bajtů pro požadavky POST. Pro požadavky GET vrátí úplnou adresu URL v těle odpovědi:
+
+```python 
+from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+def init():
+    print("This is init()")
+
+@rawhttp
+def run(request):
+    print("This is run()")
+    print("Request: [{0}]".format(request))
+    if request.method == 'GET':
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+        respBody = bytearray(reqBody)
+        respBody.reverse()
+        respBody = bytes(respBody)
+        return AMLResponse(respBody, 200)
+    else:
+        return AMLResponse("bad request", 500)
+```
+
+> [!IMPORTANT]
+> Věci v `azureml.contrib` obor názvů se často mění, kdy pracujeme na vylepšení služby. Proto nic v tomto oboru názvů by měl považují za ve verzi preview a nejsou plně podporovány společností Microsoft.
+>
+> Pokud je potřeba otestovat na místním vývojovém prostředí, součásti můžete nainstalovat v oboru názvů contrib pomocí následujícího příkazu:
+> 
+> ```shell
+> pip install azureml-contrib-services
+> ```
 
 ## <a name="call-the-service-c"></a>Volání služby (C#)
 
@@ -447,7 +485,3 @@ Vrácené výsledky jsou podobné následující dokument JSON:
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
-
-## <a name="next-steps"></a>Další postup
-
-Teď, když jste se naučili, jak vytvořit klienta pro nasazenou model, zjistěte, jak [nasazení modelu do zařízení IoT Edge](how-to-deploy-to-iot.md).

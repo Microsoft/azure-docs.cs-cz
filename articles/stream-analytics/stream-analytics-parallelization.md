@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 83fbebc07be3a61d7fd54953f842a320a537a7ac
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 7a1577e3c352c24983cc3a586c11ad43c416acc4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985008"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53091039"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Využití paralelizace dotazů ve službě Azure Stream Analytics
 Tento článek ukazuje, jak využít výhod paralelního zpracování v Azure Stream Analytics. Zjistíte, jak škálovat úlohy Stream Analytics pomocí konfigurace vstupního oddíly a ladění definice dotazu analytics.
@@ -51,7 +51,7 @@ Power BI, SQL a datového skladu SQL výstupy nepodporují dělení. Ale můžet
 Další informace o oddílech najdete v následujících článcích:
 
 * [Přehled funkcí Event Hubs](../event-hubs/event-hubs-features.md#partitions)
-* [Dělení dat](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning#partitioning-azure-blob-storage)
+* [Dělení dat](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning)
 
 
 ## <a name="embarrassingly-parallel-jobs"></a>Jednoduše paralelně zpracovatelné úlohy
@@ -80,9 +80,11 @@ Následující části popisují některé ukázkové scénáře, které jsou je
 
 Dotaz:
 
+```SQL
     SELECT TollBoothId
     FROM Input1 Partition By PartitionId
     WHERE TollBoothId > 100
+```
 
 Tento dotaz je jednoduchý filtr. Proto jsme nemusíte se starat o dělení vstup odeslaná do centra událostí. Všimněte si, že dotaz obsahuje **oddíl podle PartitionId**, takže splňuje požadavek #2 z dříve. Pro výstup, musíme nakonfigurovat výstup centra událostí v projektu na sadu klíče oddílu pro **PartitionId**. Jeden poslední se ujistěte se, že počet vstupních oddílů je roven počtu oddílů výstup.
 
@@ -93,9 +95,11 @@ Tento dotaz je jednoduchý filtr. Proto jsme nemusíte se starat o dělení vstu
 
 Dotaz:
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Tento dotaz obsahuje seskupení klíč. Události seskupené dohromady musí proto odešlou do stejného oddílu centra událostí. Protože v tomto příkladu jsme Seskupit podle TollBoothID, jsme měli jistotu, že TollBoothID slouží jako klíč oddílu, při odesílání událostí do centra událostí. Potom v Azure Stream Analytics, můžete pomocí **oddíl podle PartitionId** dědit z tohoto schématu oddílu a povolit úplné paralelního zpracování. Protože výstupem je úložiště objektů blob, jsme nemusíte se starat o konfiguraci hodnotu klíče oddílu, podle požadavků #4.
 
@@ -121,6 +125,7 @@ Výstup Power BI v současné době nepodporuje vytváření oddílů. Proto ten
 
 Dotaz:
 
+```SQL
     WITH Step1 AS (
     SELECT COUNT(*) AS Count, TollBoothId, PartitionId
     FROM Input1 Partition By PartitionId
@@ -130,6 +135,7 @@ Dotaz:
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1 Partition By TollBoothId
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 Jak je vidět, druhý krok využívá **TollBoothId** jako klíč rozdělení. Tento krok není stejný jako v prvním kroku, a proto vyžaduje, abychom náhodně. 
 
@@ -143,6 +149,7 @@ Dotaz může mít jeden nebo více kroků. Každý krok je poddotaz určené **W
 
 Dotaz:
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -151,6 +158,7 @@ Dotaz:
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute,3), TollBoothId
+```
 
 Tento dotaz má dva kroky.
 
@@ -182,20 +190,25 @@ Zobrazí se některé **příklady** v následující tabulce.
 
 Následující dotaz vypočítá počet aut probíhá linka stanice, která má tři tollbooths okna tři minuty. Tento dotaz je možné škálovat až šest su.
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Pro účely další služby SUs dotazu, musí být rozdělený vstupní datový proud a dotazu. Vzhledem k tomu, že oddíl datového proudu dat nastavená na 3, následující upravený dotaz je možné škálovat až 18 su:
 
+```SQL
     SELECT COUNT(*) AS Count, TollBoothId
     FROM Input1 Partition By PartitionId
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
+```
 
 Pokud je dotaz rozdělený, vstupní události zpracování a agregovat v samostatném oddílu skupiny. Výstupní události jsou také generovány pro každou skupinu. Dělení může způsobit nějaké neočekávané výsledky při **Group** pole není klíč oddílu ve vstupní datový proud. Například **TollBoothId** pole předchozí dotaz není klíč oddílu **vstup1**. Výsledkem je, že data z TollBooth č. 1 možné rozdělit do několika oddílů.
 
 Každá z **vstup1** oddíly se zpracovávají odděleně podle Stream Analytics. V důsledku toho se vytvoří více záznamů car počet pro stejný tollbooth ve stejném aktivační událost pro Přeskakující okno. Pokud klíč vstupního oddílu nelze změnit, lze tento problém napravit tak, že přidáte krok mimo oddíl můžete agregovat hodnoty napříč oddíly, jako v následujícím příkladu:
 
+```SQL
     WITH Step1 AS (
         SELECT COUNT(*) AS Count, TollBoothId
         FROM Input1 Partition By PartitionId
@@ -205,6 +218,7 @@ Každá z **vstup1** oddíly se zpracovávají odděleně podle Stream Analytics
     SELECT SUM(Count) AS Count, TollBoothId
     FROM Step1
     GROUP BY TumblingWindow(minute, 3), TollBoothId
+```
 
 Tento dotaz je možné škálovat na 24 su.
 

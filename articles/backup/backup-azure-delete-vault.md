@@ -2,18 +2,18 @@
 title: Odstranění trezoru služby Recovery Services v Azure.
 description: Tento článek vysvětluje, jak odstranit trezor služby Recovery Services. Tento článek obsahuje postup řešení potíží při pokusu o odstranění trezoru, ale nikoli.
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 7/6/2018
-ms.author: markgal
-ms.openlocfilehash: e5bc68b55fdefc07b9764b8393ea6f4062468252
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: raynew
+ms.openlocfilehash: d7617ce96181a0708dfa4731c07d581e332bdff4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816459"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52873097"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Odstranění trezoru služby Recovery Services
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b1531e23d0e5fd34eff59868055ccd855b423e4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 573b7e9c5c44c7162b4020f1ef54b8986003c0b5
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444299"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877129"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datový model pro sestavy Azure Backup
 Tento článek popisuje datový model Power BI používá k vytváření sestav Azure Backup. Pomocí tohoto modelu, můžete filtrovat existující sestavy na základě příslušných polí a další důležité je, vytvořit vlastní sestavy pomocí tabulek a polí v modelu. 
@@ -31,9 +31,9 @@ Tato tabulka obsahuje základní polí a agregací přes různé výstrahy souvi
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
 | #AlertsCreatedInPeriod |Celé číslo |Počet upozornění vytvořená ve vybraném časovém období |
-| % ActiveAlertsCreatedInPeriod |Procenta |Procento aktivních výstrah ve vybraném časovém období |
-| % CriticalAlertsCreatedInPeriod |Procenta |Procento kritické výstrahy za vybrané časové období |
-| AlertOccurenceDate |Datum |Datum, kdy byla výstraha vytvořena |
+| % ActiveAlertsCreatedInPeriod |Procentuální podíl |Procento aktivních výstrah ve vybraném časovém období |
+| % CriticalAlertsCreatedInPeriod |Procentuální podíl |Procento kritické výstrahy za vybrané časové období |
+| AlertOccurrenceDate |Datum |Datum, kdy byla výstraha vytvořena |
 | AlertSeverity |Text |Závažnost výstrahy, například kritický |
 | AlertStatus |Text |Stav výstrahy například aktivní |
 | AlertType |Text |Typ vygenerovaných výstrah, například zálohování |
@@ -83,7 +83,7 @@ Tato tabulka obsahuje základní polí a agregací v různých oblastech souvise
 | Pole | Typ dat | Popis |
 | --- | --- | --- |
 | #JobsCreatedInPeriod |Celé číslo |Počet úloh vytvořených ve vybraném časovém období |
-| % FailuresForJobsCreatedInPeriod |Procenta |Procento celkové selháním úloh ve vybraném časovém období |
+| % FailuresForJobsCreatedInPeriod |Procentuální podíl |Procento celkové selháním úloh ve vybraném časovém období |
 | 80thPercentileDataTransferredInMBForBackupJobsCreatedInPeriod |Desetinné číslo |80 hodnoty percentilu data přenesená v MB pro **zálohování** úlohy vytvořené ve vybraném časovém období |
 | AsOnDateTime |Datum/čas |Nejnovější čas aktualizace pro vybraný řádek |
 | AvgBackupDurationInMinsForJobsCreatedInPeriod |Desetinné číslo |Průměrná doba v minutách pro **dokončené zálohování** úlohy vytvořené ve vybraném časovém období |
