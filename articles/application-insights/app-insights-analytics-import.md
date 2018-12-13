@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 40b2959a59acb10443dfa917814f42cf98954640
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 7160232cf511226b26c15e6476ff75fcdf5ad33e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682703"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52866596"
 ---
 # <a name="import-data-into-analytics"></a>Import dat do analýzy
 
@@ -368,5 +368,5 @@ Pomocí tohoto kódu pro každý objekt blob.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Prohlídka dotazovací jazyk Log Analytics](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Prohlídka dotazovací jazyk Log Analytics](../azure-monitor/log-query/get-started-portal.md)
 * Pokud používáte Logstash, použijte [modul plug-in pro Logstash pro odesílání dat do Application Insights](https://github.com/Microsoft/logstash-output-application-insights)

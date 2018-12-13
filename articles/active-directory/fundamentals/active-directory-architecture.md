@@ -1,6 +1,6 @@
 ---
-title: Co je architektura služby Azure Active Directory? | Dokumenty Microsoft
-description: Zjistěte, jaké tenanta služby Azure Active Directory je a jak spravovat službu Azure pomocí Azure Active Directory.
+title: Přehled architektury – Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jaké tenanta služby Azure Active Directory je a jak spravovat Azure pomocí Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: 62ade1318b670b4eecf1be1a9255fe497d094a1a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: c23bdba74ab528a0774b73598dbee8888ebfdc7e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733207"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076106"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Co je architektura služby Azure Active Directory?
-Azure Active Directory (Azure AD) umožňuje zabezpečeně spravovat přístup k prostředkům a službám Azure pro vaše uživatele. Součástí Azure AD je kompletní sada funkcí pro správu identit. Informace o funkcích služby Azure AD najdete v tématu [Co je Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
+Azure Active Directory (Azure AD) umožňuje zabezpečeně spravovat přístup k prostředkům a službám Azure pro vaše uživatele. Součástí Azure AD je kompletní sada funkcí pro správu identit. Informace o funkcích služby Azure AD najdete v tématu [Co je Azure Active Directory?](active-directory-whatis.md)
 
-Pomocí Azure AD můžete vytvářet a spravovat uživatele a skupiny a používat sady oprávnění k povolení nebo zamítnutí přístupu k podnikovým prostředkům. Informace o správě identit najdete v tématu věnovaném [základům správy identit Azure](https://docs.microsoft.com/azure/active-directory/fundamentals-identity).
+Pomocí Azure AD můžete vytvářet a spravovat uživatele a skupiny a používat sady oprávnění k povolení nebo zamítnutí přístupu k podnikovým prostředkům. Informace o správě identit najdete v tématu věnovaném [základům správy identit Azure](active-directory-whatis.md).
 
 ## <a name="azure-ad-architecture"></a>Architektura Azure AD
 Geograficky distribuovaná architektura služby Azure AD kombinuje rozsáhlé monitorování, automatizované přesměrování, převzetí služeb při selhání a možnosti obnovení, které zákazníkům poskytovat pořádaného microsoftem dostupnost a výkon.

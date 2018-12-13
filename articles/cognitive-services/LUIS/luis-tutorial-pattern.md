@@ -1,21 +1,22 @@
 ---
-title: 'Kurz 3: Vzory k vylepšení predikcí LUIS'
+title: Vzory
 titleSuffix: Azure Cognitive Services
 description: Použití vzorů ke zvýšení záměru a predikce entity pomocí menšího počtu ukázkových promluv. Vzor je k dispozici jako šablona příkladu promluvy, který obsahuje syntaxi identifikace entit a ignorovatelného textu.
 services: cognitive-services
 author: diberry
+ms.custom: seodec18
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 7ba5db8e50e8da5b274f73046d56f7816ca8834d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
-ms.translationtype: HT
+ms.openlocfilehash: 346d8a83661c487a1d9a11e4da7d7bb67843e0b4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138323"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075518"
 ---
 # <a name="tutorial-3-add-common-utterance-formats"></a>Kurz 3: Přidání běžných formátů promluv
 
@@ -106,7 +107,7 @@ Pokud aplikaci HumanResources z předchozího kurzu nemáte, postupujte takto:
 
 2. Na konec adresy URL zadejte `Who is the boss of Jill Jones?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {
@@ -229,7 +230,7 @@ V tomto kurzu přidejte dva nové záměry: `OrgChart-Manager` a `OrgChart-Repor
 
 Když LUIS vrátí klientské aplikaci predikci, může být název záměru použitý jako název funkce klientské aplikace a entita Zaměstnanec se dá použít jako parametr této funkce.
 
-```Javascript
+```nodejs
 OrgChartManager(employee){
     ///
 }
@@ -277,7 +278,7 @@ Zapamatujte si, že se zaměstnanci vytvořili v [kurzu seznamu entit](luis-quic
 
 3. Na konec adresy URL zadejte `Who is the boss of Jill Jones?` podle promluvy. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
-    ```JSON
+    ```json
     {
         "query": "who is the boss of jill jones?",
         "topScoringIntent": {
@@ -442,7 +443,7 @@ Ve všech promluvách jsou entity, proto se všechny shodují se stejným vzorem
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu přidáme dva záměry promluvám, které bylo bez většího množství ukázkových promluv obtížné predikovat s vysokou přesností. Přidání vzorů pomohlo LUIS lépe predikovat záměr s výrazně vyšším skóre. Označení entit a ignorovatelného textu umožnilo LUIS aplikovat vzor na širší rozmanitost promluv.
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 016daa7ed57650a42b224df4e4173c7593893eb7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 8165efaa10eb31410f00dfa9bfffb2c02d7396ae
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251028"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872321"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Zásady správného řízení infrastruktury Azure DevTest Labs – firemní zásady a dodržování předpisů
 Tento článek poskytuje pokyny pro firemní zásady a dodržování předpisů pro infrastrukturu Azure DevTest Labs. 
@@ -42,10 +42,10 @@ Organizace by měly plánování jednoho úložiště nebo povolit více úloži
 ### <a name="answer"></a>Odpověď
 Jako součást celkového zásad správného řízení vaší organizace a strategie správy konfigurace doporučujeme použít centralizované úložiště. Při použití více úložišť mohou být sila nespravované software čase. S centrálním úložišti můžete využívat více týmů artefakty z tohoto úložiště pro své projekty. Vynucuje normalizace, zabezpečení, snadnou správu a odstraňuje duplicity úsilí. Jako součást centralizovaného tyto akce jsou doporučené postupy pro dlouhodobé správy a udržitelnosti:
 
-- Přidružení stejného tenanta služby Azure Active Directory, která je pro ověřování a autorizace pomocí předplatného Azure Visual Studio Team Services.
+- Úložiště Azure přidružení stejného tenanta služby Azure Active Directory, která je pro ověřování a autorizace pomocí předplatného Azure.
 - Vytvořte skupinu s názvem **všichni vývojáři DevTest Labs** ve službě Azure Active Directory, který je centrálně spravovat. Kterýkoli vývojář, který přispívá k rozvoji artefaktů by měl umístit do této skupiny.
-- Stejnou skupinu Azure Active Directory je možné poskytnout přístup k úložišti aplikace Visual Studio Team Services a testovací prostředí.
-- Ve službě Visual Studio Team Services, větvení nebo větvení by měla sloužit k úložišti samostatné v vývoj z úložiště primární produkčního prostředí. Obsah je pouze přidán do hlavní větve s žádostí o přijetí změn po přezkoumání kódu správné. Jakmile kód revidující změnu schválí, hlavní vývojář, který zodpovídá za údržbu v hlavní větvi, sloučí aktualizovaný kód. 
+- Stejnou skupinu Azure Active Directory je možné poskytnout přístup k úložišti Azure úložišť a testovací prostředí.
+- V úložišti Azure, větvení nebo větvení by měla sloužit k úložišti samostatné v vývoj z primární produkční úložiště. Obsah je pouze přidán do hlavní větve s žádostí o přijetí změn po přezkoumání kódu správné. Jakmile kód revidující změnu schválí, hlavní vývojář, který zodpovídá za údržbu v hlavní větvi, sloučí aktualizovaný kód. 
 
 ## <a name="corporate-security-policies"></a>Firemním zásadám zabezpečení
 

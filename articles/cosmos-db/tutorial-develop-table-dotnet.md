@@ -1,10 +1,8 @@
 ---
-title: 'Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API | Microsoft Docs'
+title: 'Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API'
 description: Naučte se vyvíjet v .NET s využitím rozhraní Table API služby Azure Cosmos DB
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
@@ -12,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: c41873d8f87a9a1203cefa37f99098f23e7aab92
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: c3749657ae432d8a6c85522b7dac31e31e39ea77
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239001"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075911"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Vývoj v .NET s využitím rozhraní Table API
 
@@ -99,7 +97,7 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
 
 Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Tím aplikaci umožníte komunikovat s hostovanou databází. 
 
-1. Na webu [Azure Portal](http://portal.azure.com/) klikněte na **Připojovací řetězec**. 
+1. Na webu [Azure Portal](https://portal.azure.com/) klikněte na **Připojovací řetězec**. 
 
     Pomocí tlačítka pro kopírování na pravé straně obrazovky zkopírujte PRIMÁRNÍ PŘIPOJOVACÍ ŘETĚZEC.
 
@@ -182,7 +180,8 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 Tento klient se inicializuje s použitím hodnot konfigurace `TableConnectionMode`, `TableConnectionProtocol`, `TableConsistencyLevel` a `TablePreferredLocations`, pokud jsou zadané v nastavení aplikace.
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
-Pak vytvoříte tabulku pomocí metody `CloudTable`. Tabulky ve službě Azure Cosmos DB se můžou nezávisle škálovat z hlediska úložiště a propustnosti a služba automaticky zajišťuje jejich dělení. Azure Cosmos DB podporuje tabulky pevné velikosti i neomezené tabulky. Podrobnosti najdete v tématu [Dělení ve službě Azure Cosmos DB](partition-data.md). 
+
+Pak vytvoříte tabulku pomocí metody `CloudTable`. Tabulky ve službě Azure Cosmos DB se můžou nezávisle škálovat z hlediska úložiště a propustnosti a služba automaticky zajišťuje jejich dělení. 
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");
@@ -293,7 +292,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-Azure Cosmos DB podporuje v rozhraní Table API stejné funkce dotazů jako Azure Table Storage. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Další funkce budou přidané do rozhraní Table API v budoucí aktualizaci služby. Přehled těchto možností najdete v tématu [Dotazování služby Azure Cosmos DB](sql-api-sql-query.md). 
+Azure Cosmos DB podporuje v rozhraní Table API stejné funkce dotazů jako Azure Table Storage. Azure Cosmos DB podporuje také řazení, agregace, geoprostorové dotazy, hierarchie a širokou škálu integrovaných funkcí. Přehled těchto možností najdete v tématu [Dotazování služby Azure Cosmos DB](how-to-sql-query.md). 
 
 ## <a name="replace-an-entity"></a>Nahrazení entity
 Pokud chcete entitu aktualizovat, načtěte ji ze služby Table service, upravte objekt entity a potom uložte změny zpět do služby Table service. Následující kód změní telefonní číslo stávajícího zákazníka. 
@@ -324,7 +323,7 @@ table.DeleteIfExists();
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jsme se věnovali začátkům používání služby Azure Cosmos DB s rozhraním Table API a provedli jste následující: 
 

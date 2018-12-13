@@ -1,6 +1,6 @@
 ---
 title: Co je služba Azure Machine Learning?
-description: Strojové učení v cloudu a co můžete použít pro. Přehled služby Azure Machine Learning – představuje řešení integrované, koncové až do konce datové vědy pro profesionální datové vědce, které k vývoji, experimentování a nasazování pokročilých analytických aplikací na úrovni cloudu.
+description: Přehled služby Azure Machine Learning – představuje řešení integrované, koncové až do konce datové vědy pro profesionální datové vědce, které k vývoji, experimentování a nasazování pokročilých analytických aplikací na úrovni cloudu.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,12 +9,13 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
-ms.openlocfilehash: 3a99d807bb5c3337d251044312e06806b0fe4bbc
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: c3c0697af739c151f9aa7cbaed65283a365be7a7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52954999"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077218"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Co je služba Azure Machine Learning?
 
@@ -33,12 +34,12 @@ Služba Azure Machine Learning poskytuje cloudové prostředí, které můžete 
 [ ![Pracovní postup služby Azure Machine Learning](./media/overview-what-is-azure-ml/aml.png) ] (./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Služba Azure Machine Learning plně podporuje technologie Open Source, takže s komponentami strojového učení můžete používat desítky tisíc volně dostupných balíčků Pythonu, například TensorFlow a scikit-learn.
-Podpora pro bohaté nástroje, jako například [poznámkové bloky Jupyter](http://jupyter.org) nebo [Azure Machine Learning pro Visual Studio Code](http://aka.ms/VSToolsforAI) rozšíření, usnadňuje interaktivní zkoumání dat, transformují je a potom vývoj a testování modely.
+Podpora pro bohaté nástroje, jako například [poznámkové bloky Jupyter](http://jupyter.org) nebo [Azure Machine Learning pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) rozšíření, usnadňuje interaktivní zkoumání dat, transformují je a potom vývoj a testování modely.
 Služba Azure Machine Learning obsahuje rovněž funkce, které [automatizují generování a optimalizaci modelů](tutorial-auto-train-models.md) a pomáhají vám tak snadno a efektivně vytvářet přesné modely.
 
 Služba Azure Machine Learning umožňuje spustit trénink na místním počítači a následně horizontálně navýšit kapacitu do cloudu. S mnoha dostupné [cílových výpočetních prostředí](how-to-set-up-training-targets.md) jako je Azure Machine Learning Compute a [Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)a s [pokročilé ladění služby hyperparameter](how-to-tune-hyperparameters.md), můžete vytvořit rychlejší a lepší modely Využijte sílu cloudu.
 
-Až budete mít správný model, jednoduše ho nasadíte do kontejneru, jako je Docker. To znamená, že nasazení do [Azure Container Instances](how-to-deploy-to-aci.md) nebo [Azure Kubernetes Service](how-to-deploy-to-aks.md) je snadné. Můžete ale také použít kontejner ve svých vlastních nasazeních, ať už místních nebo cloudových.
+Až budete mít správný model, jednoduše ho nasadíte do kontejneru, jako je Docker. To znamená, že je snadno nasadit do Azure Container Instances nebo Azure Kubernetes Service nebo kontejneru můžete použít ve vlastním nasazení, ať už místní nebo v cloudu. Další informace najdete v tématu [nasazení a kde](how-to-deploy-and-where.md) dokumentu.
 Během experimentování při hledání nejlepšího řešení můžete nasazené modely spravovat a sledovat různé běhy.
 Po nasazení modelu můžete vrátit předpovědi v [v reálném čase](how-to-consume-web-service.md), nebo [asynchronně](how-to-run-batch-predictions.md) na velké množství data.
 
@@ -58,9 +59,9 @@ Na výběr máte celou řadu komponent strojového učení dostupných v Open So
 - <a href="https://www.microsoft.com/en-us/cognitive-toolkit/" target="_blank">CNTK</a>
 - <a href="http://mxnet.io" target="_blank">MXNet</a>
 
-Jakmile máte model, použijte k vytvoření kontejneru (jako je Docker), který je možné nasadit místně pro účely testování. Po dokončení testování modelu je nasadit jako produkční webové služby v jednom [Azure Container Instances](how-to-deploy-to-aci.md) nebo [Azure Kubernetes Service](how-to-deploy-to-aks.md).
+Jakmile máte model, použijte k vytvoření kontejneru (jako je Docker), který je možné nasadit místně pro účely testování. Po dokončení testování modelu je nasadit jako produkční webové služby v Azure Container Instances nebo Azure Kubernetes Service. Další informace najdete v tématu [nasazení a kde](how-to-deploy-and-where.md) dokumentu.
 
-Potom můžete spravovat nasazené modelů pomocí [Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) nebo [webu Azure portal](https://portal.azure.com/).
+Potom můžete spravovat nasazené modelů pomocí [Azure Machine Learning SDK pro Python](https://aka.ms/aml-sdk) nebo [webu Azure portal](https://portal.azure.com/).
 Model metriky, obsloužených a opětovné nasazení nové verze modelu můžete vyhodnotit všechny a současně zajistit sledování experimenty modelu.
 
 Pokud chcete službu Azure Machine Learning začít používat, podívejte se na [Další kroky](#next-steps) níže.

@@ -1,10 +1,8 @@
 ---
-title: Azure Cosmos DB Table API pro Node.js | Dokumentace Microsoftu
+title: Azure Cosmos DB Table API pro Node.js
 description: Další informace o Azure Cosmos DB Table API včetně data vydání, vyřazení dat a změny provedené mezi jednotlivými verzemi.
 services: cosmos-db
 author: yarong
-manager: kfile
-editor: ''
 ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: nodejs
@@ -12,12 +10,12 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: ''
-ms.openlocfilehash: 4bdcb7c587ef05ced3c163136c52c81433a98cf4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: MT
+ms.openlocfilehash: 7ffcf656762c82d81c86eb394b028722566dafdb
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468700"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52864413"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API pro Node.js: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]

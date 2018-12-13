@@ -1,5 +1,5 @@
 ---
-title: Azure Blob Storage na zařízení Azure IoT Edge | Dokumentace Microsoftu
+title: Store objekty BLOB bloku v zařízeních – Azure IoT Edge | Dokumentace Microsoftu
 description: Modul služby Azure Blob Storage nasadíte do zařízení IoT Edge k ukládání dat na hraničních zařízeních.
 author: kgremban
 manager: philmea
@@ -9,12 +9,13 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa88ff46b4fb93d55aa0087cca0e6184f3e087a0
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.custom: seodec18
+ms.openlocfilehash: e56d49208740686b51cdaef1bab778e2c08a9b58
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567277"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077916"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Store dat na hraničních zařízeních s Azure Blob Storage na hraničních zařízeních IoT (preview)
 
@@ -105,7 +106,7 @@ Zvolte jednu ze dvou způsobů, jak najít modulu služby storage blob:
    > [!CAUTION]
    > Neměňte "/ blobroot" pro systémy Linux a "C:/BlobRoot" pro Windows, pro  **\<vazby adresář úložiště >** hodnoty.
 
-    ![Aktualizujte hodnoty modulu](./media/how-to-store-data-blob/edit-module.png)
+    ![Aktualizace modulu kontejneru vytvořit možnosti – portál](./media/how-to-store-data-blob/edit-module.png)
 
 6. **Uložit** hodnoty v "Moduly IoT Edge vlastní"
 7. Klikněte na tlačítko **Další** v části "Nastavit moduly"
@@ -149,7 +150,7 @@ VS Code přebírá informace k dispozici, vytvoří řešení IoT Edge a nahraje
    {\"Env\": [\"LOCAL_STORAGE_ACCOUNT_NAME=$STORAGE_ACCOUNT_NAME\",\" LOCAL_STORAGE_ACCOUNT_KEY=$STORAGE_ACCOUNT_KEY\"],\"HostConfig\": {\"Binds\": [\"<storage directory bind>\"],\"PortBindings\": {\"11002/tcp\": [{\"HostPort\":\"11002\"}]}}}
    ```
 
-   ![Možnosti vytvoření aktualizace modulu](./media/how-to-store-data-blob/create-options.png)
+   ![Aktualizace modulu CreateOptions field - VS Code](./media/how-to-store-data-blob/create-options.png)
 
 4. V možnosti vytvořit JSON, aktualizujte `<storage directory bind>` v závislosti na váš kontejner operační systém. Zadejte název [svazku](https://docs.docker.com/storage/volumes/) nebo absolutní cesta do adresáře na zařízení IoT Edge místo modulu objektů blob pro uložení data.  
 

@@ -1,6 +1,6 @@
 ---
-title: Povolení funkce Azure Event Hubs Capture prostřednictvím portálu | Dokumentace Microsoftu
-description: K povolení funkce Event Hubs Capture použijte web Azure Portal.
+title: Zachycení streamovaných událostí pomocí webu Azure portal – Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek popisuje, jak povolit sběr událostí streamování pomocí služby Azure Event Hubs pomocí webu Azure portal.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 01c7d9c848465177d5ff1ed7264743437e57d663
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 7f57e75f90511ace45198d7516a5d2550123d9be
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014714"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075110"
 ---
-# <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Povolení funkce Event Hubs Capture prostřednictvím webu Azure Portal
+# <a name="enable-capturing-of-events-streaming-through-azure-event-event-hubs"></a>Povolit sběr událostí pomocí Azure Event Event Hubs
 
 Azure [Event Hubs Capture][capture-overview] umožňuje automatické doručování streamovaných dat ve službě Event Hubs do služby [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) nebo do účtu [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) podle vašeho výběru.
 

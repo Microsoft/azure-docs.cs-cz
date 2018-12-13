@@ -1,6 +1,6 @@
 ---
-title: Azure zásady správy rozhraní API-ukázka - trasy na základě požadavku na velikosti jeho obsahu | Microsoft Docs
-description: Azure API management zásad ukázka - ukazuje, jak pro směrování požadavků na základě velikosti své subjekty.
+title: Rozhraní API správy zásad ukázkový Azure – směrování žádosti na základě velikosti jeho textu | Dokumentace Microsoftu
+description: Azure API management zásady ukázkový – ukazuje, jak směrovat žádosti na základě velikosti jejich těla.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: a93e1d9fecea59ebb68c512b96c8381b5b1a9346
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 7656401115cc370d6eee60fb9bddb9bcd92e4201
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284756"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872200"
 ---
-# <a name="route-the-request-based-on-the-size-of-its-body"></a>Směrování požadavku na základě velikosti jeho obsahu
+# <a name="route-the-request-based-on-the-size-of-its-body"></a>Směrování na základě velikosti jeho textu požadavku
 
-Tento článek ukazuje rozhraní API služby Azure správy zásad vzorku, který ukazuje, jak pro směrování požadavků na základě velikosti své subjekty. Chcete-li nastavit nebo upravit kód zásad, postupujte podle kroků popsaných v [sadu nebo upravit zásadu](../set-edit-policies.md). Další příklady najdete v sekci [ukázky zásad](../policy-samples.md).
+Tento článek ukazuje ukázkové zásady správu rozhraní API služby Azure, který ukazuje, jak směrovat žádosti na základě velikosti jejich těla. Nastavení nebo úprava zásad kódu, postupujte podle kroků popsaných v [nastavení nebo úprava zásad](../set-edit-policies.md). Další příklady najdete v tématu [ukázky zásad](../policy-samples.md).
 
 ## <a name="policy"></a>Zásada
 
@@ -32,7 +32,7 @@ Vložte kód do **příchozí** bloku.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o zásadách APIM:
+Další informace týkající se služby APIM zásad:
 
 + [Zásady transformace](../api-management-transformation-policies.md)
 + [Ukázky zásad](../policy-samples.md)

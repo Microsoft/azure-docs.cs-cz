@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: andrl
-ms.openlocfilehash: 15b7dce5af984e4eb719024368479df1b5c8320a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e866b205fb5cdd65dc690101503613714271e36c
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53010956"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075348"
 ---
 # <a name="provision-throughput-on-azure-cosmos-containers-and-databases"></a>Zřizování propustnosti na kontejnery Azure Cosmos a databází
 
@@ -67,7 +67,7 @@ Můžete kombinovat dva modely, zřizování propustnosti na databázi a kontejn
 
 |**Kvóta**  |**V databázi zřízenou propustnost**  |**V kontejneru zřízenou propustnost**|
 |---------|---------|---------|
-|Minimální ru |400 |400|
+|Minimální ru |400 (po první čtyři kontejnery, každý další kontejner vyžaduje minimálně 100 RU/s). |400|
 |Minimální jednotek požadavku za kontejner|100|400|
 |Minimální ru potřeba využívat 1 GB úložiště|40|40|
 |Maximální ru|Neomezený počet v databázi|Neomezený počet v kontejneru|

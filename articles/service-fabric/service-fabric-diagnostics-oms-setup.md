@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 2cdc9f780e0d9ddb6e688e53208e5597b000aa56
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 00fc04afd26da2ef5741eec308835bb8c897c26b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632768"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077337"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Nastavení Log Analytics pro cluster
 
@@ -123,7 +123,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 Jakmile budete hotovi, postupujte podle kroků v předchozí části pro připojení k účtu pro příslušné úložiště Log Analytics.
 
-Můžete také přidat další řešení a provádět další úpravy do pracovního prostoru Log Analytics pomocí Powershellu. Další informace najdete v tématu [spravovat Log Analytics pomocí Powershellu](../log-analytics/log-analytics-powershell-workspace-configuration.md).
+Můžete také přidat další řešení a provádět další úpravy do pracovního prostoru Log Analytics pomocí Powershellu. Další informace najdete v tématu [spravovat Log Analytics pomocí Powershellu](../azure-monitor/platform/powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Další postup
 * [Nasadit agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) na svých uzlech shromažďování čítačů výkonu a shromáždit statistiky dockeru a protokoly pro vaše kontejnery

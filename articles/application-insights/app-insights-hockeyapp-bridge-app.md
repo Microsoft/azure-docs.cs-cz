@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2e2343c958141032d91c9ea9ee22ed052ff43d60
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 2f9b61a212251332cd94379b40f93eb52d49c729
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52728000"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870061"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Zkoumat data HockeyApp v Application Insights
 
@@ -60,7 +60,7 @@ Analýza je výkonný nástroj pro dotazování ad hoc vašich dat díky tomu m�
 
 ![Analýzy](./media/app-insights-hockeyapp-bridge-app/05.png)
 
-* [Další informace o analýze](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Další informace o analýze](../azure-monitor/log-query/get-started-portal.md)
 
 ## <a name="continuous-export"></a>Průběžný export
 Průběžný Export umožňuje exportovat data do kontejneru úložiště objektů Blob v Azure. To je velmi užitečné, pokud je potřeba zachovejte si svá data po dobu delší než doba uchování v současné době nabízena službou Application Insights. Můžete ponechat data v úložišti objektů blob, zpracovat je do databáze SQL nebo váš upřednostňovaný řešení datového skladu.
@@ -68,5 +68,5 @@ Průběžný Export umožňuje exportovat data do kontejneru úložiště objekt
 [Další informace o průběžný Export](app-insights-export-telemetry.md)
 
 ## <a name="next-steps"></a>Další postup
-* [Použití analýzy k vašim datům](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Použití analýzy k vašim datům](../azure-monitor/log-query/get-started-portal.md)
 

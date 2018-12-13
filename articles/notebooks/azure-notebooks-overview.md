@@ -1,6 +1,6 @@
 ---
-title: Přehled poznámkových bloků Azure | Dokumentace Microsoftu
-description: Spouštějte poznámkové bloky Jupyter v cloudu s využitím bezplatné služby Azure poznámkových bloků.
+title: Přehled Azure poznámkové bloky
+description: Spouštějte poznámkové bloky Jupyter v cloudu s využitím bezplatné služby poznámkových bloků Azure, kde se vyžaduje bez instalace nebo konfigurace.
 services: app-service
 documentationcenter: ''
 author: kraigb
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a84f71c2656c73867ee076d4b993026558a0a504
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 92cfdea12dc51884ea04ed894a79ded7f532d88b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52853045"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53085395"
 ---
 # <a name="overview-of-azure-notebooks"></a>Přehled Azure poznámkové bloky
 
-Poznámkových bloků Azure je bezplatná služba hostovaná vyvíjet a spouštět poznámkové bloky Jupyter v cloudu s žádná instalace. [Jupyter](http://jupyter.org/) (dříve IPython) je opensourcový projekt, který vám umožní snadno kombinovat text Markdownu, spustitelného kódu, trvalá data, grafiky a vizualizace na jedné, které se dají sdílet plátno, *Poznámkový blok* (image poskytuje jupyter.org):
+Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci. [Jupyter](https://jupyter.org/) (dříve IPython) je opensourcový projekt, který vám umožní snadno kombinovat text Markdownu, spustitelného kódu, trvalá data, grafiky a vizualizace na jedné, které se dají sdílet plátno, *Poznámkový blok* (image poskytuje jupyter.org):
 
-[![](http://jupyter.org/assets/jupyterpreview.png "Poznámkové bloky Jupyter")](http://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![](https://jupyter.org/assets/jupyterpreview.png "Poznámkové bloky Jupyter")](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Z důvodu této výkonnou kombinaci vysvětlující text, kód a grafické Jupyter získal oblibu pro mnoho účelů, včetně data science instrukce, čištění dat a transformace, číselná simulace, statistické modelování a vývoj modely strojového učení.
 
@@ -51,7 +51,7 @@ Protože poznámkových bloků Azure je obecný kód pro vytváření, spouště
 Stručně řečeno poznámkových bloků Azure vám pomůže provádět práci efektivněji a tím dosáhnout více.
 
 > [!Note]
-> Další informace o Jupyter samotný najdete na [jupyter.org](http://jupyter.org/) a [Jupyter dokumentaci](http://jupyter-notebook.readthedocs.io/en/latest/).
+> Další informace o Jupyter samotný najdete na [jupyter.org](https://jupyter.org/) a [Jupyter dokumentaci](https://jupyter-notebook.readthedocs.io/en/latest/).
 
 ## <a name="pricing-and-quotas"></a>Ceny a kvóty
 

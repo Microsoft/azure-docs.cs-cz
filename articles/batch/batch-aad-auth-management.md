@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: danlep
-ms.openlocfilehash: a52dbdad3842760c447e22f4274ab944750840e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b2ab2ad1c31337e006b613ad7f17b4ad22495893
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816782"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52870415"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Ověření řešení pro správu služby Batch pomocí Active Directory
 
@@ -28,7 +28,7 @@ Aplikace, které volají služby Azure Batch Management ověření pomocí [Azur
 
 Knihovna Batch Management .NET poskytuje typy pro práci s účty Batch, klíče účtu, aplikace a balíčky aplikací. Knihovna Batch Management .NET je klient poskytovatele prostředků Azure a používá se společně s [Azure Resource Manageru] [ resman_overview] tyto zdroje spravovat prostřednictvím kódu programu. Azure AD je potřeba ověřit požadavky provedené přes všechny klienty poskytovatele prostředků Azure, včetně knihovny Batch Management .NET, prostřednictvím [Azure Resource Manageru][resman_overview].
 
-V tomto článku se podíváme na používání služby Azure AD pro ověření z aplikace, které používají knihovny Batch Management .NET. Vám ukážeme, jak používat Azure AD pro ověření předplatného správce nebo spolusprávce, pomocí integrovaného ověřování. Používáme [AccountManagment] [ acct_mgmt_sample] ukázkového projektu a k dispozici na na Githubu, který provede pomocí knihovny Batch Management .NET služby Azure AD.
+V tomto článku se podíváme na používání služby Azure AD pro ověření z aplikace, které používají knihovny Batch Management .NET. Vám ukážeme, jak používat Azure AD pro ověření předplatného správce nebo spolusprávce, pomocí integrovaného ověřování. Používáme [AccountManagement] [ acct_mgmt_sample] ukázkového projektu a k dispozici na na Githubu, který provede pomocí knihovny Batch Management .NET služby Azure AD.
 
 Další informace o použití knihovny Batch Management .NET a AccountManagement ukázku najdete v tématu [Správa služby Batch účtů a kvót pomocí klientské knihovny správy služby Batch pro .NET](batch-management-dotnet.md).
 

@@ -1,11 +1,12 @@
 ---
 title: Nastavte si společnou identitu pro virtuální počítač pro datové vědy – Azure | Dokumentace Microsoftu
-description: Nastavte si společnou identitu v prostředích DSVM enterprise týmu.
+description: Zjistěte, jak vytvořit běžné uživatelské účty, které je možné napříč více virtuální počítače pro datové vědy. Azure Active Directory nebo místní služby Active Directory můžete použít k ověřování uživatelů pro virtuální počítač pro datové vědy.
 keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6be7c63d3879c7ed89cd97eaecd6d59b6b5aadd4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436297"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075467"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Nastavte si společnou identitu na virtuální počítač pro datové vědy
 

@@ -9,14 +9,14 @@ ms.component: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: 76e6bc006ff6049b631409a3515628fbd169f713
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f845c064ec3625d205ec346ddfc90c3a1b2c3d8d
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976974"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52874834"
 ---
-# <a name="what-is-custom-translator-preview"></a>Co je Custom Translator (Preview)?
+# <a name="what-is-custom-translator"></a>Co je vlastní Translator?
 
 [Vlastní Translator](https://portal.customtranslator.azure.ai) je funkce služby Microsoft Translator, který umožňuje podnikům Translator, vývojáři aplikací a poskytovatelé služeb jazyka vytvářet přizpůsobené systémy pro strojový překlad neuronových (sítí NMT). Přizpůsobených překladových systémů bez problémů integrovat do stávajících aplikací, pracovní postupy a websites. [Vlastní Translator](https://portal.customtranslator.azure.ai/) nabízí podobné funkce pro co [Microsoft Translator Hub](https://hub.microsofttranslator.com/) nemá pro statistické strojový překlad (SMT), ale výhradně pro Neurální strojový překlad sítí (NMT) systémy.
 

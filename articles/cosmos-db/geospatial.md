@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: sngun
-ms.openlocfilehash: 947a39a3660e0755efbf99b74b66d2c16e331e07
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 29bb495bbbd56ab39964b34db35fb4d222a60179
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837048"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074691"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Použití geoprostorových a GeoJSON umístění dat pomocí účtu rozhraní SQL API služby Azure Cosmos DB
 
@@ -305,7 +305,7 @@ Podobně tady je dotaz pro vyhledání všech dokumentů, jejichž "umístění"
 Teď, když jsme měli podívat, jak zadávat dotazy na dokumenty pomocí LINQ a SQL, Pojďme se podívat, jak nakonfigurovat službu Azure Cosmos DB pro prostorového indexování.
 
 ## <a name="indexing"></a>Indexování
-Jak jsme je popsáno v [schématu nezávislé indexování pomocí služby Azure Cosmos DB](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) papíru, jsme navrhovali databázový stroj služby Azure Cosmos DB bude skutečně nezávislá na schématu a poskytovat prvotřídní podporu pro formát JSON. Databázový stroj optimalizovaný pro zápis služby Azure Cosmos DB nativně rozumí prostorovým datům (body, mnohoúhelníků a čar), které jsou reprezentovány ve standardu GeoJSON.
+Jak jsme je popsáno v [schématu nezávislé indexování pomocí služby Azure Cosmos DB](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) papíru, jsme navrhovali databázový stroj služby Azure Cosmos DB bude skutečně nezávislá na schématu a poskytovat prvotřídní podporu pro formát JSON. Databázový stroj optimalizovaný pro zápis služby Azure Cosmos DB nativně rozumí prostorovým datům (body, mnohoúhelníků a čar), které jsou reprezentovány ve standardu GeoJSON.
 
 Řečeno v kostce, je geometrii plánovaných z geodetické souřadnice na plochu 2D pak postupně rozdělit do buňky **quadtree**. Tyto buňky jsou mapovány na 1D, v závislosti na umístění v rámci buňky **Hilbertův místo naplnění křivky**, která zachovává lokality bodů. Kromě toho při indexování umístění dat prochází přes tento proces se označuje jako **teselace**, to znamená všechny buňky, které intersect umístění identifikovaná a uloženy jako klíče v indexu služby Azure Cosmos DB. V době zpracování dotazu argumenty, jako je bodů a mnohoúhelníků jsou také teselace sestavy extrahovat ID oblasti relevantní buněk a potom se používá k načtení dat z indexu.
 
@@ -389,7 +389,7 @@ A tady je, jak můžete upravit existující kolekci výhod prostorového indexo
 Teď, když jste se naučili, jak začít pracovat s podporuje geoprostorové funkce ve službě Azure Cosmos DB, dále můžete:
 
 * Pusťte se do programování se [geoprostorové .NET ukázky kódu na Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
-* Vyzkoušejte v praxi s geoprostorové dotazování na [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
+* Vyzkoušejte v praxi s geoprostorové dotazování na [Azure Cosmos DB Query Playground](https://www.documentdb.com/sql/demo#geospatial)
 * Další informace o [dotazu služby Azure Cosmos DB](how-to-sql-query.md)
 * Další informace o [zásady indexování Azure Cosmos DB](index-policy.md)
 

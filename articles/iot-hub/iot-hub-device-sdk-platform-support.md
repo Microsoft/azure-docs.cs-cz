@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: 078f6bcd7aa48f2a63118e6dfb625d9b2c69fbb3
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ebe039c37eb42b0044fa0acf9361edc7e8cbb828
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248019"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879345"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Podpora platformy sady SDK Azure IoT
 
@@ -20,7 +20,7 @@ ms.locfileid: "48248019"
 
 Společnost Microsoft podporuje různé operační systémy/platformy/rozhraní a je možné rozšířit pomocí sady Azure IoT C SDK. Některé jsou od týmu, seskupených do vrstev, které představují úroveň podpory, které uživatelé můžou očekávat oficiálně podporována. *Plně podporované platformy* znamená, že Microsoft:
 
-    * Průběžně sestaví a spustí testy začátku do konce na hlavním virtuálním počítači a LTS podporované verze.
+    * Průběžně sestaví a spustí testy začátku do konce na hlavním virtuálním počítači a LTS podporované verze.  Pro zajištění pokrytí testu mezi různými verzemi, budeme obecně testování proti nejoblíbenější a nejnovější verze LTS.  Jiné verze stejnou platformu mohou být podporovány prostřednictvím Kompatibilita verze platformy.
     * Poskytuje pokyny k instalaci nebo balíčky, pokud je k dispozici.
     * Plně podporuje platformy na Githubu.
 
@@ -31,7 +31,6 @@ Kromě toho obsahuje seznam partnerů nabízejících přenáší naší sady SD
 * Windows CE 2013 (přestat používat v října 2018)
 * .NET standard 1.3 s .NET Core 2.1 a rozhraní .NET Framework 4.7
 * Xamarin pro iOS, Android, UPW
-* Android s Javou
 
 ## <a name="supported-platforms"></a>Podporované platformy
 
@@ -83,6 +82,7 @@ Existuje několik platforem podporována.
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
+| Rozhraní API systému Android 28 | X64  | Java 8       |
 
 ## <a name="partner-supported-platforms"></a>Podpora partnerů platformy
 

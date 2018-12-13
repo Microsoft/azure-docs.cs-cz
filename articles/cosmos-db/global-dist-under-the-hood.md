@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 5db43c6488a4592eb46d9a0fe9a044dde36fc494
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 54511505841f170180bce0fccd8bd289ba24de2b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52423343"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073346"
 ---
 # <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Azure Cosmos DB globální distribuce - pod pokličkou
 
@@ -43,7 +43,7 @@ Globální distribuce cosmos DB spoléhá na dva klíče abstrakce – sady repl
 
 ## <a name="replica-sets"></a>Sady replik
 
-Oddíl prostředků je vyhodnocena jako skupinu samoobslužně spravovaným a dynamicky s vyrovnáváním zatížení rozdělené mezi více domén selhání, názvem sady replik replik. Tato sada souhrnně implementuje protokol replikované stavu počítač na vysoce dostupný, odolné a konzistentní vzhledem k aplikacím, aby se data v rámci oddílu prostředků. Je dynamické členství sady replik N – udržuje kolísá mezi Nminimum a Nmaximum na základě chyby, úkoly správy a čas pro neúspěšné repliky a obnovení/obnovení. Replikace podle změn členství, protokolu také změní konfiguraci velikost čtení a zápis kvor. Propustnost, které je přiřazen k danému prostředku oddílu rovnoměrně rozmístit, použijeme dvě myšlenky: nejprve je vyšší než náklady na použití aktualizací na následovník náklady na zpracování požadavky na zápis na vedoucí instancí. Odpovídajícím způsobem, je vedoucí instancí rozpočtu více systémových prostředků, než sledujícími. Za druhé Pokud je to možné, je čtení kvora pro úrovně konzistence dané složen výhradně z následný repliky. Můžeme vyhnout kontaktování vedoucí pro poskytování čtení, pokud to není vyžadováno. Využíváme celou řadou nápady z research na vztah [zatížení a kapacitu](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) v systémech kvora pro pět konzistence modely, které podporuje Cosmos DB.  
+Oddíl prostředků je vyhodnocena jako skupinu samoobslužně spravovaným a dynamicky s vyrovnáváním zatížení rozdělené mezi více domén selhání, názvem sady replik replik. Tato sada souhrnně implementuje protokol replikované stavu počítač na vysoce dostupný, odolné a konzistentní vzhledem k aplikacím, aby se data v rámci oddílu prostředků. Je dynamické členství sady replik N – udržuje kolísá mezi Nminimum a Nmaximum na základě chyby, úkoly správy a čas pro neúspěšné repliky a obnovení/obnovení. Replikace podle změn členství, protokolu také změní konfiguraci velikost čtení a zápis kvor. Propustnost, které je přiřazen k danému prostředku oddílu rovnoměrně rozmístit, použijeme dvě myšlenky: nejprve je vyšší než náklady na použití aktualizací na následovník náklady na zpracování požadavky na zápis na vedoucí instancí. Odpovídajícím způsobem, je vedoucí instancí rozpočtu více systémových prostředků, než sledujícími. Za druhé Pokud je to možné, je čtení kvora pro úrovně konzistence dané složen výhradně z následný repliky. Můžeme vyhnout kontaktování vedoucí pro poskytování čtení, pokud to není vyžadováno. Využíváme celou řadou nápady z research na vztah [zatížení a kapacitu](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) v systémech kvora pro pět konzistence modely, které podporuje Cosmos DB.  
 
 ## <a name="partition-sets"></a>Sad oddílů
 
@@ -57,7 +57,7 @@ Služba umožňuje nakonfigurovat databází Cosmos oblasti zápisu na jeden neb
 
 ## <a name="conflict-resolution"></a>Řešení konfliktů
 
-Náš návrh šíření aktualizace, odstraňování konfliktů a sledování příčinnou souvislost inspirován z předchozí pracovní [epidemické algoritmy](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) a [Bayou](http://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) systému. I když jádrech nápady mají zůstat naživu a poskytují praktický rámec pro komunikaci služby Cosmos DB návrhu systému, také prošly významné transformace jako jsme použili na systém služby Cosmos DB. To je potřeba, protože předchozí systémy byly navrženy s zásady správného řízení prostředků ani v měřítku, jakou potřebuje Cosmos DB fungovat ani k poskytování možností (například konzistenci omezená neaktuálnost) a přísné a komplexní Smlouvy o úrovni služeb, které poskytuje služby Cosmos DB svým zákazníkům.  
+Náš návrh šíření aktualizace, odstraňování konfliktů a sledování příčinnou souvislost inspirován z předchozí pracovní [epidemické algoritmy](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) a [Bayou](https://zoo.cs.yale.edu/classes/cs422/2013/bib/terry95managing.pdf) systému. I když jádrech nápady mají zůstat naživu a poskytují praktický rámec pro komunikaci služby Cosmos DB návrhu systému, také prošly významné transformace jako jsme použili na systém služby Cosmos DB. To je potřeba, protože předchozí systémy byly navrženy s zásady správného řízení prostředků ani v měřítku, jakou potřebuje Cosmos DB fungovat ani k poskytování možností (například konzistenci omezená neaktuálnost) a přísné a komplexní Smlouvy o úrovni služeb, které poskytuje služby Cosmos DB svým zákazníkům.  
 
 Připomínáme, že sadě oddílů je distribuovaná napříč několika oblastmi a následuje protokol replikace databází Cosmos (více hlavních databází) k replikaci dat mezi fyzickými oddíly obsahující dané sady oddílů. Každý oddíl prostředků (z oddílu sadu) přijímá zápisu a obvykle slouží čtení na klienty, kteří jsou místní pro tuto oblast. Zápisy přijal oddíl prostředků v rámci oblasti jsou trvale potvrzena a nastavit na vysokou dostupnost v rámci oddílu prostředků předtím, než budou potvrzeny do klienta. Tyto jsou nezávazně zápisy a se rozšíří na jiných fyzických oddílů v rámci sady oddílu pomocí kanál proti entropie. Klienti mohou požadovat nezávazně nebo potvrzené zápisy předáním hlavičku požadavku. Šíření proti entropie (včetně frekvence šíření) je dynamická, založeny na topologii blízkosti sady oddílů, místní fyzické oddíly a konzistence, nakonfigurovaná úroveň. Cosmos DB v rámci oddílu sady, následuje schéma primární potvrzení se dynamicky vybrané arbiter oddílu. Výběr arbiter je dynamický a je nedílnou součástí Rekonfigurace sady oddílů na základě topologie překrytí. Povolujeme zaručeno potvrzené zápisy (včetně více-row/dávce aktualizací). 
 

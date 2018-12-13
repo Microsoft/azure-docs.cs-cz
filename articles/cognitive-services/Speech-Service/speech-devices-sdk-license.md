@@ -1,5 +1,5 @@
 ---
-title: Rozpoznávání řeči Devices SDK licenční smlouvy
+title: Licenční smlouva řeči Devices SDK – hlasové služby
 titleSuffix: Azure Cognitive Services
 description: Rozpoznávání řeči Devices SDK licenční smlouvy.
 services: cognitive-services
@@ -8,18 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: conceptual
-ms.date: 04/28/2018
+ms.date: 12/06/2018
 ms.author: erhopf
-ms.openlocfilehash: dea27d7363210580d5f040de7ea1db770701d9c9
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.custom: seodec18
+ms.openlocfilehash: b1605337a810c635bfa40cd05e2f9b15d2e5a7e1
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466116"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078510"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Rozpoznávání řeči Devices SDK licenční smlouvy
 
-## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>LICENČNÍ PODMÍNKY PRO SOFTWARE SPOLEČNOSTI MICROSOFT<br>ROZPOZNÁVÁNÍ ŘEČI ZAŘÍZENÍ SOFTWARE DEVELOPMENT KIT (SDK) 
+## <a name="microsoft-software-license-termsbrspeech-devices-software-development-kit-sdk"></a>LICENČNÍ PODMÍNKY PRO SOFTWARE SPOLEČNOSTI MICROSOFT<br>ROZPOZNÁVÁNÍ ŘEČI ZAŘÍZENÍ SOFTWARE DEVELOPMENT KIT (SDK)
 
 > POKUD ŽIJETE V (NEBO JSOU FIRMA S VAŠÍ HLAVNÍ SÍDLO PODNIKÁNÍ V) OBLAST SPOJENÉ STÁTY, PŘEČTĚTE SI NÁSLEDUJÍCÍ ČÁSTI "VAZBY USTANOVENÍ O ROZHODČÍM ŘÍZENÍ A ZŘEKNUTÍ SE HROMADNÉ ŽALOBY". TO MÁ VLIV NA ZPŮSOB ŘEŠENÍ SPORŮ.
 
@@ -57,7 +58,7 @@ f) software je nutné použít pouze v kombinaci s Microsoft Azure Cognitive Ser
 
 **5\. ZPĚTNOU VAZBU.** Pokud poskytnete zpětnou vazbu o software společnosti Microsoft, dáváte tím společnosti Microsoft, bezplatně právo používat, sdílet a komerčně využívat vaše názory jakýmkoli způsobem a pro jakýkoli účel. Nesmíte poskytovat zpětnou vazbu, která je předmětem licence vyžadující společnost Microsoft licencovala svůj software nebo dokumentaci třetím stranám, protože Microsoft zahrnuje vaše zpětná vazba v nich. Tato práva překonání této smlouvy.
 
-**6\. OBDOBÍ.** Tuto smlouvu platí na vaše přijetí a může skončit kdykoli vy nebo Microsoft. 
+**6\. OBDOBÍ.** Tuto smlouvu platí na vaše přijetí a může skončit kdykoli vy nebo Microsoft.
 
 **7\. UKONČENÍ.** Bez omezení dalších práv společnost Microsoft může tuto smlouvu ukončit pokud nedodržíte s některou z jeho podmínkám. V takovém případě musíte zničit všechny kopie softwaru a všechny jeho součásti.
 

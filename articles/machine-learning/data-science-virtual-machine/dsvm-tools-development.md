@@ -1,11 +1,12 @@
 ---
 title: Vývojové nástroje data Science virtuálního počítače – Azure | Dokumentace Microsoftu
-description: Data Science virtuální počítač nástroje pro vývoj.
+description: Další informace o nástrojích a Integrovaná vývojová prostředí, které jsou předem nainstalované na virtuální počítač pro datové vědy.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 documentationcenter: ''
 author: gopitk
 manager: cgronlun
+ms.custom: seodec18
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: data-science-vm
@@ -15,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: ef9f1e0c043370bdfacf654cffb524b716a34446
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: ee1e7003a9f1479db7311072e29132cf491cbc88
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872322"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073750"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>Nástroje pro vývoj na virtuální počítač pro datové vědy
 

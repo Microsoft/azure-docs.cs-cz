@@ -8,12 +8,12 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c11013c926e77447a69ce0dfe697fdda1ecc2b8c
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 52ff52ffb558278507bb24e1b1e2054c251b2512
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284842"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52879634"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Řešení chyb při registraci řešení
 
@@ -21,7 +21,7 @@ Pravděpodobně narazíte na chyby při připojování řešení, jako jsou Upda
 
 ## <a name="general-errors"></a>Obecné chyby
 
-### <a name="computer-grou-query-format-error"></a>Scénář: ComputerGroupQueryFormatError
+### <a name="computer-group-query-format-error"></a>Scénář: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Problém
 

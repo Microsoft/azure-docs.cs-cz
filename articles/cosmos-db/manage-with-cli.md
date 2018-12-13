@@ -1,25 +1,24 @@
 ---
-title: Spravovat prostředky Azure Cosmos DB pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+title: Spravovat prostředky Azure Cosmos DB pomocí rozhraní příkazového řádku Azure
 description: Spravovat účet Azure Cosmos DB, databáze a kontejnerů pomocí Azure CLI.
 services: cosmos-db
 author: markjbrown
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: mjbrown
-ms.openlocfilehash: 3446f4f71349d0b7290a2514edf46efb37203324
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: d79cae16c109b407840b8565eb80fb87bbed6432
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019087"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877543"
 ---
 # <a name="manage-azure-cosmos-db-resources-using-azure-cli"></a>Spravovat prostředky Azure Cosmos DB pomocí rozhraní příkazového řádku Azure
 
 Následující průvodci popisuje příkazy, které automatizují správu účtů služby Azure Cosmos DB, databáze a kontejnerů pomocí Azure CLI. Zahrnuje také příkazy pro škálování propustnosti kontejnerů. Stránky s referenčními informacemi pro všechny příkazy rozhraní příkazového řádku Azure Cosmos DB jsou k dispozici v [referenčních informacích k Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb). Můžete také najít další příklady v [ukázky v Azure CLI pro službu Azure Cosmos DB](cli-samples.md), jak vytvářet a spravovat účty služby Cosmos DB, databáze a kontejnerů pro MongoDB, Gremlin, Cassandra a Table API.
 
-Tento ukázkový skript rozhraní příkazového řádku vytvoří účet rozhraní SQL API služby Azure Cosmos DB, databázi a kontejner.  
+Tento ukázkový skript rozhraní příkazového řádku vytvoří účet, databázi a kontejner rozhraní SQL API služby Azure Cosmos DB.  
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

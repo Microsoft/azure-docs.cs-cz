@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d83af114ebb5e5ff78372897d3e08ed592d4012
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 854f457e6731f69c64bf2036840d9e1c18a1cbf2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093897"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075086"
 ---
 # <a name="attach-a-managed-data-disk-to-a-windows-vm-by-using-the-azure-portal"></a>Připojení spravovaného datového disku k virtuálnímu počítači s Windows pomocí webu Azure portal
 
@@ -52,30 +52,6 @@ V tomto článku se dozvíte, jak připojit nový spravovaného datového disku 
 8. V **naformátovat nový disk** okna, zkontrolujte nastavení a pak vyberte **Start**.
 9. Zobrazí se upozornění oznamující, že formátování disky vymaže všechna data. Vyberte **OK**.
 10. Po dokončení formátování vyberte **OK**.
-
-## <a name="use-trim-with-standard-storage"></a>Pomocí operace TRIM na úložiště úrovně standard
-
-Pokud používáte storage úrovně standard (HDD), měli byste povolit **TRIM** příkazu. **TRIM** příkaz zahodí nepoužívané bloky na disku tak, že bude se vám účtovat jenom za úložiště, které skutečně používáte. S použitím **TRIM**, ušetříte náklady na Pokud vytvoříte velkých souborů a pak je později odstranit. 
-
-Chcete-li zkontrolovat **TRIM** nastavení, otevřete příkazový řádek na virtuálním počítači Windows a zadejte následující příkaz:
-
-```
-fsutil behavior query DisableDeleteNotify
-```
-
-Pokud příkaz vrátí hodnotu 0, **TRIM** je povolená správně. V opačném případě vrátí hodnotu 1, spusťte následující příkaz umožňující **TRIM**:
-
-```
-fsutil behavior set DisableDeleteNotify 0
-```
-
-Po odstranění dat z disku, můžete zajistit **TRIM** operace flush správně spuštěním defragmentační s **TRIM**:
-
-```
-defrag.exe <volume:> -l
-```
-
-Můžete také formátovat svazku a ujistěte se, že celý svazek je oříznuta.
 
 ## <a name="next-steps"></a>Další postup
 

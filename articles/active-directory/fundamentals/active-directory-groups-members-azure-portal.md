@@ -1,6 +1,6 @@
 ---
-title: Postup přidání nebo odebrání členů skupiny pomocí služby Azure Active Directory | Dokumentace Microsoftu
-description: Zjistěte, jak přidat nebo odebrat uživatele a zařízení ze skupiny pomocí služby Azure Active Directory.
+title: Přidání nebo odebrání členů skupiny – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak přidat nebo odebrat členy ze skupiny pomocí služby Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -10,21 +10,21 @@ ms.component: fundamentals
 ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: lizross
-ms.custom: it-pro
+ms.custom: it-pro, seodec18
 ms.reviewer: krbain
-ms.openlocfilehash: 7c1a83d83dcbf247550c66602a6f53d4ef0d7930
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 42b80b53ca7c860143f1de1005a609b3e921e650
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733360"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076138"
 ---
-# <a name="how-to-add-or-remove-group-members-using-azure-active-directory"></a>Postupy: Přidání nebo odebrání členů skupiny pomocí služby Azure Active Directory
+# <a name="add-or-remove-group-members-using-azure-active-directory"></a>Přidání nebo odebrání členů skupiny pomocí služby Azure Active Directory
 Pomocí Azure Active Directory, můžete pokračovat k přidání a odebrání členů skupiny.
 
 ## <a name="to-add-group-members"></a>Chcete-li přidat členy skupiny
 
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu globálního správce daného adresáře.
 
 2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
 
@@ -32,7 +32,7 @@ Pomocí Azure Active Directory, můžete pokračovat k přidání a odebrání �
 
     ![Stránka skupiny – všechny skupiny, zvýrazněným názvem skupiny](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
-4. Z **zásady MDM – přehled – západ** stránce **členy** z **spravovat** oblasti.
+4. Na stránce s **přehledem skupiny MDM policy – West** vyberte **Členové** v oblasti **Spravovat**.
 
     ![Zásady MDM – stránka s přehledem – Západ, se zvýrazněnou možností členy](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
@@ -56,10 +56,10 @@ Pomocí Azure Active Directory, můžete pokračovat k přidání a odebrání �
 
 - [Zobrazení skupin a členů](active-directory-groups-view-azure-portal.md)
 
-- [Upravit nastavení skupiny](active-directory-groups-settings-azure-portal.md)
+- [Úprava nastavení skupiny](active-directory-groups-settings-azure-portal.md)
 
 - [Správa přístupu k prostředkům pomocí skupin](active-directory-manage-groups.md)
 
 - [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-create-rule.md)
 
-- [Přiřazení nebo přidání předplatného Azure ke službě Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+- [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 55d0d029e8b22833b61ec3232e0027644296ced7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: secdec18
+ms.openlocfilehash: ab5f334b1c830ea5e9c0164b8e75ef0f4fab8e1b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001715"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075637"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Přiřazení přístupu k datům služby Cost Management
 
@@ -64,12 +64,12 @@ Přístup k oboru fakturační účet vyžaduje oprávnění správce podniku na
 1. Přihlaste se k portálu EA na [ https://ea.azure.com ](https://ea.azure.com) s účet správce podnikové sítě.
 2. Vyberte **spravovat** v levém podokně.
 3. Na **registrace** kartu, vyberte možnost registrace, který chcete spravovat.  
-    ![Portálu EA](./media/assign-access-acm-data/ea-portal.png)
+    ![Vyberte vaše registrace na portálu EA](./media/assign-access-acm-data/ea-portal.png)
 4. Klikněte na tlačítko **+ přidat správce**.
 5. V dialogovém okně Přidat správce vyberte typ ověřování a zadejte e-mailovou adresu uživatele.
 6. Pokud uživatel má mít přístup jen pro čtení pro data o využití a nákladů, v části **jen pro čtení**vyberte **Ano**.  V opačném případě vyberte **ne**.
 7. Klikněte na tlačítko **přidat** k vytvoření účtu.  
-    ![Přidat správce pole](./media/assign-access-acm-data/add-admin.png)
+    ![Příklad informace zobrazené v okně Přidat správce](./media/assign-access-acm-data/add-admin.png)
 
 Může trvat až 30 minut, než se nový uživatel může přístup k datům ve službě Cost Management.
 
@@ -85,7 +85,7 @@ Přístup k oboru oddělení vyžaduje oddělení správce (DA zobrazit náklady
 6. Pokud uživatel má mít přístup jen pro čtení pro data o využití a nákladů, v části **jen pro čtení**vyberte **Ano**.  V opačném případě vyberte **ne**.
 7. Vyberte jako vodítko použijte oddělení, které chcete udělit oprávnění pro správu oddělení.
 8. Klikněte na tlačítko **přidat** k vytvoření účtu.  
-    ![Přidat správce – oddělení](./media/assign-access-acm-data/add-depart-admin.png)
+    ![Zadejte požadované informace do textového pole přidat oddělení správce](./media/assign-access-acm-data/add-depart-admin.png)
 
 ## <a name="assign-enrollment-account-scope-access"></a>Přiřadit přístup k oboru registraci účtu
 
@@ -99,7 +99,7 @@ Přístup k rozsahu registrace účtu vyžaduje (AO zobrazit náklady) přístup
 6. Vyberte typ ověřování a zadejte název účtu.
 7. Zadejte e-mailovou adresu uživatele a volitelně zadejte nákladové středisko.
 8. Klikněte na **přidat** k vytvoření účtu.  
-    ![Přidat účet](./media/assign-access-acm-data/add-account.png)
+    ![Zadejte požadované informace do textového pole přidat účet pro účet pro zápis](./media/assign-access-acm-data/add-account.png)
 
 Po dokončení výše uvedených kroků, uživatelský účet stane registraci účtu na webu Enterprise Portal a můžete vytvářet odběry. Má uživatel přístup data o využití a nákladů pro předplatné, které vytvářejí.
 
@@ -107,7 +107,7 @@ Po dokončení výše uvedených kroků, uživatelský účet stane registraci �
 
 Přístup k oboru skupiny pro správu vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění pro skupinu pro správu. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro skupinu pro správu umožňující přístup pro ostatní uživatele. A musí také povolíte **AO zobrazit náklady** nastavení na portálu EA.
 
-1. Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Vyberte **všechny služby** na bočním panelu vyhledejte _skupin pro správu_a pak vyberte **skupin pro správu**.
 3. Vyberte skupiny pro správu v hierarchii.
 4. Vedle názvu skupiny pro správu, klikněte na tlačítko **podrobnosti**.
@@ -117,13 +117,13 @@ Přístup k oboru skupiny pro správu vyžaduje alespoň oprávnění Čtenář 
 8. V části **přiřadit přístup k**vyberte **uživatele Azure AD, skupinu nebo aplikaci**.
 9. K přiřazení přístupu, vyhledejte a vyberte uživatele.
 10. Klikněte na **Uložit**.  
-    ![Přidat oprávnění](./media/assign-access-acm-data/add-permissions.png)
+    ![informace z příkladu v poli Přidat oprávnění pro skupinu pro správu](./media/assign-access-acm-data/add-permissions.png)
 
 ## <a name="assign-subscription-scope-access"></a>Přiřazení předplatného obor přístupu
 
 Přístup k předplatnému vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění k předplatnému. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro předplatné, které chcete povolit přístup pro ostatní uživatele. A musí také povolíte **AO zobrazit náklady** nastavení na portálu EA.
 
-1. Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Vyberte **všechny služby** na bočním panelu vyhledejte _předplatná_a pak vyberte **předplatná**.
 3. Vyberte své předplatné.
 4. Vyberte **řízení přístupu (IAM)** v levém podokně.
@@ -137,7 +137,7 @@ Přístup k předplatnému vyžaduje alespoň oprávnění Čtenář náklady na
 
 Přístup do skupiny prostředků vyžaduje alespoň oprávnění Čtenář náklady na správu (nebo Čtenář). Na webu Azure Portal můžete nakonfigurovat oprávnění pro skupinu prostředků. Musíte mít alespoň oprávnění správce přístupu uživatelů (nebo vlastník) pro skupinu prostředků pro povolení přístupu pro ostatní uživatele. A musí také povolíte **AO zobrazit náklady** nastavení na portálu EA.
 
-1. Přihlaste se k webu Azure Portal na adrese [http://portal.azure.com](http://portal.azure.com).
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Vyberte **všechny služby** na bočním panelu vyhledejte _skupiny prostředků_a pak vyberte **skupiny prostředků**.
 3. Vyberte skupinu prostředků.
 4. Vyberte **řízení přístupu (IAM)** v levém podokně.

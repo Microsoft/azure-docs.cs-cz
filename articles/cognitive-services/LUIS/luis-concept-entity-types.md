@@ -1,21 +1,22 @@
 ---
-title: Typy entit v aplikacích pro LUIS – Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Typy entit
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Přidání entity (klíčových dat v doméně vaší aplikace) v aplikacích Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: fdf81943a7bdbae80f4474915a72bb61f1123a30
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
-ms.translationtype: MT
+ms.openlocfilehash: 761b2101ed7b55de27628882778c51bc86c70ef4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085822"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075654"
 ---
 # <a name="entities-in-luis"></a>Entity v LUIS
 
@@ -71,7 +72,7 @@ Služba LUIS nabízí mnoho typů entit; předem připravených entit, vlastníh
 | Název | Lze označit | Popis |
 | -- |--|--|
 | **Předem připravené** <br/>[Vlastní](#prebuilt)| |  **Definice**<br>Vestavěné typy, které představují běžné koncepty. <br><br>**Seznam**<br/>počet klíčových frází, pořadí, teploty, dimenze, peníze, věk, procento, e-mailu, adresa URL, telefonní číslo a klíčových frází. <br><br>Názvy předem připravených entit, jsou vyhrazena. <br><br>Všechny předem připravených entit, které jsou přidané do aplikace jsou vráceny v [koncový bod](luis-glossary.md#endpoint) dotazu. Další informace najdete v tématu [předem připravených entit](./luis-prebuilt-entities.md). <br/><br/>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **Regulární výraz**<br/>[Regulární výraz](#regex)||**Definice**<br>Vlastní regulárního výrazu pro text formátovaný nezpracovaná utterance. Ignoruje velikost písmen a ignoruje kulturní variant.  <br><br>Tato entita je vhodný pro slova nebo fráze, které jsou s jakékoli změny, které je konzistentní s konzistentním formátováním.<br><br>Porovnávání regulárních výrazů se použije po změny pro kontrolu pravopisu. <br><br>Pokud regulární výraz je příliš složitý, jako je třeba použití mnoha závorky, nejste schopni přidat výraz do modelu. <br><br>**Příklad**<br>`kb[0-9]{6,}` odpovídá kb123456.<br/><br/>[Rychlý start](luis-quickstart-intents-regex-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md)|
+|<!-- added week of 3/21/08 --> **Regulární výraz**<br/>[Regulární výraz](#regex)||**Definice**<br>Vlastní regulárního výrazu pro text formátovaný nezpracovaná utterance. Ignoruje velikost písmen a ignoruje kulturní variant.  <br><br>Tato entita je vhodný pro slova nebo fráze, které jsou s jakékoli změny, které je konzistentní s konzistentním formátováním.<br><br>Porovnávání regulárních výrazů se použije po kontrolu pravopisu změny na úrovni znak není úroveň tokenu. Využívá část, ale ne všechny [.Net regulární výraz](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) knihovny.<br><br>Pokud regulární výraz je příliš složitý, jako je třeba použití mnoha závorky, nejste schopni přidat výraz do modelu. <br><br>**Příklad**<br>`kb[0-9]{6,}` odpovídá kb123456.<br/><br/>[Rychlý start](luis-quickstart-intents-regex-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md)|
 | **Jednoduché** <br/>[Zjištěné počítače](#machine-learned) | ✔ | **Definice**<br>Jednoduché entita je obecné entity, která popisuje jeden koncept a zjistili díky spolupráci se naučili počítač kontextu. Kontext obsahovat výběr aplikace word, slovo umístění a utterance délka.<br/><br/>To je dobrý entita slov nebo slovních spojení, které nejsou naformátovány konzistentně, ale označují stejnou věc. <br/><br/>[Rychlý start](luis-quickstart-primary-and-secondary-data.md)<br/>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#simple-entity-data)|  
 | **Seznam** <br/>[Přesná shoda](#exact-match)|| **Definice**<br>Seznam entit představují sadu související slova spolu s jejich synoymns pevné, uzavřené v systému. <br><br>Každá entita seznamu může mít jeden nebo více formulářů. Nejvhodnější pro známé sady změn v způsoby, jak reprezentaci stejný koncept.<br/><br/>Služba LUIS nevyhledává další hodnoty pro seznam entit. Použití **doporučujeme** funkce návrhy pro nové slova na základě aktuálního seznamu.<br/><br>Pokud existuje více než jednu entitu seznamu se stejnou hodnotou, je každá entita vrácené dotazem koncový bod. <br/><br/>[Rychlý start](luis-quickstart-intent-and-list-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.Any** <br/>[Smíšené](#mixed) | ✔|**Definice**<br>Patterns.any je použít jenom v utterance vzor šablony k označení, ve kterém entita začíná a končí zástupným symbolem proměnné délky.  <br><br>**Příklad**<br>Zadaný utterance hledat podle názvu knihy, extrahuje pattern.any úplný název. Je šablona utterance pomocí pattern.any `Who wrote {BookTitle}[?]`.<br/><br/>[Kurz](luis-tutorial-pattern.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#composite-entity-data)|  
@@ -98,7 +99,7 @@ Kontrola [omezení](luis-boundaries.md#model-boundaries) porozumět, kolik jedno
 
 ## <a name="roles-versus-hierarchical-entities"></a>Role a hierarchické entity
 
-Další informace najdete v tématu [role a hierarchické entity](luis-concept-roles.md#roles-versus-hierarchical-entities).
+Další informace najdete v tématu věnovaném [porovnání rolí a hierarchických entit](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="composite-vs-hierarchical-entities"></a>Složený vs hierarchické entity
 Složené a hierarchické entit jak mají vztahů nadřazenosti a podřízenosti a jsou počítače se naučili. Machine learning umožňuje LUIS vysvětlení konceptu entit podle různých kontextech (uspořádání slov). Složený entity jsou flexibilnější, protože umožňují typy různých entit jako podřízené objekty. Hierarchické entity podřízené objekty jsou pouze jednoduché entity. 

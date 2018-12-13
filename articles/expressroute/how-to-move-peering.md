@@ -1,33 +1,23 @@
 ---
-title: Přesunout veřejný partnerský vztah na Azure ExpressRoute pro partnerský vztah Microsoftu | Dokumentace Microsoftu
+title: Přesunout veřejný partnerský vztah Microsoftu partnerský vztah - Azure ExpressRoute | Dokumentace Microsoftu
 description: Tento článek ukazuje postup přesunutí váš veřejný partnerský vztah Microsoftu na ExpressRoute.
 services: expressroute
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: expressroute
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 579f8874459004ef6bfa0d0794ab09333e053acb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seodec18
+ms.openlocfilehash: 6b2bce6b488698db0a72c9a17f67c2555c6afa5b
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966106"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53100017"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Přesunout veřejného partnerského vztahu k partnerskému vztahu Microsoftu
 
-ExpressRoute podporuje použití partnerských vztahů s filtry tras pro služby Azure PaaS, jako je Azure Storage a Azure SQL Database. Teď potřebujete k přístupu ke službám PaaS a SaaS Microsoftu jenom jednu doménu směrování. Pomocí filtrů tras můžete selektivně inzerovat předpony služby PaaS do oblastí Azure, které chcete používat.
-
-Tento článek pomáhá přesunout konfiguraci veřejného partnerského vztahu Microsoftu partnerského vztahu bez výpadků. Další informace o směrování domény a vztahy, naleznete v tématu [ExpressRoute okruzích a doménách směrování](expressroute-circuit-peerings.md).
-
+Tento článek pomáhá přesunout konfiguraci veřejného partnerského vztahu Microsoftu partnerského vztahu bez výpadků. ExpressRoute podporuje použití partnerských vztahů s filtry tras pro služby Azure PaaS, jako je Azure Storage a Azure SQL Database. Teď potřebujete k přístupu ke službám PaaS a SaaS Microsoftu jenom jednu doménu směrování. Pomocí filtrů tras můžete selektivně inzerovat předpony služby PaaS do oblastí Azure, které chcete používat. Další informace o směrování domény a vztahy, naleznete v tématu [ExpressRoute okruzích a doménách směrování](expressroute-circuit-peerings.md).
 
 ## <a name="before"></a>Než začnete
 

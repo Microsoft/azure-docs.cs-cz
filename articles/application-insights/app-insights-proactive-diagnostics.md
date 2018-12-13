@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: a023a18fb6f251ea878c54159509709a87daaa84
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b884fc15770e91268d1033dc4bab9bf96766de94
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724702"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868935"
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentní detekce ve službě Application Insights
  Inteligentní zjišťování automaticky upozorní vás na potenciální problémy s výkonem ve webové aplikaci. Provádí proaktivní analýzy telemetrie, která vaše aplikace odesílá do [Application Insights](app-insights-overview.md). Pokud je nečekané zvýšení míry selhání nebo nestandardní vzorce výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce vyžaduje žádná konfigurace. To funguje, pokud vaše aplikace odesílá dostatek telemetrie.
@@ -56,7 +56,7 @@ Tyto diagnostické nástroje umožňují kontrolovat telemetrie z vaší aplikac
 
 * [Průzkumník metrik](app-insights-metrics-explorer.md)
 * [Průzkumník služby Search](app-insights-diagnostic-search.md)
-* [Analýza – výkonný dotazovací jazyk](../log-analytics/query-language/get-started-analytics-portal.md)
+* [Analýza – výkonný dotazovací jazyk](../azure-monitor/log-query/get-started-portal.md)
 
 Inteligentní zjišťování je úplně automatický. Ale možná chcete nastavit některé další oznámení?
 

@@ -1,25 +1,19 @@
 ---
-title: Azure ExpressRoute pro poskytovatele Cloud Solution Provider | Dokumentace Microsoftu
-description: Tento článek obsahuje informace pro poskytovatele cloudových služeb, kteří do svých nabídek chtějí začlenit služby Azure a ExpressRoute.
-documentationcenter: na
+title: ExpressRoute pro poskytovatele Cloud Solution Provider – Azure | Dokumentace Microsoftu
+description: Tento článek obsahuje informace pro poskytovatele Cloud Solution Provider chtít začlenit služby Azure a ExpressRoute do svých nabídek.
 services: expressroute
 author: richcar
-manager: carmonm
-editor: ''
-ms.assetid: f6c5f8ee-40ba-41a1-ae31-67669ca419a6
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
+ms.topic: article
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: 9991da5d5ab6f43cc8c5ebf1672d7da0f1ad061e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.custom: seodec18
+ms.openlocfilehash: 842654f860a94481b53ebf9732fc4ed8be24cf4a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405700"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077507"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>Azure ExpressRoute pro poskytovatele Cloud Solution Provider
 Společnost Microsoft poskytuje pro tradiční prodejce a distributory (poskytovatele Cloud Solution Provider) hyperškálovatelné služby, aby mohli pro vaše zákazníky rychle zřizovat nové služby a řešení bez nutnosti investovat do vývoje těchto nových služeb. Aby měl poskytovatel Cloud Solution Provider (CSP) možnosti spravovat tyto služby přímo, poskytuje společnost Microsoft programy a rozhraní API umožňující poskytovateli CSP spravovat prostředky Microsoft Azure za své zákazníky. Jeden z těchto prostředků je ExpressRoute. ExpressRoute umožňuje poskytovateli CSP připojovat prostředky zákazníků ke službám Azure. ExpressRoute je vysokorychlostní propojení se službami v Azure, které zajišťuje privátní komunikaci. 
@@ -130,7 +124,7 @@ V závislosti na používaném modelu (přímé připojení nebo nepřímé při
 
 ![alternativní text](./media/expressroute-for-cloud-solution-providers/expressroute-security.png)  
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Služba poskytovatele Cloud Solution Provider nabízí možnost zvýšení hodnoty pro zákazníky bez nutnosti nákupu nákladné infrastruktury a schopností a zachování vaší pozice primárního poskytovatele outsourcingu. Bezproblémovou integraci s Microsoft Azure je možné zajistit prostřednictvím rozhraní API CSP. Díky tomu lze správu Microsoft Azure integrovat s vašimi stávajícími strukturami správy.  
 
 Další informace najdete prostřednictvím následujících odkazů:

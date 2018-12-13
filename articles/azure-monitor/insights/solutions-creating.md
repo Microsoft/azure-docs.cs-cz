@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c842efd6c66fd70bbac3969090b71c42c725545
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 24ffe9eded908c82750ce5a6d6fbe87991bdae72
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839632"
+ms.locfileid: "52872838"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -46,7 +46,7 @@ Prvním krokem při navrhování řešení je určení data, která budete potř
 
 Existuje mnoho způsobů, zdroje dat, které můžete shromážděných v úložišti Log Analytics, jak je popsáno v [zdroje dat v Log Analytics](../../azure-monitor/platform/agent-data-sources.md).  To zahrnuje události v protokolu událostí Windows nebo generovaných Syslog kromě čítače výkonu pro klienty Windows a Linux.  Může také shromažďovat data z prostředků Azure, které jsou shromážděné službou Azure Monitor.  
 
-Pokud potřebujete data, která není dostupný pomocí některého z dostupných datových zdrojů, pak můžete použít [rozhraní API kolekce dat HTTP](../../log-analytics/log-analytics-data-collector-api.md) která umožňuje zápis dat do úložiště Log Analytics z libovolného klienta, která může volat rozhraní REST API.  Nejčastěji používané prostředky kolekce vlastních dat v řešení pro správu, je vytvořit [sady runbook ve službě Azure Automation](../../automation/automation-runbook-types.md) , který shromažďuje požadovaná data z Azure nebo externích prostředků a používá k zápisu do rozhraní API kolekce dat úložiště.  
+Pokud potřebujete data, která není dostupný pomocí některého z dostupných datových zdrojů, pak můžete použít [rozhraní API kolekce dat HTTP](../../azure-monitor/platform/data-collector-api.md) která umožňuje zápis dat do úložiště Log Analytics z libovolného klienta, která může volat rozhraní REST API.  Nejčastěji používané prostředky kolekce vlastních dat v řešení pro správu, je vytvořit [sady runbook ve službě Azure Automation](../../automation/automation-runbook-types.md) , který shromažďuje požadovaná data z Azure nebo externích prostředků a používá k zápisu do rozhraní API kolekce dat úložiště.  
 
 ### <a name="log-searches"></a>Prohledávání protokolů
 [Prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) slouží k extrahování a analýzy dat v úložišti Log Analytics.  Používají se v zobrazeních a výstrahy navíc umožňuje uživateli provádět ad hoc analýzy dat v úložišti.  

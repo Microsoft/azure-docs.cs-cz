@@ -1,5 +1,5 @@
 ---
-title: Porovnání různých produktů pro strojové učení od Microsoftu – Azure | Microsoft Docs
+title: Porovnání strojového učení možnosti produktu v Microsoftu
 description: Porovnejte produkty v široké nabídce Microsoftu pro sestavování, nasazování a správu modelů strojového učení. Rozhodněte, které produkty by byly vhodné pro vaše řešení.
 services: machine-learning
 ms.service: machine-learning
@@ -8,36 +8,36 @@ ms.topic: overview
 ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
-ms.date: 09/24/2018
-ms.openlocfilehash: 182504373795b3cb0f2794acbed5e253ac6bc95c
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.date: 12/04/2018
+ms.openlocfilehash: a778a371e28b0406d43aa07bbc0c0c039654f7b9
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419555"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073767"
 ---
-# <a name="what-are-the-machine-learning-product-options-from-microsoft"></a>Jaké produkty pro strojové učení nabízí Microsoft?
+# <a name="what-are-the-machine-learning-products-at-microsoft"></a>Co je strojové učení produktů v Microsoftu?
 
 Microsoft nabízí širokou škálu produktů pro sestavování, nasazování a správu modelů strojového učení. Porovnejte si je a zvolte ty, které potřebujete, aby vývoj vašich řešení pro strojové učení byl co nejefektivnější.
 
 | Produkt pro strojové učení | Co to je | Jaké nabízí možnosti |
 |-|-|-|
-| V cloudu | | |
+| ***V cloudu*** | | |
 | [Služba Azure Machine Learning](#azure-machine-learning-services) | Spravovaná cloudová služba pro strojové učení  | Trénování, nasazování a správa modelů v Azure s použitím Pythonu a rozhraní CLI |
-| [Azure Machine Learning Studio](#azure-machine-learning-studio) | Vizuální rozhraní pro strojové učení na bázi přetahování myší | Sestavování a nasazování modelů pomocí předkonfigurovaných algoritmů a experimentování s nimi |
+| [Azure Machine Learning Studio](#azure-machine-learning-studio) | Přetáhněte&ndash;a&ndash;vizuální rozhraní pro ML | Sestavování a nasazování modelů pomocí předkonfigurovaných algoritmů a experimentování s nimi |
 | [Azure Databricks](#azure-databricks) | Analytická platforma založená na Sparku | Sestavování a nasazování modelů a pracovních postupů pro data |
 | [Azure Cognitive Services](#azure-cognitive-services) | Služby Azure s předkonfigurovanými modely umělé inteligence a strojového učení | Jednoduché přidávání inteligentních funkcí do vašich aplikací |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | Virtuální počítač s předinstalovanými nástroji pro datové vědy | Vývoj řešení pro strojové učení v předkonfigurovaném prostředí |
-| Lokálně | | |
+| ***Místní***<br>*(pro místní servery také mohou být spuštěny na virtuálním počítači v cloudu)* | | |
 | [SQL Server Machine Learning Services](#sql-server-machine-learning-services) | Analytický modul vložený do SQL | Sestavování a nasazování modelů na SQL Serveru |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | Samostatný firemní server pro prediktivní analýzy | Sestavování a nasazování modelů v jazycích R a Python |
-| Vývojářské nástroje | | |
+| ***Nástroje pro vývojáře*** | | |
 | [ML.NET](#mlnet) | Multiplatformní sada SDK typu open source pro strojové učení | Vývoj řešení strojového učení pro aplikace .NET |
 | [Windows ML](#windows-ml) | Platforma strojového učení pro Windows 10 | Vyhodnocování trénovaných modelů na zařízení s Windows 10 |
 
 ## <a name="azure-machine-learning-service"></a>Služba Azure Machine Learning
 
-[Služba Azure Machine Learning](overview-what-is-azure-ml.md) (Preview) je plně spravovaná cloudová služba sloužící k trénování, nasazování a správě modelů strojového učení ve velkém měřítku. Plně podporuje open source technologie, takže můžete používat desítky tisíc volně dostupných balíčků Pythonu, například TensorFlow, PyTorch a scikit-learn. K dispozici jsou také plnohodnotné nástroje, například [poznámkové bloky Azure](https://notebooks.azure.com/), [poznámkové bloky Jupyter](http://jupyter.org) nebo [Visual Studio Code Tools for AI](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/), které usnadňují zkoumání a transformace dat a následné trénování a vývoj modelů. Azure Machine Learning obsahuje funkce, které automatizují generování a ladění modelů, a to snadno, efektivně a přesně.
+[Služba Azure Machine Learning](overview-what-is-azure-ml.md) je plně spravovaná Cloudová služba použít k trénování, nasazovat a spravovat modely ML ve velkém měřítku. Plně podporuje open source technologie, takže můžete používat desítky tisíc volně dostupných balíčků Pythonu, například TensorFlow, PyTorch a scikit-learn. Bohaté nástroje jsou k dispozici, například také [poznámkových bloků Azure](https://notebooks.azure.com/), [poznámkové bloky Jupyter](http://jupyter.org), nebo [Azure Machine Learning pro Visual Studio Code](https://visualstudio.microsoft.com/downloads/ai-tools-vscode/) rozšíření umožňují snadno zkoumat a transformace dat a poté je trénovat a nasazovat modely. Azure Machine Learning obsahuje funkce, které automatizují generování a ladění modelů, a to snadno, efektivně a přesně.
 
 Pomocí služby Azure Machine Learning můžete trénovat, nasazovat a spravovat modely strojového učení s použitím Pythonu a rozhraní CLI ve velkém měřítku.
 
@@ -74,9 +74,10 @@ Pomocí Cognitive Services můžete vyvíjet aplikace napříč různými zaří
 ## <a name="azure-data-science-virtual-machine"></a>Azure Data Science Virtual Machine
 
 [Azure Data Science Virtual Machine](../data-science-virtual-machine/overview.md) je přizpůsobené prostředí virtuálního počítače v cloudu Microsoft Azure vytvořené speciálně pro účely datových věd. Obsahuje řadu oblíbených předinstalovaných nástrojů datové vědy a dalších funkcí a je předem nakonfigurovaná, abyste mohli hned začít sestavovat inteligentní aplikace pro pokročilou analýzu.
-Data Science Virtual Machine je k dispozici ve verzích pro Windows i Linux Ubuntu (služba Azure Machine Learning není podporována v Linux CentOS).
-Informace o konkrétní verzi a přehled jejích součástí najdete v tématu [Úvod k prostředí Azure Data Science Virtual Machine](../data-science-virtual-machine/overview.md).
+
 Prostředí Data Science Virtual Machine je podporováno jako cíl pro službu Azure Machine Learning.
+Je k dispozici ve verzích pro Windows i Linux Ubuntu (Azure Machine Learning služba se nepodporuje na Linux CentOS).
+Informace o konkrétní verzi a přehled jejích součástí najdete v tématu [Úvod k prostředí Azure Data Science Virtual Machine](../data-science-virtual-machine/overview.md).
 
 Data Science VM použijte, když potřebujete spustit nebo hostovat úlohy v jednom uzlu. nebo když potřebujete vzdáleně vertikálně navýšit kapacitu zpracování v jednom počítači.
 
@@ -86,9 +87,9 @@ Data Science VM použijte, když potřebujete spustit nebo hostovat úlohy v jed
 
 SQL Server Machine Learning Services použijte, pokud potřebujete integrovanou umělou inteligenci a prediktivní analýzy v relačních datech na SQL Serveru.
 
-## <a name="microsoft-machine-learning-server"></a>Microsoft Machine Learning Server
+## <a name="microsoft-machine-learning-server"></a>Server Microsoft Machine Learning
 
-[Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server) je podnikový server pro hostování a správu paralelních a distribuovaných úloh procesů jazyka R a Python. Microsoft Machine Learning Server běží na systémech Linux, Windows, Hadoop a Apache Spark a je také k dispozici přes [HDInsight](https://azure.microsoft.com/services/hdinsight/r-server/). Poskytuje prováděcí modul pro řešení sestavená pomocí balíčků [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package) a [MicrosoftML](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package) a rozšiřuje open source jazyky R a Python doplněním podpory vysoce výkonných analýz, statistických analýz, strojového učení a velmi rozsáhlých datových sad. Tuto funkci zajišťují vlastnicky chráněné balíčky, které se instalují se serverem. Pro vývoj můžete používat integrovaná vývojová prostředí (IDE) jako [Nástroje R pro Visual Studio](https://www.visualstudio.com/vs/rtvs/) a [Python Tools for Visual Studio](https://www.visualstudio.com/vs/python/).
+[Server Microsoft Machine Learning](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server) je podnikový server pro hostování a správu paralelních a distribuovaných úloh procesů jazyka R a Python. Microsoft Machine Learning Server běží na systémech Linux, Windows, Hadoop a Apache Spark a je také k dispozici přes [HDInsight](https://azure.microsoft.com/services/hdinsight/r-server/). Poskytuje prováděcí modul pro řešení sestavená pomocí balíčků [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package) a [MicrosoftML](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package) a rozšiřuje open source jazyky R a Python doplněním podpory vysoce výkonných analýz, statistických analýz, strojového učení a velmi rozsáhlých datových sad. Tuto funkci zajišťují vlastnicky chráněné balíčky, které se instalují se serverem. Pro vývoj můžete používat integrovaná vývojová prostředí (IDE) jako [Nástroje R pro Visual Studio](https://www.visualstudio.com/vs/rtvs/) a [Python Tools for Visual Studio](https://www.visualstudio.com/vs/python/).
 
 Microsoft Machine Learning Server použijte, pokud chcete na serveru sestavovat a provozovat modely sestavené v jazycích R a Python nebo distribuovat trénování na bázi R a Python ve velkém měřítku v clusteru Hadoop nebo Spark.
 
@@ -104,7 +105,7 @@ ML.NET použijte, pokud chcete řešení pro strojové učení integrovat do sv�
 
 Windows ML zvolte, pokud chcete používat natrénované modely strojového učení v rámci aplikací pro Windows.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o všech produktech pro vývoj umělé inteligence (AI) dostupných od Microsoftu najdete v tématu [Platforma Microsoft AI](https://www.microsoft.com/ai).
 - Kurzy k vývoji řešení AI najdete na webu [Microsoft AI School](https://aischool.microsoft.com/learning-paths)

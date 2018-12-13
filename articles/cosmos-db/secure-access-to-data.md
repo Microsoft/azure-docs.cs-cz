@@ -1,20 +1,18 @@
 ---
-title: Zjistěte, jak zabezpečit přístup k datům ve službě Azure Cosmos DB | Dokumentace Microsoftu
+title: Zjistěte, jak zabezpečit přístup k datům ve službě Azure Cosmos DB
 description: Další informace o konceptech správy přístupů ovládacího prvku ve službě Azure Cosmos DB, včetně hlavních klíčů, klíče jen pro čtení, uživatelů a oprávnění.
 services: cosmos-db
 author: rafats
-manager: kfile
 ms.service: cosmos-db
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: 0d5243a1dd2a7c9244860da15d39f407b281e1e3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 1d1bc011de579588567fac3debe9d0b4af5d29f7
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726793"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52878320"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Zabezpečení přístupu k datům služby Azure Cosmos DB
 Tento článek obsahuje základní informace o zabezpečení přístupu k datům uloženým v [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

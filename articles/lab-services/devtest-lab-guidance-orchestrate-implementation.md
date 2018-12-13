@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 62c89861d784931b2a13297abac578010e0fea5f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 61ec9d0639f4bee950be69ee951492974ac95c64
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251006"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867464"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Orchestrace implementace Azure DevTest Labs
 Tento článek poskytuje doporučený postup pro rychlé nasazení a implementaci služby Azure DevTest Labs. Následující obrázek zdůrazňuje celkový proces jako doporučený postup při sledování flexibilitu pro podporu různých oborovými požadavky a scénáře.
@@ -46,7 +46,7 @@ Jakmile se topologie sítě je na místě, první/pilotního nasazení testovac�
 2. Určení povolených imagí virtuálních počítačů a velikosti pro použití s nástrojem lab. Rozhodněte, zda vlastní Image se dají nahrát do Azure pro použití s DevTest Labs.
 3. Zabezpečený přístup k testovacím prostředí tak, že vytvoříte počáteční základní přístupu Role ovládacích prvků (RBAC) pro testovací prostředí (uživatelé testovacího prostředí a vlastníků testovacího prostředí). Doporučujeme použít účty active directory synchronizované se službou Azure Active Directory pro identitu s DevTest Labs.
 4. Nakonfigurujte DevTest Labs můžete pomocí zásad, jako je například plány cost management, nárokovatelných virtuálních počítačů, vlastní Image nebo vzorce.
-5. Vytvoření online úložiště jako je například VSTS/Git.
+5. Vytvořte je online úložiště, jako je například úložiště/Git v Azure.
 6. Při rozhodování o použití veřejného nebo privátního úložiště nebo kombinaci obojího. Pro nasazení a dlouhodobé sustainment uspořádání šablony JSON.
 7. V případě potřeby při vytváření vlastních artefaktů. Tento krok je volitelný. 
 

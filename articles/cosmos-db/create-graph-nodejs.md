@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 0f2bcc34a1f82c33c8f640dce8eecccf312651fb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 58fca9e66b0be12992d7762824df4ceb9a22e614
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844206"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073410"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Databáze Azure Cosmos: Vytvoření aplikace Node.js využitím rozhraní Gremlin API
 
@@ -36,7 +36,7 @@ Tento rychlý start popisuje způsob vytvoření účtu rozhraní [Gremlin API](
 
 Než budete moct tuto ukázku spustit, je potřeba splnit následující požadavky:
 * [Node.js](https://nodejs.org/en/) verze 0.10.29 nebo novější
-* [Git](http://git-scm.com/)
+* [Git](https://git-scm.com/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

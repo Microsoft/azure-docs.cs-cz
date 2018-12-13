@@ -14,12 +14,12 @@ ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: d81e2089fed1e855f419234967cec26a491a0f0e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: MT
+ms.openlocfilehash: dac89bae7fa12075deeb3842ad74979f8b237946
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975637"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074653"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolů v Log Analytics
 
@@ -29,7 +29,7 @@ V Log Analytics můžete využít prohledávání protokolů vytvářením dotaz
 > * Jednoduché hledání dat událostí a použití funkcí k úpravě a filtrování výsledků 
 > * Práce s daty výkonu
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru Log Analytics](../../log-analytics/log-analytics-quick-collect-azurevm.md).  
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 Vytvářet a upravovat dotazy a také interaktivně pracovat s vrácenými daty můžete jedním ze dvou způsobů.  Pro základní dotazy použijte stránku Prohledávání protokolů na webu Azure Portal. Pro pokročilé dotazování můžete použít portál pro pokročilou analýzu. Další informace o rozdílech mezi funkcemi na těchto dvou portálech najdete v tématu [Portály pro vytváření a úpravy dotazů na protokoly v Azure Log Analytics](../../azure-monitor/log-query/portals.md).
 

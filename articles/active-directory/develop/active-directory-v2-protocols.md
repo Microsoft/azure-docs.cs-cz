@@ -17,19 +17,19 @@ ms.date: 12/01/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1eea38a5a360d8ab12aa4ff6dac7161828ec1c72
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 2d0530e2d7b97c4b3fda84f796de1a0e2857e2ac
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682992"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52871995"
 ---
 # <a name="v20-protocols---oauth-20-and-openid-connect"></a>verze 2.0 protokolů: OAuth 2.0 a OpenID Connect
 
 Koncový bod verze 2.0, můžete použít Azure Active Directory (Azure AD) pro identity-as-a-service pomocí standardní protokoly, OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, může být drobné rozdíly mezi implementacemi dvě z těchto protokolů. Zde uvedené informace budou užitečné, pokud budete chtít napsat kód tak, že přímo, odesílání a zpracování žádostí HTTP nebo pomocí open source knihovnu třetí strany místo pomocí jedné z našich [knihovny open-source](reference-v2-libraries.md).
 
 > [!NOTE]
-> Ne všechny scénáře Azure Azure AD a funkce jsou podporovány bodem v2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
+> Ne všechny funkce a scénáře služby Azure AD jsou podporovány koncovým bodem verze 2.0. Pokud chcete zjistit, pokud je vhodné použít koncový bod verze 2.0, přečtěte si informace o [v2.0 omezení](active-directory-v2-limitations.md).
 
 ## <a name="the-basics"></a>Základy
 

@@ -1,6 +1,5 @@
 ---
-title: Trénování modelů s TensorFlow
-titleSuffix: Azure Machine Learning service
+title: Trénování TensorFlow modelů Azure Machine Learning
 description: Zjistěte, jak spustit jeden uzel nebo pro distribuované trénování TensorFlow modelů s TensorFlow odhad
 services: machine-learning
 ms.service: machine-learning
@@ -10,15 +9,14 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.custom: seodec18
-ms.openlocfilehash: d15d3ed115009ad1395a85d36e833d85197d4d19
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.openlocfilehash: 5746180b894da265dfc02176c13b5f9b60f4df96
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094100"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872777"
 ---
-# <a name="train-tensorflow-models-with-azure-machine-learning-service"></a>Trénování TensorFlow modelů pomocí služby Azure Machine Learning
+# <a name="how-to-train-tensorflow-models"></a>Trénování TensorFlow modelů
 
 Pro výuku hluboké neuronové sítě (DNN) s využitím TensorFlow, Azure Machine Learning nabízí vlastní `TensorFlow` třídu `Estimator`. Azure SDK `TensorFlow` estimator (nechcete conflated s [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) třídy) vám umožní snadno odesílat úlohy trénování TensorFlow pro spuštění jedním uzlem a distribuované na výpočetní prostředky Azure.
 

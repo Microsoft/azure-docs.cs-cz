@@ -1,5 +1,5 @@
 ---
-title: Monitorování připojení Azure pro kontejnery (Preview) | Dokumentace Microsoftu
+title: Monitorování připojení Azure pro kontejnery | Dokumentace Microsoftu
 description: Tento článek popisuje, jak můžete připojit a konfigurace služby Azure Monitor pro kontejnery to vám umožní pochopit, jaký je výkon vašeho kontejneru a byly zjištěny problémy související s výkonem.
 services: azure-monitor
 documentationcenter: ''
@@ -12,24 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/05/2018
+ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 03fea6cf1276172893f18f1b09c8e3fdeec4ac4f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: MT
+ms.openlocfilehash: 6f425fceb4bb4755b922cac427802a19436507d2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001157"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53080871"
 ---
-# <a name="how-to-onboard-azure-monitor-for-containers-preview"></a>Monitorování připojení Azure pro kontejnery (Preview) 
+# <a name="how-to-onboard-azure-monitor-for-containers"></a>Monitorování připojení Azure pro kontejnery  
 Tento článek popisuje, jak nastavit službu Azure Monitor k monitorování výkonu úlohy, které se nasazují do prostředí Kubernetes a hostitelem pro kontejnery [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
 
-Azure Monitor pro kontejnery lze povolit pro nová nasazení AKS pomocí následujících podporovaných metod:
+Azure Monitor pro kontejnery může být povoleno na nový, nebo nepodporuje jeden nebo více existujících nasazení AKS pomocí následující metody:
 
-* Nasazení spravovaného clusteru Kubernetes z webu Azure portal nebo pomocí rozhraní příkazového řádku Azure
-* Vytvoření clusteru Kubernetes pomocí [Terraform a AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
-
-Můžete také povolit monitorování pro jednu nebo více existujících AKS clustery z webu Azure portal nebo pomocí rozhraní příkazového řádku Azure. 
+* Azure portal nebo pomocí rozhraní příkazového řádku Azure
+* Pomocí [Terraform a AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
 
 ## <a name="prerequisites"></a>Požadavky 
 Než začnete, ujistěte se, že máte následující:
@@ -41,7 +39,9 @@ Než začnete, ujistěte se, že máte následující:
 
 ## <a name="components"></a>Komponenty 
 
-Vaše schopnost sledování výkonu spoléhá na kontejnerizovaných agenta Log Analytics pro Linux, které shromažďuje data událostí výkonu a ze všech uzlů v clusteru. Agent automaticky nasazení a registraci s zadaný pracovní prostor Log Analytics, když povolíte monitorování Azure pro kontejnery. Verze nasazení je microsoft / oms:ciprod04202018 nebo novější a je reprezentována datum v následujícím formátu: *mmddyyyy*. 
+Vaše schopnost sledování výkonu spoléhá na kontejnerizovaných agenta Log Analytics pro Linux, konkrétně vyvinuté pro monitorování Azure pro kontejnery. Tento speciální agent shromažďuje data událostí výkonu a ze všech uzlů v clusteru, a automaticky agenta nasazení a registraci s zadaný pracovní prostor Log Analytics během nasazení. Verze agenta je microsoft / oms:ciprod04202018 nebo novější a představuje datum v následujícím formátu: *mmddyyyy*. 
+
+Po vydání nové verze agenta, dojde k automatickému upgradu na vaše spravované clustery Kubernetes hostované ve službě Azure Kubernetes Service (AKS). Postupujte podle vydané verze, najdete v článku [oznámení verzi agenta](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). 
 
 >[!NOTE] 
 >Pokud už jste nasadili AKS cluster, povolte monitorování pomocí Azure CLI nebo zadané šablony Azure Resource Manageru, jak je uvedeno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranit, znovu nasadit nebo nasadit agenta. Šablona musí být nasazený ve stejné skupině prostředků jako cluster."
@@ -52,13 +52,20 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 ## <a name="enable-monitoring-for-a-new-cluster"></a>Zapněte sledování pro nový cluster
 Během nasazení můžete povolit monitorování na webu Azure Portal, rozhraní příkazového řádku Azure nebo s využitím Terraformu nový cluster AKS.  Postupujte podle kroků v tomto článku rychlý Start [Nasaďte cluster Azure Kubernetes Service (AKS)](../../aks/kubernetes-walkthrough-portal.md) Pokud chcete povolit z portálu. Na **monitorování** stránky, pro **povolit monitorování** možnosti, vyberte **Ano**a potom vyberte existující pracovní prostor Log Analytics nebo vytvořte novou. 
 
+### <a name="enable-using-azure-cli"></a>Povolení s využitím rozhraní příkazového řádku Azure
 Chcete-li povolit monitorování pomocí Azure CLI vytvořili nový cluster AKS, postupujte podle kroku v části tohoto článku rychlý Start [clusteru AKS vytvořit](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
 >Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejprve nainstalovat a používat rozhraní příkazového řádku místně. Musíte používat Azure CLI verze 2.0.43 nebo novější. Zjistěte verzi, spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku Azure, najdete v článku [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 >
 
-Pokud jste [nasazujete cluster AKS pomocí Terraformu](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), můžete také povolit monitorování Azure pro kontejnery zahrnutím argument [ **addon_profile** ](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) a určení **oms_agent**.  
+### <a name="enable-using-terraform"></a>Povolení s využitím Terraformu
+Pokud jste [nasazení nového clusteru AKS pomocí Terraformu](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), zadejte argumenty potřebné v profilu [vytvořit pracovní prostor Log Analytics](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) Pokud není rozhodli zadejte existující. 
+
+>[!NOTE]
+>Pokud zvolíte použití Terraformu, musí běžet Terraformu pro Azure RM poskytovatele verze 1.17.0 nebo vyšší.
+
+Přidat Azure monitorování kontejnerů do pracovního prostoru, naleznete v tématu [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a dokončete profil zahrnutím [ **addon_profile** ](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) a zadat **oms_agent**. 
 
 Poté, co jste povolili monitorování a úspěšném dokončení všech konfiguračních úloh, můžete sledovat výkon cluster v některém ze dvou způsobů:
 
@@ -97,14 +104,28 @@ Výstup bude vypadat takto:
 provisioningState       : Succeeded
 ```
 
+### <a name="enable-monitoring-using-terraform"></a>Povolte monitorování pomocí Terraformu
+1. Přidat **oms_agent** doplněk profilu k existujícím [azurerm_kubernetes_cluster prostředků](https://www.terraform.io/docs/providers/azurerm/d/kubernetes_cluster.html#addon_profile)
+
+   ```
+   addon_profile {
+    oms_agent {
+      enabled                    = true
+      log_analytics_workspace_id = "${azurerm_log_analytics_workspace.test.id}"
+     }
+   }
+   ```
+
+2. Přidat [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) následující kroky v dokumentaci k Terraformu.
+
 ### <a name="enable-monitoring-from-azure-monitor"></a>Povolit monitorování ze služby Azure Monitor
 Chcete-li povolit monitorování clusteru AKS na portálu Azure portal ze služby Azure Monitor, postupujte takto:
 
 1. Na webu Azure Portal, vyberte **monitorování**. 
-2. Vyberte **kontejnery (preview)** ze seznamu.
-3. Na **monitorování – kontejnery (preview)** stránce **monitorovat mimo clustery**.
+2. Vyberte **kontejnery** ze seznamu.
+3. Na **monitorování – kontejnery** stránce **monitorovat mimo clustery**.
 4. Ze seznamu nesledovaných clustery, najít kontejner v seznamu a klikněte na tlačítko **povolit**.   
-5. Na **připojení ke službě stavu kontejneru a protokoly** stránky, pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte z rozevíracího seznamu.  
+5. Na **připojení ke službě Azure Monitor pro kontejnery** stránky, pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte z rozevíracího seznamu.  
     V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, ke kterému kontejneru AKS nasazuje v rámci předplatného. 
 
     ![Povolit monitorování insights kontejneru AKS](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
@@ -125,8 +146,8 @@ Pokud chcete povolit monitorování vašeho kontejneru AKS na portálu Azure por
     ![Propojení služby Kubernetes](./media/container-insights-onboard/portal-search-containers-01.png)
 
 4. V seznamu kontejnerů vyberte kontejner.
-5. Na stránce Přehled kontejnerů, vyberte **monitorovat stav kontejneru**.  
-6. Na **připojení ke službě stavu kontejneru a protokoly** stránky, pokud máte existující Log Analytics pracovní prostor ve stejném předplatném jako cluster, vyberte v rozevíracím seznamu.  
+5. Na stránce Přehled kontejnerů, vyberte **monitorování kontejnerů**.  
+6. Na **připojení ke službě Azure Monitor pro kontejnery** stránky, pokud máte existující Log Analytics vyberte pracovní prostor ve stejném předplatném jako cluster, v rozevíracím seznamu.  
     V seznamu vybrána hodnota výchozího pracovního prostoru a umístění, ke kterému kontejneru AKS nasazuje v rámci předplatného. 
 
     ![Povolit monitorování stavu kontejneru AKS](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)

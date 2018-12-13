@@ -1,5 +1,6 @@
 ---
-title: Regresní model kurz – Příprava dat pomocí služby Azure Machine Learning
+title: 'Regresní model kurz: Příprava dat'
+titleSuffix: Azure Machine Learning service
 description: V první části tohoto kurzu dozvíte, jak pro přípravu dat v jazyce Python pro modelování regrese pomocí sady SDK služby Azure ML.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,13 @@ author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 94e004c40177298f805336509d649065fc7dfdb7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 14be60977ef0be3e88a0cb01356446b59ca374e2
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012364"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076436"
 ---
 # <a name="tutorial-part-1-prepare-data-for-regression-modeling"></a>Kurz (část 1): Příprava dat pro regresní modelování
 
@@ -47,7 +48,7 @@ Začněte tím, že import sady SDK.
 import azureml.dataprep as dprep
 ```
 
-## <a name="load-data"></a>Načíst data
+## <a name="load-data"></a>Načtení dat
 
 Stáhněte si dvě různé sady dat taxislužby NYC do toku dat objektů.  Tyto datové sady obsahují pole mírně liší. Metoda `auto_read_file()` automaticky rozpozná typ vstupního souboru.
 
@@ -139,7 +140,7 @@ tmp_df.head(5)
       <td>2</td>
       <td>2013-08-01 08:14:37</td>
       <td>2013-08-01 09:09:06</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -153,7 +154,7 @@ tmp_df.head(5)
       <td>2</td>
       <td>2013-08-01 09:13:00</td>
       <td>2013-08-01 11:38:00</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -167,7 +168,7 @@ tmp_df.head(5)
       <td>2</td>
       <td>2013-08-01 09:48:00</td>
       <td>2013-08-01 09:49:00</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -181,7 +182,7 @@ tmp_df.head(5)
       <td>2</td>
       <td>2013-08-01 10:38:35</td>
       <td>2013-08-01 10:38:51</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -195,7 +196,7 @@ tmp_df.head(5)
       <td>2</td>
       <td>2013-08-01 11:51:45.</td>
       <td>2013-08-01 12:03:52</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -601,8 +602,8 @@ combined_df.keep_columns(columns='store_forward').get_profile()
     <tr>
       <th>store_forward</th>
       <td>FieldType.STRING</td>
-      <td>N</td>
-      <td>A</td>
+      <td>Ne</td>
+      <td>Ano</td>
       <td>7059.0</td>
       <td>99.0</td>
       <td>6960.0</td>
@@ -693,7 +694,7 @@ tmp_df.head(5)
       <td>2013-08-01 17:22:00</td>
       <td>2013-08-01</td>
       <td>17:22:00</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937767</td>
       <td>40.758480</td>
       <td>-73.937767</td>
@@ -711,7 +712,7 @@ tmp_df.head(5)
       <td>2013-08-01 25:17:00</td>
       <td>2013-08-01</td>
       <td>25:17:00</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937927</td>
       <td>40.757843</td>
       <td>-73.937927</td>
@@ -729,7 +730,7 @@ tmp_df.head(5)
       <td>2013-08-06 06:51:36</td>
       <td>2013-08-06</td>
       <td>06:51:36</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937721</td>
       <td>40.758404</td>
       <td>-73.937721</td>
@@ -747,7 +748,7 @@ tmp_df.head(5)
       <td>2013-08-06 13:26:57</td>
       <td>2013-08-06</td>
       <td>13:26:57</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937691</td>
       <td>40.758419</td>
       <td>-73.937790</td>
@@ -765,7 +766,7 @@ tmp_df.head(5)
       <td>2013-08-06 13:28:08</td>
       <td>2013-08-06</td>
       <td>13:28:08</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937805</td>
       <td>40.758396</td>
       <td>-73.937775</td>
@@ -897,7 +898,7 @@ tmp_df.head(5)
       <td>17</td>
       <td>22</td>
       <td>00</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937767</td>
       <td>40.758480</td>
       <td>-73.937767</td>
@@ -919,7 +920,7 @@ tmp_df.head(5)
       <td>17</td>
       <td>25</td>
       <td>00</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937927</td>
       <td>40.757843</td>
       <td>-73.937927</td>
@@ -941,7 +942,7 @@ tmp_df.head(5)
       <td>06</td>
       <td>51</td>
       <td>36</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937721</td>
       <td>40.758404</td>
       <td>-73.937721</td>
@@ -963,7 +964,7 @@ tmp_df.head(5)
       <td>13</td>
       <td>26</td>
       <td>57</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937691</td>
       <td>40.758419</td>
       <td>-73.937790</td>
@@ -985,7 +986,7 @@ tmp_df.head(5)
       <td>13</td>
       <td>28</td>
       <td>08</td>
-      <td>N</td>
+      <td>Ne</td>
       <td>-73.937805</td>
       <td>40.758396</td>
       <td>-73.937775</td>

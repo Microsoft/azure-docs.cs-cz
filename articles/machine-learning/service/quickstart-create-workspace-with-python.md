@@ -1,5 +1,6 @@
 ---
-title: 'Rychlý start: Začínáme se službou Azure Machine Learning v Pythonu'
+title: 'Rychlý start: Začínáme v Pythonu'
+titleSuffix: Azure Machine Learning service
 description: Začínáme se službou Azure Machine Learning v Pythonu. Pomocí sady Python SDK k vytvoření pracovního prostoru, což je základní blok v cloudu, který použijete k experimentovat, trénovat a nasazovat modely machine learningu.
 services: machine-learning
 ms.service: machine-learning
@@ -9,13 +10,13 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 1a6bb648de251d8764eec52491a918e7cb1de653
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 2ca97275848d87ccc03c7839265f867f9c3c3948
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015377"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073345"
 ---
 # <a name="quickstart-use-python-sdk-to-get-started-with-azure-machine-learning"></a>Rychlý start: Použití Python SDK pro seznámení s Azure Machine Learning
 

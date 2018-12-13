@@ -1,21 +1,22 @@
 ---
-title: Kódy odpovědí Language Understanding (LUIS) HTTP rozhraní API – Azure | Dokumentace Microsoftu
+title: Kódy odpovědí protokolu HTTP rozhraní API
 titleSuffix: Azure
 description: Pochopit, jaké kódy odpovědí protokolu HTTP jsou vráceny z LUIS vytváření obsahu a koncový bod rozhraní API
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: diberry
-ms.openlocfilehash: 6ffab581420c3c74ed659be2b82e2f9c7fda13d0
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 478727a4d3628fbe6a385e3beb28201c228f9e2d
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443827"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53078227"
 ---
 # <a name="luis-api-http-response-codes"></a>Kódy odpovědí protokolu HTTP rozhraní API LUIS
 [Vytváření](https://aka.ms/luis-authoring-apis) a [koncový bod](https://aka.ms/luis-endpoint-apis) rozhraní API vrací kódy odpovědí protokolu HTTP. Zprávy s odezvami zahrnout informace specifické pro požadavek, je obecné stavového kódu odpovědi HTTP. 

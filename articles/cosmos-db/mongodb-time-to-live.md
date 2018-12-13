@@ -1,21 +1,19 @@
 ---
-title: Zjistěte, jak pro dokumenty Azure Cosmos DB vytvořené prostřednictvím rozhraní MongoDB API nastavit hodnotu TTL (Time to Live), aby se po určité době automaticky vyprázdnily ze systému.
-description: Dokumentace k funkci TTL pro jednotlivé dokumenty MongoDB.
+title: Funkce interval TTL, ZÍSKÁ každý dokument MongoDB ve službě Azure Cosmos DB
+description: Zjistěte, jak pro dokumenty Azure Cosmos DB vytvořené prostřednictvím rozhraní MongoDB API nastavit hodnotu TTL (Time to Live), aby se po určité době automaticky vyprázdnily ze systému.
 services: cosmos-db
 author: orestis-ms
-manager: kfile
-editor: ''
+ms.author: orkostak
 ms.service: cosmos-db
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 08/10/2018
-ms.author: orkostak
-ms.openlocfilehash: 8679da0dfe92b1d611fd0b61b9f7404256b2b688
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
-ms.translationtype: HT
+ms.openlocfilehash: 547ee489581b7e7e9203151fbfcdaad45dca8ea1
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239861"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868749"
 ---
 # <a name="expire-data-in-azure-cosmos-db-mongodb-api"></a>Vypršení platnosti dat v rozhraní MongoDB API služby Azure Cosmos DB
 
@@ -78,6 +76,6 @@ Funkci TTL pro jednotlivé dokumenty je možné aktivovat na webu Azure Portal n
 
 ![Snímek obrazovky aktivace funkce TTL pro jednotlivé dokumenty na portálu](./media/mongodb-ttl/mongodb_portal_ttl.png) 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Automatické vypršení platnosti dat v kolekcích Azure Cosmos DB s využitím hodnoty TTL (Time to Live)](../cosmos-db/time-to-live.md)
 * [Indexování v rozhraní MongoDB API služby Azure Cosmos DB](../cosmos-db/mongodb-indexing.md)

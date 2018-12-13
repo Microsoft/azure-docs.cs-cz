@@ -1,6 +1,5 @@
 ---
-title: Správa a požádat o kvóty prostředků
-titleSuffix: Azure Machine Learning service
+title: Správa a žádosti o kvóty pro službu Azure Machine Learning
 description: Tato příručka vysvětluje různé kvóty pro prostředky Azure Machine Learning a postup zobrazení a požádat o navýšení kvóty.
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
-ms.custom: seodec18
-ms.openlocfilehash: b868e20ebb1054864116957fd671a17e2d980c0a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.openlocfilehash: 516e8a9c73fdeacba38d9c81f5cb2d0b8db106c8
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083848"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867694"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Správa a požádat o kvóty pro prostředky Azure
 
@@ -79,7 +77,7 @@ Platí omezení na počet instancí kontejneru, který můžete aktivovat v dan�
 
 Podrobnější a aktuální seznam kvóty, najdete v článku kvóta Azure celou [tady](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 Platí omezení na počet účtů úložiště na oblast i v rámci daného předplatného. Výchozí limit je 200 a zahrnuje účty úložiště úrovně Premium i Standard. Pokud požadujete víc než 200 účtů úložiště v dané oblasti, vytvořte žádost prostřednictvím [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Tým Azure Storage bude váš obchodní případ podívá a může schválit až 250 účtů úložiště pro příslušnou oblast.
 
 

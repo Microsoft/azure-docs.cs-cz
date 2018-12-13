@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 04/05/2018
+ms.date: 12/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 61db5e9eedc57ef6316cb760499362ed856e38c6
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 379e5503900621381bbc27c6604cc8208cfdb80e
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822751"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076453"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch metriky, výstrahy a protokoly pro diagnostické hodnocení a monitorování
 
@@ -53,11 +53,17 @@ Chcete-li zobrazit všechny metriky pro účet Batch:
 
 Pokud chcete načíst metriky prostřednictvím kódu programu, pomocí rozhraní API služby Azure Monitor. Viz například [metriky načíst Azure Monitor s využitím .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/).
 
+## <a name="batch-metric-reliability"></a>Metriky spolehlivost služby batch
+
+Metriky jsou určena pro použití ke sledování trendů a analýze dat. Metriky doručení není zaručeno, že a je náchylné ke mimo pořadí doručení, ztrátu dat a/nebo duplicity. Pomocí jedné události upozornění nebo aktivační události funkcí se nedoporučuje. Najdete v článku [Batch upozornění na metriku](#batch-metric-alerts) části Podrobné informace o tom, jak nastavit prahové hodnoty pro upozornění.
+
+Metriky za posledních 3 minut, protože ho může být stále agregaci. Během tohoto časového rámce může být underreported hodnoty metrik.
+
 ## <a name="batch-metric-alerts"></a>Upozornění na metriky služby batch
 
-Volitelně můžete nakonfigurovat téměř v reálném čase *upozornění na metriku* , který se aktivuje, když hodnota zadaného metrika překročí mezní hodnotu, která přiřadíte. Vygeneruje výstrahu [oznámení](../monitoring-and-diagnostics/insights-alerts-portal.md) zvolíte při "Aktivaci upozornění" (Pokud se překročí prahovou hodnotu a je splněná podmínka výstrahy) i když ho se "Vyřešeno" (když je znovu překročí prahovou hodnotu a je podmínka žádné splněna). 
+Volitelně můžete nakonfigurovat téměř v reálném čase *upozornění na metriku* , který se aktivuje, když hodnota zadaného metrika překročí mezní hodnotu, která přiřadíte. Vygeneruje výstrahu [oznámení](../monitoring-and-diagnostics/insights-alerts-portal.md) zvolíte při "Aktivaci upozornění" (Pokud se překročí prahovou hodnotu a je splněná podmínka výstrahy) i když ho se "Vyřešeno" (když je znovu překročí prahovou hodnotu a je podmínka žádné splněna). Výstrahy na základě jednotlivých datových bodů se nedoporučuje, protože metriky jsou v souladu s mimo pořadí doručení, ztrátu dat a/nebo duplicity. Výstrahy se ujistěte, použití prahových hodnot pro tyto nekonzistence.
 
-Například můžete chtít konfigurovat upozornění na metriku při vaší počtu jader s nízkou prioritou spadá do určité úrovně, tak můžete upravit složení fondech.
+Například můžete chtít konfigurovat upozornění na metriku při vaší počtu jader s nízkou prioritou spadá do určité úrovně, tak můžete upravit složení fondech. Doporučujeme nastavit 10 minut, kde aktivovat výstrahy v případě počtu jader s nízkou prioritou průměrné klesne pod prahovou hodnotu pro celou dobu. Není doporučeno upozornění na dobu 1 – 5 minut, protože stále může být agregace metrik.
 
 Konfigurace upozornění na metriku na portálu:
 

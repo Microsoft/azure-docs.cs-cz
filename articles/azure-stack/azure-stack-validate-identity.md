@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/23/2018
+ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0a46344893c8ad62bd85f9abb84d434c0331d507
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 61562450d484f34385b4e6e111bf62326eaca159
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984192"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888371"
 ---
 # <a name="validate-azure-identity"></a>Ověření identit Azure 
 Použijte nástroj Kontrola připravenosti Azure Stack (AzsReadinessChecker) Chcete-li ověřit, že Azure Active Directory (Azure AD) připravený k použití s Azure Stack. Ověřte vaše řešení Azure identity před zahájením nasazení služby Azure Stack.  
@@ -48,7 +48,7 @@ Následující požadavky musí být splněné.
 **Prostředí Azure Active Directory:**
  - Identifikace účtu služby Azure AD bude používat pro službu Azure Stack a ujistěte se, že je Azure Active Directory globálního správce.
  - Určete název vašeho Tenanta Azure AD. Název tenanta musí být *primární* názvu domény pro Azure Active Directory. Například *contoso.onmicrosoft.com*. 
- - Identifikujte AzureEnvironement budete používat: *AzureCloud*, *AzureGermanCloud*, nebo *AzureChinaCloud*.
+ - Identifikujte AzureEnvironement budete používat. Podporované hodnoty pro parametr name prostředí jsou AzureCloud, AzureChinaCloud nebo AzureUSGovernment, podle které předplatné používáte.
 
 ## <a name="validate-azure-identity"></a>Ověření identit Azure 
 1. Na počítači, který splňuje požadavky otevřete Správce příkazový řádek Powershellu a spusťte následující příkaz k instalaci AzsReadinessChecker:  
@@ -59,10 +59,10 @@ Následující požadavky musí být splněné.
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. Z příkazového řádku PowerShell spuštěním následujícího příkazu spusťte ověření služby Azure AD. 
-   - Zadejte hodnotu pro AzureEnvironment jako *AzureCloud*, *AzureGermanCloud*, nebo *AzureChinaCloud*.  
+   - Zadejte hodnotu názvu prostředí pro AzureEnvironment. Podporované hodnoty pro parametr name prostředí jsou AzureCloud, AzureChinaCloud nebo AzureUSGovernment, podle které předplatné používáte.  
    - Zadejte Azure Active Directory název Tenanta k nahrazení *contoso.onmicrosoft.com*. 
 
-   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
+   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
 4. Po spuštění nástroje, prohlédněte si výstup. Potvrďte, že stav je **OK** pro požadavky na instalaci. Úspěšné ověření se zobrazí jako na následujícím obrázku: 
  
 ````PowerShell

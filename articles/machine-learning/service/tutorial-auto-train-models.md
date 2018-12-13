@@ -1,5 +1,6 @@
 ---
-title: Regresní model kurz – automaticky train model s využitím služby Azure Machine Learning
+title: 'Regresní model kurz: automaticky trénování modelů'
+titleSuffix: Azure Machine Learning service
 description: Zjistěte, jak generovat modelu ML pomocí automatizovaných machine learningu.  Azure Machine Learning může automatizovaně za vás provádět předzpracování dat, výběr algoritmů a výběr hyperparameterů. Finální model se potom nasadí pomocí služby Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
@@ -9,15 +10,15 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 12/04/2018
-ms.custom: seodec12
-ms.openlocfilehash: 5c732cd6dc707cfb34248414187d8f2d15357572
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
-ms.translationtype: MT
+ms.custom: seodec18
+ms.openlocfilehash: 593274cf66e93051b860ed75d77f13537188f345
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53013931"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076028"
 ---
-# <a name="tutorial-part-2-use-automated-machine-learning-to-build-and-train-a-regression-model"></a>Kurz (část 2): použijte automatické strojového učení k vytvoření a trénování regresní model
+# <a name="tutorial-part-2-use-automated-machine-learning-to-build-your-regression-model"></a>Kurz (část 2): použijte automatické machine learningu vytváří regresní model
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [přípravy dat taxislužby NYC pro modelování regrese](tutorial-data-prep.md).
 
@@ -373,8 +374,8 @@ dflow_prepared.get_profile()
     <tr>
       <th>store_forward</th>
       <td>FieldType.STRING</td>
-      <td>N</td>
-      <td>A</td>
+      <td>Ne</td>
+      <td>Ano</td>
       <td>6148.0</td>
       <td>0.0</td>
       <td>6148.0</td>
@@ -621,7 +622,7 @@ Definujte nastavení experiment parametry a modely pro automatické generování
 |**iteration_timeout_minutes**|10|Časový limit během několika minut pro každou iteraci|
 |**iterations**|30|Počet iterací. V každé iteraci se model učí s daty s konkrétním kanálem.|
 |**primary_metric**| spearman_correlation | Metrika, kterou chcete optimalizovat|
-|**preprocess**| True (Pravda) | Hodnota TRUE povolí experimentovat provádět předběžného zpracování na vstupu.|
+|**preprocess**| True | Hodnota TRUE povolí experimentovat provádět předběžného zpracování na vstupu.|
 |**Úroveň podrobností**| logging.INFO | Určuje úroveň protokolování.|
 |**n_cross_validationss**|5|Počet rozdělení křížových ověření
 
@@ -653,7 +654,7 @@ automated_ml_config = AutoMLConfig(task = 'regression',
 
 ### <a name="train-the-automatic-regression-model"></a>Trénování automatické regresní model
 
-Spusťte experiment místně. Předejte definovanou `automated_ml_config` objektu do experimentu a nastavte výstup na `true` postup zobrazení průběhu během testu.
+Spusťte experiment místně. Předejte definovanou `automated_ml_config` objektu do experimentu a nastavte výstup na `True` postup zobrazení průběhu během testu.
 
 
 ```python
@@ -717,7 +718,8 @@ from azureml.widgets import RunDetails
 RunDetails(local_run).show()
 ```
 
-![Podrobnosti o spuštění widgetu Jupyter](./media/tutorial-auto-train-models/jup-widget-auto.png)
+![Podrobnosti o spuštění Jupyter widgetu](./media/tutorial-auto-train-models/automl-dash-output.png)
+![Jupyter widgetu graf](./media/tutorial-auto-train-models/automl-chart-output.png)
 
 ### <a name="option-2-get-and-examine-all-run-iterations-in-python"></a>Možnost 2: Získání a zkontrolovat všechny spuštění iterace v Pythonu
 

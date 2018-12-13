@@ -1,6 +1,6 @@
 ---
-title: Odesílání událostí do služby Azure Event Hubs pomocí jazyka C | Dokumentace Microsoftu
-description: Odesílání událostí do služby Azure Event Hubs pomocí jazyka C
+title: Odesílání událostí pomocí jazyka C - Azure Event Hubs | Dokumentace Microsoftu
+description: Tento článek poskytuje návod pro vytvoření aplikace v jazyce C, která zasílá události do služby Azure Event Hubs.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 10/16/2018
+ms.custom: seodec18
+ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 95a689b00d67a9f2c24b4deaf5575464923a1e60
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8c134ae9944517d6ae66fcd22e06bbfc599912b4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961769"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076388"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Odesílání událostí do služby Azure Event Hubs pomocí jazyka C
 

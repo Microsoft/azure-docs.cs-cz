@@ -1,6 +1,6 @@
 ---
-title: Vytvoření plánu aktivačních událostí v Azure Data Factory | Microsoft Docs
-description: Naučte se vytvořit aktivační událost v Azure Data Factory, který kanál spouští podle plánu.
+title: Vytvoření aktivačních událostech plánovače ve službě Azure Data Factory | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit trigger v Azure Data Factory, který spouští kanál podle časového plánu.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: eee68481f4396f8a09241b664d4c3d7d4a4f6567
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f6b7764bf994079f7f3ef9e6243720da0d2f4a28
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054346"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868221"
 ---
-# <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Vytvořit aktivační událost, která spouští kanál podle plánu
-Tento článek obsahuje informace o aktivační události plán a kroky k vytvoření, spuštění a monitorování plánu aktivační událost. U jiných typů aktivačních událostí, najdete v části [kanálu spouštěcí a aktivační události](concepts-pipeline-execution-triggers.md).
+# <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Vytvoření triggeru, který spouští kanál podle časového plánu
+Tento článek obsahuje informace o aktivační události plánovače a kroky k vytvoření, spuštění a monitorování aktivační události plánovače. Jiné druhy aktivačních událostí, naleznete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md).
 
-Při vytváření aktivační události plánu, můžete zadat plán (počáteční datum opakování, koncové datum atd.) pro aktivační události a přidružení se zřetězením příkazů. Mezi kanály a aktivačními událostmi existuje vztah n-m. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů.
+Při vytváření aktivační události plánovače, můžete zadat plán (počáteční datum opakování, koncové datum atd.) pro aktivační událost a jeho přidružení s kanálem. Mezi kanály a aktivačními událostmi existuje vztah n-m. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů.
 
-Následující části popisují vytvořit aktivační událost plán různými způsoby. 
+Následující části obsahují kroky k vytvoření aktivační události plánovače různými způsoby. 
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
-Můžete vytvořit **aktivační událost plán** při plánování kanálu pravidelně spouštět (hodinový, denní, atd.). 
+Můžete vytvořit **aktivační událost plánovače** naplánovat pravidelné spouštění (každou hodinu, každý den atd.) kanálu. 
 
 > [!NOTE]
-> Kompletní a podrobný postup vytvoření kanálu a plán aktivační událost, aktivační událost přidružením kanál a spuštění a monitorování kanálu, najdete v části [rychlý start: Vytvořte objekt pro vytváření dat pomocí uživatelského rozhraní objektu pro vytváření dat](quickstart-create-data-factory-portal.md).
+> Kompletní postup vytváření kanálů a aktivační události plánovače, aktivační událost přidružení kanálu a spouštění a monitorování kanálu, naleznete v tématu [rychlý start: vytvoření datové továrny pomocí uživatelského rozhraní služby Data Factory](quickstart-create-data-factory-portal.md).
 
 1. Přepněte na kartu **Upravit**. 
 
@@ -42,24 +42,24 @@ Můžete vytvořit **aktivační událost plán** při plánování kanálu prav
 2. Na stránce **Přidat aktivační události** klikněte na **Zvolit aktivační událost...** a pak na **Nová**. 
 
     ![Přidat aktivační události – nová aktivační událost](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. V **novou aktivační událost** proveďte následující kroky: 
+3. V **Nová aktivační událost** stránce, proveďte následující kroky: 
 
-    1. Potvrďte, že **plán** je vybraná **typu**. 
-    2. Zadejte datum a čas spuštění aktivační události pro **spustit datum (UTC)**. Jinak je nastavená na aktuální datum a čas ve výchozím nastavení. 
-    3. Zadejte **opakování** pro aktivační událost. Vyberte jednu z hodnot z rozevíracího seznamu (každou minutu, hodinu, denně, týdně a měsíční). Násobitel zadejte do textového pole. Například pokud chcete, aby aktivační událost spustit jednou pro každých 15 minut, vyberete **každých minutu**a zadejte **15** v textovém poli. 
-    4. Pro **End** pole, pokud nechcete zadat koncovou hodnotou datetime pro aktivační událost, vyberte **ne End**. Chcete-li zadat element end datum a čas, vyberte **na datum**a zadejte koncové datum a čas a klikněte na tlačítko **použít**. Každé spuštění kanálu je zpoplatněno. Pokud testujete, můžete zajistit, že se aktivuje kanálu jenom pár časy. Zajistěte však, aby měl kanál mezi časem publikování a koncovým časem dostatek času na spuštění. Aktivační událost nabývá účinnosti po publikování řešení do služby Data Factory, a ne při uložení aktivační události v uživatelském rozhraní.
+    1. Ujistěte se, že **plán** vybraná **typ**. 
+    2. Zadejte počáteční datum a čas triggeru pro **Start datum (UTC)**. Je nastavena na aktuální datum a čas ve výchozím nastavení. 
+    3. Zadejte **opakování** aktivační události. Vyberte jednu z hodnot z rozevíracího seznamu (každou minutu, hodinu, denně, týdně a každý měsíc). Násobitel zadejte do textového pole. Například pokud má aktivační událost pro spuštění jednou každých 15 minut, můžete vybrat **každou minutu**a zadejte **15** v textovém poli. 
+    4. Pro **End** pole, pokud nechcete zadat datum a čas ukončení pro aktivační událost, vyberte **bez ukončení**. Chcete-li zadat datum a čas ukončení, vyberte **k datu**a zadejte koncového data a času a klikněte na tlačítko **použít**. Každé spuštění kanálu je zpoplatněno. Pokud testujete, můžete zajistit, že se aktivuje kanál pouze několik případů. Zajistěte však, aby měl kanál mezi časem publikování a koncovým časem dostatek času na spuštění. Aktivační událost nabývá účinnosti po publikování řešení do služby Data Factory, a ne při uložení aktivační události v uživatelském rozhraní.
 
         ![Nastavení aktivační události](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. V **novou aktivační událost** okno, zkontrolujte **aktivované** a klikněte na **Další**. Toto políčko můžete deaktivovat aktivační událost později. 
+4. V **Nová aktivační událost** okna, zkontrolujte **aktivováno** možnost a klikněte na tlačítko **Další**. Toto políčko, můžete použít aktivační událost deaktivovat později. 
 
     ![Nastavení aktivační události – tlačítko Další](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
 5. Na stránce **Nová aktivační událost** si přečtěte zprávu upozornění a klikněte na **Dokončit**.
 
     ![Nastavení aktivační události – tlačítko Dokončit](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. Kliknutím na **Publikovat** publikujte změny do služby Data Factory. Až budete publikovat změny objektu pro vytváření dat, nespustí aktivační událost aktivuje spuštění kanálu. 
+6. Kliknutím na **Publikovat** publikujte změny do služby Data Factory. Až po publikování změn do služby Data Factory, nespustí se aktivační událost aktivuje spuštění kanálu. 
 
     ![Tlačítko Publikovat](./media/how-to-create-schedule-trigger/publish-2.png)
-8. Vlevo přepněte na kartu **Monitorování**. Kliknutím na **Aktualizovat** seznam aktualizujte. Uvidíte, že se kanál spustí spouštěná naplánované aktivační procedura. Všimněte si hodnot ve sloupci **Aktivoval(a)**. Pokud používáte **aktivační událost teď** možnost, zobrazí ruční aktivační událost spouštět v seznamu. 
+8. Vlevo přepněte na kartu **Monitorování**. Kliknutím na **Aktualizovat** seznam aktualizujte. Zobrazí se že kanál spustí naplánované aktivační procedura aktivovaná. Všimněte si hodnot ve sloupci **Aktivoval(a)**. Pokud používáte **aktivovat** možnost, zobrazí ruční spuštění aktivační události v seznamu. 
 
     ![Monitorování aktivovaných spuštění](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 9. Kliknutím na šipku dolů vedle **Spuštění kanálu** přepněte na zobrazení **Spuštění aktivační události**. 
@@ -67,12 +67,12 @@ Můžete vytvořit **aktivační událost plán** při plánování kanálu prav
     ![Monitorování spuštění aktivační události](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-V této části ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spuštění a monitorování plánu aktivační událost. Tato ukázka pracovní najdete nejdřív projít [rychlý start: Vytvořte objekt pro vytváření dat pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md). Hlavní metodu, která se vytvoří a spustí plán aktivační událost, která se spouští každých 15 minut, přidejte následující kód. Aktivační událost je přidružena kanál s názvem **Adfv2QuickStartPipeline** , které vytvoříte jako součást rychlý start.
+Tato část ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření, spuštění a monitorování aktivační události plánovače. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: vytvoření datové továrny pomocí Azure Powershellu](quickstart-create-data-factory-powershell.md). Potom přidejte následující kód do metody main, která vytvoří a spustí aktivační událost plánovače, která se spouští každých 15 minut. Aktivační událost je přidružena k kanál s názvem **Adfv2QuickStartPipeline** , který vytvoříte v rámci tohoto rychlého startu.
 
 1. Vytvořte soubor JSON s názvem **MyTrigger.json** ve složce C:\ADFv2QuickStartPSH\ s následujícím obsahem:
 
     > [!IMPORTANT]
-    > Před uložením souboru JSON, nastavte hodnotu **startTime** element na aktuální čas UTC. Nastavte hodnotu **endTime** element na jednu hodinu po aktuálním čase UTC.
+    > Předtím, než jste uložili soubor JSON, nastavte hodnotu **startTime** prvek na aktuální čas UTC. Nastavte hodnotu **endTime** element na jednu hodinu, posledních do aktuálního času UTC.
 
     ```json   
     {
@@ -103,49 +103,49 @@ V této části ukazuje, jak pomocí prostředí Azure PowerShell k vytvoření,
     ```
 
     V tomto fragmentu kódu JSON:
-    - **Typ** element aktivační události je nastaven na hodnotu "ScheduleTrigger."
-    - **Frekvence** element je nastaven na hodnotu "Minutu" a **interval** element je nastaven na 15. Proto aktivační událost spustí kanálu každých 15 minut mezi počáteční a koncový čas.
-    - **EndTime** element je jedna hodina po hodnotu **startTime** elementu. Proto aktivační událost spustí kanálu 15 minut, 30 minut a 45 minut po času zahájení. Nezapomeňte aktualizovat počáteční čas aktuální čas UTC a koncový čas na jednu hodinu po čase zahájení. 
-    - Aktivační událost je přidružena **Adfv2QuickStartPipeline** kanálu. Chcete-li přidružit více kanálů aktivační událost, přidejte další **pipelineReference** oddíly.
-    - Kanál v rychlé spuštění trvá dva **parametry** hodnoty: **inputPath** a **outputPath**. Proto předat hodnoty pro tyto parametry z aktivační událost.
+    - **Typ** prvek triggeru je nastaven na "ScheduleTrigger."
+    - **Frekvence** prvek je nastaven na "Minute" a **interval** prvek je nastaven na 15. Proto se aktivační událost spouští kanál každých 15 minut mezi počátečním a koncovým časem.
+    - **EndTime** element je jedna hodina po hodnotu **startTime** elementu. Proto se aktivační událost spouští kanál 15 minut, 30 minut a 45 minut po času zahájení. Nezapomeňte aktualizovat počáteční čas aktuální čas UTC a koncový čas na jednu hodinu po čase začátku. 
+    - Aktivační událost je přidružena **Adfv2QuickStartPipeline** kanálu. Chcete-li přidružit více kanálů s triggerem, přidat další **pipelineReference** oddíly.
+    - Kanál v tomto rychlém startu má dva **parametry** hodnoty: **inputPath** a **outputPath**. Proto předáte hodnoty pro tyto parametry z aktivační události.
 
-2. Vytvořit aktivační událost pomocí **Set-AzureRmDataFactoryV2Trigger** rutiny:
+2. Vytvoření aktivační události pomocí **Set-AzureRmDataFactoryV2Trigger** rutiny:
 
     ```powershell
     Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. Zkontrolujte, zda je stav aktivační události **Zastaveno** pomocí **Get-AzureRmDataFactoryV2Trigger** rutiny:
+3. Ověřte, zda je stav triggeru **Zastaveno** pomocí **Get-AzureRmDataFactoryV2Trigger** rutiny:
 
     ```powershell
     Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Spusťte aktivační událost pomocí **Start-AzureRmDataFactoryV2Trigger** rutiny:
+4. Spusťte trigger pomocí **Start-AzureRmDataFactoryV2Trigger** rutiny:
 
     ```powershell
     Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Zkontrolujte, zda je stav aktivační události **Začínáme** pomocí **Get-AzureRmDataFactoryV2Trigger** rutiny:
+5. Ověřte, zda je stav triggeru **spuštěno** pomocí **Get-AzureRmDataFactoryV2Trigger** rutiny:
 
     ```powershell
     Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  Aktivační událost se spustí v prostředí Azure PowerShell Get **Get-AzureRmDataFactoryV2TriggerRun** rutiny. Chcete-li získat informace o spuštění aktivační události, spusťte následující příkaz pravidelně. Aktualizace **TriggerRunStartedAfter** a **TriggerRunStartedBefore** hodnoty k hodnotám ve vaší definice aktivační události:
+6.  Aktivační událost spouští v prostředí Azure PowerShell pomocí Get **Get-AzureRmDataFactoryV2TriggerRun** rutiny. Pokud chcete získat informace o spuštění aktivační události, spusťte následující příkaz pravidelně. Aktualizace **TriggerRunStartedAfter** a **TriggerRunStartedBefore** hodnoty odpovídají hodnotám v definici aktivační události:
 
     ```powershell
     Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
-    Ke sledování aktivační událost spustí a kanál se spustí na portálu Azure, najdete v tématu [spouští monitorování kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+    K monitorování aktivační událost spouští a spuštění kanálu na webu Azure Portal, přečtěte si [monitorování spuštění kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 
 ## <a name="net-sdk"></a>.NET SDK
-V této části ukazuje, jak používat sadu .NET SDK k vytvoření, spuštění a monitorování aktivační událost. Tato ukázka pracovní najdete nejdřív projít [rychlý start: Vytvořte objekt pro vytváření dat pomocí .NET SDK](quickstart-create-data-factory-dot-net.md). Hlavní metodu, která se vytvoří a spustí plán aktivační událost, která se spouští každých 15 minut, přidejte následující kód. Aktivační událost je přidružena kanál s názvem **Adfv2QuickStartPipeline** , které vytvoříte jako součást rychlý start.
+Tato část ukazuje, jak používat sadu .NET SDK k vytvoření, spuštění a monitorování aktivační události. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md). Potom přidejte následující kód do metody main, která vytvoří a spustí aktivační událost plánovače, která se spouští každých 15 minut. Aktivační událost je přidružena k kanál s názvem **Adfv2QuickStartPipeline** , který vytvoříte v rámci tohoto rychlého startu.
 
-Pro vytvoření a spuštění plánu aktivační událost, která se spouští každých 15 minut, přidejte následující kód do hlavní metodu:
+Pro vytvoření a spuštění aktivační události plánovače, která se spouští každých 15 minut, přidejte následující kód do hlavní metody:
 
 ```csharp
             // Create the trigger
@@ -195,7 +195,7 @@ Pro vytvoření a spuštění plánu aktivační událost, která se spouští k
             client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
 ```
 
-Ke sledování aktivační události spuštění, přidejte následující kód před poslední `Console.WriteLine` příkaz v ukázce:
+Pokud chcete monitorovat spuštění aktivační události, přidejte následující kód před poslední `Console.WriteLine` příkaz v ukázce:
 
 ```csharp
             // Check that the trigger runs every 15 minutes
@@ -219,11 +219,11 @@ Ke sledování aktivační události spuštění, přidejte následující kód 
             }
 ```
 
-Ke sledování aktivační událost spustí a kanál se spustí na portálu Azure, najdete v tématu [spouští monitorování kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+K monitorování aktivační událost spouští a spuštění kanálu na webu Azure Portal, přečtěte si [monitorování spuštění kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 
 ## <a name="python-sdk"></a>Python SDK
-V této části se dozvíte, jak používat sadu SDK Python k vytvoření, spuštění a monitorování aktivační událost. Tato ukázka pracovní najdete nejdřív projít [rychlý start: Vytvořte objekt pro vytváření dat pomocí sady SDK pro Python](quickstart-create-data-factory-python.md). Pak přidejte následující blok kódu po "spustit kanál monitorovat" blok kódu ve skriptu jazyka Python. Tento kód vytvoří plán aktivační událost, která spouští každých 15 minut mezi zadaným počátečním a koncovým časem. Aktualizace **start_time** proměnné na aktuální čas UTC a **end_time** proměnnou na jednu hodinu po aktuálním čase UTC.
+Tato část ukazuje, jak pomocí sady Python SDK k vytvoření, spuštění a monitorování aktivační události. Tento ukázkový pracovní najdete nejdřív projít [rychlý start: vytvoření datové továrny pomocí sady Python SDK](quickstart-create-data-factory-python.md). Pak přidejte následující blok kódu po bloku kódu "monitorování spuštění kanálu" ve skriptu Pythonu. Tento kód vytvoří aktivační událost plánovače, která se spouští každých 15 minut mezi zadaným počátečním a koncovým časem. Aktualizace **start_time** proměnné na aktuální čas UTC a **end_time** proměnnou na jednu hodinu, posledních do aktuálního času UTC.
 
 ```python
     # Create a trigger
@@ -240,13 +240,13 @@ V této části se dozvíte, jak používat sadu SDK Python k vytvoření, spuš
     adf_client.triggers.start(rg_name, df_name, tr_name)
 ```
 
-Ke sledování aktivační událost spustí a kanál se spustí na portálu Azure, najdete v tématu [spouští monitorování kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+K monitorování aktivační událost spouští a spuštění kanálu na webu Azure Portal, přečtěte si [monitorování spuštění kanálu](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 ## <a name="azure-resource-manager-template"></a>Šablona Azure Resource Manageru
-Šablonu Azure Resource Manager můžete vytvořit aktivační událost. Podrobné pokyny najdete v tématu [vytvořit objekt pro vytváření dat Azure pomocí šablony Resource Manageru](quickstart-create-data-factory-resource-manager-template.md).  
+Šablony Azure Resource Manageru můžete použít k vytvoření aktivační události. Podrobné pokyny najdete v tématu [vytvoření datové továrny Azure pomocí šablony Resource Manageru](quickstart-create-data-factory-resource-manager-template.md).  
 
-## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Čas spuštění aktivační události předat kanálu
-Azure Data Factory verze 1 podporuje čtení nebo zápisu dat. oddílů pomocí systému proměnných: **SliceStart**, **SliceEnd**, **WindowStart**a **WindowEnd**. V aktuální verzi objektu pro vytváření dat Azure můžete toto chování dosáhnout pomocí parametru kanálu. Čas spuštění a naplánovaném čase pro aktivační událost jsou nastavená jako hodnota pro parametr kanálu. V následujícím příkladu je naplánovaném čase pro aktivační událost jako hodnotu předaný kanálu **scheduledRunTime** parametr:
+## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Počáteční čas triggeru předat kanálu
+Azure Data Factory verze 1 podporuje čtení nebo zápis dělených dat pomocí systémové proměnné: **SliceStart**, **SliceEnd**, **WindowStart**a **WindowEnd**. V aktuální verzi služby Azure Data Factory můžete dosáhnout toto chování při použití parametru kanálu. Čas spuštění a naplánovaném čase aktivační události jsou nastaveny jako hodnota pro parametr kanálu. V následujícím příkladu je naplánováno pro aktivační událost předané jako hodnotu kanálu **scheduledRunTime** parametr:
 
 ```json
 "parameters": {
@@ -254,10 +254,10 @@ Azure Data Factory verze 1 podporuje čtení nebo zápisu dat. oddílů pomocí 
 }
 ```    
 
-Další informace naleznete v pokynech v [jak pro čtení nebo zápis dat rozdělena na oddíly](how-to-read-write-partitioned-data.md).
+Další informace najdete v pokynech v [jak číst nebo zapisovat data rozdělit na oddíly](how-to-read-write-partitioned-data.md).
 
-## <a name="json-schema"></a>Schématu JSON
-Na následující definici JSON ukazuje, jak vytvořit aktivační událost plán s plánování a opakování:
+## <a name="json-schema"></a>Schéma JSON
+Následující definici JSON se dozvíte, jak vytvořit aktivační událost plánovače s plánování a opakování:
 
 ```json
 {
@@ -275,7 +275,7 @@ Na následující definici JSON ukazuje, jak vytvořit aktivační událost plá
           "weekDays": : [<<Monday-Sunday>>],
           "minutes": [<<0-59>>],
           "monthDays": [<<1-31>>],
-          "monthlyOccurences": [
+          "monthlyOccurrences": [
                {
                     "day": <<Monday-Sunday>>,
                     "occurrence": <<1-5>>
@@ -315,7 +315,7 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 | **startTime** | Hodnota data a času. V případě jednoduchých plánů se hodnota vlastnosti **startTime** vztahuje pouze na první výskyt. U složitějších plánů aktivační událost nezačíná dřív než v čas určený hodnotou **startTime**. |
 | **endTime** | Koncové datum a čas pro aktivační událost. Aktivační událost se nebude spouštět po zadaném koncovém datu a času. Hodnota této vlastnosti nemůže být v minulosti. Tato vlastnost je nepovinná. |
 | **timeZone** | Časové pásmo. V současné době se podporuje pouze časové pásmo UTC. |
-| **recurrence** | Objekt recurrence, který určuje pravidla opakování aktivační události. Objekt opakování podporuje **frekvence**, **interva**l, **endTime**, **počet**, a **plán**elementy. Když je definovaný objekt recurrence, vyžaduje se element **frequency** (frekvence). Další elementy objektu recurrence jsou volitelné. |
+| **recurrence** | Objekt recurrence, který určuje pravidla opakování aktivační události. Objekt recurrence podporuje elementy **frequency** (frekvence), **interval** (interval), **endTime** (koncový čas), **count** (počet) a **schedule** (plán). Když je definovaný objekt recurrence, vyžaduje se element **frequency** (frekvence). Další elementy objektu recurrence jsou volitelné. |
 | **frequency** | Jednotka frekvence, s jakou se aktivační událost opakuje. Mezi podporované hodnoty patří „minute“ (minuta), „hour“ (hodina), „day“ (den), „week“ (týden) a „month“ (měsíc). |
 | **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frequency** hodnotu „week“ (týden), aktivační událost se opakuje každé 3 týdny. |
 | **schedule** | Plán opakování pro aktivační událost. Aktivační události se zadanou hodnotou **frequency** mění své opakování na základě plánu opakování. Vlastnost **schedule** obsahuje úpravy opakování na základě minut, hodin, dní v týdnu, dní v měsíci a čísla týdne.
@@ -362,7 +362,7 @@ Následující tabulka obsahuje podrobný popis elementů **schedule**:
 | **minutes** | Minuty v hodině, ve kterých se aktivační událost spouští. | <ul><li>Integer</li><li>Pole celých čísel</li></ul>
 | **hours** | Hodiny dne, ve kterých se aktivační událost spouští. | <ul><li>Integer</li><li>Pole celých čísel</li></ul> |
 | **weekDays** | Dny v týdnu, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při týdenní frekvenci. | <ul><li>Monday (pondělí), Tuesday (úterý), Wednesday (středa), Thursday (čtvrtek), Friday (pátek), Saturday (sobota), Sunday (neděle)</li><li>Pole hodnot dní (maximální velikost pole je 7)</li><li>V hodnotách dní se nerozlišují malá a velká písmena</li></ul> |
-| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. | <ul><li>Pole objektů **monthlyOccurrence**: `{ "day": day,  "occurrence": occurence }`.</li><li>Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.</li><li>Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.</li></ul> |
+| **monthlyOccurrences** | Dny v měsíci, ve kterých se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. | <ul><li>Pole **monthlyOccurrence** objekty: `{ "day": day,  "occurrence": occurrence }`.</li><li>Atribut **day** představuje den v týdnu, ve kterém se aktivační událost spouští. Například vlastnost **monthlyOccurrences** s atributem **day** s hodnotou `{Sunday}` znamená každou neděli v měsíci. Atribut **day** je povinný.</li><li>Atribut **occurrence** představuje výskyt zadaného dne (**day**) v měsíci. Například vlastnost **monthlyOccurrences** s atributy **day** a **occurrence** s hodnotami `{Sunday, -1}` znamená poslední neděli v měsíci. Atribut **occurrence** je volitelný.</li></ul> |
 | **monthDays** | Dan v měsíci, ve kterém se aktivační událost spouští. Tuto hodnotu je možné zadat jenom při měsíční frekvenci. | <ul><li>Libovolná hodnota < = -1 a > =-31</li><li>Libovolná hodnota >= 1 a <= 31</li><li>Pole hodnot</li></ul> |
 
 
@@ -402,4 +402,4 @@ V příkladech se předpokládá, že vlastnost **interval** má hodnotu 1 a vla
 
 
 ## <a name="next-steps"></a>Další postup
-Podrobné informace o aktivační události najdete v tématu [kanálu spouštěcí a aktivační události](concepts-pipeline-execution-triggers.md#triggers).
+Podrobné informace o aktivačních událostech najdete v tématu [spouštění kanálů a triggery](concepts-pipeline-execution-triggers.md#triggers).

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: a3d079483ecf4ea8cf9a4c6bda050bfe8befcfd0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 51a48576b56413e0e779a49829a6eccaa0266a57
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241677"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076096"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopírování dat z QuickBooks Online pomocí Azure Data Factory (Preview)
 
@@ -89,8 +89,12 @@ QuickBooks propojené služby jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. Tato část obsahuje seznam vlastností podporovaných datovou sadu QuickBooks.
 
-Ke zkopírování dat z QuickBooks Online, nastavte vlastnost typ datové sady na **QuickBooksObject**. Neexistuje žádné další vlastnosti specifické pro typ. v tomto typu datové sady.
+Ke zkopírování dat z QuickBooks Online, nastavte vlastnost typ datové sady na **QuickBooksObject**. Podporovány jsou následující vlastnosti:
 
+| Vlastnost | Popis | Požaduje se |
+|:--- |:--- |:--- |
+| type | Vlastnost typ datové sady, musí být nastavena na: **QuickBooksObject** | Ano |
+| tableName | Název tabulky. | Ne (když je zadán zdroj aktivity "dotaz") |
 **Příklad**
 
 ```json
@@ -101,7 +105,8 @@ Ke zkopírování dat z QuickBooks Online, nastavte vlastnost typ datové sady n
         "linkedServiceName": {
             "referenceName": "<QuickBooks linked service name>",
             "type": "LinkedServiceReference"
-        }
+        },
+        "typeProperties": {}
     }
 }
 ```
@@ -110,14 +115,14 @@ Ke zkopírování dat z QuickBooks Online, nastavte vlastnost typ datové sady n
 
 Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. Tato část obsahuje seznam vlastností podporovaných zdrojem QuickBooks.
 
-### <a name="quickbookssource-as-source"></a>QuickBooksSource jako zdroj
+### <a name="quickbooks-as-source"></a>QuickBooks jako zdroj
 
 Ke zkopírování dat z QuickBooks Online, nastavte typ zdroje v aktivitě kopírování do **QuickBooksSource**. Následující vlastnosti jsou podporovány v aktivitě kopírování **zdroj** části:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu zdroje aktivity kopírování musí být nastavena na: **QuickBooksSource** | Ano |
-| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Ano |
+| query | Použijte vlastní dotaz SQL číst data. Například: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Ne (když je "tableName" v datové sadě zadán) |
 
 **Příklad:**
 

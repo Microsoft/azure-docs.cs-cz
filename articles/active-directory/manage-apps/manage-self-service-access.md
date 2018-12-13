@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: barbkess
-ms.openlocfilehash: c1e6c48ef262bf3cb71f7201ba2ff7e9105681dc
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1876ff0cea2e46f8159b9ffb24de72a6272b3a79
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356514"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077069"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Jak nakonfigurovat samoobslužné přiřazení aplikací
 
@@ -57,7 +57,7 @@ Povolení samoobslužného přístupu k aplikaci, postupujte podle následujíc�
 
 5.  Klikněte na tlačítko **všechny aplikace** zobrazíte seznam všech aplikací.
 
-  * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
+    * Pokud nevidíte aplikaci, kterou má zobrazit tady, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací** a nastavit **zobrazit** umožňuje **všechny Aplikace.**
 
 6.  Vyberte aplikaci, kterou chcete povolit samoobslužné služby přístup ze seznamu.
 
@@ -67,8 +67,8 @@ Povolení samoobslužného přístupu k aplikaci, postupujte podle následujíc�
 
 9.  V dalším kroku vyberte skupiny, kterým uživatelé, kteří žádají o přístup k této aplikaci by měly být přidány, klepněte na volič vedle popisku **do které skupiny by měl přiřazení uživatelé měli přidat?** a vyberte skupinu.
   
-  > [!NOTE]
-  > Skupiny synchronizované z místního nejsou podporovány pro skupinu, do které by měli přidat uživatele, kteří žádají o přístup k této aplikaci.
+    > [!NOTE]
+    > Skupiny synchronizované z místního nejsou podporovány pro skupinu, do které by měli přidat uživatele, kteří žádají o přístup k této aplikaci.
   
 10. **Volitelné:** Pokud budete chtít vyžadovat schválení firmy před uživatelé mají povolen přístup, nastavte **vyžadovat schválení před udělením přístupu k této aplikaci?** přepnutím **Ano**.
 
@@ -76,10 +76,10 @@ Povolení samoobslužného přístupu k aplikaci, postupujte podle následujíc�
 
 12. **Volitelné:** k určení firemními schvalovateli, kteří se může schvalovat přístup k této aplikaci, klepněte na volič vedle popisku **kdo může schvalovat přístup k této aplikaci?** vybrat až 10 osoba firemními schvalovateli.
 
-   >[!NOTE]
-   >Skupiny se nepodporují.
-   >
-   >
+     > [!NOTE]
+     > Skupiny se nepodporují.
+     >
+     >
 
 13. **Volitelné:** **pro aplikace, které zpřístupňují role**, pokud chcete přiřadit k roli schválených uživatelů samoobslužných služeb, klepněte na volič vedle **ke které roli by měla být přiřazena uživatelům v této aplikaci?** Vyberte roli, ke kterému by se měla přiřadit těmto uživatelům.
 

@@ -10,12 +10,12 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 11/13/2018
 ms.author: sbowles
-ms.openlocfilehash: dc84014f3dce027c830f3f46b4aba16b775251d8
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 1e35d650f6fc99bff5bf49e517e2b38fcdc58dde
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51853145"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076997"
 ---
 # <a name="quickstart-create-a-python-script-to-detect-and-frame-faces-in-an-image"></a>Rychlý start: Vytvoření skriptu Pythonu, který zjišťuje a rámce čelí v obrázku
 
@@ -28,14 +28,18 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 - Klíč rozhraní API pro rozpoznávání tváře předplatného. Můžete získat bezplatné předplatné zkušební verze klíče z [zkuste služby Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo, postupujte podle pokynů v [vytvoření účtu služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) k odběru služby API pro rozpoznávání tváře a získejte klíč.
 - [Python 2.7+ nebo 3.5+](https://www.python.org/downloads/)
 - Nástroj [pip](https://pip.pypa.io/en/stable/installing/)
-- Python API pro rozpoznávání tváře SDK. Nainstalujte ho spuštěním následujícího příkazu:
-    ```bash
-    pip install cognitive_face
-    ```
+
+## <a name="get-the-face-sdk"></a>Získání sady SDK pro rozpoznávání tváře
+
+Nainstalujte Python SDK pro rozpoznávání tváře otevřením příkazového řádku a spuštěním následujícího příkazu:
+
+```shell
+pip install cognitive_face
+```
 
 ## <a name="detect-faces-in-an-image"></a>Rozpoznávání tváří v obrázku
 
-Vytvořit nový skript Pythonu _FaceQuickstart.py_. Přidejte následující kód. Toto je základní funkce rozpoznávání tváře. Budete muset nahradit `<Subscription Key>` s hodnotou klíče. Také může být nutné změnit hodnotu `BASE_URL` použít identifikátor oblasti správná pro váš klíč (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti). Bezplatné předplatné zkušební verze klíče jsou generovány v **westus** oblasti. Volitelně můžete nastavit `img_url` na adresu URL žádné image chcete použít.
+Vytvořit nový skript Pythonu s názvem _FaceQuickstart.py_ a přidejte následující kód. Toto je základní funkce rozpoznávání tváře. Budete muset nahradit `<Subscription Key>` s hodnotou klíče. Také může být nutné změnit hodnotu `BASE_URL` použít identifikátor oblasti správná pro váš klíč (najdete v článku [dokumenty k rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) seznam všechny koncové body oblasti). Bezplatné předplatné zkušební verze klíče jsou generovány v **westus** oblasti. Volitelně můžete nastavit `img_url` na adresu URL žádné image chcete použít.
 
 Skript se rozpoznávání tváří voláním **cognitive_face.face.detect** metoda, která zabalí [rozpoznat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) rozhraní REST API a vrátí seznam tváří.
 

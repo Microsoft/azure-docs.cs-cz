@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: d2b6b7a5d2baf9e46cca18aec97f31beda1e2a38
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a992851deda0659509c0ee4ea5de76b19734f017
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736729"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52867598"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple ke správě přihlašovacích údajů účtu úložiště pro StorSimple Virtual Array
 
@@ -148,7 +148,7 @@ Informovat službu Správce zařízení StorSimple změny, potřebujete přístu
     
 4. Ve službě Správce zařízení StorSimple budete muset aktualizovat klíč, který byl dříve změněn ve službě Microsoft Azure Storage. V **synchronizovat klíč účtu úložiště** okno, pokud primární přístupový klíč se změnil (znovu vygenerovalo), klikněte na primární a potom klikněte na tlačítko **synchronizovat klíč**. Pokud byl změněn sekundární klíč, klikněte na tlačítko **sekundární**a potom klikněte na tlačítko **synchronizovat klíč**.
    
-    ![Synchronizace přístupového klíče](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-acess-key.png)
+    ![Synchronizace přístupového klíče](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
 ## <a name="next-steps"></a>Další postup
 * Zjistěte, jak [spravovat StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).

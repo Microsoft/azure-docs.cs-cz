@@ -1,6 +1,6 @@
 ---
 title: Instalace a spuštění kontejnerů
-titleSuffix: Text Analytics - Cognitive Services - Azure
+titleSuffix: Text Analytics -  Azure Cognitive Services
 description: Postup stažení, instalaci a spouštění kontejnerů v tomto kurzu návod pro analýzu textu.
 services: cognitive-services
 author: diberry
@@ -11,12 +11,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: dc5e34f1a9a63b5b3ce30cdd547b900a32eba42c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 11798c3bfd4032ad10c738032a816a2a0488ce67
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017205"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53090529"
 ---
 # <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
 
@@ -145,7 +145,7 @@ Kontejnery pro analýzu textu odeslání fakturační údaje do Azure, použijte
 
 Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](../text-analytics-resource-container-config.md).
 
-## <a name="summary"></a>Shrnutí
+## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, instalaci a používání kontejnerů pro analýzu textu. Souhrn:
 

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření oboru názvů Azure Event Hubs a povolení funkce Capture pomocí šablony | Dokumentace Microsoftu
+title: Vytvoření oboru názvů Azure Event Hubs se zapnutým zachytáváním | Dokumentace Microsoftu
 description: Vytvoření oboru názvů Azure Event Hubs s jedním centrem událostí a povolení funkce Capture pomocí šablony Azure Resource Manageru
 services: event-hubs
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: c8341b40ba7616add1415178a2f0775fbbc66ec1
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 598c4f23787b9e17df9a11890904763fce0d1cd4
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918316"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53076861"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Vytvoření oboru názvů v centru událostí a povolení funkce Capture pomocí šablony
 
@@ -420,7 +420,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Funkci Event Hubs Capture můžete konfigurovat také prostřednictvím webu [Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Povolení funkce Event Hubs Capture pomocí webu Azure Portal](event-hubs-capture-enable-through-portal.md).
 

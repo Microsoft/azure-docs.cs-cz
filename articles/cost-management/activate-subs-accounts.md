@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: 5dee0286f5e8f43527062f6bd9255a5d735651f3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: secdec18
+ms.openlocfilehash: 9a27efe7908b2a15ceb823d7a85c4a12603731ab
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994103"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075977"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktivace účtů a předplatných Azure pomocí služby Cloudyn
 
@@ -41,7 +41,7 @@ Pokud je vašemu účtu přiřazena role **přispěvatele**, nemáte dostatečn�
 3. V Azure Active Directory vyberte **Uživatelská nastavení**.
 4. Zkontrolujte nastavení **Registrace aplikací**.
     - Pokud je nastavená možnost **Ano**, můžou aplikace AD registrovat i uživatelé, kteří nemají oprávnění správce. V případě tohoto nastavení může aplikaci zaregistrovat kterýkoli uživatel v tenantovi Azure AD.  
-    ![Registrace aplikací](./media/activate-subs-accounts/app-register.png)
+    ![Výběr registrace aplikací v nastavení uživatele](./media/activate-subs-accounts/app-register.png)
     - Pokud je pro položku **Registrace aplikací** nastavená možnost **Ne**, můžou aplikace Azure Active Directory registrovat jenom uživatelé v roli správce tenanta. Aplikaci CloudynCollector musí zaregistrovat správce tenanta.
 
 
@@ -53,12 +53,12 @@ Když přidáte účet nebo aktualizujete předplatné, povolíte službě Cloud
 
 1. Na portálu Cloudyn klikněte na symbol ozubeného kolečka v pravém horním rohu a vyberte **Cloud Accounts** (Účty v cloudu).
 2. Klikněte na **Add new account** (Přidat nový účet). Zobrazí se dialog **Add new account**. Zadejte požadované informace.  
-    ![Dialog pro přidání nového účtu](./media/activate-subs-accounts//add-new-account.png)
+    ![Zadejte požadované informace do textového pole přidat nový účet](./media/activate-subs-accounts/add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aktualizace předplatného
 
 1. Pokud chcete aktualizovat _neaktivované_ předplatné, které už ve službě Cloudyn v nástroji pro správu účtů máte, klikněte na symbol tužky pro úpravy napravo od nadřazeného _identifikátoru GUID tenanta_. Předplatná jsou seskupená pod nadřazeným tenantem, neaktivujte je tedy jednotlivě.
-    ![Opětovné zjištění předplatných](./media/activate-subs-accounts/existing-sub.png)
+    ![Vyberte vaše ID tenanta v poli přepínače Rediscover předplatná](./media/activate-subs-accounts/existing-sub.png)
 2. Pokud je potřeba, zadejte ID tenanta. Jestliže ID tenanta neznáte, vyhledejte ho pomocí následujících kroků:
     1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     2. Na portálu Azure Portal vyberte **Azure Active Directory**.
@@ -106,7 +106,7 @@ Také může být potřeba, abyste udělili oprávnění _zobrazovat poplatky_ v
 Službu Cloudyn může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí. Tento požadavek můžete nicméně obejít. Požádejte správce Azure Active Directory o udělení oprávnění k autorizaci aplikace **CloudynAzureCollector** skriptem PowerShellu. Níže uvedený skript udělí oprávnění k registraci aplikace **CloudynAzureCollector** instančního objektu služby Azure Active Directory.
 
 
-```
+```powershell
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #Tenant - enter your tenant ID or Name

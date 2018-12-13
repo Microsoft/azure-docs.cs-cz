@@ -1,10 +1,10 @@
 ---
-title: Nasazení pracovního prostoru Machine Learning s Azure Resource Manager – Azure Machine Learning Studio | Dokumentace Microsoftu
+title: Nasazení pracovního prostoru s Azure Resource Manager – Azure Machine Learning Studio | Dokumentace Microsoftu
 description: Postup nasazení pracovního prostoru pro Azure Machine Learning pomocí šablony Azure Resource Manageru
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
-ms.custom: (previous ms.author=hshapiro, author=heatherbshapiro)
+ms.custom: seodec18
 ms.author: amlstudiodocs
 manager: hjerez
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 2/05/2018
-ms.openlocfilehash: 82a9cfec0efe60e3a0cdf16efa373e68efebee59
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: MT
+ms.openlocfilehash: e3836e3c299b2dff1252c0bceaec5266fc54b2e8
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52307976"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074602"
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Nasazení pracovního prostoru Machine Learning pomocí Azure Resource Manageru
 

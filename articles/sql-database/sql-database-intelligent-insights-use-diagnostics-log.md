@@ -12,16 +12,16 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/04/2018
-ms.openlocfilehash: 70096c8f3a5c07fa757b68494c04519b63435dcd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
-ms.translationtype: MT
+ms.openlocfilehash: 2809dd45042e41c8337ecddccc76ec4e16d7cb8b
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166890"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887691"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použití protokolu diagnostiky výkonu Intelligent Insights Azure SQL Database
 
-Tato stránka obsahuje informace o tom, jak používat protokol diagnostiky výkonu Azure SQL Database generovaných [Intelligent Insights](sql-database-intelligent-insights.md), jeho formát a data obsahuje pro potřeby vaší vlastní vývoj. Odešlete tento protokol diagnostiky a [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní vývoj a provoz upozorňování a generování sestav Možnosti.
+Tato stránka obsahuje informace o tom, jak používat protokol diagnostiky výkonu Azure SQL Database generovaných [Intelligent Insights](sql-database-intelligent-insights.md), jeho formát a data obsahuje pro potřeby vaší vlastní vývoj. Odešlete tento protokol diagnostiky a [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní vývoj a provoz upozorňování a generování sestav Možnosti.
 
 ## <a name="log-header"></a>Hlavička protokolu
 
@@ -39,9 +39,7 @@ Hlavička protokolu je běžné a skládá se z časové razítko (TimeGenerated
 
 ## <a name="issue-id-and-database-affected"></a>ID problému a ovlivněné databáze
 
-Vlastnost Identifikace problému (issueId_d) poskytuje způsob jednoznačně sledování problémů s výkonem, dokud se nevyřeší. Intelligent Insights dodržuje každý životní cyklus problém jako "Aktivní", "Ověření" nebo "Dokončených". Prostřednictvím jednotlivých fází stav Intelligent Insights zaznamenat více záznamů událostí v protokolu. Pro každou z těchto položek zůstane jedinečné identifikační číslo problém. Intelligent Insights sleduje problém prostřednictvím jejich životního cyklu a generuje přehledů v protokolu diagnostiky každých 15 minut.
-
-Po zjištění problému s výkonem a tak dlouho, dokud to trvá, problém se hlásí jako "Aktivní" v části Vlastnosti stavu (status_s). Po vyřešení zjištěného problému má ověřený a označení "Ověření" v části Vlastnosti stavu (status_s). Pokud tento problém se nadále nenachází, vlastnost status (status_s) ohlásí tento problém jako "Dokončit".
+Vlastnost Identifikace problému (issueId_d) poskytuje způsob jednoznačně sledování problémů s výkonem, dokud se nevyřeší. Více záznamů událostí do protokolu hlásí stav stejný problém bude sdílet stejné ID problému.
 
 Spolu s ID problému diagnostický protokol sestavy (intervalStartTime_t) start a end (intervalEndTme_t) časová razítka konkrétní události týkající se problému, který se použije v hlášení v protokolu diagnostiky.
 

@@ -1,6 +1,6 @@
 ---
-title: Jak přiřadit nebo odebrat licence Azure Active Directory | Dokumentace Microsoftu
-description: Přiřazení nebo odebrání licence Azure Active Directory od uživatelů nebo skupin pomocí služby Azure Active Directory.
+title: Přiřazení nebo odebrání licence – Azure Active Directory | Dokumentace Microsoftu
+description: Pokyny ohledně toho, jak přiřadit nebo odebrání uživatele nebo skupiny licencí Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-custom: it-pro
-ms.openlocfilehash: e1b0b2f84c67e30c3bb998554dc662b002744003
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.custom: it-pro, seodec18
+ms.openlocfilehash: 6cf3e9a9b767dfaa6f04d151864f64123e3d6ae7
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603875"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077449"
 ---
-# <a name="how-to-assign-or-remove-azure-active-directory-licenses"></a>Postupy: přiřazení nebo odebrání licence Azure Active Directory
+# <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Přiřazení nebo odebrání licencí pomocí portálu Azure Active Directory
 Mnoho služeb Azure Active Directory (Azure AD) vyžadují aktivaci produktů Azure AD a licencování jednotlivých uživatelů nebo skupin (a související členy) pro tento produkt. Uživatelé s licencemi na aktivní budou moci přistupovat a používat licencovaný jenom služby Azure AD.
 
 ## <a name="available-product-editions"></a>Edice k dispozici produktu
@@ -40,7 +40,7 @@ Konkrétní informace o každé edici produktu a související podrobnosti o lic
 Můžete zobrazit vaši dostupný produkty Microsoftu, včetně jednotlivých licencí, kontrolují všechna data vypršení a počet přiřazení k dispozici.
 
 ### <a name="to-find-your-product-and-license-details"></a>Najít podrobnosti o vašich produktů a licence
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu globálního správce adresáře.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí účtu globálního správce daného adresáře.
 
 2. Vyberte **Azure Active Directory**a pak vyberte **licence**.
 

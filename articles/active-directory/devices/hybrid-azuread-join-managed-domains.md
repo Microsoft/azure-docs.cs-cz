@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 48bedff0cd09c3f0dbffdabe6a94847d035a0cf9
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 7061776ba5325a333033d0f272de3b2663b44351
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963927"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887793"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Kurz: Konfigurace hybridního připojení k Azure Active Directory pro spravované domény
 
@@ -140,6 +140,8 @@ Pokud jsou některá z vašich zařízení připojených k doméně zařízení 
  
 - Konfigurace nastavení místního intranetu pro registraci zařízení
 
+- Konfigurace bezproblémové jednotné přihlašování (SSO)
+
 - Řízení zařízení s Windows nižší úrovně 
 
 
@@ -166,6 +168,11 @@ Pokud chcete úspěšně dokončit hybridní připojení zařízení s Windows n
 - `https://autologon.microsoftazuread-sso.com`.
 
 Kromě toho je potřeba v zóně místního intranetu uživatele povolit možnost **Povolit aktualizace stavového řádku přes skript**.
+
+
+### <a name="configure-seamless-sso"></a>Konfigurace bezproblémového jednotného přihlašování
+
+K úspěšnému dokončení hybridní službě Azure AD join vaší Windows nižší úrovně zařízení ve spravované doméně, která používá předávací ověřování (PTA) nebo synchronizace hodnot Hash hesel (PHS) jako Azure AD v cloudu metodu ověřování, musíte také [konfigurace Bezproblémové jednotné přihlašování](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-2-enable-the-feature). 
 
 
 ### <a name="control-windows-down-level-devices"></a>Řízení zařízení s Windows nižší úrovně 
@@ -206,7 +213,7 @@ Pokud máte problémy s dokončením hybridního připojení k Azure AD pro zař
 - [Řešení potíží s hybridním připojením zařízení s Windows nižší úrovně k Azure AD](troubleshoot-hybrid-join-windows-legacy.md)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Konfigurace hybridního připojení k Azure Active Directory pro federované domény](hybrid-azuread-join-federated-domains.md)

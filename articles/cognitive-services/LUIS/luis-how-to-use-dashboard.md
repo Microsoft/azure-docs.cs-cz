@@ -1,21 +1,22 @@
 ---
-title: Řídicí panel aplikací pro aplikace Language Understanding
-titleSuffix: Azure Cognitive Services
+title: Řídicí panel aplikace
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: Další informace o řídicím panelu aplikací, vizualizovaných nástrojů pro generování sestav, která umožňuje monitorování aplikací na jeden první pohled.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: diberry
-ms.openlocfilehash: 0daf25b3c7edc69ada57fb3ce2b8dbb7e50e5aed
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: MT
+ms.openlocfilehash: fa5560c008270635d0d93b8004e017c810c9c27a
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52335006"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53074414"
 ---
 # <a name="application-dashboard"></a>Řídicí panel aplikací
 Řídicí panel aplikací umožňuje monitorovat aplikace jeden pohled. **Řídicí panel** zobrazí při otevření aplikace po kliknutí na název aplikace **Moje aplikace** stránce vyberte **řídicí panel** v horním panelu. 

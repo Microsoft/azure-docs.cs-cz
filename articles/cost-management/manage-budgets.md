@@ -1,23 +1,23 @@
 ---
 title: Spravovat rozpočty Cloudyn v Azure | Dokumentace Microsoftu
-description: Tento článek pomáhá vytvářet a spravovat rozpočty ve službě Cloudyn.
+description: Tento článek vám pomůže rychle vytvořit rozpočtů a zahájení správy ve službě Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
-ms.custom: ''
-ms.openlocfilehash: ef2ccd1d1fb5583d1356969ca759e5fb58a81936
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.custom: seodec18
+ms.openlocfilehash: 44062670283a15f678da45e13a831e73a7738c39
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997558"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53075484"
 ---
-# <a name="manage-budgets"></a>Správa rozpočtů
+# <a name="manage-azure-budgets-with-cloudyn"></a>Správa Azure rozpočtů s Cloudyn
 
 Nastavení rozpočtů a na základě rozpočtu výstrahy zobrazíte nápovědu, jak zlepšit cloudu zásad správného řízení a zodpovědnost. Tento článek vám pomůže rychle vytvořit rozpočtů a zahájení správy ve službě Cloudyn.
 
@@ -40,7 +40,7 @@ Vytvoření rozpočtu a přiřaďte ho do entity:
 3. V roce rozpočtu vyberte v roce, ve kterém chcete vytvořit rozpočtu.
 4. Pro každý měsíc nastavte hodnotu rozpočtu. Jakmile budete hotovi, klikněte na tlačítko **Uložit**.
 V tomto příkladu měsíční rozpočet. června 2018 nastavena na 135,000 $. Celkový rozpočet rok je 1,615,000.00 $.
-![Vytvořit rozpočet](./media/manage-budgets/set-budget.png)
+![Vytvořit stránku rozpočtu, kde nastavujete rozpočet pro každý měsíc](./media/manage-budgets/set-budget.png)
 
 
 Import souboru pro roční rozpočtu:
@@ -64,11 +64,11 @@ V tomto příkladu se předpokládá aktuální datum je 22. června. Bezplatně
 
 Dalším způsobem, jak zobrazit sestavu je podívat se na celkové náklady vs vašemu rozpočtu. V části zobrazíte souhrnné náklady **zobrazit/skrýt pole**vyberte **celkové náklady** a **celkový rozpočet**. Tady je příklad ukazující celkové náklady od začátku roku.
 
-![Součet rozpočtu](./media/manage-budgets/accumulated-budget.png)
+![Příklad sbírají náklady a celkový rozpočet je znázorněno v sadě Visual Studio náklady. Sestava rozpočtu v čase](./media/manage-budgets/accumulated-budget.png)
 
 Někdy v budoucnu vaše celkové náklady může překročit vašemu rozpočtu. Můžete snadněji uvidíte, že pokud změníte zobrazení grafu _řádku_ typu.
 
-![Rozpočtu ukazuje spojnicový graf](./media/manage-budgets/budget-line.png)
+![Rozpočtu ukazuje spojnicový graf v náklady podle měsíců](./media/manage-budgets/budget-line.png)
 
 ## <a name="create-budget-alerts-for-a-filter"></a>Vytvářet upozornění na rozpočet filtr
 
@@ -81,7 +81,7 @@ Pojďme se podívat na příklad.
 
 V sadě Visual Studio náklady. Rozpočet přes čas sestavy, klikněte na tlačítko **akce** a pak vyberte **Naplánování sestavy**. Na kartě prahovou hodnotu vyberte metriku prahovou hodnotu. Například **rozpočet vs procento nákladů**. Vyberte typ výstrahy a zadejte hodnotu v procentech rozpočtu. Pokud chcete upozorňování pouze jednou, vyberte **počet po sobě jdoucích výstrah** a pak zadejte _1_. Klikněte na **Uložit**.
 
-![Upozornění na rozpočet](./media/manage-budgets/budget-alert.png)
+![Vytváření upozornění na rozpočet Save plánu nebo momentální tohoto pole sestavy](./media/manage-budgets/budget-alert.png)
 
 ## <a name="next-steps"></a>Další postup
 

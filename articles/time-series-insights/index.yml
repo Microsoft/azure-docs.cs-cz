@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6a2db1d1678947b32ea5d7188047d34ae4029c98
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: df967fe9c77f507ca543f8c93c85f5df5b997a55
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869530"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53073650"
 documentType: LandingData
 title: Dokumentace ke službě Azure Time Series Insights
 metadata:
@@ -28,7 +28,7 @@ abstract:
       src: media/index/new-tsi-intro.png
       width: 250
     title: Time Series Insights pro aplikace IoT (13:31)
-    href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics/player
+    href: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
     width: 250
 sections:
 - title: Zprovoznění během 5 minut

@@ -1,21 +1,22 @@
 ---
-title: Instalace a spouštění kontejnerů
-titlesuffix: Computer Vision - Cognitive Services - Azure
+title: Instalace a spuštění kontejnerů
+titlesuffix: Computer Vision - Azure Cognitive Services
 description: Jak si stáhnout, nainstalovat a spouštění kontejnerů v tomto kurzu návod pro počítačové zpracování obrazu.
 services: cognitive-services
 author: diberry
 manager: cgronlun
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: diberry
-ms.openlocfilehash: 67dbf3bdf6631785fc876283847e36349e857a77
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 9964be07c578cd1cafd93328bffe972483123e03
+ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52634638"
+ms.lasthandoff: 12/08/2018
+ms.locfileid: "53077031"
 ---
 # <a name="install-and-run-containers"></a>Instalace a spuštění kontejnerů
 
@@ -39,7 +40,7 @@ Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakt
 
 Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).
 
-### <a name="server-requirements-and-recommendations"></a>Server – požadavky a doporučení
+### <a name="container-requirements-and-recommendations"></a>Požadavků na kontejner a doporučení
 
 Zásobník textu rozpoznat vyžaduje minimálně 1 jádra procesoru, alespoň 2.6 gigahertz (GHz) nebo rychlejší a 8 gigabajtů (GB) přidělené paměti, ale My doporučujeme aspoň 2 jádra procesoru a 8 GB přidělené paměti.
 
@@ -162,7 +163,9 @@ V tomto článku jste zjistili, koncepty a pracovní postup pro stažení, insta
 * Spuštění imagí kontejnerů v Dockeru.
 * Rozhraní REST API nebo sady SDK můžete použít k volání operací v kontejnerech pro počítačové zpracování obrazu tak, že zadáte identifikátor URI kontejneru hostitele.
 * Při vytváření instance kontejneru, je nutné zadat fakturační informace.
-* ** Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft.  
+
+> [!IMPORTANT]
+> Cognitive Services kontejnery nejsou licencované k používání bez připojení k Azure pro monitorování míry využívání. Zákazníci musí umožňují používání kontejnerů ke komunikaci fakturační údaje ke službě monitorování míry využití po celou dobu. Cognitive Services kontejnery Neodesílat data zákazníků (třeba image nebo text, který je analyzován) společnosti Microsoft.
 
 ## <a name="next-steps"></a>Další postup
 
