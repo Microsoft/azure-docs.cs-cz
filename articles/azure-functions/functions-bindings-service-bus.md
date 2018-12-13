@@ -14,7 +14,7 @@ ms.date: 04/01/2017
 ms.author: cshoe
 ms.openlocfilehash: 80091ce94e9798af46348e8ceb658c8db9c30e0e
 ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2018
 ms.locfileid: "53087556"

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: be519dd2a6e6948bedeedd4166c7adf466dbb365
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 7a8f2fc0d8b9f023e20cf8c4d4939aa3094a13e8
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836368"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890173"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitorování stavu replikace služby Active Directory pomocí služby Log Analytics
 
@@ -33,7 +33,7 @@ Balíček stavem replikace AD řešení pravidelně monitoruje prostředí služ
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
-* Musíte nainstalovat agenty na řadiče domény, které jsou členy domény, který se má vyhodnotit. Nebo, musíte nainstalovat agenty na členských serverech a konfigurace agentů k odesílání dat replikace AD do služby Log Analytics. Chcete-li pochopit, jak připojit počítače s Windows ke službě Log Analytics, přečtěte si téma [počítače Windows se připojit ke službě Log Analytics](../../azure-monitor/platform/agent-windows.md). Pokud řadiče domény už je součástí existujícího prostředí System Center Operations Manager, který chcete připojit ke službě Log Analytics, najdete v článku [připojení Operations Manageru k Log Analytics](../../log-analytics/log-analytics-om-agents.md).
+* Musíte nainstalovat agenty na řadiče domény, které jsou členy domény, který se má vyhodnotit. Nebo, musíte nainstalovat agenty na členských serverech a konfigurace agentů k odesílání dat replikace AD do služby Log Analytics. Chcete-li pochopit, jak připojit počítače s Windows ke službě Log Analytics, přečtěte si téma [počítače Windows se připojit ke službě Log Analytics](../../azure-monitor/platform/agent-windows.md). Pokud řadiče domény už je součástí existujícího prostředí System Center Operations Manager, který chcete připojit ke službě Log Analytics, najdete v článku [připojení Operations Manageru k Log Analytics](../../azure-monitor/platform/om-agents.md).
 * Přidejte řešení pro stav replikace služby Active Directory do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidání řešení Log Analytics z Galerie řešení](../../azure-monitor/insights/solutions.md).  Není nutná žádná další konfigurace.
 
 ## <a name="ad-replication-status-data-collection-details"></a>Podrobnosti kolekce dat stavu replikace AD
@@ -48,7 +48,7 @@ Pokud nechcete, aby na všech řadičích domény připojit přímo k Log Analyt
 
 ### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Chcete-li povolit řadiči domény k odesílání dat AD do služby Log Analytics
 1. Ověřte, zda je počítač členem domény, který chcete monitorovat stav replikace AD řešení.
-2. [Připojte počítač Windows ke službě Log Analytics](../../log-analytics/log-analytics-om-agents.md) nebo [připojte se pomocí svého stávajícího prostředí Operations Manageru k Log Analytics](../../log-analytics/log-analytics-om-agents.md), pokud už není připojený.
+2. [Připojte počítač Windows ke službě Log Analytics](../../azure-monitor/platform/om-agents.md) nebo [připojte se pomocí svého stávajícího prostředí Operations Manageru k Log Analytics](../../azure-monitor/platform/om-agents.md), pokud už není připojený.
 3. V tomto počítači nastavte následující klíč registru:
 
    * Klíč: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management skupiny\<ManagementGroupName > \Solutions\ADReplication**
@@ -149,7 +149,7 @@ Odpověď: normální uživatelských oprávnění k Active Directory je dostate
 ## <a name="troubleshoot-data-collection-problems"></a>Poradce při potížích kolekce dat
 Aby bylo možné shromažďovat data, balíček řešení stav replikace AD vyžaduje aspoň jeden řadič domény k připojení k pracovnímu prostoru Log Analytics. Až se připojíte řadič domény, zobrazí se zpráva označující, že **data se stále shromažďují**.
 
-Pokud potřebujete pomoc s připojením jeden z řadičů domény, můžete zobrazit dokumentaci na [počítače Windows se připojit ke službě Log Analytics](../../log-analytics/log-analytics-om-agents.md). Případně, pokud vaše řadiče domény je již připojen do existujícího prostředí System Center Operations Manager, dokumentaci si můžete prohlédnout v [připojení System Center Operations Manageru k Log Analytics](../../log-analytics/log-analytics-om-agents.md).
+Pokud potřebujete pomoc s připojením jeden z řadičů domény, můžete zobrazit dokumentaci na [počítače Windows se připojit ke službě Log Analytics](../../azure-monitor/platform/om-agents.md). Případně, pokud vaše řadiče domény je již připojen do existujícího prostředí System Center Operations Manager, dokumentaci si můžete prohlédnout v [připojení System Center Operations Manageru k Log Analytics](../../azure-monitor/platform/om-agents.md).
 
 Pokud nechcete, aby všechny řadiče domény připojit přímo ke službě Log Analytics nebo System Center Operations Manager, najdete v článku [povolit řadiči domény k odesílání dat AD do služby Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 

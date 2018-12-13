@@ -3,19 +3,19 @@ title: Zpracování chyb přechodné připojení pro službu Azure Database for 
 description: Zjistěte, jak zpracovávat chyby přechodné připojení pro službu Azure Database for MySQL.
 keywords: připojení k MySQL, připojovací řetězec, problémy s připojením, přechodná chyba, Chyba připojení
 services: mysql
-author: janeng
+author: jan-eng
 ms.author: janeng
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 11/09/2018
-ms.openlocfilehash: 1944b30e5c658f1df896050d0ff43f1058d5dd32
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 2d7b62d5f45f495d36b1ed103155f8f3178451e8
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51284906"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52887810"
 ---
 # <a name="handling-of-transient-connectivity-errors-for-azure-database-for-mysql"></a>Řešení chyb přechodné připojení pro službu Azure Database for MySQL
 
@@ -49,4 +49,4 @@ Ujistěte se, že můžete testovat Logika opakování. Zkuste například ke sp
 
 ## <a name="next-steps"></a>Další postup
 
-* [Řešení problémů s připojením ke službě Azure Database for MySQL](howto-troubleshoot-common-connection-issues.md)
+* [Řešení potíží s připojením ke službě Azure Database for MySQL](howto-troubleshoot-common-connection-issues.md)

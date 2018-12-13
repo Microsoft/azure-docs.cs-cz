@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cca18b2aa5cb6f27df45e4b63e55251bea058625
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 19a9ae18c7fbf3b0f663396099f065c76969206f
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968845"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52890377"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Kurz: Nasazení aplikace do služby Service Fabric Mesh pomocí šablony
 
@@ -51,7 +51,7 @@ Než začnete s tímto kurzem:
 
 * [Instalace Dockeru](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
-* [Nainstalujte si místně Azure CLI a Service Fabric Mesh CLI](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally).
+* [Nainstalujte si místně Azure CLI a Service Fabric Mesh CLI](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 
@@ -359,9 +359,27 @@ Aplikaci nasadíte spuštěním následujícího příkazu:
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-Během několik minut by se mělo zobrazit následující:
+Tento příkaz vytvoří fragment kódu JSON, který je uveden níže. V části ```outputs``` část výstup ve formátu JSON, zkopírujte ```publicIPAddress``` vlastnost.
 
-`todolistappNetwork has been deployed successfully on todolistappNetwork with public ip address <IP Address>`
+```json
+"outputs": {
+    "publicIPAddress": {
+    "type": "String",
+    "value": "40.83.78.216"
+    }
+}
+```
+
+Tyto informace pocházejí z ```outputs``` části šablony ARM. Jak je znázorněno níže, tato část odkazuje na prostředek brány, který chcete načíst veřejnou IP adresu. 
+
+```json
+  "outputs": {
+    "publicIPAddress": {
+      "value": "[reference('helloWorldGateway').ipAddress]",
+      "type": "string"
+    }
+  }
+```
 
 ## <a name="open-the-application"></a>Otevření aplikace
 
@@ -386,7 +404,7 @@ Projděte si protokoly nasazené aplikace pomocí příkazu `az mesh code-packag
 az mesh code-package-log get --resource-group myResourceGroup --application-name todolistapp --service-name WebFrontEnd --replica-name 0 --code-package-name WebFrontEnd
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 

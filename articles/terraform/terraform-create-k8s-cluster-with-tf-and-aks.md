@@ -8,13 +8,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/08/2018
-ms.openlocfilehash: fb4eabb247e6a4fe5550b2b23d34862c789bfaa1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.date: 12/04/2018
+ms.openlocfilehash: d723eea6fff54b3a2f90478fcb209df76a6a776e
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232320"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52872913"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 [Azure Kubernetes Service (AKS)](/azure/aks/) spravuje hostované prostředí Kubernetes a umožňuje rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
@@ -82,7 +82,6 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
     terraform {
         backend "azurerm" {}
     }
-
     ```
 
 1. Stisknutím klávesy **Esc** ukončete režim vkládání.
@@ -112,6 +111,26 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
         location = "${var.location}"
     }
 
+    resource "azurerm_log_analytics_workspace" "test" {
+        name                = "${var.log_analytics_workspace_name}"
+        location            = "${var.log_analytics_workspace_location}"
+        resource_group_name = "${azurerm_resource_group.k8s.name}"
+        sku                 = "${var.log_analytics_workspace_sku}"
+    }
+
+    resource "azurerm_log_analytics_solution" "test" {
+        solution_name         = "ContainerInsights"
+        location              = "${azurerm_log_analytics_workspace.test.location}"
+        resource_group_name   = "${azurerm_resource_group.k8s.name}"
+        workspace_resource_id = "${azurerm_log_analytics_workspace.test.id}"
+        workspace_name        = "${azurerm_log_analytics_workspace.test.name}"
+
+        plan {
+            publisher = "Microsoft"
+            product   = "OMSGallery/ContainerInsights"
+        }
+    }
+
     resource "azurerm_kubernetes_cluster" "k8s" {
         name                = "${var.cluster_name}"
         location            = "${azurerm_resource_group.k8s.location}"
@@ -122,14 +141,14 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
             admin_username = "ubuntu"
 
             ssh_key {
-            key_data = "${file("${var.ssh_public_key}")}"
+                key_data = "${file("${var.ssh_public_key}")}"
             }
         }
 
         agent_pool_profile {
-            name            = "default"
+            name            = "agentpool"
             count           = "${var.agent_count}"
-            vm_size         = "Standard_DS2_v2"
+            vm_size         = "Standard_DS1_v2"
             os_type         = "Linux"
             os_disk_size_gb = 30
         }
@@ -137,6 +156,13 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
         service_principal {
             client_id     = "${var.client_id}"
             client_secret = "${var.client_secret}"
+        }
+
+        addon_profile {
+            oms_agent {
+            enabled                    = true
+            log_analytics_workspace_id = "${azurerm_log_analytics_workspace.test.id}"
+            }
         }
 
         tags {
@@ -198,6 +224,20 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
     variable location {
         default = "Central US"
     }
+
+    variable log_analytics_workspace_name {
+        default = "testLogAnalyticsWorkspaceName"
+    }
+
+    # refer https://azure.microsoft.com/global-infrastructure/services/?products=monitor for log analytics available regions
+    variable log_analytics_workspace_location {
+        default = "eastus"
+    }
+
+   # refer https://azure.microsoft.com/pricing/details/monitor/ for log analytics pricing 
+   variable log_analytics_workspace_sku {
+        default = "PerGB2018"
+   }
     ```
 
 1. Stisknutím klávesy **Esc** ukončete režim vkládání.
@@ -368,7 +408,10 @@ Nově vytvořený cluster můžete pomocí nástrojů Kubernetes ověřit.
 
     ![Nástroj kubectl vám umožňuje ověřit stav clusteru Kubernetes.](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="monitor-health-and-logs"></a>Monitorování stavu a protokolů
+Při vytvoření clusteru AKS se povolilo monitorování za účelem zachycování metrik stavu podů i uzlů clusteru. Tyto metriky stavu jsou k dispozici na webu Azure Portal. Další informace o monitorování stavu kontejneru, naleznete v tématu [monitorování Azure Kubernetes Service health](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
+
+## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak pomocí Terraformu a AKS vytvořit cluster Kubernetes. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky: 
 
  [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)  

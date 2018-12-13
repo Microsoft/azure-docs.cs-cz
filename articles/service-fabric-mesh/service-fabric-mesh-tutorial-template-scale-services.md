@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4d6839fea3ce0eb74cdf87396716cdc69c0cd1a0
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: af733b75780787f07ec28ff45bda6810c3d96baa
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165977"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888116"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>Kurz: Škálování aplikace spuštěné ve službě Service Fabric Mesh
 
@@ -47,7 +47,7 @@ Než začnete s tímto kurzem:
 
 * Pokud ještě nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* [Nainstalujte si místně Azure CLI a Service Fabric Mesh CLI](service-fabric-mesh-howto-setup-cli.md#install-the-service-fabric-mesh-cli-locally).
+* [Nainstalujte si místně Azure CLI a Service Fabric Mesh CLI](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
 ## <a name="manually-scale-your-services-in-or-out"></a>Ruční horizontální snížení nebo navýšení kapacity služeb
 
@@ -162,7 +162,7 @@ Pokud chcete zobrazit počet spuštěných replik pro službu ToDoService, spus�
 az mesh service show --resource-group myResourceGroup --name ToDoService --app-name todolistapp --query "replicaCount"
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V této části kurzu jste se naučili:
 

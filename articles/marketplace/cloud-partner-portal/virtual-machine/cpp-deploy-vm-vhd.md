@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 2771549af29b3e717d117afb42de6db03fbee226
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: MT
+ms.openlocfilehash: 06ef4247d3cd7f87d763feb3f61cb8101d17a2e4
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639627"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52877112"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Nasazení virtuálního počítače z virtuálních pevných disků
 
@@ -121,9 +121,6 @@ Pokud chcete nasadit velký virtuální počítač z image generalizovaného vir
     New-AzureVM -ServiceName "VMImageCloudService" -VMs $myVM -Location "West US" -WaitForBoot
 ```
 
-<!-- TD: The following is a marketplace-publishing article and may be out-of-date.  TD: update and move topic.
-For help with issues, see [Troubleshooting common issues encountered during VHD creation](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting) for additional assistance.
--->
 
 ## <a name="next-steps"></a>Další postup
 

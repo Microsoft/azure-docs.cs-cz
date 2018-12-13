@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c8edaba8de597e3e76e760e1f5109006338a663c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 2f426ab85d9ab15dd080a487337b8d48358ed040
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238816"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888456"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps podporován styly mapy
-Azure maps podporují čtyři integrované mapovat různé styly. Styly s jejich popisy jsou uvedeny níže.
+Azure maps podporuje několik různých předdefinovaných Mapovat styly, jak je popsáno níže.
 
 ## <a name="road"></a>Silniční
 A **silniční** mapa je standardní mapy, která zobrazuje silnicích zakázána, přirozené a umělý funkce spolu s popisky pro tyto funkce.
@@ -49,6 +49,14 @@ Tento styl mapy je v hybridní kombinaci cest a popisky překrývající nad sat
 **Tmavý ve stupních šedi** tmavě verze styl silniční mapu.
 
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)
+
+**Použít rozhraní API:**
+* Mapový ovládací prvek JS 
+
+## <a name="night"></a>noční
+**noční** je verze Tmavý styl silniční mapu s barevné cest a symboly.
+
+![noční](./media/supported-map-styles/night.PNG)
 
 **Použít rozhraní API:**
 * Mapový ovládací prvek JS 

@@ -3,7 +3,7 @@ title: Vytvoření a správa Azure SQL úlohy Elastic Database pomocí jazyka Tr
 description: Spusťte skripty v rozsáhlé skupině databází se agent Elastických úloh databáze pomocí příkazů jazyka Transact-SQL (T-SQL).
 services: sql-database
 ms.service: sql-database
-ms.subservice: operations
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: 49fe1fc79ac94b798cb257b961c36a6258fb00d9
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
-ms.translationtype: MT
+ms.openlocfilehash: ead7b92640262a1c386fc9b8c3def803d2525843
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056783"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52868949"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 

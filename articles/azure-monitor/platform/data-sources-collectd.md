@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 1a6ccb42e00431c16ce7767f19d6cdc9cbb3cffe
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 25dc4715e4cfd028b6d0f83a32edd3f8ef93d560
+ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841689"
+ms.locfileid: "52874885"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Shromažďovat data shromážděná na agentech pro Linux ve službě Log Analytics
 [Shromážděná](https://collectd.org/) je linuxového démona otevřít zdroj, který pravidelně shromažďuje metriky výkonu z aplikace a informace na úrovni systému. Příklad aplikace obsahují Java Virtual Machine (JVM), MySQL Server a Nginxu. Tento článek obsahuje informace o shromažďování dat výkonu z shromážděná v Log Analytics.
@@ -125,5 +125,5 @@ Chcete-li zachovat známým modelem mezi metriky infrastruktury ještě shromaž
 
 ## <a name="next-steps"></a>Další postup
 * Další informace o [prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
-* Použití [vlastní pole](../../log-analytics/log-analytics-custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.
+* Použití [vlastní pole](../../azure-monitor/platform/custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.
 

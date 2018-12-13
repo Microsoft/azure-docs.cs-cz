@@ -5,37 +5,39 @@ services: service-fabric-mesh
 keywords: ''
 author: rwike77
 ms.author: ryanwi
-ms.date: 07/12/2018
+ms.date: 11/27/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 6aa268cf56bfb8be9c27a9e0d9e5c9f4464b0c9d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+manager: jeconnoc
+ms.openlocfilehash: ecdb36af786d96a5b343d11cd689642d59528445
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076084"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888524"
 ---
 # <a name="state-management-with-service-fabric"></a>Správa stavu s využitím Service Fabric
+
 Service Fabric podporuje spoustu různých možností pro úložiště stavu. Koncepční přehled vzorce správy stavu a Service Fabric najdete v části [koncepty služby Service Fabric: stav](/azure/service-fabric/service-fabric-concepts-state). Všechny tyto stejné koncepty platí, jestli vaše služby běžet uvnitř nebo vně sítě pro Service Fabric. 
 
-## <a name="state-storage-options-in-azure-service-fabric-mesh"></a>Možnosti stavu úložiště v Azure Service Fabric mřížky
 Pomocí Service Fabric sítě můžete snadno nasadit novou aplikaci a připojte ho k existujícímu úložišti dat hostovaném v Azure. Kromě použití libovolné vzdálené databázi, existuje několik možností pro ukládání dat, v závislosti na tom, jestli služba chce místní nebo vzdálené úložiště. 
 
-* Místně uložené replikovaných dat
-  * Reliable Collections (není k dispozici ve verzi preview)
-    * Knihovnu, která implementuje datové struktury, jako jsou fronty a páry klíč hodnota pro použití ve službě
-    * Díky tomu nejjednodušší a nejrychlejší způsob, jak pracovat s daty, současně snadno oddíl směrování v kombinaci s inteligentního směrování v Service Fabric mřížky
-  * Service Fabric svazku ovladače (není k dispozici ve verzi preview)
-    * Ovladač dockeru svazek připojit místní svazek do kontejneru
-    * To umožňuje maximální flexibilitu při ukládání dat místně, prostřednictvím libovolného rozhraní API, která podporuje úložiště file.
+## <a name="volumes"></a>Svazky
 
-* Vzdálené úložiště
-  * Ovladač Azure svazku souborů
-    * Ovladač dockeru svazku pro připojení sdílené složky služby soubory Azure do kontejneru
-    * Nabízí méně výkonné, ale možnost levnější úplně také flexibilní a spolehlivé dat prostřednictvím jakékoliv rozhraní API, která podporuje úložiště file.
-    * [Postupy: Průvodce: nasazení aplikace pomocí Azure Files svazku](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md)
-    
+Často musíte dělat kontejnery využívání dočasné disky. Dočasné disky jsou dočasné, ale tak získat nový dočasný disk a ke ztrátě informací, pokud dojde k chybě kontejneru. Je taky obtížné sdílet informace o dočasné disky s jiných kontejnerů. Svazky jsou adresáře, které se připojit k uvnitř instancí kontejneru, které můžete použít k uložení stavu. Svazky poskytují úložiště pro obecné účely souborů a umožňují čtení a zápis souborů pomocí rozhraní API normální disku vstupně-výstupní operace souboru. Prostředku svazku popisuje postup připojení adresáře a které pomocného úložiště používat. Azure File storage nebo Service Fabric svazku disku k uložení dat můžete.
+
+![Svazky][image3]
+
+### <a name="service-fabric-reliable-volume"></a>Service Fabric Reliable svazku
+
+Service Fabric Reliable svazek je svazek ovladač Dockeru použili k připojení místní svazek do kontejneru. Čtení a zápisu jsou místní provoz a rychlé. Data se replikují do sekundární uzly, zajištění vysoké dostupnosti. Je také rychlé převzetí služeb při selhání. Pokud dojde k chybě kontejner, ji převezme služby při selhání na uzel, který již obsahuje kopii vaše data. Příklad najdete v tématu [postup nasazení aplikace pomocí Service Fabric Reliable svazku.](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/counter)
+
+### <a name="azure-files-volume"></a>Služba soubory Azure svazku
+
+Azure soubory svazek je svazek ovladač Dockeru pro připojení sdílené složky služby soubory Azure do kontejneru. Soubory Azure storage, používá síť úložiště, takže čte a zapisuje probíhat přes síť. Porovnání se Service Fabric Reliable svazku, Azure Files storage je méně výkonných ale poskytuje možnost levnější a plně spolehlivé data. Příklad najdete v tématu [postup nasazení aplikace pomocí služby Azure souborů svazku](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
+
 ## <a name="next-steps"></a>Další postup
 
 Informace o modelu aplikací najdete v tématu [prostředky Service Fabric](service-fabric-mesh-service-fabric-resources.md)
+
+[image3]: ./media/service-fabric-mesh-storing-state/volumes.png

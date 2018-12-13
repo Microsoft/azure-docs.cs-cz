@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 21b3ba88037c7956304fa6a53268e779841b14f3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: MT
+ms.openlocfilehash: 53401745d12bb7e0e1cef843cf743fbe9cc7cfb6
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838357"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52888817"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimalizace prostředí služby Active Directory s řešením Kontrola stavu služby Active Directory v Log Analytics
 
@@ -55,7 +55,7 @@ Provádění kontroly stavu proti řadiči domény, které jsou členy domény, 
 
 1. Nainstalujte [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Pokud řadič domény není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
 2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná se službou Log Analytics, může být řadič domény s více adresami pomocí Log Analytics ke shromažďování a předávání služby a pořád monitorované nástrojem Operations Manager.  
-3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](../../log-analytics/log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení ve vašem pracovním prostoru.  
+3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení ve vašem pracovním prostoru.  
 
 Agent na vašem řadiči domény, které sestavy pro skupinu pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené a pak se odešle přímo ze serveru pro správu služby Log Analytics.  Data není zapsána do databáze nástroje Operations Manager.  
 

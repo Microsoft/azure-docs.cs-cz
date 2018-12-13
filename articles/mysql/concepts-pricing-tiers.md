@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: e3d0e54c32a08c613407f1a90c78cc63be929078
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: MT
+ms.openlocfilehash: 0e316bf06cc6e2915adca5e7961083e6668bbfc1
+ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091789"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52889119"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
@@ -23,7 +23,7 @@ Serveru Azure Database for MySQL můžete vytvořit v jednom ze tří různých 
 |    | **Basic** | **Obecné účely** | **Optimalizované z hlediska paměti** |
 |:---|:----------|:--------------------|:---------------------|
 | Generace výpočetních funkcí | Gen 4, generace 5 | Gen 4, generace 5 | Gen 5 |
-| Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32 nebo 64 |2, 4, 8, 16, 32 |
 | Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
 | Typ úložiště | Azure Storage úrovně Standard | Azure Premium Storage | Azure Premium Storage |
